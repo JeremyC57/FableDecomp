@@ -14,7 +14,7 @@
 // steps are an if / else-if chain (`<=` = `test ah,41h ; jp`) whose bodies store the new state on the parent and, unless
 // the parent's thread is terminating, copy the def's target minion/summoner counts (the def pointer reloads after the
 // first store because the store may alias). Graded RELOCATION_MATCH on the first build.
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  void* __vftable;
  void* PImp_Data;
  void* PImp_Info;
@@ -23,31 +23,31 @@ struct CScriptThing {                                   // 12 bytes, vtable 0x01
 };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -920,7 +920,7 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CScriptDef {
+class CScriptDef { public:
  unsigned char _pad0[0xbc0];
  long DBNumMinionsHighHealth;      // +0xbc0 (PDB +0xc68)
  long DBNumMinionsMediumHealth;    // +0xbc4

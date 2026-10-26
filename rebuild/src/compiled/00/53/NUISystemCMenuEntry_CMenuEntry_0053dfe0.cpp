@@ -13,12 +13,12 @@ struct CClickableBase0 { virtual void v00(); };
 struct CClickableBase1 { virtual void v10(); unsigned char _body[0x10]; };
 struct CClickableBase2 { virtual void v20(); };
 
-struct CClickable : CClickableBase0, CClickableBase1, CClickableBase2 {
+class CClickable : public CClickableBase0, public CClickableBase1, public CClickableBase2 { public:
     unsigned char _body[0x198 - 0x1c];
     CClickable(long id);                            // 0x0055B460
 };
 
-struct CMenuEntry : CClickable {
+class CMenuEntry : public CClickable { public:
     bool         IsAvailable;                       // +0x198
     CActionList* PUIActionParams;                   // +0x19c
     CActionList* PThingActionParams;                // +0x1a0

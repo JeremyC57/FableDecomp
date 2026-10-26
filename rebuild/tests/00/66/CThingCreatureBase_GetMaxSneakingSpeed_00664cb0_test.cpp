@@ -1,6 +1,6 @@
 // Behaviour test for CThingCreatureBase::GetMaxSneakingSpeed (0x00664CB0)
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct STCEntry { long m_kind; CTCBase* m_pTC; };
 struct CTCMap {
     STCEntry* m_pFirst; STCEntry* m_pLast; STCEntry* m_pEnd;
@@ -11,7 +11,7 @@ struct CTCMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[8];
     CTCMap m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
@@ -32,9 +32,9 @@ struct CThing {
 };
 
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CTCSneakMovement { float m_speed; float GetMaxSneakingSpeed() const { return m_speed; } };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetMaxSneakingSpeed(const C3DVector& direction) const
     {
         if (HasTC(0x36))

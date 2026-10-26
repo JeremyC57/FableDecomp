@@ -12,7 +12,7 @@
 // Shape: `for (; n > 0; --n, ++cur) _Construct(&*cur, x); return cur;` -- unsigned count (`test edx,edx ; jbe`).
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-struct CRGBColour {                             // 4 bytes: the union's channel view in D3DCOLOR byte order
+class CRGBColour { public:                             // 4 bytes: the union's channel view in D3DCOLOR byte order
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }

@@ -11,17 +11,17 @@
 #undef CPlayer
 extern unsigned char g_bAggressiveModeAvailable;   // 0x013B85F3
 
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(long mode);                     // 0x00634160
     unsigned char buf[0x300];
 };
 
-struct CThing {
+class CThing { public:
     CPlayer* GetPlayer();                        // 0x004C7A10
 };
 bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
 
-struct CTCCombat {
+class CTCCombat { public:
     void*   pad0;
     CThing* obj;                                 // +0x04 owner
     char    pad2[0x14];

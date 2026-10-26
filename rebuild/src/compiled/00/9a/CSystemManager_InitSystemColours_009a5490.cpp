@@ -6,8 +6,8 @@
 // retail CSystemManager is 8 bytes larger ahead of it, so the model pads to 0x100.
 extern "C" __declspec(dllimport) unsigned long __stdcall GetSysColor(int index);   // [0x01440374]
 
-struct CRGBColour
-{
+class CRGBColour
+{ public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {}
@@ -21,8 +21,8 @@ static inline void SetFromSystem(CRGBColour& colour, unsigned long c)
     colour.A = 0xff;
 }
 
-struct CGuiColoursInfo
-{
+class CGuiColoursInfo
+{ public:
     CRGBColour BackgroundShadow3D;
     CRGBColour ButtonFace;
     CRGBColour ButtonHighlight;

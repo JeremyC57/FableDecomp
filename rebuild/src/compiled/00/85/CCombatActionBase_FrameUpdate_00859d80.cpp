@@ -12,9 +12,9 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector;struct CCombatActionBase;
+class C3DVector;class CCombatActionBase;
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase();virtual long GetEventType()const=0;
     long WorldFrame;CEventBase():WorldFrame(0){}
 };
@@ -34,7 +34,7 @@ struct Creature {
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate()const;virtual void EditUpdate(float);virtual void PerformAction();virtual void FinishAction();
     virtual bool IsPlayingAnimation()const;virtual long GetAnimDelayTime()const;virtual long GetAnimationIndex()const;
@@ -47,7 +47,7 @@ struct CCreatureActionBase {
     unsigned char _baseObjectState[4];CBaseIntelligentPointer PCreature;unsigned char _actionBody[0x98];
     void FrameUpdate(); //qualified direct base call00694020
 };
-struct CCombatActionBase:CCreatureActionBase {
+class CCombatActionBase:public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget,PCameraPoint;void* PMeleeAbilityDef_Object;void* StrikeEventsHead;
     long LastStrikeEventEndTime;float StrikeEventInterruptTime,StrikeEventResetComboTime;long MovementEventInterruptFrame;
     float StrikeSpeedVariationStartTime,StrikeSpeedVariationEndTime;

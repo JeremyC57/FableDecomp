@@ -5,7 +5,7 @@
 // Class attribution: the manifest labels this (and two unrelated two-call bodies) "CGameScriptInterface::EndCutFade"; the
 // SetState callee is labelled CTCTavernGame, which is the only class evidence -- provisional. The name is the manifest's.
 // Shape: two thiscalls on `this` kept in esi.
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void ResetPlayback();                           // 0x005E9A90
     void SetState(long state);                      // 0x005E9B20
     void EndCutFade();

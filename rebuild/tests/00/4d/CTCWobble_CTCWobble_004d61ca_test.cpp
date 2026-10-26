@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     virtual void v00() { }
     CThing* m_pOwner;
     CTCBase(CThing* owner) : m_pOwner(owner) { }
 };
-struct CTCWobble : CTCBase {
+class CTCWobble : public CTCBase { public:
     unsigned char _pad[0x20];
     long  FramesOfWobbleRemaining;
     float DirectionLastRotated;

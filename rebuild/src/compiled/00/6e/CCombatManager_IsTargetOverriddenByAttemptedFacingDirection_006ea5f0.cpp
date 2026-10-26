@@ -29,7 +29,7 @@ class C3DVector { public:
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CDefPointeeBase {                    // a counted definition object
+class CDefPointeeBase { public:                    // a counted definition object
     virtual void v000();
     virtual void DestroyDef();              // slot 1 (+4)
     long m_refCount;                        // +4
@@ -48,7 +48,7 @@ struct CSubDefPointer {                     // CDefPointer<const CCombatOverride
     }
     CCombatOverrideDef* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CSubDefPointer& out) const;      // 0x0042B1A6
 };
 void* FindDef_GetSubDef_0042b1a6();         // stand-in callee of the stand-in body below
@@ -79,18 +79,18 @@ struct CDefClassPointer {                   // CDefPointer<const CDefClassBase>,
     CDefClassBase* operator->() const { return Object; }
 };
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CTCCarrying {                        // interface type 0x46
+class CTCCarrying { public:                        // interface type 0x46
     CThing* GetThingInPrimarySlot();        // 0x006A1440
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -113,9 +113,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CCombatManager {
+class CCombatManager { public:
     bool IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase& creature, const CThing& target,
                                                       const C3DVector& facing) const;
 };

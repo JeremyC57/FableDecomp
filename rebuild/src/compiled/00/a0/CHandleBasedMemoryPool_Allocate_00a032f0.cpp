@@ -1,12 +1,12 @@
 // CHandleBasedMemoryPool::Allocate(CPoolHandle& handle, long alignment, long size) -- allocate `size` bytes through InternalAllocate (0x00A03180, the index returned in the `size` slot); on success release whatever the handle held (Free @ 0x00A02B30 on its pool, the pool cleared and the index set to -1) and bind it to this pool and the new index; false when the allocation failed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A032F0, length 84 bytes.
 // Shape: `this` in edi, the handle in esi, `ret 0Ch`, `mov al,1` / `xor al,al`.
-struct CHandleBasedMemoryPool;
+class CHandleBasedMemoryPool;
 struct CPoolHandle_00a032f0 {                      // 8 bytes: the owning pool and the index into it
     CHandleBasedMemoryPool* m_pPool;               // +0x00
     long                    m_index;               // +0x04
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool InternalAllocate(long& index, long alignment, long size);   // 0x00A03180 (labelled "Allocate")
     void Free(long index);                                           // 0x00A02B30
     bool Allocate(CPoolHandle_00a032f0& handle, long alignment, long size);

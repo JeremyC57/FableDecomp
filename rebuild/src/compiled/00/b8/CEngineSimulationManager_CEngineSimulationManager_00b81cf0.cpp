@@ -18,15 +18,15 @@ namespace N_0099a300 { struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CEngineComponent {                          // 0x0c bytes
+class CEngineComponent { public:                          // 0x0c bytes
     virtual void v01();
     void* m_pOwner;
     long  m_8;
     ~CEngineComponent();                           // 0x00B59730
 };
 
-struct CEnginePrimitiveSimulationInfo;
-template <class T> struct CIVCountedPointer { T* Object; };
+class CEnginePrimitiveSimulationInfo;
+template <class T> class CIVCountedPointer { public: T* Object; };
 template <class T>
 struct CRetailList {                               // STLport list<T>: the head node pointer
     struct node;
@@ -40,7 +40,7 @@ struct CRetailList {                               // STLport list<T>: the head 
     }
 };
 
-struct CEngineSimulationManager : CBase, CEngineComponent {   // vtables 0x012A3984 / 0x012A394C
+class CEngineSimulationManager : public CBase, public CEngineComponent { public:   // vtables 0x012A3984 / 0x012A394C
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > FullUpdateOnlySimulationInfoList;   // +0x10
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > AlwaysUpdateSimulationInfoList;     // +0x14
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > PausedSimulationInfoList;           // +0x18

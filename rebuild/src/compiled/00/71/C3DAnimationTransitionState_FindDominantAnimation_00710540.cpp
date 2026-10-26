@@ -1,8 +1,8 @@
 // C3DAnimationTransitionState::FindDominantAnimation @ 0x00710540
 #include "engine/C3DAnimationTransitionState.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C3DAnimationState;
+class C3DAnimationState;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void v1();
     virtual void v2();

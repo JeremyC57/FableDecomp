@@ -33,13 +33,13 @@ template <class T> struct CRetailVector {          // STLport vector: first / la
     void clear() { erase(begin(), end()); }
     CRetailVector& operator=(const CRetailVector& other);   // 0x009F6890
 };
-struct C2DVector { float x, y; };
+class C2DVector { public: float x, y; };
 class CJoystick {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void SetRecordedPosition(const C2DVector& position);   // slot 7 (+0x1c)
 };
-template <class T> struct CCountedPointer {        // {object, count block}
+template <class T> class CCountedPointer { public:        // {object, count block}
     T*    Data;
     void* m_block;
 };
@@ -49,7 +49,7 @@ public:
     virtual void SetRecordedPosition(const C2DVector& position);   // slot 4 (+0x10)
 };
 class CKeyboard;
-struct CInputEventPackage {
+class CInputEventPackage { public:
     CRetailVector<CInputEvent> Events;             // +0x00
     long                       TimeStamp;          // +0x0c
     unsigned char              Checksum[0x10];     // +0x10

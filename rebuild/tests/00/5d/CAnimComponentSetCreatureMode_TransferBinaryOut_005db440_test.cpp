@@ -1,6 +1,6 @@
 #include <cstdio>
 static void* g_d=0;
-struct CDataOutputStream { void Write(void* d); };
+class CDataOutputStream { public: void Write(void* d); };
 void CDataOutputStream::Write(void* d){ g_d=d; }
 struct S { char pad[8]; void* f8; void TransferBinaryOut(CDataOutputStream* s); };
 void S::TransferBinaryOut(CDataOutputStream* s){ s->Write(this->f8); }

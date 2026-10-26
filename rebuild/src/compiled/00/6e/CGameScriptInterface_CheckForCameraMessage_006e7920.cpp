@@ -19,7 +19,7 @@
 
 class CCharString;
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
@@ -55,47 +55,47 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* Info;
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPTypedItem() const
     {
         return (GetPItem() != 0 && IsThingOfType<T>((T*)GetPItem())) ? (T*)GetPItem() : 0;
     }
 };
 
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x48];
     CIntelligentPointer<CThing> PTarget;            // +0x48
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) {}
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& filter);   // 0x004AB8B0
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     T* operator->() const { return Data; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000();
     unsigned char _pad04[0x5c];
     CCountedPointer<CMessageEventManager> PMessageEventManager;    // +0x60
 };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     bool HasMessage(const CCharString& message);    // 0x0075D2B0
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool CheckForCameraMessage(const CCharString& message) const;
     CWorld* World;                                  // +0x04
 };

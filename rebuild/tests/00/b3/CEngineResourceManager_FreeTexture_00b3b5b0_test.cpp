@@ -6,7 +6,7 @@ public:
     ~CTexture() { Uninitialise(); }
     void Uninitialise() { ++g_uninit; PD3DTexture = 0; }
 };
-struct CEngineResourceManager { void FreeTexture(CTexture* texture) { delete texture; } };
+class CEngineResourceManager { public: void FreeTexture(CTexture* texture) { delete texture; } };
 int main()
 {
     CEngineResourceManager m;

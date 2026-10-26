@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CInventoryItemDef { int v; };
+class CInventoryItemDef { public: int v; };
 static int g_called = 0;
 static CInventoryItemDef* g_self = 0;
 static void* g_src = 0;

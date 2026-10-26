@@ -7,7 +7,7 @@
 // Shape: speed TU; the bool initialiser is scheduled right after the derived vtable store and before the
 // member's base constructor call; the default CIntelligentPointer constructor is the base call plus
 // its own vtable store (no SetPItem, unlike the CTCDeadShotInThingTracker member at 0x007E3450).
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -27,7 +27,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01237F1C
     CIntelligentPointer() { }
 };
 
-struct CTCDiscovery : CTCBase_Calls {
+class CTCDiscovery : public CTCBase_Calls { public:
     bool                Discovered;                         // +0x0c
     CIntelligentPointer Discoverer;                         // +0x0d CIntelligentPointer<const CThing>
     virtual void v00();                                     // own vtable 0x012695F4

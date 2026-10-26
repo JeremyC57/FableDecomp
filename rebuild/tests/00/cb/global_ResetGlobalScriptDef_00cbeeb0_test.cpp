@@ -12,7 +12,7 @@ struct CDefVirtual {
     virtual ~CDefVirtual() { }
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CScriptDef : CDefVirtual, CRefCounted {
+class CScriptDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseReference()
     {
         DecRef();

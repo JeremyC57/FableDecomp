@@ -13,21 +13,21 @@
 // same immediate (0x29), so one register (edi) serves both. The sub-def is held in ebx across the tutorial call.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CDefString {                                  // one table position, no destructor
+class CDefString { public:                                  // one table position, no destructor
     long TablePos;
     bool operator==(const char* text) const;         // 0x005B3440
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
 };
-template <class T> struct CDefPointer {                // the out-parameter slot of the def lookups (released by hand, as the landed OnCreate twins)
+template <class T> class CDefPointer { public:                // the out-parameter slot of the def lookups (released by hand, as the landed OnCreate twins)
     T* Object;
     T* operator->() const { return Object; }
 };
 enum EAppearanceModifierType { APPEARANCE_MODIFIER_CLOTHING = 2 };
-struct CAppearanceModifierDef : CDefPointeeBase {
+class CAppearanceModifierDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x50 - 0x08];
     long Type;                                       // +0x50
 };
@@ -47,7 +47,7 @@ __declspec(noinline) bool CObjectDef::GetSubDef(CDefPointer<CAppearanceModifierD
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefClassTypeNameFromGlobalIndex(long globalIndex);     // 0x009ACCE0
     bool GetDef(long globalIndex, CDefPointer<CObjectDef>& out);          // 0x0042B040
 };
@@ -73,7 +73,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -92,7 +92,7 @@ struct CThing {
     }
 };
 enum ETutorialCategory { TUTORIAL_CATEGORY_CLOTHING = 0x29 };
-struct CTCHero {                                     // interface type 0x29
+class CTCHero { public:                                     // interface type 0x29
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x006C9FA0
 };
 struct CTCInventoryBase_Retail {
@@ -101,7 +101,7 @@ struct CTCInventoryBase_Retail {
     CDefinitionManager* GetDefinitionManager() const;              // 0x006869D0 (CTCBase)
     void OnItemAdded(long item, bool assignQuickAccess, bool silent);   // 0x005BE028
 };
-struct CTCInventoryClothing : CTCInventoryBase_Retail {
+class CTCInventoryClothing : public CTCInventoryBase_Retail { public:
     void OnItemAdded(long item, bool assignQuickAccess, bool silent);
 };
 void CTCInventoryClothing::OnItemAdded(long item, bool assignQuickAccess, bool silent)

@@ -9,10 +9,10 @@
 // with category flags 0x10, 0x80, 0x40.
 // Shape: straight-line; `this` is dead before the global test (esi popped there); each virtual call re-reads the
 // global (the call may change it).
-struct CActionInputControl;
+class CActionInputControl;
 struct CActionInputVector;                         // vector<CActionInputControl>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& Get();             // 0x0040D2A0
     const CActionInputVector& GetAssignedInputsPassive();   // 0x004088E0
 };
@@ -70,11 +70,11 @@ extern CSoundSystem* g_pSoundSystem;               // 0x013B8394
 
 namespace NUISystem {
 
-struct CScrollableList {
+class CScrollableList { public:
     void UpdateVisibleList(float offset, float time);   // 0x00555A90
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     void ClearList();                              // 0x005567B0
     void RefreshScriptThings(const CActionInputVector& inputs);   // 0x00556A40
     void UpdateUndefinedWarning(float time);       // 0x00556810

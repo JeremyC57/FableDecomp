@@ -2,7 +2,7 @@
 // a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
 #include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
 #pragma pack(push,1)
-struct CBankFileAsync { void Run(); };
+class CBankFileAsync { public: void Run(); };
 struct CWADFile_Methods : CWADFile {
     void Run();
 };

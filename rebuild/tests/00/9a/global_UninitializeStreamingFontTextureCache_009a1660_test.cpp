@@ -8,7 +8,7 @@ static int g_blocksFreed = 0;
 static int g_allocatorDestroyed = 0;
 static int g_lockDepth = 0;
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned int NoAllocations;
     void InternalDeallocate(void*) { ++g_blocksFreed; --NoAllocations; }
     unsigned int GetNoAllocations() { return NoAllocations; }

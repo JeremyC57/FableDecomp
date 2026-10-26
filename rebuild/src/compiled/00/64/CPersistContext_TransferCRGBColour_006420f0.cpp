@@ -11,15 +11,15 @@
 //   the load copies ReadColour's by-value result (a hidden-pointer return: CRGBColour has user constructors, so it is
 //   not returned in eax) as one dword; the result temporary is homed in the dead defaultValue-argument slot
 //   (`lea edx,[esp+1Ch]`).
-struct CRGBColour {
+class CRGBColour { public:
     unsigned long m_argb;                         // B,G,R,A bytes (WriteColour 0x00993F30 writes them one by one)
     CRGBColour() {}
     CRGBColour(const CRGBColour& other) : m_argb(other.m_argb) {}
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteColour(const CRGBColour& colour);   // 0x00993F30
 };
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     CRGBColour ReadColour();                      // 0x009945E0 (CDataInputStream::ReadColour)
 };
 
@@ -32,7 +32,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

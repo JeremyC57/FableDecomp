@@ -11,9 +11,9 @@
 #pragma intrinsic(fabs)
 extern "C" double __cdecl fabs(double);
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCPhysicsBase { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29)
@@ -24,7 +24,7 @@ struct CTCPhysicsBase {
 #undef V
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& set);    // slot 75 (+0x12c)
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
@@ -32,10 +32,10 @@ struct CThing {
     unsigned char   _91_1 : 7;
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position) const;   // 0x004FC600
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     const CWorldMap& PeekWorldMap() const;              // 0x00686D20 (CTCBase)

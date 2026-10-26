@@ -7,7 +7,7 @@
 // def index is the unsigned short at +0x8c (`movzx`).
 // Shape: the IsCarryingThing 0x006A10A0 loop returning `GetPItem()` of the hit (pointer address in
 // ebx, offset in ebp) and `xor eax,eax` after the loop.
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defIndex;                      // +0x8c (the thing's def/type index)
     unsigned short GetDefIndex() const { return m_defIndex; }
@@ -35,7 +35,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     SCarrySlotEntry& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c

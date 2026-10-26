@@ -1,9 +1,9 @@
 #pragma optimize("s",on)
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferFloat(int& value);                 // 0x00431061 Transfer(float&)
 };
 
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     char pad[0x3c];
     int fieldA;   // +0x3c
     int fieldB;   // +0x40

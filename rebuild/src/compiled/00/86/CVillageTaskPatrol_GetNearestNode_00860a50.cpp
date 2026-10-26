@@ -6,13 +6,13 @@
 // NextNode +0xd0 and IsEnd +0xed (Ego_r.pdb +0xe8 / +0x105: the thing base is 0x18 bytes smaller in retail).
 // Shape: the best distance starts at FLT_MAX (0x7F7FFFFF) in the frame; `dist < best` is `fcom ; test ah,5 ; jp`; the
 // squared length is a `dist = dz*dz; dist += dx*dx; dist += dy*dy;` chain (a single sum expression is reordered by VC7.1).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
-struct CThingTrackNode : CThing {
+class CThingTrackNode : public CThing { public:
     unsigned char    _pad[0xd0];
     CThingTrackNode* NextNode;                     // +0xd0 (retail)
     unsigned char    _pad2[0xed - 0xd4];
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CThing* PItem;
     CThing* GetPItem() const;                      // 0x00A01B50
 };
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     virtual void v00();
     unsigned char           _pad04[4];             // +0x04 (CVillageTaskBase)
     CBaseIntelligentPointer PatrolStart;           // +0x08 CIntelligentPointer<const CThingTrackNode>

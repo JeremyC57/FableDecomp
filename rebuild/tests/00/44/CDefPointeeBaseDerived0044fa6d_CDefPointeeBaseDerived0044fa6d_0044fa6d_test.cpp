@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stddef.h>
 static char g_log[16]; static int g_n;
-struct CCharString { void* m_pStringData; ~CCharString() { g_log[g_n++] = (char)('0' + (int)((char*)this - (char*)m_pStringData)); } };
+class CCharString { public: void* m_pStringData; ~CCharString() { g_log[g_n++] = (char)('0' + (int)((char*)this - (char*)m_pStringData)); } };
 struct CBase_009fc550 { virtual void v00() {} ~CBase_009fc550() { g_log[g_n++] = 'B'; } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() {} ~CDefPointeeBase() { } };
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() {} ~CDefPointeeBase() { } };
 struct __declspec(novtable) CDefPointeeBase_Derived_0044fa6d : CDefPointeeBase {
     unsigned char _pad0[0x24]; CCharString m_string0; unsigned char _pad1[0x20]; CCharString m_string1; CCharString m_string2;
     virtual void v00() {}

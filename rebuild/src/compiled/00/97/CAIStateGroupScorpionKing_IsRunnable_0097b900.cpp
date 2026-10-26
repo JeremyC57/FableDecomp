@@ -18,20 +18,20 @@
 //          is a temporary copied from it); GetPFirstThing gets a same-TU noinline stand-in that does not let the out
 //          pointer's address escape -- with an external declaration VC loads the arena pointer into edi before the name
 //          destructor and the IP base ctor (and the frame grows by 4), retail reloads it after.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -67,11 +67,11 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntellige
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     CCharString ScriptName;
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out);   // 0x0056D050
 };
 long FirstSink_56D050(const void* self, const void* name);
@@ -92,18 +92,18 @@ struct CTCEnemySource {                         // interface 8
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
 bool __fastcall CanCreatureSeeCreature(const CThing* viewer, const CThing* target, bool ignoreLight);   // 0x008645E0
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* enemy, bool b);   // 0x006EDC50
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

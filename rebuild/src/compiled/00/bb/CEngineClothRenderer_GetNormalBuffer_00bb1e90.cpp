@@ -10,9 +10,9 @@
 //   functions, so both are local models (as the landed pool callers 0x0098B420).
 // Shape: the pool array-new guard is the nested conditional of the landed 0x0098B420 (count ? (64-bit product >
 //   0xFFFFFFFF ? 0 : Allocate(count * 16)) : 0).
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     unsigned char _pad[0x1c];
     void FreeAll();                                // 0x00A5C720
     void* Allocate(unsigned long bytes);           // 0x00A5C910

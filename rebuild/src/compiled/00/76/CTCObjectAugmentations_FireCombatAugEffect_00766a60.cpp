@@ -9,7 +9,7 @@
 // Layout (local model, as the landed ctor 0x007673C0): AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50,
 // InStrikeAction +0x64; AttackParticleAndEndPoints 0x18 (PDB) with ParticleEffect +0x10; fields before it descriptive
 // (start/end dummy names +0x00/+0x04, particle type +0x08, periodic frames +0x0c, the argument order of AttemptToStartParticle).
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 class CThing {
 public:
     unsigned char  _pad00[0x91];
@@ -86,7 +86,7 @@ struct AttackParticleAndEndPoints {                     // 0x18 (PDB)
     long        PeriodicFrames;                         // +0x0c
     CIntelligentPointer<CThing> ParticleEffect;         // +0x10
 };
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     virtual ~CTCObjectAugmentations();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

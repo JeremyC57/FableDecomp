@@ -15,19 +15,19 @@
 //   constant pushes); the brain is a named local for AddShopper (eax reused); the look speed literal is 0.0027777f
 //   (0x3B360A13, not 1/360); the browse loop is `for (unsigned i = 0; i < count; ++i)` with `break` exits that share the
 //   final Terminate, while the timed look loop's timeout keeps its own `Terminate(); return;` copy.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -55,8 +55,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CThingCreatureBase;
-struct CTCShop {                                // interface 0x53
+class CThingCreatureBase;
+class CTCShop { public:                                // interface 0x53
     void AddShopper(CThingCreatureBase* shopper);   // 0x00773DC0
 };
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
@@ -65,11 +65,11 @@ extern long g_FramesPerSecond;                  // 0x01375550
 extern unsigned long g_ShopBrowseCount;         // 0x0138CE20
 extern float g_ShopBrowseRadius;                // 0x0138CE24
 extern float g_ShopBrowseSeconds;               // 0x0138CE28
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

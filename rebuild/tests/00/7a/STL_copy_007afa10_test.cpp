@@ -1,6 +1,6 @@
 // Behaviour test for 0x007AFA10 __copy over CIntelligentPointer<CThingAICreature>: forward element assignment.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct IP {
     CThing* PItem;
     CThing* GetPItem() const { return PItem; }

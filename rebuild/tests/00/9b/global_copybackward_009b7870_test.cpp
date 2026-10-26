@@ -19,7 +19,7 @@ public:
 };
 typedef void* (*TDefAllocFunc)();
 namespace CDefinitionManager {
-struct CDefClassInfo {
+class CDefClassInfo { public:
     CCharString           Name;
     TDefAllocFunc         AllocFunc;
     CArray<unsigned long> GlobalIndices;

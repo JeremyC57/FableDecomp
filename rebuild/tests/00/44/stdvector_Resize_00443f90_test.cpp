@@ -6,7 +6,7 @@
 #include "engine/CEnginePersistentPrimitiveBase.h"
 #include "engine/CIVCountedPointeeBase.h"
 #endif
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CPersistentPrimitiveMethods {
  virtual ~CPersistentPrimitiveMethods();
  virtual void Delete()const;
@@ -22,7 +22,7 @@ struct CHandlePointer {
  CHandlePointer():Object(0){}
  __forceinline ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
-struct CEnginePrimitiveHandle:CBase {
+class CEnginePrimitiveHandle:public CBase { public:
  CHandlePointer Data;
  CEnginePrimitiveHandle():CBase(),Data(){}
  __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}

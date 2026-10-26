@@ -23,16 +23,16 @@ static int fails = 0;
 // which receives both addresses by const reference, has a same-TU noinline stand-in too (without it 22 lines: the pair
 // stores sink below the pushes) -- the "every address-taking callee gets a stand-in" lever.
 class CTCBase;
-struct CDefPointeeBase {                                       // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                                       // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();                                    // slot 1
     long m_refCount;                                           // +0x04
 };
-struct CThingPhysicalSwitchDef : CDefPointeeBase {
+class CThingPhysicalSwitchDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x90 - 0x08];
     long          UntriggerSound;                              // +0x90
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -41,7 +41,7 @@ template<class T> struct CDefPointer {
             Object->Destroy();
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0083e0d0(long globalIndex, CDefPointer<CThingPhysicalSwitchDef>* out);   // 0x0083E0D0
 };
 void* FindDef_CDefinitionManager_GetDef_0083e0d0();
@@ -84,12 +84,12 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CSoundPair {                                            // Ego_r.pdb: 8 bytes
+class CSoundPair { public:                                            // Ego_r.pdb: 8 bytes
     long FirstSound;
     long LastSound;
     CSoundPair(long first, long last) : FirstSound(first), LastSound(last) { }
 };
-struct CSoundInit {                                            // Ego_r.pdb: 0x20 bytes
+class CSoundInit { public:                                            // Ego_r.pdb: 0x20 bytes
     float         Volume;                                      // +0x00
     float         Pitch;                                       // +0x04
     float         Pan;                                         // +0x08
@@ -104,7 +104,7 @@ struct CSoundInit {                                            // Ego_r.pdb: 0x2
         PlaybackType = 1;
     }
 };
-struct CTCSoundPlayer {                                        // the interface-0x10 component
+class CTCSoundPlayer { public:                                        // the interface-0x10 component
     void PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attached, long a, long b);   // 0x0066B280
 };
 

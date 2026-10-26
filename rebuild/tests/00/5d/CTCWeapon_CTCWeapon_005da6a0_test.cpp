@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CWeaponDef;
+class CThing { public: int id; };
+class CWeaponDef;
 struct CTCBase_Calls {
     virtual void v00() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
@@ -8,7 +8,7 @@ struct CTCBase_Calls {
     virtual ~CTCBase_Calls() { }
 };
 struct CDefPointer_CWeaponDef { const CWeaponDef* Object; CDefPointer_CWeaponDef() : Object(0) { } };
-struct CTCWeapon : CTCBase_Calls {
+class CTCWeapon : public CTCBase_Calls { public:
     CDefPointer_CWeaponDef WeaponDef; bool ProjectileWeaponLoaded; long AimingTime; bool AimingTimeOverride;
     long NumThingsKilled; long TimeWielded; bool Wielded;
     virtual void v00() { }

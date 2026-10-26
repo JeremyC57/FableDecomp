@@ -12,7 +12,7 @@
 // `lea ecx` instead of three disp32 stores). The STLport _Vector_base + _STLP_alloc_proxy model (as the landed CTCMultiArrow 0x007CC7D0)
 // is the retail vector shape; one zero register; the first vector (+0x70, disp8) addressed off esi.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];
     CParentDefClassBase();                         // 0x00430370
@@ -31,10 +31,10 @@ template <class T> struct CVectorBase {             // STLport _Vector_base
 template <class T> struct CRetailVector : CVectorBase<T> {   // retail (STLport) std::vector, 12 bytes
     CRetailVector() : CVectorBase<T>(SAllocator()) {}
 };
-struct CAppearanceModifierScalingDef;
-struct CAbilityTrackDef;
+class CAppearanceModifierScalingDef;
+class CAbilityTrackDef;
 
-struct CHeroStatsDef : CParentDefClassBase {
+class CHeroStatsDef : public CParentDefClassBase { public:
     long   MaximumStamina;                                         // +0x3c
     float  NumberOfSecondsAfterUseStaminaStartsRefilling;          // +0x40
     float  NumberOfSecondsAfterChangeHealthStartsRefilling;        // +0x44

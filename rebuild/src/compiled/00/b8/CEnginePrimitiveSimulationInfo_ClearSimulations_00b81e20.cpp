@@ -11,7 +11,7 @@
 // Shape: VC6 `erase(first, last)` with no empty-range test (GOTCHAS wave 24n); both empty tag temporaries live in
 // the high byte of the `push ecx` frame slot; last is read before first (that puts first in eax and the tag's
 // `lea` in edx, as agent 54's CLipSyncDataBank::Close 0x00A42DA0).
-struct CEngineSimulationBase;
+class CEngineSimulationBase;
 struct SCountBlock;
 
 struct CSimulationPointer {                          // CCountedPointer<CEngineSimulationBase>, 8 bytes
@@ -26,7 +26,7 @@ CSimulationPointer* __fastcall Move_00b82ec0(CSimulationPointer* first, CSimulat
                                              const SMoveTag& tag, bool overlap);                          // 0x00B82EC0
 void __fastcall DestroyRange_00b83580(CSimulationPointer* first, CSimulationPointer* last, const SAllocatorTag& allocator);   // 0x00B83580
 
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     void*               m_vtable;                    // +0x00
     long                m_refCount;                  // +0x04 (CIVCountedPointer intrusive count)
     CSimulationPointer* m_simulationsFirst;          // +0x08 Simulations (CArray)

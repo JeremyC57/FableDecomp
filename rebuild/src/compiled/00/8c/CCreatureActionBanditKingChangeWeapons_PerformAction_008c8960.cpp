@@ -10,14 +10,14 @@
 // Shape: `this` is never saved (only the PCreature address, in edi); ebx/esi are pushed inside the lookup block; for each
 // `__fastcall` the def word is read first (right to left) into a callee-saved register, then the creature fetched into ecx.
 // Retail CCreatureActionBase/CCombatActionBase place PCreature at +8; no engine header for this class, so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 struct CTCGraphicAppearance;
 class CThing {
 public:
@@ -59,14 +59,14 @@ public:
     static void __fastcall CreateWeaponForThingFromDef(CThing& thing, long def);   // 0x00663990
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_BanditKingChangeWeapons : CCombatActionBase {
+class CCreatureAction_BanditKingChangeWeapons : public CCombatActionBase { public:
     virtual void PerformAction();
 };
 

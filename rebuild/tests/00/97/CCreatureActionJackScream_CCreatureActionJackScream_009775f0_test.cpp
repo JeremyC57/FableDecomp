@@ -2,7 +2,7 @@
 // the counted pointer copied and its shared count incremented (a null count block is left alone).
 #include <cstdio>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
 };
 
@@ -21,7 +21,7 @@ struct CCountedPointer_T {
 
 static int g_baseCopies = 0;
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     virtual ~CCombatActionBase() { }
     unsigned char _body[272];
@@ -29,7 +29,7 @@ struct CCombatActionBase {
     CCombatActionBase(const CCombatActionBase& other) { ++g_baseCopies; for (int i = 0; i < 272; ++i) _body[i] = 0; }
 };
 
-struct CCreatureAction_JackScream : CCombatActionBase {
+class CCreatureAction_JackScream : public CCombatActionBase { public:
     CCountedPointer_T PModeCountedPointer;
     virtual void v00() { }
     CCreatureAction_JackScream() { }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int n);
 };
@@ -14,7 +14,7 @@ CCharString::CCharString(const char* s, int n) {
     (void)n;
 }
 
-struct C3DAnimFileXAllocationSizeChunk {
+class C3DAnimFileXAllocationSizeChunk { public:
     void* vptr;
     virtual CCharString GetChunkDescription() const;
 };

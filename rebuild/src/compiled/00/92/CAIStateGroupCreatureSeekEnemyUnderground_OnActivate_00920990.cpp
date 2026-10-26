@@ -9,9 +9,9 @@
 // with the IMPLICIT assignment (`lea ecx,[esi+1Ch]` then three dword moves through ecx, edx reused for X and Y);
 // a user memberwise operator= (inline or __forceinline) or a pointer local folds the stores into [esi+1Ch..24h].
 // Model: local (no engine header for this class; it derives from CAIStateGroup_CreatureIdleUnderground).
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -34,12 +34,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* Creature;                       // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     long ScriptAIPriority;                          // +0x08

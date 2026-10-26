@@ -5,18 +5,18 @@
 static long g_nextTimer = 10;
 static int g_mallocs = 0;
 static void* test_malloc(unsigned int n) { ++g_mallocs; return std::malloc(n); }
-struct CGameScriptInterface { virtual long RegisterTimer() { return g_nextTimer++; } };
+class CGameScriptInterface { public: virtual long RegisterTimer() { return g_nextTimer++; } };
 static CGameScriptInterface g_iface;
 static CGameScriptInterface* g_pGameScriptInterface = &g_iface;
-struct CTimer { long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
-struct CScriptBase { virtual ~CScriptBase() { } unsigned char _body[0x3c]; CScriptBase() { } };
+class CTimer { public: long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
+class CScriptBase { public: virtual ~CScriptBase() { } unsigned char _body[0x3c]; CScriptBase() { } };
 struct CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game; void* Data;
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CBaseClass { virtual ~CBaseClass() { } CBaseClass() { } };
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass { CCountedPointer<CScriptThing> PImp; CScriptThing() : CBaseClass(), PImp() { } };
+class CBaseClass { public: virtual ~CBaseClass() { } CBaseClass() { } };
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public: CCountedPointer<CScriptThing> PImp; CScriptThing() : CBaseClass(), PImp() { } };
 struct CRetailList_CScriptThing {
     struct node { node* next; node* prev; unsigned char value[12]; };
     node* head;

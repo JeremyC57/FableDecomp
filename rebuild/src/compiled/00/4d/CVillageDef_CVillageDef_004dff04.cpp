@@ -12,11 +12,11 @@
 // Shape: a size-optimised TU (`#pragma optimize("s", on)`: `or dword ptr [m],-1` for the -1 store and `lea ecx` bases for the
 // vectors past +0x80).
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };
@@ -31,7 +31,7 @@ struct CDefBase_0044c0c0 {                         // the parent def base (0x28 
     unsigned char _body[0x24];
     CDefBase_0044c0c0();                           // 0x0044C0C0
 };
-struct CVillageDef : CDefBase_0044c0c0 {           // vtable 0x01241DDC
+class CVillageDef : public CDefBase_0044c0c0 { public:           // vtable 0x01241DDC
     CRetailVector<long> Tasks;                     // +0x28 vector<EVillageTaskType>
     CDefString          PatrolTrackName;           // +0x34
     long                DefaultStanceToHero;       // +0x38

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <math.h>
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -40,7 +40,7 @@ struct CJackOfBladesDeathDef {
     void Destroy() { ++g_destroys; }
 };
 static CJackOfBladesDeathDef g_def;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CJackOfBladesDeathDef** out) { ++g_def.m_refCount; *out = &g_def; return true; }
 };
 
@@ -52,11 +52,11 @@ struct CPhysicsObject {
 };
 
 static int g_removes; static unsigned long g_removedMode;
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode) { ++g_removes; g_removedMode = mode; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
     CPhysicsObject* PPhysics;

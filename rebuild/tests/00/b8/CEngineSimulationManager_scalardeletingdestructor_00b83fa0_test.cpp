@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineSimulationManager {
+class CEngineSimulationManager { public:
     void* vftable;
     int destroyed;
 };

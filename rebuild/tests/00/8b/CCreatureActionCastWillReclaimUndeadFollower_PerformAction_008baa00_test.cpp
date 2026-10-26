@@ -2,14 +2,14 @@
 // handed (by reference) to the caster's interface-0xa7 component; a dead or missing follower does nothing.
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -49,9 +49,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CThingGameObject : CThing { };
-struct CTCSpecialAbilities : CTCBase { void ReclaimUndeadFollower(CThingGameObject& f) { ++calls; arg = &f; } };
-struct CCreatureAction_CastWillReclaimUndeadFollower {
+class CThingGameObject : public CThing { public: };
+class CTCSpecialAbilities : public CTCBase { public: void ReclaimUndeadFollower(CThingGameObject& f) { ++calls; arg = &f; } };
+class CCreatureAction_CastWillReclaimUndeadFollower { public:
     CBaseIntelligentPointer PCreature, PUndeadFollower;
     void PerformAction()
     {

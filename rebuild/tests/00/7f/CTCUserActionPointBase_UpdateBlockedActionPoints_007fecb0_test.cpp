@@ -4,9 +4,9 @@
 #include <cstdlib>
 #include <cstring>
 class CThing;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 static long g_frame = 100;
 long GFGetCurrentFrame() { return g_frame; }
 struct __true_type { __true_type() { } };

@@ -1,4 +1,4 @@
-struct CCreatureActionHeroJump {
+class CCreatureActionHeroJump { public:
     void* vftable;
 };
 

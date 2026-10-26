@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CEnemyDef
-{
+class CEnemyDef
+{ public:
     void* vftable;
 };
 extern void* const g_CEnemyDef_vftable;

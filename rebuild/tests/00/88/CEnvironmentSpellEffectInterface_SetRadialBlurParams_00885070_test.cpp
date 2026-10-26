@@ -1,9 +1,9 @@
 // Behaviour test for 0x00885070 CEnvironmentSpellEffectInterface::SetRadialBlurParams
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float x, y, z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CRadialBlurParams { CRGBFloatColour ThresholdColour, IntensityColour; float Length, Fade, Range, Twist; };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CRadialBlurParams RadialBlurParams, PrevFrameRadialBlurParams;
     void SetRadialBlurParams(const C3DVector& threshold, float length, const C3DVector& intensity, float fade, float range, float twist, bool interpolate)
     {

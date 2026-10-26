@@ -8,7 +8,7 @@
 //   model (type, a zero dword, three zero bytes, bank, 16-bit flags, blend mode, blend op).
 // Shape: the trail blend mode / op are read into locals before the first create; the sprite create reuses the loaded
 //   bit-field word, the trail create re-reads it after the call.
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct SSpriteCreateInfo {
     long           Type;                           // +0x00
     long           Reserved;                       // +0x04
@@ -20,7 +20,7 @@ struct SSpriteCreateInfo {
     unsigned long  BlendMode;                      // +0x14
     unsigned long  BlendOp;                        // +0x18
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -50,15 +50,15 @@ struct CIEngine {
     virtual long CreateChildPrimitive(CEnginePrimitiveHandle* parent, const SSpriteCreateInfo* info, long flags);   // slot 26 (+0x68)
 };
 namespace NParticleEngine {
-struct CParticleSystem;
-template <class A, class B> struct CParticleUpdateParameters;
-struct CPSCBase {
+class CParticleSystem;
+template <class A, class B> class CParticleUpdateParameters;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;               // +0x04
     bool UpdateStarted : 1;                        // +0x08
     bool Initialised : 1;
 };
-struct CPSCRenderSprite : CPSCBase {               // vtable 0x0129F67C
+class CPSCRenderSprite : public CPSCBase { public:               // vtable 0x0129F67C
     long          SpriteBankIndex;                 // +0x0c
     long          TrailBankIndex;                  // +0x10
     unsigned long StartColour;                     // +0x14

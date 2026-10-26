@@ -7,7 +7,7 @@
 // Shape: speed TU (argument loaded into eax and pushed); the parent pointer at +4 is re-read from the
 // base after the base constructor and its vtable fetched before the vtable store of this class lands
 // (the virtual call is on the PARENT, not on `this`, so it stays a direct body call).
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -26,7 +26,7 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-struct CTCDriverBase : CTCBase_Calls {
+class CTCDriverBase : public CTCBase_Calls { public:
     virtual void v00();                                     // own vtable 0x0126A79C
     CTCDriverBase(CThing* parent);
 };

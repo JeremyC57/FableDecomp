@@ -6,14 +6,14 @@
 // CTCHeroGuide::OpenQuestSelectInterface @ 0x007800B0, this action's virtual slot 4 (`call [edx+10h]`, FinishAction).
 // Shape: two inlined IS_THING_ALIVE tests joined by `&&`; the GetInterface result is ignored (the absent arm reads the out pointer
 // from the key's frame word) and the out pointer is null-tested instead.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -48,18 +48,18 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCHeroGuide {                       // interface type 0x6B
+class CTCHeroGuide { public:                       // interface type 0x6B
     void OpenQuestSelectInterface();        // 0x007800B0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CCreatureAction_PlayerInteractionViewQuests : CCreatureActionBase {
+class CCreatureAction_PlayerInteractionViewQuests : public CCreatureActionBase { public:
     CBaseIntelligentPointer PGuide;         // +0xa8 the thing whose quest guide is opened
     virtual void PerformAction();
 };

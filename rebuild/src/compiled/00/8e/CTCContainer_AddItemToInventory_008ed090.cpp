@@ -11,14 +11,14 @@
 // and an unset result local (the absent arm reads the lookup key's slot, the dead `item` argument slot).
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                   // +0x20 bitset<274>
     CInterfaceMap Components;                           // +0x44
@@ -50,17 +50,17 @@ struct CThing {
     void Kill(bool immediately);                        // 0x004C9B80
 };
 struct CTCInventoryBase;
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct CTCContainer {
+class CTCContainer { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CPlayerManager* GetPlayerManager();                 // 0x00686D40 (CTCBase)

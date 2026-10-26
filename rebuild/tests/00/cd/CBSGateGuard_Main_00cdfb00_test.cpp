@@ -9,12 +9,12 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBSGateGuard::Main walks the guard home when he strayed more than 1 unit, then faces the hero, then idles
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float g_pos = 0.0f;
 static int g_taskEnds = 0;
 enum EScriptAIPriority { P0 };
 enum EScriptEntityMoveType { MT0 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name; float X;
     CScriptThing(const char* n = "", float x = 0.0f) : Name(n), X(x) { }
     C3DVector GetHomePos() const { C3DVector v; v.X = 10.0f; v.Y = v.Z = 0.0f; return v; }
@@ -30,7 +30,7 @@ struct CScripted {
     bool IsPerformingScriptTask() const { return g_frame < g_taskEnds; }
 };
 static CScriptThing g_hero("HERO");
-struct CGame {
+class CGame { public:
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing& t, CScripted& h, EScriptAIPriority p)
     { if (g_frame < 1) return false; char x[64]; std::sprintf(x, "start %s %d", t.Name, (int)p); Log(x); h.Scripting = true; return true; }

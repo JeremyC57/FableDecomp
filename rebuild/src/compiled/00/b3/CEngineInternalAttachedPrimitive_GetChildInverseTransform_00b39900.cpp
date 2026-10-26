@@ -3,11 +3,11 @@
 // Callees: GetChildInverseTransformStaticMesh(CMatrix3x4*) @ 0x00B393D0 (on `this`, the cached matrix at +0xa8). Shape: the early `mov al,1 ; ret`, then
 // `xor al,al ; dec ecx ; jne` -- the child type is dispatched as a one-case switch (case 1), the result byte is stored to the valid flag at +0xd8 either
 // way. No PDB layout for the attached primitive; member names are descriptive.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_rows[12];
 };
 
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalAttachedPrimitive { public:
     unsigned char _pad[0x7c];
     long          m_childType;                     // +0x7c: 1 = static mesh
     unsigned char _pad80[0x28];

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CClass;
+class CClass;
 struct Node { Node* next; Node* prev; CClass* data; };
 struct List {
     Node* head;
@@ -17,9 +17,9 @@ struct List {
     void PushBack(CClass* x) { Insert(head, x); }
     void PushFront(CClass* x) { Insert(head->next, x); }
 };
-struct CClass { int id; Node* ClassListPos; Node* TypeListPos; unsigned char Type; };
-struct CClassTypeInfo { List TypeList; unsigned int NoAllocated; };
-struct CClassFactory {
+class CClass { public: int id; Node* ClassListPos; Node* TypeListPos; unsigned char Type; };
+class CClassTypeInfo { public: List TypeList; unsigned int NoAllocated; };
+class CClassFactory { public:
     CClassTypeInfo* Info;
     unsigned int NoAllocatedClasses;
     List ClassList;

@@ -41,12 +41,12 @@ public:
     CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x60];
     NGameText::CDataBank* PGameTextDataBank;            // +0x60
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
@@ -62,11 +62,11 @@ public:
     virtual void v03();
     virtual bool GetKeyName(long key, CWideString& name) const;   // slot 4 (CKeyboardDX 0x00AB6180)
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char _pad00[0x28];
     CKeyboard*    PKeyboard;                            // +0x28 (scoped_ptr<CKeyboard>)
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x58];
     CInputManager* PInputManager;                       // +0x58
 };
@@ -81,7 +81,7 @@ enum EMouseButtonControl {
 };
 enum EInputKey { KEY_NULL = 0, KEY_LSHIFT = 0x2a, KEY_RSHIFT = 0x36, KEY_SPACE = 0x39 };
 
-struct CActionInputControl {                           // 28 bytes (Ego_r.pdb)
+class CActionInputControl { public:                           // 28 bytes (Ego_r.pdb)
     long  GameAction;                                   // +0x00
     long  ControllerType;                               // +0x04
     long  KeyboardKey;                                  // +0x08

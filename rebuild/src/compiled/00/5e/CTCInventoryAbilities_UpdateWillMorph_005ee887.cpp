@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -39,10 +39,10 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroMorph {                                // interface type 3
+class CTCHeroMorph { public:                                // interface type 3
     void SetWillMorphAmount(float amount);           // 0x0071BE80
 };
-struct CTCHeroExperience {                           // interface type 0x68
+class CTCHeroExperience { public:                           // interface type 0x68
     long GetTrainableStatMaxLevel(long stat);        // 0x006D6770
     long GetTrainableStatLevel(long stat);           // 0x006D6520
 };
@@ -58,7 +58,7 @@ struct CAbilityEntryVector {
     SAbilityEntry& operator[](unsigned long n) { return *(first + n); }
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x008[0x141 - 0x008];

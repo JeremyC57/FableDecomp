@@ -38,12 +38,12 @@ public:
 };
 void __cdecl FormatWideString(CWideString* text, const unsigned short* format, ...);   // 0x0099BA70
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  References;                                       // +0x00
     void (__fastcall* Destroy)(void* object);               // +0x04
     void* Object;                                           // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()

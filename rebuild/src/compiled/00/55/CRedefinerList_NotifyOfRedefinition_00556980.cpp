@@ -8,7 +8,7 @@
 // Layout: the redefiner vector (STLport, 8-byte entries, redefiner pointer first) at +0xb0 in retail (the PDB layout is padding only here).
 // Shape: an unsigned index loop over size() (`sar 3` of the byte span, `jb`), size re-read every iteration; the arguments are loaded
 //   inside the non-empty guard; the float 0.2f is pushed as an immediate.
-struct CActionInputControl;
+class CActionInputControl;
 struct CKeyRedefiner {
     void ClearDuplicateDefinitions(const CActionInputControl& control);   // 0x005580B0
 };

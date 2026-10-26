@@ -1,26 +1,26 @@
 // CCreatureAction_DragonBurninateInto::CCreatureAction_DragonBurninateInto(const CCreatureAction_DragonBurninateInto&) -- copy constructor: base CCombatActionBase(other), own vtable, then the burn path fields member by member
-// Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@ABU0@@Z
+// Leaf: ??0CCreatureAction_DragonBurninateInto@@QAE@ABV0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953DF0, length 177 bytes (+ int3 padding), `ret 4`. Vtable 0x01294374. Called by the
 // landed Clone 0x00953DC0.
 // Callees: CCombatActionBase::CCombatActionBase(const CCombatActionBase&) 0x0062F3B0, std::vector<C3DVector> copy constructor 0x006F0810.
 // Shape: `other` rides in edi; the vtable store follows the base copy, then the members in declaration order through rotating
 // registers (as the landed CCreatureAction_CastAssassinRush copy constructor 0x008CEF50).
 // Layout: PDB header + 0x18 = retail offsets.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {                             // two sound ids (user ctor: returned through a hidden pointer)
+class CSoundPair { public:                             // two sound ids (user ctor: returned through a hidden pointer)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* creature, const CCharString& name);   // 0x008561A0
 
-struct C3DVector {                              // three floats; the memberwise user copy constructor copies each as a dword
+class C3DVector { public:                              // three floats; the memberwise user copy constructor copies each as a dword
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -31,14 +31,14 @@ struct CVectorC3DVector {                       // std::vector<C3DVector> (retai
     CVectorC3DVector(const CVectorC3DVector& other);   // 0x006F0810 (out-of-line copy constructor)
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     CCombatActionBase(const CCombatActionBase& other);                                        // 0x0062F3B0
 };
 
-struct CCreatureAction_DragonBurninateInto : CCombatActionBase {   // vtable 0x01294374; retail sizeof 0x14c
+class CCreatureAction_DragonBurninateInto : public CCombatActionBase { public:   // vtable 0x01294374; retail sizeof 0x14c
     C3DVector        PreviousPoint;             // +0x114 (PDB +0x12c)
     CVectorC3DVector MovementPoints;            // +0x120 (PDB +0x138)
     float            BurnStart;                 // +0x12c (PDB +0x148)

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { unsigned char pad[0x91]; unsigned char flags; };
+class CThing { public: unsigned char pad[0x91]; unsigned char flags; };
 static int g_calls = 0;
 static CThing* g_last = 0;
 struct GlobalMgr { void Notify(CThing* t){ g_calls++; g_last=t; } };

@@ -10,7 +10,7 @@
 // Layout: CTCEmoteIcon EmoteIcon +0x14; the definitions holder's +0xd0 global def and its +0x12c follower icon index.
 // Shape: the component is a named local taken right after the lookup (esi); its current icon is a named local read into edi
 // BEFORE the GetDefinitions call (written inline in the `==` VC loads it after the call); SetEmoteIcon(priority 1, icon 0, 0.0f, 1.0f, 0xFF) clears it.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -37,7 +37,7 @@ struct CThing {
 
 enum EEmotePriority { EMOTE_PRIORITY_FOLLOWER = 1 };
 
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     unsigned char _pad00[0x14];
     long          EmoteIcon;                                // +0x14
     void SetEmoteIcon(EEmotePriority priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
@@ -53,7 +53,7 @@ struct CDefinitions {
     CGlobalGameDef* PGlobalDef;                             // +0xd0
 };
 
-struct CTCFollowed {
+class CTCFollowed { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     CDefinitions* GetDefinitions();                         // 0x006869D0 (CTCBase)

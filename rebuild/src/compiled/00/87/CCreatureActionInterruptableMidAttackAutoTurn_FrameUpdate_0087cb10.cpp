@@ -18,13 +18,13 @@ struct CEventBase {
 struct CEventMissedStrike : CEventBase {                     // vtable 0x01277874, 8 bytes
     virtual void v00();
 };
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);                        // 0x008113C0
 };
-struct CTCStealth {
+class CTCStealth { public:
     bool IsAbleToFlourishDangerThings();                     // 0x007471A0
 };
-struct CTCCombat {
+class CTCCombat { public:
     unsigned char _pad00[0x94];
     bool          Flag94;                                    // +0x94
     void SetMeleeFlourishValid(bool valid);                  // 0x00733E10
@@ -35,11 +35,11 @@ struct CDefBase {
     virtual void Destroy();                                  // slot 1
     long IVRefCount;                                         // +4
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0xe0 - 8];
     bool          AllowsFlourish;                            // +0xe0
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object && --Object->IVRefCount == 0) Object->Destroy(); }
@@ -52,14 +52,14 @@ struct CTC68 {
     CDefPointer<CWeaponDef> GetDef() const { return PDef; }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                    // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
@@ -91,7 +91,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                                // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -111,7 +111,7 @@ struct CCombatActionBase {
     CDefPointer<CWeaponDef> GetMeleeAbilityDef() const { return PMeleeAbilityDef; }
     bool HasMeleeAbilityDef() const { return GetMeleeAbilityDef().IsValid(); }
 };
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public:
     unsigned char _pad114[0x128 - 0x114];
     bool          PerformedStrikeEnd;                        // +0x128
     virtual void FrameUpdate();

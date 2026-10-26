@@ -41,13 +41,13 @@ public:
 }
 
 namespace NGameText {
-struct CTextEntry {
+class CTextEntry { public:
     void* __vftable;
     long  RefCount;
 };
 }
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* P;
     CIVCountedPointer(T* p) : P(p) { if (P) ++P->RefCount; }
     CIVCountedPointer(const CIVCountedPointer& x) : P(x.P) { if (P) ++P->RefCount; }
@@ -61,7 +61,7 @@ struct CIVCountedPointer {
     }
 };
 namespace NGameText {
-struct CDataBankTextEntry {
+class CDataBankTextEntry { public:
     CIVCountedPointer<CTextEntry> PText;
     long                          NarratorIndex;
     CDataBankTextEntry(CTextEntry* t, long n) : PText(t), NarratorIndex(n) { }

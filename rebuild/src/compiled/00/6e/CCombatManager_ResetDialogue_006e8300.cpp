@@ -5,12 +5,12 @@
 // CCombatManager's (PDB, 104 bytes: AttackPatternIdleStandardInterval +0x38, AttacksFromNearestCombatantOnly +0x3c, DialogueManager +0x40 -- retail
 // 8 lower because the two map members at +4 and +0x14 are 12-byte STLport trees in the shipped build, not 16). Shape: the float literal is an
 // immediate dword store, the flag a byte store, after the Init call on the member's address.
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     unsigned char _body[0x28];                     // SpeechGroupInfoMap, PDialogueDef, PCurrentTalker, CurrentTalkerTextGroupIndex, LastSpeechFrame
     void Init();                                   // 0x008AF2B0
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char         _pad[0x30];              // vptr, RegisteredCombatSequences, Combatants, flags, World, debug flags, ProximityForNavigation, EnableAINonAttackMode
     float                 AttackPatternIdleStandardInterval;   // +0x30
     bool                  AttacksFromNearestCombatantOnly;     // +0x34

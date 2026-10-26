@@ -13,7 +13,7 @@
 // Shape: `or byte ptr [esi+8],1` is the one-bit UpdateStarted store; the counted pointers are tested through their object
 //   word and dereferenced with an inline operator->; params is loaded once into edi for both Update calls, the second
 //   passing `&SplineRandomOffsetData->ThisSpline` (`add eax,4`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CCardinalSpline {
 public:

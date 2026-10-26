@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x38];      // +0x04 CDefClassBase part, InstantiationName, SubDefInfoMap
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -33,7 +33,7 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CSpecialAbilitiesBerserkDef : CParentDefClassBase {// vtable 0x012341FC
+class CSpecialAbilitiesBerserkDef : public CParentDefClassBase { public:// vtable 0x012341FC
     float        SpeedMultiplier;                                     // +0x3c
     long         FramesToFadeOut;                                     // +0x40
     float        LowerBerserkPercent;                                 // +0x44

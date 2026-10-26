@@ -9,9 +9,9 @@
 // is an immediate store; the local def pointer is null-initialised in the `push ecx` slot after its address is pushed and
 // released unconditionally after the read (load/dec/store of the count, no null test, flags from the `dec`) through a
 // local pointer and a local count -- the member form re-reads the slot after the store (82v73).
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -22,7 +22,7 @@ struct CDefPointee {                         // counted def: count at +4, slot 1
     long m_refCount;                         // +0x04
 };
 
-struct CTavernGameCardBaseDef : CDefPointee {
+class CTavernGameCardBaseDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x24];
     float         CardWidth;                 // +0x2c
     float         CardHeight;                // +0x30
@@ -30,7 +30,7 @@ struct CTavernGameCardBaseDef : CDefPointee {
     C2DVector     PackOffset;                // +0x64
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()

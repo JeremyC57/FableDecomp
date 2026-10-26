@@ -8,12 +8,12 @@
 // Layout: Ego_r.pdb CTCSmokeGenerator with the retail 12-byte vector: GenerationDistance +0x0c, GenerationPositions +0x10,
 //   PositionsCreated +0x1c; CGenerationPos {C3DVector, CIntelligentPointer<CThing>} 0x14 bytes; CThing TC bitset +0x20
 //   (0x5b = +0x28 bit 27), interface map +0x44, def class +0x70; the smoke def's distance +0x28.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -46,13 +46,13 @@ struct CTCGraphicAppearance {
     bool IsResourcesLoaded(bool flag);                  // 0x004BE3E0
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last; SEntry* end;
     const SEntry* LowerBound(const long& key) const;   // 0x004365B0
 };
-struct CSmokeGeneratorDef {
+class CSmokeGeneratorDef { public:
     virtual void v00();
     virtual void Destroy();
     long RefCount;
@@ -64,7 +64,7 @@ struct CSmokeDefPtr {
     CSmokeDefPtr() : Object(0) {}
     ~CSmokeDefPtr() { if (--Object->RefCount == 0) Object->Destroy(); }
 };
-struct CDefClassBase { bool GetSubDef(CSmokeDefPtr* out); };   // 0x00722D30
+class CDefClassBase { public: bool GetSubDef(CSmokeDefPtr* out); };   // 0x00722D30
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -84,7 +84,7 @@ public:
         return false;
     }
 };
-struct CTCSmokeGenerator {
+class CTCSmokeGenerator { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];

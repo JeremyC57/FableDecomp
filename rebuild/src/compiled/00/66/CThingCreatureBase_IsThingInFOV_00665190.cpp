@@ -9,14 +9,14 @@
 // Shape: the two defaults are float locals stored as immediates and overwritten from the component; the delta is
 //   `GetPosition() - thing->GetPosition()` through an inline C3DVector operator- (thing's position fetched first) and
 //   its squared length the plain inline `X*X + Y*Y + Z*Z`; `lenSq <= r*r` tail-calls the angle test (`test ah,1 ; jne` to the false exit), else false.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     float GetExtendedSightRadius();             // 0x007448F0
     float GetFieldOfView_007445d0();            // 0x007445D0
 };

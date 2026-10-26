@@ -13,10 +13,10 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
-struct CTCBase;
+class CProcessedInput;
+class CTCBase;
 
-struct CAInputProcess {
+class CAInputProcess { public:
     void RemoveFromInterface();                         // 0x00A0D2D0 (non-virtual)
 };
 
@@ -37,7 +37,7 @@ struct CTCMap {                                         // CThing::Components: a
         return it->TC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                   // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
@@ -48,11 +48,11 @@ struct CThing {
     __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
 };
 
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();                   // 0x00699090
 };
 struct CCameraManagerSource {
@@ -60,7 +60,7 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* CameraSource;                 // +0x34
 };

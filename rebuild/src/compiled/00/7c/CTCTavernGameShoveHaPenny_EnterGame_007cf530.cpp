@@ -10,7 +10,7 @@
 //         CTCTavernGameShoveHaPenny::RoundsPlayed +0x148 (PDB +0x160).
 // Shape: the camera name is a named local in its own block (`lea ecx ; push ecx`, destroyed before the RoundsPlayed store);
 //        null-tested CDefPointer dtor with the def's inline ReleaseTemporary().
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
 };
@@ -28,7 +28,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x88];
     long CameraName;                            // +0x90 CDefString
     void ReleaseTemporary()

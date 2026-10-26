@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <list>
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     std::vector<unsigned long> Groups;
     CVertexGroupBlock() { }
     explicit CVertexGroupBlock(unsigned long n) { for (unsigned long i = 0; i < n; ++i) Groups.push_back(i); }
@@ -10,7 +10,7 @@ struct CVertexGroupBlock {
 // remaining, recomputes the segments, restarts the working list with one empty block as the current block, sets the
 // optimal-size bound (remaining groups + MaxN - 3) / (MaxN - 1), greedy = !exhaustive, zero iterations, runs AddBlocks(0)
 // and appends the optimal blocks to the output; an empty input does nothing
-struct CVertexGroupBlockList {
+class CVertexGroupBlockList { public:
     std::vector<CVertexGroupBlock> Blocks;
     void AddBlock(const CVertexGroupBlock& block) { Blocks.push_back(block); }
 };

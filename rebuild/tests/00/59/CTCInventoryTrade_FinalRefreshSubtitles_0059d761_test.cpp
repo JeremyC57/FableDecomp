@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1) : PStringData((void*)text) { CHECK(length == -1); }
     ~CCharString() { }
 };
 static int g_wideCtors = 0, g_wideDtors = 0;
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     char text[64];
     CWideString() : PStringData(0) { text[0] = 0; ++g_wideCtors; }
@@ -26,7 +26,7 @@ struct CTextSource {
     CWideString text;
     virtual const CWideString& GetText() { return text; }
 };
-struct CComponent {
+class CComponent { public:
     CTextSource child; CComponent* pcSubtitle;
     virtual CComponent* FindChild(CCharString name) { g_findName = (const char*)name.PStringData; return pcSubtitle; }
     virtual CTextSource* GetChildOfType(long type) { g_childType = type; return &child; }

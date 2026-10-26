@@ -11,7 +11,7 @@ static long g_framesPerSecond = 30;
 struct SCall { long attitude; float peak; long unused; long frames; float persist; long flag; };
 static SCall g_calls[4]; static int g_nCalls = 0;
 static int g_iconCalls = 0; static bool g_iconShow = true; static float g_iconScale = 0; static unsigned char g_iconAlpha = 0;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, bool flag)
     { SCall c = { attitude, peak, unused, runOutFrames, persist, flag }; g_calls[g_nCalls++] = c; }
 };
@@ -40,14 +40,14 @@ public:
         return false;
     }
 };
-struct CWorld { static long GetWorldFrame() { return g_worldFrame; } };
-struct CHeroMarriageDef {
+class CWorld { public: static long GetWorldFrame() { return g_worldFrame; } };
+class CHeroMarriageDef { public:
     unsigned char _pad00[0x90];
     float SecondsRunOutWifeOnViolenceHateSpike;
     float PeakEffectWifeOnViolenceHateSpike;
     float PersistEffectWifeOnViolenceHateSpike;
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00() {}
     CThing*          ParentThing;
     unsigned char    _pad_0x08[4];

@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_strings = 0, g_frees = 0, g_baseDtors = 0, g_deletes = 0;
-struct CThing;
-struct CCharString { void* m_pStringData; ~CCharString() { ++g_strings; } };
+class CThing;
+class CCharString { public: void* m_pStringData; ~CCharString() { ++g_strings; } };
 struct SContainerItem { long first; CCharString second; };
 struct CRetailVector_ContainerItem {
     SContainerItem* Start; SContainerItem* Finish; SContainerItem* EndOfStorage;
     static void Destroy(SContainerItem* first, SContainerItem* last) { for (; first != last; ++first) first->~SContainerItem(); }
     ~CRetailVector_ContainerItem() { Destroy(Start, Finish); if (Start) { ++g_frees; std::free(Start); } }
 };
-struct CTCBase { CThing* ParentThing; ~CTCBase() { ++g_baseDtors; } };
-struct CTCContainer {
+class CTCBase { public: CThing* ParentThing; ~CTCBase() { ++g_baseDtors; } };
+class CTCContainer { public:
     CTCBase Base; CRetailVector_ContainerItem ContainerItems;
     void* operator new(size_t n) { return std::malloc(n); }
     void operator delete(void* p) { ++g_deletes; std::free(p); }

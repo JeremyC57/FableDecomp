@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 static int g_lastReferences = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     virtual void OnLastReference() { ++g_lastReferences; }
     unsigned long IVRefCount;
@@ -13,7 +13,7 @@ struct CIVCountedPointeeBase {
             OnLastReference();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer()

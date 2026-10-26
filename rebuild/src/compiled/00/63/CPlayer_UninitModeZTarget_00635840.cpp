@@ -17,10 +17,10 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
-struct CTCBase;
+class CProcessedInput;
+class CTCBase;
 
-struct CAInputProcess { void RemoveFromInterface(); };          // 0x00A0D2D0
+class CAInputProcess { public: void RemoveFromInterface(); };          // 0x00A0D2D0
 
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -29,7 +29,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -56,14 +56,14 @@ struct CThing {
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
 
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
 };
-struct CTCTargetingPlayer {                             // interface 8
+class CTCTargetingPlayer { public:                             // interface 8
     void ClearLockedTarget();                           // 0x00802650
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();                   // 0x00699090
 };
 struct CCameraManagerSource {
@@ -71,7 +71,7 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* CameraSource;                 // +0x34
 };

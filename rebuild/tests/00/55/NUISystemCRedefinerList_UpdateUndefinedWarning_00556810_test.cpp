@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour model of NUISystem::CRedefinerList::UpdateUndefinedWarning @ 0x00556810 (copy of the source's logic).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
 };
-template <class T> struct CCountedPointer { T* Data; void* Info; T* operator->() const { return Data; } };
+template <class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T* begin() const { return _M_start; }

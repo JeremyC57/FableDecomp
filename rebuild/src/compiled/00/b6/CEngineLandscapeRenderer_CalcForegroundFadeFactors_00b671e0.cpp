@@ -10,12 +10,12 @@
 // divisor as a reciprocal multiply), so it is not the form.
 // Layout: the PDB places these words inside the embedded CEngineLandscapeMeshBuilder (+0x1C..+0xCF4) of the PDB
 // layout, which does not fit this body; the renderer is modelled locally with descriptive names.
-struct C4DVector {
+class C4DVector { public:
     float x, y, z, w;
     void Set(float x_, float y_, float z_, float w_) { x = x_; y = y_; z = z_; w = w_; }
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char _pad000[0x614];
     float         m_foregroundFadeStart;           // +0x614
     float         m_foregroundFadeEnd;             // +0x618

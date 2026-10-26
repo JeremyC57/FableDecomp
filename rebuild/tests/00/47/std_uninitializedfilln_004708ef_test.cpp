@@ -1,7 +1,7 @@
 // Behaviour test for 0x004708EF uninitialized_fill_n<pair<unsigned long, CSoundPair>*>: n copies of x, returns first + n
 #include <cstdio>
 #include <new>
-struct CSoundPair { int FirstSound; int LastSound; };
+class CSoundPair { public: int FirstSound; int LastSound; };
 struct SoundEntry { unsigned int first; CSoundPair second; };
 static SoundEntry* UninitializedFillN(SoundEntry* first, unsigned int n, const SoundEntry& x)
 {

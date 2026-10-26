@@ -14,22 +14,22 @@
 // (the value-returning one swaps ecx/edx for eax/ecx in the loop and the release).
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     void BeginLoading();                        // 0x00A26730
 };
 struct CMeshBank {
     C3DAnimationInfo* GetAnimation(long index, bool immediately);   // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshBank* PMainMeshBank;                   // +0x3c
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                             // +0x00
 };
 struct __declspec(novtable) CAnimFilterBase {
@@ -53,26 +53,26 @@ struct CAnimationEntryVector {                  // std::vector<const CAnimationE
     const CAnimationEntry** begin() const { return first; }
     const CAnimationEntry* const& operator[](unsigned long i) const { return *(begin() + i); }
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     long GetNumberOfAnimations(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC290
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
     void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims, const CAnimFilterBase& filter) const;   // 0x005DCB00
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-struct CAppearanceDef : CDefClassBase {
+class CAppearanceDef : public CDefClassBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     bool GetSubDef(CDefPointer<const CAppearanceDef>* out) const;     // 0x0042B0A2
 };
 void* FindDef_3610();
@@ -87,7 +87,7 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<const CAppearance
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x70];
     const CThingBaseDef* PBaseDef;              // +0x70
     CWorld* GetWorld();                         // 0x004C7AB0

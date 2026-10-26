@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCoopSpiritDef { int dummy; };
+class CCoopSpiritDef { public: int dummy; };
 
 unsigned long __fastcall CCoopSpiritDef_GetSizeofClass(const CCoopSpiritDef* self)
 {

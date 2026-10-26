@@ -10,7 +10,7 @@
 //   member's address is the natural `add esi,40h ; push esi`.
 #pragma optimize("s", on)
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 class CPersistContext {
 public:

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for 0x0057598A: a found name -> 1; a new name is appended and -> 0 (then found).
-struct CCharString { char m_text[16]; };
+class CCharString { public: char m_text[16]; };
 static CCharString* find(CCharString* first, CCharString* last, const CCharString& value)
 {
     while (first != last && std::strcmp(first->m_text, value.m_text) != 0) ++first;
@@ -13,7 +13,7 @@ struct SCharStringVector {
     CCharString* _M_end_of_storage;
     void push_back(const CCharString& value) { *_M_finish = value; ++_M_finish; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     SCharStringVector TutorialsPlayed;
     unsigned char IsTutorialPlayed(const CCharString& name);
 };

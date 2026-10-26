@@ -13,14 +13,14 @@
 // Shape: the inline-once destructor band (landed 0x00EDD060 idiom): retail expands both locals' destructors at the first-loop
 //   return only and calls the out-of-line copies (0x007E74D0, 0x004AA840) elsewhere, so the locals are destructor-less
 //   views and every exit destroys them by hand: __forceinline bodies at the first return, the out-of-line calls elsewhere.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
@@ -44,7 +44,7 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
 struct CBase {
     virtual ~CBase();                                  // 0x0099A2E0
 };
-struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointerWords PImp;                         // +0x04
@@ -64,7 +64,7 @@ struct CScriptThingLocal {                             // a by-value CScriptThin
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CBaseObject {                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
     virtual void b000();
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -76,7 +76,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007(); virtual void s008();
@@ -92,7 +92,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
     }
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -158,7 +158,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0 (out of line in this module)
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

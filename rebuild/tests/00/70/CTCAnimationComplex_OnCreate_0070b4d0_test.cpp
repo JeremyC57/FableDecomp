@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long = -1) : PStringData(text) {}
     ~CCharString() {}
 };
-struct CAnimationEntry { long AnimIndex; };
-struct CAnimFilterBase {
+class CAnimationEntry { public: long AnimIndex; };
+class CAnimFilterBase { public:
     virtual bool Accept(const CAnimationEntry*) const { return true; }
     virtual ~CAnimFilterBase() {}
 };
@@ -16,13 +16,13 @@ struct CAnimFilterNoGroup : CAnimFilterBase { virtual bool Accept(const CAnimati
 static const char* g_askedName = 0;
 static long g_askedIndex = -1;
 static CAnimationEntry g_entry = { 42 };
-struct CAnimationSet {
+class CAnimationSet { public:
     int dummy;
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase&) const
     { g_askedName = name.PStringData; g_askedIndex = index; return &g_entry; }
 };
 struct CBlendPair { float m_first, m_second; CBlendPair() : m_first(0.0f), m_second(0.0f) {} };
-struct CAnimInit {
+class CAnimInit { public:
     long Mode; unsigned char AnimType; bool Flag05; long AnimIndex; float Scales[3]; CBlendPair Blend;
     unsigned long Flags; long Arg24; long Percent;
     void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
@@ -34,32 +34,32 @@ static int g_resets = 0;
 static CAnimInit* g_played = 0;
 static CAnimInit g_copy(0, 0, 0, 0, false, 0, 0);
 static long g_mode = -1, g_delay = -1;
-struct CAnimateThing {
+class CAnimateThing { public:
     void ResetAnimations_0070ec30() { ++g_resets; }
     void SetMainAnim(const CAnimInit& init, long mode, long delay) { g_copy = init; g_mode = mode; g_delay = delay; }
 };
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0() {}
     virtual void Destroy() { ++g_destroyed; }
     long RefCount;
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
 template <class T> struct CCountedDefPointer {
     T* Object;
     CCountedDefPointer(T* object) : Object(object) { if (Object) Object->AddRef(); }
     ~CCountedDefPointer() { if (Object) Object->Release(); }
 };
-struct CAppearanceDef : CDefPointeeBase { CAnimationSet Animation; };
+class CAppearanceDef : public CDefPointeeBase { public: CAnimationSet Animation; };
 static CAppearanceDef* g_appearance = 0;
 static long g_baseRefDuringCall = 0;
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const
     { g_baseRefDuringCall = RefCount; out->Object = g_appearance; ++g_appearance->RefCount; return true; }
 };
-struct CThing {
+class CThing { public:
     CThingBaseDef* PBaseDef;
     CCountedDefPointer<CThingBaseDef> GetBaseDef() const { return CCountedDefPointer<CThingBaseDef>(PBaseDef); }
 };

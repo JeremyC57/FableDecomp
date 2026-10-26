@@ -1,13 +1,13 @@
 // Behaviour test for CThingAICreatureInit::CThingAICreatureInit @ 0x004FACD0: arguments stored, names copied, defaults set.
 #include <cstdio>
-struct CThingPhysical { int id; };
-struct CThingBuilding;
-struct CCharString {
+class CThingPhysical { public: int id; };
+class CThingBuilding;
+class CCharString { public:
     const char* m_text; int copies;
     CCharString(const char* t) : m_text(t), copies(0) { }
     CCharString(const CCharString& other) : m_text(other.m_text), copies(other.copies + 1) { }
 };
-struct CThingAICreatureInit {
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing; CThingPhysical* PreviousThing;
     CCharString ScriptName; CCharString OverridingBrainName;
     bool PlayerCharacter, Drawable, PlaceAtEndOfList, EnableCreatureAutoPlacing;

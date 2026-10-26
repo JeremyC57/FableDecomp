@@ -1,11 +1,11 @@
 // behaviour test for 0x008AD530 COpenDoor::operator()
 #include <cstdio>
-struct CTCDoor {
+class CTCDoor { public:
     bool CurrentOpen, OldOpen, Opening, Closing; int triggered; bool lastArg;
     void ScriptTriggerOpen(bool open) { ++triggered; lastArg = open; }
     bool IsOpen() const { return !Opening && !Closing && CurrentOpen; }
 };
-struct CThing { CTCDoor* door; unsigned int HasTC(long) const { return door != 0; } CTCDoor* GetTC(long) { return door; } };
+class CThing { public: CTCDoor* door; unsigned int HasTC(long) const { return door != 0; } CTCDoor* GetTC(long) { return door; } };
 struct COpenDoor {
     bool m_open, m_force;
     void operator()(CThing* thing) const

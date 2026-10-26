@@ -24,7 +24,7 @@ static int fails = 0;
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -68,11 +68,11 @@ struct CActionBase {                               // vtable 0x01265504
 
 class CCharString;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction();                    // 0x00662650
 };
 
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void CleanupAllActions();                      // 0x00713630
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };

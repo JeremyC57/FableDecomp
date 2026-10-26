@@ -18,7 +18,7 @@
 // Label: catalog "CEngineWorldMap_CopyFields_Type3" (propagated).
 void __cdecl operator delete(void* block);
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long refs;                        // +0x0
     void (__fastcall* destroy)(void*);         // +0x4
     void* object;                              // +0x8

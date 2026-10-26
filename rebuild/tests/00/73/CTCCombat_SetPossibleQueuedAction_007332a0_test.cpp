@@ -1,11 +1,11 @@
 #include <cstdio>
 struct CCreatureAction { int id; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     int m_queued; CCreatureAction* m_last;
     bool HasQueuedActions() { return m_queued > 0; }
     void QueueAction(CCreatureAction* action) { ++m_queued; m_last = action; }
 };
-struct CTCCombat {
+class CTCCombat { public:
     CThingCreatureBase* ParentCreature;
     bool SetPossibleQueuedAction(CCreatureAction* action)
     {

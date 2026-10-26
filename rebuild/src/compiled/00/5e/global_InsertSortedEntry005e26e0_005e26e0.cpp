@@ -11,7 +11,7 @@
 // (`value.first < first->first`); `*first = value` is the pair's memberwise assignment with the compare-first
 // counted-pointer operator=; the tag temporary is homed in the dead predicate slot; the by-value pair argument is
 // copied into the argument area (add-ref) and the callee's own by-value parameter released at the end.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
@@ -52,7 +52,7 @@ struct SPriorityEntry {                            // pair<long, CDefPointer<con
     long        first;
     CDefPointer second;
 };
-struct CContextSensitivePriorityCompare {
+class CContextSensitivePriorityCompare { public:
     bool operator()(const SPriorityEntry& a, const SPriorityEntry& b) const { return a.first < b.first; }
 };
 struct SCopyTag { SCopyTag() { } };

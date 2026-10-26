@@ -28,11 +28,11 @@ __forceinline void CrossProduct(C3DVector& r, const C3DVector& a, const C3DVecto
 extern const float g_DegreesPerTurn;                    // 0x01238020 (360.0f)
 extern const float g_TurnsPerDegree;                    // 0x01238E00 (1/360)
 extern const float g_TwoPi;                             // 0x0128F608
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 void __fastcall GFVBoxToABox(const C2DBoxF* vbox, C2DBoxF* abox);   // 0x009E1E70
-struct CMatrix3x4 { float m[12]; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCamera {
+class CMatrix3x4 { public: float m[12]; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCamera { public:
     C3DVector       WorldPosition;                      // +0x00
     CRightHandedSet RHSet;                              // +0x0c
     float GetHorizontalFOV() const;                     // 0x00A0BE90
@@ -61,7 +61,7 @@ struct CEngineCameraDesc {                              // 108 bytes
         ZBufferEnd = 0.99f;
     }
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     void*         __vftable;                            // +0x00
     unsigned char _pad04[8];
     CCamera*      GameCamera;                           // +0x0c

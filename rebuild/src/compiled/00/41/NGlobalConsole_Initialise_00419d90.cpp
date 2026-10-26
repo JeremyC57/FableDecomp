@@ -76,7 +76,7 @@ public:
     virtual ~CConsoleClasslessCommand();
     TConsoleFunction Function;                           // +0x14
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -13,21 +13,21 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
 static char g_anim[32]; static int g_baseInit = 0, g_dirCalls = 0, g_destroyed = 0, g_creates = 0;
-struct CThing;
+class CThing;
 static CThing* g_dirTowards = 0; static C3DVector g_ca, g_cb; static float g_cr = 0; static CThing* g_createResult = 0;
-struct CAICreatureWillPowerIndicatorDef { long RefCount; float Radius; void Destroy() { ++g_destroyed; } };
-template<class T> struct CDefPointer {
+class CAICreatureWillPowerIndicatorDef { public: long RefCount; float Radius; void Destroy() { ++g_destroyed; } };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CAICreatureWillPowerIndicatorDef* Sub;
     bool GetSubDef(CDefPointer<CAICreatureWillPowerIndicatorDef>* out) { ++Sub->RefCount; out->Object = Sub; return true; }
 };
 struct CPhysicsBody { C3DVector Facing; C3DVector GetFacing() const { return Facing; } };
 struct CTC93 { void SetDirection(CThing* t, bool f) { if (f) { g_dirTowards = t; ++g_dirCalls; } } };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91; CPhysicsBody* PhysicsBody; CDefClassBase* Def; C3DVector Pos; CTC93* C93;
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     CDefClassBase* GetDef() const { return Def; }
@@ -49,14 +49,14 @@ inline bool IS_THING_ALIVE(const CIntelligentPointerThing& p)
     }
     return false;
 }
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CCombatActionBase {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CCombatActionBase { public:
     CIntelligentPointerThing PCreature, PTarget;
     void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_ScorpionChargeInto : CCombatActionBase { float ChargeDistance; CIntelligentPointerThing PObstruction; void Initialise(); };
+class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public: float ChargeDistance; CIntelligentPointerThing PObstruction; void Initialise(); };
 
 void CCreatureAction_ScorpionChargeInto::Initialise()
 {

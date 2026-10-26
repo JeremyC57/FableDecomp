@@ -9,17 +9,17 @@
 // Shape: memberwise initialiser list (the vtable store follows the base call), every member, each word through eax/ecx/edx in rotation, the bools through cl/al.
 // No engine header exists for CFeatDef: modelled locally from struct_layouts_egor.tsv.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28
     CDefClassBase(const CDefClassBase& other);                             // 0x0046644C
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
-struct CFeatDef : CDefClassBase {                                         // vtable 0x012FB778
+class CFeatDef : public CDefClassBase { public:                                         // vtable 0x012FB778
     CDefString FeatName;                                                  // +0x28
     CDefString Verb;                                                      // +0x2c
     float      TimeLimit;                                                 // +0x30

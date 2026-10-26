@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct CDefClassBase { char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; };
 
 struct CReadableBase {
     void Copy(CDefClassBase const* src);
 };
 
-struct CReadableDef : CReadableBase {
+class CReadableDef : public CReadableBase { public:
     unsigned char field25pad[0x25];
     unsigned char UseInfoDisplay;
     void Copy(CDefClassBase const* src);

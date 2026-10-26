@@ -11,11 +11,11 @@
 // The containers are opaque three-word views here; no engine header exists.
 // Size-optimised TU: `#pragma optimize("s", on)` (every address goes through eax, as in retail).
 #pragma optimize("s", on)
-struct CCharString { void* Data; };
+class CCharString { public: void* Data; };
 struct CShopItemDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 struct COpinionAttitudeFloatMap { void* _M_header; unsigned long _M_node_count; unsigned long _M_compare; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& value);            // 0x00431020
     void Transfer(CCharString& value);              // 0x00431143
     void Transfer(CShopItemDefVector& value);       // 0x004ECF6E
@@ -25,7 +25,7 @@ struct CPersistContext {
     void Transfer(long& value);                     // 0x00431102
 };
 
-struct CShopDef {
+class CShopDef { public:
     unsigned char _defBase[0x24];                   // +0x04 after the vptr
     unsigned long Name;                             // +0x28
     unsigned long InitialHawkingPhrase;             // +0x2C

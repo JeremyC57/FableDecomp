@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 const C3DVector C3DVector_Zero = { 0.0f, 0.0f, 0.0f };
 struct CReverbSettings00c6adb0 {
     unsigned long m_mask;

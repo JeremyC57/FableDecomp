@@ -18,8 +18,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
 struct CULongLongMap {                  // std::map<unsigned long, long> (STLport: header node, node count, empty compare)
     void*         _M_header;            // +0x00
@@ -50,7 +50,7 @@ template <> struct CPersistTraits<CSpecialEffectsStringMap> {
     }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                           // +0x18 (2 = binary load, 3 = binary save)
     unsigned char           _pad1c[8];

@@ -16,7 +16,7 @@
 // Model: no engine header for CCardDef (Ego_r.pdb gives 72 bytes, retail 0x44); local polymorphic model.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CParentDefClassBase {                               // retail 0x3C bytes
+class CParentDefClassBase { public:                               // retail 0x3C bytes
     virtual void v00();
     unsigned char _body[0x38];                              // +0x04 def-class base body
 };

@@ -18,9 +18,9 @@
 //   copy loads X first); each branch builds its own name and VC merges the shared `SneakAnimName = name ; ~name` tail; the
 //   blend-in thing is ParentThing re-read after GetAnimFromName (a named local there). 4 grades.
 #include <math.h>
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -35,9 +35,9 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -62,7 +62,7 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {                         // 0x2c bytes
+class CAnimInit { public:                         // 0x2c bytes
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
     bool          Flag05;                  // +0x05
@@ -79,25 +79,25 @@ struct CAnimInit {                         // 0x2c bytes
     }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                        // +0x00
     unsigned long GetAnimateThingFlags();  // 0x005DC390
     long GetAnimationTransitionInTime();   // 0x005DC1F0
     long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0x10c - 0x4c];
     C3DVector     MovementVector;          // +0x10c
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };
 
-struct CTCStealth {                        // interface type 0x36
+class CTCStealth { public:                        // interface type 0x36
     unsigned char _pad00[0x0c];
     bool          Viewable;                // +0x0c
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08

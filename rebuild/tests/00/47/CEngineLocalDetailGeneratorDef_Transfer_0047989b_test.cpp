@@ -1,6 +1,6 @@
 #include <cstdio>
 static void* g_sub=0;
-struct CPersistContext { void Xfer_004798ab(void* sub); };
+class CPersistContext { public: void Xfer_004798ab(void* sub); };
 void CPersistContext::Xfer_004798ab(void* sub){ g_sub=sub; }
 struct S { char pad[0x3c]; void Transfer(CPersistContext* ctx); };
 void S::Transfer(CPersistContext* ctx){ ctx->Xfer_004798ab(reinterpret_cast<char*>(this) + 0x3c); }

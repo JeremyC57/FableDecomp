@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C2DVector { float x, y; };
-struct CRGBFloatColour { float r, g, b, a; };
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour() { } CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
+class C2DVector { public: float x, y; };
+class CRGBFloatColour { public: float r, g, b, a; };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour() { } CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
 struct CUIStateDef { unsigned char _pad00[0x40]; unsigned long StateChangeFlag; long StateChangeType; C2DVector Position; C2DVector Zoom; CRGBFloatColour Colour; float UpdateTime; unsigned char _pad6c[0x0c]; bool LinearChange; };
 __forceinline long ROUND(float value)
 {

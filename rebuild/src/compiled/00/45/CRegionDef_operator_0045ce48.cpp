@@ -11,28 +11,28 @@
 // Shape: memberwise assignment in declaration order; CDefString is a 4-byte handle copied as a dword, bools as
 // byte moves, the two C2DVector offsets as two dwords each, the sound map through its out-of-line operator=.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x38];      // +0x04 CDefClassBase part, InstantiationName, SubDefInfoMap
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString {                         // 4-byte def-string handle (trivially copyable)
+class CDefString { public:                         // 4-byte def-string handle (trivially copyable)
     long m_index;
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct CSoundMap {                          // retail 0x20 bytes (a sound-name map plus its default)
+class CSoundMap { public:                          // retail 0x20 bytes (a sound-name map plus its default)
     unsigned char _body[0x20];
     CSoundMap& operator=(const CSoundMap& other);   // 0x0045CFAD
 };
 
-struct CRegionDef : CParentDefClassBase {   // vtable 0x01233AAC
+class CRegionDef : public CParentDefClassBase { public:   // vtable 0x01233AAC
     long       EnvironmentTheme;                       // +0x3c
     long       InternalEnvironmentTheme;               // +0x40
     long       InternalLightingChannelCount;           // +0x44

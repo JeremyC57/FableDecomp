@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSkyDef;
+class CSkyDef;
 extern void __fastcall Sub_Dtor_00453327(void* p);
 extern void __fastcall CSkyDef_Dtor(CSkyDef* def);
 extern void __cdecl operator_delete(void* p);

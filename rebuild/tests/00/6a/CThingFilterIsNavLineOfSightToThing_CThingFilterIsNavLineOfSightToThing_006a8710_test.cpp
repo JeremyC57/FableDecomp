@@ -60,7 +60,7 @@ inline bool IsThingAlive(const CThing* thing)
 class C3DVector { public: float X, Y, Z; };
 class CTCCreatureNavigation : public CTCBase { public: static long StatGetInterfaceType() { return 7; } };
 class CPosThing : public CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
-struct CThingFilter_IsNavLineOfSightToThing {
+class CThingFilter_IsNavLineOfSightToThing { public:
     C3DVector* Pos;
     CTCCreatureNavigation* PTCNav;
     CThingFilter_IsNavLineOfSightToThing(const CPosThing& thing) : Pos((C3DVector*)&thing.GetPosition())

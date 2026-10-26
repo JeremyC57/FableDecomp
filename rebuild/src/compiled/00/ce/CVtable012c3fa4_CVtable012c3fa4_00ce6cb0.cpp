@@ -10,7 +10,7 @@
 // list cannot reproduce (it interleaves the vtable store between them) -- then six dwords at +4c.. zeroed from one register by the inline constructor of an embedded
 // state block (that is what keeps those stores BELOW the vtable store). `ret 8`: two stack arguments.
 // Member names are descriptive.
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     CScriptBase();                              // 0x00CB8110
 };

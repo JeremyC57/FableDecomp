@@ -1,12 +1,12 @@
 // Behaviour test for CTCTavernBar::GetJug @ 0x007B9F60: the index-th jug, a null pointer past the end (unsigned compare).
 #include <cstdio>
-struct CThingObject { int id; };
+class CThingObject { public: int id; };
 struct CIntelligentPointer {
     CThingObject* p;
     CIntelligentPointer(CThingObject* t) : p(t) {}
     CIntelligentPointer(const CIntelligentPointer& o) : p(o.p) {}
 };
-struct CTCTavernBar {
+class CTCTavernBar { public:
     CIntelligentPointer* first; CIntelligentPointer* last;
     unsigned long size() const { return (unsigned long)(last - first); }
     CIntelligentPointer GetJug(unsigned long index)

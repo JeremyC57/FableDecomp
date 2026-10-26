@@ -3,9 +3,9 @@
 static int g_destroyed = 0;
 struct CDefVirtual { virtual void v00() { } virtual void Destroy() { ++g_destroyed; } };
 struct CDefRefCounted { long m_count; void DecRef() { --m_count; } long GetRefCount() const { return m_count; } };
-struct CDefClassBase : CDefVirtual, CDefRefCounted { void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); } };
-struct CExpressionDef : CDefClassBase { };
-template <class T> struct CDefPointer {
+class CDefClassBase : public CDefVirtual, public CDefRefCounted { public: void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); } };
+class CExpressionDef : public CDefClassBase { public: };
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     CDefPointer(const CDefPointer& other) : m_p(other.m_p) { if (m_p) ++m_p->m_count; }   // counted copy (VC /Od does not elide)
@@ -13,7 +13,7 @@ template <class T> struct CDefPointer {
     ~CDefPointer() { if (m_p) m_p->ReleaseTemporary(); }
 };
 static CExpressionDef g_defs[3];
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long index)
     {
         CDefPointer<CDefClassBase> p;

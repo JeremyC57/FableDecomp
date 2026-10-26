@@ -9,12 +9,12 @@
 // by negating Y. C2DVector is returned through the caller's hidden pointer (first stack slot; the
 // event pointer is the second).
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector();
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };

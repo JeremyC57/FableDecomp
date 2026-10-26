@@ -3,7 +3,7 @@
 #include <cstring>
 // CCharString stand-in: a pointer to static text (null = empty string); `<` follows the retail
 // inline operator< (same payload -> false, null this -> true, null other -> false, else strcmp).
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData(0) { }
     explicit CCharString(const char* s) : PStringData(s) { }

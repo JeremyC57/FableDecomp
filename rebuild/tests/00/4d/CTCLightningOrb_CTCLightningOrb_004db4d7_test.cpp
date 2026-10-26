@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase { CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
 struct CBaseIntelligentPointer { void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } virtual ~CBaseIntelligentPointer() { } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() { } };
 struct CLightningOrbDefPointer { const void* m_pDef; CLightningOrbDefPointer() : m_pDef(0) { } };
 struct CSplinePointer { void* m_pObject; void* m_pBlock; CSplinePointer() : m_pObject(0), m_pBlock(0) { } };
-struct CTCLightningOrb : CTCBase {
+class CTCLightningOrb : public CTCBase { public:
     CIntelligentPointer<CThing> PParent, PTarget; CLightningOrbDefPointer PDef; long Timer, LifeTime, NumFramesForSplineTraversal; CSplinePointer PSpline;
     CTCLightningOrb(CThing* owner) : CTCBase(owner), Timer(-1), LifeTime(-1), NumFramesForSplineTraversal(1) { }
 };

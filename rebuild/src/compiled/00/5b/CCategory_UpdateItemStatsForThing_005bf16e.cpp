@@ -13,7 +13,7 @@
 #include "engine/CCategory.h"
 #include "engine/CItem.h"
 
-struct CThing;
+class CThing;
 
 struct CItemCalls : CItem {
     void UpdateItemStats(CThing* thing);                // 0x005BEDCB

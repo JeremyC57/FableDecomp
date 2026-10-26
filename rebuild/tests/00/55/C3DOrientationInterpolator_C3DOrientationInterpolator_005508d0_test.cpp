@@ -1,10 +1,10 @@
 // Behaviour test for 0x005508D0 C3DOrientationInterpolator::C3DOrientationInterpolator(start, end)
 #include <cstdio>
 static int g_base = 0;
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 namespace N_0099a2d0 { struct CBase { CBase() { ++g_base; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
-struct C3DOrientationInterpolator : CBase {
+class C3DOrientationInterpolator : public CBase { public:
     CRightHandedSet StartOrientation, EndOrientation;
     C3DOrientationInterpolator(const CRightHandedSet& s, const CRightHandedSet& e) : CBase(), StartOrientation(s), EndOrientation(e) {}
 };

@@ -1,4 +1,4 @@
-struct CExpressionDef {};
+class CExpressionDef { public:};
 unsigned long __fastcall CExpressionDef_GetSizeofClass(const CExpressionDef* self)
 {
     (void)self;

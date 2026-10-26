@@ -9,7 +9,7 @@
 // Shape: the 20-byte pair temporary is built by an inline pair constructor: the out-of-line CCharString key copy, then
 // the entry's implicit copy constructor (two dwords through ecx/edx, the argument advanced by 8 for its own CCharString
 // copy); inner scope so the two string destructors (entry first, key second) precede the Dirty store.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);   // 0x0099EC30
     ~CCharString();                          // 0x0099EAE0

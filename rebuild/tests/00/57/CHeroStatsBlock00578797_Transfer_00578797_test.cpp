@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_n = 0; static const char* g_names[2]; static void* g_ptr[2];
-struct CPersistContext { void TransferBool(const char* n, bool* v) { g_names[g_n] = n; g_ptr[g_n++] = v; } void TransferSignedChar(const char* n, signed char* v) { g_names[g_n] = n; g_ptr[g_n++] = v; } };
+class CPersistContext { public: void TransferBool(const char* n, bool* v) { g_names[g_n] = n; g_ptr[g_n++] = v; } void TransferSignedChar(const char* n, signed char* v) { g_names[g_n] = n; g_ptr[g_n++] = v; } };
 struct CHeroStatsBlock_00578797 { unsigned char _pad0[0x1a0]; bool m_openedExperienceSpending; unsigned char _pad1[0xa7]; signed char m_tutorialsPlayed;
     void Transfer(CPersistContext& c, long) { c.TransferBool("OpenedExperienceSpending", &m_openedExperienceSpending); c.TransferSignedChar("TutorialsPlayed", &m_tutorialsPlayed); } };
 int main() {

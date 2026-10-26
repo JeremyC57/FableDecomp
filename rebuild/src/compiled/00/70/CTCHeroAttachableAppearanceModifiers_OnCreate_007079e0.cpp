@@ -17,7 +17,7 @@
 // Layout: the landed FrameUpdate model (retail 12-byte containers; engine/CTCHeroAttachableAppearanceModifiers.h
 // carries PDB offsets): bit-field byte +0x14 {Changed, RecreatePrimitives, AppearanceModifiersLoaded},
 // FrameLastChanged +0x10; CCreatureDef::InitialAppearanceModifiers +0x54 (PDB +0x58).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -38,12 +38,12 @@ struct CLongVector {                                 // retail std::vector<long>
     const long& operator[](unsigned long n) const { return _M_start[n]; }
 };
 
-struct CCreatureDef : CDefBase {
+class CCreatureDef : public CDefBase { public:
     unsigned char _pad_0x08[0x4C];
     CLongVector   InitialAppearanceModifiers;        // +0x54 (PDB +0x58)
 };
 
-template <class T> struct CDefPointer {              // the out slot GetSubDef fills
+template <class T> class CDefPointer { public:              // the out slot GetSubDef fills
     T* Object;
 };
 
@@ -54,7 +54,7 @@ template <class T> struct CDefHolder {               // releases the def read ou
     T* operator->() const { return m_p; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out);  // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -71,28 +71,28 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* ou
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long flags);          // 0x004BF9E0
 };
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned char _pad68[0x08];
     CDefClassBase* PDef;                             // +0x70 CDefPointer<const CThingDef>::Object
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
@@ -101,7 +101,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void*         __vftable_0c;                      // +0x0c secondary vptr
     unsigned long FrameLastChanged;                  // +0x10
     bool Changed : 1;                                // +0x14 bit 0

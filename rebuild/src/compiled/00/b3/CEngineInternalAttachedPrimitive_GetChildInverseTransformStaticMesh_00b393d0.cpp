@@ -13,11 +13,11 @@
 #include "engine/_quarantine/CEngineInternalPrimitiveMeshBase.h"
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;
     unsigned long m_length;
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
@@ -29,7 +29,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pCount;
     T* operator->() const { return m_pObject; }
@@ -47,7 +47,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
@@ -76,26 +76,26 @@ struct CMatrix3x4 {
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
     }
 };
-struct C3DDummyObject {
+class C3DDummyObject { public:
     CMatrix3x4 Transform;                                   // +0x00
 };
-struct C3DMeshStats {
+class C3DMeshStats { public:
     const C3DDummyObject* GetDummyObject(unsigned long key, unsigned long index) const;   // 0x00A2E920
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     bool IsLoadedStats() const;                             // 0x00A23E80
     void BeginLoadingStats(bool high);                      // 0x00A24A80
     CCountedPointer<const C3DMeshStats> GetMeshStats() const;   // 0x00A25530
 };
 
-struct CEnginePrimitiveAttachmentInfo {                     // 20 bytes
+class CEnginePrimitiveAttachmentInfo { public:                     // 20 bytes
     unsigned long Flags;
     CCharString   ParentDummyName;
     long          ParentDummyIndex;
     CCharString   ChildDummyName;
     long          ChildDummyIndex;
 };
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalAttachedPrimitive { public:
     unsigned char                     _pad00[0x8c];
     unsigned long                     OutputPrimitiveHandle;   // +0x8c
     CEngineInternalPrimitiveMeshBase* OutputPrimitive;      // +0x90 CIVCountedPointer Data

@@ -6,7 +6,7 @@
 
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
-struct CMemoryDataInputStream: CDataInputStream {
+class CMemoryDataInputStream: public CDataInputStream { public:
  void ReadWithSrcChunkOverflow(unsigned char*,long);
  __forceinline void Read(void* out,int size) {
   __int64 next=(__int64)(StreamPos+size);
@@ -25,7 +25,7 @@ struct InsertResult {void* Position;bool Added;InsertResult(void* p,bool added):
 struct Map {void* Head;unsigned int Count;unsigned int Extra; InsertResult insert(const Pair&);};
 }
 using namespace N006dc070;
-struct CHeroStatIncreaseData {Map StatIncreases;};
+class CHeroStatIncreaseData { public:Map StatIncreases;};
 template<class T> struct CPersistTraits {void TransferBinaryIn(CMemoryDataInputStream&,T*);};
 template<class T> void CPersistTraits<T>::TransferBinaryIn(CMemoryDataInputStream& in,T* out) {
  unsigned int count=in.ReadWord();

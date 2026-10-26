@@ -1,7 +1,7 @@
 // behaviour test for CAIStateGroup_BanditKingCharge::Update (0x00961790)
 #include <cstdio>
 #include <cstring>
-struct CThing { bool dead; };
+class CThing { public: bool dead; };
 struct Group {
     CThing* target; long moveResult; int attacks; bool terminated; const char* lastAnim;
     long MoveTo() { return moveResult; }

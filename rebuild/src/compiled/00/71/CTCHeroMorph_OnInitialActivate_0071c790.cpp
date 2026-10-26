@@ -9,7 +9,7 @@
 // Layout: Changed is +0x3D in retail (PDB +0x55): the two particle-emitter lists ahead of it are 4-byte head
 // pointers (PDB 12) and the Tattoos vector / CustomToBankIndex map are 4 bytes smaller each; a local model.
 
-struct CIEngine;
+class CIEngine;
 struct CDisplay_Retail {
     unsigned char _pad_0x00[0x2C];
     CIEngine*     m_pEngine;                 // +0x2C

@@ -15,7 +15,7 @@ public:
     ~CCharString() { delete[] PStringData; }
 };
 
-struct CThing { int m_refs; };
+class CThing { public: int m_refs; };
 
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item) { if (m_pItem) --m_pItem->m_refs; m_pItem = item; if (item) ++item->m_refs; }
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* p) { SetPItem(p); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };

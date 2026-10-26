@@ -12,14 +12,14 @@
 //   temporary only when it was built: the generated action dtor runs the PTarget pointer dtor then ~CCombatActionBase.
 //   Nothing follows, so the SetCurrentAction result is dropped. Only the intelligent-pointer classes are byte-packed (the
 //   action keeps its 4-byte alignment, so the temporary sits at frame +4 after the flag dword, as retail).
-struct CBaseObject;
-struct CCreatureActionBase;
+class CBaseObject;
+class CCreatureActionBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;               // +0x91 bit 0: dead
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -34,15 +34,15 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 #pragma pack(pop)
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase {   // retail sizeof 0x11d
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { public:   // retail sizeof 0x11d
     unsigned char       Imposter;          // +0x114
     CIntelligentPointer PTarget;           // +0x115
     CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase* owner, CBaseObject* target, bool imposter);   // 0x008E8BB0

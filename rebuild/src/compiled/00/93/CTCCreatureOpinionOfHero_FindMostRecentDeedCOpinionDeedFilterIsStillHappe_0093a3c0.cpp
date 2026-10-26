@@ -11,14 +11,14 @@
 // the `includePending` slot); the filter is the inline functor reading IsStillHappening; both walks return through one
 // shared found tail (`if (outHandle) *outHandle = handle; return deed;`, merged by VC7.1); each walk caches its sentinel in a
 // local (edi), so `this` is parked in the frame during the pending walk.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -41,22 +41,22 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                    // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
     long          DeedHandle;                           // +0x04
     unsigned char _pad08[0x21 - 0x08];
     bool          IsStillHappening;                     // +0x21
 };
-struct COpinionDeedFilter_IsStillHappening {
+class COpinionDeedFilter_IsStillHappening { public:
     bool operator()(const COpinionDeed& deed) const { return deed.IsStillHappening; }
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
 };
 struct SHandleNode {                                    // STLport list<long> node
@@ -67,7 +67,7 @@ struct SHandleNode {                                    // STLport list<long> no
 struct CHandleList {                                    // retail list: the sentinel node pointer
     SHandleNode* head;
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     unsigned char _pad04[0x54 - 0x04];
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)

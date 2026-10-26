@@ -5,7 +5,7 @@
 #endif
 #include <string.h>
 // Behaviour test for NCreatureMode::CModeBlock::AnimUpdate (0x008D8DD0).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -33,7 +33,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool busy;
     bool IsPerformingAnyAction() { return busy; }
 };
@@ -44,7 +44,7 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {
+class CAnimInit { public:
     CAnimInit() {}
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
@@ -63,7 +63,7 @@ struct CAnimInit {
     }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                        // +0x00
     CThing* lastThing;
     unsigned long GetAnimateThingFlags() { return 0x55; }
@@ -71,12 +71,12 @@ struct CAnimationEntry {
     long GetTimeToBlendIn(CThing* thing) { lastThing = thing; return 9; }
 };
 
-struct CTCCombat {                         // interface type 0x30
+class CTCCombat { public:                         // interface type 0x30
     CAnimationEntry* entry;
     CAnimationEntry* GetBlockingAnimationEntry() const { return entry; }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08

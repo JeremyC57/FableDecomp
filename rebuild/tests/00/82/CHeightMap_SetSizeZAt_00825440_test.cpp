@@ -3,7 +3,7 @@
 #include <cstring>
 static const float g_zero_0122dedc = 0.0f, g_maxSize_012724c0 = 2048.0f, g_epsilon_0129ba3c = 1e-4f;
 struct SCellIndex { long m_x; long m_y; }; struct SCell { float m_sizeZ; float m_1; float m_2; };
-struct CHeightMap { unsigned char _pad[0x10]; SCell* m_pCells; unsigned char _pad14[0x1f0]; long m_columns; long m_rows;
+class CHeightMap { public: unsigned char _pad[0x10]; SCell* m_pCells; unsigned char _pad14[0x1f0]; long m_columns; long m_rows;
     void SetSizeZAt(const SCellIndex* cell, float size) { float value; if (size < g_zero_0122dedc) { value = g_zero_0122dedc; } else { float limit = g_maxSize_012724c0 - g_epsilon_0129ba3c; value = size > limit ? limit : size; } m_pCells[(m_rows - cell->m_y) * (m_columns + 1) + cell->m_x].m_sizeZ = value; } };
 
 int main() {

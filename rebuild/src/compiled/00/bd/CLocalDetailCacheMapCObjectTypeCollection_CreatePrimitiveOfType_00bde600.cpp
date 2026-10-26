@@ -9,13 +9,13 @@
 // Layout (retail): object type +4, owning cache map +0x10; the collection itself is the CMovableResource owner.
 // Shape: `switch` with case 0, case 1 and default; `this` is loaded into edx for the allocator once before the dispatch; each arm is
 //   a null-checked `new (this) T(m_pType, m_pMap)` returning the constructor's result.
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
-struct CLocalDetailObjectCollectionType;
-struct CLocalDetailCacheMap;
+class CLocalDetailObjectCollectionType;
+class CLocalDetailCacheMap;
 enum LOCAL_DETAIL_PRIMITIVE_TYPE { LOCAL_DETAIL_PRIMITIVE_MESH = 0, LOCAL_DETAIL_PRIMITIVE_REPEATED_MESH = 1, LOCAL_DETAIL_PRIMITIVE_MESH_ZSPRITE_BATCH = 2 };
-struct CLocalDetailPrimitiveBase {
+class CLocalDetailPrimitiveBase { public:
     virtual void v00();
 };
 struct CLocalDetailPrimitiveMesh : CLocalDetailPrimitiveBase {
@@ -36,8 +36,8 @@ struct CLocalDetailPrimitiveMeshZSpriteBatch : CLocalDetailPrimitiveBase {
     static void* __fastcall operator new(unsigned int size, CMovableResource* owner);                                 // 0x00BF9A00
     static void __fastcall operator delete(void* p, CMovableResource* owner);
 };
-struct CLocalDetailCacheMap {
-    struct CObjectTypeCollection : CMovableResource {
+class CLocalDetailCacheMap { public:
+    class CObjectTypeCollection : public CMovableResource { public:
         CLocalDetailObjectCollectionType* m_pType;          // +0x04
         unsigned char                     _pad08[0x08];
         CLocalDetailCacheMap*             m_pMap;           // +0x10

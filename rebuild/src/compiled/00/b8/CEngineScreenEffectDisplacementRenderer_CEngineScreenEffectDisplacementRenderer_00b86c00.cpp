@@ -14,7 +14,7 @@
 // Shape: the twelve vertex colours are ONE `for (i < 4)` loop over the three quads -- VC7.1 unrolls it fully, which is what
 //   interleaves the colour stores (TextureToBackBuffer, BackBufferToTexture, Displacement per vertex) at the end and lets the
 //   scheduler group the other constant stores by register; per-vertex Set()/member stores give another store order.
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -37,10 +37,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -53,7 +53,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -67,7 +67,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -86,25 +86,25 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                              // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
 struct IDirect3DSurface9;
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     IDirect3DSurface9* PD3DSurface;                // +0x04
     unsigned long      AllocationSource;           // +0x08
     void*              PAllocatedMemory;           // +0x0c
     CSurface() : PD3DSurface(0), AllocationSource(0) { }
     virtual ~CSurface();
 };
-struct CRenderTarget : CBase {                     // vtable 0x0129C800, 0x24 bytes
+class CRenderTarget : public CBase { public:                     // vtable 0x0129C800, 0x24 bytes
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() { }
 };
 
-struct CEngineInit {
+class CEngineInit { public:
     unsigned char _pad00[0x60];
     unsigned long Flags;                           // +0x60
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     CEngineComponent();                            // 0x00B59710
     virtual ~CEngineComponent();
     void**        GlobalPointerAddress;            // +0x04
@@ -113,7 +113,7 @@ struct CEngineComponent {
     unsigned char Padding[2];
 };
 
-struct CTVertexColTex1 {                           // 0x18 bytes
+class CTVertexColTex1 { public:                           // 0x18 bytes
     float         X, Y, Z;
     unsigned long DiffuseColour;
     float         U1, V1;
@@ -129,7 +129,7 @@ struct CRenderStateCaptureBlock {
     CRenderStateCaptureBlock() : Open(false) { }
 };
 
-struct CEngineScreenEffectDisplacementRenderer : CEngineComponent {   // vtable 0x012A3A94
+class CEngineScreenEffectDisplacementRenderer : public CEngineComponent { public:   // vtable 0x012A3A94
     void*           BackBufferCopyTexture;         // +0x0c
     void*           DisplacementTexture;           // +0x10
     long            DisplacementTextureHandle;     // +0x14

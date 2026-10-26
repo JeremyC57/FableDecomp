@@ -26,7 +26,7 @@ class C3DVector { public:
 };
 #pragma pack(pop)
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -43,30 +43,30 @@ struct CTCPhysicsBase {
     virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetFacing();                      // slot 70 (+0x118)
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad00[0xa0];
     float         ProjectileCameraInitialPhiOffsetForCamera;    // +0xa0
     float         ProjectileCameraInitialHeightParamForCamera;  // +0xa4
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
 
 namespace NCameraModes {
 #pragma pack(push, 1)
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _pad04[0x44 - 0x04];
     CDefPointer<const CCameraModeDef> PCameraModeDef;   // +0x44
     const CThingGameObject* GetObservedThing() const;   // 0x0084F1B0
 };
-struct CProjectileWeapon : CBase {                      // vtable 0x01277804
+class CProjectileWeapon : public CBase { public:                      // vtable 0x01277804
     unsigned char _pad48[0xa9 - 0x48];
     C3DVector     XAxis;                                // +0xa9
     C3DVector     YAxis;                                // +0xb5

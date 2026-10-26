@@ -106,7 +106,7 @@ public:
 
 class CombatDialogueManager {
 public:
-    struct TSpeechGroupInfo {                               // 4 bytes in retail (0x18-byte map nodes)
+    class TSpeechGroupInfo { public:                               // 4 bytes in retail (0x18-byte map nodes)
         unsigned long Data;
     };
     std::map<unsigned long, TSpeechGroupInfo> SpeechGroupInfoMap;   // +0x00

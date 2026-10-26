@@ -24,8 +24,8 @@ extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int size);
 
 enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
-struct CWoundMorphs {
-    struct CEntry {
+class CWoundMorphs { public:
+    class CEntry { public:
         EBodyLocation Location;
         long          ReplacingTextureIndex;
         long          ReplacingBumpMapIndex;
@@ -40,21 +40,21 @@ struct CWoundMorphs {
     };
     const CEntry* GetPRandomWoundForLocation(EBodyLocation location, unsigned long& seed, long& index) const;   // 0x00757870
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                              // +0x00
     void* Count;                                             // +0x04
     T* operator->() const { return Data; }
 };
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCreatureDef {
+class CCreatureDef { public:
     virtual void v00();
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +0x04
     unsigned char _pad08[0x28 - 0x08];
     CCountedPointer<CWoundMorphs> PWoundMorphs;              // +0x28
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -74,15 +74,15 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -109,7 +109,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* m_pDef;                                   // +0x70
 };
@@ -168,8 +168,8 @@ template <class T> struct CRetailList {                      // STLport list (4 
     }
 };
 
-struct CTCWound {
-    struct CWound {
+class CTCWound { public:
+    class CWound { public:
         CWoundMorphs::CEntry Desc;                           // +0x00
         unsigned long        Duration;                       // +0x28
         long                 WoundTextureDecalEntryID;       // +0x2c

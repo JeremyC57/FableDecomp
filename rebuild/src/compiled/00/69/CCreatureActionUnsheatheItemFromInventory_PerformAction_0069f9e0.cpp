@@ -15,31 +15,31 @@
 // Shape: inline GetCreature()/GetItem() accessors everywhere (retail spills &PCreature, keeps `this` in ebp); a same-TU
 //   noinline GetSubDef<CCarryableDef> stand-in keeps the carry def in edi; the def pointer is declared before the item
 //   local (zero store before the GetPItem call) and its release has no null test (retail dereferences it unchecked).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                    // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     bool IsMainPlayer();                                     // 0x00487520
     void SetAggressiveMode(bool aggressive);                 // 0x00487EB0
 };
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                                          // +0x28
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCarryableDef>* out);         // 0x005CC10E
 };
 CCarryableDef* FindCarryableDef(const CDefClassBase* def);   // stand-in: the sub def lookup (not graded here)
@@ -52,7 +52,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCarryableDef>* o
     return def != 0;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                         // +0x20
     CInterfaceMap  m_interfaces;                             // +0x44
@@ -91,7 +91,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                         // +0x04
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     bool HasPendingActions();                                // 0x006A1270
     CThing* GetThingInPrimarySlot();                         // 0x006A1440
     void RemoveThing(CThing* thing);                         // 0x006A19B0
@@ -103,24 +103,24 @@ void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner)
 struct CTC1A {
     void OnNotCarried();                                     // 0x005D8E50
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void PrepareWeaponSheathing();                           // 0x005C552C
     void RefreshSheathedWeapons();                           // 0x005C9962
 };
-struct CTCCombat {
+class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);                  // 0x00733E10
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RestartCurrentMode();                               // 0x0073A840
 };
-struct CCreatureActionBase {                                 // retail sizeof 0xa8
+class CCreatureActionBase { public:                                 // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                       // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CBaseIntelligentPointer PItem;                           // +0xa8
     CThing* GetItem() const { return PItem.GetPItem(); }
     void PerformAction();

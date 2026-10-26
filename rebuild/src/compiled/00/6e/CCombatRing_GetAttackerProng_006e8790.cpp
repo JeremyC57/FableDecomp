@@ -5,7 +5,7 @@
 // Shape: a plain pointer loop over [first, last) with the vector's last pointer RE-READ from this after each
 // GetPItem call (`mov eax,[edi+14h]`), the attacker argument loaded once (ebx) in the loop preheader, `xor
 // eax,eax` for the not-found tail.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

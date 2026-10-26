@@ -12,10 +12,10 @@
 // Shape: `return (*F1)(thing) && (*F2)(thing);` (the `&&` value gives the `mov eax,1` / `xor eax,eax` exits) over the landed
 //   0x006689E0 sphere body made __forceinline (plain inline stays a call): centre in a frame local, the bound radius homed in the dead argument slot, the
 //   squares summed as one expression (VC squares Z, Y, X). No pragma.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
 class CThing {

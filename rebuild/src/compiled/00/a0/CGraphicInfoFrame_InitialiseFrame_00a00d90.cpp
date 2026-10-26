@@ -3,12 +3,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00D90, length 72 bytes.
 // Callees: operator new @ 0x00BFEA1A (0x44), CFrameData::CFrameData @ 0x009FE380 (on the block, `this`; the null arm yields 0), the old pointee's virtual slot 1 (Delete)
 // when its count reaches zero. Shape: the new object kept in edi, the inlined release (`dec [ecx+4] ; jne ; call [eax+4]`, the zero store) then the plain store.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
 };
-struct CGraphicInfoFrame;
+class CGraphicInfoFrame;
 struct CFrameData_00a00d90 : CIVCountedPointeeBase {
     unsigned char _body[0x44 - 8];
     CFrameData_00a00d90(CGraphicInfoFrame* frame);   // 0x009FE380
@@ -31,7 +31,7 @@ struct CIVCountedPointer_00a00d90 {
     }
 };
 
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     unsigned char             _pad[8];
     CIVCountedPointer_00a00d90 m_data;             // +0x08
     CFrameData_00a00d90* InitialiseFrame();

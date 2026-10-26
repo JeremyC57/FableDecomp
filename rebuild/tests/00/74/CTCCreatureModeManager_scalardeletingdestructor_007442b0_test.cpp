@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void* vftable;
     int destroyed;
 };

@@ -1,21 +1,21 @@
 // Behaviour test for CWorld::AutoSaveCheckPoint (0x004A0BB0): save types set to 2, each present inventory of a
 // live hero incremented once, the checkpoint flag set on success and kept (not cleared) on failure.
 #include <cstdio>
-struct CWideString { const char* Text; };
-struct CUserProfileManager {
+class CWideString { public: const char* Text; };
+class CUserProfileManager { public:
     static CUserProfileManager& Get() { static CUserProfileManager m; return m; }
     CWideString GetAutoSaveCheckPointFileName() const { CWideString w = { "AutoSave.cp" }; return w; }
 };
 struct CTCInventoryBase { int Count; void IncrementQuestPersistentRefCountForNonPersistentItems() { ++Count; } };
-struct CThing {
+class CThing { public:
     bool Dead; CTCInventoryBase* Inv[3];   // TCs 0x11, 0x12, 0x13
     bool HasTC(long t) const { return Inv[t - 0x11] != 0; }
     template<class T> T* GetTC(long t) { return Inv[t - 0x11]; }
 };
-struct CPlayer { CThing* Hero; CThing* GetHeroThing() { return Hero; } };
-struct CPlayerManager { CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
+class CPlayer { public: CThing* Hero; CThing* GetHeroThing() { return Hero; } };
+class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
 static bool g_saveOk; static int g_saves;
-struct CWorld {
+class CWorld { public:
     CPlayerManager* PlayerManager; long MostRecentSaveType, MostRecentSaveTypeBeforeManualSave; bool AutoSaveCheckPointExists;
     bool AutoSaveInternal(const CWideString& n, bool b) { ++g_saves; return g_saveOk && !b && n.Text[0] == 'A'; }
     bool AutoSaveCheckPoint()

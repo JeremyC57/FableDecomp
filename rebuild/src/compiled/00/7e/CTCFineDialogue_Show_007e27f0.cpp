@@ -48,12 +48,12 @@ class CSubtitleRenderer {
 public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool flag, unsigned long mode);   // 0x00492E4B
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
 extern CPlayerGui* g_PlayerGui;                         // 0x013B8790
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x18];
     CCharString Name;                                   // +0x18
 };

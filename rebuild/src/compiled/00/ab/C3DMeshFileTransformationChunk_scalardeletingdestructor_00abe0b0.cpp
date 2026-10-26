@@ -1,4 +1,4 @@
-struct C3DMeshFileTransformationChunk {
+class C3DMeshFileTransformationChunk { public:
     void* vftable;
 };
 

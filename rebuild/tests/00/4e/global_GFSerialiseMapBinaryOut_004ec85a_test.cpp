@@ -2,7 +2,7 @@
 // Behaviour copy of GFSerialiseMapBinaryOut<CObjectAugmentationParticleSet, EObjectAugmentationType>: count, then key and the
 // set (through its traits writer: here PeriodSecs as a long and ParticleEffect)
 // per node in in-order (key) order, walking an STLport-shaped tree (header->left = leftmost, successor step).
-struct CWeaponTrailGraphicSet { long Attack; long Knockdown; };   // stands in for {PeriodSecs, ParticleEffect}
+class CWeaponTrailGraphicSet { public: long Attack; long Knockdown; };   // stands in for {PeriodSecs, ParticleEffect}
 struct SNodeBase { unsigned char color; SNodeBase* parent; SNodeBase* left; SNodeBase* right; };
 struct SNode : SNodeBase { long key; CWeaponTrailGraphicSet value; };
 struct SMap { SNodeBase* header; unsigned long count; };

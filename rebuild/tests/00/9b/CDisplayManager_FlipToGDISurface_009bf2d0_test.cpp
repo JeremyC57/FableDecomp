@@ -3,8 +3,8 @@
 
 // CDisplayManager::FlipToGDISurface: in exclusive mode presents until the screen index wraps to 0; a lost device sets the flag.
 struct CDevice { int presents; int lostAt; long Present() { ++presents; return presents == lostAt ? (long)0x88760868 : 0; } };
-struct CTimer { int swaps; void OnPostSwapScreens() { ++swaps; } };
-struct CDisplayManager {
+class CTimer { public: int swaps; void OnPostSwapScreens() { ++swaps; } };
+class CDisplayManager { public:
     CDevice* D3DDevice; long NoBackBuffers; bool ExclusiveMode; long CurrentScreenIndex; bool DeviceLostFlag; long FrameCounter; CTimer* Timer;
     void FlipToGDISurface()
     {

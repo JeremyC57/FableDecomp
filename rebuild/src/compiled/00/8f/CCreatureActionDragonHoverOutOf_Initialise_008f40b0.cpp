@@ -17,19 +17,19 @@
 #undef CCombatActionBase
 #include "engine/CTCTargeted.h"
 #include "fable_string.h"
-struct CThing;
-struct CTCParamsBase;
-struct CTCSolidToThing {void AddThingNotSolidTo(CThing*);}; //00770FA0
-struct CPlayer {CThing* GetPlayerThing() const;}; //00487DD0, native intelligent pointer+2c
-struct CPlayerManager {CPlayer* GetLocalPlayer();}; //00449970 selects player ID at+1c
-struct CGame {unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManager* PPlayerManager;};
+class CThing;
+class CTCParamsBase;
+class CTCSolidToThing { public:void AddThingNotSolidTo(CThing*);}; //00770FA0
+class CPlayer { public:CThing* GetPlayerThing() const;}; //00487DD0, native intelligent pointer+2c
+class CPlayerManager { public:CPlayer* GetLocalPlayer();}; //00449970 selects player ID at+1c
+class CGame { public:unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManager* PPlayerManager;};
 extern CGame* g_Game; //013B86A0
 struct CInterfaceMap {
  struct Entry {long Type;void* Component;};
  Entry* First;Entry* Last;
  Entry* LowerBound(const long*); //0040F020
 };
-struct CThing {
+class CThing { public:
  unsigned char _nativeBeforeUsingComponents[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
@@ -40,14 +40,14 @@ struct CBaseIntelligentPointer {
  void* PData;
  CThing* GetPItem() const; //00A01B50
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
  void SetAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing*,bool); //007E4330
-struct CCreatureAction_DragonHoverOutOf : CCombatActionBase {void Initialise();};
+class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:void Initialise();};
 void CCreatureAction_DragonHoverOutOf::Initialise()
 {
  {CCharString animation("HOVER_OUT_OF",-1);SetAnimation(animation);}

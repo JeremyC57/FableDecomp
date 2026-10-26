@@ -9,7 +9,7 @@
  * (this-only + one src param) that tail-calls the real copy routine.
  */
 
-struct CSpecialAbilitiesCreatureTintDef;
+class CSpecialAbilitiesCreatureTintDef;
 
 /* The shared implementation this thunk jumps to (relocation-masked). */
 extern void __fastcall CSpecialAbilitiesCreatureTintDef_CopyImpl(

@@ -3,7 +3,7 @@
 #include <new>
 
 struct CCountBlock { unsigned int RefCount; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -17,7 +17,7 @@ class CBase {
 public:
     virtual ~CBase() { }
 };
-struct CCompositeSurfaceCache { int Id; };
+class CCompositeSurfaceCache { public: int Id; };
 class CCompositeSurfaceInfo : public CBase {
 public:
     CCompositeSurfaceInfo() { }

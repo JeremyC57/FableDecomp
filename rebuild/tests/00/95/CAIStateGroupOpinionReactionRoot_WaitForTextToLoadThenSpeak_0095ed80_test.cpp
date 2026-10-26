@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCTalk { const char* script; int plays; unsigned long text; long layer; bool allow, a, b;
+class CTCTalk { public: const char* script; int plays; unsigned long text; long layer; bool allow, a, b;
     long PlayAISpeech(unsigned long t, bool al, long l, bool x, bool y) { ++plays; text = t; allow = al; layer = l; a = x; b = y; return *script++ - '0'; } };
 struct CGroup { CTCTalk* talk; bool AllowSpeech; const char* waits; int waitCalls; bool terminated;
     long AIAction_DoNothing() { ++waitCalls; return *waits++ - '0'; }

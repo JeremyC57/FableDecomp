@@ -14,7 +14,7 @@
 // base-size shrink).
 #include <string.h>
 class CThing;
-struct CCard;
+class CCard;
 
 template <class T> struct CRetailVector {      // retail 12-byte vector {first, last, end-of-storage}
     T* m_first;
@@ -31,7 +31,7 @@ template <class T> struct CRetailVector {      // retail 12-byte vector {first, 
     void clear() { erase(m_first, m_last); }
 };
 
-struct CTCTavernGame {                          // polymorphic root (vptr at +0)
+class CTCTavernGame { public:                          // polymorphic root (vptr at +0)
     virtual void v00();
     void SetState(long state);                  // 0x005E9B20
 };

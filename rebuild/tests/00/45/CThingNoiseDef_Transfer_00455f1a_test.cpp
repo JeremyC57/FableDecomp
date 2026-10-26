@@ -11,7 +11,7 @@ struct CArchive {
 struct CThingDef {
     void Transfer(CArchive* ar) { g_base = 1; g_ar = ar; }
 };
-struct CThingNoiseDef : public CThingDef {
+class CThingNoiseDef : public CThingDef { public:
     char extra[0x70];
     int noise;
     void Transfer(CArchive* ar);

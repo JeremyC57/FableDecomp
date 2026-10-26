@@ -6,13 +6,13 @@
 //   CTCCarrying::CollectCarrySlots 0x006A2220, free 0x00BFEA14, CThing::RemoveTC 0x004C9840
 extern "C" void free(void* p);
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -74,10 +74,10 @@ struct CThingVector {
     CThingVector() : First(0), Last(0), EndOfStorage(0) { }
     ~CThingVector() { if (First) free(First); }
 };
-struct CTCEnemy { void SetFaction(const CCharString& faction); };          // 0x0076C810
-struct CTCCarrying { void CollectCarrySlots(CThingVector* things); };      // 0x006A2220
+class CTCEnemy { public: void SetFaction(const CCharString& faction); };          // 0x0076C810
+class CTCCarrying { public: void CollectCarrySlots(CThingVector* things); };      // 0x006A2220
 #pragma pack(push, 1)
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x10 - 0x08];

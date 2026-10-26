@@ -8,7 +8,7 @@
 //   by-value pivot): the inlined iter_swap with CTestQuest's implicit copy, assignment and destructor.
 // Label: catalog "std_Partition_TestQuest" is descriptive; this is STLport 4.6 `__unguarded_partition`.
 // Shape: STLport 4.6 _algo.c verbatim; iter_swap -> __iter_swap(a, b, (T*)0) { T tmp = *a; *a = *b; *b = tmp; } inline.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0

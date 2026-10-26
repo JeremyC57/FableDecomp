@@ -1,7 +1,7 @@
 #include <cstdio>
 // behaviour test for CThingBuilding::GetIsAvailableForResidency (0x0082E0E0): the inlined interface lookup over a sorted map
-struct CTCBase { int dummy; };
-struct CTCBuyableHouse : CTCBase { bool IsResidential; };
+class CTCBase { public: int dummy; };
+class CTCBuyableHouse : public CTCBase { public: bool IsResidential; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -13,7 +13,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -30,7 +30,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool GetIsAvailableForResidency();
 };
 bool CThingBuilding::GetIsAvailableForResidency()

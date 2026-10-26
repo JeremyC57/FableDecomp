@@ -27,7 +27,7 @@ struct CCountedPointer_CTexture {
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long            ReferenceCount;
     void*                    Data;
     CCountedPointer_CTexture PTexture;
@@ -40,7 +40,7 @@ struct CGraphicFrameData {
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     ~CGraphicFrame()
     {

@@ -11,11 +11,11 @@
 // as the landed CRGBColour rows) with the traits' TransferOut inlined -- the out-of-line copy is 0x006C7B00: the
 // ID zeroed into edi/ebx before the GetPItem test, the CCharString temporary below the traits in the frame, then the
 // string and the traits' DefaultVal destroyed (the pointer class declares no destructor, so the base one runs).
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
@@ -36,7 +36,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                                    // 0x00A01B50
     void SetPItem(CThing* item);                                 // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     virtual void v00();
     CIntelligentPointer() { }
 };
@@ -52,7 +52,7 @@ template <class T> struct CPersistTraits {
     }
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

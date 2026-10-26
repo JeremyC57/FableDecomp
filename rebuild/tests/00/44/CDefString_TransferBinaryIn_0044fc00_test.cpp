@@ -11,7 +11,7 @@
 typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
 #define TEST_ADDR "0044fc00"
 // Copy of the candidate's inline CMemoryDataInputStream::Read model (member access only).
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;
     unsigned long position;
     long sourceLength;

@@ -15,14 +15,14 @@
 //   shared goto label -- VC7.1 then cross-jumps the copies and keeps the first one as the fall-through of the first test
 //   (a goto to one shared block gets that block sunk below the loop); the frames-per-second global read into a local
 //   before the GetWorldFrame call; the creature through an inline getter (`mov eax,[esi+4] ; mov eax,[eax+18h]`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -67,8 +67,8 @@ struct CTCJug {                                 // interface 0xbb
     unsigned char _pad[0xc];
     long Servings;                              // +0x0c
 };
-struct CThingAICreature;
-struct CCreatureActionBase {
+class CThingAICreature;
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
@@ -76,16 +76,16 @@ struct CCreatureActionBase {
 struct CCreatureAction_FillTankardFromJug : CCreatureActionBase {
     CCreatureAction_FillTankardFromJug(CThingAICreature* creature);   // 0x00842A80
 };
-struct CCreatureAction_PutDownJug : CCreatureActionBase {
+class CCreatureAction_PutDownJug : public CCreatureActionBase { public:
     CCreatureAction_PutDownJug(CThingAICreature* creature);           // 0x00842AF0
 };
-struct CWorld { static long GetWorldFrame(); };  // 0x0049D870
+class CWorld { public: static long GetWorldFrame(); };  // 0x0049D870
 extern long g_FramesPerSecond;                  // 0x01375550
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

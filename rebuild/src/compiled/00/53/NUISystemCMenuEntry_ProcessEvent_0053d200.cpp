@@ -234,7 +234,7 @@ public:
     CComponent* GetParentList() const { return PParent; }   // inline accessor: its re-read lands straight in ecx
     virtual void ProcessEvent(EEvent event);
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     virtual void VSlot0(); virtual void VSlot1(); virtual void VSlot2(); virtual void VSlot3(); virtual void VSlot4();
     virtual void VSlot5(); virtual void VSlot6(); virtual void VSlot7(); virtual void VSlot8(); virtual void VSlot9();
     virtual void VSlot10();

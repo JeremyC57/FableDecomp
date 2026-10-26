@@ -3,7 +3,7 @@
 // Shape: the new end is written as `Position + size` at each use (the __int64 range check, the Length compare/store) with
 // SetSize(Length): VC CSEs one sum as `mov edx,[esi+8] ; lea ecx,[edx+ebx]`, which also fixes the register rotation in the
 // not-writable throw; a named `long end` local gives `mov ecx,[esi+8] ; add ecx,ebx`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -22,7 +22,7 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 class CASuspendableProcess;
-template <class T> struct CArray {                     // CArray<T>: the element block first
+template <class T> class CArray { public:                     // CArray<T>: the element block first
     T*   Data;
     long Count;
     long Capacity;
@@ -30,7 +30,7 @@ template <class T> struct CArray {                     // CArray<T>: the element
     void SetSize(long size);                           // 0x004897F0
     T& operator[](long index) { return Data[index]; }
 };
-struct CMemoryFile {
+class CMemoryFile { public:
     // vptr at +0x00
     long                   AccessType;                  // +0x04 FileAccessType (1: read only)
     long                   Position;                    // +0x08

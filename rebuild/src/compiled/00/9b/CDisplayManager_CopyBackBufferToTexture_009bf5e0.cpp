@@ -6,8 +6,8 @@
 // Retail bytes:  push esi ; lea eax,[ecx+2Ch] ; lea esi,[ecx+4Ch] ; push eax ; push esi ; call CDisplayManager::BlitRenderTargetSurfaceToTexture ; mov eax,esi ; pop esi ; ret
 // Blits the back-buffer surface (+0x2C) into the capture texture (+0x4C) and returns that texture.
 // The callee @ 0x009BF350 is __fastcall(CTexture*, CSurface*).
-struct CSurface;
-struct CTexture;
+class CSurface;
+class CTexture;
 
 struct CDisplayManager_Retail {
     unsigned char _pad_0x00[0x2C];

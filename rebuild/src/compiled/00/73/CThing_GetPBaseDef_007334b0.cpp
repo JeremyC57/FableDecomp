@@ -11,7 +11,7 @@ struct CDefPointee {
     long  m_refCount;                                // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer(const CDefPointer& other) : m_p(other.m_p)
     {
@@ -20,7 +20,7 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char             _pad00[0x48];
     CDefPointer<CDefPointee>  PBaseDef;              // +0x48
     CDefPointer<CDefPointee>  GetPBaseDef() const;

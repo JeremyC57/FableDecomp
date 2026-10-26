@@ -7,13 +7,13 @@
 // Callee: CDefStringTable::GetStringAsCharArray 0x009D49F0; table 0x013CA828.
 #include <string.h>
 extern const char g_EmptyString[]; // 0x0129AAF4
-struct CCharStringData { const char* Text; };
-struct CCharString {
+class CCharStringData { public: const char* Text; };
+class CCharString { public:
     CCharStringData* PStringData;
     const char* c_str() const { if (!PStringData) return g_EmptyString; return PStringData->Text; }
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry { long BankIndex; CDefString AnimName; CDefString GroupName; void* Components; };
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public: long BankIndex; CDefString AnimName; CDefString GroupName; void* Components; };
 struct CDefStringTable { const char* GetStringAsCharArray(long); }; // 0x009D49F0
 extern CDefStringTable g_DefStringTable; // 0x013CA828
 struct CAnimFilterOf3Groups {

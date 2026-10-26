@@ -16,12 +16,12 @@ static const char* g_used; static const char* g_clicked; static const char* g_do
 static bool Next(const char*& p, char yes) { char c = *p; if (c) ++p; return c == yes; }
 struct CQ_SunnyvaleMasterData { bool PrisonKeyStolenByHero; };
 static CQ_SunnyvaleMasterData g_md;
-struct CScriptThing {
+class CScriptThing { public:
     virtual ~CScriptThing() {}
     virtual bool MsgIsUsedBy(const CCharString& n) const { return std::strcmp(n.PStringData, "SCRIPT_NAME_HERO") == 0 && Next(g_used, '1'); }
 };
 static int g_frames = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() { ++g_frames; if (g_frames == 4) g_md.PrisonKeyStolenByHero = true; }
     virtual bool MsgIsGameInfoClickedPast() { return Next(g_clicked, '1'); }
     virtual void DisplayGameInfo(const CCharString& t) { Log(t.PStringData); }

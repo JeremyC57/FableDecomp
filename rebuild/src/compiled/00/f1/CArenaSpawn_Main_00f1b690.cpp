@@ -18,24 +18,24 @@
 //          engine/CGameScriptInterface.h flatten the vptr into a data member, but this row calls their virtual slots
 //          (GetDataString/GetPos, NewScriptFrame/RegisterTimer/DeregisterTimer/CreateEffect), so polymorphic local
 //          declarations are used.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CCPPointerInfo;                                   // CCountedPointer's shared block
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;                                   // CCountedPointer's shared block
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
 };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -45,7 +45,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18)
 };
 long __fastcall GFCharStringToInt(const CCharString& text);                                                   // 0x0099E7F0
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

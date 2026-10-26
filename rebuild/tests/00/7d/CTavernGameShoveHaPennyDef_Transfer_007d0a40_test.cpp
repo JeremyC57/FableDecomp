@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };

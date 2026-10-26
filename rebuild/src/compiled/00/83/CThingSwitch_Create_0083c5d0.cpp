@@ -18,17 +18,17 @@
 //   (so the success path stores `result = p` in ebp instead of returning esi).
 #include "engine/CTCPhysicsBase.h"
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }
 };
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();
     __declspec(noinline) virtual ~CBaseClassNonCopyable() {}
 };
-struct CTCParamsPhysicsBase : CBaseClassNonCopyable {
+class CTCParamsPhysicsBase : public CBaseClassNonCopyable { public:
     C3DVector       Position;
     CRightHandedSet Rhs;
     __declspec(noinline) CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& a) : Position(p), Rhs(a) {}   // 0x006A06E0
@@ -39,7 +39,7 @@ struct CTCPhysicsMethods {                               // method-only adapter 
     virtual void ConstructFromParams(const CTCParamsPhysicsBase& params);   // slot 3 (+0x0C)
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0

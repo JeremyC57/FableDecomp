@@ -8,7 +8,7 @@ class CThing { public: int Id; };
 struct CBaseIntelligentPointer {
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 struct _Rb_tree_node_base {
     unsigned char       _M_color;

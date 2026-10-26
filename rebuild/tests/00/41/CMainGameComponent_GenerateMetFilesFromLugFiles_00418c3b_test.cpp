@@ -25,7 +25,7 @@ static bool FindNextFile(const CWideString&, CFindFileHandle& handle, CFindFileD
     strcpy(data.FileName, g_files[handle.Index]); return true;
 }
 static std::string g_log;
-struct CMemoryFile {
+class CMemoryFile { public:
     CWideString Path;
     CMemoryFile(const CWideString& path, long mode, unsigned long flags) : Path(path) { if (mode != 3 || flags != 2) g_log += "!mode;"; }
     void DumpToFile() { g_log += "dump " + Path + ";"; }
@@ -37,12 +37,12 @@ struct CBinaryFileDataWriter {
 struct CSoundInterface {
     void CompileLugFile(const CWideString& path, CBinaryFileDataWriter* writer) { g_log += "compile " + path + "->" + writer->File->Path + ";"; }
 };
-struct CSystemManager { CSoundInterface* Sound; };
+class CSystemManager { public: CSoundInterface* Sound; };
 static CSoundInterface g_sound;
 static CSystemManager g_system = { &g_sound };
 static CSystemManager* GFGetSystemManager() { return &g_system; }
 
-struct CMainGameComponent { static void GenerateMetFilesFromLugFiles(); };
+class CMainGameComponent { public: static void GenerateMetFilesFromLugFiles(); };
 
 void CMainGameComponent::GenerateMetFilesFromLugFiles()
 {

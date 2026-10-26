@@ -31,22 +31,22 @@ static int fails = 0;
 //   tag (an uninitialised, ctor-less `__false_type isPOD;`) no longer escapes, so both inlined push_backs share one
 //   byte slot (`lea eax,[esp+1Fh]`) and the strings / def pointer / vector take retail's slots 0x10..0x20 (frame 0x158,
 //   not 0x160); with CalcAndLookup visible the `effect = 0` store sinks next to the def-pointer zero as retail's.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
-struct CTCParamsBase;
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
+class CTCParamsBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
@@ -68,10 +68,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CSpecialEffectsDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void Destroy(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -100,7 +100,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
 #pragma auto_inline(on)
 
 namespace NCreatureMode { struct CModeBase; }
-struct CThing {
+class CThing { public:
     // (presence bits, emitter driver, def and dead flag as in the landed 0x008DAE10 model)
     unsigned char _pad00[0x10];
     unsigned char m_type;                             // +0x10 (1 = the player creature)
@@ -120,7 +120,7 @@ struct CThing {
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -147,34 +147,34 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 extern "C" void __cdecl free(void* p);                // 0x00BFEA14
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) {}
 };
 struct CThingFilter_IsAlive { };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* First;
     const B* Second;
     CFilter_Bind2(const A& a, const B& b) : First(&a), Second(&b) {}
 };
 typedef CThingFilter_HasDefGlobalIndex CBodyguardFilter;
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     void SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CThingAICreature : CThingCreatureBase { };
+class CThingAICreature : public CThingCreatureBase { public: };
 struct CCreatureVector {                              // STLport vector<CThingAICreature*> {start, finish, end_of_storage}
     CThingAICreature** _M_start;
     CThingAICreature** _M_finish;
@@ -184,7 +184,7 @@ struct CCreatureVector {                              // STLport vector<CThingAI
     unsigned long size() const { return _M_finish - _M_start; }
     CThingAICreature* operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     // GetAllThingsInRoughArea<CThingAICreature, vector<CThingAICreature*>, CThingFilter_HasDefGlobalIndex> @ 0x008E4100
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CBodyguardFilter& filter, CCreatureVector& out) const;
 };
@@ -203,19 +203,19 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
     out._M_end_of_storage = endOfStorage;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;              // +0x20
     unsigned long* GetRandomSeed();                   // 0x0049D810
 };
-struct CTCHealLife {
+class CTCHealLife { public:
     void SetState(long state);                        // 0x007C3EA0
 };
 
 
-struct CCreatureActionBase { unsigned char nativeStorage[0xa8]; };
-struct CCombatActionBase : CCreatureActionBase { unsigned char nativeTail[0x6c]; };
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
+class CCreatureActionBase { public: unsigned char nativeStorage[0xa8]; };
+class CCombatActionBase : public CCreatureActionBase { public: unsigned char nativeTail[0x6c]; };
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:
     bool ImmediateCast;                  // +0x114
     bool OneAnimCast;                    // +0x115
     unsigned char padding116[2];

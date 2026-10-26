@@ -9,7 +9,7 @@
 // a 0x18-byte frame; the result must be a non-POD (user constructors on the iterator) to come
 // back through a hidden pointer; the pair is built by its constructor from the key and &thing.
 #pragma pack(push, 4)                              // the __int64 after the vptr must not realign the class
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char    _pad04[0x14];
     unsigned __int64 UniqueID;                     // +0x18
@@ -33,7 +33,7 @@ struct CUIDToThingMap {
     unsigned char _body[0x10];
     SUIDMapInsertResult insert(const SUIDMapValue& value);   // 0x0052A200
 };
-struct CThingManager {
+class CThingManager { public:
     virtual void v00();
     unsigned char  _pad04[0x54];
     CUIDToThingMap UIDToThingMap;                  // +0x58

@@ -7,7 +7,7 @@ struct Inner {
     int lastArg2;
     void Apply_006b38d0(int one, int n, int duration);
 };
-struct CWorld { unsigned char pad[0x18]; Inner* PEnvironment; };
+class CWorld { public: unsigned char pad[0x18]; Inner* PEnvironment; };
 
 static int g_resolveArg = 0;
 static int g_count = 0;

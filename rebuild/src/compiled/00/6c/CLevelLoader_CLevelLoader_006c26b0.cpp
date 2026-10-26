@@ -22,7 +22,7 @@ struct CRetailList_node0x10 {                      // VC7.1 Dinkumware list: one
     }
 };
 
-struct CLevelLoader : CLevelLoaderBase_00a44740 {   // vtable 0x0125D9B0
+class CLevelLoader : public CLevelLoaderBase_00a44740 { public:   // vtable 0x0125D9B0
     CRetailList_node0x10 m_pending;                // +0x14
     void*                m_18;                     // +0x18
     void*                m_1c;                     // +0x1c

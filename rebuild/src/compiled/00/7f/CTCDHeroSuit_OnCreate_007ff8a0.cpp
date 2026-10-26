@@ -139,7 +139,7 @@ public:
     CSuitPartMap  SuitParts;                         // +0x28
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

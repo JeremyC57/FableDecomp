@@ -7,7 +7,7 @@
 // vtable 0x01237F1C, SetPItem(0)) and the inline assignment `SetPItem(other.GetPItem())`
 // (the same two-call shape as the landed copy constructors); the temporary is destroyed before
 // the virtual call. PTargetThing sits at +0x14 as in the engine header.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01237F1C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

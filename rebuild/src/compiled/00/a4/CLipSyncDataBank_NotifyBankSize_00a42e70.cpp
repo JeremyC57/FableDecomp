@@ -15,7 +15,7 @@ struct CRetailVector_00a42e70 {
 };
 struct CArray_CBankFileDataTypeCount;
 
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     unsigned char         _pad00[0x164];
     CRetailVector_00a42e70 m_entries;              // +0x164
     void NotifyBankSize(unsigned long size, const CArray_CBankFileDataTypeCount& counts);

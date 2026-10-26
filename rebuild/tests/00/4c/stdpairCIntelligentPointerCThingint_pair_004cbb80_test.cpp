@@ -2,7 +2,7 @@
 // pointer set to a's thing through SetPItem (so the thing gains a watcher) and the second is b.
 #include <cstdio>
 
-struct CThing { int watchers; };
+class CThing { public: int watchers; };
 struct CBaseIP {
     CThing* item;
     CBaseIP() : item(0) {}

@@ -11,7 +11,7 @@
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on (the PDB bitset<274> and vector map
 // carry debug padding): UsingComponents +0x20 [PDB +0x20], ThingTypeFlags +0x6c [PDB +0x7c],
 // the state bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -58,7 +58,7 @@ namespace N_006a76b0 { struct CThingFilter_HasDefGlobalIndex {
     unsigned short DefGlobalIndex;
     bool operator()(const CThing* thing) const;      // 0x006A76B0 (manifest: CThingFilter_In2DRange)
 }; } using N_006a76b0::CThingFilter_HasDefGlobalIndex;
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

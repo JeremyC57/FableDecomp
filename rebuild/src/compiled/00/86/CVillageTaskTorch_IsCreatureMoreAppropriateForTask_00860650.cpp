@@ -11,8 +11,8 @@
 // Shape: the landed CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask (0x00860ED0) with the goal point taken
 //   from the Torch thing: all three positions are by-value copies (the candidate's X/Y kept on the x87 stack), the
 //   two deltas named locals, the candidate side of `<` evaluated first.
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -26,7 +26,7 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CBaseObject* m_pItem;                          // +0x04
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CVillageTaskTorch {                         // vtable 0x0125A8AC
+class CVillageTaskTorch { public:                         // vtable 0x0125A8AC
     virtual ~CVillageTaskTorch();
     void* m_pVillage;                              // +0x04 (CVillageTaskBase)
     CBaseIntelligentPointer Torch;                 // +0x08 CIntelligentPointer<CThing>

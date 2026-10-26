@@ -5,13 +5,13 @@
 // Shape: PDB layout (PWorld +4, WindVelocity +8, WindActive +0x14, CameraPos +0x15): the class is byte-packed, so
 // the stored position is read unaligned through `add ecx,15h`. The result is an out reference (eax is not the
 // result pointer at the exit), copied dword by dword from the call's temporary or from CameraPos.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetGameLODCentre() const;      // slot 8 (+0x20)

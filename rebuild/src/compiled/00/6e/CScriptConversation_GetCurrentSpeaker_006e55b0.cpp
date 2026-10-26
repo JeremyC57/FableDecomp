@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CScriptConversation::GetCurrentSpeaker @ 0x006e55b0
-struct CThing;
+class CThing;
 
 // element of the +0x14 array: 16-byte records, first dword is an index
 struct SpeakerRec {
@@ -13,7 +13,7 @@ struct Entry8 {
     int b;          // +0x04
 };
 
-struct CScriptConversation {
+class CScriptConversation { public:
     char pad0[8];
     Entry8*    entries;     // +0x08
     char pad2[8];

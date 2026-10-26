@@ -11,7 +11,7 @@
 // each by-value iterator is built in its reserved argument slot (`push ecx ; mov eax,esp ;
 // mov [eax],ecx`), and the empty tag's address (`last`'s own slot) is taken before either copy.
 
-struct CWideString;
+class CWideString;
 
 struct SListNode
 {

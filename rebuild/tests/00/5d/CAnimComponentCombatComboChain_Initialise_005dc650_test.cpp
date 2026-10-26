@@ -19,7 +19,7 @@ static int fails = 0;
 // Layout: rebuild/include/engine/CAnimComponentCombatComboChain.h is data-only (ComboStage +0x08, ComboID +0x0c), so the
 // polymorphic class is modelled locally.
 // Leaf: ?Initialise@CAnimComponentCombatComboChain
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CStringParserCommentList {               // retail std::list<CStringParse
     ~CStringParserCommentList();                // 0x004046B0
 };
 
-struct CStringParser : CBase {                  // retail 0x28 bytes
+class CStringParser : public CBase { public:                  // retail 0x28 bytes
     char* String;                               // +0x04
     unsigned long BaseLineOffset;               // +0x08
     CCharString Filename;                       // +0x0c
@@ -48,7 +48,7 @@ struct CStringParser : CBase {                  // retail 0x28 bytes
     bool SkipPastNextItemIfIs(const CCharString& item);   // 0x009B9E00
 };
 
-struct CPersistContext;
+class CPersistContext;
 
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 
@@ -60,14 +60,14 @@ inline long ParseLong(CPersistContext& context, CStringParser& parser)
     return value;
 }
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void Reset();                       // slot 8 (+0x20)
     long _base04;                               // +0x04
 };
 
-struct CAnimComponentCombatComboChain : CAnimComponentBase {
+class CAnimComponentCombatComboChain : public CAnimComponentBase { public:
     long ComboStage;                            // +0x08
     long ComboID;                               // +0x0c
     virtual bool Initialise(CPersistContext& context, const CCharString& text);

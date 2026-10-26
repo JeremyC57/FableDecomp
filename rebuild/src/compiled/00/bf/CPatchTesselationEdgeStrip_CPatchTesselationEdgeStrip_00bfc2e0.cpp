@@ -7,7 +7,7 @@
 // Shape: the arrays' inline constructors zero +8..+0x24 with one register after the vtable store; Size then StartPos are
 // body assignments (as initialisers they would store before the vtable store); the body then repeats Reset's resize order (Verts, WaterVerts,
 // FanBaseVerts, WaterFanBaseVerts) with size+1 kept in edi, then Vertical and Tesselated; `ret 10h`.
-struct CMovableResource;
+class CMovableResource;
 
 struct CBase {
     virtual void v00();
@@ -15,14 +15,14 @@ struct CBase {
 };
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     CEdgeStipVertexArray() : Data(0), Count(0) { }
     bool Resize(long count, CMovableResource* resource);
 };
 
-struct CPatchTesselationEdgeStrip : CBase {        // vtable 0x012A8318, 0x2c bytes
+class CPatchTesselationEdgeStrip : public CBase { public:        // vtable 0x012A8318, 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

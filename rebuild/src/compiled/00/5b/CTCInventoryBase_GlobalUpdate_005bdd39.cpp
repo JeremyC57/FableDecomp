@@ -9,7 +9,7 @@
 // Shape: `fld 1.0 ; fld member ; fucompp ; test ah,44h ; jp` is `member == 1.0f`; CategoryMoving is addressed
 // twice (test + clear), hence `lea ecx,[esi+89h]`. The float argument is unused.
 #pragma optimize("s", on)
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();          // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
     void CaptureBackBufferForUIBackgroundIfNonExistant();  // 0x004075B0
 };

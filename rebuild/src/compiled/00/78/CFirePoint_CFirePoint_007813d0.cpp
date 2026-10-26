@@ -7,9 +7,9 @@
 // Layout: Ego_r.pdb CFirePoint (44 bytes), as the landed CFirePoint constructor 0x00781200.
 // Shape: the implicit-style member-wise copy in declaration order; the CIntelligentPointer copy constructor is inline
 // (base ctor, vtable store, SetPItem(other.GetPItem())), its member address held in ebx for both calls.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
 };

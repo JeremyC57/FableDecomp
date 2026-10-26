@@ -2,7 +2,7 @@
 // Behaviour test for 00dfa020: CQ_TraderConflictEvilScript::Alloc builds the script with its interface/data pair, an empty AllCreatures vector and a fresh ScreamOutTimer.
 struct Interface { long nextTimer; long RegisterTimer() { return nextTimer++; } };
 static Interface g_interface;
-struct CTimer { long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
+class CTimer { public: long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
 struct Vec { void* start; void* finish; void* end; Vec() : start(0), finish(0), end(0) {} };
 struct Base { Interface* Game; void* MasterScriptData; Base(void* data, Interface& game) : Game(&game), MasterScriptData(data) {} };
 struct Script : Base {

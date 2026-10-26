@@ -25,8 +25,8 @@ static CFrontEndManager g_manager;
 CFrontEndManager* CFrontEndManager::GetInstance() { return &g_manager; }
 struct CComponent : IComponentPrimary, CObserver, IComponentSecondaryB {
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -42,7 +42,7 @@ struct CChangingStateComponent : CComponent {
     void Update(float dt) { baseDt = dt; }
 };
 namespace NUISystem {
-struct CScrollableList : CChangingStateComponent {
+class CScrollableList : public CChangingStateComponent { public:
     unsigned long FirstVisible;          // +0x15c
     unsigned long VisibleCount;          // +0x160
     float         ArrowDelay;            // +0x16c

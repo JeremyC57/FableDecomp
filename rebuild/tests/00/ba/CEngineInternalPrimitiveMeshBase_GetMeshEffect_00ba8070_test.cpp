@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase { virtual void Destroy(int) { } virtual void Delete() { ++g_deleted; } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual void Destroy(int) { } virtual void Delete() { ++g_deleted; } unsigned long IVRefCount; };
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     void Release() { CIVCountedPointeeBase* old = Object; if (old) { if (--old->IVRefCount == 0) old->Delete(); Object = 0; } }

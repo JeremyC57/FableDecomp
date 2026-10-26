@@ -12,9 +12,9 @@
 // Shape: `ret 8` (hidden result + index). CDefPointer has user constructors, so it returns by hidden pointer
 // and GetPDef builds straight into our result slot (`mov ecx,[ebp+8]`); the null branch is the default
 // constructor (`and [eax],0`).
-struct CInventoryItemDef;
+class CInventoryItemDef;
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;                                       // +0x00
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other);
@@ -30,7 +30,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     CLongVector   ContextSensitiveItems;             // +0x154 (PDB +0x178)

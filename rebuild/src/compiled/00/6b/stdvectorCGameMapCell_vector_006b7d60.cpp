@@ -12,7 +12,7 @@
 // Label correction: the catalog `Vector_AllocateAndInit` is descriptive.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CGameMapCell {                                   // 7 bytes (Ego_r.pdb)
+class CGameMapCell { public:                                   // 7 bytes (Ego_r.pdb)
     unsigned char AtmosThemes[3];                       // +0
     unsigned char AtmosBlends[2];                       // +3
     signed char   SoundTheme;                           // +5

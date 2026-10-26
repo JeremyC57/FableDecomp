@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned int pad0;
     unsigned int a;
     unsigned int b;

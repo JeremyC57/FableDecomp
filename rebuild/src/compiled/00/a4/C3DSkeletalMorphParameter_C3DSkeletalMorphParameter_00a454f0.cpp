@@ -12,14 +12,14 @@
 // second target before its last zero store); one `xor ebp,ebp` zero for every zero store; the counted pointer zeroes inline before the allocation; the
 // target assignment is an inline memberwise operator= (Name, then BoneMorphs); CurrentValue/SkeletalMorph are body
 // assignments after the copies.
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct C3DSkeletalBoneMorph;
+class C3DSkeletalBoneMorph;
 
 template <class T> struct _STLP_alloc_proxy        // STLport allocator proxy holding end_of_storage
 {
@@ -40,8 +40,8 @@ struct CBoneMorphArray : _Vector_base<C3DSkeletalBoneMorph>   // CArray<C3DSkele
     CBoneMorphArray& operator=(const CBoneMorphArray& other);   // 0x00A46790
 };
 
-struct C3DSkeletalMorphTarget                       // retail 0x10 bytes
-{
+class C3DSkeletalMorphTarget                       // retail 0x10 bytes
+{ public:
     CCharString Name;                               // +0x00
     CBoneMorphArray BoneMorphs;                     // +0x04
     __forceinline C3DSkeletalMorphTarget& operator=(const C3DSkeletalMorphTarget& other)
@@ -59,8 +59,8 @@ struct CBase
 };
 
 template <class T>
-struct CCountedPointer
-{
+class CCountedPointer
+{ public:
     T* Object;                                      // +0x00
     void* Block;                                    // +0x04
     CCountedPointer() : Object(0), Block(0) { }
@@ -68,12 +68,12 @@ struct CCountedPointer
     T* operator->() const { return Object; }
 };
 
-struct C3DSkeletalMorph;
+class C3DSkeletalMorph;
 
-struct C3DSkeletalMorphParameter : CBase            // vtable 0x0129D490
-{
-    struct CShared                                  // retail 0x24 bytes
-    {
+class C3DSkeletalMorphParameter : public CBase            // vtable 0x0129D490
+{ public:
+    class CShared                                  // retail 0x24 bytes
+    { public:
         C3DSkeletalMorphTarget PositiveTarget;      // +0x00
         C3DSkeletalMorphTarget NegativeTarget;      // +0x10
         bool Valid;                                 // +0x20

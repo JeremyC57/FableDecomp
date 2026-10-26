@@ -32,15 +32,15 @@ public:
     ~CWideString();                                         // 0x0099B510
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width, Height;
     C2DExtentsI() { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     C2DBoxF(const C2DVector& tl, const C2DVector& br) : TLX(tl.X), TLY(tl.Y), BRX(br.X), BRY(br.Y) { }

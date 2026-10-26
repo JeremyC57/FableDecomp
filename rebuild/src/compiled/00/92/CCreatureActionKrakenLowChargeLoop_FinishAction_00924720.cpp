@@ -13,14 +13,14 @@
 // Shape: the landed siblings 0x00924670 / 0x00924A90 (two-fetch alive test, each arm builds its temporary at the frame
 //   base inside the SetCurrentAction call; the charge loop fetches its target into a local first, as retail's fetch order
 //   shows); the hurt test is the FrameUpdate one (phase first, then `health < StartHealth`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,9 +42,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase;
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase;
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 struct CBaseIntelligentPointer {
@@ -52,18 +52,18 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CKrakenDef {
+class CKrakenDef { public:
     unsigned char _pad00[0x3c];
     long          LowChargeLoops;               // +0x3C (descriptive)
 };
-struct CTCKraken {                              // interface type 0xe2 component
+class CTCKraken { public:                              // interface type 0xe2 component
     unsigned char     _pad00[0x0c];
     const CKrakenDef* Def;                      // +0x0C
     unsigned char     _pad10[0x60 - 0x10];
     long              Phase;                    // +0x60 EKrakenBossPhase (PDB +0x70)
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void v01();
     virtual void v02();

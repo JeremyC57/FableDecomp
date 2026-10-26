@@ -2,7 +2,7 @@
 // position as the interpolation start and restarts the timer; zero time snaps every position.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CComponent {
     C2DVector Position, TargetPosition, InitialPosition; float PositionTimeElapsed, PositionTime;
     void ChangePosition(const C2DVector& position, float time, long)

@@ -2,8 +2,8 @@
 // Behaviour test for CLandscapeBackgroundPatch::InvalidateEdge(x, y, length, side) (0x00BE63F0).
 enum LANDSCAPE_EDGE_STRIP_SIDE { LESS_LEFT = 0, LESS_RIGHT = 1, LESS_TOP = 2, LESS_BOTTOM = 3 };
 struct CLandscapeMapOrigin { unsigned short OriginX, OriginY; };
-struct CEngineLandscapeMap { CLandscapeMapOrigin* PSection; };
-struct CLandscapeBackgroundTreeNode { CEngineLandscapeMap* Map; };
+class CEngineLandscapeMap { public: CLandscapeMapOrigin* PSection; };
+class CLandscapeBackgroundTreeNode { public: CEngineLandscapeMap* Map; };
 struct CPatchEdges {
     CLandscapeBackgroundTreeNode* Parent;
     unsigned short MapX, MapY, Width, Height;

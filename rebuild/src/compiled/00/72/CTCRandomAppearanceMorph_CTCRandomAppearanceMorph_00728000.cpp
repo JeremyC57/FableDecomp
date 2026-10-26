@@ -12,20 +12,20 @@
 // Shape: the counted pointer, the vector and the init-list pointer all zero after the vtable stores (one `xor ebp,ebp`); the
 //   morph set's two vectors zero inside the null-checked new; GetPWorldSeed() is the inline `&PeekComponent().WorldSeed`
 //   (called twice: read, then the inline seed step `*s = *s * 0x24A1 + 0x24DF ; *s = GFROR13(*s)`).
-struct CThing;
+class CThing;
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
 template <class T> struct vector {                      // retail STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x1613c];
     unsigned long WorldSeed;                            // +0x1613c (PDB = retail)
 };
 namespace NGraphicAppearance {
-    struct CPrimitive;
-    struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+    class CPrimitive;
+    class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
         virtual void v00();
         CAGraphicAppearanceComponent() { }
     };
@@ -33,7 +33,7 @@ namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
     const CMainGameComponent& PeekComponent() const;    // 0x004C7A70
@@ -45,27 +45,27 @@ inline unsigned long GFNextRandomSeed(unsigned long* seed)
     *seed = GFROR13(*seed);
     return *seed;
 }
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
     CTCBase(CThing* owner);                             // 0x00686800
 };
-struct CTCSkeletalMorph;
-struct CTCAppearanceMorphBase {
-    struct CMeshMorphSet {                              // 0x18 bytes
+class CTCSkeletalMorph;
+class CTCAppearanceMorphBase { public:
+    class CMeshMorphSet { public:                              // 0x18 bytes
         vector<long> MeshMorphs;
         vector<long> TextureMorphs;
     };
 };
-template <class T> struct CCountedPointer {             // {object, count block}
+template <class T> class CCountedPointer { public:             // {object, count block}
     T*    Object;
     void* Info;
     CCountedPointer() : Object(0), Info(0) { }
     void Reset(T* object);                              // 0x007222F0
 };
-struct CTCRandomAppearanceMorph : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {
+class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;   // +0x10
     unsigned long     Seed;                             // +0x18
     vector<NGraphicAppearance::CPrimitive*> PrimHandles; // +0x1c

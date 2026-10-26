@@ -19,7 +19,7 @@ struct BaseProc {
     virtual ~BaseProc(){ g_base_destroyed = ++g_seq; }
 };
 
-struct CInputProcessManager : public BaseProc {
+class CInputProcessManager : public BaseProc { public:
     MemberObj member;
     CInputProcessManager(){}
     virtual ~CInputProcessManager(){

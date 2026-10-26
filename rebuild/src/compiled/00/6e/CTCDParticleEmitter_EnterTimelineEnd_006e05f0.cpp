@@ -6,12 +6,12 @@
 // ParentThing +0x04.
 // Shape: the emitter branch tail-jumps (no arguments), the Kill(true) branch is a plain call (it needs a
 // stack argument the caller does not have).
-struct CThing {
+class CThing { public:
     void Kill(bool immediately);                            // 0x004C9B80
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void EnterTimelineEnd();                                // 0x00AED250
 };
 }
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     NParticleEngine::CParticleEmitter* GetPItem() const;    // 0x00A01B50
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing*                 ParentThing;                    // +0x04 (CTCBase)
     bool                    ToBeRemoved;                    // +0x08

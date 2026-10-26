@@ -9,13 +9,13 @@ static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 static bool Near(float a, float b) { return fabs(a - b) < 0.001f; }
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 struct CRenderManager2D {
     int Triangles;
@@ -46,10 +46,10 @@ struct CRenderManager2D {
         return true;
     }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CRenderManager2D* PRenderManager2D;
 };
-struct CSystemManager {
+class CSystemManager { public:
     CDisplayManager* PDisplayManager;
 };
 static CRenderManager2D g_renderer;
@@ -88,7 +88,7 @@ inline int Distance(CHistoryList::Node* first, CHistoryList::Node* last)
     return n;
 }
 
-struct CConsole {
+class CConsole { public:
     virtual void v00() { }
     CHistoryList        CommandLineHistory;
     CHistoryList::Node* VisibleHistoryStart;

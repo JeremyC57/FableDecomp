@@ -4,8 +4,8 @@
 
 void* FABLE_CDECL FableFileInstallerAllocate(fable_u32 size);
 
-struct CFileInstaller
-{
+class CFileInstaller
+{ public:
     fable_u8 unknown00[0x81];
     fable_u8 basicInstallStartupFlag;
     fable_u8 unknown82[0x1E];

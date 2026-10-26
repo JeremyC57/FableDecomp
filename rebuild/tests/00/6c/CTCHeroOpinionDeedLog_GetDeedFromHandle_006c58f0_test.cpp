@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CTCHeroOpinionDeedLog::GetDeedFromHandle (0x006C58F0): the mapped deed for a logged handle, null otherwise.
-struct COpinionDeed { long DeedHandle; };
+class COpinionDeed { public: long DeedHandle; };
 struct SOpinionDeedNode { SOpinionDeedNode* Next; long Key; COpinionDeed* Value; };
 struct COpinionDeedIterator {
     SOpinionDeedNode* m_pNode;

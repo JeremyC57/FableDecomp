@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <string.h>
 
-struct CRegion { int m_id; };
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CRegion { public: int m_id; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static long Compare_00411570(const char* a, const char* b) { return strcmp(a, b); }
-struct CCharString { CCharStringData* PStringData; };
+class CCharString { public: CCharStringData* PStringData; };
 static inline bool SameText(const CCharStringData* a, const CCharStringData* b)
 {
     if (a == b) return true;
@@ -20,7 +20,7 @@ struct CActiveQuest {
 };
 struct CActiveQuestNode { CActiveQuestNode* next; CActiveQuestNode* prev; CActiveQuest* quest; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CActiveQuestNode* ActiveQuests;
     void AddQuestRegion(const CCharString& questName, const CRegion* region)
     {

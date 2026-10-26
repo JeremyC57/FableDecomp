@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 class CThing;
-struct CTCBase;
+class CTCBase;
 static int g_mallocs = 0, g_frees = 0;
 static void* tmalloc(unsigned int n) { ++g_mallocs; return std::malloc(n); }
 static void tfree(void* p) { ++g_frees; std::free(p); }
@@ -12,7 +12,7 @@ static void tfree(void* p) { ++g_frees; std::free(p); }
 #define free tfree
 struct CInterfaceEntry { long type; CTCBase* component; };
 static int g_order[8]; static int g_disowned = 0;
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     int id; CThing* owner;
     void SetPOwner(CThing* o) { owner = o; g_order[g_disowned++] = id; }
 };
@@ -92,7 +92,7 @@ struct CThingPtrList {
         free(node);
     }
 };
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00() {}
     SOwnedListNode* ObjectList;
     virtual void OnLevelUnload();

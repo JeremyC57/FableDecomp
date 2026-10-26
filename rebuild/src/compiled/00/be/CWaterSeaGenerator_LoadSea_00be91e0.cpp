@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
     const unsigned char* CurrentSourcePtr;              // +0x0c
@@ -61,21 +61,21 @@ struct CMemoryDataInputStream {
     }
 };
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void Initialise(long vertexType, long count, long stride, unsigned long usage, long pool);   // 0x00A63150
     void Uninitialise();                                                                        // 0x00A63200
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);         // 0x00AC20A0
     void Unlock();                                                                              // 0x00AC20B0
 };
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void Initialise(unsigned long count, unsigned long flags, long format, long pool, long primitiveType);   // 0x00AC1F70
     void Uninitialise();                                                                                     // 0x00AC1EE0
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);                      // 0x00AC1FB0
     void Unlock();                                                                                           // 0x00AC1F00
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned long GetVertexBufferUsage();          // 0x00B3B030
     unsigned long GetIndexBufferUsage();           // 0x00B3B060
     long GetIndexBufferPool();                     // 0x00B3B0A0 (returns 1)
@@ -86,7 +86,7 @@ struct CRangeCompressor {
     void Decompress(const unsigned char* source, long count, long stride, void* destination);   // 0x00F39ED0
 };
 
-struct CWaterSeaGenerator {
+class CWaterSeaGenerator { public:
     long m_state;
     void LoadSea(CMemoryDataInputStream* stream, CVertexBufferWin32* vertexBuffer, long* vertexCount,
                  CIndexBuffer* indexBuffer, long* polyCount);

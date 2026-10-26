@@ -4,11 +4,11 @@
 // left). Shape: byte-identical to CEngineInternalPrimitive2DStaticMesh::GetBoundingBoxWorldSpace @ 0x00B9E490 (landed): the six words of the local box are copied
 // one by one through edx (the info address re-based with `add eax,10h`), the matrix address is `add ecx,70h`; `mov al,1` is the bool.
 // engine/CEngineInternalPrimitiveStaticMesh.h (PDB) has ObjectTransform at +0x70; the mesh info pointer at +0x50 (C3DMeshInfo, bounding box at +0x10) is modelled locally.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_rows[12];
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     float Min[3];
     float Max[3];
     C3DBoundingBox() { }
@@ -25,7 +25,7 @@ struct C3DMeshInfo_00b9db80 {
     C3DBoundingBox m_boundingBox;                  // +0x10
 };
 
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     unsigned char       _pad[0x50];
     C3DMeshInfo_00b9db80* m_pMeshInfo;             // +0x50
     unsigned char       _pad54[0x1c];

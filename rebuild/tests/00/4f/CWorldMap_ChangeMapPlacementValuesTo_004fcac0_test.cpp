@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CWorldMap
-{
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CWorldMap
+{ public:
     long Granularity;
     long MapPlacementPitch;
     C2DBoxI Area;

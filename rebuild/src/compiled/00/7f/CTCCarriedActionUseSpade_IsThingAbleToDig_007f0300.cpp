@@ -18,25 +18,25 @@
 //   share one frame slot (the first enregistered in edi after its GetDef), which needs same-TU `auto_inline(off)` GetDef
 //   stand-ins so VC7.1 sees the out pointers do not escape (GOTCHAS I-3 / the landed 0x0083C1E0 idiom); the
 //   second def's dereference lets VC drop both destructors' null tests on the success path.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CDefPointeeBase {                                        // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                                        // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy() const;                               // slot 1
     mutable long RefCount;                                      // +0x04
 };
 
-struct CEngineThemeDef : CDefPointeeBase {
+class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x8c - 0x08];
     long          MaterialDef;                                  // +0x8c
 };
 
-struct CMaterialDef : CDefPointeeBase {
+class CMaterialDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x4d - 0x08];
     bool          IsDiggable;                                   // +0x4d
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -50,7 +50,7 @@ template <class T> struct CDefPointer {
 void* FindDef_CDefinitionManager_GetDef_0();                    // stand-in callees of the stand-in bodies below
 void* FindDef_CDefinitionManager_GetDef_1();
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CEngineThemeDef>* out);   // 0x0063F3A0
     bool GetDef(long index, CDefPointer<const CMaterialDef>* out);      // 0x0066C340
 };
@@ -73,7 +73,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 }
 #pragma auto_inline(on)
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight) const;   // 0x0063ADF0
 };
 
@@ -89,7 +89,7 @@ public:
     CDefinitionManager& GetDefinitionManager() const { return *DefinitionManager; }
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                                       // +0x24 scoped_ptr<CWorld>
 };

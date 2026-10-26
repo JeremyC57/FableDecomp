@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static void* g_arg = 0;
-struct CThingBuilding { int dummy; };
+class CThingBuilding { public: int dummy; };
 CThingBuilding* __fastcall IntelligentPointer_GetPItem_00a01b50(void* p) { g_arg = p; return (CThingBuilding*)p; }
 struct Group { void* vt; char* brain; CThingBuilding* GetBuilding() { char* v = *(char**)(brain + 0x18); return IntelligentPointer_GetPItem_00a01b50(v + 0x170); } };
 int main()

@@ -7,7 +7,7 @@
  * pattern is a bare tail jump with no extra prologue/epilogue.
  */
 
-struct CSpecialAbilitiesUnholyPowerDef;
+class CSpecialAbilitiesUnholyPowerDef;
 
 /* The tail-call target (address relocation-masked in parity). */
 extern void __fastcall CSpecialAbilitiesUnholyPowerDef_Copy_impl(

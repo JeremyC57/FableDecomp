@@ -4,7 +4,7 @@ class CPolymorphicData_0041947A {
 public:
     virtual ~CPolymorphicData_0041947A();
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

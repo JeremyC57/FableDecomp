@@ -9,7 +9,7 @@ static const CD3DFormatInfo g_D3DFormatInfo[] = {
     { 25, 2, 16, 1, 5, 5, 5, 0, false },
     { 102, 1, -1, 0, 0, 0, 0, 0, false },
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long rBits, long gBits, long bBits, long aBits, bool)
     {

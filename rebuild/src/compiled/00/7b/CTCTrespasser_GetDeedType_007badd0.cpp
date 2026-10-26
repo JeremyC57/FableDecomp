@@ -3,7 +3,7 @@
 // Shape: a three-case `switch` lowered to `sub eax,0 ; je / dec eax ; je / dec eax ; je` with the default
 // (`xor eax,eax`) on the fall-through and one `ret 4` per case (the return values are the deed-type enum
 // constants; names are descriptive).
-struct CTCTrespasser {
+class CTCTrespasser { public:
     long GetDeedType(long trespassType);
 };
 

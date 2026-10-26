@@ -17,7 +17,7 @@ struct CMember_004dfa89 {
     CMember_004dfa89();                              // 0x004DFA89
 };
 
-struct CIdleSchedulerDef : CBase_00430370 {
+class CIdleSchedulerDef : public CBase_00430370 { public:
     unsigned char _pad[0x38];
     CMember_004dfa89 m_member;                       // +0x3c
     virtual void v00();

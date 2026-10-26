@@ -1,4 +1,4 @@
-struct CCreatureAction_AlertToPlayer {
+class CCreatureAction_AlertToPlayer { public:
     void* vftable;
 };
 

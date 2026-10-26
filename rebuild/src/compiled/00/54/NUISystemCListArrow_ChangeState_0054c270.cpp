@@ -8,7 +8,7 @@ struct CChangingStateComponent_0054c270 {
 };
 
 namespace NUISystem {
-struct CListArrow : CChangingStateComponent_0054c270 {
+class CListArrow : public CChangingStateComponent_0054c270 { public:
     bool m_armed;                                  // +0x18c
     void ChangeState(long state);
 };

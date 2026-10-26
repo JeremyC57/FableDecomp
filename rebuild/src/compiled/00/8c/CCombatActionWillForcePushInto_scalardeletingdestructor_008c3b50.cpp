@@ -1,4 +1,4 @@
-struct CCombatAction_WillForcePushInto {
+class CCombatAction_WillForcePushInto { public:
     void* vftable;
 };
 

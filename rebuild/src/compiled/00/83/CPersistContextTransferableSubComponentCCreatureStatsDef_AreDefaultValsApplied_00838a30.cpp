@@ -1,5 +1,5 @@
-struct CCreatureStatsDef
-{
+class CCreatureStatsDef
+{ public:
     char pad[0x42];
     unsigned char m_flags; // +0x42: bit5 = defaults-applied
 };

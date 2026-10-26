@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CTCCameraPointFixedPoint
-{
+class CTCCameraPointFixedPoint
+{ public:
     void* vftable;
 };
 void* const g_CTCCameraPointFixedPoint_vftable = (void*)0x12345678;

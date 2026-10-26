@@ -2,9 +2,9 @@
 // entity-events component (interface 0x42) and a recorded shot strike reports true and copies the StrikePos.
 #include <stdio.h>
 #include <string.h>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCBase;
+class CTCBase;
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
     CTCBase* m_pTC;
@@ -41,7 +41,7 @@ __declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -61,7 +61,7 @@ template <class T> __forceinline bool GetTCOut(CThing* thing, long kind, T** out
     return false;
 }
 
-struct CScriptThing {
+class CScriptThing { public:
     CThing* Thing;
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {}
     virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {} virtual void v010() {}
@@ -69,15 +69,15 @@ struct CScriptThing {
 };
 
 namespace NEntityEvents {
-    struct CEventShotStruck {                      // Ego_r.pdb, 0x14 bytes
+    class CEventShotStruck { public:                      // Ego_r.pdb, 0x14 bytes
         void* _vftable;                            // +0x00
         long  _04;                                 // +0x04
         C3DVector StrikePos;                       // +0x08
     };
-    struct CEventFilter_None { CEventFilter_None() {} };
+    class CEventFilter_None { public: CEventFilter_None() {} };
 }
 
-struct CTCEntityEvents {                           // interface 0x42
+class CTCEntityEvents { public:                           // interface 0x42
     unsigned char _00[0x0c];
     NEntityEvents::CEventShotStruck* LastShotStruck;   // stand-in view of the event list
     template <class TEvent, class TFilter> bool GetEvent(TEvent** out, const TFilter&) const;
@@ -97,7 +97,7 @@ __declspec(noinline) bool CTCEntityEvents::GetEvent(TEvent** out, const TFilter&
 }
 #pragma auto_inline(on)
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool EntityGetShotStrikePos(const CScriptThing& entity, C3DVector& position) const;
 };
 

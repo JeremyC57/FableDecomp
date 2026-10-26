@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <new>
 static int g_live = 0;
-struct CCharString {                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
+class CCharString { public:                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
     const char* m_pData;
     explicit CCharString(const char* s) : m_pData(s) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
     ~CCharString() { --g_live; }
 };
 static bool SameStr(const CCharString& a, const CCharString& b) { return a.m_pData == b.m_pData; }
-struct CLipSyncPhoneme {
+class CLipSyncPhoneme { public:
     CCharString  Symbol;
     unsigned int ID;
     float        Weight;

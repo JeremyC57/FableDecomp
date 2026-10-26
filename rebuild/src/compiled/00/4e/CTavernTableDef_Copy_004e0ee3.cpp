@@ -2,7 +2,7 @@
 // CTavernTableDef::Copy @ 0x004e0ee3
 // void __fastcall Copy(CTavernTableDef* this, CDefClassBase const* src)
 
-struct CDefClassBase;
+class CDefClassBase;
 
 // base class with a __fastcall Copy at 0x431f10 (this in ecx, src pushed; no edx use)
 struct CDefBase {
@@ -10,7 +10,7 @@ struct CDefBase {
     void Copy(CDefClassBase const* src);   // out-of-line, real __fastcall
 };
 
-struct CTavernTableDef : CDefBase {
+class CTavernTableDef : public CDefBase { public:
     unsigned char AddTankards;   // +0x25
     unsigned char HighQualityTankards;   // +0x26
 };

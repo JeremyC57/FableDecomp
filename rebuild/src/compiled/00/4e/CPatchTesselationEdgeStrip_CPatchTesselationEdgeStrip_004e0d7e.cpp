@@ -22,7 +22,7 @@ struct CBase_009fc550 {
     ~CBase_009fc550();                              // 0x009FC550
 };
 
-struct CDefPointeeBase : CBase_009fc550 {           // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:           // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

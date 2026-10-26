@@ -10,8 +10,8 @@
 // (0x00BFE9BC; the header has a trivial destructor). `this` is unused.
 #include <stddef.h>
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;
@@ -39,8 +39,8 @@ struct CFileLargeThemePalette
 };
 
 #pragma pack(push, 1)
-struct CFileFormatLevel
-{
+class CFileFormatLevel
+{ public:
     unsigned long ByteLength;                          // +0x00 CReplaceSerialise
     unsigned char SerialiseVersionNumber;              // +0x04
     long          MapDataOffset;                       // +0x05
@@ -51,8 +51,8 @@ struct CFileFormatLevel
     void ReadFromFile(CAFile* file, CASuspendableProcess* process);  // 0x0051A240
 };
 
-struct CFileFormatMapHeader
-{
+class CFileFormatMapHeader
+{ public:
     unsigned long          ByteLength;                 // +0x00 CReplaceSerialise
     unsigned char          SerialiseVersionNumber;     // +0x04
     unsigned long          ThingUIDCount[2];           // +0x05 ulong64

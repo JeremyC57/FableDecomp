@@ -13,7 +13,7 @@
 #include "engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h"
 #include "engine/CEngineInternalPrimitiveRepeatedStaticMesh.h"
 
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 struct SViewRecord_01436e80 {
     unsigned char _pad[0x88];
     float         m_fadeDistanceScale;                   // +0x88

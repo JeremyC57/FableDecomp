@@ -10,19 +10,19 @@
 //   0x0143E8F8), 364 AddNewConversation, 366 AddLineToConversation, 453 EntitySetInLimbo, 475 EntitySetFacingAngleTowardsThing.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (duel quest: set-up +0x4b, started +0x4c, cheer due +0x50,
 //   jeering +0x51, duel over +0x52, spectators released +0x53, hero hit count +0x54), PMasterData +0x18, facing-hero toggle +0x1c.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 int __cdecl rand();                                     // 0x00BFEB16 (MSVCR71)
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CScriptThingImpl;
 struct CBase {                                          // vtable 0x01231710
     CBase() { }
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const;
     virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
@@ -57,7 +57,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   
     void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // 0x007E73D0 (slot 18, called directly)
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -124,7 +124,7 @@ struct CGameScriptInterface {
     virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool a) const;   // slot 475 (+0x76c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer();                                           // 0x00CD4450
     ~CTimer();                                          // 0x00CD4470
@@ -143,7 +143,7 @@ struct CQ_HeroDuelScript {
     bool SpectatorsReleased;                            // +0x53
     long HeroHits;                                      // +0x54
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

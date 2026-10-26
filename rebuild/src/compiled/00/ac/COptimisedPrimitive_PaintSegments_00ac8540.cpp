@@ -10,7 +10,7 @@
 // list (one frame word: the malloc'd self-linked head) built by an inline constructor and destroyed out of line.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct COptimisedFace {                     // QuadricOptimiserInternals::COptimisedFace (0x48 bytes)
     unsigned long VertexIndices[3];         // +0x00
     unsigned long UniqueVertexIndices[3];   // +0x0c

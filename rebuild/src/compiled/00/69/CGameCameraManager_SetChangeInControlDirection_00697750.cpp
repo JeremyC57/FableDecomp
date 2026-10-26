@@ -1,4 +1,4 @@
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0xb1];
     unsigned char changeInControlDirection;
 };

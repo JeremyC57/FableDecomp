@@ -7,7 +7,7 @@
 // `push ecx` slot (all registers are busy).
 // Layout: the PDB puts LightLookupGrid at +0xF8; retail CArray is 12 bytes (PDB 16) and three CArrays precede the grid,
 // so it sits at +0xEC here -- the class is modelled locally.
-struct CEngineLocalLightElement {
+class CEngineLocalLightElement { public:
     unsigned char _pad00[0x44];
     bool          m_alreadyFound;                  // +0x44
 };
@@ -18,7 +18,7 @@ struct CLocalLightElementLink {
     CLocalLightElementLink*   m_pNext;             // +0x08
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char           _pad000[0xec];
     CLocalLightElementLink* m_lightLookupGrid[16][16];   // +0xEC
     void ResetAlreadyFoundFlags(long minX, long minY, long maxX, long maxY);

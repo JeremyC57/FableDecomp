@@ -7,7 +7,7 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0;
 static int g_termAt = 40;
 static bool g_paused = false;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frames; }
     bool IsRegionLoaded(const char* r) { return std::strcmp(r, "BanditCampPathEntrance") == 0 && g_frames >= 3; }
     void SetQuestCardObjective(const char* q, const char*, const char*, const char*) { L(q); }

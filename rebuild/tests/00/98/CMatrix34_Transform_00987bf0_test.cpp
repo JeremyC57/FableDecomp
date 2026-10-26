@@ -4,7 +4,7 @@
 #include <math.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 struct CRow_Retail {                               // one matrix row: three direction terms and the translation term

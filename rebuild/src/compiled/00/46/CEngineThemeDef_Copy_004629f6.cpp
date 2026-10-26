@@ -7,7 +7,7 @@
 // same signature reproduces the exact 5-byte `jmp rel32` encoding.
 // __fastcall(this, src) is modeled as __fastcall(objptr, src) per ABI rules.
 
-struct CEngineThemeDef;
+class CEngineThemeDef;
 
 // Real implementation the thunk tail-jumps to (address relocation-masked).
 extern void __fastcall CEngineThemeDef_Copy_impl(CEngineThemeDef* thisptr, CEngineThemeDef* src);

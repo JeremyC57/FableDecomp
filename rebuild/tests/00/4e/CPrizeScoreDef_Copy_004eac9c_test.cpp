@@ -2,7 +2,7 @@
 
 struct Base { int tag; };
 
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     char pad[0x28];
     int f28;
     int Mult;

@@ -8,22 +8,22 @@
 // NewAutoMode +0xa8, PCurrentScriptModule +0xd4, PPendingScriptModule +0xdc, ScriptedCameraRemoveTimer +0xe4, UsingCameraManually +0x12c.
 // Shape: the subtitle query is a named bool taken BEFORE the script-module tests (it rides in bl); the timer clamp re-reads the member
 // at the join and the decrement is `dec dword ptr [esi+0E4h]`.
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     bool IsWaitingForClickPast();           // 0x0048DB46
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;     // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual bool IsFinished();              // slot 13 (+0x34)
 };
-struct CScriptModuleBase {
+class CScriptModuleBase { public:
     virtual void v00();
     virtual void v01();
     virtual bool IsFinished();              // slot 2 (+8)
@@ -31,12 +31,12 @@ struct CScriptModuleBase {
 }
 struct SCountBlock;
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                            // +0x00
     unsigned char _pad04[0x94];                                         // +0x04
     CCountedPointer<NCameraModes::CBase> CurrentMode;                   // +0x98

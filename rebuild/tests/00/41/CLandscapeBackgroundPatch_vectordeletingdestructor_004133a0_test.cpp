@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CLandscapeBackgroundPatch { int x; };
+class CLandscapeBackgroundPatch { public: int x; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 extern "C" void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self) { g_dtor_called++; (void)self; }

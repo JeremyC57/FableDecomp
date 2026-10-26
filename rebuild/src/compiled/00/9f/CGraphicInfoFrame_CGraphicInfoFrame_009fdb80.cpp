@@ -20,7 +20,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0) { }           // inlined into every constructor that embeds it
 };
 
-struct CGraphicInfoFrame : CBase_0099a2d0 {
+class CGraphicInfoFrame : public CBase_0099a2d0 { public:
     unsigned char _pad[0x4];
     SZeroed m_data;                        // +0x8
     virtual void v00();

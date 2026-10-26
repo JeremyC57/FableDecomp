@@ -16,7 +16,7 @@ struct IDirect3DDevice9 {
     virtual unsigned long __stdcall Release();                               // slot 2
     virtual long __stdcall TestCooperativeLevel();                           // slot 3 (+0xc)
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;
     long Y;
 };

@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                                // 0x0099E4B0
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
@@ -22,11 +22,11 @@ struct CCharString {
     CCharString& operator=(const char* text);                     // 0x0099EFE0
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     long FindEntry(const CCharString& name);                      // 0x009CCDC0
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(const CCountedPointer& other);                // 0x0041BA30
@@ -35,7 +35,7 @@ template<class T> struct CCountedPointer {
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -183,19 +183,19 @@ struct CComponent {
     virtual void v144();
     virtual void SetGraphic(long graphicIndex);                   // slot 145 (+0x244)
 };
-struct CManager {
+class CManager { public:
     unsigned char _pad_000[0x10];
     CCountedPointer<CGraphicDataBank> GraphicsBank;               // +0x10
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 }
 
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     NUISystem::CComponent* GetExperienceStatPic(EHeroTrainableStatType stat);
 };
 

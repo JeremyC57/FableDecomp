@@ -15,7 +15,7 @@
 // Shape: CClockDef::GetSound inlined (`it != end() ? it->second : 0`); each concatenation temporary is built in the
 //   dead argument slot and dies after its lookup; the sound player is spilled to the frame across the lookups.
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                                                   // 0x0099EAE0
 };
@@ -49,21 +49,21 @@ public:
     }
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair(long first, long last) : FirstSound(first), LastSound(last) {}
 };
-struct CSoundInit {
+class CSoundInit { public:
     float Volume, Pitch;
     long  Pan, NoPlays, PlaybackType, GainFaderBits, PitchFaderBits, OverrideID;
     CSoundInit();                               // 0x0041C930
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached);   // 0x0066B280
 };
 
-struct CSoundMap {                              // STLport map<CCharString, long>
+class CSoundMap { public:                              // STLport map<CCharString, long>
     struct _Node {
         long        _M_color;
         _Node*      _M_parent;
@@ -76,7 +76,7 @@ struct CSoundMap {                              // STLport map<CCharString, long
     unsigned long _M_node_count;                // +0x04
     _Node* _M_find(const CCharString& key) const;   // 0x0042B467
 };
-struct CClockDef {
+class CClockDef { public:
     unsigned char _pad00[0x28];
     CSoundMap     Sound;                        // +0x28
     long GetSound(const CCharString& name) const
@@ -87,7 +87,7 @@ struct CClockDef {
         return 0;
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
     operator bool() const { return Object != 0; }

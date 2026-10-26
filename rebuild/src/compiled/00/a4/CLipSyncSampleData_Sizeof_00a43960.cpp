@@ -5,13 +5,13 @@
 // Shape: an array's size is `count * 4 + 12` plus the sum of its elements' sizes; a frame (CLipSyncFrameData, a
 // vector of 12-byte phonemes) has the same form with a constant 12 per phoneme, so the inner loop only steps
 // `add edx,0Ch`. The counts are the signed `/ 12` (0x2AAAAAAB multiply). Total + 4 for the trailing long.
-struct CLipSyncPhoneme {                           // 12 bytes
+class CLipSyncPhoneme { public:                           // 12 bytes
     void*         Name;
     unsigned long ID;
     long          Value;
     unsigned long Sizeof() const { return 12; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;
@@ -24,11 +24,11 @@ template <class T> struct CArray {
         return size;
     }
 };
-struct CLipSyncFrameData {                         // 12 bytes
+class CLipSyncFrameData { public:                         // 12 bytes
     CArray<CLipSyncPhoneme> Phonemes;
     unsigned long Sizeof() const { return Phonemes.Sizeof(); }
 };
-struct CLipSyncSampleData {
+class CLipSyncSampleData { public:
     CArray<CLipSyncFrameData> Frames;              // +0x00
     long                      Length;              // +0x0c
     unsigned long Sizeof() const;

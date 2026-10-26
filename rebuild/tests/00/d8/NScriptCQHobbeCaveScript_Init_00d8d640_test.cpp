@@ -2,11 +2,11 @@
 #include <cstring>
 // behaviour test: CQ_HobbeCaveScript::Init -- 11 quest regions, state reset, master-data flags, six boasts
 static int g_regions = 0, g_boasts = 0, g_sumIds = 0, g_withAmount = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void AddQuestRegion(const char* q, const char*) const { if (!std::strcmp(q, "Q_HobbeCave")) ++g_regions; }
     void AddBoast(const char*, long id, long cost, long reward, bool hasAmount, const char*, long) const { ++g_boasts; g_sumIds += id; if (hasAmount) g_withAmount += id; if (cost != id * 10 || reward != id * 100) g_boasts = -100; }
 };
-struct CScriptDef { long Cost[6], Reward[6]; long Timer; };
+class CScriptDef { public: long Cost[6], Reward[6]; long Timer; };
 static CScriptDef g_def;
 struct CData { bool Done; long State; bool Active; };
 struct CQ_HobbeCaveScript {

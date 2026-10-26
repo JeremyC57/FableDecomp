@@ -6,7 +6,7 @@ static int g_profileLoads, g_profileListRefreshes, g_initGraphics, g_prepareWorl
 static const char* g_lastProfile;
 static bool g_bLoadDefaultProfile;
 static int g_KeyToNumber[122];
-struct CUserProfileManager {
+class CUserProfileManager { public:
     const char* GetDefaultProfileName() const { return "Default"; }
     void SetProfileName(const char* name, bool load) { g_lastProfile = name; g_lastLoadFlag = load; ++g_profileLoads; }
     static CUserProfileManager& Get() { static CUserProfileManager m; return m; }

@@ -12,7 +12,7 @@
 #define __fastcall
 #define __int64 long long
 #endif
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0

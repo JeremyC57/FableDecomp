@@ -7,7 +7,7 @@
 // flags at +8/+9/+0x10 and a -1 index at +0xc; the retail scheduler shares one zero register for the
 // four zero stores and sinks the vtable store below them (the -1 store follows it). Member names are
 // descriptive (no PDB header for this scripted-control action).
-struct CThing;
+class CThing;
 
 struct CBase {
     virtual void v00();

@@ -6,15 +6,15 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };
 static int g_baseCtor = 0, g_handleCtor = 0; static const void* g_baseParent = 0;
-struct CThing; struct CEnginePersistentPrimitiveBase;
+class CThing; class CEnginePersistentPrimitiveBase;
 struct CTCDriverBase_Calls { virtual void v00() {} unsigned char _body[0x8]; CTCDriverBase_Calls(CThing* parent) { ++g_baseCtor; g_baseParent = parent; } };
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 template<class T> struct CRetailVector { T* m_pFirst; T* m_pLast; CAllocProxy<T*> m_pEnd; CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
 struct CIntelligentPointerThing { void* __vftable; void* PData; };
-struct CBaseClass { virtual void v00() {} CBaseClass() { ++g_handleCtor; } };
+class CBaseClass { public: virtual void v00() {} CBaseClass() { ++g_handleCtor; } };
 struct CIVCountedPointer { CEnginePersistentPrimitiveBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
-struct CEnginePrimitiveHandle : CBaseClass { CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
-struct CTCDPhysicalObstruction : CTCDriverBase_Calls {
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
+class CTCDPhysicalObstruction : public CTCDriverBase_Calls { public:
     C3DVector StartPos; C3DVector EndPos; long LifeTimer; float Radius; CRetailVector<CIntelligentPointerThing> ThingsToIgnoreObstruction;
     CEnginePrimitiveHandle line1; CEnginePrimitiveHandle line2; CEnginePrimitiveHandle line3;
     virtual void v00() {}

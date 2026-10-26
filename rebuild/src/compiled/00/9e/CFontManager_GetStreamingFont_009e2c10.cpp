@@ -8,12 +8,12 @@
 // Shape: `CCountedPointer<T> p = ...; return p;` -- VC7.1 has no NRVO, so the hidden-result copy (count +1) and the local's release
 //   (count -1, delete function + operator delete on zero) both appear; the local's hidden-return slot is pushed before GetFontInfo's argument.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CCPPointerInfo {                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);     // called with Data in ecx
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                          // +0
     CCPPointerInfo* Info;                          // +4
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -29,21 +29,21 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct CFontManager;
-struct CFontBank {                                 // PDB, 0x10
+class CFontManager;
+class CFontBank { public:                                 // PDB, 0x10
     void*          _vptr;                          // +0x00
     unsigned long  FontHeight;                     // +0x04
     void*          Name;                           // +0x08 CCharString
     CFontManager*  PManager;                       // +0x0c
 };
-struct CStreamingFontDataBankEntry {
+class CStreamingFontDataBankEntry { public:
     CCountedPointer<CFontBank> AcquireFont();      // 0x00A5F1C0
 };
-struct CStreamingFontDataBank {
+class CStreamingFontDataBank { public:
     CStreamingFontDataBankEntry* GetFontInfo(unsigned long index);   // 0x00A5F090
 };
-struct CFontDataBank;
-struct CFontManager {
+class CFontDataBank;
+class CFontManager { public:
     void*                                   _vptr;
     CCountedPointer<CFontDataBank>          PFontDataBank;            // +0x04
     CCountedPointer<CStreamingFontDataBank> PStreamingFontDataBank;   // +0x0c

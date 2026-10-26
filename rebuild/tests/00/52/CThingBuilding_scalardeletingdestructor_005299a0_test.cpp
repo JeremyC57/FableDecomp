@@ -1,8 +1,8 @@
 #include <cstdio>
 
 // Mirror the source's class shape so we can drive its logic in a standalone test.
-struct CThingBuilding
-{
+class CThingBuilding
+{ public:
     int scalarCalled;
     int deleteCalled;
     void ScalarDtor();

@@ -5,7 +5,7 @@ public:
     CCharString(const char* s, long length);             // 0x0099EBF0
     CCharString(const CCharString& other);               // 0x0099EC30
 };
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

@@ -20,12 +20,12 @@
 // NonScriptedEntitesPauseMode / +0x55 AllEntitesPauseMode (PDB +0x68/+0x69 less two 16->12 byte vectors).
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x54];
     bool NonScriptedEntitesPauseMode;               // +0x54
     bool AllEntitesPauseMode;                       // +0x55
 };
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();
@@ -60,12 +60,12 @@ struct SPickup { long FramesLeft; long Amount; };   // pair<long,long>
 struct SAttack { long Attribute; long Frame; };     // pair<EDamageAttribute,long>
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CComboMultiplierData {
+class CComboMultiplierData { public:
     unsigned char ComboMultiplier[0xc];
     float ExperienceMultiplierNumSecondsForAttenuation;     // +0x0c
     float ExperienceMultiplierParamDecayDeltaPerSecond;     // +0x10
 };
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     unsigned char _base[0x64];
     float ExperienceMultiplierParamPerUnitComboMultiplier;  // +0x64
 };

@@ -11,7 +11,7 @@
 // Layout: PActiveMeleeWeapon / PActiveRangedWeapon at retail +0x134 / +0x141; ConfiscatedActiveMeleeWeaponDefIndex /
 // ConfiscatedActiveRangedWeaponDefIndex at retail +0x160 / +0x164 (PDB +0x17C / +0x180).
 #pragma optimize("s", on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                  // +0x8c
     unsigned short GetDefIndex() const { return DefIndex; }
@@ -21,7 +21,7 @@ struct CIntelligentPointer {
     CThing* GetPItem();                       // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(CIntelligentPointer* pointer);   // 0x004CC340
-namespace NInventory { struct CItem; }
+namespace NInventory { class CItem; }
 struct CItemVector;                           // std::vector<NInventory::CItem>
 struct CTCInventoryBase_Retail {
     virtual void v00();
@@ -29,9 +29,9 @@ struct CTCInventoryBase_Retail {
     void ConfiscateItems(const CItemVector& items);   // 0x005BFB01
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CIntelligentPointer PActiveMeleeWeapon;   // +0x134
     long ActiveMeleeWeaponDefIndex;           // +0x13C
     bool MeleeWeaponCarriedOnLoad;            // +0x140

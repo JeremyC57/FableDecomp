@@ -8,10 +8,10 @@
 // Leaf: Transfer
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CSoundBankEntry; struct CAtmosBankEntry; struct CMusicEntry; struct CMusicSetEntry; struct CReverbEnvironmentEntry;
+class CSoundBankEntry; class CAtmosBankEntry; class CMusicEntry; class CMusicSetEntry; class CReverbEnvironmentEntry;
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };   // 12-byte retail vector
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
     void TransferBinary(CRetailVector<CSoundBankEntry>* v);            // 0x0046AA63
     void TransferBinary(CRetailVector<CAtmosBankEntry>* v);            // 0x0046AFC6
@@ -20,7 +20,7 @@ struct CPersistContext {
     void TransferBinary(CRetailVector<CReverbEnvironmentEntry>* v);    // 0x0046BE1F
 };
 
-struct CSoundDef {
+class CSoundDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad04[0x38];                                        // definition base (retail 4 bytes below the PDB)
     CRetailVector<CSoundBankEntry>         SoundBankEntries;           // +0x3c

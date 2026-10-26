@@ -16,7 +16,7 @@ struct GSIVtbl {
     Entity* (__fastcall *getEntity)(void*);
 };
 
-struct CGameScriptInterface { GSIVtbl* vt; };
+class CGameScriptInterface { public: GSIVtbl* vt; };
 
 static Entity g_ent;
 static Entity* __fastcall getent(void* self) { (void)self; return &g_ent; }

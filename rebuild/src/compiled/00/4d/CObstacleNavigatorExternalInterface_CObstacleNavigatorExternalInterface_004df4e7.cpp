@@ -4,8 +4,8 @@
 // PDB layout: {vptr, CThing* Obstacle +4, vector<const CSteeringAgent*> DummyAgentList +8}
 // (0x18 bytes). The vector is the VC6-era Dinkumware {first, last, end} triple, zeroed by its
 // constructor; the argument is a reference to an object holding the obstacle thing at +4.
-struct CThing;
-struct CSteeringAgent;
+class CThing;
+class CSteeringAgent;
 
 struct CObstacleOwner {
     void* m_vptr;
@@ -19,7 +19,7 @@ struct CRetailVectorAgent {                // VC6-era std::vector<const CSteerin
     CRetailVectorAgent() : m_first(0), m_last(0), m_end(0) { }
 };
 
-struct CObstacleNavigatorExternalInterface {   // vtable 0x01241D04
+class CObstacleNavigatorExternalInterface { public:   // vtable 0x01241D04
     virtual void v00();
     CThing* Obstacle;                      // +4
     CRetailVectorAgent DummyAgentList;     // +8

@@ -11,7 +11,7 @@
 // slot ([ebp+0Ch], the index itself lives in edi).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
 };
@@ -25,7 +25,7 @@ struct CIVVirtual {
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
 };
-struct CIVCountedPointeeBase : CIVVirtual, CIVRefCounted {
+class CIVCountedPointeeBase : public CIVVirtual, public CIVRefCounted { public:
     void ReleaseTemporary()                        // inlined into ~CIVCountedPointer: the decrement, then the re-read test
     {
         DecRef();
@@ -33,7 +33,7 @@ struct CIVCountedPointeeBase : CIVVirtual, CIVRefCounted {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {      // 4 bytes
+template <class T> class CIVCountedPointer { public:      // 4 bytes
     T* Object;
     __forceinline ~CIVCountedPointer()
     {
@@ -49,14 +49,14 @@ struct CDataBank {                                 // NGameText::CDataBank
     CDataBankEntry* GetTextInfo(unsigned long index) const;                                // 0x009C7D00
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     CWideString GetInventoryText(long textIndex);
 };
 CWideString CTCInventoryBase::GetInventoryText(long textIndex)

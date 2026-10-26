@@ -7,7 +7,7 @@
 struct CRetailCharString : CCharString {
     CRetailCharString(const CCharString& other); // native CCharString copy ctor @ 0x0099EC30
 };
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _beforeDialogueVoice[0x38];
     CCharString DialogueVoice;
     CRetailCharString GetDialogueVoice() const;

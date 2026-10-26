@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 // Recording output stream: every write appends "<tag><value>;" to a log and advances the position.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     char log[4096]; unsigned long pos;
     CDataOutputStream() : pos(0) { log[0] = 0; }
     void Add(const char* tag, double v, unsigned long bytes) { char b[64]; std::sprintf(b, "%s%g;", tag, v); std::strcat(log, b); pos += bytes; }
@@ -22,10 +22,10 @@ static int Check(const char* addr, const char* got, const char* want)
     if (std::strcmp(got, want) != 0) { std::printf("%s_TEST FAIL\n%s\n%s\n", addr, got, want); return 1; }
     std::printf("%s_TEST PASS\n", addr); return 0;
 }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static void Write3DVector(CDataOutputStream& o, const C3DVector& v) { o.WriteFloat(v.X); o.WriteFloat(v.Y); o.WriteFloat(v.Z); }
-struct CContainmentVolume { int id; void SaveBinary(CDataOutputStream& o) const { o.WriteLong(1000 + id); } };
-struct C3DMeshVolume { const char* Name; CContainmentVolume* ConvexVolume; };
+class CContainmentVolume { public: int id; void SaveBinary(CDataOutputStream& o) const { o.WriteLong(1000 + id); } };
+class C3DMeshVolume { public: const char* Name; CContainmentVolume* ConvexVolume; };
 struct CPair { unsigned int first; C3DMeshVolume second; };
 struct CGen { int BoneIndex; const char* ObjectName; unsigned int BankIndex; bool UseLocalOrigin; };
 struct CStats {

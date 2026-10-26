@@ -1,4 +1,4 @@
-struct CTCTrophy {
+class CTCTrophy { public:
     void* vftable;
 };
 

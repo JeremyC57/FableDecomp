@@ -9,7 +9,7 @@
 // (Age +0x30, Stamina +0x58, RenownLevel +0x70, Attractiveness +0x9c, BestTimePairs +0x178, Marriages +0x1d8); engine/CTCHeroStats.h
 // carries the PDB offsets.
 // ScriptOverridePreventStaminaRefill +0x68 (PDB +0x70), TrainingStatus +0x114 (PDB +0x11c).
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

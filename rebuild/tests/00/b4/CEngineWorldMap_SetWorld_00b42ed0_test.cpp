@@ -2,29 +2,29 @@
 #include <cstring>
 
 static int g_stringDtors;
-struct CCharString { void* PStringData; ~CCharString() { ++g_stringDtors; } };
-struct CIDrawMap { int id; };
-struct CDrawMapInfo {
+class CCharString { public: void* PStringData; ~CCharString() { ++g_stringDtors; } };
+class CIDrawMap { public: int id; };
+class CDrawMapInfo { public:
     bool Valid, Loadable, GameLoadable; CIDrawMap* PMap; CCharString StaticMeshName;
     long PosX, PosY; unsigned long UID; long ExtentsX, ExtentsY;
 };
-struct CIDrawWorldMap {
+class CIDrawWorldMap { public:
     virtual long GetMapCount() const = 0;
     virtual CDrawMapInfo GetMapInfo(long index) const = 0;
 };
-struct CIDrawWorld {
+class CIDrawWorld { public:
     virtual void v00() const {}
     virtual void v01() const {}
     virtual const CIDrawWorldMap* GetWorldMap() const = 0;
 };
 static int g_landscapeCalls;
-struct CEngineLandscapeMap { void OnGameMapLoaded() { ++g_landscapeCalls; } };
-struct CEngineMap {
+class CEngineLandscapeMap { public: void OnGameMapLoaded() { ++g_landscapeCalls; } };
+class CEngineMap { public:
     CEngineLandscapeMap* LandscapeMap; void* LocalDetailCacheMap; const CIDrawMap* GameMap;
     void OnGameMapLoaded(long mapIndex);
 };
 static CEngineMap* g_storage[8];
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First; T* Last; T* End;
     void resize(unsigned long count, const T& value) { First = (T*)g_storage; Last = First + count; End = Last; for (unsigned long i = 0; i < count; ++i) First[i] = value; }
     T& operator[](long index) { return First[index]; }
@@ -33,7 +33,7 @@ static char g_log[64];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
 static CEngineMap g_maps[8];
 static CEngineLandscapeMap g_landscape;
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     CArray<CEngineMap*> MapList;
     const CIDrawWorld* GameWorld;
     const CIDrawWorldMap* GameWorldMap;

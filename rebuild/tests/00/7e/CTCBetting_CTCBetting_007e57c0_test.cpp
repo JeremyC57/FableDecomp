@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int g_baseCtor;
 struct CTCBase_Calls {
@@ -23,7 +23,7 @@ struct CRetailHandleVector {
     CRetailHandleVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     void Resize(long count) { if (m_pFirst == 0 && m_pLast == 0 && m_pEnd == 0) g_resized[g_nr++] = count; }
 };
-struct CTCBetting : CTCBase_Calls {
+class CTCBetting : public CTCBase_Calls { public:
     bool                Active;
     CRetailHandleVector BetHandles;
     CRetailHandleVector MoneyHandles;

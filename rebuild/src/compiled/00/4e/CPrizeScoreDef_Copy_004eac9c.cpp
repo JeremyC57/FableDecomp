@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
 // CPrizeScoreDef::Copy @ 0x004eac9c
-struct CDefClassBase;
-struct CPrizeScoreDef;
+class CDefClassBase;
+class CPrizeScoreDef;
 
 // base class Copy at 0x431f10 : void __fastcall CDefClassBase::Copy(CDefClassBase* self, CDefClassBase const* src)
 void __fastcall base_dup(CPrizeScoreDef* self, void* edx, CDefClassBase const* src);
 
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     char pad[0x28];
     int f28;
     int Mult;

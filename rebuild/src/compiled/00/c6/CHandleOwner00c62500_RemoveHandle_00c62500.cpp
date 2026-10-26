@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C62500, length 48 bytes.
 // Callees: GetHandleTable @ 0x00C62440, the table's slot 22. The chunk label "CItem::GetItemThings" is propagated (the sibling 0x00C62460 PlaceAt is landed); named by its effect.
 // Shape: the handle is taken into a local (edi) before the test and pushed from the register after the call; `ret 4`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CHandleTable_00c62500 {
     virtual void v000();
     virtual void v001();

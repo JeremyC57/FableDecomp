@@ -1,9 +1,9 @@
 #include <cstdio>
 // Model of CTCAnimationComplex's deleting destructor @ 0x0070BB80: delete the owned animate-thing when set, ~CTCBase.
 static int g_thingDtor, g_base;
-struct CAnimateThing { ~CAnimateThing() { ++g_thingDtor; } };
-struct CTCBase { virtual ~CTCBase() { ++g_base; } };
-struct CTCAnimationComplex : CTCBase { CAnimateThing* m_pAnimateThing; virtual ~CTCAnimationComplex() { if (m_pAnimateThing != 0) delete m_pAnimateThing; } };
+class CAnimateThing { public: ~CAnimateThing() { ++g_thingDtor; } };
+class CTCBase { public: virtual ~CTCBase() { ++g_base; } };
+class CTCAnimationComplex : public CTCBase { public: CAnimateThing* m_pAnimateThing; virtual ~CTCAnimationComplex() { if (m_pAnimateThing != 0) delete m_pAnimateThing; } };
 int main()
 {
     { CTCAnimationComplex c; c.m_pAnimateThing = new CAnimateThing; }

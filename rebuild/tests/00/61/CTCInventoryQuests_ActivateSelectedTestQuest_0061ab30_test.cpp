@@ -3,7 +3,7 @@
 #include <cstring>
 
 static int g_deactivated = 0, g_cleared = 0, g_hsp = 0, g_card = 0, g_plain = 0, g_executed = 0;
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString() { text[0] = 0; }
     CCharString(const char* t) { std::strcpy(text, t); }
@@ -11,23 +11,23 @@ struct CCharString {
 };
 CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); std::strcat(r.text, right.text); return r; }
 static bool PathExists(const CCharString&) { return true; }
-struct CTestQuest { CCharString QuestName, HSPName, IniFile, QuestCardDefName; };
+class CTestQuest { public: CCharString QuestName, HSPName, IniFile, QuestCardDefName; };
 static CTestQuest g_quests[2];
 struct CTestQuestVector { CTestQuest* _M_start; CTestQuest& operator[](unsigned long n) { return *(_M_start + n); } };
-struct CQuestManager {
+class CQuestManager { public:
     void DeactivateQuest(const CCharString&, unsigned long reason) { if (reason == 0) ++g_deactivated; }
     void ClearQuestPersistScript(const CCharString&) { ++g_cleared; }
     bool ActivateTestQuestCard(const CCharString&, const CCharString&) { ++g_card; return true; }
     void ActivateQuest(const CCharString&, bool a, bool b) { if (a && b) ++g_plain; }
 };
 static CQuestManager g_qm; static CQuestManager* g_pQuestManager = &g_qm;
-struct CConsole {
+class CConsole { public:
     static CConsole* Get() { static CConsole c; return &c; }
     void ExecuteConfigFile(const CCharString& path) { if (std::strcmp(path.text, "Data\\Levels\\Ini\\a.ini") == 0) ++g_executed; }
 };
-struct CWorld { void LoadQuestHSP(const CCharString& hsp) { if (hsp != "") ++g_hsp; } };
+class CWorld { public: void LoadQuestHSP(const CCharString& hsp) { if (hsp != "") ++g_hsp; } };
 static CWorld g_world;
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     bool ActiveTestQuestMode;
     long TestQuestSelectedIndex;
     CWorld* GetWorld() { return &g_world; }

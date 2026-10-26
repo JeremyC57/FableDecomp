@@ -1,8 +1,8 @@
 // Behaviour test for 0x00853290 NCameraModes::CScriptModuleBase::GetTransformedPosition: live, dead and
 // absent origin things.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
-struct CThing { bool m_dead; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class CThing { public: bool m_dead; C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct IP { const CThing* item; const CThing* GetPItem() const { return item; } const CThing* operator->() const { return item; } };
 struct Module {
     IP PThingOrigin; C3DVector CoordOrigin;

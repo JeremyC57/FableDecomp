@@ -27,7 +27,7 @@ public:
     static unsigned long __fastcall CalcFromString(const CCharString& s) { return Calc(0, s.GetString(), s.Length()); }
 };
 
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 
 class C3DBone2 {                                            // Ego_r.pdb, 60 bytes
 public:

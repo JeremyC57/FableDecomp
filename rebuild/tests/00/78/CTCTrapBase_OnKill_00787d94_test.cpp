@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CThing { bool dead; int kills; void Kill(bool) { ++kills; dead = true; } };
+class CThing { public: bool dead; int kills; void Kill(bool) { ++kills; dead = true; } };
 struct CIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static bool IS_THING_ALIVE(const CIntelligentPointer* p) { return p->GetPItem() != 0 && !p->GetPItem()->dead; }
 static int g_baseKills = 0;
-struct CTCBase { virtual ~CTCBase() {} virtual void OnKill() { ++g_baseKills; } };
-struct CTCTrapBase : CTCBase {
+class CTCBase { public: virtual ~CTCBase() {} virtual void OnKill() { ++g_baseKills; } };
+class CTCTrapBase : public CTCBase { public:
     CIntelligentPointer PObstruction;
     virtual void OnKill()
     {

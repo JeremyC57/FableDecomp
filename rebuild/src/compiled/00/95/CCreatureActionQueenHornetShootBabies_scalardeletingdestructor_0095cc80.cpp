@@ -1,4 +1,4 @@
-struct CCreatureAction_QueenHornetShootBabies {
+class CCreatureAction_QueenHornetShootBabies { public:
     void* vftable;
 };
 

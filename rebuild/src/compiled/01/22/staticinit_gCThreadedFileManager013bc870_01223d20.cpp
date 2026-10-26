@@ -10,7 +10,7 @@
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
 // real identifier is not recoverable. One of 36 bodies of this shape.
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     CThreadedFileManager();             // 0x0098F3A0
     ~CThreadedFileManager();            // 0x0098E690, reached through the atexit thunk
 };

@@ -1,21 +1,21 @@
 // Behaviour test for 0x0093D030 CAIStateGroup_ButterflyWander::Update (model copy over stubs).
 #include <cstdio>
 #include <string.h>
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) {} ~CCharString() {} };
-struct CSoundPair { long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) {} };
-struct CCreatureActionBase { int dummy; };
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) {} ~CCharString() {} };
+class CSoundPair { public: long m_first; long m_second; CSoundPair() : m_first(0), m_second(0) {} };
+class CCreatureActionBase { public: int dummy; };
 static int g_actions = 0; static const char* g_lastAnim = 0;
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase*, const CCharString& animation, const CSoundPair&, bool, bool, bool, long, long)
     { g_lastAnim = animation.m_pData; }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 unsigned long GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static int g_terminated = 0; static bool g_posOk = true; static long g_flight = 2; static int g_failAt = 1000;
 static const C3DVector* g_centre = 0; static float g_radius = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     unsigned long Seed;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }

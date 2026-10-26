@@ -1,8 +1,8 @@
 // CInputProcessControlCreatureActivateZTargetOnPress::`vector_deleting_destructor'
 // Standard MSVC vector deleting destructor shape.
 
-struct CInputProcessControlCreatureActivateZTargetOnPress
-{
+class CInputProcessControlCreatureActivateZTargetOnPress
+{ public:
     void dtor();  // scalar destructor at 0xa0d3d0
 };
 

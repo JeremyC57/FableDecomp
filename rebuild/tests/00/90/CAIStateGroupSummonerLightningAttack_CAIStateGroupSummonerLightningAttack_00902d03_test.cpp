@@ -2,9 +2,9 @@
 // Model of the summoner state-group default constructor @ 0x00902d03: base, target pointer, null def pointer.
 static int g_baseCalls, g_ptrCalls;
 struct CBaseIntelligentPointer { void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_ptrCalls; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() : CBaseIntelligentPointer() {} };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
-struct CAIStateGroupBase { CAIStateGroupBase() { ++g_baseCalls; } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() : CBaseIntelligentPointer() {} };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
+class CAIStateGroupBase { public: CAIStateGroupBase() { ++g_baseCalls; } };
 struct Group : CAIStateGroupBase { CIntelligentPointer<int> PTarget; CDefPointer<const int> PDef; long NextFrame; Group() : CAIStateGroupBase(), PTarget(), PDef() {} };
 int main()
 {

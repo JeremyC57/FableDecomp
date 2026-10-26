@@ -3,28 +3,28 @@
 #include <cstring>
 #include <cmath>
 // Text-builder model: a fixed-buffer CCharString with operator+= and the scalar traits' TransferOut formatting.
-struct CCharString {
+class CCharString { public:
     char Text[256];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     CCharString& operator+=(const char* s) { std::strcat(Text, s); return *this; }
     bool Equals(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
-struct CPersistContext { int Unused; };
+class CPersistContext { public: int Unused; };
 static void TransferOutLong(CPersistContext*, CCharString* out, const int* value) { char b[32]; std::sprintf(b, "%d", *value); *out += b; }
 static void TransferOutFloat(CPersistContext*, CCharString* out, const float* value) { char b[32]; std::sprintf(b, "%g", (double)*value); *out += b; }
 static void TransferOutString(CPersistContext*, CCharString* out, const CCharString* value) { *out += "\""; *out += value->Text; *out += "\""; }
 static int g_currentFrame = 500;
 static int GFGetCurrentFrame() { return g_currentFrame; }
 static void TransferOutBool(CPersistContext*, CCharString* out, const bool* value) { if (*value) *out += "TRUE"; else *out += "FALSE"; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static void TransferOutVector(CPersistContext* c, CCharString* out, const C3DVector* v)
 {
     *out += "C3DCoordF("; TransferOutFloat(c, out, &v->X); *out += ","; TransferOutFloat(c, out, &v->Y); *out += ","; TransferOutFloat(c, out, &v->Z); *out += ")";
 }
 struct CThingRef { int UID; };
 static void TransferOutPointer(CPersistContext* c, CCharString* out, const CThingRef* p) { TransferOutLong(c, out, &p->UID); }
-struct COpinionDeed {
+class COpinionDeed { public:
     int DeedType; int DeedHandle; C3DVector Position; CThingRef PTarget; int FrameHappened;
     bool IsStillHappening; bool IsCrimeReportedToVillage; bool IsCrime; int ExtraData;
 };

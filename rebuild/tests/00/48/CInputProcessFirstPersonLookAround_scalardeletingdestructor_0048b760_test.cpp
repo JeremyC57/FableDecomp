@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessFirstPersonLookAround {
+class CInputProcessFirstPersonLookAround { public:
     void* vftable;
     int destroyed;
 };

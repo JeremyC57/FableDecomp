@@ -16,13 +16,13 @@
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     __forceinline bool operator!=(const C3DVector& o) const;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5)
@@ -30,11 +30,11 @@ struct CTCPhysicsBase {
     virtual float GetFacingAngleXY();           // slot 63 (+0xFC)
     virtual float GetFacingAngleYZ();           // slot 64 (+0x100)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     C3DVector GetHeadPos(bool exact) const;     // 0x00661B40
@@ -69,7 +69,7 @@ __forceinline bool C3DVector::operator!=(const C3DVector& o) const
            (float)fabs(Z - o.Z) > g_epsilon_0129ba3c;
 }
 #pragma pack(push, 1)
-struct CTCLook {
+class CTCLook { public:
     void*               __vftable;              // +0x00
     CThing*             ParentThing;            // +0x04
     unsigned char       _pad08[0x10 - 0x08];

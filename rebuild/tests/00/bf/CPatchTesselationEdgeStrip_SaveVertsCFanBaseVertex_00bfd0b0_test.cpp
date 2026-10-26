@@ -13,7 +13,7 @@ public:
     virtual ~CDataOutputStream() { }
     void WriteLong(long value) { g_written[g_longs++] = value; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;

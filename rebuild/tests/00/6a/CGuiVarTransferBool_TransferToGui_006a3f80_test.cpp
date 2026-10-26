@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void* f0;
     void* f4;
     unsigned char f8, f9, fa, fb;

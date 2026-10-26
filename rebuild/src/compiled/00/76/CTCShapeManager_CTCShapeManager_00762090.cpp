@@ -24,7 +24,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThing;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 class CTCBase {
 public:
@@ -45,7 +45,7 @@ public:
     CCPPointerInfo* Info;                                    // +0x04
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;
 };
 

@@ -2,7 +2,7 @@
 // Standard MSVC vector deleting destructor shape:
 //   push esi; mov esi,ecx; call scalar_dtor; test [esp+8],1; je; push esi; call op_delete; add esp,4; mov eax,esi; ret 4
 
-struct CInputProcessInventoryQuestsScreen;
+class CInputProcessInventoryQuestsScreen;
 
 // scalar destructor (direct non-virtual call) @ 0xa0d3d0
 extern void __fastcall CInputProcessInventoryQuestsScreen_scalar_dtor(CInputProcessInventoryQuestsScreen* process);

@@ -18,7 +18,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                             // 0x0099EAE0
 };

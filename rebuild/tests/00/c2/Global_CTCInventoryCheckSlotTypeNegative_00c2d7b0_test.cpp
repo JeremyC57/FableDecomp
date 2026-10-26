@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cstddef>
 
-struct CTCInventory
-{
+class CTCInventory
+{ public:
     unsigned char  pad00[0x0E];
     unsigned short slotType;
 };

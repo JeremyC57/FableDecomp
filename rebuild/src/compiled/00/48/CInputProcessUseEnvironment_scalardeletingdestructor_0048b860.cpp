@@ -1,4 +1,4 @@
-struct CInputProcessUseEnvironment {
+class CInputProcessUseEnvironment { public:
     void* vftable;
 };
 

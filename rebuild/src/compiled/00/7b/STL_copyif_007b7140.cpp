@@ -25,7 +25,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                     // 0x00B
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 
 class CTCBase;
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -36,7 +36,7 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A860 for CThingMarker
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A860 for CThingMarker
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     T* operator->() const { return (T*)GetPItem(); }

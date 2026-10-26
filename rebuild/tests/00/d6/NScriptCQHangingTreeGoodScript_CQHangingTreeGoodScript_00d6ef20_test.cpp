@@ -4,9 +4,9 @@
 #include <cstring>
 #include <new>
 
-struct CGameScriptInterface { int dummy; };
+class CGameScriptInterface { public: int dummy; };
 static int g_baseCtors = 0, g_thingRoots = 0, g_strings = 0;
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00() {}
     unsigned char _body[0x3c];
     CScriptBase() { ++g_baseCtors; }
@@ -17,13 +17,13 @@ struct CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 namespace N_0099a2d0 { struct CBase { CBase() { ++g_thingRoots; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data; void* Info;
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBase { CCountedPointer_CScriptThing PImp; CScriptThing() { } };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CScriptThing : public CBase { public: CCountedPointer_CScriptThing PImp; CScriptThing() { } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end(0) { }

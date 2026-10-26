@@ -6,8 +6,8 @@ struct CBackgroundTesselator
     void Update();
 };
 
-struct CEngineLandscapeMap
-{
+class CEngineLandscapeMap
+{ public:
     int m_pad0;                    // +0x00
     CBackgroundTesselator* m_tess; // +0x04
     char m_fill[0x54];             // +0x08 .. +0x5b

@@ -14,12 +14,12 @@
 extern "C" double __fastcall GFGetTime();               // 0x009E1BC0
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;
     void (__fastcall *Destroy)(void* item);
     void* Item;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }
@@ -34,7 +34,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -44,7 +44,7 @@ namespace N_0099a300 { struct CBase {
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);
     virtual void Close();                               // 0x0099A920
@@ -61,7 +61,7 @@ struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C
     long GetLength() const { return Length; }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool  Allocate(long* handle, unsigned long size, unsigned long flags);   // 0x00A03180
     void  Lock(long handle);                            // 0x00A026F0
     void* GetPointerFromHandle(long handle);            // 0x00A026B0
@@ -87,8 +87,8 @@ struct CByteVector {
     ~CByteVector() { if (first) free(first); }
 };
 
-struct CTextureManager;
-struct CGraphicDataBank {
+class CTextureManager;
+class CGraphicDataBank { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -122,7 +122,7 @@ __forceinline bool IsPositive(long n)
     return true;
 }
 
-struct CCompositeSurfaceCache {
+class CCompositeSurfaceCache { public:
     unsigned char _pad[0x58];
     unsigned long BankFileIndex;                        // +0x58
 };
@@ -132,7 +132,7 @@ struct SCacheNode {
     CCountedPointer<CCompositeSurfaceCache> value;
 };
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     unsigned char    _pad[0x88];
     SCacheNode*      CachedSurfaces;                    // +0x88
     unsigned char    _pad8c[0x398 - 0x8c];

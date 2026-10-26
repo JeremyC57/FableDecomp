@@ -2,11 +2,11 @@
 
 // Model of CTCEmoteIcon::CTCEmoteIcon(CThing*) @ 0x0071AFE0: the emote defaults (type 2, priority 8, alpha 0xff,
 // replaceable and enabled) over an empty text and an empty primitive handle.
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
-struct CWideString { void* PStringData; CWideString() : PStringData(0) { } };
-struct CEnginePrimitiveHandle { void* Data; CEnginePrimitiveHandle() : Data(0) { } virtual ~CEnginePrimitiveHandle() { } };
-struct CTCEmoteIcon : CTCBase {
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) { } };
+class CEnginePrimitiveHandle { public: void* Data; CEnginePrimitiveHandle() : Data(0) { } virtual ~CEnginePrimitiveHandle() { } };
+class CTCEmoteIcon : public CTCBase { public:
     long ActiveTimer; CWideString EmoteText; long EmoteIcon; float EmoteScale; long EmoteType; long EmotePriority;
     unsigned char EmoteAlpha; bool Replaceable; bool Enabled; CEnginePrimitiveHandle PrimitiveHandle;
     CTCEmoteIcon(CThing* thing)

@@ -12,7 +12,7 @@ struct CSharedPointer {
 };
 struct CBase { ~CBase() { g_order[g_n++] = 1; } };
 struct CMember { ~CMember() { g_order[g_n++] = 3; } };
-struct CCreatureAction_SendMessage {
+class CCreatureAction_SendMessage { public:
     CBase          m_base;
     CSharedPointer m_pShared;
     CMember        m_last;       // the member destroyed first (intelligent pointer / declared after)

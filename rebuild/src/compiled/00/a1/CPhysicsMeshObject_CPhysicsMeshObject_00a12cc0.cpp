@@ -9,16 +9,16 @@
 // ASSIGNED in the body: its inline operator= re-reads the member, skips equal pointers, releases
 // the old pointee (kept in ecx) and clears the member, then stores the new pointer and add-refs it
 // (`inc [eax+4]`). `ret 10h` = four arguments.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
@@ -38,12 +38,12 @@ template <class T> struct CIVCountedPointer {
     }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
 };
 
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38

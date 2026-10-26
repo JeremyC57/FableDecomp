@@ -10,9 +10,9 @@
 // dead parent-argument slot (`lea eax,[ebp+0Bh]`); the two zero words are initialisers (`and dword ptr [..],0`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _body[0x8];                // ParentThing +4, flags +8/+9
     CTCBase(CThing* parent);                 // 0x00686800
@@ -27,7 +27,7 @@ struct CLevitatedItemList {                  // STLport list: one word, the sent
     CLevitatedItemList(const SAllocator& allocator);   // 0x004AB470
 };
 
-struct CTCCreatureItemLevitationBase : CTCBase {
+class CTCCreatureItemLevitationBase : public CTCBase { public:
     CLevitatedItemList m_items;              // +0x0c
     long               m_count;              // +0x10
     long               m_current;            // +0x14

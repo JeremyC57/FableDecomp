@@ -6,7 +6,7 @@ template<class T> struct CRetailVector {
     iterator begin() const { return iterator(first); } bool empty() const { return first == last; }
 };
 struct SAnimFrameEntry { short m_framesLeft; short m_pad; };
-struct CAnimateThing {
+class CAnimateThing { public:
     long m_value0; CRetailVector<SAnimFrameEntry> m_entries; unsigned char _pad[0x41]; unsigned char m_flags;
     long IsAnimationFinished() const
     { if (!m_entries.empty()) { if ((*m_entries.begin()).m_framesLeft > 0) { if (!(m_flags & 2)) return 0; } } return 1; }

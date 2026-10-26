@@ -25,7 +25,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right)
     return r;
 }
 static const char g_msgUnknownSymbol[] = "Unknown symbol: ";
-struct CStringParser {
+class CStringParser { public:
     long nextType;
     const char* symbol;
     float number;
@@ -33,7 +33,7 @@ struct CStringParser {
     CCharString ReadAsString() { return CCharString(symbol); }
     float ReadAsFloat() { return number; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, LONG32* value) const
     {
         if (std::strcmp(name.m_text, "HALF") == 0) { *value = 7; return true; }
@@ -41,7 +41,7 @@ struct CSymbolMap {
     }
 };
 static int g_errors = 0; static char g_lastError[64];
-struct CPersistContext {
+class CPersistContext { public:
     void* PDefinitionManager;
     CSymbolMap* PSymbolMap;
     void Error(const CStringParser&, const CCharString& message) { ++g_errors; std::strcpy(g_lastError, message.m_text); }

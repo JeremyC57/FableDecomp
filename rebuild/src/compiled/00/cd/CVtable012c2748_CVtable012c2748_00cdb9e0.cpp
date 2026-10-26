@@ -5,7 +5,7 @@ struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2F0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };

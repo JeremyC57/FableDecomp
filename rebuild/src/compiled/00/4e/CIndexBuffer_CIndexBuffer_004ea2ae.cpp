@@ -1,4 +1,4 @@
-struct CIndexBuffer {
+class CIndexBuffer { public:
     unsigned int m_field0;
     unsigned int m_field4;
     unsigned int m_field8;

@@ -2,7 +2,7 @@
 // "OldOpen" (default CurrentOpen) only for a full transfer, then Open(false) for an open door unless Mode is 1 or 3.
 #include <cstdio>
 #include <cstring>
-struct CTCDoor {
+class CTCDoor { public:
     void* __vftable; long m4; unsigned char _pad_0x08[0x4]; long Jammed;
     bool CurrentOpen; bool OldOpen; bool Opening; bool Closing;
     long LastCreatureFoundWF; long UpdateID; unsigned char TriggerType[0x4]; void* PDef_Object;
@@ -12,7 +12,7 @@ static const char* g_names[4];
 static bool g_defaults[4];
 static int g_openCalls = 0;
 static bool g_openArg = true;
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad[0x18];
     long          Mode;
     bool          LoadedOpen;

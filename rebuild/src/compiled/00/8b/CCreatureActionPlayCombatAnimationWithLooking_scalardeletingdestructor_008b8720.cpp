@@ -1,4 +1,4 @@
-struct CCreatureAction_PlayCombatAnimationWithLooking {
+class CCreatureAction_PlayCombatAnimationWithLooking { public:
     void* vftable;
 };
 

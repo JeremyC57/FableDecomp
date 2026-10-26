@@ -4,7 +4,7 @@
 class CThing;
 class CBaseObject;
 static int g_ctors = 0, g_sets = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem((CThing*)0x1) { ++g_ctors; }
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; ++g_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtables 0x01238C6C / 0x01237F1C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtables 0x01238C6C / 0x01237F1C
     virtual void v00() { }
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -38,16 +38,16 @@ template <class T> struct CVectorBase {                 // STLport _Vector_base<
 template <class T> struct CRetailVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CThingShotDef;
-struct CMeleeCombatAbilityDef;
+class CThingShotDef;
+class CMeleeCombatAbilityDef;
 struct CHitLocation;
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 namespace NThingShot {
-struct CTCShotDefinitionBase : CTCBase {
+class CTCShotDefinitionBase : public CTCBase { public:
     CIntelligentPointer<CThing> PEffect;                            // +0x0c
     CRetailVector< CIntelligentPointer<const CThing> > HitThingsList;   // +0x14
     CIntelligentPointer<const CThing> PTargetThing;                 // +0x20

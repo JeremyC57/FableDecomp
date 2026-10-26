@@ -19,7 +19,7 @@ struct CDefBase {
     virtual void Destroy();                        // slot 1
     long m_refCount;                               // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -32,13 +32,13 @@ template <class T> struct CDefHolder {             // adopts a reference (no add
     __forceinline ~CDefHolder() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CAugmentationDef : CDefBase {
+class CAugmentationDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                            // +0x28
     unsigned char _pad2c[0x40 - 0x2c];
     vector<unsigned long> SlotValues;              // +0x40
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042AF9E
 };
 void* FindDef_s7r_0();
@@ -59,7 +59,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C
 };

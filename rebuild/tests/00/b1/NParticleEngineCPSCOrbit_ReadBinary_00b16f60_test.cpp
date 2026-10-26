@@ -10,7 +10,7 @@
 //   Local model: engine/CDataInputStream.h is data-only and cannot carry the inline Read this function inlines.
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -32,7 +32,7 @@ struct COrbitSettings {
     long Type; bool Enabled; float Radius, Expand; bool CycleFlag;
     float CycleTime, SqueezeScale, SqueezeAngle, RotateSpeed, RotateStart, RotateSpeedRandom, RotateStartRandom;
 };
-struct CPSCOrbit {
+class CPSCOrbit { public:
     unsigned char _base[0xc];                           // CPSCBase
     unsigned long CentreParam;                          // +0x0c
     COrbitSettings Orbits[3];                           // +0x10

@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046C31C GFSerialiseVectorBinaryIn<CObjectFamilyEntry>: count, resize(n, {0,0}), one traits read per element
 #include <cstdio>
 #include <cstring>
-struct CObjectFamilyEntry { int Object; int Probability; };
+class CObjectFamilyEntry { public: int Object; int Probability; };
 struct EntryVector {
     CObjectFamilyEntry data[8]; unsigned int count; int fillZero;
     void resize(unsigned int n, const CObjectFamilyEntry& x) { if (x.Object == 0 && x.Probability == 0) ++fillZero; for (unsigned int i = count; i < n; ++i) data[i] = x; count = n; }

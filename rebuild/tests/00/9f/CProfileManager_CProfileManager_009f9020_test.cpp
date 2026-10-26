@@ -7,7 +7,7 @@ static int g_erased = 0;
 static void Free(void* p) { if (p) ++g_freed; std::free(p); }
 
 struct ListNode { ListNode* next; ListNode* prev; };
-struct TreeNode { char color; TreeNode* parent; TreeNode* left; TreeNode* right; };
+class TreeNode { public: char color; TreeNode* parent; TreeNode* left; TreeNode* right; };
 
 static ListNode* NewHead() { ListNode* n = (ListNode*)std::malloc(sizeof(ListNode)); n->next = n->prev = n; return n; }
 static void PushBack(ListNode* h) { ListNode* n = (ListNode*)std::malloc(sizeof(ListNode)); n->next = h; n->prev = h->prev; h->prev->next = n; h->prev = n; }

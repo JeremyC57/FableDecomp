@@ -10,9 +10,9 @@
 // creature and the world are named locals in that order (edi, ebx, then the call) so the pushes follow the
 // world call. FrameOfLastShield is +0x20 (engine header name); the header flattens the base, so the layout
 // is local.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x6c];
     unsigned char m_flags6c;                // +0x6c bit 3: wants combat registration
 };
@@ -23,24 +23,24 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                     // 0x00A01B50
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;       // +0x4c
     static long GetFrameCount() { return GFGetCurrentFrame(); }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

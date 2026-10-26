@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CThing {
+class CThing { public:
     char pad[0x91];
     unsigned char flags;
 };

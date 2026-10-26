@@ -1,6 +1,6 @@
 // Behaviour test for 0x0085afd0
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -30,7 +30,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     long m_type; long m_anim; CThing* m_thing;
     virtual long GetCameraPointType() { return m_type; }
     bool IsCombatSplineValidForAnimAndThing(long animIndex, CThing* thing) { return animIndex == m_anim && thing == m_thing; }

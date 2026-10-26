@@ -1,4 +1,4 @@
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                         // +0x00
     void (__fastcall *Destroy)(void* item);              // +0x04
     void* Item;                                          // +0x08

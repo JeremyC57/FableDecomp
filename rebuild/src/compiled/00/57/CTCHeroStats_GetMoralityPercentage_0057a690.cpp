@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CTCHeroStats {
+class CTCHeroStats { public:
   int m00[10];
   int m28;
 };

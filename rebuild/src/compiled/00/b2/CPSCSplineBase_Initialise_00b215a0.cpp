@@ -16,7 +16,7 @@ struct CBase {
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CParticleUpdateParameters;           // CParticleUpdateParameters<unsigned long, unsigned long>
 
 struct C3DVector {
@@ -60,13 +60,13 @@ struct CSplinePosParamData {
     void TransformFromIndex(CParticleUpdateParameters* params, C3DVector* point, long index);   // 0x00B218B0
 };
 
-struct CPSCBase : CBase {                   // vtable 0x0129F3F4
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
 };
 
-struct CPSCSplineBase : CPSCBase {
+class CPSCSplineBase : public CPSCBase { public:
     float                                     SplineAnimSpeed;        // +0x0c
     CCardinalSpline                           Spline;                 // +0x10
     CCountedPointer<CSplineRandomOffsetData>  SplineRandomOffsetData; // +0x24

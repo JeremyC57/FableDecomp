@@ -10,7 +10,7 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-struct C3DVector{float X,Y,Z;};
+class C3DVector{ public:float X,Y,Z;};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50
@@ -22,7 +22,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingNative,LifeFlags)==0x91);
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -117,7 +117,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #include "engine/CDefinitionManager.h"
 #include <stdlib.h>
 struct DefinitionMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&)const;}; //009AD410
-struct CDefIndex{long Index;CDefIndex(long index):Index(index){}};
+class CDefIndex{ public:long Index;CDefIndex(long index):Index(index){}};
 struct IndexVector{CDefIndex *Start,*Finish,*End;IndexVector():Start(0),Finish(0),End(0){}~IndexVector(){if(Start)free(Start);}void PushBack(const CDefIndex&);IndexVector& operator=(const IndexVector&);}; //007CA160,004E24BA
 __forceinline CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>((it==end||it->Type>61?end:it)->Component);}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void CreatureGeneratorSetFamily(const ScriptMethods&,const CCharString&)const;};

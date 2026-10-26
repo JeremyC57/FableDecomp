@@ -65,10 +65,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -94,15 +94,15 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -153,8 +153,8 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -162,8 +162,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -250,7 +250,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #undef CCharString
 // Actual flattened donor headers included; genuine virtual interfaces follow.
 // CCharString donor omits the native owning copy constructor, restored below.
-struct CThing; struct CRGBColour;
+class CThing; class CRGBColour;
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;
 namespace std {template<class T>class allocator;template<class T,class A>class list;template<class T,class A>class vector;template<class T,class U>struct pair;}
 enum EScriptAIPriority { ScriptPriorityUnspecified=0 };
@@ -261,13 +261,13 @@ typedef unsigned __int64 ScriptUID;
 #else
 typedef unsigned long long ScriptUID;
 #endif
-struct C3DVector {float X,Y,Z;};
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CCharString {char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
-struct CBaseClass {virtual ~CBaseClass();}; // 0099A2E0
-struct CCPPointerInfo {unsigned long References;void (__fastcall *Delete)(void*);void* Data;};
+class C3DVector { public:float X,Y,Z;};
+class CScriptGameResourceObjectScriptedThingBase;
+class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
+class CBaseClass { public:virtual ~CBaseClass();}; // 0099A2E0
+class CCPPointerInfo { public:unsigned long References;void (__fastcall *Delete)(void*);void* Data;};
 void operator delete(void*);
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
  CScriptThing* PImp_Data; CCPPointerInfo* PImp_Info;
  CScriptThing();
  CScriptThing(const CScriptThing&); //004ABE90 owning-copy constructor
@@ -353,7 +353,7 @@ virtual bool IsEqualTo(const CScriptThing&) const; //slot78 0x004AA8A0
 };
 // Native CGameScriptInterface virtual prefix: all100 entries use recovered PDB
 // signatures and native raw VT01260F0C order. No fabricated padding slots.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
 virtual ~CGameScriptInterface(); // slot0 0x006e7d50
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; // slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; // slot2 0x006e7d20
@@ -464,8 +464,8 @@ virtual CScriptThing CreateRumble(const C3DVector&,float,float,CCharString)const
 virtual void ClearAllRumbles()const; //slot107 00892df0
 virtual void RemoveThing(const CScriptThing&,bool,bool)const; //slot108 008910d0
 };
-struct CScriptBase; struct CPersistContext;
-struct CEntityScriptBase {
+class CScriptBase; class CPersistContext;
+class CEntityScriptBase { public:
  virtual ~CEntityScriptBase();
  virtual void Main();
  virtual void Init();

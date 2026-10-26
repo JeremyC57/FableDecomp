@@ -15,13 +15,13 @@ class CCharString {
 public:
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
 };
 
-struct CSoundDef;
+class CSoundDef;
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
 };
@@ -30,7 +30,7 @@ struct CDefinitionManager_Calls {
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
 };
 
-struct CGameDefinitionManager : CDefinitionManager_Calls {
+class CGameDefinitionManager : public CDefinitionManager_Calls { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
@@ -75,7 +75,7 @@ struct CRegisteredMusicMap {                // CVectorMap<long, CRegisteredMusic
 
 struct CFadeTimes;
 
-struct CMusicManager {
+class CMusicManager { public:
     CMusicState                  CurrentState;          // +0x00
     CDefPointer<const CSoundDef> PSoundDef;             // +0x18
     CRegisteredMusicMap          RegisteredMusic;       // +0x1c

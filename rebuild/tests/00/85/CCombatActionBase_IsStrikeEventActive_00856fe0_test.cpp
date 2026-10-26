@@ -23,7 +23,7 @@ struct CCombatActionBaseCore {
 static void Setup(CCombatActionBaseCore& a, CStrikeEventNode* head, CStrikeEventNode* nodes, CStrikeEvent* e, int n)
 { for (int i = 0; i < n; ++i) { nodes[i].m_pEvent = &e[i]; e[i].Legacy = (i == 0); e[i].StrikeEventIndex = i + 1; e[i].StartFrame = 0; e[i].EndFrame = 10 * (n - i); } Link(head, nodes, n); a.StrikeEvents.m_pHead = head; a.StrikeEvents.m_size = n; a.FramesRunning = 5; }
 
-struct CCombatActionBase : CCombatActionBaseCore { bool IsStrikeEventActive() const { CStrikeEvent* p = GetPActiveStrikeEvent(); return p != 0; } };
+class CCombatActionBase : public CCombatActionBaseCore { public: bool IsStrikeEventActive() const { CStrikeEvent* p = GetPActiveStrikeEvent(); return p != 0; } };
 int main()
 {
     CStrikeEventNode head, nodes[3]; CStrikeEvent e[3]; CCombatActionBase a; Setup(a, &head, nodes, e, 3);

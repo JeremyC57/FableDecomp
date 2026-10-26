@@ -3,7 +3,7 @@
 
 static int g_assigns = 0;
 
-struct C3DMeshInfo {                             // 96 bytes (0x60); its own assignment copies the body
+class C3DMeshInfo { public:                             // 96 bytes (0x60); its own assignment copies the body
     unsigned char _body[0x60];
     C3DMeshInfo& operator=(const C3DMeshInfo& other) { std::memcpy(_body, other._body, sizeof(_body)); ++g_assigns; return *this; }
 };

@@ -7,7 +7,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_storage[4];
@@ -32,12 +32,12 @@ struct CThing {
     }
 };
 
-struct CAnimInit { int id; };
-struct CAnimSet { long UpdateMode; float CurrentPercentageComplete; float LastPercentageComplete; };
-struct CAnimateThing { CAnimSet CurrentAnim; const CAnimInit* m_init; long m_mode, m_delay; int m_plays;
+class CAnimInit { public: int id; };
+class CAnimSet { public: long UpdateMode; float CurrentPercentageComplete; float LastPercentageComplete; };
+class CAnimateThing { public: CAnimSet CurrentAnim; const CAnimInit* m_init; long m_mode, m_delay; int m_plays;
     void SetMainAnim(const CAnimInit& init, long mode, long delay) { m_init = &init; m_mode = mode; m_delay = delay; ++m_plays; } };
-struct CTCAnimationComplex : CComponent { CAnimateThing* PAnimation; CAnimateThing& GetAnimation() { return *PAnimation; } };
-struct CTCAnimatingObject {
+class CTCAnimationComplex : public CComponent { public: CAnimateThing* PAnimation; CAnimateThing& GetAnimation() { return *PAnimation; } };
+class CTCAnimatingObject { public:
     CThing* ParentThing; bool Animating; long CurrentAnimationPriority;
     void SetCurrentAnimAsManualUpdate()
     {

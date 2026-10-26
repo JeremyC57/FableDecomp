@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { int unused; };
-struct CActionUseDef { int unused; };
-struct CBuyHouseDef { int unused; };
+class CThing { public: int unused; };
+class CActionUseDef { public: int unused; };
+class CBuyHouseDef { public: int unused; };
 
 static int g_globalAdds = 0;
 
@@ -19,12 +19,12 @@ struct CTCBase_Calls {
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     const T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {
+class CTCActionUseBase : public CTCBase_Calls { public:
     CDefPointer<CActionUseDef> PActionUseDef;
     bool                       Usable;
     CTCActionUseBase(CThing* owner) : CTCBase_Calls(owner), Usable(true) { }

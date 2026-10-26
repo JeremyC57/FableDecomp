@@ -12,7 +12,7 @@
 // pair constructor and the implicit memberwise CSymbolInfo copy; its three strings are destroyed in reverse order; no EH
 // frame (module built without /EHsc).
 // Leaf: ?Add@?$CVectorMap@
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -35,7 +35,7 @@ template <class T> struct vector {                 // retail STLport vector: 12 
 };
 struct CCompareString {
 };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     vector< pair<K, V> > Data;                     // +0x00
     C                    Compare;                  // +0x0c
     bool                 Dirty;                    // +0x0d
@@ -48,4 +48,4 @@ template <class K, class V, class C> void CVectorMap<K, V, C>::Add(const K& key,
     Dirty = true;
 }
 
-template struct CVectorMap<CCharString, CSymbolInfo, CCompareString>;
+template class CVectorMap<CCharString, CSymbolInfo, CCompareString>;

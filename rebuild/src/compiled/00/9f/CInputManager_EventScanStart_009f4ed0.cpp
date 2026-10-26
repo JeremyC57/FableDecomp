@@ -5,18 +5,18 @@
 // `this`/scan registers (eax/ecx) in the lane.
 // Shape: the Started byte is stored first, NoStoredEvents is loaded before the counter's increment is stored back, the
 // found path clears Index through the scan pointer kept in eax, `mov al,1` / `xor al,al` tails.
-struct CInputEvent { unsigned char _body[0x34]; };
+class CInputEvent { public: unsigned char _body[0x34]; };
 template<class T> struct CRetailVector {
     T* first; T* last; T* end_of_storage;
     struct iterator { T* p; explicit iterator(T* q) : p(q) {} T& operator*() const { return *p; } };
     iterator begin() { return iterator(first); }
 };
-struct CInputEventScanInfo {
+class CInputEventScanInfo { public:
     bool Started;                                   // +0x00
     long Index;                                     // +0x04
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x0c];                     // +0x04 ProcessedEvents
     CRetailVector<CInputEvent> EventStore;          // +0x10

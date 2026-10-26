@@ -7,7 +7,7 @@
 // bool byte. The manifest label `_Cons_val<allocator<...>>` is propagated; the body is STLport _Construct.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00 (shared string body)
     CCharString(const CCharString& other);       // 0x0099EC30
 };

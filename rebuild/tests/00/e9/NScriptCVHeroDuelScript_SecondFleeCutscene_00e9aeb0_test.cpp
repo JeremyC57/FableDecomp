@@ -3,13 +3,13 @@
 #include <cstring>
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct Handle { int who; bool IsScripting() { return false; } void Release() { Log("release"); } };
 struct Cast {
     int hero, thunder;
     int& operator[](const char* k) { return !std::strcmp(k, "HERO") ? hero : thunder; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int thunderTries, heroTries; CScriptThing hero;
     void NewScriptFrame() { Log("frame"); }
     CScriptThing GetThingWithScriptName(const char* n) { CScriptThing t; t.id = !std::strcmp(n, "Thunder") ? 7 : 0; return t; }

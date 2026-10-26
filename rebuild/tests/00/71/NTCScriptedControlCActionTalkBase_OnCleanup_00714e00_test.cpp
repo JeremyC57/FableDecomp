@@ -4,15 +4,15 @@
 // the subtitles are cleared when the profile (or the default when no profile is loaded) has them off.
 #include <cstdio>
 
-struct CTCLook { int stopCalls; long lastTime; void StopLooking(long t) { ++stopCalls; lastTime = t; } };
-struct CTCTalk { long ConversationAttitude; };
+class CTCLook { public: int stopCalls; long lastTime; void StopLooking(long t) { ++stopCalls; lastTime = t; } };
+class CTCTalk { public: long ConversationAttitude; };
 struct CMode { long type; long LingerFrames; long GetType() const { return type; } };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CMode current; int removeCalls; unsigned long removed;
     CMode* GetCurrentMode() { return &current; }
     void RemoveMode(unsigned long m) { ++removeCalls; removed = m; }
 };
-struct CThing {
+class CThing { public:
     CTCLook* look; CTCTalk* talk; CTCCreatureModeManager* modes;
     template <class T> bool GetInterface(T** out, long type);
 };
@@ -20,12 +20,12 @@ template <> bool CThing::GetInterface(CTCLook** out, long type) { if (type != 0x
 template <> bool CThing::GetInterface(CTCTalk** out, long type) { if (type != 0x0f || !talk) return false; *out = talk; return true; }
 template <> bool CThing::GetInterface(CTCCreatureModeManager** out, long type) { if (type != 0x31 || !modes) return false; *out = modes; return true; }
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool ProfileLoaded, DefaultSubtitles, ProfileSubtitles;
     bool AreSubtitlesOn() const { return ProfileLoaded ? ProfileSubtitles : DefaultSubtitles; }
 };
 static CUserProfileManager g_profiles;
-struct CPlayerGui { int clearCalls; bool clearArg; bool ShowSubtitleBackground; };
+class CPlayerGui { public: int clearCalls; bool clearArg; bool ShowSubtitleBackground; };
 static CPlayerGui g_gui;
 static long g_FramesPerSecond = 30;
 

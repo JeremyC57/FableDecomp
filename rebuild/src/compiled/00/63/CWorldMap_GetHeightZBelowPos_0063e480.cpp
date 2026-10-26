@@ -10,21 +10,21 @@
 // Layout: g_pMainGameComponent 0x013B86A0 -> +0x24 world -> +0x20 thing search tools; CThing::PhysicsTC +0x60 and the
 //   CPhysicsMeshObject / CMeshIntersectionData models of the landed CTools::GetCollisionThing 0x00875E60;
 //   local STLport vector<CThing*> (12 bytes, freed through free()). No CWorldMap data members are read.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long x0, y0, x1, y1;
     C2DBoxI(long ax0, long ay0, long ax1, long ay1) : x0(ax0), y0(ay0), x1(ax1), y1(ay1) { }
 };
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;                // +0x00
     C3DVector Normal;                              // +0x0c
     float     DistanceSquared;                     // +0x18
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;
     float         PositionMatrix[12];
@@ -33,10 +33,10 @@ struct CPhysicsMeshObject {
     ~CPhysicsMeshObject();                         // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* out) const;   // 0x00A12450
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CPhysicsMeshObject GetPhysicsMeshObject() const;   // 0x006B0850
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                     // +0x60
 };
@@ -51,14 +51,14 @@ struct CThingPtrVector {                           // STLport vector<CThing*>
     CThing** end() { return _M_finish; }
 };
 struct CThingFilter_All { };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_All& filter, CThingPtrVector& out);   // 0x0049C490
 };
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad00[0x20];
     CThingSearchTools*  ThingSearchTools;          // +0x20
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       World;                           // +0x24
 };

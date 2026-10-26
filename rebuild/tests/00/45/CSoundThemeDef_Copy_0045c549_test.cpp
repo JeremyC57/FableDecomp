@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSoundThemeDef;
+class CSoundThemeDef;
 
 // Provide a definition for the extern so the test links; it just records the call.
 static int g_called = 0;

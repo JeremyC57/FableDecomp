@@ -11,7 +11,7 @@ struct CBase {
 CBase::CBase() { ++g_baseCtors; }
 CBase::~CBase() { }
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 class CPSCBase : public CBase {
 public:
     CParticleSystem* ParticleSystem;

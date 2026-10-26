@@ -19,19 +19,19 @@
 //   thread the known flag value between the two tests (each flag store sits before its timer restart). The main loop is
 //   `for (;;) { if (terminating) return; ... NewScriptFrame(); }` so every inline exit shares one expansion.
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
 };
@@ -53,7 +53,7 @@ struct CScriptThingImpl {                               // the game-side object 
 struct CBase {                                          // vtable 0x01231710
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
     virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const;
@@ -93,13 +93,13 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_NONE };
 struct CCountedVoidPointer { void* Data; void* Info; CCountedVoidPointer() : Data(0), Info(0) { } };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedVoidPointer PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -109,7 +109,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void ClearCommands();                               // 0x007E7360
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) StartScriptingEntity
@@ -207,7 +207,7 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual long GetWorldFrame() const;   // slot 653 (+0xa34) GetWorldFrame
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0xdc8];
     float PrisonRacerSpeed;                             // +0xdc8
     float PrisonRacerSprintSpeed;                       // +0xdcc
@@ -217,7 +217,7 @@ struct CScriptDef {
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }   // out-of-line copy 0x00CD4450
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
@@ -234,7 +234,7 @@ struct CQ_PrisonRaceScript {
     long NearestRaceMarker;                             // +0x58
     bool MakePrisonerComment(const CScriptThing& prisoner, const CCharString& line);   // 0x00DDCF50
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

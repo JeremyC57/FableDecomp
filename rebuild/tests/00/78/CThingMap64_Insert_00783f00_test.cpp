@@ -9,7 +9,7 @@ typedef unsigned __int64 U64;
 typedef unsigned long long U64;
 #endif
 static U64 K(unsigned long hi, unsigned long lo) { return ((U64)hi << 32) | lo; }
-struct CBaseObject;
+class CBaseObject;
 struct CIntelligentPointerThing { void* m_vtable; CBaseObject* m_pItem; };
 struct SThingMapValue { U64 first; CIntelligentPointerThing second; };
 struct SRbNodeBase { long _M_color; SRbNodeBase* _M_parent; SRbNodeBase* _M_left; SRbNodeBase* _M_right; };

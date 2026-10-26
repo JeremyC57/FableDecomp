@@ -9,14 +9,14 @@
 //   0x0045EF2D.
 // Shape: the compiler-style memberwise assignment written out in declaration order; scalars as moves through eax.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct CDefStringVector {                   // retail std::vector<CDefString> (12 bytes)
     CDefString* m_first;
     CDefString* m_last;
@@ -30,7 +30,7 @@ struct CFloatVector {                       // retail std::vector<float> (12 byt
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesUnholyPowerDef : CParentDefClassBase {   // vtable 0x012348E4
+class CSpecialAbilitiesUnholyPowerDef : public CParentDefClassBase { public:   // vtable 0x012348E4
     CDefStringVector StartPowerupSound;                   // +0x3c
     CDefStringVector LoopingPowerupSound;                 // +0x48
     CDefStringVector ReleaseSound;                        // +0x54

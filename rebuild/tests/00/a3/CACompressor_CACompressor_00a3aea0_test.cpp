@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_baseCalls = 0;
-struct CBaseClass { CBaseClass() { ++g_baseCalls; } virtual ~CBaseClass() { } };
+class CBaseClass { public: CBaseClass() { ++g_baseCalls; } virtual ~CBaseClass() { } };
 struct CByteVector {
     unsigned char* m_pFirst; unsigned char* m_pLast; unsigned char* m_pEnd;
     CByteVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
@@ -12,7 +12,7 @@ struct CByteVector {
         m_pFirst = (unsigned char*)std::malloc(n ? n : 1); for (unsigned int i = 0; i < n; ++i) m_pFirst[i] = v; m_pLast = m_pEnd = m_pFirst + n;
     }
 };
-struct CACompressor : CBaseClass {
+class CACompressor : public CBaseClass { public:
     void* Workspace; unsigned long WorkspaceSize; bool CompressionOn; CByteVector OwnWorkspace;
     CACompressor(long workspaceSize)
     {

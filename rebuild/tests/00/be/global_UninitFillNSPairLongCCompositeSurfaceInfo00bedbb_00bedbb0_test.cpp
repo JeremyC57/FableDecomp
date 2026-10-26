@@ -2,12 +2,12 @@
 #include <new>
 
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     explicit CCharString(const char* text) : m_pData(text) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringCopies; }   // models 0x0099EC30
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
 };
 struct CCountedPointer {
@@ -27,7 +27,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct CCompositeSurfaceInfo {   // vtable 0x012A8154
+class CCompositeSurfaceInfo { public:   // vtable 0x012A8154
     virtual int Kind() const { return 0x8154; }
     CCountedPointer Cache;
     CCompositeSurfaceInfo(void* d, CCPPointerInfo* i) : Cache(d, i) { }

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesBulletTimeDef { char pad[0x18c]; };
+class CSpecialAbilitiesBulletTimeDef { public: char pad[0x18c]; };
 
 unsigned long __fastcall CSpecialAbilitiesBulletTimeDef_GetSizeofClass(const CSpecialAbilitiesBulletTimeDef* self)
 {

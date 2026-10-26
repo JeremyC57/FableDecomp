@@ -8,7 +8,7 @@
 // PDB names retained; no generated class header. Native CArray is 12 bytes rather than donor16.
 double __cdecl GFGetTime();
 namespace NEnvironmentInternal {
-struct CEnvironmentThemePriorityStackEntry {
+class CEnvironmentThemePriorityStackEntry { public:
  float BaseWeight; bool BaseWeightLocked;
  struct CThemeWeight; CThemeWeight* ThemesFirst; CThemeWeight* ThemesLast; CThemeWeight* ThemesCapacity;
  long ThemeTransitionTargetID; float ThemeTransitionInitialWeight; bool ThemeTransitionActive;

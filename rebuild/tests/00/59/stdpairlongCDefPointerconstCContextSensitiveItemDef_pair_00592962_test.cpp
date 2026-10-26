@@ -1,13 +1,13 @@
 // Behaviour test for 00592962: std::pair<long,CDefPointer<const CContextSensitiveItemDef> >::pair(const long&, const CDefPointer&).
 #include <cstdio>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase() { }
     mutable long m_refCount;
 };
-struct CContextSensitiveItemDef : CDefPointeeBase { };
+class CContextSensitiveItemDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* p) : Object(p) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)

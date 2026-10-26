@@ -18,8 +18,8 @@ static int fails = 0;
 // Shape: owner/target reach the action constructor through inline accessors (GetCreature/GetTarget); reading the
 //   members directly rotates the owner/target/argument registers (eax/ecx/edx) in the VC7.1 allocator.
 // Leaf: OnCreate
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -27,13 +27,13 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -59,7 +59,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
@@ -70,13 +70,13 @@ struct CCombatSequenceBase {
     virtual void OnCreate();                // 0x008B0650
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
 
-struct CCreatureAction_BanditKingAttack : CCombatActionBase {
+class CCreatureAction_BanditKingAttack : public CCombatActionBase { public:
     unsigned char _body[0x114];                   // sizeof = 0x118
     CCreatureAction_BanditKingAttack(CThingCreatureBase* owner, CThing* thing, const CCharString& animation, long first, long second);   // 0x008C9410
 };

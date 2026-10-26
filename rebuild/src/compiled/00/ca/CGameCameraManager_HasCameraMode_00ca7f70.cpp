@@ -10,7 +10,7 @@ struct ICameraProvider {
     virtual int GetCurrentMode() = 0;  // slot 5 -> [vtable+0x14]
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     int                filler0;      // +0x0
     int                filler4;      // +0x4
     int                filler8;      // +0x8

@@ -8,18 +8,18 @@ struct COut {
     void WriteFloat(float v) { f[nf++] = v; }
     void WriteData(const void* d, unsigned long n) { data = d; size = n; ++dataCalls; }
 };
-struct CVertexCompressionParams { float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW; };
+class CVertexCompressionParams { public: float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW; };
 static void WriteParams(const CVertexCompressionParams& p, COut& out)
 {
     out.WriteFloat(p.PosScaleX); out.WriteFloat(p.PosScaleY); out.WriteFloat(p.PosScaleZ); out.WriteFloat(p.PosScaleW);
     out.WriteFloat(p.PosBiasX); out.WriteFloat(p.PosBiasY); out.WriteFloat(p.PosBiasZ); out.WriteFloat(p.PosBiasW);
 }
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetData() const { return Size() != 0 ? m_begin : (const T*)this; }
 };
-struct C3DMeshFileXVertexDataChunk {
+class C3DMeshFileXVertexDataChunk { public:
     unsigned long FormatID, VertexCount, VertexSize, InitFlags;
     CVertexCompressionParams VBCParams;
     CArray<char> VertexData;

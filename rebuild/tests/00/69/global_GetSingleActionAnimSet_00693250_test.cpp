@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct CAnimSet { int x; }; struct CThingCreatureBase { int y; };
+class CAnimSet { public: int x; }; class CThingCreatureBase { public: int y; };
 static int g_freed = 0; static int g_fill = 0; static CAnimSet g_a, g_b;
 static void free_x(void* p) { ++g_freed; std::free(p); }
 struct CVec { CAnimSet** m_pFirst; CAnimSet** m_pLast; CAnimSet** m_pEnd; CVec() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } ~CVec() { if (m_pFirst) free_x(m_pFirst); } unsigned long size() const { return m_pLast - m_pFirst; } };

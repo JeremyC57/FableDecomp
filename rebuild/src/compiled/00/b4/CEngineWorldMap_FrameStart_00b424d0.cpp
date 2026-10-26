@@ -6,8 +6,8 @@
 // erase arguments are read last-first (`mov edx,[+1B8h] ; mov eax,[+1B4h]`). Retail offsets differ from engine/CEngineWorldMap.h (Ego PDB):
 // the retail CArray is 12 bytes and the list 4, so MapList +0x20 is followed by StaticMapFile at +0x34, ChangedAreas at +0x1b4 and
 // FirstWorldUpdate at +0x1a5 (PDB +0x234 / +0x225); the retail layout is modelled locally.
-struct CEngineComponentParams;
-struct CEngineMap;
+class CEngineComponentParams;
+class CEngineMap;
 
 struct C2DBoxI_00b424d0 { long x0, y0, x1, y1; };
 
@@ -30,7 +30,7 @@ struct CBankFileAsync_00b424d0 {                  // the CStaticMapBankFile memb
     void ProcessDisposalList();                    // 0x009D6730
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char             _pad0[0x1c];        // +0x04 (after the vptr)
     CRetailMapArray_00b424d0  MapList;             // +0x20
     unsigned char             _pad1[0x34 - 0x2c];

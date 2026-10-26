@@ -10,18 +10,18 @@
 // Shape: a named appearance local, an uninitialised CRightHandedSet and a GetCreature() accessor; the task is read into a
 // named local before reaching its torch pointer (`lea ecx,[eax+8]`), and the pointer assignment reads the source item into
 // a local before SetPItem (so `&PTask` is formed after the GetPItem call, as retail).
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 extern CCharString g_TorchDummyName;            // 0x013BACA0 (dynamically initialised global name)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
 };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
 };
@@ -36,7 +36,7 @@ struct CBaseIntelligentPointer {
 struct CThingPointer : CBaseIntelligentPointer {
     CThing* GetThing() const { return (CThing*)GetPItem(); }
 };
-struct CVillageTaskTorch {
+class CVillageTaskTorch { public:
     unsigned char _pad[8];
     CBaseIntelligentPointer PTorch;             // +0x08 CIntelligentPointer<CThing>
 };
@@ -46,17 +46,17 @@ struct CTaskPointer : CBaseIntelligentPointer { // CIntelligentPointer<CVillageT
     CTaskPointer& operator=(const CTaskPointer& other) { void* item = other.GetPItem(); SetPItem(item); return *this; }
     CVillageTaskTorch* GetTask() const { return (CVillageTaskTorch*)GetPItem(); }
 };
-struct CThingAICreature;
-struct CTCVillageMember;
-struct CTCVillage {
+class CThingAICreature;
+class CTCVillageMember;
+class CTCVillage { public:
     CVillageTaskTorch* GetTorchTask(CThingAICreature* creature);   // 0x006590C4
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillageMember* member);   // 0x007EE540
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

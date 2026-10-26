@@ -1,14 +1,14 @@
 // Behaviour test for 0x00B5A160 CEngineScreenEffectColourFilter::UpdateUVs: quarter-texel UVs for a 400x200 back buffer.
 #include <cstdio>
 
-struct C2DCoordI { long X, Y; };
-struct CDisplayManager { C2DCoordI m_backBufferSize; };
+class C2DCoordI { public: long X, Y; };
+class CDisplayManager { public: C2DCoordI m_backBufferSize; };
 static CDisplayManager g_display;
 static CDisplayManager* g_pDisplayManager = &g_display;
 
-struct CTVertexColTex1 { float X, Y, Z; unsigned int Colour; float U, V; };
+class CTVertexColTex1 { public: float X, Y, Z; unsigned int Colour; float U, V; };
 
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     CTVertexColTex1 TextureToBackBufferVerts[4];
     void UpdateUVs()
     {

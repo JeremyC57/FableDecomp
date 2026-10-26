@@ -2,8 +2,8 @@
 // built with SetPItem(0) and HasThingStuckIn is false.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CBaseObject { int id; };
+class CThing { public: int id; };
+class CBaseObject { public: int id; };
 static CThing* g_baseParent = 0;
 static int g_setCalls = 0;
 static CBaseObject* g_setArg = (CBaseObject*)1;
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() { }
     CIntelligentPointer(CBaseObject* item = 0) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CTCDeadShotInThingTracker : CTCBase_Calls {
+class CTCDeadShotInThingTracker : public CTCBase_Calls { public:
     CIntelligentPointer PThingStuckIn;
     bool                HasThingStuckIn;
     virtual void v00() { }

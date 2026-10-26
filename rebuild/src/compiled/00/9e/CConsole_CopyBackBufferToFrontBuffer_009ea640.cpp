@@ -1,4 +1,4 @@
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -7,7 +7,7 @@ struct CConBuf {                                         // 12 bytes: implicit c
     bool        b;                                       // +4
     int         d;                                       // +8
 };
-struct CConsole {
+class CConsole { public:
     char pad20[0x20];
     CConBuf front;                                       // +0x20
     char pad2c[4];

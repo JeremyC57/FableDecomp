@@ -23,7 +23,7 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
 };
@@ -99,22 +99,22 @@ struct list {
     void push_back(const T& x) { insert(end(), x); }
 };
 
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x3c];
     long          MapNumber;                            // +0x3c
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
     bool operator()(const CMessageEvent& message) const;   // 0x006AF180
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -123,7 +123,7 @@ template<class A, class B> struct CFilter_Bind2 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void*               __vftable;                      // +0x00
     list<CMessageEvent> Messages;                       // +0x04
     long FindAllMessages(const CSeenOrHeardFilter& filter, list<CMessageEvent*>* found);   // 0x006178F0
@@ -143,10 +143,10 @@ long CMessageEventManager::FindAllMessages(const CSeenOrHeardFilter& filter, lis
 }
 #pragma auto_inline(on)
 
-struct CWorldMap {
+class CWorldMap { public:
     const CCharString& GetLevelScriptName(long map);    // 0x004FCFC0
 };
-struct CWorld {
+class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06();
     virtual void w07(); virtual void w08(); virtual void w09(); virtual void w10(); virtual void w11(); virtual void w12();
     virtual CWorldMap* GetWorldMap();                   // slot 13 (+0x34)
@@ -154,7 +154,7 @@ struct CWorld {
     CMessageEventManager* PMessageEventManager_Data;   // +0x60
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool MsgOnLevelUnloaded(list<CCharString>& levels) const;
     CWorld* World;                                  // +0x04
     CWorld* GetWorld() const { return World; }

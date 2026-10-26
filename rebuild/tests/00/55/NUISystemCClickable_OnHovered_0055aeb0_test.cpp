@@ -151,7 +151,7 @@ struct CObserver_Retail {
 };
 struct CEventSinkInterface { virtual void v0() { } virtual void v1() { } virtual void v2() { } virtual void v3() { } };
 struct CActionList;
-struct CHoverable : CComponentInterface, CObserver_Retail, CEventSinkInterface {
+class CHoverable : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:
     unsigned char _component[0x15c - 0x1c];
     long StateBeforeHovered; bool WasHovered; CActionList* PActionsOnHovered; CActionList* PActionsOnUnhovered;
     CHoverable(long owner) : StateBeforeHovered(owner), WasHovered(true), PActionsOnHovered(0), PActionsOnUnhovered(0) { Log("HovCtor;"); }
@@ -161,7 +161,7 @@ public:
     void OnUnhovered() { Log("HovOff;"); }
     void OnDeactivate() { Log("HovDeact;"); WasHovered = false; }
 };
-struct CClickable : CHoverable {
+class CClickable : public CHoverable { public:
     friend int ::main();
     long StateBeforeLeftClicked; bool WasLeftClicked; CActionList* PActionsOnLeftClicked; CActionList* PActionsOnLeftHeld; CActionList* PActionsOnLeftUnclicked;
     long StateBeforeRightClicked; bool WasRightClicked; CActionList* PActionsOnRightClicked; float InputDelay; float LastInputTime;

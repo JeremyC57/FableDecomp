@@ -9,7 +9,7 @@ struct Sub {
     Vtbl* vptr;
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0xd4];
     Sub* obj_d4;
     char pad2[4];

@@ -71,8 +71,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -80,8 +80,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -186,8 +186,8 @@ public:
     CWideString fourthWideString;
 };
 
-struct CFrontendGameComponentInit
-{
+class CFrontendGameComponentInit
+{ public:
     fable_u32 value;
 };
 
@@ -270,18 +270,18 @@ FABLE_STATIC_ASSERT(sizeof(CGame) == 0x210);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CDisplayViewManager;
-struct CGameDefinitionManager;
-struct CGraphicDataBank;
-struct CIEngine;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CPlayerManager;
-struct CWorld;
+class CCPPointerInfo;
+class CDisplayViewManager;
+class CGameDefinitionManager;
+class CGraphicDataBank;
+class CIEngine;
+class CMainGameComponent;
+class CMeshDataBank;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -378,7 +378,7 @@ FABLE_STATIC_ASSERT(offsetof(CDisplayEngine, World) == 0xf8);
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -406,7 +406,7 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -426,34 +426,34 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -698,7 +698,7 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 
 
 #pragma pack(push, 1)
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -710,9 +710,9 @@ FABLE_STATIC_ASSERT(offsetof(CGameDefinitionManager, __vftable) == 0x0);
 
 #pragma pop_macro("FABLE_STATIC_ASSERT")
 #undef CGameDefinitionManager
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-struct C2DExtentsI { long Width,Height; };
-struct CSurface : CSurfaceDonor {
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class C2DExtentsI { public: long Width,Height; };
+class CSurface : public CSurfaceDonor { public:
  unsigned long GetHeight()const; //00415bf0
  C2DExtentsI GetDimensions()const; //009f2f90
  unsigned long GetWidth()const {return GetDimensions().Width;}
@@ -720,15 +720,15 @@ struct CSurface : CSurfaceDonor {
 };
 struct CDisplayDevice { unsigned char DisplayState[0x2c]; CSurface BackSurface; CSurface& GetBackSurface(){return BackSurface;} };
 extern CDisplayDevice* g_DisplayDevice; //013b8390
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); };
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private: CBaseClassNonCopyable(const CBaseClassNonCopyable&); CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
-struct CMainGameComponent; struct CGamePlayerInterface;
-struct CDisplayEngineInit {
+class CMainGameComponent; class CGamePlayerInterface;
+class CDisplayEngineInit { public:
  CMainGameComponent* Component; CGameDefinitionManager* DefinitionManager; CPlayerManager* PlayerManager; CWorld* World;
  CGraphicDataBank* MainGraphicBank; unsigned long Width,Height; CPixelFormat PixelFormat; CMeshDataBank* MeshBank;
  CDisplayEngineInit(); //00419270 signature confirmed PDB
 };
-struct CDisplayEngine : CBaseClassNonCopyable {
+class CDisplayEngine : public CBaseClassNonCopyable { public:
  virtual ~CDisplayEngine(); //native slot0 00437070
  virtual bool InitEngine(); //slot1 00435190
  virtual void UninitEngine(); //slot2 004354a0
@@ -737,7 +737,7 @@ struct CDisplayEngine : CBaseClassNonCopyable {
  void Init(); //004350d0
 };
 template<class T> struct scoped_ptr { T* ptr; void reset(T*); }; //0041940c
-struct CMainGameComponent {
+class CMainGameComponent { public:
  unsigned char BaseAndBanks[0x1c]; CPlayerManager* PPlayerManager; CGamePlayerInterface* PPlayerInterface;
  CWorld* PWorld; scoped_ptr<CDisplayEngine> PDisplayEngine;
  unsigned char LUAAndWorldState[0x1619c]; CGraphicDataBank* PMainGraphicBank; void* PMainGraphicBankInfo;

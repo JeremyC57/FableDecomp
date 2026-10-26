@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CWorld { unsigned char _pad[0xe1]; unsigned char flagE1; };
+class CWorld { public: unsigned char _pad[0xe1]; unsigned char flagE1; };
 
 void __fastcall CGameScriptInterface_SetSummonerDeathExplosionAffectsHero(CGameScriptInterface* self, int /*edx*/, char doesAffect)
 {

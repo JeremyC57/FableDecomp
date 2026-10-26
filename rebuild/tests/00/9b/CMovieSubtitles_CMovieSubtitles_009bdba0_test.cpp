@@ -4,7 +4,7 @@ struct CDataBank;
 struct CASoundManager;
 static int g_wideStrings = 0;
 class CWideString { public: void* PStringData; CWideString() : PStringData(0) { ++g_wideStrings; } };
-struct C2DBoxF { float X0, Y0, X1, Y1; C2DBoxF() { } };
+class C2DBoxF { public: float X0, Y0, X1, Y1; C2DBoxF() { } };
 struct SSubTitleNode { SSubTitleNode* Next; SSubTitleNode* Prev; unsigned char SubTitle[0x1c]; };
 struct CRetailList_SubTitle {
     SSubTitleNode* Node;
@@ -14,7 +14,7 @@ struct CRetailList_SubTitle {
         sentinel->Next = sentinel; sentinel->Prev = sentinel; Node = sentinel;
     }
 };
-struct CMovieSubtitles {
+class CMovieSubtitles { public:
     CRetailList_SubTitle SubTitles; CDataBank* pTextBank; long Fps; CASoundManager* PSoundManager; bool IsSubtitleTime;
     CWideString FormattedText; C2DBoxF VSubtitleWindow; long FrameCounter;
     CMovieSubtitles() : SubTitles(), pTextBank(0), Fps(30), IsSubtitleTime(false), FormattedText(), VSubtitleWindow(), FrameCounter(0) { }

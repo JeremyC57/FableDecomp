@@ -13,20 +13,20 @@
 // Shape: IMPLICIT handle destructor (a user-written one stores the 0x0127094C vptr at entry, retail does not) over
 //   __forceinline CCountedPointer / base destructors; it expands only at the first wait loop's return, every later exit (and the
 //   function end) sits under in-body inline_depth(0) and calls 0x007E74D0.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -48,7 +48,7 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
@@ -60,11 +60,11 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a380::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
@@ -72,13 +72,13 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Release();                                     // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
 };
-struct CEntityScriptBase {                              // retail 0x14 bytes
+class CEntityScriptBase { public:                              // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

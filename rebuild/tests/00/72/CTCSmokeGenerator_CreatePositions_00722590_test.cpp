@@ -5,7 +5,7 @@
 #include <set>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CGenerationPos { C3DVector Position; void* Thing; CGenerationPos(const C3DVector& p, void* t) : Position(p), Thing(t) {} };
 struct CTCGraphicAppearance {
     bool Loaded; std::set<std::string> Helpers;
@@ -16,9 +16,9 @@ struct CTCGraphicAppearance {
         pos->X = (float)name[name.size() - 1]; pos->Y = 1.0f; pos->Z = 2.0f; return true;
     }
 };
-struct CSmokeGeneratorDef { int RefCount; float GenerationDistance; };
-struct CThing { CTCGraphicAppearance* Appearance; CSmokeGeneratorDef* Def; };
-struct CTCSmokeGenerator {
+class CSmokeGeneratorDef { public: int RefCount; float GenerationDistance; };
+class CThing { public: CTCGraphicAppearance* Appearance; CSmokeGeneratorDef* Def; };
+class CTCSmokeGenerator { public:
     CThing* ParentThing; float GenerationDistance; std::vector<CGenerationPos> GenerationPositions; bool PositionsCreated;
     void CreatePositions();
 };

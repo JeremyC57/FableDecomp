@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CMainGameComponent {
+class CMainGameComponent { public:
     char pad[0x60];
     double gameTimeBase;
     double GetCurrentGameTime();

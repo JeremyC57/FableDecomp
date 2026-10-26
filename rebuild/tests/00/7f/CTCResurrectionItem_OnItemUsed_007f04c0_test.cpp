@@ -2,9 +2,9 @@
 // recover-from-death action for the creature, the effect created at the creature and attached (type 8, "", 0, 0), item killed.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length = -1) : PStringData(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
@@ -37,7 +37,7 @@ public:
 static CThing g_effect; static long g_effectType = 0; static const C3DVector* g_effectPos = 0;
 CThing* CreateEffectThing(long type, const C3DVector* position, bool flag) { g_effectType = type; g_effectPos = position; return flag ? 0 : &g_effect; }
 static int g_actionsAlive = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     void* m_owner; int m_kind;
     ~CCombatActionBase() { --g_actionsAlive; }
@@ -48,16 +48,16 @@ public:
     void FinishCurrentAction() { ++g_finished; }
     bool SetCurrentAction(const CCombatActionBase& action) { g_setKind = action.m_kind; g_setOwner = action.m_owner; return true; }
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip) { ++g_actionsAlive; m_owner = owner; m_kind = flip ? 2 : 1; }
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : CCombatAction_GenericStrikeResponseKnockdownRecoverBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:
     CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(CThingCreatureBase* owner)
         : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false) { }
     virtual void v00() { }
 };
-struct CResurrectionItemDef { long OnUseParticleEffect; };
-struct CTCResurrectionItem {
+class CResurrectionItemDef { public: long OnUseParticleEffect; };
+class CTCResurrectionItem { public:
     CThing*       ParentThing;
     const CResurrectionItemDef* PDef;
     void OnItemUsed(CThingCreatureBase& creature);

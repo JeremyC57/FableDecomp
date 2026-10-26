@@ -29,7 +29,7 @@ void __linear_insert(_RandomAccessIter __first, _RandomAccessIter __last, _Tp __
 }
 }
 struct SValue8 { int a; int b; };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const S::pair<K, V>& a, const S::pair<K, V>& b) const { return a.first < b.first; }
 };
 

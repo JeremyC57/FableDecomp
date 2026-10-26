@@ -45,18 +45,18 @@ public:
 };
 bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetCurrentPlayer();                // 0x00449970
 };
-struct CTCEnemy {
+class CTCEnemy { public:
     void AddEnemyThing(CThing* enemy);          // 0x0076D1B0
     void RemoveEnemyThing(CThing* enemy);       // 0x0076CC00
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad_0x08[0x90];

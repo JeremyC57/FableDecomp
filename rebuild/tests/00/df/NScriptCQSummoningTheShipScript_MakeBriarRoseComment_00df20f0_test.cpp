@@ -13,8 +13,8 @@ public:
     ~CCharString() { --g_live; }
 };
 static CCharString operator+(const char* l, const CCharString& r) { char b[64]; std::strcpy(b, l); std::strcat(b, r.Text); return CCharString(b); }
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     CScriptThing* PImp_Data; bool alive;
     CScriptThing() : PImp_Data(0), alive(false) {}
     CScriptThing(const CScriptThing& o) : CBaseClass(), PImp_Data(o.PImp_Data), alive(o.alive) {}
@@ -24,7 +24,7 @@ struct CScriptThing : CBaseClass {
 static CScriptThing g_hero, g_briarGame;
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool active; long timer, secs; char text[64]; long convAsked;
     virtual CScriptThing& GetHero() { return g_hero; }
     virtual CScriptThing GetThingWithScriptName(const CCharString& n) { Log(n.Text); CScriptThing t; t.PImp_Data = &g_briarGame; return t; }
@@ -37,7 +37,7 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_global;
 static CGameScriptInterface* g_pGameScriptInterface = &g_global;
-struct CTimer { long Index; };
+class CTimer { public: long Index; };
 struct CQ_SummoningTheShipScript {
     CGameScriptInterface* m_pInterface;
     CTimer CommentaryTimer;

@@ -4,13 +4,13 @@
 #include <cstdio>
 #include <string>
 
-struct CWideString { std::string s; };
-struct CAFile { std::string path; std::string saved; int saves; };
-struct CDiskFileWin32 : CAFile {
+class CWideString { public: std::string s; };
+class CAFile { public: std::string path; std::string saved; int saves; };
+class CDiskFileWin32 : public CAFile { public:
     CDiskFileWin32(const CWideString& pathname, int, unsigned int) { path = pathname.s; saves = 0; }
 };
 static CAFile g_lastFile;
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString() { }
     CCharString(const char* text) : s(text) { }
@@ -27,19 +27,19 @@ struct CCharString {
 CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r = a; r.s += b.s; return r; }
 CCharString operator+(const CCharString& a, const char* b) { CCharString r = a; r.s += b; return r; }
 CCharString operator+(const char* a, const CCharString& b) { CCharString r(a); r.s += b.s; return r; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     bool Initialised : 1;
     bool Enabled : 1;
     bool Dead : 1;
 };
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };
-struct CParticleEmitter {
+class CParticleEmitter { public:
     CParticleSystemPtr* ParticleSystems_start;
     int                 count;
     C3DVector           Position;
@@ -48,7 +48,7 @@ struct CParticleEmitter {
     int GetNoParticles() { return count; }
 };
 struct SEmitterNode { SEmitterNode* _M_next; SEmitterNode* _M_prev; CParticleEmitter* _M_data; };
-struct CParticleEmitterManager {
+class CParticleEmitterManager { public:
     SEmitterNode* Emitters;
     void DumpInfo(const CWideString& fileName);
 };

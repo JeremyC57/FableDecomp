@@ -1,6 +1,6 @@
 // CAnimationEntry::GetComponent<CAnimComponentFlags>(const CAnimComponentFlags** ppComponent) -- the entry's flags component (type 0) from its own component map, else the shared default map's one, written through the out pointer
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- same-TU noinline LowerBound stand-in (key folded to the immediate, one key store before the null test) + one final *pp store over the entry-map result, with the default lookup written as if/else assignments so VC tail-duplicates the store into each default arm (family F88)
-// Leaf: ??$GetComponent@UCAnimComponentFlags@@@CAnimationEntry@@QBEXPAPBUCAnimComponentFlags@@@Z
+// Leaf: ??$GetComponent@VCAnimComponentFlags@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFlags@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E0380, 125 bytes, `ret 4` (__fastcall).
 //   Ego_r.pdb: `??$GetComponent@VCAnimComponentFlags@@@CAnimationEntry@@QBEXPAPBVCAnimComponentFlags@@@Z`.
 // Callees: 0x005DFA50 CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> >::LowerBound (twice).
@@ -14,18 +14,18 @@
 // Label correction: catalogued as `AnimationDef_GetAnimationFlags`; the PDB name is the GetComponent template.
 enum EAnimComponent { ANIM_COMPONENT_FLAGS = 0, ANIM_COMPONENT_TRANSITION_IN_TIME = 1 };
 
-struct CAnimComponentBase {                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
+class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1
     long IVRefCount;                                       // +0x04
 };
 
-struct CAnimComponentFlags : CAnimComponentBase {
+class CAnimComponentFlags : public CAnimComponentBase { public:
     long Flags;                                            // +0x08
     static EAnimComponent StaticType() { return ANIM_COMPONENT_FLAGS; }
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
 };
 
@@ -34,7 +34,7 @@ template <class K, class V> struct pair {
     V second;
 };
 
-template <class K, class V> struct CVectorMap {            // retail: a 12-byte STLport vector + comparator/dirty bytes
+template <class K, class V> class CVectorMap { public:            // retail: a 12-byte STLport vector + comparator/dirty bytes
     typedef pair<K, V> value_type;
     value_type* m_first;                                   // +0x00
     value_type* m_last;                                    // +0x04
@@ -65,17 +65,17 @@ template <class K, class V> struct CVectorMap {            // retail: a 12-byte 
     }
 };
 
-struct CAnimComponentMap : CAnimComponentBase {            // vptr, count, Map at +8
+class CAnimComponentMap : public CAnimComponentBase { public:            // vptr, count, Map at +8
     CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > Map;   // +0x08
 };
 
 extern CAnimComponentMap g_DefaultAnimComponents;          // 0x013B8C30
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
-struct CAnimationEntry {                                   // Ego_r.pdb, 0x10 bytes
+class CAnimationEntry { public:                                   // Ego_r.pdb, 0x10 bytes
     long                                 BankIndex;        // +0x00
     CDefString                           AnimName;         // +0x04
     CDefString                           GroupName;        // +0x08

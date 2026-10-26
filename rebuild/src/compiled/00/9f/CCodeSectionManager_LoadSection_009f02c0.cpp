@@ -11,7 +11,7 @@ struct CSectionDesc {
     long  Size;                                             // +0xc
 };
 
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     virtual void v00();
     unsigned char _maps[0x24];                              // ShortNameToHandle +4, LongNameToHandle +0x10, SectionDesc +0x1c (12-byte maps)
     bool SectionLoadingEnabled;                             // +0x28

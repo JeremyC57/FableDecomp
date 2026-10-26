@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static bool g_queued = false; static long g_action = 0, g_type = -1;
-struct CGameCameraManager { void PushCurrentManualMode() { std::strcat(g_seq, "P"); } };
+class CGameCameraManager { public: void PushCurrentManualMode() { std::strcat(g_seq, "P"); } };
 static CGameCameraManager g_manager;
-struct CAIGameCameraBase { virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { }
+class CAIGameCameraBase { public: virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { }
     virtual void GetCameraManager(CGameCameraManager** ppManager) { std::strcat(g_seq, "G"); *ppManager = &g_manager; } };
-struct CWorld { unsigned char _pad[0x34]; CAIGameCameraBase* PCurrentGameCamera; };
+class CWorld { public: unsigned char _pad[0x34]; CAIGameCameraBase* PCurrentGameCamera; };
 struct CInputProcessGameBase { virtual void v00() { } unsigned char _pad04[0x10]; CWorld* World; void* MyPlayer; void* DefinitionManager; void* Component; void* PGamePlayerInterface;
     bool IsGameActionEventInQueue(long action, long buttonEventType) { std::strcat(g_seq, "Q"); g_action = action; g_type = buttonEventType; return g_queued; } };
-struct CInputProcessControlCreatureRightStick : CInputProcessGameBase {
+class CInputProcessControlCreatureRightStick : public CInputProcessGameBase { public:
     bool PushingCameraModeUp; bool PushingCameraModeDown; bool LookingAround;
     void Update(float)
     {

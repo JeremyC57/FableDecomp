@@ -8,8 +8,8 @@
 //   mov ecx,esi; call 0x4c73b0 ; this-in-ecx delete helper
 //   skip: mov eax,esi; pop esi; ret 4
 
-struct CThingBuilding
-{
+class CThingBuilding
+{ public:
     // scalar destructor helper (retail 0x838a00) — this-in-ecx member call
     void ScalarDtor();
     // this-in-ecx delete helper (retail 0x4c73b0)

@@ -12,7 +12,7 @@ struct RefPtr {
     RefObj* p;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x94];
     RefPtr ptr;
 };

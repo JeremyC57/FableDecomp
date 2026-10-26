@@ -1,6 +1,6 @@
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CThingSwitchDef {
+class CThingSwitchDef { public:
     char pad[0x70];
     int f70;
     // base-class copy at 0x463950; member => thiscall(this, src)

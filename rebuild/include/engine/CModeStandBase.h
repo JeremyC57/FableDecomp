@@ -9,8 +9,8 @@
 #include "rebuild_abi.h"
 
 struct CAnimEntryLite;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CModeStandBase {

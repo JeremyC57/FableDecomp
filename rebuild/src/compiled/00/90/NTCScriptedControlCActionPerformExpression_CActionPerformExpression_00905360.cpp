@@ -14,7 +14,7 @@
 // raw target pointer is inline.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
 };
@@ -24,7 +24,7 @@ struct CBaseClassNonCopyable {                      // the action root
     CBaseClassNonCopyable();                        // 0x0099A2F0
 };
 
-struct CBaseClass {                                 // CScriptThing's root
+class CBaseClass { public:                                 // CScriptThing's root
     virtual void v00();
     CBaseClass();                                   // 0x0099A2D0
     ~CBaseClass();                                  // 0x0099A2E0
@@ -53,7 +53,7 @@ struct CScriptThingPImp {                           // CCountedPointer<CScriptTh
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     virtual void v00();
     CScriptThing() { }
@@ -61,7 +61,7 @@ struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     CScriptThing GetScriptThing();                  // 0x004C7E50

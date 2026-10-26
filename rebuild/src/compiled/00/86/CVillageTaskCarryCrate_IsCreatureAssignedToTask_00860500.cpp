@@ -4,7 +4,7 @@
 // Return whether the current assignee (helper over the +0x8 subobject) equals arg.
 struct CVillageTaskCarryCrateSub;
 extern "C" long FABLE_FASTCALL FableAssignee_00860500(CVillageTaskCarryCrateSub *sub);
-struct CVillageTaskCarryCrate { char pad00[0x8]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
+class CVillageTaskCarryCrate { public: char pad00[0x8]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
 bool CVillageTaskCarryCrate::IsCreatureAssignedToTask(long who)
 {
     return FableAssignee_00860500((CVillageTaskCarryCrateSub*)&m_sub[0]) == who;

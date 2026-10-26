@@ -7,13 +7,13 @@
 // Layout: engine/CEngineSkyRenderer.h (ScreenSpaceSpriteVertexShader +0x140, ScreenSpaceSpritePixelShader +0x148).
 #include "engine/CEngineSkyRenderer.h"
 
-struct C2DVector { float X, Y; };
-struct C4DVector { float X, Y, Z, W; };
-struct CRGBColour {                                      // D3DCOLOR byte order
+class C2DVector { public: float X, Y; };
+class C4DVector { public: float X, Y, Z, W; };
+class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((A << 8) + R) << 8) + G) << 8) + B; }
 };
-struct CTexture;
+class CTexture;
 struct SScreenSpriteVertex {                             // 0x20 bytes, pre-transformed
     float         X, Y, Z, W;
     unsigned long Colour;
@@ -29,26 +29,26 @@ struct CRenderManagerCoreView {
                            long vertexCount, const void* indices, long triangleCount);   // 0x00A0AEA0
 };
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
     unsigned long Size() const { return Last - First; }
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:

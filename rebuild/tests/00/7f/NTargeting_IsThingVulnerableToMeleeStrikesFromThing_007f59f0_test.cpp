@@ -2,10 +2,10 @@
 #include <cmath>
 // Behaviour test: NTargeting::IsThingVulnerableToMeleeStrikesFromThing -- a player in kill-everything mode hits any thing flagged 8; with g_bMeleeHitsBestAttackTarget the attacker's best attack target is hit; enemies are always hit.
 #define CHECK(c) if (!(c)) { std::printf("007f59f0_TEST FAIL\n"); return 1; }
-struct CPlayer { bool KillEverythingMode; };
-struct CThing;
-struct CTCTargetingAI { CThing* Best; CThing* GetPBestEnemyCreatureForAttack() const { return Best; } };
-struct CThing {
+class CPlayer { public: bool KillEverythingMode; };
+class CThing;
+class CTCTargetingAI { public: CThing* Best; CThing* GetPBestEnemyCreatureForAttack() const { return Best; } };
+class CThing { public:
     unsigned long ThingTypeFlags; CPlayer* Player; const CTCTargetingAI* AI; int Team;
     CPlayer* GetPlayer() const { return Player; }
     bool PeekTC(const CTCTargetingAI** out) const { if (AI) { *out = AI; return true; } return false; }

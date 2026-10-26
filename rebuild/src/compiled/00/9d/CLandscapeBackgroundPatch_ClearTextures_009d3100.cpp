@@ -7,7 +7,7 @@ struct CInner {
 
 extern void __fastcall CInner_dtor(CInner* p);
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
   int f0;
   int Parent;
   void* f8;

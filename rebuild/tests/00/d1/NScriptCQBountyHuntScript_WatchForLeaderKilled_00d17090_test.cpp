@@ -7,23 +7,23 @@
 #endif
 static int g_ctors = 0, g_dtors = 0, g_badKiller = 0, g_frames = 0, g_termAt = 1000, g_killedAt = 1000, g_decapAt = 1000;
 static int g_impDestroyed = 0, g_infoDeleted = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1) { ++g_ctors; if (std::strcmp(text, "") != 0 || length != -1) g_badKiller = 1; PStringData = (void*)text; }
     ~CCharString() { ++g_dtors; }
 };
 
-struct CCPPointerInfo {                                 // counted-pointer block (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass() {}
 };
 
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
@@ -42,7 +42,7 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
     }
 };
 
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerScriptThing PImp;                    // +0x04
     virtual ~CScriptThing() {}
     virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {} virtual void v010() {}
@@ -62,13 +62,13 @@ struct CScriptThingImp : CScriptThing {                 // the game-side impleme
     }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {}
     virtual void NewScriptFrame() const { ++g_frames; }  // slot 7 (+0x1c)
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0xd9];
     bool          BountyHuntDecapitation;               // +0xd9
 };
@@ -80,7 +80,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     CQ_SunnyvaleMasterData* PMasterDataHook();
 };
 
-struct CQ_BountyHuntScript : CScriptBase {
+class CQ_BountyHuntScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     unsigned char _flags048[7];                         // +0x48 .. +0x4f (QuestFailed .. VillagerIntroDone)

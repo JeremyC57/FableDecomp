@@ -14,8 +14,8 @@
 // local; the disk file (28 bytes) is a local whose inline virtual destructor runs after the text's.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                          // 0x0099B510
 };
@@ -26,10 +26,10 @@ namespace NResourceDirectoryNames {
 }
 
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CAFile {
+class CAFile { public:
     virtual ~CAFile();                                       // 0x0099A300
 };
-struct CDiskFileWin32 : CAFile {                             // vtable 0x0122D06C
+class CDiskFileWin32 : public CAFile { public:                             // vtable 0x0122D06C
     FileAccessType AccessType;                               // +0x04
     long           Position;                                 // +0x08
     long           Length;                                   // +0x0C
@@ -41,9 +41,9 @@ struct CDiskFileWin32 : CAFile {                             // vtable 0x0122D06
     virtual ~CDiskFileWin32() { Close(); }
 };
 
-struct CASuspendableProcess;
-struct CCharStringData;
-struct CCharString {
+class CASuspendableProcess;
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                           // 0x0099E4B0
     ~CCharString();                                          // 0x0099EAE0
@@ -59,21 +59,21 @@ struct CVectorMap {
     bool                Dirty;                               // +0x0D
     CVectorMap() : _M_start(0), _M_finish(0), _M_end_of_storage(0), Dirty(false) { }
 };
-struct CWorldMap;
-struct CRegionConnectionGraph {
+class CWorldMap;
+class CRegionConnectionGraph { public:
     CVectorMap GraphNodes;                                   // +0x00
     void InitialiseGraph(const CCharString& text, const CWorldMap& worldMap);   // 0x00828710
 };
 
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
     void Reset(T* data);                                     // 0x0051CEA0 (CCountedPointer<CRegionConnectionGraph>)
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char                           _pad00[0x44];
     CCountedPointer<CRegionConnectionGraph> PRegionGraph;    // +0x44 (PDB +0x54)
     void LoadRegionGraph(const CWideString& name);

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v0() {}
     virtual int v1() { return 0; }
 };

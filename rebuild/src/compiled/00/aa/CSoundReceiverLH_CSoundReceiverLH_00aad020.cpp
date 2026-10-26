@@ -12,7 +12,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X;                                // +0x00
     float Y;                                // +0x04
     float Z;                                // +0x08

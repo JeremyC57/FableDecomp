@@ -3,8 +3,8 @@
 #include <cstring>
 static int g_terminating = 0, g_termCalls = 0, g_ctors = 0, g_dtors = 0;
 using std::strncmp;
-struct CCharStringData { char* m_pData; long m_length; };
-struct CCharString {
+class CCharStringData { public: char* m_pData; long m_length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1) { ++g_ctors; if (text) { PStringData = new CCharStringData; PStringData->m_pData = (char*)text; PStringData->m_length = (long)std::strlen(text); } else PStringData = 0; (void)length; }
     CCharString(const CCharString& o) { ++g_ctors; PStringData = o.PStringData ? new CCharStringData(*o.PStringData) : 0; }
@@ -12,7 +12,7 @@ struct CCharString {
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }
     long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating() const;
 };

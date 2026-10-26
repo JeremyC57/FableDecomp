@@ -7,20 +7,20 @@
 // CDefPointer<const CThingCreatureDef> at +0xe0 (engine/CThingCreatureBase.h lists +0xe0 only as a retail-only long).
 // Shape: the success path is the `if` body (`return false` is the cold tail): `GetDefinitionManager()->GetDef(index, &m_def)` with the arguments
 // pushed before the accessor runs (a chained call, not a local) and `return true`.
-struct C3DVector;
-struct CCharString;
-struct CThingPhysical;
-struct CThingCreatureDef;
+class C3DVector;
+class CCharString;
+class CThingPhysical;
+class CThingCreatureDef;
 
 struct CDefPointerCreature {                    // CDefPointer<const CThingCreatureDef>
     CThingCreatureDef* m_pObject;
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out);      // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
@@ -28,7 +28,7 @@ struct CThingGameObject {
                              const CCharString& name, CThingPhysical* p1, CThingPhysical* physical, bool flag);   // 0x008388D0
 };
 
-struct CThingCreatureBase : CThingGameObject {
+class CThingCreatureBase : public CThingGameObject { public:
     unsigned char       _pad8e[0x52];
     CDefPointerCreature m_def;                  // +0xe0
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, CThingPhysical* p1,

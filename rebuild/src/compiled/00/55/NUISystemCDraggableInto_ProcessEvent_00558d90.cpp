@@ -55,14 +55,14 @@ struct CActionParamInterface {                     // vtable at +0x18 (CDraggabl
     virtual void v00();
 };
 
-struct CHoverable : CComponentInterface, CObserver_Retail, CActionParamInterface {
+class CHoverable : public CComponentInterface, public CObserver_Retail, public CActionParamInterface { public:
     unsigned char _body1c[0x160 - 0x1c];
     bool          WasHovered;                      // +0x160
     unsigned char _pad161[0x16c - 0x161];          // PActionsOnHovered, PActionsOnUnhovered
     virtual void ProcessEvent(EEvent event);       // 0x0055B9D0
 };
 
-struct CDraggableInto : CHoverable {
+class CDraggableInto : public CHoverable { public:
     CActionList* PActions;                         // +0x16C
     virtual void ProcessEvent(EEvent event);
 };

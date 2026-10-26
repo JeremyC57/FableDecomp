@@ -1,12 +1,12 @@
 // behaviour test for 00bcf930 GetTransformFrameStart/End: normalised orientation, CalcObjectMatrix, then the -90 degree X rotation
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Normalise() { float l = std::sqrt(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }
 };
-struct CRightHandedSet { C3DVector Up, Forward; void MakePerpendicular() {} };
-struct CMatrix3x4 { float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
+class CRightHandedSet { public: C3DVector Up, Forward; void MakePerpendicular() {} };
+class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
 struct CMatrix3x3 {
     float E11, E12, E13, E21, E22, E23, E31, E32, E33;
     CMatrix3x3(float a, float b, float c, float d, float e, float f, float g, float h, float i)

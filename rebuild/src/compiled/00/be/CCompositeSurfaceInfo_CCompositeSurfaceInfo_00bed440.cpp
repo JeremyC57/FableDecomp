@@ -16,7 +16,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CCompositeSurfaceInfo : CBase {
+class CCompositeSurfaceInfo : public CBase { public:
     virtual void v00();                          // own vtable (0x012A8154)
     CCountedPointer Cache;                       // +0x04
     CCompositeSurfaceInfo();

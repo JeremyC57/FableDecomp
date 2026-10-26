@@ -8,7 +8,7 @@
 // State, GayMarriage), the node's value at +0x08.
 #pragma optimize("s", on)
 
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     unsigned __int64 WifeUID;                  // +0x00
     unsigned __int64 MaritalHomeUID;           // +0x08
     long             State;                    // +0x10 EMarriageState

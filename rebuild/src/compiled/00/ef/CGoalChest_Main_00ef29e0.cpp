@@ -7,8 +7,8 @@
 #include "fable_string.h"
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const=0; virtual CPredicateBase* Clone() const=0; virtual ~CPredicateBase(){} };
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public: virtual bool operator()() const=0; virtual CPredicateBase* Clone() const=0; virtual ~CPredicateBase(){} };
+class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const; virtual CPredicateBase* Clone()const;

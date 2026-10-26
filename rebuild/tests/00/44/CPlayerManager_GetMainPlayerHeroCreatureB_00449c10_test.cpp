@@ -1,11 +1,11 @@
 // Behaviour test for 00449c10 CPlayerManager::GetMainPlayerHeroCreatureB (hero creature of the main player)
 #include <cstdio>
-struct CThing { long id; };
-struct CPlayer {
+class CThing { public: long id; };
+class CPlayer { public:
     CThing* hero;
     CThing* GetHeroCreature() { return hero; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer** PlayersFirst;
     long MainPlayer;
     CPlayer* GetPlayer(long number) { return PlayersFirst[number]; }

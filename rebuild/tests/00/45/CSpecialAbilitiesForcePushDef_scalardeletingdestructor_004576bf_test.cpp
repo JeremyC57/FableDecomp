@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesForcePushDef {
+class CSpecialAbilitiesForcePushDef { public:
     int f0;
 };
 

@@ -5,7 +5,7 @@
 // Host model of map<pair<long,long>, CCountedPointer<CVertexPairContraction> >::operator[]: lower_bound(k); when it is
 // the end or k sorts before its key, insert (k, null counted pointer) at that hint; return the mapped pointer. The tree is
 // a plain (unbalanced) binary search tree with a header node, enough to exercise the subscript logic.
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 struct CCountedPointer {
     void*           Data;
     CCPPointerInfo* Info;

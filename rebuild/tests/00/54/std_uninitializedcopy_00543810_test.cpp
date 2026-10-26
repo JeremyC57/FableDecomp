@@ -2,7 +2,7 @@
 #include <new>
 struct __false_type { __false_type() { } };
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

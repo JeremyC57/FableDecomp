@@ -11,8 +11,8 @@
 // Retry 10: the `== ""` test is split by hand (strcmp on a null block, the block compare otherwise) with the arms joined by
 // goto, as the landed 0x0048F7C0; the default name is an implicit CCharString conversion (homed in a dead argument slot).
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 #pragma pack(push, 1)
 struct CBasicStringChar {                       // CBasicString<char>
@@ -20,7 +20,7 @@ struct CBasicStringChar {                       // CBasicString<char>
     unsigned long StringLength;                 // +0x04
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                      // +0x00
 };
 #pragma pack(pop)
@@ -38,13 +38,13 @@ public:
     bool operator!=(const char* text) const { return !(*this == text); }
 };
 
-struct CSoundPair {                             // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                             // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -52,7 +52,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_CastWillForceSpell : CCombatActionBase {   // vtable 0x0127B50C
+class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:   // vtable 0x0127B50C
     bool ImmediateCast;                         // +0x114 (PDB +0x12c)
     bool OneAnimCast;                           // +0x115 (PDB +0x12d)
     unsigned char _pad116[2];

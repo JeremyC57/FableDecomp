@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
 struct CStaticFontBank {

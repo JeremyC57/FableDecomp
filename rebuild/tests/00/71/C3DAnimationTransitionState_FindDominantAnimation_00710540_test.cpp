@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationState { int id; };
+class C3DAnimationState { public: int id; };
 
 struct IAnim {
     C3DAnimationState st;

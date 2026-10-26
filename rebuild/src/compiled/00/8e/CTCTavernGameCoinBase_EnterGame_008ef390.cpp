@@ -9,14 +9,14 @@
 //         CTavernGameCoinBaseDef::ArrowDefIndex +0x40 (PDB offset holds).
 // Shape: the def getter is an inline member through ParentThing->+0x70; the taken def is copied out of the escaped out
 //        slot once into a holder (edi) whose dtor releases it (`dec [edi+4] ; jne`, no null test).
-struct CThingObject;
+class CThingObject;
 
 struct CDefPointee {
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
-struct CTavernGameCoinBaseDef : CDefPointee {
+class CTavernGameCoinBaseDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x38];
     long ArrowDefIndex;                         // +0x40
 };
@@ -51,12 +51,12 @@ __declspec(noinline) void CThingDefHolder::GetDef(CDefPointer* out)
     
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CThingDefHolder* DefHolder;                 // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     void EnterGameBase();                       // 0x005EC0F0 (CTCTavernGame::EnterGame)

@@ -5,15 +5,15 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00b3b7f0_TEST FAIL\n"); return 1; } } while (0)
 
-struct CMeshDataBank { int updates; int queues; bool flag; double until; void UpdateLoading() { ++updates; } void ProcessLoadingQueue(bool f, double u) { ++queues; flag = f; until = u; } };
-struct CGraphicBankManager { int calls; double until; void ProcessLoading(bool, double u) { ++calls; until = u; } };
-struct CSystemManager { CGraphicBankManager* GraphicBankManager; };
-struct CSurface { int calls; void ProcessLoading(bool, double) { ++calls; } };
+class CMeshDataBank { public: int updates; int queues; bool flag; double until; void UpdateLoading() { ++updates; } void ProcessLoadingQueue(bool f, double u) { ++queues; flag = f; until = u; } };
+class CGraphicBankManager { public: int calls; double until; void ProcessLoading(bool, double u) { ++calls; until = u; } };
+class CSystemManager { public: CGraphicBankManager* GraphicBankManager; };
+class CSurface { public: int calls; void ProcessLoading(bool, double) { ++calls; } };
 static CGraphicBankManager g_graphic = { 0, 0 };
 static CSystemManager g_system = { &g_graphic };
 static CSystemManager* GFGetSystemManager() { return &g_system; }
 static CSurface* g_pSurface = 0;
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     CMeshDataBank* MeshBanks[3];
     void ProcessLoading(bool flag, double until)
     {

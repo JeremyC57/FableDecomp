@@ -2,11 +2,11 @@
 #include <cstring>
 #include <math.h>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_animators = 0;
-struct CAnimateThing { CThing* m_owner; CAnimateThing(CThing& o) : m_owner(&o) { ++g_animators; } };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
-struct CTCAnimationComplex : CTCBase {
+class CAnimateThing { public: CThing* m_owner; CAnimateThing(CThing& o) : m_owner(&o) { ++g_animators; } };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing& o) : ParentThing(&o) { } };
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing* PAnimation;
     CTCAnimationComplex(CThing& owner) : CTCBase(owner), PAnimation(new CAnimateThing(owner)) { }
     ~CTCAnimationComplex() { delete PAnimation; }

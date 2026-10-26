@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for CUIMiniMapMarker::CUIMiniMapMarker(const CUIMiniMapMarker&) (0x00612980).
 static int g_copies = 0;
-struct CCharString { const char* p; CCharString(const char* t) : p(t) { } CCharString(const CCharString& o) : p(o.p) { ++g_copies; } };
-struct C2DVector { float X, Y; };
+class CCharString { public: const char* p; CCharString(const char* t) : p(t) { } CCharString(const CCharString& o) : p(o.p) { ++g_copies; } };
+class C2DVector { public: float X, Y; };
 struct CUIMiniMapMarker {
     long Region; CCharString UIDefName; C2DVector Position; long DefNameLength; long GraphicIndex; float Angle;
     CUIMiniMapMarker(const char* n) : UIDefName(n) { }

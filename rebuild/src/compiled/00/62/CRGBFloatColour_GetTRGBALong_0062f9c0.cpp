@@ -8,7 +8,7 @@
 // Shape: `((((A*255) << 8 | R*255) << 8 | G*255) << 8) | B*255` as one expression (the same packing the landed
 // CEngineLightingManager::SetupDefaultFogStates 0x00B47630 inlines): `x * 255.0f` loads x first, the accumulated word
 // lives in edi and the last conversion is or-ed into eax.
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R;                                       // +0x00
     float G;                                       // +0x04
     float B;                                       // +0x08

@@ -4,16 +4,16 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     CScriptThing(const char* n) : Name(n) {}
 };
 static CScriptThing g_hero("HERO");
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing& GetHero() { Log("GetHero"); return g_hero; }
     CScriptThing GetThingWithScriptName(const CCharString& name) { Log(name.Text); return CScriptThing(name.Text); }
     void EntityTeleportToThing(const CScriptThing& who, const CScriptThing& where, bool keepCamera)

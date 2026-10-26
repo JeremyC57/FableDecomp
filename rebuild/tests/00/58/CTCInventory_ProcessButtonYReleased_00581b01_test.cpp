@@ -8,7 +8,7 @@ struct CTCInventoryBase {
     void ProcessButtonYReleased() { ++g_base; }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool EnableQuickAccessAssign;
     bool EnableQuickAccessRemove;
     void SetQuickAccessAssign(bool assign) { ++g_assignCalls; g_assignArg = assign; }

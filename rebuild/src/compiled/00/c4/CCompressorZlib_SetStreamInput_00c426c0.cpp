@@ -1,4 +1,4 @@
-struct CCompressorZlib {
+class CCompressorZlib { public:
     void* m_pad0;      // +0
     void* m_input;     // +4
     unsigned long m_pos;   // +8

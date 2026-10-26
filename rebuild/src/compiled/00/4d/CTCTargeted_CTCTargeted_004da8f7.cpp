@@ -6,10 +6,10 @@
 // ValidTargetWithoutLOS +0x12, PTargetingDef (CDefPointer<const CTargetingDef>) +0x14. The header is a flattened POD
 // (its vptr is a `void*`), so the polymorphic CTCBase chain is modelled locally with the header's member names.
 // Shape: a size-optimised TU (`push dword ptr [esp+8]` pass-through of the owner): `#pragma optimize("s",on)`.
-struct CThing;
-struct CTargetingDef;
+class CThing;
+class CTargetingDef;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -17,12 +17,12 @@ struct CTCBase {
     CTCBase(CThing* owner);                  // 0x00686800
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CTCTargeted : CTCBase {               // vtable 0x0123F024
+class CTCTargeted : public CTCBase { public:               // vtable 0x0123F024
     unsigned long TargetingFlags;            // +0x0c
     bool          Targetable;                // +0x10
     bool          UseTargetGlow;             // +0x11

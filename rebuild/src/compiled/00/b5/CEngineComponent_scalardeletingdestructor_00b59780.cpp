@@ -5,7 +5,7 @@
 // words); the destructor is `__forceinline` so its body lands inside the `??_G`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
-struct CEngineComponent {                          // vtable 0x012A2544
+class CEngineComponent { public:                          // vtable 0x012A2544
     CEngineComponent** m_ppRegisteredSlot;         // +0x04 the engine's slot holding this component, or null
     long               m_id;                       // +0x08
     __forceinline virtual ~CEngineComponent()

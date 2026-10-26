@@ -13,7 +13,7 @@
 // Shape: each literal is a named CCharString local in its own block (`lea ecx ; push ecx`), the relative path is an
 // argument temporary passed straight from the helper's result; the emitter walk is an iterator loop over the map's
 // vector (`it != end()` re-read each pass).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -22,14 +22,14 @@ struct CCharString {
 };
 CCharString __fastcall GetRelativePathName(const CCharString& path, const CCharString& relativeTo);   // 0x00998570
 
-struct CPersistContext {                               // retail 0x2c bytes, trivial destructor
+class CPersistContext { public:                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
     void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
 };
 
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void GenerateHeader(CPersistContext& context, long options);   // 0x00AEF1F0
 };
 }

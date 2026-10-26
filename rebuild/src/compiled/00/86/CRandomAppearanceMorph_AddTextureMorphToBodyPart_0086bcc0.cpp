@@ -10,20 +10,20 @@
 // tail-duplicated). A const-reference max template re-reads the argument through its address, and `groupID < Max` swaps
 // the compare operands (`cmp edi,eax ; jae`).
 // Leaf: AddTextureMorphToBodyPart
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     T& operator[](unsigned long index) { return m_first[index]; }
 };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;
 };
 
 struct CBodyPartMesh;
 struct CSkeletalMorph;
 
-struct CRandomAppearanceMorph {
-    struct CTextureMorph {
+class CRandomAppearanceMorph { public:
+    class CTextureMorph { public:
         unsigned long NewTexture;                       // +0x00
         unsigned long GroupID;                          // +0x04
     };

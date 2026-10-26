@@ -6,7 +6,7 @@
 // Shape: the pair's implicit (trivial) copy assignment copies the whole 12-byte object as one block: VC7.1 sets up the
 // string-move registers (`mov esi,eax` / `mov edi,ecx`) and moves the three words through ebx; the loop head is
 // aligned behind a `jmp` (/O2).
-struct CSoundPair {                             // 8 bytes
+class CSoundPair { public:                             // 8 bytes
     long FirstSound;                            // +0x00
     long LastSound;                             // +0x04
 };

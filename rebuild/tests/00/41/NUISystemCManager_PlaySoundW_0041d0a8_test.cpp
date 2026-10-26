@@ -2,9 +2,9 @@
 // Behaviour test for NUISystem::CManager::PlaySoundW (retail 0x0041D0A8): nothing without a sound system; with the new
 // front end running its own sample bank is used (bankId ignored, nothing when it has none); otherwise the registry
 // bank bankId (nothing when unknown); the string overload gets loop = true, GainFaderBits 0x20, attached = false.
-struct CCharString { long m_id; };
-struct CASoundBank { long m_tag; };
-struct CSoundInit { unsigned long GainFaderBits; CSoundInit() : GainFaderBits(0) {} };
+class CCharString { public: long m_id; };
+class CASoundBank { public: long m_tag; };
+class CSoundInit { public: unsigned long GainFaderBits; CSoundInit() : GainFaderBits(0) {} };
 static int g_calls = 0; static CASoundBank* g_bank = 0; static const CCharString* g_name = 0;
 static bool g_loop = false, g_attached = true; static unsigned long g_gain = 0;
 struct CSoundPlayer {
@@ -19,7 +19,7 @@ struct CSoundSystem {
 };
 static CSoundSystem g_system;
 static CSoundSystem* g_pSoundSystem = 0;
-struct CNewFrontendGameComponent { CASoundBank* PSampleBank; };
+class CNewFrontendGameComponent { public: CASoundBank* PSampleBank; };
 static CNewFrontendGameComponent* g_pNewFrontendGameComponent = 0;
 struct CManager {
     void PlaySoundW(CCharString& symbol, long bankId)

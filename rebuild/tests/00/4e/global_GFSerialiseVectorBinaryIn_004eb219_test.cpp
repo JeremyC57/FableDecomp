@@ -6,7 +6,7 @@ struct SStream {
     SStream(const long* d, int n) : data(d), pos(0), size(n) { }
     void Read(long* out) { if (pos < size) *out = data[pos++]; }
 };
-struct CExplosionRing {
+class CExplosionRing { public:
     float RingRadius; long NumExplosions; float AngleOffset; float SecondsBeforeSpawnNewRing;
     CExplosionRing() : RingRadius(1.0f), NumExplosions(1), AngleOffset(0.0f), SecondsBeforeSpawnNewRing(1.0f) { }
     void TransferBinaryIn(SStream& s) { s.Read(&NumExplosions); }

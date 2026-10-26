@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CTCHeroOpinionDeedLog::SetCrimeDeedReportedToVillage (0x006C5A50): flags the logged deed, ignores unknown handles.
-struct COpinionDeed { long DeedHandle; bool IsCrimeReportedToVillage; bool IsCrime; };
+class COpinionDeed { public: long DeedHandle; bool IsCrimeReportedToVillage; bool IsCrime; };
 struct SOpinionDeedNode { SOpinionDeedNode* Next; long Key; COpinionDeed* Value; };
 struct COpinionDeedIterator {
     SOpinionDeedNode* m_pNode;

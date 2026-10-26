@@ -9,7 +9,7 @@
 // destructor (@ 0x00693EF0) is reached by tail call. Member types are named from the destructor
 // labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
 // `~CSymbolInfo>_>`) is propagated. One of 19 bodies of this shape.
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     unsigned char _body[0x4];
     ~CPhysicsMeshInfo();                            // 0x00693EF0
 };

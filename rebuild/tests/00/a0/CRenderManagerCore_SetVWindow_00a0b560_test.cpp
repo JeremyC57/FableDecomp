@@ -11,7 +11,7 @@ static void GFVBoxToABox(const C2DBoxF& vbox, C2DBoxF& abox)          // stand-i
     abox.right = vbox.right * 640.0f; abox.bottom = vbox.bottom * 480.0f;
 }
 
-struct CDisplayManager { void SetViewport(const C2DBoxF& viewport); };
+class CDisplayManager { public: void SetViewport(const C2DBoxF& viewport); };
 static CDisplayManager* g_observedManager = 0;
 static C2DBoxF g_observedViewport;
 void CDisplayManager::SetViewport(const C2DBoxF& viewport) { g_observedManager = this; g_observedViewport = viewport; }

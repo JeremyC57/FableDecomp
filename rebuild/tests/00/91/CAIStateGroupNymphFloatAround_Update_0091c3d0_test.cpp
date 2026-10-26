@@ -17,7 +17,7 @@ static void BuildTable()
         g_InvSqrtMantissaTable[i] = (unsigned int)t;
     }
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -33,12 +33,12 @@ struct C3DVector {
         X *= r; Y *= r; Z *= r;
     }
 };
-struct CRightHandedSet { C3DVector Up, Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) {} };
+class CRightHandedSet { public: C3DVector Up, Forward; CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) {} };
 
 static int g_setOrientCalls = 0; static C3DVector g_lastForward, g_lastUp;
 struct CPhysicsBody { void SetOrientation(const CRightHandedSet& o) { ++g_setOrientCalls; g_lastForward = o.Forward; g_lastUp = o.Up; } };
-struct CThing { C3DVector Pos; CPhysicsBody* PPhysics; const C3DVector& GetPosition() const { return Pos; } };
-struct CThingCreatureBase : CThing { };
+class CThing { public: C3DVector Pos; CPhysicsBody* PPhysics; const C3DVector& GetPosition() const { return Pos; } };
+class CThingCreatureBase : public CThing { public: };
 struct CIntelligentPointerCreature {
     CThing* m_pItem;
     CIntelligentPointerCreature(CThingCreatureBase* item) : m_pItem(item) {}
@@ -46,7 +46,7 @@ struct CIntelligentPointerCreature {
     void SetPItem(const CThing* item) { m_pItem = (CThing*)item; }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CTCNymph {
+class CTCNymph { public:
     bool FlyingAround, CanAttack, ReadyToAttack, HasBeenInLimbo;
     CIntelligentPointerCreature PTarget;
     int startCalls, stopMode, readyAfter, checks; CThingCreatureBase* targetOnReady;
@@ -55,12 +55,12 @@ struct CTCNymph {
     void CheckIfCanAttack(long frame) { CHECK(frame == 77); if (++checks >= readyAfter) { ReadyToAttack = true; PTarget.SetPItem(targetOnReady); } }
     void StopFlyingAround(long mode) { stopMode = (int)mode; FlyingAround = false; }
 };
-struct CCreatureActionBase { };
-struct CCreatureAction_NymphTeleportIntoLimbo : CCreatureActionBase { CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase*) {} };
-struct CWorld { static long GetWorldFrame() { return 77; } };
+class CCreatureActionBase { public: };
+class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureActionBase { public: CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase*) {} };
+class CWorld { public: static long GetWorldFrame() { return 77; } };
 static CWorld g_world;
-struct CAIBrain { int yields; CThingCreatureBase* PCreature; void Yield() { ++yields; } };
-struct CAIStateGroupBase {
+class CAIBrain { public: int yields; CThingCreatureBase* PCreature; void Yield() { ++yields; } };
+class CAIStateGroupBase { public:
     CAIBrain* PBrain; CTCNymph* nymphComponent; bool stopping; int terminated; long actionResult; int actions;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld() { return &g_world; }

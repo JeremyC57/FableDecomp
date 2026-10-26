@@ -10,7 +10,7 @@ struct PixelFormat {fable_i32 FormatIndex;void Initialise(long,long,long,long,bo
 struct PixelFormats {PixelFormat NonAlpha,Alpha,BooleanAlpha,InterpolatedAlpha,BumpMap,BumpMapAlpha,Signed;};
 struct GraphicState {PixelFormats BankFormats,CompressedBankFormats;fable_i32 CompressionType,CompressionQuality,MinTextureWidth,MinTextureHeight,MaxTextureWidth,MaxTextureHeight,ResourceSelectionIndex,BumpmapFactor;bool ResourceIsSprite,ResourceIsMultiFile,ResourceIsBumpMapWithAlpha,EnableDXT1Format,EnableSizeReduction,EnableCompression,EnableSurfaceSection,EnableSignedFormats;};
 struct GraphicStateBlock {void*VTable;GraphicState State;};
-struct CBankStateBlock;
+class CBankStateBlock;
 struct CGraphicBankStateBlockMethods:CGraphicBankStateBlock {void GetDefault(CBankStateBlock&);};
 void CGraphicBankStateBlockMethods::GetDefault(CBankStateBlock& block){
  GraphicStateBlock& s=*reinterpret_cast<GraphicStateBlock*>(&block);

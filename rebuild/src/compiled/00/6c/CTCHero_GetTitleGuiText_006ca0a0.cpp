@@ -26,7 +26,7 @@ struct CRefVirtual {
     virtual void Destroy();                     // slot 1
 };
 namespace NGameText {
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                // 0x009C7A40
     void ReleaseTemporary()
     {
@@ -36,7 +36,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
@@ -47,18 +47,18 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
 extern CEngine* g_pEngine;                      // 0x013B86A0
 
-struct CDefPointeeBase { virtual void v00(); long m_refCount; };
-struct CHeroTitleDef : CDefPointeeBase {
+class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
+class CHeroTitleDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long HeroTitleGuiTag;                       // +0x2c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

@@ -1,6 +1,6 @@
 // CFileDataOutputStream::Write forwarder ->File->vslot4(n, p, 0)
 #include "engine/CFileDataOutputStream.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAFile {
+class CAFile { public:
     virtual void v0();
     virtual void v1();
     virtual void v2();

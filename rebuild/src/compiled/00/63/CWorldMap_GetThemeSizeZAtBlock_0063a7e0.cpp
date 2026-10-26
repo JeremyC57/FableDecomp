@@ -35,8 +35,8 @@ public:
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;
@@ -66,8 +66,8 @@ public:
 
 // CMapInfo (PDB: 72 bytes): Area C2DBoxI +0x00, PMap +0x10, LevelName +0x18, LevelScriptName +0x1C,
 // MapUID +0x20, Used +0x24, Placed +0x25, Activated +0x26, Loading +0x27, ... IsSea +0x40.
-struct CMapInfo
-{
+class CMapInfo
+{ public:
     C2DBoxI        Area;                 // +0x00
     void*          PMap_Data;            // +0x10
     void*          PMap_Info;            // +0x14

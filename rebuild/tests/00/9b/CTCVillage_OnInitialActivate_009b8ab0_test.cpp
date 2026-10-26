@@ -14,7 +14,7 @@ void __fastcall Sub_Do(Sub* self, int a, unsigned char b)
     (void)self;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub* m0;
     int  ParentThing;
     unsigned char ToBeRemoved;

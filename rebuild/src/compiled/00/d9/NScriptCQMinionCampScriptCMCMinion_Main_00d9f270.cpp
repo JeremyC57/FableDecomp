@@ -18,20 +18,20 @@
 //   in the inline operator=; operator!= loads the other Data first. Expands the inline operator= at one site and
 //   calls the out-of-line copies elsewhere,
 //   as retail does.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -87,7 +87,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
      virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -114,7 +114,7 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     __forceinline void AssignInline(const CScriptThing& other) { PImp = other.PImp; }
     bool operator!=(const CScriptThing& other) const { const CScriptThingImpl* otherData = other.PImp.Data; return !PImp.Data->IsSameThing(otherData); }
 };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -199,7 +199,7 @@ struct CGameScriptInterface {                           // vtable 0x01260F0C
 };
 namespace NScript {
 #pragma inline_depth(0)
-struct CIsThingConscious {                              // vtable 0x012C2FE8: a filter holding a script thing
+class CIsThingConscious { public:                              // vtable 0x012C2FE8: a filter holding a script thing
     virtual void f00();
     CScriptThing m_thing;                               // +0x04
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
@@ -213,7 +213,7 @@ struct CEntityScriptBase {                              // retail 0x14 bytes
     void SetPredicate(const CIsThingConscious& predicate);   // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
 };
-struct CQ_MinionCampScript;
+class CQ_MinionCampScript;
 struct CMC_Minion : CEntityScriptBase {
     CQ_MinionCampScript* ParentClass;                   // +0x14
     void*                PMasterData;                   // +0x18 CQ_SunnyvaleMasterData*

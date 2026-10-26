@@ -13,7 +13,7 @@
 #pragma optimize("y", off)              // frame pointer kept (`leave`), size-optimised TU
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                   // 0x00410DE0 (std::bitset::test)

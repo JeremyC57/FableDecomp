@@ -6,7 +6,7 @@ struct SubObj {
     void method(long a);
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags; // +0
     long pad4;           // +4
     SubObj sub;          // +8

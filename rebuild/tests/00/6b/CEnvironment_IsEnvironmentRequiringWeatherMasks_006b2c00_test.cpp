@@ -8,7 +8,7 @@
 #define __stdcall
 #endif
 
-struct CEnvironment { unsigned char _pad0[0x1c0]; float m_snowStrength; float m_rainStrength; float m_mistStrength;
+class CEnvironment { public: unsigned char _pad0[0x1c0]; float m_snowStrength; float m_rainStrength; float m_mistStrength;
     long IsEnvironmentRequiringWeatherMasks() { return m_rainStrength > 1.0e-4f || m_snowStrength > 1.0e-4f || m_mistStrength > 1.0e-4f; } };
 int main()
 {

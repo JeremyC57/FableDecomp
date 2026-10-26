@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_baseCalls = 0;
 static C3DVector g_basePos;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ResetPosition(const C3DVector& pos) { ++g_baseCalls; g_basePos = pos; }
 };
 struct CTCPhysicsNavigator : CTCPhysicsBase {

@@ -1,9 +1,9 @@
 #include <cstdio>
-struct C2DExtentsI { long X, Y; };
-struct C2DBoxI { long X0, Y0, X1, Y1; C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { } };
-struct CPixelFormat { long FormatIndex; CPixelFormat() { } };
+class C2DExtentsI { public: long X, Y; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { } };
+class CPixelFormat { public: long FormatIndex; CPixelFormat() { } };
 static int g_surfaceUninit = 0, g_copies = 0, g_texUninit = 0, g_texInit = 0; static C2DBoxI g_dst(9, 9, 9, 9); static const void* g_src = 0; static long g_initX = 0, g_initFmt = 0;
-struct CSurface {
+class CSurface { public:
     int Id; long Format;
     virtual void v00() { }
     ~CSurface() { Uninitialise(); }
@@ -11,7 +11,7 @@ struct CSurface {
     CPixelFormat GetPixelFormat() const { CPixelFormat f; f.FormatIndex = Format; return f; }
     void CopyFromSurface(const C2DBoxI* d, const CSurface* s, const C2DBoxI* sb, unsigned long) { ++g_copies; g_dst = *d; g_src = s; (void)sb; }
 };
-struct CTexture {
+class CTexture { public:
     void* PD3DTexture;
     bool IsInitialised() const { return PD3DTexture != 0; }
     void Uninitialise() { ++g_texUninit; PD3DTexture = 0; }
@@ -19,7 +19,7 @@ struct CTexture {
     { ++g_texInit; g_initX = size->X * 1000 + size->Y + levels * 1000000; g_initFmt = format->FormatIndex; PD3DTexture = this; return true; }
     CSurface GetSurface(long) { CSurface s; s.Id = 7; s.Format = 0; return s; }
 };
-struct CMinimapData {
+class CMinimapData { public:
     C2DExtentsI MinimapExtents; CSurface MinimapSurface; CTexture MinimapTexture;
     void InitialiseMinimapTexture();
 };

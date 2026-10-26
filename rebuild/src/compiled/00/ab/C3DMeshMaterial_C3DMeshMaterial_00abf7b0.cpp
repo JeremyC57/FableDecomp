@@ -6,18 +6,18 @@
 //
 #include "rebuild_abi.h"
 
-struct CCharString {
+class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     ~CCharString();                                     // 0x0099EAE0
     void* m_pStringData;                                // CCharStringData*
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v0();
     CBaseClass();                                  // 0x0099A2D0 (vtable store only)
 };
-struct CIVCountedPointeeBase;
-struct C3DMeshMaterial : CBaseClass {
+class CIVCountedPointeeBase;
+class C3DMeshMaterial : public CBaseClass { public:
     long                   MaterialIndex;            // +0x04
     CCharString            Name;                     // +0x08
     long                   DecalID;                  // +0x0c

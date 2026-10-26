@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -48,7 +48,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCreatureModeManager {                      // interface type 0x31
+class CTCCreatureModeManager { public:                      // interface type 0x31
     bool HasMode(unsigned long mode);                // 0x0073A8A0
 };
 struct CBaseIntelligentPointer {
@@ -56,17 +56,17 @@ struct CBaseIntelligentPointer {
     CThing* PItem;
     CThing* GetPItem() const;                        // 0x00A01B50
 };
-struct CKrakenTentacleDef {
+class CKrakenTentacleDef { public:
     unsigned char _pad00[0x44];
     float TentacleTimeBetweenAttacks;                // +0x44
 };
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
-struct CWorld {
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 extern long g_framesPerSecond;                       // 0x01375550
 
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x04];

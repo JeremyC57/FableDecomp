@@ -39,7 +39,7 @@ struct CCrimeSet {                          // retail STLport set<long>, 12 byte
     SCrimeIterator end() const { return SCrimeIterator(_M_header); }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                // +0x00
     unsigned char _pad_0x04[0x60];
     CCrimeSet     PlayersCrimes;            // +0x64

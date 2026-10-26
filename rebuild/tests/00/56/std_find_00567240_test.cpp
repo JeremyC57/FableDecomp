@@ -21,7 +21,7 @@ public:
     unsigned short* _M_end_of_storage;
 };
 }
-struct CWideStringData {
+class CWideStringData { public:
     stl::basic_string_ushort Data;
     long NoRefs;
 };

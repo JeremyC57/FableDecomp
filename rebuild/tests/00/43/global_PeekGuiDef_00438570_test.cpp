@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CPlayerGuiDef
-{
+class CPlayerGuiDef
+{ public:
     CPlayerGuiDef();
     int x;
 };

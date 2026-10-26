@@ -14,7 +14,7 @@
 // the last action and becomes a tail jump.
 // Header note: engine/CDefClassBase.h and CSummonDef.h hold flattened layouts without the counted-def
 // virtuals, so the def classes are modelled locally with a _Retail suffix.
-template <class T> struct CDefPointer;
+template <class T> class CDefPointer;
 struct CSummonDef_Retail;
 
 struct CDefClassBase_Retail
@@ -26,8 +26,8 @@ struct CDefClassBase_Retail
 };
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer()
@@ -45,8 +45,8 @@ struct CDefPointer
 struct CThingDef : CDefClassBase_Retail {};
 struct CSummonDef_Retail : CDefClassBase_Retail {};
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char          _pad_0x00[0x70];
     CDefPointer<CThingDef> PDef;                    // +0x70
 };
@@ -62,8 +62,8 @@ struct CTCBase_Calls                                   // engine/CTCBase.h layou
     void OnInitialActivate();                       // 0x00686870
 };
 
-struct CTCAISummon : CTCBase_Calls
-{
+class CTCAISummon : public CTCBase_Calls
+{ public:
     CDefPointer<CSummonDef_Retail> PSummonDef;             // +0x0c
     void OnInitialActivate();
 };

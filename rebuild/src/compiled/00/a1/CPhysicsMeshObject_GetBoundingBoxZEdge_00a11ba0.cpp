@@ -7,19 +7,19 @@
 // Shape: `PositionMatrix.Rotate(C3DVector(...))` -- the landed CMatrix3x4::Rotate of GetCentreOfGravity (0x00A11EC0, NAMED result,
 // memberwise copy constructor); the two zero components fold into `(a + b) * 0.0f` per row (the 0.0f pool constant), the half
 // extent is the only frame word of the temporary vector; the box is reached through a reference (`add eax,84h`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Row[3];                              // the rotation rows
     C3DVector Position;
     C3DVector Rotate(const C3DVector& v) const
@@ -32,12 +32,12 @@ struct CMatrix3x4 {
     }
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char  _pad00[0x84];
     C3DBoundingBox BoundingBox;                    // +0x84 (retail; 12-byte containers before it)
 };
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     const CPhysicsMesh* Mesh;                      // +0x04 CIVCountedPointer<const CPhysicsMesh>
     CMatrix3x4          PositionMatrix;            // +0x08

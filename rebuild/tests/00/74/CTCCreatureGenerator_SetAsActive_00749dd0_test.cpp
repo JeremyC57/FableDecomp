@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     char pad00[0x4c]; bool active; char pad4d[0x0f]; unsigned char activationState;
     void SetAsActive(bool value);
 };

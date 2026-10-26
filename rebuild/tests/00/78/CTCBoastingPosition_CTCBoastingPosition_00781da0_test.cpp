@@ -1,7 +1,7 @@
 // Behaviour test for 00781da0 CTCBoastingPosition::CTCBoastingPosition(CThing*): base gets the owner, both pointers start empty, the three flags start false.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 
 struct CBaseIntelligentPointer
 {
@@ -12,16 +12,16 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     virtual void v00() {}
     CIntelligentPointer() {}
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -30,8 +30,8 @@ struct CTCBase
     virtual ~CTCBase() {}
 };
 
-struct CTCBoastingPosition : CTCBase
-{
+class CTCBoastingPosition : public CTCBase
+{ public:
     CIntelligentPointer<CThing> PBoastingPodium;
     C3DVector     OrbPosition;
     bool          PositionActivated;

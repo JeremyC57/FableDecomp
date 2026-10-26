@@ -6,7 +6,7 @@ struct Sub28 {
     void Cleanup();
 };
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad0[0x28];
     Sub28 sub;
     void OnDie();

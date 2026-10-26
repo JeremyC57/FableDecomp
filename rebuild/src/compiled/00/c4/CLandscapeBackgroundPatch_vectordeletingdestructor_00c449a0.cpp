@@ -1,4 +1,4 @@
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
 };
 

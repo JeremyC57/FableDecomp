@@ -9,7 +9,7 @@
 //
 // __fastcall(this, unsigned flags) modeled as __fastcall(this, edx_dummy, flags).
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 // scalar destructor called first (relocation-masked target)
 extern void FABLE_FASTCALL CAttackPatternDef_dtor(CLandscapeBackgroundPatch* thisptr);

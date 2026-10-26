@@ -6,9 +6,9 @@
 // move to state 5
 static int g_frames = 0, g_endAt = 1000, g_created = 0, g_lines = 0, g_delays = 0;
 static float g_clock = 0;                               // seconds left on the local timer
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { int id; bool dead; bool IsDead() const { return dead; } };
-struct CTimer { void SetTime(float t) { g_clock = t; } float GetTime() const { return g_clock; } };
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: int id; bool dead; bool IsDead() const { return dead; } };
+class CTimer { public: void SetTime(float t) { g_clock = t; } float GetTime() const { return g_clock; } };
 struct CThings {
     CScriptThing Items[8]; unsigned int Count;
     CThings() : Count(0) { }
@@ -18,7 +18,7 @@ struct CThings {
     const CScriptThing& front() const { return Items[0]; }
 };
 static CThings g_world;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; g_clock -= 1.0f; }
     void SetCreatureCreationDelayFrames(long n) const { if (n == 1) ++g_delays; }
     void ResetCreatureCreationDelayFrames() const { --g_delays; }

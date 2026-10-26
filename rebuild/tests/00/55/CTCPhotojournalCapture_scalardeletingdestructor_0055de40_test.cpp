@@ -19,8 +19,8 @@ static void Check(bool ok, int line)
 
 static int g_removed = 0, g_wideDtors = 0, g_baseDtors = 0, g_vectorFrees = 0, g_step = 0;
 static int g_removeStep = 0, g_vecStep = 0, g_fileStep = 0, g_descStep = 0, g_baseStep = 0;
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -28,7 +28,7 @@ struct CTCBase {
     virtual ~CTCBase() { ++g_baseDtors; g_baseStep = ++g_step; }   // stub for 0x00686830
     void RemoveFromGlobalTCs() { ++g_removed; IsInGlobalUpdateTCs = false; g_removeStep = ++g_step; }   // stub for 0x00686DF0
 };
-struct CWideString {
+class CWideString { public:
     int* Step;
     CWideString() : Step(0) { }
     ~CWideString() { ++g_wideDtors; if (Step) *Step = ++g_step; }
@@ -47,7 +47,7 @@ struct CComponentVector {
         g_vecStep = ++g_step;
     }
 };
-struct CTCPhotojournalCapture : CTCBase {
+class CTCPhotojournalCapture : public CTCBase { public:
     CWideString      Description;
     bool             DiscardScreenShot;
     long             FrameCounter;

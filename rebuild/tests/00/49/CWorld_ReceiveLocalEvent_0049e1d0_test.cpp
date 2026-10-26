@@ -4,9 +4,9 @@
 #include "engine/CWorld.h"
 #include "engine/CGameEvent.h"
 struct CWorld_Methods;
-struct CDisplayEngine;
+class CDisplayEngine;
 typedef void (CWorld_Methods::*TWorldEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     TWorldEventFunction ActionFunction;                  // +0x00
     TWorldEventFunction LocalActionFunction;             // +0x10
     unsigned char       FeedbackFunction[0x10];          // +0x20 CDisplayEngine pointer to member

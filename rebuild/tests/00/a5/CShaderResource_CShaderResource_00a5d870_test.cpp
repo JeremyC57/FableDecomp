@@ -19,11 +19,11 @@ template <class T> struct CVectorBase {
 template <class T> struct CSTLportVector : CVectorBase<T> {
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
-template <class T> struct CArray : CSTLportVector<T> { };
+template <class T> class CArray : public CSTLportVector<T> { public: };
 static int g_inputs = 0;
-struct CVertexShaderInput { virtual ~CVertexShaderInput() { } long m_body[6]; CVertexShaderInput() { ++g_inputs; for (int i = 0; i < 6; ++i) m_body[i] = 0; } };
-struct CShaderDataBank; struct CShaderRenderManager; struct CShaderBase; struct SElement;
-struct CShaderResource : CBaseClassNonCopyable {
+class CVertexShaderInput { public: virtual ~CVertexShaderInput() { } long m_body[6]; CVertexShaderInput() { ++g_inputs; for (int i = 0; i < 6; ++i) m_body[i] = 0; } };
+class CShaderDataBank; class CShaderRenderManager; class CShaderBase; struct SElement;
+class CShaderResource : public CBaseClassNonCopyable { public:
     CShaderDataBank* ShaderBank; CArray<CShaderBase*> Shaders; CShaderRenderManager* ShaderRenderManager;
     CVertexShaderInput VertexShaderInput; SElement* VertexShaderDeclaration; long VertexFormat;
     CShaderResource() : ShaderBank(0), VertexShaderDeclaration(0), VertexFormat(0) { ShaderRenderManager = 0; }

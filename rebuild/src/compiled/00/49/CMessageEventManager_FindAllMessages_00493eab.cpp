@@ -3,7 +3,7 @@
 // CMessageEventManager::FindAllMessages<CMessageEventFilter_IsOfType>(const CMessageEventFilter_IsOfType& filter, CMessagePtrList& found) -- append every event of the message list (+4) accepted by the filter (operator() @ 0x006AF1C0) to the output pointer list (push_back @ 0x00493D16), returning how many the output list now holds (an STLport size(): a walk of the list)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00493EAB, length 81 bytes.
 // Callees: CMessageEventFilter_IsOfType::operator() @ 0x006AF1C0 (label propagated), list<CMessageEvent*>::push_back @ 0x00493D16 (thiscall, the pointer by const reference: the event pointer is spilled to the one frame slot and its address pushed). Size-optimised module with the frame pointer kept (`push ebp ; mov ebp,esp ; push ecx`, `leave`): optimize("s") + optimize("y", off). Shape: the manager in ebx, the node in esi and the event in edi, the count loop at the end, `ret 8`.
-struct CMessageEvent;                              // PDB layout: Type +8, OriginatorUID +0x20, TimeStamp +0x34, Lifespan +0x38, MessageID +0x40, POriginator +0x48 (0x58 bytes)
+class CMessageEvent;                              // PDB layout: Type +8, OriginatorUID +0x20, TimeStamp +0x34, Lifespan +0x38, MessageID +0x40, POriginator +0x48 (0x58 bytes)
 struct SMessageNode {                              // the STLport-style list node: next, prev, then the event at +8
     SMessageNode*  m_pNext;
     SMessageNode*  m_pPrev;
@@ -14,7 +14,7 @@ struct CMessageList {                              // list<CMessageEvent>: one s
     SMessageNode* m_pHead;
 };
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long Type;
     bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
 };
@@ -36,8 +36,8 @@ inline long Distance(SMessagePtrNode* first, SMessagePtrNode* last)   // STLport
     return count;
 }
 
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                            // +0x00
     CMessageList Messages;                         // +0x04
     template<class TFilter> long FindAllMessages(const TFilter& filter, CMessagePtrList& found)

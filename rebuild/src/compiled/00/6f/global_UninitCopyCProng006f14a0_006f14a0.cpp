@@ -15,8 +15,8 @@
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CBaseObject;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -27,12 +27,12 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8 for CThingCreatureBase
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 for CThingCreatureBase
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 #pragma pack(push, 1)
-struct C3DVector {                               // byte-packed record (the PDB places CProng::Prong at +1)
+class C3DVector { public:                               // byte-packed record (the PDB places CProng::Prong at +1)
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

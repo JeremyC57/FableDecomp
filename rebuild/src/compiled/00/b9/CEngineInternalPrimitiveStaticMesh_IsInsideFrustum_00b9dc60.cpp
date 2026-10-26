@@ -14,7 +14,7 @@
 #include "engine/C3DMeshInfo.h"
 #include "engine/CEngineCamera.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -22,8 +22,8 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float LengthSquared() const { return Z * Z + Y * Y + X * X; }
 };
-struct CPlane { C3DVector Normal; float D; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class CPlane { public: C3DVector Normal; float D; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
 float __fastcall CEnginePrimitive_ComputeFadeDistance(const CEngineInternalPrimitiveStaticMesh* self);   // 0x00BEB660
 

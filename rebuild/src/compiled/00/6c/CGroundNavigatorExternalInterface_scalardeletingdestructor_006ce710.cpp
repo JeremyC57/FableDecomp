@@ -1,4 +1,4 @@
-struct CGroundNavigatorExternalInterface {
+class CGroundNavigatorExternalInterface { public:
     void* vftable;
 };
 

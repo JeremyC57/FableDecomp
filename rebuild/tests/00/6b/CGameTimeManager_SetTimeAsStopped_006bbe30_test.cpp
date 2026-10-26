@@ -4,7 +4,7 @@
 static char g_seq[64] = "";
 static const long* g_handle = 0; static long g_value = -1; struct SSetIterator { long m_a, m_b; };
 struct CStopperSet { unsigned char _body[12]; SSetIterator* Insert(SSetIterator* result, const long* handle) { std::strcat(g_seq, "I"); g_handle = handle; g_value = *handle; return result; } void Erase(const long* handle) { std::strcat(g_seq, "E"); g_handle = handle; g_value = *handle; } };
-struct CGameTimeManager { unsigned char _pad[0x2c]; CStopperSet m_stoppers; long m_nextStopperHandle;
+class CGameTimeManager { public: unsigned char _pad[0x2c]; CStopperSet m_stoppers; long m_nextStopperHandle;
     void SetTimeAsStopped(bool stopped, long* handle) { if (stopped) { *handle = m_nextStopperHandle++; SSetIterator where; m_stoppers.Insert(&where, handle); } else { m_stoppers.Erase(handle); } } };
 
 int main() {

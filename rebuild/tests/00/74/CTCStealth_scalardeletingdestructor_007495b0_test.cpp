@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCStealth {
+class CTCStealth { public:
     void* vftable;
     int destroyed;
 };

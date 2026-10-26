@@ -5,7 +5,7 @@
 
 // CCharString model: a nullable payload pointer; operator< is the retail inline (same payload -> false,
 // null this -> true, null other -> false, else the payload compare); FastCompare = length first, then bytes.
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p(0) {}
     CCharString(const char* s) : p(s) {}
@@ -37,7 +37,7 @@ static bool SameString(const CCharString& a, const CCharString& b)
 // unless both share it; the last release calls the block's destroy function on the object and frees the block).
 static int g_destroyed = 0;
 static void DestroyObject(void* data) { (void)data; ++g_destroyed; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
@@ -135,7 +135,7 @@ void __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last, _Ra
 static const int kKeys[] = { 7, -2147483647 - 1, 3, -16, 3, 42, 0, 2147483647, -19, 1, 5 };
 static const int kSorted[] = { -2147483647 - 1, -19, -16, 0, 1, 3, 3, 5, 7, 42, 2147483647 };
 
-struct CBaseClass { virtual ~CBaseClass() {} };
+class CBaseClass { public: virtual ~CBaseClass() {} };
 struct Payload : CBaseClass { CCountedPointer<CVolumeObject> Cache; };
 
 static CCountedPointer<CVolumeObject>* g_ptrs[11];

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCMapwho { int tag; };
+class CTCMapwho { public: int tag; };
 
 static int g_method = 0;
 static int g_free = 0;

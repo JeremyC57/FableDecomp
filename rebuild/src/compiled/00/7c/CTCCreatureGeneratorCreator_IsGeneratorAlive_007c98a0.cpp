@@ -13,7 +13,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -34,7 +34,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCreatureGenerator {                   // interface 0x3d
+class CTCCreatureGenerator { public:                   // interface 0x3d
     unsigned char _pad00[0x89];
     bool Destroyed;                             // +0x89 (PDB +0xA5)
 };

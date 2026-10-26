@@ -9,9 +9,9 @@
 //   FireNumber dword is copied last.
 // Layout: Ego_r.pdb puts PAICreature/PBuilding/FireNumber at +0xb4/+0xbc/+0xc4 (PDB CCreatureActionBase 0xb4 bytes,
 //   retail 0xa8): +0xa8/+0xb0/+0xb8 here; engine/CCreatureAction_DowseFire.h is the PDB build and is not used.
-struct CBaseObject;
-struct CThingAICreature;
-struct CThingBuilding;
+class CBaseObject;
+class CThingAICreature;
+class CThingBuilding;
 
 struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -22,18 +22,18 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // one vtable per instantiation
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // one vtable per instantiation
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_DowseFire : CCreatureActionBase {   // vtable 0x01274D0C
+class CCreatureAction_DowseFire : public CCreatureActionBase { public:   // vtable 0x01274D0C
     CIntelligentPointer<CThingAICreature> PAICreature;   // +0xa8 (PDB +0xb4)
     CIntelligentPointer<CThingBuilding> PBuilding;       // +0xb0 (PDB +0xbc)
     unsigned long FireNumber;                            // +0xb8 (PDB +0xc4)

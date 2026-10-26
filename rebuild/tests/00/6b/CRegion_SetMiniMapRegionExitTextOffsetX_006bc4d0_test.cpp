@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
 struct CRegionExitTextOffsetMap {
     const char* m_keys[8]; C2DVector m_values[8]; int m_count;
@@ -18,7 +18,7 @@ struct CRegionExitTextOffsetMap {
     }
 };
 
-struct CRegion {
+class CRegion { public:
     CRegionExitTextOffsetMap MiniMapRegionExitTextOffsets;
     void SetMiniMapRegionExitTextOffsetX(const CCharString& exitName, float x)
     {

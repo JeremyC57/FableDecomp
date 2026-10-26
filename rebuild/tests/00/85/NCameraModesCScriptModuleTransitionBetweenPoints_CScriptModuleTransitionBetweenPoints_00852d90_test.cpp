@@ -1,9 +1,9 @@
 // Behaviour test for 0x00852D90 NCameraModes::CScriptModuleTransitionBetweenPoints(const CThing*, ...):
 // the set-up call receives the thing's focal point twice plus the forwarded arguments.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 struct CTCGraphicAppearance { C3DVector pos; C3DVector GetCameraFocalPos(float t) const { return C3DVector(pos.X * t, pos.Y, pos.Z); } };
-struct CThing { CTCGraphicAppearance* m_pGraphicAppearance; };
+class CThing { public: CTCGraphicAppearance* m_pGraphicAppearance; };
 struct IP { const CThing* item; IP(const CThing* t) : item(t) {} const CThing* operator->() const { return item; } };
 struct Module {
     IP PThing; C3DVector StartPos, EndPos, StartLook, EndLook; long Frames; float FOV;

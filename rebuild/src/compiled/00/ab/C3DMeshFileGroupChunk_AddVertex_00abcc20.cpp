@@ -5,10 +5,10 @@
 // passes an empty tag temporary homed in the dead argument slot (lea esi,[esp+10h]).
 //
 #include "rebuild_abi.h"
-struct C3DVertexBlend2 { long BoneIndex; float Weight; };
+class C3DVertexBlend2 { public: long BoneIndex; float Weight; };
 void* operator new(unsigned int, void* p) { return p; }
 struct SInsertTag { SInsertTag() {} };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     void Insert(T* where, const T& value, const SInsertTag& tag, long count, long flag);   // 0x00ABEB40
     bool Empty() const { return m_begin == m_end; }
@@ -23,7 +23,7 @@ template<class T> struct CArray {
         }
     }
 };
-struct C3DMeshFileGroupChunk {
+class C3DMeshFileGroupChunk { public:
     unsigned char _base[0x30];     // C3DMeshFileChunk (0x2c) + BoneIndex (+0x2c)
     CArray<C3DVertexBlend2> VertexList;   // +0x30
     void AddVertex(const C3DVertexBlend2& vertex);

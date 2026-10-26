@@ -18,9 +18,9 @@
 //   GetLength into a stack long; the explicit Close() precedes the inline destructor's own Close().
 #include "fable_string.h"
 
-struct CASuspendableProcess;
-struct CAFile;
-struct CFileInformation;
+class CASuspendableProcess;
+class CAFile;
+class CFileInformation;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_READ_WRITE = 2, FILE_ACCESS_WRITE = 4 };
 
 struct CBaseClassNonCopyable {
@@ -28,7 +28,7 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();        // 0x0099A300
 };
 
-struct CDiskFileWin32 : CBaseClassNonCopyable {   // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0122D06C, 0x1c bytes
     FileAccessType AccessType;               // +0x04
     long Position;                           // +0x08
     long Length;                             // +0x0c

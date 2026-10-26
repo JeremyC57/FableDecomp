@@ -10,7 +10,7 @@
 // release (`mov eax,[ecx+4] ; ... ; dec eax ; mov [ecx+4],eax`, no null test), `mov al,bl` as the bool result.
 #include "engine/CTCWeapon.h"
 
-struct CDefPointeeBase {                                    // completes the header's forward declaration
+class CDefPointeeBase { public:                                    // completes the header's forward declaration
     virtual void v00();
     virtual void Destroy();                                 // slot 1 (+0x04): called when the count drops to zero
     long RefCount;                                          // +0x04
@@ -20,7 +20,7 @@ struct CDefPointeeBase {                                    // completes the hea
 
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1, WEAPON_CLASS_2 = 2, WEAPON_CLASS_3 = 3 };
 
-struct CWeaponDef : CDefPointeeBase {                       // retail layout (0x0c below Ego_r.pdb from +0x50, 0x10 below past ArrowTrails)
+class CWeaponDef : public CDefPointeeBase { public:                       // retail layout (0x0c below Ego_r.pdb from +0x50, 0x10 below past ArrowTrails)
     unsigned char _pad_0x08[0x20];
     long          Type;                                     // +0x28 EWeaponType
     EWeaponClass  Class;                                    // +0x2c
@@ -43,7 +43,7 @@ struct CWeaponDefPointer {                                  // CDefPointer<const
     CWeaponDef* operator->() const { return Object; }
 };
 
-struct CThing;
+class CThing;
 
 struct CTCWeapon_Getters : CTCWeapon {
     bool IsProjectileWeaponAutoLoading() const;

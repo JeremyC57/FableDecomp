@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n) { p = (char*)s; last_s = s; last_n = n; }
     static const char* last_s;
@@ -9,7 +9,7 @@ struct CCharString {
 const char* CCharString::last_s = 0;
 int CCharString::last_n = 0;
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     CCharString GetClassTypeName();
 };
 

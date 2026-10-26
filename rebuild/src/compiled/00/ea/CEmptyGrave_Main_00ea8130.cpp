@@ -17,19 +17,19 @@
 // Shape: the sword assignment is the inline CScriptThing memberwise operator= (counted PImp), the GetThingWithScriptName temporary
 //   is destroyed inline; the spawn is the SPAWN macro shape `AddSpawnedFunction(new CSpawnedFunc<T>(CCharString("ParentClass.") +
 //   "UnLimboSword", 0, ParentClass, &T::UnLimboSword), "")` whose three name temporaries get conditional-destruction flags.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     __forceinline void Release()
@@ -76,21 +76,21 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD16(ma) VPAD2(mb) VPAD1(mc)                      // slots 1..19
     virtual bool MsgIsUsedBy(const CCharString& name) const;   // slot 20 (+0x50)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() { }                   // inline here; out-of-line copy 0x004AA840
 };
-struct CScriptGameResourceObjectScriptedThingBase {     // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0127094C, 0x10 bytes
     virtual void h000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
-struct CScriptGameResourceObjectMovieBase {             // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
     virtual void m000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
@@ -105,7 +105,7 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
 };
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -122,7 +122,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
     virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority); // slot 8 (+0x20)
@@ -164,7 +164,7 @@ struct CQ_SunnyvaleMasterData {
     long          JackBossBattleResult;                 // +0x88
     bool          JackBossBattleHeroGoodAtEnd;          // +0x8c
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

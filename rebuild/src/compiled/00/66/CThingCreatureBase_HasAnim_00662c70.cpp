@@ -10,10 +10,10 @@
 // (`lea ecx,[esi+34h]`) and releases through that register (`dec [esi+4] ; jne`), the bool result riding in bl. A
 // CDefPointer destructor re-reads the address-taken slot after the call in the lane (and forms `&m_refCount`), so the
 // release is written by hand on a named pointer local (same behaviour as the original scope-exit release).
-struct CCharString;
-struct CAnimFilterBase;
+class CCharString;
+class CAnimFilterBase;
 
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -24,21 +24,21 @@ struct CDefPointeeBase {                        // a counted definition object
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
 };
 
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet AnimationSet;                 // +0x34
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -55,12 +55,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& 
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;
 };
 

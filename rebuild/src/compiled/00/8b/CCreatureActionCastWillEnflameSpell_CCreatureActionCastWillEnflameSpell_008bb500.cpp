@@ -1,5 +1,5 @@
 // CCreatureAction_CastWillEnflameSpell::CCreatureAction_CastWillEnflameSpell(CThingCreatureBase*, CThing*, bool, long) -- targeted form: base CCombatActionBase(owner, 150, zeroed sound), Level, IsZTargetting, target set, animation "ST_RELEASE_ENFLAME"
-// Leaf: ??0CCreatureAction_CastWillEnflameSpell@@QAE@PAUCThingCreatureBase@@PAUCThing@@_NJ@Z
+// Leaf: ??0CCreatureAction_CastWillEnflameSpell@@QAE@PAVCThingCreatureBase@@PAVCThing@@_NJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BB500, length 171 bytes (+ int3 padding), `ret 10h`. Vtable 0x0127B9DC.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CBaseIntelligentPointer ctor
 // 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
@@ -8,16 +8,16 @@
 // (`PTarget = CIntelligentPointerThing(x)`: temporary in the dead sound-pair slot); the scoped named animation string lands in
 // the owner's dead argument slot.
 // Layout: Level / IsZTargetting at retail +0x114 / +0x118 (PDB +0x12c / +0x130).
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CSoundPair {                             // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                             // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -37,7 +37,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
     CIntelligentPointerThing PTarget;           // +0xa8 (the combat action's target)
@@ -46,7 +46,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_CastWillEnflameSpell : CCombatActionBase {   // vtable 0x0127B9DC
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:   // vtable 0x0127B9DC
     long Level;                                 // +0x114 (PDB +0x12c)
     bool IsZTargetting;                         // +0x118 (PDB +0x130)
     virtual void v00();

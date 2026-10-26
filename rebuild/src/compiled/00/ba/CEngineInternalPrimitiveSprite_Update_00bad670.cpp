@@ -11,9 +11,9 @@
 //   one byte RMW as retail); the frame getter is the landed bank model with a frame index; every offset branch shares the tail call.
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:
@@ -43,7 +43,7 @@ struct CGraphicInfoFrameInfo {
     unsigned short Width;                          // +0x06
     unsigned short Height;                         // +0x08
 };
-struct CGraphicInfoFrame {                         // 16 bytes
+class CGraphicInfoFrame { public:                         // 16 bytes
     unsigned char          _pad[0xc];
     CGraphicInfoFrameInfo* m_pInfo;                // +0x0c
     void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
@@ -90,7 +90,7 @@ enum {
     SPRITE_NO_ZBUFFER      = 0x200
 };
 
-struct CEngineInternalPrimitiveSprite : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveSprite : public CEngineInternalPrimitiveBase { public:
     C3DVector     WorldPos;                        // +0x48
     unsigned long BankIndex;                       // +0x54
     void*         Texture;                         // +0x58

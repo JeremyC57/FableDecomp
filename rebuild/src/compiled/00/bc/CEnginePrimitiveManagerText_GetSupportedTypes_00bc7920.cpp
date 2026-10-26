@@ -38,7 +38,7 @@ __declspec(noinline) void CRetailVector_long::InsertOverflow(long* where, const 
 }
 #pragma auto_inline(on)
 
-struct CEnginePrimitiveManagerText {
+class CEnginePrimitiveManagerText { public:
     void GetSupportedTypes(CRetailVector_long& types);
 };
 

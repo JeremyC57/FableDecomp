@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CFireballSpellLevelDef
-{
+class CFireballSpellLevelDef
+{ public:
     void* vftable;
 };
 extern void* const g_CFireballSpellLevelDef_vftable;

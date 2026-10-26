@@ -19,7 +19,7 @@ public:
     virtual void v000();
 };
 
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer { CEnginePersistentPrimitiveBase* Object; CIVCountedPointer() : Object(0) { } };
 
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
@@ -29,7 +29,7 @@ public:
     virtual void v001();
 };
 
-struct CRGBColour {                               // B,G,R,A bytes over a packed 32-bit colour (4-aligned)
+class CRGBColour { public:                               // B,G,R,A bytes over a packed 32-bit colour (4-aligned)
     union {
         struct { unsigned char B, G, R, A; };
         unsigned long Colour;
@@ -37,7 +37,7 @@ struct CRGBColour {                               // B,G,R,A bytes over a packed
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 
@@ -45,7 +45,7 @@ C3DVector* __fastcall Copy_SElement12(C3DVector* first, C3DVector* last, C3DVect
                                       const SRandomAccessIteratorTag& category, long* distance);   // 0x0074CA20
 
 template<class T> struct SAllocProxy { T* _M_data; SAllocProxy(T* p) : _M_data(p) { } };
-template<class T> struct CArray {                  // the engine's 12-byte vector
+template<class T> class CArray { public:                  // the engine's 12-byte vector
     T* first; T* last; SAllocProxy<T> end_of_storage;
     void erase(T* f, T* l) { last = Copy_SElement12(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
     void clear() { erase(first, last); }
@@ -53,9 +53,9 @@ template<class T> struct CArray {                  // the engine's 12-byte vecto
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase {                                  // vtable 0x0129F3F4
+class CPSCBase { public:                                  // vtable 0x0129F3F4
     virtual void v000();
     CParticleSystem* ParticleSystem;               // +0x04
     bool             UpdateStarted : 1;            // +0x08 bit 0
@@ -63,7 +63,7 @@ struct CPSCBase {                                  // vtable 0x0129F3F4
     CPSCBase();                                    // 0x00AF2620
 };
 
-struct CPSCLight : CPSCBase {                      // vtable 0x012A0624
+class CPSCLight : public CPSCBase { public:                      // vtable 0x012A0624
     long          LightLifeTimer;                  // +0x0c
     long          LightRespawnDelayTimer;          // +0x10
     bool          LightIsAlive;                    // +0x14

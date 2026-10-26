@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <cstring>
 #include <cmath>
-struct CCharString {
+class CCharString { public:
     char Text[48];
     CCharString() { Text[0] = 0; }
     CCharString(const char* text) { std::strncpy(Text, text, 47); Text[47] = 0; }
 };
 static int g_frames = 0;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     long behaviour; float angles[16]; int nAngles; char tags[256]; int altarLookups;
     void NewScriptFrame() { ++g_frames; }
     CScriptThing GetThingWithScriptName(const CCharString& name) { if (std::strcmp(name.Text, "StatueAltar") == 0) ++altarLookups; CScriptThing t; t.id = 5; return t; }

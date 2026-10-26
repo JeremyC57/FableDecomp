@@ -10,8 +10,8 @@
 // BoastOn +0x2C, HeroInsideRadius +0x2D, PParticleEffect +0x2E (unaligned: the intelligent pointer is declared packed).
 // Shape: the effect name is a named local in its own block (destroyed after the intelligent-pointer temporary); the pointer
 // assignment reads the temporary's item before forming the member address; the parent thing is re-read for each call.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -53,7 +53,7 @@ public:
 };
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -62,7 +62,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 #pragma pack(push, 1)
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for <CThing>
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for <CThing>
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {

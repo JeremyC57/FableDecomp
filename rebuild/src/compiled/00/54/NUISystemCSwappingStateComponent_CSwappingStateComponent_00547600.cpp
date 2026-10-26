@@ -54,12 +54,12 @@ struct CSwapStateVector : CSwapStateVectorBase { // std::vector<std::pair<unsign
     explicit CSwapStateVector(const CSwapStateAllocator& a = CSwapStateAllocator()) : CSwapStateVectorBase(a) {}
 };
 
-struct CChangingStateComponent : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x15C bytes
+class CChangingStateComponent : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x15C bytes
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long owner);         // 0x0052CC50
 };
 
-struct CSwappingStateComponent : CChangingStateComponent {   // vtables 0x012485AC / 0x01248584 / 0x0124857C
+class CSwappingStateComponent : public CChangingStateComponent { public:   // vtables 0x012485AC / 0x01248584 / 0x0124857C
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

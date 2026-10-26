@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of CTCActivationReceptorBase::AddTrigger @ 0x00c89b40
-struct CTCActivationTrigger;
+class CTCActivationTrigger;
 
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     char pad0[0x18];
     int sub18;          // +0x18
     char pad1c[0x04];   // +0x1c

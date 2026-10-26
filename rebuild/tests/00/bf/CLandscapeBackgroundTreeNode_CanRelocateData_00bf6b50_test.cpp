@@ -1,13 +1,13 @@
 #include <stdio.h>
 struct Inner { char pad[0x5c]; unsigned char flag; };
-struct CLandscapeBackgroundTreeNode { char pad[0xa4]; struct Inner* inner; };
-static int model(struct CLandscapeBackgroundTreeNode* node, long a) {
+class CLandscapeBackgroundTreeNode { public: char pad[0xa4]; struct Inner* inner; };
+static int model(class CLandscapeBackgroundTreeNode* node, long a) {
     (void)a;
     return node->inner->flag == 0;
 }
 int main(void) {
     struct Inner i0; struct Inner i1;
-    struct CLandscapeBackgroundTreeNode n;
+    class CLandscapeBackgroundTreeNode n;
     int r0, r1;
     i0.flag = 0;
     i1.flag = 7;

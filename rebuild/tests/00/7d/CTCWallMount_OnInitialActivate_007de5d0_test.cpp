@@ -11,15 +11,15 @@ typedef unsigned long long uint64_t_;
 #define UID_5 0x100000005ULL
 #endif
 class CThing;
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool active;
     virtual void SetPhysicsActive(bool a) { active = a; }
 };
@@ -42,7 +42,7 @@ public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
 static CThing* g_lookup = 0; static int64_t_ g_askedUID = 0;
-struct CThingManager { CThing* GetThingWithUID(int64_t_ uid) { g_askedUID = uid; return g_lookup; } };
+class CThingManager { public: CThing* GetThingWithUID(int64_t_ uid) { g_askedUID = uid; return g_lookup; } };
 static CThingManager g_manager;
 struct CBaseIntelligentPointer {
     virtual void v00() {}
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -72,13 +72,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 static int g_cleared = 0;
 struct CTCComponent82 { void ClearEntries() { ++g_cleared; } };
-struct CTCTargeted { bool Targetable; };
+class CTCTargeted { public: bool Targetable; };
 struct CTCBaseModel {
     virtual void v00() {}
     CThing* ParentThing;
     CThingManager* GetThingManager() { return &g_manager; }
 };
-struct CTCWallMount : CTCBaseModel {
+class CTCWallMount : public CTCBaseModel { public:
     long                        BoughtForAmount;
     CIntelligentPointer<CThing> Trophy;
     uint64_t_                   TrophyID;

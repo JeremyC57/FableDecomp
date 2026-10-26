@@ -6,7 +6,7 @@
 // so a local view carries the PDB names at the retail offsets.
 // Shape: `UseMannequin && PMannequin` -- the byte flag first (`cmp byte ptr`), the pointer loaded once into eax and pushed.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CTCInventoryClothing_Retail {
     unsigned char _pad_0x000[0x158];
     CThing*       PMannequin;                                    // +0x158

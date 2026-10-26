@@ -36,7 +36,7 @@ struct CChangingStateComponent_0053843b {
 };
 
 namespace NUISystem {
-struct CList : CChangingStateComponent_0053843b {
+class CList : public CChangingStateComponent_0053843b { public:
     void AddNonScrollingChild(const SComponentRef_0053843b&);
 };
 }

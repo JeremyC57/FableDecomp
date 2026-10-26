@@ -2,8 +2,8 @@
 // creature's navigation component when the creature has one (interface 7), otherwise does nothing.
 #include <cstdio>
 
-struct CTCBase { };
-struct CThing;
+class CTCBase { public: };
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -36,9 +36,9 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
-struct CTCCreatureNavigation : CTCBase {
+class CTCCreatureNavigation : public CTCBase { public:
     const CThing* ignored;
     int calls;
     void SetThingToIgnore(const CThing* thing) { ignored = thing; ++calls; }

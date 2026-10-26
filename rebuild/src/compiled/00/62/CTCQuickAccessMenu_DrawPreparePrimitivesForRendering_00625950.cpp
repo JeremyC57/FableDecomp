@@ -12,12 +12,12 @@
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CViewport* PViewport;                                      // +0x34
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void Update(float deltaTime);                      // slot 1 (+4)
     virtual void Render(CViewport* viewport, long a, long b, long c, long d);   // slot 2 (+8)
@@ -34,7 +34,7 @@ struct CComponentVector {                                      // STLport vector
 struct CTCBase_Draw {                                          // polymorphic root (vptr +0x00, ParentThing +0x04, flags +0x08)
     unsigned char _pad00[0x0c];
 };
-struct CTCQuickAccessMenu : CTCBase_Draw {                     // vtable 0x01258B74
+class CTCQuickAccessMenu : public CTCBase_Draw { public:                     // vtable 0x01258B74
     bool             Active;                                   // +0x0c
     CComponentVector Components;                               // +0x10
     bool             Quitting;                                 // +0x1c

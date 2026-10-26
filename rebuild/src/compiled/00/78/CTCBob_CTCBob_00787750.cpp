@@ -8,19 +8,19 @@
 // `mov ecx,[esi+4] ; push 2` argument setup and the call. Rhset/Pos/ForceVisible are not touched
 // here (OnInitialActivate 0x00787780 fills them), so no member initialisers.
 
-struct CThing
-{
+class CThing
+{ public:
     void SetCutscenePauseBehaviour(long behaviour);  // 0x004C78A0 (ECutsceneBehaviour)
 };
 
 enum { CUTSCENE_BEHAVIOUR_2 = 2 };
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward, Up; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward, Up; };
 
 #pragma pack(push, 1)
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
@@ -29,8 +29,8 @@ struct CTCBase
     CTCBase(CThing* owner);                         // 0x00686800
 };
 
-struct CTCBob : CTCBase                             // vtable 0x0126B76C
-{
+class CTCBob : public CTCBase                             // vtable 0x0126B76C
+{ public:
     CRightHandedSet Rhset;                          // +0x0c
     C3DVector       Pos;                            // +0x24
     bool            ForceVisible;                   // +0x30

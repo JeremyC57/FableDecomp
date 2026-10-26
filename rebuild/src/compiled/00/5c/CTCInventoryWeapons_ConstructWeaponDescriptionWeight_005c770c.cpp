@@ -16,19 +16,19 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
     ~CWideString();                                     // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol); };   // 0x009C95E0
-struct CMainGameComponent { unsigned char _pad[0x14]; CDataBank* TextBank; };   // +0x14
+class CMainGameComponent { public: unsigned char _pad[0x14]; CDataBank* TextBank; };   // +0x14
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 template <class T> struct vector {
     T* _M_start;
@@ -46,7 +46,7 @@ struct CDefBase {
     virtual void Destroy();
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -76,17 +76,17 @@ struct CMiscThingsDef : CDefBase {
     unsigned char _pad08[0x3c - 0x08];
     CWideString WeightUnits;                            // +0x3c
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long WeaponClass;                                   // +0x2c
 };
-struct CAugmentationDef : CDefBase {
+class CAugmentationDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                                 // +0x28
     unsigned char _pad2c[0x40 - 0x2c];
     vector<unsigned long> SlotValues;                   // +0x40
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CWeaponDef>* out);       // 0x0042B1A6
     bool GetSubDef(CDefPointer<CAugmentationDef>& out); // 0x0042AF9E
 };
@@ -111,7 +111,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAugmentationDef>
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
@@ -126,7 +126,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefBasePointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
 };
 bool __fastcall IsMeleeWeaponClass(long weaponClass);    // 0x005DA510
@@ -138,7 +138,7 @@ struct CPerItemData {
     long Extra;                                         // +0x20 (not set by the inline ctor)
     CPerItemData() : A(0), B(0), C(0), Flag(true), Index(-1) {}
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
     void RefreshActiveWeaponData() const;               // 0x005C30D3
     void ConstructWeaponDescriptionWeight(CWideString& description, long defIndex, float damage) const;

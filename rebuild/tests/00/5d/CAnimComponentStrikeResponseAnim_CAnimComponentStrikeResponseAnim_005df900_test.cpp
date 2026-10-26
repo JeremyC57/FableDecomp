@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_strings = 0;
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
-struct CAnimComponentBase { virtual void v00() { } unsigned long m_refCount; CAnimComponentBase() : m_refCount(1) { } };
-struct CAnimComponentStrikeResponseAnim : CAnimComponentBase { CCharString ResponseAnimName; CAnimComponentStrikeResponseAnim() { } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CAnimComponentBase { public: virtual void v00() { } unsigned long m_refCount; CAnimComponentBase() : m_refCount(1) { } };
+class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public: CCharString ResponseAnimName; CAnimComponentStrikeResponseAnim() { } };
 int main()
 {
     CAnimComponentStrikeResponseAnim a;

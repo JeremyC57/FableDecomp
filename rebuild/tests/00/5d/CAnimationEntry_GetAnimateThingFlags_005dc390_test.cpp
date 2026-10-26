@@ -1,8 +1,8 @@
 // Behaviour test for CAnimationEntry::GetAnimateThingFlags @ 0x005dc390: component bit 3 -> 1, bit 0 -> 2, bit 4 -> 4.
 #include <cstdio>
-struct CAnimComponentFlags { unsigned char _pad[8]; long Flags; };
+class CAnimComponentFlags { public: unsigned char _pad[8]; long Flags; };
 static CAnimComponentFlags g_component;
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex; long AnimName; long GroupName; void* Components;
     void GetFlagsComponent(CAnimComponentFlags** ppComponent) const { *ppComponent = &g_component; }
     unsigned long GetAnimateThingFlags() const

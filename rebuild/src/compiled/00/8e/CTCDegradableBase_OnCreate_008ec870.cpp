@@ -13,22 +13,22 @@
 // Shape: the temporary CDefPointer is zeroed after the argument pushes (declared, then the call chain);
 // its object is read into a local (edi) right after GetDef, and the release is written by hand on that
 // local (null test, `dec [edi+4] ; jne`, virtual destroy).
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                                // +0x8c
 };
 
-struct CDefClassBase;
-template<class T> struct CDefPointer {
+class CDefClassBase;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CDegradableDef;
-struct CDegradableInfo;
-struct CThingPhysical;
+class CDegradableDef;
+class CDegradableInfo;
+class CThingPhysical;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
@@ -48,7 +48,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CDegradable
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -65,7 +65,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 }
 #pragma auto_inline(on)
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -73,7 +73,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager();             // 0x006869D0
 };
 
-struct CTCDegradableBase : CTCBase {
+class CTCDegradableBase : public CTCBase { public:
     long                             LastWorldFrameHit;     // +0x0c
     CDefPointer<const CDegradableDef> PDefinition;          // +0x10
     const CDegradableInfo*           PCurrentDegradableInfo;// +0x14

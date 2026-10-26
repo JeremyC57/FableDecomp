@@ -9,9 +9,9 @@ static int g_copies = 0;
 static int g_mallocs = 0;
 static int g_frees = 0;
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned int  TextureIndex;
     int           BlendType;
     CRGBColour    DiffuseColour;

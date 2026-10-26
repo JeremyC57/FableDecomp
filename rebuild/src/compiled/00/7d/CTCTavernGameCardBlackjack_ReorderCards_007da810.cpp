@@ -9,16 +9,16 @@
 // order puts the index in ecx); the inner bound
 // is `size()` re-read each pass (`sar ; jb`); the sound name is a named CCharString in its own block; STLport operator[] as `*(begin()+n)`
 // (begin() read before the Move argument is built).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct CCard {
+class CCard { public:
     void Move(const C3DVector& position, bool immediately);   // 0x008F0660
 };
 template<class T> struct CVector {              // STLport vector<T> (12 bytes)

@@ -20,8 +20,8 @@
 //   the field load); the effects def is a named local released after the comparison.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct C3DVector { float x, y, z; };
+class CTCBase;
+class C3DVector { public: float x, y, z; };
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -32,7 +32,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -50,21 +50,21 @@ struct CThing {
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
     static long __fastcall GetCurrentFrame();   // 0x0049D870
     static long GetFramesSince(long frame) { return GetCurrentFrame() - frame; }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_framesPerSecond;                  // 0x01375550
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static long& FramesPerSecond() { return g_framesPerSecond; }
 };
 
@@ -79,7 +79,7 @@ struct CDefVirtual {
 };
 struct CDefBase : CDefVirtual, CRefCounted {
 };
-struct COpinionDeedEffectsDef : CDefBase {
+class COpinionDeedEffectsDef : public CDefBase { public:
     unsigned char _pad_0x08[0x34];
     long KnowledgeLifeInSeconds;                // +0x3c
     __forceinline void Release()
@@ -89,7 +89,7 @@ struct COpinionDeedEffectsDef : CDefBase {
             Destroy();
     }
 };
-struct CRegionDef : CDefBase {
+class CRegionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x95];
     bool HasFines;                              // +0x9d (descriptive)
     __forceinline void Release()
@@ -98,7 +98,7 @@ struct CRegionDef : CDefBase {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object)
     {
@@ -114,19 +114,19 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long DeedType;
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
-struct CRegion {
+class CRegion { public:
     unsigned char           _pad00[0x24];
     CRegionDef*   PDef;                         // +0x24 CDefPointer<const CRegionDef>::Object
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
@@ -144,7 +144,7 @@ struct SNode {
 };
 SNode* __cdecl Successor(SNode* node);          // 0x004292C0
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                    // +0x00
     CThing*       Owner;                        // +0x04
     unsigned char _pad_0x08[0x5c];

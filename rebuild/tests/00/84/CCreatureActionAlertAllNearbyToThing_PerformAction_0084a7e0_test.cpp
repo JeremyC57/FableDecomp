@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing { int id; }; struct CThingCreatureBase { int id; };
+class CThing { public: int id; }; class CThingCreatureBase { public: int id; };
 static CThing* g_thing; static CThingCreatureBase* g_alerter; static float g_radius;
 struct CNearbyAlerter { void __fastcall AlertAllNearbyToThing(CThing* thing, CThingCreatureBase* alerter, float radius) { g_thing = thing; g_alerter = alerter; g_radius = radius; } };
 static CNearbyAlerter g_alerterObj;
-struct CThingManager { CNearbyAlerter* GetNearbyAlerter() { return &g_alerterObj; } };
+class CThingManager { public: CNearbyAlerter* GetNearbyAlerter() { return &g_alerterObj; } };
 static CThingManager g_tm;
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCreatureAction_AlertAllNearbyToThing { virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10]; long Radius; CThing* PThing;
+class CCreatureAction_AlertAllNearbyToThing { public: virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xa8 - 0x10]; long Radius; CThing* PThing;
     CThingManager* GetThingManager() { return &g_tm; } };
 void CCreatureAction_AlertAllNearbyToThing::PerformAction() { CThingCreatureBase* creature = PCreature.GetPItem(); GetThingManager()->GetNearbyAlerter()->AlertAllNearbyToThing(PThing, creature, (float)Radius); }
 int main()

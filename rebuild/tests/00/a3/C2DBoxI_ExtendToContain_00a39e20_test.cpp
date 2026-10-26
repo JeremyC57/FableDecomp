@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DCoordI { long X; long Y; };
-struct C2DBoxI { long TLX; long TLY; long BRX; long BRY; void ExtendToContain(const C2DCoordI& coordI); };
+class C2DCoordI { public: long X; long Y; };
+class C2DBoxI { public: long TLX; long TLY; long BRX; long BRY; void ExtendToContain(const C2DCoordI& coordI); };
 void C2DBoxI::ExtendToContain(const C2DCoordI& coordI)
 {
     if (TLX > coordI.X) TLX = coordI.X;

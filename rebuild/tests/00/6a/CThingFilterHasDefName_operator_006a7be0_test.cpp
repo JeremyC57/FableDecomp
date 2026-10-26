@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     void* p;
 };
 
-struct CDefString {
+class CDefString { public:
     void* p;
     bool operator==(const CCharString& rhs) const;
 };
 
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;
 };
 
-struct CThingFilter_HasDefName {
+class CThingFilter_HasDefName { public:
     CCharString m_name;
     bool operator()(const CThing& thing) const;
 };

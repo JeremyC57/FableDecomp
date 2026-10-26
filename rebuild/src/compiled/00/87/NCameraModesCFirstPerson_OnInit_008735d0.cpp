@@ -24,10 +24,10 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
-struct CCamera {
+class CCamera { public:
     unsigned char _body[0x38];
 };
 
@@ -43,13 +43,13 @@ struct CThingPhysics {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacingVector() const;      // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x60];
     CThingPhysics* m_pPhysics;              // +0x60
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
-struct CThingGameObject : CThing {};
+class CThingGameObject : public CThing { public:};
 
 class CGameCameraManager {
 public:

@@ -2,7 +2,7 @@
 // Behaviour test for 0x0057469f: base call; state 1: enabled -> RemoveExperienceSpend; first press -> initiate + time = offset * scale.
 struct ExperienceSpendEvent { bool enable; bool initiate; unsigned char _pad[2]; long time; };
 static int g_base = 0, g_step = 0, g_destroyed = 0;
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long refCount;
@@ -19,7 +19,7 @@ struct CInventoryDefPointer {
 };
 static long g_ExperienceSpendTimeScale = 3;
 struct CTCInventoryBase { void ProcessButtonXHeld() { ++g_base; } };
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     long InventorySelectionState;
     CInventoryDefPointer PDef;
     ExperienceSpendEvent ExperienceSpendAdd;

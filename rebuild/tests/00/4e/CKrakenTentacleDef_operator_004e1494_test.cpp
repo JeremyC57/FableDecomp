@@ -1,9 +1,9 @@
 // behaviour test for CKrakenTentacleDef::operator= (0x004E1494): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
 
-struct CKrakenTentacleDef : CDefClassBase {
+class CKrakenTentacleDef : public CDefClassBase { public:
     float TentacleSmackDownTime;
     float TentacleTurnSpeed;
     float TentacleMoveSpeed;

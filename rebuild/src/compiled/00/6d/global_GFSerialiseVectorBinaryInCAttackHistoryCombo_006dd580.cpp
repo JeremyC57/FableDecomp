@@ -38,7 +38,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
 };
 
-struct CAttackHistoryCombo {                                // 16 bytes
+class CAttackHistoryCombo { public:                                // 16 bytes
     void* AttackCombo[3];                                   // +0x00 vector<pair<EAttackHistoryType, EDamageAttribute> > words
     float Multiplier;                                       // +0x0C
 };

@@ -5,7 +5,7 @@
 // Layout: Ego_r.pdb CEngineCamera (CameraDesc +0x14 with WorldPosition at desc +0x40 = +0x54, LookVector +0x1b4,
 // FrustrumPlanes CPlane[4] +0x1c0 {Normal, Distance}); C3DBoundingBox {MinCoord, MaxCoord}. Modelled locally (the shared
 // header's DebugScript is the PDB's 16-byte CArray; nothing past +0x200 is touched here).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -13,8 +13,8 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
 };
-struct C3DBoundingBox { C3DVector MinCoord; C3DVector MaxCoord; };
-struct CPlane { C3DVector Normal; float Distance; };
+class C3DBoundingBox { public: C3DVector MinCoord; C3DVector MaxCoord; };
+class CPlane { public: C3DVector Normal; float Distance; };
 
 class CEngineCamera {
 public:

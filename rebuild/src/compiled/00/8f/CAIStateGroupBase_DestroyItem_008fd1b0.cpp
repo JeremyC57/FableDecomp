@@ -13,8 +13,8 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 
-struct CTCBase;
-struct CCharString { void* m_pData; };
+class CTCBase;
+class CCharString { public: void* m_pData; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -42,18 +42,18 @@ struct CThingView {                             // CThingAICreature: component t
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-struct CThing {
+class CThing { public:
     void Kill(bool removeNow);                  // 0x004C9B80
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInCarrySlot(long defIndex);                 // 0x006A11F0
     CThing* RemoveThingInCarrySlot(long defIndex, bool drop);   // 0x006A16A0
 };

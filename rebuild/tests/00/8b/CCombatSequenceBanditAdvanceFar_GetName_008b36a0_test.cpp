@@ -5,7 +5,7 @@
 // literal, mirroring what the real engine ctor does, and confirm GetName
 // yields the expected name string.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };

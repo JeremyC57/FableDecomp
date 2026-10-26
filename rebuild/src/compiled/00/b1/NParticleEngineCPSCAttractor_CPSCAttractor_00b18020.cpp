@@ -15,9 +15,9 @@ struct CBase {
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase : CBase {                   // vtable 0x0129F3F4
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
@@ -33,7 +33,7 @@ struct C3DVectorArray {                     // retail CArray<C3DVector> (12 byte
     C3DVectorArray() : m_pData(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CPSCAttractor : CPSCBase {           // vtable 0x012A04AC
+class CPSCAttractor : public CPSCBase { public:           // vtable 0x012A04AC
     bool           AttractorEnabled : 1;            // +0x0c bit 0
     bool           AttractorUseParamPosition : 1;   // +0x0c bit 1
     long           AttractorInfluenceFallOff;       // +0x10

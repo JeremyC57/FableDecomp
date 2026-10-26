@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCFish {
+class CTCFish { public:
     void* vftable;
     int destroyed;
 };

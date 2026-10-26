@@ -23,8 +23,8 @@ public:
     ~CInputEvent();                                // 0x00A03B30
 };
 double __fastcall GFGetTime();                     // 0x009E1BC0
-struct CChecksum { unsigned long Words[4]; };      // 16 bytes
-struct C2DVector { float X, Y; };
+class CChecksum { public: unsigned long Words[4]; };      // 16 bytes
+class C2DVector { public: float X, Y; };
 class CDataOutputStream {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

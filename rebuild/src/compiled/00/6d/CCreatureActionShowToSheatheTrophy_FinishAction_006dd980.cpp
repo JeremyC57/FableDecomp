@@ -9,15 +9,15 @@
 // destructors run with no vtable stores: the follow-up action's counted pointer (+0xa8 object, +0xac block) is released inline (`dec [block]`,
 // block re-read, destroy + delete at zero, then object and block zeroed in that order) and ~CCreatureActionBase is called out of line.
 // &PCreature rides in esi (`add esi,8` once `this` is dead).
-struct CThing;
-struct CThingCreatureBase;
-struct CCreatureActionBase;
+class CThing;
+class CThingCreatureBase;
+class CCreatureActionBase;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0 (CThingCreatureBase)
 };
 
@@ -43,26 +43,26 @@ struct CCountedPointer_CCreatureActionBase {   // {object, count block}
     }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
     ~CCreatureActionBase();                 // 0x00693EF0
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {   // retail sizeof 0xb0
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // retail sizeof 0xb0
     CCountedPointer_CCreatureActionBase PNextAction;   // +0xa8 follow-up action
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* next, long kind);   // 0x0069FFD0
 };
-struct CCreatureAction_SheatheTrophy : CCreatureAction_SheatheItemToInventory {   // vtable 0x0125FB14
+class CCreatureAction_SheatheTrophy : public CCreatureAction_SheatheItemToInventory { public:   // vtable 0x0125FB14
     virtual void v00();
     CCreatureAction_SheatheTrophy(CThingCreatureBase* owner) : CCreatureAction_SheatheItemToInventory(owner, 0, 1002) { }
 };
 
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:
     virtual void FinishAction();            // 0x00845850
 };
-struct CCreatureAction_ShowToSheatheTrophy : CCreatureAction_ShowTrophy {
+class CCreatureAction_ShowToSheatheTrophy : public CCreatureAction_ShowTrophy { public:
     virtual void FinishAction();
 };
 

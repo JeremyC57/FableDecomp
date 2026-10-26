@@ -9,7 +9,7 @@ typedef unsigned long long UID64;
 #endif
 
 struct CInfo { unsigned long attackers; bool due; };
-struct CThing { UID64 UniqueID; };
+class CThing { public: UID64 UniqueID; };
 struct CManager {
     std::map<UID64, CInfo> Combatants;
     int m_tests;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSoundThemeDef { char pad[0x58]; };
+class CSoundThemeDef { public: char pad[0x58]; };
 
 static int g_sub54 = 0;
 static int g_real = 0;

@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour of CTCInventoryMap::IsTeleportValid (0x005FAA60): engine flag set AND the CBase slot-3 gate clear.
-struct CDisplayEngine { unsigned char m_teleportAllowed; };
+class CDisplayEngine { public: unsigned char m_teleportAllowed; };
 static CDisplayEngine g_engine;
 struct CTCInventoryBase_Retail { virtual ~CTCInventoryBase_Retail() {} long m_body; };
 struct CBase { virtual unsigned char IsBlocked() { return 1; } };
-struct CTCInventoryMap : CTCInventoryBase_Retail, CBase {
+class CTCInventoryMap : public CTCInventoryBase_Retail, public CBase { public:
     unsigned char m_blocked;
     virtual unsigned char IsBlocked() { return m_blocked; }
     CDisplayEngine* GetDisplayEngine() { return &g_engine; }

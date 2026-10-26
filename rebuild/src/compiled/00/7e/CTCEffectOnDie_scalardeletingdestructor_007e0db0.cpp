@@ -8,15 +8,15 @@
 // Layout: PDB CTCEffectOnDie (36 bytes): StartedNonRecoverableFadeout +0x0c, Effect +0x10, Timer +0x14,
 // FadeOutTimer +0x18, DeathSoundCriteria (CCharString) +0x1c, Pausable +0x20, Paused +0x21.
 // Shape: own vtable store (scheduled after the member `lea`), the string destructor, the base destructor.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CTCBase {                                   // engine/CTCBase.h offsets, modelled polymorphic
+class CTCBase { public:                                   // engine/CTCBase.h offsets, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -25,7 +25,7 @@ struct CTCBase {                                   // engine/CTCBase.h offsets, 
     ~CTCBase();                                    // 0x00686830
 };
 
-struct CTCEffectOnDie : CTCBase {                  // vtable 0x0126FEB4
+class CTCEffectOnDie : public CTCBase { public:                  // vtable 0x0126FEB4
     bool        StartedNonRecoverableFadeout;      // +0x0c
     long        Effect;                            // +0x10
     long        Timer;                             // +0x14

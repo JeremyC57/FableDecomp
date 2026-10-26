@@ -17,7 +17,7 @@ struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -28,10 +28,10 @@ struct CGameEvent : CMemoryBuffer {
     void AddLong(long value) { Copy(sizeof(value), &value); }
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                         // 0x00449700
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
@@ -44,13 +44,13 @@ enum {
 };
 
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     unsigned char _pad00[0x34];
     bool          Open;                                 // +0x34
 };
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad000[0x2be];
     bool          LiveGuiMode;                          // +0x2be
     unsigned char _pad2bf[0x32c - 0x2bf];

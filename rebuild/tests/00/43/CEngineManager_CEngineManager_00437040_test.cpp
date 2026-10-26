@@ -20,7 +20,7 @@ public:
     T* _M_end_of_storage;
     ~CMallocVector() { if (_M_start) free(_M_start); }
 };
-struct C2DBoxI { long Left, Top, Right, Bottom; };
+class C2DBoxI { public: long Left, Top, Right, Bottom; };
 class CEngineManager : public CTBaseSingleton<CEngineManager> {
 public:
     list<CIEngine*>        Engines;                      // +0x04

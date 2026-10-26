@@ -12,13 +12,13 @@ typedef long long i64;
 #define STRICMP strcasecmp
 #endif
 // Token-stream model of CStringParser: every Read* call consumes the next pre-split token.
-struct CCharString {
+class CCharString { public:
     char Text[128];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     bool operator==(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
-struct CStringParser {
+class CStringParser { public:
     const char* const* Tokens; int Count; int Pos;
     CStringParser(const char* const* tokens, int count) : Tokens(tokens), Count(count), Pos(0) {}
     CCharString Next() { return Pos < Count ? CCharString(Tokens[Pos++]) : CCharString(""); }
@@ -28,7 +28,7 @@ struct CStringParser {
     float ReadAsFloat() { return (float)std::atof(Next().Text); }
     bool NextItemIs(const char* name) { if (Pos < Count && std::strcmp(Tokens[Pos], name) == 0) { ++Pos; return true; } return false; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     int Errors; char LastError[160];
     CPersistContext() : Errors(0) { LastError[0] = 0; }
     void Error(const CStringParser&, const char* message) { ++Errors; std::strcpy(LastError, message); }
@@ -44,7 +44,7 @@ static void TransferInBool(CPersistContext* context, CStringParser* parser, bool
 }
 static void TransferInFloat(CPersistContext*, CStringParser* parser, float* value) { *value = parser->ReadAsFloat(); }
 #define COUNTOF(a) ((int)(sizeof(a) / sizeof((a)[0])))
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     i64 WifeUID; i64 MaritalHomeUID; int State; bool GayMarriage;
     CHeroMarriageInfo() : WifeUID(0), MaritalHomeUID(0), State(0), GayMarriage(false) {}
 };

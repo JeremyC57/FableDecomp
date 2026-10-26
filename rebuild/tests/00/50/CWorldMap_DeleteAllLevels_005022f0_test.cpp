@@ -11,20 +11,20 @@ static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 static std::string num(long v) { char b[16]; sprintf(b, "%ld", v); return b; }
 
 #include <algorithm> // std::swap (the host library already defines it in namespace std)
-struct CThingManager { void DeleteAllThings() { logs("deleteall"); } };
-struct CNavigatorManager { void RemoveNavigationMap(long map) { logs("nav-" + num(map)); } };
-struct CEngineManager {
+class CThingManager { public: void DeleteAllThings() { logs("deleteall"); } };
+class CNavigatorManager { public: void RemoveNavigationMap(long map) { logs("nav-" + num(map)); } };
+class CEngineManager { public:
     static CEngineManager& Get() { static CEngineManager m; return m; }
     void RemoveMap(long map) { logs("eng-" + num(map)); }
 };
-struct CWorld {
+class CWorld { public:
     CThingManager Things;
     CNavigatorManager Nav;
     CNavigatorManager* PNavigationManager;
     CThingManager* GetThingManager() { return &Things; }
 };
 struct __false_type { };
-struct CMapInfo {
+class CMapInfo { public:
     long Id;
     bool Cleared;
     void Clear() { Cleared = true; logs("clear-" + num(Id)); }
@@ -104,7 +104,7 @@ struct CLongArray {
         }
     }
 };
-struct CWorldMap {
+class CWorldMap { public:
     CWorld*        World;
     CMapInfoVector Maps;
     CShortVector   MapPlacement;

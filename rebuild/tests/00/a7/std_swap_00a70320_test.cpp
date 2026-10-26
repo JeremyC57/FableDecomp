@@ -14,13 +14,13 @@ public:
     ~CCharString() { --g_live; }
     CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
 };
 static void count_delete(void*) { ++g_deleted; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* data, CCPPointerInfo* info) : Data(data), Info(info) { if (Info) ++Info->RefCount; }
@@ -50,8 +50,8 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
 };
-struct CContainmentVolume { int id; };
-struct C3DMeshVolume {
+class CContainmentVolume { public: int id; };
+class C3DMeshVolume { public:
     CCharString                         Name;
     CCountedPointer<CContainmentVolume> ConvexVolume;
     C3DMeshVolume(const char* name, CContainmentVolume* v, CCPPointerInfo* info) : Name(name), ConvexVolume(v, info) { }

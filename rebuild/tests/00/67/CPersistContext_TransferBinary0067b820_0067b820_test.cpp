@@ -26,7 +26,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream& stream, T& value) { ++g_in; g_stream = &stream; g_value = &value; g_zeroDefault = DefaultIsZero(); }
     void TransferBinaryOut(CDataOutputStream& stream, const T& value) { ++g_out; g_stream = &stream; g_value = &value; g_zeroDefault = DefaultIsZero(); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;
     unsigned char           _pad15[3];

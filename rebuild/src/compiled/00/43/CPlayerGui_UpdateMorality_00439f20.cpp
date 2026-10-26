@@ -11,18 +11,18 @@
 // Shape: the change converted to a float local that stays on the x87 stack across both arms; the two signs are an
 // inline `x < 0 ? -1 : 1`.
 #include <math.h>
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPlayerCharacter();                       // 0x00487B70
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x4e8];
     float         StatChangeTextSpeed;                  // +0x4e8 (descriptive)
     float         StatChangeTextTime;                   // +0x4ec (descriptive)
@@ -30,7 +30,7 @@ struct CPlayerGuiDef {
 extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
 
 namespace NPlayerGui {
-struct CStatBar {                                       // CStatBase + CStatBar (retail offsets)
+class CStatBar { public:                                       // CStatBase + CStatBar (retail offsets)
     void*         __vftable;
     CPlayerGuiDef* GuiDef;                              // +0x04
     bool          ValueInitialised;                     // +0x08
@@ -46,7 +46,7 @@ struct CStatBar {                                       // CStatBase + CStatBar 
     unsigned long GraphicFrame;                         // +0x48
     unsigned long OldGraphicFrame;                      // +0x4c
 };
-struct CDrawStatUpdates {
+class CDrawStatUpdates { public:
     unsigned char _pad00[0x2c];
     long          PendingMoralityChange;                // +0x2c (descriptive)
 };
@@ -54,7 +54,7 @@ struct CDrawStatUpdates {
 
 inline long SignOf(float value) { return value < 0.0f ? -1 : 1; }
 
-struct CPlayerGui {                                     // retail-offset view (see Layout)
+class CPlayerGui { public:                                     // retail-offset view (see Layout)
     unsigned char                   _pad000[8];
     CPlayerManager*                 PlayerManager;      // +0x08
     unsigned char                   _pad00c[0x1a8 - 0xc];

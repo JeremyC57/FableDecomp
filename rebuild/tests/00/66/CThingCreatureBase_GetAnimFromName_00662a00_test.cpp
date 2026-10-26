@@ -4,14 +4,14 @@
 #define __declspec(x)
 #define __forceinline inline
 #endif
-struct CAnimationEntry { int id; };
-struct CCharString {
+class CAnimationEntry { public: int id; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -20,7 +20,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                       // 0x005DC2E0
     CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
     CAnimationEntry* GetRandomAnimation(const CCharString& name, unsigned long* seed, const CAnimFilterBase& filter,
@@ -30,10 +30,10 @@ struct CCreatureModeBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual const CAnimFilterBase& GetAnimFilter();      // slot 4 (+0x10)
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
 };
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -43,7 +43,7 @@ struct CDefPointeeBase {                        // a counted definition object
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
@@ -53,11 +53,11 @@ template <class T> struct CHeldDef {            // the def copied out of the esc
     ~CHeldDef() { if (Object) Object->ReleaseDef(); }
     T* operator->() const { return Object; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet Animation;                    // +0x34
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -72,7 +72,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& 
     return true;
 }
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
     unsigned char  _pad74[0x134 - 0x74];

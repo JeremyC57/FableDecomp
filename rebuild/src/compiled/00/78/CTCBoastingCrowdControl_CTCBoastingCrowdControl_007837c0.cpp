@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 struct _Rb_tree_node_base {
     unsigned char       _M_color;

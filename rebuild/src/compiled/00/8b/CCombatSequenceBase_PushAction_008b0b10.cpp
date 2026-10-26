@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 class CThingCreatureBase;
 class CCombatActionBase;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                         // +0x00
     void (__fastcall* DeleteFunc)(void* data);              // +0x04
     void* Data;                                             // +0x08

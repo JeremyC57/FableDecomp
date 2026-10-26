@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <string.h>
 #define FAIL { std::printf("0099f450_TEST FAIL\n"); return 1; }
-struct CCharStringData { char PData[64]; unsigned long StringLength; long NoRefs; };
+class CCharStringData { public: char PData[64]; unsigned long StringLength; long NoRefs; };
 long g_CCharStringInstanceCount = 0;
 char g_EmptyCharString[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_CCharStringInstanceCount; if (PStringData) ++PStringData->NoRefs; }

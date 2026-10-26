@@ -1,4 +1,4 @@
-struct C3DMeshFileXBoundingSphereChunk {
+class C3DMeshFileXBoundingSphereChunk { public:
     void* vftable;
 };
 

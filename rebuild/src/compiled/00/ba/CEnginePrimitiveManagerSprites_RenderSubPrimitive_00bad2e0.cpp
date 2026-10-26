@@ -164,7 +164,7 @@ extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
 
 enum ERenderPassType { RENDER_PASS_NONE };
 class CEngineInternalPrimitiveBase { };
-struct CEngineInternalPrimitiveSprite : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveSprite : public CEngineInternalPrimitiveBase { public:
     unsigned char _pad00[0x84];
     unsigned char Modulate2X : 1;                       // +0x84
     unsigned char Lit : 1;

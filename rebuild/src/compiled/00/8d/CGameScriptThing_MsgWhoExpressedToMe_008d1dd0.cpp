@@ -4,7 +4,7 @@
 #include "fable_string.h"
 #include "engine/CBaseObject.h"
 struct ScriptMethods;
-struct C3DVector{float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"
@@ -19,7 +19,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;

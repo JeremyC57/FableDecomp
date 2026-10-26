@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesBerserkDef {
+class CSpecialAbilitiesBerserkDef { public:
     int placeholder;
 };
 

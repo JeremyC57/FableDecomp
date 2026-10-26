@@ -2,7 +2,7 @@
 
 // Behaviour model: Copy forwards to base Copy then copies member at +0x28.
 
-struct CDefClassBase { int base; int m28[4]; };
+class CDefClassBase { public: int base; int m28[4]; };
 
 struct Member28 {
     int v[4];

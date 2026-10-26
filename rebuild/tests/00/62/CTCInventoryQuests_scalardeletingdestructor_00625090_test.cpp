@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     void* vftable;
     int destroyed;
 };

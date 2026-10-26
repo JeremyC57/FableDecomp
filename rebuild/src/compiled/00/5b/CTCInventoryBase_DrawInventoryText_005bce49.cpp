@@ -12,15 +12,15 @@
 //        (`fsubr [ebp+8] ; fstp [ebp+8]`), the centred arm scaling the width by 0.5f first; the 1.0f scale is
 //        materialised with `fld1` into a `push ecx` slot.
 
-struct C2DVector {
+class C2DVector { public:
     float X;                                      // +0x00
     float Y;                                      // +0x04
 };
 
-struct CWideString;
-struct CRGBColour;
+class CWideString;
+class CRGBColour;
 
-struct CFontBank {
+class CFontBank { public:
     float GetVStringWidth(const CWideString& text);   // 0x0043E4D0
 };
 

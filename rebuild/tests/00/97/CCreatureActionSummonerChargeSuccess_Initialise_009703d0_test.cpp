@@ -10,7 +10,7 @@ public:
     CCharString(const char* text, long length) : m_text(text) { g_order[g_n++] = 1; }
     ~CCharString() { g_order[g_n++] = 3; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() { }
     virtual void Initialise() { g_order[g_n++] = 4; }
     unsigned char _body[0x114 - 4];

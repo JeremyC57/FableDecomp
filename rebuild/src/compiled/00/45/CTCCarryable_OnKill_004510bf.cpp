@@ -6,7 +6,7 @@ struct List {
     void* self1;
     void* self2;
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     List* list;
     int   count;
 };

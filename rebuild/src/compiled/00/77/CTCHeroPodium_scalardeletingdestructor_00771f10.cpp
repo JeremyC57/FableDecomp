@@ -1,4 +1,4 @@
-struct CTCHeroPodium {
+class CTCHeroPodium { public:
     void* vftable;
 };
 

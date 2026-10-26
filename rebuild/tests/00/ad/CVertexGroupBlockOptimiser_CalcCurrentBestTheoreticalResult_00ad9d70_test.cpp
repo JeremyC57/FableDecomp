@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <list>
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     std::vector<unsigned long> Groups;
     CVertexGroupBlock() { }
     explicit CVertexGroupBlock(unsigned long n) { for (unsigned long i = 0; i < n; ++i) Groups.push_back(i); }

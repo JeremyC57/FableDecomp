@@ -6,7 +6,7 @@
 // holds HasExtraData at +8, OccuredBetween at +0xc..+0x10 and the Bind3 pointers at +0x14..+0x1c, while VC builds the IsOfType
 // temporary in the dead argument slot (after copying the boast id out of it); `neg ; sbb ; neg` for `message != 0`.
 // Leaf: MsgIsBoastMade
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString& operator=(const char* text);           // 0x0099EFE0
@@ -16,32 +16,32 @@ struct CMessageEvent_Retail {
     unsigned char _pad[0x3c];
     long          m_extraData;                      // +0x3c (the message's payload word: region/quest index, feat id, record pointer ...)
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {   // the bound filter holds POINTERS to its operands
+template<class A, class B> class CFilter_Bind2 { public:   // the bound filter holds POINTERS to its operands
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
-struct CMessageEventFilter_HasExtraData {
+class CMessageEventFilter_HasExtraData { public:
     long m_data;
     CMessageEventFilter_HasExtraData(long data) : m_data(data) { }
 };
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_OccuredBetween(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B, class C> struct CFilter_Bind3 {   // three operand pointers
+template<class A, class B, class C> class CFilter_Bind3 { public:   // three operand pointers
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -63,14 +63,14 @@ struct CRegion_Retail {
 struct CWorldMap_Retail {
     CRegion_Retail& GetRegion(long index);          // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual CWorldMap_Retail* PeekWorldMap();       // slot 13 (+0x34)
     unsigned char                _pad04[0x5c];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
     void*   Component;                              // +0x08

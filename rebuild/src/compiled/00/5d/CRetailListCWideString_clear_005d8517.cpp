@@ -11,7 +11,7 @@
 // TU), then links the head to itself. The manifest label is propagated. One of 11 bodies.
 extern "C" void __cdecl free(void* block);
 
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };

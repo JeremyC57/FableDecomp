@@ -1,8 +1,8 @@
 // Behaviour test for CScriptThing::MsgWhoKnockedMeOut (0x004ABF80): null handle returns a copy of itself, else the implementation's answer.
 #include <cstdio>
 
-struct CCPPointerInfo { long m_references; };
-struct CScriptThing;
+class CCPPointerInfo { public: long m_references; };
+class CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;
     CCPPointerInfo* Info;
@@ -16,7 +16,7 @@ struct CCountedPointer_CScriptThing {
 };
 static CCPPointerInfo g_knockerInfo = { 1 };
 static CScriptThing* g_knocker = 0;
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing(CScriptThing* d, CCPPointerInfo* i) : PImp(d, i) {}
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}

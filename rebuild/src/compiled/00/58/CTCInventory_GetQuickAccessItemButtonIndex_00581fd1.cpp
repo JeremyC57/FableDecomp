@@ -14,12 +14,12 @@ struct CItemList {
     unsigned long GetCount();                        // 0x00445950
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad_0x00[0x0c];
     CItemList*    m_pItems;                          // +0x0c
 };
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer();                        // 0x00449960
 };
 
@@ -33,7 +33,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     long GetQuickAccessItemButtonIndex(long item);

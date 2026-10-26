@@ -95,15 +95,15 @@ public:
     float R, G, B, A;
 };
 
-class CIDrawEnvironmentTextureSet {
+struct CIDrawEnvironmentTextureSet {
 public:
     CArray<long>  Textures;                                 // +0x00
     CArray<float> Blends;                                   // +0x0C
 };
 
-class CIDrawEnvironmentParams {
+struct CIDrawEnvironmentParams {
 public:
-    class CThemeChannel {                                   // 0x1F0 bytes, implicit copy constructor @ 0x006B6010
+    struct CThemeChannel {                                   // 0x1F0 bytes, implicit copy constructor @ 0x006B6010
     public:
         CRGBFloatColour             Colours[19];            // +0x000
         float                       Scalers[30];            // +0x130

@@ -16,8 +16,8 @@ struct Sub
     virtual void Notify(CCharString* status) { g_notified = status; g_calls++; }
 };
 
-struct CBankFile
-{
+class CBankFile
+{ public:
     char pad0[0x50];
     Sub* sub;
     char pad1[0xf0 - 0x54];

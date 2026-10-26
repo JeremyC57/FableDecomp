@@ -21,7 +21,7 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data);   // 0x009F18F0
     __forceinline char ReadChar() { char value; Read(1, &value); return value; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -30,25 +30,25 @@ struct CGameEvent {
     bool          Replacement;                     // +0x27
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
     bool IsPerformingAnyAction();                  // 0x006622A0
 };
 enum EPlayerMode { PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(EPlayerMode mode);                // 0x00634160
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
     EPlayerMode GetCurrentMode() const;            // 0x00633BE0
     void AddMode(EPlayerMode mode, bool b);        // 0x006345C0
     void RemoveMode(EPlayerMode mode);             // 0x00634190
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void ToggleQuickAccessCharge(long item, bool charge);   // 0x00437A10
     bool IsOpen() const;                           // 0x004374F0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
     void EAChargeQuickAccessItem(const CGameEvent* event);
 };

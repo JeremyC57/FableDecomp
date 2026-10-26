@@ -7,19 +7,19 @@ class CCharString { public: const char* PStringData; CCharString() : PStringData
 static const char* g_names[4] = { "CTCPhysics", "CTCLight", "CTCSound", "CTCScript" };
 struct CDefStringTable { CCharString GetString(long id) { CCharString s; s.PStringData = g_names[id]; return s; } };
 static CDefStringTable g_DefStringTable;
-struct CTCBase; struct CTCParamsBase;
+class CTCBase; class CTCParamsBase;
 struct SComponentPair { long first; CTCBase* second; };
 static unsigned long g_reserved = 0; static int g_reserves = 0;
 struct CComponentMap { SComponentPair* m_first; SComponentPair* m_last; SComponentPair* m_end; void reserve(unsigned long count) { ++g_reserves; g_reserved = count; } long size() const { return m_last - m_first; } };
-struct CWorld { unsigned char _pad00[0x102]; bool m_loadingSavedGame; };
-struct CThingManager { unsigned char _pad00[0x24]; CWorld* World; };
+class CWorld { public: unsigned char _pad00[0x102]; bool m_loadingSavedGame; };
+class CThingManager { public: unsigned char _pad00[0x24]; CWorld* World; };
 static CWorld g_world; static CThingManager g_manager; static CThingManager* g_pThingManager = &g_manager;
 #pragma pack(push, 1)
 struct STCDefEntry { long NameId; long _unused; bool Flag; };
 struct CThingDef { unsigned char _pad00[0x39]; STCDefEntry* TCs; signed char NoTCs; unsigned char _pad3e[0x41 - 0x3e]; unsigned char DefBit0 : 1; unsigned char DefBit1 : 1; unsigned char KillLocked : 1; };
 #pragma pack(pop)
 static int g_adds = 0; static const char* g_addNames[8]; static bool g_addFlags[8]; static CTCParamsBase* g_addParams[8];
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x44]; CComponentMap Components; unsigned char _pad50[0x6c - 0x50]; unsigned long ThingTypeFlags; unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1; unsigned char CreatedByOwnerThingCreation : 1; unsigned char IncludeInThingScans : 1; unsigned char Activated : 1; unsigned char GloballyLoaded : 1; unsigned char InLimbo : 1; unsigned char KillLocked : 1; unsigned char CreatedBySerialisation : 1;
     CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params) { g_addNames[g_adds] = name.PStringData; g_addFlags[g_adds] = a2; g_addParams[g_adds] = params; ++g_adds; return 0; }

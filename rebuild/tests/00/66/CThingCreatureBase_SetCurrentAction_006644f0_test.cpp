@@ -26,7 +26,7 @@
 //   the 12-byte block {references, destroy(object) __fastcall, object}.
 // Shape: the old and new actions are local counted copies (inline copy/release); the refused-action branch uses the
 //   out-parameter GetInterface (bitset test + lookup in one inline bool) so the component lands in eax like retail.
-struct CTCBase;
+class CTCBase;
 
 void __fastcall Destroy_CCreatureActionBase(void* object);
 struct SCountBlock {
@@ -35,7 +35,7 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;                             // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -56,7 +56,7 @@ template<class T> struct CCountedPointer {
 };
 
 struct CActionState { unsigned char _body[4]; };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnReplaced();                          // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -75,7 +75,7 @@ struct CCreatureActionBase {
     void TakeOver(const CActionState& state);           // 0x00669280
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     bool SetPossibleQueuedAction(const CCreatureActionBase* action);   // 0x007332A0
 };
 
@@ -86,7 +86,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -105,7 +105,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0x100 - 0x4c];
     CCountedPointer<CCreatureActionBase> PCurrentAction;   // +0x100
     unsigned char _pad108[0x15c - 0x108];

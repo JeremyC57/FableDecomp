@@ -8,7 +8,7 @@
 // Shape: /O2 (16-aligned entry). `delete data` compiles to a call of the out-of-line ??_G (28 bytes; retail's ??_G
 // 0x0041BDF0 has 12 other callers), so the destructor call and ::operator delete are spelled out; the pointer is bound to
 // a local once (re-reading FrameData gives 101 bytes).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

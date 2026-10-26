@@ -9,7 +9,7 @@
 // placeholder); member names are descriptive. 
 struct SElement { unsigned char _body[0x20]; };
 
-struct CShaderPreParser {
+class CShaderPreParser { public:
     unsigned char _pad[0x10];
     SElement* m_first;                     // +0x10
     SElement* m_last;                      // +0x14

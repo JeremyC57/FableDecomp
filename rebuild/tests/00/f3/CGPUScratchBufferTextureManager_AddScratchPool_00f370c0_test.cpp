@@ -19,7 +19,7 @@ static int fails = 0;
 // Shape: the pool local filled per arm; push_back is the inline STLport form (placement-new null test, the
 // overflow helper with the __true_type tag in the dead `size` slot); the index is `size() - 1`.
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long flags, bool flag);   // 0x009F2A40
 };
 extern CMemoryAllocator* g_pGlobalAllocator;        // 0x013CAA90

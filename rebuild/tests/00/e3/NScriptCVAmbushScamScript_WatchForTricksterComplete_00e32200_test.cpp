@@ -6,13 +6,13 @@
 #define __forceinline inline
 #endif
 static int g_frames = 0, g_termAt = 1000, g_completeAt = 1000, g_aliveUntil = 1000, g_cleared = 0, g_impDestroyed = 0, g_infoDeleted = 0;
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -30,12 +30,12 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass() {}
     virtual ~CBaseClass() {}
 };
 
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}
     virtual void v01() const {}
@@ -44,12 +44,12 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
 struct CScriptThingImp : CScriptThing {
     virtual bool IsAlive() const { return g_frames < g_aliveUntil; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     virtual void NewScriptFrame() { ++g_frames; }
     virtual void ClearThingHasInformation(const CScriptThing& t) { ++g_cleared; if (!t.PImp.Data) g_cleared += 100; }
 };
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00() {}
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();

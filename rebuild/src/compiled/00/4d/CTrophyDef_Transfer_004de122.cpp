@@ -7,16 +7,16 @@
 //   (labelled CPersistContext::TransferString).
 // Layout: PDB (Ego_r) names/types; for this def the retail offsets equal the PDB offsets (+0x28..+0x60).
 //   Local model: no engine/ header exists for CTrophyDef or CPersistContext.
-struct CDefString { long TablePos; };
-struct CCharString { void* PStringData; };
-struct CPersistContext {
+class CDefString { public: long TablePos; };
+class CCharString { public: void* PStringData; };
+class CPersistContext { public:
     void Transfer(float&);                              // 0x00431061
     void Transfer(long&);                               // 0x00431102
     void Transfer(bool&);                               // 0x0043314A
     void Transfer(CDefString&);                         // 0x0045228F
     void Transfer(CCharString&);                        // 0x00431143
 };
-struct CTrophyDef {
+class CTrophyDef { public:
     virtual void Transfer(CPersistContext&);            // vtable slot 18 in retail
     unsigned char _base[0x24];                          // +0x04..+0x27 def base
     float MinigameInitialTimerSecs;                     // +0x28

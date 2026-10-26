@@ -57,8 +57,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -66,8 +66,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -162,7 +162,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -185,10 +185,10 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 #include <stddef.h>
 
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _base_0x04[0x18];                    // +0x04 flattened base-class subobject(s)
     CDefinitionManager* PDefManager;                         // +0x1c
@@ -217,7 +217,7 @@ FABLE_STATIC_ASSERT(offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
 
 
 #pragma pack(push, 1)
-struct CExpressionDef {
+class CExpressionDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -307,7 +307,7 @@ FABLE_STATIC_ASSERT(offsetof(CExpressionDef, ExpressionType) == 0x90);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -329,11 +329,11 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CWorld;
+class CCharStringData;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptThing {
+class CGameScriptThing { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -382,7 +382,7 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptThing, World) == 0x44);
 
 
 #pragma pack(push, 1)
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          sub;                                       // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -408,15 +408,15 @@ FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
 
 
 struct CActiveQuest;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGameScriptInterface;
-struct CGameScriptThingManager;
-struct CScriptInfoManager;
-struct CWorld;
+class CCPPointerInfo;
+class CCharStringData;
+class CGameScriptInterface;
+class CGameScriptThingManager;
+class CScriptInfoManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CQuestManager {
+class CQuestManager { public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     CGameScriptThingManager* PGameScriptThingManager_Data;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
     CCPPointerInfo*          PGameScriptThingManager_Info;   // +0x08 CCountedPointer<CGameScriptThingManager>::Info
@@ -498,12 +498,12 @@ FABLE_STATIC_ASSERT(offsetof(CQuestManager, PMostRecentValidUsedTargetName_PStri
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 struct CPredicateBase;
 
 #pragma pack(push, 1)
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -547,14 +547,14 @@ FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -629,7 +629,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x21];                          // +0x04 flattened base-class subobject(s)
     long          InstantiationName_TablePos;                // +0x25 CDefString::TablePos
@@ -667,11 +667,11 @@ __forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->P
 // Native base0124F2C4 slots2=57A4FC(ret4),3=810E60,4=57A4FF(true).
 namespace NEntityEvents {enum EEventType { HitThing=29,MoralityChanged=35,CutSceneAnimEvent=36 };}
 struct EventBase { EventBase(); /* PDB01D93440 */ virtual ~EventBase(); virtual NEntityEvents::EEventType GetType()const=0; virtual void OnAdd(const CTCEntityEvents&); virtual long GetLifeTime()const; virtual bool IsReadyToDie()const; long WorldFrame; };
-struct CDefString { long TablePos; };
-struct CCharString;
-struct CDefClassBase { struct CSubDefInfo; };
-struct CPersistContext;
-struct CParentDefClassBase {
+class CDefString { public: long TablePos; };
+class CCharString;
+class CDefClassBase { public: class CSubDefInfo; };
+class CPersistContext;
+class CParentDefClassBase { public:
  virtual ~CParentDefClassBase(); // slot0 virtual deleting destructor (native derived00458B81)
  virtual void Delete() const; // slot1 0042D930
  virtual bool UnloadResource(); // slot2 009ACE90

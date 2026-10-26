@@ -8,12 +8,12 @@
 // needs a user constructor. Position is C2DVector X +0x4, Y +0x8 (engine header).
 extern float g_quadTreeLevelCellSize[];          // 0x0129DCAC
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;
     C2DBoxF(float minX, float minY, float maxX, float maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
 };
 
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     void* __vftable;                            // +0x00
     float Position_X;                           // +0x04
     float Position_Y;                           // +0x08

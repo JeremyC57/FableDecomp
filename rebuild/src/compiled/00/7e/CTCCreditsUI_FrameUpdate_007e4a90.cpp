@@ -11,12 +11,12 @@
 // whose trivial copy is `if (src == srcEnd) return dest; memmove(...) + bytes` (the `cmp eax,eax` early-out); the lookup's
 // vtable is read before the by-value string is built in the argument slot.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();                              // slot 0 (scalar deleting dtor)
     virtual void v01(); virtual void v02();
     virtual CComponent* GetChild(CCharString name);     // slot 3 (+0x0c)
@@ -49,13 +49,13 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     void erase(T* first, T* last) { _M_finish = CopyTrivial(last, _M_finish, first); }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
-    struct CThing* ParentThing;                         // +0x04
+    class CThing* ParentThing;                         // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;                                        // +0x0c
     CRetailVector<NUISystem::CComponent*> Components;   // +0x10
     bool Quitting;                                      // +0x1c

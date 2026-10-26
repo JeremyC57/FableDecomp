@@ -10,38 +10,38 @@
 //   g_FramesPerSecond 0x01375550 (long).
 // Shape: the name temporary takes the dead third-parameter slot; the bank is a named local fetched before the creature;
 //   the animation index is a named local (edi, used twice); `speed / fps` with `speed` a named float.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum EMovementType { MOVEMENT_TYPE_0 };
 
 CCharString __fastcall GetStrafeAnimationName(const C3DVector& a, const C3DVector& b, EMovementType type);   // 0x008E8E50
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     float GetDuration() const;             // 0x00A23CE0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;          // +0x3c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       World;                   // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_FramesPerSecond;                     // 0x01375550
 
-struct CAnimationEntry {                   // Ego_r.pdb CAnimationEntry (0x10)
+class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (0x10)
     long BankIndex;                        // +0
     unsigned char _rest[0xc];
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
     float GetAnimMovementDistance(long animIndex) const;                    // 0x006627A0
     static const CWorld& PeekWorld() { return *g_pMainGameComponent->World; }

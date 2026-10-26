@@ -6,12 +6,12 @@
 // Globals: the Z edge @ 0x01272580, the Y edge @ 0x01272584 (floats).
 // Shape: four `if (flag && compare) return false;` tests; `>` gives `test ah,41h ; je`, `<=` gives `test ah,41h ; jnp`.
 // Leaf: ?IsPositionInsideClipEdges@CMiniMapDisplay@@
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 extern const float g_miniMapEdgeZ;                 // 0x01272580
 extern const float g_miniMapEdgeY;                 // 0x01272584
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     unsigned char _pad00[0x40];
     bool          m_clipAboveZ;                    // +0x40
     bool          m_clipBelowZ;                    // +0x41

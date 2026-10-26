@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimFileBoneMaskChunk {
+class C3DAnimFileBoneMaskChunk { public:
     void* vftable;
     int destroyed;
 };

@@ -4,7 +4,7 @@
 // the landed CBufferOwner family with a base destructor call before `test byte ptr [esp+8],1`. The chunk label is propagated; the class is named by address.
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
-struct CChunkedFileChunk {                        // non-polymorphic: 0x10 bytes
+class CChunkedFileChunk { public:                        // non-polymorphic: 0x10 bytes
     unsigned char _body[0x10];
     ~CChunkedFileChunk();                          // 0x00AA75C0
 };

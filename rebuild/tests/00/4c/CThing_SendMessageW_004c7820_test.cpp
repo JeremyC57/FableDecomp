@@ -1,14 +1,14 @@
 // Behaviour test for CThing::SendMessageW @ 0x004C7820: message reaches each live TC with adds forbidden, then re-permitted.
 #include <cstdio>
 struct CMessage { int id; };
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     bool ToBeRemoved; int calls; CMessage* last; bool addsAllowedDuringCall; CThing* owner;
     CTCBase(bool removed, CThing* o) : ToBeRemoved(removed), calls(0), last(0), addsAllowedDuringCall(true), owner(o) { }
     virtual void HandleMessage(CMessage* message);
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing {
+class CThing { public:
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
     unsigned char   low : 6;

@@ -38,14 +38,14 @@ template <class T> struct CDefHolder {                  // owns the handed-over 
     T* Object;
     __forceinline ~CDefHolder() { ReleaseDef(Object); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
-struct COpinionSet {                                    // 12 bytes in retail
+class COpinionSet { public:                                    // 12 bytes in retail
     long _body[3];
     COpinionSet& operator=(const COpinionSet& other);   // 0x0045EF2D
 };
-struct COpinionSourceDef : CDefBase {                   // retail = PDB - 0x0c past the first map
+class COpinionSourceDef : public CDefBase { public:                   // retail = PDB - 0x0c past the first map
     unsigned char _pad08[0x48 - 0x08];
     bool        AlwaysAwareOf;                          // +0x48
     bool        UnknownThreatSource;                    // +0x49
@@ -63,8 +63,8 @@ struct COpinionSourceDef : CDefBase {                   // retail = PDB - 0x0c p
     COpinionSet OpinionProduced;                        // +0x6c
     bool        ReactionFlags[79];                      // +0x78
 };
-struct CFactionDef : CDefBase { };
-struct CGameDefinitionManager {
+class CFactionDef : public CDefBase { public: };
+class CGameDefinitionManager { public:
     template <class T> bool GetDef(long index, CDefSlot<T>& out) const;      // 0x007719C0 (T = const COpinionSourceDef)
     template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x006B9D90 (T = const CFactionDef)
 };
@@ -104,18 +104,18 @@ template <class T> __declspec(noinline) bool CGameDefinitionManager::GetDef(long
     return true;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x10];
     CGameDefinitionManager* DefinitionManager;          // +0x10
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-template <class T> struct CCountedPointer { T* Object; void* Info; };
-struct CThing;
-struct CTCOpinionSource {
+template <class T> class CCountedPointer { public: T* Object; void* Info; };
+class CThing;
+class CTCOpinionSource { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

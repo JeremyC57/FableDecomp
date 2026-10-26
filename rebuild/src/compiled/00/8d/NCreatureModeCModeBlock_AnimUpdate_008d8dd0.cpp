@@ -13,7 +13,7 @@
 // +0x18 pair is zeroed by its member ctor before Set fills everything.
 // Shape: the record's ctor is inline (member zeroing, then Set); SetMainAnim's arguments are evaluated right to left (transition
 // time, then the blend-in time for the parent thing), the parent thing pointer is loaded once up front.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -41,7 +41,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();          // 0x006622A0
 };
 
@@ -51,7 +51,7 @@ struct CBlendPair {                        // the two floats at CAnimInit +0x18,
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
 
-struct CAnimInit {                         // 0x2c bytes
+class CAnimInit { public:                         // 0x2c bytes
     long          Mode;                    // +0x00
     unsigned char AnimType;                // +0x04
     bool          Flag05;                  // +0x05
@@ -68,18 +68,18 @@ struct CAnimInit {                         // 0x2c bytes
     }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                        // +0x00
     unsigned long GetAnimateThingFlags();  // 0x005DC390
     long GetAnimationTransitionInTime();   // 0x005DC1F0
     long GetTimeToBlendIn(CThing* thing);  // 0x005DC230
 };
 
-struct CTCCombat {                         // interface type 0x30
+class CTCCombat { public:                         // interface type 0x30
     CAnimationEntry* GetBlockingAnimationEntry() const;   // 0x00733690
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08

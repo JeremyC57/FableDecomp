@@ -15,13 +15,13 @@
 // "TEXT_QST_011_SAFE_TRADER_WARNING_10_HATE" 0x012E4F30, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Layout: Ego_r.pdb CSafeTrader (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 // (CV_BanditTollScript*, byte +0x4d set on the warning), PMasterData +0x18, WarnedHero +0x1c, AttackedByHero +0x1d.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
     virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
     virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15();
@@ -46,12 +46,12 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_0 };
 struct CCountedPointerWords { void* Data; void* Info; };
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -64,7 +64,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);  // 0x00CBE716
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x42c];
     long  SafeTraderWarningDistance;                   // +0x42C
     unsigned char _pad1[0x43c - 0x430];
@@ -81,7 +81,7 @@ extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -100,7 +100,7 @@ struct CV_BanditTollScript {
     unsigned char _pad[0x4d];
     bool SafeTraderWarnedHero;                         // +0x4D
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

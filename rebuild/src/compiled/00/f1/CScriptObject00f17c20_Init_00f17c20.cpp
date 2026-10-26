@@ -5,13 +5,13 @@
 // several hundred slots), +0x08 the object's CScriptThing, passed by reference (`lea edi,[esi+8]`) to every call.
 // The interface pointer is re-read from the member between the calls (it is not a local). No RTTI vtable names
 // this class (the scalar deleting destructor follows the body); the manifest label "CCham::Init" is propagated.
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

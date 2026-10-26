@@ -14,10 +14,10 @@
 // Shape: the masks are byte vectors of 18/79/92 entries filled with 1 (memset), the opinion set five zero floats; the
 //   92 list heads are built by an inline counted loop; the def fields are read through the member pointer each call.
 #include <string.h>
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
@@ -62,7 +62,7 @@ struct CRetailMaskVector {                          // the retail mask vectors: 
     }
 };
 
-struct COpinionSet {                                // five opinion values (vector<float>)
+class COpinionSet { public:                                // five opinion values (vector<float>)
     float* _M_start;
     float* _M_finish;
     SAllocProxy<float> _M_end_of_storage;
@@ -74,7 +74,7 @@ struct COpinionSet {                                // five opinion values (vect
     }
 };
 
-struct COpinionTransientOffset { unsigned char _body[0x18]; };
+class COpinionTransientOffset { public: unsigned char _body[0x18]; };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -87,20 +87,20 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct COpinionOfHeroDef {
+class COpinionOfHeroDef { public:
     unsigned char _pad[0x30];
     long          PersonalityIndex;                 // +0x30
     long          ReactionMaskIndex;                // +0x34
     long          DeedMaskIndex;                    // +0x38
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return Object; }
 };
-struct COpinionPersonalityDef;
+class COpinionPersonalityDef;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<COpinionOfHeroDef>& out);   // 0x00685C00
 };
 struct CThingDefView {
@@ -108,7 +108,7 @@ struct CThingDefView {
     CDefClassBase* PDef;                            // +0x70
 };
 
-struct CTCCreatureOpinionOfHero : CTCBase {         // vtable 0x0125BC3C
+class CTCCreatureOpinionOfHero : public CTCBase { public:         // vtable 0x0125BC3C
     long                                 LastOpinionReactionFrame;      // +0x0c
     float                                NumberOfTimesHit;              // +0x10
     float                                ToleranceToBeingHitOverride;   // +0x14

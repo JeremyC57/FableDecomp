@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CSoundPair { int FirstSound, LastSound; };
+class CSoundPair { public: int FirstSound, LastSound; };
 struct T { unsigned int first; CSoundPair second; T() { } T(const T& o) : first(o.first), second(o.second) { } };
 static void Fill(T& t, int k) { t.first = k; t.second.FirstSound = k * 7; t.second.LastSound = k * 9; }
 static bool Same(const T& a, const T& b) { return a.first == b.first && a.second.FirstSound == b.second.FirstSound && a.second.LastSound == b.second.LastSound; }

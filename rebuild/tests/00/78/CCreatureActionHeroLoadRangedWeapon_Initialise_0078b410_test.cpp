@@ -5,27 +5,27 @@
 #include <cstring>
 #include <cmath>
 
-struct CTCBase;
+class CTCBase;
 static int g_baseInit = 0, g_inserts = 0, g_recalcs = 0, g_addTC = 0; static void* g_key = 0; static float g_value = 0;
 static char g_addName[16]; static bool g_addActivate = true;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CDefPointeeBase {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CDefPointeeBase { public:
     mutable long m_refCount; mutable int Destroyed;
     void DestroyDef() const { ++Destroyed; }
     void Release() const { if (--m_refCount == 0) DestroyDef(); }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object) { Object->Release(); Object = 0; } }
     T* operator->() const { return Object; }
 };
-struct CTCHeroExperience { float Level; };
+class CTCHeroExperience { public: float Level; };
 struct CAbilityTable { float GetAbilityMultiplier(const CTCHeroExperience* e) const { return e->Level; } };
-struct CHeroStatsDef : CDefPointeeBase { CAbilityTable Abilities; };
-struct CAbilityDef : CDefPointeeBase { float MaxMultiplier, MinMultiplier; };
-struct CDefClassBase {
+class CHeroStatsDef : public CDefPointeeBase { public: CAbilityTable Abilities; };
+class CAbilityDef : public CDefPointeeBase { public: float MaxMultiplier, MinMultiplier; };
+class CDefClassBase { public:
     long m_refCount; int Destroyed; const CAbilityDef* Ability;
     void Destroy() { ++Destroyed; }
     bool GetSubDef(CDefPointer<const CAbilityDef>* out) { if (!Ability) return false; ++Ability->m_refCount; out->Object = Ability; return true; }
@@ -38,11 +38,11 @@ struct CDefClassReference {
 };
 struct CHasteMultiplier { void* first; float second; CHasteMultiplier(void* k, float v) : first(k), second(v) {} };
 struct CHasteMap { void insert(const CHasteMultiplier& v) { g_key = v.first; g_value = v.second; ++g_inserts; } };
-struct CTCHaste { CHasteMap Multipliers; void RecalculateSpeed() { ++g_recalcs; } };
+class CTCHaste { public: CHasteMap Multipliers; void RecalculateSpeed() { ++g_recalcs; } };
 static CTCHaste g_addedHaste;
-struct CTCParamsBase;
-struct CTCCarrying;
-struct CThing {
+class CTCParamsBase;
+class CTCCarrying;
+class CThing { public:
     CDefClassBase* m_pDef; const CTCHeroExperience* Experience; const CTCCarrying* Carrying; CTCHaste* Haste; const CHeroStatsDef* Stats;
     CDefPointer<const CHeroStatsDef> GetHeroStatsDef() { CDefPointer<const CHeroStatsDef> p; p.Object = Stats; if (Stats) ++Stats->m_refCount; return p; }
     CTCBase* AddTC(const CCharString& n, bool activate, CTCParamsBase*) { std::strcpy(g_addName, n.s); g_addActivate = activate; ++g_addTC; return (CTCBase*)&g_addedHaste; }
@@ -51,14 +51,14 @@ struct CThing {
     bool GetInterface(CTCHaste** o, long) { if (!Haste) return false; *o = Haste; return true; }
 };
 static CThing* g_weapon = 0;
-struct CTCCarrying { CThing* GetThingInPrimarySlot() const { return g_weapon; } };
+class CTCCarrying { public: CThing* GetThingInPrimarySlot() const { return g_weapon; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CPtr PCreature;
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase { void Initialise(); };
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public: void Initialise(); };
 
 void CCreatureAction_HeroLoadRangedWeapon::Initialise()
 {

@@ -3,7 +3,7 @@
 #include <math.h>
 
 static float g_epsilon = 1e-4f;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     bool operator!=(const C3DVector& o) const
     {
@@ -22,9 +22,9 @@ inline float WrapAngle(float angle)
     return angle;
 }
 struct CPhysics { float FacingXY; C3DVector Position; float GetFacingAngleXY() { return FacingXY; } };
-struct CThing { CPhysics* PhysicsTC; };
+class CThing { public: CPhysics* PhysicsTC; };
 struct CAction { bool Blocks; bool BlocksBodyTurning() { return Blocks; } };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char m_flags91;
     CAction* CurrentAction;
     bool Busy;
@@ -38,7 +38,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
     }
     return false;
 }
-struct CTCLook {
+class CTCLook { public:
     CThing* ParentThing;
     CThingCreatureBase* PParentCreature;
     float RecoveryAngleToLookAtXY;

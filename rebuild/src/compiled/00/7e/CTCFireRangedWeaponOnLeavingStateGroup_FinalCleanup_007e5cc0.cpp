@@ -9,13 +9,13 @@
 // component, `push 0` the bool; the helper is the last statement and becomes the tail `jmp` with the thing in ecx.
 #include "engine/CTCBase.h"
 
-struct CThing {
+class CThing { public:
     void SetComponentRegistered(bool registered, CTCBase* component);   // 0x00833A10
 };
 
 void __fastcall CleanupRangedWeapon(CThing* creature);                  // 0x007E5B40
 
-struct CTCFireRangedWeaponOnLeavingStateGroup : CTCBase {
+class CTCFireRangedWeaponOnLeavingStateGroup : public CTCBase { public:
     void FinalCleanup();
 };
 

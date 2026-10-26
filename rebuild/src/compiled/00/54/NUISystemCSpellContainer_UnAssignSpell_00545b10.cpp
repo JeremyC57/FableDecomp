@@ -201,7 +201,7 @@ public:
     unsigned char B, G, R, A;
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                                                     // +0x00
     void (__fastcall* DeleteFunc)(void* data);                                         // +0x04
     void* Data;                                                                        // +0x08
@@ -276,7 +276,7 @@ public:
 
 namespace NUISystem {
 
-struct CUIState {                           // map value (key: the state index)
+class CUIState { public:                           // map value (key: the state index)
     unsigned long StateChangeFlag;          // +0x00
     long          StateChangeType;          // +0x04
     C2DVector     Position;                 // +0x08

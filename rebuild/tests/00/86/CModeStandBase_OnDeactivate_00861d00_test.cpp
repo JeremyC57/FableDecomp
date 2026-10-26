@@ -66,8 +66,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CAnimEntryLite;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CModeStandBase {
@@ -129,7 +129,7 @@ FABLE_STATIC_ASSERT(offsetof(CModeStandBase, PSprintAnimation_Info) == 0x64);
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CCPPointerInfo { unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
 FABLE_STATIC_ASSERT(sizeof(CCPPointerInfo)==12);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,Data)==8);

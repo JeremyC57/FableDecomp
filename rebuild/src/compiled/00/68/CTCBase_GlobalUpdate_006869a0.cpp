@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCBase { void GlobalUpdate(int a0); };
+class CTCBase { public: void GlobalUpdate(int a0); };
 void CTCBase::GlobalUpdate(int a0) {}

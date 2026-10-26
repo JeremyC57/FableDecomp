@@ -8,7 +8,7 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -18,11 +18,11 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing;
+class CThing;
 
 struct PairLongThing {                       // std::pair<long, CIntelligentPointer<CThing> >
     long                        first;       // +0x00

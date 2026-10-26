@@ -2,7 +2,7 @@
 #include <cstdlib>
 // Behaviour test: CWorldMap::InitPassabilityFromThemesIfNecessary -- clip the area to the world, collect the maps under
 // it, and let each map whose clipped local box is non-empty initialise its passability over that box.
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     long GetWidth() const { return BRX - TLX; }
     long GetHeight() const { return BRY - TLY; }
@@ -21,11 +21,11 @@ struct ULongVector {
     unsigned long* begin() { return _M_start; }
     unsigned long* end() { return _M_finish; }
 };
-struct CMap {
+class CMap { public:
     int Calls; C2DBoxI Last;
     void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area) { ++Calls; Last = area; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     C2DBoxI Dims;
     C2DBoxI MapArea[3];
     CMap Maps[3];

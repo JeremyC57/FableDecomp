@@ -6,9 +6,9 @@
 // engine/CEngineInternalPrimitiveParticleMeshGroup.h (PDB MeshInfo +0xc0, WorldTransform +0xc4, BlendOp +0xf4, BlendMode +0xf8 are at +0xac, +0xb0, +0xe0,
 // +0xe4: the particle-group base's STL containers are narrower in retail), so the members are modelled locally at the retail offsets; EnginePrimitiveFlags
 // (+0xc) is the CEngineInternalPrimitiveBase member.
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
-struct CMatrix3x4 { float m_rows[12]; };
+class CMatrix3x4 { public: float m_rows[12]; };
 
 struct CMeshBank_00a242a0 {
     C3DMeshInfo* GetMeshInfo(long id);             // 0x00A242A0

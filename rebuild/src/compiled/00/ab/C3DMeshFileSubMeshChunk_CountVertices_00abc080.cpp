@@ -12,7 +12,7 @@
 // Layout: Ego_r.pdb C3DMeshFileVerticesChunk VertexList +0x10 (CArray<C3DVertex2>, 32-byte elements, retail 12-byte vector).
 // Leaf: CountVertices@C3DMeshFileSubMeshChunk
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count) { if (Count) ++Count->references; }
@@ -32,30 +32,30 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-template <class T> struct CArray {                 // retail STLport vector layout
+template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct C3DVertex2 { unsigned char _body[0x20]; };
+class C3DVertex2 { public: unsigned char _body[0x20]; };
 
-struct CChunkedFileChunk;
-struct CChunkedFileSuperChunk {
+class CChunkedFileChunk;
+class CChunkedFileSuperChunk { public:
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const;   // 0x00AA7F40
     CCountedPointer<CChunkedFileChunk> FindNextSubChunk(const CCountedPointer<CChunkedFileChunk>& current) const;   // 0x00AA7FF0
 };
 
-struct C3DMeshFileVerticesChunk {
+class C3DMeshFileVerticesChunk { public:
     unsigned char _base_body[0x10];        // CChunkedFileChunk
     CArray<C3DVertex2> VertexList;         // +0x10
 };
 
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DMeshFileVerticesChunk> PeekVertices() const;   // 0x00ABAFE0
 };
 
-struct C3DMeshFileSubMeshChunk : CChunkedFileSuperChunk {
+class C3DMeshFileSubMeshChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DMeshFilePrimitiveChunk> FindFirstPrimitive() const;   // 0x00ABA980
     CCountedPointer<const C3DMeshFilePrimitiveChunk> FindNextPrimitive(const CCountedPointer<const C3DMeshFilePrimitiveChunk>& current) const;   // 0x00ABAA10
     unsigned long CountVertices() const;

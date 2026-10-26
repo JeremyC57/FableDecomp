@@ -15,9 +15,9 @@
 // and words share ebx (also the null argument pushed for both pointer constructors).
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
-struct CTCActionUseBase {                                   // 0x14 bytes, vtable 0x0123F09C
+class CTCActionUseBase { public:                                   // 0x14 bytes, vtable 0x0123F09C
     virtual void v00();
     unsigned char _body[0x10];                              // CTCBase + PActionUseDef + Usable
     CTCActionUseBase(CThing* owner);                        // 0x004DA939
@@ -30,7 +30,7 @@ struct CIntelligentPointer {                                // CIntelligentPoint
     CIntelligentPointer(CThing* thing);                     // 0x004A96F0
 };
 
-struct CTCActionUseBed : CTCActionUseBase {                 // vtable 0x0123F784
+class CTCActionUseBed : public CTCActionUseBase { public:                 // vtable 0x0123F784
     bool                WaitingForFadeOut;                  // +0x14
     bool                WaitingForFadeIn;                   // +0x15
     bool                InAtomicAction;                     // +0x16

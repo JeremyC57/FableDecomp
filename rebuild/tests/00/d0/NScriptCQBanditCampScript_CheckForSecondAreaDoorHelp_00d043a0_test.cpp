@@ -21,7 +21,7 @@
 //   0x00D041B9 (member pointer stored at 0x00D041E3); the catalog's CV_ChapelOfEvilScript::EndMission is a propagated label.
 // Shape: generated script code; `for (;;)` with the terminate return first; the hint switch's last case loops back to
 //   stage 3 (cases 2 and 4 share the store).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -71,14 +71,14 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void HeroReceiveMessageFromGuildMaster(CCharString const &, CCharString const &, bool, bool) const; //slot274 0x008918c0
 };
 extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
-struct CTimer {                                             // a script timer: the interface's timer index
+class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // out of line 0x00CD4470
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
 };
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00() {}
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                       // 0x00CB7940

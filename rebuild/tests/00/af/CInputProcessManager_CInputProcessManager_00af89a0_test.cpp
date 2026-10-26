@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void* vptr;
 };
 

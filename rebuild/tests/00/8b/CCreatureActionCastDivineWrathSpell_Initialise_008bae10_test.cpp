@@ -2,10 +2,10 @@
 // the action's thing only when that thing is alive.
 #include <cstdio>
 #include <cstring>
-struct CThing;
+class CThing;
 struct CPtr { CThing* item; CPtr() : item(0) { } CPtr(const CPtr& o) : item(o.item) { } CPtr& operator=(const CPtr& o) { item = o.item; return *this; } CThing* GetPItem() const { return item; } };
 struct CTC { CPtr PTarget; unsigned char m_bArmed; void SetTarget(CPtr t) { PTarget = t; } };
-struct CThing {
+class CThing { public:
     bool dead; bool has; CTC tc; int added; char addedName[32];
     bool GetInterface(CTC** out, long type) { if (type == 0x85 && has) { *out = &tc; return true; } return false; }
     CTC* AddTC(const char* name, bool, void*) { ++added; std::strcpy(addedName, name); has = true; return &tc; }

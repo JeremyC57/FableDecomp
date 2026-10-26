@@ -18,7 +18,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 // names; the map number is Ego_r.pdb CThing::CurrentMapNumber (short, PDB +0x9E, retail +0x8E; setter SetCurrentMapNumber(long)).
 // Shape: `this`, the world map and the door's region number live in the 12-byte frame; the vector element is reached through the
 // STLport `*(begin() + 10)` (the dead `add eax,958h` is the vector's `this`).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8e];
     short         CurrentMapNumber;             // +0x8e (Ego_r.pdb +0x9e)
     long GetCurrentMapNumber() const { return CurrentMapNumber; }
@@ -32,7 +32,7 @@ template<class T> struct vector {               // STLport vector
     T* begin() const { return _M_start; }
     const T& operator[](unsigned long i) const { return *(begin() + i); }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     vector<long>  MiniMapMarkerGraphics;        // +0x958
 };
@@ -45,28 +45,28 @@ struct CDemonDoorRegistry {
     unsigned char _pad00[0x14];
     CThingList    DemonDoors;                   // +0x14
 };
-struct CThingManager {
+class CThingManager { public:
     void*               __vftable;
     CDemonDoorRegistry* PDemonDoorRegistry;     // +0x04
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long map) const;    // 0x004FC190
     long GetLoadedRegion() const;                   // 0x004FB150
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CThingManager* PeekThingManager();  // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void v11(); virtual void v12();
     virtual CWorldMap* PeekWorldMap();          // slot 13 (+0x34)
 };
-struct CGame {
+class CGame { public:
     unsigned char _pad00[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CGame* g_pGame;                          // 0x013B86A0
-struct CRegion;
-struct CMiniMapDisplay {
+class CRegion;
+class CMiniMapDisplay { public:
     void*         __vftable;                    // +0x00
     unsigned char _pad04[0xb4];
     CRegion*      PRegion;                      // +0xb8

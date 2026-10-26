@@ -23,7 +23,7 @@ struct CSprite : IPrimary_005545d0, CObserver, ISecondaryB_005545d0 {   // retai
     CSprite(void* def);                            // 0x0041B800
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct SListNode {
     SListNode*              _M_next;
     SListNode*              _M_prev;
@@ -67,7 +67,7 @@ struct CIndexMap {                                 // map<unsigned long, unsigne
 };
 
 namespace NUISystem {
-struct CMorphingSprite : CSprite {                 // vtables 0x0124A49C / 0x0124A474 / 0x0124A46C
+class CMorphingSprite : public CSprite { public:                 // vtables 0x0124A49C / 0x0124A474 / 0x0124A46C
     long          RenderCount;                     // +0x184
     CHandleList   Handles;                         // +0x188
     CIndexMap     GraphicIndices;                  // +0x18c

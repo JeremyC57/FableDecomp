@@ -14,7 +14,7 @@ struct CThingCreatureBaseCalls {
     long IsHuman();                       // 0x00662000 (__fastcall, no args)
 };
 
-struct CThingFilter_IsHuman {
+class CThingFilter_IsHuman { public:
     long operator()(CThingCreatureBaseCalls* creature);
 };
 

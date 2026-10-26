@@ -12,11 +12,11 @@
 //   local over [start, p); the item's length argument is the zero-reusing null-safe GetLength(); MoveStringPos is
 //   inlined around the out-of-line CalcInQuotes (`n > 0` folds into the `sub` flags).
 extern "C" int __cdecl isdigit(int c);   // 0x00BFEDA6 (CRT)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                 // +0
     unsigned long Length;                // +4
 };
-struct CCharString {                     // one CCharStringData pointer
+class CCharString { public:                     // one CCharStringData pointer
     CCharStringData* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                      // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CCursorPos {                      // PDB: InQuotes / StringPos / Line (12
     unsigned long Line;
 };
 enum EParsedItemType { PIT_NONE = 0, PIT_SYMBOL = 1, PIT_STRING = 2, PIT_INTEGER = 3, PIT_FLOAT = 4 };
-struct CParsedItem {                     // PDB: Type, a union of the numeric value, String
+class CParsedItem { public:                     // PDB: Type, a union of the numeric value, String
     EParsedItemType Type;
     union { long Integer; float Float; };
     CCharString     String;
@@ -37,7 +37,7 @@ struct CParsedItem {                     // PDB: Type, a union of the numeric va
     void InitAsFloat(const char* text, unsigned long length);     // 0x009B9770
 };
 // Retail layout (0x28 bytes; the Ego_r PDB's debug-build layout is 0x30):
-struct CStringParser {
+class CStringParser { public:
     virtual ~CStringParser();
     char*          String;               // +0x04
     unsigned long  BaseLineOffset;       // +0x08

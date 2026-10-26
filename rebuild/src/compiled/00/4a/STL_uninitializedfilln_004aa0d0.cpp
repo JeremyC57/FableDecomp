@@ -15,14 +15,14 @@
 // Label correction: catalogued as `Vector_Uninitialized_Fill` (right idea); the element is CTestQuest.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);          // 0x0099EC30
 };
 
 struct __false_type { __false_type() { } };
 
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;                          // +0x00
     CCharString HSPName;                            // +0x04
     long        ColourIndex;                        // +0x08

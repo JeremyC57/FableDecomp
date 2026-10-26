@@ -4,10 +4,10 @@
 // Behaviour test for 0x00a9d3f0: Planes block freed, then Name destroyed, then ~CChunkedFileSuperChunk.
 static char g_log[16]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CCharString { void* m_pStringData; ~CCharString() { Log('S'); } };
+class CCharString { public: void* m_pStringData; ~CCharString() { Log('S'); } };
 struct CBlockArray { void* m_pData; long m_count; long m_capacity; ~CBlockArray() { if (m_pData) { Log('F'); std::free(m_pData); } } };
-struct CChunkedFileSuperChunk { virtual void v00() {} ~CChunkedFileSuperChunk() { Log('B'); } };
-struct C3DMeshFileConvexVolumeChunk : CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public: virtual void v00() {} ~CChunkedFileSuperChunk() { Log('B'); } };
+class C3DMeshFileConvexVolumeChunk : public CChunkedFileSuperChunk { public:
     CCharString Name;
     CBlockArray Planes;
     virtual void v00() {}

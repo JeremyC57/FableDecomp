@@ -9,9 +9,9 @@
 // Data: the global head-turn animation names 0x013BACE8 (vertical) and 0x013BACE4 (horizontal) (CCharString globals).
 // Layout: retail CTCLook (PDB minus 4 after the 12-byte TurningAnims vector): PParentCreature +0x10, PAppearanceDef +0x18,
 //   PHeadTurnAnimH +0xBC, PHeadTurnAnimV +0xC4 (PDB +0xC0/+0xC8). CAppearanceDef Animation +0x34. No engine header.
-struct CCharString { void* PStringData; };
-struct CAnimationEntry;
-struct CAnimFilterBase {                                   // vtable 0x0122FFCC
+class CCharString { public: void* PStringData; };
+class CAnimationEntry;
+class CAnimFilterBase { public:                                   // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
     virtual void v02();
@@ -19,15 +19,15 @@ struct CAnimFilterBase {                                   // vtable 0x0122FFCC
 struct CAnimFilterNoGroup : CAnimFilterBase {              // vtable 0x0122FFDC
     CAnimFilterNoGroup() { }
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool Find(const CCharString& name, const CAnimFilterBase* filter) const;                               // 0x005DC2E0
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
-struct CAppearanceDef {
+class CAppearanceDef { public:
     unsigned char _pad00[0x34];
     CAnimationSet Animation;                               // +0x34
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -67,7 +67,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);                // +4
     void* m_pObject;                                       // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                                // +0
     SCountBlock* m_pCount;                                 // +4
     CCountedPointer(T* object);                            // 0x0073D180
@@ -84,7 +84,7 @@ template <class T> struct CCountedPointer {
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00754F10
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -92,7 +92,7 @@ template <class T> struct CDefPointer {
 extern CCharString g_HeadTurnAnimVName;                    // 0x013BACE8
 extern CCharString g_HeadTurnAnimHName;                    // 0x013BACE4
 
-struct CTCLook {
+class CTCLook { public:
     void* __vftable;                                       // +0x00
     void* ParentThing;                                     // +0x04
     unsigned char _pad08[0x10 - 0x08];

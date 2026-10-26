@@ -9,16 +9,16 @@
 
 #include <string.h>
 #include <stdlib.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
 // Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-struct CThing {
+class CThing { public:
     enum { TypeMask = 0 };
     unsigned char _pad00[0x60];
-    struct CTCPhysicsBase* PhysicsTC;                      // +0x60
+    class CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
@@ -31,18 +31,18 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
 }
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
-struct CThingCreatureBase : CThing { enum { TypeMask = 0xf }; };
-struct C3DVector {
+class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         Radius;                           // +0x34
     C3DVector GetMapwhoPosition() const;            // 0x006AFCB0
 };
 // CThingFilter_OverlappingCircle (out of line at 0x0063EF50, the landed body), inlined here.
-struct CThingFilter_OverlappingCircle {
+class CThingFilter_OverlappingCircle { public:
     C3DVector SpherePos;                            // +0x00
     float     Radius;                               // +0x0c
     bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const
@@ -110,7 +110,7 @@ struct CMapVector {
 };
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08

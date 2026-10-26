@@ -12,9 +12,9 @@
 // constructor's returned `this` pushed as the action, the base destructor after the call). Frame 0x128 = the
 // string (+0) and the 0x124-byte retail action (+4).
 // Model: local (engine/CAIStateGroup_CreatureRangedCombatUseWillShield.h is a flattened base blob).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -26,17 +26,17 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                                 // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 
-struct CCreatureAction_CastPhysicalShieldSpell : CCreatureActionBase {
+class CCreatureAction_CastPhysicalShieldSpell : public CCreatureActionBase { public:
     CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase* caster, long spellLevel, bool force,
         const CCharString& soundName, long repeat, float duration);            // 0x008BB6F0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                       // +0x04
     long ScriptAIPriority;                                  // +0x08

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTexture { int x; };
+class CTexture { public: int x; };
 struct CTextureRenderer {
     void* PVideoSys; CTexture* Texture; bool CreateOwnTexture;
     CTextureRenderer(long* phr, CTexture* texture) : PVideoSys(0), CreateOwnTexture(false) { *phr = 0; Texture = texture; if (!texture) CreateOwnTexture = true; }

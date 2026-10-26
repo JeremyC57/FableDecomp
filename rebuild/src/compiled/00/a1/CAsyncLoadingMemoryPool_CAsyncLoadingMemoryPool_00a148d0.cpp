@@ -8,7 +8,7 @@
 // constructor @ 0x00A02D20 runs, then the compiler stores this class's vtable (0x0129CA6C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     virtual void v00();
     CEnginePrimitiveTypeInfo();                           // 0x00A02D20
 };

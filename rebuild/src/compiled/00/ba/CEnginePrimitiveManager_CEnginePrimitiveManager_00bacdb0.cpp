@@ -7,7 +7,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CEnginePrimitiveManager : CBase {           // vtable 0x012A53E8
+class CEnginePrimitiveManager : public CBase { public:           // vtable 0x012A53E8
     long m_type;                                   // +0x04
     bool m_enabled;                                // +0x08
     virtual void v00();

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
+class CThing { public: unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
 struct CBaseIntelligentPointer {
     CThing* item; int sets;
     CBaseIntelligentPointer() : item(0), sets(0) { }
@@ -13,7 +13,7 @@ template<class T> bool GetInterface(CThing* t, T** out, long type)
     return false;
 }
 static void GiveTC(CThing* t, long type, void* comp) { t->bits[type >> 5] |= 1UL << (type & 31); t->compType = type; t->comp = comp; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPot : CThing { C3DVector pos; C3DVector* GetPosition() { return &pos; } };
 struct CCreature { C3DVector* near; float radius; bool placeOk; bool AutoPlaceNear(C3DVector* p, float r) { near = p; radius = r; return placeOk; } };
 struct CGroup { bool runnable; CCreature* creature; CBaseIntelligentPointer PCookingPot;

@@ -11,7 +11,7 @@
 // three float locals give a 0x10 frame with dx in the argument slot) and a copy of WorldPos (its Z copied through eax); the
 // distance is a named float homed in the dead `primitive` slot; the sort list is the `WaterStage && !ZBufferWritable ? 1 : 0`
 // ternary; RenderFlags/Alpha are assigned after each `new`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -41,7 +41,7 @@ public:
     virtual ~CEngineSubPrimitiveParticleGroup();
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54
 };

@@ -9,9 +9,9 @@
 // Local model: engine/CTCHeroCentre.h carries the Ego_r.pdb debug-STL layout (vectors of 0x10 bytes: QuestCardPositions +0x28,
 // WaitingForTutorialToFinish +0x38); the retail release vectors are 0xc bytes, so QuestCardPositions is at +0x24 and the flag
 // at +0x30 (the byte store above). engine/CTCBase.h is a flattened POD, so the polymorphic CTCBase is modelled locally too.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -19,13 +19,13 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CDefPointer {                                        // CDefPointer<CHeroCentreDef const>
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
 };
 struct CThingRef;                                           // CIntelligentPointer<CThing> element (only pointers are stored here)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 template<class T> struct CRetailVector {                    // std::vector<T>, VC7.1 release: first / last / end
     T* m_pFirst; T* m_pLast; T* m_pEnd;
@@ -34,7 +34,7 @@ template<class T> struct CRetailVector {                    // std::vector<T>, V
 
 enum EGUIMode { GUI_MODE_0 };
 
-struct CTCHeroCentre : CTCBase {                            // vtable 0x0126AF94
+class CTCHeroCentre : public CTCBase { public:                            // vtable 0x0126AF94
     CDefPointer PDef;                                       // +0x0c
     EGUIMode CurrentGUIMode;                                // +0x10
     unsigned long FrameQuestCardListFrom;                   // +0x14

@@ -16,17 +16,17 @@
 //   `GFGetSystemManager()->...` chain loads it last and pulls edi in for constant 0x10 and the argument-slot pointer).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CGraphicDataBank;
-struct CCPPointerInfo;
-struct CPixelFormat { long Format; };
-template <class T> struct CCountedPointer {
+class CGraphicDataBank;
+class CCPPointerInfo;
+class CPixelFormat { public: long Format; };
+template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pObject(0), m_pInfo(0) { }
     CCountedPointer(const CCountedPointer& other);
     ~CCountedPointer();
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -47,7 +47,7 @@ struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80 (
     bool          Flag2a;
     CGraphicBankParams();
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out);    // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out);   // 0x009BE870
     bool GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out);   // 0x009BE8B0
@@ -55,14 +55,14 @@ struct CDisplayManager {
     bool GetBestOpaqueTextureFormat(unsigned long bits, CPixelFormat* out, bool flag);  // 0x009BE610
     bool GetBestSignedTextureFormat(unsigned long bits, CPixelFormat* out);             // 0x009BE590
 };
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, CGraphicBankParams* params, bool a, bool b);   // 0x009F83D0
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char        _pad00[0x6c];
     CGraphicBankManager* GraphicBankManager;    // +0x6c
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[9];
     bool          Active;                       // +0x09 (descriptive)
 };
@@ -79,13 +79,13 @@ struct CLongList { void* _M_node; CLongList(const SAllocator& a = SAllocator());
 struct CActionParamList { void* _M_node; CActionParamList(const SAllocator& a = SAllocator()); };   // 0x0042AB01
 struct CLayerMap { unsigned char _d[0xc]; CLayerMap(); };                               // 0x0042BF85
 struct CChildrenMap { unsigned char _d[0xc]; CChildrenMap(); };                         // 0x0042D28B
-struct CComponent;
+class CComponent;
 struct CManagerBase {
     CManagerBase();                             // 0x0042BE7B
     virtual ~CManagerBase();
     unsigned char _d04[0xc];
 };
-struct CManager : CManagerBase {
+class CManager : public CManagerBase { public:
     CCountedPointer<CGraphicDataBank> PGraphicsBank;    // +0x10
     CCountedPointer<CGraphicDataBank> PMeshBank;        // +0x18
     void*            PInputManager;             // +0x20

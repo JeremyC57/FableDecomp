@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C3DVertexBlend2 { unsigned long VertexIndex; float BlendValue; };
+class C3DVertexBlend2 { public: unsigned long VertexIndex; float BlendValue; };
 struct SScalarTag { SScalarTag() { } };
 template <class T>
-struct CArray {
+class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) {}
     ~CArray() { std::free(m_pBegin); }
@@ -27,13 +27,13 @@ struct CArray {
             InsertGrow(m_pEnd, value, SScalarTag(), 1, true);
     }
 };
-struct C3DMeshFileGroupChunk {
+class C3DMeshFileGroupChunk { public:
     long m_bone; C3DVertexBlend2 m_list[5];
     long GetBoneIndex() const { return m_bone; }
     unsigned long GetVertexCount() const { return 5; }
     const C3DVertexBlend2* GetList() const { return m_list; }
 };
-struct C3DGroup2 {
+class C3DGroup2 { public:
     long BoneIndex;
     CArray<C3DVertexBlend2> VertexBlends;
     C3DGroup2(const C3DMeshFileGroupChunk& chunk)

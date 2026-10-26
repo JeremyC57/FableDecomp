@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CThingObject::ConstructFromLevelScript (0x00703110): base result gates the def refetch.
-struct CPersistContext { long m_mode; };
-struct CThingObjectDef { int id; };
-struct CDefinitionManager {
+class CPersistContext { public: long m_mode; };
+class CThingObjectDef { public: int id; };
+class CDefinitionManager { public:
     CThingObjectDef* table; int calls;
     bool GetDef(long index, CThingObjectDef*& out) { ++calls; out = &table[index]; return true; }
 };
-struct CThingObject {
+class CThingObject { public:
     CDefinitionManager* mgr; unsigned short DefGlobalIndex; CThingObjectDef* PDef; bool baseResult;
     bool SerialiseGameState(CPersistContext& c)
     {

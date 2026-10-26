@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DCoordI { long X; long Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
-struct C2DVector { float X; float Y; C2DCoordI ToC2DCoordI() const; };
+class C2DCoordI { public: long X; long Y; C2DCoordI(long x, long y) : X(x), Y(y) {} };
+class C2DVector { public: float X; float Y; C2DCoordI ToC2DCoordI() const; };
 C2DCoordI C2DVector::ToC2DCoordI() const { return C2DCoordI((long)X, (long)Y); }
 int main()
 {

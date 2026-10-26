@@ -1,6 +1,6 @@
 // std::vector<C3DVector>::erase(C3DVector* position) -- erase one shape point: shift the tail down one slot and drop the last
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075F4E0, 42 bytes, `ret 4`.
-// Leaf: ?erase@?$vector@UC3DVector
+// Leaf: ?erase@?$vector@VC3DVector
 // Label: the catalog's "MedianCut::GetNewTreeNode" is propagated and wrong. The only caller, NShape::CShape::UpdateDeletePoint
 //        0x00762010, erases from CShape::Points (vector<C3DVector> at +0x08, Ego_r.pdb) the point named by the last
 //        SelectedPoints iterator; the 12-byte stride and the copy helper match.
@@ -9,7 +9,7 @@
 // Shape: STLport `if (pos + 1 != end()) __copy(pos + 1, _M_finish, pos, tag, (int*)0); --_M_finish;` (C3DVector has a trivial
 //        destructor, so _Destroy emits nothing) -- the landed vector<CCountedPointer>::erase 0x0084F570 shape; the empty tag
 //        temporary lives in the dead `position` argument slot (`lea eax,[esp+10h]`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace std {

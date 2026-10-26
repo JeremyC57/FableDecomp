@@ -20,7 +20,7 @@ struct CResource_Calls {                           // engine/CResource.h: the ro
     virtual void v00();
     ~CResource_Calls();                            // 0x009FC550
 };
-struct CDefPointeeBase : CResource_Calls {         // vtable 0x01230BA0
+class CDefPointeeBase : public CResource_Calls { public:         // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };

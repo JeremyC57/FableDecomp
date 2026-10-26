@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CTCTavernGame { int id; };
-struct CThing { unsigned char Dead : 1; unsigned char _flags : 7; };
+class CTCTavernGame { public: int id; };
+class CThing { public: unsigned char Dead : 1; unsigned char _flags : 7; };
 
 static int g_getCalls = 0;
 struct CIntelligentPointer_CThing {
@@ -9,7 +9,7 @@ struct CIntelligentPointer_CThing {
     CThing* GetPItem() { ++g_getCalls; return m_pItem; }
 };
 
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     CTCTavernGame*             Game;
     CIntelligentPointer_CThing GameTable;
     CTCTavernGame* GetGame()

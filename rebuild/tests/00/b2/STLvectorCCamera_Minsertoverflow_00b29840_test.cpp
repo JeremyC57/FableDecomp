@@ -4,7 +4,7 @@
 
 // Model of STLport vector<CCamera>::_M_insert_overflow with an out-of-line CCamera copy constructor.
 static int g_copies = 0;
-struct CCamera {
+class CCamera { public:
     float pos[3];
     float rh[6];
     bool heightLocked, zLocked;

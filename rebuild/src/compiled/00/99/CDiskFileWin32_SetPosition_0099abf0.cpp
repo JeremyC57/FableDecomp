@@ -29,7 +29,7 @@ union LARGE_INTEGER {
     __int64 QuadPart;
 };
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     CCharString(const CCharString& other);         // 0x0099EC30

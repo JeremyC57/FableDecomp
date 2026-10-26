@@ -4,7 +4,7 @@
 #endif
 // Model of the STLport bidirectional __partition<C3DVector*, CIsUsableIciclePoint> @ 0x008E3430: move the points the
 // predicate accepts to the front (swapping through a frame temporary), return the partition point.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }

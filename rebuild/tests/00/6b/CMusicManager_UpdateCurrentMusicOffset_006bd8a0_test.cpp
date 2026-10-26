@@ -32,7 +32,7 @@ struct CRegisteredMusicMap {
     Pair* End() { return Last; }
 };
 
-struct CMusicManager {
+class CMusicManager { public:
     CRegisteredMusicMap RegisteredMusic;
     int CurrentMusicID;
     void UpdateCurrentMusicOffset()

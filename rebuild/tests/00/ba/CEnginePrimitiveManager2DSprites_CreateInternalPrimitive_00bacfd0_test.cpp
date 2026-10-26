@@ -1,20 +1,20 @@
 // Behaviour test for CEnginePrimitiveManager2DSprites::CreateInternalPrimitive @ 0x00BACFD0.
 #include <cstdio>
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     long m_type; unsigned int m_flags;
     CEngineInternalPrimitiveBase(long t, unsigned int f) : m_type(t), m_flags(f) { }
     virtual int Kind() { return 0; }
     virtual ~CEngineInternalPrimitiveBase() { }
 };
-struct CEngineInternalPrimitive2DSprite : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitive2DSprite : public CEngineInternalPrimitiveBase { public:
     CEngineInternalPrimitive2DSprite() : CEngineInternalPrimitiveBase(0x22, 0x80000000u) { }
     virtual int Kind() { return 1; }
 };
-struct CEngineInternalPrimitive2DClockSprite : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitive2DClockSprite : public CEngineInternalPrimitiveBase { public:
     CEngineInternalPrimitive2DClockSprite() : CEngineInternalPrimitiveBase(0x23, 0x80000000u) { }
     virtual int Kind() { return 2; }
 };
-struct CEnginePrimitiveManager2DSprites {
+class CEnginePrimitiveManager2DSprites { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type)
     {
         switch (type) {

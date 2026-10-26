@@ -2,12 +2,12 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}           // test only: lets the test build list nodes
@@ -44,15 +44,15 @@ struct CEventList {
     reverse_iterator rend() const { return reverse_iterator(_M_node->_M_next); }
 };
 namespace NEntityEvents {
-struct CIsEventCreatedAfter {
+class CIsEventCreatedAfter { public:
     long WorldFrame;
     bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; }
 };
-struct CIsEventCreatedBeforeOrOn {
+class CIsEventCreatedBeforeOrOn { public:
     long WorldFrame;
     bool operator()(const CEventBase& event) const { return event.WorldFrame <= WorldFrame; }
 };
-struct CIsEventOfType {
+class CIsEventOfType { public:
     long Type;
     bool operator()(const CEventBase& event) const { return event.GetType() == Type; }
 };
@@ -64,7 +64,7 @@ struct CEventHitByMethods : CEventBase {
     CThing* GetAttacker() const { return Attacker; }
     bool WasKnockedDown() const { return KnockedDown; }
 };
-struct CIsHitEventHitAndKnockedDownBy {
+class CIsHitEventHitAndKnockedDownBy { public:
     CThing* Attacker;
     bool operator()(const CEventBase& event) const
     {
@@ -73,7 +73,7 @@ struct CIsHitEventHitAndKnockedDownBy {
     }
 };
 }
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A& First;
     const B& Second;
     template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
@@ -85,7 +85,7 @@ struct CTestEvent : NEntityEvents::CEventHitByMethods {
 static int g_deleted = 0;
 static void __fastcall DeleteEvent(void* data) { ++g_deleted; (void)data; }
 namespace NEntityEvents {
-struct CEventChildHurtGoToMother : CEventBase { enum { EventType = 0x18 }; };
+class CEventChildHurtGoToMother : public CEventBase { public: enum { EventType = 0x18 }; };
 }
 
 struct CTCEntityEventsMethods {

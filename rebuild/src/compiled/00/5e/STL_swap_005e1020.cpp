@@ -11,13 +11,13 @@
 //   inline for `b = tmp` (four dword stores, then the counted pointer's self test / release + zero store / adopt), and
 //   tmp's destructor releases without a zero store.
 // Label correction: catalogued as `swap<CAnimationEntry>`; the element is pair<unsigned long, CAnimationEntry>.
-struct CAnimComponentMap {                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
+class CAnimComponentMap { public:                                 // intrusively counted (CIVCountedPointeeBase): vptr, count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1 (+0x04): destroy on the last reference
     long IVRefCount;                                       // +0x04
 };
 
-template <class T> struct CIVCountedPointer {              // one word: the intrusively counted object
+template <class T> class CIVCountedPointer { public:              // one word: the intrusively counted object
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
@@ -46,11 +46,11 @@ template <class T> struct CIVCountedPointer {              // one word: the intr
     }
 };
 
-struct CDefString {                                        // one word: the def string table position
+class CDefString { public:                                        // one word: the def string table position
     long TablePos;                                         // +0x00
 };
 
-struct CAnimationEntry {                                   // Ego_r.pdb, 0x10 bytes
+class CAnimationEntry { public:                                   // Ego_r.pdb, 0x10 bytes
     long                                 BankIndex;        // +0x00
     CDefString                           AnimName;         // +0x04
     CDefString                           GroupName;        // +0x08
@@ -64,7 +64,7 @@ template <class T1, class T2> struct pair {                // STLport pair: expl
 };
 typedef pair<unsigned long, CAnimationEntry> SAnimationEntryPair;   // 0x14 bytes: CRC key + entry
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<unsigned long, CAnimationEntry> TAnimationEntryLess;

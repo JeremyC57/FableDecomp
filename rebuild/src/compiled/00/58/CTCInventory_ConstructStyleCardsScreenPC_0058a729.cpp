@@ -7,9 +7,9 @@
 // Pragma: optimize("s", on) -- the four arguments are forwarded with pass-through `push [esp+14h]`.
 // Layout: only the CTCBase owner pointer at +0x04 is read (engine/CTCInventory.h pads it; the
 // shipped class is narrower than the PDB layout, so a local view names the one member).
-struct CThing;
+class CThing;
 struct CComponent;
-struct CTCInventory;
+class CTCInventory;
 
 // NUISystem::CFrontEndManager as this body sees it: two virtual setters (slots 21 and 26).
 struct CFrontEndManager_Calls {
@@ -43,7 +43,7 @@ struct CFrontEndManager_Calls {
     static CFrontEndManager_Calls* __fastcall GetInstance();    // 0x0041E5F2
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*   __vftable;                            // +0x00
     CThing* PThing;                               // +0x04 CTCBase owner
 

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CLandscapeBackgroundPatch { int dummy; };
+class CLandscapeBackgroundPatch { public: int dummy; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

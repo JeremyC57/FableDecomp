@@ -15,7 +15,7 @@
 // size()) erase(begin() + n, end()); else insert(end(), n - size(), x); }`. The default value is a
 // temporary built first and destroyed in both arms. The manifest name Std_Vector_Resize is
 // descriptive; the element is fixed by the CWideString default ctor/dtor and the landed erase.
-struct CWideStringData;
+class CWideStringData;
 
 class CWideString {
 public:

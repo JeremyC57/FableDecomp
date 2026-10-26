@@ -4,7 +4,7 @@
 // IsClothing, IsSelfIlluminating, UseHighDetailQuadTree, Electrocutable = bits 0..4).
 // The catalog label "vfunc_57" is the slot; the name is the PDB bitfield the slot reads.
 // Shape: a one-bit `unsigned char` bitfield read (`mov al ; shr al,3 ; and al,1`), returned as is.
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char _pad00[0x98];
     unsigned char IsFragile : 1;                   // +0x98 bit 0
     unsigned char IsClothing : 1;                  //        bit 1
@@ -16,7 +16,7 @@ struct CDefPointerThingObjectDef {
     const CThingObjectDef* m_pDef;
     const CThingObjectDef* operator->() const { return m_pDef; }
 };
-struct CThingObject {
+class CThingObject { public:
     virtual void v00();
     unsigned char             _pad04[0xcc];
     CDefPointerThingObjectDef PDef;                // +0xd0

@@ -3,7 +3,7 @@
 #include <cstring>
 #include <new>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[12];
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_live; }
@@ -35,7 +35,7 @@ struct CVector {
         else InsertOverflow(m_finish, x);
     }
 };
-struct CMap {
+class CMap { public:
     CVector Vector; unsigned char Compare; bool Dirty;
     void Insert(const float& key, const CCharString& value) { Vector.push_back(SPair(key, value)); Dirty = true; }
 };

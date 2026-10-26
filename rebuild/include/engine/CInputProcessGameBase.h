@@ -8,11 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CMainGameComponent;
-struct CPlayer;
-struct CWorld;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CMainGameComponent;
+class CPlayer;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {

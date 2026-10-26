@@ -9,7 +9,7 @@
 #define __forceinline inline
 #define __int64 long long
 #endif
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -20,7 +20,7 @@ struct CCharString {
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 #endif
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes (CScriptProcessBase + thread state)
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes (CScriptProcessBase + thread state)
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -46,7 +46,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
 
-struct CQ_FireHeartScript : CScriptBase {
+class CQ_FireHeartScript : public CScriptBase { public:
     void* GSI;                                          // +0x40
     void* PMasterData;                                  // +0x44
     bool  QuestStartScreenShown;                        // +0x48

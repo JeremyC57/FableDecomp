@@ -11,11 +11,11 @@
 // Shape: VC7.1 forms the last address with `add esi,0ABh ; push esi` because `this` is dead after it.
 #pragma optimize("s", on)
 
-struct CDefString { long m_index; };
-struct CFloatRange { float Min; float Max; };
+class CDefString { public: long m_index; };
+class CFloatRange { public: float Min; float Max; };
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& v);                 // 0x00431061
     void Transfer(long& v);                  // 0x00431102
     void Transfer(bool& v);                  // 0x0043314A
@@ -23,7 +23,7 @@ struct CPersistContext {
     template <class T> void Transfer(T& v);  // 0x00458F2B <CFloatRange>, 0x00459042 <EDamageAttribute>
 };
 
-struct CThingShotDef {
+class CThingShotDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                    // CDefClassBase fields (+0x04)
     float Speed;                                  // +0x3c

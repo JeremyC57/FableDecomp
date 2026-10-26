@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
 };

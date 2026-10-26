@@ -11,7 +11,7 @@ struct CThing_Retail { unsigned char m_type; unsigned long m_tcMask[8]; CTCMap_R
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); } };
 static CTCBase_Retail* GetTC(CThing_Retail* t, long kind) { return t->m_tcs.Find(kind); }
 static CTCBase_Retail* GetTCConst(const CThing_Retail* t, long kind) { return t->m_tcs.Find(kind); }
-struct CScriptThing { CThing_Retail* m_pThing; virtual CThing_Retail* GetThing() const { std::strcat(g_seq, "g"); return m_pThing; } virtual bool IsValid() const { std::strcat(g_seq, "v"); return g_valid; } };
+class CScriptThing { public: CThing_Retail* m_pThing; virtual CThing_Retail* GetThing() const { std::strcat(g_seq, "g"); return m_pThing; } virtual bool IsValid() const { std::strcat(g_seq, "v"); return g_valid; } };
 static CThing_Retail g_thing; static CScriptThing g_script; static STCEntry_Retail g_entries[4]; static CTCBase_Retail g_tcs[4]; static CTCBase_Retail g_endTC;
 static void reset(long kind, bool present) { std::memset(&g_thing, 0, sizeof g_thing); g_seq[0] = 0; g_valid = true; g_lbKind = -1; g_script.m_pThing = &g_thing;
     g_entries[0].m_kind = 1; g_entries[0].m_pTC = &g_tcs[0]; g_entries[1].m_kind = kind; g_entries[1].m_pTC = &g_tcs[1]; g_entries[2].m_kind = 999; g_entries[2].m_pTC = &g_tcs[2]; g_entries[3].m_kind = 0; g_entries[3].m_pTC = &g_endTC;
@@ -19,7 +19,7 @@ static void reset(long kind, bool present) { std::memset(&g_thing, 0, sizeof g_t
 struct CGameScriptInterface_Base { virtual void v000() { } };
 static bool g_onFire = false; static void* g_tc = 0;
 struct CTCFlammable_Retail { void SetOnFire() { std::strcat(g_seq, "S"); g_tc = this; } void ExtinguishFire() { std::strcat(g_seq, "E"); g_tc = this; } bool IsOnFire() { std::strcat(g_seq, "F"); g_tc = this; return g_onFire; } };
-struct CGameScriptInterface : CGameScriptInterface_Base {
+class CGameScriptInterface : public CGameScriptInterface_Base { public:
     void ExtinguishFiresOnThing(const CScriptThing& thing) const { if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->HasTC(0x6d)) { CTCFlammable_Retail* tc = (CTCFlammable_Retail*)GetTC(t, 0x6d); tc->ExtinguishFire(); } }}
 };
 

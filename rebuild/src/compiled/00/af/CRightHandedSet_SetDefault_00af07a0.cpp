@@ -7,12 +7,12 @@
 // re-read as a dword for the bitwise copy (VC does not forward a float store into an integer load). It is NOT a constructor:
 // eax ends as the last copied word, and only the void form gives retail's register choice (eax = destination of Up,
 // `add ecx,0Ch` for Forward); the constructor form keeps eax = this and swaps the two.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;           // +0x00
     C3DVector Forward;      // +0x0c
     void SetDefault();

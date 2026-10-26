@@ -9,7 +9,7 @@ void CMemoryBuffer::Copy(int size, const void* pSource) {
     lastByte = *(const unsigned char*)pSource;
 }
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     void AddUBYTE(unsigned char value);
 };
 void CGameEvent::AddUBYTE(unsigned char value) { Copy(1, &value); }

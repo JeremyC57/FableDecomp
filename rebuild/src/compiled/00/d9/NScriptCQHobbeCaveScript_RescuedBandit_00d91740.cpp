@@ -15,14 +15,14 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CCPPointerInfo;
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class CCPPointerInfo;
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                       // slot 0; complete destructor 0x004AA840
     virtual void v001(); virtual void v002();
     virtual void v004(); virtual void v005();
@@ -52,7 +52,7 @@ public:
 };
 }
 bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>& things);   // 0x00CBED00
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -67,7 +67,7 @@ struct CGameScriptInterface {
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual long GetAllThingsWithScriptName(const CCharString& name, std::vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

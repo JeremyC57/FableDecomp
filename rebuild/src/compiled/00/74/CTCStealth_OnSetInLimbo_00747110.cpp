@@ -12,14 +12,14 @@
 // Shape: `GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetCurrentRegionNumber())` (both GetWorld calls first); the
 // def is copied twice: a by-value `HasDef()` style test (copy, null test, release with its null test) and a copy dereferenced for the
 // value whose release has no null test.
-struct CRegionDef {
+class CRegionDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
     unsigned char _pad08[0x98 - 0x08];
     long MaxNumAttackersOnHero;                 // +0x98 (PDB +0xA4)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
@@ -30,28 +30,28 @@ template<class T> struct CDefPointerTest {      // the null-safe release of the 
     CDefPointerTest(const CDefPointer<T>& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointerTest() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
 };
-struct CRegion {                                // CWorldMap::CRegion
+class CRegion { public:                                // CWorldMap::CRegion
     unsigned char _pad00[0x24];
     CDefPointer<CRegionDef> PDef;               // +0x24 (PDB +0x2C)
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionNumber();              // 0x004FB150
     CRegion& GetRegion_004fb490(long region);            // 0x004FB490
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005();
     virtual void w006(); virtual void w007(); virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
     virtual CWorldMap* GetWorldMap();           // slot 12 (+0x30)
 };
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     CWorld* GetWorld();                         // 0x00686A70
 };
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     unsigned char _pad0c[0x48 - 0x0c];
     long RegionBasedMaxNumberOfDangerThings;    // +0x48
     void OnSetInLimbo(bool on);

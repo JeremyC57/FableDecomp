@@ -1,15 +1,15 @@
 // Behaviour test for CInputProcessBoastUI::ProcessInput @ 0x00690E70 (copy of the model with stub callees).
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CInputEvent { int button; long action; C2DVector MouseMovementXY; };   // button: 1 pressed, 2 held, 3 released
-struct CProcessedInput { bool handled; void SetHandled() { handled = true; } };
+class C2DVector { public: float X, Y; };
+class CInputEvent { public: int button; long action; C2DVector MouseMovementXY; };   // button: 1 pressed, 2 held, 3 released
+class CProcessedInput { public: bool handled; void SetHandled() { handled = true; } };
 struct CFrontEndManager {
     long last; int sends; C2DVector MouseMovement;
     void SendEvent(long e) { last = e; ++sends; }
 };
 static CFrontEndManager g_fe;
 static CFrontEndManager* GetInstance() { return &g_fe; }
-struct CInputProcessBoastUI {
+class CInputProcessBoastUI { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }
     bool IsEventButtonHeld(const CInputEvent& e) { return e.button == 2; }
     bool IsEventButtonReleased(const CInputEvent& e) { return e.button == 3; }

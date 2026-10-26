@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CAFile { int id; };
-struct CASuspendableProcess;
+class CAFile { public: int id; };
+class CASuspendableProcess;
 static long g_count = 0;
 static CAFile* g_loadedFile = 0; static CASuspendableProcess* g_loadedProcess = (CASuspendableProcess*)1; static long g_loadedLength = 0;
 static int g_unassigned = 0;

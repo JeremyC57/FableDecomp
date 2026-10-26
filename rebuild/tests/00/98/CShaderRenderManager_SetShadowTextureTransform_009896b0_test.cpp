@@ -4,10 +4,10 @@
 #define __fastcall
 #define __cdecl
 #endif
-struct CMatrix4x4 { float m[16]; };
-struct CVertexShaderConstantLayout { unsigned long ShadowTextureTransformRegister; };
+class CMatrix4x4 { public: float m[16]; };
+class CVertexShaderConstantLayout { public: unsigned long ShadowTextureTransformRegister; };
 static int g_calls = 0; static unsigned long g_reg = 0, g_rows = 0; static const CMatrix4x4* g_matrix = 0; static const void* g_this = 0;
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CVertexShaderConstantLayout* CurrentVSConstantLayout;
     void SetVSMatrixConstantTransposed(unsigned long startRegister, const CMatrix4x4* matrix, unsigned long rows)
     { ++g_calls; g_this = this; g_reg = startRegister; g_matrix = matrix; g_rows = rows; }

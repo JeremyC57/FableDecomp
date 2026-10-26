@@ -5,16 +5,16 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00bd7110_TEST FAIL\n"); return 1; } } while (0)
 
-struct C3DClothPrimitive { unsigned int SimulationIndex; };
+class C3DClothPrimitive { public: unsigned int SimulationIndex; };
 struct C3DClothPrimitivePointer { C3DClothPrimitive* Data; void* Info; C3DClothPrimitive* operator->() const { return Data; } };
-struct C3DPrimitive2 { C3DClothPrimitivePointer* ClothPrimitives; };
+class C3DPrimitive2 { public: C3DClothPrimitivePointer* ClothPrimitives; };
 struct CEngineSimulation { int renders; float time; unsigned int pass; void Render(float t, unsigned int p) { ++renders; time = t; pass = p; } };
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     CEngineSimulation** sims; unsigned int count;
     CEngineSimulation* FindSimulation(unsigned int i) { return i < count ? sims[i] : 0; }
 };
-struct CEngineInternalPrimitiveAnimatedMesh { int InterpolationSet; bool BulletTimeAffectsCloth; CEnginePrimitiveSimulationInfo* SimulationInfo; };
-struct CEngineSubPrimitiveAnimatedMesh { CEngineInternalPrimitiveAnimatedMesh* Parent; C3DPrimitive2* Primitive; bool Simulated; };
+class CEngineInternalPrimitiveAnimatedMesh { public: int InterpolationSet; bool BulletTimeAffectsCloth; CEnginePrimitiveSimulationInfo* SimulationInfo; };
+class CEngineSubPrimitiveAnimatedMesh { public: CEngineInternalPrimitiveAnimatedMesh* Parent; C3DPrimitive2* Primitive; bool Simulated; };
 struct STime { float Time; float a; float b; };
 static float g_bulletTime = 0.25f;
 static STime g_times[3] = { { 1, 0, 0 }, { 2, 0, 0 }, { 3, 0, 0 } };

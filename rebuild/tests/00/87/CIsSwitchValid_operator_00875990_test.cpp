@@ -16,7 +16,7 @@ static int fails = 0;
 // Shape: `x*x + y*y` squares y first; `a.X*b.X + a.Y*b.Y` likewise; both tests exit through `test ah,41h ; jne`.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

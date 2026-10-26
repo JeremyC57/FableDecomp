@@ -1,4 +1,4 @@
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void* vftable;
 };
 

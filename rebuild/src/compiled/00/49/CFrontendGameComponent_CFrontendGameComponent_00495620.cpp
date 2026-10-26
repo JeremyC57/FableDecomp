@@ -22,16 +22,16 @@ namespace N_0099a300 { struct CBase {
 struct CGameComponentInterface {
     virtual void v00();
 };
-struct CGameComponent : CBase, CGameComponentInterface {   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  References;
     void  (__fastcall* Destroy)(void* object);
     void* Object;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -46,7 +46,7 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                        // 0x0099B510
 };
@@ -66,11 +66,11 @@ struct CWideStringVector {                                 // STLport vector<CWi
             free(_M_start);
     }
 };
-struct CTexture {
+class CTexture { public:
     unsigned char _data[8];
     ~CTexture();                                           // 0x009F9F70
 };
-struct CGraphicDataBank; struct CFontBank;
+class CGraphicDataBank; class CFontBank;
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
 struct CFrontendGameComponent : CGameComponent {           // vtables 0x01238768 / 0x0123875C
     unsigned char                     _pad00c[0x1dfc - 0x0c];

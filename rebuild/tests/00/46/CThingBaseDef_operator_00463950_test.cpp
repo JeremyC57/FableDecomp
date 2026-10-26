@@ -4,7 +4,7 @@
 
 static int g_parentCalls = 0, g_copyCalls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x39];
     CParentDefClassBase& operator=(const CParentDefClassBase&) { ++g_parentCalls; return *this; }
 };
@@ -22,10 +22,10 @@ struct CSmallVectorComponentEntries {
     }
 };
 
-struct CThingComponentSet { CSmallVectorComponentEntries Entries; };
-struct CDefString { long Index; };
+class CThingComponentSet { public: CSmallVectorComponentEntries Entries; };
+class CDefString { public: long Index; };
 
-struct CThingBaseDef : CParentDefClassBase {
+class CThingBaseDef : public CParentDefClassBase { public:
     CThingComponentSet Components;
     bool AvailableInEditor : 1; bool AlwaysFrameUpdate : 1; bool StartKillLocked : 1; bool LevelLess : 1;
     bool IsDrawable : 1; bool IsDrawableInEditor : 1; bool ForceNoSerialise : 1; bool InMapSearches : 1;

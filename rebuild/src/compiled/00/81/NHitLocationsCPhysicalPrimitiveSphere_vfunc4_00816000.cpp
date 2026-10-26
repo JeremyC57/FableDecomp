@@ -12,7 +12,7 @@ struct CBasicStringChar {
     bool UseFastExtend : 1;
     bool operator==(const char*) const;
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString {
 public:
@@ -27,19 +27,19 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CPersistContext;
-struct CBaseClass { virtual ~CBaseClass(); };
+class CPersistContext;
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };
 // Layout: donor CStringParser is0x30 with12B Comments; retail list is4B.
 // Retail parser is0x28: Comments14,ErrorCallback18,CursorPos1c.
-struct CStringParser : CBaseClass {
+class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename;
     CCharString TempCharString; CStringParserCommentList Comments;
     void (*ErrorCallback)(CCharString*); long CursorPos[3];
     CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
     bool SkipPastNextItemIfIs(const CCharString&);
 };
-struct CDefString {
+class CDefString { public:
     long Index;
     CDefString() : Index(-1) {}
 };

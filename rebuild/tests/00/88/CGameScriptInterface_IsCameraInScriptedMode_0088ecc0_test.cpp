@@ -18,7 +18,7 @@ struct CCamMgr {
 static CCamObj g_obj = {7};
 void CCamMgr::GetObj(CCamObj** out){ *out = &g_obj; }
 
-struct CWorld { char pad[0x38]; };
+class CWorld { public: char pad[0x38]; };
 
 bool __fastcall CGameScriptInterface_IsCameraInScriptedMode(CGameScriptInterface* self)
 {

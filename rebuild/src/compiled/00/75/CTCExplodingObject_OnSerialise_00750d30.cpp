@@ -12,15 +12,15 @@
 // Shape: the landed CTCCameraPointFixedPoint slot-33 body (0x0075D140): literal defaults bound to the
 // const references, homed in the frame word (first) and then the dead context-argument slot; the
 // unused bool parameter only shows in `ret 8`.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
     void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
 };
 
-struct CThing;
+class CThing;
 
-struct CTCExplodingObject {
+class CTCExplodingObject { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08

@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
 // CCrateStackDef::Copy  0x004e0e98
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CBaseDef {
     // base class with Copy at 0x431f10 (__fastcall: ecx=this, stack=other)
     void Copy(const CDefClassBase* other);
 };
 
-struct CCrateStackDef : public CBaseDef {
+class CCrateStackDef : public CBaseDef { public:
     char pad[0x28 - sizeof(CBaseDef)];
     unsigned int m28;
     unsigned int m2c;

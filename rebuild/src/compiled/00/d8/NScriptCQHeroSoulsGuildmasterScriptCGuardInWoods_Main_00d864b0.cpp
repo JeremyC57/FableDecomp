@@ -6,31 +6,31 @@
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;

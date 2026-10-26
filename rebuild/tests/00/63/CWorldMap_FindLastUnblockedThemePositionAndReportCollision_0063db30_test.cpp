@@ -3,7 +3,7 @@
 #include <math.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -11,10 +11,10 @@ struct C3DVector {
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 static const float g_epsilon_0129ba3c = 1e-4f;
-struct C2DCoordI { int x, y; C2DCoordI(int ax, int ay) : x(ax), y(ay) {} };
-struct C2DBoxI { int TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: int x, y; C2DCoordI(int ax, int ay) : x(ax), y(ay) {} };
+class C2DBoxI { public: int TLX, TLY, BRX, BRY; };
 // mock world: cells are 1 unit wide along X; ground height per cell; a collision is found when the cell's ground is above the segment
-struct CWorldMap {
+class CWorldMap { public:
     C2DBoxI Area;
     float Ground[16];
     int MapNumberZeroX;          // x coordinate whose map number is 0

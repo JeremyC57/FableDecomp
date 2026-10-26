@@ -2,8 +2,8 @@
 
 static const float k_CrierScale = 0.5f;
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     char pad0;
     char crier;
 };

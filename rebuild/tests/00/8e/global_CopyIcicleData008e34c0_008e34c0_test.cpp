@@ -5,7 +5,7 @@
 #endif
 
 struct random_access_iterator_tag { };
-struct CBaseObject { int m_id; };
+class CBaseObject { public: int m_id; };
 static int g_gets = 0, g_sets = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
@@ -15,12 +15,12 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { ++g_sets; PData = item; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThing;
+class CThing;
 static CBaseObject g_things[8];
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CIcicleData {
     CIntelligentPointer<CThing> PEffect;
     CIntelligentPointer<CThing> PTrap;

@@ -1,6 +1,6 @@
 // Behaviour test for CThing::SetCutscenePauseBehaviour @ 0x004C78A0: the three behaviours set the two flags, others leave them.
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char low : 7;
     unsigned char PausedDuringCutscenes : 1;
     unsigned char NotPausedDuringCutscenes : 1;

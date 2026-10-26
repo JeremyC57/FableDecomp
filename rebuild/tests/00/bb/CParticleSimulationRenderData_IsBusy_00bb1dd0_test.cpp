@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CParticleSimulationRenderData { int dummy; };
+class CParticleSimulationRenderData { public: int dummy; };
 
 static bool IsBusy_model(CParticleSimulationRenderData* render)
 {

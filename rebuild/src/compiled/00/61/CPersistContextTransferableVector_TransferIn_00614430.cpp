@@ -7,10 +7,10 @@
 // family: { vptr; vector<T>* TransVector; }). The vector's first pointer is read before the call
 // (kept in esi: a named local), the parser (second argument) is `this` of the reader, and the index
 // is re-read from its slot after the call for the two dword stores (`[esi+ecx*8]`, `[esi+ecx*8+4]`).
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 
-struct CStringParser {
+class CStringParser { public:
     __int64 ReadInt64();                   // 0x009BA5B0
 };
 

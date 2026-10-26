@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     long PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; long Anim; long InterfaceType;
     CCombatAbilityData(long type) : PercentageChance(100), SecondsDuration(-1.0f), SecondsToWaitBeforeRepeat(0.0f), Anim(-1), InterfaceType(type) { }
 };
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:
     bool Blockable, Knockdown; float Damage;
     CCombatAbilityMeleeAttackData(long type) : CCombatAbilityData(type), Blockable(true), Knockdown(false), Damage(0.0f) { }
 };

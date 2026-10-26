@@ -12,7 +12,7 @@
 // (`test dword [eax+20h],20000h`) in one `&&` chain; the inventory is a named local (edi); the name is
 // a block-scoped CCharString destroyed right after the index lookup; `== 0` returns the index, every
 // other path the shared `xor eax,eax`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -44,17 +44,17 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !(thing->m_stateFlags & 1);
 }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& Get();                   // 0x0044C6B0
 };
 
@@ -62,15 +62,15 @@ struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long defIndex);  // 0x005BDF08
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                        // 0x00487DD0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                               // 0x00449960
 };
 
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     CPlayerManager* GetPlayerManager();                     // 0x00686D50 (CTCBase)

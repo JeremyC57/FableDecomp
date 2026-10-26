@@ -19,12 +19,12 @@
 // its single data-block pointer, so the local copy is that pointer (no add-ref in this body).
 // Retail-offset view of CQuestManager: engine/CQuestManager.h carries the PDB layout (RegisteredQuestNames
 // at +0x34, 16-byte vectors), which disagrees with the retail bytes (+0x2C), so the model is local.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
 };
 static __forceinline bool operator==(const CCharString& sa, const CCharString& sb)
@@ -45,7 +45,7 @@ struct CCharStringVector {                         // retail std::vector: first/
     CCharString* end_of_storage;
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad00[0x2c];
     CCharStringVector RegisteredQuestNames;        // +0x2c
     long GetIndexFromRegisteredQuest(const CCharString& name) const;

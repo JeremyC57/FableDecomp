@@ -8,21 +8,21 @@
 //        counted file-data pointer adds `(p ? p->Sizeof() + 8 : 8) - 8` (both +8 arms kept, `lea eax,[eax+edi-8]`).
 // Layout: retail NGameText::CTextEntry 0x44 bytes (PDB 0x48 with a 16-byte CArray): CResource base 0x1C, SpeechBank +0x1C,
 //         Narrator +0x20, SoundName +0x24, Text +0x28, Tags +0x2C (STLport vector), PFileData +0x38, Owner +0x40.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                               // 0x0099E4B0
     unsigned long Sizeof() const;                // 0x0099E500
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                               // 0x0099AED0
     unsigned long Sizeof() const;                // 0x0099B2A0
 };
-struct CCPPointerInfo { long Count; };
-struct CBankFileAsyncData {
+class CCPPointerInfo { public: long Count; };
+class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                // 0x009D5620 (catalog "CVertexBufferWin32::DoSizeof" is a byte twin)
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -35,7 +35,7 @@ template <class T> struct CRetailVector {        // STLport vector (12 bytes; PD
     unsigned int capacity() const { return _M_end_of_storage - _M_start; }
 };
 class CResourceList;
-struct CResource {                               // 0x1C bytes
+class CResource { public:                               // 0x1C bytes
     virtual unsigned long Sizeof() const;
     void* _pad04;
     CResourceList* ResourceList;                 // +0x08
@@ -48,8 +48,8 @@ struct CResource {                               // 0x1C bytes
 };
 struct CDataBankTextEntry;
 namespace NGameText {
-struct CTextTag { unsigned long a, b; };         // 8 bytes
-struct CTextEntry : CResource {                  // vtable 0x0129B4A4 (.?AVCTextEntry@NGameText@@), retail 0x44 bytes
+class CTextTag { public: unsigned long a, b; };         // 8 bytes
+class CTextEntry : public CResource { public:                  // vtable 0x0129B4A4 (.?AVCTextEntry@NGameText@@), retail 0x44 bytes
     CCharString SpeechBank;                      // +0x1c
     CCharString Narrator;                        // +0x20
     CCharString SoundName;                       // +0x24

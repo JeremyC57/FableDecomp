@@ -17,7 +17,7 @@
 //   result replaces the def pointer by an inline raw assignment (release through the def's inline Release() member --
 //   written inline at the use it loads the count back --, null store, store); the class name is a named block-scoped
 //   CCharString local (passing the GetString result straight drops the `lea`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
@@ -26,8 +26,8 @@ namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
 
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     virtual void v00();
     long           IVRefCount;                               // +4
     CResourceList* ResourceList;                             // +8
@@ -40,7 +40,7 @@ struct CResource {
     void SetResourceSize(unsigned long size);                // 0x009FBF20
     void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
     long          m_pad0;                                    // +0
     CResource     Head;                                      // +4
     unsigned long ResourceCount;                             // +0x20
@@ -60,7 +60,7 @@ inline void CResource::Touch()
     }
 }
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual ~CDataInputStream();
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -69,18 +69,18 @@ struct CDataInputStream {
     long          SourceChunkBytesRemaining;                 // +0x14
     CDataInputStream();                                      // 0x00993B20
 };
-struct CMemoryDataInputStream : CDataInputStream {           // vtable 0x0123675C
+class CMemoryDataInputStream : public CDataInputStream { public:           // vtable 0x0123675C
     const unsigned char* Data;                               // +0x18
     CMemoryDataInputStream() : Data(0) { }
     virtual ~CMemoryDataInputStream();                       // 0x00993B10
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CDataInputStream* stream, bool flag);    // 0x009BAA30
 };
 
-struct CDefinitionManager;
-struct CDefClassBase : CResource {
+class CDefinitionManager;
+class CDefClassBase : public CResource { public:
     CDefinitionManager* Owner;                               // +0x1c
     unsigned long       GlobalIndex;                         // +0x20
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -122,7 +122,7 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;                     // 0x013CA828
 
-struct CDefinitionManager : CResourceList {
+class CDefinitionManager : public CResourceList { public:
     unsigned char          _pad30[0xa4 - 0x30];
     CInstantiatedDefInfo** InstantiatedDefs;                 // +0xa4
     unsigned char          _pada8[0xc0 - 0xa8];

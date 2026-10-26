@@ -12,7 +12,7 @@ struct InnerMember {
     ~InnerMember();          // emitted __fastcall; defined out-of-line elsewhere (extern)
 };
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     char pad[0x10];
     InnerMember inner;       // at +0x10
     // scalar deleting destructor: run inner dtor, optionally free

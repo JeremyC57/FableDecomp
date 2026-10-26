@@ -10,7 +10,7 @@
 // Shape: as DoAttractToPoint: the inline `C3DVector * float` is built through the value constructor
 // straight into the hidden return slot, arguments evaluated right to left (z, y, x multiplied
 // first, stored x, y, z).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
@@ -18,11 +18,11 @@ struct C3DVector {
 };
 
 namespace NCameraModes {
-struct CPhysicsForceModelBase {                    // vtable 0x0127592C
+class CPhysicsForceModelBase { public:                    // vtable 0x0127592C
     virtual C3DVector DoVelocityDamping();         // 0x008FA7E0
     virtual C3DVector DoAttractToPoint();          // 0x008FA800
 };
-struct CPhysicsForceModelGotoOutsideSimple : CPhysicsForceModelBase {   // vtable 0x01275950
+class CPhysicsForceModelGotoOutsideSimple : public CPhysicsForceModelBase { public:   // vtable 0x01275950
     virtual C3DVector DoVelocityDamping();
 };
 }

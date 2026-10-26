@@ -14,7 +14,7 @@
 // CCharString ctor at 0x99ebf0: __fastcall (this in ecx), two callee-cleaned
 // stack args (const char* lit, int len). Model as a real member so a genuine
 // thiscall call site is emitted (ecx=this, edx untouched).
-struct CCharString {
+class CCharString { public:
     int dummy;
     CCharString* ctor_99ebf0(const char* lit, int len);
 };

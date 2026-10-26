@@ -8,7 +8,7 @@
 // body clears. Pragma: `#pragma optimize("s", on)` -- the shared <CThing> vtable constant is hoisted into ebx
 // across the two member constructors (size optimisation).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -24,7 +24,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
     CIntelligentPointerConstThing() : CBaseIntelligentPointer() { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     CAIStateGroupBase();                        // 0x008FD255

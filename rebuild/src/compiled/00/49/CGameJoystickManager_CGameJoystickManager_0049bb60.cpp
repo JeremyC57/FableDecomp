@@ -10,7 +10,7 @@ struct CBase {
     CBase();                                        // 0x0099A2F0
 };
 
-struct CGameJoystickManager : CBase {
+class CGameJoystickManager : public CBase { public:
     long m_MainPlayerJoystickDeviceNumber;          // +0x04
     bool m_MainPlayerJoystickDeviceNumberSet;       // +0x08
     CGameJoystickManager();

@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
 static void* g_captured_field = 0;
 static CMovableResourceMemoryPool* g_captured_pool = 0;
 static bool g_ret = false;
 
-struct CParticleSimulation {
+class CParticleSimulation { public:
     char Init(void* progField, CMovableResourceMemoryPool* pool);
 };
 
@@ -17,7 +17,7 @@ char CParticleSimulation::Init(void* progField, CMovableResourceMemoryPool* pool
     return g_ret;
 }
 
-struct CParticleProgram {
+class CParticleProgram { public:
     char pad[8];
     bool SetupSimulation(CParticleSimulation* sim, CMovableResourceMemoryPool* pool);
 };

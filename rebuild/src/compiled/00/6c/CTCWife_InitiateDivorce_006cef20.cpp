@@ -14,12 +14,12 @@
 //        the player number stored over Player, the normalised flag byte in its own slot handed to Copy(1, &flag). The
 //        40-byte event buffer is what makes the TU /GS.
 // Layout: CTCWife ParentThing +0x04, PHeroMarriageDef +0x0c, WaitingForDivorce +0x29 (engine/CTCWife.h).
-struct CCharString;
-struct CFontBank;
+class CCharString;
+class CFontBank;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -29,39 +29,39 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBool(bool value) { value = value ? true : false; Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank* m_pFontBank;                        // +0x1614c
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CSubtitleRenderer {                         // embedded at CPlayerGui+0x18
+class CSubtitleRenderer { public:                         // embedded at CPlayerGui+0x18
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     unsigned char _pad00[0x34];
     unsigned char m_screenActive;                  // +0x34 (descriptive: a hero-information screen is up)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer m_subtitleRenderer;          // +0x18
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
 };
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0xa4];
     unsigned char TextGuiWifeDivorceOccurred[4];   // +0xa4 CCharString
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     void*             ParentThing;                 // +0x04
     unsigned char     _pad_0x08[4];

@@ -10,7 +10,7 @@
 // Shape: `if (p && !p->IsFinished()) return false; return true;` -- the `||` expression form gives the 32-bit
 // `xor eax,eax` / `mov eax,1` pair instead; here the null test jumps to the shared `mov al,1`, a finished read jumps there
 // too, and the unfinished case returns the call's own zero al (`ret` straight after the `jne`).
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                     // 0x009D54E0
 };
 

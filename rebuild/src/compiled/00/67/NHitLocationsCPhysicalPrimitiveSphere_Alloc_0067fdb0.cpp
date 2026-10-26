@@ -14,7 +14,7 @@ struct CDefString {
     CDefString() : Index(-1) {}
 };
 
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     virtual ~CPhysicalPrimitiveBase() {}
     virtual CPhysicalPrimitiveBase* Alloc() const = 0;   // slot 1
 };

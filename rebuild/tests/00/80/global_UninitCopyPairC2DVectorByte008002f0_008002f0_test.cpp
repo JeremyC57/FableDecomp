@@ -4,7 +4,7 @@
 
 struct __false_type { __false_type() { } };
 #pragma pack(push, 1)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 #pragma pack(pop)
 struct SPair {
     C2DVector     first;

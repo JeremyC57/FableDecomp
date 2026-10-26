@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) {} };
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) {} };
 static long g_code = -1, g_ptrs = 0; static void* g_t = 0;
 struct Owner { }; struct Thing { };
 struct BIP { virtual ~BIP() {} BIP() { ++g_ptrs; } };

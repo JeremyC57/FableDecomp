@@ -8,16 +8,16 @@
 // Shape: `this` rides in edi (the PCreature address is formed in place, `lea ecx,[edi+8]`); the GetInterface result is IGNORED, so the
 // manager is read back from the frame slot on the not-present path and taken from the register on the found path (`jmp` joins them).
 // Retail CCreatureActionBase is 0xa8 bytes; no engine header for this class, so `this` is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 struct CTCGraphicAppearance;
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -49,13 +49,13 @@ struct CMode {
     virtual void v00();
     virtual long GetModeType();             // slot 1
 };
-struct CTCCreatureModeManager {             // the interface-49 component
+class CTCCreatureModeManager { public:             // the interface-49 component
     CMode* GetCurrentMode();                // 0x0073A6E0
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
@@ -64,7 +64,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
 
-struct CCreatureAction_BeStunned : CCreatureActionBase {
+class CCreatureAction_BeStunned : public CCreatureActionBase { public:
     virtual void Initialise();
 };
 

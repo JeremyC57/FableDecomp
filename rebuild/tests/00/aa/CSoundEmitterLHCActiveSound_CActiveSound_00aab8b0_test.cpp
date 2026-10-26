@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct CBase { virtual void v00() { } CBase() { } };
-struct CCharString { void* m_pData; CCharString(const char* t) : m_pData((void*)t) { } };
+class CCharString { public: void* m_pData; CCharString(const char* t) : m_pData((void*)t) { } };
 struct CSoundEmitterLH { struct CActiveSound : CBase { long m_references; void* m_pA; void* m_pB; void* m_pD; bool m_e; bool m_f; unsigned char _pad16[2]; long m_18; CCharString m_name; long m_20;
     CActiveSound(void* a, void* b, const char* name, void* d, bool e, bool f) : CBase(), m_references(1), m_pA(a), m_pB(b), m_pD(d), m_e(e), m_f(f), m_18(0), m_name(name), m_20(0) { } }; };
 int main() {

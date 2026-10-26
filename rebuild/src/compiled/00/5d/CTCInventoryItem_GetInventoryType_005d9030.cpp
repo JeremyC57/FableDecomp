@@ -9,19 +9,19 @@
 // callers' TC-type use of the value confirms the field).
 // Shape: /O2 (`mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax`); the size-TU twin is 0x005BD1B3.
 enum ETCInterfaceType { TC_INTERFACE_NONE };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
     __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CInventoryItemDef : CDefPointeeBase {
+class CInventoryItemDef : public CDefPointeeBase { public:
     unsigned char    _pad08[0x48];                       // +0x08
     ETCInterfaceType InventoryType;                      // +0x50
 };

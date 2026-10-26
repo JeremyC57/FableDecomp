@@ -12,10 +12,10 @@
 // absent path dereferences null, as retail does); the two SummonCreatures calls are not merged.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -50,12 +50,12 @@ struct CThing {
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CSummonDef {
+class CSummonDef { public:
     unsigned char _pad0[0x44];
     long          SummoneeEffect;               // +0x44
 };
 
-struct CTCAISummon {
+class CTCAISummon { public:
     unsigned char _pad0[0x0c];
     CSummonDef*   PSummonDef;                   // +0x0c CDefPointer<const CSummonDef>
     long SummonCreatures(const C3DVector* position);   // 0x007FE040
@@ -67,7 +67,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -78,7 +78,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_SummonCreatures : CCombatActionBase {
+class CCreatureAction_SummonCreatures : public CCombatActionBase { public:
     bool SpawnOnTarget;                         // +0x114
     virtual void Initialise();
 };

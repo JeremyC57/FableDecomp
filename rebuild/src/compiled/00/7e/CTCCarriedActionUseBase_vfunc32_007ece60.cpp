@@ -9,9 +9,9 @@
 // constructor's returned `this` (`push eax`); its implicit destructor releases the follow-up-action
 // counted pointer (+0xa8 object, +0xac block) inline and calls ~CCreatureActionBase out of line
 // (same model as the landed CCreatureAction_ShowToSheatheTrophy::FinishAction 0x006DD980).
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
@@ -37,17 +37,17 @@ struct CCountedPointer_CCreatureActionBase {   // {object, count block}
     }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                 // 0x00693EF0
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {   // retail sizeof 0xb0
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // retail sizeof 0xb0
     CCountedPointer_CCreatureActionBase PNextAction;   // +0xa8 follow-up action
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* next, long kind);   // 0x0069FFD0
 };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     void vfunc_32(CThingCreatureBase* user);
 };

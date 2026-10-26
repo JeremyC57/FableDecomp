@@ -3,9 +3,9 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { const char* name; };
+class CScriptThing { public: const char* name; };
 struct CMasterScriptData { bool MayorBribed; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CMasterScriptData* data;
     int frame;
     void NewScriptFrame() { ++frame; Log("frame"); if (frame == 2) data->MayorBribed = true; }

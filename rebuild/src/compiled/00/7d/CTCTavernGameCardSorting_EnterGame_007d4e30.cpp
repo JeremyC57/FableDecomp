@@ -31,7 +31,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long  PointerModel;                         // +0x3c
     float MoveSpeed;                            // +0x40

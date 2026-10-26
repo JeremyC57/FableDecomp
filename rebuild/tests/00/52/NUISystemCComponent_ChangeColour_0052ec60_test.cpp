@@ -1,6 +1,6 @@
 // Behaviour test for 0x0052EC60 NUISystem::CComponent::ChangeColour: a timed change records target/initial and restarts the timer, an instant change sets all three
 #include <cstdio>
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CComponent {
     unsigned char _pad[0x84];
     CRGBColour Colour;

@@ -10,15 +10,15 @@
 // form; the durations copy through registers; C3DVector is a plain POD whose implicit (block) assignment
 // VC addresses through the two `lea` pointers (+0x18) -- a user memberwise operator= folds the offsets
 // into `[edi+18h]`/`[esi+18h]` moves instead; Rotation last.
-struct CMeshDataBank;
+class CMeshDataBank;
 
-struct CMeshDataBankEntry {                // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                // vtable 0x0129CD28
     virtual void v00();
     CMeshDataBank* Bank;                   // +4
     unsigned long Index;                   // +8
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -43,11 +43,11 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C3DAnimationInfo : CMeshDataBankEntry {   // vtable 0x0129CD64
+class C3DAnimationInfo : public CMeshDataBankEntry { public:   // vtable 0x0129CD64
     CIVCountedPointer Data;                // +0xc
     float Duration;                        // +0x10
     float NonLoopingDuration;              // +0x14

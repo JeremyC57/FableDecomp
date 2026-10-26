@@ -1,4 +1,4 @@
-struct CTextureManager {
+class CTextureManager { public:
     void* vftable;
 };
 

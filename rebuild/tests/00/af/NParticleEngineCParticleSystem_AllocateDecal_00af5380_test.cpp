@@ -20,17 +20,17 @@ static int fails = 0;
 
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
-struct CIEngine;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CIEngine;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-template<class T> struct CArray {                  // retail CArray<T>: three pointers
+template<class T> class CArray { public:                  // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
     CArray() : m_pData(0), m_pLast(0), m_pEnd(0) {}
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
 class CParticleEmitterList {
 public:

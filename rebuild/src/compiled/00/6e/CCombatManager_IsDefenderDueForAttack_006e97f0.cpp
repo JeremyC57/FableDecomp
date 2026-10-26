@@ -18,12 +18,12 @@
 // Layout: the retail CCombatantInfo of the landed rows (0x006E86A0, 0x006E9E40): Parent +0, CurrentSequence +0x24,
 // CombatSequences +0x28, DefenderInfo.Attackers {header +0x34, count +0x38}, PAttackPattern +0x64,
 // AttackPatternIndex +0x68; CAttackPatternDef::AttackPattern +0x3c; CCombatManager::Combatants +0x10.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-struct CDefString {
+class CDefString { public:
     long m_index;
 };
 struct CDefStringTable {
@@ -32,7 +32,7 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                     // +0x18
     CDefString GetDefName() const;                 // 0x004C7CC0 (CThing::GetDefName)
@@ -40,7 +40,7 @@ struct CThingCreatureBase {
 };
 bool __fastcall IsAbleToBeAttacked(const CThingCreatureBase& creature);   // 0x0085FB30
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual bool IsMeleeSequence();                // slot 7 (+0x1c)
@@ -57,7 +57,7 @@ template<class T> struct CRetailVector {           // retail std::vector: {first
     T* end_of_storage;
     T& operator[](unsigned long n) const { return first[n]; }
 };
-struct CAttackPatternDef {
+class CAttackPatternDef { public:
     unsigned char _pad00[0x3c];
     CRetailVector<long> AttackPattern;             // +0x3c (PDB +0x40)
 };
@@ -81,7 +81,7 @@ struct CAttackerMap {                              // map<unsigned __int64, CThi
     CAttackerIterator begin() const { return CAttackerIterator(_M_header->left); }
     CAttackerIterator end() const { return CAttackerIterator(_M_header); }
 };
-struct CAttackingCombatantInfo {                   // retail 0x30 bytes
+class CAttackingCombatantInfo { public:                   // retail 0x30 bytes
     CThingCreatureBase* Attacked;                  // +0x00
     long AttackerNumber;                           // +0x04
     long CombatWheelRingIndex;                     // +0x08
@@ -115,7 +115,7 @@ struct CRetailRbMap_UID_CombatantInfo {            // STLport map<unsigned __int
     unsigned long comp;
     node* find(const unsigned __int64& key) const; // 0x006F0250
 };
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                 // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;     // +0x10

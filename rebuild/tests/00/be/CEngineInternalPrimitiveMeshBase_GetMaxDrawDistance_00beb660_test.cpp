@@ -3,7 +3,7 @@
 struct SFadeSettings { float FadeDistanceScale, MinDrawDistance, MaxDrawDistance; };
 static SFadeSettings g_settings;
 static SFadeSettings* g_pFadeSettings = &g_settings;
-struct CEngineFadeDistance { float FadeBeginDistance, MaxDrawDistance; };
+class CEngineFadeDistance { public: float FadeBeginDistance, MaxDrawDistance; };
 struct CPrimitiveModel {
     CEngineFadeDistance FadeDistance;
     unsigned char Enable : 1;

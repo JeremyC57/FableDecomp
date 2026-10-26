@@ -2,7 +2,7 @@
 #include <stddef.h>
 // Behaviour test for 0x0099AF10 CWideString::GetAsCharArray: links against the source object.
 int main();
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t*      text;
     unsigned long unknown04;
     unsigned long unknown08;

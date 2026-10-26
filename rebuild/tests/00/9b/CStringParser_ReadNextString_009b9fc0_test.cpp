@@ -8,8 +8,8 @@
 #define __fastcall
 #endif
 static int g_live = 0;
-struct CCharStringData { const char* Chars; unsigned long Length; };
-struct CCharString {
+class CCharStringData { public: const char* Chars; unsigned long Length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) { ++g_live; }
     CCharString(const char* text, long length)
@@ -24,13 +24,13 @@ struct CCharString {
 };
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
 enum EParsedItemType { PIT_NONE = 0, PIT_SYMBOL = 1, PIT_STRING = 2, PIT_INTEGER = 3, PIT_FLOAT = 4 };
-struct CParsedItem {
+class CParsedItem { public:
     EParsedItemType Type; union { long Integer; float Float; }; CCharString String;
     void InitAsInteger(const char* text, unsigned long length) { char b[64]; std::memcpy(b, text, length); b[length] = 0; Integer = std::atol(b); Type = PIT_INTEGER; }
     void InitAsFloat(const char* text, unsigned long length) { char b[64]; std::memcpy(b, text, length); b[length] = 0; Float = (float)std::atof(b); Type = PIT_FLOAT; }
     void InitAsString(const char* text, unsigned long length) { String.SetAsSubString(text, length); Type = PIT_STRING; }
 };
-struct CStringParser {
+class CStringParser { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString; void* Comments;
     void (__fastcall* ErrorCallback)(const CCharString&); CCursorPos CursorPos;
     bool CalcInQuotes(bool inQuotes, const char* from, const char* to) const

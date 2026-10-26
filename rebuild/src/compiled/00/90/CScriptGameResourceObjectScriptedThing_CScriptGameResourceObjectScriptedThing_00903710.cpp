@@ -15,23 +15,23 @@
 // The same holds for the base classes CScriptGameResourceObjectScriptedThingBase (engine header: PImp_Data
 // +8, PImp_Info +0xc, sizeof 0x10) and CBaseObject (engine header: vftable, IntelligentPointer +4): both are
 // modelled as polymorphic bases with the header offsets.
-struct CCPPointerInfo;
-struct CGameScriptInterface;
+class CCPPointerInfo;
+class CGameScriptInterface;
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     void* IntelligentPointer;                         // +0x04
     CBaseObject();                                    // 0x0099A380
 };
 
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 struct CCountedPointer_ScriptedThingBase {            // CCountedPointer<CScriptGameResourceObjectScriptedThingBase>
     CScriptGameResourceObjectScriptedThingBase* Data;
     CCPPointerInfo*                             Info;
     CCountedPointer_ScriptedThingBase() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CCountedPointer_ScriptedThingBase PImp;           // +0x08 PImp_Data / +0x0c PImp_Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() { }
@@ -48,7 +48,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
 };
 
-struct CScriptGameResourceObjectScriptedThing : CScriptGameResourceObjectScriptedThingBase {   // vtable 0x0128D86C
+class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectScriptedThingBase { public:   // vtable 0x0128D86C
     CGameScriptInterface* ScriptInterface;            // +0x10
     CIntelligentPointer   PThing;                     // +0x14
     long                  ScriptID;                   // +0x1c

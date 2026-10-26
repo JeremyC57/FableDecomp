@@ -13,11 +13,11 @@ public:
     void AddToGlobalUpdateTCs() { IsInGlobalUpdateTCs = true; ++g_globalUpdates; }
 };
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { } };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CEnginePrimitiveHandleVector { unsigned long count; CEnginePrimitiveHandleVector(unsigned long n) : count(n) { g_vectorCount = n; } };
 struct CSignatureMap { int built; CSignatureMap() : built(1) {} };
-struct CWideString; struct CCharString; struct CDateAndTime; struct CDefPointeeBase;
-namespace NUISystem { struct CComponent; struct CYesNo; }
+class CWideString; class CCharString; class CDateAndTime; class CDefPointeeBase;
+namespace NUISystem { class CComponent; class CYesNo; }
 class CTCInGameMenu : public CTCBase {
 public:
     bool             InGameMenuOpen;

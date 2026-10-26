@@ -16,7 +16,7 @@
 #pragma optimize("s", on)
 namespace NUISystem {
 
-struct CObserver;
+class CObserver;
 
 struct SRetailAllocator {                      // std::allocator<T>: empty, user constructor keeps it uninitialised
     SRetailAllocator() { }

@@ -14,7 +14,7 @@
 //          slots with the test byte.
 // Layout: creature LastAttacker intelligent pointer +0xF4 (CThingCreatureBase), bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_ChickenPanic; the base follows engine/CAIStateGroupBase.h.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -37,24 +37,24 @@ struct CInterfaceMap {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
 };
 
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -79,17 +79,17 @@ struct CThing {
     }
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
     CThing* GetPCreature() const { return PCreature; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

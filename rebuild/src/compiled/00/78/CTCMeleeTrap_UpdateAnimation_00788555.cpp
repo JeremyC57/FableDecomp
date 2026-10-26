@@ -24,7 +24,7 @@ struct CAnimFrameTime {                                 // 12 bytes
     float Blend;
     CAnimFrameTime(float time) : Offset(0.0f), Blend(0.0f) { Time = time; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
 };
 struct CTCAnimation {                                   // interface 0x5a
@@ -59,7 +59,7 @@ public:
     void Kill(bool immediately);                        // 0x004C9B80
 };
 float __fastcall GetUpdateTimeForThing(CThing* thing, CWorld* world);   // 0x00787C62 (file-static in the PDB)
-struct CFadeInFadeOutBase {                             // 0x1c
+class CFadeInFadeOutBase { public:                             // 0x1c
     bool          Active;                               // +0x00
     float         FadeInTime;                           // +0x04
     float         FadeOutTime;                          // +0x08
@@ -70,7 +70,7 @@ struct CFadeInFadeOutBase {                             // 0x1c
     unsigned long ToColour;                             // +0x18 CRGBColour
     bool IsOpen();                                      // 0x0048DA30
 };
-struct CTCTrapBase {
+class CTCTrapBase { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x38 - 0x08];

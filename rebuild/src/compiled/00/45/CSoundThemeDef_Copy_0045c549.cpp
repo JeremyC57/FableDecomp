@@ -5,7 +5,7 @@
 // The target is relocation-masked, so any plausible extern callee byte-matches.
 // Model the this-only member as a free __fastcall(objptr, arg).
 
-struct CSoundThemeDef;
+class CSoundThemeDef;
 
 // The real implementation this thunk tail-jumps to (relocation-masked target).
 extern void __fastcall CSoundThemeDef_Copy_impl(CSoundThemeDef* thisptr, void* src);

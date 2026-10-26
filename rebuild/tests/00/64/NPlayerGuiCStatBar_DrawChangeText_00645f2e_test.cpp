@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 00645f2e: the change text is drawn in the bar's font with the colour's alpha scaled by the UI's
 // global alpha (truncated), scale 1.0, layer 0x43 and the flag set; R, G and B are kept.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CWideString { public: int m_id; };
 class CFontBank { public: int m_id; };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

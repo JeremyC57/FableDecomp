@@ -11,8 +11,8 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector {float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
-struct CCombatActionBase;
+class C3DVector { public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
+class CCombatActionBase;
 extern long g_GameFramesPerSecond; //0x01375550
 extern const float g_VectorZeroThreshold; //0x0129BA3C
 #include "engine/CTCCombat.h"
@@ -30,7 +30,7 @@ struct Creature {
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate()const;virtual void EditUpdate(float);virtual void PerformAction();virtual void FinishAction();
     virtual bool IsPlayingAnimation()const;virtual long GetAnimDelayTime()const;virtual long GetAnimationIndex()const;
@@ -43,7 +43,7 @@ struct CCreatureActionBase {
     unsigned char _baseObjectState[4];CBaseIntelligentPointer PCreature;long TotalTime,ActionTime,AnimDelayTime,FramesRunning;unsigned char _actionBody[0x88];
     void FrameUpdate(); //qualified direct base call00694020
 };
-struct CCombatActionBase:CCreatureActionBase {
+class CCombatActionBase:public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget,PCameraPoint;void* PMeleeAbilityDef_Object;void* StrikeEventsHead;
     long LastStrikeEventEndTime;float StrikeEventInterruptTime,StrikeEventResetComboTime;long MovementEventInterruptFrame;
     float StrikeSpeedVariationStartTime,StrikeSpeedVariationEndTime;

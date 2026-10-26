@@ -94,8 +94,8 @@ FABLE_STATIC_ASSERT(sizeof(NUISystem::CIME) == 0x54);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -103,8 +103,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -233,7 +233,7 @@ void FABLE_FASTCALL ImeUi_FinalizeString(bool); //00CB2C60
 struct IMEUI_APPEARANCE;
 void FABLE_FASTCALL ImeUi_SetAppearance(const IMEUI_APPEARANCE*); //00CB2E20
 void FABLE_FASTCALL ImeUi_SetScreenDimension(unsigned int,unsigned int); //00CB2EE0
-struct C2DExtentsI { fable_i32 X,Y; };
+class C2DExtentsI { public: fable_i32 X,Y; };
 struct CDisplayManagerNative {
  C2DExtentsI* GetRenderTargetDimensions(C2DExtentsI&) const; //009BEDC0 explicit hidden result ABI projection
 };

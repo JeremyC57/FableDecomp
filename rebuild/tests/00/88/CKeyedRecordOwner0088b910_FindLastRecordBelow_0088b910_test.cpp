@@ -1,7 +1,7 @@
 // Behaviour test for 0x0088b910 FindLastRecordBelow
 #include <cstdio>
 struct SKeyedRecord { long m_key; long m_a; long m_b; };
-template <class T> struct CArray { T* m_pBegin; T* m_pEnd; T* m_pCapacity;
+template <class T> class CArray { public: T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return m_pEnd - m_pBegin; } const T& operator[](unsigned long i) const { return m_pBegin[i]; } };
 struct COwner {
     CArray<SKeyedRecord> m_records;

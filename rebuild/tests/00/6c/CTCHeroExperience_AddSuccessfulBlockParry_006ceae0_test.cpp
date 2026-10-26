@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCHeroExperience { char pad[0xc]; int FishingLevel; };
+class CTCHeroExperience { public: char pad[0xc]; int FishingLevel; };
 static int g_second = 0x1234;
 void First_Helper() { }
 int Second_Helper() { return g_second; }

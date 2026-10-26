@@ -7,8 +7,8 @@
 // The independent if statements preserve the retail fall-through checks and final copy construction.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -16,7 +16,7 @@ struct CCharString {
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CCharString GetExperienceStatMovieName(EHeroTrainableStatType stat);
 };
 CCharString CTCInventoryExperience::GetExperienceStatMovieName(EHeroTrainableStatType stat)

@@ -11,8 +11,8 @@
 // Shape: both mode arguments are unused (`ret 8`); the pointers are loaded straight into ecx in member order.
 #include "engine/CPlayer.h"
 typedef long EPlayerMode;
-struct CProcessedInput;
-struct CAInputProcess { void RemoveFromInterface(); };          // 0x00A0D2D0
+class CProcessedInput;
+class CAInputProcess { public: void RemoveFromInterface(); };          // 0x00A0D2D0
 struct CPlayer_Methods : CPlayer { void UninitModeClickPastText(EPlayerMode, CProcessedInput*); };
 void CPlayer_Methods::UninitModeClickPastText(EPlayerMode mode, CProcessedInput* input)
 {

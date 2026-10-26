@@ -3,11 +3,11 @@
 // Leaf: ??_GCModeBase@CTCCreatureModeManager@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012673CC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CAnimFilterBase {                           // vtable 0x0122FFCC
+class CAnimFilterBase { public:                           // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }                         // inline: the vtable store
 };
@@ -15,7 +15,7 @@ struct CModeBaseRoot_00739ee0 {
     virtual void v00();
 };
 namespace CTCCreatureModeManager {
-struct CModeBase : CModeBaseRoot_00739ee0 {              // vtable 0x012673CC
+class CModeBase : public CModeBaseRoot_00739ee0 { public:              // vtable 0x012673CC
     long            ParentThing;                           // +0x04
     CAnimFilterBase m_filter;                      // +0x08
     CCharString     m_name;                        // +0x0c

@@ -23,7 +23,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A (import thunk)
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                 // +0x00
     void (__cdecl* DeleteFunc)(void*);                      // +0x04
     void* Data;                                             // +0x08

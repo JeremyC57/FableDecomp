@@ -6,9 +6,9 @@
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 
-struct CTCBase { int dummy; };
-struct CTCMapwho : CTCBase { unsigned char InMapwho : 1; };
-struct CTCTargeted : CTCBase { bool Targetable; };
+class CTCBase { public: int dummy; };
+class CTCMapwho : public CTCBase { public: unsigned char InMapwho : 1; };
+class CTCTargeted : public CTCBase { public: bool Targetable; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -20,7 +20,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool active, bit85;
     int resets;
     void SetFlag85Bit2(bool on) { bit85 = on; Log("bit85"); }
@@ -28,16 +28,16 @@ struct CTCPhysicsBase {
     void ResetPhysicsFlagsToDef() { ++resets; Log("reset"); }
 };
 struct CModeBase;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     int refused;
     void OnRefused() { ++refused; Log("refused"); }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     T* operator->() const { return Data; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_type;
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;

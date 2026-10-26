@@ -12,7 +12,7 @@ struct CSharedPointer {
 };
 struct CBase { ~CBase() { g_order[g_n++] = 1; } };
 struct CMember { ~CMember() { g_order[g_n++] = 3; } };
-struct C3DMeshMaterial {
+class C3DMeshMaterial { public:
     CBase          m_base;
     CMember        m_name;       // +0x08 string: destroyed after the shared pointer
     CSharedPointer m_pShared;    // +0x2c

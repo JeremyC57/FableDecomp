@@ -9,7 +9,7 @@
 #define CTCBase CTCBasePdb
 #include "engine/CTCBase.h"
 #undef CTCBase
-struct CTCBase {                            // vtable 0x0125BE0C (.?AVCTCBase@@)
+class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
     void* _vptr;
     ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };

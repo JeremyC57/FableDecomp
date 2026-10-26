@@ -11,12 +11,12 @@
 // keeps the release test on the known-null block); CurrentValue and SkeletalMorph are body assignments after it.
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                // +0
     CCPPointerInfo* Info;                                // +4
     CCountedPointer() : Data(0), Info(0) { }
@@ -46,9 +46,9 @@ struct CBase {
     CBase();                                             // 0x0099A2F0
 };
 
-struct C3DSkeletalMorph;
-struct C3DSkeletalMorphParameter : CBase {
-    struct CShared;
+class C3DSkeletalMorph;
+class C3DSkeletalMorphParameter : public CBase { public:
+    class CShared;
     float                     CurrentValue;              // +0x04
     C3DSkeletalMorph*         SkeletalMorph;             // +0x08
     CCountedPointer<CShared>  SharedData;                // +0x0c   sizeof == 0x14

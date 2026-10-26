@@ -16,7 +16,7 @@ struct CConstThingPointer : CBaseIntelligentPointer {
     CConstThingPointer() {}
     CConstThingPointer(const CConstThingPointer& other) { SetPItem(other.GetPItem()); }
 };
-struct CMeleeCombatAbilityDef { void* m_pVtable; int m_refCount; };
+class CMeleeCombatAbilityDef { public: void* m_pVtable; int m_refCount; };
 struct CMeleeAbilityDefPointer {
     CMeleeCombatAbilityDef* Data;
     CMeleeAbilityDefPointer() : Data(0) {}
@@ -33,18 +33,18 @@ struct CAnimationEntryVector {
     CAnimationEntryVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     CAnimationEntryVector(const CAnimationEntryVector& o) : _M_start(o._M_start), _M_finish(o._M_finish), _M_end_of_storage(o._M_end_of_storage) { ++g_vectorCopies; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {}
     int m_creature;
     CCreatureActionBase() : m_creature(0) {}
     CCreatureActionBase(const CCreatureActionBase& other) : m_creature(other.m_creature) { ++g_baseCopies; }
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CThingPointer           PTarget;
     CConstThingPointer      PCameraPoint;
     CMeleeAbilityDefPointer PMeleeAbilityDef;

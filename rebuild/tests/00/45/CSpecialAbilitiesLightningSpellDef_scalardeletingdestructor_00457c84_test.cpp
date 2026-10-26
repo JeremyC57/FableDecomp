@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesLightningSpellDef { void* vftable; };
+class CSpecialAbilitiesLightningSpellDef { public: void* vftable; };
 
 static int g_dtor = 0;
 static int g_delete = 0;

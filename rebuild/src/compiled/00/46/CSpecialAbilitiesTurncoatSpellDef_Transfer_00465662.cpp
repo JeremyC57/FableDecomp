@@ -1,9 +1,9 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[0xc]; };
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void Transfer_00464cbf(void* value);            // 0x00464CBF per-type transfer instantiation, element type not attributed
 };
-struct CSpecialAbilitiesDrainLifeDef {
+class CSpecialAbilitiesDrainLifeDef { public:
     unsigned char _pad[0x3c];
     Field f0; // 0x3c
     Field f1; // 0x48

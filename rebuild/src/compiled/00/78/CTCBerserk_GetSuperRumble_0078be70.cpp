@@ -6,7 +6,7 @@
 // locally (as the landed sibling 0x0078BEC0). The def's four floats are unnamed (descriptive names).
 // Shape: `def->x + member` loads the def value first; PDef is re-read for every output because the
 // store through each float reference may alias it.
-struct CSpecialAbilitiesBerserkDef {
+class CSpecialAbilitiesBerserkDef { public:
     unsigned char _pad00[0x120];
     float         SuperRumbleLevel;                         // +0x120
     float         SuperRumbleSmoothness;                    // +0x124

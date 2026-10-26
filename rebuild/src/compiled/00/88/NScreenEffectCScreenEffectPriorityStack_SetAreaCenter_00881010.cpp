@@ -17,10 +17,10 @@
 // The entry argument is a derived-entry pointer: binding it to the set's `CStackEntry* const&` key makes a
 // conversion temporary, which VC7.1 homes in the argument's own (now dead) slot -- the retail
 // `mov [esp+N],eax` that stores the argument back over itself before `lea` passes its address.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}
 };
@@ -44,7 +44,7 @@ extern long g_framesPerSecond;                 // 0x01375550 (15)
 
 namespace NScreenEffect {
 
-struct CScreenEffectPriorityStack {
+class CScreenEffectPriorityStack { public:
     struct CStackEntry {                       // vtable 0x01277FF0
         virtual void v00();
         long curdurationcount;                 // +0x04

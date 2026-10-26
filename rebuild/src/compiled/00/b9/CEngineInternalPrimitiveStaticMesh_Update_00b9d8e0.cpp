@@ -11,11 +11,11 @@
 // Shape: the engine record is reached through an inline accessor (`mov ecx,[0x01436E98]` before the argument load); the chained
 // store is written `ShadowMeshInfo = MeshInfo = ...` (MeshInfo stored first); the counted copy keeps the old pointer in a local with
 // the release on the pointee; the scale is re-read from the member as the matrix argument.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CMatrix3x4 { float m[12]; };
-struct C3DMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CMatrix3x4 { public: float m[12]; };
+class C3DMeshInfo;
 
 class CEngineMeshEffect {
 public:

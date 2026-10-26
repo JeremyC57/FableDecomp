@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <stddef.h>
 static int g_wide = 0, g_narrow = 0;
-struct CWideString { void* PStringData; CWideString(void* p) : PStringData(p) { } CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_wide; } };
-struct CCharString { void* PStringData; CCharString(void* p) : PStringData(p) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_narrow; } };
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour() { } CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); } };
+class CWideString { public: void* PStringData; CWideString(void* p) : PStringData(p) { } CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_wide; } };
+class CCharString { public: void* PStringData; CCharString(void* p) : PStringData(p) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_narrow; } };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour() { } CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); } };
 struct CScriptScreenText {
     CWideString Text; C2DVector VPos; CRGBColour Colour; CCharString FontName; unsigned long FrameAdded;
     CScriptScreenText() : Text((void*)1), FontName((void*)2) { }

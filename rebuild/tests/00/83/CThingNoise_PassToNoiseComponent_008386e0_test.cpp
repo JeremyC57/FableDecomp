@@ -1,7 +1,7 @@
 // Behaviour test for CThingNoise::PassToNoiseComponent @ 0x008386E0: the thing reaches this thing's own interface-0x37 component.
 #include <cstdio>
 
-struct CTCBase { int unused; };
+class CTCBase { public: int unused; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -51,12 +51,12 @@ struct CTestThing : CThing {
     }
 };
 
-struct CTCNoise : CTCBase {
+class CTCNoise : public CTCBase { public:
     CThing* taken; int calls;
     void TakeThing(CThing* thing) { taken = thing; ++calls; }
 };
 
-struct CThingNoise : CTestThing {
+class CThingNoise : public CTestThing { public:
     void PassToNoiseComponent(CThing* thing)
     {
         CTCNoise* noise;

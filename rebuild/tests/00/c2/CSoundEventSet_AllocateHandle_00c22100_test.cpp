@@ -3,7 +3,7 @@
 
 struct CSoundEventManager { int dummy; };
 
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     virtual ~CFailedAllocationHandler() {}
     virtual long OnAllocationFailed(long size) = 0;
 };
@@ -21,7 +21,7 @@ struct CDefaultFailedAllocationHandler : CFailedAllocationHandler {
     virtual long OnAllocationFailed(long) { return 0; }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     CDefaultFailedAllocationHandler m_defaultHandler;
     CFailedAllocationHandler*       m_pFailureHandler;
     long m_free;

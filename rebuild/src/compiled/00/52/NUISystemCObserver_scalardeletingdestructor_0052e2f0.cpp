@@ -11,7 +11,7 @@ struct CObserverBase_0052e2f0 {
     virtual void v00();
 };
 namespace NUISystem {
-struct CObserver : CObserverBase_0052e2f0 {              // vtable 0x01246020
+class CObserver : public CObserverBase_0052e2f0 { public:              // vtable 0x01246020
     CMember_0052e1e0 m_member4;                    // +0x04
     __forceinline virtual ~CObserver() { }
 };

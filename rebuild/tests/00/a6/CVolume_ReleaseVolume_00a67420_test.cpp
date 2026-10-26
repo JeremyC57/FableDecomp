@@ -16,8 +16,8 @@ struct VolObj
     int released;
 };
 
-struct CVolume
-{
+class CVolume
+{ public:
     int pad0;
     VolObj* m_vol;
     void ReleaseVolume();

@@ -18,19 +18,19 @@
 #include <math.h>
 #pragma intrinsic(sin, cos)
 
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                     // +0x00
     C3DVector Forward;                                // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -41,15 +41,15 @@ struct CDefBase {
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
 };
-struct CCarryableDef : CDefBase {
+class CCarryableDef : public CDefBase { public:
     unsigned char _pad08[0x30 - 0x08];
     long PassiveCarrySlot;                            // +0x30
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0x38 - 0x08];
     long SheatheObject;                               // +0x38
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -70,10 +70,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     template<class T> CDefPointer<T> GetPDefFromGlobalIndex(long index);   // 0x009ADA10
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -156,7 +156,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -224,18 +224,18 @@ public:
     void RemoveThing(CThing* thing);                                         // 0x006A19B0
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);    // 0x006A1F80
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsMeleeWeapon() const;                       // 0x005DAA00
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     unsigned char _pad[0x168];
     long PreviouslyWieldedMeleeWeaponDefIndex;        // +0x168
     long PreviouslyWieldedRangedWeaponDefIndex;       // +0x16c
 };
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(long mode);                       // 0x0073ABA0
 };
 

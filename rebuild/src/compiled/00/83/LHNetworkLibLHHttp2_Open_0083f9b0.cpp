@@ -177,7 +177,7 @@ public:
 
 enum LH_RETURN { LH_OK = 0, LH_NO_HOST = 1, LH_OPEN_FAILED = 3 };
 
-struct LHHttp2 {
+class LHHttp2 { public:
     LSocket*       Host;                                         // +0x000
     std::string    Hostname;                                     // +0x004
     unsigned short Port;                                         // +0x010

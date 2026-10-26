@@ -3,9 +3,9 @@
 #include <cstring>
 // behaviour test for 0x00A02AD0: exercises the same logic through a copy of the model (compiled separately from the source)
 struct CHeader { long Handle; long _unused04; long Size; short Padding; char Type; char Flags; };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; unsigned long GetCount() const { return (unsigned long)(m_pLast - m_pFirst); } T& operator[](unsigned long index) const { return m_pFirst[index]; } };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; unsigned long GetCount() const { return (unsigned long)(m_pLast - m_pFirst); } T& operator[](unsigned long index) const { return m_pFirst[index]; } };
 static long g_sum = 0; static int g_calls = 0;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void ValidateResource(long handle) { ++g_calls; g_sum += handle; }
     CArray<CHeader*> Handles;
     void ValidateResources()

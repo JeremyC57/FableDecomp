@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     unsigned char _body[0x6c];       // sizeof(CTCWeaponTrail) = 0x6c
     CTCWeaponTrail(long owner);                   // 0x0076E620
 };

@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CTCInventoryBase::DrawInventoryText (0x005BCE49): same logic over a copy of the model.
-struct C2DVector { float X; float Y; };
-struct CWideString { float width; };
-struct CRGBColour { unsigned long rgba; };
-struct CFontBank { float GetVStringWidth(const CWideString& text) { return text.width; } };
+class C2DVector { public: float X; float Y; };
+class CWideString { public: float width; };
+class CRGBColour { public: unsigned long rgba; };
+class CFontBank { public: float GetVStringWidth(const CWideString& text) { return text.width; } };
 static void GFACoordToVCoord(const C2DVector* in, C2DVector* out) { out->X = in->X * 2.0f; out->Y = in->Y * 2.0f; }
 static C2DVector g_drawn; static float g_scale = 0.0f; static bool g_shadow = false; static int g_draws = 0;
 static void Draw2DText(C2DVector* position, CWideString*, CFontBank*, CRGBColour*, float scale, bool shadow) { g_drawn = *position; g_scale = scale; g_shadow = shadow; ++g_draws; }

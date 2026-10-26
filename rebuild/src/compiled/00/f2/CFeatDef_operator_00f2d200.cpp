@@ -9,17 +9,17 @@
 // Shape: compiler-style memberwise assignment, each word through eax/ecx/edx in rotation, the bools through cl/al.
 // No engine header exists for CFeatDef: modelled locally from struct_layouts_egor.tsv.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28
     CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
-struct CFeatDef : CDefClassBase {
+class CFeatDef : public CDefClassBase { public:
     CDefString FeatName;                                                  // +0x28
     CDefString Verb;                                                      // +0x2c
     float      TimeLimit;                                                 // +0x30

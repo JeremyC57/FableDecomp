@@ -6,7 +6,7 @@
 // --inner->refCount; if it hit 0, call virtual slot 1 (scalar-deleting dtor at vtable[+4]),
 // then null the inner pointer.
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void slot0();          // vtable[+0]
     virtual void Release();        // vtable[+4]  slot 1 -- called on refcount==0
     int refCount;                  // +4

@@ -13,7 +13,7 @@
 // Layout: PDB (Ego_r) names; the members before FaceList (Position .. Cost) are opaque here. Local model: no engine/ header.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 namespace QuadricOptimiserInternals {
-struct CContractionReference { void* _opaque[2]; };   // contents not needed here (size unproven)
+class CContractionReference { public: void* _opaque[2]; };   // contents not needed here (size unproven)
 template<class V> struct CRbTreeNode { long color; CRbTreeNode* parent; CRbTreeNode* left; CRbTreeNode* right; V value; };
 template<class V> struct CRbTree {                      // STLport _Rb_tree: header node, node count, (empty) compare
     CRbTreeNode<V>* header;
@@ -30,8 +30,8 @@ template<class V> struct CRbTree {                      // STLport _Rb_tree: hea
     }
 };
 template<class K, class V> struct CPair { K first; V second; };
-struct CIndexList { CRbTree<unsigned long> Indices; };   // set<unsigned long>
-struct COptimisedVertex {
+class CIndexList { public: CRbTree<unsigned long> Indices; };   // set<unsigned long>
+class COptimisedVertex { public:
     unsigned char Position_to_Cost[0x84];               // +0x00..+0x83 (Position, Normal, TextureCoord, PositionError, Cost)
     CIndexList FaceList;                                // +0x84
     bool Exists;                                        // +0x90

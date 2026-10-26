@@ -2,7 +2,7 @@
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() { }

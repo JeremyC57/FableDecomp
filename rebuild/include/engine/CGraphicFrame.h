@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CGraphicFrameData;
+class CGraphicFrameData;
 
 #pragma pack(push, 1)
-struct CGraphicFrame {
+class CGraphicFrame {
+public:
     CGraphicFrameData* FrameData;                            // +0x00
 };
 #pragma pack(pop)

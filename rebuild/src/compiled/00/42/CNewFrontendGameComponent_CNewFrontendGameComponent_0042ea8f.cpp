@@ -16,8 +16,8 @@
 //   m_attractModeTimer +0x100, m_inputDelayTimer +0x120, LastActiveJoystickDeviceNumber +0x140, WindowsMediaPlayerInstalled +0x144.
 // Shape: the STLport FileTimes vector through its real base (allocator proxy) gives the `lea eax` member address; the
 //   interpolation set's inline ctor zeroes three floats with `fldz`.
-struct CGame;
-struct CNewFrontendGameComponentInit;
+class CGame;
+class CNewFrontendGameComponentInit;
 double __fastcall GFGetTime();                             // 0x009E1BC0
 struct CBase {
     virtual ~CBase();                                      // 0x0099A300
@@ -25,30 +25,30 @@ struct CBase {
 struct CGameComponentInterface {
     virtual void v00();
 };
-struct CGameComponent : CBase, CGameComponentInterface {   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool  m_bShutDown;                                     // +0x08
     CGame* m_pGame;                                        // +0x0c
     CGameComponent(CGame* game);                           // 0x0051D8E0
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct CFontBank; struct CGraphicDataBank; struct CMeshDataBank; struct CASoundBank; struct CIEngine; struct CInputManager;
-struct CFrontEndManager; struct CTexture;
-namespace NGameText { struct CDataBank; }
-struct CFrontEndDef;
-template <class T> struct CDefPointer {
+class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
+struct CFrontEndManager; class CTexture;
+namespace NGameText { class CDataBank; }
+class CFrontEndDef;
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) { }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);               // 0x0099B6B0
     CWideString& operator=(const unsigned short* text);    // 0x0099B800
 };
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     CWideString   StartLevel;                              // +0x00
     unsigned long _data04[2];
     CWideString   StartPosition;                           // +0x0c
@@ -76,8 +76,8 @@ template <class T> struct CVectorBase {                    // STLport _Vector_ba
 template <class T> struct CRetailVector : CVectorBase<T> {
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-struct CDateAndTime { unsigned char _data[0x10]; };
-struct C2DBoxI { long X0, Y0, X1, Y1; };
+class CDateAndTime { public: unsigned char _data[0x10]; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; };
 struct CEngineInterpolationInfoSet {
     float A, B, C;
     CEngineInterpolationInfoSet() : A(0.0f), B(0.0f), C(0.0f) { }
@@ -88,7 +88,7 @@ struct CStopWatch {
 };
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
 
-struct CNewFrontendGameComponent : CGameComponent {        // vtables 0x01230CA0 / 0x01230C94
+class CNewFrontendGameComponent : public CGameComponent { public:        // vtables 0x01230CA0 / 0x01230C94
     CCountedPointer<const CFontBank>       m_pMenuFont;                // +0x10
     ECursorMovement                        CurrentMovement;            // +0x18
     bool                                   StartedRepeatingMovement;   // +0x1c

@@ -29,17 +29,17 @@
 //   the name, the visible flag.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -71,17 +71,17 @@ struct CFileBlockMap : CFileBlockTreeBase {            // map<long, CFileBlock> 
     }
 };
 
-struct CBankFileAsyncEntry;
-struct CEngineStaticMapFileBlockManager {              // retail 0x14 bytes
+class CBankFileAsyncEntry;
+class CEngineStaticMapFileBlockManager { public:              // retail 0x14 bytes
     CCountedPointer<CBankFileAsyncEntry> AsyncBankEntry;   // +0x00
     CFileBlockMap                        Blocks;           // +0x08
 };
 
-struct CEngineLandscapeMap;
-struct CLocalDetailCacheMap;
-struct CIDrawMap;
+class CEngineLandscapeMap;
+class CLocalDetailCacheMap;
+class CIDrawMap;
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap*                 LandscapeMap;          // +0x00
     CLocalDetailCacheMap*                LocalDetailCacheMap;   // +0x04
     const CIDrawMap*                     GameMap;               // +0x08

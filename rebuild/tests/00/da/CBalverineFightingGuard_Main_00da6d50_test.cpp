@@ -7,12 +7,12 @@ static int g_fail = 0;
 static std::string g_log;
 static int g_calls = 0, g_termAt = 0, g_frames = 0;
 static void L(const char* s) { g_log += s; g_log += ";"; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* t, long n = -1) : S(t) { (void)n; }
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r(""); r.S = a.S + b.S; return r; }
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
 // a thing: Id, and how many IsAlive checks it survives
 static int g_alive[8];
 namespace N_006e7b40 { struct CScriptThing {
@@ -29,13 +29,13 @@ struct CScriptThingView {
 };
 
 static int g_dist = 0, g_missionAt = 0;
-struct CScriptDef { long GuardTalkDistance; long GuardRescueMorality; };
+class CScriptDef { public: long GuardTalkDistance; long GuardRescueMorality; };
 static CScriptDef g_def = { 7, 25 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CQ_MinionClifftopChaseScript;
 static CQ_MinionClifftopChaseScript* g_parent;
 static int g_screenAt = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     CGameScriptInterface() : Hero(1) {}
     void NewScriptFrame() const;
@@ -52,7 +52,7 @@ struct CGameScriptInterface {
     void SetEntityAsRegionFollowing(const CScriptThing& t, const CScriptThing& l, bool f) const { CHECK(t.Id == 1 && l.Id == 2 && f); L("region"); }
 };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float d) { CHECK(a.Id == 2 && b.Id == 1 && d == 7.0f); return g_frames >= g_dist; }
-struct CSpawnedFuncBase { std::string Name; CSpawnedFuncBase(const CCharString& n, unsigned long id) : Name(n.S) { (void)id; } virtual ~CSpawnedFuncBase() {} };
+class CSpawnedFuncBase { public: std::string Name; CSpawnedFuncBase(const CCharString& n, unsigned long id) : Name(n.S) { (void)id; } virtual ~CSpawnedFuncBase() {} };
 template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {
     void (T::*Func)(P1); T* PClass; P1 Par1;
     CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), const P1 par1) : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}

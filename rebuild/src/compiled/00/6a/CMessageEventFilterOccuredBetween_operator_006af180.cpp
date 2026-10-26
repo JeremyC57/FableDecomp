@@ -1,9 +1,9 @@
-struct CMessageEvent {
+class CMessageEvent { public:
     int pad[13];
     int timestamp; // +0x34
 };
 
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     int minTime;  // +0x00
     int maxTime;  // +0x04
 

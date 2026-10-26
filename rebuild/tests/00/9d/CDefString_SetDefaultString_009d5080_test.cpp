@@ -1,9 +1,9 @@
 #include <cstdio>
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 static const CCharString* g_added = 0;
 struct CDefStringTable { unsigned char _pad[0x34]; bool Locked; unsigned char ReadOnly; long AddString(const CCharString& t) { g_added = &t; return 123; } };
 CDefStringTable g_DefStringTable;
-struct CDefString { long TablePos; void SetDefaultString(const CCharString& t) { if (!g_DefStringTable.Locked) TablePos = g_DefStringTable.AddString(t); } };
+class CDefString { public: long TablePos; void SetDefaultString(const CCharString& t) { if (!g_DefStringTable.Locked) TablePos = g_DefStringTable.AddString(t); } };
 int main()
 {
     CCharString s = { "x" }; CDefString d; d.TablePos = -1;

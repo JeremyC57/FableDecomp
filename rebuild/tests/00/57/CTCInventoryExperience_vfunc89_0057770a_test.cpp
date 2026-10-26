@@ -51,11 +51,11 @@ struct CAbilityUndoMap {
 };
 
 static long g_statLevel[8]; static int g_statUpgrades[8];
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void ModifyTrainableStatLevel(EHeroTrainableStatType stat, long delta) { g_statLevel[stat] += delta; }
     void UpgradeTrainableStat(EHeroTrainableStatType stat) { g_statUpgrades[stat]++; g_statLevel[stat]++; }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x18];
     long* ExperienceSpentOn;
     unsigned char _pad1c[0x13c - 0x1c];
@@ -72,8 +72,8 @@ struct CTCHeroAbilities {
 static int g_componentDeletes = 0, g_resetA = 0, g_resetB = 0, g_resetC = 0, g_listClears = 0, g_order = 0;
 static int g_resetBOrder = 0, g_listOrder = 0, g_resetCOrder = 0;
 namespace NUISystem {
-struct CComponent { virtual ~CComponent() { g_componentDeletes++; } };
-struct CManager {
+class CComponent { public: virtual ~CComponent() { g_componentDeletes++; } };
+class CManager { public:
     virtual void m00() {} virtual void m01() {} virtual void m02() {} virtual void m03() {} virtual void m04() {} virtual void m05() {}
     virtual void ResetA() { g_resetA++; }
     virtual void m07() {} virtual void m08() {} virtual void m09() {} virtual void m10() {} virtual void m11() {} virtual void m12() {}
@@ -94,7 +94,7 @@ CGlobalList g_UIList;
 static long g_screenType = -1; static int g_screenSets = 0;
 struct CHeroInfoScreens { void SetScreenType(long type) { g_screenSets++; g_screenType = type; } };
 static CHeroInfoScreens g_screens;
-struct CPlayerGui { CHeroInfoScreens* GetHeroInfoScreens() { return &g_screens; } };
+class CPlayerGui { public: CHeroInfoScreens* GetHeroInfoScreens() { return &g_screens; } };
 static CPlayerGui g_gui;
 CPlayerGui* g_pPlayerGui = &g_gui;
 
@@ -127,7 +127,7 @@ struct CTCInventoryBase {
     void OnInventoryClosed() { g_closed++; }
 };
 static CTCHeroExperience g_experience; static CTCHeroStats g_stats; static CTCHeroAbilities g_abilities;
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     unsigned char   _pad18[0x140 - 0x18];
     CStatUndoMap    UndoableStatBuys;
     CAbilityUndoMap UndoableAbilityBuys;

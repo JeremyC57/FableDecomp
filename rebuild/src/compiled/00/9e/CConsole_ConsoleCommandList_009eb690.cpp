@@ -10,7 +10,7 @@
 //   `strcmp(text, "") == 0` (the repe cmpsb); the type temporary dies before the branch; the name is the input's
 //   CCharString at +4 (inline GetName). A brace-initialised iterator in the for-init is a VC7.1 syntax error.
 // Layout: retail CConsole RegisteredConsoleInputs header +0x40 (as the landed 0x009EB590 / 0x009EB430).
-// Leaf: ?ConsoleCommandList@CConsole_Retail@@SIXAAU1@ABU?$vector@UCGenericVar@@@std@@@Z
+// Leaf: ?ConsoleCommandList@CConsole_Retail@@SIXAAU1@ABU?$vector@VCGenericVar@@@std@@@Z
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
@@ -22,12 +22,12 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                 // 0x0099EAE0
     __forceinline bool operator==(const char* text) const
@@ -41,7 +41,7 @@ struct CCharString {
     }
 };
 
-struct CGenericVar {                                // PDB 0x1c bytes
+class CGenericVar { public:                                // PDB 0x1c bytes
     void*         _vtable;
     long          Type;
     CCharString   ValString;
@@ -52,7 +52,7 @@ struct CGenericVar {                                // PDB 0x1c bytes
 };
 namespace std { template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; }; }
 
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual ~CConsoleInputBase();
     virtual void v01();
     virtual void v02();

@@ -1,4 +1,4 @@
-struct CTCMapwho;
+class CTCMapwho;
 // Leaf: OnDie
 
 void __fastcall CTCMapwho_Method(CTCMapwho* self);   // 0xaecb80, thiscall

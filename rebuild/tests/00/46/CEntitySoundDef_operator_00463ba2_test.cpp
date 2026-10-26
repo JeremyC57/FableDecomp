@@ -11,23 +11,23 @@
 //   through `lea`, then the two dwords through eax.
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CSoundMap {                      // two CVectorMaps (SoundMap, CriteriaMap), 0x20 bytes in retail
+class CSoundMap { public:                      // two CVectorMaps (SoundMap, CriteriaMap), 0x20 bytes in retail
     void* m_soundMap[4];                // CVectorMap<unsigned long, CSoundPair>: vector + sorted flag
     void* m_criteriaMap[4];             // CVectorMap<unsigned long, CDefString>
     CSoundMap& operator=(const CSoundMap& other);   // 0x0045CFAD
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CEntitySoundDef : CDefClassBase {
+class CEntitySoundDef : public CDefClassBase { public:
     CSoundMap SoundMap;                 // +0x28
     CCharString SoundIdentifier;        // +0x48
     float VoicePitchOverride;           // +0x4c

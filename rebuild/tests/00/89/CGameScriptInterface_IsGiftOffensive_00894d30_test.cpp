@@ -55,8 +55,8 @@ struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameLookups; g_lookedUp = name.PStringData; return 606; }
 };
 static CDefinitionManager_Retail g_defs;
-struct CWorld;
-struct CGameScriptInterface {
+class CWorld;
+class CGameScriptInterface { public:
     virtual void v000() {}
     CWorld*                    World;
     void*                      Component;

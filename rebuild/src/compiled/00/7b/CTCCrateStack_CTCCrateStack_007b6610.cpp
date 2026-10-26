@@ -7,7 +7,7 @@
 // CrateDefIndex +0x1c. Shape: the vtable store precedes the member constructors (each an inline
 // CIntelligentPointer() over the out-of-line base, its vtable stored through the member's address
 // register), and the scalar initialiser is stored last.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -17,7 +17,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -30,7 +30,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCCrateStack : CTCBase_Calls {                      // vtable 0x0126DA14
+class CTCCrateStack : public CTCBase_Calls { public:                      // vtable 0x0126DA14
     CIntelligentPointer FirstCrate;                         // +0x0c
     CIntelligentPointer SecondCrate;                        // +0x14
     long                CrateDefIndex;                      // +0x1c

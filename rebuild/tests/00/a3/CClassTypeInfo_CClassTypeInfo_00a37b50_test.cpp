@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CClass { int id; };
+class CClass { public: int id; };
 struct Node { Node* next; Node* prev; CClass* data; };
 struct List {
     Node* head;
@@ -28,14 +28,14 @@ struct List {
     }
 };
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     char text[16];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); ++g_copies; }
 };
 typedef CClass* (*AllocFunc)();
 static CClass* MakeOne() { return 0; }
-struct CClassTypeInfo {
+class CClassTypeInfo { public:
     List TypeList;
     unsigned int NoAllocated;
     bool Used;

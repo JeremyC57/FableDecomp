@@ -14,7 +14,7 @@
 // store re-reading the header pointer) then the header node's deallocation behind a null test.
 #include <stdlib.h>
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThingCreatureBase* m_pItem;            // +4
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
 };
 
-struct CCombatDialogueDef {                 // CDefPointee: vptr + count
+class CCombatDialogueDef { public:                 // CDefPointee: vptr + count
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long m_refCount;                        // +4
@@ -71,7 +71,7 @@ struct CSpeechGroupInfoMap {                // map<unsigned long, TSpeechGroupIn
     }
 };
 
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     CSpeechGroupInfoMap       SpeechGroupInfoMap;   // +0x00
     CCombatDialogueDefPointer PDialogueDef;         // +0x0c
     CIntelligentPointer       PCurrentTalker;       // +0x10

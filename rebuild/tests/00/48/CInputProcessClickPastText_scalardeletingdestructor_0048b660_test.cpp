@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CInputProcessClickPastText
-{
+class CInputProcessClickPastText
+{ public:
     int marker;
     void Destroy();
 };

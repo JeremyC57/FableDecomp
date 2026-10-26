@@ -5,7 +5,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x24];
     CDefClassBase& operator=(const CDefClassBase& other)
@@ -22,9 +22,9 @@ struct CLongVector {
     { m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; g_order[g_calls++] = 2; return *this; }
 };
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
-struct CTavernGameSpotTheAdditionDef : CDefClassBase {
+class CTavernGameSpotTheAdditionDef : public CDefClassBase { public:
     long        Pointer;
     long        Cover;
     float       CoverWidth;

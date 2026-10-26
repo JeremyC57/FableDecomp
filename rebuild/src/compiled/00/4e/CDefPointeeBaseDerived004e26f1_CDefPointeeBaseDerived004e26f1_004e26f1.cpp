@@ -1,7 +1,7 @@
 // CDefPointeeBase_Derived_004e26f1::~CDefPointeeBase_Derived_004e26f1() -- destroy the two 16-byte members at +0x74 and +0x64 (0x004DD3EE), the two 12-byte members at +0x4c and +0x40 (0x004DF907) and the CCharString at +0x3c, then the inlined CDefPointeeBase destructor (vtable 0x01230BA0, base 0x009FC550 as a tail jump)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E26F1, length 57 bytes.
 // The chunk label "CHeroMarriageDef::~CHeroMarriageDef" is propagated (a different layout); the member destructor labels ("CActiveFile::OnReadFinished") are propagated too. Shape: members last-to-first, `this` in esi.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -9,7 +9,7 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550 (labelled "~CMemoryBlock")
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                         // inlined into every derived destructor: the vtable store then the base tail jump
 };

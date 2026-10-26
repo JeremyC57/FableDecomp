@@ -3,14 +3,14 @@
 // Behaviour test for 0x004E3CB3: the array block is freed (only when present), then the base destructor runs.
 static int g_freed = 0, g_baseDtor = 0;
 static void FreeBlock(void* p) { ++g_freed; std::free(p); }
-struct CDefIndex { long m_index; };
+class CDefIndex { public: long m_index; };
 struct CArrayDefIndex {
     CDefIndex* m_pData; long m_count; long m_capacity;
     ~CArrayDefIndex() { if (m_pData) FreeBlock(m_pData); }
 };
 struct CBase_009fc550 { virtual void v00() {} ~CBase_009fc550() { ++g_baseDtor; } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() {} ~CDefPointeeBase() {} };
-struct CContainerRewardHeroDef : CDefPointeeBase {
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() {} ~CDefPointeeBase() {} };
+class CContainerRewardHeroDef : public CDefPointeeBase { public:
     CArrayDefIndex ObjectFamilies;
     virtual void v00() {}
     ~CContainerRewardHeroDef();

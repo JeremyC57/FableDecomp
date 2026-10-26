@@ -5,7 +5,7 @@
 // each member dtor is a this-only member (free __fastcall), and the final base
 // dtor is a tail jump.
 
-struct CGlobalDef;
+class CGlobalDef;
 
 // Member sub-object destructors (distinct callees).
 extern "C" void __fastcall CGlobalDef_dtor_10c(void* thisptr); // [esi+0x10c]

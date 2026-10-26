@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; CRightHandedSet() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; CRightHandedSet() { } };
 static CRightHandedSet g_DefaultRHSet;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CRightHandedSet GetRHSet(float interpolation) const { return g_DefaultRHSet; }
 };
 int main()

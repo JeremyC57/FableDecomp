@@ -13,29 +13,29 @@
 // Shape: PLightInfo/PLightDef in the init list; the rest are body assignments in retail store order (`Accum = Old = 1.0f` stores
 // +0x28 first), then `PLightDef = CDefPointer()` -- the inline operator= releases the old def through a pointer local (null test, `dec [ecx+4] ; jne`, slot 1; the member form re-reads),
 // zeroes it inside the test and stores the new (null) object again.
-struct CThing;
-struct CCPPointerInfo;
+class CThing;
+class CCPPointerInfo;
 namespace NGraphicAppearance {
-struct CPrimitive;
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CPrimitive;
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void RegisterComponent(CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
-struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     CAGraphicAppearanceComponent() { }
 };
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long RefCount;                                  // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer& operator=(const CDefPointer& other)
@@ -49,21 +49,21 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CSpotLightDef : CDefPointeeBase { };
+class CSpotLightDef : public CDefPointeeBase { public: };
 struct CSpotLightInfo;
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCSpotLight : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x01266FBC / 0x01266FA4
+class CTCSpotLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01266FBC / 0x01266FA4
     CCountedPointer<CSpotLightInfo>  PLightInfo;            // +0x10
     CDefPointer<CSpotLightDef>       PLightDef;             // +0x18
     bool  Overridden;                                       // +0x1c

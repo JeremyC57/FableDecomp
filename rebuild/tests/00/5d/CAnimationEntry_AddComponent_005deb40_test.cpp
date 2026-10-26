@@ -12,13 +12,13 @@
 // Calls: new00BFEA1A, LowerBound005DFA50, Erase005E1E60, Insert005E29D0,
 // Sort005E3AD0 (__fastcall), plus component/map virtual slots.
 #include <new>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Slot0(); virtual void Delete();
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) {}
 };
-struct CAnimComponentBase : CIVCountedPointeeBase { virtual long GetType() const; };
-template<class T> struct CIVCountedPointer {
+class CAnimComponentBase : public CIVCountedPointeeBase { public: virtual long GetType() const; };
+template<class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(T* p=0) : Object(p) {}
     CIVCountedPointer(const CIVCountedPointer& other) { T* p=other.Object; Object=p; if (p) ++p->IVRefCount; }
@@ -55,11 +55,11 @@ struct CAnimComponentVectorMap {
     }
     void Sort() { if (NeedsSort) { SortComponents(First,Last,Compare); NeedsSort=false; } }
 };
-struct CAnimComponentMap : CIVCountedPointeeBase {
+class CAnimComponentMap : public CIVCountedPointeeBase { public:
     virtual void Slot0(); //vtable01255878
     CAnimComponentVectorMap Map;
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex,AnimName,GroupName;
     CIVCountedPointer<CAnimComponentMap> Components;
     void AddComponent(CAnimComponentBase*);

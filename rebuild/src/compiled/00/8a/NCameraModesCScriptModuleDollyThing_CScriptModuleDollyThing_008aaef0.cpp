@@ -3,7 +3,7 @@
 // Callees: CScriptModuleBase::CScriptModuleBase @ 0x005ED070. Vtable 0x01278188 = NCameraModes::CScriptModuleDollyThing (rtti-vtables.tsv). Shape: the thing store
 // precedes the vtable store, the three words of the offset go through ecx/edx/eax, the target word last; `this` is returned, `ret 0Ch`. The chunk label
 // "CEngineScenePrimitiveStatsEnumerator" is propagated.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SHandle_008aaef0 { long m_id; };
 
 struct CScriptModuleBase {

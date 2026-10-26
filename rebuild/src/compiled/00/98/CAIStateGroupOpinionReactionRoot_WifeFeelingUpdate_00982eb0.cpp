@@ -26,7 +26,7 @@ private:
 };
 extern CCharString g_OpinionAttitudeNames[];               // 0x013BABD0
 
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     long GetReactionContext();                             // 0x008FCFC0
     EAIActionReturn SayToThingReactingTo(const CCharString& text);   // 0x0095EE70
     bool WifeFeelingUpdate(EOpinionAttitudeType attitude);

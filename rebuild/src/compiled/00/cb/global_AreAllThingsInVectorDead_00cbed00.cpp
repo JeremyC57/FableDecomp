@@ -8,7 +8,7 @@
 // Shape: a counted loop over the STLport vector (begin read once into edi, end re-read every pass because the virtual
 //   calls may change it), `!IsAlive() || IsUnconscious()` bumps the count, then the count is compared with size()
 //   (the 12-byte element divide `push 0Ch ; pop ecx ; cdq ; idiv` is the size TU's) and returned through `sete`.
-struct CScriptThing {                       // 12 bytes, vtable 0x01238C8C (vptr, then the counted PImp pointer pair)
+class CScriptThing { public:                       // 12 bytes, vtable 0x01238C8C (vptr, then the counted PImp pointer pair)
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011();
     virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017();

@@ -13,7 +13,7 @@
 // PImp_Info} layout, same offsets).
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass();                                     // 0x0099A2D0
 };
@@ -25,7 +25,7 @@ struct CCountedPointer_CScriptThing {
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBaseClass {                    // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                    // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;                // +0x04 PImp_Data / +0x08 PImp_Info
     virtual void v00();
     CScriptThing() { }

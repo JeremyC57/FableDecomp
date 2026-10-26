@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -38,16 +38,16 @@ struct CMemoryDataInputStream {
     }
 };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
 };
 
-struct COpinionSet {
+class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00
     void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x007020D0
 };
 
-struct CReactionMatch {
+class CReactionMatch { public:
     void* __vftable;                                    // +0x00
     long  ReactionType;                                 // +0x04 EOpinionReactionType
     void TransferBinaryIn(CMemoryDataInputStream& stream);  // 0x006FEFB0

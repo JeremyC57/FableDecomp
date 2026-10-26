@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalAttachedPrimitive { public:
     void* vftable;
     int destroyed;
 };

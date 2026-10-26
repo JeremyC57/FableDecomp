@@ -8,8 +8,8 @@
 // the null pointer, so it is re-addressed with `lea` for the assignment), CIntelligentPointer::operator=(const CIntelligentPointer&) @ 0x004A9760,
 // ~CBaseIntelligentPointer @ 0x00A01C10. Frame-pointer size TU (`push ecx ; push ecx` opens the temporary, `and dword ptr [esi+44h],0`, `leave`). PDB
 // CDrawHighlightingTargetingCursor: PTargetedThing +0x2c, CursorType +0x48 -> retail +0x28 / +0x44 (the CDrawBase vector is 4 bytes smaller).
-struct CThing;
-struct CThingPhysical;
+class CThing;
+class CThingPhysical;
 
 struct CTCGraphicAppearance {
     void ClearMeshEffect(void* key);               // 0x004BFFC0
@@ -37,7 +37,7 @@ bool __fastcall IS_THING_ALIVE(CIntelligentPointer_CThing* pointer);   // 0x004C
 
 namespace NPlayerGui {
 
-struct CDrawHighlightingTargetingCursor {
+class CDrawHighlightingTargetingCursor { public:
     unsigned char              _pad[0x28];
     CIntelligentPointer_CThing PTargetedThing;     // +0x28
     unsigned char              _pad30[0x14];       // +0x30 CurrentColour, widths, fade step, width

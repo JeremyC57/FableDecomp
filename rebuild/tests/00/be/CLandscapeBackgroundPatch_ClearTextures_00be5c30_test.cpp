@@ -5,7 +5,7 @@ struct CTexMgr {
   void ReleaseTexture(void* t) { released = (t != 0) ? 1 : 0; }
 };
 struct CGlobal { char pad[0x6b0]; CTexMgr* mgr; };
-struct CLandscapeBackgroundPatch { char pad[0xb8]; void* tex; };
+class CLandscapeBackgroundPatch { public: char pad[0xb8]; void* tex; };
 
 static CTexMgr g_mgrObj;
 static CGlobal g_globalObj;

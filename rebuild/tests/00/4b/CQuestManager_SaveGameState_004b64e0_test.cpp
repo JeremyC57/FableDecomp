@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     long          m_length;
 };
 char g_EmptyCharString_0129AAF4[1] = { 0 };
 static CCharStringData g_stateData = { "quest-state", 11 };
 static int g_ctorCalls, g_dtorCalls, g_buildCalls; static bool g_buildNull;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) { ++g_ctorCalls; }
     ~CCharString() { ++g_dtorCalls; }
@@ -18,12 +18,12 @@ struct CCharString {
     const char* GetPString() const { return PStringData == 0 ? g_EmptyCharString_0129AAF4 : PStringData->m_pData; }
 };
 static int g_seq; static int g_ulongAt, g_bufferAt, g_transferAt, g_boastsAt; static unsigned long g_ulong; static const void* g_bufData; static long g_bufSize;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value) { g_ulongAt = ++g_seq; g_ulong = value; }
     void WriteBuffer(const void* data, long size) { g_bufferAt = ++g_seq; g_bufData = data; g_bufSize = size; }
 };
 static CCharString* g_transferred;
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char      _pad00[0x18];
     long               Mode;
     unsigned char      _pad1c[0xc];
@@ -31,7 +31,7 @@ struct CPersistContext {
     void Transfer_009bab50(CCharString& value) { g_transferAt = ++g_seq; g_transferred = &value; }
 };
 static CPersistContext* g_boastsContext;
-struct CQuestManager {
+class CQuestManager { public:
     void SaveGameState(CCharString& state) { ++g_buildCalls; state.PStringData = g_buildNull ? 0 : &g_stateData; }
     void TransferBoasts(CPersistContext& context) { g_boastsAt = ++g_seq; g_boastsContext = &context; }
     void SaveGameState(CPersistContext& context);

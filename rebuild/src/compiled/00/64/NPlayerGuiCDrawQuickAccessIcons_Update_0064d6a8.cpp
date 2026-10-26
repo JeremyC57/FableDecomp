@@ -11,13 +11,13 @@
 // g_framesPerSecond 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Layout: CDrawQuickAccessIcons as ToggleCharge 0x0064D92A (ChargingAbility +0x2c, ChargeLevel +0x30, Charging +0x34, ChargeComplete
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
-struct CThing { unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
-struct CThingCreatureBase : CThing { };
+class CThing { public: unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
+class CThingCreatureBase : public CThing { public: };
 template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
-struct CPlayer { CThingCreatureBase* GetCharacterThing(); };          // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };                  // 0x00449970
+class CPlayer { public: CThingCreatureBase* GetCharacterThing(); };          // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };                  // 0x00449970
 struct CMemoryBuffer { void Copy(unsigned long length, const void* data); };   // 0x009F1760
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -27,12 +27,12 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddLONG(long value) { Copy(4, &value); }
 };
-struct CMainGameComponent { void AddGameEvent(const CGameEvent& event); };   // 0x0041649C
+class CMainGameComponent { public: void AddGameEvent(const CGameEvent& event); };   // 0x0041649C
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 extern float g_fEpsilon;                          // 0x0129BA3C
 extern long  g_framesPerSecond;                   // 0x01375550
 namespace NPlayerGui {
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     void*           _vtable;
     void*           PlayerGui;
     CPlayerManager* PlayerManager;                 // +0x08

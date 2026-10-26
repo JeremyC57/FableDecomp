@@ -12,17 +12,17 @@
 // the hero position is a C2DVector converted from the physics position (only Y lands in the frame, X stays on the
 // x87 stack) and tested by the half-open ContainsPoint inlined here (the sibling TriggerSetPlayerAreaName 0x0083C990
 // calls the out-of-line copy 0x00535CD0); the world is a named local so PeekWorld runs before the argument pushes.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     __forceinline bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 class CEnvironment {
 public:
     void TransitionToTheme(long theme, float time);            // 0x006B37A0
@@ -36,7 +36,7 @@ class CDefinitionManager {
 public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                                    // +0x0c
 };

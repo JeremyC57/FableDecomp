@@ -9,7 +9,7 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* text = "", long = -1) { strcpy(Text, text); }
     ~CCharString() {}
@@ -17,7 +17,7 @@ struct CCharString {
     CCharString& operator=(const char* t) { strcpy(Text, t); return *this; }
     bool operator!=(const CCharString& o) const { return strcmp(Text, o.Text) != 0; }
 };
-struct CWideString {
+class CWideString { public:
     int Id;
     CWideString(int id = 0) : Id(id) {}
     ~CWideString() {}
@@ -27,7 +27,7 @@ static int g_deleted = 0;
 struct CDef { virtual void v00() {} virtual void DeleteThis() { ++g_deleted; } long RefCount;
     CDef() : RefCount(1) {}
     __forceinline void Release() { if (--RefCount == 0) DeleteThis(); } };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* P;
     __forceinline CDefPointer() : P(0) { }
     __forceinline T* operator->() const { return P; }
@@ -47,17 +47,17 @@ template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_stora
     unsigned long size() const { return _M_finish - _M_start; }
     const T& operator[](unsigned long i) const { return *(begin() + i); }
     const T* begin() const { return _M_start; } };
-struct CQuestCardDef : CDef { vector<long> RewardObjects; };
+class CQuestCardDef : public CDef { public: vector<long> RewardObjects; };
 struct CObjectDef : CDef { unsigned char Type; };
 static CObjectDef g_defs[8];
 static int g_getdef_calls = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager* __fastcall Get() { static CDefinitionManager m; return &m; }
     bool GetDef(long index, CDefPointer<CObjectDef>* out) { ++g_getdef_calls; out->P = &g_defs[index]; ++out->P->RefCount; return true; }
 };
 bool __fastcall IsAugmentation_005d9930(long index) { return index == 6; }
-struct CThing { unsigned short DefIndex; };
-struct CTCQuestCard {
+class CThing { public: unsigned short DefIndex; };
+class CTCQuestCard { public:
     CThing* Owner;
     CThing* GetOwner() const { return Owner; }
     CDefPointer<CQuestCardDef> PDef;
@@ -80,7 +80,7 @@ struct CBoastList {
     CBoastList& operator=(const CBoastList& o) { clear(); for (CBoastNode* it = o.node->next; it != o.node; it = it->next) push_back(it->data.ScriptName.Text, it->data.a); return *this; }
     int count() const { int c = 0; for (CBoastNode* it = node->next; it != node; it = it->next) ++c; return c; }
 };
-struct CQuestManager { CBoastList Boasts; };
+class CQuestManager { public: CBoastList Boasts; };
 CQuestManager* g_pQuestManager;
 struct CComponent { virtual void v00() {} };
 struct CFilterComponent : CComponent {
@@ -96,11 +96,11 @@ struct CFrontEndManager {
     CComponent* CreateComponent(const CCharString& name, bool) { strcpy(g_compname, name.Text); return &g_filter; }
 };
 static int g_closed = 0;
-struct CPlayerGui { void Close(bool b) { g_closed = b ? 1 : 2; } };
+class CPlayerGui { public: void Close(bool b) { g_closed = b ? 1 : 2; } };
 CPlayerGui* g_pPlayerGui;
 double __fastcall GFGetTime() { return 42.5; }
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     bool Active;
     bool WaitingForRegionLoad;
     bool WaitingForPlayerControl;

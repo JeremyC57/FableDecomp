@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CContainmentVolume::IsContainingPartOfSphere (retail 0x00A754A0): the functor carries the point and
 // radius unchanged into the IsContaining<CIsContainingPartOfSphere> plane test.
-struct C3DVector { float X, Y, Z; };
-struct CPlane { C3DVector Normal; float Distance; };
+class C3DVector { public: float X, Y, Z; };
+class CPlane { public: C3DVector Normal; float Distance; };
 
-struct CIsContainingPartOfSphere {
+class CIsContainingPartOfSphere { public:
     C3DVector Point;
     float     Radius;
     CIsContainingPartOfSphere(const C3DVector& point, float radius) : Point(point), Radius(radius) { }

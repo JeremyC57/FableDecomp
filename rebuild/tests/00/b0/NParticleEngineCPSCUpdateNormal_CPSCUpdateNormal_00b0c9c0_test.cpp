@@ -9,20 +9,20 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable() {}
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) {}
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
-struct CPSCBase : CBaseClassNonCopyable {          // vtable 0x0129F3F4
+class CPSCBase : public CBaseClassNonCopyable { public:          // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;               // +0x04
     bool             UpdateStarted : 1;            // +0x08 bit 0
     bool             Initialised : 1;              // +0x08 bit 1
@@ -42,7 +42,7 @@ struct CEmitterList {                              // list<CIntelligentPointer<C
     }
 };
 
-struct CPSCUpdateNormal : CPSCBase {               // vtable 0x0129FC1C
+class CPSCUpdateNormal : public CPSCBase { public:               // vtable 0x0129FC1C
     unsigned long FadeInEndInteger : 10;           // +0x0c
     unsigned long FadeOutBeginInteger : 10;
     unsigned long UseParticleLifeSecs : 1;

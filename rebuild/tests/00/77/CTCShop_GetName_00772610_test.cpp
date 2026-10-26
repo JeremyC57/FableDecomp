@@ -4,24 +4,24 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_deleted = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() {}
     virtual void Delete() { ++g_deleted; }
     long m_refCount;
     void ReleaseReference() { if (--m_refCount == 0) Delete(); }
 };
-struct CShopDef : CDefPointeeBase {
+class CShopDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Name;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
     T* operator->() const { return Object; }
 };
 static CShopDef* g_shopDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CShopDef>* out)
     {
         ++g_getSubDef;
@@ -30,7 +30,7 @@ struct CDefClassBase : CDefPointeeBase {
     }
 };
 static CDefClassBase* g_thingDef = 0; static int g_getDef = 0; static long g_getDefIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out)
     {
         ++g_getDef; g_getDefIndex = index;
@@ -38,11 +38,11 @@ struct CDefinitionManager {
     }
 };
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;

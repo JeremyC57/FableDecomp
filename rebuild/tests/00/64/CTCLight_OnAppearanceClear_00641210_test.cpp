@@ -11,8 +11,8 @@ struct CPrimitiveVector {
     void clear() { CPrimitive** i = (CPrimitive**)CopyTrivial(_M_finish, _M_finish, _M_start); _M_finish = i; }
 };
 struct CAppearanceListener { virtual ~CAppearanceListener() { } virtual void OnAppearanceClear() = 0; };
-struct CTCBase { virtual ~CTCBase() { } int m_x; };
-struct CTCLight : CTCBase, CAppearanceListener {
+class CTCBase { public: virtual ~CTCBase() { } int m_x; };
+class CTCLight : public CTCBase, public CAppearanceListener { public:
     CPrimitiveVector FlareSprites, Lights;
     virtual void OnAppearanceClear() { Lights.clear(); FlareSprites.clear(); }
 };

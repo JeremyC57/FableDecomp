@@ -10,11 +10,11 @@
 // (release 0x0099E9B0 with NoRefs at data+0xd as in the PDB CCharStringData, instance count 0x013BD800).
 // __fastcall, this in ecx.
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                 // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                 // 0x0099EAE0
 };

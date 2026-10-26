@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCElectrocutedEffect {
+class CTCElectrocutedEffect { public:
     char pad[0x30];
     int f30;
 };

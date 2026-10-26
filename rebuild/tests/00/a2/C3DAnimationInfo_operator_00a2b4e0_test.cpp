@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_deleted = 0;
-struct CIVCountedPointeeBase { unsigned long IVRefCount; virtual ~CIVCountedPointeeBase() {} virtual void Delete() { ++g_deleted; } };
+class CIVCountedPointeeBase { public: unsigned long IVRefCount; virtual ~CIVCountedPointeeBase() {} virtual void Delete() { ++g_deleted; } };
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
@@ -16,8 +16,8 @@ struct CIVCountedPointer {
         return *this;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DAnimationInfo {
+class C3DVector { public: float X, Y, Z; };
+class C3DAnimationInfo { public:
     void* Bank; unsigned long Index; CIVCountedPointer Data; float Duration, NonLoopingDuration; C3DVector MovementVector; float Rotation;
     C3DAnimationInfo& operator=(const C3DAnimationInfo& o)
     {

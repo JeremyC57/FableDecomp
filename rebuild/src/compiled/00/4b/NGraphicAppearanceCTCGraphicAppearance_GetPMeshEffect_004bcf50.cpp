@@ -128,7 +128,7 @@ public:
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     struct CMeshEffectPriorityEntry {
         CIVCountedPointer<CEngineMeshEffect> PEffect;      // +0x0
         long          Priority;                             // +0x4 EAppearanceMeshEffectPriority

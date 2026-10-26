@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPersistContext;
+class CPersistContext;
 
 static int g_base_called = 0;
 static void* g_member_owner = 0;
@@ -17,8 +17,8 @@ struct CThingNoiseMember
     void DoIt(void* owner, int flag);
 };
 
-struct CThingNoiseDef : public CThingNoiseDef_Base
-{
+class CThingNoiseDef : public CThingNoiseDef_Base
+{ public:
     CThingNoiseMember m18;
     CThingNoiseDef* __fastcall Transfer(CPersistContext* ctx);
 };

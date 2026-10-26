@@ -18,7 +18,7 @@ struct CThingPhysics_Retail {
     unsigned char m_transform[0x2c]; CPhysicsBody_Retail* m_pBody; CPhysicsBody_Retail m_body;
     CThingPhysics_Retail() { std::memset(m_transform, 0, sizeof(m_transform)); m_pBody = &m_body; m_body.m_collisionFlags = 0; }
 };
-struct CScriptThing; struct CDefPointer_Retail; struct CThing_Retail;
+class CScriptThing; struct CDefPointer_Retail; struct CThing_Retail;
 struct CDefVirtual_Retail { virtual void v00() { } virtual void Destroy() { rec("X"); } };
 struct CDefBase_Retail : CDefVirtual_Retail { long m_count; CDefBase_Retail() : m_count(1) { } };
 struct CDefPointer_Retail {
@@ -62,7 +62,7 @@ struct CThing_Retail {
         m_presentBits[type >> 5] |= (1UL << (type & 31));
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual CThing_Retail* GetThing() const { rec("g"); return PImp_Data; }
     virtual bool IsValid() const { rec("v"); return g_valid; }
     CThing_Retail* PImp_Data; void* PImp_Info;
@@ -75,14 +75,14 @@ static void reset(unsigned char type, unsigned char flags) { g_thing.Reset(); g_
 // ---- strings
 struct CCharStringData_Retail { const char* m_pData; unsigned long m_length; };
 static CCharStringData_Retail g_blocks[8]; static int g_blockCount = 0; static int g_strDtors = 0; static int g_strCtors = 0; static int g_wideDtors = 0;
-struct CWideString {
+class CWideString { public:
     const char* PStringData;
     CWideString() : PStringData("") { }
     CWideString(const CWideString& o) : PStringData(o.PStringData) { }
     ~CWideString() { ++g_wideDtors; }
     bool operator!=(const wchar_t*) const { rec("!"); return PStringData[0] != 0; }
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData_Retail* m_pData;
     CCharString() : m_pData(0) { }
     CCharString(const char* text, long length = -1) { ++g_strCtors; m_pData = &g_blocks[g_blockCount++ & 7]; m_pData->m_pData = text; m_pData->m_length = length < 0 ? (unsigned long)std::strlen(text) : (unsigned long)length; }
@@ -109,9 +109,9 @@ struct CBulletTimeManager_Retail {
     void RemoveBulletTimeSlowdown(unsigned long key) { rec("R"); g_arg[2] = (long)key; }
 };
 struct CMessageEvent_Retail { int x; };
-struct CMessageEventFilter_IsOfType { long m_type; CMessageEventFilter_IsOfType(long t) : m_type(t) { } };
-struct CMessageEventFilter_CanBeSeenOrHeard { long m_frame; long m_maxFrame; CMessageEventFilter_CanBeSeenOrHeard(long f, long m) : m_frame(f), m_maxFrame(m) { } };
-template<class A, class B> struct CFilter_Bind2 { const A* m_pFirst; const B* m_pSecond; CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { } };
+class CMessageEventFilter_IsOfType { public: long m_type; CMessageEventFilter_IsOfType(long t) : m_type(t) { } };
+class CMessageEventFilter_CanBeSeenOrHeard { public: long m_frame; long m_maxFrame; CMessageEventFilter_CanBeSeenOrHeard(long f, long m) : m_frame(f), m_maxFrame(m) { } };
+template<class A, class B> class CFilter_Bind2 { public: const A* m_pFirst; const B* m_pSecond; CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { } };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
 static CMessageEvent_Retail g_msg; static bool g_haveMsg = true; static const CMessageEvent_Retail* g_pRemoved = 0;
@@ -133,7 +133,7 @@ struct COpinionReactionManager_Retail {
     void* GetExclusiveOpinionSource() { return m_exclusiveSource.GetPItem(); }
 };
 static CThingManager_Retail g_tm; static CBulletTimeManager_Retail g_bullet; static CMessageEventManager_Retail g_messages; static COpinionReactionManager_Retail g_opinions;
-struct CWorld {
+class CWorld { public:
     virtual CThingManager_Retail* GetThingManager() { rec("t"); return &g_tm; }
     CMessageEventManager_Retail* PMessageEventManager_Data; CBulletTimeManager_Retail* PBulletTimeManager_ptr; COpinionReactionManager_Retail* POpinionReactionManager_Data; bool CreatureGenerationEnabled;
     CWorld() : PMessageEventManager_Data(&g_messages), PBulletTimeManager_ptr(&g_bullet), POpinionReactionManager_Data(&g_opinions), CreatureGenerationEnabled(true) { }
@@ -141,7 +141,7 @@ struct CWorld {
 };
 static CWorld g_world;
 // ---- the game UI singleton, the main component, the player
-struct CFontBank_Retail { int x; }; struct CRGBColour { int r; };
+struct CFontBank_Retail { int x; }; class CRGBColour { public: int r; };
 static CFontBank_Retail g_font; static const CFontBank_Retail* g_pFontUsed = 0; static const char* g_text[4]; static long g_colour = -1; static float g_time = -1; static bool g_b1, g_b2;
 struct CSubtitleRenderer_Retail {
     void SetText(CFontBank_Retail* f, const CCharString& t, unsigned long colour, float time, bool a, bool b) { rec("1"); g_pFontUsed = f; g_text[0] = t.GetString(); g_colour = (long)colour; g_time = time; g_b1 = a; g_b2 = b; }
@@ -181,13 +181,13 @@ struct CTCFishingSpot_Retail { bool m_enabled; };
 struct CTCFish_Retail { long m_weight; };
 static long g_lastFishWeight_013bae80 = 0;
 struct CTCHeroFishing_Retail { long m_fishingLevel; };
-struct CTCOracleMinigame { bool Success; };
+class CTCOracleMinigame { public: bool Success; };
 struct CTCFireheartMinigame_Retail { bool m_forceQuit; void PlayGame() { rec("f"); } void Quit() { rec("q"); } };
-struct CTCDoor { long Jammed; unsigned char TriggerType[4]; };
-struct CTCBuyableHouse { bool IsScripted; };
+class CTCDoor { public: long Jammed; unsigned char TriggerType[4]; };
+class CTCBuyableHouse { public: bool IsScripted; };
 static const float g_fNoOpinion_0122dedc = 0.0f;
 struct CDisplayEngine_Retail;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() { }
     virtual void CameraUsePhysicsPoint(long a, const unsigned char* tr, void* pos, long c, long d, long e) const { rec("V"); g_arg[0] = a; g_arg[1] = (long)(tr == g_physics.m_transform); g_arg[2] = (long)(pos == &g_pos); g_arg[3] = c; g_arg[4] = d; g_arg[5] = e; }
     CWorld* World; CMainGameComponent_Retail* Component; CDisplayEngine_Retail* DisplayEngine; CDefinitionManager_Retail* DefinitionManager; CPlayerManager_Retail* PlayerManager;

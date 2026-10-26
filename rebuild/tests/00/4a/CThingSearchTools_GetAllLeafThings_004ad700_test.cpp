@@ -3,7 +3,7 @@
 #include <cstdio>
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];
@@ -50,9 +50,9 @@ template <class T> struct CResultVector {
         else _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
-struct CThingBuilding : CThing { enum { ThingListType = 0x3 }; };
-struct CThingFilter_None { bool operator()(const CThing&) const { return true; } };
-struct CThingSearchTools { CThingList Lists[8]; };
+class CThingBuilding : public CThing { public: enum { ThingListType = 0x3 }; };
+class CThingFilter_None { public: bool operator()(const CThing&) const { return true; } };
+class CThingSearchTools { public: CThingList Lists[8]; };
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekTypeList(long type) { return &Lists[type]; }
     template <class TThing, class TContainer, class TFilter> void GetAllLeafThings(const TFilter& filter, TContainer& result)

@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 static int g_destroyed = 0;
-struct CVertexStreamFormat { unsigned int Size; unsigned int CalculateVertexSize() const { return Size; } };
+class CVertexStreamFormat { public: unsigned int Size; unsigned int CalculateVertexSize() const { return Size; } };
 struct CStreamInfo { unsigned int StreamIndex; CVertexStreamFormat StreamFormat; };
 class CVertexShaderInput {
 public:

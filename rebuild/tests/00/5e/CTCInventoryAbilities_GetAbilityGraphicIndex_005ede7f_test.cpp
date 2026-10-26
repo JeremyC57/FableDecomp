@@ -10,7 +10,7 @@ struct AbilityEntry {    // 8-byte stride
     AbilityDef* def;     // +4
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char          pad[0x160];
     AbilityEntry* entries; // +0x160
 };

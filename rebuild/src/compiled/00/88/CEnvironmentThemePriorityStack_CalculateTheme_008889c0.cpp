@@ -19,7 +19,7 @@ struct CEnvironmentThemePriorityStackEntry {     // 48 bytes in retail
                       CEnvironmentThemeResourcePallette* pallette);                                              // 0x008886E0
 };
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;

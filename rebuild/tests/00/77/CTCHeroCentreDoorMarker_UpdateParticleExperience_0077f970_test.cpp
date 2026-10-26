@@ -2,19 +2,19 @@
 #include <cstring>
 // behaviour test: CTCHeroCentreDoorMarker::UpdateParticleExperience kills a live particle when the world flag is off and
 // creates + attaches the "EXPERIENCE_SPEND" particle (attach type 0x20, empty helper) when the flag is on and none is alive
-struct C3DVector { float X, Y, Z; };
-struct CTCDParticleEmitter;
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CTCDParticleEmitter;
+class CThing { public:
     bool Dead; bool hasEmitter; CTCDParticleEmitter* emitter; C3DVector Pos; int kills;
     const C3DVector& GetPosition() const { return Pos; }
     void Kill(bool) { ++kills; Dead = true; }
     unsigned long HasTC(long type) const { return type == 0x4b && hasEmitter ? 1u : 0u; }
     template<class T> T* GetTC(long) { return (T*)emitter; }
 };
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
 static CThing g_created; static char g_name[32]; static int g_creates = 0;
 static CThing* Create(const CCharString& name, const C3DVector&, bool) { ++g_creates; std::strcpy(g_name, name.s); return &g_created; }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     CThing* attached; long type; const char* helper;
     void AttachToThing(CThing* t, long a, const CCharString& h, long, float) { attached = t; type = a; helper = h.s; }
 };
@@ -24,7 +24,7 @@ struct CIntelligentPointer {
     CThing* GetPItem() const { return p; }
 };
 static bool IS_THING_ALIVE(const CIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
-struct CWorld { bool ExperienceSpendingEnabled; };
+class CWorld { public: bool ExperienceSpendingEnabled; };
 static CWorld g_world;
 struct CTCHeroCentreDoorMarker {
     CThing* ParentThing; CIntelligentPointer PParticle;

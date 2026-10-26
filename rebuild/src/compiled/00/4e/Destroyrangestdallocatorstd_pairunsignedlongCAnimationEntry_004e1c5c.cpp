@@ -10,8 +10,8 @@
 // emitted -- keeping this translation unit's only function the destroy loop, and
 // matching retail's `mov ecx,esi ; call <dtor>` exactly.
 
-struct CAnimationEntry
-{
+class CAnimationEntry
+{ public:
     unsigned long a;
     unsigned long b;
     unsigned long c;

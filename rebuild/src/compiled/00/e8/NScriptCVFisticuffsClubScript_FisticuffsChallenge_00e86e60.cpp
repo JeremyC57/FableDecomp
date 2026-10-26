@@ -14,22 +14,22 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -47,23 +47,23 @@ template <class T> struct CCountedPointer {
 };
 
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     ~CScriptThing();                                        // 0x004AA840
 };
 namespace NScript {
-struct CPredicateBase {                                     // vtable 0x012C2FF4
+class CPredicateBase { public:                                     // vtable 0x012C2FF4
     virtual bool IsTrue() = 0;
     ~CPredicateBase() { }
 };
-struct CIsThingAlive : CPredicateBase {                     // vtable 0x012C32F0, 16 bytes
+class CIsThingAlive : public CPredicateBase { public:                     // vtable 0x012C32F0, 16 bytes
     CScriptThing Thing;                                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
-template <class A, class B> struct CPredicate_And : CPredicateBase {   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>
+template <class A, class B> class CPredicate_And : public CPredicateBase { public:   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>
     A First;                                                // +0x04
     B Second;                                               // +0x14
     CPredicate_And(const A& first, const B& second);        // 0x00E24760
@@ -76,12 +76,12 @@ template <class A, class B> inline CPredicate_And<A, B> operator&&(const A& firs
 }
 }
 using namespace NScript;
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x5e0];
     long          FC_MinimumFighterHealth;                  // +0x5e0
 };
 extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -166,7 +166,7 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing& thing, const CScriptThing& ally) const; // slot 600 (+0x960)
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920

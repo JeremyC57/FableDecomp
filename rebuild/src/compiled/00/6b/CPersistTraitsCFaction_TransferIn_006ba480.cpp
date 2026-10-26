@@ -13,16 +13,16 @@
 //   temporary's destructor); the CPersistTraits<CCharString> object (CCharString DefaultVal) is built after the "Name" test and
 //   destroyed on every later exit; the discarded 8-byte insert result inside the loops gives the `and esp,-8` frame (GOTCHAS); each
 //   count + loop is its own block, so the count's frame word is reused by the later temporaries.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CStringParser {
+class CStringParser { public:
     bool NextItemIs(const CCharString& name);          // 0x009B9BA0
 };
-struct CPersistContext;
+class CPersistContext;
 void __fastcall PersistTransferInLong(CPersistContext& context, CStringParser& parser, long* value);   // 0x009E2590
 
 namespace std {

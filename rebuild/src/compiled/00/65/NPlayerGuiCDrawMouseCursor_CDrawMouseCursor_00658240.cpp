@@ -6,7 +6,7 @@
 // retail +0x28 (the CDrawBase vector is 12 bytes in the shipped build). Shape: a speed body (the two arguments are loaded into registers before
 // the base call, not pushed through), the vtable store sits between the count push and the member call, and the two position words share
 // the eax zero register -- a 2D coordinate of two 4-byte integers (C2DCoordI-style), not float stores (`fldz`/`fstp` or immediates).
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
@@ -17,7 +17,7 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     void Resize(long count);                       // 0x00443F90
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c: the cached GUI pointers and the drawing flag
     CRetailHandleVector PrimitiveHandles;          // +0x1c
@@ -30,7 +30,7 @@ struct C2DCoordI {
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
 
-struct CDrawMouseCursor : CDrawBase {              // vtable 0x0125A814
+class CDrawMouseCursor : public CDrawBase { public:              // vtable 0x0125A814
     virtual void v00();
     C2DCoordI Pos;                                 // +0x28
     CDrawMouseCursor(CPlayerGui* gui, void* drawList);

@@ -13,7 +13,7 @@
 // Shape: the plane pointer is pushed once before the pool test (shared argument of both calls),
 // the pool pointer is re-read for the Free call, then the pointer and the size are cleared.
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct CPlane {                                // C3DVector Normal + float Distance
+class CPlane { public:                                // C3DVector Normal + float Distance
     float Normal_X;
     float Normal_Y;
     float Normal_Z;
@@ -25,12 +25,12 @@ struct CMovableResourceMemoryPool_Calls {
     void Free(long handle);                    // 0x00A62ED0 (CHandleBasedMemoryPool::Free)
 };
 
-struct CMovableResource {                      // vtable 0x0129B860; engine/CMovableResource.h: vptr only
+class CMovableResource { public:                      // vtable 0x0129B860; engine/CMovableResource.h: vptr only
     virtual void v00();
     ~CMovableResource() { }
 };
 
-struct CContainmentVolume : CMovableResource { // vtable 0x0129DC94
+class CContainmentVolume : public CMovableResource { public: // vtable 0x0129DC94
     CPlane*                           ContainmentPlanes;   // +0x04
     unsigned long                     Size;               // +0x08
     CMovableResourceMemoryPool_Calls* MemoryPool;         // +0x0c

@@ -3,7 +3,7 @@
 struct Task { char pad[0x30]; unsigned char flag; };
 struct ListNode { ListNode* next; ListNode* prev; Task* task; };
 struct List { ListNode* head; };
-struct CTCVillage { char pad[0x5c]; List list; };
+class CTCVillage { public: char pad[0x5c]; List list; };
 
 static int g_cleared = 0;
 static void __fastcall List_Clear(List* self) { (void)self; g_cleared = 1; }

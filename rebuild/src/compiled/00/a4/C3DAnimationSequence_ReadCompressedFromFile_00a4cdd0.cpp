@@ -11,10 +11,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -46,12 +46,12 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct CSimpleMemoryPool;
-struct C3DAnimationSequenceData {
+class CSimpleMemoryPool;
+class C3DAnimationSequenceData { public:
     void ReadCompressedFromFile(CDataInputStream& in, CSimpleMemoryPool* pool);   // 0x00A4C5E0
 };
 
-struct C3DAnimationSequence {
+class C3DAnimationSequence { public:
     C3DAnimationSequenceData* Data;        // +0
     short ParentIndex;                     // +4
     bool  Shared;                          // +6

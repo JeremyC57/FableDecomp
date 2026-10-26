@@ -1,18 +1,18 @@
 // Behaviour test for 0x00AA59C0 C3DMeshFileXVertexDataChunk::CreateNewInstance
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     char ChunkType[5];
     CChunkedFileChunk(const char* t) { std::strncpy(ChunkType, t, 5); }
     virtual ~CChunkedFileChunk() {}
 };
-template<class T> struct CArray { T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
-struct CVertexCompressionParams {
+template<class T> class CArray { public: T* m_begin; T* m_end; T* m_capacity; CArray() : m_begin(0), m_end(0), m_capacity(0) {} };
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
         PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) {}
 };
-struct C3DMeshFileXVertexDataChunk : CChunkedFileChunk {
+class C3DMeshFileXVertexDataChunk : public CChunkedFileChunk { public:
     unsigned long FormatID, VertexCount, VertexSize, InitFlags;
     CVertexCompressionParams VBCParams;
     CArray<char> VertexData;

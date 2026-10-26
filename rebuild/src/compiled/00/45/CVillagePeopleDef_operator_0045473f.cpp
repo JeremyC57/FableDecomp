@@ -10,7 +10,7 @@
 // the 0x25-byte CDefClassBase) and the scalars +0x28..+0xa4 exactly as copied. The PDB vectors are 16 bytes (+0xa8/+0xb8),
 // retail STLport vectors are 12 (+0xa8/+0xb4), which puts GuardRespawnMaxRenownBasedOffset at retail +0xc0 (PDB +0xc8).
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Copy(const CDefClassBase& other);
     unsigned char _base_0x04[0x18];
     void*         PDefManager;                          // +0x1c
@@ -27,7 +27,7 @@ struct CLongVector {                                    // STLport vector<long> 
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CVillagePeopleDef : CDefClassBase {              // vtable 0x01232C4C
+class CVillagePeopleDef : public CDefClassBase { public:              // vtable 0x01232C4C
     bool        Enable;                                 // +0x25
     float       DesiredMaleWeight;                      // +0x28
     float       DesiredFemaleWeight;                    // +0x2c

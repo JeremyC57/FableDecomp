@@ -11,13 +11,13 @@ template <class K, class V> struct pair {
     V second;
 };
 
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject {                 // Ego_r.pdb, 52 bytes
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public:                 // Ego_r.pdb, 52 bytes
     CMatrix3x4 Transform;               // +0x00
     long       BoneIndex;               // +0x30
 };
 
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C> struct CPreAllocVectorMap {
     C              Compare;             // +0x00

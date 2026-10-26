@@ -7,8 +7,8 @@
 // Shape: the thing's position is a by-value copy (X/Y kept on the x87 stack, Z copied through ecx); the two deltas
 //   are named locals (this one spilled, the rival's mostly on the stack); `myDist < rivalDist` evaluates left first
 //   (`fcompp ; test ah,41h ; jne`).
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -22,7 +22,7 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<const CThing>: vptr + item
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<const 
     CBaseObject* m_pItem;                          // +0x04
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CVillageTaskSecuritySweep {                 // vtable 0x0125A868
+class CVillageTaskSecuritySweep { public:                 // vtable 0x0125A868
     virtual ~CVillageTaskSecuritySweep();          // slot 0
     virtual void v01();
     virtual long GetTaskType() const;              // slot 2 0x008602F0

@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     void Copy(CDefClassBase const* src);  // thiscall: ecx=this, stack=src
 };
 
-struct CActivateQuestDef : CDefClassBase {
+class CActivateQuestDef : public CDefClassBase { public:
     int  field28;      // +0x28
     char LoadResources;      // +0x2c
 };

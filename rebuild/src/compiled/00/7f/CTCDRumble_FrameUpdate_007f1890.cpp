@@ -8,11 +8,11 @@
 // Shape: the OLD timer value is tested (`test eax,eax` before the `lea edx,[eax-1]` store, then `jge`):
 // a post-decrement compared with zero. Kill takes a stack argument the caller does not have, so
 // the call stays `call ; ret` (no sibling jump).
-struct CThing {
+class CThing { public:
     void Kill(bool immediately);                            // 0x004C9B80
 };
 
-struct CTCDRumble {
+class CTCDRumble { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     bool          ToBeRemoved;                              // +0x08

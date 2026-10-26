@@ -16,12 +16,12 @@
 //          conversions from literals (both homed in the dead argument slot); the map is `new` with the null test around
 //          the constructor, handed to the counted pointer, and the loads go through the counted pointer's Data.
 // Layout: Ego_r.pdb CASoundBank (12 bytes): vptr, CCountedPointer<CCRCSymbolMap> PSymbolMap +0x04 {Data, Info}.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
@@ -33,14 +33,14 @@ void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideStri
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 void* __cdecl operator new(unsigned int size);           // 0x00BFEA1A
 
-struct CCRCSymbolMap {                                   // 0x24 bytes
+class CCRCSymbolMap { public:                                   // 0x24 bytes
     unsigned char _body[0x24];
     CCRCSymbolMap();                                     // 0x00A38500
     void LoadBinary(const CWideString& path);            // 0x00A38C20
     bool LoadFromFile(const CWideString& path, const CCharString& tag);   // 0x00A39010
     void SaveBinary(const CWideString& path);            // 0x00A382E0
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCountedSymbolMap {                               // CCountedPointer<CCRCSymbolMap>
     CCRCSymbolMap*  Data;
     CCPPointerInfo* Info;
@@ -50,7 +50,7 @@ struct CCountedSymbolMap {                               // CCountedPointer<CCRC
 extern bool g_bLoadBinarySoundSymbols;                   // 0x013BC9F0
 extern bool g_bSaveBinarySoundSymbols;                   // 0x0138DD3B
 
-struct CASoundBank {
+class CASoundBank { public:
     virtual ~CASoundBank();
     CCountedSymbolMap PSymbolMap;                        // +0x04
     void InitSymbols(const CWideString& path);

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CFeatDef { unsigned char Data[0x1F4]; };
+class CFeatDef { public: unsigned char Data[0x1F4]; };
 static int g_overflows = 0;
 struct Vec {
     CFeatDef* start; CFeatDef* finish; CFeatDef* eos;

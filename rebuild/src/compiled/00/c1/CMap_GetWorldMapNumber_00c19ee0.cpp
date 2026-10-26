@@ -7,7 +7,7 @@ struct P {
     virtual long* getVal();
 };
 
-struct CMap {
+class CMap { public:
     void* pad0;
     A* a;
 };

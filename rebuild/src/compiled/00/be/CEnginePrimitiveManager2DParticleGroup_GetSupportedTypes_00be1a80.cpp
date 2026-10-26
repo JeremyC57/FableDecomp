@@ -23,7 +23,7 @@ struct CRetailVector_dword {
     }
 };
 
-struct CEnginePrimitiveManager2DParticleGroup {
+class CEnginePrimitiveManager2DParticleGroup { public:
     void GetSupportedTypes(CRetailVector_dword& types);
 };
 

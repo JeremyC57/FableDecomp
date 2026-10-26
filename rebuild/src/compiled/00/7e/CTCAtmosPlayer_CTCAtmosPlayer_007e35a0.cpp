@@ -5,7 +5,7 @@
 // Layout = Ego_r.pdb CTCAtmosPlayer (20 bytes): CTCBase 0xc, PSoundEmitter +0xc, AtmosDefIndex +0x10.
 // engine/CTCBase.h holds the layout only, so the base is modelled as `CTCBase_Calls` (as the landed
 // 0x007AEE10). Shape: both zeroes share one `xor eax,eax` register and are stored before the vtable.
-struct CThing;
+class CThing;
 struct CASoundEmitter;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)

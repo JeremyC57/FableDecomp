@@ -29,7 +29,7 @@
 // the compiler lowers to the 3x movsd copies. `g_FrontendInterpScale` is a plain
 // global float multiplicand -> `fmul ds:0x...`.
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct FrontendInterpOut {
     C3DVector a;   // +0x00
@@ -42,7 +42,7 @@ struct FrontendInterpOut {
 extern float __cdecl Frontend_GetInterpTime_0042dbfa();   // call 0x5b3fc6
 extern float g_FrontendInterpScale_0042dbfa;              // ds:0x1230c38
 
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char m_Pad0000[0xb8];
     float         m_StartTime;                 // +0xb8
     unsigned char m_Padbc[0xcc - 0xbc];

@@ -5,11 +5,11 @@
 // Layout: as 0x006E25C0 (retail UpdateParameters 0x24 bytes at +0x28).
 // Shape: initialiser list in declaration order (the compiler schedules the three argument stores first); the RHSet
 // is copied through ecx/edx by C3DVector's memberwise user copy constructor.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c
 };

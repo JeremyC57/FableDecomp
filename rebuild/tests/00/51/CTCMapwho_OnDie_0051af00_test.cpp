@@ -4,7 +4,7 @@ static int g_dtor = 0;
 static int g_del = 0;
 static void* g_deleted = 0;
 
-struct CTCMapwho { int x; };
+class CTCMapwho { public: int x; };
 
 static void dtor(CTCMapwho* self) { if (self) g_dtor++; }
 static void opdel(void* p) { g_del++; g_deleted = p; }

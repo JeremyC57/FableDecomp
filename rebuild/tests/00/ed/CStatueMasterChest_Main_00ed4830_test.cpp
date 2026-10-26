@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 00ed4830: with the statue at position 3 only the abort test runs; otherwise the chest is removed
 // through the quest (thing, false, true) unless the script was aborted.
-struct CScriptThing { int m_id; };
+class CScriptThing { public: int m_id; };
 struct SRemove { const CScriptThing* thing; bool a; bool b; };
 static SRemove g_removes[4]; static int g_nRemoves = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void RemoveThing(const CScriptThing& thing, bool a, bool b) const { SRemove r; r.thing = &thing; r.a = a; r.b = b; g_removes[g_nRemoves++] = r; }
 };
 struct CV_StatueMasterScript {

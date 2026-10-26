@@ -6,7 +6,7 @@
 // byte at +0x18, which confirms the class. Shape: the landed "temporary CIntelligentPointer" family (0x0084B1C0);
 // SetPItem(0) pushes the literal; the flag store sits after the temporary's destructor only when the temporary lives in an
 // inner scope (at function scope VC7.1 schedules the store before the destructor call); a plain `ret` (no arguments).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0xc];
     CBaseIntelligentPointer m_pController;   // +0xc
     unsigned char _pad14[4];

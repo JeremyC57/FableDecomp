@@ -3,12 +3,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingBaseDef { bool Damageable; float Health; };
-struct CPersistContext {
+class CThingBaseDef { public: bool Damageable; float Health; };
+class CPersistContext { public:
     long Mode; bool UseDefaults;
     void Transfer(const char*, float& value, const float& def) { if (UseDefaults) value = def; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char ThingClass; CThingBaseDef* PBaseDef; bool Drawable;
     float Scale; void* PLastCreator; void* POriginalCreator; float MaxHealth, Health; long CanCome;
     bool Damageable, Killable, RespondToHits, EvadeAllHits, NegateAllHits, AbleToBeEngagedInCombat;

@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CTCInventoryAbilities::AddAbilityToCorrectList (0x005EEFB7): same logic over a copy of the model.
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* s) : m_pData(s) { ++g_live; }
     CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_live; }

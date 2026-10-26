@@ -9,12 +9,12 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0040f870: the float is formatted with six digits into a temporary that is appended to the output and destroyed.
-struct CPersistContext;
+class CPersistContext;
 static long g_digits = 0;
 static double g_formatted = 0.0;
 static int g_appended = 0;
 static int g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     long m_tag;
     ~CCharString() { ++g_destroyed; }
     CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; ++g_appended; return *this; }

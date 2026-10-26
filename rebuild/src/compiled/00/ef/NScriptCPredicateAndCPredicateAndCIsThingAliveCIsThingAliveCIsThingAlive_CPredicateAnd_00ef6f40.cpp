@@ -14,21 +14,21 @@
 // specialisation) while the inner level stays an in-class inline.
 // engine/CScriptThing.h (PDB): { vptr, PImp_Data, PImp_Info }, 12 bytes; modelled here as an opaque
 // 12-byte body because only its out-of-line copy constructor is used.
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);   // 0x004ABE90
 };
 
 namespace NScript {
 
-struct CIsThingAlive {                         // vtable 0x012C32F0
+class CIsThingAlive { public:                         // vtable 0x012C32F0
     virtual void v00();
     CScriptThing Thing;                        // +0x04
     CIsThingAlive(const CIsThingAlive& other) : Thing(other.Thing) { }
 };
 
 template<class TLeft, class TRight>
-struct CPredicate_And {
+class CPredicate_And { public:
     virtual void v00();
     TLeft  m_left;                             // +0x04
     TRight m_right;                            // after the left term

@@ -10,7 +10,7 @@
 // TLX/TLY/Width/Height/Pitch +0x10..+0x18, bitfield byte +0x1a (Alpha, BooleanAlpha, UsesSurface, SectionOfTPage,
 // IsInitialised, ScreenGraphic); no engine/ header.
 class CTexture;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

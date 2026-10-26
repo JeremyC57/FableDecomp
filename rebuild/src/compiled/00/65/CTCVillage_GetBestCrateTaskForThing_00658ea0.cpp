@@ -44,8 +44,8 @@ struct CTCVillage_Retail {
     unsigned char          _pad_0xD8[0x0C];
     bool                   CurrentIsHeroCriminal;        // +0xE4 (PDB +0x170)
     bool IsThereACratePutDownTask();                                                          // 0x00658E09
-    CVillageTaskCarryCrateCalls* FindBestCrateTaskForThing(struct CThing* thing, CVillageTaskListNode** taskList);   // 0x0065F884
-    CVillageTaskCarryCrateCalls* GetBestCrateTaskForThing(struct CThing* thing);
+    CVillageTaskCarryCrateCalls* FindBestCrateTaskForThing(class CThing* thing, CVillageTaskListNode** taskList);   // 0x0065F884
+    CVillageTaskCarryCrateCalls* GetBestCrateTaskForThing(class CThing* thing);
 };
 
 CVillageTaskCarryCrateCalls* CTCVillage_Retail::GetBestCrateTaskForThing(CThing* thing)

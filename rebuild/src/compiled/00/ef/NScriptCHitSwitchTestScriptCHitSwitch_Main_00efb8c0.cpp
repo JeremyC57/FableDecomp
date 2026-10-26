@@ -11,11 +11,11 @@
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}.
 // Shape: block-scoped filter (CFader form); `if (IsDone()) return;` then a `while (!IsDone())` outer loop whose entry test
 //   is the second IsDone call; the inner hit wait is a plain rotated while.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000();
     virtual const CCharString& GetName() const;   // slot 1 (+0x04)
     virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -99,7 +99,7 @@ namespace N_00ef7ab0 { struct CIsThingAlive {                                  /
 bool __fastcall FoundMessageIsThingHitBy(CScriptThing* thing, CScriptThing* hitter);   // 0x00CBE0C7
 
 namespace NScript {
-struct CHitSwitchTestScript {
+class CHitSwitchTestScript { public:
     class CHitSwitch;
 };
 class CHitSwitchTestScript::CHitSwitch {

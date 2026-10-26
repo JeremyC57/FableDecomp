@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B85510 std::merge of two sorted CEngineSubPrimitiveRenderer::CSortElement runs by the unsigned sort value.
 #include <cstdio>
 
-struct CEngineSubPrimitiveBase { int id; };
+class CEngineSubPrimitiveBase { public: int id; };
 struct CSortElement { unsigned long SortValue; CEngineSubPrimitiveBase* SubPrimitive; };
 struct CSortLess {
     bool operator()(const CSortElement& a, const CSortElement& b) const { return a.SortValue < b.SortValue; }

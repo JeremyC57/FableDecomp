@@ -13,11 +13,11 @@
 //   +0x190, EnableCreatureAutoPlacing bit 7 of +0x1C8.
 // Shape: `MaxHealth = Health = def->Health` (`fst` then `fstp`); bit fields merged from the init bools; each building is
 //   the intelligent pointer's inline operator= from a temporary built from the raw pointer (the landed 0x00836A50 model).
-struct C3DVector;
-struct CThing;
-struct CThingPhysical;
-struct CThingBuilding;
-struct CCharString {
+class C3DVector;
+class CThing;
+class CThingPhysical;
+class CThingBuilding;
+class CCharString { public:
     void* PData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -34,7 +34,7 @@ struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPoin
     CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
     CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThingAICreatureInit {
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;              // +0x00
     CThingPhysical* PreviousThing;              // +0x04
     CCharString     ScriptName;                 // +0x08
@@ -46,13 +46,13 @@ struct CThingAICreatureInit {
     CThingBuilding* HomeBuilding;               // +0x14
     CThingBuilding* WorkBuilding;               // +0x18
 };
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x50];
     float Health;                               // +0x50
     unsigned char _pad54[0x11c - 0x54];
     long  DefaultOwner;                         // +0x11c
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*         __vftable;
     unsigned char _pad04[0x90 - 0x04];
     signed char   PlayerNumber;                 // +0x90
@@ -68,7 +68,7 @@ struct CThingCreatureBase {
     bool ConstructFromParams(long defIndex, const C3DVector& position, long creationType, CThingPhysical* originalThing,
                              CThingPhysical* previousThing, const CCharString& scriptName, bool placeAtEndOfList);   // 0x00662880
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     unsigned char    _pad160[0x168 - 0x160];
     CBuildingPointer HomeBuilding;              // +0x168
     CBuildingPointer WorkBuilding;              // +0x170

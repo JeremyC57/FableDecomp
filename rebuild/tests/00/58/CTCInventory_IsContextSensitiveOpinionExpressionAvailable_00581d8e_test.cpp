@@ -10,7 +10,7 @@ struct CLongVector {
     long* begin() const { return first; }
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector ContextSensitiveItems;
     bool IsContextSensitiveOpinionExpressionAvailable()
     {

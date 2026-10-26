@@ -99,14 +99,14 @@ static CStr operator+(const CStr& l, const CStr& r) { CStr s(l); s += r; return 
 static CStr operator+(const char* l, const CStr& r) { CStr s(l); s += r; return s; }
 static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CStr(b); }
 
-struct CStringParser { const char* token; };
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CStr& name) { return strcmp(name.c_str(), "SWORD") == 0 ? 17 : 0; } };
-struct CPersistContext {
+class CStringParser { public: const char* token; };
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CStr& name) { return strcmp(name.c_str(), "SWORD") == 0 ? 17 : 0; } };
+class CPersistContext { public:
     CDefinitionManager* PDefinitionManager; CStr lastError;
     void Error(const CStringParser&, const CStr& message) { lastError = message; }
 };
 struct CStrTraits { CStr DefaultVal; void TransferIn(CPersistContext*, CStringParser* parser, CStr* value) { *value = parser->token; } };
-struct CDefIndex { long Val; };
+class CDefIndex { public: long Val; };
 struct Traits { void TransferIn(CPersistContext* context, CStringParser* parser, CDefIndex* value)
 {
     CStrTraits traits;

@@ -1,12 +1,12 @@
 // Behaviour test for 0x0093AE80 CAIStateGroup_BanditSitRoundCampfire::IsRunnable (model copy over stubs).
 #include <cstdio>
-struct CThing { unsigned long bits74; bool hasMember; void* member; unsigned char m_flags91; };
+class CThing { public: unsigned long bits74; bool hasMember; void* member; unsigned char m_flags91; };
 static long g_frame = 100;
 long GFGetCurrentFrame() { return g_frame; }
 long g_framesPerSecond = 30;
-struct CTCVillage { bool curfew; bool IsCurfewTime() { return curfew; } };
-struct CTCVillageMember { CTCVillage* village; CTCVillage* GetVillage() { return village; } };
-struct CThingObject;
+class CTCVillage { public: bool curfew; bool IsCurfewTime() { return curfew; } };
+class CTCVillageMember { public: CTCVillage* village; CTCVillage* GetVillage() { return village; } };
+class CThingObject;
 struct CThingT : CThing {
     bool HasTC(long type) const { return type == 0x4a ? bits74 != 0 : hasMember; }
     template<class T> bool GetInterface(T** out, long type) { if (type == 0x23 && hasMember) { *out = (T*)member; return true; } return false; }
@@ -35,7 +35,7 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {
         return *this;
     }
 };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static CThing* g_near = 0;
 struct CAIStateGroup_BanditSitRoundCampfire {
     CAIBrain* PBrain;

@@ -1,4 +1,4 @@
-struct CSpecialAbilitiesForcePushDef;
+class CSpecialAbilitiesForcePushDef;
 
 unsigned long __fastcall CSpecialAbilitiesForcePushDef_GetSizeofClass(const CSpecialAbilitiesForcePushDef* self)
 {

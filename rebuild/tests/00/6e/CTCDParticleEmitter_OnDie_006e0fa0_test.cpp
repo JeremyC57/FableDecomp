@@ -9,7 +9,7 @@ struct Sub14 {
 struct Target4 {
     void Notify();
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     int      m0;
     Target4* ParentThing;
     int      m8;

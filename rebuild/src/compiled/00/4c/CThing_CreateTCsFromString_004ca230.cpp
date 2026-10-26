@@ -11,12 +11,12 @@
 // `push eax`); every keyword is a NAMED CCharString inside small inline helpers (NextItemIsText / SkipPastText) --
 // retail passes them with `lea ; push` and destroys each right after its call; the while condition is duplicated at
 // the loop bottom (rotated loop).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -24,7 +24,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -52,9 +52,9 @@ extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
 extern const char g_createTC[];                   // 0x01239BFC "CreateTC"
 extern const char g_quote[];                      // 0x0122DF24 "\""
 extern const char g_semicolon[];                  // 0x0123542C ";"
-struct CTCBase;
-struct CTCParamsBase;
-struct CThing {
+class CTCBase;
+class CTCParamsBase;
+class CThing { public:
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     void CreateTCsFromString(const CCharString& text);
 };

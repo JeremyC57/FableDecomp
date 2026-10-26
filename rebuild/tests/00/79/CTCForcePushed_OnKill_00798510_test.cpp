@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CTCBase;
-struct CThing {
+class CTCBase;
+class CThing { public:
     unsigned char m_type; unsigned char m_flags; CTCBase* m_registered; int m_calls; bool m_lastRegistered;
     bool IsDead() const { return (m_flags & 1) != 0; }
     void SetComponentRegistered(bool registered, CTCBase* component) { ++m_calls; m_lastRegistered = registered; m_registered = registered ? component : 0; }
 };
-struct CTCBase { void* vptrSlot; CThing* ParentThing; };
-struct CTCForcePushed : CTCBase {
+class CTCBase { public: void* vptrSlot; CThing* ParentThing; };
+class CTCForcePushed : public CTCBase { public:
     void OnKill()
     {
         CThing* thing = ParentThing;

@@ -1,5 +1,5 @@
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 struct IDelegate {
   virtual bool m0(CTCCreatureNavigation*, C3DVector*);
   virtual bool m1(CTCCreatureNavigation*, C3DVector*);
@@ -9,7 +9,7 @@ struct IDelegate {
   virtual bool m5(CTCCreatureNavigation*, C3DVector*);
   virtual bool m6(CTCCreatureNavigation*, C3DVector*);
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
   void* f0;
   IDelegate* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

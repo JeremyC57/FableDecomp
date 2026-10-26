@@ -12,7 +12,7 @@
 // ??0CThingTypeInfo@@QAE@XZ, a default constructor that only constructs the string.
 // Shape: the 12-byte temporary in the frame (`sub esp,0xc`), its string constructed at +8, the call, the string
 // destroyed (the implicit ~CThingTypeInfo).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     ~CCharString();                                 // 0x0099EAE0

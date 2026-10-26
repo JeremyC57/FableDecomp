@@ -20,16 +20,16 @@ extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class CWorld;
 class CThing;
 class CThingAICreature;
-struct CReactionMatch;
+class CReactionMatch;
 class COpinionReactionManagerDef;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long RefCount;                                  // +0x04
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer()
     {
@@ -46,7 +46,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
     void* PItem;                                             // +0x04
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 struct SReactionListNode { SReactionListNode* _M_next; SReactionListNode* _M_prev; CReactionMatch* _M_data; };
 struct CReactionMatchList {                                  // STLport list<CReactionMatch*>: the header-node pointer

@@ -12,22 +12,22 @@
 // Shape: the load task is the landed 0x00BF8C10 model (inline dtor plus inline class operator delete: VC7.1 then calls the
 // out-of-line ??_G with 1). One `||` early-out sharing the `xor al,al` exit; `delete SubNode; SubNode = 0;` (clear after the join) versus
 // `if (AsyncLoadTask) { delete AsyncLoadTask; AsyncLoadTask = 0; }` (clear inside the branch).
-struct CMovableResource {
+class CMovableResource { public:
     virtual ~CMovableResource();
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char _pad00[0x5c];
     bool          MemoryFreeingLocked;          // +0x5c
 };
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);              // 0x00BD9B90
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char                  _pad[0x6b0];
     CEngineLandscapeMemoryManager* MemoryManager;   // +0x6b0
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(void* request);         // 0x00BE0400
 };
 struct CLandscapeBackgroundLoadTask {           // 16 bytes, no vtable; non-virtual ??_G @ 0x00BF8C10 (landed model)
@@ -54,12 +54,12 @@ struct CLODLoadInfo {                           // 16 bytes
 };
 struct CLandscapeBackgroundSubNodeBase : CMovableResource {
 };
-struct CLandscapeBackgroundPatch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];
     unsigned char LODBand;                      // +0x118
 };
-struct CLandscapeBackgroundSubNodeSplitBranch;
-struct CLandscapeBackgroundTreeNode : CMovableResource {
+class CLandscapeBackgroundSubNodeSplitBranch;
+class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     void*                            DynamicBuildTemplate;    // +0x04
     void*                            GPUUpdateTask;           // +0x08
     CLODLoadInfo                     LODLoadInfo[8];          // +0x0c

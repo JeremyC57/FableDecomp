@@ -14,21 +14,21 @@
 //   the effect id's frame word, not the sub-def's); the name string is a named local in its own block and shares
 //   the sub-def's frame word (the def stays in esi) -- which needs the same-TU GetSubDef stand-in below (retail's LTCG
 //   knowledge that the def pointer's address does not escape).
-struct C3DVector { float x, y, z; };
-struct CTCBase;
-struct CCharString {
+class C3DVector { public: float x, y, z; };
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30 (CCRC, at the def)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
@@ -50,10 +50,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CSpecialEffectsDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void Destroy(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -87,7 +87,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -124,21 +124,21 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                  // +4
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool IsModeActive(unsigned long mode);            // 0x0073A8A0
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
     bool AddMode(unsigned long mode);                 // 0x0073AE10
 };
 void __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached);   // 0x006E0880
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
     void Initialise();                                // 0x00857520
 };
-struct CCreatureAction_JackDeathInto : CCombatActionBase {
+class CCreatureAction_JackDeathInto : public CCombatActionBase { public:
     void Initialise();
 };
 

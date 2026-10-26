@@ -3,29 +3,29 @@
 // from the source's members.
 #include <cstdio>
 #include <cstring>
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() {}
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
 static int g_stringCopies, g_textureCopies;
-struct CWideString {
+class CWideString { public:
     const void* From; void* m_pData;
     CWideString() : From(0), m_pData(0) {}
     CWideString(const CWideString& other) : From(&other), m_pData(other.m_pData) { ++g_stringCopies; }
 };
-struct CTexture {
+class CTexture { public:
     const void* From; void* m_p1;
     CTexture() : From(0), m_p1(0) {}
     CTexture(const CTexture& other) : From(&other), m_p1(other.m_p1) { ++g_textureCopies; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour& operator=(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); return *this; }
 };
 class CFontBank;
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;
     unsigned char IsText : 1;
     C2DBoxF     Window;

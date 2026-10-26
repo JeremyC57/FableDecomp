@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_scriptBase = 0;
-struct CScriptBase { virtual void v00() { } CScriptBase() { ++g_scriptBase; } };
+class CScriptBase { public: virtual void v00() { } CScriptBase() { ++g_scriptBase; } };
 struct CVtable_012f12d8 : CScriptBase {
     unsigned char _pad[0x3c]; void* m_pThing; void* m_pOwner; unsigned char _tail[0x84 - 0x48];
     virtual void v00() { }

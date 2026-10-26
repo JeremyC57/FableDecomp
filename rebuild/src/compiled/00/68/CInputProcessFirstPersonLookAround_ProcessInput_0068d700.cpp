@@ -10,7 +10,7 @@
 // homes in the dead `event` argument slot). `v.x += v.x` gives `fadd st(0),st(0)`.
 class CInputEvent;
 class CProcessedInput;
-struct C2DVector {
+class C2DVector { public:
     float x, y;
 };
 void __fastcall PreProcessStickVector(C2DVector* stick);   // 0x0068D5F0
@@ -18,20 +18,20 @@ class CInputEvent {
 public:
     long GetEventType() const;                     // 0x00A03B40
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetFirstPersonLookAroundVector(const C2DVector& look);   // 0x00697B60
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad[0x34];
     CAIGameCameraBase* PCurrentGameCamera;         // +0x34
     CAIGameCameraBase* GetCurrentGameCamera() { return PCurrentGameCamera; }
 };
-struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

@@ -6,8 +6,8 @@ struct Entrance
     char data[8];
 };
 
-struct CTCActionUseScriptedHook
-{
+class CTCActionUseScriptedHook
+{ public:
     char pad0[0x20];
     Entrance m_entrance;   // +0x20
     char m_locked;         // +0x28

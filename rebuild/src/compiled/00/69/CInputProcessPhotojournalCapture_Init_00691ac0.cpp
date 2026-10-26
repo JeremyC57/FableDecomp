@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CInputProcessPhotojournalCapture { void Init(); };
+class CInputProcessPhotojournalCapture { public: void Init(); };
 void CInputProcessPhotojournalCapture::Init() {}

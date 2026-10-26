@@ -10,7 +10,7 @@
 // Shape: memberwise assignment in declaration order; the final member's source address is formed with
 // `add edi,8Ch` because nothing reads edi afterwards.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -31,7 +31,7 @@ struct CBlendedEffectMap {              // retail map<long,CBlendedParticleEffec
     CBlendedEffectMap& operator=(const CBlendedEffectMap& other);   // 0x0045C19F
 };
 
-struct CMaterialDef : CParentDefClassBase {     // vtable 0x012336DC
+class CMaterialDef : public CParentDefClassBase { public:     // vtable 0x012336DC
     long  FirstHitSound;                        // +0x3c
     long  LastHitSound;                         // +0x40
     float OnHitRumbleLevel;                     // +0x44

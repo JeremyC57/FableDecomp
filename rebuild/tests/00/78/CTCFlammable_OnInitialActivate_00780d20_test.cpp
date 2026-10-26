@@ -1,18 +1,18 @@
 #include <cstdio>
 static int g_destroyed = 0, g_firePointInits = 0, g_forceUpdates = 0;
 struct CDefPointee { long RefCount; virtual void Destroy() { ++g_destroyed; } void Release() { if (--RefCount == 0) Destroy(); } };
-struct CFlammableDef : CDefPointee { long FireResistance; };
+class CFlammableDef : public CDefPointee { public: long FireResistance; };
 struct CFlammableDefPointer {
     CFlammableDef* Object;
     CFlammableDef* operator->() const { return Object; }
     CFlammableDefPointer& operator=(int) { if (Object) { Object->Release(); Object = 0; } Object = 0; return *this; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CFlammableDef* m_def; bool m_found;
     bool GetSubDef(CFlammableDefPointer* out) { if (m_found) { out->Object = m_def; ++m_def->RefCount; } return m_found; }
 };
-struct CThing { CDefClassBase* m_pDefClass; void SetForceFrameUpdate(bool u) { if (u) ++g_forceUpdates; } };
-struct CTCFlammable {
+class CThing { public: CDefClassBase* m_pDefClass; void SetForceFrameUpdate(bool u) { if (u) ++g_forceUpdates; } };
+class CTCFlammable { public:
     void* vptrSlot; CThing* ParentThing;
     CFlammableDefPointer PDef; bool Burning; long FireDamageAfterFrame; long FireResistance; long FireStrength;
     float DamageCaused; bool DamagePerPoint; bool HasFirePoint;

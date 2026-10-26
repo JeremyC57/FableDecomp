@@ -14,8 +14,8 @@
 //        user destructor in the derived class, so no vtable re-store); `village ? true : false` written at both uses
 //        gives one `setne bl` pushed whole for the call and merged into the bit field (a named bool goes through the
 //        frame).
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad_0x00[0x10];
     unsigned char ThingType;                    // +0x10 (descriptive; 1 = creature)
     unsigned char _pad_0x11[0x81];
@@ -38,7 +38,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CBaseObject* GetPItem() const;              // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -50,12 +50,12 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // C
     }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x8];

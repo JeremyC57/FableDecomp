@@ -4,17 +4,17 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing;
+class CThing;
 static int g_baseFinish = 0, g_removedMode = -1, g_actions = 0; static int g_combo[4]; static int g_comboCount = 0;
 static char g_actName[64]; static CThing* g_actOwner = 0; static CThing* g_actItem = 0; static long g_actPri = 0, g_actTimeout = 0;
-struct CPlayer { unsigned char m_autoFaceTarget; };
+class CPlayer { public: unsigned char m_autoFaceTarget; };
 struct CTCA7 { bool m_active; long m_count; };
 struct CTC9D { bool m_flag; };
-struct CAnimateThing { void RemoveCombinationAnimsOfType(long t) { g_combo[g_comboCount++] = (int)t; } };
+class CAnimateThing { public: void RemoveCombinationAnimsOfType(long t) { g_combo[g_comboCount++] = (int)t; } };
 struct CTCAnimation { CAnimateThing Anim; CAnimateThing* GetAnimation() { return &Anim; } };
-struct CTCCreatureModeManager { void RemoveMode(long m) { g_removedMode = (int)m; } };
-struct CCreatureAction_UnsheatheItemFromInventory;
-struct CThing {
+class CTCCreatureModeManager { public: void RemoveMode(long m) { g_removedMode = (int)m; } };
+class CCreatureAction_UnsheatheItemFromInventory;
+class CThing { public:
     unsigned char m_flags91; CPlayer* Player; CTCA7* A7; CTC9D* C9D; CTCAnimation* Animation; CTCCreatureModeManager* Modes;
     CPlayer* GetPlayer() const { return Player; }
     bool SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory* action);
@@ -32,12 +32,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CCreatureActionBase {
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CCreatureActionBase { public:
     CBaseIntelligentPointer PCreature; CBaseIntelligentPointer PItemRemoved;
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_UnsheatheItemFromInventory {
+class CCreatureAction_UnsheatheItemFromInventory { public:
     CThing* Owner; const char* Name; CThing* Item; long Pri, Timeout;
     CCreatureAction_UnsheatheItemFromInventory(CThing* owner, const CCharString& n, CThing* item, long pri, long timeout, CCreatureActionBase*)
         : Owner(owner), Name(n.s), Item(item), Pri(pri), Timeout(timeout) {}
@@ -45,8 +45,8 @@ struct CCreatureAction_UnsheatheItemFromInventory {
 };
 bool CThing::SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory* a)
 { ++g_actions; std::strcpy(g_actName, a->Name); g_actOwner = a->Owner; g_actItem = a->Item; g_actPri = a->Pri; g_actTimeout = a->Timeout; return true; }
-struct CCombatActionBase : CCreatureActionBase { void FinishAction() { ++g_baseFinish; } };
-struct CCreatureAction_FinishFireballSpell : CCombatActionBase { void FinishAction(); };
+class CCombatActionBase : public CCreatureActionBase { public: void FinishAction() { ++g_baseFinish; } };
+class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public: void FinishAction(); };
 
 void CCreatureAction_FinishFireballSpell::FinishAction()
 {

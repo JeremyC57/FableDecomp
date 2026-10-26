@@ -8,7 +8,7 @@
 // in another script TU, see 0x00F0CA60.)
 // Shape: the class declares no operator=, so VC7.1 emits the implicit one out of line (COMDAT) when
 // a plain `a = b` caller exists in the TU: string, two dword copies, three strings, `return *this`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0

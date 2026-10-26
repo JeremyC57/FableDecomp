@@ -18,7 +18,7 @@ struct CLongVector {
     CLongVector& operator=(const CLongVector& other);    // 0x00454886
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad_0x000[0x148];
 };
 
@@ -26,7 +26,7 @@ struct CTCInventoryBase : CTCBase {
     void Copy(const CTCBase* other);                 // 0x005BFB96
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     CLongVector QuickAccessItems;                    // +0x148 (PDB +0x168)
     void Copy(const CTCBase* other);
 };

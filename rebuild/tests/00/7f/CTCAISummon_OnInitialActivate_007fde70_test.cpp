@@ -2,12 +2,12 @@
 // the thing's def fetches the summon sub-def; the copy's reference is returned afterwards.
 #include <cstdio>
 
-struct CSummonDef;
-template <class T> struct CDefPointer;
+class CSummonDef;
+template <class T> class CDefPointer;
 static int g_baseCalls = 0;
 static int g_destroyed = 0;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_refCount;
     CSummonDef* m_sub;
     virtual ~CDefClassBase() {}
@@ -16,7 +16,7 @@ struct CDefClassBase {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
@@ -32,7 +32,7 @@ struct CDefPointer {
 };
 
 struct CThingDef : CDefClassBase {};
-struct CSummonDef : CDefClassBase {};
+class CSummonDef : public CDefClassBase { public:};
 
 bool CDefClassBase::GetSubDef(CDefPointer<CSummonDef>* out) const
 {
@@ -41,14 +41,14 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSummonDef>* out) const
     return true;
 }
 
-struct CThing { CDefPointer<CThingDef> PDef; };
+class CThing { public: CDefPointer<CThingDef> PDef; };
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     void OnInitialActivate() { ++g_baseCalls; }
 };
 
-struct CTCAISummon : CTCBase {
+class CTCAISummon : public CTCBase { public:
     CDefPointer<CSummonDef> PSummonDef;
     void OnInitialActivate()
     {

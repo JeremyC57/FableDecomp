@@ -6,7 +6,7 @@
 // a free __fastcall(thisptr) and tail-call an extern target so the compiler
 // emits exactly one `jmp rel32`.
 
-struct CBrainDef;
+class CBrainDef;
 
 // Real implementation the thunk forwards to (address relocation-masked).
 extern void __fastcall CBrainDef_Copy_impl(CBrainDef* thisptr, void* src);

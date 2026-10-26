@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CModeBase { unsigned long m_type; virtual void v00() { } virtual unsigned long GetType() const { return m_type; } };
 struct SModeNode { SModeNode* m_pNext; SModeNode* m_pPrev; CModeBase* m_pMode; void* m_pModeInfo; };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     SModeNode* PModes;
     bool IsModeActive(unsigned long type) const
     {

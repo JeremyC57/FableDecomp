@@ -30,7 +30,7 @@ struct CRetailSet_WeaponClass {                             // retail set<EWeapo
     CRetailSet_WeaponClass();                               // 0x00453572
 };
 
-struct CCombatAbilityBlockingData : CCombatAbilityData_Calls {   // vtable 0x01232DEC
+class CCombatAbilityBlockingData : public CCombatAbilityData_Calls { public:   // vtable 0x01232DEC
     float                  BlockAngle;                      // +0x18
     bool                   BlockCanBeBroken;                // +0x1c
     bool                   ForceRecoilWhenBlocking;         // +0x1d

@@ -14,20 +14,20 @@
 
 enum EXboxControllerButton { XBOX_BUTTON_NONE };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button);   // 0x00445EE0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CAbilityButtonGuiDef {
+class CAbilityButtonGuiDef { public:
     unsigned char         _def00[0x40];            // CGameDefinition base + gui def members
     EXboxControllerButton ControllerButton;        // +0x40 (PDB +68)
     long                  MouseButton;             // +0x44 (PDB +72)
 };
 
 namespace NPlayerGui {
-struct CDrawAbilityButtons {
+class CDrawAbilityButtons { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0
     virtual void ClearPrimitives();                // slot 1
     virtual void v02();                            // slot 2

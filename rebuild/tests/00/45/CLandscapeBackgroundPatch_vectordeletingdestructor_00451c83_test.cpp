@@ -4,7 +4,7 @@ static int g_dtor_called = 0;
 static int g_delete_called = 0;
 
 struct CInner { int a; };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     CInner inner;
 };

@@ -14,11 +14,11 @@
 //        formatted first); the tavern def's dtor clears the field after the release, the card def's does not; both
 //        releases are the DecRef-then-GetRefCount form.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -33,7 +33,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
 };
-struct CCardPositionsDef {
+class CCardPositionsDef { public:
     unsigned char _data[0x48];
 };
 struct CRefCounted {
@@ -53,11 +53,11 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad_0x08[0xb8];
     unsigned long AdditionalInfo;               // +0xc0
 };
-struct CTavernGameCardBaseDef : CDefBase {
+class CTavernGameCardBaseDef : public CDefBase { public:
     unsigned char _pad_0x08[0x64];
     CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
 };
@@ -80,7 +80,7 @@ struct CCardDefPointer {                        // CDefPointer<const CTavernGame
     CTavernGameCardBaseDef* operator->() const { return Object; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0x20];
     long          NumRounds;                    // +0x24

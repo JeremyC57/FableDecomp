@@ -17,8 +17,8 @@
 //   pGlobalScriptDef +0x9ac (STLport {start, finish, eos}) is named descriptively. GameCalls, CTimer and CIsThingAlive are copied
 //   from the landed NScript::CQ_HobbeCaveScript::CHobbeLeader::Main 0x00D8FA30.
 extern "C" int __cdecl rand();                          // 0x00BFEB16
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -26,13 +26,13 @@ struct CCharString {
     bool operator!=(const char* text) const;           // 0x0099E960
 };
 extern C3DVector g_ZeroVector;                          // 0x0143E8E0
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();
 };
-struct CScriptThing;
+class CScriptThing;
 struct CScriptThingPImp { CScriptThing* Data; void* Info; CScriptThingPImp() : Data(0), Info(0) {} };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CScriptThingPImp PImp;                              // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
@@ -52,29 +52,29 @@ struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C, 12
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {                   // vtable 0x012C32F0
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:                   // vtable 0x012C32F0
  CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -948,7 +948,7 @@ virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
 extern GameCalls* g_pGameScriptInterface;              // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
  long TimerIndex;
  CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }   // out-of-line copy 0x00CD4450
  ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
@@ -956,7 +956,7 @@ struct CTimer {                                         // 4 bytes: an index int
  __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
 struct CCharStringVector { CCharString* _M_start; CCharString* _M_finish; CCharString* _M_end_of_storage; };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x9ac];
     CCharStringVector EscortBanditTypes;                // +0x9ac (descriptive name)
 };

@@ -1,6 +1,6 @@
 #include "engine/CTCCombat.h"
 #include <cstdio>
-struct CThingCreatureBase { char pad[0x9c]; char flag; };
+class CThingCreatureBase { public: char pad[0x9c]; char flag; };
 static CThingCreatureBase g_sub;
 CThingCreatureBase* __fastcall GetSub(CTCCombat* o) { (void)o; return &g_sub; }
 

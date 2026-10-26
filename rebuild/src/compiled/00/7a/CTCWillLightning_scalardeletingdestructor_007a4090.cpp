@@ -1,4 +1,4 @@
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void* vftable;
 };
 

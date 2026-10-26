@@ -1,7 +1,7 @@
 #include <cstdio>
 // Model of CAIStateGroup_SitForMeal::InitCreaturePosition @ 0x00945CB0.
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() { return pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() { return pos; } };
 static bool g_runnable, g_placed; static CThing g_pot = { {1, 2, 3} }; static bool g_havePot; static const C3DVector* g_arg; static float g_radius;
 struct Creature { bool AutoPlaceNear(const C3DVector& p, float r) { g_arg = &p; g_radius = r; return g_placed; } };
 struct Group {

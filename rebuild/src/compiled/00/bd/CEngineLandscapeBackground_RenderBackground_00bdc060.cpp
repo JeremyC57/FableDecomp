@@ -1,7 +1,7 @@
 // Retail 0x00BDC060. Null-guarded forward to
 // CLandscapeBackgroundTreeNode::Render (0x00BF71D0). Kept as `call; ret` rather
 // than tail-called because the forwarder pushes an argument the callee cleans.
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void Render(int flags);
 };
 

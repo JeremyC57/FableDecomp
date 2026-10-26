@@ -1,4 +1,4 @@
-struct CThing { char pad[0x91]; unsigned char flags; };
+class CThing { public: char pad[0x91]; unsigned char flags; };
 // Leaf: IS_THING_ALIVE<CThingBuilding*>
 struct ThingRef { CThing* p; };
 

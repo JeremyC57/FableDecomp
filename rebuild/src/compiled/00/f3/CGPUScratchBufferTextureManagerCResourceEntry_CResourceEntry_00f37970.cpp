@@ -8,20 +8,20 @@
 // Ego_r.pdb CResourceEntry is 0x2c bytes: ResourceType, Texture, Surface, PageIndex, Dimensions (C2DExtentsI),
 // NoLevels, PixelFormat, MultiSampleType, UseageFlags, MemoryPool.
 // Shape: `mov eax,ecx` (returns this) then eleven dword moves through edx in member order.
-struct CTexture;
-struct CSurface;
+class CTexture;
+class CSurface;
 enum EResourceType { RESOURCE_TYPE_0 };
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE };
 enum ESurfacePool { SURFACE_POOL_0 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
 };
 
 #include "engine/CPixelFormat.h"                           // FormatIndex, 4 bytes
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     struct CResourceEntry {                                 // 44 bytes (PDB layout = retail)
         EResourceType           ResourceType;               // +0x00
         CTexture*               Texture;                    // +0x04

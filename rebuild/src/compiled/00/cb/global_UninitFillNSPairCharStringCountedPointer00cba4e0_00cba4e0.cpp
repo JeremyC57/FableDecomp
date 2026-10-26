@@ -13,12 +13,12 @@
 // present). The only caller is the manifest's CScriptThing_VectorReallocate (0x00CBC940).
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 

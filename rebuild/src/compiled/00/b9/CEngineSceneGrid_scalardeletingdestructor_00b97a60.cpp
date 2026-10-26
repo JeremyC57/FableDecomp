@@ -1,4 +1,4 @@
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void* vftable;
 };
 

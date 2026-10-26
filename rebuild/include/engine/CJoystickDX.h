@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CInputManagerDX;
+class CInputManagerDX;
 struct IDirectInputDevice8W;
 
 #pragma pack(push, 1)

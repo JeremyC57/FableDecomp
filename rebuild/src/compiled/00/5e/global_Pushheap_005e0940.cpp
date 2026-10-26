@@ -14,7 +14,7 @@
 // pointer's release with the pointee as `this`: `mov ecx,esi ; call [eax+4]`).
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
-struct CAnimComponentBase {                  // CIVCountedPointeeBase-derived
+class CAnimComponentBase { public:                  // CIVCountedPointeeBase-derived
     virtual void Destroy(int flags);         // slot 0
     virtual void Delete();                   // slot 1 (+0x04)
     unsigned long IVRefCount;                // +0x04

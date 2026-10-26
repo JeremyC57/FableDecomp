@@ -12,8 +12,8 @@
 // Shape: the 0x007FA980 shape -- `while (last - first > 1) pop_heap(first, last--, comp)` with pop_heap inline;
 // the comparator copy is member by member (ten dwords, the CompareInXYPlane byte from a bl hoisted out of the
 // loop) because C3DVector has a user copy constructor; then `push 0` for the value-type pointer.
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CVectorCompare_BestForTargeting {        // Ego_r.pdb, 44 bytes
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CVectorCompare_BestForTargeting { public:        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                        // +0x00
     C3DVector PreferredLine;                    // +0x0c
     float     AngleCompare;                     // +0x18

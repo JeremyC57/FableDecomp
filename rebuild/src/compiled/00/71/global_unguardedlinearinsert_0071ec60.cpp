@@ -11,7 +11,7 @@
 //   { CDefString MorphName +0; short Priority +4; bool SupressesLowerMorphs +6 } then the float weight at +8.
 //   Assignment is the trivial 3-dword copy, so the value's second dword is loaded once (edx) and serves both
 //   the signed word compare (`cmp dx,[next+4] ; jl`) and the final drop.
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -27,7 +27,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

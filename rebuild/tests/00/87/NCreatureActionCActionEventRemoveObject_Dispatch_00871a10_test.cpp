@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for NCreatureAction::CActionEventRemoveObject::Dispatch (retail 0x00871A10): with a carrying component
 // (interface 70) and a positive hand slot, the thing in that slot is removed and killed if alive.
-struct CTCBase { int id; };
-struct CCharString { const char* Text; };
+class CTCBase { public: int id; };
+class CCharString { public: const char* Text; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -14,7 +14,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -36,10 +36,10 @@ struct CThing {
 };
 static CThing* g_carried;
 static long g_removedSlot;
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CThing* RemoveThingInCarrySlot(long slot, bool drop) { g_removedSlot = drop ? -slot : slot; return g_carried; }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return name.Text[0] == 'L' ? 3 : 0; }
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
 };

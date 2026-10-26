@@ -20,7 +20,7 @@
 
 struct __false_type { __false_type() { } };          // user constructor: no zero-initialised tag temporary
 
-struct CInputEventPackage {                          // 0x30 bytes
+class CInputEventPackage { public:                          // 0x30 bytes
     long m_words[12];
     CInputEventPackage(const CInputEventPackage& other);   // 0x009F69B0
     ~CInputEventPackage();

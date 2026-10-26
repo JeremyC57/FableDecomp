@@ -1,9 +1,9 @@
 // Behaviour test for 0x005BF9E3 CTCInventoryBase::InitialActivate
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pData; };
+class CCharString { public: const char* m_pData; };
 static int g_init = 0, g_released = 0, g_selected[8], g_nsel = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& n) { return std::strcmp(n.m_pData, "BAD") == 0 ? -1 : (long)std::strlen(n.m_pData); }
 };
 struct CCharStringVector { CCharString* first; CCharString* last; CCharString* end_of_storage; };

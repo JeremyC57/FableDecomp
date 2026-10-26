@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_MinionReactToUnconsciousPerson::Update (0x009378F0): model copy, scripted stubs.
 #include <cstdio>
 
-struct CThing { bool dead; bool hasDiscovery; bool discovered; CThing* discoverer; int lifeState; };
+class CThing { public: bool dead; bool hasDiscovery; bool discovered; CThing* discoverer; int lifeState; };
 static bool IsAlive(const CThing* t) { return t && !t->dead; }
 static int g_moveResult, g_lookResult, g_actionResult, g_actions, g_messages, g_terminated, g_defCount, g_defFound;
 static int g_released;

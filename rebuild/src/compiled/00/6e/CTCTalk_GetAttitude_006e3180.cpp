@@ -8,7 +8,7 @@
 // presence bit `test [thing+24h],20000h` (word 1, bit 17 = interface 49), key 31h in the `push ecx` frame slot,
 // `LowerBound(&key)`, the `it == last || type < it->type ? last : it` select and `*out = it->component`. The 10 is
 // materialised before the `je` (`mov eax,0Ah`) and the fall-through reloads Attitude.
-struct CTCBase;
+class CTCBase;
 
 struct CMode {
     virtual void v00();
@@ -25,7 +25,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -46,7 +46,7 @@ struct CThing {
 
 typedef long EConversationAttitude;
 
-struct CTCTalk {
+class CTCTalk { public:
     virtual void v00();
     CThing*       ParentThing;               // +0x04
     unsigned char _pad_0x08[0x10];           // flags, SpeechSample .. SampleDurationFrames

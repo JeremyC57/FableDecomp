@@ -15,20 +15,20 @@ template<class T> struct CRetailVector {
     unsigned long size() const { return (unsigned long)(last - first); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                   // +0x91 bit 0: dead
 };
 
 bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void ReinitialiseActionID();               // 0x00692450 (CCreatureActionBase)
 };
 typedef CThing CThingCreatureBase;
 struct SCountBlock;
 
-struct CCombatAction {                     // CCountedPointer<CCombatActionBase>, 8 bytes
+class CCombatAction { public:                     // CCountedPointer<CCombatActionBase>, 8 bytes
     CCombatActionBase* CreatureAction;     // +0 the pointee
     SCountBlock*       m_pCount;           // +4 the shared count block
 };

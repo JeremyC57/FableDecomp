@@ -13,13 +13,13 @@
 // STLport map/vector/list shrink; landed AbortWithMessage 0x00563410 has ScoreboardState +0x50).
 // Shape: a switch on ScoreboardState (case 1 lowest); every case returns on its own and each case's message string gets
 // its own frame word (VC7.1 does not share slots between switch cases).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     bool operator!=(const CWideString& other) const;   // 0x0099B0F0
 };

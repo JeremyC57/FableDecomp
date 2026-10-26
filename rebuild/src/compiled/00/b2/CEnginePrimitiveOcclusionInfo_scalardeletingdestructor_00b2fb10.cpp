@@ -1,4 +1,4 @@
-struct CEnginePrimitiveOcclusionInfo {
+class CEnginePrimitiveOcclusionInfo { public:
     void* vftable;
 };
 

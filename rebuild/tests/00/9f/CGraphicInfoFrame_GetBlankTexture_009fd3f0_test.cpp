@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CTexture { unsigned char s[8]; };
-struct CGraphicDataBank { unsigned char pad[0x2B4]; CTexture BlankTextures[4]; };
-struct CGraphicInfo { unsigned char h[0x1C]; long TextureType; CGraphicDataBank* Bank; };
-struct CGraphicInfoFrame { void* vt; unsigned short f; signed char m; unsigned char p; void* d; CGraphicInfo* GraphicInfo;
+class CTexture { public: unsigned char s[8]; };
+class CGraphicDataBank { public: unsigned char pad[0x2B4]; CTexture BlankTextures[4]; };
+class CGraphicInfo { public: unsigned char h[0x1C]; long TextureType; CGraphicDataBank* Bank; };
+class CGraphicInfoFrame { public: void* vt; unsigned short f; signed char m; unsigned char p; void* d; CGraphicInfo* GraphicInfo;
     CTexture* GetBlankTexture() { CGraphicInfo* i = GraphicInfo; return &i->Bank->BlankTextures[i->TextureType]; } };
 int main()
 {

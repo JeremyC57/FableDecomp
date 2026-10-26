@@ -1,7 +1,7 @@
 // Behaviour test for 00a64470 CMemoryAllocatorVariableSize::GetPTreeRoot: the free-area tree root accessor pair.
 #include <cstdio>
 struct CMemoryArea { int id; };
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char _pad[0x20];
     unsigned long ExtraMemUsedByOS;
     CMemoryArea*  PTreeRoot;

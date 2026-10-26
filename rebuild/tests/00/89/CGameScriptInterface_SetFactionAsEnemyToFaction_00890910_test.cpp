@@ -9,7 +9,7 @@ struct FactionMgr {
     Faction* list[16]; int n;
     Faction* Lookup(int id);
 };
-struct CWorld { char pad[0x54]; FactionMgr* mgr; };
+class CWorld { public: char pad[0x54]; FactionMgr* mgr; };
 
 Faction* FactionMgr::Lookup(int id)
 {

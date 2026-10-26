@@ -10,7 +10,7 @@
 // into one `GetPItem` call on esi; the def index is CThing's unsigned short +0x8C.
 // Layout: PActiveMeleeWeapon / PActiveRangedWeapon at retail +0x134 / +0x141 (PDB +0x14C / +0x159; unaligned in both).
 #pragma optimize("s", on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                  // +0x8c
     unsigned short GetDefIndex() const { return DefIndex; }
@@ -26,9 +26,9 @@ struct CTCInventoryBase_Retail {
     CThing* GetItemOfTypeInInventory(long itemType);   // 0x005BF3F1
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CIntelligentPointer PActiveMeleeWeapon;   // +0x134
     long ActiveMeleeWeaponDefIndex;           // +0x13C
     bool MeleeWeaponCarriedOnLoad;            // +0x140

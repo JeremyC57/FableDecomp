@@ -7,8 +7,8 @@ struct CInner;
 //   ecx = inner (self->m0), edx = self->m4, stack = byte value.
 extern void __fastcall InnerActivate_006bf6a0(CInner* self, void* p, unsigned char flag);
 
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     CInner* m0;        // +0x00  -> ecx for the call
     void*   ParentThing;        // +0x04  -> edx for the call
     unsigned char ToBeRemoved;  // +0x08

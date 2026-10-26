@@ -11,9 +11,9 @@
 // Layout: retail NUISystem::CSlider = Ego_r.pdb minus 0x30 up to Actions (as the landed ctor 0x0054C050): Value +0x1A4,
 //   Move +0x1AC, OldValue +0x1AD, StartValue +0x1B5 (unaligned in the PDB too, hence pack(1)), Actions +0x1C0 (12-byte
 //   STLport vector), PreviousValue +0x1E0.
-struct C2DVector { float X, Y; };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class C2DVector { public: float X, Y; };
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     T* operator->() const { return Data; }
@@ -38,9 +38,9 @@ struct CSprite : IPrimary_0054c050, CObserver, ISecondaryB_0054c050 {
 };
 struct CComponent;
 namespace NUISystem {
-struct CAction;
+class CAction;
 #pragma pack(push, 1)
-struct CSlider : CSprite {                       // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
+class CSlider : public CSprite { public:                       // vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8
     unsigned char _pad01c[0x1a4 - 0x1c];
     C2DVector     Value;                         // +0x1a4 (PDB +0x1d4)
     bool          Move;                          // +0x1ac
@@ -65,7 +65,7 @@ struct CSliderValue { unsigned char _pad[8]; float Value; };                  //
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };          // +0x08
 struct CSliderTargetRef { CSliderTarget* Target; };                            // +0x00
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                   // +0x04
 };

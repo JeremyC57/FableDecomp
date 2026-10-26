@@ -2,23 +2,23 @@
 // Leaf: DrawHistoryScrollBar
 // Shape: the four pixel/screen scales are IMPLICIT double->float conversions (`float bottomOffset = g_virtualPixelScaleY * -2.0;`); an explicit
 //   (float) cast stores bottomOffset before `push ebp` and hoists the barWidth chain between the prologue pushes.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CRenderManager2D {
     bool Draw2DTriangle(const C2DVector& v0, const C2DVector& v1, const C2DVector& v2, const CRGBColour& colour,
                         unsigned long flags);                               // 0x009DDFF0
     bool Draw2DBox(const C2DBoxF& box, const CRGBColour& colour, long flags); // 0x009DE3F0
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad[8];
     CRenderManager2D* PRenderManager2D;                 // +0x08
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad[0x60];
     CDisplayManager* PDisplayManager;                   // +0x60
 };
@@ -50,7 +50,7 @@ inline int Distance(CHistoryList::Node* first, CHistoryList::Node* last)
     return n;
 }
 
-struct CConsole {
+class CConsole { public:
     virtual void v00();
     unsigned char       _pad04[0x4c - 0x04];
     CHistoryList        CommandLineHistory;             // +0x4c

@@ -1,4 +1,4 @@
-struct CEngineBillboardGenerator {
+class CEngineBillboardGenerator { public:
     void* vftable;
 };
 

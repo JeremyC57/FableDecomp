@@ -1,10 +1,10 @@
 // Behaviour test for CShaderRenderManager::Uninitialise (0x0098A7A0): every resource manager is uninitialised once
 // and the device pointer is cleared (also with an empty array).
 #include <cstdio>
-struct CShaderResource { int uninits; void Uninitialise() { ++uninits; } };
+class CShaderResource { public: int uninits; void Uninitialise() { ++uninits; } };
 struct CPtr { CShaderResource* Data; void* Info; CShaderResource* operator->() const { return Data; } };
 struct CArr { CPtr* m_pFirst; CPtr* m_pLast; CPtr* m_pEnd; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } CPtr& operator[](unsigned int i) { return m_pFirst[i]; } };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void* D3DDevice; CArr ResourceManagers;
     void Uninitialise()
     {

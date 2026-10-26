@@ -4,11 +4,11 @@
 // Callees: CShaderRenderManager::SetVSMatrixConstantTransposed @ 0x00988840 (`__fastcall`, register, matrix, vector count).
 // Shape: a member forwarder on `this` (ecx kept), the matrix argument read first, the layout register second,
 // `push 4` as the row count; three pushed arguments against one received, so no tail jump (`call ; ret 4`).
-struct CMatrix4x4 { float m[16]; };
+class CMatrix4x4 { public: float m[16]; };
 
 #include "engine/CVertexShaderConstantLayout.h"
 
-struct CShaderConstantRange {                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
+class CShaderConstantRange { public:                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
     void*         __vftable;                    // +0
     long          Offset;                       // +4: first constant register
     unsigned long Count;                        // +8: vector count
@@ -19,7 +19,7 @@ inline const CShaderConstantRange& ConstantRange(const unsigned char* range)
     return *reinterpret_cast<const CShaderConstantRange*>(range);
 }
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;                 // +0x000
     CVertexShaderConstantLayout* CurrentVSConstantLayout;   // +0x004
 

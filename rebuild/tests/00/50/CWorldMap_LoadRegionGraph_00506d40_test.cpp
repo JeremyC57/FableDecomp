@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char Text[64];
     CWideString(const char* t) { std::strcpy(Text, t); }
     ~CWideString() { }
@@ -14,31 +14,31 @@ static bool PathExists(const CWideString& p) { std::strcpy(g_lastChecked, p.Text
 namespace NResourceDirectoryNames { static CWideString GetMiscDir() { return CWideString("Data\\Misc\\"); } }
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 static int g_opened = 0, g_closed = 0;
-struct CAFile { virtual ~CAFile() { } };
-struct CDiskFileWin32 : CAFile {
+class CAFile { public: virtual ~CAFile() { } };
+class CDiskFileWin32 : public CAFile { public:
     CWideString Pathname;
     CDiskFileWin32(const CWideString& name, FileAccessType, unsigned long) : Pathname(name.Text) { ++g_opened; }
     void Close() { ++g_closed; }
     virtual ~CDiskFileWin32() { Close(); }
 };
-struct CASuspendableProcess;
-struct CCharString {
+class CASuspendableProcess;
+class CCharString { public:
     char Text[64];
     CCharString() { Text[0] = 0; }
     void LoadFromFile(CAFile* file, CASuspendableProcess*, long) { std::strcpy(Text, static_cast<CDiskFileWin32*>(file)->Pathname.Text); }
 };
-struct CWorldMap;
+class CWorldMap;
 static int g_inits = 0, g_graphs = 0; static char g_initText[64];
-struct CRegionConnectionGraph {
+class CRegionConnectionGraph { public:
     CRegionConnectionGraph() { ++g_graphs; }
     void InitialiseGraph(const CCharString& text, const CWorldMap&) { ++g_inits; std::strcpy(g_initText, text.Text); }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
     void Reset(T* data) { delete Data; Data = data; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     CCountedPointer<CRegionConnectionGraph> PRegionGraph;
     void LoadRegionGraph(const CWideString& name);
 };

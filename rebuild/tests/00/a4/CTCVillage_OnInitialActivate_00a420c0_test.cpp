@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         f0;
     void*         ParentThing;
     char          pad8[4];

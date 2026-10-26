@@ -24,25 +24,25 @@ struct IDirect3DSurface9 {
     virtual long __stdcall LockRect(D3DLOCKED_RECT* locked, const RECT* rect, unsigned long flags);  // +0x34
     virtual long __stdcall UnlockRect();                                                            // +0x38
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CPixelFormat {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(long d3dFormat) { Initialise(d3dFormat); }
     void Initialise(long d3dFormat);            // 0x009E3830
     unsigned long GetByteColourDepth() const;   // 0x009E3800
     void WritePixel(const CRGBColour& colour, void* dest) const;   // 0x009E3F60
 };
-struct CSurfaceLockedRect {
+class CSurfaceLockedRect { public:
     C2DExtentsI Dimensions;     // +0x00
     long Pitch;                 // +0x08
     unsigned char* PMem;        // +0x0c
 };
 
-struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
     virtual ~CSurface();
     IDirect3DSurface9* PD3DSurface;             // +0x04
     unsigned long AllocationSource;             // +0x08

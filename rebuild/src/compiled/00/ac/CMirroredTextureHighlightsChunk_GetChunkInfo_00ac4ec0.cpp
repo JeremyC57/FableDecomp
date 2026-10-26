@@ -5,7 +5,7 @@
 // Grade: DIFFER(ours v retail) -- the lane copies `this` to eax, loads begin before end and reads the hidden result pointer into esi BEFORE the sprintf; retail subtracts begin from end in place and loads the hidden pointer after the call (explicit CCharString(buffer, -1), the implicit conversion, an inline GetNoItems accessor and optimize("s") tried, all under /GS).
 int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (the default argument: the buffer converts implicitly)
 };
@@ -18,7 +18,7 @@ struct CArray_ulong {                              // CArray<unsigned long>: beg
     unsigned long GetNoItems() const { return (unsigned long)(m_pEnd - m_pBegin); }
 };
 
-struct CMirroredTextureHighlightsChunk {
+class CMirroredTextureHighlightsChunk { public:
     virtual void v00();
     long           m_4;
     long           m_8;

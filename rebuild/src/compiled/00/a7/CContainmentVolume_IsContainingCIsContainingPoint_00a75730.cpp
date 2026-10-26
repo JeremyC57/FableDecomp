@@ -11,13 +11,13 @@
 // exit is `xor al,al`, the true result is the constant hoisted into bl before the loop.
 #include "engine/CContainmentVolume.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;
     float     Distance;
     __forceinline float GetSignedDistance(const C3DVector& point) const
@@ -26,7 +26,7 @@ struct CPlane {
     }
 };
 
-struct CIsContainingPoint {
+class CIsContainingPoint { public:
     C3DVector Point;
     __forceinline bool operator()(const CPlane& plane) const
     {

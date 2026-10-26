@@ -3,11 +3,11 @@
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y;
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
     void Normalise() { float l = (float)std::sqrt(X * X + Y * Y); if (l > 0) { X /= l; Y /= l; } } };
-struct CThing { C3DVector pos; };
+class CThing { public: C3DVector pos; };
 struct CCompare {
     C2DVector Origin, Direction;
     CCompare(const C3DVector& o, const C3DVector& d) : Origin(o), Direction(d) { Direction.Normalise(); }

@@ -36,7 +36,7 @@ extern const SGlyph GlyphAmpersand;    // 0x01398464
 extern const SGlyph GlyphStar;         // 0x01398488
 extern const SGlyph GlyphPercent;      // 0x013984AC
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                // +0x04
     bool Init();                               // 0x0099A350

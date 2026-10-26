@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeScorpionKingExhausted::FrameUpdate (retail 0x008E10E0): base update; a non-zero
 // recovery count is decremented and nothing else happens that frame; at zero the scorpion recovers when its animation
 // list (interface 0x5a) is empty or the current animation may be replaced.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,13 +55,13 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CAnimateThing {
+class CThing : public CThingLookup { public: };
+class CAnimateThing { public:
     int AnimsBegin;
     int AnimsEnd;
     unsigned char CurrentAnimFlags;
 };
-struct CTCAnimationComplex : CTCBase {
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing Animate;
     CAnimateThing& GetAnimation() { return Animate; }
 };

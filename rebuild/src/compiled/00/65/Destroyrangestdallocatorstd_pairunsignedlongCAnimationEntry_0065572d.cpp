@@ -7,7 +7,7 @@
 // [esp+0xc] each iteration and enters the loop via jmp-to-condition), reproduced with
 // #pragma optimize("s") under the harness's /O2 /Oy.
 
-struct CAnimationEntry { unsigned long a; };
+class CAnimationEntry { public: unsigned long a; };
 struct Alloc { unsigned long d; }; // std::allocator<...> — empty, passed as a single dword
 
 struct Pair {

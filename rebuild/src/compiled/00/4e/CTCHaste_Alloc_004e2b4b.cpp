@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCHaste {
+class CTCHaste { public:
     unsigned char _body[0x24];       // sizeof(CTCHaste) = 0x24
     CTCHaste(long owner);                   // 0x004E0C61
 };

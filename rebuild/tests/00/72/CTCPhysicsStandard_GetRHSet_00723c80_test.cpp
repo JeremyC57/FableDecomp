@@ -16,7 +16,7 @@ static void BuildTable()
         g_InvSqrtMantissaTable[i] = (unsigned int)m;
     }
 }
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -42,7 +42,7 @@ struct C3DVector {
         Z *= r;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;           // +0x00
     C3DVector Forward;      // +0x0c
     CRightHandedSet() {}

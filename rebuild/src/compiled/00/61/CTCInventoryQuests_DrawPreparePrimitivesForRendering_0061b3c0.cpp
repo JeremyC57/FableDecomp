@@ -19,12 +19,12 @@
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CViewport* PViewport;                                      // +0x34
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void Update(float deltaTime);                      // slot 1 (+4)
     virtual void Render(CViewport* viewport, long a, long b, long c, long d);   // slot 2 (+8)
@@ -70,7 +70,7 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();        // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -85,7 +85,7 @@ struct CFrontEndManager {
 };
 }
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long Handle;
     void Clear();                                              // 0x0041BE70
 };
@@ -122,12 +122,12 @@ struct CTCInventoryBase : CTCBase_Draw {
     void DrawInventoryFrame(const CEnginePrimitivePrepareInfo& info, bool informationScreen);   // 0x005BC4D8
 };
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool IsActive();                                   // slot 3 (+0x0C)
 };
 }
-struct CTCInventoryQuests : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryQuests : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CPrimitiveHandleVector InventoryQuestCardSelectPrimitiveHandles;   // +0x134
     unsigned char    _pad140[0x184 - 0x140];
     float            AccumFadeTime;                            // +0x184

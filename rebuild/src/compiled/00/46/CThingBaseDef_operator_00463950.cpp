@@ -10,7 +10,7 @@
 //   xor`), the last bit of a full byte via `and 7Fh`; the dwords alternate edx/eax/ecx.
 // Leaf: ??4CThingBaseDef
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x39];                                   // +0x00 (vptr, def index, name, parent ...)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
@@ -29,13 +29,13 @@ struct CSmallVectorComponentEntries {                            // CSmallVector
     }
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVectorComponentEntries Entries;                        // +0x00
 };
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 
-struct CThingBaseDef : CParentDefClassBase {
+class CThingBaseDef : public CParentDefClassBase { public:
     CThingComponentSet Components;                               // +0x39
     bool AvailableInEditor : 1;                                  // +0x41
     bool AlwaysFrameUpdate : 1;

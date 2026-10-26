@@ -40,7 +40,7 @@ public:
 
 }
 
-struct CWideStringData {
+class CWideStringData { public:
     std::basic_string_ushort Data;             // +0x00
     long NoRefs;                               // +0x0C
 };

@@ -10,7 +10,7 @@ static int StubSystemTimeToFileTime(const SYSTEMTIME_T* st, FILETIME_T* ft)
                       | ((unsigned int)st->wDayOfWeek << 4) | (st->wMilliseconds & 0xf);
     return 1;
 }
-struct CDateAndTime {
+class CDateAndTime { public:
     int Year; unsigned int Month, Day, Hour, Minute, Second, Millisecond;
     FILETIME_T ToFileTime() const
     {

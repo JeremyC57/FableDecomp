@@ -1,4 +1,4 @@
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     char pad[0x3a]; unsigned char b3a; char pad2[0x11]; long f4c;
     void SetAICast(long v);
 };

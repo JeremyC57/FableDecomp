@@ -14,7 +14,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                             // +0
     SCountBlock* Info;                             // +4
     ~CCountedPointer()
@@ -32,7 +32,7 @@ template <class T> struct CCountedPointer {
     long GetRefCount() const { return Info ? Info->m_references : 0; }
     T* operator->() const { return Data; }
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     void FrameUpdate();                            // 0x008D0190
 };
 struct SScriptThingEntry {                         // 16 bytes
@@ -66,7 +66,7 @@ struct list {                                      // STLport list: the sentinel
         return iterator(next);
     }
 };
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     list m_things;                                 // +0x00
     void FrameUpdate();
 };

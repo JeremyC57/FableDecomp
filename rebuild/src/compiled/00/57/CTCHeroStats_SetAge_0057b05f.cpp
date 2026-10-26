@@ -13,7 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 template <class T> const T& __fastcall GFLimitReturn(const T& v, const T& lo, const T& hi);  // 0x0057EF86
 
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -48,11 +48,11 @@ struct CThing {
     }
 };
 
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void SetAge(float normalisedAge);                // 0x0071BFA0
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x68];
     float         MinAge;                            // +0x68
     float         MaxAge;                            // +0x6C
@@ -63,7 +63,7 @@ struct CDefinitionHolder {
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x28];

@@ -21,8 +21,8 @@
 
 void* operator new(unsigned int size);                      // 0x00BFEA1A
 
-struct CBaseObject;
-struct CThingPlayerCreature;
+class CBaseObject;
+class CThingPlayerCreature;
 
 class CBaseIntelligentPointer {
 public:
@@ -46,23 +46,23 @@ public:
     CView3DThirdPerson();                                   // 0x0069E940
     unsigned char _data[0x9C];
 };
-struct CDisplayViewManager {
+class CDisplayViewManager { public:
     void SetView(CView3DThirdPerson* view);                 // 0x00640050
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char        _pad00[0xE0];
     CDisplayViewManager* PViewManager;                      // +0xE0 (CCountedPointer<CDisplayViewManager>::Data)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                         // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ResetCamera();                                     // 0x0069A990
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void GetCameraManager(CGameCameraManager** out);   // slot 9 (+0x24)

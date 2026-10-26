@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C4DVector { float X, Y, Z, W; };
-struct CShaderGenericLight {
+class C4DVector { public: float X, Y, Z, W; };
+class CShaderGenericLight { public:
     C4DVector Parameters[2]; int Types[2]; float Attenuation2; float AttenuationBase; unsigned int Size;
     CShaderGenericLight() : Size(0) { }
 };

@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CResourceList;
+class CResourceList;
 
-struct CResource {
+class CResource { public:
     long RefCount; CResourceList* ResourceList; CResource* PrevResource; CResource* NextResource;
     unsigned long ResourceSize; unsigned long LastUsedFrame; int resets;
     CResource() : RefCount(1), ResourceList(0), PrevResource(0), NextResource(0), ResourceSize(0), LastUsedFrame(0), resets(0) { }
@@ -26,7 +26,7 @@ struct CResource {
     }
 };
 
-struct CResourceList {
+class CResourceList { public:
     CResource Head; unsigned long ResourceCount; long AllocatedMemory; long MaximumMemory; unsigned long CurrentFrame;
     unsigned long DebugStatsFrame; unsigned long UnloadDelay; unsigned long UnloadedThisFrame;
     CResourceList()
@@ -84,7 +84,7 @@ static bool Order(CResourceList& l, CResource** want, int n)
     return p->NextResource == &l.Head && l.Head.PrevResource == p;
 }
 
-struct CResourceBank {
+class CResourceBank { public:
     CResourceList ResourceList; CResourceList LoadingQueue;
     void AddResourceToLoadingQueue(CResource* resource) { LoadingQueue.AddResource(resource); }
 };

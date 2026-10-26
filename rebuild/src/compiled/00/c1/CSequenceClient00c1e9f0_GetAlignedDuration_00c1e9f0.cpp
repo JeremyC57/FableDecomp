@@ -9,7 +9,7 @@
 // which calls this row as its "First" query). Class modelled from the bytes and named by address.
 // Shape: right-to-left argument evaluation -- `push [esi+8]` precedes the virtual call, the sequence pointer is
 // re-read through the owner after it.
-struct CCombatSequenceBase;
+class CCombatSequenceBase;
 
 long __fastcall CombatSequence_AlignDuration(CCombatSequenceBase* sequence, long time, long extra);   // 0x00C1E990
 

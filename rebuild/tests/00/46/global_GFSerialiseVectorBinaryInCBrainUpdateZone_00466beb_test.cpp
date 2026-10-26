@@ -9,7 +9,7 @@ struct Reader {
         if (chunkLength >= size) { std::memcpy(buffer, chunkBase, size); chunkBase += size; chunkLength -= size; position += size; }
     }
 };
-struct CBrainUpdateZone { int Distance; int UpdateFrequency; int InterruptionFrequency; CBrainUpdateZone() : Distance(0), UpdateFrequency(0), InterruptionFrequency(0) { } };
+class CBrainUpdateZone { public: int Distance; int UpdateFrequency; int InterruptionFrequency; CBrainUpdateZone() : Distance(0), UpdateFrequency(0), InterruptionFrequency(0) { } };
 struct Traits { CBrainUpdateZone DefaultVal;
     void TransferBinaryIn(Reader* s, CBrainUpdateZone* v) { s->Read(&v->Distance, 4); s->Read(&v->UpdateFrequency, 4); s->Read(&v->InterruptionFrequency, 4); } };
 struct Vec {

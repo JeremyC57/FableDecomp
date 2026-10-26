@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test: CRGBFloatColour::GetTRGBALong packs A, R, G, B (each * 255, truncated) high to low.
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     unsigned long GetTRGBALong() const
     {

@@ -33,8 +33,8 @@ struct CFrontEndManager {
 };
 struct CComponent : IComponentPrimary, CObserver, IComponentSecondaryB {
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -50,7 +50,7 @@ struct CChangingStateComponent : CComponent {
     void Update(float dt);                                  // 0x0052C7E0
 };
 namespace NUISystem {
-struct CScrollableList : CChangingStateComponent {
+class CScrollableList : public CChangingStateComponent { public:
     unsigned char _padbc[0x15c - 0xbc];
     unsigned long FirstVisible;          // +0x15c
     unsigned long VisibleCount;          // +0x160

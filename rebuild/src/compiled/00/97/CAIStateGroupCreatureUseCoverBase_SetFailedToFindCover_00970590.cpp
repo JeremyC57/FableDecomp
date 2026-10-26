@@ -7,24 +7,24 @@
 // Retail layout (the engine header is 4 bytes high here because Ego_r's CoverList vector is
 // 16 bytes where retail's is 12): FailedToFindCover +0x34, FailedTime +0x38,
 // FailedToFindCoverAt +0x3c. The creature comes from PBrain (+0x4) -> Creature (+0x18).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     const C3DVector& GetPosition();         // 0x004C73D0
 };
 
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetFrameCount(); // 0x0049D870
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

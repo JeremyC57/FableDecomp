@@ -1,4 +1,4 @@
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* vftable;
 };
 

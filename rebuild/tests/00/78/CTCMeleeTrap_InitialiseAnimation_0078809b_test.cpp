@@ -26,15 +26,15 @@ static int fails = 0;
 //   Set-forwarding CAnimInit ctor (type 6, update mode 1, priority 100).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                            // +0x00
 };
-struct CAnimFilterBase {                                       // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                       // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -43,17 +43,17 @@ struct CAnimFilterNoGroup : CAnimFilterBase {                  // vtable 0x0122F
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                    // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                    // slot 1 (+0x04)
     long RefCount;                                             // +0x04
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer() : Object(0) { }
     __forceinline CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
@@ -66,11 +66,11 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Object; }
     operator T*() const { return Object; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                                   // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -87,12 +87,12 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* 
 }
 #pragma auto_inline(on)
 
-struct CAnimFrameInfo {
+class CAnimFrameInfo { public:
     float Current;
     float Last;
     CAnimFrameInfo() : Current(0), Last(0) {}
 };
-struct CAnimInit {                                             // 0x2c bytes
+class CAnimInit { public:                                             // 0x2c bytes
     long          UpdateMode;                                  // +0x00
     unsigned char Type;                                        // +0x04
     bool          Looping;                                     // +0x05
@@ -112,12 +112,12 @@ struct CAnimInit {                                             // 0x2c bytes
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
              long priority);                                   // 0x0070C050
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void Reset();                                              // 0x0070EC30
     void SetMainAnim(const CAnimInit& init);                   // 0x0070D920
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimationComplex {                                   // interface 0x5a
+class CTCAnimationComplex { public:                                   // interface 0x5a
     CAnimateThing& GetAnimation();                             // 0x0070B460
 };
 

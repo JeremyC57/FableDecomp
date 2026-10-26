@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_WalkInto {
+class CCreatureAction_WalkInto { public:
     void* vftable;
     int destroyed;
 };

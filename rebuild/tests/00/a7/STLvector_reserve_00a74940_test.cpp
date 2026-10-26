@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct C2DLineF { float x0, y0, x1, y1; };
+class C2DLineF { public: float x0, y0, x1, y1; };
 static int g_frees = 0;
 struct SVec {
     C2DLineF* start; C2DLineF* finish; C2DLineF* end;

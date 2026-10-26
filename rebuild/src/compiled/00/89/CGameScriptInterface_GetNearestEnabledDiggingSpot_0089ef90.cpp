@@ -11,20 +11,20 @@
 //   after the distance test; the literal goes straight to the const CCharString& parameter.
 extern "C" void free(void* p);                           // 0x00BFEA14
 void operator delete(void* p);                           // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -42,11 +42,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     CScriptThing() { }
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
@@ -75,7 +75,7 @@ template <class T> struct vector {                       // STLport vector (reta
     bool empty() const { return _M_start == _M_finish; }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

@@ -40,7 +40,7 @@ unsigned long g_renderStateValue_01396f40 = 9;      // 0x01396F40
 unsigned char g_skipStencilState_0143b8cc = 0;      // 0x0143B8CC
 
 struct SCaptureEntry { void* Block; unsigned long State; };
-struct CRenderStateManager {                       // @ 0x013CB508
+class CRenderStateManager { public:                       // @ 0x013CB508
     unsigned char _pad000[8];
     SCaptureEntry CaptureStack[0x500];             // +0x008
     unsigned long CaptureStackCount;               // +0x2808

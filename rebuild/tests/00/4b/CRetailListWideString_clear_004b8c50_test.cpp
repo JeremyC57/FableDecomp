@@ -4,7 +4,7 @@
 // behaviour test for 0x004B8C50: exercises the same logic through a copy of the model (compiled separately from the source)
 static int g_freed = 0, g_destroyed = 0;
 static void FreeNode(void* p) { ++g_freed; std::free(p); }
-struct CWideString { void* m_pData; ~CWideString() { ++g_destroyed; } };
+class CWideString { public: void* m_pData; ~CWideString() { ++g_destroyed; } };
 struct L {
     struct node { node* next; node* prev; CWideString value; };
     node* head;

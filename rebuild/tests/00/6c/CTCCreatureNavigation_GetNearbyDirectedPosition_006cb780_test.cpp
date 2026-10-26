@@ -3,11 +3,11 @@
 // 1e-4 from the start.
 #include <cstdio>
 float g_epsilon_0129ba3c = 1e-4f;
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -28,17 +28,17 @@ struct C3DVector {
         return s;
     }
 };
-struct CNavigatorBase {
+class CNavigatorBase { public:
     C3DVector Result; float LastDistance, LastSpread, LastDirX, LastDirY;
     virtual C3DVector GetNearbyDirectedPosition(const C3DVector& from, float distance, const C2DVector& direction, float spread)
     { LastDistance = distance; LastSpread = spread; LastDirX = direction.X; LastDirY = direction.Y; return Result; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool InMap;
     bool IsPosInMap(const C3DVector& position) const { return InMap; }
 };
 static CWorldMap g_map;
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     virtual void v00() { }
     CNavigatorBase* PNavigator;                         // +0x0c
     const CWorldMap& PeekWorldMap() const { return g_map; }

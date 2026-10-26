@@ -17,7 +17,7 @@ struct Point {
  float SquaredLength() const { return Y*Y+(Z*Z+X*X); }
 };
 namespace NParticleEngine {
-struct CPSCSplineBase {
+class CPSCSplineBase { public:
  unsigned char InheritedState[0x10];
  Point* PointsStart;
  Point* PointsFinish;

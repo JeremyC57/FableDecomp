@@ -7,8 +7,8 @@ static void* g_last_deleted = 0;
 
 void operator_delete_impl(void* p) { g_delete_calls++; g_last_deleted = p; }
 
-struct CInputProcessConsole
-{
+class CInputProcessConsole
+{ public:
 	int marker;
 	void ScalarDtor();
 	void* scalar_deleting_destructor(unsigned int flags);

@@ -4,13 +4,13 @@
 // stand-ins for the render manager and the coordinate helpers.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

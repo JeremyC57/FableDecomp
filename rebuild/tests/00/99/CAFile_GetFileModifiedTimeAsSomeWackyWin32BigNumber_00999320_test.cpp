@@ -141,7 +141,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CAFile {
+class CAFile { public:
     static u64 GetFileModifiedTimeAsSomeWackyWin32BigNumber(const WStr& path)
     {
         WStr fullPath;

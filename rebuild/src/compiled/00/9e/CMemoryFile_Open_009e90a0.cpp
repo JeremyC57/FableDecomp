@@ -6,7 +6,7 @@ struct Sub {
     void init(const char* name);
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     char pad0[8];       // +0x00
     int  Position;        // +0x08
     int  Length;        // +0x0c

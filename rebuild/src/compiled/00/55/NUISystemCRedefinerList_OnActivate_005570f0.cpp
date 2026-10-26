@@ -20,7 +20,7 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -35,13 +35,13 @@ struct CGuiControl_005570f0 {                           // the control base (vpt
     virtual void v000();
 };
 
-struct CScrollableList : CListRoot_005570f0, CGuiControl_005570f0 {
+class CScrollableList : public CListRoot_005570f0, public CGuiControl_005570f0 { public:
     unsigned char _body[0x174];                         // +0x008 .. +0x17b
     void HideComponent(CComponent* component, float startTime, float endTime, C2DVector position, unsigned char alpha);   // 0x00555440
     void OnActivate();                                  // 0x00556200
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool          m_bActive;                            // +0x17c
     bool          m_bSelecting;                         // +0x17d
     float         m_fadeTime;                           // +0x180

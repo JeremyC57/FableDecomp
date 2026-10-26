@@ -3,14 +3,14 @@
 // component skip it; the base FinishAction always runs.
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -50,9 +50,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCarrying : CTCBase { CThing* slot; CThing* GetThingInPrimarySlot() { ++calls; return slot; } };
-struct CTCWeapon : CTCBase { bool loaded; void SetProjectileWeaponLoaded(bool l, CThing* p) { ++calls; loaded = l; arg = p; } };
-struct CCreatureAction_GenericLoadProjectileWeapon {
+class CTCCarrying : public CTCBase { public: CThing* slot; CThing* GetThingInPrimarySlot() { ++calls; return slot; } };
+class CTCWeapon : public CTCBase { public: bool loaded; void SetProjectileWeaponLoaded(bool l, CThing* p) { ++calls; loaded = l; arg = p; } };
+class CCreatureAction_GenericLoadProjectileWeapon { public:
     CBaseIntelligentPointer PCreature; int m_baseFinishes;
     void FinishAction()
     {

@@ -4,7 +4,7 @@
 // immediates; written row by row, one statement per element, VC hoists 1.0f into edx and sinks the diagonal stores), UpdateFlags gains 0xC990 and WorldMatrixIsIdentity is set.
 // Layout: retail offsets (Ego_r.pdb names): WorldMatrixIsIdentity +0x1E8, WorldMatrix +0x1F0, UpdateFlags +0x3D8 (the
 // PDB has them 0x10 / 0x10 / 0x20 higher), as the landed UpdateWorldTransform 0x00988E30; local model.
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     float m[4][4];
     void SetIdentity()
     {
@@ -17,7 +17,7 @@ struct CMatrix4x4 {
 enum {
     SRM_UPDATE_WORLD_TRANSFORM_FLAGS = 0xC990
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*         __vftable;                    // +0x000
     unsigned char _pad004[0x1e4];
     bool          WorldMatrixIsIdentity;        // +0x1e8

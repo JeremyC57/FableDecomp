@@ -10,8 +10,8 @@
 // CurrentSpeed +0x5C. The destination vector has a trivial ctor (not stored).
 // Shape: the zero members are initialisers (one ebx zero register, vectors as STLport _Vector_base + alloc proxy); the -1 and
 // the `true` store come last: they are body assignments.
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -28,11 +28,11 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes): _V
     SRetailAllocProxy<T> _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
-struct CNavigationInput {                       // 24 bytes
+class CNavigationInput { public:                       // 24 bytes
     C3DVector Destination;                      // +0x00
     float     Proximity;                        // +0x0c
     long      MovementType;                     // +0x10 EMovementType
@@ -48,9 +48,9 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
     virtual void v01();
     CIntelligentPointerConstThing() {}
 };
-struct CNavigatorBase;
-struct CSteeringAgent;
-struct CTCCreatureNavigation : CTCBase {
+class CNavigatorBase;
+class CSteeringAgent;
+class CTCCreatureNavigation : public CTCBase { public:
     CNavigatorBase* PNavigator;                 // +0x0c
     CRetailVector<CNavigatorBase*> PossibleNavigators;      // +0x10
     CNavigationInput NavigationTarget;          // +0x1c

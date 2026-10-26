@@ -10,17 +10,17 @@
 // model of 0x0085EE10).
 // Shape: the parent thing is read into a named local before the literal push (a direct `ParentThing->` loads it
 // after the hidden-pointer `lea ecx`; retail uses `mov ecx,[esi+4]` first and `lea edx`); one shared false tail.
-struct CDefString {                                 // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                                 // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
     bool operator==(const char* text) const;        // 0x005B3440
 };
 
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;                  // 0x004C7CC0
 };
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

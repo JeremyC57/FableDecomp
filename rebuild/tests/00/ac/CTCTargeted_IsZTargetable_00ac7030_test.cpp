@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTargeted {
+class CTCTargeted { public:
     int a;
     int b;
     int c;

@@ -4,7 +4,7 @@ struct CThingManager_Calls {
     virtual long GetWorldFramesPerSecond() = 0;
 };
 CThingManager_Calls* g_pThingManager_0143e8f8;
-struct CCounter {
+class CCounter { public:
     long RelevantWorldFrame;
     long operator>(float seconds) const;
 };

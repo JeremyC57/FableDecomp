@@ -6,9 +6,9 @@
 // The manifest label at 0x009E2560 (`CTCInventoryBase::GetItemDescription`) is propagated and wrong.
 // Persist WRITE hook (vtable slot 0) of the component wrapper { vptr; T* TransferableValue; }: the enum traits'
 // TransferOut is inline -- `long v = *value;` in the `push ecx` frame slot, its address to the long writer.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 
@@ -23,7 +23,7 @@ template <class T> struct CPersistTraits {
     }
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

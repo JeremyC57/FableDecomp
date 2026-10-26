@@ -6,14 +6,14 @@
 #define __forceinline inline
 #endif
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 static const char* g_faction; static int g_strings;
-struct CCharString {
+class CCharString { public:
     const char* m_data;
     CCharString(const char* text, long length = -1) : m_data(text) { (void)length; ++g_strings; }
     ~CCharString() { --g_strings; }
@@ -62,9 +62,9 @@ struct CThingVector {
     ~CThingVector() { if (First) free(First); }
 };
 static int g_factionCalls;
-struct CTCEnemy { void SetFaction(const CCharString& faction) { g_faction = faction.m_data; ++g_factionCalls; } };
+class CTCEnemy { public: void SetFaction(const CCharString& faction) { g_faction = faction.m_data; ++g_factionCalls; } };
 static CThing* g_carry[2];
-struct CTCCarrying {
+class CTCCarrying { public:
     void CollectCarrySlots(CThingVector* things)
     {
         things->First = (CThing**)malloc(2 * sizeof(CThing*));
@@ -73,7 +73,7 @@ struct CTCCarrying {
     }
 };
 static C3DVector g_createdAt; static int g_creates;
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     CThing* ParentThing;
     bool PendingCreate;
     CBaseIntelligentPointer Minion;

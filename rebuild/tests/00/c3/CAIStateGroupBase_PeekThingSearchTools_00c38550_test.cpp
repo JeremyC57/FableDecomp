@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingSearchTools { int id; };
+class CThingSearchTools { public: int id; };
 
 struct Inner3 { char pad[0x70]; float rate; };
 struct Inner2 { char pad[4]; Inner3* p4; };
@@ -17,7 +17,7 @@ extern "C" CThingSearchTools* __fastcall SubPeek(Sub* self, float scaled) {
     return &g_result;
 }
 
-struct CAIStateGroupBase { char pad0[4]; Inner1* PBrain; char pad8[4]; char sub[4]; };
+class CAIStateGroupBase { public: char pad0[4]; Inner1* PBrain; char pad8[4]; char sub[4]; };
 
 const float g_const = 8.0f;
 

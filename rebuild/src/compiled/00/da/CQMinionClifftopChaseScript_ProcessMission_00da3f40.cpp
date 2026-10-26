@@ -15,22 +15,22 @@
 //   one CWideString construction + SetQuestAsFailed. The fade colour is a by-value CRGBColour built in its argument slot.
 // Layout (retail = Ego_r.pdb - 0x14): MapKeeperSaidDialog +0x48, MissionFailed +0x49, MissionSucceeded +0x4a,
 //   IsIntroCSFinished +0x4d, ReasonForFailure +0x64.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);             // 0x0099B6B0
     ~CWideString();                                      // 0x0099B510
 };
-struct CRGBColour {                                      // B,G,R,A bytes (D3DCOLOR order)
+class CRGBColour { public:                                      // B,G,R,A bytes (D3DCOLOR order)
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { R = other.R; G = other.G; B = other.B; A = other.A; }
 };
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -117,7 +117,7 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual void v696();
     virtual void StopOverrideMusic(bool) const;   // slot 697 (+0xae4) 0x008912A0
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                    // 0x00CB7940
 };

@@ -3,8 +3,8 @@
 struct CEngineGlobals { bool m_answer; virtual bool QuerySlot9() { return m_answer; } };
 CEngineGlobals g_engine;
 CEngineGlobals* g_pEngineGlobals = &g_engine;
-struct CThing { long m_calls; bool m_last; virtual void Slot28(bool flag) { ++m_calls; m_last = flag; } };
-struct CTCJackShield {
+class CThing { public: long m_calls; bool m_last; virtual void Slot28(bool flag) { ++m_calls; m_last = flag; } };
+class CTCJackShield { public:
     CThing* ParentThing; long m_shieldCalls; bool m_shield;
     void EnableShield(bool enable) { ++m_shieldCalls; m_shield = enable; }
     void vfunc_6()

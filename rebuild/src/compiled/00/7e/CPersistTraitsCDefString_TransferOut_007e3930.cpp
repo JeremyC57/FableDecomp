@@ -9,9 +9,9 @@
 // Shape: the text is looked up into a named local first (homed in the dead value-argument slot, destroyed last), then
 //   `*out += CCharString("") + "\"" + text + "\"";` (right-to-left evaluation, four temporaries destroyed in reverse
 //   order), as the CWideString twin 0x0040E840. Speed-optimised (default) TU.
-struct CCharStringData;
-struct CPersistContext;
-struct CCharString {
+class CCharStringData;
+class CPersistContext;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -25,7 +25,7 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long Index;                                         // +0x00
 };
 

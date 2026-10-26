@@ -13,7 +13,7 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                                // 0x0099A2E0
 };
 

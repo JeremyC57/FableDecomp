@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing;
+class CThing;
 static CThing* g_baseArg = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase() { }
     unsigned char _base[0x3c];
     CTCPhysicsBase(CThing* thing) { g_baseArg = thing; }

@@ -12,7 +12,7 @@
 // Shape: the head is the inlined CMouseDX::UpdateAcquired (landed @ 0x00AB4830); `cmp byte ptr [Acquired],1` is `Acquired == true`;
 //   DIERR_INPUTLOST (0x8007001E) re-acquires and re-reads once. The DIMOFS_* switch is a byte index table; buttons map
 //   (dwData & 0x80) to the down/up event types; the timestamp is an unsigned DWORD scaled by 0.001f into the double Time.
-struct CSystemManager {
+class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
     bool HasInputFocus();                          // 0x009A4FB0
 };
@@ -64,7 +64,7 @@ enum EMouseEventType {
     MOUSE_EVENT_BUTTON7_UP = 24
 };
 
-struct CMouseEvent {
+class CMouseEvent { public:
     double          Time;                           // +0x00
     EMouseEventType Type;                           // +0x08
     float           Movement;                       // +0x0c

@@ -2,7 +2,7 @@
 // married, otherwise one verse per marriage fact, in MARRIED, DIVORCE, MURDER order; inline push_back growth path.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t = 0) : Text(t) {}
     CCharString(const CCharString& o) : Text(o.Text) {}
@@ -16,7 +16,7 @@ struct CCharStringVector {
     void push_back_inlined(const CCharString& x) { if (_M_finish != _M_end_of_storage) { *_M_finish = x; ++_M_finish; } else _M_insert_overflow(_M_finish, x); }
     CCharStringVector(int cap) : Store() { _M_start = _M_finish = Store; _M_end_of_storage = Store + cap; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool Married, Current, Divorced, Murdered;
     bool GetHeroHasMarried() const { return Married; }
     bool GetHeroHasCurrentMarriage() const { return Current; }

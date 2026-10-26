@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CScriptConversation {
+class CScriptConversation { public:
     void* vftable;
     int destroyed;
 };

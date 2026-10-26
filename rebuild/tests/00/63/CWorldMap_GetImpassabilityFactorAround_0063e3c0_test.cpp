@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 static const C2DCoordI g_BlockNeighbourOffsets[9] = {
     C2DCoordI(-1, -1), C2DCoordI(0, -1), C2DCoordI(1, -1), C2DCoordI(1, 0), C2DCoordI(1, 1),
     C2DCoordI(0, 1), C2DCoordI(-1, 1), C2DCoordI(-1, 0), C2DCoordI(0, 0) };
@@ -22,9 +22,9 @@ struct CFloatVector {
     void clear() { erase(begin(), end()); }
 };
 static int g_peeks = 0;
-struct CGameDefinitionManager { };
+class CGameDefinitionManager { public: };
 static CGameDefinitionManager g_defs;
-struct CWorldMap {
+class CWorldMap { public:
     const CGameDefinitionManager& PeekDefinitionManager() const { ++g_peeks; return g_defs; }
     bool IsPosPassable(const C2DCoordI& pos) const { return !(pos.X == 11 || pos.Y == 19); }   // column x=11 and row y=19 blocked
     void GetImpassabilityFactorAround(const C3DVector& pos, CFloatVector& factors, bool unused) const;

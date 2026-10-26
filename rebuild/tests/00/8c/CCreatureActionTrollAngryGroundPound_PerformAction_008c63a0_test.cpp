@@ -10,7 +10,7 @@ struct CSubObject {
     CSomeState* GetState() { return target; }
 };
 
-struct CCreatureAction_TrollAngryGroundPound {
+class CCreatureAction_TrollAngryGroundPound { public:
     char pad0[8];
     CSubObject sub;
     bool baseCalled;

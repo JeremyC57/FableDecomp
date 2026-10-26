@@ -1,6 +1,6 @@
 #include "engine/CCreatureActionBase.h"
 #include <cstdio>
-struct Sub; struct CThingManager; static int g_ran=0; static CThingManager* g_thingmgr=(CThingManager*)0x1234;
+struct Sub; class CThingManager; static int g_ran=0; static CThingManager* g_thingmgr=(CThingManager*)0x1234;
 static void gtm_sub(Sub* p){ (void)p; g_ran=1; }
 static CThingManager* GetThingManager(CCreatureActionBase* action){ gtm_sub(reinterpret_cast<Sub*>(reinterpret_cast<char*>(action)+8)); return g_thingmgr; }
 int main(){ CCreatureActionBase obj; CThingManager* r=GetThingManager(&obj);

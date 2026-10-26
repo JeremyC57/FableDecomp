@@ -5,7 +5,7 @@
 #include <cstring>
 #include <new>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 
 struct CPtrVector {                               // STLport vector<CTCShapeManager*> shape
     void** _M_start;
@@ -38,7 +38,7 @@ static CPtrVector gShapeManagers = { 0, 0, 0, 0 };
 
 struct CShapePtr { void* Data; void* Info; };
 
-struct CTCShapeManager {
+class CTCShapeManager { public:
     CThing* ParentThing;
     CShapePtr* PersistantShapes_start;
     CShapePtr* PersistantShapes_finish;

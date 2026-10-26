@@ -17,7 +17,7 @@ struct SDecalList { void* head; ~SDecalList() { Log('D'); } };
 struct SUpdateParameters { int body; ~SUpdateParameters() { Log('U'); } };
 struct CCharString { void* m_pStringData; ~CCharString() { Log('N'); } };
 struct CBase { virtual void v00() {} ~CBase() { Log('B'); } };
-struct CParticleSystem : CBase {
+class CParticleSystem : public CBase { public:
     SComponentMap Components;
     SParticleList Particles;
     SDecalList Decals;

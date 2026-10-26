@@ -1,17 +1,17 @@
 #include <cstdio>
 // behaviour test for CThingBuilding::DrawPreparePrimitivesForRendering (0x0082D080)
-struct CEnginePrimitivePrepareInfo { int id; };
+class CEnginePrimitivePrepareInfo { public: int id; };
 static int g_prepared = 0;
 static CEnginePrimitivePrepareInfo* g_last = 0;
 static bool g_baseResult = false;
 struct CTCGraphicAppearance {
     void PrepareForDraw(CEnginePrimitivePrepareInfo* info) { ++g_prepared; g_last = info; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     CTCGraphicAppearance* m_pGraphicAppearance;
     bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info) { return g_baseResult; }
 };
-struct CThingBuilding : CThingPhysical {
+class CThingBuilding : public CThingPhysical { public:
     bool DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info);
 };
 bool CThingBuilding::DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)

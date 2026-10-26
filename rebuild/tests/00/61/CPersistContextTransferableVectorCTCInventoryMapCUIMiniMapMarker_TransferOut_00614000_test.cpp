@@ -6,10 +6,10 @@ typedef unsigned long long u64;
 typedef unsigned __int64 u64;
 #endif
 
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
 static int g_strings = 0, g_emptyStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { ++g_strings; if (text[0] == 0 && length == -1) ++g_emptyStrings; }
     CCharString(const CCharString& other) : Text(other.Text) { ++g_strings; }

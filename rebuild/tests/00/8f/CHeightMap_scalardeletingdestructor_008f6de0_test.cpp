@@ -14,9 +14,9 @@ namespace N_0099a300 { struct CBaseClass {
     virtual ~CBaseClass() { g_events[g_count++] = 2; }
 }; } using N_0099a300::CBaseClass;
 
-struct CWorld;
-struct CMap;
-struct CHeightMapCell { unsigned char _cell[0x10]; };
+class CWorld;
+class CMap;
+class CHeightMapCell { public: unsigned char _cell[0x10]; };
 
 struct CHeightMapCellVector {
     CHeightMapCell* m_first; CHeightMapCell* m_last; CHeightMapCell* m_end;
@@ -24,10 +24,10 @@ struct CHeightMapCellVector {
     ~CHeightMapCellVector() { if (m_first) FreeBlock(m_first); }
 };
 
-struct CHeightMap;
+class CHeightMap;
 static CHeightMap* g_watched = 0;
 
-struct CHeightMap : CBaseClass {
+class CHeightMap : public CBaseClass { public:
     CWorld*              World;
     CMap*                Map;
     unsigned long*       WorldSeed;

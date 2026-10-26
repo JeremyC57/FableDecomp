@@ -17,9 +17,9 @@
 #include "engine/CPlayer.h"
 #include "engine/CFontBank.h"
 #include "fable_string.h"
-struct CEnginePrimitivePrepareInfo;
-struct C2DVector {float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){} C2DVector operator+(const C2DVector&v)const{return C2DVector(X+v.X,Y+v.Y);}};
-struct CRGBColour {unsigned char Blue,Green,Red,Alpha;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a=255){Red=r;Green=g;Blue=b;Alpha=a;}};
+class CEnginePrimitivePrepareInfo;
+class C2DVector { public:float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),Y(y){} C2DVector operator+(const C2DVector&v)const{return C2DVector(X+v.X,Y+v.Y);}};
+class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a=255){Red=r;Green=g;Blue=b;Alpha=a;}};
 enum EEngine2DLayer {NativeLayer67=67};
 struct PlayerManagerMethods:CPlayerManager {CPlayer&GetPlayer(long);bool GetSpiritScoreText(long,CWideString&)const;CRGBColour GetMultiplayerColour(long)const;};
 struct PlayerGuiMethods:CPlayerGui {void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);};

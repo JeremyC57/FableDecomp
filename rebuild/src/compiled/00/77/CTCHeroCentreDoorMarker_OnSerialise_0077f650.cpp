@@ -12,8 +12,8 @@
 // `transfer` slot; an early return keeps it in the frame); the loading arm transfers the enum too, then the legacy name with a
 // default built by an inline by-value getter (VC7.1 builds the named local, copies it into the argument and destroys it); the
 // symbol map is a named local fetched before the lookup pushes; the looked-up value is stored unconditionally after the lookup; `transfer` is unused (its slot holds the name).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const CCharString& other);                  // 0x0099EC30
@@ -28,7 +28,7 @@ static inline CCharString EmptyCCharString()
 
 enum EHeroCentreDoorType { HERO_CENTRE_DOOR_NONE = 0 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                     // +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -37,7 +37,7 @@ struct CPersistContext {
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
 };
 CSymbolMap* __fastcall GetDoorTypeSymbolMap();              // 0x0077F510

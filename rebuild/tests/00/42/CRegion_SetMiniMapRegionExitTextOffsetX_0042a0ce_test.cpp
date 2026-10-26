@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CRegion { int field0; };
+class CRegion { public: int field0; };
 static int g_arg = 0;
 extern "C" int __cdecl RegionExitTextHelper(int v) { g_arg = v; return v + 100; }
 void __fastcall CRegion_SetMiniMapRegionExitTextOffsetX(CRegion* self, int edx_dummy, int* out, int unused)

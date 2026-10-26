@@ -1,19 +1,19 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pText; };
-struct CRGBColour { unsigned long m_argb; };
-struct CChunkedFileSaver { int dummy; };
+class CCharString { public: const char* m_pText; };
+class CRGBColour { public: unsigned long m_argb; };
+class CChunkedFileSaver { public: int dummy; };
 static char g_trace[256];
 static void Log(const char* s) { std::strcat(g_trace, s); }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLONG(long v) { char b[32]; std::sprintf(b, "L%ld;", v); Log(b); }
     void WriteBOOL(bool v) { Log(v ? "T;" : "N;"); }
     void WriteColour(const CRGBColour& c) { char b[32]; std::sprintf(b, "C%lx;", c.m_argb); Log(b); }
     void WriteFLOAT(float v) { char b[32]; std::sprintf(b, "F%g;", v); Log(b); }
     void WriteNullTerminatedString(const CCharString& s) { Log("S"); Log(s.m_pText); Log(";"); }
 };
-struct CChunkedFileSuperChunk { void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
-struct C3DMeshFileMaterialChunk : CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public: void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
+class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk { public:
     long MaterialIndex; bool TwoSided; CRGBColour Ambient, Diffuse, Specular;
     float Shiny, ShinyStrength, Transparency; CCharString Name;
     void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const

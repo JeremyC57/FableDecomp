@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DCoordI { long X; long Y; };
-struct C2DBoxI {
+class C2DCoordI { public: long X; long Y; };
+class C2DBoxI { public:
     long TLX; long TLY; long BRX; long BRY;
     C2DBoxI(const C2DCoordI& centre, long radius);
 };

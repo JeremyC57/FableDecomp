@@ -2,11 +2,11 @@
 // and targeting exactly that thing; the targeted thing is only queried while wielding.
 #include <cstdio>
 
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     bool operator==(const CScriptThing& other) const { return id == other.id; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool wielding;
     int targetId;
     int targetQueries;

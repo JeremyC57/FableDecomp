@@ -32,7 +32,7 @@ struct CActionList {
     }
 };
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 static int g_order = 0, g_baseOrder = 0;
 struct CClickable {
     virtual ~CClickable() { ++g_baseDtors; g_baseOrder = ++g_order; }   // stub for 0x0055B760 (the tail jump)

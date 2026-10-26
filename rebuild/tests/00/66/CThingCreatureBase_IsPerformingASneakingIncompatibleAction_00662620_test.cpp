@@ -1,12 +1,12 @@
 // Behaviour test for CThingCreatureBase::IsPerformingASneakingIncompatibleAction (0x00662620)
 #include <cstdio>
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     bool m_incompatible;
     unsigned char m_finished;
     CCreatureActionBase(bool inc, unsigned char fin) : m_incompatible(inc), m_finished(fin) {}
     virtual bool IsIncompatibleWithSneaking() { return m_incompatible; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCreatureActionBase* m_pCurrentAction;
     long IsPerformingASneakingIncompatibleAction()
     {

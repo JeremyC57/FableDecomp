@@ -9,19 +9,19 @@
 // Shape: six calls in source order; `this` is still in ecx for the first (`mov ecx,esi` only from the second on).
 // Layout: CTCVillage.h is the PDB layout (task lists +0x94..+0xD0, 12 bytes each); the retail one-pointer lists put
 // them at +0x4C..+0x60, so a local model.
-struct CThing;
-struct CVillageTaskTorch;
-struct CVillageTaskHorn;
-struct CVillageTaskPatrol;
-struct CVillageTaskPickCrops;
-struct CVillageTaskSecuritySweep;
-struct CVillageTaskCarryCrate;
+class CThing;
+class CVillageTaskTorch;
+class CVillageTaskHorn;
+class CVillageTaskPatrol;
+class CVillageTaskPickCrops;
+class CVillageTaskSecuritySweep;
+class CVillageTaskCarryCrate;
 
 template<class T> struct CTaskList {        // retail std::list<CCountedPointer<T> >, sentinel pointer only
     void* _M_node;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*                                 __vftable;          // +0x00
     unsigned char                         _pad_0x04[0x48];
     CTaskList<CVillageTaskTorch>          TorchTasks;         // +0x4C

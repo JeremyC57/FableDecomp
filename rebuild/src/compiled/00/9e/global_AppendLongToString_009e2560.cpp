@@ -8,7 +8,7 @@
 // CCharString::operator+=(const CCharString&) @ 0x0099F0A0, CCharString::~CCharString @ 0x0099EAE0.
 // Shape: `ret 4` = two register arguments plus the value reference on the stack; the CCharString temporary is homed in the
 // dead argument slot (`lea ecx,[esp+8]`) once the reference has been read; speed-optimised TU (no pragma).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                              // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);           // 0x0099F0A0

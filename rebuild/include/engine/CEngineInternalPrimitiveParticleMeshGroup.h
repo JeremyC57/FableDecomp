@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
 #pragma pack(push, 1)
 struct CEngineInternalPrimitiveParticleMeshGroup {

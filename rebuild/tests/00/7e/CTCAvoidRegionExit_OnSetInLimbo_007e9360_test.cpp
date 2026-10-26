@@ -23,7 +23,7 @@ static int fails = 0;
 // there (`mov [esp+1Ch],eax`, `lea ecx,[esp+14h]`), so the frame holds only the 8-byte pair.
 // Fix (retry 10): equal_range has its same-TU body (lower/upper bound walks; with only the declaration the second
 // iterator was loaded late).
-struct CThing;
+class CThing;
 
 struct SExitWeightNode;                                     // map node: colour, parent, left, right, key +0x10, weight +0x14
 
@@ -99,7 +99,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void OnSetInLimbo(bool flag);                               // 0x00686910 (empty base implementation, virtual slot 16)
 };
 
-struct CTCAvoidRegionExit : CTCBase_Calls {
+class CTCAvoidRegionExit : public CTCBase_Calls { public:
     unsigned char _body[0x20 - 0x0c];                       // EntranceMarker, ExitMarker, NextFrameCheck
     void UpdateMaxExitWeight();                             // 0x007E9250
     __forceinline void RemoveFromExitWeights()

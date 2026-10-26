@@ -22,8 +22,8 @@
 //   as the Identity line's Ego_r symbol spells it (the explicit __vftable word became the base's vptr: same layout).
 #include "fable_string.h"
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime;
 struct CCountedScriptThingRuntime {
@@ -103,7 +103,7 @@ struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
 
 struct CSpawnedFuncWhisper;
 typedef void* CEntityScriptVTable;
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -205,7 +205,7 @@ struct CSpawnedFuncWhisper : CSpawnedFuncBaseRuntime {   // CSpawnedFunc1<CQ_Hob
                         CScriptThingRuntime par1);
 };
 
-struct CEntityScriptBase {                               // +0 vptr, +4 Game, +8 Me
+class CEntityScriptBase { public:                               // +0 vptr, +4 Game, +8 Me
     virtual void Init() = 0;                             // the entity-script slot this row overrides (only Init is modelled)
     CGameScriptInterface* Game;                          // +0x04
     CScriptThingRuntime Me;                              // +0x08

@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CAIBrain {}; struct CThingAICreature {}; struct CCharString {};
-struct C3DVector { float X, Y, Z; C3DVector& operator=(const C3DVector& o) { X = o.X; Y = o.Y; Z = o.Z; return *this; } };
-struct CThingCreatureBase { C3DVector pos; const C3DVector& GetPosition() { return pos; } };
+class CAIBrain { public:}; class CThingAICreature { public:}; class CCharString { public:};
+class C3DVector { public: float X, Y, Z; C3DVector& operator=(const C3DVector& o) { X = o.X; Y = o.Y; Z = o.Z; return *this; } };
+class CThingCreatureBase { public: C3DVector pos; const C3DVector& GetPosition() { return pos; } };
 static long g_frame = 321; long GFGetCurrentFrame() { return g_frame; }
-struct CWorld { static long GetFrameCount() { return GFGetCurrentFrame(); } };
+class CWorld { public: static long GetFrameCount() { return GFGetCurrentFrame(); } };
 struct CAIBrainModel { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
 static int g_base = 0;
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrainModel* PBrain; unsigned char _pad[0xc]; CWorld w;
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrainModel* PBrain; unsigned char _pad[0xc]; CWorld w;
     void Initialise(CAIBrain&, CThingAICreature&, long, long, const CCharString&) { ++g_base; } CWorld* GetPWorld() { return &w; } };
 struct CAIStateGroup_MazeTutorialBattleTeleport : CAIStateGroupBase { unsigned char _pad14[0xc]; long FrameOfLastTeleport; C3DVector LastTeleportPos;
     virtual void Initialise(CAIBrain&, CThingAICreature&, long, long, const CCharString&); };

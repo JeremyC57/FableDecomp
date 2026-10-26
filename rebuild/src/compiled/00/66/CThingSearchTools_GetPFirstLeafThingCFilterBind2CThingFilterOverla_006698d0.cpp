@@ -14,12 +14,12 @@
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on (the PDB bitset<274> and vector map
 // carry debug padding): UsingComponents +0x20 [PDB +0x20], ThingTypeFlags +0x6c [PDB +0x7c],
 // the state bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
     unsigned char _pad_0x44[0x60 - 0x44];
-    struct CTCPhysicsBase* PhysicsTC;                 // +0x60
+    class CTCPhysicsBase* PhysicsTC;                 // +0x60
     unsigned char _pad_0x64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
     unsigned char _pad_0x70[0x91 - 0x70];
@@ -59,15 +59,15 @@ struct CThingList {
 };
 
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
-struct CThingBuilding : CThing { enum { ThingListType = 3 }; };
+class CThingBuilding : public CThing { public: enum { ThingListType = 3 }; };
 
-struct CThingFilter_OverlappingSphere {
+class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
     __forceinline bool operator()(CThing* thing) const
@@ -84,24 +84,24 @@ struct CThingFilter_OverlappingSphere {
         return false;
     }
 };
-struct CThingFilter_PosInContainmentVolume {
+class CThingFilter_PosInContainmentVolume { public:
     C3DVector Pos;
     bool operator()(CThing* thing) const;       // 0x006A7B20
 };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
     template <class T> __forceinline bool operator()(T* thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
     template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

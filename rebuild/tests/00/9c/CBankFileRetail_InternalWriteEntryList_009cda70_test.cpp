@@ -13,11 +13,11 @@ typedef __int64 i64;
 typedef long long i64;
 #endif
 
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     std::vector<std::string> Log;
     unsigned long Pos;
     unsigned long GetPosition() { return Pos; }
@@ -41,7 +41,7 @@ struct CByteVector {
     long GetCount() const { return _M_finish - _M_start; }
     char* GetData() { return _M_finish - _M_start != 0 ? _M_start : (char*)this; }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long StateBlockCRC;
     unsigned long InfoSize;
     char*         InfoBuffer;
@@ -66,7 +66,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const { return m_pData[index]; }
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* begin() const { return m_pFirst; }

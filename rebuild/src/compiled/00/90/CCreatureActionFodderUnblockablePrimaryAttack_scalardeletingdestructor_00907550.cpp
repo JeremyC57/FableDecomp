@@ -1,4 +1,4 @@
-struct CCreatureAction_FodderUnblockablePrimaryAttack {
+class CCreatureAction_FodderUnblockablePrimaryAttack { public:
     void* vftable;
 };
 

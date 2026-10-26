@@ -3,7 +3,7 @@
 // Retail 0x0051bb80: __fastcall(self in ecx, src in edx)
 
 // CCharString: this-call copy-ctor helper (0x514eb0) -> only 'this' in ecx, src on stack
-struct CCharString {
+class CCharString { public:
     char pad[0x0c];
     void CopyFrom(void* src);   // thiscall: this in ecx, src pushed
 };

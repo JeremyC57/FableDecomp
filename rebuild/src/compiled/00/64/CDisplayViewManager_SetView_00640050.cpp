@@ -8,7 +8,7 @@ struct CViewBase {
     virtual void AddRef();                         // slot 1
 };
 
-struct CDisplayViewManager {                       // engine/CDisplayViewManager.h: CCountedPointer<NDisplayView::CViewBase>
+class CDisplayViewManager { public:                       // engine/CDisplayViewManager.h: CCountedPointer<NDisplayView::CViewBase>
     CViewBase* PCurrentView_Data;                  // +0x00
     void*      PCurrentView_Info;                  // +0x04
     void ResetCurrentView(CViewBase* view);        // 0x006400B0 (CCountedPointer::Reset)

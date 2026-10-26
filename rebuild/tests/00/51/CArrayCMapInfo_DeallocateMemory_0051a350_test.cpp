@@ -10,7 +10,7 @@ static int g_freed = 0;
 static int g_destroyed = 0;
 static void TestFree(void* p) { ++g_freed; std::free(p); }
 
-struct CMapInfo {                                       // 0x48 bytes
+class CMapInfo { public:                                       // 0x48 bytes
     unsigned char _body[0x48];
 };
 struct SCopyTag { SCopyTag() { } };
@@ -20,7 +20,7 @@ CMapInfo* __fastcall CopyDown(CMapInfo* first, CMapInfo* last, CMapInfo* result,
                                    const SCopyTag& category, long* distance);   // 0x005150E0
 void __fastcall DestroyRange(CMapInfo* first, CMapInfo* last, const __false_type& tag);           // 0x00515250
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long capacity() const { return (unsigned long)(_M_end_of_storage - _M_start); }
     void erase(T* f, T* l)

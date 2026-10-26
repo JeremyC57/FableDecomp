@@ -1,4 +1,4 @@
-struct CPlayerGui {
+class CPlayerGui { public:
   char pad0[0x0d];
   unsigned char b0d;
   unsigned char b0e;

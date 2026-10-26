@@ -2,13 +2,13 @@
 // null, both strings default-constructed, clip distance and material index zero.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CThingSoundEmitter;
+class CThing { public: int id; };
+class CThingSoundEmitter;
 static CThing* g_baseParent = 0;
 static int g_setPItemCalls = 0;
 static int g_stringCtors = 0;
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     virtual ~CTCBase() { }
     CTCBase(CThing* parent) : ParentThing(parent) { g_baseParent = parent; }
@@ -24,12 +24,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThingSoundEmitter* item) : CBaseIntelligentPointer() { SetPItem((void*)item); }
 };
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { ++g_stringCtors; }
 };
 
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     CIntelligentPointer PAttachedEmitter;
     CCharString         VoiceName;
     CCharString         ExtraTag;

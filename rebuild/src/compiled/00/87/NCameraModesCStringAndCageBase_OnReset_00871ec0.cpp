@@ -45,7 +45,7 @@ public:
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
 };
 class CThingGameObject : public CThing { };
-struct CGameCameraManager;
+class CGameCameraManager;
 namespace NCameraModes {
 class CBase {
 public:

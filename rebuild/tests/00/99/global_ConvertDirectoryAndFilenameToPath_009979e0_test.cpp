@@ -2,11 +2,11 @@
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ConvertDirectoryAndFilenameToPath
 // Layout: string object is one pointer; retail stack locals +8 and +12.
-struct CWideString {void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);CWideString& operator=(const CWideString&);};
+class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const unsigned short*);
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 extern const unsigned short g_Slash_0122de78[];
-struct CAFile {static CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString&,const CWideString&);};
+class CAFile { public:static CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString&,const CWideString&);};
 CWideString __fastcall CAFile::ConvertDirectoryAndFilenameToPath(const CWideString& directory,const CWideString& filename){
  CWideString dir(directory),file(filename);
  int length; while((length=dir.GetLength(),dir.GetAsCharArray()[length])=='\\'){CWideString temp;temp.SetAsSubString(dir.GetAsCharArray(),dir.GetLength()-1);dir=temp;}

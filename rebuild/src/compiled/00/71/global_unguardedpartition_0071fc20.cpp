@@ -9,7 +9,7 @@
 // Element: the landed _Adjust_heap 0x0071F650 model.  Shape: the pivot priority is read once (cx); STLport
 //   `iter_swap` is inlined as `_Tp tmp = *a; *a = *b; *b = tmp;` -- VC7.1 parks tmp's last two words in the
 //   pivot's dead argument slots (`[esp+18h]` / `[esp+1Ch]`).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -25,7 +25,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

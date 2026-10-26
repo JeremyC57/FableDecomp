@@ -20,7 +20,7 @@
 //   temporary lands in the dead flag slot and the result rides in bl across the release;
 //   the restricted `return false` is written last (its block is laid out last).
 class CCharString;
-struct CAnimationEntry;
+class CAnimationEntry;
 class CAnimFilterBase {                         // vtable 0x0122FFCC
 public:
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
@@ -37,12 +37,12 @@ public:
     bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -52,11 +52,11 @@ template <class T> struct CHeldDef {            // the def copied out of the esc
     ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 
@@ -64,7 +64,7 @@ struct CCreatureModeBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual const CAnimFilterBase& GetAnimFilter_slot4();       // slot 4 (+0x10)
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
 };
 

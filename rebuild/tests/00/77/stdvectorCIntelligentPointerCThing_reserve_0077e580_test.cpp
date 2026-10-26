@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPtr {
     CThing* PItem;
     unsigned int pad;

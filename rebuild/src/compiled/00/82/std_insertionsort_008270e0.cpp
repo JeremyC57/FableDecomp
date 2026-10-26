@@ -9,7 +9,7 @@
 //   copy-constructed in its argument slot (`inc [Info]`) and the comparator).
 // Shape: STLport 4.6 _algo.c __insertion_sort (landed 0x00ADBE70 model) with __linear_insert left out of line:
 //   `if (first == last) return; for (i = first + 1; i != last; ++i) __linear_insert(first, i, *i, comp);`.
-struct CCPPointerInfo {                                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                                    // CCountedPointer's shared block
     long  RefCount;                                        // +0x0
     void  (__fastcall* DeleteFunc)(void* data);            // +0x4
     void* Data;                                            // +0x8

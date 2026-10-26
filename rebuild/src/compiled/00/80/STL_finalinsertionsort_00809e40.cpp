@@ -12,12 +12,12 @@
 //   __unguarded_insertion_sort(first + 16, last, comp); } else __insertion_sort(first, last, comp);` -- both arms open
 //   with the same comparator copy, so VC7.1 hoists its ten dwords above the branch and stores the CompareInXYPlane byte
 //   per arm (bl / dl).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

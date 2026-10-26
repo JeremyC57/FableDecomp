@@ -7,7 +7,7 @@
 // Tiny-body shape `HasIndex` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     unsigned char _pad[0x44];
     long m_index;                          // +0x44
     unsigned char IsToUseFirstPersonTargetingMode();                  // a byte result: a `bool` return would zero eax first

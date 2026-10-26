@@ -3,14 +3,14 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0xf5 =
 // bit 21 of the bitset dword at +0x3c, landed shape of 0x00849320), CTCNymph::StartFlyingAround(long) @ 0x0080F5E0, CCreatureAction_NymphTeleportLimboBase::DoEffect
 // @ 0x008C9FE0 (non-virtual). Shape: one `push ecx` frame for the lookup key; the action rides in edi, the map in esi.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -33,11 +33,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCNymph {
+class CTCNymph { public:
     void StartFlyingAround(long duration);  // 0x0080F5E0
 };
 
-struct CCreatureAction_NymphTeleportLimboBase {
+class CCreatureAction_NymphTeleportLimboBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04
@@ -47,7 +47,7 @@ struct CCreatureAction_NymphTeleportLimboBase {
     long m_elapsed;                         // +0x1c
     void DoEffect();                        // 0x008C9FE0
 };
-struct CCreatureAction_NymphTeleportIntoLimbo : CCreatureAction_NymphTeleportLimboBase {
+class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureAction_NymphTeleportLimboBase { public:
     virtual void PerformAction();
 };
 

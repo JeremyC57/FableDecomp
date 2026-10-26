@@ -11,7 +11,7 @@
 //   order (struct_layouts_egor.tsv). Local model: no engine/ header exists for these def classes.
 #pragma optimize("s", on)
 #pragma pack(push, 1)                                   // PDB: sizeof(CEngineGraphic) == 0xe, a natively packed POD
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                            // +0x0
     float AnimStep;                                     // +0x4
     float RenderSizeX;                                  // +0x8
@@ -19,12 +19,12 @@ struct CEngineGraphic {
     unsigned char Type;                                 // +0xd
 };
 #pragma pack(pop)
-struct CThingBaseDef {
+class CThingBaseDef { public:
     unsigned char _base[0x70];                          // CParentDefClassBase + CThingBaseDef fields
     CThingBaseDef& operator=(const CThingBaseDef&);     // 0x00463950
 };
 enum EReverbEnvironmentType { EReverbEnvironmentType_Force32 = 0x7fffffff };
-struct CThingBuildingDef : CThingBaseDef {
+class CThingBuildingDef : public CThingBaseDef { public:
     long DieOffTimer;                                   // +0x70
     unsigned long SimBuildingDef;                       // +0x74
     CEngineGraphic Graphic;                             // +0x78

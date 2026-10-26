@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 // Minimal value models: strings as short owned buffers; sorted-array "map"/"set" with find/insert semantics.
-struct CWideString {
+class CWideString { public:
     wchar_t Text[48];
     CWideString() { Text[0] = 0; }
     CWideString(const wchar_t* t) { int i = 0; while (t[i] && i < 47) { Text[i] = t[i]; ++i; } Text[i] = 0; }
@@ -15,7 +15,7 @@ struct CWideString {
 };
 static CWideString operator+(const CWideString& a, const CWideString& b)
 { CWideString r(a); long n = r.GetLength(); int i = 0; while (b.Text[i] && n < 47) r.Text[n++] = b.Text[i++]; r.Text[n] = 0; return r; }
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString() { Text[0] = 0; }
     CCharString(const char* t) { std::strncpy(Text, t, 31); Text[31] = 0; }

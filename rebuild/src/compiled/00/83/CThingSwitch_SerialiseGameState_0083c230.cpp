@@ -9,18 +9,18 @@
 // TriggerableObjectScriptName +0xf8; retail sits 0x18 lower (+0xd0 / +0xd4 / +0xd8 / +0xdc / +0xe0). CPersistContext::Mode +0x18.
 // Shape: as the landed CThingPhysicalSwitch sibling; each float default is a `0.0f` temporary built in the dead context
 // argument slot (zero stored after the pushes); the EnvironmentDef address is formed by advancing `this` as its last use.
-struct CCharString { void* m_pData; };
-struct CPersistContext {
+class CCharString { public: void* m_pData; };
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                  // +0x18 EMode
     void Transfer(const char* name, float* value, const float& defaultValue);   // 0x00410620
     void Transfer(const char* name, CCharString* value);                        // 0x00411010
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad00[0xd0];
     bool SerialiseGameState(CPersistContext* context);   // 0x006A5AF0
 };
-struct CThingSwitch : CThingPhysical {
+class CThingSwitch : public CThingPhysical { public:
     float         TriggerRadius;                         // +0xd0
     CCharString   EnvironmentDef;                        // +0xd4
     float         TimeToChangeEnvironmentDef;            // +0xd8

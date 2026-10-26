@@ -4,7 +4,7 @@ static int g_resume = -1, g_wake = 0, g_kill = 0, g_base = 0; static unsigned lo
 struct CTCTargetedFlags { unsigned long m_flags; void SetFlags(unsigned long f) { g_setFlags = f; m_flags = f; }
     void ClearFlag(unsigned long flag) { if (m_flags & flag) SetFlags(m_flags ^ flag); } };
 struct CPhysicsObject { void Wake() { ++g_wake; } };
-struct CThing {
+class CThing { public:
     unsigned char m_state; bool hasTC9; CTCTargetedFlags tc9; CPhysicsObject* PPhysics; unsigned char m_flags91;
     void SetSuspendAnimation(bool s, long) { g_resume = s; }
     void Kill(bool) { ++g_kill; }

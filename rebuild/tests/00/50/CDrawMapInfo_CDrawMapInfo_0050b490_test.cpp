@@ -2,8 +2,8 @@
 // Behaviour test for CDrawMapInfo::CDrawMapInfo(const CDrawMapInfo&) (0x0050B490): every member copied,
 // the name through its copy constructor.
 static int g_copies = 0;
-struct CCharString { const char* p; CCharString(const char* s) : p(s) { } CCharString(const CCharString& o) : p(o.p) { ++g_copies; } };
-struct CDrawMapInfo {
+class CCharString { public: const char* p; CCharString(const char* s) : p(s) { } CCharString(const CCharString& o) : p(o.p) { ++g_copies; } };
+class CDrawMapInfo { public:
     bool Valid, Loadable, GameLoadable; void* PMap; CCharString StaticMeshName;
     long PosX, PosY; unsigned long UID; long ExtentsX, ExtentsY;
     CDrawMapInfo(const char* n) : StaticMeshName(n) { }

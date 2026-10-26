@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_ServeFood::MakeFood (0x00923510): same steps over mocks.
 #include <cstdio>
 #include <cstring>
-struct CThing { unsigned char flags91; int components; CThing* creator; CThing* owner; float x, y, z; long player; long def; };
+class CThing { public: unsigned char flags91; int components; CThing* creator; CThing* owner; float x, y, z; long player; long def; };
 static CThing g_made;
 static long DefIndex(const char* name) { return std::strcmp(name, "OBJECT_VILLAGE_TAVERN_APPLE") == 0 ? 42 : -1; }
 static CThing* Create(long def, const float* pos, long player)

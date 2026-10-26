@@ -3,14 +3,14 @@
 #include <cstdio>
 long g_framesPerSecond = 25;
 float g_epsilon_0129ba3c = 1e-4f;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -35,15 +35,15 @@ struct CAnimFrameTime {
     long  Reserved2;
     CAnimFrameTime() : Seconds(0), Reserved1(0), Reserved2(0) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     float PlayFraction; int Updates; float LastSeconds; long LastR1, LastR2;
     void UpdateFrameLogic(const CAnimFrameTime& time) { ++Updates; LastSeconds = time.Seconds; LastR1 = time.Reserved1; LastR2 = time.Reserved2; PlayFraction += 0.5f; }
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing Anim;
     CAnimateThing& GetAnimation() { return Anim; }
 };
-struct CTCCupboard {
+class CTCCupboard { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool Animating;

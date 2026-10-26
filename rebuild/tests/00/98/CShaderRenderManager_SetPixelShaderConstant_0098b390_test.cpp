@@ -1,7 +1,7 @@
 // Behaviour test for 0x0098B390 CShaderRenderManager::SetPixelShaderConstant: known name, unknown name and a
 // name whose index is -1 (host name map + constant table).
 #include <cstdio>
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 struct NameMap { int ids[8]; long idx[8]; int n; long* find(int id) { for (int i = 0; i < n; ++i) if (ids[i] == id) return &idx[i]; return 0; } };
 struct Mgr {
     NameMap names; C4DVector table[8]; long tableSize; unsigned int UpdateFlags;

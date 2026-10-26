@@ -12,16 +12,16 @@
 //   Local model: no engine/ header exists for CHitLocationDef or CPersistContext.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CPhysicalPrimitiveInit { unsigned long _data[2]; };
+class CPhysicalPrimitiveInit { public: unsigned long _data[2]; };
 enum EActionRegisteredType { EActionRegisteredType_Force32 = 0x7fffffff };
 enum EHitLocationFlags { EHitLocationFlags_Force32 = 0x7fffffff };
 enum EHitLocationCodelet { EHitLocationCodelet_Force32 = 0x7fffffff };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long&);                               // 0x00431102
     void Transfer(bool&);                               // 0x0043314A
     template<class T> void Transfer(T&);                // instances 0x00458833 / 0x004586EB / 0x0045878F
 };
-struct CHitLocationDef {
+class CHitLocationDef { public:
     virtual void VFunc00();                             // CDefClassBase vtable
     unsigned char _base[0x38];                          // +0x04..+0x3b
     CPhysicalPrimitiveInit PhysicalPrimitive;           // +0x3c

@@ -4,10 +4,10 @@
 //   VC7.1 overlays its word with the intelligent-pointer temporary, the GetInterface key and the bone-name string (as
 //   retail); GetInterface out-store as one ternary.
 // Callees: GetSubDef 0x00669580 (same-TU stand-in body), CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPosition 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020, CTCDParticleEmitter::AttachToThing 0x006E0BE0.
-struct CTCBase;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -37,12 +37,12 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -56,7 +56,7 @@ template <class T> struct CDefHolder {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool GetEffectFromString(const CCharString& name, long* type);   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
@@ -72,7 +72,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();
@@ -86,7 +86,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -106,7 +106,7 @@ struct CThing {
     }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880

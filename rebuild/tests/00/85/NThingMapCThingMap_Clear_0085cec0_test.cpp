@@ -2,7 +2,7 @@
 // cell heads zeroed, NoThings reset; the unbounded level (Size -1) is one cell.
 #include <cstdio>
 
-struct CTCMapwho { bool InMapwho; };
+class CTCMapwho { public: bool InMapwho; };
 struct CMapwhoNode { CTCMapwho* PMapwho; CMapwhoNode* PNext; CMapwhoNode* PPrevious; };
 struct CThingMapCell { CMapwhoNode* PFirstNode; };
 struct CMapwhoLevelInfo { long Size; long ExtentsX; };

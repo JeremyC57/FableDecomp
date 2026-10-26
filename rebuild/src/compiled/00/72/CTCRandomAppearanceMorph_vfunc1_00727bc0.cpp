@@ -8,11 +8,11 @@
 // through CPersistContext::Transfer<long>(name, value, default) @ 0x004106F0, with a zero
 // default built in a dword stack temporary. The second argument is not used by this body. The member name is taken from the
 // persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_004106f0(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x004106F0
 };
 
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     unsigned char _pad[0x14];        // after the vptr; members not touched here
     long m_Seed;                        // +0x18
     virtual void v00();

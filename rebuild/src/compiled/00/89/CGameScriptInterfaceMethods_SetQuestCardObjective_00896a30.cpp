@@ -19,7 +19,7 @@ extern QuestManagerMethods* g_QuestManager; //013B89FC
 struct QuestCardMethods:CTCQuestCard{bool IsVignette()const;}; //007022E0 reads native Def+59; donor+5D differs due vector stride
 struct SoundPlayerMethods:CTCBase{unsigned long PlaySoundEvent(const CCharString&,bool,bool,bool,long);}; //0066BD00 returns sound handle, forwards to internal0066B120
 __forceinline void PlayLogCue(SoundPlayerMethods* sound){CCharString cue("LOG_ENTRY",-1);sound->PlaySoundEvent(cue,false,true,false,-1);}
-struct CThing;bool __fastcall IsThingAlive(CThing* const&); //0043DBD0 actual pointer validity helper
+class CThing;bool __fastcall IsThingAlive(CThing* const&); //0043DBD0 actual pointer validity helper
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetQuestCardObjective(const CCharString&,const CCharString&,const CCharString&,const CCharString&)const;};
 void CGameScriptInterfaceMethods::SetQuestCardObjective(const CCharString& quest,const CCharString& objective,const CCharString& region,const CCharString& extra)const{
  if(g_QuestManager->SetQuestCardObjective(quest,objective,region,extra)&&g_QuestManager->IsQuestCardActive(quest)){

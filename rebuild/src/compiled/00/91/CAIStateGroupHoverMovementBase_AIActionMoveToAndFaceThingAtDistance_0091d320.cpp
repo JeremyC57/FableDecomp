@@ -20,20 +20,20 @@ class C3DVector { public:
     C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: Dead
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

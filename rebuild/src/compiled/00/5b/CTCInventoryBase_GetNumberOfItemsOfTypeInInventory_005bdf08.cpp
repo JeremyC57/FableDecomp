@@ -13,20 +13,20 @@
 // no-sub-def release tails. The end pointer is a named local (ebx) that feeds both the search and the "not found" compare.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long m_refCount;                             // +0x04
 };
-template <class T> struct CDefPointer {          // the out slot the definition lookups fill (counted reference handed over)
+template <class T> class CDefPointer { public:          // the out slot the definition lookups fill (counted reference handed over)
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CInventoryItemDef : CDefPointeeBase {
+class CInventoryItemDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long InventoryCategory;                      // +0x3c
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryItemDef>* out);   // 0x005BADE1
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -42,7 +42,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CInventoryItemDef
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -58,12 +58,12 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
 namespace NInventory {
-struct CCategory {                               // 0x2C bytes
+class CCategory { public:                               // 0x2C bytes
     unsigned char _body[0x2C];
     long GetNumberOfItemsOfTypeInCategory(long itemType);   // 0x005BDE96
 };
@@ -75,7 +75,7 @@ struct CCategoryVector {                         // std::vector<CCategory> (12 b
     CCategory* begin() { return _M_start; }
     CCategory* end() { return _M_finish; }
 };
-struct CTCInventoryBase {                        // retail 0x130 bytes
+class CTCInventoryBase { public:                        // retail 0x130 bytes
     unsigned char   _pad00[0x20];
     CCategoryVector Categories;                  // +0x20
     long GetNumberOfItemsOfTypeInInventory(long itemType);

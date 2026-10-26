@@ -3,8 +3,8 @@
 #include <cstring>
 static char g_seq[64] = "";
 static bool g_ok = true; static long g_index = 0, g_alignment = 0, g_size = 0, g_freedIndex = -1; static void* g_freedPool = 0;
-struct CHandleBasedMemoryPool; struct CPoolHandle { CHandleBasedMemoryPool* m_pPool; long m_index; };
-struct CHandleBasedMemoryPool { bool InternalAllocate(long& index, long alignment, long size) { std::strcat(g_seq, "A"); g_alignment = alignment; g_size = size; if (g_ok) index = g_index; return g_ok; } void Free(long index) { std::strcat(g_seq, "F"); g_freedPool = this; g_freedIndex = index; }
+class CHandleBasedMemoryPool; struct CPoolHandle { CHandleBasedMemoryPool* m_pPool; long m_index; };
+class CHandleBasedMemoryPool { public: bool InternalAllocate(long& index, long alignment, long size) { std::strcat(g_seq, "A"); g_alignment = alignment; g_size = size; if (g_ok) index = g_index; return g_ok; } void Free(long index) { std::strcat(g_seq, "F"); g_freedPool = this; g_freedIndex = index; }
     bool Allocate(CPoolHandle& handle, long alignment, long size) { if (InternalAllocate(size, alignment, size)) { if (handle.m_pPool) { handle.m_pPool->Free(handle.m_index); handle.m_pPool = 0; handle.m_index = -1; } handle.m_pPool = this; handle.m_index = size; return true; } return false; } };
 
 int main() {

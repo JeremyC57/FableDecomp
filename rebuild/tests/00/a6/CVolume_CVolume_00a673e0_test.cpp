@@ -10,7 +10,7 @@ struct CFakeVolume {
 };
 static int g_base;
 namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     CFakeVolume* m_pVolume;
     CVolume() : m_pVolume(0) {}
     CVolume(const CVolume& other) : m_pVolume(other.m_pVolume) { if (m_pVolume) m_pVolume->AddRef(); }

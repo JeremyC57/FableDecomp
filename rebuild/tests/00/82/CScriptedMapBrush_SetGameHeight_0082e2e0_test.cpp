@@ -1,12 +1,12 @@
 // Behaviour test for CScriptedMapBrush::SetGameHeight (0x0082E2E0): writes the cell inside the game area only.
 #include <cstdio>
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     bool Contains(long x, long y) const { return x >= TLX && x < BRX && y >= TLY && y < BRY; }
     long Width() const { return BRX - TLX; }
 };
 struct CScriptedMapCell { float Height; unsigned long Theme[3]; unsigned char ThemeBlend[4]; };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     CScriptedMapCell* Cells;
     C2DBoxI GameArea;
     float GetGameHeight(long x, long y) const

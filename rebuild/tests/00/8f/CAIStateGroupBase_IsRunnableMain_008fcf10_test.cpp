@@ -1,9 +1,9 @@
 // Behaviour test for 0x008FCF10 CAIStateGroupBase::IsRunnableMain: Enabled && IsRunnable().
 #include <cstdio>
 
-struct CAIBrain;
+class CAIBrain;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain*     PBrain;
     unsigned char ScriptAIPriority[4];
     void*         Name_PStringData;

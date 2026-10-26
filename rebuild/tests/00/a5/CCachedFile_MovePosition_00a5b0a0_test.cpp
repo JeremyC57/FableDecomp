@@ -20,7 +20,7 @@ static int fails = 0;
 //          copy in the dead `offset` slot; no EH frame, so the message is never destroyed. Both tests spell `Position + offset`
 //          and the store is `Position += offset`: the first sum is only sign-tested (`add ecx,eax ; jns`), the second re-reads
 //          Position into edi across GetLength. A shared `position` local CSEs the sum and drops the frame to 4 bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -38,17 +38,17 @@ public:
     EFileExceptionType Type;
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
-struct CAFile {
+class CAFile { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual long GetLength();                   // slot 9 (+0x24)
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     T* operator->() const { return m_pObject; }
 };
-struct CCachedFile {
+class CCachedFile { public:
     void*                   _vptr;              // +0x00
     long                    Position;           // +0x04
     long                    BufferStartPosition;// +0x08

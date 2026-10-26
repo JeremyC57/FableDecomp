@@ -7,8 +7,8 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() {} };
-struct CCPPointerInfo { unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() {} };
+class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void __fastcall DeleteImp(void*) { ++g_deleted; }
 struct CCountedScriptImp {
@@ -21,7 +21,7 @@ struct CCountedScriptImp {
         Data = 0; Info = 0;
     }
 };
-struct CScriptThing : CBaseClass { CCountedScriptImp PImp; CScriptThing() {} virtual ~CScriptThing() {} };
+class CScriptThing : public CBaseClass { public: CCountedScriptImp PImp; CScriptThing() {} virtual ~CScriptThing() {} };
 struct __false_type { __false_type() {} };
 struct CScriptThingVector {
     CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
@@ -56,7 +56,7 @@ struct CThingVector {
     unsigned long size() const { return _M_finish - _M_start; }
     CThing_Retail* operator[](unsigned long n) const { return _M_start[n]; }
 };
-struct CThingFilter_None { CThingFilter_None() {} };
+class CThingFilter_None { public: CThingFilter_None() {} };
 struct CThing_Retail {
     int Id;
     CScriptThing GetScriptThing()
@@ -70,7 +70,7 @@ struct CThing_Retail {
 };
 static CThing_Retail g_creatures[3];
 static int g_creatureCount = 3;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_None& filter, CThingVector& out)
     {
         out._M_start = (CThing_Retail**)malloc(sizeof(CThing_Retail*) * 4);
@@ -80,7 +80,7 @@ struct CThingSearchTools {
     }
 };
 struct CWorld_Retail { unsigned char _pad00[0x20]; CThingSearchTools* ThingSearchTools; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual long GetAllCreaturesExcludingHero(CScriptThingVector& things) const;
     virtual ~CGameScriptInterface() {}
     CWorld_Retail* World;

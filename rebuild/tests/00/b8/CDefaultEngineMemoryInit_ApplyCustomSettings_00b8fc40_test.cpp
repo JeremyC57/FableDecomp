@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B8FC40 CDefaultEngineMemoryInit::ApplyCustomSettings: non-negative custom values override the
 // defaults, negative ones (the "unset" marker) leave them.
 #include <cstdio>
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     int LandscapePoolSize; float LandscapePhysicalMemoryRatio; int LandscapeVirtualMemoryMinSize, MeshPoolSize, MeshStatsPoolSize;
     float MeshPhysicalMemoryRatio; int HiresTextureMemory, PhysicsMeshPoolSize, AnimationPoolSize, ClothPoolSize;
 };

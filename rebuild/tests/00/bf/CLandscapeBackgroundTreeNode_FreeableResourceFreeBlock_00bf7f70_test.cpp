@@ -3,22 +3,22 @@
 #include <new>
 // Behaviour test for CLandscapeBackgroundTreeNode::FreeableResourceFreeBlock (0x00BF7F70).
 static int g_deleted = 0, g_freed = 0, g_released = 0, g_split = 0;
-struct CMovableResource {
+class CMovableResource { public:
     virtual ~CMovableResource() { ++g_deleted; }
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char _pad00[0x5c];
     bool          MemoryFreeingLocked;          // +0x5c
 };
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block) { ++g_freed; }
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char                  _pad[0x6b0];
     CEngineLandscapeMemoryManager* MemoryManager;   // +0x6b0
 };
 CEngineLandscapeRenderer* g_pLandscapeRenderer;
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(void*) { ++g_released; }
 };
 struct CLandscapeBackgroundLoadTask {           // 16 bytes, no vtable; non-virtual ??_G @ 0x00BF8C10 (landed model)
@@ -45,12 +45,12 @@ struct CLODLoadInfo {                           // 16 bytes
 };
 struct CLandscapeBackgroundSubNodeBase : CMovableResource {
 };
-struct CLandscapeBackgroundPatch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     unsigned char _pad04[0x114];
     unsigned char LODBand;                      // +0x118
 };
-struct CLandscapeBackgroundSubNodeSplitBranch;
-struct CLandscapeBackgroundTreeNode : CMovableResource {
+class CLandscapeBackgroundSubNodeSplitBranch;
+class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     void*                            DynamicBuildTemplate;    // +0x04
     void*                            GPUUpdateTask;           // +0x08
     CLODLoadInfo                     LODLoadInfo[8];          // +0x0c

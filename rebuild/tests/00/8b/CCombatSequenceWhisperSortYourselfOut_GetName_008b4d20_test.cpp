@@ -2,8 +2,8 @@
 #include <cstring>
 
 // Mirror the source's declared types.
-struct CCharString
-{
+class CCharString
+{ public:
     void* buf;
     CCharString(const char* s, int len);
 };

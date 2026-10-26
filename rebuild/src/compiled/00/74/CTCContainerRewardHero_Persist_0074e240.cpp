@@ -8,7 +8,7 @@
 // Shape: the flag is held in ebx across the conditional transfer; the `true` default is a one-byte
 // temporary bound to the const reference and homed in the flag's own argument slot
 // (`mov byte ptr [esp+20h],1`) although the flag is still live in ebx; the base hook comes last.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
@@ -18,7 +18,7 @@ struct CTCContainer_Calls {                                 // retail 0x18 bytes
     unsigned char _pad04[0x14];                             // +0x04 CTCBase, ContainerItems
 };
 
-struct CTCContainerRewardHero : CTCContainer_Calls {        // vtable 0x01269424
+class CTCContainerRewardHero : public CTCContainer_Calls { public:        // vtable 0x01269424
     bool Enabled;                                           // +0x18
     bool CreateObjectsThatTimeOut;                          // +0x19
     virtual void Persist(CPersistContext* context, bool flag);

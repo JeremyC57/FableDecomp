@@ -2,14 +2,14 @@
 // Behaviour test for CTCInventoryBase::GetResurrectionItemInInventory (0x005BF77D): same body as src/, with the item
 // listing, def lookups, object creation and interfaces stubbed and recorded.
 static int g_destroyed = 0;
-struct CDefClassBase { long RefCount; void Destroy() { ++g_destroyed; } };
-template <class T> struct CDefPointer {
+class CDefClassBase { public: long RefCount; void Destroy() { ++g_destroyed; } };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CResurrectionItemDef : CDefClassBase { };
+class CResurrectionItemDef : public CDefClassBase { public: };
 static CResurrectionItemDef g_resDef;
 struct CThingDef : CDefClassBase {
     bool resurrects;
@@ -17,7 +17,7 @@ struct CThingDef : CDefClassBase {
     { if (!resurrects) return false; ++g_resDef.RefCount; out->Object = &g_resDef; return true; }
 };
 static CThingDef g_defs[4];
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) { ++g_defs[index].RefCount; out->Object = &g_defs[index]; return true; }
 };
 static CDefinitionManager g_manager;
@@ -32,7 +32,7 @@ public:
 };
 static CThing g_objects[4];
 static int g_created = 0;
-namespace NInventory { struct CItem { long DefIndex; long Count; }; }
+namespace NInventory { class CItem { public: long DefIndex; long Count; }; }
 struct CItemVector {
     NInventory::CItem* _M_start; NInventory::CItem* _M_finish; NInventory::CItem* _M_end_of_storage;
     CItemVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }

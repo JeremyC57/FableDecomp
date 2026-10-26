@@ -6,9 +6,9 @@
 // Callees: CIntelligentPointer<const CThing>::CIntelligentPointer(const CIntelligentPointer&) @ 0x004A9730; __ftol2.
 // Shape: the STL member-template converting constructor `first(p.first), second(p.second)`: the source address in
 // edi for both members, the float converted through __ftol2 into +8 (CIntelligentPointer is 8 bytes: vptr + item).
-struct CThing;
+class CThing;
 
-template<class T> struct CIntelligentPointer {
+template<class T> class CIntelligentPointer { public:
     virtual void v00();
     T* m_pItem;                                     // +0x04
     CIntelligentPointer(const CIntelligentPointer& other);   // 0x004A9730 for <const CThing>

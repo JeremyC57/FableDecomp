@@ -27,7 +27,7 @@ public:
 };
 class CChunkedFileLoader { };
 template <class T>
-struct CArray {
+class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     void resize(unsigned long n, const T& value)
     {
@@ -42,7 +42,7 @@ inline unsigned char* GetData(CArray<unsigned char>& a)
         return a.m_pBegin;
     return reinterpret_cast<unsigned char*>(&a);
 }
-struct C3DAnimFileXSequenceChunk {
+class C3DAnimFileXSequenceChunk { public:
     CArray<unsigned char> CompressedData;
     void ReadFromFile(CDataInputStream& in, unsigned long size, CChunkedFileLoader& loader)
     {

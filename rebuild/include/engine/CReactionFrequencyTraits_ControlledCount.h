@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingAICreature;
+class CThingAICreature;
 
 #pragma pack(push, 1)
 struct CReactionFrequencyTraits_ControlledCount {

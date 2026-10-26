@@ -34,7 +34,7 @@ struct CStreamBufferQueue {
     virtual void Add(CStreamBuffer* b) { ++m_adds; m_items[m_count++] = b; }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Lock(long handle) { ++g_lockCalls; g_lastHandle = handle; }
     void Unlock(long handle) { ++g_unlockCalls; g_lastHandle = handle; }
     void Free(long handle) { ++g_freeCalls; g_lastHandle = handle; }

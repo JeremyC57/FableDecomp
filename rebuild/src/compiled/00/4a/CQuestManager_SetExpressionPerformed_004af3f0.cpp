@@ -8,36 +8,36 @@
 // Shape: the index is a named local computed first (its CCharString argument is pushed before the Get call); the
 // zero position is a float C3DVector temporary stored with immediates after the pushes (written as the call's last
 // argument instead, the temporary's stores are hoisted above the index calls).
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& Get();          // 0x0044C6B0
 };
 
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad_0x00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60 (CCountedPointer<CMessageEventManager>::Data)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x7c];
     CWorld*       World;                           // +0x7c
     void SetExpressionPerformed(const CCharString& expression);

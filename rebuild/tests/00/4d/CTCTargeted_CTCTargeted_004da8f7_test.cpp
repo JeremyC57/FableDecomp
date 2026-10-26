@@ -1,8 +1,8 @@
 // Behaviour test for CTCTargeted::CTCTargeted @ 0x004DA8F7: flags 0, targetable with glow, no LOS exemption, no def.
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* o) : ParentThing(o) {} };
-struct CTCTargeted : CTCBase {
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* o) : ParentThing(o) {} };
+class CTCTargeted : public CTCBase { public:
     unsigned long TargetingFlags; bool Targetable, UseTargetGlow, ValidTargetWithoutLOS; void* PTargetingDef;
     CTCTargeted(CThing* o) : CTCBase(o), TargetingFlags(0), Targetable(true), UseTargetGlow(true), ValidTargetWithoutLOS(false), PTargetingDef(0) {}
 };

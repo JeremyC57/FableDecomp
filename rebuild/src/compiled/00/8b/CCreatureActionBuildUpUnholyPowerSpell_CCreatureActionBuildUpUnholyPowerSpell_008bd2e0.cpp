@@ -5,27 +5,27 @@
 // Shape: the second argument is a CCharString passed BY VALUE (one dword in the argument area: retail passes its
 // address, `lea edx,[esp+14h]`, to the setter and destroys it in place before returning -- __fastcall callee-destroyed
 // by-value parameter, hence `ret 8` with a destructor call on the argument slot). No local string is built.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCharString {                        // retail CCharString is one pointer (fable_string.h)
+class CCharString { public:                        // retail CCharString is one pointer (fable_string.h)
     char* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_BuildUpUnholyPowerSpell : CCombatActionBase {             // vtable 0x0127EE44; adds no data
+class CCreatureAction_BuildUpUnholyPowerSpell : public CCombatActionBase { public:             // vtable 0x0127EE44; adds no data
     virtual void v00();
     CCreatureAction_BuildUpUnholyPowerSpell(CThingCreatureBase* owner, CCharString animName);
 };

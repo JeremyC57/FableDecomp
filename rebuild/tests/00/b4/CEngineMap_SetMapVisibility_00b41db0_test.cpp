@@ -60,15 +60,15 @@ template<class T> struct CRetailList {              // STLport-style list: the s
     }
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void OnMapVisibilityChanged(bool visible);      // 0x00BDC3C0
 };
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     void OnMapVisibilityChanged(bool visible);      // 0x00BDE160
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap*  m_pLandscape;             // +0x00
     CLocalDetailCacheMap* m_pLocalDetailCache;      // +0x04
     unsigned char         _pad08[0x50];

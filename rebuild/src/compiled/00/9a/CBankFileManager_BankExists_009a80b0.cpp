@@ -38,7 +38,7 @@ __declspec(noinline) bool CBasicStringChar::operator<(const CBasicStringChar& ot
     return Compare(other) < 0;
 }
 #pragma auto_inline(on)
-struct CCharStringData {                                    // shared string block (Data, then NoRefs at +0x0D)
+class CCharStringData { public:                                    // shared string block (Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                                  // +0x00
 };
 
@@ -111,7 +111,7 @@ public:
 };
 }
 
-template <class T> struct CCountedPointer {                 // {object, count block}
+template <class T> class CCountedPointer { public:                 // {object, count block}
     T*    Data;                                             // +0x00
     void* Info;                                             // +0x04
     T* operator->() const { return Data; }

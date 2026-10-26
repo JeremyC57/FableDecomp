@@ -11,11 +11,11 @@ extern "C" int  __cdecl puts(const char* text);         // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();                      // 0x00BFEAEC
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
-struct CCharString { void* m_data; };
-struct CTCParamsBase;
-struct CThing;
+class CCharString { public: void* m_data; };
+class CTCParamsBase;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                 // slot 0 (scalar deleting dtor)
     virtual void v01(); virtual void v02();
     virtual void ApplyParams(const CTCParamsBase* params);   // slot 3 (+0x0c)
@@ -163,7 +163,7 @@ struct CTCList {                                        // list<CTCBase*>
     void push_back(CTCBase* const& value);              // 0x004CC820
 };
 
-struct CThing {
+class CThing { public:
     void*         __vftable;                            // +0x00
     unsigned char _pad04[0x1c];
     CTCBitset     UsingComponents;                      // +0x20

@@ -6,7 +6,7 @@
 // Shape: the landed IS_THING_DEAD pattern (GetPItem null, then the dead bit +0x91 & 1) guards a
 // `GetPItem()->Kill(true)`; `this` is only needed to form the member address (`lea esi,[ecx+44h]`). The
 // engine header keeps the pointer as an opaque byte array, so the layout is modelled locally with its name.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

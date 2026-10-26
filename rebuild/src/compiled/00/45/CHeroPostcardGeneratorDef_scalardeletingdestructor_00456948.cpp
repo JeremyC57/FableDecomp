@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CHeroPostcardGeneratorDef {
+class CHeroPostcardGeneratorDef { public:
     int f0;
     int Parent;
     void* f8;

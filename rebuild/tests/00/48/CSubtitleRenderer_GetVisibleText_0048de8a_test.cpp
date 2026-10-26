@@ -1,7 +1,7 @@
 // Behaviour test for CSubtitleRenderer::GetVisibleText (0x0048DE8A): "(HC)" is stripped (result false), the text is cut to the revealed count while revealing, else the reveal completes.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                                  // +0x00
     long          Length;                                // +0x04
 };

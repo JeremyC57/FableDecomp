@@ -35,7 +35,7 @@ struct CDataInputStreamReader : CDataInputStream {
 
 enum EReactionFrequencyType { REACTION_FREQUENCY_NONE = 0 };
 
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     virtual void v00();
     virtual void v01();
     virtual long GetType() const;                                       // +0x08
@@ -43,7 +43,7 @@ struct CReactionFrequencyTraits {
 };
 CReactionFrequencyTraits* __fastcall CreateFromType(EReactionFrequencyType type);   // 0x006FF930
 
-struct CReactionFrequencyTraitsArray {
+class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];       // +0x000
 };
 

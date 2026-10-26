@@ -17,7 +17,7 @@
 // RelocateData, slot 2 CanRelocateData) is the base of the element and of the group collections.
 #include "engine/CMovableResource.h"
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
 struct SEngine_01436ea8 {

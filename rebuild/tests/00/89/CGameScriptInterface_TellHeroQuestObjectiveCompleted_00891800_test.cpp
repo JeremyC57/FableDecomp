@@ -2,8 +2,8 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::TellHeroQuestObjectiveCompleted @ 0x00891800.
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetObjectiveAsCompleted(unsigned long objectiveId);
 };
 

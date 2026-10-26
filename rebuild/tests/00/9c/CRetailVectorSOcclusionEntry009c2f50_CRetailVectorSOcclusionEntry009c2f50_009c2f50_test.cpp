@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_strings = 0, g_handles = 0, g_frees = 0, g_order = 0;
-struct CWideString { void* m_pData; ~CWideString() { ++g_strings; if (g_handles != g_strings) g_order = 1; } };
+class CWideString { public: void* m_pData; ~CWideString() { ++g_strings; if (g_handles != g_strings) g_order = 1; } };
 struct CTextureHandle { void* m_pTexture; unsigned long m_flags; ~CTextureHandle() { ++g_handles; } };
 struct E { unsigned char _pad0[0x14]; CWideString m_name; CTextureHandle m_texture; unsigned char _pad1[0x1c]; };
 struct VBase { E* first; E* last; E* e; ~VBase() { if (first) { ++g_frees; std::free(first); } } };

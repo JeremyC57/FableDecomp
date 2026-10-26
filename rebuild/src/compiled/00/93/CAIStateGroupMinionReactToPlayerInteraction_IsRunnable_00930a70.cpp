@@ -10,7 +10,7 @@
 // Layout: engine/CAIStateGroup_MinionReactToPlayerInteraction.h flattens the base and types ReactionType as bytes, so the
 // model is local: NextReactionFrame[5] +0x14, ReactionType +0x28 (Ego_r.pdb); the village's +0x88 count and the event's
 // +0x3c type are descriptive.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -55,15 +55,15 @@ struct CThing {
         return false;
     }
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;                                          // +0x00
     unsigned char _pad04[0x24 - 0x04];
     long Handle;                                        // +0x24
 };
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     COpinionDeedFilter_IsCrimeToRunAndFindAGuard() { }
 };
-struct CTCCreatureOpinionOfHero {                       // interface 0x4f
+class CTCCreatureOpinionOfHero { public:                       // interface 0x4f
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* handle,
                                      bool flag);        // 0x006610C7
 };
@@ -85,32 +85,32 @@ struct CVillage {
     long GuardCount;                                    // +0x88 (descriptive)
     bool IsDeedHandled(long handle);                    // 0x0065914B (descriptive)
 };
-struct CTCVillageMember {                               // interface 0x23
+class CTCVillageMember { public:                               // interface 0x23
     CVillage* GetPVillage() const;                      // 0x007EE540
 };
-struct CTCWife {                                        // interface 0xd7
+class CTCWife { public:                                        // interface 0xd7
     bool IsMarriedToThePlayer() const;                  // 0x006CEC80
 };
 struct CTCInteractionState {                            // interface 0xc3 (descriptive)
     unsigned char _pad[0x0c];
     bool Active;                                        // +0x0c
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter();                            // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x3c];
     long Type;                                          // +0x3c (descriptive)
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                                  // +0x18
 };
 unsigned long GetWorldFrame();                          // 0x0049D870
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                   // +0x04
     unsigned char _pad08[0x0c];

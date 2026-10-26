@@ -13,7 +13,7 @@
 // Shape: position = start + (end - start) * t through inline C3DVector operators (by-value results, no user copy ctor);
 //   the scale is a named float local (homed in the dead bool slot); the centre is a C3DVector local built member-wise after the
 //   scale (integer moves); the helpers take references to the frame locals. Twin of 0x00BCEF80.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -22,29 +22,29 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                      // +0x00
     C3DVector Forward;                                 // +0x0c
     CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190
     void MakePerpendicular();                          // 0x00A22E10
 };
 
-struct CMatrix3x4 { float E[12]; };
+class CMatrix3x4 { public: float E[12]; };
 
 void __fastcall CalcObjectMatrix2D(CMatrix3x4& out, const C3DVector& centre, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEB6C0
 
-struct C3DPositionInterpolator {
+class C3DPositionInterpolator { public:
     void*     __vftable;
     C3DVector StartPosition;                           // +0x04
     C3DVector EndPosition;                             // +0x10
 };
-struct C3DOrientationInterpolator {
+class C3DOrientationInterpolator { public:
     void*           __vftable;
     CRightHandedSet StartOrientation;                  // +0x04
     CRightHandedSet EndOrientation;                    // +0x1c
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     virtual void CalcInterpolatedObjectTransform(CMatrix3x4& out, float t, bool applyScale) const;
     unsigned char              _pad04[0x58 - 4];
     float                      Scale;                  // +0x58
@@ -53,12 +53,12 @@ struct CEngineInternalPrimitiveAnimatedMesh {
     C3DOrientationInterpolator Orientation;            // +0xa0
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
 };
 
-struct CEngineInternalPrimitive2DAnimatedMesh : CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAnimatedMesh { public:
     virtual void CalcInterpolatedObjectTransform(CMatrix3x4& out, float t, bool applyScale) const;
     unsigned char     _pad0d4[0x140 - 0xd4];
     C3DBoundingSphere ObjectBoundingSphere;            // +0x140 (retail)

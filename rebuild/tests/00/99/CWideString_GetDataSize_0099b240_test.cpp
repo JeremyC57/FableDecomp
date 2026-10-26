@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CWideStringData { wchar_t* Start; wchar_t* Finish; wchar_t* EndOfStorage; long NoRefs; };
+class CWideStringData { public: wchar_t* Start; wchar_t* Finish; wchar_t* EndOfStorage; long NoRefs; };
 class CWideString {
 public:
     CWideStringData* PStringData;

@@ -10,7 +10,7 @@
 long g_FramesPerSecond = 15;
 
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[64];
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_strings; }
@@ -48,7 +48,7 @@ static int g_eventCount = 0;
 static unsigned long g_lastAnimID = 0;
 static int g_getEventsCalls = 0;
 namespace NAnimationEvents {
-struct CManager {
+class CManager { public:
     virtual ~CManager() { }
     virtual void GetEvents(unsigned long animID, CAnimEventVector& events) const
     {
@@ -87,35 +87,35 @@ struct CDefBase {
     long RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CCreatureStatsDef : CDefBase {
+class CCreatureStatsDef : public CDefBase { public:
     float Speed;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p) m_p->Release(); }
     T* operator->() const { return m_p; }
 };
 static CCreatureStatsDef* g_stats = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCreatureStatsDef>& out)
     {
         if (!g_stats) return false;
         ++g_stats->RefCount; out.m_p = g_stats; return true;
     }
 };
-struct CThing {
+class CThing { public:
     CDefClassBase* PDef;
 };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     unsigned long AnimID;
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     long m_delay;
     virtual ~CCombatActionBase() { }
     virtual long GetAnimDelayTime() const { return m_delay; }

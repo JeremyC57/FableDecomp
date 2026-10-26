@@ -1,10 +1,10 @@
 // behaviour test for 0x00461ACD CHitLocationDef::operator=
 #include <cstdio>
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
-struct CCPPointerInfo { long count; };
+class CCPPointerInfo { public: long count; };
 struct CPhysicalPrimitiveBase { int id; };
 struct CPhysicalPrimitivePointer {
     CPhysicalPrimitiveBase* Data;
@@ -18,11 +18,11 @@ struct CPhysicalPrimitivePointer {
     }
     CPhysicalPrimitivePointer& operator=(const CPhysicalPrimitivePointer& other) { ShareData(other.Data, other.Info); return *this; }
 };
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CPhysicalPrimitivePointer PPrimitive;
     CPhysicalPrimitiveInit& operator=(const CPhysicalPrimitiveInit& other) { PPrimitive = other.PPrimitive; return *this; }
 };
-struct CHitLocationDef : CParentDefClassBase {
+class CHitLocationDef : public CParentDefClassBase { public:
     CPhysicalPrimitiveInit PhysicalPrimitive;
     long Armour, HitResponseAction, HitResponseToEpicSpellsAction, HitKnockdownAction, HitKnockdownDeathAction,
          BlockResponseAction, HitDamageEffect, HitBlockedEffect, VulnerableEffect, Flags;

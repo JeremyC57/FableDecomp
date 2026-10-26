@@ -1,20 +1,20 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     unsigned char _body[8];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

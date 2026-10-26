@@ -7,13 +7,13 @@
 // loop-invariant block load across a call reproduces with the end and the key block in locals read inside the
 // guard of a bottom-tested loop (a for-loop with the key local hoists that load above the guard).
 // Model: PDB CSymbolMap (+4 SLONGMap, the retail 12-byte vector), pair<CCharString, CSymbolInfo>.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 
@@ -45,7 +45,7 @@ struct CSymbolVectorMap {                          // the retail 12-byte vector 
     SSymbolPair* m_pEnd;                           // +0x08
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     const CSymbolInfo* FindFirstSymbolWithVal(const CCharString& group, long value) const;

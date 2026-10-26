@@ -18,7 +18,7 @@
 //   physics component through the inline CThing::GetPhysicsTC() const accessor (`mov eax,[eax+60h]` ... `mov ecx,eax`);
 //   the position ASSIGNED to a local (`pos = ...GetPosition(t)`), so the 12 bytes are copied from the call's
 //   temporary into the local passed to the sound object (initialising `pos` lets VC7.1 construct it in place).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -33,7 +33,7 @@ struct CInterpolationInfoSet {
     float GTPredictedTimeSinceLastRenderFrame;           // +0x00
     float WFInterpolate;                                 // +0x04
 };
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     CInterpolationInfoSet Current;                       // +0x00
 };
 

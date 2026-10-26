@@ -23,7 +23,7 @@ class CFrontEndManager {
 public:
     virtual ~CFrontEndManager();                         // slot 0
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template<class T> class CCountedPointer {
 public:
     T*              Data;                                // +0
@@ -46,7 +46,7 @@ class CMeshBankManager {
 public:
     void CloseMeshBank(CCountedPointer<CMeshDataBank> bank);         // 0x00A09DC0
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char     _pad[0x74];
     CMeshBankManager* MeshBankManager;                   // +0x74
     CMeshBankManager* GetMeshBankManager() const { return MeshBankManager; }

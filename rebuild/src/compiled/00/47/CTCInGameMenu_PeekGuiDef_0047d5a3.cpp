@@ -27,14 +27,14 @@ struct CDefVirtual {
 struct CRefCounted {
     long m_refCount;                                     // +4
 };
-struct CDefPointeeBase : CDefVirtual, CRefCounted {
+class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
     void ReleaseDef()
     {
         if (--m_refCount == 0)
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()

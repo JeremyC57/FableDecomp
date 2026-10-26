@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of CTCInventoryExperience::ResetStatIndicatorValues @ 0x0056e5ab
 // Size-optimized zeroing (and mem,0 vs mov mem,0) matches retail; harness also sweeps optimize("s").
 #pragma optimize("s",on)
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     char pad[0x1bc];
     unsigned long field_1bc; // +0x1bc
     unsigned long field_1c0; // +0x1c0

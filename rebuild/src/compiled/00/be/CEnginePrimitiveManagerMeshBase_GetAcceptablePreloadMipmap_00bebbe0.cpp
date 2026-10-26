@@ -22,7 +22,7 @@ struct CGraphicHeader {
     unsigned short FrameHeight;                    // +0x08
     unsigned short FrameCount;                     // +0x0a
 };
-struct CGraphicInfo {
+class CGraphicInfo { public:
     CGraphicHeader Header;                         // +0x00
 };
 class CGraphicInfoFrame {

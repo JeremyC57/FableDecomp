@@ -20,7 +20,7 @@ static int fails = 0;
 // No frame word only with a same-TU noinline stand-in for the insert 0x00440990 (the const-ref taker of the pushed
 // value); the unsigned short index then gives retail's register roles and the late store of the temporary.
 #include <new>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct SScalarTag { SScalarTag() { } };
 struct CLongVector {                               // STLport vector<long>

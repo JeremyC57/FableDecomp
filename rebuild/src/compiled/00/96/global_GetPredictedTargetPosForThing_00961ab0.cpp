@@ -16,7 +16,7 @@
 //   OldPosition +0x18; CThing physics component +0x60 and counted def class +0x70 (as the landed CThing models).
 // Label: catalog name confirmed (Ego_r.pdb anonymous-namespace function of the ice-troll AI TU).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -27,7 +27,7 @@ struct C3DVector {
     C3DVector& operator+=(const C3DVector& other) { X += other.X; Y += other.Y; Z += other.Z; return *this; }
 };
 
-struct CSnowTrollDef {
+class CSnowTrollDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -42,7 +42,7 @@ struct CDefPointerSnowTroll {                   // CDefPointer<const CSnowTrollD
     ~CDefPointerSnowTroll() { if (m_p) m_p->Release(); }
     CSnowTrollDef* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -56,12 +56,12 @@ struct CDefClassPointer {                       // the counted def class pointer
     ~CDefClassPointer() { if (m_p) m_p->Release(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                         // +0x0c
     C3DVector OldPosition;                      // +0x18
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x60];
     CTCPhysicsBase* m_pPhysics;                 // +0x60
     unsigned char _pad64[0x0c];

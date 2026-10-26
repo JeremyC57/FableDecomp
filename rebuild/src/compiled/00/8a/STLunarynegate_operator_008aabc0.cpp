@@ -13,11 +13,11 @@
 //   two-float C2DVector restores retail's X-first order. The inlined
 //   result is materialised (`mov eax,1` / `xor eax,eax`) and then negated with `test al,al ; sete cl` (VC7.1 does not
 //   fold the inlined bool into the negation).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { return X * X + Y * Y; }

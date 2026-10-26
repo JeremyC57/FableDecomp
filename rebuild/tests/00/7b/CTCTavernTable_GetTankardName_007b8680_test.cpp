@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCtors = 0, g_strCopies = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1) : m_data((void*)text) { ++g_strCtors; CHECK(length == -1); }
     CCharString(const CCharString& other) : m_data(other.m_data) { ++g_strCopies; }
@@ -16,7 +16,7 @@ struct CDefPointee {
     virtual void Destroy() { ++g_destroyed; }
     long m_count;
 };
-struct CTavernTableDef : CDefPointee {
+class CTavernTableDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x1d];
     bool AddTankards;
     bool HighQualityTankards;
@@ -36,14 +36,14 @@ struct CDefReference {
     CTavernTableDef* operator->() const { return Object; }
 };
 static CTavernTableDef* g_tableDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007b9700(CDefPointer* out) { ++g_getSubDef; ++g_tableDef->m_count; out->Object = g_tableDef; return true; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefClassBase* DefHolder;
 };
-struct CTCTavernTable {
+class CTCTavernTable { public:
     virtual void v00() {}
     CThing* ParentThing;
     CTavernTableDef* TakeTableDef()

@@ -11,9 +11,9 @@
 // the action dtor, `diff.GetMagnitudeSquared() > EPS * EPS` with the epsilon read from its global twice.
 // No engine header for this class; LastKnownEnemyPos (+0x1c) named descriptively.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,12 +61,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -100,40 +100,40 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
 
-struct CAnimationEntry;
-struct CThingCreatureBase;
+class CAnimationEntry;
+class CThingCreatureBase;
 struct CThingCreatureAnim {
     CAnimationEntry* GetRandomAnimFromName(const CCharString& name, long index);   // 0x00662D80
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                  // +0x04..+0xa7
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
     CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
 };
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     unsigned char _pad[0x20];
     float PosX, PosY, PosZ;                     // +0x20
 };

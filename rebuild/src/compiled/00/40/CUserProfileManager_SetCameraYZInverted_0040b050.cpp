@@ -1,4 +1,4 @@
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad_0[0xc];
     char m_flag;      /* +0xc */
     char pad_d[3];    /* +0xd..0xf */

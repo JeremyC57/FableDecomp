@@ -13,8 +13,8 @@
 // component into eax and copies it to ecx (`mov eax,[eax+60h] ; mov edx,[eax] ; mov ecx,eax`), which also reshuffles the tail.
 // Layout = Ego_r.pdb CTCDRegionExit (packed): PEntranceConnectedTo +0x2a; CThing physics component +0x60 (PDB PhysicsTC +0x70:
 // the retail component map and update list are 0x10 smaller), Player byte +0x90, Dead bit 0 of +0x91; CWorld flag byte +0x12f.
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -51,16 +51,16 @@ public:
     virtual void v00();
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -71,7 +71,7 @@ struct CGameEvent : CMemoryBuffer {
     void AddFLOAT(float value) { Copy(4, &value); }
     void AddBOOL(bool value) { Copy(1, &value); }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x12f];
     bool          HeroMovingThroughRegionExit;          // +0x12f
     void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);   // 0x0049EAF0

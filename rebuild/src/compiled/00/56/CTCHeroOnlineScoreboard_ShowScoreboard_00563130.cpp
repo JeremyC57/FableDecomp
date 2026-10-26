@@ -27,12 +27,12 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -46,7 +46,7 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
@@ -64,7 +64,7 @@ struct CEngineGlobals {
 };
 extern CEngineGlobals* g_pEngineGlobals_013b86a0;       // 0x013B86A0
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                     // +0x110
     CWideString   SignedInPassword;                     // +0x114
@@ -239,7 +239,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  UsingComponents[9];                  // +0x20
     CInterfaceMap  Interfaces;                          // +0x44
@@ -255,7 +255,7 @@ struct CThing {
 };
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2();                                         // 0x008410D0
 };
 }

@@ -11,11 +11,11 @@
 // an x87 `fldz ; fstp` pair, the integer zeros and the bool share eax; the vtable store precedes all
 // member stores because the vector, the def pointer and the vector3 are member objects with inline
 // constructors.
-struct CThing;
+class CThing;
 struct CHitLocation;
-struct CHitLocationsDef;
+class CHitLocationsDef;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                 // +0x04
     bool          ToBeRemoved;                 // +0x08
@@ -35,14 +35,14 @@ struct CHitLocationsDefPointer {               // CDefPointer<const CHitLocation
     CHitLocationsDefPointer() : Object(0) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CTCHitLocations : CTCBase {             // vtable 0x012434E4
+class CTCHitLocations : public CTCBase { public:             // vtable 0x012434E4
     virtual void v00();
     CHitLocationVector      HitLocations;                  // +0x0c
     CHitLocation*           PDefaultHitLocation;           // +0x18

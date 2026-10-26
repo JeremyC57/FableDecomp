@@ -33,16 +33,16 @@ struct CDefPointer {
     operator bool() const { return m_p != 0; }
 };
 
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDefHairCard(CDefPointer& out);      // 0x005DA180 (GetSubDef<CHairCardDef>)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* m_pDef;                 // +0x70 (retail; CDefPointer<CThingDef>)
 };
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void*   __vftable;                     // +0x00
     CThing* m_pThing;                      // +0x04
     CDefPointer GetHairCardDef();

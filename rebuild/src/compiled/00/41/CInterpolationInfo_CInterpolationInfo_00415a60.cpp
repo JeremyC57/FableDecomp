@@ -1,7 +1,7 @@
 // CInterpolationInfo::CInterpolationInfo() -- clear the thirteen words of the record (+0..+0x30)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00415A60, length 43 bytes.
 // Shape: `mov eax,ecx ; xor ecx,ecx` feeding thirteen stores, `ret`.
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     long m_0, m_4, m_8, m_c, m_10, m_14, m_18, m_1c, m_20, m_24, m_28, m_2c, m_30;
     CInterpolationInfo();
 };

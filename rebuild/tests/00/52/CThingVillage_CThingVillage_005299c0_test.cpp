@@ -2,13 +2,13 @@
 #include <new>
 // Behaviour test for CThingVillage::CThingVillage (0x005299C0): type 4, CurrentGraphic zeroed.
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } };
-struct CThing { long m_type; CThing(long type) : m_type(type) { } };
-struct CThingGameObject : CThing { CIntelligentPointer m_owner; CThingGameObject(long type) : CThing(type), m_owner() { } };
-struct CEngineGraphic {
+class CThing { public: long m_type; CThing(long type) : m_type(type) { } };
+class CThingGameObject : public CThing { public: CIntelligentPointer m_owner; CThingGameObject(long type) : CThing(type), m_owner() { } };
+class CEngineGraphic { public:
     unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type;
     CEngineGraphic() : BankIndex(0), AnimStep(0), RenderSizeX(0), AdditiveAlpha(false), Type(0) { }
 };
-struct CThingVillage : CThingGameObject {
+class CThingVillage : public CThingGameObject { public:
     CEngineGraphic CurrentGraphic;
     CThingVillage() : CThingGameObject(4), CurrentGraphic() { }
 };

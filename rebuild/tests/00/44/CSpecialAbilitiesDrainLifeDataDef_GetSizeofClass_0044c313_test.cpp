@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesDrainLifeDataDef { unsigned char pad[0x2c]; };
+class CSpecialAbilitiesDrainLifeDataDef { public: unsigned char pad[0x2c]; };
 
 unsigned long __fastcall CSpecialAbilitiesDrainLifeDataDef_GetSizeofClass(const CSpecialAbilitiesDrainLifeDataDef* self)
 {

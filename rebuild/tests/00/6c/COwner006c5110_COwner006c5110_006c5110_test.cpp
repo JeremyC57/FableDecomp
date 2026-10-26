@@ -17,7 +17,7 @@ CBaseIntelligentPointer::CBaseIntelligentPointer() : m_pItem(kFakeItem) { ++g_ct
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { ++g_dtors; m_pItem = 0; }
 CBaseObject* CBaseIntelligentPointer::GetPItem() const { ++g_gets; return m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CBaseObject* item) { ++g_sets; m_pItem = item; }
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }

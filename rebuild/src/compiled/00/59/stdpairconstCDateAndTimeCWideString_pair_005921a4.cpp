@@ -11,7 +11,7 @@
 //   and the string constructor runs on `lea ecx,[ebx+1Ch]`; `this` is kept in ebx and returned.
 #pragma optimize("s", on)
 
-struct CDateAndTime {                       // 0x1c bytes, POD
+class CDateAndTime { public:                       // 0x1c bytes, POD
     long          Year;                     // +0x00
     unsigned long Month;                    // +0x04
     unsigned long Day;                      // +0x08

@@ -63,7 +63,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CCarryableDef {
+class CCarryableDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -115,10 +115,10 @@ FABLE_STATIC_ASSERT(offsetof(CCarryableDef, IncludeInThingScansWhenCarried) == 0
 #include <stddef.h>
 
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _base_0x04[0x18];                    // +0x04 flattened base-class subobject(s)
     CDefinitionManager* PDefManager;                         // +0x1c
@@ -149,11 +149,11 @@ FABLE_STATIC_ASSERT(offsetof(CDefClassBase, DefaultValsApplied) == 0x24);
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -247,14 +247,14 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -326,15 +326,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -482,7 +482,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -500,8 +500,8 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -509,8 +509,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -594,9 +594,9 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -605,7 +605,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
@@ -616,13 +616,13 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CTCPhysicsBase;struct CDefLookup;
+class CTCPhysicsBase;struct CDefLookup;
 struct CInterfaceMap {
     struct Entry { long type; void* component; };
     Entry *Start,*Finish,*End;
     Entry* LowerBound(const long*); //40F020
 };
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -649,7 +649,7 @@ struct CThing:CBaseObject {
         return false;
     }
 };
-struct CThingCreatureBase:CThing {bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -778,7 +778,7 @@ template<class T>struct DefPointer {
  ~DefPointer(){T* p=Object;if(p)p->Release();}
  T* operator->()const{return Object;}
 };
-struct CCarryableDef:NativeCountedDef {
+class CCarryableDef:public NativeCountedDef { public:
  unsigned char DefinitionBaseState[0x20];
  long ActiveCarrySlot,SecondaryActiveCarrySlot,PassiveCarrySlot,OnKillFX;
  C3DVector OffsetCoordRelativeToAttachToDummy;float OffsetAmountForThingsOnTopOfMe,PassiveCarrySlotScale;bool IncludeInThingScansWhenCarried;
@@ -809,12 +809,12 @@ bool CDefLookup::GetCarryable(DefPointer<CCarryableDef>* out)const {
 }
 #pragma auto_inline(on)
 
-struct CTCCarrying {
+class CTCCarrying { public:
  CThing* GetThingInPrimarySlot(); //006A1440
  CThing* RemoveThingFromPrimarySlot(bool); //006A1E00
  void PutThingInCarrySlot(CThing*,long,bool); //006A1F80
 };
-struct CCreatureAction_Drink:CCreatureActionBase {
+class CCreatureAction_Drink:public CCreatureActionBase { public:
     virtual ~CCreatureAction_Drink();
     virtual void Initialise();
     virtual void PerformAction();
@@ -928,8 +928,8 @@ void CBaseIntelligentPointer::SetPItem(CBaseObject* item){
 template<class T>CIntelligentPointer<T>::~CIntelligentPointer(){}
 
 // Opaque animation dependency: native sixteen-byte entry, passed only by borrowed reference.
-struct CAnimComponentMap;
-struct CAnimationEntry {long BankIndex;unsigned long AnimName,GroupName;CAnimComponentMap* Components;};
+class CAnimComponentMap;
+class CAnimationEntry { public:long BankIndex;unsigned long AnimName,GroupName;CAnimComponentMap* Components;};
 static CAnimationEntry fixtureAnimation={7,11,13,0};
 const CAnimationEntry& __fastcall FindAnimation(CThingCreatureBase* actor,const CCharString& name){if(!actor||strcmp(name,"SCRIPT_HERO_DRINK"))wrong=true;return fixtureAnimation;}
 CCreatureActionBase::CCreatureActionBase(CThingCreatureBase* actor,float duration,float fraction,const CAnimationEntry& animation,const CSoundPair& sounds,long group,long priority){if(duration!=-1.0f||fraction!=0.0f||&animation!=&fixtureAnimation||sounds.first||sounds.last||group||priority)wrong=true;PCreature.SetPItem(actor);}

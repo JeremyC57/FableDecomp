@@ -102,7 +102,7 @@ inline It find(It first, It last, const T& val)
     return first;
 }
 
-struct CRegion;
+class CRegion;
 struct CRegionPair {                                    // pair<CRegion*, CRegion*>
     CRegion* first;
     CRegion* second;
@@ -111,22 +111,22 @@ struct CRegionPair {                                    // pair<CRegion*, CRegio
     bool operator==(const CRegionPair& o) const { return first == o.first && second == o.second; }
 };
 
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x3c];
     long          MapNumber;                            // +0x3c
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     long m_start;
     long m_end;
     CMessageEventFilter_OccuredBetween(long start, long end) : m_start(start), m_end(end) { }
     bool operator()(const CMessageEvent& message) const;   // 0x006AF180
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -135,7 +135,7 @@ template<class A, class B> struct CFilter_Bind2 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_OccuredBetween> CBetweenFilter;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void*               __vftable;                      // +0x00
     list<CMessageEvent> Messages;                       // +0x04
     long FindAllMessages(const CBetweenFilter& filter, list<CMessageEvent*>* found);   // 0x006178F0
@@ -155,10 +155,10 @@ long CMessageEventManager::FindAllMessages(const CBetweenFilter& filter, list<CM
 }
 #pragma auto_inline(on)
 
-struct CWorldMap {
+class CWorldMap { public:
     CRegion& GetRegion(long map);                       // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06();
     virtual void w07(); virtual void w08(); virtual void w09(); virtual void w10(); virtual void w11(); virtual void w12();
     virtual CWorldMap* GetWorldMap();                   // slot 13 (+0x34)
@@ -167,7 +167,7 @@ struct CWorld {
     long FindAllMessages(const CBetweenFilter& filter, list<CMessageEvent*>& found) { return PMessageEventManager_Data->FindAllMessages(filter, &found); }
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void*             __vftable;                        // +0x00
     unsigned char     _pad04[0x24c - 0x04];
     list<CRegionPair> RegionCorrespondances;            // +0x24C

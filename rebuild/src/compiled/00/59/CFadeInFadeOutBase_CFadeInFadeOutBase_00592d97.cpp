@@ -10,7 +10,7 @@ struct SFadeFlags_00592d97 {                       // four flag bytes copied thr
     void Set(bool c, bool b, bool a, bool d) { m_c = c; m_b = b; m_a = a; m_d = d; }   // argument order (+0x1a, +0x19, +0x18, +0x1b): the retail load/spill order
 };
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool  m_active;                                // +0x00
     unsigned char _pad01[3];
     float m_fadeOutDuration;                       // +0x04

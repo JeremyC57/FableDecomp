@@ -20,31 +20,31 @@
 //   SetCurrentAction call whose result is kept across the name's destructor; the re-seed is the landed CModeSitBase::OnActivate
 //   body; `PlayingIdle = false` is unconditional (retail's skip jumps onto the store). CAnimFrameInfo is two floats (Ego_r.pdb):
 //   with longs VC shares one zero register with the TypeFlags push. 4 grades.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSoundPair {                        // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                        // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CAnimationEntry {                   // Ego_r.pdb CAnimationEntry (0x10)
+class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (0x10)
     long BankIndex;                        // +0
     unsigned char _rest[0xc];
     unsigned long GetAnimateThingFlags() const;        // 0x005DC390
     long GetTimeToBlendIn(CThing* thing) const;        // 0x005DC230
 };
-struct CAnimFrameInfo {                    // Ego_r.pdb CAnimFrameInfo (8 bytes), zeroed by its inline constructor
+class CAnimFrameInfo { public:                    // Ego_r.pdb CAnimFrameInfo (8 bytes), zeroed by its inline constructor
     float Current;
     float Last;
     CAnimFrameInfo() : Current(0.0f), Last(0.0f) { }   // float zeros: immediate stores, not the integer zero register
 };
-struct CAnimInit {                         // Ego_r.pdb CAnimInit (0x2c)
+class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           UpdateMode;             // +0x00
     unsigned char  Type;                   // +0x04
     bool           Looping;                // +0x05
@@ -62,7 +62,7 @@ struct CAnimInit {                         // Ego_r.pdb CAnimInit (0x2c)
     }
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050
 };
-struct CAnimateThing {                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)
+class CAnimateThing { public:                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)
     long           UpdateMode;             // +0x00
     short*         m_animsFirst;           // +0x04 Anims (vector<short>)
     short*         m_animsLast;            // +0x08
@@ -73,18 +73,18 @@ struct CAnimateThing {                     // starts with CCompleteAnimation::Ma
     void SetMainAnim(const CAnimInit& init, long blendIn, long delay);   // 0x0070D580
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
 };
-struct CThingCreatureBase;
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {   // vtable 0x01273A0C, retail 0xb4
+class CThingCreatureBase;
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:   // vtable 0x01273A0C, retail 0xb4
     unsigned char _own[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase& owner, const CCharString& animName, const CSoundPair& sound,
         bool useAnimationMovement, bool usePhysics, bool stayOnLastFrame, long numberOfTimesToLoop, long delay);   // 0x008424F0
     ~CCreatureAction_PlayAnimation();      // 0x00693EF0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);   // 0x00662A00
     bool SetCurrentAction(const CCreatureActionBase& action);               // 0x006644F0
 };
@@ -93,7 +93,7 @@ struct CRandomSeed {
     unsigned long Seed;
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CWorld {
+class CWorld { public:
     CRandomSeed* GetRandomSeed();          // 0x0049D810
 };
 inline unsigned long GFRandom(CRandomSeed* random)
@@ -113,7 +113,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
 };
 
 namespace NCreatureMode {
-struct CModeSitBase : CModeBase {
+class CModeSitBase : public CModeBase { public:
     long          IdleCounter;             // +0x1c
     bool          PlayingIdle;             // +0x20
     CCreatureActionBase* PRemoveAction;    // +0x24 CCountedPointer<CCreatureActionBase>::Data

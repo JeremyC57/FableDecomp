@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8
@@ -211,7 +211,7 @@ public:
 
 class CEngineStaticMapFileBlockManager {
 public:
-    class CFileBlock {                                  // the node value after the long key (node +0x14)
+    struct CFileBlock {                                  // the node value after the long key (node +0x14)
     public:
         long                                RefCount;   // +0x00 (node +0x14): outstanding requests
         bool                                LowPriority;   // +0x04 (node +0x18)

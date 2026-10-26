@@ -1,14 +1,14 @@
 // Behaviour test for CQuestManager::GetMasterScriptDataForScript(const CScriptInfo&) @ 0x004AFA10
 #include <cstdio>
 
-struct CScriptBase { int m_dummy; };
-struct CScriptDataBase { int m_dummy; };
+class CScriptBase { public: int m_dummy; };
+class CScriptDataBase { public: int m_dummy; };
 
-struct CScriptInfo { void* AllocFunc; void* MasterScriptDataAlloc; void* Name; long ID; bool MasterScript; };
+class CScriptInfo { public: void* AllocFunc; void* MasterScriptDataAlloc; void* Name; long ID; bool MasterScript; };
 struct CActiveQuest { long ID; CScriptInfo* PScriptInfo; CScriptBase* PScript; CScriptDataBase* PScriptData; };
 struct CActiveQuestNode { CActiveQuestNode* next; CActiveQuestNode* prev; CActiveQuest* quest; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CActiveQuestNode* ActiveQuests;
     CScriptDataBase* GetMasterScriptDataForScript(const CScriptInfo& info)
     {

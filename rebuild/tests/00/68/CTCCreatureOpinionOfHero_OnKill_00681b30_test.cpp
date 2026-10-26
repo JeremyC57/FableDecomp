@@ -1,6 +1,6 @@
 // Test for 00681b30 CTCCreatureOpinionOfHero::OnKill: kill the unknown-threat source thing only when set and alive.
 #include <cstdio>
-struct CThing { bool Dead; int KillCalls; bool LastCheck; void Kill(bool c) { ++KillCalls; LastCheck = c; } };
+class CThing { public: bool Dead; int KillCalls; bool LastCheck; void Kill(bool c) { ++KillCalls; LastCheck = c; } };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -10,7 +10,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     CBaseIntelligentPointer PUnknownThreatOpinionSource;
     virtual ~CTCCreatureOpinionOfHero() {}
     virtual void OnKill()

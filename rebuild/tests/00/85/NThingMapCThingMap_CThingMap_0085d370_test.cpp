@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CThingMap::CThingMap (0x0085D370): members initialised, then InitMapwhoLevels + Clear.
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long a, long b, long c, long d) : X0(a), Y0(b), X1(c), Y1(d) { }
     C2DBoxI(const C2DBoxI& o) : X0(o.X0), Y0(o.Y0), X1(o.X1), Y1(o.Y1) { }

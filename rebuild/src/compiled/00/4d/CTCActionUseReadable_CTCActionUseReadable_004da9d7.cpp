@@ -9,10 +9,10 @@
 // `#pragma optimize("s", on)`. The vtable store precedes both members because both are member objects with their own
 // constructors (the def pointer's inline zeroing, the string's out-of-line constructor).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CDefPointee;
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                             // 0x0099AED0
 };
@@ -22,13 +22,13 @@ struct CDefPointer {                           // CDefPointer<CReadableDef const
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCActionUseBase {                      // vtable 0x0123F09C; 0x14 bytes
+class CTCActionUseBase { public:                      // vtable 0x0123F09C; 0x14 bytes
     virtual void v00();
     unsigned char _body[0x10];                 // +0x04..+0x14 (ParentThing, flags, PActionUseDef, Usable)
     CTCActionUseBase(CThing& owner);           // 0x004DA939
 };
 
-struct CTCActionUseReadable : CTCActionUseBase {   // vtable 0x0123F234
+class CTCActionUseReadable : public CTCActionUseBase { public:   // vtable 0x0123F234
     CDefPointer PDef;                          // +0x14
     CWideString TextTag;                       // +0x18
     virtual void v00();

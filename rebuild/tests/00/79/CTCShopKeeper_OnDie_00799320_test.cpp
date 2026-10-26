@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThingCreatureBase { int id; };
-struct CThing { unsigned char m_flags; };
-struct CTCShop { CThingCreatureBase* m_keeper; int m_calls; void SetShopKeeper(CThingCreatureBase* k) { m_keeper = k; ++m_calls; } };
-struct CTCShopKeeper {
+class CThingCreatureBase { public: int id; };
+class CThing { public: unsigned char m_flags; };
+class CTCShop { public: CThingCreatureBase* m_keeper; int m_calls; void SetShopKeeper(CThingCreatureBase* k) { m_keeper = k; ++m_calls; } };
+class CTCShopKeeper { public:
     CThing* m_pOwner; CTCShop* m_pShop;
     CTCShop* GetShopTC() { return m_pShop; }
     void OnDie()

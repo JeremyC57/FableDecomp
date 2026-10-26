@@ -10,7 +10,7 @@
 // Shape: C3DVector has a user copy constructor and no operator=, so each difference built by `return C3DVector(...)` lands in a
 // frame temporary and is copied through a `lea` pointer register; the hero position is copied by value (x, y on the x87
 // stack, z through the frame); the camera manager comes through an inline accessor so it loads straight into ecx.
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -22,24 +22,24 @@ struct C3DVector {
         return C3DVector(X - b.X, Y - b.Y, Z - b.Z);
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 extern CCharString g_CameraStickHelperName;     // 0x013BAC4C
 struct CTCGraphicAppearance {
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position, float time);   // 0x004C0560
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual C3DVector PeekCurrentPos() const;      // slot 11 (+0x2C) 0x0069E1F0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }

@@ -6,7 +6,7 @@
 // Layout (Ego_r.pdb): CTCWallMountEffects PDef +0x0c, ObjectWasGamePersistant +0x20; CWallMountEffectsDef Effect +0x28.
 // Shape: undoes OnPutOnMount; Effect is re-read through PDef for the second test, the `&&` gives two `je` to the
 // shared epilogue.
-struct CThing {
+class CThing { public:
     void RemoveTC(long type);                               // 0x004C9840
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
 };
@@ -15,12 +15,12 @@ enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT 
 
 enum { TC_TELEPORTER = 0xDD };
 
-struct CWallMountEffectsDef {
+class CWallMountEffectsDef { public:
     unsigned char     _pad_00[0x28];
     EWallMountEffects Effect;                               // +0x28
 };
 
-struct CTCWallMountEffects {
+class CTCWallMountEffects { public:
     void*                       __vftable;                  // +0x00
     CThing*                     ParentThing;                // +0x04
     bool                        ToBeRemoved;                // +0x08

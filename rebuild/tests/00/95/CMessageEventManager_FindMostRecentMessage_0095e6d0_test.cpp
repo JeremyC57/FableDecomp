@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CMessageEvent { long type; long extra; };
+class CMessageEvent { public: long type; long extra; };
 struct SNode { SNode* next; SNode* prev; CMessageEvent value; CMessageEvent* GetEvent() { return &value; } };
 struct CList { SNode* head; };
 static SNode g_head, g_n1, g_n2, g_n3;

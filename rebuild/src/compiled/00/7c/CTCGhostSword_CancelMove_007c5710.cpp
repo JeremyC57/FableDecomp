@@ -7,7 +7,7 @@
 //        STLport `*(begin() + i)` operator[] (the scaled index kept in edi, begin() re-read for the third GetPItem);
 //        the timer is the out-parameter GetInterface; the stop is the landed CTCSummonSpell::CancelMove (0x0079A820) step.
 // Layout: retail CTCGhostSword: PDef +0x0C, Minions +0x10 (12-byte STLport vector of CIntelligentPointer<CThingAICreature>).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -69,7 +69,7 @@ struct CTCMinionTimer {                             // interface 0x9B component
     long  Target;                                   // +0x18
 };
 
-struct CTCGhostSword {
+class CTCGhostSword { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];

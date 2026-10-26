@@ -28,7 +28,7 @@ struct CInventorySubDef : CRefCounted {
     long          InventoryDefIndex;                 // +0x78
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
@@ -58,7 +58,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventorySubDef>*
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char           _pad_0x00[0x70];
     CDefPointer<CThingDef>  PDef;                    // +0x70
     __forceinline CDefPointer<CThingDef> GetDef() const { return PDef; }
@@ -72,7 +72,7 @@ struct CScreenManager {
     void RegisterScreen(CScreenBase* screen);        // 0x0066EB11
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     CScreenManager* GetScreenManager();              // 0x00437CD0 (+0x32C)
 };
 
@@ -86,7 +86,7 @@ struct CTCInventoryBase {
     void OnCreate();                                 // 0x005C0121
 };
 
-struct CTCInventory : CTCInventoryBase, CScreenBase {    // CScreenBase at +0x130
+class CTCInventory : public CTCInventoryBase, public CScreenBase { public:    // CScreenBase at +0x130
     unsigned char _pad_0x134[0x9A];
     bool          QuickAccessAssignPending;          // +0x1CE
 

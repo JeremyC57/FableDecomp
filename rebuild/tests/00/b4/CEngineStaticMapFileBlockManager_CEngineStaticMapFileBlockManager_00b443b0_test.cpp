@@ -29,7 +29,7 @@ struct CTree {
         if (m_pHead) { ++g_headsFreed; std::free(m_pHead); }
     }
 };
-struct CEngineStaticMapFileBlockManager { CCountedPointer AsyncBankEntry; CTree Blocks; };
+class CEngineStaticMapFileBlockManager { public: CCountedPointer AsyncBankEntry; CTree Blocks; };
 
 int main()
 {

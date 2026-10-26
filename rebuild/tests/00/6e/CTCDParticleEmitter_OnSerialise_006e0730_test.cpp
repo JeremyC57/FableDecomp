@@ -3,7 +3,7 @@
 // behaviour test: saving writes nothing for a dependent emitter, otherwise the flag and the type's name (empty for an unknown id);
 // loading reads the flag and the name, maps it back to the type id and kills the thing when the id is 0 (not while compiling
 // front-end definitions)
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; bool savedFlag; char savedName[32]; int writes;
     bool loadFlag; const char* loadName;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -13,7 +13,7 @@ struct CPersistContext {
 static const char* g_names[3] = { "", "SPARKS", "SMOKE" };
 static long LookupName(const char* name) { for (long i = 1; i < 3; ++i) if (std::strcmp(g_names[i], name) == 0) return i; return 0; }
 static bool g_compileFrontend = false;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     long ParticleTypeID; bool IndependantObject; bool killed;
     void OnSerialise(CPersistContext& context)
     {

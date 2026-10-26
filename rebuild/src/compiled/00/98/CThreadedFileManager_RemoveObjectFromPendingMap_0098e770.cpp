@@ -14,7 +14,7 @@
 // whole queue folds the +4 first); the erase indexes again after the calls (Priority re-read). find
 // returns the node pointer in eax (an iterator class result goes through a hidden pointer). The key is one
 // named local homed in the dead parameter slot (`mov [esp+18h],edi` after the push of its address).
-struct CThreadedFile {
+class CThreadedFile { public:
     void* m_vtable;                                // +0x00
     long  DeviceID;                                // +0x04 EThreadedFileDeviceID
 };
@@ -51,7 +51,7 @@ struct CPendingObjectMap {                         // 16 bytes in retail
     CPendingIterator NextObject;                   // +0x0c
 };
 
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void*             m_vtable;                    // +0x00
     CPendingObjectMap DeviceQueue[2][7];           // +0x04
     void RemoveObjectFromPendingMap(CFileObject* object);

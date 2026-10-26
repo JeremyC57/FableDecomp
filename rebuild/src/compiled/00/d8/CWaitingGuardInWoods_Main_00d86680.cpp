@@ -13,13 +13,13 @@
 //   guildmaster-woods guard ranges (HS_GM* block of the PDB; exact names not provable from the bytes, named descriptively).
 // Shape: the sibling's model; the wait condition owns three conditional CCharString temporaries (flag word in ebx,
 //   destroyed in reverse) and is materialised as a bool before the branch.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void s000();   // slot 0 (+0x0)
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual const C3DVector& GetPosition() const;   // slot 6 (+0x18)
     virtual void s007(); virtual void s008();
@@ -36,7 +36,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
 };
-struct CBaseObject {                                   // CBaseIntelligentPointer root
+class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -46,7 +46,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -54,7 +54,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                    // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) 0x0089B5B0
@@ -125,7 +125,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a p
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
@@ -142,7 +142,7 @@ struct CQ_HeroSoulsGuildmasterScript {
     long GuardInWoodsCount;                            // +0x50
     long DistanceReached;                              // +0x54
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xc94];
     long GuildmasterWoodsGuardOuterDistance;           // +0xc94
     long GuildmasterWoodsGuardInnerDistance;           // +0xc98

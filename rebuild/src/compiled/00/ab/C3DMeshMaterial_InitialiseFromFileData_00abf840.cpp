@@ -13,13 +13,13 @@
 // 0x2c bytes, so the engine chunk's members sit 8 bytes below the PDB header (MaterialIndex +0x2c, Name +0x30,
 // MapFilenames +0x34, MapFlags +0x48, SelfIllumination +0x4c, flags +0x50..+0x53); CFilenames names at +8..+0x14.
 // Leaf: InitialiseFromFileData
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CBankFile {
+class CBankFile { public:
     unsigned char _pad[0x8c];
     bool m_noFilenameCopy;                              // +0x8c (retail byte; set: materials keep no filename copy)
     unsigned long FindIndexByFilename(const CCharString& filename, long entryType);   // 0x009CCDF0
@@ -42,7 +42,7 @@ struct CFilenames : CCountedFilenames {
     CFilenames();                                       // 0x00ABEF60
 };
 
-struct C3DMeshFileEngineMaterialChunk {
+class C3DMeshFileEngineMaterialChunk { public:
     unsigned char _base[0x2c];                          // retail C3DMeshFileChunk (PDB 0x34)
     long MaterialIndex;                                 // +0x2c
     CCharString Name;                                   // +0x30
@@ -60,7 +60,7 @@ struct C3DMeshFileEngineMaterialChunk {
     CCharString GetName() const { return Name; }
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* Object;
     void operator=(T* object)
     {
@@ -74,8 +74,8 @@ template<class T> struct CIVCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct CBaseClass { virtual void v00(); };
-struct C3DMeshMaterial : CBaseClass {
+class CBaseClass { public: virtual void v00(); };
+class C3DMeshMaterial : public CBaseClass { public:
     long MaterialIndex;                                 // +0x04
     CCharString Name;                                   // +0x08
     long DecalID;                                       // +0x0c

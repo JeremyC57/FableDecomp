@@ -9,8 +9,8 @@
 //          the 4-byte sentinel pointer) +0x14; list node {next, prev, CCountedPointer {Data +8, Info +0xc}}.
 // Shape: STLport size() is the inline distance loop counted in esi; `size() > 1` exits to the Terminated store; the
 //          GetCurrentAction() idiom (`empty() ? 0 : front().Data`) then the slot-5 call and the tail-called clear().
-struct CThing;
-struct CCPPointerInfo;
+class CThing;
+class CCPPointerInfo;
 
 namespace NTCScriptedControl {
 class CActionBase;
@@ -34,7 +34,7 @@ struct CActionList {                               // STLport list<CCountedPoint
     }
     void clear();                                  // 0x00719280
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     virtual void v00();
     CThing*      ParentThing;                      // +0x04 (CTCBase)
     bool         ToBeRemoved;                      // +0x08

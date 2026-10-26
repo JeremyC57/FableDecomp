@@ -27,17 +27,17 @@ struct CBase {
 struct CGameComponentInterface {
     virtual void v00();
 };
-struct CGameComponent : CBase, CGameComponentInterface {   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     CGameComponent(CMainGameComponentParent* parent);      // 0x0051D8E0
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                         // 0x0099AED0
     ~CWideString();                                        // 0x0099B510
@@ -61,7 +61,7 @@ struct CWideStringVector : CWideStringVectorBase {         // STLport vector<CWi
 };
 void __fastcall GetSaveNames(CWideStringVector* names);    // 0x00495830
 void __fastcall GetProfileNames(CWideStringVector* names); // 0x004959E0
-struct CTexture {
+class CTexture { public:
     void* PTexture;
     void* PData;
     CTexture() : PTexture(0), PData(0) { }
@@ -69,7 +69,7 @@ struct CTexture {
 template <class T> struct CTBaseSingleton {
     static T& __fastcall Get();                            // 0x0040D2A0 for CUserProfileManager
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetDefaultProfileName() const;             // 0x004065D0
     void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
     static void LoadProfile(const CWideString& name, bool load) { CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load); }
@@ -79,7 +79,7 @@ extern bool g_bLoadDefaultProfile;                         // 0x013B8644
 extern CWideString g_EmptyWideString;
 extern long g_KeyToNumber[122];                            // 0x013B87B0
 
-struct CGraphicDataBank; struct CFontBank;
+class CGraphicDataBank; class CFontBank;
 enum EGameMode { GAME_MODE_NONE = 0 };
 enum ECursorMovement { CURSOR_MOVEMENT_NONE = 0 };
 

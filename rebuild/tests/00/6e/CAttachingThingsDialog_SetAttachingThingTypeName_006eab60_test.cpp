@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_copies = 0, g_dtors = 0; static void* g_key = 0; static long g_value = -1;
-struct CCharString { void* PStringData; CCharString(void* p) : PStringData(p) {} CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_copies; } ~CCharString() { ++g_dtors; } };
+class CCharString { public: void* PStringData; CCharString(void* p) : PStringData(p) {} CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_copies; } ~CCharString() { ++g_dtors; } };
 struct SNamePair { CCharString first; long second; SNamePair(const CCharString& key, long value) : first(key), second(value) {} };
 struct SInsertResult { void* where; bool inserted; SInsertResult() {} };
 struct CCharStringMap { void* head; SInsertResult insert(const SNamePair& v) { g_key = v.first.PStringData; g_value = v.second; SInsertResult r; r.where = head; r.inserted = true; return r; } };

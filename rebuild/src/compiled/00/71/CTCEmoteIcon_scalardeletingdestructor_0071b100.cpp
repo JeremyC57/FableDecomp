@@ -1,4 +1,4 @@
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     void* vftable;
 };
 

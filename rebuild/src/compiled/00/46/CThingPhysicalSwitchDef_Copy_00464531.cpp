@@ -13,7 +13,7 @@
  * forwarding lets the compiler emit a jmp instead of call+ret).
  */
 
-struct CThingPhysicalSwitchDef;
+class CThingPhysicalSwitchDef;
 
 /* real Copy implementation (relocation-masked target of the jmp) */
 extern void __fastcall CThingPhysicalSwitchDef_Copy_impl(

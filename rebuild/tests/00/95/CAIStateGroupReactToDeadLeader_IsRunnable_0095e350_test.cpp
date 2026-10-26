@@ -20,9 +20,9 @@ static int fails = 0;
 // keeps both components on the x87 stack (`fstp st(0)` twice after the compare); `(~flags & 0xF) == 0` gives
 // `not ecx ; test cl,0Fh`. Engine header names (PEnemy +0x14, FramesRunning +0x1c); base modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -33,7 +33,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -70,12 +70,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -109,8 +109,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetMagnitudeSquared() const { return X * X + Y * Y; }
@@ -128,16 +128,16 @@ struct CMessageEventFilter_IsLeaderDeath {
     CThing* PCreature;
     CMessageEventFilter_IsLeaderDeath(CThing* creature) : PCreature(creature) { }
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0xc];
     C3DVector Pos;                              // +0x0c
     unsigned char _pad_0x18[0x30];
     CBaseIntelligentPointerCtor PKiller;        // +0x48
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsLeaderDeath& filter);   // 0x0095E6D0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageEventManager; // +0x60
     CMessageEventManager* GetMessageEventManager() const { return PMessageEventManager; }

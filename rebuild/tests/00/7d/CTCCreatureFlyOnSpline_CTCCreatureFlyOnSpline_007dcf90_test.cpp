@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CCardinalSpline;
-struct CEnginePrimitiveHandle;
+class CThing { public: int id; };
+class CCardinalSpline;
+class CEnginePrimitiveHandle;
 static int g_baseCalls = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
@@ -11,7 +11,7 @@ struct CTCBase_Calls {
 struct CCountedPointer_CardinalSpline { CCardinalSpline* Object; void* CountBlock; CCountedPointer_CardinalSpline() : Object(0), CountBlock(0) { } };
 struct CRetailVector_EngineHandle { CEnginePrimitiveHandle* First; CEnginePrimitiveHandle* Last; CEnginePrimitiveHandle* End;
     CRetailVector_EngineHandle() : First(0), Last(0), End(0) { } };
-struct CTCCreatureFlyOnSpline : CTCBase_Calls {
+class CTCCreatureFlyOnSpline : public CTCBase_Calls { public:
     CCountedPointer_CardinalSpline PSpline; CRetailVector_EngineHandle EngineHandles; float Progress; float DeltaProgress; bool Looping;
     virtual void v00() { }
     CTCCreatureFlyOnSpline(CThing* thing) : CTCBase_Calls(thing), PSpline(), EngineHandles(), Progress(0.0f), DeltaProgress(0.01f), Looping(false) { }

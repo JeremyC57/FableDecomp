@@ -5,14 +5,14 @@
 // CInputProcessGameBaseInit (PDB, 16 bytes) holds the same four pointers in order. The base is modelled locally for its constructor.
 // Shape: the init pointer is loaded after the base call, the four copies alternate ecx/edx, the interface pointer is an immediate zero.
 // Leaf: ??0CInputProcessGameBase
-struct CWorld; struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
-struct CInputProcessGameBaseInit {
+class CWorld; class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
+class CInputProcessGameBaseInit { public:
     CWorld*                 World;                  // +0x00
     CPlayer*                MyPlayer;               // +0x04
     CGameDefinitionManager* DefinitionManager;      // +0x08
     CMainGameComponent*     Component;              // +0x0c
 };
-struct CAInputProcess {                             // 0x14 bytes
+class CAInputProcess { public:                             // 0x14 bytes
     virtual void v00();
     void* PPlayerInterface;                         // +0x04
     void* InputProcessListPos_Data;                 // +0x08

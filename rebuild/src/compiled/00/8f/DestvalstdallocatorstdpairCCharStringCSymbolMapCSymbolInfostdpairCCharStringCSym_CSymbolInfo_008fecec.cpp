@@ -8,7 +8,7 @@
 // picks the right .text block from the object file.
 
 // CCharString: a small string wrapper; its dtor is the leaf at 0xa01c10.
-struct CCharString {
+class CCharString { public:
     void* p;          // +0x00 : buffer / refcounted pointer
     ~CCharString();   // out-of-line; retail 0xa01c10
 };

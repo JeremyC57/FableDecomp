@@ -10,7 +10,7 @@
 //   into the dead context-argument slot for TransferOutLong; its DefaultVal zeroing is dead and dropped); the deed
 //   traits' address escapes to the out-of-line call, so its value-initialised DefaultVal (`mov [esp+10h],0`, the
 //   `push ecx` frame word) is kept and scheduled after the first argument push.
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
     void* PStringData;

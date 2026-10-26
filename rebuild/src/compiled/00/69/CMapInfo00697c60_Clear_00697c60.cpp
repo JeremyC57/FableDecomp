@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00697C60, length 96 bytes.
 // Callees: 0x0069C380 (counted-pointer assignment), operator delete @ 0x00BFE9BC. The chunk label (CMapInfo::Clear) is propagated; the layout does not match CMapInfo. Shape: `this` in edi, the pointer's address in esi, one zero register (ebx), `ret`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CDiskFileWin32;
+class CDiskFileWin32;
 struct SCountBlock_00697c60 {                      // the shared count block of a CCountedPointer
     long m_references;                             // +0x00
     void (__fastcall* m_pfnDestroy)(CDiskFileWin32*);   // +0x04

@@ -9,14 +9,14 @@
 // Layout: Ego_r.pdb CTCTavernBar Jugs +0x0c (12-byte retail vector of 8-byte intelligent pointers); the jug's interface
 //   0xbb component RH set +0x11 / position +0x29 (packed), interface 0x32 owner pointer +0x0c.
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Forward, Up;
     CRightHandedSet() {}
     CRightHandedSet(float fx, float fy, float fz, float ux, float uy, float uz)
@@ -26,7 +26,7 @@ struct CRightHandedSet {
     }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,7 +34,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* PData;                                 // +0x04
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                                 // vtable 0x01237F1C
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -53,8 +53,8 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct CTCParamsBase;
-struct CThing;
+class CTCParamsBase;
+class CThing;
 struct CGraphic {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -72,12 +72,12 @@ struct CGraphic {
     virtual void v73(); virtual void v74();
     virtual void SetRHSet(const CRightHandedSet& rh);   // +0x12c
 };
-struct CThing;
-struct CTCNamedUserActionPoints {
+class CThing;
+class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index, long flags,
                                  bool reserve);         // 0x007FF190
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -104,7 +104,7 @@ struct CThing {
         }
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     template <class T>
     __forceinline void GetInterfaceFast(long type, T** out)
     {
@@ -130,7 +130,7 @@ struct CTCOwnedEntityA {                                // interface 0x32
     unsigned char _pad00[0x0c];
     CIntelligentPointer<CThing> POwner;                 // +0x0c
 };
-struct CTCOwnedEntity {                                 // interface 0x33
+class CTCOwnedEntity { public:                                 // interface 0x33
     void SetPOwner(CThing* owner);                      // 0x007E8590
 };
 #pragma pack(push, 1)
@@ -141,8 +141,8 @@ struct CTCPlacedEntity {                                // interface 0xbb
 };
 #pragma pack(pop)
 
-struct CMap;
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
+class CMap;
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
 struct CWorldA {
     unsigned char _pad[0x10];
     CDefinitionManager* DefinitionManager;
@@ -185,7 +185,7 @@ __declspec(noinline) void CPtrVector<T>::InsertGrow(T* where, const T& value, co
 }
 #pragma auto_inline(on)
 
-struct CTCTavernBar {
+class CTCTavernBar { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];

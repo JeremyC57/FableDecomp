@@ -1,12 +1,12 @@
 #pragma optimize("s",on)
 struct Field { unsigned char b[0xc]; };
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA_00464cbf(void* p);
     void PersistB_00466a47(void* p);
     void PersistC(void* p);
     void PersistD(void* p);
 };
-struct CSpecialAbilitiesDrainLifeDef {
+class CSpecialAbilitiesDrainLifeDef { public:
     unsigned char _pad[0x3c];
     Field f0; // 0x3c
     Field f1; // 0x48

@@ -78,7 +78,7 @@ struct CTCInventoryBase_Calls {
     long m_menuMode;
     void ProcessInventoryInputDown() { g_log[g_n++] = 'B'; }
 };
-struct CTCInventoryQuests : CTCInventoryBase_Calls {
+class CTCInventoryQuests : public CTCInventoryBase_Calls { public:
     unsigned char _pad_0x20[0x157 - 0x20];
     bool m_questListActive;
     void QuestListHook() { g_log[g_n++] = 'H'; }

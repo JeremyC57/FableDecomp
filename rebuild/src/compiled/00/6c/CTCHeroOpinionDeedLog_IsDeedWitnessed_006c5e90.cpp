@@ -14,7 +14,7 @@
 // stays in edi across GetAllThings because that template's body is compiled earlier in the TU (stand-in below). The list's in-class destructor is inlined on the shared `return false` path and called out of
 // line on the early `return true` (VC7.1 inlines an in-class inline member at its first call only).
 // Layout: CThing interface bitset +0x20, map +0x44, dead flag +0x91 bit 0.
-struct CTCBase;
+class CTCBase;
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -78,16 +78,16 @@ namespace N_004ab4f0 { struct CThingList {                                  // s
     }
 }; } using N_004ab4f0::CThingList;
 
-struct CThingFilter_None {
+class CThingFilter_None { public:
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;
 };
-template <class A, class B> struct CFilter_Bind2 : A {
+template <class A, class B> class CFilter_Bind2 : public A { public:
     B Second;
 };
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing** m_pFirst;                               // stand-in model of the searched things
     CThing** m_pLast;
     template <class T, class C, class F> void GetAllThings(const F& filter, C& found);   // 0x004ACF90
@@ -113,11 +113,11 @@ template <class T, class C, class F> void CThingSearchTools::GetAllThings(const 
 }
 #pragma auto_inline(on)
 
-struct CTCCreatureOpinionOfHero {                    // interface type 0x4F
+class CTCCreatureOpinionOfHero { public:                    // interface type 0x4F
     bool KnowsOfDeed(long deed, bool flag);          // 0x00683650
 };
 
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     void*   __vftable;                               // +0x00
     CThing* ParentThing;                             // +0x04 CTCBase
     CThingSearchTools* GetThingSearchTools() const;  // 0x00686D90 (CTCBase)

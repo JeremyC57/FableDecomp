@@ -1,13 +1,13 @@
 // Behaviour test for CTCInventoryBase::GetInventoryText @ 0x005BD273 (model copy; stubbed text bank).
 #include <cstdio>
-struct CWideString {
+class CWideString { public:
     const unsigned short* PStringData;
     CWideString() : PStringData(0) {}
     CWideString(const CWideString& other) : PStringData(other.PStringData) {}
 };
 static const unsigned short g_emptyChars[1] = { 0 };
 static CWideString g_emptyWideString;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) {}
     virtual void Delete() { ++deletes; }
     unsigned long IVRefCount;
@@ -15,7 +15,7 @@ struct CIVCountedPointeeBase {
     CIVCountedPointeeBase() : IVRefCount(0) {}
 };
 long CIVCountedPointeeBase::deletes = 0;
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(T* p) : Object(p) { if (p) ++p->IVRefCount; }
     CIVCountedPointer(const CIVCountedPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }
@@ -47,7 +47,7 @@ struct CDataBank {
         return CIVCountedPointer<CGroupEntry>(index == 7 && load ? const_cast<CGroupEntry*>(&group) : 0);
     }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;
 };

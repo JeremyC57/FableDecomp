@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 00449b60: CPlayerManager::GetMultiplayerColour slot colours.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

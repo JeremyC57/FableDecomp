@@ -1,8 +1,8 @@
 // Behaviour test for 0x008c7400 CCreatureAction_TrollThrowProjectile constructor (variant 2).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
-struct CSoundPair { int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
+class CSoundPair { public: int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -13,7 +13,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& o) : CBaseIntelligentPointer() { SetPItem(o.GetPItem()); }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThing* m_owner; CThing* m_thing; int m_code;
     CCombatActionBase(CThing* owner, CThing* thing, int code, const CSoundPair&) : m_owner(owner), m_thing(thing), m_code(code) { }
     CCombatActionBase(const CCombatActionBase& o) : m_owner(o.m_owner), m_thing(o.m_thing), m_code(o.m_code) { }

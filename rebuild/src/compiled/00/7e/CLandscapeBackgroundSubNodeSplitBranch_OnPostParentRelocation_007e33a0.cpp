@@ -1,5 +1,5 @@
-struct CLandscapeBackgroundTreeNode {};
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundTreeNode { public:};
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     char pad[0x14];
     CLandscapeBackgroundTreeNode* parent;
     CLandscapeBackgroundTreeNode* relocatedParent;

@@ -40,26 +40,26 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CBettingDef : CDefBase {
+class CBettingDef : public CDefBase { public:
     unsigned char _pad08[0x44 - 0x08];
     unsigned long Bet;                                  // +0x44 text id
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 struct CDefSubRef { long DefIndex; };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefBase> GetDef(long index);           // 0x009ADA10 (hidden result)
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual const CDefSubRef* FindSubDef(const CCharString& typeName);   // slot 14 (+0x38)
@@ -101,11 +101,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_007e5820(CDefPointer<CBetting
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CTCBetting {
+class CTCBetting { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CWideString GetText(unsigned long textId);          // 0x007E4D70

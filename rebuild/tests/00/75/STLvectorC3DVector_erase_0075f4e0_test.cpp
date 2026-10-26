@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector* copy_range(C3DVector* first, C3DVector* last, C3DVector* result)
 {
     while (first != last) { *result = *first; ++result; ++first; }

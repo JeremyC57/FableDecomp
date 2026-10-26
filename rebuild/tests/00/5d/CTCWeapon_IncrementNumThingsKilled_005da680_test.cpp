@@ -7,7 +7,7 @@ struct Thing {
     unsigned char flags91;
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     unsigned char pad_00[0x1c];
     int numThingsKilled;
     void IncrementNumThingsKilled(Thing* thing);

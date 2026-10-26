@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext;
+class CPersistContext;
 template <class T>
 struct CRetailVector {                          // STLport vector: _M_start / _M_finish / _M_end_of_storage
     T* first;
@@ -8,18 +8,18 @@ struct CRetailVector {                          // STLport vector: _M_start / _M
     T* end;
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     const void* log[32]; int n;
     void Transfer(float& value) { log[n++] = &value; }
     void Transfer(CRetailVector<float>& value) { log[n++] = &value; }
 };
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void Transfer(CPersistContext&) {}
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
 };
 
-struct CSpecialAbilitiesEnflameDef : CParentDefClassBase {
+class CSpecialAbilitiesEnflameDef : public CParentDefClassBase { public:
     float CamDist[4];                           // +0x3c
     float CamHeight[4];                         // +0x4c
     float CamFOV[4];                            // +0x5c

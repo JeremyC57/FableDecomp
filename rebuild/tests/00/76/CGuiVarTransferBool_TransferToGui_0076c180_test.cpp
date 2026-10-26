@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void*        field_0;
     int          field_4;
     char         pad_8[4];

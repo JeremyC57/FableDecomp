@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerRepeatedZSprites {
+class CEnginePrimitiveManagerRepeatedZSprites { public:
     void* vftable;
 };
 

@@ -6,7 +6,7 @@
 // the landed by-value getter idiom (0x00856EA0): copy (`test ; je ; inc [p+4]`), the null test taken on the raw pointer
 // while the copy lives (`setne bl`), release (`dec [p+4] ; jne ; call [vt+4]`), then the inverted result (`test bl,bl ; sete al`).
 // Retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so `this` is modelled locally.
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     virtual void v00();
     virtual void Delete();                  // slot 1 (+4)
     long m_references;                      // +0x04
@@ -19,7 +19,7 @@ struct CCountedAbilityPointer {             // CCountedPointer<CMeleeCombatAbili
     CMeleeCombatAbilityDef* GetPItem() const { return m_pItem; }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (PDB 0x12c)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (PDB 0x12c)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -36,7 +36,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114 (PDB 0x12c)
     CCountedAbilityPointer GetPMeleeAbilityDef() const { return PMeleeAbilityDef; }
 };
 
-struct CCreatureAction_InterruptableMidAttackAutoTurn : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttackAutoTurn : public CCombatActionBase { public:
     bool IsAbleToBeAttacked() const;
 };
 

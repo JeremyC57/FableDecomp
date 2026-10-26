@@ -73,7 +73,7 @@ public:
 }
 
 enum EAnimUpdateMode { ANIM_UPDATE_MODE_0 };
-struct CTransitionBlendAlpha { float Current; float Last; };
+class CTransitionBlendAlpha { public: float Current; float Last; };
 class CAnimateThing;
 
 class CAnimSet {                                         // Ego_r.pdb names; 0x54 bytes in retail

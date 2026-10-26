@@ -1,19 +1,19 @@
 #include <cstdio>
 static char g_log[16]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct C2DBoxF { float left, top, right, bottom; };
+class C2DBoxF { public: float left, top, right, bottom; };
 static const C2DBoxF* g_window = 0;
 struct CRenderManagerCore { void SetAWindow(const C2DBoxF& w) { g_window = &w; Log('W'); } };
-struct CDisplayManager {
+class CDisplayManager { public:
     CRenderManagerCore* PRenderManager;
     bool SetRenderTargetAsBackScreen() { Log('B'); return true; }
     void EndRender() { Log('E'); }
 };
-struct CSystemManager { CDisplayManager* PDisplayManager; };
+class CSystemManager { public: CDisplayManager* PDisplayManager; };
 static CSystemManager g_system;
 static CSystemManager* GFGetSystemManager() { Log('G'); return &g_system; }
-struct CRenderTarget { void DetachTarget() { Log('D'); } };
-struct CRenderStateManager { void RestoreCaptureBlock() { Log('R'); } };
+class CRenderTarget { public: void DetachTarget() { Log('D'); } };
+class CRenderStateManager { public: void RestoreCaptureBlock() { Log('R'); } };
 static CRenderStateManager g_rsm; static CRenderStateManager* g_pRenderStateManager = &g_rsm;
 struct CSurfaceCompositor {
     bool m_composing, m_wasRendering; CRenderTarget* m_pRenderTarget; C2DBoxF m_savedWindow;

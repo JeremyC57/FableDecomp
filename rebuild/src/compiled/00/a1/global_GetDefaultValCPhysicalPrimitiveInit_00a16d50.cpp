@@ -3,7 +3,7 @@ struct SubInit {
     void Init();  // out-of-line -> call 0x99e4b0
 };
 
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     int   a;        // +0x00
     int   b;        // +0x04
     char  pad[0x14];// +0x08 .. +0x1b

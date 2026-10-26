@@ -23,7 +23,7 @@ struct CAnimSetUpdateInfo {
     float DistanceMoved;
     float PercentageComplete;
 };
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
     float GetValue() const
@@ -38,7 +38,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return first[n]; }
     ~CRetailVector() { if (first) free(first); }
 };
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode;                                     // +0
     CRetailVector<short> Anims;                          // +4
     CRetailVector<CTransitionBlendAlpha> InternalAlphas; // +0x10

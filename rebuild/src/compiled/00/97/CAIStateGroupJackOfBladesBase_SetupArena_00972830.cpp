@@ -14,17 +14,17 @@
 // Layout: engine/CAIStateGroup_JackOfBladesBase.h (PArenaCentre +0x1c); PBrain is the first dword at +0x04.
 #include "engine/CAIStateGroup_JackOfBladesBase.h"
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(const C3DVector& centre, long half)   // the square of half-width `half` around the truncated XY
     {
@@ -37,14 +37,14 @@ struct C2DBoxI {
     }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     CCharString DefName;
     CThingFilter_HasDefGlobalIndex(const CCharString& name) : DefName(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter,
                                    CThing** result);   // 0x007FD110
 };
@@ -72,7 +72,7 @@ struct CRefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CCameraManagerSetDef : CRefVirtual, CRefCounted {
+class CCameraManagerSetDef : public CRefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -80,15 +80,15 @@ struct CCameraManagerSetDef : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer<CCameraManagerSetDef>* def);   // 0x004AB990
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetCameraManagerSetDef(const CDefPointer<CCameraManagerSetDef>& def);       // 0x0069AC90
 };
 struct CCameraHost {                            // the world's +0x34 object
@@ -96,12 +96,12 @@ struct CCameraHost {                            // the world's +0x34 object
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x34];
     CCameraHost* PCameraHost;                   // +0x34
     CCameraHost* GetPCameraHost() { return PCameraHost; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

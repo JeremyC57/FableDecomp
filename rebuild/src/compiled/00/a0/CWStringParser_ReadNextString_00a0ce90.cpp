@@ -9,13 +9,13 @@
 extern "C" int __cdecl iswdigit(wchar_t c);   // 0x00BFEDE2
 extern "C" int __cdecl iswalpha(wchar_t c);   // 0x00BFEDE8
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
 };
 
-struct CWParsedItem {
+class CWParsedItem { public:
     long        Type;      // +0x00 EParsedItemType (2 = string)
     long        Integer;   // +0x04
     CWideString String;    // +0x08

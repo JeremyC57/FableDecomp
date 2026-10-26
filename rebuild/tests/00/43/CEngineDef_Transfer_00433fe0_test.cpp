@@ -6,11 +6,11 @@
 // (fldz/fld/fstp body), long fields through CPersistContext::Transfer(long&) @ 0x00431102 (calls WriteLong 0x993eb0).
 // Local model: no engine/CEngineDef.h exists. Field names/types are the PDB's (fable_types.h), but the retail object
 // places them 4 bytes earlier than the Ego_r layout (floats 0x3C..0x5C, longs 0x60..0x7C), as the lea offsets show.
-struct CPersistContext {
+class CPersistContext { public:
  void Transfer(float&); // 0x00431061
  void Transfer(long&);  // 0x00431102
 };
-struct CEngineDef {
+class CEngineDef { public:
  unsigned char _base[0x3c];
  float LODErrorTolerance, CharacterLODErrorTolerance, LODErrorFactor, SeaHeight;              // 0x3c..0x48
  float GamePrimitiveDefaultFadeStart, GamePrimitiveDefaultFadeRangeRatio;                     // 0x4c, 0x50

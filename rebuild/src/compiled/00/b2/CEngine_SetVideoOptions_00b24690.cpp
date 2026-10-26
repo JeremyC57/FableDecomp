@@ -17,12 +17,12 @@
 // Shape: the bool result lives in the dead `options` argument slot; the SmartRestore failure is `result = false` falling into
 //   the shared exit (an early `return false` there puts the display-mode failure block out of line); the effects definition is
 //   re-indexed from `this` for each of the three users, the texture/mesh definitions are read through the global engine.
-struct C2DExtentsI { long X; long Y; };
-struct C2DExtentsF { float X; float Y; };
+class C2DExtentsI { public: long X; long Y; };
+class C2DExtentsF { public: float X; float Y; };
 enum EEngineVideoOptionQuality { QUALITY_LOW, QUALITY_MEDIUM, QUALITY_HIGH, QUALITY_ULTRA };
 enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
 enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 0, CREATE_DEVICE_OK = 2 };
-struct CEngineVideoOptions {
+class CEngineVideoOptions { public:
     C2DExtentsI               ScreenResolution;   // +0x00
     C2DExtentsF               ScreenAspectRatio;  // +0x08
     long                      BitsPerPixel;       // +0x10
@@ -35,30 +35,30 @@ struct CEngineVideoOptions {
     EEngineVideoOptionQuality EffectsQuality;     // +0x2c
     ESurfaceMultisampleType   Antialiasing;       // +0x30
 };
-struct CEngineVideoOptionsDef {
+class CEngineVideoOptionsDef { public:
     unsigned char _pad[0x3c];
     long          HiresTextureMemory;             // +0x3c
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel, ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
     void SetPresentParameters(bool immediate, bool a, bool b);   // 0x009BFF10
 };
 struct CShaderBankStateBlock { void Set(CEngineVideoOptionsDef* def); };                       // 0x00B50C60
-struct CEngineScreenEffectColourFilter { void SetEffectQuality(CEngineVideoOptionsDef* def); };   // 0x00B5A0B0
+class CEngineScreenEffectColourFilter { public: void SetEffectQuality(CEngineVideoOptionsDef* def); };   // 0x00B5A0B0
 struct CEngineVideoOptionsListener {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
     virtual void SetEffectQuality(CEngineVideoOptionsDef* def);   // slot 13 (+0x34)
 };
-struct CEngineResourceManager { bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
+class CEngineResourceManager { public: bool ResizeHiresTextureMemory(long size); };        // 0x00B3B4F0
 struct CEngineMeshDetailManager { void SetMeshDetail(EEngineVideoOptionQuality quality, CEngineVideoOptionsDef* def); };   // 0x00B32010
-struct CEngineLocalDetailGenerator { void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };   // 0x00B59870
+class CEngineLocalDetailGenerator { public: void UpdateLoadingDistanceVideoOptions(CEngineVideoOptionsDef* def); };   // 0x00B59870
 struct CEngineVideoOptionsSink { void OnVideoOptionsChanged(); };                 // 0x00B2F740
 
 enum ESmartRestoreComponentVideoMemoryResult { SMART_RESTORE_OK = 0 };
 
-struct CEngine {
+class CEngine { public:
     unsigned char           _pad00[0x84];
     bool                    IsInitialised;                // +0x84
     unsigned char           _pad85[0xbd - 0x85];

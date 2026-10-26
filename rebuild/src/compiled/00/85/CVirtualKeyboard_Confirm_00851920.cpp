@@ -8,7 +8,7 @@
 // Shape: the `&&` builds the name temporary only on its right arm (construction flag in bl, `test bl,1` before the
 // destructor); the test result is a bool local in the frame.
 #include "engine/CVirtualKeyboard.h"
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     long GetLength() const;                        // 0x0099B220
     ~CWideString();                                // 0x0099B510

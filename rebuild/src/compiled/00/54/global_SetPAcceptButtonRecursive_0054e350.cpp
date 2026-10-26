@@ -13,7 +13,7 @@
 namespace NUISystem {
 class CComponent;
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {      // 8 bytes: the object, then its shared count record
 public:
     T*              Data;                       // +0x00

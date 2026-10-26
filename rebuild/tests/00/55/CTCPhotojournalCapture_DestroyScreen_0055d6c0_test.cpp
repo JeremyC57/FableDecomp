@@ -11,7 +11,7 @@ static void* CopyTrivial(const void* first, const void* last, void* result)
     return (char*)std::memmove(result, first, n) + n;
 }
 namespace NUISystem {
-    struct CComponent { virtual ~CComponent() { ++g_deleted; } };
+    class CComponent { public: virtual ~CComponent() { ++g_deleted; } };
 }
 template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -27,19 +27,19 @@ template <class T> struct vector {
     }
     void clear() { erase(begin(), end()); }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
 static int g_events = 0; static long g_type = 0; static int g_player = 0; static int g_valid = 0;
-struct CPlayerManager { long GetMainPlayerNumber() { return 3; } };
-struct CMainGameComponent {
+class CPlayerManager { public: long GetMainPlayerNumber() { return 3; } };
+class CMainGameComponent { public:
     CPlayerManager* PlayerManager;
     void AddGameEvent(const CGameEvent& event) { ++g_events; g_type = event.Type; g_player = event.Player; g_valid = event.Valid && !event.Replacement && event.EndPos == 0; }
 };
 static CPlayerManager g_pm; static CMainGameComponent g_mgc = { &g_pm };
 CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     vector<NUISystem::CComponent*> Components;
     void DestroyScreen();
 };

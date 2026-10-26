@@ -37,21 +37,21 @@ public:
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 struct CHeroInterface4 {                         // interface 4 = CTCHeroStats (CTCWife::Died calls its SetMarriageState 0x0057BC6E)
     unsigned char _pad_0x00[0x114];
     void* BlockingCourtship;                     // +0x114 (descriptive)
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[8];

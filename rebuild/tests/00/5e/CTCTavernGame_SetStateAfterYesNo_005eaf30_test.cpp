@@ -5,22 +5,22 @@
 #include <stdio.h>
 #include <string.h>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long = -1) : PStringData(text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CWideString {
+class CWideString { public:
     const unsigned short* PStringData;
     CWideString(const unsigned short* text) : PStringData(text) { ++g_live; }
     CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_live; }
     ~CWideString() { --g_live; }
 };
-struct CFontBank { int id; };
+class CFontBank { public: int id; };
 static const unsigned short* g_shown[4]; static unsigned long g_flags = 0; static CFontBank* g_font = 0; static int g_shows = 0;
 static bool g_b0 = true, g_b1 = false; static float g_time = -1.0f;
 static bool g_raiseSkipOnEvent = false;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
                  const CWideString& altText, unsigned long flags, float time, bool b0, bool b1)
     { g_font = font; g_shown[0] = title.PStringData; g_shown[1] = speaker.PStringData; g_shown[2] = text.PStringData;
@@ -28,14 +28,14 @@ struct CSubtitleRenderer {
 };
 struct CGameEventData { unsigned char Bytes[0x28]; int Size; unsigned char Data;
     void Copy(long size, const void* data) { Size = size; Data = *(const unsigned char*)data; } };
-struct CGameEvent {
+class CGameEvent { public:
     int Type; unsigned char Flag; unsigned char _pad05[0x20]; unsigned char B25, B26, B27; int Size; unsigned char Data;
     CGameEvent(long type) : Type(type), Flag(0xff), B25(0), B26(1), B27(0) { }
     template <class T> void SetData(T value) { ((CGameEventData*)this)->Copy(sizeof(T), &value); }
 };
 static long g_eventType = -1, g_eventSize = -1; static int g_eventData = -1;
 extern bool g_bTavernSkipYesNo;
-struct CMainGameComponent { CFontBank* PFont;
+class CMainGameComponent { public: CFontBank* PFont;
     void AddGameEvent(CGameEvent* e) { g_eventType = e->Type; g_eventSize = e->Size; g_eventData = e->Data; if (g_raiseSkipOnEvent) g_bTavernSkipYesNo = true; } };
 struct CSubtitleOwner { CSubtitleRenderer Renderer; };
 static CFontBank g_mainFont; static CMainGameComponent g_mgc; static CSubtitleOwner g_owner;

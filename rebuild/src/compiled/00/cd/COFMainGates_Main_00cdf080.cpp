@@ -9,21 +9,21 @@
 // Shape: the landed CHTE_Prisoner::Main (0x00D69F50) filter block (the filter vtable kept in ebx for both stores); the quest name is a
 //   CCharString in its own block and the test result is taken as `IsQuestActive(...) ? false : true` (8-bit `neg ; sbb ; inc` kept
 //   in bl across the string destructor).
-struct CThing;
+class CThing;
 struct SCount { long m_references; };
 struct CCountedPointer_CThing {
     CThing* m_pObject;
     SCount* m_pCount;
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
 };
-struct CScriptThing : CBaseClass {                // 12 bytes
+class CScriptThing : public CBaseClass { public:                // 12 bytes
     CCountedPointer_CThing PImp;                  // +4
     CScriptThing(const CScriptThing& other);      // 0x004ABE90
     ~CScriptThing();                              // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0

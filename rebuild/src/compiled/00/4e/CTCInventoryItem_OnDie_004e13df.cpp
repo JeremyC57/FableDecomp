@@ -2,7 +2,7 @@
 // Leaf: OnDie
 #pragma optimize("s",on)
 
-struct CTCInventoryItem;
+class CTCInventoryItem;
 
 // cdecl free callee at 0xbfea14 (push eax; call; pop ecx cleanup)
 extern "C" void __cdecl Freer(void* p);
@@ -10,7 +10,7 @@ extern "C" void __cdecl Freer(void* p);
 // base class OnDie (this-call member) at 0x9fc550
 void __fastcall BaseOnDie(CTCInventoryItem* self);
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vtbl;      // +0x00
     char pad[0x68];  // +0x04 .. +0x6b
     void* field6c;   // +0x6c

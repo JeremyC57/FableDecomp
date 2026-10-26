@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Position;
     void RotateB(float angle)
     {

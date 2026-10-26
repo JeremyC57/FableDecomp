@@ -1,20 +1,20 @@
 #include <cstdio>
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x24];
     unsigned char flag24;   // +0x24
     unsigned char _pad1[0x91 - 0x25];
     unsigned char flag91;   // +0x91
 };
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 struct CGameScriptInterfaceVtbl {
     unsigned char _pad[0x2c];
     CThing* (__fastcall *getThing)(CGameScriptInterface* self);
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CGameScriptInterfaceVtbl* vt;
 };
 

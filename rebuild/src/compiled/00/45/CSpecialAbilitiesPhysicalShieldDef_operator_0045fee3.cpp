@@ -12,14 +12,14 @@
 // Layout: engine/CSpecialAbilitiesPhysicalShieldDef.h is the PDB view (0x16c, 16-byte vectors, base 0x40);
 // the retail object is 0x148 bytes, so the class is modelled locally on the landed CParentDefClassBase base.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString {                         // a def-table string reference (TablePos)
+class CDefString { public:                         // a def-table string reference (TablePos)
     long TablePos;
 };
 
@@ -30,7 +30,7 @@ struct CFloatVector {                       // retail std::vector<float> (12 byt
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesPhysicalShieldDef : CParentDefClassBase {
+class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:
     CDefString   InitSound;                     // +0x3c
     CDefString   PowerUpSound[3];               // +0x40
     CDefString   CastSound;                     // +0x4c

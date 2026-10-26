@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CQ_OpeningGraveyardSecretPassageScript::WatchForArmour (0x00DC37F0): the counter climbs as each
 // ceremonial piece is acquired; the objective text changes on each new piece and switches to 03B when all four are held.
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CGSI {
     int Frames; int Counter; long Value; bool Display; int Objectives; char LastObjective[64]; bool Removed; CScriptThing Hero;
     void NewScriptFrame() { ++Frames; }

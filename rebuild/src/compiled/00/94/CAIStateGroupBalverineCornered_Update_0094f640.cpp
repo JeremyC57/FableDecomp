@@ -5,8 +5,8 @@
 // Address-of-temporary syntax follows VC7.1; g++ fixtures compile the identical body with -fpermissive.
 #include "engine/CAIStateGroup_BalverineCornered.h"
 #include "engine/CAIBrain.h"
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 struct CInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry *First,*Last;
@@ -38,21 +38,21 @@ inline bool IsAlive(const CBaseIntelligentPointer& p) {
     if(p.GetPItem()!=0) { if(!((CRetailThing*)p.GetPItem())->Dead) return true; }
     return false;
 }
-struct CTCVolumeContainmentTracker {
+class CTCVolumeContainmentTracker { public:
     unsigned char _base[0xc];
     CBaseIntelligentPointer PThingInside;
     void Update(); // 00785620
 };
-struct C3DVector { float X,Y,Z; };
-struct CCombatActionBase {
+class C3DVector { public: float X,Y,Z; };
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
     ~CCombatActionBase(); // 0062E900
 };
-struct CCreatureAction_BalverineLungeAttack : CCombatActionBase {
+class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70
 };
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     C3DVector* EndPos;
     CCreatureAction_BalverineCorneredJumpIntoSky(CThingCreatureBase*,CThing*,C3DVector*); // 008CCB80
 };

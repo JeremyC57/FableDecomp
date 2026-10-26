@@ -14,7 +14,7 @@
 // the class itself is declared locally only for its static members (engine/CTCInventoryItem.h has the instance layout,
 // which this static function never touches).
 #include "engine/CInventoryItemDef.h"
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                         // slot 1 (+0x04)
     mutable long RefCount;                                // +0x04
@@ -28,7 +28,7 @@ struct CDefPointeeBase {
     }
 };
 struct CThingDef;                                         // no engine header
-template <class T> struct CDefPointer {                   // CDefPointer<const T>: the pointee seen through its counted base
+template <class T> class CDefPointer { public:                   // CDefPointer<const T>: the pointee seen through its counted base
     CDefPointeeBase* Object;                              //   (the engine headers' `CDefPointeeBase* PDef_Object` convention)
     void Clear()
     {

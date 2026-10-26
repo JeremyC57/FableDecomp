@@ -19,7 +19,7 @@ struct SContextEntry_Retail {
 
 long __fastcall GetContextSensitivePriority_00581bde(long id);   // 0x00581BDE
 
-struct CContextSensitivePriorityCompare {
+class CContextSensitivePriorityCompare { public:
     static __forceinline long GetPriority(const SContextEntry_Retail& entry)
     {
         if (entry.m_pItem)

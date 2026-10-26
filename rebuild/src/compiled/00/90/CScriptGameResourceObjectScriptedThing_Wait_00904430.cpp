@@ -17,7 +17,7 @@
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 long __stdcall GFSecondsToFrames(float seconds);   // 0x00415FC1
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -57,7 +57,7 @@ struct CBase {                                     // CBaseClassNonCopyable root
     virtual ~CBase();
     CBase();                                       // 0x0099A2F0
 };
-struct CTCScriptedControl;
+class CTCScriptedControl;
 namespace NTCScriptedControl {
 struct CActionBase : CBase {                       // vtable 0x01265504
     CTCScriptedControl* PTCScript;                 // +0x04
@@ -73,7 +73,7 @@ struct CActionWait : CActionBase {                 // vtable 0x0128D760, 0x14 by
 };
 }
 
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };
 

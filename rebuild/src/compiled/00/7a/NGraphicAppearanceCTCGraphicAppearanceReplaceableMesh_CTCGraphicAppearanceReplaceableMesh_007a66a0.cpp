@@ -11,12 +11,12 @@
 // object with an inline constructor) after them; the zeroes share one register (`xor ecx,ecx`).
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??0CTCGraphicAppearanceReplaceableMesh
-struct CThing;
+class CThing;
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent;
-struct CPrimitive;
+class CAGraphicAppearanceComponent;
+class CPrimitive;
 
 }
 
@@ -24,12 +24,12 @@ struct CTCGraphicAppearance {
     void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
 };
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -39,14 +39,14 @@ struct CTCBase {                                        // 0x0c bytes: vptr, Par
 
 namespace NGraphicAppearance {
 
-struct CAGraphicAppearanceComponent {                   // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:                   // vtable 0x0125A170
     virtual void v00();
     CAGraphicAppearanceComponent() { }
 };
 
 }
 
-struct CReplaceableMeshDef;
+class CReplaceableMeshDef;
 
 struct CDefPointer_CReplaceableMeshDef {                // one word: the def
     const CReplaceableMeshDef* m_pDef;
@@ -55,7 +55,7 @@ struct CDefPointer_CReplaceableMeshDef {                // one word: the def
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearanceReplaceableMesh : CTCBase, CAGraphicAppearanceComponent {
+class CTCGraphicAppearanceReplaceableMesh : public CTCBase, public CAGraphicAppearanceComponent { public:
     bool                            Replaced;           // +0x10
     unsigned long                   MeshIndex;          // +0x14
     CPrimitive*                     PrimHandle;         // +0x18

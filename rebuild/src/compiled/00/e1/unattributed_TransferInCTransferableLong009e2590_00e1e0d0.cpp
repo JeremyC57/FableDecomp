@@ -10,7 +10,7 @@
 // is then stored through the component's target pointer at +0x4 (read before the call). The manifest label
 // (`CPersistContext_TransferableComponent::vfunc_1`) is propagated; the class is named by the
 // helper. One of 21 bodies of this shape.
-struct CPersistContext;
+class CPersistContext;
 void __fastcall TransferIn_009e2590(CPersistContext* context, long value, long* result);   // 0x009E2590 (manifest: ctx, CStringParser*, long*)
 
 struct CTransferableLong_009e2590 {

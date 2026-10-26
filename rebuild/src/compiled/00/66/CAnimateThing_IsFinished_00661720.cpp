@@ -8,7 +8,7 @@
 // flag. No code or data references this copy (an out-of-line instance of an inline accessor); the name is descriptive.
 // Shape: `a || b` with a bool result gives the separate `xor eax,eax` / `mov eax,1` tails; the flag is a one-bit
 // bitfield (`test byte ptr [esi+94h],1`).
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad_00[0x94];
     unsigned char m_markedFinished : 1;                     // +0x94 bit 0 (set by SetAsFinished)
     bool IsAnimationFinished() const;                       // 0x0070C0E0

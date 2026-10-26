@@ -1,10 +1,10 @@
 #include <cstdio>
 // CModeDragonGetHit::OnActivate model: base activation, PTarget = the main player's hero, a player creature suspended.
-struct CThing { unsigned char type; int suspends; void SetSuspendAnimation(bool s, void*) { if (s) ++suspends; } };
+class CThing { public: unsigned char type; int suspends; void SetSuspendAnimation(bool s, void*) { if (s) ++suspends; } };
 static CThing g_hero = { 0, 0 };
-struct CPlayer { CThing* GetHeroThing() { return &g_hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CEngine { CPlayerManager* m_pPlayerManager; };
+class CPlayer { public: CThing* GetHeroThing() { return &g_hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CEngine { public: CPlayerManager* m_pPlayerManager; };
 static CPlayerManager g_pm;
 static CEngine g_engine = { &g_pm };
 static CEngine* g_pEngine = &g_engine;

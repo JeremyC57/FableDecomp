@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046B03A GFSerialiseVectorBinaryIn<CAtmosBankEntry>: count, resize(n, {0,-1}), one traits read per element
 #include <cstdio>
 #include <cstring>
-struct CAtmosBankEntry { unsigned int ID; int Filename; CAtmosBankEntry() : ID(0), Filename(-1) {} };
+class CAtmosBankEntry { public: unsigned int ID; int Filename; CAtmosBankEntry() : ID(0), Filename(-1) {} };
 struct EntryVector {
     CAtmosBankEntry data[8]; unsigned int count; int fillMinusOne;
     void resize(unsigned int n, const CAtmosBankEntry& x) { if (x.ID == 0 && x.Filename == -1) ++fillMinusOne; for (unsigned int i = count; i < n; ++i) data[i] = x; count = n; }

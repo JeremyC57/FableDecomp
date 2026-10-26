@@ -15,15 +15,15 @@
 //   0x01238C6C, CIntelligentPointer<CThing>). Timer is left uninitialised.
 // Layout: PDB (Ego_r) CModeBriarRoseTeleportInvulnerable; retail offsets equal the PDB: CModeStandBase 0x68,
 //   Filter +0x68 (0xc), Timer +0x74, PTarget +0x78, PEffect +0x80. Local model: no engine/ header for these classes.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
@@ -33,7 +33,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -52,12 +52,12 @@ struct CBaseIntelligentPointer {           // 8 bytes: vptr + the pointed-to ite
     void SetPItem(CBaseObject* item);      // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

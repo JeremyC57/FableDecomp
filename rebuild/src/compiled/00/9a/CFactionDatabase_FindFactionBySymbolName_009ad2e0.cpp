@@ -9,19 +9,19 @@
 //   address goes to LowerBound, the compare uses the register: the GetInterface pattern); the inline Find is the
 //   `if (it == last || key < it->key) it = last;` (unsigned: `jae`) and the caller re-reads `end` (+0x7c) for its own
 //   `== end` test, returning `&it->second` (`add eax,4`).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CFaction;
+class CFaction;
 struct SCountBlock;
 struct CCountedPointer_CFaction {
     CFaction*    m_pObject;

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00468F15 GFSerialiseVectorBinaryIn<CRGBColour>: count, resize, then one colour per element
 #include <cstdio>
 #include <cstring>
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct ColourVector {                             // stand-in for the out-of-line resize(n, x) @ 0x00468FA5
     CRGBColour data[16];
     unsigned int count;

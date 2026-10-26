@@ -22,22 +22,22 @@
 //   bitset +0x20, interface map +0x44, def +0x70, dead flag bit 0 of +0x91.
 #include "engine/CTCBase.h"
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template <class T> struct CDefPointer;
-struct CDefClassBase {
+template <class T> class CDefPointer;
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy() const;                           // slot 1
     mutable long RefCount;                                  // +0x04
-    bool GetSubDef(CDefPointer<const struct CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
+    bool GetSubDef(CDefPointer<const class CSpecialEffectsDef>* out) const;   // GetSubDef<CSpecialEffectsDef> 0x00669580
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -47,7 +47,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefClassBase {
+class CSpecialEffectsDef : public CDefClassBase { public:
     bool GetEffectFromString(const CCharString& name, long* effect) const;   // 0x00669D30
 };
 
@@ -94,7 +94,7 @@ struct CInterfaceBits {                                     // bitset<> at CThin
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
@@ -129,7 +129,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
 }
 #pragma auto_inline(on)
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached);   // 0x006E0880
     void AttachToThing(CThing& thing, long mode, const CCharString& bone, long flags, float offset);   // 0x006E0BE0
 };
@@ -143,7 +143,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -156,7 +156,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 };
 #pragma pack(pop)
 
-struct CTCKrakenTentacle : CTCBase {
+class CTCKrakenTentacle : public CTCBase { public:
     unsigned char _pad0c[0x20 - 0x0c];
     CIntelligentPointer<CThing> PRippleEffect;              // +0x20
     void KillRippleFX();                                    // 0x007F07A0

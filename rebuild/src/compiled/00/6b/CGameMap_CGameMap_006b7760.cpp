@@ -8,15 +8,15 @@
 // Shape: the init list in declaration order after the vtable store (the STLport vector's three zero words); the overflow guard is a
 // 64-bit product of the SIZE ARGUMENT's fields tested against [0, 0x7fffffff]; the fill value is a `CGameMapCell()` TEMPORARY of a cell
 // whose user constructor does nothing (frame bytes 1..7, `lea eax,[esp+0Dh]`; a named local sits at frame byte 0).
-struct CWorld;
-struct CMap;
+class CWorld;
+class CMap;
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
 };
 
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];                   // +0
     unsigned char AtmosBlends[2];                   // +3
     signed char   SoundTheme;                       // +5
@@ -37,7 +37,7 @@ struct CBase {
     CBase();                                        // 0x0099A2F0
 };
 
-struct CGameMap : CBase {                           // vtable 0x0125D558
+class CGameMap : public CBase { public:                           // vtable 0x0125D558
     CGameMapCellVector Cells;                       // +0x04
     CMap*              Map;                         // +0x10
     CWorld*            World;                       // +0x14

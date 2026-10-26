@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_baseCtors = 0, g_listCtors = 0; static void* g_lastGui = 0; static void* g_lastDraws = 0;
-struct CPlayerGui;
+class CPlayerGui;
 struct CRetailAllocator { CRetailAllocator() {} };
 struct CDrawBase { virtual void v00() {} unsigned char _pad_0x04[0x24]; CDrawBase(CPlayerGui* gui, void* draws) { ++g_baseCtors; g_lastGui = gui; g_lastDraws = draws; } };
 struct CRetailList { void* head; CRetailList(const CRetailAllocator& al = CRetailAllocator()) : head(&head) { ++g_listCtors; } };

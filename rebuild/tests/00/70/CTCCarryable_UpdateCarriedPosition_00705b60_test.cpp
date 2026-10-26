@@ -3,26 +3,26 @@
 #include <cstdio>
 #include <math.h>
 float g_epsilon_0129ba3c = 1e-4f;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCPhysicsBase { public:
     int PosCalls, FaceCalls; C3DVector Pos; float FaceUpX;
     virtual void SetPosition(const C3DVector& position) { ++PosCalls; Pos = position; }
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& set) { ++FaceCalls; FaceUpX = set.Up.X; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     unsigned char   Dead : 1;
     unsigned char   _91_1 : 7;
     C3DVector Current;
     const C3DVector& GetPosition() const { return Current; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool InMap;
     bool IsPosInMap(const C3DVector& position) const { return InMap; }
 };
 static CWorldMap g_map;
-struct CTCCarryable {
+class CTCCarryable { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool Found; C3DVector Carried; bool LastForce; float LastTime;

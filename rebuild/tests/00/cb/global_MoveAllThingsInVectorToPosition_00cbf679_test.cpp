@@ -2,8 +2,8 @@
 // (priority 4) through one shared resource object, which then walks it to the position.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     int id;
     bool alive;
     bool IsAlive() const { return alive; }
@@ -17,7 +17,7 @@ struct CThingVector {
 enum EScriptEntityMoveType { MOVE_TYPE_WALK = 0 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
 static int g_objects = 0;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     int current;
     int moves;
     int badMoves;
@@ -29,7 +29,7 @@ struct CScriptGameResourceObjectScriptedThingBase {
         if (p.X != 1.0f || p.Y != 2.0f || p.Z != 3.0f || speed != 0.0f || type != MOVE_TYPE_WALK || a || !b) ++badMoves;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int started[8];
     int count;
     bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority)

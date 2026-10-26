@@ -15,7 +15,7 @@
 //   out-of-line `resize(n, const T&)`, which puts the temporary's zero store AFTER the argument pushes (in the dead `thing`
 //   parameter slot), where `resize(n, T())` written in the body stores it first.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CThing;
+class CThing;
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -23,20 +23,20 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CObjectAugmentationsDef : CDefBase {
+class CObjectAugmentationsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                                 // +0x28
     long MaximumNumberOfSlots;                          // +0x2c
 };
-struct CThingBaseDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CThingBaseDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042AF9E (T = CObjectAugmentationsDef)
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70 CDefPointer<const CThingDef>::Object
 };
@@ -52,8 +52,8 @@ template <class T> struct vector {                      // STLport vector: _Vect
     void resize(unsigned long count, const T& value);   // 0x0076BF80
     void resize(unsigned long count) { resize(count, T()); }
 };
-struct CCharString { void* PStringData; };
-struct CObjectAugmentationSoundSet {                    // 0x0c
+class CCharString { public: void* PStringData; };
+class CObjectAugmentationSoundSet { public:                    // 0x0c
     bool          Played;
     CCharString   Sound;
     unsigned long Handle;
@@ -105,14 +105,14 @@ public:
 #pragma pack(pop)
 struct ParticleAndEndPoints;
 struct AttackParticleAndEndPoints;
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* thing);                             // 0x00686800
     virtual ~CTCBase();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
-struct CTCObjectAugmentations : CTCBase {               // vtable 0x0126A3A4
+class CTCObjectAugmentations : public CTCBase { public:               // vtable 0x0126A3A4
     CDefPointer<CObjectAugmentationsDef> PDef;          // +0x0c
     bool          LoadedFromSaveGame;                   // +0x10
     vector< CDefPointer<CThingBaseDef> > Augmentations; // +0x14

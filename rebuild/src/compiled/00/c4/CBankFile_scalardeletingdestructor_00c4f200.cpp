@@ -1,4 +1,4 @@
-struct CBankFile {
+class CBankFile { public:
 // Leaf: `scalar_deleting_destructor'
     void* vftable;
 };

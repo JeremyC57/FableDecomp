@@ -1,7 +1,7 @@
 // behaviour test for CAIStateGroup_BanditKingLunge::IsRunnable (0x009614A0)
 #include <cstdio>
 struct V { float X, Y, Z; };
-struct CThing { V pos; bool lungeable; };
+class CThing { public: V pos; bool lungeable; };
 static float Dist2(const V& a, const V& b) { float dx = a.X - b.X; float dy = a.Y - b.Y; return dx * dx + dy * dy; }
 struct Group {
     CThing* creature; CThing* hero; CThing* PTargetThing; float R;

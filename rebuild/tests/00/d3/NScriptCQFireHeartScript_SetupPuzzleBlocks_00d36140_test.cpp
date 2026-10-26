@@ -9,7 +9,7 @@
 #define __forceinline inline
 #define __int64 long long
 #endif
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {}
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
 };
@@ -25,7 +25,7 @@ template <class T> struct vector {                      // retail STLport vector
 };
 }
 
-struct CFireHeartPatternDef {                           // retail 0x34 bytes
+class CFireHeartPatternDef { public:                           // retail 0x34 bytes
     unsigned char     _defBase[0x28];                   // +0x00 .. +0x28 (CDefClassBase part)
     std::vector<bool> PadActive;                        // +0x28
 };
@@ -37,7 +37,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_FireHeartScript : CScriptBase {
+class CQ_FireHeartScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 PMasterData;                  // +0x44
     unsigned char _pad048[0x34];                        // +0x48 .. +0x7c (mission flags, cutscene maps, prophet counts)

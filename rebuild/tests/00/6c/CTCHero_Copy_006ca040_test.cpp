@@ -4,7 +4,7 @@
 // the counted title sub-def (old def released and destroyed at zero, new one add-ref'd), leaves the override and podium
 // flags alone, then chains to CTCBase::Copy.
 static int g_destroyed = 0; static int g_baseCopies = 0;
-struct CDefPointeeBase { long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { }
+class CDefPointeeBase { public: long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { }
     void Release() { if (--m_count == 0) Destroy(); } };
 struct CDefPointer {
     CDefPointeeBase* Object;
@@ -18,8 +18,8 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CTCBase { virtual void Copy(const CTCBase&) { ++g_baseCopies; } virtual ~CTCBase() { } };
-struct CTCHero : CTCBase {
+class CTCBase { public: virtual void Copy(const CTCBase&) { ++g_baseCopies; } virtual ~CTCBase() { } };
+class CTCHero : public CTCBase { public:
     bool WeaponsUsable, WillUsable, WeaponUseOverriddenByScripts, WillUseOverriddenByScripts;
     long Title; long HeroTitleObjectDef; CDefPointer PHeroTitleSubDef; bool OnBoastingPodium;
     virtual void Copy(const CTCBase& other)

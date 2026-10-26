@@ -14,11 +14,11 @@ void* CMapResource::Destroy(unsigned int flags)
     return this;
 }
 
-struct CEngineMap {
+class CEngineMap { public:
     CMapResource* res;
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void DeleteMap(CEngineMap* map);
 };
 

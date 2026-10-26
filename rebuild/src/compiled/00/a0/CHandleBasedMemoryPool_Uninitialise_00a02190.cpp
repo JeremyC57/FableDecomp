@@ -14,7 +14,7 @@ extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(_RTL_CRITI
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);        // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);        // IAT 0x0143FE10
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long flags, bool flag);   // 0x009F2A40
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
@@ -64,7 +64,7 @@ struct CHeader {                                  // CHandleBasedMemoryPool::CHe
     CHeader*       PNextPhysical;                  // +0x1c
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void*                        __vftable;        // +0x00
     void*                        Buffer;           // +0x04 (16-byte aligned)
     void*                        UnalignedBuffer;  // +0x08 (from the global allocator)

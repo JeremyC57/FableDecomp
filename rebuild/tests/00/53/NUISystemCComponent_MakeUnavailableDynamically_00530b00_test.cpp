@@ -1,6 +1,6 @@
 // Behaviour test (0x00530b00): NUISystem::CComponent::MakeUnavailableDynamically scales R, G, B of every UI state by 0.75, then the fade's target, initial and current colours too (alpha untouched)
 #include <cstdio>
-struct CRGBColour { unsigned char B, G, R, A; void Set(int r, int g, int b, int a) { R = (unsigned char)r; G = (unsigned char)g; B = (unsigned char)b; A = (unsigned char)a; } };
+class CRGBColour { public: unsigned char B, G, R, A; void Set(int r, int g, int b, int a) { R = (unsigned char)r; G = (unsigned char)g; B = (unsigned char)b; A = (unsigned char)a; } };
 struct CUIState { CRGBColour Colour; };
 static void Darken(CRGBColour& c) { c.R = (unsigned char)(c.R * 0.75f); c.G = (unsigned char)(c.G * 0.75f); c.B = (unsigned char)(c.B * 0.75f); }
 struct CComponent {

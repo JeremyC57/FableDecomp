@@ -10,7 +10,7 @@ static wchar_t* FakeGetCwd(wchar_t* buffer, int maxLength)
     for (unsigned int i = 0; i < sizeof(text) / sizeof(text[0]); ++i) buffer[i] = text[i];
     return buffer;
 }
-struct CWideString {
+class CWideString { public:
     wchar_t buf[300];
     CWideString(const wchar_t* t) { unsigned int i = 0; for (; t[i] && i < 299; ++i) buf[i] = t[i]; buf[i] = 0; }
 };

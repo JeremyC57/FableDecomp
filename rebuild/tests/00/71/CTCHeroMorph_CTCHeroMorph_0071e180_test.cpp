@@ -6,8 +6,8 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_resets = 0;
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
@@ -50,7 +50,7 @@ struct CEmitterList {                                // std::list<CIntelligentPo
     }
 };
 
-struct CThingBaseDef;
+class CThingBaseDef;
 struct CTattooVector {                               // std::vector<CDefPointer<const CThingBaseDef>>
     CThingBaseDef** _M_start;
     CThingBaseDef** _M_finish;
@@ -74,7 +74,7 @@ struct CTattooMap {                                  // std::map<CCharString, pa
     }
 };
 
-struct CTCHeroMorph : CTCBase {                      // vtable 0x01265CF4
+class CTCHeroMorph : public CTCBase { public:                      // vtable 0x01265CF4
     CCountedPointerMeshMorphSet PMeshMorphSet;       // +0x0C
     CEmitterList  ParticleEmitters;                  // +0x14
     CEmitterList  IdleParticleEmitters;              // +0x18

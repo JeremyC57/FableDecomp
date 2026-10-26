@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData { char* m_pData; unsigned long m_length; };
+class CCharStringData { public: char* m_pData; unsigned long m_length; };
 
 class CCharString
 {

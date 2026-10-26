@@ -8,14 +8,14 @@
 // Shape: as the money drawer 0x006441F6 (size TU, bar in ebx with its vtable fetched into ebp early, the GUI pointer re-read after
 // the store, `unsigned char` alpha), but `this` stays in esi and the def in edi; the graphic is read as `*(begin() + 4)`; the last
 // argument is true.
-struct CEnginePrimitivePrepareInfo;
-struct CGraphicDataBank;
-struct CRGBColour { unsigned char R, G, B, A; };
-struct C2DVector { float X, Y; };
+class CEnginePrimitivePrepareInfo;
+class CGraphicDataBank;
+class CRGBColour { public: unsigned char R, G, B, A; };
+class C2DVector { public: float X, Y; };
 
 namespace NPlayerGui {
 
-struct CStatBar {                                  // NPlayerGui::CStatBar (PDB 120 bytes; retail 8 lower: CStatBase's vectors are 12 bytes)
+class CStatBar { public:                                  // NPlayerGui::CStatBar (PDB 120 bytes; retail 8 lower: CStatBase's vectors are 12 bytes)
     virtual void Draw(CEnginePrimitivePrepareInfo* info, CGraphicDataBank* bank, const C2DVector& pos,
                       const C2DVector& textOffset, const CRGBColour& textColour, unsigned char alpha, bool forceOpen);   // slot 0
     unsigned char _base[0x48 - 4];                 // CStatBase
@@ -34,7 +34,7 @@ template <class T> struct CCountedPointer {        // object + count block
 
 }
 
-struct CPlayerGui {                                // retail offsets (PDB Alpha +0x2b4, PMoney +0x2e0: the shipped build drops the
+class CPlayerGui { public:                                // retail offsets (PDB Alpha +0x2b4, PMoney +0x2e0: the shipped build drops the
     unsigned char _pad[0x2a0];                     // ulong64 alignment gap and the vectors are 12 bytes)
     float         Alpha;                           // +0x2a0
     unsigned char _pad2a4[0x2cc - 0x2a4];
@@ -53,7 +53,7 @@ struct CRetailLongVector {                         // VC6 Dinkumware vector<long
     const long& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char     _pad[0x4b4];
     C2DVector         MoneyTextRightOffset;        // +0x4b4
     float             MoneyWidth;                  // +0x4bc
@@ -68,7 +68,7 @@ extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
 
 namespace NPlayerGui {
 
-struct CDrawRenown {
+class CDrawRenown { public:
     void*             _vtable;                     // +0x00 CDrawBase vptr
     CPlayerGui*       PlayerGui;                   // +0x04
     void*             PlayerManager;               // +0x08

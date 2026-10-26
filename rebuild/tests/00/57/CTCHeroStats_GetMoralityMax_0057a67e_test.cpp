@@ -1,7 +1,7 @@
 // Standalone behaviour test for CTCHeroStats::GetMoralityMax @ 0x0057a67e
 #include <cstdio>
 
-struct CTCHeroStats;
+class CTCHeroStats;
 
 // Fixture: helper returns a controlled pointer; then two chained derefs.
 static char g_inner[0x100];   // holds the final field at +0xD0

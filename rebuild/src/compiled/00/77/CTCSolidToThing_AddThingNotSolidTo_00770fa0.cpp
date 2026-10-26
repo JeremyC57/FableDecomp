@@ -9,8 +9,8 @@
 // Shape: an 8-byte stack CIntelligentPointer built by its inline converting constructor (base constructor, own
 // vtable, SetPItem), pushed by reference and destroyed through the base destructor (the compiler-generated derived
 // destructor drops the vtable reset).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -32,7 +32,7 @@ struct CThingPointerVector {                                // retail std::vecto
     void push_back(const CIntelligentPointer& value);       // 0x007398B0
 };
 
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void*               __vftable;                          // +0x00
     CThing*             ParentThing;                        // +0x04
     bool                ToBeRemoved;                        // +0x08

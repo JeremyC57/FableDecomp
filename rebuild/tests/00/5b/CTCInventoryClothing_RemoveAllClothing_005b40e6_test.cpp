@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long length = -1) { std::strcpy(text, t); ++g_live; (void)length; }
     ~CCharString() { --g_live; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.text, "HERO_SUIT_NAKED") == 0 ? 321 : -1; }
 };
 static CDefinitionManager g_dm;
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Clothing {
     CThing* Owner; bool UseMannequin; long selected; CThing* dressed; bool flagWhileDressing; int liveWhileSelecting;
     CDefinitionManager* GetDefinitionManager() { return &g_dm; }

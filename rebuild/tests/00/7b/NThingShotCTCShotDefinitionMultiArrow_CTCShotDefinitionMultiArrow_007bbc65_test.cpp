@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct CTCShotDefinitionBase {
     CThing* m_pParent; bool MultiArrowShotType;
     CTCShotDefinitionBase(CThing* parent) : m_pParent(parent), MultiArrowShotType(false) { }

@@ -25,19 +25,19 @@ struct CRenderSystem {
     unsigned char      _pad00[0x58];
     IDirect3DDevice9*  m_pDevice;           // +0x58
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x60];
     CRenderSystem* m_pRender;               // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
 extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
-struct CPixelFormat {
+class CPixelFormat { public:
     long m_format;
     long GetD3DFormat() const { return g_pixelFormatInfo[m_format].d3dFormat; }
 };
-struct C2DExtentsI { long X, Y; };
-struct CTexture {
+class C2DExtentsI { public: long X, Y; };
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;         // +0x00
     unsigned long ByteLength : 28;          // +0x04
     unsigned long AllocationSource : 4;

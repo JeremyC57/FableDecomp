@@ -3,7 +3,7 @@
 // mov ecx,esi; call free(0x9f1f90); +: mov eax,esi; pop esi; ret 4
 // Both callees are __fastcall (this in ecx). First unconditional, second flag-gated.
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     int dummy;
     void Destroy();      // 0x9f2310  (scalar destructor body, this in ecx)
     void FreeThis();     // 0x9f1f90  (this in ecx)

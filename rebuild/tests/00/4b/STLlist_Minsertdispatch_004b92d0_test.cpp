@@ -11,7 +11,7 @@
 // Model of list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch(pos, first, last, __false_type) @
 // 0x004B92D0: copy every counted quest pointer of [first, last) into a new node linked before pos (adding a reference).
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

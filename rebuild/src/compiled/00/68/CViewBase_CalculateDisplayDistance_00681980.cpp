@@ -7,13 +7,13 @@
 // the GetDisplayEngine call (a member read as the argument is loaded after the call by the lane), the float result
 // stays on the FPU stack, `if (m_pTarget) d += m_pTarget->m_offset` (+0x50), `fsub [esi+10h]` on both paths.
 // No engine header for CViewBase (the vtable-less fields +4, +0x10, +0x14, +0x20 are modelled from the reads).
-struct CThing;
+class CThing;
 
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     float GetToleranceToBeingHit(CThing* thing);   // 0x00701940
 };
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* m_pOpinionManager;    // +0x74
 };

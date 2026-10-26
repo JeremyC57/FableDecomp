@@ -9,9 +9,9 @@ static const long kKeys[9] = { 5, -3, 12, 7, 7, 0, 99, -40, 2 };
 
 template<class T, class C> void AdjustHeap(T* first, long hole, long bottom, T value, C pred);
 
-struct CContextSensitiveItemDef { long m_refCount; long m_priority; };
+class CContextSensitiveItemDef { public: long m_refCount; long m_priority; };
 static CContextSensitiveItemDef g_defs[9];
-template<class U> struct CDefPointer { U* m_pDef; };
+template<class U> class CDefPointer { public: U* m_pDef; };
 struct T {
     long first;
     CDefPointer<CContextSensitiveItemDef> second;

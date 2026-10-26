@@ -1,8 +1,8 @@
 // behaviour test for 00658620 CTCVillage::IsTimeBetween: HHMM start times and an HHMM duration against the time of day
 // (a 0..1 day fraction), including a window that wraps past midnight
 #include <cstdio>
-struct CGameTimeManager { void* World; void* GameComponent; float Time; };
-struct CWorld { CGameTimeManager* PGameTimeManager; };
+class CGameTimeManager { public: void* World; void* GameComponent; float Time; };
+class CWorld { public: CGameTimeManager* PGameTimeManager; };
 static CGameTimeManager g_time; static CWorld g_world;
 struct CLongVector {
     long* _M_start;
@@ -11,7 +11,7 @@ struct CLongVector {
     const long* begin() const { return _M_start; }
     const long* end() const { return _M_finish; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00() {}
     const CWorld* GetWorld() const { return &g_world; }
     bool IsTimeBetween(const CLongVector& startTimes, long duration) const;

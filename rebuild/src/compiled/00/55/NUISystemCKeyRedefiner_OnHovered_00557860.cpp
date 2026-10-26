@@ -21,19 +21,19 @@ struct CUIDefPointer {
  CUIDef* operator->() const { return Object; }
 };
 // CRGBColour stores B,G,R,A; its ctor assigns R, G, B, A (landed 0x00557A10).
-struct CRGBColour {
+class CRGBColour { public:
  unsigned char B, G, R, A;
  CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct C2DVector { float X, Y; };
-struct CActionInputControl {          // 28 bytes (landed ctor 0x00558540)
+class C2DVector { public: float X, Y; };
+class CActionInputControl { public:          // 28 bytes (landed ctor 0x00558540)
  long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; C2DVector ControlDirection;
 };
 inline void* operator new(size_t, void* where) throw() { return where; }
 namespace NUISystem {
 enum EEvent { EVENT_DUMMY = 0 };
 struct CActionList;                    // std::list<CCountedPointer<CAction>>
-struct CText {
+class CText { public:
  virtual void Slot000()=0; virtual void Slot001()=0; virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0;
  virtual void Slot006()=0; virtual void Slot007()=0; virtual void Slot008()=0; virtual void Slot009()=0; virtual void Slot010()=0; virtual void Slot011()=0;
  virtual void Slot012()=0;
@@ -65,7 +65,7 @@ struct CText {
  virtual void SetText(const CWideString&, bool, bool);
 };
 // CObserver (second base, +4): slot 2 n/a, slot 3 ObserveEvent, slot 4 IgnoreEvent.
-struct CObserver {
+class CObserver { public:
  virtual void Slot0() = 0; virtual void ProcessEvent(EEvent); virtual void Slot2() = 0;
  virtual void ObserveEvent(EEvent);   // slot 3 (+0xc)
  virtual void IgnoreEvent(EEvent);    // slot 4 (+0x10)
@@ -79,10 +79,10 @@ struct CObservable {
  virtual void AddExclusiveObserver(CObserver*);
  virtual void RemoveExclusiveObserver(CObserver*);
 };
-struct CManager : CObservable {
+class CManager : public CObservable { public:
  static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
-struct CComponent {
+class CComponent { public:
  virtual void Slot000()=0;
  virtual void Update(float); // slot 1 (+0x4)
  virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0; virtual void Slot006()=0; virtual void Slot007()=0;
@@ -121,12 +121,12 @@ struct CComponent {
  virtual void OnRightClicked(); // slot 148 (+0x250)
  virtual void OnRightUnclicked(); // slot 149 (+0x254)
 };
-struct CChangingStateComponent : CComponent, CObserver {
+class CChangingStateComponent : public CComponent, public CObserver { public:
  void ChangeState(unsigned long);     // 0x0052CF40
 };
 struct CHoverableBase { virtual void HoverSlot0() = 0; };   // third vptr at +0x18
 // CClickable: retail 0x194 bytes (landed ctor 0x00558540), three vptrs (+0, +4, +0x18).
-struct CClickable : CChangingStateComponent, CHoverableBase {
+class CClickable : public CChangingStateComponent, public CHoverableBase { public:
  unsigned char _pad1c[0x144 - 0x1c];
  unsigned long CurrentState;          // +0x144
  unsigned long TargetState;           // +0x148
@@ -168,7 +168,7 @@ struct CGameActionList {
  }
  __forceinline void push_back(const long& value) { insert(head, value); }
 };
-struct CKeyRedefiner : CClickable {   // vtables 0x0124ADBC / 0x0124AD98 / 0x0124AD90
+class CKeyRedefiner : public CClickable { public:   // vtables 0x0124ADBC / 0x0124AD98 / 0x0124AD90
  CText* PActionText;                  // +0x194
  CText* PKeyText;                     // +0x198
  CGameActionList Actions;             // +0x19c

@@ -11,14 +11,14 @@
 // TriangleCount.
 // Shape: VC7.1 strength-reduces the loop into a pointer to the summed field (`add ecx,58h` then
 // `add ecx,0A0h`) and a down-counting `dec edx ; jne` on the unsigned count (the `jbe` entry test).
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad_0x00[0x58];
     unsigned long VertexCount;             // +0x58 (PDB +0x5c)
     unsigned long TriangleCount;           // +0x5c (PDB +0x60)
     unsigned char _pad_0x60[0x40];         // retail record is 0xa0 bytes
 };
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char  _pad_0x00[0x90];
     unsigned long  PrimitiveCount;         // +0x90 (PDB +0x98)
     C3DPrimitive2* Primitives;             // +0x94 (PDB +0x9c)

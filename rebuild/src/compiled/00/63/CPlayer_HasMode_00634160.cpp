@@ -16,7 +16,7 @@ struct SModeNode {                                 // list node
     EPlayerMode m_value;                           // +0x08
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x210];
     SModeNode*    PlayerModes;                     // +0x210 list<EPlayerMode> head (the sentinel)
     bool HasMode(EPlayerMode mode) const;

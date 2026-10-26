@@ -4,7 +4,7 @@
 #include "engine/CFontDataBankEntry.h"  // retyped onto the PDB layout; byte parity re-verified
 enum EFontLoadState { FONT_LOADED = 1 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     EFontLoadState state; // [+0]
 };
 

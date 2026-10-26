@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CWideString {
 public:
-    struct CWideStringData* PData;
+    class CWideStringData* PData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();
 };

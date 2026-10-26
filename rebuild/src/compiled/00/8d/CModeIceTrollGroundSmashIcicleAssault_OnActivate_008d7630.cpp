@@ -22,7 +22,7 @@
 #include "engine/CSnowTrollDef.h"
 #include "fable_string.h"
 // Generated Thing offsets differ after bitset/vector shrink. Native presence bits20..43, map44..4F, CurrentMap8E,life91.
-struct C3DVector{float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
+class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMethods;
 struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020
@@ -86,7 +86,7 @@ struct EffectsPointer {NativeEffects*Object;EffectsPointer():Object(0){}};
 FABLE_STATIC_ASSERT(sizeof(CIVSlot<NativeDefinition>)==4);
 FABLE_STATIC_ASSERT(sizeof(CIVSlot<NativeEffects>)==4);
 #endif
-struct CAFile;struct CCamera;struct CInterpolationInfo;struct C3DVector;struct CDisplayEngine;struct CEnginePrimitivePrepareInfo;
+class CAFile;class CCamera;class CInterpolationInfo;class C3DVector;class CDisplayEngine;class CEnginePrimitivePrepareInfo;
 // Actual CWorld primary VT12390F0 has14 entries. Overloaded camera declarations reverse to native slots5/6.
 struct WorldNative {
  unsigned char Unrecovered04[0x1c];CThingSearchTools*Search;
@@ -109,7 +109,7 @@ struct WorldNative {
 struct PositionVector {C3DVector*First,*Last,*Limit;};
 struct CIcicleData;
 struct IcicleVector {CIcicleData*First,*Last,*Limit;};
-struct CTCShapeManager;
+class CTCShapeManager;
 void __fastcall GetValidPositions(PositionVector&,const CWorldMap&,const CThingSearchTools&,const C3DVector&,float,bool,const CTCShapeManager*); //74A5D0, PDB75C940 signature
 struct ModeIceTroll:ModeStandNative {
  IntelligentThingPointer PTarget;AnimationGroupFilter Filter;long Timer;SnowDefinitionPointer PDef;IcicleVector Icicles;PositionVector ViablePoints;

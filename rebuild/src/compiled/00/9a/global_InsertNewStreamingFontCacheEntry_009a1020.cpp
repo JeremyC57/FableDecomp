@@ -10,7 +10,7 @@
 // frame-counter fetch; the next-oldest entry becomes the chain end (its older = none, oldestEntry = it), then the
 // recycled entry is linked as the newest (newer = none, older = the old newest, whose newer becomes `index`; VC
 // forwards the just-stored `older` word).
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x25c];
     long          FrameCounter;                 // +0x25c
 };
@@ -18,7 +18,7 @@ struct CDisplayManagerPointer {                 // CCountedPointer<CDisplayManag
     CDisplayManager* Object;                    // +0x00
     long*            Count;                     // +0x04
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char          _pad000[0x60];
     CDisplayManagerPointer PDisplayManager;     // +0x60
 };

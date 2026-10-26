@@ -1,7 +1,7 @@
 #include <cstdio>
 static char g_written[8]; static int g_n = 0;
-struct CDataOutputStream { void WriteCBYTE(char v) { g_written[g_n++] = v; } };
-struct CDefClassBase {
+class CDataOutputStream { public: void WriteCBYTE(char v) { g_written[g_n++] = v; } };
+class CDefClassBase { public:
     virtual void v00() { }
     unsigned char _body[0x20];
     unsigned char Setup : 1; unsigned char Template : 1; unsigned char DefaultValsApplied : 1;

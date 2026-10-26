@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CHeightMapCell {
+class CHeightMapCell { public:
     float         Height;
     unsigned char EngineThemePaletteIndex[3];
     unsigned char EngineBlend[2];

@@ -9,8 +9,8 @@
 #endif
 
 static int g_base = 0, g_baseDtor = 0, g_lights = 0;
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_base; } ~CBaseClass() { ++g_baseDtor; } };
-struct CShaderConstantRange : CBaseClass { long m_firstRegister; long m_registerCount; virtual void v00() { }
+class CBaseClass { public: virtual void v00() { } CBaseClass() { ++g_base; } ~CBaseClass() { ++g_baseDtor; } };
+class CShaderConstantRange : public CBaseClass { public: long m_firstRegister; long m_registerCount; virtual void v00() { }
     CShaderConstantRange(long f, long c) : CBaseClass(), m_firstRegister(f), m_registerCount(c) { } };
 struct CEngineVSConstantLayoutLights { virtual void v00() { } unsigned char _pad0[0xc]; CShaderConstantRange ParticleRange; unsigned char _pad1[0x150 - 0x1c];
     CEngineVSConstantLayoutLights() : ParticleRange(0, 0) { ++g_lights; } };

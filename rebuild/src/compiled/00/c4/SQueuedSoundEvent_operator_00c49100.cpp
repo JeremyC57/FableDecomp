@@ -8,7 +8,7 @@
 // Shape: the memberwise copy written out in the body (VC7.1 out-lines a record whose member has its own assignment): plain
 // words as dword moves, the 12-byte position and the 16-byte block as nested POD records (`lea` both sides + moves), the
 // 8-byte CIntelligentPointer (vptr + item) through its operator=; returns *this.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CIntelligentPointer {                       // CIntelligentPointer<CThingCreatureBase>: vptr + item
     virtual void v00();
@@ -16,7 +16,7 @@ struct CIntelligentPointer {                       // CIntelligentPointer<CThing
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x00C16950
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

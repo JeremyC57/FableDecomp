@@ -3,14 +3,14 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Text[16];
     CCharString(const char* s) { std::strcpy(Text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
     ~CCharString() { --g_live; }
     CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

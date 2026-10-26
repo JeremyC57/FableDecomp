@@ -3,14 +3,14 @@
 // Leaf: CreateSaveGame
 #include <wchar.h>
 extern "C" int __cdecl _wchdir(const wchar_t*);
-struct CCharString;
-struct CWideString{void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};
+class CCharString;
+class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};
 // ABI: GetValidProfileName 0x00406350 forwards EDX to the CWideString copy ctor 0x0099b720; callers pass profile+0x8 wrapper.
 CWideString __fastcall GetValidProfileName(const CWideString&);
 namespace NResourceDirectoryNames{CWideString __fastcall GetSaveDir();}
 CWideString __fastcall operator+(const CWideString&,const CWideString&);CWideString __fastcall operator+(const CWideString&,const wchar_t*);
-struct CAFile{static bool __fastcall PathExists(const CWideString&);};
-struct CDriveManager{long CreateDirectoryW(const CWideString&);};
+class CAFile{ public:static bool __fastcall PathExists(const CWideString&);};
+class CDriveManager{ public:long CreateDirectoryW(const CWideString&);};
 struct CDriveManagerPointer{CDriveManager*Object;long*Count;CDriveManager*operator->()const{return Object;}};extern CDriveManagerPointer g_pDriveManager;
 long __fastcall CreateSaveGame(const CCharString&,const CWideString&profile,long mode,long unused,wchar_t*out,long capacity){
  CWideString valid=GetValidProfileName(profile);CWideString path=NResourceDirectoryNames::GetSaveDir()+valid+L"\\";
@@ -27,7 +27,7 @@ long __fastcall CreateSaveGame(const CCharString&,const CWideString&profile,long
 #include <stddef.h>
 // CWideString data: text at0x0, reference count at0x0c (0099b720/0099b510).
 struct WideData{wchar_t*text;unsigned length,capacity;int refs;};
-struct CCharString{int unused;};static CCharString none;static int live,code,created,changed;static bool exists;static const CWideString*expectedProfile;
+class CCharString{ public:int unused;};static CCharString none;static int live,code,created,changed;static bool exists;static const CWideString*expectedProfile;
 CWideString::CWideString(const wchar_t*s):PStringData(0){if(s&&*s){WideData*d=new WideData;d->length=wcslen(s);d->capacity=d->length+1;d->text=(wchar_t*)malloc(d->capacity*sizeof(wchar_t));wcscpy(d->text,s);d->refs=1;PStringData=d;++live;}}
 CWideString::CWideString(const CWideString&w):PStringData(w.PStringData){if(PStringData)++((WideData*)PStringData)->refs;}
 CWideString::~CWideString(){if(PStringData){WideData*d=(WideData*)PStringData;assert(d->refs>0);if(!--d->refs){free(d->text);delete d;--live;}PStringData=0;}}

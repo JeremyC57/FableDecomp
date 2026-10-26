@@ -2,8 +2,8 @@
 #include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
 
 // CAFile vtable model (header gives no typed CAFile): slot 5 = Finish, slot 7 = Read
-struct CAFile
-{
+class CAFile
+{ public:
     virtual void V0();
     virtual void V1();
     virtual void V2();
@@ -15,8 +15,8 @@ struct CAFile
 };
 
 // CWorld.h only forward-declares CWorldMap; local vtable model, slot 3 = Load
-struct CWorldMap
-{
+class CWorldMap
+{ public:
     virtual void V0();
     virtual void V1();
     virtual void V2();

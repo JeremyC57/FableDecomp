@@ -13,18 +13,18 @@
 // then compared with 25.0f (`test ah,5 ; jp`).
 // Model: local. CAIStateGroupBase: PBrain +0x04 (CAIBrain: Creature +0x18). CTCPerceiveThing: AwarenessTimer +0x18,
 // LineOfSight +0x2d, DirectAwareness +0x30.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() const;          // 0x004C73D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThing*       Creature;                        // +0x18 the creature this brain drives
 };
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     unsigned char _pad00[0x18];
     float         AwarenessTimer;                  // +0x18 non-zero while the thing is being perceived
     unsigned char _pad1c[0x11];

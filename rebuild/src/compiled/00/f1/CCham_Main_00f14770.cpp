@@ -14,14 +14,14 @@
 // Shape: the inline-once destructor band (landed 0x00EDD060 idiom): the first wait loop's terminating return expands the
 //   handle's generated destructor, every other exit calls the out-of-line copy 0x007E74D0 (tail-merged with the normal end);
 //   the handle is a destructor-less view destroyed by hand per exit.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
@@ -45,7 +45,7 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
 struct CBase {
     virtual ~CBase();                                  // 0x0099A2E0
 };
-struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointerWords PImp;                         // +0x04
@@ -54,7 +54,7 @@ struct CScriptThing : CBase {                          // vtable 0x01238C8C, 12 
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CBaseObject {                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
     virtual void b000();
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -66,7 +66,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001(); virtual void s002(); virtual void s003();
@@ -84,7 +84,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
         reinterpret_cast<CScriptGameResourceObjectBaseDtor*>(this)->CScriptGameResourceObjectBaseDtor::~CScriptGameResourceObjectBaseDtor();
     }
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -173,7 +173,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (ghi
     virtual void v618(); virtual void v619(); virtual void v620(); virtual void v621(); virtual void v622();
     virtual void EntityUnsetAsOpinionSource(const CScriptThing& thing, bool b) const;   // slot 623 (+0x9bc)
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

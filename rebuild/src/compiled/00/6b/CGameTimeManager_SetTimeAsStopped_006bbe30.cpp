@@ -10,7 +10,7 @@ struct CStopperSet_006bbe30 {                      // a tree of handles at +0x2c
     void Erase(const long* handle);                                                      // 0x00639590
 };
 
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char          _pad[0x2c];
     CStopperSet_006bbe30   m_stoppers;             // +0x2c
     long                   m_nextStopperHandle;    // +0x38

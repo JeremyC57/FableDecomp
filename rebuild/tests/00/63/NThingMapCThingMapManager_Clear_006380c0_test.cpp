@@ -1,7 +1,7 @@
 #include <cstdio>
 #ifndef _MSC_VER
 #define FABLE_ENGINE_CTHINGMAPMANAGER_H
-struct CWorld;
+class CWorld;
 #endif
 // NThingMap::CThingMapManager::Clear() -- delete thing maps, empty active lookups and reset map dimensions/counters
 // Leaf: Clear
@@ -13,7 +13,7 @@ struct CWorld;
 #include <string.h>
 #include "engine/CThingMapManager.h"
 namespace NThingMap {
-struct CThingMap {virtual ~CThingMap();};
+class CThingMap { public:virtual ~CThingMap();};
 struct CThingMapInfo {CThingMap* PThingMap;long RefCount;};
 template<class T> struct CThingMapArray {
     T* Start;T* Finish;T* End;

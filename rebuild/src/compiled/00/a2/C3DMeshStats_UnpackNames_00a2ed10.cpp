@@ -19,8 +19,8 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CCharStringData { char* Text; long Length; };
-struct CCharString {
+class CCharStringData { public: char* Text; long Length; };
+class CCharString { public:
     CCharStringData* Data;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -75,8 +75,8 @@ void CCharStringVector::_M_insert_overflow(CCharString* position, const CCharStr
 }
 #pragma auto_inline(on)
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float m_row[3][4]; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 struct SHelperPointEntry { unsigned long first; C3DVector Position; long BoneIndex; };        // 20 bytes
 struct SDummyObjectEntry { unsigned long first; CMatrix3x4 Transform; long BoneIndex; };      // 56 bytes
 struct CHelperPointMap {                   // CPreAllocVectorMap<unsigned long, C3DHelperPoint>
@@ -138,7 +138,7 @@ SDummyObjectEntry* CDummyObjectMap::UpperBound(const unsigned long& key)
 }
 #pragma auto_inline(on)
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     unsigned char _pad_0x04[0x38 - 0x04];
     CHelperPointMap HelperPoints;          // +0x38

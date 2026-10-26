@@ -8,24 +8,24 @@
 // Shape: a 12-byte frame for the zero position: C3DVector(0, 0, 0) is a float temporary whose three immediate
 // zero stores are scheduled after the eight pushes; the feat index is pushed first (right-to-left evaluation),
 // the manager is fetched last; `mov al,1` returns true.
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad_0x00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60 (CCountedPointer<CMessageEventManager>::Data)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x7c];
     CWorld*       World;                           // +0x7c
     bool ActivateFeat(long featIndex);

@@ -13,11 +13,11 @@
 // CCountedPointer dtor (decrement the block, destroy + delete on zero, zero both words).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 struct __false_type {};
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                           // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                           // 0x0099B510
 };
@@ -60,12 +60,12 @@ template <> struct CRetailVector<CDefClassInfo> {             // the non-POD ins
             free(_M_start);
     }
 };
-template <class T> struct CVectorMap {                        // 16 bytes
+template <class T> class CVectorMap { public:                        // 16 bytes
     CRetailVector<T> Entries;
     bool Locked;
     bool Sorted;
 };
-template <class T> struct CArray {                            // 12 bytes
+template <class T> class CArray { public:                            // 12 bytes
     T* Data;
     long Count;
     long Capacity;
@@ -101,13 +101,13 @@ template <class Node> struct CRetailMap {                     // STLport _Rb_tre
             free(_M_header);
     }
 };
-struct CSymbolMap;
+class CSymbolMap;
 struct SCountBlock {
     long m_references;                                        // +0
     void (__fastcall* m_pfnDestroy)(void*);                   // +4
     void* m_pObject;                                          // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -123,7 +123,7 @@ template <class T> struct CCountedPointer {
         m_pCount = 0;
     }
 };
-struct CResourceList {                                        // the manager's base (0x40 bytes with the vptr)
+class CResourceList { public:                                        // the manager's base (0x40 bytes with the vptr)
     virtual void v00();
     unsigned char _body[0x40 - 4];
     ~CResourceList();                                         // 0x009FC5C0

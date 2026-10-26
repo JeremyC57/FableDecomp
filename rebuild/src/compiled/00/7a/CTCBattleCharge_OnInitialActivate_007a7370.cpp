@@ -41,7 +41,7 @@ public:
         return false;
     }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);           // 0x0073AE10
 };
 

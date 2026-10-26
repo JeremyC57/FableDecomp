@@ -6,8 +6,8 @@
 static int g_rand[4]; static int g_randPos = 0, g_conversations = 0;
 static int NextRandom() { return g_rand[g_randPos++]; }
 static char g_line[96];
-struct CTimer { float Time; void SetTime(float t) { Time = t; } float GetTime() const { return Time; } };
-struct CGameScriptInterface {
+class CTimer { public: float Time; void SetTime(float t) { Time = t; } float GetTime() const { return Time; } };
+class CGameScriptInterface { public:
     long AddNewConversation() const { return ++g_conversations; }
     void AddLineToConversation(long, const char* t) const { std::strcpy(g_line, t); }
 };

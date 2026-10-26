@@ -9,14 +9,14 @@
 //   float, string, bool, long, ulong); `dec eax ; cmp eax,4 ; ja` + table, the default `xor al,al`.
 // Layout: CGenericVar (Ego_r.pdb): Padding +0, Type +4, ValString +8, ValSLONG +0xC, ValULONG +0x10, ValBool +0x14,
 //   ValFloat +0x18 (as modelled in the landed ReadFromParserAsBool 0x00A64230); no generated header exists.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
-struct CStringParser {
+class CStringParser { public:
     bool ReadNextItemAsQuotedString(CCharString& text);   // 0x009BA1D0
 };
 
-struct CGenericVar {
+class CGenericVar { public:
     long          Padding;                         // +0x00
     long          Type;                            // +0x04
     CCharString   ValString;                       // +0x08

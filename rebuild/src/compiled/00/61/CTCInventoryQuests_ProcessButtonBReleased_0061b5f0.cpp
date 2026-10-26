@@ -1,7 +1,7 @@
 // CTCInventoryQuests::ProcessButtonBReleased @ 0061b5f0
 // void __fastcall (modelled __fastcall self in ecx)
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     char pad[0x157];
     unsigned char m_flag;   // +0x157
 };

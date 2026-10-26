@@ -17,13 +17,13 @@
 // Shape: the landed CMuteGuardOutsideWoods::Main 0x00D86150 family: each hit test owns conditional CCharString temporaries
 //   (flag word in ebx, destroyed in reverse) and is materialised as a bool before its branch; the timer is read through the
 //   inline CTimer::GetTime (`add eax,6Ch ; mov eax,[eax]`) and written through CTimer::SetTime.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 typedef long ESex;
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
     virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
@@ -133,7 +133,7 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing& thing, const CScriptThing& ally) const;   // slot 600 (+0x960)
 };
 extern GameCalls* g_pGameScriptInterface;              // 0x0143E8F8
-struct CTimer {                                        // a script timer: the interface's timer index
+class CTimer { public:                                        // a script timer: the interface's timer index
     long TimerIndex;
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
     __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
@@ -155,8 +155,8 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData;
-struct CQ_TraderConflictEvilScript {
+class CQ_SunnyvaleMasterData;
+class CQ_TraderConflictEvilScript { public:
     unsigned char _pad[0x60];
     bool   QuestStartScreened;                         // +0x60
     long   NextTimeToSpawnGuards;                      // +0x64

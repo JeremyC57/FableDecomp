@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 struct SubObj { int x; };
 extern "C" void __fastcall SubObj_dtor(SubObj* p);
-struct CEnvironmentThemeDaySetDef {
+class CEnvironmentThemeDaySetDef { public:
   char pad[0x3c];
   SubObj member;
   void realdtor();

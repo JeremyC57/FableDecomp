@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 extern "C" void __cdecl free(void* p);                                        // 0x00BFEA14
 void* operator new(unsigned int size);                                        // 0x00BFEA1A
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, int length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -41,10 +41,10 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
-struct CCameraModeDef : CDefVirtual, CRefCounted {
+class CCameraModeDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     ~CDefPointer() { if (Data) Data->ReleaseTemporary(); }
@@ -62,7 +62,7 @@ public:
 
 class CGameCameraManager;
 struct SCountInfo { long Count; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountInfo* Info;
     CCountedPointer(T* data);                          // 0x0056C880
@@ -77,7 +77,7 @@ template <class T> struct CCountedPointer {
     ~CCountedPointer();                                // 0x0056C8D0
 };
 namespace NCameraModes {
-    struct CBase {
+    class CBase { public:
         virtual ~CBase();
         virtual void v01();
         virtual long GetModeType();                    // slot 2
@@ -93,14 +93,14 @@ public:
     NCameraModes::CBase* CurrentMode;                  // +0x98
     void PushCameraMode(CCountedPointer<NCameraModes::CBase> mode);   // 0x006987A0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;              // +0x20
     unsigned char _pad24[0x34 - 0x24];
     CGameCameraManager* CameraManager;                 // +0x34
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; }
 };
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x24];
     CWorld* World;                                     // +0x24
 };
@@ -122,8 +122,8 @@ struct SListNode { SListNode* Next; SListNode* Prev; };
 extern SListNode* g_BoastList;                         // 0x013B8A98 (STLport list head node)
 
 struct CComponent { virtual ~CComponent(); };
-struct CPlayer { void RemoveMode(long mode); };        // 0x00634190
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayer { public: void RemoveMode(long mode); };        // 0x00634190
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 
 struct CComponentVector {
     CComponent** _M_start;
@@ -149,7 +149,7 @@ struct CComponentVector {
     void clear() { erase(begin(), end()); }
 };
 
-struct CTCBoastUI {
+class CTCBoastUI { public:
     void*            __vftable;                        // +0x00
     CThing*          ParentThing;                      // +0x04
     unsigned char    _pad08[0x18 - 0x08];              // CTCBase flags, BoastGroups (12-byte map)

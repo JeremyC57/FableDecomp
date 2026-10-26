@@ -6,7 +6,7 @@
 // (the landed retail push_back for 4-byte elements; the item is a frame local whose address is passed).
 // Layout: PDB CDrawPerceivers: Things (list) at +0x40, retail +0x3c. Shape: a frame-pointer size TU; the node is compared with the head register
 // on entry and re-read from the member after the calls; the output vector pointer is reloaded from its argument slot for the call.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     void* m_pItem;
@@ -37,7 +37,7 @@ struct CRetailThingVector {                        // VC6 Dinkumware vector<cons
 
 namespace NPlayerGui {
 
-struct CDrawPerceivers {
+class CDrawPerceivers { public:
     unsigned char           _pad[0x3c];            // CDrawBase, State, Allegiance, FrameInterp, ThrobScale, ThingCount
     CRetailThingPointerList Things;                // +0x3c
     void GetPerceivedThings(CRetailThingVector* things);

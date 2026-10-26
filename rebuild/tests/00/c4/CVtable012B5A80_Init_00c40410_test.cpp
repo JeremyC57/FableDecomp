@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; void Set(float x, float y, float z) { X = x; Y = y; Z = z; } };
+class C3DVector { public: float X, Y, Z; void Set(float x, float y, float z) { X = x; Y = y; Z = z; } };
 struct CVtable_012B5A80 {
     void* m_pPrev; void* m_pNext;
     C3DVector m_position, m_velocity, m_axisX, m_axisY, m_axisZ;

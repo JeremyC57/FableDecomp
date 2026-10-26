@@ -1,8 +1,8 @@
 // behaviour test for CThingCreatureBase::SetBodyReorienterActive (0x00663490)
 #include <cstdio>
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static int g_live = 0, g_made = 0;
-struct CThingBodyReorienter {
+class CThingBodyReorienter { public:
     CThingCreatureBase* owner;
     CThingBodyReorienter(CThingCreatureBase* o) : owner(o) { ++g_live; ++g_made; }
     ~CThingBodyReorienter() { --g_live; }
@@ -12,7 +12,7 @@ template<class T> struct scoped_ptr {
     T* get() const { return px; }
     void reset(T* p = 0) { T* old = px; px = p; delete old; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     scoped_ptr<CThingBodyReorienter> BodyReorienter;
     void SetBodyReorienterActive(bool active)
     {

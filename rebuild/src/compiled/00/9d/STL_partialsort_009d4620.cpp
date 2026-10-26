@@ -12,7 +12,7 @@
 //   PackedDataOffset +0x38, packed when its Size word, +4, is non-zero); engine/CBankFile.h's default layout disagrees.
 // Shape: STLport make_heap / __pop_heap inline; the comparator inline (left offset parked in the comparator's dead
 //   argument slot, the bank in esi); `middle` spilled to the `push ecx` word because `i` takes ebx.
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

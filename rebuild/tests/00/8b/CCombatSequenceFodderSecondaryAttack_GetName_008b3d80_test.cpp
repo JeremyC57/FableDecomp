@@ -3,7 +3,7 @@
 
 // Local standalone model mirroring s.cpp (independent behaviour test).
 
-struct CCharString {
+class CCharString { public:
     char* m_buf;
     CCharString(const char* s, int len) {
         int n = (len < 0) ? (int)strlen(s) : len;

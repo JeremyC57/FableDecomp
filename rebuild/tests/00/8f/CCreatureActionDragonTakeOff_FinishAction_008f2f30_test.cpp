@@ -2,13 +2,13 @@
 // creature's position raised by 30.148378f on Z (X/Y unchanged), interface 0x4d is removed and the base FinishAction runs.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     C3DVector m_reset; int m_resets; int m_airborneCalls; bool m_airborne;
     void ResetPosition(const C3DVector& p) { m_reset = p; ++m_resets; }
     void SetAirborne(bool a) { m_airborne = a; ++m_airborneCalls; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC; C3DVector m_pos; long m_removed;
     const C3DVector& GetPosition() const { return m_pos; }
     void RemoveTC(long t) { m_removed = t; }

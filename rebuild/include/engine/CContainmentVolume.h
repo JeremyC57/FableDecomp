@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CMovableResourceMemoryPool;
-struct CPlane;
+class CMovableResourceMemoryPool;
+class CPlane;
 
 #pragma pack(push, 1)
-struct CContainmentVolume {
+class CContainmentVolume {
+public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     CPlane*                     ContainmentPlanes;           // +0x04
     unsigned long               Size;                        // +0x08

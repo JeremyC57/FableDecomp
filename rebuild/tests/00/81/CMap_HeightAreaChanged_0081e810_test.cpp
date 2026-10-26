@@ -62,14 +62,14 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCachedVolumes;
-struct CGameDefinitionManager;
-struct CGameMap;
-struct CHeightMap;
-struct CWorld;
+class CCachedVolumes;
+class CGameDefinitionManager;
+class CGameMap;
+class CHeightMap;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CMap {
+class CMap { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr
@@ -133,10 +133,10 @@ FABLE_STATIC_ASSERT(offsetof(CMap, InitialisePassabilityFromThemes) == 0x1d48);
 
 #endif // FABLE_ENGINE_CMAP_H
 
-struct C2DBoxI { long MinX,MinY,MaxX,MaxY;
+class C2DBoxI { public: long MinX,MinY,MaxX,MaxY;
  void Set(float x,float y,float xx,float yy) {MinX=(long)x;MinY=(long)y;MaxX=(long)xx;MaxY=(long)yy;}
 };
-struct CHeightMap { void AreaChanged(const C2DBoxI&); }; // 0x008f5fa0
+class CHeightMap { public: void AreaChanged(const C2DBoxI&); }; // 0x008f5fa0
 struct RetailMap {
  unsigned char MapState[0x1a7c]; CHeightMap* HeightMap_ptr;
  C2DBoxI ChangedHeightAreas[20],ChangedGameAreas[20];

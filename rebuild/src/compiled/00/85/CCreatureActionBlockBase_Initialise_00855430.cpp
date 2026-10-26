@@ -8,7 +8,7 @@
 // temporary / play-parameter block {1,1,0,1,1,0,0,-1}) except the sound pair is the call's first argument (evaluated last, the
 // string temporary still built first and destroyed after the play call); the parameter block is assigned in its ctor body with
 // Handle before Priority (an init list in declaration order schedules the -1 store after the second 1 store).; the base Initialise is a qualified (direct) call after the block.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -17,12 +17,12 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long First;
     long Second;
 };
@@ -37,11 +37,11 @@ struct CSoundPlayParams {
     long Handle;                                // +0x1c
     CSoundPlayParams() { Volume = 1.0f; Pitch = 1.0f; Delay = 0.0f; Loop = 1; Pan = 0; Flags = 0; Handle = -1; Priority = 1; }
 };
-struct CTCSoundPlayer {                         // the interface-0x10 component
+class CTCSoundPlayer { public:                         // the interface-0x10 component
     void PlaySound(const CSoundPair& sound, const CSoundPlayParams& params, long a, long b, long c);   // 0x0066B280
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -82,7 +82,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
@@ -90,7 +90,7 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CCreatureAction_BlockBase : CCombatActionBase {
+class CCreatureAction_BlockBase : public CCombatActionBase { public:
     long BlowStrength;                          // +0x114 (PDB +0x12c)
     float MovementDirection[3];                 // +0x118 (PDB +0x130)
     virtual void Initialise();

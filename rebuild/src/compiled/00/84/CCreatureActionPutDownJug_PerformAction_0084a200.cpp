@@ -4,14 +4,14 @@
 // type 0x46 = bit 6 of the word at +0x28 on the creature, type 0xBB = bit 27 of the word at +0x34 on the carried thing),
 // CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CCreatureAction_PutDownThingAtTable::PerformAction @ 0x0084A0A0 (direct base call).
 // Shape: both GetInterface results are tested (`je` to the shared epilogue); the carried thing rides in esi across the base call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCarrying {                        // interface type 0x46
+class CTCCarrying { public:                        // interface type 0x46
     CThing* GetThingInPrimarySlot();        // 0x006A1440
 };
 struct CTCJug {                             // interface type 0xBB
@@ -42,17 +42,17 @@ struct CTCJug {                             // interface type 0xBB
     bool m_putDown;                         // +0x10 (PickUpJug clears it, PutDownJug sets it)
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CCreatureAction_PutDownThingAtTable : CCreatureActionBase {
+class CCreatureAction_PutDownThingAtTable : public CCreatureActionBase { public:
     virtual void PerformAction();           // 0x0084A0A0
 };
-struct CCreatureAction_PutDownJug : CCreatureAction_PutDownThingAtTable {
+class CCreatureAction_PutDownJug : public CCreatureAction_PutDownThingAtTable { public:
     virtual void PerformAction();
 };
 

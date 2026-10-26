@@ -24,7 +24,7 @@ struct CArray_char {                 // retail CArray<char>: 12 bytes
 
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int count);
 
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned char _pad[4];
     unsigned long m_infoSize;        // +0x04
     char*         m_pInfo;           // +0x08

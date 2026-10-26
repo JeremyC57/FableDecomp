@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CHeroCentreDef
-{
+class CHeroCentreDef
+{ public:
     void* vftable;
 };
 extern void* const g_CHeroCentreDef_vftable;

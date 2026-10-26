@@ -11,14 +11,14 @@
 // CIVCountedPointer::operator=: when the pointers differ, release the old object (`dec [obj+4]`, virtual slot 1 at
 // zero, store 0), adopt the source's pointer and add a reference. The count lives in the dead `result` argument
 // slot; the strength-reduced src+0x10/dst+0x10 pointer pair addresses the counted pointer.
-struct CAnimComponentMap {                      // intrusively counted: count at +4
+class CAnimComponentMap { public:                      // intrusively counted: count at +4
     virtual void v00();
     virtual void Destroy();                      // slot 1 (+0x04)
     long m_refCount;                             // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {                       // one word: the counted object
+class CIVCountedPointer { public:                       // one word: the counted object
     T* Object;
     __forceinline void Release()
     {
@@ -41,11 +41,11 @@ struct CIVCountedPointer {                       // one word: the counted object
     }
 };
 
-struct CDefString {                              // Ego_r.pdb: 4 bytes
+class CDefString { public:                              // Ego_r.pdb: 4 bytes
     long TablePos;                               // +0x00
 };
 
-struct CAnimationEntry {                         // Ego_r.pdb: 16 bytes
+class CAnimationEntry { public:                         // Ego_r.pdb: 16 bytes
     long                                 BankIndex;    // +0x00
     CDefString                           AnimName;     // +0x04
     CDefString                           GroupName;    // +0x08

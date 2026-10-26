@@ -17,7 +17,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString
 {
 public:

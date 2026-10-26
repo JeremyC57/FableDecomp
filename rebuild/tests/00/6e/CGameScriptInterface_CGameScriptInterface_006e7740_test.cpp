@@ -3,17 +3,17 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_bases = 0;
-struct CMainGameComponent;
-struct CGameDefinitionManager;
-struct CPlayerManager;
-struct CDisplayEngine;
-struct CThingSearchTools;
-struct CWorld {
+class CMainGameComponent;
+class CGameDefinitionManager;
+class CPlayerManager;
+class CDisplayEngine;
+class CThingSearchTools;
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* ThingSearchTools;  // +0x20
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_bases; }
     virtual ~CBaseClass() {}
 };
@@ -27,7 +27,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) {}
 };
-struct CScriptThing : CBaseClass {        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:        // vtable 0x01238C8C
     CCountedPointerWords PImp;
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -106,11 +106,11 @@ CGameScriptInterface::CGameScriptInterface(CMainGameComponent& component, const 
     SetGameScriptInterface(this);
 }
 
-struct CMainGameComponent { int a; };
-struct CGameDefinitionManager { int a; };
-struct CPlayerManager { int a; };
-struct CDisplayEngine { int a; };
-struct CThingSearchTools { int a; };
+class CMainGameComponent { public: int a; };
+class CGameDefinitionManager { public: int a; };
+class CPlayerManager { public: int a; };
+class CDisplayEngine { public: int a; };
+class CThingSearchTools { public: int a; };
 int main()
 {
     CMainGameComponent mgc; CGameDefinitionManager defs; CPlayerManager pm; CDisplayEngine de; CThingSearchTools tools;

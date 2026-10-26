@@ -13,8 +13,8 @@
 //   streams each element with WriteLong, so the element is modelled as long. The reset is the inline clear() calling
 //   the out-of-line erase(begin(), end()) (result dropped). The binary callees' manifest labels (<float>/<CDefString>)
 //   are propagated.
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
 
 template <class T> struct vector {
@@ -30,7 +30,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<long>& value);   // 0x00465852
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<long>& value);       // 0x00465820
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x01301C1C for T = long
@@ -39,7 +39,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

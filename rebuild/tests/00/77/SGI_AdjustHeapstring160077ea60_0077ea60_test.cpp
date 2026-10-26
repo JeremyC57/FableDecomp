@@ -10,7 +10,7 @@ struct Payload_0077ea60 {int data[3];Payload_0077ea60(){}__forceinline Payload_0
 template<class K,class V> struct Pair_0077ea60 { K first;V second;Pair_0077ea60(){}Pair_0077ea60(const Pair_0077ea60& p):first(p.first),second(p.second){} };
 typedef Pair_0077ea60<CCharString,Payload_0077ea60> Record_0077ea60;
 // Layout: string-data comparison helper is retail 00429950; null and identity tests are inline.
-template<class Char>struct CBasicString {const Char* text;bool operator<(const CBasicString&)const;};
+template<class Char>class CBasicString { public:const Char* text;bool operator<(const CBasicString&)const;};
 struct Compare_0077ea60 {int state;bool operator()(const Record_0077ea60&a,const Record_0077ea60&b)const {CBasicString<char>* y=(CBasicString<char>*)b.first.data;CBasicString<char>* x=(CBasicString<char>*)a.first.data;return y!=x && (!x || (y && *x<*y));}};
 
 template<class T,class C> void PushHeap(T* first,int hole,int top,T value,C comp) {

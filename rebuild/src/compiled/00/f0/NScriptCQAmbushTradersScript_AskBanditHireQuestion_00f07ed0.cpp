@@ -8,18 +8,18 @@
 // Layout: Game +0x40 (Ego_r.pdb - 0x14); pGlobalScriptDef (0x0143E90C) AmbushTradersBanditHireCost is PDB 0xa7c, retail +0x9dc.
 // Shape: the "cash poor" health test destroys its CScriptThing temporary out of line (inline_depth(0) region) while the
 // "no hire" one inlines the destructor (__forceinline); the question's last literal reuses the bandit argument's slot.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     __forceinline ~CCountedPointer()
@@ -35,10 +35,10 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); 
     virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); 
     virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023(); virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); 
@@ -52,7 +52,7 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     __forceinline ~CScriptThing() { }                  // out-of-line copy 0x004AA840
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_2 = 2 };
-struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual CScriptThing GetScriptThing() const;       // slot 12 (+0x30) 0x007E7490
@@ -61,7 +61,7 @@ struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C
     virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025();
     virtual bool IsPerformingScriptTask() const;       // slot 26 (+0x68) 0x007E7450
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -127,17 +127,17 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
     virtual void EntityGiveGold(const CScriptThing& thing, long amount) const;   // slot 520 (+0x820) 0x0089DC70 public: virtual void __fastcall CGameScriptInterface::EntityGiveGold(class CScriptThing const &, long) const
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x9dc];
     long AmbushTradersBanditHireCost;                  // +0x9dc
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                  // 0x00CB7940
 };
 namespace NScript {
-struct CQ_AmbushTradersScript : CScriptBase {
+class CQ_AmbushTradersScript : public CScriptBase { public:
     CGameScriptInterface* Game;                        // +0x40
     void*                 Data;                        // +0x44
     bool AskBanditHireQuestion(const CScriptThing& bandit, CScriptGameResourceObjectScriptedThingBase& banditObject);

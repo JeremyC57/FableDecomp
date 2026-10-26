@@ -10,7 +10,7 @@
 // Shape: a qualified base call, then HasTC + GetTC with the component used directly as `this` (the lookup key homed in
 // the dead `other` argument slot, the arguments kept in ebx/ebp), then HasTC + RemoveTC.
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum ECollideType { ECT_DUMMY = 0 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

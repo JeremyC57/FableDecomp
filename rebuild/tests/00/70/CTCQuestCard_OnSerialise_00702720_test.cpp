@@ -2,19 +2,19 @@
 // fields go through the context in order with false/0 defaults and the def's rewards as the reward defaults.
 #include <cstdio>
 #include <cstring>
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 static const char* g_names[16]; static const void* g_vals[16]; static long g_defs[16]; static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue) { g_names[g_n] = name; g_vals[g_n] = &value; g_defs[g_n++] = defaultValue ? 1 : 0; }
     void Transfer(const char* name, long& value, const long& defaultValue) { g_names[g_n] = name; g_vals[g_n] = &value; g_defs[g_n++] = defaultValue; }
     void Transfer(const char* name, CCharString* value) { g_names[g_n] = name; g_vals[g_n] = value; g_defs[g_n++] = -1; }
 };
-struct CQuestCardDef { long RenownReward; long GoldReward; };
-template <class T> struct CDefPointer {
+class CQuestCardDef { public: long RenownReward; long GoldReward; };
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CDefPointer<CQuestCardDef> PDef;
     bool          Finished;
     bool          Replayable;

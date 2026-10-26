@@ -13,7 +13,7 @@ struct CTCHeroExperience_Calls {
     void UpgradeTrainableStat(EHeroTrainableStatType stat) { ++upgrades; cost[(long)stat] += 50; }
     void SpendExperience(EHeroTrainableStatType stat, long amount) { ++spends; spentStat = (long)stat; spentAmount = amount; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool; SSpendInfoVector ExperienceSpendValuesStats; SSpendInfoVector ExperienceSpendValuesAbility;
     CTCHeroExperience_Calls* hero; long externalStat; long externalAmount; long externals;

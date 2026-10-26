@@ -10,14 +10,14 @@ typedef long long __int64;
 // behaviour test: CSecretPassageFirstGate::Main marker, locked notice while keeper lives, open on use, marker moves to skeleton
 
 
-struct C3DVector;
-struct CCharString {
+class C3DVector;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
@@ -25,7 +25,7 @@ struct CCPPointerInfo {
 struct CBase {
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const {} virtual void s002() const {} virtual void s003() const {} virtual void s004() const {} virtual void s005() const {} virtual void s006() const {}
     virtual void s007() const {} virtual void s008() const {} virtual void s009() const {} virtual void s010() const {} virtual void s011() const {} virtual void s012() const {}
     virtual void s013() const {} virtual void s014() const {} virtual void s015() const {} virtual void s016() const {} virtual void s017() const {} virtual void s018() const {}
@@ -56,7 +56,7 @@ struct CScriptThing : CBase {
         PImp_Info = 0;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const {} virtual void v001() const {} virtual void v002() const {} virtual void v003() const {} virtual void v004() const {} virtual void v005() const {}
     virtual void v006() const {}
     virtual void NewScriptFrame() const;                                // slot 7 (+0x1c)
@@ -158,7 +158,7 @@ struct CQ_OpeningGraveyardSecretPassageScript {
     bool          HaveOpenedDemonDoor;                  // +0x72
 };
 struct CQ_SunnyvaleMasterData;
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00() {}
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

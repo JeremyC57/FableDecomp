@@ -17,7 +17,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void*                m_pVtable;                         // +0x00
     unsigned long        position;                          // +0x04
     long                 sourceLength;                      // +0x08

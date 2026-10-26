@@ -1,13 +1,13 @@
 // Behaviour test (0x0049ea10): CWorld::SetMiniMapEnabled records whether the minimap was active only on a disable transition
 #include <cstdio>
-struct CPlayerGui {
+class CPlayerGui { public:
     bool Active;
     int  Calls;
     bool IsMiniMapActive() const { ++const_cast<CPlayerGui*>(this)->Calls; return Active; }
 };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xdd];
     bool          MiniMapEnabled;
     bool          MiniMapActiveBeforeDisabled;

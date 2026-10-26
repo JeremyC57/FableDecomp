@@ -1,4 +1,4 @@
-struct CCreatureAction_CastWillGhostSwordSpell {
+class CCreatureAction_CastWillGhostSwordSpell { public:
     void* vftable;
 };
 

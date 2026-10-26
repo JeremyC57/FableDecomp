@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vptr;
     unsigned char _pad4[0x94];
     void* ptr98; // +0x98

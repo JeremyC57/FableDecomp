@@ -17,20 +17,20 @@
 //   same-TU stand-in body (out slot written inline, under auto_inline(off)): with only a declaration VC7.1 treats the
 //   out pointer's address as escaping and gives the GetInterface key its own frame word (`sub esp,8`, this/holder swap
 //   edi<->ebx); with the stand-in the key reuses the out pointer's `push ecx` word as in retail.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -54,7 +54,7 @@ template <class T> struct CDefCopy {            // CDefPointer copy of a raw def
     }
     T* operator->() const { return Object; }
 };
-struct CCreatureModeDef : CDefPointeeBase {
+class CCreatureModeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long  InitialCreatureMode;                  // +0x2c
     long  DefaultWeaponCreatureMode;            // +0x30
@@ -62,7 +62,7 @@ struct CCreatureModeDef : CDefPointeeBase {
     long* AvailableIdleModes_last;              // +0x38
     long* AvailableIdleModes_end;               // +0x3c
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureModeDef>* out);   // 0x0073DBE0
 };
 void* FindDef_CDefClassBase_GetSubDef();      // stand-in callee of the stand-in body below
@@ -78,10 +78,10 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureModeDef>
     return true;
 }
 #pragma auto_inline(on)
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -96,7 +96,7 @@ struct CThing {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
@@ -113,7 +113,7 @@ struct SModeNode {                              // list node: next, prev, CCount
     CModeBase* m_pMode;
     void*      m_pModeInfo;
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual void v00();
     CThing*    ParentThing;                     // +0x04 (CTCBase)
     unsigned char _pad08[4];

@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 struct CAnimFilter {
     virtual bool Accepts(const void* entry) const { return false; }
 };
@@ -12,11 +12,11 @@ struct CAnimFilterNoGroup : CAnimFilter {
     virtual bool Accepts(const void* entry) const { return true; }
 };
 static bool g_hasAnim = false; static int g_finds = 0; static const CCharString* g_findName = 0; static bool g_filterNoGroup = false;
-struct CAnimationSet {
+class CAnimationSet { public:
     bool FindAnimationByName(const CCharString& name, const CAnimFilter& filter) { ++g_finds; g_findName = &name; g_filterNoGroup = filter.Accepts(0); return g_hasAnim; }
 };
 static int g_destroyed = 0;
-struct CAppearanceDef {
+class CAppearanceDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long          m_count;
@@ -34,10 +34,10 @@ struct CAppearanceDefPointer {
     CAppearanceDef* operator->() const { return m_pDef; }
 };
 static CAppearanceDef* g_appearance = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CAppearanceDefPointer& out) { ++g_getSubDef; ++g_appearance->m_count; out.m_pDef = g_appearance; return true; }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PBaseDef;
 };

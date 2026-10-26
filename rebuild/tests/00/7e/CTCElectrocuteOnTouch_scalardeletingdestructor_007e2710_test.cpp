@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCElectrocuteOnTouch {
+class CTCElectrocuteOnTouch { public:
     void* vftable;
     int destroyed;
 };

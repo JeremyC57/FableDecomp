@@ -9,7 +9,7 @@
 // Shape: one stream call per member in the original's write order (the flicker integers are written alpha, size,
 //   bias, speed, unlike their declaration order); VC7.1 picks byte/word loads for fields at byte boundaries.
 #include "engine/CDataOutputStream.h"
-struct CRGBColour { union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
+class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
@@ -17,9 +17,9 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteFloat(float value);                       // 0x00993EE0
     void WriteColour(const CRGBColour& value);          // 0x00993F30
 };
-struct CEnginePrimitiveHandle { long Index; long Generation; };
+class CEnginePrimitiveHandle { public: long Index; long Generation; };
 namespace NParticleEngine {
-struct CPSCDecalRenderer {
+class CPSCDecalRenderer { public:
     unsigned char _base[0xc];                           // CPSCBase
     float DecalLifeSecs;                                // +0x0c
     long DecalBankIndex;                                // +0x10

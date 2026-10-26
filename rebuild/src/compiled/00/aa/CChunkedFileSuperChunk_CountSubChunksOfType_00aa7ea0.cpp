@@ -11,7 +11,7 @@
 #include <string.h>
 #pragma intrinsic(strcmp)
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void SetPosition(long position);        // slot 1
     virtual long GetPosition();                     // slot 2
@@ -19,12 +19,12 @@ struct CDataOutputStream {
     virtual void Write(const void* data, long size);// slot 4
     void WriteLong(long value);                     // 0x00993EA0 (Write(&value, 4); manifest "WriteCBYTE" is propagated)
 };
-struct CDataInputStream;
-struct CChunkedFileSaver;
-struct CChunkedFileLoader;
-struct CChunkedFileSuperChunk;
+class CDataInputStream;
+class CChunkedFileSaver;
+class CChunkedFileLoader;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk {                          // retail layout = engine/CChunkedFileChunk.h (+ the vtable it cannot declare)
+class CChunkedFileChunk { public:                          // retail layout = engine/CChunkedFileChunk.h (+ the vtable it cannot declare)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual long IsUnknownType() const;             // slot 4 (CChunkedFileRawDataChunk @ 0x00AA7740: `mov eax,1`)
     virtual void v05(); virtual void v06();
@@ -71,7 +71,7 @@ struct CChunkRef {                                  // a counted-pointer local c
     CChunkedFileChunk* operator->() const { return Object; }
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CChunkArray SubChunks;                          // +0x10
     CChunkArray RegisteredSubChunkTypes;            // +0x1c
     unsigned long CurrentChunkIndex;                // +0x28

@@ -12,7 +12,7 @@
 //
 // VC7.1 (MSVC 2003) constraints honored: no C++11, plain scalars, 0 not nullptr.
 
-struct CCombatManager;
+class CCombatManager;
 
 // Helper that arrives at 'this' (ecx) and returns some engine object pointer in eax.
 // Declared extern; the call target is relocation-masked in parity. Using __fastcall
@@ -26,8 +26,8 @@ struct CThingCreatureHelperResult
 
 extern CThingCreatureHelperResult * __fastcall CThingCreatureBase_GetCombatManagerHelper(void *pThis);
 
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     // opaque; layout irrelevant to this accessor (result comes from helper call)
     char _opaque[4];
 };

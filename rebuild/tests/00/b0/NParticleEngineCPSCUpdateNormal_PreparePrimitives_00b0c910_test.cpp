@@ -31,17 +31,17 @@ static int g_ok = 1;
 // (`this` homed in the `push ecx` slot); the inlined STLport erase unlinks the node (next in ebp), runs the
 // element's virtual destructor and frees the node. The distance float is forwarded as a dword (ebp). `ret 14h`.
 
-struct CIEngine;
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitivePrepareInfo {
+class CIEngine;
+class CEnginePrimitiveHandle;
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _interpolate[0x34];       // CInterpolationInfo
     CIEngine*     Engine;                   // +0x34
 };
 
 namespace NParticleEngine {
-template <class A, class B> struct CParticleUpdateParameters;
-struct CParticleSystem;
-struct CParticleEmitter {
+template <class A, class B> class CParticleUpdateParameters;
+class CParticleSystem;
+class CParticleEmitter { public:
     unsigned char  _pad00[0x40];
     unsigned short Priority : 3;            // +0x40 bits 0-2
     unsigned short IsScreenDisplacement : 1;
@@ -66,7 +66,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                          // +0x04
     void* GetPItem() const;                 // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer();
     T* Get() const { return (T*)GetPItem(); }
 };
@@ -100,7 +100,7 @@ template <class T> struct CRetailList {     // STLport list (4 bytes: the head n
 typedef CIntelligentPointer<NParticleEngine::CParticleEmitter> CEmitterPointer;
 
 namespace NParticleEngine {
-struct CPSCUpdateNormal {
+class CPSCUpdateNormal { public:
     virtual void v00();
     unsigned char                _pad04[0x9c - 4];
     CRetailList<CEmitterPointer> DecalEmitterList;     // +0x9c

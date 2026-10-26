@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHeroTitleDef { int x; };
+class CHeroTitleDef { public: int x; };
 
 static int g_called = 0;
 static CHeroTitleDef* g_self = 0;

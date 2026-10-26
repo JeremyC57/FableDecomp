@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CMember { };
-struct CTargetingDef {
+class CTargetingDef { public:
     void* vtbl;
     int Parent;
     void* f8;

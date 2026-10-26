@@ -14,8 +14,8 @@
 // Shape: the village comes from the unchecked out-parameter GetInterface (the absent arm reads the lookup key's frame
 //        word); the 64-bit UID is tested with `or` of its halves (twice, the second re-read); the search filter is a
 //        one-word temporary holding the interface type, passed with the out pointer's address.
-struct CTCBase;
-struct CTCVillage;
+class CTCBase;
+class CTCVillage;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,29 +41,29 @@ struct CThing {
         return false;
     }
 };
-struct CThingVillage : CThing { };
+class CThingVillage : public CThing { public: };
 
-struct CTCVillage {
+class CTCVillage { public:
     void AddThingToVillage(CThing& thing);      // 0x0065B854
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                  // ETCInterfaceType
     CThingFilter_HasTC(long type) : Type(type) {}
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out) const;   // 0x007EE660
 };
 extern bool g_bCheckVillageMembers_013b86d8;    // 0x013B86D8
 
-struct CVillageMemberDef {
+class CVillageMemberDef { public:
     unsigned char _pad_0x00[0x25];
     bool          NeedsVillageToFunctionCorrectly;   // +0x25
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     void*              __vftable;               // +0x00
     CThing*            ParentThing;             // +0x04 (CTCBase)
     unsigned char      _pad_0x08[0x4];

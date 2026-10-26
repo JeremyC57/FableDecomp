@@ -11,19 +11,19 @@
 // flattens the base; the counter is modelled as m_pressCount). The hero's dead flag is bit 0 of +0x91.
 class CInputEvent;
 class CProcessedInput;
-struct CThingCreatureBase;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];
     ~CCombatActionBase();                          // 0x0062E900
 };
-struct CCombatAction_GenericBreakOffDrain : CCombatActionBase {
+class CCombatAction_GenericBreakOffDrain : public CCombatActionBase { public:
     CCombatAction_GenericBreakOffDrain(CThingCreatureBase* creature);   // 0x00690DB0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
@@ -33,7 +33,7 @@ class CPlayer {
 public:
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

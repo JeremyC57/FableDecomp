@@ -7,14 +7,14 @@ static int Fail(const char* what) { std::printf("00da2a20_TEST FAIL %s\n", what)
 #define CHECK(cond) do { if (!(cond)) return Fail(#cond); } while (0)
 static bool g_term = false;
 static int g_gives = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id; float X; bool Alive; bool Turncoat;
     CScriptThing(int id = 0, float x = 0.0f, bool alive = true, bool turn = false) : Id(id), X(x), Alive(alive), Turncoat(turn) { }
     bool IsAlive() const { return Alive; }
     bool IsNull() const { return Id == 0; }
 };
 static float GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b) { float d = a.X - b.X; return d < 0 ? -d : d; }
-struct CGame {
+class CGame { public:
     std::vector<CScriptThing> Guards; CScriptThing Hero; int GivenTo;
     long GetAllThingsWithScriptName(const char* name, std::vector<CScriptThing>& out) { if (std::strcmp(name, "MC_MinionGuard") == 0) out = Guards; return (long)out.size(); }
     CScriptThing& GetHero() { return Hero; }

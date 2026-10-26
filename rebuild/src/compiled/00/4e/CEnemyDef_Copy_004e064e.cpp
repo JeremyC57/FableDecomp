@@ -1,6 +1,6 @@
 #include "engine/CEnemyDef.h"
 
-struct CDefClassBase;
+class CDefClassBase;
 struct CEnemyDef_Methods : CEnemyDef { void base_clone(const CDefClassBase* src); };
 
 void __fastcall CEnemyDef_Copy(CEnemyDef* self, int /*edx*/, const CDefClassBase* src)

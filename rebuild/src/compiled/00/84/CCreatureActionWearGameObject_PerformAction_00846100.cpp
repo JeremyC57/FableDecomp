@@ -13,18 +13,18 @@
 //   GetHeadPos @ 0x00661B40, CThingObject::Create @ 0x00703210 (__fastcall).
 // Layout: same local models as the landed CCreatureAction_Undress::PerformAction (0x00846410); thing +0x60 physics TC,
 //   +0x8c def index (word).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CRightHandedSet;
+class CRightHandedSet;
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(b.X + a.X, b.Y + a.Y, a.Z); }
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -46,20 +46,20 @@ struct CDefBase {
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +4
 };
-struct CAppearanceModifierDef : CDefBase {
+class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x40 - 8];
     long          Slot;                                      // +0x40
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CThingObjectDef : CDefBase {
+class CThingObjectDef : public CDefBase { public:
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>* out);   // 0x0057FF92
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
 };
 CThingObjectDef* FindThingObjectDef(long index);                       // stand-in: the def lookup (not graded here)
@@ -89,14 +89,14 @@ __declspec(noinline) void CLongList::remove(const long& value)
 struct CRandomSource {
     unsigned long* GetRandomSeed();                          // 0x0049D810
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x28];
     long          ID;                                        // +0x28
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ApplyAcceleration(C3DVector* acceleration);         // 0x006B0210
 };
-struct CThingObject {
+class CThingObject { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PPhysics;                                // +0x60
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
@@ -104,12 +104,12 @@ struct CThingObject {
                                            const CCharString& name);   // 0x00703210
 };
 
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     CLongList GetConflictingModifiers(long slot, long type);  // 0x00706B50
     void RemoveAppearanceModifier(long def);                 // 0x00706370
     void AddAppearanceModifier(long def);                    // 0x00706880
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -118,7 +118,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;        // 0x004365B0
 };
 class CThing;
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                         // 0x006A1440
 };
 class CThing {
@@ -158,7 +158,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                       // +0x08

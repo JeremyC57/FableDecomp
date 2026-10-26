@@ -9,7 +9,7 @@ struct CWriteLog {
     CWriteLog() : Count(0) {}
     void Add(char kind, long value, const char* text) { Kind[Count] = kind; Value[Count] = value; Text[Count] = text; ++Count; }
 };
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const char* text, long) : Text(text) {}

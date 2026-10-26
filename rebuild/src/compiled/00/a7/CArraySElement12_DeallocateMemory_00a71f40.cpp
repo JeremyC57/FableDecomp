@@ -24,7 +24,7 @@ struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
 SElement12* __fastcall Copy_SElement12(SElement12* first, SElement12* last, SElement12* result,
                                        const SRandomAccessIteratorTag& category, long* distance);   // 0x0074CA20
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long capacity() const { return (unsigned long)(end_of_storage - first); }
     void erase(T* f, T* l) { last = Copy_SElement12(l, last, f, SRandomAccessIteratorTag(), (long*)0); }

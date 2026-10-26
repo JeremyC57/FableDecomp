@@ -8,8 +8,8 @@
 // returns the freshly stored seed, which retail forwards straight into `div` -- and the bedtime offset at
 // +0x20 becomes `seed % 10` (unsigned: `xor edx,edx ; div`). Both arguments are unused (`ret 8`). No engine
 // header exists for CAIStateGroup_GoToBed; the layout is local (see the constructor @ 0x008FEB6B).
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
@@ -21,7 +21,7 @@ inline unsigned long WorldRandomStep(unsigned long& seed)
     return seed;
 }
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

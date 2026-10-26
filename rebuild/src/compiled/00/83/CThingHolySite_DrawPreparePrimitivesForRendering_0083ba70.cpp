@@ -7,17 +7,17 @@
 // `mov al,1` / `xor al,al` exits (`if (base) { ...; return true; } return false;`).
 // The catalog label "vfunc_36" is the vtable slot; slot 36 of CThingPhysical-derived vtables is
 // DrawPreparePrimitivesForRendering (the base call 0x006A64D0 carries that name).
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 struct CTCGraphicAppearance {
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x004BE4E0
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00();
     unsigned char         _pad04[0x60];
     CTCGraphicAppearance* PTCGraphicAppearance;                // +0x64
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
 };
-struct CThingHolySite : CThingPhysical {
+class CThingHolySite : public CThingPhysical { public:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
 };
 

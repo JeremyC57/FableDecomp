@@ -4,7 +4,7 @@ static const char* g_lit = 0;
 static int g_len = 0;
 static void* g_self = 0;
 
-struct CCharString {
+class CCharString { public:
     int dummy;
     CCharString* ctor(const char* lit, int len);
 };

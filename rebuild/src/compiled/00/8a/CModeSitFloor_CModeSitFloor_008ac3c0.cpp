@@ -8,11 +8,11 @@
 // Layout = Ego_r.pdb: CModeSitBase is 0x2c bytes (IdleCounter +0x1c, PlayingIdle +0x20, PRemoveAction
 // +0x24), CModeSitFloor adds the Filter member at +0x2c (size 0x38). Two stack arguments (`ret 8`):
 // the owning creature for the base and the animation-group name for the filter.
-struct CThing;
+class CThing;
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();                                         // vtable 0x01267568
     CCharString   Group;                                        // +4
     unsigned long GroupCRC;                                     // +8

@@ -9,14 +9,14 @@
 // long Val }, so the 16-byte pair is key +0, GroupName +4, EntryName +8, Val +0xC (`sar 4`). The pair's implicit
 // operator= calls the out-of-line CCharString::operator= three times and moves Val; the count lives in the dead
 // `result` argument slot and the strength-reduced src+0xC/dst+0xC pointers address the nested CSymbolInfo.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CSymbolMap {
 public:
-    struct CSymbolInfo {                         // Ego_r.pdb: 12 bytes
+    class CSymbolInfo { public:                         // Ego_r.pdb: 12 bytes
         CCharString GroupName;                   // +0x00
         CCharString EntryName;                   // +0x04
         long        Val;                         // +0x08

@@ -1,4 +1,4 @@
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0xb0];
     char m_b0;
     char m_b1;

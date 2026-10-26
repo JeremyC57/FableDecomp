@@ -6,8 +6,8 @@
 // (`or [ebp-8],-1 ; or [ebp-4],-1`) before the mode ladder (`dec ; dec ; je ; dec ; jne`: cases 2 and 3); edi is saved only around the save arm. The chunk label
 // "CEngineLightingManager::UpdateShadowScene" is propagated from an unrelated body.
 struct SBytePair { long m_first; long m_second; };     // the two persisted bytes, each held in a long
-struct CDataOutputStream { void WriteCBYTE(long value); };   // 0x00993EB0
-struct CDataInputStream;
+class CDataOutputStream { public: void WriteCBYTE(long value); };   // 0x00993EB0
+class CDataInputStream;
 
 struct CPairReader_004e9021 {                      // a two-word reader: both words start at -1
     long m_a;
@@ -16,7 +16,7 @@ struct CPairReader_004e9021 {                      // a two-word reader: both wo
     void Read(CDataInputStream* stream, SBytePair* value);   // 0x004E9021
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char      _pad0[0x18];
     long               m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char      _pad1[8];

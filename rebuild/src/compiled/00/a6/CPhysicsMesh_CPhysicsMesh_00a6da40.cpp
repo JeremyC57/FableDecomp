@@ -13,12 +13,12 @@
 // Shape: CArrays are STLport vectors (`_Vector_base` + `_STLP_alloc_proxy` from an `allocator()` temporary: that places
 //   `push edi` and the two `lea` before the 0x61/0x64 stores like retail); C3DTriangle2 is 6 bytes (`imul` with no `sar`);
 //   the private PDB CalculateSegmentation is inline (`if (TotalFaceIndices.size() > 60) RootSegment.Reset(Create(...))`).
-struct C3DMeshFile;
-struct CMovableResourceMemoryPool;
-struct C3DTriangle2 { unsigned short Index[3]; };   // 6 bytes (the size() divide is by 6)
-struct C3DVector { float X, Y, Z; };
-struct C2DLineF;
-struct C3DHelperPoint; struct C3DDummyObject; struct C3DMeshVolume;
+class C3DMeshFile;
+class CMovableResourceMemoryPool;
+class C3DTriangle2 { public: unsigned short Index[3]; };   // 6 bytes (the size() divide is by 6)
+class C3DVector { public: float X, Y, Z; };
+class C2DLineF;
+class C3DHelperPoint; class C3DDummyObject; class C3DMeshVolume;
 
 template <class T> struct CAllocator {                 // STLport allocator<T>: empty
     CAllocator() {}
@@ -33,29 +33,29 @@ template <class T> struct CVectorBase {                // STLport _Vector_base<T
     CAllocProxy<T> _M_end_of_storage;
     CVectorBase(const CAllocator<T>& alloc) : _M_start(0), _M_finish(0), _M_end_of_storage(alloc, 0) {}
 };
-template <class T> struct CArray : CVectorBase<T> {    // CArray<T>: an STLport vector, retail 12 bytes
+template <class T> class CArray : public CVectorBase<T> { public:    // CArray<T>: an STLport vector, retail 12 bytes
     CArray() : CVectorBase<T>(CAllocator<T>()) {}
     unsigned long size() const { return this->_M_finish - this->_M_start; }
 };
-template <class K, class V> struct CVectorMap {         // retail 0x10 bytes
+template <class K, class V> class CVectorMap { public:         // retail 0x10 bytes
     CArray<void*>  Vector;
     unsigned char  Compare;
     bool           Dirty;
     CVectorMap() : Dirty(false) {}
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     long Centre[3];
     long Radius;
     C3DBoundingSphere() { Centre[0] = 0; Centre[1] = 0; Centre[2] = 0; Radius = 0; }
 };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct CCircle { float X, Y, Radius; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class CCircle { public: float X, Y, Radius; };
 
 class CIPhysicsFacesSegmentBase {
 public:
     static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}

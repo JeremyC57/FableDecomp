@@ -15,7 +15,7 @@
 // null test from the success path's free. Intelligent-pointer assignment names the item (`item = other.GetPItem()`);
 // the fire point lookup is the one-ternary form (component straight into ecx); the comparator is a by-value temporary
 // built in its argument slot through C3DVector's memberwise copy ctor.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,8 +23,8 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct C3DVector { float x, y, z; C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { } };
-struct CThing {
+class C3DVector { public: float x, y, z; C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { } };
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -116,11 +116,11 @@ struct CTCEnemySource {                         // interface 8
 struct CTCFirePoint {                           // interface 0xac
     void SetOccupant(CThing* creature);         // 0x0087C390
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

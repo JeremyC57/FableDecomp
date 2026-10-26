@@ -4,7 +4,7 @@
 // +0x0c/+0x10/+0x14). PThingMapManager is read from CWorldMap +0x10 (the PThingMapManager scoped_ptr's raw pointer).
 // Shape: thing-map manager read through an inline const getter, assigned in the body after the vector is built.
 namespace NThingMap { struct CThingMap_; }
-struct CThingManager;
+class CThingManager;
 struct CThingMapManager;
 template <class T> class allocator { public: allocator() {} };
 template <class V, class A> struct _STLP_alloc_proxy : public A {

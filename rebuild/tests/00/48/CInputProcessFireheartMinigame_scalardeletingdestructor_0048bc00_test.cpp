@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessFireheartMinigame {
+class CInputProcessFireheartMinigame { public:
     void* vftable;
     int destroyed;
 };

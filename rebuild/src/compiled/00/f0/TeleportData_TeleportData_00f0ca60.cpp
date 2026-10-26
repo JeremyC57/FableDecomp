@@ -10,7 +10,7 @@
 // teleportMkr strings) is 0x00D18C50 / 0x00D15170 in another script TU.
 // Shape: the class declares no copy constructor, so VC7.1 emits the implicit one out of line (COMDAT)
 // for a copy-construction in the TU; `return this`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0

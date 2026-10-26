@@ -16,12 +16,12 @@ extern double g_virtualPixelScaleY;                // 0x013CA808
 extern double g_virtualScreenWidth;                // 0x013961E8
 extern double g_virtualScreenHeight;               // 0x013961F0
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad0[0x194];
     C2DExtentsI   RenderTargetDimensions;          // +0x194
     unsigned char _pad19c[0x254 - 0x19c];

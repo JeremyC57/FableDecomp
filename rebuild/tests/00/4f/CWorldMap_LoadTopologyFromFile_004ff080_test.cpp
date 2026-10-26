@@ -14,14 +14,14 @@ static void* t_memmove(void* d, const void* s, unsigned int n) { return std::mem
 #define free t_free
 #define memmove t_memmove
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;
     void (__fastcall* Destroy)(void* data);
     void* Data;
 };
-struct CMap;
+class CMap;
 static CMap* g_resetWith = 0;
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -81,41 +81,41 @@ void CLongVector::_M_insert_overflow(long* position, const long& x, const __true
     _M_end_of_storage = newStart + len;
 }
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CAFile { int tag; };
-struct CASuspendableProcess {
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CAFile { public: int tag; };
+class CASuspendableProcess { public:
     virtual ~CASuspendableProcess() {}
     virtual void v01() = 0;
     virtual void Update() = 0;
 };
-struct CGameDefinitionManager { int tag; };
+class CGameDefinitionManager { public: int tag; };
 static unsigned long g_seed = 77;
-struct CWorld {
+class CWorld { public:
     unsigned char                 _pad00[0x10];
     const CGameDefinitionManager* DefinitionManager;
     unsigned long* GetWorldSeed() const { ++g_seedCalls; return &g_seed; }
 };
 struct CMapArgs { const CGameDefinitionManager* defs; CWorld* world; unsigned long* seed; long map; C2DBoxI area; CAFile* file; CASuspendableProcess* process; };
 static CMapArgs g_mapArgs;
-struct CMap {
+class CMap { public:
     CMap(const CGameDefinitionManager& definitions, CWorld& world, unsigned long* seed, long map,
          const C2DBoxI& area, CAFile& file, CASuspendableProcess* process)
     { ++g_maps; g_mapArgs.defs = &definitions; g_mapArgs.world = &world; g_mapArgs.seed = seed; g_mapArgs.map = map; g_mapArgs.area = area; g_mapArgs.file = &file; g_mapArgs.process = process; }
     unsigned char _body[0x1d40];
 };
-struct CMapInfo {
+class CMapInfo { public:
     C2DBoxI               Area;
     CCountedPointer<CMap> PMap;
     unsigned char         _rest[0x30];
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;
     T* Finish;
     T* EndOfStorage;
     T* _SweepBegin1() const { return Start; }
     T& operator[](unsigned long i) { return *(_SweepBegin1() + i); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     void*            _vptr;
     long             f4;
     CWorld*          World;

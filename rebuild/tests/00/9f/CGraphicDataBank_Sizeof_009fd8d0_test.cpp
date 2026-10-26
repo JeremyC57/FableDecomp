@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct SEntry44 { unsigned char _body[0x2c]; }; struct SEntry16 { unsigned char _body[0x10]; };
-struct CGraphicDataBank { unsigned char _pad[0x1e0]; SEntry44* m_pEntriesFirst; SEntry44* m_pEntriesLast; SEntry44* m_pEntriesEnd; SEntry16* m_pSlotsFirst; SEntry16* m_pSlotsLast; SEntry16* m_pSlotsEnd;
+class CGraphicDataBank { public: unsigned char _pad[0x1e0]; SEntry44* m_pEntriesFirst; SEntry44* m_pEntriesLast; SEntry44* m_pEntriesEnd; SEntry16* m_pSlotsFirst; SEntry16* m_pSlotsLast; SEntry16* m_pSlotsEnd;
     long Sizeof() { return (long)(m_pEntriesEnd - m_pEntriesFirst) * 0x2c + (long)(m_pSlotsEnd - m_pSlotsFirst) * 0x10 + 0x324; } };
 
 int main() {

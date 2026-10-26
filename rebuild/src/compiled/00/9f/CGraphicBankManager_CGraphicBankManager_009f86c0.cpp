@@ -18,7 +18,7 @@ struct SCountBlock {
     void* m_pObject;                               // +8
 };
 struct CGraphicBank;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                             // +0
     SCountBlock* Info;                             // +4
     void Reset()
@@ -34,7 +34,7 @@ template <class T> struct CCountedPointer {
         Data = 0;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 struct SBankEntry {                                // the list element (node +0x08)
@@ -60,7 +60,7 @@ struct list {
 namespace N_0099a300 { struct CBase {
     virtual ~CBase();                              // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CGraphicBankManager : CBase {
+class CGraphicBankManager : public CBase { public:
     list m_banks;                                  // +0x04
     virtual ~CGraphicBankManager();
 };

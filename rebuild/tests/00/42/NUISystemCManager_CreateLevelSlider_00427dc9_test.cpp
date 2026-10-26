@@ -3,16 +3,16 @@
 #include <cstring>
 #include <map>
 
-struct CCharString { const char* text; CCharString(const char* t) : text(t) {} };
-struct CWideString { long value; };
+class CCharString { public: const char* text; CCharString(const char* t) : text(t) {} };
+class CWideString { public: long value; };
 static CWideString LongToWideString(long v) { CWideString w; w.value = v; return w; }
-struct C2DCoordI { long X, Y; };
-struct CRGBColour {
+class C2DCoordI { public: long X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct SComponentState { C2DVector Position; C2DVector Size; CRGBColour Colour; };
 typedef std::map<unsigned long, SComponentState> CStateMap;
 

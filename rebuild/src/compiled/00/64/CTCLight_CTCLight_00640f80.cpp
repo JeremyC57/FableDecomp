@@ -17,39 +17,39 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CThing;
+class CThing;
 namespace NGraphicAppearance {
-struct CPrimitive;
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CPrimitive;
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void UnregisterComponent(CAGraphicAppearanceComponent* component);   // 0x004C0000
 };
-struct CAGraphicAppearanceComponent {                       // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:                       // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     ~CAGraphicAppearanceComponent() { }
 };
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
     unsigned char _pad68[0x29];
     unsigned char Dead : 1;                                 // +0x91 bit 0
 };
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
     virtual ~CTCBase();                                     // 0x00686830
 };
 
-struct CCPPointerInfo {                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -65,12 +65,12 @@ template<class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                                  // slot 1
     long m_refCount;                                        // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer()
     {
@@ -90,9 +90,9 @@ template<class T> struct CPtrVector {                       // STLport vector<T*
 };
 
 struct CLightInfo;
-struct CLightDef;
+class CLightDef;
 
-struct CTCLight : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x0125A194 / 0x0125A208
+class CTCLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x0125A194 / 0x0125A208
     CCountedPointer<CLightInfo>     PLightInfo;             // +0x10
     CDefPointer<const CLightDef>    PLightDef;              // +0x18
     bool  Active;                                           // +0x1c

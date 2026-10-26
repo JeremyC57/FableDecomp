@@ -2,7 +2,7 @@
 // position by t (exactly Position when t == 1), plus the physics render Z offset when the thing is a creature (type 2).
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -10,7 +10,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector Position, OldPosition;
     float ZOffset;
     int calls;
@@ -18,7 +18,7 @@ struct CTCPhysicsBase {
     C3DVector GetPosition(float t) const { return t == 1.0f ? Position : (Position - OldPosition) * t + OldPosition; }
     virtual ~CTCPhysicsBase() {}
 };
-struct CThing { unsigned char ThingType; CTCPhysicsBase* PhysicsTC; };
+class CThing { public: unsigned char ThingType; CTCPhysicsBase* PhysicsTC; };
 
 static C3DVector GetRenderPositionForThing(const CThing& thing, float t)
 {

@@ -1,4 +1,4 @@
-struct CInputProcessSetRangedWeaponThirdPersonMode {
+class CInputProcessSetRangedWeaponThirdPersonMode { public:
     void* vftable;
 };
 

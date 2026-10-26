@@ -7,14 +7,14 @@
 #include "engine/CWorld.h"
 #else
 #define __forceinline inline
-struct CAIBrain{char prefix[24];void* Creature;};
-struct CAIStateGroupBase{void* vtable;CAIBrain* PBrain;char state[12];};
+class CAIBrain{ public:char prefix[24];void* Creature;};
+class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_MazeShieldedChase:CAIStateGroupBase{void* _pad_0x14[2];char unused[4];long unusedFrame;};
 #endif
 struct MazeThing;
 struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();MazeThing* GetPItem()const;void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
 struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){SetPItem(p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){SetPItem(p.GetPItem());return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
-struct C3DVector{float X,Y,Z;};
+class C3DVector{ public:float X,Y,Z;};
 #pragma pack(push,1)
 struct MazeBoss{char beforeHome[0x22];C3DVector Home;long GetPhase();};
 #pragma pack(pop) //007aed10
@@ -29,9 +29,9 @@ const C3DVector& GetPosition(); //004c73d0
 __forceinline void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
 __forceinline void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.Lookup<8>();}
 };
-struct CCombatManager{void RegisterCombatant(MazeThing*,MazeThing*,bool);}; //006edc50
+class CCombatManager{ public:void RegisterCombatant(MazeThing*,MazeThing*,bool);}; //006edc50
 #ifndef _MSC_VER
-struct CWorld{char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;};
+class CWorld{ public:char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;};
 #endif
 struct ShieldMethods:CAIStateGroup_MazeShieldedChase{
 __forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}

@@ -1,6 +1,6 @@
 // Behaviour test for 0x0071F530 swap of two pair<CSkeletalMorphs::CEntry,float> entries.
 #include <cstdio>
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorphsEntry { CDefString MorphName; short Priority; bool SupressesLowerMorphs; };
 struct SMorphWeight {
     CSkeletalMorphsEntry first;

@@ -20,8 +20,8 @@ struct CJoystickPointer {                          // CCountedPointer<CJoystick>
 CJoystickPointer* __fastcall Move_00a5fda0(CJoystickPointer* first, CJoystickPointer* last, CJoystickPointer* dest, const SMoveTag& tag, bool overlap);   // 0x00A5FDA0
 void __fastcall Destroy_009f6750(CJoystickPointer* first, CJoystickPointer* last, const SAllocatorTag& allocator);   // 0x009F6750
 
-struct CMouse { virtual ~CMouse(); };
-struct CKeyboard { virtual ~CKeyboard(); };
+class CMouse { public: virtual ~CMouse(); };
+class CKeyboard { public: virtual ~CKeyboard(); };
 struct CJoystickVector {                           // VC7.1 Dinkumware vector: first / last / end
     CJoystickPointer* m_first;
     CJoystickPointer* m_last;

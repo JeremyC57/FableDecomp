@@ -8,7 +8,7 @@
 // Shape: arguments pushed right to left -- `this` (ecx) first, then the descriptor -- and the manager's result passes
 // straight through eax.
 // Label correction: the catalog's `_Cons_val<allocator<pair<unsigned long,CAnimationEntry>>>` is propagated.
-struct CThreadedFileObjectDesc { unsigned char _body[0x18]; };   // 24 bytes (landed 0x0098F0F0 layout)
+class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };   // 24 bytes (landed 0x0098F0F0 layout)
 class CThreadedFile;
 class CThreadedFileManager {
 public:

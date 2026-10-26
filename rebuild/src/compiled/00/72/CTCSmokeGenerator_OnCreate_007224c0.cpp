@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCSmokeGenerator { void OnCreate(); };
+class CTCSmokeGenerator { public: void OnCreate(); };
 void CTCSmokeGenerator::OnCreate() {}

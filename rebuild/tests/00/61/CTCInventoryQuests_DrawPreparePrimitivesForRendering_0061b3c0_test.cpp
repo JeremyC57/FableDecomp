@@ -5,10 +5,10 @@
 static double g_time = 0.0;
 static double GFGetTime() { return g_time; }
 struct CViewport { int id; };
-struct CEnginePrimitivePrepareInfo { CViewport* PViewport; };
+class CEnginePrimitivePrepareInfo { public: CViewport* PViewport; };
 static int g_updates = 0, g_renders = 0; static float g_lastDelta = -1.0f; static CViewport* g_lastViewport = 0;
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     void Update(float d) { ++g_updates; g_lastDelta = d; }
     void Render(CViewport* v, long, long, long, long) { ++g_renders; g_lastViewport = v; }
 };
@@ -40,13 +40,13 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
     CFadeSettingsPtr GetFadeSettings() { ++g_fade.RefCount; CFadeSettingsPtr p; p.Object = &g_fade; return p; }
 };
 }
 static int g_cleared = 0;
-struct CEnginePrimitiveHandle { long Handle; void Clear() { ++g_cleared; Handle = 0; } };
+class CEnginePrimitiveHandle { public: long Handle; void Clear() { ++g_cleared; Handle = 0; } };
 template <class R, class T> struct mem_fun_ref_t {
     R (T::*_M_f)();
     explicit mem_fun_ref_t(R (T::*f)()) : _M_f(f) { }
@@ -73,8 +73,8 @@ struct CTCInventoryBase {
     void DrawInventoryFrame(const CEnginePrimitivePrepareInfo&, bool b) { ++g_frames; g_frameArg = b; }
 };
 static bool g_active = false;
-namespace NHeroInformationScreens { struct CBase { bool IsActive() { return g_active; } }; }
-struct CTCInventoryQuests : CTCInventoryBase, NHeroInformationScreens::CBase {
+namespace NHeroInformationScreens { class CBase { public: bool IsActive() { return g_active; } }; }
+class CTCInventoryQuests : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CPrimitiveHandleVector InventoryQuestCardSelectPrimitiveHandles;
     float            AccumFadeTime;
     void DrawActiveTestQuests(const CEnginePrimitivePrepareInfo&) { ++g_testQuests; }

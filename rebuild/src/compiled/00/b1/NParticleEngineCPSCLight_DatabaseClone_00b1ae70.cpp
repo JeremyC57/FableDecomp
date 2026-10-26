@@ -1,7 +1,7 @@
 // NParticleEngine::CPSCLight::DatabaseClone() -- allocate a fresh component of this class and copy this one into it (virtual slot 18 = DatabaseCopy), returning the copy
 // Leaf: ?DatabaseClone@CPSCLight@NParticleEngine@@
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b1/CThingTrackNode_DrawIsDrawable_00b1ae70.cpp: vtable slot 2 of NParticleEngine::CPSCLight; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
-namespace NParticleEngine { struct CPSCLight; }
+namespace NParticleEngine { class CPSCLight; }
 using NParticleEngine::CPSCLight;
 
 struct CPrim
@@ -30,8 +30,8 @@ struct CPrim
 CPrim* __fastcall CreatePrim(CPSCLight* self);
 
 namespace NParticleEngine {
-struct CPSCLight
-{
+class CPSCLight
+{ public:
     CPrim* __fastcall DatabaseClone();
 };
 }

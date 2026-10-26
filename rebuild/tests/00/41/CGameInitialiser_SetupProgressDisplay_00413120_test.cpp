@@ -9,7 +9,7 @@ struct CProgressDisplay {
     CProgressDisplay() : Marker(0x88) { ++g_displaysAlive; }
     ~CProgressDisplay() { --g_displaysAlive; }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
@@ -43,7 +43,7 @@ static void SetProgressDisplay(const CCountedProgressDisplayPointer& display)
     g_publishedInfo = display.Info;
     ++display.Info->RefCount;
 }
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual ~CInitBaseClass() { }
     bool Valid;
     bool InitResult;

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CGameScriptInterface { long time; virtual long GetTimeOfDay() const { return time; } virtual ~CGameScriptInterface() { } };
+class CGameScriptInterface { public: long time; virtual long GetTimeOfDay() const { return time; } virtual ~CGameScriptInterface() { } };
 struct CTH_Trigger_Bowerstone {
     CGameScriptInterface* PQuest; bool aborted; int abortChecks;
     bool IsAborted() { ++abortChecks; return aborted; }

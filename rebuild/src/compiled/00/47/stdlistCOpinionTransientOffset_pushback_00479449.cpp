@@ -13,7 +13,7 @@
 // Leaf: push_back
 #pragma optimize("s", on)
 
-struct COpinionTransientOffset {
+class COpinionTransientOffset { public:
     unsigned char _data[0x18];          // opaque 24-byte record (only copied by the out-of-line node builder)
 };
 

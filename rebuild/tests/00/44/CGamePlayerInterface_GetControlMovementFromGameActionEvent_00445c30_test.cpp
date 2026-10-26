@@ -1,8 +1,8 @@
 // Behaviour test for 0x00445C30 CGamePlayerInterface::GetControlMovementFromGameActionEvent.
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CInputEvent { int code; };
-struct CInputTypeBase {
+class C2DVector { public: float X, Y; };
+class CInputEvent { public: int code; };
+class CInputTypeBase { public:
     int accepts; C2DVector move; int calls;
     bool RecognisesEvent(const CInputEvent& e) { ++calls; return e.code == accepts; }
     C2DVector GetMovement(const CInputEvent&) { return move; }
@@ -13,7 +13,7 @@ struct CControlsMap {
     SControlEntry* LowerBound(const int* k) { int i = 0; while (i < n && e[i].first < *k) ++i; return e + i; }
     SControlEntry* UpperBound(const int* k) { int i = 0; while (i < n && e[i].first <= *k) ++i; return e + i; }
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     CControlsMap Controls;
     bool Get(int action, const CInputEvent& event, C2DVector& movement)
     {

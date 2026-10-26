@@ -15,24 +15,24 @@ static int fails = 0;
 // ABVCAIFilterBase@1@_N@Z` and AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*,
 // bool, float). These parameter types (a reference, an enum, a bool) give retail's register assignment (speed ebx,
 // anim edi, extra ebp) and the loop result's spill into the dead condition slot. All-`long` parameters permute them.
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // user copy ctor: the by-value argument is built in place
 };
 
-struct CThing
-{
+class CThing
+{ public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
 enum EMovementType { MOVEMENT_DEFAULT };
 enum { AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 
-struct CAIStateGroupBase
-{
-    struct CAIFilterBase                            // 4 bytes (Ego_r.pdb): the caller's "keep going" test, virtual slot 0
-    {
+class CAIStateGroupBase
+{ public:
+    class CAIFilterBase                            // 4 bytes (Ego_r.pdb): the caller's "keep going" test, virtual slot 0
+    { public:
         virtual bool IsStillValid() const;
     };
     virtual void v00();

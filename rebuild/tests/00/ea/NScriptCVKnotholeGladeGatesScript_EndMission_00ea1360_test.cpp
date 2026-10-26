@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     const char* name;
     bool alive;
     bool IsAlive() const { return alive; }
@@ -16,7 +16,7 @@ struct CThingList {                      // stands in for std::vector<CScriptThi
     void pop_back() { --count; }
 };
 static const char* const g_villagers[3] = { "V0", "V1", "V2" };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     unsigned int villagers;
     bool guardAlive;
     void GetAllThingsWithScriptName(const char*, CThingList& list)

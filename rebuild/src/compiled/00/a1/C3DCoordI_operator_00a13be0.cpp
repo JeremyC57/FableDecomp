@@ -4,11 +4,11 @@
 // PDB layout: C3DCoordI = {long X, long Y, long Z}; C3DVector = {float X, Y, Z}. Each component
 // is `fild` + `fadd [v]` + ftol, and the next component's `fild` is scheduled before the store
 // of the previous result. Returns *this (ret 4).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct C3DCoordI {
+class C3DCoordI { public:
     long X, Y, Z;
     C3DCoordI& operator+=(const C3DVector& v);
 };

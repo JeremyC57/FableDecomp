@@ -5,7 +5,7 @@
 // (retail VC6 vectors are 12 bytes; the PDB's sit 4 bytes high).
 // Shape: `xor al,al` before the empty test, `mov al,1` re-done at the head of every iteration, the end pointer
 // re-read from the member after the three x87 adds (the stores may alias it), `ret 4`.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -26,10 +26,10 @@ template <class T> struct CRetailVector {       // VC6-era vector: first, last, 
     T* end() { return m_pLast; }
 };
 
-struct CTCShapeManager;
+class CTCShapeManager;
 
 namespace NShape {
-struct CShape {                                 // vtable 0x0126A208
+class CShape { public:                                 // vtable 0x0126A208
     virtual void v00();
     CTCShapeManager*          Owner;            // +0x04
     CRetailVector<C3DVector>  Points;           // +0x08

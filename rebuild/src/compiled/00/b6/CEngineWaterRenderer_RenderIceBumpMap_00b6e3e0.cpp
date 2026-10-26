@@ -12,15 +12,15 @@
 // vectors in retail (16 in the PDB/engine header), so IceBumpmapVertexShader is at +0x188 (PDB +0x194) and
 // IceBumpmapPixelShader at +0x190 (PDB +0x19c); a local view is used, as in the landed CEngineWaterRenderer rows.
 
-struct C3DVector { float X, Y, Z; };
-struct C4DVector {
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -28,21 +28,21 @@ template <class T> struct CArray {
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;
     long Offset;
     unsigned long Count;
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
 
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:
@@ -182,7 +182,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
 
 extern unsigned long g_renderStateValue_01396f6c;  // 0x01396F6C
 
-struct CEngineWaterRenderer {                      // retail layout (three 12-byte CArrays before +0x15c)
+class CEngineWaterRenderer { public:                      // retail layout (three 12-byte CArrays before +0x15c)
     unsigned char _pad000[0x178];
     unsigned char BumpmapVertexShader[8];          // +0x178 (PDB +0x184)
     unsigned char BumpmapPixelShader[8];           // +0x180 (PDB +0x18c)

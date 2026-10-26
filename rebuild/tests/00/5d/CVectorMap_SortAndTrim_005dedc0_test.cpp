@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CVectorMap::SortAndTrim (0x005DEDC0): sorts by key only when Dirty, always trims capacity.
-struct CAnimationEntry { long m_words[4]; };
+class CAnimationEntry { public: long m_words[4]; };
 struct SPair { unsigned long first; CAnimationEntry second; };
 struct CKeyPairCompareLess { bool operator()(const SPair& a, const SPair& b) const { return a.first < b.first; } };
 static long g_sorts = 0;

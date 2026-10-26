@@ -4,7 +4,7 @@
 struct CThingTypeEntry { int a,b,c,d; char name[16]; };
 struct CThingTypeManager { int pad; CThingTypeEntry *entries; };
 CThingTypeManager *g_thingTypeManager;
-struct CThing { char pad[0x10]; unsigned char typeIndex; };
+class CThing { public: char pad[0x10]; unsigned char typeIndex; };
 
 char * __fastcall GetTypeName(CThing *self)
 {

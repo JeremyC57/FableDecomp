@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     void* vftable;
     int destroyed;
 };

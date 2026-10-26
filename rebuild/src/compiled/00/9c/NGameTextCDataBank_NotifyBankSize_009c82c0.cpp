@@ -15,7 +15,7 @@ class CDataBankTextEntry;
 class CDataBankGroupEntry;
 }
 
-template<class T> struct CArray {               // retail CArray: 12 bytes
+template<class T> class CArray { public:               // retail CArray: 12 bytes
     T* First;
     T* Last;
     T* End;
@@ -24,7 +24,7 @@ template<class T> struct CArray {               // retail CArray: 12 bytes
     void resize(unsigned long size, const T& value);
     void reserve(unsigned long size);
 };
-struct CBankFileDataTypeCount {                 // 8 bytes
+class CBankFileDataTypeCount { public:                 // 8 bytes
     long          Type;
     unsigned long Count;
 };

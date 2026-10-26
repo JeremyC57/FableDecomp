@@ -3,15 +3,15 @@
 extern "C" long g_charStringRefTrace_013bd800; // 0x013bd800
 extern "C" char g_emptyCharStringData; // 0x0129aaf4 (empty-string storage byte)
 
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* data;
     long length;
     long refCount; // real field is a byte at +0xd inside a larger header; kept opaque via byte-offset write below
 };
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage;
 
     CCharStringData* AllocStringData(char* data, long len);

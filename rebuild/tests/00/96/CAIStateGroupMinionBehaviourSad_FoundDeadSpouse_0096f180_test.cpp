@@ -6,9 +6,9 @@
 #define _snprintf snprintf
 #define __forceinline inline
 #endif
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,18 +16,18 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char _pad1[0x45];
     unsigned char m_flags91;
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual bool IsStillValid() { return true; }
@@ -61,8 +61,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 
 static C3DVector g_pos;
 struct CThingCreaturePos {
@@ -73,7 +73,7 @@ struct CThingFilter_IsDeadSpouse {
 };
 
 static C2DBoxI g_box; static CThing* g_filterCreature = 0; static CThing* g_hit = 0; static int g_search = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& box, const CThingFilter_IsDeadSpouse& filter, CThing** ppThing)
     {
         g_search++; g_box = box; g_filterCreature = filter.PCreature;
@@ -81,7 +81,7 @@ struct CThingSearchTools {
         return false;
     }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x20];
     CThingSearchTools* PThingSearchTools;
 };

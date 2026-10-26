@@ -8,8 +8,8 @@
 // (`lea eax,[eax+esi*4]`); the indexed element is `*(begin() + level)` (strength-reduced to
 // a pointer stepping by 0xc), the loop counts the global down in edx.
 namespace NThingMap {
-struct CMapwhoNode;
-struct CThingMapCell {
+class CMapwhoNode;
+class CThingMapCell { public:
     CMapwhoNode* PFirstNode;
 };
 template<class T> struct CRetailVector {           // STLport vector: {start, finish, end_of_storage}
@@ -21,7 +21,7 @@ template<class T> struct CRetailVector {           // STLport vector: {start, fi
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 extern long g_NoMapwhoLevels;                      // 0x013BA848
-struct CThingMap {
+class CThingMap { public:
     virtual void v00();
     CRetailVector<long>                          MapwhoLevelInfo;   // +0x04
     void*                                        Manager;           // +0x10

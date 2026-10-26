@@ -2,11 +2,11 @@
 // its action handler (not the local one) is called on the world with the event; an empty entry does nothing.
 #include <cstdio>
 
-struct CGameEvent { long Type; };
-struct CWorld { int Id; };
+class CGameEvent { public: long Type; };
+class CWorld { public: int Id; };
 struct CWorld_Methods;
 typedef void (CWorld_Methods::*TWorldEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     TWorldEventFunction ActionFunction;
     TWorldEventFunction LocalActionFunction;
 };

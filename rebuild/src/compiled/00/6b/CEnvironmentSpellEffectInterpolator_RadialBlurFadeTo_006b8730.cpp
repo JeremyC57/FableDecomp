@@ -8,7 +8,7 @@ struct C3DVector_006b8730 {
     C3DVector_006b8730(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     void RadialBlurFadeTo(long a, long b, const C3DVector_006b8730& strength, long c, const C3DVector_006b8730& radius, long d, long e, long f);   // 0x006B8550
     void RadialBlurFadeTo(long a, long b, float strength, long c, float radius, long d, long e, long f);
 };

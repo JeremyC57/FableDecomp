@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void*         m_data;
     unsigned char m_flag;
     ~CThingComponentSet();

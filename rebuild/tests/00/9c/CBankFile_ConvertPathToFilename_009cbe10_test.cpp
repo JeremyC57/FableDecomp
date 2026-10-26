@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString { char text[64]; CWideString() { text[0] = 0; } CWideString& operator+=(const CWideString& o) { std::strcat(text, o.text); return *this; } };
+class CWideString { public: char text[64]; CWideString() { text[0] = 0; } CWideString& operator+=(const CWideString& o) { std::strcat(text, o.text); return *this; } };
 
 static void SplitPath(const char* path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension)
 {

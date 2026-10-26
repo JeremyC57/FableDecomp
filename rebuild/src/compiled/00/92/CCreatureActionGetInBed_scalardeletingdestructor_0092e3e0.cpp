@@ -3,7 +3,7 @@
 // Leaf: ??_GCNamedPhysicsMeshInfo_0092e3e0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: no vtable store (the derived vtable folds into the base's; the base destructor is out of line), `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -12,7 +12,7 @@ struct CBaseIntelligentPointer {                   // 8 bytes
     void* m_pItem;
     ~CBaseIntelligentPointer();                    // 0x00A01C10
 };
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CPhysicsMeshInfo();                           // 0x00693EF0

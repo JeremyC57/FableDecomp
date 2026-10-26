@@ -1,5 +1,5 @@
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 struct Sub {
     // vtable slot 0x1c/4 = 7
@@ -13,7 +13,7 @@ struct Sub {
     virtual bool Query(CTCCreatureNavigation* outer, C3DVector* v);
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* m_x0;      // +0
     Sub* m_sub;      // +4
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

@@ -3,7 +3,7 @@
 #include <new>
 
 struct CBase { virtual ~CBase() {} CBase() {} };
-struct CScriptThing {
+class CScriptThing { public:
     long m_id;
     CScriptThing(long id) : m_id(id) {}
     CScriptThing MakeScriptThing() const { return CScriptThing(m_id * 10); }   // stands in for the manager call

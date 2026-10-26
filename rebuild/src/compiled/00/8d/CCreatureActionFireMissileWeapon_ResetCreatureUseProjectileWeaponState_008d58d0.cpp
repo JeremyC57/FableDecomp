@@ -8,7 +8,7 @@
 //   local's frame word; the bool-returning out-parameter GetInterface for bit 0x81 (`test byte ptr [eax+30h],2`)
 //   loads the component straight into ecx for the call.
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -53,18 +53,18 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCHeroRangedAttacks {               // interface type 0x81 component
+class CTCHeroRangedAttacks { public:               // interface type 0x81 component
     void CancelAimingWeapon();              // 0x00789FF0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];
 };
 
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:
     void ReleaseMissile(CThing** missile, CThing** target, long* globalIndex);   // 0x008D5790
     void ResetCreatureUseProjectileWeaponState();
 };

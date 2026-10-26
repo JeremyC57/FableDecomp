@@ -1,14 +1,14 @@
 // Behaviour test for 0x00845850 CCreatureAction_ShowTrophy::FinishAction: runs the reconstructed body over stubbed
 // callees; checks the emitter kill guard, the trophy component call with the owner, and the base FinishAction.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
 static int g_kills = 0; static bool g_killArg = false;
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -25,7 +25,7 @@ struct CThing {
     }
 };
 static CThing* g_shownBy = 0; static int g_shown = 0;
-struct CTCTrophy { void OnShownByCreature(CThing* c) { g_shownBy = c; ++g_shown; } };
+class CTCTrophy { public: void OnShownByCreature(CThing* c) { g_shownBy = c; ++g_shown; } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static int g_base = 0;
 class CCreatureActionBase {

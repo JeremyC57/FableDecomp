@@ -1,19 +1,19 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { unsigned char m_type; unsigned char Dead : 1; };
-struct CThingObject : CThing { };
-struct CThingCreatureBase;
+class CThing { public: unsigned char m_type; unsigned char Dead : 1; };
+class CThingObject : public CThing { public: };
+class CThingCreatureBase;
 static int g_baseUses = 0, g_ipDtors = 0, g_actionDtors = 0, g_actions = 0;
 static CThingObject* g_object = 0;
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } ~CIntelligentPointer() { ++g_ipDtors; } };
-struct CCreatureActionBase { int kind; ~CCreatureActionBase() { ++g_actionDtors; } };
-struct CCreatureAction_AddRealObjectToInventory : CCreatureActionBase {
+class CCreatureActionBase { public: int kind; ~CCreatureActionBase() { ++g_actionDtors; } };
+class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { public:
     CIntelligentPointer PObject;
     CCreatureAction_AddRealObjectToInventory(CThingCreatureBase*, CThingObject* object) { kind = 5; g_object = object; }
 };
-struct CThingCreatureBase : CThing { bool SetCurrentAction(CCreatureActionBase* a) { if (a->kind == 5) ++g_actions; return true; } };
-struct CTCActionUseBase { CThing* ParentThing; void OnActionUse(CThing&) { ++g_baseUses; } };
+class CThingCreatureBase : public CThing { public: bool SetCurrentAction(CCreatureActionBase* a) { if (a->kind == 5) ++g_actions; return true; } };
+class CTCActionUseBase { public: CThing* ParentThing; void OnActionUse(CThing&) { ++g_baseUses; } };
 struct CTCActionUsePutInInventory : CTCActionUseBase {
     void OnActionUse(CThing& user)
     {

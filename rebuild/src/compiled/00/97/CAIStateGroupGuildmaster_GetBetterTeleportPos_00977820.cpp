@@ -10,8 +10,8 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float x, y;
     C2DVector(float x_, float y_) : x(x_), y(y_) { }
     float GetLength() const { return (float)sqrt(x * x + y * y); }
@@ -20,7 +20,7 @@ inline float Distance2D(const C3DVector& a, const C3DVector& b)
 {
     return C2DVector(a.X - b.X, a.Y - b.Y).GetLength();
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -59,7 +59,7 @@ struct CThingPointerVector {                    // vector<CIntelligentPointer<CT
     CThingPointer* last;
     CThingPointer* endOfStorage;
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

@@ -5,7 +5,7 @@
 static int g_calls = 0;
 static unsigned short g_frame = 7;
 struct CMgr { virtual void FrameStart() { ++g_calls; } };
-struct CPixelShader { int id; };
+class CPixelShader { public: int id; };
 struct CRenderer {
     float LODErr, CharLODErr, LODScreen, LODScreenFOV, MipmapQuality, MipmapMul;
     CPixelShader Depth[8], Colour[8];

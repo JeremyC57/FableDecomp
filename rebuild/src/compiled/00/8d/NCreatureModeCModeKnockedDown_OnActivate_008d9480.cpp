@@ -8,7 +8,7 @@
 // Name: FableWin.pdb `?OnActivate@CModeKnockedDown@NCreatureMode@@UAEXXZ` (slot 5).
 // Shape: the emote lookup is the out-parameter GetInterface (`mov eax,[eax+4] ; push ... ; mov ecx,eax`), the 0x30 lookup
 //   the HasTC + one-ternary GetTC on the non-const map (component straight into ecx); ParentThing is re-read for each block.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                  // +0x10 (1 = player creature)
     unsigned char _pad11[0x0f];
@@ -54,7 +54,7 @@ struct CThing : CThingAnimatable {
     }
 };
 
-struct CTCEmoteIcon {                      // interface type 0x45
+class CTCEmoteIcon { public:                      // interface type 0x45
     void SetEmoteIcon(long priority, long icon, float seconds, float scale, unsigned char alpha);   // 0x0071AAB0
 };
 struct CTCInterface30 {                    // interface type 0x30

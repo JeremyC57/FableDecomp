@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CInner { int a; };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int f0;
     int Parent;
     void* f8;

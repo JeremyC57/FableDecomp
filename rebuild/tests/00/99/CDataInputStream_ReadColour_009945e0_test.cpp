@@ -3,7 +3,7 @@
 // colour zero.
 #include <cstdio>
 #include <cstring>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() : B(0), G(0), R(0), A(0) {}
     CRGBColour(const CRGBColour& o) { R = o.R; G = o.G; B = o.B; A = o.A; }

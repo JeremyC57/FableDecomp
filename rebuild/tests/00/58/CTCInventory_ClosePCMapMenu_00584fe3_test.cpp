@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTCInventory::ClosePCMapMenu (retail 0x00584FE3).
-struct CTCBase { long tag; };
+class CTCBase { public: long tag; };
 
 struct CPresenceBits {
     unsigned long bits[16];
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(long wanted, T** out)
@@ -41,7 +41,7 @@ static int g_closed = 0;
 struct CTCMapMenu : CTCBase {
     void Close() { ++g_closed; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CThing* ParentThing;
     void ClosePCMapMenu();
 };

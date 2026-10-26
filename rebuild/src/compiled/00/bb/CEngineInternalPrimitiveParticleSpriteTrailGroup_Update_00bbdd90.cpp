@@ -1,4 +1,4 @@
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     char pad[0x18];
     unsigned long field18; // +0x18
 };

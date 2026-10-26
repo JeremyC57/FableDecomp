@@ -1,9 +1,9 @@
 #include <cstdio>
 // Model of CAIStateGroup_VersusEnemyBase::OnActivate @ 0x00962A90: register creature vs live target unless already registered.
-struct CThing { unsigned char m_flags; };
+class CThing { public: unsigned char m_flags; };
 struct Creature { bool registered; bool IsRegisteredCombatant() { return registered; } };
-struct CCombatManager { Creature* a; CThing* b; bool flag; int calls; void RegisterCombatant(Creature* x, CThing* y, bool f) { a = x; b = y; flag = f; ++calls; } };
-struct CWorld { CCombatManager* m_pCombatManager; };
+class CCombatManager { public: Creature* a; CThing* b; bool flag; int calls; void RegisterCombatant(Creature* x, CThing* y, bool f) { a = x; b = y; flag = f; ++calls; } };
+class CWorld { public: CCombatManager* m_pCombatManager; };
 struct Ptr { CThing* item; CThing* GetPItem() { return item; } bool IsAlive() { if (GetPItem() != 0) { if (!(GetPItem()->m_flags & 1)) return true; } return false; } };
 static CCombatManager g_cm; static CWorld g_world = { &g_cm };
 struct Group {

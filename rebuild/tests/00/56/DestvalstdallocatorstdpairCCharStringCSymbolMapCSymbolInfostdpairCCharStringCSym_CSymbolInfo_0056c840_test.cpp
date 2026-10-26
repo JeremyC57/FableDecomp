@@ -7,7 +7,7 @@
 static int g_log[8];
 static int g_n = 0;
 
-struct CCharString {
+class CCharString { public:
     char* m_buf;
     ~CCharString();
 };

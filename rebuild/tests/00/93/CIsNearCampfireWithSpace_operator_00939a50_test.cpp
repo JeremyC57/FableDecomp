@@ -4,13 +4,13 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCUserActionPointBase { bool free_; bool IsActionPointFree() { return free_; } };
-struct CThing { unsigned int flags; C3DVector pos; unsigned int mask[9]; CTCUserActionPointBase* point;
+class CThing { public: unsigned int flags; C3DVector pos; unsigned int mask[9]; CTCUserActionPointBase* point;
     unsigned int GetThingTypeFlags() const { return flags; }
     const C3DVector& GetPosition() const { return pos; }
     unsigned int HasTC(long k) const { return mask[k >> 5] & (1u << (k & 31)); } };
-struct CIsNearCampfireWithSpace {
+class CIsNearCampfireWithSpace { public:
     float DistanceSq; C3DVector FromPos;
     bool operator()(CThing* thing) const
     {

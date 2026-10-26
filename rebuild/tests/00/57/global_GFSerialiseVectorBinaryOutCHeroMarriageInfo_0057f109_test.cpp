@@ -2,7 +2,7 @@
 // order through the traits writer (two 64-bit UIDs, the state, the flag).
 #include <cstdio>
 
-struct CHeroMarriageInfo { unsigned long long WifeUID; unsigned long long MaritalHomeUID; int State; bool GayMarriage; };
+class CHeroMarriageInfo { public: unsigned long long WifeUID; unsigned long long MaritalHomeUID; int State; bool GayMarriage; };
 struct Stream {
     unsigned long long log[64]; int n;
     void WriteLong(int v) { log[n++] = (unsigned long long)(unsigned int)v; }

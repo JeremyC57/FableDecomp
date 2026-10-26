@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CQuestCardDef {
+class CQuestCardDef { public:
     char data[0x74];
     unsigned long GetSizeofClass();
 };

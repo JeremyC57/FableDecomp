@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CDefClassBase { char pad[0x40]; };
+class CDefClassBase { public: char pad[0x40]; };
 
 static int g_basecalled = 0;
 
@@ -9,7 +9,7 @@ struct CBuyHouseBase {
 };
 void CBuyHouseBase::BaseCopy(CDefClassBase const* src) { g_basecalled = 1; (void)src; }
 
-struct CBuyHouseDef {
+class CBuyHouseDef { public:
     char pad[0x25];
     unsigned char Main;
 };

@@ -8,7 +8,7 @@
 // generated headers flatten the vptr). The own vtable store comes FIRST, before the member load:
 // the release is the counted pointer's own inline destructor (a member object), which keeps the
 // pointee in a local (`dec [ecx+4]` then `mov eax,[ecx]` without a reload) and clears the member.
-struct CMeshDataBank;
+class CMeshDataBank;
 
 struct CMeshData_a24f30 {                          // CPhysicsMeshInfo::CMeshData
     virtual void v00();
@@ -16,7 +16,7 @@ struct CMeshData_a24f30 {                          // CPhysicsMeshInfo::CMeshDat
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     __forceinline ~CIVCountedPointer()
     {
@@ -29,14 +29,14 @@ template <class T> struct CIVCountedPointer {
     }
 };
 
-struct CMeshDataBankEntry {                        // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                        // vtable 0x0129CD28
     CMeshDataBank* Bank;                           // +0x04
     unsigned long  Index;                          // +0x08
     virtual void v00();
     ~CMeshDataBankEntry() { }
 };
 
-struct CPhysicsMeshInfo : CMeshDataBankEntry {     // vtable 0x0129CD50
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:     // vtable 0x0129CD50
     CIVCountedPointer<CMeshData_a24f30> MeshData;  // +0x0c
     virtual void v00();
     ~CPhysicsMeshInfo();

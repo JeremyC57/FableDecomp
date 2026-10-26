@@ -10,7 +10,7 @@
 struct CStopWatch {
     void Reset();                                        // 0x0062F8B0
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x100];
     CStopWatch    m_attractModeTimer;                    // +0x100
     void ResetAttractModeTimer();

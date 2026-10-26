@@ -13,7 +13,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 with the def index looked up by name first through a NAMED
 //   CCharString in its own block (retail pushes `lea eax,[esp+10h]`; a temporary passes the ctor's returned this and
 //   moves g_pThingManager into eax) and the three member stores before Construct.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CCharString {
 public:

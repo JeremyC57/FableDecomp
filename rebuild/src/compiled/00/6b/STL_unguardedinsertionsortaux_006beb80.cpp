@@ -53,7 +53,7 @@ void __fastcall __unguarded_insertion_sort_aux(_RandomAccessIter __first, _Rando
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value (one stack word)
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value (one stack word)
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 

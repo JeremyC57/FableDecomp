@@ -7,20 +7,20 @@
 //   +0x18..+0x50, five C3DVectors +0x54..+0x84, AccelerationParam +0x90, OrientFromGameParam +0x94. Local model (no header).
 // Shape: one assignment per field in the template's transfer order (not declaration order); the source is the base
 //   pointer cast down; bit-field copies are VC7.1's read-xor-mask-xor merges.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace NParticleEngine {
-struct CPSCBase {
+class CPSCBase { public:
     virtual void v00();
     unsigned char _base04[8];                                          // +0x04
 };
-struct CPSCUpdateNormal : CPSCBase {
+class CPSCUpdateNormal : public CPSCBase { public:
     unsigned long FadeInEndInteger : 10;                               // +0x0c
     unsigned long FadeOutBeginInteger : 10;
     unsigned long UseParticleLifeSecs : 1;

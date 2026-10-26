@@ -7,8 +7,8 @@
 // Shape: the prologue of the landed IsActionWithStrikeEventHelperName @ 0x00857150 (same inline GetPActiveStrikeEvent
 //          helper and models); each return copy-constructs the hidden result in place, so both paths end with their own
 //          epilogue. HelperPointName is the CCharString at +4 of the event (Ego_r.pdb).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
     CCharString(const CCharString& other);      // 0x0099EC30
@@ -57,7 +57,7 @@ struct CGetActiveStrikeEventThatIsFirstToFinish {
 CGetActiveStrikeEventThatIsFirstToFinish __fastcall for_each(CStrikeEventIterator first, CStrikeEventIterator last,
                                                              CGetActiveStrikeEventThatIsFirstToFinish functor);   // 0x0085A960
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x1c - 4];             // +0x04
     long FramesRunning;                         // +0x1c

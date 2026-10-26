@@ -3,16 +3,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -30,16 +30,16 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
 namespace N_0099a2d0 { struct CBase { int m_kind; CBase() : m_kind(1) { } }; } using N_0099a2d0::CBase;
-struct CEnginePrimitiveHandle : CBase {
+class CEnginePrimitiveHandle : public CBase { public:
     long m_id;
     CEnginePrimitiveHandle() : m_id(0) { m_kind = 2; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_owner; CThing* m_target; long m_code; CSoundPair m_sound; int m_stringsAlive;
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
         : m_owner(owner), m_target(target), m_code(actionCode), m_sound(sound), m_stringsAlive(g_liveStrings) { }
 };
-struct CCreatureAction_DragonFireBlastBase : CCombatActionBase {
+class CCreatureAction_DragonFireBlastBase : public CCombatActionBase { public:
     CIntelligentPointer PTarget;
     CEnginePrimitiveHandle FireHandle;
     CCreatureAction_DragonFireBlastBase(CThingCreatureBase* owner, CThing* target)

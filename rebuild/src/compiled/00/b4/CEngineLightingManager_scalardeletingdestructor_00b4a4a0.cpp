@@ -1,4 +1,4 @@
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void* vftable;
 };
 

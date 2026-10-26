@@ -12,8 +12,8 @@
 // WasCarryingWeapon +0x24).
 #include "engine/CAIStateGroup_BanditPlayDice.h"
 
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 long __fastcall GFGetCurrentFrame();                        // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890

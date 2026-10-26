@@ -44,7 +44,7 @@ struct Member8 {
     Target* GetTarget() { g_getTargetCalls++; return &g_target; }
 };
 
-struct CCreatureAction_ScorpionRecover {
+class CCreatureAction_ScorpionRecover { public:
     void BaseInit() { g_baseInitCalls++; }
     char pad[4];
     Member8 m8;

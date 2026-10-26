@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CWideString { void* m_p; CWideString() : m_p(0) { } ~CWideString() { std::strcat(g_seq, "w"); } };
+class CWideString { public: void* m_p; CWideString() : m_p(0) { } ~CWideString() { std::strcat(g_seq, "w"); } };
 struct SRec { unsigned char _pad[0x1c]; CWideString m_text; ~SRec() { } };
 
 int main() {

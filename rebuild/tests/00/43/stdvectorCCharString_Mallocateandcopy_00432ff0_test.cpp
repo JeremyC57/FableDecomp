@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 static int g_copies = 0;
-struct CCharStringData { const char* text; int refs; };
+class CCharStringData { public: const char* text; int refs; };
 class CCharString {
 public:
     CCharString(CCharStringData* d) : PStringData(d) { ++d->refs; }

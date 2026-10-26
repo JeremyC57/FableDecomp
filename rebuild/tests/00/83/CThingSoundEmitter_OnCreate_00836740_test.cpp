@@ -1,6 +1,6 @@
 // Behaviour test for CThingSoundEmitter::OnCreate (0x00836740): base OnCreate, then a sound object from the game state.
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CSoundPlayer { int id; };
 static CSoundPlayer g_player;
 static const C3DVector* g_lastPos = 0;
@@ -12,9 +12,9 @@ struct CGameState {
 };
 static CGameState* g_pGameState = 0;
 
-struct CThing { bool OnCreate() { return g_baseResult; } };
+class CThing { public: bool OnCreate() { return g_baseResult; } };
 
-struct CThingSoundEmitter : CThing {
+class CThingSoundEmitter : public CThing { public:
     CSoundPlayer* m_pSoundPlayer;
     C3DVector     Pos;
     bool OnCreate()

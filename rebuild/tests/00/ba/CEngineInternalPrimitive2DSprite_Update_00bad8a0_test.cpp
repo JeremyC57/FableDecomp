@@ -3,11 +3,11 @@
 #include <cstdio>
 
 static const float g_eps = 0.0001f;
-struct C2DVector { float X, Y; bool IsNonZero() const { return X * X + Y * Y > g_eps * g_eps; } };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct C2DExtentsI { long X, Y; };
+class C2DVector { public: float X, Y; bool IsNonZero() const { return X * X + Y * Y > g_eps * g_eps; } };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class C2DExtentsI { public: long X, Y; };
 static int g_loads;
-struct CTexture { long W, H; C2DExtentsI GetDimensions(unsigned long) { C2DExtentsI e; e.X = W; e.Y = H; return e; } };
+class CTexture { public: long W, H; C2DExtentsI GetDimensions(unsigned long) { C2DExtentsI e; e.X = W; e.Y = H; return e; } };
 struct Desc {
     long InterpolationSet; C2DBoxF ClipBox; long Layer; unsigned long BankIndex, Frame; float StartAngle, EndAngle;
     long BlendMode; unsigned long Colour; bool ClipBoxIsPos; unsigned long Flags; CTexture* Texture; C2DVector UVStart, UVEnd;

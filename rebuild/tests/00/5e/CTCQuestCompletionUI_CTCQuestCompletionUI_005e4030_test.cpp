@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_registered = 0;
-struct CTCBase { void* parent; bool toBeRemoved; CTCBase(void* p) : parent(p), toBeRemoved(false) {} void AddToGlobalUpdateTCs() { ++g_registered; } };
+class CTCBase { public: void* parent; bool toBeRemoved; CTCBase(void* p) : parent(p), toBeRemoved(false) {} void AddToGlobalUpdateTCs() { ++g_registered; } };
 struct Node { Node* next; Node* prev; char boast[0x20]; };
 struct MapHeader { char colour; MapHeader* parent; MapHeader* left; MapHeader* right; long k; unsigned long v; };
 struct Map {

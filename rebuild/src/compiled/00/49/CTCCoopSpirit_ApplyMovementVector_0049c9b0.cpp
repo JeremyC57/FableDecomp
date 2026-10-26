@@ -1,6 +1,6 @@
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     char pad[0x154];
     C3DVector movement;
 };

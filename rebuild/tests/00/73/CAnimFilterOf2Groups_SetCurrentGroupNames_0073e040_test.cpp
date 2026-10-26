@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*  PData;
     unsigned int StringLength;
 };
 
 static int g_assigns = 0, g_copies = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }

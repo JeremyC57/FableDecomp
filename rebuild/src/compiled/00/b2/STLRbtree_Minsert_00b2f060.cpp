@@ -19,7 +19,7 @@
 extern "C" void* __cdecl malloc(size_t size);  // 0x00BFEA0E
 inline void* operator new(size_t, void* where) { return where; }
 
-struct CCompositeBlendDesc;
+class CCompositeBlendDesc;
 
 namespace std {
 

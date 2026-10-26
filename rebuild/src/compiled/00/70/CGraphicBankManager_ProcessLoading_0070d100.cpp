@@ -45,7 +45,7 @@ struct _List_node {
 struct list {
     _List_node* _M_node;
 };
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     unsigned char _pad00[0x58];
     list          m_loadingA;                      // +0x58
     unsigned char _pad5c[8];

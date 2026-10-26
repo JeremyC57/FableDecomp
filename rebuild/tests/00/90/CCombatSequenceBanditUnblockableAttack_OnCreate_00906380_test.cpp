@@ -82,7 +82,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatSequence_BanditUnblockableAttack, __vftable)
 #include <stddef.h>
 
 #pragma pack(push, 1)
-struct CCreatureAction_LeapBack {
+class CCreatureAction_LeapBack { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
 };
@@ -106,7 +106,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_LeapBack, __vftable) == 0x0);
 #include <stddef.h>
 
 #pragma pack(push, 1)
-struct CCreatureAction_CombatIdle {
+class CCreatureAction_CombatIdle { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
 };
@@ -130,7 +130,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CombatIdle, __vftable) == 0x0);
 #include <stddef.h>
 
 #pragma pack(push, 1)
-struct CCreatureAction_UnblockableMidAttack {
+class CCreatureAction_UnblockableMidAttack { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
 };
@@ -153,11 +153,11 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_UnblockableMidAttack, __vftable) ==
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -250,10 +250,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -374,8 +374,8 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -383,8 +383,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -468,11 +468,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -550,8 +550,8 @@ struct CCreatureActionBase {
     virtual bool IsToFaceTargetAtStart() const;
     unsigned char nativeFields[0xb0]; // actual CCreatureActionBase header data after its vptr, native size 0xb4
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -597,7 +597,7 @@ struct CCombatActionBase : CCreatureActionBase {
     unsigned char nativeCombatFields[0x60]; // retail extends the native 0xb4 action base to 0x114
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857f30
 };
-struct CCreatureAction_LeapBack : CCombatActionBase {
+class CCreatureAction_LeapBack : public CCombatActionBase { public:
     virtual ~CCreatureAction_LeapBack();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -606,7 +606,7 @@ struct CCreatureAction_LeapBack : CCombatActionBase {
     CCreatureAction_LeapBack(CThingCreatureBase& owner, CThing& target)
         : CCombatActionBase(owner, target, 50, CSoundPair()) { }
 };
-struct CCreatureAction_CombatIdle : CCombatActionBase {
+class CCreatureAction_CombatIdle : public CCombatActionBase { public:
     virtual ~CCreatureAction_CombatIdle();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -614,7 +614,7 @@ struct CCreatureAction_CombatIdle : CCombatActionBase {
     CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThing& target)
         : CCombatActionBase(owner, target, 50, CSoundPair()) { }
 };
-struct CCreatureAction_UnblockableMidAttack : CCombatActionBase {
+class CCreatureAction_UnblockableMidAttack : public CCombatActionBase { public:
     virtual ~CCreatureAction_UnblockableMidAttack();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -635,7 +635,7 @@ struct CCountedPointer {
         object = 0; count = 0;
     }
 };
-struct CCombatSequenceBase { void OnCreate(); }; // external CCombatSequenceBase::OnCreate @ 0x008b0650
+class CCombatSequenceBase { public: void OnCreate(); }; // external CCombatSequenceBase::OnCreate @ 0x008b0650
 struct CCombatSequence_BanditUnblockableAttack_NativeView : CCombatSequenceBase {
     unsigned char prefix[0x1c];
     CThingCreatureBase* m_owner;
@@ -663,8 +663,8 @@ typedef char NativeCombatIdleSize[(sizeof(CCreatureAction_CombatIdle) == (sizeof
 typedef char NativeOwnerOffset[(offsetof(CCombatSequence_BanditUnblockableAttack_NativeView, m_owner) == 0x1c) ? 1 : -1];
 typedef char NativeTargetOffset[(offsetof(CCombatSequence_BanditUnblockableAttack_NativeView, m_target) == 0x20) ? 1 : -1];
 #endif
-struct CThingCreatureBase { };
-struct CThing { };
+class CThingCreatureBase { public: };
+class CThing { public: };
 static int g_adds, g_ctorCount, g_unblockable, g_code150, g_code50, g_zeroSounds, g_baseCalls, g_destroyed;
 static int g_retain, g_mutate, g_saved, g_order[6], g_ownerMismatch;
 static int g_dtorUnblockable, g_dtorLeap, g_dtorIdle;

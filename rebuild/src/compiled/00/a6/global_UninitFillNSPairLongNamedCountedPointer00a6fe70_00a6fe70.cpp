@@ -16,12 +16,12 @@
 // the `push ecx` slot; the second member's address is strength-reduced into edi.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 

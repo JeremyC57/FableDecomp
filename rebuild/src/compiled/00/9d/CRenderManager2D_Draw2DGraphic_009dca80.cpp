@@ -12,18 +12,18 @@
 // {Data +8, Info +0xc}, flags +0x1a} as the landed CGraphicFrame::operator= 0x0041C0E0.
 // Shape: the sibling Draw2DScaledGraphic 0x009DD210 with the box built from the position plus the bank's frame size
 // (each width/height use calls the bank again).
-struct C2DVector { float X, Y; };
-struct CTVertexRHWColSpecTex1 {                        // 32 bytes
+class C2DVector { public: float X, Y; };
+class CTVertexRHWColSpecTex1 { public:                        // 32 bytes
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;
     float U, V;
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI();
 };
-struct CTexture {
+class CTexture { public:
     C2DExtentsI GetDimensions(unsigned long mip) const;   // 0x009F9DB0
 };
 struct CTextureQuadUVs {
@@ -51,7 +51,7 @@ struct CCountedPointer_CTexture {
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long            ReferenceCount;           // +0x00
     void*                    Data;                     // +0x04
     CCountedPointer_CTexture PTexture;                 // +0x08
@@ -66,7 +66,7 @@ struct CGraphicFrameData {
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;
     CGraphicFrame() : FrameData(0) { }
     __forceinline ~CGraphicFrame()
@@ -82,7 +82,7 @@ struct CGraphicFrame {
         }
     }
 };
-struct CGraphicInfo {                                  // 0x2c bytes
+class CGraphicInfo { public:                                  // 0x2c bytes
     unsigned char _pad[0x2c];
     bool GetFrame(CGraphicFrame& frame, unsigned long frameIndex, unsigned long a, unsigned long flags) const;   // 0x009FF8D0
 };
@@ -93,7 +93,7 @@ template <class T> struct CRetailVector {
     unsigned long size() const { return end() - begin(); }
     const T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     virtual void b00() const; virtual void b01() const; virtual void b02() const; virtual void b03() const;
     virtual void b04() const; virtual void b05() const; virtual void b06() const; virtual void b07() const;
     virtual void b08() const; virtual void b09() const; virtual void b10() const; virtual void b11() const;

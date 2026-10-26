@@ -11,14 +11,14 @@
 // GetPItem call and the pushes: a memory read that retail keeps ahead of the manager calls); arguments right to left:
 // the float, the creature, then the object chain. No engine header exists for this class: Radius (long, +0xa8) and
 // PThing (plain pointer, +0xac) follow the 0xa8-byte retail CCreatureActionBase.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CNearbyAlerter {
     void __fastcall AlertAllNearbyToThing(CThing* thing, CThingCreatureBase* alerter, float radius);   // 0x0084A720
 };
 
-struct CThingManager {
+class CThingManager { public:
     CNearbyAlerter* GetNearbyAlerter();     // 0x0051E490
 };
 
@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCreatureAction_AlertAllNearbyToThing {
+class CCreatureAction_AlertAllNearbyToThing { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

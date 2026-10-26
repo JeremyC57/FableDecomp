@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CStateBlock { long Value; unsigned char Flag; };
-struct CBankStateBlock { void* vt; CStateBlock State; };
+class CBankStateBlock { public: void* vt; CStateBlock State; };
 struct CShaderBankStateBlock { void* vt; CStateBlock State;
     void Set(const CBankStateBlock* s) { State.Flag = s->State.Flag; State.Value = s->State.Value; } };
 int main()

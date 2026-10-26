@@ -7,12 +7,12 @@
 // UpdateLists vector<ThingLList> begin at retail +0x8c (PDB +0xa4; retail is 0x18 narrower in this region).
 // Shape: the list is a named pointer `&UpdateLists[thing->index]` (`lea edi,[ecx+eax*8]`); early return when already
 // linked; the tail link is an if/else, then prev = tail, next = 0, tail = thing.
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
     virtual void OnRemovedFromUpdateList();     // slot 45 (+0xb4)
     virtual void OnAddedToUpdateList();         // slot 46 (+0xb8)
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x10];
     unsigned char   m_updateListIndex;          // +0x10 (which update list the thing lives in)
     unsigned char   _pad11[0x60 - 0x11];
@@ -27,7 +27,7 @@ struct ThingLList {                             // 8 bytes: head, tail
     CThing* m_pHead;
     CThing* m_pTail;
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x84];
     ThingLList    RenderList;                   // +0x84 (PDB +0x9c)
     ThingLList*   UpdateLists;                  // +0x8c (PDB +0xa4: vector<ThingLList> begin)

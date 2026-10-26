@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPersistContext;
+class CPersistContext;
 
 struct SubObj {
     int dummy;

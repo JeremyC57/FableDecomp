@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonFireBlastForward {
+class CCreatureAction_DragonFireBlastForward { public:
     void* vftable;
 };
 

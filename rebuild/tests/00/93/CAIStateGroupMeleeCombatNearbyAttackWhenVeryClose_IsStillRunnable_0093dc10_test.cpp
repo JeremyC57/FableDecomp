@@ -5,10 +5,10 @@
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CTCPHYSICSBASE_H
 #define FABLE_ENGINE_CAISTATEGROUP_MELEECOMBATNEARBYATTACKWHENVERYCLOSE_H
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
-struct CTCPhysicsBase { float Radius; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
+class CTCPhysicsBase { public: float Radius; };
 #endif
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable(bool) -- require a runnable melee state and an enemy within the height and radius limits.
 // Grade: RELOCATION_MATCH -- named squared-coordinate locals retain the retail x87 evaluation order (192 bytes).
@@ -17,7 +17,7 @@ struct CTCPhysicsBase { float Radius; };
 #include "engine/CTCPhysicsBase.h"
 #include "engine/CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose.h"
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector() {}
  C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}

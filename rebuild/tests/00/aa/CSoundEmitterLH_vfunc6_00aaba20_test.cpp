@@ -21,7 +21,7 @@ struct CSoundSystem {
     COutput* GetOutput() { return &output; }
 };
 struct CSoundManagerLH { CSoundSystem* m_pSystem; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct Fixture {
     CSoundSystem system; CSoundManagerLH manager; SSoundNode head, n1, n2; CActiveSound s1, s2;
     Fixture() {

@@ -15,13 +15,13 @@ namespace N_0099a300 { struct CBase {
     CBase();                                       // 0x0099A2F0
     ~CBase();                                      // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

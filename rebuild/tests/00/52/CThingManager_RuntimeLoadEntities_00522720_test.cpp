@@ -22,18 +22,18 @@
 //   GamePersistentEntityScripts +0xc, the dead-entity map +0x18, SaveFormatVersion +0x24}; CEntityScriptInfo is 0x18
 //   bytes {Script +0, SaveData +4, UncompressedSize +0x10, Valid +0x14}.
 #include <stdlib.h>
-struct CThing;
-struct CCharString;
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CThing;
+class CCharString;
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* PStringData;
     bool IsEmpty() const { return !PStringData || !PStringData->m_length; }
 };
 template<class T> struct set;
 template<class T> struct vector;
-struct CASuspendableProcess;
+class CASuspendableProcess;
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -75,20 +75,20 @@ struct CEntityRuntimePersistence {
     }
 };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned char _body[0x1c];
     CMemoryDataInputStream(void* data, unsigned long size);    // 0x00994930
     ~CMemoryDataInputStream();                                  // 0x00993B10
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool v09();                                 // slot 9 (+0x24): true skips the load (unnamed)
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char             _pad00[0x9c];
     bool                      LoadingEntitiesFromSaveGame;      // +0x9c
     unsigned char             _pad9d[3];

@@ -16,7 +16,7 @@
 double __fastcall GFGetTime();                          // 0x009E1BC0
 extern bool g_bAbortResourceLoads;                      // 0x01396C5C
 
-struct CResource {                                      // vtable 0x012354A4, 0x1C bytes
+class CResource { public:                                      // vtable 0x012354A4, 0x1C bytes
     virtual ~CResource();
     virtual void v01();
     virtual void UnloadResource();                      // slot 2

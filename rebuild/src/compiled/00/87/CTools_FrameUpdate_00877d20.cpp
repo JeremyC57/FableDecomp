@@ -9,20 +9,20 @@
 // (CCamera, WorldPosition first) +0x04, World +0x74; CWorld::PThingSearchTools +0x20.
 // Shape: the search tools pointer is read first (a named local), the box is a C2DBoxI temporary built from the
 // two truncated coordinates, the filter an empty object in the frame.
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct C2DVectorI {
     long x, y;
     C2DVectorI(long ax, long ay) : x(ax), y(ay) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DVectorI TopLeft;                            // +0x00
     C2DVectorI BottomRight;                        // +0x08
     C2DBoxI(long x0, long y0, long x1, long y1) : TopLeft(x0, y0), BottomRight(x1, y1) { }
 };
-struct CThing;
-struct CThingGameObject;
-struct CThingFilter_None { };
-template <class T> struct CIntelligentPointer { void* m_vtable; T* m_pItem; };
+class CThing;
+class CThingGameObject;
+class CThingFilter_None { public: };
+template <class T> class CIntelligentPointer { public: void* m_vtable; T* m_pItem; };
 struct CThingConstPtrVector {                      // STLport vector<CIntelligentPointer<CThing const> >
     CIntelligentPointer<const CThing>* _M_start;
     CIntelligentPointer<const CThing>* _M_finish;
@@ -32,7 +32,7 @@ struct CThingConstPtrVector {                      // STLport vector<CIntelligen
     CIntelligentPointer<const CThing>* erase(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last);   // 0x00738D70
     void clear() { erase(begin(), end()); }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class T, class C, class F> void GetAllThingsInRoughArea(const C2DBoxI& box, const F& filter, C& out);   // 0x008786E0 (<CThingGameObject const, ..., CThingFilter_None>)
 };
 template <class T> struct scoped_ptr {
@@ -40,15 +40,15 @@ template <class T> struct scoped_ptr {
     T* get() const { return ptr; }
     T* operator->() const { return ptr; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     scoped_ptr<CThingSearchTools> PThingSearchTools;   // +0x20
 };
-struct CCamera {
+class CCamera { public:
     C3DVector WorldPosition;                       // +0x00
     unsigned char _rest[0x38 - 12];
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*   m_vtable;                              // +0x00
     CCamera Camera;                                // +0x04
     CCamera OldCamera;                             // +0x3c

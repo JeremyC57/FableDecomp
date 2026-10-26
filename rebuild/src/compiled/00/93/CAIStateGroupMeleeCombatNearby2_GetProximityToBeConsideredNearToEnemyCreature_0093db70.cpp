@@ -17,28 +17,28 @@ struct CCreatureDefModel {
     float m_radius;                         // +0x34
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x60];
     CCreatureDefModel* m_pDef;              // +0x60
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     bool CCombatWheel_ValidateSequencePosition(CThingCreatureBase* creature);   // 0x006E9700
     float Combat_ProximityCalculation(CThingCreatureBase* creature);            // 0x006E9680
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;       // +0x4c
     CCombatManager* GetPCombatManager() { return m_pCombatManager; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

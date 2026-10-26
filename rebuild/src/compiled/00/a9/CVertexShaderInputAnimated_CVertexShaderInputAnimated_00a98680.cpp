@@ -7,7 +7,7 @@
 // Shape: the two arguments are re-read from their stack slots and pushed right to left after the
 // base constructor; the vtable (0x0129DFB0, rtti-vtables.tsv) is stored between the pushes and the
 // call. The manifest's "CCombatAbilityBlockDefBase" label is propagated from a byte-alike body.
-struct CVertexShaderInput {
+class CVertexShaderInput { public:
     virtual void v00();
     CVertexShaderInput();                                   // 0x00AB3B10
 };

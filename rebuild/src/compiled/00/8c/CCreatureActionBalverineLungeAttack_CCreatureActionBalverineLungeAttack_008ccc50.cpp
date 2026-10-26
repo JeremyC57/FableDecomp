@@ -12,7 +12,7 @@ struct CBase_00857e40 {
     CBase_00857e40(long typeCode);              // 0x00857E40
 };
 
-struct CCreatureAction_BalverineLungeAttack : CBase_00857e40 {
+class CCreatureAction_BalverineLungeAttack : public CBase_00857e40 { public:
     virtual void v00();
     CCreatureAction_BalverineLungeAttack();
 };

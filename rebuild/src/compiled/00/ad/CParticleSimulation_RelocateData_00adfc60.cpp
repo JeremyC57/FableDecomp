@@ -4,7 +4,7 @@
 // argument 2 is the old base (subtracted, kept in esi) and argument 3 the new base (added, edx). The five arrays
 // are the ones CParticleSimulation::AllocateArrays (0x00ADF2A0) carves out of one block: +0x1c, +0x20, +0x24, +0x28,
 // +0x2c. Each is `p = p - old + new` on a byte pointer, guarded by a null test.
-struct CParticleSimulation {
+class CParticleSimulation { public:
     unsigned char m_pad00[0x1c];
     char* m_pPositions;                              // +0x1c
     char* m_pVelocities;                             // +0x20

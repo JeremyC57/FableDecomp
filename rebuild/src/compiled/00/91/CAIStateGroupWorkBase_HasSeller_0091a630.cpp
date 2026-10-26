@@ -14,7 +14,7 @@
 //   local read three times (GetPObject, then operator-> twice), its address CSE'd before the loads fold into one;
 //   list::size() is STLport's distance(begin(), end())
 //   counting loop; `if (a && b && c) return true; return false;` gives the byte `mov al,1` / `xor al,al` exits.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace std {
 
@@ -61,7 +61,7 @@ public:
     const CCountedPointer<CCreatureInteraction>& GetPCreatureInteraction() const { return PCreatureInteraction; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };

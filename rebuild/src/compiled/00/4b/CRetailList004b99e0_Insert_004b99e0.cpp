@@ -8,7 +8,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (landed-trusted)
 inline void* operator new(unsigned int, void* p) { return p; }   // placement form: the null test on its result is what retail emits
 
-struct CCharString {                        // modelled locally: the shared header inlines the copy constructor, retail calls it out of line
+class CCharString { public:                        // modelled locally: the shared header inlines the copy constructor, retail calls it out of line
     void* m_pStringData;
     CCharString(const CCharString& other);   // 0x0099EC30
 };

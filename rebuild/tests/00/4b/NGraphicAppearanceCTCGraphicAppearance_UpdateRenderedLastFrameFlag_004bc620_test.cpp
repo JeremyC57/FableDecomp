@@ -2,7 +2,7 @@
 
 static long g_frame = 0;
 static long GetCurrentWorldFrame() { return g_frame; }
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     bool m_rendered;
     virtual ~CEnginePersistentPrimitiveBase() { }
     virtual bool WasRenderedLastFrame() { return m_rendered; }

@@ -11,7 +11,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <math.h>
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 struct CTCInventoryBase_Retail {
     unsigned char _pad_0x00[0x114];
     float InventoryAnimXRotationAngleGain;      // +0x114

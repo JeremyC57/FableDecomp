@@ -13,19 +13,19 @@
 //   exits share one call), the movie handle's compiler-generated dtor is expanded inline; the CRGBColour argument is built in its
 //   stack slot in R +2, G +1, B +0, A +3 order, which needs the value ctor written as body assignments R, G, B, A (member
 //   initialisers store in declaration order) plus a __forceinline user copy ctor; string literals convert into a CCharString temporary before the pushes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
-struct CScriptThing {                                      // 12 bytes
+class CScriptThing { public:                                      // 12 bytes
     unsigned char _body[0xc];
     CScriptThing(const CScriptThing& other);               // 0x004ABE90
     ~CScriptThing();                                       // 0x004AA840
@@ -38,13 +38,13 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     void* IntelligentPointer;                              // +0x04
     CBaseObject();                                         // 0x0099A380
     virtual ~CBaseObject();                                // 0x0099A430
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {       // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
 };
 
@@ -54,7 +54,7 @@ struct CCountedPointerWords {
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;                             // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();         // 0x007E74D0
@@ -68,7 +68,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                   // 0x006E7AB0
 };
 
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;                                 // +0x08
     virtual void v01();
 };
@@ -84,7 +84,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                     // slots 0..6
     virtual void NewScriptFrame() const;                                              // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -107,7 +107,7 @@ struct CGameScriptInterface {
     virtual CCharString GetActiveQuestName() const;                                   // slot 655 (+0xa3c)
 };
 
-struct CScriptBase {                                       // retail 0x40 bytes
+class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     void SetPredicate(CIsThingConscious& predicate);       // 0x00CB7920

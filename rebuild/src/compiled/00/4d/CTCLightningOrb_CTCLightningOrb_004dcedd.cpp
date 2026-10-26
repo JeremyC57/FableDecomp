@@ -10,10 +10,10 @@
 // in reverse order, the def pointer's `__forceinline` destructor releasing through the def object and clearing with
 // `and dword ptr [esi+1Ch],0` (size-optimised TU); the `??1` is emitted through a `new CTCLightningOrb` factory.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CLinearSpline;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -62,7 +62,7 @@ struct CSplinePointer {                            // CCountedPointer<NBBBMaths:
     ~CSplinePointer();                             // 0x004D76B8
 };
 
-struct CTCLightningOrb : CTCBase {
+class CTCLightningOrb : public CTCBase { public:
     CIntelligentPointer<CThing> PParent;                       // +0x0c
     CIntelligentPointer<CThing> PTarget;                       // +0x14
     CLightningOrbDefPointer     PDef;                          // +0x1c

@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     long numKeys; long start; long end;
     long NumKeyCameras() const { return numKeys; }
     void InitialiseSpline(long s, long e) { start = s; end = e; }
 };
-struct CThing {
+class CThing { public:
     CTCCameraPointScriptedSpline* spline;
     bool GetTC(CTCCameraPointScriptedSpline** out, long type)
     {

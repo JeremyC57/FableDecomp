@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CUserProfileManager { char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[20-0xd]; unsigned char blo; char pad_hi[212-(20+1)]; unsigned char CameraPCBowYZInvertedNewProfile; char IsCameraPCBowYZInverted(); };
+class CUserProfileManager { public: char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[20-0xd]; unsigned char blo; char pad_hi[212-(20+1)]; unsigned char CameraPCBowYZInvertedNewProfile; char IsCameraPCBowYZInverted(); };
 char CUserProfileManager::IsCameraPCBowYZInverted(){ if(this->UseNewProfileValues) return this->CameraPCBowYZInvertedNewProfile; return this->blo; }
 int main(){ CUserProfileManager o; o.blo=3; o.CameraPCBowYZInvertedNewProfile=7;
  o.UseNewProfileValues=1; if(o.IsCameraPCBowYZInverted()!=7){ std::printf("005485d0_TEST FAIL\n"); return 1;}

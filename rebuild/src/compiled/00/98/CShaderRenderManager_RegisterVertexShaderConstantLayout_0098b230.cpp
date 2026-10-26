@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 
-struct CVertexShaderConstantLayout;
+class CVertexShaderConstantLayout;
 
 struct CVertexShaderConstantLayoutVectorView
 {

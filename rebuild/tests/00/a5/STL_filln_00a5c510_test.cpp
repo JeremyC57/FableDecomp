@@ -1,7 +1,7 @@
 // Behaviour test for 00a5c510 (std::fill_n<C4DVector*, unsigned int, C4DVector>): n vectors get the value member by member,
 // the returned iterator is first + n, n == 0 writes nothing, the neighbours are untouched.
 #include <cstdio>
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 template <class _OutputIter, class _Size, class _Tp>

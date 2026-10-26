@@ -10,8 +10,8 @@
 //         (0x01238E00).
 // Shape: arguments pushed right to left: the scaled FOV (`push ecx ; fstp [esp]`), auto-go-behind time 0.0f and flag false as
 //        two `push 0`, then the three def floats, the def and the manager; the def pointer is re-read once (`mov edx,[esi]`).
-struct CGameCameraManager;
-struct CCameraModeDef {
+class CGameCameraManager;
+class CCameraModeDef { public:
     unsigned char _pad00[0x40];
     float         StringLengthXY;                  // +0x40
     float         CageRadius;                      // +0x44
@@ -19,12 +19,12 @@ struct CCameraModeDef {
     float         LookOffsetZ;                     // +0x4c
     float         FOV;                             // +0x50
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Def;
     T* operator->() const { return Def; }
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
 };

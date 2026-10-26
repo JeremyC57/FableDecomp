@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CBriarRoseDef { int v; };
+class CBriarRoseDef { public: int v; };
 
 static CBriarRoseDef* g_last_self = 0;
 static const CBriarRoseDef* g_last_src = 0;

@@ -7,7 +7,7 @@
 // `fill(first, last, value)` (`__fastcall`: first in ecx, last in edx, the value reference on
 // the stack) for 88-byte elements with an out-of-line copy-assignment @ 0x00519B80.
 // One of 12 bodies of this shape.
-struct CRegion {
+class CRegion { public:
     unsigned char _body[0x58];
     CRegion& operator=(const CRegion& other);   // 0x00519B80
 };

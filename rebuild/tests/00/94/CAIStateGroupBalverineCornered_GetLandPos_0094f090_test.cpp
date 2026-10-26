@@ -5,10 +5,10 @@
 #define FABLE_ENGINE_CAISTATEGROUPBASE_H
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CTCPHYSICSBASE_H
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
-struct CTCPhysicsBase { float Radius; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
+class CTCPhysicsBase { public: float Radius; };
 #endif
 // CAIStateGroup_BalverineCornered::GetLandPos(CThing*) -- land beyond the target by 1.2 times the combined radii, at terrain height.
 // Grade: RELOCATION_MATCH -- corrected no-argument world-map getter and subsequent position-taking height-query signatures reproduce all 223 bytes.
@@ -16,7 +16,7 @@ struct CTCPhysicsBase { float Radius; };
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCPhysicsBase.h"
-struct C3DVector {
+class C3DVector { public:
  float X,Y,Z;
  C3DVector() {}
  C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}

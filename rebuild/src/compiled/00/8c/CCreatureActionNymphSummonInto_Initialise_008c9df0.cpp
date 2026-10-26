@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     CThingCreature* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -30,7 +30,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_NymphSummonInto : CCombatActionBase {
+class CCreatureAction_NymphSummonInto : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

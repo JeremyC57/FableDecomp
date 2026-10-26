@@ -11,16 +11,16 @@
 // Shape: frame-pointer size TU; the box is copied into a frame local and grown statement by statement (left -= 8,
 // top -= 8, right += 2, bottom += 8): VC forwards the copied left/bottom words straight into the x87 and copies the other
 // two through edx, keeping the 8.0f on the FPU stack for the three uses.
-struct CEnginePrimitivePrepareInfo;
-struct CEnginePrimitiveHandle;
+class CEnginePrimitivePrepareInfo;
+class CEnginePrimitiveHandle;
 
-struct C2DVector {
+class C2DVector { public:
     float X;                                       // +0x00
     float Y;                                       // +0x04
     __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft;                             // +0x00
     C2DVector BottomRight;                         // +0x08
     __forceinline C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }
@@ -39,7 +39,7 @@ void __fastcall DrawBox(CEnginePrimitivePrepareInfo* info, CRetailHandleVector* 
 
 namespace NPlayerGui {
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char       _base[0x18];               // CDrawBase vptr, GUI pointers
     bool                Drawing;                   // +0x18
     CRetailHandleVector PrimitiveHandles;          // +0x1c

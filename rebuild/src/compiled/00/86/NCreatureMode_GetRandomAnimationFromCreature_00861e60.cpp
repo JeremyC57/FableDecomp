@@ -158,7 +158,7 @@ template <class _T1, class _T2> struct pair {
 
 } // namespace std
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 class CAnimationEntry {                                     // 16 bytes (Ego_r)
 public:
     long       BankIndex;                                   // +0x00

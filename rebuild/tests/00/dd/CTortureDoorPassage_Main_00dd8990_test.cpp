@@ -6,14 +6,14 @@
 struct CQ_PrisonEscapeRescueMotherScript { bool MotherRescued; };
 static int g_frames, g_hints, g_clicksNeeded, g_terminateAfter;
 static bool g_locked;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_PrisonEscapeRescueMotherScript* Parent;
     void NewScriptFrame() const { ++g_frames; if (g_frames == 4) Parent->MotherRescued = true; }
     bool MsgIsGameInfoClickedPast() const { return g_clicksNeeded-- <= 0; }
     void DisplayGameInfo(const char* t) const { if (std::strcmp(t, "TEXT_QST_055_HINT_NEED_TO_HAVE_MOTHER") == 0) ++g_hints; }
     void EntitySetAsLocked(const void*, bool l) const { g_locked = l; }
 };
-struct CScriptThing { bool MsgIsUsedBy(const char* who) const { return g_frames == 1 && std::strcmp(who, "SCRIPT_NAME_HERO") == 0; } };
+class CScriptThing { public: bool MsgIsUsedBy(const char* who) const { return g_frames == 1 && std::strcmp(who, "SCRIPT_NAME_HERO") == 0; } };
 struct CTortureDoorPassage {
     CGameScriptInterface* Game; CScriptThing Me; CQ_PrisonEscapeRescueMotherScript* ParentClass;
     bool IsActiveThreadTerminating() { return g_terminateAfter >= 0 && g_frames >= g_terminateAfter; }

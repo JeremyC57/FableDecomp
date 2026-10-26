@@ -12,7 +12,7 @@
 //   listener, index, AddGroup).
 struct CSteeringGroup;
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     unsigned char      _pad_0x00[0x30];
     CSteeringGroup*    m_pGroup;            // +0x30 the group this agent belongs to
     CSteeringAgent*    m_pNextInGroup;      // +0x34 next member of the group

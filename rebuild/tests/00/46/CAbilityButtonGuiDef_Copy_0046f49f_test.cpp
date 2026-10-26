@@ -1,8 +1,8 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct CDefClassBase;
-struct CAbilityButtonGuiDef;
+class CDefClassBase;
+class CAbilityButtonGuiDef;
 
 extern "C" CAbilityButtonGuiDef* __fastcall
 CAbilityButtonGuiDef_Copy_impl_0046f49f(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src)

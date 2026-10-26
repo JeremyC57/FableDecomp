@@ -11,9 +11,9 @@
 // by-value argument's converting ctor takes the source pointer by reference (GetPItem after the vtable store).
 // No engine-header member names beyond the padding; local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
+class CTCBase;
 struct CTCVillager;
-struct CTCVillage;
+class CTCVillage;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540 (manifest IS_THING_ALIVE label propagated)
 
 struct CInterfaceMap {
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0 / 0x0040F020 (byte-identical instantiations)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -72,12 +72,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -93,7 +93,7 @@ struct CIntelligentPointerTask : CBaseIntelligentPointer {   // CIntelligentPoin
     CIntelligentPointerTask(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void RemoveThingFromTask(CIntelligentPointerTask task, CThing* creature);   // 0x00659EFC
 };
 

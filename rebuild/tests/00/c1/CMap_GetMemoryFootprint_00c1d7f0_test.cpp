@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMap {
+class CMap { public:
     int   field0;
     int   field4;
     long  CachedVolumes;

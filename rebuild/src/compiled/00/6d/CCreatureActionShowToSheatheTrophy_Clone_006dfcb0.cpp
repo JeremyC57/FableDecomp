@@ -7,13 +7,13 @@
 // Virtual clone of a class that adds no data to its base: the implicit copy constructor is
 // inlined as the base copy constructor @ 0x006DFB90 plus this class's vtable store
 // (0x0125F9F4, named through rtti-vtables.tsv). sizeof = 0xc0. One of 196 bodies of this shape.
-struct CCreatureAction_ShowTrophy {
+class CCreatureAction_ShowTrophy { public:
     virtual void v00();
     unsigned char _body[0xc0 - 4];    // sizeof(CCreatureAction_ShowTrophy) = sizeof(CCreatureAction_ShowToSheatheTrophy) = 0xc0
     CCreatureAction_ShowTrophy(const CCreatureAction_ShowTrophy& other);     // 0x006DFB90
 };
 
-struct CCreatureAction_ShowToSheatheTrophy : CCreatureAction_ShowTrophy {
+class CCreatureAction_ShowToSheatheTrophy : public CCreatureAction_ShowTrophy { public:
     virtual void v00();                    // own vtable; copy constructor implicit
     CCreatureAction_ShowTrophy* Clone();
 };

@@ -7,7 +7,7 @@ static int g_n = 0;
 struct CIsMarkerBoundToThing { CIsMarkerBoundToThing() {} };
 struct CMarkerList { void remove_if(CIsMarkerBoundToThing) { g_log[g_n++] = 0; } };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     CMarkerList Markers;
     bool UpdateRequired;
     void RemoveAllDeadMarkers()        { g_log[g_n++] = 1; }

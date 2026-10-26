@@ -19,11 +19,11 @@
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                  // 0x00BFEBA8
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int n);   // 0x00BFEAF8
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                    // +0
     unsigned long StringLength;             // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0
@@ -43,11 +43,11 @@ struct CCharString {
         return PStringData->StringLength;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();                     // vtable 0x01231710
     ~CBaseClass();                          // 0x0099A2E0
 };
-struct CConsoleCommandLine : CBaseClass {   // vtable 0x0129C400 (16 bytes)
+class CConsoleCommandLine : public CBaseClass { public:   // vtable 0x0129C400 (16 bytes)
     CCharString CurrentEntry;               // +0x04
     bool        UserEntry;                  // +0x08
     long        CursorPosition;             // +0x0c
@@ -55,7 +55,7 @@ struct CConsoleCommandLine : CBaseClass {   // vtable 0x0129C400 (16 bytes)
     CConsoleCommandLine(const CCharString& entry);      // 0x009EEA10
     CCharString GetEntry() const { return CurrentEntry; }
 };
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual void v00();
     virtual void v01();
     virtual CCharString GetFormattedName() const;       // slot 2 (+0x08)

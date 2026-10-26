@@ -11,29 +11,29 @@
 // test); the early-out `--HeadCacheTimer; return;` has its own epilogue; AlwaysUpdateHeadPos skips the null test.
 // Layout (retail CTCLook, packed past +0xa0 as in the landed GetHeadPos 0x00751B30): ParentThing +0x04, PParentCreature
 // +0x10, PDef +0x14 (CLookDef AlwaysUpdateHeadPos +0x54), CachedHeadPos +0xa1, HeadCacheTimer +0xb0. No engine header.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetCameraPosition();     // slot 8 (+0x20)
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;      // 0x004C73D0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector GetHeadPos(bool exact);          // 0x00661B40
 };
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x54];
     bool AlwaysUpdateHeadPos;                  // +0x54
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -41,7 +41,7 @@ extern float g_HeadPosCacheTolerance;          // 0x013826A0 (.data tunable, 0.0
 extern long  g_HeadPosCacheFrames;             // 0x01375550 (.data, 15)
 
 #pragma pack(push, 1)
-struct CTCLook {
+class CTCLook { public:
     void*               __vftable;              // +0x00
     CThing*             ParentThing;            // +0x04
     unsigned char       _pad08[0x10 - 0x08];

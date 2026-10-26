@@ -15,13 +15,13 @@
 //   LTCG did. The copy constructor bumps the count through a `long&` local (`count = count + 1`): a plain `++Object->m_refCount`
 //   lets VC7.1 hoist the region def's flag load above the count store, retail loads it after.
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CDefPointee {
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) { Object = other.Object; if (Object) { long& count = Object->m_refCount; count = count + 1; } }
@@ -43,7 +43,7 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -51,11 +51,11 @@ struct CCharString {
 struct CDefinitionManagerBase {
     CDefPointer<CDefPointee> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CCreatureDef : CDefPointee {
+class CCreatureDef : public CDefPointee { public:
     unsigned char _pad08[0xcc - 0x08];
     bool AllowedInProtectedTowns;                       // +0xcc (PDB 0xdc)
 };
-struct CDefClassBase : CDefPointee {
+class CDefClassBase : public CDefPointee { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
@@ -86,15 +86,15 @@ bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CRegionDef : CDefPointee {
+class CRegionDef : public CDefPointee { public:
     unsigned char _pad08[0x70 - 0x08];
     bool ProtectedTown;                                 // +0x70
 };
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x24];
     CDefPointer<CRegionDef> PDef;                       // +0x24
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
@@ -108,7 +108,7 @@ public:
     CDefPointer<CDefClassBase> PDef;                    // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
 };
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     void*   __vftable;                                  // +0x00 (CTCBase)
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x4];

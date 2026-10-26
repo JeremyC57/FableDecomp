@@ -1,4 +1,4 @@
-struct CCreatureAction_Die {
+class CCreatureAction_Die { public:
     void* vftable;
 };
 

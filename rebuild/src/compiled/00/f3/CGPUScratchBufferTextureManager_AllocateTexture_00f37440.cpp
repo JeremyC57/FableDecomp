@@ -3,14 +3,14 @@
 #include "engine/CTexture.h"
 #include <string.h>
 #include "engine/CPixelFormat.h"
-struct C2DExtentsI { long Width, Height; };
+class C2DExtentsI { public: long Width, Height; };
 extern char g_HeadlessRendering; // 0143e968
 struct CTextureNative : CTexture {
     CTextureNative() { PD3DTexture=0; memset(reinterpret_cast<unsigned char*>(static_cast<CTexture*>(this))+offsetof(CTexture,ByteLength),0,sizeof(ByteLength)+sizeof(AllocationSource)); }
     bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,long,bool,bool); // 009fa280
 };
-struct CSurface;
-struct CGPUScratchBufferTextureManager {
+class CSurface;
+class CGPUScratchBufferTextureManager { public:
     struct CResourceEntry {
         long ResourceType; CTextureNative* Texture; CSurface* Surface; long PageIndex;
         C2DExtentsI Dimensions; long NoLevels; CPixelFormat PixelFormat;

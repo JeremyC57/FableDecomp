@@ -6,7 +6,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(long interfaceType) const
@@ -20,7 +20,7 @@ struct CThing {
     }
 };
 struct CBlendPair { float m_first, m_second; CBlendPair() : m_first(0.0f), m_second(0.0f) {} };
-struct CAnimInit {
+class CAnimInit { public:
     long Mode; unsigned char AnimType; bool Flag05; long AnimIndex; float Scales[3]; CBlendPair Blend;
     unsigned long Flags; long Arg24; long Percent;
     void Set(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
@@ -30,9 +30,9 @@ struct CAnimInit {
 };
 static CAnimInit g_played(0, 0, 0, 0, true, 0, 0);
 static int g_plays = 0; static long g_mode = -1, g_delay = -1;
-struct CAnimateThing { void SetMainAnim(const CAnimInit& init, long mode, long delay) { g_played = init; ++g_plays; g_mode = mode; g_delay = delay; } };
-struct CTCAnimationComplex { CAnimateThing Animator; CAnimateThing& GetAnimation() { return Animator; } };
-struct CBedDef { bool Animating; };
+class CAnimateThing { public: void SetMainAnim(const CAnimInit& init, long mode, long delay) { g_played = init; ++g_plays; g_mode = mode; g_delay = delay; } };
+class CTCAnimationComplex { public: CAnimateThing Animator; CAnimateThing& GetAnimation() { return Animator; } };
+class CBedDef { public: bool Animating; };
 class CTCBed {
 public:
     CThing* ParentThing; bool Empty; bool GettingIn; bool GettingOut; bool Animating; long BedSleepAnim; const CBedDef* PDef;

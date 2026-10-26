@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char* s;
     CCharString(const char* t) { s = (char*)std::malloc(std::strlen(t) + 1); std::strcpy(s, t); ++g_live; }
     CCharString(const CCharString& o) { s = (char*)std::malloc(std::strlen(o.s) + 1); std::strcpy(s, o.s); ++g_live; }

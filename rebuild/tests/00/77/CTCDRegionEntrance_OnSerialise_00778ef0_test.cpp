@@ -6,11 +6,11 @@ static int g_transfers = 0;
 static const char* g_name = 0;
 static bool g_default = false;
 static bool* g_value = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue)
     { ++g_transfers; g_name = name; g_default = defaultValue; g_value = &value; }
 };
-struct CTCDRegionEntrance {
+class CTCDRegionEntrance { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     bool          Active;

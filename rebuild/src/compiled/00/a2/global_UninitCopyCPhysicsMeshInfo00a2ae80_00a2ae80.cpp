@@ -15,15 +15,15 @@
 // Label correction: the catalog's `_Uninit_copy<..CScriptThing..>` is propagated (CScriptThing is 12 bytes).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);           // slot 0
     virtual void Delete();                     // slot 1
     unsigned long IVRefCount;                  // +0x04
 };
 
-template <class T> struct CIVCountedPointer {  // intrusive counted pointer, 4 bytes
+template <class T> class CIVCountedPointer { public:  // intrusive counted pointer, 4 bytes
     T* Object;
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object)
     {
@@ -41,7 +41,7 @@ public:
 
 class CPhysicsMeshInfo : public CMeshDataBankEntry {
 public:
-    struct CMeshData : CIVCountedPointeeBase { };
+    class CMeshData : public CIVCountedPointeeBase { public: };
     virtual ~CPhysicsMeshInfo();               // vtable 0x0129CD50
     CIVCountedPointer<CMeshData> MeshData;     // +0xC
 };

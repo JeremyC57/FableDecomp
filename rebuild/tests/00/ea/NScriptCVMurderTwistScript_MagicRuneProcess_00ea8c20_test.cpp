@@ -4,9 +4,9 @@
 #include <vector>
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { float dist; int id; };
-struct CTimer { int t; int GetTime() { return t; } void SetTime(int v) { t = v; Log("set"); } };
-struct CGameScriptInterface {
+class CScriptThing { public: float dist; int id; };
+class CTimer { public: int t; int GetTime() { return t; } void SetTime(int v) { t = v; Log("set"); } };
+class CGameScriptInterface { public:
     int frame; int unloadAt; int* state;
     void NewScriptFrame() { Log("frame"); ++frame; if (frame == 2) *state = 2; }
     bool MsgOnRegionUnloaded() { return frame == unloadAt; }

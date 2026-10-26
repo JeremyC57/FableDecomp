@@ -18,7 +18,7 @@ struct IGuiWindow_00ca4b90 {               // COM-style: `this` is pushed as the
     virtual unsigned long __stdcall AddRef();   // slot 1
 };
 
-struct CGuiWindowManager {
+class CGuiWindowManager { public:
     unsigned char _pad[0x6c];
     IGuiWindow_00ca4b90* m_pForeground;    // +0x6c
     unsigned char _pad2[0x24];

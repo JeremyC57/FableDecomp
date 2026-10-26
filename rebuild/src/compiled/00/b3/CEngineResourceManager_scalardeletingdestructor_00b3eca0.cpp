@@ -1,4 +1,4 @@
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void* vftable;
 };
 

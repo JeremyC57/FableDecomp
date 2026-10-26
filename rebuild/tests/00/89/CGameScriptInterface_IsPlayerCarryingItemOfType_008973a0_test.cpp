@@ -8,24 +8,24 @@ struct CBasicStringChar {
     char* PData; unsigned long StringLength; unsigned long DataLength : 31; bool UseFastExtend : 1;
     bool operator==(const char* text) const { return strcmp(PData, text) == 0; }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
 class CCharString { public: CCharStringData* PStringData; };
-struct CDefString {
+class CDefString { public:
     long Index;
     bool operator==(const CCharString& name) const;
 };
 static const char* g_defNames[] = { "OBJECT_APPLE", "OBJECT_SWORD" };
 bool CDefString::operator==(const CCharString& name) const { return name.PStringData != 0 && strcmp(g_defNames[Index], name.PStringData->Data.PData) == 0; }
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing;
-struct CTCCarrying : CTCBase { CThing* Carried; CThing* GetThingInPrimarySlot() { return Carried; } };
-struct CThing {
+class CThing;
+class CTCCarrying : public CTCBase { public: CThing* Carried; CThing* GetThingInPrimarySlot() { return Carried; } };
+class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -46,8 +46,8 @@ struct CThing {
     }
 };
 class CPlayer { public: CThing* Hero; CThing* GetHeroThing() { return Hero; } };
-struct CPlayerManager { CPlayer Main; CPlayer& GetMainPlayer() { return Main; } };
-struct CGameScriptInterface {
+class CPlayerManager { public: CPlayer Main; CPlayer& GetMainPlayer() { return Main; } };
+class CGameScriptInterface { public:
     void* World; void* Component; void* DisplayEngine; void* DefinitionManager; CPlayerManager* PlayerManager;
     bool IsPlayerCarryingItemOfType(const CCharString& defName) const;
 };

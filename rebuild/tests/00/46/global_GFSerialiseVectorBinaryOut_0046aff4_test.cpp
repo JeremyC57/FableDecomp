@@ -5,7 +5,7 @@ struct Writer {
     void WriteULong(unsigned int v) { kind[n] = 'U'; log[n++] = v; }
     void WriteLong(int v) { kind[n] = 'L'; log[n++] = (unsigned int)v; }
 };
-struct CAtmosBankEntry { unsigned int ID; int Filename; };
+class CAtmosBankEntry { public: unsigned int ID; int Filename; };
 struct EntryVector { CAtmosBankEntry* _M_start; CAtmosBankEntry* _M_finish; CAtmosBankEntry* _M_end_of_storage; };
 static void SerialiseOut(Writer& stream, EntryVector& value)
 {

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 static int g_calls=0, g_last=0;
-struct CMemoryAllocator { char dummy; void Clear(int n); void ClearPerformanceStats(); };
+class CMemoryAllocator { public: char dummy; void Clear(int n); void ClearPerformanceStats(); };
 void CMemoryAllocator::Clear(int n){ g_calls++; g_last=n; }
 void CMemoryAllocator::ClearPerformanceStats(){ Clear(0xc); Clear(0xb); }
 int main(){ CMemoryAllocator o; o.ClearPerformanceStats();

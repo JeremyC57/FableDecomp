@@ -3,7 +3,7 @@
 template<class T> struct CRetailList { struct SNode { SNode* next; SNode* prev; T value; }; void* m_allocator; SNode* m_head; unsigned long m_size; };
 enum EAnimUpdateMode { AUM_NONE, AUM_ONE, AUM_TWO, AUM_THREE };
 struct CDelayedAnimation { EAnimUpdateMode UpdateMode; long m_value4; long m_value8; };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char CurrentAnim[0x50]; CRetailList<CDelayedAnimation> DelayedAnimQueue;
     void ResetTransistionAnimationModes(EAnimUpdateMode from, EAnimUpdateMode to)
     {

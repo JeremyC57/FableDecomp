@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* text;                           // 0 = the empty (null-data) string
     bool operator==(const char* other) const
     {
@@ -12,8 +12,8 @@ struct CCharString {
         return std::strcmp(text, other) == 0;
     }
 };
-struct CScriptThing { int id; };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptThing { public: int id; };
+class CScriptGameResourceObjectScriptedThingBase { public:
     int thingId;
     bool scripting;
     bool IsScripting() const { return scripting; }
@@ -34,7 +34,7 @@ struct CActorMap {                              // find() returns the entry or e
     }
     CActorEntry* end() { return &entries[count]; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     int byNameQueries;
     CScriptThing& GetHero() { return hero; }

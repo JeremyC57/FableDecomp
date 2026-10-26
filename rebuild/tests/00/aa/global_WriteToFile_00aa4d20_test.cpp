@@ -19,7 +19,7 @@ public:
     CDataOutputStream() : Count(0) { }
     void WriteFloat(float value) { if (Count < 16) Written[Count] = value; ++Count; }
 };
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
 };

@@ -10,29 +10,29 @@
 // z*z + y*y + x*x by VC; `len2 > e*e` gives `fcompp ; test ah,5 ; jp` with the moving case falling through.
 #include "engine/CTCWeapon.h"
 
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     unsigned char _pad_00[0x18];
     C3DVector     m_lastPosition;                           // +0x18
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_00[0x60];
     CRightHandedSet* m_pRHSet;                              // +0x60
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-struct CDefPointeeBase { void* __vftable; long RefCount; };
+class CDefPointeeBase { public: void* __vftable; long RefCount; };
 
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0xcc];
     CCharString   UnsheatheToCombatAnim;                    // +0xd4
     CCharString   UnsheatheToNormalAnim;                    // +0xd8

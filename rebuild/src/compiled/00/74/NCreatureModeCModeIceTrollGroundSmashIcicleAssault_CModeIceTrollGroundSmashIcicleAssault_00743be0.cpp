@@ -8,18 +8,18 @@
 // (CDefPointer<const CSnowTrollDef>), Icicles +0x84 (vector<CIcicleData>), ViablePoints +0x90 (vector<C3DVector>).
 // Shape: init list in declaration order; Timer is left uninitialised (no store to +0x7c); the def pointer and
 // both _Vector_base + _STLP_alloc_proxy vectors share the zero register edi (seven zero words).
-struct CThing;
-struct CThingCreatureBase;
-struct CSnowTrollDef;
-struct C3DVector { float X, Y, Z; };
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CSnowTrollDef;
+class C3DVector { public: float X, Y, Z; };
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -31,7 +31,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -73,7 +73,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-template <class T> struct CDefPointer {    // 4 bytes: the def object
+template <class T> class CDefPointer { public:    // 4 bytes: the def object
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -87,7 +87,7 @@ struct CModeStandBase {                    // retail sizeof 0x68
 namespace NCreatureMode {
 
 struct CModeIceTrollGroundSmashIcicleAssault : CModeStandBase {   // vtable 0x01268774
-    struct CIcicleData { unsigned char _data[0x24]; };   // PEffect, PTrap (intelligent pointers), EffectTimer, TrapTimer, Position
+    class CIcicleData { public: unsigned char _data[0x24]; };   // PEffect, PTrap (intelligent pointers), EffectTimer, TrapTimer, Position
     CIntelligentPointerThing          PTarget;       // +0x68
     CAnimFilterOfGroup                Filter;        // +0x70
     long                              Timer;         // +0x7c

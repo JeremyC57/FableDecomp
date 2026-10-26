@@ -6,7 +6,7 @@
 // Shape: the flag is read once into a zero-extended register (`xor eax,eax ; mov al,[ecx+0B2h]`) that serves both the
 // test and the pushed argument; the call keeps `call ; ret` (the callee pops an argument this function does not have).
 // Layout: CTCVillage.h is the PDB layout (Limbo +0x13E); with the 4-byte retail lists / 12-byte set it is +0xB2.
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                // +0x00
     unsigned char _pad_0x04[0xAE];
     bool          Limbo;                    // +0xB2

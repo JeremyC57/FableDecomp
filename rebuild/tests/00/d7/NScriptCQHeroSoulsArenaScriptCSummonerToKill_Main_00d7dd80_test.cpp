@@ -1,10 +1,10 @@
 // Behaviour test for CQ_HeroSoulsArenaScript::CSummonerToKill::Main (0x00D7DD80): control flow over the parent flags.
 #include <cstdio>
 
-struct CScriptThing { long id; };
+class CScriptThing { public: long id; };
 struct CQ_HeroSoulsArenaScript { bool PlayedArenaCS; bool FirstWaveAttack; };
 
-struct CGame {
+class CGame { public:
     int frames, started, startPriority, raiseWaveAt, doneAt, filters, scriptedAlive;
     CQ_HeroSoulsArenaScript* parent;
     void NewScriptFrame() { ++frames; if (frames == raiseWaveAt) parent->FirstWaveAttack = true; }

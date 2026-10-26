@@ -1,8 +1,8 @@
 // Behaviour test for 0x008AB9D0 CCreatureAction_SitDown(owner, animation, mode): base arguments and the counted mode pointer (add-ref by the member,
 // release of the by-value parameter).
 #include <cstdio>
-struct CThing { int id; };
-struct CAnimationEntry { int id; };
+class CThing { public: int id; };
+class CAnimationEntry { public: int id; };
 struct CModeSitBase { int id; };
 static int g_destroyed = 0;
 static void DestroyMode(CModeSitBase*) { ++g_destroyed; }
@@ -19,13 +19,13 @@ struct CCountedPointer {
         m_pObject = 0; m_pCount = 0;
     }
 };
-struct CSoundPair { int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
-struct CCreatureActionBase {
+class CSoundPair { public: int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CCreatureActionBase { public:
     CThing* m_owner; float m_a, m_b; CAnimationEntry* m_anim; CSoundPair m_sound; int m_c, m_d;
     CCreatureActionBase(CThing* owner, float a, float b, CAnimationEntry* anim, const CSoundPair& sound, int c, int d)
         : m_owner(owner), m_a(a), m_b(b), m_anim(anim), m_sound(sound), m_c(c), m_d(d) { }
 };
-struct CCreatureAction_SitDown : CCreatureActionBase {
+class CCreatureAction_SitDown : public CCreatureActionBase { public:
     CCountedPointer PMode;
     CCreatureAction_SitDown(CThing* owner, CAnimationEntry* animation, CCountedPointer mode)
         : CCreatureActionBase(owner, -1.0f, 0.0f, animation, CSoundPair(), 0, 1), PMode(mode) { }

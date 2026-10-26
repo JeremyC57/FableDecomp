@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTavernTableDef
-{
+class CTavernTableDef
+{ public:
     void* vftable;
 };
 extern void* const g_CTavernTableDef_vftable;

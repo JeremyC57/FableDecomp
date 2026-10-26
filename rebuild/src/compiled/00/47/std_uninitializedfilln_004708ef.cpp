@@ -14,7 +14,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;                                // +0x00
     long LastSound;                                 // +0x04
 };

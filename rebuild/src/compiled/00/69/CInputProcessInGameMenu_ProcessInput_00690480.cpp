@@ -6,7 +6,7 @@
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -20,7 +20,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CInputEvent {
 public:
     long GetKey_00a03b40() const;                           // 0x00A03B40
@@ -33,10 +33,10 @@ public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-struct CThing {
+class CThing { public:
 };
 template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad_0x00[0x90];
     signed char   PlayerNumber;                    // +0x90 (as in the landed CTCInGameMenu::CloseInGameMenuViaGameEvent 0x0047D21C)
 };
@@ -44,16 +44,16 @@ class CPlayer {
 public:
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1C
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     unsigned char _pad00[0xc8];
     long          CurrentSubPage;                  // +0xC8 (descriptive; -1 = none)
     bool IsAnySliderReceivingInput();              // 0x0047D483

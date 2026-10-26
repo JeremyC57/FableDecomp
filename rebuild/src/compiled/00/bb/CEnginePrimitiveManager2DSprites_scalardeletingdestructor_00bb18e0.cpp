@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManager2DSprites {
+class CEnginePrimitiveManager2DSprites { public:
     void* vftable;
 };
 

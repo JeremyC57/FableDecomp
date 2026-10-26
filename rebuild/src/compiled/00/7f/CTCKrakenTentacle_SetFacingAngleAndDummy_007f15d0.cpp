@@ -6,7 +6,7 @@
 // in esi for the final call.
 #include "fable_string.h"
 
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char _pad_0x00[0x44];
     float         FacingAngle;                     // +0x44
     CCharString   DummyName;                       // +0x48

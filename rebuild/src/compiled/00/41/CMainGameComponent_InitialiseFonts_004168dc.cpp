@@ -26,11 +26,11 @@ public:
     CCountedPointer<T>& operator=(const CCountedPointer<T>& other);   // 0x00419463
     ~CCountedPointer();                            // 0x004057A0
 };
-struct CFontBank {
+class CFontBank { public:
     CCountedPointer<CFont> GetFont(const CCharString& name);   // 0x009E2C80
 };
 extern CFontBank* g_pFontBank;                     // 0x013B838C
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char          _pad00[0x1614c];
     CCountedPointer<CFont> m_font;                 // +0x1614c
     void InitialiseFonts();

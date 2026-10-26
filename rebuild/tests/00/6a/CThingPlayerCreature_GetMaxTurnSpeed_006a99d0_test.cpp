@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CThing;
+class CThing;
 static bool g_heavy = false;
 bool IsCarryingTooHeavyWeapon(CThing* thing) { (void)thing; return g_heavy; }
-struct CPlayerMovementDef { float MaxTurnSpeed; float MaxTurnSpeedHeavyWeapon; };
-template <class T> struct CDefPointer {
+class CPlayerMovementDef { public: float MaxTurnSpeed; float MaxTurnSpeedHeavyWeapon; };
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     CDefPointer<CPlayerMovementDef>  PPlayerMovementDef;
     float GetMaxTurnSpeed();
 };

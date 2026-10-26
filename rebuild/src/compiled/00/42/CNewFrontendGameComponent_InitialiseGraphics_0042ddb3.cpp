@@ -12,16 +12,16 @@
 //   ~CCharString 0x0099EAE0, the graphic bank manager's CreateAndInitialize 0x009F83D0 (manager 0x013B837C),
 //   CCountedPointer<CGraphicDataBank>::operator= 0x004194BA / dtor 0x00419108.
 // Layout: Ego_r.pdb CNewFrontendGameComponent: m_pMenuFont +0x10, m_pFrontEndGraphicBank +0x40; CGraphicDataBankInit (0x2c).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long Format;
     void Initialise(long d3dFormat);               // 0x009E3830
 };
-struct CGraphicDataBankInit {                      // 0x2c bytes
+class CGraphicDataBankInit { public:                      // 0x2c bytes
     CPixelFormat  NonAlphaFormat;                  // +0x00
     CPixelFormat  AlphaFormat;                     // +0x04
     CPixelFormat  InterpolatedAlphaFormat;         // +0x08
@@ -37,7 +37,7 @@ struct CGraphicDataBankInit {                      // 0x2c bytes
     bool          AllowDXT1ForBooleanAlpha;        // +0x2a
     CGraphicDataBankInit();                        // 0x00415B80
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool GetBestCompressedNonAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);       // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);          // 0x009BE870
     bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long bitDepth, CPixelFormat* out);   // 0x009BE8B0
@@ -45,14 +45,14 @@ struct CDisplayManager {
     bool GetBestOpaqueTextureFormat(unsigned long bitDepth, CPixelFormat* out, bool flag);        // 0x009BE610
     bool GetBestSignedTextureFormat(unsigned long bitDepth, CPixelFormat* out);                   // 0x009BE590
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;               // +0x60
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 struct CFont;
-struct CGraphicDataBank;
+class CGraphicDataBank;
 template <class T> class CCountedPointer_0042fe34 {
 public:
     T*    m_pObject;
@@ -60,7 +60,7 @@ public:
     CCountedPointer_0042fe34<T>& operator=(const CCountedPointer_0042fe34<T>& other);   // 0x0042FE34 (CFont) / 0x004194BA (CGraphicDataBank)
     ~CCountedPointer_0042fe34();                            // 0x004057A0 (CFont) / 0x00419108 (CGraphicDataBank)
 };
-struct CFontBank {
+class CFontBank { public:
     CCountedPointer_0042fe34<CFont> GetFont(const CCharString& name);   // 0x009E2C80
 };
 struct CGraphicDataBankManager {
@@ -70,7 +70,7 @@ extern CFontBank* g_pFontBank;                     // 0x013B838C
 extern CGraphicDataBankManager* g_pGraphicDataBankManager;   // 0x013B837C
 extern CCharString g_FrontEndMenuFontName;         // 0x013B875C
 
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char                     _pad00[0x10];
     CCountedPointer_0042fe34<CFont>            m_pMenuFont;              // +0x10
     unsigned char                     _pad18[0x40 - 0x18];

@@ -6,8 +6,8 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_frees = 0; static void* g_lastFreed = 0;
 static void myfree(void* p) { ++g_frees; g_lastFreed = p; free(p); }
-struct CTCBase { };
-struct CThing;
+class CTCBase { public: };
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     }
 };
 static long g_removed[16]; static CThing* g_removedThing[16]; static int g_removeCount = 0;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -40,7 +40,7 @@ struct CThing {
     }
     void RemoveTC(long interfaceType) { g_removed[g_removeCount] = interfaceType; g_removedThing[g_removeCount++] = this; }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
@@ -72,7 +72,7 @@ struct CThingFilter_NearCreature {
     CThingFilter_NearCreature(CThingCreatureBase* creature) : PCreature(creature) { }
 };
 static CThing* g_found[4]; static int g_foundCount = 0; static CThingCreatureBase* g_filterCreature = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class F> void GetAllThings(const F& filter, vector<CThing*>& things)
     {
         g_filterCreature = filter.PCreature;
@@ -84,7 +84,7 @@ struct CThingSearchTools {
         }
     }
 };
-struct CWorld { unsigned char _pad00[0x20]; CThingSearchTools* ThingSearchTools; };
+class CWorld { public: unsigned char _pad00[0x20]; CThingSearchTools* ThingSearchTools; };
 static CWorld g_world; static CThingSearchTools g_tools;
 struct CModeJackOfBladesFlash {
     unsigned char           _pad00[0x68];

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     int a, b, c, d, e, f, g;
 };
 

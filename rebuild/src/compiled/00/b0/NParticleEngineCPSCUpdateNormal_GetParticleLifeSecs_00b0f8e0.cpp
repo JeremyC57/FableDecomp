@@ -12,7 +12,7 @@
 extern const float Zero_0122dedc;   // 0x0122DEDC retail 0.0f constant
 
 namespace NParticleEngine {
-struct CPSCUpdateNormal {
+class CPSCUpdateNormal { public:
     void* _vtable;                          // +0x00
     unsigned char _base04[0x08];            // +0x04 CPSCBase members
     unsigned long FadeInEndInteger : 10;    // +0x0c

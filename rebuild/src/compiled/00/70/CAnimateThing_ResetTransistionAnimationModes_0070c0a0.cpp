@@ -22,7 +22,7 @@ struct CDelayedAnimation {                      // 12 bytes
     long m_value8;
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char CurrentAnim[0x50];            // +0x00 CCompleteAnimation (retail size)
     CRetailList<CDelayedAnimation> DelayedAnimQueue;    // +0x50 (head at +0x54)
     void ResetTransistionAnimationModes(EAnimUpdateMode from, EAnimUpdateMode to);

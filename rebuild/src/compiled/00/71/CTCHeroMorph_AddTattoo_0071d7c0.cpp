@@ -19,19 +19,19 @@
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct __true_type { __true_type() { } };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CTattooDef : CDefPointeeBase {
+class CTattooDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3c - 0x08];
     bool  RemovesAllTattoos;                            // +0x3c
     bool  Permanent;                                    // +0x3d
@@ -40,7 +40,7 @@ struct CTattooDef : CDefPointeeBase {
     float VisibilityMultiplier;                         // +0x44
     long  SpecificCoversBodyAreaFlags;                  // +0x48
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CTattooDef>* out) const;   // 0x005B1EFC
 };
 typedef CDefPointer<const CThingBaseDef> CThingDefPointer;
@@ -115,7 +115,7 @@ public:
     unsigned char _pad00[0x70];
     CThingDefPointer PDef;                              // +0x70
 };
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();             // 0x0049D870
 };
 class CTCBase {

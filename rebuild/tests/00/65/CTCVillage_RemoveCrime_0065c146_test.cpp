@@ -5,7 +5,7 @@
 #include <map>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     std::set<long> Deeds;
     std::map<long, std::vector<long> > Witnesses;   // deed -> witness deeds still chained to it
     std::vector<long> Log;                          // +h RemoveDeed, -h RemoveDeedStillSearchingForWitnesses
@@ -14,9 +14,9 @@ struct CTCHeroOpinionDeedLog {
     void RemoveDeedStillSearchingForWitnesses(long h) { Log.push_back(-h); }
     void RemoveDeed(long h) { Deeds.erase(h); Log.push_back(h); }
 };
-struct CThing { CTCHeroOpinionDeedLog* Log; };
+class CThing { public: CTCHeroOpinionDeedLog* Log; };
 static CThing* g_hero;
-struct CTCVillage {
+class CTCVillage { public:
     std::set<long> PlayersCrimes;
     bool IsEnemyBecauseOfCrime;
     void RemoveCrime(long deedHandle);

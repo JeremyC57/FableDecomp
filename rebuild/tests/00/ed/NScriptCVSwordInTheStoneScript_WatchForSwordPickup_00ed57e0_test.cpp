@@ -6,7 +6,7 @@
 #define __declspec(x)
 #endif
 static int g_termCalls = 0, g_termAt = 0, g_waits = 0, g_yields = 0, g_cutscenes = 0; static float g_waitSeconds = 0;
-struct CGameScriptInterface { virtual void v000() { } virtual void YieldFrame() { ++g_yields; } virtual void Wait(float seconds) { ++g_waits; g_waitSeconds = seconds; } };
+class CGameScriptInterface { public: virtual void v000() { } virtual void YieldFrame() { ++g_yields; } virtual void Wait(float seconds) { ++g_waits; g_waitSeconds = seconds; } };
 struct CV_SwordInTheStoneScript {
     virtual void v00() { }
     unsigned char _pad04[0x3c]; CGameScriptInterface* m_pInterface; unsigned char _pad44[8]; unsigned char m_crowdGathered;

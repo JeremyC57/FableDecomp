@@ -2,12 +2,12 @@
 struct IDirect3DDevice9 { int x; };
 static IDirect3DDevice9* g_init = 0; static int g_sys = 0;
 struct CRenderManagerCore { void Init(IDirect3DDevice9* d) { g_init = d; } };
-struct CSystemManager { void OnDisplayDeviceReset() { ++g_sys; } };
-struct CDeviceResetCallback { virtual void v00() { } virtual bool OnDeviceReset() = 0; };
+class CSystemManager { public: void OnDisplayDeviceReset() { ++g_sys; } };
+class CDeviceResetCallback { public: virtual void v00() { } virtual bool OnDeviceReset() = 0; };
 struct CYes : CDeviceResetCallback { int n; CYes() : n(0) { } bool OnDeviceReset() { ++n; return true; } };
 struct CNo : CDeviceResetCallback { bool OnDeviceReset() { return false; } };
 struct CRetailCallbackList { struct node { node* next; node* prev; CDeviceResetCallback* value; }; node* head; };
-struct CDisplayManager {
+class CDisplayManager { public:
     void* __vftable; CSystemManager* SystemManager; CRenderManagerCore* PRenderManager; unsigned char _pad00c[0x58 - 0x0c]; IDirect3DDevice9* D3DDevice;
     unsigned char _pad05c[0x1b0 - 0x5c]; bool UsingRenderManager; unsigned char _pad1b1[0x264 - 0x1b1]; CRetailCallbackList DeviceResetCallbacks;
     bool PostDeviceReset() {

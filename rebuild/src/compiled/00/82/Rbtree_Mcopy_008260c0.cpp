@@ -11,11 +11,11 @@
 //   the one in the loop by itself. The pair's memberwise copy moves the key and the Position (C3DVector's memberwise
 //   user copy ctor: direct [ecx+N] stores) and copies the trivially copyable FacingAngles through its own address
 //   (`lea ; add ecx,14h`).
-struct C3DVector {                                          // user memberwise copy constructor
+class C3DVector { public:                                          // user memberwise copy constructor
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C3DAngles {                                          // trivially copyable
+class C3DAngles { public:                                          // trivially copyable
     float X, Y, Z;
 };
 struct CThingPosAndOrientation {                            // CScriptedMapBrush::CThingPosAndOrientation, 24 bytes

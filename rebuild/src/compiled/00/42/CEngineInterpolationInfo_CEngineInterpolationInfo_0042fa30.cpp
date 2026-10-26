@@ -10,7 +10,7 @@ struct CInterpolationInfoSet {                     // PDB, 8 bytes
     float WFInterpolate;
 };
 
-struct CInterpolationInfo {                        // PDB, 52 bytes
+class CInterpolationInfo { public:                        // PDB, 52 bytes
     CInterpolationInfoSet Current;                 // +0x00
     CInterpolationInfoSet Last;                    // +0x08
     CInterpolationInfoSet PausedCurrent;           // +0x10
@@ -33,7 +33,7 @@ struct CEngineInterpolationInfoSet {               // PDB, 12 bytes
     }
 };
 
-struct CEngineInterpolationInfo {                  // PDB, 112 bytes
+class CEngineInterpolationInfo { public:                  // PDB, 112 bytes
     CEngineInterpolationInfoSet Current;           // +0x00
     CEngineInterpolationInfoSet Last;              // +0x0c
     CEngineInterpolationInfoSet PausedCurrent;     // +0x18

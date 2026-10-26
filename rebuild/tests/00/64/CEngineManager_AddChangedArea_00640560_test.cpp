@@ -3,7 +3,7 @@
 #include <cstring>
 // Behaviour test: CEngineManager::AddChangedArea -- STLport push_back of a C2DBoxI: in place while capacity remains, else
 // _M_insert_overflow grows to max(2*size, size+1) and copies the old boxes and the new one.
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 struct BoxVector {
     C2DBoxI* _M_start; C2DBoxI* _M_finish; C2DBoxI* _M_end_of_storage;
     void _M_insert_overflow(C2DBoxI* pos, const C2DBoxI& x, unsigned int n, bool atend)
@@ -27,7 +27,7 @@ struct BoxVector {
         else _M_insert_overflow(_M_finish, x, 1, true);
     }
 };
-struct CEngineManager {
+class CEngineManager { public:
     void* Engines;
     BoxVector ChangedAreas;
     void AddChangedArea(const C2DBoxI& area) { ChangedAreas.push_back(area); }

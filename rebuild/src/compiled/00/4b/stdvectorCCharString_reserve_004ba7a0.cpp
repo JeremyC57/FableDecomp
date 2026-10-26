@@ -11,7 +11,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 private:
     CCharStringData* m_pData;

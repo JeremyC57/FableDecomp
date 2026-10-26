@@ -2,13 +2,13 @@
 #include <cstring>
 
 static int g_events, g_lastType, g_lastLen; static unsigned char g_lastData[32];
-struct CInputEvent {
+class CInputEvent { public:
     int device, key, released, action; float x, y;
     long GetDeviceType() const { return device; }
     long GetKey() const { return key; }
 };
-struct C2DVector { float X, Y; };
-struct CGameEvent {
+class C2DVector { public: float X, Y; };
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void Copy(unsigned long length, const void* data) { std::memcpy(Data + EndPos, data, length); EndPos = (unsigned char)(EndPos + length); }
@@ -16,12 +16,12 @@ struct CGameEvent {
     void AddFloat(float value) { Copy(sizeof(value), &value); }
     void AddLong(long value) { int v = (int)value; Copy(4, &v); }
 };
-struct CProcessedInput {
+class CProcessedInput { public:
     void AddGameEvent(const CGameEvent& e) { ++g_events; g_lastType = e.Type; g_lastLen = e.EndPos; std::memcpy(g_lastData, e.Data, 32); }
 };
-struct CThing { unsigned long long UniqueID; bool Dead; };
-struct CPlayer { CThing* creature; CThing* GetControlledCreature() const { return creature; } };
-struct CInputProcessStrafe {
+class CThing { public: unsigned long long UniqueID; bool Dead; };
+class CPlayer { public: CThing* creature; CThing* GetControlledCreature() const { return creature; } };
+class CInputProcessStrafe { public:
     CPlayer* MyPlayer;
     bool IsEventButtonReleased(const CInputEvent& e) { return e.released != 0; }
     bool GetEventGameActionVector(long action, const CInputEvent& e, C2DVector* v)

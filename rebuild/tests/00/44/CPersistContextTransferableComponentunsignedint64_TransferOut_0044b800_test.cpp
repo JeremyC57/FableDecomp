@@ -9,11 +9,11 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0044b800: the 64-bit value is formatted by the CCharString(unsigned __int64) constructor, appended and destroyed.
-struct CPersistContext;
+class CPersistContext;
 static UInt64 g_formatted = 0;
 static int g_appended = 0;
 static int g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     long m_tag;
     CCharString() : m_tag(0) {}
     explicit CCharString(UInt64 value) : m_tag(3) { g_formatted = value; }

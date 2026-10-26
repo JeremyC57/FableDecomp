@@ -1,7 +1,7 @@
 #include <cstdio>
 // behaviour test for the CThingCompare_BestForTargeting2 copy constructor (0x007F9730)
-struct CThing { int dummy; };
-struct CVectorCompare_BestForTargeting {
+class CThing { public: int dummy; };
+class CVectorCompare_BestForTargeting { public:
     long AnchorPos[3];
     long PreferredLine[3];
     long AngleCompare;
@@ -10,7 +10,7 @@ struct CVectorCompare_BestForTargeting {
     long OverrideShortDistanceFalloff;
     bool CompareInXYPlane;
 };
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;
     CVectorCompare_BestForTargeting VectorCompare;
     long EnemyPreferenceFactor;

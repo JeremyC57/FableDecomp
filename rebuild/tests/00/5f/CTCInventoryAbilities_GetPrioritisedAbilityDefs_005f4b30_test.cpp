@@ -20,7 +20,7 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsChild();                                  // 0x00661F70
 };
 struct CRefCountedBase {
@@ -36,8 +36,8 @@ struct CRefCountedBase {
             Destroy();
     }
 };
-struct CHeroAbilityDef : CRefCountedBase {};
-template<class T> struct CDefPointer {
+class CHeroAbilityDef : public CRefCountedBase { public:};
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other);
@@ -83,7 +83,7 @@ struct CAbilityOrderVector {                         // vector<EHeroAbility>
     EHeroAbility& operator[](unsigned long n) { return *(_M_start + n); }
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void* __vftable;
     CThingCreatureBase* ParentThing;                 // +0x04
     unsigned char _pad_0x008[0x154 - 0x008];

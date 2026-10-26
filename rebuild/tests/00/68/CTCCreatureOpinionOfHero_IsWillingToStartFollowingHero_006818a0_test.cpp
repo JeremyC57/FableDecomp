@@ -3,16 +3,16 @@
 // negative and >15 values (the retail byte index table).
 #include <stdio.h>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 
 static long g_attitude = 0;
 static const CThing* g_askedFor = 0;
 
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     long GetThingAttitudeToPlayer(const CThing* thing) const { g_askedFor = thing; return g_attitude; }
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;
 };
@@ -20,7 +20,7 @@ struct CWorld {
 static COpinionReactionManager g_manager;
 static CWorld g_world;
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void* __vftable;
     CThing* ParentThing;
     CWorld* GetWorld() const { return &g_world; }

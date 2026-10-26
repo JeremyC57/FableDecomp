@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* vftable;
     int destroyed;
 };

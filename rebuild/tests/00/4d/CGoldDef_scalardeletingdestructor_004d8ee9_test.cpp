@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CGoldDef
-{
+class CGoldDef
+{ public:
     void* vftable;
 };
 void* const g_CGoldDef_vftable = (void*)0x12345678;

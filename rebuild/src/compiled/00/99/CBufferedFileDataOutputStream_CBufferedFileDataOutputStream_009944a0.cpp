@@ -12,7 +12,7 @@
 // stored before the allocation call, the two zeros from one register, FileSize from the virtual
 // call and FilePos copied from it (one call, one register).
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
 };
@@ -22,13 +22,13 @@ struct CBase {
     CBase();                                    // 0x0099A2F0
 };
 
-struct CDataOutputStream : CBase {              // vtable 0x0129A6E0
+class CDataOutputStream : public CBase { public:              // vtable 0x0129A6E0
     CCharString m_name;                         // +0x04
     virtual void v00();
     CDataOutputStream() : CBase(), m_name("CBufferedFileDataOutputStream", -1) { }
 };
 
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

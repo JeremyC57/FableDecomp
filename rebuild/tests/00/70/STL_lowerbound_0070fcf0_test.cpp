@@ -1,11 +1,11 @@
 // Behaviour test for STLport __lower_bound over list<CAnimSet>::const_iterator by priority (0x0070FCF0).
 #include <cstdio>
 
-struct CAnimSet { long Priority; };
+class CAnimSet { public: long Priority; };
 struct Node { Node* next; Node* prev; CAnimSet data; };
 struct It { Node* node; const CAnimSet& operator*() const { return node->data; } };
 
-struct CAnimSetItPriorityLessThan {
+class CAnimSetItPriorityLessThan { public:
     bool operator()(const It& a, const It& b) const { return (*a).Priority < (*b).Priority; }
 };
 

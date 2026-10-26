@@ -4,7 +4,7 @@
 
 static int gDeleted = 0;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int) { }
     virtual void Delete() { ++gDeleted; }
     unsigned long IVRefCount;

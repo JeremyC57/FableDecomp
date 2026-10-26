@@ -63,7 +63,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CPerItemData;
 
 #pragma pack(push, 1)

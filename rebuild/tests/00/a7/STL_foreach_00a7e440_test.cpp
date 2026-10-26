@@ -2,8 +2,8 @@
 // (position - MapPos, layer) with size 12 and async false; the returned functor keeps the file and origin.
 #include <cstdio>
 #include <cstring>
-struct C2DVector { float X, Y; };
-struct CNavigationPosition { C2DVector Position; int Layer; };
+class C2DVector { public: float X, Y; };
+class CNavigationPosition { public: C2DVector Position; int Layer; };
 class CFile {
 public:
     unsigned char buffer[64]; unsigned int used; int calls; bool lastAsync;

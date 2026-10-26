@@ -8,7 +8,7 @@
 // Layout: retail CModeScorpionKingExhausted (the landed Recover / ctor 0x008D82B0): RecoveryCount +0x68 (Ego_r.pdb +0x68).
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC<T>(k);` (the `xor ecx,ecx` preload); a non-zero count is decremented and the
 //   function returns (if/else), so the recover test sits in the else arm with its own epilogue.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -35,7 +35,7 @@ struct CThing {
     }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08
@@ -43,7 +43,7 @@ struct CAnimateThing {
     unsigned char CurrentAnimType;         // +0x50
     unsigned char CurrentAnimFlags;        // +0x51
 };
-struct CTCAnimationComplex {               // interface type 0x5a
+class CTCAnimationComplex { public:               // interface type 0x5a
     CAnimateThing& GetAnimation();         // 0x0070B460
 };
 

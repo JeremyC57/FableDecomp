@@ -7,12 +7,12 @@
 // popped at the end); each new component is `x * XAxis + y * YAxis + z * ZAxis` of the matrix's column, the copied
 // component on the LEFT (the matrix-first form gives `fld st(n) ; fmul [m]` for the y and x products; VC7.1
 // emits the z product first, as in 0x00A35F80) stored straight into this vector.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
     void Rotate(const C3DVector& axis, float angle);
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4(const C3DVector& axis, float angle);      // 0x00A55F90
 };

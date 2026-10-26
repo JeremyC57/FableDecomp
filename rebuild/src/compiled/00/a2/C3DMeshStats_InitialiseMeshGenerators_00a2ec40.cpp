@@ -17,16 +17,16 @@
 // MeshGenerators.erase(it)` with the SGI vector erase inlined: copy [it+1, last) down to it when there is
 // a tail, step `last` back one element and destroy the vacated element (its CCharString). The copy's
 // iterator-tag temporary is built in the dead first argument's home slot and the distance-type pointer is null.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned long GetObjectIndex(const CCharString& name);   // 0x009CCDC0
 };
 
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     unsigned char m_transform[0x34];       // +0x00: generator placement (trivially copied)
     CCharString   ObjectName;              // +0x34
     unsigned long BankIndex;               // +0x38
@@ -55,7 +55,7 @@ struct CGeneratorArray {                   // retail CArray<C3DGeneratorObject>:
     }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x68 - 0x04];
     CGeneratorArray MeshGenerators;        // +0x68

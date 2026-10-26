@@ -34,18 +34,18 @@ struct pair {
 };
 }
 template <class K, class V>
-struct CKeyPairCompareLess {
+class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 template <class K, class V, class Compare>
-struct CVectorMap {                             // retail 16 bytes
+class CVectorMap { public:                             // retail 16 bytes
     std::vector<std::pair<K, V> > Data;         // +0x00
     Compare                       Comparator;   // +0x0C (empty)
     bool                          Dirty;        // +0x0D
 };
 
-struct CResourceList;
-struct CResource {                              // 28 bytes
+class CResourceList;
+class CResource { public:                              // 28 bytes
     virtual void v00();
     long           m_refCount;                  // +0x04
     CResourceList* ResourceList;                // +0x08
@@ -54,29 +54,29 @@ struct CResource {                              // 28 bytes
     unsigned long  ResourceSize;                // +0x14
     unsigned long  LastUsedFrame;               // +0x18
 };
-struct CDefinitionManager;
-struct CDefString {                             // one word (Ego_r.pdb: TablePos)
+class CDefinitionManager;
+class CDefString { public:                             // one word (Ego_r.pdb: TablePos)
     long TablePos;                              // +0x00
 };
 #pragma pack(push, 1)
-struct CDefPointeeBase : CResource {
+class CDefPointeeBase : public CResource { public:
 };
-struct CDefClassBase : CDefPointeeBase {        // 0x25 bytes
-    struct CSubDefInfo { long m_0; long m_4; };
+class CDefClassBase : public CDefPointeeBase { public:        // 0x25 bytes
+    class CSubDefInfo { public: long m_0; long m_4; };
     CDefinitionManager* PDefManager;            // +0x1C
     unsigned long       GlobalIndex;            // +0x20
     unsigned char       Setup : 1;              // +0x24 bit 0
     unsigned char       Template : 1;           // +0x24 bit 1
     unsigned char       DefaultValsApplied : 1; // +0x24 bit 2
 };
-struct CParentDefClassBase : CDefClassBase {    // 0x39 bytes in retail
+class CParentDefClassBase : public CDefClassBase { public:    // 0x39 bytes in retail
     CDefString InstantiationName;               // +0x25
     CVectorMap<unsigned long, CDefClassBase::CSubDefInfo,
                CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo> > SubDefInfoMap;   // +0x29
 };
 #pragma pack(pop)
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE };
-struct CBlurredAttitudesDef : CParentDefClassBase {   // 0x48 bytes
+class CBlurredAttitudesDef : public CParentDefClassBase { public:   // 0x48 bytes
     std::vector<EOpinionAttitudeType> Attitudes; // +0x3C
 };
 

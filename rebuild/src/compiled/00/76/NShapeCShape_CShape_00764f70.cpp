@@ -9,7 +9,7 @@ extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 struct CRetailVector_pod { void* m_pFirst; void* m_pLast; void* m_pEnd; ~CRetailVector_pod() { if (m_pFirst) free(m_pFirst); } };   // VC6 vector of PODs: the destructor frees the block
 
 namespace NShape {
-struct CShape {                                    // vtable 0x0126A208
+class CShape { public:                                    // vtable 0x0126A208
     virtual void v00();
     long             m_id;                         // +0x04
     CRetailVector_pod m_points;                    // +0x08

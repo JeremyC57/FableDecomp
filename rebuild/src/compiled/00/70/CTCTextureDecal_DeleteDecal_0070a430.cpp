@@ -37,11 +37,11 @@ struct CRetailList_DecalEntry {         // STLport list<CEntry>: the sentinel po
     }
 };
 
-struct CThing {
+class CThing { public:
     void ForwardToGraphicAppearance(long request);  // 0x004C7590
 };
 
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     void* __vftable;                    // +0x00
     CThing* m_pParentThing;             // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];

@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <new>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (*DeleteFunc)(void*);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }

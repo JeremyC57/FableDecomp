@@ -10,7 +10,7 @@
 // camera state with LookAt +0x10, Position +0x54 and the FOV at +0x84.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator+(const C3DVector& other) const

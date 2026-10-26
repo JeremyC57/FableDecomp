@@ -1,9 +1,9 @@
 #pragma optimize("s",on)
-struct CPersistContext {                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
+class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     void TransferLong(int* value);                  // 0x00431102 Transfer(long&)
     void TransferFloat(int* value);                 // 0x00431061 Transfer(float&)
 };
-struct CCameraManagerSetDef {
+class CCameraManagerSetDef { public:
   char pad0[0x3c];
   int f3c;
   int CameraManagerMain;

@@ -7,23 +7,23 @@ static int g_termAt = 1000;
 static void (*g_hook)(int frame) = 0;
 static void Log(const std::string& s) { char b[16]; std::sprintf(b, "@%d", g_frame); g_log += s; g_log += b; g_log += ";"; }
 static void Reset(int termAt) { g_log = ""; g_frame = 0; g_termAt = termAt; g_hook = 0; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() { }
     CScriptThing(const std::string& name) : Name(name) { }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return g_frame >= g_termAt; }
 };
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log.c_str()); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CV_HauntedHouseScript::CheckRegionLeaving disables the house's creature generators each pass, makes
 // the cellar door unusable while the house is loaded and drops the undead counter when the hero leaves
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; }
     bool IsRegionLoaded(const CCharString& name)            // loaded on frames 2-3 and 6-7
     { return name.S == "HauntedHouse" && ((g_frame >= 2 && g_frame <= 3) || (g_frame >= 6 && g_frame <= 7)); }

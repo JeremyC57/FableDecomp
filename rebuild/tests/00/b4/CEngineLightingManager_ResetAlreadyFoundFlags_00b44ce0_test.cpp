@@ -1,8 +1,8 @@
 // Behaviour test for CEngineLightingManager::ResetAlreadyFoundFlags @ 0x00B44CE0.
 #include <cstdio>
-struct CEngineLocalLightElement { bool m_alreadyFound; };
+class CEngineLocalLightElement { public: bool m_alreadyFound; };
 struct CLocalLightElementLink { void* u; CEngineLocalLightElement* m_pElement; CLocalLightElementLink* m_pNext; };
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     CLocalLightElementLink* m_lightLookupGrid[16][16];
     void ResetAlreadyFoundFlags(long minX, long minY, long maxX, long maxY)
     {

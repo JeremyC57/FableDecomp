@@ -11,7 +11,7 @@
 // Shape: the record's implicit copy assignment is memberwise (CCharString declares operator=): the three assignment
 // calls with the source member addresses hoisted out of the loop (edi, `lea ebx,[edi+4]`, `lea ebp,[edi+8]`), then
 // the two bytes; `last` is re-read from the frame word for the loop test.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

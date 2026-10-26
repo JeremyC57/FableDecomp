@@ -4,28 +4,28 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_rotate = 0; static float g_rotAngle = 0; static float g_axisX = 0;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
     C3DVector& operator=(const C3DVector& other) { X = other.X; Y = other.Y; Z = other.Z; return *this; }
     void Rotate(const C3DVector& axis, float angle) { ++g_rotate; g_rotAngle = angle; g_axisX = axis.X; X += 100.0f; }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;          // +0x00
     C3DVector Forward;     // +0x0c
 };
 static int g_setFacing = 0; static CRightHandedSet g_facing;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& rhSet) { ++g_setFacing; g_facing = rhSet; }
 };
 static int g_removeTC = 0; static long g_removeType = 0;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;
     void RemoveTC(long interfaceType) { ++g_removeTC; g_removeType = interfaceType; }
 };
-struct CTCWobble {
+class CTCWobble { public:
     virtual void v00() { }
     CThing*         ParentThing;
     unsigned char   _pad_0x08[4];

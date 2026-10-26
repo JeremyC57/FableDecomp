@@ -15,7 +15,7 @@
 //   member chain moves the load to eax or below the pushes); HasTC is a forced-inline `unsigned long` mask test (`test ch,1`); the component is the one-ternary entry pick over a template constant key
 //   loaded straight into ecx; the blend is a named float read first, then `lookAt += (aim - lookAt) * blend` through inline C3DVector operators; the two
 //   positions are stored through the implicit operator= (`lea ecx,[esi+54h]` copy, then `add esi,10h`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,10 +25,10 @@ struct C3DVector {
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
 };
 
-struct CThing;
-struct CWorld;
+class CThing;
+class CWorld;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -49,7 +49,7 @@ struct CInterfaceMap {                                  // CVectorMap<long, CTCB
     const SInterfaceEntry* end() const { return _M_finish; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long TCFlags;                              // +0x20
     unsigned char _pad24[0x20];
@@ -76,7 +76,7 @@ namespace NTargeting {
 C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float height);   // 0x007EA2F0
 }
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad[0x68];
     float ZTargetLookAtTargetOffset;                    // +0x68 (Ego_r.pdb +0x6C; retail defs sit 4 below)
 };

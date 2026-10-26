@@ -11,8 +11,8 @@
 //   member reuses `this` (`add edi,44h`). `this` is the engine header layout (CHighlightItemDef.h, Ego_r.pdb).
 #include "engine/CHighlightItemDef.h"
 
-struct CMemoryDataInputStream;
-struct CDataOutputStream {
+class CMemoryDataInputStream;
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
@@ -33,7 +33,7 @@ template<> struct CPersistTraits<float> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, float* value);  // 0x0040EFB0
     static void TransferBinaryOut(CDataOutputStream* stream, const float& value) { stream->WriteFloat(value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];

@@ -13,7 +13,7 @@
 // +0x24, retail reads it at +0x20 (the header's reconciliation conflict), so the class is modelled here.
 #include <string.h>
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     void ClipTo(const C2DBoxI& box);                         // 0x0049C810
 };
@@ -48,18 +48,18 @@ struct CULongVector {                                        // STLport vector<u
     void clear() { erase(begin(), end()); }
 };
 
-struct CMapInfo {                                            // 0x48 bytes
+class CMapInfo { public:                                            // 0x48 bytes
     C2DBoxI       Area;                                      // +0x00
     unsigned char _rest[0x38];                               // +0x10 .. +0x48
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                                // +0x00
     T* Finish;                                               // +0x04
     T* EndOfStorage;                                         // +0x08
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

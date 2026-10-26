@@ -9,11 +9,11 @@
 // Layout (retail): object type +4, first primitive +8 (linked through +4), enabled flag +0x14.
 // Shape: `if (fadeEnd > near)` is `test ah,41h ; jne` to the exit; the second compare result is a named bool homed in the dead
 //   `near` slot (`mov byte [esp+0Ch],1 ... mov byte [esp+0Ch],0`) and pushed as a dword in the loop.
-struct CEngineCamera;
-struct CLocalDetailObjectCollectionType {
+class CEngineCamera;
+class CLocalDetailObjectCollectionType { public:
     float PeekFadeEnd();                                    // 0x00BE2740
 };
-struct CLocalDetailPrimitiveBase {
+class CLocalDetailPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void RenderUpdate(const CEngineCamera& camera, bool insideFade, unsigned long frame,
                               CLocalDetailObjectCollectionType* type, float time);   // slot 4 (+0x10)
@@ -21,8 +21,8 @@ struct CLocalDetailPrimitiveBase {
     virtual bool IsActive();                                // slot 6 (+0x18)
     CLocalDetailPrimitiveBase* m_pNext;                     // +0x04
 };
-struct CLocalDetailCacheMap {
-    struct CObjectTypeCollection {
+class CLocalDetailCacheMap { public:
+    class CObjectTypeCollection { public:
         void*                             __vftable;        // +0x00
         CLocalDetailObjectCollectionType* m_pType;          // +0x04
         CLocalDetailPrimitiveBase*        m_pFirstPrimitive;// +0x08

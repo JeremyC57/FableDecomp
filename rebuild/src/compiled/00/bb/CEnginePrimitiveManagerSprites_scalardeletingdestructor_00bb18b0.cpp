@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerSprites {
+class CEnginePrimitiveManagerSprites { public:
     void* vftable;
 };
 

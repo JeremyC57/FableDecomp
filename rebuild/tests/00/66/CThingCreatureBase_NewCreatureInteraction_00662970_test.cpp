@@ -1,7 +1,7 @@
 // Behaviour test for CThingCreatureBase::NewCreatureInteraction (0x00662970)
 #include <cstdio>
-struct CThingCreatureBase;
-struct CCreatureInteraction {
+class CThingCreatureBase;
+class CCreatureInteraction { public:
     CThingCreatureBase* m_a; CThingCreatureBase* m_b;
     CCreatureInteraction(int type, CThingCreatureBase& first) : m_a((CThingCreatureBase*)(long)type), m_b(&first) {}
 };
@@ -10,7 +10,7 @@ struct CInteractionPointer {
     CCreatureInteraction* m_pObject;
     void Reset(CCreatureInteraction* object) { delete m_pObject; m_pObject = object; ++g_resets; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CInteractionPointer m_creatureInteraction;
     void NewCreatureInteraction(int type)
     {

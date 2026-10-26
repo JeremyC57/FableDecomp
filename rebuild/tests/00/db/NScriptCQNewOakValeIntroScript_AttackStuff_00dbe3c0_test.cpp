@@ -13,7 +13,7 @@ public:
 };
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     float hour, themeTime; unsigned long delay;
     virtual void ActivateQuest(const CCharString& q) { Log("act"); Log(q.PStringData); }
     virtual void DeactivateQuest(const CCharString& q, unsigned long d) { Log("deact"); Log(q.PStringData); delay = d; }

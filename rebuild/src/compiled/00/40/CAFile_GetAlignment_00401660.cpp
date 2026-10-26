@@ -6,7 +6,7 @@
 // 1. The bank-file streaming code multiplies its read sizes up to this value.
 //
 // Matching: `this` is unused, body is `mov eax,1; ret`.
-struct CAFile;
+class CAFile;
 long __fastcall CAFile_GetAlignment(const CAFile* file)
 {
     (void)file;

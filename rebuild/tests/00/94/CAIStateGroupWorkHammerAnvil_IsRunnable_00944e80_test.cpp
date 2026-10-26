@@ -1,8 +1,8 @@
 // Behaviour test for CAIStateGroup_WorkHammerAnvil::IsRunnable (0x00944E80): same logic over mocks.
 #include <cstdio>
 #include <list>
-struct C3DVector { float x, y, z; };
-struct CThing {
+class C3DVector { public: float x, y, z; };
+class CThing { public:
     bool dead; unsigned char thingClass; unsigned int props; bool hasActionPoint; bool apFree; C3DVector pos;
 };
 static CThing MakeThing(float x, float y, float z)

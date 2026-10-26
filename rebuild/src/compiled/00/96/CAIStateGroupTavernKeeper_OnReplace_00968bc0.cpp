@@ -13,16 +13,16 @@
 //   CTCTavernJug as the landed ReplaceJug (pack 1, OnBar +0x10, RHSet +0x11, Pos +0x29); the bar point's user +0x18.
 // Shape: RemoveMode(0x2b) belongs to the carrying-jug branch (the retail not-carrying `je` skips it); the ternary
 //   GetInterface form puts the 0x47 component straight into ecx.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -49,34 +49,34 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CThingCreatureBase;
-struct CTCTavernBar {                           // interface 0xb9
+class CThingCreatureBase;
+class CTCTavernBar { public:                           // interface 0xb9
     bool GetRandomBarSlot(CThing& creature, C3DVector& position, CRightHandedSet& orientation, long& actionPoint, long& slot);  // 0x007BA3C0
     bool HasEmptyJugSlot(CThing* creature);     // 0x007BA8C0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x14];
     CCharString LoopAnimName;                   // +0xbc
     CCharString OutOfAnimName;                  // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
         const CCharString& loop, const CCharString& outOf, float loopTime, bool b, long c, long d);   // 0x008427E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -92,14 +92,14 @@ struct CAIStateGroupBase {
     void SetPushableByHero(bool pushable);      // 0x0097E330
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
-struct CTCTavernGame {                          // interface 0x47 on the jug
+class CTCTavernGame { public:                          // interface 0x47 on the jug
     long GetItemID();                           // 0x00705D00 (manifest "CTCTavernGame::GetBanter" is propagated)
 };
-struct CTCCarrying {                            // interface 0x46 on the creature
+class CTCCarrying { public:                            // interface 0x46 on the creature
     CThing* FindThingByID(long id);             // 0x006A11F0
     CThing* RemoveThingInCarrySlot(long id, bool b);   // 0x006A16A0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -125,7 +125,7 @@ struct CThingPhysicsOwner {
     CTCPhysicsBase* m_pPhysics;                 // +0x60
 };
 #pragma pack(push, 1)
-struct CTCTavernJug {                           // interface 0xbb on the jug
+class CTCTavernJug { public:                           // interface 0xbb on the jug
     void* __vftable;                            // +0x00
     CThingPhysicsOwner* m_pParentThing;         // +0x04
     unsigned char _pad_0x08[0x4];
@@ -152,7 +152,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vtable 0x012
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 struct CThingCreature : CThing {

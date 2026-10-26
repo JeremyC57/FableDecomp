@@ -13,8 +13,8 @@ public:
     ~CCharString() { g_dtor++; }
 };
 
-struct CScriptThing { int x; };
-struct CGameScriptInterface;
+class CScriptThing { public: int x; };
+class CGameScriptInterface;
 
 typedef void(__fastcall* DispatchFn)(const CGameScriptInterface*, int, const CScriptThing*, const CCharString*, bool);
 
@@ -24,8 +24,8 @@ struct VTableOverlay
     DispatchFn m_Unknown938;
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     const VTableOverlay* m_pVTable;
 };
 

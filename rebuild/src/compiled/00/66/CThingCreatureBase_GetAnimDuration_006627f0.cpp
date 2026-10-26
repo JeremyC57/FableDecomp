@@ -8,25 +8,25 @@
 // on `this` and sits among CThingCreatureBase methods (Ego_r.pdb has both overloads).
 // Shape: the bank pointer is a named local, so the world accessor runs before the index is pushed; the index stays in esi
 // from the null test; the float is returned straight from `fld [eax+10h]`.
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad[0x10];
     float Duration;                            // +0x10
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;              // +0x3c
 };
 
-struct CThing {
+class CThing { public:
     const CWorld& PeekWorld() const;           // 0x004C7AB0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetAnimDuration(long animIndex) const;
 };
 

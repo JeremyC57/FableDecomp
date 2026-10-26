@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString() { text[0] = 0; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
@@ -12,7 +12,7 @@ struct CCharString {
 static inline CCharString EmptyCCharString() { CCharString empty; return empty; }
 enum EHeroCentreDoorType { HERO_CENTRE_DOOR_NONE = 0 };
 static int g_enumTransfers = 0;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     float savedRadius; long savedDoor; const char* legacyName;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -20,7 +20,7 @@ struct CPersistContext {
     void Transfer(const char*, EHeroCentreDoorType& value, const EHeroCentreDoorType& def) { ++g_enumTransfers; if (IsSaving()) savedDoor = value; else value = savedDoor >= 0 ? (EHeroCentreDoorType)savedDoor : def; }
     void Transfer(const char*, CCharString& value, const CCharString& def) { if (legacyName) std::strcpy(value.text, legacyName); else value = def; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const { *value = std::strcmp(name.text, "DOOR_TRAINING") == 0 ? 3 : 1; return true; }
 };
 static CSymbolMap g_map;

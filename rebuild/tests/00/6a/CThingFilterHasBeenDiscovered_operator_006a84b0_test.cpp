@@ -62,7 +62,7 @@ public:
     static long StatGetInterfaceType() { return 0x40; }
     bool Discovered;
 };
-struct CThingFilter_HasBeenDiscovered {
+class CThingFilter_HasBeenDiscovered { public:
     bool operator()(const CThing& thing) const
     {
         const CTCDiscovery* discovery;

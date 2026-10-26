@@ -6,7 +6,7 @@
 // Shape: the size-optimised TU (odd address in the /Os region) forwards the argument with `push dword ptr [esp+8]` and
 // stores the float zero through the x87 (`fldz ; fstp`). PDB CTCShotDefinitionForcePushBall (172 bytes) puts
 // DistanceToPush at +0xa8; retail stores it at +0xa4 (the base is 4 bytes smaller in the shipped build).
-struct CThing;
+class CThing;
 
 struct CTCShotDefinitionProjectile {
     virtual void v00();

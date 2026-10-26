@@ -11,7 +11,7 @@
 //   shared dead frame word); the RemoveMode call is tail-duplicated after the second lookup.
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched. The
 //   interface-0x36 component is modelled only by the byte it clears (CTCSneaking is a descriptive name).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -43,11 +43,11 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();
     unsigned char _pad04[4];                // +0x04
@@ -57,7 +57,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
 
 struct CTCSneaking { unsigned char _pad[0xf]; unsigned char Active; };
 
-struct CCreatureAction_StopSneaking : CCreatureActionBase {
+class CCreatureAction_StopSneaking : public CCreatureActionBase { public:
     virtual void PerformAction();
 };
 

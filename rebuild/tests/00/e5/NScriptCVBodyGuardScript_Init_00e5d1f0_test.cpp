@@ -1,14 +1,14 @@
 // Behaviour test for CV_BodyGuardScript::Init (0x00E5D1F0).
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long m_timer, m_time;
     void SetTimer(long timer, long time) { m_timer = timer; m_time = time; }
 };
 CGameScriptInterface* g_pGameScriptInterface = 0;
 
 struct CScriptOwner { long m_value08; };
-struct CTimer { long TimerIndex; };
+class CTimer { public: long TimerIndex; };
 
 struct CV_BodyGuardScript {
     CScriptOwner* Owner;

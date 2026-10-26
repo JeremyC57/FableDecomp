@@ -11,7 +11,7 @@
 static int g_order = 0, g_free = 0, g_ptr = 0, g_str = 0, g_del = 0; static void* g_freed = 0; static void* g_deleted = 0;
 static void my_free(void* p) { g_free = ++g_order; g_freed = p; }
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pLink; ~CBaseIntelligentPointer() { g_ptr = ++g_order; } };
-struct CCharString { void* m_p; ~CCharString() { g_str = ++g_order; } };
+class CCharString { public: void* m_p; ~CCharString() { g_str = ++g_order; } };
 struct CNamedBufferOwner { long m_0; CCharString m_name; long m_8, m_c, m_10; CBaseIntelligentPointer m_pTarget; void* m_pBuffer;
     ~CNamedBufferOwner() { if (m_pBuffer) my_free(m_pBuffer); }
     static void operator delete(void* p) { g_del = ++g_order; g_deleted = p; } };

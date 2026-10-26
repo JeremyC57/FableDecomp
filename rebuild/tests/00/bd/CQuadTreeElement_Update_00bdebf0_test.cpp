@@ -2,31 +2,31 @@
 #include <cstring>
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     Position;                                 // +0x54
 };
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long typeMask, float distance) { return typeMask == 7 ? distance * 2 : distance; }
 };
 CEngineCamera* g_pEngineCamera;
 CEngineLocalDetailGenerator* g_pLocalDetailGenerator;
 static double g_timer = 0;
 double GFGetFastSubFrameTimer() { return g_timer; }
-struct CEngineStaticMapFileBlockManager;
+class CEngineStaticMapFileBlockManager;
 struct CObjectTypeCollectionPalette { int dummy; };
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectCacheGroupCollection {
     CObjectCacheGroupCollection* Next;                      // +0x04
     int updates; bool result;

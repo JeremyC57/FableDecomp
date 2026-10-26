@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct Handle {
     int busy; CScriptThing me;
     CScriptThing GetScriptThing() const { return me; }
@@ -12,7 +12,7 @@ struct Handle {
     bool IsPerformingScriptTask() { return busy-- > 0; }
 };
 struct Parent { long Hits; Handle seh_Brother; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     float health; CScriptThing hero;
     void NewScriptFrame() { Log("frame"); }
     CScriptThing& GetHero() { hero.id = 1; return hero; }

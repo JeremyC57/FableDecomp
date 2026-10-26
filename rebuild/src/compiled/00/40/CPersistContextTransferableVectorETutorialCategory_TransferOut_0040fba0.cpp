@@ -11,9 +11,9 @@
 // with the long traits' TransferOut an inline copy-and-forward (`T v = *value; TransferOutLong(.., &v);`): the
 // inline call's argument evaluation gives retail's index-before-first load order (a direct local in the caller
 // loads the vector's first pointer first).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 template <class T> struct CPersistTraits {

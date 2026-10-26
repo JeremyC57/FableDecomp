@@ -12,14 +12,14 @@
 // ctor (CBaseClass vtable 0x01231710, then CScriptThing 0x01238C8C) over an embedded CCountedPointer PImp
 // member with its own inline copy ctor -- copying Data/Info as two loose fields CSEs `&Thing` into edi and
 // reads [edi+4]/[edi+8] where retail reads [esi+0Ch]/[esi+10h].
-struct CBaseClass {                                  // vtable 0x01231710
+class CBaseClass { public:                                  // vtable 0x01231710
     virtual ~CBaseClass();
     CBaseClass() {}
 };
 
-struct CCPPointerInfo { long m_count; };
+class CCPPointerInfo { public: long m_count; };
 
-struct CGameScriptThing;
+class CGameScriptThing;
 struct CCountedPointer_GameScriptThing {             // CCountedPointer<CGameScriptThing>
     CGameScriptThing* Data;
     CCPPointerInfo*   Info;
@@ -30,13 +30,13 @@ struct CCountedPointer_GameScriptThing {             // CCountedPointer<CGameScr
     }
 };
 
-struct CScriptThing : CBaseClass {                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                   // vtable 0x01238C8C, 12 bytes
     CCountedPointer_GameScriptThing PImp;            // +0x04
     virtual ~CScriptThing();
     CScriptThing(const CScriptThing& o) : CBaseClass(), PImp(o.PImp) {}
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

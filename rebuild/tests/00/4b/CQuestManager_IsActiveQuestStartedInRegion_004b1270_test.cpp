@@ -3,17 +3,17 @@
 // definition reference is released after each compare.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
     bool operator!=(const char* t) const { return std::strcmp(Text, t) != 0; }
 };
-struct CDefString {
+class CDefString { public:
     const char* Name;
     bool operator==(const CCharString& n) const { return std::strcmp(Name, n.Text) == 0; }
 };
 static int g_releases;
-struct CQuestCardDef {
+class CQuestCardDef { public:
     long RefCount; CDefString TeleporterRegionName;
     void Release() { ++g_releases; }
     void AddRef() { ++RefCount; }
@@ -26,12 +26,12 @@ struct CQuestCardDefPointer {
     ~CQuestCardDefPointer() { if (Object) Object->DecRef(); }
 };
 static int g_compares;
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CQuestCardDefPointer PDef; bool Vignette;
     CTCQuestCard(CQuestCardDef* d, bool v) : PDef(d), Vignette(v) {}
     bool IsVignette() const { return Vignette; }
 };
-struct CThing {
+class CThing { public:
     CTCQuestCard* Card;
     bool HasTC(long type) const { return type == 0x6c && Card != 0; }
     CTCQuestCard* GetTC(long) const { return Card; }
@@ -39,7 +39,7 @@ struct CThing {
 static CTCQuestCard* GetQuestCard(CThing* thing) { CTCQuestCard* tc = 0; if (thing->HasTC(0x6c)) tc = thing->GetTC(0x6c); return tc; }
 struct CBaseIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
 struct CCardNode { CCardNode* _M_next; CCardNode* _M_prev; CBaseIntelligentPointer _M_data; };
-struct CQuestManager {
+class CQuestManager { public:
     CCardNode* ActiveQuestCards;
     bool IsActiveQuestStartedInRegion(const CCharString& regionName) const;
 };

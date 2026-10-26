@@ -65,34 +65,34 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -323,9 +323,9 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 
 #undef CWorld
 // Actual CWorld header retained; this method only carries its opaque pointer and constructor reference.
-struct CWorld;struct CMainGameComponent;
+class CWorld;class CMainGameComponent;
 struct StopTimeSet {void*Head;unsigned long Size;unsigned long Allocator;}; //native tree12 vs donor16
-struct CGameTimeManager {CGameTimeManager(CMainGameComponent&,CWorld&); // actual PDB006F7540
+class CGameTimeManager { public:CGameTimeManager(CMainGameComponent&,CWorld&); // actual PDB006F7540
  CWorld*World;CMainGameComponent*GameComponent;float Time,PrevTime,TimeStep;long DayCount;bool UsingVillageTime;float VillageTime;bool VillageDay,FastForwardingToTime;float TimeFastForwardingTo,SecondsLeftToFastForwardTime;StopTimeSet StopTimeIndexes;long NextStopTimeIndex;
  bool IsTimeBetween(float,float,float)const; //006BB5B0/PDB006F6E20
  void Update(float);
@@ -351,11 +351,11 @@ void CGameTimeManager::Update(float delta){
 #include <math.h>
 // Opaque constructor dependencies: no world/component/game member or virtual call is made here.
 // Every fixture boundary has the genuine constructor signature from PDB; no implicit engine defaults.
-struct CWorldInit {CWorldInit();}; CWorldInit::CWorldInit(){} //018A95A0
-struct CWorld {CWorld(const CWorldInit&);}; CWorld::CWorld(const CWorldInit&){} //004B0190
-struct CGame {CGame();}; CGame::CGame(){} //01879780
-struct CMainGameComponentInit {CMainGameComponentInit();}; CMainGameComponentInit::CMainGameComponentInit(){} //0040F7D0
-struct CMainGameComponent {CMainGameComponent(CGame&,const CMainGameComponentInit&);}; CMainGameComponent::CMainGameComponent(CGame&,const CMainGameComponentInit&){} //004172C9
+class CWorldInit { public:CWorldInit();}; CWorldInit::CWorldInit(){} //018A95A0
+class CWorld { public:CWorld(const CWorldInit&);}; CWorld::CWorld(const CWorldInit&){} //004B0190
+class CGame { public:CGame();}; CGame::CGame(){} //01879780
+class CMainGameComponentInit { public:CMainGameComponentInit();}; CMainGameComponentInit::CMainGameComponentInit(){} //0040F7D0
+class CMainGameComponent { public:CMainGameComponent(CGame&,const CMainGameComponentInit&);}; CMainGameComponent::CMainGameComponent(CGame&,const CMainGameComponentInit&){} //004172C9
 CGameTimeManager::CGameTimeManager(CMainGameComponent&g,CWorld&w):World(&w),GameComponent(&g),Time(0),PrevTime(0),TimeStep(1),DayCount(0),UsingVillageTime(false),VillageTime(0),VillageDay(false),FastForwardingToTime(false),TimeFastForwardingTo(0),SecondsLeftToFastForwardTime(0),NextStopTimeIndex(0){StopTimeIndexes.Head=0;StopTimeIndexes.Size=0;StopTimeIndexes.Allocator=0;}
 static int Queries;static float SeenTime,SeenBegin,SeenEnd;static bool Mutate;
 bool CGameTimeManager::IsTimeBetween(float t,float begin,float end)const{++Queries;SeenTime=t;SeenBegin=begin;SeenEnd=end;if(Mutate)const_cast<CGameTimeManager*>(this)->Time=0.5f;return begin<end?t>=begin&&t<end:t>=begin||t<end;}

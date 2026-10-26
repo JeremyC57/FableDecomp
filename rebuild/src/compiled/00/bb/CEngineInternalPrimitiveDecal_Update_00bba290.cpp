@@ -5,10 +5,10 @@
 // Shape: the struct members (WorldPos C3DVector, RHSet CRightHandedSet) copy through `lea` + edi, the C2DVector and colour word by
 // word; the Lit flag is bit 7 of the descriptor's Flags word read as an UNSIGNED SHORT bit field (`mov al,[eax+54h] ; shr al,7 ;
 // and al,1`): an unsigned char unit drops the `and`, an unsigned long unit loads the whole dword.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };   // 24 bytes
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };   // 24 bytes
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:

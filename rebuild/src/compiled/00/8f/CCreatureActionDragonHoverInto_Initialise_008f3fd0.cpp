@@ -8,15 +8,15 @@
 // the new position is a default-constructed C3DVector assigned member by member (X/Y as dword moves, Z - offset on the FPU; a
 // 3-float ctor routes X/Y through the FPU, a copy + `Z -= k` reloads Z from the copy); the component lookup result is
 // not tested, so the "missing" path writes through the uninitialised out-parameter (two tails).
-struct CTCBase;
+class CTCBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -52,7 +52,7 @@ struct CTCHover {                               // the interface-9 component
     bool          m_bFlag10;                    // +0x10
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44

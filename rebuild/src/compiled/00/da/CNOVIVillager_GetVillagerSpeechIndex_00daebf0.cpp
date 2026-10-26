@@ -6,11 +6,11 @@
 //   lastVillagerSpeechIdx sits at retail +0x98, PDB +0xac: the retail quest-script base is 0x14 bytes smaller).
 // Shape: quest-script style -- every statement after a possible yield re-tests IsDone(); the final
 //   `IsDone() ? 0 : index` is the `neg al ; sbb eax,eax ; not eax ; and eax,edi` tail.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void Update();                         // slot 7 (+0x1c)
 };
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[12];
 };
 struct CQ_NewOakValeIntroScript {

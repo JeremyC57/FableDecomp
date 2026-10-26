@@ -17,7 +17,7 @@ struct CMember_0045433f {
     CMember_0045433f();                              // 0x0045433F
 };
 
-struct CSoundThemeDef : CBase_00430370 {
+class CSoundThemeDef : public CBase_00430370 { public:
     unsigned char _pad[0x50];
     CMember_0045433f m_member;                       // +0x54
     virtual void v00();

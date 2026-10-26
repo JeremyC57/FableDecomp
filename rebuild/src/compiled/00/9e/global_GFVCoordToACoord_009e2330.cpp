@@ -7,8 +7,8 @@
 // render-target dimensions; __ftol2 (0x00BFEA70) truncates each result. C2DCoordI = {X, Y} (longs).
 // Shape: each axis is converted to the float argument first (`fild [edi] ; fstp [esp+8]`), then the inlined
 // converter runs (`fild [eax] ; fmul [esp+8] ; fdiv g`), then `call __ftol2 ; mov [esi],eax`.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

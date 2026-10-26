@@ -1,13 +1,13 @@
 #include <cstdio>
 struct CBitset { unsigned long bits[8]; bool test(unsigned long p) const { return (bits[p >> 5] >> (p & 31)) & 1; } };
-struct CThingAICreature { CBitset TypeBits; };
-struct CVillageTaskCarryCrate {
+class CThingAICreature { public: CBitset TypeBits; };
+class CVillageTaskCarryCrate { public:
     const CThingAICreature* performer;
     virtual ~CVillageTaskCarryCrate() {}
     virtual bool IsThingPerformingTask(const CThingAICreature* v) { return v == performer; }
 };
 struct SCrateTaskNode { SCrateTaskNode* next; SCrateTaskNode* prev; CVillageTaskCarryCrate* Object; };
-struct CTCVillage {
+class CTCVillage { public:
     SCrateTaskNode* CrateTasks;
     bool IsVillagerPerformingVillageTask(const CThingAICreature* villager)
     {

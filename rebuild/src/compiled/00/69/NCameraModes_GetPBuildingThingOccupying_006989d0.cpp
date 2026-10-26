@@ -15,7 +15,7 @@
 class CThing;
 class CThingBuilding;
 
-struct CTCBase { void* vfptr; CThing* ParentThing; };
+class CTCBase { public: void* vfptr; CThing* ParentThing; };
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };

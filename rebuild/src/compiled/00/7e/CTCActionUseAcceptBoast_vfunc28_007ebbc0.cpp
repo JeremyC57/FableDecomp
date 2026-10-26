@@ -13,8 +13,8 @@
 // path's `mov eax,[esp+0Ch]`), so there is no frame of its own.
 // Header note: engine/CTCBoastingPosition.h holds the layout only; the callee is modelled as
 // CTCBoastingPosition_Calls.
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,7 +46,7 @@ struct CTCBoastingPosition_Calls {                    // interface type 0x71 com
     void OnBoastAccepted(CThingCreatureBase* creature);   // 0x00782390
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     void vfunc_28(CThingCreatureBase* creature);  // 0x007EAB90 (empty)

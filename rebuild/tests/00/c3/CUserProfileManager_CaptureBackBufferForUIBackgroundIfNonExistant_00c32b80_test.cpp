@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CUserProfileManager
-{
+class CUserProfileManager
+{ public:
     int   m_0;
     int   m_4;
     unsigned int m_8;

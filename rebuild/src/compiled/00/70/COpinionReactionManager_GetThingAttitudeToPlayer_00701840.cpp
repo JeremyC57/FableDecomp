@@ -8,15 +8,15 @@
 // before it). The landed GetToleranceToBeingHit (0x00701940) calls this.
 // Shape: `T* p = 0; if (...) p = GetTC(k);` gives the preloaded `xor ecx,ecx`; the lookup key lives in the
 // single `push ecx` frame word.
-struct CTCBase;
-struct CTCOpinionSource;
+class CTCBase;
+class CTCOpinionSource;
 struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0 (a second copy of the 0x0040F020 body)
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
@@ -32,10 +32,10 @@ struct CThing {
         return it->component;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();        // 0x00487DD0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer();            // 0x0049D9D0
 };
 

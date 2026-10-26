@@ -12,7 +12,7 @@
 // (`fstp [esp+8]`), then `fcomp ; fnstsw ; test ah,5 ; jp` is `a > b`. The pair's implicit operator= copies four
 // dwords through a pointer register (`mov ecx,esi`); the final `*last = val` reloads the value from its argument slot.
 // Callees: CVectorCompare_BestForTargeting::GetCompareValueForPoint(const C3DVector&) @ 0x007F9660 (x2 per step).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -21,7 +21,7 @@ struct PairVectorLong {                // std::pair<C3DVector, long>, 16 bytes
     long      second;                  // +0x0C
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     unsigned char _body[0x2c];
     float GetCompareValueForPoint(const C3DVector& point);     // 0x007F9660
 };

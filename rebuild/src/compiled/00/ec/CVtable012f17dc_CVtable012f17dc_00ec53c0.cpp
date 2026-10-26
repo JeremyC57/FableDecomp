@@ -9,7 +9,7 @@
 // the two member objects: each base constructor is called on `lea edi,[esi+N]`, the member vtable stored, and
 // the two counted-pointer words zeroed from ebx by the inline constructor of an embedded {Data, Info} member object
 // (plain init-list zeros would hoist the `xor` above the vtable store); `ret 8`, `this` in eax.
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
     virtual void v00();
     unsigned char _body[0x3c];                     // +0x04..+0x3f
     CScriptBase();                                 // 0x00CB8110
@@ -27,13 +27,13 @@ struct CCountedPointerWords {                     // {Data, Info}: a member obje
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CBaseObject {                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
+class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject();                                 // 0x0099A380
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes (engine header: PImp_Data +8, PImp_Info +0xc)
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes (engine header: PImp_Data +8, PImp_Info +0xc)
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }

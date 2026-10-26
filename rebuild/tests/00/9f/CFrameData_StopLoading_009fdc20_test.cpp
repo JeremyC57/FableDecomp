@@ -3,7 +3,7 @@
 static int g_destroyed = 0, g_cleared = 0;
 static void Destroy(void*) { ++g_destroyed; }
 struct SCountBlock { int m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-struct CBankFileAsyncData { bool finished; bool IsFinished() { return finished; } };
+class CBankFileAsyncData { public: bool finished; bool IsFinished() { return finished; } };
 struct CCountedPointer {
     CBankFileAsyncData* m_pObject; SCountBlock* m_pCount;
     void Reset()
@@ -15,8 +15,8 @@ struct CCountedPointer {
         m_pCount = 0; m_pObject = 0;
     }
 };
-struct CGraphicFrameData { int Sizeof() { return 100; } };
-struct CManagedTexture {
+class CGraphicFrameData { public: int Sizeof() { return 100; } };
+class CManagedTexture { public:
     void* m_pData;
     bool HasData() const { return m_pData != 0; }
     int Sizeof() { return 1000; }

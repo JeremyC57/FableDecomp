@@ -34,8 +34,8 @@ struct __declspec(novtable) CEngineInternalPrimitiveOcclusionNative : CEngineInt
     CEngineInternalPrimitiveOcclusionNative(long type, unsigned long flags) : CEngineInternalPrimitiveNative(type, flags)
     { OcclusionInfo[0] = 0; OcclusionInfo[1] = 0; }
 };
-struct C3DBoundingSphere { float X, Y, Z, Radius; C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) {} };
-struct C3DBoundingBox { float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
+class C3DBoundingSphere { public: float X, Y, Z, Radius; C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) {} };
+class C3DBoundingBox { public: float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
 struct CEngineInternalRepeatedStaticMeshNative : CEngineInternalPrimitiveOcclusionNative {   // vtable 0x012A3F4C, 0xb0 bytes
     void* MeshInfo; long ObjectCount; C3DBoundingBox BoundingBox; C3DBoundingSphere BoundingSphere;
     float MaxScale, AlphaTransformMult, AlphaTransformOffset; void* VectorNormals; void* ObjectMatricies; void* ObjectOffsets;
@@ -68,7 +68,7 @@ struct CAddMeshDesc {
     bool          Persistent;                       // +0x58
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     void AddPrimitive(CEngineInternalPrimitiveNative* primitive, unsigned long flags);   // 0x00B94D30
 };
 struct SSceneHolder {

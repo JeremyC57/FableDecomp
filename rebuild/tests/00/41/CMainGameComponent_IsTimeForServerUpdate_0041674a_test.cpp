@@ -1,7 +1,7 @@
 #include <cstdio>
 
 extern long g_WorldFramesPerSecond;               // 0x01375550
-struct CInputManager { char _pad[0x38]; bool b38; };
+class CInputManager { public: char _pad[0x38]; bool b38; };
 extern CInputManager* g_pInputManager;            // 0x013B8388
 extern bool g_b13B860C;                           // 0x013B860C
 extern bool g_b13B8629;                           // 0x013B8629

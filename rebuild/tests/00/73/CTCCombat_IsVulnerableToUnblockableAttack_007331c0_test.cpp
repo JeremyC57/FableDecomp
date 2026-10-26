@@ -3,7 +3,7 @@
 int g_someCount = 3;
 float g_someFactor = 10.0f;
 
-struct CTCCombat {
+class CTCCombat { public:
     char pad[0x68];
     int field_68;
 };

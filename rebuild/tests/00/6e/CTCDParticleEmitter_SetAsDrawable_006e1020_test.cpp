@@ -3,7 +3,7 @@
 #include <cstdio>
 static int g_sets = 0;
 static bool g_should = false;
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
     void* PData;
     CThing* GetPItem() const { return static_cast<CThing*>(PData); }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     unsigned char _base[0x8]; void* EmitterName; long ParticleTypeID;
     CBaseIntelligentPointer PEmitter; CBaseIntelligentPointer PAttachedToThing;

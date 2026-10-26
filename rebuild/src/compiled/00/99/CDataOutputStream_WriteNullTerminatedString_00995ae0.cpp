@@ -5,20 +5,20 @@
 // first (preloaded into edx), the non-null arm overwrites both, the null arm only zeroes the length (`xor eax,eax`)
 // and jumps back into the push sequence; two separate accessors would test twice. Then the empty-string pointer is preloaded
 // into edx and the null arm (`xor eax,eax`) duplicates the call sequence; `inc eax` is the `+ 1` for the terminator.
-struct CCharStringData {
+class CCharStringData { public:
     char* text;                                // +0x00
     long  length;                              // +0x04
 };
 extern char g_EmptyCharString_0129AAF4[1];    // 0x0129AAF4
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;            // +0x00 CCharString::PStringData
     // null case written first: the data load is the taken branch (the landed CAnimFilterOfGroup accessors)
     const char* GetText() const { return m_pStringData == 0 ? g_EmptyCharString_0129AAF4 : m_pStringData->text; }
     long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->length; }
 };
 
-struct CDataOutputStream {                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
+class CDataOutputStream { public:                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
     virtual void v00();
     virtual void v01();
     virtual void v02();

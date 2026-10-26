@@ -8,22 +8,22 @@
 // Shape: each range test recomputes both deltas from memory, so the test is a file-static inline helper over two
 // C3DVector references (a member helper or one function body lets VC7.1 CSE the deltas through the frame);
 // `return !A && B;` gives the int `mov eax,1` / `xor eax,eax` tails, the absent component the byte `xor al,al`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*     __vftable;
     unsigned char _pad04[8];
     C3DVector m_position;                           // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_In2DRangeLimit {
+class CThingFilter_In2DRangeLimit { public:
     C3DVector Pos;                                  // +0x00
     float     MinRange;                             // +0x0c
     float     MaxRange;                             // +0x10

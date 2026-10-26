@@ -1,11 +1,11 @@
 // Behaviour test for 0x009207A0 CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable (model copy over stubs).
 #include <cstdio>
 #include <math.h>
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 struct CTCEnemySource { CThing* enemy; CThing* GetEnemy() { return enemy; } };
 struct CTCUndergroundMover { float range; float GetSurfaceRange() { return range; } };
-struct CThing {
+class CThing { public:
     C3DVector pos; unsigned char m_flags91; CTCEnemySource* source; CTCUndergroundMover* mover;
     const C3DVector& GetPosition() const { return pos; }
     template<class T> bool GetInterface(T** out, long type)
@@ -16,8 +16,8 @@ struct CThing {
     }
 };
 struct CIntelligentPointerThing { CThing* item; CIntelligentPointerThing() : item(0) {} CIntelligentPointerThing& operator=(CThing* t) { item = t; return *this; } };
-struct CAIBrain { CThing* PCreature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
+class CAIBrain { public: CThing* PCreature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
 struct CAIStateGroup_CreatureSeekEnemyUnderground : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;
     bool IsRunnable();

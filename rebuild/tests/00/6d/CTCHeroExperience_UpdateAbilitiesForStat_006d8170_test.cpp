@@ -1,12 +1,12 @@
 #include <cstdio>
 // behaviour test: UpdateAbilitiesForStat sets max health (stat 1) or max stamina (stat 9) from the per-level table clamped to
 // the table's last entry plus the hero stats' extra amount, and heals/refills by the non-negative gain unless silent
-struct CTCHeroStats {
+class CTCHeroStats { public:
     long MaxStamina; float ExtraMaxHealth; long ExtraMaxStamina; long modified;
     void SetMaxStamina(long m) { MaxStamina = m; }
     void ModifyStaminaBy(long a) { modified += a; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     CTCHeroStats* stats; float MaxHealth; float healed;
     bool GetInterface(const CTCHeroStats** out, long type) const { if (type == 4 && stats) { *out = stats; return true; } return false; }
     unsigned long HasTC(long type) const { return type == 4 && stats ? 1u : 0u; }
@@ -15,7 +15,7 @@ struct CThingPhysical {
     void ModifyHealth(float a, bool) { healed += a; }
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     CThingPhysical* ParentThing; long TrainableStatLevels[10]; float HP[3]; long MP[4];
     void UpdateAbilitiesForStat(int stat, bool silent)
     {

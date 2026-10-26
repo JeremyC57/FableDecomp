@@ -10,7 +10,7 @@
 // Shape: a top-tested loop over a pointer local (esi) with the argument in ebx and the entry's item kept
 // in ebp across the second call; `last` is re-read from `this` after every call and once more for the
 // not-found return; the found entry returns from esi.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item link
     virtual void v00();

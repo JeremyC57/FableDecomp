@@ -1,5 +1,5 @@
 #include "engine/CTavernDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer(void* sub); };
+class CPersistContext { public: void Xfer(void* sub); };
 struct CTavernDef_Methods : CTavernDef {
     void Transfer(CPersistContext* ctx);
 };

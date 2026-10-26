@@ -42,12 +42,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const { return Compare(PData, text) == 0; }   // 0x004115A0 (inlined here)
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     ~CCharString();                                         // 0x0099EAE0
@@ -61,14 +61,14 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
     virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021();
     virtual bool MsgOnRegionLoaded(CCharString& region) const;   // slot 22 (+0x58) CGameScriptInterface::MsgOnRegionLoaded @ 0x008933F0
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -1,7 +1,7 @@
 // Behaviour test for 0x006988B0 CGameCameraManager::PushCurrentManualMode.
 #include <cstdio>
 static int g_destroyed = 0;
-struct CThing { unsigned char m_statusFlags; };
+class CThing { public: unsigned char m_statusFlags; };
 struct CDef { int m_count; void Destroy() { ++g_destroyed; } };
 struct CDefPointer {
     CDef* m_p;

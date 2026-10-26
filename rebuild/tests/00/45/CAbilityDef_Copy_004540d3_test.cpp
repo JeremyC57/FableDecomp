@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAbilityDef {
+class CAbilityDef { public:
     unsigned char _tail[0x2c];
     void BaseCopy(const CAbilityDef* other);
 };

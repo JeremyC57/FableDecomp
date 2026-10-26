@@ -17,7 +17,7 @@
 #include "engine/CTCBase.h"
 
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -80,7 +80,7 @@ struct CInterfaceBits {
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
@@ -121,7 +121,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -141,24 +141,24 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);   // 0x0080C460
 };
-struct CTCDPhysicalObstruction {
+class CTCDPhysicalObstruction { public:
     static CThing* __fastcall Create(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
 };
 struct CTCBaseDefs : CTCBase {
     CDefinitionManager* GetDefinitions();                   // 0x006869D0 (CTCBase)
 };
-struct CKrakenTentacleDef {
+class CKrakenTentacleDef { public:
     unsigned char _pad00[0x4c];
     float TentacleObstructionRadius;                        // +0x4c
     float TentacleExplosionBodgeAngle;                      // +0x50
@@ -166,7 +166,7 @@ struct CKrakenTentacleDef {
     float TentacleObstructionRadiusMin;                     // +0x58
     float TentacleObstructionRadiusMax;                     // +0x5c
 };
-struct CTCKraken : CTCBase {
+class CTCKraken : public CTCBase { public:
     const void* PKrakenDef;                                 // +0x0c (CDefPointer)
     CBaseIntelligentPointer PChamber;                       // +0x10
     CBaseIntelligentPointer PCentreMarker;                  // +0x18
@@ -175,7 +175,7 @@ struct CTCKraken : CTCBase {
     long TentacleStrikeCounter;                             // +0x4c (PDB +0x5c; retail STLport lists are 4 bytes)
     void AddStrikeExplosion(CThing* explosion);             // 0x007FBA20
 };
-struct CTCKrakenTentacle : CTCBaseDefs {
+class CTCKrakenTentacle : public CTCBaseDefs { public:
     const CKrakenTentacleDef* PTentacleDef;                 // +0x0c (CDefPointer)
     CBaseIntelligentPointer PKraken;                        // +0x10
     CIntelligentPointer<CThing> PObstruction;               // +0x18

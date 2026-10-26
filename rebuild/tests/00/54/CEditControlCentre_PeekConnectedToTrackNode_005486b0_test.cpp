@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char pad0[0xC];
     unsigned char connectedFlag;
     char pad1[0x48 - 0xC - 1];

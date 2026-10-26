@@ -6,14 +6,14 @@
 #include <algorithm>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CTCHeroStats { long Combo; long Str; long GetComboMultiplier() const { return Combo; } };
-struct CTCCombat { bool Melee, Flourish; bool IsInMelee() const { return Melee; } bool CanFlourish() const { return Flourish; } };
-struct CTCWeapon { long Class; long GetWeaponClass() const { return Class; } };
-struct CThing { bool Alive; CTCWeapon* Weapon; };
-struct CTCCarrying { CThing* Primary; CThing* GetThingInPrimarySlot() const { return Primary; } };
-struct CThingCreatureBase;
+class CTCHeroStats { public: long Combo; long Str; long GetComboMultiplier() const { return Combo; } };
+class CTCCombat { public: bool Melee, Flourish; bool IsInMelee() const { return Melee; } bool CanFlourish() const { return Flourish; } };
+class CTCWeapon { public: long Class; long GetWeaponClass() const { return Class; } };
+class CThing { public: bool Alive; CTCWeapon* Weapon; };
+class CTCCarrying { public: CThing* Primary; CThing* GetThingInPrimarySlot() const { return Primary; } };
+class CThingCreatureBase;
 struct CCombatantInfo { std::map<int, CThingCreatureBase*> Attackers; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CTCHeroStats* Stats; CTCCarrying* Carrying; CTCCombat* Combat; unsigned long Flags6c;
     std::vector<std::string> Anims; CCombatantInfo* Info;
     bool GetStats(CTCHeroStats** o) const { *o = Stats; return Stats != 0; }
@@ -22,8 +22,8 @@ struct CThingCreatureBase {
     bool HasAnimation(const std::string& n) const { return std::find(Anims.begin(), Anims.end(), n) != Anims.end(); }
 };
 static bool IS_THING_ALIVE(CThing* t) { return t != 0 && t->Alive; }
-struct CHeroAbilityStatPackage { long MinStr; bool IsMetBy(const CTCHeroStats* s) const { return s->Str >= MinStr; } };
-struct CMeleeCombatAbilityDef {
+class CHeroAbilityStatPackage { public: long MinStr; bool IsMetBy(const CTCHeroStats* s) const { return s->Str >= MinStr; } };
+class CMeleeCombatAbilityDef { public:
     std::string FlourishAnimName; bool Flourish; std::vector<long> ValidWeaponClasses;
     CHeroAbilityStatPackage StatsNeeded; long ComboMultiplierLowerBound, ComboMultiplierUpperBound;
     bool IsAbilityValid(CThingCreatureBase* creature)

@@ -4,17 +4,17 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C2DBoxI { long X0, Y0, X1, Y1; C2DBoxI() {} C2DBoxI(long a, long b, long c, long d) : X0(a), Y0(b), X1(c), Y1(d) {} };
-struct CThing { unsigned long ThingTypeFlags; int Id; };
-struct CThingPhysical : CThing {};
-struct CThingFilter_None { bool operator()(const CThing&) const { return true; } };
+class C2DBoxI { public: long X0, Y0, X1, Y1; C2DBoxI() {} C2DBoxI(long a, long b, long c, long d) : X0(a), Y0(b), X1(c), Y1(d) {} };
+class CThing { public: unsigned long ThingTypeFlags; int Id; };
+class CThingPhysical : public CThing { public:};
+class CThingFilter_None { public: bool operator()(const CThing&) const { return true; } };
 struct CThingMapEntry { CThing* Thing; unsigned long SearchStamp; };
 struct CThingMapNode { CThingMapEntry* Entry; CThingMapNode* Next; };
 struct CThingMap { long Width; std::vector<CThingMapNode*> Cells; CThingMapNode** GetCell(long x, long y) { return &Cells[y * Width + x]; } };
 struct SSearchStamps { unsigned long Searches, Found, Stamp; };
 static SSearchStamps g_SearchStamps = { 0, 0, 5 };
 static long g_NumMapwhoLevels = 1; static long g_Shift[1] = { 0 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     std::vector<CThingMap*> All; std::vector<CThingMap*> TempMaps;
     void GetMapsInArea(const C2DBoxI&, std::vector<CThingMap*>* maps) { *maps = All; }
     C2DBoxI GetCellExtents(CThingMap*, const C2DBoxI& a) { return a; }

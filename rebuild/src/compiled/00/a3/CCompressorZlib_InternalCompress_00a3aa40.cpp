@@ -36,7 +36,7 @@ extern "C" int __cdecl z_deflate(z_stream* strm, int flush);                    
 extern "C" int __cdecl z_deflateEnd(z_stream* strm);                                                      // 0x00C00AE0
 extern const char g_zlibVersion[];                                                                      // 0x0129CFE0 ("1.2.1")
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     static void* __cdecl ZAlloc(void* opaque, uInt items, uInt size);   // 0x00A3A9C0
     static void  __cdecl ZFree(void* opaque, void* address);            // 0x00A3AA00
     unsigned long InternalCompress(const void* source, unsigned long sourceSize, void* dest, unsigned long destSize);

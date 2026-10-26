@@ -26,12 +26,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                           // 0x00A01B10
     ~CBaseIntelligentPointer();                          // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;
     unsigned char ChannelIndex1;
     unsigned char ChannelBlendFactor;

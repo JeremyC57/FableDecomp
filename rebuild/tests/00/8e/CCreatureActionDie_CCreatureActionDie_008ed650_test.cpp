@@ -1,21 +1,21 @@
 // Behaviour test for 0x008ed650 CCreatureAction_Die constructor: base arguments from the owner's animation and sound lookups.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* t, int) { std::strcpy(m_text, t); }
 };
-struct CAnimationEntry { int id; };
+class CAnimationEntry { public: int id; };
 static CAnimationEntry g_anim;
 static char g_animName[32];
-struct CSoundPair { int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
-struct CThingCreatureBase {
+class CSoundPair { public: int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CThingCreatureBase { public:
     char m_soundName[32];
     virtual ~CThingCreatureBase() { }
     virtual CSoundPair GetSoundPair(const CCharString& name) { std::strcpy(m_soundName, name.m_text); CSoundPair p; p.FirstSound = 11; p.LastSound = 12; return p; }
 };
 static CAnimationEntry* GetTableAnimation(CThingCreatureBase*, const CCharString& name) { std::strcpy(g_animName, name.m_text); return &g_anim; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* m_owner; float m_a, m_b; CAnimationEntry* m_anim; CSoundPair m_sound; int m_c, m_d;
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* anim, const CSoundPair& sound, int c, int d)
         : m_owner(owner), m_a(a), m_b(b), m_anim(anim), m_sound(sound), m_c(c), m_d(d) { }

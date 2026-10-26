@@ -4,10 +4,10 @@
 // CGamePlayerInterface::IsGameActionEventInQueue(long, long, long, float*) @ 0x00445CB0.
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18, PGamePlayerInterface +0x24). Shape: the arguments are pushed right to left --
 // the time pointer first, then the player number call, then the two words reloaded from their slots; the bool rides through al, `ret 0Ch`.
-struct CPlayer {
+class CPlayer { public:
     long GetPlayerNumber();                         // 0x00487510
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber, float* pTime);   // 0x00445CB0
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout

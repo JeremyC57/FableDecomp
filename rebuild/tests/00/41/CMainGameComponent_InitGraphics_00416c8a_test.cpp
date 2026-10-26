@@ -4,8 +4,8 @@
 // shared uncompressed pickers, the init fields, the bank creation and the three progress ticks.
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CPixelFormat { long Format; void Initialise(long f) { Format = f; } };
-struct CGraphicDataBankInit {
+class CPixelFormat { public: long Format; void Initialise(long f) { Format = f; } };
+class CGraphicDataBankInit { public:
     CPixelFormat NonAlphaFormat, AlphaFormat, InterpolatedAlphaFormat, BooleanAlphaFormat,
                  UncompressedNonAlphaFormat, UncompressedAlphaFormat, SignedFormat;
     bool GenerateMipmaps; unsigned int MaxGraphicWidth, MaxGraphicHeight; bool AllowDither;
@@ -16,7 +16,7 @@ struct CGraphicDataBankInit {
         GenerateMipmaps = false; MaxGraphicWidth = MaxGraphicHeight = 0xffffffffu; AllowDither = true;
     }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool Compressed;
     bool IsSupportingCompressedTextures() { return Compressed; }
     void CNA(unsigned int d, CPixelFormat* o) { o->Format = 100 + d; }

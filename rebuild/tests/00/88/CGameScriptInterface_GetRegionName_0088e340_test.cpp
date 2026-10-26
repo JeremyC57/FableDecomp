@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CCharString { int dummy; };
+class CCharString { public: int dummy; };
 struct CRegions;
 
 int g_count = 0;
 
 struct CMid { void** vt; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+class CGameScriptInterface { public: void* vt; CMid* mid; };
 
 typedef CRegions* (CMid::*PSlot0)();
 typedef CRegions* (CMid::*PSlot1)(int);

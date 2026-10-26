@@ -2,12 +2,12 @@
 #include <new>
 
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     explicit CCharString(const char* text) : m_pData(text) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringCopies; }   // models 0x0099EC30
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
 };
 struct CCountedPointer {

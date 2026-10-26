@@ -28,11 +28,11 @@ struct CThing_Retail {
     void SetInLimbo(bool l) { std::strcat(g_seq, "L"); g_arg[0] = l; }
     CThing_Retail() { std::memset((char*)this + sizeof(void*), 0, sizeof(*this) - sizeof(void*)); }
 };
-struct CScriptThing { CThing_Retail* m_pThing; virtual CThing_Retail* GetThing() const { std::strcat(g_seq, "g"); return m_pThing; } virtual bool IsValid() const { std::strcat(g_seq, "v"); return g_valid; } };
+class CScriptThing { public: CThing_Retail* m_pThing; virtual CThing_Retail* GetThing() const { std::strcat(g_seq, "g"); return m_pThing; } virtual bool IsValid() const { std::strcat(g_seq, "v"); return g_valid; } };
 static CThing_Retail g_thing; static CScriptThing g_script;
 static void reset(unsigned char type, unsigned char flags) { g_thing = CThing_Retail(); g_thing.m_type = type; g_thing.m_flags = flags; g_script.m_pThing = &g_thing; g_seq[0] = 0; g_valid = true; }
-struct CDisplayEngine_Retail; struct CPlayerManager_Retail; struct CWorld;
-struct CGameScriptInterface { virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
+struct CDisplayEngine_Retail; struct CPlayerManager_Retail; class CWorld;
+class CGameScriptInterface { public: virtual void v000() { } CWorld* World; long Component; CDisplayEngine_Retail* DisplayEngine; long DefinitionManager; CPlayerManager_Retail* PlayerManager; unsigned char _pad18[0x15]; bool AllowScreenFadingIfAlreadyFaded;
     void ClearThingHasInformation(const CScriptThing& thing) const {if (thing.IsValid()) { CThing_Retail* t = thing.GetThing(); if (t->m_type == 1) t->SetHasInformation(0, false, true, false); }}
 };
 

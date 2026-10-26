@@ -22,7 +22,7 @@ static int fails = 0;
 
 extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);   // 0x00BFEAE6
 
-struct CRegion;
+class CRegion;
 
 struct __true_type { __true_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
@@ -87,8 +87,8 @@ inline PCRegion* find(PCRegion* first, PCRegion* last, const PCRegion& value)
     return FindRegion(first, last, value, random_access_iterator_tag());
 }
 
-struct CQuestManager {
-    struct CActiveQuest {
+class CQuestManager { public:
+    class CActiveQuest { public:
         long          ID;                           // +0x00
         void*         PScriptInfo;                  // +0x04
         void*         PScript;                      // +0x08
@@ -108,7 +108,7 @@ void CQuestManager::CActiveQuest::AddPRegion(const CRegion* region)
 }
 
 // ---- stubs and driver ----
-struct CRegion { int id; };
+class CRegion { public: int id; };
 static int g_overflows = 0;
 static const CRegion* g_big[16];
 void InsertOverflow_004ba640(CRegionVector* v, PCRegion* pos, const PCRegion* x, size_t n, bool atend)

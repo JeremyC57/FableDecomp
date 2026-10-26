@@ -20,7 +20,7 @@ public:
 };
 class CChecksumCacheFile {
 public:
-    class CEntry {                                          // 0x20 bytes, trivially copyable (checksum + CDateAndTime)
+    struct CEntry {                                          // 0x20 bytes, trivially copyable (checksum + CDateAndTime)
     public:
         unsigned long Data[8];
     };

@@ -16,7 +16,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 struct CGridCellAllocator { };                      // STLport allocator<CEngineSceneGridCell*> (empty)
 struct CGridCellStorageProxy : CGridCellAllocator { // STLport _STLP_alloc_proxy: allocator base + the end-of-storage pointer
     CEngineSceneGridCell** _M_data;
@@ -33,7 +33,7 @@ struct CGridCellArray : CGridCellVectorBase {       // CArray<CEngineSceneGridCe
     void resize(unsigned int n, CEngineSceneGridCell* const& value);   // 0x00B97A80
 };
 
-struct CEngineSceneGrid : CBase {                   // vtable 0x012A3E58
+class CEngineSceneGrid : public CBase { public:                   // vtable 0x012A3E58
     unsigned long     Level;                        // +0x04
     CEngineSceneGrid* LevelUp;                      // +0x08
     CEngineSceneGrid* LevelDown;                    // +0x0c

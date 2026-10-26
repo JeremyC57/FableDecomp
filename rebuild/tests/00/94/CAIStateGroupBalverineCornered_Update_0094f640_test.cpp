@@ -4,8 +4,8 @@
 #define __forceinline inline
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CAISTATEGROUP_BALVERINECORNERED_H
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
 struct CAIStateGroup_BalverineCornered {
     unsigned char _pad_0x04[sizeof(void*)];
     unsigned char PTarget[2*sizeof(void*)];
@@ -19,8 +19,8 @@ struct CAIStateGroup_BalverineCornered {
 // Address-of-temporary syntax follows VC7.1; g++ fixtures compile the identical body with -fpermissive.
 #include "engine/CAIStateGroup_BalverineCornered.h"
 #include "engine/CAIBrain.h"
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 struct CInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry *First,*Last;
@@ -52,21 +52,21 @@ inline bool IsAlive(const CBaseIntelligentPointer& p) {
     if(p.GetPItem()!=0) { if(!((CRetailThing*)p.GetPItem())->Dead) return true; }
     return false;
 }
-struct CTCVolumeContainmentTracker {
+class CTCVolumeContainmentTracker { public:
     unsigned char _base[0xc];
     CBaseIntelligentPointer PThingInside;
     void Update(); // 00785620
 };
-struct C3DVector { float X,Y,Z; };
-struct CCombatActionBase {
+class C3DVector { public: float X,Y,Z; };
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];
     ~CCombatActionBase(); // 0062E900
 };
-struct CCreatureAction_BalverineLungeAttack : CCombatActionBase {
+class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70
 };
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     C3DVector* EndPos;
     CCreatureAction_BalverineCorneredJumpIntoSky(CThingCreatureBase*,CThing*,C3DVector*); // 008CCB80
 };
@@ -96,8 +96,8 @@ void CCorneredMethods::Update() {
     Terminate();
 }
 
-struct CThing : CRetailThing {};
-struct CThingAICreature : CThing {};
+class CThing : public CRetailThing { public:};
+class CThingAICreature : public CThing { public:};
 static int events[32], eventCount, targetGets, insideGets, actionCalls, terminateCalls;
 static bool wrong, wantInside;
 static long actionResult;

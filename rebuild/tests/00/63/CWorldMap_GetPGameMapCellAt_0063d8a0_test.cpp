@@ -1,16 +1,16 @@
 // Behaviour test for CWorldMap::GetPGameMapCellAt 0x0063D8A0: world pos -> local pos /4 -> bottom-up cell index.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
-struct CGameMapCell { unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
-struct CGameMap {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class CGameMapCell { public: unsigned char AtmosThemes[3]; unsigned char AtmosBlends[2]; signed char SoundTheme; unsigned char Music; };
+class CGameMap { public:
     CGameMapCell* Cells; long SizeX; long SizeY;
     const CGameMapCell* PeekCell(const C2DCoordI& pos) const { return &Cells[(SizeY - pos.Y - 1) * SizeX + pos.X]; }
 };
-struct CMap { CGameMap* GameMap; };
+class CMap { public: CGameMap* GameMap; };
 static bool g_loaded = true;
-struct CWorldMap {
+class CWorldMap { public:
     CMap Map1;
     virtual bool IsMapLoaded(long) const { return g_loaded; }
     virtual long GetMapNumberAt(const C2DCoordI& pos) const { return pos.X >= 1000 && pos.X < 1100 ? 1 : 0; }

@@ -10,13 +10,13 @@ static int Fail(const char* what, const char* log) { std::printf("00ee8870_TEST 
 static char g_log[4096];
 static int g_frame = 0, g_termAt = 1000, g_fireOn = 3, g_fireOff = 7;
 static void Log(const char* s) { char b[16]; std::sprintf(b, "@%d;", g_frame); std::strcat(g_log, s); std::strcat(g_log, b); }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 namespace N_006e7b40 { struct CScriptThing {
     std::string Name; C3DVector Pos;
     CScriptThing() : Name("") { Pos.X = Pos.Y = Pos.Z = 0.0f; }
     const C3DVector& GetPos() const { return Pos; }
 }; } using N_006e7b40::CScriptThing;
-struct CGame {
+class CGame { public:
     std::vector<CScriptThing> Points;
     void NewScriptFrame() const { ++g_frame; }
     long GetAllThingsWithScriptName(const char* n, std::vector<CScriptThing>& out) const { if (std::strcmp(n, "Q_REVISITED_FIREPOINT") == 0) out = Points; return (long)out.size(); }

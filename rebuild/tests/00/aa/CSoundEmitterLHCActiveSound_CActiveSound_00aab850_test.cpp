@@ -10,7 +10,7 @@ struct CBase {
     CBase() {}
 };
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData(g_empty) {}
 };

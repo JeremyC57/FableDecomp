@@ -10,14 +10,14 @@
 // ControlType is the 4-byte ETavernGameControlType enum (long).
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 struct CCardPositionsVector {                       // retail std::vector<CCardPositionsDef> (retail 0xc bytes)
@@ -29,7 +29,7 @@ struct CCardDefVector {                       // retail std::vector<CCardDef> (r
     CCardDefVector& operator=(const CCardDefVector& other);   // 0x004EBF32
 };
 
-struct CTavernGameCardBaseDef : CDefClassBase {
+class CTavernGameCardBaseDef : public CDefClassBase { public:
     long                     ControlType;                 // +0x28
     float                    CardWidth;                   // +0x2c
     float                    CardHeight;                  // +0x30

@@ -4,8 +4,8 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 inline void* operator new(unsigned int, void* where) { return where; }
-struct C2DVector { float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(push, 1)
 struct SRoutePoint { C2DVector first; unsigned char second; SRoutePoint(const C2DVector& a, const unsigned char& b) : first(a), second(b) { } };
 #pragma pack(pop)
@@ -41,7 +41,7 @@ inline void __distance(SWayPointNode* first, SWayPointNode* last, unsigned long&
 struct CWayPointList { SWayPointNode* _M_node; unsigned long size() const { unsigned long n = 0; __distance(_M_node->_M_next, _M_node, n); return n; } };
 enum ENavigatorReturn { NAV_RETURN_0, NAV_RETURN_FAILED };
 static int g_interrupt = 0, g_move2pos = 0; static int g_failAt = -1; static int g_readyAt = 1;
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     virtual ENavigatorReturn MoveToPos(const C3DVector& from, const C3DVector& to, float speed, C3DVector& position, bool a, bool b, bool c, bool d, bool e, bool f, float g)
     {
         ++g_move2pos; CHECK(speed == 1.0f && !a && b && c && !d && e && !f && g == 0.0f); CHECK(from.X == 1.0f && to.X == 2.0f); position.X = 0;

@@ -4,14 +4,14 @@
 #include <cstring>
 static char g_log[16];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char Flags91;
@@ -30,16 +30,16 @@ struct CThing {
     }
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
-struct CTCRegionDisplay { void FinishShowingRegionName() { Log('f'); } };
+class CTCRegionDisplay { public: void FinishShowingRegionName() { Log('f'); } };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
-struct CWorld { bool LetterBoxShown; };
+class CWorld { public: bool LetterBoxShown; };
 static CWorld g_world;
-struct CDisplayEngine { void EndLetterBox() { Log('d'); } };
-struct CMainGameComponent { CDisplayEngine* PDisplayEngine; };
+class CDisplayEngine { public: void EndLetterBox() { Log('d'); } };
+class CMainGameComponent { public: CDisplayEngine* PDisplayEngine; };
 static CDisplayEngine g_de; static CMainGameComponent g_mgc = { &g_de };
 CMainGameComponent* g_pMainGameComponent = &g_mgc;
 struct CBaseIntelligentPointer {
@@ -48,13 +48,13 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { Log('p'); }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { Log('b'); }
     CThing* ParentThing;
     const CWorld* GetWorld() const { return &g_world; }
     CPlayerManager* GetPlayerManager() { return &g_pm; }
 };
-struct CTCDRegionExit : CTCBase {
+class CTCDRegionExit : public CTCBase { public:
     bool InLetterBoxMode;
     CIntelligentPointer PEntranceConnectedTo;
     virtual ~CTCDRegionExit();

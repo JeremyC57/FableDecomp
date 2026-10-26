@@ -1,9 +1,9 @@
 // Behaviour test for 006421f0 CPersistContext_TransferableComponent<CRGBColour>::TransferOut (copy of the model; the
 // traits TransferOut is a stand-in that records its arguments and the default it was built with).
 #include <cstdio>
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int len; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int len; };
 class CRGBColour {
 public:
     unsigned char B, G, R, A;
@@ -16,7 +16,7 @@ template <class T> struct CPersistTraits {
     void TransferOut(CPersistContext& context, CCharString& out, const T* value)
     { g_ctx = &context; g_out = &out; g_val = value; g_default = DefaultVal; }
 };
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual ~CPersistContext_TransferableComponentGenericType() {}
 };

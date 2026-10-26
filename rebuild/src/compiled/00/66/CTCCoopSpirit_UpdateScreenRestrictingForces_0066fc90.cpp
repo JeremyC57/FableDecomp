@@ -17,9 +17,9 @@
 // +0x28, the display's camera +0x2c.
 #include <math.h>
 #pragma intrinsic(fabs)
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TopLeft, BottomRight; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TopLeft, BottomRight; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -28,7 +28,7 @@ struct C3DVector {
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 };
 #define VF(n) virtual void v##n();
-struct CCamera {
+class CCamera { public:
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11) VF(12)
     virtual bool WorldToScreen(const C3DVector& world, C2DVector* screen);   // slot 13 (+0x34)
 };
@@ -38,15 +38,15 @@ struct CDisplay {
     CCamera* PCamera;                                        // +0x2c
     C2DBoxF GetScreenArea() const;                           // 0x00434B50
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x28];
     CDisplay* PDisplay;                                      // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
 extern long g_framesPerSecond;                               // 0x01375550
 extern float g_spiritOffScreenSeconds;                       // 0x0137EA24
-struct CTCPhysicsBase { void ApplyAcceleration(const C3DVector& acceleration); };   // 0x006B0210
-struct CThing {
+class CTCPhysicsBase { public: void ApplyAcceleration(const C3DVector& acceleration); };   // 0x006B0210
+class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     unsigned char   _pad64[0x90 - 0x64];
@@ -54,21 +54,21 @@ struct CThing {
     const C3DVector& GetPosition() const;                    // 0x004C73D0
     float GetCurrentRelativeMovementAngleXY() const;         // 0x006A9640 (CThingPlayerCreature)
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     ~CCreatureActionBase();                                  // 0x00693EF0
 };
-struct CThingCreatureBase;
-struct CCreatureAction_SpiritReturnToHero : CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
     CCreatureAction_SpiritReturnToHero(CThingCreatureBase* owner);   // 0x00854660
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
 };
-struct CPlayer { CThing* GetHeroCreature(); };               // 0x00487DC0
-struct CPlayerManager { CPlayer* GetPlayer(long number); };  // 0x004498C0
-struct CTCCoopSpirit {
+class CPlayer { public: CThing* GetHeroCreature(); };               // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetPlayer(long number); };  // 0x004498C0
+class CTCCoopSpirit { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                         // +0x04
     unsigned char _pad08[0x14 - 0x08];

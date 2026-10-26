@@ -7,7 +7,7 @@ static int gLive = 0;
 static void* Alloc(unsigned int n) { if (n == 0) return 0; ++gLive; return std::malloc(n); }
 static void Free(void* p) { if (p) { --gLive; std::free(p); } }
 struct SStrData { int RefCount; char Text[16]; };
-struct CCharString {                                     // shared, reference-counted string model
+class CCharString { public:                                     // shared, reference-counted string model
     SStrData* Data;
     CCharString(const char* s) : Data((SStrData*)Alloc(sizeof(SStrData))) { Data->RefCount = 1; std::strcpy(Data->Text, s); }
     CCharString(const CCharString& o) : Data(o.Data) { ++Data->RefCount; }

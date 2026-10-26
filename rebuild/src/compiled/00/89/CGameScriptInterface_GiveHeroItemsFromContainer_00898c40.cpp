@@ -9,12 +9,12 @@
 //   script runner (0x013D2838) exists.
 // Shape: a same-TU LowerBound stand-in lets the lookup key share the dead flag slot (chunk 242 idiom); the class-name compare keeps its bool in bl across the two string dtors; the result string lives in the dead
 //   container slot and the literal in the dead flag slot; the add-to-inventory arm returns the callee's bool directly.
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                    // +0x00
     unsigned long StringLength;             // +0x04
 };
 long __fastcall CompareStrings(const char* a, const char* b);   // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -39,8 +39,8 @@ struct CTCBase_Retail {
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21();
     virtual CCharString GetClassName() const;           // slot 22 (+0x58)
 };
-struct CTCContainer : CTCBase_Retail { bool AddItemsToInventory(); };                   // 0x008ED170
-struct CTCContainerRewardHero : CTCContainer { bool RewardHeroWithItems(); };           // 0x0074EE90
+class CTCContainer : public CTCBase_Retail { public: bool AddItemsToInventory(); };                   // 0x008ED170
+class CTCContainerRewardHero : public CTCContainer { public: bool RewardHeroWithItems(); };           // 0x0074EE90
 struct CInterfaceMap_Retail {
     struct SEntry { long type; CTCBase_Retail* component; };
     SEntry* first;
@@ -85,7 +85,7 @@ struct CThing_Retail {
         return it->component;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -99,11 +99,11 @@ struct CScriptThing {
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CPlayer { CThing_Retail* GetHeroThing(); };      // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 struct CScriptRunner;
 extern CScriptRunner* g_pScriptRunner;                  // 0x013D2838
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void NewScriptFrame();                      // slot 7 (+0x1c, 0x006E7410)
     virtual bool GiveHeroItemsFromContainer(const CScriptThing& container, bool addToInventory) const;

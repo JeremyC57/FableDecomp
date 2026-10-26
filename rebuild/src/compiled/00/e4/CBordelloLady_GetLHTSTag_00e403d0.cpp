@@ -10,7 +10,7 @@
 // call); the final concatenation is built straight into the hidden return slot (no NRVO in VC7.1,
 // but a returned temporary is constructed in place), and the two temporaries are destroyed in
 // reverse order before `this`'s result pointer is returned.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
 };

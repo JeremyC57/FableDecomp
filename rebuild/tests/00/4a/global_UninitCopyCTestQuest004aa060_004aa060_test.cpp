@@ -11,7 +11,7 @@ public:
     void* PData;
 };
 
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;
     CCharString HSPName;
     long        ColourIndex;

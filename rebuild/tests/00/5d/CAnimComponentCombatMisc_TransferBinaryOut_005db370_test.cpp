@@ -1,11 +1,11 @@
 // Behaviour test for CAnimComponentCombatMisc::TransferBinaryOut @ 0x005db370: WriteBool(MeleeFlourish) then WriteBool(MeleeKnockdown).
 #include <cstdio>
-struct CDataOutputStream {
+class CDataOutputStream { public:
     int count; bool values[4];
     CDataOutputStream() : count(0) { }
     void WriteBool(bool value) { values[count++] = value; }
 };
-struct CAnimComponentCombatMisc {
+class CAnimComponentCombatMisc { public:
     void* __vftable; long m_refCount; bool MeleeFlourish; bool MeleeKnockdown;
     void TransferBinaryOut(CDataOutputStream& stream) const { stream.WriteBool(MeleeFlourish); stream.WriteBool(MeleeKnockdown); }
 };

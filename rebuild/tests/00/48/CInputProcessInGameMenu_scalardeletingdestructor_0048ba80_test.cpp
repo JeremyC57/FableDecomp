@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessInGameMenu {
+class CInputProcessInGameMenu { public:
     void* vftable;
     int destroyed;
 };

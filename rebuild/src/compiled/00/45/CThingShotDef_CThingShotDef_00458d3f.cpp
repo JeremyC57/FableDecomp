@@ -16,23 +16,23 @@
 // index is modelled as a small def-index wrapper that defaults to -1 (= no def); a C3DVector with an
 // inline zeroing constructor and a float at 0.0f follow. The PDB CThingShotDef layout (176 bytes, Speed at
 // +64) is from a different build and does not match the retail offsets, so member names are descriptive.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char m_state[0x60 - 4];       // +0x4 .. +0x60: base state, untouched here
     CParentDefClassBase();                 // 0x00430370
 };
 
-struct CDefIndex {                         // a def reference by global index, -1 = none
+class CDefIndex { public:                         // a def reference by global index, -1 = none
     long m_index;
     CDefIndex() : m_index(-1) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) { }
 };
 
-struct CThingShotDef : CParentDefClassBase {
+class CThingShotDef : public CParentDefClassBase { public:
     virtual void v00();                    // own vtable (0x01234E2C)
     CDefIndex m_objectDef;                 // +0x60
     C3DVector m_offset;                    // +0x64

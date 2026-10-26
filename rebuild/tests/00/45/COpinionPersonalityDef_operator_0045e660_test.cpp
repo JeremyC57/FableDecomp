@@ -4,12 +4,12 @@
 // tolerance, copies the owned trait table IN PLACE (both pointers unchanged), never assigns the base.
 static int g_baseAssigns = 0, g_mapAssigns = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     long m_marker;
     CParentDefClassBase& operator=(const CParentDefClassBase& other) { m_marker = other.m_marker; ++g_baseAssigns; return *this; }
 };
-struct COpinionPersonalityTraits {
+class COpinionPersonalityTraits { public:
     float BaseOffset, HeroStatScaling, VillageOpinionScaling, TimeScalingRunIn, TimeScalingRunOut;
     float PeakScalingIfPos, PeakScalingIfNeg, PersistScalingIfPos, PersistScalingIfNeg;
 };
@@ -20,7 +20,7 @@ struct CAttitudeEnabledMap {
     long m_id;
     CAttitudeEnabledMap& operator=(const CAttitudeEnabledMap& other) { m_id = other.m_id; ++g_mapAssigns; return *this; }
 };
-struct COpinionPersonalityDef : CParentDefClassBase {
+class COpinionPersonalityDef : public CParentDefClassBase { public:
     CPersonalityTraitTable* PersonalityTraits;
     bool                    AttitudeEnabledDefaultForNotNone;
     CAttitudeEnabledMap     AttitudeEnabled;

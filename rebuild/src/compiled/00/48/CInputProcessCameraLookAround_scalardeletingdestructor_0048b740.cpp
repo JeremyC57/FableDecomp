@@ -1,4 +1,4 @@
-struct CInputProcessCameraLookAround {
+class CInputProcessCameraLookAround { public:
     void* vftable;
 };
 

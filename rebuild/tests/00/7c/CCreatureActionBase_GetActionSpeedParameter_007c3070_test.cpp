@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCtor = 0, g_strDtor = 0; static const char* g_strText = 0; static long g_strLen = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length) : m_pData((void*)text) { ++g_strCtor; g_strText = text; g_strLen = length; }
     ~CCharString() { ++g_strDtor; m_pData = 0; }
@@ -21,7 +21,7 @@ struct CDefPointer {
     CDefPointer() : m_p(0) { }
 };
 static CSubDef* g_subDef = 0; static int g_getSubDef = 0;
-struct CThing {
+class CThing { public:
     bool GetSubDef(CDefPointer& def)
     {
         ++g_getSubDef;
@@ -34,7 +34,7 @@ struct CIntelligentPointer {
     CThing* m_pItem;
     CThing* operator->() const { return m_pItem; }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {}
     unsigned char _pad04[4];
     CIntelligentPointer PCreature;

@@ -9,12 +9,12 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBordelloEntrance::Main keeps the door locked and shows "closed" on use until the escort quest is done, then sets the sign text and unlocks
 static int g_questAt = 6, g_usedAt = 2, g_clickAt = 4;
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     CScriptThing(const char* n = "") : Name(n) { }
     bool MsgIsUsedBy(const char* who) const { (void)who; return g_frame == g_usedAt; }
 };
-struct CGame {
+class CGame { public:
     void NewScriptFrame() const { ++g_frame; }
     bool MsgIsGameInfoClickedPast() const { return g_frame >= g_clickAt; }
     CScriptThing GetThingWithScriptName(const char* n) const { return CScriptThing(n); }

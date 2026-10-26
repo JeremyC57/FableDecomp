@@ -6,13 +6,13 @@
 // new (null) value, which is why the null store appears twice. `this` rides in esi across the virtual call.
 // Layout: N3DPrimitive::CAnimatedBlock (PDB struct_layouts_egor.tsv, 0x30 bytes): the
 // CIVCountedPointer<CAnimatedBlock::CDeviceIndependent> Data sits at +0x2c -- the only member touched here.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {

@@ -2,7 +2,7 @@
 // creature whose interface map holds the opinion-of-hero component (type 0x4F).
 #include <cstdio>
 
-struct CTCBase { int Tag; };
+class CTCBase { public: int Tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -19,7 +19,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -36,9 +36,9 @@ struct CThing {
         return false;
     }
 };
-struct CAIBrain { CThing* PCreature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
-struct CTCCreatureOpinionOfHero : CTCBase {
+class CAIBrain { public: CThing* PCreature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     bool InteractedFlag;
     bool GreetedFlag;
 };

@@ -11,9 +11,9 @@
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
 // Leaf: ??0CTCGossip
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -32,7 +32,7 @@ struct CIntelligentPointer_CThingAICreature : CBaseIntelligentPointer {   // vta
     CIntelligentPointer_CThingAICreature() : CBaseIntelligentPointer() { }
 };
 
-struct CTCGossip : CTCBase {
+class CTCGossip : public CTCBase { public:
     CIntelligentPointer_CThingAICreature Gossipee;      // +0x0c
     bool                                 MyTurnToSpeak; // +0x14
     virtual void v00();

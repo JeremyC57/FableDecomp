@@ -9,11 +9,11 @@
 // || RF;` (bool: full-register 0/1, 42 bytes) and the nested `if (p) { if (dead) return true; return
 // RF != 0; } return true;` -- every form leaves the `return true` tail after the setne tail.
 // Layout: PDB NCameraModes::CScriptModuleSpline (Index +0x4c .. ReallyFinished +0x58, FinishedSpline +0x59).
-struct CBaseObject;
+class CBaseObject;
 struct CBase;
-struct CGameCameraManager;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CGameCameraManager;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThing_Retail {
     unsigned char  _pad00[0x91];

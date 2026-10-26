@@ -9,10 +9,10 @@
 // Layout: Ego_r.pdb CModeDragonGetHit (0x80): CModeStandBase 0x68, Filter +0x68, PTarget +0x74, Timer +0x7c.
 // Shape: `if (--Timer <= 0)` (the `dec ecx ; mov eax,ecx ; test ; mov [],ecx` form), the creature as a named local (edi),
 //   the action temporary passed by reference (arguments evaluated right to left: GetPItem before the creature push).
-struct CThing;
-struct CCreatureActionBase;
+class CThing;
+class CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -22,15 +22,15 @@ struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
     CThing* GetPItem() const;              // 0x00A01B50
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_SnapDragonOutOf : CCombatActionBase {
+class CCreatureAction_SnapDragonOutOf : public CCombatActionBase { public:
     CCreatureAction_SnapDragonOutOf(CThingCreatureBase* owner, CThing* thing);   // 0x008E49C0
 };
 

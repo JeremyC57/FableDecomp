@@ -12,8 +12,8 @@
 // Shape: labelled exits (fail on the drop arm return, avail before IsTaskAvailable) reproduce retail block order:
 //   the two tail-duplicated false epilogues and the priority test after them. Distance code as the landed
 //   CVillageTaskPickCrops::IsBetterThan (0x00860D00).
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -27,7 +27,7 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item (8 bytes)
@@ -35,7 +35,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vp
     CBaseObject* m_pItem;                          // +0x04
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CVillageTaskCarryCrate {                    // vtable 0x0125A950
+class CVillageTaskCarryCrate { public:                    // vtable 0x0125A950
     virtual ~CVillageTaskCarryCrate();
     virtual void v01() const;                      // slot 1
     virtual long GetTaskType() const;              // slot 2

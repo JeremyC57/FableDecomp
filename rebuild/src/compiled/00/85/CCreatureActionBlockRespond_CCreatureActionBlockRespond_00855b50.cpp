@@ -6,15 +6,15 @@
 // `xor al,al` sit before the vtable store = initialiser-list members. The retail object is 0x138 bytes (PDB 0x14c) so a
 // local layout is used.
 // Leaf: ??0CCreatureAction_BlockRespond
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCreatureAction_BlockBase {
+class CCreatureAction_BlockBase { public:
     virtual ~CCreatureAction_BlockBase();
     unsigned char _body[0x120];                     // +0x04 .. +0x124 (block-base state)
     CCreatureAction_BlockBase(CThingCreatureBase* creature, CThingCreatureBase* target, long actionId, long param);   // 0x00855AF0
 };
 
-struct CCreatureAction_BlockRespond : CCreatureAction_BlockBase {
+class CCreatureAction_BlockRespond : public CCreatureAction_BlockBase { public:
     bool m_useHitPos;                               // +0x124
     unsigned char m_hitPos[0xc];                    // +0x125 C3DVector
     bool m_faceTargetAtStart;                       // +0x131

@@ -20,13 +20,13 @@ struct CCPInfo {
     void (__fastcall* Destroy)(void* object);
     void* Object;
 };
-struct CCompositeSurfaceCache;
+class CCompositeSurfaceCache;
 struct CCountedPointer {                           // CCountedPointer<CCompositeSurfaceCache>: object + count block
     CCompositeSurfaceCache* Object;
     CCPInfo*                Info;
     CCountedPointer(const CCountedPointer& other) : Object(other.Object), Info(other.Info) { if (Info) ++Info->References; }
 };
-struct CCompositeSurfaceInfo : CBase {             // vtable 0x012A8154 (implicit virtual dtor), 12 bytes
+class CCompositeSurfaceInfo : public CBase { public:             // vtable 0x012A8154 (implicit virtual dtor), 12 bytes
     CCountedPointer Cache;                         // +0x04
 };
 struct CSurfacePair {                              // pair<long, CCompositeSurfaceInfo>, 0x10 bytes

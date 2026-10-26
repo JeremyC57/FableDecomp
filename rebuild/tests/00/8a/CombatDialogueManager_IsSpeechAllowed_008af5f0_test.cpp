@@ -33,15 +33,15 @@ struct CTCCombatSpeechTargets {
     const CThingCreatureBase* member;
     bool ContainsCreature(const CThingCreatureBase& c) { return &c == member; }
 };
-struct CPlayer { CThingCreatureBase* hero; CThingCreatureBase* GetHeroThing() const { return hero; } };
-struct CPlayerManager { CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
-struct CWorld { CPlayerManager* PlayerManager; int frame; int GetFrameNumber() { return frame; } };
+class CPlayer { public: CThingCreatureBase* hero; CThingCreatureBase* GetHeroThing() const { return hero; } };
+class CPlayerManager { public: CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
+class CWorld { public: CPlayerManager* PlayerManager; int frame; int GetFrameNumber() { return frame; } };
 static CWorld g_world;
 static CWorld* g_pWorld = &g_world;
 static int g_framesPerSecond = 30;
-struct CCombatDialogueDef { float MinTimeBetweenSpeech, MinTimeBetweenSpeechRepeat, MinDelayAfterBattleCry; };
+class CCombatDialogueDef { public: float MinTimeBetweenSpeech, MinTimeBetweenSpeechRepeat, MinDelayAfterBattleCry; };
 struct CPtr { CThingCreatureBase* p; CThingCreatureBase* Get() const { return p; } CThingCreatureBase* operator->() const { return p; } };
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     const CCombatDialogueDef* PDialogueDef;
     CPtr PCurrentTalker;
     int LastSpeechFrame, LastBattleCryFrame;

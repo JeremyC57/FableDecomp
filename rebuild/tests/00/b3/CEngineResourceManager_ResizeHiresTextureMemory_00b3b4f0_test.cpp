@@ -5,21 +5,21 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00b3b4f0_TEST FAIL\n"); return 1; } } while (0)
 
-struct CPixelFormat { unsigned int m_format; void Initialise(unsigned int f) { m_format = f; } };
+class CPixelFormat { public: unsigned int m_format; void Initialise(unsigned int f) { m_format = f; } };
 static int CalculateTextureSize(unsigned int w, unsigned int h, bool mips, const CPixelFormat& f)
 {
     int size = (f.m_format == 0x31545844u) ? (int)(w * h / 2) : (int)(w * h * 4);
     return mips ? size + size / 3 : size;
 }
-struct CTextureManager { int size; int count; int levelSeen; bool ResizePoolByFormat(int s, int c) { size = s; count = c; return c > 0; } };
-struct CGraphicDataBank {
+class CTextureManager { public: int size; int count; int levelSeen; bool ResizePoolByFormat(int s, int c) { size = s; count = c; return c > 0; } };
+class CGraphicDataBank { public:
     int m_level; CTextureManager* m_pTextureManager; int sceneChanges; int setCalls;
     void ChangeScene() { ++sceneChanges; }
     void SetLevel(int l) { m_level = l; ++setCalls; if (m_pTextureManager) m_pTextureManager->levelSeen = l; }
 };
-struct CSurface { int flushes; void FlushCache() { ++flushes; } };
+class CSurface { public: int flushes; void FlushCache() { ++flushes; } };
 static CSurface g_surface = { 0 };
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     CGraphicDataBank* m_pGraphicBank; CGraphicDataBank* m_pMainGraphicBank;
     bool ResizeHiresTextureMemory(int sizeKB)
     {

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of 0x00656C77: CQuestInfoElementTick(text, ticked, scale).
 static float g_scale = 0.0f; static int g_copies = 0;
-struct CWideString { const unsigned short* m_pData; CWideString(const unsigned short* p) : m_pData(p) {} CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_copies; } };
+class CWideString { public: const unsigned short* m_pData; CWideString(const unsigned short* p) : m_pData(p) {} CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_copies; } };
 struct CQuestInfoElement { virtual ~CQuestInfoElement() {} float Scale; CQuestInfoElement(float scale) : Scale(scale) { g_scale = scale; } };
 struct CQuestInfoElementTick : CQuestInfoElement {
     long Graphic; CWideString Text; bool Ticked;

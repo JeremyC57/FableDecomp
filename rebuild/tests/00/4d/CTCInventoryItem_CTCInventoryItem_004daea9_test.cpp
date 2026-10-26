@@ -6,16 +6,16 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CTCInventoryBase;
-struct CInventoryItemDef;
-struct CTCBase {
+class CInventoryItemDef;
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing& owner) : ParentThing(&owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {}
 };
 struct CInventoryItemDefPointer { const CInventoryItemDef* Object; CInventoryItemDefPointer() : Object(0) {} };
-struct CTCInventoryItem : CTCBase {
+class CTCInventoryItem : public CTCBase { public:
     CInventoryItemDefPointer PDef;
     CTCInventoryBase* PInventory;
     u64 InventoryUIDToAttachTo;

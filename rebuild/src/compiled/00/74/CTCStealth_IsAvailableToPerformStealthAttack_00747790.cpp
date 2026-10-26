@@ -51,13 +51,13 @@ public:
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsCapableOfStealthAttackBy(CThing* thing);   // 0x005DAD60
 };
-struct CTCStealth {
+class CTCStealth { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool IsAvailableToPerformStealthAttack(CThing* target);

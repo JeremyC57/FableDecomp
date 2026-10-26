@@ -5,8 +5,8 @@
 // Key-compare helper (CCharString::operator< or equivalent): a real C++ member
 // function taking 'this' in ecx and the single argument on the stack (retail
 // call site pushes exactly one dword and does not touch edx).
-struct CCharString
-{
+class CCharString
+{ public:
     bool Less(CCharString* _Right);
 };
 

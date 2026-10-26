@@ -1,13 +1,13 @@
 // Behaviour test for CTCOwnedEntity::OnForceRecreateUID @ 0x007E8370: copy the UID of a live owner only.
 #include <cstdio>
-struct CThing { unsigned long uidLow, uidHigh; unsigned char m_flags91; };
+class CThing { public: unsigned long uidLow, uidHigh; unsigned char m_flags91; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_flags91 & 1)) return true; }
     return false;
 }
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     CBaseIntelligentPointer POwner;
     unsigned long OwnerUIDLow, OwnerUIDHigh;
     void OnForceRecreateUID()

@@ -7,10 +7,10 @@
 // (+0x48) is fetched with GetPItem (0x00A01B50) three times (non-null, all five low bits of the
 // thing's +0x6c word set, non-null again) and the wrapped CThingFilter_In2DRange (0x006A76B0) decides.
 // The manager is spilled to the `push ecx` word because ebx is reused for the third filter.
-struct CThing;
-struct CMessageEvent;
+class CThing;
+class CMessageEvent;
 
-struct CBaseObject {
+class CBaseObject { public:
     unsigned char _pad[0x6c];
     unsigned long m_flags6c;                       // +0x6c
 };
@@ -31,13 +31,13 @@ struct CMessageList {
     SMessageNode* m_pHead;
 };
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     bool operator()(CMessageEvent* event) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     bool operator()(CMessageEvent* event) const;   // 0x006AF200
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     bool operator()(CThing* thing) const;          // 0x006A76B0
 };
 
@@ -46,7 +46,7 @@ inline const CBaseIntelligentPointer& GetOriginator(CMessageEvent* event)   // P
     return *(const CBaseIntelligentPointer*)((char*)event + 0x48);
 }
 
-template <class F> struct CMessageEventFilter_ThingSearchFilter {
+template <class F> class CMessageEventFilter_ThingSearchFilter { public:
     const F* m_pFilter;
     bool operator()(CMessageEvent* event) const
     {
@@ -60,15 +60,15 @@ template <class F> struct CMessageEventFilter_ThingSearchFilter {
     }
 };
 
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
     bool operator()(CMessageEvent* event) const { return (*m_pFirst)(event) && (*m_pSecond)(event) && (*m_pThird)(event); }
 };
 
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                            // +0x00
     CMessageList Messages;                         // +0x04
     template <class TFilter> CMessageEvent* FindMostRecentMessage(const TFilter& filter)

@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing { unsigned char Dead : 1; };
+class CThing { public: unsigned char Dead : 1; };
 struct CIntelligentPointer { CThing* m_pItem; int calls; CThing* Get() { ++calls; return m_pItem; } };
-struct CKrakenTentacleDef { float StrikeDelaySeconds; };
+class CKrakenTentacleDef { public: float StrikeDelaySeconds; };
 static long g_framesPerSecond = 15;
 static long g_frame = 1000;
 static long GetCurrentFrame() { return g_frame; }
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     const CKrakenTentacleDef* PTentacleDef; CIntelligentPointer PKraken; long QueuedStrikeTick;
     void QueueStrikeDamage()
     {

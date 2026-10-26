@@ -5,12 +5,12 @@
 #include <cstring>
 #include <string>
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 struct CPhysics { CRightHandedSet Last; int Calls; void SetFacingAnglesFromRHSet(const CRightHandedSet& s) { Last = s; ++Calls; } };
-struct CThing;
-struct CTCBattleCharge { float Distance; long Level; CThing* PTarget; CThing* Aim; bool Z; void SetPTarget(CThing* t, bool z) { Aim = t; Z = z; } };
-struct CThing {
+class CThing;
+class CTCBattleCharge { public: float Distance; long Level; CThing* PTarget; CThing* Aim; bool Z; void SetPTarget(CThing* t, bool z) { Aim = t; Z = z; } };
+class CThing { public:
     unsigned char m_state; bool Dead; CPhysics Physics; CTCBattleCharge TC; std::string Added;
     CTCBattleCharge* AddTC(const std::string& name) { Added = name; return &TC; }
 };

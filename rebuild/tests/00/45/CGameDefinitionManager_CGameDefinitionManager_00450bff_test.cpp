@@ -11,8 +11,8 @@ struct CDefPointer {
     ~CDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } }
 };
 static int g_baseDestroyed = 0;
-struct CDefinitionManager { ~CDefinitionManager() { g_order[g_n++] = 99; ++g_baseDestroyed; } };
-struct CGameDefinitionManager : CDefinitionManager {
+class CDefinitionManager { public: ~CDefinitionManager() { g_order[g_n++] = 99; ++g_baseDestroyed; } };
+class CGameDefinitionManager : public CDefinitionManager { public:
     CDefPointer m_pDef0, m_pDef1, m_pDef2, m_pDef3;
     ~CGameDefinitionManager() {}
 };

@@ -10,14 +10,14 @@
 //        return re-calls GetPosition (no CSE across a virtual call); the shared `fld 0.0f` exit.
 // Layout: retail CDraggableInto 0x15C (PDB minus 0x30): the height word at +0xD0 and the pointer at +0x148 are named
 //         descriptively (engine/CText.h pads them).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 extern const float g_zero;                                 // 0x0122DEDC
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     C2DVector GetUIScale();                                // 0x0041CF47
 };
 }

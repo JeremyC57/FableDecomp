@@ -10,7 +10,7 @@
 //          reload it (`fstp ; fld`) instead of `fst`.
 extern "C" double __cdecl fabs(double);
 inline float fabsf(float x) { return (float)fabs(x); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -22,7 +22,7 @@ struct CSurfaceHit {                                // descriptive: the probe's 
     CSurfaceHit() : Fraction(1.0f) {}
 };
 class CTCPhysicsBase;
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* Physics;                        // +0x60
 };

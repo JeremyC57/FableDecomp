@@ -17,9 +17,9 @@
 //   The text-load arm ends in `return` rather than `break`: with `break` VC7.1 pops the ebx it saved for that arm
 //   (the value pointer) before the shared traits-dtor tail; with `return` the arm keeps its own dtor copy and the
 //   `pop ebx` follows it, as in retail.
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
-struct CCharString {
+class CDataOutputStream;
+class CMemoryDataInputStream;
+class CCharString { public:
     void* m_pData;
 };
 struct CCharStringSet {                           // STLport set<CCharString>: {header, count, compare}, 12 bytes in retail
@@ -27,7 +27,7 @@ struct CCharStringSet {                           // STLport set<CCharString>: {
     unsigned long m_count;
     long          m_compare;
 };
-struct CFaction {
+class CFaction { public:
     CCharString    Name;                          // +0x00
     CCharStringSet AlliedFactions;                // +0x04
     CCharStringSet EnemyFactions;                 // +0x10
@@ -51,7 +51,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

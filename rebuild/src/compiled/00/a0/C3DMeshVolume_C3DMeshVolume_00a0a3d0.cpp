@@ -10,7 +10,7 @@
 // class; C3DMeshVolume (PDB: +0 Name, +4 ConvexVolume = CCountedPointer<CContainmentVolume>, 12 bytes)
 // is exactly that and its LoadBinary (0x00A2E860) resets the same pointer, so the body is landed under
 // that name. Every other {CCharString, CCountedPointer} class shares the COMDAT-folded body.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                         // 0x0099E4B0
 };
@@ -21,7 +21,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     CCharString     Name;                  // +0
     CCountedPointer ConvexVolume;          // +4  CCountedPointer<CContainmentVolume>
     C3DMeshVolume();

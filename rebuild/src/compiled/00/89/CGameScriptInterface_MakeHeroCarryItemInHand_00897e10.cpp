@@ -19,7 +19,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -41,7 +41,7 @@ struct CInterfaceMap_Retail {
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CScriptThing;
+class CScriptThing;
 struct CThing_Retail {
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
@@ -74,7 +74,7 @@ struct CThing_Retail {
     }
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
-struct CScriptThing {
+class CScriptThing { public:
     void* _vptr;
     void* PImp_Data;
     void* PImp_Info;
@@ -96,9 +96,9 @@ __forceinline CThing_Retail* FindItemInStore(CThing_Retail* thing, long interfac
         store = (CTCInventoryStore*)thing->GetInterface(interfaceType);
     return store->FindItemOfType(defIndex);
 }
-struct CTCCarrying { CThing_Retail* RemoveThingFromPrimarySlot(bool b); };   // 0x006A1E00
-struct CPlayer { CThing_Retail* GetHeroThing(); };      // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
+class CTCCarrying { public: CThing_Retail* RemoveThingFromPrimarySlot(bool b); };   // 0x006A1E00
+class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
 
 #define VPAD1(a) virtual void a();
@@ -109,7 +109,7 @@ struct CDefinitionManager_Retail { long GetDefGlobalIndexFromName(const CCharStr
 #define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD128(pa) VPAD8(pb) VPAD4(pc) VPAD2(pd)           // slots 0..141
     // slot 142: the PDB overload MakeHeroCarryItemInHand(const CScriptThing&, bool, bool) (0x00897FA0)
     virtual void MakeHeroCarryScriptThingInHand(const CScriptThing& item, bool a, bool b) const;

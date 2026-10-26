@@ -21,7 +21,7 @@ struct CDefBase : CDefVirtual {
     long m_count;
     void Release() { if (--m_count == 0) Destroy(); }
 };
-struct CVillagePeopleDef : CDefBase {
+class CVillagePeopleDef : public CDefBase { public:
     unsigned char _pad_0x08[0x8c];
     long Guard;
     long MaleGhost;
@@ -39,7 +39,7 @@ struct CDefPointer {
     operator bool() const { return m_p != 0; }
 };
 static CVillagePeopleDef* g_people = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_00512fe0(CDefPointer& out)
     {
         ++g_getSubDef; g_countAtGet = m_count;
@@ -54,12 +54,12 @@ struct CThingDefPointer {
     ~CThingDefPointer() { if (m_p) m_p->Release(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x70];
     CThingDefPointer PDef;
     CThing(CDefClassBase* def) : PDef(def) { }
 };
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;
     CThing*       ParentThing;
     unsigned char _pad_0x08[0x9c];

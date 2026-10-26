@@ -23,21 +23,21 @@
 //   CFileFormatLevel packed (as GetLevelDimensions); CMemoryFile as the landed OpenFromFile 0x009E9420.
 extern "C" void free(void* block);                               // 0x00BFEA14
 
-struct CASuspendableProcess;
-struct CCharString {
+class CASuspendableProcess;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);             // 0x0099EBF0
     CCharString(const CCharString& other);                       // 0x0099EC30
     ~CCharString();                                              // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                               // 0x0099AED0
     ~CWideString();                                              // 0x0099B510
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
-struct CAFile {
+class CAFile { public:
     CAFile();                                                    // 0x0099A2F0
     virtual ~CAFile();                                           // slot 0 (body 0x0099A300)
     virtual void Slot01(); virtual void Slot02(); virtual void Slot03(); virtual void Slot04();
@@ -53,7 +53,7 @@ struct CArrayUChar {
     CArrayUChar() : m_start(0), m_finish(0), m_endOfStorage(0) { }
     ~CArrayUChar() { if (m_start != 0) free(m_start); }
 };
-struct CMemoryFile : CAFile {                                    // vtable 0x0122E0FC
+class CMemoryFile : public CAFile { public:                                    // vtable 0x0122E0FC
     long          AccessType;                                    // +0x04
     long          Position;                                      // +0x08
     long          Length;                                        // +0x0C
@@ -67,7 +67,7 @@ struct CMemoryFile : CAFile {                                    // vtable 0x012
 };
 
 #pragma pack(push, 1)
-struct CFileFormatLevel {
+class CFileFormatLevel { public:
     unsigned long ByteLength;                                    // +0x00 CReplaceSerialise
     unsigned char SerialiseVersionNumber;                        // +0x04
     long          MapDataOffset;                                 // +0x05
@@ -85,24 +85,24 @@ struct CNavigationSection {                                      // the section 
 };
 struct CCharStringSet;                                           // std::set<CCharString>
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapLoadedWithSectionName(long map, const CCharString& name) const;   // 0x00A14EE0
     bool IsNavigationMapLoaded(long map) const;                  // 0x00A14E80
     void RemoveNavigationMap(long map);                          // 0x00A155D0
     void AddNavigationMap(long map, const C2DBoxI& area, const CCharString& section, CAFile& file,
                           CASuspendableProcess* process);        // 0x00A157C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x48];
     CNavigatorManager* NavigatorManager;                         // +0x48
 };
-struct CMapInfo {                                                // 0x48 bytes
+class CMapInfo { public:                                                // 0x48 bytes
     C2DBoxI       Area;                                          // +0x00
     unsigned char _rest[0x38];
 };
 struct CMapInfoArray { CMapInfo* Start; CMapInfo* Finish; CMapInfo* EndOfStorage; };
 
-struct CWorldMap {
+class CWorldMap { public:
     void*         m_pVtable;
     long          m_04;
     CWorld*       World;                                         // +0x08

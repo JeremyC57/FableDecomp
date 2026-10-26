@@ -12,12 +12,12 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 
-struct CArenaRoundDef;
+class CArenaRoundDef;
 
 struct CArenaRoundVector {                           // STLport vector<CArenaRoundDef> (12 bytes in retail)
     CArenaRoundDef* _M_start;
@@ -26,7 +26,7 @@ struct CArenaRoundVector {                           // STLport vector<CArenaRou
     CArenaRoundVector& operator=(const CArenaRoundVector& other);   // 0x00F25980
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x1044];
     CArenaRoundVector ArenaRounds;                   // +0x1044
 };

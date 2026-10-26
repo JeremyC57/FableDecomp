@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CInputProcessManager { void* vptr; };
+class CInputProcessManager { public: void* vptr; };
 static int g_sub=0, g_base=0;
 void SubCleanup(CInputProcessManager* s){ g_sub++; }
 void BaseDtor(CInputProcessManager* s){ g_base++; }

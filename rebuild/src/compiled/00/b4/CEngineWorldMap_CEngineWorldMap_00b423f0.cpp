@@ -14,14 +14,14 @@
 //   tables are not in this build). The settings record is modelled locally (quality +0x5c, flag word +0x60).
 // Shape: member objects in declaration order (inline CArray/list/bank-file constructors), the scalars assigned in the body.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CEngineComponent {                          // vtable 0x012A2544
+class CEngineComponent { public:                          // vtable 0x012A2544
     virtual void v00();
     long GlobalPointerAddress;                                      // +0x04
     bool m_enabled;                                // +0x08
     bool KeepAlive;                                      // +0x09
     CEngineComponent();                            // 0x00B59710
 };
-template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                 // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
@@ -42,7 +42,7 @@ template <class T> struct list {                   // STLport list, 4 bytes
         _M_node = node;
     }
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                 // 0x0099AED0
 };
@@ -66,8 +66,8 @@ struct CEngineWorldMapSettings {                   // local model of the setting
     unsigned long Flag0 : 1;                       // +0x60 bit 0
     unsigned long EnableMinimumStaticMapRebuild : 1;   // +0x60 bit 1
 };
-struct CEngineMap;
-struct C2DBoxI;
+class CEngineMap;
+class C2DBoxI;
 class CIDrawWorld;
 class CIDrawWorldMap;
 class CEngineWorldMap : public CEngineComponent {  // vtable 0x012A1F50

@@ -5,7 +5,7 @@
 // @ 0x00A01B90 (literal 0). Vtable 0x01238C6C (rtti-vtables.tsv: CIntelligentPointer, a propagated template
 // name); the manifest module CCombatAbilityUseProjectileWeaponDef is a propagated label and wrong.
 // Same body as the tagged constructor @ 0x00883A30 without the (unused) stack argument: plain `ret`.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

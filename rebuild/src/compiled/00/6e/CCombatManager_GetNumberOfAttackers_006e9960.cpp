@@ -13,7 +13,7 @@
 // 0x30 bytes with its 12-byte vector; the STLport map is {header, count, compare}). The name is inferred.
 // Shape: the success path is the `if` body (the `xor eax,eax` exit sits at the end); the 64-bit key is a
 // local copied high word first into the 8-byte frame and passed by const reference.
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                              // +0x18 (CThing)
     bool IsCombatant();                                     // 0x00662430
@@ -40,7 +40,7 @@ struct CCombatantMap {                                      // STLport map<unsig
     SCombatantNode* FindNode(const unsigned __int64& key);  // 0x006F0250
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void*         __vftable;                                // +0x00
     unsigned char RegisteredCombatSequences[0xc];           // +0x04
     CCombatantMap Combatants;                               // +0x10

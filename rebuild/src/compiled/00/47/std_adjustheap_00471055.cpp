@@ -12,7 +12,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;                                // +0x00
     long LastSound;                                 // +0x04
 };
@@ -25,7 +25,7 @@ template <class T1, class T2> struct pair {
 };
 }
 
-template <class Key, class Value> struct CKeyPairCompareLess {
+template <class Key, class Value> class CKeyPairCompareLess { public:
     __forceinline bool operator()(const std::pair<Key, Value>& a, const std::pair<Key, Value>& b) const { return a.first < b.first; }
 };
 

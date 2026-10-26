@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _flags148_0 : 6;
     unsigned char Flag148Bit6 : 1;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     CDefPointer<CThingCreatureDef>  PDef;
     unsigned char vfunc_75();
 };

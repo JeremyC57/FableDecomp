@@ -11,7 +11,7 @@
 // arm opens with its own termination return (no common value is live across the call here, so VC does not hoist
 // it); the new-moon difference is written out twice (a named local swaps eax/ecx in the compare and the
 // registers of the block after it); every comment is guarded by a second termination test and built from an implicit conversion temporary.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_FireHeartScript : CScriptBase {
+class CQ_FireHeartScript : public CScriptBase { public:
     void*         GSI;                                  // +0x40
     void*         PMasterData;                          // +0x44
     unsigned char _pad048[0x24];                        // +0x48 .. +0x6c (mission flags, cutscene maps, prophet counts)

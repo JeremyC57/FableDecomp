@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCFadeOutAndIn {
+class CTCFadeOutAndIn { public:
     bool FadingOut; bool FadingIn; float Alpha; long FramesLeftForFade;
     bool IsFading() const { return FadingIn || FadingOut; }
 };

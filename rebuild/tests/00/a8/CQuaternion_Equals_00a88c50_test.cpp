@@ -4,7 +4,7 @@
 
 const float g_QuaternionEpsilon = 0.0001f;
 
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     bool Equals(const CQuaternion& quaternion) const
     {

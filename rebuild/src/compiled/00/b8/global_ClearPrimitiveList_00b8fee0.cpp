@@ -1,5 +1,5 @@
-struct CEngineInternalPrimitiveBase
-{
+class CEngineInternalPrimitiveBase
+{ public:
     char pad0[0x20];
     void* GridCell;      // +0x20
     char pad1[0x14];

@@ -2,22 +2,22 @@
 #include <cstdio>
 #include <string.h>
 
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return strcmp(name.m_text, "EXPRESSION_HEROIC_STANCE") == 0 ? 321 : -1; }
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager s; return s; }
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     long m_type; unsigned long m_delay; float m_px; long m_data; int m_calls;
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data)
     {
@@ -27,9 +27,9 @@ struct CMessageEventManager {
     }
 };
 
-struct CWorld { CMessageEventManager* PMessageEventManager; };
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CWorld* World;
     void SetExpressionPerformed(const CCharString& expression)
     {

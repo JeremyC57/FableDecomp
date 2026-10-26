@@ -11,7 +11,7 @@
 // Shape: the position is read (inline GetStringPos) before the item is built; the bool result is kept in bl across
 // SetStringPos and the item's destructor.
 // Leaf: ?ParserIsDriveLabelNext@CAFile
-struct CCharStringData;
+class CCharStringData;
 class CCharString
 {
 public:

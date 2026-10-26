@@ -11,10 +11,10 @@
 // = a long result (`return find(name) != end();`).
 // No engine header exists for CScriptManager; the map is modelled with its retail layout (12-byte
 // vector at +0x18, element = SScriptBindingPair {CCharString name; CCountedPointer binding}, 12 bytes).
-struct CCPPointerInfo;
-struct CEntityScriptBindingBase;
+class CCPPointerInfo;
+class CEntityScriptBindingBase;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     bool FastCompare(const CCharString& other) const;     // 0x009E6530
 };

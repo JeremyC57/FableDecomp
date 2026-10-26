@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCTavernGameShoveHaPenny::vfunc_30 (0x007CF460).
 static int g_release = 0, g_reset = 0, g_base = 0;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ReleaseScriptedControl() { ++g_release; }
     void ResetCamera() { ++g_reset; }
 };
@@ -10,7 +10,7 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera) { *camera = &g_camera; return true; }
     virtual ~CCameraManagerSource() {}
 };
-struct CWorld {
+class CWorld { public:
     CCameraManagerSource* m_pCameraSource;
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };

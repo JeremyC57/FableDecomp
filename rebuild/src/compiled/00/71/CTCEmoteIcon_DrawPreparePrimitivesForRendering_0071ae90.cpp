@@ -58,14 +58,14 @@ public:
     }
 };
 
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
-struct CPlayerGui {
+class CPlayerGui { public:
     bool IsEmoteDrawingAllowed() const;            // 0x004374F0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -76,7 +76,7 @@ struct CThing {
     virtual bool IsDrawable();                     // slot 27 (+0x6c)
 };
 
-struct CTCEmoteIcon : CTCBase {
+class CTCEmoteIcon : public CTCBase { public:
     long          ActiveTimer;                     // +0x0c
     void*         EmoteText;                       // +0x10 CWideString
     long          EmoteIcon;                       // +0x14

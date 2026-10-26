@@ -12,8 +12,8 @@
 // exit before the shared `xor al,al` tail. The bar member addresses are formed from esi with the last one
 // as `add esi,78h`. Members are the PDB names (struct_layouts_egor.tsv); no engine header for the class.
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -36,7 +36,7 @@ struct CThing {
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
 
-struct CTCTavernBar {                           // interface type 0xb9
+class CTCTavernBar { public:                           // interface type 0xb9
     bool GetPickupSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex,
         long* barIndex, bool reserve);          // 0x007BA000
 };
@@ -47,12 +47,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

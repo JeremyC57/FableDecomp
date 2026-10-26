@@ -4,17 +4,17 @@
 #define FABLE_ENGINE_CAISTATEGROUPBASE_H
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CTHINGAICREATURE_H
-struct CThingAICreature {};
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { void* __vftable; CAIBrain* PBrain; };
+class CThingAICreature { public:};
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: void* __vftable; CAIBrain* PBrain; };
 #endif
 // CAIStateGroup_GameMaster::InitCreaturePosition() -- acquire work building and seat, place the creature, then run replacement cleanup.
 // Grade: RELOCATION_MATCH -- explicit temporary lifetime and placement receiver reproduce retail ordering.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
-struct C3DVector { float X,Y,Z; };
-struct CThing { unsigned char _beforeDead[0x91]; unsigned char Dead:1; };
+class C3DVector { public: float X,Y,Z; };
+class CThing { public: unsigned char _beforeDead[0x91]; unsigned char Dead:1; };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04

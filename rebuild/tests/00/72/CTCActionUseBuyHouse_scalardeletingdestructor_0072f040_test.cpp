@@ -15,7 +15,7 @@ struct CTCBase_Calls {
     void RemoveFromGlobalTCs() { IsInGlobalUpdateTCs = false; Log('R'); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long m_refCount;
     char m_tag;
     CDefPointeeBase(char tag) : m_refCount(1), m_tag(tag) {}
@@ -25,7 +25,7 @@ struct CDefPointeeBase {
 static int g_freed = 0;
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) {}
     ~CDefPointer()
@@ -39,7 +39,7 @@ struct CDefPointer {
     }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {
+class CTCActionUseBase : public CTCBase_Calls { public:
     CDefPointer<CDefPointeeBase> PActionUseDef;
 };
 

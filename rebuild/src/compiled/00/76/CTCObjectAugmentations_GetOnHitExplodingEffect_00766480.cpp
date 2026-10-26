@@ -6,7 +6,7 @@
 // FireProjectileOnHitEffect +0x7c, LightningProjectileOnHitEffect +0x80, FireAndLightningProjectileOnHitEffect +0x84.
 // Shape: a zero-initialised result local (edi = 0 up front) assigned in an if/else-if chain; each arm returns through its
 // own epilogue, the fall-through returns the local.
-struct CObjectAugmentationsDef {
+class CObjectAugmentationsDef { public:
     unsigned char _pad00[0x7c];
     long          FireProjectileOnHitEffect;        // +0x7c
     long          LightningProjectileOnHitEffect;   // +0x80
@@ -18,7 +18,7 @@ struct CTCBase_00766480 {
     unsigned char _pad04[8];
 };
 
-struct CTCObjectAugmentations : CTCBase_00766480 {
+class CTCObjectAugmentations : public CTCBase_00766480 { public:
     const CObjectAugmentationsDef* PDef;            // +0x0c CDefPointer
     bool HasCombinationOfAugmentations(long types) const;   // 0x00766050
     bool HasAugmentationOfType(long type) const;    // 0x007660C0

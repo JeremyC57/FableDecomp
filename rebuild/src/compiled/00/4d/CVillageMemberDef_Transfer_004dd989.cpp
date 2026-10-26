@@ -1,5 +1,5 @@
 #include "engine/CVillageMemberDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer_0043314a(void* sub); };
+class CPersistContext { public: void Xfer_0043314a(void* sub); };
 struct CVillageMemberDef_Methods : CVillageMemberDef {
     void Transfer(CPersistContext* ctx);
 };

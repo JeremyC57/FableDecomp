@@ -5,7 +5,7 @@ struct CharBuf {
     unsigned char flags; // offset 0xc
 };
 
-struct CCharString {
+class CCharString { public:
     CharBuf* buf; // offset 0
 };
 

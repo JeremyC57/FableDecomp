@@ -1,7 +1,7 @@
 // Behaviour test for CShaderRenderManager::SetAmbientColour (0x00988680): colour stored with A = 1.0f, flags |= 4.
 #include <cstdio>
-struct CRGBFloatColour { float R, G, B, A; };
-struct CShaderRenderManager {
+class CRGBFloatColour { public: float R, G, B, A; };
+class CShaderRenderManager { public:
     CRGBFloatColour AmbientColour;
     unsigned long UpdateFlags;
     void SetAmbientColour(const CRGBFloatColour& colour)

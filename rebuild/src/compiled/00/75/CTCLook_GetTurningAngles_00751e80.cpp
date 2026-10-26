@@ -17,7 +17,7 @@
 #pragma intrinsic(atan2, fmod, fabs)
 
 extern float g_epsilon_0129ba3c;                                                      // 0x0129BA3C (1e-4f)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     __forceinline bool operator!=(const C3DVector& o) const
     {
@@ -29,7 +29,7 @@ struct C3DVector {
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5)
@@ -38,15 +38,15 @@ struct CTCPhysicsBase {
     void*     m_tcBase[2];                      // +0x04 CTCBase body
     C3DVector Position;                         // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     FILL10(0) FILL10(1) FILL10(2) FILL10(3) FILL10(4)
     virtual bool BlocksBodyTurning();           // slot 50 (+0xC8)
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char _pad92[0x100 - 0x92];
@@ -76,7 +76,7 @@ __forceinline float WrapAngle(float angle)
     return angle;
 }
 
-struct CTCLook {
+class CTCLook { public:
     void*               __vftable;              // +0x00
     CThing*             ParentThing;            // +0x04
     unsigned char       _pad08[0x10 - 0x08];

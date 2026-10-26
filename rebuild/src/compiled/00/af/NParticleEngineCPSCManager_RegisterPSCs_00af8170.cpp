@@ -14,7 +14,7 @@
 // (temporaries pass the ctor's eax instead) and the destructors run key, info.GUIName, GUI-name. Temporaries in the
 // call (explicit or implicit const char* conversions) build the strings in the wrong order. The repeated type
 // constants 1 and 2 are cached in edi by the compiler.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -28,18 +28,18 @@ typedef CPSCBase* (__cdecl *PSCAllocFunc)();
 
 enum EPSCType { PSC_TYPE_0, PSC_TYPE_1, PSC_TYPE_2, PSC_TYPE_3, PSC_TYPE_4 };
 
-struct CPSCRenderSprite   { static CPSCBase* Alloc(); };   // 0x00AF7D10
-struct CPSCRenderMesh     { static CPSCBase* Alloc(); };   // 0x00AF7D80
-struct CPSCSingleSprite   { static CPSCBase* Alloc(); };   // 0x00AF7DF0
-struct CPSCUpdateNormal   { static CPSCBase* Alloc(); };   // 0x00AF7E60
-struct CPSCEmitterGeneric { static CPSCBase* Alloc(); };   // 0x00AF7ED0
-struct CPSCOrbit          { static CPSCBase* Alloc(); };   // 0x00AF7F40
-struct CPSCAttractor      { static CPSCBase* Alloc(); };   // 0x00AF7FB0
-struct CPSCLight          { static CPSCBase* Alloc(); };   // 0x00AF8020
-struct CPSCSpline         { static CPSCBase* Alloc(); };   // 0x00AF8090
-struct CPSCDecalRenderer  { static CPSCBase* Alloc(); };   // 0x00AF8100
+class CPSCRenderSprite   { public: static CPSCBase* Alloc(); };   // 0x00AF7D10
+class CPSCRenderMesh     { public: static CPSCBase* Alloc(); };   // 0x00AF7D80
+class CPSCSingleSprite   { public: static CPSCBase* Alloc(); };   // 0x00AF7DF0
+class CPSCUpdateNormal   { public: static CPSCBase* Alloc(); };   // 0x00AF7E60
+class CPSCEmitterGeneric { public: static CPSCBase* Alloc(); };   // 0x00AF7ED0
+class CPSCOrbit          { public: static CPSCBase* Alloc(); };   // 0x00AF7F40
+class CPSCAttractor      { public: static CPSCBase* Alloc(); };   // 0x00AF7FB0
+class CPSCLight          { public: static CPSCBase* Alloc(); };   // 0x00AF8020
+class CPSCSpline         { public: static CPSCBase* Alloc(); };   // 0x00AF8090
+class CPSCDecalRenderer  { public: static CPSCBase* Alloc(); };   // 0x00AF8100
 
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     PSCAllocFunc AllocFunc;        // +0x00
     EPSCType     ComponentType;    // +0x04
     CCharString  GUIName;          // +0x08
@@ -56,7 +56,7 @@ struct CRegisteredPSCMap {         // CVectorMap<CCharString, CRegisteredPSCInfo
     void Add(const CCharString& key, const CRegisteredPSCInfo& info);   // 0x00AF2910
 };
 
-struct CPSCManager {
+class CPSCManager { public:
     CRegisteredPSCMap RegisteredPSCs;   // +0x00
     void RegisterPSCs();
 };

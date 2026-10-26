@@ -3,7 +3,7 @@
 #include <cstdio>
 static long g_frame = 50;
 long GFGetCurrentFrame() { return g_frame; }
-struct CThing { int id; };
+class CThing { public: int id; };
 struct IP { const CThing* item; IP(const CThing* t) : item(t) {} };
 struct SelfTerminate {
     long WFDuration; long EndFrame;

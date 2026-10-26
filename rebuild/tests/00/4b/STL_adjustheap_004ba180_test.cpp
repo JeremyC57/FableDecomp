@@ -5,7 +5,7 @@
 
 // CCharString model: a nullable payload pointer; operator< is the retail inline (same payload -> false,
 // null this -> true, null other -> false, else the payload compare); FastCompare = length first, then bytes.
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p(0) {}
     CCharString(const char* s) : p(s) {}

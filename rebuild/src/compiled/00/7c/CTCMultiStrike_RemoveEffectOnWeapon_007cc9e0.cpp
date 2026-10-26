@@ -54,7 +54,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCMultiStrike {
+class CTCMultiStrike { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x4c - 0x08];

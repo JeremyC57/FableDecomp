@@ -55,13 +55,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -195,8 +195,8 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -204,8 +204,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -301,14 +301,14 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -383,7 +383,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CCameraModeDef {
+class CCameraModeDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -494,7 +494,7 @@ FABLE_STATIC_ASSERT(offsetof(CCameraModeDef, ViewHeroGroundHeightOffset) == 0xd8
 #endif // FABLE_ENGINE_CCAMERAMODEDEF_H
 
 #undef CCameraModeDef
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; // A01B50 reads info+0 and may release stale info
 struct CCameraModeDefNative;
 struct CCameraModeVTable {void* Destructor;void (__fastcall* Destroy)(CCameraModeDefNative*);};
@@ -508,10 +508,10 @@ struct CCameraDefPointer {
 struct CManualScriptModule;
 struct CManualScriptVTable {void* ScalarDeletingDestructor;void* InheritedSlot1;bool (__fastcall* AllowsManualControl)(CManualScriptModule*);};
 struct CManualScriptModule {CManualScriptVTable* VTable;bool AllowsManualControl(){return VTable->AllowsManualControl(this);}};
-struct CCameraManagerDef;
+class CCameraManagerDef;
 struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
 void __fastcall PlayCameraSoundThroughObservedThing(CThing*,CCameraManagerDef*,const CCharString&); //00698A30
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;unsigned char CameraAndControlState[0xd0];
  CManualScriptModule* PCurrentScriptModule;void* CurrentScriptInfo;CManualScriptModule* PPendingScriptModule;void* PendingScriptInfo;
  unsigned char ScriptAndQuakeState[0x1c];CObservedThingPointer PObservedThing;
@@ -558,7 +558,7 @@ CCharString::CCharString(const char* text,long length):storage_(0){++stringConst
 void CCharString::UnassignString(){if(storage_&&!--storage_->owners){free(storage_->text);free(storage_);}storage_=0;}
 CCharString::~CCharString(){UnassignString();++stringDestroyed;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
-struct CCameraManagerDef {long Id;};
+class CCameraManagerDef { public:long Id;};
 struct ObservedInfo {CThing* Object;long References;};
 static int getCalls,scriptCalls,prepareCalls,soundCalls,destroyCalls;static bool mutateDuringGet;
 static long refAtPrepare,refAtSound;static bool scriptResult,mutate;static CCameraModeDefNative* prepared;

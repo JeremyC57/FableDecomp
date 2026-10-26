@@ -8,24 +8,24 @@
 // thing's 64-bit id is read from +0x18/+0x1c and masked to 40 bits (`and eax,0FFh` on the high dword).
 // Shape: a user destructor (it stores its own vtable first); the manager is a named local taken right after GetWorld
 // (kept in edi for both calls).
-struct CWorld;
+class CWorld;
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x18];
     unsigned __int64 m_id;                   // +0x18
 };
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapActivated(long mapIndex);                                    // 0x00A14EB0
     void SetSwitchableNodesAsBlocked(long mapIndex, unsigned __int64 id, bool blocked);   // 0x00A15470
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad_0x00[0x48];
     CNavigatorManager* PNavigatorManager;    // +0x48
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -34,7 +34,7 @@ struct CTCBase {
     ~CTCBase();                              // 0x00686830
 };
 
-struct CTCSwitchableNavigation : CTCBase {   // vtable 0x0123C02C
+class CTCSwitchableNavigation : public CTCBase { public:   // vtable 0x0123C02C
     long MapIndex;                           // +0x0c
     virtual void v00();
     ~CTCSwitchableNavigation();

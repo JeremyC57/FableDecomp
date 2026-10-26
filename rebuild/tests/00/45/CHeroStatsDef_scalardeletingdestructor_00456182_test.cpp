@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstdlib>
-struct CHeroStatsDef { int f0; };
+class CHeroStatsDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 static void* g_last_deleted = 0;

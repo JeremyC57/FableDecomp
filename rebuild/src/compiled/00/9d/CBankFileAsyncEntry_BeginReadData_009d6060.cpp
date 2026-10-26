@@ -21,7 +21,7 @@ struct SCountBlock {
     void* m_pObject;                               // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_009a42b0), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                       // +0
     SCountBlock* Info;                             // +4
     T* GetPtr() const { return Data; }

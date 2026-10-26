@@ -6,7 +6,7 @@
 #endif
 
 static int g_live = 0, g_sets = 0; static const char* g_setText = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { ++g_live; }
     ~CCharString() { --g_live; }
@@ -19,7 +19,7 @@ public:
     void SetString(const CCharString& name) { ++g_sets; g_setText = name.Text; Index = 77; }
 };
 
-struct CBrainBehaviour {
+class CBrainBehaviour { public:
     CDefString Name;
     long       Priority;
     long       ScriptAIPriority;

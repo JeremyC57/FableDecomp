@@ -1,8 +1,8 @@
 #include <cstdio>
 // behaviour copy of CEnginePrimitiveManagerMeshBase::GetAcceptablePreloadMipmap @ 0x00BEBBE0
 struct CGraphicHeader { unsigned short Width, Height, Depth, FrameWidth, FrameHeight, FrameCount; };
-struct CGraphicInfo { CGraphicHeader Header; };
-struct CGraphicInfoFrame { void* vt; unsigned short FrameNum; signed char Small; void* Data; CGraphicInfo* GraphicInfo; };
+class CGraphicInfo { public: CGraphicHeader Header; };
+class CGraphicInfoFrame { public: void* vt; unsigned short FrameNum; signed char Small; void* Data; CGraphicInfo* GraphicInfo; };
 struct SPrimitiveRendererSettings { unsigned long PreloadMipmapBias; unsigned long MaxPreloadTextureSize; };
 static SPrimitiveRendererSettings g_settings;
 static SPrimitiveRendererSettings* g_pPrimitiveRenderer = &g_settings;

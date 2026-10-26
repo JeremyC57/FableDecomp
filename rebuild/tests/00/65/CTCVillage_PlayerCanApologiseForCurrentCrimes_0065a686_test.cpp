@@ -1,7 +1,7 @@
 // behaviour test for 0065a686 CTCVillage::PlayerCanApologiseForCurrentCrimes: false within 450 frames of the last apology;
 // otherwise false when any recorded crime is non-apologisable or older than the given seconds, else true (also with no hero)
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 static long g_frame = 1000; static int g_destroyed = 0;
 long g_framesPerSecond = 30;
 struct CInterfaceMap {
@@ -10,7 +10,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     bool          hasLog;
     CInterfaceMap m_interfaces;
     bool HasTC(long type) const { return type == 0x51 && hasLog; }
@@ -25,14 +25,14 @@ struct CThing {
     }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroThing() { return g_hero; } };
-struct CWorld {
+class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
+class CWorld { public:
     CPlayer player;
     CPlayer* GetCurrentPlayer() const { return (CPlayer*)&player; }
     static long GetFrame() { return g_frame; }
 };
 static CWorld g_world;
-struct CMainGameComponent { CWorld* World; };
+class CMainGameComponent { public: CWorld* World; };
 static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
 struct CRefCounted {
     long m_count;
@@ -43,7 +43,7 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     long CrimeSeverity;
     void ReleaseTemporary()
     {
@@ -52,7 +52,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }   // test-side: counts stay
@@ -65,10 +65,10 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct COpinionDeed { long DeedType; long DeedHandle; float Position[3]; long FrameHappened; };
+class COpinionDeed { public: long DeedType; long DeedHandle; float Position[3]; long FrameHappened; };
 static COpinionDeedEffectsDef g_effects[2];
 static COpinionDeed g_deeds[4];
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle) { return handle >= 0 && handle < 4 ? &g_deeds[handle] : 0; }
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType)
     { CDefPointer<COpinionDeedEffectsDef> p; p.Object = &g_effects[deedType]; ++p.Object->m_count; return p; }
@@ -76,7 +76,7 @@ struct CTCHeroOpinionDeedLog {
 struct SNode { long _M_color; SNode* _M_parent; SNode* _M_left; SNode* _M_right; long _M_value_field; };
 static SNode* g_nodes[8]; static int g_nodeCount = 0;
 SNode* Successor(SNode* node) { for (int i = 0; i < g_nodeCount - 1; ++i) if (g_nodes[i] == node) return g_nodes[i + 1]; return 0; }
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00() {}
     SNode*        PlayersCrimes;
     long          LastFrameApologised;

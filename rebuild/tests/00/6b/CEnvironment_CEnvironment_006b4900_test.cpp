@@ -5,7 +5,7 @@
 #include <vector>
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ","); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,12 +25,12 @@ struct CDay {
     int Calls;
     void GetBlendedTheme(CTheme* theme, float hour) { theme->Id = (int)hour + Calls++; }
 };
-struct CEnvironment;
+class CEnvironment;
 struct CIface { CEnvironment* Env; CIface(CEnvironment* e) : Env(e) { Log("iface"); } };
 struct CInterp { CIface* Iface; CEnvironment* Env; CInterp(CIface* i, CEnvironment* e) : Iface(i), Env(e) { Log("interp"); } };
 struct CDefs { float Diffuse, FadeStart, FadeEnd, FadeIn, FadeOut, Flash, RainThreshold; int Theme; };
 struct CDefMgr { CDefs* Environment; };
-struct CEnvironment {
+class CEnvironment { public:
     CDefMgr* DefinitionManager;
     float FadeStart, FadeEnd; int RegionTheme; double LightningStartTime;
     float FadeIn, FadeOut, Flash, RainThreshold; int LightningTheme; float FlashChance; unsigned int Seed;

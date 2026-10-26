@@ -28,9 +28,9 @@
 //   is an inline CTCShop accessor (`lea ecx,[eax+10h]`); the message manager is a named local after a named buyer local.
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -78,12 +78,12 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CFontBank;
-struct CMainGameComponent {
+class CFontBank;
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank*    FontBank;                             // +0x1614c
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20 bitset<274> of the interface types present
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -137,7 +137,7 @@ struct CThing {
         return false;
     }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
                                      unsigned long flags, const CCharString& name);   // 0x00703210
 // A copy of `item` at `at`, owned by `owner`'s player.
@@ -162,32 +162,32 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);       // 0x0057B327
 };
 struct CTCInventoryBase {
     bool CanAddItem(long defIndex) const;               // 0x005BF2ED
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     long GetInventoryType() const;                      // 0x005D9030
     long GetMaxNumberItems() const;                     // 0x005D9050
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
 };
-struct CTCShop {
+class CTCShop { public:
     unsigned char           _pad00[0x10];
     CBaseIntelligentPointer PShopKeeper;                // +0x10
     CThing* GetShopKeeper() const { return PShopKeeper.GetPItem(); }
 };
-struct CTCStockItem {
+class CTCStockItem { public:
     unsigned char _pad00[0x10];
     long          Price;                                // +0x10
     CTCShop* GetShopTC() const;                         // 0x007F4FC0
@@ -199,19 +199,19 @@ struct CEventSoldItem : CEventBase {                    // 0x1c bytes
     CEventSoldItem(CThing* giver, CThing* item, bool ownsItem);   // 0x0084AF30
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);                   // 0x008113C0
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
                      float value1, float value2, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* MessageEventManager;          // +0x60
 };
 
-struct CCreatureActionBase {                            // retail sizeof 0xa8
+class CCreatureActionBase { public:                            // retail sizeof 0xa8
     virtual void PerformAction();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                  // +0x08 CIntelligentPointer<CThingCreatureBase>

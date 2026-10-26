@@ -10,22 +10,22 @@
 #else
 #define NATIVE_ONLY(x)
 #endif
-struct CInputEvent;
-struct CInputEventPackage;
-struct CMouse;
-struct CKeyboard;
-struct CJoystick;
+class CInputEvent;
+class CInputEventPackage;
+class CMouse;
+class CKeyboard;
+class CJoystick;
 struct CCountedJoystick;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // 0099A2D0; native vtable01231710
     virtual ~CBaseClass();
 };
 template<class T> struct NativeVector { T* Start; T* Finish; T* End; struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };
 template<class T> struct NativeScoped { T* ptr; T* get() const {return ptr;} T& operator*() const {return *ptr;} T* operator->() const{return ptr;} };
-struct CChecksum { unsigned int Value[4]; };
+class CChecksum { public: unsigned int Value[4]; };
 enum EInputEventType { INPUT_NULL, INPUT_KEY_PRESSED, INPUT_KEY_HELD, INPUT_KEY_RELEASED };
 enum EInputKey { INPUT_KEY_NONE };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char Data[32]; // actual UInputEventData; no member interpreted in this method
     int DeviceType;
     int DeviceNumber;
@@ -39,8 +39,8 @@ struct CInputEvent {
     void SetAsKeyboardKeyReleased(EInputKey,double,double); // 00A03C50
     unsigned long GetChecksum() const; // 00A04160
 };
-struct CInputManagerInit { bool UseMouse,UseJoystick,UseKeyboard; };
-struct CInputManager : CBaseClass {
+class CInputManagerInit { public: bool UseMouse,UseJoystick,UseKeyboard; };
+class CInputManager : public CBaseClass { public:
     CInputManager(const CInputManagerInit&,bool); // authentic009F5BD0 dependency
     NativeVector<CInputEvent> ProcessedEvents;
     NativeVector<CInputEvent> EventStore;
@@ -78,9 +78,9 @@ NATIVE_ONLY(offsetof(CInputManager,PackageFile)==0x60);
 #define CJoystick DonorCJoystick
 #include "engine/CJoystick.h"
 #undef CJoystick
-struct C2DVector { float X,Y; C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} };
+class C2DVector { public: float X,Y; C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} };
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); };
-struct CMouse : CBaseClassNonCopyable {
+class CMouse : public CBaseClassNonCopyable { public:
     virtual ~CMouse();
     virtual void GetPos(C2DVector*) const =0; // native slot1; DX override00AB46E0
     unsigned char EventStore[0x3400];
@@ -89,7 +89,7 @@ struct CMouse : CBaseClassNonCopyable {
     CInputManager* InputManager;
 };
 // RTTI proves CJoystick has no base class; axes are non-const protected virtuals.
-struct CJoystick {
+class CJoystick { public:
     virtual ~CJoystick();
     virtual bool SetExclusiveMode(bool)=0;
     virtual void Update()=0;

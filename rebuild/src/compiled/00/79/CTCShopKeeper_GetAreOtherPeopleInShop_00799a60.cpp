@@ -3,11 +3,11 @@
 // Callees: the static CWorld::GetWorldFrame @ 0x0049D870 (as landed in 0x008EC7E0; the manifest label
 // "GFGetPreMainMemoryUsed" is propagated), called twice; CTCShopKeeper::CalcAreOtherPeopleInShop @ 0x00799140.
 // Shape: `force || now - last > 15` (signed `jle`), the time re-read for the store, the flag returned from memory.
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();             // 0x0049D870
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char _pad[0x2c];
     bool          m_areOtherPeopleInShop;    // +0x2c
     unsigned char _pad2d[3];

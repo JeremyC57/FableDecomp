@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_GenericLeaderCommand {
+class CCreatureAction_GenericLeaderCommand { public:
     void* vftable;
     int destroyed;
 };

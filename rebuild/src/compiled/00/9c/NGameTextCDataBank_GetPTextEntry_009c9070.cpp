@@ -13,9 +13,9 @@
 #undef CBankFile
 #include <stddef.h>
 
-struct CResource;
-struct CResourceList;
-struct CResource {
+class CResource;
+class CResourceList;
+class CResource { public:
     virtual ~CResource() {}
     mutable long References;                  // +4, original CIV reference count
     CResourceList* ResourceList;              // +8
@@ -30,7 +30,7 @@ struct CResource {
     void ListInsert(CResource*, CResource*);  // 0x009FBF90
     __forceinline void SetAsMRU();
 };
-struct CResourceList {
+class CResourceList { public:
     void* VTable;                              // +0
     CResource Head;                            // +4, genuine 0x1c-byte resource
     unsigned long ResourceCount;               // +20
@@ -58,20 +58,20 @@ __forceinline void CResource::SetAsMRU()
         LastUsedFrame=ResourceList->CurrentFrame;
     }
 }
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished() const;                 // 0x009D54E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall *Destroy)(void*);
     void* Object;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
 };
 namespace NGameText {
-struct CTextEntry : CResource {
+class CTextEntry : public CResource { public:
     unsigned char _pad1c[0x38 - 0x1c];
     CCountedPointer<CBankFileAsyncData> PFileData; // +38, 8-byte holder
     void* Owner;                              // +40
@@ -85,7 +85,7 @@ struct CCountedInfo {
     void (__fastcall *Destroy)(void*);
     void* Object;
 };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) {}
     explicit CIVCountedPointer(T* object) : Object(object)
@@ -101,9 +101,9 @@ template<class T> struct CIVCountedPointer {
         }
     }
 };
-namespace NGameText { struct CDataBank; }
+namespace NGameText { class CDataBank; }
 namespace NGameText {
-struct CDataBankTextEntry {
+class CDataBankTextEntry { public:
     ::CIVCountedPointer<CTextEntry> PText;    // +0
     long NarratorIndex;                       // +4
     void BeginLoading(unsigned long, NGameText::CDataBank&); // 0x009C8340
@@ -116,15 +116,15 @@ struct CPointerVector {
     NGameText::CDataBankTextEntry** End;
     NGameText::CDataBankTextEntry* operator[](unsigned long i) const { return First[i]; }
 };
-struct CBankFile {
+class CBankFile { public:
     virtual ~CBankFile() {}
     unsigned long GetEntryDataType(unsigned long) const; // 0x009CC210
 };
-struct CBankFileAsync : CBankFile {
+class CBankFileAsync : public CBankFile { public:
     void AsyncUpdatePending();                // 0x009D68B0
 };
 namespace NGameText {
-struct CDataBank : CBankFileAsync {
+class CDataBank : public CBankFileAsync { public:
     // CBankFilePdb is 0x174 in debug; the retail bank base contract places
     // this row's resource list at +0x168, so retain a documented retail
     // overlay instead of inheriting the debug container extent.

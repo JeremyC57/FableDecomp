@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld {
+class CWorld { public:
     void Save(int a);
 };
 

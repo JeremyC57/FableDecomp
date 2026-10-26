@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct V { float X, Y, Z; };
-struct CThing { unsigned char m_flags91; V pos; };
+class CThing { public: unsigned char m_flags91; V pos; };
 static CThing* g_enemy;
 static CThing g_self;
 static int g_fleeOk;

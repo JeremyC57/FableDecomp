@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct SubObj { unsigned int field0; };
-struct CMemoryDataOutputStream { char pad[8]; SubObj sub; };
+class CMemoryDataOutputStream { public: char pad[8]; SubObj sub; };
 
 static int g_called = 0;
 void __fastcall SubHelper(SubObj* sub) { g_called++; (void)sub; }

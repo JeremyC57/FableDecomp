@@ -20,8 +20,8 @@ static int fails = 0;
 //   types 0 and 1 get an entry; anything else stores a null pointer (the `xor eax,eax` before the type test).
 // Retail layout: Shaders +0x110 (CBankFile base 0x110 bytes; engine/CShaderDataBank.h carries the PDB +0x174,
 //   so a local model is used, as in the landed CShaderDataBank::CloseShaders 0x00A62050).
-template <class T> struct CArray;
-struct CShaderDataBank;
+template <class T> class CArray;
+class CShaderDataBank;
 
 struct __true_type { __true_type() { } };
 
@@ -31,7 +31,7 @@ public:
     unsigned char _body[0x24];
 };
 
-template <class T> struct CArray {                          // retail CArray (STLport vector): 12 bytes
+template <class T> class CArray { public:                          // retail CArray (STLport vector): 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

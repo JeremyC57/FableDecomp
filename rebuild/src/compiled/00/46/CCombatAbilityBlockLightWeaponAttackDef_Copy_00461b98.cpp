@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of CCombatAbilityBlockLightWeaponAttackDef::Copy @ 0x00461b98
 // __fastcall void Copy(This*, CDefClassBase const*)
 
-struct CDefClassBase { };
+class CDefClassBase { public: };
 
 // Embedded sub-object at +0x28 that has its own Copy(CDefClassBase const*)
 struct SubDef {
@@ -15,7 +15,7 @@ struct BaseDef {
     void Copy(const CDefClassBase* src);
 };
 
-struct CCombatAbilityBlockLightWeaponAttackDef : public BaseDef {
+class CCombatAbilityBlockLightWeaponAttackDef : public BaseDef { public:
     // offset 0x28: embedded sub-def
     char gap[0x28 - sizeof(BaseDef)];
     SubDef sub;

@@ -55,8 +55,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -64,8 +64,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -160,10 +160,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -289,11 +289,11 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -386,7 +386,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          sub;                                       // +0x04 retail-only long (previous header)
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -404,9 +404,9 @@ FABLE_STATIC_ASSERT(offsetof(CTCEntityEvents, Events) == 0xc);
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector;struct CCombatActionBase;
+class C3DVector;class CCombatActionBase;
 namespace NEntityEvents {
-struct CEventBase {
+class CEventBase { public:
     virtual ~CEventBase();virtual long GetEventType()const=0;
     long WorldFrame;CEventBase():WorldFrame(0){}
 };
@@ -426,7 +426,7 @@ struct Creature {
 bool FABLE_FASTCALL IsThingCarryingMeleeWeapon(Creature* creature); //006A15A0
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate()const;virtual void EditUpdate(float);virtual void PerformAction();virtual void FinishAction();
     virtual bool IsPlayingAnimation()const;virtual long GetAnimDelayTime()const;virtual long GetAnimationIndex()const;
@@ -439,7 +439,7 @@ struct CCreatureActionBase {
     unsigned char _baseObjectState[4];CBaseIntelligentPointer PCreature;unsigned char _actionBody[0x98];
     void FrameUpdate(); //qualified direct base call00694020
 };
-struct CCombatActionBase:CCreatureActionBase {
+class CCombatActionBase:public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget,PCameraPoint;void* PMeleeAbilityDef_Object;void* StrikeEventsHead;
     long LastStrikeEventEndTime;float StrikeEventInterruptTime,StrikeEventResetComboTime;long MovementEventInterruptFrame;
     float StrikeSpeedVariationStartTime,StrikeSpeedVariationEndTime;

@@ -1,6 +1,6 @@
 // behaviour test for 0x0062EB50 CCreatureAction_GiveItemToThing::CCreatureAction_GiveItemToThing(const CCreatureAction_GiveItemToThing&): the base part is copied first, then each intelligent pointer observes the same pointee as the source's (not the source pointer object itself), and the source is left untouched
 #include <cstdio>
-struct CBaseObject { int Id; };
+class CBaseObject { public: int Id; };
 static int gOrder = 0, gBaseOrder = 0, gPtrOrder = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* Item;

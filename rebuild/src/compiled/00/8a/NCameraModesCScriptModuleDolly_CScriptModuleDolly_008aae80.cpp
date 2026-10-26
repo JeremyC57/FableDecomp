@@ -11,7 +11,7 @@
 // three dword moves each, and the third argument is read through its pointer (`mov edx,[ecx]`), so it
 // is a reference to a 4-byte value (a float, the dolly duration/speed) stored at +0x64. No PDB layout
 // for the camera module classes; member names are descriptive.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };

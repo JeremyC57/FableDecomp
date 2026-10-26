@@ -9,7 +9,7 @@ struct CRetailVector_CCharString {
     void* first; void* last; void* end;
     CRetailVector_CCharString& operator=(const CRetailVector_CCharString& other) { first = other.first; last = other.last; end = other.end; ++g_vectorAssigns; return *this; }
 };
-struct CConversation : CDefClassBase_Retail {
+class CConversation : public CDefClassBase_Retail { public:
     long Lines; CRetailVector_CCharString Speaker; CRetailVector_CCharString Dialogue; CRetailVector_CCharString Animation; CRetailVector_CCharString AnimLoop;
     virtual void v00() { }
     CConversation& operator=(const CConversation& other);

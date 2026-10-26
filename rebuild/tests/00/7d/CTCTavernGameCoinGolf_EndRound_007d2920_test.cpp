@@ -9,21 +9,21 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CTCHeroStats {                           // retail layout
+class CTCHeroStats { public:                           // retail layout
     unsigned char _pad[0x184];
     float BestScoreCoinGolfOakVale;             // +0x184
     float BestScoreCoinGolfSnowSpire;           // +0x188
 };
-struct CDefString {                             // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                             // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
     bool operator==(const char* text) const;    // 0x005B3440
 };
-struct CThing {
+class CThing { public:
     CDefString GetDefName() const;              // 0x004C7CC0
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x19];
@@ -39,7 +39,7 @@ struct CTCTavernGame {
 struct CTCTavernGameCoinBase : CTCTavernGame {
     void EndRound();                            // 0x008EF190
 };
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     void EndRound();
 };
 

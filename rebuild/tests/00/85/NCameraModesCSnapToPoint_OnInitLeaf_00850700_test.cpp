@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCBase { long dummy; };
+class C3DVector { public: float X, Y, Z; };
+class CTCBase { public: long dummy; };
 struct SEntry { long type; CTCBase* component; };
 struct CInterfaceMap {
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool PeekTC(const T** ppOut, long interfaceType) const
@@ -29,7 +29,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCameraPointFixedPoint {
+class CTCCameraPointFixedPoint { public:
     CTCBase   base;
     long      type;
     bool      TrackThing;

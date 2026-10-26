@@ -1,14 +1,14 @@
 #include <cstdio>
 
-struct CThing { bool alive; };
-struct CCombatManager {
+class CThing { public: bool alive; };
+class CCombatManager { public:
     CThing* attacker; CThing* target; int registers, deregisters;
     bool IsCreatureAttacking(const CThing& t) const { return attacker == &t; }
     void DeregisterCombatant(CThing* t) { if (attacker == t) attacker = 0; ++deregisters; }
     void RegisterCombatant(CThing* t, CThing* victim, bool) { attacker = t; target = victim; ++registers; }
 };
-struct CTCBoss { long next; void SetNextBossPhase(long p, bool) { next = p; } };
-struct CTCKraken {
+class CTCBoss { public: long next; void SetNextBossPhase(long p, bool) { next = p; } };
+class CTCKraken { public:
     CCombatManager* combat; CThing* ParentThing; CThing* PTarget; CTCBoss* PTCBoss; long Phase; long Mode;
     int tentacles; int created, raised, ended;
     void CreateTentacles() { ++created; tentacles = 4; }

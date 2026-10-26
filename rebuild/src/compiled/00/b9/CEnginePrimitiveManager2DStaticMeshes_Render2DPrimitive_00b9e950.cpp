@@ -2,9 +2,9 @@
 // Leaf: Render2DPrimitive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9E950, length 901 bytes (`ret 0Ch`, virtual).
 #include <stddef.h>
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct C3DMesh2;
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class C3DMesh2;
 struct CRefInfo { long RefCount; };
 struct CCountedMeshPointer {                       // CCountedPointer<const C3DMesh2>
     C3DMesh2* Object;
@@ -12,7 +12,7 @@ struct CCountedMeshPointer {                       // CCountedPointer<const C3DM
     CCountedMeshPointer() : Object(0), Info(0) { }
     ~CCountedMeshPointer();                        // 0x00A36EC0
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void BeginLoading(unsigned long priority, bool urgent, bool wait);   // 0x00A256F0
     void SetLoadPriority(long priority);           // 0x00A23C50
     bool IsLoaded();                               // 0x00A23E40
@@ -35,7 +35,7 @@ struct CSubMesh {                                  // 0xa0 bytes
     void*         SimulationEnd;                   // +0x24
     unsigned char _pad28[0x78];
 };
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char  _pad00[0x8c];
     CMeshMaterial* Materials;                      // +0x8c
     unsigned long  SubMeshCount;                   // +0x90
@@ -43,8 +43,8 @@ struct C3DMesh2 {
     unsigned char  _pad98[0xe4 - 0x98];
     bool           HasSimulation;                  // +0xe4
 };
-struct CEngineLocalLightArray;
-struct CEngineLightingManager {
+class CEngineLocalLightArray;
+class CEngineLightingManager { public:
     unsigned char _pad[0x44ec];
     unsigned char EmptyLightArray[0x1a4];          // +0x44ec
 };
@@ -81,7 +81,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
 struct SLODEntry { float Distance; float _pad[2]; };
 extern SLODEntry g_LODTable_0143b934[];            // 0x0143B934
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x1f4];
     long          ViewportTLX, ViewportTLY, ViewportBRX, ViewportBRY;   // +0x1f4
 };
@@ -98,20 +98,20 @@ struct C2DClipOwner {
     unsigned char _pad0[0xc];
     C2DClipInfo   Clip;                            // +0x0c
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char _pad[0x94];
     C2DClipOwner* ClipOwner;                       // +0x94
 };
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     unsigned char _pad[0x320];
     bool          LayerEnabled[1];                 // +0x320
     float Layer2DToDistance(long layer);           // 0x00B4A6A0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D;   // 0x01436E7C
 struct CSimulationSettings { unsigned char _pad[0xa4]; bool Enabled; };
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     unsigned char        _pad000[4];
     bool                 Loading;                  // +0x04
     unsigned char        _pad005[0x2f0 - 5];
@@ -128,19 +128,19 @@ struct __declspec(novtable) CEngineSubPrimitiveBase : CBase {
     unsigned char                 Alpha;           // +0x08
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540
 };
-struct CEngineSubPrimitiveStaticMesh : CEngineSubPrimitiveBase {   // 0x24 bytes
+class CEngineSubPrimitiveStaticMesh : public CEngineSubPrimitiveBase { public:   // 0x24 bytes
     unsigned char _pad0c[0x24 - 0xc];
     CEngineSubPrimitiveStaticMesh(CEngineInternalPrimitive2DStaticMesh* primitive, CSubMesh* subMesh, long list, bool simulated);   // 0x00B9CB10
 };
-struct CEnginePrimitiveManager;
-struct CEngineSubPrimitiveRenderer {
+class CEnginePrimitiveManager;
+class CEngineSubPrimitiveRenderer { public:
     unsigned char _pad[0x10];
     float         DepthBias;                       // +0x10
     void AddSubPrimitive(long list, CEngineSubPrimitiveBase* subPrimitive, float distance, CEnginePrimitiveManager* manager);   // 0x00B84720
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
-struct CEnginePrimitiveManager2DStaticMeshes {
+class CEnginePrimitiveManager2DStaticMeshes { public:
     void* SceneList;                               // +0x04
     bool  Enable;                                  // +0x08
     virtual void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, CEngineSubPrimitiveChain& chain, long type);

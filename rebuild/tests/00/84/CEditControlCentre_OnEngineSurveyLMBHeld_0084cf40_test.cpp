@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DVector { unsigned long x, y, z; };
+class C3DVector { public: unsigned long x, y, z; };
 
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char pad[0x90];
     unsigned long f90;
     unsigned long f94;

@@ -13,9 +13,9 @@
 //        the float ones sharing one, the bool ones another); the false bool shares the bl zero with the event's
 //        EndPos/Replacement init; the position is re-fetched for each component.
 class CThing;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -41,7 +41,7 @@ public:
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                         // +0x00
     signed char   Player;                       // +0x04
     unsigned char Data[32];                     // +0x05
@@ -53,16 +53,16 @@ struct CGameEvent : CMemoryBuffer {
     void AddBool(bool value) { Copy(1, &value); }
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad_0x00[0x12f];
     bool          RegionLoadViaTeleporter;      // +0x12f
     void HandleMoveHeroToRegionGameEvent(CGameEvent* event);   // 0x0049EAF0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
@@ -71,7 +71,7 @@ struct CTCBase {
     CWorld* GetWorld();                         // 0x00686A70
     CPlayerManager* GetPlayerManager() const;   // 0x00686D50
 };
-struct CTCTeleporter : CTCBase {
+class CTCTeleporter : public CTCBase { public:
     void TeleportHero();
 };
 

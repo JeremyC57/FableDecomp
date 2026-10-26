@@ -1,4 +1,4 @@
-struct CTCWound {
+class CTCWound { public:
     void* vftable;
 };
 

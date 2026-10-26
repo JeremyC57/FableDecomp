@@ -11,13 +11,13 @@
 // destructor. PDef is CTCInventoryBase::PDef (PDB +0x70, retail +0x68: the two retail vectors before it are 12 bytes,
 // not 16). Local model: no engine header for CTCInventoryBase / CTCInventoryMap / CInventoryDef; the def word at +0x1EC is named
 // from use. The method's real name is unknown (catalog label kept).
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();
 };
 
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                   // slot 1 (+4)
     long m_refCount;                          // +0x04
@@ -43,12 +43,12 @@ struct CTCInventoryBase_Retail {              // primary base, retail size 0x130
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                // secondary base at +0x130
+class CBase { public:                                // secondary base at +0x130
     virtual CWideString vfunc_0();            // slot 0
 };
 }
 
-struct CTCInventoryMap : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryMap : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     virtual CWideString vfunc_0();
 };
 

@@ -15,12 +15,12 @@ struct CSpotLightInfo {
     unsigned char _pad00[0x10];
     float Flicker;                                      // +0x10
 };
-struct CSpotLightDef {
+class CSpotLightDef { public:
     unsigned char _pad00[0x38];
     float Flicker;                                      // +0x38
     float FlickerSpeed;                                 // +0x3c
 };
-struct CTCBase {                                        // the engine header flattens the CTCBase part; only this call is modelled
+class CTCBase { public:                                        // the engine header flattens the CTCBase part; only this call is modelled
     unsigned long* GetPLocalSeed();                     // 0x00686DB0
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);  // 0x004978A0

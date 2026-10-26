@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {};
 
-struct CCreatureActionBase { int m_id; };
+class CCreatureActionBase { public: int m_id; };
 
 struct SCountBlock {
     long m_references;
@@ -38,10 +38,10 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput { unsigned char _body[0x18]; };
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public: unsigned char _body[0x18]; };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types;
     long LookFlags;
     CNavigationInput NavigationInput;
@@ -51,7 +51,7 @@ struct CBrainOutput {
     CIntelligentPointer LookAtThing;
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     static void DeleteData(void* data) { delete static_cast<T*>(data); }
 };
 

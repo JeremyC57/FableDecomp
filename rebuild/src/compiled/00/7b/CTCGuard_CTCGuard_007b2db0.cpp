@@ -11,7 +11,7 @@
 // Shape: the deque is the STLport _Deque_base with an _STLP_alloc_proxy map member (a plain pointer schedules the
 // `push 0` after the last zero store); PDef and the deque are the initialiser list (one shared zero register); the counters are body assignments
 // (-0x0CCCCCCC = LONG_MIN / 10 for the two "long ago" frames, -0x40000000 = LONG_MIN / 2 for the bribe frame).
-struct CCrimeWaitingForBribe { long Crime; long Frame; };
+class CCrimeWaitingForBribe { public: long Crime; long Frame; };
 template <class T> struct CDequeIterator {      // STLport _Deque_iterator
     T*  _M_cur;
     T*  _M_first;
@@ -32,12 +32,12 @@ template <class T> struct CRetailDeque {        // STLport deque (_Deque_base, 0
     void _M_initialize_map(unsigned int numElements);   // 0x007B4420
 };
 class CThing;
-struct CDefPointeeBase;
-template <class T> struct CDefPointer {
+class CDefPointeeBase;
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
 };
-struct CGuardDef;
+class CGuardDef;
 class CTCBase {
 public:
     CTCBase(CThing* thing);                     // 0x00686800

@@ -25,23 +25,23 @@ struct CRendererPtr {                                       // a counted pointer
 struct CPlayerObject {
     void Refresh();                                         // 0x00447390
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char  _pad00[0x0c];
     CPlayerObject* Object;                                  // +0x0c
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                             // 0x00449700
     bool IsPlayer(long number);                             // 0x00449880
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1c
     unsigned char   _pad20[0x28 - 0x20];
     CRendererPtr    Renderer;                               // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
-struct CDisplayManager {
+class CDisplayManager { public:
     void SetGamma(float gamma, bool b);                     // 0x009BEAA0
 };
 extern CDisplayManager* g_pDisplayManager;                  // 0x013B8390
@@ -57,7 +57,7 @@ struct CSoundSystem {
 };
 extern CSoundSystem* g_pSoundSystem;                        // 0x013B8394
 extern bool g_bVibrationEnabled;                            // 0x013966F0
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
     bool  UseNewProfileValues;                              // +0x0c
     unsigned char _pad0d;

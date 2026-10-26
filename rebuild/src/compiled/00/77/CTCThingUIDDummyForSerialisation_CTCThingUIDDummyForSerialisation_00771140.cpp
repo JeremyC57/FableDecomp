@@ -5,7 +5,7 @@
 // label "CTCAtmosPlayer::CTCAtmosPlayer" is propagated over this byte-identical-shape body.
 // Layout = Ego_r.pdb CTCThingUIDDummyForSerialisation (24 bytes): CTCBase 0xc, ThingUID (ulong64) +0x10.
 // Shape: the 64-bit zero is two dword stores of one `xor eax,eax` register before the vtable store.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -15,7 +15,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CTCThingUIDDummyForSerialisation : CTCBase_Calls {   // vtable 0x0126A724
+class CTCThingUIDDummyForSerialisation : public CTCBase_Calls { public:   // vtable 0x0126A724
     unsigned __int64 ThingUID;                              // +0x10
     virtual void v00();
     CTCThingUIDDummyForSerialisation(CThing* thing);

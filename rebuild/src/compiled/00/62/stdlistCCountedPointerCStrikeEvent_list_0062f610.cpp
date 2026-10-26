@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 class CCPPointerInfo;
-template <class T> struct CCountedPointer {      // 8 bytes: object + shared reference-count block
+template <class T> class CCountedPointer { public:      // 8 bytes: object + shared reference-count block
     T*              Data;                        // +0x00
     CCPPointerInfo* Info;                        // +0x04
 };

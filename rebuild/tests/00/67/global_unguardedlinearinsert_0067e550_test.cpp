@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CEngineGraphic { long m_words[4]; };
-struct CDegradableInfo {
+class CEngineGraphic { public: long m_words[4]; };
+class CDegradableInfo { public:
     float          HealthPercentage;
     CEngineGraphic EngineGraphic;
     long           SmashParticleEmitter;
     bool           BlocksNavigation;
 };
-struct CDegradableDef {
-    struct CIsHealth1GTHealth2 {
+class CDegradableDef { public:
+    class CIsHealth1GTHealth2 { public:
         bool operator()(const CDegradableInfo& a, const CDegradableInfo& b) const { return a.HealthPercentage > b.HealthPercentage; }
     };
 };

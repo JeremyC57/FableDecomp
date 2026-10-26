@@ -2,7 +2,7 @@
 // selects 1 ("DayOnly"), 2 ("NightOnly") or 0; equality by shared block or by equal length + Compare; the suffix is destroyed.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long Compare_00411570(const char* a, const char* b)
 {
     for (;;) {
@@ -19,7 +19,7 @@ long Compare_00411570(const char* a, const char* b)
     }
 }
 static int g_dtors = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString() { ++g_dtors; }
     bool operator==(const CCharString& other) const
@@ -35,13 +35,13 @@ static CCharStringData g_day = { "DayOnly", 7 }, g_night = { "NightOnly", 9 };
 CCharString g_DayOnlySuffix = { &g_day };
 CCharString g_NightOnlySuffix = { &g_night };
 static CCharStringData* g_result = 0; static const CCharString* g_asked = 0;
-struct CQuestManager {
+class CQuestManager { public:
     CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& sectionName) { g_asked = &sectionName; CCharString r = { g_result }; return r; }
 };
 static CQuestManager g_qm;
 CQuestManager* g_pQuestManager = &g_qm;
-struct CThing { CCharString SerialisationSectionName; };
-struct CTCDayOrNightOnlySupport {
+class CThing { public: CCharString SerialisationSectionName; };
+class CTCDayOrNightOnlySupport { public:
     virtual void v00() { }
     CThing* ParentThing;
     long DayNightOrBoth;

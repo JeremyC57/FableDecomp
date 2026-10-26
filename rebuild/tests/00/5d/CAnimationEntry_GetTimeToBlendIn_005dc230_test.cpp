@@ -1,17 +1,17 @@
 // Behaviour test for CAnimationEntry::GetTimeToBlendIn @ 0x005dc230: component value, scaled (truncated) by bullet time when affected and active.
 #include <cstdio>
-struct CThing { bool m_affected; bool IsAffectedByBulletTime() { return m_affected; } };
+class CThing { public: bool m_affected; bool IsAffectedByBulletTime() { return m_affected; } };
 struct CBulletTime {
     unsigned char _pad0[4]; void* m_pController; unsigned char _pad1[4]; bool m_active; float m_scale;
     float GetTimeScale() { return m_scale; }
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CGame { unsigned char _pad[0x68]; CBulletTime* m_pBulletTime; };
+class CGame { public: unsigned char _pad[0x68]; CBulletTime* m_pBulletTime; };
 struct CApplication { unsigned char _pad[0x24]; CGame* m_pGame; };
 static CApplication* g_pApplication;
-struct CAnimComponentTransitionInTime { unsigned char _pad[8]; long TransitionInTime; };
+class CAnimComponentTransitionInTime { public: unsigned char _pad[8]; long TransitionInTime; };
 static CAnimComponentTransitionInTime g_component;
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex; long AnimName; long GroupName; void* Components;
     void GetTransitionInTimeComponent(CAnimComponentTransitionInTime** ppComponent) const { *ppComponent = &g_component; }
     long GetAnimationTransitionInTime() const { CAnimComponentTransitionInTime* p; GetTransitionInTimeComponent(&p); return p->TransitionInTime; }

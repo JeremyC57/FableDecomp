@@ -14,7 +14,7 @@
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 inline float Abs(float x) { return (float)fabs(x); }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     bool operator!=(const char* text) const;            // 0x0099E960
@@ -27,7 +27,7 @@ public:
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -36,7 +36,7 @@ struct CGameEvent : CMemoryBuffer {
     bool          Replacement;                     // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
@@ -44,7 +44,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -78,7 +78,7 @@ public:
         return false;
     }
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void TriggerSpecialAbility(long index);        // 0x005EED4C (label)
     void CycleAssignedAbilities(bool forward);     // 0x005F64DD
 };
@@ -98,10 +98,10 @@ public:
     CThing* GetControlledCreature();               // 0x00487DD0
     long GetCurrentMode() const;                   // 0x00633BE0
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForEvent(const CInputEvent& event) const;   // 0x00445FA0
 };
-struct CWorld; struct CDefinitionManager;
+class CWorld; class CDefinitionManager;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

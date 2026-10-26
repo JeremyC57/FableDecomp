@@ -13,7 +13,7 @@ typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
 
 struct CAStarState { int total; };
-struct CAStarStateTotalGreaterThan { bool operator()(const CAStarState* a, const CAStarState* b) const { return a->total > b->total; } };
+class CAStarStateTotalGreaterThan { public: bool operator()(const CAStarState* a, const CAStarState* b) const { return a->total > b->total; } };
 static int g_calls = 0, g_hole = -1, g_top = -1; static CAStarState** g_first = 0; static CAStarState* g_value = 0;
 void __fastcall __push_heap(CAStarState** first, int holeIndex, int topIndex, CAStarState* value, CAStarStateTotalGreaterThan)
 {

@@ -6,7 +6,7 @@
 namespace LHNetworkLib {
 
 static int g_partsResets = 0;
-struct LHHttp2 {
+class LHHttp2 { public:
     unsigned char _pad0[0x70];
     char          CurrentHeaderPart[2048];
     unsigned long CurrentHeaderPos;

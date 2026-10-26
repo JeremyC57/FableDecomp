@@ -9,7 +9,7 @@
 // relocation helper (in place, integer arithmetic: `if (p) p = (T*)((long)p + ((long)newBase - (long)oldBase))` -- the
 // char* return-value form reassociates to `p - old + new` and moves p out of esi) keeps its own null test, then the virtual fix-up and
 // the relink through `prev` or the list head; three separate `ret 0x10` exits.
-struct CLocalDetailPrimitiveBase {
+class CLocalDetailPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual void OnPostRelocation();                        // slot 7 (+0x1c)
@@ -22,7 +22,7 @@ template <class T> inline void RelocatePointer(T*& p, void* oldBase, void* newBa
         p = (T*)((long)p + ((long)newBase - (long)oldBase));
 }
 
-struct CLocalDetailObjectCollectionType;
+class CLocalDetailObjectCollectionType;
 struct CObjectTypeCollection {                              // CLocalDetailCacheMap::CObjectTypeCollection
     virtual ~CObjectTypeCollection();                       // slot 0
     CLocalDetailObjectCollectionType* m_pType;              // +0x04

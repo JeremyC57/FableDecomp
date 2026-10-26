@@ -4,9 +4,9 @@
 #include <cstring>
 
 static char g_last[64]; static unsigned long g_flags; static int g_calls;
-struct CThing { bool Dead; bool hasHero; bool tutorial; };
-struct CTCBuyableHouse { bool OwnedByPlayer; long MaxDressLevel; long price; long GetPrice() { return price; } };
-struct CWideString {
+class CThing { public: bool Dead; bool hasHero; bool tutorial; };
+class CTCBuyableHouse { public: bool OwnedByPlayer; long MaxDressLevel; long price; long GetPrice() { return price; } };
+class CWideString { public:
     char buf[64];
     CWideString() { buf[0] = 0; }
     CWideString(const char* s) { std::strcpy(buf, s); }

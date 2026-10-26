@@ -1,4 +1,4 @@
-struct CInputProcessManager {
+class CInputProcessManager { public:
 // Leaf: ??1CInputProcessManager@
   void* vtbl;
 };

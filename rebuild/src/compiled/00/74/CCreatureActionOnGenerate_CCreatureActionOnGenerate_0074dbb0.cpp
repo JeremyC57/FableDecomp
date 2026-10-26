@@ -17,9 +17,9 @@ struct CCharString_Retail {
     ~CCharString_Retail();                                   // 0x0099EAE0
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -27,13 +27,13 @@ struct CSoundPair {
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString_Retail& name);   // 0x008561A0
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_OnGenerate : CCombatActionBase {
+class CCreatureAction_OnGenerate : public CCombatActionBase { public:
     virtual void v00();                         // own vtable 0x01268DEC
     CCreatureAction_OnGenerate(CThingCreatureBase* owner);
 };

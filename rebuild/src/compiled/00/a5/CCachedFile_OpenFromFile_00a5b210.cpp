@@ -9,13 +9,13 @@
 // PDiskFile +0x1c, Opened +0x24, BufferValid +0x25. The `mode` argument is unused.
 // Shape: the pathname temporary is homed in `file`'s dead argument slot (the pointer was loaded
 // into edi first); the file's vtable is re-read before every virtual call.
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                             // 0x0099B510
 };
 
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -39,7 +39,7 @@ struct CCountedPointer_CAFile {                 // {object, count block}
     void Reset(CAFile* file);                   // 0x0050F550
 };
 
-struct CCachedFile {
+class CCachedFile { public:
     void*                 _vptr;                // +0x00
     long                  Position;             // +0x04
     long                  BufferStartPosition;  // +0x08

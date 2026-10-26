@@ -5,7 +5,7 @@
 static int g_order[8];
 static int g_calls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -40,7 +40,7 @@ struct CDamageAttributeMap {
     }
 };
 
-struct CArmourDef : CParentDefClassBase {
+class CArmourDef : public CParentDefClassBase { public:
     CAugmentationResponseMap AugmentationResponse;
     CDamageAttributeMap      DamageTypeResponse;
     CDamageAttributeMap      ArmourThresholds;

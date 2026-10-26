@@ -15,12 +15,12 @@
 // temporary. Same-TU noinline stand-ins with the retail algorithms reproduce that knowledge. The final hit test
 // re-reads end(). The symbol map is reached through CCountedPointer::operator->, which loads the object before the
 // arguments are pushed.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];        // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
@@ -73,7 +73,7 @@ __declspec(noinline) SNameIndex* CNameCRCToIndexMap::LowerBound(const unsigned l
     return first;
 }
 #pragma auto_inline(on)
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const;  // 0x009E5170
 };
 
@@ -83,7 +83,7 @@ struct CSymbolMapPointer {                          // CCountedPointer<CSymbolMa
     CSymbolMap* operator->() const { return Object; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char      _pad00[0x60];
     CSymbolMapPointer  PDefinitionSymbolMap;        // +0x60 CCountedPointer<CSymbolMap>
     CNameCRCToIndexMap NameCRCToIndexMap;           // +0x68

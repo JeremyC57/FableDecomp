@@ -5,7 +5,7 @@
 #include "engine/CAIBrain.h"
 #include "engine/CTCPerceiveThing.h"
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
@@ -20,7 +20,7 @@ struct CThing {
 
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* Handle; CThing* GetPItem() const; };
 struct CTCPerceiveThingMethods : CTCPerceiveThing { CThing* GetPerceivedThing() const; };
-struct CTCTargetingAI { bool IsThingAttackable(const CThing*) const; };
+class CTCTargetingAI { public: bool IsThingAttackable(const CThing*) const; };
 bool __fastcall AreThingsEnemies(CThing*,CThing*);
 bool __fastcall IsWillingToAttackTarget(CThing*,CThing*);
 struct CAIStateGroup_StealthSeekEnemy_Adapter : CAIStateGroup_StealthSeekEnemy {

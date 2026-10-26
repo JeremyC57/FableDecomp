@@ -5,21 +5,21 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase is a propagated label and wrong.
 // Shape: the zeroed pair is stored before the pushes (`xor eax,eax ; mov [esp+4],eax ; mov [esp+8],eax`),
 // the bool argument is read after the base call (`mov dl,[esp+14h]`) and stored at +0x114.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_ForcePushInto : CCombatActionBase {
+class CCreatureAction_ForcePushInto : public CCombatActionBase { public:
     bool m_pushLeft;                            // +0x114
     virtual void v00();                         // own vtable 0x012783D4
     CCreatureAction_ForcePushInto(CThingCreatureBase* owner, bool pushLeft);

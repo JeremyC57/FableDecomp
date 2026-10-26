@@ -7,7 +7,7 @@
 #include "engine/CEngineLandscapeMemoryManager.h"
 #include "engine/CEngineLandscapeRenderer.h"
 // Donor renderer MemoryManager+F58 differs from native+6B0; use a documented native view below.
-struct CMovableResource;
+class CMovableResource;
 struct CEngineLandscapeMemoryManager_Methods : CEngineLandscapeMemoryManager {
  void* AllocVirtual(int bytes, CMovableResource* owner); // 00BD9AF0
  void FreeVirtual(void* block); // 00BD9B90

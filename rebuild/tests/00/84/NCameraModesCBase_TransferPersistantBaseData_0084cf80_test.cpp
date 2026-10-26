@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CPhysicsState {
     C3DVector Position, Velocity, Acceleration;
     void* Attractors; void* IncidentalAttractors;

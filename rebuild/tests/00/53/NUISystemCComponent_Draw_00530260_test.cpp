@@ -2,8 +2,8 @@
 // (owned or bastard child, not drawn from a viewport) over Children then ChildrenToDelete.
 #include <cstdio>
 
-struct CIEngine { int dummy; };
-struct CEnginePrimitiveHandle { int dummy; };
+class CIEngine { public: int dummy; };
+class CEnginePrimitiveHandle { public: int dummy; };
 struct CComponent;
 struct CCountedComponentPointer {
     CComponent* Object;

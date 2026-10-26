@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CTCHeroStats::AddHousePosition (0x0057CB4B): appends one (region, position) record.
-struct CRegion { int id; };
-struct C3DVector {
+class CRegion { public: int id; };
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}

@@ -12,9 +12,9 @@
 // the touch block is the inline resource-list move-to-tail, the result the add-ref copy constructor.
 // The re-indexed slot is a REFERENCE local inside the `if` (`mov eax,[ecx+ebx] ; add ecx,ebx ; test eax,eax`);
 // `Entries[index].Data == 0` in the condition gives `lea ecx,[ebx+eax] ; cmp [ecx],0`.
-struct CResourceList;
+class CResourceList;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
@@ -27,7 +27,7 @@ struct CResource {
     void AddToResourceList();              // 0x009FC440
 };
 
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                           // +0
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -39,7 +39,7 @@ struct CResourceList {
 struct SCountBlock { long m_references; };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -49,7 +49,7 @@ struct CCountedPointer {
 };
 
 struct CLipSyncData;
-struct CLipSyncDataBank;
+class CLipSyncDataBank;
 
 struct CLipSyncEntryData : CResource {
     CCountedPointer<const CLipSyncData> LipSync;       // +0x1c
@@ -64,14 +64,14 @@ struct CLipSyncEntryData : CResource {
     }
 };
 
-struct CLipSyncDataBankEntry {
+class CLipSyncDataBankEntry { public:
     CLipSyncEntryData* Data;               // +0 CIVCountedPointer<CData>
     float Duration;                        // +4
     void BeginLoading(long index, CLipSyncDataBank* bank);   // 0x00A42980
 };
 
 template <class T>
-struct CArray {                            // retail CArray: begin/end/capacity
+class CArray { public:                            // retail CArray: begin/end/capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
@@ -79,7 +79,7 @@ struct CArray {                            // retail CArray: begin/end/capacity
     T& operator[](long i) { return *(begin() + i); }
 };
 
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     virtual void v00();
     unsigned char _body[0x160];            // +0x004 .. +0x163 (CBankFile base and bank state)
     CArray<CLipSyncDataBankEntry> Entries; // +0x164

@@ -3,7 +3,7 @@
 
 class CCharString;
 class CThing;
-struct CScriptThing;
+class CScriptThing;
 
 // CScriptThing is polymorphic (fable_types.h: size 0xc, +0x00 vftable).
 // Only two slots are used here, so the vtable is modelled explicitly.
@@ -17,8 +17,8 @@ struct CScriptThingVTable
     bool (__fastcall* m_IsAvailable)(const CScriptThing* self);
 };
 
-struct CScriptThing
-{
+class CScriptThing
+{ public:
     CScriptThingVTable* m_pVTable;   // +0x00
 };
 
@@ -42,8 +42,8 @@ struct CGSIAddLineToConversationWorld
 };
 
 // CGameScriptInterface: +0x00 vftable slot modelled as raw padding, +0x04 CWorld*.
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     unsigned char                    m_Pad0000[0x04];
     CGSIAddLineToConversationWorld*  m_pWorld;            // +0x04
 

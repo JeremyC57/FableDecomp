@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerDecal {
+class CEnginePrimitiveManagerDecal { public:
     void* vftable;
     int destroyed;
 };

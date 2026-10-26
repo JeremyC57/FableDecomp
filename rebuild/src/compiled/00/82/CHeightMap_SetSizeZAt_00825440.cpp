@@ -6,7 +6,7 @@ extern const float g_maxSize_012724c0;            // 0x012724C0 (2048.0f)
 extern const float g_epsilon_0129ba3c;            // 0x0129BA3C (1e-4f)
 struct SCellIndex_00825440 { long m_x; long m_y; };
 struct SCell_00825440 { float m_sizeZ; float m_1; float m_2; };   // 12 bytes
-struct CHeightMap {
+class CHeightMap { public:
     unsigned char    _pad[0x10];
     SCell_00825440*  m_pCells;                     // +0x10
     unsigned char    _pad14[0x1f0];

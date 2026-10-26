@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -8,7 +8,7 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 struct CTCPhysicsStandard {
     CRightHandedSet RHSet, OldRHSet;
     C3DVector GetFacingVector(float t)

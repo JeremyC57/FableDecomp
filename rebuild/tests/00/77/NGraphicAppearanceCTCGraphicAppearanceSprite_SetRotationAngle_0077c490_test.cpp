@@ -2,11 +2,11 @@
 
 static unsigned long g_reasons = 0; static float g_max = 0.0f;
 struct CRandomGenerator { float m_next; float FloatRandom(float max) { g_max = max; return m_next * max; } };
-struct CDisplayEngine { CRandomGenerator m_random; CRandomGenerator* GetRandomGenerator() { return &m_random; } };
+class CDisplayEngine { public: CRandomGenerator m_random; CRandomGenerator* GetRandomGenerator() { return &m_random; } };
 static CDisplayEngine g_engine;
 struct CTCGraphicAppearance { void SetAsChanged(unsigned long reasons) { g_reasons |= reasons; } };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; };
-struct CTCBase {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing;
     CDisplayEngine* GetDisplayEngine() { return &g_engine; }

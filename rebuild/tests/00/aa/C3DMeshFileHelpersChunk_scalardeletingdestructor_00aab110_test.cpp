@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshFileHelpersChunk {
+class C3DMeshFileHelpersChunk { public:
     void* vftable;
     int destroyed;
 };

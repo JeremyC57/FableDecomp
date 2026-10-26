@@ -9,7 +9,7 @@
 // Model: a polymorphic local model (the generated header holds the vptr as a plain word). The destructor is declared
 // virtual as in retail; the `Leaf` selects the plain destructor `??1` over the deleting one.
 struct IDirect3DDevice9;
-struct CRenderStateManager;
+class CRenderStateManager;
 
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
@@ -18,7 +18,7 @@ struct CBaseClassNonCopyable {
     ~CBaseClassNonCopyable();                        // 0x0099A300
 };
 
-struct CRenderStateManager : CBaseClassNonCopyable { // vtable 0x0129C978
+class CRenderStateManager : public CBaseClassNonCopyable { public: // vtable 0x0129C978
     IDirect3DDevice9* PD3DDevice;                    // +0x04
     virtual ~CRenderStateManager();
 };

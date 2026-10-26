@@ -4,7 +4,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThingCreatureBase { u64 UniqueID; bool Combatant; bool IsCombatant() { return Combatant; } };
+class CThingCreatureBase { public: u64 UniqueID; bool Combatant; bool IsCombatant() { return Combatant; } };
 struct CAttackerMap { void* Header; unsigned long Count; };
 struct CCombatantInfo { CAttackerMap Attackers; };
 struct SCombatantNode { u64 Key; CCombatantInfo Value; };
@@ -19,7 +19,7 @@ struct CCombatantMap {
         return &g_header;
     }
 };
-struct CCombatManager {
+class CCombatManager { public:
     CCombatantMap Combatants;
     long GetNumberOfAttackers(CThingCreatureBase* creature)
     {

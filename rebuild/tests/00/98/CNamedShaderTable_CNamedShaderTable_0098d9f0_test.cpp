@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_strings = 0, g_erased = 0, g_freed = 0;
-struct CCharString { int x; CCharString() : x(0) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: int x; CCharString() : x(0) { ++g_strings; } ~CCharString() { --g_strings; } };
 struct SRbNodeBase { long m_color; SRbNodeBase* m_pParent; SRbNodeBase* m_pLeft; SRbNodeBase* m_pRight; };
 struct CRbTree {
     SRbNodeBase* m_pHeader; unsigned int m_nodeCount;

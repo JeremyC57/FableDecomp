@@ -11,7 +11,7 @@
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on (the PDB bitset<274> and vector map
 // carry debug padding): UsingComponents +0x20 [PDB +0x20], ThingTypeFlags +0x6c [PDB +0x7c],
 // the state bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -53,14 +53,14 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     enum { ThingTypeMask = 0x7 };
 };
-struct CThingMarker : CThingGameObject {
+class CThingMarker : public CThingGameObject { public:
     enum { ThingTypeMask = 0x8007 };
 };
 
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     const char* ScriptName;
     bool operator()(const CThing* thing) const;      // 0x006A7E30
 };

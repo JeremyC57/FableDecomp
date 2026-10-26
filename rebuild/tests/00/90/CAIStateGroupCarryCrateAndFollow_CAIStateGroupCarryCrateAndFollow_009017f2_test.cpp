@@ -5,7 +5,7 @@ static void Log(const char* s) { int l = (int)std::strlen(s); if (g_n + l + 1 < 
 static int Check(const char* addr, const char* want) { if (std::strcmp(g_log, want) != 0) { std::printf("%s_TEST FAIL\n%s\n", addr, g_log); return 1; } std::printf("%s_TEST PASS\n", addr); return 0; }
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; ~CBaseIntelligentPointer() { char b[16]; std::sprintf(b, "ptr%d", (int)(long)m_pItem); Log(b); } };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CAIStateGroupBase { virtual void v00() {} ~CAIStateGroupBase() { Log("base"); } unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual void v00() {} ~CAIStateGroupBase() { Log("base"); } unsigned char _pad[0x10]; };
 struct CAIStateGroup_CarryCrateAndFollow : CAIStateGroupBase {
     CIntelligentPointer PCrate; CIntelligentPointer PPreviouslyCarriedItem; CIntelligentPointer PThingToFollow; CIntelligentPointer PCarrier;
     ~CAIStateGroup_CarryCrateAndFollow() { }

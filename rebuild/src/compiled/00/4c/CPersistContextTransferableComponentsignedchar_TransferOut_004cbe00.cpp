@@ -8,8 +8,8 @@
 // into a long local (the `push ecx` frame slot) whose address goes to the long writer. Same shape as
 // the landed 0x007B41A0 family; `signed char` (not plain `char`, which is also signed under the
 // era defaults) names the intent.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 struct CPersistContext_TransferableComponent {

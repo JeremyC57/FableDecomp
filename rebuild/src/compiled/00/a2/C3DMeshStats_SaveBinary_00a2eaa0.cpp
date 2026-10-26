@@ -11,11 +11,11 @@
 // C3DDummyObject), MeshVolumes +0x58 (CVectorMap, 16-byte key/value pairs), MeshGenerators +0x68 (64-byte
 // C3DGeneratorObject), PackedNames +0x74, PackedNamesSize +0x78, AnimatedFlag +0x7A. Retail CVectorMap is 16 bytes and
 // CArray 12 bytes (the PDB has 20/16), so every member after MeshVolumes sits 4 or 8 bytes below the PDB offset.
-struct CCharString { void* m_pStringData; };
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float m_row[3][4]; };
+class CCharString { public: void* m_pStringData; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                           // 0x00993E30
     void WriteUShort(unsigned short value);               // 0x00993E80
     void WriteULong(unsigned long value);                 // 0x00993EA0
@@ -27,21 +27,21 @@ struct CDataOutputStream {
     void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
 };
 
-struct CContainmentVolume {
+class CContainmentVolume { public:
     void SaveBinary(CDataOutputStream& out) const;        // 0x00A75400
 };
 
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DBoundingBox { C3DVector MinCoord; C3DVector MaxCoord; };
-struct C3DHelperPoint { unsigned char _body[0x14]; };
-struct C3DDummyObject { unsigned char _body[0x38]; };
-struct C3DMeshVolume {
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DBoundingBox { public: C3DVector MinCoord; C3DVector MaxCoord; };
+class C3DHelperPoint { public: unsigned char _body[0x14]; };
+class C3DDummyObject { public: unsigned char _body[0x38]; };
+class C3DMeshVolume { public:
     CCharString Name;                     // +0
     CContainmentVolume* ConvexVolume;     // +4 (CCountedPointer<CContainmentVolume>: the object pointer)
     long _reserved;                       // +8
 };
 struct CMeshVolumePair { unsigned long first; C3DMeshVolume second; };
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     CMatrix3x4 Transform;                 // +0x00
     long BoneIndex;                       // +0x30 (unnamed in the PDB; written as a long)
     CCharString ObjectName;               // +0x34
@@ -71,7 +71,7 @@ struct CGeneratorArray {
     const C3DGeneratorObject& operator[](unsigned long n) const { return _M_start[n]; }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     void* _vtable;                                        // +0x00
     void* MemoryPool;                                     // +0x04
     long StatsMemoryHandle;                               // +0x08

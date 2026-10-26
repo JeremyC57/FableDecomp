@@ -2,7 +2,7 @@
 // passed, else the ring / no-ring icon (priority 4); hidden -> icon 0 at 1.0 scale, alpha 255; GUI refresh on change only
 #include <cstdio>
 class CThing;
-struct CTCBase;
+class CTCBase;
 static long g_frame = 100;
 long GFGetCurrentFrame() { return g_frame; }
 struct CInterfaceMap {
@@ -25,7 +25,7 @@ public:
     }
 };
 static long g_priority = -1; static float g_scale = 0; static int g_alpha = -1; static float g_time = 0;
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     long EmoteIcon;
     void SetEmoteIcon(long priority, long icon, float activeTime, float scale, unsigned char alpha)
     { g_priority = priority; EmoteIcon = icon; g_time = activeTime; g_scale = scale; g_alpha = alpha; }
@@ -34,9 +34,9 @@ struct CWifeIconDefs { long WifeAttractionIcon; long WifeAttractionIconWithRing;
 struct CDefinitionHolder { CWifeIconDefs* Defs; };
 static CWifeIconDefs g_icons; static CDefinitionHolder g_holder;
 static int g_refreshes = 0;
-struct CPlayerGui { void Refresh(long flag) { if (flag == 0) ++g_refreshes; } };
+class CPlayerGui { public: void Refresh(long flag) { if (flag == 0) ++g_refreshes; } };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCWife {
+class CTCWife { public:
     virtual void v00() {}
     CThing*       ParentThing;
     long          FrameGotMarriedToThePlayer;

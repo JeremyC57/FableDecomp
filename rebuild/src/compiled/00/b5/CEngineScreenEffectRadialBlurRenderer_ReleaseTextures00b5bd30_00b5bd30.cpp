@@ -12,7 +12,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineScreenEffectRadialBlurRenderer {
+class CEngineScreenEffectRadialBlurRenderer { public:
     unsigned char _pad[0xc];
     long          m_held;                          // +0x0c
     long          m_heldB;                         // +0x10

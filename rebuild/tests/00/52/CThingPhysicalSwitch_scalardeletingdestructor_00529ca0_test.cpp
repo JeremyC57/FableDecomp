@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingPhysicalSwitch {
+class CThingPhysicalSwitch { public:
     void *vfptr;
 };
 

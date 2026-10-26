@@ -8,7 +8,7 @@
 // WriteLong(long) 0x00993EB0 (the two signed fields) and WriteULong(unsigned long) 0x00993EA0 (the bank indices, flags
 // and self-illumination; its propagated label says WriteCBYTE) -- the landed lane names; 0x00993E30 writes a normalized
 // boolean byte, 0x00995AE0 writes characters plus NUL.
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 #include "engine/CDataOutputStream.h"
 struct CDataOutputStreamMethods : CDataOutputStream {
     void WriteLong(long value); // 0x00993EB0
@@ -24,8 +24,8 @@ struct CMaterialFilenames {
     CCharString Reflection;
     CCharString Illumination;
 };
-struct CBaseClass { virtual void v00(); };
-struct C3DMeshMaterial : CBaseClass {
+class CBaseClass { public: virtual void v00(); };
+class C3DMeshMaterial : public CBaseClass { public:
     long MaterialIndex;
     CCharString Name;
     long DecalID;

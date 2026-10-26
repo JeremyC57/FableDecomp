@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
 #pragma pack(push, 1)
-struct CMeshDataBankEntry {
+class CMeshDataBankEntry {
+public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     CMeshDataBank* Bank;                                     // +0x04
     unsigned long  Index;                                    // +0x08

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_PutDownJug {
+class CCreatureAction_PutDownJug { public:
     void* vftable;
     int destroyed;
 };

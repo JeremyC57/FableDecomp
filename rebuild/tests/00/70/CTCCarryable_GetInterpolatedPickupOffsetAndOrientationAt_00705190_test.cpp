@@ -9,10 +9,10 @@
 // lookups shares the success block -- written as two sequential tests each with its own copy-out (the first returning),
 // which VC cross-jumps into one block; the `||` form recolours flags/position (esi/edi) and frames the dummy above the temporary; the difference is a C3DVector temporary built field by field (x first) by an inline
 // operator- and copied out through integer registers (no user copy ctor).
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator-(const C3DVector& other) const
@@ -24,16 +24,16 @@ struct C3DVector {
         return r;
     }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 struct CTCGraphicAppearance {
     bool GetDummyObjectAssumingObjectAt(const CCharString& name, const C3DVector& position, const CRightHandedSet& orientation,
                                         long lod, unsigned long flags, C3DVector* outPosition, CRightHandedSet* outOrientation);   // 0x004C0C80
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CTCGraphicAppearance* GetGraphicAppearance() const { return ParentThing->PTCGraphicAppearance; }
@@ -61,7 +61,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); ++fails; } } while (0)
 CCharString g_RightHandAttachmentName;
 CCharString g_LeftHandAttachmentName;
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 static int g_calls = 0; static bool g_rightOk = false, g_leftOk = false; static unsigned long g_flags = 99;
 static const CCharString* g_lastName = 0;
 bool CTCGraphicAppearance::GetDummyObjectAssumingObjectAt(const CCharString& name, const C3DVector& position, const CRightHandedSet& orientation,

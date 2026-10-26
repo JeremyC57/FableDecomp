@@ -4,7 +4,7 @@
 // CThingBaseDef> >, 12 bytes in retail) +0x14.
 // Shape: an unsigned index loop against size() re-read every iteration (`sar` of the pointer difference, `jb`), the
 // element walked by a strength-reduced pointer started from the first load of m_pFirst.
-struct CThingBaseDef;
+class CThingBaseDef;
 
 struct CThingBaseDefPointer {                       // CDefPointer<const CThingBaseDef>
     const CThingBaseDef* m_pDef;
@@ -23,7 +23,7 @@ struct CTCBase_00765d50 {
     unsigned char _pad04[8];
 };
 
-struct CTCObjectAugmentations : CTCBase_00765d50 {
+class CTCObjectAugmentations : public CTCBase_00765d50 { public:
     const void*         PDef;                       // +0x0c
     bool                LoadedFromSaveGame;         // +0x10
     CAugmentationVector Augmentations;              // +0x14

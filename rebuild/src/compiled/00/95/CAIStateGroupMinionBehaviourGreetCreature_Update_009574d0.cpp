@@ -9,8 +9,8 @@
 // @ 0x0099EAE0, the state-group finish call @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is propagated and wrong).
 // Shape: a NAMED CCharString in the inner block; the action result is a named long (compared after the action dtor); `if (result != 2) { FinishUpdate(); return; }` inside the block
 // (FinishUpdate before the string dtor on that path), the common FinishUpdate after it. No engine header.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     // (the dead bit lives at +0x91 of the thing)
@@ -25,36 +25,36 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x0
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
     ~CCreatureActionBase();                         // 0x00693EF0
 };
 
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                      // +0xa8..+0xb3
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13

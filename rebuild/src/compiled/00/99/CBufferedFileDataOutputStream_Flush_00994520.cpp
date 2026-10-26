@@ -7,7 +7,7 @@
 // written, the file positioned back at FileSize and the count cleared; both paths then restart
 // the buffer at FilePos -- VC7.1 duplicates that small tail into each path (two `pop esi ; ret`).
 // The File pointer is re-read before every virtual call (the callee may change it).
-struct CAFile {
+class CAFile { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

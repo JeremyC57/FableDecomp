@@ -6,7 +6,7 @@
 // Shape: two inlined single-flag setters (the 0x0040B690 setter shape: new-profile copy under the flag, the live
 // value, ApplyValues, optional Save); the bool argument is held in bl across all four calls, the save flag is
 // re-read from its stack slot at each test.
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void* _vtables[2];                              // +0x00 / +0x04
     void* ProfileName;                              // +0x08 (CWideString)
     bool UseNewProfileValues;                       // +0x0c

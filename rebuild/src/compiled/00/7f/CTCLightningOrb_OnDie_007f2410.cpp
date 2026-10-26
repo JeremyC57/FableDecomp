@@ -9,18 +9,18 @@
 // the `&&` string temporary; the effects sub-def is a zeroed out slot released by hand (null-tested) after the spawn. GetSubDef and
 // GetEffectFromString get same-TU stand-in bodies that write only the out slot / the `long&`, so VC7.1 knows neither address
 // escapes; that orders the zero stores of the effect-type word and the out slot as in retail.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);   // stand-in callee
@@ -43,7 +43,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointerSlot<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -59,7 +59,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {          // a counted def reference held by value
+template <class T> class CDefPointer { public:          // a counted def reference held by value
     T* m_p;
     CDefPointer(const CDefPointer& other) : m_p(other.m_p)
     {
@@ -73,7 +73,7 @@ template <class T> struct CDefPointer {          // a counted def reference held
     }
     T* operator->() const { return m_p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;             // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
@@ -81,7 +81,7 @@ struct CThing {
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CTCLightningOrb {
+class CTCLightningOrb { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                   // +0x04
     void OnDie();

@@ -1,14 +1,14 @@
 // Behaviour test for CTCPhysicsBase::HasCollidedWithThingFromTo (0x00880730): mesh bodies use the swept mesh test and flip the
 // normal when the global switch is set; cylinders forward the cylinder test at `to`; spheres test at `to` and report `from`.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 };
-struct CPhysicsCollideResponse { C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
+class CPhysicsCollideResponse { public: C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
 bool g_flipMeshCollideNormals_013b86ec = false;
 static int g_calls[3] = { 0, 0, 0 }; static const C3DVector* g_at = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     int m_type; bool m_hit;
     bool IsPhysicsMeshTypeMesh() const { return m_type == 1; }
     bool IsPhysicsMeshTypeCylinder() const { return m_type == 2; }

@@ -2,29 +2,29 @@
 // handle comes back; otherwise the player plays {index, index} with the default CSoundInit and (true, false, false).
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
-struct CCharString { const char* PStringData; };
+class CTCBase;
+class CCharString { public: const char* PStringData; };
 unsigned long g_InvalidSoundHandle = 0xFFFFFFFFUL;
-struct CASoundBank {
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const { return std::strcmp(symbol.PStringData, "ORACLE") == 0 ? 42 : 0; }
 };
-struct CMainGameComponent { CASoundBank* PSampleBank; };
+class CMainGameComponent { public: CASoundBank* PSampleBank; };
 static CASoundBank g_bank; static CMainGameComponent g_mgc = { &g_bank };
 CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair(long first, long last) : FirstSound(first), LastSound(last) { }
 };
 enum ESoundPlaybackType { SOUND_PLAYBACK_1 = 1 };
-struct CSoundInit {
+class CSoundInit { public:
     float Volume; float Pitch; float Pan; long NoPlays; ESoundPlaybackType PlaybackType;
     unsigned long GainFaderBits; unsigned long PitchFaderBits; long OverrideID;
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Pan(0.0f), NoPlays(1), PlaybackType(SOUND_PLAYBACK_1), GainFaderBits(0),
                    PitchFaderBits(0), OverrideID(-1) { }
 };
 static int g_plays = 0; static long g_first = 0, g_last = 0; static int g_initOk = 0; static int g_flags = -1;
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool a, bool b, bool c)
     {
         ++g_plays; g_first = sound.FirstSound; g_last = sound.LastSound;
@@ -40,7 +40,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(T** out, long type)
@@ -57,7 +57,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     CThing* ParentThing;
     unsigned long PlaySoundW(const CCharString& sound);
 };

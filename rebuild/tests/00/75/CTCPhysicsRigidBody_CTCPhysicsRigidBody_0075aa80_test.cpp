@@ -3,7 +3,7 @@
 struct V { void* a; void* b; void* c; V() : a(0), b(0), c(0) {} bool empty() const { return !a && !b && !c; } };
 struct CRigidBodyConfig { float pad[42]; V BoundingVertices; };
 struct CRigidBody { float pad[17]; V BodyBoundingVertices; CRigidBodyConfig CurrentConfig, LastConfig; };
-struct CTCPhysicsBase { void* ParentThing; CTCPhysicsBase(void* p) : ParentThing(p) {} };
+class CTCPhysicsBase { public: void* ParentThing; CTCPhysicsBase(void* p) : ParentThing(p) {} };
 struct CTCPhysicsRigidBody : CTCPhysicsBase { V CollisionNormal, CollidingVertexIndex, Collidors; void* PPhysicsMeshInfo; CRigidBody Body;
     CTCPhysicsRigidBody(void* p) : CTCPhysicsBase(p) { PPhysicsMeshInfo = 0; } };
 int main()

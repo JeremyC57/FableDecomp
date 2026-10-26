@@ -5,7 +5,7 @@
 #include <cstring>
 static int g_log[16]; static int g_n = 0; static bool g_player = false; static long g_soundId = 0; static long g_removed = 0;
 static const char* g_bone = 0; static const char* g_type = 0; static long g_effectFlags = 0; static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length) : PStringData(text) { ++g_strings; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_strings; }
@@ -15,13 +15,13 @@ struct CDefStringTable {
     CCharString GetString(long id) { g_soundId = id; return CCharString("SND", -1); }
 };
 CDefStringTable g_DefStringTable;
-struct CThing {
+class CThing { public:
     unsigned char Type;
     void RemoveTC(long type) { g_log[g_n++] = 4; g_removed = type; }
 };
-struct CThingCreatureBase : CThing { };
-struct CSpecialAbilitiesPhysicalShieldDef { long EndSound; };
-struct CTCPhysicalShieldSpell {
+class CThingCreatureBase : public CThing { public: };
+class CSpecialAbilitiesPhysicalShieldDef { public: long EndSound; };
+class CTCPhysicalShieldSpell { public:
     CThing* ParentThing;
     const CSpecialAbilitiesPhysicalShieldDef* PDef;
     long    CurShieldFadeOutTimer;

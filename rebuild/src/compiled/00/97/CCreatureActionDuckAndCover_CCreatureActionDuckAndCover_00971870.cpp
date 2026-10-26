@@ -4,13 +4,13 @@
 // The manifest label (CAbilityTrackLevelDef) is propagated: the vtable stored, 0x012974A4, is
 // CCreatureAction_DuckAndCover in rtti-vtables.tsv. The base is 0x114 bytes here; the three
 // members after it are copied one register each (a user copy constructor's memberwise shape).
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x110];                                  // +0x04..+0x114
     CCombatActionBase(const CCombatActionBase& other);           // 0x0062F3B0
 };
 
-struct CCreatureAction_DuckAndCover : CCombatActionBase {        // vtable 0x012974A4
+class CCreatureAction_DuckAndCover : public CCombatActionBase { public:        // vtable 0x012974A4
     long m_coverState;                                           // +0x114
     long m_coverTimer;                                           // +0x118
     long m_coverTarget;                                          // +0x11c

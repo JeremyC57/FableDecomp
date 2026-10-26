@@ -6,13 +6,13 @@
 //        into a local counted pointer (add-ref null-tested; release + delete on zero on both exits); end() re-read each pass.
 // Layout: retail CTCWillLightning (vtable 0x0126C724) keeps m_lbBeams at +0x68 (PDB +0x6C: a member below +0x60 is
 //         4 bytes smaller in retail, see m_fTime +0x60 in Deactivate 0x007A0310; the STLport list is one sentinel pointer, PDB 12 bytes); CLightningBeam m_lsState +0x00.
-struct CCPPointerInfo {                          // counted-pointer info block
+class CCPPointerInfo { public:                          // counted-pointer info block
     long Count;                                  // +0
     void (__fastcall* Destroy)(void*);           // +4 per-type deleter, object in ecx
     void* Object;                                // +8
 };
 void operator delete(void* p);                   // 0x00BFE9BC
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -36,7 +36,7 @@ template <class T> struct CRetailList {          // STLport list: the sentinel n
 struct CLightningBeam {
     long m_lsState;                              // +0x00 ELightningState
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void* __vftable;                             // +0x00
     unsigned char _pad_0x04[0x68 - 0x04];
     CRetailList<CCountedPointer<CLightningBeam> > m_lbBeams;     // +0x68

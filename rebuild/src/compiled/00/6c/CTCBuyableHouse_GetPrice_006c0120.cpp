@@ -14,10 +14,10 @@ struct CRetailVector
     T* _End;
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 };
-struct CBuyableHouseDef { unsigned char _pad_0x00[0x28]; CRetailVector<long> Price; CRetailVector<long> Rent; long DaysBetweenRentPayments; long MaxRentBags; };
+class CBuyableHouseDef { public: unsigned char _pad_0x00[0x28]; CRetailVector<long> Price; CRetailVector<long> Rent; long DaysBetweenRentPayments; long MaxRentBags; };
 #pragma pack(push, 1)
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     void* __vftable; void* ParentThing; unsigned char _pad_0x08[0x4];
     const CBuyableHouseDef* PDef_Object;
     bool IsScripted; bool OwnedByPlayer; bool Rented; unsigned char _pad_0x13[0x1];

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesElectrocutedEffectDef { void* vftable; };
+class CSpecialAbilitiesElectrocutedEffectDef { public: void* vftable; };
 extern "C" void __fastcall CSpecialAbilitiesElectrocutedEffectDef_dtor(CSpecialAbilitiesElectrocutedEffectDef* def);
 extern "C" void __cdecl eng_operator_delete(void* p);
 

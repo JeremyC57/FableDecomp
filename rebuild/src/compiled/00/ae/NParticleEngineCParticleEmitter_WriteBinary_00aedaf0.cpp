@@ -11,7 +11,7 @@
 // Shape: one stream call per field in the file order (not declaration order); ushort bits 11 and 7 are read as a word
 //   and a byte respectively, exactly as VC7.1 narrows bit-field loads; Priority is passed to WriteLong as `and ecx,7`.
 #include "engine/CDataOutputStream.h"
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                                    // 0x00993E30
     void WriteUBYTE(unsigned char value);                           // 0x00993E50
@@ -21,7 +21,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteNullTerminatedString(const CCharString& text);        // 0x00995AE0
 };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     void WriteBinary(CDataOutputStream* out);                       // 0x00AF4240
 };
 struct CParticleSystemPointer {                                     // CCountedPointer<CParticleSystem>
@@ -29,7 +29,7 @@ struct CParticleSystemPointer {                                     // CCountedP
     void* m_count;
     CParticleSystem* operator->() const { return m_p; }
 };
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void* __vftable;                                                // +0x00
     void* m_pLink;                                                  // +0x04 CBaseObject
     CParticleSystemPointer* ParticleSystems_start;                  // +0x08

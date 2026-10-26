@@ -3,8 +3,8 @@
 typedef int ERendered;
 typedef int EEngineRenderLayer;
 
-struct CEngineInternalPrimitiveBase { int dummy; };
-struct CEngineSubPrimitiveChain { int dummy; };
+class CEngineInternalPrimitiveBase { public: int dummy; };
+class CEngineSubPrimitiveChain { public: int dummy; };
 
 
 // callee at 0xbade40: takes the primitive ref (one stack arg), stdcall (self-cleans)

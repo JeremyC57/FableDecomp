@@ -7,8 +7,8 @@
 //   0x10 bytes with its vptr); a map node keeps its key at +0x10 and the mapped pointer at +0x14.
 // Shape: each index is copied into a long local (the key reference) and the iterator lands in a frame slot VC alternates with
 //   the dead table-argument slot; `->second` is read without an end() test.
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
 namespace std {
 template <class T> struct less { };
 template <class T> struct allocator { };

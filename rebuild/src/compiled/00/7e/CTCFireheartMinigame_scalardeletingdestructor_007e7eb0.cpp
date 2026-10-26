@@ -1,4 +1,4 @@
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     void* vftable;
 };
 

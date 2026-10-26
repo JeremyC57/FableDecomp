@@ -8,7 +8,7 @@
 //   edx). The temporary is copied word by word through eax into the 12-byte frame, `a = b` through esi from the
 //   copied `b` pointer (`mov eax,edx`), and the temporary is written back through ecx/eax/ecx. C3DVector needs its
 //   memberwise user copy constructor: with the implicit one VC7.1 keeps the temporary in ebx/esi/edi (no frame).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

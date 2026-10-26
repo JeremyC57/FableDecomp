@@ -1,19 +1,19 @@
 // Behaviour test for CInputProcessProjectileTargetingAnalogueZoom::ProcessInput @ 0x0068F320 (model copy, stub callees).
 #include <cstdio>
-struct C2DVector { float x, y; };
-struct CInputEvent { int pressed; long action; bool analogue; C2DVector v; };
-struct CProcessedInput { bool handled; void SetHandled() { handled = true; } };
+class C2DVector { public: float x, y; };
+class CInputEvent { public: int pressed; long action; bool analogue; C2DVector v; };
+class CProcessedInput { public: bool handled; void SetHandled() { handled = true; } };
 struct CTCProjectileZoom {
     float zoom;
     void AdjustZoom(float d) { zoom += d; if (zoom < 0.0f) zoom = 0.0f; else if (zoom > 1.0f) zoom = 1.0f; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[9]; CTCProjectileZoom* z; unsigned char m_dead : 1;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     CTCProjectileZoom* GetTC(long kind) { CTCProjectileZoom* tc = 0; if (HasTC(kind)) tc = z; return tc; }
 };
 static CThing* g_hero;
-struct CInputProcessProjectileTargetingAnalogueZoom {
+class CInputProcessProjectileTargetingAnalogueZoom { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.pressed != 0; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     bool GetEventGameActionVector(long a, const CInputEvent& e, C2DVector* v) { if (!e.analogue || e.action != a) return false; *v = e.v; return true; }

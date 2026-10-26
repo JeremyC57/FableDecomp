@@ -1,16 +1,16 @@
 // behaviour test for CThingFilter_IsPotentialCustomer::CThingFilter_IsPotentialCustomer (0x00799D80): stored arguments, shop position, building-volume shopper container
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* m_text; CCharString(const char* t, long = -1) : m_text(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* m_text; CCharString(const char* t, long = -1) : m_text(t) {} ~CCharString() {} };
 static bool g_hasVolume = false; static int g_meshDtors = 0; static const char* g_askedName = 0;
-struct CPhysicsMeshObject { ~CPhysicsMeshObject() { ++g_meshDtors; }
+class CPhysicsMeshObject { public: ~CPhysicsMeshObject() { ++g_meshDtors; }
     bool HasContainmentVolume(const CCharString& n) { g_askedName = n.m_text; return g_hasVolume; } };
-struct CTCPhysicsBase { void* m_mesh; void* GetPhysicsMesh() const { return m_mesh; } CPhysicsMeshObject GetPhysicsMeshObject() { return CPhysicsMeshObject(); } };
+class CTCPhysicsBase { public: void* m_mesh; void* GetPhysicsMesh() const { return m_mesh; } CPhysicsMeshObject GetPhysicsMeshObject() { return CPhysicsMeshObject(); } };
 class CThing { public: CTCPhysicsBase* PhysicsTC; C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
-struct CTCShop { CThing* ParentThing; bool StallLike; };
-struct CTCShopKeeper { CTCShop* m_shop; CTCShop* GetShopTC() { return m_shop; } };
-struct CThingFilter_IsPotentialCustomer {
+class CTCShop { public: CThing* ParentThing; bool StallLike; };
+class CTCShopKeeper { public: CTCShop* m_shop; CTCShop* GetShopTC() { return m_shop; } };
+class CThingFilter_IsPotentialCustomer { public:
     CThing* ShopperContainer; C3DVector Pos; CTCShopKeeper* TCShopKeeper; bool AllowExistingShopper;
     CThingFilter_IsPotentialCustomer(CTCShopKeeper* shopKeeper, bool allowExistingShopper) : TCShopKeeper(shopKeeper), AllowExistingShopper(allowExistingShopper)
     {

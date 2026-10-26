@@ -4,7 +4,7 @@ struct CCameraSub;
 // The method called on the sub-object at [this+0x280]; __fastcall, no args, void.
 void __fastcall CCameraSub_Reset(CCameraSub* self);
 
-struct CEngine {
+class CEngine { public:
     char pad0[0x1f8];
     unsigned char flag_1f8;   // [this+0x1f8]
     char pad1[0x280 - 0x1f8 - 1];

@@ -2,7 +2,7 @@
 
 struct VWindow { float x, y, z, w; };
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     int pad0;
     VWindow vwin0;
     VWindow vwin1;

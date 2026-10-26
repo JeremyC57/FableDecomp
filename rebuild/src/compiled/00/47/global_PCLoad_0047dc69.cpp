@@ -19,8 +19,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -28,19 +28,19 @@ struct CCharString {
 };
 
 namespace NUISystem {
-struct CObserver {                                   // the observer interface at +4 of every component
+class CObserver { public:                                   // the observer interface at +4 of every component
     virtual void o00(); virtual void o01(); virtual void o02();
     virtual void ObserveEvent(long eventType);       // slot 3 (+0x0C)
 };
 struct CComponentBase {                              // the primary vtable
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
-struct CYesNo : CComponent {
+class CYesNo : public CComponent { public:
 };
-struct CManager {                                    // NUISystem::CManager (CObservable vtable part)
+class CManager { public:                                    // NUISystem::CManager (CObservable vtable part)
     virtual void m00(); virtual void m01();
     virtual void AddObserver(CObserver* observer);   // slot 2 (+0x08)
     virtual void m03(); virtual void m04(); virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08();
@@ -50,7 +50,7 @@ struct CManager {                                    // NUISystem::CManager (COb
 };
 }
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -63,7 +63,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad1[0x23];
@@ -80,19 +80,19 @@ struct CThing {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad_0x04[0x60];
     long          LoadGameIndex;                     // +0x64 (PDB +0x78)

@@ -114,11 +114,11 @@ public:
 };
 }
 
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void*         __vftable;                               // +0x00
     unsigned char _pad_0x04[0x4C];                         // +0x04 CTCBase fields, experience counters, vectors, Pickups
     std::list<std::pair<EDamageAttribute, long> > AttackHistory;   // +0x50 (PDB +0x64)

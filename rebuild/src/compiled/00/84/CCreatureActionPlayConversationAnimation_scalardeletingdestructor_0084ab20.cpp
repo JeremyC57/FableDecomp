@@ -1,4 +1,4 @@
-struct CCreatureAction_PlayConversationAnimation {
+class CCreatureAction_PlayConversationAnimation { public:
     void* vftable;
 };
 

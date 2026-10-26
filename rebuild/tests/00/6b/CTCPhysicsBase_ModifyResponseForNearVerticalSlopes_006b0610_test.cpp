@@ -19,7 +19,7 @@ static void InitTable()
     }
 }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -36,14 +36,14 @@ struct C3DVector {
     }
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-struct CPhysicsCollideResponse { C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
+class CPhysicsCollideResponse { public: C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
 struct CPhysicsGlobalDef { float MaxSlopeAngle; };
 struct CDefinitionHolder { CPhysicsGlobalDef* PhysicsDef; };
-struct CThing { unsigned char ThingClass; };
+class CThing { public: unsigned char ThingClass; };
 static CPhysicsGlobalDef g_def;
 static CDefinitionHolder g_holder = { &g_def };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CThing* ParentThing;
     CDefinitionHolder* GetDefinitions() const { return &g_holder; }
     void ModifyResponseForNearVerticalSlopes(CPhysicsCollideResponse& response) const

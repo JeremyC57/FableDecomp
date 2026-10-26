@@ -9,7 +9,7 @@
 // `DeliveredReaction = DeliveredSpeech = false` shares the `xor al,al` with the DeedIsVirtual compare.
 // Layout: Ego_r.pdb CAIStateGroup_DeedReactionRoot = retail (ThingReactingTo +0x14, DeedIsVirtual +0x24,
 // LastThingOpinionSourceUID +0x28 (CThing::UniqueID +0x18, ulong64), DeliveredReaction +0x34, DeliveredSpeech +0x35).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -22,15 +22,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -40,8 +40,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -85,8 +85,8 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };
@@ -97,13 +97,13 @@ struct CThingWithUID                                // CThing::UniqueID at +0x18
     unsigned __int64 UniqueID;                      // +0x18
 };
 
-struct CTCHeroOpinionDeedLog
-{
+class CTCHeroOpinionDeedLog
+{ public:
     void ApplyPendingDeedLog();                     // 0x00683B00
 };
 
-struct CAIStateGroupBase                            // a real base: a flat class with a vptr and an __int64 pads the vptr to 8
-{
+class CAIStateGroupBase                            // a real base: a flat class with a vptr and an __int64 pads the vptr to 8
+{ public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08 priority, name, flags

@@ -43,7 +43,7 @@ struct CCountedPointer_00be03a0 {                  // 8 bytes: the object and it
     }
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     CCountedPointer_00be03a0 m_bankFileEntry;      // +0x00
     void SetBankFileEntry(CCountedPointer_00be03a0 entry);
 };

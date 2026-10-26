@@ -11,7 +11,7 @@
 // block reference (`[eax+ebp-4]` ahead of `lea esi`; a reference to the previous material is CSE'd as
 // `[esi-4]`), both materials are scaled (`lea x,[x+x*2] ; shl x,4`) before the degenerate test; the loop index
 // lives in the `push ecx` frame slot and the count and block array are re-read every iteration.
-struct CTexture;
+class CTexture;
 struct CBaseBlock {                                  // 12 bytes (PDB)
     unsigned long PrimitiveCount;                    // +0x00
     unsigned long StartIndex;                        // +0x04
@@ -26,7 +26,7 @@ struct CStaticBlock : CBaseBlock {                   // 32 bytes (PDB)
     CTexture*     BumpTexture;                       // +0x18
     long          MaterialIndex;                     // +0x1c
 };
-struct C3DMeshMaterial {                             // 48 bytes (PDB)
+class C3DMeshMaterial { public:                             // 48 bytes (PDB)
     unsigned char _pad00[0x10];
     unsigned long DiffuseMapBankIndex;               // +0x10
     unsigned long BumpMapBankIndex;                  // +0x14
@@ -34,12 +34,12 @@ struct C3DMeshMaterial {                             // 48 bytes (PDB)
     bool          DegenerateTriangles;               // +0x2b
     void*         Filenames;                         // +0x2c
 };
-struct C3DMesh2 {
+class C3DMesh2 { public:
     unsigned char    _pad00[0x8c];
     C3DMeshMaterial* Materials;                      // +0x8c (PDB +0x94)
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad00[0x40];
     unsigned long StaticBlockCount;                  // +0x40
     CStaticBlock* StaticBlocks;                      // +0x44

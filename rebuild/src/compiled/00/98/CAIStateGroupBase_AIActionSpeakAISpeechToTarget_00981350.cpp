@@ -8,8 +8,8 @@
 // 0x01237F1C / 0x0123E7D8) and destroyed by this callee after the call; the CCharString accessors are inline null-safe
 // reads of the string data {chars, length}; GetString is `s = ""; if (data) s = data->Chars;` (retail preloads the
 // shared "" 0x0129AAF4 into edx -- the ?: forms branch both ways).
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer
 {
@@ -22,20 +22,20 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     virtual void v00();
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     const char* Chars;                              // +0x00
     long Length;                                    // +0x04
 };
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* PStringData;                   // +0x00
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetString() const { const char* s = ""; if (PStringData) s = PStringData->Chars; return s; }
@@ -48,15 +48,15 @@ struct CSpeechMap
     long LookupValue(unsigned long crc);            // 0x009CC410
 };
 
-struct CEngine
-{
+class CEngine
+{ public:
     unsigned char _pad00[0x14];
     CSpeechMap* SpeechMap;                          // +0x14
 };
 extern CEngine* g_pEngine;                          // 0x013B86A0
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void v00();
     unsigned char _pad04[0x10];
     long AIAction_SpeakToTarget(long mode, CIntelligentPointer<const CThing> speaker,

@@ -30,7 +30,7 @@ struct CTCInventoryBase {
     void OnItemAdded(long item, bool assignQuickAccess, bool silent);   // 0x005BE028
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool ContextSensitiveUpdate;                     // +0x1d4 (PDB +0x20c)
     long GetQuickAccessNextFreeSlot(long item);      // 0x00582027
     void SetThingAsQuickAccessItem(long item, long slot, bool silent);  // 0x00584157

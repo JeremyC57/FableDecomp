@@ -12,7 +12,7 @@
 // reproducing retail's 12-byte pointer chase followed by `e9 xx xx xx xx`.
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 class CEnvironmentSpellEffectInterpolator
 {

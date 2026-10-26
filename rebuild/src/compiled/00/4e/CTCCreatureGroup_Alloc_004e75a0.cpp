@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     unsigned char _body[0x24];       // sizeof(CTCCreatureGroup) = 0x24
     CTCCreatureGroup(long owner);                   // 0x004E5C2F
 };

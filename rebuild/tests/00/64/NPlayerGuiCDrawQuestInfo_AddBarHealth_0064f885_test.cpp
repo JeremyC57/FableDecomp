@@ -2,14 +2,14 @@
 // is reused (its ID returned); otherwise a new bar with the symbol's sprite is appended and its ID returned.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pData; };
-struct CRGBColour { unsigned char R, G, B, A; };
+class CCharString { public: const char* m_pData; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 #ifdef _MSC_VER
 typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThingPhysical { bool alive; u64 UID; };
+class CThingPhysical { public: bool alive; u64 UID; };
 struct CIntelligentPointer { const CThingPhysical* m_pItem; const CThingPhysical* GetPItem() const { return m_pItem; } };
 static bool IS_THING_ALIVE(const CIntelligentPointer& p) { return p.m_pItem && p.m_pItem->alive; }
 static long g_nextID = 100;
@@ -23,7 +23,7 @@ struct CQuestInfoElementBar : CQuestInfoElement {
     long Graphic; float Scale; CIntelligentPointer PThing;
     CQuestInfoElementBar(const CThingPhysical* thing, const CRGBColour&, long graphic, float scale) : CQuestInfoElement(1), Graphic(graphic), Scale(scale) { PThing.m_pItem = thing; }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     explicit CCountedPointer(T* o) : m_pObject(o) {}
     template <class U> CCountedPointer(const CCountedPointer<U>& o) : m_pObject(o.m_pObject) {}

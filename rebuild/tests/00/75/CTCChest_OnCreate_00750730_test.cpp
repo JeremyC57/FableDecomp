@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CTCBase { bool m_flag; };
+class CTCBase { public: bool m_flag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool GetInterface(long type, CTCBase** out)
@@ -22,7 +22,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCChest {
+class CTCChest { public:
     CThing* ParentThing; bool ChestOpen;
     void OnCreate()
     {

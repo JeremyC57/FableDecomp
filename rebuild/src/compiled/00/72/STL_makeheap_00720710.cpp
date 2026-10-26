@@ -15,13 +15,13 @@
 // TU calls the out-of-line 0x005BA48A instead -- that call site copies a by-value argument).
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
-struct CCompositeBlendDesc {                       // 16 bytes (implicit memberwise copy)
+class CCompositeBlendDesc { public:                       // 16 bytes (implicit memberwise copy)
     unsigned long       TextureIndex;              // +0x00
     ECompositeBlendType BlendType;                 // +0x04
     CRGBColour          DiffuseColour;             // +0x08
@@ -40,7 +40,7 @@ struct pair {
 };
 
 template <class K, class V>
-struct CKeyPairCompareLess {                       // empty functor, passed in a 4-byte slot
+class CKeyPairCompareLess { public:                       // empty functor, passed in a 4-byte slot
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 

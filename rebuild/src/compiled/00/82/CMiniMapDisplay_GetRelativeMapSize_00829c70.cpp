@@ -1,7 +1,7 @@
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 struct IntSize { int w; int h; };
 struct MapSizeProvider { void GetSize(IntSize* other, IntSize* dst); };
-struct CMiniMapDisplay { char pad[0x54]; MapSizeProvider provider; };
+class CMiniMapDisplay { public: char pad[0x54]; MapSizeProvider provider; };
 void __fastcall GetRelativeMapSize(CMiniMapDisplay* display, void* edx, C2DVector* out)
 {
     IntSize dst;

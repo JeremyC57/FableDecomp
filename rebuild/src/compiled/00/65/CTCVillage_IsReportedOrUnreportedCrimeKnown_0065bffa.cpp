@@ -49,9 +49,9 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct COpinionDeed;
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {};
-struct CTCCreatureOpinionOfHero {
+class COpinionDeed;
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:};
+class CTCCreatureOpinionOfHero { public:
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index,
                                      bool includeReported);   // 0x006610C7
 };
@@ -62,7 +62,7 @@ struct SVillagerNode {                          // STLport list node
     CBaseIntelligentPointer _M_data;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;               // +0x2c list head node
     unsigned char  _pad_0x30[0x34];

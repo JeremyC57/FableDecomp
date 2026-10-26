@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <new>
 static int g_baseCtors = 0;
-struct CBaseClass { virtual void v00() { } CBaseClass() { ++g_baseCtors; } };
+class CBaseClass { public: virtual void v00() { } CBaseClass() { ++g_baseCtors; } };
 struct CIVCountedPointer { void* Object; CIVCountedPointer() : Object(0) { } };
-struct C3DAnimationBlendState : CBaseClass { CIVCountedPointer Data; C3DAnimationBlendState() { } };
-struct C3DAnimationInterpolator : CBaseClass { C3DAnimationBlendState StartState; C3DAnimationBlendState EndState; C3DAnimationInterpolator() { } };
+class C3DAnimationBlendState : public CBaseClass { public: CIVCountedPointer Data; C3DAnimationBlendState() { } };
+class C3DAnimationInterpolator : public CBaseClass { public: C3DAnimationBlendState StartState; C3DAnimationBlendState EndState; C3DAnimationInterpolator() { } };
 int main()
 {
     unsigned char raw[sizeof(C3DAnimationInterpolator)]; for (int k = 0; k < (int)sizeof(raw); ++k) raw[k] = 0xAA;

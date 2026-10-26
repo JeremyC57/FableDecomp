@@ -5,7 +5,7 @@
 // Shape: the thing's inline out-parameter GetInterface(&component, 0x13) (bit 19 of the bitset word at +0x20, the sorted map at
 // +0x44) whose result is NOT tested: the absent path reads the uninitialised out pointer from the shared `push ecx` frame word
 // (the same word that holds the lookup key), exactly as retail.
-struct CThing;
+class CThing;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; void* component; };
@@ -27,7 +27,7 @@ struct CTCWeaponHolder_007cc410 {                   // the parent's type-0x13 co
 };
 #pragma pack(pop)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -52,7 +52,7 @@ struct CTCBase_007cc410 {
     unsigned char _pad08[4];
 };
 
-struct CTCMultiArrow : CTCBase_007cc410 {
+class CTCMultiArrow : public CTCBase_007cc410 { public:
     void RemoveEffectOnWeapon(CThing* weapon);      // 0x007CC120
     void FinalCleanup();
 };

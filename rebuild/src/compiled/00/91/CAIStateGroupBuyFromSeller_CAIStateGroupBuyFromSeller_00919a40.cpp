@@ -11,12 +11,12 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString();                          // 0x0099E4B0
 };
 
-struct CAIStateGroupBase : CBase {          // vtable 0x01288C60
+class CAIStateGroupBase : public CBase { public:          // vtable 0x01288C60
     void*       PBrain;                     // +0x04
     long        ScriptAIPriority;           // +0x08
     CCharString Name;                       // +0x0c

@@ -11,7 +11,7 @@
 // the flag's bit 0 is set (operator delete @ 0x00BFE9BC, landed-trusted) and returns `this`. The
 // inline destructor is re-emitted in every translation unit that needs it, which is why 15
 // byte-identical copies exist; this file is the copy at this address.
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual ~CCombatAbilityData() { }
 };
 

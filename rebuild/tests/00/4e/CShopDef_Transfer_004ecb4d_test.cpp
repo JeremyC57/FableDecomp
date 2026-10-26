@@ -1,14 +1,14 @@
 // Behaviour test for CShopDef::Transfer (0x004ECB4D): every member reaches the persist context once, in
 // retail's order, through the overload of its type.
 #include <cstdio>
-struct CCharString { void* Data; };
+class CCharString { public: void* Data; };
 struct CShopItemDefVector { void* a; void* b; void* c; };
 struct COpinionAttitudeFloatMap { void* a; unsigned long b; unsigned long c; };
 static const void* g_seen[64];
 static char g_kind[64];
 static int g_count = 0;
 static void Note(const void* p, char k) { if (g_count < 64) { g_seen[g_count] = p; g_kind[g_count] = k; } ++g_count; }
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& v) { Note(&v, 'u'); }
     void Transfer(CCharString& v) { Note(&v, 's'); }
     void Transfer(CShopItemDefVector& v) { Note(&v, 'v'); }
@@ -17,7 +17,7 @@ struct CPersistContext {
     void Transfer(bool& v) { Note(&v, 'b'); }
     void Transfer(long& v) { Note(&v, 'l'); }
 };
-struct CShopDef {
+class CShopDef { public:
     unsigned long Name, InitialHawkingPhrase, ReplyToRequestPhrase, CustomerFollowPhrase, ThankingPhrase;
     CCharString ShopkeeperMeshType; CShopItemDefVector DefaultStock; CShopItemDefVector StockCategoryDefaults;
     float BuyPriceMultiplier, SellPriceMultiplier, AttitudeBuyPriceMultiplierDefault;

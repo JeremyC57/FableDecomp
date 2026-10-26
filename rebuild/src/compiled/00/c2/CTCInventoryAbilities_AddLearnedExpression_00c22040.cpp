@@ -7,7 +7,7 @@ struct SubObj1F8 {
     void Add(long &value);   // __fastcall; receives &value as a stack arg
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     char pad0[0x1f8];
     SubObj1F8 sub;           // subobject at offset 0x1f8
     void AddLearnedExpression(long value);

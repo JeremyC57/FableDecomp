@@ -14,13 +14,13 @@
 #include <stddef.h>
 #include <new>
 
-struct CDefPointeeBase {                             // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                             // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy() const;                    // slot 1
     mutable long m_refCount;                         // +0x04
 };
 
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
 template <class T> class CDefPointer {
 public:

@@ -10,11 +10,11 @@
 // engine/CRegion.h has the PDB's 16-byte vectors, Name +0x20, so CRegion is modelled locally).
 // Shape: the first world-map fetch (and its vtable, kept in ebx) happens BEFORE the argument is computed, so the map
 // is a named local; the outer two calls evaluate their argument first and fetch the map again each time.
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* m_pData; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* m_pData; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;      // 0x004C73D0
 };
 
@@ -28,12 +28,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CThing* operator->() const { return (CThing*)GetPItem(); }
 };
 
-struct CRegion {
+class CRegion { public:
     unsigned char _vectors[0x18];              // +0x00 Maps, VisMaps (12-byte retail vectors)
     CCharString Name;                          // +0x18
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -43,7 +43,7 @@ struct CWorldMap {
     const CRegion& GetRegion(long region) const;         // 0x004FC180
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -51,7 +51,7 @@ struct CTCBase {                               // engine/CTCBase.h layout, model
     const CWorldMap& PeekWorldMap() const;     // 0x00686D20
 };
 
-struct CTCActionUseScriptedHook : CTCBase {
+class CTCActionUseScriptedHook : public CTCBase { public:
     unsigned char _pad0c[0x14];                // +0x0c Usable .. +0x18 EntranceConnectedToUID
     CIntelligentPointer PEntranceConnectedTo;  // +0x20
     const CCharString& GetRegionEntranceName() const;

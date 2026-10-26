@@ -11,7 +11,7 @@
 // Shape: STLport `for (_Distance __n = __last - __first; __n > 0; --__n) { *__result = *__first; ++__first; ++__result; }
 //   return __result;` -- the count in ebx, `result` read straight from its slot on the empty path.
 // Label correction: catalogued as `CBaseIntelligentPointer_CopyRange` (right idea); the body is STLport `__copy`.
-struct CThing;
+class CThing;
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 

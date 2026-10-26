@@ -14,7 +14,7 @@
 // Shape: the combat component pointer starts at 0 and the inline out-parameter GetInterface fills it (no hero test); the
 //   unused weapon reference is the third argument (FableWin.pdb signature).
 class CInputEvent;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -22,7 +22,7 @@ struct CCharString {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -38,10 +38,10 @@ class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -65,7 +65,7 @@ public:
         return false;
     }
 };
-struct CTCCombat {
+class CTCCombat { public:
     bool IsMeleeFlourishValid() const;             // 0x00733EE0
     bool IsBreakBlockValid() const;                // 0x00733290 (descriptive)
 };
@@ -73,10 +73,10 @@ class CPlayer {
 public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer();                      // 0x0049D9D0
 };
-struct CMainGameComponent; struct CGamePlayerInterface;
+class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

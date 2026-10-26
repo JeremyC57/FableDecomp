@@ -13,7 +13,7 @@ class CThing;
 class CBaseObject;
 extern unsigned long g_InvalidSoundHandle;               // 0x0129D25C (0xFFFFFFFF)
 
-struct C2DVector {
+class C2DVector { public:
     float X;                                 // +0x00
     float Y;                                 // +0x04
     C2DVector() { }
@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {             // 8 bytes, byte-aligned (Coin::Thi
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }

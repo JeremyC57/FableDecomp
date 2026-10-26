@@ -6,7 +6,7 @@
 // result pointer in ecx (moved to eax), the left operand in edx, the right operand on the stack (`ret 4`).
 // C3DVector has a user constructor, so it returns through the hidden pointer; the constructor's arguments are
 // evaluated right to left (Z sum, Y sum, X sum) and stored X, Y, Z as the three `fstp` pop the stack.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

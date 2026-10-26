@@ -12,15 +12,15 @@
 // share the `xor al,al` epilogue); IS_THING_ALIVE is `__forceinline` (VC out-lines the fourth expansion otherwise); the
 // target point is taken into a named pointer before the range read (retail calls GetPItem before pushing the range);
 // the final `&&` returns through the full register (`mov eax,1` / `xor eax,eax`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct C3DVector { float x, y, z; };
-struct CThing {
+class C3DVector { public: float x, y, z; };
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -75,11 +75,11 @@ struct CTCTargetPoint {                         // interface 0xb2
     unsigned char _pad[0x0c];
     float Range;                                // +0x0c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

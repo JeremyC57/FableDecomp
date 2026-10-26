@@ -8,7 +8,7 @@ struct CMeshInfo {
     float         SizeX;
     unsigned char PrimaryMesh : 1;
 };
-struct CEngineTextureMorph { int v; };
+class CEngineTextureMorph { public: int v; };
 struct CEngineTextureMorphArray {               // stands in for the STLport vector copy (0x005BBDF1)
     CEngineTextureMorph* _M_start;
     CEngineTextureMorph* _M_finish;
@@ -17,7 +17,7 @@ struct CEngineTextureMorphArray {               // stands in for the STLport vec
     CEngineTextureMorphArray(const CEngineTextureMorphArray& o) : _M_start(o._M_start), _M_finish(o._M_finish), _M_end_of_storage(o._M_end_of_storage) { ++g_live; }
     ~CEngineTextureMorphArray() { --g_live; }
 };
-struct CEngineTextureMorphSet {
+class CEngineTextureMorphSet { public:
     CEngineTextureMorphArray Morphs;
     CEngineTextureMorphSet(CEngineTextureMorph* f, CEngineTextureMorph* l) : Morphs(f, l) { }
 };

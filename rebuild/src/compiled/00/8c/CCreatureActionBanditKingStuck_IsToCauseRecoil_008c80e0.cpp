@@ -8,9 +8,9 @@
 // a plain argument list evaluates right to left and would fetch the target first), the compare's false path falls
 // through to `mov al,1`, its true path returns `xor al,al` -- a bool result. PTarget is the CCombatActionBase
 // member at +0xa8 (retail CCreatureActionBase is 0xa8 bytes; the PDB build has it at +0xb4).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
@@ -34,7 +34,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -43,7 +43,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
 };
 
-struct CCreatureAction_BanditKingStuck : CCombatActionBase {   // vtable 0x01281C54
+class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:   // vtable 0x01281C54
     bool IsToCauseRecoil() const;
 };
 

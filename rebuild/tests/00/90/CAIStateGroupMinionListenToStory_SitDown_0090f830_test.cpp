@@ -21,8 +21,8 @@ static int fails = 0;
 //          +0x2c (string assign, one-test CRC over the temporary); the counted pointer is the landed `Object(object)`,
 //          `if/else` block form (new re-reading Object), passed by value to the action ctor.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04).
-struct CCharStringData { const char* Chars; long Length; };
-struct CCharString {
+class CCharStringData { public: const char* Chars; long Length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
@@ -33,24 +33,24 @@ struct CDefStringTable {
     CCharString GetString(long index) const;    // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
-struct CDefString {
+class CDefString { public:
     long Index;
     operator CCharString() const { return g_DefStringTable.GetString(Index); }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
 };
 extern CCharString g_SitAnimName;               // 0x013BB66C
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual void v00();                         // vtable 0x0122FFCC
     ~CAnimFilterBase() { }
 };
 struct CAnimFilterSit : CAnimFilterBase {       // vtable 0x0127261C (descriptive; vtable only)
     virtual void v00();
 };
-struct CThing {
+class CThing { public:
     CAnimationEntry* GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter);   // 0x00662EF0
 };
 struct CModeSitBase {
@@ -58,7 +58,7 @@ struct CModeSitBase {
     unsigned char _pad[0x28];
     CModeSitBase(CThing* creature);             // 0x008D7CA0
 };
-struct CAnimFilterOfGroup {                     // vtable 0x01267568
+class CAnimFilterOfGroup { public:                     // vtable 0x01267568
     virtual void v00();
     CCharString Group;                          // +0x04
     unsigned long GroupCRC;                     // +0x08
@@ -78,7 +78,7 @@ struct CAnimFilterOfGroup {                     // vtable 0x01267568
         GroupCRC = Calc_004014a0(0, data, length);
     }
 };
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 struct CModeSitListen : CModeSitBase {          // 0x38 bytes
     CAnimFilterOfGroup Filter;                  // +0x2c
     __forceinline CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim);
@@ -91,7 +91,7 @@ struct CCountBlock {
     void* Object;
     CCountBlock(void* object) { Object = object; Count = 1; Deleter = DeleteSitMode; }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;
     CCountBlock* Block;
     CCountedPointer(T* object) : Object(object)
@@ -114,20 +114,20 @@ template <class T> struct CCountedPointer {
         }
     }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void* __vftable;
     unsigned char _body[0xa4];
 };
-struct CCreatureAction_SitDown : CCreatureActionBase {
+class CCreatureAction_SitDown : public CCreatureActionBase { public:
     unsigned char _own[0x08];
     CCreatureAction_SitDown(CThing* creature, CAnimationEntry* anim, CCountedPointer<CModeSitBase> mode);   // 0x008AB9D0
     ~CCreatureAction_SitDown();                 // 0x008ABAA0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];

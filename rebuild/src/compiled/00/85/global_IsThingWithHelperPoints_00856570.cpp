@@ -9,7 +9,7 @@
 //   the same slot); STLport vector<CCharString> {start, finish, end_of_storage}, CCharString one pointer.
 // Shape: the appearance pointer is a local (ebx, loaded once); no empty-range guard ahead of the first HasHelperPoint
 //   call = a do-while; `it == end ? true : false` gives the bare `cmp ; sete al` (`return it == end;` adds xor eax,eax).
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* PString;

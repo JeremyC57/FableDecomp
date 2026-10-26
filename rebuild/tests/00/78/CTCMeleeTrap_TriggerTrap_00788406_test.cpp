@@ -6,27 +6,27 @@ static int g_fail = 0;
 static const char* g_meleeTrapTriggerAnimName = "trigger";
 static const char* g_meleeTrapSecondAnimName = "second";
 struct CAnimFilterAll { };
-struct CAnimationEntry { int AnimationIndex; };
+class CAnimationEntry { public: int AnimationIndex; };
 struct CAnimationTable {
     CAnimationEntry Trigger, Second; bool HasSecond;
     const CAnimationEntry* GetAnimation(const char* name, int, const CAnimFilterAll&) const { return strcmp(name, "trigger") == 0 ? &Trigger : &Second; }
     bool HasAnimation(const char* name, const CAnimFilterAll&) const { return strcmp(name, "second") == 0 && HasSecond; }
 };
 struct CMeleeTrapDef { int RefCount; CAnimationTable Animations; };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) --Object->RefCount; }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CMeleeTrapDef* Sub;
     bool GetSubDef(CDefPointer<CMeleeTrapDef>* out) const { out->Object = Sub; if (Sub) ++Sub->RefCount; return Sub != 0; }
 };
-struct C3DAnimationInfo { float Duration; };
-struct CMeshDataBank { C3DAnimationInfo Infos[4]; C3DAnimationInfo* GetAnimation(int i) { return &Infos[i]; } };
-struct CWorld { CMeshDataBank* Bank; };
-struct CThing { CDefClassBase* PDef; };
+class C3DAnimationInfo { public: float Duration; };
+class CMeshDataBank { public: C3DAnimationInfo Infos[4]; C3DAnimationInfo* GetAnimation(int i) { return &Infos[i]; } };
+class CWorld { public: CMeshDataBank* Bank; };
+class CThing { public: CDefClassBase* PDef; };
 struct CTCMeleeTrap {
     CThing* ParentThing; CWorld* World;
     const char* InitName; bool InitLoop; float Trigger, Second; int Strikes;

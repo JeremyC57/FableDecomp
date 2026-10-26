@@ -9,14 +9,14 @@
 // 0x0094DBC0 PerformActionAndWait shape); the creature handed to the constructor is fetched BEFORE the base FinishAction (named local in
 // esi), the creature whose action is set after it (chained, in edi). GetInterface's result is ignored (absent arm reads the key's word).
 // The temporary is destroyed through the base destructor: GoUnderground declares none of its own.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -39,23 +39,23 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31
+class CTCCreatureModeManager { public:             // interface type 0x31
     bool HasMode(unsigned long mode);       // 0x0073A8A0
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CThingCreatureBase;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
-struct CCombatActionBase : CCreatureActionBase {          // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:          // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];    // +0xa8
     ~CCombatActionBase();                   // 0x0062E900
     virtual void FinishAction();            // 0x00859A20
@@ -64,7 +64,7 @@ struct CCombatActionBase : CCreatureActionBase {          // retail sizeof 0x114
 namespace N_008c3810 { struct CCreatureAction_GoUnderground : CCombatActionBase {
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008C3810
 }; } using N_008c3810::CCreatureAction_GoUnderground;
-struct CCreatureAction_JackFall : CCombatActionBase {
+class CCreatureAction_JackFall : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

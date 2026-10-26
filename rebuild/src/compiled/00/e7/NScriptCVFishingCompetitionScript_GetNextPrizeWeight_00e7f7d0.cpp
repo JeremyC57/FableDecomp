@@ -30,7 +30,7 @@ public:
     _Tp& operator[](size_type __n) { return *(begin() + __n); }
 };
 }
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x5d0];
     std::vector<float> FishPrizeWeights;          // +0x5d0
 };

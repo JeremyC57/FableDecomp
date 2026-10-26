@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_WanderAroundShops::IsStillValid @ 0x00946F30: work hours && shop alive && pretty thing alive.
-struct CThing { unsigned char m_flags; };
+class CThing { public: unsigned char m_flags; };
 struct Ptr { CThing* item; CThing* GetPItem() { return item; } bool IsAlive() { if (GetPItem() != 0) { if (!(GetPItem()->m_flags & 1)) return true; } return false; } };
 static bool g_work;
 struct Group {

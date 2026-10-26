@@ -1,7 +1,7 @@
 #pragma optimize("t",on)
 
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CThingAICreature;
+class CThingAICreature;
 
 
 extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);

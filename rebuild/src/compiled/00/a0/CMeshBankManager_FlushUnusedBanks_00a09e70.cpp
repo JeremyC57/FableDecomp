@@ -21,7 +21,7 @@ struct CRetailList_00a09e70 {
     CListIterator_00a09e70 erase(CListIterator_00a09e70 where);   // 0x00A0A650
 };
 
-struct CMeshBankManager {
+class CMeshBankManager { public:
     long                 m_0;
     long                 m_4;
     CRetailList_00a09e70 m_infos;                  // +0x08

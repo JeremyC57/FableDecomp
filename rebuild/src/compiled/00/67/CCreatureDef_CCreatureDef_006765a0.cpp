@@ -13,12 +13,12 @@
 // is the inlined STLport `_Rb_tree()` (header node from malloc, colour red, no parent, left/right self, zero count, each store through
 // the re-read member); each Reset argument is a null-checked `new` with its inline or out-of-line ctor.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CResource {                                     // the def root's base
+class CResource { public:                                     // the def root's base
     virtual void v00();
     unsigned char _body[0x1c - 4];
     CResource();                                       // 0x009FBEC0
 };
-struct CDefinitionManager;
+class CDefinitionManager;
 struct __declspec(novtable) CDefClassBase : CResource {
     CDefinitionManager* PDefManager;                   // +0x1c
     unsigned long GlobalIndex;                         // +0x20
@@ -63,46 +63,46 @@ struct CStatWeightNode {                               // 24-byte node of the ra
     long _M_key;
     float _M_value;
 };
-struct CHeroAbilityStatWeight {                        // retail 16 bytes
+class CHeroAbilityStatWeight { public:                        // retail 16 bytes
     CRetailMap<CStatWeightNode> Weights;               // +0x00
     float Weight;                                      // +0x0c (zeroed by the def ctor body)
 };
-struct CFloatRange {
+class CFloatRange { public:
     float Min;
     float Max;
 };
-struct CDefString {
+class CDefString { public:
     long m_tablePos;
     CDefString() : m_tablePos(-1) {}
 };
-struct CWoundMorphs {                                  // 0x10 bytes: a vector and two flags (only the second is set)
+class CWoundMorphs { public:                                  // 0x10 bytes: a vector and two flags (only the second is set)
     CRetailVector<long> Morphs;
     bool Applied;                                      // +0x0c (left uninitialised)
     bool Dirty;                                        // +0x0d
     CWoundMorphs() : Dirty(false) {}
 };
-struct CRandomAppearanceMorph {                        // 0x3c bytes
+class CRandomAppearanceMorph { public:                        // 0x3c bytes
     unsigned char _body[0x3c];
     CRandomAppearanceMorph();                          // 0x0086C4D0
 };
-struct CExpressionSet {                                // 0x10 bytes: a vector and two flags (only the second is set)
+class CExpressionSet { public:                                // 0x10 bytes: a vector and two flags (only the second is set)
     CRetailVector<long> Expressions;
     bool Applied;                                      // +0x0c (left uninitialised)
     bool Dirty;                                        // +0x0d
     CExpressionSet() : Dirty(false) {}
 };
-struct CCreatureStatsDef : CDefClassBase {             // 0x48 bytes, vtable 0x012321AC
+class CCreatureStatsDef : public CDefClassBase { public:             // 0x48 bytes, vtable 0x012321AC
     unsigned char _body[0x48 - 0x28];
     CCreatureStatsDef() : CDefClassBase() {}
 };
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
     void Reset(T* object);
 };
-struct CCreatureDef : CDefClassBase {                  // vtable 0x0125B43C
+class CCreatureDef : public CDefClassBase { public:                  // vtable 0x0125B43C
     CCountedPointer<CWoundMorphs>           PWoundMorphs;             // +0x28
     CCountedPointer<CRandomAppearanceMorph> PRandomAppearanceMorph;   // +0x30
     CCountedPointer<CExpressionSet>         PExpressions;             // +0x38

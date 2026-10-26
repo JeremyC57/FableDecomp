@@ -18,7 +18,7 @@
 //   chain in retail's term order (x and y rows z, x, y; the z row z, y, x).
 extern float g_ParticleEpsilon;                 // 0x0129BA3C
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -30,7 +30,7 @@ public:
     float E41, E42, E43;
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     void AddToBounds(const C3DVector& point, float radius);     // 0x00ADDD80
 };
 
@@ -42,14 +42,14 @@ long GetParticleFrameRate();                    // 0x00AEA9F0
 
 namespace NParticleEngine {
 
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _pad00[0x50];
     unsigned char Flags;                        // +0x50 (bit 6: local space)
     void GetInverseSystemTransform(CMatrix3x4& matrix);         // 0x00AF2250
     void ScaleParticleDimensions(float& size);                  // 0x00AF8F80
 };
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual ~CPSCBase();
     CParticleSystem* ParticleSystem;            // +0x04
     bool             UpdateStarted : 1;         // +0x08 bit 0
@@ -58,7 +58,7 @@ struct CPSCBase {
                                  const unsigned long& param, float timeOffset, bool local, unsigned long flags) const;  // 0x00AF2640
 };
 
-struct CPSCLight : CPSCBase {
+class CPSCLight : public CPSCBase { public:
     long          LightLifeTimer;               // +0x0c
     long          LightRespawnDelayTimer;       // +0x10
     bool          LightIsAlive;                 // +0x14

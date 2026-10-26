@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeJackOfBladesScream::OnDeactivate (retail 0x008D78E0): a creature-type thing gets
 // creature flags 1|4 set again, and the scream emitter is killed if it is still alive.
-struct CThing {
+class CThing { public:
     unsigned long ThingTypeFlags;
     unsigned char Dead : 1;
     unsigned char CreatureFlags;

@@ -8,7 +8,7 @@
 // PDB layout (struct_layouts_egor.tsv, 28 bytes): +4 StartPosition, +0x10 EndPosition (C3DVector = 3 floats).
 // Each vector is copied as three dword moves (the engine's memberwise C3DVector copy constructor: a trivial
 // struct copy would go through `lea` + register pairs instead, tried: DIFFER).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
@@ -18,7 +18,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                               // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DPositionInterpolator : CBase {
+class C3DPositionInterpolator : public CBase { public:
     virtual void v00();                    // own vtable (0x0123981C)
     C3DVector StartPosition;               // +0x4
     C3DVector EndPosition;                 // +0x10

@@ -2,19 +2,19 @@
 // for his death; sets TourGuideKilled only when the thread is not terminating; a null guide never becomes alive.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 struct Impl {
     int AliveAfter, KilledAfter, aliveCalls, killedCalls;
     bool IsAlive() { return ++aliveCalls > AliveAfter; }
     bool MsgIsKilledBy(const CCharString& k) { return std::strcmp(k.Text, "") == 0 && ++killedCalls > KilledAfter; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     Impl* Data;
     bool IsAlive() const { if (!Data) return false; return Data->IsAlive(); }
     bool MsgIsKilledBy(const CCharString& k) const { if (!Data) return false; return Data->MsgIsKilledBy(k); }
 };
 static Impl* g_impl; static int g_frames; static int g_termAt; static int g_termCalls; static const char* g_asked;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetThingWithScriptName(const CCharString& n) { g_asked = n.Text; CScriptThing t; t.Data = g_impl; return t; }
 };

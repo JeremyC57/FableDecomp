@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CWideString { int d; CWideString(const unsigned short* lit); };
+class CWideString { public: int d; CWideString(const unsigned short* lit); };
 static const unsigned short* g_seen = 0;
 CWideString::CWideString(const unsigned short* lit) { g_seen = lit; d = 0x1234; }
-struct CUserProfileManager { CWideString GetAutoSaveFileName(); };
+class CUserProfileManager { public: CWideString GetAutoSaveFileName(); };
 int main() {
   CUserProfileManager m;
   CWideString r = m.GetAutoSaveFileName();

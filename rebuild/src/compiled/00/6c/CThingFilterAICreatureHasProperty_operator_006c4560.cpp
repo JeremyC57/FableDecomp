@@ -6,12 +6,12 @@
 // were found (the filter is used through an inlined template), so the class name is kept as catalogued.
 // Layout (local model): the filter's value (long) at +0.
 // Shape: `this` kept in esi across the virtual call; `return object.f() == m_value;` as `sub eax,[esi] ; neg ; sbb ; inc`.
-struct CThingAICreature {
+class CThingAICreature { public:
     virtual void v000();
     virtual long GetType() const;               // slot 1 (+4)
 };
 
-struct CThingFilter_AICreatureHasProperty {
+class CThingFilter_AICreatureHasProperty { public:
     long m_property;                            // +0x00
     bool operator()(const CThingAICreature& creature) const;
 };

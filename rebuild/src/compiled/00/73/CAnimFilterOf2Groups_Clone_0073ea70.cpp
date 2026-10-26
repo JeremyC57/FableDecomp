@@ -6,7 +6,7 @@
 // CCharString members default-constructed) and its body calls the out-of-line SetGroups, which assigns the
 // strings and recomputes the CRCs -- that is why the vtable store and the member constructors sit in Clone.
 // CAnimFilterOf3Groups / CAnimFilterOfGroup keep their constructors out of line instead (0x0073E2F0, 0x0073E9A0).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                       // 0x0099E4B0
 };

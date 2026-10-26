@@ -30,7 +30,7 @@ struct CTCHeroExperience_Calls {
     void UpgradeTrainableStat(EHeroTrainableStatType stat);             // 0x006D8980
     void SpendExperience(EHeroTrainableStatType stat, long amount);     // 0x006D6F60
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC

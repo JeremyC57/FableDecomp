@@ -10,12 +10,12 @@ struct CRefCountedShader_00bc9a00 {              // the shared shader object: an
     long          m_refCount;                      // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual void v00();
     ~CShaderBase() { }
 };
 
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0: 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0: 8 bytes
     CRefCountedShader_00bc9a00* m_pShader;         // +0x04
     ~CVertexShader()
     {

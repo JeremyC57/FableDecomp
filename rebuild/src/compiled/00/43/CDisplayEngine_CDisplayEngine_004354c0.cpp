@@ -60,7 +60,7 @@ struct CDisplayEngineBase {
     virtual ~CDisplayEngineBase();   // out-of-line -> masked base-dtor tail jmp
 };
 
-struct CDisplayEngine : public CDisplayEngineBase {
+class CDisplayEngine : public CDisplayEngineBase { public:
     char                 pad_04[0x2C - 0x04]; // reach offset 0x2C
     CDisplayRenderTarget* m_renderTarget;      // +0x2C
     char                 pad_30[0xE0 - 0x30]; // reach offset 0xE0

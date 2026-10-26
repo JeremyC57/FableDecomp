@@ -5,9 +5,9 @@
 // The catalog label "CWADFile::CWADFile" is propagated (the body stores no CWADFile vtable and has no CBase call).
 // Shape: the thing pointer is read into ebx BEFORE the base constructor (the converting constructor's argument), then the
 // vtable and SetPItem; the two trailing words are copied through eax/ecx after it: a plain initialiser list.
-struct CBaseObject;
-struct CThing;
-struct CThingTrackNode;
+class CBaseObject;
+class CThing;
+class CThingTrackNode;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

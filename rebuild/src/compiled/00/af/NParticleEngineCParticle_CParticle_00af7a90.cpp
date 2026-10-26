@@ -20,7 +20,7 @@ struct CBase {
 
 namespace NParticleEngine {
 
-struct CRandomAcceleration {
+class CRandomAcceleration { public:
     virtual ~CRandomAcceleration();                                       // slot 0: scalar deleting destructor
 };
 
@@ -50,7 +50,7 @@ struct CPrimitiveHandleArray {                                            // ret
     CPrimitiveHandleArray() : m_pData(0), m_size(0), m_capacity(0) {}
 };
 
-struct CParticle : CBase {                                                // vtable 0x0129F4F0
+class CParticle : public CBase { public:                                                // vtable 0x0129F4F0
     unsigned char                _state[0x7c];                            // +0x04 Orientation .. ClosestAttractorDistance
     CRandomAccelerationScopedPtr RandomAcceleration;                      // +0x80
     CLongArrayArray              PrimIDList;                              // +0x84

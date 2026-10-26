@@ -9,7 +9,7 @@ struct LocalObj {
 
 extern void __stdcall ProfileEnter(int tag);
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;      // +0x18
     char pad2[0x24 - 0x1c];

@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour() : B(0), G(0), R(0), A(0) { }
     CRGBColour(const CRGBColour& o) { R = o.R; G = o.G; B = o.B; A = o.A; }

@@ -31,7 +31,7 @@ struct IBufImpl {
     IBufImplVtbl* vtbl;
 };
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void* f0;         // +0x00
     IBufImpl* PD3DIndexBuffer;     // +0x04
 };

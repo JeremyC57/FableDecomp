@@ -3,7 +3,7 @@
 // Callees: CBankFileAsyncData::IsFinished() @ 0x009D54E0 (on PFileData's object), the resource's virtual slot 1 (Destroy) when its count at +4 reaches zero.
 // Shape: as the landed CEmitterData::UnloadResource @ 0x00AF1440 but the pending case ALSO answers true (`je` to the shared `mov al,1`): the release is guarded by
 // `!PFileData || PFileData->IsFinished()`; the release through the owner pointer with the null inside the branch and again after it. Layout: Ego_r.pdb CGroupEntry (56 bytes): the Entries CArray (16 in the PDB, 12 in retail), PFileData at retail +0x28 (PDB +0x2c), Owner at +0x30.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished() const;                       // 0x009D54E0
 };
 struct CResourceObject_Retail {                    // counted object: vptr, then the reference count

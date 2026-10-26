@@ -13,8 +13,8 @@
 // Layout: retail CThingObject PDef +0xd0; retail CThingObjectDef OnDeathObject +0x8c (PDB +0x90).
 // Shape: the spin is a frame C3DVector filled component by component (X, Y, Z in order); the "" script name is an
 //   implicit conversion temporary built before the other arguments; the base OnDie is a qualified call at the end.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
@@ -26,7 +26,7 @@ CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long
                                       float* orientation, unsigned long flags,
                                       const CCharString& name);  // 0x00703210
 
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char _pad00[0x8c];
     long OnDeathObject;                         // +0x8c
 };

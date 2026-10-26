@@ -6,14 +6,14 @@
 #define __fastcall
 #endif
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 static int g_strings;
-struct CCharString {
+class CCharString { public:
     const char* m_data;
     CCharString(const char* text, long length = -1) : m_data(text) { (void)length; ++g_strings; }
     ~CCharString() { --g_strings; }
@@ -50,18 +50,18 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CWorldMap { float GetHeightZBelowPos(const C3DVector& pos) { return pos.Z - 0.25f; } };
+class CWorldMap { public: float GetHeightZBelowPos(const C3DVector& pos) { return pos.Z - 0.25f; } };
 struct CTrapSpawnDef { long TrapObjectType; };
 struct CTCTrapSpawner { CTrapSpawnDef* Def; };
 static long g_createdType; static C3DVector g_createdAt; static long g_createdTeam; static const char* g_createdName;
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* s_next;
     static CThingObject* __fastcall Create(long type, const C3DVector& pos, long team, const CRightHandedSet* rh, unsigned long flags,
                                            const CCharString& name)
     { g_createdType = type; g_createdAt = pos; g_createdTeam = team; g_createdName = name.m_data; (void)rh; (void)flags; return s_next; }
 };
 CThingObject* CThingObject::s_next;
-struct CTCTrapBase {
+class CTCTrapBase { public:
     CThing* immune; int triggers; int summonCalls;
     void SetThingAsImmune(CThing* thing) { immune = thing; }
     void ManualTrigger() { ++triggers; }

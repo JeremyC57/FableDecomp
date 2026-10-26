@@ -9,7 +9,7 @@ struct CBlendedEnvironmentTheme {
     void Blend(CBlendedEnvironmentTheme& out, const CBlendedEnvironmentTheme& other, float t) const
     { g_from = this; g_to = &other; g_t = t; g_out = &out; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First; T* Last; T* Capacity;
     long Size() const { return (long)(Last - First); }
     const T& operator[](long i) const { return First[i]; }

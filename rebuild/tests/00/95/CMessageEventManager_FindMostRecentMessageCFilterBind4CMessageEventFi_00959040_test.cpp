@@ -1,17 +1,17 @@
 #include <cstdio>
 // Behaviour test: FindMostRecentMessage returns the first queued message passing all four filters (the third negated).
-struct CMessageEvent { int type; bool alive; int originator; bool extra; };
+class CMessageEvent { public: int type; bool alive; int originator; bool extra; };
 struct IsOfType { int t; bool operator()(const CMessageEvent& m) const { return m.type == t; } };
 struct IsOriginatorAlive { bool operator()(const CMessageEvent& m) const { return m.alive; } };
 struct IsOriginatedByThing { typedef CMessageEvent argument_type; int thing; bool operator()(const CMessageEvent& m) const { return m.originator == thing; } };
 struct HasExtraData { bool operator()(const CMessageEvent& m) const { return m.extra; } };
 template <class P> struct unary_negate { P _M_pred; bool operator()(const typename P::argument_type& x) const { return !_M_pred(x); } };
-template <class F1, class F2, class F3, class F4> struct CFilter_Bind4 {
+template <class F1, class F2, class F3, class F4> class CFilter_Bind4 { public:
     F1* PF1; F2* PF2; F3* PF3; F4* PF4;
     bool operator()(const CMessageEvent& m) const { return (*PF1)(m) && (*PF2)(m) && (*PF3)(m) && (*PF4)(m); }
 };
 struct node { node* next; node* prev; CMessageEvent value; };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* World; node* head;
     template <class Filter> const CMessageEvent* FindMostRecentMessage(const Filter& filter) const
     {

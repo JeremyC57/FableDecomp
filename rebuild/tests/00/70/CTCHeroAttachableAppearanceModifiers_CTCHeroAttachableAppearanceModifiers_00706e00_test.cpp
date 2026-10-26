@@ -26,27 +26,27 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CThing;
+class CThing;
 namespace NGraphicAppearance {
-struct CPrimitive;
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CPrimitive;
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void UnregisterComponent(CAGraphicAppearanceComponent* component);   // 0x004C0000
 };
-struct CAGraphicAppearanceComponent {                       // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:                       // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     ~CAGraphicAppearanceComponent() { }
 };
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
     unsigned char _pad68[0x29];
     unsigned char Dead : 1;                                 // +0x91 bit 0
 };
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
@@ -103,7 +103,7 @@ struct CRetailTree_erase004aba70 {                          // set<CCharString>
     }
 };
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x01264F0C / 0x01264EF4
+class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01264F0C / 0x01264EF4
     unsigned long FrameLastChanged;                         // +0x10
     bool  Changed : 1;                                      // +0x14
     bool  RecreatePrimitives : 1;

@@ -11,7 +11,7 @@
 // is the camera-to-decal difference computed X, Y, Z into x87 registers and summed top-first (Z*Z + Y*Y + X*X).
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CBase {
 public:
@@ -31,7 +31,7 @@ public:
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540 (sub-primitive pool)
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };

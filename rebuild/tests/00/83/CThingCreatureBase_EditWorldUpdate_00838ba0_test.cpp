@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     int h1ret;
     int h2calls;
     bool Helper1();

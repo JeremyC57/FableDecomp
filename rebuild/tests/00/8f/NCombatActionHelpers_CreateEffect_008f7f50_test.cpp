@@ -1,7 +1,7 @@
 // Behaviour test for 0x008F7F50 NCombatActionHelpers::CreateEffect (vector overload): spawn at position, pass DIRECTION.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct Emitter { int updates; unsigned int key; C3DVector value; };
 struct Thing { unsigned int presentBits[9]; Emitter* driver; C3DVector spawnedAt; };

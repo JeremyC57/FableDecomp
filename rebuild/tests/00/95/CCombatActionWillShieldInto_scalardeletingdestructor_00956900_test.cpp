@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_WillShieldInto {
+class CCombatAction_WillShieldInto { public:
     void* vftable;
     int destroyed;
 };

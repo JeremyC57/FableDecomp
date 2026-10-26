@@ -8,24 +8,24 @@
 // twin of 0x006627F0.
 // Shape: the bank pointer is a named local, so the world accessor runs before the index is pushed; the index stays in esi
 // from the null test; the float is returned straight from `fld [eax+10h]`.
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad[0x10];
     float Duration;                            // +0x10
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;              // +0x3c
 };
 
-struct CThing;
-struct CAnimateThing;
+class CThing;
+class CAnimateThing;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -33,7 +33,7 @@ struct CTCBase {                               // engine/CTCBase.h layout, model
     const CWorld& PeekWorld() const;           // 0x00686A80
 };
 
-struct CTCAnimationComplex : CTCBase {
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing* PAnimation;                 // +0x0c
     float GetAnimDuration(long animIndex) const;
 };

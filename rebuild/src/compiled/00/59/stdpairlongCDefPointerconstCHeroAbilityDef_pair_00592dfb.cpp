@@ -9,15 +9,15 @@
 // Shape: STLport's pair has an explicit memberwise copy constructor; the inline CDefPointer copy constructor stores the
 //   pointer before the null test (`test edx,edx ; mov [eax+4],edx ; je`) and add-refs with `inc dword ptr [edx+4]`.
 //   `this` stays in eax (`mov eax,ecx` first: the constructor returns it), so no register is saved.
-struct CDefPointeeBase {                    // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                    // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1
     mutable long m_refCount;                // +0x04 (mutable: const defs are add-ref'd)
 };
 
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;                              // +0x00
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {

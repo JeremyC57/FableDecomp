@@ -1,5 +1,5 @@
 // CPersistContext_TransferableVector<std::pair<CCharString,long> >::TransferOut(CPersistContext* context, CCharString* out, long index) -- writes element `index` of a vector of (CCharString, long) pairs through a CPersistTraits whose default value is ("", 0)
-// Leaf: ?TransferOut@CPersistContext_TransferableVector@@UAEXPAUCPersistContext@@PAUCCharString@@J@Z
+// Leaf: ?TransferOut@CPersistContext_TransferableVector@@UAEXPAVCPersistContext@@PAVCCharString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D3810, 101 bytes (+11 int3 padding), `ret 0Ch`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 with "" @ 0x0122D70E, CCharString::CCharString(const
 // CCharString&) @ 0x0099EC30, ~CCharString @ 0x0099EAE0 (x2), CPersistTraits<pair<CCharString,long>>::TransferOut
@@ -9,10 +9,10 @@
 // and the pair default name the element. Shape (as 0x006D4180): the traits object (esp+8: the pair) is built inline as
 // `DefaultVal("", 0)`; the IMPLICIT CCharString("") conversion temporary (esp+4) is copied into `first` and destroyed
 // right after `second = 0`; the element address is `first + index*8`; `this` is parked in esi.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30

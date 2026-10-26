@@ -14,8 +14,8 @@
 //   the member address formed into ebx before the CRC call, `sub eax,2 ; je ; dec eax ; jne` on the mode, the empty
 //   traits temporary in the dead argument slot; the last member reuses `this` (`add edi,56h`).
 // Label correction: the catalog `CGameState_TransferBoolFlags` is descriptive.
-struct CMemoryDataInputStream;
-struct CDataOutputStream {
+class CMemoryDataInputStream;
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
 };
 template <class T> struct CPersistTraits;
@@ -46,8 +46,8 @@ public:
     }
 };
 
-struct CCharStringData;
-struct CDefPointeeBase;
+class CCharStringData;
+class CDefPointeeBase;
 
 class CRegion {                                         // retail layout (12-byte STLport containers)
 public:

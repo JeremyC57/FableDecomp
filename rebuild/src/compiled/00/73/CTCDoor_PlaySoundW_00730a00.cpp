@@ -15,7 +15,7 @@
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 #include "engine/CTCDoor.h"
 
-struct CTCBase;
+class CTCBase;
 class CCharString;
 class CSoundPair;
 
@@ -131,7 +131,7 @@ struct CBaseDefPointer {                           // CDefPointer<const CThingBa
     const CDefClassBase* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44

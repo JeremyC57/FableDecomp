@@ -7,14 +7,14 @@
 //         with the async-streaming flag at +0x38 (named descriptively).
 // Shape: the asynchronous call passes the size twice and a priority of 4; the null result is CCountedPointer's inline ctor.
 // Leaf: StreamGlyph
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-struct CBankFileAsyncData;
-struct CBankFile {
+class CBankFileAsyncData;
+class CBankFile { public:
     CCountedPointer<CBankFileAsyncData> ReadAsync(unsigned long offset, void* buffer, unsigned long size,
                                                   unsigned long bufferSize, long priority);   // 0x009D6060
     void Read(unsigned long offset, void* buffer, unsigned long size);   // 0x009D52B0
@@ -23,7 +23,7 @@ struct CStreamingSettings {
     unsigned char _pad00[0x38];
     bool          AsyncStreaming;                  // +0x38
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char       _pad00[0x84];
     CStreamingSettings* Streaming;                 // +0x84
 };

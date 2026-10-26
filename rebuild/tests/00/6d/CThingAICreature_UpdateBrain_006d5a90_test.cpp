@@ -13,7 +13,7 @@ extern "C" bool __fastcall sub_88bcb0(void* self, int, long a, void* output) {
     return true;
 }
 
-struct CThingAICreature {
+class CThingAICreature { public:
     char pad[0x1a8];
     void* f1a8;
     bool __fastcall UpdateBrain(long a, void* output);

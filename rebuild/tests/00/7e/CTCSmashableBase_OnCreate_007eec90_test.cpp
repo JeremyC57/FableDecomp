@@ -1,18 +1,18 @@
 #include <cstdio>
 
 struct CSubDef { long id; };
-struct CDefClassBase {
+class CDefClassBase { public:
     long RefCount; int destroyed; CSubDef sub;
     void GetSubDef(CSubDef** out) { *out = &sub; }
     void DestroySelf() { ++destroyed; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefClassBase* table[4];
     bool GetDef(long index, CDefClassBase** out) { *out = table[index]; if (*out) ++(*out)->RefCount; return index != 3 && *out != 0; }
 };
 static CDefinitionManager g_manager;
-struct CThing { long DefIndex; };
-struct CTCSmashableBase {
+class CThing { public: long DefIndex; };
+class CTCSmashableBase { public:
     CThing* ParentThing; long LastWorldFrameHit; bool Smashed; CSubDef* Definition;
     void OnCreate()
     {

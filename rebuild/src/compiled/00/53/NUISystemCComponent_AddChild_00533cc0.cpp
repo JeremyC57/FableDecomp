@@ -16,7 +16,7 @@
 //   virtual calls through child->Data.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long Count;                                 // +0x00
 };
 template <class T> class CCountedPointer {      // 8 bytes: the object, then its shared count record

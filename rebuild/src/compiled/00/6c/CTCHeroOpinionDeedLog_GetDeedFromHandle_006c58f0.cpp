@@ -11,7 +11,7 @@
 // Layout: OpinionDeedMap +0x0C (PDB, unchanged: it is the first member after CTCBase); local model because the
 // PDB map is 16 bytes and every later member sits lower in retail.
 
-struct COpinionDeed;
+class COpinionDeed;
 
 struct SOpinionDeedNode {                     // STLport _Rb_tree_node<pair<const long, COpinionDeed*>>
     long              Color;                  // +0x00

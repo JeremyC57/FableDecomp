@@ -1,11 +1,11 @@
 // Behaviour test for CShaderDirectionalLight::ConvertToGenericLight (0x00F39D40).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C4DVector { float X, Y, Z, W; };
-struct CRGBFloatColour { float R, G, B, A; };
-struct CShaderLightAttenuation { float Attenuation0, Attenuation1, Attenuation2, AttenuationBase; };
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public: float X, Y, Z, W; };
+class CRGBFloatColour { public: float R, G, B, A; };
+class CShaderLightAttenuation { public: float Attenuation0, Attenuation1, Attenuation2, AttenuationBase; };
 enum EParameterType { PARAMETER_TYPE_NONE = 0, PARAMETER_TYPE_DIRECTION = 1, PARAMETER_TYPE_POSITION = 2 };
-struct CShaderGenericLight { C4DVector Parameters[2]; EParameterType Types[2]; float Attenuation2; float AttenuationBase; unsigned long Size; };
+class CShaderGenericLight { public: C4DVector Parameters[2]; EParameterType Types[2]; float Attenuation2; float AttenuationBase; unsigned long Size; };
 struct CShaderDirectionalLight {
     C3DVector Direction, Position; CRGBFloatColour Colour, BackColour;
     virtual ~CShaderDirectionalLight() {}

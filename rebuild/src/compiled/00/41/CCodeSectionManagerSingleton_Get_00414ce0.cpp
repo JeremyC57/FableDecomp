@@ -14,7 +14,7 @@
 // right; the class is established from the constructor's vtable (CCodeSectionManager) and the
 // landed CQuestManager::DeactivateQuest 0x004B3A20, which inlines the same create-on-first-use.
 // The only caller is 0x00CB5CC8, inside the manifest's AddScript 0x00CB5C90.
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     unsigned char m_body[0x2C];
     CCodeSectionManager();                        // 0x009F0320
 };

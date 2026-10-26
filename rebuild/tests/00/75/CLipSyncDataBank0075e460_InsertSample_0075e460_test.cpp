@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct C3DVector { float x, y, z; }; struct CCharString { void* m_p; ~CCharString() { std::strcat(g_seq, "s"); } }; struct SSource { C3DVector m_position; unsigned char _pad[0xc]; C3DVector m_direction; };
+class C3DVector { public: float x, y, z; }; class CCharString { public: void* m_p; ~CCharString() { std::strcat(g_seq, "s"); } }; struct SSource { C3DVector m_position; unsigned char _pad[0xc]; C3DVector m_direction; };
 static const SSource* g_src = 0; static const C3DVector* g_dir = 0; static long g_a = -1, g_b = -1, g_flags = -1; static float g_scale = 0, g_range = 0;
 struct SSample { unsigned char m_body[0x1c]; long m_1c; unsigned char _p[4]; long m_24; unsigned char _q[8]; CCharString m_name; long m_34;
     SSample() { } SSample(const SSource* s, const C3DVector* d, long a, long b, float sc, float r, long f) { g_src = s; g_dir = d; g_a = a; g_b = b; g_scale = sc; g_range = r; g_flags = f; std::strcat(g_seq, "C"); } };

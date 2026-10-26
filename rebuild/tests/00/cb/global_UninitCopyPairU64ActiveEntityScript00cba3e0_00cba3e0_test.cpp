@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 
-struct CActiveEntityScriptBase { int Id; };
+class CActiveEntityScriptBase { public: int Id; };
 struct SCountBlock { long RefCount; };
 
 struct CCountedPointer_CActiveEntityScriptBase {

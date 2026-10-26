@@ -1,5 +1,5 @@
 #include "engine/CAIStateGroup_MinionReactToCrime.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld; struct CThingAICreature;
+class CWorld; class CThingAICreature;
 struct CAIStateGroup_MinionReactToCrime_Methods : CAIStateGroup_MinionReactToCrime {
     void Init(const CWorld&, CThingAICreature&);
 };

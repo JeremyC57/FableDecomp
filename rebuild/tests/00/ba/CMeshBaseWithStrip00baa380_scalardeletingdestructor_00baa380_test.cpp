@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[8] = ""; static int g_n = 0;
-struct CPatchTesselationEdgeStrip { unsigned char _body[4]; ~CPatchTesselationEdgeStrip() { g_seq[g_n++] = 'm'; } };
-struct CEngineInternalPrimitiveMeshBase { virtual void v00() { } unsigned char _pad[168]; ~CEngineInternalPrimitiveMeshBase() { g_seq[g_n++] = 'b'; } };
+class CPatchTesselationEdgeStrip { public: unsigned char _body[4]; ~CPatchTesselationEdgeStrip() { g_seq[g_n++] = 'm'; } };
+class CEngineInternalPrimitiveMeshBase { public: virtual void v00() { } unsigned char _pad[168]; ~CEngineInternalPrimitiveMeshBase() { g_seq[g_n++] = 'b'; } };
 struct CMeshBaseWithStrip_00baa380 { CEngineInternalPrimitiveMeshBase m_base; CPatchTesselationEdgeStrip m_member; ~CMeshBaseWithStrip_00baa380() { } };
 static void Destroy_00baa380(CMeshBaseWithStrip_00baa380* o) { delete o; }
 

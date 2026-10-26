@@ -1,5 +1,5 @@
 // CWideString::operator+=(const CWideString&) -- append another wide string (copy-on-write, shares when empty)
-// Leaf: ??YCWideString@@QAEABU0@ABU0@@Z
+// Leaf: ??YCWideString@@QAEABV0@ABV0@@Z
 // Retail: Fable.exe @ 0x0099B8D0, 104 bytes (+int3). PDB ??YCWideString@@QAEABV0@ABV0@@Z
 // Callees: CWideString::MakeOwnCopyOfData() 0x0099B560 (label says CCharString; the body works on CWideString),
 // STLport basic_string<wchar_t>::_M_append(const wchar_t*, const wchar_t*, const forward_iterator_tag&)
@@ -28,12 +28,12 @@ struct CWideBasicString {
     CWideBasicString& append(const wchar_t* s) { return append(s, s + WideLength(s)); }
 };
 
-struct CWideStringData {
+class CWideStringData { public:
     CWideBasicString Data;   // +0x00
     long NoRefs;             // +0x0C
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;   // +0x00
     void MakeOwnCopyOfData();       // 0x0099B560
     const wchar_t* GetText() const { return PStringData == 0 ? g_FableEmptyWideString : PStringData->Data._M_start; }

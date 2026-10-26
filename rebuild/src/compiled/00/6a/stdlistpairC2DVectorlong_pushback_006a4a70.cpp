@@ -54,7 +54,7 @@ public:
     void push_back(const _Tp& __x) { insert(end(), __x); }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

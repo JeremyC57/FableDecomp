@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_finds = 0;
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
-struct CThingObject : CThing {};
+class CThingObject : public CThing { public:};
 struct CBaseIntelligentPointer {
     virtual void v00() {}
     void* m_pItem;
@@ -22,7 +22,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     void* PBrain;
     long ScriptAIPriority;

@@ -17,34 +17,34 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CSpecialAbilitiesDrunkennessDef;
+class CSpecialAbilitiesDrunkennessDef;
 
 struct CDefPointerDrunkenness {                      // CDefPointer<const CSpecialAbilitiesDrunkennessDef>
     const CSpecialAbilitiesDrunkennessDef* Object;
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get(); // 0x0044C6B0
     long GetDefIndexFromName(const CCharString& name, long column);                   // 0x009AD390
     bool GetDef(long index, CDefPointerDrunkenness* out);                             // 0x0057FF30
 };
 
-struct CHeroStatsDef;
+class CHeroStatsDef;
 
 struct CDefinitionHolder {
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x20];

@@ -17,7 +17,7 @@ struct CEngineGlobals {
 };
 extern CEngineGlobals* g_pEngineGlobals;      // 0x013B86A0
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -28,7 +28,7 @@ struct CThing {
     virtual void Slot28(bool flag);           // slot 28 (+0x70), name unknown
 };
 
-struct CTCJackShield : CTCBase {
+class CTCJackShield : public CTCBase { public:
     void EnableShield(bool enable);           // 0x00731680
     void vfunc_6();
 };

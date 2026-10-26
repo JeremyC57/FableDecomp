@@ -2,7 +2,7 @@ struct Foo { long Method(long arg); };
 struct Sub { };
 __declspec(noinline) long __fastcall Sub_Helper(Sub* s);
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     char pad0[8];
     Sub  sub;
     char pad1[0x74 - 8 - sizeof(Sub)];

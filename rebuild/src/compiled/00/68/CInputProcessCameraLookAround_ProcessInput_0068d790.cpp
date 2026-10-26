@@ -10,24 +10,24 @@
 // zero store is scheduled above the source load).
 class CInputEvent;
 class CProcessedInput;
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector(float x_, float y_) : x(x_), y(y_) {}
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetRightStickLookAroundVector(const C2DVector& look);   // 0x00697B10
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad[0x34];
     CAIGameCameraBase* PCurrentGameCamera;         // +0x34
     CAIGameCameraBase* GetCurrentGameCamera() { return PCurrentGameCamera; }
 };
-struct CPlayer; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CPlayer; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

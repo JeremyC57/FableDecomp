@@ -11,7 +11,7 @@
 // +0x38 in the body. The malloc argument is popped with `add esp,4` because the result is used.
 extern "C" void* __cdecl malloc(unsigned int size);
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c
     CResource();                            // 0x009FBEC0
@@ -40,8 +40,8 @@ struct SAnimationBuffers {                  // four raw pointers, nulled by the 
     SAnimationBuffers() : m_pFrames(0), m_pKeys(0), m_pEvents(0), m_pOwner(0) { }
 };
 
-struct C3DAnimationInfo {
-    struct CAnimationData : CResource {     // vtable 0x0129CE50
+class C3DAnimationInfo { public:
+    class CAnimationData : public CResource { public:     // vtable 0x0129CE50
         CRetailTree_node0x1c m_tracks;      // +0x1c {head, size}
         unsigned char        _pad[4];       // +0x24 (map comparator/allocator slot, untouched)
         SAnimationBuffers    m_buffers;     // +0x28

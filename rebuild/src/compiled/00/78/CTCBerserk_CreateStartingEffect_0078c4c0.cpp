@@ -13,10 +13,10 @@
 // the effect id are zeroed together at entry; the sub-def is a CDefPointer with an inline releasing dtor that VC7.1 keeps in
 // ebp thanks to the GetSubDef stand-in (`dec [ebp+4] ; jne`); found and effect lookups are nested ifs; the effect name is a temporary in the dead out
 // slot; StartUpEffect is assigned from an intelligent-pointer temporary; the emitter is the out-parameter GetInterface.
-struct CTCBase;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -50,7 +50,7 @@ struct CThing {
     }
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {
@@ -61,7 +61,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -79,12 +79,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -108,7 +108,7 @@ struct CBerserkEffectsDef : CDefPointeeBase {
     long FindEffect(const CCharString& name);
     bool GetEffect(const CCharString& name, long* effect);   // 0x00669D30
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CDefPointeeBase* FindSubDef();
     bool GetSubDef(CDefPointer<CBerserkEffectsDef>* out);     // 0x00669580
 };

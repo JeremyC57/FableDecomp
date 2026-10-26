@@ -61,10 +61,10 @@ struct CBase {
     ~CBase();                                      // 0x0099A2E0
 };
 
-struct CParticleEmitter;
+class CParticleEmitter;
 struct CIEngine;
 
-struct CParticleSystem : CBase {                   // vtable 0x0129F4E8
+class CParticleSystem : public CBase { public:                   // vtable 0x0129F4E8
     CParticleEmitter* PParentEmitter;              // +0x04
     CIEngine* PEngine;                             // +0x08
     SComponentMap Components;                      // +0x0C

@@ -10,7 +10,7 @@
 #ifndef FABLE_STRING_TEST_STUB_H
 #define FABLE_STRING_TEST_STUB_H
 #include <cstring>
-struct CCharStringData { char* text; unsigned long unknown04, unknown08; unsigned char flags0C; long owners; };
+class CCharStringData { public: char* text; unsigned long unknown04, unknown08; unsigned char flags0C; long owners; };
 class CCharString {
 public:
     CCharString();
@@ -32,7 +32,7 @@ private:
 struct CRetailCharString : CCharString {
     CRetailCharString(const CCharString& other);
 };
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _beforeDialogueVoice[0x38];
     CCharString DialogueVoice;
     CRetailCharString GetDialogueVoice() const;

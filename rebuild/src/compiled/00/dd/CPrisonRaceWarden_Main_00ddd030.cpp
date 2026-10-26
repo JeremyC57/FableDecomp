@@ -19,13 +19,13 @@
 // exit, the guard handle's destructor inline only at the first loop's return); the hero handle is built out of line, so it
 // is a storage view with an out-of-line Construct; Game is cached in a local for the paired PauseAllNonScriptedEntities;
 // the terminate test duplicated in both cut-scene arms is hoisted by VC; the final idle loop is a do-while.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -47,7 +47,7 @@ struct CCountedPointerWords {
         Info = 0;
     }
 };
-struct CScriptThing {                                  // vtable 0x01238C8C
+class CScriptThing { public:                                  // vtable 0x01238C8C
     virtual ~CScriptThing();                           // slot 0, out-of-line 0x004AA840
     virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const;
     virtual void t005() const; virtual void t006() const; virtual void t007() const; virtual void t008() const; virtual void t009() const;
@@ -55,7 +55,7 @@ struct CScriptThing {                                  // vtable 0x01238C8C
     CCountedPointerWords PImp;
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CBaseObject {
+class CBaseObject { public:
     virtual void b000();
     void* IntelligentPointer;
     CBaseObject();                                     // 0x0099A380
@@ -68,7 +68,7 @@ struct CBaseObjectDtor {
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001();
@@ -87,7 +87,7 @@ struct CScriptedThingStorage {                         // a scripted-thing handl
     void Construct();                                  // 0x007E72A0 (CScriptGameResourceObjectScriptedThingBase ctor, out of line)
     CScriptGameResourceObjectScriptedThingBase& Object() { return *reinterpret_cast<CScriptGameResourceObjectScriptedThingBase*>(this); }
 };
-struct CScriptGameResourceObjectMovieBase {            // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x006E7B60 (out-of-line ctor)
     void Destroy();                                    // 0x006E7B80 (out-of-line dtor)
@@ -112,7 +112,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -136,7 +136,7 @@ struct CGameScriptInterface {
     VPAD128(ya) VPAD32(yb) VPAD16(yc) VPAD8(yd) VPAD4(ye) VPAD2(yf)                  // slots 507..696
     virtual void StopOverrideMusic(bool a) const;                                    // slot 697 (+0xae4)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

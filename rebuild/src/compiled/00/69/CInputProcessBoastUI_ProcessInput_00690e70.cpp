@@ -16,7 +16,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };

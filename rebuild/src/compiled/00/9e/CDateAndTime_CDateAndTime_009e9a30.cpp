@@ -7,7 +7,7 @@ struct _SYSTEMTIME {
     unsigned short wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds;
 };
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

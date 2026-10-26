@@ -7,7 +7,7 @@
 // Shape: the found arm returns the local through C3DVector's user memberwise copy ctor (`fld/fstp` X, integer Y/Z); each
 // lookup has its own `return pos;` (VC cross-jumps the two copies into one block) -- a `found` flag or `||` gives the
 // second out-pointer lea in ecx and swaps the Y/Z copy registers.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

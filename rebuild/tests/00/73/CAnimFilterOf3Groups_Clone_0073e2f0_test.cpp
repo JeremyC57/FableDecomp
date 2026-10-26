@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CAnimFilterOf3Groups {
     virtual long Accepts(const void*) { return 0; }
     virtual CAnimFilterOf3Groups* Clone();

@@ -16,7 +16,7 @@ struct CAbilityTrackDefVector { void* _M_start; void* _M_finish; void* _M_end_of
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 struct CFloatVector { float* _M_start; float* _M_finish; float* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                                    // 0x00431102
     void Transfer(float& value);                                   // 0x00431061
     void Transfer(CAppearanceModifierScalingDefVector& value);     // 0x00479EF4
@@ -25,12 +25,12 @@ struct CPersistContext {
     void Transfer(CAbilityTrackDefVector& value);                  // 0x0047A2F5
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
-struct CHeroStatsDef : CDefClassBase {
+class CHeroStatsDef : public CDefClassBase { public:
     long  MaximumStamina;                                  // +0x3c
     float NumberOfSecondsAfterUseStaminaStartsRefilling;   // +0x40
     float NumberOfSecondsAfterChangeHealthStartsRefilling; // +0x44

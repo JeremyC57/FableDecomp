@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
 };
 
-struct CDrunkennessDef : public CDefClassBase {
+class CDrunkennessDef : public CDefClassBase { public:
 };
 
 static int g_baseCalled = 0;

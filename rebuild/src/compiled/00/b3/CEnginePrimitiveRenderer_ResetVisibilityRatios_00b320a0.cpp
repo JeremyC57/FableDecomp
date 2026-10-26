@@ -20,7 +20,7 @@ struct CEngineSceneGrid_00b320a0 {
     void Enumerate(CEngineSceneEnumeratorResetVisibilityRatio& enumerator);   // 0x00B93290
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     unsigned char              _pad[0x338];
     CEngineSceneGrid_00b320a0** m_pFirstGrid;      // +0x338
     CEngineSceneGrid_00b320a0** m_pLastGrid;       // +0x33c

@@ -9,7 +9,7 @@
 // is reset; the reset result is discarded (void method).
 struct HWND__;
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
@@ -51,7 +51,7 @@ struct CCreateDeviceParameters {                   // PDB 44 bytes
     }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char           _pad0[0x1a0];          // vptr slot, managers, surfaces, D3D objects, caps, extents
     bool                    ExclusiveMode;         // +0x1a0
     unsigned char           _pad1[0x268 - 0x1a1];  // multisample type .. device-reset callback list (+0x264)

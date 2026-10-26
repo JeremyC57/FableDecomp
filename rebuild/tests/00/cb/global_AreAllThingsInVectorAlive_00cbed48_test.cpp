@@ -1,7 +1,7 @@
 // Behaviour test for AreAllThingsInVectorAlive (0x00CBED48): true when every thing in the vector is alive.
 #include <cstdio>
 
-struct CScriptThing {
+class CScriptThing { public:
     bool alive;
     bool IsAlive() const { return alive; }
 };

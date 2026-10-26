@@ -1,10 +1,10 @@
 // Behaviour test for 0x00B09F90 CEnginePrimitiveSpriteTrail::CEnginePrimitiveSpriteTrail
 #include <cstdio>
 #include <cstdlib>
-struct CEnginePrimitiveThemeChannelDesc { unsigned char C0, C1, F, Pad; CEnginePrimitiveThemeChannelDesc() : C0(0), C1(0), F(0) {} };
-struct CEnginePrimitive { long Type; long InterpolationSet; CEnginePrimitiveThemeChannelDesc Theme; CEnginePrimitive(long t) : Type(t), InterpolationSet(0) {} };
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char C0, C1, F, Pad; CEnginePrimitiveThemeChannelDesc() : C0(0), C1(0), F(0) {} };
+class CEnginePrimitive { public: long Type; long InterpolationSet; CEnginePrimitiveThemeChannelDesc Theme; CEnginePrimitive(long t) : Type(t), InterpolationSet(0) {} };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { XAxis.Y = XAxis.Z = YAxis.X = YAxis.Z = ZAxis.X = ZAxis.Y = Position.X = Position.Y = Position.Z = 0.0f; XAxis.X = YAxis.Y = ZAxis.Z = 1.0f; }
 };

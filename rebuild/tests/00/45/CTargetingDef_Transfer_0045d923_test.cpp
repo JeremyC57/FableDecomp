@@ -8,20 +8,20 @@ static const void* g_addr[64];
 static char g_kind[64];
 static int g_n = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& v) { g_addr[g_n] = &v; g_kind[g_n++] = 'u'; }
     void Transfer(bool& v) { g_addr[g_n] = &v; g_kind[g_n++] = 'b'; }
     void Transfer(float& v) { g_addr[g_n] = &v; g_kind[g_n++] = 'f'; }
     void Transfer(CTargetingRangeMap& v) { g_addr[g_n] = &v; g_kind[g_n++] = 'm'; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext&) {}
     virtual ~CDefClassBase() {}
     unsigned char _body[0x24];
 };
 
-struct CTargetingDef : CDefClassBase {
+class CTargetingDef : public CDefClassBase { public:
     unsigned long Type;
     bool  UseGlowTargeting;
     float TargetArc;

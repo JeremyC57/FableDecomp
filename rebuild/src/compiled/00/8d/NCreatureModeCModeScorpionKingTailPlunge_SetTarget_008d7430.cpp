@@ -7,14 +7,14 @@
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
 // CThing::GetPosition @ 0x004C73D0.
 // Shape: as 0x008D7370 (temporary + inline operator= with the item in a local, position copied word by word), members under `#pragma pack(1)`.
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;          // 0x004C73D0 (CThing::GetPosition, GOTCHAS chunk 141)
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                          // +4
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
@@ -44,7 +44,7 @@ struct CModeStandBase : CModeBase {
 namespace NCreatureMode {
 
 #pragma pack(push, 1)
-struct CModeScorpionKingTailPlunge : CModeStandBase {
+class CModeScorpionKingTailPlunge : public CModeStandBase { public:
     long                                    RecoveryCount;      // +0x68
     long                                    DustEffectCounter;  // +0x6c
     long                                    SpikeTime;          // +0x70

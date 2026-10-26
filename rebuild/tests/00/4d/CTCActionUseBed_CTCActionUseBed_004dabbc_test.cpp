@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <new>
 
-struct CThing { int unused; };
+class CThing { public: int unused; };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     virtual ~CTCActionUseBase() {}
     CThing* ParentThing;
     CTCActionUseBase(CThing* owner) : ParentThing(owner) {}
@@ -17,7 +17,7 @@ struct CIntelligentPointer {
     CIntelligentPointer(CThing* thing) : m_pItem(thing) {}
 };
 
-struct CTCActionUseBed : CTCActionUseBase {
+class CTCActionUseBed : public CTCActionUseBase { public:
     bool                WaitingForFadeOut;
     bool                WaitingForFadeIn;
     bool                InAtomicAction;

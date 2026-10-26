@@ -5,8 +5,8 @@ struct CCombatSequenceBase_vtbl
     void* slots[16];
 };
 
-struct CCombatSequenceBase
-{
+class CCombatSequenceBase
+{ public:
     CCombatSequenceBase_vtbl* vtbl;
 };
 

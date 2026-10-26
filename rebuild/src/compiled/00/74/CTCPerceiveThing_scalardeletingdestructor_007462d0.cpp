@@ -1,4 +1,4 @@
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void* vftable;
 };
 

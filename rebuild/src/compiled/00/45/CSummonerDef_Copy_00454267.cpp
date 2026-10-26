@@ -1,4 +1,4 @@
-struct CSummonerDef;
+class CSummonerDef;
 extern "C" void __fastcall base_copy(CSummonerDef* self, const CSummonerDef* src);
 void __fastcall CSummonerDef_Copy(CSummonerDef* self, const CSummonerDef* src)
 {

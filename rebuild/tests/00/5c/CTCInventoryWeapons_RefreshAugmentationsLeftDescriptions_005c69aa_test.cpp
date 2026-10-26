@@ -3,11 +3,11 @@
 #include <cstring>
 // Behaviour test for CTCInventoryWeapons::RefreshAugmentationsLeftDescriptions (0x005C69AA): same body as src/, with the
 // item gather, the child lookup, the description builder and the component text stubbed and recorded.
-struct CCharString { const char* s; };
+class CCharString { public: const char* s; };
 static CCharString g_AugmentationsLeftDescriptionM = { "Augmentations_Left_Description_M" };
 static CCharString g_AugmentationsLeftDescriptionR = { "Augmentations_Left_Description_R" };
 static int g_strings = 0;
-struct CWideString { int v; CWideString() : v(0) { ++g_strings; } ~CWideString() { --g_strings; } };
+class CWideString { public: int v; CWideString() : v(0) { ++g_strings; } ~CWideString() { --g_strings; } };
 
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 typedef pair<long, long> CItem;
@@ -28,8 +28,8 @@ struct CItemVector {
         _M_start = p; _M_finish = p + n + 1; _M_end_of_storage = _M_finish;
     }
 };
-struct CTCInventoryItem { static bool IsAugmentation(long d) { return d >= 500; } };
-namespace NUISystem { struct CComponent; }
+class CTCInventoryItem { public: static bool IsAugmentation(long d) { return d >= 500; } };
+namespace NUISystem { class CComponent; }
 struct SComponentNode { SComponentNode* _M_next; SComponentNode* _M_prev; NUISystem::CComponent* _M_data; };
 static int g_listDtors = 0;
 struct CComponentList {
@@ -45,7 +45,7 @@ struct CComponentList {
     }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     int textValue; int sets; bool a, b;
     CComponent* kidsM[2]; CComponent* kidsR[2];
     void FindChildren(CCharString name, CComponentList& out)
@@ -58,13 +58,13 @@ struct CComponent {
 };
 }
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     CItem stock[4];
     void GetAllItems(CItemVector& items) const { for (int i = 0; i < 4; ++i) items.push_back(stock[i]); }
 };
 }
 static int g_builds = 0;
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     NUISystem::CComponent* WeaponsList;
     void ConstructAugmentationsLeftDescription(CWideString& text, CItemVector& augmentations, bool melee)
     {

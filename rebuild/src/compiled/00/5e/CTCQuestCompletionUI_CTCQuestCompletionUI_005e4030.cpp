@@ -11,13 +11,13 @@
 // Shape: the landed CTCBoastUI (0x0056AC10) / CTCWound (0x00757640) container ctors: the list sentinel malloc'd and linked to itself
 //   before the store, each map header nulled, malloc'd, count zeroed, header red/null parent/self-linked; members without an
 //   initialiser (WaitingForBoastProcessing, Completion) are left alone.
-struct CThing;
+class CThing;
 struct CComponent;
 struct CText;
-struct CQuestCardDef;
+class CQuestCardDef;
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04
     bool          ToBeRemoved;                      // +0x08
@@ -26,10 +26,10 @@ struct CTCBase {
     void AddToGlobalUpdateTCs();                    // 0x00686ED0
 };
 
-struct CWideString { void* PStringData; CWideString(); };   // 0x0099AED0
-struct CCharString { void* PStringData; CCharString(); };   // 0x0099E4B0
+class CWideString { public: void* PStringData; CWideString(); };   // 0x0099AED0
+class CCharString { public: void* PStringData; CCharString(); };   // 0x0099E4B0
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* PItem;
     CDefPointer() : PItem(0) { }
 };
@@ -81,7 +81,7 @@ struct CComponentVector {                           // STLport vector<CComponent
 
 struct CBoast { unsigned char _body[0x20]; };       // CQuestManager::CBoast
 
-struct CTCQuestCompletionUI : CTCBase {             // vtable 0x0125589C
+class CTCQuestCompletionUI : public CTCBase { public:             // vtable 0x0125589C
     bool                       Active;                      // +0x0c
     bool                       ReallyActive;                // +0x0d
     CComponentVector           Components;                  // +0x10

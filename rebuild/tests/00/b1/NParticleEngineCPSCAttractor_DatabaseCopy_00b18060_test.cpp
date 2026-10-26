@@ -19,7 +19,7 @@ static int fails = 0;
 //   read-modify-write); the scalars copy in retail order; the
 //   point list is sized with reserve + resize to the source count, then copied element by element (implicit C3DVector
 //   assignment) with both arrays re-read each pass.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };

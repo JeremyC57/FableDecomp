@@ -8,18 +8,18 @@
 // navigator slots from the CNavigatorAStar/CNavigatorFlyer vtables (9 CanNavigateToPos, 10 IsNavLineOfSightClear,
 // 18 Interrupt) and the external interface vtables (slot 4 FindPosZAt, float).
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)
 };
 
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual float FindPosZAt(const C3DVector& pos, bool flag) const;    // slot 4
 };
 
-struct CNavigatorBase {
+class CNavigatorBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool CanNavigateToPos(const C3DVector& from, const C3DVector& to, float proximity, bool flag) const;   // slot 9
@@ -39,7 +39,7 @@ struct CNavigatorVector {                   // retail 12-byte vector<CNavigatorB
     CNavigatorBase** end;
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

@@ -20,7 +20,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 
 class C3DDummyObject {                                  // 0x34 bytes (Ego_r.pdb)
 public:

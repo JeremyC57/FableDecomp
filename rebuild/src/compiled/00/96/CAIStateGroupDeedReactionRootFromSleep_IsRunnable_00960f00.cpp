@@ -10,9 +10,9 @@
 // (short-circuit order kept: `test ; je ; cmp 0Ah ; jl` then three equality tests); every path returns false
 // (one `xor al,al` tail).
 // Model: local (no engine header for this class; CurrentDeedType +0x1c from struct_layouts_egor.tsv).
-struct CTCBase;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CWorld;
+class CThingAICreature;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,17 +40,17 @@ struct CThing {
     }
 };
 
-struct CTCSleep {                               // interface 0xD4
+class CTCSleep { public:                               // interface 0xD4
     unsigned char _pad[0xc];
     bool m_bAsleep;                             // +0x0c
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

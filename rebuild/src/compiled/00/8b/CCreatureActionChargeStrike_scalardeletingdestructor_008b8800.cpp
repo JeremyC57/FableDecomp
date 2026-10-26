@@ -1,4 +1,4 @@
-struct CCreatureAction_ChargeStrike {
+class CCreatureAction_ChargeStrike { public:
     void* vftable;
 };
 

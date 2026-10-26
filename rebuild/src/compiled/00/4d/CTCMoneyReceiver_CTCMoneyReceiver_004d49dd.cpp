@@ -5,7 +5,7 @@
 // Shape: the size-optimised constructor module (`push dword ptr [esp+8]` passes the argument straight through);
 // the vtable store follows the base constructor, the member is assigned from the call result.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_004d49dd {
     virtual void v00();
@@ -14,7 +14,7 @@ struct CTCBase_004d49dd {
     CTCBase_004d49dd(CThing* owner);                // 0x00686800
 };
 
-struct CTCMoneyReceiver : CTCBase_004d49dd {        // 0x10 bytes
+class CTCMoneyReceiver : public CTCBase_004d49dd { public:        // 0x10 bytes
     long AmountOfMoneyWanted;                       // +0x0c
     static long GetDefaultAmountOfMoneyWanted();    // 0x007898F0 (returns 50)
     CTCMoneyReceiver(CThing* owner);

@@ -9,7 +9,7 @@ static unsigned long g_range = 0;
 static unsigned long g_pick = 0;
 static int g_dtorCount = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString() : Text(0) {}
     CCharString(const CCharString& other) : Text(other.Text) {}
@@ -27,7 +27,7 @@ struct CCharStringVector {
 
 unsigned long GFRandom(unsigned long range, unsigned long* seed) { g_range = range; ++*seed; return g_pick; }
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned long Seed;
     unsigned long* GetPRandomSeed() const { return const_cast<unsigned long*>(&Seed); }
     CCharString GetRandomSuitName() const;

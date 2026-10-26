@@ -9,7 +9,7 @@ static int g_eventDtors = 0;
 static int g_frees = 0;
 static void TestFree(void* p) { if (p) { ++g_frees; std::free(p); } }
 
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _body[0x34];
     ~CInputEvent() { ++g_eventDtors; }
 };
@@ -23,9 +23,9 @@ template <class T> struct _Vector_base {
 template <class T> struct vector : _Vector_base<T> {
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
-struct CChecksum { unsigned long Words[4]; };
-struct C2DVector { float X, Y; };
-struct CInputEventPackage {
+class CChecksum { public: unsigned long Words[4]; };
+class C2DVector { public: float X, Y; };
+class CInputEventPackage { public:
     vector<CInputEvent> Events;
     long                TimeStamp;
     CChecksum           Checksum;

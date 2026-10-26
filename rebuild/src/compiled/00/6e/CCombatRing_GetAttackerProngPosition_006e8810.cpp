@@ -4,8 +4,8 @@
 // the manifest label "CTCPhysicsRigidBody::GetFacingVector" is propagated). Shape: the null test against a zero register that then feeds the two 0.0 stores of the
 // fallback vector (1.0 as an immediate), the prong path hands the hidden pointer through and returns it, `ret 8`. The chunk label "CGuiControlComboBox::ToggleEntryWithName"
 // is propagated; the body is CDefendingCombatantInfo::CCombatRing (Ego_r.pdb: RotationAngle +0).
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float x, y, z;
     C3DVector(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
 };

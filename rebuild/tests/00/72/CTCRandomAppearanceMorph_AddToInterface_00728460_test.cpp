@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     char m_leading[0x18];
     void* m_pInterface;
     int updates;

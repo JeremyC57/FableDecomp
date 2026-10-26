@@ -4,7 +4,7 @@
 
 struct CVectorMap_ulong_CSubDefInfo;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     void **vptr;
     int filler[8];
 };

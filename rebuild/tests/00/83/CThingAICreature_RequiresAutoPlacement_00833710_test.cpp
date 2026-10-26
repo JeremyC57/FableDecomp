@@ -7,8 +7,8 @@ struct CDefPointer { CTCVillageDef* Object;
     CDefPointer(CTCVillageDef* d) : Object(d) {}
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     CTCVillageDef* operator->() const { return Object; } };
-struct CTCVillage { CDefPointer PDef; CTCVillage(CTCVillageDef* d) : PDef(d) {} CDefPointer GetDef() const { return PDef; } };
-struct CThingAICreature {
+class CTCVillage { public: CDefPointer PDef; CTCVillage(CTCVillageDef* d) : PDef(d) {} CDefPointer GetDef() const { return PDef; } };
+class CThingAICreature { public:
     bool hasMember; CTCVillage* village;
     bool RequiresAutoPlacement()
     {

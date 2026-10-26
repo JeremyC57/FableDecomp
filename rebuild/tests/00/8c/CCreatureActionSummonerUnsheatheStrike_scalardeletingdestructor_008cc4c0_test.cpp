@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SummonerUnsheatheStrike {
+class CCreatureAction_SummonerUnsheatheStrike { public:
     void* vftable;
     int destroyed;
 };

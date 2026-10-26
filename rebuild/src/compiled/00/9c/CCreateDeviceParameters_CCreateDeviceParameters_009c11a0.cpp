@@ -8,7 +8,7 @@
 // memberwise copy constructor, written out so the translation unit emits it.
 struct HWND__;
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;                                // +0x00
     long Height;                               // +0x04
 };

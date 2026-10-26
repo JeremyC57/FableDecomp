@@ -11,7 +11,7 @@
 // Layout: as OnDeactivate 0x008E74F0 (Ego_r.pdb CModeIntangible; CThingPhysical::Damageable bit 0 of +0xBC).
 // Shape: the boss lookup is the landed FrameUpdate (0x008E7600) one-ternary HasTC + GetTC on the const map; the weapon-trail
 //   lookup is the same ternary on the non-const map (component straight into ecx, `this` register reused for the thing).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -19,7 +19,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const instantiation)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -34,12 +34,12 @@ struct CTCPhysicsBase {
     virtual void ResetPhysicsFlagsToDef();      // slot 44 (+0xB0), 0x00723A50
 };
 struct CModeBase;
-struct CCreatureActionBase;
-template <class T> struct CCountedPointer {
+class CCreatureActionBase;
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -90,21 +90,21 @@ struct CThing {
     }
     void SetSuspendAnimation(bool suspend, CModeBase* mode);                   // 0x00833A10
 };
-struct CTCMapwho {                              // interface 0x3a
+class CTCMapwho { public:                              // interface 0x3a
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                 // +0x50 bit 0
 };
-struct CTCTargeted {                            // interface 9
+class CTCTargeted { public:                            // interface 9
     unsigned char _pad00[0x10];
     bool          Targetable;                   // +0x10
 };
-struct CTCBoss {                                // interface 0xad
+class CTCBoss { public:                                // interface 0xad
     long GetBossPhase();                        // 0x007AED10
 };
-struct CTCWeaponTrail {                         // interface 0x4c
+class CTCWeaponTrail { public:                         // interface 0x4c
     void ClearAllWeaponTrails();                // 0x0076E150
 };
-struct CTCWillResponse {
+class CTCWillResponse { public:
     static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 };
 

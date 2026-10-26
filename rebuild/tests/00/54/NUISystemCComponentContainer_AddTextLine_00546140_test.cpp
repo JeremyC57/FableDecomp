@@ -10,7 +10,7 @@ static CFont g_font = { 7 };
 static long g_refsDuringLookup = 0;
 struct SCountBlock { long m_references; };
 static SCountBlock g_block = { 1 };
-struct CFontBank { CFont* GetFont(const char* name) { g_refsDuringLookup = g_block.m_references; return strcmp(name, "Big") == 0 ? &g_font : 0; } };
+class CFontBank { public: CFont* GetFont(const char* name) { g_refsDuringLookup = g_block.m_references; return strcmp(name, "Big") == 0 ? &g_font : 0; } };
 static CFontBank g_bank;
 struct CCountedFontBank {
     CFontBank* m_pObject; SCountBlock* m_pCount;
@@ -20,7 +20,7 @@ struct CCountedFontBank {
     CFontBank* operator->() const { return m_pObject; }
 };
 static CCountedFontBank g_frontEndBank(&g_bank, &g_block);
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CContainer {
     const char* lastText; CRGBColour lastColour; CFont* lastFont; long lastFlags;
     void AddText(const char* text, CRGBColour colour, CFont* font, long flags) { lastText = text; lastColour = colour; lastFont = font; lastFlags = flags; }

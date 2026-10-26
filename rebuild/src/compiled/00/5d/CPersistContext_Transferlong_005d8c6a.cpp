@@ -3,7 +3,7 @@
 // retail 0x005d8c6a: zero-inits a local default and forwards to the
 // generic transfer helper as (name, value, &default0).
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_long_(char* name, long* value);
 };
 

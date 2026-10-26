@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CharString898b30 { void* data; }; struct Base898b30 {}; struct Entry898b30 { long key; Base898b30* value; }; struct Map898b30 { Entry898b30* begin; Entry898b30* end; Entry898b30* LowerBound(const long* key); };
-struct CGameDefinitionManager { long GetDefGlobalIndexFromName(const CharString898b30* name); }; struct Inventory898b30 { long GetNumberOfItemsOfTypeInInventory(long index); void SetThingAsActiveWeapon(long index,void* component); }; struct CPlayerManager { void* ResolvePlayer(); }; struct Hero898b30; struct ResolverB898b30 { Hero898b30* ResolveHero(); };
+class CGameDefinitionManager { public: long GetDefGlobalIndexFromName(const CharString898b30* name); }; struct Inventory898b30 { long GetNumberOfItemsOfTypeInInventory(long index); void SetThingAsActiveWeapon(long index,void* component); }; class CPlayerManager { public: void* ResolvePlayer(); }; struct Hero898b30; struct ResolverB898b30 { Hero898b30* ResolveHero(); };
 struct Hero898b30 { unsigned char unused00[0x20]; unsigned long flags20; unsigned char unused24[0x20]; Map898b30 interfaces44; unsigned char unused4c[0x45]; unsigned char flags91; }; struct CGameScriptInterface_Methods : CGameScriptInterface {
     void SetWeaponAsHerosActiveWeapon(const CharString898b30& weaponName) const;
 };

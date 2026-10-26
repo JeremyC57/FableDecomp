@@ -5,7 +5,7 @@
 // Shape: CIVCountedPointer::operator=(T*) inlined with a null argument: the release (pointee kept in
 // a local for `dec [ecx+4]` and the vtable fetch, member cleared inside the null test) followed by
 // the unconditional store of the new pointer, so retail keeps BOTH `mov dword ptr [esi+0Ch],0`.
-struct CMeshDataBank;
+class CMeshDataBank;
 
 struct CMeshData_a24f90 {                          // CPhysicsMeshInfo::CMeshData
     virtual void v00();
@@ -13,7 +13,7 @@ struct CMeshData_a24f90 {                          // CPhysicsMeshInfo::CMeshDat
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {
@@ -32,13 +32,13 @@ template <class T> struct CIVCountedPointer {
     }
 };
 
-struct CMeshDataBankEntry {                        // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                        // vtable 0x0129CD28
     CMeshDataBank* Bank;                           // +0x04
     unsigned long  Index;                          // +0x08
     virtual void v00();
 };
 
-struct CPhysicsMeshInfo : CMeshDataBankEntry {     // vtable 0x0129CD50
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:     // vtable 0x0129CD50
     CIVCountedPointer<CMeshData_a24f90> MeshData;  // +0x0c
     virtual void v00();
 private:

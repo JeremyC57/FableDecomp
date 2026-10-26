@@ -10,17 +10,17 @@
 //   pushed, then the value and name slots; `this` stays in ecx; `add esp,18h ; ret 8`.
 // Layout: COpinionTransientOffset from the PDB (Ego_r.pdb, 0x18 bytes); CPersistContext from the PDB (0x2c bytes). No engine
 //   header exists for either, so local models are used.
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 enum EOpinion { OPINION_NULL = 0 };
 
 // COpinionTransientOffset (0x18 bytes, PDB layout Ego_r.pdb)
-struct COpinionTransientOffset {
+class COpinionTransientOffset { public:
     EOpinion Opinion;                 // +0x00
     float    OffsetPerFrameRunIn;     // +0x04
     long     FramesToRunIn;           // +0x08
@@ -34,7 +34,7 @@ struct COpinionTransientOffset {
 };
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header)
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

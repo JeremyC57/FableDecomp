@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CParticleSimulation::RelocateData (0x00ADFC60): the five particle arrays move from the old to the
 // new block (arguments 2 and 3), null arrays stay null, arguments 1 and 4 are ignored.
-struct CParticleSimulation {
+class CParticleSimulation { public:
     unsigned char m_pad00[0x1c];
     char* m_pPositions; char* m_pVelocities; char* m_pColours; char* m_pSizes; char* m_pAges;
     void RelocateData(long, void* oldBase, void* newBase, long)

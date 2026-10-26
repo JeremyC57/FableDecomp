@@ -2,8 +2,8 @@
 
 #include "rebuild_abi.h"
 
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     fable_i32 width;
     fable_i32 height;
 };

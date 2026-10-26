@@ -14,16 +14,16 @@
 //   stops in front of the vector's inline ctor (VC7.1 never sinks an immediate across a member ctor). Members the
 //   retail ctor leaves alone (InitialSheathedWeapon, ResetCombatType..., HeroCombat(PC)Def, DeferHits..., LeaderType's
 //   neighbours) are simply not initialised. UnsheatheWeaponsAutomatically (bit 5) keeps its value: `and 20h`.
-struct CPersistContext;
+class CPersistContext;
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     CThingBaseDef();                                    // 0x006772D0
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x70 - 4];
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;
     float         AnimStep;
     float         RenderSizeX;
@@ -40,7 +40,7 @@ struct CNavigatorTypeVector {                           // STLport vector<ENavig
     CNavigatorTypeVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 
-struct CThingCreatureDef : CThingBaseDef {              // vtable 0x0125B2DC
+class CThingCreatureDef : public CThingBaseDef { public:              // vtable 0x0125B2DC
     float  StunTimeMin;                                 // +0x70
     float  StunTimeMax;                                 // +0x74
     float  StunHealthThreshold;                         // +0x78

@@ -5,21 +5,21 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
 struct CDefObject { virtual void Unused() { } virtual void Destroy() { ++g_destroyed; } long m_count; };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
     ~CDefPointer() { if (Object) if (--Object->m_count == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CFloatRange { float HighValue; float LowValue; };
+class CFloatRange { public: float HighValue; float LowValue; };
 class CTCHeroExperience;
 static int g_param = 0; static const CTCHeroExperience* g_paramThis = 0; static float g_fraction = 0.25f;
-struct CHeroAbilityStatWeight {
+class CHeroAbilityStatWeight { public:
     unsigned char StatWeights[0xc];
     float GetParameter(const CTCHeroExperience& experience) const { ++g_param; g_paramThis = &experience; return g_fraction; }
 };
-struct CHeroCombatDef : CDefObject {
+class CHeroCombatDef : public CDefObject { public:
     unsigned char _pad[0xf0 - 0xc];
     CFloatRange MeleeStrikeAnimationSpeedFractionWithStats;   // +0xf0
     CHeroAbilityStatWeight MeleeStrikeAnimationSpeedWeighting; // +0xf8

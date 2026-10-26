@@ -2,7 +2,7 @@
 // behaviour test: the region exit saves a remapped copy of the connected entrance UID (0 stays 0, member untouched) and on load
 // remaps a non-zero loaded UID in place
 typedef unsigned long long u64;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; u64 stored; int transfers;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char*, bool& v, const bool& d) { ++transfers; if (!IsSaving()) v = d; }
@@ -10,7 +10,7 @@ struct CPersistContext {
     void Transfer(const char*, u64& v, const u64&) { ++transfers; if (IsSaving()) stored = v; else v = stored; }
 };
 static u64 Remap(bool saving, u64 uid) { return saving ? uid + 1000 : uid - 1000; }
-struct CTCDRegionExit {
+class CTCDRegionExit { public:
     bool Active; float Radius, MessageRadius; u64 EntranceConnectedToUID; bool ReversedOnMiniMap, HiddenOnMiniMap;
     void OnSerialise(CPersistContext& context)
     {

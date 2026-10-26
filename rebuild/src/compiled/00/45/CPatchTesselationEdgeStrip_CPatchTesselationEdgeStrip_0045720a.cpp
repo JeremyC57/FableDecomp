@@ -5,7 +5,7 @@ extern void __fastcall CSub_dtor(CSub* self);
 void __cdecl free(void*);
 extern void __fastcall CBase_dtor(void* self);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad0[0x60];
     void* p60;
     char pad1[0x08];

@@ -11,10 +11,10 @@
 // (CCountedPointer<C3DMeshStats const>, zeroed by its inline constructor), +0x10 PositionMatrix,
 // +0x40 InversePositionMatrixSetup (false), +0x44 InversePositionMatrix, +0x74 Scale. MeshInfo and the
 // matrices are left to SetMesh / SetPositionMatrix. The scale is forwarded as the raw 4-byte argument.
-struct C3DMeshInfo;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CMatrix3x4 { float m[12]; };
+class C3DMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CMatrix3x4 { public: float m[12]; };
 
 namespace N_0099a2d0 { struct CBase {
     virtual void v00();
@@ -27,7 +27,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct C3DMeshObject : CBase {
+class C3DMeshObject : public CBase { public:
     virtual void v00();                    // own vtable (0x01239860)
     C3DMeshInfo*    MeshInfo;              // +0x4
     CCountedPointer Mesh;                  // +0x8

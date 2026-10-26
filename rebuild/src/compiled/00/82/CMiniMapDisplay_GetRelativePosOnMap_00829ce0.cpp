@@ -1,5 +1,5 @@
-struct C3DVector { float x, y, z; };
-struct C2DVector { float x, y; };
+class C3DVector { public: float x, y, z; };
+class C2DVector { public: float x, y; };
 struct IPair { int a, b; };
 
 // callee at 0x66c6a0 is a real __fastcall member on the (this+0x54) subobject.
@@ -7,7 +7,7 @@ struct MapSub {
     void GetBounds(IPair* p1, IPair* p2);
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0x54];
     MapSub sub;
 };

@@ -7,7 +7,7 @@
 //          +0x164, CursorPos +0x168, LeftMostCharacter +0x16C -- Ego_r.pdb +0x18C/+0x198/+0x1A4/+0x1A8/+0x1AC less a 0x30
 //          base shift and 8 bytes per 12-byte debug list; no engine/ header exists for NUISystem::CEditBox.
 // Shape: the zero store precedes the assignment call; the length is read from the argument, not the member.
-struct CCPPointerInfo;
+class CCPPointerInfo;
 class CWideString {
 public:
     void* PStringData;
@@ -15,7 +15,7 @@ public:
     long GetLength() const;                        // 0x0099B220
 };
 namespace NUISystem { class CAction; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04
 };

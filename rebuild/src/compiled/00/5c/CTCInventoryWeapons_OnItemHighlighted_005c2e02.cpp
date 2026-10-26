@@ -14,7 +14,7 @@ struct CTCInventoryBase_Retail {
     void OnItemHighlighted(long item);                       // 0x005BC4C0 (empty base slot 36)
     void ResetInventoryAnim(long item);             // 0x005BCD2D
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     void OnItemHighlighted(long item);
 };
 void CTCInventoryWeapons::OnItemHighlighted(long item)

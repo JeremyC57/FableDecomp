@@ -9,8 +9,8 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00405a10: the component widens *Object (unsigned char) to a long local and passes its address to the long writer.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 static long g_written = 0;
 static CCharString* g_out = 0;
 static void __fastcall TransferOutLong(CPersistContext*, CCharString* out, long* value) { g_written = *value; g_out = out; }

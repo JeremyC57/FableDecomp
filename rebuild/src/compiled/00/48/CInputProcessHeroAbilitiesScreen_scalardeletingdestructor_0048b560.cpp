@@ -1,8 +1,8 @@
 // CInputProcessHeroAbilitiesScreen::`vector_deleting_destructor'
 // Canonical MSVC vector deleting destructor.
 
-struct CInputProcessHeroAbilitiesScreen
-{
+class CInputProcessHeroAbilitiesScreen
+{ public:
     void scalar_destructor();   // scalar dtor at 0xa0d3d0 (external, non-inlined)
 };
 

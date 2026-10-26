@@ -13,14 +13,14 @@
 //        loads); `&PDef` is formed once (`lea edi,[esi+0Ch]`) for the trailing GetSubDef call, which
 //        re-reads the parent from the CTCBase member.
 class CThing;
-struct CTeleporterDef;
+class CTeleporterDef;
 
 struct CDefPointer {                                    // CDefPointer<const CTeleporterDef>
     CTeleporterDef* m_p;
     CDefPointer() : m_p(0) {}
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007e0540(CDefPointer* out);                   // 0x007E0540
 };
 
@@ -41,14 +41,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() {}
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThingDefs* m_pParentThing;                         // +0x04
     unsigned char _pad_0x08[0x4];
     CTCBase(CThing* parent);                            // 0x00686800
 };
 
-struct CTCTeleporter : CTCBase {
+class CTCTeleporter : public CTCBase { public:
     CDefPointer PDef;                                   // +0x0c
     bool Active;                                        // +0x10
     bool Activated;                                     // +0x11

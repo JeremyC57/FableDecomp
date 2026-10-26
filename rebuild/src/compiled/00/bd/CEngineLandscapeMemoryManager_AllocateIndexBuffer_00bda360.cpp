@@ -5,7 +5,7 @@
 // @ 0x009F2A40, CIndexBuffer::CIndexBuffer @ 0x00AC1EC0, CIndexBuffer::Initialise(count, flags, format, pool, primitive type) @ 0x00AC1F70.
 // Shape: `new CIndexBuffer` through a class operator new whose body is the landed AllocVirtual (0x00BD9AF0) -- the new-expression's
 // null test guards the out-of-line constructor, the result is tested again for the early `return 0`; arguments re-read from their slots.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
 };
 
@@ -33,7 +33,7 @@ public:
     static void* operator new(unsigned int size) { return AllocFromGlobalAllocator(size); }
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void ProcessDisposalLists();                   // 0x00BDA150 (manifest "CDrawResourcePool_FlushCycle")
     CIndexBuffer* AllocateIndexBuffer(long owner, unsigned long count, unsigned long flags, long format, long primitiveType);
 };

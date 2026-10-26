@@ -1,8 +1,8 @@
-struct C2DBoxI;
+class C2DBoxI;
 // Leaf: CEntry>_const&>
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     void SetViewport(const C2DBoxI& viewport);
 };
 

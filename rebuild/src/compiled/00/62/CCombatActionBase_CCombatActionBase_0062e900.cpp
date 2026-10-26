@@ -13,7 +13,7 @@
 // Shape: no vtable store, so CCombatActionBase is `__declspec(novtable)`; empty body, members destroyed in reverse order; the
 // CDefPointer dtor clears Object inside its null test (landed ~CTCLight 0x00640F80 form).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -21,12 +21,12 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer { virtual void v00(); };   // CIntelligentPointer<CThing>
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer { virtual void v00(); };   // CIntelligentPointer<const CThing>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                                  // slot 1
     long m_refCount;                                        // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer()
     {
@@ -49,16 +49,16 @@ struct CStrikeEventList {                                   // STLport list<CCou
             free(Node);
     }
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 template<class T> struct CPtrVector {                       // STLport vector<T*> (12 bytes, malloc allocator)
     T** _M_start;
     T** _M_finish;
     T** _M_end_of_storage;
     ~CPtrVector() { if (_M_start) free(_M_start); }
 };
-struct C3DVector { float X, Y, Z; };
-struct CMeleeCombatAbilityDef;
-struct CCreatureActionBase {                                // retail sizeof 0xA8
+class C3DVector { public: float X, Y, Z; };
+class CMeleeCombatAbilityDef;
+class CCreatureActionBase { public:                                // retail sizeof 0xA8
     virtual ~CCreatureActionBase();                         // 0x00693EF0
     unsigned char _body[0xa8 - 4];
 };

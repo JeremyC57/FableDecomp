@@ -1,4 +1,4 @@
-struct CThing {
+class CThing { public:
     char pad00[0x2c];
     unsigned char f2c;   // +0x2c flags byte
     char pad2d[0x5c-0x2d];

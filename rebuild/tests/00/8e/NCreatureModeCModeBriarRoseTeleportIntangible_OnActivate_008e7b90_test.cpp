@@ -2,8 +2,8 @@
 #include <cstdio>
 
 static int g_released = 0, g_transitions = 0, g_lastCount = 0; static float g_lastScale = 0;
-struct CDefPointeeBase { long m_refCount; void Delete() { ++g_released; } };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
+class CDefPointeeBase { public: long m_refCount; void Delete() { ++g_released; } };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
 template <class T> struct CDefHolder {
     T* Object; CDefHolder(T* o) : Object(o) {}
     ~CDefHolder() { if (Object && --Object->m_refCount == 0) Object->Delete(); }
@@ -15,14 +15,14 @@ template <class T> struct CDefCopy {
     T* operator->() const { return Object; }
 };
 struct CBriarRoseTeleportDef : CDefPointeeBase { float Duration; long ThemeChangeCount; float ThemeScale; };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CBriarRoseTeleportDef* sub;
     bool GetSubDef(CDefPointer<CBriarRoseTeleportDef>* out) { if (!sub) return false; ++sub->m_refCount; out->Object = sub; return true; }
 };
 struct CModeBase;
 struct CTCFlagged { unsigned char m_flag : 1; };
 struct CTCType9 { bool m_active; };
-struct CThing {
+class CThing { public:
     unsigned char m_type; CDefClassBase* PDef; CTCFlagged* flagged; CTCType9* type9; int stops; int suspends;
     template <class T> bool GetInterface(T** out, long type)
     {
@@ -33,7 +33,7 @@ struct CThing {
     void SetSuspendAnimation(bool s, CModeBase*) { if (s) ++suspends; }
     void StopMoving(bool) { ++stops; }
 };
-struct CEnvironment { void TransitionToTheme(long, long mode, long count, float scale) { if (mode == 2) { ++g_transitions; g_lastCount = count; g_lastScale = scale; } } };
+class CEnvironment { public: void TransitionToTheme(long, long mode, long count, float scale) { if (mode == 2) { ++g_transitions; g_lastCount = count; g_lastScale = scale; } } };
 static CEnvironment g_env;
 struct CGlobalComponents { CEnvironment* Environment; CEnvironment* GetEnvironment() const { return Environment; } };
 static CGlobalComponents g_globals = { &g_env };

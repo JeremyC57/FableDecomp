@@ -12,10 +12,10 @@
 // ConfirmedVideoOptionsChanged (0x0047D012).
 // Layout: retail CTCHeroOnlineScoreboard (12-byte maps/vectors, 8-byte lists) keeps PScoreboardScreen at +0x60
 // (PDB +0x78); retail CTCInventory's PMouse_Pointer is +0x214 (PDB +0x260).
-struct CTCBase;
+class CTCBase;
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);           // (declared: by-value arguments are built in place)
@@ -23,13 +23,13 @@ struct CCharString {
 };
 
 namespace NUISystem {
-struct CObserver {                                   // the observer interface at +4 of every component
+class CObserver { public:                                   // the observer interface at +4 of every component
     virtual void o00(); virtual void o01(); virtual void o02();
     virtual void ObserveEvent(long eventType);       // slot 3 (+0x0C)
 };
 struct CComponentBase {                              // the primary vtable
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -41,9 +41,9 @@ struct CComponentBase {                              // the primary vtable
     virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual void SetActive_slot48(bool active);      // slot 48 (+0xC0)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
-struct CManager {                                    // NUISystem::CManager (CObservable vtable part)
+class CManager { public:                                    // NUISystem::CManager (CObservable vtable part)
     virtual void m00(); virtual void m01();
     virtual void AddObserver(CObserver* observer);   // slot 2 (+0x08)
     virtual void m03(); virtual void m04(); virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08();
@@ -60,7 +60,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -81,12 +81,12 @@ struct CThing {
     }
 };
 
-struct CTCInventory {                                // interface type 0x11
+class CTCInventory { public:                                // interface type 0x11
     unsigned char          _pad_0x000[0x214];
     NUISystem::CComponent* PMouse_Pointer;           // +0x214 (PDB +0x260)
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void*                  __vftable;                // +0x00
     CThing*                ParentThing;              // +0x04 CTCBase
     unsigned char          _pad_0x08[0x58];

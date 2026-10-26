@@ -1,18 +1,18 @@
 #include <cstdio>
 // behaviour test: CEngineSceneGrid::RenderCellClipped skips empty/unmasked/clipped cells, renders visible primitives, recurses, marks the cell
-struct CEngineSceneRenderStats {};
-struct C3DBoundingBox { float v[6]; };
+class CEngineSceneRenderStats { public:};
+class C3DBoundingBox { public: float v[6]; };
 static int g_rendered = 0, g_recursions = 0; static bool g_cameraVisible = true;
-struct CEngineCamera {
+class CEngineCamera { public:
     bool ClipWorldSpaceBoundingBox(const C3DBoundingBox&, float d, bool& clipped) const { clipped = true; return g_cameraVisible && d == 50.0f; }
 };
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned long RenderLayerMask; bool visible; unsigned short LastFrameRendered;
     CEngineInternalPrimitiveBase* NextPrimitive; CEngineInternalPrimitiveBase* NextLayerMask;
     bool IsVisibleToCamera(const CEngineCamera&, bool clipped) { return visible && clipped; }
 };
-struct CEngineSceneGridCell { CEngineInternalPrimitiveBase* FirstPrimitive; bool WasRendered; };
-struct CEngineSceneGrid {
+class CEngineSceneGridCell { public: CEngineInternalPrimitiveBase* FirstPrimitive; bool WasRendered; };
+class CEngineSceneGrid { public:
     CEngineSceneGrid* LevelDown; unsigned long Size; CEngineSceneGridCell** GridCells; unsigned long Mask;
     unsigned long GetCellRenderMask(unsigned long, unsigned long) { return Mask; }
     bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&, float& d, unsigned long, unsigned long) { d = 50.0f; return true; }

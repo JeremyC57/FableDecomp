@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct C3DBoundingSphere {
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DBoundingSphere { public:
     C3DVector Center; float Radius;
     C3DBoundingSphere() { }
     C3DBoundingSphere(const C3DVector& c, float r) : Center(c), Radius(r) { }

@@ -7,7 +7,7 @@ struct CBank {
     int id; bool lastForce; double lastTime;
     void ProcessLoading(bool force, double time) { lastForce = force; lastTime = time; g_order[g_calls++] = id; }
 };
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     CBank m_bankAt4FC; CBank m_bankAt808;
     void ProcessLoading(bool force, double time) { m_bankAt4FC.ProcessLoading(force, time); m_bankAt808.ProcessLoading(force, time); }
 };

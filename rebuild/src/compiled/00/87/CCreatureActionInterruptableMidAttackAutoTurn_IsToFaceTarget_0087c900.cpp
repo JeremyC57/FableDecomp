@@ -4,7 +4,7 @@
 // @ 0x004C7A10 (the player record for the thing's player index byte +0x90).
 // Shape: frameless; the byte is normalised with `test cl,cl ; setne al` and no `xor eax,eax` -- the `? true : false` bool
 // form on an unsigned char member (GOTCHAS). The player's +0x20a byte has no PDB name (CPlayer's layout is padding there).
-struct CPlayer {                            // engine/CPlayer.h exists but is not used: +0x20a is padding there
+class CPlayer { public:                            // engine/CPlayer.h exists but is not used: +0x20a is padding there
     unsigned char _pad[0x20a];
     unsigned char m_autoFaceTarget;         // +0x20a (name descriptive)
 };
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCreatureAction_InterruptableMidAttackAutoTurn {   // engine/CCreatureAction_InterruptableMidAttackAutoTurn.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
+class CCreatureAction_InterruptableMidAttackAutoTurn { public:   // engine/CCreatureAction_InterruptableMidAttackAutoTurn.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>

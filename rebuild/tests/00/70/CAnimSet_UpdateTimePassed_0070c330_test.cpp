@@ -35,17 +35,17 @@ struct C3DAnimationInfo_PDB {                      // test model of engine/C3DAn
     float NonLoopingDuration;
     unsigned char _pad18[0x28 - 0x18];
 };
-struct C3DAnimationInfo : C3DAnimationInfo_PDB {
+class C3DAnimationInfo : public C3DAnimationInfo_PDB { public:
     float GetNonLoopingDuration() const;           // 0x00A23CE0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DAnimationInfo* PeekAnimation(unsigned long index) const;   // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;                  // +0x3c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld* World;                                 // +0x24
 };

@@ -11,7 +11,7 @@
 //   : Default.end(); } *pp = it->second;` -- LowerBound needs its body in the TU (noinline) so VC sees the key unchanged.
 enum EAnimComponent { ANIM_COMPONENT_FLAGS = 0, ANIM_COMPONENT_TRANSITION_IN_TIME = 1 };
 
-struct CAnimComponentBase {                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
+class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1
     long IVRefCount;                                       // +0x04
@@ -23,7 +23,7 @@ public:
     static EAnimComponent StaticType() { return ANIM_COMPONENT_TRANSITION_IN_TIME; }
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
 };
 
@@ -34,7 +34,7 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-template <class K, class V> struct CVectorMap {            // retail: a 12-byte STLport vector + comparator/dirty bytes
+template <class K, class V> class CVectorMap { public:            // retail: a 12-byte STLport vector + comparator/dirty bytes
     typedef std::pair<K, V> value_type;
     value_type* m_first;                                   // +0x00
     value_type* m_last;                                    // +0x04
@@ -65,13 +65,13 @@ template <class K, class V> struct CVectorMap {            // retail: a 12-byte 
     }
 };
 
-struct CAnimComponentMap : CAnimComponentBase {            // vptr, count, Map at +8
+class CAnimComponentMap : public CAnimComponentBase { public:            // vptr, count, Map at +8
     CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > Map;   // +0x08
 };
 
 extern CAnimComponentMap g_DefaultAnimComponents;          // 0x013B8C30
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 

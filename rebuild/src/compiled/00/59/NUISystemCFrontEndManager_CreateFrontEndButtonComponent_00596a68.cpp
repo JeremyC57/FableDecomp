@@ -23,7 +23,7 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -47,7 +47,7 @@ class CWideString {
 public:
     void* PStringData;
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;
@@ -72,7 +72,7 @@ public:
 }
 namespace NUISystem {
 struct C2DVector { float X, Y; };
-struct CUIState {
+class CUIState { public:
     unsigned long StateChangeFlag;                      // +0x00
     long          StateChangeType;                      // +0x04
     C2DVector     Position;                             // +0x08

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CASoundBank { int id; };
+class CASoundBank { public: int id; };
 struct SEntry { long first; CASoundBank* second; };
 struct CBankMap {
     SEntry* _M_start; SEntry* _M_finish;

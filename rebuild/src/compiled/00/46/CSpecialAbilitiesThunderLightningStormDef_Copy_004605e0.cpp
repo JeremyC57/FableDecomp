@@ -5,7 +5,7 @@
 // into the real Copy implementation (relocation-masked in parity).
 // Modeled as a __fastcall accessor-style free function tail-calling the target.
 
-struct CSpecialAbilitiesThunderLightningStormDef;
+class CSpecialAbilitiesThunderLightningStormDef;
 
 // The real implementation the thunk jumps to (address relocation-masked).
 extern "C" void __fastcall CSpecialAbilitiesThunderLightningStormDef_Copy_impl(

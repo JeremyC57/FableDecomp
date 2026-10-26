@@ -12,7 +12,7 @@
 // Shape: memberwise copy; the CVectorMap's implicit copy constructor is inlined on its own `this` (ebx), so its data
 //   vector is copied out of line, its empty comparator costs nothing and Dirty is a byte move through cl.
 class CANavQuadTreeNode;
-struct C2DLineF { float X0, Y0, X1, Y1; };
+class C2DLineF { public: float X0, Y0, X1, Y1; };
 
 namespace std {
 template <class _Tp> class allocator {};

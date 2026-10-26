@@ -10,20 +10,20 @@
 // component is the uninitialised out-parameter GetTC (the absent branch reads the key slot); the candle position is a
 // frame C3DVector (user copy ctor); the pointer clear goes through a named null CIntelligentPointer.
 // Layout: Ego_r.pdb CAIStateGroup_LightHomeCandle (0x1c): PCandle +0x14; retail CCreatureAction_UseObject is 0xe0 bytes.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCBase;
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,7 +37,7 @@ struct CThing {
         *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CTCUserActionPointBase {                 // interface 0x2d
     long GetNumberOfActionPointsInUse();        // 0x007FEC10
     bool GetFreeActionPoint(CThingCreatureBase* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
@@ -49,24 +49,24 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);               // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[0xa4];
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     unsigned char _padA8[0x38];
     CCreatureAction_UseObject(CThingCreatureBase* creature, CThing* usedThing, bool allowTurn);   // 0x0069F230
     ~CCreatureAction_UseObject();               // 0x006290E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
@@ -77,7 +77,7 @@ struct CAIStateGroupBase {
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
-struct CAIStateGroup_LightHomeCandle : CAIStateGroupBase {
+class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
     CIntelligentPointer<CThing> PCandle;        // +0x14
     bool IsCandleInNeedOfChanging(CThing* candle);   // 0x00946730
     void Update();

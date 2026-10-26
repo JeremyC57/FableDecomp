@@ -2,7 +2,7 @@
 // Behaviour of CTCHeroStats::GetStartingMaxStamina (0x0057A939): reads MaxStaminaPointsPerMagicPowerLevel[0] through a counted copy of the
 // definition holder's def pointer; the copy's add-ref is undone, and the def is destroyed only by the last release.
 static int g_destroyed = 0;
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     long RefCount;
     long* MaxStaminaPointsPerMagicPowerLevel;
     void Destroy() { ++g_destroyed; }

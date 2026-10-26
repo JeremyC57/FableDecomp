@@ -1,6 +1,6 @@
 extern void __cdecl engine_operator_delete(void* p);
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void* vftable;
     void RealDtor();
     void* CPlayerManager_scalar_deleting_destructor(unsigned int flags);

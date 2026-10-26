@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct RequestMap {
     CThing* keys[4]; unsigned long m_count;
     unsigned long size() const { return m_count; }

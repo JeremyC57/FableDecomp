@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesBerserkDef { int vt; };
+class CSpecialAbilitiesBerserkDef { public: int vt; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

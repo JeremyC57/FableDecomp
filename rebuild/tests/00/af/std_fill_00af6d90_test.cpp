@@ -14,7 +14,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                    // +0x00
     SCountBlock* Info;                          // +0x04
     CCountedPointer& operator=(const CCountedPointer& other)
@@ -38,13 +38,13 @@ struct CCountedPointer {
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass() {}
 };
 namespace NParticleEngine {
 enum EPSCType { PSC_NONE };
 class CPSCBase;
-struct CComponentInstance : CBaseClass {        // 20 bytes
+class CComponentInstance : public CBaseClass { public:        // 20 bytes
     CCountedPointer<CPSCBase> Component;        // +0x04
     bool                      Enabled;          // +0x0C
     unsigned long             InstanceName;     // +0x10

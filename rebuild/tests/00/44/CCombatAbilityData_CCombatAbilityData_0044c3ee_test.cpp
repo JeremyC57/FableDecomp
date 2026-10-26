@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stddef.h>
 #include <new>
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
 struct CCombatAbilityData_Retail {
     virtual void v00() { }
     long PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; CDefString Anim; long InterfaceType;

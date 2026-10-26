@@ -4,7 +4,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-struct CVersion {
+class CVersion { public:
     unsigned char m_major; unsigned char m_minor; long m_build; long m_revision;
     CVersion(unsigned char minor, unsigned char major, long build, long revision)
         : m_major(major), m_minor(minor), m_build(build), m_revision(revision) { }

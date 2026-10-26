@@ -22,9 +22,9 @@ static int fails = 0;
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -36,12 +36,12 @@ struct CThingPos {
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingPos* PCreature;                       // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

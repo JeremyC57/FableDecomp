@@ -4,7 +4,7 @@
 // Behaviour test for 0046381b: CStringParser on the retail layout (comment list = head pointer, cursor = InQuotes,
 // StringPos, Line), with recording stand-ins for the out-of-line callees.
 static char g_emptyLiteral[1] = { 0 };
-struct CCharStringData { char* PData; unsigned long Length; };
+class CCharStringData { public: char* PData; unsigned long Length; };
 static int g_stringCopies = 0;
 class CCharString {
 public:
@@ -32,7 +32,7 @@ struct CCursorPos {
     unsigned long StringPos;
     unsigned long Line;
 };
-struct CParsedItem { long Type; long Value; };
+class CParsedItem { public: long Type; long Value; };
 typedef void (*TStringParserErrorCallback)(CCharString* message);
 class CBase { public: CBase() {} virtual ~CBase() {} };
 static void ErrorSink(CCharString* message) { (void)message; }

@@ -1,18 +1,18 @@
 // behaviour test for 005d9730: CTCInventoryItem::GetStartingRightHandedSet(long) -- a cached def maps its Orientation
 // through GetRHSetFromOrientation; a failed cache returns the default set unchanged
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
 static const CRightHandedSet g_DefaultRHSet(C3DVector(0, 0, 1), C3DVector(0, 1, 0));
-struct CInventoryItemDef { int Orientation; };
+class CInventoryItemDef { public: int Orientation; };
 static CInventoryItemDef g_defs[3];
 static const CInventoryItemDef* s_CachedItemDef = 0;
 static int g_mapped = -1;

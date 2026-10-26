@@ -12,7 +12,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
     float Magnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }

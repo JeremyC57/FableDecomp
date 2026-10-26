@@ -4,7 +4,7 @@
 static int g_frame, g_doneAt, g_spawned; static long g_lastBoast; static const char* g_lastQuest;
 struct Boast { long first; const char* second; };
 struct BoastVector { Boast items[4]; unsigned int count; unsigned int size() const { return count; } Boast& operator[](unsigned int i) { return items[i]; } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     void MsgOnBoastsMade(BoastVector& v) const
     {

@@ -9,7 +9,7 @@
 // Name: the class is NInventory::CTCInventoryBase (RTTI vtable 0x01253DBC .?AVCTCInventoryBase@NInventory@@, slot 6);
 // Ego_r.exe ?OnInitialActivate@CTCInventoryBase@NInventory@@UAEXXZ 0x0062011E is 74 bytes / 35 instructions like retail.
 #pragma optimize("s", on)
-struct CQuestManager {
+class CQuestManager { public:
     bool IsBetweenQuestStartAndFinishScreens();  // 0x004AF290
 };
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC

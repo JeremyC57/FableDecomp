@@ -12,7 +12,7 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }

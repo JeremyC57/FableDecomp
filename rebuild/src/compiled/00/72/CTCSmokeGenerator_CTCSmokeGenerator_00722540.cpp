@@ -7,9 +7,9 @@
 // CTCSmokeGenerator (rtti-vtables.tsv).
 // Shape: the distance (an init-list member) is stored before the vtable; the vector is a member object with an inline
 // constructor and so is stored after it.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -26,7 +26,7 @@ struct CGenerationPosVector {                               // retail std::vecto
     CGenerationPosVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CTCSmokeGenerator : CTCBase {
+class CTCSmokeGenerator : public CTCBase { public:
     float                GenerationDistance;                // +0x0c
     CGenerationPosVector GenerationPositions;               // +0x10
     bool                 PositionsCreated;                  // +0x1c

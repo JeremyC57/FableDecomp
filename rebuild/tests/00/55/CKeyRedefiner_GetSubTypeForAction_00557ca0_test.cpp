@@ -5,7 +5,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
 static long g_next38 = 100, g_next37 = 200;
-struct CActionInputControl { long GameAction; long direction; long GetDirection() const { return direction; } };
+class CActionInputControl { public: long GameAction; long direction; long GetDirection() const { return direction; } };
 static long GetSubTypeForAction(const CActionInputControl& c)
 {
     switch (c.GameAction) {

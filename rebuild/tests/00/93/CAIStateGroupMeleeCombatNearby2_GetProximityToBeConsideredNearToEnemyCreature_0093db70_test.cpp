@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cmath>
 struct CCreatureDefModel { unsigned char _pad[0x34]; float m_radius; };
-struct CThingCreatureBase { unsigned char _pad[0x60]; CCreatureDefModel* m_pDef; };
-struct CCombatManager { bool valid; bool CCombatWheel_ValidateSequencePosition(CThingCreatureBase*) { return valid; } float Combat_ProximityCalculation(CThingCreatureBase*) { return 7.5f; } };
-struct CWorld { unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; CCombatManager* GetPCombatManager() { return m_pCombatManager; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
+class CThingCreatureBase { public: unsigned char _pad[0x60]; CCreatureDefModel* m_pDef; };
+class CCombatManager { public: bool valid; bool CCombatWheel_ValidateSequencePosition(CThingCreatureBase*) { return valid; } float Combat_ProximityCalculation(CThingCreatureBase*) { return 7.5f; } };
+class CWorld { public: unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; CCombatManager* GetPCombatManager() { return m_pCombatManager; } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroupBase { unsigned char PEnemy[8]; bool Archer; float GetProximityToBeConsideredNearToEnemyCreature(); };
 float CAIStateGroup_MeleeCombatNearby2::GetProximityToBeConsideredNearToEnemyCreature()
 {

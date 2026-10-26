@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DAnimationBlendState;
+class C3DAnimationBlendState;
 
 static int g_baseCalled = 0;
 
@@ -8,7 +8,7 @@ struct CAnimateThingBase {
     void BaseGetPMeshAnims() { g_baseCalled = 1; }
 };
 
-struct CAnimateThing : public CAnimateThingBase {
+class CAnimateThing : public CAnimateThingBase { public:
     char pad[0x68];
     char more[0x20];
     void GetPMeshAnims(C3DAnimationBlendState** outA, C3DAnimationBlendState** outB);

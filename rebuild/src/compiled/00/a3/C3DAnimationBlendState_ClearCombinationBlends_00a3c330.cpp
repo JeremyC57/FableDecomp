@@ -26,7 +26,7 @@ struct CSharedData {                                // C3DAnimationBlendState::C
     unsigned char      _pad18[8];                   // +0x18
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                              // +0x04 CIVCountedPointer<CSharedData>
     void MakeOwnCopyOfData();                       // 0x00A3C1A0

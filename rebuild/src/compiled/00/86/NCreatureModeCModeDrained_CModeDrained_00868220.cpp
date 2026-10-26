@@ -10,16 +10,16 @@
 // CThing: interface bitset +0x20 (type 0x31 = CTCCreatureModeManager, bit 17 of the second word), interface map +0x44.
 // Shape: the inline out-parameter GetInterface (the not-found arm leaves the out pointer untouched, so retail
 // reads the shared key/out frame slot); the mode type comes from a virtual call on GetCurrentMode().
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -31,7 +31,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -78,7 +78,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();
@@ -86,7 +86,7 @@ struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c
     CModeStandBase(CThing* thing);         // 0x00861E00
 };
 
-template <class T> struct CDefPointer {    // 4 bytes: the def object (add-ref'd by its owner)
+template <class T> class CDefPointer { public:    // 4 bytes: the def object (add-ref'd by its owner)
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -100,7 +100,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -124,7 +124,7 @@ struct CModeBase {
     virtual unsigned long GetModeType();   // slot 1
 };
 
-struct CTCCreatureModeManager {            // interface type 0x31
+class CTCCreatureModeManager { public:            // interface type 0x31
     CModeBase* GetCurrentMode();           // 0x0073A6E0
 };
 

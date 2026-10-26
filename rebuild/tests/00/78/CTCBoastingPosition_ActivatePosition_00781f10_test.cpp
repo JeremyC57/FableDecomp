@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
 struct CTCBaseInterface;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBaseInterface* component; };
@@ -38,7 +38,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { T* item = other.GetPItem(); SetPItem(item); return *this; }
 };

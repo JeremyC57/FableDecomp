@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -28,9 +28,9 @@ struct CThing {
 };
 
 static int g_tutorials = 0; static long g_tutCategory = -1; static bool g_tutForce = true; static void* g_tutThis = 0;
-struct CTCHero { bool GiveTutorialForCategory(long category, bool force) { ++g_tutorials; g_tutCategory = category; g_tutForce = force; g_tutThis = this; return true; } };
+class CTCHero { public: bool GiveTutorialForCategory(long category, bool force) { ++g_tutorials; g_tutCategory = category; g_tutForce = force; g_tutThis = this; return true; } };
 struct SListNode { SListNode* next; SListNode* prev; };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x68];
     SListNode* m_boasts;
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { ++g_getPItem; return (CThing*)m_pItem; }
 };
 static int g_enterState = 0; static long g_state = -1;
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00() {}
     CThing* ParentThing;
     unsigned char _pad08[0x24 - 0x08];

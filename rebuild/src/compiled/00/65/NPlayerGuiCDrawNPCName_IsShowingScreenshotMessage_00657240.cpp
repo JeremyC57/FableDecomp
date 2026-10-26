@@ -7,14 +7,14 @@
 // `<`; the results are `mov al,1` / `xor al,al` with a shared `pop esi ; pop ecx` epilogue.
 #include <math.h>
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     long GetFrame();                               // 0x004167C8
 };
 extern CDisplayEngine* g_pDisplayEngine_013b86a0;  // 0x013B86A0
 
 namespace NPlayerGui {
 
-struct CDrawNPCName {
+class CDrawNPCName { public:
     unsigned char _pad[0x28];                      // CDrawBase, Name (CWideString at +0x28 in retail)
     void*         Name;                            // +0x28 CWideString
     long          ScreenShotMessageCounter;        // +0x2c

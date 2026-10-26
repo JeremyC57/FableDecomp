@@ -17,29 +17,29 @@ static int fails = 0;
 // call (`World->PeekWorldMap()->GetLevelScriptName(message.ExtraData)`); the name list has no size word (push_back links before the head).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad00[0x3c];
     long          ExtraData;                    // +0x3c
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF180
 };
-template<class F1, class F2> struct CFilter_Bind2 {
+template<class F1, class F2> class CFilter_Bind2 { public:
     F1* PF1;
     F2* PF2;
     bool operator()(const CMessageEvent& message) const { return (*PF1)(message) && (*PF2)(message); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     const CCharString& GetLevelScriptName(long level) const;   // 0x004FCFC0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
@@ -82,7 +82,7 @@ struct CGameScriptInterface_MsgOnLevelLoaded_Callback {
     CList<CCharString>* LevelNames;
     void operator()(const CMessageEvent& message) { LevelNames->push_back(World->PeekWorldMap()->GetLevelScriptName(message.ExtraData)); }
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CWorld*              World;                 // +0x00
     CList<CMessageEvent> Messages;              // +0x04
     template<class Filter, class Callback> long ForEachMessage(const Filter& filter, Callback& callback);

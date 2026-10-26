@@ -1,14 +1,14 @@
 #include <cstdio>
 
-struct CTCBoss { long phase; long GetCurrentPhase() const { return phase; } };
-struct CKrakenDef { long id; };
-struct CTCTargeted { bool Targetable; };
-struct CThing {
+class CTCBoss { public: long phase; long GetCurrentPhase() const { return phase; } };
+class CKrakenDef { public: long id; };
+class CTCTargeted { public: bool Targetable; };
+class CThing { public:
     CTCBoss* boss; CKrakenDef* def; CTCTargeted targeted; bool LeaveExperienceOrbsOverride;
     void GetInterface(CTCBoss** out, long type) { if (type == 0xad) *out = boss; }
     void GetSubDef(CKrakenDef** out) { *out = def; }
 };
-struct CTCKraken {
+class CTCKraken { public:
     CThing* ParentThing; CTCBoss* PTCBoss; CKrakenDef* PKrakenDef; int explosions; int attackIt; int headIt;
     long KillBeamCounter; bool TentacleReadyToStrike, ReturnHeadToWater; long phaseSet; int markers;
     void GetCentreMarker() { ++markers; }

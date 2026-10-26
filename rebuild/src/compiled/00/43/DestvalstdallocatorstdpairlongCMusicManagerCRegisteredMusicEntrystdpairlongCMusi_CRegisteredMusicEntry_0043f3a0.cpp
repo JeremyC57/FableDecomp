@@ -2,11 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0043F3A0, 19 bytes. Catalog name: std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>.
 // Body: destroy the member at +0x10 (CCharString::~CCharString @ 0x0099EAE0), then tail-call
 // the +0x0 member CWideString::~CWideString @ 0x0099B510. __thiscall, this = ecx.
-struct CWideString {                        // one word: CWideStringData*
+class CWideString { public:                        // one word: CWideStringData*
     void* PStringData;
     ~CWideString();                         // 0x0099B510 (NoRefs at data+0xc, free(), instance count 0x013BCA20)
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

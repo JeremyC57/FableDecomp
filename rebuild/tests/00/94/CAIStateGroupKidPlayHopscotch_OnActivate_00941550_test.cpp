@@ -1,14 +1,14 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing { C3DVector pos; C3DVector* GetPosition() { return &pos; } };
-struct CMessageEvent;
-struct CMessageEventManager { long type; unsigned long dist; C3DVector* pos; CThing* src; CThing* extra; float a, b; long c; int n;
+class C3DVector { public: float x, y, z; };
+class CThing { public: C3DVector pos; C3DVector* GetPosition() { return &pos; } };
+class CMessageEvent;
+class CMessageEventManager { public: long type; unsigned long dist; C3DVector* pos; CThing* src; CThing* extra; float a, b; long c; int n;
     CMessageEvent* AddMessage(long t, unsigned long d, C3DVector* p, CThing* s, CThing* e, float fa, float fb, long lc) { type = t; dist = d; pos = p; src = s; extra = e; a = fa; b = fb; c = lc; ++n; return 0; } };
-struct CWorld { unsigned char _pad[0x60]; CMessageEventManager* m_pMessageManager; };
+class CWorld { public: unsigned char _pad[0x60]; CMessageEventManager* m_pMessageManager; };
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer { void* __vftable; CThing* m_pItem; CThing* GetPItem() { return m_pItem; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
-struct CAIStateGroupBase { void* __vftable; CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* Creature; };
+class CAIStateGroupBase { public: void* __vftable; CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { return w; } };
 struct CAIStateGroup_KidPlayHopscotch : CAIStateGroupBase { bool m_initiated; CBaseIntelligentPointer m_pMarker; unsigned char _pad1d[0x43]; long m_gamesStarted; void OnActivate(); };
 #pragma pack(pop)
 void CAIStateGroup_KidPlayHopscotch::OnActivate()

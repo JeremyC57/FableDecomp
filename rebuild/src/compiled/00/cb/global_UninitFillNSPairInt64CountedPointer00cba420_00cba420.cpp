@@ -13,7 +13,7 @@
 // present). The only caller is the manifest's CVectorMap_EntryScriptBase::AllocateGrowth (0x00CBC850).
 #include <new>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 

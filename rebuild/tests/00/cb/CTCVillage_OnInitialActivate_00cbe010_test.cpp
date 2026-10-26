@@ -8,7 +8,7 @@ static void notify(Sub* s, int arg, unsigned char flag) {
     s->lastFlag = flag;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub*          field0;
     int           ParentThing;
     char          pad8[4];

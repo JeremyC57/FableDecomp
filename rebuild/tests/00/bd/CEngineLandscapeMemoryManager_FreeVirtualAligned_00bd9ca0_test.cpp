@@ -1,6 +1,6 @@
 #include <cstdio>
 // Test copy of the 0x00BD9CA0 model: FreeVirtualAligned steps back by the offset AllocVirtualAligned stored before the block.
-struct CEngineLandscapeMemoryManager {           // stand-in for the engine layout (the method reads no member)
+class CEngineLandscapeMemoryManager { public:           // stand-in for the engine layout (the method reads no member)
     void* __vftable;
     long  AllocationCount;
 };

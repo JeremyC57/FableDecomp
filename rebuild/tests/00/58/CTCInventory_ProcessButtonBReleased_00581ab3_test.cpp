@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour of 0x00581AB3 (chunk 901 piece): mode 0 -> slot 32, mode 1 -> slot 46(0), nothing when a suppress flag is set
 static int g_s32 = 0, g_s46 = 0; static long g_arg = -1;
-struct CTCInventory {
+class CTCInventory { public:
     virtual long v00() { return 0; }
     virtual long v01() { return 1; }
     virtual long v02() { return 2; }

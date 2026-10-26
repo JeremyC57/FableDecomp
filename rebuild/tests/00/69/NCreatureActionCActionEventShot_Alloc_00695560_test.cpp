@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for NCreatureAction::CActionEventShot::Alloc (retail 0x00695560): the clone factory builds a fresh event with
 // the given activation frame, thing and camera manager, Finished cleared.
-struct CThingCreatureBase { int id; };
-struct CGameCameraManager { int id; };
+class CThingCreatureBase { public: int id; };
+class CGameCameraManager { public: int id; };
 struct CBase {
     int baseBuilt;
     CBase() : baseBuilt(1) { }

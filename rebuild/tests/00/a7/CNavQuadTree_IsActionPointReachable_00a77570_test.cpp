@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CNavQuadTree::IsActionPointReachable (0x00A77570): a missing leaf is unreachable, an unblocked leaf is
 // reachable, and a blocked leaf is reachable only when an unblocked leaf sits on the ring a quarter unit outside its square.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CNavigationPoint { C2DVector Position; int Layer; };
 struct CNavLeaf { C2DVector Centre; unsigned char Level; bool Blocked; };
 static const float g_navNodeSizes[4] = { 1.0f, 2.0f, 4.0f, 8.0f };
-struct CNavQuadTree {
+class CNavQuadTree { public:
     CNavLeaf home;      // the node at the point
     CNavLeaf open;      // returned for probes inside the open box
     int mode;           // 0: no node, 1: home only, 2: home plus an open box

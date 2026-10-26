@@ -9,9 +9,9 @@
 // (0x3F800000, 0, 1) scheduled after the vtable store and before the first pointer constructor.
 // Local model: no engine header exists for CTCHeroCentreDoorMarker; engine/CTCBase.h is a flattened POD (vptr as a data
 // member), so the polymorphic CTCBase is modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08

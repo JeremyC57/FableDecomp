@@ -3,7 +3,7 @@
 // Reconstruction of CTCInventoryItem::OnDie @ 0x004e0b7d
 typedef unsigned long DWORD;
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     DWORD vtbl;      // +0x00
     char pad[0x30];  // +0x04 .. +0x33
     void* p34;       // +0x34

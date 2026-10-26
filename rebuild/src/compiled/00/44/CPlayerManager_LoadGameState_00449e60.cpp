@@ -12,7 +12,7 @@
 // Shape: the main-player lookup is GetPlayer's body (count cached before the loop) as a __forceinline helper (chunk 225 precedent: the expanded
 // sites through an inline helper, the rest through the out-of-line function); the found case leaves the loop for an
 // out-of-band `mov ecx,[edi+ecx*4] ; jmp` block; the UID default is a zero __int64 temporary.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -22,18 +22,18 @@ struct CPlayerSave {                                   // Ego_r.pdb (16 bytes)
     unsigned __int64 CharacterUID;                     // +0x00
     CCharString      RegionName;                       // +0x08
 };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
     void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);             // 0x004109A0
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x28];
     long          PlayerID;                            // +0x28
     void UninitCharacter();                            // 0x00487BD0
     bool InitCharacterFromSave(CPlayerSave* save);     // 0x00487EF0
     long GetJoystickDeviceNumber() const;                      // 0x00487510
 };
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     static CGameJoystickManager* __fastcall Get();     // 0x0049BB90
     void SetMainPlayerJoystickDeviceNumber(long device);   // 0x0049BB30
 };
@@ -46,7 +46,7 @@ template <class T> struct vector {                     // STLport vector (12 byt
     T& operator[](long n) { return *(_M_start + n); }
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*            __vftable;                        // +0x00
     void*            Component;                        // +0x04
     void*            DefinitionManager;                // +0x08

@@ -13,14 +13,14 @@ enum EScriptAIPriority { P0 };
 enum EScriptEntityMoveType { MT0 };
 static float g_pos = 0.0f;
 static int g_taskEnds = 0;
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name; float X;
     CScriptThing(const char* n = "", float x = 0.0f) : Name(n), X(x) { }
 };
 struct CQ_BreakSiegeScript { bool BanditLeaderFree, StartSecondWave, HeroLetInTown; };
 static CQ_BreakSiegeScript g_parent;
 static int g_letInAt = 2, g_waveAt = 4;
-struct CScriptDef { float BanditAttackerBreakOffRange; };
+class CScriptDef { public: float BanditAttackerBreakOffRange; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 static bool IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float d) { (void)a; return std::fabs(g_pos - b.X) > d; }
@@ -33,7 +33,7 @@ struct CScripted {
     { char x[64]; std::sprintf(x, "move %s %g %d%d%d%d%d", t.Name, d, (int)m, (int)a, (int)b, (int)c, (int)e); Log(x); g_pos += 4.0f; g_taskEnds = g_frame + 2; }
     bool IsPerformingScriptTask() const { return g_frame < g_taskEnds; }
 };
-struct CGame {
+class CGame { public:
     void NewScriptFrame() const { ++g_frame; if (g_frame >= g_letInAt) g_parent.HeroLetInTown = true; if (g_frame >= g_waveAt) g_parent.StartSecondWave = true; }
     bool StartScriptingEntity(const CScriptThing& t, CScripted& h, EScriptAIPriority p)
     { char x[64]; std::sprintf(x, "start %s %d", t.Name, (int)p); Log(x); h.Scripting = true; return true; }

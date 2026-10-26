@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int n);
 };
@@ -13,7 +13,7 @@ CCharString::CCharString(const char* s, int n) {
     (void)n;
 }
 
-struct C3DMeshFileTrianglesChunk {
+class C3DMeshFileTrianglesChunk { public:
     void* vptr;
     virtual CCharString GetChunkDescription() const;
 };

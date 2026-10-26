@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int m_id; };
+class CThing { public: int m_id; };
 struct CBaseIntelligentPointer { CThing* m_pItem; long m_handle; CThing* GetPItem() const { return m_pItem; } };
 template <class V> struct CList {
     struct node { node* next; node* prev; V value; };
@@ -12,7 +12,7 @@ static CBaseIntelligentPointer P(CThing* t) { CBaseIntelligentPointer p; p.m_pIt
 struct CUndeadFollower { long m_value; CBaseIntelligentPointer PThing; };
 typedef CList<CUndeadFollower> CUndeadFollowerList;
 static CUndeadFollower U(long v, CThing* t) { CUndeadFollower u; u.m_value = v; u.PThing = P(t); return u; }
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     bool AbilityMutexLock; bool UsingBed; long CurrentAbility; CUndeadFollowerList UndeadFollowers;
     bool IsUndeadFollower(const CThing* thing) const
     {

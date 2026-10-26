@@ -16,9 +16,9 @@
 // CIntelligentPointer) +0x39; CThing UID (64-bit) at +0x18.
 // Shape: a frame-pointer size TU; the list walk re-reads the header for the end test, the match is a nested `if` chain
 // with a 64-bit UID equality, returning the element ID straight from the loop; the creation is AddBar's.
-struct CCharString { char* m_pData; };
-struct CRGBColour { unsigned char R, G, B, A; };
-struct CThingPhysical {
+class CCharString { public: char* m_pData; };
+class CRGBColour { public: unsigned char R, G, B, A; };
+class CThingPhysical { public:
     unsigned char _pad[0x18];
     unsigned __int64 UID;                          // +0x18
 };
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CThingPhysical* m_pItem;
     CThingPhysical* GetPItem() const;              // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x00655D04
 
 namespace NPlayerGui {
@@ -69,7 +69,7 @@ struct SElementNode {
     SElementNode* Prev;                            // +0x04
     CCountedPointer<CQuestInfoElement> Data;       // +0x08
 };
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char _pad[0x58];
     SElementNode* Elements;                        // +0x58 STLport list header
     long GetScriptSpriteBySymbol(const CCharString& symbol);           // 0x0064A37B

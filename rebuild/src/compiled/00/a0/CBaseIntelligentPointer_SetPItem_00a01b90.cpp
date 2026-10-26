@@ -10,7 +10,7 @@
 // through the re-read member and published back into the object.
 struct CBaseObjectPointer;
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     CBaseObjectPointer* IntelligentPointer;        // +0x04
 };

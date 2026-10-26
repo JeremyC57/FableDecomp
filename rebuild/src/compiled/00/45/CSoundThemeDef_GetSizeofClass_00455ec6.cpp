@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSoundThemeDef { char pad[0x64]; };
+class CSoundThemeDef { public: char pad[0x64]; };
 
 unsigned long __fastcall CSoundThemeDef_GetSizeofClass(const CSoundThemeDef* self)
 {

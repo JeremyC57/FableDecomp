@@ -12,15 +12,15 @@ struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteLong(long value);                             // 0x00993EB0
 };
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }
     ~CCountedPointer();                                     // 0x005C04BF
 };
 namespace NInventory {
-struct CPerItemData;
-struct CItem {
+class CPerItemData;
+class CItem { public:
     long ItemType;
     long NumberOfItems;
     CCountedPointer<CPerItemData> PPerItemData;

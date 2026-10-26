@@ -4,9 +4,9 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -24,7 +24,7 @@ struct CRetailVector_RouteNode {
     SRouteNode* _Myfirst; SRouteNode* _Mylast; SRouteNode* _Myend;
     CRetailVector_RouteNode() : _Myfirst(0), _Mylast(0), _Myend(0) { }
 };
-struct CTCPreCalculatedNavigationRoute : CTCBase {
+class CTCPreCalculatedNavigationRoute : public CTCBase { public:
     CIntelligentPointer     PThingToCalculateRouteTo;
     u64                     ThingToCalculateRouteToUID;
     CRetailVector_RouteNode Route;

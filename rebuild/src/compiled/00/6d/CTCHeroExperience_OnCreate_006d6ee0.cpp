@@ -27,7 +27,7 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -48,9 +48,9 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CHeroExperienceDef : CDefObject {};
-struct CHeroCombatDef : CDefObject {};
-struct CDefClassBase : CDefObject {
+class CHeroExperienceDef : public CDefObject { public:};
+class CHeroCombatDef : public CDefObject { public:};
+class CDefClassBase : public CDefObject { public:
     bool GetSubDef(CDefPointer<CHeroExperienceDef>* out);  // 0x006DAA90
 };
 class CThing {

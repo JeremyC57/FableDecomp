@@ -11,8 +11,8 @@
 // _Vector_base + alloc-proxy model (it places the `add esp,0Ch` before the last zero store).
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -44,8 +44,8 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes): _V
     SRetailAllocProxy<T> _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CEnginePrimitiveHandle;
-struct CTCOverheadDisplay : CTCBase {
+class CEnginePrimitiveHandle;
+class CTCOverheadDisplay : public CTCBase { public:
     CRetailList_node0x10 DamageValues;          // +0x0c
     CRetailList_node0x10 RepairValues;          // +0x10
     CRetailList_node0x10 RenownValues;          // +0x14

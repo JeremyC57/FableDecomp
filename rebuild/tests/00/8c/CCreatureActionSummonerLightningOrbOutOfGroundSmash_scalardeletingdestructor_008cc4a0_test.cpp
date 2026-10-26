@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SummonerLightningOrbOutOfGroundSmash {
+class CCreatureAction_SummonerLightningOrbOutOfGroundSmash { public:
     void* vftable;
     int destroyed;
 };

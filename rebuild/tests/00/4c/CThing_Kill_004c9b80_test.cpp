@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_log[16]; static int g_n = 0;
-struct CThing {
+class CThing { public:
     bool Dead, Dying, KillLocked, DeathPersistent, canKillNow, createOk;
     bool OnCreate() { g_log[g_n++] = 8; return createOk; }
     void InitialActivate() { g_log[g_n++] = 9; }

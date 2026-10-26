@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CThingPhysical::ValidateInitialisation (0x006A4D60).
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase { C3DVector Position; };
-struct CWorldMap {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public: C3DVector Position; };
+class CWorldMap { public:
     float size; int calls;
     bool IsPosInMap(const C3DVector& p) { ++calls; return p.X >= 0 && p.Y >= 0 && p.X < size && p.Y < size; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     bool positioned; CTCPhysicsBase* PhysicsTC; CWorldMap* map;
     bool IsPositionedThing() { return positioned; }
     CWorldMap* GetWorldMap() { return map; }

@@ -7,8 +7,8 @@
 // Shape: the 0x68 / 0x46 lookups are const (LowerBound 0x004365B0), the 0x8C one non-const (0x0040F020); the stats def is
 //   returned by value; the ability def pointer is declared before the single `stats && GetSubDef` test (that order gives
 //   retail's slots and the zero register); CDefPointer's destructor nulls the pointer after the release.
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -20,7 +20,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef() const;                  // slot 1
     void Release() const
@@ -30,7 +30,7 @@ struct CDefPointeeBase {
     }
     mutable long m_refCount;                          // +4
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -42,20 +42,20 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CTCHeroExperience;
+class CTCHeroExperience;
 struct CAbilityTable {
     float GetAbilityMultiplier(const CTCHeroExperience* experience) const;   // 0x00851BD0
 };
-struct CHeroStatsDef : CDefPointeeBase {
+class CHeroStatsDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x9c - 8];
     CAbilityTable Abilities;                          // +0x9c
 };
-struct CAbilityDef : CDefPointeeBase {
+class CAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xbc - 8];
     float MaxMultiplier;                              // +0xbc
     float MinMultiplier;                              // +0xc0
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long m_refCount;                                  // +0x04
@@ -67,7 +67,7 @@ struct CDefClassReference {                           // a counted CDefClassBase
     ~CDefClassReference() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     CDefClassBase* operator->() const { return m_p; }
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 class CThing {
 public:
     unsigned char  _pad00[0x20];
@@ -104,7 +104,7 @@ public:
         return false;
     }
 };
-struct CTCCarrying {                                  // interface 0x46
+class CTCCarrying { public:                                  // interface 0x46
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 struct CHasteMultiplier {                             // std::pair<void* const, float>
@@ -117,7 +117,7 @@ struct CHasteMap {                                    // map<void*, float>
     struct pairib { iterator first; bool second; };
     pairib insert(const CHasteMultiplier& value);     // 0x00580D21
 };
-struct CTCHaste {                                     // interface 0x8C
+class CTCHaste { public:                                     // interface 0x8C
     unsigned char _pad00[0x18];
     CHasteMap Multipliers;                            // +0x18
     void RecalculateSpeed();                          // 0x00800020
@@ -127,7 +127,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -135,7 +135,7 @@ struct CCreatureActionBase {                          // retail sizeof 0xa8
     void Initialise();                                // 0x00694D10
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase {
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CBaseIntelligentPointer PRangedWeapon;            // +0xa8
     CBaseIntelligentPointer PAmmo;                    // +0xb0
     void Initialise();

@@ -12,14 +12,14 @@
 // Shape (stand-ins): CDefClassBase::GetSubDef<CTrophyDef> (a template instantiation, out of line in retail) has a same-TU
 //   stand-in body that writes the out slot only, and the CVectorMap LowerBound (const) instantiation has its same-TU
 //   binary-search body; with both visible VC7.1 keeps the running value in ebp and releases the out def with one load.
-struct CTCBase;
-struct CBaseObject;
-struct CDefPointeeBase {
+class CTCBase;
+class CBaseObject;
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
@@ -30,11 +30,11 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CTrophyDef : CDefPointeeBase {
+class CTrophyDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long          Value;                                // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CTrophyDef>* out);       // 0x0059350C
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -55,8 +55,8 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                               // +0x04
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-struct CThing;
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 struct CInterfaceMap {
@@ -93,7 +93,7 @@ struct CTCThingList_0x21 {
     unsigned char _pad_0x00[0xc];
     SThingNode*   m_head;                               // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char              _pad0[0x20];
     unsigned long              m_presentBits[9];        // +0x20
     CInterfaceMap              m_interfaces;            // +0x44
@@ -124,7 +124,7 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCWallMount {
+class CTCWallMount { public:
     CThing* GetMountedThing() const;                    // 0x007DE4F0
 };
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)

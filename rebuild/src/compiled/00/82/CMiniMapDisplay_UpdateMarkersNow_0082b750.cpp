@@ -21,7 +21,7 @@ struct CMarkerList_0082c6e0 {
     void remove_if(CIsMarkerBoundToThing pred);    // 0x0082C6E0
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     unsigned char        _pad[0x20];
     CMarkerList_0082c6e0 Markers;                  // +0x20
     unsigned char        _pad24[0x98];

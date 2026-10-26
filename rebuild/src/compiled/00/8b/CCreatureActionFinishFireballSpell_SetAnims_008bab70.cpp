@@ -8,9 +8,9 @@
 //   bit 0x9d is tested in memory (`test dword ptr [eax+30h],20000000h`); the returned string temporary lands in the
 //   same `push ecx` frame word as the lookup key, is passed by reference and destroyed after the setter.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; FinishFireballSpell adds nothing used here.
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
@@ -22,7 +22,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -47,11 +47,11 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCFireballSpell {                   // interface type 0x9d component
+class CTCFireballSpell { public:                   // interface type 0x9d component
     CCharString GetReleaseAnimName();       // 0x007C86F0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -59,7 +59,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_FinishFireballSpell : CCombatActionBase {
+class CCreatureAction_FinishFireballSpell : public CCombatActionBase { public:
     void SetAnims();
 };
 

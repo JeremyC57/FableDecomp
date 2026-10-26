@@ -44,7 +44,7 @@ struct CWorld_Retail {
     virtual void v00() {} virtual void v01() {} virtual void v02() {}
     virtual CThingManager_Retail* GetThingManager() { return &manager; }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void*            __vftable;
     CWorld_Retail*   World;
     unsigned char    _pad008[0x2a8 - 0x008];

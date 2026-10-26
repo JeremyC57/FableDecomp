@@ -16,11 +16,11 @@ struct IDirect3DVertexBuffer {
     virtual long __stdcall Lock(unsigned long offset, unsigned long size, void** data, unsigned long flags) { g_offset = offset; g_size = size; g_flags = flags; if (*data != 0) return -1; *data = &g_mapped; return 0; }
 };
 struct CRenderManagerCore { void VertexBufferLocked(IDirect3DVertexBuffer* b, float w) { ++g_notified; g_notifiedBuffer = b; g_weight = w; } };
-struct CDisplayManager { void* __vftable; void* SystemManager; CRenderManagerCore* PRenderManager; };
-struct CSystemManager { unsigned char _pad00[0x60]; CDisplayManager* PDisplayManager; void* PDisplayManagerCount; };
+class CDisplayManager { public: void* __vftable; void* SystemManager; CRenderManagerCore* PRenderManager; };
+class CSystemManager { public: unsigned char _pad00[0x60]; CDisplayManager* PDisplayManager; void* PDisplayManagerCount; };
 static CSystemManager g_system; static CDisplayManager g_display; static CRenderManagerCore g_core;
 CSystemManager* __fastcall GFGetSystemManager() { return &g_system; }
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     virtual void v00() { }
     IDirect3DVertexBuffer* m_pBuffer; unsigned long m_size;
     void* DoLock(unsigned long flags, unsigned long offset, unsigned long size)

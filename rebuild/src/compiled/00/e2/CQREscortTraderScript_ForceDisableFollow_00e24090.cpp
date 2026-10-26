@@ -7,11 +7,11 @@
 // Layout: Ego_r.pdb CQR_EscortTraderScript - 0x14: ExpressionDetectedFollow +0x70, TraderExpressionDetectTimer +0x7c.
 // Shape: straight-line; the last call's first argument is `GSI->GetHero()`, evaluated after the pushes of the
 // other two, both calls sharing one vtable load (ebx).
-struct CScriptThing;
-struct CTimer {
+class CScriptThing;
+class CTimer { public:
     long Index;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -96,7 +96,7 @@ struct CQuestGlobals {
 };
 extern CQuestGlobals* g_pQuestGlobals;                      // 0x0143E90C
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
 };

@@ -6,15 +6,15 @@
 // PTCDriver is retail +0x5c (PDB +0x6c). The unaligned start and the shared `pop esi ; ret 4` tail entered by
 // `mov al,1 ; jmp` mark a size-optimised TU (`#pragma optimize("s", on)`).
 #pragma optimize("s", on)
-struct CTCDriverBase;
-struct CTCDPhysicalObstruction;
+class CTCDriverBase;
+class CTCDPhysicalObstruction;
 
 struct CTCBitset {                                   // std::bitset<274>
     unsigned long m_words[9];
     bool test(unsigned long position) const;         // 0x00410DE0
 };
 
-struct CThing {
+class CThing { public:
     void*          __vftable;                        // +0x00
     unsigned char  _pad04[0x20 - 0x04];
     CTCBitset      UsingComponents;                  // +0x20

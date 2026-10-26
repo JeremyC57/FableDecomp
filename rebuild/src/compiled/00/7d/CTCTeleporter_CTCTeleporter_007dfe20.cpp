@@ -27,7 +27,7 @@ struct CDefPointee {
             Destroy();
     }
 };
-struct CTeleporterDef : CDefPointee {};
+class CTeleporterDef : public CDefPointee { public:};
 struct CDefPointer {                                    // CDefPointer<const CTeleporterDef>
     CTeleporterDef* Object;
     ~CDefPointer()
@@ -54,13 +54,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() {}
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     unsigned char _pad_0x08[0x4];
 };
 
-struct CTCTeleporter : CTCBase {
+class CTCTeleporter : public CTCBase { public:
     CDefPointer PDef;                                   // +0x0c
     bool Active;                                        // +0x10
     bool Activated;                                     // +0x11

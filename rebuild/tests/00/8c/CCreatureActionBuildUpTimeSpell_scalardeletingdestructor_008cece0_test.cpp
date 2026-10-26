@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BuildUpTimeSpell {
+class CCreatureAction_BuildUpTimeSpell { public:
     void* vftable;
     int destroyed;
 };

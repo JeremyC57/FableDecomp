@@ -9,7 +9,7 @@
 // registers to the owner's Position (+0x54), then the look-at copied to the owner's LookAt (+0x10).
 // Layout: PDB NCameraModes::CScriptModuleCameraOnAStick (0x68 bytes): PThing (CThing*) +0x4c,
 // LocalRel +0x50, RelVector +0x5c, over the 0x4c-byte CScriptModuleBase (POwner +0x38).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator+(const C3DVector& other) const
@@ -22,7 +22,7 @@ struct C3DVector {
     }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;            // 0x004C73D0
 };
 

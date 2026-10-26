@@ -2,14 +2,14 @@
 // wife -> WIFE_DIVORCED (both forced), anyone else -> the def's default personality index (forced).
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -23,17 +23,17 @@ struct CThing {
         return it->component;
     }
 };
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length) : PStringData(text) { }
     ~CCharString() { }
 };
-struct CTCWife {
+class CTCWife { public:
     bool DivorcedHero; bool Married;
     bool IsMarriedToThePlayer() { return Married; }
 };
-struct COpinionOfHeroDef { long DefaultPersonality; };
-struct CTCCreatureOpinionOfHero {
+class COpinionOfHeroDef { public: long DefaultPersonality; };
+class CTCCreatureOpinionOfHero { public:
     virtual void v00() { }
     const CThing* ParentThing;
     COpinionOfHeroDef* PDef;

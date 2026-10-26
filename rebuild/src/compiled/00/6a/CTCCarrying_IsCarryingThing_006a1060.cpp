@@ -7,7 +7,7 @@
 // Shape: an inline FindThing loop (must be `__forceinline`: VC7.1 does not inline loops by default) whose
 // not-found path returns end() (`mov esi,[edi+10h]`), then `!= end()` re-reads `last` for the bool
 // (`xor eax,eax ; cmp ; setne al`). The loop re-reads `last` each iteration.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
     void* m_vtable;
@@ -30,7 +30,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     SCarrySlotEntry* end() { return m_pLast; }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c

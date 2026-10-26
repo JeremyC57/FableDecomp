@@ -15,9 +15,9 @@ static int fails = 0;
 // GetSubDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot: VC7.1 then knows the ability
 //   holder does not escape and keeps the def in ebx from the call to the release (8-byte frame, the slot reused); the
 //   def-class base is a named local so GetPItem is called before the out pointer is pushed, as retail.
-struct CThing;
-struct C3DVector;
-struct CRightHandedSet;
+class CThing;
+class C3DVector;
+class CRightHandedSet;
 
 struct CRefCounted {
     long m_count;
@@ -28,11 +28,11 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                      // slot 1
 };
-struct CAbilityDef : CDefVirtual, CRefCounted {
+class CAbilityDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0xa0 - 0x08];
     long ShotDefIndex;                           // +0xa0
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -52,7 +52,7 @@ struct CDefPointerMelee {                        // CDefPointer<const CMeleeComb
     ~CDefPointerMelee() { if (m_p) m_p->ReleaseTemporary(); }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerAbility* out);     // 0x0042B1A6 (GetSubDef<CAbilityDef>)
 };
 void* FindSubDef_CDefClassBase_GetSubDef(const CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -69,7 +69,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerAbility* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PhysicsTC;                    // +0x70 (the def-class base queried for the sub def)
     long GetShotAccuracyPercentage();            // 0x00663B10 (CThingCreatureBase)

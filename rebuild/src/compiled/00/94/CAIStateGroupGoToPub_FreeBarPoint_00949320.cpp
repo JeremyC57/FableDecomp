@@ -9,7 +9,7 @@
 // is the lookup result in eax, on the miss path retail reads the never-written slot (`mov eax,[esp+4]`, shared
 // with the key temporary of the hit path -- nested-scope locals share one frame slot). The frame is one
 // `push ecx`. No engine header exists for CAIStateGroup_GoToPub; the layout is local.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the same shape the landed
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

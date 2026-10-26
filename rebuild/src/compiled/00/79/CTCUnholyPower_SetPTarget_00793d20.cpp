@@ -12,9 +12,9 @@
 //        interface lookup key. The component is the one-ternary entry select, so it lands straight in ecx for the virtual.
 // Layout: retail CTCUnholyPower sits 4 bytes below the PDB here: PTarget +0x6D (PDB +0x71, an odd-offset
 //         CIntelligentPointer, so the pointer classes are pack(1)), IsZTargetting +0x75 (PDB +0x79). CPlayer::ZTargeting +0x20A.
-struct CTCBase;
-struct CThing;
-struct CBaseObject;
+class CTCBase;
+class CThing;
+class CBaseObject;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -46,12 +46,12 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x20a];
     bool ZTargeting;                                // +0x20A
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -88,7 +88,7 @@ struct CTCTargeting {                               // interface type 8 componen
     virtual CThing* GetZTarget();                   // slot 33 (+0x84)
 };
 
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x6d - 0x08];

@@ -3,7 +3,7 @@
 #include <new>
 static const void* g_log[8];
 static int g_count = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { }
     ~CCharString() { g_log[g_count++] = this; }   // stands in for 0x0099EAE0

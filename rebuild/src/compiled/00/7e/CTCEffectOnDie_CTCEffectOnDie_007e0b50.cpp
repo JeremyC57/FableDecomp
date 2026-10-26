@@ -6,7 +6,7 @@
 // FadeOutTimer +0x18, DeathSoundCriteria (CCharString) +0x1c, Pausable +0x20, Paused +0x21.
 // Shape: speed TU; ebx is the shared zero; the four scalars before the string member are init-list
 // initialisers stored after the vtable store; the two bools after the CCharString constructor call.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -14,12 +14,12 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                          // 0x0099E4B0
 };
 
-struct CTCEffectOnDie : CTCBase_Calls {
+class CTCEffectOnDie : public CTCBase_Calls { public:
     bool        StartedNonRecoverableFadeout;               // +0x0c
     long        Effect;                                     // +0x10
     long        Timer;                                      // +0x14

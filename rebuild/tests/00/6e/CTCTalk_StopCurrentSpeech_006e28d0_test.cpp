@@ -2,7 +2,7 @@
 #include <cstdio>
 static long g_frame;
 struct CSpeechEmitter { unsigned long stopped; void StopSample(unsigned long id) { stopped = id; } };
-struct CTCTalk {
+class CTCTalk { public:
     long SpeechSample, SampleStartedFrame, SampleDurationFrames, Attitude;
     float MimeStartTime, SampleLoadedTime; unsigned long SampleID; bool LipSynching;
     bool IsTalking() { return g_frame - SampleStartedFrame < SampleDurationFrames; }

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCameraCollision {
+class CTCCameraCollision { public:
     void* vftable;
     int destroyed;
 };

@@ -22,7 +22,7 @@ public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                 // +0x00
     void (__fastcall* DeleteFunc)(void*);                   // +0x04
     void* Data;                                             // +0x08

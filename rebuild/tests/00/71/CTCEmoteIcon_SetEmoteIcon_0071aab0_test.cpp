@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     void* vptrSlot; void* ParentThing; bool m_flags[4];
     long ActiveTimer; void* EmoteText; long EmoteIcon; float EmoteScale; long EmoteType; long EmotePriority;
     unsigned char EmoteAlpha; bool Replaceable; bool Enabled;

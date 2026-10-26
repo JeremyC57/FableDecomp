@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for 00f33480: CPersistContext_TransferableVector<CDefString>::TransferIn on a model vector.
-struct CPersistContext { int id; };
-struct CStringParser { long next; };
-struct CCharString { long written; };
-struct CDefString { long Index; };
+class CPersistContext { public: int id; };
+class CStringParser { public: long next; };
+class CCharString { public: long written; };
+class CDefString { public: long Index; };
 struct Traits {
     void TransferIn(CPersistContext& context, CStringParser& parser, CDefString* value) { value->Index = parser.next + context.id; }
     void TransferOut(CPersistContext& context, CCharString& out, CDefString* value) { out.written = value->Index + context.id; }

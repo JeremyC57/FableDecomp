@@ -1,11 +1,11 @@
 // Behaviour test for CRenderManager2D::Draw3DScaledText @ 0x009DBFF0: forwards to AddText, destroys its string copy, returns true.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank { int m_id; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank { public: int m_id; };
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     const char* m_text;
     CWideString(const char* t) : m_text(t) { ++g_live; }
     CWideString(const CWideString& o) : m_text(o.m_text) { ++g_live; }

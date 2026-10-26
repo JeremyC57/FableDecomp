@@ -4,14 +4,14 @@
 #include <cstring>
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -52,7 +52,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[24];
     CCharString(const char* t) { std::strcpy(m_text, t); ++g_liveStrings; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_liveStrings; }
@@ -63,8 +63,8 @@ template <class T> static bool GetInterfaceB(CThing* t, T** out, long type)
     if (t->m_presentBits[type >> 5] & (1UL << (type & 31))) { t->GetInterface(out, type); return true; }
     return false;
 }
-struct CTCFireballSpell : CTCBase { CCharString GetReleaseAnimName() { ++calls; return CCharString("FIREBALL_RELEASE"); } };
-struct CCreatureAction_FinishFireballSpell {
+class CTCFireballSpell : public CTCBase { public: CCharString GetReleaseAnimName() { ++calls; return CCharString("FIREBALL_RELEASE"); } };
+class CCreatureAction_FinishFireballSpell { public:
     CBaseIntelligentPointer PCreature; char m_anim[24]; int m_sets;
     void SetAnimationName(const CCharString& n) { std::strcpy(m_anim, n.m_text); ++m_sets; }
     void SetAnims()

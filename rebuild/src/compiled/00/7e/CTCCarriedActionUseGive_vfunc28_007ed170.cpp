@@ -15,8 +15,8 @@
 //   lookup is HasTC + the ternary GetTC (const LowerBound) with the early return inside; the carried thing is a named
 //   local read before the targeted-thing vcall (frees eax for the vptr: `mov eax,[esi]`); the non-const GetTC forms the
 //   map pointer before the key local (`lea ecx,[key]` after `lea esi,[thing+44h]` order flips otherwise).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
     SEntry* LowerBound(const long* type) const;             // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -44,7 +44,7 @@ struct CThing {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CCreatureActionBase {                                // retail sizeof 0xa8
+class CCreatureActionBase { public:                                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                                 // 0x00693EF0
@@ -54,16 +54,16 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                          // +0x04
     ~CBaseIntelligentPointer();                             // 0x00A01C10
 };
-struct CThingCreatureBase;
-struct CCreatureAction_GiveItemToThing : CCreatureActionBase {   // 0xb8 bytes
+class CThingCreatureBase;
+class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8
     CBaseIntelligentPointer PReceiver;                      // +0xb0
     CCreatureAction_GiveItemToThing(CThingCreatureBase* giver, CThing* receiver, CThing* item);   // 0x0062D9E0
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
 };
-struct CTCTargetingBase {                                   // interface 8
+class CTCTargetingBase { public:                                   // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -78,7 +78,7 @@ struct CTCTargetingBase {                                   // interface 8
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)

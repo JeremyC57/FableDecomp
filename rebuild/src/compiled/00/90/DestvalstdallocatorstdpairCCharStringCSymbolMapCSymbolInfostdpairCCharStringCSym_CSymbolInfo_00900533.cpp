@@ -16,7 +16,7 @@
 
 // CCharString: destructor lives at 0xa01c10. Give it a self ptr so the
 // dtor is emitted as an out-of-line thiscall.
-struct CCharString {
+class CCharString { public:
 	char* m_ptr;
 	int   m_len;
 	~CCharString();

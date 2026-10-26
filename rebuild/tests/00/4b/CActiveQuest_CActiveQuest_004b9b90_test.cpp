@@ -5,7 +5,7 @@
 static int g_destroyed = 0;
 static void DestroyObject(void* object) { g_destroyed += *(int*)object; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     ~CCountedPointer()
     {
@@ -22,7 +22,7 @@ static int g_strings = 0;
 class CCharString { public: void* PStringData; ~CCharString() { ++g_strings; } };
 static int g_freed = 0;
 template <class T> struct CRetailVector { T* m_start; T* m_finish; T* m_endOfStorage; ~CRetailVector() { if (m_start) { ++g_freed; std::free(m_start); } } };
-struct C2DCoordI { long X, Y; };
+class C2DCoordI { public: long X, Y; };
 class CActiveQuest {
 public:
     long ID; void* PScriptInfo; CCountedPointer<int> PScript; CRetailVector<const void*> Regions; C2DCoordI MarkerPosition;

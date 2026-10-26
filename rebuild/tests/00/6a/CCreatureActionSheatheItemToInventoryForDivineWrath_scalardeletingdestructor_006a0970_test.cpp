@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SheatheItemToInventory_ForDivineWrath {
+class CCreatureAction_SheatheItemToInventory_ForDivineWrath { public:
     void* vftable;
     int destroyed;
 };

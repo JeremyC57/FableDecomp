@@ -38,7 +38,7 @@ public:
     }
 };
 enum EHeroAbility { HERO_ABILITY_NONE = 0 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     bool IsAbilityPotentiallyAvailable(EHeroAbility ability);       // 0x005EE02E
     long GetAbilityMaximumLevel(EHeroAbility ability);              // 0x005EDEA3
     long GetAbilityLevel(EHeroAbility ability);                     // 0x005EDE93
@@ -53,21 +53,21 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     const T& operator[](unsigned int n) const { return _M_start[n]; }
 };
 struct CDefBase { unsigned char _base[0x3c]; };
-struct CAbilityTrackLevelDef : CDefBase {                   // 0x48
+class CAbilityTrackLevelDef : public CDefBase { public:                   // 0x48
     long ExperienceCost;                                    // +0x3c
     long AbilityUnlocked;                                   // +0x40
     long Description;                                       // +0x44
 };
-struct CAbilityTrackDef : CDefBase {                        // 0x50
+class CAbilityTrackDef : public CDefBase { public:                        // 0x50
     long ExperienceStat;                                    // +0x3c
     CRetailVector<CAbilityTrackLevelDef> Abilities;         // +0x40
     long MaxedOutDescription;                               // +0x4c
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CRetailVector<CAbilityTrackDef> StatLevels;             // +0xfc
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Ptr;
     T* operator->() const { return Ptr; }
 };

@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static long g_level = -1;
-struct CBankFileAsyncData { unsigned char _pad[0x10]; long m_byteCount; bool m_finished; bool IsFinished() { return m_finished; } };
+class CBankFileAsyncData { public: unsigned char _pad[0x10]; long m_byteCount; bool m_finished; bool IsFinished() { return m_finished; } };
 struct CTexture_009fd830 { long GetLevelByteLength(long l) { g_level = l; return 99; } };
 struct CGraphicFrameData_009fd830 { unsigned char _pad[8]; CTexture_009fd830* m_pTexture; };
 struct CFrameData { unsigned char _pad[0x1c]; CGraphicFrameData_009fd830* m_pGraphic; unsigned char _pad20[0x10]; CBankFileAsyncData* m_pAsyncRead;

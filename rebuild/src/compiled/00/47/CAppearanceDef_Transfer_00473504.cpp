@@ -15,12 +15,12 @@
 // rotates eax/ecx/edx).
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-struct CEngineGraphic {                    // 14 bytes
+class CEngineGraphic { public:                    // 14 bytes
     unsigned char m_data[14];
 };
 #pragma pack(pop)
 
-struct CAnimationSet {                     // retail 0x20 bytes
+class CAnimationSet { public:                     // retail 0x20 bytes
     void* m_pFirst;                        // +0x00 Anims (CVectorMap)
     void* m_pLast;                         // +0x04
     void* m_pEnd;                          // +0x08

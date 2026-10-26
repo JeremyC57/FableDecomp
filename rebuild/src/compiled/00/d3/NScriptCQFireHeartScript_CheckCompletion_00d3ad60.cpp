@@ -16,7 +16,7 @@
 // in PlayCutscene's argument slot (`push ecx ; mov ecx,esp`: a by-value CCharString with a user copy constructor);
 // the thread's name is an implicit conversion temporary that exists only when operator new succeeded, so VC guards
 // its destructor with a flag bit in ebx; the empty region name is an explicit temporary (the ctor's eax is pushed).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -25,7 +25,7 @@ struct CCharString {
 
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes (CScriptProcessBase + thread state)
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes (CScriptProcessBase + thread state)
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -51,7 +51,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
 
-struct CQ_FireHeartScript : CScriptBase {
+class CQ_FireHeartScript : public CScriptBase { public:
     void* GSI;                                          // +0x40
     void* PMasterData;                                  // +0x44
     bool  QuestStartScreenShown;                        // +0x48

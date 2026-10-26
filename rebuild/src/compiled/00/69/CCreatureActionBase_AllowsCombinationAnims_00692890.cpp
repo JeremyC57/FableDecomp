@@ -1,5 +1,5 @@
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCreatureActionBase; extern int __fastcall sub(void* p);
+class CCreatureActionBase; extern int __fastcall sub(void* p);
 struct CCreatureActionBase_Methods : CCreatureActionBase {
     char M();
 };

@@ -10,22 +10,22 @@
 // position; the placer's bool is returned straight through (`pop esi ; ret` after the call), the early
 // exit is `xor al,al`. The CAIStateGroup_Gaze/GazeAtWork engine headers flatten everything into pads, so
 // only CAIStateGroupBase's layout (PBrain at +4) is modelled, with the brain's creature pointer at +0x18.
-struct C3DVector;
+class C3DVector;
 
-struct CThingGameObject {
+class CThingGameObject { public:
     C3DVector* GetPosition();                   // 0x004C73D0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool AutoPlaceNear(C3DVector* pPosition, float radius);   // 0x00665DF0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();                         // slot 0  (deleting destructor)
     virtual void v01();                         // slot 1  Initialise
     virtual void v02();                         // slot 2  OnActivate

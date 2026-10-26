@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CPooledResource::Release (0x00C265B0).
-struct CHandleBasedMemoryPool { long m_freed; long m_last; void FreeAllocation(long handle) { ++m_freed; m_last = handle; } };
+class CHandleBasedMemoryPool { public: long m_freed; long m_last; void FreeAllocation(long handle) { ++m_freed; m_last = handle; } };
 struct CPooledResourceManager { CHandleBasedMemoryPool m_pool; long m_deactivations; };
 struct CPooledResource {
     long m_handle; short m_state;

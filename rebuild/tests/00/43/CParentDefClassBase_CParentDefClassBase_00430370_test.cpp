@@ -5,18 +5,18 @@
 // CParentDefClassBase::CParentDefClassBase(): CResource base, no manager, status bits clear, an unset
 // instantiation name (-1) and an empty, clean sub-def vector map.
 static int g_resourceCtors = 0;
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CResource {
+class CResource { public:
     virtual void v00() { }
     unsigned char _resource[0x18];
     CResource() { ++g_resourceCtors; }
 };
-struct CDefPointeeBase : CResource {
+class CDefPointeeBase : public CResource { public:
     virtual void v00() { }
     CDefPointeeBase() { }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CDefinitionManager* PDefManager;
     unsigned long       GlobalIndex;
     unsigned char       Setup : 1;
@@ -25,7 +25,7 @@ struct CDefClassBase : CDefPointeeBase {
     virtual void v00() { }
     CDefClassBase() : PDefManager(0) { Setup = 0; Template = 0; DefaultValsApplied = 0; }
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -37,7 +37,7 @@ struct CSubDefInfoVectorMap {
     bool          Dirty;
     CSubDefInfoVectorMap() : m_first(0), m_last(0), m_end(0), Dirty(false) { }
 };
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString           InstantiationName;
     CSubDefInfoVectorMap SubDefInfoMap;
     virtual void v00() { }

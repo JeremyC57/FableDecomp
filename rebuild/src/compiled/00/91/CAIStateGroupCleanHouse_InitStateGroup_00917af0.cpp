@@ -11,10 +11,10 @@
 // named local (the `mov [esp+14h],0D3h` slot; comparing against the constant parameter keeps the
 // immediate compare) -- end or a larger key -> the end entry. The out pointer is what leaves the
 // component in eax before the pushes. Same shape as the landed GetInterface rows.
-struct CAIBrain;
-struct CAIStateGroupBase;
+class CAIBrain;
+class CAIStateGroupBase;
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleType);   // 0x00801920
 };
 
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -44,7 +44,7 @@ struct CThingAICreature {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x4..+0x13
 };

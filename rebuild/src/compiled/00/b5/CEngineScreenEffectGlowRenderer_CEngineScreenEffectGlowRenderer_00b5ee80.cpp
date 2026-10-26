@@ -12,7 +12,7 @@
 // Shape: own vtable store, the inline page free (`test ; jl`), then each member destructor inlined in reverse order: its own
 // vtable store, the null-tested `dec [data+N] ; jne ; call [vt]` release, the CShaderBase vtable store; the base destructor
 // is tail-called. The destructor is non-virtual in the model so the TU emits no `??_G` (the vtable comes from v00).
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
 struct CEngineGlobal_01436e98 {
@@ -32,10 +32,10 @@ struct CVertexShaderData {
     long  m_refCount;                              // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     __forceinline virtual ~CPixelShader()
     {
@@ -46,7 +46,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054
         }
     }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
     __forceinline virtual ~CVertexShader()
     {
@@ -58,14 +58,14 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
     }
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void v00();
     void** m_ppOwnerLink;                          // +0x04
     ~CEngineComponent();                           // 0x00B59730
 };
 
-struct CTexture;
-struct CEngineScreenEffectGlowRenderer : CEngineComponent {   // vtable 0x012A27CC
+class CTexture;
+class CEngineScreenEffectGlowRenderer : public CEngineComponent { public:   // vtable 0x012A27CC
     unsigned char _pad_0x08[0x4];
     bool          UseEnvironmentTheme;             // +0x0c
     CTexture*     GlowTexture256;                  // +0x10

@@ -11,15 +11,15 @@
 //          CTCScriptedControl::InterruptControl @ 0x00713850). engine/CScriptThing.h carries no virtuals, so the
 //          script-thing slots are modelled locally like the other landed NTCScriptedControl rows.
 // Shape: dead target, or no scripted control, branch to the single Terminated store; Locked or a non-empty queue returns.
-struct CTCBase;
-struct CThing;
-struct CCPPointerInfo;
+class CTCBase;
+class CThing;
+class CCPPointerInfo;
 struct SActionNode { SActionNode* _M_next; SActionNode* _M_prev; void* Data; CCPPointerInfo* Info; };
 struct CActionList {                               // STLport list<CCountedPointer<CActionBase>>
     SActionNode* _M_node;
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
-struct CTCScriptedControl {                        // interface 0x1F
+class CTCScriptedControl { public:                        // interface 0x1F
     void*        __vftable;
     CThing*      ParentThing;                      // +0x04 (CTCBase)
     bool         ToBeRemoved;                      // +0x08
@@ -34,7 +34,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
@@ -53,7 +53,7 @@ struct CThing {
         return false;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;              // slot 11 (+0x2c)

@@ -8,33 +8,34 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CEngineClothRenderer;
-struct CEnginePrimitiveChangerManager;
-struct CEnginePrimitiveGroupManager;
-struct CEnginePrimitiveManagerAnimatedMeshes;
-struct CEnginePrimitiveManagerDecal;
-struct CEnginePrimitiveManagerFlareSprites;
-struct CEnginePrimitiveManagerGameMeshes;
-struct CEnginePrimitiveManagerLines;
-struct CEnginePrimitiveManagerParticleDecalGroup;
-struct CEnginePrimitiveManagerParticleGroup;
-struct CEnginePrimitiveManagerParticleLineGroup;
-struct CEnginePrimitiveManagerParticleMeshGroup;
-struct CEnginePrimitiveManagerParticleSpriteGroup;
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup;
-struct CEnginePrimitiveManagerRepeatedStaticMeshes;
-struct CEnginePrimitiveManagerRepeatedZSprites;
-struct CEnginePrimitiveManagerSpriteTrails;
-struct CEnginePrimitiveManagerSprites;
-struct CEnginePrimitiveManagerStaticMeshes;
-struct CEnginePrimitiveManagerText;
-struct CEnginePrimitiveManagerWeaponTrails;
-struct CEnginePrimitiveManagerWeatherMask;
-struct CEnginePrimitiveOcclusionGroupManager;
+class CCPPointerInfo;
+class CEngineClothRenderer;
+class CEnginePrimitiveChangerManager;
+class CEnginePrimitiveGroupManager;
+class CEnginePrimitiveManagerAnimatedMeshes;
+class CEnginePrimitiveManagerDecal;
+class CEnginePrimitiveManagerFlareSprites;
+class CEnginePrimitiveManagerGameMeshes;
+class CEnginePrimitiveManagerLines;
+class CEnginePrimitiveManagerParticleDecalGroup;
+class CEnginePrimitiveManagerParticleGroup;
+class CEnginePrimitiveManagerParticleLineGroup;
+class CEnginePrimitiveManagerParticleMeshGroup;
+class CEnginePrimitiveManagerParticleSpriteGroup;
+class CEnginePrimitiveManagerParticleSpriteTrailGroup;
+class CEnginePrimitiveManagerRepeatedStaticMeshes;
+class CEnginePrimitiveManagerRepeatedZSprites;
+class CEnginePrimitiveManagerSpriteTrails;
+class CEnginePrimitiveManagerSprites;
+class CEnginePrimitiveManagerStaticMeshes;
+class CEnginePrimitiveManagerText;
+class CEnginePrimitiveManagerWeaponTrails;
+class CEnginePrimitiveManagerWeatherMask;
+class CEnginePrimitiveOcclusionGroupManager;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer {
+public:
     void*                                            __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                    _pad_0x04[0x4]; // +0x04
     unsigned char                                    _pad_0x08[0x4]; // +0x08

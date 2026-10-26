@@ -13,7 +13,7 @@ extern "C" void __cdecl free(void* p);
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;
@@ -80,7 +80,7 @@ struct CStatTree {                                  // CHeroStatIncreaseData's m
     }
 };
 
-struct CHeroStatIncreaseData {
+class CHeroStatIncreaseData { public:
     CStatTree Map;
 };
 

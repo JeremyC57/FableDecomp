@@ -9,8 +9,8 @@ struct CInventoryItemBase
     void OnDie();          // non-virtual, at 0x0099a2e0
 };
 
-struct CTCInventoryItem : public CInventoryItemBase
-{
+class CTCInventoryItem : public CInventoryItemBase
+{ public:
     char pad[0x10];        // 0x00 .. 0x0f
     void* m_ptr;           // 0x10
     void OnDie();

@@ -16,7 +16,7 @@
 //        an inline bool helper, and the clear arm's priority is a named bool's `? 3 : 4` (setle/neg/sbb; the bare
 //        expression folds to setg+3).
 class CThing;
-struct CTCBase;
+class CTCBase;
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -40,7 +40,7 @@ public:
     }
 };
 
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     unsigned char _pad_0x00[0x14];
     long          EmoteIcon;                    // +0x14
     void SetEmoteIcon(long priority, long icon, float activeTime, float scale, unsigned char alpha);   // 0x0071AAB0
@@ -55,12 +55,12 @@ struct CDefinitionHolder {
     unsigned char  _pad_0x00[0xd0];
     CWifeIconDefs* Defs;                        // +0xd0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                    // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x18];

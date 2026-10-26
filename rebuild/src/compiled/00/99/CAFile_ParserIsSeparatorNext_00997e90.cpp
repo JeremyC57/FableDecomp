@@ -25,7 +25,7 @@ struct CBasicStringChar {                               // CBasicString<char> (p
         return strcmp(PData, text) == 0;
     }
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                              // +0x00
 };
 

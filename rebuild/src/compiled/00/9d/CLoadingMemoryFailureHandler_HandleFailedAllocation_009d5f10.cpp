@@ -13,7 +13,7 @@ struct CCriticalSectionLock {                      // 8 bytes on the stack
     CCriticalSectionLock(SCriticalSection* section, bool tryOnly);   // 0x00A62920
     ~CCriticalSectionLock();                       // 0x00A629A0
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     bool HandleFailedAllocation();                 // 0x009D5BF0
 };
 template <class T> struct CRetailArray {           // retail CArray: {first, last, end}
@@ -22,10 +22,10 @@ template <class T> struct CRetailArray {           // retail CArray: {first, las
     T* end_of_storage;
     unsigned long Size() const { return last - first; }
 };
-struct CFailedAllocationHandler {                  // vtable 0x0129B874
+class CFailedAllocationHandler { public:                  // vtable 0x0129B874
     virtual bool HandleFailedAllocation(unsigned long size);
 };
-struct CLoadingMemoryFailureHandler : CFailedAllocationHandler {   // vtable 0x0129B8C4
+class CLoadingMemoryFailureHandler : public CFailedAllocationHandler { public:   // vtable 0x0129B8C4
     CRetailArray<CBankFileAsync*> Banks;           // +0x04
     SCriticalSection              CriticalSection; // +0x10
     virtual bool HandleFailedAllocation(unsigned long size);

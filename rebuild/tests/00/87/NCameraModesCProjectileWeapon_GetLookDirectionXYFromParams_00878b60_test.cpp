@@ -2,7 +2,7 @@
 #include <cmath>
 // Model of NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams(phi, heightParam) const @ 0x00878B60:
 // the XY camera offset at phi - (initial phi offset / 360 - 0.25) turns, turned into (y, -x, 0) * -1.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -10,11 +10,11 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CCameraModeDef {
+class CCameraModeDef { public:
     float ProjectileCameraInitialPhiOffsetForCamera;
     float ProjectileCameraInitialHeightParamForCamera;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

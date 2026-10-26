@@ -1,4 +1,4 @@
-struct CTexture {
+class CTexture { public:
     virtual long slot0(int v);
 };
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessSetRangedWeaponThirdPersonMode {
+class CInputProcessSetRangedWeaponThirdPersonMode { public:
     void* vftable;
     int destroyed;
 };

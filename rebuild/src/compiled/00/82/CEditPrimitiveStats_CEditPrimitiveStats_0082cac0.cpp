@@ -9,12 +9,12 @@ struct CRetailVector_0082c620 {
     CRetailVector_0082c620(const CRetailVector_0082c620& other);   // 0x0082C620
 };
 
-struct CSurface {
+class CSurface { public:
     unsigned char _body[0x10];
     CSurface(const CSurface& other);               // 0x009F2D60
 };
 
-struct CTexture {
+class CTexture { public:
     unsigned char _body[8];
     CTexture(const CTexture& other);               // 0x009F9D00
 };
@@ -24,7 +24,7 @@ struct CRetailVector_0082c8a0 {
     CRetailVector_0082c8a0(const CRetailVector_0082c8a0& other);   // 0x0082C8A0
 };
 
-struct CEditPrimitiveStats {
+class CEditPrimitiveStats { public:
     long                   m_primitiveCount;       // +0x00
     long                   m_vertexCount;          // +0x04
     CRetailVector_0082c620 m_counts;               // +0x08

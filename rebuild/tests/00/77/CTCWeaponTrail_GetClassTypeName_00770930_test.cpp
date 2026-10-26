@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CCharString {
+class CCharString { public:
     char* p;
     static int last;
     CCharString(const char* s, int n);
 };
 int CCharString::last=0;
 CCharString::CCharString(const char* s, int n){ p=(char*)s; last=n; }
-struct CTCWeaponTrail { CCharString GetClassTypeName(); };
+class CTCWeaponTrail { public: CCharString GetClassTypeName(); };
 int main(){
     CTCWeaponTrail a;
     CCharString r = a.GetClassTypeName();

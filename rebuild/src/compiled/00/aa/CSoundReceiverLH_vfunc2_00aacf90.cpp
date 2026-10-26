@@ -4,7 +4,7 @@
 // slot 4 (skipped ledger, chunk 901). Slot 1 is the landed CSoundReceiverLH::vfunc_1(const C3DVector&) (stores the
 // listener position at +0x04 and commits it), so the same reference argument is passed straight through.
 // Shape: `mov eax,[ecx] ; jmp [eax+4]`.
-struct C3DVector {
+class C3DVector { public:
     float X;                                // +0x00
     float Y;                                // +0x04
     float Z;                                // +0x08

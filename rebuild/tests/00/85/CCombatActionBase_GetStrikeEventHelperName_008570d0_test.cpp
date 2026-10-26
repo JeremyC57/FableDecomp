@@ -1,9 +1,9 @@
 // Behaviour test for 0x008570D0 CCombatActionBase::GetStrikeEventHelperName.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long) { std::strcpy(text, t); } };
+class CCharString { public: char text[32]; CCharString(const char* t, long) { std::strcpy(text, t); } };
 struct CStrikeEvent { bool Legacy; CCharString HelperPointName; CStrikeEvent(bool l, const char* n) : Legacy(l), HelperPointName(n, -1) { } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CStrikeEvent* active;
     CStrikeEvent* GetPActiveStrikeEvent() const { return active; }
     CCharString GetStrikeEventHelperName() const

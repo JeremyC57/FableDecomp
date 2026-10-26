@@ -19,8 +19,8 @@
 //   HasTC/GetTC spelling colours it ecx and rotates the hero lookup's key lea); the hero is tested null / dead through
 //   one fetch; `Trophy = 0` goes through the inline operator= with a converting temporary, after the result is fetched.
 class CThing;
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -87,7 +87,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for T = CThing
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -114,10 +114,10 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     return false;
 }
 
-struct CTCWallMountEffects {                    // interface 0xDB
+class CTCWallMountEffects { public:                    // interface 0xDB
     void OnTakenOffMount();                     // 0x007DF440
 };
-struct CTCTargeted {                            // interface 9
+class CTCTargeted { public:                            // interface 9
     unsigned char _pad_0x00[0x10];
     bool          Targetable;                   // +0x10
 };
@@ -126,12 +126,12 @@ struct CTCHeroTrophies {                        // interface 4 (descriptive)
     long          MountedTrophies;              // +0xd4
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char                       _pad_0x00[0x34];
     CIntelligentPointer<CThing>         PlayerCharacter;    // +0x34 CIntelligentPointer<CThingPlayerCreature>
     CThing* GetPlayerCharacter() const { return PlayerCharacter.GetPItem(); }
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
 };
 
@@ -142,7 +142,7 @@ struct CTCBaseModel {
     bool    IsInGlobalUpdateTCs;                // +0x09
     CWorld* GetWorld();                         // 0x00686A70
 };
-struct CTCWallMount : CTCBaseModel {
+class CTCWallMount : public CTCBaseModel { public:
     long                        BoughtForAmount;   // +0x0c
     CIntelligentPointer<CThing> Trophy;            // +0x10
     unsigned __int64            TrophyID;          // +0x18

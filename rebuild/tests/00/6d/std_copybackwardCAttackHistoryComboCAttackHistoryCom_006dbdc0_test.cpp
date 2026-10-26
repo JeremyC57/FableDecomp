@@ -4,7 +4,7 @@
 
 static int g_vectorAssigns = 0;
 struct ComboVector { int tag; ComboVector& operator=(const ComboVector& o) { tag = o.tag; ++g_vectorAssigns; return *this; } };
-struct CAttackHistoryCombo { ComboVector AttackCombo; float Multiplier; };
+class CAttackHistoryCombo { public: ComboVector AttackCombo; float Multiplier; };
 
 static CAttackHistoryCombo* CopyBackward(CAttackHistoryCombo* first, CAttackHistoryCombo* last, CAttackHistoryCombo* result)
 {

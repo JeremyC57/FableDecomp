@@ -8,7 +8,7 @@
 // "assign through a stack CIntelligentPointer" shape (0x0084B1C0): default-construct (inlined CIntelligentPointer ctor stores the
 // vtable 0x01238C6C after the base ctor), SetPItem(0), read it back into the member, destroy -- the 8-byte frame is that temporary.
 // Retail CCombatActionBase is 0x114 bytes, so the spell pointer is this class's first member.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void Kill(bool immediately);            // 0x004C9B80
@@ -37,12 +37,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00859A20
     unsigned char _pad04[0x114 - 4];
 };
-struct CCreatureAction_HobbeSpellcasterAim : CCombatActionBase {
+class CCreatureAction_HobbeSpellcasterAim : public CCombatActionBase { public:
     CBaseIntelligentPointer PSpell;         // +0x114 the spell thing being aimed
     virtual void FinishAction();
 };

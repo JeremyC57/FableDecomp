@@ -2,7 +2,7 @@
 // Behaviour test for 0x007F59C0: the owner's def is held across GetSubDef(&PSubDef), then released; a null def is skipped.
 struct CSubDef { int id; };
 static CSubDef g_sub; static long g_refDuring = -1; static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long refCount;
@@ -17,9 +17,9 @@ struct CDefClassPointer {
     ~CDefClassPointer() { if (Object) Object->Release(); }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CThing { CDefClassPointer PDef; CThing(CDefClassBase* d) : PDef(d) {} };
-struct CTCBase { virtual void v00() {} CThing* ParentThing; };
-struct CTCTargetingAI : CTCBase { CSubDef* PSubDef; void OnInitialActivate(); };
+class CThing { public: CDefClassPointer PDef; CThing(CDefClassBase* d) : PDef(d) {} };
+class CTCBase { public: virtual void v00() {} CThing* ParentThing; };
+class CTCTargetingAI : public CTCBase { public: CSubDef* PSubDef; void OnInitialActivate(); };
 void CTCTargetingAI::OnInitialActivate()
 {
     CDefClassPointer def(ParentThing->PDef);

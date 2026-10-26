@@ -1,10 +1,10 @@
 // Behaviour test for 0x006A7960 CThingFilter_InRegion::operator()
 #include <cstdio>
-struct CThing { short CurrentMapNumber; };
-struct CWorldMap {
+class CThing { public: short CurrentMapNumber; };
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long map) { return map / 10; }
 };
-struct CThingFilter_InRegion {
+class CThingFilter_InRegion { public:
     CWorldMap* WorldMap;
     long       RegionID;
     bool operator()(CThing* thing) const

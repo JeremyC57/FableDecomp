@@ -17,7 +17,7 @@ class CTCBase;
 class CTCParamsBase;
 namespace NHitLocations { class CHitLocation; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0

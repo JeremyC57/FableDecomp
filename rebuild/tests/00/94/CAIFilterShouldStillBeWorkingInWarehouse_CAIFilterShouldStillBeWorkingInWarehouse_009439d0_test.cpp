@@ -12,11 +12,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : PItem(0) { }
     ~CBaseIntelligentPointer() { g_destroyed[g_count++] = this; PItem = 0; }   // stands in for 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
 };
-struct CAIStateGroupBase {
-    struct CAIFilterBase {
+class CAIStateGroupBase { public:
+    class CAIFilterBase { public:
         virtual bool operator()(CThing* thing) const { return thing != 0; }
         ~CAIFilterBase() { }
     };

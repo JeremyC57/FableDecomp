@@ -5,7 +5,7 @@
 #include <new>
 
 struct CPrimitiveObject { long RefCount; };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitiveObject* Data;
     CEnginePrimitiveHandle() : Data(0) {}
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& o) : Data(o.Data) { if (Data) ++Data->RefCount; }

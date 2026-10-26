@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 struct CHitLocation;
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 struct THitLocationIntersectionElement {
     int key;
     CHitLocation* hit_location;

@@ -16,7 +16,7 @@ public:
     virtual ~CShaderBankEntry();                    // slot 0 (deleting destructor)
 };
 
-template <class T> struct CArray {                  // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                  // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;

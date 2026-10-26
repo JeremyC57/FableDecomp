@@ -10,12 +10,12 @@
 #include "rebuild_abi.h"
 
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC (retail CRT)
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // called with Data in ecx and nothing on the stack
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*             m_pData;                              // PDB: Data
     CCPPointerInfo* m_pInfo;                             // PDB: Info
     CCountedPointer() : m_pData(0), m_pInfo(0) {}
@@ -36,12 +36,12 @@ template<class T> struct CCountedPointer {
     void Reset()       { ReleaseInfo(); m_pInfo = 0; m_pData = 0; }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v0();
     CBaseClass();
     ~CBaseClass();                                        // 0x0099A2E0 (vtable store only)
 };
-struct CScriptThing : CBaseClass {                       // PDB: CBaseClass + CCountedPointer<CScriptThing> PImp (sizeof 0x0c)
+class CScriptThing : public CBaseClass { public:                       // PDB: CBaseClass + CCountedPointer<CScriptThing> PImp (sizeof 0x0c)
     CCountedPointer<CScriptThing> PImp;                  // +0x04 of the member
 };
 struct CThingPredicateRecord {                           // non-polymorphic: no vtable store in the destructor

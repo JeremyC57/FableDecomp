@@ -12,7 +12,7 @@ public:
 };
 class CChecksumCacheFile {
 public:
-    class CEntry {                                          // 0x20 bytes: checksum + CDateAndTime
+    struct CEntry {                                          // 0x20 bytes: checksum + CDateAndTime
     public:
         unsigned char Data[0x20];
     };

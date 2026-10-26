@@ -17,13 +17,13 @@ struct CThingGraphic_0x70 {
     unsigned char _pad[0x41];
     unsigned char m_flags;                         // +0x41 (bit 1: already frame-updating)
 };
-struct CThing {
+class CThing { public:
     unsigned char       _pad[0x70];
     CThingGraphic_0x70* m_pState;                  // +0x70
     void SetForceFrameUpdate(bool force);          // 0x004C7C60
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -57,7 +57,7 @@ struct CMemberTree : CMemberTreeBase {             // map<unsigned __int64, CGro
     }
 };
 
-struct CTCCreatureGroup : CTCBase {
+class CTCCreatureGroup : public CTCBase { public:
     unsigned long MemberCount;                     // +0x0c
     unsigned long ActiveMemberCount;               // +0x10
     bool          ShutdownOnEmpty;                 // +0x14
@@ -79,7 +79,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing() {}
 };
 
-struct CTCCreatureGroupBoastingCrowd : CTCCreatureGroup {
+class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
     CIntelligentPointerThing PHero;                // +0x24
     long CrowdState;                               // +0x2c EBoastingCrowdState
     long CurrentEncouragementState;                // +0x30 EBoastingCrowdState

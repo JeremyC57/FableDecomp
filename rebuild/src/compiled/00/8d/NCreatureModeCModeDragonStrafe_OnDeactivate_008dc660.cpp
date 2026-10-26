@@ -6,7 +6,7 @@
 // Name: FableWin.pdb `?OnDeactivate@CModeDragonStrafe@NCreatureMode@@UAEXXZ` (slot 6).
 // Shape: the mirror of CModeDragonStrafe::OnActivate @ 0x008DC600; the inline CModeBase::OnDeactivate (`Active = false`)
 //   sits between the resume and the flag set (`or byte ptr [eax+50h],1`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                  // +0x10 (1 = player creature)
     unsigned char _pad11[0x0f];

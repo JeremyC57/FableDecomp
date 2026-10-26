@@ -5,17 +5,17 @@
 // Behaviour test: NPlayerGui::CStatBar::DrawStatBoxWithText -- DrawStatBox (withText = rightAlign, then false, true), then
 // the text at def money-text offset + pos converted to virtual coordinates; right-aligned as
 // VX(screen width) - x - string width; preloaded, drawn white at scale 1 on the text layer.
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
-struct CRGBColour {
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 class CWideString { public: int Len; };
-struct CEnginePrimitivePrepareInfo { int Id; };
-struct CEnginePrimitiveHandle { unsigned long m_handle; };
+class CEnginePrimitivePrepareInfo { public: int Id; };
+class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 struct CHandleVector { CEnginePrimitiveHandle* _M_start; CEnginePrimitiveHandle* _M_finish; CEnginePrimitiveHandle* _M_end_of_storage; };
-struct C2DExtentsI { long Width, Height; };
-struct CDisplayManager { C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; } };
+class C2DExtentsI { public: long Width, Height; };
+class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; } };
 static CDisplayManager g_display;
 static CDisplayManager* g_pDisplayManager = &g_display;
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out) { out.X = in.X * 2.0f; out.Y = in.Y * 2.0f; }
@@ -39,7 +39,7 @@ struct CGameUI {
 };
 static CGameUI g_ui;
 static CGameUI* g_pGameUI = &g_ui;
-struct CPlayerGuiDef { C2DVector MoneyTextOffset; };
+class CPlayerGuiDef { public: C2DVector MoneyTextOffset; };
 static CPlayerGuiDef g_def;
 const CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_def; }
 namespace NPlayerGui {

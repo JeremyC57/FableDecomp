@@ -11,11 +11,11 @@
 //        test skips the constructor; the by-value def copy for the constructor is built on the stack (`push ecx ; mov [esp],edi`)
 //        with its add-ref, the manager getters evaluated after it; the parameter's own copy is released at the end.
 // Layout: CThing presence bits +0x20, Components +0x44; PBrain +0x1A8 (Ego_r.pdb +0x1D8, 0x30 lower in retail).
-struct CTCBase;
-struct CTCIdleScheduler {                            // interface type 0xD3
+class CTCBase;
+class CTCIdleScheduler { public:                            // interface type 0xD3
     void OnNewBrain_008018b0();                      // 0x008018B0 (manifest label propagated)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
@@ -42,17 +42,17 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CDisplayEngine; struct CWorld; struct CThingManager; struct CPlayerManager; struct CThingAICreature;
+class CDisplayEngine; class CWorld; class CThingManager; class CPlayerManager; class CThingAICreature;
 extern CThingManager* g_pThingManager;               // 0x013B8A1C
 inline CThingManager* GetThingManager() { return g_pThingManager; }
-struct CAIBrain {                                    // 0xA8 bytes
+class CAIBrain { public:                                    // 0xA8 bytes
     unsigned char _body[0xa8];
     CAIBrain(CDisplayEngine* display, CWorld* world, CThingManager* things, CPlayerManager* players, CThingAICreature* owner, CDefPointer def);   // 0x0088C160
 };
 struct CBrainPointer {                               // CCountedPointer<CAIBrain>
     void Reset(CAIBrain* brain);                     // 0x00834E40
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44

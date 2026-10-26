@@ -1,4 +1,4 @@
-struct CQuestManager {
+class CQuestManager { public:
     void* vftable;
 };
 

@@ -10,11 +10,11 @@
 // the manager accessor as the object expression. The owner is CTCBase::ParentThing at +4 (engine/CTCBase.h); the
 // container is the retail 12-byte vector (first/last/end), modelled locally. CThing has no engine header.
 #include "engine/CTCBase.h"
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x8e];
     short m_level;                                    // +0x8E
     bool IsLevelLess();                               // 0x004C7930
@@ -26,7 +26,7 @@ struct CUIDVector {                                   // retail 12-byte vector<u
     unsigned __int64* m_end;
 };
 
-struct CTCInventoryMap : CTCBase {
+class CTCInventoryMap : public CTCBase { public:
     CThingManager* GetThingManager();                 // 0x00686AF0
     void RemapUIDsForLoading(CUIDVector& uids);
 };

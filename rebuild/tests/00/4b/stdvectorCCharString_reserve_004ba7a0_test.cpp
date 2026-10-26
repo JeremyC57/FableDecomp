@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CCharString { int v; };
+class CCharString { public: int v; };
 static int g_clears = 0, g_copies = 0;
 
 struct Vec {

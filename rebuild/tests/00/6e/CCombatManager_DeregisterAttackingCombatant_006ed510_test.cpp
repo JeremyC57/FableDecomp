@@ -13,7 +13,7 @@
 #endif
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     explicit CCharString(const char* text) { m_pData = (char*)malloc(strlen(text) + 1); strcpy(m_pData, text); ++g_liveStrings; }
     CCharString(const CCharString& other) { m_pData = (char*)malloc(strlen(other.m_pData) + 1); strcpy(m_pData, other.m_pData); ++g_liveStrings; }
@@ -34,7 +34,7 @@ CCharString operator+(const char* left, const CCharString& right) { return Conca
 CCharString operator+(const CCharString& left, const char* right) { return Concat(left.m_pData, right); }
 CCharString operator+(const CCharString& left, const CCharString& right) { return Concat(left.m_pData, right.m_pData); }
 CCharString GFIntToCharString(long value) { char text[32]; sprintf(text, "%ld", value); return CCharString(text); }
-struct CDefString {
+class CDefString { public:
     long m_index;
 };
 static const char* g_defNames[] = { "NONE", "CREATURE_ARCHER", "CREATURE_BANDIT", "CREATURE_HOBBE", "CREATURE_BALVERINE" };
@@ -46,7 +46,7 @@ static char g_traces[8][160];
 static int g_traceCount = 0;
 inline void CombatTrace(const CCharString& text) { strcpy(g_traces[g_traceCount++], text.m_pData); }
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,19 +59,19 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_defDestroyed; }
 };
-struct CCreatureDef : CDefVirtual {
+class CCreatureDef : public CDefVirtual { public:
     long          RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
     unsigned char _pad08[0x148 - 0x08];
     unsigned char Flags148;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* Get() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad0[0x18];
     unsigned __int64 UniqueID;
     unsigned long    m_presentBits[9];
@@ -128,22 +128,22 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool m_isCombatant;                            // test: IsCombatant's answer
     bool IsCombatant() { return m_isCombatant; }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* m_primary;
     CThing* GetThingInPrimarySlot() { return m_primary; }
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool m_projectile;
     int  m_resets;
     bool IsProjectileWeapon() { return m_projectile; }
     void ResetAiming() { ++m_resets; }
 };
 enum EDangerStatus { DANGER_NONE = 0 };
-struct CTCStealth {
+class CTCStealth { public:
     CThing* m_source;
     long    m_status;
     int     m_calls;
@@ -165,7 +165,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual void v05() {} virtual void v06() {}
     virtual bool IsMeleeSequence() { return false; }
@@ -223,7 +223,7 @@ struct CAttackerMap {
     unsigned long size() const { return _M_node_count; }
     unsigned long erase(const unsigned __int64& key) { g_erasedAttackerKey = key; if (_M_node_count) { --_M_node_count; return 1; } return 0; }
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;
     long  AttackerNumber;
     long  CombatWheelRingIndex;
@@ -234,7 +234,7 @@ struct CAttackingCombatantInfo {
     long  CurrentSequence;
     CSequenceVector CombatSequences;
 };
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     CAttackerMap  Attackers;
     unsigned char CombatWheel[0x0c];
     float         LastVictimWheelUpdatePos[3];

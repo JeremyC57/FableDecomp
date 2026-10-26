@@ -34,7 +34,7 @@ struct CModeList_Retail {                       // STLport list<...>: the sentin
     CModeBase_Retail* front() const { return node->next->data; }
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned char   _pad_0x00[0x0c];
     CModeList_Retail PModes;                   // +0x0c
     void func_0073a840();

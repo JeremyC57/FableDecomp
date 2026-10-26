@@ -4,28 +4,28 @@
 #define __fastcall
 #define __cdecl
 #endif
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { (void)flags; }
     virtual void Delete() { }
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) { }
     void AddRef() { ++IVRefCount; }
 };
-struct C3DAnimationStateBase : CIVCountedPointeeBase { };
-template <class T> struct CIVCountedPointer {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public: };
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(T* p) : m_pObject(p) { }
     CIVCountedPointer(const CIVCountedPointer& o) : m_pObject(o.m_pObject) { if (m_pObject) m_pObject->AddRef(); }
 };
 struct SCountBlock { long m_references; void* m_pfnDestroy; void* m_pObject; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* p, SCountBlock* b) : m_pObject(p), m_pCount(b) { }
     CCountedPointer(const CCountedPointer& o) : m_pObject(o.m_pObject), m_pCount(o.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
-struct C3DSkeletalMorph { int m_unused; };
+class C3DSkeletalMorph { public: int m_unused; };
 static int g_arrayCopies = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     CArray(const CArray& o) : m_pFirst(o.m_pFirst), m_pLast(o.m_pLast), m_pEnd(o.m_pEnd) { ++g_arrayCopies; }

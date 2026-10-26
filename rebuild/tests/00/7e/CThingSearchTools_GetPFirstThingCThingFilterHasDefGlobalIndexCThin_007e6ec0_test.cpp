@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingSearchTools { void* WorldMap; void* PThingMapManager; void* ThingManager; };
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components

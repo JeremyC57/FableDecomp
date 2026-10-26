@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stddef.h>
-struct CDefPointeeBase;
-struct CGamePlayerInterface { unsigned char _pad[0x7a0]; CDefPointeeBase* PControlsDef_Object; };
-struct CControlsDef {
+class CDefPointeeBase;
+class CGamePlayerInterface { public: unsigned char _pad[0x7a0]; CDefPointeeBase* PControlsDef_Object; };
+class CControlsDef { public:
     unsigned char _base[0x3c]; void* Controls[3];
     bool ToggleZTarget, ToggleSpells, ToggleSneak, ToggleExpressionMenu, ToggleExpressionShift, FlourishNeedsAttackButtonHeld;
 };

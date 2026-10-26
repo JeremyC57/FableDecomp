@@ -26,7 +26,7 @@ struct CComponentDef {
     bool          RegisterInListRegistry;          // +0x20a
     void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
@@ -79,7 +79,7 @@ public:
     virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
 };
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CComponentRoot {                            // the primary vtable at +0
     virtual ~CComponentRoot();
 };

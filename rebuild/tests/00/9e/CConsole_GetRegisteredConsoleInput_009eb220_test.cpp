@@ -6,8 +6,8 @@
 
 static int gLive = 0;
 
-struct CCharString
-{
+class CCharString
+{ public:
     char Text[32];
     CCharString(const char* s) { std::strcpy(Text, s); ++gLive; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++gLive; }
@@ -20,7 +20,7 @@ struct CCharString
     }
 };
 
-struct CConsoleInputBase { int Id; };
+class CConsoleInputBase { public: int Id; };
 
 struct SInputNode { const char* first; CConsoleInputBase* second; };
 
@@ -37,8 +37,8 @@ struct CInputMap
     }
 };
 
-struct CConsole
-{
+class CConsole
+{ public:
     CInputMap RegisteredConsoleInputs;
     SInputNode* FindInput(const CCharString& key) { return RegisteredConsoleInputs.find(key); }
     CConsoleInputBase* GetRegisteredConsoleInput(const CCharString& name)

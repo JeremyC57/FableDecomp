@@ -9,10 +9,10 @@
 // Layout: no members touched. Local model, the landed sibling CThingHolySite::ConstructFromParams 0x0083BAB0 shape.
 // Shape: the empty name is a named CCharString local in its own block (homed in the `push ecx` slot); the base result goes
 //   to a bool local (bl) that survives the destructor; base arguments (defIndex, pos, player, 0, name, 0, 0, true).
-struct C3DVector;
+class C3DVector;
 class CThingPhysical;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

@@ -12,7 +12,7 @@ struct CTarget {
     unsigned char m_value;                 // +0x40
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00();
     virtual unsigned char vfunc_83();
     unsigned char _pad[0x34];

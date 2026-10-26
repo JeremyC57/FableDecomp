@@ -28,7 +28,7 @@ struct CTCInventoryBase_Retail {
     void ProcessButtonBReleased();            // 0x005BC66F
 };
 
-struct CTCInventoryMap : CTCInventoryBase_Retail {
+class CTCInventoryMap : public CTCInventoryBase_Retail { public:
     unsigned char _pad_0x130[0x234 - 0x130];
     bool m_closing;                           // +0x234 (name from use)
     void ClearMapScreenPrimitives();          // 0x005FC510

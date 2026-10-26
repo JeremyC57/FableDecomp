@@ -5,7 +5,7 @@ struct Inner {
     virtual bool IsHitResponse() { return rv; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char flags;
     Inner* inner;
 };

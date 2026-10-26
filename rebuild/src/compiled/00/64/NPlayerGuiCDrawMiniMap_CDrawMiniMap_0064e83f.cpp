@@ -14,22 +14,22 @@
 // Shape: size TU; the display is built through edi (reused as `this` of Initialise), the byte flags are immediate stores, the
 // region-exit vector's inline constructor zeroes through eax with `and dword ptr [..],0`; Initialise's float argument is
 // copied `fld [eax+980h] ; push ecx ; fstp [esp]`.
-struct CPlayerGui;
+class CPlayerGui;
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x980];
     float         MiniMapWorldResolution;          // +0x980 (retail offset)
 };
 
 extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
 
-struct CMiniMapDisplay {                           // retail 0xc0 bytes
+class CMiniMapDisplay { public:                           // retail 0xc0 bytes
     unsigned char _body[0xc0];
     CMiniMapDisplay();                             // 0x0082A460
     void Initialise(float worldResolution);        // 0x0082A310
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float Left, Top, Right, Bottom;
 };
 
@@ -54,14 +54,14 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawMiniMap : CDrawBase {                  // vtable 0x0125A634
+class CDrawMiniMap : public CDrawBase { public:                  // vtable 0x0125A634
     virtual void v00();
     CMiniMapDisplay    MiniMap;                    // +0x28
     bool               Enabled;                    // +0xe8

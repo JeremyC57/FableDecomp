@@ -1,12 +1,12 @@
 // C3DAnimationBlendState::AddCombinationBlend @ 0099ef90
 
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 
 struct Inner {
     void addAlpha(C3DAnimationStateAlpha* a);   // extern __fastcall @ 0x9a01c0
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     Inner* pInner;      // offset 0: mov ecx,[esi]
     void helperA();     // extern __fastcall @ 0x99eb40
 };

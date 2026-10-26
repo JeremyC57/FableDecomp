@@ -11,7 +11,7 @@
 //          create @ 0x007FD4B0 (__fastcall), driver SetValue @ 0x007FD3D0, intelligent pointer @ 0x00A01B10 / 0x00A01B90 /
 //          0x00A01C10, push_back @ 0x004AD520, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
 //          @ 0x009AD410, thing create @ 0x0080C500 (__fastcall), SetOwner @ 0x0080CBF0. Globals: 1.5f 0x0125AADC, 2.5f 0x01241D68.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -20,8 +20,8 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -36,7 +36,7 @@ struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CTCBase;
+class CTCBase;
 class CThing {
 public:
     unsigned char  _pad00[0x20];
@@ -84,19 +84,19 @@ struct CTCDriver41 {                                  // driver of interface 0x4
 };
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& Get();             // 0x0044C6B0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_SnapDragonFast : CCreatureActionBase {
+class CCreatureAction_SnapDragonFast : public CCreatureActionBase { public:
     void PerformAction();
 };
 

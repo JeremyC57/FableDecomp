@@ -1,16 +1,16 @@
 // Behaviour test for CInputProcessInventoryStatsScreen::ProcessInput @ 0x00689C40 (copy of the model with stub callees).
 #include <cstdio>
-struct C2DVector { float x, y; };
-struct CInputEvent {
+class C2DVector { public: float x, y; };
+class CInputEvent { public:
     long type; int button; long action; C2DVector stick;
     long GetEventType() const { return type; }
     C2DVector GetAnalogueVector() const { return stick; }
 };
-struct CProcessedInput { bool handled; void SetHandled() { handled = true; } };
+class CProcessedInput { public: bool handled; void SetHandled() { handled = true; } };
 struct CFrontEndManager { long last; int sends; void SendEvent(long e) { last = e; ++sends; } };
 static CFrontEndManager g_fe;
 static CFrontEndManager* GetInstance() { return &g_fe; }
-struct CInputProcessInventoryStatsScreen {
+class CInputProcessInventoryStatsScreen { public:
     int refreshes;
     void Refresh() { ++refreshes; }
     bool IsEventButtonPressed(const CInputEvent& e) { return e.button == 1; }

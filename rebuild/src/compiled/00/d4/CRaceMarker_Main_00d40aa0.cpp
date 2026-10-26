@@ -9,12 +9,12 @@
 // +0x61), PMasterData +0x18. Interface model from the landed CHTG_AmbushPoint::Main 0x00D73610.
 // Shape: `while (!IsDone())` rotated into a bottom test after an entry test; the inner IsDone check after the
 // distance test leaves the loop.
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     void* __vftable;
     unsigned char _body[8];
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

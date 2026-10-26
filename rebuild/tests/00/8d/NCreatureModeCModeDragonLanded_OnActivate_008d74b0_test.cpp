@@ -3,13 +3,13 @@
 #include <cstdlib>
 
 static int g_base = 0, g_ctor = 0, g_dtor = 0;
-struct CThing { int x; };
+class CThing { public: int x; };
 static CThing g_hero;
 struct CBaseIP { virtual ~CBaseIP() { ++g_dtor; } void* item; CBaseIP() : item(0) { ++g_ctor; } void* GetPItem() const { return item; } void SetPItem(void* p) { item = p; } };
 template<class T> struct CIP : CBaseIP { CIP(T* p) : CBaseIP() { SetPItem(p); } CIP& operator=(const CIP& o) { SetPItem(o.GetPItem()); return *this; } };
-struct CPlayer { CThing* GetHeroThing() { return &g_hero; } };
-struct CPlayerManager { CPlayer p; CPlayer* GetPlayer() { return &p; } };
-struct CGame { unsigned char pad[0x1c]; CPlayerManager* pm; };
+class CPlayer { public: CThing* GetHeroThing() { return &g_hero; } };
+class CPlayerManager { public: CPlayer p; CPlayer* GetPlayer() { return &p; } };
+class CGame { public: unsigned char pad[0x1c]; CPlayerManager* pm; };
 static CGame* g_pGame;
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CModeStandBase : CModeBase { void OnActivate() { ++g_base; } };

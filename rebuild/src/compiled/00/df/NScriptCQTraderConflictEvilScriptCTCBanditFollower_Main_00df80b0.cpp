@@ -18,12 +18,12 @@
 // Shape: the CTC_BanditFighter row 0x00DF8970 (same TU) plus a local scripted-thing handle and a paused movie sequence
 //   (the CTH_ThunderBoy row 0x00EDF3A0 handle/movie model); each condition is a bool materialised over conditional
 //   CCharString temporaries.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
     virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
@@ -39,7 +39,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
 };
-struct CRGBColour {                                    // D3DCOLOR byte order
+class CRGBColour { public:                                    // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -51,7 +51,7 @@ struct CBaseIntelligentPointer {                       // vtable 0x0129A7D8
     CBaseIntelligentPointer();                         // 0x0099A380
     virtual ~CBaseIntelligentPointer();                // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -61,7 +61,7 @@ struct CResourcePImp {                                 // the handles' counted i
     CResourcePImp() : Data(0), Info(0) { }
     ~CResourcePImp();                                  // 0x006E7AB0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001(); virtual void h002(); virtual void h003(); virtual void h004();
     virtual void MoveToThing(const CScriptThing& thing, float speed, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void h006(); virtual void h007(); virtual void h008(); virtual void h009(); virtual void h010(); virtual void h011();
@@ -76,7 +76,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CResourcePImp PImp;                                // +0x08
     CScriptGameResourceObjectMovieBase() { }
     // implicit destructor; out-of-line copy 0x006E7B80
@@ -205,8 +205,8 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData;
-struct CQ_TraderConflictEvilScript {
+class CQ_SunnyvaleMasterData;
+class CQ_TraderConflictEvilScript { public:
     unsigned char _pad[0x60];
     bool QuestStartScreened;                           // +0x60
     long NextTimeToSpawnGuards;                        // +0x64

@@ -10,17 +10,17 @@ void operator delete(void* p) throw() { if (g_deleteArmed) ++g_deleteCount; (voi
 
 static char g_lastDef[64];
 static char g_lastName[64];
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long = -1) { PStringData = (void*)text; }
     ~CCharString() {}
 };
-struct C3DVector { float X, Y, Z; };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class C3DVector { public: float X, Y, Z; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static int g_destroyed = 0;
 static void DestroyData(void*) { ++g_destroyed; }
 
-struct CScriptThing;
+class CScriptThing;
 struct CCountedScriptImp {
     CScriptThing* Data; CCPPointerInfo* Info;
     CCountedScriptImp() : Data(0), Info(0) {}
@@ -40,10 +40,10 @@ struct CCountedScriptImp {
         Data = 0; Info = 0;
     }
 };
-struct CBaseClass { virtual ~CBaseClass() {} };
+class CBaseClass { public: virtual ~CBaseClass() {} };
 static C3DVector g_pos = { 1.0f, 2.0f, 3.0f };
 static const C3DVector* g_lastPos = 0;
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedScriptImp PImp;
     virtual ~CScriptThing() {}
     virtual void v01() const {} virtual void v02() const {} virtual void v03() const {} virtual void v04() const {}
@@ -52,7 +52,7 @@ struct CScriptThing : CBaseClass {
 };
 static CCPPointerInfo* g_newInfo = 0;
 static CScriptThing* g_newData = (CScriptThing*)0x1234;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     virtual CScriptThing CreateCreature(const CCharString& defName, const C3DVector& position,
                                         const CCharString& scriptName, bool) const
@@ -65,7 +65,7 @@ struct CGameScriptInterface {
     }
 };
 struct CV_TalentlessBardScript { unsigned char _base[0x54]; CScriptThing stBard; };
-struct CEntityScriptBase { virtual void v00() {} CGameScriptInterface* Game; CScriptThing Me; };
+class CEntityScriptBase { public: virtual void v00() {} CGameScriptInterface* Game; CScriptThing Me; };
 struct CTB_BardSpawnPoint : CEntityScriptBase {
     CV_TalentlessBardScript* ParentClass; void* PMasterData;
     void Main()

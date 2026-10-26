@@ -14,14 +14,14 @@
 //   adjacent bools, at +0x340 / +0x341 in retail (Ego_r.pdb's debug layout has them at +0x64C / +0x64D).
 // Label: catalog "CThing_UpdateSkillState" -> Ego_r.pdb ?SetGreetedThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAEXXZ.
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 presence bitset of the interface types
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
@@ -39,18 +39,18 @@ struct CThing {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
 };
-struct CTCCreatureOpinionOfHero {               // interface 0x4F
+class CTCCreatureOpinionOfHero { public:               // interface 0x4F
     unsigned char _pad[0x340];
     bool InteractedFlag;                        // +0x340
     bool GreetedFlag;                           // +0x341

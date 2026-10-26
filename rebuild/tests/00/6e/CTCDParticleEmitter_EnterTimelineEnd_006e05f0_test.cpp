@@ -2,14 +2,14 @@
 // without one the parent thing is killed.
 #include <cstdio>
 static int g_kills = 0, g_ends = 0;
-struct CThing { void Kill(bool immediately) { if (immediately) ++g_kills; } };
-namespace NParticleEngine { struct CParticleEmitter { void EnterTimelineEnd() { ++g_ends; } }; }
+class CThing { public: void Kill(bool immediately) { if (immediately) ++g_kills; } };
+namespace NParticleEngine { class CParticleEmitter { public: void EnterTimelineEnd() { ++g_ends; } }; }
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     void* PData;
     NParticleEngine::CParticleEmitter* GetPItem() const { return static_cast<NParticleEngine::CParticleEmitter*>(PData); }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; void* EmitterName; long ParticleTypeID;
     CBaseIntelligentPointer PEmitter;

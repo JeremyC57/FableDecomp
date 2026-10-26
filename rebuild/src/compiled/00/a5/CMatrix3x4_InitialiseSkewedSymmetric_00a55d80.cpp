@@ -3,10 +3,10 @@
 // Shape: an inlined identity setter runs first; its chained zero assignment stores right to left (+0x1c down to +0x04),
 //        the chained 1.0f assignment stores +0x20, +0x10 (the +0x00 store merges with the later 0), then the three
 //        separate translation zeroes. The skew entries then overwrite the identity in row order (fchs for the negated ones).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0;                              // +0x00
     C3DVector m_row1;                              // +0x0c
     C3DVector m_row2;                              // +0x18

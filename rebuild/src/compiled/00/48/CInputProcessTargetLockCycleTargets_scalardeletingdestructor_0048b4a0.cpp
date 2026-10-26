@@ -4,8 +4,8 @@
 // operator delete (retail 0xbfe9bc)
 void __cdecl operator_delete_impl(void* p);
 
-struct CInputProcessTargetLockCycleTargets
-{
+class CInputProcessTargetLockCycleTargets
+{ public:
     void destroy();  // real destructor body @ 0xa0d3d0
 };
 

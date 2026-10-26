@@ -6,7 +6,7 @@
 //   this in ecx, flags on stack (bit0 => operator delete(this)).
 // Modeled as a free __fastcall(this) function (byte-identical to __fastcall).
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 // scalar/base destructor (this-only) at 0x596051
 extern "C" void __fastcall CResource_dtor(CLandscapeBackgroundPatch* thisptr);

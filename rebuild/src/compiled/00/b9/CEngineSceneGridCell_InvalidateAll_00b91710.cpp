@@ -9,7 +9,7 @@
 // bit4 HasOcclusionResults. Walks up the parent chain clearing the three cached-validity bits
 // and stops early at the first ancestor that is already fully invalid (its ancestors must be too).
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CEngineSceneGridCell* Parent;               // +0x00 (PDB)
     unsigned char         _pad_0x04[0x40];      // +0x04 bounding box, counts, masks (PDB)
     unsigned char         Flags;                // +0x44 (PDB bitfield, see above)

@@ -3,8 +3,8 @@
 static int g_base;
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() { ++g_base; } };
 struct CInputProcessOwner : CBaseClassNonCopyable { void* PPlayerInterface; CInputProcessOwner() : CBaseClassNonCopyable(), PPlayerInterface(0) {} };
-struct CLinkedListPosition { void* Data; void* Next; void* Previous; CLinkedListPosition() : Data(0), Next(0), Previous(0) {} };
-struct CAInputProcess : CInputProcessOwner { CLinkedListPosition InputProcessListPos; CAInputProcess() : CInputProcessOwner(), InputProcessListPos() {} };
+class CLinkedListPosition { public: void* Data; void* Next; void* Previous; CLinkedListPosition() : Data(0), Next(0), Previous(0) {} };
+class CAInputProcess : public CInputProcessOwner { public: CLinkedListPosition InputProcessListPos; CAInputProcess() : CInputProcessOwner(), InputProcessListPos() {} };
 int main()
 {
     CAInputProcess p;

@@ -10,11 +10,11 @@
 #define CPersistContext CPersistContext_PDB
 #include "fable_persist_context.h"
 #undef CPersistContext
-struct CPersistContext : CPersistContext_PDB {
+class CPersistContext : public CPersistContext_PDB { public:
     void Transfer(float& value); // 0x00431061
     void Transfer(long& value);  // 0x00431102
 };
-struct CCombatDialogueDef {
+class CCombatDialogueDef { public:
     void* __vftable;
     unsigned char nativePrefix[0x38];
     float MinTimeBetweenSpeech;

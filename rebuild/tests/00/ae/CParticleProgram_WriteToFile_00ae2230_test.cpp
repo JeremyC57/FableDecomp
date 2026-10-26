@@ -1,13 +1,13 @@
 // Behaviour test for CParticleProgram::WriteToFile (0x00AE2230): records the stream calls and checks the record order,
 // the counts, the raw byte lengths and the empty-array data pointer (the array object itself).
 #include <cstdio>
-struct CCharString { int m_id; };
-struct C4DVector { float X, Y, Z, W; };
-struct C2DVector { float X, Y; };
-struct C3DTriangle2 { unsigned short Index[3]; };
-struct C3DQuad2 { unsigned short Index[4]; };
-struct C3DClothRenderVertex { unsigned short Particle; unsigned short TexCoord; };
-struct C3DGroup2 { int m_id; };
+class CCharString { public: int m_id; };
+class C4DVector { public: float X, Y, Z, W; };
+class C2DVector { public: float X, Y; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
+class C3DQuad2 { public: unsigned short Index[4]; };
+class C3DClothRenderVertex { public: unsigned short Particle; unsigned short TexCoord; };
+class C3DGroup2 { public: int m_id; };
 static unsigned long g_log[256];
 static const void* g_ptr[64];
 static int g_n = 0, g_np = 0;
@@ -25,14 +25,14 @@ public:
     long GetSize() { return 5; }
     void* PeekData() { return m_bytes; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;
     unsigned long size() const { return m_last - m_first; }
     const T* GetData() const { return size() > 0 ? m_first : (const T*)this; }
 };
-struct CParticleSimulation {
+class CParticleSimulation { public:
     void WriteToFile(CDataOutputStream& stream) { stream.WriteULong(777); }
 };
 struct CExportParticle { CCharString first; unsigned long second; };

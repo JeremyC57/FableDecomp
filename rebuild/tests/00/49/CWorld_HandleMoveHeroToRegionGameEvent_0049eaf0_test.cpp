@@ -7,13 +7,13 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) {}
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     unsigned char Payload[0x20]; long Size;
     long GetData(CMemoryBuffer& b) const { std::memcpy(b.Data, Payload, 0x20); b.Length = Size; return Size; }
 };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 static float g_x, g_y, g_z, g_a; static int g_t, g_f, g_d;
-struct CWorld {
+class CWorld { public:
     void SetAsLoadingRegion(const C3DVector& p, float a, bool t, bool f, bool d) { g_x = p.X; g_y = p.Y; g_z = p.Z; g_a = a; g_t = t; g_f = f; g_d = d; }
     void HandleMoveHeroToRegionGameEvent(const CGameEvent* event)
     {

@@ -16,22 +16,22 @@
 // +0x90, MyMessages +0x98, MessageToBeSent +0x9C, NextCrossInvalid +0xA0, Tension +0xA4, PauseFor +0xA8,
 // TimeToPlay +0xAC, EditPreviewIndex +0xB0, NodeToStartOn +0xB4, NodeToEndOn +0xB8, AnimationSpeed +0xBC,
 // ValidAnimList +0xC0. Local model: no engine header exists for this class.
-struct CThing;
+class CThing;
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };
 
-struct CTCCameraPointDefinitionBase {                // vtable 0x01269B04
+class CTCCameraPointDefinitionBase { public:                // vtable 0x01269B04
     virtual void v00();
     unsigned char _base[0x5c];                       // +0x04 .. +0x60 (CTCBase, definition members, edit preview)
     CTCCameraPointDefinitionBase(CThing* thing);     // 0x0075C180
 };
 
-struct CCardinalSpline;
+class CCardinalSpline;
 struct CCountedPointerSpline {                       // CCountedPointer<CCardinalSpline> {object, count block}
     CCardinalSpline* Data;
     void*            Info;
@@ -74,7 +74,7 @@ struct CLongSet {                                    // std::set<long>: header p
     }
 };
 
-struct CTCCameraPointScriptedSpline : CTCCameraPointDefinitionBase {   // vtable 0x0126A0BC
+class CTCCameraPointScriptedSpline : public CTCCameraPointDefinitionBase { public:   // vtable 0x0126A0BC
     CCountedPointerSpline PTimingSpline;             // +0x60
     CKeyCameraVector      KeyCameras;                // +0x68
     CKeyCamera*           SelectedKeyCamera;         // +0x74

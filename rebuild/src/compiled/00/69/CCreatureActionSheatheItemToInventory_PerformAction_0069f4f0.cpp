@@ -9,18 +9,18 @@
 // CPlayer::SetAggressiveMode(bool) @ 0x00487EB0.
 // Shape: the carrying and mode-manager components are zero-preloaded `if (HasTC) GetTC` on a creature fetched once per lookup
 // (`xor esi,esi` before the GetPItem call); the other three lookups are tested blocks; GetTC as the end/hit ternary (component in ecx) except the CTCCombat one, whose argument push wants the out-parameter GetInterface form (component in eax).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     bool IsMainPlayer();                        // 0x00487520
     void SetAggressiveMode(bool aggressive);    // 0x00487EB0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,28 +57,28 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* RemoveThingFromPrimarySlot(bool drop);   // 0x006A1E00
 };
-struct CTCFlammable {
+class CTCFlammable { public:
     void ExtinguishFire();                      // 0x00780C80
 };
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void RefreshSheathedWeapons();              // 0x005C9962
 };
-struct CTCCombat {
+class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);     // 0x00733E10
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RestartCurrentMode();                  // 0x0073A840
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     void PerformAction();
 };
 

@@ -7,8 +7,8 @@
 // 8 bytes (vptr + the counted engine primitive, count at +4).
 // Shape: three copies of the same inline handle Reset() (the ClearBox model: null-safe GetRefCount() == 1 notification, then
 // the release with both zero stores); unlike ClearBox the vectors are not emptied, only their handles are cleared.
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitive {
+class CEnginePrimitiveHandle;
+class CEnginePrimitive { public:
     virtual void v00();
     virtual void Destroy();                                     // slot 1
     virtual void v02();
@@ -16,7 +16,7 @@ struct CEnginePrimitive {
     long RefCount;                                              // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle();
     CEnginePrimitive* P;                                        // +0x04
     long GetRefCount() const { return P ? P->RefCount : 0; }
@@ -38,7 +38,7 @@ struct CHandleVector {                          // STLport vector<CEnginePrimiti
     CEnginePrimitiveHandle* begin() { return _M_start; }
     CEnginePrimitiveHandle* end() { return _M_finish; }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     void* ParentThing;                          // +0x04
     unsigned char _pad08[0x44 - 0x08];

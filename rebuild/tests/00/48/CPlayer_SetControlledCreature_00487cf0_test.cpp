@@ -2,8 +2,8 @@
 #include <stdio.h>
 // Behaviour test for CPlayer::SetControlledCreature (0x00487CF0): both intelligent pointers take the creature, a fresh
 // third-person view goes to the view manager, InitialPlayerModeSet is cleared and the game camera is reset.
-struct CBaseObject { int tag; };
-struct CThingPlayerCreature : CBaseObject { };
+class CBaseObject { public: int tag; };
+class CThingPlayerCreature : public CBaseObject { public: };
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer() { }
@@ -20,17 +20,17 @@ public:
 };
 static int g_viewsBuilt = 0;
 class CView3DThirdPerson { public: CView3DThirdPerson() { ++g_viewsBuilt; } unsigned char _data[0x9C]; };
-struct CDisplayViewManager { CView3DThirdPerson* Current; void SetView(CView3DThirdPerson* view) { Current = view; } };
-struct CDisplayEngine { unsigned char _pad00[0xE0]; CDisplayViewManager* PViewManager; };
-struct CMainGameComponent { unsigned char _pad00[0x28]; CDisplayEngine* PDisplayEngine; };
+class CDisplayViewManager { public: CView3DThirdPerson* Current; void SetView(CView3DThirdPerson* view) { Current = view; } };
+class CDisplayEngine { public: unsigned char _pad00[0xE0]; CDisplayViewManager* PViewManager; };
+class CMainGameComponent { public: unsigned char _pad00[0x28]; CDisplayEngine* PDisplayEngine; };
 CMainGameComponent* g_pMainGameComponent;
-struct CGameCameraManager { int Resets; void ResetCamera() { ++Resets; } };
-struct CAIGameCameraBase {
+class CGameCameraManager { public: int Resets; void ResetCamera() { ++Resets; } };
+class CAIGameCameraBase { public:
     CGameCameraManager* Manager;
     virtual void GetCameraManager(CGameCameraManager** out) { *out = Manager; }
 };
 struct CWorldCameraView { unsigned char _pad00[0x34]; CAIGameCameraBase* PCurrentGameCamera; };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x1c];
     CWorldCameraView* World;                                    // +0x1c
     unsigned char _pad20[0x0c];

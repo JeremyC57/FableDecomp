@@ -9,23 +9,23 @@
 //   SaidPieceAboutAttackingVictim +0x25, SpokenOnFirstProximity +0x26, IntimidateSpeechLoop +0x28. The parent's byte at
 //   retail +0x70 is the quest's bully flag (local model: the retail CQ_NewOakValeIntroScript layout is not the PDB's).
 // Shape: one `xor ebx,ebx` feeds every false argument and store; the nested GetHero call keeps the interface vtable in ebp.
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
 };
-struct CBaseClass {                              // vtable 0x01231710
+class CBaseClass { public:                              // vtable 0x01231710
     CBaseClass() {}
     virtual ~CBaseClass();
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:               // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) {}
     virtual ~CScriptThing();
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

@@ -22,7 +22,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -37,16 +37,16 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return m_pObject; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
     const T& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 
-struct C3DKeyframe { float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30
-struct C3DMesh2;
-struct C3DAnimation2 {
+class C3DKeyframe { public: float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30
+class C3DMesh2;
+class C3DAnimation2 { public:
     void* __vftable;
     long _04;
     unsigned long AnimType;                 // +0x08 (C3DAnimationStats)
@@ -54,30 +54,30 @@ struct C3DAnimation2 {
     void CalcLocalBoneTransformation(C3DKeyframe* out, unsigned long bone, float time) const;   // 0x00A4D330
     bool IsRelative() const { return (AnimType & 4) != 0; }
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;   // 0x00A26C60
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimationInfo(long index);   // 0x00A242C0
 };
 
-struct C3DAnimationStateBase {
+class C3DAnimationStateBase { public:
     virtual void v0();
     virtual void v1();
     virtual long GetStateType() const;      // slot 2 (+8)
     long m_refCount;                        // +4
 };
-struct C3DAnimationState : C3DAnimationStateBase {
+class C3DAnimationState : public C3DAnimationStateBase { public:
     long  AnimationIndex;                   // +0x08
     float AnimationTime;                    // +0x0c
 };
-struct C3DAnimationTransitionState : C3DAnimationStateBase {
+class C3DAnimationTransitionState : public C3DAnimationStateBase { public:
     C3DAnimationStateBase* StartState;      // +0x08 CIVCountedPointer<C3DAnimationStateBase>
     C3DAnimationStateBase* EndState;        // +0x0c
     float Progress;                         // +0x10
 };
 
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     void* __vftable;
     CMeshDataBank* MeshBank;                // +0x04
     C3DAnimationInfo* GetAnimationInfo(long index) const { return MeshBank->GetAnimationInfo(index); }

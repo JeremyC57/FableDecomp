@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing {};
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} C3DVector() {} };
+class CThing { public:};
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} C3DVector() {} };
 static C3DVector g_pos; static float g_radius; static long g_type; static int g_terminated; static bool* g_reached;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long type, bool, bool, bool, CThing*, bool, float)
     { g_pos = pos; g_radius = radius; g_type = type; g_reached = reached; *reached = true; return repeat; }

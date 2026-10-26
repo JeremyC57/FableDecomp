@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour of 0x00AACFA0 (chunk 901 piece): slot 4 returns a reference to the position at +0x04
-struct C3DVector { float X; float Y; float Z; };
+class C3DVector { public: float X; float Y; float Z; };
 struct CSoundReceiverLH {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual const C3DVector& vfunc_4();

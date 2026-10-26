@@ -16,7 +16,7 @@
 // (the type constant 0x30 is held in ebx); both getters are called on the CTCCombat component; the chosen def is a CDefPointer local
 // filled from each getter's full-expression temporary through an AddRef copy; CDefPointer release and assignment clear the pointer
 // only inside the non-null arm (`if (p) { p->Release(); p = 0; }`).
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
 };
@@ -53,14 +53,14 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1
 };
-struct CAbilityDef : CDefVirtual, CRefCounted {
+class CAbilityDef : public CDefVirtual, public CRefCounted { public:
     __forceinline void Release()
     {
         if (--m_count == 0)
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer()
@@ -91,7 +91,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     mutable CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];
@@ -116,13 +116,13 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
     return thing != 0 && IsThingAliveImpl(thing);
 }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();               // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CTCCombat {
+class CTCCombat { public:
     bool IsMeleeFlourishValid();                   // 0x00733EE0
     CDefPointer<CAbilityDef> GetPMeleeFlourishAbility();   // 0x00733480
     bool IsShowingBaseAbility();                   // 0x00733290 (label unverified)

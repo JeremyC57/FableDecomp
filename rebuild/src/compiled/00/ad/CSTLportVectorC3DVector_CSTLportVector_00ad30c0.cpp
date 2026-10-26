@@ -13,7 +13,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-struct C3DVector {                              // 12-byte element with an empty default ctor: T() leaves the frame temporary unset
+class C3DVector { public:                              // 12-byte element with an empty default ctor: T() leaves the frame temporary unset
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

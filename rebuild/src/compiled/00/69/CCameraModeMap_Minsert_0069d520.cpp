@@ -18,14 +18,14 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 namespace NCameraModes { class CBaseInit; enum EMode { MODE_NONE }; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                 // +0x00
     void (__cdecl* DeleteFunc)(void*);                      // +0x04
     void* Data;                                             // +0x08
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*              Data;                                   // +0x00
     CCPPointerInfo* Info;                                   // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }

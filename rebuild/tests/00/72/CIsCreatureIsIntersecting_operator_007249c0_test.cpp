@@ -1,7 +1,7 @@
 // Behaviour test for 0x007249C0 CIsCreatureIsIntersecting::operator() (callees modelled).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase { C3DVector Position; float Radius; };
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public: C3DVector Position; float Radius; };
 class CThing {
 public:
     unsigned char m_type;
@@ -15,7 +15,7 @@ public:
     bool IsPerformingAnyAction() const { return busy; }
     bool IsBlocking() const { return blocking; }
 };
-struct CIsCreatureIsIntersecting {
+class CIsCreatureIsIntersecting { public:
     CThing* Owner;
     bool operator()(CThing* thing) const
     {

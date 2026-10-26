@@ -1,4 +1,4 @@
-struct CManagedTextureData {
+class CManagedTextureData { public:
     void* vftable;
 };
 

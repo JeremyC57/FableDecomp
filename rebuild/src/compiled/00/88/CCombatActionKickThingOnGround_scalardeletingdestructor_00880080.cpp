@@ -1,4 +1,4 @@
-struct CCombatAction_KickThingOnGround {
+class CCombatAction_KickThingOnGround { public:
     void* vftable;
 };
 

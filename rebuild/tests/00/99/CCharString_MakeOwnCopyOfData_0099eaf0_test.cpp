@@ -9,7 +9,7 @@ struct CBasicStringChar {
     void Insert(long position, const char* text) { unsigned long n = std::strlen(text); char* d = (char*)std::malloc(StringLength + n + 1); std::memcpy(d, PData, position); std::memcpy(d + position, text, n); std::strcpy(d + position + n, PData + position); std::free(PData); PData = d; StringLength += n; }
     bool operator==(const char* text) const { return std::strcmp(PData, text) == 0; }
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; CCharStringData(const char* text) : Data(text), NoRefs(1) { } };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; CCharStringData(const char* text) : Data(text), NoRefs(1) { } };
 #pragma pack(pop)
 static int g_unassigned = 0;
 class CCharString {

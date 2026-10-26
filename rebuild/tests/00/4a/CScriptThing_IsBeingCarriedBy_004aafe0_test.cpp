@@ -66,7 +66,7 @@ struct CScriptThingInner {
   virtual bool m62(int name){ return true; }
   virtual bool m63(int name){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool IsBeingCarriedBy(int name); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool IsBeingCarriedBy(int name); };
 bool CScriptThing::IsBeingCarriedBy(int name){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m63(name); }
 int main(){
     CScriptThing t; t.m_impl=0;

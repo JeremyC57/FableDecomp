@@ -29,7 +29,7 @@ struct CStateBlock {
     bool          EnableSurfaceSection;            // +0x5e
     bool          EnableSignedFormats;             // +0x5f
 };
-struct CGraphicBankStateBlock {
+class CGraphicBankStateBlock { public:
     virtual void v00();
     CStateBlock State;                             // +0x04
     void Set(const CGraphicBankStateBlock& other);

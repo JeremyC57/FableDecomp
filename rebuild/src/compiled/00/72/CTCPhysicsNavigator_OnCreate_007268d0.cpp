@@ -7,10 +7,10 @@
 // from one `xor eax,eax` register.
 // Layout: Ego_r.pdb CTCPhysicsBase / CTCPhysicsStandard / CTCPhysicsNavigator (packed, Navigating +0x88 ... flags +0xad); the
 // engine headers are flattened PODs without virtuals, so the hierarchy is modelled locally with the same offsets.
-struct C3DVector { float X, Y, Z; void Set(float x, float y, float z) { Z = z; Y = y; X = x; } };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; void Set(float x, float y, float z) { Z = z; Y = y; X = x; } };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00();
     void*     m_tcBase[2];                     // +0x04 CTCBase body
     C3DVector Position;                        // +0x0c

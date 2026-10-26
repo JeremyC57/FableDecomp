@@ -7,7 +7,7 @@
 // a plain `mov`), then the pointer member's inline copy constructor (its address in edi). ChargeDistance is the
 // engine-header name (PDB +0x12c -> retail +0x114). The manifest label "CCreatureAction_BanditKingStuck" is
 // rejected: the vtable stored is CCreatureAction_ScorpionChargeInto's (rtti-vtables.tsv).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -24,13 +24,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCreatureAction_ScorpionChargeInto : CCombatActionBase {   // vtable 0x01280ED4; retail sizeof 0x120
+class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:   // vtable 0x01280ED4; retail sizeof 0x120
     float               ChargeDistance;     // +0x114
     CIntelligentPointer PTarget;            // +0x118 CIntelligentPointer<CThing>
     virtual void v00();

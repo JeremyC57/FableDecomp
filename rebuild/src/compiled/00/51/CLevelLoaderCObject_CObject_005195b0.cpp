@@ -11,8 +11,8 @@
 // sits in ebx, then the block freed under a null test) and ~set (inline clear(): erase from the root, leftmost/root/rightmost
 // reset in STLport order, count zeroed; then the header freed).
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-struct CCharString { void* m_pData; };
-struct CAFile;
+class CCharString { public: void* m_pData; };
+class CAFile;
 struct CCountedPointerAFile { CAFile* Object; void* Block; };
 struct CLevelFiles {                        // CLevelLoader::CObject::CLevelFiles (28 bytes)
     long LevelID;                           // +0x00
@@ -66,8 +66,8 @@ struct CCharStringSet {                     // retail STLport set<CCharString> (
             free(_M_header);
     }
 };
-struct CLevelLoader {
-struct CObject {
+class CLevelLoader { public:
+class CObject { public:
     CCharStringSet LoadableSections;        // +0x00
     CLevelLoader* PLevelLoader;             // +0x0c
     vector<CLevelFiles> RegionLevelFiles;   // +0x10

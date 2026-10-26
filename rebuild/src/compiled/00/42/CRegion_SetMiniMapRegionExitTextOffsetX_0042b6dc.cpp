@@ -11,7 +11,7 @@
 // Incoming ecx is never used -> not a real thiscall body. Two stack args
 // cleaned via ret 8 -> __stdcall. Value-returning forwarder keeps call;ret.
 
-struct CCharString;
+class CCharString;
 
 // Helper at 0x592f92: takes the forwarded raw dword and cleans it (stdcall).
 extern int __stdcall Helper592f92(int f);

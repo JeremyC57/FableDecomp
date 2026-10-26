@@ -1,6 +1,6 @@
 #include <cstdio>
 static const float g_minAirResistance = 0.0001f;
-struct CPhysicsDef { float AirResistance; };
+class CPhysicsDef { public: float AirResistance; };
 struct CTCPhysicsStandard {
     CPhysicsDef* PhysicsDef;
     bool Moving : 1;

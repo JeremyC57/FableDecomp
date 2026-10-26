@@ -9,14 +9,14 @@
 // form flips the register choice] before FramesBeforeRemovingSelf (+0x14) = -1 and Active (+0x18) = false: plain
 // initialisers in declaration order. Members named after the PDB fields listed in the landed
 // CModeSleepBed ctor (0x0084B7C0).
-struct CThing;
+class CThing;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                   // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -28,7 +28,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString m_string;                  // +4
     unsigned long m_hash;                  // +8

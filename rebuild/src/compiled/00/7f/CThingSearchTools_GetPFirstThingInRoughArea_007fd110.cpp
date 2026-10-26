@@ -1,5 +1,5 @@
 // CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_HasScriptName, CThing>
-// Leaf: ??$GetPFirstThingInRoughArea@UCThingFilter_HasScriptName@@UCThing@@@CThingSearchTools@@
+// Leaf: ??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD110, length 542 bytes (`ret 0xc`).
 // Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingFilter_HasScriptName::operator() 0x006A7E30
 //   (sweep3: it compares the thing's ScriptName, retail CThing +0x74 = Ego_r +0x84; HasScriptData's operator() is the next
@@ -14,16 +14,16 @@
 
 #include <string.h>
 #include <stdlib.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
 // Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-struct CThing {
+class CThing { public:
     enum { TypeMask = 0 };
     unsigned char _pad00[0x60];
-    struct CTCPhysicsBase* PhysicsTC;                      // +0x60
+    class CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
@@ -36,7 +36,7 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
 }
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     bool operator()(const CThing& thing) const;   // 0x006A7E30 (PDB takes the thing by reference)
 };
 // One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
@@ -89,7 +89,7 @@ struct CMapVector {
 };
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08

@@ -40,7 +40,7 @@ struct pair {
 typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
-struct CCompareString {
+class CCompareString { public:
     bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
 };
 

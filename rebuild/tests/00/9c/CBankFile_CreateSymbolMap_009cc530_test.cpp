@@ -7,25 +7,25 @@
 // Callees: CSymbolMap Clear009E5250, AddSymbolDirty009E54E0, Finalise009E5C30;
 // CCharString constructors0099EBF0/0099EC30, Find0099E5A0, destructor0099EAE0;
 // CPackedUIntArray index00A629F0. Missing-name literal0129A03C is "(Unknown)".
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char*, long); //0099EBF0
     CCharString(const CCharString&); //0099EC30
     ~CCharString(); //0099EAE0
     long Find(char) const; //0099E5A0
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     void Clear(); //009E5250
     void AddSymbolDirty(const CCharString&, const CCharString&, long); //009E54E0
     void Finalise(); //009E5C30
 };
-template<class T> struct CArray { T* First; T* Last; T* Limit; bool empty() const { return First==Last; } T& operator[](unsigned long i) { return First[i]; } };
+template<class T> class CArray { public: T* First; T* Last; T* Limit; bool empty() const { return First==Last; } T& operator[](unsigned long i) { return First[i]; } };
 struct CRuntimeData { unsigned long DataOffset, DataSize; unsigned char DataType; bool Valid; };
 struct CPackedUIntArray {
     unsigned long* PackedInts; unsigned long Size; unsigned char Bits; unsigned long Bias;
     unsigned long operator[](unsigned long) const; //00A629F0
 };
-struct CBankFile {
+class CBankFile { public:
     virtual void Slot00(); virtual void Slot01(); virtual void Slot02(); virtual void Slot03();
     virtual void Slot04(); virtual void Slot05(); virtual void Slot06(); virtual void Slot07();
     virtual void Slot08(); virtual void Slot09(); virtual void Slot10(); virtual void Slot11();

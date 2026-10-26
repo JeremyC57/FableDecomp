@@ -10,8 +10,8 @@
 //   same offsets. The parent tree node's +0xA4 pointer reaches the landscape map whose +0x14 header holds the world-map origin
 //   (+0x60 X, +0x62 Y) -- descriptive, the PDB node view differs from retail here. The occlusion manager keeps a fixed
 //   0x2000-entry query array (+0x4014) and its count (+0x401C); the query allocation is inline.
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Position;
 };
 struct SOcclusionQuery {
@@ -19,7 +19,7 @@ struct SOcclusionQuery {
     long Result;
     SOcclusionQuery() : Query(0), Result(0) { }
 };
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     unsigned char    _pad0000[0x4014];
     SOcclusionQuery* Queries;                       // +0x4014
     unsigned char    _pad4018[4];
@@ -47,12 +47,12 @@ struct CEngineGlobal {
 extern CEngineGlobal* g_pEngine;                    // 0x01436EA8
 struct CLandscapeMapHeader { unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
 struct CLandscapeMapView { unsigned char _pad[0x14]; CLandscapeMapHeader* Header; };          // +0x14
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     unsigned char      _pad[0xa4];
     CLandscapeMapView* Map;                         // +0xA4 (descriptive)
     void SetVisibilityFlagAndUpdateParentChain(bool visible);   // 0x00BF7370
 };
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void*                         __vftable;        // +0x00
     CLandscapeBackgroundTreeNode* Parent;           // +0x04
     unsigned char                 _pad08[0xf8 - 0x08];

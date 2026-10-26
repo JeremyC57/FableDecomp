@@ -63,10 +63,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -169,7 +169,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, m_CombatMultiplierTimer) == 0xec)
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -191,14 +191,14 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -271,7 +271,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };

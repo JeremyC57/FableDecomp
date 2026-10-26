@@ -11,7 +11,7 @@
 //          the workplace before each try (the sibling of CAIStateGroup_IdleAtHome::Update 0x00917380).
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04); the creature's
 //          workplace intelligent pointer at +0x170 as in the landed TavernServer rows.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
@@ -19,7 +19,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
     void RotateAboutZ(float angle, bool flag);  // 0x00A14260
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CBaseIntelligentPointer {
@@ -27,19 +27,19 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem();                         // 0x00A01B50
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0x170];
     CBaseIntelligentPointer PWorkplace;         // +0x170 (descriptive)
     CThing* GetPWorkplace() { return PWorkplace.GetPItem(); }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

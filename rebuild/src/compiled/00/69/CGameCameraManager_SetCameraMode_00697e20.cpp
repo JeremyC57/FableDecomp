@@ -9,7 +9,7 @@
 #undef CGameCameraManager
 #include "engine/CGameScriptInterface.h"
 #include <string.h>
-namespace NCameraModes {struct CBase {void Die();void TransferPersistantBaseData(const CBase&);void Init();};}
+namespace NCameraModes {class CBase { public:void Die();void TransferPersistantBaseData(const CBase&);void Init();};}
 struct CModeOwner {unsigned References;void(__fastcall* Destroy)(void*);void* Data;};
 template<class T>struct CModePointer {
  T* Data;CModeOwner* Info;
@@ -23,7 +23,7 @@ template<class T>struct CModePointer {
 struct CModeWorld {unsigned char Prefix[0x2c];CGameScriptInterface* Script;};
 struct CModeGlobalRoot {unsigned char Prefix[0x28];CModeWorld* World;};
 extern CModeGlobalRoot* gModeGlobalRoot; //013b86a0, actual chain +28,+2C
-struct CGameCameraManager {
+class CGameCameraManager { public:
  unsigned char Prefix[0x98];CModePointer<NCameraModes::CBase> CurrentMode,PendingMode;
  unsigned char BetweenModesAndCut[8];bool SingleCut;unsigned char BetweenCutAndPreload[0x37];bool CameraPreload,FastMode;
  void TellEngineThatCameraHasMoved(bool); //00697860

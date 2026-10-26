@@ -4,7 +4,7 @@ struct SubObj {
     void Set(long a);
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags;
     long pad;
     SubObj sub;

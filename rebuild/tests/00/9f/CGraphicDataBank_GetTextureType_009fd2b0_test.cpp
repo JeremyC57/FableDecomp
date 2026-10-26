@@ -2,7 +2,7 @@
 // (signed -> 10s; param && uncompressed -> 8/9; param && compressed -> 4/5; uncompressed -> 6/7; else 0,1,2,3,1) and
 // the column from the transparency type (1..4, anything else column 0).
 #include <cstdio>
-struct CPixelFormat {
+class CPixelFormat { public:
     bool compressed, isSigned;
     bool IsCompressed() const { return compressed; }
     bool IsSigned() const { return isSigned; }

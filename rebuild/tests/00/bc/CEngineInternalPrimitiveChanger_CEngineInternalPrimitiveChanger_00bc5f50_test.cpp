@@ -6,7 +6,7 @@ static int g_events[16];
 static int g_count = 0;
 static int g_frees = 0;
 static void test_free(void* p) { ++g_frees; std::free(p); }
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     virtual void OnLastReference() { g_events[g_count++] = 1; }
     unsigned long IVRefCount;
@@ -17,7 +17,7 @@ struct CIVCountedPointeeBase {
             OnLastReference();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer()
@@ -28,9 +28,9 @@ template <class T> struct CIVCountedPointer {
         }
     }
 };
-struct CEnginePersistentPrimitiveBase : CIVCountedPointeeBase { };
-struct CEngineMeshEffect : CIVCountedPointeeBase { };
-struct CEnginePrimitiveHandle {
+class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase { public: };
+class CEngineMeshEffect : public CIVCountedPointeeBase { public: };
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle() { g_events[g_count++] = 2; }   // stands in for the out-of-line handle destructor
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
 };
@@ -51,8 +51,8 @@ template <class T> struct vector {
             test_free(_M_start);
     }
 };
-template <class T> struct CArray : vector<T> { };
-struct CEngineInternalPrimitiveBase : CIVCountedPointeeBase {
+template <class T> class CArray : public vector<T> { public: };
+class CEngineInternalPrimitiveBase : public CIVCountedPointeeBase { public:
     unsigned char _body[0x40];
 };
 struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {

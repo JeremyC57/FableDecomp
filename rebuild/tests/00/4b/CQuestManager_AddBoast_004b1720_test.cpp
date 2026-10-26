@@ -8,7 +8,7 @@
 struct CBoast { long ID, Cost, Reward; std::string ScriptName, Text, Title; bool Evil, Failed, Completed; long GroupIndex; };
 static std::map<std::string, std::string> g_Bank;
 static long g_Frame = 500;
-struct CQuestManager {
+class CQuestManager { public:
     unsigned long FrameBoastsLastUpdated;
     std::list<CBoast> Boasts;
     static std::string Lookup(const std::string& tag, const std::string& fallback)

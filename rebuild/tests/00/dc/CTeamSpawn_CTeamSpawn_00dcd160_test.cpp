@@ -3,17 +3,17 @@
 static char g_seq[16] = "";
 namespace N_0099a2d0 { struct CBase { virtual ~CBase() { } CBase() { std::strcat(g_seq, "b"); } }; } using N_0099a2d0::CBase;
 struct CCountedPointer_Imp { void* m_pObject; void* m_pCount; CCountedPointer_Imp() : m_pObject(0), m_pCount(0) { } };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer_Imp PImp;
     CScriptThing() { }
     CScriptThing(const CScriptThing& o) { PImp = o.PImp; std::strcat(g_seq, "c"); }
 };
-struct CCharString { const char* m_pData; CCharString() : m_pData("") { std::strcat(g_seq, "s"); } };
-struct CGameScriptInterface { int id; };
+class CCharString { public: const char* m_pData; CCharString() : m_pData("") { std::strcat(g_seq, "s"); } };
+class CGameScriptInterface { public: int id; };
 struct CQ_OrchardFarmRaidScript { unsigned char _pad[0x40]; CGameScriptInterface* GSI; };
 struct CQ_SunnyvaleMasterData { int id; };
 struct CEntityScriptRoot { CGameScriptInterface* PQuest; CEntityScriptRoot(CGameScriptInterface* q) : PQuest(q) { } virtual ~CEntityScriptRoot() { } };
-struct CEntityScriptBase : CEntityScriptRoot {
+class CEntityScriptBase : public CEntityScriptRoot { public:
     CScriptThing Thing;
     CEntityScriptBase(CQ_OrchardFarmRaidScript* parent, const CScriptThing& thing) : CEntityScriptRoot(parent->GSI), Thing(thing) { }
 };

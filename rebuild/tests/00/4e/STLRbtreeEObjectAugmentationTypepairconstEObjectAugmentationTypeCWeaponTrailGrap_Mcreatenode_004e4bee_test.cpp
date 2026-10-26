@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CWeaponTrailGraphicSet { long Attack; long Knockdown; };
+class CWeaponTrailGraphicSet { public: long Attack; long Knockdown; };
 struct SValue {
     const long first; CWeaponTrailGraphicSet second;
     SValue(long k, long a, long b) : first(k) { second.Attack = a; second.Knockdown = b; }

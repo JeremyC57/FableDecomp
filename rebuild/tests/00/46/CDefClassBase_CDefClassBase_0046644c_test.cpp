@@ -1,8 +1,8 @@
 #include <cstdio>
 static const void* g_baseSrc = 0;
-struct CDefinitionManager { int x; };
-struct CResource { virtual void v00() { } unsigned char _body[0x18]; CResource() { } CResource(const CResource& o) { g_baseSrc = &o; } };
-struct CDefClassBase : CResource {
+class CDefinitionManager { public: int x; };
+class CResource { public: virtual void v00() { } unsigned char _body[0x18]; CResource() { } CResource(const CResource& o) { g_baseSrc = &o; } };
+class CDefClassBase : public CResource { public:
     CDefinitionManager* PDefManager; unsigned long GlobalIndex;
     unsigned char Setup : 1; unsigned char Template : 1; unsigned char DefaultValsApplied : 1;
     CDefClassBase() { }

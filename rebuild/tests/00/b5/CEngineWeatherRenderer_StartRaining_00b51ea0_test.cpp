@@ -9,7 +9,7 @@
 #endif
 
 static int g_built = 0;
-struct CEngineWeatherRenderer { unsigned char _pad0[0x5c8]; float OverridenRainStrength; float OverridenSnowStrength; bool RainOverriden; bool SnowOverriden; unsigned char _pad1[0x12f8 - 0x5d2]; float MaximumWeatherParticlePercentage;
+class CEngineWeatherRenderer { public: unsigned char _pad0[0x5c8]; float OverridenRainStrength; float OverridenSnowStrength; bool RainOverriden; bool SnowOverriden; unsigned char _pad1[0x12f8 - 0x5d2]; float MaximumWeatherParticlePercentage;
     void BuildBoxPositionMatrix() { ++g_built; }
     void StartRaining(float strength) {
         if ((long)(128.0f * strength) <= 0) { RainOverriden = false; return; }

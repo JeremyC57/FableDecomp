@@ -17,7 +17,7 @@
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -77,7 +77,7 @@ public:
     virtual bool IsAlive() const;                  // slot 75 (+0x12c) 0x004AB130
 };
 
-struct CTCScriptedControl;
+class CTCScriptedControl;
 
 namespace NTCScriptedControl {
 struct CActionBase {                               // vtable 0x01265504
@@ -95,7 +95,7 @@ struct CScriptRunner {
 };
 extern CScriptRunner* g_pScriptRunner;            // 0x013D2838
 
-struct CTCScriptedControl {                      // interface 0x1f component
+class CTCScriptedControl { public:                      // interface 0x1f component
     bool IsActionListEmpty();                     // 0x007122C0
 };
 

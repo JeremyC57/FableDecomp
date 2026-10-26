@@ -5,7 +5,7 @@
 #endif
 // Model of std::__median @ 0x0087DA90 (median of three under a comparator), with a sane comparator and the retail
 // CTurningAnimCompare (which reads its left operand twice and so never answers true).
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     void GetRotationInAnimation(float* rotation) const { *rotation = Rotation; }
 };

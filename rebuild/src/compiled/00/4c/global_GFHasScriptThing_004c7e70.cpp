@@ -8,7 +8,7 @@
 // Retail bytes:  mov eax,ecx ; mov ecx,[013B89FCh] ; mov ecx,[ecx+4] ; push eax ; call CGameScriptThingManager::HasScriptThing ; ret
 // __fastcall(CThing*): the global object at 0x013B89FC holds the script-thing manager at +0x04;
 // its HasScriptThing(CThing*) @ 0x00704790 answers.
-struct CThing;
+class CThing;
 
 struct CGameScriptThingManagerCalls {
     bool HasScriptThing(CThing* thing);     // 0x00704790

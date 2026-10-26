@@ -9,13 +9,13 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0049b070: a CPersistTraits<CCharString> (owning a default string) transfers element [index] (In) and destroys its string.
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 static int g_constructed = 0;
 static int g_destroyed = 0;
 static const void* g_target = 0;
 static int g_liveDuringCall = 0;
-struct CCharString {
+class CCharString { public:
     long m_tag;
     CCharString() : m_tag(0) { ++g_constructed; }
     ~CCharString() { ++g_destroyed; }

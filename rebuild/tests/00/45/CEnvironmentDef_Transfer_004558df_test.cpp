@@ -1,14 +1,14 @@
 // Behaviour test for CEnvironmentDef::Transfer (0x004558DF): every member reaches the right typed helper, in retail's order.
 #include <cstdio>
 #include <cstddef>
-struct CCharString { int Data; };
-struct CPersistContext {
+class CCharString { public: int Data; };
+class CPersistContext { public:
     int n; char kinds[80]; const void* addrs[80];
     void Transfer(CCharString& value) { kinds[n] = 's'; addrs[n++] = &value; }
     void TransferBinary(int* value) { kinds[n] = 'l'; addrs[n++] = value; }
     void TransferBinary(float* value) { kinds[n] = 'f'; addrs[n++] = value; }
 };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     void Transfer(CPersistContext& context);
     unsigned char _pad04[0x3c];                      // definition base (retail 4 bytes below the PDB)
     CCharString ColourLookupTexture;                 // +0x3c

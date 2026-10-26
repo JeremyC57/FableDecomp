@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
     int destroyed;
 };

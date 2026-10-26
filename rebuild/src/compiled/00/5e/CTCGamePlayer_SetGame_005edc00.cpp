@@ -11,8 +11,8 @@
 // the frame from the table or from 0, inline operator= taking GetPItem() into a local before SetPItem,
 // destroyed out of line) and keeps its own `ret 4`; the temporary's address is formed once above the
 // branch.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -33,12 +33,12 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
 };
 
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     virtual void v00();
     CThing*        ParentThing;                             // +0x04 (CTCBase)
     bool           ToBeRemoved;                             // +0x08

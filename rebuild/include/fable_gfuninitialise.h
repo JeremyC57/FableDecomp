@@ -14,8 +14,8 @@ public:
     void Close();
 };
 
-struct CSystemManager
-{
+class CSystemManager
+{ public:
     ESystemCode Initialise(CSystemManagerInit* init);
     void Uninitialise();
     void DisplayCriticalMessage(const char* message);

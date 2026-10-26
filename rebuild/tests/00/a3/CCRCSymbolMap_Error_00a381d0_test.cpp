@@ -58,8 +58,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -67,8 +67,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -159,7 +159,7 @@ struct CRetailWideString : CWideString {
 };
 CCharString FABLE_FASTCALL operator+(const CCharString&,const CCharString&); // 0x0099F570
 // Existing operator+(CCharString,const char*) is native0x0099F600.
-struct CCRCSymbolMap { void Error(const CRetailWideString& file,long line,const char* format,...); };
+class CCRCSymbolMap { public: void Error(const CRetailWideString& file,long line,const char* format,...); };
 void CCRCSymbolMap::Error(const CRetailWideString& file,long line,const char* format,...) {
     CCharString result;
     char lineText[12]; char message[256];

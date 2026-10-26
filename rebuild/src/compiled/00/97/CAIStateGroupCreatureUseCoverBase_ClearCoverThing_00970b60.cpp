@@ -7,7 +7,7 @@
 // Shape: the reset `PCoverThing = CIntelligentPointer<CThing>(0)` (vtable 0x01238C6C) runs only inside the alive test;
 // the out-parameter lookup keeps the component in eax (`mov eax,[eax+4] ; push 0 ; mov ecx,eax`).
 // Layout: Ego_r.pdb CAIStateGroup_CreatureUseCoverBase (PCoverThing +0x1f, CoverList +0x28, TimingCritical +0x1e).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -20,15 +20,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -38,8 +38,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -83,8 +83,8 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };

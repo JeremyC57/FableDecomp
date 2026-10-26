@@ -14,11 +14,11 @@
 // (`fsqrt` intrinsic; the squares are written x, y, z so VC7.1's right-first FPU order loads z first).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { } C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CTCShapeManager;
+class CTCShapeManager;
 struct CPointVector {                                       // STLport vector<C3DVector>, 12 bytes in retail
     C3DVector* _M_start;
     C3DVector* _M_finish;
@@ -36,14 +36,14 @@ struct CSelectionVector {                                   // vector<vector<C3D
 };
 
 namespace NShape {
-struct CShape {                                             // vtable 0x0126A208
+class CShape { public:                                             // vtable 0x0126A208
     virtual void v00();
     CTCShapeManager* Owner;                                 // +0x04
     CPointVector     Points;                                // +0x08
     CSelectionVector SelectedPoints;                        // +0x14
     CShape(CTCShapeManager* owner, const CPointVector& points) : Owner(owner), Points(points) { }
 };
-struct CTrack : CShape {                                    // vtable 0x0126A288
+class CTrack : public CShape { public:                                    // vtable 0x0126A288
     long  TrackTraverser;                                   // +0x20
     float TrackLength;                                      // +0x24
     CTrack(CTCShapeManager* owner, const CPointVector& points);

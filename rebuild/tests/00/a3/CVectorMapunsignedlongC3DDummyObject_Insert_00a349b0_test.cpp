@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A349B0 CVectorMap<unsigned long, C3DDummyObject>::Insert: append through push_back (in place while capacity lasts, else the overflow path) and mark the map dirty.
 #include <cstdio>
 #include <new>
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

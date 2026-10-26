@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 struct Counted { int refs; };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     unsigned int BankIndex; int AnimName; int GroupName; Counted* Components;
     CAnimationEntry(unsigned int b, Counted* c) : BankIndex(b), AnimName(1), GroupName(2), Components(c) { if (c) ++c->refs; }
     CAnimationEntry(const CAnimationEntry& o) : BankIndex(o.BankIndex), AnimName(o.AnimName), GroupName(o.GroupName), Components(o.Components) { if (Components) ++Components->refs; }

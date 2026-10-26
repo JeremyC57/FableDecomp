@@ -10,7 +10,7 @@
 // group into `unsigned char DefaultValsApplied[1]`, while the PDB (struct_layouts_egor.tsv) gives three uchar:1
 // bits Setup, Template, DefaultValsApplied -- DefaultValsApplied is bit 2 (the retail `shr al,2` / `and dl,4`).
 // Shape: plain virtual call through the element (thiscall, context pushed, `ret 8`).
-struct CPersistContext;
+class CPersistContext;
 
 class CFireHeartPatternDef {                                  // 0x34 bytes; CDefClassBase-derived sub-component def
 public:
@@ -35,7 +35,7 @@ template <class T> struct vector {                 // STLport, 12 bytes in retai
     T& operator[](long index) { return _M_start[index]; }
 };
 
-struct CPersistContext_TransferableVectorOfSubComponentsGenericType {
+class CPersistContext_TransferableVectorOfSubComponentsGenericType { public:
     virtual long Size() = 0;
     virtual void Resize(long count) = 0;
     virtual bool AreDefaultValsApplied(long index) = 0;

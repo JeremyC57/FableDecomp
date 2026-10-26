@@ -6,8 +6,8 @@
 // (0x00BFEDCA). The PDB name of the comparator is not in either name set. The float at +0x24 sits in the record's
 // 8-byte union at +0x20 (second word: the draw depth). Shape: `fld a ; fcomp b ; test ah,41h ; je` is the ordered
 // `a > b`; the result is selected from two immediates (`mov eax,-1` before the branch, `mov eax,1` after).
-struct CQuickDrawTriInfo
-{
+class CQuickDrawTriInfo
+{ public:
     unsigned char _pad00[0x24];
     float         m_depth;          // +0x24
     unsigned char _pad28[0x3C - 0x28];

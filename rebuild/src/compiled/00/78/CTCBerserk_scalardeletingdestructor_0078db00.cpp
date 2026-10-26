@@ -1,4 +1,4 @@
-struct CTCBerserk {
+class CTCBerserk { public:
     void* vftable;
 };
 

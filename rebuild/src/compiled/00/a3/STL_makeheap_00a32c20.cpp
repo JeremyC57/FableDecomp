@@ -10,12 +10,12 @@
 // parent, len, T(*(first + parent)), comp); if (parent == 0) return; parent--; }` -- the count divides by 20 (reciprocal
 // 0x66666667, `sar edx,3`); the pair's implicit copy is memberwise (C3DVector has a user copy constructor), built straight
 // into the argument area (`sub esp,14h ; mov eax,esp`) from a strength-reduced `first + parent*20 + 0Ch` pointer.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct C3DHelperPoint {                            // 16 bytes
+class C3DHelperPoint { public:                            // 16 bytes
     C3DVector Position;                            // +0x00
     long      BoneIndex;                           // +0x0c
 };
@@ -27,7 +27,7 @@ struct pair {
 };
 
 template <class K, class V>
-struct CKeyPairCompareLess {                       // empty functor, passed in a 4-byte slot
+class CKeyPairCompareLess { public:                       // empty functor, passed in a 4-byte slot
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 

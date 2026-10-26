@@ -1,4 +1,4 @@
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void* vftable;
 };
 

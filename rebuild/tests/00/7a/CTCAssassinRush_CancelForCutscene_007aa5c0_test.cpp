@@ -28,10 +28,10 @@ public:
 };
 struct CBaseIntelligentPointer { void* m_pItem; CThing* GetPItem() const { return (CThing*)m_pItem; } };
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
-struct CIEngine;
+class CIEngine;
 static int g_particles = 0, g_decals = 0;
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     int id;
     void ClearAllParticles(CIEngine* engine) { if (!engine) ++g_particles; }
     void ClearAllDecals(CIEngine* engine) { if (!engine) ++g_decals; }
@@ -40,7 +40,7 @@ struct CParticleEmitter {
 struct CIntelligentPointerEmitter : CBaseIntelligentPointer {
     NParticleEngine::CParticleEmitter* GetPItem() const { return (NParticleEngine::CParticleEmitter*)m_pItem; }
 };
-struct CTCDParticleEmitter { CIntelligentPointerEmitter PEmitter; };
+class CTCDParticleEmitter { public: CIntelligentPointerEmitter PEmitter; };
 class CTCAssassinRush {
 public:
     CBaseIntelligentPointer AssassinTrail;

@@ -16,13 +16,13 @@
 // iterator-category tag to the out-of-line __find_if, which gives retail's order (last/first loaded, tag pushed, then the
 // predicate's uninitialised dword copied) and the shared tag/predicate frame slots. Empty classes with user constructors: a
 // value-initialised `T()` of a ctor-less empty class adds a zero byte store.
-struct CThing;
+class CThing;
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                         // 0x0049D870
 };
 
-struct CIsTriggerActivated { CIsTriggerActivated() { } };
+class CIsTriggerActivated { public: CIsTriggerActivated() { } };
 struct CNotTriggerActivated { CIsTriggerActivated m_pred; CNotTriggerActivated() { } };   // std::unary_negate<CIsTriggerActivated>
 struct CRandomAccessIteratorTag { CRandomAccessIteratorTag() { } };                           // std::random_access_iterator_tag
 

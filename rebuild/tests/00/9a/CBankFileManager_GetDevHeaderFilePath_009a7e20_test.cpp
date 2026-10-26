@@ -19,12 +19,12 @@ static int fails = 0;
 // Layout: retail CBankFileManager (see CreateRetailBank 0x009A7720): Banks +0x04, BankAliasMap +0x18, BasePath +0x24;
 // Ego_r.pdb CBankFileManager::CBankInfo (DevBankFilePath, RetailBankFilePath, DevHeaderFilePath +8,
 // RetailHeaderFilePath +0xc, RegisteredBank).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);       // 0x0099B6B0 (wchar_t is unsigned short in this lane)
     CWideString(const CWideString& other);         // 0x0099B720

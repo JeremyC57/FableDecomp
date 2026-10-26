@@ -16,30 +16,30 @@ struct CBasicStringChar {
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
     CCharString& operator+=(const char* text);           // 0x0099F100
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct ComponentEntry { long Type; void* Component; };
 struct ComponentMap {
     ComponentEntry* Start;
     ComponentEntry* Finish;
     ComponentEntry* LowerBound(const long& key);         // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  Base[0x20];
     unsigned long  UsingComponents[9];                   // +0x20
     ComponentMap   Components;                           // +0x44
     const C3DVector& GetPosition() const;                // 0x004C73D0
 };
 struct CTCHeroCombat { void ResetProjectileWeaponMode(); };   // 0x00789B30
-struct CPlayer { CThing* GetHeroThing(); };              // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };     // 0x00449970
+class CPlayer { public: CThing* GetHeroThing(); };              // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };     // 0x00449970
 struct CRenderer {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -52,16 +52,16 @@ struct CRenderer {
     virtual void v057();
     virtual void InvalidateCamera();   // slot 58 (+0xe8)
 };
-struct CDisplayEngine { unsigned char Data[0x2c]; CRenderer* Renderer; };
-struct CMainGameComponent {
+class CDisplayEngine { public: unsigned char Data[0x2c]; CRenderer* Renderer; };
+class CMainGameComponent { public:
     unsigned char   Data[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
     unsigned char   Data2[8];
     CDisplayEngine* DisplayEngine;                       // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
-struct CCPPointerInfo { long Count; void (__fastcall* Delete)(void*); void* Object; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; void (__fastcall* Delete)(void*); void* Object; };
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Reset()
@@ -85,10 +85,10 @@ struct CQuakeVector {
     CQuake* erase(CQuake* first, CQuake* last);          // 0x0069D180
     void clear() { erase(Start, Finish); }
 };
-struct CCamera { unsigned char Data[0x38]; };
+class CCamera { public: unsigned char Data[0x38]; };
 struct CCameraModeBase;
 struct CScriptModuleBase;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();

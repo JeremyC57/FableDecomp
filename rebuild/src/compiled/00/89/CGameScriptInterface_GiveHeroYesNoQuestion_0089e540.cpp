@@ -16,9 +16,9 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
@@ -32,24 +32,24 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  const CCharString& e, unsigned long colour, float time, bool f, bool g);   // 0x00493049
     void SetText(const CFontBank& font, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  unsigned long colour, float time, bool f, bool g);                         // 0x00492FB4
 };
-struct CPlayerGui { unsigned char Data[0x18]; CSubtitleRenderer Subtitles; };
+class CPlayerGui { public: unsigned char Data[0x18]; CSubtitleRenderer Subtitles; };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
-struct CMainGameComponent { unsigned char Data[0x1614c]; CFontBank* PFont; };
-struct CTCBoastUI { void AllowUIToOpen(bool allow); };   // 0x0056A930
+class CMainGameComponent { public: unsigned char Data[0x1614c]; CFontBank* PFont; };
+class CTCBoastUI { public: void AllowUIToOpen(bool allow); };   // 0x0056A930
 struct ComponentEntry { long Type; void* Component; };
 struct ComponentMap {
     ComponentEntry* Start;
     ComponentEntry* Finish;
     ComponentEntry* LowerBound(const long& key);         // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*          VTable;
     unsigned char  Base[0x1c];
     unsigned long  UsingComponents[9];                   // +0x20
@@ -64,13 +64,13 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                            // 0x00A01B50
     void SetPItem(CThing* item);                         // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01231C4C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01231C4C
     CIntelligentPointer(T* item) { SetPItem(item); }
 
 };
-struct CPlayer { CThing* GetHeroThing(); };              // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };     // 0x00449970
-struct CGameScriptInterface {
+class CPlayer { public: CThing* GetHeroThing(); };              // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };     // 0x00449970
+class CGameScriptInterface { public:
     virtual void v000();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();

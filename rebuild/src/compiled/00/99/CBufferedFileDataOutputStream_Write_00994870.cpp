@@ -11,7 +11,7 @@
 #include <string.h>
 #include "engine/CBufferedFileDataOutputStream.h"
 
-struct CAFile {
+class CAFile { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size, long flags);   // slot 4
     virtual void Seek(long position);                              // slot 5

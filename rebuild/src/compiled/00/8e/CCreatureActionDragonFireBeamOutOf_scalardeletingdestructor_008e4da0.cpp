@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonFireBeamOutOf {
+class CCreatureAction_DragonFireBeamOutOf { public:
     void* vftable;
 };
 

@@ -6,8 +6,8 @@ struct CMusicTarget
     void CacheMusicSet(EMusicSetType t);
 };
 
-struct CWorld
-{
+class CWorld
+{ public:
     char pad_0000[0x6C];
     CMusicTarget* target_006C;
 };

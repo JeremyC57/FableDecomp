@@ -36,12 +36,12 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual long __stdcall LockBox(unsigned long level, D3DLOCKED_BOX* locked, const D3DBOX* box, unsigned long flags);   // slot 19 (+0x4c)
     virtual long __stdcall UnlockBox(unsigned long level);                   // slot 20 (+0x50)
 };
-struct C3DBoxI;
+class C3DBoxI;
 struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A2E0
 };
-struct CVolume : CBase {                           // vtable 0x0129C840
+class CVolume : public CBase { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }
     void ReleaseVolume(bool flag);                 // 0x00A67460
@@ -49,7 +49,7 @@ struct CVolume : CBase {                           // vtable 0x0129C840
     virtual void v00();
 };
 template <class T> inline const T& (min)(const T& a, const T& b) { return a < b ? a : b; }
-struct CVolumeTexture {                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)
+class CVolumeTexture { public:                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)
     virtual ~CVolumeTexture();
     IDirect3DVolumeTexture9* PD3DVolumeTexture;    // +0x04
     long                     ByteLength;           // +0x08

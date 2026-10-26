@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CInputProcessStrafe
-{
+class CInputProcessStrafe
+{ public:
     void *vfptr;
     void dtor();
 };

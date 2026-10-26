@@ -1,7 +1,7 @@
 // Retail 0x005d97d0  _global GetPDef -> CDefPointer<CInventoryItemDef const>
 // __fastcall, struct-return: ecx = hidden return buffer, edx = long id.
 
-struct CInventoryItemDef;
+class CInventoryItemDef;
 
 // The referenced def object: refcount lives at +4.
 struct RefTarget {

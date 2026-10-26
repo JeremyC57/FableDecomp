@@ -6,9 +6,9 @@
 // +0x1c, LinearChange +0x20); CUIStateDef retail = PDB - 4 (- 8 after its 12-byte vector): StateChangeFlag +0x40,
 // StateChangeType +0x44, Position +0x48, Zoom +0x50, Colour (CRGBFloatColour) +0x58, UpdateTime +0x68, LinearChange +0x78.
 // Shape: body assignments in retail store order; the colour is built B,G,R,A from the four rounded channels.
-struct C2DVector { float x, y; };
-struct CRGBFloatColour { float r, g, b, a; };
-struct CRGBColour {
+class C2DVector { public: float x, y; };
+class CRGBFloatColour { public: float r, g, b, a; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

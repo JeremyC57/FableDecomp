@@ -32,7 +32,7 @@ struct CCountedPointer {
 };
 static SCountBlock* NewBlock(int* object) { SCountBlock* b = new SCountBlock; b->m_references = 1; b->m_pfnDestroy = Destroy; b->m_pObject = object; return b; }
 static int g_updates = 0;
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     CCountedPointer PMeshMorphSet;
     unsigned long   Seed;
     void UpdateMorphSet() { ++g_updates; }

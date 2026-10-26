@@ -7,9 +7,9 @@
 // CResource and holds its shared C3DAnimation2 counted pointer at +0x28 (PDB +0x2c with the
 // 16-byte Ego map). CResourceList is {_, CResource Head (+4), ..., CurrentFrame +0x2c} (PDB).
 // The list pointer is re-read from the data after the two calls (no local caches it).
-struct CResourceList;
+class CResourceList;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
@@ -21,7 +21,7 @@ struct CResource {
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
 };
 
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                           // +0
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -35,7 +35,7 @@ struct CAnimationData : CResource {
     void* SharedAnimation;                 // +0x28 CCountedPointer<C3DAnimation2>::m_pObject
 };
 
-struct C3DAnimationInfo {                  // engine/C3DAnimationInfo.h offsets
+class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();
     void* Bank;                            // +4
     unsigned long Index;                   // +8

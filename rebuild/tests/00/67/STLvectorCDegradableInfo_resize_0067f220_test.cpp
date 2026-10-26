@@ -3,7 +3,7 @@
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("0067f220_TEST FAIL\n"); return 1; } } while (0)
 
-struct CDegradableInfo {
+class CDegradableInfo { public:
     float         HealthPercentage;
     unsigned char EngineGraphic[0x10];
     long          SmashParticleEmitter;

@@ -1,7 +1,7 @@
 // Behaviour test for 0x0097E2D0 CAIStateGroupBase::SetProximityForDirectApproach: the float lands in the creature
 // navigation component's (interface 7) +0x58 field.
 #include <cstdio>
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -14,12 +14,12 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     while (it != last && it->type < *type) ++it;
     return it;
 }
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     unsigned char _pad0[0x58];
     float ProximityForDirectApproach;
     void SetProximityForDirectApproach(float proximity) { ProximityForDirectApproach = proximity; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -37,7 +37,7 @@ struct CThingCreatureBase {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     void* __vftable;
     unsigned char _pad04[0x14];
     CThingCreatureBase* Creature;

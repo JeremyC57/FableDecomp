@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CScriptThing;
+class CScriptThing;
 
 static int g_slot_called = 0;
 static CScriptThing* g_slot_arg = 0;
@@ -16,7 +16,7 @@ struct CInner {
     virtual void OnKilled(CScriptThing* msg);
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner;
     CScriptThing* MsgWhoKilledMe(CScriptThing* msg);

@@ -7,18 +7,18 @@
 //   (CQ_WizardBattleScript: VillagersTurnOnHero PDB +0x5c = retail +0x48, MazeDefeated PDB +0x63 = retail +0x4f),
 //   PMasterData +0x18, CurrentAlpha +0x1c. Movie as a destructor-less view destroyed by hand (inline at the in-loop exit and
 //   the normal path, out of line after the loop), handle destructor always out of line.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -41,8 +41,8 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
@@ -60,7 +60,7 @@ namespace N_0099a430 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a430::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -72,7 +72,7 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -94,7 +94,7 @@ struct CScriptGameResourceObjectMovieFull : CScriptGameResourceObjectBase {
 };
 struct CMovieStorage { void* Words[4]; };              // raw frame storage of one movie handle (0x10 bytes)
 inline void* operator new(unsigned int, void* where) { return where; }   // placement form: the handle is destroyed by hand
-struct CScriptGameResourceObjectMovieBase : CBaseIntelligentPointer {   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseIntelligentPointer { public:   // vtable 0x01260EF4; built in place in CMovieStorage, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     __forceinline void DestroyInline()
@@ -107,7 +107,7 @@ struct CScriptGameResourceObjectMovieBase : CBaseIntelligentPointer {   // vtabl
         reinterpret_cast<CScriptGameResourceObjectMovieFull*>(this)->CScriptGameResourceObjectMovieFull::~CScriptGameResourceObjectMovieFull();
     }
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -184,7 +184,7 @@ struct CQ_WizardBattleScript {
     bool MazeDefeated;                                  // +0x4f (PDB +0x63)
 };
 extern const float g_fZero;                             // 0x0122DEDC (0.0f)
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

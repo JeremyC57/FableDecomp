@@ -31,7 +31,7 @@ struct CSuspenderSet {                               // STLport set<void*>: {hea
     bool empty() const { return m_size == 0; }
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     void*         __vftable;                         // +0x000
     unsigned char _pad004[0x1c8 - 0x004];
     bool          PerformingVillageTaskFlag : 1;     // +0x1c8 bit 0 (PDB +0x1f8)

@@ -11,23 +11,23 @@
 // SetupPuzzleBlocks 0x00D36140): NumberOfPads +0x7c, NumberOfSuns +0x80, PuzzleRound +0x88, RoundEnded +0x94,
 // RoundBeginning +0x95, PreventRoundEnd +0x96, EvilRounds +0x9c, Effect +0xa8, PadMoonFX +0xb8, ProphetsKilled +0xc8.
 // Shape: the sibling of CPuzzleBlockMoon::TurnIntoASunSign 0x00D38000 with the moon strings and the evil-round counters.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImp {
     virtual void i00(); virtual void i01(); virtual void i02(); virtual void i03();
     virtual void SetDataString(const CCharString& data);  // slot 4 (+0x10)
 };
-struct CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
     virtual ~CScriptThing();                             // 0x004AA840
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     virtual void v01() const; virtual void v02() const;
@@ -49,7 +49,7 @@ struct CScriptThing {                                    // 12 bytes, vtable 0x0
     virtual bool IsDead() const;                         // slot 76 (+0x130)
     virtual bool IsNull() const;                         // slot 77 (+0x134)
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const; virtual void v007() const; virtual void v008() const; virtual void v009() const;
     virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const; virtual void v016() const; virtual void v017() const; virtual void v018() const; virtual void v019() const;
     virtual void v020() const; virtual void v021() const; virtual void v022() const; virtual void v023() const; virtual void v024() const; virtual void v025() const; virtual void v026() const; virtual void v027() const; virtual void v028() const; virtual void v029() const;
@@ -131,7 +131,7 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
 };
 
 namespace NScript {
-struct CQ_FireHeartScript {                              // retail-offset view (see Layout)
+class CQ_FireHeartScript { public:                              // retail-offset view (see Layout)
     unsigned char  _pad00[0x7c];
     long           NumberOfPads;                         // +0x7c
     long           NumberOfSuns;                         // +0x80
@@ -153,7 +153,7 @@ struct CQ_FireHeartScript {                              // retail-offset view (
     void DecNumberOfSuns();                              // 0x00D38AA0
 };
 }
-struct CEntityScriptBase {                               // retail 0x14 bytes
+class CEntityScriptBase { public:                               // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08

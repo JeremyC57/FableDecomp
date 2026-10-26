@@ -1,16 +1,16 @@
 // Behaviour test for 0x009E23F0 GFXToY: x * height / width of the render target.
 #include <cstdio>
 
-struct C2DExtentsI { int X; int Y; };
+class C2DExtentsI { public: int X; int Y; };
 
 static int gWidth = 640, gHeight = 480, gCalls = 0;
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     C2DExtentsI GetRenderTargetDimensions() const { ++gCalls; C2DExtentsI e; e.X = gWidth; e.Y = gHeight; return e; }
 };
 
-struct CSystemManager { CDisplayManager* DisplayManager; };
+class CSystemManager { public: CDisplayManager* DisplayManager; };
 
 static CDisplayManager gDisplay;
 static CSystemManager gSystem = { &gDisplay };

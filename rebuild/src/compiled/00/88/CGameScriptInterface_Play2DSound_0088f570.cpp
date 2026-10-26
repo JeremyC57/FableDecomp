@@ -10,7 +10,7 @@
 // Leaf: Play2DSound
 #include <string.h>
 struct CThing_Retail;
-struct CScriptThing;
+class CScriptThing;
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
 struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
@@ -20,7 +20,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -39,7 +39,7 @@ public:
     }
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
-struct CSoundInit {                                 // Ego_r.pdb CSoundInit, 0x20 bytes
+class CSoundInit { public:                                 // Ego_r.pdb CSoundInit, 0x20 bytes
     float         Volume;                           // +0x00
     float         Pitch;                            // +0x04
     float         Pan;                              // +0x08
@@ -74,10 +74,10 @@ struct CEngine_Retail {
 extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
 extern CGameState_Retail* g_pGameState;             // 0x013B8394
 extern long               g_InvalidSoundHandle;     // 0x0129D25C
-struct CWorld;
+class CWorld;
 struct CPlayerManager_Retail;
 struct CDefinitionManager_Retail;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                    World;               // +0x04 (engine/CGameScriptInterface.h)
     void*                      Component;           // +0x08

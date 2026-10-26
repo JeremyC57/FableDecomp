@@ -6,10 +6,10 @@ typedef unsigned long long u64;
 typedef unsigned __int64 u64;
 #endif
 
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int id; };
-struct CHeroMarriageInfo {
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int id; };
+class CHeroMarriageInfo { public:
     u64           WifeUID;
     u64           MaritalHomeUID;
     unsigned char State[0x4];

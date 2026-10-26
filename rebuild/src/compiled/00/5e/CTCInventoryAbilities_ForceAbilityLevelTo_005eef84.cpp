@@ -17,7 +17,7 @@ struct CLongVector {
     long* first; long* last; long* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
 };
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     unsigned char _pad_0x00[0x80];
     CLongVector   ExperienceCostsToUpgrade;       // +0x80
 };

@@ -9,19 +9,19 @@
 // the word at +0x8c. Model and stand-in out-param bodies as the landed sibling CTCDegradableBase::OnCreate 0x008EC870.
 // Shape: the GetDef result is tested BEFORE the def object is read into edi (`test al,al ; mov edi,[esp+8] ; je`): the bool is a named
 // local and the object is read after it; the release is written by hand on that local.
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                                // +0x8c
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CSmashableDef;
+class CSmashableDef;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
@@ -41,7 +41,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CSmashableD
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -57,7 +57,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 }
 #pragma auto_inline(on)
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -65,7 +65,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager();             // 0x006869D0
 };
 
-struct CTCSmashableBase : CTCBase {
+class CTCSmashableBase : public CTCBase { public:
     long                              LastWorldFrameHit;    // +0x0c
     bool                              Smashed;              // +0x10
     CDefPointer<const CSmashableDef>  Definition;           // +0x14

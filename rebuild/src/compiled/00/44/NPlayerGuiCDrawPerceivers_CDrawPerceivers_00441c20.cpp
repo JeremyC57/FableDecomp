@@ -14,7 +14,7 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -34,11 +34,11 @@ template <class T> struct vector : _Vector_base<T> {
 };
 }
 
-struct CEnginePrimitiveHandle {                    // vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // vptr + counted primitive pointer
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-template <class T> struct CIntelligentPointer {    // vptr + item
+template <class T> class CIntelligentPointer { public:    // vptr + item
     virtual ~CIntelligentPointer();
     void* m_pItem;
 };
@@ -62,16 +62,16 @@ template <class T> struct _List_base {             // STLport list: the sentinel
 template <class T> struct list : _List_base<T> { };
 }
 
-struct CThing;
+class CThing;
 
 namespace NPlayerGui {
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char                        _body[0x1c - 4];   // +0x04 .. +0x1c
     std::vector<CEnginePrimitiveHandle>  PrimitiveHandles;  // +0x1c
 };
 
-struct CDrawPerceivers : CDrawBase {               // vtable 0x0125A670
+class CDrawPerceivers : public CDrawBase { public:               // vtable 0x0125A670
     virtual void v00();
     long                                           State;        // +0x28 EPerceivedState
     long                                           Allegiance;   // +0x2c EPerceivedAllegiance

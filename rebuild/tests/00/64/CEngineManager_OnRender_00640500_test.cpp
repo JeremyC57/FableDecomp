@@ -8,7 +8,7 @@ static SComponentNode g_head, g_n1, g_n2; static CEngineComponent_00640320 g_c1(
 static void Link() { g_head.m_pNext = &g_n1; g_n1.m_pNext = &g_n2; g_n2.m_pNext = &g_head; g_n1.m_pComponent = &g_c1; g_n2.m_pComponent = &g_c2; g_head.m_pComponent = 0; }
 struct SViewEntry { unsigned char _body[0x10]; }; static int g_erased = 0;
 struct CRetailViewVector { SViewEntry* m_pFirst; SViewEntry* m_pLast; SViewEntry* m_pEnd; void erase(SViewEntry* f, SViewEntry*) { ++g_erased; m_pLast = f; } };
-struct CEngineManager { unsigned char _pad[4]; SComponentNode* m_pComponents; CRetailViewVector m_views;
+class CEngineManager { public: unsigned char _pad[4]; SComponentNode* m_pComponents; CRetailViewVector m_views;
     void OnRender() { for (SComponentNode* n = m_pComponents->m_pNext; n != m_pComponents; n = n->m_pNext) { if (n->m_pComponent->IsActive()) { for (SViewEntry* v = m_views.m_pFirst; v != m_views.m_pLast; ++v) n->m_pComponent->OnRender(v); } } m_views.erase(m_views.m_pFirst, m_views.m_pLast); } };
 int main() {
     Link(); CEngineManager m; m.m_pComponents = &g_head; SViewEntry views[2]; m.m_views.m_pFirst = views; m.m_views.m_pLast = views + 2; m.m_views.m_pEnd = views + 2;

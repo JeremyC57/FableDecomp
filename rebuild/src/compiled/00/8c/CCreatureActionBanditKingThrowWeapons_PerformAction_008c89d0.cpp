@@ -20,13 +20,13 @@
 //   ability pointer lives in a block around the CreateShot call only, so it is released (TrollProjectileAttack
 //   ReleaseTemporary model, null store kept) before the shot is touched; target and creature are named locals fetched
 //   before the argument pushes, the accuracy converted inline at its argument.
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 struct CInterfaceMap {
@@ -40,17 +40,17 @@ struct CDefBase {
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0xc8 - 0x08];
     long          GlobalIndex;                          // +0xc8
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CWeaponDef>* out);       // 0x0042B1A6
 };
 void* FindSubDef_CWeaponDef(CDefClassBase* defClass);  // stand-in callee of the stand-in body below
@@ -74,7 +74,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -94,7 +94,7 @@ template <class T> struct CAbilityPointer {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -113,7 +113,7 @@ struct CTCBanditKingWeapons {                           // interface 0xAD
     unsigned char _pad[0x1c];
     long m_weaponDef;                                   // +0x1c
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
@@ -138,10 +138,10 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                   // 0x00663B10
 };
-struct CTCCarrying {                                    // interface 0x46
+class CTCCarrying { public:                                    // interface 0x46
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
 };
 CThing* __fastcall CreateShot(CThing* shot, CThing* shooter, CThing* origin, CThing* target, float accuracy, float a, float b,

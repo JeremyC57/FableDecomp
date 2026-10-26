@@ -9,12 +9,12 @@
 // vtable store. The vector is modelled as the real STLport structure (the landed 0x00547600 model): _M_start/_M_finish
 // are _Vector_base initialisers and the end pointer an _STLP_alloc_proxy member built from (allocator(), 0) -- that is
 // what schedules `mov ecx,edi` between the second and third zero store (a plain three-pointer init list puts it first).
-struct CThing;
-struct CBaseObject;
-struct CThingObject;
-struct CThingAICreature;
+class CThing;
+class CBaseObject;
+class CThingObject;
+class CThingAICreature;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();               // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7E0 for T = CThingAICreature
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7E0 for T = CThingAICreature
     virtual void v00();
     CIntelligentPointer() { }
 };
@@ -53,7 +53,7 @@ template<class T> struct CRetailVector : CVectorBase<T> {   // retail std::vecto
     explicit CRetailVector(const CAllocator<T>& a = CAllocator<T>()) : CVectorBase<T>(a) { }
 };
 
-struct CTCTavernBar : CTCBase {              // vtable 0x0126DC4C
+class CTCTavernBar : public CTCBase { public:              // vtable 0x0126DC4C
     CRetailVector<CIntelligentPointer<CThingObject> > Jugs;   // +0x0c
     CIntelligentPointer<CThingAICreature> Barman;             // +0x18
     virtual void v00();

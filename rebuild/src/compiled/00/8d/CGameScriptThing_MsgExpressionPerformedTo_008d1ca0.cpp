@@ -39,11 +39,11 @@ __forceinline long CurrentFrame(ActiveQuest* q){return q&&q->Script?q->Script->P
 // Native base0124F2C4 slots2=57A4FC(ret4),3=810E60,4=57A4FF(true).
 namespace NEntityEvents {enum EEventType { HitThing=29,MoralityChanged=35,CutSceneAnimEvent=36 };}
 struct EventBase { EventBase(); /* PDB01D93440 */ virtual ~EventBase(); virtual NEntityEvents::EEventType GetType()const=0; virtual void OnAdd(const CTCEntityEvents&); virtual long GetLifeTime()const; virtual bool IsReadyToDie()const; long WorldFrame; };
-struct CDefString { long TablePos; };
-struct CCharString;
-struct CDefClassBase { struct CSubDefInfo; };
-struct CPersistContext;
-struct CParentDefClassBase {
+class CDefString { public: long TablePos; };
+class CCharString;
+class CDefClassBase { public: class CSubDefInfo; };
+class CPersistContext;
+class CParentDefClassBase { public:
  virtual ~CParentDefClassBase(); // slot0 virtual deleting destructor (native derived00458B81)
  virtual void Delete() const; // slot1 0042D930
  virtual bool UnloadResource(); // slot2 009ACE90

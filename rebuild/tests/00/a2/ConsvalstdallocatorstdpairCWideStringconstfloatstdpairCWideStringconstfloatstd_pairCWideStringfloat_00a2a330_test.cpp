@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     void CopyFrom(const CCharString* other);
 };

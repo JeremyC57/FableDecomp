@@ -16,7 +16,7 @@
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
-class SExpSpendUndo {                               // Ego_r.pdb: four list<long> + nine longs (retail lists 12 bytes)
+struct SExpSpendUndo {                               // Ego_r.pdb: four list<long> + nine longs (retail lists 12 bytes)
 public:
     unsigned char Lists[0x30];                      // Generals, Strengths, Skills, Wills (+0x00..+0x24)
     long Levels;                                    // +0x30

@@ -4,8 +4,8 @@
 // strings are destroyed (wide B, wide A, name), the node is freed and the node count drops by one.
 static int g_log[8]; static int g_n = 0; static void* g_freed = 0;
 static void TestFree(void* p) { g_freed = p; std::free(p); }
-struct CCharString { void* m_pStringData; ~CCharString() { g_log[g_n++] = 1; } };
-struct CWideString { void* m_pStringData; int m_tag; ~CWideString() { g_log[g_n++] = 10 + m_tag; } };
+class CCharString { public: void* m_pStringData; ~CCharString() { g_log[g_n++] = 1; } };
+class CWideString { public: void* m_pStringData; int m_tag; ~CWideString() { g_log[g_n++] = 10 + m_tag; } };
 struct SValue { unsigned char m_key[0x10]; CCharString m_name; CWideString m_pathA; CWideString m_pathB; };
 struct CRetailTree {
     struct SNode { long _M_color; SNode* _M_parent; SNode* _M_left; SNode* _M_right; SValue _M_value; };

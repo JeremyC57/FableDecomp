@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
   int count;
   int* seen[8];
   void Transfer(int* p) { if (count < 8) seen[count] = p; count++; }
 };
-struct CCameraManagerSetDef {
+class CCameraManagerSetDef { public:
   char pad0[0x3c];
   int f3c;
   int CameraManagerMain;

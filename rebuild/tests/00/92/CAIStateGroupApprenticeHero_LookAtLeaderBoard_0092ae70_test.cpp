@@ -63,9 +63,9 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CCharStringData;
-struct CThingAICreature;
-struct CThingGameObject;
+class CCharStringData;
+class CThingAICreature;
+class CThingGameObject;
 
 #pragma pack(push, 1)
 struct CAIStateGroup_ApprenticeHero {
@@ -104,18 +104,18 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_ApprenticeHero, Critical) == 0x2d);
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void p00(); virtual void p01(); virtual void p02(); virtual void p03(); virtual void p04(); virtual void p05();
     virtual void p06(); virtual void p07(); virtual void p08(); virtual void p09(); virtual void p10(); virtual void p11();
     virtual void p12(); virtual void p13(); virtual void p14(); virtual void p15(); virtual void p16(); virtual void p17();
@@ -131,33 +131,33 @@ struct CTCPhysicsBase {
     virtual const CRightHandedSet& GetOrientation() const;   // slot 72 (+0x120)
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _00[0x60];
     CTCPhysicsBase* m_pPhysics;                 // +0x60
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                           // 0x0062E900
 };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     long m_loop;                                    // +0x114
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
@@ -168,7 +168,7 @@ extern bool g_LeaderboardInUse;                 // 0x013BB6B0
 // vector copy; retail stores it after `push 1 ; mov ecx,esi`).
 static float g_LeaderboardApproachDistance;     // 0x013BB6AC
 
-struct CBaseObject;
+class CBaseObject;
 struct CIntelligentPointerConstThing {          // CIntelligentPointer<const CThing>, 8 bytes
     void* __vftable;
     void* m_pItem;

@@ -3,7 +3,7 @@
 #include <cstring>
 
 // Behaviour model of the scripted-thing handle family (host-sized copy of the retail model).
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -56,7 +56,7 @@ namespace NTCScriptedControl {
 struct CActionBase { virtual ~CActionBase() {} };
 }
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     CTCBase base;
     NTCScriptedControl::CActionBase* added;
     int count;
@@ -81,7 +81,7 @@ struct SThingRig {
 };
 
 class CCharString { public: const char* text; CCharString(const char* t) : text(t) {} };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction() { ((CThing_Retail*)this)->finishCalls++; }
 };
 struct CTCScriptedControlFull {

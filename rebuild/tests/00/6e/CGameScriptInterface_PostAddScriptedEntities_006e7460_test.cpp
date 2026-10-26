@@ -3,7 +3,7 @@
 class CScriptBase { public: int Id; };
 
 class CScriptInfo;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

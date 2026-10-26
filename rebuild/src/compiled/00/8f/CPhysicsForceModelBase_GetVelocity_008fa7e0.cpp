@@ -12,7 +12,7 @@
 // read at +0xC, then the member address is formed (`add ecx,0Ch`) for the other two dword copies.
 // With a POD vector (implicit copy, by accessor or direct member) VC copies through esi/edx with a
 // `mov ecx,eax` shuffle (35 bytes).
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;

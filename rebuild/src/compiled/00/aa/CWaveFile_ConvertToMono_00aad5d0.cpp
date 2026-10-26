@@ -12,7 +12,7 @@
 // escape: the constructor and operator= (both CArray<short> instantiations in retail's TU) are same-TU stand-ins.
 extern "C" void __cdecl free(void* p);   // 0x00BFEA14
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Data;            // +0x00
     T* DataEnd;         // +0x04
     T* StorageEnd;      // +0x08
@@ -44,7 +44,7 @@ template <> __declspec(noinline) CArray<short>& CArray<short>::operator=(const C
     return *this;
 }
 
-struct CWaveFile {
+class CWaveFile { public:
     unsigned long Channels;            // +0x00
     unsigned long SampleLength;        // +0x04
     unsigned long SamplingFrequency;   // +0x08

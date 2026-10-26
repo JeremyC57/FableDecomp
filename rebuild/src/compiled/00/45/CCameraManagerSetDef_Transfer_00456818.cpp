@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
   void Transfer(int* p);
 };
-struct CCameraManagerSetDef {
+class CCameraManagerSetDef { public:
   char pad0[0x3c];
   int f3c;
   int CameraManagerMain;

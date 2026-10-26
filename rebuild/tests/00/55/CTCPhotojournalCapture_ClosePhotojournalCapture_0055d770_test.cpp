@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour model of CTCPhotojournalCapture::ClosePhotojournalCapture (0x0055D770)
-struct CGameEvent { long Type; signed char Player; unsigned char EndPos; bool Valid; bool Replacement;
+class CGameEvent { public: long Type; signed char Player; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long t) : Type(t), Player(-1), EndPos(0), Valid(true), Replacement(false) {} };
 static long g_lastType = 0, g_lastPlayer = 0, g_events = 0, g_renders = 0;
-struct CPlayerManager { long main; long GetMainPlayerNumber() { return main; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; void AddGameEvent(const CGameEvent& e) { g_lastType = e.Type; g_lastPlayer = e.Player; ++g_events; } };
-struct CTCInventory { void StartGameRendering() { ++g_renders; } };
-struct CThing { CTCInventory* inv; bool GetInterface(CTCInventory** out, long t) { if (t == 0x11 && inv) { *out = inv; return true; } return false; } };
+class CPlayerManager { public: long main; long GetMainPlayerNumber() { return main; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; void AddGameEvent(const CGameEvent& e) { g_lastType = e.Type; g_lastPlayer = e.Player; ++g_events; } };
+class CTCInventory { public: void StartGameRendering() { ++g_renders; } };
+class CThing { public: CTCInventory* inv; bool GetInterface(CTCInventory** out, long t) { if (t == 0x11 && inv) { *out = inv; return true; } return false; } };
 static CMainGameComponent* g_pMainGameComponent;
-struct CTCPhotojournalCapture { CThing* ParentThing; bool ScreenOpen;
+class CTCPhotojournalCapture { public: CThing* ParentThing; bool ScreenOpen;
     void ClosePhotojournalCapture() {
         ScreenOpen = false;
         CGameEvent event(0x43);

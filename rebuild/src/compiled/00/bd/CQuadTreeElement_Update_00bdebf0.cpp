@@ -14,30 +14,30 @@
 // puts the flag byte in cl instead of dl); the flag merges are bitfield `|=` (VC's or/xor/and/xor insert).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     Position;                                 // +0x54
 };
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     float ModifyFadeDistanceForVideoOptions(unsigned long typeMask, float distance);   // 0x00B597E0
 };
 extern CEngineCamera* g_pEngineCamera;                      // 0x01436EA0
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator; // 0x01436E88
 double __fastcall GFGetFastSubFrameTimer();                 // 0x009E1C70
-struct CEngineStaticMapFileBlockManager;
+class CEngineStaticMapFileBlockManager;
 struct CObjectTypeCollectionPalette;
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectCacheGroupCollection {
     virtual void v00();
     CObjectCacheGroupCollection* Next;                      // +0x04

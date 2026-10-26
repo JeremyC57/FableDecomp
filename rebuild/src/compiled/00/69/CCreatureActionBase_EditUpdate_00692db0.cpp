@@ -10,7 +10,7 @@
 // through the register copy (`cmp eax,edi ; jle`).
 // Layout: engine/CCreatureActionBase.h (PDB) agrees on every member used (TotalTime +0x10, AnimDelayTime +0x18, FramesRunning
 // +0x1c, RunningTimeSeconds +0x40, LastRunningTimeSeconds +0x44, StartFrame +0x48, Finished +0x61); a local model carries the virtual slots.
-struct CThing {
+class CThing { public:
     void ClearCurrentAction();              // 0x006633A0
 };
 struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatureBase>: vptr + item
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
 };
 extern long g_framesPerSecond;              // 0x01375550
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4 (+0x10)
     virtual void v05();

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DiagonalStrafeBL {
+class CCreatureAction_DiagonalStrafeBL { public:
     void* vftable;
     int destroyed;
 };

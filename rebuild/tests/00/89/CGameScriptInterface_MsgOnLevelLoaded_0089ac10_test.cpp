@@ -1,18 +1,18 @@
 #include <cstdio>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct CMessageEvent;
-struct CMessageEventFilter_IsOfType {
+class CMessageEvent;
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) {}
 };
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     long StartFrame;
     long EndFrame;
     CMessageEventFilter_OccuredBetween(long start, long end) : StartFrame(start), EndFrame(end) {}
 };
-template<class F1, class F2> struct CFilter_Bind2 {
+template<class F1, class F2> class CFilter_Bind2 { public:
     const F1* PF1;
     const F2* PF2;
     CFilter_Bind2(const F1& a, const F2& b) : PF1(&a), PF2(&b) {}
@@ -39,7 +39,7 @@ struct CGameScriptInterface_MsgOnLevelLoaded_Callback {
     void operator()(const CMessageEvent& message) const;
 };
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_OccuredBetween> CLevelLoadedFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     template<class F, class C> const long ForEachMessage(const F& filter, const C& callback) const;   // <CLevelLoadedFilter, callback> 0x008AD050
 };
 class CWorld {

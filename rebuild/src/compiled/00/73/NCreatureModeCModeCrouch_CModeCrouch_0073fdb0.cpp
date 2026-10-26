@@ -7,9 +7,9 @@
 // arguments are implicit conversion temporaries built right to left: the second (literal 0x0122D70E)
 // in the frame word reserved by `push ecx`, the first (literal 0x01267B28) in the dead `thing`
 // argument slot; destroyed first-argument first (0x0099EAE0).
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -22,7 +22,7 @@ struct CModeBase {
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual void v00();
     CAnimFilterBase() { }
 };

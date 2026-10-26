@@ -2,7 +2,7 @@
 // GoTo and its look-at GoTo + LookDirection.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator+(const C3DVector& other) const

@@ -21,7 +21,7 @@ struct SCountBlock {
     long m_count;
 };
 
-struct CBaseObject {                            // root of CScriptThing (vtable 0x01231710)
+class CBaseObject { public:                            // root of CScriptThing (vtable 0x01231710)
     virtual void v00();
     CBaseObject() {}
     CBaseObject(const CBaseObject&) {}
@@ -37,13 +37,13 @@ struct CScriptThingImpPointer {                 // CCountedPointer<CScriptThing>
     }
 };
 
-struct CScriptThing : CBaseObject {             // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes
     CScriptThingImpPointer PImp;                // +0x04
     virtual void v00();
     CScriptThing(const CScriptThing& other) : CBaseObject(other), PImp(other.PImp) { }
 };
 
-struct CGameScriptInterface {                   // vtable 0x01260F0C (918 slots)
+class CGameScriptInterface { public:                   // vtable 0x01260F0C (918 slots)
 #define GSI_FILL(n) virtual void v##n();
     GSI_FILL(000) GSI_FILL(001) GSI_FILL(002) GSI_FILL(003) GSI_FILL(004) GSI_FILL(005) GSI_FILL(006) GSI_FILL(007)
     GSI_FILL(008) GSI_FILL(009) GSI_FILL(010) GSI_FILL(011) GSI_FILL(012) GSI_FILL(013) GSI_FILL(014) GSI_FILL(015)
@@ -167,7 +167,7 @@ struct CQ_AmbushTradersScript {
 
 struct CQ_SunnyvaleMasterData;
 
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00();
     CGameScriptInterface* GSI;                  // +0x04
     CScriptThing Thing;                         // +0x08

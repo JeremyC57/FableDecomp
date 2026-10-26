@@ -38,17 +38,17 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CTCDayOrNightOnlySupport {
+class CTCDayOrNightOnlySupport { public:
     CCharString GetSectionNameSuffix(const CCharString& name) const;   // 0x00702AC0
 };
-struct CQuestManager {
+class CQuestManager { public:
     CCharString GetFullSectionNameForThing(const CCharString& sectionName, CThing_Retail* thing);
 };
 CCharString CQuestManager::GetFullSectionNameForThing(const CCharString& sectionName, CThing_Retail* thing)

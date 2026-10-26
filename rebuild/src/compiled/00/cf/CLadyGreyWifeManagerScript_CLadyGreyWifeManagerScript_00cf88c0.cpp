@@ -7,8 +7,8 @@
 // NewRegionEntered +0x88 (no ctor), InteriorRegion +0x8C, ExteriorRegion +0x90. Model shared with the landed quest-script ctors
 // (CQ_HangingTreeEvilScript 0x00D68F00): the two argument stores before the vtable store are the inlined `__declspec(novtable)`
 // argument-carrying intermediate base; each CScriptThing is CBaseClass + vtable 0x01238C8C + an embedded zeroed CCountedPointer.
-struct CGameScriptInterface;
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CGameScriptInterface;
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -18,10 +18,10 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                         // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CCharString { void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
-struct CBaseClass { virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
+class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();

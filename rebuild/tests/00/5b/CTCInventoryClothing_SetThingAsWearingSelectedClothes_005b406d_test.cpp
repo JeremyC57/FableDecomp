@@ -7,8 +7,8 @@ struct CMods {
 };
 struct SNode { SNode* next; long first; long second; };
 static SNode* _M_increment(SNode* n) { return n->next; }
-struct CThing { CMods* mods; bool GetInterface(CMods** out, long) { if (!mods) return false; *out = mods; return true; } };
-struct CMap { SNode header; SNode* begin() { return header.next; } SNode* end() { return &header; } };
+class CThing { public: CMods* mods; bool GetInterface(CMods** out, long) { if (!mods) return false; *out = mods; return true; } };
+class CMap { public: SNode header; SNode* begin() { return header.next; } SNode* end() { return &header; } };
 struct CClothing {
     CMap CurrentClothingSelected;
     void SetThingAsWearingSelectedClothes(CThing* thing)

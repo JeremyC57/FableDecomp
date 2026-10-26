@@ -12,7 +12,7 @@ struct StatTable {
     char pad0[0xfc];
     StatEntry* entries;
 };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad0[0x5c];
     StatTable* table;
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat);

@@ -4,7 +4,7 @@
 #include <cstdio>
 static int g_deletes = 0;
 static void __fastcall DeleteData(void*) { ++g_deletes; }
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
 struct CParticleSimulationPtr {
     void* Data; CCPPointerInfo* Info;
     CParticleSimulationPtr& operator=(const CParticleSimulationPtr& other)

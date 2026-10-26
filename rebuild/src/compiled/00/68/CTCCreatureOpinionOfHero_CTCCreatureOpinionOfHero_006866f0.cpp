@@ -63,7 +63,7 @@ template <class T> struct SPodVector {                 // STLport vector of a PO
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1 (+0x04)
     long RefCount;                                     // +0x04
@@ -86,11 +86,11 @@ struct CBaseIntelligentPointer {                       // CIntelligentPointer<CT
     ~CBaseIntelligentPointer();                        // 0x00A01C10
 };
 
-struct COpinionSet {                                   // retail 12 bytes: one POD vector
+class COpinionSet { public:                                   // retail 12 bytes: one POD vector
     SPodVector<float> Opinions;
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                // 0x00686830
     unsigned char _body[8];
 };

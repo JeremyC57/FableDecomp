@@ -7,7 +7,7 @@
 // 0x00BFE9BC; Data = Info = 0). The catalog label _Destroy_range<pair<CCharString, CCountedPointer<CEntityScriptBindingBase>>> is wrong (8-byte element, no string destructor).
 // Layout: CCountedPointer (Data +0, Info +4).
 // Shape: /O2 (16-aligned entry, loop-head pad).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

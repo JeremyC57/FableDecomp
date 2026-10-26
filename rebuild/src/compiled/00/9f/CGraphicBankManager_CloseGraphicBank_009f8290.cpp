@@ -11,13 +11,13 @@
 //   GetBankHandle temporary on the right; the bool survives the temporary's destructor in bl; on a hit the iterator is
 //   copied into the argument area (user copy ctor) and erase's result lands in the dead temporary slot, then `break`;
 //   `end()` is re-read every pass.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                // 0x0099EAE0
     bool SameText(const CCharString& other) const
@@ -36,12 +36,12 @@ struct CCharString {
     }
 };
 
-struct CBankFile {
+class CBankFile { public:
     CCharString GetBankHandle();                   // 0x009CBA40
 };
-struct CGraphicDataBank : CBankFile { };
+class CGraphicDataBank : public CBankFile { public: };
 
-template <class T> struct CCountedPointer {        // {Data, Info}; Info = {count, destroy(object in ecx), object}
+template <class T> class CCountedPointer { public:        // {Data, Info}; Info = {count, destroy(object in ecx), object}
     struct SInfo {
         long m_references;
         void (__fastcall* m_pfnDestroy)(T*);
@@ -88,7 +88,7 @@ struct CGraphicDataBankInfoList {                  // retail list<CGraphicDataBa
     CListIterator<CGraphicDataBankInfo> erase(CListIterator<CGraphicDataBankInfo> where);   // 0x009F8920
 };
 
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     virtual void v00();
     CGraphicDataBankInfoList GraphicDataBanks;     // +0x04
     void CloseGraphicBank(CCountedPointer<CGraphicDataBank> bank);

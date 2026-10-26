@@ -13,7 +13,7 @@
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 enum EPlayerMode { PLAYER_MODE_DUMMY = 0 };
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual ~CBase();
     virtual EPlayerMode GetPlayerMode() const;     // slot 1 (+4)
 };
@@ -32,23 +32,23 @@ template <class T> struct CRetailVector {          // STLport vector (12 bytes i
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     void GetAllRegisteredScreens(CRetailVector<const CBase*>* screens);   // 0x0066E941
     void Open();                                   // 0x0066EA46
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager();   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(EPlayerMode mode);             // 0x00634190
     void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     void*           __vftable;                     // +0x00
     unsigned char   _base04[4];                    // +0x04
     void*           Component;                     // +0x08

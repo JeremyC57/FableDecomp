@@ -12,11 +12,11 @@ struct IDirect3DDevice9Vtbl {
     long (STDCALL *SetVertexShaderConstantF)(IDirect3DDevice9* self, unsigned long startRegister, const float* data, unsigned long count);
 };
 struct IDirect3DDevice9 { IDirect3DDevice9Vtbl* lpVtbl; };
-struct CShaderConstantRange { int vft; int Offset; unsigned int Count; };
-struct CVertexShaderConstantLayout { unsigned char _pad[0x80]; CShaderConstantRange FogTransform; };
-struct CMatrix4x4 { float m[16]; };
-struct C4DVector { float X, Y, Z, W; };
-struct CShaderRenderManager {
+class CShaderConstantRange { public: int vft; int Offset; unsigned int Count; };
+class CVertexShaderConstantLayout { public: unsigned char _pad[0x80]; CShaderConstantRange FogTransform; };
+class CMatrix4x4 { public: float m[16]; };
+class C4DVector { public: float X, Y, Z, W; };
+class CShaderRenderManager { public:
     CVertexShaderConstantLayout* CurrentVSConstantLayout;
     IDirect3DDevice9* D3DDevice;
     CMatrix4x4 WorldMatrix;

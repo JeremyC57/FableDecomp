@@ -14,13 +14,13 @@ struct CFontBank_009e2b40 {
 struct CFontBankB_009e2b40 {
     CFontEntry_009e2b40* GetEntry(long index);     // 0x00A5F0A0
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char _body[0x8];
     bool FindSymbol(long key);                     // 0x009E51C0
     long Lookup(long key);                         // 0x009E5120
 };
 
-struct CFontManager {
+class CFontManager { public:
     long                 m_0;
     CFontBank_009e2b40*  m_pStaticBank;            // +0x04
     long                 m_8;

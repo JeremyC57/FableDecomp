@@ -6,7 +6,7 @@ static void Note(char c) { g_order[g_n++] = c; g_order[g_n] = 0; }
 namespace N_009d6490 { struct CBankFile { virtual ~CBankFile() { Note('B'); } }; } using N_009d6490::CBankFile;
 struct CSecondary { virtual ~CSecondary() { Note('S'); } };
 struct CArray { ~CArray() { Note('A'); } };
-struct CSymbolMap { char tag; ~CSymbolMap() { Note(tag); } };
+class CSymbolMap { public: char tag; ~CSymbolMap() { Note(tag); } };
 struct CParticleDataBank : CBankFile, CSecondary {
     CArray ParticleEmitters; CSymbolMap GraphicSymbols; CSymbolMap MeshSymbols;
     CParticleDataBank() { GraphicSymbols.tag = 'G'; MeshSymbols.tag = 'M'; }

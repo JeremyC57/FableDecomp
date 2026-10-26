@@ -11,20 +11,20 @@
 // makes the world call after the pushes); the arguments go right to left (0, 0.0f, 0.0f, GetPItem(), creature,
 // marker->GetPosition(), 9999999, 0x18). No engine header for this class; the layout is local (pack(1) for the
 // unaligned pointer), names descriptive.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     C3DVector* GetPosition();               // 0x004C73D0
 };
 
-struct CMessageEvent;
+class CMessageEvent;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long distance, C3DVector* pos, CThing* source, CThing* extra,
                               float a, float b, long c);     // 0x00687540
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
 };
@@ -36,12 +36,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                     // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                       // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void* __vftable;
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

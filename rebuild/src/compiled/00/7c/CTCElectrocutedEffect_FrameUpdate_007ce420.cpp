@@ -14,7 +14,7 @@
 //        live thing of the tint list. The colour constructor assigns R, G, B, A in its body (a member-initialiser list
 //        reorders the four _ftol channel conversions), the highlight channels are read straight through the def's vector
 //        (a named element pointer takes ebp), and the loop caches the list end in a local.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

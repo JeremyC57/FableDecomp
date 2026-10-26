@@ -3,8 +3,8 @@
 // number of layouts, Counter 0, AlternateSelectedCard 0; the def is released
 #include <cstdio>
 #include <new>
-struct CCard { int id; };
-struct C2DVector { float X, Y; };
+class CCard { public: int id; };
+class C2DVector { public: float X, Y; };
 struct __true_type { __true_type() { } };
 static int g_overflow = 0, g_baseNewRound = 0, g_destroyed = 0;
 template <class T> struct CRetailVector {
@@ -28,7 +28,7 @@ template <class T> struct CRetailVector {
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
-struct CCardPositionsDef { CRetailVector<C2DVector> Offset; };
+class CCardPositionsDef { public: CRetailVector<C2DVector> Offset; };
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }
@@ -38,7 +38,7 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     CRetailVector<CCardPositionsDef> CardOrders;
     void ReleaseTemporary()
     {

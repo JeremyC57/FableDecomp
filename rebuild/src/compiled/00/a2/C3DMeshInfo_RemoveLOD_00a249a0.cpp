@@ -7,7 +7,7 @@
 // Shape: the intrusive pointer's inline `= 0` (release, clear, store) and `= other` (skip when equal, release, clear, store,
 // add-ref with no null test: the LOD was dereferenced already); a local copy of the LOD keeps it alive across the reset.
 // Leaf: RemoveLOD@C3DMeshInfo
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo { public:
     virtual void Destroy(int flags);
     virtual void Delete();                          // slot 1 (+4)
     unsigned long IVRefCount;                       // +4
@@ -18,7 +18,7 @@ struct C3DMeshLODInfo {
     void ConvertToMeshStats();                      // 0x00A24870
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) m_pObject->AddRef(); }
     ~CIVCountedPointer() { if (m_pObject) m_pObject->Release(); }
@@ -55,7 +55,7 @@ struct CMeshData {
     unsigned long MeshID;                           // +0x1c
 };
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     virtual void v00();
     long m_04, m_08;
     CMeshData* MeshData;                            // +0xc CIVCountedPointer<CMeshData>

@@ -46,11 +46,11 @@ public:
     const char* c_str() const { return (const char*)PStringData; }
 };
 
-struct CScriptBase;
-struct CScriptDataBase;
-struct CGameScriptInterfaceBase;
+class CScriptBase;
+class CScriptDataBase;
+class CGameScriptInterfaceBase;
 
-struct CScriptInfo {                                    // Ego_r.pdb, 0x14 bytes
+class CScriptInfo { public:                                    // Ego_r.pdb, 0x14 bytes
     CScriptBase*     (__cdecl* AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);   // +0x00
     CScriptDataBase* (__cdecl* MasterScriptDataAlloc)();                                  // +0x04
     CCharString      Name;                              // +0x08

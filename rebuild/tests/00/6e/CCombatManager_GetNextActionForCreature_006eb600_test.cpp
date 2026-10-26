@@ -55,8 +55,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -64,8 +64,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -159,11 +159,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -255,15 +255,15 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -397,15 +397,15 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #endif // FABLE_ENGINE_CTHINGCREATUREBASE_H
 
 #undef CThingCreatureBase
-struct CCombatActionBase;
+class CCombatActionBase;
 struct CreatureUID { unsigned long Low,High; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _beforeUID[0x18];CreatureUID UID;unsigned char _beforeCurrentAction[0xe0];
     CCreatureActionBase* PCurrentAction_Data;
     bool IsCombatant() const; // 0x00662410: delegates via world combat manager to0x006E92C0
     bool IsPerformingAnyAction() const; //0x006622A0
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual ~CCombatSequenceBase();
     virtual void OnCreate();
     virtual CCharString GetName() const;
@@ -418,7 +418,7 @@ struct CCombatSequenceBase {
     CCombatActionBase* GetNextActionInSequence(); //0x008B0780
 };
 struct SequencePointer { CCombatSequenceBase* Data; void* Info; };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;long AttackerNumber,CombatWheelRingIndex;
     bool PreferredAttackDollySet;long PreferredAttackDollyTimer;float PreferredAttackDollyVector[2];bool UsingCombatWheel;
     long CurrentSequence;SequencePointer* Begin;SequencePointer* End;SequencePointer* Capacity;
@@ -426,7 +426,7 @@ struct CAttackingCombatantInfo {
 struct CCombatantInfo { CThingCreatureBase* Parent;CAttackingCombatantInfo AttackerInfo; };
 struct CombatNode { unsigned long Colour;CombatNode* Parent;CombatNode* Left;CombatNode* Right;CreatureUID Key;CCombatantInfo Value; };
 struct CombatMap { CombatNode* Header;unsigned long Count;unsigned long Compare;CombatNode* FindLE(const CreatureUID& key); }; //0x006F0250
-struct CCombatManager {
+class CCombatManager { public:
     void* VTable;unsigned char RegisteredCombatSequences[12];CombatMap Combatants;
     void PerformSequenceReset(CThingCreatureBase&); //0x006EA2C0
     void SetupNextSequenceForAttacker(CCombatantInfo&); //0x006EB390
@@ -475,7 +475,7 @@ bool CThingCreatureBase::IsPerformingAnyAction()const{return performing;}
 CombatNode* CombatMap::FindLE(const CreatureUID& k){++mapCalls;observedKey=k;return &node;}
 void CCombatManager::PerformSequenceReset(CThingCreatureBase&){++resetCalls;}
 void CCombatManager::SetupNextSequenceForAttacker(CCombatantInfo& info){++setupCalls;if(swapEntries)info.AttackerInfo.Begin=swapEntries;info.AttackerInfo.CurrentSequence=setupIndex;if(removeCombat)combat=false;}
-struct CCombatActionBase { int marker; };
+class CCombatActionBase { public: int marker; };
 static void Clear(CCombatSequenceBase& sequence){
     combat=true;performing=false;removeCombat=false;zone=true;interruptible=true;setupIndex=0;
     combatCalls=mapCalls=zoneCalls=interruptCalls=nextCalls=resetCalls=setupCalls=0;

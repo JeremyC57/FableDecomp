@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesHealLifeDef { char pad[0x60]; };
+class CSpecialAbilitiesHealLifeDef { public: char pad[0x60]; };
 
 unsigned long __fastcall CSpecialAbilitiesHealLifeDef_GetSizeofClass(const CSpecialAbilitiesHealLifeDef* self)
 {

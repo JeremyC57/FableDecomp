@@ -10,9 +10,9 @@
 // Layout: Ego_r.pdb names at the retail offsets (Component +0x6F8, PlayerManager +0x6FC, PacketSave +0x700, PacketFile
 //   +0x704, InputEventIsLoaded +0x720, Suspended +0x79C, Controls +0x7A8 .. CurrentQueuedProcessedInputNo +0x7DC,
 //   CurrentProcessedInput +0x7E0); the engine header's PDB containers are larger, so a local model.
-struct CWideString { void* PStringData; CWideString(); };   // 0x0099AED0
+class CWideString { public: void* PStringData; CWideString(); };   // 0x0099AED0
 struct CBase { CBase(); virtual void v00(); };          // 0x0099A2F0
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C, 0x1C bytes
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1C bytes
     unsigned char _pad04[0x10];
     bool          Open;                                 // +0x14
     CWideString   FileName;                             // +0x18
@@ -35,7 +35,7 @@ struct CGameEventSlot {                                 // 0x28 bytes
     unsigned char _pad27;
     CGameEventSlot() : Type(-1), Used(false) {}
 };
-struct CProcessedInput {                                // 0xB0 bytes
+class CProcessedInput { public:                                // 0xB0 bytes
     unsigned char  _pad00[8];
     CGameEventSlot Events[4];                           // +0x08
     unsigned char  _padA8[8];
@@ -51,18 +51,18 @@ struct CControlMap : CRetailVector<CInputPointer> {
     bool          Dirty;
     CControlMap() : Dirty(false) {}
 };
-struct CInputProcessManager {
+class CInputProcessManager { public:
     CInputProcessManager();                             // 0x00A0D4A0
     virtual ~CInputProcessManager();
     unsigned char _body[0x6f4];
 };
-struct CMainGameComponent;
-struct CPlayerManager;
+class CMainGameComponent;
+class CPlayerManager;
 struct CDefinitionManager_Retail { unsigned char _pad[0xd0]; struct CControlsSettings { unsigned char _p[0x3c]; long Scheme; }* Settings; };
 struct CMainGameComponent_Retail { const CDefinitionManager_Retail& PeekDefinitionManager() const; };   // 0x00415FBC
 extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
 
-struct CGamePlayerInterface : CInputProcessManager {
+class CGamePlayerInterface : public CInputProcessManager { public:
     CMainGameComponent_Retail*   Component;             // +0x6F8
     CPlayerManager*              PlayerManager;         // +0x6FC
     bool                         PacketSave;            // +0x700

@@ -6,7 +6,7 @@
 #define __forceinline inline
 #endif
 static int g_frames = 0, g_termAt = 1000, g_killedAt = 1000, g_impDestroyed = 0, g_infoDeleted = 0, g_lookups = 0, g_killedQueries = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length = -1) : PStringData(text) { (void)length; }
     ~CCharString() {}
@@ -15,12 +15,12 @@ struct CBase {
     virtual ~CBase() {}
     CBase() {}
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -40,7 +40,7 @@ template <class T> struct CCountedPointer {
 struct CScriptThingImpl {
     virtual bool MsgIsKilledBy(const CCharString& killer) { ++g_killedQueries; if (std::strcmp(killer.PStringData, "") != 0) g_killedQueries += 100; return g_frames >= g_killedAt; }
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer<CScriptThingImpl> PImp;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
     CScriptThing(const CScriptThing& other) : CBase() { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
@@ -53,11 +53,11 @@ struct CScriptThing : CBase {
     }
 };
 static CScriptThing* g_beardy = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() const { ++g_frames; }
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) { ++g_lookups; if (std::strcmp(name.PStringData, "BB_BeardyBaldyMan") != 0) g_lookups += 100; return *g_beardy; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00() {}
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();

@@ -6,7 +6,7 @@ struct FontRes {
     EFontLoadState state;
 };
 
-struct CFontDataBankEntry {
+class CFontDataBankEntry { public:
     void* vtbl;
     void* handle;
     FontRes* res;

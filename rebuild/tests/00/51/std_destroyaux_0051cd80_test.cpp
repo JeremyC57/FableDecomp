@@ -4,7 +4,7 @@ struct __false_type { __false_type() { } };
 static int g_frees = 0;
 static void* g_lastFreed = 0;
 static void TestFree(void* p) { ++g_frees; g_lastFreed = p; }
-struct C2DLineF { float X1, Y1, X2, Y2; };
+class C2DLineF { public: float X1, Y1, X2, Y2; };
 struct CSwitchableBlockage { unsigned long UniqueIDLow, UniqueIDHigh; void* LineList; };
 static int g_blockageRanges = 0, g_blockagesDestroyed = 0;
 static void DestroyBlockages(CSwitchableBlockage* first, CSwitchableBlockage* last, const __false_type&)   // 0x00519EF0 stand-in

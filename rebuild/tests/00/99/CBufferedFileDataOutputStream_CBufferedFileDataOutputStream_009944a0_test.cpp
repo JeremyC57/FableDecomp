@@ -2,10 +2,10 @@
 #include <stddef.h>
 #include <string.h>
 static int g_baseCalls; static const char* g_name; static long g_nameLen; static int g_lengthCalls;
-struct CCharString { void* m_pStringData; CCharString(const char* text, long length) { g_name = text; g_nameLen = length; m_pStringData = (void*)text; } };
+class CCharString { public: void* m_pStringData; CCharString(const char* text, long length) { g_name = text; g_nameLen = length; m_pStringData = (void*)text; } };
 struct CBase { virtual void v00() {} CBase() { ++g_baseCalls; } };
-struct CDataOutputStream : CBase { CCharString m_name; virtual void v00() {} CDataOutputStream() : CBase(), m_name("CBufferedFileDataOutputStream", -1) { } };
-struct CAFile {
+class CDataOutputStream : public CBase { public: CCharString m_name; virtual void v00() {} CDataOutputStream() : CBase(), m_name("CBufferedFileDataOutputStream", -1) { } };
+class CAFile { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {}
     virtual long GetLength() { ++g_lengthCalls; return 4096; }
 };

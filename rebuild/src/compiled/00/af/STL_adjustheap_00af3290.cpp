@@ -1,5 +1,5 @@
 // std::__adjust_heap(pair<CCharString,NParticleEngine::CRegisteredPSCInfo>* first, int holeIndex, int len, pair<CCharString,NParticleEngine::CRegisteredPSCInfo> val, CKeyPairCompareLess comp) -- STLport heap sift-down of the registered particle-component table by name, then __push_heap val back up
-// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@std@@
+// Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3290, 280 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): CCharString key +0, NParticleEngine::CRegisteredPSCInfo +4 (PDB: AllocFunc +0,
@@ -40,7 +40,7 @@ private:
 enum EPSCType { PSC_TYPE_NONE = 0 };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();           // +0x0
     EPSCType ComponentType;                     // +0x4
     CCharString GUIName;                        // +0x8

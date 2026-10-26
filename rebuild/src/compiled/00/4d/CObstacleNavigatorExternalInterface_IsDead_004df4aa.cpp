@@ -4,7 +4,7 @@ struct Inner {
     unsigned char flag; // +0x91
 };
 
-struct CObstacleNavigatorExternalInterface {
+class CObstacleNavigatorExternalInterface { public:
     void* vtbl;      // +0
     Inner* inner;    // +4
 };

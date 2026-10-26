@@ -1,7 +1,7 @@
 // behaviour test for 005d9b90: CTCInventoryItem::GetContextSensitiveType(long) -- cache the defs, fetch the thing def's
 // context-sensitive sub-def and return its Type (the sub-def reference is dropped); 0 on any miss
 #include <cstdio>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount; int destroyed; int Type; CDefPointeeBase* sub;
     void Release() { if (--RefCount == 0) ++destroyed; }
 };

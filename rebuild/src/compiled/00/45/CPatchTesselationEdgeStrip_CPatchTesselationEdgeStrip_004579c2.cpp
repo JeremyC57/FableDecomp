@@ -3,7 +3,7 @@
 extern "C" void engine_free(void*);
 struct CBase { };
 extern void __fastcall CBase_dtor(CBase*);
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad0[0x3c];
     void* p3c;   // +0x3c
     unsigned char _pad2[0x48-0x40];

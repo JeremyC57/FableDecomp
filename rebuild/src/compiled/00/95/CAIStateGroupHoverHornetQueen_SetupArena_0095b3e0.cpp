@@ -11,17 +11,17 @@
 // ctor (else a dead byte store); the centre out-pointer lives in its own block after the solid-to loop so the 0x4d lookup key
 // takes its frame slot (an address-taken local's slot is reserved for its whole scope).
 // Layout: HoverHornetQueen from Ego_r.pdb (ArenaCentrePos +0x28); CThingCreatureBase InitialPos +0xe8 (landed creature models).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,21 +40,21 @@ struct CThing {
         return (T*)it->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0xe8 - 0x4c];
     C3DVector InitialPos;                       // +0xe8
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
@@ -71,18 +71,18 @@ struct CThingPtrVector {                        // STLport vector<CThing*> (12 b
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     CThing*& operator[](unsigned int n) { return _M_start[n]; }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingPtrVector& out) const;   // 0x0095C7C0
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x007FD110
 };
-struct CTCSolidToThing {                        // interface 0x4d
+class CTCSolidToThing { public:                        // interface 0x4d
     void AddThingNotSolidTo(CThing* thing);     // 0x00770FA0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

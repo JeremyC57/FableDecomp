@@ -3,37 +3,37 @@
 #include <cstdio>
 #include <cstring>
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* s) : PStringData(s) { ++g_strings; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct CDefStringTable {
     CCharString GetString(long id) { return CCharString(id == 5 ? "GOOD" : "NOBODY"); }
 };
 CDefStringTable g_DefStringTable;
-struct CFaction { int id; };
+class CFaction { public: int id; };
 static CFaction g_good = { 1 };
 template <class T> struct scoped_ptr {
     T* ptr;
     T* operator->() const { return ptr; }
 };
-struct CFactionManager {
+class CFactionManager { public:
     CFaction* GetPFaction(const CCharString& name) const { return std::strcmp(name.PStringData, "GOOD") == 0 ? &g_good : 0; }
 };
-struct CWorld { scoped_ptr<CFactionManager> PFactionManager; };
-struct CMainGameComponent { scoped_ptr<CWorld> PWorld; };
+class CWorld { public: scoped_ptr<CFactionManager> PFactionManager; };
+class CMainGameComponent { public: scoped_ptr<CWorld> PWorld; };
 static CFactionManager g_fm; static CWorld g_world = { { &g_fm } }; static CMainGameComponent g_mgc = { { &g_world } };
 CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_name;
     virtual CDefString GetInstantiationName() const { CDefString d = { m_name }; return d; }
 };
-struct CFactionDef : CDefClassBase { };
-struct CTCBase;
-struct CTCEnemy {
+class CFactionDef : public CDefClassBase { public: };
+class CTCBase;
+class CTCEnemy { public:
     const CFaction* m_ally;
     bool IsAlliedWithFaction(const CFaction* faction) const { return faction == m_ally; }
 };
@@ -43,7 +43,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     bool HasTC(long type) const
@@ -62,9 +62,9 @@ struct CThing {
         return it->component;
     }
 };
-struct CThingAICreature : CThing { };
-template <class T> struct CDefPointer { T* Object; };
-struct CTCOpinionSource {
+class CThingAICreature : public CThing { public: };
+template <class T> class CDefPointer { public: T* Object; };
+class CTCOpinionSource { public:
     CDefPointer<const CFactionDef> RestrictToFactionAndAllies;
     bool          RestrictToFactionIsReversed;
     bool AppliesToWitness(const CThingAICreature* witness) const;

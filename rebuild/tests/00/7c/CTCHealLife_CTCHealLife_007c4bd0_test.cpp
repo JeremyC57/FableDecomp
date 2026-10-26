@@ -11,7 +11,7 @@ static char g_lastName[64];
 static long g_lastAbility = -1;
 static int g_startCalls = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) {}
     ~CCharString() {}
@@ -37,7 +37,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) {}
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end; CRetailVector() : _M_start(0), _M_finish(0), _M_end(0) {} };

@@ -3,7 +3,7 @@
 // Model of 0x00404440 CFileInstallerSingleton::Get: create the CFileInstaller on first use into the static counted
 // pointer (Reset 0x00403DB0 through an inline operator=) and return the object; later calls reuse it.
 static int g_constructed = 0;
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char m_body[0xA0];
     CFileInstaller() { ++g_constructed; m_body[0] = 0x5A; }
 };

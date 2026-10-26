@@ -4,7 +4,7 @@
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_HoverHornetQueen.h"
 #endif
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 struct CQueenThing {const C3DVector& GetPosition();}; //004c73d0
 struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
 struct CQueenNative {

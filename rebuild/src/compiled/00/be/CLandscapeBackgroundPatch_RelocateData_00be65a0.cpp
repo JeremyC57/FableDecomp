@@ -11,13 +11,13 @@
 // Shape: every arm returns on its own; the strip pointer and the bridge-vertex pointer are stepped per edge (the strip
 //   pointer lives in the dead oldBase argument slot).
 #include "engine/CLandscapeBackgroundPatch.h"
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void OnRelocated();                            // 0x00AC1F60
 };
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     void OnPostRelocation();                       // 0x00BFD3B0
 };
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318, 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318, 0x2c bytes
     virtual void v00();
     unsigned char _body[0x28];
     bool RelocateData(void* oldBase, void* newBase);   // 0x00BFC590

@@ -3,13 +3,13 @@
 #include <cstring>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text, int) : m_text(text) { }
     ~CCharString() { Log(9); }
 };
-struct CTCCreatureModeManager { unsigned int m_removed; void RemoveMode(unsigned int mode) { m_removed = mode; Log(2); } };
-struct CThing {
+class CTCCreatureModeManager { public: unsigned int m_removed; void RemoveMode(unsigned int mode) { m_removed = mode; Log(2); } };
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCCreatureModeManager* m_modes;
     char m_noise[32];

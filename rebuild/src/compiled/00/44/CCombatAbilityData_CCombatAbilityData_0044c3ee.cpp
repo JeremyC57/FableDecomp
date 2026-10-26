@@ -7,7 +7,7 @@
 // `fldz ; fstp` while -1.0f is an immediate store, and the def string's -1 is `or dword ptr,-1`:
 // both are the size optimiser's choices (`#pragma optimize("s", on)`).
 #pragma optimize("s", on)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };

@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,23 +38,23 @@ struct CThing {
 };
 
 namespace NEntityEvents {
-    struct CIsEventOfTypeCreatedAfter {
+    class CIsEventOfTypeCreatedAfter { public:
         long Type;                              // EEntityEventType
         long Frame;
         CIsEventOfTypeCreatedAfter(long type, long frame) : Type(type), Frame(frame) { }
     };
 }
 
-struct CTCEntityEvents {                        // interface type 0x42
+class CTCEntityEvents { public:                        // interface type 0x42
     bool HasEvent(const NEntityEvents::CIsEventOfTypeCreatedAfter& predicate);   // 0x00956650
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

@@ -1,19 +1,19 @@
 #include <cstdio>
 // Behaviour test for 00a14fd0 CNavigatorManager::IsInSameMap: the first map holding either point decides; true only when
 // that map holds the first point and the second; half-open integer areas (truncated coordinates).
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(const C3DVector& v) : X((long)v.X), Y((long)v.Y) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     bool Contains(const C2DCoordI& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
-struct CCharString { void* m_pData; };
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CCharString { public: void* m_pData; };
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 class CNavQuadTree;
-struct CNavQuadTreeMap {                           // 32 bytes
+class CNavQuadTreeMap { public:                           // 32 bytes
     CCountedPointer<CNavQuadTree> PQuadTree;       // +0x00
     long                          Index;           // +0x08
     C2DBoxI                       MapArea;         // +0x0c

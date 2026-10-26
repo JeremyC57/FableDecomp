@@ -1,14 +1,14 @@
 // Behaviour test for CTCHaste::CTCHaste (0x004E0C61): base gets the thing, Multiplier 1.0f, ToTerminate false, PauseFrames -1, map built.
 #include <cstdio>
-struct CThing { int m_id; };
-struct CTCBase {
+class CThing { public: int m_id; };
+class CTCBase { public:
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {}
     virtual ~CTCBase() {}
 };
 static int g_mapsBuilt = 0;
 struct CHasteMultiplierMap { unsigned long _Mysize; CHasteMultiplierMap() : _Mysize(0) { ++g_mapsBuilt; } };
-struct CTCHaste : CTCBase {
+class CTCHaste : public CTCBase { public:
     float Multiplier; bool ToTerminate; long PauseFrames; CHasteMultiplierMap Multipliers;
     CTCHaste(CThing* thing) : CTCBase(thing), Multiplier(1.0f), ToTerminate(false), PauseFrames(-1) {}
 };

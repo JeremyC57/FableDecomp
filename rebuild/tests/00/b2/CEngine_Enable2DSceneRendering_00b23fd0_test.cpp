@@ -1,3 +1,3 @@
 #include <cstdio>
-struct CEngine { unsigned char _pad[0xb8]; unsigned long m_sceneRenderFlags; void Enable2DSceneRendering(bool e) { m_sceneRenderFlags &= ~2; if (e) m_sceneRenderFlags |= 2; } };
+class CEngine { public: unsigned char _pad[0xb8]; unsigned long m_sceneRenderFlags; void Enable2DSceneRendering(bool e) { m_sceneRenderFlags &= ~2; if (e) m_sceneRenderFlags |= 2; } };
 int main() { CEngine e; e.m_sceneRenderFlags = 0xff; e.Enable2DSceneRendering(false); if (e.m_sceneRenderFlags != (0xff & ~2)) { std::printf("00b23fd0_TEST FAIL\n"); return 1; } e.Enable2DSceneRendering(true); if (e.m_sceneRenderFlags != 0xff) { std::printf("00b23fd0_TEST FAIL\n"); return 1; } e.m_sceneRenderFlags = 0; e.Enable2DSceneRendering(true); if (e.m_sceneRenderFlags != 2) { std::printf("00b23fd0_TEST FAIL\n"); return 1; } std::printf("00b23fd0_TEST PASS\n"); return 0; }

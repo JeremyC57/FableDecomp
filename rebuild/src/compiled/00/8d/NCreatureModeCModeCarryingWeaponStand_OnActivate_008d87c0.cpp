@@ -14,13 +14,13 @@
 //   carrying test is the byte presence test, the weapon test the dword `unsigned long` HasTC (`mov ecx,[eax+28h] ;
 //   test ch,1`); both GetTC lookups are the one-ternary returned form (component straight into ecx) and share the
 //   string temporary's frame slot for their key.
-struct CTCBase;
+class CTCBase;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                     // +0
     unsigned long m_length;                    // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -31,7 +31,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CCRC::Calc
 
-struct CAnimFilterOfGroup {                    // vtable 0x01267568
+class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8
@@ -70,7 +70,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44
@@ -88,10 +88,10 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                           // interface type 0x46
+class CTCCarrying { public:                           // interface type 0x46
     CThing* GetThingInPrimarySlot() const;     // 0x006A1440
 };
-struct CTCWeapon {                             // interface type 0x48
+class CTCWeapon { public:                             // interface type 0x48
     const CCharString& GetAnimationGroupName() const;   // 0x005DABE0
 };
 

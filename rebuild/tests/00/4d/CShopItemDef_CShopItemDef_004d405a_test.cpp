@@ -1,8 +1,8 @@
 #include <cstdio>
 struct CDefBase { virtual void v00() {} unsigned char _body[0x24]; CDefBase() {} };
-struct CShopItem { float Quantity; float PriceMultiplier; float MaxStock; long RestockPeriod; float RestockPeriodRandomness; float SalesPerDay; float SalesPerDayRandomness;
+class CShopItem { public: float Quantity; float PriceMultiplier; float MaxStock; long RestockPeriod; float RestockPeriodRandomness; float SalesPerDay; float SalesPerDayRandomness;
     CShopItem() : Quantity(0.0f), PriceMultiplier(1.0f), MaxStock(0.0f), RestockPeriod(1), RestockPeriodRandomness(0.0f), SalesPerDay(0.0f), SalesPerDayRandomness(0.0f) {} };
-struct CShopItemDef : CDefBase { long Type; CShopItem Item; virtual void v00() {} CShopItemDef(); };
+class CShopItemDef : public CDefBase { public: long Type; CShopItem Item; virtual void v00() {} CShopItemDef(); };
 CShopItemDef::CShopItemDef() : CDefBase(), Item() { Type = 0; }
 int main()
 {

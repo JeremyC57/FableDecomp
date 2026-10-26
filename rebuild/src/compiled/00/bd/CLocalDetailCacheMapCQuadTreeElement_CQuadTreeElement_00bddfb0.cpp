@@ -8,23 +8,23 @@
 // Layout: PDB CLocalDetailCacheMap::CQuadTreeElement (76 bytes); the map's file-block manager pointer at +4.
 // Shape: the Loading test is scheduled before the vtable store; the four child deletes are written out (no nulling, no
 // loop counter: retail has four separate null-tested deletes).
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
     virtual ~CObjectCacheGroupCollection();        // slot 0: the deleting destructor
     CObjectCacheGroupCollection* Next;             // +0x04
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
-struct C3DBoundingSphere {                         // centre + radius (16 bytes)
+class C3DBoundingSphere { public:                         // centre + radius (16 bytes)
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0.0f), Y(0.0f), Z(0.0f), Radius(0.0f) { }
     void Reset() { X = 0.0f; Y = 0.0f; Z = 0.0f; Radius = 0.0f; }
 };
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual ~CMovableResource() { }
 };
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     unsigned char                     _pad00[4];
     CEngineStaticMapFileBlockManager* FileBlockManager;   // +0x04
 };

@@ -17,7 +17,7 @@ struct CEntryVector_009fd910 {                     // the 44-byte entry vector (
     SEntry44_009fd910& operator[](unsigned long i) { return m_pFirst[i]; }
 };
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void OnEntryUpdated(unsigned long a, unsigned long entry, const CArrayChar& data);   // slot 12 (+0x30)

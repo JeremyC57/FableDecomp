@@ -1,4 +1,4 @@
-struct CCreatureAction_AddFoodToTable {
+class CCreatureAction_AddFoodToTable { public:
     void* vftable;
 };
 

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for the SGI __pop_heap at 0x004E1D20 (calling conventions dropped for the host).
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     long PStringData;
     CCharString() : PStringData(0) { ++g_strings; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_strings; }

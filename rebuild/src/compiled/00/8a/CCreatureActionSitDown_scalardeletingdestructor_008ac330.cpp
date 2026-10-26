@@ -33,7 +33,7 @@ struct CCountedPointer {
     }
 };
 
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     unsigned char _body[0xa8];
     ~CPhysicsMeshInfo();                             // 0x00693EF0
 };

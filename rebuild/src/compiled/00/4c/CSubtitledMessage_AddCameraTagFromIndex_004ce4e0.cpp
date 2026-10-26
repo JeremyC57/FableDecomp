@@ -29,14 +29,14 @@ struct CIndexTextMap {                             // STLport map<long, CCharStr
     CTagIterator find(const long& key) const;      // 0x004D0980
     CTagIterator end() const { CTagIterator it; it.Node = Header; return it; }
 };
-struct CGlobalDef {
+class CGlobalDef { public:
     virtual void v00();
     virtual void Release();                        // slot 1: frees the def when the last reference goes
     long          RefCount;                        // +0x04
     unsigned char _pad08[0xec];
     CIndexTextMap CameraTagTexts;                  // +0xf4
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Ptr;
     T* operator->() const { return Ptr; }
     ~CDefPointer()

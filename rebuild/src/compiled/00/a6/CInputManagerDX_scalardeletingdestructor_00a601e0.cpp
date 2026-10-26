@@ -1,4 +1,4 @@
-struct CInputManagerDX {
+class CInputManagerDX { public:
     void* vftable;
 };
 

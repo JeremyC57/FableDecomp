@@ -19,7 +19,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                                     // +0
     SCountBlock* Info;                             // +4
     CCountedPointer() : Object(0), Info(0) {}
@@ -47,22 +47,22 @@ template <class T> struct CCountedPointer {
 enum EThreadedFilePriority { THREADED_FILE_PRIORITY_HIGH = 4 };
 extern EThreadedFilePriority g_MeshReadPriority;   // 0x01397240
 extern unsigned long g_NextMeshID;                 // 0x01397248
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                  // 0x009D5620
 };
-struct CBankFile {
+class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
 };
-struct CBankFileAsyncEntry {
+class CBankFileAsyncEntry { public:
     void*          __vftable;
     CBankFile*     Bank;                           // +4
     unsigned long  Index;                          // +8
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
-struct C3DMesh2 { unsigned long Sizeof() const; };   // 0x00A893C0
+class C3DMesh2 { public: unsigned long Sizeof() const; };   // 0x00A893C0
 
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long           RefCount;                       // +0x04
@@ -77,7 +77,7 @@ struct CResource {
     void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
     void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                                   // +0
     CResource Head;                                // +4
     unsigned long ResourceCount;                   // +0x20
@@ -93,16 +93,16 @@ inline void CResource::Touch()
         LastUsedFrame = ResourceList->CurrentFrame;
     }
 }
-struct CResourceBank {
+class CResourceBank { public:
     void AddResource(CResource* resource);         // 0x009FC3D0
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char _pad000[0x170];
     CResourceBank ResourceBank;                    // +0x170
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) {}
     __forceinline CIVCountedPointer& operator=(T* object)
@@ -118,8 +118,8 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct C3DMeshInfo;
-struct C3DMeshLODInfo : CResource {                // vtable 0x0129CDA4
+class C3DMeshInfo;
+class C3DMeshLODInfo : public CResource { public:                // vtable 0x0129CDA4
     CCountedPointer<C3DMesh2>           Mesh;            // +0x1c
     CCountedPointer<CBankFileAsyncData> FileData;        // +0x24
     C3DMeshInfo*                        MeshInfo;        // +0x2c
@@ -140,7 +140,7 @@ struct CMeshData : CCountedBase {                  // C3DMeshInfo::CMeshData, vt
     unsigned long MeshID;                             // +0x1c
     virtual void v00();
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     virtual void v00();
     CMeshDataBank*               Bank;             // +0x04
     unsigned long                Index;            // +0x08

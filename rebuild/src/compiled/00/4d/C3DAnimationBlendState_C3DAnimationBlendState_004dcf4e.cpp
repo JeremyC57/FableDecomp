@@ -9,7 +9,7 @@ struct Base {
     void* basefield;
     ~Base();
 };
-struct C3DAnimationBlendState : public Base {
+class C3DAnimationBlendState : public Base { public:
     char pad0[8];
     IRefCounted* res;
     ~C3DAnimationBlendState();

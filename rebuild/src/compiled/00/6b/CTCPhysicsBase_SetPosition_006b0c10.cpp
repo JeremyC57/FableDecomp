@@ -8,18 +8,18 @@
 // Shape: a same-TU auto_inline(off) stand-in body for LowerBound (the 008330d0 idiom) lets VC7.1 share the lookup key word with
 //   the zero-initialised mapwho out pointer; the final SetCurrentMapNumber goes through an inline GetParentThing() (retail
 //   mov esi,[esi+4] / mov ecx,esi). Local CTCPhysicsBase model (the engine header has no virtuals).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector OffsetBy2D(const C2DVector& o) const { C3DVector result; result.X = X + o.X; result.Y = Y + o.Y; result.Z = Z; return result; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -74,25 +74,25 @@ public:
         return false;
     }
 };
-struct CTCMapwho {                                      // interface 0x3a
+class CTCMapwho { public:                                      // interface 0x3a
     unsigned char _pad00[0x50];
     bool          InMapwho : 1;                         // +0x50 bit 0 (name descriptive)
     void MoveInMapwho(const C3DVector& pos);            // 0x0071A750
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long map) const;           // slot 10 (+0x28)
     virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetMapNumber(const C3DVector& pos);    // slot 16 (+0x40)
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                   // slot 12 (+0x30)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1)

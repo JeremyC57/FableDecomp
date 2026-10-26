@@ -13,13 +13,13 @@
 // released through a local copy (`dec [ecx+4] ; jne`); the counted block holds {count, destroy member pointer, object}.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 void operator delete(void* p);                  // 0x00BFE9BC
-struct CThing;
-struct CFireheartMinigameDef {
+class CThing;
+class CFireheartMinigameDef { public:
     virtual void v00();
     virtual void Delete() const;                // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer()
     {
@@ -31,7 +31,7 @@ template<class T> struct CDefPointer {
         }
     }
 };
-struct CBaseObject {
+class CBaseObject { public:
     virtual ~CBaseObject();                     // 0x0099A430
     void* IntelligentPointer;                   // +0x04
 };
@@ -59,13 +59,13 @@ struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptGameResourceObjectBase : CBaseObject {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, implicit dtor
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, implicit dtor
     CCountedPointer PImp;                       // +0x08
 };
-struct CEnginePrimitiveHandle {                 // 8 bytes, virtual destructor
+class CEnginePrimitiveHandle { public:                 // 8 bytes, virtual destructor
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
@@ -85,7 +85,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
             free(_M_start);
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08

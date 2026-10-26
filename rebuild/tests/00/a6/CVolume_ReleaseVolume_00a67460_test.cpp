@@ -14,8 +14,8 @@ struct IRefObject
     IVTable* vptr;
 };
 
-struct CVolume
-{
+class CVolume
+{ public:
     void*       m_pad0;
     IRefObject* m_pObject;
     void ReleaseVolume(int unused);

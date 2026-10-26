@@ -18,12 +18,12 @@
 // Model: local -- engine/CEngineInternalPrimitiveBase.h exists, but the generated header is data-only (pack(1), no member
 // functions, no virtuals: the vptr and counted pointers are flattened into raw words); the handle assignment calls the pointee's
 // virtual slots 1 and 3, so the pointee is local (the landed 0x0041C500 / 0x00B19C20 model).
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                       // 0x0099A2E0
 };
 class CEnginePrimitiveHandle;
-struct CEngineInternalPrimitiveBase {                    // the referenced primitive: handle count at +4
+class CEngineInternalPrimitiveBase { public:                    // the referenced primitive: handle count at +4
     virtual void v00();
     virtual void Destroy();                              // slot 1 (+0x04)
     virtual void v02();

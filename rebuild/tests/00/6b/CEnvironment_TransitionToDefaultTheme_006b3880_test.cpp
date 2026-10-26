@@ -5,9 +5,9 @@ struct CEntry {
     unsigned char pad[0x30];
     void TransitionToDefaultTheme(float duration) { ++g_calls; g_last = this; g_dur = duration; }
 };
-template <class T> struct CArray { T* first; T* last; T* end; T& operator[](long i) { return first[i]; } };
+template <class T> class CArray { public: T* first; T* last; T* end; T& operator[](long i) { return first[i]; } };
 struct CStack { CArray<CEntry> Ents; };
-struct CEnvironment {
+class CEnvironment { public:
     bool ForcedEnvironmentTheme;
     CArray<CStack> PriorityStackChannels;
     void TransitionToDefaultTheme(long channel, long priority, float duration)

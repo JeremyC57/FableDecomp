@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for 00bf7b90: both embedded tree nodes load their headers from the same stream, first then second.
-struct CDataInputStream { int m_reads; };
+class CDataInputStream { public: int m_reads; };
 static int g_order[4]; static int g_n = 0;
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     int m_id;
     CDataInputStream* m_pLoadedFrom;
     void LoadHeader(CDataInputStream* stream) { m_pLoadedFrom = stream; ++stream->m_reads; g_order[g_n++] = m_id; }

@@ -14,15 +14,15 @@
 // POwner +0x0d (CIntelligentPointer<CThing>, 8 bytes, unaligned in the PDB too), OwnerUID +0x18; retail CThing level short
 // +0x8e; CPersistContext mode +0x18 (1 or 3 = saving).
 #include "engine/CTCBase.h"
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
     bool IsLevelLess();                         // 0x004C7930
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

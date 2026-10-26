@@ -10,7 +10,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -44,14 +44,14 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return (CThing*)m_pItem; }
     void SetPItem(void* item) { ++g_setPItem; m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain;
     unsigned char _pad[0x0c];

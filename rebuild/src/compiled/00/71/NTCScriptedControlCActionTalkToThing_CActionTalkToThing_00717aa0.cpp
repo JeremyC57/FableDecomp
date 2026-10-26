@@ -16,14 +16,14 @@
 // after the assignment, before the local's destructor.
 void __cdecl free(void*);   // 0x00BFEA14 (operator delete)
 
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                  // 0x0099E4B0
 };
 
-struct CSubtitledMessage {                          // 0x44 bytes
+class CSubtitledMessage { public:                          // 0x44 bytes
     unsigned char _body[0x44];
     ~CSubtitledMessage();                           // 0x004D1DB0 (manifest "~CPatchTesselationEdgeStrip" propagated)
 };
@@ -51,7 +51,7 @@ struct CSubtitledMessageArray {                     // retail CArray<CSubtitledM
 void __fastcall GetMessagesFromTextName(CSubtitledMessageArray* out, const char* textName, const char* groupName,
                                         long selectionMethod);   // 0x004CEBB0
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0xf6];
     bool m_inCutscene;                              // +0xf6
 };

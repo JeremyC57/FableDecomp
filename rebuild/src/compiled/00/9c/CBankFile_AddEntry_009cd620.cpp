@@ -31,16 +31,16 @@ public:
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-struct CCPPointerInfo                                  // the shared count block
-{
+class CCPPointerInfo                                  // the shared count block
+{ public:
     long m_references;                                 // +0
     void (__fastcall* m_pfnDestroy)(void*);            // +4
     void* m_pObject;                                   // +8
 };
 
 template <class T>
-struct CCountedPointer
-{
+class CCountedPointer
+{ public:
     T* Data;                                           // +0
     CCPPointerInfo* Info;                              // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)

@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <new>
-struct CCharString {
+class CCharString { public:
     char* PData; static int copies;
     CCharString(const char* s) { PData = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(PData, s); }
     CCharString(const CCharString& o) { ++copies; PData = (char*)std::malloc(std::strlen(o.PData) + 1); std::strcpy(PData, o.PData); }

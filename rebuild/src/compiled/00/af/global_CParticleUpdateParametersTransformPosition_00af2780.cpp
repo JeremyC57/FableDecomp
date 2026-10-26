@@ -1,14 +1,14 @@
 // 00af2780 NParticleEngine::CPSCBase::GetCurrentPosition (catalog: CParticleUpdateParameters_TransformPosition; symbol of caller 00b16d50)
 // Flags: /O2 /Oy /W3
 // Leaf: GetCurrentPosition
-struct C3DVector {float x,y,z;C3DVector(){} __forceinline C3DVector(const C3DVector& v){z=v.z;x=v.x;y=v.y;}__forceinline C3DVector(float a,float b,float c){x=a;y=b;z=c;}};
-struct CMatrix3x4 {float m[12];};
+class C3DVector { public:float x,y,z;C3DVector(){} __forceinline C3DVector(const C3DVector& v){z=v.z;x=v.x;y=v.y;}__forceinline C3DVector(float a,float b,float c){x=a;y=b;z=c;}};
+class CMatrix3x4 { public:float m[12];};
 // ABI: 0x00af3080 dereferences second stack argument as a key; 0x00af2c50 receives its address.
 template<class A,class B> struct CParticleUpdateParameters {bool GetUpdateParam(C3DVector&,const unsigned long&,float,bool,unsigned long)const;};
 namespace NParticleEngine {
 // Layout: retail owner +4, owner flags +0x50, fallback virtual slot30.
-struct CParticleSystem {char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&);__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.x,y=q.y;q.x=mat.m[6]*q.z+mat.m[3]*q.y+mat.m[0]*q.x+mat.m[9];q.y=mat.m[7]*q.z+mat.m[4]*q.y+mat.m[1]*x+mat.m[10];q.z=mat.m[8]*q.z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.x,q.y,q.z);}};
-struct CPSCBase {
+class CParticleSystem { public:char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&);__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.x,y=q.y;q.x=mat.m[6]*q.z+mat.m[3]*q.y+mat.m[0]*q.x+mat.m[9];q.y=mat.m[7]*q.z+mat.m[4]*q.y+mat.m[1]*x+mat.m[10];q.z=mat.m[8]*q.z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.x,q.y,q.z);}};
+class CPSCBase { public:
 virtual void v0()=0;
 virtual void v1()=0;
 virtual void v2()=0;

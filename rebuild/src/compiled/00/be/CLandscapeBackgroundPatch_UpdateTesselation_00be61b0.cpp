@@ -11,20 +11,20 @@
 // Shape: the world origin goes through inline GetWorldX/GetWorldY accessors that re-walk Parent->Map->EngineMap (a named
 //   origin sum or a plain argument expression schedules the MapX/MapY loads ahead of the map); the record fill and the
 //   bridge-buffer take-back are four-trip loops that VC7.1 unrolls (index buffers before vertex buffers).
-struct CEngineMap { unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
-struct CIndexBuffer;
-struct CVertexBufferWin32;
+class CEngineMap { public: unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
+class CIndexBuffer;
+class CVertexBufferWin32;
 namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                               // 0x0099A2E0
     CBase();                                        // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
-struct CPatchTesselationEdgeStrip {                 // 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                 // 0x2c bytes
     unsigned char _pad[0x28];
     bool          Tesselated;                       // +0x28
     bool          Vertical;                         // +0x29
     unsigned char _pad2a[2];
 };
-struct CTesselationData : CBase {                   // vtable 0x012A800C, 0x5c bytes
+class CTesselationData : public CBase { public:                   // vtable 0x012A800C, 0x5c bytes
     long                        PatchWorldX;        // +0x04
     long                        PatchWorldY;        // +0x08
     long                        Width;              // +0x0c
@@ -44,12 +44,12 @@ struct CLandscapeTesselatorBase {
 struct CEngineGlobal { unsigned char _pad[0x66c]; CLandscapeTesselatorBase Tesselator; };   // +0x66C
 extern CEngineGlobal* g_pEngine;                    // 0x01436EA8
 extern bool g_bLandscapeTesselation;                // 0x0139C40C
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     bool TesselatePatch(CTesselationData& data);    // 0x00BFD290
 };
 struct CLandscapeMap { unsigned char _pad[0x14]; CEngineMap* EngineMap; };   // +0x14
-struct CLandscapeBackgroundTreeNode { unsigned char _pad[0xa4]; CLandscapeMap* Map; };   // +0xA4
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundTreeNode { public: unsigned char _pad[0xa4]; CLandscapeMap* Map; };   // +0xA4
+class CLandscapeBackgroundPatch { public:
     void*                           vptr;
     CLandscapeBackgroundTreeNode*   Parent;             // +0x04
     CPatchTesselationEdgeStrip      EdgeStrips[4];      // +0x08

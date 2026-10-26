@@ -2,11 +2,11 @@
 // behaviour test: CSpecialAbilitiesBulletTimeDef::Transfer visits every member once, with retail's callee-type sequence
 
 
-struct CDefString { long m_index; };
-struct C3DVector { float X, Y, Z; };
+class CDefString { public: long m_index; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[128]; int kind[128]; int count;
     void Transfer(CDefString& v) { kind[count] = 1; order[count++] = &v; }
     void Transfer(CStlVector<float>& v) { kind[count] = 2; order[count++] = &v; }
@@ -14,7 +14,7 @@ struct CPersistContext {
     void Transfer(long& v) { kind[count] = 4; order[count++] = &v; }
 };
 
-struct CSpecialAbilitiesBulletTimeDef {
+class CSpecialAbilitiesBulletTimeDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                       // CSpecialAbilitiesDef base fields (+0x04)
     float SlowTimeDuration[4];                       // +0x3C

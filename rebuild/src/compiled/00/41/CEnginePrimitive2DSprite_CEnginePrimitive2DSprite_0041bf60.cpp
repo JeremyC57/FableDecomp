@@ -2,9 +2,9 @@
 // corroborated by landed006558CE. TextureFrame groups the adjacent BankIndex/Frame words;
 // texture overloads clear them. The position overload represents ClipBox as two equal points.
 // CEnginePrimitive2DSprite::CEnginePrimitive2DSprite -- initializes sprite wrapper metadata, box, blend parameters, and UV vectors; retail 0x0041bf60 length 0xa7. The shared internal sprite header is a distinct renderer object (0x8c); local wrapper fields follow constructor stores.
-struct C2DBoxF { float left, top, right, bottom; };
-struct C2DVector { float x, y; };
-struct CEnginePrimitiveThemeChannelDesc { unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) {} };
+class C2DBoxF { public: float left, top, right, bottom; };
+class C2DVector { public: float x, y; };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad; CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) {} };
 struct CSpriteTextureFrame { unsigned long BankIndex, Frame; void Reset() { BankIndex=0; Frame=0; } };
 struct CEnginePrimitive2DSprite {
     unsigned long Type;

@@ -1,12 +1,12 @@
 // Behaviour test for 0x006A7AD0 CThingFilter_MakesLineWithPosInDirectionOfLine::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static const float g_fZero = 0.0f;
-struct CThing {
+class CThing { public:
     C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
 };
-struct CThingFilter_MakesLineWithPosInDirectionOfLine {
+class CThingFilter_MakesLineWithPosInDirectionOfLine { public:
     C3DVector Pos;
     C3DVector Line;
     bool operator()(CThing* thing) const

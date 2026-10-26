@@ -9,12 +9,12 @@
 //   script +0x14 (fire heart taken flag +0x50).
 // Shape: the pause/unpause pair goes through one named copy of Game (edi); the movie handle is a block local whose
 //   implicit destructor releases PImp out of line and then runs the inline base destructor (vptr store + root dtor).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
@@ -28,7 +28,7 @@ struct CBaseObjectRoot {                                // the intelligent-point
     CBaseObjectRoot();                                  // 0x0099A380
     ~CBaseObjectRoot();                                 // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseObjectRoot {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObjectRoot { public:   // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CMovieImpPointer {                               // CCountedPointer<...> {Data, Info}
@@ -37,7 +37,7 @@ struct CMovieImpPointer {                               // CCountedPointer<...> 
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0 (out of line here)
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, no declared dtor
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, no declared dtor
     CMovieImpPointer PImp;                              // +0x08
 };
 
@@ -50,7 +50,7 @@ struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   //
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1C)
     VPAD64(qa) VPAD32(qb) VPAD16(qc) VPAD4(qd) VPAD1(qe)                             // slots 8..124

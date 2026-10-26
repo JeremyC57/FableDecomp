@@ -3,7 +3,7 @@
 
 extern unsigned char g_updateBrainEnabled; // [0x1375756]
 
-struct CThingAICreature {
+class CThingAICreature { public:
     char pad[0x1a8];
     void* f1a8;
 };

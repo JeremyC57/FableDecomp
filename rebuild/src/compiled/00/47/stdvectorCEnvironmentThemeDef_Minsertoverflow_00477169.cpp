@@ -1,5 +1,5 @@
 // std::vector<CEnvironmentThemeDef>::_M_insert_overflow(CEnvironmentThemeDef* position, const CEnvironmentThemeDef& x, const __false_type&, unsigned int fillLength, bool atEnd) -- STLport growth path: allocate size + max(size, n) slots, copy-construct the prefix, the n copies of x and (unless at the end) the suffix, then release the old block
-// Leaf: ?_M_insert_overflow@?$vector@UCEnvironmentThemeDef@@
+// Leaf: ?_M_insert_overflow@?$vector@VCEnvironmentThemeDef@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00477169, 244 bytes, thiscall `ret 14h` (position, x, the tag, fillLength, atEnd).
 // Identity: stride 0xC4 with the element copy constructor 0x0047318D (landed); the old block is released through
 //   vector::_M_clear 0x00473023 (landed as CEnvironmentThemeDefVector::clear (chunk 241): destroy [start, finish) then free). Single caller 0x0047715A
@@ -17,12 +17,12 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x3c - 4];                  // +0x04
     virtual ~CParentDefClassBase();
 };
 
-struct CEnvironmentThemeDef : CParentDefClassBase {                 // vtable 0x01236244, retail sizeof 0xC4
+class CEnvironmentThemeDef : public CParentDefClassBase { public:                 // vtable 0x01236244, retail sizeof 0xC4
     unsigned long Fields[(0xc4 - 0x3c) / 4];        // +0x3c
     CEnvironmentThemeDef(const CEnvironmentThemeDef& other);                          // 0x0047318D
 };

@@ -7,13 +7,13 @@ static int g_n;
 static long g_removed;
 static void* g_removedFrom;
 
-struct CThing { void RemoveTC(long type) { g_log[g_n++] = 2; g_removed = type; g_removedFrom = this; } };
-struct CPlayer { bool m_bCancelLocked; };
-struct CPlayerManager { CPlayer* m_pPlayer; CPlayer* GetMainPlayer() { return m_pPlayer; } };
+class CThing { public: void RemoveTC(long type) { g_log[g_n++] = 2; g_removed = type; g_removedFrom = this; } };
+class CPlayer { public: bool m_bCancelLocked; };
+class CPlayerManager { public: CPlayer* m_pPlayer; CPlayer* GetMainPlayer() { return m_pPlayer; } };
 static CPlayerManager g_manager;
 static CPlayerManager* GetPlayerManager() { return &g_manager; }
 
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     CThing* ParentThing;
     bool    ScheduleForCancel;
     void CleanUpEffects() { g_log[g_n++] = 1; }

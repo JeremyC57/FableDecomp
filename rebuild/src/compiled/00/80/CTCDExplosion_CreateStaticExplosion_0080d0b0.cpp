@@ -25,7 +25,7 @@ class C3DVector { public:
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                                 // +0x91 bit 0: dead
 };
@@ -53,7 +53,7 @@ struct CEmitterVector {
     SEmitter* _M_end_of_storage;
     void push_back(const SEmitter& value);                   // 0x00789515
 };
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x3c];
     long  EmitterDefIndex;                                   // +0x3c
     long  EmitterParam;                                      // +0x40
@@ -69,8 +69,8 @@ struct CParticleEmitterManager {
 };
 void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
 extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
-struct CWorld { static long __fastcall GetWorldFrame(); };   // 0x0049D870
-struct CTCDExplosion {
+class CWorld { public: static long __fastcall GetWorldFrame(); };   // 0x0049D870
+class CTCDExplosion { public:
     virtual void v00();
     CThing* ParentThing;                                     // +0x04
     unsigned char _pad08[0x0c - 0x08];

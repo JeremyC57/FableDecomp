@@ -8,13 +8,13 @@ static void* g_freed;
 static void Log(int v) { g_log[g_n++] = v; }
 static void test_free(void* p) { Log(2); g_freed = p; }
 
-struct CCharString { void* PStringData; ~CCharString() { Log(1); } };
+class CCharString { public: void* PStringData; ~CCharString() { Log(1); } };
 struct CComponentVector {
     void** m_pFirst; void** m_pLast; void** m_pEnd;
     ~CComponentVector() { if (m_pFirst != 0) test_free(m_pFirst); }
 };
 struct CTCBase_Calls { void* ParentThing; ~CTCBase_Calls() { Log(3); } };
-struct CTCCreditsUI : CTCBase_Calls {
+class CTCCreditsUI : public CTCBase_Calls { public:
     bool             Active;
     CComponentVector Components;
     bool             Quitting;

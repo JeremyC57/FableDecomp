@@ -1,4 +1,4 @@
-struct CTCBob {
+class CTCBob { public:
     void* vftable;
 };
 

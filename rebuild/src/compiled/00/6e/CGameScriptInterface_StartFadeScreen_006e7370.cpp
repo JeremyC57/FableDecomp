@@ -12,7 +12,7 @@
 // Shape: the outgoing colour is copy-constructed byte by byte in its argument slot (`push -1.0f ; push ecx ;
 //   mov eax,esp`, then the R/A/G/B byte stores) = CRGBColour's user copy constructor through Set(R, G, B, A), as the
 //   landed engine models; the two float arguments are passed swapped (second first).
-struct CRGBColour {                                         // the union's channel view: D3DCOLOR byte order
+class CRGBColour { public:                                         // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }

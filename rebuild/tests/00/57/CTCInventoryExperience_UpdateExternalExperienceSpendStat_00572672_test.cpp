@@ -2,11 +2,11 @@
 
 // Model of CTCInventoryExperience::UpdateExternalExperienceSpendStat @ 0x00572672: the inventory screen forwards the amount
 // to the per-Stat spent table of the hero's CTCHeroExperience.
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     long Spent[20];
     void SetExperienceSpentOnStat(long index, long amount) { Spent[index] = amount; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CTCHeroExperience* Target;
     CTCHeroExperience* GetTCHeroExperience() { return Target; }
     void UpdateExternalExperienceSpendStat(long index, long amount) { GetTCHeroExperience()->SetExperienceSpentOnStat(index, amount); }

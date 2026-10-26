@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C95B0, length 80 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30.
 // Shape: `ret 8` (owner, target); the byte at +0x114 is untouched by this constructor, the one at +0x115 is zeroed after the vtable store.
-struct CThingCreatureBase; struct CThing; struct CCharString;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
+class CThingCreatureBase; class CThing; class CCharString;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
@@ -17,7 +17,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {   // vtable 0x01281D9C
+class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:   // vtable 0x01281D9C
     unsigned char m_114;                    // untouched here
     unsigned char m_done;                   // +0x115
     virtual void v00();

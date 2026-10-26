@@ -10,7 +10,7 @@
 // declaration order and `this` is returned. Member types are not recoverable beyond their sizes
 // (`long` / `unsigned char`). The manifest label (`CThingBuildingDef::operator=`) is propagated;
 // the class is named by its base. One of 14 bodies of this shape.
-struct CWideString {
+class CWideString { public:
     unsigned char _body[0x4];
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };

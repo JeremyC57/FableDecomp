@@ -57,7 +57,7 @@ public:
     bool    ToBeRemoved;                                     // +0x08
     bool    IsInGlobalUpdateTCs;                             // +0x09
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CExplosionDef;
 namespace std { template <class _T1, class _T2> struct pair { _T1 first; _T2 second; }; }
 class CTCDExplosion : public CTCBase {

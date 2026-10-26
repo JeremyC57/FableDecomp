@@ -14,7 +14,7 @@ struct CListMember_00a21250 {
     ~CListMember_00a21250();            // 0x00A21250
 };
 
-struct CSB {
+class CSB { public:
     virtual ~CSB() { }
     unsigned char _body[0x14];
 };

@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CReverbEnvironmentEntry { float Params[21]; };
+class CReverbEnvironmentEntry { public: float Params[21]; };
 typedef CReverbEnvironmentEntry T;
 
 static T Make(int v) { T t; for (int i = 0; i < 21; ++i) t.Params[i] = (float)(v * 32 + i); return t; }

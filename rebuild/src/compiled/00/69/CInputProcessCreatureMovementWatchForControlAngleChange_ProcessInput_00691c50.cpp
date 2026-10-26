@@ -23,17 +23,17 @@
 #define CWorld DonorCWorld
 #include "engine/CWorld.h"
 #undef CWorld
-struct CWorldInit;
-struct CWorld:DonorCWorld {CWorld(const CWorldInit&);};
+class CWorldInit;
+class CWorld:public DonorCWorld { public:CWorld(const CWorldInit&);};
 #include "engine/CProcessedInput.h"
-struct CInputEvent;
-struct C2DVector {float X,Y;C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} float GetLength()const{return (float)sqrt(X*X+Y*Y);} };
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
-struct CCamera;
-struct CEnginePrimitivePrepareInfo;
-struct CGameCameraManager;
-struct CThingGameObject;
-struct CAIGameCameraBase {
+class CInputEvent;
+class C2DVector { public:float X,Y;C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} float GetLength()const{return (float)sqrt(X*X+Y*Y);} };
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+class CCamera;
+class CEnginePrimitivePrepareInfo;
+class CGameCameraManager;
+class CThingGameObject;
+class CAIGameCameraBase { public:
  CAIGameCameraBase(const CWorld&,const C3DVector&,const C3DVector&);
  virtual void Update()=0; //0
  virtual CCamera GetRenderCamera(float)const=0; //1
@@ -63,9 +63,9 @@ struct CAIGameCameraBase {
  virtual ~CAIGameCameraBase(); //24 native scalar6971A0
 };
 // Prefix view uses genuine fields in their native representation, without invented padding.
-struct CCamera {CCamera();float WorldPosition[3];float Up[3];float Forward[3];bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
+class CCamera { public:CCamera();float WorldPosition[3];float Up[3];float Forward[3];bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
 struct NativeCameraTools { CGameCameraManager* CameraManager;void* ScanThingsStart;void* ScanThingsFinish;void* ScanThingsEnd;float CameraMeshOffsetDistance,CameraCreatureOffsetDistance,CameraLandscapeOffsetDistance,CameraThemeOffsetDistance; };
-struct CGameCameraManager : CAIGameCameraBase {
+class CGameCameraManager : public CAIGameCameraBase { public:
  CGameCameraManager(const CWorld&);
  void SetNoControlMovement(){ControlNoControlMovement=true;} //PDBfablewin21E4220
  CCamera Camera,OldCamera;
@@ -79,11 +79,11 @@ struct CGameCameraManager : CAIGameCameraBase {
  float ControlAngleXY;
  bool AngleChange,ControlNoControlMovement;
 };
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();public:virtual ~CBaseClassNonCopyable();};
-struct CLinkedListPosition {CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
-struct CInputProcessManager;
-struct CAInputProcess:CBaseClassNonCopyable {
+class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
+class CInputProcessManager;
+class CAInputProcess:public CBaseClassNonCopyable { public:
  CAInputProcess();
  CInputProcessManager* PPlayerInterface;
  CLinkedListPosition InputProcessListPos;
@@ -98,7 +98,7 @@ struct CAInputProcess:CBaseClassNonCopyable {
  virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const;
 };
 enum EGameAction { GAME_ACTION_MOVEMENT=60 };
-struct CInputProcessGameBaseInit {CWorld* World;CPlayer* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;CInputProcessGameBaseInit();};
+class CInputProcessGameBaseInit { public:CWorld* World;CPlayer* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;CInputProcessGameBaseInit();};
 struct CInputProcessGameBase:CAInputProcess {
  CInputProcessGameBase(const CInputProcessGameBaseInit&);
  CWorld* World;
@@ -108,7 +108,7 @@ struct CInputProcessGameBase:CAInputProcess {
  CGamePlayerInterface* PGamePlayerInterface;
  bool GetControlMovementFromGameActionEvent(EGameAction,const CInputEvent&,C2DVector&)const; //00687D00 enum EGameAction
 };
-struct CInputProcessCreatureMovementWatchForControlAngleChange:CInputProcessGameBase {
+class CInputProcessCreatureMovementWatchForControlAngleChange:public CInputProcessGameBase { public:
  CInputProcessCreatureMovementWatchForControlAngleChange(const CInputProcessGameBaseInit&);
  C2DVector LastJoyDirection;
  virtual void ProcessInput(const CInputEvent&,CProcessedInput&);

@@ -6,10 +6,10 @@
 // Shape: `if (ReactingToPlayer) { ... }` (+0x89; the false return is the final tail), then the player component is an UNINITIALISED local
 // filled by the inlined GetInterface: the hit path reads the lookup result, the miss path reads the never-written
 // frame slot (`mov eax,[esp]`, shared with the key temporary), and the flag byte at +0x341 is returned as the bool.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -69,14 +69,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CWorld;
+class CWorld;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -105,7 +105,7 @@ struct CTCPlayerGreeting {                      // interface type 0x4F component
 };
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     void* PTCTalk;                              // +0x14
     long CurrentReactionType;                   // +0x18
     bool ReactionFlags[79];                     // +0x1c

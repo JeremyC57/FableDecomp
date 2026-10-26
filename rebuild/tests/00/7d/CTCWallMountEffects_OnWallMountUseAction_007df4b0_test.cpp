@@ -8,7 +8,7 @@
 
 static long g_frame = 0;
 static long g_framesPerSecond = 30;
-struct CThingCreatureBase { int id; };
+class CThingCreatureBase { public: int id; };
 
 static std::string g_text, g_a, g_b, g_c;
 static int g_shown = 0;
@@ -19,8 +19,8 @@ static void SetText(const std::string& text, const std::string& a, const std::st
     if (colour != 4 || time != 0.0f || b1 || !b2) g_text = "BAD ARGS";
 }
 
-struct CWallMountEffectsDef { long Effect; float HealingAmount; long SecondsBetweenEffectUsesAllowed; };
-struct CTCWallMountEffects {
+class CWallMountEffectsDef { public: long Effect; float HealingAmount; long SecondsBetweenEffectUsesAllowed; };
+class CTCWallMountEffects { public:
     const CWallMountEffectsDef* PDef;
     long WaitingForConfirmation;
     CThingCreatureBase* CreaturePerformingAction;

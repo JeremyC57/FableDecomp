@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ActivateZTarget {
+class CCreatureAction_ActivateZTarget { public:
     void* vftable;
     int destroyed;
 };

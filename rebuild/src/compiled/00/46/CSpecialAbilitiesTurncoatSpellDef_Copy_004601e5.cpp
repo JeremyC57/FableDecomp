@@ -5,7 +5,7 @@
 // (relocation-masked target). Modeled as a member accessor via __fastcall
 // (this-only + one arg), tail-calling the delegate so VC7.1 emits a single jmp.
 
-struct CSpecialAbilitiesTurncoatSpellDef;
+class CSpecialAbilitiesTurncoatSpellDef;
 
 // The real Copy implementation this thunk jumps to (target reloc-masked).
 extern void __fastcall CSpecialAbilitiesTurncoatSpellDef_Copy_impl(

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CCreatureAction_SummonerLightningOrbInto
-{
+class CCreatureAction_SummonerLightningOrbInto
+{ public:
     virtual void vf0();
     virtual void vf1();
     virtual void vf2();

@@ -18,11 +18,11 @@
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteSLONG(long value);                             // 0x00993EB0
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;                                          // +0x00 def-string table index (-1 = unset)
     CDefString() : TablePos(-1) { }
 };
-struct CMusicEntry {
+class CMusicEntry { public:
     unsigned long ID;                                       // +0x00
     CDefString    Filename;                                 // +0x04
     float         Gain;                                     // +0x08

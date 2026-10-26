@@ -16,13 +16,13 @@
 // header CAIStateGroup_KidReactToBlockage is not generated: local model.
 class CThingAICreature;
 
-struct CWorld {
+class CWorld { public:
     static long GetCurrentFrame();                          // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
 extern long g_framesPerSecond;                              // 0x01375550
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

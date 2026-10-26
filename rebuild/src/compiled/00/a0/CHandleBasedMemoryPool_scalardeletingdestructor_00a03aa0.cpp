@@ -14,7 +14,7 @@
 // the CArray's inline destructor (`if (data) free(data)`), then the base.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CHandleInfoArray {                          // CArray<CHandleBasedMemoryP
     ~CHandleInfoArray() { if (m_pData) free(m_pData); }
 };
 
-struct CHandleBasedMemoryPool : CBase {            // vtable 0x0129C964
+class CHandleBasedMemoryPool : public CBase { public:            // vtable 0x0129C964
     unsigned char    _pad_0x04[0x434];             // +0x04 pool state and FreeLists[256] (+0x38)
     CHandleInfoArray Handles;                      // +0x438
     long             FirstUnusedHandle;            // +0x444

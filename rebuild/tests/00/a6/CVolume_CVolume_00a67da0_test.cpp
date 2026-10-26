@@ -20,7 +20,7 @@ struct CBase {
 };
 static int g_init = 0;
 static IDirect3DVolume9* g_heldAtInit = (IDirect3DVolume9*)1;
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     IDirect3DVolume9* m_pVolume;
     CVolume(IDirect3DVolume9* volume);
     void InitialiseFromVolumeTextureMipmap(IDirect3DVolume9* volume)

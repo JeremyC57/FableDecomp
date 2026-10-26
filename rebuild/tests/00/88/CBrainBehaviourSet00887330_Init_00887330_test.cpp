@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-struct CBrainBehaviour { long Name; float Priority; long ScriptAIPriority; CBrainBehaviour() { memset(this, 0, sizeof(*this)); } };
+class CBrainBehaviour { public: long Name; float Priority; long ScriptAIPriority; CBrainBehaviour() { memset(this, 0, sizeof(*this)); } };
 static CBrainBehaviour g_storage[4]; static unsigned long g_count; static CBrainBehaviour g_seen;
 struct CRetailVector_CBrainBehaviour {
     CBrainBehaviour* first; CBrainBehaviour* last; CBrainBehaviour* end;

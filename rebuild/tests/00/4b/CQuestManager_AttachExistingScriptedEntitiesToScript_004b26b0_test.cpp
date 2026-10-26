@@ -14,10 +14,10 @@ static int g_mallocs, g_frees, g_blockDeletes, g_deleteArmed, g_pointeeDeletes;
 static void* TestMalloc(unsigned int n) { ++g_mallocs; return std::malloc(n); }
 static void TestFree(void* p) { ++g_frees; std::free(p); }
 static void DeleteBlockSpy(void*) { if (g_deleteArmed) ++g_blockDeletes; }
-struct CCharString { const char* Text; };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCharString { public: const char* Text; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static void DeletePointee(void*) { ++g_pointeeDeletes; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     ~CCountedPointer()
     {
@@ -28,10 +28,10 @@ template <class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CScriptThing { CCountedPointer<CScriptThing> PImp; const char* Name; };
+class CScriptThing { public: CCountedPointer<CScriptThing> PImp; const char* Name; };
 static CCPPointerInfo g_blocks[8];
 static int g_nextBlock;
-struct CThing {
+class CThing { public:
     u64 UID; CCharString ScriptName;
     unsigned char Dead : 1; unsigned char CreatedByOwnerThingCreation : 1; unsigned char IncludeInThingScans : 1;
     unsigned char Activated : 1; unsigned char GloballyLoaded : 1; unsigned char InLimbo : 1;
@@ -66,11 +66,11 @@ struct CThingList {
         pos->_M_prev->_M_next = node; pos->_M_prev = node;
     }
 };
-struct CThingFilter_HasAnyScriptName {
+class CThingFilter_HasAnyScriptName { public:
     bool operator()(const CThing* t) const { return std::strcmp(t->ScriptName.Text, "") != 0 && std::strcmp(t->ScriptName.Text, "NULL") != 0; }
 };
 static CThingList* g_all;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThingList& GetThingList_0049c770() { return *g_all; }
     void GetAllThings(const CThingFilter_HasAnyScriptName& filter, CThingList& things);
 };
@@ -83,14 +83,14 @@ void CThingSearchTools::GetAllThings(const CThingFilter_HasAnyScriptName& filter
             things.push_back(thing);
     }
 }
-struct CWorld { CThingSearchTools* PThingSearchTools; };
+class CWorld { public: CThingSearchTools* PThingSearchTools; };
 static char g_log[256];
-struct CScriptBase {
+class CScriptBase { public:
     bool BindsEntityScript(const CCharString& name) { return name.Text[0] == 'B'; }
     void ActivateEntity(u64 uid, const CScriptThing& thing)
     { char b[32]; std::sprintf(b, "%s:%d;", thing.Name, (int)uid); std::strcat(g_log, b); }
 };
-struct CQuestManager {
+class CQuestManager { public:
     CWorld* World;
     void AttachExistingScriptedEntitiesToScript(CScriptBase& script);
 };

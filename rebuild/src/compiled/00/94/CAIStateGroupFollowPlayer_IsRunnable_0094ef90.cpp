@@ -8,17 +8,17 @@
 // `PThingToFollow = CIntelligentPointer<..>(hero)` -- a frame temporary through the inline converting constructor
 // (vtable 0x01231C4C), the inline operator= and the base destructor; `mov al,1` / shared `xor al,al`.
 // Model: local (engine/CAIStateGroup_FollowPlayer.h flattens the base).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPlayerCreature();      // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
@@ -37,7 +37,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

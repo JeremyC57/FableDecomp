@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 float g_TradingPriceMult = 2.5f;
 
 float __fastcall CGameScriptInterface_GetTradingPriceMult(const CGameScriptInterface* self)

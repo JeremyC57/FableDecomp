@@ -4,7 +4,7 @@
 #include <stdlib.h>
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void*         m_data;   // +0x00 : heap pointer
     unsigned char m_flag;   // +0x04 : bool
 

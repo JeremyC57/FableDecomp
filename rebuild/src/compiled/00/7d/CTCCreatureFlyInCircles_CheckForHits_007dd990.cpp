@@ -11,8 +11,8 @@
 // local; the filter is a temporary CFilter_Bind2 holding references to two temporaries: the
 // CIsHitEventHitBy(hero) (built in the lookup key's frame word, its store scheduled after the pushes)
 // and the empty CIsHitEventHitByShot (user ctor, one frame byte).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -40,7 +40,7 @@ struct CThingCreatureBase {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                             // +0x91 (bit 0 = dead)
 };
@@ -51,18 +51,18 @@ inline bool IsThingAlive(const CThing* thing)
 }
 
 namespace NEntityEvents {
-    struct CEventHitBy;
-    struct CIsHitEventHitBy {
+    class CEventHitBy;
+    class CIsHitEventHitBy { public:
         const CThing* HitBy;
         CIsHitEventHitBy(const CThing* hitBy) : HitBy(hitBy) {}
     };
-    struct CIsHitEventHitByShot {
+    class CIsHitEventHitByShot { public:
         CIsHitEventHitByShot() {}
     };
 }
 
 template <class A, class B>
-struct CFilter_Bind2 {
+class CFilter_Bind2 { public:
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& first, const B& second) : First(first), Second(second) {}
@@ -70,15 +70,15 @@ struct CFilter_Bind2 {
 
 typedef CFilter_Bind2<NEntityEvents::CIsHitEventHitBy, NEntityEvents::CIsHitEventHitByShot> CHitByShotFilter;
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     bool GetEvent(NEntityEvents::CEventHitBy** out, const CHitByShotFilter& filter);   // 0x007DE2E0
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                                 // 0x00487DC0
 };
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer();                            // 0x0049D9D0
 };
 

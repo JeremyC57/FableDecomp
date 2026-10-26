@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationBlendState { int tag; };
+class C3DAnimationBlendState { public: int tag; };
 
 static int g_helperCalls = 0;
 static C3DAnimationBlendState* g_lastAdded = 0;

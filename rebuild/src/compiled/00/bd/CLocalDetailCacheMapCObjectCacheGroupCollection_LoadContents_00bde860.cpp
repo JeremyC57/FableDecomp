@@ -77,8 +77,8 @@ public:
         return 0;
     }
 };
-struct CHandleBasedMemoryPool;
-struct CScratchBuffer;
+class CHandleBasedMemoryPool;
+class CScratchBuffer;
 extern CScratchBuffer g_ScratchBuffer;                       // 0x013CB498
 struct CTemporaryBuffer {                                    // 0x18 bytes
     CTemporaryBuffer(unsigned long size, CHandleBasedMemoryPool* pool, CScratchBuffer* scratch);   // 0x00A98860
@@ -91,8 +91,8 @@ struct CTemporaryBuffer {                                    // 0x18 bytes
     long                    AllocateType;                    // +0x14
     __forceinline unsigned char* GetData() const { return Data; }
 };
-struct CMovableResource;
-struct CMovableResourceMemoryPool {
+class CMovableResource;
+class CMovableResourceMemoryPool { public:
     unsigned char           _pad00[0x8];
     CHandleBasedMemoryPool* HandlePool;                      // +0x08
     void* Allocate(unsigned int size, CMovableResource* owner);   // 0x00BD9AF0
@@ -102,18 +102,18 @@ struct CEngineGlobals {
     CMovableResourceMemoryPool* LocalDetailPool;             // +0x6b0
 };
 extern CEngineGlobals* g_pEngineGlobals_01436ea8;                     // 0x01436EA8
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     bool IsBlockLoaded(long position) const;                 // 0x00BE0480
     const unsigned char* GetBlockData(long position) const;  // 0x00BE04C0
     void ReleaseRequest(long position);                      // 0x00BE0400
     void AddRequest(long position, long size, bool highPriority);   // 0x00BE06B0
 };
-struct CLocalDetailCacheMap {
-    struct CObjectTypeCollectionPalette;
-    struct CObjectTypeCollection : CMovableResource {        // vtable 0x012A7D9C
+class CLocalDetailCacheMap { public:
+    class CObjectTypeCollectionPalette;
+    class CObjectTypeCollection : public CMovableResource { public:        // vtable 0x012A7D9C
         void*                  Type;                         // +0x04
         void*                  Primitives;                   // +0x08
         CObjectTypeCollection* Next;                         // +0x0c
@@ -125,7 +125,7 @@ struct CLocalDetailCacheMap {
         static void operator delete(void* p, CMovableResource* owner);
         bool Load(CDataInputStream& in, const CObjectTypeCollectionPalette& palette);   // 0x00BDE680
     };
-    struct CObjectCacheGroupCollection : CMovableResource {
+    class CObjectCacheGroupCollection : public CMovableResource { public:
         CObjectCacheGroupCollection* Next;                   // +0x04
         float                  BoundingSphere[4];            // +0x08
         float                  MaxFadeDistance;              // +0x18

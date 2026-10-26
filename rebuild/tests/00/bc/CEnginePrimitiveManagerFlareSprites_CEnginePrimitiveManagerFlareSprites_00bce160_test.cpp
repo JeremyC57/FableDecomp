@@ -7,7 +7,7 @@
 
 static int g_shaderDeletes = 0, g_erases = 0, g_frees = 0, g_baseDtor = 0;
 struct CShaderData { int RefCount; };
-struct CVertexShader {
+class CVertexShader { public:
     CShaderData* Data;
     ~CVertexShader() { CShaderData* d = Data; if (d) { if (--d->RefCount == 0) ++g_shaderDeletes; } }
 };
@@ -19,7 +19,7 @@ struct CVertexBufferMap {
     ~CVertexBufferMap() { clear(); if (header) { ++g_frees; delete header; } }
 };
 namespace N_0099a300 { struct CBase { virtual ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
-struct CEnginePrimitiveManagerFlareSprites : CBase { CVertexBufferMap FlareVertexBuffers; CVertexShader VertexShaderFlareTest; float FadeInSpeed; };
+class CEnginePrimitiveManagerFlareSprites : public CBase { public: CVertexBufferMap FlareVertexBuffers; CVertexShader VertexShaderFlareTest; float FadeInSpeed; };
 int main()
 {
     CShaderData shader = { 1 }; SNode root;

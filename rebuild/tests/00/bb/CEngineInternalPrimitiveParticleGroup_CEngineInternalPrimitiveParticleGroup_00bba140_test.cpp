@@ -19,7 +19,7 @@ struct CIteratorArray {
     ~CIteratorArray() { if (m_pFirst != 0) test_free(m_pFirst); }
 };
 struct CIdList { void* m_pNode; ~CIdList() { Log(1); } };
-struct CIVCountedPointeeBase { ~CIVCountedPointeeBase() { Log(5); } };
+class CIVCountedPointeeBase { public: ~CIVCountedPointeeBase() { Log(5); } };
 struct CGroup : CIVCountedPointeeBase {
     CPrimitiveHandleList Primitives;
     CIteratorArray       PrimitiveIDToIterator;

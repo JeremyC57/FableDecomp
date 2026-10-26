@@ -15,8 +15,8 @@ struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteLong(long value);                             // 0x00993EB0
     void Write(const void* data, long size) { reinterpret_cast<CDataOutputStreamVirtuals*>(this)->Write(data, size); }
 };
-struct CRandomAppearanceMorph {
-    struct CTextureMorph { long A; long B; };   // one texture-morph entry (8 bytes)
+class CRandomAppearanceMorph { public:
+    class CTextureMorph { public: long A; long B; };   // one texture-morph entry (8 bytes)
 };
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
@@ -28,7 +28,7 @@ public:
     unsigned int size() const { return _M_finish - _M_start; }
 };
 }
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 template <class V, class K, class C> class CVectorMap {
 public:
     typedef std::pair<K, V> value_type;

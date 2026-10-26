@@ -25,8 +25,8 @@ struct Inner
     virtual bool v77();
 };
 
-struct CScriptThing
-{
+class CScriptThing
+{ public:
     virtual bool IsNull() const;
     Inner* m4;
 };

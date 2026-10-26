@@ -7,20 +7,20 @@
 // hidden pointer in ecx, the thing in edx (`mov esi,ecx ; mov ecx,edx`); the vector is built in a
 // named 12-byte local from (X, Y, Z + 1.6f) and returned through the memberwise copy constructor.
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CThing
-{
+class CThing
+{ public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
-struct CTCCameraPointDefinitionBase
-{
+class CTCCameraPointDefinitionBase
+{ public:
     static C3DVector __fastcall GetActiveCameraPosition(const CThing* thing);
 };
 

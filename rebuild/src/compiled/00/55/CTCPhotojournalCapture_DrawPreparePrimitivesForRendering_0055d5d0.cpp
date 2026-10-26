@@ -12,8 +12,8 @@
 // Shape: the elapsed float and the component loop sit in their own block (the float's frame word is reused for the
 //   interface key); `++FrameCounter == 2` is the load/inc/compare/store, the `>= 2` test re-reads the member.
 double __fastcall GFGetTime();                          // 0x009E1BC0
-struct CTCBase;
-struct CIEngine {
+class CTCBase;
+class CIEngine { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -92,12 +92,12 @@ struct CIEngine {
     virtual void v075();
     virtual void SetEngineFlag76(bool on);              // slot 76 (+0x130)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine*     Engine;                               // +0x34
 };
 namespace NUISystem {
-    struct CComponent {
+    class CComponent { public:
         virtual ~CComponent();                          // slot 0
         virtual void Update(float elapsed);             // slot 1 (+0x04)
         virtual void Draw(CIEngine* engine, long a, long b, long c, long d);   // slot 2 (+0x08)
@@ -108,16 +108,16 @@ template <class T> struct vector {                      // STLport vector, 12 by
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x2c];
     CIEngine*     Engine3D;                             // +0x2c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28 scoped_ptr
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CTCInventory {                                   // interface 0x11 (NInventory::CTCInventoryBase)
+class CTCInventory { public:                                   // interface 0x11 (NInventory::CTCInventoryBase)
     void RenderUIBackdropQuad(float alpha);             // 0x005BC6D6
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -126,7 +126,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                         // +0x44
@@ -144,8 +144,8 @@ struct CThing {
         return false;
     }
 };
-struct CWideString { void* PStringData; };
-struct CTCPhotojournalCapture {
+class CWideString { public: void* PStringData; };
+class CTCPhotojournalCapture { public:
     void*         __vftable;                            // +0x00 (CTCBase)
     CThing*       ParentThing;                          // +0x04
     bool          ToBeRemoved;                          // +0x08

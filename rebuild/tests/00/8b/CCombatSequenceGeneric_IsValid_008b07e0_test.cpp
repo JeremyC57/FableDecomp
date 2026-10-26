@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThingCreatureBase { int x; };
+class CThingCreatureBase { public: int x; };
 typedef bool (__fastcall* FnModule)(CThingCreatureBase*, CThingCreatureBase*);
 static int g_calls = 0; static CThingCreatureBase* g_c = 0; static CThingCreatureBase* g_t = 0;
 static bool __fastcall Module(CThingCreatureBase* c, CThingCreatureBase* t) { ++g_calls; g_c = c; g_t = t; return false; }

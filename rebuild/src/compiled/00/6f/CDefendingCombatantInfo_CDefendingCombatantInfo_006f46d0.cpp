@@ -10,9 +10,9 @@
 // Shape: a memberwise copy constructor in declaration order; the inline CDefPointer copy constructor loads, tests and
 // stores the object word before `inc dword ptr [eax+4]`; C3DVector's memberwise user copy constructor moves its three
 // words straight through ecx/edx/eax (an implicit struct copy goes through `lea` re-based pointers).
-struct CBaseObject;
-struct CThingCreatureBase;
-struct CAttackPatternDef;
+class CBaseObject;
+class CThingCreatureBase;
+class CAttackPatternDef;
 
 struct CAttackerMap {                            // map<unsigned __int64, CThingCreatureBase*> (STLport, 12 bytes)
     unsigned char _tree[0xc];
@@ -27,7 +27,7 @@ struct CCombatRingVector {                       // vector<CCombatRing> (STLport
 struct CCombatWheel {
     CCombatRingVector CombatRings;               // +0x00
 };
-struct C3DVector {                               // floats, moved as dwords (a float member copy would go through the FPU)
+class C3DVector { public:                               // floats, moved as dwords (a float member copy would go through the FPU)
     unsigned long X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
@@ -57,7 +57,7 @@ struct CDefPointer {                             // CDefPointer<const CAttackPat
     }
 };
 
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     CAttackerMap        Attackers;               // +0x00
     CCombatWheel        CombatWheel;             // +0x0c
     C3DVector           LastVictimWheelUpdatePos;   // +0x18

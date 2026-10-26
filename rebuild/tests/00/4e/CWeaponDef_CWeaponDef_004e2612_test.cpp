@@ -4,20 +4,20 @@
 #include <cstring>
 #include <new>
 static int g_strings = 0, g_maps = 0, g_base = 0;
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
-struct CSubDefClassBase { virtual void v00() {} unsigned char _base[0x24]; CSubDefClassBase() { ++g_base; } };
-template <class T> struct CArray { T* Data; long Size; long Capacity; CArray() : Data(0), Size(0), Capacity(0) {} };
-struct CDefString { long Index; };
-struct CObjectAugmentationParticleSet {
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CSubDefClassBase { public: virtual void v00() {} unsigned char _base[0x24]; CSubDefClassBase() { ++g_base; } };
+template <class T> class CArray { public: T* Data; long Size; long Capacity; CArray() : Data(0), Size(0), Capacity(0) {} };
+class CDefString { public: long Index; };
+class CObjectAugmentationParticleSet { public:
     float PeriodSecs; long ParticleEffect, ParticleEffectToBlendTo, AttackParticleEffect, AttackParticleEffectToBlendTo;
     CArray<CDefString> StartPoint, EndPoint;
     CObjectAugmentationParticleSet() : PeriodSecs(0.0f) {}
 };
-struct CWeaponTrailGraphicSet { long Attack, Knockdown; CWeaponTrailGraphicSet() : Attack(-1), Knockdown(-1) {} };
+class CWeaponTrailGraphicSet { public: long Attack, Knockdown; CWeaponTrailGraphicSet() : Attack(-1), Knockdown(-1) {} };
 struct CWeaponTrailMap { void* h[3]; CWeaponTrailMap() { ++g_maps; } };
 struct CArrowTrailMap { void* h[3]; CArrowTrailMap() { ++g_maps; } };
-struct CFloatRange { float HighValue, LowValue; CFloatRange() : HighValue(0.0f), LowValue(0.0f) {} };
-struct CWeaponDef : CSubDefClassBase {
+class CFloatRange { public: float HighValue, LowValue; CFloatRange() : HighValue(0.0f), LowValue(0.0f) {} };
+class CWeaponDef : public CSubDefClassBase { public:
     virtual void v00() {}
     long Type, Class; unsigned long Property; CCharString AnimationGroupName; long SheatheObject;
     bool SheatheObjectAlwaysVisible; float AnimationSpeedVal, Damage; long DamageType, Explosion;

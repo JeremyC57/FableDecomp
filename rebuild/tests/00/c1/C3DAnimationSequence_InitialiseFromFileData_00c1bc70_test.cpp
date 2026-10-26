@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct C3DAnimationSequence
-{
+class C3DAnimationSequence
+{ public:
     char  pad0[0xe];
     short m_field_e;
     void InitialiseFromFileData(float t);

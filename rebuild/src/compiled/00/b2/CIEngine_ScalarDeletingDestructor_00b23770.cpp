@@ -14,7 +14,7 @@ struct CBase_0099a410 {
     ~CBase_0099a410();                          // 0x0099A410
 };
 
-struct CIEngine : CBase_0099a410 {
+class CIEngine : public CBase_0099a410 { public:
     virtual ~CIEngine() { }
 };
 

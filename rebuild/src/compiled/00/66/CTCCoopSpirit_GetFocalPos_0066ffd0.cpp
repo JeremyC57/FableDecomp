@@ -6,17 +6,17 @@
 // Shape: C3DVector has a memberwise user copy constructor, so it returns through the hidden pointer
 // (`ret 4`); the result is a NAMED local built field by field and copied out, which VC folds into
 // three x87 loads, the Z add and `fxch st(2)` + three `fstp` into the result (GOTCHAS wave 24o).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     C3DVector GetFocalPos() const;

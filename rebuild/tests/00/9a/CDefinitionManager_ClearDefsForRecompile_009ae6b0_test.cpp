@@ -12,7 +12,7 @@ static int my_stricmp(const char* a, const char* b)
     }
 }
 struct CStringData { char* Data; int Length; };
-struct CCharString {
+class CCharString { public:
     CStringData* PData;
     bool IsEmpty() const { return PData == 0 || PData->Length == 0; }
     const char* c_str() const { return PData->Data; }
@@ -53,7 +53,7 @@ struct CDefMap {
         Keys[Count] = key; return &Slots[Count++];
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefEntry** DefsBegin; CDefEntry** DefsEnd; CDefMap Map; int Cleared[8];
     void ClearDef(unsigned int index) { Cleared[index] = 1; }
     void ClearDefsForRecompile(const CCharString& name)

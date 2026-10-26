@@ -8,7 +8,7 @@
 // Shape: the source read once into edx, the destination formed with `lea eax,[ecx+4]` (ecx stays `this`
 // for the call), three dword moves through esi/edx: the implicit bitwise assignment of a three-float
 // vector; the call cannot be a tail jump because esi is restored after it.
-struct C3DVector {
+class C3DVector { public:
     float X;                                // +0x00
     float Y;                                // +0x04
     float Z;                                // +0x08

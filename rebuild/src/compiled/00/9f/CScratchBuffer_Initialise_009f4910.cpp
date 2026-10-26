@@ -10,13 +10,13 @@
 // landed constructor 0x009F4A00). Shape: the nested-if form -- both failures share the `xor al,al` tail at the end
 // (early returns would duplicate it and push edi late).
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                // +0x04
     bool Init();                               // 0x0099A350
 };
 
-struct CScratchBuffer : CInitBaseClass {
+class CScratchBuffer : public CInitBaseClass { public:
     unsigned char* Buffer;                     // +0x08
     bool           Locked;                     // +0x0c
     long           NoBytes;                    // +0x10

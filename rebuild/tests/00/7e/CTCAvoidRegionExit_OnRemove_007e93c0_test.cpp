@@ -28,7 +28,7 @@ static int fails = 0;
 // The key temporary gets its own frame word here (no argument slot to reuse). Fix (retry 10): equal_range has its same-TU
 // body (lower/upper bound walks; with only the declaration the second iterator was loaded late).
 // Leaf: ?OnRemove@CTCAvoidRegionExit@@UAEXXZ
-struct CThing;
+class CThing;
 
 struct SExitWeightNode;                                     // map node: colour, parent, left, right, key +0x10, weight +0x14
 

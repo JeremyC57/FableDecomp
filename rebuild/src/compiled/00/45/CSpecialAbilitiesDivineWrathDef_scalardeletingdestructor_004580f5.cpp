@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesDivineWrathDef { void* vftable; };
+class CSpecialAbilitiesDivineWrathDef { public: void* vftable; };
 extern void __fastcall CSpecialAbilitiesDivineWrathDef_dtor(CSpecialAbilitiesDivineWrathDef* def);
 extern void __cdecl operator_delete_stub(void* p);
 

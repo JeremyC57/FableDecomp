@@ -10,7 +10,7 @@
 // Size-optimised TU: `#pragma optimize("s", on)` (the speed build zero-extends into edx).
 #pragma optimize("s", on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_00[0x8C];
     unsigned short DefIndex;                       // +0x8C
 };
@@ -19,14 +19,14 @@ struct CTCInventoryBase {
     long GetBoughtPrice(long defIndex);            // 0x005BEAD5
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
 };
 
-struct CTCInventoryItem : CTCBase {
+class CTCInventoryItem : public CTCBase { public:
     void* PDef;                                    // +0x0C
     CTCInventoryBase* PInventory;                  // +0x10
     long GetBoughtPrice();

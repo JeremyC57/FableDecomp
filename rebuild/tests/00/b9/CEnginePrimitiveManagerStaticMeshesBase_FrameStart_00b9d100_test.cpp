@@ -9,9 +9,9 @@
 //   VertexShadersStatic*Shadow +0x2f0..+0x304 and VertexShaderShadowBufferRender +0x308; the shader arrays they point at
 //   +0x0d8..+0x2a8. The global shadow renderer (CEngineShadowRenderer*, 0x01436E60, as landed) holds RenderingTechnique
 //   at +0x334 (PDB). Local model: no engine/ header exists for these classes.
-struct CVertexShader { unsigned long _data[2]; };       // 8 bytes (PDB)
+class CVertexShader { public: unsigned long _data[2]; };       // 8 bytes (PDB)
 enum EShadowRenderingTechnique { SHADOW_TECHNIQUE_2 = 2 };   // only value 2 (the colour-buffer arm) is evidenced here
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char _pad000[0x334];
     EShadowRenderingTechnique RenderingTechnique;       // +0x334
 };

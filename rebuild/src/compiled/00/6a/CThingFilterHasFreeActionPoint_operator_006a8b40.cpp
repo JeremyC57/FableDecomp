@@ -8,7 +8,7 @@
 // Shape: `return GetInterface(...) && component->IsActionPointFree();` -- the logical-and result is materialised as an
 // int (`mov eax,1` / `xor eax,eax`) even though the operator returns bool; the key lives in the dead `thing` slot.
 // The filter has no data members (PDB: no layout recorded); `this` is unused.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -40,7 +40,7 @@ struct CTCUserActionPointBase {
     bool IsActionPointFree();                       // 0x007FEBF0
 };
 
-struct CThingFilter_HasFreeActionPoint {
+class CThingFilter_HasFreeActionPoint { public:
     bool operator()(CThing* thing) const;
 };
 

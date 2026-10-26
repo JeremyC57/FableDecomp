@@ -13,7 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <string.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -34,7 +34,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -52,7 +52,7 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -116,7 +116,7 @@ struct CGameUI {
     void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
                     float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x8e0];
     C2DVector     ScriptTextPos;                    // +0x8e0
     CRGBColour    ScriptTextColour;                 // +0x8e8
@@ -130,10 +130,10 @@ struct CGuiResources {
     unsigned char _pad[0x1614c];
     CFontBank*    DefaultFont;                      // +0x1614c
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
 namespace NPlayerGui {
-struct CDrawScriptScreenText {
+class CDrawScriptScreenText { public:
     void*          _vtable;
     CGameUI*       PlayerGui;                       // +0x04
     void*          PlayerManager;                   // +0x08

@@ -1,7 +1,7 @@
 // Behaviour test for 0x008CBE10 CCreatureAction_SummonerLightningOrbOutOf(owner, orb): PTarget set only for a live orb.
 #include <cstdio>
-struct CThing { unsigned char m_flags91; };
-struct CSoundPair { int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class CThing { public: unsigned char m_flags91; };
+class CSoundPair { public: int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -9,7 +9,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* p) { m_pItem = p; }
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(CThing* item) { SetPItem(item); } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThing* m_owner; int m_code; CBaseIntelligentPointer PTarget;
     CCombatActionBase(CThing* owner, int code, const CSoundPair&) : m_owner(owner), m_code(code) { }
 };

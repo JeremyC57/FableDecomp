@@ -11,8 +11,8 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-struct CDefString { long TablePos; };
-template <class K, class V> struct CKeyPairCompareLess {
+class CDefString { public: long TablePos; };
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

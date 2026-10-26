@@ -9,22 +9,22 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft;
     C2DVector BottomRight;
     C2DBoxF(float left, float top, float right, float bottom) : TopLeft(left, top), BottomRight(right, bottom) {}
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
@@ -35,7 +35,7 @@ struct CRetailHandleVector {                    // STLport vector<CEnginePrimiti
     CEnginePrimitiveHandle* m_pEnd;
     void Resize(long count);                    // 0x00443F90
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { ENGINE_2D_LAYER_TAVERN_SCORE_BOX = 0x47 };
 void __fastcall DrawBox(CEnginePrimitivePrepareInfo* info, CRetailHandleVector* handles, const C2DBoxF& box,
                         EEngine2DLayer layer);   // 0x0048E0A2
@@ -44,7 +44,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual {
+class CTavernGameDef : public CDefVirtual { public:
     long m_count;                               // +0x04
     unsigned char _pad_0x08[0x180];
     float MainGameScoreBoxX;                    // +0x188
@@ -60,10 +60,10 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CTavernGameDef* PeekDefFromGlobalIndex(long index);   // stand-in only
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
     unsigned char       _pad_0x04[0x18];
     CDefinitionManager* m_pManager;             // +0x1c
@@ -89,12 +89,12 @@ bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer& out)
     return true;
 }
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x48];

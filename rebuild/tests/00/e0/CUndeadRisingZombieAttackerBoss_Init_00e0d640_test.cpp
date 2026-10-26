@@ -1,7 +1,7 @@
 // Behaviour test for CUndeadRisingZombieAttackerBoss::Init (0x00E0D640).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CBossTarget {
     virtual void v000() { }

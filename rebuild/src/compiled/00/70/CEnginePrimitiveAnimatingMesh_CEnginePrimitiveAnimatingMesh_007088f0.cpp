@@ -10,35 +10,35 @@
 // Shape: the animation interpolator is COPIED (both blend states add-ref their animation; no CBaseClass call: the base copy
 // is implicit); the lit flag is a one-bit init-list member (`xor ; and 1 ; xor` merge); one `xor ebx,ebx` zero register
 // serves the theme-channel bytes, the null tests and the empty MeshEffect.
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                                  // 0x0099A2D0
 };
-struct C3DVector { float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} };
-struct CRightHandedSet { C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
-struct C3DPositionInterpolator : CBaseClass {      // vtable 0x0123981C
+class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} };
+class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
+class C3DPositionInterpolator : public CBaseClass { public:      // vtable 0x0123981C
     C3DVector StartPosition,EndPosition;
     C3DPositionInterpolator(const C3DPositionInterpolator& o):CBaseClass(o),StartPosition(o.StartPosition),EndPosition(o.EndPosition){}
 };
-struct C3DOrientationInterpolator : CBaseClass {   // vtable 0x01239824
+class C3DOrientationInterpolator : public CBaseClass { public:   // vtable 0x01239824
     CRightHandedSet StartOrientation,EndOrientation;
     C3DOrientationInterpolator(const C3DOrientationInterpolator& o):CBaseClass(o),StartOrientation(o.StartOrientation),EndOrientation(o.EndOrientation){}
 };
 struct CAnimationResource { void* vtable; long RefCount; };
-struct C3DAnimationBlendState : CBaseClass {       // vtable 0x01239838
+class C3DAnimationBlendState : public CBaseClass { public:       // vtable 0x01239838
     CAnimationResource* Animation;
     C3DAnimationBlendState(const C3DAnimationBlendState& o):CBaseClass(o),Animation(o.Animation){ if (Animation) ++Animation->RefCount; }
 };
-struct C3DAnimationInterpolator : CBaseClass {     // vtable 0x01239840
+class C3DAnimationInterpolator : public CBaseClass { public:     // vtable 0x01239840
     C3DAnimationBlendState StartState,EndState;
     C3DAnimationInterpolator(const C3DAnimationInterpolator& o):CBaseClass(o),StartState(o.StartState),EndState(o.EndState){}
 };
-struct CEngineMeshEffect;
-template <class T> struct CIVCountedPointer { T* m_p; CIVCountedPointer():m_p(0){} };
-struct CRGBColour { unsigned char B,G,R,A; };
+class CEngineMeshEffect;
+template <class T> class CIVCountedPointer { public: T* m_p; CIVCountedPointer():m_p(0){} };
+class CRGBColour { public: unsigned char B,G,R,A; };
 struct CMeshTint { unsigned char B,G,R,A; CMeshTint(const CRGBColour& o) { Set(o.R,o.G,o.B,o.A); } void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; } };
-struct CEnginePrimitiveThemeChannelDesc { unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){} };
-struct CEnginePrimitive { long Type,InterpolationSet; CEnginePrimitiveThemeChannelDesc ThemeChannelDesc; CEnginePrimitive(long type,long interpolation):Type(type),InterpolationSet(interpolation){} };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){} };
+class CEnginePrimitive { public: long Type,InterpolationSet; CEnginePrimitiveThemeChannelDesc ThemeChannelDesc; CEnginePrimitive(long type,long interpolation):Type(type),InterpolationSet(interpolation){} };
 struct CEnginePrimitiveAnimatingMesh : CEnginePrimitive {   // PDB 0x90 bytes
     unsigned long MeshIndex;                       // +0x0c
     float Size;                                    // +0x10

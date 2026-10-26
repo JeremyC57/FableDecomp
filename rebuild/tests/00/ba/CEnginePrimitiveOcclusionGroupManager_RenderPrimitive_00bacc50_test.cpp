@@ -11,13 +11,13 @@
 #include "engine/CEnginePrimitiveOcclusionGroupManager.h"
 #include "engine/CIVCountedPointeeBase.h"
 #else
-struct CEngineInternalPrimitiveBase {unsigned long EnginePrimitiveFlags;};
+class CEngineInternalPrimitiveBase { public:unsigned long EnginePrimitiveFlags;};
 struct COcclusionPointer;
-struct CEngineInternalPrimitiveOcclusionGroup:CEngineInternalPrimitiveBase {COcclusionPointer* HostInfos;unsigned long FramesRendered;};
-struct CEnginePrimitiveOcclusionGroupManager {void* VTable;};
+class CEngineInternalPrimitiveOcclusionGroup:public CEngineInternalPrimitiveBase { public:COcclusionPointer* HostInfos;unsigned long FramesRendered;};
+class CEnginePrimitiveOcclusionGroupManager { public:void* VTable;};
 #endif
 struct COcclusionPointee {virtual ~COcclusionPointee();virtual void Delete() const;unsigned long IVRefCount; __forceinline void Release(){if(--IVRefCount==0)Delete();}};
-struct CEnginePrimitiveOcclusionInfo:COcclusionPointee {long InvisibleFrames;void* TestFirst;void* TestLast;void* TestEnd;bool Seen;unsigned long TestFrame;CEnginePrimitiveOcclusionInfo();}; //00b2fa90
+class CEnginePrimitiveOcclusionInfo:public COcclusionPointee { public:long InvisibleFrames;void* TestFirst;void* TestLast;void* TestEnd;bool Seen;unsigned long TestFrame;CEnginePrimitiveOcclusionInfo();}; //00b2fa90
 struct COcclusionPointer {
  COcclusionPointee* Object;
  __forceinline void SetNew(CEnginePrimitiveOcclusionInfo* p){if(Object){Object->Release();Object=0;}Object=p;}
@@ -43,7 +43,7 @@ struct __declspec(novtable) CSubPrimitiveBase:CSubBase {
 struct CEngineSubPrimitiveBoundingBox:CSubPrimitiveBase {CEngineSubPrimitiveBoundingBox(CEngineInternalPrimitiveBase& p):CSubPrimitiveBase(p){}virtual ~CEngineSubPrimitiveBoundingBox();};
 struct COcclusionSubRenderer {void AddSorted(unsigned long,CSubPrimitiveBase*,float,CEnginePrimitiveOcclusionGroupManager*);}; //00b84720
 extern COcclusionSubRenderer* g_pSubPrimitiveRenderer; //01436e74
-struct CEngineSubPrimitiveChain;
+class CEngineSubPrimitiveChain;
 enum ERendered {NOTHING=0,RENDERED=2};enum ELayer {DEFAULT_LAYER=0};
 struct CEnginePrimitiveOcclusionGroupManager_Methods:CEnginePrimitiveOcclusionGroupManager {ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,ELayer,CEngineSubPrimitiveChain&);};
 ERendered CEnginePrimitiveOcclusionGroupManager_Methods::RenderPrimitive(CEngineInternalPrimitiveBase& primitive,ELayer,CEngineSubPrimitiveChain&)
@@ -64,7 +64,7 @@ ERendered CEnginePrimitiveOcclusionGroupManager_Methods::RenderPrimitive(CEngine
 
 #include <cstdio>
 #include <cstdlib>
-struct CEngineSubPrimitiveChain {int Marker;};
+class CEngineSubPrimitiveChain { public:int Marker;};
 static int failures=0,infoAllocations=0,infoCtors=0,poolAllocations=0,subCtors=0,queueCalls=0,deleteCalls=0;
 static bool failInfo=false,failPool=false,injectOld=false;
 static COcclusionPointee* oldInfo=0;

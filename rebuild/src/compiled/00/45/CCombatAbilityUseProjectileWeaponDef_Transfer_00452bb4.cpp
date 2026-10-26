@@ -1,9 +1,9 @@
 #pragma optimize("s",on)
-struct CCombatAbilityUseProjectileWeaponDef {
+class CCombatAbilityUseProjectileWeaponDef { public:
     unsigned char _tail[0x48];
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(void* p);
     void PersistB(void* p);
     void PersistC_00452b4d(void* p);

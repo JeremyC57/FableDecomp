@@ -10,7 +10,7 @@
 //   compiled-out check); every other use re-fetches GetPItem; the +0x60 object is read through an inline accessor so it
 //   loads straight into ecx for the virtual call.
 // Leaf: Initialise
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -78,11 +78,11 @@ struct CEventFiredShot : CEvent {
     CEventFiredShot(CThing* shooter);           // 0x0087FED0
 };
 
-struct CTCEntityEvents {                        // interface type 0x42
+class CTCEntityEvents { public:                        // interface type 0x42
     void AddEvent(CEvent* event);               // 0x008113C0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -90,7 +90,7 @@ struct CCombatActionBase {
     void Initialise();                          // 0x00857520
 };
 
-struct CCombatAction_StabThing : CCombatActionBase {
+class CCombatAction_StabThing : public CCombatActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0xa8
     void Initialise();
 };

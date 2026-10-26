@@ -2,7 +2,7 @@
 // manager, takes its best track and returns the track point nearest the drag-camera position (DragCamPos is the query).
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -50,7 +50,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T> bool PeekTC(long type, const T** out) const
@@ -67,7 +67,7 @@ struct CThing {
     }
 };
 
-struct CTCCameraPointTrack {
+class CTCCameraPointTrack { public:
     CThing* ParentThing;
     float CameraStringLength;
     float CameraCageRadius;

@@ -4,7 +4,7 @@ static char g_log[16]; static int g_n;
 struct CContainer_004dd42f { unsigned char _body[0x0c]; ~CContainer_004dd42f() { g_log[g_n++] = (char)_body[0]; } };
 struct CContainer_004dd2b1 { unsigned char _body[0x0c]; ~CContainer_004dd2b1() { g_log[g_n++] = (char)_body[0]; } };
 struct CBase_009fc550 { virtual void v00() {} ~CBase_009fc550() { g_log[g_n++] = 'B'; } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() {} ~CDefPointeeBase() { } };
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() {} ~CDefPointeeBase() { } };
 struct __declspec(novtable) CDefPointeeBase_Derived_004e27e0 : CDefPointeeBase {
     unsigned char _pad0[0x28]; CContainer_004dd42f m_items0; CContainer_004dd2b1 m_items1; CContainer_004dd42f m_items2;
     virtual void v00() {}

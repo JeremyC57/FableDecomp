@@ -8,7 +8,7 @@
 // Callees: CCharString::~CCharString 0x0099EAE0 (three times), operator delete 0x00BFE9BC.
 // Shape: identical to 0x006FB730 -- a non-virtual `??_G` from a `delete` helper; the inner record's
 // implicit destructor inlined with its address in edi.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                      // 0x0099EAE0
 };

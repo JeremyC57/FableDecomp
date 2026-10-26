@@ -10,7 +10,7 @@ struct CSoundPlayer {
     virtual void StopSpecificSample(unsigned int sampleID) { g_stopped = sampleID; ++g_calls; }
 };
 
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char  Dead;
     CSoundPlayer*  m_pSoundPlayer;
     bool IsActive() const { return g_pGameState && !Dead; }

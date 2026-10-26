@@ -15,8 +15,8 @@
 // user copy constructor (model of the landed sibling 0x007FA290, Ego_r.pdb layout); then `push 0` for the
 // value-type pointer. The byte count `last - first` lives in edi beside `last` in esi.
 class CThing;
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CVectorCompare_BestForTargeting {        // Ego_r.pdb, 44 bytes
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CVectorCompare_BestForTargeting { public:        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                        // +0x00
     C3DVector PreferredLine;                    // +0x0c
     float     AngleCompare;                     // +0x18
@@ -25,7 +25,7 @@ struct CVectorCompare_BestForTargeting {        // Ego_r.pdb, 44 bytes
     float     OverrideShortDistanceFalloff;     // +0x24
     bool      CompareInXYPlane;                 // +0x28
 };
-struct CThingCompare_BestForTargeting2 {        // Ego_r.pdb, 52 bytes
+class CThingCompare_BestForTargeting2 { public:        // Ego_r.pdb, 52 bytes
     CThing* Hero;                               // +0x00
     CVectorCompare_BestForTargeting VectorCompare;  // +0x04
     float EnemyPreferenceFactor;                // +0x30

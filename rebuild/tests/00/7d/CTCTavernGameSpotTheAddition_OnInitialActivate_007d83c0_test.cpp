@@ -5,10 +5,10 @@
 #define __forceinline inline
 #endif
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 static int g_strings;
-struct CCharString {
+class CCharString { public:
     const char* m_data;
     CCharString(const char* text, long length = -1) : m_data(text) { (void)length; ++g_strings; }
     CCharString(const CCharString& other) : m_data(other.m_data) { ++g_strings; }
@@ -24,14 +24,14 @@ struct CSpotTheAdditionDef : CDefBase {
     long CoverThingType;
     long GamePieceType;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 static CSpotTheAdditionDef* g_def;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSpotTheAdditionDef>* def) const;
 };
 CSpotTheAdditionDef* FindSubDef(const CDefClassBase*) { if (g_def) ++g_def->RefCount; return g_def; }
@@ -99,7 +99,7 @@ struct CTCLinkedThings {
     CLinkNode* Head;
 };
 static int g_points; static const char* g_pointName;
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve)
     { ++g_points; g_pointName = name.m_data; pos->X = 5; rh->Up.Z = 1; *index = 3; (void)user; (void)flags; (void)reserve; return true; }

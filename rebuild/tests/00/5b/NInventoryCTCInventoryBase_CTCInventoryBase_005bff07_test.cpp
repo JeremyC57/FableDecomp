@@ -18,10 +18,10 @@
 #pragma optimize("s", on)
 
 class CThing;
-struct CGraphicDataBank;
-struct CCPPointerInfo;
-struct CPixelFormat { long Format; };
-template <class T> struct CCountedPointer {
+class CGraphicDataBank;
+class CCPPointerInfo;
+class CPixelFormat { public: long Format; };
+template <class T> class CCountedPointer { public:
     T*              m_pObject;
     CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pObject(0), m_pInfo(0) { }
@@ -29,7 +29,7 @@ template <class T> struct CCountedPointer {
     ~CCountedPointer();                         // 0x00419108 (CGraphicDataBank)
     T* GetPItem() const { return m_pObject; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 extern CCharString g_CCharString_013b8ba4;      // 0x013B8BA4 "GBANK_MAIN"
@@ -49,7 +49,7 @@ struct CGraphicBankParams {                     // 0x2c bytes, ctor 0x00415B80
     bool          Flag2a;
     CGraphicBankParams();
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool GetBestCompressedAlphaTextureFormat_009be830(unsigned long bits, CPixelFormat* out);    // 0x009BE830
     bool GetBestCompressedAlphaTextureFormat2(unsigned long bits, CPixelFormat* out);   // 0x009BE870
     bool GetBestCompressedAlphaTextureFormat3(unsigned long bits, CPixelFormat* out);   // 0x009BE8B0
@@ -57,17 +57,17 @@ struct CDisplayManager {
     bool GetBestOpaqueTextureFormat(unsigned long bits, CPixelFormat* out, bool flag);  // 0x009BE610
     bool GetBestSignedTextureFormat(unsigned long bits, CPixelFormat* out);             // 0x009BE590
 };
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     CCountedPointer<CGraphicDataBank> CreateAndInitialize(const CCharString& name, CGraphicBankParams* params, bool a, bool b);   // 0x009F83D0
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char        _pad00[0x6c];
     CGraphicBankManager* GraphicBankManager;    // +0x6c
 };
 extern CDisplayManager* g_pDisplayManager;      // 0x013B8390
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                    // 0x00686800
     virtual ~CTCBase();
     CThing* ParentThing;                        // +0x04
@@ -85,15 +85,15 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
 
 struct CDefPointerBase { void* Object; CDefPointerBase() : Object(0) { } };
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
-struct C2DBoxF { float X0, Y0, X1, Y1; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
+class C2DBoxF { public: float X0, Y0, X1, Y1; };
 struct CPresentationIntervalDesc { long a, b; };
 
 namespace NInventory {
 
-struct CItem;
-struct CCategory;
+class CItem;
+class CCategory;
 enum EInventorySelectionState { INVENTORY_SELECTION_NONE };
 enum ESelectionState { SELECTION_STATE_NONE, SELECTION_STATE_NORMAL };
 

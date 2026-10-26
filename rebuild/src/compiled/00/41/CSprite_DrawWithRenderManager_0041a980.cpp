@@ -12,7 +12,7 @@
 // scalar expressions (a `pos - dim * 0.5f` vector expression spills dim*0.5); the system manager is fetched into a local
 // before the call so its call precedes the argument pushes and the bank's Data stays in ebx.
 void operator delete(void* p);                   // 0x00BFE9BC
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -20,7 +20,7 @@ struct C2DVector {
     C2DVector operator-(const C2DVector& v) const { return C2DVector(X - v.X, Y - v.Y); }
     C2DVector operator*(float s) const { return C2DVector(X * s, Y * s); }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 
     void MoveTo(const C2DVector& tl)
@@ -36,7 +36,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }
@@ -48,15 +48,15 @@ template <class T> struct CCountedPointer {
         }
     }
 };
-struct CGraphicDataBank;
+class CGraphicDataBank;
 float __stdcall GFAXToVX_009e1da0(float x);                 // 0x009E1DA0
 float __stdcall GFAYToVY_009e1dd0(float y);                 // 0x009E1DD0
 struct CRenderManager2D {
     bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
                              unsigned long a, unsigned long b);   // 0x009DD210
 };
-struct CRenderManager { unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
-struct CSystemManager { unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
+class CRenderManager { public: unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
+class CSystemManager { public: unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2

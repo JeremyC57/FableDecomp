@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     char pad0[0x0c];
     unsigned char Activated;
     char pad1[0x20 - 0x0d];

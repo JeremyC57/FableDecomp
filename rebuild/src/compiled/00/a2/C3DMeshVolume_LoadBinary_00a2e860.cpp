@@ -14,20 +14,20 @@
 // (CCountedPointer<CContainmentVolume>). The stream's ReadString() temporary is built in the dead first
 // argument's home slot (esp+0xC after the two pushes), assigned to Name and destroyed; `new` is the usual
 // null-checked allocation + constructor; the result of the volume's own LoadBinary is returned straight through.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     ~CCharString();                                        // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual CCharString ReadString();                      // slot 6 (+0x18)
 };
 
-struct CContainmentVolume {
+class CContainmentVolume { public:
     unsigned char m_body[0x10];
     CContainmentVolume();                                  // 0x00A752D0
     bool LoadBinary(CMemoryDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00A754E0
@@ -39,7 +39,7 @@ struct CCountedPointer {                   // CCountedPointer<CContainmentVolume
     void Reset(CContainmentVolume* object); // 0x00A31640
 };
 
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     CCharString     Name;                  // +0
     CCountedPointer ConvexVolume;          // +4
     bool LoadBinary(CMemoryDataInputStream* in, CMovableResourceMemoryPool* pool);

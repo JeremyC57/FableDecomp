@@ -12,7 +12,7 @@ namespace N_004c9030 { struct CThing {
     CThing(long typeCode);              // 0x004C9030
 }; } using N_004c9030::CThing;
 
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     virtual void v00();
     CThingNoise();
 };

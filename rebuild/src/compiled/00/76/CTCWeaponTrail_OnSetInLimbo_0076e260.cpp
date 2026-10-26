@@ -7,7 +7,7 @@
 // Tiny-body shape `UpdateIf` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     void Update();                         // 0x0076E150
     void OnSetInLimbo(bool enable);
 };

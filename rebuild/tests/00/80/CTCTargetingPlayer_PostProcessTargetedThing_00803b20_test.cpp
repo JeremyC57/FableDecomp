@@ -1,8 +1,8 @@
 // Behaviour test for CTCTargetingPlayer::PostProcessTargetedThing @ 0x00803B20: refresh threatening when the target changed, return the parent check.
 #include <cstdio>
-struct CThing { bool controlled; bool IsControlledCreature() { return controlled; } };
+class CThing { public: bool controlled; bool IsControlledCreature() { return controlled; } };
 struct CIntelligentPointer { CThing* p; CThing* Get() const { return p; } };
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     CThing* ParentThing; CIntelligentPointer PLastThreatenedThing; CThing* targeted; int updates;
     virtual ~CTCTargetingPlayer() {}
     virtual CThing* GetPTargetedThing() { return targeted; }

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     CBaseObject* m_pItem;

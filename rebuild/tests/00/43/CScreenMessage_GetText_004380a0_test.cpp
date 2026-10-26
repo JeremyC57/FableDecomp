@@ -2,9 +2,9 @@
 #include <cstring>
 // Behaviour model of CScreenMessage::GetText @ 0x004380A0 (copy of the source logic over stand-in string classes).
 static const char g_szEmpty[] = "";
-struct CWideString;
-struct CCharStringData { const char* Chars; unsigned long Length; char buf[64]; };
-struct CCharString {
+class CWideString;
+class CCharStringData { public: const char* Chars; unsigned long Length; char buf[64]; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length)
     {
@@ -30,7 +30,7 @@ struct CCharString {
         return std::strncmp(GetCharPtr(), prefixText, prefixLength) ? false : true;
     }
 };
-struct CWideString {                                 // stand-in: narrow storage
+class CWideString { public:                                 // stand-in: narrow storage
     char buf[64];
     CWideString(const char* s) { std::strcpy(buf, s); }
     CWideString(const CWideString& o) { std::strcpy(buf, o.buf); }

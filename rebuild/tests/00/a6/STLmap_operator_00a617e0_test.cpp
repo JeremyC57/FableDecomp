@@ -25,7 +25,7 @@ public:
 };
 class CChecksumCacheFile {
 public:
-    class CEntry {
+    struct CEntry {
     public:
         CDateAndTime  TimeStamp;
         unsigned long Checksum;

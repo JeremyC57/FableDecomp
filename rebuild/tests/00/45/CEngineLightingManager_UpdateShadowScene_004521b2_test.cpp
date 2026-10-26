@@ -9,7 +9,7 @@ struct LMTarget {
     void Setup(int tag) { (void)tag; g_setup++; }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;
     char pad2[0x24-0x1c];

@@ -6,7 +6,7 @@
 #include <cstdlib>
 static int g_baseCtors = 0, g_listCtors = 0;
 struct CBaseClassNonCopyable { virtual void v00() {} CBaseClassNonCopyable() { ++g_baseCtors; } };
-struct CResourceList { virtual void v00() {} unsigned char _body[0x3c - 4]; CResourceList() { ++g_listCtors; _body[0] = 0x5a; } };
+class CResourceList { public: virtual void v00() {} unsigned char _body[0x3c - 4]; CResourceList() { ++g_listCtors; _body[0] = 0x5a; } };
 void* malloc_spy(unsigned int size) { std::printf("unexpected allocation of %u\n", size); std::abort(); return 0; }
 template <class T> struct CAllocator { CAllocator() { } T* allocate(unsigned long count) { return count != 0 ? static_cast<T*>(malloc_spy(count * sizeof(T))) : 0; } };
 template <class T> struct CAllocProxy : CAllocator<T> { T* m_data; CAllocProxy(const CAllocator<T>& alloc, T* p) : CAllocator<T>(alloc), m_data(p) { } };
@@ -15,15 +15,15 @@ template <class T> struct CVectorBase {
     CVectorBase(unsigned long count, const CAllocator<T>& alloc) : _M_start(0), _M_finish(0), _M_end_of_storage(alloc, 0)
     { _M_start = _M_end_of_storage.allocate(count); _M_finish = _M_start; _M_end_of_storage.m_data = _M_start + count; }
 };
-template <class T> struct CArray : CVectorBase<T> { explicit CArray(unsigned long count) : CVectorBase<T>(count, CAllocator<T>()) { this->_M_finish = this->_M_start; } };
-struct CManagedTextureData;
+template <class T> class CArray : public CVectorBase<T> { public: explicit CArray(unsigned long count) : CVectorBase<T>(count, CAllocator<T>()) { this->_M_finish = this->_M_start; } };
+class CManagedTextureData;
 struct CIVCountedPointer { CManagedTextureData* Object; };
 struct CPreallocTexturePool : CResourceList {
     unsigned long Count; unsigned long MaxSize; long PoolIndex; CArray<CIVCountedPointer> Textures;
     virtual void v00() {}
     CPreallocTexturePool() : CResourceList(), Count(0), MaxSize(0), PoolIndex(-1), Textures(0) { }
 };
-struct CTextureManager : CBaseClassNonCopyable {
+class CTextureManager : public CBaseClassNonCopyable { public:
     bool Initialised; unsigned long PoolCount; unsigned long PreallocSizes[16]; CPreallocTexturePool PreallocPools[16];
     unsigned long FailedAllocations[16]; long BufferSize; void* TextureBuffer;
     virtual void v00() {}

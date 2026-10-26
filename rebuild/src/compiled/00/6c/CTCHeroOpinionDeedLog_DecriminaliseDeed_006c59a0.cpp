@@ -12,10 +12,10 @@
 // name is descriptive. STLport map node = {color, parent, left, right, key +0x10, value +0x14}.
 // Shape: the node's value is read once for the null test, then re-read for the second store (the byte store through it
 // may alias the node); the key is a `long` bound directly to the map's `const long&` (no conversion temporary).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct COpinionDeed {                          // 40 bytes (PDB layout)
+class COpinionDeed { public:                          // 40 bytes (PDB layout)
     long      DeedType;                        // +0x00 EOpinionDeedType
     long      DeedHandle;                      // +0x04
     C3DVector Position;                        // +0x08
@@ -67,7 +67,7 @@ __declspec(noinline) CDeedMap::iterator CDeedMap::find(const long& key)
     return iterator(y);
 }
 #pragma auto_inline(on)
-struct CTCHeroOpinionDeedLog {                 // vtable 0x0125EA44
+class CTCHeroOpinionDeedLog { public:                 // vtable 0x0125EA44
     virtual void v00();
     unsigned char _base[0x08];                 // +0x04 rest of the thing-component base
     CDeedMap      OpinionDeedMap;              // +0x0c

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CCharString { const char* m_pData; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: const char* m_pData; };
 static const CCharString g_FocalPointHelperName = { "focal" };
 static const CCharString* g_name = 0; static long g_index = -1; static unsigned long g_flags = 0; static float g_time = 0.0f;
 struct CTCGraphicAppearance {

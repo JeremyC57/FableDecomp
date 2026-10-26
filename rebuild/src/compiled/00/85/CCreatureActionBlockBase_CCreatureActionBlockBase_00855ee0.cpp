@@ -9,18 +9,18 @@
 // copy constructor, so the class is modelled locally as in the landed BlockRespond copy).
 // Shape: BlowStrength through eax, then C3DVector's memberwise copy constructor (one register per dword:
 // ecx, edx, eax), `mov eax,esi` returns `this`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCreatureAction_BlockBase : CCombatActionBase {  // vtable 0x01275F3C, retail sizeof 0x124
+class CCreatureAction_BlockBase : public CCombatActionBase { public:  // vtable 0x01275F3C, retail sizeof 0x124
     long      BlowStrength;                     // +0x114
     C3DVector MovementDirection;                // +0x118
     virtual void v00();

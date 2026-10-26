@@ -9,7 +9,7 @@
 // _Destroy_range<pair<long, CCountedPointer<CRegionConnectionNode> > > instance at 0x004488B0 (same element shape); the
 // key-only comparator is modelled as the engine's CKeyPairCompareLess.
 // Shape: /O2 (16-aligned entry, `nop` loop-head pad).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
 };
 template <class T> class CCountedPointer {
@@ -26,7 +26,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 namespace std {

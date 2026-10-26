@@ -14,7 +14,7 @@
 // Shape: the hit creature is stored through the intelligent pointer's inline operator= from a CIntelligentPointer
 //   (creature) temporary; the spell-effect interface is a named local homed in the dead `creature` slot, the blur
 //   manager a named local (edi), the parent a third named local (ebp, loaded before the GetPItem compare).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CBaseObject;
 class CThing {
 public:
@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -47,12 +47,12 @@ struct CRadialBlurParams {                      // one RadialBlur* block of the 
     float     Twist;                            // +0x24
     float     FadeTimeSecs;                     // +0x28
 };
-struct CSpecialAbilitiesBulletTimeDef {
+class CSpecialAbilitiesBulletTimeDef { public:
     unsigned char     _pad00[0xd4];
     CRadialBlurParams RadialBlur;               // +0xd4
     CRadialBlurParams DamageRadialBlur;         // +0x100
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -61,7 +61,7 @@ struct CRadialBlurManager {
                         float fade, float range, float twist);   // 0x006B8550
     void FadeOutRadialBlur(float seconds, void* key);            // 0x006B82E0
 };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     void SetRadialBlurCenterWorldPos(const C3DVector& position, bool immediate);   // 0x00885110
 };
 struct CWorldEffects {
@@ -69,7 +69,7 @@ struct CWorldEffects {
     CEnvironmentSpellEffectInterface* SpellEffects;   // +0x1960
     CRadialBlurManager*               RadialBlurs;    // +0x1964
 };
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x18];
     CWorldEffects* PEffects;                    // +0x18
 };

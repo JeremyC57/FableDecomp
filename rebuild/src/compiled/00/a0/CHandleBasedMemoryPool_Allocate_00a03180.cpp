@@ -18,12 +18,12 @@ struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };   // 24 bytes
 extern "C" __declspec(dllimport) int  __stdcall TryEnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);   // IAT 0x0143FD30
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE10
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     virtual void v00();
     virtual bool HandleFailure(unsigned long size);    // slot 1 (+0x04)
 };
 struct CHeader;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08

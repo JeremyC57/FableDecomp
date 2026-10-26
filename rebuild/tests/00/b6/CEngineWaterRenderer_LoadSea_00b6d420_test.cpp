@@ -9,12 +9,12 @@
 #endif
 
 static int g_ctor = 0, g_dtor = 0; static void* g_args[5];
-struct CMemoryDataInputStream { int x; };
-struct CIndexBuffer { unsigned char _body[0x14]; };
-struct CVertexBufferWin32 { unsigned char _body[0x34]; };
-struct CWaterSeaGenerator { long m_state; CWaterSeaGenerator() { ++g_ctor; } ~CWaterSeaGenerator() { ++g_dtor; }
+class CMemoryDataInputStream { public: int x; };
+class CIndexBuffer { public: unsigned char _body[0x14]; };
+class CVertexBufferWin32 { public: unsigned char _body[0x34]; };
+class CWaterSeaGenerator { public: long m_state; CWaterSeaGenerator() { ++g_ctor; } ~CWaterSeaGenerator() { ++g_dtor; }
     void LoadSea(CMemoryDataInputStream* s, CVertexBufferWin32* vb, long* vc, CIndexBuffer* ib, long* pc) { g_args[0] = s; g_args[1] = vb; g_args[2] = vc; g_args[3] = ib; g_args[4] = pc; *vc = 100; *pc = 50; } };
-struct CEngineWaterRenderer { unsigned char _pad0[0x68]; CIndexBuffer SeaBackgroundIndexBuffer; CVertexBufferWin32 SeaBackgroundVertexBuffer; long SeaBackgroundVertexCount; long SeaBackgroundPolyCount; unsigned char _pad1[0x276 - 0xb8]; bool HaveBackgroundSea;
+class CEngineWaterRenderer { public: unsigned char _pad0[0x68]; CIndexBuffer SeaBackgroundIndexBuffer; CVertexBufferWin32 SeaBackgroundVertexBuffer; long SeaBackgroundVertexCount; long SeaBackgroundPolyCount; unsigned char _pad1[0x276 - 0xb8]; bool HaveBackgroundSea;
     void LoadSea(CMemoryDataInputStream* stream) { CWaterSeaGenerator generator; long polyCount = 0;
         generator.LoadSea(stream, &SeaBackgroundVertexBuffer, &SeaBackgroundVertexCount, &SeaBackgroundIndexBuffer, &polyCount);
         SeaBackgroundPolyCount = polyCount - 2; HaveBackgroundSea = true; } };

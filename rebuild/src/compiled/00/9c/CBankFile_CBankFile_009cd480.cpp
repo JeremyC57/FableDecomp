@@ -24,12 +24,12 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                         // 0x0099A2F0
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                   // 0x0099AED0
 };
@@ -45,7 +45,7 @@ template <class T> struct _Vector_base {
     _STLP_alloc_proxy<T*, allocator<T> > _M_end_of_storage;
     _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
 };
-template <class T> struct CArray : _Vector_base<T> {   // the engine's CArray is the STLport vector (12 bytes in retail)
+template <class T> class CArray : public _Vector_base<T> { public:   // the engine's CArray is the STLport vector (12 bytes in retail)
     explicit CArray(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { }
 };
 
@@ -57,8 +57,8 @@ struct CPackedUIntArray {                            // 16 bytes
     CPackedUIntArray();                              // 0x00A629C0
 };
 
-struct CDiskFileWin32;
-struct CCPPointerInfo;
+class CDiskFileWin32;
+class CCPPointerInfo;
 struct CDiskFilePointer {                            // CCountedPointer<CDiskFileWin32>
     CDiskFileWin32* Data;
     CCPPointerInfo* Info;
@@ -96,7 +96,7 @@ struct CChecksumCacheFile {                          // 0x1C
 
 struct CProgressCallback;
 
-struct CBankFile : CBaseClassNonCopyable {           // vtable 0x0129B54C
+class CBankFile : public CBaseClassNonCopyable { public:           // vtable 0x0129B54C
     unsigned long          Size;                     // +0x04
     CArray<CCharString>    Symbols;                  // +0x08
     CArray<unsigned long>  Checksums;                // +0x14

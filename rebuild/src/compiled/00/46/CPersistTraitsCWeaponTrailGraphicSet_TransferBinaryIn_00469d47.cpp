@@ -32,7 +32,7 @@ struct CDataInputStreamReader : CDataInputStream {
     __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CWeaponTrailGraphicSet {
+class CWeaponTrailGraphicSet { public:
     long Attack;            // +0x00
     long Knockdown;         // +0x04
 };

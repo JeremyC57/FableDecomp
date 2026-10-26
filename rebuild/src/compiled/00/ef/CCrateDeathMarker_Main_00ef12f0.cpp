@@ -9,22 +9,22 @@
 //   `#pragma inline_depth` at the point it appears inside a body, so inline_depth(0) is toggled around exactly the four
 //   out-of-line dtor sites (the call sites then tail-merge as retail does). Without it every site is expanded and the
 //   round tail cross-jumps with the 5.5 wait loop.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
-struct CCPPointerInfo {                                 // counted-pointer block
+class CCPPointerInfo { public:                                 // counted-pointer block
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
@@ -41,7 +41,7 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerScriptThing PImp;                    // +0x04
     virtual ~CScriptThing() { }                         // out of line: 0x004AA840
     virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
@@ -60,7 +60,7 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-struct CGameScriptInterface {                           // retail vtable 0x01260F0C
+class CGameScriptInterface { public:                           // retail vtable 0x01260F0C
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;               // slot 7 (+0x1c)
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;

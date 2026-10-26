@@ -2,7 +2,7 @@
 // j*i = -k, i*i = -1), the identity, and a general product checked against the textbook formula.
 #include <cstdio>
 #include <cmath>
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     CQuaternion operator*(const CQuaternion& q) const;
 };

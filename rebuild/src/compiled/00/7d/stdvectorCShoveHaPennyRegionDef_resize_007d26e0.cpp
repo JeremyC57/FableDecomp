@@ -13,20 +13,20 @@
 // Shape: the landed resize(n) form; the def's inline constructors fold to CResource(), PDefManager = 0, the three bits
 // cleared through dl and the final vtable store (scheduled among the argument pushes); its generated destructors keep only
 // CDefPointeeBase's inline user destructor's vtable store before the out-of-line ~CResource.
-struct CResource {                                           // vtable 0x012354A4, 0x1c bytes
+class CResource { public:                                           // vtable 0x012354A4, 0x1c bytes
     unsigned char _resource[0x18];                           // +0x04 refcount, resource list links, size, last used frame
     CResource();                                             // 0x009FBEC0
     virtual ~CResource();                                    // 0x009FC550
 };
 
-struct CDefPointeeBase : CResource {                         // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:                         // vtable 0x01230BA0
     CDefPointeeBase() { }
     virtual ~CDefPointeeBase() { }
 };
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CDefClassBase : CDefPointeeBase {                     // vtable 0x01230BCC
+class CDefClassBase : public CDefPointeeBase { public:                     // vtable 0x01230BCC
     CDefinitionManager* PDefManager;                         // +0x1c
     unsigned long       GlobalIndex;                         // +0x20 (left uninitialised)
     unsigned char       Setup : 1;                           // +0x24 bit 0
@@ -41,7 +41,7 @@ struct CDefClassBase : CDefPointeeBase {                     // vtable 0x01230BC
     }
 };
 
-struct CShoveHaPennyRegionDef : CDefClassBase {              // vtable 0x0124383C, 0x30 bytes
+class CShoveHaPennyRegionDef : public CDefClassBase { public:              // vtable 0x0124383C, 0x30 bytes
     float Start;                                             // +0x28
     float Score;                                             // +0x2c
     virtual void GetInstantiationName();

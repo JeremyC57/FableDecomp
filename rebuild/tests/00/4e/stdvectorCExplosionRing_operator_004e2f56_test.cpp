@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <new>
 // behaviour test: std::vector<CExplosionRing>::operator= -- the three STLport paths (grow, shrink-copy, copy + construct tail)
-struct CExplosionRing { int a; int b; float c; int d; };
+class CExplosionRing { public: int a; int b; float c; int d; };
 static int g_allocs = 0, g_clears = 0;
 struct CExplosionRingVector {
     typedef CExplosionRing* pointer;

@@ -1,6 +1,6 @@
 // Behaviour test for 0x00982750 CCreatureAction_SendMessage copy constructor: def add-ref, position, receiver, extra.
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -11,14 +11,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CMessageEventDef { int m_refCount; void AddRef() { ++m_refCount; } };
+class CMessageEventDef { public: int m_refCount; void AddRef() { ++m_refCount; } };
 struct CDefPointer {
     CMessageEventDef* m_pDef;
     CDefPointer(CMessageEventDef* d) : m_pDef(d) { }
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) m_pDef->AddRef(); }
 };
-struct CCreatureActionBase { int m_base; CCreatureActionBase() : m_base(7) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
-struct CCreatureAction_SendMessage : CCreatureActionBase {
+class CCreatureActionBase { public: int m_base; CCreatureActionBase() : m_base(7) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     CDefPointer MessageDef;
     float PositionX, PositionY, PositionZ;
     CIntelligentPointer PReceiver;

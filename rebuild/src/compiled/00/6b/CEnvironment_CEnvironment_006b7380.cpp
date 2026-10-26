@@ -76,7 +76,7 @@ public:
     float X, Y, Z;
 };
 
-class CIDrawEnvironmentTextureSet {
+struct CIDrawEnvironmentTextureSet {
 public:
     CArray<long>  Textures;                                 // +0x00
     CArray<float> Blends;                                   // +0x0C
@@ -108,9 +108,9 @@ public:
     float     OldWindSpeed;                                 // +0xC1C
 };
 
-class CIDrawEnvironmentParams {                             // 0xC0 bytes
+struct CIDrawEnvironmentParams {                             // 0xC0 bytes
 public:
-    class CThemeChannel {                                   // 0x1F0 bytes
+    struct CThemeChannel {                                   // 0x1F0 bytes
     public:
         CRGBFloatColour             Colours[19];            // +0x000
         float                       Scalers[30];            // +0x130

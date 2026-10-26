@@ -1,7 +1,7 @@
 // Behaviour test for 0x007AA4D0 CTCAssassinRush::FinalCleanup.
 #include <cstdio>
 
-struct CTCBase {};
+class CTCBase { public:};
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -13,7 +13,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char State;
     unsigned int m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -42,13 +42,13 @@ struct CBaseIntelligentPointer {
 };
 static bool IS_THING_ALIVE(const CBaseIntelligentPointer& p) { if (p.GetPItem() != 0) { if (!p.GetPItem()->IsDead()) return true; } return false; }
 static bool IS_THING_ALIVE(const CThing* t) { if (t != 0) { if (!t->IsDead()) return true; } return false; }
-struct CTCSpecialAbilities : CTCBase { bool AbilityMutexLock; long CurrentAbility; };
+class CTCSpecialAbilities : public CTCBase { public: bool AbilityMutexLock; long CurrentAbility; };
 static unsigned long g_removedKey = 0;
-struct CBulletTimeManager { void RemoveBulletTimeSlowdown(unsigned long key) { g_removedKey = key; } };
-struct CWorld { CBulletTimeManager* PBulletTimeManager; void RemoveBulletTimeSlowdown(unsigned long k) { PBulletTimeManager->RemoveBulletTimeSlowdown(k); } };
+class CBulletTimeManager { public: void RemoveBulletTimeSlowdown(unsigned long key) { g_removedKey = key; } };
+class CWorld { public: CBulletTimeManager* PBulletTimeManager; void RemoveBulletTimeSlowdown(unsigned long k) { PBulletTimeManager->RemoveBulletTimeSlowdown(k); } };
 static CBulletTimeManager g_btm;
 static CWorld g_world = { &g_btm };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     CThing* ParentThing;
     CBaseIntelligentPointer AssassinTrail;
     CBaseIntelligentPointer AssassinDisplacementTrail;

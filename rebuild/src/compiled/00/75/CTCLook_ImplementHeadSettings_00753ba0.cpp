@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -44,7 +44,7 @@ struct CThing {
         return false;
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void RemoveCombinationAnimsOfType(long type);    // 0x0070D8C0
 };
 struct CTCAnimation {                                // interface type 0x5A
@@ -55,7 +55,7 @@ extern long g_lookHeadAnimHorizontal;                // 0x013BACE4
 extern long g_lookHeadAnimVertical;                  // 0x013BACE8
 extern const float g_zero;                           // 0x0122DEDC
 
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x2c - 0x08];

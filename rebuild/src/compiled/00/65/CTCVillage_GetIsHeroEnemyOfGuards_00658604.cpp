@@ -23,8 +23,8 @@ extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Prep(void); // call A (disc
 extern int __cdecl CTCVillage_GetIsHeroEnemyOfGuards_Query(void); // call B (compared)
 
 // --- Inlined object layout with the load-bearing field at +0xd4 ---
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     char _pad0[0xd4];
     int  m_guardEnemyThreshold; // +0xd4  (signed compare via setl)
 };

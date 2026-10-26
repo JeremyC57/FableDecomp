@@ -15,7 +15,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);         // +4
     void* m_pObject;                                // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     CCountedPointer(const CCountedPointer& other) : Object((T*)other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
@@ -53,17 +53,17 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct C3DMeshFileSubMeshChunk {
+class C3DMeshFileSubMeshChunk { public:
     unsigned long CountTriangles() const;               // 0x00ABC1B0
 };
 
-struct CChunkedFileChunk;
-struct CChunkedFileSuperChunk {
+class CChunkedFileChunk;
+class CChunkedFileSuperChunk { public:
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const;                       // 0x00AA7F40
     CCountedPointer<CChunkedFileChunk> FindNextSubChunk(const CCountedPointer<CChunkedFileChunk>& prev) const; // 0x00AA7FF0
 };
 
-struct C3DMeshFileRootChunk : CChunkedFileSuperChunk {
+class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DMeshFileSubMeshChunk> GetFirstSubMesh() const;                                                  // 0x00A9B030
     CCountedPointer<const C3DMeshFileSubMeshChunk> GetNextSubMesh(const CCountedPointer<const C3DMeshFileSubMeshChunk>& current) const;   // 0x00A9B0C0
     unsigned long CountTriangles() const;

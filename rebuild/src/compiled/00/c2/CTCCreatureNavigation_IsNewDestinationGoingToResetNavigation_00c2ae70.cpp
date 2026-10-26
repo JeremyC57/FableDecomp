@@ -1,5 +1,5 @@
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 
 struct Inner {
     // vtable pointer at +0; slot at +0x18 is the 7th virtual (index 6)
@@ -12,7 +12,7 @@ struct Inner {
     virtual bool doReset(CTCCreatureNavigation* self, C3DVector* v);
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Inner* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

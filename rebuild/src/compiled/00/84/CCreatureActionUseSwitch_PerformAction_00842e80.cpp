@@ -4,8 +4,8 @@
 // CThingPhysicalSwitch::TriggerMe(CThingCreatureBase*) @ 0x0083DDC0 (manifest prototype).
 // Shape: unlike the re-fetching IS_THING_ALIVE idiom, the switch is fetched ONCE into a local (esi) and both tests read it; `this` rides in edi.
 // Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so PSwitch (PDB +0xb4) is at +0xa8 and `this` is modelled locally.
-struct CThingCreatureBase;
-struct CThingPhysicalSwitch {              // only the dead bit and the call are modelled
+class CThingCreatureBase;
+class CThingPhysicalSwitch { public:              // only the dead bit and the call are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void TriggerMe(CThingCreatureBase* user);   // 0x0083DDC0
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     CThingPhysicalSwitch* GetPItem() const; // 0x00A01B50
 };
 
-struct CCreatureAction_UseSwitch {
+class CCreatureAction_UseSwitch { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

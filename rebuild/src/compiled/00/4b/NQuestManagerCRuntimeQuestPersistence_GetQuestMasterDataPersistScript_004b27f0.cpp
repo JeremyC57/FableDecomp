@@ -11,11 +11,11 @@
 // Shape: the map's inline find (`(it == last || key < it->first) ? last : it` with `last` a local read once into
 // esi after the call) and the caller's own `it != end()` test re-reading +0x14, the found return first;
 // CCharString < compares the blocks (equal -> false, null key -> true, null element -> false, else the block compare).
-struct CCharStringData {
+class CCharStringData { public:
     bool operator<(const CCharStringData& other) const;   // 0x00429950 (CBasicString<char>::operator<)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator<(const CCharString& other) const
     {
@@ -32,7 +32,7 @@ struct CCharString {
 namespace NQuestManager {
 
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
     };

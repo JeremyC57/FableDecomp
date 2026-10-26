@@ -9,8 +9,8 @@
 #endif
 
 static int g_calls = 0; static void* g_box = 0; static float g_radius = 0;
-struct C3DVector { float x, y, z; };
-struct CEngineWeatherRenderer { unsigned char _pad0[0x11a]; bool BoxVisibilityLocked; unsigned char _pad1[0x784 - 0x11b]; long SavedBoxVisibility[729];
+class C3DVector { public: float x, y, z; };
+class CEngineWeatherRenderer { public: unsigned char _pad0[0x11a]; bool BoxVisibilityLocked; unsigned char _pad1[0x784 - 0x11b]; long SavedBoxVisibility[729];
     long ClipBoxToCamera(C3DVector* box, float radius) { ++g_calls; g_box = box; g_radius = radius; return 7; }
     long ClipLockedBoxToCamera(C3DVector* box, float radius, long index) { if (!BoxVisibilityLocked) SavedBoxVisibility[index] = ClipBoxToCamera(box, radius); return SavedBoxVisibility[index]; } };
 int main()

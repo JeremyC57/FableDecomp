@@ -17,7 +17,7 @@
 // local, which VC7.1 homed in the argument's own stack slot (`mov eax,[esp+8]` beside the argument load).
 // The frame is one `push ecx` (the key temporary). No engine header models the component table, so the
 // thing is local.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -49,7 +49,7 @@ struct CTCFreePointList {                       // interface type 0x2E component
     void AddFreePoint(long index);              // 0x007FEF40
 };
 
-struct CTCTavernBar {
+class CTCTavernBar { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     void FreeBarPoint(long index);

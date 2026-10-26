@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 // ---- end rebuild_abi.h ----
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -76,9 +76,9 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 
 // ---- end engine/CPixelFormat.h ----
 
-struct CTexture;
-struct CSurface;
-struct C2DExtentsI { long Width; long Height; };
+class CTexture;
+class CSurface;
+class C2DExtentsI { public: long Width; long Height; };
 
 struct __true_type { __true_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void slot0() = 0;
     virtual int  slot1() = 0;
 };

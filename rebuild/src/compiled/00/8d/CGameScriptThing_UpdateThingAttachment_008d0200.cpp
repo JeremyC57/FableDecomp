@@ -4,7 +4,7 @@
 // propagated; the UID's two words pushed first), CGameScriptThing::InitFromThing @ 0x008CFFE0. Shape: the pointer address in edi, `this` in esi. Virtual (the mangled name).
 // Leaf: ?UpdateThingAttachment@CGameScriptThing@@UAEXXZ
 struct CTCGraphicAppearance_Retail;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -33,13 +33,13 @@ struct CIntelligentPointer_Retail {                // 8 bytes: vptr + the pointe
 struct CThingManager_Retail {
     CThing_Retail* GetThingWithUID(__int64 uid);   // 0x0051ED80
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
 };
 
 #pragma pack(push, 4)
-struct CGameScriptThing {                          // packed to 4: the 64-bit UID must not push the members past the vptr
+class CGameScriptThing { public:                          // packed to 4: the 64-bit UID must not push the members past the vptr
     virtual void v00();
     unsigned char             _pad04[8];
     CIntelligentPointer_Retail m_thing;            // +0x0c

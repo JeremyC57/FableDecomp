@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CMapInfo {
+class CMapInfo { public:
     unsigned int MapUID;
     CMapInfo(unsigned int id) : MapUID(id) { ++g_live; }
     CMapInfo(const CMapInfo& o) : MapUID(o.MapUID) { ++g_live; }

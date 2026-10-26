@@ -4,15 +4,15 @@
 #include <cstring>
 #include <cctype>
 
-struct CCharString {
+class CCharString { public:
     char Buf[64];
     CCharString(const char* s = "") { std::strcpy(Buf, s); }
     const char* GetData() const { return Buf; }
     bool operator==(char c) const { char text[2] = { c, 0 }; return std::strcmp(Buf, text) == 0; }
 };
 static CCharString g_OpenBracket("(");
-struct CParsedItem { long Type; CCharString Text; const CCharString& GetString() { return Text; } const CCharString& GetSymbol() { return Text; } };
-struct CStringParser {                       // a tiny tokeniser: identifiers (2) and single-character symbols (1)
+class CParsedItem { public: long Type; CCharString Text; const CCharString& GetString() { return Text; } const CCharString& GetSymbol() { return Text; } };
+class CStringParser { public:                       // a tiny tokeniser: identifiers (2) and single-character symbols (1)
     char storage[64];
     const char* p;
     CStringParser(const CCharString& text) { std::strcpy(storage, text.Buf); p = storage; }
@@ -27,9 +27,9 @@ struct CStringParser {                       // a tiny tokeniser: identifiers (2
         return true;
     }
 };
-struct CConsoleInputBase { const char* Name; const char* Help; CCharString GetHelp() const { return CCharString(Help); } };
-struct CConsoleCommandLine { CCharString CurrentEntry; CCharString GetEntry() const { return CurrentEntry; } };
-struct CConsole {
+class CConsoleInputBase { public: const char* Name; const char* Help; CCharString GetHelp() const { return CCharString(Help); } };
+class CConsoleCommandLine { public: CCharString CurrentEntry; CCharString GetEntry() const { return CurrentEntry; } };
+class CConsole { public:
     CConsoleCommandLine FrontCommandLine;
     CCharString HelpBarString;
     CConsoleInputBase* Inputs; int Count;

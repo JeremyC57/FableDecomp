@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B40230, length 33 bytes.
 // Callees: the map's unloaded hook @ 0x00BDBFF0 (on the map object at +0 of the state entry). Shape: the entry pointer stays in esi across the call, the
 // id store at +8 is an immediate zero. The chunk label "CEngine::MapState_SetUnloaded" names the method; `this` is the map manager (pointer table at +0x20).
-struct CEngineMap {
+class CEngineMap { public:
     void OnUnloaded();                             // 0x00BDBFF0
 };
 

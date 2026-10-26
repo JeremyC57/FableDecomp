@@ -11,8 +11,8 @@ public:
     CCharString(const char* t, long = -1) : PStringData(t) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CBaseClass { virtual ~CBaseClass() { ++g_dtors; } };
-struct CScriptThing : CBaseClass { bool alive; virtual bool IsAlive() const { return alive; } };
+class CBaseClass { public: virtual ~CBaseClass() { ++g_dtors; } };
+class CScriptThing : public CBaseClass { public: bool alive; virtual bool IsAlive() const { return alive; } };
 template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned int size() const { return _M_finish - _M_start; }
@@ -20,13 +20,13 @@ template <class T> struct vector {
     void pop_back() { --_M_finish; _M_finish->~T(); }
 };
 static CScriptThing g_members[3];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int n; const CScriptThing* a[8]; const CScriptThing* b[8]; const char* name;
     virtual long GetAllThingsWithScriptName(const CCharString& nm, vector<CScriptThing>& v)
     { name = nm.PStringData; v._M_start = g_members; v._M_finish = g_members + 3; v._M_end_of_storage = g_members + 3; return 3; }
     virtual void EntitySetThingAsEnemyOfThing(const CScriptThing& t, const CScriptThing& e) { a[n] = &t; b[n] = &e; ++n; }
 };
-struct CScriptBase { int termAfter; bool IsActiveThreadTerminating() { return termAfter-- == 0; } };
+class CScriptBase { public: int termAfter; bool IsActiveThreadTerminating() { return termAfter-- == 0; } };
 struct CQ_AmbushTradersScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     vector<CScriptThing> ConvoyMembersVector;

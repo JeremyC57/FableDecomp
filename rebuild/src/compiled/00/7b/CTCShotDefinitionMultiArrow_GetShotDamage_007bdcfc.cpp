@@ -11,7 +11,7 @@
 // test's frame word; the lookup is a __forceinline template returning the component (landed 0x0064B668 shape).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                            // 0x00410DE0 (std::bitset::test)
 };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                        // +0x20
     unsigned char _pad1[0x23];
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                // +4
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     float GetDamageMultiplier() const;              // 0x007CBF50
 };
 struct CTCShotDefinitionBase {

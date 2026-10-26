@@ -6,7 +6,7 @@ static long g_framesPerSecond = 30;
 static long g_worldFrame = 1000;
 static bool g_boastsListed = true;
 static float g_random = 0.25f;
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     bool HeroBoasted;
     bool HeroMadeGoodBoast;
     long FrameToClearRemainingOpinionSources;

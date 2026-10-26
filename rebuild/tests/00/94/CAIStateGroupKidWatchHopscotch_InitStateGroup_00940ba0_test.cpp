@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CWorld {}; struct CThingAICreature {};
+class CWorld { public:}; class CThingAICreature { public:};
 static long g_frame = 1234; static long g_framesPerSecond = 15;
 long GFGetCurrentFrame() { return g_frame; }
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
 struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {
     unsigned char _pad14[0x18]; long m_frameStarted; long _pad30; long m_framesToWatch; bool m_gameSeen; long m_gamesWatched; long m_lastGameFrame;
     virtual void InitStateGroup(const CWorld&, CThingAICreature&);

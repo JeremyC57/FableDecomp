@@ -1,4 +1,4 @@
-struct CTCOverheadDisplay {
+class CTCOverheadDisplay { public:
     void* vftable;
 };
 

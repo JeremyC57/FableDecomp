@@ -23,15 +23,15 @@ extern "C" double sqrt(double);
 
 class CThingCreatureBase;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float Length() const { return (float)sqrt(X * X + Y * Y); }
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition();             // 0x004C73D0
 };
 
@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item);                  // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                         // one vtable per instantiation
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -55,7 +55,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

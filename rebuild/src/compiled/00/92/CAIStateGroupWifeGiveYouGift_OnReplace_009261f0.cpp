@@ -19,16 +19,16 @@
 //   description as an unnamed CWideString temporary handed to ConstructString.
 extern "C" int __cdecl puts(const char* text);          // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC
-struct CTCBase;
-struct C3DVector { float x, y, z; };
-struct CRightHandedSet;
+class CTCBase;
+class C3DVector { public: float x, y, z; };
+class CRightHandedSet;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                   // +0x20 bitset<274>
     CInterfaceMap Components;                           // +0x44
@@ -69,12 +69,12 @@ struct CThing {
         return tc;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -82,39 +82,39 @@ bool __fastcall ConstructString(CWideString* text, const CWideString* argument);
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, CRightHandedSet* orientation,
     unsigned long flags, const CCharString& scriptName);   // 0x00703210
 struct CTCInventoryBase;
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
     CWideString GetDescription();                       // 0x005D9070
 };
-struct CPlayer { CThing* GetHeroCreature(); };          // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayer { public: CThing* GetHeroCreature(); };          // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 struct CDataBank { CWideString GetTextBySymbol(const CCharString& symbol); };   // 0x009C95E0
-struct CFontBank;
-struct CGame {
+class CFontBank;
+class CGame { public:
     unsigned char _pad[0x14];
     CDataBank* PTextBank;                               // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank* PSubtitleFont;                           // +0x1614c
 };
 extern CGame* g_pGame;                                  // 0x013B86A0
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString* text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
 extern CDisplayEngine* g_pDisplayEngine;                // 0x013B8790
-struct CTCWife {                                        // interface 0xd7
+class CTCWife { public:                                        // interface 0xd7
     unsigned char _pad[0x74];
     long GiftState;                                     // +0x74
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                                  // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                   // +0x04
     long ScriptAIPriority;                              // +0x08

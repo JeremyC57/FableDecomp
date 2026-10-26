@@ -1,7 +1,7 @@
 // CMap::DrawGetEngineThemeAt(long x, long y, long which) -- the engine theme id of palette entry `which` (+4) of the game map cell at (x, y) (rows stored top-down: (maxY - y) * (width + 1) + x), looked up in the 8-byte palette at +0x1a6c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F75B0, length 61 bytes.
 // Shape: the 12-byte cell address through `lea eax,[eax+eax*2] ; lea eax,[edx+eax*4]`, `movzx eax, byte ptr [eax+edx+4]`, `mov eax,[ecx+eax*8]`, `ret 0Ch`. Grid layout as the landed CMap::GetEngineThemeAt @ 0x0081F090.
-struct CHeightMapCell {                           // engine/CHeightMapCell.h: 12 bytes
+class CHeightMapCell { public:                           // engine/CHeightMapCell.h: 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -19,7 +19,7 @@ struct CGameMapGrid {                              // the game map's cell grid (
     long            m_width;                       // +0x204 (cells per row minus one)
     long            m_maxY;                        // +0x208 (rows are stored top-down)
 };
-struct C2DCoordI { long X; long Y; };
+class C2DCoordI { public: long X; long Y; };
 struct SThemePaletteEntry { unsigned long m_themeId; unsigned long m_reserved; };
 struct CQuarterGrid {                              // the quarter-resolution sound/theme grid (+0x1a78 of CMap)
     unsigned char  _pad[4];
@@ -28,7 +28,7 @@ struct CQuarterGrid {                              // the quarter-resolution sou
     long           m_width;                        // +0x1c
     long           m_height;                       // +0x20
 };
-struct CMap {
+class CMap { public:
     unsigned char       _pad[0x1a6c];
     SThemePaletteEntry* m_pPalette;                // +0x1a6c
     unsigned char       _pad1a70[0xc];

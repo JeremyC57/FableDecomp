@@ -4,11 +4,11 @@ struct SubObject {
     void Finalise(); // thiscall, no args -> call 0x5dedc0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Persist(SubObject* p); // thiscall, one stack arg -> call 0x47367a
 };
 
-struct CAnimatingObjectDef {
+class CAnimatingObjectDef { public:
     char pad[0x28];
     SubObject sub; // at +0x28
 };

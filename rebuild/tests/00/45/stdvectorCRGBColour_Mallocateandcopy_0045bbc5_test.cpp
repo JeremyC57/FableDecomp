@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(const CRGBColour& o) : B(o.B), G(o.G), R(o.R), A(o.A) { }

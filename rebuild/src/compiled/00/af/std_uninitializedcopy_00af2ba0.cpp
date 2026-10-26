@@ -1,5 +1,5 @@
 // std::__uninitialized_copy(pair<CCharString, CRegisteredPSCInfo>* first, pair<CCharString, CRegisteredPSCInfo>* last, pair<CCharString, CRegisteredPSCInfo>* result, const __false_type&) -- STLport copy path of the registered-PSC vector: copy-construct [first, last) into raw storage at result and return the end
-// Leaf: ??$__uninitialized_copy@PAU?$pair@VCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@UCRegisteredPSCInfo@NParticleEngine@@@0@PAU10@00ABU__false_type@0@@Z
+// Leaf: ??$__uninitialized_copy@PAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@0@PAU10@00ABU__false_type@0@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF2BA0, length 94 bytes, __fastcall `ret 8` (first/last in ecx/edx,
 //   result and the empty tag on the stack).
 // Identity: the only callers are the landed vector<pair<CCharString, NParticleEngine::CRegisteredPSCInfo> >::
@@ -27,7 +27,7 @@ public:
 enum EPSCType { PSC_TYPE_NONE = 0 };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();                       // +0x0
     EPSCType ComponentType;                                 // +0x4
     CCharString GUIName;                                    // +0x8

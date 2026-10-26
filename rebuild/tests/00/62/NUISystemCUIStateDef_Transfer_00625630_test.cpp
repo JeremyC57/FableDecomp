@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test: CUIStateDef::Transfer visits its members in retail order through the typed CPersistContext transfers.
-struct C2DVector { float X, Y; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C2DVector { public: float X, Y; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CULongVector { unsigned long* First; unsigned long* Last; unsigned long* End; };
 namespace NUISystem { enum EStateChangeType { STATE_CHANGE_NONE, STATE_CHANGE_FADE }; }
-struct CPersistContext {
+class CPersistContext { public:
     const void* Seen[20];
     char Kind[20];
     int Count;
@@ -17,7 +17,7 @@ struct CPersistContext {
     void Transfer(CULongVector& value) { Record(&value, 'v'); }
 };
 namespace NUISystem {
-struct CUIStateDef {
+class CUIStateDef { public:
     unsigned long    GraphicIndex;
     unsigned long    StateChangeFlag;
     EStateChangeType StateChangeType;

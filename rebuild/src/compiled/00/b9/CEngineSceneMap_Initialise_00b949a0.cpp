@@ -14,16 +14,16 @@
 // (the array's first pointer re-read in each arm).
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineScene;
+class CEngineScene;
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     unsigned char _body[0x20];
     CEngineSceneGrid(CEngineSceneGrid* levelUp);   // 0x00B93EB0
 };
 
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     long* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -36,7 +36,7 @@ template <class T> struct CRetailArray {           // retail CArray: {first, las
     T& operator[](unsigned int n) { return first[n]; }
 };
 
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     void*                                          _vfptr;       // +0x00 (CBase vtable)
     C2DBoxF                                        Area;         // +0x04
     unsigned long                                  MaxLevels;    // +0x14

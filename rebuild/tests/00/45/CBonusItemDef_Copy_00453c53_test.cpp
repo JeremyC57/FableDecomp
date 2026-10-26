@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CBonusItemDef { int v; };
+class CBonusItemDef { public: int v; };
 
 static int g_called = 0;
 static CBonusItemDef* g_self = 0;

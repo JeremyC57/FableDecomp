@@ -1,7 +1,7 @@
 // behaviour test for 0x005140a0 _Push_heap (CThingBuilding* elements)
 #include <cstdio>
-struct CThingBuilding { int size; };
-struct CIsHouseLargerThan { char m_tag; bool operator()(CThingBuilding* a, CThingBuilding* b) const { return a->size > b->size; } };
+class CThingBuilding { public: int size; };
+class CIsHouseLargerThan { public: char m_tag; bool operator()(CThingBuilding* a, CThingBuilding* b) const { return a->size > b->size; } };
 static void _Push_heap(CThingBuilding** first, long hole, long top, CThingBuilding* value, CIsHouseLargerThan comp)
 {
     long parent = (hole - 1) / 2;

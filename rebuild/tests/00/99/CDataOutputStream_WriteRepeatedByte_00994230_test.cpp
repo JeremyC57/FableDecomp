@@ -1,7 +1,7 @@
 // Behaviour test for 0x00994230 CDataOutputStream::WriteRepeatedByte: count copies of the byte arrive in chunks of at most 256.
 #include <cstdio>
 #include <cstring>
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned char m_out[1024]; int m_len; int m_calls; int m_maxChunk;
     virtual void Write(const void* data, int size)
     { std::memcpy(m_out + m_len, data, size); m_len += size; ++m_calls; if (size > m_maxChunk) m_maxChunk = size; }

@@ -9,23 +9,23 @@
 #include <string.h>
 
 extern "C" void __cdecl free(void*); // 0x00BFEA14
-struct CVertexCompressionParams;
+class CVertexCompressionParams;
 extern "C" void __fastcall ConvertStaticVertices(const void*, unsigned long, void*, unsigned long, unsigned long, CVertexCompressionParams&); // 0x00A91390
 
-struct CVertexCompressionParams { float PosScale[4]; float PosBias[4]; };
+class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 struct CVertexFormat { unsigned long GetVertexSize() const; }; // 0x00AB37B0
 struct CStreamInfo { long Unnamed00; CVertexFormat Format; };
 struct D3DVERTEXELEMENT9;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first;
     T* last;
     T* end;
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass(); // vtable 0x01231710, deleting destructor 0x004371F0
     CBaseClass();           // 0x0099A2D0
 };
-struct CVertexShaderInput : CBaseClass { // vtable 0x0129EA08, size 0x1c
+class CVertexShaderInput : public CBaseClass { public: // vtable 0x0129EA08, size 0x1c
     CArray<CStreamInfo> DataStreams;               // +4
     CArray<D3DVERTEXELEMENT9> D3DDeclaration;      // +0x10
     virtual ~CVertexShaderInput();                 // 0x00A5EB70 (AB4690 is deleting wrapper)
@@ -58,7 +58,7 @@ struct CByteVector {
 struct CStaticVertex { unsigned char bytes[32]; };
 struct CArrayStaticVertex { CStaticVertex* first; CStaticVertex* last; CStaticVertex* end; };
 struct CDeviceIndependent { long pad; CArrayStaticVertex Vertices; };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char pad0[8];
     long RepeatingMeshReps;
     unsigned char pad0c[0x20];

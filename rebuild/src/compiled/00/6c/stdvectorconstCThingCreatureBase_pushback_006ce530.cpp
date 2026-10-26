@@ -11,7 +11,7 @@
 // a user `__true_type() {}` drops that zero store. The in-place copy is the placement-new null test + dword store.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace std {
 

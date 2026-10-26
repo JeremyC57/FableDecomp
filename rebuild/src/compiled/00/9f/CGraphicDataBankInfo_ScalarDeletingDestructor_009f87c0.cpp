@@ -9,19 +9,19 @@
 //
 #include "rebuild_abi.h"
 
-struct CCharString {
+class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     ~CCharString();                                     // 0x0099EAE0
     void* m_pStringData;                                // CCharStringData*
 };
 
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC (retail CRT)
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // called with Data in ecx and nothing on the stack
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*             m_pData;                              // PDB: Data
     CCPPointerInfo* m_pInfo;                             // PDB: Info
     CCountedPointer() : m_pData(0), m_pInfo(0) {}
@@ -42,8 +42,8 @@ template<class T> struct CCountedPointer {
     void Reset()       { ReleaseInfo(); m_pInfo = 0; m_pData = 0; }
 };
 
-struct CGraphicDataBank;
-struct CGraphicDataBankInit { unsigned char _bytes[0x2c]; };     // trivially destructible init block
+class CGraphicDataBank;
+class CGraphicDataBankInit { public: unsigned char _bytes[0x2c]; };     // trivially destructible init block
 struct CGraphicDataBankInfo {
     CGraphicDataBankInit               Init;              // +0x00
     CCharString                        BankHandle;        // +0x2c

@@ -7,8 +7,8 @@ static int g_frame = 0, g_termAt = 1000, g_leaveAt = 3, g_scriptAt = 5, g_walkFr
 static void Log(const char* s) { char b[16]; std::sprintf(b, "@%d;", g_frame); std::strcat(g_log, s); std::strcat(g_log, b); }
 static int Fail(const char* what) { std::printf("00f14770_TEST FAIL %s [%s]\n", what, g_log); return 1; }
 #define CHECK(cond) do { if (!(cond)) return Fail(#cond); } while (0)
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     const char* Name; C3DVector Pos;
     CScriptThing(const char* n = "") : Name(n) { Pos.X = 7.0f; Pos.Y = Pos.Z = 0.0f; }
     const C3DVector& GetPos() const { return Pos; }
@@ -24,7 +24,7 @@ struct CHandle {
 };
 struct CArena { bool ChamLeaving; };
 static CArena g_arena;
-struct CGame {
+class CGame { public:
     void NewScriptFrame() const { ++g_frame; g_arena.ChamLeaving = g_frame >= g_leaveAt; }
     bool StartScriptingEntity(const CScriptThing&, CHandle& h, int prio) { if (g_frame < g_scriptAt) return false; h.Scripting = true; char x[32]; std::sprintf(x, "script %d", prio); Log(x); return true; }
     CScriptThing GetThingWithScriptName(const char* n) const { return CScriptThing(n); }

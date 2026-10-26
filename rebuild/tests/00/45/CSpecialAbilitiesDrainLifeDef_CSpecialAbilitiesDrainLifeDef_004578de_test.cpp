@@ -2,14 +2,14 @@
 #include <cstring>
 #include <new>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCalls; }
 };
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) { } };
 class CCharString;
-struct CSpecialAbilitiesDrainLifeDef : CParentDefClassBase {
+class CSpecialAbilitiesDrainLifeDef : public CParentDefClassBase { public:
     CRetailVector<float> AmountOfHealthSucked;
     CRetailVector<long> NumEffects;
     CRetailVector<float> SpellRange;

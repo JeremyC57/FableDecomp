@@ -5,9 +5,9 @@
 // Shape: the user argument is loaded once into edi and pushed twice, `this` kept in esi; both calls are
 // `__fastcall` members on `this`. The body is byte-identical to slot 32 (0x007EDFD0): the linker did not
 // fold them.
-struct CThing;
+class CThing;
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     void OnUseBase(CThing* user);                   // 0x007EAB90 (empty base implementation)
 };

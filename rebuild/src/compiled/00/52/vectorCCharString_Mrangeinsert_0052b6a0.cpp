@@ -8,7 +8,7 @@
 //   0x00528140, malloc 0x00BFEA0E, the vector's clear-and-free 0x00433040.
 // Tried: value-initialised tags (a), tags with empty constructors (b, this), STLport inline wrappers taking iterators by value (c).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct forward_iterator_tag { forward_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 struct STreeNode;

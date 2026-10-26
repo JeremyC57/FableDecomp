@@ -15,7 +15,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CReverbEnvironmentEntry {               // PDB: 84 bytes, a POD block-copied as 21 dwords
+class CReverbEnvironmentEntry { public:               // PDB: 84 bytes, a POD block-copied as 21 dwords
     float Params[21];
 };
 

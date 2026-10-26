@@ -7,7 +7,7 @@
 // the sprite-derived cursor's method -- provisional.
 // Shape: 16 bytes of frame = the size local and the scale temporary; each axis is `scale * size` (`fld size ; fmul [scale]`),
 // the X product stored back to the local and the Y product left on the FPU stack and written straight into the result.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}

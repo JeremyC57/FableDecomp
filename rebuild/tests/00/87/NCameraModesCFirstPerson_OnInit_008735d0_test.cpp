@@ -3,22 +3,22 @@
 #include <cstdio>
 #include <cmath>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     void Normalise() { float l = (float)std::sqrt(X * X + Y * Y + Z * Z); if (l > 0) { X /= l; Y /= l; Z /= l; } }
 };
-struct C2DVector { float X, Y; };
-struct CCamera { unsigned char _body[0x38]; };
+class C2DVector { public: float X, Y; };
+class CCamera { public: unsigned char _body[0x38]; };
 struct CThingPhysics { C3DVector facing; C3DVector GetFacingVector() const { return facing; } };
-struct CThing {
+class CThing { public:
     CThingPhysics* m_pPhysics; C3DVector pos;
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
     const C3DVector& GetPosition() const { return pos; }
 };
-struct CThingGameObject : CThing {};
+class CThingGameObject : public CThing { public:};
 class CGameCameraManager {
 public:
     CCamera Camera; CCamera OldCamera; bool SingleCut;

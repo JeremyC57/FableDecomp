@@ -14,7 +14,7 @@
 // then the derived members in declaration order.
 // Leaf: ??4CRegionScriptDef
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x21];                          // +0x04 .. +0x24 (PDefManager, GlobalIndex, Setup bits, ...)
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
     virtual void v00();
@@ -28,23 +28,23 @@ template<class T> struct CRetailVector {                // begin/end/capacity
 
 struct CKeyPairCompareLess {};
 
-template<class K, class V> struct CVectorMap {          // retail: 16 bytes
+template<class K, class V> class CVectorMap { public:          // retail: 16 bytes
     CRetailVector<V>    m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
 };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSubDefInfo;
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29
 };
 #pragma pack(pop)
 
-struct CRegionScriptDef : CParentDefClassBase {
+class CRegionScriptDef : public CParentDefClassBase { public:
     long RandomVillagerMax;                             // +0x3c
     long RandomGuardMax;                                // +0x40
     CRegionScriptDef& operator=(const CRegionScriptDef& other);

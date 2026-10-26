@@ -21,12 +21,12 @@ template <class T> struct CRetailVector {
     const T& operator[](unsigned long i) const { return *(begin() + i); }
 };
 // Shape: region 0 is skipped; the element address is start (re-read each pass) + a strength-reduced 0x58 offset.
-struct CRegion {
+class CRegion { public:
     bool ContainsMap(long map) const;           // 0x006BBFA0
     unsigned char _body[0x58];
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char          _pad[0x2c];
     CRetailVector<CRegion> Regions;             // +0x2C
     long GetRegionNumberMapIsIn(long map) const;

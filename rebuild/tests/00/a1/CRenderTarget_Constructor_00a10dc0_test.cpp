@@ -6,8 +6,8 @@ namespace N_0099a2d0 { struct CBase
     virtual void VTableAnchor();
 }; } using N_0099a2d0::CBase;
 
-struct CSurface
-{
+class CSurface
+{ public:
     void* resource04;
     unsigned long resourceState08;
     unsigned long PAllocatedMemory;
@@ -22,8 +22,8 @@ struct CSurface
     CSurface& operator=(const CSurface& source);
 };
 
-struct CRenderTarget : CBase
-{
+class CRenderTarget : public CBase
+{ public:
     CSurface primary04;
     CSurface secondary14;
 

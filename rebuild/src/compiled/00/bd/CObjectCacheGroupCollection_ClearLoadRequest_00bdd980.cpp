@@ -3,7 +3,7 @@
 // callee at 0xbe0400 : __fastcall member taking one pushed arg, returns void.
 // Model as a real (non-virtual) member method so the compiler emits ecx=this,
 // arg pushed, edx untouched — matching retail's `mov ecx,[esp+8]; push eax; call`.
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseBlock(void* arg);
 };
 

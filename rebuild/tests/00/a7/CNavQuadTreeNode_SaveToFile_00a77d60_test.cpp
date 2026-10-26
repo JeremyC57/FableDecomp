@@ -3,12 +3,12 @@
 #include <cstdio>
 #include <map>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 static long g_written[16]; static int g_nw; static int g_baseSaves; static int g_childFlags;
-struct CAFile { void Write(const void* d, unsigned long size, bool) { if (size == 4) g_written[g_nw++] = *(const long*)d; } };
-struct CANavQuadTreeNode;
+class CAFile { public: void Write(const void* d, unsigned long size, bool) { if (size == 4) g_written[g_nw++] = *(const long*)d; } };
+class CANavQuadTreeNode;
 typedef std::map<const CANavQuadTreeNode*, long> CNodeIndexMap;
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     long id;
     virtual ~CANavQuadTreeNode() {}
     virtual void SaveToFile(CAFile& file, const CNodeIndexMap& m, bool flag, const C2DVector& pos) const
@@ -16,7 +16,7 @@ struct CANavQuadTreeNode {
         ++g_baseSaves; if (flag) ++g_childFlags; long v = 1000 + id; file.Write(&v, 4, false);
     }
 };
-struct CNavQuadTreeNode : CANavQuadTreeNode {
+class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     const CANavQuadTreeNode* TLNode; const CANavQuadTreeNode* TRNode; const CANavQuadTreeNode* BLNode; const CANavQuadTreeNode* BRNode;
     virtual void SaveToFile(CAFile& file, const CNodeIndexMap& nodeIndices, bool flag, const C2DVector& position) const
     {

@@ -1,4 +1,4 @@
-struct CTCTavernGame {
+class CTCTavernGame { public:
     char pad0[0xc];
     int  field_c;   // +0x0c, signed
     int  field_10;  // +0x10

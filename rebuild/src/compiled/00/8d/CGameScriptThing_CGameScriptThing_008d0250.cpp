@@ -6,8 +6,8 @@
 // Shape: as 0x008CFF60 but the intelligent pointer is default-constructed (no SetPItem call) and the body is a
 // single InitFromThing(thing) (which fills the name and the UID itself).
 // Leaf: ??0CGameScriptThing
-struct CThing;
-struct CWorld;
+class CThing;
+class CWorld;
 namespace N_0099a2d0 { struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2D0
@@ -28,22 +28,22 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item);                     // 0x00A01B90
     CThing* GetPItem() const;                      // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPItem(item); }
     virtual void v00();                            // own vtable (0x01238C6C)
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern CCharString g_CCharString_013bafcc;         // 0x013BAFCC (the default script-thing name)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CGameScriptThing : CScriptThing {
+class CGameScriptThing : public CScriptThing { public:
     CIntelligentPointer<CThing> PThing;            // +0x0c
     long             ScriptCounter;                // +0x14
     unsigned __int64 ThingUID;                     // +0x18

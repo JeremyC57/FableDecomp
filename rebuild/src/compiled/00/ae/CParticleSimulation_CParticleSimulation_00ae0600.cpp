@@ -10,7 +10,7 @@
 // TimestepMultiplier 1, GlobalDamping 0.25, and the MemoryHandle release through MemoryPool).
 // Shape: the derived vtable store (the empty inline CMovableResource constructor's store is dead), the counted pointer's
 // two zero words, `MemoryHandle(-1), MemoryPool(0)` from one zero register, then `Clear();` in the body.
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                   // +0x0
@@ -27,9 +27,9 @@ public:
     virtual void RelocateData(long offset, void* oldBase, void* newBase, long size) = 0;
 };
 
-struct C4DVector { float X, Y, Z, W; };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
+class C4DVector { public: float X, Y, Z, W; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
 class CParticleSimulationRenderData;
 
 class CParticleSimulation : public CMovableResource {      // Ego_r.pdb, 128 bytes

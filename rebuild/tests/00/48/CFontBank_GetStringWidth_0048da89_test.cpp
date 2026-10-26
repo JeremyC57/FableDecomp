@@ -3,7 +3,7 @@
 
 struct Vec2 { float x; float y; };
 
-struct CFontBank {
+class CFontBank { public:
     virtual Vec2* slot0(Vec2* out, const char* s, int f) = 0;
     virtual Vec2* Measure(Vec2* out, const char* s, int f) = 0;
     float GetStringWidth(const char* s);

@@ -143,7 +143,7 @@ enum LH_HTTP_STATUS {
     LH_HTTP_REQUEST_SENT = 2
 };
 
-struct LHHttpHeaders {                                           // 24 bytes in retail
+class LHHttpHeaders { public:                                           // 24 bytes in retail
     CRetailStringVector HdrDocumentHeader;                       // +0x00
     CRetailString       HeaderString;                            // +0x0c
     void Reset()                                                 // 0x0083FBC0 (landed)
@@ -153,7 +153,7 @@ struct LHHttpHeaders {                                           // 24 bytes in 
     }
 };
 
-struct LHHttp2 {
+class LHHttp2 { public:
     LSocket*            Host;                                    // +0x000
     CRetailString       Hostname;                                // +0x004
     unsigned short      Port;                                    // +0x010

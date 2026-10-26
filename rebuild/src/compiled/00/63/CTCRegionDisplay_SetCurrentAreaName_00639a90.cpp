@@ -9,18 +9,18 @@
 // Shape: `CurrentAlpha = LastAlpha = 255` stores LastAlpha first; `TimeOut = displayTime != 0.0f` is the full-register 0/1 with the
 //   three byte stores duplicated into both arms.
 #include <stddef.h>
-struct CThing;
-struct CWorld {
+class CThing;
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 extern long g_framesPerSecond;                              // 0x01375550
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     bool operator!=(const wchar_t* text) const;             // 0x0099B150
     CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
 };
-struct CTCBase {                                            // engine/CTCBase.h layout (0xc bytes)
+class CTCBase { public:                                            // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -28,7 +28,7 @@ struct CTCBase {                                            // engine/CTCBase.h 
     unsigned char _pad0a[2];
     CWorld* GetWorld();                                     // 0x00686A70
 };
-struct CTCRegionDisplay : CTCBase {                         // vtable 0x0125A0EC
+class CTCRegionDisplay : public CTCBase { public:                         // vtable 0x0125A0EC
     CWideString   CurrentAreaName;                          // +0x0c
     CWideString   CurrentAreaNameExtra;                     // +0x10
     long          FrameNameChanged;                         // +0x14

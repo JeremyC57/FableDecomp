@@ -11,13 +11,13 @@
 // Shape: the dead test is the `if` condition on the returned temporary (destroyed before the name string; VC7.1 inlines
 //   the destructor at this first site only, given an inline `virtual ~CScriptThing() { }`); the new leader is scoped
 //   inside the branch so it shares the frame words of the first temporary (function scope moves it, DIFFER 335v335).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct SCountBlock {
     long  m_references;                            // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4
@@ -42,7 +42,7 @@ struct CCountedPointer {
 struct CBase {
     virtual ~CBase();                              // 0x0099A2E0
 };
-struct CScriptThing : CBase {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                     // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing() { }                    // slot 0; complete destructor 0x004AA840
     virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;                           // slot 3 (+0xc)
@@ -60,7 +60,7 @@ struct CScriptThing : CBase {                     // vtable 0x01238C8C, 12 bytes
     virtual bool IsDead() const;                                         // slot 76 (+0x130)
     CCountedPointer PImp;                          // +0x04
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

@@ -4,8 +4,8 @@
 // @ 0x00485D30 (the key by value: `push 2`; its result is dropped -- the call only creates the entry). Vtable 0x0125A804 = NPlayerGui::CDrawQuickAccessIconsPC
 // (rtti-vtables.tsv); the chunk label "CDrawBettingHUD::CDrawBettingHUD" is propagated. Shape: a speed body (arguments through registers), the vtable store
 // sits between the key push and the member call.
-struct CPlayerGui;
-struct CEnginePrimitiveHandle;
+class CPlayerGui;
+class CEnginePrimitiveHandle;
 
 namespace NPlayerGui {
 
@@ -14,7 +14,7 @@ struct CRetailHandleMap {                          // VC6 Dinkumware map<long, C
     CEnginePrimitiveHandle* operator[](long key);  // 0x00485D30
 };
 
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     virtual void v00();
     unsigned char _body[0x94 - 4];                 // +0x04 .. +0x94: CDrawBase and the icon state
     CDrawQuickAccessIcons(CPlayerGui* gui, void* drawList);   // 0x00652F0A

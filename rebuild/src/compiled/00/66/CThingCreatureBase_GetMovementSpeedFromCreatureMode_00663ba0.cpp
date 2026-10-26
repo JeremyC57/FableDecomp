@@ -11,13 +11,13 @@
 //   `xor ecx,ecx`, the component loaded straight into ecx), the mode fetched before the position;
 //   offset = target - position through an inline operator- building C3DVector(x, y, z) (Z computed first), the facing
 //   a by-value virtual result; the mode's result is returned directly.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -29,10 +29,10 @@ struct CModeBase {                              // CTCCreatureModeManager::CMode
     virtual void v06();
     virtual float GetMovementSpeed(const C3DVector& offset, const C3DVector& facing, long movementType);    // slot 7 (+0x1c)
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CModeBase* GetCurrentMode();                // 0x0073A6E0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -48,7 +48,7 @@ struct CTCPhysicsBase {
     virtual C3DVector GetFacing() const;        // slot 70 (+0x118)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -70,7 +70,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType);
     __forceinline CTCCreatureModeManager* GetModeManager()
     {

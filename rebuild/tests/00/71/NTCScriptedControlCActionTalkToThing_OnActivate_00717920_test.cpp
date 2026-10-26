@@ -1,6 +1,6 @@
 // Behaviour test for 0x00717920 NTCScriptedControl::CActionTalkToThing::OnActivate
 #include <cstdio>
-struct CPlayerGui { bool CutsceneSkipped; };
+class CPlayerGui { public: bool CutsceneSkipped; };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
 struct CActionTalkToThing {

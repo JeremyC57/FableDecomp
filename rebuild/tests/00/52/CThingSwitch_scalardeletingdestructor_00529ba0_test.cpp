@@ -1,18 +1,18 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_strings = 0, g_bases = 0, g_frees = 0, g_order = 0, g_baseOrder = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) {}
     ~CCharString() { ++g_strings; ++g_order; }
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     CThingGameObject() {}
     virtual ~CThingGameObject() { ++g_bases; g_baseOrder = ++g_order; }
     static void* operator new(size_t size) { return std::malloc(size); }
     static void operator delete(void* p) { ++g_frees; std::free(p); }
 };
-struct CThingSwitch : CThingGameObject {
+class CThingSwitch : public CThingGameObject { public:
     float         TriggerRadius;
     CCharString   EnvironmentDef;
     float         TimeToChangeEnvironmentDef;

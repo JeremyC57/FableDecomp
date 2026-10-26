@@ -6,7 +6,7 @@
 struct __false_type { __false_type() { } };
 struct SStringData { long m_refs; const char* m_text; };
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     SStringData* m_pStringData;
     CCharString() : m_pStringData(0) { }
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; if (m_pStringData) ++m_pStringData->m_refs; }

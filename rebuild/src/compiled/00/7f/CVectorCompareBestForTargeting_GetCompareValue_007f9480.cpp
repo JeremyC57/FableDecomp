@@ -12,7 +12,7 @@
 extern "C" double __cdecl exp(double x);
 #pragma intrinsic(exp)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CVectorCompare_BestForTargeting {
 public:

@@ -7,7 +7,7 @@
 // 0x1c-byte CCombatAbilityStrafingData `CombatAbility` at +0x28. The header is a flat POD, so a
 // `_Retail` model with the real base/member classes is used; the by-value enum is a plain long (8 =
 // the strafe ability's interface type). Vtable 0x01232674 from rtti-vtables.tsv.
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                              // +0x04 .. +0x28
     CSubDefClassBase();                                     // 0x0044C0C0

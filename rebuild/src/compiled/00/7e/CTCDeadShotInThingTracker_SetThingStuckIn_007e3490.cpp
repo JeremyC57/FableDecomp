@@ -8,8 +8,8 @@
 // vtable, SetPItem(item)), assigned through the inline operator= (SetPItem(other.GetPItem())), destroyed
 // through the out-of-line base destructor (the derived destructor is implicit: no vtable store); the
 // flag store comes after the temporary dies (statement order).
-struct CBaseObject;
-struct CThing;                                              // a CBaseObject (single inheritance, same address)
+class CBaseObject;
+class CThing;                                              // a CBaseObject (single inheritance, same address)
 
 struct CBaseIntelligentPointer {                            // sizeof 8: vptr + PData
     virtual void v00();
@@ -26,7 +26,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01237F1C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCDeadShotInThingTracker {
+class CTCDeadShotInThingTracker { public:
     virtual void v00();
     unsigned char       _base[0x8];                         // CTCBase: ParentThing +4, flags +8/+9
     CIntelligentPointer PThingStuckIn;                      // +0x0c CIntelligentPointer<const CThing>

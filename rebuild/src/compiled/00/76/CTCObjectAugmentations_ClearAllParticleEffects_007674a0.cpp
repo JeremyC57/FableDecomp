@@ -13,7 +13,7 @@
 // Layout (local model, as the landed ctor 0x007673C0): retail 12-byte STLport containers, ParticleEffects +0x38,
 // AttackParticleEffects +0x44, CurrentRunningAugEffect +0x50, ProjectileTrailEffect +0x65 (pack(1)); inner elements
 // ParticleAndEndPoints 0x14 and AttackParticleAndEndPoints 0x18 (ParticleEffect +0x10), field names before +0x10 descriptive.
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 class CThing {
 public:
     unsigned char  _pad00[0x91];
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                        // 0x00A01B90
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     T* operator->() const { return (T*)GetPItem(); }
@@ -98,7 +98,7 @@ struct AttackParticleAndEndPoints {                     // 0x18 (PDB)
 };
 // vector<ParticleAndEndPoints>::operator= @ 0x0076B1E0, vector<AttackParticleAndEndPoints>::operator= @ 0x0076B320,
 // __destroy_aux over vector<ParticleAndEndPoints> @ 0x0076BD70 and over vector<AttackParticleAndEndPoints> @ 0x0076BDD0.
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

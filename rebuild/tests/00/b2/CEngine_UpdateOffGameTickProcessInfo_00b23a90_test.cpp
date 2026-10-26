@@ -31,7 +31,7 @@ struct SOffWorldTickProcessInfo {                      // <unnamed-type-OffWorld
     double LastFrameTimeStamp;                         // +0x18
 };
 
-struct CEngine {
+class CEngine { public:
     unsigned char            _pad0[0xf8];
     SOffWorldTickProcessInfo OffWorldTickProcessInfo;  // +0xF8 (retail; PDB +0x100)
     void UpdateOffGameTickProcessInfo(bool allowSkip);

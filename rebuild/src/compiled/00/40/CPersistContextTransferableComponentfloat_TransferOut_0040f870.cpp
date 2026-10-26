@@ -12,9 +12,9 @@
 // The formatter is a static __fastcall member returning CCharString by value: the hidden result
 // takes ecx and the first dword argument (the digit count, 6) edx. The target pointer must be a
 // named local: read straight through the member VC loads it into eax instead of retail's ecx.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);           // 0x0099F0A0

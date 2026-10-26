@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
 };
 
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     char pad[0x70];
     CMatrix3x4 frame;
 };

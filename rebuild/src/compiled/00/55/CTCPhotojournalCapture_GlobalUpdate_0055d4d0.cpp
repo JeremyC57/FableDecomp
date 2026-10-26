@@ -6,7 +6,7 @@
 // Shape: `if (FrameCounter < 20) { if (++FrameCounter == 18) ... }` (inc, compare, then the store); the count-down guarded by
 //   `> -1` and the zero test re-reading the member at the join.
 // Leaf: GlobalUpdate
-struct CPlayerGui {
+class CPlayerGui { public:
     bool IsOpen() const;                    // 0x004374F0 (state +0x294 != 1; manifest "C3DMeshInfo::HasPhysicsMesh", propagated)
     void Open();                            // 0x004374B0 (state 2)
     void Close(bool immediately);           // 0x00438400 (state 1 when immediate, else 3)
@@ -14,10 +14,10 @@ struct CPlayerGui {
 
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
-struct CWideString { void* m_pData; };
-struct CThing;
+class CWideString { public: void* m_pData; };
+class CThing;
 
-struct CTCPhotojournalCapture {             // 0x44 bytes in retail (PDB 0x48: the STLport vector is 12 bytes)
+class CTCPhotojournalCapture { public:             // 0x44 bytes in retail (PDB 0x48: the STLport vector is 12 bytes)
     void*          __vftable;               // +0x00 (CTCBase)
     CThing*        ParentThing;             // +0x04
     bool           ToBeRemoved;             // +0x08

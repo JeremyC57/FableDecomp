@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DVector { float X; float Y; };
-struct C2DBoxF {
+class C2DVector { public: float X; float Y; };
+class C2DBoxF { public:
     float TLX; float TLY; float BRX; float BRY;
     long ContainsPoint(const C2DVector& pos) const;
 };

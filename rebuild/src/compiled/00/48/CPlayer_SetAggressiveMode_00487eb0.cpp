@@ -9,7 +9,7 @@
 // (`test al,al ; je`).
 extern unsigned char g_bAggressiveModeAvailable;   // 0x013B85F3
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x217];
     bool          AggressiveMode;                  // +0x217 (PDB +0x21f)
     void SetUpControlsBasedOnAggressiveMode();     // 0x00487DE0

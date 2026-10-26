@@ -3,8 +3,8 @@
 // behaviour test: CWaterPatchMesh::Render does nothing without a vertex buffer; otherwise it sets an identity world
 // transform translated to the camera, binds the buffer (stride from the buffer) as stream 0, flushes the dirty shader
 // state for flags 5 and draws 0x121 vertices indexed with the given triangle count
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()
@@ -14,7 +14,7 @@ struct CMatrix3x4 {
     }
 };
 static std::string g_log;
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned long UpdateFlags;
     CMatrix3x4 World;
     void SetWorldTransform(const CMatrix3x4& m) { World = m; g_log += "world;"; }
@@ -46,15 +46,15 @@ struct CRenderManagerCore {
         g_log += b;
     }
 };
-struct CEngineCamera { C3DVector WorldPosition; };
-struct CVertexBufferWin32 { IDirect3DVertexBuffer9* PVertexBuffer; unsigned char Stride; };
+class CEngineCamera { public: C3DVector WorldPosition; };
+class CVertexBufferWin32 { public: IDirect3DVertexBuffer9* PVertexBuffer; unsigned char Stride; };
 static CShaderRenderManager g_shader;
 static CRenderManagerCore g_core;
 static CEngineCamera g_camera;
 static CShaderRenderManager* g_pShaderRenderManager = &g_shader;
 static CRenderManagerCore* g_pRenderManagerCore = &g_core;
 static CEngineCamera* g_pEngineCamera = &g_camera;
-struct CWaterPatchMesh {
+class CWaterPatchMesh { public:
     CVertexBufferWin32* VertexBuffer;
     void Render(long triangleCount) const;
 };

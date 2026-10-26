@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CTargetPoint { CThing* Thing; long Index; float X, Y, Z; long FrameRejected; };
 struct CVector {
     CTargetPoint* _M_start; CTargetPoint* _M_finish; CTargetPoint* _M_end_of_storage;

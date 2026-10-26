@@ -5,19 +5,19 @@
 #include <stdio.h>
 #include <string.h>
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(x + o.x, y + o.y, z + o.z); }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CTCUserActionPointBase;
 static CTCUserActionPointBase* g_point;
 static int g_hasInterface;
-struct CThing {
+class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (interfaceType == 0x2d && g_hasInterface) { *ppOut = (T*)g_point; return true; }
@@ -46,7 +46,7 @@ struct CIntelligentPointerThingObject {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAIBrain { CThingCreature* PCreature; };
+class CAIBrain { public: CThingCreature* PCreature; };
 
 static int g_validCalls, g_invalidAt;          // IsSeatValid() false from call g_invalidAt on (0 = never)
 static long g_moveResults[4]; static int g_moveCalls;
@@ -54,7 +54,7 @@ static long g_lookResults[4]; static int g_lookCalls;
 static long g_moveMovement; static C3DVector g_movePos;
 static C3DVector g_lookPos; static long g_lookFlags;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     bool IsSeatValid() { ++g_validCalls; return !(g_invalidAt && g_validCalls >= g_invalidAt); }
     long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movement, bool, bool, CThing*, bool, float)

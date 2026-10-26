@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CWideString;
+class CWideString;
 struct Tail;
 
 // 0x5d97b0: thiscall on CWideString* (ecx), returns int

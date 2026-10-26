@@ -19,7 +19,7 @@
 void* __cdecl operator new(size_t size);            // 0x00BFEA1A
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
@@ -37,7 +37,7 @@ template <class T> struct SCountBlock {
     T*   m_pItem;                                   // +0x08
     SCountBlock(T* item) : m_references(1), m_pfnDestroy(&T::DeleteData), m_pItem(item) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                        // +0x00
     SCountBlock<T>* Info;                           // +0x04
     CCountedPointer(T* item) : Data(item), Info(new SCountBlock<T>(item)) { }

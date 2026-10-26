@@ -2,12 +2,12 @@
 #include <cstring>
 #include <new>
 
-struct CGameEvent { int id; };
-struct CInputTypeBase { virtual bool IsButtonEvent(const CGameEvent& ev) { return ev.id == m_match; } int m_match; };
-template <class T> struct CCountedPointer { T* m_pObject; void* m_pCount; };
+class CGameEvent { public: int id; };
+class CInputTypeBase { public: virtual bool IsButtonEvent(const CGameEvent& ev) { return ev.id == m_match; } int m_match; };
+template <class T> class CCountedPointer { public: T* m_pObject; void* m_pCount; };
 template <class T> struct CRetailVector { T* m_pBegin; T* m_pEnd; T* m_pEnd2;
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); } T& operator[](unsigned long i) { return m_pBegin[i]; } };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     CRetailVector< CCountedPointer<CInputTypeBase> > ContextSensitiveItemButtons;
     bool IsEventContextSensitiveItemButton(const CGameEvent& event, unsigned long* outIndex) {
         for (unsigned long i = 0; i < ContextSensitiveItemButtons.Size(); ++i)

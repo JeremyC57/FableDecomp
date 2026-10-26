@@ -6,7 +6,7 @@ struct IChild {
     virtual void slot0() = 0;
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void*   m_vtbl;   // +0x00
     int     m_pad4;   // +0x04
     IChild* m_child;  // +0x08

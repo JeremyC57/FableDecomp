@@ -39,12 +39,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     __forceinline bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -84,7 +84,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CRegionDef : CDefBase {                              // the REGION_<name> def (type name not recovered)
+class CRegionDef : public CDefBase { public:                              // the REGION_<name> def (type name not recovered)
     unsigned char _pad08[0x3c - 0x08];
     long MaxPopulation[3];                                  // +0x3c bandits / villagers / guards
 };
@@ -111,7 +111,7 @@ struct CDefPointer {
     }
     CRegionDef* operator->() const { return m_p; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
     bool GetDef_00cde280(const CCharString& name, CDefPointer& out);   // 0x00CDE280 (body below: the template's header definition)
 };
@@ -127,7 +127,7 @@ bool CDefinitionManager::GetDef_00cde280(const CCharString& name, CDefPointer& o
 }
 #pragma auto_inline(on)
 CDefinitionManager* GFGetPDefinitionManager();              // 0x00CD3EF0
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -162,7 +162,7 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual void v283();
     virtual bool IsQuestActive(const CCharString&) const;   // slot 284 (+0x470) 0x00892F40
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

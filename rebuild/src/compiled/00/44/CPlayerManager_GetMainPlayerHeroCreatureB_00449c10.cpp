@@ -8,12 +8,12 @@
 // Layout: retail STLport vectors are 12 bytes (the PDB header's Players is 0x10), so MainPlayer is at
 // +0x1C, not the header's +0x20; GetPlayer 0x004498C0 itself reads Players at +0x0C/+0x10 and
 // PlayerNeutral at +0x18. Local model instead of engine/CPlayerManager.h.
-struct CThing;
-struct CPlayer {
+class CThing;
+class CPlayer { public:
     CThing* GetHeroCreature();                 // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void* __vftable;                           // +0x00
     void* Component;                           // +0x04
     void* DefinitionManager;                   // +0x08

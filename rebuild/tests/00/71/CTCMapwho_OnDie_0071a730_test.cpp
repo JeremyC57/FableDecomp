@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCMapwho;
+class CTCMapwho;
 
 struct Helper2 {
     void Notify(CTCMapwho* thing);
@@ -9,7 +9,7 @@ struct HelperObj {
     char pad[0x10];
     Helper2* f10;
 };
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad[0x50];
     unsigned char f50;
 };

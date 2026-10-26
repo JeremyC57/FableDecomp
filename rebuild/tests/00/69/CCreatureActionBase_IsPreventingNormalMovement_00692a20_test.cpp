@@ -1,8 +1,8 @@
 #include <cstdio>
 static long g_askedAnim = -1;
-struct CThingCreatureBase { long combo; bool IsAnimCombinationAnim(long a) { g_askedAnim = a; return a == combo; } };
+class CThingCreatureBase { public: long combo; bool IsAnimCombinationAnim(long a) { g_askedAnim = a; return a == combo; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {}
     virtual long GetAnimationIndex() const { return m_anim; }
     unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; long m_anim;

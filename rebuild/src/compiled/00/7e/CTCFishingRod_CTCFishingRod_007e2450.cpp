@@ -8,23 +8,23 @@
 // Shape: the def pointer's address is formed once (`lea eax,[esi+0Ch]`, before the vtable store) and serves both the
 // inline constructor's zero store (`mov dword ptr [eax],0`) and the GetSubDef argument; ParentThing is re-read for the
 // def class chain. No EH frame: the module is built without /EHsc.
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 struct CDefPointer {                             // CDefPointer<CFishingRodDef const>
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007e2390(CDefPointer* out);            // 0x007E2390 (GetSubDef<CFishingRodDef>)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x70];
     CDefClassBase* m_pDefClass;                  // +0x70
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       ParentThing;                   // +0x04
     bool          ToBeRemoved;                   // +0x08
@@ -32,7 +32,7 @@ struct CTCBase {
     CTCBase(CThing* parent);                     // 0x00686800
 };
 
-struct CTCFishingRod : CTCBase {
+class CTCFishingRod : public CTCBase { public:
     virtual void v00();                          // own vtable (0x01270104)
     CDefPointer PDef;                            // +0x0c
     CTCFishingRod(CThing* parent);

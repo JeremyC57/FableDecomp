@@ -9,7 +9,7 @@
 //   PRegion +0x10, Neighbours +0x14/+0x18, PreferabilityCost +0x1c.
 // Shape: same-TU stand-ins for the growth path and the sort (auto_inline off); the base chain inline (Blocked's false store is dead, overwritten by the body); the loop re-reads the source
 //   vector's size; the pair's constant `false` is hoisted out of the loop; PRegion is cleared again in the body.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
@@ -28,12 +28,12 @@ public:
     CANavQuadTreeNode(const C2DVector& position, unsigned char level, unsigned char layer, bool leaf, bool blocked)
         : Position(position), QuadTreeLevel(level), NavLayer(layer), LeafNode(leaf), Blocked(blocked) { }
 };
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          Data;                              // +0
     signed char Count;                             // +4
     CSmallVector() : Data(0), Count(0) { }
 };
-struct CNavRegion;
+class CNavRegion;
 class CNavNavigableLeafNode : public CANavQuadTreeNode {   // vtable 0x0129DDA4
 public:
     CNavRegion*                               PRegion;             // +0x10

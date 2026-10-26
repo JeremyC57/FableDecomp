@@ -3,13 +3,13 @@
 #include <cstring>
 
 static int g_baseCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int Instantiation;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { Instantiation = o.Instantiation; ++g_baseCopies; return *this; }
 };
-struct CDefString { long m_index; };
-struct CFloatRange { float Min, Max; };
-struct CThingShotDef : CParentDefClassBase {
+class CDefString { public: long m_index; };
+class CFloatRange { public: float Min, Max; };
+class CThingShotDef : public CParentDefClassBase { public:
     float Speed; long PrimaryEffect, PrimaryEffectSound, AttachedContinuousEffect, AttachedContinuousSound;
     bool UseEndTimeLineOnContinousEffect; float HitThingDamage, HitThingShieldDamage; bool CauseDamage;
     CDefString ShotDefinitionClassName; CFloatRange ShotOffsetAngleRange, ShotOffsetRadiusRange;

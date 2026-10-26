@@ -4,7 +4,7 @@
 // Shape: the inlined comparison materialises its long result (`mov eax,1` / `xor eax,eax`) in both arms, then each
 // arm applies the `!` as `xor edx,edx ; test al,al ; sete dl ; mov al,dl` -- a bool built from the low byte.
 // The manifest label says operator==; the negation makes it operator!=.
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

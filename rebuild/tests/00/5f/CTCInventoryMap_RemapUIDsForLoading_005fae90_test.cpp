@@ -5,15 +5,15 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 // Behaviour of CTCInventoryMap::RemapUIDsForLoading (0x005FAE90): every UID in the vector is replaced by the remap result.
-struct CThingManager {
+class CThingManager { public:
     long calls;
     u64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, u64 uid)
     { ++calls; return saving ? 0 : uid * 10 + (levelLess ? 1 : 0) + (u64)level * 100; }
 };
 static CThingManager g_manager;
-struct CThing { short m_level; bool m_levelLess; bool IsLevelLess() { return m_levelLess; } };
+class CThing { public: short m_level; bool m_levelLess; bool IsLevelLess() { return m_levelLess; } };
 struct CUIDVector { u64* m_first; u64* m_last; u64* m_end; };
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CThing* m_pParentThing;
     CThingManager* GetThingManager() { return &g_manager; }
     void RemapUIDsForLoading(CUIDVector& uids)

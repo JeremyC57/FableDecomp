@@ -19,7 +19,7 @@ static inline void* CopyTrivial(const void* first, const void* last, void* resul
     return (char*)memmove(result, first, n) + n;
 }
 namespace NUISystem {
-    struct CComponent {
+    class CComponent { public:
         virtual ~CComponent();                          // slot 0 (deleting destructor)
     };
 }
@@ -39,7 +39,7 @@ template <class T> struct vector {                      // STLport vector, 12 by
 };
 struct CMemoryBuffer {
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -48,18 +48,18 @@ struct CGameEvent : CMemoryBuffer {
     bool          Replacement;                          // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                         // 0x00449700
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CThing;
-struct CWideString { void* PStringData; };
-struct CTCPhotojournalCapture {
+class CThing;
+class CWideString { public: void* PStringData; };
+class CTCPhotojournalCapture { public:
     void*         __vftable;                            // +0x00 (CTCBase)
     CThing*       ParentThing;                          // +0x04
     bool          ToBeRemoved;                          // +0x08

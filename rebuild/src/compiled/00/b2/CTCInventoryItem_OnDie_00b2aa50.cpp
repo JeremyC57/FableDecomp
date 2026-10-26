@@ -5,7 +5,7 @@
 //   if (eax) { cdecl_free(eax); }   // add esp,4 cleanup
 //   BaseOnDie(this);                // this-call tail jmp
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x208];
     void* p208;   // +0x208
 };

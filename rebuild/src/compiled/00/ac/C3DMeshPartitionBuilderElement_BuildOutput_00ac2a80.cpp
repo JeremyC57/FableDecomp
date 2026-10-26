@@ -14,14 +14,14 @@
 //          No engine headers exist for either class.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DTriangle2 { unsigned short Index[3]; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
 
 struct __true_type { __true_type() {} };
 template <class T> inline void _Construct(T* p, const T& value) { new (p) T(value); }
@@ -42,7 +42,7 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
     }
 };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1C

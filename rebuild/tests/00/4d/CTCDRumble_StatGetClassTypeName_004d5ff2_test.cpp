@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString {
+class CCharString { public:
   char* p;
   const char* seen_s; int seen_n; bool called;
   CCharString* ctorB(const char* s, int n){ seen_s=s; seen_n=n; called=true; return this; }

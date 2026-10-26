@@ -13,7 +13,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     void Reset()
@@ -29,9 +29,9 @@ struct CCountedPointer {
         m_pObject = 0;
     }
 };
-namespace NCameraModes { struct CScriptModuleBase; }
+namespace NCameraModes { class CScriptModuleBase; }
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                            // +0x00
     unsigned char _pad04[0xa4];                                         // +0x04
     bool          NewAutoMode;                                          // +0xa8

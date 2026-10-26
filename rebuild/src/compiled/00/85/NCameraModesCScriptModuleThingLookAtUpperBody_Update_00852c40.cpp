@@ -14,7 +14,7 @@
 // RETURN A CONSTRUCTED TEMPORARY (`return C3DVector(X * s, ...)`): VC keeps the scaled x/y on the x87 stack (z spilled)
 // and builds the sum in the frame; operators filling a named `result` local copy it through memory instead. The sum
 // goes to the owner by integer moves, then the look-at copy.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

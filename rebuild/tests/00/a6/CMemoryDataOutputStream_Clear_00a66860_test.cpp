@@ -5,7 +5,7 @@ struct MemberBuffer {
     void Clear() { cleared = 0x55; }
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char   pad0[0x3404];
     int    m_size;
     char   pad1[4];

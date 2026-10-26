@@ -11,23 +11,23 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                               // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                               // 0x0099EAE0
     CWideString ToWideString() const;                             // 0x0099E480
 };
 
 namespace NUISystem {
-struct CActionParam;
-struct CActionParamString {
+class CActionParam;
+class CActionParamString { public:
     unsigned char _body[0x0C];
     CActionParamString(const CWideString& text);                  // 0x0054DAE0
 };
-struct CAction {                                                  // retail 0x10 bytes
+class CAction { public:                                                  // retail 0x10 bytes
     long  ActionType;                                             // +0x00
     void* UIActionParams;                                         // +0x04 (STLport list)
     void* ThingActionParams;                                      // +0x08
@@ -37,7 +37,7 @@ struct CAction {                                                  // retail 0x10
 };
 }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                                   // 0x0042AA29
@@ -119,7 +119,7 @@ struct CGUIElement {
 
 enum { UI_ACTION_PLAY_SOUND = 0xBBB };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     void AddSoundAction(NUISystem::CGUIElement* element, CCharString soundName);
 };
 

@@ -8,7 +8,7 @@
 //   gives the byte exits (`return a && b` widens to eax).
 #include <math.h>
 #pragma intrinsic(fabs)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     __forceinline bool IsEqual(const C3DVector& other, float tolerance) const
     {
@@ -16,7 +16,7 @@ struct C3DVector {
     }
 };
 enum EMovementType { MOVEMENT_TYPE_0 = 0 };
-struct CNavigationInput {
+class CNavigationInput { public:
     C3DVector     Destination;                     // +0x00
     float         Proximity;                       // +0x0c
     EMovementType MovementType;                    // +0x10

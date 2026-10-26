@@ -1,5 +1,5 @@
 // CArray<CMapInfo>::DeallocateMemory() -- release the storage of the world map's 72-byte map-info array: when it holds any capacity, erase every element and swap the storage out into an empty array, whose destructor destroys the detached range and frees the block
-// Leaf: ?DeallocateMemory@?$CArray@UCMapInfo@@@@QAEXXZ
+// Leaf: ?DeallocateMemory@?$CArray@VCMapInfo@@@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051A350, length 123 bytes (+ int3 padding); the only caller is
 // CArray<CMapInfo>::DeallocateUnusedMemory 0x0051B560 (the manifest's CArray<std::pair<unsigned long,...>> label is propagated;
 // the 0x38E38E39 / `sar 4` reciprocal is the 72-byte stride of CMapInfo, the CWorldMap::Maps element of landed 0x005022F0).
@@ -19,7 +19,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
-struct CMapInfo {                                       // 0x48 bytes (CWorldMap::Maps element)
+class CMapInfo { public:                                       // 0x48 bytes (CWorldMap::Maps element)
     unsigned char _body[0x48];
 };
 

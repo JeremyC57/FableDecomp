@@ -11,7 +11,7 @@
 // Shape: the vector assignment through a `lea` of the unaligned member; the alive test is the inlined dead-bit check.
 class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -26,15 +26,15 @@ struct CTCPhysicsBase {
     virtual float GetAngleXY() const;                   // slot 63 (+0xfc)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad_0x00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad_0x64[0x2d];
     unsigned char   Dead : 1;                           // +0x91 bit 0
 };
 
-struct CPlayer { CThing* GetHeroThing(); };             // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 
 #pragma pack(push, 1)
 class CWorld {

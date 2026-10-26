@@ -16,25 +16,25 @@
 // eye primitives +0x84/+0x88, TurningAnims +0x8c, PCurrentTurningAnim +0x9c, TargetAcquired +0xa0, CachedHeadPos +0xa1
 // (unaligned in the PDB as well: the 3 floats are modelled with pack(1)), HeadCacheTimer +0xb0, OneFrameDelay +0xb8,
 // PHeadTurnAnimH/V +0xbc/+0xc4, FirstTimeThrough +0xcc. No engine header for CTCLook.
-struct CThing;
-struct CLookDef;
-struct CAppearanceDef;
+class CThing;
+class CLookDef;
+class CAppearanceDef;
 struct CPrimitive;
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 struct CAnimEntryLite;
-struct CThingCreatureBase;
+class CThingCreatureBase;
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void RegisterComponent(CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
-struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     CAGraphicAppearanceComponent() { }
 };
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned char _pad68[0x6c - 0x68];
@@ -42,7 +42,7 @@ struct CThing {
 };
 extern bool g_bLookConstructedOnce;                 // 0x013BAD59
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -50,11 +50,11 @@ struct C3DVector {
 #pragma pack(push, 1)
 struct CPackedVector { float X, Y, Z; CPackedVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 #pragma pack(pop)
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -76,14 +76,14 @@ struct STurningAnim { float Angle; const CAnimationEntry* Entry; };   // std::pa
 template<class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCLook : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x01269744 / 0x012697B8
+class CTCLook : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01269744 / 0x012697B8
     CThingCreatureBase*          PParentCreature;               // +0x10
     CDefPointer<const CLookDef>  PDef;                          // +0x14
     CDefPointer<const CAppearanceDef> PAppearanceDef;           // +0x18

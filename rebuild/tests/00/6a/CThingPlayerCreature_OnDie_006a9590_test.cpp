@@ -2,21 +2,21 @@
 struct CWorldState { long m_value80; };
 static CWorldState g_world;
 static int g_crimes = 0, g_baseDies = 0;
-struct CTCVillage { void ProcessCrimeDeeds() { ++g_crimes; } };
-struct CThingCreatureBase;
-struct CPlayer {
+class CTCVillage { public: void ProcessCrimeDeeds() { ++g_crimes; } };
+class CThingCreatureBase;
+class CPlayer { public:
     long PlayerRespawnDelay; bool m_main; CTCVillage* m_village; CThingCreatureBase* m_lastDied;
     void GlobalEventCreatureDied(CThingCreatureBase* creature) { m_lastDied = creature; }
     bool IsMainPlayer() { return m_main; }
     CTCVillage* GetPNearestTCVillage() { return m_village; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CPlayer* m_player;
     CPlayer*     GetPlayer() { return m_player; }
     CWorldState* GetWorldState() { return &g_world; }
     void         OnDie() { ++g_baseDies; }
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     void OnDie();
 };
 void CThingPlayerCreature::OnDie()

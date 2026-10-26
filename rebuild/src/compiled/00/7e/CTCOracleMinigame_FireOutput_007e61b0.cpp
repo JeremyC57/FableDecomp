@@ -11,7 +11,7 @@
 // a named CCharString local (an unnamed temporary passes the ctor's eax instead of `lea ecx ; push ecx`).
 long __fastcall GFROR13(unsigned long value);       // 0x00497890
 long GetWorldFrame();                               // 0x0049D870
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -20,11 +20,11 @@ struct CRandomGenerator {
     unsigned long Seed;
     __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
 };
-struct CWorld {
+class CWorld { public:
     CRandomGenerator* GetRandomGenerator();         // 0x0049D810
 };
-struct CThing;
-struct CTCOracleMinigame {
+class CThing;
+class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[4];

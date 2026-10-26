@@ -9,7 +9,7 @@
 // Layout: no engine header for this class; the player's 0x75 component +0x0c building pointer, the village's +0xc8 frame,
 // the sim definition's +0x44 owner and the 0xD5 component's +0x11 flag are descriptive; CThing +0x10 is the thing type.
 // Shape: the landed CIsHouseLargerThan / LightHomeCandle CDefPointer model (inline ReleaseTemporary over a CRefCounted at +4).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,7 +34,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char ThingType;                            // +0x10 (3: building)
     unsigned char _pad11[0x20 - 0x11];
@@ -68,12 +68,12 @@ struct CBuildingSimDefinition {
     void* Owner;                                        // +0x44 (descriptive)
     __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer() { if (Object) { Object->ReleaseTemporary(); Object = 0; } }
     T* operator->() const { return Object; }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     CDefPointer<CBuildingSimDefinition> PeekPSimDefinition() const;   // 0x0082D2D0
 };
 struct CBaseIntelligentPointer {
@@ -103,26 +103,26 @@ struct CVillage {
     unsigned char _pad[0xc8];
     long NextFollowFrame;                               // +0xc8 (descriptive)
 };
-struct CTCVillageMember {                               // interface 0x23
+class CTCVillageMember { public:                               // interface 0x23
     CVillage* GetPVillage() const;                      // 0x007EE540
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter();                            // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
     static long GetWorldFrame();                        // 0x0049D870
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld* PWorld;                                     // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                                  // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                   // +0x04
     unsigned char _pad08[0x0c];

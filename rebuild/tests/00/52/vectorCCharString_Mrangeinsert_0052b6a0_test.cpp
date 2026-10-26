@@ -14,7 +14,7 @@
 // Tried: value-initialised tags (a), tags with empty constructors (b, this), STLport inline wrappers taking iterators by value (c).
 #include <stdlib.h>
 #include <string.h>
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct forward_iterator_tag { forward_iterator_tag() { } };
 struct __false_type { __false_type() { } };
 struct STreeNode;

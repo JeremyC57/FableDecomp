@@ -8,9 +8,9 @@
 //   (Priority:3 .. ContinuousEmitter bits 0..7, Initialised/WaitingToSleep/Sleeping/Emitter2D bits 8..11), the ushort
 //   Emitter2DLayer:7 at +0x42, PositionInterpolator +0x94, Transform +0xb0, EndTransform +0x110 (CMatrix3x4 position
 //   at +0x24). engine/CParticleEmitter.h carries the Ego_r offsets (all 0x0c late here), so this is a local model.
-struct C3DVector { float X, Y, Z; };
-struct C3DPositionInterpolator { virtual ~C3DPositionInterpolator(); C3DVector StartPosition; C3DVector EndPosition; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class C3DPositionInterpolator { public: virtual ~C3DPositionInterpolator(); C3DVector StartPosition; C3DVector EndPosition; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward;                       // +0x00..+0x23
     C3DVector Position;                                 // +0x24
     void SetPosition(const C3DVector& v) { Position.X = v.X; Position.Y = v.Y; Position.Z = v.Z; }

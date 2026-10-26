@@ -10,7 +10,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long m_08;
@@ -50,12 +50,12 @@ struct CMemoryDataInputStream {
 struct CMovableResourceHandler;
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

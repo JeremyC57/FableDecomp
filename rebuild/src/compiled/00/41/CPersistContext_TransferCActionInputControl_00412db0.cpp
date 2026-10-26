@@ -11,9 +11,9 @@
 //   order. The 8-byte frame is the {vtable, vector*} wrapper shared by the two text arms; the key stays in edi from the
 //   CheckCRC push. CPersistContext layout from Ego_r.pdb (0x2C bytes): UseDefaults +0x14, Mode +0x18, PLoadStream +0x24,
 //   PSaveStream +0x28. The element type comes from the PDB member that owns the key where one exists.
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
-struct CActionInputControl { long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float ControlDirection[2]; };   // 0x1C bytes (PDB)
+class CDataOutputStream;
+class CMemoryDataInputStream;
+class CActionInputControl { public: long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float ControlDirection[2]; };   // 0x1C bytes (PDB)
 
 struct random_access_iterator_tag { random_access_iterator_tag() {} };   // user ctor: no zero store for the tag temporary
 
@@ -35,7 +35,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<CActionInputControl>& value);   // 0x00412C70
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<CActionInputControl>& value);       // 0x0040FCA0
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x0122E010
@@ -44,7 +44,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

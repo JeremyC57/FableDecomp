@@ -1,4 +1,4 @@
-struct CTCCreditsUI {
+class CTCCreditsUI { public:
     void* vftable;
 };
 

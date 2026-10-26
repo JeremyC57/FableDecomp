@@ -8,7 +8,7 @@
 // CurrentPlayerCardsIndex +0x354, CurrentPackCardIndex +0x35c. CanSplit 0x007DA1A0 confirms CurrentPlayerCards +0x33c and
 // HasPlayerSplit +0x368. No engine header exists for the class; local model.
 // Shape: the stores follow the source order from one eax zero (the float included).
-struct CCard;
+class CCard;
 
 template<class T> struct CRetailVector {     // retail std::vector: first, last, end
     T* first; T* last; T* end_of_storage;

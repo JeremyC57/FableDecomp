@@ -7,7 +7,7 @@
 // the two offsets stay on the x87 stack and `1.0f + dv` / `du + 1.0f` are each computed once (CSE) and stored twice.
 #include "engine/CEngineScreenEffectColourFilter.h"
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
 
@@ -17,7 +17,7 @@ struct CDisplayManager_01436e1c {
 };
 extern CDisplayManager_01436e1c* g_pDisplayManager_01436e1c;   // 0x01436E1C
 
-struct CTVertexColTex1 {
+class CTVertexColTex1 { public:
     float         X, Y, Z;
     unsigned long Colour;
     float         U, V;                            // +0x10, +0x14

@@ -13,7 +13,7 @@
 // is the out-parameter GetInterface writing PTCBoss; the thing def is an inline by-value getter whose
 // null tests share the zero register with the later clears; the targeted lookup is the unchecked `T* tc; GetInterface(&tc, 9);`
 // (the absent path reads the never-written local, as the landed 0x00898410).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -28,15 +28,15 @@ struct CDefPointee {
     long m_refCount;                                     // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
-struct CKrakenDef;
-struct CDefClassBase : CDefPointee {
+class CKrakenDef;
+class CDefClassBase : public CDefPointee { public:
     bool GetSubDef(CDefPointer<CKrakenDef>* out);        // 0x007FCD50
 };
 
@@ -82,12 +82,12 @@ public:
     unsigned char HeadPosCached : 1;
 };
 
-struct CTCTargeted {
+class CTCTargeted { public:
     unsigned char _pad00[0x10];
     bool          Targetable;                            // +0x10
 };
 
-struct CTCBoss {
+class CTCBoss { public:
     long GetCurrentPhase();                              // 0x007AED10
 };
 

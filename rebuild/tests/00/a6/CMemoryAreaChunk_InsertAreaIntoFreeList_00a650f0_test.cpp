@@ -11,7 +11,7 @@ struct CMemoryArea {
     unsigned char     Colour;                   // +0x1c
     unsigned char     ID;                       // +0x1d
 };
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     CMemoryArea*  PTreeRoot;                    // +0xc34
     int calls; CMemoryArea* lastRoot; CMemoryArea* lastArea;
     void InsertIntoTree(CMemoryArea* root, CMemoryArea* area) { ++calls; lastRoot = root; lastArea = area; }

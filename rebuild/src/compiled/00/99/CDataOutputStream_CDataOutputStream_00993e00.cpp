@@ -10,12 +10,12 @@ struct CBase {
     CBase();                                   // 0x0099A2F0
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                       // +0x00 CCharString::PStringData
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
 };
 
-struct CDataOutputStream : CBase {             // vtable 0x0129A6E0
+class CDataOutputStream : public CBase { public:             // vtable 0x0129A6E0
     virtual void v00();
     CCharString NewLine;                       // +0x04
     CDataOutputStream();

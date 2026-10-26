@@ -1,7 +1,7 @@
 // Behaviour test for 0x006AEBF0 CTCRegionFollower::IsCreatureAllowedInRegionAt (copy of the source logic; spy defs and world map).
 #include <cstdio>
 static __inline bool DecRefToZero(long& count) { return --count == 0; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_destroyed = 0;
 struct CDefPointee {
     long m_refCount;
@@ -9,7 +9,7 @@ struct CDefPointee {
     virtual ~CDefPointee() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) { Object = other.Object; if (Object) { long& count = Object->m_refCount; count = count + 1; } }
@@ -26,9 +26,9 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCreatureDef : CDefPointee { bool AllowedInProtectedTowns; };
+class CCreatureDef : public CDefPointee { public: bool AllowedInProtectedTowns; };
 static CCreatureDef* g_subDef = 0;
-struct CDefClassBase : CDefPointee {
+class CDefClassBase : public CDefPointee { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out)
     {
         if (!g_subDef) return false;
@@ -37,11 +37,11 @@ struct CDefClassBase : CDefPointee {
         return true;
     }
 };
-struct CRegionDef : CDefPointee { bool ProtectedTown; };
-struct CRegion { CDefPointer<CRegionDef> PDef; };
+class CRegionDef : public CDefPointee { public: bool ProtectedTown; };
+class CRegion { public: CDefPointer<CRegionDef> PDef; };
 static CRegion g_regions[2];
 static long g_lastMapQueryX = -1;
-struct CWorldMap {
+class CWorldMap { public:
     virtual ~CWorldMap() {}
     virtual long GetMapNumberAt(const C3DVector& position) const { g_lastMapQueryX = (long)position.X; return position.X > 50.0f ? 7 : 3; }
     long GetRegionNumberMapIsIn(long mapNumber) const { return mapNumber == 7 ? 1 : 0; }
@@ -53,7 +53,7 @@ public:
     CDefPointer<CDefClassBase> PDef;
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
 };
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     const CWorldMap& PeekWorldMap() const { return g_worldMap; }
     bool IsCreatureAllowedInRegionAt(const CThing* creature, const C3DVector& position) const;
 };

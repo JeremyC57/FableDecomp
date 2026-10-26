@@ -14,13 +14,13 @@
 #include "engine/CTCPhysicsBase.h"
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
-struct CThing;
-struct CThingCreatureBase;
-struct CTCWeaponTrail;
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase;
-struct CSoundPair { long first; long last; };
-struct CCreatureActionBase {
+class CThing;
+class CThingCreatureBase;
+class CTCWeaponTrail;
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase;
+class CSoundPair { public: long first; long last; };
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -103,7 +103,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject* item);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer(); // CIntelligentPointer<CThing> vtable 0x01238C6C, slot 0 @0x004A9710
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
     CIntelligentPointer(const CIntelligentPointer& other)
@@ -112,7 +112,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         SetPItem(other.GetPItem());
     }
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PUsedThing; // retail +0xA8, PDB +0xB4
     CTCPhysicsBase* PreviousPhysicsComponent; // retail +0xB0, PDB +0xBC
     float DummyUpX, DummyUpY, DummyUpZ; // CRightHandedSet::Up, retail +0xB4

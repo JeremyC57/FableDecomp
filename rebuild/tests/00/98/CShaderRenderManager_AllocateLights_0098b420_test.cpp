@@ -36,7 +36,7 @@ struct CLightVector {                              // STLport vector<CLight>
     CLightVector(unsigned long count);             // 0x0098CCC0
     ~CLightVector() { if (_M_start) free(_M_start); }
 };
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() {}
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
@@ -56,7 +56,7 @@ struct C4DVectorVector {                           // STLport vector<C4DVector>
             _M_fill_insert(_M_finish, newSize - size(), value);
     }
 };
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void FreeAll();                                // 0x00A5C720
     void* Allocate(unsigned long bytes);           // 0x00A5C910
 };
@@ -96,7 +96,7 @@ template <class T> inline T* PoolNewArray(CSimpleMemoryPool& pool, unsigned long
     return count != 0 ? ((unsigned __int64)count * sizeof(T) > 0xffffffff ? 0 : (T*)pool.Allocate(count * sizeof(T))) : 0;
 }
 struct C4DFloat { float V[4]; };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char     _pad000[0x164];
     CLight*           Lights;                      // +0x164
     C4DFloat*         LightEntries;                // +0x168

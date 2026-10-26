@@ -3,10 +3,10 @@
 // Callees: the script interface's slots 70 GetHero (CScriptThing&), 451 GiveThingBestEnemyTarget(const CScriptThing&, const CScriptThing&) and 264 GetHealth(const CScriptThing&) (float).
 // Ego_r.pdb CHHUndead (32 bytes): PQuest +4, the CScriptThing +8, ParentClass +0x14, PMasterData +0x18, RaiseUndeadBarAmount +0x1c. Shape: the interface pointer re-read for each
 // call but its vtable kept in edi across the one expression (`GiveThingBestEnemyTarget(Thing, GetHero())`), the thing's address in ebx, `fstp [esi+1Ch]`. Twin bodies at 0x00D292E0 / 0x00E95D80.
-struct CScriptThing {                             // 8 bytes at +8 of the script object
+class CScriptThing { public:                             // 8 bytes at +8 of the script object
     unsigned char _body[8];
 };
-struct CGameScriptInterface {                      // the quest's script interface (slots from ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // the quest's script interface (slots from ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

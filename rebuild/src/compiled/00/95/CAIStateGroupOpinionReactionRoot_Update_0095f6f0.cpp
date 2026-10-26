@@ -11,9 +11,9 @@
 // adjustment, `mov ecx,[edi+7Ch] ; add ecx,edi`; the PDB slot is 0x10 bytes); both lookups read the never-written out slot on a miss; the rotated yield loop.
 // Engine header names; ThingReactingTo is the unaligned CIntelligentPointer at +0x6b (PDB, packed).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound: the non-const
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (const instantiation, byte-identical body)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -88,12 +88,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -127,11 +127,11 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned char _pad[0x340];
     bool ReactionHandled;                       // +0x340
 };
-struct CTCTalk {
+class CTCTalk { public:
     bool IsTalking();                           // 0x006E28A0
 };
 
@@ -143,7 +143,7 @@ struct CAIBrainV {
 #pragma pointers_to_members(full_generality, multiple_inheritance)
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18 EOpinionReactionType
     bool ReactionFlags[79];                     // +0x1c

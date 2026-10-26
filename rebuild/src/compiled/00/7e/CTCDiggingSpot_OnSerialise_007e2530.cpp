@@ -9,11 +9,11 @@
 // Shape: fullState is tested first and its slot is dead afterwards, so both one-byte default
 // temporaries are homed in it (`lea eax,[esp+10h]` / `mov byte ptr [esp+1Ch],1|0`); `this` is
 // advanced in place (`add esi,0Dh`) for the last member.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
-struct CTCDiggingSpot {
+class CTCDiggingSpot { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     bool          Enabled;                                  // +0x0c

@@ -4,9 +4,9 @@
 // the output is left untouched.
 #include <stdio.h>
 
-struct CInputEvent { int code; };
-struct CProcessedInput { int flags; };
-struct CInputProcessDead { int dummy; };
+class CInputEvent { public: int code; };
+class CProcessedInput { public: int flags; };
+class CInputProcessDead { public: int dummy; };
 
 void __fastcall ProcessInput(CInputProcessDead* process,
                              int edx_dummy,

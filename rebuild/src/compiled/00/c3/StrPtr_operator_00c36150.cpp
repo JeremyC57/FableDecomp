@@ -2,7 +2,7 @@
 // this in ecx points to a char* (the held string pointer); param is a char*.
 // Body: r = (*g_cmp)(*this, rhs); return (r == 0x102) ? 1 : 0;
 
-struct StrPtr {
+class StrPtr { public:
     char* p;
 };
 

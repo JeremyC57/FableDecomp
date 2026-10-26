@@ -11,7 +11,7 @@ public:
     CScriptModuleGoToLookAt(const C3DVector& camPos, const C3DVector& lookAt);   // 0x007187C0
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

@@ -10,37 +10,37 @@
 // Layout (retail = PDB CTCLight 0x4C with 12-byte STLport vectors, 0x44): PLightInfo +0x10, PLightDef +0x18, Active/Overridden
 // +0x1C/+0x1D, AccumilativeFlickerFactor/OldAccumilativeFlickerFactor +0x20/+0x24, Initialised +0x28, FlareSprites +0x2C, Lights +0x38.
 // Shape: init-list in declaration order; the vectors as the STLport _Vector_base + _STLP_alloc_proxy model (places `lea edi`); the zeroes share eax, the 1.0f pair edx; the body registers then calls GetSubDef(&PLightDef).
-struct CThing;
+class CThing;
 struct CLightInfo;
-struct CCPPointerInfo;
-struct CDefClassBase;
-struct CLightDef;
+class CCPPointerInfo;
+class CDefClassBase;
+class CLightDef;
 namespace NGraphicAppearance {
-struct CPrimitive;
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CPrimitive;
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void RegisterComponent(CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
-struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     CAGraphicAppearanceComponent() { }
 };
 }
 struct CThingDefHolder;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned char _pad68[0x70 - 0x68];
     CDefClassBase* PDef;                            // +0x70
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CLightDef>* out) const;   // 0x0059346A (GetSubDef<CLightDef>)
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -61,14 +61,14 @@ template <class T> struct CVectorBase {             // STLport _Vector_base<T, a
 template<class T> struct CPtrVector : CVectorBase<T*> {   // STLport vector<T*> (12 bytes)
     CPtrVector() : CVectorBase<T*>(CAllocator<T*>()) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCLight : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x0125A194 / 0x0125A208
+class CTCLight : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x0125A194 / 0x0125A208
     CCountedPointer<CLightInfo>     PLightInfo;             // +0x10
     CDefPointer<const CLightDef>    PLightDef;              // +0x18
     bool  Active;                                           // +0x1c

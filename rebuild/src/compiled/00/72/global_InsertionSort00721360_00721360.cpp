@@ -13,7 +13,7 @@
 //   argument loads come before the stores, which needs three byte registers (bl/cl/dl) plus a spill byte in the frame
 //   (`sub esp,8`), so `first` is spilled too and re-read for the call. Byte-wise member copies give load/store pairs
 //   with no spill (tried).
-struct CRGBColour {                             // B, G, R, A bytes; copy through Set (all four loads before the stores)
+class CRGBColour { public:                             // B, G, R, A bytes; copy through Set (all four loads before the stores)
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }

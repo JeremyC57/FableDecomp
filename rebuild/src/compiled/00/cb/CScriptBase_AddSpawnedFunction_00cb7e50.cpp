@@ -12,7 +12,7 @@ void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -22,7 +22,7 @@ struct CGuiVar {
 };
 void __fastcall DeleteData(CGuiVar* var);          // 0x00CB8D10
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     struct SBlock {
         long m_count;
         void (__fastcall *m_destroy)(T*);
@@ -62,7 +62,7 @@ template <class T> struct CRetailList {            // VC6-era list: the sentinel
     }
 };
 
-struct CGuiVarTransferStruct {
+class CGuiVarTransferStruct { public:
     unsigned char                          _pad00[4];
     CRetailList<CCountedPointer<CGuiVar> > m_vars;   // +0x04
     void Add(CGuiVar* var, const CCharString& name);

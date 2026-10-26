@@ -183,7 +183,7 @@ void GMgrV::s87(){}
 void GMgrV::Release(void *p){ g_hit=1; g_arg=p; }
 static GMgrV g_inst;
 GMgrV *g_timerMgr_cd4470=&g_inst;
-struct CTimer { void *m_first; void Dtor(); };
+class CTimer { public: void *m_first; void Dtor(); };
 void CTimer::Dtor(){ g_timerMgr_cd4470->Release(m_first); }
 int main(){ CTimer t; int x; t.m_first=&x; t.Dtor();
  if(!g_hit||g_arg!=&x){std::printf("B1\n");return 1;}

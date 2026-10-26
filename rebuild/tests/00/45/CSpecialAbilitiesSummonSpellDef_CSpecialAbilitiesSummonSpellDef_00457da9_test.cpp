@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_strCtor = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _base[0x38];
     CParentDefClassBase() { ++g_baseCtor; }
@@ -22,9 +22,9 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CAllocProxy<T> end;
     CRetailVector() : first(0), last(0), end(0) { }
 };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strCtor; } };
-struct CSpecialAbilitiesSummonSpellDef : CParentDefClassBase {
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strCtor; } };
+class CSpecialAbilitiesSummonSpellDef : public CParentDefClassBase { public:
     CRetailVector<float> TimeOfSummon; CDefString BaseSummonCreatureName; float FadeInTime; float FadeOutTime; long ResetCreatureManaCost;
     CRetailVector<long> SummonTintColour; CCharString EyeLeftDummyPointName; CCharString EyeRightDummyPointName;
     virtual void v00() {}

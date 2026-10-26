@@ -15,7 +15,7 @@
 // Shape: memberwise assignment in declaration order; containers through their out-of-line operator=,
 // scalars as dword/byte moves.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -43,7 +43,7 @@ struct CRetailTree_0045c442 {           // retail std::map<ECombatCreatureType,l
     CRetailTree_0045c442& operator=(const CRetailTree_0045c442& other);   // 0x0045C3CF
 };
 
-struct CCombatTypeDef : CParentDefClassBase {   // vtable 0x01233744
+class CCombatTypeDef : public CParentDefClassBase { public:   // vtable 0x01233744
     CLongVector          DefenderCombatRingOccupationNumbers;  // +0x3c
     long                 DefenderWheelOuterRingStartIndex;     // +0x48
     bool                 DefenderWheelAllowAttackerStrafing;   // +0x4c

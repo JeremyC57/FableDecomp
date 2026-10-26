@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     int n;
     CCharString(const char*, long) : n(1) { ++g_live; }
     CCharString(const CCharString& o) : n(o.n) { ++g_live; }
@@ -23,7 +23,7 @@ struct CScoreMap {
     float& operator[](const EOnlineScoreboardActivity& key)
     { iterator it = find(key); if (it._M_node != _M_header) return it._M_node->value; nodes[_M_node_count].key = key; nodes[_M_node_count].value = 0.0f; return nodes[_M_node_count++].value; }
 };
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     CScoreMap LocalScoreboard;
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool lowerIsBetter);
 };

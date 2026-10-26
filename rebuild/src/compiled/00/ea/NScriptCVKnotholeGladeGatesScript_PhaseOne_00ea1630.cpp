@@ -13,13 +13,13 @@
 //   (landed CQ_FireHeartScript::CheckCompletion 0x00D3AD60 model); the waits are the script yield idiom
 //   `if (IsActiveThreadTerminating()) return;`.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, GatesOpened +0x4d, BalvsKilled +0x51.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -35,7 +35,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
 };
@@ -45,7 +45,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CV_KnotholeGladeGatesScript : CScriptBase {
+class CV_KnotholeGladeGatesScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44
     bool MissionSucceeded, MissionFailed, MissionOver, Cutscene1Start, HeroAlertedToProblem;   // +0x48..+0x4c

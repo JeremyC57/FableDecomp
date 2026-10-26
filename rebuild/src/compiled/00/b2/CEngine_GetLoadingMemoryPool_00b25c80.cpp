@@ -39,7 +39,7 @@ struct CEngineData_01436e98 {
 };
 extern CEngineData_01436e98* g_pEngineData_01436e98;   // 0x01436E98
 
-struct CEngine {
+class CEngine { public:
     static CMemoryPool* GetLoadingMemoryPool();
 };
 

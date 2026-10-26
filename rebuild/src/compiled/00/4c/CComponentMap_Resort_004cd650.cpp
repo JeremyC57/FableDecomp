@@ -1,5 +1,5 @@
 // CComponentMap::Resort @ 004cd650
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void*         f0;   // +0x00  -> helper this (ecx)
     int           f4;   // +0x04  -> helper edx arg
     int           f8;   // +0x08

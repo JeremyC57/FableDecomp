@@ -3,19 +3,19 @@
 // the shop its creature names; without one it adopts the first shop whose keeper is missing or dead; the shop is told
 // about its keeper; the base activation always runs.
 static int g_baseActivate = 0, g_searches = 0;
-struct CThing;
-struct CTCShop;
+class CThing;
+class CTCShop;
 struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}
     CThing* GetPItem() const { return (CThing*)m_pItem; }
     void SetPItem(void* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     void operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); }
 };
-struct CThing {
+class CThing { public:
     bool dead;
     CTCShop* shopTC;                                   // interface 0x53 when non-null
     CBaseIntelligentPointer ShopThing;
@@ -23,7 +23,7 @@ struct CThing {
     unsigned long HasTC(long type) const { return type == 0x53 && shopTC != 0; }
     CTCShop* GetTC(long) { return shopTC; }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 template <class T> struct vector {
     T* _M_start;
     T* _M_finish;
@@ -31,19 +31,19 @@ template <class T> struct vector {
     T storage[4];
     vector() : _M_start(storage), _M_finish(storage), _M_end_of_storage(storage + 4) {}
 };
-struct CThingFilter_HasTC { long m_type; CThingFilter_HasTC(long type) : m_type(type) { } };
+class CThingFilter_HasTC { public: long m_type; CThingFilter_HasTC(long type) : m_type(type) { } };
 static CThing* g_allShops[4]; static int g_numShops = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CThingFilter_HasTC& filter, vector<CThing*>& out)
     { ++g_searches; for (int i = 0; i < g_numShops; ++i) if (g_allShops[i]->HasTC(filter.m_type)) *out._M_finish++ = g_allShops[i]; }
 };
 static CThingSearchTools g_tools;
-struct CTCShop {
+class CTCShop { public:
     CBaseIntelligentPointer PShopKeeper;
     CThing* boundKeeper;
     void SetShopKeeper(CThing* keeper) { boundKeeper = keeper; PShopKeeper.SetPItem(keeper); }
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CThing* ParentThing;
     CIntelligentPointer<CThingCreatureBase> Customer;
     CIntelligentPointer<CThing> Shop;

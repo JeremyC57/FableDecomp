@@ -24,12 +24,12 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);                           // 0x0099EBF0
     ~CCharString();                                                             // 0x0099EAE0
@@ -47,11 +47,11 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);       // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right); // 0x0099F570
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad04[0xd0 - 4];
     virtual void Save(CCharString& out);                                        // 0x006A4BA0
 };
-struct CThingPhysicalSwitch : CThingPhysical {
+class CThingPhysicalSwitch : public CThingPhysical { public:
     bool          Triggered;                             // +0xd0
     unsigned char _pad_d1[3];
     CCharString   TriggerableObjectScriptName;           // +0xd4

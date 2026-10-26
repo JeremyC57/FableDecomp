@@ -16,11 +16,11 @@
 // `if (PHttp)` is boost's safe bool (`neg ; sbb ; test edx,offset get` -- a single-inheritance
 // pointer to member), the held pointer is loaded once for both the test and `PHttp->Close()`.
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                                       // 0x0099B510
 };
@@ -38,7 +38,7 @@ extern CEngineGlobals* g_pEngineGlobals_013b86a0;                         // 0x0
 
 namespace LHNetworkLib {
 
-struct LHHttp2 {
+class LHHttp2 { public:
     void Close();                                                         // 0x00840070
 };
 
@@ -54,7 +54,7 @@ struct CHttpScopedPtr {                                                   // sco
 
 struct CComponent;
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     virtual void v00();
     void*          m_pThing;                                              // +0x04
     long           m_8;                                                   // +0x08

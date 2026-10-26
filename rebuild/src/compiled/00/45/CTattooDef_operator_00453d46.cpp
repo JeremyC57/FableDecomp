@@ -10,16 +10,16 @@
 // Blend is the 4-byte ECompositeBlendType enum, modelled as long.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-struct CTattooDef : CDefClassBase {
+class CTattooDef : public CDefClassBase { public:
     CCharString              TattooName;                  // +0x28
     long                     TextureLayer;                // +0x2c
     long                     ReplacingTextureIndex;       // +0x30

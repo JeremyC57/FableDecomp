@@ -6,16 +6,16 @@
 // Shape: the landed PutDownThingAtTable constructor (0x00842A20) with the thing as the SECOND argument and the kind third; after the vtable
 // store the CIntelligentPointer<CThing> member at +0xa8 is built from the thing (inline converting constructor: base ctor, its vtable
 // 0x01238C6C, SetPItem), then the word at +0xb0.
-struct CThingCreatureBase;
-struct CThing;
-struct CAnimationEntry;
-struct CCharString;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
+class CThingCreatureBase;
+class CThing;
+class CAnimationEntry;
+class CCharString;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -33,7 +33,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {   // vtable 0x012753E4
+class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:   // vtable 0x012753E4
     CIntelligentPointer PThing;             // +0xa8 the thing picked up
     long m_tablePoint;                      // +0xb0 (descriptive: the fourth argument)
     virtual void v00();

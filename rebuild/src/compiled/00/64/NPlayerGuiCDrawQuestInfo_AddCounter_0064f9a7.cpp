@@ -12,7 +12,7 @@
 // Shape: as the timer adder: frame-pointer size TU, sprite lookup in a named local before the allocation, null-checked
 // placement constructor into the counted-pointer local, by-value base pointer converted in the argument area, the ID read
 // through the local before its destructor.
-struct CCharString { char* m_pData; };            // one pointer
+class CCharString { public: char* m_pData; };            // one pointer
 
 extern void* __cdecl operator_new_shim(unsigned int);   // (unused; operator new @ 0x00BFEA1A is the global one)
 
@@ -45,7 +45,7 @@ struct CQuestInfoElementCounter : CQuestInfoElement {   // retail 0x2c bytes, vt
     CQuestInfoElementCounter(CCounter* counter, long graphic, float scale);   // 0x00656BA2
 };
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     long GetScriptSpriteBySymbol(const CCharString& symbol);           // 0x0064A37B
     void AddElement(CCountedPointer<CQuestInfoElement> element);       // 0x0064A3ED
     long AddCounter(CCounter* counter, const CCharString& symbol, float scale);

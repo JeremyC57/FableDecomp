@@ -13,7 +13,7 @@
 // unique. One of 26 bodies.
 #include <new>
 
-struct CEnvironmentThemeDef {
+class CEnvironmentThemeDef { public:
     unsigned char _body[0xc4];
     CEnvironmentThemeDef(const CEnvironmentThemeDef& other);           // 0x0047318D
 };

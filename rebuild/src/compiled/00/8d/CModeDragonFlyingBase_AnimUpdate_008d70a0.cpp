@@ -3,19 +3,19 @@
 // Shape: the blend-in thing is a named re-read of ParentThing taken right after the FLY_LOOP lookup (retail loads it into
 //   the dead `this` register ebx before the CAnimInit build); the combination anim found after AddCombinationAnim is a
 //   named local, so its lookup call runs before the SetInternalAlpha argument pushes.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CThing;
-struct CAnimationEntry {
+class CThing;
+class CAnimationEntry { public:
     long Index;                                // +0x00
     unsigned long GetAnimateThingFlags();      // 0x005DC390
     long GetTimeToBlendIn(CThing* thing);      // 0x005DC230
 };
-struct CThing { };
-struct CThingCreatureBase : CThing {
+class CThing { public: };
+class CThingCreatureBase : public CThing { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };
 struct CBlendPair {                            // the two floats at CAnimInit +0x18, zeroed by their ctor
@@ -23,7 +23,7 @@ struct CBlendPair {                            // the two floats at CAnimInit +0
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                             // 0x2c bytes
+class CAnimInit { public:                             // 0x2c bytes
     long          Mode;                        // +0x00
     unsigned char AnimType;                    // +0x04
     bool          Flag05;                      // +0x05
@@ -39,10 +39,10 @@ struct CAnimInit {                             // 0x2c bytes
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
     }
 };
-struct CAnimSet {
+class CAnimSet { public:
     void SetInternalAlpha(long index, float alpha, bool b);   // 0x0070C280
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x04];
     void*         m_queueBegin;                // +0x04
     void*         m_queueEnd;                  // +0x08

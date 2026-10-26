@@ -8,9 +8,9 @@
 // counter bumped as load/inc/store, `ret 0Ch`.
 // Model: PDB CSystemManager (+0x60 PDisplayManager) / CDisplayManager (+8 PRenderManager); the quad counter at
 // +0x28 is descriptive.
-struct CTexture;
+class CTexture;
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float left, top, right, bottom;
 };
 
@@ -20,7 +20,7 @@ struct CRenderManagerCore {
         long vertexStride, long vertexCount, const void* indices, long triangleCount);   // 0x00A0AEA0
 };
 
-struct CDisplayManager {                           // PDB: +4 SystemManager, +8 PRenderManager (scoped_ptr)
+class CDisplayManager { public:                           // PDB: +4 SystemManager, +8 PRenderManager (scoped_ptr)
     void*               __vftable;                 // +0x00
     void*               SystemManager;             // +0x04
     CRenderManagerCore* PRenderManager;            // +0x08
@@ -28,18 +28,18 @@ struct CDisplayManager {                           // PDB: +4 SystemManager, +8 
     void EndRender();                              // 0x009BEF50
 };
 
-struct CSystemManager {                            // PDB: +0x60 CCountedPointer<CDisplayManager> PDisplayManager
+class CSystemManager { public:                            // PDB: +0x60 CCountedPointer<CDisplayManager> PDisplayManager
     unsigned char    _pad00[0x60];
     CDisplayManager* PDisplayManager;              // +0x60 (the counted pointer's object word)
     void*            PDisplayManagerCount;         // +0x64
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CRenderTarget {
+class CRenderTarget { public:
     void DetachTarget();                           // 0x00A10E10
 };
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void RestoreCaptureBlock();                    // 0x00A05840
 };
 extern CRenderStateManager* g_pRenderStateManager; // 0x013CB508

@@ -9,8 +9,8 @@
 // the four zero stores after it: both members are member objects with inline constructors (an init-list
 // scalar would sink the vtable store below the zero stores).
 #pragma optimize("s", on)
-struct CThing;
-struct CHeroSuitDef;
+class CThing;
+class CHeroSuitDef;
 
 struct CTCDriverBase_Calls {
     virtual void v00();
@@ -18,7 +18,7 @@ struct CTCDriverBase_Calls {
     CTCDriverBase_Calls(CThing* parent);                    // 0x00771200
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
@@ -35,7 +35,7 @@ struct SSuitPart {                                          // std::pair<EClothi
     bool Worn;
 };
 
-struct CTCDHeroSuit : CTCDriverBase_Calls {
+class CTCDHeroSuit : public CTCDriverBase_Calls { public:
     CDefPointer<const CHeroSuitDef> PDef;                   // +0x0c
     CRetailVector<SSuitPart>        SuitParts;              // +0x10
     virtual void v00();                                     // own vtable 0x01242004

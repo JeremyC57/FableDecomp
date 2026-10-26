@@ -37,7 +37,7 @@ struct CVoiceMap {                         // retail CVectorMap<EReactionSpeechT
     }
 };
 
-struct CSimVoice {
+class CSimVoice { public:
     virtual void v00();
     long      m_reserved;                  // +0x4
     CVoiceMap Voices;                      // +0x8

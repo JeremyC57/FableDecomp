@@ -6,7 +6,7 @@ struct PoolBlock {
     PoolBlock* next;      // +0x14
 };
 
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void* pad0;           // +0x00
     PoolBlock* head;      // +0x04
 

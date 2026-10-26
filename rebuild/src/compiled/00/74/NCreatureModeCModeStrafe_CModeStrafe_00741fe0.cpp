@@ -8,16 +8,16 @@
 // PullBackAmount +0x48, ForceAnimNoBlendIn +0x4c, PAnimProjectileAim +0x50, PAnimProjectileBuildUp +0x58,
 // PAnimProjectilePullBack +0x60, PAnimStrafeUpperBody +0x68 (CCountedPointer<NAnimationEntryBodge::CAnimEntryLite>).
 // Shape: init list in declaration order; the zero words (distance, counted pointers) share the edi the CRC test uses.
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -29,7 +29,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -47,13 +47,13 @@ struct CModeBase {                         // retail 0x1c: vptr, ParentThing, We
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-template <class T> struct CCountedPointer {   // 8 bytes: object + shared count block
+template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
     T*    Object;
     void* Count;
     CCountedPointer() : Object(0), Count(0) { }
 };
 
-namespace NAnimationEntryBodge { struct CAnimEntryLite; }
+namespace NAnimationEntryBodge { class CAnimEntryLite; }
 
 namespace NCreatureMode {
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 struct Node { void* p0; void* p4; void* p8; void* pc; };
-struct CTCCarryable { Node* node; int slot; };
+class CTCCarryable { public: Node* node; int slot; };
 static int g_freed = 0;
 static void* g_freed_arg = 0;
 void __stdcall FreeThing(void* p) { g_freed++; g_freed_arg = p; }

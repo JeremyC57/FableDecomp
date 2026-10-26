@@ -4,7 +4,7 @@
 #include <cstdio>
 
 class CTCBase;
-struct CTCVillage;
+class CTCVillage;
 static int g_order[32];
 static int g_n = 0;
 static int g_setCalls = 0, g_setNonNull = 0, g_destroyed = 0;
@@ -20,7 +20,7 @@ public:
 class CThingAICreature : public CThing {};
 bool IS_THING_ALIVE(CThing* const& thing) { return thing != 0 && thing->alive; }
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* village;
     void SetPVillage(CTCVillage* v) { ++g_setCalls; if (v) ++g_setNonNull; village = v; }
 };
@@ -50,7 +50,7 @@ public:
     virtual ~CTCBase() { g_order[g_n++] = 999; }
 };
 
-struct CTCVillage : CTCBase {
+class CTCVillage : public CTCBase { public:
     CMemberList<1>  VillageBuildings;
     CCreaturePointerList VillagePeople;
     CMemberList<3>  VillageTorches;

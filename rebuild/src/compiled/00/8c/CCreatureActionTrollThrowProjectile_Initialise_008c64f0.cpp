@@ -13,13 +13,13 @@
 //   GetRandomSeed 0x0049D810, GFROR13 0x00497890 (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout: action +0x08 PCreature, +0x74 combat TC pointer, +0x114 PProjectile, +0x12c long flag (retail bytes);
 //   creature +0x70 def, +0x90 player (signed char), +0x64 graphic appearance TC.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
 
 struct CDefBase {
@@ -27,13 +27,13 @@ struct CDefBase {
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +4
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CAbilityDef : CDefBase {
+class CAbilityDef : public CDefBase { public:
     unsigned char _pad08[0xa0 - 8];
     long          ProjectileDef;                             // +0xa0
 };
@@ -46,11 +46,11 @@ struct CWillPowerIndicatorDef : CDefBase {
     float         Chance;                                    // +0x48
     long          Value;                                     // +0x4c
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAbilityDef>* out);           // 0x0042B1A6
     bool GetSubDef(CDefPointer<CWillPowerIndicatorDef>* out);   // 0x008C78F0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndex(const CCharString& name);         // 0x009AD410
 };
 struct CPhysicalDefManager {
@@ -79,7 +79,7 @@ __declspec(noinline) bool CPhysicalDefManager::GetDef(long index, CDefPointer<CP
     return def != 0;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char        _pad00[0x10];
     CPhysicalDefManager* PDefs;                              // +0x10
     unsigned long* GetRandomSeed();                          // 0x0049D810
@@ -90,7 +90,7 @@ inline unsigned long GFRandom(unsigned long* seed)
     *seed = GFROR13(*seed);
     return *seed;
 }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -98,7 +98,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                    // 0x0040F020
 };
 class CThing;
-struct CTCCarrying {
+class CTCCarrying { public:
     void AddThing(CThing* thing, long slot, bool now);       // 0x006A1F80
 };
 struct CTCGraphicAppearance {
@@ -132,7 +132,7 @@ public:
         return false;
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
                                            CRightHandedSet* orientation, unsigned long flags,
                                            const CCharString& name);   // 0x00703210
@@ -167,7 +167,7 @@ __declspec(noinline) void CCombatTC::GetWeaponHand(SWeaponHand** out)
     *out = FindWeaponHand(this);
 }
 #pragma auto_inline(on)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                               // 0x00857520
     unsigned char           _pad04[4];
@@ -179,7 +179,7 @@ struct CCombatActionBase {
     CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
     CWorld* GetPWorld() const;                               // 0x00692940
 };
-struct CCreatureAction_TrollThrowProjectile : CCombatActionBase {
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public:
     unsigned char            _pad78[0x114 - 0x78];
     CIntelligentPointerThing PProjectile;                    // +0x114
     unsigned char            _pad11c[0x12c - 0x11c];

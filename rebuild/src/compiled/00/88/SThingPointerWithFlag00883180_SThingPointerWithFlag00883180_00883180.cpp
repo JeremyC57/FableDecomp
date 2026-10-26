@@ -8,7 +8,7 @@
 // SetPItem(0), the same body as the out-of-line 0x004A96F0) and a bool at +8. The manifest's
 // "CCombatAbilityUseProjectileWeaponDef" label is propagated; the struct is not in Ego_r.pdb, so
 // it is named by its shape and address.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

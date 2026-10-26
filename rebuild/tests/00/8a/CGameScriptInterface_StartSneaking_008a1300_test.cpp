@@ -15,7 +15,7 @@ struct Obj {
     unsigned char flags;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     unsigned char _pad0[0x14];
     void* member14;
 };

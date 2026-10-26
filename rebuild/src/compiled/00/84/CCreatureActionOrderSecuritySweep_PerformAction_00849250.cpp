@@ -3,14 +3,14 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x23 = bit 3 of
 // the bitset dword at +0x24), GFGetPVillageInterface @ 0x007EE540 (register argument, landed naming of 0x0093EDF0), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
 // Shape: the lookup's result is not tested -- the villager pointer is read from the frame slot even when the interface is absent (retail reads an unset local there).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -34,12 +34,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 struct CTCVillager;
-struct CTCVillage {
+class CTCVillage { public:
     void RecalculateSecuritySweep(long flags);   // 0x00659C32
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CCreatureAction_OrderSecuritySweep {
+class CCreatureAction_OrderSecuritySweep { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];

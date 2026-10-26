@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesBerserkDef { int vt; };
+class CSpecialAbilitiesBerserkDef { public: int vt; };
 
 extern void __fastcall CSpecialAbilitiesBerserkDef_dtor(CSpecialAbilitiesBerserkDef* def);
 extern void __cdecl op_delete(void* p);

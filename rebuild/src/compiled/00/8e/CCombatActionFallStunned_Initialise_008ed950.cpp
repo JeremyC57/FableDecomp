@@ -11,14 +11,14 @@
 //          landed 0x00718A00 (a user copy ctor makes the argument build in place); its null test folds away because the new mode was already dereferenced (`[eax+6Ch]`).
 void __fastcall Destroy_007180b0(void* object);   // 0x007180B0
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,7 +48,7 @@ struct SCountBlock {
     void* m_pObject;                            // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                     // +0
     SCountBlock* m_pCount;                      // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -72,7 +72,7 @@ struct CModeDazed : CModeBase {
     unsigned char _pad6d[0x84 - 0x6d];
     CModeDazed(CThing* creature);               // 0x00740160
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 

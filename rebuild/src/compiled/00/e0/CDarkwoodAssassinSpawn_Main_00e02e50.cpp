@@ -15,24 +15,24 @@
 //   call the out-of-line copy 0x00CD4470. The first wait loop is a for(;;) whose IsActiveThreadTerminating check sits at
 //   the TOP (a bottom-of-loop check plus a guard before the loop swaps the vtable registers in the target pick).
 extern "C" int __cdecl rand();                           // 0x00BFEB16
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CDefString {
+class CDefString { public:
     void* PStringData;
     operator CCharString() const;                        // 0x00415D70
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info; };
-struct CBaseClass {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -50,7 +50,7 @@ bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScript
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
     virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
     VPAD32(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3) VPAD2(p8_4)                // slots 8..69
@@ -79,14 +79,14 @@ struct CGameScriptInterface {                              // vtable 0x01260F0C 
     virtual unsigned long PlaySoundOnThing(const CScriptThing& thing, const CCharString& sound) const; // slot 690 (+0xac8)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CTimer {                                          // 4 bytes: an index into the global script timers
+class CTimer { public:                                          // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
     __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x3ac];
     CDefString* ShoutSoundsBegin;                        // +0x3ac
     CDefString* ShoutSoundsEnd;                          // +0x3b0

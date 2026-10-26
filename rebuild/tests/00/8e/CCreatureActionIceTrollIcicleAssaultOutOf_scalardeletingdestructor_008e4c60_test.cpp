@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_IceTrollIcicleAssaultOutOf {
+class CCreatureAction_IceTrollIcicleAssaultOutOf { public:
     void* vftable;
     int destroyed;
 };

@@ -9,8 +9,8 @@
 // Layout: GoToPub from Ego_r.pdb (base 0x14, PTable +0x24); the 0xcf component is the tavern game (landed GameMaster
 // 0x0094CA80 names it the game table): Ego_r.pdb CTCTavernGame IsBeingPlayed is +0x28 there, +0x20 in retail because the
 // UIComponents vector at +0x0c is 12 bytes (STLport) and the following double re-aligns to +0x18.
-struct CCharString;
-struct CTCBase;
+class CCharString;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -54,7 +54,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCTavernGame {                          // interface 0xcf
+class CTCTavernGame { public:                          // interface 0xcf
     unsigned char _pad0[0x20];
     bool IsBeingPlayed;                         // +0x20
 };
@@ -63,28 +63,28 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThingCreatureBase;
-struct CSoundPair {
+class CThingCreatureBase;
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0xb4 - 0xa8];
     CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
     ~CCreatureAction_PlayAnimation();           // 0x00693EF0 (the base dtor)
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
     CThingCreatureBase* GetPCreature() const { return PCreature; }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

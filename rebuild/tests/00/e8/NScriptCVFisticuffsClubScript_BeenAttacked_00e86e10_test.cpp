@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static bool g_terminating = false;
-struct CScriptDef { long FisticuffsAttackWarningLimit; };
+class CScriptDef { public: long FisticuffsAttackWarningLimit; };
 CScriptDef* g_pScriptDef = 0;
 
 struct CV_FisticuffsClubScript {

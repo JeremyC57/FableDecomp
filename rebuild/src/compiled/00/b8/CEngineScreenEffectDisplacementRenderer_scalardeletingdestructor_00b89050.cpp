@@ -1,4 +1,4 @@
-struct CEngineScreenEffectDisplacementRenderer {
+class CEngineScreenEffectDisplacementRenderer { public:
     void* vftable;
 };
 

@@ -5,8 +5,8 @@
 // SetAboutToRun is called while it is still pending, and the engine's draw-distance factor minus one is published.
 static int g_stops = 0; static const char* g_title = "x"; static const char* g_text = "y"; static float g_scale = 0.0f;
 static void StopProgress(bool a, bool b) { if (a && !b) ++g_stops; }
-struct CIEngine { float factor; virtual float GetPrimitiveDrawDistanceFactor() { return factor; } virtual ~CIEngine() { } };
-struct CDisplayEngine {
+class CIEngine { public: float factor; virtual float GetPrimitiveDrawDistanceFactor() { return factor; } virtual ~CIEngine() { } };
+class CDisplayEngine { public:
     CIEngine* Engine3D; long InitialFadeReadynessCount; int aboutToRun;
     void SetAboutToRun() { ++aboutToRun; }
     void WorldUpdate()

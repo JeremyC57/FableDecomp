@@ -3,18 +3,18 @@
 // renderer projection, the display manager's TV area and the intelligent-pointer primitives stubbed.
 class CThing;
 class CThingObject;
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     void Set(float tlx, float tly, float brx, float bry) { TLX = tlx; TLY = tly; BRX = brx; BRY = bry; }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() { }
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; ++g_setCalls; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -50,9 +50,9 @@ struct CRenderer {
         out->X = position.X + pos.X; out->Y = position.Y + pos.Y; return true;
     }
 };
-struct CDisplayEngine { CRenderer* Renderer; };
-struct CMainGameComponent { CDisplayEngine* DisplayEngine; };
-struct CDisplayManager {
+class CDisplayEngine { public: CRenderer* Renderer; };
+class CMainGameComponent { public: CDisplayEngine* DisplayEngine; };
+class CDisplayManager { public:
     C2DBoxF area;
     C2DBoxF GetAVisibleTelevisionScreenArea() { return area; }
 };
@@ -60,7 +60,7 @@ CMainGameComponent* g_pMainGameComponent;
 CDisplayManager* g_pDisplayManager;
 C3DVector g_ItemUp(0.0f, 1.0f, 0.0f);
 
-struct CTCHeroReceiveItems {
+class CTCHeroReceiveItems { public:
     CItemList Items;
     CIntelligentPointer<CThingObject> PCurrentItem;
     bool ReceivingItems;

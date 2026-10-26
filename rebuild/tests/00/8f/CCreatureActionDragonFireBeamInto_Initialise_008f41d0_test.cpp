@@ -1,17 +1,17 @@
 // Behaviour test for 0x008F41D0 CCreatureAction_DragonFireBeamInto::Initialise.
 #include <cstdio>
 #include <cstring>
-struct CThing;
+class CThing;
 struct CModeBase { virtual ~CModeBase() {} };
 struct CModeDragonFireBeam : CModeBase { CThing* o; CThing* t; float timer; CModeDragonFireBeam(CThing* a, CThing* b, float c) : o(a), t(b), timer(c) {} };
-struct CTCCreatureModeManager { CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
-struct CThing {
+class CTCCreatureModeManager { public: CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
+class CThing { public:
     bool has; CTCCreatureModeManager mm;
     bool GetInterface(CTCCreatureModeManager** pp, long t) { if (t == 0x31 && has) { *pp = &mm; return true; } return false; }
 };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } operator CThing*() const { return GetPItem(); } };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CCreatureAction_DragonFireBeamInto {
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCreatureAction_DragonFireBeamInto { public:
     CBaseIntelligentPointer PCreature, PTarget; float Timer; const char* anim; int baseInit;
     void SetAnimationName(const CCharString& n) { anim = n.t; }
     void Initialise()

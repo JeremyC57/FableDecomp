@@ -5,7 +5,7 @@ struct SubObj {
     void method(long a); // extern __fastcall, call target 0xc1bb80
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags; // +0
     long pad4;           // +4
     SubObj sub;          // +8

@@ -12,7 +12,7 @@ struct CTarget {
     float m_value;                         // +0x34
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad[0x38];
     CTarget* m_object;                     // +0x38
     float GetAirResistance();

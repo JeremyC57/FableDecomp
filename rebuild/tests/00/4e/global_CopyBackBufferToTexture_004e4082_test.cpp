@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CTexture;
-struct CDisplayManager;
+class CTexture;
+class CDisplayManager;
 
 void __stdcall CopyBackBuffer_FormatStep(bool* a, bool* b);
 CTexture* __fastcall CopyBackBufferToTexture(CDisplayManager* self, void*);

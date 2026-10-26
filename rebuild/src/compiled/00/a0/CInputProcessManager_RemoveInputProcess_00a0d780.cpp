@@ -23,7 +23,7 @@ struct SProcessCursor {                            // a live iteration over the 
     unsigned char   _pad0c[4];
     SProcessCursor* m_pNextCursor;                 // +0x10
 };
-struct CInputProcessManager {
+class CInputProcessManager { public:
     virtual void v00();
     SProcessNode*   m_pFirst;                      // +0x04
     SProcessNode*   m_pLast;                       // +0x08

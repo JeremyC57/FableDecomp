@@ -6,7 +6,7 @@
 using std::strstr; using std::strlen;
 static int g_live;
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;                      // +0x0
     unsigned long m_length;                     // +0x4
 };

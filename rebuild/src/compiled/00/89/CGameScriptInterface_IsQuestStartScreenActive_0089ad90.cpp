@@ -11,7 +11,7 @@
 // Completion 0 is the first CTCQuestCompletionUI::CompletionType value (name not recovered). CThing as 0x00899E90.
 // Shape: /O2 (16-aligned entry); HasTC then the unchecked pointer-form lookup; CCharString::operator== must be
 // __forceinline (plain inline is called out of line here).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };
@@ -28,7 +28,7 @@ public:
         return false;
     }
 };
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

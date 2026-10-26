@@ -11,23 +11,23 @@
 extern "C" int __cdecl _snprintf(char* buffer, unsigned int count, const char* format, ...);   // 0x00BFEB96
 extern const char g_emptyLiteral_0129aaf4[];        // 0x0129AAF4: ""
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 
-struct CMatrix3x4 { float m_row[3][4]; };           // 48 bytes
-template <class T> struct CArray {                  // retail CArray<T>: begin/end/capacity
+class CMatrix3x4 { public: float m_row[3][4]; };           // 48 bytes
+template <class T> class CArray { public:                  // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return m_end - m_begin; }
 };
 
-struct C3DAnimFileSequenceChunk {
+class C3DAnimFileSequenceChunk { public:
     virtual ~C3DAnimFileSequenceChunk();
     unsigned char _base_body[0x28];                 // +0x04 .. +0x2B (CChunkedFileChunk base, retail size)
     long BoneIndex;                                 // +0x2C

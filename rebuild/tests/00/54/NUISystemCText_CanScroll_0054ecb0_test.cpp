@@ -2,11 +2,11 @@
 // the UI-scaled text height plus the position against the bottom edge; otherwise the position against the top
 // edge; zero when there is no room either way.
 #include <cstdio>
-struct C2DVector { float X, Y; C2DVector() { } };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DVector { public: float X, Y; C2DVector() { } };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 static const float g_zero = 0.0f;
 static float g_scaleY = 1.0f; static int g_scaleCalls = 0;
-namespace NUISystem { struct CManager { C2DVector GetUIScale() { ++g_scaleCalls; C2DVector v; v.X = 9.0f; v.Y = g_scaleY; return v; } }; }
+namespace NUISystem { class CManager { public: C2DVector GetUIScale() { ++g_scaleCalls; C2DVector v; v.X = 9.0f; v.Y = g_scaleY; return v; } }; }
 static NUISystem::CManager g_manager;
 struct CFrontEndManager { static NUISystem::CManager* GetInstance() { return &g_manager; } };
 static int g_refreshes = 0; static void* g_refreshContext = 0; static int g_positionCalls = 0;

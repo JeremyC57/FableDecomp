@@ -5,7 +5,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCharString {
+class CCharString { public:
     char m_text[64];
     CCharString(const char* text, long length)
     {
@@ -23,7 +23,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 }
 CCharString g_DayOnlySuffix("DayOnly", -1);
 CCharString g_NightOnlySuffix("NightOnly", -1);
-struct CTCDayOrNightOnlySupport {
+class CTCDayOrNightOnlySupport { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     long          DayNightOrBoth;

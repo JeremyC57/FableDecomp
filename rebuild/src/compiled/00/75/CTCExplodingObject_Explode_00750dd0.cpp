@@ -11,7 +11,7 @@
 // (Radius re-read after the first store through the component).
 #include "engine/CTCBase.h"
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CExplosionDriver {                          // the spawned thing's driver component
     unsigned char _pad[0xc];
@@ -21,7 +21,7 @@ struct CExplosionDriver {                          // the spawned thing's driver
     long  m_fireDamage;                            // +0x18
 };
 
-struct CThing {
+class CThing { public:
     unsigned char     _pad0[0x28];
     unsigned char     m_driverFlags;               // +0x28 bit 1: the driver component is cached
     unsigned char     _pad1[0x5c - 0x29];
@@ -40,12 +40,12 @@ struct CThing {
 
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);   // 0x0080C460
 
-struct CExplodingObjectDef {
+class CExplodingObjectDef { public:
     unsigned char _pad[0x2c];
     long ExplosionType;                            // +0x2c
 };
 
-struct CTCExplodingObject : CTCBase {
+class CTCExplodingObject : public CTCBase { public:
     float                MaxDamage;                // +0x0c
     float                Radius;                   // +0x10
     long                 FireDamage;               // +0x14

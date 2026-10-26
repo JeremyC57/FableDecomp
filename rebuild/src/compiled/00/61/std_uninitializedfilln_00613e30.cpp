@@ -14,17 +14,17 @@
 // copyable C2DVector VC7.1 strength-reduces the destination into a second induction register at Position
 // (`lea esi,[ebx+8]`, 86 v 80). Placement-new null check kept; n counts down in ebx.
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
 };
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {                   // 28 bytes
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:                   // 28 bytes
         long        Region;                     // +0x00
         CCharString UIDefName;                  // +0x04
         C2DVector   Position;                   // +0x08

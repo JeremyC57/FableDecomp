@@ -1,9 +1,9 @@
 #include "engine/CEngineInternalPrimitiveOcclusionGroup.h"
 #include <stdio.h>
 
-struct C3DBoundingBox { float mn[3]; float mx[3]; };
+class C3DBoundingBox { public: float mn[3]; float mx[3]; };
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     int tag;
     bool occ(C3DBoundingBox& bbox, int f58, int f5c);
 };

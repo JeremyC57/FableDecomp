@@ -11,7 +11,7 @@
 // vtable after the out-of-line base constructor, its compiler-generated destructor drops the vtable reset and calls the
 // base destructor; the inline operator= is `SetPItem(other.GetPItem())`; the four one-bit clears merge into
 // `and byte ptr [esi+0C8h],0F0h`; the success path is the `if` body (an early `return false` puts its tail first). No EH frame (exceptions off in this TU).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -28,11 +28,11 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     bool OnCreate();                                // 0x006A4D20
 };
 
-struct CThingGameObject : CThingPhysical {
+class CThingGameObject : public CThingPhysical { public:
     unsigned char            _pad00[0xc0];
     CIntelligentPointerThing PThingStandingOn;                    // +0xc0
     unsigned char            AddToComboMultiplierOnHit : 1;               // +0xc8 bit 0

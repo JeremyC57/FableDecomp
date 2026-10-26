@@ -3,7 +3,7 @@
 #include <cstdlib>
 // behaviour test: CQuestManager::LoadGameState reads a length-prefixed text in binary modes (2/3) and parses it,
 // otherwise uses the context's parser; boasts are transferred either way
-struct CCharString {
+class CCharString { public:
     char m[64];
     CCharString(const char* text, long) { std::strncpy(m, text, 63); m[63] = 0; }
 };
@@ -14,18 +14,18 @@ namespace N_00411910 { struct CByteArray {
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
 }; } using N_00411910::CByteArray;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     const unsigned char* src; unsigned long StreamPos;
     void ReadBuffer(void* buffer, long size) { std::memcpy(buffer, src + StreamPos, size); StreamPos += size; }
     long ReadLong() { long v = 0; std::memcpy(&v, src + StreamPos, 4); StreamPos += 4; return v; }
 };
-struct CStringParser {
+class CStringParser { public:
     char text[64];
     CStringParser(const CCharString& t, void (*)(CCharString*), const CCharString&, long) { std::strcpy(text, t.m); }
 };
-struct CPersistContext { CStringParser* PParser; long Mode; CMemoryDataInputStream* PLoadStream; };
+class CPersistContext { public: CStringParser* PParser; long Mode; CMemoryDataInputStream* PLoadStream; };
 static const char g_emptyString_0122d70e[] = "";
-struct CQuestManager {
+class CQuestManager { public:
     char loaded[64]; int boastTransfers;
     void LoadGameState(CStringParser& parser) { std::strcpy(loaded, parser.text); }
     void TransferBoasts(CPersistContext&) { ++boastTransfers; }

@@ -12,7 +12,7 @@
 // the element moves are the trivial 8-dword `rep movsd` assignment, the value is copied into __push_heap's argument
 // area word by word (C3DVector's user copy constructor makes the element's implicit copy constructor memberwise).
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

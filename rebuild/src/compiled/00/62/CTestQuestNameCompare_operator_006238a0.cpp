@@ -21,7 +21,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
@@ -64,13 +64,13 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;                      // +0x00
     CCharString HSPName;                        // +0x04
     long        ColourIndex;                    // +0x08
     CCharString DisplayName;                    // +0x0c
 };
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest* a, const CTestQuest* b) const;
 };
 bool CTestQuestNameCompare::operator()(const CTestQuest* a, const CTestQuest* b) const

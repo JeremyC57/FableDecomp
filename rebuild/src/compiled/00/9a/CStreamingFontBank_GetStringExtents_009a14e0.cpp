@@ -15,16 +15,16 @@
 // The lane has no native wchar_t: the string is `const unsigned short*` (retail mangles `PB_W`).
 #include "engine/CStreamingFontBank.h"
 
-struct C2DExtentsF {
+class C2DExtentsF { public:
     float X, Y;
     C2DExtentsF(float x, float y) : X(x), Y(y) {}
 };
 
-struct CStreamingGlyph {
+class CStreamingGlyph { public:
     unsigned long GlyphIndex : 24;
     unsigned long AdjustmentIndex : 8;
 };
-struct CStreamingGlyphData {
+class CStreamingGlyphData { public:
     signed char   OffsetX, OffsetY, Width, Height;
     unsigned long MemOffset : 23;
     unsigned long Advance : 8;

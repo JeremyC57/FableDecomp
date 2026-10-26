@@ -7,7 +7,7 @@
 // Layout: the parent thing's interface bitset at +0x20 (type 0x29 -> word 1 = +0x24, bit 9: `test ch,2`) and its sorted
 // interface map at +0x44 (the landed GetInterface shape of 0x007504E0); the component's flag byte is at +0x0d.
 // Shape: inline out-parameter GetInterface (map pointer in esi), then the flag test.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -41,7 +41,7 @@ struct CTCInterface29 {                                     // the interface-0x2
     bool          m_flag0d;                                 // +0x0d
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     void CancelAllAbilities();                              // 0x0072BA40

@@ -8,7 +8,7 @@
 // = { ulong64 UID +0; CCharString PersistScript +8 } (8-byte aligned, 4 bytes of tail padding), so the pair is
 // 24 bytes: key +0, UID +8, PersistScript +0x10, padding +0x14. The implicit operator= moves the key and UID
 // dwords and calls the out-of-line CCharString::operator=; the padding word is never copied.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -16,7 +16,7 @@ struct CCharString {
 namespace NScript {
 class CRuntimeScriptedEntityPersist {
 public:
-    struct CPersistInfo {                        // Ego_r.pdb: 16 bytes
+    class CPersistInfo { public:                        // Ego_r.pdb: 16 bytes
         unsigned __int64 UID;                    // +0x00
         CCharString      PersistScript;          // +0x08
     };

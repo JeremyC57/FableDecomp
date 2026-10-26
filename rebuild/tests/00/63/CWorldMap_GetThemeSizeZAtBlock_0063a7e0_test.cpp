@@ -1,27 +1,27 @@
 // Behaviour test for CWorldMap::GetThemeSizeZAtBlock (0x0063A7E0), renamed from GetThemeMinCameraSizeZOffsetAt.
 #include <cstdio>
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C2DCoordI
-{
+class C2DCoordI
+{ public:
     long x, y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMapInfo { C2DBoxI Area; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMapInfo { public: C2DBoxI Area; };
 
 static C2DCoordI g_lastCoord;
 static C3DVector g_lastVec;
 static long      g_lastLong;
 static int       g_calls;
 
-struct CMap
-{
+class CMap
+{ public:
     bool  BoolResult;
     float FloatResult;
     long  LongResult;
@@ -33,8 +33,8 @@ struct CMap
     long  QueryTheme(const C2DCoordI& p, long* s) const { g_lastCoord = p; ++g_calls; if (s) *s = 7; return LongResult; }
 };
 
-struct CWorldMap
-{
+class CWorldMap
+{ public:
     CMapInfo Maps[4];
     CMap     TheMap;
     long     MapAt;

@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000() {}
     virtual void DestroyDef() { ++g_destroyed; }
     long m_refCount;
@@ -14,13 +14,13 @@ struct CDefPointeeBase {
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
-struct CThingCreatureDef : CDefPointeeBase { };
+class CThingCreatureDef : public CDefPointeeBase { public: };
 static CThingCreatureDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out);
 };
 bool CDefinitionManager::GetDef_0083e0d0(long index, CDefPointer<CThingCreatureDef>& out)
@@ -30,12 +30,12 @@ bool CDefinitionManager::GetDef_0083e0d0(long index, CDefPointer<CThingCreatureD
     ++g_def->m_refCount; out.m_pObject = g_def; return true;
 }
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;
     CDefinitionManager* GetDefinitionManager() const { return &g_manager; }
 };
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     const CThingCreatureDef& PeekDefinition() const;
 };
 const CThingCreatureDef& CThingDeadCreature::PeekDefinition() const

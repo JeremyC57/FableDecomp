@@ -10,9 +10,9 @@
 #pragma optimize("s", on)
 #define FORCEINLINE __forceinline
 
-struct CThing;
+class CThing;
 
-struct CTCBase {                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
+class CTCBase { public:                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
     void* __vftable;                        // +0x00
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -20,7 +20,7 @@ struct CTCBase {                            // CTCBase root: vptr, ParentThing, 
     ~CTCBase();                             // 0x00686830 (stores the CTCBase vtable, then the CBaseObject destructor)
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -50,7 +50,7 @@ struct CThingPointerList {                  // STLport list<CIntelligentPointer<
     ~CThingPointerList();                   // 0x004B8940
 };
 
-struct CTCKraken : CTCBase {
+class CTCKraken : public CTCBase { public:
     CDefPointer PKrakenDef;                 // +0x0c
     CIntelligentPointer PChamber;           // +0x10
     CIntelligentPointer PCentreMarker;      // +0x18

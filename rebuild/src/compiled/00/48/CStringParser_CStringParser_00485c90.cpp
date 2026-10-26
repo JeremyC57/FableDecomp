@@ -11,7 +11,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString();                          // 0x0099E4B0
 };
@@ -30,7 +30,7 @@ struct CTokenList {                         // std::list<CCharString> head only 
     }
 };
 
-struct CStringParser : CBase {              // vtable 0x0122D874
+class CStringParser : public CBase { public:              // vtable 0x0122D874
     long        m_position;                 // +0x04
     long        m_length;                   // +0x08
     CCharString m_text;                     // +0x0c

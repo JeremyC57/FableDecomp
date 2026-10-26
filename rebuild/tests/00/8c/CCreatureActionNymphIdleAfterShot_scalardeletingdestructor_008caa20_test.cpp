@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_NymphIdleAfterShot {
+class CCreatureAction_NymphIdleAfterShot { public:
     void* vftable;
     int destroyed;
 };

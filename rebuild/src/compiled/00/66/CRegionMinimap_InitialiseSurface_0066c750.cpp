@@ -1,11 +1,11 @@
 // CRegionMinimap::InitialiseSurface  0x0066c750  __fastcall void(CRegionMinimap*)
-struct C2DExtentsI { int x; int y; };
+class C2DExtentsI { public: int x; int y; };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     int a;
     void Initialise(long r, long g, long b2, long a2, bool signd);
 };
-struct CSurface {
+class CSurface { public:
     char pad[8];
     bool InitialiseAsImage(C2DExtentsI* ext, CPixelFormat* pf, bool bb);
 };

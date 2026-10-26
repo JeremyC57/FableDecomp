@@ -3,9 +3,9 @@
 #include <string.h>
 #include <new>
 static int g_baseCalls;
-struct CParentDefClassBase { virtual void v00() {} unsigned char _body[0x74]; CParentDefClassBase() { ++g_baseCalls; } };
+class CParentDefClassBase { public: virtual void v00() {} unsigned char _body[0x74]; CParentDefClassBase() { ++g_baseCalls; } };
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) { } };
-struct CSpecialAbilitiesForcePushDef : CParentDefClassBase {
+class CSpecialAbilitiesForcePushDef : public CParentDefClassBase { public:
     CRetailVector<long> m_values0; unsigned char _pad[0x08]; CRetailVector<long> m_values1; CRetailVector<long> m_values2;
     virtual void v00() {}
     CSpecialAbilitiesForcePushDef();

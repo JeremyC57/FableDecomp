@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len) { p = (char*)s; last_len = len; }
     static int last_len;

@@ -12,7 +12,7 @@
 // ; mov ecx,eax`), key homed in a frame/argument slot and passed by address to the const LowerBound.
 // The filter's faction is read into ecx before the component (`mov ecx,[edi]`), then stored over the argument slot for the
 // tail jump: `return enemy->IsAlliedWithFaction(m_faction);` as the last statement; kind 0x49 = `test ch,2` on word 2.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -26,7 +26,7 @@ struct CTCMap {                                 // the thing's component map at 
     STCEntry* LowerBound(const long* kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -46,11 +46,11 @@ struct CThing {
     }
 };
 
-struct CTCEnemy {                               // component kind 0x49
+class CTCEnemy { public:                               // component kind 0x49
     bool IsAlliedWithFaction(long faction) const;   // 0x0076C7F0
 };
 
-struct CThingFilter_IsAlliedWithFaction {
+class CThingFilter_IsAlliedWithFaction { public:
     long m_faction;                             // +0x00
     bool operator()(const CThing& thing) const;
 };

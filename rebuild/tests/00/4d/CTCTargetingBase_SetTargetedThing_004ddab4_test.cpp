@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_dtors = 0;
-struct CThing; struct CBaseObject;
+class CThing; class CBaseObject;
 struct CBaseIntelligentPointer { void* m_pItem; void* m_pInfo; CBaseObject* GetPItem() { return (CBaseObject*)m_pItem; } void SetPItem(CBaseObject* item) { m_pItem = item; } ~CBaseIntelligentPointer() { ++g_dtors; } };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer { CIntelligentPointer_CThing(CThing* thing) { m_pItem = thing; m_pInfo = 0; } };
 #pragma pack(push, 1)

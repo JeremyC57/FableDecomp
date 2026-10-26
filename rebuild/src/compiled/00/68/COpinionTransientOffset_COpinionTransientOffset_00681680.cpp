@@ -9,7 +9,7 @@
 // Shape: the peak (run-in slope times run-in frames) and the persisting offset (peak plus run-out slope times run-out frames)
 //   are float locals; each sign test picks the trait in a ternary (`fcom 0 ; test ah,1`); the slopes are divided last, the
 //   run-out one by the integer frame count (fidiv).
-struct COpinionPersonalityTraits {                 // 36 bytes
+class COpinionPersonalityTraits { public:                 // 36 bytes
     float BaseOffset;                              // +0x00
     float HeroStatScaling;                         // +0x04
     float VillageOpinionScaling;                   // +0x08

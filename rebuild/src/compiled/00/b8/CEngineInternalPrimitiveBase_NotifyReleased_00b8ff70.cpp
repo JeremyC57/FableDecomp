@@ -3,13 +3,13 @@
 // Callees: CEngineSceneGridCell::InvalidateAll @ 0x00B91710 (on GridCell at +0x20), RemoveFromList @ 0x00B8FE60 (on `this`). Shape: the raw flag test
 // `test byte ptr [esi+34h],2`, the null test of the cell, and the `-1` level byte stored between `mov ecx,esi` and the last call. Layout from
 // engine/CEngineInternalPrimitiveBase.h (PDB): GridCell +0x20, GridPos_Level +0x24, PostRenderEnable (flag group) +0x34. The handle argument is unused.
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     void InvalidateAll();                          // 0x00B91710
 };
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char         _pad[0x20];
     CEngineSceneGridCell* GridCell;                // +0x20
     signed char           GridPos_Level;           // +0x24

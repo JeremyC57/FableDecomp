@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHeroPostcardGeneratorDef {
+class CHeroPostcardGeneratorDef { public:
     int _pad;
 };
 

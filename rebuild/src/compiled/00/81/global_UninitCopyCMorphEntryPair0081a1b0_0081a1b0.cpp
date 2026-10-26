@@ -21,7 +21,7 @@ struct __false_type { __false_type() { } };     // STLport empty tag; passed by 
 enum EHeroMorphType { HERO_MORPH_TYPE_NONE };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE };
 
-struct CTextureMorphEntry {                     // 20 bytes (Ego_r.pdb), trivially copyable
+class CTextureMorphEntry { public:                     // 20 bytes (Ego_r.pdb), trivially copyable
     EHeroMorphType      MorphType;              // +0x00
     long                TextureLayer;           // +0x04
     long                ReplacingTextureIndex;  // +0x08

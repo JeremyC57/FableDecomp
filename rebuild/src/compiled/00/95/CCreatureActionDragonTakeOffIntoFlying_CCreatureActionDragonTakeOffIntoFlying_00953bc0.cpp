@@ -8,13 +8,13 @@
 //   Dest +0x114, StartPos +0x120, PreviousPoint +0x12c, MovementPoints +0x138 (12-byte STLport vector), UsePreviousPoint
 //   +0x144, PEndAction +0x148 (CCountedPointer: Data, Info; the shared CCPPointerInfo keeps RefCount at +0).
 //   Local model: no engine/ header exists for these classes.
-struct CCreatureActionBase;
-struct CCombatActionBase {
+class CCreatureActionBase;
+class CCombatActionBase { public:
     virtual ~CCombatActionBase();
     unsigned char _body[0x110];
     CCombatActionBase(const CCombatActionBase& other);  // 0x0062F3B0
 };
-struct C3DVector {                                      // the engine vector has a user-written member-wise copy
+class C3DVector { public:                                      // the engine vector has a user-written member-wise copy
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
@@ -22,13 +22,13 @@ template<class T> struct CRetailVector {                // STLport vector: begin
     T* m_first; T* m_last; T* m_end;
     CRetailVector(const CRetailVector& other);          // C3DVector: 0x006F0810
 };
-struct CCPPointerInfo { unsigned long RefCount; void (__cdecl* DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
+class CCPPointerInfo { public: unsigned long RefCount; void (__cdecl* DeleteFunc)(void*); void* Data; };
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
 };
-struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     C3DVector Dest;                                     // +0x114
     C3DVector StartPos;                                 // +0x120
     C3DVector PreviousPoint;                            // +0x12c

@@ -26,7 +26,7 @@ struct CCarrySlotMap {
         return it;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CCarrySlotMap CarrySlots;
     bool IsCarrySlotFree(long slot) const
     {

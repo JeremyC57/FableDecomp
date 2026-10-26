@@ -19,12 +19,12 @@ struct CMainGameComponentCalls {
     CLoaderCalls* Loader;                                   // +0x28 (name inferred)
 };
 
-struct C3DVector;
+class C3DVector;
 struct CThingCalls {
     const C3DVector& GetPosition() const;                   // 0x006A4D00
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*        vfptr;
     CBaseObject* m_pItem;

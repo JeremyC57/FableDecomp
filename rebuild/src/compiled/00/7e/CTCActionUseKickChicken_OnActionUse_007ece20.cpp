@@ -10,21 +10,21 @@
 // `ParentThing` read is allocated to eax, the accessor lands it in ecx (`mov ecx,[ecx+4]`) as retail has it.
 // engine/CThingCreatureBase.h / CCombatAction_KickThingOnGround.h / CCreatureActionBase.h are flattened PDB PODs; the
 // calls need member declarations, so the classes are modelled locally.
-struct CThing { unsigned char _body[0x10]; };
+class CThing { public: unsigned char _body[0x10]; };
 
-struct CCreatureActionBase { virtual void v00(); };
+class CCreatureActionBase { public: virtual void v00(); };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
-struct CCombatAction_KickThingOnGround : CCreatureActionBase {
+class CCombatAction_KickThingOnGround : public CCreatureActionBase { public:
     unsigned char _body[0x12c];                // a 0x130-byte action
     CCombatAction_KickThingOnGround(CThingCreatureBase* creature, CThing* thing);   // 0x0087FD20
     ~CCombatAction_KickThingOnGround();        // 0x0062E900
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -32,7 +32,7 @@ struct CTCBase {                               // engine/CTCBase.h layout, model
     CThing* GetThing() const { return ParentThing; }
 };
 
-struct CTCActionUseBase : CTCBase {
+class CTCActionUseBase : public CTCBase { public:
     unsigned char _pad0c[8];                   // +0x0c PActionUseDef, +0x10 Usable
     virtual void OnActionUse(CThing& user);    // slot 28
 };

@@ -7,7 +7,7 @@ struct CList_0048ca60 {                            // a 4-byte list (one sentine
     void* m_pNode;
     ~CList_0048ca60();                             // 0x0048CA60
 };
-struct CAIGameCameraBase {                         // vtable 0x0125C1F4
+class CAIGameCameraBase { public:                         // vtable 0x0125C1F4
     virtual void v00();
     unsigned char _body[0xa4];
     ~CAIGameCameraBase() { }                       // inline: the vtable store

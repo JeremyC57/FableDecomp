@@ -5,8 +5,8 @@ struct COwner
     void Release(int slot);
 };
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     int    field0;
     int    slot;
     int    field8;

@@ -34,12 +34,12 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;
     void (__fastcall* Destroy)(void* object);
     void* Object;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -54,19 +54,19 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-struct CFontBank;
+class CFontBank;
 struct CFontBankSource {
     CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -75,11 +75,11 @@ struct CRenderManager2D {
     bool Draw3DScaledText(const C3DVector& position, float scale, CWideString text, CFontBank* font,
                           const CRGBColour& colour, unsigned long flags);                 // 0x009DBFF0
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad00[8];
     CRenderManager2D* RenderManager2D;                  // +8
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                    // +0x60
     unsigned char    _pad64[0x84 - 0x64];

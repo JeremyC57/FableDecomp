@@ -16,11 +16,11 @@
 // Shape: same-TU out-only stand-ins for both GetSubDef instantiations, GetEffectFromString and LowerBound (as Spike); both
 //   defs released by hand without a null test on the battle def; the particle emitter is a named local so GetTC runs before
 //   the "" temporary is built.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -30,11 +30,11 @@ struct CDefBase {
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -48,13 +48,13 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CScorpionKingBattleDef : CDefBase {
+class CScorpionKingBattleDef : public CDefBase { public:
     unsigned char _pad08[0x44 - 0x08];
     float RecoveryTime;                         // +0x44
     float SpikeTime;                            // +0x48
     float SpikeDecisionTime;                    // +0x4c
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
     bool GetSubDef(CDefPointer<CScorpionKingBattleDef>* out);   // 0x008C5A50
 };
@@ -77,7 +77,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CScorpionKingBatt
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -100,15 +100,15 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing;
-struct CTCDParticleEmitter {
+class CThing;
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -139,7 +139,7 @@ inline bool IS_THING_ALIVE(const CThing* thing)
         return true;
     return false;
 }
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
 
 struct CBaseIntelligentPointer {
@@ -166,7 +166,7 @@ struct CModeBase {
 };
 namespace NCreatureMode {
 #pragma pack(push, 1)
-struct CModeScorpionKingTailPlunge : CModeBase {
+class CModeScorpionKingTailPlunge : public CModeBase { public:
     unsigned char       _pad1c[0x68 - 0x1c];
     long                RecoveryCount;          // +0x68
     long                DustEffectCounter;      // +0x6c

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_GenericResponseToDecapitation {
+class CCombatAction_GenericResponseToDecapitation { public:
     void* vftable;
     int destroyed;
 };

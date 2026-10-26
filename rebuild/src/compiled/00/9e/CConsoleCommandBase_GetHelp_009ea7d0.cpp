@@ -14,9 +14,9 @@
 // Shape: same family as the landed CConsoleVariable::GetHelp 0x009EA3C0: copy-initialised from
 //   `GetTypeAsString() + " with "`, `help += a + b` temporaries destroyed in reverse order, and the return copies
 //   the named local (no NRVO).
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                       // 0x0099EC30
     ~CCharString();                                              // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 CCharString __fastcall GFIntToCharString(long value);                            // 0x0099F830
 
-struct CConsoleCommandParameters {
+class CConsoleCommandParameters { public:
     long* m_pTypesStart;                                         // +0x00 STLport vector<long>
     long* m_pTypesFinish;                                        // +0x04
     long* m_pTypesEnd;                                           // +0x08

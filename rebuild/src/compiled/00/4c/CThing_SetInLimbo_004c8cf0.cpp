@@ -8,12 +8,12 @@
 //        store merges the new bit (`shl dl,5 ; xor ; and 20h ; xor`); AddingTCsPermitted (bit 6 of +0x93) is cleared
 //        before the loop and restored (`or ..,40h`) just before the slot-14 call; the message lives in the frame.
 // Layout: Components pairs +0x44/+0x48; CTCBase ToBeRemoved +0x08.
-struct CTCBase;
+class CTCBase;
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>
     long     first;
     CTCBase* second;
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -27,12 +27,12 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                         // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 namespace NTCMessages {
-struct CMessageClearPrimitives : CBase {             // vtable 0x01239A8C
+class CMessageClearPrimitives : public CBase { public:             // vtable 0x01239A8C
     CMessageClearPrimitives() { }
 };
 }
 struct CMessage;
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

@@ -5,8 +5,8 @@
 #define CEngineWaterRenderer CEngineWaterRendererDonorLayout
 #include "engine/CEngineWaterRenderer.h"
 #undef CEngineWaterRenderer
-struct CEngineMap;struct CPatchTesselationEdgeStrip;struct CMovableResource;
-struct CTesselationData {
+class CEngineMap;class CPatchTesselationEdgeStrip;class CMovableResource;
+class CTesselationData { public:
  void* VTable;int PatchWorldX,PatchWorldY,Width,Height;CEngineMap* EngineMap;CIndexBuffer* IndexBuffer;
  CPatchTesselationEdgeStrip* EdgeStrips[4];CVertexBufferWin32* BridgeVertexBuffers[4];CIndexBuffer* BridgeIndexBuffers[4];int BridgePolyCount[4];
 };

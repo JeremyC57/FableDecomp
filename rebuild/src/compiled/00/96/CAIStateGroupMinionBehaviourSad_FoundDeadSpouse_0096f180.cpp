@@ -11,9 +11,9 @@
 // Shape: C2DBoxI {x-5, y-5, x+5, y+5} in the frame, a one-word filter holding the creature, the out thing; the
 // intelligent-pointer temporary reuses the filter's slot. No engine header for this class; PDeadSpouse is +0x34.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,12 +61,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -100,8 +100,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 
 struct CThingCreaturePos {
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -111,11 +111,11 @@ struct CThingFilter_IsDeadSpouse {
     CThing* PCreature;
 };
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& box, const CThingFilter_IsDeadSpouse& filter, CThing** ppThing);   // 0x0096F260
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x20];
     CThingSearchTools* PThingSearchTools;       // +0x20
 };

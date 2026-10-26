@@ -2,7 +2,7 @@
 // Virtual clone: allocate a fresh instance via a virtual factory (vtable slot 4),
 // then copy the sub-object at +8 from this into the new instance.
 
-struct CAnimComponentBase;
+class CAnimComponentBase;
 
 // The sub-object living at offset +8; sub_99efb0 is its member (some copy/assign
 // taking a pointer to the source sub-object).
@@ -10,7 +10,7 @@ struct SubObj {
     void copyFrom(SubObj* src);   // __fastcall -> harness makes __fastcall (ecx=this)
 };
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     // vtable is implicit (first member). Slot 4 (offset 0x10) is the factory.
     virtual void v0();
     virtual void v1();
@@ -21,7 +21,7 @@ struct CAnimComponentBase {
     SubObj sub;         // at +8
 };
 
-struct CAnimComponentStrikeResponseAnim : public CAnimComponentBase {
+class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:
     CAnimComponentBase* Clone() const;
 };
 

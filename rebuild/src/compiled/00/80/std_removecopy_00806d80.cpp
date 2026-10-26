@@ -11,8 +11,8 @@
 //   re-read from its stack slot each time); `*result = *first` is CTargetPoint's assignment: SetPItem(GetPItem()), Index,
 //   the C3DVector through `lea eax,[esi+0Ch]` (implicit C3DVector assignment) and FrameRejected. VC7.1 strength-reduces
 //   result->TargetingPosition into a second induction register (`lea edi,[ebx+0Ch]`, Index stored at [edi-4]).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -22,18 +22,18 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     __forceinline bool operator==(const CIntelligentPointer& other) const { return GetPItem() == other.GetPItem(); }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
 namespace NPlayerTargeting {
-struct CTargetPoint {
+class CTargetPoint { public:
     CIntelligentPointer<CThing> PThing;          // +0x00
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C

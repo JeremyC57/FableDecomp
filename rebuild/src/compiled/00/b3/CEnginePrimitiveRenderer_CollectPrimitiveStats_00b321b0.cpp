@@ -7,7 +7,7 @@
 // SceneList (CArray<CEngineScene*> at PDB +0x33c, retail 4 bytes lower as in ResetVisibilityRatios); CEngine is only 0x188 bytes.
 // Shape: the 0x20-byte enumerator in the frame, its four constructor arguments forwarded in order; an index loop bounded by the
 // re-computed unsigned size (`jbe` entry, `jb` back edge), each scene read through STLport `*(begin() + i)`; the base destructor last.
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 
@@ -26,7 +26,7 @@ struct CEngineScenePrimitiveStatsEnumerator : CBase {   // 0x20 bytes, vtable 0x
     CEngineScenePrimitiveStatsEnumerator(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned long statFlags);   // 0x00BACA20
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     void Enumerate(CBase& enumerator);       // 0x00B93290
 };
 
@@ -40,7 +40,7 @@ struct CRetailVector {                       // STLport vector of pointers: 12 b
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     unsigned char                _pad[0x338];
     CRetailVector<CEngineScene*> SceneList;  // +0x338 (PDB +0x33c)
     void CollectPrimitiveStats(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned long statFlags);

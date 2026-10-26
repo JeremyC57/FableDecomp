@@ -12,8 +12,8 @@ public:
     ~CCharString() { --g_strings; }
     CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()

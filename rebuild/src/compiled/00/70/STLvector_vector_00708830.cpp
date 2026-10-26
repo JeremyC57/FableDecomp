@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CTCHeroAttachableAppearanceModifiers {
 public:
-    struct CModifierEntry {                               // Ego_r.pdb, 8 bytes (implicit copy)
+    class CModifierEntry { public:                               // Ego_r.pdb, 8 bytes (implicit copy)
         long DefIndex;                                    // +0x00 global def index
         bool Rendered;                                    // +0x04
     };

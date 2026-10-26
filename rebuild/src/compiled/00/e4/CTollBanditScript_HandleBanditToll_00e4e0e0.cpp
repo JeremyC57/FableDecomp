@@ -10,14 +10,14 @@
 //   GetSquaredDistanceBetweenThings 0x00CBE512 (__fastcall), IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC;
 //   CGameScriptInterface slots 70 GetHero, 72 GetThingWithScriptName, 91 CreateCreature, 472 EntityTeleportToThing,
 //   474 EntitySetFacingAngle. Default position 0x0143E8E0 for an empty handle.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -29,7 +29,7 @@ struct CScriptThingImp {
     virtual float GetHeading() const;                    // slot 10 (+0x28)
 };
 extern const C3DVector g_ZeroPos;                        // 0x0143E8E0
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -65,11 +65,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
@@ -90,7 +90,7 @@ float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CS
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
     VPAD64(p0_0) VPAD4(p0_1) VPAD2(p0_2)                                         // slots 0..69
     virtual CScriptThing& GetHero() const;                                       // slot 70 (+0x118)
     VPAD1(p71_0)                                                                 // slots 71..71

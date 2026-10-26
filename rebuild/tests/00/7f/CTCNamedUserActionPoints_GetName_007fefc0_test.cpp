@@ -1,11 +1,11 @@
 #include <stdio.h>
-struct CCharString {
+class CCharString { public:
     char* p;
     void Assign(const CCharString& src);
 };
 static const CCharString* captured_src; static CCharString* captured_self;
 void CCharString::Assign(const CCharString& src){ captured_self=this; captured_src=&src; }
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     char pad[0x34];
     CCharString* arr;
     void GetName(long index, CCharString* out);

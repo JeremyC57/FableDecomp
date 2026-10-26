@@ -10,9 +10,9 @@
 // of line). Members +0x1c..+0x2f (bed times, sleep offsets used by InitStateGroup / IsInSleepTime) are
 // left uninitialised by the constructor. No engine header: CAIStateGroup_GoToBed.h does not exist, so
 // the layout is modelled locally on CAIStateGroupBase (0x14 bytes).
-struct CThing;
+class CThing;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIStateGroupBase();                        // 0x008FD255
 };
@@ -23,12 +23,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }      // inlined: base ctor + vtable 0x01238C6C
 };
 
-struct CCharString {
+class CCharString { public:
     CCharString();                              // 0x0099E4B0
 };
 

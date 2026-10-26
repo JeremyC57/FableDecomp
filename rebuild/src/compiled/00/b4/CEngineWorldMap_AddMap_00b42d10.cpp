@@ -20,14 +20,14 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void __cdecl operator delete[](void* block);          // 0x00BFEB1C
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CIDrawMap;
-struct CDrawMapInfo {
+class CIDrawMap;
+class CDrawMapInfo { public:
     bool Valid;                                         // +0x00
     bool Loadable;                                      // +0x01
     bool GameLoadable;                                  // +0x02
@@ -38,23 +38,23 @@ struct CDrawMapInfo {
     long ExtentsX, ExtentsY;                            // +0x18 C2DExtentsI
 };
 
-struct CIDrawWorldMap {
+class CIDrawWorldMap { public:
     virtual long GetMapCount() const = 0;                       // slot 0
     virtual CDrawMapInfo GetMapInfo(long index) const = 0;      // slot 1
 };
 
-struct CEngineMap;
-struct CEngineLandscapeMap {
+class CEngineMap;
+class CEngineLandscapeMap { public:
     void OnMapVisibilityChanged(bool visible);      // 0x00BDC3C0
 };
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     void OnMapVisibilityChanged(bool visible);      // 0x00BDE160
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void CreateMap(CEngineMap* map, long flags);    // 0x00B67140
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     void CreateMap(CEngineMap* map);                // 0x00B59800
 };
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
@@ -65,7 +65,7 @@ struct _List_node {
     CEngineMap* _M_data;
 };
 
-struct CEngineMap {                                 // retail 0x68 bytes
+class CEngineMap { public:                                 // retail 0x68 bytes
     CEngineLandscapeMap*  LandscapeMap;             // +0x00
     CLocalDetailCacheMap* LocalDetailCacheMap;      // +0x04
     const CIDrawMap*      GameMap;                  // +0x08
@@ -79,7 +79,7 @@ struct CEngineMap {                                 // retail 0x68 bytes
     CEngineMap(const CIDrawMap* gameMap, long posX, long posY, long width, long height, long uid, CCharString staticMapName, bool rebuild);   // 0x00B429E0
 };
 
-template <class T> struct CArray {                  // retail CArray (STLport vector): begin, end, capacity
+template <class T> class CArray { public:                  // retail CArray (STLport vector): begin, end, capacity
     T* First;
     T* Last;
     T* End;
@@ -105,7 +105,7 @@ struct CEngineMapList {                             // STLport list<CEngineMap*>
     void push_front(CEngineMap* const& x) { insert(begin(), x); }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*                 _vptr;                    // +0x000
     unsigned char         _pad004[0x8];
     short*                Map;                      // +0x00c

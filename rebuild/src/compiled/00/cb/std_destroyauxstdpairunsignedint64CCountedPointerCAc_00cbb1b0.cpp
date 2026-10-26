@@ -11,7 +11,7 @@
 //   0x00CBD56A in the script-base TU. Dinkumware's `_Destroy_range(first, last, allocator&)` (the landed name) has the
 //   same calling shape. Namespace std (owner decision 2026-10-25).
 // Model: the landed row's CCountedPointer release and the 0x00CB8170 row's STLport pieces.
-struct CCPPointerInfo {                             // CCountedPointer count block
+class CCPPointerInfo { public:                             // CCountedPointer count block
     long  RefCount;                                 // +0x00
     void  (__fastcall* DeleteFunc)(void* data);     // +0x04
     void* Data;                                     // +0x08

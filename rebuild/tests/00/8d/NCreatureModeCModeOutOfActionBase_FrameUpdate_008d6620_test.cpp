@@ -1,7 +1,7 @@
 // Behaviour test for ledger chunk 909 piece 008d6620
 #include <cstdio>
 static int g_baseTicks = 0, g_recovered = 0;
-struct CThingCreatureBase { long GetOutOfActionRecoveryFrames() { return 42; } float GetStunnedTimeSeconds() { return 2.5f; } float GetDazedTimeSeconds() { return 1.5f; } };
+class CThingCreatureBase { public: long GetOutOfActionRecoveryFrames() { return 42; } float GetStunnedTimeSeconds() { return 2.5f; } float GetDazedTimeSeconds() { return 1.5f; } };
 struct CModeBase {
     virtual void v00() {} virtual void v01() {} virtual void v02() {}
     virtual void FrameUpdate() { ++g_baseTicks; }

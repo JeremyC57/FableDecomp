@@ -10,12 +10,12 @@
 // Shape: best pointer in ebx (0), best priority in ebp (0x7FFFFFFF); the end pointer is re-read
 // after every element because the loop body makes a virtual call; `!best || priority < bestPriority`
 // gives `test ebx,ebx ; je take ; cmp [esi+18h],ebp ; jge next`.
-struct CThing;
-struct C3DVector;
+class CThing;
+class C3DVector;
 
 namespace NHitLocations {
 
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsPosInside(const CThing& owner, const C3DVector& pos) const;   // slot 9
@@ -26,7 +26,7 @@ struct CHitLocationDef {
     CPhysicalPrimitiveBase* PhysicalPrimitive;   // +0x3c CPhysicalPrimitiveInit::PPrimitive (PDB +0x40)
 };
 
-struct CHitLocation {
+class CHitLocation { public:
     CThing*                POwnerThing;         // +0x00
     const CHitLocationDef* PDef;                // +0x04 CDefPointer<const CHitLocationDef>
     void*                  PArmourDef;          // +0x08
@@ -42,7 +42,7 @@ struct SHitLocationEntry {                        // std::pair<NHitLocations::CH
     long                        second;          // +0x18 priority
 };
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     unsigned char      _pad_0x00[0x0c];
     SHitLocationEntry* HitLocations_First;       // +0x0c
     SHitLocationEntry* HitLocations_Last;        // +0x10

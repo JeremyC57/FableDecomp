@@ -1,4 +1,4 @@
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     void* vftable;
 };
 

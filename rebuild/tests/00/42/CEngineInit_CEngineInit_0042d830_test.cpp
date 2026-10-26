@@ -6,7 +6,7 @@ public:
     CWideString() : PStringData(0) { ++g_wideStrings; }
     void* PStringData;
 };
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     long LandscapePoolSize; float LandscapePhysicalMemoryRatio; long LandscapeVirtualMemoryMinSize, MeshPoolSize, MeshStatsPoolSize;
     float MeshPhysicalMemoryRatio; long HiresTextureMemory, PhysicsMeshPoolSize, AnimationPoolSize, ClothPoolSize;
     CEngineMemoryInit()
@@ -14,7 +14,7 @@ struct CEngineMemoryInit {
           MeshStatsPoolSize(-1), MeshPhysicalMemoryRatio(-1.0f), HiresTextureMemory(-1), PhysicsMeshPoolSize(-1),
           AnimationPoolSize(-1), ClothPoolSize(-1) {}
 };
-struct CEngineInit {
+class CEngineInit { public:
     void* DefinitionManager; void* EngineDef; void* RenderManager; void* DebugString; void* World; void* Font;
     void* MainGraphicBank; void* TerrainGraphicBank;
     CWideString MeshResourcePath, GraphicsResourcePath, ShaderResourcePath, EngineCacheResourcePath, WriteableEngineCacheResourcePath;

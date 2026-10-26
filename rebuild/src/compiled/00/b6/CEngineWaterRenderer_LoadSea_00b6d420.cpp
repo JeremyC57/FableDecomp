@@ -5,7 +5,7 @@
 // CWaterSeaGenerator::~CWaterSeaGenerator @ 0x00BE9150 (empty). The `long polyCount = 0` store is scheduled after the argument pushes
 // (`mov dword ptr [esp+18h],0`), the result is read back, decremented by two (`add edx,-2`) and stored before the flag byte. The engine
 // header's HaveBackgroundSea (+0x2aa, Ego PDB) sits at +0x276 in retail (12-byte CArrays), so the retail layout is modelled locally.
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
 struct CIndexBuffer_00b6d420 { unsigned char _body[0x14]; };
 struct CVertexBufferWin32_00b6d420 { unsigned char _body[0x34]; };
@@ -18,7 +18,7 @@ struct CWaterSeaGenerator_00b6d420 {              // 4 bytes, built and destroye
                  CIndexBuffer_00b6d420* indexBuffer, long* polyCount);   // 0x00BE91E0
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char               _pad0[0x68];
     CIndexBuffer_00b6d420       SeaBackgroundIndexBuffer;     // +0x68
     CVertexBufferWin32_00b6d420 SeaBackgroundVertexBuffer;    // +0x7c

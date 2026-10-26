@@ -5,20 +5,20 @@
 // Shape: `ret 20h`; the zeroed sound pair shares ebx with the later zero stores; Stage / NumberOfTimesToLoop / FrameToFinish /
 // UseAnimationMovement and the two string members are initialiser-list entries (AmountOfTimeToLoop is left alone); the CCharString
 // class is modelled locally so its copy constructor stays out of line.
-struct CThingCreatureBase;
-struct CThing;
-struct CAnimationEntry;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
+class CThingCreatureBase;
+class CThing;
+class CAnimationEntry;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
-struct CCharString {                        // modelled locally: retail calls the out-of-line copy constructor
+class CCharString { public:                        // modelled locally: retail calls the out-of-line copy constructor
     void* m_pData;
     CCharString();                          // 0x0099E4B0
     CCharString(const CCharString& other);  // 0x0099EC30
@@ -26,7 +26,7 @@ struct CCharString {                        // modelled locally: retail calls th
 };
 CAnimationEntry* __fastcall GetAnimationEntry(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureActionBase {   // vtable 0x01273B2C; members = PDB names (PDB +0xb4.. sit 0xc high)
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:   // vtable 0x01273B2C; members = PDB names (PDB +0xb4.. sit 0xc high)
     long        Stage;                      // +0xa8 EStage
     long        NumberOfTimesToLoop;        // +0xac
     float       AmountOfTimeToLoop;         // +0xb0

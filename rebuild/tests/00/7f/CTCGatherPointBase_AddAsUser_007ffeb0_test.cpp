@@ -6,7 +6,7 @@
 #endif
 #include <cstdio>
 #include <cstring>
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -33,7 +33,7 @@ struct CPtrVector {                             // STLport vector<CIntelligentPo
     void push_back(const CPtr& value);          // 0x007398B0
 };
 
-struct CTCGatherPointBase {
+class CTCGatherPointBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08
@@ -60,7 +60,7 @@ bool CTCGatherPointBase::AddAsUser(const CThing& user)
 }
 
 // ---- test stubs for the retail callees ----
-struct CThing { int Id; };
+class CThing { public: int Id; };
 static CPtr* g_storage; static int g_dtors;
 CBaseIntelligentPointer::CBaseIntelligentPointer() : PItem(0) {}
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { ++g_dtors; }

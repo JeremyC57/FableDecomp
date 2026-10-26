@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #endif
 #include <math.h>
 #pragma intrinsic(exp)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };

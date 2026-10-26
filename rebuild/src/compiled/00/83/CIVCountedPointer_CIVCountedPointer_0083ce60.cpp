@@ -7,7 +7,7 @@
 // Shape: `this` is returned (eax = ecx first), the pointee stored before the null test, then `inc [edx+4]`.
 // Layout: CIVCountedPointeeBase is modelled as in the landed 0x0084B690 (the engine header flattens the vtable to a
 //   void* member): vtable +0, IVRefCount +4.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);              // slot 0
     virtual void Delete();                        // slot 1
     unsigned long IVRefCount;                     // +0x04

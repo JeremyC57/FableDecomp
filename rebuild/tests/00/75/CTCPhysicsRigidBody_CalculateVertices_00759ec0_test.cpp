@@ -1,14 +1,14 @@
 // Behaviour test for CTCPhysicsRigidBody::CalculateVertices (0x00759EC0): every body-space bounding vertex becomes
 // Orientation * v + CMPosition in the configuration's vertex array; an empty body list leaves the output untouched.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0, m_row1, m_row2, m_translation;
     C3DVector operator*(const C3DVector& v) const
     {
@@ -26,7 +26,7 @@ template <class T> struct vector {
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 struct CRigidBody {
-    struct CRigidBodyConfig {
+    class CRigidBodyConfig { public:
         C3DVector  CMPosition;
         CMatrix3x4 Orientation;
         vector<C3DVector> BoundingVertices;

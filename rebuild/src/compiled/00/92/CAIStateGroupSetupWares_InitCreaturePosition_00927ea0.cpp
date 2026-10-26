@@ -10,7 +10,7 @@
 // re-displayed and the stock state reset (0); outside them a shop that is not permanently stocked is emptied.
 // Every path returns false (this override never places the creature); retail tail-duplicates the
 // `pop esi ; xor al,al` epilogue into the opening-hours arm. No engine header exists for this class.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the landed out-parameter
@@ -23,7 +23,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -64,12 +64,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CTCShop {
+class CTCShop { public:
     bool IsOpeningHours();                      // 0x00773950
     void RemoveStockItemsFromShop();            // 0x00773E10
     void StockDisplay();                        // 0x00774C60
@@ -77,11 +77,11 @@ struct CTCShop {
     bool IsPermanentlyStocked();                // 0x007721A0
 };
 
-struct CTCShopKeeper {                          // interface type 0x90 component
+class CTCShopKeeper { public:                          // interface type 0x90 component
     CTCShop* GetShopTC();                       // 0x00798F50
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

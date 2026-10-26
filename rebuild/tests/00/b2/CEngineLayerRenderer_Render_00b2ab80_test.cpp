@@ -68,7 +68,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CEngineComponent {
+class CEngineComponent { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         GlobalPointerAddress;                      // +0x04 void * *
     bool          RenderEnabled;                             // +0x08
@@ -91,8 +91,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineComponent, KeepAlive) == 0x9);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -100,8 +100,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -187,7 +187,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 #include <stddef.h>
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass(); // RTTI vtable 0x01231710 slot 0; constructor 0x0099A2D0
     CBaseClass();
 };
@@ -202,7 +202,7 @@ struct CBaseClassNonCopyable : CBaseClass {
 enum EEngineRenderLayer { EEngineRenderLayer_FixtureValue = 0 };
 enum ERenderRenderLayerFlags { ERenderRenderLayerFlags_FixtureValue = 0 };
 
-struct CEngineComponentParams {
+class CEngineComponentParams { public:
     float FrameInterpolation;
     unsigned char InterpolationInfo[0x70];
     unsigned long FrameID;
@@ -211,8 +211,8 @@ struct CEngineComponentParams {
     unsigned char _pad_0x7d[3];
 };
 
-struct CEngineComponentLoadNewSceneParams;
-struct CEngineComponentRenderParams {
+class CEngineComponentLoadNewSceneParams;
+class CEngineComponentRenderParams { public:
     const CEngineComponentParams* Params;
     long RenderLayer;
     unsigned long RenderLayerFlags;
@@ -246,7 +246,7 @@ struct CEngineComponentPointerArray {
     CEngineComponent** End;
 };
 
-struct CEngineLayerRenderer : CBaseClassNonCopyable {
+class CEngineLayerRenderer : public CBaseClassNonCopyable { public:
     virtual ~CEngineLayerRenderer();
     virtual void Render(const CEngineComponentParams& params);
 

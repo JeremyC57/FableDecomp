@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 static long g_lastType = -1;
 static CEngineGraphic GetEngineGraphic(long itemType) { g_lastType = itemType; CEngineGraphic g = { (unsigned long)(itemType * 10), 0, 0, false, 0 }; return g; }
 struct CLongVector {
@@ -9,7 +9,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
 // Behaviour of CTCInventory::GetContextSensitiveItemGraphicIndex (0x00581CFD): the slot's graphic bank index, 0 for an empty (<= 0) slot.
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector ContextSensitiveItems;
     long GetContextSensitiveItemGraphicIndex(long index)
     {

@@ -9,7 +9,7 @@
 extern const float g_QuaternionEpsilon;   // 0x0129BA3C (0.0001f)
 extern const float g_One;                 // 0x0122DED8 (1.0f)
 
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     bool IsIdentity() const;
 };

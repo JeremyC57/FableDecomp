@@ -8,11 +8,11 @@ static void Reset(int termAt) { g_log[0] = 0; g_frame = 0; g_termAt = termAt; }
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBalvMarker::Main spawns a balverine each round, waits for the marker on screen, plays its leap animation, removes it, waits for the marker off screen
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum EScriptAIPriority { P0 };
 enum EScriptEntityMoveType { MT0 };
 static int g_onScreenFrom = 3, g_onScreenTo = 6, g_taskEnds = 0, g_created = 0, g_alive = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id = 0) : Id(id) { ++g_alive; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_alive; }
@@ -25,7 +25,7 @@ struct CScripted {
     void PlayCombatAnimation(const char* a, bool, bool, bool, bool, bool, bool) { Log(a); g_taskEnds = g_frame + 2; }
     bool IsPerformingScriptTask() const { return g_frame < g_taskEnds; }
 };
-struct CGame {
+class CGame { public:
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing& t, CScripted&, EScriptAIPriority p) { char x[32]; std::sprintf(x, "start %d %d", t.Id, (int)p); Log(x); return false; }
     CScriptThing CreateCreature(const char* def, const C3DVector& pos, const char* name, bool) const

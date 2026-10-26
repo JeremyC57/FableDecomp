@@ -2,7 +2,7 @@
 
 // Model of CTCHaste::GetActionSpeedMultiplier @ 0x007FFFB0.
 static float g_ActionSpeedMultiplierOverride = -1.0f;
-struct CTCHaste {
+class CTCHaste { public:
     float Multiplier; bool ToTerminate; long PauseFrames;
     float GetActionSpeedMultiplier() const
     {

@@ -19,20 +19,20 @@
 //   "_BROTHER" 0x012EDE74, "_BANTER" 0x012EDFD4.
 // Layout: entity-script base {vptr, Game +4, Me +8}; the comment counter at +0x28 (descriptive).
 // Shape: switch jump table (5 cases + default).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -54,14 +54,14 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {}
     virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {} virtual void v010() {} virtual void v011() {}
     virtual void v012() {} virtual void v013() {} virtual void v014() {} virtual void v015() {} virtual void v016() {} virtual void v017() {}
@@ -128,7 +128,7 @@ struct CGameScriptInterface {                           // vtable 0x01260F0C
     virtual void AddPersonToConversation(long conversation, const CScriptThing& person) const;   // slot 365 (+0x5b4)
     virtual void AddLineToConversation(long conversation, const CCharString& text, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8)
 };
-struct CEntityScriptBase {                              // retail 0x14 bytes
+class CEntityScriptBase { public:                              // retail 0x14 bytes
     virtual void e00() {}
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

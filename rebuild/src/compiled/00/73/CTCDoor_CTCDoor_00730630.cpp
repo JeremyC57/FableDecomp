@@ -17,21 +17,21 @@
 // compares it with the zero register.
 // Retry 10b: same-TU GetDef/GetSubDef stand-ins that write the out slot inline (no escape) move the zero store
 // after the pushes; the parent read into a named local first gives retail's eax/edx roles for the def index.
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                                // +0x8c
     void SetCutscenePauseBehaviour(long behaviour);         // 0x004C78A0
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
 
-struct CDoorDef;
+class CDoorDef;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long RefCount;                                          // +0x04
@@ -51,7 +51,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const CDoorDef>* 
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -68,7 +68,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 }
 #pragma auto_inline(on)
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -77,7 +77,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager();             // 0x006869D0
 };
 
-struct CTCDoor : CTCBase {                                  // vtable 0x01266DE4
+class CTCDoor : public CTCBase { public:                                  // vtable 0x01266DE4
     long                        Jammed;                     // +0x0c
     bool                        CurrentOpen;                // +0x10
     bool                        OldOpen;                    // +0x11

@@ -17,7 +17,7 @@ struct CEngineVideoQualitySettings {
     bool          GlowEnabled;                     // +0x6e
 };
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
 };
 struct CEngineGlobal_01436e98 {

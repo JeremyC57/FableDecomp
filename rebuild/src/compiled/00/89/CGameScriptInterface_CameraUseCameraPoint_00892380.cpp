@@ -10,7 +10,7 @@
 class CCharString;
 class C3DVector;
 class CRightHandedSet;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

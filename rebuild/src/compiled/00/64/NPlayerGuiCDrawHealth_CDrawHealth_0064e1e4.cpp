@@ -10,7 +10,7 @@
 // Shape: as the landed CDrawStamina 0x0064E24F: Effects is zeroed through its address in edi (inline member constructor, the
 // pointer reused as `this` of its Resize) with `and dword ptr [..],0` (size TU), the -1.0f is an immediate store, the float zeros
 // and ones come from fldz/fld1, all members in the initialiser list; Effects is resized before the primitive handles.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
@@ -34,14 +34,14 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawHealth : CDrawBase {                   // vtable 0x0125A60C
+class CDrawHealth : public CDrawBase { public:                   // vtable 0x0125A60C
     virtual void v00();
     CRetailEmitterVector Effects;                  // +0x28
     float                PreviousHealth;           // +0x34

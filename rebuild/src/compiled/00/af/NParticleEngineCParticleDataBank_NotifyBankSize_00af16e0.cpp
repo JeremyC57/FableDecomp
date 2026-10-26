@@ -15,7 +15,7 @@
 
 namespace NParticleEngine {
 
-struct CParticleEmitterInfo {
+class CParticleEmitterInfo { public:
     void*         Data;                                                   // +0 CIVCountedPointer<CEmitterData>
     void*         Bank;                                                   // +4 CParticleDataBank*
     unsigned long Index;                                                  // +8

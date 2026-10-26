@@ -3,7 +3,7 @@
 // Callees: CResource::CResource @ 0x009FBEC0. Vtable 0x0129DC24 = CManagedTextureData (rtti-vtables.tsv; the chunk label "CGPUScratchBufferTextureManager" is
 // propagated). Shape: the shorts stored BEFORE the vtable (plain initialisers), the words and bytes after it (member objects with inline constructors), one
 // zero register; `this` is returned.
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x1c - 4];                 // sizeof = 0x1c
     CResource();                                   // 0x009FBEC0
@@ -18,7 +18,7 @@ struct STextureFlags_00a69980 {                    // three flag bytes, all clea
     STextureFlags_00a69980() : m_a(false), m_b(false), m_c(false) { }
 };
 
-struct CManagedTextureData : CResource {           // vtable 0x0129DC24
+class CManagedTextureData : public CResource { public:           // vtable 0x0129DC24
     short                  m_width;                // +0x1c
     short                  m_height;               // +0x1e
     STextureDims_00a69980  m_dims;                 // +0x20

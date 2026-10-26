@@ -6,7 +6,7 @@ static float AngleDifference(float a, float b) { ++g_calls; float d = b - a; if 
 static float g_epsilon_0129ba3c = 1e-4f;
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
-struct CTCLook {
+class CTCLook { public:
 };
 
 static void GetBodySettingsSlowInFastOut(float* angle, float* velocity, float acceleration, float maxSpeed, float targetAngle)

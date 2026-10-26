@@ -2,7 +2,7 @@
 #include <string.h>
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -17,7 +17,7 @@ public:
     const C3DVector& GetPosition() const { return Position; }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }

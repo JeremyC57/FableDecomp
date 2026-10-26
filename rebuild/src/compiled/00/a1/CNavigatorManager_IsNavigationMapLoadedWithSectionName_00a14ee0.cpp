@@ -2,11 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A14EE0, length 96 bytes.
 // Leaf: IsNavigationMapLoadedWithSectionName
 // Callees: Compare @ 0x00411570 (`__fastcall(a, b)`). Shape: no frame, the id search loop aligned, the `== 0` as `neg ; sbb ; inc`, `ret 8`.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
@@ -33,7 +33,7 @@ struct SMapNode_00a14ee0 {
     CCharString        m_sectionName;              // +0x24
 };
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     unsigned char      _pad00[0x24];
     SMapNode_00a14ee0* m_pMaps;                    // +0x24: the sentinel
     bool IsNavigationMapLoadedWithSectionName(long id, const CCharString* name);

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTCInventoryAbilities::GetSpecialAbilityGraphicSetToButton (0x005EE31D): same logic over a copy of the model.
-struct CHeroAbilityDef { long IconGraphicIndex; };
+class CHeroAbilityDef { public: long IconGraphicIndex; };
 struct SAbilityEntry { long Level; const CHeroAbilityDef* PDef; };
 struct CAbilityEntryVector { SAbilityEntry* first; SAbilityEntry* last; SAbilityEntry* end_of_storage; SAbilityEntry& operator[](unsigned long n) { return first[n]; } };
 struct SButtonEntry { long Button; long Ability; };

@@ -1,6 +1,6 @@
 // Behaviour test for 0x0094C7E0: GameMaster::InitStateGroup runs the base init, then resets its own state.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CGoToPub { CThing* PBaseThing; int baseInits;
     virtual void InitStateGroup(int world, int creature) { ++baseInits; PBaseThing = (CThing*)0x1; (void)world; (void)creature; }
     virtual ~CGoToPub() {} };

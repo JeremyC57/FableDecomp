@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour model of 0x009F4910: CScratchBuffer::Initialise (base Init, allocation, size).
 static bool g_initOk = true;
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual ~CInitBaseClass() {}
     bool Valid;
     bool Init() { Valid = true; return g_initOk; }
 };
-struct CScratchBuffer : CInitBaseClass {
+class CScratchBuffer : public CInitBaseClass { public:
     unsigned char* Buffer; bool Locked; long NoBytes;
     bool Initialise(long noBytes)
     {

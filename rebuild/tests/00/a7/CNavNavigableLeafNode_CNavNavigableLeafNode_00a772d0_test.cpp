@@ -3,16 +3,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct C2DVector { float X, Y; };
-struct CAFile {
+class C2DVector { public: float X, Y; };
+class CAFile { public:
     const unsigned char* p;
     void Read(void* d, unsigned long n, long) { std::memcpy(d, p, n); p += n; }
 };
-struct CNavRegion { long id; };
+class CNavRegion { public: long id; };
 struct SNode { SNode* next; SNode* prev; CNavRegion r; };
 struct CIt { SNode* n; CNavRegion& operator*() const { return n->r; } };
 static void advance(CIt& it, long n) { if (n > 0) while (n--) it.n = it.n->next; else while (n++) it.n = it.n->prev; }
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     C2DVector Position; unsigned char QuadTreeLevel, NavLayer; bool LeafNode, Blocked;
     CNavRegion* PRegion; int Neighbours[8]; unsigned int Count; unsigned char PreferabilityCost;
     CNavNavigableLeafNode(const C2DVector& pos, unsigned char level, unsigned char layer, CAFile& file, SNode* regions, bool readPreferability)

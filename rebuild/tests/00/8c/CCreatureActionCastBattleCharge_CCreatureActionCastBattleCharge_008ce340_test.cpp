@@ -5,14 +5,14 @@
 #else
 #define FASTCALL
 #endif
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CBaseObject { int id; };
-struct CCharString {
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CBaseObject { public: int id; };
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text, long length = -1) : m_text(text) { (void)length; }
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 static const char* g_soundName = 0;
 static CThingCreatureBase* g_soundOwner = 0;
 CSoundPair FASTCALL GetSoundPair(CThingCreatureBase* owner, const CCharString& name)
@@ -31,7 +31,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -39,7 +39,7 @@ struct C3DVector {
 struct SBaseArgs { CThingCreatureBase* owner; CThing* target; long code; long first; long last; };
 static SBaseArgs g_base;
 static const char* g_animName = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
     { g_base.owner = owner; g_base.target = 0; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
@@ -47,7 +47,7 @@ struct CCombatActionBase {
     { g_base.owner = owner; g_base.target = target; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
     void SetAnimationName(const CCharString& name) { g_animName = name.m_text; }
 };
-struct CCreatureAction_CastBattleCharge : CCombatActionBase {
+class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:
     bool Override;
     C3DVector Dir;
     float Distance;

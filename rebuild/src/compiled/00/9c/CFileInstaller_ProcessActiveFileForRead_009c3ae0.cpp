@@ -36,8 +36,8 @@ struct CBufferChunk {
     bool IsInput;                                       // +0x05
 };
 
-struct CFileInstaller {
-    struct CActiveFile {
+class CFileInstaller { public:
+    class CActiveFile { public:
         void*         SrcFileHandle;                    // +0x00
         void*         DstFileHandle;                    // +0x04
         unsigned long CurrentSrcOffset;                 // +0x08
@@ -49,7 +49,7 @@ struct CFileInstaller {
         unsigned long MinWriteSize;                     // +0x24
         unsigned long MinReadSize;                      // +0x28
     };
-    struct CActiveRead {                                // 0x28 bytes
+    class CActiveRead { public:                                // 0x28 bytes
         CActiveFile*     PActiveFile;                   // +0x00
         long             FilePos;                       // +0x04
         long             TransferSize;                  // +0x08

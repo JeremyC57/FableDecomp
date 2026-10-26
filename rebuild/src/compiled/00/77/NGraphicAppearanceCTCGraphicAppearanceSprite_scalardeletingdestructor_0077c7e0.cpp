@@ -14,20 +14,20 @@ void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 struct CPrimitive;
 
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     void UnregisterComponent(CAGraphicAppearanceComponent* component);   // 0x004C0000
 };
 }
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
     unsigned char _pad68[0x29];
     unsigned char Dead : 1;                                 // +0x91 bit 0
 };
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
@@ -36,12 +36,12 @@ struct CTCBase {
 };
 
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent {                       // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:                       // vtable 0x0125A170
     virtual void OnAppearanceDraw();
     ~CAGraphicAppearanceComponent() { }
 };
 
-struct CTCGraphicAppearanceSprite : CTCBase, CAGraphicAppearanceComponent {   // vtables 0x0126AE94 / 0x0126AE78
+class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceComponent { public:   // vtables 0x0126AE94 / 0x0126AE78
     float RotationAmountPerFrame;                           // +0x10
     float RotationAngle;                                    // +0x14
     float OldRotationAngle;                                 // +0x18

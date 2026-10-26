@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CPrizeScoreDef
-{
+class CPrizeScoreDef
+{ public:
     void* vftable;
 };
 extern void* const g_CPrizeScoreDef_vftable;

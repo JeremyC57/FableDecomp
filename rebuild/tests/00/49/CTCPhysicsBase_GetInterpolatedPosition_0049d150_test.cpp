@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -8,7 +8,7 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector Position, OldPosition;
     C3DVector GetInterpolatedPosition(float t) { return (Position - OldPosition) * t + OldPosition; }
 };

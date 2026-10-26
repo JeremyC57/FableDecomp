@@ -8,26 +8,26 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player;
     unsigned char Data[32];
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, 32); buffer.Length = 32; return 32; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 static int g_moves = 0; static C3DVector g_last(0, 0, 0);
-struct CTCCoopSpirit { void ApplyMovementVector(const C3DVector& m) { ++g_moves; g_last = m; } };
-struct CThing {
+class CTCCoopSpirit { public: void ApplyMovementVector(const C3DVector& m) { ++g_moves; g_last = m; } };
+class CThing { public:
     bool HasSpirit; CTCCoopSpirit* Spirit;
     bool HasTC(long type) const { return type == 0xC7 && HasSpirit; }
     template<class T> T* GetTC(long) { return Spirit; }
 };
 static CThing* g_hero = 0; static int g_heroCalls = 0;
-struct CPlayer { CThing* GetHeroThing() { ++g_heroCalls; return g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() { ++g_heroCalls; return g_hero; } };
 static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long) { return &g_player; }
     void EAMoveSpirit(const CGameEvent* event);
 };

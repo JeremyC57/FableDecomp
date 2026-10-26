@@ -161,13 +161,13 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void ResetPositions();             // slot 142 (+0x238; CDynamicList's override @ 0x005416B0)
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {   // retail 0x15c bytes (hand29 / landed Initialise @ 0x0052C730)
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:   // retail 0x15c bytes (hand29 / landed Initialise @ 0x0052C730)
     unsigned char _body[0x15c - 0x1c];      // +0x1c .. +0x15c
     CChangingStateComponent(long owner);           // 0x0052CC50
     void Initialise();                             // 0x0052C730
 };
 
-struct CDynamicList : CChangingStateComponent {    // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
+class CDynamicList : public CChangingStateComponent { public:    // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
     long BInitialised;                             // +0x15c
     void Initialise();
 };

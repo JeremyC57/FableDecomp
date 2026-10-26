@@ -13,15 +13,15 @@
 //   bitfield order. CThing +0x64 graphic appearance (graphic data +0x44: index +0, type byte +0xd; has-graphic byte +0x51).
 #include <math.h>
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     void Clear() { X = Y = Z = 0.0f; }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DBoxI { long Left; long Top; long Right; long Bottom; };
-struct CThing;
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
+class CThing;
 struct CThingPtrVector {                            // retail STLport vector<CThing*> (12 bytes)
     CThing** first;
     CThing** last;
@@ -32,18 +32,18 @@ struct CThingPtrVector {                            // retail STLport vector<CTh
 extern const float g_FloatEpsilon;                  // 0x0129BA3C
 extern const float g_OnGroundTolerance;             // 0x0125A15C
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     bool HasPhysicsMesh() const;                    // 0x00A23C40
 };
 struct CGraphicBank {
     C3DMeshInfo* GetMesh(unsigned long index);              // 0x00A24280
     C3DMeshInfo* GetAnimatedMesh(unsigned long index);      // 0x00A242B0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CGraphicBank* PGraphicBank;                     // +0x3c
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& pos) const;     // 0x0063A300
 };
 struct CGraphicDataRef {
@@ -67,11 +67,11 @@ struct CTCGraphicAppearance {
     unsigned char   _pad00[0x44];
     CGraphicDataRef GraphicData;                    // +0x44
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;       // +0x64
 };
-struct CPhysicsDef {
+class CPhysicsDef { public:
     unsigned char _pad00[0x38];
     float         Mass;                             // +0x38
     long          InteractionFlags;                 // +0x3c

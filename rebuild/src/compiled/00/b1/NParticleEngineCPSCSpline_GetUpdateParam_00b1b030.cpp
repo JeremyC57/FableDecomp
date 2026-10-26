@@ -10,13 +10,13 @@
 // SplineAnimSpeed +0x3c (PDB offsets are 4 higher).
 // Shape: the frame time is a named float local (called before the count is formed, kept on the FPU); the control-point
 // count is a signed size() converted through the dead params slot; the step is `time * (speed / count) * scale`; bounce-and-reverse subtracts, the else arm adds (`step + current`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CParticleUpdateParameters;
 float GetParticleFrameTime_00aeaa00();      // 0x00AEAA00
 
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual ~CPSCBase();                                                    // slot 0
     virtual bool GetUpdateParam(C3DVector* position, long unused1, float timeScale, long unused2,
                                 CParticleUpdateParameters& params, long unused3);   // slot 1
@@ -26,7 +26,7 @@ struct CPSCBase {
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
 };
-struct CPSCSplineBase : CPSCBase {
+class CPSCSplineBase : public CPSCBase { public:
     float      SplineAnimSpeedBase;         // +0x0c
     C3DVector* m_controlFirst;              // +0x10 Spline.ControlPoints
     C3DVector* m_controlLast;               // +0x14
@@ -38,7 +38,7 @@ struct CPSCSplineBase : CPSCBase {
     long GetControlPointCount() const { return m_controlLast - m_controlFirst; }
     void GetPointAtPos(CParticleUpdateParameters& params, C3DVector* position, float splinePos, float timeScale);   // 0x00B21940
 };
-struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
+class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
     float SplineCurrentPosition;            // +0x34
     bool  ReverseSpline;                    // +0x38
     bool  SplineBounce;                     // +0x39

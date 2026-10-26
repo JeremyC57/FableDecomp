@@ -18,7 +18,7 @@ struct CRetailByteArray_005177e0 {                 // retail CArray<unsigned cha
     CRetailByteArray_005177e0() : m_pBegin(0), m_pEnd(0), m_pCapacity(0) { }
 };
 
-struct CMemoryFile : CBaseClass {                  // vtable 0x0122E0FC
+class CMemoryFile : public CBaseClass { public:                  // vtable 0x0122E0FC
     long                      AccessType;          // +0x04 FileAccessType (not initialised here)
     long                      Position;            // +0x08
     long                      Length;              // +0x0c

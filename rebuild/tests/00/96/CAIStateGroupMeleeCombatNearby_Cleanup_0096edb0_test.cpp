@@ -1,6 +1,6 @@
 #include <cstdio>
 // ---- test model: a thing's interface bitset + sorted {type, component} table, intelligent pointers ----
-struct CThing;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -55,12 +55,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_attackQueries = 0, g_waitQueries = 0, g_deregistered = 0;
 static unsigned long g_removedMode = 0;
-struct CThingCreatureBase { bool registered; bool attacking; bool combatMode; };
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { g_removedMode = m; } };
+class CThingCreatureBase { public: bool registered; bool attacking; bool combatMode; };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { g_removedMode = m; } };
 
 struct CAIStateGroup_MeleeCombatNearby {
     CAIBrain* PBrain;

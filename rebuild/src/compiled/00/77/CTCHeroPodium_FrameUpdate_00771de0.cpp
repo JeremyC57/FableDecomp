@@ -13,30 +13,30 @@
 // manager (world +0x60) is a named local in edi; the type-0x23 filter and the resize value share the frame word.
 // Layout: retail CTCHeroPodium NumberOfCrowdOccupants +0x0C, CrowdOccupation +0x10 (as the landed
 // OnInitialActivate 0x00771BD0); CWorld PMessageEventManager +0x60.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
 extern const float g_podiumRadiusSquared_0126a88c;   // 0x0126A88C (1.0f)
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;            // 0x004C73D0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                 // 0x00487DD0
 };
-struct CMessageEvent;
-struct CMessageEventFilter_IsOfType {
+class CMessageEvent;
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) {}
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& filter);   // 0x004AB8B0
     CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
                               float value1, float value2, long data);   // 0x00687540
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;      // +0x60
     CPlayer* GetCurrentPlayer();                     // 0x0049D9D0
@@ -50,7 +50,7 @@ struct CLongVector {                                 // retail std::vector<long>
     void clear();                                    // 0x00485D1A
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                             // +0x04
     bool    ToBeRemoved;                             // +0x08
@@ -58,7 +58,7 @@ struct CTCBase {
     CWorld* GetWorld();                              // 0x00686A70
 };
 
-struct CTCHeroPodium : CTCBase {
+class CTCHeroPodium : public CTCBase { public:
     long        NumberOfCrowdOccupants;              // +0x0C
     CLongVector CrowdOccupation;                     // +0x10
     virtual void FrameUpdate();

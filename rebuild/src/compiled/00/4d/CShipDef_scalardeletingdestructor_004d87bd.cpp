@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CShipDef
-{
+class CShipDef
+{ public:
     void* vftable;
 };
 extern void* const g_CShipDef_vftable;

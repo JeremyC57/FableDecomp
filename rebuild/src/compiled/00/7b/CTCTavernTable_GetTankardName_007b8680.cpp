@@ -10,7 +10,7 @@
 // Shape: `return cond ? CCharString(a) : CCharString(b);` -- each arm builds its own temporary (flag bits 1/2 in ebx),
 //        the result is copy-constructed and the live temporary destroyed by flag; the def is read once into edi and
 //        released by hand without a null test.
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -22,7 +22,7 @@ struct CDefPointee {
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
-struct CTavernTableDef : CDefPointee {
+class CTavernTableDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x1d];
     bool AddTankards;                           // +0x25
     bool HighQualityTankards;                   // +0x26
@@ -42,7 +42,7 @@ struct CDefReference {                          // holder of the taken def: rele
     CTavernTableDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007b9700(CDefPointer* out);           // 0x007B9700
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -58,12 +58,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_007b9700(CDefPointer* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefClassBase* DefHolder;                   // +0x70
 };
 
-struct CTCTavernTable {
+class CTCTavernTable { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     __forceinline CTavernTableDef* TakeTableDef()

@@ -2,12 +2,12 @@
 // (0x00738F90): next-stage and finisher follow-ups of the current combo are found, others are not.
 #include <cstdio>
 
-struct CAnimComponentCombatComboChain { long ComboStage, ComboID; };
-struct CAnimationEntry {
+class CAnimComponentCombatComboChain { public: long ComboStage, ComboID; };
+class CAnimationEntry { public:
     CAnimComponentCombatComboChain combo;
     void GetComponent(const CAnimComponentCombatComboChain** out) const { *out = &combo; }
 };
-struct CIsCombatAnimAppropriateFollowingCombo {
+class CIsCombatAnimAppropriateFollowingCombo { public:
     const CAnimComponentCombatComboChain* CombatAnimCombo; long CurrentChainPos, MaxComboStage;
     bool operator()(const CAnimationEntry& entry) const
     {

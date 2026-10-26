@@ -4,7 +4,7 @@
 #include <math.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector operator-(const C3DVector& o) const
     {
@@ -33,16 +33,16 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
 }
 float g_fTolerance = 1e-4f;
 static C3DVector g_thingPos;
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const { return g_thingPos; }
 };
 static int g_inMap; static int g_inMapCalls; static C3DVector g_inMapArg;
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) { ++g_inMapCalls; g_inMapArg = pos; return g_inMap != 0; }
 };
 static C3DVector g_randomPos; static int g_randomCalls; static float g_randomRadius; static bool g_randomFlee; static C3DVector g_randomCentre;
 static int g_navCalls; static bool g_navResult; static bool g_navFromCurrent; static float g_navProx; static C3DVector g_navFrom, g_navTo;
-struct CNavigatorBase {
+class CNavigatorBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {}
     virtual C3DVector GetRandomPosition(const C3DVector& centre, float radius, bool flee)
@@ -52,7 +52,7 @@ struct CNavigatorBase {
     { ++g_navCalls; g_navFrom = from; g_navTo = to; g_navProx = proximity; g_navFromCurrent = fromCurrentPos; return g_navResult; }
 };
 static CWorldMap g_map;
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;

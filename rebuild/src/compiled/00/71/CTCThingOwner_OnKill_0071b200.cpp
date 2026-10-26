@@ -32,14 +32,14 @@ struct CThingList {                             // 4-byte STLport list: the sent
     void clear();                               // 0x004B8050
 };
 
-struct CKillThing {
+class CKillThing { public:
     bool Immediate;
     CKillThing(bool immediate) : Immediate(immediate) {}
 };
 
 CKillThing __fastcall for_each(CThingListIterator first, CThingListIterator last, CKillThing func);   // 0x0071B590
 
-struct CTCThingOwner {
+class CTCThingOwner { public:
     void* __vftable;                            // +0x00
     unsigned char _pad_0x04[0x8];               // +0x04 CTCBase
     CThingList ObjectList;                      // +0x0c

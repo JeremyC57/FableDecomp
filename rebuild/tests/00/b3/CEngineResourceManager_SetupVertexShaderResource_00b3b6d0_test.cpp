@@ -10,11 +10,11 @@
 #endif
 void __cdecl operator delete(void*); //00bfe9bc
 #ifndef _MSC_VER
-struct CCharString {CCharString();~CCharString();void* Storage;};
+class CCharString { public:CCharString();~CCharString();void* Storage;};
 #endif
 enum EShaderBankNo {SHADER_BANK_DEFAULT=0};
-struct CCharString;struct CVertexShaderInput;struct CShaderDataBankNative;
-struct CShaderResource {void OpenShaderBank(const CShaderDataBankNative*);void SetVertexShaderInput(const CVertexShaderInput&);}; //00a5d7c0,00a5d8b0
+class CCharString;class CVertexShaderInput;struct CShaderDataBankNative;
+class CShaderResource { public:void OpenShaderBank(const CShaderDataBankNative*);void SetVertexShaderInput(const CVertexShaderInput&);}; //00a5d7c0,00a5d8b0
 struct CCountedObject {void Destroy();};
 struct CCPPointerInfoNative {unsigned long RefCount;void (CCountedObject::*DeleteFunc)();CCountedObject* Data;};
 struct CShaderResourcePointer {
@@ -26,7 +26,7 @@ struct CShaderResourcePointer {
  __forceinline CShaderResourcePointer& operator=(const CShaderResourcePointer& p){CCPPointerInfoNative* info=p.Info;CShaderResource* data=p.Data;if(Info!=info){Release();Data=data;Info=info;if(Info)++Info->RefCount;}return *this;}
 };
 struct CShaderDataBankNative {virtual ~CShaderDataBankNative();virtual bool OpenReadOnly(const CCharString&,unsigned long);unsigned char NativeMembers[0x124];};
-struct CShaderRenderManager {CShaderResourcePointer CreateResource();}; //0098b860
+class CShaderRenderManager { public:CShaderResourcePointer CreateResource();}; //0098b860
 extern CShaderRenderManager* g_pShaderRenderManager; //01436e14
 struct CEngineResourceManagerNative {unsigned char EarlierMembers[0x960];CShaderDataBankNative VShaderBanks[27];unsigned char PixelShaderAndOtherData[0x128];CShaderResourcePointer VShaderResources[27];void SetupVertexShaderResource(EShaderBankNo bank,const CCharString&,const CVertexShaderInput&);};
 void CEngineResourceManagerNative::SetupVertexShaderResource(EShaderBankNo bank,const CCharString& name,const CVertexShaderInput& input){
@@ -39,7 +39,7 @@ void CEngineResourceManagerNative::SetupVertexShaderResource(EShaderBankNo bank,
 #include <cstdio>
 #include <cstddef>
 CCharString::CCharString(){}
-CCharString::~CCharString(){}struct CVertexShaderInput {int ID;};
+CCharString::~CCharString(){}class CVertexShaderInput { public:int ID;};
 static int fail=0,step=0,destroys=0,deallocs=0;static void* lastDestroyed=0;static void* lastDeleted=0;static CEngineResourceManagerNative* active=0;static long selected=0;static const CCharString* expectedName=0;static CVertexShaderInput* expectedInput=0;static CShaderResource* created=0;static CCPPointerInfoNative* fresh=0;static CCPPointerInfoNative* swapDeleteInfo=0;static CShaderResource* swapResource=0;static CShaderResource* inputReceiver=0;
 static void check(bool b){if(!b)++fail;}
 void __cdecl operator delete(void* p){++deallocs;lastDeleted=p;}

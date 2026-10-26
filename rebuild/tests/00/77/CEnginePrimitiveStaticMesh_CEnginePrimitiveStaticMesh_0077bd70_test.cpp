@@ -2,12 +2,12 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct C3DVector {float X,Y,Z;C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
-struct CRightHandedSet {C3DVector Up,Forward;CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} CRightHandedSet(const C3DVector& u,const C3DVector& f):Up(u),Forward(f){}};
-struct CRGBColour {unsigned char B,G,R,A;CRGBColour(){} CRGBColour(const CRGBColour& c){Set(c.R,c.G,c.B,c.A);} void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}};
-struct CEnginePrimitiveThemeChannelDesc {unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad;CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){}};
-struct CEnginePrimitive {long Type,InterpolationSet;CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;CEnginePrimitive(long type,long interp):Type(type),InterpolationSet(interp){}};
-struct CEngineMeshEffect;
+class C3DVector { public:float X,Y,Z;C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+class CRightHandedSet { public:C3DVector Up,Forward;CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} CRightHandedSet(const C3DVector& u,const C3DVector& f):Up(u),Forward(f){}};
+class CRGBColour { public:unsigned char B,G,R,A;CRGBColour(){} CRGBColour(const CRGBColour& c){Set(c.R,c.G,c.B,c.A);} void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}};
+class CEnginePrimitiveThemeChannelDesc { public:unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad;CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){}};
+class CEnginePrimitive { public:long Type,InterpolationSet;CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;CEnginePrimitive(long type,long interp):Type(type),InterpolationSet(interp){}};
+class CEngineMeshEffect;
 struct CEngineMeshEffectPointer {CEngineMeshEffect* Object;CEngineMeshEffectPointer():Object(0){}};
 enum EEngineInterpolationSet {INTERPOLATION_DEFAULT=0};
 struct CEnginePrimitiveStaticMesh:CEnginePrimitive {

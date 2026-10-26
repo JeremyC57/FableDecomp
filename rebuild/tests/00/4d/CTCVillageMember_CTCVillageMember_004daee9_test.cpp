@@ -5,12 +5,12 @@ typedef unsigned __int64 TUID;
 #else
 typedef unsigned long long TUID;
 #endif
-struct CThing { int id; };
-struct CTCBase { CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
-struct CVillageMemberDef;
+class CThing { public: int id; };
+class CTCBase { public: CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
+class CVillageMemberDef;
 struct CDefPointerVillageMemberDef { const CVillageMemberDef* Object; CDefPointerVillageMemberDef() : Object(0) { } };
 struct CIntelligentPointer { CThing* m_pItem; CIntelligentPointer(CThing* t) : m_pItem(t) { } };
-struct CTCVillageMember : CTCBase {
+class CTCVillageMember : public CTCBase { public:
     CDefPointerVillageMemberDef PDef; CIntelligentPointer PVillage; TUID VillageUID;
     CTCVillageMember(CThing* thing) : CTCBase(thing), PDef(), PVillage(0), VillageUID(0) { }
 };

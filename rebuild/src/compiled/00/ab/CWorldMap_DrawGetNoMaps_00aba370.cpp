@@ -3,7 +3,7 @@
 
 struct MapEntry6 { char raw[6]; };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad0[0x2c];
     MapEntry6* begin;   // +0x2c
     MapEntry6* end;     // +0x30

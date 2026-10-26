@@ -122,7 +122,7 @@ template <class T1, class T2> struct pair {
     pair(const pair<T1, T2>& o) : first(o.first), second(o.second) {}
 };
 #define FAIL(a) { std::printf(a "_TEST FAIL\n"); return 1; }
-struct CIVCountedPointeeBase { void* vfptr; unsigned int IVRefCount; };
+class CIVCountedPointeeBase { public: void* vfptr; unsigned int IVRefCount; };
 struct CIVCountedPointer { CIVCountedPointeeBase* Object;
     CIVCountedPointer(CIVCountedPointeeBase* o) : Object(o) { if (Object) ++Object->IVRefCount; }
     CIVCountedPointer(const CIVCountedPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }

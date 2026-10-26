@@ -1,4 +1,4 @@
-struct CCreatureAction_FinishFireballSpell {
+class CCreatureAction_FinishFireballSpell { public:
     void* vftable;
 };
 

@@ -13,12 +13,12 @@
 // Shape: every write goes through an inline `CAFile& operator<<(CAFile&, const CCharString&)` (the string temporary is built
 //   before the file reference is pushed; a direct `CCharString("..").SaveToFile(file)` pushes the file first); the line is one `"\t" + name + " = " + GFIntToCharString(index) + ",\r\n"` expression (VC builds the number first, then the
 //   left chain); the end iterator is re-read every pass; the counter is bumped before the line and name die.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
-struct CAFile;
-struct CCharString {
+class CAFile;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -38,9 +38,9 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                           // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CAFile : CBase {
+class CAFile : public CBase { public:
 };
-struct CDiskFileWin32 : CAFile {                        // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CAFile { public:                        // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
@@ -62,7 +62,7 @@ inline CAFile& operator<<(CAFile& file, const CCharString& text)
 
 namespace NParticleEngine {
 
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x140];
     CCharString   Name;                                 // +0x140
 };

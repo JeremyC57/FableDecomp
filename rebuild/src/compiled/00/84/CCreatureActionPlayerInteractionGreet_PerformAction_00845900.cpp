@@ -9,15 +9,15 @@
 // Shape: the landed CCreatureAction_GiveItemToThing 0x00842F70 message model (creature fetched twice into named locals, the manager
 // into a third before the arguments); IS_THING_ALIVE on both pointers; `this` spills to the frame (`mov [esp+0Ch],ebp`) because ebp
 // walks on to &PTarget; the `new` null test selects 0 for AddEvent (the landed ShowItemToThing shape).
-struct C3DVector;
-struct CTCBase;
+class C3DVector;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,7 +53,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 struct CEventBase { };
 namespace NEntityEvents {
-struct CEventTalkedTo : CEventBase {            // 0x10 bytes
+class CEventTalkedTo : public CEventBase { public:            // 0x10 bytes
     unsigned char _pad[0x10];
     CEventTalkedTo(CThing* talker);             // 0x0084AF90
 };
@@ -62,25 +62,25 @@ struct CEventTalkedToBy : CEventBase {          // 0x10 bytes
     CEventTalkedToBy(CThing* listener);         // 0x0084B100
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageEventManager;   // +0x60
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
     CWorld* GetPWorld() const;                  // 0x00692940
 };
-struct CCreatureAction_PlayerInteractionGreet : CCreatureActionBase {
+class CCreatureAction_PlayerInteractionGreet : public CCreatureActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0xa8
     void PerformAction();
 };

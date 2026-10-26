@@ -1,12 +1,12 @@
 #include <cstdio>
 static unsigned long g_longs[8]; static int g_n = 0; static const void* g_data = 0; static unsigned long g_dataSize = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0() { } virtual void v1() { } virtual void v2() { } virtual void v3() { }
     virtual void WriteData(const void* d, unsigned long s) { g_data = d; g_dataSize = s; }
     void WriteULong(unsigned long v) { g_longs[g_n++] = v; }
 };
 static char g_blob[] = "blob";
-struct CMemoryDataOutputStream { unsigned long GetSize() { return 4; } void* PeekData() { return g_blob; } };
+class CMemoryDataOutputStream { public: unsigned long GetSize() { return 4; } void* PeekData() { return g_blob; } };
 struct CDefStringTable {
     unsigned char StringMap[0xc]; CMemoryDataOutputStream StringStream; unsigned char _stream[0x18 - sizeof(CMemoryDataOutputStream)];
     unsigned long StringCount, SharedCount, RandomID;

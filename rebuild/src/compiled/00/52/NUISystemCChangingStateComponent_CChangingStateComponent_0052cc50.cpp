@@ -35,12 +35,12 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void v00();
 };
 
-struct CComponent : CComponentRoot, IComponentA, IComponentB {
+class CComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x13c - 0x1c];      // +0x1c .. +0x13c: the base's state
     CComponent(long owner);                            // 0x005334A0
 };
 
-struct CChangingStateComponent : CComponent {                        // vtables 0x01245DE4 / 0x01245DBC / 0x01245DB4
+class CChangingStateComponent : public CComponent { public:                        // vtables 0x01245DE4 / 0x01245DBC / 0x01245DB4
     virtual void v00();
     virtual void va00();
     virtual void vb00();

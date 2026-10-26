@@ -11,19 +11,19 @@
 // Shape: one script frame first, then a wait loop whose condition is a single `||` chain led by the hero's killed
 // message; the CCharString("") temporary lives in a conditional-temporary full expression, so VC keeps a destruction
 // flag (ebx, `or ebx,1` / `test bl,1`) and parks the condition's result in a frame byte across the destructor.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -43,7 +43,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQR_EscortTraderScript : CScriptBase {
+class CQR_EscortTraderScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 Owner;                        // +0x44
     bool MissionSucceeded;                              // +0x48

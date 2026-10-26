@@ -16,7 +16,7 @@
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();
 };
 }
@@ -67,7 +67,7 @@ struct CQuestCardVector {
     }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long a, b;
     void Clear();                                      // 0x0041BE70
 };
@@ -147,7 +147,7 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
@@ -164,7 +164,7 @@ struct CSoundSystem {
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
 };
 extern CSoundSystem* g_pSoundSystem;                 // 0x013B8394
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
     bool  UseCustomVolumes;                          // +0x0c
     unsigned char _pad0d[0x24 - 0x0d];
@@ -179,25 +179,25 @@ struct CUserProfileManager {
     float GetMusicVolume() const { return UseCustomVolumes ? CustomMusicVolume : MusicVolume; }
     static CUserProfileManager& __fastcall Get();    // 0x0040D2A0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
 };
 long __fastcall GetWorldFrame();                     // 0x0049D870
 void __fastcall CloseMenus();                        // 0x0041D165
 namespace NHeroInformationScreens {
-struct CManager { void SetScreen(long screen);        // 0x0066E799 (name unproven)
+class CManager { public: void SetScreen(long screen);        // 0x0066E799 (name unproven)
 };
-struct CBase {
+class CBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool IsActive();                         // slot 3 (+0x0C)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     void*            __vftable;                      // +0x00
     void*            ParentThing;                    // +0x04
     unsigned char    _pad08[0x0c - 0x08];

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DQuadricBasedMeshOptimiser {
+class C3DQuadricBasedMeshOptimiser { public:
     void* vftable;
     int destroyed;
 };

@@ -16,8 +16,8 @@
 // cl,bl`; the shifted-byte form narrows to a byte load and swaps this/&PPerson between ebp/edi), bound to a `const bool&`
 // (the byte spill at +0x0b); the message def is released by hand through a pointer local (landed 0x00849140 shape) and
 // passed by value through an add-ref copy; a named person local puts the flags push after GetPItem.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,10 +51,10 @@ struct CThing {
         return present != 0;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetLifeState();                        // 0x00662010
 };
-struct CTCDiscovery {                           // interface 0x40
+class CTCDiscovery { public:                           // interface 0x40
     unsigned char _pad[0x0c];
     bool Discovered;                            // +0x0c
     void SetDiscovered(bool discovered, CThing* by);    // 0x007509D0
@@ -67,7 +67,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     __forceinline CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
@@ -81,12 +81,12 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CMessageEventDef {                   // CDefBase: vptr, then the reference count at +4
+class CMessageEventDef { public:                   // CDefBase: vptr, then the reference count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1 (+4)
     long m_count;                           // +4
@@ -97,22 +97,22 @@ struct CDefPointer {                        // CDefPointer<CMessageEventDef>: on
     CDefPointer(CMessageEventDef* p) : m_p(p) { if (p) ++p->m_count; }
     CDefPointer(const CDefPointer& other) : m_p(other.m_p) { if (m_p) ++m_p->m_count; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
 };
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                 // 0x00693EF0
 };
-struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+class CCreatureAction_AlertToPlayer : public CCreatureActionBase { public:
     CCreatureAction_AlertToPlayer(CThingCreatureBase* creature);  // 0x009110F0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

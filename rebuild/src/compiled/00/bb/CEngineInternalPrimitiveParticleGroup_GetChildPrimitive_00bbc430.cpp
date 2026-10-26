@@ -4,9 +4,9 @@
 // `cmp byte ptr [eax],0`, then two loads reach the handle's primitive. Layout: the retail CEngineInternalPrimitiveParticleGroup holds a 4-byte list (+0x48),
 // the CArray<CPrimitiveIterator> as three pointers at +0x4c and a 4-byte free-id list at +0x58 (the PDB header puts the array at +0x54 because its STL
 // containers are wider); modelled locally with the retail offsets.
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEnginePrimitiveHandle {                    // list value: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // list value: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

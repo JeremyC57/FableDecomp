@@ -56,7 +56,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 
-struct CEngineMeshEffect {
+class CEngineMeshEffect { public:
     unsigned char _pad00[0x18];
     unsigned char StencilBit;                      // +0x18 (CEngineMeshEffectOutlineBase)
 };

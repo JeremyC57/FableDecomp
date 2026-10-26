@@ -9,7 +9,7 @@
 // (`xor eax,eax`); the villager component stays in esi for the second village call; the village's owner thing
 // (+4) is read from the second call's result; the final lookup returns the component straight from the entry.
 // Model: local (engine/CAIStateGroup_BanditPlayDice.h flattens the base, and the base layout is needed); the base fields keep their PDB names.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,20 +37,20 @@ struct CThing {
     }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*   __vftable;                          // +0x00
     CThing* Owner;                              // +0x04 (CTCBase)
 };
 struct CTCVillager;
-struct CTCDiceGame;
+class CTCDiceGame;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

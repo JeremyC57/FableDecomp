@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCEmoteIcon {
+class CTCEmoteIcon { public:
     void* vftable;
     int destroyed;
 };

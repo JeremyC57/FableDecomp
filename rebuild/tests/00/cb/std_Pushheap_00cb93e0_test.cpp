@@ -6,7 +6,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 static int g_dtors = 0;
-struct CCharString {
+class CCharString { public:
     int Data;
     CCharString() : Data(0) { }
     CCharString(const CCharString& o) : Data(o.Data) { }
@@ -15,7 +15,7 @@ struct CCharString {
 };
 struct CPersistInfo { u64 UID; CCharString PersistScript; };
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

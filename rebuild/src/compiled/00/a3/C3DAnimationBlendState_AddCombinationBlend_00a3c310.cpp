@@ -1,5 +1,5 @@
 // C3DAnimationBlendState::AddCombinationBlend  (retail 0x00a3c310)
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 
 // Subobject living at offset +0xc inside the member-4 object.
 struct BlendSub {
@@ -11,7 +11,7 @@ struct MemberFour {
     BlendSub sub;   // at +0xc
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     void* m_pad0;         // at +0
     MemberFour* m_four;   // at +4
     void Foo();           // declared only -> real call rel32

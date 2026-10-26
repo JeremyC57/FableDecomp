@@ -8,11 +8,11 @@
 static char g_log[256];
 static void Log(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
 };
-struct C2DVector { float x, y; };
+class C2DVector { public: float x, y; };
 static long g_eventType;
 class CInputEvent { public: long GetEventType() const { return g_eventType; } };
 static int g_handled;
@@ -25,11 +25,11 @@ struct CInputProcessGameBase {
     bool GetEventGameActionVector(long action, const CInputEvent&, C2DVector* v) { if (action != 0x72) return false; *v = g_stick; return g_vecOk; }
 };
 static int g_clears;
-struct CSubtitleRenderer { void Clear(bool) { ++g_clears; } };
-struct CPlayerGui { CSubtitleRenderer SubtitleRenderer; };
+class CSubtitleRenderer { public: void Clear(bool) { ++g_clears; } };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCHeroStats { long Gold; };
+class CTCHeroStats { public: long Gold; };
 struct STCEntry { long type; CTCHeroStats* component; };
 struct CTCMap {
     STCEntry* m_pFirst;
@@ -56,18 +56,18 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->type) ? m_pLast : it)->component;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[9];
     CTCMap        m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
 };
 static CThing* g_heroThing;
-struct CPlayer { CThing* GetHeroCreature() { return g_heroThing; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_heroThing; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() const { return &g_player; } };
 static long g_frame;
-struct CMainGameComponent { CPlayerManager* PlayerManager; long GetFrame() { return g_frame; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; long GetFrame() { return g_frame; } };
 static CPlayerManager g_pm;
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
@@ -76,26 +76,26 @@ static long g_CurrentBet;
 static long g_BetRepeatDelay = 10, g_BetRepeatSlow = 5, g_BetRepeatFast = 2, g_BetMultiplierRate = 20;
 
 static int g_destroys;
-struct CBettingDef {
+class CBettingDef { public:
     long RefCount;
     long MinBet, MaxBet, BetStep;
     void Destroy() { ++g_destroys; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
 static CBettingDef* g_subDef;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBettingDef>* out) { if (!g_subDef) return false; ++g_subDef->RefCount; out->Object = g_subDef; return true; }
 };
 struct CParentThing {
     CDefClassBase* m_pDef;
     CDefClassBase* GetDef() const { return m_pDef; }
 };
-struct CTCBetting {
+class CTCBetting { public:
     CParentThing* ParentThing;
     long          FrameBetWasLastChanged;
     long          FrameBetChangeStarted;

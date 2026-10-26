@@ -9,10 +9,10 @@
 //   (`lea eax,[edi+N] ; push eax ; lea ecx,[esi+N]`), then the two longs.
 // Layout: Ego_r.pdb puts PBed/AnimGroup/SleepAnimName/BedGetInAnim/BedSleepAnim at +0xb4..+0xc8 (PDB
 //   CCreatureActionBase 0xb4 bytes, retail 0xa8): +0xa8..+0xbc here; engine/CCreatureAction_GetInBed.h is not used.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
@@ -26,18 +26,18 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>: vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_GetInBed : CCreatureActionBase {   // vtable 0x01291BFC
+class CCreatureAction_GetInBed : public CCreatureActionBase { public:   // vtable 0x01291BFC
     CIntelligentPointer<CThing> PBed;       // +0xa8 (PDB +0xb4)
     CCharString AnimGroup;                  // +0xb0
     CCharString SleepAnimName;              // +0xb4

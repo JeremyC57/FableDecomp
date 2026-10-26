@@ -1,6 +1,6 @@
 // behaviour test for 0x0097adf0 _Push_heap (CThing* elements)
 #include <cstdio>
-struct CThing { int size; };
+class CThing { public: int size; };
 struct CCmp { float OriginX, OriginY, DirectionX, DirectionY; bool operator()(CThing* a, CThing* b) const { return (a->size - OriginX) * (a->size - OriginX) > (b->size - OriginX) * (b->size - OriginX); } };
 static void _Push_heap(CThing** first, long hole, long top, CThing* value, CCmp comp)
 {

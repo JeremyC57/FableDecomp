@@ -11,12 +11,12 @@
 // reorders the terms of each sum on its own: written directly in GetCentreOfGravity (any term or
 // operand order) every sum starts with the X term; only through the inline helper does it start
 // with Z (`fld [ecx+20h] ; fmul [eax+0B0h]`) as in retail.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Row[3];                              // the rotation rows
     C3DVector Position;
     C3DVector Rotate(const C3DVector& v) const
@@ -28,12 +28,12 @@ struct CMatrix3x4 {
         return r;
     }
 };
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char _pad00[0xa8];
     C3DVector     CentreOfGravity;                 // +0xa8 (PDB +0xc4)
 };
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     const CPhysicsMesh* Mesh;                      // +0x04 CIVCountedPointer<const CPhysicsMesh>
     CMatrix3x4          PositionMatrix;            // +0x08

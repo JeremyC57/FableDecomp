@@ -19,7 +19,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     CBasicStringChar(const char* text);         // 0x009A0590
     void Append(char c, long count);            // 0x009A0460
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }

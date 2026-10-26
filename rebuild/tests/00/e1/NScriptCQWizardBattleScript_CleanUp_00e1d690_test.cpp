@@ -13,9 +13,9 @@ public:
     CCharString(const char* text, long = -1) : PStringData(text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static void DeletePointee(void*) { ++g_infoDeletes; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     ~CCountedPointer()
     {
@@ -23,8 +23,8 @@ template <class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() { ++g_thingDtors; } };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() { ++g_thingDtors; } };
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
     CScriptThing(const CScriptThing& o) : CBaseClass() { PImp.Data = o.PImp.Data; PImp.Info = o.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
@@ -38,12 +38,12 @@ template <class T> struct vector {
 };
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface;
+class CGameScriptInterface;
 static void KillAllThingsInVector(CGameScriptInterface*, vector<CScriptThing>* v, bool b) { if (v->_M_finish - v->_M_start == 3 && !b) Log("kill3"); }
 static CScriptThing g_pointee;
-struct CScriptBase { virtual void v00() {} };
+class CScriptBase { public: virtual void v00() {} };
 struct CQ_WizardBattleScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const CScriptThing* removed; const CScriptThing* village;
     virtual CScriptThing GetThingWithScriptName(const CCharString& n)
     {

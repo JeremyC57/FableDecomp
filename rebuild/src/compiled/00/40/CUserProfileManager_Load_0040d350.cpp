@@ -11,7 +11,7 @@
 // Shape: the three tests chain in one `if`; the file is a block-scoped local whose inline virtual destructor stores the
 // vtable, calls Close directly and destroys the pathname before the base.
 typedef unsigned short wchar16;                             // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;                                      // +0
     ~CWideString();                                         // 0x0099B510
     bool operator!=(const wchar16* text) const;             // 0x0099B150
@@ -23,12 +23,12 @@ enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 namespace N_0099a300 { struct CBase {
     virtual ~CBase();                                       // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CAFile : CBase {
+class CAFile : public CBase { public:
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08
     long Length;                                            // +0x0c
 };
-struct CDiskFileWin32 : CAFile {                            // vtable 0x0122D06C
+class CDiskFileWin32 : public CAFile { public:                            // vtable 0x0122D06C
     void*       WinFileHandle;                              // +0x10
     bool        Opened;                                     // +0x14
     CWideString Pathname;                                   // +0x18
@@ -37,7 +37,7 @@ struct CDiskFileWin32 : CAFile {                            // vtable 0x0122D06C
     virtual void Close();                                   // slot 2, 0x0099A920
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void*       m_vtable;                                   // +0x00
     unsigned char _pad04[4];
     CWideString ProfileName;                                // +0x08

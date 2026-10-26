@@ -25,7 +25,7 @@ static int fails = 0;
 //        so the type range is read once (end into edi before begin into ebp: `last` declared first); value 2 lives in its own
 //        slot set once before the loop, values 3/0/1 reuse the def's frame word, and the empty iterator tag is homed in the
 //        (still live) error argument slot; the family index is passed through CDefIndex's conversion to long.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                                  // 0x0099EAE0
     CCharString& operator=(const char* text);                        // 0x0099EFE0
@@ -37,7 +37,7 @@ struct CDefStringTable {
     CCharString GetString(long id);                                  // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                             // 0x013CA828
-struct CDefString {                                                  // a def name: its offset into the def string table
+class CDefString { public:                                                  // a def name: its offset into the def string table
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
 };
@@ -95,10 +95,10 @@ template <class T> struct CVector {                                  // STLport 
     const T* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CDefIndex { long Index; operator long() const { return Index; } };
+class C3DVector { public: float X, Y, Z; };
+class CDefIndex { public: long Index; operator long() const { return Index; } };
 
-struct CCreatureGenerationFamilyDef {
+class CCreatureGenerationFamilyDef { public:
     virtual void v00();
     virtual void Destroy();                                          // slot 1
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -109,14 +109,14 @@ struct CCreatureGenerationFamilyDef {
     CVector<long> GenerationTypes;                                   // +0x50
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
 void* FindDef_CDefinitionManager_GetDef_0();                         // stand-in callee of the stand-in body below
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CCreatureGenerationFamilyDef>* out) const;   // 0x0074D220
 };
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def

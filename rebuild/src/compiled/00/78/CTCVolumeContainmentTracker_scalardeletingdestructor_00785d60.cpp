@@ -1,4 +1,4 @@
-struct CTCVolumeContainmentTracker {
+class CTCVolumeContainmentTracker { public:
     void* vftable;
 };
 

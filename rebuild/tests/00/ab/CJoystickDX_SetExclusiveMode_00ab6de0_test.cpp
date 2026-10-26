@@ -5,7 +5,7 @@ static char g_seq[128] = ""; struct IDevice { virtual unsigned long Release() { 
 struct CJoystickDX; static IDevice* g_pNewDevice = 0; static unsigned long g_class = 0, g_flags = 0; static void* g_ref = 0;
 static long EnumJoysticksCallback(const void*, void*) { return 0; }
 struct CDirectInput { virtual long EnumDevices(unsigned long devClass, void* callback, void* ref, unsigned long flags); };
-struct CInputManagerDX { CDirectInput* m_pDirectInput; };
+class CInputManagerDX { public: CDirectInput* m_pDirectInput; };
 struct CJoystickDX { bool ExclusiveMode; IDevice* DJoystick; bool Acquired; CInputManagerDX* InputManagerDX;
     bool SetExclusiveMode(bool exclusive) { if (DJoystick) { DJoystick->Unacquire(); DJoystick->Release(); DJoystick = 0; } ExclusiveMode = true;
         InputManagerDX->m_pDirectInput->EnumDevices(4, (void*)EnumJoysticksCallback, this, 1); return DJoystick != 0 ? true : false; } };

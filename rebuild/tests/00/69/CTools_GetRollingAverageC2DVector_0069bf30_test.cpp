@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTools::GetRollingAverage<C2DVector> (0x0069BF30): (average * count + value) / (count + 1).
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector() { }
     C2DVector(float ax, float ay) : x(ax), y(ay) { }

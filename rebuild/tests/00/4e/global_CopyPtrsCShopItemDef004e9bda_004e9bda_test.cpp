@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_baseAssigns = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x21];
     CDefClassBase() { for (int i = 0; i < 0x21; ++i) _body[i] = 0; }
     virtual ~CDefClassBase() { }
@@ -12,12 +12,12 @@ struct CDefClassBase {
         return *this;
     }
 };
-struct CShopItem {
+class CShopItem { public:
     float Quantity, PriceMultiplier, MaxStock;
     long  RestockPeriod;
     float RestockPeriodRandomness, SalesPerDay, SalesPerDayRandomness;
 };
-struct CShopItemDef : CDefClassBase {
+class CShopItemDef : public CDefClassBase { public:
     long      Type;
     CShopItem Item;
     CShopItemDef() : Type(0) { Item.Quantity = 0; Item.RestockPeriod = 0; Item.SalesPerDayRandomness = 0; }

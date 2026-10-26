@@ -9,7 +9,7 @@
 // Shape: PMannequin is addressed through `lea edi,[esi+158h]` (tested, then zeroed through edi); the UseMannequin clear written
 // before the `if` is scheduled between the null test and its branch.
 #pragma optimize("s", on)
-struct CThing {
+class CThing { public:
     void Kill(bool immediate);                                   // 0x004C9B80
 };
 struct CMorphPrimitiveHandleMap {                                // retail std::map<long, CEnginePrimitiveHandle> (12 bytes)

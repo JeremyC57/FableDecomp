@@ -20,7 +20,7 @@ struct CPixelFormatMethods : CPixelFormat {
 class CGraphicDataBank {
 public:
     enum ETextureType { TEXTURE_TYPE_0 = 0 };
-    struct CGraphicHeader {                        // Ego_r.pdb, 0x1C bytes
+    class CGraphicHeader { public:                        // Ego_r.pdb, 0x1C bytes
         unsigned short      Width;                 // +0x00
         unsigned short      Height;                // +0x02
         unsigned short      Depth;                 // +0x04

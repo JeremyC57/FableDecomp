@@ -11,13 +11,13 @@
 //   dead `result` slot.
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CCharString {                            // 4-byte counted string handle
+class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 namespace CSymbolMap {
-struct CSymbolInfo {                            // Ego_r.pdb, 12 bytes
+class CSymbolInfo { public:                            // Ego_r.pdb, 12 bytes
     CCharString GroupName;                      // +0x00
     CCharString EntryName;                      // +0x04
     long        Val;                            // +0x08

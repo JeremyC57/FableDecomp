@@ -9,7 +9,7 @@
 #include "engine/CBaseObject.h"
 #undef CBaseObject
 #pragma optimize("t", on)
-struct CBaseObject {                        // vtable 0x0129A7D8 (.?AVCBaseObject@@)
+class CBaseObject { public:                        // vtable 0x0129A7D8 (.?AVCBaseObject@@)
     void* _vptr;
     void* IntelligentPointer;
     ~CBaseObject();                         // 0x0099A430

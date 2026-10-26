@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CIVCountedPointeeBase { virtual void Destroy(int) { } virtual void Delete() { std::strcat(g_seq, "D"); } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual void Destroy(int) { } virtual void Delete() { std::strcat(g_seq, "D"); } unsigned long IVRefCount; };
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; void Release() { CIVCountedPointeeBase* old = Object; if (old) { if (--old->IVRefCount == 0) old->Delete(); Object = 0; } } CIVCountedPointer& operator=(const CIVCountedPointer& o) { if (Object != o.Object) { Release(); Object = o.Object; if (Object) ++Object->IVRefCount; } return *this; } ~CIVCountedPointer() { Release(); } };
-struct CHitParameters { unsigned char _pad[0x4c]; CIVCountedPointer m_hitMaterialDef; void SetPHitMaterialDef(CIVCountedPointer def) { m_hitMaterialDef = def; } };
+class CHitParameters { public: unsigned char _pad[0x4c]; CIVCountedPointer m_hitMaterialDef; void SetPHitMaterialDef(CIVCountedPointer def) { m_hitMaterialDef = def; } };
 
 int main() {
     CIVCountedPointeeBase a, b; a.IVRefCount = 1; b.IVRefCount = 1; CHitParameters h; h.m_hitMaterialDef.Object = &a; CIVCountedPointer arg; arg.Object = &b; ++b.IVRefCount;

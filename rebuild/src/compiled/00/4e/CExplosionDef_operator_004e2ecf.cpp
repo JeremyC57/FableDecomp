@@ -10,7 +10,7 @@
 // RumbleStrength/RumbleLength are the 4-byte EQuakeStrength/EQuakeLength enums (long).
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -19,7 +19,7 @@ struct CExplosionRingVector {                       // retail std::vector<CExplo
     CExplosionRingVector& operator=(const CExplosionRingVector& other);   // 0x004E2F56
 };
 
-struct CExplosionDef : CDefClassBase {
+class CExplosionDef : public CDefClassBase { public:
     float                    Damage;                      // +0x28
     float                    ExplosionRadius;             // +0x2c
     long                     FireDamage;                  // +0x30

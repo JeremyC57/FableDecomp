@@ -1,14 +1,14 @@
 // Behaviour test for 0x00F2D270 CFeatDef copy constructor: every feat field copied, base copied first.
 #include <cstdio>
 static int g_baseCopies = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     int m_base;
     CDefClassBase() : m_base(0) {}
     CDefClassBase(const CDefClassBase& o) : m_base(o.m_base) { ++g_baseCopies; }
     CDefClassBase& operator=(const CDefClassBase& o) { m_base = o.m_base; ++g_baseCopies; return *this; }
 };
-struct CDefString { int TablePos; };
-struct CFeatDef : CDefClassBase {
+class CDefString { public: int TablePos; };
+class CFeatDef : public CDefClassBase { public:
     CDefString FeatName, Verb; float TimeLimit; int TargetNumber, GoldReward, XPReward; CDefString ItemReward;
     bool NoBlocking; int KN_AttackType; bool KN_Perfect; int KN_CreatureType; CDefString GF_FromRegion, GF_ToRegion;
     bool GF_NoTeleporting; CDefString CO_ItemName;

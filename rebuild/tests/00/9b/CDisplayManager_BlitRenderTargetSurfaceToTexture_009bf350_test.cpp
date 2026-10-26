@@ -68,7 +68,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -97,7 +97,7 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4
@@ -122,7 +122,7 @@ FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -142,8 +142,8 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 #include <stddef.h>
 
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 
@@ -3951,8 +3951,8 @@ struct CPixelFormat_Methods : CPixelFormat {
  CPixelFormat_Methods(){} bool IsEquivalent(const CPixelFormat_Methods&)const; //009E37F0
 };
 inline bool operator==(const CPixelFormat_Methods& a,const CPixelFormat_Methods& b){return a.IsEquivalent(b);}
-struct C2DExtentsI { long X,Y;C2DExtentsI(){} long GetX()const{return X;}long GetY()const{return Y;} };
-struct C2DBoxI;
+class C2DExtentsI { public: long X,Y;C2DExtentsI(){} long GetX()const{return X;}long GetY()const{return Y;} };
+class C2DBoxI;
 extern void* g_CSurfaceVTable[]; //0122F84C
 struct CSurface_Methods : CSurface {
  CSurface_Methods(){} CSurface_Methods(const CSurface_Methods&); //009F2D60
@@ -3980,7 +3980,7 @@ FABLE_STATIC_ASSERT(sizeof(BlitD3DDevice::SceneMethod)==4);
 FABLE_STATIC_ASSERT(sizeof(BlitD3DDevice::StretchMethod)==4);
 #endif
 extern void* g_DisplayRenderingEnabled; //013CA810 native nullable render gate
-struct CDisplayManager {
+class CDisplayManager { public:
  void* VTable;void* SystemManager;CRenderManagerCore_Methods* PRenderManager;
  unsigned char SurfacesAndD3D[0x58-0xc];BlitD3DDevice* D3DDevice;
  unsigned char DeviceState[0x214-0x5c];bool Rendering,CanBeginRender;

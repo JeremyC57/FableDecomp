@@ -5,7 +5,7 @@ struct CInputThing {
 	long GetDeviceNumber(long which);   // retail 0x449990, __fastcall
 };
 
-struct CPlayer {
+class CPlayer { public:
 	char pad0[0x10];
 	CInputThing *PlayerManager;   // +0x10
 	char pad14[0x28 - 0x14];

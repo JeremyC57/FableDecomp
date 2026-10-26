@@ -1,16 +1,16 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float a, float b, float c) : x(a), y(b), z(c) { }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector m_head; bool m_lastExact;
     C3DVector GetHeadPos(bool exact) { m_lastExact = exact; return m_head; }
 };
 static bool g_bQueryCreatureHeadPos;
-struct CTCLook {
+class CTCLook { public:
     CThingCreatureBase* PParentCreature; C3DVector CachedHeadPos;
     C3DVector GetHeadPos()
     {

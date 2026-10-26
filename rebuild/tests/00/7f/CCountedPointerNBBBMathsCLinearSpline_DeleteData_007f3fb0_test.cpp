@@ -5,8 +5,8 @@
 #include <cstdlib>
 static int g_freed = 0, g_dtors = 0;
 struct CRetailVector { float* _M_start; ~CRetailVector() { if (_M_start) { std::free(_M_start); ++g_freed; } } };
-namespace NBBBMaths { struct CLinearSpline { CRetailVector Keys; ~CLinearSpline() { ++g_dtors; } }; }
-template <class T> struct CCountedPointer { static void DeleteData(void* data) { delete (T*)data; } };
+namespace NBBBMaths { class CLinearSpline { public: CRetailVector Keys; ~CLinearSpline() { ++g_dtors; } }; }
+template <class T> class CCountedPointer { public: static void DeleteData(void* data) { delete (T*)data; } };
 int main()
 {
     NBBBMaths::CLinearSpline* a = new NBBBMaths::CLinearSpline; a->Keys._M_start = (float*)std::malloc(16);

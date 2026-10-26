@@ -11,8 +11,8 @@
 #define __fastcall
 #endif
 
-struct CTCBase { };
-struct C3DVector {
+class CTCBase { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -23,7 +23,7 @@ struct C3DVector {
         X *= inv; Y *= inv; Z *= inv;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
@@ -41,7 +41,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     int       m_flyingCalls;
     bool      m_flying;
     int       m_positionCalls;
@@ -70,10 +70,10 @@ struct CDefBase {
             Destroy();
     }
 };
-struct CBalverineBattleDef : CDefBase {
+class CBalverineBattleDef : public CDefBase { public:
     float IntangibleTime;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -83,7 +83,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CBalverineBattleDef* m_battleDef;
     bool GetSubDef(CDefPointer<CBalverineBattleDef>& out)
     {
@@ -94,7 +94,7 @@ struct CDefClassBase {
         return true;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
     CTCPhysicsBase* PhysicsTC;
@@ -138,7 +138,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 static int     g_willableCalls = 0;
 static CThing* g_willableThing = 0;
 static bool    g_willableFlag = true;
@@ -166,7 +166,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 enum EKind { KIND_NONE, KIND_DROPIN, KIND_LUNGE };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     int     m_kind;
     CThing* m_owner;
     CThing* m_target;
@@ -176,7 +176,7 @@ struct CCreatureActionBase {
 struct CModeBase {
     virtual ~CModeBase() { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     CCountedPointer(T* object) : m_pObject(object) { }
 };
@@ -186,7 +186,7 @@ struct CModeIntangible : CModeBase {
     CCreatureActionBase* m_next;
     CModeIntangible(CThing* thing, float time, CCreatureActionBase* nextAction) : m_thing(thing), m_time(time), m_next(nextAction) { }
 };
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     int        m_calls;
     CModeBase* m_mode;
     CTCCreatureModeManager() : m_calls(0), m_mode(0) { }
@@ -198,7 +198,7 @@ struct CTCAttachedParticles : CTCBase {
     void DetachParticles() { ++m_calls; }
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CCreaturePointer        PCreature;
     long                    TotalTime;
     long                    FramesRunning;
@@ -207,14 +207,14 @@ struct CCombatActionBase : CCreatureActionBase {
     CCombatActionBase() : TotalTime(0), FramesRunning(0), m_baseFinish(0) { PCreature.m_pItem = 0; PTarget.m_pItem = 0; }
     virtual void FinishAction() { ++m_baseFinish; }
 };
-struct CCreatureAction_BalverineDropInFromSky : CCombatActionBase {
+class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public:
     CCreatureAction_BalverineDropInFromSky(CThingCreatureBase* owner) { m_kind = KIND_DROPIN; m_owner = owner; }
 };
 namespace N_008ccc10 { struct CCreatureAction_BalverineLungeAttack : CCreatureAction_BalverineDropInFromSky {
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase* owner, CThing* target)
         : CCreatureAction_BalverineDropInFromSky(owner) { m_kind = KIND_LUNGE; m_target = target; }
 }; } using N_008ccc10::CCreatureAction_BalverineLungeAttack;
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     C3DVector* EndPos;
     virtual void FinishAction();
 };

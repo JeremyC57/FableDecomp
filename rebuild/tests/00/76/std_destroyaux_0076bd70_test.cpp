@@ -25,7 +25,7 @@ struct CRetailVector {
     }
 };
 static int g_stringDtors = 0;
-struct CCharString { const char* m_pData; CCharString() : m_pData(0) { } ~CCharString() { ++g_stringDtors; } };
+class CCharString { public: const char* m_pData; CCharString() : m_pData(0) { } ~CCharString() { ++g_stringDtors; } };
 struct ParticleAndEndPoints { CCharString StartDummy, EndDummy; long ParticleType, Unknown0c; long PeriodicFrames; ParticleAndEndPoints() : ParticleType(0), Unknown0c(0), PeriodicFrames(0) { } };
 typedef CRetailVector<ParticleAndEndPoints> TElem;
 static void DestroyAux(TElem* first, TElem* last, const __false_type&)

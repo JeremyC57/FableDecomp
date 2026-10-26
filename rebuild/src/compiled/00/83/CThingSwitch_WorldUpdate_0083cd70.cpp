@@ -33,7 +33,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CThingSwitchDef : CDefBase {
+class CThingSwitchDef : public CDefBase { public:
     unsigned char _pad08[0x70 - 8];
     long TriggerType;                      // +0x70 (retail; ESwitchTriggerType)
 };
@@ -50,7 +50,7 @@ struct CSwitchDefPointer {                 // CDefPointer<CThingSwitchDef>
     CThingSwitchDef* operator->() const { return m_p; }
 };
 
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();          // 0x0049D870 (GFGetCurrentFrame)
 };
 
@@ -62,7 +62,7 @@ enum ESwitchTriggerType {
     SWITCH_TRIGGER_SET_ENVIRONMENT = 5
 };
 
-struct CThingSwitch {
+class CThingSwitch { public:
     void*            __vftable;            // +0x00
     unsigned char    _pad04[0x18 - 4];
     unsigned __int64 UniqueID;             // +0x18

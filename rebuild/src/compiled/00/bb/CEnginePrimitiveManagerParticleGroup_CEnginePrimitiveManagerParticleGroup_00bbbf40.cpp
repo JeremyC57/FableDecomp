@@ -6,15 +6,15 @@
 // Label correction: the manifest "CTCShotDefinitionNymphFun::CTCShotDefinitionNymphFun" is propagated.
 // Shape: speed TU; the four cleared bytes (+0x20, +0x22, +0x23, +0x24, one `xor al,al`) are initialisers scheduled
 // BEFORE the vtable store; the +0x21 byte stored after the vtable store is a body assignment.
-struct CEngine;
+class CEngine;
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     unsigned char _body[0x20 - 4];
     CEnginePrimitiveManager(CEngine* engine);   // 0x00BACDB0
 };
 
-struct CEnginePrimitiveManagerParticleGroup : CEnginePrimitiveManager {
+class CEnginePrimitiveManagerParticleGroup : public CEnginePrimitiveManager { public:
     bool ClipEffectToWeatherMask;                           // +0x20
     bool m_enabled;                          // +0x21
     bool WriteZBuffer;                           // +0x22

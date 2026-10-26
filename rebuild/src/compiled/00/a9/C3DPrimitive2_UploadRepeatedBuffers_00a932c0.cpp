@@ -18,7 +18,7 @@ struct CDeviceIndependent {
     virtual ~CDeviceIndependent();         // slot 0: the deleting destructor is called through the vtable
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char       _pad_0x04[0x2c - 0x04];
     CDeviceIndependent* Data;              // +0x2C  scoped_ptr<N3DPrimitive::CDeviceIndependent>

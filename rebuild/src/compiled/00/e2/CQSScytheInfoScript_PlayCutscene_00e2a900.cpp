@@ -13,18 +13,18 @@
 // the source's Data/Info into locals before releasing (two frame words); the scripted-thing handle's destructor is inline (PImp
 // release + base vptr store) while the movie handle's PImp dtor is out of line (as the landed CFireHeartHolder::Main 0x00DF2D30); the
 // movie-sequence name is a block-local named string; Pause/unpause go through one named copy of Game.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -58,19 +58,19 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing;
-struct CBaseObject {                                        // CBaseIntelligentPointer root
+class CScriptThing;
+class CBaseObject { public:                                        // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                            // +0x04
     CBaseObject();                                          // 0x0099A380
     ~CBaseObject();                                         // 0x0099A430
     CBaseObject& operator=(const CBaseObject& other);       // 0x0099A3B0
 };
-struct CScriptGameResourceObjectBase : CBaseObject {        // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:        // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CScriptThingImp;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<CScriptThingImp> PImp;                  // +0x08
 };
 struct CMovieImpPointer {
@@ -79,7 +79,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                    // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;                                  // +0x08
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -92,7 +92,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD8(pa)                                                                        // slots 0..7
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69

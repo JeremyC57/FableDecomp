@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeScorpionKingExhausted::OnDeactivate (retail 0x008DA3B0): the type-9 component is
 // switched on, the scorpion's physics woken, creature flag 1 set and the mode marked inactive.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -58,7 +58,7 @@ struct CPhysicsObject {
     int wakes;
     void Wake() { ++wakes; }
 };
-struct CThing : CThingLookup {
+class CThing : public CThingLookup { public:
     CPhysicsObject* PPhysics;
     unsigned char CreatureFlags;
 };

@@ -11,12 +11,12 @@
 // Shape: one zero promoted into ebx serves every long/bool/float reset; the two archery states share one `2` through a
 //   chained assignment (Required = Current = 2 stores Current first); BooksPreviouslyOpened[3] is cleared by a
 //   3-step loop, which VC turns into a word + byte store from a fresh xor eax (an explicit memset adds `lea ecx`).
-struct CCharString {
+class CCharString { public:
     void* Data;
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     void*         _vfptr;                            // +0x00 CScriptDataBase vptr
     long          PostSavePosition;                  // +0x04 EGameflowPosition
     long          HenchmanCommentaryState;           // +0x08

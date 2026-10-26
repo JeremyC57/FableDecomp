@@ -2,14 +2,14 @@
 // component gets Update(elapsed) and Draw(info.Engine, 0, 0, 0, 0), LastRenderTime advances, frame 2 switches the engine flag
 // off, frames >= 2 render the inventory backdrop at 1.0.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 static double g_time = 0; static int g_log[32]; static int g_n = 0; static float g_elapsed = -1; static int g_flagCalls = 0;
 double GFGetTime() { return g_time; }
-struct CIEngine { int id; void SetEngineFlag76(bool on) { ++g_flagCalls; g_log[g_n++] = on ? 91 : 90; } };
-struct CEnginePrimitivePrepareInfo { CIEngine* Engine; };
+class CIEngine { public: int id; void SetEngineFlag76(bool on) { ++g_flagCalls; g_log[g_n++] = on ? 91 : 90; } };
+class CEnginePrimitivePrepareInfo { public: CIEngine* Engine; };
 static const CIEngine* g_drawEngine = 0;
 namespace NUISystem {
-    struct CComponent {
+    class CComponent { public:
         virtual ~CComponent() { }
         virtual void Update(float elapsed) { g_log[g_n++] = 1; g_elapsed = elapsed; }
         virtual void Draw(CIEngine* engine, long a, long b, long c, long d) { g_log[g_n++] = 2 + a + b + c + d; g_drawEngine = engine; }
@@ -20,19 +20,19 @@ template <class T> struct vector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CDisplayEngine { CIEngine* Engine3D; };
-struct CMainGameComponent { CDisplayEngine* PDisplayEngine; };
+class CDisplayEngine { public: CIEngine* Engine3D; };
+class CMainGameComponent { public: CDisplayEngine* PDisplayEngine; };
 static CIEngine g_engine3D; static CDisplayEngine g_display = { &g_engine3D }; static CMainGameComponent g_mgc = { &g_display };
 CMainGameComponent* g_pMainGameComponent = &g_mgc;
 static float g_backdrop = -1;
-struct CTCInventory { void RenderUIBackdropQuad(float alpha) { g_log[g_n++] = 7; g_backdrop = alpha; } };
+class CTCInventory { public: void RenderUIBackdropQuad(float alpha) { g_log[g_n++] = 7; g_backdrop = alpha; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(T** out, long type)
@@ -49,7 +49,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     CThing*       ParentThing;
     long          FrameCounter;
     bool          ScreenOpen;

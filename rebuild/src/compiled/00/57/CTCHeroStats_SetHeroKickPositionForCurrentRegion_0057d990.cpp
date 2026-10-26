@@ -15,27 +15,27 @@
 // ExitedUsingTeleporter +0x30, EntrancePos +0x34, EntranceAngle +0x40.
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CRegion {
+class CRegion { public:
     unsigned char _pad_0x00[0x18];
     CCharString   Name;                              // +0x18
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionNumber();                   // 0x004FB150
     CRegion& GetRegion_004fb490(long index);                  // 0x004FB490
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -61,7 +61,7 @@ struct CCrimeStatusMap {                             // std::map<CCharString, Mi
     MirroredCriminalStatus& operator[](const CCharString& key);  // 0x005812DF
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*           __vftable;                       // +0x00
     void*           ParentThing;                     // +0x04 CTCBase
     unsigned char   _pad_0x08[0x4];

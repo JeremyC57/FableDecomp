@@ -1,8 +1,8 @@
 // Test for 0080c210 CTCDExplosion::GetDistanceFromMeAsRatioOfDamageRadius: segment distance / DamageRadius.
 #include <cstdio>
 #include <math.h>
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
 static float Geometry_DistancePointToLineSegment(const C3DVector& a, const C3DVector& b, const C3DVector& p)
 {
     float dx = b.X - a.X, dy = b.Y - a.Y, dz = b.Z - a.Z;
@@ -13,7 +13,7 @@ static float Geometry_DistancePointToLineSegment(const C3DVector& a, const C3DVe
     float ex = a.X + t * dx - p.X, ey = a.Y + t * dy - p.Y, ez = a.Z + t * dz - p.Z;
     return (float)sqrt(ex * ex + ey * ey + ez * ez);
 }
-struct CTCDExplosion {
+class CTCDExplosion { public:
     float DamageRadius; C3DVector StartPos; C3DVector EndPos;
     float GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) const
     {

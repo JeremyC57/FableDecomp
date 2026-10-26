@@ -9,7 +9,7 @@
 #define __fastcall
 #endif
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,7 +23,7 @@ struct CInterfaceMap {
 };
 struct CModeBase;
 static int g_suspend = 0; static bool g_suspendFlag = false;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;
     unsigned char _pad11[0x0f];
@@ -48,13 +48,13 @@ struct CTCFlagged {
     unsigned char _pad00[0x50];
     unsigned char m_flag : 1;
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x1c];
     float         PlaybackSpeed;
     float         TargetPlaybackSpeed;
 };
 static CAnimateThing g_anim; static float g_duration = 2.0f; static int g_indexCalls = 0; static long g_indexSeen = -1;
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing* GetAnimateThing() { return &g_anim; }
     long GetAnimIndex() { g_indexCalls++; return 7; }
     float GetAnimDuration(long animIndex) { g_indexSeen = animIndex; return g_duration; }
@@ -64,7 +64,7 @@ void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable
 
 long g_GameFramesPerSecond = 25;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

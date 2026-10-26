@@ -1,4 +1,4 @@
-struct CTCLook {
+class CTCLook { public:
     char pad0[0x190];
     long headTurnState;   // +0x190
     char pad2[0x1d8 - 0x194];

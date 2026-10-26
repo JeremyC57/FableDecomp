@@ -9,7 +9,7 @@
 // Shape: the inline map Find reads end() once after LowerBound and keeps it as the default result; the caller re-reads
 //   end() from the member (`cmp esi,[ebx+8]`); the hit block stores `pair.second.Val` (+0xC) through the reference and
 //   returns `mov al,1` on the fall-through, the miss returns the separate `xor al,al` tail.
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pStringData;

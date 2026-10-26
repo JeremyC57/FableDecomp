@@ -135,7 +135,7 @@ static int GetFileAttributesExW(const WStr& fullPath, int, WIN32_FILE_ATTRIBUTE_
     data->ftLastWriteTime.dwHighDateTime = f->writeHigh;
     return 1;
 }
-struct CAFile {
+class CAFile { public:
     static bool PathExists(const WStr& path)          // stand-in for 0x00999230
     {
         return GetFileAttributesW(ExpandPath(path, GetCurrentPath())) != 0xFFFFFFFFUL;

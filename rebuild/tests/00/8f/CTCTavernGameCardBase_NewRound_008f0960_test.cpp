@@ -1,6 +1,6 @@
 // Behaviour test for CTCTavernGameCardBase::NewRound @ 0x008F0960: base NewRound, round flag and table bounds cleared, state 18.
 #include <cstdio>
-struct CTCTavernGame { bool GameInSession; long state; void NewRoundBase() { GameInSession = true; } void SetState(long s) { state = s; } };
+class CTCTavernGame { public: bool GameInSession; long state; void NewRoundBase() { GameInSession = true; } void SetState(long s) { state = s; } };
 struct CTCTavernGameCardBase : CTCTavernGame {
     float MinX, MaxX, MinY, MaxY; bool RoundFinished;
     void NewRound() { NewRoundBase(); RoundFinished = false; MaxY = 0.0f; MinY = 0.0f; MaxX = 0.0f; MinX = 0.0f; SetState(18); }

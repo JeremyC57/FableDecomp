@@ -11,27 +11,27 @@
 //   vertex count is its byte length divided (signed) by the stride.
 #include "engine/CEngineWaterBackgroundSubPatch.h"
 
-struct CRGBFloatColour;
-struct C4DVector {
+class CRGBFloatColour;
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
     inline C4DVector(const CRGBFloatColour& c);
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
 inline C4DVector::C4DVector(const CRGBFloatColour& c) : X(c.R), Y(c.G), Z(c.B), W(c.A) { }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector& operator=(const C3DVector& o) { X = o.X; Y = o.Y; Z = o.Z; return *this; }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float M[9];                                         // rotation rows
     C3DVector Pos;                                      // translation
     CMatrix3x4() { }
@@ -49,7 +49,7 @@ struct CPreTransposedBoneMatrix {
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -58,13 +58,13 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
@@ -194,14 +194,14 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetIndices(IDirect3DIndexBuffer9* indices);   // slot 104 (+0x1A0)
 };
 
-struct CVertexBufferWin32 {                        // PDB CVertexBufferBase fields of CVertexBufferWin32
+class CVertexBufferWin32 { public:                        // PDB CVertexBufferBase fields of CVertexBufferWin32
     void*                   _vptr;                 // +0x00
     IDirect3DVertexBuffer9* PVertexBuffer;         // +0x04
     long                    Length;                // +0x08 (bytes; divided signed by the stride)
     long                    Type;                  // +0x0c
     unsigned char           Stride;                // +0x10
 };
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void*                  _vptr;                  // +0x00
     IDirect3DIndexBuffer9* PD3DIndexBuffer;        // +0x04
 };
@@ -231,13 +231,13 @@ struct CRenderManagerCore {                         // the render manager core @
 };
 extern CRenderManagerCore* g_pRenderManagerCore;        // 0x01436E18
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54
 };
 extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void RenderBackgroundPatch(CEngineWaterBackgroundSubPatch* patch);
 };
 

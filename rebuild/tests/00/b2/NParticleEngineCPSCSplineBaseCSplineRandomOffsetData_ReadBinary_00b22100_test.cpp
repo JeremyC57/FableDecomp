@@ -12,12 +12,12 @@ typedef long long __int64;
 
 #include <cstring>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned int m_position;              // +4
     long StreamSize;                       // +8
@@ -45,7 +45,7 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-template <class T> struct CArray {              // STLport vector<T> (12 bytes in retail)
+template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -72,15 +72,15 @@ template <class T> struct CArray {              // STLport vector<T> (12 bytes i
     __forceinline void clear() { erase(begin(), end()); }
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;    // +0x00
     float             Tension;          // +0x0C
     bool              EndPointsConnected; // +0x10
 };
 
 namespace NParticleEngine {
-struct CPSCSplineBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;          // +0x00
         CCardinalSpline   ThisSpline;             // +0x04
         CCardinalSpline   PreviousSpline;         // +0x18

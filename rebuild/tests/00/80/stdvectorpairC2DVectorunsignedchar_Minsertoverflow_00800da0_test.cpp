@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct RoutePoint { C2DVector first; unsigned char second; };
 
 struct RouteVec {

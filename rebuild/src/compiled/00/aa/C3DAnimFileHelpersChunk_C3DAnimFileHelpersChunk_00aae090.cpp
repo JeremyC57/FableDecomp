@@ -12,7 +12,7 @@ struct CBase_00aa8360 {
     CBase_00aa8360(long typeCode);              // 0x00AA8360
 };
 
-struct C3DAnimFileHelpersChunk : CBase_00aa8360 {
+class C3DAnimFileHelpersChunk : public CBase_00aa8360 { public:
     virtual void v00();
     C3DAnimFileHelpersChunk();
 };

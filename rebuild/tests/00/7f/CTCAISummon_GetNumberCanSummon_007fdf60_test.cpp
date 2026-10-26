@@ -12,10 +12,10 @@ struct CList {
 };
 
 template <class T> const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CSummonDef { long NumberToSummon, MySummonLimit, MinimumSummon; };
+class CSummonDef { public: long NumberToSummon, MySummonLimit, MinimumSummon; };
 static long g_MaxTotalSummonedCreatures = 10;
 static CList g_all;
-struct CTCAISummon {
+class CTCAISummon { public:
     const CSummonDef* PSummonDef; CList MySummonedCreatures; bool TimeToSummon;
     long GetNumberCanSummon() const
     {

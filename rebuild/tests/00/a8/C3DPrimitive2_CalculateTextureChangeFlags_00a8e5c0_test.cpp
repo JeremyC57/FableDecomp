@@ -1,9 +1,9 @@
 // Behaviour test for 0x00A8E5C0 C3DPrimitive2::CalculateTextureChangeFlags
 #include <cstdio>
 struct CStaticBlock { bool DegenerateTriangles; unsigned char ChangeFlags; long MaterialIndex; };
-struct C3DMeshMaterial { unsigned long DiffuseMapBankIndex, BumpMapBankIndex; bool DegenerateTriangles; };
-struct C3DMesh2 { C3DMeshMaterial* Materials; };
-struct C3DPrimitive2 {
+class C3DMeshMaterial { public: unsigned long DiffuseMapBankIndex, BumpMapBankIndex; bool DegenerateTriangles; };
+class C3DMesh2 { public: C3DMeshMaterial* Materials; };
+class C3DPrimitive2 { public:
     unsigned long StaticBlockCount; CStaticBlock* StaticBlocks; unsigned long InitFlags;
     void CalculateTextureChangeFlags(const C3DMesh2* mesh)
     {

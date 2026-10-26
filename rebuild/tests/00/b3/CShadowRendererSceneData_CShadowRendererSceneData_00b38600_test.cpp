@@ -1,20 +1,20 @@
 // Behaviour test for the CShadowRendererSceneData copy constructor (0x00B38600): every member is copied, the clip volumes through their own copy constructor.
 #include <cstdio>
 #include <new>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct CMatrix4x4 { float M[4][4]; };
-struct CMatrix3x4 { float M[3][4]; };
+class CMatrix4x4 { public: float M[4][4]; };
+class CMatrix3x4 { public: float M[3][4]; };
 
-struct CShadowClipVolume {                                  // 0x98 bytes (landed 0x00B36C50)
+class CShadowClipVolume { public:                                  // 0x98 bytes (landed 0x00B36C50)
     CShadowClipVolume(const CShadowClipVolume& other);      // 0x00B36C50
     unsigned char _body[0x98];
 };
 
-struct CShadowRendererSceneData {                          // no user copy constructor: retail's is generated
+class CShadowRendererSceneData { public:                          // no user copy constructor: retail's is generated
     CMatrix4x4        WorldToShadowBufferMatrix;            // +0x000
     CMatrix4x4        WorldToShadowBufferMatrixHomogenousScreenSpace;   // +0x040
     CMatrix4x4        WorldToShadowBufferMatrixTextureSpace;            // +0x080

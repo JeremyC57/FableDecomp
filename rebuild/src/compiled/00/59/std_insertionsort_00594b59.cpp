@@ -12,8 +12,8 @@
 // Pragma: optimize("s") -- `push dword ptr [esp+10h]`, `push ecx ; push ecx` for the 8-byte slot and the loop entered
 // by a jump to its bottom test.
 #pragma optimize("s", on)
-struct CHeroAbilityDef;
-template <class T> struct CDefPointer {
+class CHeroAbilityDef;
+template <class T> class CDefPointer { public:
     T* m_pDef;                              // +0x00 (the def's reference count sits at its +4)
 };
 namespace std {

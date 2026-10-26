@@ -83,7 +83,7 @@ struct CScriptThingImp_Retail {
     long m_id;
     virtual bool IsSameThing(CScriptThingImp_Retail* other) { return other->m_id == m_id; }
 };
-struct CScriptThing { void* __vftable; CScriptThing* PImp_Data; void* PImp_Info; };
+class CScriptThing { public: void* __vftable; CScriptThing* PImp_Data; void* PImp_Info; };
 struct CScriptThing_Methods : CScriptThing {
     CScriptThingImp_Retail* GetPImp() const { return reinterpret_cast<CScriptThingImp_Retail*>(PImp_Data); }
     bool operator==(const CScriptThing_Methods& other) const;

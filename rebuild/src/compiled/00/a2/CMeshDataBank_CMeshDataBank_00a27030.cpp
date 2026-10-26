@@ -34,18 +34,18 @@ namespace N_009d5f80 { struct CBankFile {
     void SetIsStaticMap(bool isStaticMap);          // 0x009D5230
 }; } using N_009d5f80::CBankFile;
 
-struct CCharString {
-    struct CCharStringData* PStringData;
+class CCharString { public:
+    class CCharStringData* PStringData;
     CCharString();                                  // 0x0099E4B0
 };
 
-struct CResourceList {
+class CResourceList { public:
     unsigned char _pad_0x00[0x34];
     unsigned long UnloadDelay;                      // +0x34
     unsigned long UnloadedThisFrame;                // +0x38
 };
 
-struct CResourceBank {
+class CResourceBank { public:
     void* __vftable;
     CResourceList ResourceList;                     // +0x04
     unsigned char LoadingQueue[0x3c];               // +0x40
@@ -58,7 +58,7 @@ template <class T> struct _STLP_alloc_proxy {
     _STLP_alloc_proxy(T* p) : _M_data(p) { }
 };
 
-template <class T> struct CArray {                  // retail 12 bytes: STLport _Vector_base layout
+template <class T> class CArray { public:                  // retail 12 bytes: STLport _Vector_base layout
     T* _M_start;
     T* _M_finish;
     _STLP_alloc_proxy<T> _M_end_of_storage;
@@ -78,47 +78,47 @@ struct CULongArray : CArray<unsigned long> {
     }
 };
 
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
     T* operator->() const { return Data; }
 };
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
-struct C3DMeshFileXLoader {
+class C3DMeshFileXLoader { public:
     virtual ~C3DMeshFileXLoader();
     C3DMeshFileXLoader();                           // 0x00AA5C80
     unsigned char _pad[0xbc];
 };
-struct C3DAnimFileXLoader {
+class C3DAnimFileXLoader { public:
     virtual ~C3DAnimFileXLoader();
     C3DAnimFileXLoader();                           // 0x00AA4710
     unsigned char _pad[0x58];
 };
-struct C3DQuadricBasedMeshOptimiser {
+class C3DQuadricBasedMeshOptimiser { public:
     C3DQuadricBasedMeshOptimiser();                 // 0x00AA41C0
     unsigned char _pad[4];
 };
-struct C3DMeshStripifier {
+class C3DMeshStripifier { public:
     C3DMeshStripifier();                            // 0x00A8DF70
     unsigned char _pad[0x1c];
 };
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     C3DAnimationManager();                          // 0x00AA0F60
     void AddExclusiveObserver(CMeshDataBank* observer);   // 0x00A9D730 (CObservable base)
     unsigned char _pad[0x4c];
 };
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
-struct CPushBufferBuildInfo;
-struct CGraphicDataBank;
-struct CMeshDataBankEntry;
-struct C3DMeshInfo;
-struct CPhysicsMeshInfo;
-struct C3DAnimationInfo;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
+class CPushBufferBuildInfo;
+class CGraphicDataBank;
+class CMeshDataBankEntry;
+class C3DMeshInfo;
+class CPhysicsMeshInfo;
+class C3DAnimationInfo;
 
 struct CMeshOptimiserPointer : CCountedPointer<C3DQuadricBasedMeshOptimiser> {
     void Reset(C3DQuadricBasedMeshOptimiser* item);  // 0x00A29F50
@@ -169,12 +169,12 @@ struct CLipSyncMap : CRbTreeBase {                 // map<CCharString, CArray<CL
     }
 };
 
-struct CMeshBankStateBlock {
+class CMeshBankStateBlock { public:
     unsigned char _pad[0x3c];
     CMeshBankStateBlock();                          // 0x00A2D650
 };
 
-struct CMeshDataBank : CBankFile {
+class CMeshDataBank : public CBankFile { public:
     scoped_ptr<C3DMeshFileXLoader>              MeshLoader;              // +0x164
     scoped_ptr<C3DAnimFileXLoader>              AnimLoader;              // +0x168
     CCharString                                 Filename;                // +0x16c

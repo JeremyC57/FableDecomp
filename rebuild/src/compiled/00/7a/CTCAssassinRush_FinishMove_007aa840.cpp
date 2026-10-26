@@ -6,9 +6,9 @@
 // PDB +0x94 = retail +0x90 (ItemAlphaList is a 12-byte vector in retail), its object pointer first.
 // Shape: the creature argument rides in edi through both calls; the flag store is scheduled after
 // `mov ecx,esi` for the trailing call.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction();                             // 0x00662650
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0
 };
@@ -20,7 +20,7 @@ struct CCountedActionPointer {                              // CCountedPointer<C
     SCountBlock*         m_pCount;                          // +4
 };
 
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     unsigned char         _pad00[0x2c];
     bool                  StartTrailDelay;                  // +0x2c
     unsigned char         _pad2d[0x90 - 0x2d];

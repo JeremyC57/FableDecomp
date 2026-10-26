@@ -15,7 +15,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     template <class U>
@@ -37,16 +37,16 @@ struct CCountedPointer {
     }
 };
 
-struct CChunkedFileSuperChunk { virtual void v00(); };
-struct C3DMeshFileRootChunk : CChunkedFileSuperChunk { };
+class CChunkedFileSuperChunk { public: virtual void v00(); };
+class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { public: };
 
-struct CChunkedFile {
+class CChunkedFile { public:
     virtual void v00();
     unsigned char _body[0x10];              // RootChunk +4, Version +0xc, FileComment +0x10
     CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root);   // 0x00AA7DB0
 };
 
-struct C3DMeshFile : CChunkedFile {
+class C3DMeshFile : public CChunkedFile { public:
     virtual void v00();
     C3DMeshFile(const CCountedPointer<C3DMeshFileRootChunk>& root);
 };

@@ -1,12 +1,12 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
-struct CMatrix3x4 {
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
+class CMatrix3x4 { public:
     C3DVector Row[3]; C3DVector Position;
     C3DVector Rotate(const C3DVector& v) const
     {
@@ -17,8 +17,8 @@ struct CMatrix3x4 {
         return r;
     }
 };
-struct CPhysicsMesh { C3DBoundingBox BoundingBox; };
-struct CPhysicsMeshObject {
+class CPhysicsMesh { public: C3DBoundingBox BoundingBox; };
+class CPhysicsMeshObject { public:
     const CPhysicsMesh* Mesh; CMatrix3x4 PositionMatrix;
     C3DVector GetBoundingBoxYEdge() const
     { const C3DBoundingBox& box = Mesh->BoundingBox; return PositionMatrix.Rotate(C3DVector(0.0f, (box.Max.Y - box.Min.Y) * 0.5f, 0.0f)); }

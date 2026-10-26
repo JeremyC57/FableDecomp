@@ -12,7 +12,7 @@ struct CTCGraphicAppearance {
         return UpdatePrimitiveReasons;
     }
 };
-struct CThing {
+class CThing { public:
     bool drawable;
     CTCGraphicAppearance* PTCGraphicAppearance;
     virtual bool DrawIsDrawable() { return drawable; }

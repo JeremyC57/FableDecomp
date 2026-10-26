@@ -16,13 +16,13 @@ static int fails = 0;
 // the equality has `this` = CurrentLoadedRegion on the left (`cmp ecx,eax`); the stage test is `== 2 || == 3`. The
 // member operator== re-reads PStringData at every use (no cached block locals): VC7.1 then keeps the back() address
 // as its own CSE temporary (the unfolded `sub eax,4 ; mov eax,[eax]`), as found by the shared retry advisor.
-struct CCharStringData {                       // the shared string block
+class CCharStringData { public:                       // the shared string block
     const char*   m_pData;                     // +0x00
     unsigned long m_length;                    // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -43,7 +43,7 @@ struct CCharStringVector {                     // STLport vector<CCharString> (1
     CCharString& back() { return *(_M_finish - 1); }
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
 };

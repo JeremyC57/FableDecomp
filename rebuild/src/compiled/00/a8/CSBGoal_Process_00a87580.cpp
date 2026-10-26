@@ -14,7 +14,7 @@
 #include <math.h>
 #include "engine/CSBGoal.h"
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -24,17 +24,17 @@ struct C2DVector {
     float GetLengthSquared() const { return X * X + Y * Y; }
     C2DVector& Normalise();                       // 0x00A14540
 };
-struct CKinematic {
+class CKinematic { public:
     C2DVector Vector;
     CKinematic() {}
     CKinematic(const C2DVector& v) : Vector(v) {}
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C2DVector GetPosition() const;        // slot 8 (+0x20)
 };
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CNavigatorExternalInterface* NavigatorInterface;   // +0x00
 };
 extern bool g_SteeringDisabled;                   // 0x013D2D55

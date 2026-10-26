@@ -4,7 +4,7 @@
 // Layout = Ego_r.pdb CTCCrateStack (0x20 bytes): FirstCrate +0xc, SecondCrate +0x14, CrateDefIndex +0x1c.
 // Shape: the filled second slot returns 0 (`xor eax,eax`); `first ? 1 : 2` is the branch-free
 // `neg ; sbb eax,eax ; add eax,2`.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item link
     virtual void v00();
@@ -12,7 +12,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 
-struct CTCCrateStack {
+class CTCCrateStack { public:
     void*                   __vftable;                      // +0x00
     unsigned char           _pad04[8];                      // +0x04 CTCBase
     CBaseIntelligentPointer FirstCrate;                     // +0x0c CIntelligentPointer<CThing>

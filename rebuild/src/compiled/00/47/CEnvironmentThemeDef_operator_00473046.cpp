@@ -12,13 +12,13 @@
 //   the bool through al.
 #pragma optimize("s", on)
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x3c - 4];
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
 };
 
-struct CEnvironmentThemeDef : CParentDefClassBase {                       // vtable 0x01236244, retail sizeof 0xC4
+class CEnvironmentThemeDef : public CParentDefClassBase { public:                       // vtable 0x01236244, retail sizeof 0xC4
     float  TimeOfDay;                       // +0x3c
     bool   MoonLit;                         // +0x40
     float  FogStartZ;                       // +0x44

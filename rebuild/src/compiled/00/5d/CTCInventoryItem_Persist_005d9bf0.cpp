@@ -8,7 +8,7 @@
 // Leaf: Persist
 #include "engine/CTCInventoryItem.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad_0x00[0x18];
     long Mode;                                                // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

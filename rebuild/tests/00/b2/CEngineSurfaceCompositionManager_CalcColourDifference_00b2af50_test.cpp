@@ -2,7 +2,7 @@
 #include <math.h>
 
 // Model of CEngineSurfaceCompositionManager::CalcColourDifference (retail 0x00B2AF50).
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 static float CalcColourDifference(const CRGBColour& a, const CRGBColour& b)
 {

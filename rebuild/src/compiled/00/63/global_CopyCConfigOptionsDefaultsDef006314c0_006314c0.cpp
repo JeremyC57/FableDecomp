@@ -8,7 +8,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is CConfigOptionsDefaultsDef (its landed operator= @ 0x00625350 is the only callee).
-struct CConfigOptionsDefaultsDef {               // 124 bytes (0x7c); its own assignment copies the body
+class CConfigOptionsDefaultsDef { public:               // 124 bytes (0x7c); its own assignment copies the body
     unsigned char _body[0x7c];
     CConfigOptionsDefaultsDef& operator=(const CConfigOptionsDefaultsDef& other);   // 0x00625350
 };

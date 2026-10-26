@@ -10,7 +10,7 @@
 // destructor, Terminate) is merged by the compiler. The derived actions add no destructor. Each
 // branch reads the creature into its own named local (that is what gives retail's eax/eax and
 // ecx/eax load pairs; the bare expression allocates differently).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace N_0062e900 { struct CCreatureActionBase {
     virtual void v00();
@@ -18,20 +18,20 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                 // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 
-struct CCreatureAction_BeetleLand : CCreatureActionBase {
+class CCreatureAction_BeetleLand : public CCreatureActionBase { public:
     CCreatureAction_BeetleLand(CThingCreatureBase* creature);      // 0x00982C70
 };
 
-struct CCreatureAction_BeetleTakeOff : CCreatureActionBase {
+class CCreatureAction_BeetleTakeOff : public CCreatureActionBase { public:
     CCreatureAction_BeetleTakeOff(CThingCreatureBase* creature);   // 0x00982C10
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

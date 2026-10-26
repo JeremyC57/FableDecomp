@@ -10,14 +10,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 
 struct CLongVector {                    // retail std::vector<long> (12 bytes)
     long* m_first; long* m_last; long* m_end;
@@ -28,7 +28,7 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CSpecialAbilitiesMultiArrowDef : CParentDefClassBase {
+class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase { public:
     long         NumberOfShots[4];                      // +0x3c
     long         NumberInVolley[4];                     // +0x4c
     float        AmmoEffectCreationDelaySecs;           // +0x5c

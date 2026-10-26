@@ -20,11 +20,11 @@
 //   zeroed with `X = Y = Z = 0` (Z stored first); the hero-combat def is a CDefPointer temporary assigned through
 //   CDefPointer::operator= and released through the def's inline ReleaseTemporary(); the body nests under the base
 //   OnCreate and ValidateInitialisation tests so both failures share one final `return false` (ebx pushed at entry).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Clear() { X = Y = Z = 0.0f; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -52,7 +52,7 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -81,19 +81,19 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CHeroCombatDef : CDefObject {};
-struct CPlayerMovementDef : CDefObject {};
-struct CThingCreatureDef {
+class CHeroCombatDef : public CDefObject { public:};
+class CPlayerMovementDef : public CDefObject { public:};
+class CThingCreatureDef { public:
     unsigned char _pad00[0xd8];
     long PrimaryMeleeWeaponDef;                         // +0xd8
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer<CPlayerMovementDef>& out);   // 0x006AE1C0
 };
 
 extern long g_HeroCreationState;                        // 0x0137F940
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void* __vftable;
     unsigned char _pad04[0x74 - 0x04];
     CCharString ScriptName;                             // +0x74
@@ -116,7 +116,7 @@ struct CThingCreatureBase {
     void CreateDefaultWeapons();                        // 0x00664680
     bool OnCreate();                                    // 0x00666310
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     C3DVector ControlMoveByVector;                      // +0x16c
     unsigned char MovedByPlayer : 1;                    // +0x178 bit 0
     unsigned char Jumping : 1;

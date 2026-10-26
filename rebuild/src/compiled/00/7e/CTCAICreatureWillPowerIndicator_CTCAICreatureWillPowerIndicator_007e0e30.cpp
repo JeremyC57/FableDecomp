@@ -12,7 +12,7 @@
 // Shape: base constructor, own vtable, the four init-list scalars from one zero register (ShowEffect =
 // true), then the member pointer's base constructor and its derived vtable through edi. engine/CTCBase.h
 // holds the layout only, so the base is modelled as `CTCBase_Calls` (as the landed CTCRockTrollShield).
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
@@ -35,7 +35,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPoint
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCAICreatureWillPowerIndicator : CTCBase_Calls {    // vtable 0x0126FF2C
+class CTCAICreatureWillPowerIndicator : public CTCBase_Calls { public:    // vtable 0x0126FF2C
     bool                PoweredUp;                          // +0x0c
     unsigned char       _pad_0x0d[3];
     long                Timer;                              // +0x10

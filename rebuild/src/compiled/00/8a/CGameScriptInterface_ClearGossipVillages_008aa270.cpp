@@ -22,7 +22,7 @@ struct Target {
 
 extern Registry g_registry; // 0x13bae50
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 void __fastcall CGameScriptInterface_ClearGossipVillages(CGameScriptInterface* self, StrKey key)
 {

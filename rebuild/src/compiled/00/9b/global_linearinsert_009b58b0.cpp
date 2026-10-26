@@ -10,7 +10,7 @@
 // CWideString::~CWideString @ 0x0099B510 (the by-value parameter, destroyed on both paths).
 // Shape: the landed 0x00A70FF0 template with a 4-byte class element: the else branch pushes the comparator and rebuilds the value in
 // the argument area with the copy constructor.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510

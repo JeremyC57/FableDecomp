@@ -20,8 +20,8 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (import thun
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() {} };
 
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCompositeBlendDesc {                    // Ego_r.pdb, 16 bytes
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCompositeBlendDesc { public:                    // Ego_r.pdb, 16 bytes
     unsigned long TextureIndex;                 // +0x00
     long          BlendType;                    // +0x04 ECompositeBlendType
     CRGBColour    DiffuseColour;                // +0x08
@@ -63,7 +63,7 @@ template <class _Tp> struct vector : _Vector_base<_Tp> {   // STLport vector (12
     }
 };
 
-struct CEngineTextureDecal {                    // Ego_r.pdb; 20 bytes retail
+class CEngineTextureDecal { public:                    // Ego_r.pdb; 20 bytes retail
     long OriginalTextureIndex;                  // +0x00
     long DecalID;                               // +0x04
     vector<CCompositeBlendDesc> OverlaidBlends; // +0x08

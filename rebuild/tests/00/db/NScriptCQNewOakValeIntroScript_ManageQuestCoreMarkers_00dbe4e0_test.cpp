@@ -4,7 +4,7 @@
 // father -> book trader -> Theresa -> father as the gold / control / tutorial / sweets / chocolates conditions are met.
 static char g_log[1024];
 static void Log(const char* a, const char* b) { std::strcat(g_log, a); std::strcat(g_log, b); std::strcat(g_log, ";"); }
-struct CScriptThing { char Name[32]; };
+class CScriptThing { public: char Name[32]; };
 struct CQ_NewOakValeIntroScript;
 struct CGSI {
     int Frames; CQ_NewOakValeIntroScript* Script; bool Tutorial;

@@ -1,4 +1,4 @@
-struct CNavQuadTreeNode {
+class CNavQuadTreeNode { public:
     void* vftable;
 };
 

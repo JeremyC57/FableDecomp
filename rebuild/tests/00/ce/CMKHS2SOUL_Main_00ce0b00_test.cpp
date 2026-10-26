@@ -13,13 +13,13 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
 static int g_effects = 0, g_created = 0, g_iatt = 0, g_termAt = 1 << 30, g_frames = 0, g_stopFrame = 1 << 30, g_freeFrame = 0, g_life = 2;
 static bool g_badArg = false;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
 struct CScriptThingImp { int DiesAt; long RefCount; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCountedPointer() : Data(0) { }
     explicit CCountedPointer(T* d) : Data(d) { if (Data) ++Data->RefCount; }
@@ -34,8 +34,8 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { Release(); }
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     CCountedPointer<CScriptThingImp> PImp;
     C3DVector Pos;
     CScriptThing() { Pos.X = 1.0f; Pos.Y = 2.0f; Pos.Z = 3.0f; }
@@ -44,7 +44,7 @@ struct CScriptThing {
     float GetAngleXY() const { return 0.5f; }
     bool IsAlive() const { return PImp.Data && g_frames < PImp.Data->DiesAt; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing CreateEffect(const CCharString& effect, const C3DVector& position, const CCharString& bone, float angle, bool b, bool c) const
     {

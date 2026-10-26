@@ -13,7 +13,7 @@
 //          HasRecievedBribe +0x20); PBrain is the first dword at +0x04; the 0xb4 component's +0x10 / +0x40 are descriptive.
 #include "engine/CAIStateGroup_MinionGuardReactToBribe.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -39,7 +39,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -67,10 +67,10 @@ struct CTCGuardBribe {                          // interface 0xb4 (descriptive)
     unsigned char _pad14[0x40 - 0x14];
     long FrameBribeOffered;                     // +0x40 (descriptive)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter();                    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
@@ -98,7 +98,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 bool __fastcall IS_THING_ALIVE_Pointer(const CBaseIntelligentPointer& p);   // 0x0048C740 (IS_THING_ALIVE<CIntelligentPointer<T>>)
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

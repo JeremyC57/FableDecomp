@@ -11,7 +11,7 @@
 //         landed FinalCleanup model): LoopingSound +0x50, TurncoatingEffectOnMe +0x74, TurncoatingEffectOnTarget +0x7c.
 // Shape: the out-parameter GetInterface in an `if` (presence test straight on the bitset word, `test dword ptr [eax+20h]`)
 //        with the sound stop and the `LoopingSound = 0` clear as its body; two IS_THING_ALIVE blocks on &member in esi.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,7 +42,7 @@ struct CThing {
     void FadeOutEffect();                       // 0x0072AC40
 };
 
-struct CTCSoundPlayer {                         // interface 0x10
+class CTCSoundPlayer { public:                         // interface 0x10
     void StopSample(unsigned long sampleID);    // 0x0066ADD0
 };
 
@@ -61,7 +61,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     void*                   __vftable;          // +0x00
     CThing*                 ParentThing;        // +0x04 (CTCBase)
     unsigned char           _pad_0x08[0x48];

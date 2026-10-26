@@ -62,11 +62,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -158,10 +158,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -213,7 +213,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -231,8 +231,8 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -240,8 +240,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -325,14 +325,14 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThing;
-struct CThingCreatureBase;
-struct CTCWeaponTrail;
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase;
-struct CSoundPair { long first; long last; CSoundPair():first(0),last(0) {} };
-struct CAnimationEntry;
-struct CCreatureActionBase {
+class CThing;
+class CThingCreatureBase;
+class CTCWeaponTrail;
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase;
+class CSoundPair { public: long first; long last; CSoundPair():first(0),last(0) {} };
+class CAnimationEntry;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -416,7 +416,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;
     void SetPItem(CBaseObject* item);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer(); // CIntelligentPointer<CThing> vtable 0x01238C6C, slot 0 @0x004A9710
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
     CIntelligentPointer(const CIntelligentPointer& other)
@@ -438,7 +438,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -451,14 +451,14 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 #endif // FABLE_ENGINE_CIVCOUNTEDPOINTEEBASE_H
 
 #undef CIVCountedPointeeBase
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase(); // slot0
     virtual void Delete() const; // slot1 native0042D930 deletes this through slot0
     unsigned long IVRefCount;
     void Release() { if(--IVRefCount==0) Delete(); }
 };
-struct CAnimComponentMap : CIVCountedPointeeBase {};
-struct CAnimationEntry {
+class CAnimComponentMap : public CIVCountedPointeeBase { public:};
+class CAnimationEntry { public:
     long BankIndex,AnimName,GroupName;
     CAnimComponentMap* Components;
     CAnimationEntry(long bank,long transitionIn,long transitionOut,long flags); //005DED00 real seed overload
@@ -479,7 +479,7 @@ struct ActionPointer {
     ActionPointer(CCreatureActionBase* p):Data(p) { if(Data) Info=new ActionPointerInfo(Data); else Info=0; }
     ~ActionPointer() { if(Info && --Info->RefCount==0) { Info->DeleteData(Info->Data); delete Info; } }
 };
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> Item;
     ActionPointer FollowUp;
     virtual ~CCreatureAction_UnsheatheItemFromInventory();
@@ -561,8 +561,8 @@ bool CCreatureActionBase::CanAnimationTransitionOut() const { return false;}
 void CCreatureActionBase::OnAnimationLoaded() {}
 bool CCreatureActionBase::WaitForMeshToLoad() const { return false;}
 
-struct CThingCreatureBase {};
-struct CThing : CBaseObject {};
+class CThingCreatureBase { public:};
+class CThing : public CBaseObject { public:};
 static bool failNext,wrong;
 static int allocationCalls,baseCalls,findCalls,entryCopies,mapDeletes,actionDeletes;
 static CThingCreatureBase* expectedCreature;

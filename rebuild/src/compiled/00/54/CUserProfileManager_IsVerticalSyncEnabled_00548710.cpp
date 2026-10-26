@@ -11,7 +11,7 @@
 // places that block 4 bytes further, so the shipped build dropped one 4-byte field before it).
 // While the options screen is editing a new profile the pending value is returned instead.
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad_0x00[0x0C];
     bool          UseNewProfileValues;         // +0x0C (PDB)
     unsigned char _pad_0x0D[0x50 - 0x0D];

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Model of CAIStateGroup_VillageTaskPatrol::IsRunnable @ 0x0093EDF0.
-struct CThing { int id; };
-struct CTCVillage { long has; long HasPatroller(CThing* c) { return c->id == 1 ? has : 0; } };
+class CThing { public: int id; };
+class CTCVillage { public: long has; long HasPatroller(CThing* c) { return c->id == 1 ? has : 0; } };
 static CTCVillage g_village; static bool g_villageOk; static CThing* g_item; static int g_slot10;
 struct Group {
     CThing creature;

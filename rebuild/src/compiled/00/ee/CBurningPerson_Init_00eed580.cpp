@@ -6,7 +6,7 @@
 #define SCRIPT_SLOT(n) virtual void slot##n()
 #define SCRIPT_SLOTS10(d) SCRIPT_SLOT(d##0); SCRIPT_SLOT(d##1); SCRIPT_SLOT(d##2); SCRIPT_SLOT(d##3); SCRIPT_SLOT(d##4); SCRIPT_SLOT(d##5); SCRIPT_SLOT(d##6); SCRIPT_SLOT(d##7); SCRIPT_SLOT(d##8); SCRIPT_SLOT(d##9)
 
-struct CScriptThing { long m_id; long m_uid; long m_type; };   // 12 bytes
+class CScriptThing { public: long m_id; long m_uid; long m_type; };   // 12 bytes
 
 struct CGameInterface {                         // only the slot used is typed
     SCRIPT_SLOTS10(0); SCRIPT_SLOTS10(1); SCRIPT_SLOTS10(2); SCRIPT_SLOTS10(3); SCRIPT_SLOTS10(4);

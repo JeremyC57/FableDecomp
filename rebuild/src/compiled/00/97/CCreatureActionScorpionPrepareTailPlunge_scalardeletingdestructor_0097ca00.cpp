@@ -1,4 +1,4 @@
-struct CCreatureAction_ScorpionPrepareTailPlunge {
+class CCreatureAction_ScorpionPrepareTailPlunge { public:
     void* vftable;
 };
 

@@ -1,4 +1,4 @@
-struct CMatrix3x4;
+class CMatrix3x4;
 
 // callee at 0xbebaa0: __fastcall(ecx=matrix, edx=self+0x94, stack: self+0xbc, field58)
 extern "C" void __fastcall FrameEndCallee(CMatrix3x4* matrix, void* sub, void* p, int v);

@@ -25,7 +25,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x94];
     unsigned char m_changed : 1;
     unsigned char m_flags94_1 : 7;
@@ -35,20 +35,20 @@ struct CTCBaseAny {
     void OnStateGroupRemoved() { ++g_removed; g_removedOn = this; }
     CAnimateThing& GetAnimation() { ++g_getAnim; return g_anim; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 static int g_baseRemove = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void vfunc_13() { ++g_baseRemove; }
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
 };
-struct CTCScriptedControl : CTCBase {
+class CTCScriptedControl : public CTCBase { public:
     virtual void vfunc_13();
 };
 void CTCScriptedControl::vfunc_13()

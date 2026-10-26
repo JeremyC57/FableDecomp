@@ -35,7 +35,7 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CScriptThing {
+class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
     virtual bool IsValid() const { return valid; }
@@ -53,7 +53,7 @@ struct CTCVillage_Retail {
         }
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     virtual void SetVillageAttitude(const CScriptThing& village, EScriptVillageAttitude attitude) const;
 };

@@ -21,7 +21,7 @@ namespace N_009d5f80 { struct CBankFile {
     CBankFile();                                    // 0x009D5F80
     void SetIsStaticMap(bool isStaticMap);          // 0x009D5230 (empty body: `ret 4`)
 }; } using N_009d5f80::CBankFile;
-struct CResourceBank {
+class CResourceBank { public:
     unsigned char _bank[0x7c];
     CResourceBank();                                // 0x009FC5F0
 };
@@ -29,22 +29,22 @@ template <class T> struct _STLP_alloc_proxy {
     T* _M_data;
     _STLP_alloc_proxy(T* p) : _M_data(p) { }
 };
-template <class T> struct CArray {                  // retail 12 bytes: STLport _Vector_base layout
+template <class T> class CArray { public:                  // retail 12 bytes: STLport _Vector_base layout
     T* _M_start;
     T* _M_finish;
     _STLP_alloc_proxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;                                        // +0x00
     CCPPointerInfo* Info;                           // +0x04
     CCountedPointer() : Data(0), Info(0) { }
     void Reset(T* item);                            // 0x00992170
 };
-struct CLipSyncDataBankEntry;
-struct CPhonemeDataBank;
-struct CLipSyncDataBank : CBankFile {               // vtable 0x0129D3D4
+class CLipSyncDataBankEntry;
+class CPhonemeDataBank;
+class CLipSyncDataBank : public CBankFile { public:               // vtable 0x0129D3D4
     CArray<CLipSyncDataBankEntry>  Entries;         // +0x164
     CCountedPointer<CResourceBank> ResourceBank;    // +0x170
     bool                           SkipUpdate;      // +0x178

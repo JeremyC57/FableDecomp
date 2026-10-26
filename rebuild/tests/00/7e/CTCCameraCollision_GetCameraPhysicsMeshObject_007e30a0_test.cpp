@@ -1,25 +1,25 @@
 // Behaviour test for CTCCameraCollision::GetCameraPhysicsMeshObject (0x007E30A0).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 static int g_deleted = 0;
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     virtual void DeleteThis() { ++g_deleted; }
     long m_refCount;
     void DecRef() { --m_refCount; }
     long GetRefCount() const { return m_refCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) DeleteThis(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) {}
     CIVCountedPointer(const CIVCountedPointer& o) : m_pObject(o.m_pObject) { if (m_pObject) ++m_pObject->m_refCount; }
     ~CIVCountedPointer() { if (m_pObject) m_pObject->Release(); }
 };
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() {} };
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() {} };
 static const C3DVector* g_pos = 0; static const CRightHandedSet* g_axes = 0;
-struct CPhysicsMeshObject : CBaseClass {
+class CPhysicsMeshObject : public CBaseClass { public:
     CIVCountedPointer<CPhysicsMesh> Mesh; float PositionMatrix[12]; float Scale; float OO_Scale;
     CPhysicsMeshObject(const CIVCountedPointer<CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale)
         : Mesh(mesh)
@@ -31,21 +31,21 @@ struct CPhysicsMeshObject : CBaseClass {
     ~CPhysicsMeshObject() {}
 };
 static CPhysicsMesh g_mesh;
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     CIVCountedPointer<CPhysicsMesh> GetMesh() const { CIVCountedPointer<CPhysicsMesh> p; p.m_pObject = &g_mesh; ++g_mesh.m_refCount; return p; }
 };
 static CPhysicsMeshInfo g_info; static long g_askedIndex = -1;
 struct CMeshBank { CPhysicsMeshInfo* GetPhysicsMeshInfo(long index) { g_askedIndex = index; return &g_info; } };
-struct CWorld { CMeshBank* PMainMeshBank; };
-struct CThingPhysicsMeshInfo { float Pad; float Radius; };
+class CWorld { public: CMeshBank* PMainMeshBank; };
+class CThingPhysicsMeshInfo { public: float Pad; float Radius; };
 static CRightHandedSet g_orientation;
 struct CThingPhysics {
     CThingPhysicsMeshInfo MeshInfo; C3DVector Position;
     virtual const CRightHandedSet& GetOrientation() const { return g_orientation; }
     virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return &MeshInfo; }
 };
-struct CThing { CThingPhysics* PPhysics; };
-struct CCameraCollisionDef { long PhysicsMesh; };
+class CThing { public: CThingPhysics* PPhysics; };
+class CCameraCollisionDef { public: long PhysicsMesh; };
 static CWorld* g_world = 0;
 class CTCCameraCollision {
 public:

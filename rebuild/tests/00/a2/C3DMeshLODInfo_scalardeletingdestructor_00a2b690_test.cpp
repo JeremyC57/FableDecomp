@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo { public:
     void* vftable;
     int destroyed;
 };

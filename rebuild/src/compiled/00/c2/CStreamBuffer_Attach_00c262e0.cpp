@@ -43,7 +43,7 @@ struct CStreamBufferQueue {                     // 0x30-byte polymorphic buffer 
     unsigned char _pad04[0x2c];
 };
 
-struct CHandleBasedMemoryPool {                 // this library's pool variant (Handles table +0x440)
+class CHandleBasedMemoryPool { public:                 // this library's pool variant (Handles table +0x440)
     void Lock(long handle);                     // 0x00C283C0
     void Unlock(long handle);                   // 0x00C283E0
     void Free(long handle);                     // 0x00C28690

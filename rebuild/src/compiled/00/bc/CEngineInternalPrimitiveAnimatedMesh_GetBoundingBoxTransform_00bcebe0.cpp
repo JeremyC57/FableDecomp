@@ -14,14 +14,14 @@
 // an inline Multiply(a, b) on the target over a named copy `a` of the transform (an operator*= with an internal copy
 // loads the wrong operand of each row-2..4 product); one chained zero store, one chained diagonal store.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     float GetLength() const { return (float)sqrt(Z * Z + Y * Y + X * X); }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DVector GetPos() const { return C3DVector(Center.X, Center.Y, Center.Z); }
@@ -49,7 +49,7 @@ public:
         E43 = (a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33) + b.E43;
     }
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     unsigned char     _pad[0x28];
     C3DBoundingSphere BoundingSphere;                   // +0x28
     C3DBoundingSphere GetBoundingSphere() const { return BoundingSphere; }

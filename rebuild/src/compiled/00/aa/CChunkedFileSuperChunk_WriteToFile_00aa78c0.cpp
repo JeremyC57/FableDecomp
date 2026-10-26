@@ -8,7 +8,7 @@
 //          frame word and the array end is re-read through it every iteration (the virtual calls may change it).
 // Retail layout: SubChunks at +0x10 as a 12-byte STLport vector (the PDB header's 16-byte CArray does not fit: the
 //          second array starts at +0x1c in retail), so `this` is modelled locally.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void SetPosition(long position);        // slot 1
     virtual long GetPosition();                     // slot 2
@@ -16,12 +16,12 @@ struct CDataOutputStream {
     virtual void Write(const void* data, long size);// slot 4
     void WriteLong_00993ea0(long value);                     // 0x00993EA0 (Write(&value, 4); manifest "WriteCBYTE" is propagated)
 };
-struct CDataInputStream;
-struct CChunkedFileSaver;
-struct CChunkedFileLoader;
-struct CChunkedFileSuperChunk;
+class CDataInputStream;
+class CChunkedFileSaver;
+class CChunkedFileLoader;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk {                          // retail layout = engine/CChunkedFileChunk.h (+ the vtable it cannot declare)
+class CChunkedFileChunk { public:                          // retail layout = engine/CChunkedFileChunk.h (+ the vtable it cannot declare)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual long IsUnknownType() const;             // slot 4 (CChunkedFileRawDataChunk @ 0x00AA7740: `mov eax,1`)
     virtual void v05(); virtual void v06();
@@ -50,7 +50,7 @@ struct CChunkArray {                                // retail CArray<CCountedPoi
     CChunkPointer* end() const { return m_pLast; }
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CChunkArray SubChunks;                          // +0x10
     CChunkArray RegisteredSubChunkTypes;            // +0x1c
     unsigned long CurrentChunkIndex;                // +0x28

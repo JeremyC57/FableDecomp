@@ -11,8 +11,8 @@
 // constructed (zero stores before the allocation) and assigned through Reset; its destructor is inline.
 // The engine header CCombatSequence_BanditKingBackOff.h only carries a flattened base blob, so the
 // sequence is modelled locally with the two pointer members the body reads.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -20,7 +20,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 
@@ -29,7 +29,7 @@ struct CCombatAction_008bfd60 : CCombatActionBase {
     CCombatAction_008bfd60(CThingCreatureBase* owner, CThing* target);   // 0x008BFD60
 };
 
-struct CCreatureAction_BanditKingBackOff : CCombatAction_008bfd60 {
+class CCreatureAction_BanditKingBackOff : public CCombatAction_008bfd60 { public:
     CCreatureAction_BanditKingBackOff(CThingCreatureBase* owner, CThing* target)
         : CCombatAction_008bfd60(owner, target) { }
     virtual void v00();                     // vtable 0x0128DA6C

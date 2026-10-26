@@ -8,7 +8,7 @@ static int g_targetDtors = 0;
 static int g_rebalanceCalls = 0;
 
 struct CBaseIntelligentPointer { void* m_pItem; ~CBaseIntelligentPointer() { ++g_targetDtors; } };
-struct COpinionDeed { long DeedType; long DeedHandle; float Pos[3]; long FrameHappened; CBaseIntelligentPointer PTarget; long ExtraData; };
+class COpinionDeed { public: long DeedType; long DeedHandle; float Pos[3]; long FrameHappened; CBaseIntelligentPointer PTarget; long ExtraData; };
 
 struct NodeBase { unsigned char colour; NodeBase* parent; NodeBase* left; NodeBase* right; };
 struct Node : NodeBase { long first; COpinionDeed* second; };

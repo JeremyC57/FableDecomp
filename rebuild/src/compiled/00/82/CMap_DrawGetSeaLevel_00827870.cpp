@@ -2,7 +2,7 @@
 // retail: fld dword ptr [ecx+0x1d08]; ret 4
 // float member getter; ret 4 => one unused stack arg cleaned.
 
-struct CMap {
+class CMap { public:
     char pad[0x1d08];
     float seaLevel; // +0x1d08
 };

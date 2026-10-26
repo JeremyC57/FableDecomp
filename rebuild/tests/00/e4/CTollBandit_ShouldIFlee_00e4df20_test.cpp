@@ -7,16 +7,16 @@ static int g_termAt = 1000;
 static void (*g_hook)(int frame) = 0;
 static void Log(const std::string& s) { char b[16]; std::sprintf(b, "@%d", g_frame); g_log += s; g_log += b; g_log += ";"; }
 static void Reset(int termAt) { g_log = ""; g_frame = 0; g_termAt = termAt; g_hook = 0; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() { }
     CScriptThing(const std::string& name) : Name(name) { }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return g_frame >= g_termAt; }
 };
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log.c_str()); return 1; }
@@ -24,8 +24,8 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 // behaviour test: CTollBandit::Should_I_Flee (when the bandits flee) takes over the bandit, runs it toward the escape
 // marker until it is within the def's close-to-exit range plus 2, then fades it out and kills it
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
-struct CScriptDef { float TollBanditCloseToExit; float TollBanditTimeToFade; };
+class C3DVector { public: float X, Y, Z; };
+class CScriptDef { public: float TollBanditCloseToExit; float TollBanditTimeToFade; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 static float g_pos = 0.0f;
@@ -38,7 +38,7 @@ struct CScriptThingP : CScriptThing {
     CScriptThingP(const std::string& n, float x) : CScriptThing(n) { Pos.X = x; Pos.Y = Pos.Z = 0.0f; }
     C3DVector GetPos() const { return Pos; }
 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool Scripting;
     bool IsScripting() const { return Scripting; }
     void Release() { Log("release"); Scripting = false; }
@@ -47,7 +47,7 @@ struct CScriptGameResourceObjectScriptedThingBase {
     { char t[64]; std::sprintf(t, "move %g %g %d", p.X, closeTo, (int)type); Log(t); g_pos += 10.0f; g_taskEnds = g_frame + 1; (void)a; (void)b; }
     bool IsPerformingScriptTask() { return g_frame < g_taskEnds; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& b, EScriptAIPriority p)
     { if (g_frame < 2) return false; Log("start " + thing.Name); b.Scripting = true; (void)p; return true; }

@@ -7,13 +7,13 @@
 // and dereferences it (`mov edx,[ecx] ; mov [eax],edx`); `jle` on the member is the signed `> 0` running test.
 #include "engine/CTCBase.h"
 
-struct CThing {
+class CThing { public:
     void SetForceFrameUpdate(bool update);         // 0x004C7C60
 };
 
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 
-struct CTCExplodingObject : CTCBase {
+class CTCExplodingObject : public CTCBase { public:
     float MaxDamage;                               // +0x0c
     float Radius;                                  // +0x10
     long  FireDamage;                              // +0x14

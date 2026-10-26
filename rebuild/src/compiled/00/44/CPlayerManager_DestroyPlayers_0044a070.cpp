@@ -16,7 +16,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);   /
 
 extern long g_NoPlayerNumber_013760b0;                  // 0x013760B0
 
-struct CPlayer {
+class CPlayer { public:
     virtual ~CPlayer();                                 // slot 0 (scalar deleting destructor)
     unsigned char _pad04[0x28 - 0x04];
     long          Number;                               // +0x28
@@ -46,7 +46,7 @@ struct CPlayerVector {                                  // retail STLport vector
     void clear() { erase(begin(), end()); }
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*         __vftable;
     void*         Component;                            // +0x04
     void*         DefinitionManager;                    // +0x08

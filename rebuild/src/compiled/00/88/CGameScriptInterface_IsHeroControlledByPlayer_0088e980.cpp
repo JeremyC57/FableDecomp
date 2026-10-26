@@ -3,14 +3,14 @@
 // Callees: the player getter @ 0x00449970 (on PlayerManager; the label "Catch@0040d959" is propagated), CPlayer::GetCurrentMode @ 0x00633BE0. Shape: a `switch` on `mode - 4` over 0..0x25 through a byte-indexed two-entry jump table (`xor al,al` / `mov al,1`), the out-of-range default true.
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
-struct CWorld;
+class CWorld;
 struct CPlayer_Retail {
     long GetCurrentMode();                         // 0x00633BE0
 };
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetPlayer();                   // 0x00449970
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
     long                    Component;

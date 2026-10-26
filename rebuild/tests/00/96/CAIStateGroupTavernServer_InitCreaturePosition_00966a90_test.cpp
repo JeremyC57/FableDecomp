@@ -1,8 +1,8 @@
 #include <cstdio>
 // Model of InitCreaturePosition @ 0x00966a90: runnable -> AutoPlaceNearBuilding(building, 5.0f) -> 1/0.
-struct CThingBuilding { int id; };
+class CThingBuilding { public: int id; };
 static bool g_runnable, g_placed; static CThingBuilding g_pub = { 3 }; static CThingBuilding* g_arg; static float g_radius;
-struct CThingAICreature { bool AutoPlaceNearBuilding(CThingBuilding* b, float r) { g_arg = b; g_radius = r; return g_placed; } };
+class CThingAICreature { public: bool AutoPlaceNearBuilding(CThingBuilding* b, float r) { g_arg = b; g_radius = r; return g_placed; } };
 struct Group {
     CThingAICreature creature;
     bool IsRunnable() { return g_runnable; }

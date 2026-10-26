@@ -8,7 +8,7 @@ public:
     CCharString(const char* s, long n);
 };
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     void* vtbl;
     virtual CCharString GetConsoleEnableFunctionName();
 };

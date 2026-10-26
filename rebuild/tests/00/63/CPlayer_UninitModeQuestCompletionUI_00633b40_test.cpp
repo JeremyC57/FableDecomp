@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CGamePlayerInterface { int m_id; };
+class CGamePlayerInterface { public: int m_id; };
 struct CInputProcess {
     CGamePlayerInterface* m_pAttachedTo; int m_adds; int m_removes;
     CInputProcess() : m_pAttachedTo(0), m_adds(0), m_removes(0) { }
@@ -7,7 +7,7 @@ struct CInputProcess {
     virtual bool AddToInterface(CGamePlayerInterface* i) { m_pAttachedTo = i; ++m_adds; return true; }
     void RemoveFromInterface() { m_pAttachedTo = 0; ++m_removes; }
 };
-struct CPlayer {
+class CPlayer { public:
     CGamePlayerInterface* PlayerInterface;
     CInputProcess* InputProcessMain_ptr;
     CInputProcess* InputProcessDebugControls_ptr;

@@ -9,7 +9,7 @@
 // Shape: memberwise; the vector goes through the out-of-line vector<long>::operator= 0x00454886.
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -21,7 +21,7 @@ struct CLongVector {                    // std::vector<long> (retail STLport, 12
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CCreatureGeneratorDef : CDefClassBase {
+class CCreatureGeneratorDef : public CDefClassBase { public:
     CLongVector RandomEffects;          // +0x28
     long RandomSoundCriteria;           // +0x34
     long SecondsBetweenEffects;         // +0x38

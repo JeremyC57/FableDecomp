@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CThing;
+class CThing;
 
 class CAIStateGroup_MinionSitOnSeat
 {

@@ -12,9 +12,9 @@
 // Shape: the stores follow the source order and share the eax zero (the float Counter included); `push 7` is hoisted
 // above them.
 typedef long ETavernGameStates;
-struct CCard;
+class CCard;
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _pad_0x04[0x24];
     bool          GameFinished;              // +0x28

@@ -1,7 +1,7 @@
 // CMultiStaticMeshDef::Copy @ 0x004eb6c8
 // void __fastcall Copy(CMultiStaticMeshDef* this, CDefClassBase const* other)
 
-struct CDefClassBase;
+class CDefClassBase;
 
 // container member at offset +0x28 (holds a sub-object with its own Copy)
 struct SubContainer {
@@ -9,13 +9,13 @@ struct SubContainer {
     void Copy(const SubContainer* other);  // __fastcall
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     SubContainer sub;   // +0x28
     void Copy(const CDefClassBase* other);  // __fastcall base copy
 };
 
-struct CMultiStaticMeshDef {
+class CMultiStaticMeshDef { public:
     char pad[0x28];
     SubContainer sub;   // +0x28
 };

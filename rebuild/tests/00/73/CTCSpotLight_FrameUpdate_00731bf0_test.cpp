@@ -5,8 +5,8 @@
 #define __fastcall
 #endif
 struct CSpotLightInfo { float Angle; float pad[3]; float Flicker; };
-struct CSpotLightDef { float pad[14]; float Flicker; float FlickerSpeed; };
-struct CTCSpotLight {                                   // the engine header's members by name
+class CSpotLightDef { public: float pad[14]; float Flicker; float FlickerSpeed; };
+class CTCSpotLight { public:                                   // the engine header's members by name
     void* __vftable;
     CSpotLightInfo* PLightInfo_Data;
     void* PLightInfo_Info;

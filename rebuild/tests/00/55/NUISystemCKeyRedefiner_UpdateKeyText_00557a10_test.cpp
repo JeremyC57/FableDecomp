@@ -14,7 +14,7 @@
 #endif
 static const unsigned short g_tag[] = { 'T','E','X','T','_','G','U','I','_','K','E','Y','_','U','N','D','E','F','I','N','E','D',0 };
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     unsigned short m_text[40];
     CWideString() { m_text[0] = 0; ++g_live; }
     CWideString(const unsigned short* text) { int i = 0; while ((m_text[i] = text[i]) != 0) ++i; ++g_live; }
@@ -24,11 +24,11 @@ struct CWideString {
 };
 static unsigned short* _wcsupr_(unsigned short* text) { for (unsigned short* p = text; *p; ++p) if (*p >= 'a' && *p <= 'z') *p = (unsigned short)(*p - 32); return text; }
 #define _wcsupr _wcsupr_
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CActionInputControl {                       // 28 bytes
+class CActionInputControl { public:                       // 28 bytes
     long  GameAction;                              // +0x00
     long  ControllerType;                          // +0x04
     long  KeyboardKey;                             // +0x08
@@ -43,7 +43,7 @@ bool __fastcall GetActionName(const CActionInputControl& control, CWideString& n
 }
 
 namespace NUISystem {
-struct CText {
+class CText { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {}
     virtual void v005() {} virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {}
     virtual void v010() {} virtual void v011() {} virtual void v012() {}
@@ -73,7 +73,7 @@ struct CText {
     virtual void v140() {} virtual void v141() {} virtual void v142() {} virtual void v143() {}
     virtual void SetText(const CWideString& text, bool isTag, bool b) { int i = 0; while ((m_shown[i] = text.m_text[i]) != 0) ++i; m_isTag = isTag; m_b2 = b; ++m_calls; }
 };
-struct CKeyRedefiner {
+class CKeyRedefiner { public:
     virtual void v00() {}
     unsigned char       _sprite04[0x194];          // +0x04 the CSprite / control bases
     CText*              PKeyText;                  // +0x198

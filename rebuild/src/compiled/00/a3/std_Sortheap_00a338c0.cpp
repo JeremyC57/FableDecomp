@@ -13,12 +13,12 @@
 // stored field by field from the temporary (`fstp` for X/Y). _Pop_heap and _Pop_heap_0 are __forceinline: with
 // plain `inline` VC7.1 keeps _Pop_heap out of line here (a local cdecl call, 133 v 217 bytes) -- its inliner
 // declines it (the 0x0076AF10 sibling, whose pair has no implicit-copy member, inlines with plain `inline`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct C3DHelperPoint {
+class C3DHelperPoint { public:
     C3DVector Position;
     long BoneIndex;
 };

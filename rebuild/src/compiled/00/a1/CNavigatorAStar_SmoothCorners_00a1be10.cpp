@@ -8,14 +8,14 @@
 //   other three re-derived through prev links); the legs come from the 2-float C2DVector constructor (Y computed first, as
 //   arguments are evaluated right to left); the final corner is handled after the loop with its own pair of locals. VC
 //   aligns the frame to 8 for the four 8-byte C2DVector locals.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
     C2DVector& Normalise();                        // 0x00A14540
 };
-struct CNavWayPoint {                              // 10 bytes
+class CNavWayPoint { public:                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09

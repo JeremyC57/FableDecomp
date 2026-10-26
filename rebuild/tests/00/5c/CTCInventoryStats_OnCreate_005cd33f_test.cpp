@@ -27,30 +27,30 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
     void Release() { if (DecRefToZero(m_refCount)) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CCreatureDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x90 - 0x08];
     long StatsScreenInventory;                  // +0x90 (PDB +0xA0)
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 struct CDefSubRef { long DefIndex; };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CDefPointeeBase> GetDef(long index);    // 0x009ADA10 (hidden result)
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual const CDefSubRef* FindSubDef(const CCharString& typeName);   // slot 14 (+0x38)
@@ -92,7 +92,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* ou
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit) const;                  // 0x00410DE0 (std::bitset::test)
 };
@@ -102,7 +102,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits UsingComponents;              // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -120,19 +120,19 @@ struct CThing {
     }
 };
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0 (its vptr is the +0x130 word)
+class CBase { public:                                  // vtable 0x0123A3E0 (its vptr is the +0x130 word)
     virtual void v00();
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-struct CTCHeroExperience;
-struct CTCHeroStats;
+class CTCHeroExperience;
+class CTCHeroStats;
 struct CTCInventoryBase_Stats {                 // retail 0x130 bytes
     virtual void OnCreate();                    // slot 4
     CThing* ParentThing;                        // +0x04

@@ -7,15 +7,15 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct CMap { u64 NextThingUID; };
-struct CWorldMap {
+class CMap { public: u64 NextThingUID; };
+class CWorldMap { public:
     CMap Maps[4];
     bool Loaded[4];
     bool IsMapLoaded(long n) const { return Loaded[n]; }
     CMap& GetMap(long n) { return Maps[n]; }
     long GetMapNumberFromMapUID(unsigned long uid) const { return uid < 4 ? (long)uid : 0; }
 };
-struct CThingManager {
+class CThingManager { public:
     CWorldMap* WorldMap;
     u64 Owned[4]; int OwnedCount;
     u64 CurrentUniqueID, CurrentLocalThingUniqueID;

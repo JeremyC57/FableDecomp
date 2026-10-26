@@ -10,7 +10,7 @@
 // Shape: the entry is a `const CScriptEntry&` bound once per column (indexing entries[i] at every use re-reads the
 // array's begin after each byte store to dest); the column's values are read at `source + j * stride` (a pointer local
 // initialised before the loop is loaded ahead of the count test).
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }

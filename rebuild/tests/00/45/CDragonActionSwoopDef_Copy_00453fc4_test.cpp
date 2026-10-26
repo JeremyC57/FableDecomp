@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDragonActionSwoopDef { int tag; };
+class CDragonActionSwoopDef { public: int tag; };
 static int g_calls = 0;
 static CDragonActionSwoopDef* g_last_self = 0;
 static const CDragonActionSwoopDef* g_last_other = 0;

@@ -1,6 +1,6 @@
 #include <cstdio>
 static unsigned int ROR13(unsigned int v) { return (v >> 13) | (v << 19); }
-struct CTCWound {
+class CTCWound { public:
     unsigned int seed; long added;
     bool Add(float z) {
         long loc; if (z > 1.55f) loc = 1; else loc = 6;

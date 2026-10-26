@@ -17,7 +17,7 @@ void Sub28_clear(SubObj28*) { ++g_sub28; }
 
 struct Concrete : VBase { void slot0(int) { ++g_virt; } };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad00[0x1c];
     VBase* vecB_begin;
     VBase* vecB_end;

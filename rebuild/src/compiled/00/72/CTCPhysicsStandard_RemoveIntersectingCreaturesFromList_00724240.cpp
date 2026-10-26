@@ -18,7 +18,7 @@
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 class CThing;
 
-struct CIsCreatureIsIntersecting {              // 4 bytes (PDB)
+class CIsCreatureIsIntersecting { public:              // 4 bytes (PDB)
     CThing* Owner;                              // +0x00
     CIsCreatureIsIntersecting(CThing* owner) : Owner(owner) {}
     bool operator()(CThing* thing) const;       // 0x007249C0

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CLightDef { bool m_bStartActive; };
-struct CTCLight {
+class CLightDef { public: bool m_bStartActive; };
+class CTCLight { public:
     const CLightDef* PLightDef; bool Initialised; int calls; bool active;
     void SetActive(bool a) { ++calls; active = a; }
     void ApplyDefActiveState() { if (PLightDef && !Initialised) SetActive(PLightDef->m_bStartActive); }

@@ -13,7 +13,7 @@
 // intermediate base's IMPLICIT destructor -- it stores no vtable of its own and only runs the def
 // pointer's inline release (`if (p) { if (--p->count == 0) p->Delete(); p = 0; }` through a local copy
 // held in ecx) -- and the root destructor as a tail jump.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     CThing* ParentThing;                                    // +0x04
@@ -23,14 +23,14 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void RemoveFromGlobalTCs();                             // 0x00686DF0
 };
 
-struct CDefPointeeBase {                                    // counted definition object
+class CDefPointeeBase { public:                                    // counted definition object
     virtual void Destroy();                                 // slot 0
     virtual void Delete();                                  // slot 1
     long m_refCount;                                        // +4
 };
 
 template<class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     ~CDefPointer()
     {
@@ -43,7 +43,7 @@ struct CDefPointer {
     }
 };
 
-struct CTCActionUseBase : CTCBase_Calls {                   // 0x14 bytes
+class CTCActionUseBase : public CTCBase_Calls { public:                   // 0x14 bytes
     CDefPointer<CDefPointeeBase> PActionUseDef;             // +0x0c
     bool                         Usable;                    // +0x10
 };
@@ -55,7 +55,7 @@ struct CBaseIntelligentPointer {                            // vtable + item
     ~CBaseIntelligentPointer();                             // 0x00A01C10
 };
 
-struct CTCActionUseBed : CTCActionUseBase {                 // vtable 0x0123F784
+class CTCActionUseBed : public CTCActionUseBase { public:                 // vtable 0x0123F784
     bool                    WaitingForFadeOut;              // +0x14
     bool                    WaitingForFadeIn;               // +0x15
     bool                    InAtomicAction;                 // +0x16

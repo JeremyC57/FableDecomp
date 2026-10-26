@@ -7,7 +7,7 @@ struct CTCCarryableNode {
     void*        fc;   /* +0xc */
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     CTCCarryableNode* m0;   /* +0x0 */
     unsigned int      ParentThing;   /* +0x4 */
     void Detach_008b1dc0(unsigned int a);

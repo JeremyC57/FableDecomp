@@ -4,18 +4,18 @@
 // retail creature sits 0x1c lower there: CThing -0x10, CThingPhysical list -8, a 12-byte vector -4).
 // Shape: `mov al ; shr al,6 ; and al,1` = a one-bit unsigned char bitfield read through the def pointer's
 // inline operator-> (no AddRef: the member is used in place).
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x148];
     unsigned char _flags148_0 : 6;
     unsigned char Flag148Bit6 : 1;                       // +0x148 bit 6
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char                   _pad00[0xe0];
     CDefPointer<CThingCreatureDef>  PDef;                // +0xe0
     unsigned char vfunc_75();

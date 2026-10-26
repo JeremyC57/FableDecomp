@@ -1,6 +1,6 @@
 #include "engine/CGoldDef.h"
 #include <cstdio>
-struct CDefClassBase { char pad[0x2c]; };
+class CDefClassBase { public: char pad[0x2c]; };
 struct CGoldDef_Methods : CGoldDef { void BaseClone(const CDefClassBase* other); };
 static int g_baseCalled;
 void CGoldDef_Methods::BaseClone(const CDefClassBase*) { g_baseCalled = 1; }

@@ -2,32 +2,32 @@
 // Behaviour test for CTCShop::FindDefaultStockItem (0x00772250): the body of src/ over stand-ins -- for a def that is a
 // stock item and an inventory item, the shop's default stock record for that def, else the record for its category,
 // else null.
-struct CShopItem { float Quantity; float PriceMultiplier; float MaxStock; long RestockPeriod; float a, b, c; };
-struct CStockItemDef { long Key; CShopItem Item; };
+class CShopItem { public: float Quantity; float PriceMultiplier; float MaxStock; long RestockPeriod; float a, b, c; };
+class CStockItemDef { public: long Key; CShopItem Item; };
 static int g_releases = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long m_refCount;
     void ReleaseReference() { --m_refCount; ++g_releases; }
     void ReleaseTemporary() { --m_refCount; ++g_releases; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
     T* operator->() const { return Object; }
 };
-struct CShopDef : CDefPointeeBase {
+class CShopDef : public CDefPointeeBase { public:
     CStockItemDef* DefaultStockFirst;
     CStockItemDef* DefaultStockLast;
     CStockItemDef* CategoryStockFirst;
     CStockItemDef* CategoryStockLast;
 };
 struct CStockDef : CDefPointeeBase { };
-struct CInventoryItemDef : CDefPointeeBase { long Category; };
+class CInventoryItemDef : public CDefPointeeBase { public: long Category; };
 static CStockDef g_stockDef;
 static CInventoryItemDef g_itemDef;
 static CShopDef g_shopDef;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool isStock, isItem, isShop;
     template <class T> bool Give(CDefPointer<T>* out, T* def, bool has)
     { if (!has) return false; out->Object = def; ++def->m_refCount; return true; }
@@ -43,12 +43,12 @@ struct CDefTemporary {
     CDefClassBase* operator->() const { return Object; }
 };
 static CDefClassBase g_queried;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefTemporary GetPDefFromGlobalIndex(long) { CDefTemporary t; t.Object = &g_queried; ++g_queried.m_refCount; return t; }
 };
 static CDefinitionManager g_defs;
-struct CThing { CDefClassBase* PDef; };
-struct CTCShop {
+class CThing { public: CDefClassBase* PDef; };
+class CTCShop { public:
     CThing* ParentThing;
     CDefinitionManager* GetDefinitions() const { return &g_defs; }
     const CShopItem* FindDefaultStockItem(long defIndex);

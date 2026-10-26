@@ -47,8 +47,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_STATIC_ASSERT(expression) \
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -56,8 +56,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -159,12 +159,12 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 struct CPredicateBase;
 
 #pragma pack(push, 1)
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -229,10 +229,10 @@ FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -265,7 +265,7 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 
 
 #pragma pack(push, 1)
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     bool          Running;                                   // +0x04
     bool          StopRunning;                               // +0x05
@@ -301,8 +301,8 @@ FABLE_STATIC_ASSERT(offsetof(CASuspendableProcess, TimesliceLength) == 0xc);
 #endif // FABLE_ENGINE_CASUSPENDABLEPROCESS_H
 
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170

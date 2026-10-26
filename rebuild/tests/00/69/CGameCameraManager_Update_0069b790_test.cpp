@@ -55,13 +55,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -200,14 +200,14 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -270,14 +270,14 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #endif // FABLE_ENGINE_CTHING_H
 
 #undef CThing
-struct CThing {unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
+class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
 struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
-struct C3DVector {float X,Y,Z;};
-struct CRightHandedSet {C3DVector Up,Forward;};
-struct CCamera {C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
+class C3DVector { public:float X,Y,Z;};
+class CRightHandedSet { public:C3DVector Up,Forward;};
+class CCamera { public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
 struct CCameraTools {unsigned char NativeTools[0x20];void FrameUpdate();}; //00877D20
 struct CCameraBase {void FrameUpdate();}; //0084DC10
-struct CGameCameraManager {
+class CGameCameraManager { public:
  void* VTable;CCamera Camera,OldCamera;void* World;CCameraTools CamTools;
  CCameraBase* CurrentMode;void* CurrentInfo;void* PendingMode;void* PendingInfo;
  bool NewAutoMode,ObservedThingInMelee,ObservedThingInBuilding;unsigned char Align;

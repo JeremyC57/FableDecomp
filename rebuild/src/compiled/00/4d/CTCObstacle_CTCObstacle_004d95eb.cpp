@@ -4,7 +4,7 @@
 // Shape: the size-optimised module (`pop ecx`, `and dword ptr [..],0`), a non-virtual destructor in a polymorphic class, the agent in edi, `jmp` into the base destructor.
 #pragma optimize("s", on)
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CSteeringAgent {
+class CSteeringAgent { public:
     unsigned char m_body[4];
     ~CSteeringAgent();                             // 0x00A1C950
 };
@@ -40,7 +40,7 @@ struct CTCBase_004d95eb {
     ~CTCBase_004d95eb();                           // 0x00686830 (labelled ~CChunkedFileChunk)
 };
 
-struct CTCObstacle : CTCBase_004d95eb {           // vtable 0x0123E28C
+class CTCObstacle : public CTCBase_004d95eb { public:           // vtable 0x0123E28C
     CSteeringAgent*       m_pAgent;                // +0x0c
     CReleasable_004d95eb* m_pTarget;               // +0x10
     ~CTCObstacle();

@@ -9,7 +9,7 @@
 // Shape: the "Should not happen" local is built in a temporary, copied and the temporary destroyed (inline by-value
 //   getter returning a named local; VC7.1 has no NRVO) and it is never read; every case returns a fresh
 //   CCharString(literal) into the hidden result, which VC tail-merges into one `push -1 ; push lit ; jmp` per case.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -22,7 +22,7 @@ static inline CCharString ShouldNotHappenName()
     return name;
 }
 namespace NScript {
-struct CV_LostTraderScript {
+class CV_LostTraderScript { public:
     unsigned char _base[0x58];
     CCharString GetRandomBanditName();
 };

@@ -8,7 +8,7 @@ static int g_seq = 0;
 static int g_order[3];
 static int g_n = 0;
 
-struct CCharString {
+class CCharString { public:
     int tag;
     char* buf;              // observed member
     ~CCharString() { g_order[g_n++] = tag; }

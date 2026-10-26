@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct CGameTimeManager {
+class CGameTimeManager { public:
     void* World;
     void* GameComponent;
     float Time;

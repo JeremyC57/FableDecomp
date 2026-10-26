@@ -19,12 +19,12 @@ struct CWorldTimeComponent {
 };
 CWorldTimeComponent* GetWorldTimeComponent();   // 0x00686A80
 
-struct CClockDef {
+class CClockDef { public:
     unsigned char _pad[0x34];
     long          HandType;                 // +0x34
 };
 
-struct CTCClock {
+class CTCClock { public:
     void*         __vftable;                // +0x00
     unsigned char _pad04[8];                // +0x04 CTCBase
     CClockDef*    PDef;                     // +0x0c CDefPointer<CClockDef const>

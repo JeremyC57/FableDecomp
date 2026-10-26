@@ -67,7 +67,7 @@ public:
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                                  // 0x0099A2D0
 };
@@ -96,7 +96,7 @@ public:
     }
 };
 
-struct CEngineInternalAttachedPrimitiveInfo : CBaseClass {   // vptr 0x012A1AB8
+class CEngineInternalAttachedPrimitiveInfo : public CBaseClass { public:   // vptr 0x012A1AB8
     virtual void Release();
     CEnginePrimitiveHandle Handle;                 // +0x04
     CEngineInternalAttachedPrimitiveInfo() {}

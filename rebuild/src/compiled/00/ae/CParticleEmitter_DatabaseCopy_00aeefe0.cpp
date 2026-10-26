@@ -10,8 +10,8 @@
 //   +0x40, Emitter2DLayer +0x42, the uchar flag bytes +0x44/+0x45, Name +0x140, MaxSpawnDistance..FadeInEnd
 //   +0x158..+0x168; engine/CParticleEmitter.h is the wider PDB view, so the class is modelled locally.
 // Shape: the erase loop is STLport vector::erase(pos) inlined (copy down, --finish, destroy the counted pointer).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
 };
@@ -23,7 +23,7 @@ struct SCountBlock {
 };
 class CParticleEmitter;
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     void*             __vftable;                                       // +0x00
     CParticleEmitter* PEmitter;                                        // +0x04
     unsigned char     _state08[0x64];                                  // +0x08

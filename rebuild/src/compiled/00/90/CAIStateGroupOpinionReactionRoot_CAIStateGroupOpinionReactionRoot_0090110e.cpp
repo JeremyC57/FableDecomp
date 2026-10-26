@@ -8,7 +8,7 @@
 // store follows its base call), then the body assignment `LastRunWasTryAndLook = false` (+0x88). The engine
 // header (pack 1) puts the 79 reaction flag bytes at +0x1c, so the pointer member is unaligned at +0x6b and the
 // class is modelled packed; the other members are not initialised here.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -20,16 +20,16 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     CIntelligentPointerThing() : CBaseIntelligentPointer() { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     CAIStateGroupBase();                        // 0x008FD255
 };
 
-struct CTCTalk;
+class CTCTalk;
 
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot : CAIStateGroupBase {   // vtable 0x0128C984
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:   // vtable 0x0128C984
     CTCTalk* PTCTalk;                           // +0x14
     long CurrentReactionType;                   // +0x18 EOpinionReactionType
     bool ReactionFlags[79];                     // +0x1c

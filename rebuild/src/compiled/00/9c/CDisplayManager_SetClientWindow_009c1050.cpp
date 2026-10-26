@@ -6,21 +6,21 @@
 // Note: the block scope lets bitDepth take the dead argument slot; the store order of params is the retail order.
 struct HWND__; typedef HWND__* HWND;
 struct IDirect3DDevice9 { virtual long __stdcall QueryInterface(void*, void**); virtual unsigned long __stdcall AddRef(); virtual unsigned long __stdcall Release(); };
-struct C2DExtentsI { long X, Y; C2DExtentsI() : X(0), Y(0) { } };
+class C2DExtentsI { public: long X, Y; C2DExtentsI() : X(0), Y(0) { } };
 struct CPresentationIntervalDesc { long Type, Interval; };
 struct CCreateDeviceParameters {
     HWND WinHandle; C2DExtentsI BackBufferDimensions; long BackBufferBitDepth; long ZBufferBitDepth; long BackBufferCount;
     long RefreshRate; bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; long MultisampleType;
 };
-struct CWideString { void* PData; };
-struct CSurface { void Release(); unsigned char _d[0x10]; };
+class CWideString { public: void* PData; };
+class CSurface { public: void Release(); unsigned char _d[0x10]; };
 class CDisplayManager;
 struct CRenderManagerBase {
     CRenderManagerBase(CDisplayManager* display, const CWideString& shaderPath, unsigned long flags);
     virtual ~CRenderManagerBase();
     void Init(IDirect3DDevice9* device);
 };
-struct CRenderManager : CRenderManagerBase {
+class CRenderManager : public CRenderManagerBase { public:
     CRenderManager(CDisplayManager* display, const CWideString& shaderPath, unsigned long flags) : CRenderManagerBase(display, shaderPath, flags) { }
     virtual ~CRenderManager();
     unsigned char _d[0x3ea4 - 4];

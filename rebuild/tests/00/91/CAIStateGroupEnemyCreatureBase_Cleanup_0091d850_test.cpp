@@ -1,7 +1,7 @@
 // Behaviour test for 0x0091D850: EnemyCreatureBase::Cleanup.
 #include <cstdio>
 struct CCreature { bool registered; bool IsRegisteredCombatant() { return registered; } };
-struct CCombatManager { CCreature* removed; void DeregisterCombatant(CCreature* c) { removed = c; } };
+class CCombatManager { public: CCreature* removed; void DeregisterCombatant(CCreature* c) { removed = c; } };
 struct CGroup {
     CCreature* creature; CCombatManager* mgr; void* PEnemy; int hooks;
     void OnCleanup() { ++hooks; }

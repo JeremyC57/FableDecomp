@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-static long g_base = 0; struct CDefClassBase { virtual void v00() { } unsigned char _body[0x24]; CDefClassBase() { } CDefClassBase(const CDefClassBase&) { ++g_base; } };
+static long g_base = 0; class CDefClassBase { public: virtual void v00() { } unsigned char _body[0x24]; CDefClassBase() { } CDefClassBase(const CDefClassBase&) { ++g_base; } };
 struct CDef : CDefClassBase { long m_28; bool m_2c, m_2d; long m_30, m_34; CDef() { } CDef(const CDef& o) : CDefClassBase(o) { m_28 = o.m_28; m_2c = o.m_2c; m_2d = o.m_2d; m_30 = o.m_30; m_34 = o.m_34; } };
 
 int main() {

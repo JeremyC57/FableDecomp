@@ -7,7 +7,7 @@ struct CResourceOwner_01436e1c {
 };
 extern CResourceOwner_01436e1c* g_pResourceOwner_01436e1c;   // 0x01436E1C
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     static long GetIndexBufferUsage_00b3b060();
 };
 

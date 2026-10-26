@@ -45,12 +45,12 @@ struct CBasicStringChar {                                // CBasicString<char>, 
     bool          UseFastExtend : 1;                     // +0x0c
     bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                                 // 17 bytes
+class CCharStringData { public:                                 // 17 bytes
     CBasicStringChar Data;                               // +0x00
     long             NoRefs;                             // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
@@ -65,17 +65,17 @@ struct CCharString {
     }
 };
 extern const CCharString g_EmptyCharString;              // 0x0143E8EC
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -137,7 +137,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual void i074();
     virtual bool IsAlive() const;                                                      // slot 75 (+0x12c)
 };
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     __forceinline ~CScriptThing() {}                                      // out of line 0x004AA840
@@ -209,7 +209,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v256(); virtual void v257(); virtual void v258(); virtual void v259(); virtual void v260(); virtual void v261(); virtual void v262(); virtual void v263();
  virtual float GetHealth(CScriptThing const &) const; //slot264 0x00890400
 };
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -1,10 +1,10 @@
 // Behaviour test for CNavQuadTree::UnblockAllSwitchableNodes (0x00A78DD0): every switchable node gets
 // SetAsBlocked(its own ID, false).
 #include <cstdio>
-struct CNavSwitchableLeafNode { unsigned long lastLo, lastHi; int calls; bool blocked; void SetAsBlocked(unsigned long lo, unsigned long hi, bool b) { lastLo = lo; lastHi = hi; ++calls; blocked = b; } };
+class CNavSwitchableLeafNode { public: unsigned long lastLo, lastHi; int calls; bool blocked; void SetAsBlocked(unsigned long lo, unsigned long hi, bool b) { lastLo = lo; lastHi = hi; ++calls; blocked = b; } };
 struct SNode { unsigned long idLo, idHi; CNavSwitchableLeafNode* Node; };
-struct CMap { SNode* m_pFirst; SNode* m_pLast; SNode* m_pEnd; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } SNode& operator[](unsigned int i) { return m_pFirst[i]; } };
-struct CNavQuadTree {
+class CMap { public: SNode* m_pFirst; SNode* m_pLast; SNode* m_pEnd; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } SNode& operator[](unsigned int i) { return m_pFirst[i]; } };
+class CNavQuadTree { public:
     CMap SwitchableNodes;
     void UnblockAllSwitchableNodes()
     {

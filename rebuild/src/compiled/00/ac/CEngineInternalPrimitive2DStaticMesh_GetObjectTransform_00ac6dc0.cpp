@@ -7,7 +7,7 @@
 // element 7 repeats m[5], which is why retail keeps those loads on the x87 stack (fst/fxch) or copies the narrowed
 // float through eax instead of loading again; element 8 takes m[7] (+0x38). The last three floats are zero
 // immediates. Label: propagated manifest name; the real owner is a double-precision transform record.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
 };
 

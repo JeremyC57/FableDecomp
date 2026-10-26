@@ -9,17 +9,17 @@
 // the +0x30 word; mode manager = 0x31, bit 17 of the +0x24 word), map +0x44.
 // Shape: HasTC + GetTC with the ranged-attacks component in a named local (esi); the mode manager is the unchecked out-parameter
 // GetInterface (the absent arm reads the lookup key's frame word); RemoveMode's argument is pushed before GetPlayer runs.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(long mode);                         // 0x00634190
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -43,7 +43,7 @@ struct CThing {
     }
     CPlayer* GetPlayer_004c7a30();                               // 0x004C7A30
 };
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();                          // 0x00789FF0
     void ResetProjectileWeaponMode();                   // 0x00789B30
 };
@@ -51,11 +51,11 @@ struct CMode {
     virtual void v00();
     virtual long GetModeType();                         // slot 1
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CMode* GetCurrentMode();                            // 0x0073A6E0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x63 - 0x08];

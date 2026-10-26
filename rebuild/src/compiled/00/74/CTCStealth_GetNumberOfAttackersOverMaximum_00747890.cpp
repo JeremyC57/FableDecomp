@@ -51,7 +51,7 @@ struct CBaseIntelligentPointer {
     const CThing* GetPItem() const;                     // 0x00A01B50
 };
 namespace NStealth {
-struct CDangerStatus {
+class CDangerStatus { public:
     long Status;                                        // +0x00 (2, 3 = attacking)
     long Timer;                                         // +0x04
 };
@@ -61,7 +61,7 @@ struct SDangerThing {                                   // pair<CIntelligentPoin
     NStealth::CDangerStatus second;
 };
 extern long g_maxNumberOfAttackers;                     // 0x01375728
-struct CTCStealth {
+class CTCStealth { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x38 - 0x08];

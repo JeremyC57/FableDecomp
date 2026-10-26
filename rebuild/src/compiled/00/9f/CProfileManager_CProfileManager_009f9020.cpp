@@ -158,14 +158,14 @@ public:
 
 }
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pStringData;
     bool operator<(const CCharString& other) const;
 };
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString {
 public:
     CWideStringData* m_pStringData;

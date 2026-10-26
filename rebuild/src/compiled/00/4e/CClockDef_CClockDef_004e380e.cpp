@@ -17,7 +17,7 @@ struct CMember_00430345 {
     CMember_00430345();                              // 0x00430345
 };
 
-struct CClockDef : CBase_0044c0c0 {
+class CClockDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x24];
     CMember_00430345 m_member;                       // +0x28
     virtual void v00();

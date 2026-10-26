@@ -9,7 +9,7 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const { return std::strcmp(Text, other.Text) < 0; }
 };
 static CBasicStringChar g_payloads[16];
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString() : PStringData(0) { }
     bool operator<(const CCharString& other) const
@@ -28,8 +28,8 @@ static void MakeString(CCharString& s, int key, long i)
 static int StringKey(const CCharString& s) { int v = 0; std::sscanf(s.PStringData->Text, "%d", &v); return v - 100; }
 
 static bool FastCompare(const CCharString& a, const CCharString& b) { return a < b; }
-struct CMatrix3x4 { float M[3][4]; };
-struct C3DDummyObject { CMatrix3x4 Transform; long BoneIndex; };
+class CMatrix3x4 { public: float M[3][4]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; long BoneIndex; };
 struct TEntry { CCharString first; C3DDummyObject second; };
 struct TCompare { char m_tag; bool operator()(const TEntry& a, const TEntry& b) const { return FastCompare(a.first, b.first); } };
 typedef TEntry T;

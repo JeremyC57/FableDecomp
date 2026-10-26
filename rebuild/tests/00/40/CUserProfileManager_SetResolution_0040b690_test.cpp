@@ -1,7 +1,7 @@
 // Behaviour test for CUserProfileManager::SetResolution (resolution setter, 0x0040B690).
 #include <cstdio>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool UseNewProfileValues;
     unsigned long Resolution;
     unsigned long ResolutionNewProfile;

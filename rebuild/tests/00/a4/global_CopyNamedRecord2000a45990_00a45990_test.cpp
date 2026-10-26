@@ -6,7 +6,7 @@
 
 struct random_access_iterator_tag { };
 static int g_assigns = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }

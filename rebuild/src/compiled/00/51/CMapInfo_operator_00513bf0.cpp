@@ -3,9 +3,9 @@
 // No CMapInfo/C2DBoxI/CCPPointerInfo header exists, including _quarantine.
 #include "fable_string.h"
 void operator delete(void*) throw(); //00BFE9BC scalar CRT delete
-struct C2DBoxI { long TLX,TLY,BRX,BRY; };
-struct CCPPointerInfo { unsigned long RefCount; void(FABLE_FASTCALL* DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
+class C2DBoxI { public: long TLX,TLY,BRX,BRY; };
+class CCPPointerInfo { public: unsigned long RefCount; void(FABLE_FASTCALL* DeleteFunc)(void*); void* Data; };
+template<class T> class CCountedPointer { public:
  T* Data; CCPPointerInfo* Info;
  CCountedPointer& operator=(const CCountedPointer& o){
   T* data=o.Data; CCPPointerInfo* info=o.Info;
@@ -13,8 +13,8 @@ template<class T> struct CCountedPointer {
   return *this;
  }
 };
-struct CMap;
-struct CMapInfo {
+class CMap;
+class CMapInfo { public:
  C2DBoxI Area; CCountedPointer<CMap> PMap; CCharString LevelName,LevelScriptName;
  unsigned long MapUID; bool Used,Placed,Activated,Loading,LoadedOnPlayerProximity;
  CCharString SerialiseScript;

@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -30,9 +30,9 @@ struct CDataInputStream {
     }
 };
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char       _base_0x04[0x18];           // +0x04 (vptr at +0x00)
     CDefinitionManager* PDefManager;                // +0x1c
     unsigned long       GlobalIndex;                // +0x20

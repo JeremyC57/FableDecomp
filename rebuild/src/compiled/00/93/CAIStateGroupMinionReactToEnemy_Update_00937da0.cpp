@@ -23,15 +23,15 @@ class C3DVector { public:
     float GetLengthSquaredXY() const { return X * X + Y * Y; }
     C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CThingAICreature : CThingCreatureBase { };
+class CThingAICreature : public CThingCreatureBase { public: };
 bool __fastcall IsToAttackTarget(CThingAICreature* creature, CThingCreatureBase* target);   // 0x00864D00
 inline float GetDistanceSquaredXY(const CThing* a, const CThing* b)
 {
@@ -50,18 +50,18 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

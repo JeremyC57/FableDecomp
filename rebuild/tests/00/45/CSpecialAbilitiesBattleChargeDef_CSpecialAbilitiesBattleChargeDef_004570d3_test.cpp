@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0;
-struct CParentDefClassBase { virtual void v00() {} unsigned char _base[0x38]; CParentDefClassBase() { ++g_baseCtor; } };
+class CParentDefClassBase { public: virtual void v00() {} unsigned char _base[0x38]; CParentDefClassBase() { ++g_baseCtor; } };
 template <class T>
 struct CAllocProxy {                            // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
     T* p;
@@ -18,8 +18,8 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CAllocProxy<T> end;
     CRetailVector() : first(0), last(0), end(0) { }
 };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
-struct CSpecialAbilitiesBattleChargeDef : CParentDefClassBase {
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
+class CSpecialAbilitiesBattleChargeDef : public CParentDefClassBase { public:
     float RunSpeed; CRetailVector<float> DashDistance; CRetailVector<float> RadiusOfEffect; CRetailVector<float> BattleChargeDamage;
     float BattleChargeCombatMultiplierFactor; float BattleChargeRadialStartSeconds; float BattleChargeRadialEndSeconds; float BattleChargeRadialThreshold;
     float BattleChargeRadialLength; float BattleChargeRadialIntensity; float BattleChargeRadialFade; float BattleChargeRadialRange; float BattleChargeRadialTwist;

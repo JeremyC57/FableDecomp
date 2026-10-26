@@ -9,14 +9,14 @@
 // SetParticleCreationDisabled @ 0x006E0690 / UpdateEmitterThingAttachment @ 0x006DFFB0 / UpdateEmitterCameraAttachment
 // @ 0x006E0230, CTCPhysicsBase::GetOrientationInterpolator @ 0x006B0460, CParticleEmitter::SetHidden @ 0x006DFDA0,
 // CThing::Kill(bool) @ 0x004C9B80, the CTCBase accessor @ 0x00686D60 (slot 9), C3DOrientationInterpolator vtable 0x01239824.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                            // +0x00
     C3DVector Forward;                                       // +0x0c
 };
@@ -25,19 +25,19 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                                 // 0x0099A2D0
     ~CBase();                                                // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct C3DOrientationInterpolator : CBase {
+class C3DOrientationInterpolator : public CBase { public:
     CRightHandedSet Start;
     CRightHandedSet End;
     C3DOrientationInterpolator() { }
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
 };
-struct C3DPositionInterpolator : CBase {
+class C3DPositionInterpolator : public CBase { public:
     C3DVector Start;
     C3DVector End;
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end);                  // 0x006AF570
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char   _pad00[0x7c];
     CRightHandedSet CurrentOrientation;                      // +0x7c
     unsigned char   _pad94[0xa4 - 0x94];
@@ -52,13 +52,13 @@ struct CParticleCreationParameters {
     unsigned char   _pad00[0x10];
     CRightHandedSet RHSet;                                   // +0x10
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;
     long* PCount;
     T* operator->() const { return Object; }
 };
-struct C3DOrientationInterpolator;
-struct CTCPhysicsBase {
+class C3DOrientationInterpolator;
+class CTCPhysicsBase { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29)
@@ -72,17 +72,17 @@ struct CTCPhysicsBase {
     virtual const CRightHandedSet& GetOrientation();         // slot 72 (+0x120)
     void GetOrientationInterpolator(C3DOrientationInterpolator* out);   // 0x006B0460
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float time) const;     // 0x004C08C0
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         float time) const;                                   // 0x004C0560
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetWaterSizeZAt(const C3DVector& pos) const;       // 0x0063A420
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -93,7 +93,7 @@ struct CTCInterface47 {                                      // the attached thi
     unsigned char _pad00[0x10];
     void* Field10;                                           // +0x10
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
@@ -126,7 +126,7 @@ struct CCameraManager {
     virtual void v00();
     virtual CCameraLocation GetCameraLocation(float time);   // slot 1
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x34];
     CCameraManager* CameraManager;                           // +0x34
     CCameraLocation GetCameraLocation(float time) { return CameraManager->GetCameraLocation(time); }
@@ -137,7 +137,7 @@ struct CBaseIntelligentPointer {
     void* PData;
     void* GetPItem() const;                                  // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CFrameSource {
@@ -145,7 +145,7 @@ struct CFrameSource {
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsActive();                                 // slot 9 (+0x24)
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing*                 ParentThing;                     // +0x04
     unsigned char           _base08[0x4];

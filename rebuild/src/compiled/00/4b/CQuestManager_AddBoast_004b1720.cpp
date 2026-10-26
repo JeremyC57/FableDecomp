@@ -14,7 +14,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
 };
@@ -47,7 +47,7 @@ struct CRefVirtual {
     virtual void Destroy();                             // slot 1
 };
 namespace NGameText {
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                        // 0x009C7A40
     void ReleaseTemporary()
     {
@@ -57,7 +57,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
@@ -69,12 +69,12 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
 extern CEngine* g_pEngine;                              // 0x013B86A0
-struct CWorld { static long GetWorldFrame(); };         // 0x0049D870
+class CWorld { public: static long GetWorldFrame(); };         // 0x0049D870
 
 struct CBoast {                                         // CQuestManager::CBoast (PDB, 32 bytes)
     long        ID;                                     // +0x00
@@ -127,7 +127,7 @@ struct CBoastList {                                     // STLport list<CBoast>
     void push_back(const CBoast& x) { insert(end(), x); }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x64];
     unsigned long FrameBoastsLastUpdated;               // +0x64
     CBoastList    Boasts;                               // +0x68

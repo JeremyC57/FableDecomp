@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour model of CScriptConversationManager::MakeNewConversation @ 0x006E61A0 (copy of the source's logic, stand-ins).
-struct CThing { int id; };
-struct CScriptConversationManager;
+class CThing { public: int id; };
+class CScriptConversationManager;
 static int g_dtors = 0, g_copies = 0;
-struct CScriptConversation {
+class CScriptConversation { public:
     CScriptConversationManager* Manager; long ConversationIndex;
     CThing* people[4]; int peopleCount;
     long CurrentLine, FramesLeftBeforeNewLine; bool SoundIn2D, StartedCurrentLineSpeech, PlayDuringCutScenes;
@@ -25,7 +25,7 @@ struct CConversationMap {
     long keys[4]; CScriptConversation* values[4]; int count;
     bool insert(const Pair<const long, CScriptConversation>& v) { keys[count] = v.first; values[count] = new CScriptConversation(v.second); ++count; return true; }
 };
-struct CScriptConversationManager {
+class CScriptConversationManager { public:
     CConversationMap Conversations; long NextConversationIndex;
     long MakeNewConversation(CThing& person, bool soundIn2D, bool playDuringCutScenes)
     {

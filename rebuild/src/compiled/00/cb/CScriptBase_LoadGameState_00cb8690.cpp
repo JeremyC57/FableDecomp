@@ -10,12 +10,12 @@
 // Shape: the parser model of DoScriptDataPersist; each marker is a NAMED CCharString inside an inline helper (lea/push,
 // destroyed straight after its call); the section text is a by-value result of an inline ReadUntilText whose end
 // marker is likewise a named local; the closing marker test's result is ignored.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -23,7 +23,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c

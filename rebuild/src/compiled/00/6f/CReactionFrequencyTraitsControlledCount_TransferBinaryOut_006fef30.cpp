@@ -10,7 +10,7 @@
 // Leaf: TransferBinaryOut
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
     void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteFloat(float value);                       // 0x00993EE0

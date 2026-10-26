@@ -7,14 +7,14 @@ public:
     enum { SPRITE_ALIGN_DEFAULT = 0, BLEND_MODE_DEFAULT = 2, BLEND_OP_DEFAULT = 0, TRAIL_BLEND_OP_DEFAULT = 0 };
     static CParticleEmitterManager* Get() { ++g_getCalls; static CParticleEmitterManager m; return &m; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 static int g_trailCtors = 0;
 struct CEnginePrimitiveSpriteTrail { CEnginePrimitiveSpriteTrail() { ++g_trailCtors; } };
-template <class T> struct CArray { T* Data; long Size; long Capacity; CArray() : Data(0), Size(0), Capacity(0) {} };
+template <class T> class CArray { public: T* Data; long Size; long Capacity; CArray() : Data(0), Size(0), Capacity(0) {} };
 
 struct CPSCSingleSprite {
     long SpriteBankIndex; CRGBColour StartColour, MidColour, EndColour;

@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 static int g_baseAssign;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual ~CParentDefClassBase() {}
     long m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_baseAssign; return *this; }
 };
-struct CDefString { long TablePos; };
-struct CVillagerInteractionsDef : CParentDefClassBase {
+class CDefString { public: long TablePos; };
+class CVillagerInteractionsDef : public CParentDefClassBase { public:
     CDefString Animation1; CDefString Animation2; float Distance;
     void Copy(const CParentDefClassBase& other)
     {

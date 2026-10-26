@@ -14,7 +14,7 @@
 //   dtor is the short `dec [r+4] ; jne` Release and whose raw-pointer ctor addrefs through AddRef() (that keeps the
 //   return copy's `inc [ecx+4]` apart from the assignment's increment). The "" file name is passed as const char*
 //   so its CCharString temporary is built before the first push.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
@@ -28,7 +28,7 @@ struct CStringParserCommentList {
     void* _M_node;
     ~CStringParserCommentList();                             // 0x004046B0
 };
-struct CStringParser : CBase {
+class CStringParser : public CBase { public:
     const char*              String;                         // +0x04
     unsigned long            BaseLineOffset;                 // +0x08
     CCharString              Filename;                       // +0x0c
@@ -38,9 +38,9 @@ struct CStringParser : CBase {
     long                     CursorPos[3];                   // +0x1c
     CStringParser(const CCharString& text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x00404720
 };
-struct CSymbolMap;
-struct CDefinitionManager;
-struct CPersistContext {
+class CSymbolMap;
+class CDefinitionManager;
+class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CStringParser* parser, TErrorCallback callback, bool isNew, CDefinitionManager* manager,
                     CSymbolMap* symbols, CCharString* text);  // 0x009BADD0
@@ -64,9 +64,9 @@ struct CDefVirtual {
     virtual struct CSubDefInfo* GetPSubDefInfo(const CCharString& name);   // slot 15 (+0x3c)
     virtual void v16(); virtual void v17();
     virtual void Persist(CPersistContext& context);          // slot 18 (+0x48)
-    virtual void SetParent(struct CDefClassBase* parent);    // slot 19 (+0x4c)
+    virtual void SetParent(class CDefClassBase* parent);    // slot 19 (+0x4c)
 };
-struct CDefClassBase : CDefVirtual, CRefCounted {
+class CDefClassBase : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x24 - 8];
     unsigned char Flags;                                     // +0x24
     void Release() { if (--IVRefCount == 0) Destroy(); }
@@ -125,7 +125,7 @@ struct CInstantiatedDefInfo {
     CDefPointer   PDef;                                      // +0x0c
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char          _pad00[0x58];
     CSymbolMap*            PSymbolMap;                       // +0x58
     unsigned char          _pad5c[0xa4 - 0x5c];

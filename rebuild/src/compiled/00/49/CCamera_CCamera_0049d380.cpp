@@ -13,7 +13,7 @@ struct C3DVectorBits {                        // C3DVector {X, Y, Z} copied as r
     unsigned long X, Y, Z;
     C3DVectorBits(const C3DVectorBits& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {                      // 24 bytes
+class CRightHandedSet { public:                      // 24 bytes
     C3DVectorBits Up;                         // +0x00
     C3DVectorBits Forward;                    // +0x0c
     CRightHandedSet(const CRightHandedSet& o) : Up(o.Up), Forward(o.Forward) { }

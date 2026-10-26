@@ -6,13 +6,13 @@
 // (rtti-vtables.tsv); the manifest label "CCardDef::CCardDef" is propagated and rejected.
 // PDB CPrizeScoreDef (sizeof 0x30): CDefClassBase occupies 0x25 bytes (padded to 0x28), +0x28 float Score,
 // +0x2C long Mult. Score is copied with a plain dword move, so it is modelled as a dword here.
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                   // +0x04..+0x27 (PDefManager, GlobalIndex, flag bits)
     CDefClassBase(const CDefClassBase& other);   // 0x0046644C
 };
 
-struct CPrizeScoreDef : CDefClassBase {
+class CPrizeScoreDef : public CDefClassBase { public:
     virtual void v00();                          // own vtable (0x012437D4)
     long Score;                                  // +0x28 (float in the PDB; copied as a dword)
     long Mult;                                   // +0x2C

@@ -12,7 +12,7 @@
 // Shape: the GetTC out-pointer is not null-initialised and its result is not tested (retail reads the dead `muted` slot on
 //   the absent path, GOTCHAS 24l); the rest test is the squared speed against the pooled 0.0f; the volume is formed in the
 //   `muted` slot. Speed-optimised (default) TU.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

@@ -8,7 +8,7 @@
 // and CGroupMemberData at +0x18: PMember +0x18 (8 bytes), IsActive +0x20, JoinedFrame +0x24, DeactivatedFrame +0x28.
 // Retail CThing: UniqueID +0x18, Dead bit +0x91. Vtable 0x0124326C: slot 29 RemoveMember, 30 DeactivateMember,
 // 31 ActivateMember. The local polymorphic model is used because engine/CTCBase.h flattens the vptr.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned long long UniqueID;                // +0x18
     unsigned char _pad20[0x91 - 0x20];
@@ -17,11 +17,11 @@ struct CThing {
     unsigned long long GetUID() const { return UniqueID; }
     void Kill(bool immediately);                // 0x004C9B80
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870 (static: reads the frame global)
 };
 struct CIntelligentPointerThing { void* vptr; void* item; };
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CIntelligentPointerThing PMember;           // +0x00
     bool IsActive;                              // +0x08
     unsigned long JoinedFrame;                  // +0x0c

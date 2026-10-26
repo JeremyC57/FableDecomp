@@ -20,12 +20,12 @@ static int fails = 0;
 // (GOTCHAS chunk 166), the out pointer homed in the dead `position` slot; the graphic is a 3-dword + word struct copy.
 // GetSubDef is a CDefClassBase template instantiated in this TU, so its real body is defined here (auto_inline off,
 // noinline): name temp -> virtual slot 14 index lookup -> definition manager GetDef -> ref-counted assignment to *out.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { }
@@ -35,19 +35,19 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                            // 0x0099A2F0
     ~CBaseClassNonCopyable();                           // 0x0099A300
 };
-struct CTCParamsBase : CBaseClassNonCopyable { };
-struct CTCParamsPhysicsBase : CTCParamsBase {           // vtable 0x0125C818
+class CTCParamsBase : public CBaseClassNonCopyable { public: };
+class CTCParamsPhysicsBase : public CTCParamsBase { public:           // vtable 0x0125C818
     C3DVector       Position;                           // +0x04
     CRightHandedSet Rhs;                                // +0x10
     CTCParamsPhysicsBase(const C3DVector& position) : Position(position) { }
     virtual void v00();
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void ConstructFromParams(CTCParamsBase* params);   // slot 3 (+0x0c)
 };
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // Ego_r.pdb: 14 bytes (2-byte packed)
+class CEngineGraphic { public:                                 // Ego_r.pdb: 14 bytes (2-byte packed)
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -62,7 +62,7 @@ struct CTCGraphicAppearance {
     unsigned char  UpdateFlags;                         // +0x59
 };
 #pragma pack(push, 1)
-struct CAppearanceDef {
+class CAppearanceDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1 (+0x04)
     long           m_refCount;                          // +0x04
@@ -70,18 +70,18 @@ struct CAppearanceDef {
     CEngineGraphic Graphic;                             // +0x25
 };
 #pragma pack(pop)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CAppearanceDef>* GetDef(CDefPointer<CAppearanceDef>* result, long globalIndex);   // 0x009ADA10
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1 (+0x04)
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -126,7 +126,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>* 
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x60];
     CTCPhysicsBase*       PhysicsTC;                    // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
@@ -134,7 +134,7 @@ struct CThing {
     unsigned char         _pad68[0x70 - 0x68];
     CDefPointer<CDefClassBase> PDef;                    // +0x70
 };
-struct CTCDExperienceOrb {
+class CTCDExperienceOrb { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     void Construct(const C3DVector& position);

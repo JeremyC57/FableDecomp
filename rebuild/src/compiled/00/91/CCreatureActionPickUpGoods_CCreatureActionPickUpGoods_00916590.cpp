@@ -10,13 +10,13 @@
 // Shape: with the 0.0f speed among the arguments every zero stays an immediate (`push 0` x3 and the two CSoundPair
 //   stores; the same source with 1.0f shares one eax zero, see 0x007EE7E0); the name reference argument is loaded into edx first; after the base call and the vtable store the
 //   PThingToPickUp member runs its out-of-line base constructor, its vtable store and SetPItem(goods) (inline converting ctor).
-struct CThingCreatureBase;
-struct CThing;
-struct CCharString;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CCharString;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -32,19 +32,19 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>: vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation,
                         const CSoundPair& sound, long c, long d);                 // 0x00693B30
 };
 
-struct CCreatureAction_PickUpGoods : CCreatureActionBase {   // vtable 0x0128FBF4
+class CCreatureAction_PickUpGoods : public CCreatureActionBase { public:   // vtable 0x0128FBF4
     CIntelligentPointer<CThing> PThingToPickUp;     // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_PickUpGoods(CThingCreatureBase* owner, CThing* goods, const CCharString& animation);

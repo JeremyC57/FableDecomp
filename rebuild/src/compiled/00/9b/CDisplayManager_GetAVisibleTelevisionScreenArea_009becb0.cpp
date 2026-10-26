@@ -3,12 +3,12 @@
 // Callees: none. PDB CDisplayManager: C2DExtentsI BackBufferDimensions +396 (X +0x18c, Y +0x190).
 // Shape: the box is built straight in the hidden result (`ret 4`, the pointer stays in eax): two immediate float
 // zeros, then the two `fild` conversions of the integer extents stored through the x87 (Y loaded first, X stored first).
-struct C2DBoxF {                       // 16-byte float box with a user constructor (hidden-pointer return)
+class C2DBoxF { public:                       // 16-byte float box with a user constructor (hidden-pointer return)
     float TLX, TLY, BRX, BRY;
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x18c];         // +0x00 .. +0x18c: vptr, managers, surfaces, D3D objects, caps
     long BackBufferDimensions_X;       // +0x18c C2DExtentsI::X
     long BackBufferDimensions_Y;       // +0x190 C2DExtentsI::Y

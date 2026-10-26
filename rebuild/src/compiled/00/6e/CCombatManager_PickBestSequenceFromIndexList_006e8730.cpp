@@ -29,7 +29,7 @@ struct CWorld_Calls {              // engine/CWorld.h exists but is not used: on
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char _pad[0x20];
     CWorld_Calls* World;                              // +0x20
     long PickBestSequenceFromIndexList(const CLongVector& indices);

@@ -9,7 +9,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     virtual void v00() { }
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 struct CTargetPoint {
     CIntelligentPointer_CThing PThing;
     long Index;

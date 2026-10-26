@@ -5,29 +5,29 @@
 // the bank's virtual slot 1 (Open(name, 0x48)), CBankFile::CreateSymbolMap(CSymbolMap*, bool) @ 0x009CC530.
 // Shape: `new` with the null-tested constructor call, the counted pointer's address kept in esi (`lea esi,
 // [edi+38h]`) for Reset and both `EmitterBank->` reads; the symbol map is the member at +0 (`push edi`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char m_data[0x24];
 };
 
-struct CBankFile {                                                      // polymorphic root: vptr at +0
+class CBankFile { public:                                                      // polymorphic root: vptr at +0
     virtual void v00();
     virtual void Open(const CCharString& fileName, long mode);          // slot 1 (+0x04)
     void CreateSymbolMap(CSymbolMap* symbolMap, bool reportDuplicates);   // 0x009CC530
 };
 
 namespace NParticleEngine {
-struct CParticleDataBank : CBankFile {                                  // 0x234 bytes
+class CParticleDataBank : public CBankFile { public:                                  // 0x234 bytes
     unsigned char m_data[0x230];
     CParticleDataBank();                                                // 0x00AF1670
 };
 }
 
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Object;
     SCountBlock* Block;
     void Reset(T* object);                                              // 0x00AE93E0

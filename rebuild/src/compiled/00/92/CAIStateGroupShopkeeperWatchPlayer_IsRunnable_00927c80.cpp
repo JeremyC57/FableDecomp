@@ -8,12 +8,12 @@
 #include "engine/CTCBase.h"
 #include "engine/_quarantine/CThing.h"
 
-struct CTCShop;
-struct CTCShopKeeper : CTCBase {
+class CTCShop;
+class CTCShopKeeper : public CTCBase { public:
     CTCShop* GetShopTC(); // 0x00798f50
     bool GetAreOtherPeopleInShop(bool); // 0x00799a60
 };
-struct CTCShop : CTCBase { bool IsOpeningHours(); }; // 0x00773950
+class CTCShop : public CTCBase { public: bool IsOpeningHours(); }; // 0x00773950
 struct CVectorMapEntry { long Type; CTCBase* Component; };
 struct CCreatureInterfaceMap {
     CVectorMapEntry* Start;
@@ -21,7 +21,7 @@ struct CCreatureInterfaceMap {
     CVectorMapEntry* EndOfStorage;
     CVectorMapEntry* LowerBound(long* key); // 0x0040f020
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThingView : CThing { C3DVector* GetPosition(); // 0x004c73d0
 };
 struct CThingLifeStateRetailView {

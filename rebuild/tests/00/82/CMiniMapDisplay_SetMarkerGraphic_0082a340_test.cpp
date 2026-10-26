@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CMarkerInfo {
     unsigned char PThing[8];
     long          GraphicIndex;
@@ -41,7 +41,7 @@ CMarkerIterator __fastcall FindIf_0082c720(CMarkerIterator first, CMarkerIterato
             break;
     return first;
 }
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     virtual void v00() {}
     unsigned char _pad04[0x1c];
     CMarkerList   Markers;

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char text[32];
     CWideString(const char* t) { std::strcpy(text, t); }
     ~CWideString() {}
@@ -12,18 +12,18 @@ static int g_copies = 0, g_starts = 0, g_stops = 0, g_internalCalls = 0;
 static char g_lastInternal[32];
 static bool g_lastInternalFlag = false;
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& Get() { static CUserProfileManager m; return m; }
     CWideString GetAutoSaveFileName() const { return CWideString("AutoSave"); }
     CWideString GetAutoSavePathName() const { return CWideString("dir/AutoSave"); }
     CWideString GetAutoSaveQuestStartPathName() const { return CWideString("dir/AutoSave.qs"); }
 };
 static bool PathExists(const CWideString& p) { return std::strcmp(p.text, "dir/AutoSave.qs") == 0 && g_questStartExists; }
-struct CQuestManager { bool IsBetweenQuestStartAndFinishScreens() const { return g_between; } };
+class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const { return g_between; } };
 static CQuestManager g_questManager;
 static CQuestManager* g_pQuestManager = &g_questManager;
 
-struct CWorld {
+class CWorld { public:
     long MostRecentSaveType;
     long MostRecentSaveTypeBeforeManualSave;
     void CopyFileInternal(const CWideString& s, const CWideString& d) const

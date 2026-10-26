@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_log[16]; static int g_n;
-struct CThing { int id; };
-struct CTCBase { CTCBase() { } virtual ~CTCBase() { g_log[g_n++] = 100; } };
+class CThing { public: int id; };
+class CTCBase { public: CTCBase() { } virtual ~CTCBase() { g_log[g_n++] = 100; } };
 struct CBaseIntelligentPointer { int m_tag; CBaseIntelligentPointer(int t) : m_tag(t) { } virtual ~CBaseIntelligentPointer() { g_log[g_n++] = m_tag; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(int t) : CBaseIntelligentPointer(t) { } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer(int t) : CBaseIntelligentPointer(t) { } };
 struct CDefBase {
     long m_count; int destroyed;
     virtual ~CDefBase() { }
@@ -16,14 +16,14 @@ struct CNymphDefPointer {
     CNymphDefPointer() : m_pDef(0) { }
     ~CNymphDefPointer() { if (m_pDef) { m_pDef->Release(); m_pDef = 0; } g_log[g_n++] = 12; }
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CSplinePointVector {
     C3DVector* _M_start;
     CSplinePointVector() : _M_start(0) { }
     ~CSplinePointVector() { if (_M_start) { std::free(_M_start); g_log[g_n++] = 44; } }
 };
-struct CCardinalSpline { CSplinePointVector m_points; };
-struct CTCNymph : CTCBase {
+class CCardinalSpline { public: CSplinePointVector m_points; };
+class CTCNymph : public CTCBase { public:
     CNymphDefPointer PDef; CCardinalSpline FlightSpline; bool FlyingAround;
     CIntelligentPointer<CThing> PEffect, POldEffect; long FadeCounter; CIntelligentPointer<CThing> PTarget;
     CTCNymph() : PEffect(65), POldEffect(73), PTarget(104) { }

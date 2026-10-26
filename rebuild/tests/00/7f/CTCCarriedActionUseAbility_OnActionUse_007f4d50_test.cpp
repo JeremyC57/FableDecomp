@@ -26,21 +26,21 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long RefCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CAbilityDef : CDefPointeeBase {
+class CAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Ability;
 };
 static CAbilityDef* g_ability = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAbilityDef>* out) const { ++g_getSubDef; if (!g_ability) return false; ++g_ability->RefCount; out->Object = g_ability; return true; }
 };
 class CThing {

@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <stddef.h>
 #include <new>
-struct CThing { int x; }; struct CDecapitationDef_Calls;
+class CThing { public: int x; }; struct CDecapitationDef_Calls;
 struct CTCBase_Calls { virtual void v00() { } CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; CTCBase_Calls(CThing* p) : ParentThing(p), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { } };
-template<class T> struct CDefPointer { T* m_pDef; CDefPointer() : m_pDef(0) { } };
-struct CTCDecapitation : CTCBase_Calls {
+template<class T> class CDefPointer { public: T* m_pDef; CDefPointer() : m_pDef(0) { } };
+class CTCDecapitation : public CTCBase_Calls { public:
     bool Decapitated; CDefPointer<const CDecapitationDef_Calls> PDef; virtual void v00() { }
     CTCDecapitation(CThing* p) : CTCBase_Calls(p), Decapitated(false), PDef() { }
 };

@@ -10,7 +10,7 @@
 // reached through a vtable-shaped view because the PDB export does not name vtable slots.
 #include "engine/CWorldMap.h"
 
-struct CMap {
+class CMap { public:
     unsigned __int64 AllocateMapThingUID();     // 0x0081E780
 };
 

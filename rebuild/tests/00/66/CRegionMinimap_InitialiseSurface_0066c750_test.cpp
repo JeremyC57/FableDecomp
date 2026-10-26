@@ -1,15 +1,15 @@
 #include <cstdio>
-struct C2DExtentsI { int x; int y; };
+class C2DExtentsI { public: int x; int y; };
 
 static int g_calls=0, g_r,g_g,g_b,g_a,g_signd,g_extx,g_exty;
 
-struct CPixelFormat {
+class CPixelFormat { public:
     int a;
     void Initialise(long r, long g, long b2, long a2, bool signd){
         g_r=r; g_g=g; g_b=b2; g_a=a2; g_signd=signd; g_calls++;
     }
 };
-struct CSurface {
+class CSurface { public:
     char pad[8];
     bool InitialiseAsImage(C2DExtentsI* ext, CPixelFormat* pf, bool bb){
         (void)pf;(void)bb; g_extx=ext->x; g_exty=ext->y; g_calls++; return true;

@@ -14,14 +14,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
-struct CWideStringData;
+class CCharStringData;
+class CWideStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
 };
@@ -39,11 +39,11 @@ struct CEngineGlobals {
 
 extern CEngineGlobals* g_pEngineGlobals;             // 0x013B86A0
 
-struct CRegion {
+class CRegion { public:
     const CCharString& GetDisplayName() const;       // 0x006BBF20
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     CRegion& GetRegion(long index);                  // 0x004FC180
 };
 
@@ -56,7 +56,7 @@ struct CLongVector {                                 // std::vector<long> {first
     const long& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x11C];

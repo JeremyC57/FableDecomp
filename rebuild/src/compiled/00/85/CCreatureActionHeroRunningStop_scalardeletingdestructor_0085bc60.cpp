@@ -1,4 +1,4 @@
-struct CCreatureActionHeroRunningStop {
+class CCreatureActionHeroRunningStop { public:
     void* vftable;
 };
 

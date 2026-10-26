@@ -21,11 +21,11 @@ static int fails = 0;
 // zeroed CDefPointer local is declared, so VC sinks its zero store below the pushes; the local's
 // inline destructor releases after the flag store (no null store).
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(long mode);                     // 0x00634190
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
@@ -35,14 +35,14 @@ struct CGlobalGame {                                // the object behind 0x013B8
 };
 extern CGlobalGame* g_pGame_013b86a0;               // 0x013B86A0
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +4
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     CDefPointeeBase* m_pObject;
     CDefPointer() : m_pObject(0) {}
     ~CDefPointer()
@@ -54,14 +54,14 @@ struct CDefPointer {
     }
 };
 
-struct CCameraManagerDef;
+class CCameraManagerDef;
 
-struct CCameraManagerSetDef : CDefPointeeBase {
+class CCameraManagerSetDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x48 - 0x08];
     long          MeleeCameraManager;               // +0x48 global def index
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CCameraManagerDef>* out);   // 0x0069CE80
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -78,12 +78,12 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<con
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad[0x10];
     CDefinitionManager* DefinitionManager;          // +0x10
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                        // +0x00
     unsigned char _pad04[0x70];                     // +0x04 Camera, OldCamera
     CWorld*       World;                            // +0x74
@@ -129,7 +129,7 @@ void CPlayer::RemoveMode(long mode) { g_removed = mode; }
 static CPlayer g_player;
 CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }
 static CPlayerManager g_pm; static CGlobalGame g_game; CGlobalGame* g_pGame_013b86a0 = &g_game;
-struct CCameraManagerDef : CDefPointeeBase {};
+class CCameraManagerDef : public CDefPointeeBase { public:};
 int main()
 {
     g_game.PlayerManager = &g_pm;

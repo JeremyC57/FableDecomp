@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     int   m_len;
     int   m_ref;
@@ -9,7 +9,7 @@ struct CCharString {
 
 static const char* const kActionNameLit = (const char*)0x0123cb18;
 
-struct CTCTrespasser {
+class CTCTrespasser { public:
     CCharString GetClassTypeName();
 };
 

@@ -11,17 +11,17 @@
 // TriggerableObjectScriptName +0xe0 [+0xf8], TimesTriggered +0xe4 [+0xfc].
 // Shape: the empty name is a named local built before any argument push, in its own block so it is destroyed
 // right after the base call (before the result test; the bool kept in bl); the member stores follow retail's order with the 1.0f health pair as dword stores.
-struct C3DVector;
-struct CThingPhysical;
+class C3DVector;
+class CThingPhysical;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _pad_0x00[0xb0];
     float MaxHealth;                                   // +0xb0 CThingPhysical [PDB +0xc8]
     float Health;                                      // +0xb4 CThingPhysical [PDB +0xcc]
@@ -31,7 +31,7 @@ struct CThingGameObject {
                              CThingPhysical* originalCreator, bool a8);   // 0x008388D0
 };
 
-struct CThingSwitch : CThingGameObject {
+class CThingSwitch : public CThingGameObject { public:
     float       TriggerRadius;                         // +0xd0
     CCharString EnvironmentDef;                        // +0xd4
     float       TimeToChangeEnvironmentDef;            // +0xd8

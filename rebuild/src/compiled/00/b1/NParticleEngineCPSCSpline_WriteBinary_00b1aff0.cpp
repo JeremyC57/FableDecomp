@@ -12,18 +12,18 @@ struct CBase {
     virtual ~CBase();
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);             // 0x00993E30
     void WriteFloat(float value);           // 0x00993EE0
 };
 
 namespace NParticleEngine {
-struct CPSCSplineBase : CBase {
+class CPSCSplineBase : public CBase { public:
     unsigned char _body[0x30];              // +0x04 .. +0x34 (CPSCBase part, SplineAnimSpeed, Spline, the two counted data pointers)
     void WriteBinary(CDataOutputStream* out);   // 0x00B21630
 };
 
-struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
+class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
     float SplineCurrentPosition;            // +0x34
     bool  ReverseSpline;                    // +0x38
     bool  SplineBounce;                     // +0x39

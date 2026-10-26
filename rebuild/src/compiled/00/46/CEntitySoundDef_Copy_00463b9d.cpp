@@ -4,7 +4,7 @@
 // The whole retail body is a single `jmp rel32` to the real Copy implementation;
 // rel32 is relocation-masked in parity, so any extern target yields identical bytes.
 
-struct CEntitySoundDef;
+class CEntitySoundDef;
 
 // Real implementation the thunk tail-jumps to (relocation-masked target).
 extern void __fastcall CEntitySoundDef_Copy_impl(CEntitySoundDef* thisptr, CEntitySoundDef* src);

@@ -4,8 +4,8 @@
 
 struct Thing { char pad[0x91]; unsigned char flags; };
 struct Node { Node* next; void* pad4; Thing* thing; };
-struct CThingFilter_HasTC { bool operator()(Thing* t) const; };       // 0x006A80A0 (the interface-bitset test)
-struct CThingFilter_InRegion { bool operator()(Thing* t) const; };    // 0x006A7960
+class CThingFilter_HasTC { public: bool operator()(Thing* t) const; };       // 0x006A80A0 (the interface-bitset test)
+class CThingFilter_InRegion { public: bool operator()(Thing* t) const; };    // 0x006A7960
 struct Filter { CThingFilter_HasTC* f0; CThingFilter_InRegion* f1; };  // CFilter_Bind2<HasTC, InRegion>
 struct List { Node* sentinel; };
 

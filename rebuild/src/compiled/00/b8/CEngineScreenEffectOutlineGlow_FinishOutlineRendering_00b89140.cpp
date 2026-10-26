@@ -11,16 +11,16 @@
 // closed by clearing its Open byte before the manager call; the release pushes the handle before forming the pool.
 #include "engine/CEngineScreenEffectOutlineGlow.h"
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void RestoreCaptureBlock();                    // 0x00A05840
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-struct CRenderTarget {
+class CRenderTarget { public:
     void Uninitialise();                           // 0x00A10E30
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };

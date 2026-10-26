@@ -5,16 +5,16 @@
 // Shape: the argument rides in ebp for the three pushes; the two device pointers are null-tested; the joystick count is a
 // signed pointer difference (`sar edi,3`, 8-byte counted pointers) taken once before the loop, while the vector's first
 // pointer is re-read every iteration after the virtual call.
-struct CMouse {
+class CMouse { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void SetHasInputFocus(long hasFocus);   // slot 14
 };
-struct CKeyboard {
+class CKeyboard { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void SetHasInputFocus(long hasFocus);   // slot 3
 };
-struct CJoystick {
+class CJoystick { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15();
@@ -30,7 +30,7 @@ struct CCountedPointer_CJoystick {                  // 8 bytes: object, count bl
     void*      m_pCount;
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char _pad04[0x20];                     // +0x04 the event vectors and counters
     scoped_ptr<CMouse>    PMouse;                   // +0x24

@@ -3,13 +3,13 @@
 #include <new>
 
 static int g_eventCtors = 0;
-struct CInputEvent {
+class CInputEvent { public:
     long Data[8]; long DeviceType, DeviceNumber, Type; float CurrentTime, StartTime;
     CInputEvent() : DeviceNumber(0), Type(0) { ++g_eventCtors; for (int i = 0; i < 8; ++i) Data[i] = 0; }
 };
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CCamera {
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public:
     C3DVector WorldPosition; float RHSet[6]; bool HeightLocked; bool ViewVecZLocked;
     unsigned long FOVFlags; float HorizontalFOV, VerticalFOV, Zoom;
     CCamera() : HeightLocked(false), ViewVecZLocked(false) {}

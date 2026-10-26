@@ -9,16 +9,16 @@
 // +0xbc/+0xc8 here).
 // Shape: C3DVector members copied word by word through an inline memberwise user copy constructor (the loads
 // interleave with the stores); the flag byte last; `ret 14h`.
-struct CGameCameraManager;
-struct CCameraModeDef;
-struct C3DVector {
+class CGameCameraManager;
+class CCameraModeDef;
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) { }
 };
-template <class T> struct CDefPointer;
+template <class T> class CDefPointer;
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
     CBase(CGameCameraManager* manager, const CDefPointer<const CCameraModeDef>& def);   // 0x0084E420

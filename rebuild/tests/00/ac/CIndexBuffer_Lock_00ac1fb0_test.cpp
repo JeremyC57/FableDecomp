@@ -8,7 +8,7 @@ struct CBuffer : IDirect3DIndexBuffer { virtual long Lock(unsigned long offset, 
 static IDirect3DIndexBuffer* g_locked = 0; static float g_weight = 0; struct CRenderStatistics { void NotifyLock(IDirect3DIndexBuffer* buffer, float weight) { std::strcat(g_seq, "N"); g_locked = buffer; g_weight = weight; } };
 struct SRenderDevice { unsigned char _pad[8]; CRenderStatistics* m_pStatistics; }; struct SDeviceRecord { unsigned char _pad[0x60]; SRenderDevice* m_pRender; }; static CRenderStatistics g_stats; static SRenderDevice g_render; static SDeviceRecord g_record;
 static SDeviceRecord* GetDeviceRecord() { g_render.m_pStatistics = &g_stats; g_record.m_pRender = &g_render; return &g_record; }
-struct CIndexBuffer { virtual void v00() { } IDirect3DIndexBuffer* m_pBuffer;
+class CIndexBuffer { public: virtual void v00() { } IDirect3DIndexBuffer* m_pBuffer;
     void* Lock(unsigned long flags, unsigned long offset, unsigned long size) { if (size == 0) { SIndexBufferDesc desc; m_pBuffer->GetDesc(&desc); size = desc.Size; } SDeviceRecord* record = GetDeviceRecord(); record->m_pRender->m_pStatistics->NotifyLock(m_pBuffer, 1.0f); void* data; m_pBuffer->Lock(offset, size, &data, flags); return data; } };
 
 int main() {

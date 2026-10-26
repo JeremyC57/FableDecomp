@@ -1,17 +1,17 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
     float GetLengthSquared() const { return x * x + y * y + z * z; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*         __vftable;
     unsigned char _pad04[0x8];
     C3DVector     Position;
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;
     long IsInRange(const C3DVector& pos, float range);

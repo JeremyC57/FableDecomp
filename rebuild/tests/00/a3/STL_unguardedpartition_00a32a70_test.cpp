@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A32A70: the SGI heap / partition step over the keyed mesh-stats table, checked through the
 // ordering it establishes (unsigned keys; the payload words travel with their keys).
 #include <cstdio>
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CThingHolySite::ConstructFromLevelScript (0x0083BBA0).
-struct CThingHolySiteDef { unsigned char PlayerStart; };
-struct CDefinitionManager {
+class CThingHolySiteDef { public: unsigned char PlayerStart; };
+class CDefinitionManager { public:
     CThingHolySiteDef* table; int calls;
     bool GetDef(long index, CThingHolySiteDef*& out) { ++calls; out = &table[index]; return true; }
 };
-struct CThingHolySite {
+class CThingHolySite { public:
     CDefinitionManager* mgr; unsigned short m_defIndex;
     CThingHolySiteDef* Def; bool PlayerStart; bool baseResult;
     bool ConstructFromLevelScript()

@@ -1,6 +1,6 @@
 // Behaviour test for NUISystem::CScrollBar::Update (0x00559600): a finished drag without a held click snaps back once and raises the layer; the base update always runs.
 #include <cstdio>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CDraggable {
     char Layer;
     bool WasLeftClicked;

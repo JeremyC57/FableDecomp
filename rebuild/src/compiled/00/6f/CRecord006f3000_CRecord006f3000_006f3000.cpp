@@ -7,7 +7,7 @@
 // named from the body (0x006Fxxxx shape module); members are typed by their copies: +0 long,
 // +4 byte, +8 long, +0xc byte, +0xd byte, +0x10 CCharString, +0x14 vector, +0x20 vector.
 // The copy constructor is written out of line so the TU carries the symbol.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };
@@ -20,7 +20,7 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
     CRetailVector(const CRetailVector& other);  // 0x006F0810
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CRecord_006f3000 {
     long                     m_id;              // +0x00

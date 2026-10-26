@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __cdecl
 #define FABLE_ENGINE_CWORLDMAP_H
-struct CWorldMap {};
+class CWorldMap { public:};
 #endif
 // CWorldMap::GetLoadableSections() -- collect manager section names and the NULL section into a returned set
 // Retail 0x004FF490, 203 bytes. Set build 004B2CA0; insertion 004AC380;

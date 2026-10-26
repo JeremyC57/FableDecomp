@@ -8,7 +8,7 @@
 // returned this), its destructor @ 0x0062E900 (manifest "~CTCLightningOrb" is a propagated label).
 // Level is the long at +0x114 (Ego_r.pdb name; the engine header has it at +0x12c for the PDB build, retail's
 // CCombatActionBase is 0x114 bytes, so the layout is modelled locally).
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CThingCreatureBase_Calls {              // engine/CThingCreatureBase.h exists but is not used: only its SetCurrentAction call is used
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -34,7 +34,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCombatAction_WillEnflameInto : CCombatActionBase {
+class CCombatAction_WillEnflameInto : public CCombatActionBase { public:
     long Level;                                 // +0x114
     void FinishAction();
 };

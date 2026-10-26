@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_deleted = 0;
-struct CMap { virtual ~CMap() { ++g_deleted; } };
+class CMap { public: virtual ~CMap() { ++g_deleted; } };
 struct COwner { CMap* m_pMap; void DeleteMap() { delete m_pMap; m_pMap = 0; } };
 int main()
 {

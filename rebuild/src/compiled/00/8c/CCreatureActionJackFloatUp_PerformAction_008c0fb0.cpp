@@ -6,8 +6,8 @@
 //   RunningTimeSeconds +0x40; CThing interface bitset +0x20, map +0x44, PTCDriver +0x5c, def +0x70, flags +0x91.
 // Shape: the landed 0x008C4B80 model (counted def reference, same-TU GetSubDef / GetEffectFromString / LowerBound stand-ins,
 //   explicit release inside if (effects)).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -31,7 +31,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -43,7 +43,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                  // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -57,11 +57,11 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -127,7 +127,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual long GetAnimationIndex();                 // slot 7 (+0x1c)
@@ -138,7 +138,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     unsigned char _pad44[0x114 - 0x44];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_JackFloatUp : CCombatActionBase {
+class CCreatureAction_JackFloatUp : public CCombatActionBase { public:
     float FloatHeight;                                // +0x114 (PDB +0x12c)
     float FloatSpeed;                                 // +0x118
     bool  Moving;                                     // +0x11c

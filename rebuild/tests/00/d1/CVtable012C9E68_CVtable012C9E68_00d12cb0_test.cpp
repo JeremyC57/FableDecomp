@@ -1,19 +1,19 @@
 // Behaviour test for the quest-script constructor at 0x00D12CB0 (CVtable_012C9E68).
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long m_next;
     virtual long RegisterTimer() { return ++m_next; }
 };
 CGameScriptInterface* g_pGameScriptInterface = 0;
 
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 
 static int g_baseBuilt = 0;
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00() { }
     unsigned char _body[0x3c];
     CScriptBase() { ++g_baseBuilt; }

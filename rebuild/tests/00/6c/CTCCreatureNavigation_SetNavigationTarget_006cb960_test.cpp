@@ -2,16 +2,16 @@
 // navigation input is copied into NavigationTarget.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum EMovementType { MOVEMENT_TYPE_DEFAULT, MOVEMENT_TYPE_1, MOVEMENT_TYPE_2, MOVEMENT_TYPE_3 };
-struct CNavigationInput {
+class CNavigationInput { public:
     C3DVector     Destination;
     float         Proximity;
     EMovementType MovementType;
     float         Speed;
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     long             m_before;
     CNavigationInput NavigationTarget;
     long             m_after;

@@ -2,10 +2,10 @@
 // Behaviour of CParticleEmitterDatabase::CParticleEmitterDatabase (0x00AE8BF0): symbol map and both file names
 // constructed, the emitter map empty and clean, the bank pointer null, the handle counter at 1.
 static int g_symbolMaps = 0; static int g_strings = 0;
-struct CSymbolMap { unsigned char m_data[0x24]; CSymbolMap() { ++g_symbolMaps; } };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CSymbolMap { public: unsigned char m_data[0x24]; CSymbolMap() { ++g_symbolMaps; } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
 struct CParticleEmitter; struct CParticleDataBank; struct SCountBlock;
-template <class T> struct CCountedPointer { T* Object; SCountBlock* Block; CCountedPointer() : Object(0), Block(0) {} };
+template <class T> class CCountedPointer { public: T* Object; SCountBlock* Block; CCountedPointer() : Object(0), Block(0) {} };
 struct SEmitterEntry { long first; CCountedPointer<CParticleEmitter> second; };
 struct CEmitterVectorMap {
     SEmitterEntry* m_first; SEmitterEntry* m_last; SEmitterEntry* m_end; unsigned char Compare; bool Dirty;

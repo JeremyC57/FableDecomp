@@ -29,7 +29,7 @@ extern "C" void* __cdecl observed_malloc(size_t n) { ++allocations; allocation_s
 // CIntelligentPointer<CThing> vtable1238C6C. Composite vector positions are uninitialized packed float triplets.
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t); // 0x00BFEA0E
-struct CThing;
+class CThing;
 struct CHitLocation;
 struct DamageNode {
     unsigned char Colour;
@@ -64,10 +64,10 @@ struct CBaseIntelligentPointer {
     void* Data;
     void SetPItem(CThing*); // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* p) { SetPItem(p); }
 };
-struct CHitParameters {
+class CHitParameters { public:
     bool Localised, Directional;
     unsigned char Position[12], Direction[12];
     bool KnockDown, Decapitate, Blockable, Flourish, EpicSpell, BlockCounter;
@@ -90,7 +90,7 @@ CHitParameters::CHitParameters(CHitLocation* location, CThing* attacker, CThing*
 
 
 #undef malloc
-struct CThing { int ID; };
+class CThing { public: int ID; };
 struct CHitLocation { int ID; };
 static int base_ctors, bindings, dtors;
 static CThing* bound[2];

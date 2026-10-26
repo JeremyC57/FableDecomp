@@ -9,7 +9,7 @@
 // member count the stores alias PoolCount (a real loop re-reading it); with only the count local the `lea edi` is
 // scheduled after the `jbe` guard instead of between `test ecx,ecx` and `jbe` as retail.
 struct CPreallocTexturePool { unsigned char _body[0x54]; void FrameEnd(); };   // 0x009FC150
-struct CTextureManager {
+class CTextureManager { public:
     void*                __vftable;                    // +0x00
     bool                 Initialised;                  // +0x04
     unsigned long        PoolCount;                    // +0x08

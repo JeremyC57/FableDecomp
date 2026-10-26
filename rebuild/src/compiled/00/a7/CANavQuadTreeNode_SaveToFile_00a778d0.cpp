@@ -11,14 +11,14 @@
 // copy-initialised iterator local (the retry-10f map-find rule).
 // PDB layout from rebuild/include/engine/CANavQuadTreeNode.h (Position +0x04, QuadTreeLevel +0x0c, NavLayer +0x0d,
 // LeafNode +0x0e, Blocked +0x0f); local model (the header has no methods).
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long size, long flags);    // slot 4 (+0x10)
 };
 
-struct CANavQuadTreeNode;
+class CANavQuadTreeNode;
 struct CNodeIndexMapNode {
     unsigned char _pad[0x10];
     CANavQuadTreeNode* Key;                     // +0x10
@@ -34,7 +34,7 @@ struct CNodeIndexMap {                          // std::map<CANavQuadTreeNode*, 
     CNodeIndexIterator find(CANavQuadTreeNode* const& key);    // 0x00A7F830
 };
 
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual unsigned char GetNodeType();        // slot 9 (+0x24)

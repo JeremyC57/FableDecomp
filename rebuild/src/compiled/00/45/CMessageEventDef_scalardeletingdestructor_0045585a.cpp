@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CMessageEventDef { int f0; };
+class CMessageEventDef { public: int f0; };
 extern "C" void __fastcall CMessageEventDef_dtor(CMessageEventDef* message);
 extern void __cdecl op_delete(void* p);
 

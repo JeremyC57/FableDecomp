@@ -6,7 +6,7 @@
 // (an inline clear() member -- written in the caller it swaps ebx/edi), CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10.
 // Shape: the component pointer is deliberately unset when the interface is absent (retail calls through the dead
 // key slot `mov eax,[esp+8]`), so the lookup is `T* tc; if (HasTC(k)) tc = GetTC(k); tc->SetUser(0);`.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -19,15 +19,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
+{ public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -37,8 +37,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -82,8 +82,8 @@ struct CThing
     }
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad0[0x18];
     CThing* Creature;                               // +0x18
 };

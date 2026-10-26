@@ -12,7 +12,7 @@
 //   `optimize("s", on)`; no frame (unlike the sibling, which keeps `optimize("y", off)` for its local tables).
 #pragma optimize("s", on)
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R;                                       // +0x00
     float G;                                       // +0x04
     float B;                                       // +0x08
@@ -22,7 +22,7 @@ struct CRGBFloatColour {
 
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CRGBFloatColour GetExperienceStatColour(EHeroTrainableStatType stat);
 };
 

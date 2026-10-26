@@ -13,7 +13,7 @@ struct VBase {
 
 struct SubObj28 { char pad[4]; };  // subobject at this+0x28
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char     pad00[0x1c];
     VBase*   vecB_begin;   // +0x1c
     VBase*   vecB_end;     // +0x20

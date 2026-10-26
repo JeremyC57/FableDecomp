@@ -11,7 +11,7 @@
 // +0x10..+0x18, bit flags at +0x1a (Alpha, BooleanAlpha, UsesSurface, SectionOfTPage, IsInitialised = 0x10,
 // ScreenGraphic); no engine/ header. CCountedPointer model as the landed 0x00448860 row.
 // Shape: /O2 (16-aligned entry); the ??_G is emitted by a `delete frame` helper (not a retail function).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

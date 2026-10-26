@@ -13,7 +13,7 @@ static void DestroyRange(SRecord* first, SRecord* last) { for (; first != last; 
 struct CRecordVector { SRecord* m_first; SRecord* m_last; SRecord* m_end; void Free() { if (m_first) Log('F'); } ~CRecordVector() { DestroyRange(m_first, m_last); Free(); } };
 struct CPodVector { void* m_first; void* m_last; void* m_end; ~CPodVector() { if (m_first) Log('v'); } };
 struct CBase { int x; ~CBase() { Log('B'); } };
-struct CEngineLocalDetailLayerDef : CBase { CPodVector SpacingFromLayer; CRecordVector Objects; ~CEngineLocalDetailLayerDef() { } };
+class CEngineLocalDetailLayerDef : public CBase { public: CPodVector SpacingFromLayer; CRecordVector Objects; ~CEngineLocalDetailLayerDef() { } };
 int main()
 {
     static SRecord recs[3]; static long pod[2];

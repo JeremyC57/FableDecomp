@@ -4,12 +4,12 @@
 // Shape: the three memmove arguments in ebx/esi/edi, the resource read after the call, `ret 14h`.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int size);
 
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v000();
     virtual void OnMoved(long reason, void* source, void* destination, unsigned long size);   // slot 1 (+0x04)
 };
 
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     virtual void v000();
     virtual void MoveResource(void* resource, long reason, void* source, void* destination, unsigned long size);
 };

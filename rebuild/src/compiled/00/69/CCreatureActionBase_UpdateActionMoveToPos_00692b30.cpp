@@ -9,17 +9,17 @@
 // NextMovementPos with the member address formed in place (`add esi,68h`); the PCreature address rides in edi.
 // Layout: engine/CCreatureActionBase.h (PDB) agrees: PCreature +8, AnimMovementStep +0x54, NextMovementPosWorldFrame +0x64,
 // NextMovementPos +0x68; a local model carries the virtual slots.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 
-struct CWorld {
+class CWorld { public:
     static long GetFrame();                 // 0x0049D870 (returns the global @ 0x013B89BC)
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
     CWorld* GetWorld() const;               // 0x004C7AB0
 };
@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<CThingCreatur
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

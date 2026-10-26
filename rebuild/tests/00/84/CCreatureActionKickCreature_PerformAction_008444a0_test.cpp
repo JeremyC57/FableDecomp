@@ -19,14 +19,14 @@ static int fails = 0;
 // Shape: the target is a named local fetched first, so its position is the left operand of an inline C3DVector `-`
 //   (the creature's position is fetched first, the components computed z,y,x and stored x,y,z); the two radii are named
 //   float locals (copied through integer registers); `length < creatureRadius + targetRadius + 1.5f`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLength() const;                // 0x00A14480
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
@@ -34,7 +34,7 @@ struct CThingPlacement {
     unsigned char _pad00[0x34];
     float Radius;                           // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CThingPlacement* m_pPlacement;          // +0x60
     CThingPlacement* GetPlacement() const { return m_pPlacement; }
@@ -60,7 +60,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureAction_KickCreature {
+class CCreatureAction_KickCreature { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

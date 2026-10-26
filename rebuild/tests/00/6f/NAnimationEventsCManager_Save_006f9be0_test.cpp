@@ -20,7 +20,7 @@
 //   The 0x24 CSymbolMap is what puts the save context below the animTypes temporary in the 0xa4 frame.
 #pragma pack(push, 1)
 #pragma pack(pop)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
 };
@@ -31,9 +31,9 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                       // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CAFile : CBase {
+class CAFile : public CBase { public:
 };
-struct CDiskFileWin32 : CAFile {                    // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CAFile { public:                    // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -46,7 +46,7 @@ struct CDiskFileWin32 : CAFile {                    // vtable 0x0122D06C, 0x1c b
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -57,7 +57,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const char* a, const CCharString& b);          // 0x0099F690
-struct CPersistContext {                               // retail 0x2c bytes, trivial destructor
+class CPersistContext { public:                               // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);              // 0x009BAE10
     void Transfer_009bab50(CCharString& value);                 // 0x009BAB50
@@ -70,7 +70,7 @@ struct CSymbolInfo {
     CCharString EntryName;                             // +0x04
     long        Val;                                   // +0x08
 };
-struct CSymbolMap {                                    // retail 0x24 bytes (as the landed 0x00af1600)
+class CSymbolMap { public:                                    // retail 0x24 bytes (as the landed 0x00af1600)
     unsigned char _body[0x24];
     CSymbolMap();                                      // 0x009E5200
     ~CSymbolMap();                                     // 0x006FD040
@@ -81,7 +81,7 @@ struct CSymbolMap {                                    // retail 0x24 bytes (as 
 
 namespace NAnimationEvents {
 
-struct CEvent {                                     // 8 bytes
+class CEvent { public:                                     // 8 bytes
     unsigned long Packed;                           // index (30 bits), flags in bits 30 and 31
     float         Time;
 };

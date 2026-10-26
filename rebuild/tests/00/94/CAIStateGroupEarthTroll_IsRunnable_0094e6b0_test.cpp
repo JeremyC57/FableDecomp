@@ -6,18 +6,18 @@
 #define __forceinline inline
 #endif
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_lowerBounds = 0, g_frames = 0;
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct C3DVector;
+class CTCBase;
+class CThing;
+class CWorld;
+class C3DVector;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -41,11 +41,11 @@ struct CThing {
     }
     const C3DVector& GetPosition_006a4d00() const { return m_pos; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual bool IsStillValid() { return true; }
     virtual void Cleanup() {}

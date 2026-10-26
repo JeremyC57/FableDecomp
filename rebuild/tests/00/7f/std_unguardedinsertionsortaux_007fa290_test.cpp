@@ -6,8 +6,8 @@ public:
     float score;
 };
 static CThing g_things[8];
-struct C3DVector { float X, Y, Z; };
-struct CVectorCompare_BestForTargeting {
+class C3DVector { public: float X, Y, Z; };
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;
     C3DVector PreferredLine;
     float     AngleCompare;
@@ -17,7 +17,7 @@ struct CVectorCompare_BestForTargeting {
     bool      CompareInXYPlane;
 };
 static int g_badComparator = 0;
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;
     CVectorCompare_BestForTargeting VectorCompare;
     float EnemyPreferenceFactor;

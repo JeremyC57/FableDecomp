@@ -1,4 +1,4 @@
-struct CCreatureAction_InterruptableNearAttack {
+class CCreatureAction_InterruptableNearAttack { public:
     void* vftable;
 };
 

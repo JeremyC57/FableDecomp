@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroup_ScreamerPursueTarget::OnReplace (0x0096DDB0): same control flow over mocks.
 #include <cstdio>
-struct CThing { bool dead; bool hasStealth; int dangerSetBy; int dangerStatus; };
+class CThing { public: bool dead; bool hasStealth; int dangerSetBy; int dangerStatus; };
 struct CState {
     CThing* creature; CThing* target; bool inMode44; int outputs; unsigned long lastFlags; CThing* actionTarget;
     void OnReplace()

@@ -9,14 +9,14 @@ struct SRenderSettings {
     unsigned char DefaultAlphaRef;
 };
 static SRenderSettings g_settings; SRenderSettings* g_pRenderSettings = &g_settings;
-struct CEngineSceneGridCell;
-struct CEngineSceneGridPos {
+class CEngineSceneGridCell;
+class CEngineSceneGridPos { public:
     signed char   Level;
     unsigned char X;
     unsigned char Y;
     CEngineSceneGridPos() : Level(-1) { }
 };
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
     CEngineFadeDistance() { }

@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -37,15 +37,15 @@ struct CCountedPointer_CModeBase {
     ~CCountedPointer_CModeBase() { ++g_cpDtor; if (m_pCount) --m_pCount->m_references; }
 };
 static int g_addMode = 0; static CModeBase* g_addedMode = 0; static void* g_addThis = 0;
-struct CTCCreatureModeManager { bool AddMode(CCountedPointer_CModeBase mode) { ++g_addMode; g_addedMode = mode.m_pObject; g_addThis = this; CHECK(mode.m_pCount->m_references == 2); return true; } };
-struct CCreatureActionBase {
+class CTCCreatureModeManager { public: bool AddMode(CCountedPointer_CModeBase mode) { ++g_addMode; g_addedMode = mode.m_pObject; g_addThis = this; CHECK(mode.m_pCount->m_references == 2); return true; } };
+class CCreatureActionBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {}
     virtual void PerformAction() {}
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;
     unsigned char _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_SitDown : CCreatureActionBase {
+class CCreatureAction_SitDown : public CCreatureActionBase { public:
     CCountedPointer_CModeBase PMode;
     CCreatureAction_SitDown(CModeBase* o, SCountBlock* c) : PMode(o, c) { }
     virtual void PerformAction();

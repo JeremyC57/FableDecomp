@@ -3,20 +3,20 @@
 #include <string.h>
 
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* s) : m_pData(s) { ++g_strings; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
 
-struct CLipSyncPhoneme {
+class CLipSyncPhoneme { public:
     CCharString Symbol;
     unsigned long ID;
     float Weight;
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -24,31 +24,31 @@ template <class T> struct CArray {
     const T& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 
-struct CLipSyncFrameData {
+class CLipSyncFrameData { public:
     CArray<CLipSyncPhoneme> Phonemes;
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) {}
     virtual ~CIVCountedPointeeBase() {}
 };
-struct C3DAnimationStateBase : CIVCountedPointeeBase {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public:
     virtual long GetType() const { return 0; }
 };
-struct C3DAnimationState : C3DAnimationStateBase {
+class C3DAnimationState : public C3DAnimationStateBase { public:
     long AnimationIndex;
     float AnimationTime;
     C3DAnimationState(long index, float time) : AnimationIndex(index), AnimationTime(time) {}
 };
-struct C3DAnimationStateAlpha : C3DAnimationState {
+class C3DAnimationStateAlpha : public C3DAnimationState { public:
     float AlphaWeight;
     C3DAnimationStateAlpha(long index, float time, float alpha) : C3DAnimationState(index, time), AlphaWeight(alpha) {}
     virtual long GetType() const { return 2; }
 };
 
 static long g_addedIndex[8]; static float g_addedTime[8]; static float g_addedAlpha[8]; static unsigned long g_addedRef[8]; static int g_added = 0;
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     void AddCombinationBlend(C3DAnimationStateAlpha* state)
     {
         g_addedIndex[g_added] = state->AnimationIndex; g_addedTime[g_added] = state->AnimationTime;
@@ -67,7 +67,7 @@ struct CAnimationBank {
     }
 };
 
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     virtual ~C3DAnimationManager() {}
     CAnimationBank* Bank;
     void AddLipSyncAnimation(C3DAnimationBlendState& blend, const CLipSyncFrameData& frame, const CCharString& set);

@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test: the CWorldMap find-max-in-cell query -- the four corner blocks {0,1} {1,1} {1,0} {0,0} offset from the
 // cell position (truncated), each in-map block's height compared, 0 when none is in the map.
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long x, y; C2DCoordI(long ax, long ay) : x(ax), y(ay) {} };
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long x, y; C2DCoordI(long ax, long ay) : x(ax), y(ay) {} };
 struct CCellCornerOffset { long X, Y; };
 static CCellCornerOffset g_CellCornerOffsets[4] = { { 0, 1 }, { 1, 1 }, { 1, 0 }, { 0, 0 } };
 static int g_dims = 0;
-struct CWorldMap {
+class CWorldMap { public:
     long MaxX;
     const void* GetDimensions() const { ++g_dims; return this; }
     bool IsPosInMap(const C2DCoordI& p) const { return p.x >= 0 && p.x < MaxX && p.y >= 0; }

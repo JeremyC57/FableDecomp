@@ -11,8 +11,8 @@
 // bound filter passed by const reference); both components used unconditionally (miss arms read the key slot);
 // the gossip target cleared through a CIntelligentPointer temporary of null.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -105,7 +105,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -113,7 +113,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -149,7 +149,7 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
@@ -157,14 +157,14 @@ namespace N_006af2b0 { struct CMessageEventFilter_IsOriginatedByThing {
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF2B0
 }; } using N_006af2b0::CMessageEventFilter_IsOriginatedByThing;
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage_0090dee0(const CFilter_Bind2<CMessageEventFilter_IsOfType,
         CMessageEventFilter_IsOriginatedByThing>& filter);              // 0x0090DEE0
     void RemoveMessage(const CMessageEvent* message);                   // 0x00493B5B
@@ -180,7 +180,7 @@ __declspec(noinline) CMessageEvent* CMessageEventManager::FindMostRecentMessage_
     return (CMessageEvent*)r;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
@@ -190,7 +190,7 @@ struct CIntelligentPointerGossip : CBaseIntelligentPointer {   // CIntelligentPo
     CIntelligentPointerGossip(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerGossip& operator=(const CIntelligentPointerGossip& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CTCGossip {                              // interface 0xC1
+class CTCGossip { public:                              // interface 0xC1
     unsigned char _pad[0x0c];
     CIntelligentPointerGossip PGossipTarget;    // +0x0c
 };

@@ -18,7 +18,7 @@
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
 };
 
@@ -28,19 +28,19 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetTypedItem() const { return (T*)GetPItem(); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLength() const { return (float)sqrt(Y * Y + X * X); }
 };
 
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char _pad04[0x6c - 0x04];
     unsigned long ThingTypeFlags;                               // +0x6c
     const C3DVector& GetPosition() const;                       // 0x004C73D0
@@ -56,7 +56,7 @@ template<class T> inline bool IsThingOfType(const CThing* const& thing)
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6)
@@ -69,11 +69,11 @@ struct CThingCreatureBase : CThing {
     CThingCreatureBase* GetLastAttackedByCreature() const { return PLastAttackedByCreature.GetTypedItem(); }
 };
 
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     enum { ThingTypeMask = 8 };
 };
 
-struct CThingCompare_BestCreatureToAttack {
+class CThingCompare_BestCreatureToAttack { public:
     CThingCreatureBase* Targeter;                               // +0x00
     CThing* PCurrentBestTargetForAttack;                        // +0x04
     float PreferPlayerWeight;                                   // +0x08

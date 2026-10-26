@@ -7,23 +7,23 @@ static int g_termAt = 1000;
 static void (*g_hook)(int frame) = 0;
 static void Log(const std::string& s) { char b[16]; std::sprintf(b, "@%d", g_frame); g_log += s; g_log += b; g_log += ";"; }
 static void Reset(int termAt) { g_log = ""; g_frame = 0; g_termAt = termAt; g_hook = 0; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() { }
     CScriptThing(const std::string& name) : Name(name) { }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return g_frame >= g_termAt; }
 };
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log.c_str()); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CV_BordelloScript::WatchForDeedStatus waits for the Bordello, pulls the hidden deeds out of limbo
 // once their location is found and records the pickup; it does nothing once the deeds were already found
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; if (g_hook) g_hook(g_frame); }
     bool IsRegionLoaded(const CCharString& name) { return name.S == "Bordello" && g_frame >= 2; }
     CScriptThing GetThingWithScriptName(const CCharString& name) { Log("get " + name.S); return CScriptThing(name.S); }

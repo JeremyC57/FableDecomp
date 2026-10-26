@@ -10,7 +10,7 @@
 //          base shift and 8 bytes per 12-byte debug list; no engine/ header exists for NUISystem::CEditBox.
 // Shape: the sentinel word (+0x15C) is read before the list address is formed in ecx; the iterator needs
 //          STLport's user copy constructor to be built in its push slot (`push ecx ; mov eax,esp ; mov [eax],edx`).
-struct CCPPointerInfo;
+class CCPPointerInfo;
 class CWideString {
 public:
     void* PStringData;
@@ -18,7 +18,7 @@ public:
     long GetLength() const;                        // 0x0099B220
 };
 namespace NUISystem { class CAction; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04
 };

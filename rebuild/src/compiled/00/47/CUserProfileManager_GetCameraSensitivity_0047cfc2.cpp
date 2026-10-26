@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char flag;          // +0xc
     char pad1[0x24 - 0xd];

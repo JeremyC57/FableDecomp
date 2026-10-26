@@ -1,7 +1,7 @@
 // Behaviour test for 0x006193b0 resize(n) of a vector of {float, CCharString, 5 floats} records
 #include <cstdio>
 #include <cstring>
-struct CCharString { char buf[16]; CCharString(const char* t) { std::strcpy(buf, t); } };
+class CCharString { public: char buf[16]; CCharString(const char* t) { std::strcpy(buf, t); } };
 struct SRec {
     float m_time; CCharString m_name; float v[5];
     SRec() : m_time(0.0f), m_name("") { for (int i = 0; i < 5; ++i) v[i] = 0.0f; }

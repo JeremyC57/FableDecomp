@@ -48,12 +48,12 @@ struct CTCInterface1A {
     void Notify();                                          // 0x005D8E50
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     __forceinline ~CDefPointer()
@@ -63,11 +63,11 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CResurrectionItemDef : CDefClassBase { };
+class CResurrectionItemDef : public CDefClassBase { public: };
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CResurrectionItemDef>* out);    // 0x005C0CFB
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
 };
 
@@ -90,7 +90,7 @@ bool CThingDef::GetSubDef(CDefPointer<CResurrectionItemDef>* out)
 #pragma auto_inline(on)
 
 namespace NInventory {
-struct CItem {
+class CItem { public:
     long DefIndex;                                          // +0x00
     long Count;                                             // +0x04
 };

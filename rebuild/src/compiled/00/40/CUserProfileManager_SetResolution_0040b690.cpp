@@ -6,7 +6,7 @@
 // "SetResolution" is shared by the whole setter family. Same shape as the landed 0x0040B6D0 (+0x4c / +0x108).
 // Shape: the flag byte is loaded and tested before the argument load (`mov al ; test al,al ; mov eax,[esp+8]`);
 // the bool argument is tested as a byte.
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void* _vtables[2];                  // +0x00 / +0x04
     void* ProfileName;                  // +0x08 (CWideString)
     bool UseNewProfileValues;           // +0x0c

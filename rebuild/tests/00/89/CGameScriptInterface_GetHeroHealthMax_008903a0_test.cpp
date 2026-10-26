@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char pad[0x14];
     void* member14;
 };

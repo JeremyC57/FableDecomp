@@ -53,7 +53,7 @@ struct SThingNode {
     SThingNode* Prev;
     CBaseIntelligentPointer Thing;
 };
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

@@ -1,13 +1,13 @@
 // Behaviour test for CTCDegradableBase::OnHit(const C3DVector&, const C3DVector&) @ 0x008ECC80: the hit frame is always
 // stamped; OnParentHealthChanged(false) runs only when the component was available to hit (> 1 frame since the last hit).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static long g_frame = 0;
 static int g_healthCalls = 0;
 static bool g_healthArg = true;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     long          LastWorldFrameHit;

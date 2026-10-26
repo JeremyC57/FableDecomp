@@ -1,4 +1,4 @@
-struct CThingVillageDef {};
+class CThingVillageDef { public:};
 unsigned long __fastcall CThingVillageDef_GetSizeofClass(const CThingVillageDef* self)
 {
     (void)self;

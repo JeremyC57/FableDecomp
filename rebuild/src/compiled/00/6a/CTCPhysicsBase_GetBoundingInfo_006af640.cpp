@@ -6,18 +6,18 @@
 // Layout: engine/CTCPhysicsBase.h: Position +0x0c, Radius +0x34 (modelled locally to declare the virtual slot).
 // Shape: the mesh arm `centre = C3DVector(...)` built in the frame and copied through integer registers (3-float ctor only); the
 //   radius is stored first in the fallback arm, the position copy then `centre.Z += radius` read back through the reference.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned char _pad00[0x08];
     C3DVector ToCentre;                         // +0x08
     float     BoundingRadius;                   // +0x14
 };
-struct CThing;
-struct CTCPhysicsBase {
+class CThing;
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

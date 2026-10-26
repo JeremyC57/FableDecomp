@@ -13,7 +13,7 @@ struct CCountedPointer_00a63440 {                        // 8 bytes: object + co
     CCountedPointer_00a63440() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CFontDataBankEntry : CBase {                        // vtable 0x0129DA70
+class CFontDataBankEntry : public CBase { public:                        // vtable 0x0129DA70
     CCountedPointer_00a63440 m_font;                     // +0x04
     long Bank;                                      // +0x0c
     long m_b;                                      // +0x10

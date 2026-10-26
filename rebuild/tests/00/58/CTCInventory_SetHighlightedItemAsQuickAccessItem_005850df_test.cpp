@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CItem { int id; };
-struct CTCInventory {
+class CTCInventory { public:
     CItem* highlighted;
     int lastItem;
     long lastArg;

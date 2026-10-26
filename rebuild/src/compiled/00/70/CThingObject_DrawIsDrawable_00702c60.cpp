@@ -10,15 +10,15 @@
 // `fcomp ; test ah,5 ; jp`; retail narrows the parity to the byte load `mov al ; and al,1`
 // (the `? true : false` select); the base
 // test wraps the body (`if (base) { ... } return false;` keeps retail's `xor al,al` tail).
-struct CDisplayEngine {
+class CDisplayEngine { public:
     static float __stdcall DivideByGameSpeed(float value);   // 0x00415FD3
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     CDisplayEngine* GetDisplayEngine();              // 0x004C7A70
     virtual bool DrawIsDrawable();                   // 0x004C7790 (called non-virtually)
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     unsigned char _pad04[0xd0];
     long          DieOffTimer;                       // +0xd4
     bool          DiesOff;                           // +0xd8

@@ -14,7 +14,7 @@
 //   lookups follow the landed 2D sprite constructor 0x00BAD040 (implicit CCharString temporaries, inline shader destructors) and
 //   every resource is read through an INLINE accessor (a direct member read loads the global early / into another register).
 #include <string.h>
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -37,10 +37,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -53,7 +53,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -67,7 +67,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -89,7 +89,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -104,7 +104,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -112,7 +112,7 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
@@ -132,9 +132,9 @@ template <class T> struct vector : _Vector_base<T> {   // retail 12-byte STLport
     vector(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { }
 };
 template <class A, class B> struct pair { A first; B second; };
-template <class T> struct CCountedPointer { T* Object; void* Info; };
+template <class T> class CCountedPointer { public: T* Object; void* Info; };
 
-struct CEngineComponent {                          // 0x0C bytes
+class CEngineComponent { public:                          // 0x0C bytes
     virtual ~CEngineComponent();
     void** m_ppOwnerLink;                          // +0x04
     void*  m_pOwner;                               // +0x08
@@ -153,7 +153,7 @@ struct COccluderEntry {                            // 8 bytes
 };
 struct COccluderFlareEntry { unsigned long Handle; unsigned long Result; };
 
-struct CEngineOcclusionManager : CEngineComponent {   // vtable 0x012A3CD0
+class CEngineOcclusionManager : public CEngineComponent { public:   // vtable 0x012A3CD0
     COccluderSlot      OccluderSlots[2048];        // +0x0c
     unsigned long      NextSlot;                   // +0x400c
     unsigned long      CurrentFrame;               // +0x4010

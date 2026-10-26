@@ -13,7 +13,7 @@ namespace N_0099b720 { struct CWideString {
     CWideString(const char* s);     // copy-construct from existing storage
 }; } using N_0099b720::CWideString;
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     char pad[0x18];                 // access type, position, length, handle, opened flag
     char name[4];                   // Pathname (CWideString) at +0x18
     CWideString GetPathname() const;

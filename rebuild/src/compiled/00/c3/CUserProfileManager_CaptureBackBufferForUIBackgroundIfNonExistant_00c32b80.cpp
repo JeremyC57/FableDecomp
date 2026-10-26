@@ -3,8 +3,8 @@
 // Retail is a tiny __fastcall(this, unsigned int pos) that subtracts a member
 // span at [this+8] and tail-jumps to a sibling routine at 0x00c32950.
 
-struct CUserProfileManager
-{
+class CUserProfileManager
+{ public:
     int   m_0;    // +0x00
     int   m_4;    // +0x04
     unsigned int m_8;    // +0x08

@@ -4,18 +4,18 @@
 // Layout from engine/CAnimComponentStrikeResponseAnim.h (0xc bytes): vptr, +4 unnamed, +8
 // ResponseAnimName. The +4 store of 1 precedes the vtable store, so it belongs to an inlined
 // base constructor (a counted root whose own vtable store is dead and dropped).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                         // 0x0099E4B0
 };
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v00();
     unsigned long m_refCount;              // +4
     CAnimComponentBase() : m_refCount(1) { }
 };
 
-struct CAnimComponentStrikeResponseAnim : CAnimComponentBase {   // vtable 0x01255828
+class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:   // vtable 0x01255828
     CCharString ResponseAnimName;          // +8
     CAnimComponentStrikeResponseAnim();
 };

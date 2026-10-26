@@ -28,14 +28,14 @@ public:
 };
 struct CBaseIntelligentPointer { void* _vfptr; CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static int g_knows = 0; static long g_knowsHandle = -1; static EOpinionDeedType g_knowsType = -1; static bool g_knowsIncl = false; static void* g_knowsThis = 0;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     bool m_knows;
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported) { ++g_knows; g_knowsHandle = deedHandle; g_knowsType = type; g_knowsIncl = includeReported; g_knowsThis = this; return m_knows; }
 };
-struct CWorld { static unsigned long GetWorldFrame() { return 777; } };
+class CWorld { public: static unsigned long GetWorldFrame() { return 777; } };
 struct SOccupantNode { SOccupantNode* _M_next; SOccupantNode* _M_prev; CBaseIntelligentPointer _M_data; };
 #pragma pack(push, 1)
-struct CTCTrespasser {
+class CTCTrespasser { public:
     virtual void v00() {}
     CThing*       ParentThing;
     unsigned char _pad_0x08[0x4];

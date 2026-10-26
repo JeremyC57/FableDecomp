@@ -6,7 +6,7 @@
 // Layout: Ego_r.pdb CIDrawEnvironmentTextureSet {CArray<long> Textures, CArray<float> Blends}; retail CArrays are 12-byte
 //   STLport vectors (Blends at +0xC, not the PDB's +0x10).
 // Shape: the loop is VC7.1's 4x unroll of the plain per-index body; 1 - blend is hoisted.
-template <class T> struct CArray {             // retail STLport vector, 12 bytes
+template <class T> class CArray { public:             // retail STLport vector, 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

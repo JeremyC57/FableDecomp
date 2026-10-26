@@ -12,12 +12,12 @@ struct CVectorShort {                              // vector<short> (STLport, 12
     short* _M_start; short* _M_finish; short* _M_end_of_storage;
     CVectorShort(const CVectorShort& other);       // 0x00710700
 };
-struct CTransitionBlendAlpha;
+class CTransitionBlendAlpha;
 struct CVectorTransitionBlendAlpha {               // vector<CTransitionBlendAlpha> (STLport, 12 bytes)
     CTransitionBlendAlpha* _M_start; CTransitionBlendAlpha* _M_finish; CTransitionBlendAlpha* _M_end_of_storage;
     CVectorTransitionBlendAlpha(const CVectorTransitionBlendAlpha& other);   // 0x007101A0
 };
-struct CAnimateThing;
+class CAnimateThing;
 
 class CAnimSet {
 public:

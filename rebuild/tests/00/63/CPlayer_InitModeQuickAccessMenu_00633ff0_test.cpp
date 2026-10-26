@@ -3,15 +3,15 @@
 // SetFacingAngleYZ(0).
 #include <cstdio>
 
-struct CGamePlayerInterface { int id; };
+class CGamePlayerInterface { public: int id; };
 static int g_order[64]; static int g_n = 0; static int g_bad = 0;
-struct CAInputProcess {
+class CAInputProcess { public:
     int id;
     virtual bool AddToInterface(CGamePlayerInterface* pi) { if (pi->id != 7) g_bad = 1; g_order[g_n++] = id; return true; }
     virtual ~CAInputProcess() {}
 };
 struct CPhysics { float last; int calls; CPhysics() : last(-1.0f), calls(0) {} void SetFacingAngleYZ(float a) { last = a; ++calls; } };
-struct CThing { CPhysics* PhysicsTC; unsigned char m_stateFlags; long ControlledMovementType; };
+class CThing { public: CPhysics* PhysicsTC; unsigned char m_stateFlags; long ControlledMovementType; };
 static bool IsThingAlive(const CThing* t) { return t && !(t->m_stateFlags & 1); }
 static int g_setView = 0;
 struct CPlayerModel {

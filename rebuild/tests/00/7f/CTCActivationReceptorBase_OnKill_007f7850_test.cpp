@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int informed; struct CTCActivationReceptorBase* lastReceptor; };
-struct CTCActivationReceptorBase;
-struct CInformTriggerOfReceptorDeath {
+class CThing { public: int informed; class CTCActivationReceptorBase* lastReceptor; };
+class CTCActivationReceptorBase;
+class CInformTriggerOfReceptorDeath { public:
     CTCActivationReceptorBase* m_pReceptor;
     CInformTriggerOfReceptorDeath(CTCActivationReceptorBase* r) : m_pReceptor(r) { }
     void operator()(CThing* trigger) { ++trigger->informed; trigger->lastReceptor = m_pReceptor; }
 };
 template<class It, class Fn> Fn for_each_model(It first, It last, Fn f) { for (; first != last; ++first) f(*first); return f; }
 struct CThingPtrVector { CThing** m_first; CThing** m_last; CThing** m_end; CThing** begin() { return m_first; } CThing** end() { return m_last; } };
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     bool Activated; CThingPtrVector Triggers;
     void OnKill() { for_each_model(Triggers.begin(), Triggers.end(), CInformTriggerOfReceptorDeath(this)); }
 };

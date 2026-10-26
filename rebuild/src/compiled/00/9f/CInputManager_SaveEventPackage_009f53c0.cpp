@@ -14,14 +14,14 @@
 //   STLport vector destructor (_Destroy(first, last) by value + free) at the end of the block.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CAFile { virtual void v00(); };
-struct C2DVector {
+class CAFile { public: virtual void v00(); };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct CChecksum { long Checksum1, Checksum2, Checksum3, Checksum4; };
+class CChecksum { public: long Checksum1, Checksum2, Checksum3, Checksum4; };
 
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _body[0x34];
     ~CInputEvent();                                     // 0x00A03B30
 };
@@ -45,11 +45,11 @@ struct vector {
     }
 };
 
-struct CMouse {
+class CMouse { public:
     virtual void v00();
     virtual void GetPosition(C2DVector& position);      // slot 1 (+0x04)
 };
-struct CJoystick {
+class CJoystick { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual float GetAxisX();                           // slot 3 (+0x0c)
     virtual float GetAxisY();                           // slot 4 (+0x10)
@@ -67,7 +67,7 @@ struct CJoystickVector {
     CCountedJoystick& operator[](unsigned int n) { return *(_M_start + n); }
 };
 
-struct CInputEventPackage {
+class CInputEventPackage { public:
     vector<CInputEvent> Events;                         // +0x00
     long                TimeStamp;                      // +0x0c
     CChecksum           Checksum;                       // +0x10
@@ -79,7 +79,7 @@ struct CInputEventPackage {
     void Save(CAFile& file);                            // 0x009F52A0
 };
 
-struct CInputManager {
+class CInputManager { public:
     void*               __vftable;                      // +0x00
     vector<CInputEvent>* _pad04[3];                     // +0x04 ProcessedEvents
     vector<CInputEvent> EventStore;                     // +0x10

@@ -7,16 +7,16 @@
 // Label: the manifest says CCreatureAction_CastTimeSpell; the stored vtable 0x01288544 is CCreatureAction_DragonFlight's. `ret 8`: two arguments.
 #include "fable_string.h"
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -24,7 +24,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB buil
     void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
 };
 
-struct CCreatureAction_DragonFlight : CCombatActionBase {   // vtable 0x01288544
+class CCreatureAction_DragonFlight : public CCombatActionBase { public:   // vtable 0x01288544
     unsigned char FaceTarget;               // +0x114 (PDB +0x12c, bool)
     float         TurnRate;                 // +0x118 (PDB +0x130)
     virtual void v00();

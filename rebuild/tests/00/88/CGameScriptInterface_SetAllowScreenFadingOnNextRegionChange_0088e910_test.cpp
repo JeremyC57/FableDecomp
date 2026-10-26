@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0xdb];
     unsigned char allowScreenFadingOnNextRegionChange; // +0xdb
 };

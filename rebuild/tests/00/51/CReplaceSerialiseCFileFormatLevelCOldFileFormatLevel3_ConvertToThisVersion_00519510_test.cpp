@@ -11,7 +11,7 @@
 static int g_deletes, g_destroys, g_converts;
 static unsigned char g_image[sizeof(unsigned char) * 0x20000];
 static void __fastcall DestroyObject(void* p) { ++g_destroys; std::free(p); }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;                        // +0x0
     void (__fastcall* destroy)(void*);         // +0x4
     void* object;                              // +0x8

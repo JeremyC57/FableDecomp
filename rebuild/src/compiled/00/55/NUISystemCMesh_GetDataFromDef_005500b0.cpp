@@ -32,7 +32,7 @@ struct CUIDefPointer {
     ~CUIDefPointer() {if(Object) Object->ReleaseTemporary();}
     CUIDefView* operator->() const {return Object;}
 };
-struct CMesh {
+class CMesh { public:
     virtual ~CMesh() {}
     virtual void v001();
     virtual void v002();

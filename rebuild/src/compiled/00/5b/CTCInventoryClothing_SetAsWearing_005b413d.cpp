@@ -16,31 +16,31 @@ void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement
 #pragma optimize("s", on)
 
 class CThing;
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);
     ~CCharString();
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other);
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CAppearanceModifierDef : CDefPointeeBase {
+class CAppearanceModifierDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0x44 - 0x08];
     bool IsRemoveable;                               // +0x44
     unsigned char _pad_0x45[0x4c - 0x45];
     long SuitPart;                                   // +0x4c EClothingSuitPart
 };
-struct CThingObjectDef : CDefPointeeBase {
+class CThingObjectDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>* out);   // 0x0057FF92
 };
 void* FindDef_s7r_0();
@@ -71,7 +71,7 @@ __declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModi
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
     bool GetDef(long globalIndex, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
 };
@@ -124,7 +124,7 @@ __declspec(noinline) SSuitPartNode* CSuitPartMap::find(const long& part)
 }
 #pragma auto_inline(on)
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     unsigned char _pad_0x008[0x140 - 0x08];

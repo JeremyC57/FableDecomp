@@ -8,10 +8,10 @@
 // dword word 6 bit 19 -> `test dword ptr [eax+38h],80000h`; the key in a named local; end-or-larger
 // -> the end entry; out-pointer form) and, when present, the registration. The landed CleanHouse
 // InitStateGroup @ 0x00917AF0 shape with idle type 10.
-struct CAIBrain;
-struct CAIStateGroupBase;
+class CAIBrain;
+class CAIStateGroupBase;
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleType);   // 0x00801920
 };
 
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,7 +41,7 @@ struct CThingAICreature {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

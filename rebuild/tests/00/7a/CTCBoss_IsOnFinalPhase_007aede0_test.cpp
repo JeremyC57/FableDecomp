@@ -8,10 +8,10 @@ struct CRetailVector
     unsigned int size() const { return (unsigned int)(_Last - _First); }
 };
 
-struct CBossDef { CRetailVector<long> PhaseHealthPercent; };
+class CBossDef { public: CRetailVector<long> PhaseHealthPercent; };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     const CBossDef* PBossDef;
     long            currentBossPhase;
 

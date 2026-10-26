@@ -9,8 +9,8 @@
 // Shape: nested tests with one shared `return false` (`xor al,al`); the final `return a || (b && (c || d))` widens to eax; the
 // deed index is pre-set to -1 and the empty filter is one frame byte.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -41,7 +41,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -171,7 +171,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -179,7 +179,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -216,22 +216,22 @@ struct CAIStateGroupBase {
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 struct CTCVillager;
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad[0x7c];
     bool m_crimeReported;                       // +0x7c (descriptive)
     unsigned char _pad7d[0x88 - 0x7d];
     void* m_pGuardPost;                         // +0x88 (descriptive)
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     COpinionDeedFilter_IsCrimeToRunAndFindAGuard() { }
 };
-struct COpinionDeed;
-struct CTCCreatureOpinionOfHero {               // interface 0x4F
+class COpinionDeed;
+class CTCCreatureOpinionOfHero { public:               // interface 0x4F
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index,
         bool includeForgotten);                 // 0x006610C7
 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
 };
 struct CWorldO {

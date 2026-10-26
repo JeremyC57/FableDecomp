@@ -10,7 +10,7 @@
 // store (the member's own address as the out pointer loads it into ecx).
 // Layout = Ego_r.pdb CTCRandomAppearanceMorph with the 12-byte retail vector: CTCBase ParentThing +0x04, PMeshMorphSet +0x10,
 // Seed +0x18, PrimHandles +0x1c, PTCSkeletalMorph +0x28.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -38,7 +38,7 @@ struct CThing {
     }
 };
 
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x20];                             // +0x08 .. +0x27: flags, PMeshMorphSet, Seed, PrimHandles

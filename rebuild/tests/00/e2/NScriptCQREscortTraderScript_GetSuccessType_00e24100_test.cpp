@@ -1,11 +1,11 @@
 #include <stdio.h>
 // Behaviour test for CQR_EscortTraderScript::GetSuccessType (0x00E24100): perfect when untouched at full health,
 // great/good by the script def's hit limits and health fractions, else basic.
-struct CScriptThing { float Health; };
-struct CGameScriptInterface {
+class CScriptThing { public: float Health; };
+class CGameScriptInterface { public:
     virtual float GetHealth(const CScriptThing& thing) const { return thing.Health; }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x988];
     long  EscortTraderGreatMaxHits;
     long  EscortTraderGoodMaxHits;
@@ -16,7 +16,7 @@ static CScriptDef g_def;
 CScriptDef* g_pScriptDef = &g_def;
 namespace NScript {
 struct CScriptBase { unsigned char _body[0x3c]; };
-struct CQR_EscortTraderScript : CScriptBase {
+class CQR_EscortTraderScript : public CScriptBase { public:
     enum EscortTraderSuccessType { ESCORT_TRADER_SUCCESS_BASIC = 0, ESCORT_TRADER_SUCCESS_GOOD = 1, ESCORT_TRADER_SUCCESS_GREAT = 2, ESCORT_TRADER_SUCCESS_PERFECT = 3 };
     CGameScriptInterface* GSI;
     unsigned char _pad044[0x20];

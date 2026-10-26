@@ -9,7 +9,7 @@
 // flag byte and two words. Same element as the 0x00812840 / 0x008132D0 pair constructors.
 // Label correction: the catalog's `_Cons_val<allocator<pair<unsigned __int64 const,CGroupMemberData>>>` is propagated
 // (three arguments, plain `ret`, the result pointer returned).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +0x04
@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01264
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CGroupMemberData {                   // 0x14 bytes
+class CGroupMemberData { public:                   // 0x14 bytes
     CIntelligentPointer m_member;           // +0x00
     bool m_isLeader;                        // +0x08
     long m_role;                            // +0x0c

@@ -2,7 +2,7 @@
 // count is within the limit; unallocated textures are not queried.
 #include <cstdio>
 static int g_queries = 0;
-struct CManagedTextureData { unsigned long unused; bool Allocated; unsigned long GetUnusedFrames() const { ++g_queries; return unused; } };
+class CManagedTextureData { public: unsigned long unused; bool Allocated; unsigned long GetUnusedFrames() const { ++g_queries; return unused; } };
 struct CPtr { CManagedTextureData* Data; CManagedTextureData* operator->() const { return Data; } };
 struct CArr { CPtr* m_pFirst; CPtr* m_pLast; CPtr* m_pEnd; const CPtr& operator[](unsigned long i) const { return m_pFirst[i]; } };
 struct CPreallocTexturePool {

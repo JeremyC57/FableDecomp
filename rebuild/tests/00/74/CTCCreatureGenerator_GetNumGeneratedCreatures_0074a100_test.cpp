@@ -31,7 +31,7 @@ template<class T> struct CRetailVector {        // STLport vector<T> (12 bytes)
         return *(begin() + n);
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy();
     virtual void Release();                     // slot 1
     long RefCount;                              // +0x04
@@ -40,7 +40,7 @@ struct CCreatureFamilyDef : CDefClassBase {
     unsigned char _pad08[0x3c - 0x08];
     CRetailVector<long> Creatures;              // +0x3c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -51,7 +51,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CCreatureFamilyDef>* out) const;   // 0x0074D220
 };
 void* Find_CDefinitionManager_GetDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -67,7 +67,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     virtual void v00();
     void* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[4];

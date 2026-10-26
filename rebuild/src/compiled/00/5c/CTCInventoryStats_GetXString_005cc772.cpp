@@ -42,7 +42,7 @@ public:
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                     // +0x14
 };

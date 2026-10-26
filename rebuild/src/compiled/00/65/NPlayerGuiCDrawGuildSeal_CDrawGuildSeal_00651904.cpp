@@ -10,9 +10,9 @@
 // Messages +0x70 -- retail 4 lower up to the positions vector and 8 lower after it (12-byte vectors in the shipped build).
 // Shape: size TU with pass-through base arguments; one zero register (ebx) shared by every integer zero; the positions vector
 // is an inline member constructor stored directly; all members in the initialiser list in declaration order.
-struct CPlayerGui;
+class CPlayerGui;
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x1bc];
     long          GuildSealLevelUpGraphic;         // +0x1bc
 };
@@ -45,14 +45,14 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawGuildSeal : CDrawBase {                // vtable 0x0125A6BC
+class CDrawGuildSeal : public CDrawBase { public:                // vtable 0x0125A6BC
     virtual void v00();
     bool                Enabled;                   // +0x28
     bool                ReadyToLevelUp;            // +0x29

@@ -20,11 +20,11 @@ static int fails = 0;
 //   Next: lane gap: copy-register allocation (retail loads the def into the callee-saved register first; the 0x0079DCC0 shape).
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Zero() { X = Y = Z = 0.0f; }
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -32,7 +32,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
@@ -56,11 +56,11 @@ template <class T> struct CDefHolder {                  // owns the reference Ge
     T* Object;
     __forceinline ~CDefHolder() { ReleaseDef(Object); }
 };
-struct CPhysicsDef : CDefBase {
+class CPhysicsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     float Diameter;                                     // +0x28
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x006B0FA0 (T = CPhysicsDef)
 };
 void* FindDef_s7r_0();
@@ -82,7 +82,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 struct CThingDef : CDefClassBase { };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C (T = CThingDef)
 };
 void* FindDef_s7r_1();
@@ -103,18 +103,18 @@ template <class T> __declspec(noinline) bool CGameDefinitionManager::GetDef(long
     return true;
 }
 #pragma auto_inline(on)
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;                           // +0x00
     float     RenderSizeX;                              // +0x04
     C3DVector ToCentre;                                 // +0x08
     float     BoundingRadius;                           // +0x14
     float     BoundingCircleRadius;                     // +0x18
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;                      // +0x8c (PDB +0x9c)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

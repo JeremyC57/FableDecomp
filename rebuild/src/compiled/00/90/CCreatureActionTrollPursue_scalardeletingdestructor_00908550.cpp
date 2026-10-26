@@ -1,4 +1,4 @@
-struct CCreatureAction_TrollPursue {
+class CCreatureAction_TrollPursue { public:
     void* vftable;
 };
 

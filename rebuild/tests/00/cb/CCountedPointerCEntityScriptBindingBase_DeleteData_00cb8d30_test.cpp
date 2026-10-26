@@ -4,7 +4,7 @@
 static int g_deletes = 0; static void* g_last = 0;
 void operator delete(void* p) { ++g_deletes; g_last = p; std::free(p); }
 class CEntityScriptBindingBase { public: int m_word; };
-template <class T> struct CCountedPointer { static void __fastcall DeleteData(void* data) { delete (T*)data; } };
+template <class T> class CCountedPointer { public: static void __fastcall DeleteData(void* data) { delete (T*)data; } };
 int main()
 {
     CEntityScriptBindingBase* b = new CEntityScriptBindingBase; void* raw = b;

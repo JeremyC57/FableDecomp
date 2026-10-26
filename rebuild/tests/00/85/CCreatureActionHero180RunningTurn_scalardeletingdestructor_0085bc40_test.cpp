@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionHero180RunningTurn {
+class CCreatureActionHero180RunningTurn { public:
     void* vftable;
     int destroyed;
 };

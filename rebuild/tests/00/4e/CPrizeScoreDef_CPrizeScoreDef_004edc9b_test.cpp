@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_baseCopies = 0;
-struct CDefClassBase { virtual void v00() {} unsigned char _body[0x24]; CDefClassBase() {} CDefClassBase(const CDefClassBase& o) { ++g_baseCopies; _body[0] = o._body[0]; } };
-struct CPrizeScoreDef : CDefClassBase { virtual void v00() {} long Score; long Mult; CPrizeScoreDef() : Score(0), Mult(0) {} CPrizeScoreDef(const CPrizeScoreDef& o) : CDefClassBase(o), Score(o.Score), Mult(o.Mult) {} };
+class CDefClassBase { public: virtual void v00() {} unsigned char _body[0x24]; CDefClassBase() {} CDefClassBase(const CDefClassBase& o) { ++g_baseCopies; _body[0] = o._body[0]; } };
+class CPrizeScoreDef : public CDefClassBase { public: virtual void v00() {} long Score; long Mult; CPrizeScoreDef() : Score(0), Mult(0) {} CPrizeScoreDef(const CPrizeScoreDef& o) : CDefClassBase(o), Score(o.Score), Mult(o.Mult) {} };
 
 int main()
 {

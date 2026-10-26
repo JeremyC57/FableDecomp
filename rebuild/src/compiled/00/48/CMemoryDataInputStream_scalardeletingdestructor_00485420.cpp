@@ -24,7 +24,7 @@
 // 30-byte body and lands RELOCATION_MATCH with relocations at 0x4;0x11 (the two
 // call rel32s). This is the same spelling.
 
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
 // __fastcall scalar destructor: `this` arrives in ecx, so declare it __fastcall
 // with the object as the leading (ecx) argument -> `call` with no push.

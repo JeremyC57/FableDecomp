@@ -9,21 +9,21 @@
 //   frustum planes at +0x1c0 (as the landed sources name it); 0x0122DEDC = 0.0f.
 // Shape: the plane normal is read into three named float locals (kept on the x87 stack: `fld st(2)` for each sign test and
 //   `fmul st(n)`); the cull result is a `visible` flag set before `break`, so the invisible branch is the else-arm at the end.
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct CPlane { C3DVector Normal; float D; };
-struct CEngineCamera {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class CPlane { public: C3DVector Normal; float D; };
+class CEngineCamera { public:
     unsigned char _pad[0x1c0];
     CPlane        FrustrumPlanes[4];                // +0x1c0
 };
 extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
-struct CMovableResource {                          // landscape-memory resources: re-parented after a relocation
+class CMovableResource { public:                          // landscape-memory resources: re-parented after a relocation
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual bool IsPatch();                        // slot 4 (+0x10), meaningful on a tree node's sub node
     virtual void v14(); virtual void v18(); virtual void v1c();
     virtual void OnPostParentRelocation(CMovableResource* parent);   // slot 8 (+0x20)
 };
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0
 };
 struct SEngine_01436ea8 {
@@ -37,7 +37,7 @@ struct SLandscapeMapHeader {
     unsigned short OriginY;                        // +0x62
 };
 enum LANDSCAPE_EDGE_STRIP_SIDE { EDGE_RIGHT = 0, EDGE_LEFT = 1, EDGE_BOTTOM = 2, EDGE_TOP = 3 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     unsigned char        _pad00[0x14];
     SLandscapeMapHeader* Header;                   // +0x14
     void InvalidateEdge(long x, long y, long length, LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BDCBB0
@@ -53,9 +53,9 @@ struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable
 };
 struct CLandscapeBackgroundSubNodeBase : CMovableResource {   // the node's sub node: a leaf patch or a split branch
 };
-struct CLandscapeBackgroundPatch;
-struct CLandscapeBackgroundSubNodeSplitBranch;
-struct CLandscapeBackgroundTreeNode : CMovableResource {
+class CLandscapeBackgroundPatch;
+class CLandscapeBackgroundSubNodeSplitBranch;
+class CLandscapeBackgroundTreeNode : public CMovableResource { public:
     unsigned char                    _pad04[0x88];
     long                             FileBlockPos;            // +0x8c
     long                             FileBlockSize;           // +0x90
@@ -95,12 +95,12 @@ struct CLandscapeBackgroundTreeNode : CMovableResource {
     void MarkTreeAsInvisibleLastFrame();         // 0x00BF6A30
     void Render(unsigned long flags);
 };
-struct CLandscapeBackgroundPatch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     void Render(bool force, long* count, bool* changed);   // 0x00BE7BE0 (manifest parameter types)
     unsigned char _pad04[0x114];
     unsigned char LODBand;                         // +0x118
 };
-struct CLandscapeBackgroundSubNodeSplitBranch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundSubNodeSplitBranch : public CLandscapeBackgroundSubNodeBase { public:
     CLandscapeBackgroundTreeNode LeftBranch;       // +0x04
     CLandscapeBackgroundTreeNode RightBranch;      // +0xec
 };

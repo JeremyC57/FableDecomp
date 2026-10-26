@@ -48,21 +48,21 @@ struct CTCInterface243 {                        // the hero's interface-243 comp
     void OnVillageKilled();                     // 0x007E2780
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetCurrentPlayer();                // 0x00449970
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     void SetTimeAsStopped(bool stopped, long* stopIndex);   // 0x006BBE30
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad[0x1c];
     CGameTimeManager* TimeManager;              // +0x1c
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     unsigned char _pad_0x04[0x8c];
     bool          TimeIsPaused;                 // +0x90

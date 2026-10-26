@@ -67,22 +67,22 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -204,14 +204,14 @@ FABLE_STATIC_ASSERT(offsetof(CManager, AssignmentSpellsSwapping) == 0xfb);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CSymbolMap;
-struct CWideStringData;
+class CCPPointerInfo;
+class CCharStringData;
+class CSymbolMap;
+class CWideStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0x4];      // +0x04
     unsigned char                       _pad_0x08[0x4];      // +0x08
@@ -287,7 +287,7 @@ FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, RecompiledDefs) == 0xe0);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -307,8 +307,8 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -316,8 +316,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -402,8 +402,8 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 #undef CCharString
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-struct CIVCountedPointeeBase {
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const;
  unsigned long IVRefCount;
@@ -412,16 +412,16 @@ struct CIVCountedPointeeBase {
  void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
  long GetRefCount()const{return IVRefCount;}
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
  CIVCountedPointeeBase* PObject;
  CDefPointer():PObject(0){}
  CDefPointer(const CDefPointer& p):PObject(p.PObject){if(PObject)PObject->AddReference();}
  ~CDefPointer(){if(PObject)PObject->RemoveReference();}
  CDefPointer& operator=(const CDefPointer& p){if(PObject!=p.PObject){if(PObject){PObject->RemoveReference();PObject=0;}PObject=p.PObject;if(PObject)PObject->AddReference();}return *this;}
 };
-struct CDefClassBase;
-namespace NUISystem { struct CUIMiscThingsDef; struct CUIIconsDef; }
-struct CDefinitionManager {
+class CDefClassBase;
+namespace NUISystem { class CUIMiscThingsDef; class CUIIconsDef; }
+class CDefinitionManager { public:
  CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009ad9e0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
  bool GetDef(long,CDefPointer<NUISystem::CUIMiscThingsDef>*); //0042b312
@@ -441,7 +441,7 @@ bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIIconsDef>* 
 #pragma auto_inline(on)
 CDefinitionManager* __fastcall GetDefinitionManager(); //0044c6b0
 namespace NUISystem {
-struct CManager {
+class CManager { public:
  // Explicit native member projection: PDB donor+88 is retail+64 (0041d8f3).
  // Header preserved above; preceding UI state is opaque, no fabricated vtable slots.
  unsigned char NativeUIState[0x64];

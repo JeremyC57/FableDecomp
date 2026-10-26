@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TrollGetProjectile {
+class CCreatureAction_TrollGetProjectile { public:
     void* vftable;
     int destroyed;
 };

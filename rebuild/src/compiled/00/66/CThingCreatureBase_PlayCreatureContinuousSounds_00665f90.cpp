@@ -15,8 +15,8 @@
 //   GetSubDef result and the component test are one `&&`; the channel name is a named local built from the counter read
 //   before the counter is stored back, inside its own block after the component lookup (so the lookup key, a local of
 //   the inlined GetTC, shares the voice local's frame word, not the int-string temporary's).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -25,7 +25,7 @@ CCharString __fastcall GFIntToCharString(long value);                           
 CCharString __fastcall operator+(const char* left, const CCharString& right);      // 0x0099F690
 extern long g_CreatureContinuousSoundVoice;                                        // 0x013BA874
 
-struct CDefPointeeBase {                // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();             // slot 1
     long m_refCount;                    // +0x04
@@ -35,7 +35,7 @@ struct CDefPointeeBase {                // counted def object: vptr, reference c
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -45,7 +45,7 @@ template<class T> struct CDefPointer {
     }
 };
 struct CCreatureSoundSubDef : CDefPointeeBase { };          // the sub-def queried by 0x0065F604 (type unproven)
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     bool GetSubDef(CDefPointer<CCreatureSoundSubDef>* out);   // 0x0065F604
 };
 void* Find_CThingCreatureDef_GetSubDef(const void* owner);   // stand-in callee
@@ -59,7 +59,7 @@ __declspec(noinline) bool CThingCreatureDef::GetSubDef(CDefPointer<CCreatureSoun
     return true;
 }
 #pragma auto_inline(on)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -70,7 +70,7 @@ struct CTCCreatureSound {                   // interface type 0x10
     void SetVoiceChannel(const CCharString& channel);                       // 0x0066A9D0
     void PlaySound(const CCharString& name, long a, long b, long c, long d); // 0x0066BD00
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44

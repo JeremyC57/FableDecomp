@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CDrunkennessDef
-{
+class CDrunkennessDef
+{ public:
     void* vftable;
 };
 void* const g_CDrunkennessDef_vftable = (void*)0x12345678;

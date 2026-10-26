@@ -5,19 +5,19 @@
 // (`__fastcall(const C3DVector* from, const C3DVector& to)`; the manifest's "CScriptThing::operator==" is propagated).
 // Layout: PDB CThingFilter_IsNavLineOfSightToThing { C3DVector* Pos; CTCCreatureNavigation* PTCNav; }.
 // Shape: right-to-left: the thing's position first, then PTCNav into ecx, the pushes, Pos last.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool IsNavLineOfSight(const C3DVector* from, const C3DVector& to);   // 0x006CB610
 };
 
-struct CThingFilter_IsNavLineOfSightToThing {
+class CThingFilter_IsNavLineOfSightToThing { public:
     C3DVector*             Pos;                     // +0x00
     CTCCreatureNavigation* PTCNav;                  // +0x04
     bool operator()(CThing* thing) const;

@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text, long length = -1) : m_text(text) { (void)length; }
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CCharString GetAbilityInventoryThingName(long ability);
 };
 

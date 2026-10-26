@@ -110,10 +110,10 @@ namespace NGameText
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -145,7 +145,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CResourceList {
+class CResourceList { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Head[0x1c];                                // +0x04 CResource
     unsigned long ResourceCount;                             // +0x20
@@ -184,7 +184,7 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -196,36 +196,36 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 #endif // FABLE_ENGINE_CIVCOUNTEDPOINTEEBASE_H
 
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
  virtual ~CResource();virtual void Delete()const;
  virtual bool UnloadResource();virtual unsigned long GetUnloadableMemory()const;
  virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
  virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
  virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
- unsigned long IVRefCount;struct CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
+ unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
  void ListRemove(); //009FBFB0
  void ListInsert(CResource*,CResource*); //009FBF90
  void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
 __forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
 template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
-template<class T>struct CIVCountedPointer {
+template<class T>class CIVCountedPointer { public:
  T* Object;
  CIVCountedPointer(T* p):Object(p){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
  CIVCountedPointer(const CIVCountedPointer& p):Object(p.Object){if(Object)++const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount;}
  ~CIVCountedPointer(){if(Object&&!--const_cast<CResource*>(static_cast<const CResource*>(Object))->IVRefCount)Object->Delete();}
 };
-struct CBankFileAsyncData {bool IsFinished();}; //009D54E0
+class CBankFileAsyncData { public:bool IsFinished();}; //009D54E0
 namespace NGameText {
-struct CDataBank;struct CDataBankGroupEntry;
-struct CGroupEntry:CResource {virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
-struct CDataBankGroupEntry {CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
-struct CDataBank {
+class CDataBank;class CDataBankGroupEntry;
+class CGroupEntry:public CResource { public:virtual bool UnloadResource();CArrayNative<long> Entries;CBankFileAsyncData* PFileData;void* FileDataInfo;CDataBankGroupEntry* Owner;};
+class CDataBankGroupEntry { public:CGroupEntry* PGroup;void BeginLoading(unsigned long,CDataBank*);/*009C80F0*/void BuildGroup();/*009C8700*/};
+class CDataBank { public:
  unsigned char BankAsyncState[0x168];CResourceList ResourceCache,OtherResourceCache;CArrayNative<CDataBankGroupEntry*> Entries;
  unsigned long GetEntryDataType(unsigned long)const; //009CC210
  void FlushAsyncUpdates()const; //009D68B0: invokes009D6730 then009D5A90

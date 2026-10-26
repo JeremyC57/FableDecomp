@@ -1,4 +1,4 @@
-struct CInputProcessControlCreatureRightStick {
+class CInputProcessControlCreatureRightStick { public:
     void* vftable;
 };
 

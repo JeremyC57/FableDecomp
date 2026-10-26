@@ -16,10 +16,10 @@
 //        The graphic and physics components are read through inline const accessors (GetGraphicAppearance/GetPhysics):
 //        with direct ParentThing->member chains VC7.1 colours ParentThing differently on the two paths and cross-jumps
 //        their identical `offset = temp` copies into one shared tail.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -27,12 +27,12 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                       // +0x00
     C3DVector Forward;                                  // +0x0c
 };
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     bool GetDummyObject(const CCharString& name, long lod, unsigned long flags, C3DVector& outPosition,
                         CRightHandedSet& outOrientation, float t) const;   // 0x004C08C0
 };
@@ -58,7 +58,7 @@ public:
     long      OldPositionLastFrameSet;                  // +0x24
     C3DVector GetInterpolatedPosition(float t) { return (Position - OldPosition) * t + OldPosition; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64

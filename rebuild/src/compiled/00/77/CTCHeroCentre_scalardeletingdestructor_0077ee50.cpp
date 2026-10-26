@@ -1,4 +1,4 @@
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     void* vftable;
 };
 

@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase { long m_tag; };
+class CTCBase { public: long m_tag; };
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; } };
-struct CThingPlayerCreature { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CThingPlayerCreature { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) { long type = interfaceType; CInterfaceMap* map = &m_interfaces; CInterfaceMap::SEntry* it = map->LowerBound(&type);
             if (it == map->last || interfaceType < it->type) it = map->last; *ppOut = (T*)it->component; return true; } return false; } };
-struct CPlayer { CThingPlayerCreature* m_pCreature; CThingPlayerCreature* GetPlayerCreature() { return m_pCreature; } };
+class CPlayer { public: CThingPlayerCreature* m_pCreature; CThingPlayerCreature* GetPlayerCreature() { return m_pCreature; } };
 
-struct CTCInventoryQuests : CTCBase { };
-struct CInputProcessInventoryQuestsScreen { virtual void v00() { } virtual void v01() { } virtual void Init() { MyPlayer->GetPlayerCreature()->GetInterface(&PInventory, 0x19); CurrentQuestMovement = 0; CurrentQuestSelectMovement = 0; }
+class CTCInventoryQuests : public CTCBase { public: };
+class CInputProcessInventoryQuestsScreen { public: virtual void v00() { } virtual void v01() { } virtual void Init() { MyPlayer->GetPlayerCreature()->GetInterface(&PInventory, 0x19); CurrentQuestMovement = 0; CurrentQuestSelectMovement = 0; }
     unsigned char _pad04[0x10]; void* World; CPlayer* MyPlayer; void* DefinitionManager; void* Component; void* PGamePlayerInterface;
     unsigned char _pad28[0x0c]; CTCInventoryQuests* PInventory; long CurrentQuestMovement; long CurrentQuestSelectMovement;
 };

@@ -12,7 +12,7 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -33,7 +33,7 @@ struct CLongLongMap {                    // std::map<long, long> (retail STLport
 };
 
 
-struct CExperienceDef : CDefClassBase {
+class CExperienceDef : public CDefClassBase { public:
     long OrbCombiningParticleEffect;    // +0x28
     CLongFloatMap ParticleScalesPerExperiencePoints;// +0x2c
     CLongLongMap PickupParticleEffectsPerExperiencePoints;// +0x38

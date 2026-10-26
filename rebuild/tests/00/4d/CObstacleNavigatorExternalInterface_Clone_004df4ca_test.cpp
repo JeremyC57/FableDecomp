@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CNavigatorExternalInterface { int dummy; };
+class CNavigatorExternalInterface { public: int dummy; };
 
 static int g_ctorCalls = 0;
 
-struct CObstacleNavigatorExternalInterface
-{
+class CObstacleNavigatorExternalInterface
+{ public:
     char data[0x14];
     CObstacleNavigatorExternalInterface() {}
     CObstacleNavigatorExternalInterface(const CObstacleNavigatorExternalInterface& src)

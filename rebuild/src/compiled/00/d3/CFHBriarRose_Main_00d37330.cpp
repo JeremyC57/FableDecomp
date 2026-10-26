@@ -13,12 +13,12 @@
 //   expression re-reads ParentClass for the Release call); `while (!StartScriptingEntity(...)) { NewScriptFrame(); if (IsDone())
 //   return; }` is rotated (test first, body + bottom test), the handle address re-derived from ParentClass for each call and
 //   &Me kept in edi; the final `IsDone();` is a tail jump.
-struct CThing;
-struct CScriptThing { unsigned char _body[12]; };
+class CThing;
+class CScriptThing { public: unsigned char _body[12]; };
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
     bool IsScripting();                          // 0x00CD23B9
     void Release();                              // 0x00CD2770

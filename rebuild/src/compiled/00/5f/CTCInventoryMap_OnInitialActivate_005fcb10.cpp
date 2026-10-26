@@ -42,7 +42,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -62,10 +62,10 @@ struct CThing {
         return false;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);            // 0x0051ED80
 };
-struct CTCTeleporter {                               // interface type 0xDD
+class CTCTeleporter { public:                               // interface type 0xDD
     void SetAsActive(bool active);                   // 0x007DFEB0
 };
 struct CTCInventoryBase_Map {
@@ -74,7 +74,7 @@ struct CTCInventoryBase_Map {
     unsigned char _pad04[0x200 - 0x04];
     CThingManager* GetThingManager();                // 0x00686AE0 (CTCBase)
 };
-struct CTCInventoryMap : CTCInventoryBase_Map {
+class CTCInventoryMap : public CTCInventoryBase_Map { public:
     CSerialisedUIDPointer SerialisedTeleporterUIDs;  // +0x200
     virtual void OnInitialActivate();
 };

@@ -4,8 +4,8 @@
 // operator delete @ 0xbfe9bc
 extern "C" void __cdecl eng_operator_delete(void* p);
 
-struct CInputProcessToggleViewHeroMode
-{
+class CInputProcessToggleViewHeroMode
+{ public:
     int dummy;
     void lbp_scalar_dtor();                          // @ 0xa0d3d0, this in ecx
     void* scalar_deleting_destructor(unsigned int flags);

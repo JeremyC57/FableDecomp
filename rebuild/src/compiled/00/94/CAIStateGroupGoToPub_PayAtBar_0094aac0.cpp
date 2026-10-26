@@ -9,10 +9,10 @@
 // the WalkToPoint miss jumps past it) is the fingerprint of that form -- an `&&` chain or nested ifs with
 // one Terminate make all three misses jump to the same label. The pay point is a C3DVector at +0x78 and its
 // orientation set follows at +0x84. No engine header exists for CAIStateGroup_GoToPub; the layout is local.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector X, Y, Z; };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

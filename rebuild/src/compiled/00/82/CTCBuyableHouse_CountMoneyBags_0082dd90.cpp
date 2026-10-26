@@ -11,8 +11,8 @@
 // begin read once). The count lives in ebx and the result is `count > 0` (`setg`); a clear
 // interface bit takes the separate `xor al,al` exit.
 
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
 struct CBaseIntelligentPointer
 {
@@ -21,11 +21,11 @@ struct CBaseIntelligentPointer
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
 
-struct CThing;
+class CThing;
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -47,7 +47,7 @@ struct CTCThingList_0x21 {                          // the interface-0x21 compon
     SThingNode*   m_head;                           // +0x0c list header node
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                     // +0x44

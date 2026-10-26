@@ -4,21 +4,21 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-struct C3DVector { float X, Y, Z; };
-struct CBaseObject;
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CBaseObject;
+class CThing;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CBaseObject* m_pItem;
     CThing* GetPItem() const { return (CThing*)m_pItem; }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last; SEntry* end;
     SEntry* LowerBound(const long& key) { SEntry* it = first; while (it != last && it->type < key) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                            // +0x10
     unsigned char _pad11[0x0f];
@@ -43,7 +43,7 @@ struct CThing {
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     float MinX, MaxX; CThing* Blocker;
     bool IsPointInside(const C3DVector& pos) { return pos.X >= MinX && pos.X <= MaxX; }
     bool IsDoorBlockedBy(CThing* thing) { return thing == Blocker; }
@@ -54,11 +54,11 @@ struct CVillage {
     unsigned char _pad00[0x2c];
     CVillagerNode* Villagers;                       // +0x2c (list header)
 };
-struct CTCVillageMember { CVillage* Village; CVillage* GetPVillage() { return Village; } };
+class CTCVillageMember { public: CVillage* Village; CVillage* GetPVillage() { return Village; } };
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
-struct CPlayer { CThing* Hero; CThing* GetHeroCreature() { return Hero; } };
-struct CPlayerManager { CPlayer* Player; CPlayer* GetMainPlayer() { return Player; } };
-struct CTCShopKeeper {
+class CPlayer { public: CThing* Hero; CThing* GetHeroCreature() { return Hero; } };
+class CPlayerManager { public: CPlayer* Player; CPlayer* GetMainPlayer() { return Player; } };
+class CTCShopKeeper { public:
     void*   __vftable;
     CThing* ParentThing;                            // +0x04
     CPlayerManager* Manager;

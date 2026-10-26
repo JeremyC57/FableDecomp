@@ -5,7 +5,7 @@
 static int g_live = 0;      // live string copies beyond the originals
 static int g_refs = 0;      // outstanding counted-pointer references taken by copies
 
-struct CCharString {
+class CCharString { public:
     int v;
     CCharString(int x = 0) : v(x) { }
     CCharString(const CCharString& o) : v(o.v) { ++g_live; }
@@ -28,7 +28,7 @@ struct CSoundBankRecord {
     CCountedPointer Bank, BankData;
     CCharString Name0, Name1, Name2, Name3;
 };
-struct CSoundBankEntry { long first; CSoundBankRecord second; };
+class CSoundBankEntry { public: long first; CSoundBankRecord second; };
 struct CSoundBankEntryLess { bool operator()(const CSoundBankEntry& a, const CSoundBankEntry& b) const { return a.first < b.first; } };
 
 // the model: STLport 4.6 heap algorithms

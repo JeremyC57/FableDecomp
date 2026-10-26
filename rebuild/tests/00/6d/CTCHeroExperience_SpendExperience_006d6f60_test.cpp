@@ -11,14 +11,14 @@ template<class T> struct CRetailVector {
     T* _SweepBegin1() const { return _Myfirst; }
     T& operator[](unsigned long i) const { return *(_SweepBegin1() + i); }
 };
-struct CAbilityTrackLevelDef { unsigned char _base[0x3c]; long ExperienceCost; long AbilityUnlocked; long Description; };
-struct CAbilityTrackDef {
+class CAbilityTrackLevelDef { public: unsigned char _base[0x3c]; long ExperienceCost; long AbilityUnlocked; long Description; };
+class CAbilityTrackDef { public:
     unsigned char _base[0x3c];
     long ExperienceStat;
     CRetailVector<CAbilityTrackLevelDef> Abilities;
     long MaxedOutDescription;
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CRetailVector<CAbilityTrackDef> StatLevels;
 };

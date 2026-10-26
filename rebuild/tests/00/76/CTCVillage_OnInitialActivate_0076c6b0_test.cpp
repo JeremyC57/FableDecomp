@@ -11,7 +11,7 @@ void __fastcall Inner_Do(Inner* self, void* edx, unsigned char arg) {
     g_called++; g_ecx = self; g_edx = edx; g_arg = arg;
 }
 
-struct CTCVillage { Inner* p0; void* ParentThing; char pad8[4]; unsigned char c; unsigned char d; };
+class CTCVillage { public: Inner* p0; void* ParentThing; char pad8[4]; unsigned char c; unsigned char d; };
 
 void __fastcall OnInitialActivate(CTCVillage* self) {
     if (self->d) { Inner_Do(self->p0, self->ParentThing, self->c); self->d = 0; }

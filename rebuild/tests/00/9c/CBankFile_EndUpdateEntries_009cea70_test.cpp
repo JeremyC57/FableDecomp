@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_closes = 0, g_infos = 0, g_deletes = 0; static bool g_recoveryExists = false;
-struct CBankFile {
+class CBankFile { public:
     bool RetailMode, Solid, UpdatingFlag;
     void WriteFileInformation(bool) { ++g_infos; }
     void EndUpdateEntries()

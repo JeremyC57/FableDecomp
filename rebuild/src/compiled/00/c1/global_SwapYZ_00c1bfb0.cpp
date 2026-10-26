@@ -9,7 +9,7 @@
 // three-float constructor evaluates the arguments right to left -- v.Y (+4) and v.Z (+8) are loaded on
 // the x87 stack and X passes through an integer register -- then stores Y slot <- v.Z and Z slot <- v.Y
 // (`fstp [eax+4]` of the later load). A plain field-by-field copy becomes three integer moves instead.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

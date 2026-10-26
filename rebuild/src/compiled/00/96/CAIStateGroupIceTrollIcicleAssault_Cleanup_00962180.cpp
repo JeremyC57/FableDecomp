@@ -11,8 +11,8 @@
 // Layout: local model of the shared AI state-group shapes (the generated engine headers flatten the vptr and the base, so a
 //   virtual override cannot be declared on them). EDangerStatus enumerator names are descriptive (values only).
 // Shape: nested ifs as in the landed MinionSitOnSeatBase::Cleanup; the creature argument loads after the component.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -59,18 +59,18 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
 namespace NStealth { enum EDangerStatus { DANGER_STATUS_0 = 0, DANGER_STATUS_2 = 2, DANGER_STATUS_3 = 3 }; }
 
-struct CTCStealth {                             // interface type 0x36
+class CTCStealth { public:                             // interface type 0x36
     void SetAsInDanger(const CThing& source, NStealth::EDangerStatus status);   // 0x00747B80
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01();
     virtual void OnActivate();                  // slot 2

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesSummonSpellDef;
+class CSpecialAbilitiesSummonSpellDef;
 
 extern "C" void printf_hook();
 

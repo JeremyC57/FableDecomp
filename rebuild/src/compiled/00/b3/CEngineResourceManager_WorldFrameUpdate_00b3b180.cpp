@@ -7,7 +7,7 @@ struct Inner {
     Sub sub;
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     char pad[0x10];
     Inner* field10;
 };

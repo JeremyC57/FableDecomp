@@ -2,7 +2,7 @@
 #include <cmath>
 // Behaviour test for CTCPhysicsStandard::GetOnSurfaceParameters (0x008E5480): the body of src/ over stand-ins -- the
 // surface probe over colliding things (accepting hits within 0.15 above and above the lowest limit) and the on-ground test.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -14,7 +14,7 @@ struct CSurfaceHit {
     CSurfaceHit() : Fraction(1.0f) {}
 };
 class CTCPhysicsBase;
-struct CThing { CTCPhysicsBase* Physics; };
+class CThing { public: CTCPhysicsBase* Physics; };
 struct CThingVector { CThing** _M_start; CThing** _M_finish; };
 static float g_lastStartZ;
 class CTCPhysicsBase {

@@ -11,7 +11,7 @@
 //   word + byte) per element; the untouched result is returned for an empty range from its own tail.
 // Label correction: the catalog `_Copy_impl<CGameMapCell*,CGameMapCell*>` is the Dinkumware spelling; retail STL is
 //   STLport (the `ret 0Ch` + tag = __copy, GOTCHAS chunk 351).
-struct CGameMapCell {                                   // 7 bytes
+class CGameMapCell { public:                                   // 7 bytes
     unsigned char AtmosThemes[3];                       // +0
     unsigned char AtmosBlends[2];                       // +3
     signed char   SoundTheme;                           // +5

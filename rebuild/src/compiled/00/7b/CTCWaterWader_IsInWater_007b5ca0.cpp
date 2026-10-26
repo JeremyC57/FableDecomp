@@ -13,14 +13,14 @@
 //   value held in ebx, pushed and popped inside that branch; it loads between GetWorld and the virtual call); the squared length
 //   is `X*X + (Y*Y + Z*Z)` (retail's Z2,Y2,X2 order); the mode object goes through an inline getter (straight into ecx); the
 //   inlined component lookup takes `map = &m_tcs` first; the ground height is a named float local (`fld [ebp] ; fsub st(1)`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
 };
-struct CTCBase;
+class CTCBase;
 struct STCEntry {
     long     m_kind;
     CTCBase* m_pTC;
@@ -34,7 +34,7 @@ struct CTCMap {
 struct CTCGraphicAppearance {
     bool WasRenderedLastFrame() const;                      // 0x004BD200
 };
-struct CThing {
+class CThing { public:
 #define VF(n) virtual void v##n();
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
     VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18) VF(19)
@@ -74,18 +74,18 @@ struct CWorldModeObject {
     VF(390) VF(391) VF(392) VF(393) VF(394)
     virtual bool IsAlwaysChecking() const;                  // slot 395 (+0x62c)
 };
-struct CWorld {
+class CWorld { public:
     VF(w0) VF(w1) VF(w2) VF(w3) VF(w4) VF(w5) VF(w6) VF(w7)
     virtual C3DVector GetReferencePoint() const;            // slot 8 (+0x20)
     unsigned char _pad04[0x34];
     CWorldModeObject* PModeObject;                          // +0x38
     CWorldModeObject* GetModeObject() const { return PModeObject; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetWaterSizeZAt(const C3DVector& pos) const;       // 0x0063A420
     float GetGroundSizeZAt(const C3DVector& pos) const;      // 0x0063A300
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     CWorld* GetWorld_00686a70() const;                               // 0x00686A70

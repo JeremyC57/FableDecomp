@@ -12,26 +12,26 @@
 // counted pointer is a member object with an inline constructor (its zero stores follow the CScriptThing vtable).
 // engine/CScriptThing.h (vptr, PImp_Data, PImp_Info) is flat; the inlined constructor needs the polymorphic class with
 // the CCountedPointer<CScriptThing> PImp member it names, so CScriptThing is modelled locally on those members.
-struct CBaseClass {                             // vtable 0x01231710
+class CBaseClass { public:                             // vtable 0x01231710
     virtual ~CBaseClass();
     CBaseClass();                               // 0x0099A2D0
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
-template <class T> struct CCountedPointer {     // Data, Info (8 bytes); the inline default constructor nulls both
+template <class T> class CCountedPointer { public:     // Data, Info (8 bytes); the inline default constructor nulls both
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBaseClass {              // vtable 0x01238C8C (engine/CScriptThing.h: PImp at +4)
+class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C (engine/CScriptThing.h: PImp at +4)
     CCountedPointer<CScriptThing> PImp;         // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual ~CScriptBase();
     CScriptBase();                              // 0x00CB8110
 };
@@ -56,7 +56,7 @@ template <class T> struct CSTLportVector : CVectorBase<T> {     // STLport vecto
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
 
-template <class T> struct CArray : CSTLportVector<T> { };
+template <class T> class CArray : public CSTLportVector<T> { public: };
 
 
 struct __declspec(novtable) CScriptPairBase : CScriptBase {

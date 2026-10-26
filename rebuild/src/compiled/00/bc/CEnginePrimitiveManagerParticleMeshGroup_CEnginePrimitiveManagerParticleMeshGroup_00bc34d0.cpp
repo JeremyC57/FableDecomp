@@ -7,7 +7,7 @@
 // Layout: engine/CEnginePrimitiveManagerParticleMeshGroup.h has the PDB 16-byte CArray at +0x20; retail's STLport vector is 12 bytes,
 //   so every later member sits 4 lower (VertexShaderDisplacement +0x2c ... PixelShaderDisplacement +0x54), restated locally.
 // Shape: as the landed line-group constructor 0x00BC4D90 (signed-index `*(begin() + index)` element access, real _Vector_base).
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -30,10 +30,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -46,7 +46,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -60,7 +60,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -79,7 +79,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -94,7 +94,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -102,7 +102,7 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
@@ -124,14 +124,14 @@ struct CVertexShaderArray : _Vector_base<CVertexShader> {   // retail 12-byte ST
     CVertexShader* begin() { return _M_start; }
     CVertexShader& operator[](long index) { return *(begin() + index); }
 };
-struct CEnginePrimitiveGroupManager {              // 0x20 bytes
+class CEnginePrimitiveGroupManager { public:              // 0x20 bytes
     virtual ~CEnginePrimitiveGroupManager();
     unsigned char _body[0x1c];
     CEnginePrimitiveGroupManager(CEngineSceneArray* scenes);   // 0x00BEBC30
 };
 struct CEngineParticleConstantBlock { unsigned char _body[0x10]; };
 
-struct CEnginePrimitiveManagerParticleMeshGroup : CEnginePrimitiveGroupManager {   // vtable 0x012A63B8
+class CEnginePrimitiveManagerParticleMeshGroup : public CEnginePrimitiveGroupManager { public:   // vtable 0x012A63B8
     CVertexShaderArray VertexShadersMeshPointLights;   // +0x20
     CVertexShader      VertexShaderDisplacement;   // +0x2c
     CPixelShader       PixelShader;                // +0x34

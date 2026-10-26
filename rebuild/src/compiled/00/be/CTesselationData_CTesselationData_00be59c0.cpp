@@ -7,14 +7,14 @@
 // manifest's "CAnimateThing::GetPMeshAnims" label is propagated. `ret 14h`: five stack arguments.
 // Shape: the member initialisers in declaration order; the vtable store lands between them because the
 // derived constructor's own store is scheduled with the member stores.
-struct CEngineMap;
+class CEngineMap;
 
 namespace N_0099a2d0 { struct CBase {
     virtual void v0();
     CBase();                                    // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CTesselationData : CBase {               // vtable 0x012A800C
+class CTesselationData : public CBase { public:               // vtable 0x012A800C
     long PatchWorldX;                           // +0x04
     long PatchWorldY;                           // +0x08
     long Width;                                 // +0x0c

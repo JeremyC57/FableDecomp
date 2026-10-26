@@ -20,7 +20,7 @@
 //   `fld [esi+8] ; fsub [esi]`.
 #include <stddef.h>
 
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CFontBank;
 
 class CWideString {

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCDoor {
+class CTCDoor { public:
     bool CurrentOpen; bool Opening; bool Closing;
     bool IsClosed() const { return !Opening && !Closing && !CurrentOpen; }
 };

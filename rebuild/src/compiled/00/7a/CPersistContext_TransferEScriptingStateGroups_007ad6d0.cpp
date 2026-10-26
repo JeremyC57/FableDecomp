@@ -10,10 +10,10 @@
 //   Here the traits object (CPersistTraits<T> = { T DefaultVal; }) is declared at function scope with a
 //   value-initialising constructor: it is zeroed once before the jump (`mov [esp+14h],0`, the dead key-argument
 //   slot) and the binary-load arm passes that slot, as in the landed Transfer<EArcheryState> 0x00CDCC20.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                   // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 // The enum's name is from the catalog label; it is a 4-byte enum written with WriteLong.
 enum EScriptingStateGroups { EScriptingStateGroups_Default };
 template <class T> struct CPersistTraits {
@@ -31,7 +31,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

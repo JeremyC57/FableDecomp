@@ -9,7 +9,7 @@ public:
     void WriteUChar(unsigned char value) { g_values[g_n] = value; g_kinds[g_n++] = 1; }
     void WriteLong(long value) { g_values[g_n] = value; g_kinds[g_n++] = 5; }
 };
-struct CTexture;
+class CTexture;
 struct CStaticBlock {
     unsigned long m_firstIndex;
     unsigned long m_count;

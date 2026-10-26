@@ -4,14 +4,14 @@
 #include <new>
 static int g_log[32]; static int g_n = 0;
 static void Free(void* block) { g_log[g_n++] = 99; std::free(block); }
-struct CDefPointeeBase { virtual ~CDefPointeeBase() {} virtual void DeleteThis() { g_log[g_n++] = 50; } unsigned long RefCount; };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: virtual ~CDefPointeeBase() {} virtual void DeleteThis() { g_log[g_n++] = 50; } unsigned long RefCount; };
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer() { CDefPointeeBase* object = Object; if (object) { if (--object->RefCount == 0) object->DeleteThis(); Object = 0; } }
 };
-struct CEnginePrimitiveHandle { virtual ~CEnginePrimitiveHandle() { g_log[g_n++] = id; } int id; };
+class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle() { g_log[g_n++] = id; } int id; };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() { g_log[g_n++] = id; } int id; };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 template<class T> inline void Destroy(T* first, T* last) { for (; first != last; ++first) first->~T(); }
 template<class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;

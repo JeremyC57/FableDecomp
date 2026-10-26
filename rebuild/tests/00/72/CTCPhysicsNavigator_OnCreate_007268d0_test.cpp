@@ -6,9 +6,9 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };
 static int g_stdCreate = 0;
-struct C3DVector { float X, Y, Z; void Set(float x, float y, float z) { Z = z; Y = y; X = x; } };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; void Set(float x, float y, float z) { Z = z; Y = y; X = x; } };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CTCPhysicsBase { public:
     virtual void v00() {}
     void* m_tcBase[2]; C3DVector Position; C3DVector OldPosition; long OldPositionLastFrameSet; C3DVector Velocity; float Radius; void* PhysicsDef;
     bool Moving : 1; bool OldMoving : 1;

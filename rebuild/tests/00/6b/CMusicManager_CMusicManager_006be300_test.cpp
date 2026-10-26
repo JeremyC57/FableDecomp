@@ -4,10 +4,10 @@
 static const char* g_lookedUp = 0;
 static int g_registered = 0;
 class CCharString { public: const char* m_text; CCharString(const char* text, long) : m_text(text) {} ~CCharString() {} };
-struct CSoundDef { int id; };
+class CSoundDef { public: int id; };
 static CSoundDef g_soundDef = { 42 };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
-struct CGameDefinitionManager {
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
     bool GetDef(const CCharString& name, CDefPointer<const CSoundDef>& out) { g_lookedUp = name.m_text; out.Object = &g_soundDef; return true; }
 };
@@ -17,7 +17,7 @@ struct CMusicState {
     CMusicState() : RegionSet(0), OverrideSet(0), UIOverrideSet(0), CinematicOverrideSet(0), MapCellSet(0), Paused(false), Danger(false) {}
 };
 struct CRegisteredMusicMap { CRetailVector<long> m_entries; bool Dirty; CRegisteredMusicMap() : Dirty(false) {} };
-struct CMusicManager {
+class CMusicManager { public:
     CMusicState CurrentState; CDefPointer<const CSoundDef> PSoundDef; CRegisteredMusicMap RegisteredMusic;
     long CurrentMusicID, PendingMusicID; void* PPendingFadeTimes; long PendingLoopCount; bool Paused;
     void RegisterMusic() { ++g_registered; Paused = true; }

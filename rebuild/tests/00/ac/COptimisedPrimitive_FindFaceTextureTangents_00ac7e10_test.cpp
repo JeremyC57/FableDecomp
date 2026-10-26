@@ -1,6 +1,6 @@
 // behaviour test for 0x00AC7E10 COptimisedPrimitive::FindFaceTextureTangents
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct COptimisedVertex { C3DVector Position, Normal, TextureCoord; };
 struct COptimisedFace { unsigned int VertexIndices[3]; C3DVector UTangent, VTangent; };
 struct COptimisedPrimitive {

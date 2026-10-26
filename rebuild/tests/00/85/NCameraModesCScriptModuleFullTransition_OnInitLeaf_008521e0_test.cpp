@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CBase {
     C3DVector LookAt; C3DVector Position;
     void SetPosition(const C3DVector& p) { Position = p; }

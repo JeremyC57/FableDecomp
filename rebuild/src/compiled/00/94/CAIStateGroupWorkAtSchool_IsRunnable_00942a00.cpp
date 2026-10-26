@@ -12,8 +12,8 @@
 //          test, and only the force-inlined form leaves ebx free for retail's shared 0x23 key register; the creature is
 //          a named local read before the argument pushes; the bool rides in bl across the def release.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -167,7 +167,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -175,7 +175,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -211,8 +211,8 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
 };
@@ -221,7 +221,7 @@ struct CRefCounted {                            // reference count base at +4 of
     void DecRef() { --Count; }
     long GetRefCount() const { return Count; }
 };
-struct CSimBuildingDef {                        // the def the landed PeekPSimDefinition 0x0082D2D0 resolves
+class CSimBuildingDef { public:                        // the def the landed PeekPSimDefinition 0x0082D2D0 resolves
     virtual void v00();
     virtual void Destroy();                     // slot 1 (+0x04)
     CRefCounted Ref;                            // +0x04
@@ -230,12 +230,12 @@ struct CSimBuildingDef {                        // the def the landed PeekPSimDe
     __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     CDefPointer<CSimBuildingDef> PeekPSimDefinition() const;   // 0x0082D2D0
     const C3DVector& GetPosition();             // 0x004C73D0
 };
@@ -243,14 +243,14 @@ struct CThingPos : CThing {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
-struct CTCVillage;
+class CTCVillage;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
 struct CThingSchoolKid : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PSchool;            // +0x170 CIntelligentPointer<CThingBuilding>
 };
-struct CThingAICreature;
-struct CTCVillage {
+class CThingAICreature;
+class CTCVillage { public:
     bool IsTimeToGoToSchool(CThingAICreature* creature, CWorld* world, bool force);   // 0x0065A8EE
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {

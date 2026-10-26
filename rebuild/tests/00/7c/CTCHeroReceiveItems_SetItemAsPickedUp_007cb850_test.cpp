@@ -28,7 +28,7 @@ template <class It, class T> It find(It first, It last, const T& val)
         if (*first == val) return first;
     return last;
 }
-struct CTCHeroReceiveItems {
+class CTCHeroReceiveItems { public:
     CLongVector PickedUpItems;
     void SetItemAsPickedUp(long item)
     {

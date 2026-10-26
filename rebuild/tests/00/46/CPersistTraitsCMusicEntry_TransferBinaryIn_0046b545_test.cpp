@@ -47,11 +47,11 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct CDefString {
+class CDefString { public:
     int Index;
     void TransferBinaryIn(TestStream& stream) { int v; stream.Read(&v, sizeof(v)); Index = v; }   // stand-in for 0x0044FC00
 };
-struct CMusicEntry { unsigned int ID; CDefString Filename; float Gain; bool CacheToHD; };
+class CMusicEntry { public: unsigned int ID; CDefString Filename; float Gain; bool CacheToHD; };
 static void TransferBinaryIn(TestStream* stream, CMusicEntry* value)
 {
     { unsigned int n; stream->Read(&n, sizeof(n)); value->ID = n; }

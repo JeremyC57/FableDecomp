@@ -8,11 +8,11 @@
 // non-empty guard, do/while walk; the found branch passes the node's counted pointer BY VALUE (its user copy
 // constructor builds it in the argument area: `sub esp,8 ; mov eax,esp`, `inc dword ptr [esi]`) and returns. The
 // quest object is a named local (inline member reads keep it in ecx and shift the compare registers).
-// Leaf: ?DeactivateQuest@CQuestManager@@QAEXABUCCharString@@K@Z
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+// Leaf: ?DeactivateQuest@CQuestManager@@QAEXABVCCharString@@K@Z
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
@@ -25,11 +25,11 @@ __forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
     return false;
 }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                                  // +0x00
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_count; }
@@ -46,7 +46,7 @@ struct CActiveQuestNode {                          // list node: next, prev, CCo
     CCountedPointer<CActiveQuest> quest;           // +0x08
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
     void DeactivateQuest(CCountedPointer<CActiveQuest> quest, unsigned long reason);   // 0x004B3A20

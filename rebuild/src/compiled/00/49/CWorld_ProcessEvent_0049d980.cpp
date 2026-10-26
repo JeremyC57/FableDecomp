@@ -1,5 +1,5 @@
 // CWorld::ProcessEvent(const CGameEvent* event) -- run the world's action handler registered for the event's type in the game-event dispatch table, if any
-// Leaf: ?ProcessEvent@CWorld_Methods@@IAEXPBUCGameEvent@@@Z
+// Leaf: ?ProcessEvent@CWorld_Methods@@IAEXPBVCGameEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049D980, 35 bytes (+13 int3 padding), thiscall, `ret 4`.
 //   Ego_r.pdb ?ProcessEvent@CWorld@@IAEXPBVCGameEvent@@@Z (0x004A6CD0, between PostLoadInit and GetSampleBank -- retail
 //   0x0049D970 / 0x0049D9B0, both landed). The landed 0x0049E1D0 (also named ProcessEvent) is the PDB's
@@ -14,7 +14,7 @@
 #include "engine/CGameEvent.h"
 struct CWorld_Methods;
 typedef void (CWorld_Methods::*TWorldEventFunction)(const CGameEvent* event);
-struct CGameEventDispatch {
+class CGameEventDispatch { public:
     TWorldEventFunction ActionFunction;                  // +0x00
     TWorldEventFunction LocalActionFunction;             // +0x10
     unsigned char       FeedbackFunction[0x10];          // +0x20 CDisplayEngine pointer to member

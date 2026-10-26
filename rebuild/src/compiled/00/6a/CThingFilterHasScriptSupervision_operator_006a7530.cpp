@@ -1,5 +1,5 @@
-struct CThing;
-struct CThingFilter_HasScriptSupervision { bool m_wanted; };
+class CThing;
+class CThingFilter_HasScriptSupervision { public: bool m_wanted; };
 
 extern "C" bool __fastcall Thing_IsUnderScriptSupervision(CThing* thing);
 

@@ -1,8 +1,8 @@
 #include <cstdio>
 // behaviour test: AddTattoo(const CThing&) clears every tattoo for a removes-all tattoo, otherwise erases the tattoos whose body
 // areas overlap the new one (area 8 needs overlapping or unset specific areas) and appends the item's def; marks the morph changed
-struct CTattooDef { bool RemovesAllTattoos; long CoversBodyAreaFlags; long SpecificCoversBodyAreaFlags; };
-struct CThingBaseDef {
+class CTattooDef { public: bool RemovesAllTattoos; long CoversBodyAreaFlags; long SpecificCoversBodyAreaFlags; };
+class CThingBaseDef { public:
     CTattooDef* tattoo; long refs;
     bool GetSubDef(CTattooDef** out) const { *out = tattoo; return tattoo != 0; }
 };
@@ -25,8 +25,8 @@ static bool TattoosOverlap(const CTattooDef* a, const CTattooDef* b)
         return false;
     return true;
 }
-struct CThing { CThingBaseDef* PDef; };
-struct CTCHeroMorph {
+class CThing { public: CThingBaseDef* PDef; };
+class CTCHeroMorph { public:
     CVec Tattoos; long FrameTattoosChanged; bool Changed;
     void AddTattoo(const CThing& tattooThing)
     {

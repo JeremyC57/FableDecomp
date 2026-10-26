@@ -1,13 +1,13 @@
 // CParticleEmitterManager::CreateInterpolatedEmitter(long, long, float, const C3DVector&, const CRightHandedSet&, bool) -- at interpolate <= 0 just create the source emitter; otherwise fetch the source template and hand over to the template overload (null when the template is missing)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEB8C0, length 118 bytes (padded to 128).
-// Leaf: ?CreateInterpolatedEmitter@CParticleEmitterManager@@QAEPAUCParticleEmitter@NParticleEngine@@JJ
+// Leaf: ?CreateInterpolatedEmitter@CParticleEmitterManager@@QAEPAVCParticleEmitter@NParticleEngine@@JJ
 // Callees: CParticleEmitterManager::CreateEmitter @ 0x00AEB6D0, CParticleEmitterDatabase::GetEmitterTemplate(long, bool)
 // @ 0x00AE89E0 on the static counted pointer 0x013D2E14, the template overload CreateInterpolatedEmitter(CParticleEmitter*,
 // long, float, const C3DVector&, const CRightHandedSet&, bool) @ 0x00AEB850.
 // Shape: `interpolate <= 0.0f` (0x0129F198) gives `fcomp ; test ah,41h ; jp`; the flag is kept in esi for both calls.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-namespace NParticleEngine { struct CParticleEmitter; }
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+namespace NParticleEngine { class CParticleEmitter; }
 typedef NParticleEngine::CParticleEmitter CParticleEmitter;
 struct CParticleEmitterDatabase {
     CParticleEmitter* GetEmitterTemplate(long handle, bool flag);   // 0x00AE89E0

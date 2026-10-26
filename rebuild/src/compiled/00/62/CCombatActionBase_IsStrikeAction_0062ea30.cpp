@@ -1,4 +1,4 @@
-struct CCombatActionBase {
+class CCombatActionBase { public:
     char pad[0xc0];
     int strikeCount;
 };

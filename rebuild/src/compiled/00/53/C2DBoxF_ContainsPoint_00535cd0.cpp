@@ -4,12 +4,12 @@
 // Four ordered x87 compares, the point loaded first each time (`fld [p] ; fcomp [member]`):
 // p.X >= TLX (`test ah,1 ; jne` fails on C0), p.X < BRX (`test ah,5 ; jp`), then the same for Y.
 // `mov eax,1` / `xor eax,eax` is a long result, not a bool (that would be `mov al,1`).
-struct C2DVector {
+class C2DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX;  // +0x00
     float TLY;  // +0x04
     float BRX;  // +0x08

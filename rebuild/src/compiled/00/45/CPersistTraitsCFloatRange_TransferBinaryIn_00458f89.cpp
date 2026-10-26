@@ -30,7 +30,7 @@ struct CDataInputStreamReader : CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;        // +0x00
     float LowValue;         // +0x04
 };

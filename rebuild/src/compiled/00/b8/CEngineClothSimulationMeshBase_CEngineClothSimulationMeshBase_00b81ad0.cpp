@@ -11,8 +11,8 @@
 // Shape: the vector is a member object with an inline zeroing ctor; the three arguments are init-list members; the
 //   matrices are identity-filled in the body (Current, Inverse, Last: retail's store order) by an inline SetIdentity (a chained off-diagonal zero assignment stored high to
 //   low, then the diagonal m[8], m[4], m[0]) with 0.0f/1.0f held in eax/ecx.
-struct C3DMeshInfo;
-struct CEngineInternalPrimitiveMeshBase;
+class C3DMeshInfo;
+class CEngineInternalPrimitiveMeshBase;
 
 struct SPhysicsSettings {
     unsigned char _pad[0x1c];
@@ -31,7 +31,7 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                           // 0x0099A2F0
 };
 
-struct CEngineSimulationBase : CBaseClassNonCopyable { // vtable 0x012A38FC
+class CEngineSimulationBase : public CBaseClassNonCopyable { public: // vtable 0x012A38FC
     long          m_references;                        // +0x04
     unsigned char m_id;                                // +0x08
     virtual void v00();
@@ -49,7 +49,7 @@ struct SParticleSimArray {                             // STLport vector<CCounte
     SParticleSimArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];                                       // rows X, Y, Z, Pos
     void SetIdentity()
     {

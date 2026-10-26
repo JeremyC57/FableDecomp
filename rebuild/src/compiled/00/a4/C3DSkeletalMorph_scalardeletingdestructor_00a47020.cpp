@@ -1,4 +1,4 @@
-struct C3DSkeletalMorph {
+class C3DSkeletalMorph { public:
     void* vftable;
 };
 

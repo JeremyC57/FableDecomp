@@ -7,16 +7,16 @@
 // DefaultDelay +0x18, CDefString DefaultGroup +0x1c.
 // Shape: size() is the signed pointer difference / 20 (`imul 0x66666667 ; sar 3`) returned as unsigned, re-evaluated on
 // every pass (unsigned `jb`); the element offset steps by 0x14 in edi.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);       // 0x00993EA0
     void WriteLong(long value);                 // 0x00993EB0
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
@@ -26,7 +26,7 @@ struct CAnimationEntry {
 
 struct CKeyPairCompareLess { };
 
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     struct SPair { K first; V second; };
     SPair* m_first;                             // +0x00
     SPair* m_last;                              // +0x04
@@ -37,7 +37,7 @@ template<class K, class V> struct CVectorMap {
     SPair& operator[](unsigned long i) { return m_first[i]; }
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     CVectorMap<unsigned long, CAnimationEntry> Anims;   // +0x00
     long DefaultFlags;                          // +0x10
     long DefaultTransitionTime;                 // +0x14

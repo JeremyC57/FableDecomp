@@ -11,7 +11,7 @@ struct CCriticalSectionLock {
     ~CCriticalSectionLock() { Log(">"); }
 };
 struct CBufferChunkArray { void* m_pFirst; void* m_pLast; void* m_pEnd; void DeallocateMemory() { m_pFirst = m_pLast = m_pEnd = 0; Log("d"); } };
-struct CFileInstaller {
+class CFileInstaller { public:
     RTL_CRITICAL_SECTION_Fable CriticalSection; CBufferChunkArray BufferChunks; unsigned char* PReadBuffer; unsigned char* PWriteBuffer;
     void FreeBuffers()
     {

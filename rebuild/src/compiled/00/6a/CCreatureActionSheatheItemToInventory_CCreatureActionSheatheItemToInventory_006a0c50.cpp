@@ -12,11 +12,11 @@
 // engine/CCreatureActionBase.h is that 0xb4-byte PDB layout, so the base is a local opaque 0xa8-byte model
 // (polymorphic, with its out-of-line copy constructor).
 // The manifest label "CScriptGameResourceObjectScriptedThingBase" is propagated (the vtable names the class).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                                     // +0x00 shared reference count
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct CCountedPointer_CCreatureActionBase {
     CCreatureActionBase* Data;
@@ -28,13 +28,13 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];                    // retail sizeof(CCreatureActionBase) = 0xa8
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     CCountedPointer_CCreatureActionBase PFollowUpAction;      // +0xa8
     virtual void v00();
     CCreatureAction_SheatheItemToInventory(const CCreatureAction_SheatheItemToInventory& other);

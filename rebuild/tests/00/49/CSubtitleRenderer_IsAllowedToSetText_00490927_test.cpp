@@ -18,7 +18,7 @@
 //   inline presence test + the ternary entry pick of the landed 0x0064B5C1 idiom, the type kept in edi. The two
 //   component checks are one `||` of a __forceinline IsComponentActive<T>(thing, type) helper followed by
 //   `return true`: that lays `mov al,1 ; jmp` before the shared `xor al,al` (two inline ifs put the false exit first).
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
 };
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -60,12 +60,12 @@ struct CTCActiveStateB {                           // interface 0xC6
     unsigned char _pad[0xc];
     unsigned char m_active;                        // +0x0C
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
-struct CWorld {
+class CWorld { public:
     bool IsInSpecialMode();                        // 0x0048DB13
     CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
 };
@@ -73,7 +73,7 @@ struct CFrontEnd {
     unsigned char _pad[0xbc];
     unsigned char m_blocking;                      // +0xBC
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad0[0x24];
     CWorld*    PWorld;                             // +0x24
     CFrontEnd* m_pFrontEnd;                        // +0x28
@@ -84,7 +84,7 @@ struct CHeroInfoScreensManager {
     unsigned char _pad[0x34];
     unsigned char m_open;                          // +0x34
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     CHeroInfoScreensManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0

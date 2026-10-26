@@ -6,7 +6,7 @@ static const char* g_names[4] = { "UP", "DOWN", "LEFT", "RIGHT" };
 static const char* g_lastSymbol = 0;
 static int g_pushes = 0;
 static void OracleSymbolPushBack(const char* s) { g_lastSymbol = s; ++g_pushes; }
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     long Level; int Stage; long NumOutputsFired;
     int Pending[16]; unsigned int PendingCount;
     bool ProcessInput(int input)

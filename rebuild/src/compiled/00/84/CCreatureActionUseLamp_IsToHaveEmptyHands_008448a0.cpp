@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times: the landed IS_THING_ALIVE idiom re-fetches, then the flags read).
 // Shape: PCreature rides in esi; the result is an `unsigned char` (retail `xor al,al` / `mov al,1` with no `xor eax,eax`), so the
 // bool-returning virtual is modelled with that return type. Interface type 0xa0 = bit 20 of the bitset dword at +0x34 (the lamp component).
-struct CThing {                             // only the dead bit and the interface bitset word are modelled
+class CThing { public:                             // only the dead bit and the interface bitset word are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
@@ -28,7 +28,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureAction_UseLamp {
+class CCreatureAction_UseLamp { public:
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>

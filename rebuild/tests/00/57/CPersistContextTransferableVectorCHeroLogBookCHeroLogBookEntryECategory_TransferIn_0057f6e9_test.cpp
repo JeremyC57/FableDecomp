@@ -4,9 +4,9 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CPersistContext { int id; };
-struct CStringParser { long next; };
-struct CCharString { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: long next; };
+class CCharString { public: int id; };
 
 static int g_calls = 0; static CPersistContext* g_ctx = 0;
 void __fastcall TransferEnumIn_009e2590(CPersistContext* context, CStringParser* parser, long* value)

@@ -2,8 +2,8 @@
 // when out of range) feed CPixelFormat::Initialise, whose result is returned.
 #include <cstdio>
 #include <cstring>
-struct CPixelFormatInit { unsigned char m_bytes[6]; };
-struct CPixelFormat {
+class CPixelFormatInit { public: unsigned char m_bytes[6]; };
+class CPixelFormat { public:
     unsigned int m_format;
     CPixelFormat() {}
     void Initialise(const CPixelFormatInit& init) { m_format = init.m_bytes[0] | (init.m_bytes[5] << 8); }

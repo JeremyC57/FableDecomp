@@ -19,8 +19,8 @@
 //   through an if/else of constant stores (VC7.1 merges them into `or al,18h` / `and al,0E7h`; `a = b = v` inserts each
 //   bit); CCharString's inline operator== is `__forceinline`; the "CTCWife" name is a block-scoped named local (built in
 //   the dead argument slot before the AddTC pushes).
-struct CTCBase;
-struct CCharStringData {
+class CTCBase;
+class CCharStringData { public:
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
 };
@@ -69,12 +69,12 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CTCTalk {                                        // interface 0xF
+class CTCTalk { public:                                        // interface 0xF
     unsigned char _pad00[0x38];
     CCharString   DialogueVoice;                        // +0x38
     CCharString GetDialogueVoice() const { return DialogueVoice; }
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };
 
 class CThingAICreature {

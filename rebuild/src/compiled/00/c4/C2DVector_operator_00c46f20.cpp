@@ -1,4 +1,4 @@
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
 };

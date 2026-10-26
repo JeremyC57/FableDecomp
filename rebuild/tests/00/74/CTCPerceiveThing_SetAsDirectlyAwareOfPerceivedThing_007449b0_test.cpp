@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_on = 0; static void* g_ret = 0;
-struct CThing;
+class CThing;
 CThing* __fastcall IntelligentPointer_GetPItem_00a01b50(void* p) { return (CThing*)g_ret; }
 struct P { unsigned char pad[0xc]; unsigned char Perceived[8]; unsigned char p2[8]; long Frames; unsigned char p3[0x10]; bool Direct;
     void On() { ++g_on; }

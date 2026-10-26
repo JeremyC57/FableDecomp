@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_names = 0, g_namesDead = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { ++g_names; }
     ~CCharString() { ++g_namesDead; }

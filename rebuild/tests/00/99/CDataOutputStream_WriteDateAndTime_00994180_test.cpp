@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual void Write(const void* data, long length) = 0;
     void* NewLine_PStringData;

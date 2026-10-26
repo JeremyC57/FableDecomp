@@ -9,7 +9,7 @@ struct MeshEffectHolder {
     IRefCounted* ptr;
 };
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     IRefCounted* effect;
 };
 

@@ -12,17 +12,17 @@
 // the sound pair; base arguments right to left (0, 0, the sound pair, the lookup, 0.0f as `push edi` (the shared zero register), -1.0f, the owner); then the vtable
 // and the CIntelligentPointer<CThingCreatureBase> member at +0xa8 (base ctor, vtable 0x0123E7E0, SetPItem(owner)). `ret 4`.
 // Layout: retail CCreatureActionBase is 0xa8 bytes; no engine header exists for this class, so `this` is modelled locally.
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -41,13 +41,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CCreatureAction_ShowLove : CCreatureActionBase {   // vtable 0x01274F4C
+class CCreatureAction_ShowLove : public CCreatureActionBase { public:   // vtable 0x01274F4C
     CIntelligentPointer PCreatureLoving;   // +0xa8: the owner again
     virtual void v00();
     CCreatureAction_ShowLove(CThingCreatureBase* owner);

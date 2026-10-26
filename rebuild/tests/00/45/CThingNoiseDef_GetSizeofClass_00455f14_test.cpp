@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingNoiseDef {};
+class CThingNoiseDef { public:};
 
 unsigned long __fastcall CThingNoiseDef_GetSizeofClass(const CThingNoiseDef* self)
 {

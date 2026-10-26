@@ -19,7 +19,7 @@ struct CUIDefPointer {
  ~CUIDefPointer() { if (Object) { Object->Release(); Object = 0; } }
  CUIDef* operator->() const { return Object; }
 };
-struct CActionInputControl { long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float DirX, DirY; };
+class CActionInputControl { public: long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float DirX, DirY; };
 struct CGameActionList {
  struct node { node* next; node* prev; long value; };
  node* head;

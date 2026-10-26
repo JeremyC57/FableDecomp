@@ -34,7 +34,7 @@ struct IDirectInputDevice8_Retail {                // COM: __stdcall methods, `t
     virtual long __stdcall GetObjectInfo(void* info, unsigned long object, unsigned long how);   // slot 14 (+0x38)
     virtual long __stdcall GetDeviceInfo(void* info);   // slot 15 (+0x3c)
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad[0x94];
     void*         MainWindow;                      // +0x94 (HWND)
     void* GetMainWindow() const { return MainWindow; }

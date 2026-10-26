@@ -43,7 +43,7 @@ public:
     bool IsInGrid() const { return GridPos_Level >= 0; }
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     static void UpdatePosition(CEngineInternalPrimitiveBase& primitive, unsigned long flags)
     { ++g_updates; g_updateFlags = flags; (void)primitive; }
 };

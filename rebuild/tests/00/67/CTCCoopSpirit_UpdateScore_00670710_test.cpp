@@ -1,7 +1,7 @@
 // behaviour test for 0x00670710 CTCCoopSpirit::UpdateScore
 #include <cstdio>
 struct Score { long m_counter; };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Score* comp;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = comp; return true; } return false; }
 };

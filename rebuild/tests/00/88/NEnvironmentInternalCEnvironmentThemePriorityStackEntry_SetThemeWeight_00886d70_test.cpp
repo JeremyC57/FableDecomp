@@ -60,7 +60,7 @@ __declspec(noinline) void vector<T>::_M_insert_overflow(T* position, const T& x,
 #pragma auto_inline(on)
 
 namespace NEnvironmentInternal {
-struct CEnvironmentThemePriorityStackEntry {
+class CEnvironmentThemePriorityStackEntry { public:
     float                BaseWeight;                    // +0x00
     bool                 BaseWeightLocked;              // +0x04
     vector<CThemeWeight> Themes;                        // +0x08

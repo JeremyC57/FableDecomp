@@ -15,23 +15,23 @@
 // Layout: as the landed sibling 0x00801BE0 (IdleStates +0x0C, IdleStatesWeight +0x18, Preferred +0x24,
 //   FrameLastChecked +0x28; retail 12-byte STLport maps); CThing def index +0x8C (unsigned short);
 //   CIdleSchedulerDef +0x3C is its map<EIdleStateGroup, long> of idle weights.
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
     virtual bool CanRun();                          // slot 11 (+0x2c)
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     ~CDefPointer()
@@ -107,23 +107,23 @@ struct CIdleMap {                                    // map<EIdleStateGroup, CAI
     CIdleMapIterator end() { return CIdleMapIterator(_M_header); }
 };
 
-struct CIdleSchedulerDef : CDefClassBase {
+class CIdleSchedulerDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     CWeightMap IdleWeights;                          // +0x3c
 };
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CIdleSchedulerDef>* out);   // 0x00801670 (GetSubDef<CIdleSchedulerDef>)
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out);  // 0x0042AF3C
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefIndex;                         // +0x8c
     long GetDefIndex() const { return DefIndex; }
 };
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     bool          ToBeRemoved;                       // +0x08

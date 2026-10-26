@@ -6,12 +6,12 @@
 #endif
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct C2DVector { float X, Y; C2DVector() {} };
+class C2DVector { public: float X, Y; C2DVector() {} };
 typedef C2DVector T;
 static T MK(long n) { C2DVector v; v.X = (float)n; v.Y = (float)(n * 2); return v; }
 static long VAL(const T& v) { return (v.Y == v.X * 2) ? (long)v.X : -100; }
-struct CMemoryDataInputStream { int id; C2DVector ReadC2DVector() { LOG("binin"); return MK(7); } };
-struct CDataOutputStream { int id; long written; void Write2DVector(const C2DVector& v) { LOG("write"); written = VAL(v); } };
+class CMemoryDataInputStream { public: int id; C2DVector ReadC2DVector() { LOG("binin"); return MK(7); } };
+class CDataOutputStream { public: int id; long written; void Write2DVector(const C2DVector& v) { LOG("write"); written = VAL(v); } };
 template <class U> struct CPersistTraits;
 template <> struct CPersistTraits<C2DVector> { C2DVector DefaultVal; CPersistTraits() {} void TransferBinaryIn(CMemoryDataInputStream* stream, C2DVector* value) { *value = stream->ReadC2DVector(); } };
 struct CPersistContext_TransferableObjectBase { virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableObjectBase() {} };
@@ -20,7 +20,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

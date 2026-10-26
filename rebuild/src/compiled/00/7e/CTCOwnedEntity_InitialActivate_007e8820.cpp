@@ -6,7 +6,7 @@
 // CTCOwnedEntity::SetPOwner(CThing*) @ 0x007E8590.
 // Shape: the UID's two words are loaded once, tested with `or`, and pushed as the argument before GetGame runs.
 #pragma pack(push, 1)
-struct CThing;
+class CThing;
 
 struct CGame_007e8820 {
     CThing* GetThingFromUID(unsigned __int64 uid);  // 0x0051ED80
@@ -20,7 +20,7 @@ struct CTCBase_007e8820 {
     CGame_007e8820* GetGame();                      // 0x00686AE0
 };
 
-struct CTCOwnedEntity : CTCBase_007e8820 {
+class CTCOwnedEntity : public CTCBase_007e8820 { public:
     bool             SwitchableNavigationTCAdded;   // +0x0c
     unsigned char    POwner[8];                     // +0x0d CIntelligentPointer<CThing>
     unsigned char    _pad15[3];

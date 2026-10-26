@@ -6,8 +6,8 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::SetDeathRecoveryMarkerName @ 0x00896f60.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
     CCharString& operator=(const CCharString& other);
 };
@@ -39,13 +39,13 @@ struct DeathRecoveryMarkerNameMap
     }
 };
 
-struct CPlayerManager
-{
+class CPlayerManager
+{ public:
     void* GetTarget();
 };
 
-struct CGameScriptInterface                        // test-local view (engine/CGameScriptInterface.h is 32-bit only)
-{
+class CGameScriptInterface                        // test-local view (engine/CGameScriptInterface.h is 32-bit only)
+{ public:
     void* VTable;                                  // +0x00
     void* World;                                   // +0x04
     void* Component;                               // +0x08

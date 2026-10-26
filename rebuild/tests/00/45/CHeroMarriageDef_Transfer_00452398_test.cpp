@@ -2,7 +2,7 @@
 // with the matching float/long/string overload.
 #include <cstdio>
 #include <cstddef>
-struct CCharStringData;
+class CCharStringData;
 struct Def {
     void* vt; unsigned char pad[0x24];
     float f28, f2c, f30, f34, f38; int l3c, l40; float f44; int l48, l4c, l50, l54, l58;

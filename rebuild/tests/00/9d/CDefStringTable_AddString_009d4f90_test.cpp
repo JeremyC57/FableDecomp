@@ -3,9 +3,9 @@
 // returns the stored offset; the global data pointer skips the 4-byte header.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { char* Text; long Length; };
+class CCharStringData { public: char* Text; long Length; };
 static const char g_emptyString[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetPString() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
@@ -16,7 +16,7 @@ static unsigned long Calc(unsigned long seed, const void* data, unsigned long le
     for (unsigned long i = 0; i < length; ++i) h = h * 31 + p[i];
     return h;
 }
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     unsigned char buf[256]; long size;
     void Write(const void* data, long length) { std::memcpy(buf + size, data, length); size += length; }
     long GetSize() { return size; }

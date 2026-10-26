@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     C3DVector m_pos;
     const C3DVector& GetPosition() { return m_pos; }
 };

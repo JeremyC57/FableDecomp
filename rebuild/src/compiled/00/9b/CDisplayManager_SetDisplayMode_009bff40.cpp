@@ -12,11 +12,11 @@
 // an inline memberwise copy constructor (VC drops the stores the following assignments overwrite and schedules the
 // kept members first; the implicit copy is a `rep movsd` block), then the size (clamped up to 32 per axis), depth,
 // refresh rate and multisampling are assigned and the block is handed to ResetDevice.
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     unsigned long GetColourDepth() const;          // 0x009E3820
 };

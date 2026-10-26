@@ -9,8 +9,8 @@
 // the other (`lea eax,[esp+0Bh]`) -- both reproduced; only the begin load is scheduled before the value's lea.
 // Tried: inline begin()/end() in one expression, a named `last` local (this file), raw member operands (end re-read, tag slot moved),
 // optimize("s") (frame pointer). Next: lane gap (scheduling of the fastcall register load), or begin() through an iterator object.
-struct CValidateDefinitionInitBase;
-struct CCharString;
+class CValidateDefinitionInitBase;
+class CCharString;
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1 };
 
 struct random_access_iterator_tag {
@@ -25,7 +25,7 @@ inline const EWeaponClass* find(const EWeaponClass* first, const EWeaponClass* l
     return find_weapon_class(first, last, value, random_access_iterator_tag());
 }
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     bool operator==(const char* text) const;    // 0x005B3440
 };
@@ -38,7 +38,7 @@ struct CWeaponClassVector {                     // STLport vector<EWeaponClass>
     const EWeaponClass* end() const { return _M_finish; }
 };
 
-struct CVillageDef {
+class CVillageDef { public:
     virtual void v00();
     unsigned char      _pad04[0x24];
     CWeaponClassVector m_weaponClasses;         // +0x28

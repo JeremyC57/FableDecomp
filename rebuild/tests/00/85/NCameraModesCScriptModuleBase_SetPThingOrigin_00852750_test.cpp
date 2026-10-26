@@ -19,10 +19,10 @@ static int fails = 0;
 // through the out-of-line base dtor. The position is CThing::GetPosition inlined (placeholder at +0x60,
 // position at +0xc); both records are plain implicit copies.
 // Layout: PDB NCameraModes::CScriptModuleBase (see 0x005ED070).
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CThingPlaceholder {
     unsigned char _pad00[0x0c];
@@ -57,7 +57,7 @@ struct CPlaceholder {
     C3DVector     Position;                          // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPlaceholder* m_pPlaceholder;                    // +0x60
     CPlaceholder* GetPlaceholder() const { return m_pPlaceholder; }
@@ -90,11 +90,11 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
 };
 
 struct CBase;
-struct CGameCameraManager;
+class CGameCameraManager;
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {                           // vtable 0x01255F74
+class CScriptModuleBase { public:                           // vtable 0x01255F74
     virtual void v00();
     CIntelligentPointer_CThing      PCamPoint;       // +0x04
     CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c

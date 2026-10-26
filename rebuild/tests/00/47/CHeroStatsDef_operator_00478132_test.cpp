@@ -2,7 +2,7 @@
 
 static int g_baseCopies = 0;
 static int g_vectorCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual ~CParentDefClassBase() {}
     int m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_baseCopies; return *this; }
@@ -11,7 +11,7 @@ struct CAbilityTrackVector { int m_payload; CAbilityTrackVector& operator=(const
 struct CAppearanceModifierScalingVector { int m_payload; CAppearanceModifierScalingVector& operator=(const CAppearanceModifierScalingVector& o) { m_payload = o.m_payload; ++g_vectorCopies; return *this; } };
 struct CFloatVector { int m_payload; CFloatVector& operator=(const CFloatVector& o) { m_payload = o.m_payload; ++g_vectorCopies; return *this; } };
 struct CLongVector { int m_payload; CLongVector& operator=(const CLongVector& o) { m_payload = o.m_payload; ++g_vectorCopies; return *this; } };
-struct CHeroStatsDef : CParentDefClassBase {          // vtable 0x012339DC
+class CHeroStatsDef : public CParentDefClassBase { public:          // vtable 0x012339DC
     long MaximumStamina;
     float NumberOfSecondsAfterUseStaminaStartsRefilling;
     float NumberOfSecondsAfterChangeHealthStartsRefilling;

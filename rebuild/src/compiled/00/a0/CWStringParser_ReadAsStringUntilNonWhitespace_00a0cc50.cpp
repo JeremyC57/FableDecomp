@@ -7,13 +7,13 @@
 
 extern "C" int __cdecl iswspace(wchar_t c);   // 0x00BFEB90 (CRT, wint_t argument)
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
 };
 
-struct CWParsedItem {
+class CWParsedItem { public:
     long        Type;      // +0x00 EParsedItemType (2 = string)
     long        Integer;   // +0x04
     CWideString String;    // +0x08

@@ -1,8 +1,8 @@
 // Behaviour test for CTCTavernGame::GetHeroStats @ 0x005EB4B0: the living hero's interface-4 component, *out untouched otherwise.
 #include <cstdio>
-struct CTCHeroStats { int id; };
+class CTCHeroStats { public: int id; };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long bits[9]; SEntry entries[2]; SEntry* first; SEntry* last; unsigned char flags;
     bool IsDead() const { return (flags & 1) != 0; }
     SEntry* LowerBound(const long* t) { SEntry* p = first; while (p != last && p->type < *t) ++p; return p; }
@@ -17,7 +17,7 @@ struct CThing {
     }
 };
 static CThing* g_hero;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void GetHeroStats(CTCHeroStats** out) { CThing* hero = g_hero; if (hero && !hero->IsDead()) hero->GetInterface(out, 4); }
 };
 int main()

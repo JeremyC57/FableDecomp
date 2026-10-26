@@ -63,10 +63,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCDoor {
+class CTCDoor { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             m4;                                     // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -172,11 +172,11 @@ struct CAppearanceDefHolder {                       // releases the sub-def read
     }
 };
 
-struct C3DAnimationInfo;
-struct CMeshDataBank {
+class C3DAnimationInfo;
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);     // 0x00A242C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;                   // +0x3C
 };
@@ -186,12 +186,12 @@ struct CBaseDefPointer {                           // CDefPointer<const CThingBa
     const CDefClassBase* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CBaseDefPointer PBaseDef;                       // +0x70 CDefPointer<const CThingBaseDef>
 };
 
-struct CTCBase {
+class CTCBase { public:
     CWorld* GetWorld();                             // 0x00686A70
 };
 

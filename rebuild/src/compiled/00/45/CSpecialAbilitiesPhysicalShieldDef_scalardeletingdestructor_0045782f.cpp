@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CSpecialAbilitiesPhysicalShieldDef { public:
     void* vftable;
 };
 

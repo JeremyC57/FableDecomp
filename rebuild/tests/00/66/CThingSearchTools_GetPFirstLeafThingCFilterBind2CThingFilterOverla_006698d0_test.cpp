@@ -1,6 +1,6 @@
 // Behaviour test for CThingSearchTools::GetPFirstLeafThing<Bind2<OverlappingSphere, PosInContainmentVolume>, CThingBuilding> (006698d0).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct Thing { unsigned char state; C3DVector centre; float radius; bool contains; };
 struct Node { Node* next; Node* prev; Thing* value; };
 static bool Visible(const Thing* t) { unsigned char f = t->state; unsigned char nf = ~f; return (f & 4) && (f & 8) && (nf & 1) && !(f & 0x20); }

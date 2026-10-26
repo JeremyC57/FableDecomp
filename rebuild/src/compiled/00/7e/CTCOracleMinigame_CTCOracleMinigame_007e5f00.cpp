@@ -11,13 +11,13 @@
 // (list<EOracleMinigameInput>, one sentinel pointer), SpeechMarker +0xE4 (PDB +0xEC), PDef +0xE8 (PDB +0xF0).
 // Shape: init list in declaration order; the list ctor nulls the pointer, allocates and self-links the node, then stores it.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThing;
-struct COracleMinigameDef;
-template<class T> struct CDefPointer {
+class CThing;
+class COracleMinigameDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const COracleMinigameDef>* out) const;   // 0x007E6E00
 };
 struct CThingDefHolder {
@@ -35,14 +35,14 @@ struct CInputList {                             // STLport list<EOracleMinigameI
         head = sentinel;
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThingDefHolder* ParentThing;               // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     CTCBase(CThing* thing);                     // 0x00686800
 };
-struct CTCOracleMinigame : CTCBase {            // vtable 0x012707B4
+class CTCOracleMinigame : public CTCBase { public:            // vtable 0x012707B4
     unsigned long CurrentText;                  // +0x0c
     long  Level;                                // +0x10
     long  Stage;                                // +0x14 EOracleMinigameState

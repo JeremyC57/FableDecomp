@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <cstring>
 static char g_log[64];
-struct CDataOutputStream { int id; };
-struct CMemoryDataInputStream { int id; };
-struct COpinionPersonalityTraits {
+class CDataOutputStream { public: int id; };
+class CMemoryDataInputStream { public: int id; };
+class COpinionPersonalityTraits { public:
     float BaseOffset, HeroStatScaling, VillageOpinionScaling, TimeScalingRunIn, TimeScalingRunOut;
     float PeakScalingIfPos, PeakScalingIfNeg, PersistScalingIfPos, PersistScalingIfNeg;
     void TransferBinaryOut(CDataOutputStream* s) const { if (s->id == 7) { char b[2] = { (char)('0' + (int)BaseOffset), 0 }; std::strcat(g_log, b); } }
@@ -20,7 +20,7 @@ template <> struct CPersistTraits<COpinionPersonalityTraits*> {
     void TransferBinaryIn(CMemoryDataInputStream* s, COpinionPersonalityTraits** v)
     { for (unsigned long i = 0; i < OPINION_PERSONALITY_TRAITS_COUNT; ++i) (*v)[i].TransferBinaryIn(s); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void CheckCRC(const char* name) { if (name[0] == 0) std::strcat(g_log, "K"); }
     template <class T> void Transfer(T& value)

@@ -28,7 +28,7 @@ static int g_ok = 1;
 // eax and forms `lea esi,[eax+0Ch]`; the value-returning HasTC + GetConstTC pair gives `mov esi,[eax+4] ; add esi,0Ch`),
 // the pointer's address kept in esi for both GetPItem calls (`!p || dead`), the creature re-read from +4 for the Kill.
 // Plain `ret`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };

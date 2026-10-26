@@ -13,27 +13,27 @@
 // zeroed CSoundPair stores are what keep zero in ebx for the whole body. The engine header
 // CCombatSequenceWhisperAdvance.h is a flattened blob, so the sequence is modelled locally. Owner/target are
 // read through inline GetCreature()/GetTarget() reference getters (direct `*Creature` reads rotate eax/ecx/edx).
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     unsigned char nativeFields[0xa4];      // native action base is 0xa8 bytes
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     unsigned char nativeCombatFields[0x6c]; // retail combat action base is 0x114 bytes
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
-struct CCreatureAction_StrafeBackward : CCombatActionBase {
+class CCreatureAction_StrafeBackward : public CCombatActionBase { public:
     CCreatureAction_StrafeBackward(CThingCreatureBase& owner, CThing& target);   // 0x008BFD60
 };
-struct CCreatureAction_StrafeForward : CCombatActionBase {
+class CCreatureAction_StrafeForward : public CCombatActionBase { public:
     CCreatureAction_StrafeForward(CThingCreatureBase& owner, CThing& target);    // 0x008BFD00
 };
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:
     long InterruptTime;                     // +0x114, untouched by this ctor
     virtual ~CCreatureAction_InterruptableMidAttack();
     CCreatureAction_InterruptableMidAttack(CThingCreatureBase& owner, CThing& target)
@@ -63,7 +63,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     void* nativeVptr;
     unsigned char nativePrefix[0x18];
     CThingCreatureBase* Creature;           // +0x1c

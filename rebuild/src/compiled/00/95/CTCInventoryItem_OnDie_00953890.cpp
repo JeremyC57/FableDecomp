@@ -2,7 +2,7 @@
 // Leaf: OnDie
 // __fastcall void OnDie(CTCInventoryItem* self)
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x120];
     void* m120;          // +0x120
 };

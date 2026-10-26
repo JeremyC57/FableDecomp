@@ -11,7 +11,7 @@ struct BaseBlendState;
 // base destructor tail-called at 0x686830
 extern "C" void __fastcall Base_dtor_00686830(BaseBlendState* self);
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     char        pad0[0xc];   // +0
     RefCounted* handle;      // +0xc
 };

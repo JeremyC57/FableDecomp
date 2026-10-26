@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CAICreatureWillPowerIndicatorDef
-{
+class CAICreatureWillPowerIndicatorDef
+{ public:
     void* vftable;
 };
 extern void* const g_CAICreatureWillPowerIndicatorDef_vftable;

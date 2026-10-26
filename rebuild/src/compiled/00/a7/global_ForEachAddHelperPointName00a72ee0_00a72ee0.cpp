@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag (its temporary is homed in a dead argument slot)
 
-struct CCharString {                            // 4-byte counted string handle
+class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };

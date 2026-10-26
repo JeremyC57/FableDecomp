@@ -9,8 +9,8 @@
 // Shape: one zero register and one 1.0f register; float constants store as integer moves; the high-to-low
 // Brightness/Contrast/Alpha stores are one chained assignment (evaluated right to left); the two track-position
 // enums go through an inline two-argument setter (written as two statements VC sinks them below the zero stores).
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION { ERBTP_NONE = 0, ERBTP_CAMERA = 1 };
 

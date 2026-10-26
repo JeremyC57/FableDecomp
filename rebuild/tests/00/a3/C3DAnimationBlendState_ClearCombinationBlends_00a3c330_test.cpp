@@ -13,7 +13,7 @@ struct CRetailBlendVector {
     void clear() { erase(m_pFirst, m_pLast); }
 };
 struct CSharedData { long m_refCount; void* m_pBaseAnimation; CRetailBlendVector CombinationBlends; };
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     CSharedData* Data;
     CSharedData* m_pOwnCopy;
     void MakeOwnCopyOfData() { g_copyStep = ++g_step; Data = m_pOwnCopy; }

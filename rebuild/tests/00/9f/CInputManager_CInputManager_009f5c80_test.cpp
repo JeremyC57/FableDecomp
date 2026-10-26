@@ -36,11 +36,11 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     ~CBaseClassNonCopyable();                               // 0x0099A300
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
-struct CDiskFileWin32 : CBaseClassNonCopyable {             // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:             // vtable 0x0122D06C
     long        AccessType;                                 // +0x04
     long        Position;                                   // +0x08
     long        Length;                                     // +0x0c
@@ -53,7 +53,7 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {             // vtable 0x0122D06C
 
 struct SAllocatorTag { SAllocatorTag() { } };
 
-struct CInputEventPackage;
+class CInputEventPackage;
 void __fastcall Destroy_009f6e00(CInputEventPackage* first, CInputEventPackage* last, const SAllocatorTag& allocator);   // 0x009F6E00
 struct CJoystickPointer;
 void __fastcall Destroy_009f6750(CJoystickPointer* first, CJoystickPointer* last, const SAllocatorTag& allocator);       // 0x009F6750
@@ -80,7 +80,7 @@ struct CJoystickPointerVector : CRangeVector<CJoystickPointer> {   // vector<CCo
     }
 };
 
-struct CInputEvent {                                        // 0x34 bytes
+class CInputEvent { public:                                        // 0x34 bytes
     unsigned char _body[0x34];
     ~CInputEvent();                                         // 0x00A03B30
 };
@@ -102,14 +102,14 @@ struct CInputEventVector {
     }
 };
 
-struct CMouse { virtual ~CMouse(); };
-struct CKeyboard { virtual ~CKeyboard(); };
+class CMouse { public: virtual ~CMouse(); };
+class CKeyboard { public: virtual ~CKeyboard(); };
 template<class T> struct scoped_ptr {
     T* ptr;
     ~scoped_ptr() { delete ptr; }
 };
 
-struct CChecksum { unsigned char _body[0x10]; };
+class CChecksum { public: unsigned char _body[0x10]; };
 
 class CInputManager : public CBaseClass {                   // vtable 0x0129C79C
 public:

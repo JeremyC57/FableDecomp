@@ -2,7 +2,7 @@
 // source's logic over a model whose out-of-line callees (LowerBound, find_if, GetPItem, the predicate) have behaviour.
 #include <cstdio>
 
-struct CTCBase { int Tag; };
+class CTCBase { public: int Tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -45,7 +45,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
@@ -79,12 +79,12 @@ _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pred)
 }
 }
 
-struct CTCThingOwner : CTCBase {
+class CTCThingOwner : public CTCBase { public:
     std::list<CIntelligentPointer<CThing> > ObjectList;
 };
 
 class CAIStateGroup_LightHomeCandle;
-struct CIsCandleNeedingChanging {
+class CIsCandleNeedingChanging { public:
     CAIStateGroup_LightHomeCandle* HomeCandle;
     CIsCandleNeedingChanging(const CAIStateGroup_LightHomeCandle* homeCandle)
         : HomeCandle(const_cast<CAIStateGroup_LightHomeCandle*>(homeCandle)) { }

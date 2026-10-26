@@ -18,7 +18,7 @@ public:
     char* PData;                                            // +0x00
     bool operator<(const CBasicStringChar& other) const;    // 0x00429950
 };
-struct CCharStringData {                                    // shared string block (Data first)
+class CCharStringData { public:                                    // shared string block (Data first)
     CBasicStringChar Data;                                  // +0x00
 };
 class CCharString {
@@ -37,7 +37,7 @@ public:
     }
 };
 
-struct CCPPointerInfo {                                     // the shared count block
+class CCPPointerInfo { public:                                     // the shared count block
     long RefCount;                                          // +0x00
 };
 

@@ -10,14 +10,14 @@
 // Shape: the OnKill alive-and-has-interface test (GetPItem three times, the out-parameter lookup leaving the component in
 // eax); the bit-field stores on each side of the calls merge into one read-modify-write per byte; the pointer is cleared
 // through a CIntelligentPointer(0) temporary and the inline operator= (`SetPItem(other.GetPItem())`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -41,7 +41,7 @@ struct CThing {
 struct CTCDependentThings {                             // interface 0xd8
     void AddDependentThing(CThing* thing);              // 0x0071A8F0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
@@ -66,7 +66,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer& p)
     }
     return false;
 }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x1c - 0x08];

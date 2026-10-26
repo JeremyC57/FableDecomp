@@ -3,7 +3,7 @@
 #include <cstdio>
 static int g_root = 0, g_vec = 0;
 struct CDefRootBase { unsigned int m_words[6]; CDefRootBase& operator=(const CDefRootBase& o) { ++g_root; for (int i = 0; i < 6; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CDefClassBase : CDefRootBase {
+class CDefClassBase : public CDefRootBase { public:
     unsigned int PDefManager; unsigned int GlobalIndex;
     unsigned char Setup : 1; unsigned char Template : 1; unsigned char DefaultValsApplied : 1; unsigned char Other : 5;
     CDefClassBase& operator=(const CDefClassBase& o)
@@ -12,8 +12,8 @@ struct CDefClassBase : CDefRootBase {
 struct CVec { unsigned int a, b, c; CVec& operator=(const CVec& o) { ++g_vec; a = o.a; b = o.b; c = o.c; return *this; } };
 struct CKeyPairCompareLess {};
 struct CVectorMap { CVec m_vector; CKeyPairCompareLess m_compare; bool m_sorted; };
-struct CDefString { int TablePos; };
-struct CParentDefClassBase : CDefClassBase { CDefString InstantiationName; CVectorMap SubDefInfoMap; };
+class CDefString { public: int TablePos; };
+class CParentDefClassBase : public CDefClassBase { public: CDefString InstantiationName; CVectorMap SubDefInfoMap; };
 struct CUIIconsDef : CParentDefClassBase {
     unsigned long Icons[32];                            // IconFriendRequestReceived .. IconListHighlight
     CUIIconsDef& operator=(const CUIIconsDef& other)

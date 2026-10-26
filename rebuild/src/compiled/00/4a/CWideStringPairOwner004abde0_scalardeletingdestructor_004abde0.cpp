@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004ABDE0, length 43 bytes.
 // Callees: CWideString::~CWideString @ 0x0099B510 twice, operator delete @ 0x00BFE9BC. Shape: the pair's address is formed with `lea edi,[esi+4]` and the second
 // string's with `lea ecx,[edi+4]`: the two strings are one pair member. The chunk label "CEngineSubPrimitiveText" is propagated; the class is named by address.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };

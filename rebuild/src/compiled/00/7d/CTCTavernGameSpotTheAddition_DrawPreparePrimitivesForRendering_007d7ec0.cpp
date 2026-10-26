@@ -28,7 +28,7 @@ struct CDefPointer {                                // CDefPointer<const CSpotTh
     }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer* out);               // 0x007D9A80
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -45,12 +45,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x70];
     CDefClassBase* m_pDefinition;                   // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vftable;
     CThing* m_pParentThing;                         // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x18];

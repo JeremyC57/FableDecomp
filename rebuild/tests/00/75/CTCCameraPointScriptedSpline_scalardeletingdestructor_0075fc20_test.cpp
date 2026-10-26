@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     void* vftable;
     int destroyed;
 };

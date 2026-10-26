@@ -10,8 +10,8 @@
 //   OnHit (slot 65), ProcessFramesRunningForOnHitWithParams 0x00856040.
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
-struct CTCBase;
-namespace NHitLocations { struct CHitLocation; }
+class CTCBase;
+namespace NHitLocations { class CHitLocation; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
@@ -79,12 +79,12 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CHitParameters {                        // 0x60 bytes in retail
+class CHitParameters { public:                        // 0x60 bytes in retail
     unsigned char _pad00[0x60];
     CHitParameters();                           // 0x007A3BC0
     ~CHitParameters();                          // 0x00789358
 };
-struct CThing {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -118,11 +118,11 @@ struct CThing {
         return false;
     }
 };
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     void GetMeleeHitParameters(NHitLocations::CHitLocation* hitLocation, CThing& hitter, CThing* weapon,
                                const C3DVector& position, const C3DVector& direction, CHitParameters& out) const;   // 0x00838BC0
 };
-struct CTCHitLocations {                        // interface type 0x7F
+class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector& start,
         const C3DVector& end, C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008168B0
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
@@ -141,7 +141,7 @@ void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float
     const C3DVector& hitPosition);              // 0x00856040 (file-static)
 }
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();               // slot 3 (+0x0c)
     virtual void v04();
@@ -230,7 +230,7 @@ struct CCombatActionBase {
     bool  HitThing;                             // +0xe8
     unsigned char _pade9[3];
     long  FrameUpdatePauseFrames;               // +0xec
-    struct CStrikeEvent {
+    class CStrikeEvent { public:
         unsigned char _pad00[0x1c];
         CVector<CThingGameObject*> StruckThingList;   // +0x1c
     };

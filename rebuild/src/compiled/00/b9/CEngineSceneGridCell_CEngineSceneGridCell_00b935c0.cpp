@@ -10,15 +10,15 @@
 // bit-field assignments merge into one `and 0E6h ; or 6` read-modify-write; the zero lives in ebx; the inline LCG
 // (`seed * 0x24A1 + 0x24DF`, stored, then rotated by GFROR13 and stored again) is reduced modulo the range unless the
 // range is 0 (the range is loaded before the call); the byte store is duplicated into both return paths.
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     virtual void v02();
@@ -26,7 +26,7 @@ struct CEnginePersistentPrimitiveBase {
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {      // intrusive counted pointer (count at +4 of the object)
+template <class T> class CIVCountedPointer { public:      // intrusive counted pointer (count at +4 of the object)
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -44,7 +44,7 @@ template <class T> struct CIVCountedPointer {      // intrusive counted pointer 
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
@@ -56,9 +56,9 @@ struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598, 8 bytes
     }
 };
 
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, matches retail)
+class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB layout, matches retail)
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     float                         BoundingBox[6];  // +0x08 C3DBoundingBox

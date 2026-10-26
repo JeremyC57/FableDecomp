@@ -32,7 +32,7 @@ public:
     void TerminateProcess();                       // 0x00A4B200
 };
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 class CSpawnedFuncBase : public CASuspendableProcess {
 public:

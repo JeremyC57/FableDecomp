@@ -2,8 +2,8 @@
 // Standard MSVC scalar/vector deleting destructor idiom:
 //   push esi; mov esi,ecx; call dtor; test [esp+8],1; je L; push esi; call delete; add esp,4; L: mov eax,esi; ret 4
 
-struct CInputProcessDead
-{
+class CInputProcessDead
+{ public:
     void Destroy();  // real scalar destructor at 0xa0d3d0 (__fastcall)
 };
 

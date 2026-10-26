@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CAIBrain {}; struct CThingAICreature {}; struct CCharString {};
+class CAIBrain { public:}; class CThingAICreature { public:}; class CCharString { public:};
 static int g_baseCalls = 0; static long g_id = 0;
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10];
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10];
     void Initialise(CAIBrain&, CThingAICreature&, long id, long, const CCharString&) { ++g_baseCalls; g_id = id; } };
 struct CAIStateGroup_MinionFollowThing : CAIStateGroupBase {
     unsigned char PFollowee[8]; float FollowDistance; bool AvoidDynamicObstacles, PreviousPushableByHero, ExpressionUsed, FollowerAdded; long CurrentMovementType;

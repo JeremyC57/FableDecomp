@@ -1,9 +1,9 @@
 // Behaviour test for CTCInventoryMap::ProcessButtonAReleased @ 0x00602F30 (model copy; stub world, GUI, base handler).
 #include <cstdio>
-struct CCharString { void* PStringData; };
-struct CRegion { long id; };
-struct CWorldMap { CRegion regions[4]; CRegion& GetRegion(long index) { return regions[index]; } };
-struct CWorld {
+class CCharString { public: void* PStringData; };
+class CRegion { public: long id; };
+class CWorldMap { public: CRegion regions[4]; CRegion& GetRegion(long index) { return regions[index]; } };
+class CWorld { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual CWorldMap* GetWorldMap() { return 0; }
@@ -11,11 +11,11 @@ struct CWorld {
     unsigned char _pad04[0x84 - 0x04]; CCharString CurrentWorldName; unsigned char _pad88[0xd5 - 0x88]; unsigned char m_teleportAllowed;
     CWorldMap map;
 };
-struct CMiniMapDisplay { CRegion* region; CCharString* name; bool flag; long inits; void InitialiseMiniMapFileLoading_Region(CRegion* r, CCharString* n, bool b) { ++inits; region = r; name = n; flag = b; } };
-struct CPlayerGui { CMiniMapDisplay display; CMiniMapDisplay* GetPMiniMapDisplay() { return &display; } };
+class CMiniMapDisplay { public: CRegion* region; CCharString* name; bool flag; long inits; void InitialiseMiniMapFileLoading_Region(CRegion* r, CCharString* n, bool b) { ++inits; region = r; name = n; flag = b; } };
+class CPlayerGui { public: CMiniMapDisplay display; CMiniMapDisplay* GetPMiniMapDisplay() { return &display; } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual bool IsOpenedFromHeroInformationScreens() = 0; };
+class CBase { public: virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual bool IsOpenedFromHeroInformationScreens() = 0; };
 }
 struct CTCInventoryBase_Map {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}

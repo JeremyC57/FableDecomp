@@ -8,7 +8,7 @@
 // Shape: reading the def through the counted def pointer's inline operator->.
 #include "engine/CGamePlayerInterface.h"
 
-struct CControlsDef {                                    // retail layout
+class CControlsDef { public:                                    // retail layout
     unsigned char _base[0x3c];                           // CDefClassBase
     void*         Controls[3];                           // +0x3c vector<CActionInputControl>
     bool          ToggleZTarget;                         // +0x48

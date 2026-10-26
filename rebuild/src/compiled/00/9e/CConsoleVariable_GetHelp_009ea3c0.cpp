@@ -11,9 +11,9 @@
 // Layout: the variable reference (CGenericVarRef: type +0, data +4) at +8.
 // Shape: the help string is copy-initialised from `GetTypeAsString() + " of type "` (built in place); the value text is a
 //   if/else chain on the type (a switch becomes a jump table); the value text is a default-constructed local filled by PrintToString; `help += "..." + value`; the return copies (no NRVO).
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                               // 0x0099E4B0
     CCharString(const CCharString& other);                       // 0x0099EC30

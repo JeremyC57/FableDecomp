@@ -9,7 +9,7 @@
 // Shape: the 12-byte parser item (type, value, text) is constructed first and filled by ReadNextItem; the printed value
 //   and the type message reuse the dead parameter slots; the type names are an if / else-if chain (4, 3, 1, 5).
 // Layout: CConsoleVariable vtable +0, Name +4, Target +8 (type enum first); CStringParser 0x28 bytes (landed 0x00CB8690).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                    // 0x0099E4B0
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
@@ -19,7 +19,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                    // 0x0099A2E0
 };
@@ -27,7 +27,7 @@ struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                      // 0x004046B0
 };
-struct CStringParser : CBaseClass {                   // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                   // retail 0x28 bytes
     struct CItem {                                    // item read by ReadNextItem: type, value, text
         long        Type;
         long        Value;
@@ -45,7 +45,7 @@ struct CStringParser : CBaseClass {                   // retail 0x28 bytes
     void ReadNextItem(CItem& item);                   // 0x009BA080
     bool NextItemExists();                            // 0x009BA4F0
 };
-struct CConsole {
+class CConsole { public:
     void SendMessageToUser(const CCharString& message);   // 0x009EB260
 };
 struct CConsoleTarget {

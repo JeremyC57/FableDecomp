@@ -5,7 +5,7 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     char Text[64];
     CWideString() { Text[0] = 0; ++g_live; }
     CWideString(const CWideString& o) { std::strcpy(Text, o.Text); ++g_live; }
@@ -16,13 +16,13 @@ struct CWideString {
 };
 static CWideString IntToWideString(long v) { CWideString s; std::sprintf(s.Text, "%ld", v); return s; }
 static CWideString operator+(const char* l, const CWideString& r) { CWideString s; std::strcpy(s.Text, l); std::strcat(s.Text, r.Text); return s; }
-struct CTCCoopSpirit { long Score; long GetScore() const { return Score; } };
-struct CThing { bool hasSpirit; CTCCoopSpirit* spirit;
+class CTCCoopSpirit { public: long Score; long GetScore() const { return Score; } };
+class CThing { public: bool hasSpirit; CTCCoopSpirit* spirit;
     bool HasTC(long t) const { return t == 0xc7 && hasSpirit; } CTCCoopSpirit* GetTC(long) const { return spirit; } };
-struct CPlayer { CThing* hero; bool main; long number;
+class CPlayer { public: CThing* hero; bool main; long number;
     CThing* GetHeroThing() { return hero; } bool IsMainPlayer() const { return main; } long GetJoystickDeviceNumber() const { return number; } };
 static CPlayer g_players[2];
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer_00449910(long n) { return &g_players[n]; }
     bool DrawGetEnvironmentInfo(long playerNumber, CWideString& text);
 };

@@ -14,11 +14,11 @@ template<class T> struct CRetailVector {
     T* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
 };
-struct CThingCreatureBase;
-struct CCombatActionBase;
+class CThingCreatureBase;
+class CCombatActionBase;
 struct SCountBlock;
 
-struct CCombatAction {                     // CCountedPointer<CCombatActionBase>, 8 bytes
+class CCombatAction { public:                     // CCountedPointer<CCombatActionBase>, 8 bytes
     CCombatActionBase* CreatureAction;     // +0 the pointee
     SCountBlock*       m_pCount;           // +4 the shared count block
 };
@@ -55,7 +55,7 @@ struct CCombatSequenceBase_Retail {        // vtable 0x01278FEC
     bool IsZoneValid();
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     long GetDefenderZone(CThingCreatureBase* defender, CThingCreatureBase* attacker, long framesAhead);   // 0x006E99B0
 };
 

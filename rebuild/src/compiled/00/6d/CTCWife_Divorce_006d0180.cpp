@@ -60,21 +60,21 @@ public:
         return false;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned char _pad00[0x0c];
     long LastOpinionReactionFrame;              // +0x0c
     unsigned char _pad10[0x342 - 0x10];
@@ -86,7 +86,7 @@ struct CTCCreatureOpinionOfHero {
     void ClearAllKnownDeeds();                  // 0x00681A70
     void ApplyOpinionTransientOffset(long type, float amount, long a, long frames, float decay, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x28];
     long Morality;                              // +0x28
     void SetMarriageState(CThing* spouse, long state);   // 0x0057BC6E
@@ -100,16 +100,16 @@ struct CHomeOccupant {
 struct CTCHome {
     CHomeOccupant* GetOccupant();               // 0x007EE540
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long a);                       // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 extern long g_FrameRate;                        // 0x01375550
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0xac];
     float HeroStatMoralityInOpinionFormChangePerDivorce;   // +0xac
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];

@@ -5,8 +5,8 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00b91ca0_TEST FAIL\n"); return 1; } } while (0)
 
-struct CEngineSceneGridCell { unsigned char BoundingBoxValid : 1; unsigned char TotalCountValid : 1; };
-struct CEngineSceneGrid {
+class CEngineSceneGridCell { public: unsigned char BoundingBoxValid : 1; unsigned char TotalCountValid : 1; };
+class CEngineSceneGrid { public:
     CEngineSceneGrid* LevelDown; unsigned int Size; CEngineSceneGridCell** Cells;
     void Invalidate(unsigned int x, unsigned int y, bool recurse)
     {

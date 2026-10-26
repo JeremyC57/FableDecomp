@@ -20,25 +20,25 @@ struct IDirect3DDevice9Vtbl {
 };
 struct IDirect3DDevice9 { IDirect3DDevice9Vtbl* lpVtbl; };
 
-struct CShaderConstantRange {                   // 12 bytes (PDB)
+class CShaderConstantRange { public:                   // 12 bytes (PDB)
     void*         __vftable;                    // +0
     long          Offset;                       // +4: first constant register
     unsigned long Count;                        // +8: vector count
 };
-struct CVertexShaderConstantLayout {            // PDB layout up to the bone range
+class CVertexShaderConstantLayout { public:            // PDB layout up to the bone range
     unsigned char        _pad000[0xd4];
     CShaderConstantRange BoneMatrices;          // +0xd4
 };
 
 struct CPreTransposedBoneMatrix { float Row[3][4]; };   // 48 bytes: three float4 constant registers
 
-template<class T> struct CArray {               // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:               // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetData() const { return Size() != 0 ? m_begin : (const T*)this; }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                            __vftable;                 // +0x000
     CVertexShaderConstantLayout*     CurrentVSConstantLayout;   // +0x004
     unsigned char                    _pad008[0x1cc];

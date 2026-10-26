@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CThingFilter_HasInstantiationName::operator() @ 0x006a7c00
 
-struct CThing;
+class CThing;
 
 // The object at thing->+0x70 exposes a virtual method at vtable slot 0x28 (index 10):
 //   virtual ??? Method(CThing** ppThing, void* nameKey);  // __fastcall
@@ -18,12 +18,12 @@ struct NameObj {
     virtual void* Method(CThing** ppThing, void* nameKey); // slot 0x28
 };
 
-struct CThing {
+class CThing { public:
     char pad[0x70];
     NameObj* nameObj;   // +0x70
 };
 
-struct CThingFilter_HasInstantiationName {
+class CThingFilter_HasInstantiationName { public:
     void* nameKey;   // +0x00
 };
 

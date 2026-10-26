@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of 0x009C3130: the installer entry record (two names copied, size, done cleared, two flags).
 static int g_copies = 0;
-struct CWideString { const unsigned short* m_pData; CWideString(const unsigned short* p) : m_pData(p) {} CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_copies; } };
+class CWideString { public: const unsigned short* m_pData; CWideString(const unsigned short* p) : m_pData(p) {} CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_copies; } };
 struct CFileInstallerEntry {
     CWideString m_source; CWideString m_destination; long m_size; bool m_done; bool m_flagA; bool m_flagB;
     CFileInstallerEntry(const CWideString& s, const CWideString& d, long size, bool a, bool b)

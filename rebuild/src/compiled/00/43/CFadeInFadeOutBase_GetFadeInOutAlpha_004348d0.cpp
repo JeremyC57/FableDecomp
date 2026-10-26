@@ -4,7 +4,7 @@
 // `fcomp ; fnstsw ; test ah,5 ; jnp` (below the epsilon: the 1.0 return), the quotient left in st0 by `fdiv`; the two constants are loaded with `fld`.
 extern const float g_fadeEpsilon_0129ba3c;         // 0x0129BA3C (1e-4f)
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool  m_active;                                // +0x00
     unsigned char _pad01[3];
     float m_fadeOutDuration;                       // +0x04

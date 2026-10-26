@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(push, 1)
 struct SQuest { unsigned char _pad[0x74]; bool m_74, m_75; C3DVector m_pos; };
 #pragma pack(pop)
-struct CScriptThing { virtual void v0() { } virtual void v1() { } virtual void v2() { } virtual void v3() { } virtual void v4() { } virtual void v5() { } virtual C3DVector* GetPosition() { return &m_pos; } C3DVector m_pos; };
+class CScriptThing { public: virtual void v0() { } virtual void v1() { } virtual void v2() { } virtual void v3() { } virtual void v4() { } virtual void v5() { } virtual C3DVector* GetPosition() { return &m_pos; } C3DVector m_pos; };
 struct CNOVI_Barrel { long m_0, m_4; CScriptThing Thing; SQuest* PQuest; void OnPredicateFail() { PQuest->m_74 = true; PQuest->m_75 = true; PQuest->m_pos = *Thing.GetPosition(); } };
 
 int main() {

@@ -9,7 +9,7 @@
 //   `card.FeatIndex == FeatIndex` compares the node word against the slot (`cmp [esi+14h],eax`).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
-struct CCharStringData {                                // the shared string block
+class CCharStringData { public:                                // the shared string block
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
 };

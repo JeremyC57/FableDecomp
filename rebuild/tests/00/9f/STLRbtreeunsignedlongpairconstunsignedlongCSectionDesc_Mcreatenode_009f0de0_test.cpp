@@ -6,8 +6,8 @@
 #include <new>
 
 static int gCopies = 0;
-struct CCharString
-{
+class CCharString
+{ public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
     CCharString(const CCharString& o) : Text(o.Text) { ++gCopies; }

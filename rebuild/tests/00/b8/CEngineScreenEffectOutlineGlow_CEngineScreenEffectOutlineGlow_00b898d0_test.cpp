@@ -3,13 +3,13 @@
 static int g_dataDeleted = 0, g_ibUninit = 0, g_vbUninit = 0, g_rootDtor = 0, g_freed = 0, g_pageFreed = -1, g_restore = 0, g_surfUninit = 0, g_baseClassDtor = 0, g_rangeDestroyed = 0;
 struct CPixelShaderData { virtual ~CPixelShaderData() { ++g_dataDeleted; } long m_refCount; CPixelShaderData(long r) : m_refCount(r) {} };
 struct CVertexShaderData { virtual ~CVertexShaderData() { ++g_dataDeleted; } long m_refCount; CVertexShaderData(long r) : m_refCount(r) {} };
-struct CShaderBase { virtual ~CShaderBase() {} };
-struct CPixelShader : CShaderBase {
+class CShaderBase { public: virtual ~CShaderBase() {} };
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* Data;
     CPixelShader() : Data(0) {}
     virtual ~CPixelShader() { CPixelShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } }
 };
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader() : Data(0) {}
     void Release() { CVertexShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } Data = 0; }
@@ -18,11 +18,11 @@ struct CVertexShader : CShaderBase {
 static void my_free(void* p) { ++g_freed; std::free(p); }
 
 struct CRenderStateCaptureBlock { bool Open; CRenderStateCaptureBlock() : Open(false) {} ~CRenderStateCaptureBlock() { if (Open) { Open = false; ++g_restore; } } };
-struct CBaseClass { ~CBaseClass() { ++g_baseClassDtor; } };
-struct CSurface { void Uninitialise() { ++g_surfUninit; } ~CSurface() { Uninitialise(); } };
-struct CRenderTarget : CBaseClass { CSurface RenderToSurface; CSurface ZBufferSurface; };
-struct CEngineComponent { ~CEngineComponent() { ++g_rootDtor; } };
-struct CEngineScreenEffectOutlineGlow : CEngineComponent {
+class CBaseClass { public: ~CBaseClass() { ++g_baseClassDtor; } };
+class CSurface { public: void Uninitialise() { ++g_surfUninit; } ~CSurface() { Uninitialise(); } };
+class CRenderTarget : public CBaseClass { public: CSurface RenderToSurface; CSurface ZBufferSurface; };
+class CEngineComponent { public: ~CEngineComponent() { ++g_rootDtor; } };
+class CEngineScreenEffectOutlineGlow : public CEngineComponent { public:
     long DynamicTexturePageHandle;
     CRenderTarget OldRenderTarget;
     CVertexShader OutlineToBlurVertexShader; CPixelShader OutlineToBlurPixelShader;

@@ -4,7 +4,7 @@
 #define __fastcall
 #endif
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count) { if (Count) ++Count->references; }
@@ -23,11 +23,11 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CChunkedFileChunk;
+class CChunkedFileChunk;
 enum EMaterialMapType { MAP_DIFFUSE = 0, MAP_BUMP = 1, MAP_REFLECTION = 2, MAP_ILLUMINATION = 3 };
-struct C3DMeshFileMapChunk { unsigned char _pad[0x2c]; EMaterialMapType MapType; };
+class C3DMeshFileMapChunk { public: unsigned char _pad[0x2c]; EMaterialMapType MapType; };
 
-struct C3DMeshFileMaterialChunk {
+class C3DMeshFileMaterialChunk { public:
     C3DMeshFileMapChunk* Maps; SCountBlock* Blocks; int Count;
     CCountedPointer<CChunkedFileChunk> Make(int i)
     {

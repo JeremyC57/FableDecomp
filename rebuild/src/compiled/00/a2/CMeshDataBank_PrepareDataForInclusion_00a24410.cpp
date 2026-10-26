@@ -16,10 +16,10 @@ struct RefBlock {
 
 void operator delete(void*);   // retail 0x00bfe9bc
 
-struct CWorldMap;
+class CWorldMap;
 struct CArrayStr;
 struct CCountedPtr { RefBlock* blk; };
-struct CDataOutputStream;
+class CDataOutputStream;
 
 // Real member -> genuine __fastcall (this in ecx, homed only if used).
 struct CMeshDataBank_Methods : CMeshDataBank {

@@ -26,7 +26,7 @@ public:
     long GetSize() { return (long)bytes.size(); }
     void* PeekData() { return bytes.empty() ? (void*)this : (void*)&bytes[0]; }
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     std::vector<unsigned char> source;
     unsigned long StreamPos;
     long StreamSize;
@@ -45,7 +45,7 @@ struct CDataInputStream {
         StreamPos += size;
     }
 };
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     CMemoryDataInputStream(const CMemoryDataOutputStream& s)
     {
         source = s.bytes;

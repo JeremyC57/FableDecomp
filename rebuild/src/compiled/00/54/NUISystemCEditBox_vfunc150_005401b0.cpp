@@ -2,11 +2,11 @@
 // No generated namespace CEditBox/CIME headers. Active178/UsesIME17a vs PDB1b8/1ba
 // reflect base/container shrink40. Slot148 is CText::GetTextWindow, returning C2DBoxF&.
 struct Vec {float X,Y;Vec(){}Vec(float x,float y):X(x),Y(y){}Vec(const Vec&v):X(v.X),Y(v.Y){}};
-struct C2DBoxF {float Left,Top,Right,Bottom;};
+class C2DBoxF { public:float Left,Top,Right,Bottom;};
 extern bool EditActive_013b8ab0;
 namespace NUISystem {
-struct CEditBox;
-struct CIME {unsigned char BeforeEdit[0x4c];CEditBox* EditBox;static CIME& __fastcall Get();void Enable(bool);void SetEditBoxRegion(long,long,long,long);}; //00404a80,00404f40,00404bb0
+class CEditBox;
+class CIME { public:unsigned char BeforeEdit[0x4c];CEditBox* EditBox;static CIME& __fastcall Get();void Enable(bool);void SetEditBoxRegion(long,long,long,long);}; //00404a80,00404f40,00404bb0
 struct Component {
 virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -158,7 +158,7 @@ virtual void Slot146()=0;
 virtual void UpdateDisplayText()=0;
 virtual C2DBoxF& GetTextWindow()=0;
 };
-struct CEditBox:Component {unsigned char ToActive[0x178-4];bool Active,IsPasswordBox,UsesIME;void SetActive(bool);};
+class CEditBox:public Component { public:unsigned char ToActive[0x178-4];bool Active,IsPasswordBox,UsesIME;void SetActive(bool);};
 void CEditBox::SetActive(bool active){
  Active=active;EditActive_013b8ab0=active;
  if(active&&UsesIME){

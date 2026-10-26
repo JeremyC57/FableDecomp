@@ -28,7 +28,7 @@ struct CCountedVirtual {
     virtual void Destroy();                                 // slot 1
 };
 
-struct CAnimComponentMap : CCountedVirtual, CRefCounted {
+class CAnimComponentMap : public CCountedVirtual, public CRefCounted { public:
     void Release()                                          // on the object: `this` stays in ecx for the virtual call
     {
         if (DecRefToZero(m_count))
@@ -36,7 +36,7 @@ struct CAnimComponentMap : CCountedVirtual, CRefCounted {
     }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -52,7 +52,7 @@ struct CIVCountedPointer_AnimComponentMap {
     }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long                               BankIndex;           // +0x00
     CDefString                         AnimName;            // +0x04
     CDefString                         GroupName;           // +0x08

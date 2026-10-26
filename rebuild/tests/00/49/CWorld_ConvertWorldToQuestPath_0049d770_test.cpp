@@ -5,7 +5,7 @@
 // name = file name of the world path (SplitPath), then Data\Levels\ + name + extension.
 static int g_live = 0;
 
-struct CWideString {
+class CWideString { public:
     char s[260];
     CWideString() { s[0] = 0; ++g_live; }
     CWideString(const char* p) { std::strcpy(s, p); ++g_live; }
@@ -35,7 +35,7 @@ static CWideString GetLevelsDirectory() { return CWideString("Data\\Levels\\"); 
 
 static bool g_bRuntimeLevelFiles = false;
 
-struct CWorld {
+class CWorld { public:
     int m_dummy;
     CWideString ConvertWorldToStaticMapPath(const CWideString& world, bool xbox, bool runtime) const
     {

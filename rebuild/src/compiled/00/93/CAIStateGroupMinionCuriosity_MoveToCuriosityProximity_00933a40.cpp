@@ -9,14 +9,14 @@
 // the `mov edi,edi` pad), then `return result == 2;` as a full-register bool (`xor edx,edx ; sete dl ; mov
 // al,dl`). The by-value C3DVector is built in its argument slot (`sub esp,0Ch ; mov eax,esp`) because it has
 // a user copy constructor. Base layout local; no engine header for this class.
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,

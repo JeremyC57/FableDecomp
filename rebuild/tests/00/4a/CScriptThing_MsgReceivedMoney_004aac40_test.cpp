@@ -37,7 +37,7 @@ struct CScriptThingInner {
   virtual bool m33(int a0){ return true; }
   virtual bool m34(int a0){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgReceivedMoney(int a0); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgReceivedMoney(int a0); };
 bool CScriptThing::MsgReceivedMoney(int a0){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m34(a0); }
 int main(){
     CScriptThing t; t.m_impl=0;

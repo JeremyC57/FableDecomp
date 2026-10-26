@@ -3,12 +3,12 @@
 #include <cstring>
 static int g_destroyed = 0, g_themes = 0, g_main = 0, g_lookups = 0;
 static char g_order[8]; static int g_n = 0;
-struct CCharString { const char* m_text; CCharString(const char* t, long) : m_text(t) {} ~CCharString() {} };
-struct CDefPointeeBase { long RefCount; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() {} };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
-struct CSoundDef : CDefPointeeBase { float AtmosListenerDampingMin, AtmosListenerDampingRange; };
+class CCharString { public: const char* m_text; CCharString(const char* t, long) : m_text(t) {} ~CCharString() {} };
+class CDefPointeeBase { public: long RefCount; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() {} };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
+class CSoundDef : public CDefPointeeBase { public: float AtmosListenerDampingMin, AtmosListenerDampingRange; };
 static CSoundDef g_def;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& Get() { static CDefinitionManager m; return m; }
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out)
     { ++g_lookups; if (std::strcmp(name.m_text, "MAIN_SOUND_SETUP") != 0) return false; ++g_def.RefCount; out.Object = &g_def; return true; }

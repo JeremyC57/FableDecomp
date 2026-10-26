@@ -9,7 +9,7 @@ struct Node {
     Node* b;      /* +0xc */
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     Node* head;   /* +0x0 */
     Node* count;  /* +0x4 */
 };

@@ -10,7 +10,7 @@
 // the next block's offset minus ours replaces the size with a `break` to the single `return size` (the size stays in ebp).
 // Layout: the landed retail CBankFile model (0x009CC240) plus BlockOrder +0xe0.
 struct CDiskFileCalls;
-struct CBankFileEntryUpdateData;
+class CBankFileEntryUpdateData;
 
 struct CRuntimeData {                   // CBankFile::CRuntimeData, 12 bytes, RuntimeData[0] is unused
     unsigned long DataOffset;           // +0x00
@@ -29,7 +29,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> struct CArray {      // retail CArray: 12 bytes
+template <class T> class CArray { public:      // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

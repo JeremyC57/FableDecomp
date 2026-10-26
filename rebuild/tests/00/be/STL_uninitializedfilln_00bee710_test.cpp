@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CCompositeBlendDesc { unsigned int w[4]; };
+class CCompositeBlendDesc { public: unsigned int w[4]; };
 struct Vec { CCompositeBlendDesc* s; CCompositeBlendDesc* f; CCompositeBlendDesc* e;
   Vec(const Vec& o) { unsigned int n = (unsigned int)(o.f - o.s); s = n ? (CCompositeBlendDesc*)std::malloc(n * sizeof(CCompositeBlendDesc)) : 0; f = s; e = s + n; for (CCompositeBlendDesc* p = o.s; p != o.f; ++p, ++f) new (f) CCompositeBlendDesc(*p); }
   Vec() : s(0), f(0), e(0) {} };

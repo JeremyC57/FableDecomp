@@ -10,8 +10,8 @@ public:
         return (_M_w[pos / 32] & (1u << (pos % 32))) != 0;
     }
 };
-struct CThing { bitset<274> UsingComponents; };
-struct CThingFilter_HasTC {
+class CThing { public: bitset<274> UsingComponents; };
+class CThingFilter_HasTC { public:
     int Type;
     bool operator()(const CThing& thing) const { return thing.UsingComponents.test(Type); }
 };

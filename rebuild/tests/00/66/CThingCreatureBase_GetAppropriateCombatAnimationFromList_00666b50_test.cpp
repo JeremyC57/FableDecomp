@@ -83,7 +83,7 @@ struct CAnimationDefVector {
     long size() const { return last - first; }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -93,11 +93,11 @@ struct CInterfaceMap {
 struct CTCCombatAnimations {
     long SelectAnimation(const CAnimationDefVector& anims);   // 0x007345D0
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20
     CInterfaceMap Components;                   // +0x44

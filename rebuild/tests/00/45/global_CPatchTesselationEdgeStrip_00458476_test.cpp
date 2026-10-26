@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CPatchTesselationEdgeStrip { char _pad[0x6c + 4]; };
+class CPatchTesselationEdgeStrip { public: char _pad[0x6c + 4]; };
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* thisptr);
 
 static int g_deletes = 0;

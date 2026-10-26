@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CAFile;
+class CAFile;
 
 #pragma pack(push, 1)
 struct CBufferedFileDataOutputStream {

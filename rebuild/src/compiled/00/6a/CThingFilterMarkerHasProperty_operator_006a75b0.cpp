@@ -1,7 +1,7 @@
 // CThingFilter_MarkerHasProperty::operator() @ 006a75b0
 // return (marker->virt48() & this->m_mask) != 0;
 
-struct CThingMarker {
+class CThingMarker { public:
     virtual int v00();  virtual int v01();  virtual int v02();  virtual int v03();
     virtual int v04();  virtual int v05();  virtual int v06();  virtual int v07();
     virtual int v08();  virtual int v09();  virtual int v10();  virtual int v11();
@@ -17,7 +17,7 @@ struct CThingMarker {
     virtual int GetProperties(); // slot 48 -> [vtbl+0xc0]
 };
 
-struct CThingFilter_MarkerHasProperty {
+class CThingFilter_MarkerHasProperty { public:
     int m_mask;   // +0x00
     bool operator()(CThingMarker* marker);
 };

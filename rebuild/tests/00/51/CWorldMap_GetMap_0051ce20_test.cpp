@@ -6,7 +6,7 @@ struct MapEntry {
     void* map;
     char pad1[0x48 - 0x10 - 4];
 };
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x20];
     MapEntry* m_maps;
 };

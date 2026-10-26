@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct Thread { char pad[0x18]; char terminating; };
-struct CScriptBase { char pad[0x8]; Thread* activeThread; };
+class CScriptBase { public: char pad[0x8]; Thread* activeThread; };
 
 char __fastcall IsActiveThreadTerminating(CScriptBase* self)
 {
@@ -11,8 +11,8 @@ char __fastcall IsActiveThreadTerminating(CScriptBase* self)
     return 1;
 }
 
-struct CCreatureAction_TrollWhackGroundBase
-{
+class CCreatureAction_TrollWhackGroundBase
+{ public:
     struct VTable
     {
         void* slot0;

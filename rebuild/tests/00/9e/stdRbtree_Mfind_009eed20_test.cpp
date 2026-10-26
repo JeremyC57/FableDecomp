@@ -23,7 +23,7 @@ public:
     }
     bool operator<(const CBasicString& other) const { return Compare(other) < 0; }
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicString<char> Data;
 };
 class CCharString {

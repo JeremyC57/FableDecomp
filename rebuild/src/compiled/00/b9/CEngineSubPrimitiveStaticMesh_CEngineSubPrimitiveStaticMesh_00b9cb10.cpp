@@ -20,7 +20,7 @@ struct __declspec(novtable) CEngineSubPrimitiveBase : CBase {   // vtable 0x012A
     bool          m_flag;                          // +0x20
 };
 
-struct CEngineSubPrimitiveStaticMesh : CEngineSubPrimitiveBase {   // vtable 0x012A41C8
+class CEngineSubPrimitiveStaticMesh : public CEngineSubPrimitiveBase { public:   // vtable 0x012A41C8
     virtual void v00();
     CEngineSubPrimitiveStaticMesh(void* primitive, void* mesh, void* material, bool flag);
 };

@@ -1,9 +1,9 @@
 // Behaviour test for 0x008E5370 CTCPhysicsStandard::GetPossibleCollidedWithArea (copy of the source model).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
 static int g_validated = 0;
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}

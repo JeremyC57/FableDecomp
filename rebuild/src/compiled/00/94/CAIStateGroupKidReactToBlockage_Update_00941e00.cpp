@@ -10,47 +10,47 @@
 // keeps the third result's setne and the dead `mov al` reload (both arms tail-merge into the one Terminate call).
 // Layout: the state group is local (the engine header flattens the base); PThingCreature +0x2c (CIntelligentPointer<CThingCreatureBase>);
 // CCreatureAction_PlayAnimation from the landed 0x008424F0 model (sizeof 0xb4).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     C3DVector* GetPosition();                   // 0x004C73D0
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0xb4 - 0xa8];
     CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
     ~CCreatureAction_PlayAnimation();           // 0x00693EF0 (the base dtor)
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
     CThingCreatureBase* GetPCreature() const { return PCreature; }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

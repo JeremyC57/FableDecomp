@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing;
-struct CThingFilter_HasScriptSupervision { bool m_wanted; };
+class CThing;
+class CThingFilter_HasScriptSupervision { public: bool m_wanted; };
 static int g_ret = 0;
 extern "C" bool __fastcall Thing_IsUnderScriptSupervision(CThing* thing){ return g_ret != 0; }
 bool __fastcall CThingFilter_HasScriptSupervision__op(CThingFilter_HasScriptSupervision* filter, void* edx, CThing* thing);

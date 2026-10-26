@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSkyDef { int x; };
+class CSkyDef { public: int x; };
 
 static int g_subDtor = 0;
 static int g_dtor = 0;

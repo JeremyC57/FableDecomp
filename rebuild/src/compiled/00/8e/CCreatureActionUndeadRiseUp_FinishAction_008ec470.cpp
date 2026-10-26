@@ -7,14 +7,14 @@
 // Shape: the FrameUpdate twin (0x008EC3F0) without the progress test; the component pointer comes from the landed
 // out-parameter GetInterface template. The rising flag at +0x118 follows the retail CCreatureAction_RiseUp base
 // (0x118 bytes); modelled locally (the generated headers flatten the bases).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     void SetSuspendAnimation(bool suspend, bool immediate);   // 0x00833A10 (CThingAnimatable)
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -51,12 +51,12 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void FinishAction();                    // 0x00859A20
 };
 
-struct CCreatureAction_RiseUp : CCombatActionBase {   // retail sizeof 0x118
+class CCreatureAction_RiseUp : public CCombatActionBase { public:   // retail sizeof 0x118
     unsigned char _pad114[4];               // +0x114
     void RemoveUndergroundMode();           // 0x008B7640
 };
 
-struct CCreatureAction_UndeadRiseUp : CCreatureAction_RiseUp {
+class CCreatureAction_UndeadRiseUp : public CCreatureAction_RiseUp { public:
     unsigned char m_rising;                 // +0x118
     void FinishAction();
 };

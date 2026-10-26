@@ -11,7 +11,7 @@ void SubMemberDtor(void* sub){ subdtor++; }
 void FreeMem(void* p){ freed++; }
 void BaseOnDie(void* self){ base++; }
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vtbl;
     char pad0[0x0C];
     void* PInventory;

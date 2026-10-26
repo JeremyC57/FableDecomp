@@ -10,22 +10,22 @@
 // Shape: the owner def is copied into a pointer local with a hand-written add-ref and release around GetSubDef(&PDef) (both
 // null-tested against the shared zero in ebx); the state resets are body stores in retail order; resize(5) takes a default
 // (uninitialised) C3DVector temporary.
-struct CDefClassBase;
-struct CThing {
+class CDefClassBase;
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
-struct CNymphDef;
-template<class T> struct CDefPointer {
+class CNymphDef;
+template<class T> class CDefPointer { public:
     T* Object;
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy();
     virtual void Release();                     // slot 1
     long RefCount;                              // +0x04
     bool GetSubDef(CDefPointer<const CNymphDef>* out) const;   // 0x0080FE60
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
@@ -35,19 +35,19 @@ struct CVector3D {                              // STLport vector<C3DVector> (12
     C3DVector* _M_end_of_storage;
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
-struct CCardinalSpline {                        // retail 0x14 bytes
+class CCardinalSpline { public:                        // retail 0x14 bytes
     CVector3D ControlPoints;                    // +0x00
     float     Tension;                          // +0x0c
     bool      EndPointsConnected;               // +0x10
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     void OnInitialActivate();                   // 0x00686870
 };
-struct CTCNymph : CTCBase {
+class CTCNymph : public CTCBase { public:
     CDefPointer<const CNymphDef> PDef;          // +0x0c
     unsigned char _pad10[0x2c - 0x10];          // PointToFlyAround, EffectHeightOffset, InitialPos
     CCardinalSpline FlightSpline;               // +0x2c

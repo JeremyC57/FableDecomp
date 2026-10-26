@@ -14,7 +14,7 @@
 // local (esi); the 12-byte update
 // record {amount, 0, 0} is built from the float result (`fstp`) and the time of day is copied as a
 // dword into LastTimeUpdated just before the update call.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -44,11 +44,11 @@ struct CAnimFrameUpdate {                                   // 12-byte update re
     CAnimFrameUpdate(float time) : Time(time), Reserved0(0.0f), Reserved1(0.0f) {}
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     void UpdateFrameLogic(const CAnimFrameUpdate& update);  // 0x0070E8B0
 };
 
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing* GetAnimation();                          // 0x0070B460
 };
 
@@ -57,12 +57,12 @@ struct CTimeOfDay {
     float         Time;                                     // +0x08 normalised time of day
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CTimeOfDay*   TimeOfDay;                                // +0x1c
 };
 
-struct CTCClock {
+class CTCClock { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[4];

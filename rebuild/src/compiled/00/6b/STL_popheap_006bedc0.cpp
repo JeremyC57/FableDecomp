@@ -45,7 +45,7 @@ template <class _T1, class _T2> struct pair {
 
 typedef std::pair<long, CMusicManager::CRegisteredMusicEntry> CMusicEntryPair;   // 24 bytes
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<long, CMusicManager::CRegisteredMusicEntry> TMusicEntryLess;

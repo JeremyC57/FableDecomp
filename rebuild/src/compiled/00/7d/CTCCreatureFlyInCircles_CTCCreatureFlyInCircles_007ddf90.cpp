@@ -13,16 +13,16 @@
 // Shape: Creature is the only initialiser read from the base (stored before the vtable store); the spline's inline ctor zeroes
 // the vector, clears the flag and sets the tension; the scalars are body assignments in retail store order, the tension is set
 // once more, then the control points are resized with a default C3DVector temporary (the uninitialised 12-byte frame).
-struct CThing;
-struct CThingCreatureBase;
-struct CTCBase {
+class CThing;
+class CThingCreatureBase;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
@@ -37,7 +37,7 @@ struct CVector3D {                              // STLport vector<C3DVector> (12
     CVector3D() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
-struct CCardinalSpline {                        // retail 0x14 bytes
+class CCardinalSpline { public:                        // retail 0x14 bytes
     CVector3D ControlPoints;                    // +0x00
     float     Tension;                          // +0x0c
     bool      EndPointsConnected;               // +0x10

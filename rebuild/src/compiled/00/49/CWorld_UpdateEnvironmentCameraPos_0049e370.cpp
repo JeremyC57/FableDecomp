@@ -5,19 +5,19 @@
 //   CEnvironment::GetGlobalEnvironmentThemeIndexFromLocal 0x006B2C60, CGameMapCell::GetAtmosBlend 0x006B74E0,
 //   CEnvironment theme-stack setter 0x006B3E60 (ret 0x14: two zero words, theme indices, weights, count).
 // Layout: as the landed sibling CWorld::GetEnvironmentFishWeightMult 0x0049F2D0 (PEnvironment +0x18, RegionTheme +0x10).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];                  // +0x00
     unsigned char AtmosBlends[2];                  // +0x03
     unsigned char GetAtmosBlend(long index) const; // 0x006B74E0
 };
-struct CWorldMap {
+class CWorldMap { public:
     const CGameMapCell* GetPGameMapCellAt(const C3DVector& pos) const;   // 0x0063D8A0
 };
-struct CEnvironment {
+class CEnvironment { public:
     void* __vftable;
     void* DefinitionManager;                       // +0x04
     unsigned char _pad08[8];
@@ -25,7 +25,7 @@ struct CEnvironment {
     long GetGlobalEnvironmentThemeIndexFromLocal(long localIndex);   // 0x006B2C60
     void SetCameraThemes(long a, long b, const long* themes, const float* weights, long count);   // 0x006B3E60
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();

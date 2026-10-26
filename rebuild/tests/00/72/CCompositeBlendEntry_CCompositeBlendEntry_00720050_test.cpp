@@ -1,8 +1,8 @@
 // Behaviour test for 0x00720050 CCompositeBlendEntry::CCompositeBlendEntry(key, desc): stores the key and copy-constructs the blend description
 #include <cstdio>
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 static int g_copies = 0;
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;
     long          BlendType;
     CRGBColour    DiffuseColour;

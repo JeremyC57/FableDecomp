@@ -16,7 +16,7 @@ static int fails = 0;
 // The manager reference is a named local (Get() runs before the GetDef pushes); the hand release calls the def's own
 // inline Release() member (`if (--m_count == 0) Destroy();`), which gives retail's `mov ecx,eax ; add eax,4 ; dec edx`
 // form (the object copied to ecx for the virtual call, the count addressed through eax).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -44,15 +44,15 @@ struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer GetDef(const CCharString& name, bool flag); // 0x009ADE10
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     static CDefBase* PeekGlobalDef();
 };
 

@@ -15,15 +15,15 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CDeedEffectsDef* operator->() const { return Object; }
 };
-struct CWorld { unsigned long frame; unsigned long GetWorldFrame() const { return frame; } };
+class CWorld { public: unsigned long frame; unsigned long GetWorldFrame() const { return frame; } };
 struct CTCDeedReaction { unsigned long ReactionFrame; bool Reacted, SpeechReacted; CWorld* world; CWorld* GetWorld() { return world; } };
 struct CTCDeedEffects { CDeedEffectsDef* def; long asked; CDefPointer GetDeedEffectsDef(long t) const { ((CTCDeedEffects*)this)->asked = t; return CDefPointer(def); } };
 struct CTCTutorial { bool active; int done; bool IsActive() const { return active; } void OnDeedReactionDone() { ++done; } };
 struct CTCTutorialGiver { long category; int gives; void GiveTutorialForCategory(long c, bool) { category = c; ++gives; } };
-struct CTCTalk { int stops; void StopCurrentSpeech() { ++stops; } };
+class CTCTalk { public: int stops; void StopCurrentSpeech() { ++stops; } };
 struct CSpeechManager { long released; int calls; void ReleaseDeedSpeech(long t, long) { released = t; ++calls; } };
 struct CWorldObject { CSpeechManager* PSpeech; };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     CTCDeedReaction* reaction; CTCDeedEffects* effects; CTCTutorial* tutorial; CTCTutorialGiver* giver; CTCTalk* talk;
     CThing() : m_flags91(0), reaction(0), effects(0), tutorial(0), giver(0), talk(0) { }

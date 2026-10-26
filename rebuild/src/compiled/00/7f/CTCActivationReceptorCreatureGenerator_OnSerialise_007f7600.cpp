@@ -7,11 +7,11 @@
 // Ego_r.pdb `?OnSerialise@CTCActivationReceptorCreatureGenerator@@MAEXAAVCPersistContext@@_N@Z` (the chunk's "vfunc_1").
 // Shape: the `false` default is a literal bound to `const bool&`: VC7.1 materialises it right before each call in the
 // dead `loading` argument slot (`lea ecx,[esp+10h] ... mov byte ptr [esp+1Ch],0`).
-struct CPersistContext {
+class CPersistContext { public:
     template<class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0
 };
 
-struct CTCActivationReceptorBase {             // retail 0x2c bytes (see 0x007F7710)
+class CTCActivationReceptorBase { public:             // retail 0x2c bytes (see 0x007F7710)
     virtual void v00();
     unsigned char _body[0x28];
     void OnSerialise(CPersistContext& context, bool loading);   // 0x007F77C0

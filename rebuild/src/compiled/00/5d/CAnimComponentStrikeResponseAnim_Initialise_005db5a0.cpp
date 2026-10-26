@@ -7,14 +7,14 @@
 // temporary and assigned to the +0x08 member, the temporary destroyed, `mov al,1`. The temporaries are homed in
 // the frame slot and the dead argument slots (VC7.1 reuses them). `ret 8`.
 // Layout: engine/CAnimComponentStrikeResponseAnim.h (PDB): the member at +0x08 behind vptr + ref count.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharStringData {
+class CCharStringData { public:
     long m_refCount;                            // +0x00
     long Length;                                // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CCharString {
     long GetLength() const { return PStringData ? PStringData->Length : 0; }
 };
 
-struct CAnimComponentStrikeResponseAnim {
+class CAnimComponentStrikeResponseAnim { public:
     virtual void v0(); virtual void v1(); virtual void v2();
     virtual bool Initialise(CPersistContext& context, const CCharString& name);   // slot 3
     virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();

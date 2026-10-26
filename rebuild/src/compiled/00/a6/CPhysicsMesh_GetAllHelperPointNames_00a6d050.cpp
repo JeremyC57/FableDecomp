@@ -14,7 +14,7 @@
 // discarded functor result is homed in the dead `names` argument slot (`lea ecx,[esp+14h]`), which
 // needs the functor to have a user constructor (hidden-pointer return) and no user copy constructor
 // (it is pushed as a plain dword). Arguments right to left: `last` loaded before `first`.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 struct SHelperPoint {                              // pair<CCharString, C3DHelperPoint>, 20 bytes
     CCharString   m_name;                          // +0x00
     unsigned char m_point[0x10];                   // C3DHelperPoint
@@ -31,7 +31,7 @@ struct CAddName {
 };
 CAddName __fastcall ForEach_AddHelperPointName(const SHelperPoint* first, const SHelperPoint* last, CAddName f);   // 0x00A72EE0
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char       _pad00[0x10];
     SHelperPoint*       m_pHelperPointsFirst;      // +0x10 (HelperPoints)
     SHelperPoint*       m_pHelperPointsLast;       // +0x14

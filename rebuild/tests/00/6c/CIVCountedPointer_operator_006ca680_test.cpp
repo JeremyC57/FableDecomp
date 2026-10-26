@@ -1,7 +1,7 @@
 // Behaviour test for 006ca680 CIVCountedPointer::operator=: on a different pointee, drop a reference from the old one
 // (deleting it at zero), take the new one and add a reference; self/same assignment is a no-op.
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     int deleted;
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : deleted(0), IVRefCount(0) {}

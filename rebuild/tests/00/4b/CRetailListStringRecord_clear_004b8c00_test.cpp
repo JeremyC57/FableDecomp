@@ -4,8 +4,8 @@
 // behaviour test for 0x004B8C00: exercises the same logic through a copy of the model (compiled separately from the source)
 static int g_freed = 0, g_destroyed = 0;
 static void FreeNode(void* p) { ++g_freed; std::free(p); }
-struct CCharString { void* m_pData; ~CCharString() { ++g_destroyed; } };
-struct CWideString { void* m_pData; ~CWideString() { g_destroyed += 10; } };
+class CCharString { public: void* m_pData; ~CCharString() { ++g_destroyed; } };
+class CWideString { public: void* m_pData; ~CWideString() { g_destroyed += 10; } };
 struct SStringRecord_004b8c00 { long m_a, m_b, m_c; CCharString m_name; CWideString m_text; CWideString m_tooltip; };
 struct L {
     struct node { node* next; node* prev; SStringRecord_004b8c00 value; };

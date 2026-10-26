@@ -13,8 +13,8 @@
 //   AllowWhileFollowingPlayer +0x9c, Matches +0xa8, FrequencyTraitsArray +0xac.
 // Shape: the inline CPersistContext::Transfer template of the landed CCreatureGeneratorDef::Transfer 0x0074C5F0 -- CRC check,
 //   then `switch (m_mode)` with mode 2 loading from +0x24 and mode 3 saving to +0x28, each map type with its own pair.
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 #define FABLE_RETAIL_MAP(Name, OutVa, InVa) \
     struct Name { void* m_header[3]; }; \
@@ -29,9 +29,9 @@ FABLE_RETAIL_MAP(CReactionBoolMap, 0x0045DF1E, 0x0045DF5E);        // map<EOpini
 
 struct CBlurredAttitudesDefVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 struct CReactionMatchList { void* _M_node; };                       // STLport list<CReactionMatch*>
-struct CReactionFrequencyTraitsArray { unsigned char _body[0x278]; };
+class CReactionFrequencyTraitsArray { public: unsigned char _body[0x278]; };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];
@@ -55,7 +55,7 @@ struct CPersistContext {
     }
 };
 
-struct COpinionReactionManagerDef {
+class COpinionReactionManagerDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char                 _defBase[0x3c - 4];             // CParentDefClassBase (retail 0x39 bytes + padding)
     CBlurredAttitudesDefVector    AttitudeBlur;                   // +0x3c

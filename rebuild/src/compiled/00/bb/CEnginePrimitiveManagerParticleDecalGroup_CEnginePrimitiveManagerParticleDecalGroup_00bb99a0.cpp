@@ -27,10 +27,10 @@ struct CVertexShaderData {
     long  m_refCount;                              // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     __forceinline virtual ~CPixelShader()
     {
@@ -41,7 +41,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054
         }
     }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* Data;                       // +0x04
     __forceinline virtual ~CVertexShader()
     {
@@ -53,18 +53,18 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
     }
 };
 
-struct CVertexBufferWin32 : CBaseClassNonCopyable {   // vtable 0x0129BA20, 0x34 bytes
+class CVertexBufferWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0129BA20, 0x34 bytes
     unsigned char _body[0x30];
     void Uninitialise();                           // 0x00A63200
     __forceinline virtual ~CVertexBufferWin32() { Uninitialise(); }
 };
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }                        // inline: the vtable store
 };
 struct IDirect3DIndexBuffer9;
-struct CIndexBuffer : CMovableResource {           // vtable 0x0129EF2C, 0x14 bytes
+class CIndexBuffer : public CMovableResource { public:           // vtable 0x0129EF2C, 0x14 bytes
     IDirect3DIndexBuffer9* PD3DIndexBuffer;        // +0x04
     unsigned long          ByteLength;             // +0x08
     long                   PrimitiveType;          // +0x0c
@@ -73,7 +73,7 @@ struct CIndexBuffer : CMovableResource {           // vtable 0x0129EF2C, 0x14 by
     __forceinline virtual ~CIndexBuffer() { Uninitialise(); }
 };
 
-struct CEnginePrimitiveManagerParticleDecalGroup : CBaseClassNonCopyable {
+class CEnginePrimitiveManagerParticleDecalGroup : public CBaseClassNonCopyable { public:
     unsigned char      _pad_0x04[0x8];                          // +0x04 primitive manager base words
     unsigned long      PointLightShaderIndex[6];                // +0x0c
     CVertexShader      LandscapeDecalVertexShader[3];           // +0x24

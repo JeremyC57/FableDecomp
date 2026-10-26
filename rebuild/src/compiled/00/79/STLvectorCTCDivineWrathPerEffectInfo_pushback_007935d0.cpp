@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     virtual void v00();
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer()
     {
@@ -31,7 +31,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

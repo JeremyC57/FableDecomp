@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { char* p; };
+class CCharString { public: char* p; };
 struct CArrayUL   { void* a; void* b; void* c; };
 struct Pair { CCharString first; CArrayUL second; };
 

@@ -1,4 +1,4 @@
-struct CCreatureAction_FodderPrimaryAttack {
+class CCreatureAction_FodderPrimaryAttack { public:
     void* vftable;
 };
 

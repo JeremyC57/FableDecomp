@@ -5,8 +5,8 @@
 //         OffsetOnlyAtStartup +0x2c, ResetEachFrame +0x2d, SplinePosOffsetLimits +0x30, SplinePosOffsetSpeed +0x3c.
 // Shape: the count is the limits array's size (pointer difference / 12, signed); the loop index walks both arrays through
 //        `*(begin() + i)` so each begin pointer is re-read per call.
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {                 // STLport vector<T>: start / finish / end of storage
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:                 // STLport vector<T>: start / finish / end of storage
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -14,19 +14,19 @@ template <class T> struct CArray {                 // STLport vector<T>: start /
     long size() const { return _M_finish - _M_start; }
     const T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CCardinalSpline {                           // retail 20 bytes
+class CCardinalSpline { public:                           // retail 20 bytes
     CArray<C3DVector> ControlPoints;
     float             Tension;
     bool              EndPointsConnected;
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteEBOOL(bool value);                   // 0x00993E30
     void WriteULONG(unsigned long value);          // 0x00993EA0
     void Write3DVector(const C3DVector& value);    // 0x00993FD0
 };
 namespace NParticleEngine {
-struct CPSCSplineBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;           // +0x00
         CCardinalSpline   ThisSpline;              // +0x04
         CCardinalSpline   PreviousSpline;          // +0x18

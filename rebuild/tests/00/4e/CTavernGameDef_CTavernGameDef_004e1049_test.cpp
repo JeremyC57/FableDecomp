@@ -2,11 +2,11 @@
 #include <stddef.h>
 #include <new>
 static int g_base = 0;
-struct CSubDefClassBase { virtual void v00() { } unsigned char _body[0x24]; CSubDefClassBase() { ++g_base; } };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CPrizeScoreDef;
+class CSubDefClassBase { public: virtual void v00() { } unsigned char _body[0x24]; CSubDefClassBase() { ++g_base; } };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CPrizeScoreDef;
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage; CRetailVector() : first(0), last(0), end_of_storage(0) { } };
-struct CTavernGameDef : CSubDefClassBase {
+class CTavernGameDef : public CSubDefClassBase { public:
     unsigned long Banter; unsigned char _ids_0x2c[0x64]; CDefString CameraName; unsigned char _ids_0x94[0x88];
     CDefString ScoreFont; CDefString TargetFont; CDefString StatsFont; unsigned char _layout_0x128[0x4c];
     CRetailVector<CPrizeScoreDef> PrizeScores; long Prize; unsigned char _tail_0x184[0x24]; virtual void v00() { }

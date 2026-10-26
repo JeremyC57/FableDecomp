@@ -2,18 +2,18 @@
 // assassin-rush component (0xA9) and the 0xA8 component only when present; a live thing is re-added to the update
 // list on every phase, a dead one never.
 #include <cstdio>
-struct CThing;
+class CThing;
 static int g_rush = 0, g_handler = 0, g_updates = 0; static CThing* g_rushThing = 0; static CThing* g_handlerThing = 0; static CThing* g_updated = 0;
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CTCAssassinRush { void SetThingCollisionPtr(CThing* thing) { ++g_rush; g_rushThing = thing; } };
+class CTCAssassinRush { public: void SetThingCollisionPtr(CThing* thing) { ++g_rush; g_rushThing = thing; } };
 struct CTCCollisionHandler_0xA8 { void OnThingCollision(CThing* thing) { ++g_handler; g_handlerThing = thing; } };
-struct CThingManager { void AddToUpdateList(CThing* thing) { ++g_updates; g_updated = thing; } };
+class CThingManager { public: void AddToUpdateList(CThing* thing) { ++g_updates; g_updated = thing; } };
 static CThingManager g_manager; static CThingManager* g_pThingManager = &g_manager;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char _pad4c[0x91 - 0x4c]; unsigned char Dead : 1;
     template<class T> bool GetInterface(T** out, long wanted)
     {

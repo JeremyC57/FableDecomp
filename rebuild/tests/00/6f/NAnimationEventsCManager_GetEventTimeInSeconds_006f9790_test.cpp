@@ -14,7 +14,7 @@ static int fails = 0;
 //   `animation` argument slot (`fst [esp+18h]`) before popping edi/esi; a float local or the product returned directly
 //   pops first.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     unsigned char _pad[0xc];
     float         m_secondsPerFrame;               // +0x0c
 };
@@ -40,7 +40,7 @@ struct CCountedPointer_C3DAnimationStats {
     }
     const C3DAnimationStats* operator->() const { return m_pObject; }
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer_C3DAnimationStats GetAnimationStats();   // 0x00A269C0
 };
 struct CAnimationBank {

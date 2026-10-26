@@ -24,13 +24,13 @@ struct CSubRenderStateManager {
  __forceinline void Set(CSubState& state,unsigned value){if(state.Desired!=value){if(!(state.BookmarkMask&BookmarkMask)){state.BookmarkMask|=BookmarkMask;Stack[StackSize].State=&state;Stack[StackSize].OldValue=state.Desired;++StackSize;}state.Desired=value;if(!state.Dirty){state.Dirty=true;Updates[UpdateSize]=&state;++UpdateSize;}}}
 };
 class CEngineSubPrimitiveBase;
-struct CEnginePrimitiveManager {virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();
+class CEnginePrimitiveManager { public:virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();virtual void v5();
  virtual void RenderBoundingVolume(CEngineSubPrimitiveBase&); // slot 6 (+0x18)
  void* Scenes;bool Enable;};
 class CEngineSubPrimitiveBase {public:void* Vtable;unsigned RenderFlags;unsigned char Alpha;void* Parent;CEngineSubPrimitiveBase* Next;CEnginePrimitiveManager* Manager;};
 struct CSubSortElement {unsigned SortValue;CEngineSubPrimitiveBase* Primitive;};
 struct CSubList {CSubSortElement* Begin;CSubSortElement* End;CSubSortElement* Capacity;int RenderPass,PreRenderPass;bool BoundingVolumePass,Stable,Sorted,Enable;unsigned Size()const{return unsigned(End-Begin);}};
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
  unsigned char Prefix[0x18];CSubList Lists[15];
  void SortList(CSubList&,bool);void RenderList(CSubList&,int);void RenderListTwoPass(CSubList&,int,int);void DeleteList(CSubList&);
  void RenderType(int,bool);

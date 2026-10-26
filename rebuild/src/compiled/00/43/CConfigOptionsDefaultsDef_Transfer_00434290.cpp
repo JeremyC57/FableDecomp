@@ -7,13 +7,13 @@
 // Shape: the def base is 0x3c bytes; the members are 4-byte values transferred by address. The order of the
 // calls is the declaration order of the persist list, not the layout (+0x4c/+0x50 come last).
 // Layout: local model (no engine header for this def); member types are chosen per callee only to select the overload.
-struct CPersistContext {
+class CPersistContext { public:
     void TransferValue(long* p);            // 0x00431020
     void TransferValue(float* p);           // 0x00431102
     void TransferValue(unsigned long* p);   // 0x00431061
 };
 
-struct CConfigOptionsDefaultsDef {
+class CConfigOptionsDefaultsDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base04[0x38];   // CParentDefClassBase body
     long m_3c;                     // +0x3c

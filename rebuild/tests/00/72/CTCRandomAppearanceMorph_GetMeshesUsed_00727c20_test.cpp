@@ -20,13 +20,13 @@ class CThing;
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() { } };
 namespace NGraphicAppearance {
-    struct CMeshInfo {                                  // 12 bytes
+    class CMeshInfo { public:                                  // 12 bytes
         long          Index;                            // +0x00
         float         SizeX;                            // +0x04
         unsigned char PrimaryMesh : 1;                  // +0x08
         CMeshInfo(long index, float sizeX, bool primaryMesh) : Index(index), SizeX(sizeX) { PrimaryMesh = primaryMesh; }
     };
-    struct CPrimitive;
+    class CPrimitive;
 }
 template <class T> struct vector {                      // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -54,7 +54,7 @@ __declspec(noinline) void vector<T>::_M_insert_overflow(T* position, const T& x,
 }
 #pragma auto_inline(on)
 #pragma pack(push, 2)
-struct CEngineGraphic {                                 // 14 bytes (PDB)
+class CEngineGraphic { public:                                 // 14 bytes (PDB)
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -71,10 +71,10 @@ public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
 };
-struct CEngineTextureMorphSet { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
-struct CTCAppearanceMorphBase {
-    struct CMeshMorphSet {
-        struct CMeshMorphSetParts {                     // 16 bytes in retail
+class CEngineTextureMorphSet { public: void* _M_start; void* _M_finish; void* _M_end_of_storage; };
+class CTCAppearanceMorphBase { public:
+    class CMeshMorphSet { public:
+        class CMeshMorphSetParts { public:                     // 16 bytes in retail
             unsigned long          MeshIndex;           // +0x00
             CEngineTextureMorphSet TextureMorphs;       // +0x04
         };
@@ -86,25 +86,25 @@ struct CTCAppearanceMorphBase {
         CPartArray MeshParts;                           // +0x00
     };
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
 namespace NGraphicAppearance {
-    struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+    class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
         virtual void v00();
         virtual void v01();
         virtual void GetMeshesUsed(vector<CMeshInfo>& meshes) const;   // slot 2
     };
 }
-template <class T> struct CCountedPointer {             // {object, count block}
+template <class T> class CCountedPointer { public:             // {object, count block}
     T*    Object;
     void* Info;
     T* operator->() const { return Object; }
 };
-struct CTCRandomAppearanceMorph : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {
+class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;   // +0x10
     unsigned long     Seed;                             // +0x18
     virtual void GetMeshesUsed(vector<NGraphicAppearance::CMeshInfo>& meshes) const;

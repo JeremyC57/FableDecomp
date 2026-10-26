@@ -3,7 +3,7 @@ struct CSub {
 	unsigned char kind; // +0x10
 };
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
 	unsigned char pad0[0xc];
 	unsigned char sub[0x22];
 	unsigned char flag; // +0x2e

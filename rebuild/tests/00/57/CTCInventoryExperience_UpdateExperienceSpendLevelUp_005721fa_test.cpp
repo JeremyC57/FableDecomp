@@ -16,7 +16,7 @@ struct CTCInventoryAbilities_Calls {
     long calls; long lastLevels; bool lastFlag;
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b) { ++calls; lastLevels = levels; lastFlag = b; return 1000 + (long)ability; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;
     SSpendInfoVector ExperienceSpendValuesStats;

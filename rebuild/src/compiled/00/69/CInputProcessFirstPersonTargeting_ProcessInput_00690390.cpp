@@ -4,11 +4,11 @@
 // @ 0x00687CF0 (forwards to CGamePlayerInterface::IsEventGameAction @ 0x00445BD0 through +0x24), CPlayer::RemoveMode(long) @ 0x00634190
 // (MyPlayer +0x18), CProcessedInput::SetHandled @ 0x00A0D390 (NoGameEvents = 0, Type = 2).
 // Shape: the event reference rides in edi for both predicate calls, nested ifs share the single exit, `ret 8`.
-struct CInputEvent;
-struct CProcessedInput {
+class CInputEvent;
+class CProcessedInput { public:
     void SetHandled();                              // 0x00A0D390
 };
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(long mode);                     // 0x00634190
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -22,7 +22,7 @@ struct CInputProcessGameBase {                      // engine/CInputProcessGameB
     bool IsEventButtonHeld(const CInputEvent& event);                  // 0x00687BD0
     bool IsEventGameAction(long action, const CInputEvent& event);     // 0x00687CF0
 };
-struct CInputProcessFirstPersonTargeting : CInputProcessGameBase {   // vtable 0x01237C98
+class CInputProcessFirstPersonTargeting : public CInputProcessGameBase { public:   // vtable 0x01237C98
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed);
 };
 

@@ -6,8 +6,8 @@ static int g_base_called = 0;
 
 void __cdecl free_target(void* p) { g_freed++; g_freed_ptr = p; }
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     char pad0[0x10];
     void* m_ptr;          // +0x10
     void BaseOnDie_00aa75c0();

@@ -6,7 +6,7 @@ struct Node {
     Node* next;
     Node* prev;
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     Node* head;
     int count;
 };

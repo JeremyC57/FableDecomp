@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CComp { virtual ~CComp() {} unsigned long IVRefCount; long Value; int Kind; CComp(int k) : IVRefCount(1), Value(0), Kind(k) {} };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex, AnimName, GroupName; void* Components;
     CComp* added[3]; int count;
     void AddComponent(CComp* c) { added[count++] = c; }

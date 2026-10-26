@@ -13,12 +13,12 @@
 // place by the R,G,B,A-assigning CRGBColour constructor (a by-component blend constructor; opaque black, no specular).
 #include <stddef.h>
 void* operator new(size_t size);                        // 0x00BFEA1A
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& o) : B(o.B), G(o.G), R(o.R), A(o.A) {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;                         // +0x00
     long          BlendType;                            // +0x04 ECompositeBlendType
     CRGBColour    DiffuseColour;                        // +0x08
@@ -26,8 +26,8 @@ struct CCompositeBlendDesc {
     CCompositeBlendDesc(unsigned long texture, long type, unsigned char r, unsigned char g, unsigned char b, unsigned char a)
         : TextureIndex(texture), BlendType(type), DiffuseColour(r, g, b, a), SpecularColour(0, 0, 0, 0) {}
 };
-struct CEngineTextureMorph;
-struct CTextureMorphs {                                 // vector<CEngineTextureMorph>
+class CEngineTextureMorph;
+class CTextureMorphs { public:                                 // vector<CEngineTextureMorph>
     CEngineTextureMorph* m_first;
     CEngineTextureMorph* m_last;
     CEngineTextureMorph* m_end;
@@ -42,8 +42,8 @@ struct CMeshMorphSet {                                  // CTCAppearanceMorphBas
     } MeshParts;                                        // +0x00
     CTextureMorphs OriginalMeshTextureMorphs;           // +0x0c
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     void Reset(T* object);                              // 0x007222F0
@@ -56,7 +56,7 @@ struct CDefBase {
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
@@ -73,8 +73,8 @@ template <class T> struct CDefHolder {                  // the def read once fro
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTextureReplacementDef : CDefBase {
-    struct CEntry { unsigned long OriginalTexture; unsigned long ReplacementTexture; };
+class CTextureReplacementDef : public CDefBase { public:
+    class CEntry { public: unsigned long OriginalTexture; unsigned long ReplacementTexture; };
     unsigned char _pad08[0x28 - 0x08];
     struct CEntryArray {                                // CArray<CEntry> (12 bytes)
         CEntry* m_first; CEntry* m_last; CEntry* m_end;
@@ -82,7 +82,7 @@ struct CTextureReplacementDef : CDefBase {
         const CEntry& operator[](long i) const { return *(m_first + i); }
     } Entries;                                          // +0x28
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_007086f0(CDefPointer<CTextureReplacementDef>& out);   // 0x007086F0
 };
 void* FindDef_CDefClassBase_GetSubDef_007086f0_0();   // stand-in callee of the stand-in body below
@@ -98,7 +98,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_007086f0(CDefPointer<CTexture
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                    // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }

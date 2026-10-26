@@ -15,10 +15,10 @@
 // Shape: frame-pointer size TU; one resource-object local for the whole loop (built before begin is read, destroyed
 //   after it), begin read once into esi, end re-read every pass, the position kept in ebx; the speed is the float 0
 //   (`fldz ; push ecx ; fstp [esp]`), the move type 0, the flags false / true.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CScriptThing {                       // 12 bytes, vtable 0x01238C8C (vptr, then the counted PImp pointer pair)
+class CScriptThing { public:                       // 12 bytes, vtable 0x01238C8C (vptr, then the counted PImp pointer pair)
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011();
     virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017();
@@ -59,7 +59,7 @@ public:
     void MoveToPosition(const C3DVector& position, float speed, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
     unsigned char _body[0x10];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007();
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)

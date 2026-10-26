@@ -14,7 +14,7 @@
 // descriptive.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00
     CCharString(const CCharString& other);       // 0x0099EC30
 };

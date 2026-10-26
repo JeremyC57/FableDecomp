@@ -7,7 +7,7 @@
 // Leaf: IsPlayerIgnoreFOVLineOfSight
 #include "engine/CTCPerceiveThing.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                     // +0x10 (2 = player)
 };

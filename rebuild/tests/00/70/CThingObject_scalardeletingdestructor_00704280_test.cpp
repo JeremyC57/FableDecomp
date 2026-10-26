@@ -3,8 +3,8 @@
 static int g_destroyed = 0;
 static int g_freed = 0;
 
-struct CThingObject
-{
+class CThingObject
+{ public:
     int tag;
     void Destroy();
     void Free();

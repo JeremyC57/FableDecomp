@@ -20,7 +20,7 @@ static void Check(bool ok, int line)
 
 static int g_step = 0, g_baseStep = 0, g_initStep = 0;
 static long g_baseWorkspace = 0;
-struct CACompressor {
+class CACompressor { public:
     long WorkspaceSize;
     CACompressor(long workspaceSize) : WorkspaceSize(workspaceSize)    // stub for 0x00A3AEA0
     {

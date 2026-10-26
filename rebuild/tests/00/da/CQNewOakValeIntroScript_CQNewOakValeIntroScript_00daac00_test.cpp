@@ -15,7 +15,7 @@
 // CGameScriptInterface: the first 88 virtual slots of vtable 0x01260F0C, named from the slot labels (rtti-vtables.tsv +
 //   manifest); only the slot position matters here, so the signatures are simplified (void, no parameters) except
 //   RegisterTimer (slot 87, returns the new timer index). Overloaded names carry a _2 suffix.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -106,7 +106,7 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -116,14 +116,14 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                         // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector() : m_first(0), m_last(0), m_end(0) { } };   // STLport vector (12 bytes)
 namespace NScript {
-struct CQ_NewOakValeIntroScript : CQuestScriptObject {
+class CQ_NewOakValeIntroScript : public CQuestScriptObject { public:
     unsigned char VictimShake_to_lastVillagerSpeechIdx[0x54];   // +0x48..+0x9b
     CRetailVector<CCharString> VillagerSpeechMaleGood;          // +0x9c
     CRetailVector<CCharString> VillagerSpeechMaleBad;           // +0xa8

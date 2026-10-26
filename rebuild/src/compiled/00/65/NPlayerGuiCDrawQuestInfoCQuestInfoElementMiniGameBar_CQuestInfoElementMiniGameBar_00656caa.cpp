@@ -16,7 +16,7 @@
 // (each CRGBColour(r, g, b, a) stores R, G, B, A = +2, +1, +0, +3 from one `mov al,0FFh`).
 #pragma optimize("s", on)
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -39,7 +39,7 @@ namespace CDrawQuestInfo {
 
 enum EMiniGameType { MINI_GAME_NONE = 0 };
 
-struct CQuestInfoElement {                                  // vtable 0x0125A2B4, 0x1c bytes
+class CQuestInfoElement { public:                                  // vtable 0x0125A2B4, 0x1c bytes
     virtual void v00();
     long          ID;                                       // +0x04
     long          ScriptID;                                 // +0x08
@@ -48,7 +48,7 @@ struct CQuestInfoElement {                                  // vtable 0x0125A2B4
     CQuestInfoElement(float scale);                         // 0x00656795
 };
 
-struct CQuestInfoElementMiniGameBar : CQuestInfoElement {   // vtable 0x0125A46C
+class CQuestInfoElementMiniGameBar : public CQuestInfoElement { public:   // vtable 0x0125A46C
     EMiniGameType     Type;                                 // +0x1c
     float             Percentage;                           // +0x20
     CRGBColour        Colour;                               // +0x24

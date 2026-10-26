@@ -84,7 +84,7 @@ public:
 }
 
 enum EAnimUpdateMode { ANIM_UPDATE_MODE_0 };
-struct CTransitionBlendAlpha {                           // Ego_r.pdb, 8 bytes
+class CTransitionBlendAlpha { public:                           // Ego_r.pdb, 8 bytes
     float Current;
     float Last;
 };

@@ -17,7 +17,7 @@
 
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;                          // +0x00
     unsigned long StringLength;           // +0x04
 };
@@ -48,7 +48,7 @@ struct CRefVirtual {
     virtual void Destroy();                         // slot 1
 };
 namespace NGameText {
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                    // 0x009C7A40
     void ReleaseTemporary()
     {
@@ -58,7 +58,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
@@ -70,31 +70,31 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
 };
 extern CEngine* g_pEngine;                          // 0x013B86A0
 
 namespace NPlayerGui {
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char _pad00[0x50];
     CWideString Name;                               // +0x50
     CWideString Text;                               // +0x54
 };
 }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;   // +0x1C8
     NPlayerGui::CDrawQuestInfo& GetQuestInfo() { return *PDrawQuestInfo.Data; }
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetQuestInfoName(const char* symbol) const;
 };
 

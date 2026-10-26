@@ -2,7 +2,7 @@
 #include <cstring>
 static int g_baseCtor = 0;
 struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } };
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 struct CChunkedFileChunk_Retail : CBase {
     char ChunkType[5]; CChunkedFileSuperChunk* Parent;
     CChunkedFileChunk_Retail(const char* type) : Parent(0) { std::memset(ChunkType, 0, sizeof(ChunkType)); std::memcpy(ChunkType, type, 4); }

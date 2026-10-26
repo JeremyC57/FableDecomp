@@ -2,11 +2,11 @@
 #include <cstdio>
 static int g_order[8]; static int g_n = 0;
 namespace N_009d5f80 { struct CBankFile { CBankFile() { g_order[g_n++] = 1; } }; } using N_009d5f80::CBankFile;
-struct CResourceList { unsigned int m_maxSize; unsigned int m_usedSize; CResourceList() : m_maxSize(1), m_usedSize(5) {}
+class CResourceList { public: unsigned int m_maxSize; unsigned int m_usedSize; CResourceList() : m_maxSize(1), m_usedSize(5) {}
     void SetMaxSize(unsigned int s) { m_maxSize = s; g_order[g_n++] = 4; } };
-struct CResourceBank { CResourceList ResourceList, LoadingQueue; CResourceBank() { g_order[g_n++] = 2; } };
-struct CSymbolMap { CSymbolMap() { g_order[g_n++] = 3; } };
-template <class T> struct CArray { T* a; T* b; T* c; CArray() : a(0), b(0), c(0) {} };
+class CResourceBank { public: CResourceList ResourceList, LoadingQueue; CResourceBank() { g_order[g_n++] = 2; } };
+class CSymbolMap { public: CSymbolMap() { g_order[g_n++] = 3; } };
+template <class T> class CArray { public: T* a; T* b; T* c; CArray() : a(0), b(0), c(0) {} };
 struct CParticleDataBank : CBankFile, CResourceBank {
     CArray<int> ParticleEmitters; CSymbolMap GraphicSymbols, MeshSymbols;
     CParticleDataBank() { ResourceList.m_usedSize = 0; ResourceList.SetMaxSize(0x10000); }

@@ -9,7 +9,7 @@ struct CPatchStripBase {
     ~CPatchStripBase() { g_baseOrder = g_freeCount; }
 };
 
-struct CPatchTesselationEdgeStrip : CPatchStripBase {
+class CPatchTesselationEdgeStrip : public CPatchStripBase { public:
     void* m_pIndicesA; unsigned char m_recordA[8];
     void* m_pIndicesB; unsigned char m_recordB[8];
     void* m_pIndicesC; unsigned char m_recordC[8];

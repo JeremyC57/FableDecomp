@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     CArray(const CArray& o) : _M_start(0), _M_finish(0), _M_end_of_storage(0)

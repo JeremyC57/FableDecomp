@@ -1,8 +1,8 @@
 // Behaviour test for CScriptThing::CScriptThing(const CScriptThing&) (0x004ABE90): copies both PImp words, bumps the count when present.
 #include <cstdio>
 
-struct CCPPointerInfo { long m_references; };
-struct CScriptThing;
+class CCPPointerInfo { public: long m_references; };
+class CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;
     CCPPointerInfo* Info;
@@ -14,7 +14,7 @@ struct CCountedPointer_CScriptThing {
             ++Info->m_references;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing(CScriptThing* d, CCPPointerInfo* i) : PImp(d, i) {}
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}

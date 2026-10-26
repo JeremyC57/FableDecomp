@@ -13,7 +13,7 @@
 #pragma optimize("s", on)
 #include "engine/CThingSearchTools.h"
 
-struct CThing {
+class CThing { public:
     bool IsIncludedInThingScans();                       // 0x0048BC40
 };
 
@@ -31,9 +31,9 @@ struct CThingList {                                      // std::list<CThing*> (
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingBuilding { enum { ThingListType = 3 }; };
+class CThingBuilding { public: enum { ThingListType = 3 }; };
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long m_type;
     bool operator()(CThing* thing) const;                // 0x006A80A0
 };

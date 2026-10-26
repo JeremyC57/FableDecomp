@@ -10,7 +10,7 @@
 //   new pointee and bump its IVRefCount. The `nop` before the loop head is VC7.1's loop alignment.
 // Layout: CIVCountedPointeeBase as in the landed 0x0083CE60 / 0x0084B690 (vtable +0, IVRefCount +4);
 //   CIVCountedPointer<T> is the one-word { T* Object; } of Ego_r.pdb.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);              // slot 0
     virtual void Delete();                        // slot 1
     unsigned long IVRefCount;                     // +0x04

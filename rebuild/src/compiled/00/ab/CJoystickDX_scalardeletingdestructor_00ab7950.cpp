@@ -14,7 +14,7 @@ struct IDirectInputDevice8_Retail {              // COM: __stdcall methods, `thi
     virtual long __stdcall Acquire();                               // slot 7 (+0x1c)
     virtual long __stdcall Unacquire();                             // slot 8 (+0x20)
 };
-struct CJoystick {                                 // retail layout 0xd18 bytes (vtable 0x0129C0EC)
+class CJoystick { public:                                 // retail layout 0xd18 bytes (vtable 0x0129C0EC)
     virtual void EventScanStart();                 // slot 0
     virtual void v001();
     virtual void v002();
@@ -27,7 +27,7 @@ struct CJoystick {                                 // retail layout 0xd18 bytes 
     virtual ~CJoystick();                          // slot 9, 0x009E4420
     unsigned char _body[0xd18 - 4];
 };
-struct CInputManagerDX;
+class CInputManagerDX;
 struct CJoystickDX : CJoystick {                   // vtable 0x0129EA7C
     unsigned char               _pad0d18[0x20];    // +0xd18 the axis values and ranges
     IDirectInputDevice8_Retail* DJoystick;         // +0xd38

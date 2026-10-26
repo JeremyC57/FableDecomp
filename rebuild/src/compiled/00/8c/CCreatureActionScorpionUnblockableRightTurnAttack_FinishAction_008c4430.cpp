@@ -9,14 +9,14 @@
 // the creature argument is fetched (arguments right to left: the flag, the creature). `this` rides in edi, &PTarget in esi.
 // The PDB header (CCreatureAction_ScorpionUnblockableRightTurnAttack.h) is 0x24 bytes high against retail (CCombatActionBase is 0x114 bytes, PTarget at +0xa8),
 // so `this` is modelled locally like the landed 0x008C8080.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -52,11 +52,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCPhysicalShieldSpell {             // interface type 0x93 component
+class CTCPhysicalShieldSpell { public:             // interface type 0x93 component
     void NotifyUnblockableAttack(CThing* attacker, bool starting);   // 0x0079E580
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     virtual void v02(); virtual void v03();
@@ -68,7 +68,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
 };
 
-struct CCreatureAction_ScorpionUnblockableRightTurnAttack : CCombatActionBase {
+class CCreatureAction_ScorpionUnblockableRightTurnAttack : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

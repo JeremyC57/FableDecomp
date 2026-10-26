@@ -11,11 +11,11 @@
 // Shape: the C2DVector conversion temporary is built before the layer query (as the landed IsNavigableAt 0x00A1A210); the
 //   open-node copy is the implicit C3DVector assignment; the nearest node's centre goes through an inline two-float setter (Y loaded
 //   first, as arguments are evaluated right to left) before the Z call.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void SetXY(float x, float y) { X = x; Y = y; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame

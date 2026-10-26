@@ -21,17 +21,17 @@ extern "C" __declspec(dllimport) int __stdcall MoveWindow(HWND__* window, int x,
 
 enum { SM_CYCAPTION = 4, SM_CXFRAME = 32, SM_CYFRAME = 33 };
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad[0xec];
     bool          AttachedToExternalWindow;        // +0xec
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void*           _vtable;                       // +0x00
     CSystemManager* SystemManager;                 // +0x04
     unsigned char   _pad08[0x18c - 8];

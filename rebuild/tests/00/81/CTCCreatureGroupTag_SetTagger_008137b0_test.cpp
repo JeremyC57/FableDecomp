@@ -5,7 +5,7 @@ typedef unsigned __int64 UID64;
 typedef unsigned long long UID64;
 #endif
 
-struct CThing {
+class CThing { public:
     UID64 UniqueID;
     bool Dead;
     UID64 GetUID() const { return UniqueID; }
@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return PItem; }
 };
 
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;
     bool IsActive;
 };
@@ -45,7 +45,7 @@ struct CGroupMemberMap {                    // a linear stand-in for the STLport
 static long g_frame = 0;
 long GetWorldFrame() { return g_frame; }
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     CGroupMemberMap Members;
     int RemoveCalls, DeactivateCalls;
     bool BaseResult;
@@ -63,7 +63,7 @@ struct CTCCreatureGroup {
     bool DeactivateMember(const CThing*) { ++DeactivateCalls; return BaseResult; }
 };
 
-struct CTCCreatureGroupTag : CTCCreatureGroup {
+class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     UID64 TaggerUID;
     unsigned long TaggedFrame;
     int ChooseCalls;

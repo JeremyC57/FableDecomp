@@ -12,8 +12,8 @@
 //   GetPItem pair is an inline whose remaining work is the second GetPItem call (its result unused).
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps `add esi,20h` after the temporary's GetPItem call as retail (the inline expression form hoists it above the call).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -21,14 +21,14 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     CBaseObject* GetPItem() const;              // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
-struct CTCActionUseScriptedHook {
+class CTCActionUseScriptedHook { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08

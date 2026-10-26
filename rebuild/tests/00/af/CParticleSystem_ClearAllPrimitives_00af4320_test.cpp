@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CIEngine { int id; };
-struct C3DBoundingSphere { float Centre[3]; float Radius; };
-struct CEnginePrimitivePrepareInfo { int id; };
-struct CEnginePrimitiveHandle { int id; };
+class CIEngine { public: int id; };
+class C3DBoundingSphere { public: float Centre[3]; float Radius; };
+class CEnginePrimitivePrepareInfo { public: int id; };
+class CEnginePrimitiveHandle { public: int id; };
 struct CParticleSystem;
 struct CParticleUpdateParameters { unsigned char m_data[0x24]; };
 

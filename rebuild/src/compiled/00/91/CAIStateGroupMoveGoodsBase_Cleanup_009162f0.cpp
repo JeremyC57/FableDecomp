@@ -15,23 +15,23 @@
 // a miss (VC threads the 0 straight past the null test). The physics component is read through an inline const getter
 // (keeps `push 1` after the object expression); the CTCSolidToThing name is a named CCharString in the else block
 // (built before the AddTC pushes, sharing the key slot: frame = one `push ecx`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CTCParamsBase;
-struct CTCPhysicsBase {
+class CTCParamsBase;
+class CTCPhysicsBase { public:
     void SetAsMoving(bool moving);              // 0x006B0130
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -69,13 +69,13 @@ struct CActionBase {
     long ID;                                    // +0x28
     long GetID() const;                         // 0x00692620
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad2[0x100 - 0x64];
     CActionBase* PCurrentAction;                // +0x100
     bool IsPerformingAnyAction();               // 0x006622A0
     void FinishCurrentAction();                 // 0x00662650
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
     CThing* RemoveThingFromPrimarySlot(bool b); // 0x006A1E00
 };
@@ -83,19 +83,19 @@ struct CTCGoods {                               // interface 0x47
     unsigned char _pad[0x0c];
     bool Dropped;                               // +0x0c
 };
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);     // 0x00770FA0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CPlayer { CThing* GetHeroThing(); };     // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CAIBrain {
+class CPlayer { public: CThing* GetHeroThing(); };     // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

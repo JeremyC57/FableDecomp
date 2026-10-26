@@ -12,12 +12,12 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CPlane;
+class CPlane;
 struct CPlaneArray {                               // CArray<CPlane>
     CPlane* m_pData;
     long m_count;
@@ -25,7 +25,7 @@ struct CPlaneArray {                               // CArray<CPlane>
     ~CPlaneArray() { if (m_pData) free(m_pData); }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v00();
     unsigned char _body[0x28];                     // chunk type/parent, SubChunks, RegisteredSubChunkTypes, CurrentChunkIndex
     ~CChunkedFileSuperChunk();                     // 0x00AA8490

@@ -1,7 +1,7 @@
 // Behaviour test for CPrisoner::Init (0x00DD59F0): ReleasedAndFollowing cleared; ally of the hero, not allowed to
 // follow, no opinion reactions -- in that order, all on the prisoner's thing.
 #include <cstdio>
-struct CScriptThing { long m_id; };
+class CScriptThing { public: long m_id; };
 static int g_seq = 0;
 struct CInterface {
     CScriptThing hero; int allyAt; const CScriptThing* allyThing; const CScriptThing* allyOf;

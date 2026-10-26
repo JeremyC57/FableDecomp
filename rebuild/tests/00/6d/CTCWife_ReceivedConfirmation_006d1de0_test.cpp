@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame = 0;
 static long GetWorldFrame() { return g_frame; }
-struct CTCWife {
+class CTCWife { public:
     long FrameGotMarriedToThePlayer; bool willing; bool offering; int marries; int sex;
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= GetWorldFrame(); }
     bool IsWillingToMarry() const { return willing; }

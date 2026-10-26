@@ -2,14 +2,14 @@
 #include <cstdlib>
 #include <cstring>
 static int g_scenesDeleted = 0, g_objectsDestroyed = 0, g_rangeCalls = 0, g_sharedDtor = 0, g_componentDtor = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void ( *DeleteFunc)(void*);
     void* Data;
 };
 
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
 
@@ -27,30 +27,30 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CEnginePrimitiveManager;
-struct CEnginePrimitiveManagerStaticMeshes;
-struct CEnginePrimitiveManagerAnimatedMeshes;
-struct CEnginePrimitiveManagerRepeatedStaticMeshes;
-struct CEnginePrimitiveManagerRepeatedZSprites;
-struct CEnginePrimitiveManagerSprites;
-struct CEnginePrimitiveManagerFlareSprites;
-struct CEnginePrimitiveManagerWeaponTrails;
-struct CEnginePrimitiveManagerSpriteTrails;
-struct CEnginePrimitiveManagerLines;
-struct CEnginePrimitiveManagerText;
-struct CEnginePrimitiveManagerGameMeshes;
-struct CEnginePrimitiveOcclusionGroupManager;
-struct CEnginePrimitiveGroupManager;
-struct CEnginePrimitiveChangerManager;
-struct CEngineClothRenderer;
-struct CEnginePrimitiveManagerParticleLineGroup;
-struct CEnginePrimitiveManagerParticleMeshGroup;
-struct CEnginePrimitiveManagerParticleSpriteGroup;
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup;
-struct CEnginePrimitiveManagerParticleGroup;
-struct CEnginePrimitiveManagerDecal;
-struct CEnginePrimitiveManagerParticleDecalGroup;
-struct CEnginePrimitiveManagerWeatherMask;
+class CEnginePrimitiveManager;
+class CEnginePrimitiveManagerStaticMeshes;
+class CEnginePrimitiveManagerAnimatedMeshes;
+class CEnginePrimitiveManagerRepeatedStaticMeshes;
+class CEnginePrimitiveManagerRepeatedZSprites;
+class CEnginePrimitiveManagerSprites;
+class CEnginePrimitiveManagerFlareSprites;
+class CEnginePrimitiveManagerWeaponTrails;
+class CEnginePrimitiveManagerSpriteTrails;
+class CEnginePrimitiveManagerLines;
+class CEnginePrimitiveManagerText;
+class CEnginePrimitiveManagerGameMeshes;
+class CEnginePrimitiveOcclusionGroupManager;
+class CEnginePrimitiveGroupManager;
+class CEnginePrimitiveChangerManager;
+class CEngineClothRenderer;
+class CEnginePrimitiveManagerParticleLineGroup;
+class CEnginePrimitiveManagerParticleMeshGroup;
+class CEnginePrimitiveManagerParticleSpriteGroup;
+class CEnginePrimitiveManagerParticleSpriteTrailGroup;
+class CEnginePrimitiveManagerParticleGroup;
+class CEnginePrimitiveManagerDecal;
+class CEnginePrimitiveManagerParticleDecalGroup;
+class CEnginePrimitiveManagerWeatherMask;
 
 struct EmptyRangeTag {};
 extern void  DestroyManagerRange(
@@ -72,7 +72,7 @@ struct CManagerPointerArray {
     }
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     virtual ~CEngineScene();
 };
 
@@ -107,7 +107,7 @@ struct CEnginePrimitiveRendererSharedData {       // vtable 0x012A1380 (as the d
     unsigned char _pad004[0x264];
 };
 
-struct CEngineComponent {                          // +0x268, vtable 0x012A1348
+class CEngineComponent { public:                          // +0x268, vtable 0x012A1348
     virtual ~CEngineComponent();                     // 0x00B59730
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -115,7 +115,7 @@ struct CEngineComponent {                          // +0x268, vtable 0x012A1348
     unsigned char Padding[2];
 };
 
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererSharedData, CEngineComponent {
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent { public:
     CManagerPointerArray PrimitiveManagers;          // +0x274
     CCountedPointer<CEnginePrimitiveManagerStaticMeshes> StaticMeshManager; // +0x280
     CCountedPointer<CEnginePrimitiveManagerAnimatedMeshes> AnimatedMeshManager; // +0x288

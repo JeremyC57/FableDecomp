@@ -7,7 +7,7 @@
 //   +0x44/+0x45); the def's EndSound CDefString at +0x60 (PDB +0x64, def bodies sit 4 bytes low); CThing +0x10 type byte (2 = player).
 // Shape: the tail is the landed CancelMove 0x0079E300 verbatim (sound string in its own block, the "" type string declared
 //   before the "END" bone name so it sits one word higher, both destroyed before RemoveTC); the owner is read once into edi at entry.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -16,17 +16,17 @@ struct CDefStringTable {
     CCharString GetString(long id);             // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                         // +0x10 (2 = player)
     void RemoveTC(long type);                   // 0x004C9840
 };
-struct CThingCreatureBase : CThing { };
-struct CSpecialAbilitiesPhysicalShieldDef {
+class CThingCreatureBase : public CThing { public: };
+class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x60];
     long EndSound;                              // +0x60 CDefString id (PDB +0x64)
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool    ToBeRemoved;                        // +0x08

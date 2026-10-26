@@ -4,10 +4,10 @@
 #include <cstdio>
 
 static int g_added = 0;
-struct CAInputProcess { void AddToInterface(int pi) { if (pi == 7) ++g_added; } };
+class CAInputProcess { public: void AddToInterface(int pi) { if (pi == 7) ++g_added; } };
 struct CModes { unsigned long current; int adds; CModes() : current(0), adds(0) {} void AddMode(unsigned long m) { current = m; ++adds; } };
 struct CRanged { int resets; CRanged() : resets(0) {} void ResetProjectileTargetingZoomParameter() { ++resets; } };
-struct CCamera { int pushes; CCamera() : pushes(0) {} void PushProjectileWeaponMode() { ++pushes; } };
+class CCamera { public: int pushes; CCamera() : pushes(0) {} void PushProjectileWeaponMode() { ++pushes; } };
 struct CHero { unsigned char dead; CModes* modes; CRanged* ranged; };
 struct CPlayerModel {
     int PlayerInterface; CAInputProcess procs[11]; CCamera* camera;

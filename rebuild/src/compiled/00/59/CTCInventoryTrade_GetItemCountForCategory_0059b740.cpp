@@ -12,7 +12,7 @@
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("s", on)
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     long GetCategoryIdentifier();                   // 0x005BD1B3
 };
 }

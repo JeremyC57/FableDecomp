@@ -17,7 +17,7 @@
 // STLport vector (by-value `_Destroy(start, finish)` with the end in ebx, then the null-tested free); last the base's
 // inline destructor stores the CIVCountedPointeeBase vtable.
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-struct CIVCountedPointeeBase {              // vtable 0x012354D0
+class CIVCountedPointeeBase { public:              // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase() { }    // slot 0
     virtual void OnLastReference();         // slot 1 (+0x04): called when IVRefCount drops to zero
     unsigned long IVRefCount;               // +0x04
@@ -27,7 +27,7 @@ struct CIVCountedPointeeBase {              // vtable 0x012354D0
             OnLastReference();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     ~CIVCountedPointer()
     {
@@ -37,9 +37,9 @@ template <class T> struct CIVCountedPointer {
         }
     }
 };
-struct CEnginePersistentPrimitiveBase : CIVCountedPointeeBase { };
-struct CEngineMeshEffect : CIVCountedPointeeBase { };
-struct CEnginePrimitiveHandle {             // vtable 0x0122F598
+class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase { public: };
+class CEngineMeshEffect : public CIVCountedPointeeBase { public: };
+class CEnginePrimitiveHandle { public:             // vtable 0x0122F598
     virtual ~CEnginePrimitiveHandle();      // slot 0
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
 };
@@ -61,7 +61,7 @@ template <class T> struct vector {          // retail STLport vector (12 bytes)
     }
 };
 }
-template <class T> struct CArray : std::vector<T> { };
+template <class T> class CArray : public std::vector<T> { public: };
 struct __declspec(novtable) CEngineInternalPrimitiveBase : CIVCountedPointeeBase {   // vtable 0x012A3D7C, 0x48 bytes
     unsigned char _body[0x48 - 0x08];       // EnginePrimitiveFlags .. RefLayerMask (engine/CEngineInternalPrimitiveBase.h)
 };

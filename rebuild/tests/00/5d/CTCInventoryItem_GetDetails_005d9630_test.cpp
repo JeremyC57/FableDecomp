@@ -1,7 +1,7 @@
 // behaviour test for 005d9630: CTCInventoryItem::GetDetails(long) -- cache the def; a non-zero ItemDetails is looked up in the text bank
 // (the bank's entry pointer is released after its text is copied out), anything else gives the empty wide string
 #include <cstdio>
-struct CWideString { int Text; };
+class CWideString { public: int Text; };
 static CWideString g_emptyWideString = { -1 };
 struct CGroupEntry {
     unsigned long IVRefCount; int deleted; int textId;
@@ -24,7 +24,7 @@ struct CDataBank {
     }
 };
 static CDataBank g_bank;
-struct CInventoryItemDef { unsigned long ItemDescription; unsigned long ItemDetails; };
+class CInventoryItemDef { public: unsigned long ItemDescription; unsigned long ItemDetails; };
 static CInventoryItemDef g_defs[4];
 static const CInventoryItemDef* s_CachedItemDef = 0;
 static bool CacheDef(long defIndex)

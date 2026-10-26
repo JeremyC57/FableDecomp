@@ -11,7 +11,7 @@
 // Label correction: catalogued as `Heapify_CWideString`; the body is STLport `__make_heap`.
 #include <string.h>                                 // _wcsicmp @ 0x00F3FB84 (CRT)
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
@@ -20,7 +20,7 @@ struct CWideString {
 };
 
 namespace NGameComponentHelpers {
-struct CCaseInsensitiveStringCompare {
+class CCaseInsensitiveStringCompare { public:
     char m_tag;
     bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }
 };

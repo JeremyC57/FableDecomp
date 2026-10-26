@@ -11,12 +11,12 @@ public:
  CCharString();                                      // 0x0099E4B0
  ~CCharString();                                     // 0x0099EAE0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
  long References;
  void (__fastcall* Destroy)(void* object);
  void* Object;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
  T* Data;
  CCPPointerInfo* Info;
  void Release()
@@ -31,24 +31,24 @@ template <class T> struct CCountedPointer {
  }
  ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-struct C2DVector {
+class C2DVector { public:
  float X, Y;
  C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct CFontBank {
+class CFontBank { public:
  virtual void Slot0();
  virtual C2DVector GetTextExtent(const unsigned short* text, long flags);   // slot 1 (+4)
 };
 struct CFontBankSource {
  CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
-struct CSystemManager {
+class CSystemManager { public:
  unsigned char _pad00[0x84];
  CFontBankSource* FontBank;                          // +0x84
  CFontBankSource* GetFontBank() const { return FontBank; }
 };
 CSystemManager* __fastcall GFGetSystemManager();     // 0x009A4EC0
-struct CRGBColour {
+class CRGBColour { public:
  unsigned char B, G, R, A;
  CRGBColour() {}
  CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

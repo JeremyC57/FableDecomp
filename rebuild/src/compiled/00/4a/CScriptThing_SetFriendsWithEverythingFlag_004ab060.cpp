@@ -3,8 +3,8 @@
 // implementation's vtable (`ret 4` when PImp is null). Same proxy shape as landed 0x004AAF40.
 // Layout: engine/CScriptThing.h (+0x04 PImp, a CCountedPointer<CScriptThing>); the class is modelled with its virtuals
 // so the slot offset comes from the declaration order (CScriptThing.h is a data-only header).
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     T* operator->() const { return Data; }              // inline accessors: a direct `.Data->` read loads into eax
     bool IsValid() const { return Data != 0; }

@@ -29,11 +29,11 @@ struct CCountedResourcePointer {
     }
 };
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual ~CMovableResource() { }
 };
 
-struct CEngineLandscapePatch : CMovableResource {  // vtable 0x012A8200
+class CEngineLandscapePatch : public CMovableResource { public:  // vtable 0x012A8200
     unsigned char           _pad04[0x3c];          // +0x04 .. +0x40
     CCountedResourcePointer m_resource;            // +0x40
     void Clear();                                  // 0x00BF38F0

@@ -18,7 +18,7 @@ struct C3DVector {
     float X, Y, Z;
 };
 
-struct CSubContraction {
+class CSubContraction { public:
     unsigned long Index1;
     unsigned long Index2;
 };
@@ -32,7 +32,7 @@ template<class T> struct CArray {           // retail CArray<T>: three pointers
     T& operator[](unsigned long index) { return *(_SweepBegin1() + index); }
 };
 
-struct CVertexPairContraction {
+class CVertexPairContraction { public:
     bool                     Exists;            // +0x00
     bool                     Unsplit;           // +0x01
     CArray<CSubContraction>  SubContractions;   // +0x04

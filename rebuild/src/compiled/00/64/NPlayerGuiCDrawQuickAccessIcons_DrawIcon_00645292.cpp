@@ -12,8 +12,8 @@
 // Leaf: DrawIcon
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CEnginePrimitiveHandle { unsigned long Data[2]; };
-struct C2DVector {
+class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
@@ -41,7 +41,7 @@ public:
     unsigned char _pad00[0x34];
     CEnginePrimitiveRenderer* Renderer;             // +0x34
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x6e0];
     long QuickAccessEmptyBackGraphic;               // +0x6e0
 };
@@ -60,7 +60,7 @@ struct CHandleVector {
 };
 
 namespace NPlayerGui {
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     virtual void v00();
     CGameUI* PGameUI;                               // +0x04
     unsigned char _pad08[0x1c - 8];

@@ -12,12 +12,12 @@
 // three-way clamp has chosen the chunk size, so the clamp itself stays in edi); `finished` is a frame byte cleared before the do/while.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 
-struct CACompressor {                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
+class CACompressor { public:                                        // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();
     unsigned char _body[0x1c - 4];
     CACompressor(long workspaceSize);                        // 0x00A3AEA0
 };
-struct CCompressorZlib : CACompressor {                      // vtable 0x01245974, retail 0x58 bytes
+class CCompressorZlib : public CACompressor { public:                      // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                          // 0x00A3A7D0
     void Init();                                             // 0x00A3AA10
@@ -35,7 +35,7 @@ struct CByteArray {                                          // retail vector<un
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0();
     virtual void SetPosition(long position);                 // slot 1 (+4)
     virtual long GetPosition();                              // slot 2 (+8)

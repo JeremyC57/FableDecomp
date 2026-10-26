@@ -1,4 +1,4 @@
-struct CCreatureAction_TentacleRise {
+class CCreatureAction_TentacleRise { public:
     void* vftable;
 };
 

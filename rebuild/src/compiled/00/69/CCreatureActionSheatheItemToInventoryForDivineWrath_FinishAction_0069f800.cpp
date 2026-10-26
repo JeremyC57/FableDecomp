@@ -3,14 +3,14 @@
 // Callees: CCreatureAction_SheatheItemToInventory::FinishAction @ 0x0069F670 (non-virtual base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
 // CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x85 = bit 5 of the bitset dword at +0x30), the component's trigger @ 0x0078F820.
 // Shape: the landed 0x00849320 lookup with a byte-flag test on the component before the call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -39,13 +39,13 @@ struct CTCSpellComponent_0069f800 {
     void Trigger();                         // 0x0078F820
 };
 
-struct CCreatureAction_SheatheItemToInventory {
+class CCreatureAction_SheatheItemToInventory { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x0069F670
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;      // +0x08
 };
-struct CCreatureAction_SheatheItemToInventory_ForDivineWrath : CCreatureAction_SheatheItemToInventory {
+class CCreatureAction_SheatheItemToInventory_ForDivineWrath : public CCreatureAction_SheatheItemToInventory { public:
     virtual void FinishAction();
 };
 

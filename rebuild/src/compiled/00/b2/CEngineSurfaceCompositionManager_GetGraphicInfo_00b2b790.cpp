@@ -9,7 +9,7 @@
 // `*(begin() + n)`) over a vector of a DIFFERENT record type, so VC7.1 keeps two arms (one shared getter merges them into
 // one block); the +0x28 read is duplicated into each found arm and the shared null arm (`xor esi,esi`); the reciprocal
 // is hoisted above the branch; the bank arm re-reads begin() after the division.
-struct CGraphicInfoFrame;
+class CGraphicInfoFrame;
 
 struct SComposedGraphic {
     unsigned char      _pad[0x28];
@@ -42,7 +42,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     unsigned char                   _pad[0x884];
     CRetailVector<SComposedGraphic> m_composedGraphics;   // +0x884
     SComposedGraphic* GetComposed(unsigned long index) { return index < m_composedGraphics.size() ? &m_composedGraphics[index] : 0; }

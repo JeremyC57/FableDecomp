@@ -3,16 +3,16 @@
 #include <cstring>
 #include <cmath>
 static const unsigned int g_InvalidSoundHandle = 0xFFFFFFFFu;
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     int Stops; int Plays; unsigned int NextHandle; char LastName[64]; float Pitch; float Volume; unsigned int LastSound;
     void StopAttachedSound(unsigned int) { ++Stops; }
     unsigned int PlaySound(const char* name, bool, int, int, int) { ++Plays; std::strcpy(LastName, name); return NextHandle; }
     void SetSpecificSamplePitch(unsigned int s, float p) { LastSound = s; Pitch = p; }
     void SetSpecificSampleVolume(unsigned int s, float v) { LastSound = s; Volume = v; }
 };
-struct CThing { CTCSoundPlayer* Player; };
-struct C2DVector { float X, Y; float GetLengthSquared() const { return X * X + Y * Y; } };
-struct Coin {
+class CThing { public: CTCSoundPlayer* Player; };
+class C2DVector { public: float X, Y; float GetLengthSquared() const { return X * X + Y * Y; } };
+class Coin { public:
     C2DVector Velocity; CThing* Thing; unsigned int Sound;
     void UpdateSound(bool muted)
     {

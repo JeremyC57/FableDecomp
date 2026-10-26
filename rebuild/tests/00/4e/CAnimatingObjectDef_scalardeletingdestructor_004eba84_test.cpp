@@ -10,7 +10,7 @@ void __fastcall CMember_dtor_00461f3b(CMember* def) { (void)def; member_calls++;
 void __fastcall Base_dtor(void* def) { (void)def; base_calls++; }
 void __cdecl op_delete(void* p) { (void)p; delete_calls++; }
 
-struct CAnimatingObjectDef {
+class CAnimatingObjectDef { public:
     int f0;
     int Parent;
     void* f8;

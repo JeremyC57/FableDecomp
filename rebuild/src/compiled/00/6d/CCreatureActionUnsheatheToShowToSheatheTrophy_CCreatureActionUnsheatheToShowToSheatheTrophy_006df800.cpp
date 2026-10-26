@@ -6,12 +6,12 @@
 // Shape: the trophy rides in ebx (used for the base call and the SetPItem), the string argument is read from its slot after the base
 // call, the pointer member is addressed once in edi; SetPItem is a body statement after the init list. CCharString is modelled
 // locally because fable_string.h inlines the copy constructor retail calls out of line. `ret 0Ch`: three arguments.
-struct CThingCreatureBase;
-struct CThing;
-struct CCreatureActionBase;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CCreatureActionBase;
+class CBaseObject;
 
-struct CCharString {                        // one pointer; the copy constructor runs out of line
+class CCharString { public:                        // one pointer; the copy constructor runs out of line
     void* m_pStringData;
     CCharString(const CCharString& other);   // 0x0099EC30
 };
@@ -26,13 +26,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory {   // retail sizeof 0xb8
+class CCreatureAction_UnsheatheItemFromInventory { public:   // retail sizeof 0xb8
     virtual void v00();
     unsigned char _body[0xb8 - 4];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, CThing* item, CCreatureActionBase* followUp, long priority);   // 0x006A0150
 };
 
-struct CCreatureAction_UnsheatheToShowToSheatheTrophy : CCreatureAction_UnsheatheItemFromInventory {   // vtable 0x0125F8D4
+class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_UnsheatheItemFromInventory { public:   // vtable 0x0125F8D4
     CCharString m_animationName;            // +0xb8
     CIntelligentPointer PTrophy;            // +0xbc
     virtual void v00();

@@ -10,18 +10,18 @@
 // two stores into the looked-up component are immediates. Retail CCombatActionBase is 0x114 bytes (the engine header is the PDB's
 // 0x12c-byte layout), so `this` is modelled locally.
 #include "fable_string.h"
-struct CTCParamsBase;
-struct CTCBerserk {
+class CTCParamsBase;
+class CTCBerserk { public:
     void CreateStartingEffect();            // 0x0078C4C0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -52,7 +52,7 @@ struct CTCStrengthBoost {                   // the interface-167 component: a fl
     long m_boostLevel;                      // +0x10
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -60,7 +60,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_CastStrengthBerserk : CCombatActionBase {
+class CCreatureAction_CastStrengthBerserk : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

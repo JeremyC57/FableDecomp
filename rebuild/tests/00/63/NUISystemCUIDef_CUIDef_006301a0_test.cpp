@@ -8,7 +8,7 @@ static int g_frees = 0, g_erases = 0, g_stateDtors = 0, g_wideDtors = 0, g_resou
 static void FreeBlock(void* p) { ++g_frees; std::free(p); }
 
 struct CResource_Calls { ~CResource_Calls() { ++g_resourceDtors; } };
-struct CDefPointeeBase : CResource_Calls { ~CDefPointeeBase() { } };
+class CDefPointeeBase : public CResource_Calls { public: ~CDefPointeeBase() { } };
 
 template<class T> inline void Destroy(T* first, T* last)
 {
@@ -42,10 +42,10 @@ struct CRbTree {
     }
     ~CRbTree() { clear(); if (_M_header) FreeBlock(_M_header); }
 };
-struct CWideString { ~CWideString() { ++g_wideDtors; } };
+class CWideString { public: ~CWideString() { ++g_wideDtors; } };
 struct CUIStateDef { virtual ~CUIStateDef() { ++g_stateDtors; } int x; };
 
-struct CParentDefClassBase : CDefPointeeBase { CRetailVector<unsigned long> SubDefInfoMap; };
+class CParentDefClassBase : public CDefPointeeBase { public: CRetailVector<unsigned long> SubDefInfoMap; };
 struct CUIDef : CParentDefClassBase {
     CRetailVector<CUIStateDef> States;
     CWideString TextValue;

@@ -17,17 +17,17 @@
 //   late returns retail sends to the out-of-line copy, and `for (;;) { if (IsActiveThreadTerminating()) return; ... }`.
 //   The counted-pointer assignment reads the source's Info then Data first (the landed RemoveParty 0x00D732F0 model).
 //   IsAlive and IsDead are inline virtuals expanded on the locals, so IsDead leaves its own virtual IsAlive call.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
@@ -88,7 +88,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const;
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const;
     virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const;
@@ -113,7 +113,7 @@ inline bool operator==(const CScriptThing& a, const CScriptThing& b)
 {
     return a.Imp()->IsEqualTo(b.Imp());
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const;
     virtual void NewScriptFrame() const;                                // slot 7 (+0x1c)
@@ -178,7 +178,7 @@ struct CGameScriptInterface {
     virtual void v332() const; virtual void v333() const; virtual void v334() const; virtual void v335() const; virtual void v336() const; virtual void v337() const;
     virtual void RemoveQuestInfoElement(long element) const;            // slot 338 (+0x548)
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

@@ -1,4 +1,4 @@
-struct CCreatureAction_ScreamerAdvance {
+class CCreatureAction_ScreamerAdvance { public:
     void* vftable;
 };
 

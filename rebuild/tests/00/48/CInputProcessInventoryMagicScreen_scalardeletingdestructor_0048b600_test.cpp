@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CInputProcessInventoryMagicScreen
-{
+class CInputProcessInventoryMagicScreen
+{ public:
     int tag;
     void scalar_destructor();
 };

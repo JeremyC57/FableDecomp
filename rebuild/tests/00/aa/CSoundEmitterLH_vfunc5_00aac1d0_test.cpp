@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 // Behaviour model of CSoundEmitterLH::vfunc_5 @ 0x00AAC1D0 (copy of the source logic, stand-in callees).
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 static double GFGetTime() { return 2.5; }
 static int g_released = 0;
 struct CSoundEmitterSource {
@@ -12,7 +12,7 @@ struct CSoundBankLH { CSoundEmitterSource* s; long id; CSoundEmitterSource* Find
 struct CActiveSound { long handle; CSoundEmitterSource* source; float time; CActiveSound(long h, CSoundEmitterSource* s, float t) : handle(h), source(s), time(t) {} };
 static void DestroySound(void* p) { ++g_released; delete (CActiveSound*)p; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o) : m_pObject(o) { m_pCount = new SCountBlock; m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroySound; m_pCount->m_pObject = o; }
     ~CCountedPointer()

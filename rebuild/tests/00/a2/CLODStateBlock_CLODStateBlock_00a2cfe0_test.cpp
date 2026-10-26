@@ -4,13 +4,13 @@
 static int g_events[8];
 static int g_count = 0;
 static void test_free(void* p) { g_events[g_count++] = 3; std::free(p); }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (*DeleteFunc)(void* data);
     void* Data;
 };
 static void DeleteBox(void*) { g_events[g_count++] = 1; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -57,7 +57,7 @@ struct CBoneLODMap {
             test_free(_M_header);
     }
 };
-struct C3DBoundingBox { float m[6]; };
+class C3DBoundingBox { public: float m[6]; };
 struct CLODStateBlock {
     CBoneLODMap                     BoneLODs;
     CCountedPointer<C3DBoundingBox> MinXYZRange;

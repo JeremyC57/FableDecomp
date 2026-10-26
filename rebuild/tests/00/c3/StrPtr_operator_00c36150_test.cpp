@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct StrPtr {
+class StrPtr { public:
     char* p;
 };
 

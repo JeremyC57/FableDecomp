@@ -10,16 +10,16 @@
 // Shape: the dice-game pointer is named after the creature (CThing* player; CTCDiceGame* game = DiceGame) for both
 //   CurrentPlayer assignments, so it is loaded into ebp before the CIntelligentPointer<CThing> temporary is built; without
 //   the named pointers VC reloads DiceGame after the temporary and swaps the zero/result registers.
-struct CThing { };
+class CThing { public: };
 unsigned long __fastcall GFROR13(unsigned long value);    // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 extern "C" int __cdecl rand();                           // 0x00BFEB16
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -37,31 +37,31 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CTCDiceGame {
+class CTCDiceGame { public:
     unsigned char _pad00[0xc];
     long NumberOfPlayers;                       // +0x0c
     CIntelligentPointerThing CurrentPlayer;     // +0x10
 };
-struct CThingCreatureBase : CThing { };
-struct CCreatureActionBase {
+class CThingCreatureBase : public CThing { public: };
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _members[0xb4 - 0xa8];
     CCreatureAction_PlayAnimation(CThingCreatureBase* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool stayOnLastFrame, bool b, bool c, long d, long e);   // 0x008424F0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

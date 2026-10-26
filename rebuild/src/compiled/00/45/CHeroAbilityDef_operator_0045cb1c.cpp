@@ -9,7 +9,7 @@
 // Shape: memberwise assignment in declaration order; the vectors through their out-of-line operator=,
 // the C2DVector icon offset as its two floats (dword moves), the rest as dword/byte moves.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -23,9 +23,9 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 
-struct CHeroAbilityDef : CParentDefClassBase {  // vtable 0x01233974
+class CHeroAbilityDef : public CParentDefClassBase { public:  // vtable 0x01233974
     long        Ability;                     // +0x3c EHeroAbility
     long        Stat;                        // +0x40 EHeroExperienceStatCategory
     long        IconGraphicIndex;            // +0x44

@@ -9,27 +9,27 @@
 // C3DVector assignment at +0x14 is the IMPLICIT operator= of a class with a user copy constructor (three
 // dword moves through `add esi,14h`); bool result as `mov al,1` / shared `xor al,al`. No engine header for
 // this class; base layout local (PDB names), CuriosityPos descriptive.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00();         // 0x006A4D00
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CThing* GetCuriosityThing();            // 0x0082FEC0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

@@ -15,7 +15,7 @@
 // Shape: the filter is a scoped frame object (its out-of-line destructor); the handle is a function-scope local built
 // inline (base ctor call, vtable, PImp zeroed by its own inline ctor) and destroyed out of line on both exits; the start
 // loop is BriarRose's rotated `while (!Start...) { yield; if (IsDone()) return; }` followed by a plain IsDone() call.
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
@@ -27,7 +27,7 @@ struct CIsThingAliveEndGame {                      // vtable 0x012C2FE8: the end
     CIsThingAliveEndGame(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAliveEndGame();                       // 0x00EF7AB0
 };
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     long IntelligentPointer;                                     // +0x04
     CBaseObject();                                 // 0x0099A380
@@ -38,14 +38,14 @@ struct SCountedImp {
     SCountedImp() : Data(0), Info(0) { }
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     SCountedImp PImp;                              // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsScripting();                            // 0x00CD23B9
     void Release();                                // 0x00CD2770
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;           // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)

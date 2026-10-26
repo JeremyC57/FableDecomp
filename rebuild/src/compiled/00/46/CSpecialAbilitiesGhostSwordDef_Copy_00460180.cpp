@@ -5,7 +5,7 @@
 // (rel32 is relocation-masked in parity). Model as a __fastcall member
 // thunk that tail-calls the real copy implementation with the same args.
 
-struct CSpecialAbilitiesGhostSwordDef;
+class CSpecialAbilitiesGhostSwordDef;
 
 // The real target (relocation-masked). Same signature so it tail-calls.
 extern void __fastcall CSpecialAbilitiesGhostSwordDef_Copy_impl(

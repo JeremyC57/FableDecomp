@@ -1,11 +1,11 @@
 // behaviour test for 0x00961E10 CAIStateGroup_IceTrollIcicleAttack::Cleanup: a live target with a stealth component is set in danger (DANGER_STATUS_0) from the group's creature; a missing, dead or stealth-less target is left alone
 #include <cstdio>
-struct CThing;
-struct CTCStealth {
+class CThing;
+class CTCStealth { public:
     int calls; const CThing* source; int status;
     void SetAsInDanger(const CThing& s, int st) { ++calls; source = &s; status = st; }
 };
-struct CThing {
+class CThing { public:
     bool dead;
     CTCStealth* stealth;                    // the component GetInterface(0x36) finds, or 0 when the bit is clear
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -26,7 +26,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 namespace NStealth { enum EDangerStatus { DANGER_STATUS_0 = 0, DANGER_STATUS_2 = 2, DANGER_STATUS_3 = 3 }; }
 struct CGroup {
     CAIBrain* PBrain;

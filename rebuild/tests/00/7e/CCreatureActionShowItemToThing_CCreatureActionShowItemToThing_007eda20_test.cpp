@@ -1,6 +1,6 @@
 // behaviour test for 0x007EDA20 CCreatureAction_ShowItemToThing::CCreatureAction_ShowItemToThing(const CCreatureAction_ShowItemToThing&): the base part is copied first, then each intelligent pointer observes the same pointee as the source's (not the source pointer object itself), and the source is left untouched
 #include <cstdio>
-struct CBaseObject { int Id; };
+class CBaseObject { public: int Id; };
 static int gOrder = 0, gBaseOrder = 0, gPtrOrder = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* Item;

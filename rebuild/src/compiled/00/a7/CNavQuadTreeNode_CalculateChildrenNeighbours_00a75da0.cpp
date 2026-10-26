@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75DA0, length 96 bytes.
 // Leaf: ?CalculateChildrenNeighbours@CNavQuadTreeNode@@MAEXXZ
 // Shape: `this` in esi, each child and its vtable reloaded per call, `ret`.
-struct CNavRegion;
+class CNavRegion;
 struct CNavNodeList;
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -25,7 +25,7 @@ struct CANavQuadTreeNode {
     virtual void SetNeighbour(long side, CANavQuadTreeNode* neighbour);   // slot 17 (+0x44)
     virtual void CalculateChildrenNeighbours();   // slot 18 (+0x48)
 };
-struct CNavQuadTreeNode : CANavQuadTreeNode {
+class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     unsigned char      _pad04[0xc];
     CANavQuadTreeNode* m_pChildren[4];             // +0x10
     virtual void CalculateChildrenNeighbours();

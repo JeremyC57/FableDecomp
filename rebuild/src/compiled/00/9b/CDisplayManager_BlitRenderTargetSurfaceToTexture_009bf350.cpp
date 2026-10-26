@@ -11,8 +11,8 @@ struct CPixelFormat_Methods : CPixelFormat {
  CPixelFormat_Methods(){} bool IsEquivalent(const CPixelFormat_Methods&)const; //009E37F0
 };
 inline bool operator==(const CPixelFormat_Methods& a,const CPixelFormat_Methods& b){return a.IsEquivalent(b);}
-struct C2DExtentsI { long X,Y;C2DExtentsI(){} long GetX()const{return X;}long GetY()const{return Y;} };
-struct C2DBoxI;
+class C2DExtentsI { public: long X,Y;C2DExtentsI(){} long GetX()const{return X;}long GetY()const{return Y;} };
+class C2DBoxI;
 extern void* g_CSurfaceVTable[]; //0122F84C
 struct CSurface_Methods : CSurface {
  CSurface_Methods(){} CSurface_Methods(const CSurface_Methods&); //009F2D60
@@ -40,7 +40,7 @@ FABLE_STATIC_ASSERT(sizeof(BlitD3DDevice::SceneMethod)==4);
 FABLE_STATIC_ASSERT(sizeof(BlitD3DDevice::StretchMethod)==4);
 #endif
 extern void* g_DisplayRenderingEnabled; //013CA810 native nullable render gate
-struct CDisplayManager {
+class CDisplayManager { public:
  void* VTable;void* SystemManager;CRenderManagerCore_Methods* PRenderManager;
  unsigned char SurfacesAndD3D[0x58-0xc];BlitD3DDevice* D3DDevice;
  unsigned char DeviceState[0x214-0x5c];bool Rendering,CanBeginRender;

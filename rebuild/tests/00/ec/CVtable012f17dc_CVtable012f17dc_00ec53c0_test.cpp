@@ -7,11 +7,11 @@
 #endif
 #include <new>
 static int g_scriptBase = 0, g_baseObject = 0;
-struct CScriptBase { virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
+class CScriptBase { public: virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
 struct __declspec(novtable) CScriptObject : CScriptBase { void* m_pInterface; void* m_pData; CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { } };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject { virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject { CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
+class CBaseObject { public: virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
 struct CVtable_012f17dc : CScriptObject {
     CScriptGameResourceObjectScriptedThingBase m_first; CScriptGameResourceObjectScriptedThingBase m_second; virtual void v00() { }
     CVtable_012f17dc(void* data, void* iface) : CScriptObject(data, iface), m_first(), m_second() { }

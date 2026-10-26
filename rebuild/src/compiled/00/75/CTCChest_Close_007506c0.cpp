@@ -10,7 +10,7 @@
 // the interface-9 component comes from the `__forceinline` out-parameter GetInterface (the thing
 // re-read into esi, the bit tested on the whole word `mov eax,[esi+20h] ; test ah,2`, the component
 // through eax).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +24,7 @@ struct CTCFlagged {                         // the interface-9 component
     bool          m_flag;                   // +0x10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -59,7 +59,7 @@ struct COpenCloseHelper {                   // PDB COpenCloseHelper (first four 
     }
 };
 
-struct CTCChest {                           // vtable 0x0126957C
+class CTCChest { public:                           // vtable 0x0126957C
     void*            __vftable;             // +0x00
     CThing*          ParentThing;           // +0x04 (CTCBase)
     unsigned char    _pad08[0x1c - 0x08];   // +0x08 CTCContainerRewardHero

@@ -11,7 +11,7 @@
 //   STLport 4.6 `__adjust_heap`.
 // Shape: STLport 4.6 _heap.c verbatim; topIndex lives in the `push ecx` slot; the implicit operator= is inlined in the
 //   loop and called for the tail store, as in the landed __push_heap 0x00623F80.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0

@@ -1,7 +1,7 @@
 // Behaviour test for 0x005BF4ED NInventory::CTCInventoryBase::OnItemReturnedToInventory
 #include <cstdio>
-struct CTCTrophy { bool MinigameInProgress; int ended; void EndMinigame() { ++ended; MinigameInProgress = false; } };
-struct CThing {
+class CTCTrophy { public: bool MinigameInProgress; int ended; void EndMinigame() { ++ended; MinigameInProgress = false; } };
+class CThing { public:
     CTCTrophy* trophy; bool limbo; bool killed;
     bool GetInterface(CTCTrophy** out, long) { if (!trophy) return false; *out = trophy; return true; }
     void SetInLimbo(bool b) { limbo = b; }

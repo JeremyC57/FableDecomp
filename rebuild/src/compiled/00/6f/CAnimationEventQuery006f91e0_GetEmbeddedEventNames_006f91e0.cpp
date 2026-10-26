@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F91E0, length 84 bytes.
 // Callees: 0x00A242C0 (the bank's animation lookup, `ret 4`), 0x00A269C0 (the stats counted pointer by hidden pointer), 0x00A50BF0 (on the stats with the out pointer; the manifest labels "GetAbilityLevel" / "CGraphicDataBank::ChangeScene" are propagated), operator delete @ 0x00BFE9BC. Shape: the hidden result pointer pushed before the inner call's argument, the inlined release, `ret 8`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct C3DAnimationStats;
+class C3DAnimationStats;
 struct SCountBlock {                               // the shared count block of a CCountedPointer
     long m_references;                             // +0x00
     void (__fastcall* m_pfnDestroy)(const C3DAnimationStats*);   // +0x04
@@ -25,7 +25,7 @@ struct CCountedPointer_C3DAnimationStats {         // {object, count block}
     }
     const C3DAnimationStats* operator->() const { return m_pObject; }
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer_C3DAnimationStats GetAnimationStats();   // 0x00A269C0 (returned through the hidden result pointer)
 };
 struct CAnimationBank {
@@ -33,7 +33,7 @@ struct CAnimationBank {
     C3DAnimationInfo** m_pAnimations;              // +0x380
     C3DAnimationInfo* GetAnimation(long animation);   // 0x00A242C0 (`m_pAnimations[animation]`; the manifest label "GetAbilityLevel" is propagated)
 };
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     void GetEmbeddedEventNames_00a50bf0(void* names) const; // 0x00A50BF0
 };
 struct CAnimationEventQuery_006f91e0 {

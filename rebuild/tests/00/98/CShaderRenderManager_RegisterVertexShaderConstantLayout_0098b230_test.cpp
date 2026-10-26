@@ -3,8 +3,8 @@
 
 #include "rebuild_abi.h"
 
-struct CVertexShaderConstantLayout
-{
+class CVertexShaderConstantLayout
+{ public:
     fable_u32 marker;
 };
 

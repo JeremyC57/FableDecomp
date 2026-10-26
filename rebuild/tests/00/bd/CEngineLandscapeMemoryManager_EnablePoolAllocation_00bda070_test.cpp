@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     char pad[0x39];
     char m_poolEnabled;
     int reconfigures;

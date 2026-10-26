@@ -37,7 +37,7 @@ public:
     }
 };
 extern "C" void __cdecl free(void* p);           // 0x00BFEA14
-struct CTCTextureDecal;
+class CTCTextureDecal;
 struct CWound {
     unsigned char _pad_0x00[0x40];               // Desc (CEntry), Duration, decal entry IDs, MorphIndex
     bool Dead;                                   // +0x40
@@ -60,7 +60,7 @@ template <class T> struct CRetailList {          // STLport list: the sentinel n
         return next;
     }
 };
-struct CTCWound {
+class CTCWound { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];

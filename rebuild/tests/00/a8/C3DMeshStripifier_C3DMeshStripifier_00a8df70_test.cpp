@@ -4,7 +4,7 @@
 struct CBase { virtual void v00() {} CBase() {} };
 struct SStripifierBuffers { void* m_pVertices; void* m_pIndices; void* m_pStrips; void* m_pAdjacency;
     SStripifierBuffers() : m_pVertices(0), m_pIndices(0), m_pStrips(0), m_pAdjacency(0) {} };
-struct C3DMeshStripifier : CBase { SStripifierBuffers m_buffers; float m_cacheWeight; long m_maxStripLength; virtual void v00() {}
+class C3DMeshStripifier : public CBase { public: SStripifierBuffers m_buffers; float m_cacheWeight; long m_maxStripLength; virtual void v00() {}
     C3DMeshStripifier() : CBase(), m_buffers(), m_cacheWeight(3.0f), m_maxStripLength(500) {} };
 int main()
 {

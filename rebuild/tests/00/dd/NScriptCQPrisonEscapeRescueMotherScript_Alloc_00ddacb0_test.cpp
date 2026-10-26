@@ -2,7 +2,7 @@
 // Behaviour test for 00ddacb0: CQ_PrisonEscapeRescueMotherScript::Alloc builds the script with its interface/data pair and a fresh RunningTimer.
 struct Interface { long nextTimer; long RegisterTimer() { return nextTimer++; } };
 static Interface g_interface;
-struct CTimer { long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
+class CTimer { public: long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
 struct Base { Interface* Game; void* MasterScriptData; Base(void* data, Interface& game) : Game(&game), MasterScriptData(data) {} };
 struct Script : Base {
     long CurrentTask; long TasksDone[3]; long TargetNumber[3];

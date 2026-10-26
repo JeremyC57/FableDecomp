@@ -15,11 +15,11 @@
 // CWorld_Calls: engine/CWorld.h holds the PDB data layout of CWorld; only its member call(s) are needed here, so the
 // callee is declared on a separate call-only struct.
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long flags);      // 0x004BF9E0
 };
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
 };
@@ -66,7 +66,7 @@ struct CModifierVectorVector {
     CModifierVectorVector& operator=(const CModifierVectorVector& other);   // 0x00709660
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -78,7 +78,7 @@ struct CTCBase {
 
 typedef long EHeroAttachableAppearanceModifierType;
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                          // +0x0c secondary vptr
     unsigned long FrameLastChanged;              // +0x10
     bool Changed : 1;                            // +0x14 bit 0

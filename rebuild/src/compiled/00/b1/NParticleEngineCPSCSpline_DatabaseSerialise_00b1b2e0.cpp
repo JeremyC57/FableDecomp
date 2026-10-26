@@ -12,29 +12,29 @@
 // SplineAnimSpeed +0x3C.
 // Shape: each member is transferred in place by reference; the three default-value temporaries (false,
 // false, 0.0f) are homed in the dead `info` argument slot ([esp+10h]) after the base call. `ret 8`.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
 };
 
 namespace NParticleEngine {
 
-struct CParticleSystem;
-struct CEmitterDatabaseSerialiseInfo;
+class CParticleSystem;
+class CEmitterDatabaseSerialiseInfo;
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;        // +0x04
     bool UpdateStarted : 1;                 // +0x08
     bool Initialised : 1;
 };
 
-struct CPSCSplineBase : CPSCBase {
+class CPSCSplineBase : public CPSCBase { public:
     unsigned char _body[0x34 - 0x0c];       // +0x0c SplineAnimSpeed, Spline, the two counted data pointers
     void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);   // 0x00B22670
 };
 
-struct CPSCSpline : CPSCSplineBase {        // vtable 0x012A0934
+class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
     float SplineCurrentPosition;            // +0x34
     bool  ReverseSpline;                    // +0x38
     bool  SplineBounce;                     // +0x39

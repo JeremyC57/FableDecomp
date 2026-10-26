@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     CThing* PItem;                          // +0x04
     CThing* GetPItem() const;               // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
 };
 typedef CIntelligentPointer<CThing> PThing;
 namespace std {

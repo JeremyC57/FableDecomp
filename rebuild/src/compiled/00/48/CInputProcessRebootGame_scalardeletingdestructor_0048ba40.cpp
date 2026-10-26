@@ -1,4 +1,4 @@
-struct CInputProcessRebootGame {
+class CInputProcessRebootGame { public:
     void* vftable;
 };
 

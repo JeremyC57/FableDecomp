@@ -15,11 +15,11 @@
 // Layout: the retail CConsole offsets of the landed rows (0x009EA660): FrontCommandLine +0x1c,
 // RegisteredConsoleInputs +0x40; CStringParser as the landed 0x00CB7CB0 (0x28 bytes).
 extern const char g_emptyText_0129aaf4[];  // 0x0129AAF4 ("", CCharString's empty text)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                    // +0
     unsigned long StringLength;             // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -37,7 +37,7 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const char* text, const CCharString& string);    // 0x0099F690
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                          // 0x0099A2E0
 };
@@ -45,7 +45,7 @@ struct CStringParserCommentList {           // retail std::list<CStringParserCom
     void* m_pHead;
     ~CStringParserCommentList();            // 0x004046B0
 };
-struct CStringParser : CBaseClass {         // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:         // retail 0x28 bytes
     char*                    String;        // +0x04
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;      // +0x0c
@@ -55,9 +55,9 @@ struct CStringParser : CBaseClass {         // retail 0x28 bytes
     long                     CursorPos[3];  // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);     // 0x00404720
-    bool ReadNextItem(struct CParsedItem& item);    // 0x009BA080
+    bool ReadNextItem(class CParsedItem& item);    // 0x009BA080
 };
-struct CParsedItem {                        // 12 bytes
+class CParsedItem { public:                        // 12 bytes
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
@@ -65,7 +65,7 @@ struct CParsedItem {                        // 12 bytes
     const CCharString& GetSymbol();         // 0x009B9870
 };
 struct CConsole_Retail;
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual void v00();
     virtual void Execute(const CCharString& commandLine, CConsole_Retail* console);  // slot 1 (+0x04)
 };

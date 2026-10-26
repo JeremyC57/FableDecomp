@@ -12,15 +12,15 @@
 // the second call; the CScriptThing is a named local of the hit block (retail pushes its frame address with
 // `lea ; push`, an unnamed temporary would push eax); the trailing bit set is a byte
 // load/or/store.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[12];
     ~CScriptThing();                               // 0x004AA840
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x10];
     unsigned char    ThingType;                    // +0x10
     unsigned char    _pad11[7];
@@ -35,7 +35,7 @@ struct CThing {
     unsigned char    _93_4 : 4;
     CScriptThing GetScriptThing();                 // 0x004C7E50
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool BindsEntityScript(const CCharString& name);                              // 0x00CB7D60
     void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
 };
@@ -51,7 +51,7 @@ struct SActiveQuestNode {                          // STLport list node of CCoun
     CActiveQuest*     m_pData;                     // +0x08
     void*             m_pInfo;                     // +0x0c
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad00[0x38];
     SActiveQuestNode* ActiveQuests;                // +0x38
     void OnActivateEntity(CThing* thing);

@@ -1,4 +1,4 @@
-struct CInputProcessTavernGame {
+class CInputProcessTavernGame { public:
     void* vftable;
 };
 

@@ -3,7 +3,7 @@
 #define CHECK(c) if (!(c)) { std::printf("007f9ff0_TEST FAIL\n"); return 1; }
 // Test model: candidates carry a compare value; the comparator ranks a before b when a's value is greater (the inlined
 // CThingCompare_BestForTargeting2::operator() test `valueA > valueB`), so the SGI algorithms order best first.
-struct CThing { float Value; };
+class CThing { public: float Value; };
 struct CThingCompare { int calls; CThingCompare() : calls(0) { } bool operator()(CThing* a, CThing* b) { ++calls; return a->Value > b->Value; } };
 static void IterSwap(CThing** a, CThing** b) { CThing* t = *a; *a = *b; *b = t; }
 static CThing** UnguardedPartition(CThing** first, CThing** last, CThing* pivot, CThingCompare comp)

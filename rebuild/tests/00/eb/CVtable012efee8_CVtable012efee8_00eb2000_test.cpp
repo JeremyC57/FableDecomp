@@ -7,16 +7,16 @@
 #endif
 #include <new>
 static int g_copies = 0, g_baseObject = 0, g_strings = 0; static const void* g_copySource = 0;
-struct CScriptThing { unsigned char _body[0xc]; CScriptThing() { } CScriptThing(const CScriptThing& other) { ++g_copies; g_copySource = &other; } };
+class CScriptThing { public: unsigned char _body[0xc]; CScriptThing() { } CScriptThing(const CScriptThing& other) { ++g_copies; g_copySource = &other; } };
 struct CScriptOwner { unsigned char _pad00[0x40]; void* m_pInterface; };
 struct CVtable_012c3224 {
     virtual void v00() { } void* m_pInterface; CScriptThing m_thing;
     CVtable_012c3224(const CScriptThing& thing, void* iface) : m_pInterface(iface), m_thing(thing) { }
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject { virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject { CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
-struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) { ++g_strings; } };
+class CBaseObject { public: virtual void v00() { } void* m_pIntelligentPointer; CBaseObject() : m_pIntelligentPointer(0) { ++g_baseObject; } };
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: CCountedPointerWords PImp; virtual void v00() { } CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { } };
+class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) { ++g_strings; } };
 struct CVtable_012efee8 : CVtable_012c3224 {
     CScriptOwner* m_pOwner; long m_index; CScriptGameResourceObjectScriptedThingBase m_scriptedThing; unsigned char _pad2c[8]; CCharString m_name; virtual void v00() { }
     CVtable_012efee8(CScriptOwner* owner, long index, const CScriptThing& thing) : CVtable_012c3224(thing, owner->m_pInterface), m_pOwner(owner), m_scriptedThing(), m_name() { m_index = index; }

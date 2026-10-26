@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_base = 0;
 struct IDirect3DVolumeTexture9;
-struct CBaseClass { CBaseClass() { ++g_base; } virtual void v00() { } virtual ~CBaseClass() { } };
-struct CVolumeTexture : CBaseClass {
+class CBaseClass { public: CBaseClass() { ++g_base; } virtual void v00() { } virtual ~CBaseClass() { } };
+class CVolumeTexture : public CBaseClass { public:
     IDirect3DVolumeTexture9* PD3DVolumeTexture; long ByteLength; void* PData;
     CVolumeTexture() : PD3DVolumeTexture(0), PData(0) { }
     virtual void v00() { }

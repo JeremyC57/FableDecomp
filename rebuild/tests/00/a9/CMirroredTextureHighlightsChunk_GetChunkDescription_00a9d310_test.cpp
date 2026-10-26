@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
 };
 
@@ -16,7 +16,7 @@ CCharString* __fastcall CCharString_ctor(CCharString* self, int /*edx*/, const c
     return self;
 }
 
-struct CMirroredTextureHighlightsChunk {
+class CMirroredTextureHighlightsChunk { public:
     CCharString GetChunkDescription();
 };
 

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -11,8 +11,8 @@ struct CThingPlacement {
     virtual void SetPosition(const C3DVector& p) { m_position.X = p.X; m_position.Y = p.Y; m_position.Z = p.Z; }
     virtual void Update(long flags) { ++m_updates; m_lastFlags = flags; }
 };
-struct CThing { CThingPlacement* m_pPlacement; };
-struct CWorldMap { float GetGroundSizeZAt(const C3DVector& p) { return p.X + p.Y; } };
+class CThing { public: CThingPlacement* m_pPlacement; };
+class CWorldMap { public: float GetGroundSizeZAt(const C3DVector& p) { return p.X + p.Y; } };
 static CWorldMap g_map;
 struct CTCShotDefinitionTearInGround {
     CThing* ParentThing;

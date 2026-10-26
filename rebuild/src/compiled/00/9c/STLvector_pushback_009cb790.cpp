@@ -11,21 +11,21 @@
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
 namespace NGameText {
-struct CGroupEntry {                                  // intrusively counted pointee (CIVCountedPointeeBase)
+class CGroupEntry { public:                                  // intrusively counted pointee (CIVCountedPointeeBase)
     void* __vftable;                                 // +0x00
     long  RefCount;                                  // +0x04
 };
 }
 
 template <class T>
-struct CIVCountedPointer {                           // 4 bytes
+class CIVCountedPointer { public:                           // 4 bytes
     T* P;                                            // +0x00
     CIVCountedPointer(const CIVCountedPointer& x) : P(x.P) { if (P) ++P->RefCount; }
     ~CIVCountedPointer();
 };
 
 namespace NGameText {
-struct CDataBankGroupEntry {                         // 4 bytes (Ego_r.pdb)
+class CDataBankGroupEntry { public:                         // 4 bytes (Ego_r.pdb)
     CIVCountedPointer<CGroupEntry> PGroup;           // +0x00
 };
 }

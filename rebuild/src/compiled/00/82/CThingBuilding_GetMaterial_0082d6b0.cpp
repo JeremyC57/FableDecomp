@@ -12,7 +12,7 @@
 //   counted release living on the def object) runs BEFORE the field read (the landed wave-24m rule).
 // Identity: CThingBuilding vtable 0x0124509C slot 70 (rtti-vtables.tsv); the slot's name is not in the PDB dump, the
 //   descriptive name follows the CThingObjectDef "Material" field it serves for other things.
-struct CDefPointeeBase {                // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();             // slot 1
     long m_refCount;                    // +0x04
@@ -23,7 +23,7 @@ struct CDefPointeeBase {                // counted def object: vptr, reference c
     }
 };
 
-struct CThingBuildingDef : CDefPointeeBase {    // retail offsets = PDB - 4
+class CThingBuildingDef : public CDefPointeeBase { public:    // retail offsets = PDB - 4
     unsigned char _pad08[0x80];
     long WallMaterial;                  // +0x88 (PDB +0x8c)
     long FloorMaterial;                 // +0x8c (PDB +0x90)
@@ -37,7 +37,7 @@ struct CThingBuildingDef : CDefPointeeBase {    // retail offsets = PDB - 4
     unsigned char HasWeatherMask : 1;
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -51,7 +51,7 @@ template<class T> struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CThingBuildingDef>* out);   // 0x004AB840 (GetDef<CThingBuildingDef>)
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -68,7 +68,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
 }
 #pragma auto_inline(on)
 
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x8c];
     unsigned short DefGlobalIndex;      // +0x8c (CThing; PDB +0x9c)
     CDefinitionManager* GetDefinitionManager();     // 0x004C7990 (CThing)

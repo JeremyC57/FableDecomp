@@ -7,7 +7,7 @@ static std::string g_log;
 static void logs(const char* s) { g_log += s; g_log += ";"; }
 
 static int g_frame = 0;
-struct CThing {
+class CThing { public:
     bool Dead;
     bool CombatMode;
     int CombatantFrames;                        // IsInMeleeAsAttacker() true while g_frame < this
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item) { m_pItem = item; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 static bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
@@ -37,12 +37,12 @@ static bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCombatManager {
+class CCombatManager { public:
     CThing* LastCreature; CThing* LastTarget;
     void RegisterCombatant(CThing* creature, CThing* target, bool flag) { (void)flag; LastCreature = creature; LastTarget = target; logs("register"); }
 };
-struct CWorld { CCombatManager* PCombatManager; };
-struct CAIBrain { CThing* PCreature; };
+class CWorld { public: CCombatManager* PCombatManager; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_stopAt = -1, g_stopCalls = 0, g_lookResult = 2, g_moveFailAt = -1, g_runnableUntil = 1000, g_enemyDiesAt = -1;
 struct CAIStateGroup_MeleeCombatNearby {

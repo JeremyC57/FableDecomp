@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054E5A0, length 48 bytes.
 // Leaf: GetSize
 // Shape: the size copied into the frame (its Y word through an integer register), each axis multiplied by its factor, `fxch` then the two stores into the result, `ret 4`.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() { }

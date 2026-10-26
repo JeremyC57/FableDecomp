@@ -3,20 +3,20 @@
 // Callees: C3DBoundingBox::CalculateMatrix(CMatrix3x4*) @ 0x00ADEBC0 (on the argument), CEngineCamera::ClipBox(CMatrix3x4*) @ 0x00B30610 (on the engine camera
 // singleton @ 0x01436EA0, bool result). Shape: the 48-byte matrix local is uninitialised (`sub esp,30h`), `this` is never read (`mov ecx,[esp+4]` at once);
 // `ret 4`.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_rows[12];
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     bool ClipBox(CMatrix3x4* matrix);              // 0x00B30610
 };
 extern CEngineCamera* g_pEngineCamera_01436ea0;    // 0x01436EA0
 
-struct CEngine {
+class CEngine { public:
     bool ClipBox(const C3DBoundingBox& box);
 };
 

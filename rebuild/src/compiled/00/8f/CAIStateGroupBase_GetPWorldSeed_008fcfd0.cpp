@@ -1,5 +1,5 @@
 #include "engine/CAIStateGroupBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIBrain { char pad[0x14]; unsigned long base; };
+class CAIBrain { public: char pad[0x14]; unsigned long base; };
 
 unsigned long* __fastcall CAIStateGroupBase_GetPWorldSeed(const CAIStateGroupBase* stateGroup)
 {

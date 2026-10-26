@@ -17,7 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -30,12 +30,12 @@ namespace N_006e7b40 { struct CScriptThing {                                   /
     CScriptThing();                                     // 0x006E7B40
     ~CScriptThing();                                    // 0x004AA840
 }; } using N_006e7b40::CScriptThing;
-struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes, vtable 0x0127094C
     unsigned char _body[0x10];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
 };
-struct CFireHeartPatternDef;
+class CFireHeartPatternDef;
 struct CFireHeartPatternVector {                        // vector<CFireHeartPatternDef> (retail 12 bytes)
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     CFireHeartPatternVector& operator=(const CFireHeartPatternVector& other);   // 0x00D34D40
@@ -59,7 +59,7 @@ struct CCutsceneFlagMap {                               // map<CCharString, bool
     bool& operator[](const CCharString& key);           // 0x008ADF10
 };
 struct CCutsceneArgMap { void* _body[3]; };            // map<CCharString, CCharString> (retail 12 bytes)
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -147,7 +147,7 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void v648(); virtual void v649(); virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) GetActiveQuestName
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xc04];
     CCharString FHSunPadFX;                             // +0xC04
     CCharString FHMoonPadFX;                            // +0xC08

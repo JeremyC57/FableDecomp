@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <new>
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     long m_refCount;
     CIVCountedPointeeBase() : m_refCount(0) { }
     virtual ~CIVCountedPointeeBase() { }
     virtual void Destroy() { }
 };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
@@ -16,9 +16,9 @@ template<class T> struct CIVCountedPointer {
             ++m_pObject->m_refCount;
     }
 };
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
+class CAnimationEntry { public:
     long BankIndex;
     CDefString AnimName;
     CDefString GroupName;

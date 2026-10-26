@@ -5,7 +5,7 @@
 // The rel32 target is relocation-masked in parity, so any extern tail-call
 // callee with a matching signature reproduces the bytes exactly.
 
-struct CSpecialAbilitiesBerserkDef;
+class CSpecialAbilitiesBerserkDef;
 
 // The real implementation this thunk tail-jumps to (address relocation-masked).
 extern void __fastcall CSpecialAbilitiesBerserkDef_Copy_impl(

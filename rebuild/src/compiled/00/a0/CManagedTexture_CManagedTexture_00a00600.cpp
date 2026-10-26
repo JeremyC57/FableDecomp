@@ -20,7 +20,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0) { }           // inlined into every constructor that embeds it
 };
 
-struct CManagedTexture : CBase_0099a2d0 {
+class CManagedTexture : public CBase_0099a2d0 { public:
     SZeroed m_data;                        // +0x4
     virtual void v00();
     CManagedTexture();

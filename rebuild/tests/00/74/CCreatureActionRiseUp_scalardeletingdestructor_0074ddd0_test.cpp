@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_RiseUp {
+class CCreatureAction_RiseUp { public:
     void* vftable;
     int destroyed;
 };

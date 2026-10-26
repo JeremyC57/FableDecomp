@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 struct CCountBlock { unsigned long RefCount; };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                   // +0x0
     CCountBlock* Info;                         // +0x4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -32,7 +32,7 @@ public:
     virtual ~CBase();
 };
 
-struct CCompositeSurfaceCache;
+class CCompositeSurfaceCache;
 
 class CCompositeSurfaceInfo : public CBase {
 public:

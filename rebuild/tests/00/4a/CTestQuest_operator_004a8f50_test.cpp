@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 static int g_copies = 0, g_assigns = 0;
-struct CCharString {
+class CCharString { public:
     char text[16];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { ++g_copies; std::strcpy(text, o.text); }
     CCharString& operator=(const CCharString& o) { ++g_assigns; std::strcpy(text, o.text); return *this; }
 };
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName, HSPName; long ColourIndex; CCharString DisplayName, IniFile, OutiFile, QuestCardDefName;
     CTestQuest(const char* n, long c) : QuestName(n), HSPName("hsp"), ColourIndex(c), DisplayName("disp"), IniFile("ini"), OutiFile("outi"), QuestCardDefName("card") { }
     CTestQuest(const CTestQuest& o) : QuestName(o.QuestName), HSPName(o.HSPName), ColourIndex(o.ColourIndex), DisplayName(o.DisplayName),

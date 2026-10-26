@@ -12,7 +12,7 @@
 // copy `T(*(last - 1))` in the argument area through the pair's implicit copy constructor (four dword moves, then
 // the counted pointer's inline copy with `inc [ecx+4]`) and passes `last - 1` both as last and as result.
 // Element model from the landed 0x005E21F0 source (Ego_r.pdb CAnimationEntry members).
-struct CAnimComponentMap {                  // intrusively counted object: vptr, count at +4
+class CAnimComponentMap { public:                  // intrusively counted object: vptr, count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long m_count;                           // +4
@@ -22,7 +22,7 @@ struct CIVCountedPointer {
     CIVCountedPointer(const CIVCountedPointer& o) : m_p(o.m_p) { if (m_p) ++m_p->m_count; }
     ~CIVCountedPointer() { if (m_p && --m_p->m_count == 0) m_p->Destroy(); }
 };
-struct CAnimationEntry {                    // 0x10 bytes
+class CAnimationEntry { public:                    // 0x10 bytes
     long BankIndex;                         // +0x00
     long AnimName;                          // +0x04 CDefString (table position)
     long GroupName;                         // +0x08 CDefString (table position)

@@ -27,7 +27,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {              // a counted def reference returned by value
+template <class T> class CDefPointer { public:              // a counted def reference returned by value
     T* m_p;
     ~CDefPointer()
     {
@@ -36,13 +36,13 @@ template <class T> struct CDefPointer {              // a counted def reference 
     }
 };
 struct CTattooCardDef : CDefBase { };
-struct CHairCardDef : CDefBase { };
+class CHairCardDef : public CDefBase { public: };
 CDefPointer<CTattooCardDef> __fastcall GetTattooCardDef(long itemType);   // 0x005D9AA0
 CDefPointer<CHairCardDef> __fastcall GetHairCardDef(long itemType);       // 0x005D9A10
 enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_BUY = 11, INVENTORY_CATEGORY_SELL = 12 };
 
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     long GetCategoryIdentifier();                    // 0x005BD1B3
 };
 struct CTCInventoryTrade {

@@ -15,8 +15,8 @@
 //   Members (World +0x1C, Number +0x28, PlayerCharacter +0x34) from engine/CPlayer.h.
 #include "engine/CPlayer.h"
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
 };
 struct CPlayerSave {
@@ -24,18 +24,18 @@ struct CPlayerSave {
     CCharString      RegionName;                            // +0x08
 };
 
-struct C3DVector;
-struct CBaseObject;
-struct CThing {
+class C3DVector;
+class CBaseObject;
+class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
-struct CThingPlayerCreature;
-struct CThingManager {
+class CThingPlayerCreature;
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);                   // 0x0051ED80
 };
 
 typedef long ELoadType;
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberFromName(const CCharString& name) const;          // 0x004FC210
     void LoadRegion(long region, bool keepOthers, bool immediately);      // 0x00500540
     void SetPlayerPos(long player, const C3DVector& position, ELoadType loadType);   // 0x005063E0

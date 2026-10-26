@@ -19,13 +19,13 @@ struct SYSTEMTIME {
 };
 extern "C" __declspec(dllimport) void __stdcall GetSystemTime(SYSTEMTIME* time);   // kernel32 (import 0x0143FE18)
 long __fastcall GFROR13(unsigned long value);         // 0x00497890
-struct CMapInfo {                                      // 0x48 bytes
+class CMapInfo { public:                                      // 0x48 bytes
     unsigned char _pad00[0x20];
     unsigned long MapUID;                              // +0x20
     bool          Used;                                // +0x24
     unsigned char _body[0x23];
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

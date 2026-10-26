@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_BalverineWander::Update @ 0x0091BD10: wander/return target, animation pick, loop exit.
 #include <cstdio>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -16,27 +16,27 @@ struct C3DVector {
     }
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
 };
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) { }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first, m_second;
     CSoundPair() : m_first(0), m_second(0) { }
     CSoundPair(long a, long b) : m_first(a), m_second(b) { }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool ok; C3DVector wander;
     bool GetNearbyWanderPosition(const C3DVector&, float, C3DVector* out, bool) { if (ok) *out = wander; return ok; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector pos; bool hasNav; CTCCreatureNavigation nav;
     const C3DVector& GetPosition() const { return pos; }
     CSoundPair GetSoundPair(const CCharString& name) { return CSoundPair(std::strcmp(name.text, "HOWL") == 0 ? 7 : 1, 0); }
     template<class T> void GetInterfaceR(T** ppOut, long, bool& has) { has = hasNav; if (has) *ppOut = &nav; }
 };
-struct CCreatureActionBase { const char* anim; long sound; };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureActionBase { public: const char* anim; long sound; };
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase*, const CCharString& name, const CSoundPair& s, bool, bool, bool, long, long)
     { anim = name.text; sound = s.m_first; }
 };
@@ -44,7 +44,7 @@ template <class T> T* TempAddress(const T& t) { return const_cast<T*>(&t); }   /
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_WALK = 3 };
-struct CThing;
+class CThing;
 struct CAIStateGroup_BalverineWander {
     CThingCreatureBase* creature; unsigned long rolls[8]; int roll; int loopsLeft; bool moveOk; bool terminated;
     C3DVector moves[8]; int moveCount; const char* anims[8]; long sounds[8]; int animCount;

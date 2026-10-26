@@ -21,15 +21,15 @@ class C3DVector { public:
     void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
     C3DVector& AccurateNormalise();                                  // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                      // +0x00
     C3DVector Forward;                                 // +0x0c
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     bool IsLoaded() const;                             // 0x00A23F50
 };
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* PeekAnimation(long index);       // 0x00A242C0
 };
 struct CShortVector {                                  // STLport vector<short>
@@ -39,7 +39,7 @@ struct CShortVector {                                  // STLport vector<short>
     short* begin() { return _M_start; }
     short& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CAnimateThing {                                 // CurrentAnim.MainAnimSet at +0 (retail layout)
+class CAnimateThing { public:                                 // CurrentAnim.MainAnimSet at +0 (retail layout)
     long           UpdateMode;                         // +0x00
     CShortVector   Anims;                              // +0x04 vector<short>
     unsigned char  _pad10[0x1c - 0x10];
@@ -49,14 +49,14 @@ struct CAnimateThing {                                 // CurrentAnim.MainAnimSe
     unsigned char  Type;                               // +0x50
     CMeshDataBank* GetMeshBank();                      // 0x0070C0D0
 };
-struct CTCAnimationComplex {                           // interface 0x5A
+class CTCAnimationComplex { public:                           // interface 0x5A
     CAnimateThing& GetAnimation();                     // 0x0070B460
     float GetAnimDuration(long index);                 // 0x0070B4A0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     void GetTurnBetween(float from, float to, float* turn) const;   // 0x005DC000 (name descriptive)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -98,7 +98,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                   // +0x20
     CInterfaceMap  m_interfaces;                       // +0x44
@@ -122,7 +122,7 @@ struct CThing {
         return component;
     }
 };
-struct CTCLook {
+class CTCLook { public:
     void*            __vftable;                        // +0x00
     CThing*          ParentThing;                      // +0x04
     unsigned char    _pad08[0x44 - 0x08];

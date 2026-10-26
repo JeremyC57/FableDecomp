@@ -4,7 +4,7 @@
 
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0, ANIM_COMPONENT_A = 3, ANIM_COMPONENT_B = 7 };
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void Destroy(int flags) { (void)flags; }
     virtual void Delete() { }
     unsigned int IVRefCount;

@@ -10,16 +10,16 @@
 // zeros) is inlined here; local polymorphic models with the PDB member names (engine/CResource.h, engine/CResourceList.h).
 // Shape: the list's vtable store precedes the member construction; the remaining stores are body assignments in source
 // order (0x20, 0x2C, 0x30, 0x24, 0x28, 0x34, 0x38 -- not declaration order), sharing the zero register.
-struct CResourceList;
+class CResourceList;
 
 // engine/CIVCountedPointeeBase.h names the count IVRefCount (+4); its generated header flattens the vptr.
-struct CIVCountedPointeeBase {                       // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                       // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase();
     long IVRefCount;                                   // +0x04
     CIVCountedPointeeBase() : IVRefCount(1) { }
 };
 
-struct CResource : CIVCountedPointeeBase {           // vtable 0x012354A4, 0x1C bytes
+class CResource : public CIVCountedPointeeBase { public:           // vtable 0x012354A4, 0x1C bytes
     CResourceList* ResourceList;                     // +0x08
     CResource*     PrevResource;                     // +0x0C
     CResource*     NextResource;                     // +0x10
@@ -29,7 +29,7 @@ struct CResource : CIVCountedPointeeBase {           // vtable 0x012354A4, 0x1C 
     virtual ~CResource();
 };
 
-struct CResourceList {                               // vtable 0x0129C808, 0x3C bytes
+class CResourceList { public:                               // vtable 0x0129C808, 0x3C bytes
     virtual ~CResourceList();
     CResource     Head;                              // +0x04 (sentinel)
     unsigned long ResourceCount;                     // +0x20

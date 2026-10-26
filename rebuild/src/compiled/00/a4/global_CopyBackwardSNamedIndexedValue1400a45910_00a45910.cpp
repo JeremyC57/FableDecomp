@@ -9,7 +9,7 @@
 // at +4 and a 12-byte trivially copyable value at +8 moved as an inline dword block (re-addressed in ecx/edx) --
 // the CTargetPoint shape (landed 0x00806EA0) with a string in place of the intelligent pointer. The count lives
 // in the dead `result` argument slot. The manifest label pair<pair<long,long>, CEngineTextureDecal> is propagated.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

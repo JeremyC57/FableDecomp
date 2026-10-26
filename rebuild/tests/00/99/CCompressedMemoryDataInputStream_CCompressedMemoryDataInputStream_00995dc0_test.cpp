@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <stddef.h>
-struct CCompressorZlib;
+class CCompressorZlib;
 static int g_baseCtors = 0;
 struct CBaseClassNonCopyable { virtual void v00() { } CBaseClassNonCopyable() { ++g_baseCtors; } };
 struct CDataStream : CBaseClassNonCopyable { unsigned long m_position, m_length, m_flags, m_bufferStart, m_bufferEnd; virtual void v00() { } CDataStream() : m_position(0), m_length(0), m_flags(0), m_bufferStart(0), m_bufferEnd(0) { } };

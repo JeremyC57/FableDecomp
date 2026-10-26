@@ -30,7 +30,7 @@ public:
     C3DVector GetPos() const { return C3DVector(Pos.X, Pos.Y, Pos.Z); }
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                   // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };

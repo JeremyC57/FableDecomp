@@ -13,7 +13,7 @@
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`item = other.GetPItem(); SetPItem(item);`), which
 //   keeps the member's address (this of SetPItem) after the source's GetPItem call and colours the registers as retail; the
 //   inline `SetPItem(other.GetPItem())` form evaluates the inlined member's `this` first.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
@@ -52,7 +52,7 @@ struct CCoverThingVector {                          // std::vector<CIntelligentP
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

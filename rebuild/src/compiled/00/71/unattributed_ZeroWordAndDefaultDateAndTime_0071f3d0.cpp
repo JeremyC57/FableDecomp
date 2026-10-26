@@ -6,7 +6,7 @@
 // neighbour constructs pair<CCharString const, pair<long, CDateAndTime> > (0x0071F4E0), so this is most
 // likely the pair<long, CDateAndTime> part; the unused argument (`ret 4`) is kept as a long. Landed as
 // _unattributed with descriptive names.
-struct CDateAndTime {                                       // 28 bytes
+class CDateAndTime { public:                                       // 28 bytes
     unsigned long m_words[7];
     CDateAndTime();                                         // 0x009E9AB0
 };

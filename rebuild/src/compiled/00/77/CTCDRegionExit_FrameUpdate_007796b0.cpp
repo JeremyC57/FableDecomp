@@ -11,8 +11,8 @@
 // CTCDRegionExit::GetDisplayName @ 0x00779260, CTCRegionDisplay::SetCurrentAreaName @ 0x00639BA0 / FinishShowingRegionName
 // @ 0x00639930, CTCDRegionExit::MoveHeroThroughExit @ 0x00779080; g_pPlayerGui 0x013B8790 (byte +0xf6), epsilon 0x0129BA3C.
 // Layout = Ego_r.pdb CTCDRegionExit (packed, as the landed MoveHeroThroughExit 0x00779080); CThing dead bit +0x91, +0xb4 float.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -45,28 +45,28 @@ public:
     CThing* GetPItem() const;                                // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-struct CPlayer { CThing* GetHeroThing(); };                  // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };         // 0x00449970
-struct CCharString { void* PStringData; };
-struct CDisplayEngine {
+class CPlayer { public: CThing* GetHeroThing(); };                  // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };         // 0x00449970
+class CCharString { public: void* PStringData; };
+class CDisplayEngine { public:
     void StartLetterBoxMode(float a, float b, float aspect); // 0x00434BA0
     void EndLetterBox();                                     // 0x004349D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                           // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0xf6];
     bool          Busy;                                      // +0xf6
 };
 extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xdf];
     bool          ShowRegionNames;                           // +0xdf
 };
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     void SetCurrentAreaName(const CCharString& name, float time, bool a, bool b, bool c);   // 0x00639BA0
     void FinishShowingRegionName();                          // 0x00639930
 };

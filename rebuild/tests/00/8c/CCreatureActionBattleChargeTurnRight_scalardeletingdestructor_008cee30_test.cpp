@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BattleChargeTurnRight {
+class CCreatureAction_BattleChargeTurnRight { public:
     void* vftable;
     int destroyed;
 };

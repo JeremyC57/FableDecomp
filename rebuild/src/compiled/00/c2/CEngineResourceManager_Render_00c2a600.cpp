@@ -8,7 +8,7 @@ struct Param {
     int refcount;   // +0x10
 };
 
-struct CEngineResourceManager { char x; };
+class CEngineResourceManager { public: char x; };
 
 void __fastcall Render(CEngineResourceManager* self, int edx, Param* p)
 {

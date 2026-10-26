@@ -1,12 +1,12 @@
 // CTCDiscovery::GetClassTypeName @ 0x00750a40
 // Value-return of a CCharString built from a string-literal pointer and -1.
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n);   // ctor is engine 0x0099ebf0 (extern)
 };
 
-struct CTCDiscovery {
+class CTCDiscovery { public:
     CCharString GetClassTypeName();
 };
 

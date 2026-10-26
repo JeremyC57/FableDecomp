@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWorldMap {
+class CWorldMap { public:
     void* vftable;
     int destroyed;
 };

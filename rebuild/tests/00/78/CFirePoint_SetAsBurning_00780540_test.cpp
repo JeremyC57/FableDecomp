@@ -1,15 +1,15 @@
 // Behaviour test for 0x00780540 CFirePoint::SetAsBurning.
 #include <cstdio>
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CCharString { const char* s; };
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CCharString { public: const char* s; };
 static int g_attaches = 0; static CThing* g_attachTo = 0; static int g_attachType = 0, g_attachIndex = 0;
 static const CCharString* g_attachName = 0;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* t, int type, const CCharString& name, int index, float)
     { ++g_attaches; g_attachTo = t; g_attachType = type; g_attachName = &name; g_attachIndex = index; }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_interfaceFlags; CTCDParticleEmitter* m_pParticleEmitter; unsigned char m_statusFlags; C3DVector m_pos;
     const C3DVector& GetPosition() { return m_pos; }
     CTCDParticleEmitter* GetParticleEmitter() { CTCDParticleEmitter* e = 0; if (m_interfaceFlags & 0x800) e = m_pParticleEmitter; return e; }

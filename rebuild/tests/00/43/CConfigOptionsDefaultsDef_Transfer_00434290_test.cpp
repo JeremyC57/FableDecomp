@@ -4,7 +4,7 @@
 static const void* g_order[32]; static int g_kind[32]; static int g_n = 0;
 struct Def;
 static const Def* g_def = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void TransferValue(long* p);
     void TransferValue(float* p);
     void TransferValue(unsigned long* p);

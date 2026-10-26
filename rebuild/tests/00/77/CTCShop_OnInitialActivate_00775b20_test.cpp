@@ -1,7 +1,7 @@
 #include <cstdio>
 
 static int g_body = 0;
-struct CTCShop { unsigned char pad[0x50]; bool IsStallLike;
+class CTCShop { public: unsigned char pad[0x50]; bool IsStallLike;
     bool CalcIsStallLike() { return true; } void OnInitialActivateBody() { g_body = 1; }
     void OnInitialActivate() { IsStallLike = CalcIsStallLike(); OnInitialActivateBody(); } };
 int main()

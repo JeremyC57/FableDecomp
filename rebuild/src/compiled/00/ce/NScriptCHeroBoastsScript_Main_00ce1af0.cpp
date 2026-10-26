@@ -15,7 +15,7 @@
 // Shape: the boast vector is a loop-body local (STLport _Vector_base with an out-of-line _STLP_alloc_proxy); the
 //   by-value quest-name argument is a conditional temporary (flag bit in ebx); the empty region name is an explicit
 //   temporary; the vector lives in its own `{}` block so its destructor runs before the frame call.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -41,7 +41,7 @@ public:
 };
 }
 typedef std::vector<std::pair<long, CCharString> > BoastVector;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                 // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -50,7 +50,7 @@ struct CGameScriptInterface {
     virtual void v032(); virtual void v033();
     virtual void MsgOnBoastsMade(BoastVector& boasts) const;             // slot 34 (+0x88)
 };
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -69,14 +69,14 @@ template <class T, class A1, class A2> struct CSpawnedFunc2 : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(Arg1, Arg2); }
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 struct CScriptBase {                                    // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];                          // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CHeroBoastsScript : CScriptBase {
+class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44
     void ControlNewBoast(long boast, CCharString questName);   // 0x00CE1C90

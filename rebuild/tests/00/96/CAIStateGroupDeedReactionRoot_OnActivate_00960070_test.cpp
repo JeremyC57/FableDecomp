@@ -1,6 +1,6 @@
 // behaviour test for CAIStateGroup_DeedReactionRoot::OnActivate (0x00960070)
 #include <cstdio>
-struct CThing { bool dead; unsigned long long UniqueID; };
+class CThing { public: bool dead; unsigned long long UniqueID; };
 struct CLog { int applied; void ApplyPendingDeedLog() { ++applied; } };
 struct Root {
     CThing* ThingReactingTo; bool DeedIsVirtual; unsigned long long LastUID;

@@ -13,7 +13,7 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 
-struct CEngineLocalDetailObjectDef {
+class CEngineLocalDetailObjectDef { public:
     unsigned char _body[0x88];
 };
 

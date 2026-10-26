@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSpecialAbilitiesBerserkDef;
+class CSpecialAbilitiesBerserkDef;
 
 extern void __fastcall CSpecialAbilitiesBerserkDef_Copy_impl(
     CSpecialAbilitiesBerserkDef* thisptr, void* src);

@@ -12,26 +12,26 @@
 //   DataType +0x04} (8 bytes), C4DVector {X, Y, Z, W}.
 // Shape: the element count is the `a < b ? a : b` of the two sizes (each recomputed in its arm).
 enum EVertexStreamDataType { VERTEX_STREAM_DATA_TYPE_NONE };
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
 };
-template <class T> struct CArray {                     // STLport vector storage
+template <class T> class CArray { public:                     // STLport vector storage
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     const T& operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CVertexStreamFormat {
-    struct CDataElement {
+class CVertexStreamFormat { public:
+    class CDataElement { public:
         unsigned long         Register;                // +0x00
         EVertexStreamDataType DataType;                // +0x04
     };
     unsigned long         _f00;                        // +0x00
     CArray<CDataElement>  DataElements;                // +0x04
 };
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
 };

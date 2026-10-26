@@ -17,10 +17,10 @@
 //   assignment, the TC name a named local in its own block, the ability CDefPointer in a sibling block.
 // Layout: PDB CCreatureAction_DragonLandFireball (0x134) has PShot at +0x12c; retail CCombatActionBase is 0x114 bytes, so
 //   `this` is modelled locally with PShot at +0x114 (the twin's evidence).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -37,11 +37,11 @@ struct CDefBase {
     long RefCount;                                     // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0xa0 - 0x08];
     long Shot;                                         // +0xa0
 };
-struct CThingShotDef : CDefBase {
+class CThingShotDef : public CDefBase { public:
     unsigned char _pad08[0x60 - 0x08];
     long TCName;                                       // +0x60
     unsigned char _pad64[0x7c - 0x64];
@@ -64,7 +64,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -72,7 +72,7 @@ struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -84,7 +84,7 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CWeaponDef** out);                  // 0x0042B1A6
 };
 void* FindSubDef_CWeaponDef(CDefClassBase* def);
@@ -99,7 +99,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CWeaponDef** out)
 }
 #pragma auto_inline(on)
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CThingShotDef** out);      // 0x0078B230
 };
 void* FindDef_CThingShotDef(CDefinitionManager* manager, long index);
@@ -114,18 +114,18 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CThingShotDef**
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad[0x10];
     CDefinitionManager* PDefinitionManager;            // +0x10
 };
 
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad0[0x64];
     CTCGraphicAppearance* PGraphicAppearance;          // +0x64
     unsigned char         _pad68[0x70 - 0x68];
@@ -140,7 +140,7 @@ __forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, 
     CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
     return appearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
 }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10
 };
 CThing* __fastcall Create(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
@@ -170,7 +170,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void PerformAction();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                 // +0x08

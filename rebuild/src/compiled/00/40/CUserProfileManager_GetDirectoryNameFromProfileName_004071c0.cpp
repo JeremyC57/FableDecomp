@@ -14,13 +14,13 @@
 // Shape: the open result is a named bool (neg/sbb/inc) that outlives the key string and the success path is nested (the
 //          failure return is laid out last); the substring is a named local
 //          copied into the result (no NRVO in VC7.1), the full path is returned through the wide-string ctor.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const unsigned short* text);            // 0x0099B6B0
@@ -36,7 +36,7 @@ long __fastcall CreateSaveGame(const CCharString& rootName, const CWideString& s
 namespace NResourceDirectoryNames {
     CWideString __fastcall GetSaveDirWithoutTrailingBlackslash();   // 0x0041A4F0
 }
-struct CAFile {
+class CAFile { public:
     static void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory,
                                      CWideString* name, CWideString* extension);   // 0x00997620
 };

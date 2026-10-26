@@ -12,7 +12,7 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-struct CCPPointerInfo {                                 // the shared count block
+class CCPPointerInfo { public:                                 // the shared count block
     long RefCount;                                      // +0x0
     void (__fastcall *DeleteFunc)(void*);               // +0x4
     void* Data;                                         // +0x8

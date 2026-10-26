@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of operator==(CIntelligentPointer<CThingBuilding>&, CIntelligentPointer<CThingBuilding>&) @ 0x0065d673
-struct CThingBuilding;
+class CThingBuilding;
 
 struct CIntelligentPointer_CThingBuilding_ {
     CThingBuilding* Get();

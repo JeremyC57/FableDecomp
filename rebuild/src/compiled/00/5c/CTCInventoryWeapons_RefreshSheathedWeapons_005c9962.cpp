@@ -13,7 +13,7 @@
 #include "engine/CTCBase.h"
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                      // 0x00410DE0 (std::bitset::test)
@@ -26,7 +26,7 @@ struct CInterfaceMap {                        // CVectorMap<ETCInterfaceType, CT
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                  // +0x20
     unsigned char _pad_0x21[0x23];
@@ -51,7 +51,7 @@ struct CTCCarrier {                           // interface 0x29
     bool m_weaponsSheathed;                   // +0x0C
 };
 
-struct CTCInventoryWeapons : CTCBase {
+class CTCInventoryWeapons : public CTCBase { public:
     void PutWeaponsInSheathes();              // 0x005C8101
     void TakeWeaponsOutOfSheathes();          // 0x005C552C
     void RefreshSheathedWeapons();

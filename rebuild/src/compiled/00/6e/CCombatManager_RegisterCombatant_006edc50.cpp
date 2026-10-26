@@ -13,7 +13,7 @@
 // copies it into the named local and destroys it: no NRVO through the inline); the trace is the whole operator+
 // chain handed to an inline no-op. The attacked creature's record is the inline GetCombatantInfo (find, `->value`).
 // Layout: the landed CCombatManager model (Combatants +0x10).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -21,7 +21,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GetWorldFrameString();      // 0x0049D880
-struct CDefString {
+class CDefString { public:
     long m_index;
 };
 struct CDefStringTable {
@@ -30,7 +30,7 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                     // +0x18
     CDefString GetDefName() const;                 // 0x004C7CC0 (CThing::GetDefName)
@@ -55,7 +55,7 @@ struct CRetailRbMap_UID_CombatantInfo {            // STLport map<unsigned __int
     unsigned long comp;
     node* find(const unsigned __int64& key);       // 0x006F0250
 };
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];                 // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;     // +0x10

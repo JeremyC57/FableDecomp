@@ -2,7 +2,7 @@
 #include <cstdio>
 struct SLongNode { SLongNode* Next; SLongNode* Prev; long Data; };
 struct CLongList { SLongNode* Header; };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     CLongList PendingDeeds;
     CLongList KnownDeeds[4];
     bool KnowsOfDeed(long deedId, long deedType, bool includePending) const

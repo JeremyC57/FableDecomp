@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CContainmentVolume { void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
+class CContainmentVolume { public: void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
 struct CDataOutputStream_Calls {
     long m_long; const void* m_data; long m_size;
     void WriteLong(long value) { m_long = value; }

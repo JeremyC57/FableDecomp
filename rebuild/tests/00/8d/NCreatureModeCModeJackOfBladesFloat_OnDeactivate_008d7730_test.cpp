@@ -1,6 +1,6 @@
 #include <cstdio>
 // CModeJackOfBladesFloat::OnDeactivate model: kill each live, not-yet-dead emitter.
-struct CThing { bool dead; int kills; void Kill(bool) { ++kills; dead = true; } };
+class CThing { public: bool dead; int kills; void Kill(bool) { ++kills; dead = true; } };
 struct CIP { CThing* item; CThing* GetPItem() const { return item; } };
 struct CModeJackOfBladesFloat {
     CIP PEmitter;

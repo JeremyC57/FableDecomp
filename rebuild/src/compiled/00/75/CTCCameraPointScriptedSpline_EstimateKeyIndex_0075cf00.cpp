@@ -6,7 +6,7 @@
 // Duration +0x28).
 // Shape: size() is re-evaluated (divide by 56) for the guard, the spacing and every loop test; `(float)(size() - 1)` converts an
 // unsigned value; the loop runs `i != size()` (jne) with the element reached as `*(begin() + i)`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCCameraPointScriptedSpline_CKeyCamera {   // CTCCameraPointScriptedSpline::CKeyCamera, 0x38 bytes
     float     DeltaIndex;                       // +0x00
     C3DVector Pos;                              // +0x04

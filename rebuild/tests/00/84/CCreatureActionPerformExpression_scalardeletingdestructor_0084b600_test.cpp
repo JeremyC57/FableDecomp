@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_PerformExpression {
+class CCreatureAction_PerformExpression { public:
     void* vftable;
     int destroyed;
 };

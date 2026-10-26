@@ -8,14 +8,14 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x004DB3DB; the compiler then stores this class's vtable (0x012409B4, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
-struct CThing;
+class CThing;
 
-struct CTCDiceGame {
+class CTCDiceGame { public:
     virtual void v00();
     CTCDiceGame(CThing* argument);            // 0x004DB3DB
 };
 
-struct CTCPlot : CTCDiceGame {
+class CTCPlot : public CTCDiceGame { public:
     virtual void v00();
     CTCPlot(CThing* argument);
 };

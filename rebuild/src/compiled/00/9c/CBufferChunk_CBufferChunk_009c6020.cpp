@@ -10,7 +10,7 @@
 // once into esi, the early `pop esi ; ret` is the outer null test, the inlined body re-tests the block after taking
 // the lock, `delete` of the global is the null-tested destructor + class operator delete pair, and the lock release is
 // the tail jump.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);     // 0x009F2920
     long GetAllocationCount();                // 0x009F1F10
     ~CMemoryAllocator();                      // 0x009F2310

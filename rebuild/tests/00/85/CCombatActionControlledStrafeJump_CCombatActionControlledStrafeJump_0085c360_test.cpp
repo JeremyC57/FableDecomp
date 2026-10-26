@@ -1,13 +1,13 @@
 // Behaviour test for 0x0085C360 CCombatAction_ControlledStrafeJump copy constructor: base copy + six facing floats + flag.
 #include <cstdio>
 static int g_baseCopies = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase() { }
     long m_baseValue;
     CCombatActionBase() : m_baseValue(0) { }
     CCombatActionBase(const CCombatActionBase& other) : m_baseValue(other.m_baseValue) { ++g_baseCopies; }
 };
-struct CCombatAction_ControlledStrafeJump : CCombatActionBase {
+class CCombatAction_ControlledStrafeJump : public CCombatActionBase { public:
     float RequiredFacing_X, RequiredFacing_Y, RequiredFacing_Z;
     float OriginalFacing_X, OriginalFacing_Y, OriginalFacing_Z;
     bool AddedRollMode;

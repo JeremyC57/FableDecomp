@@ -17,11 +17,11 @@
 //        dereferenced before its dtor, so its release (`dec [edi+4] ; jne`) has no null test; the tavern def's dtor
 //        clears the field after the release (`mov edx,edi ; test edx,edx`, the dead store elided).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -52,11 +52,11 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad_0x08[0xb8];
     unsigned long AdditionalInfo;               // +0xc0
 };
-struct CTavernGameShoveHaPennyDef : CDefBase {
+class CTavernGameShoveHaPennyDef : public CDefBase { public:
     unsigned char _pad_0x08[0x1f4];
     long          Rounds;                       // +0x1fc
 };
@@ -79,7 +79,7 @@ struct CShoveHaPennyDefPointer {                // CDefPointer<const CTavernGame
     CTavernGameShoveHaPennyDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CShoveHaPennyDefPointer* out);   // 0x007D1260
 };
 CTavernGameShoveHaPennyDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
@@ -97,12 +97,12 @@ bool CDefClassBase::GetSubDef(CShoveHaPennyDefPointer* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* DefClass;                    // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       Owner;                        // +0x04
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000

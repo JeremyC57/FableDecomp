@@ -3,7 +3,7 @@
 // the centre's Z) and true is returned; a position on or outside the radius is untouched and false is returned.
 #include <stdio.h>
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

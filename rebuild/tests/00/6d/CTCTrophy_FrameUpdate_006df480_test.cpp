@@ -3,7 +3,7 @@
 // ---- test-side string stubs (narrow text buffers; the wide type stores chars) ----
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char m_text[160];
     CWideString() { m_text[0] = 0; }
     CWideString(const char* s) { std::strcpy(m_text, s); }
@@ -15,7 +15,7 @@ struct CWideString {
 };
 inline CWideString operator+(const CWideString& a, const CWideString& b) { CWideString r(a); r += b; return r; }
 inline CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a); r += CWideString(b); return r; }
-struct CCharString {
+class CCharString { public:
     char m_text[160];
     CCharString(const char* s, long length = -1) { (void)length; std::strcpy(m_text, s); }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); }
@@ -29,26 +29,26 @@ inline bool Same(const CWideString& w, const char* s) { return std::strcmp(w.m_t
 static int g_witnessSounds = 0, g_sounds = 0, g_dialogs = 0; static unsigned long g_dialogFlags = 0;
 static float g_fraction = -1.0f; static long g_gained = -1, g_total = -1;
 namespace NGameText {
-struct CDataBank {
+class CDataBank { public:
     CWideString GetTextBySymbol(const CCharString& symbol) { return CWideString(symbol.m_text); }
 };
 }
-struct CMainGameComponent { NGameText::CDataBank* PTextBank; };
+class CMainGameComponent { public: NGameText::CDataBank* PTextBank; };
 static NGameText::CDataBank g_bank; static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
 struct CDrawQuestInfo {
     void UpdateMiniGame(float timeFraction, long gained, long total) { g_fraction = timeFraction; g_gained = gained; g_total = total; }
 };
-struct CPlayerGui { CDrawQuestInfo* PDrawQuestInfo; };
+class CPlayerGui { public: CDrawQuestInfo* PDrawQuestInfo; };
 static CDrawQuestInfo g_info; static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
-struct CThingManager { bool PausedA; bool PausedB; };
+class CThingManager { public: bool PausedA; bool PausedB; };
 static CThingManager g_manager;
-struct CTrophyDef { CCharString SoundOutOfTime; CTrophyDef() : SoundOutOfTime("OUT") {} };
+class CTrophyDef { public: CCharString SoundOutOfTime; CTrophyDef() : SoundOutOfTime("OUT") {} };
 static CTrophyDef g_def;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThingManager* GetThingManager() { return &g_manager; }
 };
-struct CTCTrophy : CTCBase {
+class CTCTrophy : public CTCBase { public:
     CTrophyDef*   PDef;
     bool          MinigameInProgress;
     long          MinigameInitialFramesLeft;

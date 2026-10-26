@@ -11,8 +11,8 @@ void CDoorInner::Toggle()
     g_toggleCount++;
 }
 
-struct CTCDoor
-{
+class CTCDoor
+{ public:
     void*        m0;
     CDoorInner*  ParentThing;
     char         pad8[8];

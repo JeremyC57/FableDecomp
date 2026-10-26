@@ -8,7 +8,7 @@
 // Shape: as agent 171's CTCTavernGameShoveHaPenny::EnterGame model: a null-tested CDefPointer dtor with the def's inline ReleaseTemporary()
 // (DecRef/GetRefCount on the ref-count base at +4); the def object is a named pointer local (edi) after the first read; CWideString declares
 // its copy ctor so the GetText results are built in the argument area (right to left: state, body text, title text).
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();
@@ -22,7 +22,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0xa0 - 0x08];
     unsigned long OKTitleText;                  // +0xa0
     unsigned char _padA4[0xf8 - 0xa4];
@@ -39,7 +39,7 @@ struct CDefPointer {
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     CWideString GetText(unsigned long textID);  // 0x005E9E70

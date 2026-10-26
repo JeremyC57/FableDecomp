@@ -18,10 +18,10 @@
 //   CurrentRecoveryTimer +0x34, TurncoatStageEffects +0x3c, CreatureTurncoatResistance +0x48; CTurncoatDef TurncoatedEffect
 //   +0x28, TurncoatActivateEffect +0x2c.
 #include <stdlib.h>
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -86,14 +86,14 @@ struct CEffectVector {                                  // vector<CIntelligentPo
     void clear() { erase(_M_start, _M_finish); }
 };
 
-struct CTCDParticleEmitter {                            // interface 0x4B
+class CTCDParticleEmitter { public:                            // interface 0x4B
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CTCSoundPlayer {                                 // interface 0x10
+class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 
-struct CTurncoatDef {
+class CTurncoatDef { public:
     unsigned char _pad0[0x28];
     long TurncoatedEffect;                              // +0x28
     long TurncoatActivateEffect;                        // +0x2c
@@ -103,7 +103,7 @@ struct CDefPointer {                                    // CDefPointer<const CTu
     CTurncoatDef* operator->() const { return Object; }
 };
 
-struct CTCTurncoat {
+class CTCTurncoat { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];

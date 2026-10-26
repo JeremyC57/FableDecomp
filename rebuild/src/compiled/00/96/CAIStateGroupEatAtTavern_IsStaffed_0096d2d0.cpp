@@ -53,7 +53,7 @@ CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager*); // 0x007EE540
 inline CRetailThingView* ThingView(CThingAICreature* p) { return (CRetailThingView*)p; }
 
 
-struct CThingBuilding;
+class CThingBuilding;
 struct IStateGroupBuildingView {
     virtual void Slot00();
     virtual void Slot01();

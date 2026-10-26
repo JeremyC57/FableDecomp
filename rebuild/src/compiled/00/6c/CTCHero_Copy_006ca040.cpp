@@ -12,9 +12,9 @@
 // call CTCBase::Copy` with the original reference.
 // Local model: no engine header exists for CTCHero; engine/CTCBase.h is a flattened POD (vptr as a data member), so the
 // polymorphic CTCBase is modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -22,7 +22,7 @@ struct CTCBase {
     virtual void Copy(const CTCBase& other);                // 0x006868D0
 };
 
-struct CDefPointeeBase {                                    // counted def: vptr, count at +4, slot 1 destroys
+class CDefPointeeBase { public:                                    // counted def: vptr, count at +4, slot 1 destroys
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long m_count;                                           // +0x04
@@ -57,7 +57,7 @@ struct CIntelligentPointer {                                // CIntelligentPoint
 };
 #pragma pack(pop)
 
-struct CTCHero : CTCBase {                                  // vtable 0x0125EB54
+class CTCHero : public CTCBase { public:                                  // vtable 0x0125EB54
     bool WeaponsUsable;                                     // +0x0c
     bool WillUsable;                                        // +0x0d
     bool WeaponUseOverriddenByScripts;                      // +0x0e

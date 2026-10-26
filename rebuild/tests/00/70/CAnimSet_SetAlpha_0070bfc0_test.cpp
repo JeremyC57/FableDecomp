@@ -1,7 +1,7 @@
 // Behaviour test for 0x0070BFC0 CAnimSet::SetAlpha (clamp to [0,1], roll current into last).
 #include <cstdio>
 
-struct CAnimSet {
+class CAnimSet { public:
     float CurrentAlpha; float LastAlpha;
     void SetAlpha(float alpha)
     {

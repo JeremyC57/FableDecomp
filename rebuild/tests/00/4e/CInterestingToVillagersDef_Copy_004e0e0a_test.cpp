@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
 };
@@ -9,7 +9,7 @@ struct BaseDef {
     void Clone(CDefClassBase const* src);
 };
 
-struct CInterestingToVillagersDef : public BaseDef {
+class CInterestingToVillagersDef : public BaseDef { public:
     char pad[0x28 - sizeof(BaseDef)];
     unsigned long field28;
 };

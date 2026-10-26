@@ -4,7 +4,7 @@ struct Hero {
     unsigned char flags;
 };
 
-struct CPlayerManager { int dummy; };
+class CPlayerManager { public: int dummy; };
 
 extern "C" CPlayerManager* __fastcall GSI_GetWorld(CPlayerManager* w);
 extern "C" Hero*  __fastcall World_GetHero(CPlayerManager* w);

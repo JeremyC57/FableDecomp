@@ -10,7 +10,7 @@
 // Shape: an iterator loop with end() re-read per iteration; the entry's def pointer is bound to a reference
 //        once the level test passed (`lea edi,[esi+4]`), null-tested through it, and passed by reference.
 
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     unsigned char _pad_0x00[0x3C];
     long          Ability;                        // +0x3C (PDB +0x40)
 };

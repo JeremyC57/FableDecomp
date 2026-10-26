@@ -1,12 +1,12 @@
 // CTCEnemy::IsAlliedWithFaction @ 0076c7f0
-struct CFaction;
+class CFaction;
 
 struct CFactionHolder {
     // the object at CTCEnemy+0x18; has a method IsAlliedWithFaction(CFaction*)
     bool IsAlliedWithFaction(CFaction* faction);
 };
 
-struct CTCEnemy {
+class CTCEnemy { public:
     char pad[0x18];
     CFactionHolder* m_holder; // +0x18
     bool IsAlliedWithFaction(CFaction* faction);

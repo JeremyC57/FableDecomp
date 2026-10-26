@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputManager {
+class CInputManager { public:
     void* vftable;
     int destroyed;
 };

@@ -3,7 +3,7 @@
 static int g_leaves = 0; static void* g_last = 0;
 struct RTL_CRITICAL_SECTION_Fable { unsigned char _body[0x18]; };
 static void FakeLeaveCriticalSection(RTL_CRITICAL_SECTION_Fable* s) { ++g_leaves; g_last = s; }
-struct CHandleBasedMemoryPool { bool MultiThreaded; RTL_CRITICAL_SECTION_Fable CriticalSection; };
+class CHandleBasedMemoryPool { public: bool MultiThreaded; RTL_CRITICAL_SECTION_Fable CriticalSection; };
 struct CScopedCritical {
     CHandleBasedMemoryPool* Owner; bool Success;
     ~CScopedCritical() { if (Success && Owner->MultiThreaded) FakeLeaveCriticalSection(&Owner->CriticalSection); }

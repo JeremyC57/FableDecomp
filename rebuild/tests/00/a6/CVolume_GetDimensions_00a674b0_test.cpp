@@ -11,7 +11,7 @@ struct CFakeVolume {
 static int g_base;
 struct CBase { virtual ~CBase() {} CBase() { ++g_base; } };
 struct C3DVectorI { long X, Y, Z; C3DVectorI(long x, long y, long z) : X(x), Y(y), Z(z) {} };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     CFakeVolume* m_pVolume;
     C3DVectorI GetDimensions() const { D3DVOLUME_DESC desc; m_pVolume->GetDesc(&desc); return C3DVectorI(desc.Width, desc.Height, desc.Depth); }
 };

@@ -7,7 +7,7 @@
 // CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0.
 // Shape: one `push ecx` frame for the lookup key; the component rides in esi; the perceived thing's type byte at +0x10 is
 // compared with 2 (the player creature type) before the awareness call. No engine header exists for this class.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                   // +0x10: 2 = player creature
     unsigned char _pad11[0x0f];
@@ -48,7 +48,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureAction_AlertToPlayer {
+class CCreatureAction_AlertToPlayer { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

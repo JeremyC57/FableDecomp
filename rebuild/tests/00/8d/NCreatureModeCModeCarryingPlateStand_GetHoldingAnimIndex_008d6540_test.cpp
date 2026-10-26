@@ -2,8 +2,8 @@
 #include <cstring>
 // Behaviour test for NCreatureMode::CModeCarryingPlateStand::GetHoldingAnimIndex (retail 0x008D6540): the bank index of
 // the creature's first "ST_HOLDING_PLATE" animation.
-struct CAnimationEntry { long BankIndex; };
-struct CThingCreatureBase {
+class CAnimationEntry { public: long BankIndex; };
+class CThingCreatureBase { public:
     CAnimationEntry Plate;
     CAnimationEntry Other;
     long lastIndex;

@@ -2,20 +2,20 @@
 #include <cstdio>
 #include <cstring>
 static int g_deleted = 0;
-struct CBankStateBlock { virtual ~CBankStateBlock() {} };
-struct CStaticMapBankStateBlock : CBankStateBlock { long State; virtual ~CStaticMapBankStateBlock() { ++g_deleted; } };
+class CBankStateBlock { public: virtual ~CBankStateBlock() {} };
+class CStaticMapBankStateBlock : public CBankStateBlock { public: long State; virtual ~CStaticMapBankStateBlock() { ++g_deleted; } };
 static void DeleteBlock(void* b) { delete static_cast<CBankStateBlock*>(b); }
 struct SCountBlock {
     long m_references; void (*m_pfnDestroy)(void*); void* m_pObject;
     SCountBlock(void* o, void (*d)(void*)) : m_references(1), m_pfnDestroy(d), m_pObject(o) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o, void (*d)(void*)) : m_pObject(o) { if (o) m_pCount = new SCountBlock(o, d); else m_pCount = 0; }
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     ~CCountedPointer() { if (m_pCount) { if (--m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } }
 };
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     const char* m_names[4]; int m_count; long m_refsSeen;
     void AddEntry(const char* symbol, unsigned long type, const char* filename, CCountedPointer<CBankStateBlock> state)
     {
@@ -24,7 +24,7 @@ struct CStaticMapBankFile {
     }
     unsigned long FindEntry(const char* symbol) { for (int i = 0; i < m_count; ++i) if (std::strcmp(m_names[i], symbol) == 0) return i + 100; return 0; }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     CStaticMapBankFile StaticMapFile;
     unsigned long CreateNewBankMap(const char* name)
     {

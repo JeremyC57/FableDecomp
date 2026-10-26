@@ -8,16 +8,16 @@
 // the count argument is loaded before `pop edi` and stored after the vtable. `ret 0Ch`: three arguments.
 // Layout: engine/CCreatureAction_CastStrengthMultiStrike.h has NumberOfStrikes at the PDB's +0x12c; retail CCombatActionBase
 // is 0x114 bytes, so `this` is modelled locally with the member at +0x114.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // a user constructor makes the 8-byte result return through the hidden pointer
+class CSoundPair { public:                         // a user constructor makes the 8-byte result return through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -25,13 +25,13 @@ struct CSoundPair {                         // a user constructor makes the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_CastStrengthMultiStrike : CCombatActionBase {   // vtable 0x0128764C
+class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:   // vtable 0x0128764C
     long NumberOfStrikes;                   // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase* owner, CThing* target, long numberOfStrikes);

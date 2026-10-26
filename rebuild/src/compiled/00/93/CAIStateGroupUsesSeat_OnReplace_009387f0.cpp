@@ -11,22 +11,22 @@
 //          destroyed around the get-up call.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with PSeat +0x14,
 //          the seat flag +0x1c, sitting +0x1d, the action point index +0x20 and the alternate flag +0x30 (descriptive).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
 extern CCharString g_GetUpName;                 // 0x013BB6E0 (descriptive)
 extern CCharString g_GetUpNameAlternate;        // 0x013BB6E8 (descriptive)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,7 +61,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 struct CTCUserActionPointBase {                 // interface 0x2d
     void FreeActionPoint(long index);           // 0x007FEF40
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 struct CCountBlock { long Count; void (__fastcall* Deleter)(void*); void* Object; };
@@ -82,20 +82,20 @@ struct CCountedPointer {                        // CCountedPointer<T>: object + 
         Block = 0;
     }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned char _pad[0x20];
     CCountedPointer Counted;                    // +0x20
     unsigned char _pad28[0x40 - 0x28];
     CBaseIntelligentPointer PTarget;            // +0x40 (retail offset; the frame places it 0x40 into the 0x48-byte local)
     CBrainOutput();                             // 0x00835620
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];

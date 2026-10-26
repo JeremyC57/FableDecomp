@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SummonerDead {
+class CCreatureAction_SummonerDead { public:
     void* vftable;
     int destroyed;
 };

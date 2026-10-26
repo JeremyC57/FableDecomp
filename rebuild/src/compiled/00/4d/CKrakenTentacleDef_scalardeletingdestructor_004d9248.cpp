@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CKrakenTentacleDef
-{
+class CKrakenTentacleDef
+{ public:
     void* vftable;
 };
 extern void* const g_CKrakenTentacleDef_vftable;

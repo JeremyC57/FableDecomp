@@ -10,13 +10,13 @@
 // 12-byte retail vectors).
 // Shape: identical to CTCInGameMenu::SetPDef (0x0047D5F2): arguments pushed before the
 // GetDefinitionManager call, the index store scheduled before the call, `call ; ret 4`.
-struct CInventoryDef;
+class CInventoryDef;
 
 struct CInventoryDefPointer {                   // CDefPointer<const CInventoryDef>
     const CInventoryDef* Object;
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalDefIndex, CInventoryDefPointer* pDef) const;      // 0x0048591C
 };
 

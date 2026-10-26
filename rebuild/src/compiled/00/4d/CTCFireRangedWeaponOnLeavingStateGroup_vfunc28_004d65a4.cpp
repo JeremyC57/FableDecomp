@@ -7,7 +7,7 @@
 // Tiny-body shape `StoreConstant` synthesised from the instruction pattern (the class comes from the
 // vtable-slot/manifest label when it is a plain class name, else the method is landed under a
 // descriptive placeholder); member names are descriptive. 
-struct CTCFireRangedWeaponOnLeavingStateGroup {
+class CTCFireRangedWeaponOnLeavingStateGroup { public:
     unsigned char _pad[0xc];
     unsigned char m_value;             // +0xc
     void vfunc_28();

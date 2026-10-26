@@ -7,9 +7,9 @@ static void* g_destroyed = 0; static void DestroyTexture(void* o) { g_destroyed 
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 struct CCountedPointer { void* m_pObject; SCountBlock* m_pCount;
     ~CCountedPointer() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); FreeBlock(m_pCount); } } m_pObject = 0; m_pCount = 0; } };
-struct CGraphicFrameData { long m_references; long m_4; CCountedPointer m_texture; unsigned char _pad10[0xa]; unsigned char m_flags;
+class CGraphicFrameData { public: long m_references; long m_4; CCountedPointer m_texture; unsigned char _pad10[0xa]; unsigned char m_flags;
     void Uninitialise() { std::strcat(g_seq, "U"); } ~CGraphicFrameData() { if (m_flags & 0x10) Uninitialise(); } };
-struct CGraphicFrame { CGraphicFrameData* m_pData;
+class CGraphicFrame { public: CGraphicFrameData* m_pData;
     void UnInitialise() { CGraphicFrameData* data = m_pData; if (data) { if (--data->m_references == 0) { data->~CGraphicFrameData(); FreeBlock(data); } m_pData = 0; } } };
 
 int main() {

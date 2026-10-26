@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CComponent {
     CRGBColour Colour; float Time; bool Flag; int Calls;
     CRGBColour GetColour() const { return Colour; }

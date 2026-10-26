@@ -4,7 +4,7 @@
 
 // Host model of CLoadingMemoryFailureHandler::RegisterBank: take the handler's lock, push the bank pointer onto the
 // Banks vector (grow through the POD insert-overflow when full), release the lock on the way out.
-struct CBankFileAsync { int Id; };
+class CBankFileAsync { public: int Id; };
 struct SCriticalSection { int Depth; int Entered; };
 struct CCriticalSectionLock {
     SCriticalSection* m_pSection;
@@ -31,7 +31,7 @@ struct CBankVector {
         else insert_overflow(Finish, x, 1, true);
     }
 };
-struct CLoadingMemoryFailureHandler {
+class CLoadingMemoryFailureHandler { public:
     CBankVector Banks;
     SCriticalSection CriticalSection;
     void RegisterBank(CBankFileAsync* bank)

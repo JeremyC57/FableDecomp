@@ -7,8 +7,8 @@
 static int g_pscBaseCtors = 0;
 struct CBase { virtual ~CBase() { } };
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase : CBase {
+class CParticleSystem;
+class CPSCBase : public CBase { public:
     CParticleSystem* ParticleSystem;
     bool             UpdateStarted : 1;
     bool             Initialised : 1;
@@ -21,7 +21,7 @@ struct C3DVectorArray {
     C3DVector* m_pEnd;
     C3DVectorArray() : m_pData(0), m_pLast(0), m_pEnd(0) { }
 };
-struct CPSCAttractor : CPSCBase {
+class CPSCAttractor : public CPSCBase { public:
     bool           AttractorEnabled : 1;
     bool           AttractorUseParamPosition : 1;
     long           AttractorInfluenceFallOff;

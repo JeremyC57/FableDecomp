@@ -1,8 +1,8 @@
 // Behaviour test for CActionFireProjectileWeapon::CActionFireProjectileWeapon @ 0x00716790: zeroed action, target, empty sentinel list, index -1.
 #include <cstdio>
 #include <cstdlib>
-struct CThing { int id; };
-struct CScriptThing { CThing* PImp_Data; };
+class CThing { public: int id; };
+class CScriptThing { public: CThing* PImp_Data; };
 static CScriptThing GetScriptThing(CThing* t) { CScriptThing s; s.PImp_Data = t; return s; }
 struct CActionList {
     struct node { node* next; node* prev; void* object; void* info; };

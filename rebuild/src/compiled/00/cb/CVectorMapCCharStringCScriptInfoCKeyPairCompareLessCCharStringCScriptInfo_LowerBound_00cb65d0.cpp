@@ -1,5 +1,5 @@
 // CVectorMap<CCharString,CScriptInfo,CKeyPairCompareLess<CCharString,CScriptInfo> >::LowerBound(const CCharString& key) -- binary search of the sorted 24-byte entries for the first entry whose key does not sort before the key
-// Leaf: ?LowerBound@?$CVectorMap@VCCharString@@UCScriptInfo@@U?$CKeyPairCompareLess@VCCharString@@UCScriptInfo@@@@@@QAEPAU?$pair@VCCharString@@UCScriptInfo@@@std@@ABVCCharString@@@Z
+// Leaf: ?LowerBound@?$CVectorMap@VCCharString@@VCScriptInfo@@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@@QAEPAU?$pair@VCCharString@@VCScriptInfo@@@std@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB65D0, 128 bytes, `__fastcall`, `ret 4`, the entry pointer (STLport iterator) in eax.
 // Instance: the CCharString -> CScriptInfo map (callers 0x00CB5AD0 quest-persist lookup, the pair<CCharString,CScriptInfo> _Adjust_heap 0x00CB68C0). The manifest's value types are propagated across byte-identical bodies (the
 //   entry stride here is 24 bytes), so the payload after the CCharString key is modelled opaque (20 bytes).
@@ -33,7 +33,7 @@ public:
         return *PData < *other.PData;
     }
 };
-struct CScriptInfo {
+class CScriptInfo { public:
     unsigned char _payload[20];                      // opaque value
 };
 namespace std {
@@ -42,7 +42,7 @@ template <class A, class B> struct pair {
     B second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const std::pair<K, V>& entry) const { return key < entry.first; }
 };

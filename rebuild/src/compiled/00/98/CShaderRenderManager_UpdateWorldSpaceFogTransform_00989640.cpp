@@ -10,13 +10,13 @@
 // +0x370, UpdateFlags +0x3d8 (PDB +0x1e4 / +0x380 / +0x3f8; retail's 12-byte CArrays put them lower).
 #include "engine/CVertexShaderConstantLayout.h"
 
-struct CShaderConstantRange {                    // the 12-byte ranges of engine/CVertexShaderConstantLayout.h
+class CShaderConstantRange { public:                    // the 12-byte ranges of engine/CVertexShaderConstantLayout.h
     void*         __vftable;                     // +0
     long          Offset;                        // +4: first constant register
     unsigned long Count;                         // +8: vector count
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector(const C4DVector& o) : X(o.X), Y(o.Y), Z(o.Z), W(o.W) {}
 };
@@ -119,7 +119,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetVertexShaderConstantF(unsigned int startRegister, const float* data, unsigned int vector4fCount);   // slot 94 (+0x178)
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;                 // +0x000
     CVertexShaderConstantLayout* CurrentVSConstantLayout;   // +0x004
     unsigned char                _pad008[0x1d4 - 8];

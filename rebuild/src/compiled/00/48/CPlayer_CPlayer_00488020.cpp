@@ -12,13 +12,13 @@
 // reverse declaration order, all inline except the list and the intelligent-pointer base. edi holds 0 for the whole function.
 void operator delete(void* p);                  // 0x00BFE9BC
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual ~CInitBaseClass();                  // 0x0099A410
     bool m_flag04;                              // +0x04
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCamera {                                // 0x38 bytes
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCamera { public:                                // 0x38 bytes
     C3DVector WorldPosition;
     CRightHandedSet RHSet;
     bool HeightLocked;
@@ -37,17 +37,17 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CThingPlayerCreature;
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+class CThingPlayerCreature;
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
-struct CHeroLogBook;
+class CHeroLogBook;
 struct CCountedImp { };
 struct SCountBlock {                            // the counted pointer's shared block
     long Count;                                 // +0x00
     void (CCountedImp::*Destroy)();             // +0x04
     CCountedImp* Object;                        // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;                                    // +0x00
     SCountBlock* Info;                          // +0x04
     __forceinline ~CCountedPointer()
@@ -67,72 +67,72 @@ struct CInputProcess {
     virtual ~CInputProcess();                   // slot 0 (scalar deleting dtor)
 };
 
-struct CInputProcessBButtonExitMode : CInputProcess { };
-struct CInputProcessBetting : CInputProcess { };
-struct CInputProcessBlock : CInputProcess { };
-struct CInputProcessBoastUI : CInputProcess { };
-struct CInputProcessCameraLookAround : CInputProcess { };
-struct CInputProcessClickPastText : CInputProcess { };
-struct CInputProcessCombat : CInputProcess { };
-struct CInputProcessConsole : CInputProcess { };
-struct CInputProcessControlCreature : CInputProcess { };
-struct CInputProcessControlCreatureActivateZTarget : CInputProcess { };
-struct CInputProcessControlCreatureActivateZTargetOnPress : CInputProcess { };
-struct CInputProcessControlCreatureRightStick : CInputProcess { };
-struct CInputProcessControlFreeCamera : CInputProcess { };
-struct CInputProcessControlSpirit : CInputProcess { };
-struct CInputProcessCreatureMovement : CInputProcess { };
-struct CInputProcessCreatureMovementWatchForControlAngleChange : CInputProcess { };
-struct CInputProcessCreditsUI : CInputProcess { };
-struct CInputProcessCutScene : CInputProcess { };
-struct CInputProcessCycleSpecialCameraModes : CInputProcess { };
-struct CInputProcessDead : CInputProcess { };
-struct CInputProcessDebugControls : CInputProcess { };
-struct CInputProcessDigging : CInputProcess { };
-struct CInputProcessFireheartMinigame : CInputProcess { };
-struct CInputProcessFirstPerson : CInputProcess { };
-struct CInputProcessFirstPersonLookAround : CInputProcess { };
-struct CInputProcessFirstPersonTargeting : CInputProcess { };
-struct CInputProcessFishing : CInputProcess { };
-struct CInputProcessFreezeControls : CInputProcess { };
-struct CInputProcessHeroAbilitiesScreen : CInputProcess { };
-struct CInputProcessHeroInformationScreens : CInputProcess { };
-struct CInputProcessInGameMenu : CInputProcess { };
-struct CInputProcessInventory : CInputProcess { };
-struct CInputProcessInventoryClothing : CInputProcess { };
-struct CInputProcessInventoryExperienceScreen : CInputProcess { };
-struct CInputProcessInventoryMagicScreen : CInputProcess { };
-struct CInputProcessInventoryMapScreen : CInputProcess { };
-struct CInputProcessInventoryQuestsScreen : CInputProcess { };
-struct CInputProcessInventoryStatsScreen : CInputProcess { };
-struct CInputProcessInventoryTradeScreen : CInputProcess { };
-struct CInputProcessInventoryWeapons : CInputProcess { };
-struct CInputProcessJumpingAndRolling : CInputProcess { };
-struct CInputProcessLightning : CInputProcess { };
-struct CInputProcessMain : CInputProcess { };
-struct CInputProcessOracleMinigame : CInputProcess { };
-struct CInputProcessParalysed : CInputProcess { };
-struct CInputProcessPhotojournalCapture : CInputProcess { };
-struct CInputProcessProjectileTargetingAnalogueZoom : CInputProcess { };
-struct CInputProcessQuestCompletionUI : CInputProcess { };
-struct CInputProcessQuickAccessItems : CInputProcess { };
-struct CInputProcessQuickAccessMenu : CInputProcess { };
-struct CInputProcessRebootGame : CInputProcess { };
-struct CInputProcessSetRangedWeaponMode : CInputProcess { };
-struct CInputProcessSetRangedWeaponThirdPersonMode : CInputProcess { };
-struct CInputProcessSpecialAbilities : CInputProcess { };
-struct CInputProcessStrafe : CInputProcess { };
-struct CInputProcessTargetLockCycleTargets : CInputProcess { };
-struct CInputProcessTargetLockRightStickTargetSelect : CInputProcess { };
-struct CInputProcessTavernGame : CInputProcess { };
-struct CInputProcessToggleViewHeroMode : CInputProcess { };
-struct CInputProcessUseEnvironment : CInputProcess { };
-struct CInputProcessUseRangedWeapon : CInputProcess { };
-struct CInputProcessUseRangedWeaponZLock : CInputProcess { };
-struct CInputProcessWatchForRangedWeaponThirdPersonModeTermination : CInputProcess { };
-struct CInputProcessWatchForWillChargeUpThirdPersonModeTermination : CInputProcess { };
-struct CInputProcessYesNoQuestion : CInputProcess { };
-struct CInputProcessZTarget : CInputProcess { };
+class CInputProcessBButtonExitMode : public CInputProcess { public: };
+class CInputProcessBetting : public CInputProcess { public: };
+class CInputProcessBlock : public CInputProcess { public: };
+class CInputProcessBoastUI : public CInputProcess { public: };
+class CInputProcessCameraLookAround : public CInputProcess { public: };
+class CInputProcessClickPastText : public CInputProcess { public: };
+class CInputProcessCombat : public CInputProcess { public: };
+class CInputProcessConsole : public CInputProcess { public: };
+class CInputProcessControlCreature : public CInputProcess { public: };
+class CInputProcessControlCreatureActivateZTarget : public CInputProcess { public: };
+class CInputProcessControlCreatureActivateZTargetOnPress : public CInputProcess { public: };
+class CInputProcessControlCreatureRightStick : public CInputProcess { public: };
+class CInputProcessControlFreeCamera : public CInputProcess { public: };
+class CInputProcessControlSpirit : public CInputProcess { public: };
+class CInputProcessCreatureMovement : public CInputProcess { public: };
+class CInputProcessCreatureMovementWatchForControlAngleChange : public CInputProcess { public: };
+class CInputProcessCreditsUI : public CInputProcess { public: };
+class CInputProcessCutScene : public CInputProcess { public: };
+class CInputProcessCycleSpecialCameraModes : public CInputProcess { public: };
+class CInputProcessDead : public CInputProcess { public: };
+class CInputProcessDebugControls : public CInputProcess { public: };
+class CInputProcessDigging : public CInputProcess { public: };
+class CInputProcessFireheartMinigame : public CInputProcess { public: };
+class CInputProcessFirstPerson : public CInputProcess { public: };
+class CInputProcessFirstPersonLookAround : public CInputProcess { public: };
+class CInputProcessFirstPersonTargeting : public CInputProcess { public: };
+class CInputProcessFishing : public CInputProcess { public: };
+class CInputProcessFreezeControls : public CInputProcess { public: };
+class CInputProcessHeroAbilitiesScreen : public CInputProcess { public: };
+class CInputProcessHeroInformationScreens : public CInputProcess { public: };
+class CInputProcessInGameMenu : public CInputProcess { public: };
+class CInputProcessInventory : public CInputProcess { public: };
+class CInputProcessInventoryClothing : public CInputProcess { public: };
+class CInputProcessInventoryExperienceScreen : public CInputProcess { public: };
+class CInputProcessInventoryMagicScreen : public CInputProcess { public: };
+class CInputProcessInventoryMapScreen : public CInputProcess { public: };
+class CInputProcessInventoryQuestsScreen : public CInputProcess { public: };
+class CInputProcessInventoryStatsScreen : public CInputProcess { public: };
+class CInputProcessInventoryTradeScreen : public CInputProcess { public: };
+class CInputProcessInventoryWeapons : public CInputProcess { public: };
+class CInputProcessJumpingAndRolling : public CInputProcess { public: };
+class CInputProcessLightning : public CInputProcess { public: };
+class CInputProcessMain : public CInputProcess { public: };
+class CInputProcessOracleMinigame : public CInputProcess { public: };
+class CInputProcessParalysed : public CInputProcess { public: };
+class CInputProcessPhotojournalCapture : public CInputProcess { public: };
+class CInputProcessProjectileTargetingAnalogueZoom : public CInputProcess { public: };
+class CInputProcessQuestCompletionUI : public CInputProcess { public: };
+class CInputProcessQuickAccessItems : public CInputProcess { public: };
+class CInputProcessQuickAccessMenu : public CInputProcess { public: };
+class CInputProcessRebootGame : public CInputProcess { public: };
+class CInputProcessSetRangedWeaponMode : public CInputProcess { public: };
+class CInputProcessSetRangedWeaponThirdPersonMode : public CInputProcess { public: };
+class CInputProcessSpecialAbilities : public CInputProcess { public: };
+class CInputProcessStrafe : public CInputProcess { public: };
+class CInputProcessTargetLockCycleTargets : public CInputProcess { public: };
+class CInputProcessTargetLockRightStickTargetSelect : public CInputProcess { public: };
+class CInputProcessTavernGame : public CInputProcess { public: };
+class CInputProcessToggleViewHeroMode : public CInputProcess { public: };
+class CInputProcessUseEnvironment : public CInputProcess { public: };
+class CInputProcessUseRangedWeapon : public CInputProcess { public: };
+class CInputProcessUseRangedWeaponZLock : public CInputProcess { public: };
+class CInputProcessWatchForRangedWeaponThirdPersonModeTermination : public CInputProcess { public: };
+class CInputProcessWatchForWillChargeUpThirdPersonModeTermination : public CInputProcess { public: };
+class CInputProcessYesNoQuestion : public CInputProcess { public: };
+class CInputProcessZTarget : public CInputProcess { public: };
 template<class T> struct scoped_ptr {
     T* ptr;
     ~scoped_ptr() { delete ptr; }
@@ -143,12 +143,12 @@ struct CPlayerModeList {                        // STLport list<EPlayerMode> (4 
     SListNode* _M_node;
     ~CPlayerModeList();                         // 0x0044B970
 };
-struct CPlayerDef {
+class CPlayerDef { public:
     virtual void v00();
     virtual void Delete() const;                // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -160,15 +160,15 @@ template<class T> struct CDefPointer {
         }
     }
 };
-struct CGamePlayerInterface;
-struct CPlayerManager;
-struct CMainGameComponent;
-struct CGameDefinitionManager;
-struct CWorld;
-struct CThingManager;
-struct CWorldMap;
+class CGamePlayerInterface;
+class CPlayerManager;
+class CMainGameComponent;
+class CGameDefinitionManager;
+class CWorld;
+class CThingManager;
+class CWorldMap;
 
-struct CPlayer : CInitBaseClass {               // vtable 0x01231CC4
+class CPlayer : public CInitBaseClass { public:               // vtable 0x01231CC4
     bool DrawingFreeCamDebug;                   // +0x08
     bool PlayerIsCharacter;                     // +0x09
     CGamePlayerInterface* PlayerInterface;      // +0x0c

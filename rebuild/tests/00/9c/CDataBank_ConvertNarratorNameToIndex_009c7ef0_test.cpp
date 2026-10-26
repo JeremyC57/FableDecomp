@@ -2,8 +2,8 @@
 // a missing name or an empty array gives -1.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned int m_length; };
-struct CCharString { CCharStringData* m_pData; };
+class CCharStringData { public: const char* m_pChars; unsigned int m_length; };
+class CCharString { public: CCharStringData* m_pData; };
 static bool Eq(const CCharString& sa, const CCharString& sb)
 {
     CCharStringData* a = sa.m_pData; CCharStringData* b = sb.m_pData;

@@ -75,7 +75,7 @@ template <> __declspec(noinline) std::vector<CWideString>::~vector()
 #pragma auto_inline(on)
 extern std::vector<CWideString> g_standInProfileScan;    // stand-in data only (no retail counterpart)
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer
 {
 public:

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing {
+class CThing { public:
     char pad[0x92];
     unsigned char flags;
     void SetAsGameStatePersisted(bool persisted);

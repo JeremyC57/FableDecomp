@@ -1,8 +1,8 @@
 #include <cstdio>
 typedef unsigned short wchar16;
 
-struct CCharString { void* p; CCharString(const char*, int); ~CCharString(); };
-struct CWideString {
+class CCharString { public: void* p; CCharString(const char*, int); ~CCharString(); };
+class CWideString { public:
     void* p;
     CWideString(const wchar16* s);
     ~CWideString();
@@ -11,7 +11,7 @@ struct CWideString {
 CWideString __fastcall WConcat(const wchar16* pre, const CWideString& suf);
 extern "C" long __fastcall CreateSaveGame(CCharString*, CWideString*, long, long, wchar16*, long);
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad[8];
     CWideString field8;
     CWideString GetAutoSavePathName();

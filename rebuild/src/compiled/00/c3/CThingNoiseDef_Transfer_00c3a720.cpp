@@ -1,5 +1,5 @@
 #pragma optimize("g",on)
-struct CPersistContext;
+class CPersistContext;
 
 // base->Transfer() at 0xc39f10, __fastcall(this) - no stack args
 extern void __fastcall CThingNoiseDef_baseTransfer_00c39f10(void* self);

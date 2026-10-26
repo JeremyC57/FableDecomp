@@ -14,7 +14,7 @@
 //   a double sum narrowed by the float ctor parameter; retail loads home.X first (`fld [eax+8] ; fadd [esp+10h]`) and stores the X
 //   after the temporary's lea. A float sum in either operand order loads the frame float first; an explicit (float) cast fixes the
 //   order but stores X before the lea.
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);                  // 0x0099B720
@@ -38,14 +38,14 @@ struct CIME {
     void SetCompositionPosition(long x, long y);            // 0x00404B80
 };
 CIME* GFGetIME();                                           // 0x00404A80
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator*(const C2DVector& o) const { return C2DVector(X * o.X, Y * o.Y); }
     C2DVector Offset(float dx) const { return C2DVector(X + dx, Y); }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct SComponentState {
     unsigned char _pad00[8];
     C2DVector     Position;                                 // +0x08

@@ -15,7 +15,7 @@
 // Label correction: catalogued as `VectorShuffle_Fisher`; the body is STLport `random_shuffle<CCharString*, RandFunc>`.
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0

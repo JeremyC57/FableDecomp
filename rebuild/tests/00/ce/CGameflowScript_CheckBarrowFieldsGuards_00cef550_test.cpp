@@ -1,14 +1,14 @@
 // behaviour test for CGameflowScript::CheckBarrowFieldsGuards (0x00CEF550): scripted world; guards enabled only on the evil path
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
-struct CScriptThing { const char* Name; };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
+class CScriptThing { public: const char* Name; };
 struct World {
     int frame; bool evilDone, goodDone; int evilActiveAt, goodActiveAt, evilCompleteAt, unloadAt, reloadAt; int terminateAt;
     const char* enabled; bool enableFlag;
 };
 static World w;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++w.frame; }
     bool IsRegionLoaded(const CCharString& n) const { return std::strcmp(n.Text, "BarrowFields") == 0 && !(w.frame >= w.unloadAt && w.frame < w.reloadAt); }
     bool MsgOnQuestCompleted(const CCharString& n) const { return std::strcmp(n.Text, "Q_TraderConflictEvil") == 0 && w.frame >= w.evilCompleteAt; }

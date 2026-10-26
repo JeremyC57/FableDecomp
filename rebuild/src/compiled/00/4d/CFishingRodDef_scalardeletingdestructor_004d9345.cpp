@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CFishingRodDef
-{
+class CFishingRodDef
+{ public:
     void* vftable;
 };
 extern void* const g_CFishingRodDef_vftable;

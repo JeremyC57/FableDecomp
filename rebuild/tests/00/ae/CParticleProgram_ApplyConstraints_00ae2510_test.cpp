@@ -1,8 +1,8 @@
 // behaviour test for 0x00AE2510 CParticleProgram::ApplyConstraints: up to `iterations` passes, stop once the pass's
 // maximum adjustment is within the tolerance
 #include <cstdio>
-struct CParticleSimulation { float MaximumAdjustment; int Passes; float Adjust[8]; };
-struct CParticleProgram {
+class CParticleSimulation { public: float MaximumAdjustment; int Passes; float Adjust[8]; };
+class CParticleProgram { public:
     void ExecuteProgram(CParticleSimulation& s) const { s.MaximumAdjustment = s.Adjust[s.Passes]; ++s.Passes; }
     void ApplyConstraints(CParticleSimulation& simulation, long iterations, float tolerance) const
     {

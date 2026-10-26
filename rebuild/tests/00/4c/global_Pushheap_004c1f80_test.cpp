@@ -5,7 +5,7 @@ struct CMeshInfo {
     float SizeX;
     unsigned char PrimaryMesh : 1;
 };
-struct CSortPrimaryMeshesFirst {
+class CSortPrimaryMeshesFirst { public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return a.PrimaryMesh; }
 };
 static void _Push_heap(CMeshInfo* first, long hole, long top, CMeshInfo value, CSortPrimaryMeshesFirst comp)

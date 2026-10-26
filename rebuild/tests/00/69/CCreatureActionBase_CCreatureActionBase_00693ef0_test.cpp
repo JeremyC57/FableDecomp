@@ -10,12 +10,12 @@
 #endif
 static char g_log[512]; static int g_frees, g_ranged, g_deleted;
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()

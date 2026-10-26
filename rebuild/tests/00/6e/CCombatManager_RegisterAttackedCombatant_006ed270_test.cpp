@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase { unsigned long UID; bool IsAttackedCombatant; unsigned long GetUID() const { return UID; } };
-struct CAttackPatternDef { long m_refCount; };
+class CThingCreatureBase { public: unsigned long UID; bool IsAttackedCombatant; unsigned long GetUID() const { return UID; } };
+class CAttackPatternDef { public: long m_refCount; };
 struct CCombatantInfo {
     CThingCreatureBase* Parent; CThingCreatureBase* Attacked;
     CThingCreatureBase* Attackers[4]; int AttackerCount; CAttackPatternDef* Pattern;
     CCombatantInfo() : Parent(0), Attacked((CThingCreatureBase*)1), AttackerCount(0), Pattern(0) {}
 };
-struct CCombatManager {
+class CCombatManager { public:
     unsigned long Keys[4]; CCombatantInfo Infos[4]; int Count;
     CAttackPatternDef Continuous;
     CCombatantInfo* find(unsigned long k) { for (int i = 0; i < Count; ++i) if (Keys[i] == k) return &Infos[i]; return 0; }

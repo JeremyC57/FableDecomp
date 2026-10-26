@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };
 struct CTCPhysicsRigidBody {
     virtual ~CTCPhysicsRigidBody() {}

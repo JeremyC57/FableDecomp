@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct FrontendInterpOut {
     C3DVector a;   // +0x00
@@ -13,7 +13,7 @@ struct FrontendInterpOut {
 float __cdecl Frontend_GetInterpTime_0042dbfa() { return 10.0f; }
 float g_FrontendInterpScale_0042dbfa = 2.0f;
 
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char m_Pad0000[0xb8];
     float         m_StartTime;                 // +0xb8
     unsigned char m_Padbc[0xcc - 0xbc];

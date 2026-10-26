@@ -14,7 +14,7 @@ struct CPrimitive {
     void Destroy() { ++g_released; }
 };
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitive* Object;
     CEnginePrimitiveHandle() : Object(0) {}
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& o) : Object(o.Object) { if (Object) ++Object->RefCount; }

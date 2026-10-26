@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /* Mock the target so the tail-call links; verify the thunk forwards args. */
-struct CMeleeCombatKnockdownEffects { int tag; };
+class CMeleeCombatKnockdownEffects { public: int tag; };
 
 static CMeleeCombatKnockdownEffects* g_this = 0;
 static void* g_src = 0;

@@ -10,7 +10,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 struct CPerItemData;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CPerItemDataPointer {                       // CCountedPointer<NInventory::CPerItemData>
     CPerItemData*   Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04

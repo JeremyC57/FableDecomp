@@ -9,7 +9,7 @@
 //   CODA_SetSourcePosition @ 0x00C33FD0 (`__stdcall`, extern "C").
 // Shape: the swapped vector is ASSIGNED to a declared local (return temporary at esp+0x18 copied dword by dword to
 //   the local at esp+0xc); `C3DVector v = position.SwapYZ();` builds straight into the local (0x14-byte frame).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector SwapYZ() const;                   // 0x00C1C070

@@ -9,7 +9,7 @@
 #endif
 
 struct CEffectQualitySettings { unsigned char _pad[0x70]; bool HighendWater; };
-struct CEngineWaterRenderer { unsigned char _pad0[0x274]; bool HighendWaterEnabled; bool HighendWaterSupported;
+class CEngineWaterRenderer { public: unsigned char _pad0[0x274]; bool HighendWaterEnabled; bool HighendWaterSupported;
     bool SetEffectQuality(const CEffectQualitySettings* quality) { HighendWaterEnabled = quality->HighendWater && HighendWaterSupported; return true; } };
 int main()
 {

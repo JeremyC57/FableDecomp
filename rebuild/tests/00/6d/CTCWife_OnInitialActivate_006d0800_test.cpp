@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame = 0;
 static long GetWorldFrame() { return g_frame; }
-struct CTCWife {
+class CTCWife { public:
     long FrameGotMarriedToThePlayer; bool NeedsToChangeBrain; bool iconShown; float iconScale; unsigned char iconAlpha;
     bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= GetWorldFrame(); }
     void SetAttractionIcon(bool show, float scale, unsigned char alpha) { iconShown = show; iconScale = scale; iconAlpha = alpha; }

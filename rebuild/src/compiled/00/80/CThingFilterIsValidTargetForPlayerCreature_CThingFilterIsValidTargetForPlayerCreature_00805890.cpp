@@ -11,12 +11,12 @@
 // the block (kept in bl across the dtor); IsChild assigned straight into
 // the bool; the weapon test reads the PlayerCreature member back as the fastcall argument.
 class CThing;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     bool IsExpressionAvailable(const CCharString& name);   // 0x006AC390
     bool IsChild() const;                                   // 0x00661F70 (CThingCreatureBase)
 };

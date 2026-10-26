@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct Thing { int tag; };
 
 static void* __fastcall Thing_Helper(Thing* self, void* edx, C3DVector* pos)

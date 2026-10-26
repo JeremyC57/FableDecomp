@@ -5,16 +5,16 @@
 
 static unsigned long g_out[64]; static unsigned long g_pos = 0, g_len = 0;
 static int g_opens = 0, g_closes = 0;
-struct CCharString { char Buf[32]; };
-struct CWideString { const char* Text; bool Exists; };
+class CCharString { public: char Buf[32]; };
+class CWideString { public: const char* Text; bool Exists; };
 static bool PathExists(const CWideString& p) { return p.Exists; }
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     CDiskFileWin32() {}
     ~CDiskFileWin32() { Close(); }
     void Open(const CWideString&, int, unsigned long) { ++g_opens; g_pos = g_len = 0; }
     void Close() { ++g_closes; }
 };
-struct CDateAndTime { unsigned long Stamp; };
+class CDateAndTime { public: unsigned long Stamp; };
 struct CFileDataOutputStream {
     CFileDataOutputStream(CDiskFileWin32*) {}
     unsigned long GetPosition() const { return g_pos; }

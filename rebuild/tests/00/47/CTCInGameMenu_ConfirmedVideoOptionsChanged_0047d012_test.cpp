@@ -4,30 +4,30 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* Text; CCharString(const char* text, long) : Text(text) {} };
+class CCharString { public: const char* Text; CCharString(const char* text, long) : Text(text) {} };
 namespace NUISystem {
-struct CObserver {
+class CObserver { public:
     long Observed;
     CObserver() : Observed(0) {}
     virtual void ObserveEvent(long eventType) { Observed = eventType; }
 };
-struct CComponent;
+class CComponent;
 struct CComponentBase {
     CComponent* Child; const char* ChildName; int Active;
     CComponentBase() : Child(0), ChildName(""), Active(1) {}
     virtual CComponent* FindChild(CCharString name) { return std::strcmp(name.Text, ChildName) == 0 ? Child : 0; }
     virtual void SetActive_slot48(bool active) { Active = active ? 1 : 0; }
 };
-struct CComponent : CComponentBase, CObserver {};
-struct CYesNo : CComponent {};
+class CComponent : public CComponentBase, public CObserver { public:};
+class CYesNo : public CComponent { public:};
 static CObserver* g_released[8]; static int g_nReleased = 0; static CObserver* g_added = 0;
-struct CManager {
+class CManager { public:
     virtual void AddObserver(CObserver* observer) { g_added = observer; }
     virtual void ReleaseObserver_0055ca00(CObserver* observer) { g_released[g_nReleased++] = observer; }
     static CManager* GetInstance() { static CManager m; return &m; }
 };
 }
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     NUISystem::CYesNo* PVideoOptionsChangedDialog;
     double VideoChangesTimer;
     NUISystem::CComponent* PMousePointer;

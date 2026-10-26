@@ -2,7 +2,7 @@
 #include <string.h>
 
 struct RefCounted { void* vfp; int refcount; };
-struct CCharString { char* buf; };
+class CCharString { public: char* buf; };
 struct Pair { CCharString first; RefCounted* second; };
 
 // stand-in for CCharString copy-ctor: mark that it ran

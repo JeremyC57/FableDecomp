@@ -17,24 +17,24 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                               // +0x00
     C3DVector CollideNormal;                            // +0x0c
     float     Friction;                                 // +0x18
     CPhysicsCollideResponse() : Friction(1.0f) { }
 };
-struct CThingPhysicsMeshInfo;
-struct CWorldMap {
+class CThingPhysicsMeshInfo;
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& pos);       // 0x0063A300
 };
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 class CThing {
 public:
     unsigned char   _pad00[0x60];
@@ -50,7 +50,7 @@ extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4)

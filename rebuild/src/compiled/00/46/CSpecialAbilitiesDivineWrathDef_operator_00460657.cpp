@@ -17,7 +17,7 @@ typedef long S32;
 typedef int S32;
 #endif
 #pragma pack(push,1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __vftable;
     unsigned char DefClassBase[0x21]; // donor named flattened base, actual bytes4..24
     S32 InstantiationName_TablePos;
@@ -25,7 +25,7 @@ struct CParentDefClassBase {
     CParentDefClassBase& operator=(const CParentDefClassBase&); // 0x00431ed0
 };
 #pragma pack(pop)
-struct CDefString { S32 TablePos; };
+class CDefString { public: S32 TablePos; };
 struct CDefStringVector {
     CDefString *Start,*Finish,*End;
     CDefStringVector& operator=(const CDefStringVector&); // 0x0046078c
@@ -34,7 +34,7 @@ struct CFloatVector {
     float *Start,*Finish,*End;
     CFloatVector& operator=(const CFloatVector&); // 0x0045ef2d
 };
-struct CSpecialAbilitiesDivineWrathDef : CParentDefClassBase {
+class CSpecialAbilitiesDivineWrathDef : public CParentDefClassBase { public:
     CDefStringVector StartPowerupSound,LoopingPowerupSound,ReleaseSound,ReleaseLoopSound,FinishSound,CancelSound;
     float RandomFactorForNumSecsBetweenDamageHit;
     CFloatVector NumSecsBetweenDamageHit,DamagePerHit,DurationOfSpellSecs,RadiusOfEffect,EnvChangeSecs,EnvReturnSecs;

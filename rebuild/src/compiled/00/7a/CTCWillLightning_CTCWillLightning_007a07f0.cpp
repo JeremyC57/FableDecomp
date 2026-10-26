@@ -46,7 +46,7 @@ public:
     }
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void EnterTimelineEnd();                    // 0x006E05F0
 };
 
@@ -119,7 +119,7 @@ public:
 };
 
 #pragma pack(push, 1)
-struct CTCWillLightning : CTCBase {             // vtable 0x0126C724
+class CTCWillLightning : public CTCBase { public:             // vtable 0x0126C724
     long  WeaponState;                          // +0x0c
     bool  LeftHandAnim;                         // +0x10
     CBaseIntelligentPointer PItemRemoved;       // +0x11

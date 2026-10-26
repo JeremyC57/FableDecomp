@@ -13,7 +13,7 @@
 // immediates); the counted pointer is an unnamed temporary handed to push_back (it takes the first GetPosition temporary's
 // frame slot) and released inline (block re-read from the frame); the success path is nested so both failures share the final
 // `return -1` tail.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -35,7 +35,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;                        // +0
     SCountBlock* m_pCount;                         // +4
     CCountedPointer(T* object);                    // 0x00AAC820 (T = CSoundEmitterLH::CActiveSound)

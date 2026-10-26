@@ -7,7 +7,7 @@
 // Modeled as a free __fastcall(thisptr) member; the trailing 'flags' arg lands at [esp+8]
 // after the push esi (rel-masked call/global operands need not match exactly).
 
-struct CLandscapeBackgroundPatch; // opaque
+class CLandscapeBackgroundPatch; // opaque
 
 // The scalar destructor called at 0x3 (relocation-masked target).
 extern "C" void __fastcall CCombatSequenceDef_dtor(CLandscapeBackgroundPatch* thisptr);

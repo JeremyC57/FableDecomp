@@ -3,7 +3,7 @@
 // count is balanced (destroyed only when the temporary reference was the last).
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 // Sorted {type, component} vector map searched by LowerBound (0x0040F020 in retail).
 struct CInterfaceMap {
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -43,11 +43,11 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static long g_now = 0;
 static int g_destroyed = 0;
-struct CVillageDef {
+class CVillageDef { public:
     long m_refCount;
     long LightOnTime, LightOffTime;
     virtual ~CVillageDef() {}
@@ -55,15 +55,15 @@ struct CVillageDef {
     void AddRef() { ++m_refCount; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-struct CTCVillage { CVillageDef* PDef; };
+class CTCVillage { public: CVillageDef* PDef; };
 struct CTCVillager : CTCBase {
     CTCVillage* m_pVillage;
     CTCVillage* GetPVillage() const { return m_pVillage; }
 };
-struct CGameTimeManager { bool IsTimeOfDayInRange(long a, long b) { return g_now >= a && g_now < b; } };
-struct CWorld { CGameTimeManager* m_pTimeManager; CGameTimeManager* GetPTimeManager() { return m_pTimeManager; } };
+class CGameTimeManager { public: bool IsTimeOfDayInRange(long a, long b) { return g_now >= a && g_now < b; } };
+class CWorld { public: CGameTimeManager* m_pTimeManager; CGameTimeManager* GetPTimeManager() { return m_pTimeManager; } };
 static CGameTimeManager g_time; static CWorld g_world;
-struct CAIStateGroup_LightHomeCandle {
+class CAIStateGroup_LightHomeCandle { public:
     CAIBrain* PBrain;
     CWorld* GetPThingWorld() { return &g_world; }
     bool ShouldBeLit()

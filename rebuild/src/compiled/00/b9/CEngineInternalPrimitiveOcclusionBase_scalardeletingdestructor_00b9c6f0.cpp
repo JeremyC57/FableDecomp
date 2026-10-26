@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveOcclusionBase {
+class CEngineInternalPrimitiveOcclusionBase { public:
     void* vftable;
 };
 

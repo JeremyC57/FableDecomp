@@ -7,15 +7,15 @@
 // copy in the dead position-argument slot); unnamed temporaries in the call are built after the trailing pushes.
 // `mov al,1`.
 // Leaf: Draw2DText
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510

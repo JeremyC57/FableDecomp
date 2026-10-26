@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CDateAndTime { unsigned long m[7]; };   // 28-byte record (Ego_r.pdb CDateAndTime; fields as words here)
+class CDateAndTime { public: unsigned long m[7]; };   // 28-byte record (Ego_r.pdb CDateAndTime; fields as words here)
 
 static CDateAndTime* ucopy(CDateAndTime* f, CDateAndTime* l, CDateAndTime* r)
 { for (; f != l; ++f, ++r) new (r) CDateAndTime(*f); return r; }

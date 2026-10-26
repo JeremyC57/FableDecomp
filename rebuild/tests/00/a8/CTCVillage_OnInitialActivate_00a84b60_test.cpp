@@ -2,7 +2,7 @@
 
 struct Inner { int tag; };
 
-struct CTCVillage {
+class CTCVillage { public:
     Inner *field0;
     int    ParentThing;
     char   pad8[4];

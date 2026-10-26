@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CThingManager::SetNonScriptedEntitesPaused (0x0051EFC0).
-struct CThing {
+class CThing { public:
     unsigned char ThingType; unsigned long UsingComponents[9]; unsigned char Dead : 1; int kills;
     unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     void Kill(bool) { ++kills; }
 };
 struct SThingListNode { SThingListNode* PNext; SThingListNode* PPrev; CThing* PThing; };
-struct CThingManager {
+class CThingManager { public:
     SThingListNode* PHead; bool NonScriptedEntitesPauseMode;
     void SetNonScriptedEntitesPaused(bool paused)
     {

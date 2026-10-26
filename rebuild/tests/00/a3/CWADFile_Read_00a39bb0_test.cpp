@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 static unsigned long g_index, g_offset, g_size; static void* g_buffer;
-struct CBankFileAsync {
+class CBankFileAsync { public:
     void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size)
     { g_index = index; g_offset = offset; g_buffer = buffer; g_size = size; }
 };
-struct CWADFile { void* vt; CBankFileAsync* Bank; unsigned long Index; long FilePos;
+class CWADFile { public: void* vt; CBankFileAsync* Bank; unsigned long Index; long FilePos;
     void Read(void* buffer, unsigned long size, unsigned long)
     {
         Bank->ReadEntryData(Index, FilePos, buffer, size);

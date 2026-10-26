@@ -6,7 +6,7 @@ union UInputEventData {
     struct { unsigned int JoystickPosX; unsigned int JoystickPosY; unsigned char JoystickButton; } Joystick;
     struct { unsigned int _pad[3]; unsigned int MouseMovementX; } Mouse;
 };
-struct CInputEvent {
+class CInputEvent { public:
     UInputEventData Data;
     int DeviceType; int DeviceNumber; int Type; unsigned int CurrentTime; unsigned int StartTime;
     CInputEvent() {}

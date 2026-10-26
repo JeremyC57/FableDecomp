@@ -6,7 +6,7 @@
 // Model of std::remove_if<C3DVector*, CIsOutsideRadius> @ 0x008C34A0: drop the points farther than the radius from the
 // centre (full 3D length), compacting the rest to the front; returns the new end.
 inline float Sqrtf(float value) { return (float)sqrt((double)value); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }

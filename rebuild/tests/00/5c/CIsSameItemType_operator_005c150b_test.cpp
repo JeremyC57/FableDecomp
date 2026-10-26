@@ -14,7 +14,7 @@ bool CItem_Methods::IsSameItemTypeAsDefIndex(long defIndex)
     return defIndex == this->ItemType;
 }
 bool CItem_Methods::IsSlotFull() { ++g_slotFullCalls; return g_slotFull; }
-struct CIsSameItemType {
+class CIsSameItemType { public:
     long DefIndex;
     bool CheckSlotFull;
     bool operator()(CItem* item) const;

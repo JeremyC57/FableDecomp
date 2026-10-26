@@ -1,22 +1,22 @@
 // Behaviour test for 0x008BF0F0 CCreatureAction_BodgeSideStrike::Initialise: handedness from the side of the facing the target is on.
 #include <cstdio>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
 enum ECombatAnimationHandedness { COMBAT_ANIM_LEFT_HANDED = 0, COMBAT_ANIM_RIGHT_HANDED = 1 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector pos, facing; int hand;
     const C3DVector& GetPosition_004c73d0() const { return pos; }
     C3DVector GetFacing() const { return facing; }
     void SetLastActionHandedness(ECombatAnimationHandedness h) { hand = h; }
 };
 struct CBaseIntelligentPointer { CThingCreatureBase* PItem; CThingCreatureBase* GetPItem() const { return PItem; } };
-struct CCreatureAction_BodgeSideStrike {
+class CCreatureAction_BodgeSideStrike { public:
     CBaseIntelligentPointer Owner, Target; const char* anim; int baseInit;
     void SetAnimationName(const CCharString& n) { anim = n.t; }
     void Initialise()

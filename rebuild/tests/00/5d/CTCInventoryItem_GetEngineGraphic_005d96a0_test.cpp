@@ -2,7 +2,7 @@
 // CEngineGraphic (taken from def+0x25, unaligned), a failed cache yields the all-zero default graphic
 #include <cstdio>
 #pragma pack(push, 1)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned int  BankIndex;
     float         AnimStep;
     float         RenderSizeX;
@@ -10,7 +10,7 @@ struct CEngineGraphic {
     unsigned char Type;
     CEngineGraphic() : BankIndex(0), AnimStep(0.0f), RenderSizeX(0.0f), AdditiveAlpha(false), Type(0) {}
 };
-struct CInventoryItemDef {
+class CInventoryItemDef { public:
     unsigned char _pad[0x25];
     CEngineGraphic Graphic;               /* +0x25 */
     unsigned char _pad33;

@@ -7,12 +7,12 @@
 // Shape: `while (!terminating) { if (cond) { if (terminating) return; QuestFinished = true; if (terminating) return;
 // return; } NewScriptFrame(); }` -- the condition's `||` chain falls into one shared finish block placed after the
 // loop's `ret`, whose last terminate test (result unused) becomes `jmp IsActiveThreadTerminating`.
-struct CGameScriptInterface {                            // retail vtable @ 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                            // retail vtable @ 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                 // slot 7 (+0x1c)
 };
 
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04..+0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

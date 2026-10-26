@@ -7,7 +7,7 @@ struct CharBuf {
     unsigned char flags;
 };
 
-struct CCharString {
+class CCharString { public:
     CharBuf* buf;
 };
 

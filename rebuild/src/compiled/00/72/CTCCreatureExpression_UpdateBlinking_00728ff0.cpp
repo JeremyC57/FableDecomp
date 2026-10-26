@@ -14,7 +14,7 @@
 // Shape: the parent creature is a named local read first; the seed step is the landed inline GFNextRandomSeed
 //   (0x00728000); the has-animation result is a short-lived named bool (ebx pushed around it only); each "ST_BLINK" is
 //   an implicit CCharString conversion temporary; the start block falls through into the blinking test.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -26,15 +26,15 @@ inline unsigned long GFNextRandomSeed(unsigned long* seed)
     *seed = GFROR13(*seed);
     return *seed;
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x1613c];
     unsigned long WorldSeed;                            // +0x1613c
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     unsigned char _body[0x2c];
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x005B33F4
 };
@@ -42,12 +42,12 @@ struct CCombinationAnim {
     unsigned char _pad00[0x51];
     unsigned char Flags51;                              // +0x51 bit 1: finished
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     CCombinationAnim* FindCombinationAnim(long type);   // 0x0070C4E0
     void AddCombinationAnim(const CAnimInit& init, long a, long b, bool c, bool d);   // 0x0070D780
     void RemoveCombinationAnim(CCombinationAnim* anim); // 0x0070D8E0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -64,7 +64,7 @@ struct CThingCreatureBase {
     virtual bool HasAnimation(const CCharString& name, bool loadedOnly);   // slot 73 (+0x124)
     const CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool flag);   // 0x00662FA0
 };
-struct CTCCreatureExpression {
+class CTCCreatureExpression { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];

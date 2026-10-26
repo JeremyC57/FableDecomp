@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;
 };
 
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     char pad[0x11c];
     C3DVector hitPos;
 

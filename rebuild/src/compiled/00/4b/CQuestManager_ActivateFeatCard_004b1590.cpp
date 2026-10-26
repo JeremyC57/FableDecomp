@@ -15,9 +15,9 @@
 // Shape: the TC lookup is the checked HasTC + GetTC pair whose key copy VC7.1 homes in the dead `card` argument slot;
 // the intelligent pointer is a named temporary built out of line, pushed by reference and destroyed after the call;
 // the remove_if predicate is a 4-byte functor passed by value.
-struct CCharString { struct CCharStringData* PStringData; };
+class CCharString { public: class CCharStringData* PStringData; };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -28,7 +28,7 @@ struct CTCMap {                                          // CThing::Components: 
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const long& type);              // 0x0040F020 (the non-const instantiation)
 };
-struct CThing {                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
+class CThing { public:                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
@@ -50,7 +50,7 @@ struct CThing {                                          // retail CThing (local
     void SetAsGameStatePersisted(bool persisted);        // 0x004C7880
 };
 
-struct CTCQuestCard {                                    // TC type 0x6c (retail layout = PDB)
+class CTCQuestCard { public:                                    // TC type 0x6c (retail layout = PDB)
     unsigned char _pad00[0x14];
     long          FeatIndex;                             // +0x14
     long GetFeatIndex() const { return FeatIndex; }
@@ -62,14 +62,14 @@ struct CBaseIntelligentPointer {                         // 8 bytes: vptr, item 
     void* PItem;
     ~CBaseIntelligentPointer();                          // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                        // 0x004A96F0 (T = CThing)
 };
 struct CThingPointerList {                               // STLport list<CIntelligentPointer<CThing>>: one sentinel pointer
     void* _M_node;
     void push_back(const CIntelligentPointer<CThing>& value);   // 0x004BA4E0
 };
-struct CIsQuestCardWithFeatIndex {                       // remove_if predicate (PDB: one long)
+class CIsQuestCardWithFeatIndex { public:                       // remove_if predicate (PDB: one long)
     long FeatIndex;
     CIsQuestCardWithFeatIndex(long featIndex) : FeatIndex(featIndex) {}
 };
@@ -82,12 +82,12 @@ struct CObjectiveList {                                  // STLport list<CQuestM
     void clear();                                        // 0x004B8C50
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                             // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad00[0x58];
     CQuestCardList    AvailableQuestCardTypes;           // +0x58 (PDB +0x7c)
     CThingPointerList ActiveQuestCards;                  // +0x5c (PDB +0x88)

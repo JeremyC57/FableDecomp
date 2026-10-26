@@ -7,7 +7,7 @@
 
 static int g_blendFrees = 0;
 
-struct CCompositeBlendDesc { unsigned int TextureIndex; int BlendType; unsigned int Diffuse; unsigned int Specular; };
+class CCompositeBlendDesc { public: unsigned int TextureIndex; int BlendType; unsigned int Diffuse; unsigned int Specular; };
 
 struct BlendVector {
     CCompositeBlendDesc* Start;
@@ -24,7 +24,7 @@ struct BlendVector {
     }
 };
 
-struct CEngineTextureMorph {
+class CEngineTextureMorph { public:
     int         OriginalTextureIndex;
     int         MorphID;
     BlendVector Blends;

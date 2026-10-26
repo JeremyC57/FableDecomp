@@ -1,21 +1,21 @@
 // Behaviour test for CEngineLightingManager::SetupShaderSpotLight @ 0x00B47310.
 #include <cstdio>
 #include <cmath>
-struct CMatrix3x4 { float m[12]; };
-struct CRGBFloatColour { float R, G, B, A; };
-struct CShadowRendererSceneData {
+class CMatrix3x4 { public: float m[12]; };
+class CRGBFloatColour { public: float R, G, B, A; };
+class CShadowRendererSceneData { public:
     float other[48]; CMatrix3x4 SpotLightFalloffMatrix; float rest[36];
 };
-struct CEngineShadowRenderer { int pad[3]; CShadowRendererSceneData SceneData; };
+class CEngineShadowRenderer { public: int pad[3]; CShadowRendererSceneData SceneData; };
 static CEngineShadowRenderer g_renderer; static CEngineShadowRenderer* g_pShadowRenderer = &g_renderer;
 static CMatrix3x4 g_seenMatrix; static const CMatrix3x4* g_seenPtr; static float g_scale, g_offset; static const CRGBFloatColour* g_colour;
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void SetShadowSpotLightFalloffParameters(const CMatrix3x4* f, float s, float o, const CRGBFloatColour* c)
     { g_seenPtr = f; g_seenMatrix = *f; g_scale = s; g_offset = o; g_colour = c; }
 };
 static CShaderRenderManager g_shader; static CShaderRenderManager* g_pShader = &g_shader;
 struct CEngineLightingManagerSpotlightParams { float Radius, SpotRadius, ConeWidth; CRGBFloatColour Colour; };
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     CEngineLightingManagerSpotlightParams SpotLightParams;
     void SetupShaderSpotLight()
     {

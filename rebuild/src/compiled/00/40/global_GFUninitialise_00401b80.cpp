@@ -15,7 +15,7 @@
 // CEngineInternalPrimitiveBase::AddChildPrimitive (propagated): its body only returns the
 // address of the static object at 0x013B7CD8. An earlier lane landed this body as
 // Global_GFUninitialise_00401b80.cpp (fable_gfuninitialise.h); this TU is self-contained.
-struct CInitBaseClass {
+class CInitBaseClass { public:
     void Uninitialise();                          // 0x00412F60
 };
 
@@ -23,15 +23,15 @@ struct CBankFileManager {
     void Close();                                 // 0x009A7990
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     void Uninitialise();                          // 0x009A60D0
 };
 
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void Uninitialise();                          // 0x0098E0D0
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     void Uninitialise();                          // 0x004051C0
 };
 

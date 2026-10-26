@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x006BE9D0: _Push_heap over pair<long, CMusicManager::CRegisteredMusicEntry>.
 static int g_strDtors = 0;
-struct CWideString {
+class CWideString { public:
     int Data;
     CWideString() : Data(0) { }
     CWideString(const CWideString& o) : Data(o.Data) { }
@@ -16,7 +16,7 @@ struct CRegisteredMusicEntry {
     bool CacheToHD;
 };
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

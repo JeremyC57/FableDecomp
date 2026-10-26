@@ -42,7 +42,7 @@ bool CBasicStringChar::operator<(const CBasicStringChar& other) const
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -59,7 +59,7 @@ struct CCharString {
     }
 };
 
-struct C3DVector {                                         // floats, moved as dwords
+class C3DVector { public:                                         // floats, moved as dwords
     unsigned long X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
@@ -71,7 +71,7 @@ template <class T1, class T2> struct pair {                // STLport pair
 };
 typedef pair<CCharString, C3DVector> SNamedPosition;       // 16 bytes
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty, passed by value
+template <class K, class V> class CKeyPairCompareLess { public:   // empty, passed by value
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef CKeyPairCompareLess<CCharString, C3DVector> CNamedPositionLess;

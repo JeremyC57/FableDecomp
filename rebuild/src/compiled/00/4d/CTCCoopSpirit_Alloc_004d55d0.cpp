@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
 #include <new>
 
-struct CThing;
+class CThing;
 
-struct CTCCoopSpirit
-{
+class CTCCoopSpirit
+{ public:
     unsigned char storage[0x34];
     CTCCoopSpirit(CThing* thing);
     static CTCCoopSpirit* __fastcall Alloc(CThing* thing);

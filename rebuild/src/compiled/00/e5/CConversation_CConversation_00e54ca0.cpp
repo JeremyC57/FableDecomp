@@ -23,7 +23,7 @@ struct CRetailVector_CCharString {             // VC6-era Dinkumware vector<CCha
     CRetailVector_CCharString(const CRetailVector_CCharString& other);   // 0x007ACEA0
 };
 
-struct CConversation : CDefClassBase_Retail {  // vtable 0x012E5FF0
+class CConversation : public CDefClassBase_Retail { public:  // vtable 0x012E5FF0
     long                      Lines;           // +0x28
     CRetailVector_CCharString Speaker;         // +0x2c
     CRetailVector_CCharString Dialogue;        // +0x38

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCTargetingPlayer::GetTargetedPos (0x00802420): the body of src/ over stand-ins -- first-person
 // interpolation of position plus offset, the live target's fire point otherwise, false with no live target.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -10,8 +10,8 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
-struct CPlayer { bool firstPerson; bool IsFirstPersonTargeting() { return firstPerson; } };
-struct CWorld { int dummy; };
+class CPlayer { public: bool firstPerson; bool IsFirstPersonTargeting() { return firstPerson; } };
+class CWorld { public: int dummy; };
 static CWorld g_world;
 class CThing {
 public:
@@ -26,7 +26,7 @@ static C3DVector GetTargetFirePoint(const CWorld* world, const CThing* target, f
     g_gotWorld = world; g_gotT = t;
     return C3DVector(1, 2, target->fireZ);
 }
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     CThing* target;
     CThing* GetTargetedThing() { return target; }
     CThing* ParentThing;

@@ -1,4 +1,4 @@
-struct CInputProcessQuickAccessItems {
+class CInputProcessQuickAccessItems { public:
     void* vftable;
 };
 

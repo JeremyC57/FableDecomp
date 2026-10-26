@@ -2,12 +2,12 @@
 // resurrection item, otherwise the completion UI opens in mode 3; the kill is vetoed in both cases.
 #include <cstdio>
 
-struct CThing;
+class CThing;
 static int g_used, g_activated, g_mode;
-struct CTCResurrectionItem { void OnItemUsed(CThing&) { ++g_used; } };
-struct CTCQuestCompletionUI { void Activate(int type, const char*, bool, const char*, bool) { ++g_activated; g_mode = type; } };
+class CTCResurrectionItem { public: void OnItemUsed(CThing&) { ++g_used; } };
+class CTCQuestCompletionUI { public: void Activate(int type, const char*, bool, const char*, bool) { ++g_activated; g_mode = type; } };
 struct CTCInventoryBase { CThing* Item; CThing* GetResurrectionItemInInventory() { return Item; } };
-struct CThing {
+class CThing { public:
     bool Main; bool Dead;
     CTCInventoryBase* Inventory; CTCResurrectionItem* Resurrection; CTCQuestCompletionUI* UI;
     bool HasTC(long t) const { return t == 0x11 ? Inventory != 0 : t == 0xe1 ? Resurrection != 0 : UI != 0; }

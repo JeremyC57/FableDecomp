@@ -1,14 +1,14 @@
 // Behaviour test for CTCSwitchableNavigation::~CTCSwitchableNavigation @ 0x007876D0: unblocks the parent's 40-bit id nodes only when the map is active.
 #include <cstdio>
-struct CThing { unsigned long idLow, idHigh; };
-struct CNavigatorManager {
+class CThing { public: unsigned long idLow, idHigh; };
+class CNavigatorManager { public:
     long active; long calls; long map; unsigned long low, high; bool blocked;
     bool IsNavigationMapActivated(long m) { return m == active; }
     void SetSwitchableNodesAsBlocked(long m, unsigned long lo, unsigned long hi, bool b) { ++calls; map = m; low = lo; high = hi; blocked = b; }
 };
 static CNavigatorManager g_nav;
-struct CTCBase { CThing* ParentThing; ~CTCBase() {} };
-struct CTCSwitchableNavigation : CTCBase {
+class CTCBase { public: CThing* ParentThing; ~CTCBase() {} };
+class CTCSwitchableNavigation : public CTCBase { public:
     long MapIndex;
     ~CTCSwitchableNavigation()
     {

@@ -9,30 +9,30 @@
 // CAnimInit (Ego_r.pdb, 0x2c) is a frame local; its Frame member is zeroed by the inline constructor (the two
 // `mov [esp+..],0` stores right before the Set call).
 // CModeSleepBed layout as the landed constructor 0x0084B7C0: SleepAnimName +0x28.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CAnimFilterBase;
+class CAnimFilterBase;
 
-struct CAnimationEntry {                   // Ego_r.pdb CAnimationEntry (0x10)
+class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (0x10)
     long BankIndex;                        // +0
     unsigned char _rest[0xc];              // AnimName, GroupName, Components
     unsigned long GetAnimateThingFlags() const;        // 0x005DC390
     long GetTimeToBlendIn(CThing* thing) const;        // 0x005DC230
 };
 
-struct CAnimFrameInfo {                    // 8 bytes, zeroed by its inline constructor
+class CAnimFrameInfo { public:                    // 8 bytes, zeroed by its inline constructor
     long m_frame;
     long m_subFrame;
     CAnimFrameInfo() : m_frame(0), m_subFrame(0) { }
 };
 
-struct CAnimInit {                         // Ego_r.pdb CAnimInit (0x2c)
+class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           UpdateMode;             // +0x00
     unsigned char  Type;                   // +0x04
     bool           Looping;                // +0x05
@@ -51,7 +51,7 @@ struct CAnimInit {                         // Ego_r.pdb CAnimInit (0x2c)
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050
 };
 
-struct CAnimateThing {                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)
+class CAnimateThing { public:                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)
     long           UpdateMode;             // +0x00
     short*         m_animsFirst;           // +0x04 Anims (vector<short>)
     short*         m_animsLast;            // +0x08
@@ -62,7 +62,7 @@ struct CAnimateThing {                     // starts with CCompleteAnimation::Ma
     void SetMainAnim(const CAnimInit& init, long blendIn, long delay);   // 0x0070D580
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long flags);                    // 0x00662A00
     CAnimationEntry* GetAnimFromName(const CCharString& name, const CAnimFilterBase* filter); // 0x00662B10
 };
@@ -76,7 +76,7 @@ struct CModeBase {
 
 namespace NCreatureMode {
 
-struct CModeSleepBed : CModeBase {
+class CModeSleepBed : public CModeBase { public:
     unsigned char _filter[0xc];            // +0x1c CAnimFilterOfGroup Filter
     CCharString   SleepAnimName;           // +0x28
     void AnimUpdate(CAnimateThing& anim);

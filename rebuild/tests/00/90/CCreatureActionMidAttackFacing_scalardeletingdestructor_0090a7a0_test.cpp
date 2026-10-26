@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_MidAttackFacing {
+class CCreatureAction_MidAttackFacing { public:
     void* vftable;
     int destroyed;
 };

@@ -6,9 +6,9 @@
 // containers before it); CInstantiatedDefInfo: PDef (CDefPointer) at +0xc; CDefPointeeBase keeps its reference count at +4.
 // Shape: the copy constructor's increment goes through a register (`mov edx,[ecx+4] ; inc edx ; mov [ecx+4],edx`); the
 // `index <= 0` branch default-constructs the result. 0x009ADA90 is the same body for a second instantiation.
-struct CCharString;
+class CCharString;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     long RefCount;                                 // +4
 };
@@ -30,7 +30,7 @@ struct CInstantiatedDefInfo {
     CDefPointer PDef;                              // +0x0c
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char          _pad[0xa4];             // +0x00 vptr, maps, symbol tables, compressed data
     CInstantiatedDefInfo** InstantiatedDefs;       // +0xa4 CArray<CInstantiatedDefInfo*>::m_begin
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410

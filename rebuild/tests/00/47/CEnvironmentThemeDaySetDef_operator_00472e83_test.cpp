@@ -4,7 +4,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -21,11 +21,11 @@ struct CEnvironmentThemeDefArray {
     { m_pData = o.m_pData; m_size = o.m_size; m_capacity = o.m_capacity; g_order[g_calls++] = 2; return *this; }
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 
-struct CEnvironmentThemeDaySetDef : CParentDefClassBase {
+class CEnvironmentThemeDaySetDef : public CParentDefClassBase { public:
     CEnvironmentThemeDefArray TimeTheme;
     float                     SunTilt;
     float                     SunRotate;

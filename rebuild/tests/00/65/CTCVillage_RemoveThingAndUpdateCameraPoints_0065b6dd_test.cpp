@@ -5,9 +5,9 @@
 #include <list>
 #include <algorithm>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 
-struct CTCVillage {
+class CTCVillage { public:
     std::list<const CThing*> VillageBuildings, VillagePeople, VillageTorches, VillageCrops, VillagePatrols, VillageMarkers;
     int tasksRemoved;
     CTCVillage() : tasksRemoved(0) {}

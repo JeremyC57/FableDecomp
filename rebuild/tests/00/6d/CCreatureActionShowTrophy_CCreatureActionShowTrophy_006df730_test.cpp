@@ -1,22 +1,22 @@
 // Behaviour test for 0x006DF730 CCreatureAction_ShowTrophy(owner, trophy, animation, last): base arguments and member initialisation.
 #include <cstdio>
-struct CThing { int id; };
-struct CAnimationEntry { int id; };
+class CThing { public: int id; };
+class CAnimationEntry { public: int id; };
 static CAnimationEntry g_anim;
 static const char* g_lastName = 0;
 static CAnimationEntry* GetTableAnimation(CThing*, const char* name) { g_lastName = name; return &g_anim; }
-struct CSoundPair { int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: int FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } void SetPItem(CThing* p) { m_pItem = p; } };
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() { }
     CIntelligentPointer(CThing* item) { SetPItem(item); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThing* m_owner; float m_a, m_b; CAnimationEntry* m_anim; CSoundPair m_sound; int m_c, m_d;
     CCreatureActionBase(CThing* owner, float a, float b, CAnimationEntry* anim, const CSoundPair& sound, int c, int d)
         : m_owner(owner), m_a(a), m_b(b), m_anim(anim), m_sound(sound), m_c(c), m_d(d) { }
 };
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:
     CIntelligentPointer PTrophy; int TrophyState; unsigned char Shown; CIntelligentPointer PTrophyObject;
     CCreatureAction_ShowTrophy(CThing* owner, CThing* trophy, const char* animation, int last)
         : CCreatureActionBase(owner, -1.0f, 0.95f, GetTableAnimation(owner, animation), CSoundPair(), 100, last),

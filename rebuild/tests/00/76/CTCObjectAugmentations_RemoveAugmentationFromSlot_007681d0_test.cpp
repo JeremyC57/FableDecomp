@@ -11,7 +11,7 @@ struct CDefPtr {
     void Release() { if (m_pDef) { CDefBase* def = m_pDef; if (--def->m_refCount == 0) def->Destroy(); m_pDef = 0; } }
     CDefPtr& operator=(int) { Release(); m_pDef = 0; return *this; }
 };
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     CDefPtr* m_pAugmentationsFirst;
     void AttachAugmentationParticles() { g_attachStep = ++g_step; }
     void UpdateParticleMorphs() { g_morphStep = ++g_step; }

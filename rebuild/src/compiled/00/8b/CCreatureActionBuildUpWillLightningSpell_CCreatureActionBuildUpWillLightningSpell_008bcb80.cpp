@@ -11,21 +11,21 @@
 // One of 35 bodies of this shape.
 #include "fable_string.h"
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);
 };
 
-struct CCreatureAction_BuildUpWillLightningSpell : CCombatActionBase {
+class CCreatureAction_BuildUpWillLightningSpell : public CCombatActionBase { public:
     virtual void v00();
     CCreatureAction_BuildUpWillLightningSpell(CThingCreatureBase* owner);
 };

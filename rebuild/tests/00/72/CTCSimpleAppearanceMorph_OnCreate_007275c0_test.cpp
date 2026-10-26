@@ -4,12 +4,12 @@
 #include <cstdlib>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& o) : B(o.B), G(o.G), R(o.R), A(o.A) {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;
     long          BlendType;
     CRGBColour    DiffuseColour;
@@ -17,9 +17,9 @@ struct CCompositeBlendDesc {
     CCompositeBlendDesc(unsigned long texture, long type, unsigned char r, unsigned char g, unsigned char b, unsigned char a)
         : TextureIndex(texture), BlendType(type), DiffuseColour(r, g, b, a), SpecularColour(0, 0, 0, 0) {}
 };
-struct CEngineTextureMorph;
+class CEngineTextureMorph;
 static int g_blends = 0; static unsigned long g_blendTex[4], g_blendRep[4]; static long g_blendType[4]; static unsigned char g_blendA[4], g_blendR[4]; static void* g_blendOwner = 0;
-struct CTextureMorphs {
+class CTextureMorphs { public:
     CEngineTextureMorph* m_first;
     CEngineTextureMorph* m_last;
     CEngineTextureMorph* m_end;
@@ -39,9 +39,9 @@ struct CMeshMorphSet {
     } MeshParts;
     CTextureMorphs OriginalMeshTextureMorphs;
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 static int g_resets = 0;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     void Reset(T* object) { ++g_resets; Data = object; }
@@ -55,15 +55,15 @@ struct CDefBase {
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTextureReplacementDef : CDefBase {
-    struct CEntry { unsigned long OriginalTexture; unsigned long ReplacementTexture; };
+class CTextureReplacementDef : public CDefBase { public:
+    class CEntry { public: unsigned long OriginalTexture; unsigned long ReplacementTexture; };
     unsigned char _pad08[0x28 - 0x08];
     struct CEntryArray {
         CEntry* m_first; CEntry* m_last; CEntry* m_end;
@@ -72,7 +72,7 @@ struct CTextureReplacementDef : CDefBase {
     } Entries;
 };
 static CTextureReplacementDef* g_repDef = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_007086f0(CDefPointer<CTextureReplacementDef>& out)
     {
         ++g_getSubDef; g_countAtGet = RefCount;
@@ -80,7 +80,7 @@ struct CDefClassBase : CDefBase {
         g_repDef->AddRef(); out.Object = g_repDef; return true;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }

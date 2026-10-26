@@ -10,20 +10,20 @@
 // rtti-vtables.tsv).
 // One of 13 bodies of this shape.
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
-struct CCreatureAction_SummonerLightningOrbOutOfGroundSmash : CCombatActionBase {
+class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActionBase { public:
     virtual void v00();
     CCreatureAction_SummonerLightningOrbOutOfGroundSmash(CThingCreatureBase* owner);
 };

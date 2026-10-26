@@ -15,16 +15,16 @@ extern "C" void* __cdecl malloc(unsigned int size);
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CSpawnedFuncBase;
+class CSpawnedFuncBase;
 
-struct CCPPointerInfo {                          // 12 bytes
+class CCPPointerInfo { public:                          // 12 bytes
     unsigned long RefCount;                      // +0x00
     void (__cdecl* DeleteFunc)(void*);           // +0x04
     void*         Data;                          // +0x08
 };
 
 template <class T>
-struct CCountedPointer {                         // 8 bytes
+class CCountedPointer { public:                         // 8 bytes
     T*              Data;                        // +0x00
     CCPPointerInfo* Info;                        // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)

@@ -5,18 +5,18 @@
 // Shape: the name argument is loaded before `push esi`; PStringToSaveTo re-read from +0x20 per append; the virtual call
 // takes only the context; `ret 8`.
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString {
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString { public:
     void* PStringData;
     const CCharString& operator+=(const char* text);      // 0x0099F100
 };
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

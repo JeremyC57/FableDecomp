@@ -1,7 +1,7 @@
 // behaviour test for 00b9e290 GetBoundingBoxTransform: CalculateMatrix of the mesh box, then *= ObjectTransform
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 {
 public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
@@ -23,7 +23,7 @@ public:
         return *this;
     }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     void CalculateMatrix(CMatrix3x4& m) const   // simplified 0x00ADEBC0 (no epsilon clamp)
     {
@@ -33,7 +33,7 @@ struct C3DBoundingBox {
         m.E41 = (MaxCoord.X + MinCoord.X) * 0.5f; m.E42 = (MaxCoord.Y + MinCoord.Y) * 0.5f; m.E43 = (MaxCoord.Z + MinCoord.Z) * 0.5f;
     }
 };
-struct C3DMeshInfo { C3DBoundingBox BoundingBox; };
+class C3DMeshInfo { public: C3DBoundingBox BoundingBox; };
 struct CMesh { C3DMeshInfo* MeshInfo; CMatrix3x4 ObjectTransform; };
 static bool GetBoundingBoxTransform(CMesh* self, CMatrix3x4& transform)
 {

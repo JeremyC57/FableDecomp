@@ -2,11 +2,11 @@
 
 static int g_destroyed = 0;
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox BoundingBox; long StartTriangle; long TriangleCount; C3DMeshPartitionElement* SubElements[2];
     C3DBoundingSphere BoundingSphere;
     C3DMeshPartitionElement() : StartTriangle(5), TriangleCount(6) { SubElements[0] = 0; SubElements[1] = 0; }

@@ -7,8 +7,8 @@ struct CSurfaceResource
     virtual void __stdcall Release() = 0;
 };
 
-struct CSurface
-{
+class CSurface
+{ public:
     void* vtable00;
     CSurfaceResource* resource04;
     unsigned long resourceState08;

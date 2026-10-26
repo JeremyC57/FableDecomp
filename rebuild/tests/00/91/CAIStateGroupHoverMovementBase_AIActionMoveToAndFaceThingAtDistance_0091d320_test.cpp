@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -10,7 +10,7 @@ struct C3DVector {
     C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     C3DVector pos;
     const C3DVector& GetPosition() { return pos; }
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
 };
 inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_calls, g_results[8], g_ri, g_lastRepeat, g_lastMovement;
 static C3DVector g_lastPos, g_lastFace;

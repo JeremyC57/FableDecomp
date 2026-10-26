@@ -11,7 +11,7 @@ template<class T> struct CRetailVector {
     T* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
 };
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

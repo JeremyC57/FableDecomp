@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct CCamera { int tag; float m; void* a; void* b; char rest[0x30]; };
+class CCamera { public: int tag; float m; void* a; void* b; char rest[0x30]; };
 struct CFieldA { int id; };
 struct CFieldB { int id; };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*   vptr;            // +0x00
     CFieldA field4;          // +0x04
     char    pad8[0x34];      // +0x08 .. +0x3b

@@ -1,9 +1,9 @@
 // Behaviour test for CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse (0x007267C0).
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     void ValidateOrientationAndFlip()

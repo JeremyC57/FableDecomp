@@ -9,14 +9,14 @@
 // CIntelligentPointer at +0x10, fetched once for the present / not dead test (inline IsThingAlive), then the CHECKED lookup feeds the bool call (`||` chain).
 // Layout: owner CIntelligentPointer +8; Ego_r.pdb StartTick / Interrupt / StartHealth +0x12c / +0x130 / +0x134, retail
 // +0x114 / +0x118 / +0x11c (CCombatActionBase is 0x114 in retail); the creature's health float at +0xb4.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -50,15 +50,15 @@ static inline bool IsThingAlive(const CThing* thing)    // one fetch for the nul
     return thing && !(thing->m_flags91 & 1);
 }
 
-struct CTCKraken {
+class CTCKraken { public:
     bool HasTargetBeenHitByKraken();            // 0x007FB500
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char           _pad[0x10];
     CBaseIntelligentPointer PKraken;            // +0x10
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -76,7 +76,7 @@ struct CCombatActionBase {
     }
 };
 
-struct CCreatureAction_TentacleStrikeLoop : CCombatActionBase {
+class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:
     long  StartTick;                            // +0x114 (PDB +0x12c)
     bool  Interrupt;                            // +0x118 (PDB +0x130)
     float StartHealth;                          // +0x11c (PDB +0x134)

@@ -8,7 +8,7 @@
 // comes from an inline accessor returning it BY VALUE (a direct member reference would pass
 // &thing.UniqueID without a copy).
 #pragma pack(push, 4)                              // the __int64 after the vptr must not realign the class
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char    _pad04[0x14];
     unsigned __int64 UniqueID;                     // +0x18
@@ -19,7 +19,7 @@ struct CUIDToThingMap {
     unsigned char _body[0x10];
     unsigned long erase(const unsigned __int64& key);   // 0x0052AFB0
 };
-struct CThingManager {
+class CThingManager { public:
     virtual void v00();
     unsigned char  _pad04[0x54];
     CUIDToThingMap UIDToThingMap;                  // +0x58

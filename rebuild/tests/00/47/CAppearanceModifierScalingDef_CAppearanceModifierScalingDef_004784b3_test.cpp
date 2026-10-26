@@ -1,13 +1,13 @@
 #include <cstdio>
 
 static int g_baseCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _body[0x38];
     CParentDefClassBase() { }
     CParentDefClassBase(const CParentDefClassBase& other) { ++g_baseCopies; }
 };
-struct CAppearanceModifierScalingDef : CParentDefClassBase {
+class CAppearanceModifierScalingDef : public CParentDefClassBase { public:
     long m_scaleX, m_scaleY, m_scaleZ;
     virtual void v00() { }
     CAppearanceModifierScalingDef() : m_scaleX(10), m_scaleY(11), m_scaleZ(12) { }

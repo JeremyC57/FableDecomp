@@ -2,8 +2,8 @@
 #include <string.h>
 // Behaviour test for CCombatActionBase::SetCombatAnimation (retail 0x008574D0): the vector is
 // emptied (capacity kept) before the creature appends the animations for the name.
-struct CCharString { const char* text; };
-struct CAnimationEntry { int id; };
+class CCharString { public: const char* text; };
+class CAnimationEntry { public: int id; };
 struct CAnimationEntryVector;
 
 static const CAnimationEntry g_entries[3] = { { 1 }, { 2 }, { 3 } };
@@ -30,7 +30,7 @@ struct CAnimationEntryVector {
     void clear() { Erase(m_pFirst, m_pLast); }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& anims) const
     {
         ++g_queries; g_lastName = &name; g_sizeSeen = (unsigned long)(anims.m_pLast - anims.m_pFirst);
@@ -45,7 +45,7 @@ struct CCreaturePointer {
     CThingCreatureBase* operator->() const { return GetPItem(); }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCreaturePointer      PCreature;
     CAnimationEntryVector CombatAnimations;
     void SetCombatAnimation(const CCharString& name);

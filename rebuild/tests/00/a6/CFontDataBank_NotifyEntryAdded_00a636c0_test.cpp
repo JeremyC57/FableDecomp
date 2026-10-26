@@ -23,7 +23,7 @@ static int fails = 0;
 struct CBankFileEntryInfo;
 template <class T> class CArray;
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
 };
 struct CBaseClassNonCopyable : CBaseClass {
@@ -32,7 +32,7 @@ struct CBaseClassNonCopyable : CBaseClass {
 };
 
 class CFontDataBank;
-struct CFontBank;
+class CFontBank;
 struct CCountedPointerWords {
     void* Data;
     void* Info;

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CCharStringData { char* PData; unsigned long StringLength; };
-struct CCharString {
+class CCharStringData { public: char* PData; unsigned long StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { }
@@ -12,7 +12,7 @@ struct CCharString {
     }
 };
 namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { } }; } using N_0099a2d0::CBase;
-struct CConsoleCommandLine : CBase {
+class CConsoleCommandLine : public CBase { public:
     virtual void v00() { }
     CCharString CurrentEntry;
     bool        UserEntry;

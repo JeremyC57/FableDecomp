@@ -1,14 +1,14 @@
 // Behaviour test for 0x00749D20 NCreatureHiding::IsThemeHidable(const CWorldMap&, const C3DVector&)
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public:
     int X, Y;
     C2DCoordI(int x, int y) : X(x), Y(y) { }
 };
 
 static int g_lastX = -999, g_lastY = -999;
-struct CWorldMap {
+class CWorldMap { public:
     // stand-in for 0x004FCBD0: a 4x4 map whose cells (1,2) and (3,0) are blocked; off-map is impassable
     bool IsPosPassable(const C2DCoordI& pos) const
     {

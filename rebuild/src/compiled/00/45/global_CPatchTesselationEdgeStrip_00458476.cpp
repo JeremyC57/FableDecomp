@@ -6,10 +6,10 @@
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
 // base-class destructor tail-called at end (relocation-masked target)
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 extern void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip* thisptr);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char _pad[0x6c + 4];
 };
 

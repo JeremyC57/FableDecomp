@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeKnockedDown::OnActivate (retail 0x008D9480): the emote component (interface 0x45)
 // shows icon 8 (0.1 s fade, 1.0 s, alpha 255); the interface-0x30 component's ability timers are invalidated; a state-1
 // creature has its animation suspended; then the base activation.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,12 +55,12 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup {
+class CThing : public CThingLookup { public:
     unsigned char m_type;
     int suspends;
     void SetSuspendAnimation(bool suspend, long reason) { if (suspend && reason == 0) ++suspends; }
 };
-struct CTCEmoteIcon : CTCBase {
+class CTCEmoteIcon : public CTCBase { public:
     long Icon; long Arg; float Fade; float Time; unsigned char Alpha;
     void SetEmoteIcon(long icon, long arg, float fade, float time, unsigned char alpha)
     {

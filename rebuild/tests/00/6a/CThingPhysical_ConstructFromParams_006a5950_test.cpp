@@ -2,9 +2,9 @@
 // on success scale 1, health from the def, creators stored, hit flags reset, Damageable copied from the def.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CThingBaseDef { bool Damageable; float Health; };
-struct CThingPhysical;
+class C3DVector { public: float X, Y, Z; };
+class CThingBaseDef { public: bool Damageable; float Health; };
+class CThingPhysical;
 struct CIntelligentPointer {
     CThingPhysical* Item;
     CIntelligentPointer() : Item(0) { }
@@ -13,7 +13,7 @@ struct CIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& o) { Item = o.GetPItem(); return *this; }
 };
 static long g_lastMap;
-struct CThingPhysical {
+class CThingPhysical { public:
     CThingBaseDef* PBaseDef; bool BaseResult; bool Drawable;
     float Scale; CIntelligentPointer PLastCreator, POriginalCreator; float MaxHealth, Health; long CanCome;
     bool Damageable, Killable, RespondToHits, EvadeAllHits, NegateAllHits, AbleToBeEngagedInCombat;

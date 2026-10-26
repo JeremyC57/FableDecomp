@@ -9,7 +9,7 @@ struct CMorphArray {
     CMorphArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     CMorphArray(const CMorphArray& o) : _M_start(o._M_start), _M_finish(o._M_finish), _M_end_of_storage(o._M_end_of_storage) { ++g_arrayCopies; }
 };
-struct CEngineTextureMorphSet { CMorphArray Morphs; };
+class CEngineTextureMorphSet { public: CMorphArray Morphs; };
 struct SPair {
     CMeshInfo first; CEngineTextureMorphSet second;
     SPair() {}

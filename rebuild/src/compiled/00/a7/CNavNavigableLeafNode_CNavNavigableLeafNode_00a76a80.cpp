@@ -15,7 +15,7 @@ struct CBaseClassNonCopyable {                     // vtable 0x0129A7C4
     ~CBaseClassNonCopyable();                      // 0x0099A300
 };
 class CANavQuadTreeNode;
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          Data;                              // +0
     signed char Count;                             // +4
     T* begin() const { return Data; }
@@ -77,7 +77,7 @@ template <class T, int N> void CSmallVector<T, N>::resize(long size, const T& va
     Data = data;
     Count = (signed char)size;
 }
-template struct CSmallVector<const CANavQuadTreeNode*, 8>;
+template class CSmallVector<const CANavQuadTreeNode*, 8>;
 #pragma auto_inline(on)
 template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; }
 
@@ -91,7 +91,7 @@ public:
     virtual CNodeNeighbours* GetNeighbours();      // slot 1 (+4)
     ~CANavQuadTreeNode() { }
 };
-struct CNavRegion;
+class CNavRegion;
 class CNavNavigableLeafNode : public CANavQuadTreeNode {   // vtable 0x0129DDA4
 public:
     CNavRegion*     PRegion;                       // +0x10

@@ -7,7 +7,7 @@
 //   pointer whose thing pointer sits at the odd offset +0x25 (pack(1)); +0x10c table centre (descriptive names).
 // Shape: C3DVector with a user copy constructor (memberwise register copies); the offset is added in place then copied
 //   out; the coin camera is a temporary `C3DVector(0, y, 0)` assigned to camPos before the two rotations.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -43,7 +43,7 @@ struct CCoinGolfCoin {                              // descriptive: the coin rec
     CBaseIntelligentPointer Thing;                  // +0x25
 };
 #pragma pack(pop)
-struct CTCTavernGameCoinGolf {
+class CTCTavernGameCoinGolf { public:
     virtual void v00();
     unsigned char _pad04[0x108 - 0x04];
     CCoinGolfCoin* PCoin;                           // +0x108

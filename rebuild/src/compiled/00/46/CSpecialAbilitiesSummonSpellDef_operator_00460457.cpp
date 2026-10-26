@@ -16,7 +16,7 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -37,16 +37,16 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CDefString {                         // a def-name table position (4 bytes, plain copy)
+class CDefString { public:                         // a def-name table position (4 bytes, plain copy)
     long TablePos;
 };
 
-struct CCharString {                        // retail ref-counted string (one pointer)
+class CCharString { public:                        // retail ref-counted string (one pointer)
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CSpecialAbilitiesSummonSpellDef : CParentDefClassBase { // vtable 0x01234674
+class CSpecialAbilitiesSummonSpellDef : public CParentDefClassBase { public: // vtable 0x01234674
     CFloatVector         TimeOfSummon;                // +0x3c
     CDefString           BaseSummonCreatureName;      // +0x48
     float                FadeInTime;                  // +0x4c

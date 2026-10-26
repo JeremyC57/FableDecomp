@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_copies = 0;
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;
     unsigned long Month;
     unsigned long Day;

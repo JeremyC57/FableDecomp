@@ -10,7 +10,7 @@
 // no user constructor gives the `mov byte ptr [esp+4],0` before the dword push); the key, the predicate and
 // the returned iterator all share the single `push ecx` frame slot. A hit returns the element's GetPItem, a
 // miss (end() re-read from the list head) or no home returns null.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the landed out-parameter
@@ -42,7 +42,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -83,7 +83,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -115,7 +115,7 @@ struct CTCBuildingContents {                    // interface type 0x21 component
     CThingList Things;                          // +0x08
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x168 - sizeof(CThing)];
     CBaseIntelligentPointer PHome;              // +0x168 CIntelligentPointer<CThingBuilding>
     CThing* GetPHome() const { return PHome.GetPItem(); }   // inline accessor: `lea ecx,[eax+168h]`
@@ -133,7 +133,7 @@ struct CAIBrainSitForMeal {
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrainSitForMeal* PBrain;                 // +0x04
     long ScriptAIPriority;                      // +0x08

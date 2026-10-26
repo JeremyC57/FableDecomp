@@ -6,7 +6,7 @@ struct Light {
     unsigned char body[0x38];   // stride 0x38; enabled=+0x34, dirty=+0x35
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x164];
     Light* lights;              // +0x164
     char gap[0x16c - 0x168];

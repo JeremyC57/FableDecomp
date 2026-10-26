@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_Guildmaster_SpeedUpFollowersRelease {
+class CCombatAction_Guildmaster_SpeedUpFollowersRelease { public:
     void* vftable;
     int destroyed;
 };

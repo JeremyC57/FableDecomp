@@ -16,7 +16,7 @@
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -81,14 +81,14 @@ struct CActionMoveTo : CActionBase {               // vtable 0x0127091C, 0x50 by
 };
 }
 
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };
 
 enum EScriptEntityMoveType { SCRIPT_MOVE_WALK = 0, SCRIPT_MOVE_RUN = 1 };
 
-struct CGameScriptInterface;
-struct CScriptGameResourceObjectScriptedThing {    // retail layout = engine/CScriptGameResourceObjectScriptedThing.h (vptr at +0)
+class CGameScriptInterface;
+class CScriptGameResourceObjectScriptedThing { public:    // retail layout = engine/CScriptGameResourceObjectScriptedThing.h (vptr at +0)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void WaitWhilePerformingTasks();       // slot 11 (+0x2c) 0x00904380

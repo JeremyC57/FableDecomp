@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_NymphGetHit {
+class CCreatureAction_NymphGetHit { public:
     void* vftable;
     int destroyed;
 };

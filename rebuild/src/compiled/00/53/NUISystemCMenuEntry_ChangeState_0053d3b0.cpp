@@ -12,7 +12,7 @@
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
 namespace NUISystem {
-struct CUIDef:CIVCountedPointeeBase {
+class CUIDef:public CIVCountedPointeeBase { public:
  unsigned char DefinitionData[0x221-8];bool PCStyle;
  typedef void(CUIDef::*DeleteMethod)()const;
  __forceinline void ReleaseReference()const {CUIDef*p=const_cast<CUIDef*>(this);--p->IVRefCount;if(static_cast<long>(p->IVRefCount)==0)(this->*static_cast<DeleteMethod*>(__vftable)[1])();}
@@ -24,16 +24,16 @@ struct DefinitionPointer {
  ~DefinitionPointer(){if(Object){Object->ReleaseReference();Object=0;}}
  const CUIDef*operator->()const{return Object;}
 };
-struct CComponent;
+class CComponent;
 struct ChildPointer {CComponent*Data;void*CountInfo;};
 struct ChildArray {ChildPointer*First,*Last,*Limit;unsigned long size()const{return Last-First;}};
 struct ActionList;
-struct CComponent {
+class CComponent { public:
  void*VTable;unsigned char ComponentData[0xb0-4];ChildArray Children;
  typedef void(CComponent::*ParentMethod)(CComponent*);
  __forceinline void SetParent(CComponent*p){(this->*static_cast<ParentMethod*>(VTable)[51])(p);}
 };
-struct CMenuEntry:CComponent {
+class CMenuEntry:public CComponent { public:
  unsigned char StateComponentData[0x160-0xbc];bool WasHovered;unsigned char MenuData[0x1a8-0x161];
  ActionList*PActionsOnSelected;ActionList*PActionsOnBack;ActionList*PPreActions;ActionList*PActionsOnUnselected;
  typedef DefinitionPointer(CMenuEntry::*DefinitionMethod)()const;

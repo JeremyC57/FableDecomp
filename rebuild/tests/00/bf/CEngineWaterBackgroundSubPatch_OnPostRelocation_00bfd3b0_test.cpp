@@ -6,7 +6,7 @@ struct CMemory { void RebindBlockOwner(void* b, void* o) { g_blocks[g_n] = b; g_
 struct SEngine { CMemory* m_pLandscapeMemory; };
 static SEngine g_engine; static SEngine* g_pEngine = &g_engine;
 
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     void* IndexBuffer; void* VertexBuffer; void* BridgeIndexBuffers[4]; void* BridgeVertexBuffers[4];
     void OnPostRelocation()
     {

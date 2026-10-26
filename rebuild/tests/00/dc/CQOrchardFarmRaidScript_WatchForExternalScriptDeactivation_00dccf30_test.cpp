@@ -2,11 +2,11 @@
 // while either farm-raid quest is active, then adds both quest cards and deactivates the parent quest.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[48];
     CCharString(const char* text) { std::strncpy(Text, text, 47); Text[47] = 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int frames, goodUntil, evilUntil, cards, deactivated; char log[256];
     void NewScriptFrame() { ++frames; }
     bool IsQuestActive(const CCharString& q) {

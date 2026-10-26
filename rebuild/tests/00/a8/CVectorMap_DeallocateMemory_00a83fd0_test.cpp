@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
 static int g_deleted = 0;
-struct CCPPointerInfo {                                 // the shared count block
+class CCPPointerInfo { public:                                 // the shared count block
     long  RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -126,7 +126,7 @@ private:
     TVec& operator=(const TVec&);
 };
 
-struct CNavConnectorNode { int id; };
+class CNavConnectorNode { public: int id; };
 typedef CCountedPointer<CNavConnectorNode> TNodePtr;
 struct SConnPair {                                      // pair<long, CCountedPointer<CNavConnectorNode> >
     long     first;

@@ -8,7 +8,7 @@ struct CModifierEntry { long DefIndex; bool Visible; };
 static std::map<long, unsigned long> g_masks;   // def index -> hide mask (absent: no def; 0x80000000 bit: def without modifier sub-def)
 static bool GetDef(long index) { return index > 0 && g_masks.count(index) != 0; }
 static bool GetSubDef(long index, unsigned long* mask) { unsigned long m = g_masks[index]; if (m & 0x80000000u) return false; *mask = m; return true; }
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     std::vector< std::vector<CModifierEntry> > AppearanceModifiers;
     void UpdateHiddenModifiers();
 };

@@ -12,8 +12,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharStringData { const char* m_pText; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pText; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -27,7 +27,7 @@ __forceinline bool NameContains(const CCharString& name, const char* text)
     CCharString pattern(text, -1);
     return strstr(name.GetPString(), pattern.GetPString()) ? true : false;
 }
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -44,11 +44,11 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-struct CScriptThing;
-struct CScriptDataBase;
-struct CEntityScriptBase;
-struct CActiveEntityScriptBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+class CActiveEntityScriptBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 
 struct __declspec(novtable) CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const = 0;
@@ -66,8 +66,8 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 
-struct CGameScriptInterface;
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface;
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -145,7 +145,7 @@ struct CGameScriptInterface {                       // retail vtable 0x01260F0C 
     virtual void v649(); virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName(void) const;   // slot 655 (+0xa3c) 0x00891880
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                                                 // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString;
+class CCharString;
 
 struct Inner {
 	CCharString* Ucopy(void* last, void* first, CCharString* dest);

@@ -3,27 +3,27 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { } };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
-struct CMatrix3x4 { float m[12]; };
-struct CWeatherMask {
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { } };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
+class CMatrix3x4 { public: float m[12]; };
+class CWeatherMask { public:
     C3DBoundingSphere BSphere; C3DBoundingBox BBox; CMatrix3x4 InvTransform; float Scale;
     CWeatherMask(const C3DBoundingSphere& bSphere, const C3DBoundingBox& bBox, const CMatrix3x4& invTransform, const float& scale)
         : BSphere(bSphere), BBox(bBox), InvTransform(invTransform), Scale(scale) { }
 };
-struct CEngineInternalPrimitiveWeatherMask {
+class CEngineInternalPrimitiveWeatherMask { public:
     unsigned char _base[0x48]; C3DBoundingSphere BSphere; C3DBoundingBox BBox; CMatrix3x4 InvTransform; float Scale; unsigned long Flags;
 };
-struct CEngineSubPrimitiveBase { void* vptr; unsigned long RenderFlags; unsigned char Alpha; CEngineInternalPrimitiveWeatherMask* Parent; CEngineSubPrimitiveBase* NextSubPrimitive; void* Manager; };
+class CEngineSubPrimitiveBase { public: void* vptr; unsigned long RenderFlags; unsigned char Alpha; CEngineInternalPrimitiveWeatherMask* Parent; CEngineSubPrimitiveBase* NextSubPrimitive; void* Manager; };
 static int g_add = 0; static unsigned long g_addFlags = 0; static float g_scale = 0, g_radius = 0, g_maxZ = 0, g_m11 = 0;
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     void AddWeatherMask(const CWeatherMask& mask, unsigned long flags)
     { ++g_add; g_addFlags = flags; g_scale = mask.Scale; g_radius = mask.BSphere.Radius; g_maxZ = mask.BBox.Max.Z; g_m11 = mask.InvTransform.m[11]; }
 };
 static CEngineWeatherRenderer g_renderer;
 CEngineWeatherRenderer* g_pEngineWeatherRenderer = &g_renderer;
-struct CEnginePrimitiveManagerWeatherMask {
+class CEnginePrimitiveManagerWeatherMask { public:
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long passType);
 };
 void CEnginePrimitiveManagerWeatherMask::RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long passType)

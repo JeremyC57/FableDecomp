@@ -23,13 +23,13 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {                 // a counted def reference (released at scope end)
+template <class T> class CDefPointer { public:                 // a counted def reference (released at scope end)
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CShopDef : CDefBase {
+class CShopDef : public CDefBase { public:
     unsigned char _pad08[0x98 - 0x08];
     bool IsStockDisplayPermanent;                       // +0x98
     bool IsBarberShop;                                  // +0x99
@@ -37,7 +37,7 @@ struct CShopDef : CDefBase {
     bool IsTitleShop;                                   // +0x9b
     bool AlwaysOpen;                                    // +0x9c
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005130a0(CDefPointer<CShopDef>& out);    // 0x005130A0
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -51,7 +51,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005130a0(CDefPointer<CShopDef
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0042af3c(long index, CDefPointer<CDefClassBase>& out);   // 0x0042AF3C
 };
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
@@ -65,11 +65,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef_0042af3c(long index, CDefPo
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefIndex;                            // +0x8c
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)

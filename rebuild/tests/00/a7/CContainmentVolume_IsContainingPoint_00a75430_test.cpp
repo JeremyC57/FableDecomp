@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CContainmentVolume { void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
-struct C3DVector { float X; float Y; float Z; };
-struct CIsContainingPoint {
+class CContainmentVolume { public: void* __vftable; void* ContainmentPlanes; unsigned long Size; void* MemoryPool; };
+class C3DVector { public: float X; float Y; float Z; };
+class CIsContainingPoint { public:
     C3DVector Point;
     CIsContainingPoint(const C3DVector& point) : Point(point) { }
 };

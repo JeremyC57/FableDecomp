@@ -27,7 +27,7 @@ struct CEventSinkInterface {                     // vtable at +0x18
     virtual void v0();
 };
 
-struct CComponent;
+class CComponent;
 struct CActionList;                              // std::list<CCountedPointer<NUISystem::CAction>>
 
 struct CClickable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x194 bytes
@@ -35,7 +35,7 @@ struct CClickable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInte
     CClickable_Retail(long owner);               // 0x0055B460
 };
 
-struct CScrollBarOutside : CClickable_Retail {   // vtables 0x0124B54C / 0x0124B528 / 0x0124B520
+class CScrollBarOutside : public CClickable_Retail { public:   // vtables 0x0124B54C / 0x0124B528 / 0x0124B520
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

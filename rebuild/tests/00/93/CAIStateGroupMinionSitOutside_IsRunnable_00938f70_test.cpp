@@ -22,9 +22,9 @@ static int fails = 0;
 // `*seed % range` or `rotated % range` (with or without the zero test) sinks the div past the call.
 // FrameToStopSitting +0x40 (engine header name); the header flattens the bases, so the class is modelled locally.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -35,7 +35,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -72,12 +72,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -123,11 +123,11 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     bool IsPreferredIdle(CAIStateGroupBase* group);     // 0x00801BE0
 };
 struct CTCVillager;
-struct CTCVillage {
+class CTCVillage { public:
     bool IsSitOutsideTime();                    // 0x00658D5D
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540

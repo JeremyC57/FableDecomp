@@ -13,7 +13,7 @@
 // Layout: fable_string.h's CWideString (storage_ at +0, CWideStringData::text at +0) declares no GetAsCharArray, so the
 //   class is modelled locally with the same layout.
 #include <stddef.h>
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t*      text;                         // +0x00
     unsigned long unknown04;
     unsigned long unknown08;

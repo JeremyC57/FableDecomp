@@ -4,7 +4,7 @@
 // frame (region loaded, whistling not stopped) a new random whistle whenever the last sound finished and a bandit lives.
 static int g_seq = 0;
 static int test_rand() { return g_seq++; }
-struct CScriptThing { bool Alive; bool IsAlive() const { return Alive; } };
+class CScriptThing { public: bool Alive; bool IsAlive() const { return Alive; } };
 struct CGSI {
     int Frames; int Plays; int LastSound; bool BanditAlive; int RegionFrom; CScriptThing Hero; bool* Stop;
     char Last[32];

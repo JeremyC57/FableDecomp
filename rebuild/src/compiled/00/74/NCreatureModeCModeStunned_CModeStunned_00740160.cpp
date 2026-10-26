@@ -10,15 +10,15 @@
 // 0x0099E4B0, assign 0x0099EFB0, CRC 0x004014A0 via the GetPString/GetLength accessors, temporary
 // freed by 0x0099EAE0). The base is byte-packed (#pragma pack(1)): that is the real layout, the
 // pointer sits at +0x6d in retail.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                   // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -30,7 +30,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString m_string;                  // +4
     unsigned long m_hash;                  // +8

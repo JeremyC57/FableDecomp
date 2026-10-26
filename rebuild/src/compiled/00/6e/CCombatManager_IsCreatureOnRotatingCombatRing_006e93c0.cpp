@@ -46,7 +46,7 @@ struct CCombatWheel {                                       // CDefendingCombata
     const CCombatRing* GetRing(long index) const;           // 0x006E8520
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     const CThingCreatureBase* Attacked;                     // +0x00
     long AttackerNumber;                                    // +0x04
     long CombatWheelRingIndex;                              // +0x08

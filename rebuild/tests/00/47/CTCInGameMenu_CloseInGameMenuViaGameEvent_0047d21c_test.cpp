@@ -26,7 +26,7 @@ static int fails = 0;
 struct CMemoryBuffer {
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                              // +0x00
     signed char   Player;                            // +0x04
     unsigned char Data[32];                          // +0x05
@@ -36,32 +36,32 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);      // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
-struct CThing {
+class CThing { public:
 };
 
 template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad_0x00[0x90];
     signed char   PlayerNumber;                      // +0x90
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetCharacterThing();         // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
 
 enum { GAME_EVENT_CLOSE_IN_GAME_MENU = 0x1C };
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void* __vftable;                                 // +0x00
     void* ParentThing;                               // +0x04 CTCBase
 

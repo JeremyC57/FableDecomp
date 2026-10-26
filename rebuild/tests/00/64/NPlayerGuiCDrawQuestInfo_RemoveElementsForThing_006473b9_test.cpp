@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cmath>
 
-struct CRGBColour { unsigned char R, G, B, A; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 struct CRetailHandleVector { void* f; void* l; void* e; };
 struct CQuestInfoElement { virtual void v00() {} virtual bool IsActive() { return active; } virtual void Clear() { cleared++; } virtual long GetType() { return type; }
     long ID; long ScriptID; float Scale; CRetailHandleVector PrimitiveHandles; long type; bool active; int cleared;

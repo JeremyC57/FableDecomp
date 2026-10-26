@@ -3,37 +3,37 @@
 #include <cstdlib>
 // Behaviour test for CTCOracleMinigame::Quit (0x007E62D0): the body of src/ over stand-ins -- quit stage, minigame mode
 // removed, pending inputs freed, quit wait frame, GUI resets, win/lose text and the scoreboard report.
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     long activity; float score; bool onlyIfBetter;
     void UpdateScoreForActivity(long a, float s, bool o) { activity = a; score = s; onlyIfBetter = o; }
 };
 static CTCHeroOnlineScoreboard g_board;
-struct CThing {
+class CThing { public:
     long requested;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) { requested = interfaceType; *ppOut = (T*)&g_board; return true; }
 };
 static CThing g_hero;
-struct CPlayer {
+class CPlayer { public:
     long mode; long removed;
     long GetCurrentMode() { return mode; }
     void RemoveMode(long m) { removed = m; mode = 0; }
     CThing* GetHeroThing() { return &g_hero; }
 };
 static CPlayer g_player;
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const { return &g_player; }
 };
 static CPlayerManager g_manager;
-struct CMainGameComponent { const CPlayerManager* PlayerManager; };
+class CMainGameComponent { public: const CPlayerManager* PlayerManager; };
 static CMainGameComponent g_mgc = { &g_manager };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CWorld { static long GetWorldFrame() { return 1000; } };
+class CWorld { public: static long GetWorldFrame() { return 1000; } };
 static long g_framesPerSecond = 30;
-struct CCharString {
+class CCharString { public:
     char text[8];
     CCharString(const char* t, long length = -1) { strcpy(text, t); }
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     int calls; char last[8];
     void SetButton2OverrideText(const CCharString& t) { ++calls; strcpy(last, t.text); }
 };
@@ -41,11 +41,11 @@ struct CDrawQuestInfo {
     long a, b, c;
     void DisplayMiniGameInfo(long x, long y, long z) { a = x; b = y; c = z; }
 };
-struct CPlayerGui { CSubtitleRenderer Subtitles; bool m_bShowMiniGameInfo; CDrawQuestInfo* QuestInfo; };
+class CPlayerGui { public: CSubtitleRenderer Subtitles; bool m_bShowMiniGameInfo; CDrawQuestInfo* QuestInfo; };
 static CDrawQuestInfo g_info;
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct COracleMinigameDef { float QuitWaitTime; unsigned long LoseText; unsigned long WinText; };
+class COracleMinigameDef { public: float QuitWaitTime; unsigned long LoseText; unsigned long WinText; };
 static int g_freed = 0;
 struct CInputList {
     struct node { node* next; node* prev; long value; };
@@ -62,7 +62,7 @@ struct CInputList {
         head->prev = head;
     }
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     unsigned long CurrentText;
     long Level;
     long Stage;

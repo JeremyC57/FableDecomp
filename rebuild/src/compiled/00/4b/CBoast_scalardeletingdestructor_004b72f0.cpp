@@ -7,12 +7,12 @@
 // operator delete 0x00BFE9BC.
 // Shape: a non-virtual `??_G` emitted for the `delete` in the helper below; members destroyed in
 // reverse declaration order.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                      // 0x0099B510
 };

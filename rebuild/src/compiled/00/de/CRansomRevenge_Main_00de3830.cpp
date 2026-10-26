@@ -15,14 +15,14 @@
 // Shape: the sibling CRandomAttacker::Main 0x00DE21D0; the two "going for the hero" arms are identical and VC7.1
 // cross-jumps them (and the AddLineToConversation tails of all three); the hit test is a break-out `if (a || (b && !c))` chain whose
 // conditional string temporaries carry ebx flag bits 1, 2, 4.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
 };
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
@@ -63,7 +63,7 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69
@@ -78,7 +78,7 @@ struct CGameScriptInterface {
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
     virtual void ClearThingBestEnemyTarget(const CScriptThing& thing) const;        // slot 452 (+0x710)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

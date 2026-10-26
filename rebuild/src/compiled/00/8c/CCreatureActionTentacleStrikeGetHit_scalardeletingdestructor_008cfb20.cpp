@@ -1,4 +1,4 @@
-struct CCreatureAction_TentacleStrikeGetHit {
+class CCreatureAction_TentacleStrikeGetHit { public:
     void* vftable;
 };
 

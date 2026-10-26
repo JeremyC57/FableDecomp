@@ -1,8 +1,8 @@
 // Behaviour test for 0x00E80CF0 CFishCompOrganiser::SpeakConversationLine(CCharString): Conversation stored, listener = hero, line added, by-value line destroyed once.
 #include <cstdio>
 static int g_dtors = 0;
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} CCharString(const CCharString& o) : s(o.s) {} ~CCharString() { ++g_dtors; } };
-struct CScriptThing { int id; };
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} CCharString(const CCharString& o) : s(o.s) {} ~CCharString() { ++g_dtors; } };
+class CScriptThing { public: int id; };
 struct Game {
     int listener, lines; const char* text; int a1, a2;
     int GetHero() { return 77; }

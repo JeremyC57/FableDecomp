@@ -6,8 +6,8 @@
 // value-argument slot (`mov [esp+0Ch],ecx ; lea edx,[esp+0Ch]`), then context/string are loaded into ecx/edx.
 // The only caller (0x005D8C44, a map text writer) passes a traits object built in a dead argument slot and the
 // context's PStringToSaveTo (+0x20), the same pattern as its sibling TransferIn 0x005CC6A0.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 template <class T> struct CPersistTraits {

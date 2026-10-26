@@ -30,13 +30,13 @@ struct CComponentRoot {                                                   // the
     virtual ~CComponentRoot();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];                                    // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);                                  // 0x0052CC50
     virtual ~CChangingStateComponent();                                   // 0x0052CCF0
 };
 
-struct CComponent;
+class CComponent;
 
 struct CComponentPtrVector {                                              // retail vector<CComponent*> (12 bytes)
     CComponent** m_first;
@@ -55,7 +55,7 @@ struct C2DVector {
     float Y;
 };
 
-struct CDynamicList : CChangingStateComponent {                           // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
+class CDynamicList : public CChangingStateComponent { public:                           // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
     long                BInitialised;                                     // +0x15c
     C2DVector           PositionOffset;                                   // +0x160
     long                TopIndex;                                         // +0x168

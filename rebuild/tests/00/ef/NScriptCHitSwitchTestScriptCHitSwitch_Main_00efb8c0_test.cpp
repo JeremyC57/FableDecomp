@@ -5,8 +5,8 @@ static int g_frames, g_filters, g_doneAfter = 1000, g_doneCalls, g_hitCalls, g_p
 static int g_hitAt[4]; static int g_nHits;
 static char g_log[64];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CCharString { const char* p; };
-struct CScriptThing {
+class CCharString { public: const char* p; };
+class CScriptThing { public:
     int id; CCharString name;
     const CCharString& GetName() const { return name; }
     bool MsgIsHitBy(const CCharString& who) const {

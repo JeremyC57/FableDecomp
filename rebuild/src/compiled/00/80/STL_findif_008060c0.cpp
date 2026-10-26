@@ -12,8 +12,8 @@
 //   NPlayerTargeting::CTargetPoint (0x1c).
 // Shape: STLport 4.x `__find_if` for random-access iterators: `trip_count = (last - first) >> 2` (signed division by
 //   28), four predicate tests per pass, then `switch (last - first)` over 3/2/1 (dec/je chain), default returns last.
-struct CThing;
-struct C3DVector { float X, Y, Z; };
+class CThing;
+class C3DVector { public: float X, Y, Z; };
 
 class CBaseIntelligentPointer {
 public:

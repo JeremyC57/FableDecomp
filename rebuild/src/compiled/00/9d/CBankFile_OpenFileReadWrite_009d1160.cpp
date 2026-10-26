@@ -14,13 +14,13 @@ struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2F0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
-struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -32,7 +32,7 @@ struct CDiskFileWin32 : CBase {                    // vtable 0x0122D06C
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual long GetLength();                      // slot 9 (+0x24)
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     void Reset(T* p);                              // 0x009D1EE0

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 struct CData { const char* PData; unsigned long StringLength; bool operator==(const char* t) const { return std::strcmp(PData, t) == 0; } };
-struct CCharString {
+class CCharString { public:
     CData* PStringData;
     bool operator==(const CCharString& o) const
     {
@@ -13,8 +13,8 @@ struct CCharString {
     }
     bool operator==(const char* t) const { if (PStringData == 0) return std::strcmp(t, "") == 0; return *PStringData == t; }
 };
-struct CThing { CCharString SerialisationSectionName; };
-struct CThingFilter_IsInQuestOrNullQuest {
+class CThing { public: CCharString SerialisationSectionName; };
+class CThingFilter_IsInQuestOrNullQuest { public:
     CCharString QuestSectionName;
     bool operator()(const CThing& t) const
     { return t.SerialisationSectionName == QuestSectionName || t.SerialisationSectionName == "NULL" || t.SerialisationSectionName == ""; }

@@ -2,7 +2,7 @@
 // this-call member. Base copy then member-at-0x3c copy.
 // Model callees as real thiscall member methods so VC7.1 emits ecx+stack (no edx).
 
-struct CDefClassBase {
+class CDefClassBase { public:
     void Copy_00431ed0(const CDefClassBase* src);   // 0x431ed0 (declared extern, defined elsewhere)
 };
 
@@ -11,7 +11,7 @@ struct SubMember {
     char pad[0x20];
 };
 
-struct CIdleSchedulerDef : public CDefClassBase {
+class CIdleSchedulerDef : public CDefClassBase { public:
     char basepad[0x3c];
     SubMember member;                       // at +0x3c
     void Copy(const CDefClassBase* src);

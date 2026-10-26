@@ -10,8 +10,8 @@
 // Shape: the landed CPermanentBarrier::Main (0x00D2D830) CreateEffect call: both literals are implicit conversions built
 // first (the empty bone name before the name), the zero pushes and the bone name's address precede Me.GetPos(); the
 // effect handle is a named local destroyed (inline) after the two string temporaries.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -26,7 +26,7 @@ struct SScriptThingInfo {                                   // the counted block
     void* m_pObject;                                        // +8
 };
 
-struct CScriptThing : CBase {                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
     void*             PImp_Data;                            // +0x04
     SScriptThingInfo* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);
@@ -45,7 +45,7 @@ struct CScriptThing : CBase {                               // vtable 0x01238C8C
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector& GetPos() const;                // slot 6 (+0x18)
 };
-struct CGameScriptInterface {                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

@@ -10,10 +10,10 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 inline float Sqr(float x) { return x * x; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
@@ -28,7 +28,7 @@ struct CRGBFloatColour {
     }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char   _pad00[0x30];
     C3DVector       DiffuseVector;                 // +0x30
     unsigned char   _pad3c[0xc];                   // +0x3c ThemeChannels (12-byte vector)

@@ -7,7 +7,7 @@ struct StringHeader {
     unsigned long length;     // +8
 };
 
-struct CCharString {
+class CCharString { public:
     StringHeader* header;     // +0
 };
 

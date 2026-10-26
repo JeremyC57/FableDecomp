@@ -35,7 +35,7 @@ struct CWorld_007e2790 {
     long          m_mode;                          // +0x104
 };
 
-struct CTCFineDialogue : CTCBase {
+class CTCFineDialogue : public CTCBase { public:
     long  Fine;                                    // +0x0c
     long  Money;                                   // +0x10
     bool  GivePlayerChanceToPayFine;               // +0x14

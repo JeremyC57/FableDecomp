@@ -8,7 +8,7 @@
 // constructor @ 0x0098D490 runs, then the compiler stores this class's vtable (0x0129B9B0
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     virtual void v00();
     CVertexShaderConstantLayout();                           // 0x0098D490
 };

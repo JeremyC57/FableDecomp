@@ -19,18 +19,18 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 extern "C" int __cdecl memcmp(const void*, const void*, unsigned int);
 #pragma intrinsic(memcpy, memcmp)
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct CChunkedFileLoader;
-struct CDataInputStream {
+class CChunkedFileLoader;
+class CDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
     const unsigned char* CurrentSourcePtr;              // +0x0c
@@ -49,7 +49,7 @@ struct CDataInputStream {
     }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 };
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     char ChunkType[5];                                  // +0x04
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6();
     virtual void ReadFromFile(CDataInputStream& stream, unsigned long size, CChunkedFileLoader& loader);   // slot 7 (+0x1c)
@@ -67,7 +67,7 @@ struct CRootView {
     __forceinline ~CRootView() { if (Info) { if (--Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
     CChunkedFileSuperChunk* operator->() const { return Data; }
 };
-struct CChunkedFile {
+class CChunkedFile { public:
     void*        _vf;                                   // +0x00
     CRootPointer RootChunk;                             // +0x04
     unsigned long Version;                              // +0x0c
@@ -76,7 +76,7 @@ struct CChunkedFile {
 struct CChunkedFileException { CChunkedFileException() {} };
 extern const char CHUNKED_FILE_ID[];                   // 0x0129E454 ">>>>"
 static __forceinline bool SameID(const void* a, const void* b) { return memcmp(a, b, 4) == 0; }
-struct CChunkedFileLoader {
+class CChunkedFileLoader { public:
     virtual void v0();
     long ReadUnknownChunkTypes;                         // +0x04
     char SupportedFileType[5];                          // +0x08

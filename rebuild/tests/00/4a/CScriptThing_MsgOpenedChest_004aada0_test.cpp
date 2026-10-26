@@ -26,7 +26,7 @@ struct CInner {
     virtual bool m44(){return false;} virtual bool m45(){return true;}
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* pad0;
     CInner* m_inner;
 };

@@ -2,7 +2,7 @@
 struct SubA { char x; };
 struct SubB { char x; };
 #pragma pack(1)
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     unsigned char _pad_0x0[0x3c];
     SubB sub3c;
     unsigned char _pad_0x3d[0x13];

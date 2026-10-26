@@ -11,7 +11,7 @@
 // `(3 - r*r*lenSq) * r * 0.5`; the leading `mov eax,ecx` is the `return *this` register.
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08

@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include <new>
 
-struct C3DVector { float X, Y, Z; };
-struct CBezierCurve { C3DVector Point1, Point2, Point3, Point4; };
+class C3DVector { public: float X, Y, Z; };
+class CBezierCurve { public: C3DVector Point1, Point2, Point3, Point4; };
 
 static int g_reallocs = 0;
 struct Iter { CBezierCurve* cur; CBezierCurve* first; CBezierCurve* last; CBezierCurve** node; };

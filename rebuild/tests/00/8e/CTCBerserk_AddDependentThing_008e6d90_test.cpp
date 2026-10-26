@@ -1,7 +1,7 @@
 // behaviour test for 0x008E6D90 CTCBerserk::AddDependentThing(CThing&): the argument is wrapped in a temporary intelligent pointer that
 // is appended to the DependentThings container and released again
 #include <cstdio>
-struct CThing { int tag; };
+class CThing { public: int tag; };
 static int gLive = 0;
 struct CIntelligentPointer {
     const CThing* p;

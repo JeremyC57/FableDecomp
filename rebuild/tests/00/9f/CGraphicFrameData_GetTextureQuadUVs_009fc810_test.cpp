@@ -20,14 +20,14 @@
 // Shape: chained double stores (`a = b = v` stores b first, then a) for each pair of equal corners; the 8-float result is
 //   built in a named local and copied out with `rep movsd` (no NRVO); the extents is a by-value local; the texture-space
 //   width/height divide by named float locals of the texture size (`fild ; fild ; fdivp`; a cast in the expression gives `fidiv`).
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI();
 };
-struct CTexture {
+class CTexture { public:
     C2DExtentsI GetDimensions(unsigned long mip) const;    // 0x009F9DB0
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CountedTexture {
     CTexture*       Data;
     CCPPointerInfo* Info;
@@ -38,7 +38,7 @@ struct CTextureQuadUVs {
     float V[4];
 };
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned long  ReferenceCount;                     // +0x00
     void*          Data;                               // +0x04
     CountedTexture PTexture;                           // +0x08

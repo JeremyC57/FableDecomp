@@ -18,13 +18,13 @@
 // Shape: the progress text is an implicit conversion temporary; the state-2 loop passes the folded constant 2; the open
 //   result is kept in bl across the pool and water calls; the single state store after the if/else is duplicated by VC
 //   into each exit (storing ebp, not the propagated 2), which separate early-return stores do not reproduce.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
 };
 
@@ -32,15 +32,15 @@ namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
 
-struct CMovableResourceMemoryPool;
-template <class T> struct CCountedPointer {
+class CMovableResourceMemoryPool;
+template <class T> class CCountedPointer { public:
     T*    Object;
     long* Count;
     CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++*Count; }
     ~CCountedPointer();
 };
 
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool Open(const CWideString& name, unsigned long flags);   // slot 3
     void SetMemoryPool(CCountedPointer<CMovableResourceMemoryPool> pool);   // 0x00B3E820
@@ -53,19 +53,19 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString symbol);   // 0x00B6D4D0
 };
 extern CEngineWaterRenderer* g_pEngineWaterRenderer;   // 0x01436E54
 extern CCharString g_WaterBankSymbol;                  // 0x01436EC4
 extern CCharString g_GlobalMapEntrySymbol;             // 0x01436ECC
 
-struct CEngineMap {
+class CEngineMap { public:
     enum STATIC_MAP_OPEN_STATE { STATIC_MAP_CLOSED, STATIC_MAP_RETAIL, STATIC_MAP_DEVELOPMENT };
     void OpenDevelopmentStaticMap(CStaticMapBankFile& file, STATIC_MAP_OPEN_STATE state);   // 0x00B42530
 };
 
-template <class T> struct CArray {                  // retail CArray (STLport vector): begin, end, capacity
+template <class T> class CArray { public:                  // retail CArray (STLport vector): begin, end, capacity
     T* First;
     T* Last;
     T* End;
@@ -73,7 +73,7 @@ template <class T> struct CArray {                  // retail CArray (STLport ve
     T& operator[](unsigned long index) { return First[index]; }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*                 _vptr;                    // +0x000
     unsigned char         _pad004[0x1c];
     CArray<CEngineMap*>   MapList;                  // +0x020

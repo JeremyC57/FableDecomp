@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CCombatActionBase { virtual bool IsStrikeAction() { return strike; } bool strike; };
-struct CCombatAction { CCombatActionBase* CreatureAction; void* m_pCount; };
+class CCombatActionBase { public: virtual bool IsStrikeAction() { return strike; } bool strike; };
+class CCombatAction { public: CCombatActionBase* CreatureAction; void* m_pCount; };
 struct CSeq {
     long CurrentActionIndex; CCombatAction* first; CCombatAction* last;
     unsigned long size() const { return (unsigned long)(last - first); }

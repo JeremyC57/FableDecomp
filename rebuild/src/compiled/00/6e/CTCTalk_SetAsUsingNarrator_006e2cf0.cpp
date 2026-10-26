@@ -10,7 +10,7 @@
 // Shape: the inline find front end takes the value by const reference and builds the empty tag temporary last, so the
 // tag is homed in the narrator's own argument slot (`lea ecx,[esp+0Ch]`) after the reference was read into edx (the
 // CTCBuyableHouse 0x00747450 shape); `last` is a named local kept in esi for the compare after the call.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 
 struct SRandomAccessTag { SRandomAccessTag() {} };   // random_access_iterator_tag
 
@@ -28,13 +28,13 @@ struct SNarratorRecord {
     CCharString*  m_pNamesLast;              // +0x104 vector<CCharString> last
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     unsigned char    _pad_0x00[0xd0];
     SNarratorRecord* m_pNarrators;           // +0xd0
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x34];               // CTCBase + SpeechSample .. LastNarrator
     bool          IsPureAISpeaker;           // +0x34
     void SetAsUsingNarrator(const CCharString& narrator);

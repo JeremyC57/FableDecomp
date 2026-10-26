@@ -7,8 +7,8 @@
 // pointer to the transferred short at +0x4. The short is sign-extended (`movsx ecx, word ptr`) into
 // a long local (the `push ecx` frame slot) whose address goes to the long writer. Same shape as the
 // landed 0x007B41A0 family; the element type comes from the `movsx` width.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 struct CPersistContext_TransferableComponent {

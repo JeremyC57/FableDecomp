@@ -1,6 +1,6 @@
 #include <stdio.h>
 static const void* g_data; static unsigned long g_size; static long g_flags; static int g_calls;
-struct CAFile {
+class CAFile { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual void Write(const void* data, unsigned long size, long flags) { g_data = data; g_size = size; g_flags = flags; ++g_calls; }
 };

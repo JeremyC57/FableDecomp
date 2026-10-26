@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CCameraManagerDef;
+class CCameraManagerDef;
 
 extern void __fastcall CCameraManagerDef_Copy(CCameraManagerDef* thisptr, void* other);
 

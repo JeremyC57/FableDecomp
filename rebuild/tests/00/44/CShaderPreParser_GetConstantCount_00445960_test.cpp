@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CShaderPreParser {
+class CShaderPreParser { public:
     char pad[0x7d0];
     char* begin;
     char* end;

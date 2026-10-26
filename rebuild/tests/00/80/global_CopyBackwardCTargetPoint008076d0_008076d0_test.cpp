@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 static int g_sets = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
@@ -10,12 +10,12 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { PData = item; ++g_sets; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 struct CTargetPoint {
     CIntelligentPointer<CThing> PThing;
     long                        Index;

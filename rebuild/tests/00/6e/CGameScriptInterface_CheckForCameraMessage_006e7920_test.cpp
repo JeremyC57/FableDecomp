@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <cstring>
 class CCharString { public: const char* text; };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned long ThingTypeFlags;
     virtual ~CThing() {}
@@ -53,23 +53,23 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 struct CBaseIntelligentPointer { CThing* item; CThing* GetPItem() const { return item; } };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPTypedItem() const { return (GetPItem() != 0 && IsThingOfType<T>((T*)GetPItem())) ? (T*)GetPItem() : 0; }
 };
-struct CMessageEvent { long type; CIntelligentPointer<CThing> PTarget; };
-struct CMessageEventFilter_IsOfType { long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) {} };
-struct CMessageEventManager {
+class CMessageEvent { public: long type; CIntelligentPointer<CThing> PTarget; };
+class CMessageEventFilter_IsOfType { public: long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) {} };
+class CMessageEventManager { public:
     CMessageEvent* event; int removed;
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& f) { return event && event->type == f.m_type ? event : 0; }
     void RemoveMessage(const CMessageEvent* m) { if (m == event) { event = 0; ++removed; } }
 };
-template<class T> struct CCountedPointer { T* Data; T* operator->() const { return Data; } };
-struct CWorld { CCountedPointer<CMessageEventManager> PMessageEventManager; };
-struct CTCCameraPointScriptedSpline {
+template<class T> class CCountedPointer { public: T* Data; T* operator->() const { return Data; } };
+class CWorld { public: CCountedPointer<CMessageEventManager> PMessageEventManager; };
+class CTCCameraPointScriptedSpline { public:
     const char* msg;
     bool HasMessage(const CCharString& m) { return std::strcmp(msg, m.text) == 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CWorld* World;
     bool CheckForCameraMessage(const CCharString& message) const;
 };

@@ -26,7 +26,7 @@ template<class T> struct CArrayAllocProxy {
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T*                  _M_start;
     T*                  _M_finish;
     CArrayAllocProxy<T> _M_end_of_storage;
@@ -38,14 +38,14 @@ public:
     CCharString& operator=(const char* text) { ++g_strAssign; g_assigned = text; m_pStringData = (void*)text; return *this; }
     void* m_pStringData;
 };
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
-struct CStreamingFontDataBankEntry;
-struct CBankFileAsyncEntry;
+class CStreamingFontDataBankEntry;
+class CBankFileAsyncEntry;
 class CStreamingFontDataBank : public CBankFile {
 public:
     CStreamingFontDataBank();

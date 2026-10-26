@@ -4,7 +4,7 @@
 enum EOpinionReactionType { OPINION_REACTION_TYPE_NONE = 0, OPINION_REACTION_TYPE_FEAR = 3 };
 
 static int g_copies = 0;
-struct COpinionSet {
+class COpinionSet { public:
     float m_values[4]; int m_count;
     COpinionSet() : m_count(0) {}
     COpinionSet(const COpinionSet& other) : m_count(other.m_count)
@@ -14,7 +14,7 @@ struct COpinionSet {
     }
 };
 
-struct CReactionMatch {
+class CReactionMatch { public:
     EOpinionReactionType ReactionType;
     CReactionMatch(EOpinionReactionType type) : ReactionType(type) {}
     virtual long GetMatchType() const { return 0; }

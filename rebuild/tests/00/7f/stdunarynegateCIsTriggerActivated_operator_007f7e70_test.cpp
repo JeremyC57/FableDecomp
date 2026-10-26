@@ -2,9 +2,9 @@
 #include <cmath>
 // Behaviour test: std::unary_negate<CIsTriggerActivated>::operator() -- true for a thing whose activation trigger is NOT activated.
 #define CHECK(c) if (!(c)) { std::printf("007f7e70_TEST FAIL\n"); return 1; }
-struct CTCActivationTrigger { bool Activated; };
-struct CThing { const CTCActivationTrigger* Trigger; void PeekTC(const CTCActivationTrigger** out) const { *out = Trigger; } };
-struct CIsTriggerActivated {
+class CTCActivationTrigger { public: bool Activated; };
+class CThing { public: const CTCActivationTrigger* Trigger; void PeekTC(const CTCActivationTrigger** out) const { *out = Trigger; } };
+class CIsTriggerActivated { public:
     typedef CThing* argument_type;
     bool operator()(CThing* thing) const { const CTCActivationTrigger* t; thing->PeekTC(&t); return t->Activated; }
 };

@@ -9,8 +9,8 @@ static const long kKeys[9] = { 5, -3, 12, 7, 7, 0, 99, -40, 2 };
 
 template<class T, class C> void AdjustHeap(T* first, long hole, long bottom, T value, C pred);
 
-struct CThing { long m_id; };
-struct CBaseObject;
+class CThing { public: long m_id; };
+class CBaseObject;
 static CThing g_things[9];
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; }
 };
-template <class U> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class U> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)other.GetPItem()); }

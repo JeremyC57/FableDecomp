@@ -9,7 +9,7 @@
 // Shape: the start angle is copied as a dword then accumulated; each position is cleared by an inline
 // C3DVector::Zero() holding a chained `X = Y = Z = 0` (stores run from the highest address down through one zero
 // register); written inline in the body the zero stores are scheduled around the second fstp.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Zero() { X = Y = Z = 0.0f; }
 };

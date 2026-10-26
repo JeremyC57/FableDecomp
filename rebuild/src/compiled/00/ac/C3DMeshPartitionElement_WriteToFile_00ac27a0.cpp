@@ -10,28 +10,28 @@
 // Layout: PDB (struct_layouts_egor.tsv) C3DMeshPartitionElement, 0x38 bytes: BoundingBox +0x00 (6 floats),
 //          StartTriangle +0x18, TriangleCount +0x1C, SubElements[2] +0x20, BoundingSphere +0x28 (Center, Radius).
 //          No engine header exists for the class.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DVector GetCenter() const { return Center; }
     float GetRadius() const { return Radius; }
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);            // 0x00993E30
     void WriteLong(long value);            // 0x00993EB0
     void WriteFloat(float value);          // 0x00993EE0
 };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1C

@@ -1,4 +1,4 @@
-struct CCharStringData;
+class CCharStringData;
 
 class CCharString
 {

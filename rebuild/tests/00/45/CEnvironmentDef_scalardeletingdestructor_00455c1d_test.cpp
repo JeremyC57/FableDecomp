@@ -5,7 +5,7 @@ static int g_dtor = 0;
 static void* g_deleted = 0;
 
 struct CSubObj { ~CSubObj(); };
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     char pad[0x3c];
     CSubObj sub;
     ~CEnvironmentDef();

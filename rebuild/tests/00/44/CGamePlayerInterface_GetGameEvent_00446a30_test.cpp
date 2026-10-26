@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_clears = 0, g_update = 0, g_process = 0, g_fill = 0;
-struct CGameEvent {
+class CGameEvent { public:
     long Type;
     signed char Player;
     unsigned char Data[32];

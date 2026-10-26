@@ -4,7 +4,7 @@
 //         PDB +0x198/+0x19c); the component's scale (+0x5c) and base size (+0xcc) are named descriptively.
 // Shape: the base size comes from an inline by-value getter (X stays on the FPU, Y is copied to the frame); an unsigned
 //        width converts with `fild ; jge ; fadd [2^32]`; the result is built by a two-float constructor.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() { }
@@ -12,7 +12,7 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     unsigned char _pad004[0x58];
     C2DVector     Scale;                           // +0x5c
@@ -20,7 +20,7 @@ struct CComponent {
     C2DVector     BaseSize;                        // +0xcc
     C2DVector GetBaseSize() const { return BaseSize; }
 };
-struct CSprite : CComponent {
+class CSprite : public CComponent { public:
     unsigned char _pad0d4[0x94];
     unsigned long Width;                           // +0x168
     unsigned long Height;                          // +0x16c

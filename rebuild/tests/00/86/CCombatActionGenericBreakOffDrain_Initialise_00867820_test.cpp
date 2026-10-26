@@ -1,12 +1,12 @@
 // Behaviour test for 0x00867820 CCombatAction_GenericBreakOffDrain::Initialise: BREAK_OUT animation, mode 69 removed, base Initialise.
 #include <cstdio>
 #include <cstring>
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     long removed[8]; int count;
     CTCCreatureModeManager() : count(0) { }
     void RemoveMode(unsigned long mode) { removed[count++] = (long)mode; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_type;
     bool hasModes;
     CTCCreatureModeManager* modes;
@@ -24,12 +24,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) { }
 };
 static char g_anim[32]; static int g_baseInit = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void SetCombatAnimation(const CCharString& name) { std::strcpy(g_anim, name.text); }
     void Initialise() { ++g_baseInit; }

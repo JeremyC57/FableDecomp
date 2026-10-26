@@ -1,7 +1,7 @@
 
 struct CMember { void Copy_00461bb7(const CMember* src); };
 struct CBaseDef { void Copy(const CBaseDef* src); };
-struct CCombatAbilityBlockHeavyWeaponAttackDef : public CBaseDef {
+class CCombatAbilityBlockHeavyWeaponAttackDef : public CBaseDef { public:
     unsigned char _pad[0x48];
 };
 

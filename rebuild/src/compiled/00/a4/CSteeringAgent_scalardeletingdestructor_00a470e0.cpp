@@ -1,4 +1,4 @@
-struct CSteeringAgent {
+class CSteeringAgent { public:
     void* vftable;
 };
 

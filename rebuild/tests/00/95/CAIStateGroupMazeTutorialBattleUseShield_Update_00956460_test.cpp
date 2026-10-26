@@ -4,8 +4,8 @@
 static int g_performed = 0, g_terminated = 0, g_dtors = 0;
 static bool g_stopping = false, g_argsOk = false;
 static long g_frame = 77;
-struct CThingCreatureBase { int dummy; };
-struct CThing { unsigned char m_flags91; };
+class CThingCreatureBase { public: int dummy; };
+class CThing { public: unsigned char m_flags91; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -15,16 +15,16 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCreatureActionBase { virtual ~CCreatureActionBase() {} };
-struct CCombatActionBase : CCreatureActionBase { ~CCombatActionBase() { ++g_dtors; } };
+class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
+class CCombatActionBase : public CCreatureActionBase { public: ~CCombatActionBase() { ++g_dtors; } };
 static CThingCreatureBase* g_creature = 0;
-struct CCombatAction_WillShieldInto : CCombatActionBase {
+class CCombatAction_WillShieldInto : public CCombatActionBase { public:
     CCombatAction_WillShieldInto(CThingCreatureBase* c, float a, float b) { g_argsOk = c == g_creature && a == 3.0f && b == 5.0f; }
 };
 template<class T> T* Tmp(const T& t) { return const_cast<T*>(&t); }
-struct CWorld { static long GetCurrentFrame() { return g_frame; } };
+class CWorld { public: static long GetCurrentFrame() { return g_frame; } };
 static CWorld g_world;
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 struct CAIStateGroup_MazeTutorialBattleUseShield {
     CAIBrain* PBrain;
     CBaseIntelligentPointer PTargetThing;

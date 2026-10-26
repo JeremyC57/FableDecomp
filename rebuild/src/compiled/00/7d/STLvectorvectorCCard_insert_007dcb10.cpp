@@ -15,7 +15,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCard;
+class CCard;
 
 namespace std {
 struct __false_type { __false_type() { } };

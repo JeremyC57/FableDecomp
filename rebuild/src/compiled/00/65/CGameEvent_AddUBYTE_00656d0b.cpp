@@ -18,8 +18,8 @@
 // parameter; the byte value comes from a local buffer. The result in eax is
 // `this`, so the modelled return type is CGameEvent*.
 
-struct CGameEvent
-{
+class CGameEvent
+{ public:
     void Helper_00655c55(void* p, int n);      // retail 0x0059aef9  (__fastcall)
     CGameEvent* AddUBYTE();
 };

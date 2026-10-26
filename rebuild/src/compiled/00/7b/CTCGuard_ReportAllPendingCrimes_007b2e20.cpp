@@ -16,14 +16,14 @@
 //   end; ++it) { crime = *it; village->ReportCrime(..); if (village thing has 0x4F) { if (!op->KnowsOfDeed(..))
 //   op->InformOfDeed(.., false); } if (log) { effects = log->GetDeedEffectsDef(it->Type); severity 2/3 -> severe; } }
 //   if (severe) village->RecalculateSecuritySweep(0); } PendingCrimes.clear();`
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -44,13 +44,13 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld* World;                                      // +0x24
 };
@@ -65,7 +65,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x70 - 0x08];
     long Severity;                                      // +0x70 ECrimeSeverity
     void ReleaseTemporary()
@@ -75,7 +75,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -89,14 +89,14 @@ template <class T> struct CDefPointer {
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE };
 
-struct CTCHeroOpinionDeedLog {                          // interface 0x51
+class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
-struct CTCCreatureOpinionOfHero {                       // interface 0x4F
+class CTCCreatureOpinionOfHero { public:                       // interface 0x4F
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool) const;   // 0x00681AE0
     void InformOfDeed(long deedHandle, bool);                               // 0x00683590
 };
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     CThing* PThing;                                     // +0x04 (CTCBase)
     void ReportCrime(long deedHandle);                  // 0x0065CB6B

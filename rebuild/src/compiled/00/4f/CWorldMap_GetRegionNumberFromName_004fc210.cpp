@@ -22,11 +22,11 @@ template <class T> struct CRetailVector {
 };
 // Shape: region 0 is skipped; the name's data block is loaded once, the element name pointer strength-reduced
 // (start + 0x70, step 0x58) while size() is recomputed every pass.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                         // +0x00
     unsigned long Length;                       // +0x04
 };
-struct CCharString { CCharStringData* PStringData; };
+class CCharString { public: CCharStringData* PStringData; };
 #pragma auto_inline(off)
 // The real 0x00411570 body (landed as rebuild/src/compiled/00/41/global_global_00411570.cpp), defined above the
 // caller so VC7.1 knows it writes no memory: the name block and the region start are then hoisted out of the loop.
@@ -60,13 +60,13 @@ static __forceinline bool operator==(const CCharString& sa, const CCharString& s
     return CompareText(a->Text, b->Text) == 0;
 }
 
-struct CRegion {
+class CRegion { public:
     unsigned char _maps[0x18];                  // +0x00 Maps, VisMaps
     CCharString   Name;                         // +0x18 (PDB +0x20)
     unsigned char _rest[0x3c];                  // +0x1C .. +0x58
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char          _pad[0x2c];
     CRetailVector<CRegion> Regions;             // +0x2C
     long GetRegionNumberFromName(const CCharString& name) const;

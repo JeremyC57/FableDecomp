@@ -18,7 +18,7 @@
 //   address, each returning SetCurrentAction's result.
 class CTCBase;
 class CBaseObject;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 extern CCharString g_CCharString_013bad30;              // 0x013BAD30
@@ -49,7 +49,7 @@ public:
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                    // 0x006A1440
 };
 struct CBaseIntelligentPointer {
@@ -66,19 +66,19 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 class CThingCreatureBase;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pad04[0x2c - 0x04];
     CIntelligentPointerThing PItem;                     // +0x2c (destroyed by the base destructor)
     ~CCombatActionBase();                               // 0x0062E900
 };
-struct CCreatureAction_CastUnholyPowerSpell : CCombatActionBase {   // vtable 0x0127ECE4, 0x114 bytes
+class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public:   // vtable 0x0127ECE4, 0x114 bytes
     unsigned char _pad34[0x114 - 0x34];
     CCreatureAction_CastUnholyPowerSpell(CThingCreatureBase* owner);   // 0x008BD280
 };
-struct CCreatureAction_SheatheItemToInventory_ForUnholyPower : CCreatureActionBase {   // vtable 0x0125CB9C
+class CCreatureAction_SheatheItemToInventory_ForUnholyPower : public CCreatureActionBase { public:   // vtable 0x0125CB9C
     unsigned char _pad04[0x114 - 0x04];
     CCreatureAction_SheatheItemToInventory_ForUnholyPower(CThingCreatureBase* owner, const CCharString& slot,
                                                           CCreatureActionBase* next, long flags);   // 0x0069F0C0
@@ -88,7 +88,7 @@ class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _base08[4];

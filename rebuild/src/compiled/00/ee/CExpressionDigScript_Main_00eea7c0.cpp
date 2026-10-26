@@ -10,21 +10,21 @@
 // Layout: the retail quest-script base (as the landed CExpressionWaitScript_Main 00eea460): CScriptBase 0x40 bytes, the interface pointer at +0x40.
 // Shape: the found flag is ONE bool initialised from the && chain and tested by if (found); an if/else assigning true/false places the
 //   found = false block inline instead of after the success arm. The discarded GetPos/GetAngleXY calls stay (virtual), the float result popped.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CScriptThing {                                      // 12 bytes: vfptr + PImp
+class CScriptThing { public:                                      // 12 bytes: vfptr + PImp
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector& GetPos() const;               // slot 6 (+0x18)
     virtual void v07(); virtual void v08(); virtual void v09();
@@ -44,13 +44,13 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     void* IntelligentPointer;                              // +0x04
     CBaseObject();                                         // 0x0099A380
     virtual ~CBaseObject();                                // 0x0099A430
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {       // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
 };
 
@@ -60,7 +60,7 @@ struct CCountedPointerWords {
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;                             // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();         // 0x007E74D0
@@ -71,7 +71,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void ClearAllActionsIncludingLoopingAnimations();      // 0x007E7410
 };
 
-struct CScriptGameResourceObjectMovieBase {                // 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:                // 0x10 bytes
     void* _body[4];
     CScriptGameResourceObjectMovieBase();                  // 0x006E7B60
     ~CScriptGameResourceObjectMovieBase();                 // 0x006E7B80
@@ -90,7 +90,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -141,7 +141,7 @@ struct CGameScriptInterface {
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
 
-struct CScriptBase {                                       // retail 0x40 bytes
+class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     void SetPredicate(CIsThingConscious& predicate);       // 0x00CB7920

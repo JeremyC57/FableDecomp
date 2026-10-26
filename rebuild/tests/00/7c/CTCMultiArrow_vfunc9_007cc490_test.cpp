@@ -1,7 +1,7 @@
 // Behaviour test for CTCMultiArrow::vfunc_9 @ 0x007CC490: timer-driven ammo effects, removal once spent and out of shots.
 #include <cstdio>
-struct CThing { int removed; long type; void RemoveTC(long t) { ++removed; type = t; } };
-struct CTCMultiArrow {
+class CThing { public: int removed; long type; void RemoveTC(long t) { ++removed; type = t; } };
+class CTCMultiArrow { public:
     CThing* ParentThing;
     long NumberOfShots, CreateAmmoEffectCount, CreateAmmoEffectDelay, CreateAmmoEffectTimer;
     bool CutSceneCancelled;

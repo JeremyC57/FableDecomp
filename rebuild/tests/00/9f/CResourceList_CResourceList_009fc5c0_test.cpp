@@ -1,9 +1,9 @@
 // behaviour test for 009fc5c0: ~CResourceList -- the embedded head resource is handed to its owning
 // list's RemoveResource (which uncounts it) only when it is attached, then the bases unwind.
 #include <cstdio>
-struct CResourceList;
+class CResourceList;
 static int g_removed = 0;
-struct CResource {
+class CResource { public:
     unsigned long IVRefCount;
     CResourceList* ResourceList;
     CResource* PrevResource;
@@ -12,7 +12,7 @@ struct CResource {
     unsigned long LastUsedFrame;
     inline ~CResource();
 };
-struct CResourceList {
+class CResourceList { public:
     CResource Head;
     unsigned long ResourceCount;
     long AllocatedMemory;

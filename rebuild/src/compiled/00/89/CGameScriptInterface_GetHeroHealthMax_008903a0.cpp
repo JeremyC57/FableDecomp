@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CThing;
+class CThing;
 struct CHero;
 
 extern "C" CThing* __fastcall GetThing(void* p);

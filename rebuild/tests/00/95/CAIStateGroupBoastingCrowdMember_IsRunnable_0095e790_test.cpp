@@ -16,8 +16,8 @@ static int fails = 0;
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: out-parameter GetInterface (component in eax), the group out-pointer is the first frame word; the pointer
 // assignment goes through a named local (retail re-forms its address with `lea`).
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
     struct SEntry { long type; CTCBase* component; };
@@ -26,8 +26,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -50,18 +50,18 @@ struct CThing
     }
 };
 
-struct CPlayer { CThing* GetHeroThing(); };                     // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };            // 0x00449970
-struct CEngine
-{
+class CPlayer { public: CThing* GetHeroThing(); };                     // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };            // 0x00449970
+class CEngine
+{ public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                  // +0x1c
     CPlayerManager* GetPlayerManager() const { return PlayerManager; }
 };
 extern CEngine* g_pEngine;                          // 0x013B86A0
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
     CThing* GetCreature() const { return Creature; }
@@ -94,8 +94,8 @@ struct CCrowdGroup
     long State;                                     // +0x2c
 };
 
-struct CTCBoastingCrowdControl                      // interface type 0x73
-{
+class CTCBoastingCrowdControl                      // interface type 0x73
+{ public:
     bool GetCrowdGroup(CThing* hero, CCrowdGroup** group);   // 0x00783730
 };
 

@@ -5,13 +5,13 @@ struct SubMember {
     void Copy(const SubMember* src) { v = src->v; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     SubMember member;
     int baseval;
 };
 
-struct CAnimatingObjectDef : public CDefClassBase {
+class CAnimatingObjectDef : public CDefClassBase { public:
     void CopyBase(const CDefClassBase* src) { baseval = src->baseval; }
     void Copy(const CDefClassBase* src) {
         CopyBase(src);

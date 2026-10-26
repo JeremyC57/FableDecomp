@@ -5,15 +5,15 @@
 // Layout: UniqueIDsOpen at +0x20 (CVectorMap<unsigned __int64, bool>: its STLport vector of 16-byte pairs first, start +0x20,
 //   finish +0x24).
 // Shape: the entry count is a long local VC homes in the dead C2DVector& argument slot; only the 8-byte key of each pair is written.
-struct CAFile {
+class CAFile { public:
     virtual void Slot0();
     virtual void Slot1();
     virtual void Slot2();
     virtual void Slot3();
     virtual void Write(const void* data, long size, long flags);   // slot 4 (+0x10)
 };
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
 namespace std {
 template <class T> struct allocator { };
 template <class T> struct less { };
@@ -28,8 +28,8 @@ template <class T, class A = allocator<T> > struct vector {
     unsigned int size() const { return end() - begin(); }
 };
 }
-template <class K, class V> struct CKeyPairCompareLess { };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V> class CKeyPairCompareLess { public: };
+template <class K, class V, class C> class CVectorMap { public:
     typedef std::pair<K, V> value_type;
     std::vector<value_type> m_data;
     unsigned char           _pad10[4];
@@ -38,12 +38,12 @@ template <class K, class V, class C> struct CVectorMap {
     unsigned int size() const { return m_data.size(); }
 };
 typedef std::map<const CANavQuadTreeNode*, long> CNodeIndexTable;
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     void*         __vftable;                       // +0x00
     unsigned char _pad04[0x1c];
     void SaveToFile(CAFile& file, const CNodeIndexTable& table, bool saveNeighbours, const C2DVector& origin) const;   // 0x00A77A10
 };
-struct CNavSwitchableLeafNode : CNavNavigableLeafNode {
+class CNavSwitchableLeafNode : public CNavNavigableLeafNode { public:
     CVectorMap<unsigned __int64, bool, CKeyPairCompareLess<unsigned __int64, bool> > UniqueIDsOpen;   // +0x20
     void SaveToFile(CAFile& file, const CNodeIndexTable& table, bool saveNeighbours, const C2DVector& origin) const;
 };

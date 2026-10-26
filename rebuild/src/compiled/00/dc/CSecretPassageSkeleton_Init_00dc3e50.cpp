@@ -11,22 +11,22 @@
 // +8}, ParentClass +0x14, PMasterData +0x18, bool returned[4] +0x1C, CCharString skeleton_object[4] +0x20,
 // bool collected_all +0x30 (no engine header exists for the script classes).
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const char* text);    // 0x0099EFE0
 };
 
-struct CGameScriptInterfaceBase;
+class CGameScriptInterfaceBase;
 struct CQ_OpeningGraveyardSecretPassageScript;
 struct CQ_SunnyvaleMasterData;
 
-struct CScriptThing {                            // 12 bytes: vptr + CCountedPointer PImp
+class CScriptThing { public:                            // 12 bytes: vptr + CCountedPointer PImp
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00();                          // entity-script vtable
     CGameScriptInterfaceBase* Game;              // +0x04
     CScriptThing              Me;                // +0x08

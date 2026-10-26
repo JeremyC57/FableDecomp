@@ -102,7 +102,7 @@ struct CTimerManager {
 long CTimerManager::g_time = 0;
 extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long TimerIndex;                          // +0x00
     long GetTime() const { return g_pScriptTimerManager->GetTimer(TimerIndex); }
 };

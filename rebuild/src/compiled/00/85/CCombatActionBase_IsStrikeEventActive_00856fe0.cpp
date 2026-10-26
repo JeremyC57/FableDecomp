@@ -50,7 +50,7 @@ struct CGetActiveStrikeEventThatIsFirstToFinish {
 CGetActiveStrikeEventThatIsFirstToFinish __fastcall for_each(CStrikeEventIterator first, CStrikeEventIterator last,
                                                              CGetActiveStrikeEventThatIsFirstToFinish functor);   // 0x0085A960
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x1c - 4];             // +0x04
     long FramesRunning;                         // +0x1c

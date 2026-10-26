@@ -10,7 +10,7 @@
 // the copy's add-ref and release (both null-tested) run first and the def object (esi) is then read
 // unprotected; the result local is zeroed first (edi), the empty case is the trailing `return 0` after the
 // non-empty block (its own `xor eax,eax` exit placed last); `pct > it` gives `test ah,41h ; jne`, `pct <= prev` `test ah,41h ; jnp`.
-struct CDegradableInfo {                                    // 0x1c bytes
+class CDegradableInfo { public:                                    // 0x1c bytes
     float         HealthPercentage;                         // +0x00
     unsigned char EngineGraphic[0x10];                      // +0x04 CEngineGraphic
     long          SmashParticleEmitter;                     // +0x14
@@ -25,7 +25,7 @@ template<class T> struct CRetailVector {                    // STLport vector (1
     const T* end() const { return _M_finish; }
 };
 
-struct CDegradableDef {
+class CDegradableDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long          RefCount;                                 // +0x04
@@ -35,15 +35,15 @@ struct CDegradableDef {
     void Release() { if (--RefCount == 0) DestroySelf(); }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
     ~CDefPointer() { if (Object != 0) Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CThing;
-struct CTCDegradableBase {
+class CThing;
+class CTCDegradableBase { public:
     virtual void v00();
     CThing*                     ParentThing;                // +0x04 (CTCBase)
     bool                        ToBeRemoved;                // +0x08

@@ -6,7 +6,7 @@
 // at +0x18 (node: +0 next, +4 prev, +8 value); CThing's physics object pointer at +0x60.
 // Shape: `end()` is re-read from the member after every virtual call, `begin()` once; the
 // argument is loaded into ebx inside the non-empty path; the physics pointer is null-tested.
-struct CPhysicsDebugInfo;
+class CPhysicsDebugInfo;
 struct CPhysicsObject {
     virtual void v000();
     void GetPhysicsDebugInfoSlot();
@@ -32,7 +32,7 @@ struct CThingPhysics {
     virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088();
     virtual void GetPhysicsDebugInfo(CPhysicsDebugInfo* info);     // slot 89 (+0x164)
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x60];
     CThingPhysics* PPhysics;                   // +0x60
 };
@@ -46,7 +46,7 @@ struct CThingList {                            // VC6 Dinkumware list: allocator
     SThingListNode* begin() const { return PHead->PNext; }
     SThingListNode* end() const { return PHead; }
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x14];
     unsigned char _alloc14[4];                 // +0x14 (list allocator word)
     CThingList    Things;                      // +0x18

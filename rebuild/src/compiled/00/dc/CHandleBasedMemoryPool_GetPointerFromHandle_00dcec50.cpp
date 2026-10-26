@@ -1,4 +1,4 @@
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     char pad[0x28];
     long m_index;      // +0x28
     long* m_refcounts; // +0x2c

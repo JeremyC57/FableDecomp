@@ -76,17 +76,17 @@ public:
         return (T*)it->component;
     }
 };
-struct CTCInGameMenu {                                      // interface type 0xC6
+class CTCInGameMenu { public:                                      // interface type 0xC6
     void CloseInGameMenuPC(bool closeAll);                  // 0x0047DBB8
 };
 struct CTCInventoryEffect {                                 // interface type 0x10D
     void Stop();                                            // 0x00562E70
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();                                  // slot 0 (scalar deleting destructor)
 };
-struct CManager {
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04(); virtual void m05(); 
     virtual void ReleaseFocus_slot6();                      // slot 6 (+0x18)
     virtual void m07(); virtual void m08(); virtual void m09(); virtual void m10(); virtual void m11(); virtual void m12(); virtual void m13(); virtual void m14(); virtual void m15(); virtual void m16(); virtual void m17(); virtual void m18(); virtual void m19(); virtual void m20(); virtual void m21(); virtual void m22(); virtual void m23(); virtual void m24(); virtual void m25(); virtual void m26(); virtual void m27(); virtual void m28(); 
@@ -105,7 +105,7 @@ struct CComponentVector {                                   // std::vector<NUISy
     NUISystem::CComponent** erase(NUISystem::CComponent** first, NUISystem::CComponent** last);   // 0x00485AA7
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x0C];
     bool          UseAlternateVolumes;                      // +0x0C
     unsigned char _pad0d[0x24 - 0x0D];
@@ -129,11 +129,11 @@ struct CRenderer {
     virtual void r00(); virtual void r01(); virtual void r02(); virtual void r03(); virtual void r04(); virtual void r05(); virtual void r06(); virtual void r07(); virtual void r08(); virtual void r09(); virtual void r10(); virtual void r11(); virtual void r12(); virtual void r13(); virtual void r14(); virtual void r15(); virtual void r16(); virtual void r17(); virtual void r18(); virtual void r19(); virtual void r20(); virtual void r21(); virtual void r22(); virtual void r23(); virtual void r24(); virtual void r25(); virtual void r26(); virtual void r27(); virtual void r28(); virtual void r29(); virtual void r30(); virtual void r31(); virtual void r32(); virtual void r33(); virtual void r34(); virtual void r35(); virtual void r36(); virtual void r37(); virtual void r38(); virtual void r39(); virtual void r40(); virtual void r41(); virtual void r42(); virtual void r43(); virtual void r44(); virtual void r45(); virtual void r46(); virtual void r47(); virtual void r48(); virtual void r49(); virtual void r50(); virtual void r51(); virtual void r52(); virtual void r53(); virtual void r54(); virtual void r55(); 
     virtual void SetPaused_slot56(bool a, bool b);          // slot 56 (+0xE0)
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x2C];
     CRenderer*    PRenderer;                                // +0x2C
 };
-struct CEngine {
+class CEngine { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                         // +0x28
 };
@@ -148,7 +148,7 @@ struct CTreePane {
     void Reset();                                           // 0x00592BA7
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*            __vftable;                             // +0x00
     CThing*          ParentThing;                           // +0x04 CTCBase
     unsigned char    _pad_0x08[0x04];

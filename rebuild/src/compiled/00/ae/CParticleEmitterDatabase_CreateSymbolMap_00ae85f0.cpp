@@ -10,27 +10,27 @@
 // Shape: per entry a NAMED copy of the emitter name, then a named empty prefix string, then the call: arguments right to
 // left (the handle pushed first, the upper-cased temporary built in the third frame word); destruction temporary, prefix,
 // name; the map end re-read each pass.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
     CCharString ToUpper() const;                     // 0x0099EE20
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char m_data[0x24];
     void Clear();                                                                   // 0x009E5250
     void AddSymbolDirty(const CCharString& prefix, const CCharString& name, long value);   // 0x009E54E0
     void Finalise();                                                                // 0x009E5C30
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char m_body[0x140];
     CCharString   Name;                              // +0x140
 };
 }
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Object;
     SCountBlock* Block;
     T* operator->() const { return Object; }

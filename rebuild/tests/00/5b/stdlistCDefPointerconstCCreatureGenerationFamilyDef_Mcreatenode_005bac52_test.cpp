@@ -4,12 +4,12 @@
 #include <cstdlib>
 #include <new>
 
-struct CCreatureGenerationFamilyDef {
+class CCreatureGenerationFamilyDef { public:
     long m_tag;
     long m_refCount;
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)

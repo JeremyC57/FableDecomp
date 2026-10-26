@@ -10,8 +10,8 @@ struct CDataOutputStreamWriter {
     void WriteSLONG(long value) { m_longs[m_n++] = value; }
 };
 
-struct CTCInventoryMap {
-    struct CUIRegionInfo {
+class CTCInventoryMap { public:
+    class CUIRegionInfo { public:
         long Region, Shops, BarberShops, TitleShops, TatooShops, ShopsForSale, HousesForSale, ShopsOwned, HousesOwned, Taverns;
     };
 };

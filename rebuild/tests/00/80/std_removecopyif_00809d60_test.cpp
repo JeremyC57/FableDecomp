@@ -2,8 +2,8 @@
 // Behaviour test for 0x00809D60: STLport remove_copy_if over CTargetPoints with CFilter_Bind2<IsInFOV,
 // IsStealableStockItem>: drop points in view whose thing is shop stock flagged stealable.
 enum ETCInterfaceType { TC_STOCK_ITEM = 0x54, TC_OTHER = 0x10 };
-struct CTCBase { };
-struct CTCShop { };
+class CTCBase { public: };
+class CTCShop { public: };
 template <class K, class V> struct pair { K first; V second; };
 struct CTCMap {
     typedef pair<ETCInterfaceType, CTCBase*> value_type;
@@ -15,7 +15,7 @@ struct CTCMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9];
     CTCMap Components;
     bool HasTC(ETCInterfaceType type) const { return (UsingComponents[type >> 5] & (1UL << (type & 31))) != 0; }
@@ -27,7 +27,7 @@ struct CThing {
         return (it == end || type < it->first ? end : it)->second;
     }
 };
-struct CTCStockItem : CTCBase {
+class CTCStockItem : public CTCBase { public:
     bool ForSale; bool Stealable; CTCShop* shop;
     CTCShop* GetShopTC() const { return shop; }
 };
@@ -38,17 +38,17 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 struct CTargetPoint { CIntelligentPointer<CThing> PThing; long Index; C3DVector TargetingPosition; long FrameRejected; };
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     float MinX;
     bool operator()(const CTargetPoint& tp) const { return tp.TargetingPosition.X >= MinX; }
 };
@@ -61,7 +61,7 @@ struct CTargetPointFilter_IsStealableStockItem {
         return item->GetShopTC() != 0 && item->Stealable;
     }
 };
-template <class TF1, class TF2> struct CFilter_Bind2 {
+template <class TF1, class TF2> class CFilter_Bind2 { public:
     TF1* F1; TF2* F2;
     template <class T> bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t); }
 };

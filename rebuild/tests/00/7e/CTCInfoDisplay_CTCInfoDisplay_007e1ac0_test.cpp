@@ -1,8 +1,8 @@
 // Behaviour test for CTCInfoDisplay::CTCInfoDisplay @ 0x007E1AC0: flags false, empty tags, zero radius and time.
 #include <cstdio>
-struct CThing { long id; };
-struct CCharString { const char* text; CCharString() : text("") {} };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
+class CThing { public: long id; };
+class CCharString { public: const char* text; CCharString() : text("") {} };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* owner) : ParentThing(owner) {} virtual ~CTCBase() {} };
 struct CTCInfoDisplay : CTCBase {
     bool Forward, Backward;
     CCharString TextTag, TextTagBack;

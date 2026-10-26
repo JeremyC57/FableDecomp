@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     int f0;
 };
 

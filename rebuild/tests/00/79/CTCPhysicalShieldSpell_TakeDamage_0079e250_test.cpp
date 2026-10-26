@@ -2,7 +2,7 @@
 // hero stats (interface 4) the stamina changes by (long)(damage * ManaDamage[level]) and an empty stamina ends the shield,
 // otherwise ShieldHealth absorbs the hit and a non-positive health ends it.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 static int g_lowerBoundCalls = 0;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(long type, T** out)
@@ -38,17 +38,17 @@ template <class T> struct vector {
     T* begin() const { return _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CSpecialAbilitiesPhysicalShieldDef { vector<float> ManaDamage; };
-template <class T> struct CDefPointer {
+class CSpecialAbilitiesPhysicalShieldDef { public: vector<float> ManaDamage; };
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
 static long g_lastModify = 0; static int g_modifyCalls = 0;
-struct CTCHeroStats {
+class CTCHeroStats { public:
     long Stamina;
     void ModifyStaminaBy(long amount) { ++g_modifyCalls; g_lastModify = amount; Stamina += amount; if (Stamina < 0) Stamina = 0; }
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     CThing* ParentThing;
     CDefPointer<CSpecialAbilitiesPhysicalShieldDef> PDef;
     long    SpellLevel;

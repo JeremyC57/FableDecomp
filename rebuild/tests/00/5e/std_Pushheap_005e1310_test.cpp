@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test for 0x005E1310: _Push_heap over pair<unsigned long, CAnimationEntry> with an intrusively
 // counted component map (assignment releases/adopts, the by-value argument releases its reference).
-struct CAnimComponentMap {
+class CAnimComponentMap { public:
     virtual void v00() { }
     virtual void Destroy() { ++destroyed; }
     long m_refCount;
     int destroyed;
     CAnimComponentMap() : m_refCount(0), destroyed(0) { }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer(const CIVCountedPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
@@ -20,12 +20,12 @@ template <class T> struct CIVCountedPointer {
     }
     ~CIVCountedPointer() { T* object = Object; if (object && --object->m_refCount == 0) object->Destroy(); }
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public:
     long BankIndex; CDefString AnimName; CDefString GroupName; CIVCountedPointer<CAnimComponentMap> Components;
 };
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

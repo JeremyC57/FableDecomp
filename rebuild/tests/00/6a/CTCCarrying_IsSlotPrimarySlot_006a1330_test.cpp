@@ -4,14 +4,14 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long          m_refCount;
     unsigned char _pad08[0x30 - 0x08];
     bool          IsPrimary;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -25,7 +25,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return m_p; }
 };
 static CCarrySlotDef g_slots[2]; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void GetDef(long index, CDefPointer<CCarrySlotDef>* out);
 };
 void CDefinitionManager::GetDef(long index, CDefPointer<CCarrySlotDef>* out)
@@ -34,10 +34,10 @@ void CDefinitionManager::GetDef(long index, CDefPointer<CCarrySlotDef>* out)
     CCarrySlotDef* d = &g_slots[index]; ++d->m_refCount; out->m_p = d;
 }
 static CDefinitionManager g_manager;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager* Get() { return &g_manager; }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00() {}
     bool IsSlotPrimarySlot(long slot);
 };

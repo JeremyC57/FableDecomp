@@ -11,33 +11,33 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern const C3DVector g_XAxis;                 // 0x0137CDFC
 extern const C3DVector g_YAxis;                 // 0x0137CDF0
 extern const C3DVector g_ZAxis;                 // 0x0137CE08
 extern long g_FramesPerSecond;                  // 0x01375550
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
     void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
     __forceinline void ReleaseReference() { if (--m_count == 0) Destroy(); }
 };
 
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x780];
     float InventoryAnimXRotationSeconds;        // +0x788
     float InventoryAnimYRotationSeconds;        // +0x78c
     float InventoryAnimZRotationSeconds;        // +0x790
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }
     __forceinline ~CDefPointer()

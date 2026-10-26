@@ -1,6 +1,6 @@
 // Behaviour test for 0x006C4210 std::remove_copy_if(CIntelligentPointer<CThing>*, .., CIsThingDead).
 #include <cstdio>
-struct CThing { unsigned char StateBits; bool IsDead() const { return (StateBits & 0x01) != 0; } };
+class CThing { public: unsigned char StateBits; bool IsDead() const { return (StateBits & 0x01) != 0; } };
 static int g_gets = 0, g_sets = 0;
 struct IPtr {
     CThing* item;
@@ -8,7 +8,7 @@ struct IPtr {
     void SetPItem(CThing* p) { ++g_sets; item = p; }
     IPtr& operator=(const IPtr& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct CIsThingDead {
+class CIsThingDead { public:
     bool operator()(const IPtr& t) const { return t.GetPItem() == 0 || t.GetPItem()->IsDead(); }
 };
 static IPtr* RemoveCopyIf(IPtr* first, IPtr* last, IPtr* result, CIsThingDead pred) {

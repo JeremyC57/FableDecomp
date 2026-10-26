@@ -2,7 +2,7 @@
 #include <cstdio>
 static unsigned int g_n = 0; static int g_emptyValue = 0; static int g_dtors = 0;
 struct CBaseIntelligentPointer { void* PItem; CBaseIntelligentPointer() : PItem(0) {} ~CBaseIntelligentPointer() { ++g_dtors; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() {} };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() {} };
 class CParticleEmitter;
 template<class T> struct TVector {
     void resize(unsigned int newSize, const T& value) { g_n = newSize; g_emptyValue = value.PItem == 0; }

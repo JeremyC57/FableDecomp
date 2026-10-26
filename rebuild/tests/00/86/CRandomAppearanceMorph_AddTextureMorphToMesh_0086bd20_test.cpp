@@ -2,7 +2,7 @@
 // body parts gets the morph {newTexture, groupID} under the original texture; other meshes are untouched; the max
 // group id only grows.
 #include <cstdio>
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     unsigned long size() const { return m_last - m_first; }
     T& operator[](unsigned long index) { return m_first[index]; }
@@ -10,7 +10,7 @@ template<class T> struct CArray {
 struct CTextureMorph { unsigned long NewTexture, GroupID; };
 struct CTextureMorphMap { int Count; unsigned long LastKey; CTextureMorph Last; };
 struct CBodyPartMesh { unsigned long MeshID; unsigned long _04; CTextureMorphMap TextureMorphs; };
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> > BodyParts;
     unsigned long MaxTextureGroupID;
     void AddTextureMorph(CTextureMorphMap& morphs, unsigned long originalTexture, const CTextureMorph& morph)

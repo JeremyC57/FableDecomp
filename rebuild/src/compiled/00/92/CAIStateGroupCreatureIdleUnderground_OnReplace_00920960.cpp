@@ -13,20 +13,20 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                 // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
-struct CCreatureAction_RiseUp : CCreatureActionBase {
+class CCreatureAction_RiseUp : public CCreatureActionBase { public:
     CCreatureAction_RiseUp(CThingCreatureBase* creature);   // 0x008BD880
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

@@ -3,15 +3,15 @@
 #include <cstdlib>
 
 enum ESurfacePool { SURFACE_POOL_DEFAULT = 0, SURFACE_POOL_MANAGED = 1 };
-struct C2DExtentsI { long w, h; };
-struct CPixelFormat { long f; };
+class C2DExtentsI { public: long w, h; };
+class CPixelFormat { public: long f; };
 
 static int g_flushes = 0, g_creates = 0, g_locks = 0, g_unlocks = 0, g_fail = 0;
 static unsigned char g_block[64];
 
 class CTexture;
 extern unsigned long g_texSize;
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long, bool) { if (g_fail) return 0; return (unsigned long)size == g_texSize ? g_block : 0; }
 };
 static CMemoryAllocator g_alloc;
@@ -42,7 +42,7 @@ public:
     { s_size = &size; s_levels = levels; s_fmt = &format; s_usage = usage; s_pool = pool; s_dyn = dynamic; s_rt = renderTarget; return true; }
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FlushCycle() { ++g_flushes; }
     CTexture* AllocateTexture(unsigned long, const C2DExtentsI& size, long levels, const CPixelFormat& format,
                               unsigned long usage, bool dynamic)

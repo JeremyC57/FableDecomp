@@ -8,7 +8,7 @@
 // Retail offsets: CTCInventoryBase is 0x130 bytes in retail (Ego_r.pdb 0x148, 12-byte containers);
 // InventoryOpen sits at +0x58 (PDB +0x60). Local model as the landed CTCInventoryStats constructor.
 
-struct CThing;
+class CThing;
 struct CViewport;
 
 struct CTCInventoryBase {
@@ -20,7 +20,7 @@ struct CTCInventoryBase {
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                     // vtable 0x0123A3E0
+class CBase { public:                                     // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -28,7 +28,7 @@ struct CBase {                                     // vtable 0x0123A3E0
 };
 }
 
-struct CTCInventoryMagic : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryMagic : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     void* InventoryMagicPrimitiveHandles[3];       // +0x134
     virtual void v00();
     void DrawPreparePrimitivesForRendering(CViewport* viewport);

@@ -9,9 +9,9 @@
 // The creature is a named local fetched before the temporary, so LoopNum is re-read after that call (retail
 // `mov esi,[esi+114h]`) and the incremented value is not kept in a callee-saved register (`mov eax,ecx ; cmp eax,5`).
 // LoopNum (Ego_r.pdb +0x12c) is +0x114 in retail (CCombatActionBase is 0x114 bytes); modelled locally.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -33,12 +33,12 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void Kill(bool b);                                        // 0x004C9B80 (CThing)
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureAction_WaspQueenDie : CCombatActionBase {   // retail sizeof 0x118, vtable 0x01280D84
+class CCreatureAction_WaspQueenDie : public CCombatActionBase { public:   // retail sizeof 0x118, vtable 0x01280D84
     long LoopNum;                               // +0x114
     virtual void v00();
     CCreatureAction_WaspQueenDie(CThingCreatureBase* owner, long loopNum)

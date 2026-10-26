@@ -14,7 +14,7 @@
 // `cost` argument slot (the cost pointer lives in esi), its address passed to the scaler. `ret 10h`.
 namespace NParticleEngine {
 
-struct CParticleSystemCost {
+class CParticleSystemCost { public:
     float PolyCount;                        // +0x00
     float PixelCount;                       // +0x04
     float LightCount;                       // +0x08
@@ -23,18 +23,18 @@ struct CParticleSystemCost {
     float LightCost;                        // +0x14
 };
 
-struct CParticleSystem {
+class CParticleSystem { public:
     void ScaleParticleDimensions(float& size);                  // 0x00AF8F80
 };
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual ~CPSCBase();
     CParticleSystem* ParticleSystem;            // +0x04
     bool             UpdateStarted : 1;         // +0x08 bit 0
     bool             Initialised : 1;           // +0x08 bit 1
 };
 
-struct CPSCLight : CPSCBase {
+class CPSCLight : public CPSCBase { public:
     long          LightLifeTimer;               // +0x0c
     long          LightRespawnDelayTimer;       // +0x10
     bool          LightIsAlive;                 // +0x14

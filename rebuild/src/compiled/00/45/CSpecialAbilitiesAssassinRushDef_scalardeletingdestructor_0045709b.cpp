@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesAssassinRushDef;
+class CSpecialAbilitiesAssassinRushDef;
 extern void __fastcall CLBP_dtor(CSpecialAbilitiesAssassinRushDef* def);
 extern void __cdecl CLBP_operator_delete(void* def);
 

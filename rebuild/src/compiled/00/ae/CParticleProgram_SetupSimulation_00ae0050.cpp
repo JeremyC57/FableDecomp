@@ -1,12 +1,12 @@
 // CParticleProgram::SetupSimulation  retail 0x00ae0050
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
-struct CParticleSimulation {
+class CParticleSimulation { public:
     // external method at 0x00adf610: char __fastcall(void* progField, pool*)
     char Init(void* progField, CMovableResourceMemoryPool* pool);
 };
 
-struct CParticleProgram {
+class CParticleProgram { public:
     char pad[8]; // this+8 is the field passed to the simulation
     bool SetupSimulation(CParticleSimulation* sim, CMovableResourceMemoryPool* pool);
 };

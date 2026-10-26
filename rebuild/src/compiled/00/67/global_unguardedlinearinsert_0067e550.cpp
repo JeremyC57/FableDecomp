@@ -10,17 +10,17 @@
 // Layout (Ego_r.pdb CDegradableInfo, 28 bytes): HealthPercentage +0, EngineGraphic (CEngineGraphic, 16 bytes) +4,
 // SmashParticleEmitter +0x14, BlocksNavigation +0x18; CEngineGraphic is modelled by its size.
 // Label correction: the catalog's `_Copy_backward<CEngineCamera::CDebugScriptElement*>` is propagated.
-struct CEngineGraphic {                           // 16 bytes
+class CEngineGraphic { public:                           // 16 bytes
     long m_words[4];
 };
-struct CDegradableInfo {                          // 28 bytes
+class CDegradableInfo { public:                          // 28 bytes
     float          HealthPercentage;              // +0x00
     CEngineGraphic EngineGraphic;                 // +0x04
     long           SmashParticleEmitter;          // +0x14
     bool           BlocksNavigation;              // +0x18
 };
-struct CDegradableDef {
-    struct CIsHealth1GTHealth2 {
+class CDegradableDef { public:
+    class CIsHealth1GTHealth2 { public:
         bool operator()(const CDegradableInfo& a, const CDegradableInfo& b) const { return a.HealthPercentage > b.HealthPercentage; }
     };
 };

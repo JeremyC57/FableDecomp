@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { unsigned char m_flags91; bool incap; };
+class CThing { public: unsigned char m_flags91; bool incap; };
 static bool __fastcall IsIncapacitated(CThing* t) { return t->incap; }
-struct CCombatActionBase { int reinit; void ReinitialiseActionID() { ++reinit; } };
-struct CCombatAction { CCombatActionBase* CreatureAction; void* m_pCount; };
+class CCombatActionBase { public: int reinit; void ReinitialiseActionID() { ++reinit; } };
+class CCombatAction { public: CCombatActionBase* CreatureAction; void* m_pCount; };
 struct CSeq {
     virtual bool IsInterruptable() { return interruptable; } virtual bool IsMeleeSequence() { return melee; }
     bool interruptable, melee; long CurrentActionIndex; CCombatAction* first; CCombatAction* last; CThing* Target;

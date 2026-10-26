@@ -19,10 +19,10 @@ struct CIVPtr {
         return *this;
     }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CBox { C3DVector MinCoord, MaxCoord; };
 struct CSphere { C3DVector Center; float Radius; };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     long m_f4, m_f8; CIVPtr MeshData; CBox BoundingBox; CSphere BoundingSphere;
     float SafeBoundingRadius; long PhysicsMeshIndex; float LODErrors[4]; unsigned long LODDataSizes[4];
     C3DMeshInfo& operator=(const C3DMeshInfo& o)

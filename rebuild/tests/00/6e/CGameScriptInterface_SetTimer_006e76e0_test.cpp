@@ -7,7 +7,7 @@ struct Tree {
     void Find(Node** out, int* key) { *out = g_found; }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     unsigned char _pad[0x3c];
     Tree tree; // +0x3c
 };

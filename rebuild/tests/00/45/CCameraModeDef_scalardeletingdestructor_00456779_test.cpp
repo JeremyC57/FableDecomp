@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCameraModeDef { int f0; void* vf; };
+class CCameraModeDef { public: int f0; void* vf; };
 static int g_dtor_calls = 0;
 static int g_del_calls = 0;
 static void __fastcall CCameraModeDef_dtor(CCameraModeDef* mode){ (void)mode; ++g_dtor_calls; }

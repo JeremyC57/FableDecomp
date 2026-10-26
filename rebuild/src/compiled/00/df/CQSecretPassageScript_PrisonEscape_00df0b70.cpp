@@ -8,28 +8,28 @@
 //   230, 231, 295, 370, 373, 376, 379, 480, 697.
 // Layout (retail = Ego_r.pdb - 0x14): GlobalMymap +0x54 (cast map), FlagMap +0x60. CQ_SunnyvaleMasterData (no shift):
 //   HenchmanOverrideState +0x0c.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsScripting();                                 // 0x00CD23B9
@@ -42,7 +42,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;
 };
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
@@ -54,12 +54,12 @@ struct CCutsceneCastMap {                               // map<CCharString, CScr
 struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
-struct CRGBColour {                                     // D3DCOLOR byte order
+class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 struct SScriptThingInfo {
@@ -90,7 +90,7 @@ struct CScriptThingPointer {                            // CCountedPointer<CScri
         return *this;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010();
     virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020();
     virtual void t021(); virtual void t022(); virtual void t023(); virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030();
@@ -118,7 +118,7 @@ public:
 };
 }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -218,7 +218,7 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x0c];
     long HenchmanOverrideState;                         // +0x0c
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

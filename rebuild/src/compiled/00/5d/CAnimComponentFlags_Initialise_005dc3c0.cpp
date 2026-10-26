@@ -17,7 +17,7 @@
 // CAnimComponentFlags.h is data-only, so the polymorphic class is modelled locally (Flags +0x08, PDB name).
 // Leaf: ?Initialise@CAnimComponentFlags
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CStringParserCommentList {               // retail std::list<CStringParse
     ~CStringParserCommentList();                // 0x004046B0
 };
 
-struct CStringParser : CBase {                  // retail 0x28 bytes
+class CStringParser : public CBase { public:                  // retail 0x28 bytes
     char* String;                               // +0x04
     unsigned long BaseLineOffset;               // +0x08
     CCharString Filename;                       // +0x0c
@@ -45,7 +45,7 @@ struct CStringParser : CBase {                  // retail 0x28 bytes
                   long baseLineOffset);         // 0x00404720
 };
 
-struct CPersistContext;
+class CPersistContext;
 
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 
@@ -57,14 +57,14 @@ inline long ParseLong(CPersistContext& context, CStringParser& parser)
     return value;
 }
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void Reset();                       // slot 8 (+0x20)
     long _base04;                               // +0x04
 };
 
-struct CAnimComponentFlags : CAnimComponentBase {
+class CAnimComponentFlags : public CAnimComponentBase { public:
     long Flags;                                 // +0x08
     virtual bool Initialise(CPersistContext& context, const CCharString& text);
 };

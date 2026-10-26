@@ -7,7 +7,7 @@ struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };   // 24 bytes
 extern "C" __declspec(dllimport) int  __stdcall TryEnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);   // IAT 0x0143FD30
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE0C
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char                _pad[0x24];
     bool                         MultiThreaded;    // +0x24
     unsigned char                _pad25[0x44c - 0x25];

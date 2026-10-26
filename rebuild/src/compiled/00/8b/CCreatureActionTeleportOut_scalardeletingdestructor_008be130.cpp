@@ -1,4 +1,4 @@
-struct CCreatureAction_TeleportOut {
+class CCreatureAction_TeleportOut { public:
     void* vftable;
 };
 

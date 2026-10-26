@@ -10,21 +10,21 @@
 // store, the pointee kept in esi across the call); the scale functor is a 4-byte record whose float
 // is copied as a dword (`mov ecx,[ebx+38h]`), built in the dead `points` argument slot that also
 // receives the discarded functor result (`mov [esp+14h],ecx` ... `lea ecx,[esp+18h]`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct C3DVectorVector {                           // retail std::vector: first/last/end
     C3DVector* first;
     C3DVector* last;
     C3DVector* end_of_storage;
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
     void GetRigidBodyBoundingPoints(C3DVectorVector& points) const;   // 0x00A6CB20
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
@@ -49,11 +49,11 @@ struct CScaleElements {
 };
 CScaleElements __fastcall ForEach_ScaleElements(C3DVector* first, C3DVector* last, CScaleElements f);   // 0x00A13440
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
 };
 
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38

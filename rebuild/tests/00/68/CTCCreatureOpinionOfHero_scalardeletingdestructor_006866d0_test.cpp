@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void* vftable;
     int destroyed;
 };

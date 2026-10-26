@@ -3,14 +3,14 @@
 
 // Model of 0x00A2AED0: placement-copy `count` CPhysicsMeshInfo records (base CMeshDataBankEntry {Bank, Index},
 // own CIVCountedPointer MeshData whose pointee keeps IVRefCount), returning the advanced pointer.
-struct CMeshDataBank { int Id; };
-struct CMeshDataBankEntry {
+class CMeshDataBank { public: int Id; };
+class CMeshDataBankEntry { public:
     virtual int Kind() const { return 0xCD28; }
     CMeshDataBank* Bank;
     unsigned long Index;
     CMeshDataBankEntry(CMeshDataBank* b, unsigned long i) : Bank(b), Index(i) { }
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) { }
@@ -24,7 +24,7 @@ struct CIVCountedPointer {
             ++Object->IVRefCount;
     }
 };
-struct CPhysicsMeshInfo : CMeshDataBankEntry {
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:
     virtual int Kind() const { return 0xCD50; }
     CIVCountedPointer MeshData;
     CPhysicsMeshInfo(CMeshDataBank* b, unsigned long i, CIVCountedPointeeBase* m) : CMeshDataBankEntry(b, i), MeshData(m) { }

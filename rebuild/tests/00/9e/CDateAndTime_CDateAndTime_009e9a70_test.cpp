@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime(long y, unsigned long mo, unsigned long d, unsigned long h, unsigned long mi, unsigned long s, unsigned long ms) : Year(y), Month(mo), Day(d), Hour(h), Minute(mi), Second(s), Millisecond(ms) { }
 };

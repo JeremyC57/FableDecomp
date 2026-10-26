@@ -11,7 +11,7 @@
 // Label correction: the catalog `CVectorMap_Lookup` is descriptive.
 class CFaction;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                         // +0x00
     void* Info;                                         // +0x04
     T* Get() const { return Data; }

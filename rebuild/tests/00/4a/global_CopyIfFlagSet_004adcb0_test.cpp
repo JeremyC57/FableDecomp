@@ -4,7 +4,7 @@
 
 // Behaviour model of the list -> back_insert_iterator<vector<CThing*> > filter (0x004ADCB0): every listed thing whose
 // flag byte is set is pushed onto the vector (growing through _M_insert_overflow); the output iterator is returned.
-struct CThing { bool Flag; int id; };
+class CThing { public: bool Flag; int id; };
 struct ListNode { ListNode* next; ListNode* prev; CThing* data; };
 struct ListIt { ListNode* node; CThing*& operator*() const { return node->data; } ListIt& operator++() { node = node->next; return *this; } bool operator!=(const ListIt& o) const { return node != o.node; } };
 static int g_overflows = 0;

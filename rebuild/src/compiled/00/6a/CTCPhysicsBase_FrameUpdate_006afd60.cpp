@@ -10,12 +10,12 @@
 struct CTCGraphicAppearance {
     void SetActivePersistenceFlags(long flags); // 0x004BFFD0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     void RefreshGraphic(bool flag);             // 0x004C7590
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008();
     virtual void FrameUpdate();   // slot 9 (+0x24)

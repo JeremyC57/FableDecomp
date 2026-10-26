@@ -16,7 +16,7 @@
 #pragma optimize("s", on)
 
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -26,7 +26,7 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long WeaponClass;                           // +0x2c
 };
@@ -39,7 +39,7 @@ struct CWeaponDefPointer {
             Object->Release();
     }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CWeaponDefPointer* out);     // 0x0042B1A6
 };
 struct CDefClassPointer {                       // CDefPointer<CDefClassBase>: GetPDefFromGlobalIndex's by-value result
@@ -56,7 +56,7 @@ struct CDefClassPointer {                       // CDefPointer<CDefClassBase>: G
     }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefClassPointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
 };
 void* FindSubDef(const CDefClassBase* def);
@@ -91,7 +91,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 #pragma pack(pop)
 class CThing;
 class CComponent;
@@ -99,7 +99,7 @@ template <class T> bool __fastcall IS_THING_ALIVE_005cc1b0(const T& thing);   //
 bool __fastcall IsMeleeWeaponClass(long weaponClass);       // 0x005DA510
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[0x134 - 0x08];
@@ -107,7 +107,7 @@ struct CTCInventoryBase {
     void GetAllItems(CItemVector& items) const;             // 0x005BF482
 };
 }
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;         // +0x134
     long          ActiveMeleeWeaponDefIndex;                // +0x13C
     bool          MeleeWeaponCarriedOnLoad;                 // +0x140

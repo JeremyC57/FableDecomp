@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_destroyed = 0;
-struct CWideString { const char* text; CWideString& operator=(const CWideString& o) { text = o.text; return *this; } };
+class CWideString { public: const char* text; CWideString& operator=(const CWideString& o) { text = o.text; return *this; } };
 struct CMovieDef {
     long m_count; CWideString Movie; float Height; float Width; float Angle; bool PositionIsCenter;
     void Destroy() { ++g_destroyed; }

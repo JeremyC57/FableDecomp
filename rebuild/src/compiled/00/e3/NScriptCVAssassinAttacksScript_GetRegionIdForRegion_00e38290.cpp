@@ -9,9 +9,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     ~CCharString();                                      // 0x0099EAE0
     bool operator!=(const CCharString& other) const;     // 0x0099E900

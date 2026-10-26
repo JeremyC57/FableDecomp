@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CQ_UndeadRisingScript::LookAfterHealth (0x00E0DBB0): each frame while the undead lives, near the
 // centre (< 6 units) it is made engageable/targetable/damageable/opaque, away from it evasive and translucent (0.6).
-struct CScriptThing { int Id; float X; int LifeFrames; };
+class CScriptThing { public: int Id; float X; int LifeFrames; };
 struct CGSI {
     int Frames; int NearFrames; int FarFrames; float Alpha; bool Targetable; bool Evade; int HealthReads; int EpicSets;
     CScriptThing* Undead;

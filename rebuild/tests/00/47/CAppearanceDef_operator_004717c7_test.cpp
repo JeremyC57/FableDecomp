@@ -1,13 +1,13 @@
 // behaviour test for CAppearanceDef::operator= (0x004717C7): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
 
 #pragma pack(push, 1)
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 #pragma pack(pop)
-struct CAnimationSet { unsigned long m_words[8]; CAnimationSet& operator=(const CAnimationSet& o) { ++g_ops; for (int i = 0; i < 8; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CAppearanceDef : CDefClassBase {
+class CAnimationSet { public: unsigned long m_words[8]; CAnimationSet& operator=(const CAnimationSet& o) { ++g_ops; for (int i = 0; i < 8; ++i) m_words[i] = o.m_words[i]; return *this; } };
+class CAppearanceDef : public CDefClassBase { public:
     CEngineGraphic Graphic;
     CAnimationSet Animation;
     unsigned char OutlineEffectAlphaRef;

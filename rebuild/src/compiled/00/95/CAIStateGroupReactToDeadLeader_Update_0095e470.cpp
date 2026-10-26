@@ -9,8 +9,8 @@
 // Shape: the navigation lookup inlines the vector-map lower_bound (len/2 halving) on the word-local HasTC; the enemy is cleared
 // through an 8-byte intelligent-pointer temporary inside the loop (the `and esp,-8` frame); lower_bound copies `first` into
 // the walking pointer after the length; `reached` sits in its own block around the do-loop (shares the HasTC byte slot).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -38,7 +38,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,10 +61,10 @@ struct CThing {
         return present != 0;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
 };
 struct CBaseIntelligentPointer {
@@ -89,12 +89,12 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 extern long g_scaled_013bb738;                  // 0x013BB738 frame budget
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

@@ -8,17 +8,17 @@
 // Shape: body under `if (base call)` with the shared `xor al,al` tail; the def value is stored with `fst`
 // and kept on the x87 stack for the conditional `Health = MaxHealth` (`fucompp` against the 0.0f pool
 // = `Health == 0.0f`); the bitfield set is `or byte ptr [esi+92h],2`.
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x50];
     float         MaxHealth;                             // +0x50
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char                   _pad00[0x92];
     unsigned char                   DeletedOnOwnerLevelOutOfScope : 1;   // +0x92 bit 0
     unsigned char                   Drawable : 1;                        // +0x92 bit 1
@@ -31,7 +31,7 @@ struct CThingCreatureBase {
     bool ConstructFromLevelScript(const char* script);   // 0x00662930
 };
 
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool vfunc_4(const char* script);
 };
 

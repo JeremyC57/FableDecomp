@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test: MakeAvailable walks a three-node STLport-shaped red-black tree in order and scales each state's R, G, B.
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CUIState { unsigned int flag; int type; float pos[2]; float zoom[2]; CRGBColour Colour; float time; bool linear; };
 struct SStateNode { bool _M_color; SStateNode* _M_parent; SStateNode* _M_left; SStateNode* _M_right; unsigned int first; CUIState second; };
 struct CIter {

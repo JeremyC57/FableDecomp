@@ -12,7 +12,7 @@
 //   on a block-scoped CCountedPointer copy (add-ref, call, inline release through the block's {count, destroy pmf,
 //   object}); "performing any action" is the landed inline IsPerformingAnyAction (0x006622A0); erase takes the
 //   4-byte iterator by value (built in the argument area) and returns one through the frame word.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                // slot 4 (+0x10)
     virtual void v05(); virtual void v06();
@@ -76,7 +76,7 @@ struct CCreatureActionList {                    // list<CCountedPointer<CCreatur
     iterator erase(iterator where);             // 0x00669AF0
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x100];
     CCountedPointer_CCreatureActionBase PCurrentAction;     // +0x100
     CCreatureActionList PQueuedActions;                     // +0x108

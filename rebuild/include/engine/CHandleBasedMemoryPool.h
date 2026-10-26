@@ -8,13 +8,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
-struct CFailedAllocationHandler;
+class CCharStringData;
+class CFailedAllocationHandler;
 struct CHeader;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool {
+public:
     void*                        __vftable;                  // +0x00 vptr, or first dword of a flattened base subobject
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08

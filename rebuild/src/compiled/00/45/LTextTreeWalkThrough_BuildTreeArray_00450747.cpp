@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct TreeNode { char pad0[8]; TreeNode* next; TreeNode* child; };
+class TreeNode { public: char pad0[8]; TreeNode* next; TreeNode* child; };
 extern "C" void FreeNode(TreeNode* n); // reloc-masked free callee
 
 struct CLTextTreeWalkThrough {

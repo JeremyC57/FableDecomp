@@ -5,11 +5,11 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static bool feq(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-5f; }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -17,7 +17,7 @@ struct C3DVector {
     C3DVector OffsetBy2D(const C2DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z); }
 };
 static int g_offsetCalls = 0;
-struct CTCPhysicsBase {                        // test model of engine/CTCPhysicsBase.h: vptr, two words, Position at +0x0c
+class CTCPhysicsBase { public:                        // test model of engine/CTCPhysicsBase.h: vptr, two words, Position at +0x0c
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {}
     virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {} virtual void v010() {} virtual void v011() {}
     virtual void v012() {} virtual void v013() {} virtual void v014() {} virtual void v015() {} virtual void v016() {} virtual void v017() {}

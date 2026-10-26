@@ -35,8 +35,8 @@ public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 
-struct CAnimComponentMap { long IVRefCount; CAnimComponentMap() : IVRefCount(0) { } };
-template <class T> struct CIVCountedPointer {
+class CAnimComponentMap { public: long IVRefCount; CAnimComponentMap() : IVRefCount(0) { } };
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(T* o) : Object(o) { if (Object) ++Object->IVRefCount; }
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
@@ -49,8 +49,8 @@ template <class T> struct CIVCountedPointer {
         return *this;
     }
 };
-struct CDefString { long TablePos; };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimationEntry { public:
     long                                 BankIndex;
     CDefString                           AnimName;
     CDefString                           GroupName;

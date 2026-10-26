@@ -18,7 +18,7 @@
 // CTCPhysicsBase (vtable 0x0125D2C4): slot 42 (+0xA8) a flag query (base 0x006B1100 returns false, CTCPhysicsStandard
 // 0x00724BC0 returns bit 4 of +0x85), slot 93 (+0x174) GetPhysicsMeshInfo (the landed 0x006B0850 notes). CPhysicsMeshObject
 // (Ego_r.pdb, 0x40 bytes: vptr, Mesh +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C) is modelled opaque.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

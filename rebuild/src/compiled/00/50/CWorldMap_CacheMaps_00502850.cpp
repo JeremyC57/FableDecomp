@@ -11,26 +11,26 @@
 //   Used +0x24, Loading +0x27, LoadedOnPlayerProximity +0x28), PLevelLoader data +0xbc; region-loading flag byte
 //   0x013756F6 (landed name g_bRegionLoadingEnabled).
 // Note: the "unload" branch tests Maps[loadType].Loading -- retail indexes the map array with the load type there.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CThing;
-struct CMessageEventManager {
+class CThing;
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1,
                      float value2, long data);          // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;         // +0x60
 };
-struct CLevelLoader {
+class CLevelLoader { public:
     virtual void v00();
     virtual void Update();                              // slot 1
     bool IsBusy();                                      // 0x006C20A0
 };
 enum ELoadType { LOAD_TYPE_IMMEDIATE = 0, LOAD_TYPE_BACKGROUND = 1 };
-struct CMapInfo {                                       // 0x48 bytes
+class CMapInfo { public:                                       // 0x48 bytes
     unsigned char _pad00[0x24];
     bool          Used;                                 // +0x24
     bool          Placed;                               // +0x25
@@ -47,7 +47,7 @@ struct CMapInfoArray {
     CMapInfo& operator[](long n) { return _M_start[n]; }
 };
 extern bool g_bRegionLoadingEnabled;                    // 0x013756F6
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long map) const;           // slot 10 (+0x28)

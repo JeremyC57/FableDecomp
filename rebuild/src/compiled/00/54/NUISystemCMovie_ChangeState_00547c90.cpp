@@ -14,18 +14,18 @@
 //   CPixelFormat has no constructor store here; the extents are built in a frame local before the create call.
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };
-struct CAFile {
+class CAFile { public:
     static CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) { }
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
 };
@@ -166,7 +166,7 @@ extern void* g_pMovieTexture;                      // 0x013B8AC0
 
 namespace NUISystem {
 
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -321,11 +321,11 @@ struct CComponent {
     unsigned long TargetState;                     // +0x148
     unsigned char _pad14c[0x15c - 0x14c];
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     void ChangeState(unsigned long newState);      // 0x0052CF40
 };
 
-struct CMovie : CChangingStateComponent {
+class CMovie : public CChangingStateComponent { public:
     bool                   Playing;                // +0x15c
     CEnginePrimitiveHandle Handle;                 // +0x160
     unsigned long          MovieWidth;             // +0x168

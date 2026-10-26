@@ -3,7 +3,7 @@
 // Host model: narrow strings, '/' for the engine's backslash.
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char s[128];
     CWideString() { s[0] = 0; }
     CWideString(const char* t) { std::strcpy(s, t); }

@@ -1,11 +1,11 @@
 // Behaviour test for CEngine::RenderColorFilteredQuad @ 0x00B25C00
 #include <cstdio>
-struct CTexture { int id; };
-struct C4DVector { float X, Y, Z, W; };
+class CTexture { public: int id; };
+class C4DVector { public: float X, Y, Z, W; };
 struct CStateInfo { int dummy; };
 struct CStateStackElement { CStateInfo* State; unsigned int Value; };
 static int g_log[16]; static int g_logCount = 0;
-struct CRenderStateManager {
+class CRenderStateManager { public:
     CStateStackElement StateStack[16];
     long StateStackSize;
     unsigned int CurrentBookmarkMask;
@@ -15,19 +15,19 @@ struct CRenderStateManager {
 };
 static CRenderStateManager g_manager;
 CRenderStateManager* g_pRenderStateManager = &g_manager;
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     long m_vertexShaderConstantLayout;
     void SetVertexShaderConstantLayout(long layout) { m_vertexShaderConstantLayout = layout; g_log[g_logCount++] = (int)layout; }
 };
 CShaderRenderManager g_ShaderRenderManager;
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter { public:
     float m_x; const C4DVector* m_colour; CTexture* m_texture; long m_layoutSeen;
     void RenderColorFilteredQuad(float x, float, const C4DVector& colour, float, float, CTexture* texture)
     { m_x = x; m_colour = &colour; m_texture = texture; m_layoutSeen = g_ShaderRenderManager.m_vertexShaderConstantLayout; g_log[g_logCount++] = 7; }
 };
 static CEngineScreenEffectColourFilter g_filter;
 CEngineScreenEffectColourFilter* g_pScreenEffectColourFilter = &g_filter;
-struct CEngine {
+class CEngine { public:
     int m_defaults;
     void SetDefaultRenderStates() { ++m_defaults; g_log[g_logCount++] = 1; }
     void RenderColorFilteredQuad(float x, float y, const C4DVector& colour, float width, float height, CTexture* texture)

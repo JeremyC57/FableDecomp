@@ -21,9 +21,9 @@ static int fails = 0;
 //   intelligent-pointer temporary and the bone-name string (frame 0xc); the creature-flag clear reads ParentThing into a
 //   block-scoped local (keeps the scratch-register rotation); the thing's definition is copied (add-ref, GetSubDef,
 //   release) in an inline helper; the effect sub-def is released by hand at the end (known non-null: no test).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -37,10 +37,10 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -57,7 +57,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -74,12 +74,12 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 }
 #pragma auto_inline(on)
 
-struct CThing;
-struct CTCDParticleEmitter {
+class CThing;
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  UsingComponents[9];          // +0x20
     unsigned char  _pad44[0x5c - 0x44];
@@ -111,7 +111,7 @@ struct CThing {
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;
@@ -136,7 +136,7 @@ struct CModeStandBase {                         // retail sizeof 0x68
 
 namespace NCreatureMode {
 
-struct CModeJackOfBladesScream : CModeStandBase {
+class CModeJackOfBladesScream : public CModeStandBase { public:
     unsigned char            _pad68[0x9c - 0x68];
     CIntelligentPointerThing PEmitter;          // +0x9C
     virtual void OnActivate();

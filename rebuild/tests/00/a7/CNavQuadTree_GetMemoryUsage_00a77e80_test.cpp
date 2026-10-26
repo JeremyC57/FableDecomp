@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for CNavQuadTree::GetMemoryUsage (0x00A77E80): tallies are zeroed, layer-0 nodes add straight into the
 // caller's tallies, layer-1 nodes add through locals, and the total is the sum of every node's return value.
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     long bytes;
     virtual long GetMemoryUsage(long& a, long& b, long& c, long& d) { a += 1; b += 2; c += 3; d += 4; return bytes; }
 };
 template<class T> struct Vec { T* _M_start; T* _M_finish; unsigned long size() const { return _M_finish - _M_start; } T& operator[](unsigned long i) { return _M_start[i]; } };
 struct Layer { Vec<CANavQuadTreeNode*> Nodes; };
-struct CNavQuadTree {
+class CNavQuadTree { public:
     Vec<Layer> NavigationLayers;
     long GetMemoryUsage(long& nodeBytes, long& lineBytes, long& switchableBytes, long& otherBytes)
     {

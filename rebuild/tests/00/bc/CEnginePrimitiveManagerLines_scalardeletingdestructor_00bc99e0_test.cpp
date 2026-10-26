@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerLines {
+class CEnginePrimitiveManagerLines { public:
     void* vftable;
     int destroyed;
 };

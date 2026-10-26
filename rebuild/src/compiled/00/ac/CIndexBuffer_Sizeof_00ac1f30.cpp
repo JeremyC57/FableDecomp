@@ -45,7 +45,7 @@ struct IDescObj {
     IDescVtbl* vptr;
 };
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     int m_pad0;
     IDescObj* m_desc;   // +4
 };

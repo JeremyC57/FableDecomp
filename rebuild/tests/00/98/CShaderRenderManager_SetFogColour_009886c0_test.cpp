@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CRGBFloatColour { float r, g, b, a; };
+class CRGBFloatColour { public: float r, g, b, a; };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad0[0x1bc];
     CRGBFloatColour fog;
     char pad1[0x3d8 - 0x1bc - 16];

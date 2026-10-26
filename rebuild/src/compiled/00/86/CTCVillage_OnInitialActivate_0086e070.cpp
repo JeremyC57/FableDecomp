@@ -8,7 +8,7 @@ struct SomeTarget;
 // __fastcall passes arg1->ecx, arg2->edx, remaining on stack
 extern void __fastcall Callee_86dd20(void* ecxArg, void* edxArg, unsigned char stackArg);
 
-struct CTCVillage {
+class CTCVillage { public:
     void*        field_0;   // +0x00  -> ecx target
     void*        ParentThing;   // +0x04  -> edx arg
     // +0x08 padding

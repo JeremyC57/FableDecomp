@@ -5,7 +5,7 @@
 // propagated (the PDB CVsyncCallbackTimer starts with an IDirect3DDevice9*); the one caller is CAT_ConvoyMember::Main
 // (0x00F0CAA0, @ 0x00F0D1AD), which builds this record on its stack and passes &record+4 to an interface query.
 // Shape: two member constructors, then the three initialisers from one xor register.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                          // 0x0099E4B0
 };

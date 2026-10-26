@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad0[8];
     long count;   // +0x8
     char pad2[8];

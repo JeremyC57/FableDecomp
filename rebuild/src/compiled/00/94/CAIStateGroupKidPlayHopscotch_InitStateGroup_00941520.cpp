@@ -8,13 +8,13 @@
 // duration at +0x58 set to g_framesPerSecond * 60 (one minute of play; the global holds 15), then the hop
 // counter +0x60, the square index +0x64 and the throw flag +0x5c zeroed from one register IN THAT ORDER (the
 // scheduler sinks the duration store below them; the zero-store order is the source order). Both arguments are unused (`ret 8`). No engine header exists for this class; the layout is local.
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 extern long GFGetCurrentFrame();               // 0x0049D870
 extern long g_framesPerSecond;                 // 0x01375550
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

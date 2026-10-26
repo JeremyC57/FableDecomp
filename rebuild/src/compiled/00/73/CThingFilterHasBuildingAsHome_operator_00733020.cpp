@@ -8,13 +8,13 @@
 // Layout (local model): the filter's building pointer at +0.
 // Shape: `return creature.GetHomeBuilding() == m_building;` through a full register (`xor ecx,ecx ; cmp eax,edx ; sete cl ;
 // mov al,cl`), the building loaded after the call (`mov edx,[esi]`).
-struct CThingBuilding;
+class CThingBuilding;
 
-struct CThingAICreature {
+class CThingAICreature { public:
     CThingBuilding* GetHomeBuilding() const;    // 0x00810FC0
 };
 
-struct CThingFilter_HasBuildingAsHome {
+class CThingFilter_HasBuildingAsHome { public:
     const CThingBuilding* m_building;           // +0x00
     bool operator()(const CThingAICreature& creature) const;
 };

@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CDisplayEngine { int val; void EndLetterBox(){ val = 42; } };
+class CDisplayEngine { public: int val; void EndLetterBox(){ val = 42; } };
 static void __fastcall CGameScriptInterface_EndLetterBox(CGameScriptInterface* self)
 {
     self->DisplayEngine->EndLetterBox();

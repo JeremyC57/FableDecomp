@@ -14,12 +14,12 @@
 // rightmost reset, count zeroed; then the header freed). One zero register (edi) serves every test and store.
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
 void __cdecl operator delete(void* block);  // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                         // +0x00
     void  (__fastcall* DeleteFunc)(void* data);   // +0x04
     void* Data;                             // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                   // +0x00
     CCPPointerInfo* Info;                   // +0x04
     ~CCountedPointer()
@@ -64,7 +64,7 @@ struct CBoneLODMap {                        // retail STLport map<CCharString, l
             free(_M_header);
     }
 };
-struct C3DBoundingBox;
+class C3DBoundingBox;
 struct CLODStateBlock {
     CBoneLODMap                     BoneLODs;      // +0x00
     CCountedPointer<C3DBoundingBox> MinXYZRange;   // +0x0c

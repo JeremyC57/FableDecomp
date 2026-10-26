@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long w[9];
     bool test(long bit) { return (w[bit >> 5] & (1UL << (bit & 31))) != 0; }
@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -29,9 +29,9 @@ struct CThing {
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && thing->alive; }
-struct CThingCreatureBase : CThing { bool IsChild() { return false; } };
-struct CPlayer { CThingCreatureBase* creature; CThingCreatureBase* GetControlledCreature() { return creature; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CThingCreatureBase : public CThing { public: bool IsChild() { return false; } };
+class CPlayer { public: CThingCreatureBase* creature; CThingCreatureBase* GetControlledCreature() { return creature; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
 struct CRefCounted {
     long m_count;
     void DecRef() { --m_count; }
@@ -42,7 +42,7 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyCalls; }
 };
-struct CInventoryItemDef : CDefVirtual, CRefCounted {
+class CInventoryItemDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _def[0x40];
     float ActivationTime;
     void ReleaseTemporary()
@@ -64,7 +64,7 @@ struct CDefPointer {
     CInventoryItemDef* operator->() const { return m_p; }
 };
 static CInventoryItemDef* g_defToGive = 0; static long g_slotSeen = -99; static int g_defCalls = 0;
-struct CTCInventory {
+class CTCInventory { public:
     CDefPointer GetQuickAccessItemDef(long slot) { ++g_defCalls; g_slotSeen = slot; CDefPointer p; p.m_p = g_defToGive; if (p.m_p) ++p.m_p->m_count; return p; }
 };
 __forceinline CTCInventory* GetInventory(CThing* thing)
@@ -75,7 +75,7 @@ __forceinline CTCInventory* GetInventory(CThing* thing)
     return inventory;
 }
 namespace NPlayerGui {
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     unsigned char _pad[8];
     CPlayerManager* PlayerManager;
     float GetActivationTimeForButton(long button);

@@ -7,10 +7,10 @@
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/_quarantine/CEngineInternalPrimitiveMeshBase.h"
 #include "engine/C3DMeshInfo.h"
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
-struct C3DBoundingSphere {C3DVector Center;float Radius;C3DVector GetPos()const{return C3DVector(Center.X,Center.Y,Center.Z);}void SetPos(const C3DVector& p){Center=p;}};
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+class C3DBoundingSphere { public:C3DVector Center;float Radius;C3DVector GetPos()const{return C3DVector(Center.X,Center.Y,Center.Z);}void SetPos(const C3DVector& p){Center=p;}};
 struct MeshInfoMethods:C3DMeshInfo {C3DBoundingSphere GetBoundingSphere()const{return *reinterpret_cast<const C3DBoundingSphere*>(BoundingSphere);}};
-struct CMatrix3x4 {C3DVector X,Y,Z,Pos;
+class CMatrix3x4 { public:C3DVector X,Y,Z,Pos;
  __forceinline void Transform(C3DVector& v)const{float x=v.X,y=v.Y,z=v.Z;v.X=X.X*x+Y.X*y+Z.X*z+Pos.X;v.Y=X.Y*x+Y.Y*y+Z.Y*z+Pos.Y;v.Z=X.Z*x+Y.Z*y+Z.Z*z+Pos.Z;}
 };
 struct MeshMethods;
@@ -24,7 +24,7 @@ struct MeshMethods:CEngineInternalPrimitiveMeshBase {
  void CalcInterpolatedObjectTransform(CMatrix3x4& out,float t,bool scale)const{(this->*reinterpret_cast<const PrimitiveSlot*>(__vftable)[33].Transform)(out,t,scale);}
 };
 struct NativeHandle {unsigned int UnusedHandleWord;MeshMethods* Primitive;};
-struct CEngineInternalAttachedPrimitive:CEngineInternalPrimitiveBase {CMatrix3x4 PrimitiveTransform;int ParentType,ChildType;NativeHandle ParentHandle;int ParentGroupIndex;
+class CEngineInternalAttachedPrimitive:public CEngineInternalPrimitiveBase { public:CMatrix3x4 PrimitiveTransform;int ParentType,ChildType;NativeHandle ParentHandle;int ParentGroupIndex;
  bool GetParentWorldSpaceBoundingSphereAnimatedMesh(C3DBoundingSphere&,float);
 };
 #ifdef _MSC_VER

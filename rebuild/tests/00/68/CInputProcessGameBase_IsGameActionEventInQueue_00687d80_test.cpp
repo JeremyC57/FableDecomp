@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static long g_args[3]; static float* g_time = 0;
-struct CPlayer { long m_number; long GetPlayerNumber() { std::strcat(g_seq, "N"); return m_number; } };
-struct CGamePlayerInterface { bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber, float* pTime) { std::strcat(g_seq, "I"); g_args[0] = action; g_args[1] = buttonEventType; g_args[2] = playerNumber; g_time = pTime; return playerNumber == 2; } };
+class CPlayer { public: long m_number; long GetPlayerNumber() { std::strcat(g_seq, "N"); return m_number; } };
+class CGamePlayerInterface { public: bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber, float* pTime) { std::strcat(g_seq, "I"); g_args[0] = action; g_args[1] = buttonEventType; g_args[2] = playerNumber; g_time = pTime; return playerNumber == 2; } };
 struct CInputProcessGameBase { virtual void v00() { } unsigned char _pad04[0x10]; void* World; CPlayer* MyPlayer; void* DefinitionManager; void* Component; CGamePlayerInterface* PGamePlayerInterface;
     bool IsGameActionEventInQueue(long action, long buttonEventType, float* pTime) { return PGamePlayerInterface->IsGameActionEventInQueue(action, buttonEventType, MyPlayer->GetPlayerNumber(), pTime); } };
 int main()

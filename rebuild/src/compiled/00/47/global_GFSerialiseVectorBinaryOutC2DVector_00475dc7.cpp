@@ -8,7 +8,7 @@
 // pointer are pushed on the stack (both callees are __fastcall sinks that take
 // a single stack arg, `this` in ecx).
 
-struct C2DVector {
+class C2DVector { public:
     float x;  // +0x0
     float y;  // +0x4
 };

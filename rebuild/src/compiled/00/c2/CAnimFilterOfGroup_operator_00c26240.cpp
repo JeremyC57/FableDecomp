@@ -6,12 +6,12 @@ struct SubObjectAt360 {
     int Compute(int a);
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     char pad[0x360];
     SubObjectAt360 sub; // at +0x360
 };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     int m0;   // +0
     int m4;   // +4
     int GroupCRC;   // +8

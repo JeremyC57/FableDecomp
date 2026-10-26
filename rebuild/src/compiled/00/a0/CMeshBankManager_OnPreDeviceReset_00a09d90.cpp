@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A09D90, length 48 bytes.
 // Leaf: ?OnPreDeviceReset@CMeshBankManager@@UAEXXZ
 // Callees: CMeshDataBank::FreeDeviceSpecificResources @ 0x00A24000. Shape: `this` in edi, the node in esi, the sentinel re-read for the loop test, the loop head aligned, `ret`.
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void FreeDeviceSpecificResources();            // 0x00A24000
 };
 struct SBankNode_00a09d90 {
@@ -12,7 +12,7 @@ struct SBankNode_00a09d90 {
     CMeshDataBank*      m_pBank;                   // +0x0c
 };
 
-struct CMeshBankManager {
+class CMeshBankManager { public:
     virtual void v000();
     SBankNode_00a09d90* m_pBanks;                  // +0x04: the list sentinel
     virtual void OnPreDeviceReset();

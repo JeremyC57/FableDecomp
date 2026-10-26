@@ -1,6 +1,6 @@
 #include <cstdio>
 #define FAIL { std::printf("005bfcd9_TEST FAIL\n"); return 1; }
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_destroyed = 0, g_assigns = 0;
 struct CInventoryCategoryDef_Retail { long m_refCount; long NumberOfSlots; void Destroy() { ++g_destroyed; } };
 struct CDefPointer {

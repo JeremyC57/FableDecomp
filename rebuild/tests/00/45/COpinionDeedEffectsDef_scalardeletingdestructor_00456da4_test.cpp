@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct COpinionDeedEffectsDef { int f0; };
+class COpinionDeedEffectsDef { public: int f0; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

@@ -11,7 +11,7 @@
 // Shape: the inline find takes the key by reference (LowerBound gets the argument slot itself; the key is re-read
 // after the call) and keeps a hit only for `key >= it->first`; one `mov eax,1` serves the flag test, the pushed
 // true and the byte store; VC duplicates the DecrementScriptCounter tail into both arms.
-struct CScriptThing {                                // vtable 0x01238C8C
+class CScriptThing { public:                                // vtable 0x01238C8C
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -37,7 +37,7 @@ public:
     unsigned long Flags;                             // +0x3C
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };

@@ -17,7 +17,7 @@ public:
 
 enum EObjectAugmentationType { AUG_NONE, AUG_FIRE, AUG_LIGHTNING, AUG_SILVER };
 
-struct CObjectAugmentationSoundSet {
+class CObjectAugmentationSoundSet { public:
     bool          Played;
     CCharString   Sound;
     unsigned int  Handle;

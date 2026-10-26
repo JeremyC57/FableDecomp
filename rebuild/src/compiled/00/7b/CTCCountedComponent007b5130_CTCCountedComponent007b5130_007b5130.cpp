@@ -24,7 +24,7 @@ struct CBuffer_007b4d60 {                       // the +0x14 member: destroyed o
     unsigned char _body[0x10];
     ~CBuffer_007b4d60();                        // 0x007B4D60
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad[8];                      // +4..+0xb
     ~CTCBase();                                 // 0x00686830

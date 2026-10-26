@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessWatchForWillChargeUpThirdPersonModeTermination {
+class CInputProcessWatchForWillChargeUpThirdPersonModeTermination { public:
     void* vftable;
     int destroyed;
 };

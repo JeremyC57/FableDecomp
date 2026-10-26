@@ -16,8 +16,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CDataInputStream {
+class CChunkedFileLoader;
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -46,7 +46,7 @@ struct CDataInputStream {
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DIndexedBoneWeight {
+class C3DIndexedBoneWeight { public:
     unsigned long BoneIndex;               // +0
     unsigned long Weight;                  // +4
     C3DIndexedBoneWeight() {}              // the resize fill value is left uninitialised
@@ -94,18 +94,18 @@ struct CBoneWeightVector {                 // vector<C3DIndexedBoneWeight> (elem
             _M_fill_insert(_M_finish, newSize - size(), x);
     }
 };
-struct CVertexGroupBlock {                 // retail 0x18 bytes
+class CVertexGroupBlock { public:                 // retail 0x18 bytes
     CULongVector Groups;                   // +0x00
     unsigned char GroupToIndexMap[0x0c];   // +0x0c STLport map
     void AddGroup(unsigned long group);    // 0x00AD91F0
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
-struct C3DMeshFileXAnimatedPrimitiveBlockChunk : CChunkedFileSuperChunk {
+class C3DMeshFileXAnimatedPrimitiveBlockChunk : public CChunkedFileSuperChunk { public:
     CVertexGroupBlock GroupBlock;          // +0x2c
     unsigned long BonesPerVertex;          // +0x44
     CULongVector VertexList;               // +0x48

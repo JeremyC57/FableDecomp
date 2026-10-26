@@ -15,7 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector(float x_, float y_) : x(x_), y(y_) {}
 };
@@ -28,23 +28,23 @@ public:
     C2DVector GetAnalogueVector() const;             // 0x00A043A0
 };
 
-struct CInputManager {
+class CInputManager { public:
     bool IsJoystickEventInQueue(long type, long device, CInputEvent* event, long player);  // 0x009F4C60
 };
 
 extern CInputManager* g_pInputManager;               // 0x013B8388
 
-struct CPlayer {
+class CPlayer { public:
     long GetPlayerNumber() const;                    // 0x00487510
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
 
 namespace NInventory {
 
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void* __vftable;                                 // +0x00
     void* ParentThing;                               // +0x04 CTCBase
 

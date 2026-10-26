@@ -17,12 +17,12 @@
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CViewport* PViewport;                                      // +0x34
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void Update(float deltaTime);                      // slot 1 (+4)
     virtual void Render(CViewport* viewport, long a, long b, long c, long d);   // slot 2 (+8)
@@ -68,7 +68,7 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();        // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -97,15 +97,15 @@ struct CTCInventoryBase : CTCBase_Draw {
     void RenderUIBackdropQuad(float alpha);                    // 0x005BC6D6
 };
 namespace NHeroInformationScreens {
-struct CBase {
+class CBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual bool IsActive();                                   // slot 3 (+0x0C)
 };
-struct CManager {
+class CManager { public:
     void Close();                                              // 0x0066E73D (name unconfirmed)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                               // 0x013B8790
@@ -113,7 +113,7 @@ extern CPlayerGui* g_pPlayerGui;                               // 0x013B8790
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);         // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                        // +0x00
     signed char   Player;                                      // +0x04
     unsigned char Data[32];                                    // +0x05
@@ -123,21 +123,21 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-struct CPlayer {
+class CPlayer { public:
     long GetCurrentMode();                                     // 0x00633BE0
     void RemoveMode(long mode);                                // 0x00634190
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer(long index);                            // 0x004498C0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                             // +0x1C
     void AddGameEvent(const CGameEvent& event);                // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 
-struct CTCInventoryMap : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     unsigned char    _pad134[0x140 - 0x134];                   // VisitedRegions (12-byte STLport vector)
     float            AccumFadeTime;                            // +0x140
     unsigned char    _pad144[0x1a4 - 0x144];

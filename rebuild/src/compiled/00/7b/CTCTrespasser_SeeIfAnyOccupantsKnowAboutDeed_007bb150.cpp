@@ -41,10 +41,10 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported);   // 0x00681AE0
 };
-struct CWorld {
+class CWorld { public:
     static unsigned long GetWorldFrame();       // 0x0049D870
 };
 
@@ -55,7 +55,7 @@ struct SOccupantNode {                          // STLport list node
 };
 
 #pragma pack(push, 1)
-struct CTCTrespasser {
+class CTCTrespasser { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04
     unsigned char _pad_0x08[0x4];

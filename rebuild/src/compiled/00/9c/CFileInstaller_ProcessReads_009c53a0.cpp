@@ -13,16 +13,16 @@ extern "C" __declspec(dllimport) int __stdcall CloseHandle(HANDLE h);
 inline void* operator new(unsigned int, void* where) { return where; }
 
 struct CCountedItem { };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;
     void (CCountedItem::*m_pfnDestroy)();
     CCountedItem* m_pItem;
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;                // 0x0099B2C0
 };
@@ -45,7 +45,7 @@ struct CFileInfoPointer {                                   // CCountedPointer<c
         Info = 0;
     }
 };
-struct CCompressorZlib {
+class CCompressorZlib { public:
     unsigned char _body[0x58];
     ~CCompressorZlib();                                     // 0x00A3ACC0
 };
@@ -119,7 +119,7 @@ struct CCharStringSet {
     struct CInsertResult { void* node; bool inserted; };
     CInsertResult* insert(CInsertResult* result, const CCharString& key);   // 0x004AC380
 };
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char             _pad[0x38];
     CList<CFileInfoPointer>   FilesToCopy;                  // +0x38
     CList<CFileInfoPointer>   FilesToFinish;                // +0x3c

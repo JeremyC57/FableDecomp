@@ -45,7 +45,7 @@ template <class It, class T> inline It find(It first, It last, const T& value)
     return first;
 }
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char  _pad00[0x208];
     bool           Local;                               // +0x208
     unsigned char  _pad209[0x210 - 0x209];

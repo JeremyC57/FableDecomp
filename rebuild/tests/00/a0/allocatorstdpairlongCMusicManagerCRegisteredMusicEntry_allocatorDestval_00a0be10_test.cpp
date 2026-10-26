@@ -1,6 +1,6 @@
 #include <cstdio>
 // Spy for C3DVector::Normalise (0x00A14440): records which vectors were normalised, in order.
-struct C3DVector { float X, Y, Z; C3DVector& Normalise(); };
+class C3DVector { public: float X, Y, Z; C3DVector& Normalise(); };
 static int g_calls = 0; static C3DVector* g_seen[2];
 C3DVector& C3DVector::Normalise(){ if (g_calls < 2) g_seen[g_calls] = this; ++g_calls; return *this; }
 struct S { C3DVector a; C3DVector b; void M(); };

@@ -17,8 +17,8 @@ struct CRetailMapPrerequisites {
     ~CRetailMapPrerequisites() { Log(2); }
 };
 struct CResource_Calls { ~CResource_Calls() { Log(3); } };
-struct CDefPointeeBase : CResource_Calls { ~CDefPointeeBase() { Log(4); } };
-struct CQuestCardDef : CDefPointeeBase {
+class CDefPointeeBase : public CResource_Calls { public: ~CDefPointeeBase() { Log(4); } };
+class CQuestCardDef : public CDefPointeeBase { public:
     CRetailVectorLong       RewardObjects;
     bool                    IsCore, IsVignette, IsExclusive, MakeVignetteRouteAppearOnMinimap;
     CRetailMapPrerequisites Prerequisites;

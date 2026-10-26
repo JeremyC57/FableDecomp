@@ -13,16 +13,16 @@ struct SRenderSettings {
 };
 extern SRenderSettings* g_pRenderSettings;         // 0x01436E20
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
-struct CEngineSceneGridPos {
+class CEngineSceneGridPos { public:
     signed char   Level;
     unsigned char X;
     unsigned char Y;
     CEngineSceneGridPos() : Level(-1) { }
 };
 
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
     CEngineFadeDistance() { }

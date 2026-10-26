@@ -13,8 +13,8 @@
 // CompareInXYPlane byte from a hoisted bl, Hero from a hoisted ebp), which needs C3DVector's user copy constructor:
 // with an all-POD comparator the implicit copy is a `rep movsd` of 13 dwords (55 v 130 bytes).
 class CThing;
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CVectorCompare_BestForTargeting {        // Ego_r.pdb, 44 bytes
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CVectorCompare_BestForTargeting { public:        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                        // +0x00
     C3DVector PreferredLine;                    // +0x0c
     float     AngleCompare;                     // +0x18
@@ -23,7 +23,7 @@ struct CVectorCompare_BestForTargeting {        // Ego_r.pdb, 44 bytes
     float     OverrideShortDistanceFalloff;     // +0x24
     bool      CompareInXYPlane;                 // +0x28
 };
-struct CThingCompare_BestForTargeting2 {        // Ego_r.pdb, 52 bytes
+class CThingCompare_BestForTargeting2 { public:        // Ego_r.pdb, 52 bytes
     CThing* Hero;                               // +0x00
     CVectorCompare_BestForTargeting VectorCompare;  // +0x04
     float EnemyPreferenceFactor;                // +0x30

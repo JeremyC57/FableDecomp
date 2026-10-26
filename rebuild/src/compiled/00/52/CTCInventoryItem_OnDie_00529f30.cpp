@@ -9,8 +9,8 @@ struct CTCInventoryItemBase
     void OnDie();                  // 0x0099eae0 (base OnDie, thiscall)
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase
-{
+class CTCInventoryItem : public CTCInventoryItemBase
+{ public:
     void* m_pField4;               // +4
     void OnDie();
 };

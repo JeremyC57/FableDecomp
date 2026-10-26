@@ -8,7 +8,7 @@ static unsigned long Calc(unsigned long seed, const void* data, unsigned long le
     for (unsigned long i = 0; i < length; ++i) h = h * 31 + p[i];
     return h;
 }
-struct CCharStringData { char* PData; unsigned long StringLength; };
+class CCharStringData { public: char* PData; unsigned long StringLength; };
 static int g_strings = 0;
 class CCharString {
 public:
@@ -28,7 +28,7 @@ public:
 };
 static int g_destroyed = 0;
 namespace NGameText {
-struct CGroupEntry {
+class CGroupEntry { public:
     long m_count; long textId;
     virtual ~CGroupEntry() {}
     virtual void Destroy() { ++g_destroyed; }
@@ -36,7 +36,7 @@ struct CGroupEntry {
     void ReleaseTemporary() { --m_count; if (m_count == 0) Destroy(); }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     CIVCountedPointer(T* d) : Data(d) { if (Data) ++Data->m_count; }
     CIVCountedPointer(const CIVCountedPointer& o) : Data(o.Data) { if (Data) ++Data->m_count; }
@@ -51,16 +51,16 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool) const { return CIVCountedPointer<CGroupEntry>(tag == 7 ? entry : 0); }
 };
 }
-struct CEngine { NGameText::CDataBank* PGameTextDataBank; };
+class CEngine { public: NGameText::CDataBank* PGameTextDataBank; };
 static CEngine* g_pEngine;
-namespace NPlayerGui { struct CDrawQuestInfo { CWideString Name; CWideString Text; CDrawQuestInfo() : Name(0), Text(0) {} }; }
-template <class T> struct CCountedPointer { T* Data; void* Info; };
-struct CPlayerGui {
+namespace NPlayerGui { class CDrawQuestInfo { public: CWideString Name; CWideString Text; CDrawQuestInfo() : Name(0), Text(0) {} }; }
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
+class CPlayerGui { public:
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;
     NPlayerGui::CDrawQuestInfo& GetQuestInfo() { return *PDrawQuestInfo.Data; }
 };
 static CPlayerGui* g_pPlayerGui;
-struct CGameScriptInterface { void SetQuestInfoName(const char* symbol) const; };
+class CGameScriptInterface { public: void SetQuestInfoName(const char* symbol) const; };
 void CGameScriptInterface::SetQuestInfoName(const char* symbol) const
 {
     NGameText::CDataBank* bank = g_pEngine->PGameTextDataBank;

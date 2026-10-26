@@ -10,12 +10,12 @@
 // argument arrives by reference and its dword is pushed for the list constructor (`mov edx,[ecx]`).
 #include "engine/CConsoleCommandBase.h"
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                      // 0x0099EC30
 };
 
-struct CConsoleInputBase {                                      // vtable 0x0122E5B0
+class CConsoleInputBase { public:                                      // vtable 0x0122E5B0
     virtual void v00();
     CCharString Name;                                           // +0x04
     CConsoleInputBase(const CCharString& name) : Name(name) { }

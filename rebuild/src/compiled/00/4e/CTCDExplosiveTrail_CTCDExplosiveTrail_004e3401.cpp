@@ -15,12 +15,12 @@
 // trailing zero stores sharing ebx.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CExplosiveTrailDef;
+class CThing;
+class CExplosiveTrailDef;
 struct STrapNode;
 struct CThingPointer;
 
-struct CTCDriverBase {
+class CTCDriverBase { public:
     CTCDriverBase(CThing* owner);                  // 0x00771200
     virtual ~CTCDriverBase();
     CThing* m_pThing;                              // +0x04
@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -60,7 +60,7 @@ struct CExplosiveTrailDefPointer {                 // CDefPointer<CExplosiveTrai
     CExplosiveTrailDefPointer() : m_pDef(0) { }
 };
 
-struct CTCDExplosiveTrail : CTCDriverBase {
+class CTCDExplosiveTrail : public CTCDriverBase { public:
     CIntelligentPointer<const CThing> PTarget;          // +0x0c
     long                              Timer;            // +0x14
     bool                              Terminated;       // +0x18

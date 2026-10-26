@@ -1,7 +1,7 @@
 // Behaviour test for 0x008F7E70 NCombatActionHelpers::CreateEffect (helper overload): spawn at the creature, attach if named.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct Thing;
 struct Emitter { int updates, attaches; long attachType; const char* helper; Thing* attachedTo; };

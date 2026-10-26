@@ -65,7 +65,7 @@ struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
     bool GetDef_006f0e10(const CCharString& name, CDefPointer& out);
 };

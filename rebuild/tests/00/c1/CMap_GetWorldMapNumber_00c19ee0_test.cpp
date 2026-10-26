@@ -8,7 +8,7 @@ struct P;
 struct PV { long* (__fastcall *m0)(P* self); };
 struct P { PV* vt; long val; };
 
-struct CMap { void* pad0; A* a; };
+class CMap { public: void* pad0; A* a; };
 
 long __fastcall GetWorldMapNumber(CMap* self, void* edx, P* p)
 {

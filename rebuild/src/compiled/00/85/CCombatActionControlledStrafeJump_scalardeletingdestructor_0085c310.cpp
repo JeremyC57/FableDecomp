@@ -1,4 +1,4 @@
-struct CCombatAction_ControlledStrafeJump {
+class CCombatAction_ControlledStrafeJump { public:
     void* vftable;
 };
 

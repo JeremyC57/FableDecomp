@@ -9,7 +9,7 @@
 // locals first -- a plain `X += o.X` body commutes the X term to `fld sum ; fadd key`).
 // Layout: C3DAnimationStats base (Ego_r.pdb): Duration +0x0C, LoopFlag +0x10, MovementFlag +0x11,
 // MovementVector +0x12 (2-byte packed); retail C3DAnimation2 MovementTrack +0x40 (PDB +0x44, landed 0x00A4E100).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -18,23 +18,23 @@ struct C3DVector {
     void operator+=(const C3DVector& o) { float x = o.X; float y = o.Y; float z = o.Z; X += x; Y += y; Z += z; }
 };
 
-struct C3DKeyframe {
+class C3DKeyframe { public:
     float Rotation[4];                     // +0 CQuaternion
     C3DVector Position;                    // +0x10 C4DVector X, Y, Z
     float PositionW;                       // +0x1c
     float Scaling[4];                      // +0x20 C4DVector
 };
 
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     void GetKeyframeInterpolate(C3DKeyframe* keyframe, float time);   // 0x00A4DEA0
 };
 
-struct C3DAnimationSequence {
+class C3DAnimationSequence { public:
     C3DAnimationSequenceData* Data;        // +0
 };
 
 #pragma pack(push, 2)
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     virtual ~C3DAnimationStats();
     long _04;
     long AnimType;                         // +0x08 EAnimationType
@@ -46,7 +46,7 @@ struct C3DAnimationStats {
 };
 #pragma pack(pop)
 
-struct C3DAnimation2 : C3DAnimationStats {
+class C3DAnimation2 : public C3DAnimationStats { public:
     unsigned char _2c[0x14];               // CMovableResource vptr, Allocator, MemoryPool, MemoryHandle
     C3DAnimationSequence* MovementTrack;   // +0x40 CCountedPointer<C3DAnimationSequence>::Data
     C3DVector GetMovementAtTime(float time) const;

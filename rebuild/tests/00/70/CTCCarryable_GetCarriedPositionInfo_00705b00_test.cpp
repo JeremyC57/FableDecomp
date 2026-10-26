@@ -1,20 +1,20 @@
 // Behaviour test for 00705b00 (CTCCarryable::GetCarriedPositionInfo): the pose query fills both start values (with forceUpdate false and the time), the end values copy them, and its result is returned.
 #include <cstdio>
 
-struct C3DVector { float X; float Y; float Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X; float Y; float Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct C3DPositionInterpolator {
+class C3DPositionInterpolator { public:
     C3DVector StartPosition;
     C3DVector EndPosition;
 };
 
-struct C3DOrientationInterpolator {
+class C3DOrientationInterpolator { public:
     CRightHandedSet StartOrientation;
     CRightHandedSet EndOrientation;
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     bool  m_result;
     bool  m_lastForce;
     float m_lastTime;

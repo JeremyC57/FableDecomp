@@ -1,7 +1,7 @@
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 #include <cstdio>
 
-struct CThingAICreature;
+class CThingAICreature;
 
 
 extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);

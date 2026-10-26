@@ -9,8 +9,8 @@
 // (base ctor, vtable 0x01238C6C, SetPItem(other.GetPItem())) with the member address held in ebx; the two
 // vectors and FlipFacing follow word by word (separate scalar members). Retail offsets = PDB header
 // offsets - 0x18 (the retail CCombatActionBase is 0x114 bytes), so a local model is used.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -25,13 +25,13 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentP
     CIntelligentPointer_CThing(const CIntelligentPointer_CThing& other) { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);  // 0x0062F3B0
 };
 
-struct CCombatAction_GenericResponseToExplosion : CCombatActionBase {   // vtable 0x0125AEDC
+class CCombatAction_GenericResponseToExplosion : public CCombatActionBase { public:   // vtable 0x0125AEDC
     CIntelligentPointer_CThing PExplosion;  // +0x114
     float PointOfHit_X;                     // +0x11c
     float PointOfHit_Y;                     // +0x120

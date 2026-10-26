@@ -11,7 +11,7 @@
 // when there is room, else the out-of-line insert with the empty tag homed in the dead argument slot).
 #include <new>
 
-struct C3DVertexBlend2 {
+class C3DVertexBlend2 { public:
     unsigned long VertexIndex;              // +0
     float BlendValue;                       // +4
 };
@@ -35,7 +35,7 @@ struct _Vector_base {
 };
 
 template <class T>
-struct CArray : _Vector_base<T> {           // retail CArray = STLport vector: begin/end/capacity
+class CArray : public _Vector_base<T> { public:           // retail CArray = STLport vector: begin/end/capacity
     CArray() : _Vector_base<T>(allocator<T>()) {}
     void InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00ABEB40
     void push_back(const T& value)
@@ -49,13 +49,13 @@ struct CArray : _Vector_base<T> {           // retail CArray = STLport vector: b
     }
 };
 
-struct C3DMeshFileGroupChunk {
+class C3DMeshFileGroupChunk { public:
     long GetBoneIndex() const;                          // 0x00AB9F60
     unsigned long GetVertexCount() const;               // 0x00ABA350
     const C3DVertexBlend2* GetList() const;             // 0x00ABC370
 };
 
-struct C3DGroup2 {
+class C3DGroup2 { public:
     long BoneIndex;                                     // +0x00
     CArray<C3DVertexBlend2> VertexBlends;               // +0x04
     C3DGroup2(const C3DMeshFileGroupChunk& chunk);

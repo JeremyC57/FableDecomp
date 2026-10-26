@@ -15,7 +15,7 @@ struct CBase_00430370 {
     CBase_00430370();                           // 0x00430370
 };
 
-struct CTrollBattleDef : CBase_00430370 {
+class CTrollBattleDef : public CBase_00430370 { public:
     virtual void v00();
     CTrollBattleDef() : CBase_00430370() { }
 };

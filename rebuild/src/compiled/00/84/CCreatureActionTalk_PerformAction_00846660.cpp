@@ -7,14 +7,14 @@
 // Shape: the target is tested for presence and its class byte (+0x10 == 1), then fetched into a creature local whose own
 // null test precedes the checked out-parameter lookup; the `new` null test selects 0 for AddEvent.
 // Layout: owner CIntelligentPointer +8, target +0xa8.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_thingClass;                 // +0x10 (1: AI creature)
     unsigned char _pad11[0x20 - 0x11];
@@ -34,7 +34,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     void SetHasInformation(bool a, bool b, bool c, bool d);   // 0x00830EB0
 };
 
@@ -49,7 +49,7 @@ struct CEventTalkedTo : CEventBase {
     unsigned char _pad[0x10];
     CEventTalkedTo(CThing* talker);             // 0x0084AF90
 };
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
 

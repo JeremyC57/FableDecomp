@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerWeatherMask {
+class CEnginePrimitiveManagerWeatherMask { public:
     void* vftable;
     int destroyed;
 };

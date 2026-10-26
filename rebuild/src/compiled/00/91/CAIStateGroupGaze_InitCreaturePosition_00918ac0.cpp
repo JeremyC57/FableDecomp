@@ -9,7 +9,7 @@
 // the ordered `<`); the marker is a named local taken before the creature (also a named local, esi) so the
 // creature load precedes the `push 1.0f` and the GetPosition call; the placement's bool is returned directly.
 // Model: local (engine/CAIStateGroup_Gaze.h flattens the base).
-struct CThingGameObject;
+class CThingGameObject;
 
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
 
@@ -22,22 +22,22 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() const;                   // 0x004C73D0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0 (CThingCreatureBase)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

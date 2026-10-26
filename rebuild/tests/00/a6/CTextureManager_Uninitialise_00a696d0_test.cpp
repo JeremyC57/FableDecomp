@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTextureManager {
+class CTextureManager { public:
     void* __vftable; bool Initialised; unsigned long PoolCount; unsigned long PreallocSizes[16];
     unsigned char PreallocPools[16][0x54]; unsigned long FailedAllocations[16]; long BufferSize; void* TextureBuffer;
     void Uninitialise() { Initialised = false; if (TextureBuffer) TextureBuffer = 0; }

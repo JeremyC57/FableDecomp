@@ -7,7 +7,7 @@
 //   tree insert of a map keyed by an unsigned 64-bit id (UID) whose 0x10-byte value is {key, CIntelligentPointer}.
 // Shape: the landed CCombatantMap::Insert (0x006F4D00) with the node creation out of line: condition
 //   `y == header || (w == 0 && (x != 0 || key(v) < key(y)))` with the unsigned 64-bit compare (high `jb/ja`, low `jb`).
-struct CBaseObject;
+class CBaseObject;
 
 struct CIntelligentPointerThing {                         // CIntelligentPointer<CThing>: vptr + item
     void*        m_vtable;

@@ -15,14 +15,14 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                         // slot 0
     virtual void Delete();                          // slot 1 (+0x04)
     long m_refCount;                                // +0x04
     void AddReference() { ++m_refCount; }
     void ReleaseReference() { if (--m_refCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(T* p) : Object(p) { if (Object) Object->AddReference(); }
@@ -31,11 +31,11 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Object; }
     bool IsValid() const { return Object != 0; }
 };
-struct CShopDef : CDefPointeeBase {
+class CShopDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xa0 - 0x08];
     float MinPriceMultiplierForItemToBeWanted;      // +0xa0 (PDB +0xb0)
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CShopDef>* out);     // 0x005130A0
 };
 void* FindDef_CDefClassBase_GetSubDef_1();
@@ -114,7 +114,7 @@ CLongVector::CLongVector(const CLongVector& other) : CLongVectorBase(CLongAlloca
 }
 #pragma auto_inline(on)
 
-struct CShopItem {
+class CShopItem { public:
     float Quantity;                                 // +0x00
     float PriceMultiplier;                          // +0x04
 };
@@ -147,12 +147,12 @@ struct CStockMap {                                  // map<long, CShopItem> (ret
     SStockNode* header;
     unsigned long _pad[2];
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                            // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return CDefPointer<CDefClassBase>(PDef); }
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x34 - 0x08];

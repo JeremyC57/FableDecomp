@@ -9,7 +9,7 @@
 // ComponentType; CCharString GUIName }, so the 16-byte pair is key +0, AllocFunc +4, ComponentType +8, GUIName +0xC.
 // The implicit operator= assigns the key string, moves the two plain words and assigns GUIName (addressed through
 // the strength-reduced src+0xC/dst+0xC pointers); the count is decremented in the dead `result` argument slot.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -17,7 +17,7 @@ struct CCharString {
 namespace NParticleEngine {
 class CPSCBase;
 enum EPSCType { PSC_TYPE_NONE = 0 };
-struct CRegisteredPSCInfo {                      // Ego_r.pdb: 12 bytes
+class CRegisteredPSCInfo { public:                      // Ego_r.pdb: 12 bytes
     CPSCBase* (__cdecl* AllocFunc)();            // +0x00
     EPSCType    ComponentType;                   // +0x04
     CCharString GUIName;                         // +0x08

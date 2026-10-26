@@ -1,9 +1,9 @@
 // behaviour test for CThingFilter_NoiseCanBeHeardFromPosition::operator() (0x006A8240): TC gate, min(radius, hearing range), squared compare
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} float GetLengthSquared() const { return X * X + Y * Y + Z * Z; } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} float GetLengthSquared() const { return X * X + Y * Y + Z * Z; } };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 template<class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
 struct CTCNoiseMaker_37 { float NoiseRadius; };
@@ -15,7 +15,7 @@ class CThing { public:
     template<class T> T* GetTC(long interfaceType) const
     { long type = interfaceType; const CInterfaceMap* map = &Components; CInterfaceMap::SEntry* it = map->LowerBound(&type);
       if (it == map->last || interfaceType < it->type) it = map->last; return (T*)it->component; } };
-struct CThingFilter_NoiseCanBeHeardFromPosition {
+class CThingFilter_NoiseCanBeHeardFromPosition { public:
     C3DVector Position; float ListenersHearingRange;
     CThingFilter_NoiseCanBeHeardFromPosition() : Position(0, 0, 0), ListenersHearingRange(0) {}
     bool operator()(CThing* thing) const

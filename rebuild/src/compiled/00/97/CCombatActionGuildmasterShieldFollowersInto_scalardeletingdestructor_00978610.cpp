@@ -1,4 +1,4 @@
-struct CCombatAction_Guildmaster_ShieldFollowersInto {
+class CCombatAction_Guildmaster_ShieldFollowersInto { public:
     void* vftable;
 };
 

@@ -7,13 +7,13 @@
 // member-wise user copy constructor (wave 24o). `fld [m] ; fmul [v]` is `v * m` (the right operand is loaded first). The term order
 // (the Y product first in every row, then X/Z) only reproduces statement by statement (`x = a; x += b; x += c;`): a single
 // three-term expression is re-associated by VC7.1 into one canonical order whatever the source order.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;

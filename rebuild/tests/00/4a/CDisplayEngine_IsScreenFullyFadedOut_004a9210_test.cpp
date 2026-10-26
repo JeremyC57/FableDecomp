@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     char pad_bc[0xbc];
     unsigned char fadeActive;   // +0xbc
     char pad_c8[0xc8 - 0xbc - 1];

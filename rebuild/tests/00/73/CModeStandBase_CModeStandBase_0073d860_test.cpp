@@ -32,7 +32,7 @@ struct CCountedPointer {
     }
 };
 static int g_strings;
-struct CCharString { int id; ~CCharString() { ++g_strings; } };
+class CCharString { public: int id; ~CCharString() { ++g_strings; } };
 struct CModeBase { CCharString WeaponGroup; };
 struct CModeStandBase : CModeBase {
     CCharString PoseAnimName;

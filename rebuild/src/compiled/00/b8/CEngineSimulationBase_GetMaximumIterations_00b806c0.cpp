@@ -14,7 +14,7 @@ struct CGlobalObject {
 
 extern CGlobalObject* g_object_01436e68;    // 0x01436E68
 
-struct CEngineSimulationBase {
+class CEngineSimulationBase { public:
     void* GetMaximumIterations();
 };
 

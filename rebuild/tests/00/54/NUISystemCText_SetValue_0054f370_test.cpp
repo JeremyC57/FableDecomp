@@ -9,7 +9,7 @@ unsigned long Calc(unsigned long seed, const void* data, unsigned long length)
         seed = seed * 31 + p[i];
     return seed;
 }
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
 };
@@ -35,11 +35,11 @@ public:
     unsigned long GetTagFromCRC(unsigned long crc) const { return crc ^ Salt; }
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     NGameText::CDataBank* PGameTextDataBank;
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     NGameText::CDataBank* PGameTextDataBank;
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };

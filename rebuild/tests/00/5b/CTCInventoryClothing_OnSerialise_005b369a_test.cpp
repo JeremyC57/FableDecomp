@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     bool saving; bool stored; bool loadedValue; int baseCalls; char lastName[16];
     bool IsSaving() { return saving; }
     void Transfer(const char* name, bool& value, const bool& defaultValue) { std::strcpy(lastName, name); stored = value; (void)defaultValue; }

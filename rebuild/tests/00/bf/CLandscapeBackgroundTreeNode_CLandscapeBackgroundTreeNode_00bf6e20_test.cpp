@@ -1,15 +1,15 @@
 // Behaviour test for CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode @ 0x00BF6E20 (copy of the model).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct C3DBoundingSphere {
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DBoundingSphere { public:
     C3DVector Center; float Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) {}
     void Set(const C3DVector& c, float r) { Center = c; Radius = r; }
 };
 struct CLODLoadInfo { long FileBlockPos, FileBlockSize, OffsetIntoFileBlock; bool Loaded; CLODLoadInfo() : FileBlockPos(0), FileBlockSize(0), OffsetIntoFileBlock(0), Loaded(false) {} };
 struct CLandscapeBackgroundNodeBase { void* m_04; void* m_08; CLandscapeBackgroundNodeBase() : m_04(0), m_08(0) {} };
-struct CLandscapeBackgroundTreeNode : CLandscapeBackgroundNodeBase {
+class CLandscapeBackgroundTreeNode : public CLandscapeBackgroundNodeBase { public:
     CLODLoadInfo LODLoadInfo[8]; long FileBlockPos, FileBlockSize, OffsetIntoFileBlock; void* AsyncLoadTask;
     CLandscapeBackgroundTreeNode* Parent; void* SubNode; void* Map; C3DBoundingSphere CameraUpdateThreshold;
     long OcclusionTestHandle, CreationFlags; unsigned short MapX, MapY, Width, Height;

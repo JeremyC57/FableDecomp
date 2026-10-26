@@ -3,8 +3,8 @@
 // a creature-mode manager, remember the first point and add a CModeDragonFlying (StartPos, speed 1.0, PEndAction); then the
 // base FinishAction
 // Leaf: ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -19,7 +19,7 @@ struct CPhysicsBody {                                 // the thing's physics bod
     VF(32) VF(33) VF(34) VF(35)
     virtual void SetFlying(bool flying);              // slot 36 (+0x90)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -45,9 +45,9 @@ struct CThing {
 struct CTC4D {                                        // interface 0x4D on the hero
     void RemoveThing(CThing* thing);                  // 0x00770F20
 };
-struct CPlayer { CThing* GetHeroCreature(); };        // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };  // 0x00449970
-struct CMainGameComponent {
+class CPlayer { public: CThing* GetHeroCreature(); };        // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };  // 0x00449970
+class CMainGameComponent { public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1c
 };
@@ -67,7 +67,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCountedActionPointer {                        // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* m_pObject;
     SCountBlock* m_pCount;
@@ -91,7 +91,7 @@ struct CModeDragonFlying : CModeBase {
     CModeDragonFlying(CThing* creature, const C3DVectorVector& path, const C3DVector& pos, float speed,
                       CCountedActionPointer action);  // 0x008E1150
 };
-struct CTCCreatureModeManager {                       // interface 0x31
+class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
 
@@ -100,7 +100,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -108,7 +108,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void FinishAction();                              // 0x00859A20
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_DragonTakeOffIntoFlying : CCombatActionBase {
+class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     C3DVector             Dest;                       // +0x114 (PDB +0x12C)
     C3DVector             StartPos;                   // +0x120
     C3DVector             PreviousPoint;              // +0x12C

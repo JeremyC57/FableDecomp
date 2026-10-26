@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CScriptThing { int id; int* refs; CScriptThing(int i, int* r) : id(i), refs(r) { } CScriptThing(const CScriptThing& o) : id(o.id), refs(o.refs) { ++*refs; } };
+class CScriptThing { public: int id; int* refs; CScriptThing(int i, int* r) : id(i), refs(r) { } CScriptThing(const CScriptThing& o) : id(o.id), refs(o.refs) { ++*refs; } };
 static char g_log[512];
 static bool g_badThing = false;
-struct CGame {
+class CGame { public:
     void Log(const char* f, const CScriptThing& t, int n, bool a, bool b, bool c)
     {
         if (t.id != 77) g_badThing = true;

@@ -8,8 +8,8 @@
 // is rejected: the vtable stored is CCreatureAction_BriarRoseConcentrateInto's (rtti-vtables.tsv).
 // The retail layout is byte-packed (bool members followed by unaligned dwords/vectors: +0x115, +0x125...), as the
 // PDB-derived engine headers also declare (#pragma pack(push, 1)); the pragma here reproduces that real layout.
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThingCreatureBase;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -26,14 +26,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_BriarRoseConcentrateInto : CCombatActionBase {   // vtable 0x01287904; retail sizeof 0x11d
+class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { public:   // vtable 0x01287904; retail sizeof 0x11d
     unsigned char       Imposter;           // +0x114 (engine header: bool at PDB +0x12c)
     CIntelligentPointer PTarget;            // +0x115 CIntelligentPointer<CThing> (byte-packed after the bool)
     virtual void v00();

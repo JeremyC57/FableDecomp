@@ -6,7 +6,7 @@ namespace QuadricOptimiserInternals {
 struct C3DVector {
     float X, Y, Z;
 };
-struct CSubContraction {
+class CSubContraction { public:
     unsigned long Index1;
     unsigned long Index2;
 };
@@ -18,7 +18,7 @@ template<class T> struct CArray {
     T* _SweepBegin1() const { return m_pData; }
     T& operator[](unsigned long index) { return *(_SweepBegin1() + index); }
 };
-struct CVertexPairContraction {
+class CVertexPairContraction { public:
     bool                     Exists;
     bool                     Unsplit;
     CArray<CSubContraction>  SubContractions;

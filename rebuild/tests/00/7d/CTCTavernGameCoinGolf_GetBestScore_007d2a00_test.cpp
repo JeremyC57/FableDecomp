@@ -2,13 +2,13 @@
 #include <cstring>
 // Behaviour test for CTCTavernGameCoinGolf::GetBestScore (0x007D2A00): the body of src/ over stand-ins -- a fixed-buffer
 // wide string, the def's best-score text id, the table's def name and the hero's two coin-golf best scores.
-struct CWideString {
+class CWideString { public:
     char text[64];
     CWideString() { text[0] = 0; }
     CWideString(const char* t) { strcpy(text, t); }
     const CWideString& operator+=(const CWideString& other) { strcat(text, other.text); return *this; }
 };
-struct CCharString {
+class CCharString { public:
     char text[32];
     CWideString ToWideString() const { return CWideString(text); }
     static CCharString FormatDouble(long digits, double value)
@@ -18,16 +18,16 @@ struct CCharString {
         return s;
     }
 };
-struct CDefString {
+class CDefString { public:
     const char* name;
     bool operator==(const char* t) const { return strcmp(name, t) == 0; }
 };
-struct CThing {
+class CThing { public:
     const char* defName;
     CDefString GetDefName() const { CDefString d; d.name = defName; return d; }
 };
 static int g_releases = 0;
-struct CTavernGameDef {
+class CTavernGameDef { public:
     long m_count;
     unsigned long BestScore;
     void ReleaseTemporary() { --m_count; ++g_releases; }
@@ -39,19 +39,19 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     float BestScoreCoinGolfOakVale;
     float BestScoreCoinGolfSnowSpire;
 };
 static CTCHeroStats g_stats;
 static unsigned long g_textId = 0;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     CThing* ParentThing;
     void GetTavernGameDef(CDefPointer* out) { out->Object = &g_def; ++g_def.m_count; }
     void GetHeroStats(CTCHeroStats** stats) { *stats = &g_stats; }
     CWideString GetText(unsigned long id) { g_textId = id; return CWideString("Best: "); }
 };
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     CWideString GetBestScore();
 };
 

@@ -10,7 +10,7 @@
 // Link-time __fastcall (/Gr algorithm TU): first in ecx, hole in edx, then top, the state pointer
 // and the empty comparator (4 + 4 + 4 = 0xc).
 // Shape: SGI/STLport `__push_heap`; the drop is tail-duplicated into both exits.
-struct CANavQuadTreeNode;
+class CANavQuadTreeNode;
 
 struct CAStarState {
     CAStarState* ParentState;          // +0x0
@@ -21,7 +21,7 @@ struct CAStarState {
     bool OnClosedList;                 // +0x11
 };
 
-struct CAStarStateTotalGreaterThan {
+class CAStarStateTotalGreaterThan { public:
     char m_tag;
     bool operator()(const CAStarState* a, const CAStarState* b) const { return a->TotalCost > b->TotalCost; }
 };

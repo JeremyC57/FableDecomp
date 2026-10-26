@@ -10,13 +10,13 @@
 //   +0x48, Direction +0x54, CRGBFloatColour Colour +0x60, Radius +0x70, SpotRadius +0x74, ConeRadius +0x78 (retail offsets
 //   equal the PDB). The 1/255 factor is the shared float constant at 0x01231724.
 //   Local model: no engine/ header exists for these primitive classes.
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char Blue, Green, Red, Alpha; };
-struct CRGBFloatColour {
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char Blue, Green, Red, Alpha; };
+class CRGBFloatColour { public:
     float R, G, B, A;
     void Set(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
 };
-struct CEnginePrimitive { long Type; long InterpolationSet; unsigned long ThemeChannelDesc; };
+class CEnginePrimitive { public: long Type; long InterpolationSet; unsigned long ThemeChannelDesc; };
 struct CEnginePrimitiveShadowedSpotLight : CEnginePrimitive {
     C3DVector WorldPos;                                 // +0x0c
     C3DVector Direction;                                // +0x18
@@ -27,7 +27,7 @@ struct CEnginePrimitiveShadowedSpotLight : CEnginePrimitive {
     unsigned long LightingChannelMask;                  // +0x34
 };
 extern const float g_OneOver255;                        // 0x01231724 = 1/255
-struct CEngineInternalPrimitiveShadowedSpotLight {
+class CEngineInternalPrimitiveShadowedSpotLight { public:
     unsigned char _base00[0x0c];
     unsigned long UpdateParam;                          // +0x0c (descriptive)
     unsigned char _base10[0x38];

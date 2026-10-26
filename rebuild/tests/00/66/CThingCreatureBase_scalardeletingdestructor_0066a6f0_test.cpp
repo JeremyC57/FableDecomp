@@ -4,7 +4,7 @@
 static int g_dtorCalls = 0;
 static int g_freeCalls = 0;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     int marker;
     void nonvirt_dtor();
     void free_this();

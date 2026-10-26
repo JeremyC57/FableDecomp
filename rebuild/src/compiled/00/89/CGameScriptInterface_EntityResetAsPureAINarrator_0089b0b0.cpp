@@ -8,7 +8,7 @@
 // Layout: CThing as the matched 0x0089D8B0 / 0x0089D7C0 rows plus the type byte +0x10 (the landed 0x0089D830 model:
 // 1 = a creature). The component class and the +0x34 member name are not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_StrikeResponseScorpionKing {
+class CCombatAction_StrikeResponseScorpionKing { public:
     void* vftable;
     int destroyed;
 };

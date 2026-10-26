@@ -3,13 +3,13 @@
 // CPersistContext::Transfer(name, CCharString&): the default is a copy of a default-constructed CCharString (helper with a named
 // return); the temporary dies before the call, the default after it
 static long g_ctor, g_copy, g_dtor, g_calls; static bool g_defaultEmpty;
-struct CCharString {
+class CCharString { public:
     int m_len;
     CCharString() : m_len(0) { ++g_ctor; }
     CCharString(const CCharString& other) : m_len(other.m_len) { ++g_copy; }
     ~CCharString() { ++g_dtor; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long pad[11];
     void Transfer(const char* name, CCharString& value, const CCharString& def) { ++g_calls; g_defaultEmpty = def.m_len == 0 && &def != &value && std::strcmp(name, "Name") == 0 && g_ctor + g_copy - g_dtor == 2; }
     static CCharString DefaultValue() { CCharString value; return value; }

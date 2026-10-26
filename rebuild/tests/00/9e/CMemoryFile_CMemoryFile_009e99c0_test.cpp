@@ -14,14 +14,14 @@ static int fails = 0;
 // std::copy(begin, end, back_inserter(DataBuffer)) whose inlined body calls the SGI
 // __copy(first, last, result, random_access_iterator_tag(), (ptrdiff_t*)0) (0x009E9900, __fastcall with
 // the hidden result in ecx; the result and the empty tag share the dead `other` argument slot).
-struct CWideStringData;
+class CWideStringData;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                        // 0x0099A2F0
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                  // 0x0099AED0
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
@@ -73,7 +73,7 @@ inline back_insert_iterator copy(const unsigned char* first, const unsigned char
     return __copy(first, last, result, random_access_iterator_tag(), (long*)0);
 }
 
-struct CMemoryFile : CBaseClassNonCopyable {        // vtable 0x0122E0FC
+class CMemoryFile : public CBaseClassNonCopyable { public:        // vtable 0x0122E0FC
     long          AccessType;                       // +0x04
     long          Position;                         // +0x08
     long          Length;                           // +0x0c

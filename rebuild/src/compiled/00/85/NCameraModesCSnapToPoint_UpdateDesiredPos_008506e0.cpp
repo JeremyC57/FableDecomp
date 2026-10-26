@@ -6,11 +6,11 @@
 //       neighbours 0x0056E390 (empty), 0x0056E3A0 (`mov al,[ecx+0xc0]`) and 0x0056E3B0 (copies +0xc1 to the hidden result).
 // Layout: CCameraPointModeBase::Pos at +0xac (landed CSnapToPoint ctor 0x0056E330: PCameraPoint +0xa4, Pos +0xac, FOV +0xb8).
 // Shape: the default C3DVector assignment through the reference: `add ecx,0ACh` then three dword moves.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
 };

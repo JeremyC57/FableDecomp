@@ -8,8 +8,8 @@
 // C3DVector Pos;}) +0x78 (PDB +0x8C).
 // Shape: STLport operator[] is `*(begin() + n)`; the previous position's Set test and Pos address share one index
 // computation; the two final stores index the vector separately (its start is re-read after the byte store).
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI;
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI;
 
 #pragma pack(push, 1)
 struct CPlayerPositionInfo {                                 // 13 bytes (PDB)
@@ -28,7 +28,7 @@ template <class T> struct CVector {
 enum ELoadType { LOAD_TYPE_DEFAULT = 0 };
 extern bool g_bRegionLoadingEnabled;                         // 0x013756F6
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08();

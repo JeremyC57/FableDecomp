@@ -22,7 +22,7 @@
 // Layout: local model (no engine header for CCombatManager): RegisteredCombatSequences +0x04 (12 bytes), Combatants +0x10;
 //   map node value CCombatantInfo at +0x18 (retail 0x70 bytes: AttackerInfo +0x04, DefenderInfo +0x34); retail CThing
 //   UniqueID +0x18, component bits +0x20, interface map +0x44, def +0x70, dead flag +0x91 bit 0, combat flags +0x15c.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -31,7 +31,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
-struct CDefString {
+class CDefString { public:
     long m_index;
 };
 struct CDefStringTable {
@@ -40,7 +40,7 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -52,19 +52,19 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1
 };
-struct CCreatureDef : CDefVirtual {
+class CCreatureDef : public CDefVirtual { public:
     long          RefCount;                        // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
     unsigned char _pad08[0x148 - 0x08];
     unsigned char Flags148;                        // +0x148 bit 5: unsheathe after combat
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* Get() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad0[0x18];
     unsigned __int64 UniqueID;                     // +0x18
     unsigned long    m_presentBits[9];             // +0x20
@@ -120,18 +120,18 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsCombatant();                            // 0x00662430
 };
-struct CTCCarrying {                               // interface 0x46
+class CTCCarrying { public:                               // interface 0x46
     CThing* GetThingInPrimarySlot();               // 0x006A1440
 };
-struct CTCWeapon {                                 // interface 0x48
+class CTCWeapon { public:                                 // interface 0x48
     bool IsProjectileWeapon();                     // 0x005DAA40
     void ResetAiming();                            // 0x005DA4E0 (AimingTime +0x14 = -1, AimingTimeOverride +0x18 = false)
 };
 enum EDangerStatus { DANGER_NONE = 0 };
-struct CTCStealth {                                // interface 0x36
+class CTCStealth { public:                                // interface 0x36
     void SetAsInDanger(CThing* source, EDangerStatus status);   // 0x00747B80
 };
 
@@ -149,7 +149,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual bool IsMeleeSequence();                // slot 7 (+0x1c)
@@ -192,7 +192,7 @@ struct CAttackerMap {                              // map<unsigned __int64, CThi
     unsigned long size() const { return _M_node_count; }
     unsigned long erase(const unsigned __int64& key);   // 0x006F3200
 };
-struct CAttackingCombatantInfo {                   // retail 0x30 bytes
+class CAttackingCombatantInfo { public:                   // retail 0x30 bytes
     CThingCreatureBase* Attacked;                  // +0x00
     long  AttackerNumber;                          // +0x04
     long  CombatWheelRingIndex;                    // +0x08
@@ -203,7 +203,7 @@ struct CAttackingCombatantInfo {                   // retail 0x30 bytes
     long  CurrentSequence;                         // +0x20
     CSequenceVector CombatSequences;               // +0x24
 };
-struct CDefendingCombatantInfo {                   // retail 0x3c bytes
+class CDefendingCombatantInfo { public:                   // retail 0x3c bytes
     CAttackerMap  Attackers;                       // +0x00
     unsigned char CombatWheel[0x0c];               // +0x0c
     float         LastVictimWheelUpdatePos[3];     // +0x18

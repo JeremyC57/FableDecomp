@@ -6,11 +6,11 @@
 // Shape: the distance is a named float (VC homes it in the dead `to` slot); the factor starts at 1.0f and a dense `switch`
 //   on the byte class picks it (case 0x40 is the mean of the two interface costs, slot 19 called first; 0x80 and default
 //   both use slot 19); the result is `factor * distance`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 float __fastcall Distance2D(const C2DVector& a, const C2DVector& b);   // 0x009E2460
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07();
     virtual unsigned char GetPreferabilityCost() const;     // slot 8 (+0x20)
@@ -20,7 +20,7 @@ struct CANavQuadTreeNode {
     bool          LeafNode;                                 // +0x0e
     bool          Blocked;                                  // +0x0f
 };
-struct CNavigatorExternalInterface {
+class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -28,7 +28,7 @@ struct CNavigatorExternalInterface {
     virtual float GetUnpreferredNodeCost() const;           // slot 19 (+0x4c)
 };
 enum { PREFERABILITY_PREFERRED = 0x00, PREFERABILITY_NEUTRAL = 0x40, PREFERABILITY_UNPREFERRED = 0x80 };
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     void*                        __vftable;                 // +0x00
     unsigned char                _pad04[0x10];
     CNavigatorExternalInterface* PInterface;                // +0x14 (CNavigatorBase)

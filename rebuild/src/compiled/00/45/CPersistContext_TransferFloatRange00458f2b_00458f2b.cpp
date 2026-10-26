@@ -6,9 +6,9 @@
 // Shape: as CPersistContext::TransferBytePair_004e8fcd @ 0x004E8FCD (landed): the reader local's two zero floats are written (`fldz ; fstp`) before the mode
 // ladder (`dec ; dec ; je ; dec ; jne`: cases 2 and 3); edi is saved only around the save arm. The chunk label "CEngineLightingManager::UpdateShadowScene" is
 // propagated from an unrelated body (the same label sits on 0x004E8FCD).
-struct CFloatRange { float m_min; float m_max; };
-struct CDataOutputStream { void WriteFloat(float value); };   // 0x00993EE0
-struct CDataInputStream;
+class CFloatRange { public: float m_min; float m_max; };
+class CDataOutputStream { public: void WriteFloat(float value); };   // 0x00993EE0
+class CDataInputStream;
 
 struct CFloatRangeReader_00458f89 {               // a two-float reader: both start at zero
     float m_min;
@@ -17,7 +17,7 @@ struct CFloatRangeReader_00458f89 {               // a two-float reader: both st
     void TransferBinaryIn(CDataInputStream* stream, CFloatRange* value);   // 0x00458F89
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char      _pad0[0x18];
     long               m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char      _pad1[8];

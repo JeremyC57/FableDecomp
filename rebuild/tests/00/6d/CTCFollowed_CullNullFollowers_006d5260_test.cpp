@@ -1,7 +1,7 @@
 #include <cstdio>
 // behaviour test: dead or missing followers are erased from both lists (each erase of a plain follower refreshes the GUI), live ones
 // get their emote icon re-added, order preserved
-struct CThing { bool Dead; };
+class CThing { public: bool Dead; };
 struct Node { Node* next; Node* prev; CThing* item; };
 struct List {
     Node head; List() { head.next = head.prev = &head; }
@@ -10,7 +10,7 @@ struct List {
     int size() { int c = 0; for (Node* n = head.next; n != &head; n = n->next) ++c; return c; }
 };
 static int g_refreshes = 0, g_icons = 0;
-struct CTCFollowed {
+class CTCFollowed { public:
     List Followers, AIFollowers;
     void CullNullFollowers()
     {

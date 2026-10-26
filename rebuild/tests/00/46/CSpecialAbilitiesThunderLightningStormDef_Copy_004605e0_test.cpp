@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CSpecialAbilitiesThunderLightningStormDef { int dummy; };
+class CSpecialAbilitiesThunderLightningStormDef { public: int dummy; };
 
 // Provide a definition for the "impl" target so the test links & runs.
 static int g_called = 0;

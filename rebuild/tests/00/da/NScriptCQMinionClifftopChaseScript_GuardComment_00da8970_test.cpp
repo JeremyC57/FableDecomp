@@ -5,7 +5,7 @@
 #include <vector>
 // Behaviour test for CQ_MinionClifftopChaseScript::GuardComment (0x00DA8970): a random follower speaks
 // TEXT_QST_067_<its data string>_<comment> to the hero, but only when that text entry exists and the thread lives on.
-struct CScriptThing { std::string Data; std::string GetDataString() const { return Data; } };
+class CScriptThing { public: std::string Data; std::string GetDataString() const { return Data; } };
 struct CGSI {
     std::vector<CScriptThing> Followers; std::string Known; int Conversations; int People; std::string LastLine; CScriptThing Hero;
     CScriptThing& GetHero() { return Hero; }

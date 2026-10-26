@@ -9,17 +9,17 @@
 //   (CIntelligentPointer<CThingGameObject> 0x0127B4D8) and SetPItem(follower) -- an inline converting constructor;
 //   then the scoped named animation string and the setter.
 // Layout: Ego_r.pdb puts PUndeadFollower at +0x12c; the retail CCombatActionBase is 0x114 bytes, so it sits at +0x114.
-struct CThingCreatureBase;
-struct CThingGameObject;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThingGameObject;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -33,19 +33,19 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingGameObject>: vtable 0x0127B4D8
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingGameObject>: vtable 0x0127B4D8
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_CastWillReclaimUndeadFollower : CCombatActionBase {   // vtable 0x0127D5BC
+class CCreatureAction_CastWillReclaimUndeadFollower : public CCombatActionBase { public:   // vtable 0x0127D5BC
     CIntelligentPointer<CThingGameObject> PUndeadFollower;   // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_CastWillReclaimUndeadFollower(CThingCreatureBase* owner, CThingGameObject* follower);

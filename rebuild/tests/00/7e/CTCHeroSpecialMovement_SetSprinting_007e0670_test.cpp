@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CTCHeroSpecialMovement::SetSprinting (0x007E0670): starting asks the thing only when not already
 // sprinting and needs its approval; stopping always clears.
-struct CThing { bool canSprint; int asked; };
+class CThing { public: bool canSprint; int asked; };
 bool IsAvailableForHeroSprint(CThing* thing) { ++thing->asked; return thing->canSprint; }
 struct CTCHeroSpecialMovement_Retail {
     CThing* ParentThing;

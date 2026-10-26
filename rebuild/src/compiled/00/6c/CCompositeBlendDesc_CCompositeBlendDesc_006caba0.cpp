@@ -9,12 +9,12 @@
 // values (r, g, b, a), evaluated right to left; the channels sit B, G, R, A in memory (D3DCOLOR order).
 typedef long ECompositeBlendType;
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;       // +0x00
     ECompositeBlendType BlendType;          // +0x04
     CRGBColour          DiffuseColour;      // +0x08

@@ -30,12 +30,12 @@ struct CCountedPointer_00811c30 {                     // 8 bytes: the object and
 };
 
 namespace NEntityEvents {
-struct CEventBase {                                // vtable 0x0124F2C4
+class CEventBase { public:                                // vtable 0x0124F2C4
     virtual ~CEventBase() { }
     long m_eventType;                              // +0x04
 };
 
-struct CEventHitBase : CEventBase {                // vtable 0x01272344
+class CEventHitBase : public CEventBase { public:                // vtable 0x01272344
     CCountedPointer_00811c30 m_hitInfo;            // +0x08
     __forceinline virtual ~CEventHitBase() { }
 };

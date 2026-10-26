@@ -8,13 +8,13 @@
 // CScriptedMapBrush = PDB - 0x10: GameArea +0x38, BrushName +0x48, CreationTimeSeconds +0x4C. No engine header for CMap.
 // Shape: the creation time is a named float parked in the dead `name` argument slot across the GetBrushName call; the update area is a
 // stack temporary pushed with the inline STLport push_back (placement copy, else _M_insert_overflow with the __false_type tag).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
-struct C2DBoxI { long X0, Y0, X1, Y1; };
-struct CScriptedMapBrush {
+class C2DBoxI { public: long X0, Y0, X1, Y1; };
+class CScriptedMapBrush { public:
     unsigned char _pad00[0x38];
     C2DBoxI       GameArea;                     // +0x38
     unsigned char _pad48[0x4];
@@ -62,7 +62,7 @@ __declspec(noinline) void CUpdateAreaVector::_M_insert_overflow(CScriptedMapBrus
 }
 #pragma auto_inline(on)
 extern long g_FramesPerSecond;                  // 0x01375550
-struct CMap {
+class CMap { public:
     void*             __vftable;                // +0x00
     unsigned char     _pad04[0xc];
     CUpdateAreaVector ScriptedMapBrushUpdateAreas;   // +0x10

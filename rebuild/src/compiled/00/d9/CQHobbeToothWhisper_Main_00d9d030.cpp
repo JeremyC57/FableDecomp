@@ -10,7 +10,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (contest script: +0x58 contest over, +0x5D whisper hit).
 // Shape: the hit test is a named bool (three flag-guarded temporaries); the hunt loop is `while (!IsActiveThreadTerminating())`
 //   ending in NewScriptFrame (the handle model of the landed CSafeTrader::Main 0x00E4A280).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -30,7 +30,7 @@ struct CScriptThingVT {
     virtual void v073(); virtual void v074();
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CScriptThing : CScriptThingVT {                  // 12 bytes, vtable 0x01238C8C {vptr, PImp.Data, PImp.Info}
+class CScriptThing : public CScriptThingVT { public:                  // 12 bytes, vtable 0x01238C8C {vptr, PImp.Data, PImp.Info}
     void* PImpData;
     void* PImpInfo;
     ~CScriptThing();                                    // 0x004AA840
@@ -53,12 +53,12 @@ static inline bool IsThingImpAlive(const CScriptThing& t)
     return imp && imp->IsAlive();
 }
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pIntelligentPointer;
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -67,7 +67,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -144,7 +144,7 @@ struct CHobbeToothContest {
     unsigned char _pad59[4];
     bool WhisperHit;                                    // +0x5D
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

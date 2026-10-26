@@ -1,9 +1,9 @@
 // Behaviour test for 0x00b42c70 CEngineWorldMap::DeleteAllMaps
 #include <cstdio>
 #include <cstring>
-struct CEngineMap;
+class CEngineMap;
 static int g_deleted[8]; static int g_nDeleted = 0; static int g_inserts = 0;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return m_pEnd - m_pBegin; }
     static T* CopyDown(T* src, T* srcEnd, T* dest)
@@ -19,7 +19,7 @@ template <class T> struct CArray {
         else InsertN(m_pEnd, n - Size(), value);
     }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     short* Map; CArray<CEngineMap*> MapList;
     void DeleteMap(long index) { g_deleted[g_nDeleted++] = index; }
     void DeleteAllMaps()

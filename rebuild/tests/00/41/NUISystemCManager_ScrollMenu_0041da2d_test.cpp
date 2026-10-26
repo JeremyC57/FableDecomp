@@ -66,22 +66,22 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -203,7 +203,7 @@ FABLE_STATIC_ASSERT(offsetof(CManager, AssignmentSpellsSwapping) == 0xfb);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CComponent {
@@ -359,7 +359,7 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, DefIndex) == 0x158);
 
 
 struct CAction;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
 
 #pragma pack(push, 1)
@@ -571,10 +571,10 @@ FABLE_STATIC_ASSERT(offsetof(CScrollingComponent, field28) == 0x28);
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-struct C2DVector {float X,Y;C2DVector(float x,float y):X(x),Y(y){}};
+class C2DVector { public:float X,Y;C2DVector(float x,float y):X(x),Y(y){}};
 namespace NUISystem {
 enum EEvent {ScrollForward=6,ScrollBackward=7}; // Native numeric values proven; event spelling descriptive.
-struct CComponent {
+class CComponent { public:
  void* VTable;
  typedef bool(CComponent::*DraggedMethod)();
  typedef CComponent*(CComponent::*ScrollBarMethod)();
@@ -583,7 +583,7 @@ struct CComponent {
  __forceinline CComponent* GetScrollBar(){return (this->*static_cast<ScrollBarMethod*>(VTable)[175])();}
  __forceinline void ChangePositionDelta(const C2DVector& d,float time,bool linear){(this->*static_cast<ChangeVectorMethod*>(VTable)[33])(d,time,linear);}
 };
-struct CScrollingViewport:CComponent {
+class CScrollingViewport:public CComponent { public:
  unsigned char NativeViewportState[0x188-sizeof(void*)];CComponent* PScrollBar;
  typedef float(CScrollingViewport::*SpeedMethod)();
  __forceinline float GetScrollingSpeed(){return (this->*static_cast<SpeedMethod*>(VTable)[144])();}
@@ -591,7 +591,7 @@ struct CScrollingViewport:CComponent {
 struct ComponentNode {ComponentNode* Next;ComponentNode* Previous;CComponent* Data;};
 extern CScrollingViewport* g_pActiveScrollingViewport; //013B8AAC
 extern ComponentNode* g_ActiveListHead; //013B8A98
-struct CManager {
+class CManager { public:
  void* VTable;unsigned char NativeManagerState[0xc4-sizeof(void*)];float DescriptionScrollingOffset;
  typedef void(CManager::*EventMethod)(EEvent);
  __forceinline void SetEvent(EEvent e){(this->*static_cast<EventMethod*>(VTable)[0])(e);}

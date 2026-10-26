@@ -10,7 +10,7 @@ struct CFakeVolume {
 };
 static int g_base;
 struct CBase { virtual ~CBase() {} CBase() { ++g_base; } };
-struct CVolume : CBase {
+class CVolume : public CBase { public:
     CFakeVolume* m_pVolume;
     CVolume& operator=(const CVolume& other)
     {

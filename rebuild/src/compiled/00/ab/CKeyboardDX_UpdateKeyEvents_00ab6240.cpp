@@ -31,7 +31,7 @@ struct DIDEVICEOBJECTDATA_Retail {                 // 20 bytes
     unsigned long uAppData;
 };
 enum EInputKey { INPUT_KEY_NONE };
-struct CInputEvent {                               // 0x34 bytes
+class CInputEvent { public:                               // 0x34 bytes
     unsigned char Data[0x30];
     float         StartTime;                       // +0x30
     CInputEvent();                                 // 0x00A04410
@@ -41,7 +41,7 @@ struct CInputEvent {                               // 0x34 bytes
     void SetAsKeyboardKeyPressed(EInputKey key, double time);                     // 0x00A03BF0
     void SetAsKeyboardKeyReleased(EInputKey key, double startTime, double time);  // 0x00A03C50
 };
-struct CMaintainedEvent {
+class CMaintainedEvent { public:
     long        _pad0;
     CInputEvent Event;                             // +0x04
 };
@@ -50,7 +50,7 @@ struct CMaintainedEventNode {                      // STLport _List_node<CMainta
     CMaintainedEventNode* Prev;
     CMaintainedEvent      Data;                    // +0x08
 };
-struct CSystemManager {
+class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
     bool HasInputFocus();                          // 0x009A4FB0
 };

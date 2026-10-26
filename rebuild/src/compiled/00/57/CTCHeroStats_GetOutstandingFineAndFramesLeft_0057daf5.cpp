@@ -22,8 +22,8 @@ template <class T> inline const T& Max(const T& left, const T& right)
 }
 
 class CTCBase;
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
@@ -61,7 +61,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                                 // slot 1
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x3c - 0x08];
     long KnowledgeLifeInSeconds;                            // +0x3c
     unsigned char _pad40[0x74 - 0x40];
@@ -73,7 +73,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
     __forceinline ~CDefPointer()
@@ -84,7 +84,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
 
@@ -105,11 +105,11 @@ struct CCrimeStatusMap {                                    // std::map<CCharStr
     MirroredCriminalStatus& operator[](const CCharString& key);  // 0x005812DF
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*           __vftable;                              // +0x00
     CThing*         ParentThing;                            // +0x04 CTCBase
     unsigned char   _pad_0x08[0x4];

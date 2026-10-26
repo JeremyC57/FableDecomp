@@ -10,22 +10,22 @@
 // Shape: on load the three "set" flags are raised first; the UID tail follows the landed CTCDRegionExit::OnSerialise
 // (0x00779430), except that the saving arm only transfers a non-zero UID.
 #include "engine/CTCBase.h"
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8e];
     short m_level;                              // +0x8e
     bool IsLevelLess();                         // 0x004C7930
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char* name, float& value, const float& defaultValue);                        // 0x00410620
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCCameraPointScripted : public CTCBase {
 public:
     unsigned char _base0c[0x40 - 0x0c];         // CTCCameraPointDefinitionBase members

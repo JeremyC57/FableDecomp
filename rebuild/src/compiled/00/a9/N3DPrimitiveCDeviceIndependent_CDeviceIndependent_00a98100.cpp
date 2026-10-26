@@ -12,23 +12,23 @@ struct CBase {
 };
 
 template <class T>
-struct CArray {                        // retail CArray<T>: begin / end / capacity
+class CArray { public:                        // retail CArray<T>: begin / end / capacity
     T* m_begin;
     T* m_end;
     T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) { }
 };
 
-struct C3DBoundingSphere {             // centre + radius, zeroed as dwords
+class C3DBoundingSphere { public:             // centre + radius, zeroed as dwords
     long m_x, m_y, m_z, m_radius;
     C3DBoundingSphere() : m_x(0), m_y(0), m_z(0), m_radius(0) { }
 };
 
-struct C3DVertex2; struct C3DVector; struct CTriangleListRef; struct CGroupRef;
+class C3DVertex2; class C3DVector; struct CTriangleListRef; struct CGroupRef;
 
 namespace N3DPrimitive {
 
-struct CDeviceIndependent : CBase {    // vtable 0x0129DFA8
+class CDeviceIndependent : public CBase { public:    // vtable 0x0129DFA8
     virtual void v00();
     CArray<C3DVertex2>       Vertices;        // +0x04
     CArray<CTriangleListRef> TriangleLists;   // +0x10

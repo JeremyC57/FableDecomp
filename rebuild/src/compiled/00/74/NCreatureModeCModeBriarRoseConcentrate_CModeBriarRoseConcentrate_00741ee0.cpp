@@ -13,17 +13,17 @@
 // plain initialiser (stored before the PTarget base ctor); the vector is the STLport _Vector_base +
 // _STLP_alloc_proxy model (three zero words from the shared ebx); Imposter / PDef interleave with the next
 // member's `lea`.
-struct CThing;
-struct CThingCreatureBase;
-struct CBriarRoseDef;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBriarRoseDef;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -35,7 +35,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -81,7 +81,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-template <class T> struct CDefPointer {    // 4 bytes: the def object
+template <class T> class CDefPointer { public:    // 4 bytes: the def object
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -94,7 +94,7 @@ struct CModeStandBase {                    // retail sizeof 0x68
 
 namespace NCreatureMode {
 
-struct CModeBriarRoseConcentrate : CModeStandBase {   // vtable 0x01268548
+class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x01268548
     CAnimFilterOfGroup                  Filter;       // +0x68
     long                                Timer;        // +0x74
     CIntelligentPointerCreature         PTarget;      // +0x78

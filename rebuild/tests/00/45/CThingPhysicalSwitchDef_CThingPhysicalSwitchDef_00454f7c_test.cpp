@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThingBaseDef {
+class CThingBaseDef { public:
     CThingBaseDef() { std::memset(_body, 0x5A, sizeof(_body)); }
     virtual ~CThingBaseDef() {}
     unsigned char _body[0x6c];
 };
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;
     float         AnimStep;
     float         RenderSizeX;
@@ -19,7 +19,7 @@ struct CEngineGraphic {
 };
 #pragma pack(pop)
 #pragma pack(push, 2)
-struct CThingPhysicalSwitchDef : CThingBaseDef {
+class CThingPhysicalSwitchDef : public CThingBaseDef { public:
     long           TriggerType;
     CEngineGraphic UntriggeredGraphic;
     CEngineGraphic TriggeredGraphic;

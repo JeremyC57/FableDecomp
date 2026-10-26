@@ -19,7 +19,7 @@
 extern "C" char* __cdecl strstr(const char* str, const char* sub);   // 0x00BFEB3A
 extern "C" unsigned int __cdecl strlen(const char* str);               // /Oi intrinsic (inline scan)
 
-struct CCharStringData {
+class CCharStringData { public:
     char*         m_pData;                      // +0x0
     unsigned long m_length;                     // +0x4
 };

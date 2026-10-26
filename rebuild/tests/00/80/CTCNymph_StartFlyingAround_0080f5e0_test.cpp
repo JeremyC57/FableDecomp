@@ -6,35 +6,35 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharString { const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CCharString { public: const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 static int g_destroyed = 0;
-template <class T> struct CDefPointer;
-struct CDefClassBase {
+template <class T> class CDefPointer;
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void Destroy() const { ++g_destroyed; }
     mutable long RefCount;
     const CDefClassBase* Sub;
     CDefClassBase() : RefCount(1), Sub(0) {}
-    bool GetSubDef(CDefPointer<const struct CSpecialEffectsDef>* out) const;
+    bool GetSubDef(CDefPointer<const class CSpecialEffectsDef>* out) const;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 static long g_effectId = -1;
-struct CSpecialEffectsDef : CDefClassBase {
+class CSpecialEffectsDef : public CDefClassBase { public:
     bool GetEffectFromString(const CCharString& name, long* effect) const
     { if (g_effectId < 0 || strcmp(name.Text, "INLIMBO")) return false; *effect = g_effectId; return true; }
 };
 bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
 { out->Object = (const CSpecialEffectsDef*)Sub; if (Sub) ++Sub->RefCount; return Sub != 0; }
 struct CTCGraphicAppearance;
-struct CTCDParticleEmitter;
-struct CThing {
+class CTCDParticleEmitter;
+class CThing { public:
     virtual void SetVisible(bool visible) { Visible = visible ? 1 : 2; }
     int Visible;
     CTCGraphicAppearance* GraphicAppearance;
@@ -60,7 +60,7 @@ struct CTCGraphicAppearance {
 static CThing g_spawned;
 static long g_createdEffect = -2;
 static C3DVector g_createdPos;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     CThing* AttachedTo; long Mode; const char* Bone;
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached)
     { g_createdEffect = effect; g_createdPos = position; return attached ? &g_spawned : 0; }
@@ -72,15 +72,15 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
     bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
 };
 long g_FramesPerSecond = 10;
-struct CNymphDef { float FadeOutTime; };
+class CNymphDef { public: float FadeOutTime; };
 static int g_picked = 0;
-struct CTCNymph {
+class CTCNymph { public:
     CThing* ParentThing;
     const CNymphDef* PDef;
     C3DVector PointToFlyAround;

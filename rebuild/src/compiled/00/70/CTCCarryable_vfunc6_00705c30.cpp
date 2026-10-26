@@ -21,34 +21,34 @@ class C3DVector { public:
 };
 extern const float g_minLength_0129ba3c;           // 0x0129BA3C (0.0001f)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]`
     long m_refCount;                            // +0x04
 };
 
 template <class T>
-struct CDefPointer {                            // GetSubDef's out pointer (released by hand)
+class CDefPointer { public:                            // GetSubDef's out pointer (released by hand)
     CDefPointeeBase* Object;                    // +0x00
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
 };
 
-struct CCarryableDef : CDefPointeeBase {
+class CCarryableDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x38 - 0x08];
     C3DVector     OffsetCoordRelativeToAttachToDummy;   // +0x38
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CCarryableDef>* out);   // 0x005CC10E GetSubDef<CCarryableDef>
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;            // +0x70 CDefPointer<const CThingDef>
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad08[4];

@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour model of CReactionMatch_MRPyramid::TransferBinaryIn @ 0x006FF810 (copy of the source's logic).
 static int g_baseCalls = 0, g_overflowCalls = 0;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;

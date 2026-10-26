@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* Text; CCharString() : Text("") {} CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString() : Text("") {} CCharString(const char* t) : Text(t) {} };
 
 template <class _T1, class _T2> struct pair
 {

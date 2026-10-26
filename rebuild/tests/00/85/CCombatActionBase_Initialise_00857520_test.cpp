@@ -1,14 +1,14 @@
 // Behaviour test for 0x00857520 CCombatActionBase::Initialise.
 #include <cstdio>
-struct CAnimationEntry { int id; };
-struct CTCCombat { void* chained; void SetNextComboChainPos(void* a) { chained = a; } };
+class CAnimationEntry { public: int id; };
+class CTCCombat { public: void* chained; void SetNextComboChainPos(void* a) { chained = a; } };
 struct CCreature {
     long pick; bool hasCombat; CTCCombat combat;
     long GetAppropriateCombatAnimationFromList(const CAnimationEntry* const*) { return pick; }
     bool GetInterface(CTCCombat** out, long type) { if (type == 0x30 && hasCombat) { *out = &combat; return true; } return false; }
 };
 static int g_reset = 0, g_baseInit = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCreature* creature; const CAnimationEntry* anims[3]; const CAnimationEntry* played; float blend, speed; bool strike;
     void ResetCombatState() { ++g_reset; }
     void SetAnimation(const CAnimationEntry* e, float b, float s) { played = e; blend = b; speed = s; }

@@ -1,4 +1,4 @@
-struct CCombatAction_WillEnflameInto {
+class CCombatAction_WillEnflameInto { public:
     void* vftable;
 };
 

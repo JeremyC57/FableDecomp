@@ -11,7 +11,7 @@ struct CNodeList { void clear() { g_seq[g_n++] = 4; } };
 CNodeList g_frontEndNodeList;
 struct CRetailVector { CComponent** _First; CComponent** _Last; CComponent** _End; void pop_back() { --_Last; } };
 struct CTCInventoryBase_Retail { CRetailVector Components; };
-struct CTCInventoryTrade : CTCInventoryBase_Retail {
+class CTCInventoryTrade : public CTCInventoryBase_Retail { public:
     CComponent* PCurrentOpenTradeMenu;
     void DeleteComponents()
     {

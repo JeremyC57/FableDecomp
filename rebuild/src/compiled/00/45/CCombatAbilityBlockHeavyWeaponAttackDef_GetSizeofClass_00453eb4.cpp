@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCombatAbilityBlockHeavyWeaponAttackDef { char pad[0x58]; };
+class CCombatAbilityBlockHeavyWeaponAttackDef { public: char pad[0x58]; };
 
 unsigned long __fastcall CCombatAbilityBlockHeavyWeaponAttackDef_GetSizeofClass(const CCombatAbilityBlockHeavyWeaponAttackDef* self)
 {

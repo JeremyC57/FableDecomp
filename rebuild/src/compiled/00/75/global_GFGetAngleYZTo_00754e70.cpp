@@ -15,7 +15,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, sqrt, fmod)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

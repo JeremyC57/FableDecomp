@@ -18,7 +18,7 @@ struct CBaseClassNonCopyable {                  // vtable 0x0129A7C4
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 
-template <class T> struct CArray {              // retail CArray is 12 bytes (the PDB's is 16)
+template <class T> class CArray { public:              // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
@@ -27,14 +27,14 @@ template <class T> struct CArray {              // retail CArray is 12 bytes (th
 
 struct SCountBlock;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
 };
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk : CBaseClassNonCopyable {      // vtable 0x0129E474, PDB sizeof 0x10
+class CChunkedFileChunk : public CBaseClassNonCopyable { public:      // vtable 0x0129E474, PDB sizeof 0x10
     char                    ChunkType[5];               // +0x04
     CChunkedFileSuperChunk* Parent;                     // +0x0c
     CChunkedFileChunk(const char* type) : Parent(0)     // out of line at 0x00AA7590
@@ -45,7 +45,7 @@ struct CChunkedFileChunk : CBaseClassNonCopyable {      // vtable 0x0129E474, PD
     virtual ~CChunkedFileChunk();
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {     // vtable 0x0129E4F0, retail sizeof 0x2c
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:     // vtable 0x0129E4F0, retail sizeof 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;                 // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;   // +0x1c
     unsigned long                               CurrentChunkIndex;         // +0x28

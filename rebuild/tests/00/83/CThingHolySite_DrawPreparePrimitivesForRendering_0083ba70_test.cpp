@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for CThingHolySite::DrawPreparePrimitivesForRendering (0x0083BA70).
-struct CEnginePrimitivePrepareInfo { int frame; };
+class CEnginePrimitivePrepareInfo { public: int frame; };
 struct CTCGraphicAppearance {
     int calls; const CEnginePrimitivePrepareInfo* last;
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { ++calls; last = &info; }
 };
-struct CThingHolySite {
+class CThingHolySite { public:
     CTCGraphicAppearance* PTCGraphicAppearance;
     bool baseResult; int baseCalls;
     bool BasePrepare(const CEnginePrimitivePrepareInfo&) { ++baseCalls; return baseResult; }

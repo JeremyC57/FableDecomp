@@ -8,11 +8,11 @@
 // Layout: Ego_r.pdb CTCPhysicsRigidBody has RHSet at +0x74 after three 16-byte std::vectors at +0x40; retail vectors are 12
 // bytes (GOTCHAS wave 23), so retail RHSet sits at +0x68. engine/CTCPhysicsRigidBody.h follows the PDB offsets and has no
 // virtuals, so the class is modelled locally.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail std::vector, 12 bytes
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];                 // +0x04 CTCBase, Position .. Moving/OldMoving
     void SetAsMoving(bool moving);             // 0x006B0130

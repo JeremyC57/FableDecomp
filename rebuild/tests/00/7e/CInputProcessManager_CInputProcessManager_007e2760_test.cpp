@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessManager { void** vtbl; };
+class CInputProcessManager { public: void** vtbl; };
 
 static int g_member = 0;
 static int g_base = 0;

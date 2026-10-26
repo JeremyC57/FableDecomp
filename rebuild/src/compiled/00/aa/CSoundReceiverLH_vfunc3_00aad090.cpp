@@ -5,7 +5,7 @@
 // Layout as 0x00AAD060: position +0x04, forward +0x10 (constructed (0, 0, 1)), up +0x1c (constructed (0, 1, 0)).
 // Shape: the first argument copied into +0x1c, then the second into +0x10, each through `lea eax,[ecx+N]`
 // and three dword moves (implicit bitwise vector assignment), `this` kept in ecx for the call, `ret 8`.
-struct C3DVector {
+class C3DVector { public:
     float X;                                // +0x00
     float Y;                                // +0x04
     float Z;                                // +0x08

@@ -13,14 +13,14 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLength() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -49,7 +49,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 
@@ -59,13 +59,13 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x34];
     CBaseIntelligentPointer PCharacter;         // +0x34
     const CBaseIntelligentPointer& GetCharacter() const { return PCharacter; }
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 
@@ -80,7 +80,7 @@ struct CTCWillPower {                           // interface type 0xCE
     bool Active;                                // +0x0c
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;               // +0x1c

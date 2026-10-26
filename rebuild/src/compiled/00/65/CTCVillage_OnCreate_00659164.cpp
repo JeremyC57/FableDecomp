@@ -21,7 +21,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
-struct CTCBase;
+class CTCBase;
 
 struct CDefBase {
     virtual void v00();
@@ -33,17 +33,17 @@ struct CDefBase {
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CVillageDef : CDefBase {
+class CVillageDef : public CDefBase { public:
     unsigned char _pad_0x08[0x30];
     long          DefaultStanceToHero;          // +0x38 (EVillageStanceToHero)
 };
-struct CVillagePeopleDef : CDefBase {
+class CVillagePeopleDef : public CDefBase { public:
     unsigned char _pad_0x08[0xb8];
     long          GuardRespawnMaxRenownBasedOffset;   // +0xc0
 };
@@ -52,7 +52,7 @@ struct CThingDef : CDefBase {
     bool GetSubDef(CDefPointer<CVillageDef>* out);          // 0x0065F440
     bool GetSubDef(CDefPointer<CVillagePeopleDef>* out);    // 0x00512FE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const;   // 0x0042AF3C
 };
 CThingDef* FindRef_CDefinitionManager_GetDef_0(long index);   // stand-in callees of the stand-in bodies below
@@ -121,24 +121,24 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(const CThing* const& thing)
 struct CTCRenownRatio {                         // the interface-0x14 component
     float CalculateRatio();                     // 0x005CDBBE
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad_0x00[0x1c];
-    struct CGameTimeManager* PGameTimeManager;  // +0x1c
+    class CGameTimeManager* PGameTimeManager;  // +0x1c
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     bool IsDay() const;                         // 0x006BB2C0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x7c];

@@ -7,16 +7,16 @@
 // and two false flags at +8/+9 share one zero register (ebx) and the vtable store sinks below them
 // to just before the GetScriptThing call; the remaining zeroed members (+0x18, +0x1c, +0x24, +0x27)
 // use the same register and the two arguments land at +0x20 and +0x25 (ret 0xc).
-struct CThing;
+class CThing;
 
-struct CScriptThing {                       // engine/CScriptThing.h layout: vptr, PImp_Data, PImp_Info (12 bytes)
+class CScriptThing { public:                       // engine/CScriptThing.h layout: vptr, PImp_Data, PImp_Info (12 bytes)
     void* __vftable;
     CThing* PImp_Data;
     void* PImp_Info;
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 

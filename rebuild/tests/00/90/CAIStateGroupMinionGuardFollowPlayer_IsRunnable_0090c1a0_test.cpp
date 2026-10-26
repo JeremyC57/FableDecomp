@@ -2,8 +2,8 @@
 #include <stdio.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float x, y, z; };
-struct CThing { bool dead; bool isVillager; bool isMinion; C3DVector pos; struct CVillage* village; };
+class C3DVector { public: float x, y, z; };
+class CThing { public: bool dead; bool isVillager; bool isMinion; C3DVector pos; struct CVillage* village; };
 struct CVillage { CThing* guardFollower; };
 static long g_frame = 100;
 static long g_framesPerSecond = 30;

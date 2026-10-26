@@ -22,7 +22,7 @@ struct CHandleBasedMemoryPool_Calls {
     void Free(long handle);              // 0x00A62ED0
 };
 
-struct CBankFileAsync {                  // the owning bank (+0x28); its critical section sits at +0x14c
+class CBankFileAsync { public:                  // the owning bank (+0x28); its critical section sits at +0x14c
     unsigned char _pad[0x14c];
     CRITICAL_SECTION_Fable m_section;    // +0x14c
 };
@@ -32,7 +32,7 @@ struct CMovableResourceMemoryPool_Calls {      // the relocating pool (+0x24); i
     CRITICAL_SECTION_Fable m_section;    // +0x14c
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     virtual void v00();
     void*                       m_pAllocation;    // +0x04 relocatable block base
     void*                       m_pData;          // +0x08 relocatable data pointer handed out by GetData

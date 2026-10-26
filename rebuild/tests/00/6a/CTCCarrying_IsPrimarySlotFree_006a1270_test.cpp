@@ -29,7 +29,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     const SCarrySlotEntry& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     virtual void v00();
     virtual void DeleteThis();                      // slot 1
     long          RefCount;                         // +0x04
@@ -37,14 +37,14 @@ struct CCarrySlotDef {
     bool          IsPrimary;                        // +0x30
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (--m_p->RefCount == 0) m_p->DeleteThis(); }
     T* operator->() const { return m_p; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void GetDef(long index, CDefPointer<CCarrySlotDef>* out);   // 0x006A3060
 };
 void* FindDef_006a1270();                           // stand-in callee of the stand-in body below
@@ -56,11 +56,11 @@ __declspec(noinline) void CDefinitionManager::GetDef(long index, CDefPointer<CCa
     *(void**)out = def;
 }
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager* Get();               // 0x0044C6B0
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad04[0x0c - 0x04];
     CCarrySlotMap CarrySlots;                       // +0x0c

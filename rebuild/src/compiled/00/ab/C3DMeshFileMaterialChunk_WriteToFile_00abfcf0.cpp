@@ -5,17 +5,17 @@
 // The PDB header (engine/C3DMeshFileMaterialChunk.h) sits 8 bytes high; retail layout with its names as the landed
 // GetChunkInfo 0x00ABFBF0: MaterialIndex +0x2C, TwoSided +0x30, Ambient/Diffuse/Specular +0x34/+0x38/+0x3C,
 // Shiny/ShinyStrength/Transparency +0x40..+0x48, Name +0x4C. The bool is zero-extended for the call.
-struct CChunkedFileSaver;
+class CChunkedFileSaver;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                          // CBasicString<char> data block
     CCharString();                          // 0x0099E4B0
 };
 
-struct CMatrix3x4 { float m_row[3][4]; };                  // 48 bytes
-struct CRGBColour { unsigned long m_argb; };                 // as the landed GetChunkInfo 0x00ABFBF0
+class CMatrix3x4 { public: float m_row[3][4]; };                  // 48 bytes
+class CRGBColour { public: unsigned long m_argb; };                 // as the landed GetChunkInfo 0x00ABFBF0
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -32,7 +32,7 @@ struct CDataOutputStream {
 };
 
 template <class T>
-struct CArray {                             // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;                            // +0
     T* m_pEnd;                              // +4
     T* m_pEndOfStorage;                     // +8
@@ -49,7 +49,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     ~CCountedPointer()
@@ -64,9 +64,9 @@ struct CCountedPointer {
     }
 };
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk {                  // PDB sizeof 0x10
+class CChunkedFileChunk { public:                  // PDB sizeof 0x10
     virtual void v00();                     // slot 0: deleting destructor
     virtual void v01();                     // slot 1: GetChunkDescription
     virtual void v02();                     // slot 2: GetChunkInfo
@@ -84,7 +84,7 @@ struct CChunkedFileChunk {                  // PDB sizeof 0x10
     CChunkedFileChunk(const char* type);    // 0x00AA7590
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {   // retail sizeof 0x2c
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail sizeof 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;                 // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;   // +0x1c
     unsigned long CurrentChunkIndex;                                       // +0x28
@@ -93,7 +93,7 @@ struct CChunkedFileSuperChunk : CChunkedFileChunk {   // retail sizeof 0x2c
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
 };
 
-struct C3DMeshFileMaterialChunk : CChunkedFileSuperChunk {
+class C3DMeshFileMaterialChunk : public CChunkedFileSuperChunk { public:
     long          MaterialIndex;     // +0x2c
     bool          TwoSided;          // +0x30
     CRGBColour    Ambient;           // +0x34

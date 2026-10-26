@@ -14,7 +14,7 @@
 // Shape: as the landed def dtors (0x0045784B): empty body, `__forceinline` POD-vector dtors, out-of-line map dtors.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-struct CParentDefClassBase {                       // retail 0x3c bytes (with the CDefClassBase part)
+class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
     unsigned char m_baseData[0x3c];
     ~CParentDefClassBase();                        // 0x00430300
 };
@@ -24,17 +24,17 @@ template <class T> struct CPODVector {             // retail std::vector<T> (12 
     T* m_end;
     __forceinline ~CPODVector() { if (m_first) free(m_first); }
 };
-struct CFloatRange { float Min, Max; };
-struct CHeroAbilityStatWeight {                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)
+class CFloatRange { public: float Min, Max; };
+class CHeroAbilityStatWeight { public:                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)
     unsigned char StatWeights[12];
     ~CHeroAbilityStatWeight();                     // 0x004517A4
 };
-struct CHeroAbilityStatPackage {                   // map<EHeroTrainableStatType, long> (STLport, 12 bytes)
+class CHeroAbilityStatPackage { public:                   // map<EHeroTrainableStatType, long> (STLport, 12 bytes)
     unsigned char StatThresholds[12];
     ~CHeroAbilityStatPackage();                    // 0x00451763
 };
 
-struct CHeroCombatDef : CParentDefClassBase {      // vtable 0x01234CF4, retail 0x148 bytes
+class CHeroCombatDef : public CParentDefClassBase { public:      // vtable 0x01234CF4, retail 0x148 bytes
     CFloatRange RangedAccuracySecondsForMaximumWithSkill;      // +0x3c
     CFloatRange RangedAccuracyPercentFractionWithBuildup;      // +0x44
     CFloatRange RangedAccuracyPercentWithStats;                // +0x4c

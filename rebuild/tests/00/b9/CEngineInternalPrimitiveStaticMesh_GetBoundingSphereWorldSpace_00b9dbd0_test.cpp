@@ -12,14 +12,14 @@ static int fails = 0;
 // `x*m[i] + y*m[i+3] + z*m[i+6] + m[i+9]`. Retail evaluates the X row z,y,x but the Y and Z rows z,x,y: the parenthesised
 // `y*m + (x*m + z*m) + t` form reproduces that (plain sums in any term order are canonicalised to z,y,x). The radius tail
 // needs the double local (float products in either order, float locals and a float-returning helper load the scale first).
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct CMatrix3x4 { float m[12]; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class CMatrix3x4 { public: float m[12]; };
 struct C3DMeshRecord {
     unsigned char _pad[0x28];
     C3DBoundingSphere m_sphere;   // +0x28
 };
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     unsigned char _pad[0x50];
     C3DMeshRecord* m_pMesh;       // +0x50
     unsigned char _pad54[4];

@@ -21,7 +21,7 @@ struct CNetworkClient_Methods : CNetworkClient {
     bool IsValid() const;                                // 0x0099A330 (CInitBaseClass)
     void Uninitialise();                                 // 0x004AE990
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char            _pad00[0x1c];
     CPlayerManager_Methods*  PPlayerManager;             // +0x1c scoped_ptr<CPlayerManager>
     unsigned char            _pad20[0x13ab8 - 0x20];

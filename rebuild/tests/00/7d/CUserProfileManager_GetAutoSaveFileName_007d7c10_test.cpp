@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     wchar_t m_text[8];
     explicit CWideString(const wchar_t* text) { int i = 0; while (text[i] && i < 7) { m_text[i] = text[i]; ++i; } m_text[i] = 0; }
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetAutoSaveFileName();
 };
 

@@ -11,7 +11,7 @@
 // default construction of the CCharString at +0x50. Returns the new object (0 when new failed).
 #include "fable_string.h"
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];              // +0x04..+0x40
     CScriptBase();                          // 0x00CB8110

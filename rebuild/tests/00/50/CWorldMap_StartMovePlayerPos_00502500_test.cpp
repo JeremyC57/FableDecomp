@@ -1,7 +1,7 @@
 // Behaviour test for CWorldMap::StartMovePlayerPos 0x00502500: region swap vs unload/force-load, then record the position.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPlayerPositionInfo { bool Set; C3DVector Pos; };
 template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -13,7 +13,7 @@ static bool g_bRegionLoadingEnabled = true;
 static long g_unloadedRegion = -1, g_loadedRegion = -1, g_forced = -1; static ELoadType g_loadType = LOAD_TYPE_DEFAULT;
 static int g_unloadAll = 0; static bool g_mapLoaded = false;
 
-struct CWorldMap {
+class CWorldMap { public:
     CVector<CPlayerPositionInfo> PlayerPositionInfo;
     virtual void ForceLoad(long map) { g_forced = map; }
     virtual bool IsMapLoaded(long) const { return g_mapLoaded; }

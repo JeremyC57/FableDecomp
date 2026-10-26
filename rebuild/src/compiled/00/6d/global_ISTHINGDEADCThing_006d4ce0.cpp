@@ -5,7 +5,7 @@
 // Layout: CThing's dead flag is bit 0 of +0x91 in retail (the landed IS_THING_DEAD bodies model it the same way;
 //   the PDB CThing layout does not match retail there), so CThing is modelled locally.
 // Shape: `test eax,eax ; je true ; test byte [eax+91h],1 ; jne true ; xor al,al ; ret ; true: mov al,1 ; ret`.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                       // +0x91 bit 0: dead
 };

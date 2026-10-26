@@ -10,14 +10,14 @@ struct CThingList {
     CThingListIterator begin() { return CThingListIterator(m_head->next); }
     CThingListIterator end() { return CThingListIterator(m_head); }
 };
-struct CSetThingInLimbo { bool m_flag; CSetThingInLimbo(bool f) : m_flag(f) { } };
+class CSetThingInLimbo { public: bool m_flag; CSetThingInLimbo(bool f) : m_flag(f) { } };
 static int g_calls = 0;
 static CSetThingInLimbo ForEach(CThingListIterator first, CThingListIterator last, CSetThingInLimbo func)
 {
     for (; first.m_node != last.m_node; first.m_node = first.m_node->next) { first.m_node->flag = func.m_flag ? 1 : 0; ++g_calls; }
     return func;
 }
-struct CTCThingOwner {
+class CTCThingOwner { public:
     CThingList ObjectList;
     void OnSetInLimbo(bool b) { ForEach(ObjectList.begin(), ObjectList.end(), CSetThingInLimbo(b)); }
 };

@@ -13,7 +13,7 @@
 //   memberwise copy constructor, `++_M_finish` as `add dword ptr [edi+4],0Ch`; the empty __false_type temporary is homed
 //   in the dead `x` argument slot.
 // Label correction: catalogued as `Vector_Insert_CCharString`; the body is CArray<CSkeletalMorph>::push_back.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CSkeletalMorph {                                  // CTCSkeletalMorph::CS
 struct __false_type { __false_type() { } };
 inline void* operator new(unsigned int, void* where) { return where; }
 
-template <class T> struct CArray {                       // retail: the 12-byte STLport vector
+template <class T> class CArray { public:                       // retail: the 12-byte STLport vector
     T* _M_start;                                         // +0x00
     T* _M_finish;                                        // +0x04
     T* _M_end_of_storage;                                // +0x08

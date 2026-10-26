@@ -10,7 +10,7 @@
 // is eight scheduled dword moves into the 32-byte frame -- while the implicit assignment is a trivial `rep movsd` x8
 // (`a = b`, then `b = tmp`).
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

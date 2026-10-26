@@ -16,22 +16,22 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
+class CProcessedInput;
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 void __fastcall Destroy_0056c0f0(void* object);        // 0x0056C0F0
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CAInputProcess {
+class CAInputProcess { public:
     virtual void VFunc00();
     virtual bool AddToInterface(CGamePlayerInterface* playerInterface);   // slot 1 (+0x04)
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad000[0x330];
     bool          DisplayBottomHalfGUI;                // +0x330
     void ResetDrawSpiritsHealth();                     // 0x004378E0
@@ -51,7 +51,7 @@ struct CDefPointee {                                   // a counted definition
             DeleteThis();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) { }
     ~CDefPointer()
@@ -60,9 +60,9 @@ template <class T> struct CDefPointer {
             Data->Release();
     }
 };
-struct CCameraModeDef : CDefPointee { };
+class CCameraModeDef : public CDefPointee { public: };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
     bool GetDef(const CCharString& name, CDefPointer<const CCameraModeDef>& def);   // 0x00637650
 };
@@ -73,7 +73,7 @@ struct SCountBlock {
     void* Object;                                      // +8
     SCountBlock(void* object) : References(1), Destroy(Destroy_0056c0f0), Object(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     CCountedPointer(T* p) : Data(p)
@@ -88,7 +88,7 @@ template <class T> struct CCountedPointer {
 
 class CGameCameraManager;
 namespace NCameraModes {
-    struct CBase {
+    class CBase { public:
         CBase(CGameCameraManager* manager, const CDefPointer<const CCameraModeDef>& def);   // 0x0084E420
         virtual ~CBase();
         unsigned char _body[0xd0 - 4];
@@ -107,7 +107,7 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* CameraSource;                // +0x34
 };

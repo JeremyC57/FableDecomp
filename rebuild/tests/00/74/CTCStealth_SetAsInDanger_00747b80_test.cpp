@@ -24,16 +24,16 @@ static int fails = 0;
 class CThing;
 class CBaseObject;
 extern long g_framesPerSecond;                          // 0x01375550
-struct CPlayer {
+class CPlayer { public:
     bool IsMainPlayer() const;                          // 0x00487520
 };
-struct CMusicManager {
+class CMusicManager { public:
     void EnableDangerMusic(bool enable);                // 0x006BDE50
 };
-struct CEnvironment {
+class CEnvironment { public:
     void SetRainEnabled(bool enabled);                  // 0x006B32B0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x18];
     CEnvironment*  PEnvironment;                        // +0x18 scoped_ptr<CEnvironment>
     unsigned char  _pad1c[0x6c - 0x1c];
@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C (const CThing)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01237F1C (const CThing)
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -116,11 +116,11 @@ inline CDangerThing* find_if(CDangerThing* first, CDangerThing* last, CDangerThi
 {
     return __find_if(first, last, pred, random_access_iterator_tag());
 }
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad[0x40];
     float DangerFeedbackHangtimeSeconds;                // +0x40
 };
-struct CTCStealth {
+class CTCStealth { public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04
     bool          ToBeRemoved;                          // +0x08

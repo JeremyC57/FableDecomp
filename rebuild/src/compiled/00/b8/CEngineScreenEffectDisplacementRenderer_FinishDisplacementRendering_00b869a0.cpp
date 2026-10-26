@@ -3,12 +3,12 @@
 // Callees: CDisplayManager::SetRenderTarget @ 0x009BF160 and SetViewport @ 0x009BEF80 (on the global @ 0x01436E1C, the members by address), CRenderTarget::Uninitialise
 // @ 0x00A10E30 (on +0xf0), the pool release @ 0x00F36F00 (on the global @ 0x01436E98 + 0x3190, the texture; an empty `ret 4` in retail). Shape: the render target
 // address stays in edi for the uninitialise call, the flag byte is re-read after it (`jne` skips the release), the +0x10 clear is an immediate.
-struct CRenderTarget {
+class CRenderTarget { public:
     unsigned char _body[0x24];
     void Uninitialise();                           // 0x00A10E30
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);   // 0x009BF160
     void SetViewport(void* viewport);              // 0x009BEF80
 };
@@ -24,7 +24,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CEngineScreenEffectDisplacementRenderer {
+class CEngineScreenEffectDisplacementRenderer { public:
     unsigned char _pad[8];
     bool          m_active;                        // +0x08
     unsigned char _pad09[7];

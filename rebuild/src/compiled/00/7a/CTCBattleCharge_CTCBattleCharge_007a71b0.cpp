@@ -18,7 +18,7 @@ class CBaseObject;
 class CTCBase;
 class CPlayer;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -125,7 +125,7 @@ public:
     unsigned char _pad08[0x4];                      // ToBeRemoved, IsInGlobalUpdateTCs
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

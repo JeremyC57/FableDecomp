@@ -9,7 +9,7 @@
 // UTangent +0x24, VTangent +0x30.
 // Shape: `this` is spilled to the frame (every callee-saved register holds a vertex/face pointer) and reloaded for
 // the second call; both results go through one C3DVector temporary and are copied word by word.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct COptimisedVertex {                   // QuadricOptimiserInternals::COptimisedVertex (retail 0xb8 bytes)

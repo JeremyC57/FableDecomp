@@ -5,11 +5,11 @@
 // @ 0x006E3B30 (result 1 when nothing is played). The forward has the same argument count as this function, so
 // VC7.1 tail-jumps: it overwrites the dead `force` slot with &DialogueVoice and the ignored `layer` slot with
 // the constant layer 1, keeps sampleID/b1/b2 in place and `jmp`s to PlaySpeech.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 typedef long EDialogueLayer;
 typedef long ESpeechPlaybackResult;
 
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x34];               // CTCBase + SpeechSample .. LastNarrator
     bool          IsPureAISpeaker;           // +0x34
     bool          LipSynching;               // +0x35

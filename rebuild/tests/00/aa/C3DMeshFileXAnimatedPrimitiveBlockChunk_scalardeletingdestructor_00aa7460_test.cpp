@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshFileXAnimatedPrimitiveBlockChunk {
+class C3DMeshFileXAnimatedPrimitiveBlockChunk { public:
     void* vftable;
     int destroyed;
 };

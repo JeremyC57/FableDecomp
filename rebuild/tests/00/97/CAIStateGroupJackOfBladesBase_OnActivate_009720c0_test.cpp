@@ -1,15 +1,15 @@
 #include <cstdio>
 // Behaviour model of CAIStateGroup_JackOfBladesBase::OnActivate @ 0x009720C0: clear +0x18 of interface 0xCE when present.
-struct CTCBase { int x; };
+class CTCBase { public: int x; };
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; } };
-struct CThing { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CThing { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) { long type = interfaceType; CInterfaceMap* map = &m_interfaces;
             CInterfaceMap::SEntry* it = map->LowerBound(&type); if (it == map->last || interfaceType < it->type) it = map->last; *ppOut = (T*)it->component; return true; }
         return false; } };
 struct CTCJackOfBlades : CTCBase { unsigned char _pad[0x18]; bool m_defeated; };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
 struct CAIStateGroup_JackOfBladesBase { CAIBrain* PBrain;
     void OnActivate() { CTCJackOfBlades* p = 0; if (PBrain->PCreature->GetInterface(&p, 0xCE)) p->m_defeated = false; } };
 int main()

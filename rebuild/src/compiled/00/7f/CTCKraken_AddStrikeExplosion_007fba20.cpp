@@ -27,11 +27,11 @@ struct CPresenceBits {                             // std::bitset<274>
         return (words[position >> 5] & (1UL << (position & 31))) != 0;
     }
 };
-struct CThing;
+class CThing;
 struct CExplosionDriver {                           // the explosion thing's driver component (interface 0x41)
     void AddExcludedThing(CThing* thing);          // 0x0080CBF0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                  // +0x20
     unsigned char _pad_0x44[0x5c - 0x44];
@@ -83,7 +83,7 @@ struct CThingPointerList {                          // std::list<CIntelligentPoi
     void push_back(const CIntelligentPointer& value) { insert(end(), value); }
 };
 
-struct CTCKraken {
+class CTCKraken { public:
     unsigned char     _pad00[0x04];
     CThing*           ParentThing;                  // +0x04
     unsigned char     _pad08[0x30 - 0x08];

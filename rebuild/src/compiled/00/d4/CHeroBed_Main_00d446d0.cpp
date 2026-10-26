@@ -7,13 +7,13 @@
 // Layout: Ego_r.pdb CHeroBed: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Shape: vector model of the landed CQ_HangingTreeGoodScript::WatchForHeroNearExit 0x00D76490 (`__forceinline` ~vector).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CCPPointerInfo;
-struct CScriptThing {                                   // vtable 0x01238C8C, 12 bytes
+class CCPPointerInfo;
+class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                            // slot 0; complete destructor 0x004AA840
     void*           PImp_Data;                          // +0x04
     CCPPointerInfo* PImp_Info;                          // +0x08
@@ -40,7 +40,7 @@ public:
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
 }
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const; virtual void v007() const;
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;
     virtual void v016() const; virtual void v017() const; virtual void v018() const; virtual void v019() const; virtual void v020() const; virtual void v021() const; virtual void v022() const; virtual void v023() const;
@@ -105,7 +105,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (slo
     virtual void v472() const; virtual void v473() const; virtual void v474() const; virtual void v475() const; virtual void v476() const;
     virtual void SetThingPersistent(const CScriptThing& a0, bool a1) const;   // slot 477 (+0x774) 0x0088E5A0
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

@@ -15,7 +15,7 @@ class CThing { public: unsigned char m_isDead : 1; };
 template <class T> class CIntelligentPointer { public: T* PItem; T* GetPItem() const { return PItem; } };
 class CThingAICreature : public CThing { public: CIntelligentPointer<CThing> HomeBuilding; CIntelligentPointer<CThing> WorkBuilding;
     CThing* GetWorkBuilding() const { return WorkBuilding.GetPItem(); } };
-struct HasBuildingAsWork { CThing* Building;
+class HasBuildingAsWork { public: CThing* Building;
     bool operator()(const CIntelligentPointer<CThingAICreature>& c) const { return c.GetPItem() && !c.GetPItem()->m_isDead && c.GetPItem()->GetWorkBuilding() == Building; } };
 int main()
 {

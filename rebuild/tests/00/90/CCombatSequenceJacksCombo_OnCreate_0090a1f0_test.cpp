@@ -2,10 +2,10 @@
 // on the sequence's owner and target are queued, then the base OnCreate runs; the queue holds the only references.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CThingCreatureBase : CThing {};
-struct CSoundPair { long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
-struct CCombatActionBase {
+class CThing { public: int id; };
+class CThingCreatureBase : public CThing { public:};
+class CSoundPair { public: long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
+class CCombatActionBase { public:
     CThingCreatureBase* Owner; CThing* Target; long Code; long Sound0;
     CCombatActionBase(CThingCreatureBase* o, CThing* t, long code, const CSoundPair& s) : Owner(o), Target(t), Code(code), Sound0(s.m_first) {}
     virtual ~CCombatActionBase() {}
@@ -21,13 +21,13 @@ struct CCountedPointer {
     CCountedPointer& operator=(CCombatActionBase* o) { Reset(o); return *this; }
     ~CCountedPointer() { Release(); }
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     CThingCreatureBase* m_pOwner; CThing* m_pTarget;
     CCountedPointer Queue[4]; int Count; bool Created;
     void AddAction(const CCountedPointer& a) { Queue[Count].m_pObject = a.m_pObject; Queue[Count].m_pCount = a.m_pCount; if (a.m_pCount) ++a.m_pCount->m_references; ++Count; }
     virtual void OnCreate() { Created = true; }
 };
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:
     CCreatureAction_InterruptableMidAttack(CThingCreatureBase* owner, CThing* thing) : CCombatActionBase(owner, thing, 150, CSoundPair()) {}
 };
 struct CCombatSequenceJacksCombo : CCombatSequenceBase { virtual void OnCreate(); };

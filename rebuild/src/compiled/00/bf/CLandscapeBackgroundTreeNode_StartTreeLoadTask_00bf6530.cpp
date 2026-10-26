@@ -6,8 +6,8 @@
 // smaller in the shipped build): LODLoadInfo +0x0c, FileBlockPos +0x8c, FileBlockSize +0x90, AsyncLoadTask +0x98.
 // The task constructor (owner 0, manager, file position, LOD byte, patch flag) is inline and the `new` null test
 // selects 0; `return AsyncLoadTask->m_requested = true;` gives the shared `mov al,1 ; mov [ecx+0Eh],al`.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
 };
 struct SEngine_01436ea8 {
@@ -15,7 +15,7 @@ struct SEngine_01436ea8 {
     CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void AddRequest(long filePos, long size, bool highPriority);   // 0x00BE06B0
 };
 struct CRequestOwner;
@@ -40,7 +40,7 @@ struct CLODLoadInfo {                              // 16 bytes
     long FileBlockSize;                            // +0x04
     unsigned char _pad08[8];
 };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void*                         __vftable;               // +0x00 (CMovableResource)
     unsigned char                 _pad04[8];
     CLODLoadInfo                  LODLoadInfo[8];          // +0x0c

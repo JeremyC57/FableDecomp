@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* __p) { return __p; }
 
 class CTCInventoryExperience {
 public:
-    class ExperienceSpendInfo {
+    struct ExperienceSpendInfo {
     public:
         long currentSpend;                          // +0x0
         long initialSpend;                          // +0x4

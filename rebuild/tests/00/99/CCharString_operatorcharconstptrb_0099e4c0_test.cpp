@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct StringRep { char* data; long len; };
-struct CCharString { StringRep* rep; };
+class CCharString { public: StringRep* rep; };
 
 // Stand-in for the masked empty-string sentinel global (address 0x0129AAF4).
 char g_EmptyCharString_0129AAF4[1] = { 0 };

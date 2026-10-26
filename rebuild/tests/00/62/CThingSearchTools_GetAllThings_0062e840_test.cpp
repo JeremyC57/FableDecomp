@@ -7,9 +7,9 @@
 #define __forceinline inline
 #endif
 struct __true_type { __true_type() {} };
-struct CBaseObject { int Tag; };
+class CBaseObject { public: int Tag; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char UsingComponents[0x24];
     unsigned long ThingTypeFlags;
@@ -75,8 +75,8 @@ template <class T> void CResultVector<T>::_M_insert_overflow(T* position, const 
     free(_M_start);
     _M_start = mem; _M_finish = out; _M_end_of_storage = mem + cap;
 }
-struct CThingMarker : CThing { enum { ThingTypeMask = 0x8007 }; };
-struct CThingFilter_HasScriptName {
+class CThingMarker : public CThing { public: enum { ThingTypeMask = 0x8007 }; };
+class CThingFilter_HasScriptName { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };

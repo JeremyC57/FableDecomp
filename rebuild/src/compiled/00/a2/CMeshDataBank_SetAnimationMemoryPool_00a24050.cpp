@@ -8,7 +8,7 @@
 // AnimationResourceBank's notification interface (bank +4, i.e. +0x26c). The by-value parameter's destructor
 // (`dec [edi] ; jne`, the block in a register) ends the function. Retail offsets are the PDB's minus
 // 0x74 (AnimationMemoryPool PDB 0x3d4, AnimationResourceBank PDB 0x2dc).
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
 struct SCountBlock {
     long m_references;                              // +0
@@ -16,7 +16,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;                              // +0
     SCountBlock* m_pCount;                          // +4
     ~CCountedPointer()
@@ -51,18 +51,18 @@ template <class T> struct CCountedPointer {
 
 struct CResourceBankOwner { void* m_pFirst; };    // the pool-facing interface at bank +4
 
-struct CResourceBank {                              // 0x7c bytes in retail
+class CResourceBank { public:                              // 0x7c bytes in retail
     void*              __vftable;                   // +0
     CResourceBankOwner Owner;                       // +4
     unsigned char      _rest[0x7c - 8];
 };
 
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     unsigned char       _pad[0x34];
     CResourceBankOwner* POwner;                     // +0x34
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char _pad000[0x170];
     CResourceBank MeshResourceBank;                 // +0x170
     CResourceBank MeshStatsResourceBank;            // +0x1ec

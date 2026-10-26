@@ -14,36 +14,36 @@
 //          `return !failed;` puts it after the `sete al` exit).
 // Layout: engine/CAIStateGroup_WorkAtSchool.h layout (no members used) over the landed CAIStateGroupBase model;
 //          CCreatureAction_PlayAnimation is 0xb4 bytes (base 0xa8 + 0xc), as in the landed Wander/ChickenWander rows.
-struct CThingCreatureBase;
-struct CCharString { void* PStringData; };
+class CThingCreatureBase;
+class CCharString { public: void* PStringData; };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, const CSoundPair& sound,
         bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_FrameRate;                        // 0x01375550
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

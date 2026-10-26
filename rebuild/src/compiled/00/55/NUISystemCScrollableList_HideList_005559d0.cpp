@@ -11,7 +11,7 @@ struct C2DVector {
     C2DVector(float x,float y):X(x),Y(y) {}
     C2DVector(const C2DVector& other):X(other.X),Y(other.Y) {}
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -31,7 +31,7 @@ struct CComponent {
     virtual C2DVector GetPosition() const;
 };
 struct CListEntry { CComponent* Component; unsigned long Data; };
-struct CScrollableList {
+class CScrollableList { public:
     void* VTable;
     unsigned char BaseLayout[0xb0-4];
     CListEntry* EntriesStart; CListEntry* EntriesFinish; CListEntry* EntriesEnd;

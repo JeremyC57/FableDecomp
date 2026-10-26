@@ -6,13 +6,13 @@
 // branch nodes are modelled locally (LeftBranch +0x04, RightBranch +0xEC). The left status is homed by the
 // compiler in the dead last-argument slot and compared again after the right branch has run.
 enum LS_LOADING_STATUS { LS_LOADING_STATUS_NONE = 0, LS_LOADED = 1, LS_LOADING = 2, LS_FAILED = 3 };
-struct CEngineStaticMapFileBlockManager;
-struct CLandscapeBackgroundTreeNode {
+class CEngineStaticMapFileBlockManager;
+class CLandscapeBackgroundTreeNode { public:
     unsigned char _pad00[0xe8];                    // retail node size
     LS_LOADING_STATUS ProcessBackgroundLoading(double time, bool force, CEngineStaticMapFileBlockManager* blocks,
                                                bool immediate, bool lowPriority);   // 0x00BF8030
 };
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     void* __vftable;                               // +0x00
     CLandscapeBackgroundTreeNode LeftBranch;       // +0x04
     CLandscapeBackgroundTreeNode RightBranch;      // +0xEC

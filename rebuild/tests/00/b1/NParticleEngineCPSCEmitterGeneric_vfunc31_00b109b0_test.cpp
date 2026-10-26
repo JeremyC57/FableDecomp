@@ -14,7 +14,7 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 extern const float Zero_0122dedc; // retail zero constant at 0x0122DEDC
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& b) : X(b.X), Y(b.Y), Z(b.Z) {}
@@ -32,11 +32,11 @@ struct CPointVector {
     C3DVector* _M_finish;
     C3DVector* _M_end_of_storage;
 };
-struct CCardinalSpline { CPointVector ControlPoints; };
+class CCardinalSpline { public: CPointVector ControlPoints; };
 struct SCountedInfo;
-template<class T> struct CCountedPointer { T* Data; SCountedInfo* Info; };
+template<class T> class CCountedPointer { public: T* Data; SCountedInfo* Info; };
 namespace NParticleEngine {
-struct CPSCEmitterGeneric {
+class CPSCEmitterGeneric { public:
     unsigned char _pad00[0x18];
     CCountedPointer<CCardinalSpline> Spline;
     unsigned long _pad20;

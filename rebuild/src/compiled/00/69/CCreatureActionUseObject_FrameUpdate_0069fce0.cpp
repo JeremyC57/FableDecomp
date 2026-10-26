@@ -17,15 +17,15 @@
 extern "C" double __cdecl atan2(double y, double x);
 extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29)
@@ -33,7 +33,7 @@ struct CTCPhysicsBase {
     VF10(3) VF10(4) VF10(5) VF(60) VF(61) VF(62) VF(63) VF(64)
     virtual void SetFacingAngle(float fraction);   // slot 66 (+0x108)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -73,11 +73,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CRightHandedSet {                        // 24 bytes: two axes
+class CRightHandedSet { public:                        // 24 bytes: two axes
     C3DVector XAxis;                            // +0x00
     C3DVector YAxis;                            // +0x0c
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void UpdateMovement();              // slot 3 (+0x0c)
     virtual void FinishAction();                // slot 4 (+0x10)
@@ -86,7 +86,7 @@ struct CCreatureActionBase {                    // retail sizeof 0xa8
     unsigned char           _pad10[0xa8 - 0x10];
     void FrameUpdate();                         // 0x00694020
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     CBaseIntelligentPointer PUsedThing;         // +0xa8
     CTCPhysicsBase*         PreviousPhysicsComponent;   // +0xb0
     CRightHandedSet         Dummy;              // +0xb4

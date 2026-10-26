@@ -13,7 +13,7 @@
 // whose ->component is stored (`*out = ((it == last || 8 < it->type) ? last : it)->component`), which loads the component
 // straight into ecx as retail does (the if/assign form carries it in eax, 126 bytes). Same fix as 0x00899B10.
 class CScriptThing;
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

@@ -9,7 +9,7 @@ struct CEngineGlobal { CTexturePool m_texturePool; };
 static CEngineGlobal g_engine;
 static CEngineGlobal* g_pEngine = &g_engine;
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void* m_pReflectionTexture; long m_reflectionSlot;
     void* m_pRefractionTexture; long m_refractionSlot;
     void* m_pSeaBumpTexture;    long m_seaBumpSlot;

@@ -4,7 +4,7 @@
 // (on the map object at +0 of the state entry), ~CCharString @ 0x0099EAE0 (on the record's name at +4: the record's inline destructor). Shape: the map
 // state table at +0x20 holds pointers to 12-byte entries {map, ?, id}; the 0x20-byte frame holds the returned record (its id read from +4, its name destroyed at +8);
 // the chunk label "CEngine::MapState_SetLoaded" names the method; `this` is the map manager (pointer table at +0x20).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -28,7 +28,7 @@ struct SEngineState_01436e8c {
 };
 extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
 
-struct CEngineMap {
+class CEngineMap { public:
     void OnLoaded();                               // 0x00BDBFE0
 };
 

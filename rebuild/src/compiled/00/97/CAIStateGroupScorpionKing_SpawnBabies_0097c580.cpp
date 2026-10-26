@@ -25,26 +25,26 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                  // +0x04..+0xa7
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
     ~CCombatActionBase();                       // 0x0062E900
 };
 
-struct CCreatureAction_ScorpionSummon : CCombatActionBase {
+class CCreatureAction_ScorpionSummon : public CCombatActionBase { public:
     CCreatureAction_ScorpionSummon(CThingCreatureBase& creature, CThingCreatureBase& enemy);   // 0x008E46D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

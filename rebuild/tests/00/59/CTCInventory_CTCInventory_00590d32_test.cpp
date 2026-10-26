@@ -23,7 +23,7 @@
 
 #include <new>
 class CThing;
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 
 namespace NInventory {
 class CTCInventoryBase {                                      // vtable 0x01253DBC, retail sizeof 0x130
@@ -42,8 +42,8 @@ public:
 }
 
 template<class T> struct CAllocator { CAllocator() { } };
-struct CFadeInFadeOutBase { unsigned char _body[0x0c]; };
-struct CRightHandedSet { float m[6]; };
+class CFadeInFadeOutBase { public: unsigned char _body[0x0c]; };
+class CRightHandedSet { public: float m[6]; };
 
 struct CEditBoxList {                                         // list<NUISystem::CEditBox*> (one word)
     void* _M_node;
@@ -81,11 +81,11 @@ struct CGameProfile {
     unsigned long GetNumQuickAccessSlots() const;             // 0x00445950
     unsigned long GetNumContextSensitiveSlots() const;        // 0x00445960
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x0C];
     CGameProfile* PProfile;                                   // +0x0C
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                                 // 0x00449960
 };
 

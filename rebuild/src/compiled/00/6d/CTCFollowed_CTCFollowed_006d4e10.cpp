@@ -12,7 +12,7 @@
 // Shape: the list constructor (landed std::list 0x006C28A0 model): `head(0)` before the allocation, the sentinel
 // self-linked through a local before it is stored; the two counters share the zero register with the head inits.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -33,12 +33,12 @@ struct CRetailList_node0x10 {                               // STLport list<CInt
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
 
-struct CTCFollowed : CTCBase_Calls {
+class CTCFollowed : public CTCBase_Calls { public:
     CRetailList_node0x10 Followers;                         // +0x0C list<CIntelligentPointer<CThing>>
     CRetailList_node0x10 AIFollowers;                       // +0x10 list<CIntelligentPointer<CThingAICreature>>
     long                 FrameLastIdleReaction;             // +0x14

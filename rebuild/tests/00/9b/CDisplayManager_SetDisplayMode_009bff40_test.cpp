@@ -1,11 +1,11 @@
 // Behaviour test for CDisplayManager::SetDisplayMode (0x009BFF40): an unchanged mode returns 2 without a reset; any
 // change resets with the last parameters plus the new size (clamped to >= 32), depth, refresh rate and multisampling.
 #include <cstdio>
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                        // +0x00
     long Y;                                        // +0x04
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     unsigned long GetColourDepth() const { return FormatIndex == 1 ? 32 : 16; }
 };

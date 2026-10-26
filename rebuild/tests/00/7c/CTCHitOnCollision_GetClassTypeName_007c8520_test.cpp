@@ -10,8 +10,8 @@
 static const char* g_seen_text;
 static int g_seen_len;
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* m_data;
     CCharString(const char* text, int length);
 };
@@ -23,8 +23,8 @@ CCharString::CCharString(const char* text, int length)
     m_data = (void*)text;
 }
 
-struct CTCHitOnCollision
-{
+class CTCHitOnCollision
+{ public:
     CCharString GetClassTypeName();
 };
 

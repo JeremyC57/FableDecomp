@@ -1,6 +1,6 @@
 // CCameraCollisionDef::Copy(CDefClassBase const*)
 #include "engine/CCameraCollisionDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase;
+class CDefClassBase;
 
 
 // Base-class Copy, called via rel32.

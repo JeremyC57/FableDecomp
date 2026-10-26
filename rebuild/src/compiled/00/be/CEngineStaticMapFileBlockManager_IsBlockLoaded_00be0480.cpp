@@ -3,7 +3,7 @@
 // Callees: the set's find @ 0x00BE0930 (on +8: the node result by reference in the one-word frame, the key by reference), CBankFileAsyncData::IsFinished @ 0x009D54E0
 // (on the data at +0x1c of the node; a bool in al). Shape: the set address is formed with `lea esi,[ecx+8]` and its first word re-read for the sentinel compare;
 // `xor al,al` for the miss.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished();                             // 0x009D54E0
 };
 struct SBlockNode_00be0400 {                        // the set node: the async data at +0x1c, the high-priority flag at +0x18, the pending count at +0x14
@@ -20,7 +20,7 @@ struct CRetailBlockSet {                           // the retail set at +8: its 
     void Find(SBlockNode_00be0400*& result, const long& key);                 // 0x00BE0930
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     unsigned char   _pad[8];
     CRetailBlockSet m_blocks;                      // +0x08
     bool IsBlockLoaded(long block);

@@ -9,7 +9,7 @@ struct CScriptThing_Retail : CBase {
     CCountedPointer_Retail PImp;
     CScriptThing_Retail() : CBase(), PImp() { }
 };
-struct CTimer { long TimerIndex; CTimer() : TimerIndex(g_pThingManager_0143e8f8->CreateTimer()) { } };
+class CTimer { public: long TimerIndex; CTimer() : TimerIndex(g_pThingManager_0143e8f8->CreateTimer()) { } };
 struct CCrateTeamManager {
     long               StateCounter[6];
     long               MemberCount;

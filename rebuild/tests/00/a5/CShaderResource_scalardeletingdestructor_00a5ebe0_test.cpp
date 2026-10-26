@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CShaderResource {
+class CShaderResource { public:
     void* vftable;
     int destroyed;
 };

@@ -20,7 +20,7 @@
 #include <new>
 class CDefClassBase {
 public:
-    struct CSubDefInfo {
+    class CSubDefInfo { public:
         long DefIndex;
         long OriginalParentDefIndex;
     };

@@ -13,13 +13,13 @@
 // re-read from the members after the calls; the element is bound to a reference local once per
 // iteration (`lea edi,[ecx+ebp*8]`) so both GetPItem calls reuse it.
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                         // +0x91 bit 0
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer
 {
@@ -29,8 +29,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -44,11 +44,11 @@ struct CRetailVector                                // retail std::vector: {firs
     const T& operator[](unsigned int i) const { return _First[i]; }
 };
 
-struct CThingAICreature : CThing {};
+class CThingAICreature : public CThing { public:};
 
 #pragma pack(push, 1)
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     CThing*       ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

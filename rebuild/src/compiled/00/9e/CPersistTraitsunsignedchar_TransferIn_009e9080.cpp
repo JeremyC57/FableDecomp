@@ -1,5 +1,5 @@
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
 // helper at 0x9e2590: __fastcall(ecx=context, edx=parser, stack: out-byte-ptr)
 extern unsigned char __fastcall PersistByteHelper(CPersistContext* context,

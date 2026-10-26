@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-struct CGuiControlTree;
+class CGuiControlTree;
 
 void __fastcall SubInit_5b1b20(CGuiControlTree* self, long index);
 
-struct CGuiControlTree
-{
+class CGuiControlTree
+{ public:
     char pad[0xC];
 };
 

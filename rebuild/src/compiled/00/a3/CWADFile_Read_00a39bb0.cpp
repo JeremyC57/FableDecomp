@@ -6,7 +6,7 @@
 // the `FilePos += size` after the call (FilePos re-read from memory). Members from the engine header (Bank +4, Index +8, FilePos +0xc).
 #include "engine/CWADFile.h"
 
-struct CBankFileAsync {
+class CBankFileAsync { public:
     void ReadEntryData(unsigned long index, unsigned long offset, void* buffer, unsigned long size);   // 0x009CC2A0
 };
 

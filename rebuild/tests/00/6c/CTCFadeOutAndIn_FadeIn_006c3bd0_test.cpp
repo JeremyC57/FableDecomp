@@ -2,9 +2,9 @@
 #include <math.h>
 int g_framesPerSecond = 30;
 struct CThingGraphic { unsigned char _pad[0x5a]; unsigned char m_alpha; };
-struct CThing { unsigned char _pad[0x64]; CThingGraphic* m_pGraphic; };
-struct CTCBase { void* vt; CThing* ParentThing; unsigned char _pad8[4]; };
-struct CTCFadeOutAndIn : CTCBase { bool FadingOut; bool FadingIn; float Alpha; long FramesLeftForFade; void FadeIn(float seconds, bool immediately); };
+class CThing { public: unsigned char _pad[0x64]; CThingGraphic* m_pGraphic; };
+class CTCBase { public: void* vt; CThing* ParentThing; unsigned char _pad8[4]; };
+class CTCFadeOutAndIn : public CTCBase { public: bool FadingOut; bool FadingIn; float Alpha; long FramesLeftForFade; void FadeIn(float seconds, bool immediately); };
 __forceinline long ROUND(float value) { long result;
     __asm fld value
     __asm fistp result

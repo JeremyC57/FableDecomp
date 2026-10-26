@@ -9,7 +9,7 @@ struct TimerMap {
     Iter LowerBound(const long* key);
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char pad[0x3c];
     TimerMap map;                // +0x3c
     long GetTimer(long key) const;

@@ -9,29 +9,29 @@
 //   (`test ah,41h ; jne`), the dot product summed z, y, then x and compared with D (`dot > D` exits); the plane is an indexed
 //   reference (`FrustrumPlanes[i]`: VC biases the strength-reduced pointer to +8; a walking plane pointer does not); the grid loops are
 //   unsigned (`jb`) with the width re-read after each call.
-struct C3DVector { float X, Y, Z; };
-struct CPlane {
+class C3DVector { public: float X, Y, Z; };
+class CPlane { public:
     C3DVector Normal;                                  // +0x00
     float     D;                                       // +0x0c
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad[0x1c0];
     CPlane        FrustrumPlanes[4];                   // +0x1c0
 };
 extern CEngineCamera* g_pEngineCamera;                 // 0x01436EA0
 
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     unsigned char _pad[0xa8];
     C3DVector     BoundsMin;                           // +0xa8
     C3DVector     BoundsMax;                           // +0xb4
 };
 
-struct CEngineLandscapePatch {                         // 0x48 bytes
+class CEngineLandscapePatch { public:                         // 0x48 bytes
     unsigned char _body[0x48];
     void RenderForeground();                           // 0x00BF4570
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                         __vftable;           // +0x00
     CLandscapeBackgroundTreeNode* PatchTree;           // +0x04
     CEngineLandscapePatch*        Patches;             // +0x08

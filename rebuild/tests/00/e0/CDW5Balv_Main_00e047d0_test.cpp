@@ -2,7 +2,7 @@
 // checks the filter, the awareness wait, the best-enemy target and the update-until-done loop.
 #include <cstdio>
 static int g_aware = 1000;
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing(int i) : id(i) { }
     CScriptThing(const CScriptThing& o) : id(o.id) { }
@@ -11,7 +11,7 @@ struct CScriptThing {
 };
 static int g_updates = 0, g_removes = 0, g_targets = 0; static bool g_ra = false, g_rb = false; static int g_targetId = 0, g_targetOf = 0;
 static CScriptThing g_hero(99);
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void Update() { ++g_updates; }
     virtual const CScriptThing& GetHero() { return g_hero; }
     virtual void RemoveThing(const CScriptThing& t, bool a, bool b) const { ++g_removes; g_ra = a; g_rb = b; (void)t; }

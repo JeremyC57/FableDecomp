@@ -1,9 +1,9 @@
 // Test for 0077ace0 CTCDExperienceOrb scalar deleting destructor: def released once (body PDef = 0, then the member's
 // own release finds null), CTCBase destructor last, storage freed through delete.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseDtor = 0, g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount;
     virtual ~CDefPointeeBase() {}
     virtual void Destroy() { ++g_destroyed; }
@@ -23,12 +23,12 @@ struct CDefPointer {
     CDefPointer& operator=(int) { Release(); Object = 0; return *this; }
     ~CDefPointer() { Release(); }
 };
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* parent) : ParentThing(parent) {}
     virtual ~CTCBase() { ++g_baseDtor; }
 };
-struct CTCDExperienceOrb : CTCBase {
+class CTCDExperienceOrb : public CTCBase { public:
     CDefPointer PDef;
     long ExperiencePoints;
     CTCDExperienceOrb(CThing* parent) : CTCBase(parent), ExperiencePoints(0) {}

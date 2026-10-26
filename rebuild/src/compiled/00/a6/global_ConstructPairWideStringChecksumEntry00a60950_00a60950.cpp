@@ -9,7 +9,7 @@
 // its size (8 words).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;                               // +0x00
     CWideString(const CWideString& other);       // 0x0099B720
 };

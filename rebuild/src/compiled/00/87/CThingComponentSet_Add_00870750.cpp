@@ -11,11 +11,11 @@
 // Entries} at +0; the registered info is {allocator +0, type +4, CCharString name +8} (`CRegisteredTCInfo(alloc, ulong, name)`).
 // Shape: the entry is a packed 9-byte temporary (frame offset 3 of a 12-byte frame) built by an inline constructor: the
 // type is loaded into esi before the CDefString call, the flag after it, both stored once the push_back argument is out.
-struct CThing;
-struct CTCBase;
-struct CCharString { void* m_pData; };
+class CThing;
+class CTCBase;
+class CCharString { public: void* m_pData; };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                             // +0
     CDefString(const CCharString& name);       // 0x009D5060
 };
@@ -43,7 +43,7 @@ struct CSmallVector_CEntry {                   // CSmallVector<CThingComponentSe
     void push_back(const CEntry& entry);       // 0x00870480
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector_CEntry Entries;               // +0
     void Add(const CCharString& name, bool flag);
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_StrikeResponseJackOfBladesIntoRush {
+class CCombatAction_StrikeResponseJackOfBladesIntoRush { public:
     void* vftable;
     int destroyed;
 };

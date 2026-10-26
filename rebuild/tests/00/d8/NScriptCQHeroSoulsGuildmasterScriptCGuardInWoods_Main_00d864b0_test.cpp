@@ -65,10 +65,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -92,15 +92,15 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -145,31 +145,31 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){}
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -1075,8 +1075,8 @@ void CGuardInWoods::Main() {
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -1084,8 +1084,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -1169,16 +1169,16 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CRGBColour { unsigned int rgba; }; // unused by candidate; color by-value ABI
+class CRGBColour { public: unsigned int rgba; }; // unused by candidate; color by-value ABI
 CWideString::CWideString():storage_(0){}
 CWideString::~CWideString(){}
 CWideString::CWideString(const CWideString&):storage_(0){}
 #include <cstdio>
 #include <cstring>
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 static int Copies,Releases,Frames,Checks,Targets,StopAt,FlagAt;static bool Bad;
 static CGuardInWoods* Current;static CScriptThing Hero;
-struct CCPPointerInfo {unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 ScriptThingCopy::ScriptThingCopy(const CScriptThing& other) {__vftable=other.__vftable;PImp_Data=other.PImp_Data;PImp_Info=other.PImp_Info;if(PImp_Info)++PImp_Info->RefCount;++Copies;}
 ScriptThingCopy::~ScriptThingCopy(){if(PImp_Info){--PImp_Info->RefCount;if(!PImp_Info->RefCount){PImp_Info->DeleteFunc(PImp_Info->Data);delete PImp_Info;}}PImp_Data=0;PImp_Info=0;++Releases;}
 bool NScript::CIsThingAlive::operator()()const{return true;}

@@ -21,7 +21,7 @@ struct __declspec(novtable) C3DPositionInterpolator : CBase {       // +0x1c, 0x
 struct __declspec(novtable) C3DOrientationInterpolator : CBase {    // +0x38, 0x34 bytes
     unsigned char _data[0x30];
 };
-struct C3DAnimationInterpolator {               // +0x6c, 0x14 bytes
+class C3DAnimationInterpolator { public:               // +0x6c, 0x14 bytes
     unsigned char _data[0x14];
     ~C3DAnimationInterpolator();                // 0x004C2E90
 };

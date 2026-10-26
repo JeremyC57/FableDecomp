@@ -1,8 +1,8 @@
 #include <map>
 #include <cstdio>
 
-struct CCharString
-{
+class CCharString
+{ public:
     int v;
     CCharString() : v(0) {}
     CCharString(int x) : v(x) {}
@@ -12,8 +12,8 @@ struct CCharString
 };
 
 template <typename T>
-struct CArray
-{
+class CArray
+{ public:
     int m_pFirst;
     int m_pLast;
 };

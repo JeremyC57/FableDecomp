@@ -5,7 +5,7 @@
 // Layout: Ego_r.pdb CPatchTesselationEdgeStrip (0x2c bytes, vtable 0x012A8318; same model as the landed Reset 0x00BFC3B0).
 // Shape: the four `if (Data) FreeVirtual(Data)` blocks are the CEdgeStipVertexArray members' own inline destructors,
 // run by the compiler in reverse declaration order (+0x20, +0x18, +0x10, +8); the body of the strip's destructor is empty.
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 struct SEngine_01436ea8 {
@@ -20,7 +20,7 @@ namespace N_0099a300 { struct CBase {
 }; } using N_0099a300::CBase;
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     ~CEdgeStipVertexArray()
@@ -30,7 +30,7 @@ struct CEdgeStipVertexArray {
     }
 };
 
-struct CPatchTesselationEdgeStrip : CBase {        // vtable 0x012A8318, 0x2c bytes
+class CPatchTesselationEdgeStrip : public CBase { public:        // vtable 0x012A8318, 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

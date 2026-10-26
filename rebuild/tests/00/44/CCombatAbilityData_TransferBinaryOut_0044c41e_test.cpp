@@ -5,7 +5,7 @@ struct CBinaryStream {
     void PutInt(int v){ intCalls++; lastInt=v; }
     void PutFloat(float v){ floatCalls++; lastFloat=v; }
 };
-struct CCombatAbilityData { int field_0; int PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; int int10; };
+class CCombatAbilityData { public: int field_0; int PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; int int10; };
 
 static void TransferBinaryOut(CCombatAbilityData* ability, CBinaryStream* stream)
 {

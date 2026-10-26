@@ -5,8 +5,8 @@ enum ECombatAbilityDataType
     ECADT_Base = 0
 };
 
-struct CCombatAbilityData
-{
+class CCombatAbilityData
+{ public:
     void* vtbl;
 };
 

@@ -1,4 +1,4 @@
-struct CEngineLayerRenderer {
+class CEngineLayerRenderer { public:
     void* vftable;
 };
 

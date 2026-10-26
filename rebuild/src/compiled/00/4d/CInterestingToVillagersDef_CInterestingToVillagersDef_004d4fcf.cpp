@@ -6,7 +6,7 @@ struct CDefBase_0044c0c0 {                        // the def base (its construct
     virtual void v00();
     CDefBase_0044c0c0();
 };
-struct CInterestingToVillagersDef : CDefBase_0044c0c0 {   // vtable 0x0123C6D4
+class CInterestingToVillagersDef : public CDefBase_0044c0c0 { public:   // vtable 0x0123C6D4
     unsigned char _pad04[0x24];
     float         Interest;                            // +0x28
     virtual void v00();

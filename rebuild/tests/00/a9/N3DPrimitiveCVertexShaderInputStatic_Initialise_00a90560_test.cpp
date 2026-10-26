@@ -3,12 +3,12 @@
 #include <cstdio>
 enum EVertexStreamDataType { VSDT_FLOAT2 = 1, VSDT_FLOAT3 = 2, VSDT_FLOAT4 = 3, VSDT_D3DCOLOR = 4, VSDT_SHORT4 = 7,
                              VSDT_USHORT2N = 11, VSDT_USHORT4N = 12, VSDT_UDEC3 = 13 };
-struct CVertexStreamFormat {
+class CVertexStreamFormat { public:
     int count; unsigned long usage[8]; int type[8];
     CVertexStreamFormat() : count(0) { }
     void AddDataElement(unsigned long u, EVertexStreamDataType t) { usage[count] = u; type[count] = t; ++count; }
 };
-struct CVertexShaderInput {
+class CVertexShaderInput { public:
     CVertexStreamFormat last; unsigned long stream; bool flag;
     void AddStream(unsigned long s, const CVertexStreamFormat& f, bool b) { stream = s; last = f; flag = b; }
 };

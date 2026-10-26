@@ -18,7 +18,7 @@
 //   list reference is taken first (ebp); capture block = the 0x00B68610 inline.
 struct CStateInfo { unsigned char _body[0x14]; };
 struct CStateStackElement { CStateInfo* State; unsigned long Value; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*              __vftable;            // +0x00
     void*              PD3DDevice;           // +0x04
     CStateStackElement StateStack[1024];     // +0x08
@@ -41,7 +41,7 @@ struct CRenderStateManager {
 };
 extern CRenderStateManager* g_pRenderStateManager;   // 0x013CB508
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad000[0x08];
     long          VertexShaderConstantLayout;    // +0x08
     unsigned char _pad00c[0x390 - 0x0c];
@@ -93,11 +93,11 @@ struct CShaderStatesScope {
     }
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void RenderForeground();                     // 0x00BDC2D0
     void RenderBackground();                     // 0x00BDC060
 };
-struct CEngineMap { CEngineLandscapeMap* LandscapeMap; };
+class CEngineMap { public: CEngineLandscapeMap* LandscapeMap; };
 struct _List_node { _List_node* _M_next; _List_node* _M_prev; CEngineMap* _M_data; };
 struct _List_iterator {
     _List_node* _M_node;
@@ -111,7 +111,7 @@ struct CEngineMapList {                            // STLport list<CEngineMap*>
     _List_iterator begin() { return _List_iterator(_M_node->_M_next); }
     _List_iterator end() { return _List_iterator(_M_node); }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char  _pad[0x2c];
     CEngineMapList VisibleMapList;                 // +0x2c
 };
@@ -122,7 +122,7 @@ struct CEngineRenderParams {
     long  Pass;                                    // +0x04
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char _pad000[0x610];
     bool          RenderForegroundEnabled;         // +0x610
     bool          RenderBackgroundEnabled;         // +0x611

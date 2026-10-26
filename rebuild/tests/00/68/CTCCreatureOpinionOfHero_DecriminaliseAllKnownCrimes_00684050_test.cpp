@@ -3,7 +3,7 @@
 // a linked deed's partner too.
 #include <cstdio>
 
-struct COpinionDeed { long Type; bool Decriminalised; bool IsCrime; long LinkedHandle; };
+class COpinionDeed { public: long Type; bool Decriminalised; bool IsCrime; long LinkedHandle; };
 static COpinionDeed g_deeds[8];
 static int g_cleared[16]; static int g_nCleared = 0;
 struct Log {

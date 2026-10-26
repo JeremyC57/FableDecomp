@@ -12,8 +12,8 @@
 //         CBase DefaultFOV +0x04, CameraManager +0x40, ObservedPositionZOffset +0x8c; CGameCameraManager CurrentMode +0x98.
 // Shape: the Z lift adds a double literal 1.0 (`fadd qword`); the constant stores, the manager load and the copy of the current
 //        mode's Z offset are scheduled around it.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -24,7 +24,7 @@ struct CInterfaceMap {                               // CVectorMap<ETCInterfaceT
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                  // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                      // +0x44
@@ -43,28 +43,28 @@ struct CThing {
     }
     const C3DVector& GetPosition() const;            // 0x004C73D0
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void*   __vftable;
     CThing* ParentThing;                             // +0x04 (CTCBase)
 };
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     CTCTavernGame* GetGame() const;                  // 0x005EDC90
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;                    // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer() const;                  // 0x0049D9D0
 };
 namespace NCameraModes {
-struct CBase;
+class CBase;
 }
-struct CGameCameraManager {                          // retail offsets
+class CGameCameraManager { public:                          // retail offsets
     unsigned char        _pad000[0x98];
     NCameraModes::CBase* CurrentMode;                // +0x98
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     float               DefaultFOV;                  // +0x04
     float               DefaultRollAngle;            // +0x08

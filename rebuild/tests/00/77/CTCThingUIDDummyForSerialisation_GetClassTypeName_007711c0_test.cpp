@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n);
 };
 
-struct CTCThingUIDDummyForSerialisation {
+class CTCThingUIDDummyForSerialisation { public:
     int dummy;
     CCharString GetClassTypeName();
 };

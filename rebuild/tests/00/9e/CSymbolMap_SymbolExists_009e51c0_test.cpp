@@ -2,7 +2,7 @@
 // that falls between entries or past the end.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 class CCharString {
 public:
     CCharStringData* m_pStringData;
@@ -21,7 +21,7 @@ SSymbolPair* CSymbolVectorMap::LowerBound(const CCharString& key) const
     while (it != m_pLast && it->first.FastCompare(key)) ++it;
     return it;
 }
-struct CSymbolMap {
+class CSymbolMap { public:
     void* _padding_; CSymbolVectorMap SLONGMap;
     bool SymbolExists(const CCharString& name) const;
 };

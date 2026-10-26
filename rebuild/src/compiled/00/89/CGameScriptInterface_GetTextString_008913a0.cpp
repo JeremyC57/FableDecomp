@@ -2,8 +2,8 @@
 // Returns CWideString by value; forwards to a member helper obtained from a global.
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString { char* p; };
-struct CWideString { unsigned short* p; };
+class CCharString { public: char* p; };
+class CWideString { public: unsigned short* p; };
 
 // Subobject at global[0x14] whose member GetText builds a CWideString by value.
 struct Sub {

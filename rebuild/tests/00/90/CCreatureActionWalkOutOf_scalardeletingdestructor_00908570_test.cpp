@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_WalkOutOf {
+class CCreatureAction_WalkOutOf { public:
     void* vftable;
     int destroyed;
 };

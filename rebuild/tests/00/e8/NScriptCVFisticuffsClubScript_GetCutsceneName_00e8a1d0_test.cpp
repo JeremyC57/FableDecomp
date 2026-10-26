@@ -1,7 +1,7 @@
 // Behaviour test for 0x00E8A1D0 CV_FisticuffsClubScript::GetCutsceneName: region 1..4 prefixes, error default.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }

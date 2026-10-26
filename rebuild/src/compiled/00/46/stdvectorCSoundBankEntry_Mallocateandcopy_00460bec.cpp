@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CSoundBankEntry {                           // PDB 20 bytes
+class CSoundBankEntry { public:                           // PDB 20 bytes
     unsigned long ID;                              // +0x00
     long          Filename;                        // +0x04 CDefString (string-table index)
     long          SymbolFilename;                  // +0x08 CDefString

@@ -12,24 +12,24 @@
 // reference (esi). Z is left as given; RHW is 1. Both record bits are cleared (`and cl,0FCh`).
 // A same-TU read-only _M_insert_overflow stand-in keeps the vertex local from escaping; with only a declaration the
 // later vertices schedule the RHW store three slots late.
-struct CTVertexRHWColSpecTex1 {                         // 32 bytes
+class CTVertexRHWColSpecTex1 { public:                         // 32 bytes
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;
     float U, V;
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -37,7 +37,7 @@ struct CWideString {
 };
 
 struct IDirect3DTexture9;
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLength : 28;                 // +0x04
     unsigned long      AllocationSource : 4;
@@ -47,7 +47,7 @@ struct CTexture {
     void Uninitialise();                                // 0x009F9F70
 };
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04
@@ -107,7 +107,7 @@ __declspec(noinline) void CVertexVector::_M_insert_overflow(CTVertexRHWColSpecTe
 }
 #pragma auto_inline(on)
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x1d8];
     bool          ViewportOffscreen;                    // +0x1d8
 };

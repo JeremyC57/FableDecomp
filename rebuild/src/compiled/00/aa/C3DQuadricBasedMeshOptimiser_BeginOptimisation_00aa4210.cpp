@@ -15,7 +15,7 @@ struct SCountBlock {
     void* m_pObject;
     SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     CCountedPointer() : Object(0), Count(0) {}
@@ -46,8 +46,8 @@ struct CQuadricOptimisationParams {                 // 0x28 bytes
     float m_20;                                     // 1000000.0
     long  m_24;                                     // 3
 };
-struct C3DMeshFile;
-struct C3DOptimisedMeshBase {
+class C3DMeshFile;
+class C3DOptimisedMeshBase { public:
     void BeginOptimisation(const CQuadricOptimisationParams& params);   // 0x00ACD500
 };
 struct COptimisedMesh : C3DOptimisedMeshBase {
@@ -55,7 +55,7 @@ struct COptimisedMesh : C3DOptimisedMeshBase {
     unsigned char _body[0x10];
 };
 
-struct C3DQuadricBasedMeshOptimiser {
+class C3DQuadricBasedMeshOptimiser { public:
     CCountedPointer<C3DOptimisedMeshBase> BeginOptimisation(C3DMeshFile& file, float quality);
 };
 

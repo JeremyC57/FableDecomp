@@ -30,7 +30,7 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                    // 0x0099EAE0
@@ -65,11 +65,11 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     long& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool IsSaving();                                   // 0x004AEF50
     void Transfer(const char* name, CCharStringVector* value);   // 0x0049B8D0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);  // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
@@ -77,7 +77,7 @@ struct CTCInventoryBase_Retail {
     void OnSerialise(CPersistContext* context, bool inGameSave);   // 0x005BFD5E
     CDefinitionManager* GetDefinitionManager() const;  // 0x006869D0 (CTCBase)
 };
-struct CTCInventory : CTCInventoryBase_Retail {
+class CTCInventory : public CTCInventoryBase_Retail { public:
     unsigned char _pad_0x000[0x148];
     CLongVector QuickAccessItems;                      // +0x148
     void OnSerialise(CPersistContext* context, bool inGameSave);

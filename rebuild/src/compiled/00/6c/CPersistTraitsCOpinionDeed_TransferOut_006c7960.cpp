@@ -16,11 +16,11 @@
 //   CPersistTraits<long>::TransferOut (copy into the dead `out` slot), each bool through the inline
 //   `if (*value) out += "TRUE"; else out += "FALSE";` (one merged call; the witness flag is always written as a false
 //   local, which folds to "FALSE"). `*value` is re-read after every call. No EH frame. Speed-optimised (default) TU.
-struct CPersistContext;
+class CPersistContext;
 class CThing;
 class CCharString {
 public:
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
     CCharString& operator+=(const char* text);         // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560

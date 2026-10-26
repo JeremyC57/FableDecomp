@@ -6,9 +6,9 @@
 //   CRadialBlurParams PrevFrameRadialBlurParams +0x84 }. Modelled locally (no generated header for the class).
 // Shape: the block is built in a 0x30-byte frame local and copied twice with `rep movsd` (12 dwords) -- a POD
 //   assignment; the bool is tested once, before the first copy (the flags survive `rep movsd`).
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CRadialBlurParams {
     CRGBFloatColour ThresholdColour;                   // +0x00
@@ -19,9 +19,9 @@ struct CRadialBlurParams {
     float           Twist;                             // +0x2c
 };
 
-struct CEnvironment;
+class CEnvironment;
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CEnvironment*     Environment;                     // +0x00
     CRadialBlurParams RadialBlurParams;                // +0x04
     unsigned char     _pad34[0x84 - 0x34];             // position, displacement and screen-filter params

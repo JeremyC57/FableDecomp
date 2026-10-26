@@ -2,7 +2,7 @@
 // is terminating) load that state's minion / summoner targets from the script def; unknown states load nothing.
 #include <cstdio>
 
-struct CScriptDef {
+class CScriptDef { public:
     long DBNumMinions[4];
     long DBNumSummoners[4];
 };

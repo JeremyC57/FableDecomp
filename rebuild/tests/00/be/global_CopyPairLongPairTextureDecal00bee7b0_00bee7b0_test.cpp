@@ -16,7 +16,7 @@ static const char* Name(int i)
     return pool[i];
 }
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 };
@@ -33,7 +33,7 @@ struct SWords2 {
     SWords2& operator=(const SWords2& other) { for (int i = 0; i < 2; ++i) m_words[i] = other.m_words[i]; ++g_assigns; return *this; }
 };
 
-struct CEngineTextureDecal { long OriginalTextureIndex; long DecalID; SWords3 OverlaidBlends; };
+class CEngineTextureDecal { public: long OriginalTextureIndex; long DecalID; SWords3 OverlaidBlends; };
 struct SLongPair { long first; long second; };
 struct SElem { SLongPair first; CEngineTextureDecal second; };
 struct STag { STag() { } };

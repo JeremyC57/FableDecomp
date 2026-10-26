@@ -8,11 +8,11 @@
 // Shape: every scalar store sits after the vtable store, so the nodes are member objects with inline constructors
 // (`CMapwhoNode() : PMapwho(0), PNext(0), PPrevious(0), PCell(0)`) and SearchID is an initialiser; the bit clear is the
 // `and byte ptr [esi+50h],0FEh` of a one-bit field; the four back-pointer stores are body assignments in source order.
-struct CThing;
+class CThing;
 struct CThingMapCell;
-struct CTCMapwho;
+class CTCMapwho;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -27,7 +27,7 @@ struct CMapwhoNode {
     CMapwhoNode() : PMapwho(0), PNext(0), PPrevious(0), PCell(0) { }
 };
 
-struct CTCMapwho : CTCBase {
+class CTCMapwho : public CTCBase { public:
     CMapwhoNode   TLNode;                          // +0x0c
     CMapwhoNode   TRNode;                          // +0x1c
     CMapwhoNode   BLNode;                          // +0x2c

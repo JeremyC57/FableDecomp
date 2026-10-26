@@ -13,8 +13,8 @@
 //   inline accessors (the OnCreate family rule), and GetSubDef<T> has a same-TU no-escape stand-in body (COMDAT
 //   instance): together they give retail without the parked /Oa flag.
 // Leaf: OnCreate
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -22,13 +22,13 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {                         // the zeroed two-dword sound argument of CCombatActionBase
+class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -54,7 +54,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _pad[0x18];
     CThingCreatureBase* m_pOwner;           // +0x1c
@@ -81,12 +81,12 @@ struct CDefBase {
     }
 };
 
-struct CThunderBattleDef : CDefBase {
+class CThunderBattleDef : public CDefBase { public:
     unsigned char _pad08[0x40];
     long m_value;                                               // +0x48
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
     ~CDefPointer()
@@ -97,7 +97,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return m_pDef; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     template<class T> bool GetSubDef(CDefPointer<T>& out);     // 0x008E3240 (CThunderBattleDef instantiation)
 };
 
@@ -112,12 +112,12 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x70];
     CDefClassBase* m_pDef;                                      // +0x70
 };
 
-struct CCreatureAction_CastBattleCharge : CCombatActionBase {
+class CCreatureAction_CastBattleCharge : public CCombatActionBase { public:
     unsigned char _body[0x12c];                                 // sizeof = 0x130
     CCreatureAction_CastBattleCharge(CThingCreatureBase* owner, CThing* thing, long mode, long value);   // 0x008CE290
 };

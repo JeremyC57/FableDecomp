@@ -1,6 +1,6 @@
 #include <cstdio>
 // ---- test model: a thing's interface bitset + sorted {type, component} table, intelligent pointers ----
-struct CThing;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 #include <cstring>
 static unsigned int GFROR13(unsigned int v) { return (v >> 13) | (v << 19); }
@@ -67,7 +67,7 @@ inline unsigned int WorldRandomRange(unsigned int& seed, unsigned int range)
         return 0;
     return seed % range;
 }
-struct CCharString { const char* text; CCharString(const char* t, long) : text(t) { } };
+class CCharString { public: const char* text; CCharString(const char* t, long) : text(t) { } };
 
 static const char* g_into; static const char* g_loop; static const char* g_out; static float g_time;
 struct CAIStateGroup_GoToPub {

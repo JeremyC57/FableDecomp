@@ -9,7 +9,7 @@
 
 long g_FramesPerSecond = 15;
 
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,15 +23,15 @@ struct CInterfaceMap {
 };
 
 static int g_fired = 0, g_ended = 0, g_resets = 0;
-struct CTCObjectAugmentations : CTCBase {
+class CTCObjectAugmentations : public CTCBase { public:
     void FireCombatAugEffect() { ++g_fired; }
     void EndStrikeAction() { ++g_ended; }
 };
-struct CTCCombat : CTCBase {
+class CTCCombat : public CTCBase { public:
     void ResetComboChainPos() { ++g_resets; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long ThingTypeFlags;
@@ -71,7 +71,7 @@ struct CStrikeEventList {
 
 static int g_ownerCalls = 0;
 struct CAnimationOwner;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     bool m_active;
     long m_animDelay;
     virtual ~CCreatureActionBase() { }
@@ -86,7 +86,7 @@ static CStrikeEvent* g_firstEvent = 0;
 static CThing* g_weaponUsed = 0;
 static int g_damage = 0;
 static float g_damageFraction = 0;
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CStrikeEventList StrikeEvents;
     float StrikeEventInterruptTime;
     float StrikeEventResetComboTime;

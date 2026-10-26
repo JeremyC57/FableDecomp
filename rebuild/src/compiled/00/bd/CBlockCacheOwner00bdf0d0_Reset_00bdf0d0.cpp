@@ -9,7 +9,7 @@
 // Layout: +0x04 manager pointer, +0x0c the quad-tree element (0x4c bytes), +0x58 { first, last }.
 // Shape: no vtable touched; the vector's `last` is read into edx before `first` into eax and
 // both are pushed, the second call's `this` is the member address.
-struct CEngineStaticMapFileBlockManager;
+class CEngineStaticMapFileBlockManager;
 
 struct CQuadTreeElement_Retail {               // 0x4c bytes at +0x0c
     unsigned char _body[0x4c];

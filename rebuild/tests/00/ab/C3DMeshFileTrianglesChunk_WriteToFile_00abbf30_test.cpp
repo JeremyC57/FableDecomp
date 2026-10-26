@@ -6,7 +6,7 @@ struct COut {
     void WriteULong(unsigned long v) { log[n++] = v; }
     void WriteUShort(unsigned short v) { log[n++] = 0x10000u | v; }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }
@@ -14,7 +14,7 @@ template<class T> struct CArray {
 struct C3DMeshFileTriangle { unsigned short Index[3]; };
 static int g_baseCalls = 0;
 struct C3DMeshFileChunk { void WriteToFile(COut&, int&) const { ++g_baseCalls; } };
-struct C3DMeshFileTrianglesChunk : C3DMeshFileChunk {
+class C3DMeshFileTrianglesChunk : public C3DMeshFileChunk { public:
     CArray<C3DMeshFileTriangle> Triangles;
     void WriteToFile(COut& out, int& saver) const
     {

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int g_baseCtor;
 struct CTCBase_Calls {
@@ -24,7 +24,7 @@ struct CBoastingPositionMap {
     CBoastingPositionMap() : m_pFirst(0), m_pLast(0), m_pEnd(0), m_sorted(false) { }
 };
 struct CBoastingPodiumDefPointer { const void* m_pDef; CBoastingPodiumDefPointer() : m_pDef(0) { } };
-struct CTCBoastingPodium : CTCBase_Calls {
+class CTCBoastingPodium : public CTCBase_Calls { public:
     CBoastingPositionMap      BoastingPositions;
     long                      LastPositionsWithBoastCount;
     unsigned long             FrameBoastListFrom;

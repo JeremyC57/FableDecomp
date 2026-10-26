@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;
     C3DVector PreferredLine;
     float     AngleCompare;

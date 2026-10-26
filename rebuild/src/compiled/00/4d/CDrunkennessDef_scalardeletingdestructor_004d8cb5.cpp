@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CDrunkennessDef
-{
+class CDrunkennessDef
+{ public:
     void* vftable;
 };
 extern void* const g_CDrunkennessDef_vftable;

@@ -23,7 +23,7 @@ public:
 };
 
 class CThing;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_icicleDtors = 0;
 class CIcicleData {
 public:

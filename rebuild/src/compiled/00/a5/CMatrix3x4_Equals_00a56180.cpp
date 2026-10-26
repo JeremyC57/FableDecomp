@@ -4,14 +4,14 @@
 // Layout: four C3DVector rows (landed CMatrix3x4 0x00A56530 model).
 // Shape: one 0x30-byte frame matrix filled element by element in order (`other` plus 1.0f on the diagonal; the plain elements copy
 // through edx), then `this` subtracted row by row with the inline C3DVector `-=` (a matrix-level `-=` is emitted out of line).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector& operator-=(const C3DVector& o) { X -= o.X; Y -= o.Y; Z -= o.Z; return *this; }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0;                           // +0x00
     C3DVector m_row1;                           // +0x0c
     C3DVector m_row2;                           // +0x18

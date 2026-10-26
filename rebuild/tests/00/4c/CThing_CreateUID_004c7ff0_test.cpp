@@ -1,7 +1,7 @@
 // Behaviour test for CThing::CreateUID @ 0x004C7FF0: UID allocated for the map with the class flag and the def's LevelLess bit.
 #include <cstdio>
 struct SThingClassInfo { bool m_flag; };
-struct CThingManager {
+class CThingManager { public:
     SThingClassInfo* m_pClassInfo;
     long map; bool cls; bool lvl;
     unsigned long AllocateNewThingUID(long mapNumber, bool classFlag, bool levelLess)
@@ -9,8 +9,8 @@ struct CThingManager {
 };
 static CThingManager g_manager;
 static CThingManager* g_pThingManager = &g_manager;
-struct CThingBaseDef { unsigned char low : 3; unsigned char LevelLess : 1; };
-struct CThing {
+class CThingBaseDef { public: unsigned char low : 3; unsigned char LevelLess : 1; };
+class CThing { public:
     unsigned char  m_thingClass;
     unsigned long  UniqueID;
     CThingBaseDef* PBaseDef;

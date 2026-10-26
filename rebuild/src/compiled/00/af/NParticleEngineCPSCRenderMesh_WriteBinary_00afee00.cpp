@@ -7,10 +7,10 @@
 //   +0x2c..+0x44, RenderSizeParam +0x48.
 // Shape: one stream call per member in declaration order.
 #include "engine/CDataOutputStream.h"
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* PStringData; };
-struct CRGBColour { union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
-struct CEnginePrimitiveHandle { long Index; long Generation; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* PStringData; };
+class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
+class CEnginePrimitiveHandle { public: long Index; long Generation; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteLong(long value);                         // 0x00993EB0
@@ -21,7 +21,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
 };
 namespace NParticleEngine {
-struct CPSCRenderMesh {
+class CPSCRenderMesh { public:
     unsigned char _base[0xc];                           // CPSCBase
     long BankIndex;                                     // +0x0c
     long TrailBankIndex;                                // +0x10

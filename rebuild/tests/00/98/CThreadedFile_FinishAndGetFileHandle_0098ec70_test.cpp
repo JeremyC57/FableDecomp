@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CThreadedFile;
+class CThreadedFile;
 
-struct CThreadedFileManager
-{
+class CThreadedFileManager
+{ public:
     void RemovePending(CThreadedFile* f);
 };
 
@@ -11,8 +11,8 @@ CThreadedFileManager g_ThreadedFileManager;
 
 static int g_removeCalls = 0;
 
-struct CThreadedFile
-{
+class CThreadedFile
+{ public:
     int   field_0;
     int   DeviceID;
     void* handle;

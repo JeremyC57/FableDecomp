@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 // Object layout: field at +0xd4 is the compared threshold.
-struct CTCVillage
-{
+class CTCVillage
+{ public:
     char _pad0[0xd4];
     int  m_guardEnemyThreshold; // +0xd4
 };

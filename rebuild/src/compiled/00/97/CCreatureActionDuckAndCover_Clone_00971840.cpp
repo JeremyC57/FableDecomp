@@ -7,11 +7,11 @@
 // Virtual clone: allocates sizeof(CCreatureAction_DuckAndCover) = 0x120, null-checks and copy-constructs from
 // `*this` through the out-of-line copy constructor @ 0x00971870; the constructor's `this` return
 // is the result. One of 104 bodies of this shape (the copy constructor's label names the class).
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCreatureAction_DuckAndCover : CCreatureActionBase {
+class CCreatureAction_DuckAndCover : public CCreatureActionBase { public:
     unsigned char _body[0x120 - 4];    // sizeof(CCreatureAction_DuckAndCover) = 0x120
     CCreatureAction_DuckAndCover(const CCreatureAction_DuckAndCover& other);             // 0x00971870
     CCreatureActionBase* Clone();

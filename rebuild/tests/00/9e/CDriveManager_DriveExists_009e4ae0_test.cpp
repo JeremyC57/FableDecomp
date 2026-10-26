@@ -10,12 +10,12 @@ static int FakeChdir(const wchar16* path)
     int i = 0; while (path[i]) { g_cwd[i] = path[i]; ++i; } g_cwd[i] = 0;
     return 0;
 }
-struct CWideString {
+class CWideString { public:
     wchar16 m_data[8];
     operator const wchar16*() { return m_data; }
 };
 static CWideString GetCurrentWorkingDirectory() { CWideString s; int i = 0; while ((s.m_data[i] = g_cwd[i]) != 0) ++i; return s; }
-struct CDriveManager {
+class CDriveManager { public:
     long DriveExists(wchar16 driveLetter)
     {
         CWideString workingDirectory = GetCurrentWorkingDirectory();

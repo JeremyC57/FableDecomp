@@ -7,11 +7,11 @@
 // Shape: `test ; jl ; dec eax ; mov [ecx+14h],eax` = `if (PauseFrames >= 0) --PauseFrames;`; the bool at +0x10 is tested
 // through al; ParentThing (+4) becomes `this` for the call, which is a tail position but VC7.1 keeps `call ; ret` (pushed arg).
 // Local model: no engine header exists for CTCHaste.
-struct CThing {
+class CThing { public:
     void RemoveTC(long interfaceType);                      // 0x004C9840
 };
 
-struct CTCHaste {
+class CTCHaste { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned char _pad08[4];                                // +0x08 CTCBase flags

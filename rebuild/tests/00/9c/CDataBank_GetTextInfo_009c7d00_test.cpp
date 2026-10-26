@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CDataBankEntry { long loads; long lastIndex; void* lastBank; };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; T& operator[](unsigned long i) const { return m_pFirst[i]; } };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; T& operator[](unsigned long i) const { return m_pFirst[i]; } };
 struct CDataBank {
     void* __vftable; unsigned char _bankFile[0x1e0 - 4]; CArray<CDataBankEntry*> Entries;
     unsigned long types[8];

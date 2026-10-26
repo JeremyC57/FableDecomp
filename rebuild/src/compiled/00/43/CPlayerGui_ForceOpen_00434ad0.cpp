@@ -1,5 +1,5 @@
 // CPlayerGui::ForceOpen  @ 0x00434ad0  (__fastcall, this=ecx, no stack args)
-struct CPlayerGui {
+class CPlayerGui { public:
     char pad_c8[0xc8];
     unsigned char b_c8;   // +0xc8
     unsigned char b_c9;   // +0xc9

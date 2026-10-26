@@ -8,12 +8,12 @@
 // dead interpolation argument slot -- the colour's copy constructor forwards its channels to an inline Set(r, g, b, a)),
 // then width, flags, blend mode, blend op and the depth-test byte in declaration order. Names past the manifest types are
 // descriptive.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -29,7 +29,7 @@ enum EEnginePrimitiveBlendMode { ENGINE_BLEND_DEFAULT = 0 };
 enum EEnginePrimitiveBlendOp { ENGINE_BLEND_OP_DEFAULT = 0 };
 enum EEngineInterpolationSet { ENGINE_INTERPOLATION_DEFAULT = 0 };
 
-struct CEnginePrimitiveLine {
+class CEnginePrimitiveLine { public:
     long                      m_type;              // +0x00
     EEngineInterpolationSet   m_interpolation;     // +0x04
     bool                      m_flag8;             // +0x08

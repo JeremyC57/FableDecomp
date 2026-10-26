@@ -8,10 +8,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -39,7 +39,7 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DMeshFileXMappingInfoChunk {
+class C3DMeshFileXMappingInfoChunk { public:
     virtual void v0();
     unsigned char _base_body[0x0c];        // CChunkedFileChunk: ChunkType[5] + pad + Parent
     float AverageTextureStretch;           // +0x10

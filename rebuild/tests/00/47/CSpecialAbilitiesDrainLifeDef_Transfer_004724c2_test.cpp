@@ -2,13 +2,13 @@
 struct Field { unsigned char b[0xc]; };
 static int g_calls = 0;
 static void* g_last = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA_00464cbf(void* p){ g_calls++; g_last = p; }
     void PersistB_00466a47(void* p){ g_calls++; g_last = p; }
     void PersistC(void* p){ g_calls++; g_last = p; }
     void PersistD(void* p){ g_calls++; g_last = p; }
 };
-struct CSpecialAbilitiesDrainLifeDef {
+class CSpecialAbilitiesDrainLifeDef { public:
     unsigned char _pad[0x3c];
     Field f0;
     Field f1;

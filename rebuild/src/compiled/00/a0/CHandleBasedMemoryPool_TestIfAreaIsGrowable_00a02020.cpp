@@ -17,7 +17,7 @@ struct CHeader {
     CHeader* NextContiguous;
 };
 struct CHandleArray { CHeader** first; CHeader** last; CHeader** end; };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual ~CHandleBasedMemoryPool(); // slot0: 00A03AA0 deleting destructor
     virtual void MoveResource(void*,long,void*,void*,unsigned long); // slot1 00A02120
     virtual bool CanMoveResource(void*,long); // slot2 00A03A40

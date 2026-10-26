@@ -16,7 +16,7 @@ struct SCountBlock {
     SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     static void __fastcall DeleteData(void* object);   // 0x00A99FE0 (root chunk) / 0x00A9A000 (file)
@@ -35,25 +35,25 @@ template<class T> struct CCountedPointer {
     T& operator*() const { return *Object; }
 };
 
-struct CDataInputStream;
-struct CChunkedFileChunk {
+class CDataInputStream;
+class CChunkedFileChunk { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4();
     virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8();
     virtual CChunkedFileChunk* CreateNewInstance() const;   // slot 9 (+0x24)
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {};
-struct C3DAnimFileRootChunk : CChunkedFileSuperChunk {};
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:};
+class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:};
 
-struct CChunkedFile {
+class CChunkedFile { public:
     CChunkedFile(const CCountedPointer<CChunkedFileSuperChunk>& root);   // 0x00AA7DB0
     virtual ~CChunkedFile();
     unsigned char _body[0x10];                      // RootChunk, Version, FileComment (sizeof 0x14)
 };
-struct C3DAnimFile : CChunkedFile {
+class C3DAnimFile : public CChunkedFile { public:
     C3DAnimFile(const CCountedPointer<C3DAnimFileRootChunk>& root);   // 0x00A98F40
 };
 
-struct CChunkedFileLoader {
+class CChunkedFileLoader { public:
     virtual ~CChunkedFileLoader();
     unsigned char _pad04[0x0c];
     CChunkedFileChunk* RootChunkPrototype;          // +0x10

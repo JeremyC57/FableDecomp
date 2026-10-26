@@ -9,7 +9,7 @@
 // Shape: the guard `Score >= 20` around a four-player loop (index in edi, `this` in ebp); the main
 // player number is re-fetched every pass; the hero's interface-0xc7 bit is a byte test of bitset word 6
 // (`mov cl,[eax+38h] ; test cl,cl ; jns`) inside the out-parameter GetInterface (component in eax).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -42,16 +42,16 @@ struct CTCCoopScore {                                       // the interface-0xc
     long          m_counter;                                // +0x10
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                                 // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                             // 0x00449700
     CPlayer* GetPlayer(long number);                        // 0x004498C0
 };
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[4];

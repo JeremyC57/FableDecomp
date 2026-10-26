@@ -16,12 +16,12 @@
 // is a later Dinkumware build where this helper is `std::_Copy_impl`). Ego_r.pdb CActionInputControl
 // (0x1C): GameAction +0, ControllerType +4, KeyboardKey +8, XboxButton +0xC, MouseButton +0x10,
 // ControlDirection C2DVector +0x14.
-struct C2DVector {
+class C2DVector { public:
     float X;                                      // +0
     float Y;                                      // +4
 };
 
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction;                              // +0x00 EGameAction
     long ControllerType;                          // +0x04 EControllerType
     long KeyboardKey;                             // +0x08 EInputKey

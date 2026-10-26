@@ -2,7 +2,7 @@ struct CRIT { int x; };
 typedef void (__stdcall *LEAVEFN)(void*);
 LEAVEFN g_leave;
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     char pad[0x24];
     char flag;
     char pad2[0x44c - 0x25];

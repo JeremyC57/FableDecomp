@@ -11,7 +11,7 @@
 // Retail offsets (PDB - 4): VertexBuffer +0x30 (CVertexBufferWin32: compression params +0x14), VertexBufferStatus +0x38,
 // AnimatedBlockCount +0x48, AnimatedBlocks +0x4c (0x30-byte blocks, VertexCount +0x10).
 // Leaf: UploadToVertexBufferAnimated@C3DPrimitive2
-struct CVertexCompressionParams { float PosScale[4]; float PosBias[4]; };
+class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 struct CVertexFormat {
     unsigned long GetVertexSize() const;            // 0x00AB37B0
 };
@@ -32,7 +32,7 @@ struct CVertexShaderInputAnimated : CVertexShaderInput {   // vtable 0x0129DFB0
     void Initialise(unsigned long flags, bool animated);   // 0x00A90630
 };
 }
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     virtual ~CVertexBufferWin32();
     unsigned char _04[0x10];
     CVertexCompressionParams CompressionParams;     // +0x14
@@ -44,7 +44,7 @@ struct CAnimatedBlock {                             // 0x30
     unsigned long VertexCount;                      // +0x10
     unsigned char _14[0x1c];
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad[0x30];
     CVertexBufferWin32* VertexBuffer;               // +0x30 scoped_ptr
     unsigned char _34[4];

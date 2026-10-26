@@ -5,9 +5,9 @@
 // declaration order, so the copy is an explicit memberwise copy constructor over six dword members (a float
 // member would be copied through the x87, a struct member through `lea`).
 // Leaf: ??0CNearestBuildingWithProperty
-struct CThingBuilding;
+class CThingBuilding;
 
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     long            BuildingProperty;     // +0x00 ESimBuildingProperty
     unsigned long   PosX;                 // +0x04 Pos.x (moved as a raw word)
     unsigned long   PosY;                 // +0x08 Pos.y

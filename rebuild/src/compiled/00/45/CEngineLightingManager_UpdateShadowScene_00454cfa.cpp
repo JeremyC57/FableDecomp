@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Leaf: UpdateShadowScene
 #pragma optimize("y",off)
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad00[0x18];
     int mode;        // +0x18
     char pad1c[0x24-0x1c];

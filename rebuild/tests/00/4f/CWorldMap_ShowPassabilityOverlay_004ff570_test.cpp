@@ -19,15 +19,15 @@
 //   (as the landed CPSCLight 0x00B1A640). engine/ headers carry the PDB's 16-byte containers.
 extern "C" void free(void* block);                               // 0x00BFEA14
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI TopLeft, BottomRight;
     C2DBoxI(long x0, long y0, long x1, long y1) : TopLeft(x0, y0), BottomRight(x1, y1) { }
 };
-struct CRGBColour {                                              // B,G,R,A bytes
+class CRGBColour { public:                                              // B,G,R,A bytes
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -41,21 +41,21 @@ struct CColourVector {                                           // vector<CRGBC
     CRGBColour& operator[](unsigned long n) { return *(_M_start + n); }
     CRGBColour* GetData() { return size() > 0 ? _M_start : (CRGBColour*)this; }
 };
-struct CMapInfo { unsigned char _body[0x48]; };
+class CMapInfo { public: unsigned char _body[0x48]; };
 struct CMapInfoVector {
     CMapInfo* _M_start;
     CMapInfo* _M_finish;
     CMapInfo* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1d0c];
     long WorldSizeX;                                             // +0x1D0C
     long WorldSizeY;                                             // +0x1D10
     long GetWorldMapNumber() const;                              // 0x0081E690
     bool IsPassableAt(const C2DCoordI& pos) const;               // 0x0081F3D0
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -70,17 +70,17 @@ struct CIEngine {
     virtual void SetMapOverlay(long map, const CRGBColour* colours, const C2DBoxI& area);   // slot 64 (+0x100)
     virtual void EnableMapOverlay(long map, bool enable, bool b);                          // slot 65 (+0x104)
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad[0x2c];
     CIEngine* Engine3D;                                          // +0x2C
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x28];
     CDisplayEngine* PDisplayEngine;                              // +0x28
 };
 extern CMainGameComponent* g_pMainGameComponent;                 // 0x013B86A0
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long map) const;                    // slot 10 (+0x28) 0x004FC050

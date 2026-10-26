@@ -5,11 +5,11 @@
 // entries of the handler table @ 0x013B9288, indexed by the event's type (`shl ecx,6`), called through `add ecx,ebx ; call edx`
 // when the function pointer is set. The manifest labels of the callees (CWorld::DrawGetEnvironment / GetBlankTexture) are
 // propagated across identical bodies. Shape: an unsigned counted loop (`jbe` / `jb`) with the count re-read each iteration.
-struct CGameEvent {
+class CGameEvent { public:
     long m_type;                                   // +0 the handler-table index
 };
 
-struct CGameEventPackage {
+class CGameEventPackage { public:
     unsigned long GetNoEvents();                   // 0x009F16E0
     CGameEvent* GetEvent(unsigned long index);     // 0x009F16D0
 };
@@ -27,7 +27,7 @@ extern SGameEventHandler g_GameEventHandlers[];    // 0x013B9288
 struct CDisplayEngineBaseA { unsigned char _body[4]; };
 struct CDisplayEngineBaseB { unsigned char _body[4]; };
 
-struct CDisplayEngine : CDisplayEngineBaseA, CDisplayEngineBaseB {   // two bases: the handler is an 8-byte {function, this-adjust} pointer to member
+class CDisplayEngine : public CDisplayEngineBaseA, public CDisplayEngineBaseB { public:   // two bases: the handler is an 8-byte {function, this-adjust} pointer to member
     void ConfirmFeedbackGameEventPackage(CGameEventPackage& package);
 };
 

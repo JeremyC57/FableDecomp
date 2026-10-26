@@ -8,22 +8,22 @@
 // retail CThing PhysicsTC +0x60, the physics component's radius float at +0x34 (local model).
 // Shape: the thing radius is a float local zeroed first and overwritten when IncludeThingRad; the line-out vector
 // is a named local; `out.X*out.X + out.Y*out.Y < r*r` (VC7.1 emits the Y term first) with the compare materialised as an int.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         m_radius;                     // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
-struct CThingFilter_IsWithinArea {
+class CThingFilter_IsWithinArea { public:
     C3DVector* StartPos;                        // +0x00
     C3DVector* EndPos;                          // +0x04
     float      Radius;                          // +0x08

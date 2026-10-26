@@ -2,7 +2,7 @@
 #include <cstdio>
 class CThing { public: int hit; };
 static int g_calls = 0;
-struct CIsCreatureIsIntersecting {
+class CIsCreatureIsIntersecting { public:
     CThing* Owner;
     bool operator()(CThing* thing) const { ++g_calls; return thing->hit == Owner->hit; }
 };

@@ -11,9 +11,9 @@
 // Shape: an if/else whose arms each build an implicit CCharString temporary (the shared `push -1` default length and
 // the `lea ecx` are hoisted above the branch, each arm re-addresses its temporary with `lea`) and tail-merge into one
 // SetGroup call and destructor. Plain `ret`.
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -21,7 +21,7 @@ struct CCharString {
 
 bool __fastcall IsThingCarryingMeleeWeapon(CThing* thing);   // 0x006A15A0
 
-struct CAnimFilterOfGroup {                    // vtable 0x01267568
+class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8

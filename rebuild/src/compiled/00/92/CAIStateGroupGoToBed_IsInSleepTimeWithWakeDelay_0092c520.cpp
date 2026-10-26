@@ -13,21 +13,21 @@ struct CGameTime {
     bool IsTimeOfDayInRange(long start, long end);   // 0x006BB390
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CGameTime* m_pTime;                         // +0x1c
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     void GetSleepTimes(long* pStart, long* pEnd);    // 0x00833390
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

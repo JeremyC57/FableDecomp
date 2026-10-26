@@ -1,9 +1,9 @@
 // Behaviour test for 0x00546C90 NUISystem::CTextContainer::AddChild: only text children are accepted; each gets the container's text window, then the base AddChild
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 enum EType { TYPE_SPRITE = 1, TYPE_TEXT = 6 };
 class CComponent;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }

@@ -7,7 +7,7 @@ struct CVectorMapTags {
     void* m_pFirst; void* m_pLast; void* m_pEnd; unsigned char Compare; bool Dirty;
     CVectorMapTags() : m_pFirst(0), m_pLast(0), m_pEnd(0), Dirty(false) {}
 };
-struct CASoundBank { int id; };
+class CASoundBank { public: int id; };
 static CASoundBank g_bank;
 struct CSoundBankRegistry { CASoundBank* GetBank(long id) { ++g_lookups; g_lastId = id; return &g_bank; } };
 static CSoundBankRegistry g_registry; static CSoundBankRegistry* g_pSoundBankRegistry = &g_registry;

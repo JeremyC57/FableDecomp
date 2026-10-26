@@ -1,9 +1,9 @@
 // behaviour test for vector<CMapInfo>::resize(n) (0x0051BE20): forwards (n, default CMapInfo) and destroys the temporary
 #include <cstdio>
 static int g_strings = 0, g_clears = 0;
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } ~CCharString() { --g_strings; } };
 struct CCountedPointer { void* Data; void* m_pCount; CCountedPointer() : Data(0), m_pCount(0) {} };
-struct CMapInfo {
+class CMapInfo { public:
     int Area[4]; CCountedPointer PMap; CCharString LevelName, LevelScriptName; unsigned int MapUID; bool Used; CCharString SerialiseScript; bool IsSea;
     CMapInfo() { Clear(); }
     void Clear() { ++g_clears; MapUID = 0; Used = false; IsSea = false; }

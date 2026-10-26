@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DBoxI { long TLX; long TLY; long BRX; long BRY; void ValidateOrientationAndFlip(); };
+class C2DBoxI { public: long TLX; long TLY; long BRX; long BRY; void ValidateOrientationAndFlip(); };
 void C2DBoxI::ValidateOrientationAndFlip()
 {
     if (BRX < TLX) { long t = TLX; TLX = BRX; BRX = t; }

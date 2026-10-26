@@ -1,7 +1,7 @@
 // Behaviour test for 0x007A44C0 CTCWillEnflame::CancelMove: clear the owner's enflame ability lock, then remove TC 0x95.
 #include <cstdio>
 
-struct CTCBase {};
+class CTCBase { public:};
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -13,7 +13,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned int UsingComponents[9];
     CInterfaceMap Components;
     long removed;
@@ -32,8 +32,8 @@ struct CThing {
     }
     void RemoveTC(long t) { removed = t; }
 };
-struct CTCSpecialAbilities : CTCBase { bool AbilityMutexLock; long CurrentAbility; };
-struct CTCWillEnflame {
+class CTCSpecialAbilities : public CTCBase { public: bool AbilityMutexLock; long CurrentAbility; };
+class CTCWillEnflame { public:
     CThing* ParentThing;
     void CancelMove()
     {

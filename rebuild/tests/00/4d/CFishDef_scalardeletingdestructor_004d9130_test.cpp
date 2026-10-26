@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CFishDef
-{
+class CFishDef
+{ public:
     void* vftable;
 };
 void* const g_CFishDef_vftable = (void*)0x12345678;

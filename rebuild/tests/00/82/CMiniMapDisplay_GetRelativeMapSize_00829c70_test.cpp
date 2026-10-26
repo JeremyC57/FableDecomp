@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 
 static void model(int w, int h, C2DVector* out)
 {

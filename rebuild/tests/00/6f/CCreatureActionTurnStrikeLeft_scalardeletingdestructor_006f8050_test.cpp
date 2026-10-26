@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TurnStrikeLeft {
+class CCreatureAction_TurnStrikeLeft { public:
     void* vftable;
     int destroyed;
 };

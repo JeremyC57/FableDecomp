@@ -7,9 +7,9 @@
 #define __forceinline inline
 #endif
 struct __true_type { __true_type() {} };
-struct CBaseObject { int Tag; };
+class CBaseObject { public: int Tag; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char UsingComponents[0x24];
     unsigned long ThingTypeFlags;
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { Item = item; }
     CBaseObject* GetPItem() const { return Item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* p) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)p); }
 };
 template <class T> struct CResultList {
@@ -60,7 +60,7 @@ template <class T> struct CResultList {
     int Count;
     void push_back(const T& x) { Items[Count++] = x.GetPItem(); }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };

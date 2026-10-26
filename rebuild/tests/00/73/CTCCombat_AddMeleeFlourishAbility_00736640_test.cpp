@@ -4,14 +4,14 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CMeleeCombatAbilityDef { virtual void Destroy() { ++g_destroyed; } long RefCount; };
+class CMeleeCombatAbilityDef { public: virtual void Destroy() { ++g_destroyed; } long RefCount; };
 struct CDefPointer {
     CMeleeCombatAbilityDef* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) { CMeleeCombatAbilityDef* object = other.Object; Object = object; if (object) ++object->RefCount; }
 };
 static CMeleeCombatAbilityDef g_def; static bool g_found = true; static int g_getDef = 0; static long g_getDefIndex = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_00737f80(long defIndex, CDefPointer* def) { ++g_getDef; g_getDefIndex = defIndex; if (!g_found) return false; def->Object = &g_def; ++g_def.RefCount; return true; }
 };
 struct __false_type { __false_type() {} };
@@ -32,7 +32,7 @@ struct CDefPointerVector {
     }
 };
 static CDefinitionManager g_manager; static int g_update = 0;
-struct CTCCombat {
+class CTCCombat { public:
     void* __vftable; unsigned char _pad_0x04[0x28]; CDefPointerVector AbilityList;
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
     void UpdateUsableMeleeCombatAbilities() { ++g_update; }

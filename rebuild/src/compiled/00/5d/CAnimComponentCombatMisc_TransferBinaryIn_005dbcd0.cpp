@@ -10,7 +10,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 
 #include "engine/CAnimComponentCombatMisc.h"
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;

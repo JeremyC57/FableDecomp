@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "rebuild_abi.h"
 
-struct TreeNode
-{
+class TreeNode
+{ public:
     TreeNode* next;
     TreeNode* prev;
 };

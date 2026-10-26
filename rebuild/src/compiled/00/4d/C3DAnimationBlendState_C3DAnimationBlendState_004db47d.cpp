@@ -14,7 +14,7 @@ struct C3DAnimationBlendStateBase {
 };
 
 // The blend state layout: we only care about the shared-ptr slot at +0x10.
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     char pad[0x10];
     RefBlock* ptr; // +0x10
 };

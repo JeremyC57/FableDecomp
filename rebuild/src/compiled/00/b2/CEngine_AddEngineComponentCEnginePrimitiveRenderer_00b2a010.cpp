@@ -18,7 +18,7 @@
 // Shape: the progress text is a named CCharString in its own block; the push_back argument is the null-checked T* ->
 //   CEngineComponent* conversion temporary (homed in the dead `component` slot, `neg ; sbb ; and`), the __true_type tag
 //   also addressed there; the member calls go through the unchecked base address kept in edi.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);        // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -41,7 +41,7 @@ __declspec(noinline) void __fastcall DisplayProgress(const CCharString& text, fl
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() { } };
 
-struct CEngineComponent {                              // vtable 0x012A2544 (as its own object)
+class CEngineComponent { public:                              // vtable 0x012A2544 (as its own object)
     virtual void v00();
     void**        GlobalPointerAddress;                // +0x04
     bool          RenderEnabled;                       // +0x08
@@ -54,7 +54,7 @@ struct CEnginePrimitiveRendererBody {                  // primary part (vtable 0
     virtual void v00();
     unsigned char _body[0x264];
 };
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererBody, CEngineComponent {   // 0x350 bytes in retail
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererBody, public CEngineComponent { public:   // 0x350 bytes in retail
     unsigned char _tail[0x350 - 0x274];
 };
 
@@ -86,7 +86,7 @@ __declspec(noinline) void CEngineComponentVector::_M_insert_overflow(CEngineComp
 }
 #pragma auto_inline(on)
 
-struct CEngine {
+class CEngine { public:
     unsigned char          _pad000[0x168];
     CEngineComponentVector EngineComponents;           // +0x168 (retail; PDB +0x178)
     template <class T> void AddEngineComponent(T* component, T*& globalPointer, unsigned char flag);

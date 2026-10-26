@@ -3,17 +3,17 @@
 #include <cstring>
 #include <math.h>
 static int g_turnCalls = 0; static bool g_turnResult = true; static float g_outYZ = 0.0f, g_outXY = 0.0f;
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x30];
     float MaxHeadAngleXY;                       // +0x30 (degrees)
     float MaxHeadAngleYZUp;                     // +0x34 (degrees)
     float MaxHeadAngleYZDown;                   // +0x38 (degrees)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CTCLook {
+class CTCLook { public:
     virtual void v00() {}
     void* ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];

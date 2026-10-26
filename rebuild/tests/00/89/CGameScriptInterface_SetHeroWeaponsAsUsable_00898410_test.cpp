@@ -1,14 +1,14 @@
 // Behaviour test for 0x00898410 CGameScriptInterface::SetHeroWeaponsAsUsable: dead/absent hero, disable, enable in a
 // region whose def prevents weapons, enable in a free region, null def; def reference counting.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     virtual ~CThing() {}
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -44,13 +44,13 @@ struct CThing {
     }
 };
 static int g_set = 0, g_setValue = -1, g_deleted = 0;
-struct CTCHero {
+class CTCHero { public:
     void SetWeaponsAsUsable(bool usable) { ++g_set; g_setValue = usable; WeaponsUsable = usable; }
     bool WeaponsUsable, WillUsable, WeaponUseOverriddenByScripts, WillUseOverriddenByScripts;
 };
-struct CPlayer { CThing* hero; CThing* GetHeroThing() { return hero; } };
-struct CPlayerManager { CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
-struct CRegionDef {
+class CPlayer { public: CThing* hero; CThing* GetHeroThing() { return hero; } };
+class CPlayerManager { public: CPlayer* player; CPlayer* GetMainPlayer() { return player; } };
+class CRegionDef { public:
     virtual ~CRegionDef() {}
     virtual void DeleteThis() { ++g_deleted; }
     long m_refCount;
@@ -58,21 +58,21 @@ struct CRegionDef {
     void Release() { if (--m_refCount == 0) DeleteThis(); }
     bool PreventHeroWeaponUse;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCountedPointer(T* data) : Data(data) { if (Data) Data->AddRef(); }
     ~CCountedPointer() { if (Data) Data->Release(); }
     T* operator->() const { return Data; }
     bool IsNull() const { return Data == 0; }
 };
-struct CRegion { CCountedPointer<CRegionDef> m_pDef; CRegion() : m_pDef(0) {} };
-struct CWorldMap {
+class CRegion { public: CCountedPointer<CRegionDef> m_pDef; CRegion() : m_pDef(0) {} };
+class CWorldMap { public:
     CRegion regions[3]; long current;
     long GetCurrentRegionNumber() { return current; }
     CRegion& GetRegionEntry(long region) { return regions[region]; }
 };
-struct CWorld { CWorldMap map; virtual CWorldMap* GetWorldMap() { return &map; } virtual ~CWorld() {} };
-struct CGameScriptInterface {
+class CWorld { public: CWorldMap map; virtual CWorldMap* GetWorldMap() { return &map; } virtual ~CWorld() {} };
+class CGameScriptInterface { public:
     CWorld* World;
     CPlayerManager* PlayerManager;
     void SetHeroWeaponsAsUsable(bool usable) const;

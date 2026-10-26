@@ -18,30 +18,30 @@
 //   cleared again in the body through their out-of-line clear()/erase().
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CWorld;
-struct CGameDefinitionManager;
-struct CCachedVolumes;
-struct CGameMap;
+class CWorld;
+class CGameDefinitionManager;
+class CCachedVolumes;
+class CGameMap;
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI Min, Max;
 };
 
-struct CMapInit {
+class CMapInit { public:
     long WorldSizeX;
     long WorldSizeY;
 };
 
-struct CThemePaletteEntry {
+class CThemePaletteEntry { public:
     unsigned long ThemeDefIndex;
     bool          ThemePaletteIndexUsed;
 };
 
-struct CHeightMap {
+class CHeightMap { public:
     void Clear();                                       // 0x008F6050
 };
 

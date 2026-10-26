@@ -9,7 +9,7 @@
 // Shape: the flag's address formed once (`lea eax,[ecx+1CDh]`), `xor dl,dl` shared by both compares and the clear
 // store, `mov byte ptr [eax],1` for the set, then `jmp 0x5BC68F` with ecx still `this`.
 #pragma optimize("s", on)
-struct CTCInventory {                            // vtable 0x01250DE4
+class CTCInventory { public:                            // vtable 0x01250DE4
     virtual void v00();
     unsigned char _pad_0x04[0x1cc - 0x04];
     bool m_suppressA;                          // +0x1cc

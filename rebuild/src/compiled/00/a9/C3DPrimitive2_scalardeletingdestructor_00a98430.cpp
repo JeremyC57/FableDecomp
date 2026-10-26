@@ -1,4 +1,4 @@
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     void* vftable;
 };
 

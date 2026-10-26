@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 static int g_lastReleased = 0, g_destroyed = 0;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePersistentPrimitiveBase { public:
     long RefCount;
     virtual ~CEnginePersistentPrimitiveBase() {}
     virtual void Destroy() { ++g_destroyed; }
@@ -14,7 +14,7 @@ struct CIVCountedPointer {
     void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
     CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CIVCountedPointer Data;
     void Clear() { if (Data.IsUnique()) Data.Object->OnLastHandleReleased(this); Data = 0; }
 };

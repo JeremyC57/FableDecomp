@@ -64,12 +64,12 @@ struct CD3DFormatInfo {                            // 36-byte entry of the forma
 
 extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                              // +0
     CPixelFormat(long d3dFormat);                  // 0x009E3830
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x54];                      // vptr slot, SystemManager, PRenderManager, surfaces, back-buffer copy texture
     IDirect3D9*   D3D;                             // +0x54
     void*         D3DDevice;                       // +0x58

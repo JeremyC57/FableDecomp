@@ -1,6 +1,6 @@
 // behaviour test for CAIStateGroupBehaviourBase::Initialise (0x00957940)
 #include <cstdio>
-struct CThing { void* tc34; void* tc4f; void* tc31; };
+class CThing { public: void* tc34; void* tc4f; void* tc31; };
 struct Group {
     CThing* creature; bool baseInit; int hooks; void* perception; void* opinion; void* mode;
     void Initialise()

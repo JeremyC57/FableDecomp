@@ -19,7 +19,7 @@
 #pragma optimize("s", on)
 class CTCBase;
 class CBaseObject;
-struct CTCVillage;
+class CTCVillage;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -50,7 +50,7 @@ public:
 class CThingAICreature : public CThing {};
 bool __fastcall IS_THING_ALIVE(CThing* const& thing);   // 0x0040DCE0 (bound through a converted CThing* temporary)
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     void SetPVillage(CTCVillage* village);      // 0x007EE270
 };
 
@@ -112,7 +112,7 @@ public:
 };
 
 #pragma pack(push, 1)
-struct CTCVillage : CTCBase {                   // vtable 0x0125A9AC
+class CTCVillage : public CTCBase { public:                   // vtable 0x0125A9AC
     long  TorchTasksUpdateFrame;                // +0x0c
     long  FrameStartedSecuritySweep;            // +0x10
     float PositionPlayerWasInWhenSecuritySweepCalculated[3];   // +0x14

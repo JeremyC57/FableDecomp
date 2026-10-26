@@ -11,8 +11,8 @@ struct D3DBOX { unsigned long Left, Top, Right, Bottom, Front, Back; };
 struct PALETTEENTRY;
 extern "C" long __stdcall D3DXLoadVolumeFromVolume(IDirect3DVolume9* destVolume, const PALETTEENTRY* destPalette, const D3DBOX* destBox,
     IDirect3DVolume9* srcVolume, const PALETTEENTRY* srcPalette, const D3DBOX* srcBox, unsigned long filter, unsigned long colorKey);   // 0x00BFEFEC
-struct C2DCoordI { long X, Y; };
-struct C3DBoxI {
+class C2DCoordI { public: long X, Y; };
+class C3DBoxI { public:
     C2DCoordI TL;                                  // +0x00
     C2DCoordI BR;                                  // +0x08
     long      TLZ;                                 // +0x10
@@ -30,7 +30,7 @@ inline void ToD3DBox(D3DBOX& out, const C3DBoxI& box)
 struct CBase {
     virtual ~CBase();
 };
-struct CVolume : CBase {                           // vtable 0x0129C840
+class CVolume : public CBase { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     long CopyFromVolume(const C3DBoxI* destBox, const CVolume& source, const C3DBoxI* sourceBox, unsigned long filter);
 };

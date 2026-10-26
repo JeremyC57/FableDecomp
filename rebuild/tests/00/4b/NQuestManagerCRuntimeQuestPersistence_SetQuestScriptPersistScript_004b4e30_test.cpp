@@ -3,9 +3,9 @@
 // Behaviour model of NQuestManager::CRuntimeQuestPersistence::SetQuestScriptPersistScript @ 0x004B4E30
 // (copy of the source's logic; CCharString stand-in over a fixed buffer, sorted-vector stand-ins).
 static int g_sorts = 0;
-struct CCharStringData { char text[32]; bool operator<(const CCharStringData& o) const { return std::strcmp(text, o.text) < 0; } };
+class CCharStringData { public: char text[32]; bool operator<(const CCharStringData& o) const { return std::strcmp(text, o.text) < 0; } };
 static CCharStringData g_pool[64]; static int g_used = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* s) { PStringData = &g_pool[g_used++]; std::strcpy(PStringData->text, s); }
     CCharString(const CCharString& o) { PStringData = &g_pool[g_used++]; *PStringData = *o.PStringData; }

@@ -6,18 +6,18 @@
 // CThing::RemoveTC(long) @ 0x004C9840 (0x8b = CTCCreatureTintEffect). Constants: 1.0f @ 0x0122DED8, 255.0f @ 0x01230014.
 // Layout: as the landed Reset 0x007CEDE0 / ctor 0x007CF110 (CurTime +0x10, FadeInTime +0x14, StartFadeOut +0x18,
 // FadeOutTimeStart +0x1c, FadeOutTime +0x20, TintList +0x24 12-byte vector, Color[4] +0x30).
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                                    // +0
     unsigned char G;                                    // +1
     unsigned char R;                                    // +2
     unsigned char A;                                    // +3
 };
 namespace NGraphicAppearance {
-    struct CTCGraphicAppearance {
+    class CTCGraphicAppearance { public:
         void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
     };
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
@@ -34,7 +34,7 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T* begin() const { return _M_start; }
     T* end() const { return _M_finish; }
 };
-struct CTCCreatureTintEffect {
+class CTCCreatureTintEffect { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

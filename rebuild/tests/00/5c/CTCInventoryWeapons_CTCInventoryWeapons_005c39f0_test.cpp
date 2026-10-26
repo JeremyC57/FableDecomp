@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static char g_log[256]; static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ","); }
 struct CBaseIntelligentPointer {
     CThing* m_pItem; const char* Name;
@@ -18,8 +18,8 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
 struct CComponentList { ~CComponentList() { Log("list"); } };
 struct CClothingItemMap { ~CClothingItemMap() { Log("map"); } };
 struct CRetailHandleVector { ~CRetailHandleVector() { Log("handles"); } };
-namespace NInventory { struct CTCInventoryBase { virtual ~CTCInventoryBase() { Log("inventorybase"); } }; }
-namespace NHeroInformationScreens { struct CBase { virtual ~CBase() { Log("screenbase"); } }; }
+namespace NInventory { class CTCInventoryBase { public: virtual ~CTCInventoryBase() { Log("inventorybase"); } }; }
+namespace NHeroInformationScreens { class CBase { public: virtual ~CBase() { Log("screenbase"); } }; }
 class CTCInventoryWeapons : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     CIntelligentPointer_CThing PActiveMeleeWeapon;

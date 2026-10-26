@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up; C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
 };

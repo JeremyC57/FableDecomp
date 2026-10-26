@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFB780, length 52 bytes.
 // Callees: CEngineLandscapeMemoryManager::AllocVirtual(long, long) @ 0x00BD9AF0 (this, size, flags; its result passes straight through). Shape: the size is
 // sign-extended (`cdq`) and range-checked as an __int64 through an inline predicate, whose two tests share one `xor eax,eax` failure tail placed after the call path (the call is the `if` body, the zero the fall-through return); the size rides in esi.
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, long flags);     // 0x00BD9AF0
     void* AllocVirtualSafetyChecked(long size, long flags);
 };

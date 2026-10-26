@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour of CQuestManager::IsQuestCardActive (0x004AF560): true as soon as a live active quest card's def
 // name equals the requested name; dead (null) cards are skipped; false when none matches.
-struct CCharString { long m_id; };
-struct CDefString {
+class CCharString { public: long m_id; };
+class CDefString { public:
     long m_index;
     CDefString() : m_index(0) {}
     bool operator==(const CCharString& name) const { return m_index == name.m_id; }
 };
-struct CThing {
+class CThing { public:
     long m_defIndex;
     CDefString GetDefName() const { CDefString d; d.m_index = m_defIndex; return d; }
 };
@@ -29,7 +29,7 @@ template <class T> struct CRetailList {
     iterator begin() const { return iterator(_M_node->_M_next); }
     iterator end() const { return iterator(_M_node); }
 };
-struct CQuestManager {
+class CQuestManager { public:
     CRetailList<CIntelligentPointer> ActiveQuestCards;
     bool IsQuestCardActive(const CCharString& defName)
     {

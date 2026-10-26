@@ -4,7 +4,7 @@
 #include <cstdio>
 struct CParticleCreationParameters { bool InterpolatingParticle; bool ParticleCreationDisabled; bool UpdateParametersSet; bool AlwaysUpdateFlag; };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad[0x44];
     bool PreWaterEffect : 1; bool WaterEffect : 1; bool ZBufferWriteable : 1; bool Visible : 1;
     bool AlwaysUpdate : 1;
@@ -16,8 +16,8 @@ struct CBaseIntelligentPointer {
     void* PData;
     NParticleEngine::CParticleEmitter* GetPItem() const { return static_cast<NParticleEngine::CParticleEmitter*>(PData); }
 };
-template<class T> struct CCountedPointer { T* Object; long* PCount; T* operator->() const { return Object; } };
-struct CTCDParticleEmitter {
+template<class T> class CCountedPointer { public: T* Object; long* PCount; T* operator->() const { return Object; } };
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     unsigned char _base[0x8]; void* EmitterName; long ParticleTypeID;
     CBaseIntelligentPointer PEmitter; CBaseIntelligentPointer PAttachedToThing;

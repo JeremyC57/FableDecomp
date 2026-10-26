@@ -4,16 +4,16 @@
 #include <cstdlib>
 #include <new>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() { }
     virtual void Destroy() const { }
     mutable long m_refCount;
     CDefPointeeBase() : m_refCount(0) { }
     virtual ~CDefPointeeBase() { }
 };
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     explicit CDefPointer(T* p) : Object(p) { if (Object) ++Object->m_refCount; }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }

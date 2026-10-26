@@ -1,6 +1,6 @@
 #include <cstdio>
 class CCharString;
-struct CAIStateGroupBase { int dummy; };
+class CAIStateGroupBase { public: int dummy; };
 const CCharString* __fastcall CAIStateGroupBase_GetDebugText(const CAIStateGroupBase* stateGroup)
 {
   (void)stateGroup;

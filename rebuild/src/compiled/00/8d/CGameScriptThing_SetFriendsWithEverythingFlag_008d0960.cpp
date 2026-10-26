@@ -79,7 +79,7 @@ struct CTCFriendFlags_Retail {
     unsigned char  _pad00[0x0c];
     bool           m_friendsWithEverything;        // +0x0c
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     void*                   m_pVtbl;               // +0x00
     unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>

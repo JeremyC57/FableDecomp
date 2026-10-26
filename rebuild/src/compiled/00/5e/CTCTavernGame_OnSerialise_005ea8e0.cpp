@@ -12,13 +12,13 @@
 // Shape: the float default is a named local in the `push ecx` frame word; the long and bool defaults are literals
 // bound to the const references, homed in the dead context-argument slot; the last member address is formed by
 // advancing `this` (`add esi,0E9h`). The bool parameter is unused.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
     void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     virtual void OnSerialise(CPersistContext& context, bool flag);
     unsigned char _pad04[0x98 - 0x04];      // +0x04 CTCBase, UIComponents, LastRenderTime, game state, handle vectors, fonts

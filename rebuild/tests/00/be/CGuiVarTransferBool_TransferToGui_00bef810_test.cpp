@@ -2,7 +2,7 @@
 
 struct CGuiTarget;
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     CGuiTarget* target;
     int         param;
     char        pad8[4];

@@ -18,13 +18,13 @@
 // storage when non-null (`push eax ; call free ; add esp,4`), then Script's destructor.
 #include <stdlib.h>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
 };
 
-template <class T> struct CArray {              // std::vector<T> view with the malloc-based allocator
+template <class T> class CArray { public:              // std::vector<T> view with the malloc-based allocator
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

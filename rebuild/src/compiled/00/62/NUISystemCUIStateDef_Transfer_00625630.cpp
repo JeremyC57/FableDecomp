@@ -11,15 +11,15 @@
 // Shape: speed TU (address registers rotate eax/ecx/edx, the context reloaded into ecx from edi before every call).
 // Members are transferred in declaration order except StateChangeType, LinearChange and StateChangeFlag, which retail
 // transfers after UpdateTime (retail order 0x3c, 0x48..0x68, 0x44, 0x78, 0x40, 0x6c).
-struct C2DVector { float X; float Y; };
-struct CRGBFloatColour { float R; float G; float B; float A; };
+class C2DVector { public: float X; float Y; };
+class CRGBFloatColour { public: float R; float G; float B; float A; };
 struct CULongVector { unsigned long* _M_start; unsigned long* _M_finish; unsigned long* _M_end_of_storage; };
 
 namespace NUISystem {
 enum EStateChangeType { STATE_CHANGE_TYPE_NONE };
 }
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& value);                  // 0x00431020
     void Transfer(float& value);                          // 0x00431061
     void Transfer(NUISystem::EStateChangeType& value);    // 0x006256E0
@@ -27,14 +27,14 @@ struct CPersistContext {
     void Transfer(CULongVector& value);                   // 0x00464841
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
 namespace NUISystem {
 
-struct CUIStateDef : CDefClassBase {
+class CUIStateDef : public CDefClassBase { public:
     unsigned long    GraphicIndex;                  // +0x3c
     unsigned long    StateChangeFlag;               // +0x40
     EStateChangeType StateChangeType;               // +0x44

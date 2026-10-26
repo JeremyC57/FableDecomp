@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CBaseObject;
+class CThing { public: int id; };
+class CBaseObject;
 static int g_sets = 0;
 struct CTCBase_Calls {
     virtual void v00() { }

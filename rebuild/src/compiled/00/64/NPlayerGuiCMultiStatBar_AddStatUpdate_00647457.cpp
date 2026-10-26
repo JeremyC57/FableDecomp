@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;              // D3DCOLOR byte order
 };
 
@@ -35,8 +35,8 @@ struct CStatBarOwner {                     // the owning player GUI (only the me
     CVector<long>       TypeEffects;       // +0x558
 };
 
-struct CMultiStatBar {
-    struct CStatUpdate {                   // 12 bytes
+class CMultiStatBar { public:
+    class CStatUpdate { public:                   // 12 bytes
         EStatUpdateType Type;
         long            Change;
         CRGBColour      Colour;

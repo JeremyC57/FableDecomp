@@ -34,12 +34,12 @@ struct CDataInputStreamReader : CDataInputStream {
     __forceinline unsigned char ReadByte() { unsigned char value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CDefString {
+class CDefString { public:
     long Index;
     void TransferBinaryIn(CDataInputStream* stream);    // 0x0044FC00
 };
 
-struct CSoundBankEntry {
+class CSoundBankEntry { public:
     unsigned long ID;                   // +0x00
     CDefString    Filename;             // +0x04
     CDefString    SymbolFilename;       // +0x08

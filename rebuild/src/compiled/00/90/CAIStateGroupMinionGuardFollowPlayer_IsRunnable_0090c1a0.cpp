@@ -12,8 +12,8 @@
 // Shape: the frame gate is unsigned (`jbe`); the HasTC test is part of the alive condition and the villager is
 // then looked up unconditionally; the nearest-thing compare holds a by-value copy of the hero position.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -106,7 +106,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -114,7 +114,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -151,11 +151,11 @@ struct CAIStateGroupBase {
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 extern long g_framesPerSecond;                  // 0x01375550
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& v) : x(v.x), y(v.y), z(v.z) { }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                // 0x00487DC0
 };
 struct CWorldP {
@@ -177,16 +177,16 @@ struct CVillage {
 };
 #pragma pack(pop)
 CVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long m_type;
     CThingFilter_HasTC(long type) : m_type(type) { }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector m_pos;
     CThingCompare_Nearest(const C3DVector& pos) : m_pos(pos) { }
 };
-struct CThingAICreature;
-struct CThingSearchTools {
+class CThingAICreature;
+class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
     bool GetPBestThing(const CThingFilter_HasTC& filter, const CThingCompare_Nearest& compare, CThingAICreature** out);  // 0x0065F744

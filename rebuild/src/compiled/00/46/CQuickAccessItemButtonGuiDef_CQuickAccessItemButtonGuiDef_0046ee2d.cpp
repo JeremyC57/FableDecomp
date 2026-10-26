@@ -8,17 +8,17 @@
 // (C2DVector) +0x4c; the retail base is 0x3c bytes (4 smaller), so +0x3c, +0x40, +0x48 here.
 // Shape: a size-optimised TU (unaligned entry): every dword is copied through eax in declaration order after the
 // vtable store; `mov eax,esi` returns `this`.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x3c - 4];
     CParentDefClassBase(const CParentDefClassBase& other);   // 0x0046EE98
 };
 
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {   // vtable 0x012360A4, retail sizeof 0x50
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:   // vtable 0x012360A4, retail sizeof 0x50
     long      ButtonGraphic;                    // +0x3c
     C2DVector Position;                         // +0x40
     C2DVector Offset;                           // +0x48

@@ -1,13 +1,13 @@
 #include <cstdio>
 
 static int g_baseCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _body[0x38];
     CParentDefClassBase() { }
     CParentDefClassBase(const CParentDefClassBase& other) { ++g_baseCopies; }
 };
-struct CAbilityButtonGuiDef : CParentDefClassBase {
+class CAbilityButtonGuiDef : public CParentDefClassBase { public:
     long m_buttonX, m_buttonY, m_buttonWidth, m_buttonHeight, m_iconX, m_iconY, m_iconWidth, m_iconHeight;
     virtual void v00() { }
     CAbilityButtonGuiDef() : m_buttonX(1), m_buttonY(2), m_buttonWidth(3), m_buttonHeight(4), m_iconX(5), m_iconY(6), m_iconWidth(7), m_iconHeight(8) { }

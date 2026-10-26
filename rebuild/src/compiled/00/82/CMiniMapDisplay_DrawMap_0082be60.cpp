@@ -15,17 +15,17 @@
 // Shape: the layer is an initialised local overwritten under `!front`; the courtyard names are named CCharStrings in
 //   their own blocks (one frame slot); C2DBoxF needs its user copy constructor, else the ToScreenBox result is copied
 //   into a second frame temporary and the call is hoisted ahead of the sprite constructor's argument pushes.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxF {
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(const C2DBoxF& other) : TopLeft(other.TopLeft), BottomRight(other.BottomRight) { }
 };
@@ -37,14 +37,14 @@ struct CEnginePrimitive2DSprite {                  // 0x54 bytes
         unsigned char red, unsigned char green, unsigned char blue, unsigned long flags,
         const C2DVector& uv0 = C2DVector(0.0f, 0.0f), const C2DVector& uv1 = C2DVector(0.0f, 0.0f));   // 0x0041BEB0
 };
-struct CEnginePrimitiveHandle;
-struct CIEngine {
+class CEnginePrimitiveHandle;
+class CIEngine { public:
     virtual void e00(); virtual void e01(); virtual void e02(); virtual void e03(); virtual void e04(); virtual void e05(); virtual void e06(); virtual void e07();
     virtual void e08(); virtual void e09(); virtual void e10(); virtual void e11(); virtual void e12(); virtual void e13(); virtual void e14(); virtual void e15();
     virtual void e16(); virtual void e17(); virtual void e18(); virtual void e19(); virtual void e20(); virtual void e21(); virtual void e22();
     virtual void SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive2DSprite& primitive, unsigned long flags);   // slot 23 (+0x5C)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine*     Engine;                          // +0x34
 };
@@ -53,9 +53,9 @@ struct CHero {
     unsigned char Flags91;                         // +0x91
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
-struct CPlayer { CHero* GetHeroCreature(); };      // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CMainGameComponent {
+class CPlayer { public: CHero* GetHeroCreature(); };      // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1C
 };
@@ -66,13 +66,13 @@ struct CMinimapNode {                              // map<CCharString, long> nod
     long          Graphic;                         // +0x14
 };
 struct CMinimapMap { CMinimapNode* Find(const CCharString& name); };   // 0x0042B467
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x94c];
     CMinimapMap   Minimaps;                        // +0x94C
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     void*                   __vftable;
     CEnginePrimitiveHandle* MapPrimitiveHandles[3];       // +0x04 vector (start, finish, end)
     CEnginePrimitiveHandle* MarkerPrimitiveHandles[3];    // +0x10

@@ -21,7 +21,7 @@ struct SCountBlock {                         // the shared count block of CCount
 };
 
 template <class T>
-struct CCountedPointer {                     // {object, count block}
+class CCountedPointer { public:                     // {object, count block}
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -69,8 +69,8 @@ struct CAnimationMap {                       // STLport map<unsigned long, CCoun
     }
 };
 
-struct C3DAnimation2;
-struct CBankFileAsyncData;
+class C3DAnimation2;
+class CBankFileAsyncData;
 class C3DAnimationInfo;
 
 class CAnimationDataBase {                   // the base class: vptr + 0x18 bytes, out-of-line destructor

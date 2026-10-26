@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CTCBase { unsigned char _pad[0x79]; bool m_bPushableByHero; };
-struct CThingAICreature { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CTCBase { public: unsigned char _pad[0x79]; bool m_bPushableByHero; };
+class CThingAICreature { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     bool GetInterface(long type, CTCBase** out) {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
             long key = type; CInterfaceMap* map = &m_interfaces; CInterfaceMap::SEntry* it = map->LowerBound(&key);
@@ -16,8 +16,8 @@ struct CThingAICreature { unsigned char _pad0[0x20]; unsigned long m_presentBits
         }
         return false;
     } };
-struct CAIBrain { void* __vftable; unsigned char _pad[0x14]; CThingAICreature* Creature; };
-struct CAIStateGroupBase { void* __vftable; CAIBrain* PBrain; void SetPushableByHero(bool pushable); };
+class CAIBrain { public: void* __vftable; unsigned char _pad[0x14]; CThingAICreature* Creature; };
+class CAIStateGroupBase { public: void* __vftable; CAIBrain* PBrain; void SetPushableByHero(bool pushable); };
 void CAIStateGroupBase::SetPushableByHero(bool pushable) { CTCBase* component; if (PBrain->Creature->GetInterface(0xaa, &component)) component->m_bPushableByHero = pushable; }
 int main()
 {

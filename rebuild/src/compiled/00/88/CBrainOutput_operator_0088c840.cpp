@@ -9,7 +9,7 @@
 //          CNavigationInput assignment) copies through a `lea` pointer register. The counted pointer's inline
 //          operator= takes the source count and object into locals (ebx/ebp) first, skips everything when the count blocks are equal, releases the
 //          old block (count re-read after the decrement), then stores object, count and bumps it.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
@@ -54,19 +54,19 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CNavigationInput {                       // 24 bytes
+class CNavigationInput { public:                       // 24 bytes
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c
     long MovementType;                          // +0x10 EMovementType
     float Speed;                                // +0x14
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                     Types;            // +0x00
     long                              LookFlags;        // +0x04
     CNavigationInput                  NavigationInput;  // +0x08

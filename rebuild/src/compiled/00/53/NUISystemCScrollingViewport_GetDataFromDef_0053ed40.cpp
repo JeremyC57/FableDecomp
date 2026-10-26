@@ -25,7 +25,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                      // slot 1
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 struct CUIDef : CDefVirtual, CRefCounted {
@@ -66,7 +66,7 @@ struct CComponentInterface {
     virtual void v105(); virtual void v106(); virtual void v107();
     virtual CDefPointer_CUIDef LoadAndReturnDef() const;   // slot 108 (+0x1B0)
 };
-struct CScrollingViewport : CComponentInterface {
+class CScrollingViewport : public CComponentInterface { public:
     unsigned char _pad_0x04[0x174 - 0x04];
     float   ScrollingSpeed;          // +0x174
     C2DBoxF Window;                  // +0x178

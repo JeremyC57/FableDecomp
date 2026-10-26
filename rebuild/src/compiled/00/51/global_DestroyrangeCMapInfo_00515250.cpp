@@ -9,7 +9,7 @@
 // Shape: the implicit CMapInfo destructor is inlined: members in reverse order, the counted pointer releases through
 // its block (decrement, at zero call the block's destroy function with the object in ecx, delete the block) and then
 // nulls both words. VC strength-reduces the element to `esi = &first->PMap.Block` (stepped with edi).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
@@ -18,7 +18,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*); // +4
     void* m_pObject;                        // +8
 };
-struct CMap;
+class CMap;
 struct CCountedPointerCMap {
     CMap* m_pObject;                        // +0
     SCountBlock* m_pCount;                  // +4
@@ -35,8 +35,8 @@ struct CCountedPointerCMap {
         m_pCount = 0;
     }
 };
-struct C2DBoxI { long x0, y0, x1, y1; };
-struct CMapInfo {                           // Ego_r.pdb, 72 bytes
+class C2DBoxI { public: long x0, y0, x1, y1; };
+class CMapInfo { public:                           // Ego_r.pdb, 72 bytes
     C2DBoxI Area;                           // +0x00
     CCountedPointerCMap PMap;               // +0x10
     CCharString LevelName;                  // +0x18

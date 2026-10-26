@@ -7,9 +7,9 @@
 #define __forceinline inline
 #endif
 struct __true_type { __true_type() {} };
-struct CBaseObject { int Tag; };
+class CBaseObject { public: int Tag; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char UsingComponents[0x24];
     unsigned long ThingTypeFlags;
@@ -74,7 +74,7 @@ template <class T> struct CResultList {
     }
     void push_back(const T& x) { insert(end(), x); }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Data;
     bool operator()(const CThing& thing) const { return ((thing.Accept >> Data) & 1) != 0; }
 };

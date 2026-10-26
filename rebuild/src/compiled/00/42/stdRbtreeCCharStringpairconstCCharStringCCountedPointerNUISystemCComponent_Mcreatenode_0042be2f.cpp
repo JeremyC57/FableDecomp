@@ -14,7 +14,7 @@ public:
     void* PData;
     CCharString(const CCharString& s);                   // 0x0099EC30
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

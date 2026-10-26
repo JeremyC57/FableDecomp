@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing { int id; };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: int id; };
 
 static bool g_bCompileFrontendDefinitions = false;
 static CThing g_made;

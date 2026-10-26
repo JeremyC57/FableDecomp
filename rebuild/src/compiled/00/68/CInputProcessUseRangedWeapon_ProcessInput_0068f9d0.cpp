@@ -15,7 +15,7 @@
 //   `GetConstInterface(0x46)->GetThingInPrimarySlot()` gives each key its own slot (8-byte frame).
 class CInputEvent;
 class CProcessedInput;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CPlayer;
+class CPlayer;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -66,15 +66,15 @@ public:
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();               // 0x006A1440
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsProjectileWeapon();                     // 0x005DAA40
     bool IsProjectileWeaponLoaded();               // 0x005DA980
     bool IsAnalogueLoading();                      // 0x005DA950
 };
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void CancelAimingWeapon();                     // 0x00789FF0
     void ResetProjectileWeaponMode();              // 0x00789B30
 };
@@ -84,7 +84,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                      // 0x00A01B50
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char           _pad00[0x34];
     CBaseIntelligentPointer PCharacter;            // +0x34
     unsigned char           _pad3c[0x218 - 0x3c];
@@ -92,7 +92,7 @@ struct CPlayer {
     CThing* GetCharacter() const { return PCharacter.GetPItem(); }
     void RemoveMode(long mode);                    // 0x00634190
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

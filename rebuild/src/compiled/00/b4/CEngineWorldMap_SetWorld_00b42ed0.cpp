@@ -13,13 +13,13 @@
 // Shape: the second loop calls CEngineWorldMap::OnGameMapLoaded(i) inline, which forwards to the inline
 // CEngineMap::OnGameMapLoaded(i): the map pointer is read from the list before the global world map, the map info is a
 // named local of that inline member, destroyed after the landscape-map call; the resize value 0 is a temporary homed in the dead `world` slot.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CIDrawMap;
-struct CDrawMapInfo {
+class CIDrawMap;
+class CDrawMapInfo { public:
     bool Valid;                                         // +0x00
     bool Loadable;                                      // +0x01
     bool GameLoadable;                                  // +0x02
@@ -30,28 +30,28 @@ struct CDrawMapInfo {
     long ExtentsX, ExtentsY;                            // +0x18 C2DExtentsI
 };
 
-struct CIDrawWorldMap {
+class CIDrawWorldMap { public:
     virtual long GetMapCount() const = 0;                       // slot 0
     virtual CDrawMapInfo GetMapInfo(long index) const = 0;      // slot 1
 };
-struct CIDrawWorld {
+class CIDrawWorld { public:
     virtual void v00() const = 0;
     virtual void v01() const = 0;
     virtual const CIDrawWorldMap* GetWorldMap() const = 0;      // slot 2
 };
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void OnGameMapLoaded();                             // 0x00BDBFE0 (empty)
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap* LandscapeMap;                  // +0x00
     void* LocalDetailCacheMap;                          // +0x04
     const CIDrawMap* GameMap;                           // +0x08
     void OnGameMapLoaded(long mapIndex);
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -59,7 +59,7 @@ template <class T> struct CArray {
     T& operator[](long index) { return First[index]; }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void* _vptr;                                        // +0x000
     unsigned char _pad004[0x1c];                        // +0x004
     CArray<CEngineMap*> MapList;                        // +0x020

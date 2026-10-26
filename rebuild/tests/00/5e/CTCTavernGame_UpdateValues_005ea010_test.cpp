@@ -20,22 +20,22 @@ template <class T> struct CDefHolder {
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     unsigned char _pad00[0x28];
     float Score;
     long Mult;
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad08[0x170 - 0x08];
     bool BestScoreHigh;
     CPrizeScoreDef* PrizeScores_first;
     CPrizeScoreDef* PrizeScores_last;
 };
 static CTavernGameDef* g_gameDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out) { ++g_getSubDef; if (!g_gameDef) return false; ++g_gameDef->RefCount; out.Object = g_gameDef; return true; }
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0x5c];
     long MaximumMoney;
 };
@@ -44,11 +44,11 @@ struct CDefinitionHolder {
     CHeroStatsDef* PHeroStatsDef;
 };
 static CDefinitionHolder g_holder; static CHeroStatsDef g_heroStats;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00() {}
     CThing* ParentThing;
     unsigned char _pad08[0x20 - 0x08];

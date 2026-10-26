@@ -13,7 +13,7 @@
 #include <stdlib.h>
 struct CGraphicDefinition {unsigned char Prefix[0x43];unsigned char Flags;unsigned char BeforePersistence[8];unsigned short Persistence;};
 struct CGraphicThing {unsigned char Prefix[0x70];CGraphicDefinition* Definition;};
-struct CTCBase {CGraphicThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;CTCBase(CGraphicThing*);virtual ~CTCBase();}; //686800/686830
+class CTCBase { public:CGraphicThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;CTCBase(CGraphicThing*);virtual ~CTCBase();}; //686800/686830
 struct CMeshPriority {unsigned char Bytes[12];};
 template<class V>struct CGraphicMap {
  struct Node {unsigned char Colour;unsigned char Pad[3];Node* Parent;Node* Left;Node* Right;void* Key;V Value;};

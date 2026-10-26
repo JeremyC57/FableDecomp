@@ -1,4 +1,4 @@
-struct CGameDefinitionManager;
+class CGameDefinitionManager;
 struct WorldCtx;
 struct WorldObj {
     virtual void v0();virtual void v1();virtual void v2();virtual void v3();virtual void v4();
@@ -13,7 +13,7 @@ extern "C" CGameDefinitionManager& __fastcall GetDefMgr();
 extern "C" void __fastcall DisplayProgress(CCharString2* text, bool edxBool, float progress, int flags);
 extern GObj g_obj;
 extern unsigned char g_flag1, g_flag2;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     char pad0[0x1c]; void* f1c; char pad20[0x24-0x20]; CountedPtr f24;
     bool InitEventPackageLoading(void* p);
     bool InitEventPackageSaving(void* p);

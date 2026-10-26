@@ -29,10 +29,10 @@ struct IDirect3DSurface9 {
     virtual long __stdcall LockRect(void* lockedRect, const void* rect, unsigned long flags);
     virtual long __stdcall UnlockRect();                                     // +0x38
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class C2DBoxI { public: long left, top, right, bottom; };
-struct C2DExtentsI { long X; long Y; C2DExtentsI(long x, long y) : X(x), Y(y) {} };
-struct CSurfaceLockedRect { long DimX; long DimY; long Pitch; unsigned char* PMem; };
+class C2DExtentsI { public: long X; long Y; C2DExtentsI(long x, long y) : X(x), Y(y) {} };
+class CSurfaceLockedRect { public: long DimX; long DimY; long Pitch; unsigned char* PMem; };
 class CPixelFormat {
 public:
     long FormatIndex;

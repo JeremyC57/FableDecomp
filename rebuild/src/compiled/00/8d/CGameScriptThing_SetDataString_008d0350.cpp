@@ -3,7 +3,7 @@
 // Callees: CCharString::operator= @ 0x0099EFB0 twice, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on +0xc; re-fetched for every access). Shape: the text in edi,
 // the pointer address formed with `add esi,0Ch`, `ret 4`.
 struct CTCGraphicAppearance_Retail;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -31,7 +31,7 @@ struct CIntelligentPointer_Retail {                // 8 bytes: vptr + the pointe
     CThing_Retail* GetPItem();                     // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char             _pad[0xc];
     CIntelligentPointer_Retail m_thing;            // +0x0c
     unsigned char             _pad14[0x10];

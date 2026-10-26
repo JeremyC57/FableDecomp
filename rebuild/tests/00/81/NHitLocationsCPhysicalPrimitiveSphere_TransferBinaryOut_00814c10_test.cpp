@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-static long g_byte = -1; static float g_float = 0; struct CDataOutputStream { void WriteCBYTE(long v) { std::strcat(g_seq, "B"); g_byte = v; } void WriteFloat(float v) { std::strcat(g_seq, "F"); g_float = v; } };
+static long g_byte = -1; static float g_float = 0; class CDataOutputStream { public: void WriteCBYTE(long v) { std::strcat(g_seq, "B"); g_byte = v; } void WriteFloat(float v) { std::strcat(g_seq, "F"); g_float = v; } };
 struct CSizedValue { long m_0; long m_count; float m_value; void TransferBinaryOut(CDataOutputStream* stream) { stream->WriteCBYTE(m_count); stream->WriteFloat(m_value); } };
 
 int main() {

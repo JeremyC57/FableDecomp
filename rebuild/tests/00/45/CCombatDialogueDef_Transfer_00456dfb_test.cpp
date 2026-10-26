@@ -54,7 +54,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CCombatDialogueDef {
+class CCombatDialogueDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -182,11 +182,11 @@ public:
 };
 
 #undef CPersistContext
-struct CPersistContext : CPersistContext_PDB {
+class CPersistContext : public CPersistContext_PDB { public:
     void Transfer(float& value); // 0x00431061
     void Transfer(long& value);  // 0x00431102
 };
-struct CCombatDialogueDef {
+class CCombatDialogueDef { public:
     void* __vftable;
     unsigned char nativePrefix[0x38];
     float MinTimeBetweenSpeech;

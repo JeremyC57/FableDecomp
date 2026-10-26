@@ -10,7 +10,7 @@
 // destructor out of line (the derived class adds no store of its own) and runs BEFORE the
 // LookFlags store: the temporary lives in a nested scope (a function-scope local would be
 // destroyed after the store).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -26,7 +26,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long       Types;                  // +0x00
     long                LookFlags;              // +0x04
     unsigned char       _pad[0x38];             // +0x08..+0x3f

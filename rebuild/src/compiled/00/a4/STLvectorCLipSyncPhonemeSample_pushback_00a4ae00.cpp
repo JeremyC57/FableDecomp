@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-struct CCPPointerInfo {                              // count block: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                              // count block: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;

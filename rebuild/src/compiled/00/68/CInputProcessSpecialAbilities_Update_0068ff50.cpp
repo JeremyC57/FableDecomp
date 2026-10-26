@@ -10,7 +10,7 @@
 //   bitset +0x20 (kind 0xf6 = word +0x3c bit 22), map +0x44, Dead bit +0x91.
 // Shape: two early-return arms each ending in the latch store; the menu pointer is preset to null and set only when
 //   the component is present (`xor ecx,ecx` before the test), then called unconditionally.
-struct CPlayerGui {
+class CPlayerGui { public:
     void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b);   // 0x00437580
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
@@ -36,7 +36,7 @@ struct CTCMap_Retail {                             // the thing's component map 
 struct CTCMenu {                                   // component kind 0xf6
     bool IsActive();                               // 0x00625930
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -54,7 +54,7 @@ public:
     bool          SpellMode;                       // +0x218
     CThing* GetHeroThing();                        // 0x00487DC0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

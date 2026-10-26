@@ -10,12 +10,12 @@
 // Tiny-body shape `GetFloatThrough` synthesised from the instruction pattern (the class comes from the
 // vtable-slot/manifest label when it is a plain class name, else the method is landed under a
 // descriptive placeholder); member names are descriptive. 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     unsigned char _pad[0x38];
     float Mass;                         // +0x38
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad[0x38];
     CPhysicsDef* PhysicsDef;                     // +0x38
     float GetMass();

@@ -10,13 +10,13 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: map 0 is skipped; the UID field pointer is strength-reduced (start + 0x68, step 0x48) while size() is
 // recomputed from the members every pass.
-struct CMapInfo {
+class CMapInfo { public:
     unsigned char _pad[0x20];
     unsigned long MapUID;                       // +0x20
     unsigned char _rest[0x24];                  // +0x24 .. +0x48
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
     T* EndOfStorage;                            // +0x08
@@ -24,7 +24,7 @@ template <class T> struct CArray {
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char    _pad[0x20];
     CArray<CMapInfo> Maps;                      // +0x20
     long GetMapNumberFromMapUID(unsigned long uid) const;

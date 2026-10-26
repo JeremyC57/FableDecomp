@@ -9,12 +9,12 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CKrakenTentacleDef : CDefClassBase {
+class CKrakenTentacleDef : public CDefClassBase { public:
     float                    TentacleSmackDownTime;       // +0x28
     float                    TentacleTurnSpeed;           // +0x2c
     float                    TentacleMoveSpeed;           // +0x30

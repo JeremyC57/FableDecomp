@@ -10,7 +10,7 @@
 // most-derived class and the CSubDefClassBase layer are `__declspec(novtable)` with inline empty
 // destructors, CDefPointeeBase's inline destructor keeps its store, and a non-virtual destructor next to a
 // virtual function keeps the plain `??1` as the TU's body.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -20,7 +20,7 @@ struct CResource_Calls {                           // the root base
     ~CResource_Calls();                            // 0x009FC550
 };
 
-struct CDefPointeeBase : CResource_Calls {         // vtable 0x01230BA0
+class CDefPointeeBase : public CResource_Calls { public:         // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };
@@ -30,7 +30,7 @@ struct __declspec(novtable) CSubDefClassBase : CDefPointeeBase {
     ~CSubDefClassBase() { }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 

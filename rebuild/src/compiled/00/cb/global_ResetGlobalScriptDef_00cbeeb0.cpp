@@ -21,7 +21,7 @@ struct CDefVirtual {
     virtual void Destroy();                // slot 1
 };
 
-struct CScriptDef : CDefVirtual, CRefCounted {
+class CScriptDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseReference()
     {
         DecRef();

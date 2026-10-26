@@ -32,12 +32,12 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-struct CThingAICreature;
+class CThingAICreature;
 // Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
 extern "C" void* __cdecl malloc(unsigned int);
@@ -59,9 +59,9 @@ void ThingVector::_M_insert_overflow(CThingAICreature** position,CThingAICreatur
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingAICreature:CThing {enum {ThingTypeMask=31};};
+class CThingAICreature:public CThing { public:enum {ThingTypeMask=31};};
 
-struct C2DBoxI {
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -72,8 +72,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -89,8 +89,8 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_HasDefGlobalIndex {unsigned long DefGlobalIndex;bool operator()(const CThing&)const;}; // 0x006a70b0
-struct CTCCarrying {static bool __fastcall IsThingCarryingMeleeWeapon(const CThing&);}; // 0x006a15a0
+class CThingFilter_HasDefGlobalIndex { public:unsigned long DefGlobalIndex;bool operator()(const CThing&)const;}; // 0x006a70b0
+class CTCCarrying { public:static bool __fastcall IsThingCarryingMeleeWeapon(const CThing&);}; // 0x006a15a0
 struct CThingFilter_IsHoldingMeleeWeapon {__forceinline bool operator()(const CThing& p)const{return CTCCarrying::IsThingCarryingMeleeWeapon(p);}};
 struct Filters {
  CThingFilter_HasDefGlobalIndex* F1;

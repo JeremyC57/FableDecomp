@@ -12,49 +12,49 @@
 #endif
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
 
-struct CFontBank {
+class CFontBank { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual bool Preload(const CWideString& text, bool wait) const;   // slot 4
 };
 
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) {}
 };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;                                  // +0x00 EEnginePrimitiveType
     long InterpolationSet;                      // +0x04 EEngineInterpolationSet
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;   // +0x08
     CEnginePrimitive(long type, long interpolationSet) : Type(type), InterpolationSet(interpolationSet) {}
 };
-struct CEnginePrimitive2DText : CEnginePrimitive {
+class CEnginePrimitive2DText : public CEnginePrimitive { public:
     C3DVector    Pos;                           // +0x0c
     long         Layer;                         // +0x18 EEngine2DLayer
     float        Scale;                         // +0x1c
@@ -69,7 +69,7 @@ struct CEnginePrimitive2DText : CEnginePrimitive {
     }
 };
 
-struct CEnginePrimitiveHandle {                 // 8 bytes
+class CEnginePrimitiveHandle { public:                 // 8 bytes
     void* _vtable;
     void* Data;
 };
@@ -82,19 +82,19 @@ struct CHandleVector {                          // STLport vector<CEnginePrimiti
     void AddDefaultHandle_005ed940();           // 0x005ED940
 };
 
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22();
     virtual void AddPrimitive(CEnginePrimitiveHandle* handle, const CEnginePrimitive2DText* primitive, unsigned long flags);   // slot 23
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad[0x34];                   // CInterpolationInfo Interpolate
     CIEngine*     Engine;                       // +0x34
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void*         __vfptr;                      // +0x00 (CTCBase)
     void*         ParentThing;                  // +0x04
     unsigned char _pad08[0x44 - 0x08];

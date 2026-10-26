@@ -21,11 +21,11 @@ struct CComponentBase {
     virtual void v00();
 };
 
-struct CComponent : CComponentBase, CInputClient {
+class CComponent : public CComponentBase, public CInputClient { public:
     unsigned char _pad08[0x164];                     // +0x08
 };
 
-struct CFrontEndManager {
+class CFrontEndManager { public:
     virtual void m00(); virtual void m01();
     virtual void AddInputClient(CInputClient* client);       // slot 2 (+0x8)
     virtual void m03(); virtual void m04();
@@ -33,7 +33,7 @@ struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance();       // 0x0041E5F2
 };
 
-struct CScrollableList : CComponent {
+class CScrollableList : public CComponent { public:
     float       ScrollTimer;                         // +0x16c
     CComponent* PUpArrow;                            // +0x170
     CComponent* PDownArrow;                          // +0x174

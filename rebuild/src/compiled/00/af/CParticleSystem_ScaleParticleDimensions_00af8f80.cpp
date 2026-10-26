@@ -8,7 +8,7 @@
 // Scale is the C3DVector at +0x60 (PDB +0x7c).
 #define PS_MAX(a, b) ((a) > (b) ? (a) : (b))
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

@@ -65,13 +65,13 @@ public:
 };
 }
 
-struct CCPPointerInfo {                                     // counted-pointer block
+class CCPPointerInfo { public:                                     // counted-pointer block
     long RefCount;                                          // +0x00
     void (__fastcall* DeleteFunc)(void* data);              // +0x04
     void* Data;                                             // +0x08
     CCPPointerInfo(void* data, void (__fastcall* deleteFunc)(void*)) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                                   // +0x00
     CCPPointerInfo* Info;                                   // +0x04
     static void __fastcall DeleteData(void* data);
@@ -115,7 +115,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() { }
     CDefPointer(const CDefPointer& other);
@@ -135,8 +135,8 @@ struct CRGBColour {                                         // D3DCOLOR byte ord
     __forceinline CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }
     CRGBColour() { }                                        // test only: lets the stub CUIState(const CUIStateDef&) build one
 };
-struct CUIStateDef { unsigned char _data[0x7c]; };          // retail 0x7c bytes (Ego_r.pdb 0x84)
-struct CUIState {                                           // 0x24 bytes
+class CUIStateDef { public: unsigned char _data[0x7c]; };          // retail 0x7c bytes (Ego_r.pdb 0x84)
+class CUIState { public:                                           // 0x24 bytes
     unsigned long StateChangeFlag;                          // +0x00
     long          StateChangeType;                          // +0x04
     C2DVector     Position;                                 // +0x08
@@ -146,7 +146,7 @@ struct CUIState {                                           // 0x24 bytes
     bool          LinearChange;                             // +0x20
     CUIState(const CUIStateDef& def);                       // 0x0052F440
 };
-struct CUIDef : CDefBase {                                  // Ego_r.pdb CUIDef - 4 up to States, then the 12-byte STLport containers
+class CUIDef : public CDefBase { public:                                  // Ego_r.pdb CUIDef - 4 up to States, then the 12-byte STLport containers
     unsigned char _pad08[0x3c - 0x08];
     long          Type;                                     // +0x3c EType
     std::vector<CUIStateDef> States;                        // +0x40
@@ -173,7 +173,7 @@ struct CUIDef : CDefBase {                                  // Ego_r.pdb CUIDef 
     unsigned char _pad20a[0x214 - 0x20a];
     std::vector<unsigned long> ShapeChildren;               // +0x214
 };
-struct CAction {                                            // 16 bytes
+class CAction { public:                                            // 16 bytes
     long          ActionType;                               // +0x00 EActionType
     void*         UIActionParams;                           // +0x04 list<CActionParam*>
     void*         ThingActionParams;                        // +0x08 list<long>
@@ -181,7 +181,7 @@ struct CAction {                                            // 16 bytes
     CAction();                                              // 0x0042BE50
 };
 class CComponent;
-struct CManager {
+class CManager { public:
     static CManager* __fastcall GetInstance();              // 0x0041E5F2
     CComponent* CreateComponent(long defIndex);             // 0x0041D21B
 };

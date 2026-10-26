@@ -2,13 +2,13 @@
 #include <cstdio>
 static const void* g_removed[4];
 static int g_count = 0;
-struct CAInputProcess {
+class CAInputProcess { public:
     int id;
     void RemoveFromInterface() { g_removed[g_count++] = this; }   // stands in for 0x00A0D2D0
 };
 typedef long EPlayerMode;
-struct CProcessedInput { int unused; };
-struct CPlayer {                            // the two input-process slots of the retail CPlayer
+class CProcessedInput { public: int unused; };
+class CPlayer { public:                            // the two input-process slots of the retail CPlayer
     CAInputProcess* InputProcessOracleMinigame_ptr;
     CAInputProcess* InputProcessQuickAccessItems_ptr;
     void UninitModeOracleMinigame(EPlayerMode mode, CProcessedInput* input);

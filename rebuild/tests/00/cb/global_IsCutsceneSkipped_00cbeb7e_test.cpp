@@ -2,7 +2,7 @@
 // message decides, otherwise the cutscene-skipped message does.
 #include <cstdio>
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool actionPressed;
     bool cutsceneSkipped;
     int actionQueries;

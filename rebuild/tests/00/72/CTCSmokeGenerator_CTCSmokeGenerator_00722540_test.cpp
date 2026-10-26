@@ -1,10 +1,10 @@
 // Behaviour test for CTCSmokeGenerator::CTCSmokeGenerator (0x00722540): zero distance, empty vector, not created.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     virtual ~CTCBase() { }
     CTCBase(CThing* parent) : ParentThing(parent) { g_baseParent = parent; }
@@ -19,7 +19,7 @@ struct CGenerationPosVector {
     CGenerationPosVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CTCSmokeGenerator : CTCBase {
+class CTCSmokeGenerator : public CTCBase { public:
     float                GenerationDistance;
     CGenerationPosVector GenerationPositions;
     bool                 PositionsCreated;

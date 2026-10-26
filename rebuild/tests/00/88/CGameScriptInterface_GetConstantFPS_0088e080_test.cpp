@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 long g_constantFPS = 0;
 
 long __fastcall CGameScriptInterface_GetConstantFPS(const CGameScriptInterface* self)

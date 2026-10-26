@@ -52,7 +52,7 @@ public:
     }
 };
 
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     void SetAsPickUpNewLockTarget();            // 0x008023A0
 };
 
@@ -64,12 +64,12 @@ struct CBaseIntelligentPointer {
 
 void operator delete(void* p);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {                         // counted-pointer info block
+class CCPPointerInfo { public:                         // counted-pointer info block
     long Count;                                 // +0
     void (__fastcall* Destroy)(void*);          // +4 per-type deleter, object in ecx
     void* Object;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                    // +0
     CCPPointerInfo* Info;                       // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -138,7 +138,7 @@ public:
     unsigned char _pad_0x08[0x4];
 };
 
-struct CTCWillLightning : CTCBase {             // vtable 0x0126C724
+class CTCWillLightning : public CTCBase { public:             // vtable 0x0126C724
     long  WeaponState;                          // +0x0c
     bool  LeftHandAnim;                         // +0x10
     unsigned char _pad_0x11[0x68 - 0x11];

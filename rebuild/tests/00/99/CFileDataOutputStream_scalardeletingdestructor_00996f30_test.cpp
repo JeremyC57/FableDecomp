@@ -2,7 +2,7 @@
 // Behaviour test for CFileDataOutputStream scalar deleting destructor (0x00996F30): the file-name string,
 // then the CDataStream layer, then the CBase root.
 static int g_order[8]; static int g_n = 0;
-struct CCharString { void* m_pData; ~CCharString() { g_order[g_n++] = 3; } };
+class CCharString { public: void* m_pData; ~CCharString() { g_order[g_n++] = 3; } };
 namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
 struct CDataStream : CBase { virtual ~CDataStream() { g_order[g_n++] = 2; } };
 struct CFileDataOutputStream : CDataStream { CCharString m_fileName; void* File; virtual ~CFileDataOutputStream() { } };

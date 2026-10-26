@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CLightDef { bool m_bNeedsAppearanceUpdate; };
-struct CThing { int calls; long last; void ForwardToGraphicAppearance(long r) { ++calls; last = r; } };
-struct CTCLight {
+class CLightDef { public: bool m_bNeedsAppearanceUpdate; };
+class CThing { public: int calls; long last; void ForwardToGraphicAppearance(long r) { ++calls; last = r; } };
+class CTCLight { public:
     CThing* m_pThing; const CLightDef* PLightDef; bool Active;
     void RequestAppearanceUpdate() { if (Active && PLightDef->m_bNeedsAppearanceUpdate) m_pThing->ForwardToGraphicAppearance(4); }
 };

@@ -34,7 +34,7 @@ public:
         return false;
     }
 };
-struct CWeaponDef {
+class CWeaponDef { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long RefCount;                               // +0x04
@@ -42,16 +42,16 @@ struct CWeaponDef {
     unsigned char _pad_0x08[0x44 - 0x08];
     float AnimationSpeed;                        // +0x44
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     __forceinline ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     float GetSpeedMultiplier() const;            // 0x00766140
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];

@@ -15,7 +15,7 @@
 // (the landed 0x008EC870 idiom), which keeps the def object in esi across GetSubDef; MovementVector is assigned from a
 // C3DVector(0, 0, 0) temporary through a user operator= that stores Z, Y, X (retail order 0x20, 0x1c, 0x18, with the
 // ParentThing load scheduled after it; the X, Y, Z order or plain member stores hoist that load first).
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                             // +0x8c
 };
@@ -32,18 +32,18 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CCoopSpiritDef;
-struct CDefClassBase {
+class CCoopSpiritDef;
+class CDefClassBase { public:
     virtual void v00();
     virtual void DestroySelf();                          // slot 1 (+4)
     long RefCount;                                       // +0x04
     bool GetSubDef(CDefPointer<const CCoopSpiritDef>* out);   // 0x00670B90
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out); // 0x0042AF3C
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -68,14 +68,14 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
     return true;
 }
 #pragma auto_inline(on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector& operator=(const C3DVector& o) { Z = o.Z; Y = o.Y; X = o.X; return *this; }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 class CPlayer;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                 // +0x04
     bool    ToBeRemoved;                                 // +0x08
@@ -83,7 +83,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager();          // 0x006869D0
     void OnCreate();                                     // 0x00686850
 };
-struct CTCCoopSpirit : CTCBase {
+class CTCCoopSpirit : public CTCBase { public:
     long                              NoMovementTimer;   // +0x0c
     long                              Score;             // +0x10
     long                              OffscreenCounter;  // +0x14

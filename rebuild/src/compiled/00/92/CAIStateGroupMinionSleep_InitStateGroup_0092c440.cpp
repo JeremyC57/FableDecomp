@@ -8,8 +8,8 @@
 // byte store before the division result's store. Both arguments are unused (`ret 8`). The engine header keeps
 // everything but +0x60 as pads, so the intermediate members are modelled locally (same slots as the landed
 // CAIStateGroup_GoToBed::InitStateGroup @ 0x0092C490).
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
@@ -21,7 +21,7 @@ inline unsigned long WorldRandomStep(unsigned long& seed)
     return seed;
 }
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
     unsigned long* GetPWorldSeed();             // 0x008FCFD0

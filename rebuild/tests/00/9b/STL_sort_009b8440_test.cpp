@@ -2,7 +2,7 @@
 
 // Host model: CWideString as a pointer to a zero-terminated UTF-16 buffer with the lexicographic operator<; the
 // two-argument sort passes an (empty) less<> functor to every helper.
-struct CWideString {
+class CWideString { public:
     const unsigned short* Chars;
     bool operator<(const CWideString& other) const
     {

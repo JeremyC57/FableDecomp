@@ -4,8 +4,8 @@
 #include <cstring>
 
 static int g_destroyed = 0;
-struct CWideString { wchar_t text[32]; };
-struct CCharString {
+class CWideString { public: wchar_t text[32]; };
+class CCharString { public:
     const char* s;
     unsigned int GetCRC() const { unsigned int h = 0; for (const char* p = s; *p; ++p) h = h * 31 + (unsigned char)*p; return h; }
     CWideString ToWideString() const { CWideString w; std::memset(&w, 0, sizeof w); for (int i = 0; s[i] && i < 31; ++i) w.text[i] = (wchar_t)s[i]; return w; }

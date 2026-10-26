@@ -8,7 +8,7 @@ public:
     unsigned long _body[0x0E];
     CParentDefClassBase() { g_baseCalls++; }
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}                 // out-of-line copy 0x0042D9D0 for the arrays
 };

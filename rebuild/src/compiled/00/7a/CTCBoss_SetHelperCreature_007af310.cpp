@@ -10,13 +10,13 @@
 // `*(begin() + n)` (a direct `_M_start[n]` rotates eax/ecx and computes the assigned slot before GetPItem); the dead slot is assigned from an intelligent-pointer temporary (inline operator= = GetPItem +
 // SetPItem); otherwise STLport push_back: placement-new copy (null-tested) or _M_insert_overflow with the tag homed in the
 // dead `creature` slot.
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags;                              // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
 };
-struct CThingAICreature : CThing { };
+class CThingAICreature : public CThing { public: };
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() {} };
 
@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingAICreature>: vtable 0x0123E7E0
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingAICreature>: vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)other.GetPItem()); }

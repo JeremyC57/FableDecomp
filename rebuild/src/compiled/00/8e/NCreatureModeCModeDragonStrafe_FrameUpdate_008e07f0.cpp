@@ -14,9 +14,9 @@
 //   the new position a NAMED local from an inline operator+ whose three-argument ctor is evaluated right to left (Z, Y, X
 //   on the x87 stack, then three fstp). Unnamed, the sum shares the facing temporary's slot (frame 0x130, not 0x13c);
 //   a named facing local reads it from the frame instead of through eax.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -49,22 +49,22 @@ struct CPhysicsBody {                      // the creature's physics body at +0x
     virtual C3DVector GetFacing();         // slot 70 (+0x118), by value through the hidden pointer
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PPhysics;                // +0x60
     const C3DVector& GetPosition() const;  // 0x004C73D0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_DragonStrafeOutOf : CCombatActionBase {
+class CCreatureAction_DragonStrafeOutOf : public CCombatActionBase { public:
     CCreatureAction_DragonStrafeOutOf(CThingCreatureBase* owner);   // 0x008E4AD0
 };
 

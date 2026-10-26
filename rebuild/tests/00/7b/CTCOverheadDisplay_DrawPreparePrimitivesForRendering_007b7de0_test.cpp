@@ -1,6 +1,6 @@
 // Behaviour test for CTCOverheadDisplay::vfunc_11 @ 0x007B7DE0: the whole entry range is erased.
 #include <cstdio>
-struct CEnginePrimitiveHandle { long v; };
+class CEnginePrimitiveHandle { public: long v; };
 static CEnginePrimitiveHandle* g_first = 0;
 static CEnginePrimitiveHandle* g_last = 0;
 struct CRetailHandleVector {
@@ -15,7 +15,7 @@ struct CRetailHandleVector {
     }
     void clear() { erase(m_pFirst, m_pLast); }
 };
-struct CTCOverheadDisplay {
+class CTCOverheadDisplay { public:
     CRetailHandleVector PrimitiveHandles;
     void DrawPreparePrimitivesForRendering(long) { PrimitiveHandles.clear(); }
 };

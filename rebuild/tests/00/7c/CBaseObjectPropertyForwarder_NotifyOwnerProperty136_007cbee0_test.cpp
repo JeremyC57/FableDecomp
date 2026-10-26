@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CBaseObject {
+class CBaseObject { public:
     int lastProperty;
     void OnPropertyChanged(int propertyId);
 };

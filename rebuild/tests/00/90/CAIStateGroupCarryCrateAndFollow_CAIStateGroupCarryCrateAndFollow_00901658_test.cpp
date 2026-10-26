@@ -1,12 +1,12 @@
 // Behaviour test for 0x00901658 CAIStateGroup_CarryCrateAndFollow::CAIStateGroup_CarryCrateAndFollow(): base constructed, own vtable, every intelligent pointer member built empty.
 #include <cstdio>
 
-struct CThing; struct CThingObject; struct CThingBuilding; struct CThingAICreature;
+class CThing; class CThingObject; class CThingBuilding; class CThingAICreature;
 
 static int g_baseCtorCalls = 0;
 static int g_pointerCtorCalls = 0;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     unsigned char _base[0x10];
     virtual int Kind() const { return 0; }
     CAIStateGroupBase() { ++g_baseCtorCalls; _base[0] = 0x5a; }
@@ -24,7 +24,7 @@ template<> struct STypeTag<CThingObject> { enum { value = 3 }; };
 template<> struct STypeTag<CThingBuilding> { enum { value = 4 }; };
 template<> struct STypeTag<CThingAICreature> { enum { value = 5 }; };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual int PointerKind() const { return STypeTag<T>::value; }
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };

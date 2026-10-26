@@ -37,12 +37,12 @@ public:
         return it->component;
     }
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     unsigned char _pad00[0x18];
     float         m_awareness;                  // +0x18
     CThing* GetPerceivedThing() const;          // 0x007446A0
 };
-struct CThingFilter_IsAwareOfThing {
+class CThingFilter_IsAwareOfThing { public:
     CThing* PThingToBeAwareOf;                  // +0x00
     bool operator()(CThing* thing) const;
 };

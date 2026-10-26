@@ -3,7 +3,7 @@
 // Sets bit 1 (value 0x2) of the flags byte at +0x15d to match the bool arg,
 // preserving all other bits, via the toggle idiom flags ^= ((param<<1) ^ flags) & 2.
 
-struct CThing {
+class CThing { public:
     char pad[0x15d];
     unsigned char flags; // at +0x15d
 };

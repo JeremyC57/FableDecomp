@@ -12,13 +12,13 @@
 //   landed CTCParamsPhysicsBase ctor 0x006A06E0) and copied again into the inline-constructed params object; the
 //   creature (AddTC's object) is a named local, so it is fetched before the argument pushes (inline it is fetched last); the name is a by-value temporary; `delete` through
 //   the virtual deleting destructor, then the pointer is cleared.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
@@ -27,8 +27,8 @@ namespace N_0099a300 { struct CBase {
     CBase();                                          // 0x0099A2F0
     ~CBase();                                         // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CTCParamsBase : CBase { };
-struct CTCParamsPhysicsBase : CTCParamsBase {         // vtable 0x0125C818, 0x28 bytes
+class CTCParamsBase : public CBase { public: };
+class CTCParamsPhysicsBase : public CTCParamsBase { public:         // vtable 0x0125C818, 0x28 bytes
     C3DVector       Position;                         // +0x04
     CRightHandedSet Rhs;                              // +0x10
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs) : Position(position), Rhs(rhs) { }
@@ -50,10 +50,10 @@ struct CUseObjectParams {
     virtual CCharString GetTCName();                  // slot 22 (+0x58)
 };
 #undef V10
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsComponent* m_pPhysics;                    // +0x60
-    struct CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    class CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
 };
 struct CBaseIntelligentPointer {
@@ -61,14 +61,14 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                  // +4
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();                      // slot 4: 0x00694430
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0xa8 - 0x10];
 };
-struct CCreatureAction_UseObject : CCreatureActionBase {
+class CCreatureAction_UseObject : public CCreatureActionBase { public:
     unsigned char _pada8[8];
     CUseObjectParams* m_pParams;                      // +0xb0
     virtual void FinishAction();

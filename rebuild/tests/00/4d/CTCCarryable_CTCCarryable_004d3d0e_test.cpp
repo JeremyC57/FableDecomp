@@ -1,10 +1,10 @@
 // Behaviour test for 004d3d0e (CTCCarryable::CTCCarryable): the base takes the thing; not fragile, no carrier, zero attach offset and offset amount.
 #include <cstdio>
 
-struct CThing { long m_id; };
-struct CTCCarrying;
+class CThing { public: long m_id; };
+class CTCCarrying;
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -19,7 +19,7 @@ struct CTCBase_Calls {
     virtual ~CTCBase_Calls() { }
 };
 
-struct CTCCarryable : CTCBase_Calls {
+class CTCCarryable : public CTCBase_Calls { public:
     bool         ForceFragility;
     CTCCarrying* PCarryingTC;
     C3DVector    OffsetCoordRelativeToAttachToDummy;

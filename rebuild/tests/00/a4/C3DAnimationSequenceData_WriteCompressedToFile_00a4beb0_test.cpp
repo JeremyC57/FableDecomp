@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 // Recording output stream: every write appends "<tag><value>;" to a log and advances the position.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     char log[4096]; unsigned long pos;
     CDataOutputStream() : pos(0) { log[0] = 0; }
     void Add(const char* tag, double v, unsigned long bytes) { char b[64]; std::sprintf(b, "%s%g;", tag, v); std::strcat(log, b); pos += bytes; }
@@ -22,7 +22,7 @@ static int Check(const char* addr, const char* got, const char* want)
     if (std::strcmp(got, want) != 0) { std::printf("%s_TEST FAIL\n%s\n%s\n", addr, got, want); return 1; }
     std::printf("%s_TEST PASS\n", addr); return 0;
 }
-struct CQuaternion { float X, Y, Z, W; };
+class CQuaternion { public: float X, Y, Z, W; };
 struct C3DVectorWord { short X, Y, Z; };
 struct CSeq {
     const char* BoneName; float SamplesPerSecond; unsigned short FrameCount;

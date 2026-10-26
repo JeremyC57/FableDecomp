@@ -7,14 +7,14 @@
 // Shape: the mode manager is an UNINITIALISED out-parameter used unconditionally; here the two paths JOIN (`jmp` to the shared AddMode push) because
 // more code follows the call; the miss path reads the never-written frame word into eax. The GUI pointer is loaded straight into ecx after AddMode.
 // The PDB header (CCreatureAction_TrollTunnel.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -37,25 +37,25 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
-struct CCreatureAction_TrollWhackGroundBase : CCombatActionBase {
+class CCreatureAction_TrollWhackGroundBase : public CCombatActionBase { public:
     void WhackGround();                     // 0x008C61C0
 };
-struct CCreatureAction_TrollTunnel : CCreatureAction_TrollWhackGroundBase {
+class CCreatureAction_TrollTunnel : public CCreatureAction_TrollWhackGroundBase { public:
     virtual void PerformAction();
 };
 

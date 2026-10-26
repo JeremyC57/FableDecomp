@@ -4,8 +4,8 @@
 #include <cstring>
 #include <new>
 #pragma pack(push, 2)
-struct C2DVector { float X, Y; };
-struct CEngineGraphic {
+class C2DVector { public: float X, Y; };
+class CEngineGraphic { public:
     long  Graphic;
     float A;
     float B;
@@ -14,10 +14,10 @@ struct CEngineGraphic {
     CEngineGraphic() : Graphic(0), A(0.0f), B(0.0f), C(false), D(false) {}
 };
 #pragma pack(pop)
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 enum EInventoryIdentifier { INVENTORY_IDENTIFIER_0 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };
@@ -28,12 +28,12 @@ struct CRetailVector {
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 static int g_baseCalls = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x3c - 4];
     CDefClassBase() { g_baseCalls++; }
     virtual ~CDefClassBase() {}
 };
-struct CInventoryDef : CDefClassBase {
+class CInventoryDef : public CDefClassBase { public:
     float                  InitialCategoryMovementRepeatDelay;   // PDB +0x40
     float                  ContinuedCategoryMovementRepeatDelay;   // PDB +0x44
     float                  InitialItemMovementRepeatDelay;   // PDB +0x48

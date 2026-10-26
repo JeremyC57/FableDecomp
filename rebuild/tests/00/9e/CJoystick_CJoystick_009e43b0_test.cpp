@@ -4,11 +4,11 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CInputEvent { long type; CInputEvent() : type(0) {} };
+class CInputEvent { public: long type; CInputEvent() : type(0) {} };
 struct SNode { SNode* next; SNode* prev; unsigned char data[0x38]; };
 struct CList { SNode* node; CList() : node(0) { SNode* n = new SNode; n->next = n; n->prev = n; node = n; } ~CList() { delete node; } };
-struct CInputManager { int id; };
-struct CJoystick {
+class CInputManager { public: int id; };
+class CJoystick { public:
     CInputEvent EventStore[64]; CInputManager* InputManager; bool ExclusiveMode; CList MaintainedEventsList; long NoStoredEvents; long NoEventScansRunning;
     CJoystick(CInputManager* m, bool e) : InputManager(m), NoStoredEvents(0), NoEventScansRunning(0) { ExclusiveMode = e; }
 };

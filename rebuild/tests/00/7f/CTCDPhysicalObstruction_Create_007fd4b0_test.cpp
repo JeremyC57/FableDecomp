@@ -2,10 +2,10 @@
 // Behaviour test: CTCDPhysicalObstruction::Create -- creates THING_PHYSICAL_OBSTRUCTION on the map under the start; with the obstruction driver it stores the line and radius, constructs at the start and activates (null if activation fails); without the driver the thing is killed.
 #define CHECK(c) if (!(c)) { std::printf("007fd4b0_TEST FAIL\n"); return 1; }
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CTCDPhysicalObstruction { C3DVector StartPos, EndPos; long LifeTimer; float Radius; const C3DVector* constructedAt;
+class C3DVector { public: float X, Y, Z; };
+class CTCDPhysicalObstruction { public: C3DVector StartPos, EndPos; long LifeTimer; float Radius; const C3DVector* constructedAt;
     void SetParams(const C3DVector& s, const C3DVector& e, float r) { StartPos = s; EndPos = e; Radius = r; } };
-struct CThing { bool hasDriver; bool activates; bool killed; CTCDPhysicalObstruction driver; };
+class CThing { public: bool hasDriver; bool activates; bool killed; CTCDPhysicalObstruction driver; };
 static CThing g_thing;
 static bool g_createOk = true;
 static const char* g_lastName = 0;

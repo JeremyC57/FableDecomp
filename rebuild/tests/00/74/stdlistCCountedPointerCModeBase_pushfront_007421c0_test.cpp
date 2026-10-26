@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (*DeleteFunc)(void*);
     void* Data;

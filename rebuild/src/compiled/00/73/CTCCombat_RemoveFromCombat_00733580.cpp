@@ -25,7 +25,7 @@ public:
     void DeregisterCombatant(CThingCreatureBase& creature);   // 0x006ED9C0
 };
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 class CTCCombat {                               // retail layout (STLport containers), 0x98 bytes
 public:

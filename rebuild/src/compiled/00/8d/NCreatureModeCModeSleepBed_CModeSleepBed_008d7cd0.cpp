@@ -7,15 +7,15 @@
 // Layout: Ego_r.pdb CModeSleepBed (0x34): Filter +0x1c, SleepAnimName +0x28, PRemoveAction +0x2c (as landed 0x0084B7C0,
 // the three-argument overload). Shape: one-argument overload of that constructor; the counted pointer's inline ctor
 // zeroes both words through the register VC already zeroed for the filter's null test.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
@@ -26,7 +26,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -44,9 +44,9 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -56,7 +56,7 @@ extern CCharString g_defaultSleepAnimName;   // 0x013BAFD4
 
 namespace NCreatureMode {
 
-struct CModeSleepBed : CModeBase {         // vtable 0x01275760
+class CModeSleepBed : public CModeBase { public:         // vtable 0x01275760
     CAnimFilterOfGroup                    Filter;          // +0x1c
     CCharString                           SleepAnimName;   // +0x28
     CCountedPointer<CCreatureActionBase>  PRemoveAction;   // +0x2c

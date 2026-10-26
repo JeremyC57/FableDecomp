@@ -62,7 +62,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CDataInputStream {
+class CDataInputStream { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -89,8 +89,8 @@ FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x1
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -98,8 +98,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -190,7 +190,7 @@ struct CStringReadResult : CCharString {
     CStringReadResult(const CStringReadResult&); //0099EC30 native CCharString copy constructor
     CCharString& AppendChar(char); //0099F180 native operator+=(char); return unused
 };
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();
@@ -198,7 +198,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual unsigned long GetPosition() const=0;
     virtual void Close()=0;
 };
-struct CDataInputStream : CDataStream {
+class CDataInputStream : public CDataStream { public:
     unsigned long StreamPos;
     long StreamSize;
     void* CurrentSourcePtr;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DropGenericBox {
+class CCreatureAction_DropGenericBox { public:
     void* vftable;
     int destroyed;
 };

@@ -9,9 +9,9 @@
 // Shape: Navigating (a plain initialiser) is stored before the vtable; AdditionalImpulse is a C3DVector member built by its inline
 //   value constructor (after the vtable, from the shared zero register); the two bits are body assignments (one `and 0FCh`).
 // Leaf: ??0CTCPhysicsNavigator
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

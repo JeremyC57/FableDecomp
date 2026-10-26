@@ -1,4 +1,4 @@
-struct CPlayerGui {
+class CPlayerGui { public:
     int   f0;
     int   World;
     float f8;

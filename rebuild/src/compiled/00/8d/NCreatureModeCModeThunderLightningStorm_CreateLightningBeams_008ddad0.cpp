@@ -7,13 +7,13 @@
 //   VC7.1 inlines both (CRC Calc + map find, and the STLport placement-new push_back with the 0x004AC940 overflow). The inline
 //   CRC needs `len` then `str` as named locals in that order (retail's `[ecx+esi]` index-first SIB); `y = Header; return y;` and
 //   the caller's `!= Effects.end()` member re-read give retail's find tail.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 extern char g_emptyString[];                            // 0x0129AAF4
 extern const unsigned long g_crcTable_0129a168[256];    // 0x0129A168
 struct CStringData { char* Text; unsigned long Length; };
-struct CCharString {
+class CCharString { public:
     CStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CDefBase {
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -64,7 +64,7 @@ struct CEffectMap {
         return y;
     }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CEffectMap    Effects;                      // +0x28 map<unsigned long, long> (header node pointer)
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
@@ -92,7 +92,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -106,11 +106,11 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CSpecialAbilitiesThunderLightningStormDef : CDefClassBase {
+class CSpecialAbilitiesThunderLightningStormDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long          NumberOfBeams;                // +0x3c
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x91];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0

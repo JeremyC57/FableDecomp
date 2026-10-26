@@ -14,12 +14,12 @@
 // manifest's Vector_Reallocate_CCharString_CountedPointer (0x00A4AC60).
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 

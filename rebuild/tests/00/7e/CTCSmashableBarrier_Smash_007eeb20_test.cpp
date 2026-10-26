@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CSmashableDef { long SmashParticleEmitter; };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CSmashableDef { public: long SmashParticleEmitter; };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 static int g_effects; static long g_lastEmitter; static float g_lastX;
 static void CreateEffectThing(long emitter, const C3DVector* pos, bool) { ++g_effects; g_lastEmitter = emitter; g_lastX = pos->X; }
-struct CTCSmashableBase {
+class CTCSmashableBase { public:
     CSmashableDef* def; CThing* ParentThing; int baseSmashes;
     CSmashableDef* GetDef() { return def; }
     CThing* GetThing() const { return ParentThing; }

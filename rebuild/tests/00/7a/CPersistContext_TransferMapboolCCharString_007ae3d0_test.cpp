@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CCharString {
+class CCharString { public:
     char* Text;
     CCharString() : Text(0) { }
     CCharString(const char* text, long length = -1) { Text = (char*)std::malloc(std::strlen(text) + 1); std::strcpy(Text, text); }
@@ -20,7 +20,7 @@ struct CCharString {
 struct CCursorPos { bool InQuotes; long StringPos; long Line; };
 // Parser stand-in over a flat text: SkipToItem finds the next `name` not inside a word, ReadAsSymbol returns one
 // punctuation character or an identifier, ReadAsString an identifier.
-struct CStringParser {
+class CStringParser { public:
     const char* String;
     CCursorPos  CursorPos;
     CStringParser(const char* s) : String(s) { CursorPos.InQuotes = false; CursorPos.StringPos = 0; CursorPos.Line = 0; }
@@ -51,7 +51,7 @@ struct CStringParser {
     }
 };
 
-struct CPersistContext;
+class CPersistContext;
 template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferIn(CPersistContext* context, CStringParser* parser, T* value);
@@ -110,7 +110,7 @@ struct CStringBoolMap {
     void clear() { while (head) { SMapNode* d = head; head = d->next; delete d; } count = 0; }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     CStringParser* PParser;
     bool           UseDefaults;
     bool           Finished;

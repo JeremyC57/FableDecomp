@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 // MSVC vector deleting destructor for CSpecialAbilitiesDrunkennessDef
-struct CSpecialAbilitiesDrunkennessDef {
+class CSpecialAbilitiesDrunkennessDef { public:
     void* vftable;
 };
 

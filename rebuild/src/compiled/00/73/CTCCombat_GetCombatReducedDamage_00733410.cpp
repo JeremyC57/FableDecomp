@@ -9,15 +9,15 @@
 // zero, `fld [esp+8]` for the argument); the second argument is unused (`ret 8`).
 #include "engine/CTCCombat.h"
 
-struct CThing;
+class CThing;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     unsigned char _pad[0x20];
     long          ActionType;                               // +0x20
     long          ActionSubType;                            // +0x24
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

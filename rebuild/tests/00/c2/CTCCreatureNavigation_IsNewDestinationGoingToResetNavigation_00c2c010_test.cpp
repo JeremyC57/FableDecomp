@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static void* g_self; static C3DVector* g_vec; static void* g_sub; static bool g_ret;
 struct Sub {
   virtual void v0(){}
@@ -10,7 +10,7 @@ struct Sub {
   virtual void v5(){}
   virtual bool slot6(void* a, C3DVector* b){ g_sub=this; g_self=a; g_vec=b; return g_ret; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
   void* f0;
   Sub* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

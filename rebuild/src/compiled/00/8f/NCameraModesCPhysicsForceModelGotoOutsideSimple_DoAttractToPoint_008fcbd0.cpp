@@ -10,7 +10,7 @@
 // slot through the value constructor, whose arguments VC evaluates right to left (z, y, x loaded and
 // multiplied first, stored x, y, z). `v.z * 3.0f` loads the component then `fmul [pool]`. `ret 4` =
 // the hidden pointer only.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
@@ -18,11 +18,11 @@ struct C3DVector {
 };
 
 namespace NCameraModes {
-struct CPhysicsForceModelBase {                    // vtable 0x0127592C
+class CPhysicsForceModelBase { public:                    // vtable 0x0127592C
     virtual C3DVector DoVelocityDamping();         // 0x008FA7E0
     virtual C3DVector DoAttractToPoint();          // 0x008FA800
 };
-struct CPhysicsForceModelGotoOutsideSimple : CPhysicsForceModelBase {   // vtable 0x01275950
+class CPhysicsForceModelGotoOutsideSimple : public CPhysicsForceModelBase { public:   // vtable 0x01275950
     virtual C3DVector DoAttractToPoint();
 };
 }

@@ -1,33 +1,33 @@
 // Behaviour test for CTCStockItem::CTCStockItem (0x004DC737): for sale, stealable, not initialised, zero price, empty handle.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 static int g_handleBaseCtors = 0;
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     virtual ~CTCBase() { }
     CTCBase(CThing* parent) : ParentThing(parent) { g_baseParent = parent; }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { ++g_handleBaseCtors; }
     virtual ~CBaseClass() { }
 };
 
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {
     CEnginePersistentPrimitiveBase* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     CIVCountedPointer Data;
     CEnginePrimitiveHandle() { }
 };
 
-struct CTCStockItem : CTCBase {
+class CTCStockItem : public CTCBase { public:
     bool                   ForSale;
     bool                   Stealable;
     bool                   Initialised;

@@ -2,8 +2,8 @@
 // CFactionDef::Transfer  0x004717a1
 struct SubA { int x; };
 struct SubB { int y; };
-struct CPersistContext { void Xfer_004331f9(void* p); };
-struct CFactionDef {
+class CPersistContext { public: void Xfer_004331f9(void* p); };
+class CFactionDef { public:
     char pad[0x3c];
     SubA a;
     char pad2[0x48 - 0x3c - sizeof(SubA)];

@@ -8,7 +8,7 @@ public:
     CCharString(void* p) : PData(p) {}
     CCharString(const CCharString& s);
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

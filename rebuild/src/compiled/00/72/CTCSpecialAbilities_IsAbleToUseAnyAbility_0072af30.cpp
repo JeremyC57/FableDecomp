@@ -38,14 +38,14 @@ struct CTCAbilityPermissions {                          // interface 0x29 (named
     unsigned char _pad00[0x0d];
     bool          AbilitiesAllowed;                     // +0x0d
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();                    // 0x006A1440
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsUsableBy(const CThing& thing) const;         // 0x005DAB10
 };
 enum EHeroAbility { HERO_ABILITY_8 = 8 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _base08[4];

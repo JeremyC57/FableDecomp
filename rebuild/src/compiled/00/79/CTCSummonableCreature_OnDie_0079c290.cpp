@@ -9,7 +9,7 @@
 //          def index word +0x8c, killer intelligent pointer +0xf4 (descriptive).
 // Shape: the spawn position is a named sum computed before the call, so the negated velocity (third argument) is formed
 //          after it; the sum is velocity + position (Z first through the inline ctor).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
@@ -70,11 +70,11 @@ public:
     }
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
-struct CSummonableCreatureDef {
+class CSummonableCreatureDef { public:
     unsigned char _pad00[0x28];
     float         SummonLevel;                      // +0x28 (descriptive)
 };
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     void SetSummonCreatureGlobalDefNum(long defIndex, const C3DVector& pos, const C3DVector& facing);   // 0x0079B650
 };
 #pragma pack(push, 1)

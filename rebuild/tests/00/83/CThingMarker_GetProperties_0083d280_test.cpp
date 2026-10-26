@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_destroyed = 0;
-struct CThingMarkerDef {
+class CThingMarkerDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long          m_count;
@@ -22,7 +22,7 @@ struct CDefPointer {
     CThingMarkerDef* operator->() const { return m_p; }
 };
 static CThingMarkerDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0083d630(long globalIndex, CDefPointer& out);
 };
 bool CDefinitionManager::GetDef_0083d630(long globalIndex, CDefPointer& out)
@@ -35,13 +35,13 @@ bool CDefinitionManager::GetDef_0083d630(long globalIndex, CDefPointer& out)
     return true;
 }
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     virtual void v00() {}
     unsigned char  _pad04[0x88];
     unsigned short DefGlobalIndex;
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
 };
-struct CThingMarker : CThing {
+class CThingMarker : public CThing { public:
     __forceinline CDefPointer GetMarkerDef()
     {
         CDefPointer def;

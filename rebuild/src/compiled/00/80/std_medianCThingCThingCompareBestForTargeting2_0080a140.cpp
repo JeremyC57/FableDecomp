@@ -9,11 +9,11 @@
 // Layout: CThingCompare_BestForTargeting2 (Ego_r.pdb 52 bytes): Hero +0x00, VectorCompare (CVectorCompare_BestForTargeting,
 //   44 bytes) +0x04, EnemyPreferenceFactor +0x30.
 // Shape: the values are kept in edi (a), esi (b), ebx (c); every comparator call takes `lea ecx,[comp]`.
-struct CThing;
-struct CVectorCompare_BestForTargeting {        // 44 bytes
+class CThing;
+class CVectorCompare_BestForTargeting { public:        // 44 bytes
     unsigned long m_words[11];
 };
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;                               // +0x00
     CVectorCompare_BestForTargeting VectorCompare;  // +0x04
     float EnemyPreferenceFactor;                // +0x30

@@ -3,7 +3,7 @@
 #include <new>
 
 struct __false_type { __false_type() { } };
-struct C3DTriangle2 { unsigned short VertexIndex[3]; };
+class C3DTriangle2 { public: unsigned short VertexIndex[3]; };
 
 static C3DTriangle2* UninitCopy(const C3DTriangle2* first, const C3DTriangle2* last, C3DTriangle2* result, const __false_type&)
 {

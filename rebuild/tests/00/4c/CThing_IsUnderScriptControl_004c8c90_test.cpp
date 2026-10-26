@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 
-struct CTCBase;
+class CTCBase;
 static int g_taskRunning = 0; static bool g_taskResult = false;
 struct CTCScriptControl {
     unsigned char _pad00[0x18];
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     void*               __vftable;
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];

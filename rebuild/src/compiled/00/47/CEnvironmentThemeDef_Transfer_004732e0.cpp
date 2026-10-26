@@ -8,18 +8,18 @@
 // Shape: the context reference lives in edi, every member address is formed with `lea eax ; push eax ; mov ecx,edi`;
 // the last member's address is formed in place (`add esi,0C0h`).
 #pragma optimize("s", on)
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& value);                // 0x00431061
     void Transfer(bool& value);                 // 0x0043314A
     void Transfer(long& value);                 // 0x00431102
 };
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
 };
 
-struct CEnvironmentThemeDef : CParentDefClassBase {
+class CEnvironmentThemeDef : public CParentDefClassBase { public:
     float TimeOfDay;                            // +0x3c
     bool  MoonLit;                              // +0x40
     float FogStartZ;                            // +0x44

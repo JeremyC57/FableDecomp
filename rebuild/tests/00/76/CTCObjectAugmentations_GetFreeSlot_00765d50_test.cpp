@@ -6,7 +6,7 @@ struct CAugmentationVector {
     unsigned long size() const { return m_pLast - m_pFirst; }
     const CDefPtr& operator[](unsigned long i) const { return m_pFirst[i]; }
 };
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     CAugmentationVector Augmentations;
     long GetFreeSlot() const
     {

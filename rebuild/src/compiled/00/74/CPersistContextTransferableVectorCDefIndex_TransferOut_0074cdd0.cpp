@@ -8,11 +8,11 @@
 // `push ecx` frame slot; its constructor value-initialises DefaultVal (`mov dword ptr [esp],0`,
 // scheduled early because the object's address escapes) and the traits writer formats
 // &TransVector->first[index] (`lea eax,[ecx+edx*4]`). Retail std::vector is three pointers.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
-struct CDefIndex {
+class CDefIndex { public:
     long Val;
 };
 

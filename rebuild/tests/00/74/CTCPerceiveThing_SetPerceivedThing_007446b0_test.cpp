@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_adds = 0, g_removes = 0;
-struct CThing {};
-struct CBaseObject {};
+class CThing { public:};
+class CBaseObject { public:};
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { ++g_ctors; }
@@ -17,14 +17,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 static CThing* g_addedFor = 0; static CThing* g_removedFor = 0;
-struct CPlayerGui {
+class CPlayerGui { public:
     void AddPerceivingThing(CThing* thing) { ++g_adds; g_addedFor = thing; }
     void RemovePerceivingThing(CThing* thing) { ++g_removes; g_removedFor = thing; }
 };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
-struct CDefPointeeBase;
-struct C3DVector { float X, Y, Z; };
-struct CTCPerceiveThing {
+class CDefPointeeBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCPerceiveThing { public:
     void*     __vftable;
     CThing*   ParentThing;
     bool      ToBeRemoved;

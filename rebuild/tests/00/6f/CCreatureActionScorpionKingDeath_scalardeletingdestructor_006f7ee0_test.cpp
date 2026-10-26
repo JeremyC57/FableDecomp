@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScorpionKingDeath {
+class CCreatureAction_ScorpionKingDeath { public:
     void* vftable;
     int destroyed;
 };

@@ -10,7 +10,7 @@
 // Shape: four sibling blocks, each with a named find iterator (re-read from its frame slot) and the index local, then
 //   four explicit child saves; four explicit find/Write statements and four explicit child saves; the find key binds to the child member
 //   itself, so VC keeps the member addresses (spilled into the dead argument slots) for the second run.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CAFile {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

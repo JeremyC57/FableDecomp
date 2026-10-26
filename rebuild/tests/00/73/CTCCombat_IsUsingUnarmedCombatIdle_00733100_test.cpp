@@ -18,7 +18,7 @@ struct CObj {
     }
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     void*  pad0;
     CObj*  obj;
     char   pad2[0x14];

@@ -1,5 +1,5 @@
-struct CCharString
-{
+class CCharString
+{ public:
     char* p;
     CCharString(const CCharString& other);
     ~CCharString();

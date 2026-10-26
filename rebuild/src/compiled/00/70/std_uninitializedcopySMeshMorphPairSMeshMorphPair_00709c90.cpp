@@ -17,20 +17,20 @@ inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() {} };
 
 namespace NGraphicAppearance {
-struct CMeshInfo {                              // Ego_r.pdb, 12 bytes
+class CMeshInfo { public:                              // Ego_r.pdb, 12 bytes
     long  Index;                                // +0x00
     float SizeX;                                // +0x04
     unsigned char PrimaryMesh : 1;              // +0x08
 };
 }
-struct CEngineTextureMorph;
+class CEngineTextureMorph;
 struct CEngineTextureMorphArray {               // CArray<CEngineTextureMorph> (retail STLport vector, 12 bytes)
     CEngineTextureMorph* _M_start;
     CEngineTextureMorph* _M_finish;
     CEngineTextureMorph* _M_end_of_storage;
     CEngineTextureMorphArray(const CEngineTextureMorphArray& other);   // 0x005BBDF1
 };
-struct CEngineTextureMorphSet {                 // Ego_r.pdb: Morphs +0
+class CEngineTextureMorphSet { public:                 // Ego_r.pdb: Morphs +0
     CEngineTextureMorphArray Morphs;
 };
 

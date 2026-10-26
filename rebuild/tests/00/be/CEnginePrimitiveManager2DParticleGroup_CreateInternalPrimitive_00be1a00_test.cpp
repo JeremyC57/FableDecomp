@@ -1,7 +1,7 @@
 // Behaviour test for CEnginePrimitiveManager2DParticleGroup::CreateInternalPrimitive @ 0x00BE1A00.
 #include <cstdio>
 #include <cstdlib>
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     long m_type; unsigned int m_flags;
     CEngineInternalPrimitiveBase(long t, unsigned int f) : m_type(t), m_flags(f) { }
     virtual int Kind() { return 0; }
@@ -13,7 +13,7 @@ template <class T> struct CRetailSTLportList {
     CRetailSTLportList() { m_node = 0; SNode* n = (SNode*)std::malloc(sizeof(SNode)); n->next = n; n->prev = n; m_node = n; }
     ~CRetailSTLportList() { std::free(m_node); }
 };
-template <class T> struct CArray { T* f; T* l; T* e; CArray() : f(0), l(0), e(0) { } };
+template <class T> class CArray { public: T* f; T* l; T* e; CArray() : f(0), l(0), e(0) { } };
 struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {
     CRetailSTLportList<long long> Primitives; CArray<int> PrimitiveIDToIterator; CRetailSTLportList<long> FreePrimitiveIDs;
     virtual int Kind() { return 1; }
@@ -24,7 +24,7 @@ struct CEngineInternalPrimitive2DParticleGroup : CEngineInternalPrimitiveParticl
     virtual int Kind() { return 2; }
     CEngineInternalPrimitive2DParticleGroup() : m_5c(0), m_60(0), m_64(0), m_68(0) { }
 };
-struct CEnginePrimitiveManager2DParticleGroup {
+class CEnginePrimitiveManager2DParticleGroup { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long) { return new CEngineInternalPrimitive2DParticleGroup; }
 };
 int main()

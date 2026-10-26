@@ -32,7 +32,7 @@ public:
 };
 template <class K, class T> struct pair { K first; T second; };
 template <class K, class T> class map { public: _Rb_tree<pair<const K, T> > _M_t; };
-struct CThingCreatureBase { int Id; };
+class CThingCreatureBase { public: int Id; };
 static int g_setCalls = 0;
 class CBaseIntelligentPointer {
 public:
@@ -53,7 +53,7 @@ public:
         return *this;
     }
 };
-struct CCombatDialogueDef { int Id; };
+class CCombatDialogueDef { public: int Id; };
 template <class T> class CDefPointer {
 public:
     const void* Object;
@@ -61,7 +61,7 @@ public:
 };
 class CombatDialogueManager {
 public:
-    struct TSpeechGroupInfo { unsigned int Data; };
+    class TSpeechGroupInfo { public: unsigned int Data; };
     map<unsigned int, TSpeechGroupInfo>      SpeechGroupInfoMap;
     CDefPointer<const CCombatDialogueDef>    PDialogueDef;
     CIntelligentPointer<CThingCreatureBase>  PCurrentTalker;

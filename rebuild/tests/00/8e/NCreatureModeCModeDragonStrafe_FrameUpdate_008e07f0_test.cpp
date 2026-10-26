@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeDragonStrafe::FrameUpdate (retail 0x008E07F0): after the base update the strafe
 // timer counts down; at zero the dragon starts the strafe-out-of action, otherwise it moves along its facing by
 // Speed / frames-per-second.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -16,14 +16,14 @@ struct CPhysicsBody {
     C3DVector GetFacing() { return Facing; }
     void SetPosition(const C3DVector& p) { Position = p; ++sets; }
 };
-struct CCreatureActionBase { int Kind; };
-struct CThingCreatureBase {
+class CCreatureActionBase { public: int Kind; };
+class CThingCreatureBase { public:
     CPhysicsBody* PPhysics;
     int actions;
     const C3DVector& GetPosition() const { return PPhysics->Position; }
     bool SetCurrentAction(const CCreatureActionBase& action) { actions += action.Kind; return true; }
 };
-struct CCreatureAction_DragonStrafeOutOf : CCreatureActionBase {
+class CCreatureAction_DragonStrafeOutOf : public CCreatureActionBase { public:
     CCreatureAction_DragonStrafeOutOf(CThingCreatureBase* owner) { Kind = 1; (void)owner; }
 };
 static long g_FramesPerSecond = 4;

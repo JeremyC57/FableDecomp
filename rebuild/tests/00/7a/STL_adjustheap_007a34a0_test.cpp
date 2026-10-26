@@ -3,7 +3,7 @@
 #include <string.h>
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -19,7 +19,7 @@ public:
 };
 
 // CThingCompare_NearestToPos: operator() is a strict "a is nearer to Pos than b" (a null sorts last).
-struct CThingCompare_NearestToPos {
+class CThingCompare_NearestToPos { public:
     C3DVector Pos;
     template <class T> bool operator()(T* a, T* b) const
     {

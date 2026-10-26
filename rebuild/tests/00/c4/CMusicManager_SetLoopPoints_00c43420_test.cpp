@@ -3,7 +3,7 @@ struct SLoopPoints {
     long m_start; float m_length;
     bool operator==(const SLoopPoints& o) const { return m_start == o.m_start && m_length == o.m_length; }
 };
-struct CMusicManager {
+class CMusicManager { public:
     unsigned int m_dirtyFlags;
     void SetLoopPoints(SLoopPoints** current, SLoopPoints* storage, const SLoopPoints* value)
     {

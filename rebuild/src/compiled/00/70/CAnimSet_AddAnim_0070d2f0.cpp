@@ -16,7 +16,7 @@ extern "C" long __fastcall GFGetFrameCount();          // 0x0049D870
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
     CTransitionBlendAlpha(float current, float last) : Current(current), Last(last) {}

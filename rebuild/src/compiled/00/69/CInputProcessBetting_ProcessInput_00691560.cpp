@@ -11,7 +11,7 @@
 class CInputEvent;
 class CProcessedInput;
 class CInputProcessBetting;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
@@ -33,7 +33,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
@@ -41,19 +41,19 @@ struct CThing {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 extern bool g_bBettingInputEnabled;                // 0x013BAE1D
-struct CTCBetting : CTCBase {
+class CTCBetting : public CTCBase { public:
     void ProcessInputIfEnabled(const CInputEvent& event, CProcessedInput& processed, CInputProcessBetting* process)
     {
         if (g_bBettingInputEnabled)

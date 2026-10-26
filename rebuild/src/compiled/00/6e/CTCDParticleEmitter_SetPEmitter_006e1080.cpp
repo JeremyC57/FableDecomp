@@ -7,13 +7,13 @@
 // (CIntelligentPointer<NParticleEngine::CParticleEmitter>, vtable 0x0125A26C). The retail emitter's name CCharString is at +0x140.
 // Shape: `PEmitter = CIntelligentPointer<CParticleEmitter>(emitter)` -- inline converting ctor (base ctor, vtable store, SetPItem)
 // and inline operator= (`SetPItem(other.GetPItem())`) over a frame temporary, then its out-of-line base dtor.
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad00[0x140];
     CCharString Name;                           // +0x140
     void Kill();                                // 0x00AEE8C0
@@ -40,7 +40,7 @@ struct CIntelligentPointerEmitter : CBaseIntelligentPointer {   // vtable 0x0125
     }
     NParticleEngine::CParticleEmitter* GetPItem() const { return (NParticleEngine::CParticleEmitter*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[0x4];

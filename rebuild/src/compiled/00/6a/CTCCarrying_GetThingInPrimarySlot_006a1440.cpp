@@ -7,7 +7,7 @@
 // Shape: result in edi (zeroed first), the list head re-read for every end test (`cmp esi,[ebx+24h]`),
 // two exits: the flagged thing returns from inside the loop (`return t` / `return result` on the +0x91
 // bit), the normal exit returns the remembered first thing.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_flags;                          // +0x20
     unsigned char _pad24[0x91 - 0x24];
@@ -30,7 +30,7 @@ struct CThingList {                                 // STLport list<CIntelligent
     SThingListNode* _M_node;
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x24 - 0x04];
     CThingList    ThingsInPrimarySlots;             // +0x24 (PDB +0x28)

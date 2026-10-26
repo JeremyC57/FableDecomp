@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CVillageMemberDef
-{
+class CVillageMemberDef
+{ public:
     void* vftable;
 };
 extern void* const g_CVillageMemberDef_vftable;

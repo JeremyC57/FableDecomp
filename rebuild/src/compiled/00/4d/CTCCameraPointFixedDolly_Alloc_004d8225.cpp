@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCCameraPointFixedDolly {
+class CTCCameraPointFixedDolly { public:
     unsigned char _body[0x40];       // sizeof(CTCCameraPointFixedDolly) = 0x40
     CTCCameraPointFixedDolly(void* owner);                   // 0x004D3AB5
 };

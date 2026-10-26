@@ -9,7 +9,7 @@ struct SAttitudeBlock {
     SAttitudeBlock& operator=(const SAttitudeBlock& other) { m_attitudes = other.m_attitudes; m_flag = other.m_flag; return *this; }
 };
 struct CSubObject_00471e44 { unsigned char _body[0x0c]; CSubObject_00471e44& operator=(const CSubObject_00471e44& o) { ++g_tailOp; _body[0] = o._body[0]; return *this; } };
-struct CCardDef : CBase_00431f10 {
+class CCardDef : public CBase_00431f10 { public:
     long m_id; SAttitudeBlock m_block; unsigned char m_pad37[5]; CSubObject_00471e44 m_tail;
     CCardDef& operator=(const CCardDef& other);
 };

@@ -8,14 +8,14 @@ typedef unsigned long RetailWord;
 #else
 struct COccluderEntry;
 typedef unsigned int RetailWord;
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     COccluderEntry *Entries; COccluderEntry *PrevFrameEntries;
     RetailWord EntriesSize, PrevFrameEntriesSize, CurrentFrame;
     unsigned char _pad[0x24024 - 2 * sizeof(void *) - 3 * sizeof(RetailWord)];
     unsigned char _collections[0x80];
 };
 #endif
-struct CEngineComponentParams;
+class CEngineComponentParams;
 struct SOccluderBehaviour { unsigned char bytes[0x1c]; };
 struct SHandlePair { unsigned char bytes[8]; };
 struct COccluderVector {
@@ -58,7 +58,7 @@ void CEngineOcclusionManager_FrameStart::FrameStart(const CEngineComponentParams
 }
 
 struct COccluderEntry { unsigned Tag; };
-struct CEngineComponentParams { unsigned Unused; };
+class CEngineComponentParams { public: unsigned Unused; };
 static CEngineOcclusionManager_FrameStart* active;
 static RetailWord swapped[12];
 static RetailWord expectedFrame;

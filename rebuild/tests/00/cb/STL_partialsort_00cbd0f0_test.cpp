@@ -22,7 +22,7 @@ public:
     bool FastCompare(const CCharString& other) const { return std::strcmp(m_pText, other.m_pText) < 0; }
 };
 // CCountedPointer count block + the D-form release used by the sources
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (*DeleteFunc)(void* data);
     void* Data;
@@ -73,7 +73,7 @@ public:
 };
 class CActiveEntityScriptBase { public: int Tag; };
 class CEntityScriptBindingBase { public: int Tag; };
-struct CScriptInfo {                       // reduced: the name and the ID
+class CScriptInfo { public:                       // reduced: the name and the ID
     CCharString Name;
     long        ID;
 };

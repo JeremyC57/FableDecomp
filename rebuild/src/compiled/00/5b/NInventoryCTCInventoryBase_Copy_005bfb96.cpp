@@ -16,15 +16,15 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     long RefCount;                                     // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CInventoryDef : CDefPointeeBase {};
-template <class T> struct CDefPointer {
+class CInventoryDef : public CDefPointeeBase { public:};
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer& operator=(const CDefPointer& other)
     {
@@ -41,7 +41,7 @@ template <class T> struct CDefPointer {
     }
 };
 namespace NInventory {
-struct CItem {                                         // 20 bytes
+class CItem { public:                                         // 20 bytes
     long Count;                                        // +0x00
     unsigned char _pad_0x04[0x10];
 };
@@ -69,7 +69,7 @@ struct CSerialisedSelectedItemsPointer {               // CCountedPointer<vector
     CSerialisedSelectedItemsPointer& operator=(const CSerialisedSelectedItemsPointer& other);   // 0x005C0800
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -77,7 +77,7 @@ struct CTCBase {
 };
 
 namespace NInventory {
-struct CTCInventoryBase : CTCBase {
+class CTCInventoryBase : public CTCBase { public:
     unsigned char _pad_0x004[0x1c - 0x04];
     long InventorySelectionState;                      // +0x1c
     unsigned char _pad_0x020[0x58 - 0x20];

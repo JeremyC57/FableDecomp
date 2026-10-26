@@ -13,8 +13,8 @@
 // CIntelligentPointer<CThingPlayerCreature> temporary and an inline operator=.
 // Layout: Ego_r.pdb CAIStateGroup_MinionGuardReactToPlayerWithWeapon (NumberOfTimesPlayerTold +0x14, FrameLastToldPlayer
 // +0x18, LastMessageHeard +0x1c, Player +0x20); the engine header flattens the base, so the model is local.
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,7 +42,7 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -59,32 +59,32 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetWorldFrame();     // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
-struct CTCVillage;
+class CTCVillage;
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     bool IsPlayerExtendedLineOfSight() const;   // 0x00744830
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

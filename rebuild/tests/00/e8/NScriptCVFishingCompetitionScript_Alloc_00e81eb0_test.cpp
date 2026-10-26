@@ -3,7 +3,7 @@
 struct Interface { int unused; };
 static Interface g_interface;
 static int g_strings = 0;
-struct CCharString { const char* PStringData; CCharString() : PStringData("") { ++g_strings; } };
+class CCharString { public: const char* PStringData; CCharString() : PStringData("") { ++g_strings; } };
 struct Vec { long* start; long* finish; long* end; Vec() : start(0), finish(0), end(0) {} };
 struct Base { Interface* Game; void* MasterScriptData; Base(void* data, Interface& game) : Game(&game), MasterScriptData(data) {} };
 struct Script : Base {

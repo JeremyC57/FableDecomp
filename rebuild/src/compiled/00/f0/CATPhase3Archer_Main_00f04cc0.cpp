@@ -9,9 +9,9 @@
 //   597 EntitySetThingAsEnemyOfThing, 599 EntitySetThingAsAllyOfThing.
 // Data: "AT_ConvoySpy" 0x012F7CE8, "HUD_ORB_RED_SMALL" 0x012D4BF0, "REGION_EXIT_POINT" 0x012CA510, zero vector 0x0143E8E0.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (phase flags +0x48 / +0x49, guard vector +0xa8).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -34,10 +34,10 @@ struct CCountedPointer {
     CScriptThingImp* Data;
     void*            Info;
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void b0();
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
@@ -55,8 +55,8 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c)
 };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
-struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
+class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
+class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
@@ -64,12 +64,12 @@ struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
 };
 }
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -77,7 +77,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                    // 0x00CD2770
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)

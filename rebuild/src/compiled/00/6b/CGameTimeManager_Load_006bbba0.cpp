@@ -10,7 +10,7 @@
 // context with a trivial destructor (nothing runs for it); the parser's implicit destructor is inlined (comment list,
 // two strings, the out-of-line CBase destructor). No EH frame.
 // Leaf: ?Load@CGameTimeManager@@QAEXABVCCharString@@@Z
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBase {                     // retail 0x28 bytes
+class CStringParser : public CBase { public:                     // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -34,15 +34,15 @@ struct CStringParser : CBase {                     // retail 0x28 bytes
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                           // retail 0x2c bytes, trivial destructor
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad00[0x40];
     void Load(CPersistContext& context);           // 0x006BBAC0
     void Load(const CCharString& text);

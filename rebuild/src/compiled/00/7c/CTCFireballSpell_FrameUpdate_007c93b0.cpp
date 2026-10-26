@@ -9,8 +9,8 @@
 // the effect through an intelligent-pointer temporary + operator=, an uninitialised emitter local; first try.
 // Names: catalog "FrameUpdate" sits on 0x007C9180, but this row is the vtable slot-9 override; 0x007C9180 is a non-virtual helper.
 // Layout: retail CTCFireballSpell = Ego_r.pdb minus 4 after the timer; timer CurrentState +0x20, WillIncrementedFlag +0x38.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -22,7 +22,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {          // the out slot GetSubDef fills
+template <class T> class CDefPointer { public:          // the out slot GetSubDef fills
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
@@ -31,7 +31,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
@@ -45,7 +45,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -66,7 +66,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];            // +0x20 UsingComponents
     CInterfaceMap  m_interfaces;                // +0x44
@@ -96,17 +96,17 @@ struct CThing {
         return ((it == map->last || kind < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void MakeNoise(const CCharString& noise);   // 0x00662110
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CTCSoundPlayer {                         // interface 0x10
+class CTCSoundPlayer { public:                         // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10

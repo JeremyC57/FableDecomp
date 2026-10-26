@@ -17,7 +17,7 @@
 //   UpdateExperienceSpendLevelUp 0x005721FA). The PDB header is flattened with debug 16-byte containers, so not used.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CComponent;
 struct CViewport;
 struct CYesNo;
@@ -28,7 +28,7 @@ struct CTCInventoryBase {
     CTCInventoryBase(CThing* thing);                        // 0x005BFF07
 };
 namespace NHeroInformationScreens {
-struct CBase {                                              // vtable 0x0123A3E0
+class CBase { public:                                              // vtable 0x0123A3E0
     virtual void v00();
     CBase();                                                // 0x0066E734
 };
@@ -54,7 +54,7 @@ template <class T> struct CVectorBase {                     // STLport _Vector_b
 template <class T> struct CVector : CVectorBase<T> {        // STLport vector (release: 0xc bytes)
     explicit CVector(const CAllocator<T>& a = CAllocator<T>()) : CVectorBase<T>(a) { }
 };
-struct CSliderAnimator;
+class CSliderAnimator;
 struct SAnimatorNode;
 struct CAnimatorList {                                      // STLport list<CSliderAnimator> (release: node pointer)
     SAnimatorNode* _M_node;
@@ -64,12 +64,12 @@ struct CAnimatorIterator {
     SAnimatorNode* _M_node;
     CAnimatorIterator() { }
 };
-struct CEnginePrimitiveHandle { long Handle; };
+class CEnginePrimitiveHandle { public: long Handle; };
 struct ExperienceSpendEvent { bool enable; bool initiate; long time; };
 struct ExperienceSpendInfo { long currentSpend; long initialSpend; long levelUpSpend; };
 class CCharString { void* PStringData; };
 
-struct CTCInventoryExperience : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryExperience : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CTutorialSoundMap TutorialSoundHandles;                                 // +0x134
     CStatUndoMap UndoableStatBuys;                                          // +0x140
     CAbilityUndoMap UndoableAbilityBuys;                                    // +0x14C

@@ -2,7 +2,7 @@
 // primitives and their TRIS chunks, with the reference counts back to their start values afterwards.
 #include <cstdio>
 struct SCountBlock { long references; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer(T* o, SCountBlock* c) : Object(o), Count(c) { if (Count) ++Count->references; }
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count) { if (Count) ++Count->references; }

@@ -18,13 +18,13 @@ struct CBase {
 enum EEngine2DLayer { ENGINE_2D_LAYER_DEFAULT = 0 };
 enum ESubPrimitiveType { SUB_PRIMITIVE_DEFAULT = 0 };
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char  _pad00[0x90];
     EEngine2DLayer m_layer;                        // +0x90
 };
 
-struct CEngineSubPrimitiveChain;
-struct CEnginePrimitive2DViewportManager;
+class CEngineSubPrimitiveChain;
+class CEnginePrimitive2DViewportManager;
 
 struct __declspec(novtable) CEngineSubPrimitiveBase : CBase {   // intermediate base: owns the primitive link
     unsigned char                 _pad04[0x8];
@@ -40,18 +40,18 @@ struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {   // vtable 0x0
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540
 };
 
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     float Layer2DToDistance(EEngine2DLayer layer); // 0x00B4A6A0
 };
 extern CEnginePrimitiveRenderer2D* g_pPrimitiveRenderer2D_01436e7c;   // 0x01436E7C
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void AddSubPrimitive(CEngineSubPrimitiveChain& chain, CEngineSubPrimitive2DViewport* subPrimitive, float distance,
                          CEnginePrimitive2DViewportManager* manager);   // 0x00B84720
 };
 extern CEnginePrimitiveRenderer* g_pPrimitiveRenderer_01436e74;       // 0x01436E74
 
-struct CEnginePrimitive2DViewportManager {
+class CEnginePrimitive2DViewportManager { public:
     void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, ESubPrimitiveType type, CEngineSubPrimitiveChain& chain);
 };
 

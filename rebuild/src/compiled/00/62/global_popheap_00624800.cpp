@@ -18,7 +18,7 @@
 // by this callee at the end: CTestQuest's implicit destructor runs the six CCharString destructors in
 // reverse member order (+0x18 .. +0x00, skipping ColourIndex at +8). Layout from the landed CTestQuest
 // sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -38,7 +38,7 @@ public:
     CTestQuest& operator=(const CTestQuest& other);   // 0x004A8F50
 };
 
-struct CTestQuestNameCompare { };
+class CTestQuestNameCompare { public: };
 
 void __fastcall __adjust_heap(CTestQuest* first, long holeIndex, long len, CTestQuest value,
                               CTestQuestNameCompare comp);   // 0x006243D0

@@ -12,8 +12,8 @@
 #include "engine/CThingMapManager.h"
 #undef CThingMapManager
 
-struct C2DVector { float X, Y; };
-struct C2DCoordI {
+class C2DVector { public: float X, Y; };
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };

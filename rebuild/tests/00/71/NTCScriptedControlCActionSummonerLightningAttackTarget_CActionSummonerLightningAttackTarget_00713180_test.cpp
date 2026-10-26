@@ -1,10 +1,10 @@
 // Behaviour test for CActionSummonerLightningAttackTarget::CActionSummonerLightningAttackTarget (0x00713180).
 #include <cstdio>
 
-struct CThing;
-struct CScriptThing { CThing* PImp_Data; CScriptThing(CThing* t) : PImp_Data(t) {} };
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class CThing;
+class CScriptThing { public: CThing* PImp_Data; CScriptThing(CThing* t) : PImp_Data(t) {} };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     C3DVector pos;
     CScriptThing GetScriptThing() { return CScriptThing(this); }
     C3DVector* GetPosition() { return &pos; }

@@ -4,7 +4,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -19,7 +19,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     while (it != last && it->type < *type) ++it;
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -37,9 +37,9 @@ struct CThing {
         return false;
     }
 };
-struct CTCSleep { unsigned char _pad[0xc]; bool m_bAsleep; };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
-struct CAIStateGroupBase {
+class CTCSleep { public: unsigned char _pad[0xc]; bool m_bAsleep; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* Creature; };
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain; long ScriptAIPriority; void* Name_PStringData;
     unsigned char Terminated, Priority, Enabled, _pad_0x13;

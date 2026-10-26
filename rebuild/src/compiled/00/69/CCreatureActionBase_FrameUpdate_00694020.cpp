@@ -13,36 +13,36 @@
 void* __cdecl operator new(unsigned int size);
 extern "C" void __cdecl free(void* p);
 extern long g_FramesPerSecond;                         // 0x01375550
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CTCBase { virtual void v00(); };
+class CTCBase { public: virtual void v00(); };
 struct CEventBase { CEventBase() : Unknown(0) { } virtual void v00(); long Unknown; };
 struct CEventCutScene : CEventBase {                   // vtable 0x0125C1CC, 0x0c bytes
     CCharString Name;
     CEventCutScene(const CCharString& name) : Name(name) { }
     virtual void v00();
 };
-struct CTCEntityEvents : CTCBase {
+class CTCEntityEvents : public CTCBase { public:
     void AddEvent(CEventBase* event);                  // 0x008113C0
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SPausePair { CCreatureActionBase* first; long second; SPausePair(CCreatureActionBase* a, long b) : first(a), second(b) { } };
 struct SInsertResult { void* it; bool ok; };
 struct CPauseSet {
     unsigned long Erase(CCreatureActionBase* const& key);   // 0x0058119B
     SInsertResult Insert(const SPausePair& value);          // 0x00580D21
 };
-struct CTCHaste : CTCBase {
+class CTCHaste : public CTCBase { public:
     unsigned char _pad04[0x18 - 0x04];
     CPauseSet     Paused;                              // +0x18
     void Recalculate();                                // 0x00800020
 };
-struct CSoundPair { long FirstSound, LastSound; };
-struct CSoundInit {
+class CSoundPair { public: long FirstSound, LastSound; };
+class CSoundInit { public:
     unsigned char _data[0x20];
     CSoundInit(bool a, long b, long c);                // 0x0041C930
 };
@@ -71,7 +71,7 @@ struct CInterfaceMap {
         return (it == end || key < it->type ? end : it)->component;
     }
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                    // +0x20
@@ -152,7 +152,7 @@ struct SCutSceneTree {
 };
 extern "C" long __cdecl _ftol2(double);
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     virtual void v04();
     virtual void v08();

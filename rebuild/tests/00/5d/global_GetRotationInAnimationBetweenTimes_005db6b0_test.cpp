@@ -5,14 +5,14 @@
 #include <cmath>
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 static float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
 };
 static C3DVector operator*(const C3DVector& v, const CMatrix3x4& m)

@@ -6,14 +6,14 @@
 #define __declspec(x)
 #endif
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 static CComponent* g_pushed = 0; static CComponent* g_parentSet = 0; static CComponent* g_parentTarget = 0;
 struct CComponentVector { CComponent* m_pFirst; CComponent* m_pLast; CComponent* m_pEnd; void push_back(CComponent* const& child) { g_pushed = child; } };
-struct CComponent {
+class CComponent { public:
     virtual void v00() { }
     virtual void SetParent(CComponent* parent) { g_parentTarget = this; g_parentSet = parent; }
 };
-struct CViewport : CComponent {
+class CViewport : public CComponent { public:
     unsigned char _pad04[0x160]; CComponentVector m_fakeChildren;
     void AddFakeChild(CComponent* child) { m_fakeChildren.push_back(child); child->SetParent(this); }
 };

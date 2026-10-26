@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -42,7 +42,7 @@ struct CThing {
     }
 };
 enum { APPEARANCE_MODIFIER_CLOTHING = 2 };
-struct CTCHeroAttachableAppearanceModifiers {        // interface type 0x5E
+class CTCHeroAttachableAppearanceModifiers { public:        // interface type 0x5E
     void RemoveAllAppearanceModifiers(long type);    // 0x00706640
     void AddAppearanceModifierWithReplace(long defIndex);   // 0x00706950
     void EditFrameUpdate();                          // 0x00707930
@@ -63,20 +63,20 @@ struct CSuitPartMap {                                // std::map<EClothingSuitPa
     SNode* begin() { return _M_header->_M_left; }
     SNode* end() { return _M_header; }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long m_refCount;                                 // +0x04
 };
-template <class T> struct CDefPointer {              // the out slot the definition lookups fill (counted reference handed over)
+template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (counted reference handed over)
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CHeroSuitDef : CDefPointeeBase {
+class CHeroSuitDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSuitPartMap  SuitParts;                         // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CHeroSuitDef>* out);  // 0x005935C4
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -92,7 +92,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroSuitDef>* ou
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -110,7 +110,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 #pragma auto_inline(on)
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     unsigned char _pad00[0x130];
     CDefinitionManager* GetDefinitions();            // 0x006869D0 (CTCBase)
     long GetNumberOfItemsOfTypeInInventory(long itemType);   // 0x005BDF08

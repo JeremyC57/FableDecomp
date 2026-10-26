@@ -9,12 +9,12 @@
 // this body tests the data block TWICE: the CRC call takes `GetLength()` and `GetPString()` as two
 // separate inline accessors, evaluated right to left (length into ecx first, then the data pointer),
 // each with its own `p ? ... : ...` guard.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                                      // +0  (CBasicString<char>::PData)
     unsigned long m_length;                                     // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                                              // 0x0099E4B0
     CCharString& operator=(const CCharString& other);           // 0x0099EFB0
@@ -24,7 +24,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC-32 kernel
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();                                         // vtable 0x01267568
     CCharString   Group;                                        // +4
     unsigned long GroupCRC;                                     // +8

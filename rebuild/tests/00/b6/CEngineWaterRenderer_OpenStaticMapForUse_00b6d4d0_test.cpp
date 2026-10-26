@@ -9,10 +9,10 @@
 #endif
 
 static int g_live = 0;
-struct CCharString { const char* m_p; CCharString(const char* p) : m_p(p) { ++g_live; } CCharString(const CCharString& o) : m_p(o.m_p) { ++g_live; } ~CCharString() { --g_live; }
+class CCharString { public: const char* m_p; CCharString(const char* p) : m_p(p) { ++g_live; } CCharString(const CCharString& o) : m_p(o.m_p) { ++g_live; } ~CCharString() { --g_live; }
     CCharString& operator=(const CCharString& o) { m_p = o.m_p; return *this; } };
-struct CStaticMapBankFile { int x; };
-struct CEngineWaterRenderer { unsigned char _pad0[0x5a8]; CStaticMapBankFile* StaticMapBankFile; CCharString StaticMapSeaEntryPrefix;
+class CStaticMapBankFile { public: int x; };
+class CEngineWaterRenderer { public: unsigned char _pad0[0x5a8]; CStaticMapBankFile* StaticMapBankFile; CCharString StaticMapSeaEntryPrefix;
     CEngineWaterRenderer() : StaticMapSeaEntryPrefix("") { }
     void OpenStaticMapForUse(CStaticMapBankFile* file, CCharString seaEntryPrefix) { StaticMapBankFile = file; StaticMapSeaEntryPrefix = seaEntryPrefix; } };
 int main()

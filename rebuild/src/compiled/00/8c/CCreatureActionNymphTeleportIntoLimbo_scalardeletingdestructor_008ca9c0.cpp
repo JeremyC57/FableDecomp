@@ -1,4 +1,4 @@
-struct CCreatureAction_NymphTeleportIntoLimbo {
+class CCreatureAction_NymphTeleportIntoLimbo { public:
     void* vftable;
 };
 

@@ -9,8 +9,8 @@
 // brain's creature at +0x18; the threat's flag byte at +0x6c (bit 3) and dead bit at +0x91 (retail CThing).
 // Shape: the found flag of the inlined navigation lookup is written through the bool that MoveToPos later fills (one
 // frame byte); the 2D personal-space test compares a named distance against a named squared radius.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -42,12 +42,12 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CTCCreatureNavigation {                  // interface type 7
+class CTCCreatureNavigation { public:                  // interface type 7
     bool GetNearbyDirectedPosition(const C3DVector& from, float radius, const C3DVector& direction, float spread,
                                    C3DVector* out);     // 0x006CB780
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -86,8 +86,8 @@ struct CThing {
         return has;
     }
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     static float GetPersonalSpaceRadius();      // 0x00661CC0
 };
 
@@ -117,16 +117,16 @@ struct CIntelligentPointerConstCreature : CBaseIntelligentPointer {   // CIntell
 };
 bool __fastcall IsAwareOfThingImplementation(CThingCreatureBase* creature, CThing* thing, bool flag);   // 0x00864700
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_RUN = 5 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

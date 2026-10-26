@@ -1,13 +1,13 @@
 // BEGIN exact source snapshot SHA256 f393f09bd5cfe4b161b434b9fdeff1ff22692e0edd4aec7e2bd1148ee4b28fbe
 //00542140 NUISystem::CIconText::SetValue(resource ID); PDB SetValue and CDataBank text-entry signatures recovered.
 #include "fable_string.h"
-struct RefCount {mutable long References;void DecRef()const{--References;}long GetRefCount()const{return References;}};struct IVPointeeVirtual {virtual void Slot0()=0;virtual void Delete()const=0;};namespace NGameText { struct CTextEntry:IVPointeeVirtual,RefCount {CWideString GetText()const;void Release()const{DecRef();if(GetRefCount()==0)Delete();}}; }
+struct RefCount {mutable long References;void DecRef()const{--References;}long GetRefCount()const{return References;}};struct IVPointeeVirtual {virtual void Slot0()=0;virtual void Delete()const=0;};namespace NGameText { class CTextEntry:public IVPointeeVirtual,public RefCount { public:CWideString GetText()const;void Release()const{DecRef();if(GetRefCount()==0)Delete();}}; }
 struct CIVTextPointer {const NGameText::CTextEntry* Object;__forceinline ~CIVTextPointer(){if(Object){Object->Release();Object=0;}}operator bool()const{return Object!=0;}const NGameText::CTextEntry* operator->()const{return Object;}};
 struct CDataBankTextEntry;
 struct CDataBank {const CDataBankTextEntry* GetTextInfo(unsigned long)const;CIVTextPointer GetPTextEntry(unsigned long,bool)const;};
 // GetTextDataBank is an inferred inline accessor name; offsets14/60 are retail evidence.
 struct Game {unsigned char Pad[0x14];CDataBank* Manager;__forceinline CDataBank* GetTextDataBank()const{return Manager;}};struct System {unsigned char Pad[0x60];CDataBank* Manager;__forceinline CDataBank* GetTextDataBank()const{return Manager;}};extern Game* Game_013b86a0;extern System* System_013b871c;extern CWideString Empty_013bca24;
-namespace NUISystem {struct CIconText {
+namespace NUISystem {class CIconText { public:
 virtual void Slot000()=0;
 virtual void Slot001()=0;
 virtual void Slot002()=0;

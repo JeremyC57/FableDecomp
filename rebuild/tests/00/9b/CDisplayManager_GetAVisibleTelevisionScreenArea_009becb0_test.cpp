@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; C2DBoxF(float a, float b, float c, float d) : TLX(a), TLY(b), BRX(c), BRY(d) { } };
-struct CDisplayManager {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; C2DBoxF(float a, float b, float c, float d) : TLX(a), TLY(b), BRX(c), BRY(d) { } };
+class CDisplayManager { public:
     unsigned char _pad[0x18c]; long BackBufferDimensions_X; long BackBufferDimensions_Y;
     C2DBoxF GetAVisibleTelevisionScreenArea() const { return C2DBoxF(0.0f, 0.0f, (float)BackBufferDimensions_X, (float)BackBufferDimensions_Y); }
 };

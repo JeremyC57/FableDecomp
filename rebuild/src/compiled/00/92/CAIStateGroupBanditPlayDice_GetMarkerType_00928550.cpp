@@ -6,17 +6,17 @@
 // CCharString::~CCharString @ 0x0099EAE0.
 // The name is an explicit named local (one `push ecx` slot, re-addressed with `lea` for both
 // the lookup and the destructor); the index rides in esi across the destructor.
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
 };
 
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 

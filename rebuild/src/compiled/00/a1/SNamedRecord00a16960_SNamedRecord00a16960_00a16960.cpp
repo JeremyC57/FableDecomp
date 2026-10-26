@@ -6,7 +6,7 @@ struct CCountedRef_00a16960 {                      // 4 bytes: a count block, co
     SCountBlock_00a16960* m_pCount;
     CCountedRef_00a16960(const CCountedRef_00a16960& other) : m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
 };

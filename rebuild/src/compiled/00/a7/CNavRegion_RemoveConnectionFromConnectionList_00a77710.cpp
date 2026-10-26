@@ -12,7 +12,7 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

@@ -1,21 +1,21 @@
 #ifndef _MSC_VER
 // Host fixture adapts pointer widths; the target build uses the shared header.
 #define FABLE_ENGINE_CWORLD_H
-struct CMessageEventManager;
-struct CWorld { CMessageEventManager* PMessageEventManager_Data; };
+class CMessageEventManager;
+class CWorld { public: CMessageEventManager* PMessageEventManager_Data; };
 #endif
 // CWorldMap::UnloadAllMapsExceptPlayerPos() -- unload distant loaded maps with a warning event
 // The available PDB CWorldMap header has 16-byte containers and puts Maps at +0x24; retail STLport containers are 12 bytes.
 // Nearby landed CWorldMap sources establish retail Maps at +0x20, CMapInfo size 0x48, World at +0x08, and
 // the message-event pointer at CWorld +0x60. This local retail model avoids using the conflicting PDB offsets.
-struct CThing;
-struct CMessageEventManager {
-    void* AddMessage(long type, unsigned long id, struct C3DVector* pos, CThing* a, CThing* b,
+class CThing;
+class CMessageEventManager { public:
+    void* AddMessage(long type, unsigned long id, class C3DVector* pos, CThing* a, CThing* b,
                      float f1, float f2, long map); // 0x00687540
 };
 #include "engine/CWorld.h"
-struct C3DVector { float X,Y,Z; };
-struct CMapInfo { unsigned char bytes[0x48]; };
+class C3DVector { public: float X,Y,Z; };
+class CMapInfo { public: unsigned char bytes[0x48]; };
 struct CMapInfoArray {
     CMapInfo* Start; CMapInfo* Finish; CMapInfo* End;
     long size() const { return (long)(Finish - Start); }

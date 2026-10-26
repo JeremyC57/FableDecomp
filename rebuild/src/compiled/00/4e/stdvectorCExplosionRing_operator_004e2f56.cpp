@@ -11,7 +11,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CExplosionRing {             // 16 bytes: PDB RingRadius, NumExplosions, AngleOffset, SecondsBeforeSpawnNewRing (TransferBinaryIn 0x004EB2B8 reads +0/+4/+8/+c)
+class CExplosionRing { public:             // 16 bytes: PDB RingRadius, NumExplosions, AngleOffset, SecondsBeforeSpawnNewRing (TransferBinaryIn 0x004EB2B8 reads +0/+4/+8/+c)
     float RingRadius;
     long  NumExplosions;
     float AngleOffset;

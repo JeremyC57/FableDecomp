@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase;
-struct CThing {
+class CThingCreatureBase;
+class CThing { public:
     unsigned char m_typeFlags;
     const CThingCreatureBase* AsCreature() const
     {
@@ -13,7 +13,7 @@ struct CThing {
         return creature;
     }
 };
-struct CThingCreatureBase : CThing { const CThingCreatureBase* m_canSee; };
+class CThingCreatureBase : public CThing { public: const CThingCreatureBase* m_canSee; };
 static int g_calls = 0;
 static bool CanCreatureSeeCreature(const CThingCreatureBase* viewer, const CThingCreatureBase* target, bool)
 {
@@ -24,7 +24,7 @@ inline bool CanSeeEachOther(const CThingCreatureBase* a, const CThingCreatureBas
 {
     return CanCreatureSeeCreature(a, b, false) && CanCreatureSeeCreature(b, a, false);
 }
-struct CThingFilter_CanSeeEachOther {
+class CThingFilter_CanSeeEachOther { public:
     const CThing* m_thing;
     bool operator()(const CThingCreatureBase& creature) const
     {

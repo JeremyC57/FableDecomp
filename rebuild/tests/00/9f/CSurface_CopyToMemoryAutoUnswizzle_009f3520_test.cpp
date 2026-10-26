@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -94,7 +94,7 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 // (inlined above: rebuild_abi.h)
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -137,12 +137,12 @@ struct IDirect3DSurface9 {
     virtual long __stdcall UnlockRect();                                     // slot 14 (+0x38)
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;
     long Y;
 };
 
-struct CSurfaceLockedRect {                        // PDB CSurfaceLockedRect, 16 bytes
+class CSurfaceLockedRect { public:                        // PDB CSurfaceLockedRect, 16 bytes
     C2DExtentsI    Dimensions;                     // +0x00
     long           Pitch;                          // +0x08
     unsigned char* PMem;                           // +0x0c

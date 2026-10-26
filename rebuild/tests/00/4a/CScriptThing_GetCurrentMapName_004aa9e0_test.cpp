@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include "engine/CScriptThing.h"
-struct CCharString { char* p; CCharString(const char* s) { p = (char*)s; } CCharString() { p = 0; } };
+class CCharString { public: char* p; CCharString(const char* s) { p = (char*)s; } CCharString() { p = 0; } };
 char g_default[] = "DefaultMap";
 const char* kDefaultMapName = g_default;
 char g_named[] = "NamedMap";

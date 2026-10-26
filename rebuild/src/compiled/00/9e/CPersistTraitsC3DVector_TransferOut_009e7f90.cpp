@@ -8,9 +8,9 @@
 // The C3DVector twin of CPersistTraits<C2DVector>::TransferOut 0x009E7F00 (same TU, next function). The context is
 // unused, so its argument slot is dead and VC builds each FormatDouble temporary there (`lea ecx,[esp+18h]` after the
 // 8-byte double push); `out` stays in esi and `value` in edi across the calls.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
     CCharString& operator+=(const char* text);                   // 0x0099F100

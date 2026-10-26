@@ -9,22 +9,22 @@
 // Shape: the def-name string is a named local in its own block (as the landed CTCHeroStats::OnInitialActivate 0x0057D1A4); the
 // def pointer is a function-scope local released at the end (refcount at +4); Sounds[SpellLevel - 1] reads `[def+level*4+3Ch]`.
 // Layout: SpellLevel at retail +0x114 (PDB +0x12c); CSpecialAbilitiesMultiStrikeDef Sounds (CDefString[4]) at +0x40 (Ego_r.pdb).
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 
 struct CDefStringTable {
     CCharString GetString(CDefString name);     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 
-struct CSpecialAbilitiesMultiStrikeDef {
+class CSpecialAbilitiesMultiStrikeDef { public:
     virtual void v00();
     virtual void Release();                     // slot 1 (+4): destroys the def when the last reference goes
     long          RefCount;                     // +0x04
@@ -44,7 +44,7 @@ struct CDefPointerMultiStrike {                 // CDefPointer<const CSpecialAbi
     CSpecialAbilitiesMultiStrikeDef* operator->() const { return Object; }
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
     long GetDefIndexFromName(const CCharString& name, long column);       // 0x009AD390
     bool GetDef(long index, CDefPointerMultiStrike* out);                 // 0x007CD760
@@ -73,7 +73,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44

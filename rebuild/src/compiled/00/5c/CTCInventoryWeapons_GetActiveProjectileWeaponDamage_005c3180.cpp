@@ -42,7 +42,7 @@ struct CDefPointerTemp {                             // the manager's by-value d
         }
     }
 };
-template <class T> struct CDefPointer {              // the out slot the definition lookups fill (released by hand, as the landed OnCreate twins)
+template <class T> class CDefPointer { public:              // the out slot the definition lookups fill (released by hand, as the landed OnCreate twins)
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -57,11 +57,11 @@ struct CProjectileDef : CDefBase {
     unsigned char _pad08[0x54 - 0x08];
     float Damage;                                    // +0x54
 };
-struct CWeaponDef : CDefBase {
+class CWeaponDef : public CDefBase { public:
     unsigned char _pad08[0xa0 - 0x08];
     long ProjectileDefIndex;                         // +0xa0
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CWeaponDef>* out);    // 0x0042B1A6
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -77,10 +77,10 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CWeaponDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointerTemp GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                 // +0x70
 };

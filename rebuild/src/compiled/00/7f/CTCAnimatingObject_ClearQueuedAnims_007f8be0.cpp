@@ -31,7 +31,7 @@ template <class T> struct CRetailList {              // STLport list: one word, 
     }
 };
 
-struct CAnimInit {                                   // PDB 44 bytes, all scalars: trivially destructible
+class CAnimInit { public:                                   // PDB 44 bytes, all scalars: trivially destructible
     long          UpdateMode;
     unsigned char Type;
     bool          Looping;
@@ -45,7 +45,7 @@ struct CAnimInit {                                   // PDB 44 bytes, all scalar
     long          Priority;
 };
 
-struct CTCAnimatingObject {
+class CTCAnimatingObject { public:
     void*                         m_vtable;                  // +0x00
     void*                         m_pThing;                  // +0x04
     unsigned char                 m_pad08[0x04];

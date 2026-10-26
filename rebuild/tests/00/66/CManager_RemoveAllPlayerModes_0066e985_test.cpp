@@ -8,7 +8,7 @@ static int g_removed[16]; static int g_removedCount = 0; static const void* g_pl
 class CPlayer { public: int id; void RemoveMode(EPlayerMode mode) { if (this == g_player) g_removed[g_removedCount++] = mode; } };
 static CPlayer g_mainPlayer;
 class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_mainPlayer; } };
-struct CMainGameComponent { unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; };
+class CMainGameComponent { public: unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; };
 static CPlayerManager g_pm; static CMainGameComponent g_mgc; static CMainGameComponent* g_pMainGameComponent = &g_mgc;
 static int g_freed = 0;
 static void TrackedFree(void* p) { ++g_freed; free(p); }

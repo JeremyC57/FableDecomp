@@ -1,6 +1,6 @@
 #include "engine/CEngineInternalPrimitiveParticleGroup.h"
 
-struct CEnginePrimitive;
+class CEnginePrimitive;
 
 struct CParticleVector4 {
     int values[4];

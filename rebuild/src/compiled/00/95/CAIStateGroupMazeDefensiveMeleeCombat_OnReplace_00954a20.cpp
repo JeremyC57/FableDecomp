@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,26 +45,26 @@ struct CThingCreatureBase {
     }
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     bool HasMode(unsigned long mode);           // 0x0073A8A0
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;           // +0x4c
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-static bool g_active = false, g_focus = false; struct CSystemManager { bool IsApplicationActive() { return g_active; } bool HasInputFocus() { return g_focus; } }; static CSystemManager g_sys; static CSystemManager* GFGetSystemManager() { return &g_sys; }
+static bool g_active = false, g_focus = false; class CSystemManager { public: bool IsApplicationActive() { return g_active; } bool HasInputFocus() { return g_focus; } }; static CSystemManager g_sys; static CSystemManager* GFGetSystemManager() { return &g_sys; }
 static int g_set = -1;
 struct CDev { virtual void SetHasInputFocus(bool f) { g_set = f ? 1 : 0; }
     void UpdateAcquired() { if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->HasInputFocus()) SetHasInputFocus(true); else SetHasInputFocus(false); } };

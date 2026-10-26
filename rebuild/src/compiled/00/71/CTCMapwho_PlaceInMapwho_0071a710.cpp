@@ -1,11 +1,11 @@
 // Byte-exact reconstruction of CTCMapwho::PlaceInMapwho @ 0x0071a710
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct Helper;
 struct Slot;
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad[0x50];
     unsigned char flags;       // +0x50
 };

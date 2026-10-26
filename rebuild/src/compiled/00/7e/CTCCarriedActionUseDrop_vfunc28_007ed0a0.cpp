@@ -11,8 +11,8 @@
 // word `mov eax,[esp+8]`); the parent thing's interface-0x48 test reads the whole bitset word
 // (`mov ecx,[edx+28h] ; test ch,1`) and the parent stays in edx for the RemoveThing push. The
 // 0xa8-byte alert action is a temporary passed straight from its constructor.
-struct CTCBase;
-struct CCreatureActionBase;
+class CTCBase;
+class CCreatureActionBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -43,24 +43,24 @@ struct CThing {
     }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void RemoveThing(CThing* thing);                        // 0x006A19B0
 };
 
-struct CCreatureActionBase {                                // retail sizeof 0xa8
+class CCreatureActionBase { public:                                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                                 // 0x00693EF0
 };
-struct CCreatureAction_AlertToPlayer : CCreatureActionBase {
+class CCreatureAction_AlertToPlayer : public CCreatureActionBase { public:
     CCreatureAction_AlertToPlayer(CThingAICreature* creature);   // 0x007ECFD0
 };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)

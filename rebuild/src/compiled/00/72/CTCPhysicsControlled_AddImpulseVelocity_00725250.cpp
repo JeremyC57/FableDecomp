@@ -7,7 +7,7 @@
 // Leaf: AddImpulseVelocity
 #include "engine/CTCPhysicsStandard.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };

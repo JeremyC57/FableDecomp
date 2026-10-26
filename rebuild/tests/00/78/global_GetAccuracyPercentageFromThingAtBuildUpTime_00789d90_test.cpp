@@ -21,7 +21,7 @@ public:
     const CTCHeroExperience* GetTC(long) const { return Experience; }
 };
 
-struct CFloatRange { float HighValue, LowValue; };
+class CFloatRange { public: float HighValue, LowValue; };
 
 class CHeroCombatDef {
 public:

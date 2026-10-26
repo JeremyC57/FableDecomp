@@ -6,21 +6,21 @@
 // Layout: CPhysicsCollideResponse (PDB): CollidePos +0x00, CollideNormal +0x0c, Friction +0x18 (not touched).
 // Shape: the ground height is a named float local (retail keeps it in the dead position-argument slot); `!(z <= ground)`-style
 //   compare as `ground > position.Z`; the normal is copied word by word from the by-value temporary.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                       // +0x00
     C3DVector CollideNormal;                    // +0x0c
     float     Friction;                         // +0x18
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& position);        // 0x0063A300
     C3DVector GetGroundFaceNormalAt(const C3DVector& position); // 0x0063AB10
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00();
     void* ParentThing;                          // +0x04
     CWorldMap* GetWorldMap_006af630();                   // 0x006AF630 (CTCBase)

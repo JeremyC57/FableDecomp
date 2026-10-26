@@ -3,7 +3,7 @@
 // No callees. Layout: PDef +0xd0 (CDefPointer<const CThingObjectDef>, its def pointer first),
 // DieOffTimer +0xd4, DiesOff +0xd8; CThingObjectDef::DieOffTimer at +0x94 (PDB +0x98).
 // Shape: the def value is tested (`setg dl`) before either store; both stores from registers.
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char _pad00[0x94];
     long          DieOffTimer;                     // +0x94
 };
@@ -11,7 +11,7 @@ struct CDefPointerThingObjectDef {
     const CThingObjectDef* m_pDef;
     const CThingObjectDef* operator->() const { return m_pDef; }
 };
-struct CThingObject {
+class CThingObject { public:
     virtual void v00();
     unsigned char             _pad04[0xcc];
     CDefPointerThingObjectDef PDef;                // +0xd0

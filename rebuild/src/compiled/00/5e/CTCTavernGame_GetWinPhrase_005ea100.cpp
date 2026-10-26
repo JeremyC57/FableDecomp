@@ -15,18 +15,18 @@
 // hidden-pointer slot) and releases the def with a null test, the finished arm dereferences the def and releases it without one.
 // The win/lose choice is two returns (VC merges them into the conditional load); GetSubDef gets a same-TU `auto_inline(off)`
 // stand-in body that writes only the out slot, so VC7.1 knows the def pointer does not escape and keeps it in edi.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    struct CWideString ToWideString() const;           // 0x0099E480
+    class CWideString ToWideString() const;           // 0x0099E480
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();
 };
-struct CTavernGameDef {
+class CTavernGameDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
@@ -34,7 +34,7 @@ struct CTavernGameDef {
     unsigned long WinText;                      // +0xa4
     unsigned long LoseText;                     // +0xa8
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -44,7 +44,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTavernGameDef>* out) const;   // 0x005ED4A0
 };
 void* FindSubDef_CDefClassBase_GetSubDef(const CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -64,7 +64,7 @@ struct CThingDefHolder {
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     CThingDefHolder* ParentThing;               // +0x04
     unsigned char _base08[4];

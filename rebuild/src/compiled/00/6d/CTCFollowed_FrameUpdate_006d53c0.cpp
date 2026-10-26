@@ -30,7 +30,7 @@ public:
     __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     T* Get() const { return (T*)GetPItem(); }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPair { long Type; void* TC; };
 struct CTCMap {
     CTCPair* _M_start;

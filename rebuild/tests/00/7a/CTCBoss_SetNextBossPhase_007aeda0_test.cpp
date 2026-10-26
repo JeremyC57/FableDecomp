@@ -1,16 +1,16 @@
 // Behaviour test for 007aeda0 CTCBoss::SetNextBossPhase: only when phase changes are enabled or forced is the phase stored and the start position captured.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing
-{
+class CThing
+{ public:
     C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
 };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     CThing*   ParentThing;
     long      currentBossPhase;
     bool      EnablePhaseChanges;

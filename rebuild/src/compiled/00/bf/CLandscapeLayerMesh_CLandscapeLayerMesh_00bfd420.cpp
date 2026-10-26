@@ -1,4 +1,4 @@
-struct CLandscapeLayerMesh {
+class CLandscapeLayerMesh { public:
     void* vtbl;      // +0x00
     void* pParam;    // +0x04
     int BackgroundTextureIndex; int BumpMapTextureIndex; int f10; int ForegroundTexture; int BackgroundTexture; int BumpMap;

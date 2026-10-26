@@ -5,9 +5,9 @@
 //   one const CMemoryArea* argument) and the body: CMemoryArea::Colour is the uchar at +0x1C of the 32-byte tree node
 //   (PNextArea, PRightChild, PPreviousArea, PParentArea, PLeftChild, PParentChunk, DataSize, Colour, ID).
 // Shape: `test eax,eax ; je black ; cmp byte [eax+1Ch],1 ; je black ; xor eax,eax ; ret 4 ; black: mov eax,1 ; ret 4`.
-struct CMemoryAllocatorVariableSize {
-    struct CMemoryAreaChunk;
-    struct CMemoryArea {
+class CMemoryAllocatorVariableSize { public:
+    class CMemoryAreaChunk;
+    class CMemoryArea { public:
         CMemoryArea*      PNextArea;             // +0x00
         CMemoryArea*      PRightChild;           // +0x04
         CMemoryArea*      PPreviousArea;         // +0x08

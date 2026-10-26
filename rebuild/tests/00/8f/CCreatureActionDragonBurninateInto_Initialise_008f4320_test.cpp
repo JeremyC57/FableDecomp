@@ -1,23 +1,23 @@
 // Behaviour test for 0x008F4320 CCreatureAction_DragonBurninateInto::Initialise.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CVectorC3DVector { int n; };
-struct CThing;
+class CThing;
 struct CModeBase { virtual ~CModeBase() {} };
 struct CModeDragonStrafeBurninate : CModeBase {
     CThing* owner; const CVectorC3DVector* pts; C3DVector prev, fs, fe; float a, b;
     CModeDragonStrafeBurninate(CThing* o, const CVectorC3DVector& p, const C3DVector& pr, float s, float e, const C3DVector& f1, const C3DVector& f2)
         : owner(o), pts(&p), prev(pr), fs(f1), fe(f2), a(s), b(e) {}
 };
-struct CTCCreatureModeManager { CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
-struct CThing {
+class CTCCreatureModeManager { public: CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
+class CThing { public:
     bool has; CTCCreatureModeManager mm;
     bool GetInterface(CTCCreatureModeManager** pp, long t) { if (t == 0x31 && has) { *pp = &mm; return true; } return false; }
 };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } operator CThing*() const { return GetPItem(); } };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CCreatureAction_DragonBurninateInto {
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCreatureAction_DragonBurninateInto { public:
     CBaseIntelligentPointer PCreature; const char* anim; int baseInit;
     C3DVector PreviousPoint; CVectorC3DVector MovementPoints; float BurnStart, BurnStop; C3DVector FlameStartPos, FlameEndPos;
     void SetAnimationName(const CCharString& n) { anim = n.t; }

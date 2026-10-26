@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CHighlightItemDef
-{
+class CHighlightItemDef
+{ public:
     void* vftable;
 };
 extern void* const g_CHighlightItemDef_vftable;

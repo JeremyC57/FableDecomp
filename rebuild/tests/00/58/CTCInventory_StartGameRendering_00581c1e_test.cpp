@@ -12,13 +12,13 @@ struct CDisplaySystem { CRenderer* m_pRenderer; };
 struct CGameObject { CDisplaySystem* m_pDisplay; };
 static CGameObject* g_pGameObject = 0;
 
-struct CWorld {
+class CWorld { public:
     long m_gameRenderingStartFrame;
     static long GetWorldFrame() { return g_frame; }
 };
 static CWorld g_world;
 
-struct CTCInventory {
+class CTCInventory { public:
     CWorld* GetWorld() { return &g_world; }
     void StartGameRendering();
 };

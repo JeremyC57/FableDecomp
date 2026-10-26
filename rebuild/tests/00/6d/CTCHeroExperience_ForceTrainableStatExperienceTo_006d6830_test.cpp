@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x18];
     long* stats;
 };

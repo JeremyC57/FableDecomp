@@ -13,14 +13,14 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const char* text);            // 0x0099EFE0
 };
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                    // 0x00CB7940

@@ -9,7 +9,7 @@
 // @ 0x00665860.
 // Shape: camera and position are named locals fetched in that order; the distance is `(cameraPos - pos).GetLength()` inlined.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -17,22 +17,22 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLength() const { float s = Z * Z; s += Y * Y; s += X * X; return (float)sqrt(s); }
 };
-struct CCamera {
+class CCamera { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetPosition() const;      // slot 8 (+0x20)
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     CCamera* GetCamera() const;                 // 0x004C7AA0
     void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void UpdateAction();                        // 0x006643C0
     void UpdateAnimation(float distanceToCamera);   // 0x00665860
 };
-struct CThingAICreature : CThingCreatureBase {  // vtable 0x0127293C
+class CThingAICreature : public CThingCreatureBase { public:  // vtable 0x0127293C
     void WorldUpdateBulletTime();
 };
 

@@ -4,7 +4,7 @@
 // Callees: pow(float, int) (VC7.1 math.h overload, inline _Pow_int), ConvertToScreen 0x0052E580 (__fastcall, C2DVector by value), virtual IsPositionScaled (+0x1d4) / IsPositionIndependent (+0x198).
 // Note: the saved render position offset goes through a free inline Add(a, b) helper -- the member operator+= / explicit forms load RenderPositionSave.X first (x87 operand order), the helper keeps retail fld [RelativeRenderPosition.X] first.
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -21,7 +21,7 @@ C2DVector __fastcall ConvertToScreen(C2DVector position);   // 0x0052E580
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF10(7) VF10(8) VF10(9)
     VF(100) VF(101)
     virtual bool IsPositionIndependent();               // slot 102 (+0x198)

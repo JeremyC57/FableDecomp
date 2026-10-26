@@ -3,9 +3,9 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -27,7 +27,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -50,11 +50,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -83,9 +83,9 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return 0;
     return seed % range;
 }
-struct CCharStringData;
+class CCharStringData;
 static int g_strCtors = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length) : PStringData((CCharStringData*)text) { ++g_strCtors; CHECK(length == -1); }
     ~CCharString() { ++g_strDtors; }

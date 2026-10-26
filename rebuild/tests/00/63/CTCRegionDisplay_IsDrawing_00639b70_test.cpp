@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <stddef.h>
-struct CWideString {
+class CWideString { public:
     const wchar_t* m_text;
     bool operator!=(const wchar_t* text) const
     {
@@ -9,7 +9,7 @@ struct CWideString {
         return *a != *b;
     }
 };
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     CWideString CurrentAreaName;
     long CurrentAlpha;
     long IsDrawing() const

@@ -12,7 +12,7 @@
 // `add eax,4` and the morph copied word by word: the morph's inline copy constructor is written as
 // an assignment (`*this = other`), as in the sibling 0x0081AA50.
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; the bottom case reuses idx (`first[idx - 1]`).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -29,7 +29,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<long, CSkeletalMorph> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

@@ -1,8 +1,8 @@
 #include <cstdio>
 
 // Match the vtable layout the target expects: slot 2 (call [eax+8]) = GetPeriod.
-struct CCombatSequenceBase
-{
+class CCombatSequenceBase
+{ public:
     unsigned int period;
     virtual unsigned int v0() { return 0; }
     virtual unsigned int v1() { return 0; }

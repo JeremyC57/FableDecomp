@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -14,7 +14,7 @@ struct CIntelligentPointer {
     CIntelligentPointer() : PData(0) { }
     virtual ~CIntelligentPointer() { }
 };
-struct CTCTrapBase : CTCBase { bool Active; CTCTrapBase(CThing* thing) : CTCBase(thing), Active(true) { } };
+class CTCTrapBase : public CTCBase { public: bool Active; CTCTrapBase(CThing* thing) : CTCBase(thing), Active(true) { } };
 struct CTCProjectileTrap : CTCTrapBase {
     long ShotTimer, IdleTimer, NumShotsThisRound;
     CIntelligentPointer PTarget;

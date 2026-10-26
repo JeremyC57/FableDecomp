@@ -3,10 +3,10 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString { const char* text; };
-struct CAnimationEntry;
+class CCharString { public: const char* text; };
+class CAnimationEntry;
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000() {}
     virtual void DestroyDef() { ++g_destroyed; }
     long m_refCount;
@@ -16,12 +16,12 @@ struct CDefPointeeBase {
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
 struct CAnimationEntryVector { int count; };
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual void v000() {}
     virtual void v001() {}
     virtual void v002() {}
@@ -35,16 +35,16 @@ struct CAnimFilterNoGroup : CAnimFilterBase {
     virtual int Kind() const { return 7; }
 };
 static int g_queries = 0; static const char* g_prefix = 0; static CAnimationEntryVector* g_anims = 0; static int g_filterKind = 0; static const void* g_set = 0;
-struct CAnimationSet {
+class CAnimationSet { public:
     void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims, const CAnimFilterBase& filter) const
     { ++g_queries; g_prefix = prefix.text; g_anims = &anims; g_filterKind = filter.Kind(); g_set = this; anims.count += 3; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet AnimationSet;
 };
 static CAppearanceDef* g_appearance = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>& out)
     {
         ++g_getSubDef;
@@ -52,11 +52,11 @@ struct CDefClassBase {
         ++g_appearance->m_refCount; out.m_pObject = g_appearance; return true;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims) const;
 };
 

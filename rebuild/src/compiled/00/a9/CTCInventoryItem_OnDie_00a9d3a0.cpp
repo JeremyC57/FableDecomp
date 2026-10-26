@@ -8,7 +8,7 @@ struct BaseItem {
     void OnDie();                              // @ 0xaa8490 (non-virtual)
 };
 
-struct CTCInventoryItem : public BaseItem {
+class CTCInventoryItem : public BaseItem { public:
     char pad00[0x2c];
     void* ptr2c;
     void OnDie();

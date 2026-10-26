@@ -19,7 +19,7 @@ struct CHttpResponse {                                  // 0x48 bytes
     CHttpResponse();                                    // 0x00569C50
     ~CHttpResponse();                                   // 0x00569D30
 };
-struct LHHttp2 {
+class LHHttp2 { public:
     long SendRequest();                                 // 0x008405F0 (LH_HTTP_STATUS)
     long ReceiveResponseHeaders();                      // 0x00840740
     long ParseResponseLine(CHttpResponse* response);    // 0x00840B60
@@ -27,7 +27,7 @@ struct LHHttp2 {
 };
 }
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     enum ENetworkSuccess { NETWORK_SUCCESS = 1000, NETWORK_BUSY = 1001, NETWORK_FAILED = 1002 };
     enum ETaskState { TASK_IDLE = 100, TASK_BEGIN = 101, TASK_SEND_REQUEST = 102, TASK_RECEIVE_HEADERS = 103, TASK_RECEIVE_DOCUMENT = 104 };
     void*                  __vftable;                   // +0x00

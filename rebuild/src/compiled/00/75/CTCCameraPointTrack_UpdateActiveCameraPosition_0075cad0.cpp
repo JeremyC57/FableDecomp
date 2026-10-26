@@ -9,7 +9,7 @@
 // inline operators (`/` multiplies by the reciprocal).
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -19,13 +19,13 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CThing* GetMainHero();                              // 0x00487DD0
 };
-struct CGame {
+class CGame { public:
     CPlayerManager* GetPlayerManager();                 // 0x0049D9D0
 };
 class CTCCameraPointTrack {

@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static long g_frame = 0;
 static int g_worldCalls = 0;
-struct CWorld { static long GetFrame() { return g_frame; } };
+class CWorld { public: static long GetFrame() { return g_frame; } };
 static CWorld g_world;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector Position;
     C3DVector OldPosition;
     long OldPositionLastFrameSet;

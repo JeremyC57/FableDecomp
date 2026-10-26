@@ -1,8 +1,8 @@
 // Behaviour test for 0x009E2BA0 CFontManager::GetStaticFont: the returned counted pointer holds one extra reference and the font points back at the manager.
 #include <cstdio>
 struct Info { unsigned int RefCount; };
-struct CFontManager;
-struct CFontBank { CFontManager* PManager; };
+class CFontManager;
+class CFontBank { public: CFontManager* PManager; };
 struct CP {
     CFontBank* Data; Info* Info_;
     CP(CFontBank* d, Info* i) : Data(d), Info_(i) { if (Info_) ++Info_->RefCount; }
@@ -14,7 +14,7 @@ static CFontBank g_fonts[3]; static Info g_infos[3];
 struct Entry { int i; CP AcquireFont() { return CP(&g_fonts[i], &g_infos[i]); } };
 static Entry g_entries[3] = { { 0 }, { 1 }, { 2 } };
 struct Bank { Entry* GetFontInfo(unsigned int index) { return &g_entries[index]; } };
-struct CFontManager {
+class CFontManager { public:
     Bank* bank;
     CP GetStaticFont(unsigned int index) { CP font = bank->GetFontInfo(index)->AcquireFont(); font->PManager = this; return font; }
 };

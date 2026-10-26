@@ -1,7 +1,7 @@
 // Behaviour test for 0x009E9F40 NProgressDisplay::DisplayProgress: forwards text/progress/flags only when installed.
 #include <cstdio>
 
-struct CCharString { const char* Text; };
+class CCharString { public: const char* Text; };
 
 class CAProgressDisplay
 {
@@ -19,7 +19,7 @@ public:
         ++Calls; Last = &text; Progress = progress; A = a; B = b;
     }
 };
-template <class T> struct CCountedPointer { T* Data; void* Info; T* operator->() const { return Data; } };
+template <class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
 static CCountedPointer<CAProgressDisplay> g_ProgressDisplay = { 0, 0 };
 
 static void DisplayProgress(const CCharString& text, float progress, bool a, bool b)

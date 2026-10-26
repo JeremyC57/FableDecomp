@@ -1,4 +1,4 @@
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     char pad[0x50];
     int cur;
 };

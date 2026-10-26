@@ -5,9 +5,9 @@
 // landed shape of 0x00849320), CTCFireballSpell::CastFireball(CThing*) @ 0x007C89F0.
 // Shape: one `push ecx` frame for the lookup key; `this` rides in edi, the component in esi. Retail CCreatureActionBase is
 // 0xa8 bytes (PDB 0xb4), so PTarget is at +0xa8 and `this` is modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThingCreatureBase {                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
+class CThingCreatureBase { public:                 // engine/CThingCreatureBase.h exists but is not used: only the interface lookup is modelled
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -45,7 +45,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCreatureAction_FinishFireballSpell {   // engine/CCreatureAction_FinishFireballSpell.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
+class CCreatureAction_FinishFireballSpell { public:   // engine/CCreatureAction_FinishFireballSpell.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[4];                // +0x04

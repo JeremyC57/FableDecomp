@@ -1,4 +1,4 @@
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct Sub {
   virtual void v0();
   virtual void v1();
@@ -8,7 +8,7 @@ struct Sub {
   virtual void v5();
   virtual bool slot6(void* a, C3DVector* b);
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
   void* f0;
   Sub* ParentThing;
   bool IsNewDestinationGoingToResetNavigation(C3DVector* dest);

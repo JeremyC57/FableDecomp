@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <string.h>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_mainPlayer = 0;
-struct CPlayerManager { bool IsThingMainPlayer(const CThing* thing) const { return thing == g_mainPlayer; } };
+class CPlayerManager { public: bool IsThingMainPlayer(const CThing* thing) const { return thing == g_mainPlayer; } };
 static CPlayerManager g_pm;
 static bool g_bDebugHelpers = false;
 inline void* CopyTrivial(const void* first, const void* last, void* result)

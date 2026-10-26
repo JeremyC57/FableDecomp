@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCamera { float v; };
-struct CGameCameraManager {
+class C3DVector { public: float X, Y, Z; };
+class CCamera { public: float v; };
+class CGameCameraManager { public:
     CCamera Camera; CCamera OldCamera; bool SingleCut;
     void SetSingleCut() { SingleCut = true; OldCamera = Camera; }
 };

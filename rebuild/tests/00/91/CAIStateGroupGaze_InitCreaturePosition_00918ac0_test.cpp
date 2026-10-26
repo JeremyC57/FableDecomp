@@ -2,7 +2,7 @@
 #include <cstdio>
 static unsigned long ROR13(unsigned long v) { v &= 0xFFFFFFFFUL; return ((v >> 13) | (v << 19)) & 0xFFFFFFFFUL; }
 static unsigned long Draw(unsigned long& seed, unsigned long range) { seed = (seed * 0x24A1 + 0x24DF) & 0xFFFFFFFFUL; seed = ROR13(seed); return range ? seed % range : 0; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CMarker { C3DVector pos; };
 struct CGaze { bool runnable; unsigned long seed; CMarker* marker; const C3DVector* placedAt; float radius;
     bool AutoPlaceNear(const C3DVector& p, float r) { placedAt = &p; radius = r; return true; }

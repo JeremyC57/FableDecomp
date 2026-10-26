@@ -29,7 +29,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -50,8 +50,8 @@ public:
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool flag);   // 0x00835A20
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
 };
 struct CCharStringVector {                                  // STLport vector<CCharString>
@@ -63,31 +63,31 @@ struct CCharStringVector {                                  // STLport vector<CC
     CCharString* begin() { return _M_start; }
     CCharString* end() { return _M_finish; }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410 (CDefinitionManager)
     static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     __forceinline C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TL;
     C2DVector Extents;
     __forceinline C2DBoxF(const C2DVector& tl, const C2DVector& extents) : TL(tl), Extents(extents) {}
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xa4 - 0x08];
     C2DVector StatsAnimBoxTLPos;                // +0xa4
     C2DVector StatsAnimBoxExtents;              // +0xac
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -95,12 +95,12 @@ template <class T> struct CDefPointer {
 };
 
 namespace NInventory { class CTCInventoryBase; }
-struct CTCInventoryItem {                                   // interface type 0x1A
+class CTCInventoryItem { public:                                   // interface type 0x1A
     bool AddToInventory(NInventory::CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
 namespace NUISystem {
-struct CObserver;
-struct CManager {
+class CObserver;
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04(); virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08(); virtual void m09(); virtual void m10(); virtual void m11(); virtual void m12(); virtual void m13(); virtual void m14(); virtual void m15(); virtual void m16(); virtual void m17(); virtual void m18(); 
     virtual void AddScreen_slot19(void* screen);            // slot 19 (+0x4C)
     static CManager* __fastcall GetInstance();              // 0x0041E5F2

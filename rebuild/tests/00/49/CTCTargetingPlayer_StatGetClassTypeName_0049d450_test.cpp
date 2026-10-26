@@ -1,8 +1,8 @@
 #include <cstdio>
 
 static const char* g_text = 0; static long g_len = 0;
-struct CCharString { void* p; CCharString(const char* t, long l) { g_text = t; g_len = l; p = 0; } };
-struct CTCTargetingPlayer { CCharString Name; CTCTargetingPlayer() : Name("CTCTargetingPlayer", -1) {} };
+class CCharString { public: void* p; CCharString(const char* t, long l) { g_text = t; g_len = l; p = 0; } };
+class CTCTargetingPlayer { public: CCharString Name; CTCTargetingPlayer() : Name("CTCTargetingPlayer", -1) {} };
 int main()
 {
     CTCTargetingPlayer tag;

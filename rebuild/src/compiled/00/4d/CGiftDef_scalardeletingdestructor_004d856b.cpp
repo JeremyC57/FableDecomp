@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CGiftDef
-{
+class CGiftDef
+{ public:
     void* vftable;
 };
 extern void* const g_CGiftDef_vftable;

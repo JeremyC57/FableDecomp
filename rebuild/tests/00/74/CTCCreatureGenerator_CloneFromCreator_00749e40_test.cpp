@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[16];
     CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
 };
@@ -9,7 +9,7 @@ struct TGenerationParameters {
     bool TriggerOnActivate; long ActiveCreatureLimit; long TotalGenerationLimit; long NumTriggers;
     CCharString ScriptNameOfAllGeneratedCreatures;
 };
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     TGenerationParameters GenParams;
     bool Active; bool Initialised; bool ReadyToInitialise; bool ExternalTrigger; bool WaitForAllCreaturesDead;
     long NumTriggersLeft;

@@ -3,7 +3,7 @@
 #include <cstring>
 // behaviour test for 0x00A01F50: exercises the same logic through a copy of the model (compiled separately from the source)
 struct CHeader { long Handle; long _unused04; long Size; short Padding; char Type; char Flags; CHeader** PPrevFreeLink; CHeader* PNextFree; CHeader* PPrevPhysical; CHeader* PNextPhysical; };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     long LargestFreeArea; CHeader* FreeLists[256];
     void InsertFreeArea(CHeader* area)
     {

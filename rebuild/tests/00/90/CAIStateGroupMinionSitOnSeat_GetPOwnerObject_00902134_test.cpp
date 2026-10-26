@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CThing;
+class CThing;
 
 class CAIStateGroup_MinionSitOnSeat
 {

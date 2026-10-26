@@ -30,7 +30,7 @@ struct CKeyEntryVectorMap {                    // CVectorMap: a sorted 12-byte r
     }
 };
 
-struct CDataBank {
+class CDataBank { public:
     unsigned char       _pad00[0xd0];
     CKeyEntryVectorMap  m_entries;             // +0xd0
     void* LookupValue(unsigned long key);

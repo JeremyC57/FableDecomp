@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Test model of a thing: presence bitset + sorted {type, component} map + dead flag.
-struct CTCBase { long tag; };
+class CTCBase { public: long tag; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -68,12 +68,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 
-struct CTCShop { long state; void SetStockState(long s) { state = s; } };
-struct CTCShopKeeper : CTCBase { CTCShop* shop; CTCShop* GetShopTC() { return shop; } };
+class CTCShop { public: long state; void SetStockState(long s) { state = s; } };
+class CTCShopKeeper : public CTCBase { public: CTCShop* shop; CTCShop* GetShopTC() { return shop; } };
 
 struct CCreature : CThing {
     float speed;

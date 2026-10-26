@@ -7,7 +7,7 @@
 // Shape: IS_THING_ALIVE inlined around Kill(true) only; the clear through a default-constructed stack CIntelligentPointer
 // (landed 0x008C99C0 form) and the tick reset are unconditional; the temporary sits in its own `{}` block so the tick store
 // follows its destructor call (at function scope VC7.1 hoists the store above the dtor).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void Kill(bool immediately);            // 0x004C9B80
@@ -32,7 +32,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     virtual void v00();
     CThing* ParentThing;                    // +0x04 (CTCBase)
     unsigned char _base08[4];

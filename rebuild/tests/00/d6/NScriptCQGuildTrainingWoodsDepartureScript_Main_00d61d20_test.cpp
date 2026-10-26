@@ -3,9 +3,9 @@
 // behaviour test: CQ_GuildTrainingWoodsDepartureScript::Main -- reset flags, wait for GuildWoods, bind three entity
 // scripts, post the scripted entities, spawn two threads, set the quest card and create the maze rival hero
 static int g_frames = 0, g_endAt = 1000, g_loadedAt = 2, g_bound = 0, g_spawned = 0, g_posted = 0, g_card = 0, g_created = 0;
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
-struct CGameScriptInterface {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const { return std::strcmp(n, "GuildWoods") == 0 && g_frames >= g_loadedAt; }
     void PostAddScriptedEntities() const { ++g_posted; }

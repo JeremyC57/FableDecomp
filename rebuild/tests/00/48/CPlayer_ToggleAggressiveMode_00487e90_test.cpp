@@ -2,7 +2,7 @@
 
 unsigned char g_aggressiveEnabled = 1;
 
-struct CPlayer {
+class CPlayer { public:
     char pad[0x217];
     unsigned char aggressive;
 };

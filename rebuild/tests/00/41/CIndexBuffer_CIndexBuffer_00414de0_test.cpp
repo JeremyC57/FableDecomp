@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     int f0;
     int f4;
     int f8;

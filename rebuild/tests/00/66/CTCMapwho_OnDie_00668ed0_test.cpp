@@ -3,7 +3,7 @@
 static int g_dtor = 0;
 static int g_freed = 0;
 
-struct CTCMapwho {
+class CTCMapwho { public:
     int dummy;
     void dtor() { dummy = 0; g_dtor++; }
 };

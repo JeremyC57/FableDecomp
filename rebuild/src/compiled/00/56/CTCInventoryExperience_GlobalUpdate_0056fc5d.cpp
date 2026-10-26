@@ -16,7 +16,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
 };
@@ -27,7 +27,7 @@ struct CComponent {
     virtual void SetColour(const CRGBColour& colour);   // slot 13 (+0x34)
     virtual CRGBColour GetColour() const;            // slot 14 (+0x38)
 };
-struct CSliderAnimator {
+class CSliderAnimator { public:
     CComponent* pSlider;                           // +0x00
     float StartValue;                                      // +0x04
     float EndValue;                                // +0x08
@@ -103,7 +103,7 @@ struct CScreenHolder {
 };
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -134,7 +134,7 @@ struct CTCInventoryBase {
 };
 }
 
-struct CTCInventoryExperience : NInventory::CTCInventoryBase {
+class CTCInventoryExperience : public NInventory::CTCInventoryBase { public:
     unsigned char _pad5c[0x1a4 - 0x5c];
     CAnimatorList     Animators;                             // +0x1A4 list<CSliderAnimator> node pointer
     CAnimatorIterator AnimIt;                       // +0x1A8

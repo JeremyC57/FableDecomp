@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Row[3]; C3DVector Position;
     C3DVector Rotate(const C3DVector& v) const
     {
@@ -15,8 +15,8 @@ struct CMatrix3x4 {
         return r;
     }
 };
-struct CPhysicsMesh { C3DVector CentreOfGravity; };
-struct CPhysicsMeshObject {
+class CPhysicsMesh { public: C3DVector CentreOfGravity; };
+class CPhysicsMeshObject { public:
     const CPhysicsMesh* Mesh; CMatrix3x4 PositionMatrix; float Scale; float OO_Scale;
     C3DVector GetCentreOfGravity() const { return PositionMatrix.Rotate(Mesh->CentreOfGravity); }
 };

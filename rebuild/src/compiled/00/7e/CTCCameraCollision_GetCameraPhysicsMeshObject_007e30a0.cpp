@@ -12,9 +12,9 @@
 // Shape: the def and the mesh bank are named locals (the def held in ebp across GetWorld); the object is a named local copied into the result by the implicit copy constructor (no NRVO): vtable, add-ref'd mesh,
 // the matrix as a block, the two scales; the mesh temporary of the constructor call is released by the counted pointer's dtor through
 // the pointee's DecRef/GetRefCount release (the long `add eax,4 ; dec ; test ; mov` form).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CPhysicsMesh {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
@@ -22,7 +22,7 @@ struct CPhysicsMesh {
     long GetRefCount() const { return m_refCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) DeleteThis(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) ++m_pObject->m_refCount; }
@@ -32,11 +32,11 @@ template <class T> struct CIVCountedPointer {
             m_pObject->Release();
     }
 };
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     CBaseClass();                                  // 0x0099A2D0
     virtual ~CBaseClass();                         // 0x0099A2E0
 };
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38
@@ -44,17 +44,17 @@ struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
     CPhysicsMeshObject(const CIVCountedPointer<CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00A12CC0
     ~CPhysicsMeshObject();                         // 0x00A127D0
 };
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     CIVCountedPointer<CPhysicsMesh> GetMesh() const;   // 0x00A262B0
 };
 struct CMeshBank {
     CPhysicsMeshInfo* GetPhysicsMeshInfo(long index);  // 0x00A24250
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x3c];
     CMeshBank* PMainMeshBank;                      // +0x3c
 };
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned char _pad00[4];
     float Radius;                                  // +0x04
 };
@@ -72,11 +72,11 @@ struct CThingPhysics {
     unsigned char _pad04[0x0c - 4];
     C3DVector Position;                            // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CThingPhysics* PPhysics;                       // +0x60
 };
-struct CCameraCollisionDef {
+class CCameraCollisionDef { public:
     unsigned char _pad00[0x28];
     long PhysicsMesh;                              // +0x28
 };

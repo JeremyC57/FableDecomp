@@ -7,7 +7,7 @@ struct HelperData {
 
 extern int g_blockParryCount;  // fild dword ptr [0x1375550]
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x38];
     long m38;    // [esi+0x38]
 

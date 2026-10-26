@@ -17,14 +17,14 @@
 //   a zero register (ebx) and fold every bool test / `push 0` / zero store into it; float zeros are immediates.
 extern long g_framesPerSecond;                          // 0x01375550
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -45,12 +45,12 @@ struct CAnimFrameTime {                                 // 12-byte UpdateFrameLo
     float Reserved2;
     CAnimFrameTime() : Seconds(0), Reserved1(0), Reserved2(0) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x1c];
     float PlayFraction;                                 // +0x1c
     void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                      // 0x0070B460
 };
 struct CBulletTime {
@@ -61,16 +61,16 @@ struct CBulletTime {
     bool IsActive() const { return m_active || m_slowdown != 0; }
     float GetTimeScale();                               // 0x004C5FA0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x68];
     CBulletTime* PBulletTime;                           // +0x68
 };
 struct CGameSubsystem;
-struct CDoorDef {
+class CDoorDef { public:
     unsigned char _pad00[0x28];
     long TriggerType;                                   // +0x28 EDoorTriggerType
 };
-struct CTCDoor {
+class CTCDoor { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];

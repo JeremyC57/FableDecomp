@@ -13,7 +13,7 @@
 // Shape: STLport `for (; first != last; ++first) if (!pred(*first)) { *result = *first; ++result; } return result;`;
 //   the bind is `(*F1)(t) && (*F2)(t)` with F2 STLport's `!_M_pred(x)` (the unary_negate's only member is the filter,
 //   so F2 itself is its `this`); the copy is CTargetPoint's implicit operator= (the landed 0x00807B70 form).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                             // 0x00A01B50
     void SetPItem(CThing* item);                          // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
@@ -29,12 +29,12 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         return *this;
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
 };
 namespace NPlayerTargeting {
-struct CTargetPoint {                                     // 0x1c bytes
+class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00
     long Index;                                           // +0x08
     C3DVector TargetingPosition;                          // +0x0C
@@ -43,7 +43,7 @@ struct CTargetPoint {                                     // 0x1c bytes
 }
 using NPlayerTargeting::CTargetPoint;
 
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     unsigned char _pad00[0x24];
     bool operator()(const CTargetPoint& point) const;     // 0x006A7380
 };
@@ -64,7 +64,7 @@ public:
 };
 }
 
-template <class TF1, class TF2> struct CFilter_Bind2 {
+template <class TF1, class TF2> class CFilter_Bind2 { public:
     TF1* F1;                                              // +0x0
     TF2* F2;                                              // +0x4
     template <class T> bool operator()(const T& t) const { return (*F1)(t) && (*F2)(t); }

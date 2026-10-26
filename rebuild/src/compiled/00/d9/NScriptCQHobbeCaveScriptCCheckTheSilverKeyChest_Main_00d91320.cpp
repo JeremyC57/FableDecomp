@@ -32,12 +32,12 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }   // 0x004115A0 (inlined here)
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -52,7 +52,7 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CScriptThing {                            // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                            // vtable 0x01238C8C, 12 bytes
     struct CImp {
     virtual void v000();
     virtual void v001();
@@ -136,7 +136,7 @@ struct CScriptThing {                            // vtable 0x01238C8C, 12 bytes
     void* PImp_Info;                            // +0x08
     bool IsAlive() const { return PImp_Data && PImp_Data->IsAlive(); }
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -212,8 +212,8 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;   // slot 72 (+0x120)
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData;
-struct CQ_HobbeCaveScript {
+class CQ_SunnyvaleMasterData;
+class CQ_HobbeCaveScript { public:
     bool MakeBanditComment(const CCharString& text, const CScriptThing& bandit);   // 0x00D905C0
     class CCheckTheSilverKeyChest {
     public:

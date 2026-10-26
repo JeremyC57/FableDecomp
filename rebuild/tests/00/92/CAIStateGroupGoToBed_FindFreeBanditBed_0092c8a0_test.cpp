@@ -1,12 +1,12 @@
 // Behaviour test for CAIStateGroup_GoToBed::FindFreeBanditBed @ 0x0092C8A0: nearest free sleep point is chosen and claimed.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float M[6]; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float M[6]; };
+class CThing;
 struct CTCRegionLink;
 struct CTCSleepPoint { CThing* user; void SetUser(CThing* u) { user = u; } };
 struct CThingGraphic { CRightHandedSet set; const CRightHandedSet* GetRHSet() { return &set; } };
-struct CThing {
+class CThing { public:
     C3DVector pos; bool has4a; bool has23; bool hasac; unsigned char m_flags91;
     CTCRegionLink* link; CTCSleepPoint point; CThingGraphic* PGraphic; bool mine; bool blocked;
     const C3DVector& GetPosition() const { return pos; }
@@ -22,14 +22,14 @@ struct CIntelligentPointerThing {
 struct CPointerListNode { CPointerListNode* _M_next; CPointerListNode* _M_prev; CIntelligentPointerThing _M_data; };
 struct CRegionThing { CPointerListNode* _M_node; };
 struct CTCRegionLink { CRegionThing* region; CRegionThing* GetPRegion() { return region; } };
-struct CThingFilter_IsMySleepPoint {
+class CThingFilter_IsMySleepPoint { public:
     CThing* Creature;
     CThingFilter_IsMySleepPoint(CThing* creature) : Creature(creature) { }
     bool operator()(CThing* thing) const { return thing->mine; }
 };
 struct CThingFilter_IsBlocked { bool operator()(CThing* thing) const { return thing->blocked; } };
-struct CAIBrain { CThing* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; CThing* GetCreature() const { return PBrain->Creature; } };
+class CAIBrain { public: CThing* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; CThing* GetCreature() const { return PBrain->Creature; } };
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
     CIntelligentPointerThing PBed; bool IsBedSleepPointMarker; C3DVector BedPos; CRightHandedSet Rhset;
     CAIStateGroup_GoToBed() : PBed(0), IsBedSleepPointMarker(false) { }

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTattooDef { int v; };
+class CTattooDef { public: int v; };
 
 static int g_called = 0;
 static CTattooDef* g_self = 0;

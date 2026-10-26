@@ -1,7 +1,7 @@
 // behaviour test for 0x0079C660
 #include <stdio.h>
 #include <string.h>
-struct CTCBulletTime { void* vt; long f4; unsigned char _pad[0x54 - 8]; bool Pausable; bool Paused; bool CutSceneCancel; unsigned char _p; };
+class CTCBulletTime { public: void* vt; long f4; unsigned char _pad[0x54 - 8]; bool Pausable; bool Paused; bool CutSceneCancel; unsigned char _p; };
 enum ETCInterfaceType { TCI_BULLET_TIME = 0x92 };
 class CThing {
 public:

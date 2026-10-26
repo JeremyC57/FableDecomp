@@ -14,9 +14,9 @@
 //   sit 12 bytes lower (PEmitter at the odd offset +0xb5; the landed FinishAction 0x00845850).
 // Shape: GetSubDef / GetEffectFromString get same-TU stand-in bodies; operator= names the item before SetPItem (this+0xb5 loads late); the && chain carries the by-value def copy and the
 //   name temporary (conditional destruction flags 1/2); the sub def pointer lives to the end of the function.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object)
@@ -44,7 +44,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Find_CSpecialEffectsDef_GetEffectFromString(const CSpecialEffectsDef* def, const CCharString& name);
@@ -58,7 +58,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -72,12 +72,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
     return true;
 }
 #pragma auto_inline(on)
-struct CThing;
-struct CTCBase;
-struct CTCTrophy {
+class CThing;
+class CTCBase;
+class CTCTrophy { public:
     void OnShownByCreature_006de8c0(CThing* creature);   // 0x006DE8C0
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
@@ -90,7 +90,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44

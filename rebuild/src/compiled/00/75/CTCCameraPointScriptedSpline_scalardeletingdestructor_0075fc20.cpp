@@ -1,4 +1,4 @@
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     void* vftable;
 };
 

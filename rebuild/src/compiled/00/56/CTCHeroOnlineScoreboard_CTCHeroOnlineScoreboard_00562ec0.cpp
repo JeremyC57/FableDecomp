@@ -14,14 +14,14 @@
 // the body, _Rb_tree zeroing the count then initialising the header through the re-read member; _Vector_base with the alloc proxy);
 // the STLport list constructor builds its sentinel in a local before storing it; one `xor ebx,ebx` zero register throughout.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
 };
@@ -86,7 +86,7 @@ template <int SIZE> struct CList {                      // STLport list (_List_b
     }
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* thing);                             // 0x00686800
     virtual ~CTCBase();
     void RegisterComponent();                           // 0x00686ED0 (descriptive)
@@ -95,7 +95,7 @@ struct CTCBase {
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
 
-namespace LHNetworkLib { struct LHHttp2; }
+namespace LHNetworkLib { class LHHttp2; }
 struct CHttpScopedPtr {                                 // scoped_ptr<LHNetworkLib::LHHttp2>
     LHNetworkLib::LHHttp2* px;
     CHttpScopedPtr() : px(0) { }
@@ -107,7 +107,7 @@ extern CCharString g_ScoreboardServer;                  // 0x013B8AF0 (descripti
 extern CCharString g_ScoreboardPage;                    // 0x013B8AF4 (descriptive: the script path)
 extern bool        g_bScoreboardInitialised;            // 0x013B8AE0
 
-struct CTCHeroOnlineScoreboard : CTCBase {              // vtable 0x0124DB34
+class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 0x0124DB34
     CHttpScopedPtr   PHttp;                             // +0x0c
     CMap<0x1c>       PictureCache;                      // +0x10 map<long, CCountedPointer<CTexture> >
     CMap<0x18>       LocalScoreboard;                   // +0x1c map<EOnlineScoreboardActivity, float>

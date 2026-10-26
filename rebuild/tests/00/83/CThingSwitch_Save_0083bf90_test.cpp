@@ -19,12 +19,12 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;        // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}                                          // test only
     CCharString(const char* text, long length = -1);                           // 0x0099EBF0
@@ -45,11 +45,11 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);       // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right); // 0x0099F570
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad04[0xd0 - 4];
     virtual void Save(CCharString& out);                                        // 0x006A4BA0
 };
-struct CThingSwitch : CThingPhysical {
+class CThingSwitch : public CThingPhysical { public:
     float         TriggerRadius;                         // +0xd0
     CCharString   EnvironmentDef;                        // +0xd4
     float         TimeToChangeEnvironmentDef;            // +0xd8

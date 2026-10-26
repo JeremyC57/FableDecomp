@@ -1,8 +1,8 @@
 typedef unsigned char u8;
 typedef unsigned int u32;
 
-struct CRGBColour
-{
+class CRGBColour
+{ public:
     u8 b0; u8 b1; u8 b2; u8 b3;
     CRGBColour(u32 argb) { b2 = (u8)(argb >> 16); b1 = (u8)(argb >> 8); b0 = (u8)argb; b3 = (u8)(argb >> 24); }
     CRGBColour(const CRGBColour& o) { b0 = o.b0; b1 = o.b1; b2 = o.b2; b3 = o.b3; }

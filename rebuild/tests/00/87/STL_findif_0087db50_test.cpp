@@ -4,7 +4,7 @@
 #endif
 // Model of the STLport random-access __find_if @ 0x0087DB50 (four-way unrolled loop + switch tail) over a
 // unary_negate predicate: the first entry the wrapped predicate rejects.
-struct CAnimationEntry { float Rotation; };
+class CAnimationEntry { public: float Rotation; };
 class CRotationBelow {                                   // stand-in for CTurningAnimCompare's unary overload
 public:
     typedef const CAnimationEntry* argument_type;

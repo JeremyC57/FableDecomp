@@ -12,11 +12,11 @@
 // child (self call) followed by operator delete @ 0x00BFE9BC, under the null test.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1C

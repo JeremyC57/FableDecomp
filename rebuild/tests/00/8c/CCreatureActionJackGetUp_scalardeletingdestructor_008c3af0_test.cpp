@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_JackGetUp {
+class CCreatureAction_JackGetUp { public:
     void* vftable;
     int destroyed;
 };

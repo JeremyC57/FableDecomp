@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CDecapitationDef
-{
+class CDecapitationDef
+{ public:
     void* vftable;
 };
 extern void* const g_CDecapitationDef_vftable;

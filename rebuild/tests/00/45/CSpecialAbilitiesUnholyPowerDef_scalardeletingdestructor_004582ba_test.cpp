@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesUnholyPowerDef { int x; };
+class CSpecialAbilitiesUnholyPowerDef { public: int x; };
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 

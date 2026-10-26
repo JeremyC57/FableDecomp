@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* text; CCharString(const char* t) : text(t) { } };
+class CCharString { public: const char* text; CCharString(const char* t) : text(t) { } };
 struct CAttackStyleDef { int refs; int destroyed; const char* name; void Release() { if (--refs == 0) ++destroyed; } };
 struct CDefPointer {
     CAttackStyleDef* m_p;
@@ -10,15 +10,15 @@ struct CDefPointer {
     ~CDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } }
 };
 static CAttackStyleDef g_def = { 0, 0, "HERO_JACK_OF_BLADES_ATTACK_STYLE_LAST_STAND" };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer* def) { if (std::strcmp(name.text, g_def.name)) return false; ++g_def.refs; def->m_p = &g_def; return true; }
 };
 struct CTCWillPower { bool Active; };
 static int g_styleSet; static CAttackStyleDef* g_style;
-struct CTCCombat { void SetAttackStyleDef(const CDefPointer* def) { ++g_styleSet; g_style = def->m_p; if (g_style) ++g_style->refs; } };
+class CTCCombat { public: void SetAttackStyleDef(const CDefPointer* def) { ++g_styleSet; g_style = def->m_p; if (g_style) ++g_style->refs; } };
 struct CHitLocation { int enabled; void SetEnabled(bool e) { enabled = e ? 1 : 0; } };
 static CHitLocation g_big = { 1 }, g_force = { 1 }, g_body = { 0 };
-struct CTCHitLocations {
+class CTCHitLocations { public:
     CHitLocation* GetPHitLocationFromName(const CCharString& name)
     {
         if (!std::strcmp(name.text, "HIT_LOCATION_JACK_OF_BLADES_BIG")) return &g_big;
@@ -27,13 +27,13 @@ struct CTCHitLocations {
         return 0;
     }
 };
-struct CThing {
+class CThing { public:
     CTCWillPower* will; CTCCombat* combat; CTCHitLocations* hit;
     bool GetInterface(CTCWillPower** o, long) { if (!will) return false; *o = will; return true; }
     CTCCombat* GetCombat() { return combat; }
     CTCHitLocations* GetHitLocations() { return hit; }
 };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static CDefinitionManager g_defs;
 struct CAIStateGroup_JackOfBladesStage3 {
     CAIBrain* PBrain;

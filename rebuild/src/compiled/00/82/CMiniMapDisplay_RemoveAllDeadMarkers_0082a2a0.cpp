@@ -14,7 +14,7 @@ extern void __fastcall Marker_Destroy(Marker* self);
 // 0x00bfea14 : free(void*)
 extern "C" void __cdecl fable_free(void* p);
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0x20];
     Node* head;   // +0x20 : sentinel node pointer
 };

@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_baseAssigns = 0, g_vectorAssigns = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_globalIndex;
     CDefClassBase& operator=(const CDefClassBase& other) { ++g_baseAssigns; m_globalIndex = other.m_globalIndex; return *this; }
     virtual ~CDefClassBase() {}
@@ -17,11 +17,11 @@ template<class T> struct CRetailVector {
     }
 };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap { CRetailVector<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted; };
-struct CDefString { long TablePos; };
+template<class K, class V> class CVectorMap { public: CRetailVector<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted; };
+class CDefString { public: long TablePos; };
 struct CSubDefInfo { long a; };
-struct CParentDefClassBase : CDefClassBase { CDefString InstantiationName; CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap; };
-struct CRegionScriptDef : CParentDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public: CDefString InstantiationName; CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap; };
+class CRegionScriptDef : public CParentDefClassBase { public:
     long RandomVillagerMax, RandomGuardMax;
     CRegionScriptDef& operator=(const CRegionScriptDef& other)
     {

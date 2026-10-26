@@ -4,7 +4,7 @@
 // Shape: the product is built in a named local, scalar part first, then X, Y, Z, and returned by the implicit copy
 // (dword moves through edx, interleaved with the last component's arithmetic); each component is one expression whose
 // operand order follows retail's load order. CQuaternion X/Y/Z/W from the PDB (landed operator*= 0x00A88C10 calls this).
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     CQuaternion operator*(const CQuaternion& q) const;
 };

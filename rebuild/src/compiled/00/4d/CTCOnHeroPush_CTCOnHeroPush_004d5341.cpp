@@ -8,14 +8,14 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x00686800; the compiler then stores this class's vtable (0x0123CBC4, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
-struct CEngineInternalPrimitive2DClockSprite;
+class CEngineInternalPrimitive2DClockSprite;
 
 struct CEngineSubPrimitive2DClockSprite {
     virtual void v00();
     CEngineSubPrimitive2DClockSprite(CEngineInternalPrimitive2DClockSprite* argument);            // 0x00686800
 };
 
-struct CTCOnHeroPush : CEngineSubPrimitive2DClockSprite {
+class CTCOnHeroPush : public CEngineSubPrimitive2DClockSprite { public:
     virtual void v00();
     CTCOnHeroPush(CEngineInternalPrimitive2DClockSprite* argument);
 };

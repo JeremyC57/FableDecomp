@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CScriptThing { virtual ~CScriptThing() { } void* PImp_Data; void* PImp_Info; CScriptThing() : PImp_Data(0), PImp_Info(0) { } };
+class CScriptThing { public: virtual ~CScriptThing() { } void* PImp_Data; void* PImp_Info; CScriptThing() : PImp_Data(0), PImp_Info(0) { } };
 struct CCrateTeamManager { long StateCounter[6]; long MemberCount; CCrateTeamManager() : MemberCount(0) { for (int i = 0; i < 6; ++i) StateCounter[i] = 0; } };
 struct CQ_OrchardFarmRaidScript { long m_currentTeamID; };
 static int g_log[16]; static int g_logCount = 0; static float g_lastDistance = 0.0f; static CScriptThing* g_lastThing = 0;

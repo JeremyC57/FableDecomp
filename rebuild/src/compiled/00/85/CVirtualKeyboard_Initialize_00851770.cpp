@@ -15,31 +15,31 @@
 //   AddObserver argument is the null-tested `p ? p + 4 : 0` conversion and ObserveEvent adjusts `this` by +4.
 // Layout (engine/CVirtualKeyboard.h): PEntryScreen +0x08, PEntryBox +0x0c; retail CEditBox DeleteAllOnKeyPress +0x17c
 //   (Ego_r.pdb +0x1bc - 0x40, as Text +0x164 / CursorPos +0x168 written by SetText).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);       // 0x0099B6B0
     ~CWideString();                                // 0x0099B510
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetAutoSaveDisplayName();          // 0x004069E0
 };
 struct CTBaseSingleton_CUserProfileManager {
     static CUserProfileManager& __fastcall Get();  // 0x0040D2A0
 };
 namespace NUISystem {
-struct CObserver {                                 // secondary base, vtable slots of 0x01246B64
+class CObserver { public:                                 // secondary base, vtable slots of 0x01246B64
     virtual ~CObserver();
     virtual void ProcessEvent(long event);
     virtual bool v002(long);
     virtual void ObserveEvent(long event);         // slot 3 (+0xc) 0x0052DA20
 };
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CComponent* GetChildByName(CCharString name);   // slot 3 (+0xc)
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013();
@@ -66,11 +66,11 @@ struct CComponent {
     virtual void v151(); virtual void v152(); virtual void v153(); virtual void v154();
     virtual void SetForbiddenCharacters(const CWideString& characters);   // slot 155 (+0x26c)
 };
-struct CEditBox : CComponent, CObserver {          // primary vtable 0x01246B8C, CObserver at +4
+class CEditBox : public CComponent, public CObserver { public:          // primary vtable 0x01246B8C, CObserver at +4
     unsigned char _pad08[0x17c - 0x08];
     bool DeleteAllOnKeyPress;                      // +0x17c
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual ~CFrontEndManager();
     virtual void ProcessEvent(long event);

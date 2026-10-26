@@ -9,12 +9,12 @@ unsigned char g_displaySwitch_13b86c6 = 0;
 static bool g_baseResult = false;
 static int g_updates = 0;
 static long g_reason = 0;
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned long m_thingFlags;
     bool WorldUpdate() { return g_baseResult; }
     void UpdateGraphicAppearance(long reason) { ++g_updates; g_reason = reason; }
 };
-struct CThingBuilding : CThingGameObject {
+class CThingBuilding : public CThingGameObject { public:
     bool WorldUpdate();
 };
 bool CThingBuilding::WorldUpdate()

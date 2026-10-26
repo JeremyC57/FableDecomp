@@ -16,25 +16,25 @@
 // Shape: STLport list loops over the sentinel's _M_next with an inline erase (next/prev locals, implicit element dtor,
 // free(node)); the player's character is an inline GetPItem accessor on the CPlayer intelligent pointer +0x34.
 #include <stdlib.h>
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                         // 0x0099B510
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x904];
     long          MaxScreenMessageLines;                    // +0x904 (descriptive)
 };
 struct CPlayerGuiDefPointer { CPlayerGuiDef* Object; };
 extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
@@ -47,42 +47,42 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 }
 unsigned long GetWorldFrame();                              // 0x0049D870
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_statusFlags;                            // +0x91 (bit 0: dead)
 };
 struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char           _pad00[0x34];
     CBaseIntelligentPointer PCharacter;                     // +0x34
     CThing* GetPlayerCharacter() const { return PCharacter.GetPItem(); }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                               // 0x00449970
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void Update(bool paused);                               // 0x004930D7
 };
-namespace NHeroInformationScreens { struct CManager { void Update(); }; }   // 0x0066E8EE
+namespace NHeroInformationScreens { class CManager { public: void Update(); }; }   // 0x0066E8EE
 namespace NPlayerGui {
-struct CDrawStatUpdates { void Update(); };                 // 0x0064A060
-struct CDrawAutoPickups { void Update(); };                 // 0x00643EB1
-struct CDrawPerceivers { void Update(); };                  // 0x0064A1AE
-struct CDrawDamage { void Update(); };                      // 0x00644CE2
-struct CDrawQuestInfo { void Update(); };                   // 0x0064A32E
-struct CDrawGuildSeal { void Update(); };                   // 0x0065196C
-struct CDrawQuickAccessIcons { void Update(); };            // 0x0064D6A8
-struct CDrawMeleeActionButtonEffects { void Update(); };    // 0x0064BE45
-struct CScriptScreenText {
+class CDrawStatUpdates { public: void Update(); };                 // 0x0064A060
+class CDrawAutoPickups { public: void Update(); };                 // 0x00643EB1
+class CDrawPerceivers { public: void Update(); };                  // 0x0064A1AE
+class CDrawDamage { public: void Update(); };                      // 0x00644CE2
+class CDrawQuestInfo { public: void Update(); };                   // 0x0064A32E
+class CDrawGuildSeal { public: void Update(); };                   // 0x0065196C
+class CDrawQuickAccessIcons { public: void Update(); };            // 0x0064D6A8
+class CDrawMeleeActionButtonEffects { public: void Update(); };    // 0x0064BE45
+class CScriptScreenText { public:
     CWideString   Text;                                     // +0x00
     float         VPos[2];                                  // +0x04
     unsigned long Colour;                                   // +0x0c
     CCharString   FontName;                                 // +0x10
     unsigned long FrameAdded;                               // +0x14
 };
-struct CScreenMessage {
+class CScreenMessage { public:
     CWideString Text;                                       // +0x00
     long        FramesToShowFor;                            // +0x04
     long        NumberOfCharactersShowing;                  // +0x08
@@ -108,13 +108,13 @@ template <class T> struct CList {                           // STLport list (sen
         return next;
     }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void*                                                   __vftable;
     void*                                                   World;                      // +0x04
     CPlayerManager*                                         PlayerManager;              // +0x08

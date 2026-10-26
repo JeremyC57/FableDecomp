@@ -11,13 +11,13 @@
 // straight into RotationAngle (`fstp [esi+0x14]`). The generator is fetched into a local in its own statement: written as one
 // chained expression VC7.1 hoists the `push 1.0f` above the two getter calls.
 // The engine header CTCBase.h is a flattened POD (`void* __vftable`), unusable as a polymorphic base: local model.
-struct CThing;
+class CThing;
 
 struct CRandomGenerator {
     float FloatRandom(float max);                       // 0x004978A0
 };
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     CRandomGenerator* GetRandomGenerator();             // 0x0049D810
 };
 
@@ -25,12 +25,12 @@ struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long reasons);           // 0x004BF9E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
 };
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -40,13 +40,13 @@ struct CTCBase {                                        // 0x0c bytes: vptr, Par
 
 namespace NGraphicAppearance {
 
-struct CPrimitive;
+class CPrimitive;
 
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     virtual void v00();
 };
 
-struct CTCGraphicAppearanceSprite : CTCBase, CAGraphicAppearanceComponent {
+class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceComponent { public:
     float       RotationAmountPerFrame;                 // +0x10
     float       RotationAngle;                          // +0x14
     float       OldRotationAngle;                       // +0x18

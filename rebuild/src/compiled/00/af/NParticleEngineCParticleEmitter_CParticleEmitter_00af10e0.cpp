@@ -15,14 +15,14 @@
 // PositionInterpolator +0x94, Transform/InverseTransform/EndTransform +0xb0, Name +0x140.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
 
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     virtual void v02();
@@ -30,7 +30,7 @@ struct CEnginePersistentPrimitiveBase {
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {      // intrusive counted pointer (count at +4 of the object)
+template <class T> class CIVCountedPointer { public:      // intrusive counted pointer (count at +4 of the object)
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -48,7 +48,7 @@ template <class T> struct CIVCountedPointer {      // intrusive counted pointer 
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
@@ -60,12 +60,12 @@ struct CEnginePrimitiveHandle : CBaseClass {       // vtable 0x0122F598, 8 bytes
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CBaseObject {                               // vtable 0x0129A7D8 (the intelligent-pointer target base)
+class CBaseObject { public:                               // vtable 0x0129A7D8 (the intelligent-pointer target base)
     virtual void v00();
     void* m_pLink;                                 // +0x04
     ~CBaseObject();                                // 0x0099A430

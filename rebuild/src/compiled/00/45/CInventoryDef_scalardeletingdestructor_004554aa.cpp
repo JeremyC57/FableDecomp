@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CInventoryDef;
+class CInventoryDef;
 extern void __fastcall CInventoryDef_dtor(CInventoryDef* def);
 extern void __cdecl op_delete(void* p);
 

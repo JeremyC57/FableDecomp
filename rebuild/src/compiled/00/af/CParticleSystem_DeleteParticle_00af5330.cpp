@@ -7,7 +7,7 @@
 // the STLport `erase(iterator)` is inlined: next/prev loaded, prev->next then next->prev stored, the node freed.
 // NoActiveParticles (+0x48, PDB +0x64) is decremented with a load/dec/store after the free.
 namespace NParticleEngine {
-struct CParticle {
+class CParticle { public:
     virtual ~CParticle();
 };
 }

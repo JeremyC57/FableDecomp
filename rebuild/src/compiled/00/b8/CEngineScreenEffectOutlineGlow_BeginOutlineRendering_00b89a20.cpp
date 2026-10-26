@@ -22,7 +22,7 @@ namespace N_0099a2d0 { struct CBase {
 
 struct IDirect3DSurface9;
 
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     IDirect3DSurface9* PD3DSurface;                // +0x04
     unsigned long AllocationSource;                // +0x08
     void* PAllocatedMemory;                        // +0x0c
@@ -32,7 +32,7 @@ struct CSurface {                                  // vtable 0x0122F84C, 0x10 by
     CSurface& operator=(const CSurface& other);    // 0x009F2E70
 };
 
-struct CRenderTarget : CBase {                     // vtable 0x0129C800
+class CRenderTarget : public CBase { public:                     // vtable 0x0129C800
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() {}
@@ -46,9 +46,9 @@ struct CRenderTarget : CBase {                     // vtable 0x0129C800
     void AttachTarget(const CSurface& target);     // 0x00A10E60
 };
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0xc];
     CSurface      CurrentRenderSurface;            // +0x0c
     CSurface      CurrentZBufferSurface;           // +0x1c
@@ -58,7 +58,7 @@ struct CDisplayManager {
 };
 extern CDisplayManager* g_pDisplayManager_01436e1c;   // 0x01436E1C
 
-struct CTexture {
+class CTexture { public:
     CSurface GetSurface(long level);               // 0x009F9E00
 };
 
@@ -71,7 +71,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -83,7 +83,7 @@ extern CRenderManagerCore* g_pRenderManagerCore;  // 0x01436E18
 
 struct SCaptureEntry { void* Block; unsigned long State; };
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     unsigned char _pad000[8];
     SCaptureEntry CaptureStack[0x500];             // +0x008
     unsigned long CaptureStackCount;               // +0x2808

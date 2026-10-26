@@ -1,7 +1,7 @@
 // behaviour copy of NPlayerGui::CMultiStatBar::AddStatUpdate: merge into an update of the same type or queue a new one,
 // seeding the colour / graphic / effect for that type when unset; mode 1 becomes 2
 #include <cstdio>
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CStatUpdate { int Type; long Change; CRGBColour Colour; };
 struct CUpdateNode { CUpdateNode* _M_next; CUpdateNode* _M_prev; CStatUpdate _M_data; };
 static CUpdateNode g_pool[8]; static int g_used = 0;

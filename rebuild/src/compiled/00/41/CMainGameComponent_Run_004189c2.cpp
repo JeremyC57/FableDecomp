@@ -22,7 +22,7 @@
 //   the frame start time is read into a local before the second clock call; Running is cleared before *next is stored.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CWideString;
+class CWideString;
 struct CRefCounted {
     virtual void v00();
     virtual void Delete();                         // slot 1
@@ -35,16 +35,16 @@ struct CRefPointer {
     __forceinline CRefPointer(const CRefPointer& other) : m_p(other.m_p) { if (m_p) m_p->AddRef(); }
     __forceinline ~CRefPointer() { if (m_p) m_p->Release(); }
 };
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x24];
     CRefPointer   m_24;                            // +0x24
     CRefPointer GetPointer() const { return m_24; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionIndex() const;            // 0x004FB150
     CRegion& GetRegion(long index);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06(); virtual void w07();
     virtual void w08(); virtual void w09(); virtual void w10(); virtual void w11(); virtual void w12();
     virtual CWorldMap* GetWorldMap();                 // slot 13 (+0x34)
@@ -59,23 +59,23 @@ struct CDisplayEngineObject {
     virtual void e48(); virtual void e49(); virtual void e50(); virtual void e51(); virtual void e52(); virtual void e53(); virtual void e54();
     virtual void SetOption(long option, float value);  // slot 55 (+0xDC)
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char         _pad00[0x2c];
     CDisplayEngineObject* Engine3D;                    // +0x2C
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     void ChangePresentationInterval(bool enable, long interval, bool apply);   // 0x009BFF10
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();  // 0x0040D2A0
     void Apply();                                  // 0x0040BC80
 };
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void ConsolidateFreeAreas();                   // 0x009F2660
     void ClearPerformanceStats();                  // 0x009F26B0
 };
 struct CSystemObjectF8 { void Update(); };         // 0x009F8C10 (empty)
-struct CSystemManager {
+class CSystemManager { public:
     long Update();                                 // 0x009A6460
     unsigned char    _pad00[0xf8];
     CSystemObjectF8* m_f8;                         // +0xF8
@@ -90,7 +90,7 @@ struct CSingleton44C6B0 {
 };
 struct CNetworkClient { void Start(); };           // 0x004AE9C0 (empty)
 struct CRoughFrameCounter { long _a, _b; void NewFrame(); };   // 0x009F8BA0
-struct CGameComponent;
+class CGameComponent;
 extern CDisplayManager* g_pDisplayManager;         // 0x013B8390
 extern CMemoryAllocator* g_pMemoryAllocator;       // 0x013CAA90
 extern bool g_LoadEventPackages;                   // 0x013B85F6
@@ -99,13 +99,13 @@ extern CWideString g_EventPackageFileName;         // 0x013B865C
 extern bool g_PresentationInterval;                // 0x013B8628
 extern CGameComponent* g_pLastComponent;           // 0x013B7D58
 
-struct CGameComponent {
+class CGameComponent { public:
     virtual void v00();
     long            _04;
     bool            Quit;                          // +0x08
     bool            Running;                       // +0x09
 };
-struct CMainGameComponent : CGameComponent {
+class CMainGameComponent : public CGameComponent { public:
     unsigned char      _pad0c[0x18];
     CWorld*            PWorld;                     // +0x24
     CDisplayEngine*    PDisplayEngine;             // +0x28

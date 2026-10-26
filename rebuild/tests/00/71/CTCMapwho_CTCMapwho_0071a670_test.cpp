@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCMapwho;
-struct CTCBase {
+class CThing { public: int id; };
+class CTCMapwho;
+class CTCBase { public:
     CThing* m_pThing; long m_baseWord;
     CTCBase(CThing* owner) : m_pThing(owner), m_baseWord(0) { }
     virtual ~CTCBase() { }
@@ -10,7 +10,7 @@ struct CMapwhoNode {
     CTCMapwho* PMapwho; CMapwhoNode* PNext; CMapwhoNode* PPrevious; void* PCell;
     CMapwhoNode() : PMapwho(0), PNext(0), PPrevious(0), PCell(0) { }
 };
-struct CTCMapwho : CTCBase {
+class CTCMapwho : public CTCBase { public:
     CMapwhoNode TLNode, TRNode, BLNode, BRNode; unsigned long SearchID; unsigned char InMapwho : 1; unsigned char Other : 7;
     CTCMapwho(CThing* owner) : CTCBase(owner), SearchID(0)
     {

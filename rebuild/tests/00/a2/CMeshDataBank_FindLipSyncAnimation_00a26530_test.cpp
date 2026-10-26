@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };

@@ -1,8 +1,8 @@
 // Behaviour test for CAIStateGroup_MeleeCombatNearby2::AttackEnemy (0x0093DDE0): model copy with scripted stubs.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CBrainOutput {
+class CThing { public: int id; };
+class CBrainOutput { public:
     unsigned long Types;
     long LookFlags;
     const CThing* LookAtThing;
@@ -14,15 +14,15 @@ struct CBrainOutput {
         LookFlags = lookFlags;
     }
 };
-struct CThingCreatureBase { int combatant; bool IsRegisteredCombatant() { return combatant != 0; } };
+class CThingCreatureBase { public: int combatant; bool IsRegisteredCombatant() { return combatant != 0; } };
 static int g_ready, g_inRange[16], g_ir;
-struct CCombatManager {
+class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase*, bool ready) { if (ready) ++g_ready; }
     bool Combat_CheckRingRangeToTarget(CThingCreatureBase*) { return g_inRange[g_ir++] != 0; }
 };
-struct CWorld { CCombatManager* CombatManager; CCombatManager* GetPCombatManager() const { return CombatManager; } };
+class CWorld { public: CCombatManager* CombatManager; CCombatManager* GetPCombatManager() const { return CombatManager; } };
 static int g_outputs, g_yields; static CBrainOutput g_last;
-struct CAIBrain {
+class CAIBrain { public:
     CThingCreatureBase* PCreature;
     void Yield() { ++g_yields; }
     void SetBrainOutput(const CBrainOutput& o) { ++g_outputs; g_last = o; }

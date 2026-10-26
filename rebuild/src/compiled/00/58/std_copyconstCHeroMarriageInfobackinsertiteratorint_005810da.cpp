@@ -16,7 +16,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CHeroMarriageInfo {                          // 0x18 bytes (Ego_r.pdb)
+class CHeroMarriageInfo { public:                          // 0x18 bytes (Ego_r.pdb)
     unsigned __int64 WifeUID;                       // +0x00
     unsigned __int64 MaritalHomeUID;                // +0x08
     long             State;                         // +0x10 EMarriageState

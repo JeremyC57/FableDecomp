@@ -1,8 +1,8 @@
 #include <cstdio>
 // behaviour test: AddTattoo(long) looks the def up by index; it clears every tattoo for a removes-all tattoo, otherwise erases the tattoos whose body
 // areas overlap the new one (area 8 needs overlapping or unset specific areas) and appends the item's def; marks the morph changed
-struct CTattooDef { bool RemovesAllTattoos; long CoversBodyAreaFlags; long SpecificCoversBodyAreaFlags; };
-struct CThingBaseDef {
+class CTattooDef { public: bool RemovesAllTattoos; long CoversBodyAreaFlags; long SpecificCoversBodyAreaFlags; };
+class CThingBaseDef { public:
     CTattooDef* tattoo; long refs;
     bool GetSubDef(CTattooDef** out) const { *out = tattoo; return tattoo != 0; }
 };
@@ -27,7 +27,7 @@ static bool TattoosOverlap(const CTattooDef* a, const CTattooDef* b)
 }
 static CThingBaseDef* g_defs[8];
 static bool GetDef(long index, CThingBaseDef** out) { if (index < 0 || index >= 8 || !g_defs[index]) return false; *out = g_defs[index]; return true; }
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     CVec Tattoos; long FrameTattoosChanged; bool Changed;
     void AddTattoo(long tattooDefIndex)
     {

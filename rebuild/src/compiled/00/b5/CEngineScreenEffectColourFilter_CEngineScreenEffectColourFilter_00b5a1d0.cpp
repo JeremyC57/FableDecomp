@@ -21,7 +21,7 @@
 // operator= releases through a named data pointer (`dec [ecx+N] ; jne`), the by-value temporary's destructor through the
 // pointee's inline Release() (`mov edi,[eax+N] ; add eax,N ; dec edi`).
 #pragma pack(push, 4)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -43,10 +43,10 @@ struct CVertexShaderData {
     long GetRefCount() const { return m_refCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) delete this; }
 };
-struct CShaderBase {                                    // vtable 0x0129A030
+class CShaderBase { public:                                    // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {                    // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:                    // vtable 0x0129B3D0
     CVertexShaderData* Data;
     CVertexShader();                                    // 0x00A62FB0
     CVertexShader(const CVertexShader& other);
@@ -67,7 +67,7 @@ struct CVertexShader : CShaderBase {                    // vtable 0x0129B3D0
             Data->Release();
     }
 };
-struct CPixelShader : CShaderBase {                     // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                     // vtable 0x0129A054
     CPixelShaderData* Data;
     CPixelShader();                                     // 0x00A5EC00
     CPixelShader(const CPixelShader& other);
@@ -89,7 +89,7 @@ struct CPixelShader : CShaderBase {                     // vtable 0x0129A054
             Data->Release();
     }
 };
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader GetPixelShader(const CCharString& name);     // 0x00A5D720
 };
@@ -103,31 +103,31 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;     // 0x01436E98
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                                       // 0x0099A2D0
 };
 struct IDirect3DSurface9;
-struct CSurface {                                       // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                       // vtable 0x0122F84C, 0x10 bytes
     virtual ~CSurface();
     IDirect3DSurface9* PSurface;
     void*              PTexture;
     long               Level;
     CSurface() : PSurface(0), PTexture(0) { }
 };
-struct CRenderTarget : CBaseClass {                     // vtable 0x0129C800, 0x24 bytes
+class CRenderTarget : public CBaseClass { public:                     // vtable 0x0129C800, 0x24 bytes
     CSurface RenderToSurface;                           // +0x04
     CSurface ZBufferSurface;                            // +0x14
     virtual ~CRenderTarget();
     CRenderTarget() { }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
-struct CEngineColourFilterSettings {                    // 0x20 bytes
+class CEngineColourFilterSettings { public:                    // 0x20 bytes
     float           Alpha;
     float           Saturation;
     float           Contrast;
@@ -135,12 +135,12 @@ struct CEngineColourFilterSettings {                    // 0x20 bytes
     CRGBFloatColour Tint;
     CEngineColourFilterSettings() : Alpha(0.0f), Saturation(1.0f), Contrast(0.0f), Brightness(0.0f), Tint(1.0f, 1.0f, 1.0f, 1.0f) { }
 };
-struct CTVertexColTex1 {                                // 0x18 bytes
+class CTVertexColTex1 { public:                                // 0x18 bytes
     float         X, Y, Z;
     unsigned long Colour;
     float         U, V;
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
 struct CEngineScreenEffectCaps {
     unsigned char _pad[0x60];
@@ -148,13 +148,13 @@ struct CEngineScreenEffectCaps {
     unsigned char ColourFilterSupported : 1;            // +0x60 bit 7
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void v00();
     void*         m_pOwnerLink;                         // +0x04
     bool          Enabled;                              // +0x08
     CEngineComponent();                                 // 0x00B59710
 };
-struct CEngineScreenEffectColourFilter : CEngineComponent {   // vtable 0x012A25CC
+class CEngineScreenEffectColourFilter : public CEngineComponent { public:   // vtable 0x012A25CC
     bool                        ForceColourFilter;      // +0x0c
     CEngineColourFilterSettings Settings;               // +0x10
     CRGBFloatColour             GrayRGBWeights;         // +0x30

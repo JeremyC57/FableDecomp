@@ -1,8 +1,8 @@
 // Behaviour test for 0x00917DB0: CleanWork::GetBuilding.
 #include <cstdio>
-struct CThingBuilding { int id; };
-struct CTCShop { unsigned char m_bClosedDown; bool open; bool IsOpeningHours() { return open; } };
-struct CTCShopKeeper { CTCShop* shop; CTCShop* GetShopTC() { return shop; } };
+class CThingBuilding { public: int id; };
+class CTCShop { public: unsigned char m_bClosedDown; bool open; bool IsOpeningHours() { return open; } };
+class CTCShopKeeper { public: CTCShop* shop; CTCShop* GetShopTC() { return shop; } };
 struct CCreature { CTCShopKeeper* keeper; CThingBuilding* building;
     bool GetInterface(CTCShopKeeper** out, long t) { if (t == 0x90 && keeper) { *out = keeper; return true; } return false; }
     CThingBuilding* GetWorkBuilding() { return building; } };

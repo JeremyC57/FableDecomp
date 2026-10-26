@@ -17,7 +17,7 @@ struct CMember_004e0a05 {
     CMember_004e0a05();                              // 0x004E0A05
 };
 
-struct CFlammableDef : CBase_0044c0c0 {
+class CFlammableDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x34];
     CMember_004e0a05 m_member;                       // +0x38
     virtual void v00();

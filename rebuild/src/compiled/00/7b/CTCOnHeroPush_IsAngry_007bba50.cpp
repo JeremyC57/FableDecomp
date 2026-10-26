@@ -10,7 +10,7 @@ struct CTCBase_007bba50 {
     unsigned char _pad04[8];
 };
 
-struct CTCOnHeroPush : CTCBase_007bba50 {
+class CTCOnHeroPush : public CTCBase_007bba50 { public:
     float DistPushed;                               // +0x0c
     float PushDir[3];                               // +0x10
     long  FrameSincePushed;                         // +0x1c

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitive2DClockSprite {
+class CEngineInternalPrimitive2DClockSprite {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x44];                          // +0x04 flattened base-class subobject(s)
     float         ClipBox_TLX;                               // +0x48 C2DBoxF::TLX

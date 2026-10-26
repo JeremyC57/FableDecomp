@@ -29,7 +29,7 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data);   // 0x009F18F0
     bool ReadBool() { bool value; Read(1, &value); return value == true; }   // inline (descriptive name)
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -39,12 +39,12 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x220];
     bool          UsingFreeCamera;                 // +0x220 (PDB +0x228)
 };
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
     void EAUseFreeCamera(const CGameEvent* event);
 };

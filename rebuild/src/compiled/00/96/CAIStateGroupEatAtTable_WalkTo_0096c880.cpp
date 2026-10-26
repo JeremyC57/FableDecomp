@@ -11,9 +11,9 @@
 // frame words); the turn speed literal is 0.0027777f (not 1.0f/360.0f); the look-at runs twice; `return r == 2;` (full-register bool).
 // Leaf: WalkTo@CAIStateGroup_EatAtTable
 #include <math.h>
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -23,22 +23,22 @@ struct C3DVector {
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     long GetMovementMode();                        // 0x00662000
     const C3DVector& GetPosition_004c73d0() const;          // 0x004C73D0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                              // +0x04
     unsigned char _pad[0x0c];                      // +0x08..+0x13

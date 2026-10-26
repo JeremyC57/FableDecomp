@@ -5,9 +5,9 @@
 // Layout: retail CThing holds PhysicsTC at +0x60 (the PDB's +0x70 less the retail CThing's 0x10 narrower head, as in the
 // landed CThing GetInterface sources: bitset +0x20, interface map +0x44).
 // Shape: an absent component returns the constant (`xor al,al`); the pointer test `!= 0` folds to `neg ; sbb ; neg`.
-struct CPhysicsMesh;
+class CPhysicsMesh;
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -30,12 +30,12 @@ struct CTCPhysicsBase {
     virtual CPhysicsMesh* GetPhysicsMesh();         // slot 93 (+0x174)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_HasPhysicsMesh {
+class CThingFilter_HasPhysicsMesh { public:
     bool operator()(CThing* thing) const;
 };
 

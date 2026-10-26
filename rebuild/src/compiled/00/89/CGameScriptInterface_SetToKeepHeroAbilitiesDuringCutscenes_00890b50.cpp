@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes @ 0x00890b50
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CMainGameComponent {
+class CMainGameComponent { public:
     char pad[0x1c];
     void* PPlayerManager;      // +0x1c
 };

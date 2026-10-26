@@ -16,7 +16,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                         // +0
     SCountBlock* m_pCount;                          // +4
     CCountedPointer& operator=(T* object)           // only used with null here
@@ -34,7 +34,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CMeshDataBank;
+class CMeshDataBank;
 
 struct CMeshDataBankInfo {                          // 12 bytes
     long                           m_id;            // +0
@@ -61,7 +61,7 @@ struct CMeshBankListener {                          // second base
     virtual void v00();
 };
 
-struct CMeshBankManager : CBase, CMeshBankListener {
+class CMeshBankManager : public CBase, public CMeshBankListener { public:
     CBankInfoList MeshDataBanks;                    // +0x08
     virtual void v00();
     virtual ~CMeshBankManager();

@@ -1,4 +1,4 @@
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     int f0;
     int PercentageChance;
     int f8;

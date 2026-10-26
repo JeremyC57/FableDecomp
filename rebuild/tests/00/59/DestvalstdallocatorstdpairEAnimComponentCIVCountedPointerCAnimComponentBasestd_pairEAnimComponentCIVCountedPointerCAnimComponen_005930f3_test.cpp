@@ -2,7 +2,7 @@
 
 static int g_released = 0;
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void slot0() {}
     virtual void Release() { g_released = 1; }
     int refCount;

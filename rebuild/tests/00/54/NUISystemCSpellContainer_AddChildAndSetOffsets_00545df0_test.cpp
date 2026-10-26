@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 #include <map>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CUIState { C2DVector Position; };
 struct CComponent {
     std::map<unsigned long, CUIState> States; std::vector<CComponent*> Children;

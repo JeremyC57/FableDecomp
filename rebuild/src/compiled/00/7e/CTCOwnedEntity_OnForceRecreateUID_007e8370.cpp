@@ -4,7 +4,7 @@
 // Retail CTCOwnedEntity (PDB): POwner at the unaligned +0x0d (pack(1)), OwnerUID +0x18; the thing's UID at +0x18.
 // Shape: the landed IS_THING_ALIVE idiom (two fetches, nested ifs) with &POwner held in edi, then a third fetch and the
 // two-word copy.
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UID;                           // +0x18
     unsigned char    _pad20[0x91 - 0x20];
@@ -33,7 +33,7 @@ struct CTCBase_007e8370 {
     unsigned char _pad08[4];
 };
 
-struct CTCOwnedEntity : CTCBase_007e8370 {
+class CTCOwnedEntity : public CTCBase_007e8370 { public:
     bool                    SwitchableNavigationTCAdded;   // +0x0c
     CBaseIntelligentPointer POwner;                 // +0x0d CIntelligentPointer<CThing>
     unsigned char           _pad15[3];

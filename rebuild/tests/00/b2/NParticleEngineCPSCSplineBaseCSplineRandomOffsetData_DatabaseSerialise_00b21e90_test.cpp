@@ -10,13 +10,13 @@ typedef long long __int64;
 // behaviour test: CSplineRandomOffsetData::DatabaseSerialise transfers flags, count, indexed limit/speed names and snapshots/clears the previous spline
 
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CCharString {
+class CCharString { public:
     char buf[64];
     CCharString(const char* text, long length = -1) { (void)length; std::strcpy(buf, text); }
     ~CCharString() {}
@@ -25,7 +25,7 @@ struct CCharString {
 CCharString operator+(const CCharString& left, const CCharString& right) { CCharString r(left.buf); std::strcat(r.buf, right.buf); return r; }
 CCharString GFIntToCharString(long value) { char t[16]; std::sprintf(t, "%ld", value); return CCharString(t); }
 
-struct CPersistContext {
+class CPersistContext { public:
     char names[16][32]; int count; long loadCount;
     void Note(const char* n) { std::strcpy(names[count++], n); }
     void Transfer(const char* name, bool& value, const bool& defaultValue) { Note(name); if (!defaultValue) value = !value; }
@@ -33,7 +33,7 @@ struct CPersistContext {
     void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue) { Note(name); value.X = (float)count + defaultValue.X; }
 };
 
-template <class T> struct CArray {              // STLport vector<T> (12 bytes in retail)
+template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -61,7 +61,7 @@ template <class T> struct CArray {              // STLport vector<T> (12 bytes i
     __forceinline void clear() { erase(begin(), end()); }
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;    // +0x00
     float             Tension;          // +0x0C
     bool              EndPointsConnected; // +0x10
@@ -74,8 +74,8 @@ __forceinline void SaveValue(CPersistContext& context, const char* name, T& valu
 }
 
 namespace NParticleEngine {
-struct CPSCSplineBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;          // +0x00
         CCardinalSpline   ThisSpline;             // +0x04
         CCardinalSpline   PreviousSpline;         // +0x18

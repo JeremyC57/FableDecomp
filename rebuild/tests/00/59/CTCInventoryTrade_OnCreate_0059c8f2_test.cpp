@@ -4,8 +4,8 @@ static int g_destroyed = 0;
 struct CDefBase { long m_refCount; void Destroy() { ++g_destroyed; } };
 struct CWeaponsDef : CDefBase { long InventoryDefIndex; };
 static CWeaponsDef g_sub;
-struct CDefClassBase : CDefBase { bool GetSubDef(CWeaponsDef** out) { *out = &g_sub; ++g_sub.m_refCount; return true; } };
-struct CThing { CDefClassBase* PDef; };
+class CDefClassBase : public CDefBase { public: bool GetSubDef(CWeaponsDef** out) { *out = &g_sub; ++g_sub.m_refCount; return true; } };
+class CThing { public: CDefClassBase* PDef; };
 static int g_registered = 0;
 struct CInv {
     CThing* ParentThing; long pdef; bool baseCreated; long CategoryCount, ItemSellCount, ItemBuyCount;

@@ -1,5 +1,5 @@
 struct CSub { void Copy(const CSub* o); };
-struct CTextureReplacementDef {
+class CTextureReplacementDef { public:
     char base[0x28];
     CSub sub;
     void BaseCopy(const CTextureReplacementDef* o);

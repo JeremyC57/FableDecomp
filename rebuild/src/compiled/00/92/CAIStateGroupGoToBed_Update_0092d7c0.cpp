@@ -11,7 +11,7 @@
 // Layout: Ego_r.pdb CAIStateGroup_GoToBed PBed +0x14, BedPos +0x3c, Rhset +0x48 (Up, Forward +0x54); CTCSleep
 // IsReadyToSleep +0x0c.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -20,42 +20,42 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     float Magnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CAnimFilterBase {                               // vtable 0x0122FFCC
+class CAnimFilterBase { public:                               // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
     virtual void v02();
 };
 struct CAnimFilterAnyGroup : CAnimFilterBase {         // vtable 0x0127261C
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);              // 0x0040F020
 };
-struct CTCSleep {                                      // interface 0xd4
+class CTCSleep { public:                                      // interface 0xd4
     unsigned char _pad0[0x0c];
     bool IsReadyToSleep;                               // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                    // +0x20
     CInterfaceMap m_interfaces;                        // +0x44
@@ -74,18 +74,18 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x00662C70
     long GetCreatureType() const;                      // 0x00662000
     const C3DVector& GetPosition() const;              // 0x006A4D00
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                            // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
@@ -97,12 +97,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                     // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];

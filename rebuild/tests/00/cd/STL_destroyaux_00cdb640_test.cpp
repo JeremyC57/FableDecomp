@@ -5,7 +5,7 @@
 static int g_live = 0;
 static int g_order[64];
 static int g_count = 0;
-struct CCharString {                            // stands in for the engine string (dtor 0x0099EAE0)
+class CCharString { public:                            // stands in for the engine string (dtor 0x0099EAE0)
     int m_tag;
     explicit CCharString(int tag) : m_tag(tag) { ++g_live; }
     ~CCharString() { --g_live; if (g_count < 64) g_order[g_count++] = m_tag; }

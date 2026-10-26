@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BriarRoseConcentrateOutof {
+class CCreatureAction_BriarRoseConcentrateOutof { public:
     void* vftable;
     int destroyed;
 };

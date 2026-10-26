@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngine { unsigned char pad[0x10]; unsigned int flags; };
+class CEngine { public: unsigned char pad[0x10]; unsigned int flags; };
 
 static bool model(CEngine* engine)
 {

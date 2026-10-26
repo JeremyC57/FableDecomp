@@ -10,14 +10,14 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
     bool ReadBool() { bool value; Read(1, &value); return value; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
     unsigned char EndPos;
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, EndPos); buffer.Length = EndPos; return EndPos; }
 };
-struct CWorld {
+class CWorld { public:
     bool Paused;
     int  Calls;
     void SetAsPaused(bool paused) { ++Calls; Paused = paused; }

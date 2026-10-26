@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour model of 0x006E5600: CScriptConversation::IsValid -- non-empty and every person alive.
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static bool IS_THING_ALIVE(const CIntelligentPointer& p) { if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_flags91 & 1)) return true; } return false; }
-struct CScriptConversation {
+class CScriptConversation { public:
     CIntelligentPointer* m_pFirst; CIntelligentPointer* m_pLast;
     bool IsValid() const
     {

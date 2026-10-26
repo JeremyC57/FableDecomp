@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_log[64]; static int g_n = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long v) { g_n += std::sprintf(g_log + g_n, "U%lu;", v); }
     void WriteBool(bool v) { g_n += std::sprintf(g_log + g_n, "B%d;", v ? 1 : 0); }
     void WriteByte(unsigned char v) { g_n += std::sprintf(g_log + g_n, "C%u;", (unsigned)v); }

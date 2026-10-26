@@ -1,5 +1,5 @@
-struct CGameEvent
-{
+class CGameEvent
+{ public:
     long type;
     unsigned char player;
     unsigned char data[0x20];
@@ -8,16 +8,16 @@ struct CGameEvent
     unsigned char replacement;
     void Append(long size, const void* source);
 };
-struct CGameEventPackage
-{
+class CGameEventPackage
+{ public:
     unsigned long sequence;
     unsigned long eventCount;
     CGameEvent events[40];
     void AddEvent(CGameEvent* event);
     void Clear();
 };
-struct CGameEventPackageSet
-{
+class CGameEventPackageSet
+{ public:
     unsigned long packageCount;
     CGameEventPackage packages[50];
     void Initialise();

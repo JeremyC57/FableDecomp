@@ -10,16 +10,16 @@
 // reached through the CDefPointer object pointer at +0x54 and its trigger type (+0x34) compared with 1.
 // Layout: CTCTrapBase.h is the PDB layout (PTrapDef_Object +0x60, Active +0x64); the retail constructor 0x0078918D
 // shows them at +0x54 / +0x58 (12-byte STLport vectors), so a local model is used.
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad[0x34];
     long          TriggerType;              // +0x34 (1 = on proximity)
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     void*         __vftable;                // +0x00
     unsigned char _pad_0x04[0x50];
     CTrapDef*     PTrapDef_Object;          // +0x54 CDefPointer<const CTrapDef>::Object

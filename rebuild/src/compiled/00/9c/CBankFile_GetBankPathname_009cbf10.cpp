@@ -8,7 +8,7 @@
 // the BankFile counted pointer, returning CWideString through the caller's hidden result pointer
 // (which VC7.1 forwards straight to the callee and hands back in eax).
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;        // +0x00
     CWideString();
     ~CWideString();

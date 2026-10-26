@@ -5,26 +5,26 @@
 // (PDB +0x44; the Ego_r layout is 4 bytes longer before it); C3DAnimationSequence starts with
 // its C3DAnimationSequenceData pointer (PDB). C3DKeyframe is {CQuaternion Rotation, C4DVector
 // Position +0x10, C4DVector Scaling} = 0x30 bytes, the stack frame. ret 8 = hidden pointer + time.
-struct C3DKeyframe {
+class C3DKeyframe { public:
     float Rotation[4];                     // +0 CQuaternion
     float Position[4];                     // +0x10 C4DVector X, Y, Z, W
     float Scaling[4];                      // +0x20 C4DVector
 };
 
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     void GetKeyframeInterpolate(C3DKeyframe* keyframe, float time);   // 0x00A4DEA0
 };
 
-struct C3DAnimationSequence {
+class C3DAnimationSequence { public:
     C3DAnimationSequenceData* Data;        // +0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct C3DAnimation2 {
+class C3DAnimation2 { public:
     unsigned char _pad[0x40];
     C3DAnimationSequence* MovementTrack;   // +0x40 CCountedPointer<C3DAnimationSequence>::m_pObject
     C3DVector GetMovementOffsetAtTime(float time);

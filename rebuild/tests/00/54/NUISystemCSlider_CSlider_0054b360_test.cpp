@@ -3,7 +3,7 @@
 // behaviour test: CSlider::~CSlider re-applies the start value through every action only when the value moved,
 // deletes both action lists, then destroys the action range and the sprite base
 static const float g_SliderValueEpsilon = 0.001f;
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     bool operator==(const C2DVector& v) const
     {

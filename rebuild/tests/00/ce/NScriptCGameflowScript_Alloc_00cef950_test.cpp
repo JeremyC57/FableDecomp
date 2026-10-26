@@ -5,7 +5,7 @@
 class CGameScriptInterfaceBase { public: int id; };
 class CScriptDataBase { public: int id; };
 static int g_scriptBaseCtors = 0;
-struct CScriptBase {
+class CScriptBase { public:
     CScriptBase() { ++g_scriptBaseCtors; }
     virtual ~CScriptBase() { }
 };

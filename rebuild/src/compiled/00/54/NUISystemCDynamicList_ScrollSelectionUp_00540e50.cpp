@@ -7,7 +7,7 @@
 // pointer is reloaded for every access); the decremented index is stored then reused from its register for the second lookup.
 namespace NUISystem {
 
-struct CComponent {                              // a scrolling child: vtable slot 48 (+0xc0) sets its draw state
+class CComponent { public:                              // a scrolling child: vtable slot 48 (+0xc0) sets its draw state
     virtual void c000();
     virtual void c001();
     virtual void c002();
@@ -224,11 +224,11 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void ResetPositions();                 // slot 142 (+0x238; CDynamicList's override @ 0x005416B0)
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {   // retail 0x15c bytes
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:   // retail 0x15c bytes
     unsigned char _body[0x15c - 0x1c];           // +0x1c .. +0x15c
 };
 
-struct CDynamicList : CChangingStateComponent {  // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
+class CDynamicList : public CChangingStateComponent { public:  // vtables 0x01246E44 / 0x01246E20 / 0x01246E18
     long BInitialised;                           // +0x15c (PDB +0x18c)
     float PositionOffset[2];                     // +0x160 (C2DVector)
     long TopIndex;                               // +0x168 (PDB +0x198)

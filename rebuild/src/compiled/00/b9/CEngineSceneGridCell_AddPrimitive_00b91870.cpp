@@ -7,15 +7,15 @@ struct CSceneGridOwner_00b91710 {
     void InvalidateAll();                          // 0x00B91710
 };
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char          _pad[0x20];
     CEngineSceneGridCell*  m_pCell;                // +0x20
     void AddToList(void* list);                    // 0x00B8FDF0
 };
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CSceneGridOwner_00b91710* m_pOwner;            // +0x00
     unsigned char             m_list[0x30];        // +0x04 .. +0x34 (the primitive list head)
     long                      m_count;             // +0x34

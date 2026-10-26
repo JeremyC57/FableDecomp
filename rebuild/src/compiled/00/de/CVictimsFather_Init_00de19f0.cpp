@@ -8,10 +8,10 @@
 // (CBaseClass 0x01231710 then CScriptThing 0x01238C8C), the thing pointer and the shared count block whose
 // counter is incremented when present (the landed 0x00D50BC0 model); `lea edi,[esi+8]` is the member's
 // address shared by the last two calls. Layout: {vptr, interface +4, CScriptThing m_father +8, flags +0x1c/+0x1d}.
-struct CThing;
+class CThing;
 struct SCount { long m_references; };
 
-struct CBaseClass {                            // vtable 0x01231710
+class CBaseClass { public:                            // vtable 0x01231710
     virtual void v00();
     CBaseClass() { }
 };
@@ -21,13 +21,13 @@ struct CCPPointerImp {                         // CCPPointer<CScriptThingImp>: D
     SCount* Info;
     CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
 };
-struct CScriptThing : CBaseClass {             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h: PImp_Data +4, PImp_Info +8)
+class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h: PImp_Data +4, PImp_Info +8)
     virtual void v00();
     CCPPointerImp PImp;                        // +4
     // the copy constructor is the compiler-generated memberwise one
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();

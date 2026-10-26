@@ -14,17 +14,17 @@
 // re-reads the list head (end()) through the retail list iterator on every pass; the peeled first test
 // jumps straight to the restore (found is known false there), the found flag rides in cl, and the
 // saved start position in ebx.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);           // 0x0099EFB0
     const CCharString& operator=(const char* text);             // 0x0099EFE0
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();                                         // vtable 0x01231710
 };
 
-struct CConsoleCommandLine : CBaseClass {                       // vtable 0x0129C400 (16 bytes)
+class CConsoleCommandLine : public CBaseClass { public:                       // vtable 0x0129C400 (16 bytes)
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c

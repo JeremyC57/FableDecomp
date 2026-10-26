@@ -8,7 +8,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is CSubtitledMessage (its landed operator= @ 0x00719E80; catalog calls that body a copy constructor).
-struct CSubtitledMessage {                       // 68 bytes (0x44); its own assignment copies the body
+class CSubtitledMessage { public:                       // 68 bytes (0x44); its own assignment copies the body
     unsigned char _body[0x44];
     CSubtitledMessage& operator=(const CSubtitledMessage& other);   // 0x00719E80
 };

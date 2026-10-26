@@ -1,14 +1,14 @@
 // Behaviour test for CTonyTestScriptsScript::AddQuestsToGuild (0x00EFF1C0): seven quest cards, card first, quest second.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* t, long = -1) : p(t) {}
 };
 static const char* g_card[8];
 static const char* g_quest[8];
 static int g_n = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void AddQuestCard(const CCharString& card, const CCharString& quest, bool a, bool b)
     {
         if (a || b) g_n = 100;

@@ -9,7 +9,7 @@
 //         IncidentalAttractors follows at +0x28 (the base DoAttractToPoint walks [state+0x28]; NCameraModes::CBase::AddAttractorGoTo
 //         0x0084E1A0 pushes onto [mode+0x78] = GoTo +0x24). The list node is {next, prev, pair} (data at +8).
 // Shape: front() = _M_node->_M_next->_M_data; the result built in the hidden slot by a memberwise user copy ctor (the implicit copy uses an extra esi temp).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
@@ -28,7 +28,7 @@ struct CAttractorList {                              // STLport list<pair<C3DVec
     SAttractor& front() { return _M_node->_M_next->_M_data; }
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector      Position;                         // +0x00
     C3DVector      Velocity;                         // +0x0c
     C3DVector      Acceleration;                     // +0x18
@@ -36,13 +36,13 @@ struct CPhysicsState {
     CAttractorList IncidentalAttractors;             // +0x28
     bool           CullPhysics;                      // +0x2c
 };
-struct CPhysicsForceModelBase {                      // vtable 0x0127592C
+class CPhysicsForceModelBase { public:                      // vtable 0x0127592C
     virtual void v00(); virtual void v01(); virtual C3DVector v02(); virtual C3DVector v03();
     virtual C3DVector v04(); virtual C3DVector v05();
     virtual C3DVector DoAttractToPoint();            // slot 6 (+0x18)
     CPhysicsState* LinkedState;                      // +0x04
 };
-struct CPhysicsForceModelRigid : CPhysicsForceModelBase {   // vtable 0x01276AC8
+class CPhysicsForceModelRigid : public CPhysicsForceModelBase { public:   // vtable 0x01276AC8
     virtual C3DVector DoAttractToPoint();
 };
 C3DVector CPhysicsForceModelRigid::DoAttractToPoint()

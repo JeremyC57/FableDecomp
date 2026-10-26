@@ -2,7 +2,7 @@
 // behaviour test: ReleaseItems does nothing without items; otherwise each item is created 0.1 above the container, launched by
 // the popout vector for (index, perRing = min(count, 8), ring) where index wraps to 0 and ring advances after perRing items;
 // all created objects then ignore each other and the item list is cleared
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CCall { int def; C3DVector pos; int index, perRing, ring; };
 static CCall g_calls[32]; static int g_n = 0; static int g_ignoreCalls = 0; static int g_ignoreCount = 0;
 struct CContainer {

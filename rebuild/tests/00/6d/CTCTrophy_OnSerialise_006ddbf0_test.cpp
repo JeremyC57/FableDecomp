@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     bool loading; int calls; const char* lastName;
     void Transfer(const char* name, long& value, const long& def) { ++calls; lastName = name; if (loading) value = def; }
     void Transfer(const char* name, bool& value, const bool& def) { ++calls; lastName = name; if (loading) value = def; }
 };
-struct CTCTrophy {
+class CTCTrophy { public:
     long BestWitnessesAheadToDate; bool Mountable;
     virtual ~CTCTrophy() {}
     virtual void OnSerialise(CPersistContext& context, bool)

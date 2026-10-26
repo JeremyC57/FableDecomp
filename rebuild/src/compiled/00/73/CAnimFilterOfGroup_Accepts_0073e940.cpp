@@ -9,14 +9,14 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_defStringTable;                // 0x013CA828
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 struct CAnimInfo {
     unsigned char _pad[8];
     long GroupName;                                      // +8: def string index of the anim's group
 };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual long Accepts(const CAnimInfo& anim);
     CCharString Group;                                   // +4
     unsigned long GroupCRC;                              // +8

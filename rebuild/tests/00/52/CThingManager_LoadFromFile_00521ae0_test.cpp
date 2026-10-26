@@ -22,10 +22,10 @@
 // Layout: CThingManager +0x80 load kind, +0x9a / +0x9b loading flags (descriptive); CCountedPointer {object, data}
 //   with data {count, __fastcall deleter, object}.
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
-struct CAFile;
-struct CASuspendableProcess;
-struct CThing;
-struct CCharString {
+class CAFile;
+class CASuspendableProcess;
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString();                                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
@@ -40,7 +40,7 @@ struct CCountedData {
     void (__fastcall* Deleter)(void* object);              // +0x04
     void* Object;                                          // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*            Object;
     CCountedData* Data;
     ~CCountedPointer()
@@ -89,7 +89,7 @@ __declspec(noinline) void CCharStringSet::_M_erase(SSetNode* node)
 }
 #pragma auto_inline(on)
 struct CThingVector { CThing** _M_start; CThing** _M_finish; CThing** _M_end_of_storage; };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00() { }
     ~CBaseClass();                                         // 0x0099A2E0
 };
@@ -97,7 +97,7 @@ struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                           // 0x004046B0
 };
-struct CStringParser : CBaseClass {                        // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                        // retail 0x28 bytes
     char*                    String;                       // +0x04
     unsigned long            BaseLineOffset;               // +0x08
     CCharString              Filename;                     // +0x0c
@@ -111,7 +111,7 @@ struct CStringParser : CBaseClass {                        // retail 0x28 bytes
     float ReadAsFloat();                                   // 0x009BA650
 };
 extern const char g_emptyString_0122d70e[];               // 0x0122D70E ""
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x80];
     long          LoadKind;                                // +0x80
     unsigned char _pad84[0x9a - 0x84];

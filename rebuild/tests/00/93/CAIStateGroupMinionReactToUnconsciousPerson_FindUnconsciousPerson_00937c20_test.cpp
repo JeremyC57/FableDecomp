@@ -3,9 +3,9 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector { float x, y, z; };
-struct C2DBoxI { long x0, y0, x1, y1; C2DBoxI(long a, long b, long c, long d) : x0(a), y0(b), x1(c), y1(d) { } };
-struct CThing { long long UID; C3DVector pos; bool unconscious, ally, aware, discovered; };
+class C3DVector { public: float x, y, z; };
+class C2DBoxI { public: long x0, y0, x1, y1; C2DBoxI(long a, long b, long c, long d) : x0(a), y0(b), x1(c), y1(d) { } };
+class CThing { public: long long UID; C3DVector pos; bool unconscious, ally, aware, discovered; };
 static long g_frame = 0;
 static long g_framesPerSecond = 30;
 static std::vector<CThing*> g_things;

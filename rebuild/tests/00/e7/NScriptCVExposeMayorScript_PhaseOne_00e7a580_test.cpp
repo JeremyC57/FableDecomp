@@ -6,7 +6,7 @@ static CV_ExposeMayorScript* g_s = 0;
 static int g_frames = 0, g_setAt = 0, g_termAt = -1, g_termCalls = 0;
 static void OnFrame();
 
-struct CGameScriptInterface { void NewScriptFrame() const { ++g_frames; OnFrame(); } };
+class CGameScriptInterface { public: void NewScriptFrame() const { ++g_frames; OnFrame(); } };
 
 struct CV_ExposeMayorScript {
     CGameScriptInterface* Game;

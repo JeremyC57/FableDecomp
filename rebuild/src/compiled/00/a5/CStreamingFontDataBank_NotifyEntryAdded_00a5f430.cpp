@@ -5,17 +5,17 @@
 // Shape: the CShaderDataBank::NotifyEntryAdded twin (0x00A623D0) with the 0x18-byte entry constructor inlined (base ctor,
 //   vtable 0x0129D5B4, zeroed CCountedPointer<CFontBank>, then bank/index/type). Retail Fonts +0x178 (base 0x164 + StateBlock).
 // Leaf: ?NotifyEntryAdded@CStreamingFontDataBank
-template <class T> struct CArray;
+template <class T> class CArray;
 class CStreamingFontDataBank;
 struct __true_type { __true_type() { } };
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
 };
-struct CCPPointerInfo;
-struct CFontBank;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+class CFontBank;
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
@@ -29,7 +29,7 @@ public:
         : Bank(bank), Index(index), DataType(type) { }
     virtual bool IsLoaded() const;                          // slot 1 (0x00A5F220)
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

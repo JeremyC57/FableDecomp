@@ -3,9 +3,9 @@
 #include <cstdio>
 #include <map>
 
-struct CThingGameObject { int Dummy; };
-struct CHitParameters
-{
+class CThingGameObject { public: int Dummy; };
+class CHitParameters
+{ public:
     std::map<int, float> DamageMap;
     float GetDamageToThing(const CThingGameObject&) const
     {

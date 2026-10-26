@@ -8,14 +8,14 @@
 // Shape: the checked mode-manager lookup (component left in eax), the UNCHECKED tentacle lookup in an inline accessor (absent
 // arm reads the shared key word, which the block-scoped name string reuses afterwards), the tentacle kept in esi for two calls.
 // Layout: owner CIntelligentPointer +8 (CCombatActionBase is 0x114 in retail).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -34,7 +34,7 @@ struct CThing {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -46,15 +46,15 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     void RemoveObstruction();                   // 0x007F0810
     void SetIsStriking(bool striking);          // 0x007F0770
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];          // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -68,7 +68,7 @@ struct CCombatActionBase {
     }
 };
 
-struct CCreatureAction_TentacleStrikeOutOf : CCombatActionBase {
+class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

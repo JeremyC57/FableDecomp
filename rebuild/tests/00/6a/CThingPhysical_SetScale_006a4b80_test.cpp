@@ -3,7 +3,7 @@
 struct Sub64;
 extern void __fastcall sub_4bfa50(Sub64* p, int edx, float scale);
 
-struct CThingPhysical {
+class CThingPhysical { public:
     char pad[0x64];
     Sub64* f64;      // +0x64
     char pad2[0x9c - 0x64 - 4];

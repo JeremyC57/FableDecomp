@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour of CThing::OnDie (0x004C7D50): AddingTCsPermitted is cleared while every component's OnDie runs
 // (for_each over the component map), then set again; the neighbouring flag bits are untouched.
-struct CTCBase {
+class CTCBase { public:
     int m_died; bool m_addingAllowedWhenCalled;
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing;
+class CThing;
 static CThing* g_thing = 0;
 
-struct CThing {
+class CThing { public:
     unsigned char   m_pad00[0x44];
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
@@ -24,7 +24,7 @@ struct CThing {
     void OnDie();
 };
 
-struct CCallOnDie {
+class CCallOnDie { public:
     void operator()(SComponentPair& p) const { p.second->m_died++; p.second->m_addingAllowedWhenCalled = g_thing->AddingTCsPermitted != 0; }
 };
 

@@ -16,7 +16,7 @@ typedef long S32;
 typedef int S32;
 #endif
 #pragma pack(push,1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __vftable;
     unsigned char DefClassBase[0x21]; // donor named flattened base, actual bytes4..24
     S32 InstantiationName_TablePos;
@@ -25,13 +25,13 @@ struct CParentDefClassBase {
 };
 #pragma pack(pop)
 
-struct COpinionTransientOffset;
+class COpinionTransientOffset;
 struct OpinionOffsetNode;
 struct OpinionOffsetList { OpinionOffsetNode* Head; OpinionOffsetList& operator=(const OpinionOffsetList&); }; // 00471b73
-struct COpinionDeedReactionDef; struct CCharString;
+class COpinionDeedReactionDef; class CCharString;
 struct ReactionVector { COpinionDeedReactionDef *Start,*Finish,*End; ReactionVector& operator=(const ReactionVector&); }; // 00471cc5
 struct WarningVector { CCharString *Start,*Finish,*End; WarningVector& operator=(const WarningVector&); }; // 00432ee9
-struct COpinionDeedEffectsDef : CParentDefClassBase {
+class COpinionDeedEffectsDef : public CParentDefClassBase { public:
     S32 KnowledgeLifeInSeconds,MinimumSecondsBetweenPostings,MinimumSecondsBetweenEffectsForIndividual;
     float PreReactionDelayIgnoreOnDelay; OpinionOffsetList Effects;
     S32 ReactionPriority; ReactionVector Reaction;

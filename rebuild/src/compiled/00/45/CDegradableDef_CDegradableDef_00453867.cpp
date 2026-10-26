@@ -22,7 +22,7 @@ struct SZeroed {                        // the zeroed block is one embedded memb
     SZeroed() : m_00(0), m_01(0), m_02(0) { }           // inlined into every constructor that embeds it
 };
 
-struct CDegradableDef : CBase_0044c0c0 {
+class CDegradableDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x2c];
     SZeroed m_data;                        // +0x30
     virtual void v00();

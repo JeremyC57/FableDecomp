@@ -8,7 +8,7 @@
 // CCountedPointer<CAnimEntryLite> members are {Data, Info} pairs with an inline zeroing constructor.
 // Shape: base constructor, then the derived vtable store, the scalar initialisers from one zero register (ebx, the bool
 // as bl), the PoseAnimName constructor, then the twelve counted-pointer words.
-struct CThing;
+class CThing;
 
 struct CModeBase {                          // CTCCreatureModeManager::CModeBase, sizeof 0x1c
     CModeBase(CThing* parent);              // 0x0073EAC0
@@ -19,7 +19,7 @@ struct CModeBase {                          // CTCCreatureModeManager::CModeBase
     bool Active;                            // +0x18
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                      // +0x00
     CCharString();                          // 0x0099E4B0
 };

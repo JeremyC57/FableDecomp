@@ -3,8 +3,8 @@
 static int g_set = -1, g_able = 0, g_removed = 0; static bool g_canMove = false;
 struct CMovementController { unsigned char m_locked; CMovementController() : m_locked(5) { }
     unsigned char GetMovementLocked() { return m_locked; } void SetMovementLocked(long locked) { g_set = (int)locked; } };
-struct CThing { unsigned char _pad[0x60]; CMovementController* m_pMovement; };
-struct CTCScriptedControl { void* __vftable; CThing* m_pCreature; };
+class CThing { public: unsigned char _pad[0x60]; CMovementController* m_pMovement; };
+class CTCScriptedControl { public: void* __vftable; CThing* m_pCreature; };
 bool __fastcall IsAbleToMove(CThing* thing) { ++g_able; return g_canMove; }
 void __fastcall RemoveMovementBlockingModes(CThing* thing) { ++g_removed; }
 struct CActionLeadCreature { virtual void v00() { } CTCScriptedControl* m_pControl; unsigned char _pad[0x24 - 0x08]; bool m_stateSaved; unsigned char m_savedMovementLocked;

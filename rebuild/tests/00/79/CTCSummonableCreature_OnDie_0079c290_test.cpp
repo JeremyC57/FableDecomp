@@ -2,7 +2,7 @@
 // Behaviour test for CTCSummonableCreature::OnDie (0x0079C290): the body of src/ over stand-ins -- when a flagged owner is
 // killed by a summoned creature of no higher level and a different def, the killer's summoner's spell is told to summon the
 // owner's def ahead of it along its velocity, facing back.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -19,7 +19,7 @@ struct CPhysicsComponent {
     C3DVector GetVelocity() const { return velocity; }
 };
 class CTCSummonableCreature;
-struct CTCSummonSpell;
+class CTCSummonSpell;
 class CThing {
 public:
     CPhysicsComponent*     Physics;
@@ -33,8 +33,8 @@ public:
     bool GetInterface(CTCSummonSpell** ppOut, long type) { if (type != 0x91 || !spell) return false; *ppOut = spell; return true; }
     const C3DVector& GetPosition() const { return pos; }
 };
-struct CSummonableCreatureDef { float SummonLevel; };
-struct CTCSummonSpell {
+class CSummonableCreatureDef { public: float SummonLevel; };
+class CTCSummonSpell { public:
     int calls; long def; C3DVector pos; C3DVector facing;
     void SetSummonCreatureGlobalDefNum(long d, const C3DVector& p, const C3DVector& f) { ++calls; def = d; pos = p; facing = f; }
 };

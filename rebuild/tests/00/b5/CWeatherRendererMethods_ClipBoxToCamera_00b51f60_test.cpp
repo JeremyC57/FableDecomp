@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CVolumeTexture;
+class CVolumeTexture;
 
 #pragma pack(push, 1)
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08
@@ -177,11 +177,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWeatherRenderer, DebugBoxColour4) == 0x1324)
 #include <stddef.h>
 
 
-struct C2DBoxF;
-struct CCamera;
+class C2DBoxF;
+class CCamera;
 
 #pragma pack(push, 1)
-struct CEngineCamera {
+class CEngineCamera { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

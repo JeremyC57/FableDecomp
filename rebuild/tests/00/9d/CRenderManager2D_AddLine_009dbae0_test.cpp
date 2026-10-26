@@ -2,8 +2,8 @@
 
 // Model of CRenderManager2D::AddLine: the two vertices are offset by the viewport origin, converted to viewport space with RHW 1 and queued with a line record, unless the viewport is offscreen.
 struct CTVertex { float X, Y, Z, RHW; unsigned long Diffuse, Specular; float U, V; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CTexture { int id; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CTexture { public: int id; };
 struct CInfo { bool Line, IsText; C2DBoxF Window; CTexture UploadedTexture; long BlendMode; float ZAverage; };
 
 struct CRenderManager2D {

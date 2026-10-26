@@ -3,9 +3,9 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_destroyed = 0;
-struct CHighlightItemDef {
+class CHighlightItemDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long          RefCount;
@@ -16,7 +16,7 @@ struct CHighlightItemDef {
     unsigned char _pad_0x41[0x3];
     float         StartDelaySeconds;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
 };
@@ -35,7 +35,7 @@ template <class T> struct CDefPointerMember {
     T* operator->() const { return Object; }
 };
 static C3DVector g_pos = { 1.0f, 2.0f, 3.0f }; static int g_killed = 0; static bool g_killArg = false;
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefPointerMember<CThingDef> PDef;
     const C3DVector& GetPosition() const { return g_pos; }

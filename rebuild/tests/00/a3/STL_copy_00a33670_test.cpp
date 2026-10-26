@@ -12,13 +12,13 @@ public:
     ~CCharString() { --g_strings; }
     CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     int   RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
 };
 static void DeleteVolume(void*) { ++g_released; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -38,8 +38,8 @@ template <class T> struct CCountedPointer {
     }
     CCountedPointer& operator=(const CCountedPointer& o) { ShareData(o.Data, o.Info); return *this; }
 };
-struct CContainmentVolume { int Tag; };
-struct C3DMeshVolume {
+class CContainmentVolume { public: int Tag; };
+class C3DMeshVolume { public:
     CCharString Name;
     CCountedPointer<CContainmentVolume> ConvexVolume;
     C3DMeshVolume& operator=(const C3DMeshVolume& o) { Name = o.Name; ConvexVolume = o.ConvexVolume; return *this; }

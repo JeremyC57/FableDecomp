@@ -67,21 +67,21 @@ template <class T> struct CRetailVector : CVectorBase<T> {  // STLport vector<T>
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void GetAllCarriedThings(CRetailVector<CThing*>& things) const;   // 0x006A2220
 };
 
-struct CEnginePrimitiveThemeChannelDesc {                   // one dword
+class CEnginePrimitiveThemeChannelDesc { public:                   // one dword
     unsigned long Channel;
 };
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance;
+class CTCGraphicAppearance;
 }
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                               // +0x00 (CTCBase)
     CThing*        ParentThing;                             // +0x04
     unsigned char  _pad08[0x40 - 0x08];

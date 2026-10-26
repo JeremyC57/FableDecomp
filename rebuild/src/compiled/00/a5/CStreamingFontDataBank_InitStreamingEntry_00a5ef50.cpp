@@ -15,19 +15,19 @@
 //   streamingEntry sits at +0x188 (Data) / +0x18C (Info), 0x74 below the header.
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()

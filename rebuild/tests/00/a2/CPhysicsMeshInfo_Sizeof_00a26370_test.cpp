@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CPhysicsMesh       { long m_size; long Sizeof() const { return m_size; } };
-struct CBankFileAsyncData { unsigned long m_size; unsigned long Sizeof() const { return m_size; } };
+class CPhysicsMesh       { public: long m_size; long Sizeof() const { return m_size; } };
+class CBankFileAsyncData { public: unsigned long m_size; unsigned long Sizeof() const { return m_size; } };
 struct CMeshData {
     unsigned char _base[0x1c];
     CBankFileAsyncData* FileData_Data; void* FileData_Info; CPhysicsMesh* Mesh; void* Owner;
@@ -11,7 +11,7 @@ struct CMeshData {
         return 0x2c + meshSize + fileSize;
     }
 };
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     CMeshData* MeshData;
     unsigned long Sizeof() const { return (MeshData ? MeshData->Sizeof() + 4 : 4) + 0xc0; }
 };

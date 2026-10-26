@@ -5,9 +5,9 @@ struct CAnimation { float t; float GetTotalTimeSeconds() const { return t; } };
 static long g_indexSeen = -1;
 struct CAnimationBank { CAnimation anims[4]; CAnimation* GetPAnimation(long i) { g_indexSeen = i; return &anims[i]; } };
 struct CAnimationOwner { unsigned char _pad[0x3c]; CAnimationBank* m_pBank; };
-struct CAnimationEntry { long AnimationIndex; };
+class CAnimationEntry { public: long AnimationIndex; };
 static CAnimationOwner g_owner;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {} unsigned char _pad04[0x74 - 4]; CAnimationEntry* PAnimEntry; unsigned char _pad78[0x114 - 0x78];
     CAnimationOwner* GetPCreatureAnimationOwner() const { return &g_owner; }
     float GetTotalTimeSeconds() const { long index = PAnimEntry->AnimationIndex; CAnimationBank* bank = GetPCreatureAnimationOwner()->m_pBank; float t = bank->GetPAnimation(index)->GetTotalTimeSeconds(); return t; }

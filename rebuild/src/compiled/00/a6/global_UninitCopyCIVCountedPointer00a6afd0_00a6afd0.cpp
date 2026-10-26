@@ -13,7 +13,7 @@
 //   propagated (4-byte stride, intrusive count).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);         // slot 0
     virtual void Delete();                   // slot 1 (+0x04)
     unsigned long IVRefCount;                // +0x04

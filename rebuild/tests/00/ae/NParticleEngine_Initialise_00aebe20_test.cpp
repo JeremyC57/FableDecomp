@@ -5,7 +5,7 @@ static char gLog[64];
 static void Log(const char* s) { std::strcat(gLog, s); }
 struct CCountBlock { long RefCount; void (*DeleteData)(void* data); void* Data; };
 template <class T> struct TDeleter { static void DeleteData(void* data) { delete (T*)data; } };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCountBlock* Block;
     void ReleaseData()
     {

@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C2DVector;
+class C2DVector;
 
 #pragma pack(push, 1)
 struct CSBGoal {

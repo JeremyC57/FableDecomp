@@ -1,7 +1,7 @@
-struct CTCActivationTrigger;
+class CTCActivationTrigger;
 struct SubObjA { char pad[4]; };
 struct SubListF2 { void Add(SubObjA* a); };
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     char       pad00[0x0c];
     SubObjA    subA;
     char       padA[0xf8 - 0x10];

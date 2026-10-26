@@ -10,14 +10,14 @@
 // seed/data/length; the empty literal 0x0129AAF4 when the string has no data block). The
 // temporary dies (0x0099EAE0) and only then the bool at +0x74 is cleared (the next initialiser). Same family as the
 // landed CModeBerserk ctor @ 0x007409C0.
-struct CThing;
+class CThing;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                   // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -29,7 +29,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     virtual void v00();
     CCharString m_string;                  // +4
     unsigned long m_hash;                  // +8

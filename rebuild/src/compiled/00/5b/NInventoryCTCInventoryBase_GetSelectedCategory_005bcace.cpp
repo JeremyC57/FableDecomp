@@ -6,7 +6,7 @@
 // Shape: size TU, non-empty test first (retail falls through to the indexed return).
 #pragma optimize("s", on)
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
 };
 struct CCategoryVector {

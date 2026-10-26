@@ -11,12 +11,12 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CPersistInfo {              // NScript::CRuntimeScriptedEntityPersist::CPersistInfo, Ego_r.pdb 16 bytes
     unsigned __int64 UID;          // +0x0
     CCharString      PersistScript; // +0x8
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

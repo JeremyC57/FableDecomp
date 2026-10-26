@@ -13,31 +13,31 @@
 // accessor so its load follows the filter stores; no `this` save, the result pointer is returned as the
 // call leaves it. Base layout local (PDB names); no engine header for this class.
 // one-byte filter in the high byte of the first slot, `lea edx,[esp+3]`) and the Bind3 of three pointers at
-struct CThing;
-struct CThingCreatureBase;
-struct CMessageEvent;
+class CThing;
+class CThingCreatureBase;
+class CMessageEvent;
 
 // Retail builds message filters as an expression chain: `IsOfType(n) && HasExtraData() && IsForThing(t)`.
 // Each `operator&&` returns a CFilter_Bind2/CFilter_Bind3 holding POINTERS to its operands (the filter
 // temporaries live in the caller's frame until the call returns; the empty one-byte filter has a user
 // constructor so it takes no store and sits in the high byte of a slot), and FindMostRecentMessage takes the
 // bound filter by const reference (one `lea ; push`).
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_HasExtraData {
+class CMessageEventFilter_HasExtraData { public:
     CMessageEventFilter_HasExtraData() { }
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -54,22 +54,22 @@ struct CMessageEventFilter_IsForThing {
 
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_HasExtraData, CMessageEventFilter_IsForThing> CYellFilter;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CYellFilter& filter);   // 0x00910CF0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                       // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

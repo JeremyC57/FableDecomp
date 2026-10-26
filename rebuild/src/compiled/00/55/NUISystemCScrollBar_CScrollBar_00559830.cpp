@@ -41,7 +41,7 @@ struct CDraggable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInte
     CDraggable_Retail(long owner);               // 0x0055A9C0
 };
 
-struct CScrollBar : CDraggable_Retail {          // vtables 0x0124B7E4 / 0x0124B7BC / 0x0124B7B4
+class CScrollBar : public CDraggable_Retail { public:          // vtables 0x0124B7E4 / 0x0124B7BC / 0x0124B7B4
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();

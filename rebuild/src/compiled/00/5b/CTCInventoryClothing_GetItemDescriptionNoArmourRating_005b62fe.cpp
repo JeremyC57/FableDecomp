@@ -13,12 +13,12 @@
 //   is a method-only local model.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
@@ -29,7 +29,7 @@ CWideString __fastcall GetItemDefDescription(long defIndex);   // 0x005D9630
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
@@ -49,7 +49,7 @@ struct ArgPasser {                                      // Ego_r.pdb, 0x30 bytes
     long  total_price;                                  // +0x2c
     ArgPasser();                                        // 0x005B336A
 };
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void CalculateArmorValues(ArgPasser& values, long defIndex);   // 0x005B4EBA
     void GetItemDescriptionNoArmourRating(CWideString& out, long defIndex);
 };

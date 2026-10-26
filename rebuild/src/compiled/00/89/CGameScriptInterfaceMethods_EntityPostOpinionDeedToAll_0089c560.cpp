@@ -3,16 +3,16 @@
 #include "engine/CGameScriptInterface.h"
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
-struct C3DVector{float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
+class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020 lower_bound
 struct ScriptMethods;
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();const C3DVector& GetPosition()const;struct CTCBase* AddTC(const CCharString&,bool,struct CTCParamsBase*);}; //004C7E50 //004C73D0,004C7E50
+struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();const C3DVector& GetPosition()const;class CTCBase* AddTC(const CCharString&,bool,class CTCParamsBase*);}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -107,7 +107,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 
 
 #include "engine/CTCBase.h"
-struct CFaction;struct CThing;struct CThingAICreature;
+class CFaction;class CThing;class CThingAICreature;
 struct HeroDeedLogMethods:CTCBase{long PostDeed(long,const C3DVector&,const CThing*,CThingAICreature*,long,bool,bool,const CFaction*,bool,long);}; //006C6990 actual 10 stack arguments
 struct OpinionSourceMethods:CTCBase{void PostDeed(long,float);}; //007712F0: Deed+80, counter+84, expiry frame+88; recovered OnActivate label is incorrect
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityPostOpinionDeedToAll(const ScriptMethods&,long)const;};

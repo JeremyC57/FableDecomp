@@ -8,15 +8,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CManagedTextureOwner;
-struct CTexture;
-struct CVolumeTexture;
+class CCPPointerInfo;
+class CManagedTextureOwner;
+class CTexture;
+class CVolumeTexture;
 struct IDirect3DTexture9;
 struct IDirect3DVolumeTexture9;
 
 #pragma pack(push, 1)
-struct CManagedTextureData {
+class CManagedTextureData {
+public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char            _pad_0x04[0x4];                 // +0x04
     unsigned char            _pad_0x08[0x4];                 // +0x08

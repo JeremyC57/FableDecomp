@@ -10,7 +10,7 @@
 // PDB-vs-retail container width drift), so the class is modelled locally.
 // Shape: the "temporary CIntelligentPointer" family (0x0084B1C0) with the temporary in an inner scope so the flag store
 // follows its destructor.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -26,7 +26,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     unsigned char _pad[0xe4];
     CBaseIntelligentPointer PTargetLockedThing;   // +0xe4 (PDB +0xec)
     unsigned char _padEC[8];

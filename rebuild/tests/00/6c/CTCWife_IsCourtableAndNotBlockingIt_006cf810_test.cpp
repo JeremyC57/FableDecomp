@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CComp { void* blocking; };
-struct CThing { bool dead; bool hasComp; CComp* comp; unsigned char flags1c9; };
-struct CTCWife {
+class CThing { public: bool dead; bool hasComp; CComp* comp; unsigned char flags1c9; };
+class CTCWife { public:
     CThing* parent; CThing* hero; long attitude; bool blocked;
     bool Get() const {
         if (!blocked && attitude != 4 && (parent->flags1c9 & 8)) { CThing* h = hero; if (h && !h->dead) { if (h->hasComp) { if (!h->comp->blocking) return true; } } }

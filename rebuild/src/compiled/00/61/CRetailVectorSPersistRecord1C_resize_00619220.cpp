@@ -10,7 +10,7 @@
 // share an `xor` register); word 0 zeroed (scheduled before the string ctor), the
 // string from "", the five trailing words zeroed after the argument pushes; only the string member is destroyed afterwards.
 // The element type's real name is not resolved (named by layout).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0

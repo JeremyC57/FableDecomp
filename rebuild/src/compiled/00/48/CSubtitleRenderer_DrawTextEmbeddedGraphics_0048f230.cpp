@@ -22,14 +22,14 @@ public:
     bool operator!=(const unsigned short* text) const;             // 0x0099B150
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -39,7 +39,7 @@ float __stdcall GFVXToAX_009e1e10(float x);                           // 0x009E1
 float __stdcall GFVYToAY(float y);                           // 0x009E1E40
 void __fastcall GFACoordToVCoord(const C2DVector* in, C2DVector* out);   // 0x009E21D0
 
-struct CEnginePrimitiveHandle { unsigned long Data[2]; };
+class CEnginePrimitiveHandle { public: unsigned long Data[2]; };
 class CEnginePrimitive2DSprite {
 public:
     unsigned char _body[0x54];
@@ -60,7 +60,7 @@ public:
     unsigned char _pad00[0x34];
     CEnginePrimitiveRenderer* Renderer;                      // +0x34
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x694];
     C2DVector     ControllerGraphicOffset;                   // +0x694 (PDB +0x6D0)
 };

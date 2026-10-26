@@ -3,7 +3,7 @@
 struct CMode { long type; long GetModeType() { return type; } };
 struct CModeComponent { CMode* mode; CMode* GetCurrentMode() { return mode; } };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long bits[9]; SEntry entries[3]; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* t) { SEntry* p = first; while (p != last && p->type < *t) ++p; return p; }
     template<class T> bool GetInterface(T** out, long type)
@@ -16,7 +16,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCTalk {
+class CTCTalk { public:
     CThing* ParentThing; long Attitude;
     long GetAttitude()
     {

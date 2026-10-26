@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     char pad[0xbc];
     unsigned char dirtyFlag;
     int refreshCalled;

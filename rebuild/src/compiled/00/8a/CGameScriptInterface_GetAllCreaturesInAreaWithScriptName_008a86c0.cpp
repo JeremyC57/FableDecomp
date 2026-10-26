@@ -19,11 +19,11 @@
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -46,7 +46,7 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -88,7 +88,7 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -108,20 +108,20 @@ public:
         return PStringData->Data == text;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI TopLeft, BottomRight;
     C2DBoxI(const C2DCoordI& tl, const C2DCoordI& br) : TopLeft(tl), BottomRight(br) {}
     void Expand(long d) { TopLeft.X -= d; TopLeft.Y -= d; BottomRight.X += d; BottomRight.Y += d; }
 };
-struct CThingFilter_None {
+class CThingFilter_None { public:
     CThingFilter_None() {}
 };
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     CCharString m_name;
     CThingFilter_HasScriptName(const CCharString& name) : m_name(name) {}
 };
@@ -130,7 +130,7 @@ struct CThing_Retail {
 };
 CThing_Retail** FindThings_None(const C2DBoxI* box, const CThingFilter_None* filter, CThing_Retail** capacity);
 CThing_Retail** FindThings_HasScriptName(const C2DBoxI* box, const CThingFilter_HasScriptName* filter, CThing_Retail** capacity);
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_None& filter, CThingVector& out);            // 0x008AD710
     void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingVector& out);   // 0x008AD950
 };
@@ -153,7 +153,7 @@ struct CWorld_Retail {
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;                // +0x20
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual long GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, CScriptThingVector& things) const;
     CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
 };

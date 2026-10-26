@@ -2,7 +2,7 @@
 // Behaviour model of CTCPhysicsBase::GetPhysicsStateFlags (0x006AFBF0, vtable slot 88)
 static bool g_bPhysicsStateFlagsEnabled;
 struct SPhysicsStateFlags { bool IsOnMesh, IsOnGround, Moving, GetCollidesWithThings, GetInteractsWithThings, IsImmoveable; };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool Moving, onMesh, onGround, collides, interacts, immoveable;
     virtual bool IsOnMesh() { return onMesh; } virtual bool IsOnGround() { return onGround; }
     virtual bool GetCollidesWithThings() { return collides; } virtual bool GetInteractsWithThings() { return interacts; }

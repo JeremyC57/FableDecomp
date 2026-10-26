@@ -13,7 +13,7 @@ struct CThemeWeight {                            // 12 bytes
     bool  LockWeight;                            // +8
 };
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;

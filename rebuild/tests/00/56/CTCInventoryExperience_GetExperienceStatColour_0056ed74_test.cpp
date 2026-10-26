@@ -2,12 +2,12 @@
 // (1, 0.3, 0.3, 1), 3..5 yellow (1, 1, 0.3, 1), anything else (negative too) blue (0.3, 0.3, 1, 1).
 #include <cstdio>
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {}
 };
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CRGBFloatColour GetExperienceStatColour(EHeroTrainableStatType stat)
     {
         if (stat >= 0 && stat <= 2)

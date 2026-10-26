@@ -4,13 +4,13 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_baseFinish = 0, g_allow = 0, g_removed = 0, g_charge = 0, g_strike = 0;
 static float g_chargeDist = 0;
-struct CThing;
+class CThing;
 static CThing* g_allowFrom = 0;
 struct CShield { void AllowReactionsOnHitFromAttacker(CThing* t, bool f) { if (!f) { ++g_allow; g_allowFrom = t; } } };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91; C3DVector Pos; CShield* Shield; int Blocked;
     const C3DVector& GetPosition() const { return Pos; }
     void RemoveTC(long type) { if (type == 0xc8) ++g_removed; }
@@ -19,7 +19,7 @@ struct CThing {
     void SetCurrentAction(int kind, float d) { if (kind == 1) { ++g_charge; g_chargeDist = d; } else ++g_strike; }
 };
 struct CPtr { CThing* p; CThing* GetPItem() const { return p; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CPtr PCreature, PTarget;
     CThing* GetCreature() const { return PCreature.GetPItem(); }
     CThing* GetTarget() const { return PTarget.GetPItem(); }
@@ -27,7 +27,7 @@ struct CCombatActionBase {
     void FinishAction() { ++g_baseFinish; }
 };
 inline void DebugLine(const C3DVector&, const C3DVector&) {}
-struct CCreatureAction_ScorpionCharge : CCombatActionBase {
+class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float ChargeDistance; C3DVector StartPos;
     void FinishAction();
 };

@@ -13,7 +13,7 @@
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 #pragma pack(push, 1)
-struct C3DVector {                                          // 1-aligned in retail
+class C3DVector { public:                                          // 1-aligned in retail
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

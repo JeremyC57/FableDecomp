@@ -2,11 +2,11 @@
 // intelligent-pointer slot reset (CBaseObject's copy ctor does not copy it).
 #include <cstdio>
 static int g_containerCopies = 0;
-struct CBaseObject { void* IntelligentPointer; CBaseObject() : IntelligentPointer(0) {} CBaseObject(const CBaseObject&) : IntelligentPointer(0) {} };
-struct CCharString { int id; CCharString() : id(0) {} CCharString(const CCharString& o) : id(o.id) {} };
+class CBaseObject { public: void* IntelligentPointer; CBaseObject() : IntelligentPointer(0) {} CBaseObject(const CBaseObject&) : IntelligentPointer(0) {} };
+class CCharString { public: int id; CCharString() : id(0) {} CCharString(const CCharString& o) : id(o.id) {} };
 struct Container { int size; Container() : size(0) {} Container(const Container& o) : size(o.size) { ++g_containerCopies; } };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; C2DBoxI() {} C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {} };
-struct CScriptedMapBrush : CBaseObject {
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; C2DBoxI() {} C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {} };
+class CScriptedMapBrush : public CBaseObject { public:
     Container Cells, ThingsToDelete, ThingsToMove, ThingsToAdd; C2DBoxI GameArea; CCharString BrushName; float CreationTimeSeconds; long CreationPattern;
     CScriptedMapBrush() {}
     CScriptedMapBrush(const CScriptedMapBrush& other)

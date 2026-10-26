@@ -14,7 +14,7 @@
 // Shape: the async entry is a counted pointer whose dtor clears both words after the release; the data size is read through
 //   the entry (bank +4, index +8); CMemoryDataInputStream is 0x1c bytes in retail (two of them fix the 0x58 frame).
 extern "C" void __cdecl free(void* block);
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 extern CCharString g_GlobalMapEntrySymbol_01436ec8;   // 0x01436EC8
 struct CByteBuffer {
     unsigned char* First; unsigned char* Last; unsigned char* End;
@@ -33,16 +33,16 @@ struct CDataBuffer {
     ~CDataBuffer() { if (First) free(First); }
     unsigned char* GetData() { return (Last - First) ? First : (unsigned char*)this; }
 };
-struct CMemoryDataInputStream {                    // 0x1c bytes (CDataInputStream + memory source)
+class CMemoryDataInputStream { public:                    // 0x1c bytes (CDataInputStream + memory source)
     unsigned char _body[0x1c];
     CMemoryDataInputStream(void* data, unsigned long size);   // 0x00994930
     ~CMemoryDataInputStream();                     // 0x00993B10
 };
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
-struct CBankFile {
+class CBankFile { public:
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
 };
-struct CBankFileAsyncEntry {
+class CBankFileAsyncEntry { public:
     void*         _vptr;
     CBankFile*    Bank;                            // +0x04
     unsigned long Index;                           // +0x08
@@ -65,15 +65,15 @@ struct CEntryPointer {
         Info = 0;
     }
 };
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     unsigned long FindEntry(const CCharString& name);   // 0x009CCDC0
     CEntryPointer CreateEntry(unsigned long index);     // 0x009D58D0
 };
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void LoadNonPatchData(CMemoryDataInputStream& a, CMemoryDataInputStream& b);   // 0x00B6DAF0
 };
 extern CEngineWaterRenderer* g_pEngineWaterRenderer;   // 0x01436E54
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char      _pad00[0x34];
     CStaticMapBankFile StaticMapFile;              // +0x34
     unsigned char      _pad35[0x60 - 0x35];

@@ -34,7 +34,7 @@ void** remove_model(void** first, void** last, void* const& val)
 
 struct CShapePtr { void* Data; void* Info; ~CShapePtr() { ++gShapeDtors; } };
 
-struct CTCShapeManager {
+class CTCShapeManager { public:
     CShapePtr* PersistantShapes_start;
     CShapePtr* PersistantShapes_finish;
     CShapePtr* SelectedShape;

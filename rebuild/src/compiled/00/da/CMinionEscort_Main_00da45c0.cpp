@@ -13,18 +13,18 @@
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50: the filter is a scoped 0x10-byte frame object, the address of Me stays in
 // edi; each outer interface call fetches its vtable before the inner GetHero / GetActiveQuestName call (VC evaluates the
 // callee first); the frame loop is `do { } while (!IsDone());`.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                           // 0x0099EAE0
 };
 
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
     ~CScriptThing();                          // 0x004AA840
 };
 
-struct CGameScriptInterface {                  // vtable 0x01260F0C (slots from rtti-vtables.tsv)
+class CGameScriptInterface { public:                  // vtable 0x01260F0C (slots from rtti-vtables.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

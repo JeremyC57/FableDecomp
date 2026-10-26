@@ -9,7 +9,7 @@
 // dest arrives in ecx, src in edx (2-arg __fastcall). The CWideString copy-ctor
 // (0x0099ec30) is a real __fastcall: this=dest (ecx untouched), one stack arg = src.
 
-struct CWideString {
+class CWideString { public:
 	// Copy-ctor at 0x0099ec30. Real member => true __fastcall: this in ecx,
 	// `src` pushed as the single stack arg (edx left untouched).
 	void CopyCtor(CWideString* src);

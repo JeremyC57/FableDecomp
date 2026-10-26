@@ -15,7 +15,7 @@ extern "C" void __cdecl free(void* block);                                      
 
 struct random_access_iterator_tag { };
 
-struct C3DTriangle2 {
+class C3DTriangle2 { public:
     unsigned short VertexIndex[3];
     C3DTriangle2() { }
 };

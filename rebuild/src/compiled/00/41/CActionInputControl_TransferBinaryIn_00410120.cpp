@@ -11,12 +11,12 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}                              // non-POD: returned through a hidden pointer
 };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                            // +0x00
     unsigned long m_position;                   // +0x04
     long StreamSize;
@@ -49,7 +49,7 @@ enum EInputKey { INPUT_KEY_NONE };
 enum EXboxControllerButton { XBOX_BUTTON_NONE };
 enum EMouseButtonControl { MOUSE_BUTTON_NONE };
 
-struct CActionInputControl {
+class CActionInputControl { public:
     EGameAction           GameAction;           // +0x00
     EControllerType       ControllerType;       // +0x04
     EInputKey             KeyboardKey;          // +0x08

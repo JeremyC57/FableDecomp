@@ -5,8 +5,8 @@ struct CDefEntry
     const char* name;
 };
 
-struct CDefString
-{
+class CDefString
+{ public:
     const char* name;
 
     CDefString() {}
@@ -14,8 +14,8 @@ struct CDefString
     CDefString& operator=(const CDefString& other) { name = other.name; return *this; }
 };
 
-struct CDefinitionManager
-{
+class CDefinitionManager
+{ public:
     char pad[0xA4];
     CDefEntry** globalIndexTable;
 

@@ -14,7 +14,7 @@
 // true then cleared; the action is a temporary built inside the SetCurrentAction call and destroyed inline (def
 // release + null, PTarget dtor, base dtor); the indicator def is released by hand at the end. The thing to move to is
 // passed on by value (a copy built in the argument slots: base ctor, vtable store, SetPItem(GetPItem())).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -48,16 +48,16 @@ struct CDefCounted {
     long GetRefCount() const { return m_refCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) DeleteThis(); }
 };
-struct CAICreatureWillPowerIndicatorDef : CDefCounted {
+class CAICreatureWillPowerIndicatorDef : public CDefCounted { public:
     unsigned char _pad08[0x38];
     bool UseStrafe;                             // +0x40
 };
-struct CMeleeCombatAbilityDef : CDefCounted { };
-template <class T> struct CDefPointer {
+class CMeleeCombatAbilityDef : public CDefCounted { public: };
+template <class T> class CDefPointer { public:
     T* m_pDef;
     ~CDefPointer() { if (m_pDef) { m_pDef->Release(); m_pDef = 0; } }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CAICreatureWillPowerIndicatorDef** out) const;   // 0x006696B0
 };
 CAICreatureWillPowerIndicatorDef* FindWillPowerIndicatorDef(const CDefClassBase* def);
@@ -73,15 +73,15 @@ bool CDefClassBase::GetSubDef(CAICreatureWillPowerIndicatorDef** out) const
     return true;
 }
 #pragma auto_inline(on)
-struct CCombatTypeDef : CDefClassBase { };
+class CCombatTypeDef : public CDefClassBase { public: };
 
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     bool HasMode(unsigned long mode);           // 0x0073A8A0
     bool AddMode(unsigned long mode);           // 0x0073AE10
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -105,8 +105,8 @@ struct CThing {
         return has;
     }
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
@@ -132,12 +132,12 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {   // vtable 0x01285424
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:   // vtable 0x01285424
     CIntelligentPointerConstThing PTarget;                  // +0xa8
     float ShotAccuracyPercentage;                           // +0xb0
     float ShotDamageMultiplier;                             // +0xb4
@@ -148,7 +148,7 @@ struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {   // vtable 0x0
     CCreatureAction_FireMissileWeapon(CThingCreatureBase* creature, const CThing* target);   // 0x008D5110
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
@@ -156,7 +156,7 @@ enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_DEFAULT };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

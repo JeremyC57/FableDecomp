@@ -2,7 +2,7 @@
 
 struct Handle { unsigned char pad[0x14]; };
 struct HandleVec { void* proxy; Handle* first; Handle* last; void* end; };
-struct CMiniMapDisplay { HandleVec vecB; HandleVec vecA; };
+class CMiniMapDisplay { public: HandleVec vecB; HandleVec vecA; };
 
 static int g_elemDtor = 0;
 static int g_vecDtor = 0;

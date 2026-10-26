@@ -52,7 +52,7 @@ __forceinline Iterator find_if(Iterator first, Iterator last, Predicate pred)   
     return first;
 }
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x1c - 4];             // +0x04
     long FramesRunning;                         // +0x1c

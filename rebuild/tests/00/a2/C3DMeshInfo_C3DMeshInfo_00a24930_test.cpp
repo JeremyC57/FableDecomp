@@ -8,7 +8,7 @@ struct CCountedObject {
     virtual void Destroy() { ++g_destroyed; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) {}
     ~CIVCountedPointer() { Release(); }
@@ -16,9 +16,9 @@ template <class T> struct CIVCountedPointer {
     CIVCountedPointer& operator=(const CIVCountedPointer& o)
     { Release(); Object = o.Object; if (Object) ++Object->m_refCount; return *this; }
 };
-struct C3DMeshLODInfo : CCountedObject {};
+class C3DMeshLODInfo : public CCountedObject { public:};
 struct CMeshData : CCountedObject { CIVCountedPointer<C3DMeshLODInfo> LODMeshes[4]; };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     CIVCountedPointer<CMeshData> MeshData;
     ~C3DMeshInfo()
     {

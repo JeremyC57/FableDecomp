@@ -12,19 +12,19 @@
 // ReleaseTemporary on its ref-count base at +4 (null test kept, null store elided); the troll is a local fetched before the
 // stack arguments.
 // Layout: owner CIntelligentPointer +8, target +0xa8.
-struct C3DVector;
-struct CRightHandedSet;
+class C3DVector;
+class CRightHandedSet;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad[0x10];
     CDefinitionManager* PDefinitionManager;            // +0x10
 };
@@ -38,7 +38,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -46,7 +46,7 @@ struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -58,8 +58,8 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CThing { };
-struct CThingCreatureBase : CThing {
+class CThing { public: };
+class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10
 };
 

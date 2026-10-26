@@ -16,7 +16,7 @@
 //   (no NRVO in VC7.1) and the local's release.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8

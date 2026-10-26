@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCQuickAccessMenu { void OnCreate(); };
+class CTCQuickAccessMenu { public: void OnCreate(); };
 void CTCQuickAccessMenu::OnCreate() {}

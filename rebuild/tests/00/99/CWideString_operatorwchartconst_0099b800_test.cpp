@@ -2,16 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     unsigned int unknown04;
     unsigned int unknown08;
     int owners;
 };
 
-struct CWideString
-{
+class CWideString
+{ public:
     CWideStringData* storage_;
 };
 

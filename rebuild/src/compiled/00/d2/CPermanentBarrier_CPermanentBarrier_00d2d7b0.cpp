@@ -31,7 +31,7 @@ struct CEntityScriptRoot {                                  // root: its vtable 
     CEntityScriptRoot(CGameScriptInterface_Calls* quest) : PQuest(quest) { }
 };
 
-struct CEntityScriptBase : CEntityScriptRoot {              // vtable 0x012C3224
+class CEntityScriptBase : public CEntityScriptRoot { public:              // vtable 0x012C3224
     virtual void v00();
     CScriptThing_Calls Thing;                                     // +0x08
     CEntityScriptBase(CQuestScriptBase_Retail* parent, const CScriptThing_Calls& thing)

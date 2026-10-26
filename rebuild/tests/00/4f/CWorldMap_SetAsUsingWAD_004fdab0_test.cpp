@@ -10,7 +10,7 @@ static int MemCmp_Unsigned16(const unsigned short* l, const unsigned short* r, u
 static void __fastcall DeleteData(void* data);
 static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
 
-struct CWideStringData {                                // STLport basic_string<wchar_t> + NoRefs
+class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
     unsigned short* _M_end_of_storage;
@@ -21,12 +21,12 @@ public:
     CWideStringData* PStringData;
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Reset(T* data) { Clear(); Data = data; Info = (CCPPointerInfo*)::operator new(sizeof(CCPPointerInfo)); Info->RefCount = 1; Info->DeleteFunc = DeleteData; Info->Data = data; }

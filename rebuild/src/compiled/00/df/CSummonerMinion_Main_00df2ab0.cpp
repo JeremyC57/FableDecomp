@@ -10,13 +10,13 @@
 // CurrentAttackWave +0x4C, SummonerAttacksStarted +0x51).
 // Shape: as the landed CHeroSoulsEnemy::Main 0x00D7F110: every wait is `while (!cond) { NewScriptFrame(); if (IsDone()) return; }`
 // followed by an `if (IsDone()) return;`; the target call is the nested GiveThingBestEnemyTarget(Me, Game->GetHero()).
-struct CScriptThing {                                   // 12 bytes
+class CScriptThing { public:                                   // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
 };
 void __fastcall FadeInThing(const CScriptThing& thing, float time);   // 0x00CBE7AA
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

@@ -22,7 +22,7 @@ struct BlendStateBase {
     ~BlendStateBase();  // extern, at 0x686830
 };
 
-struct C3DAnimationBlendState : public BlendStateBase {
+class C3DAnimationBlendState : public BlendStateBase { public:
     ~C3DAnimationBlendState();
 };
 

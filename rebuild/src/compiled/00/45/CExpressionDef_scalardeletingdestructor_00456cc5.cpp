@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CExpressionDef { int vt; };
+class CExpressionDef { public: int vt; };
 extern void __fastcall CExpressionDef_dtor(CExpressionDef* def);
 extern void __cdecl fable_operator_delete(void* p);
 

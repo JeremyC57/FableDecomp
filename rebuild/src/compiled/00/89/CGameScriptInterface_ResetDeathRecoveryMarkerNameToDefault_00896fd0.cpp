@@ -1,7 +1,7 @@
 // CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct MapNode;
-struct CPlayerManager {
+class CPlayerManager { public:
     void* GetB();          // __fastcall, returns object ptr in eax
 };
 struct SubB;

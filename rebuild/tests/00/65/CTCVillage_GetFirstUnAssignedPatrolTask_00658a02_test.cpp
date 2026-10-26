@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     bool valid, unassigned;
     virtual ~CVillageTaskPatrol() {}
     virtual bool IsValid() { return valid; }
     virtual bool IsUnassigned() { return unassigned; }
 };
 struct SPatrolTaskNode { SPatrolTaskNode* next; SPatrolTaskNode* prev; CVillageTaskPatrol* Object; };
-struct CTCVillage {
+class CTCVillage { public:
     SPatrolTaskNode* PatrolTasks;
     CVillageTaskPatrol* GetFirstUnAssignedPatrolTask()
     {

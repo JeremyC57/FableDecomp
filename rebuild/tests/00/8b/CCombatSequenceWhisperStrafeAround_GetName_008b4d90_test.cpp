@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CCharString {
+class CCharString { public:
     char* m_buf;
     CCharString(const char* s, int n);
 };

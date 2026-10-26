@@ -16,7 +16,7 @@ class CInputEvent { public: unsigned char _body[0x34]; };
 static const void* g_copiedFrom = 0;
 template <> std::vector<CInputEvent, std::allocator<CInputEvent> >::vector(const vector& __x)
     : _M_start(__x._M_start), _M_finish(__x._M_finish), _M_end_of_storage(__x._M_end_of_storage) { g_copiedFrom = &__x; }
-struct CChecksum { unsigned long Word0, Word1, Word2, Word3; };
+class CChecksum { public: unsigned long Word0, Word1, Word2, Word3; };
 class C2DVector {
 public:
     float X;

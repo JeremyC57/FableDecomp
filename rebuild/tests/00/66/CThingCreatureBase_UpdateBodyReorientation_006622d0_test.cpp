@@ -3,15 +3,15 @@
 #include <cmath>
 static const float g_epsilon_0129ba3c = 1e-4f;
 static int g_updates = 0, g_setFlagCalls = 0, g_setYZ = 0;
-struct CTCPhysicsBase { float m_yz; float GetFacingAngleYZ() { return m_yz; } void SetFacingAngleYZ(float a) { ++g_setYZ; m_yz = a; } };
-struct CThingBodyReorienter { bool m_need; bool m_flag;
+class CTCPhysicsBase { public: float m_yz; float GetFacingAngleYZ() { return m_yz; } void SetFacingAngleYZ(float a) { ++g_setYZ; m_yz = a; } };
+class CThingBodyReorienter { public: bool m_need; bool m_flag;
     bool IsUpdateNeeded() { return m_need; } void UpdateBodyReorienation() { ++g_updates; } void SetFlag_00863260(bool v) { ++g_setFlagCalls; m_flag = v; } };
 template<class T> struct scoped_ptr { T* px; T* get() const { return px; } T* operator->() const { return px; } };
-struct CCreatureActionBase { bool Finished; };
-struct CThing { CTCPhysicsBase* PhysicsTC; unsigned char Dead : 1; bool m_lying, m_incap; bool IsAlive() const { return Dead ? false : true; } };
+class CCreatureActionBase { public: bool Finished; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; unsigned char Dead : 1; bool m_lying, m_incap; bool IsAlive() const { return Dead ? false : true; } };
 static bool IsLyingDown(CThing* t) { return t->m_lying; }
 static bool IsIncapacitated(CThing* t) { return t->m_incap; }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CCreatureActionBase* PCurrentAction_Data; scoped_ptr<CThingBodyReorienter> BodyReorienter;
     bool HadFacingAngleYZSetByBodyOrientation : 1;
     bool IsPerformingAnyAction() { CCreatureActionBase* a = PCurrentAction_Data; if (a != 0) { if (!a->Finished) return true; } return false; }

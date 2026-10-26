@@ -7,7 +7,7 @@
 //   GetDefIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
 class CTCBase;
 class CThing;
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -69,7 +69,7 @@ struct CWillButtonHelperTimer {
     unsigned char _pad[0x34];
     CWillButtonHelperTimer(long ability, CThing* owner);   // 0x008EDFF0
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;
@@ -91,19 +91,19 @@ struct CTurncoatSpellDef {
     unsigned char _pad54[0x6c - 0x54];
     CFloatVector CooldownSeconds;                       // +0x6c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefIndex(const CCharString& name, bool required);         // 0x009AD390
     bool GetDef(long index, CDefPointer<CTurncoatSpellDef>* def);     // 0x007C7720
 };
 CDefinitionManager* __fastcall GetDefinitionManager();  // 0x0044C6B0
 struct CTCAbilityCast { unsigned char _pad[0x0c]; bool Busy; unsigned char _pad0d[3]; long Ability; };
-struct CTCInventoryAbilities { long GetAbilityLevel(long ability); };   // 0x005EDE93
+class CTCInventoryAbilities { public: long GetAbilityLevel(long ability); };   // 0x005EDE93
 extern long g_FramesPerSecond;                          // 0x01375550
-struct CTCTurncoatSpell : CTCBaseModel {
+class CTCTurncoatSpell : public CTCBaseModel { public:
     CWillButtonHelperTimer Timer;                       // +0x0c
     CDefPointer<CTurncoatSpellDef> Def;                 // +0x40
     CThingIntelligentPointer Target;                    // +0x44

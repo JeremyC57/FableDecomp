@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing;
+class CThing;
 static CThing* g_baseArg = 0;
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 struct CTCPhysicsStandard {
     virtual ~CTCPhysicsStandard() { }
     unsigned char _base[0x84];

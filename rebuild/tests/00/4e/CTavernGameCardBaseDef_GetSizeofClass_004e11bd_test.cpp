@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTavernGameCardBaseDef;
+class CTavernGameCardBaseDef;
 
 unsigned long __fastcall GetSizeofClass_model(CTavernGameCardBaseDef *self)
 {

@@ -12,7 +12,7 @@
 // Lane feedback: byte-exact when the release is an inline pointee method (`mov ecx,eax` forms inside the
 // null test); the open-coded `--RefCount` in the smart-pointer dtor differs. The behaviour test
 // needed a ref-counting copy constructor (VC7.1 copies the by-value return). RELOCATION_MATCH.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();          // slot 1 (+0x04): called when the reference count reaches 0
     long RefCount;                   // +0x04

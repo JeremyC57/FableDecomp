@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -8,7 +8,7 @@ struct C3DVector {
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 static int g_isIdentityCalls = 0;
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector m_row0, m_row1, m_row2, m_translation;
     CMatrix3x4() { }
     bool IsIdentity() const

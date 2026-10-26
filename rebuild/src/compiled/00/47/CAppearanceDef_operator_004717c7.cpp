@@ -10,12 +10,12 @@
 // The two 14-byte CEngineGraphic records copy as `movsd x3 ; movsw` (size TU); LightingChannel is the 4-byte ELightingChannel enum (long).
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 #pragma pack(push, 1)
-struct CEngineGraphic {                 // 14 bytes, byte-aligned (PDB: Graphic at +0x25)
+class CEngineGraphic { public:                 // 14 bytes, byte-aligned (PDB: Graphic at +0x25)
     unsigned long BankIndex;            // +0x00
     float AnimStep;                     // +0x04
     float RenderSizeX;                  // +0x08
@@ -23,12 +23,12 @@ struct CEngineGraphic {                 // 14 bytes, byte-aligned (PDB: Graphic 
     unsigned char Type;                 // +0x0d
 };
 #pragma pack(pop)
-struct CAnimationSet {                  // retail 0x20 bytes (PDB 0x24: its CVectorMap loses 4)
+class CAnimationSet { public:                  // retail 0x20 bytes (PDB 0x24: its CVectorMap loses 4)
     unsigned long m_words[8];
     CAnimationSet& operator=(const CAnimationSet& other);   // 0x00471832
 };
 
-struct CAppearanceDef : CDefClassBase {
+class CAppearanceDef : public CDefClassBase { public:
     CEngineGraphic           Graphic;                     // +0x25
     CAnimationSet            Animation;                   // +0x34
     unsigned char            OutlineEffectAlphaRef;       // +0x54

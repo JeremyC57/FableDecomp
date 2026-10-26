@@ -10,7 +10,7 @@
 // landed CModeCreatureIsProjectile::Recover 0x008E08C0).
 // Shape: the out-parameter GetInterface template (the key homed in the `push ecx` slot, `it == last || 9 < it->type`
 // picks last) used as the condition; the base call keeps `this` in edi. Plain `ret`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,11 +19,11 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CTCTargeted {                       // interface type 9
+class CTCTargeted { public:                       // interface type 9
     void ReturnToDefaultTargetingFlags();  // 0x007EA2B0
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44

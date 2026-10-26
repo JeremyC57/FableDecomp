@@ -35,15 +35,15 @@ template<class T> struct CRetailVector : CVectorBase<T> {   // retail std::vecto
     CRetailVector() : CVectorBase<T>(SAllocator()) {}
 };
 
-struct CDefString;
-struct CComboMultiplierData;
-struct CHeroStatIncreaseData;
-struct CAttackHistoryCombo;
+class CDefString;
+class CComboMultiplierData;
+class CHeroStatIncreaseData;
+class CAttackHistoryCombo;
 struct CMapLongDefString           { CMapLongDefString();           void* _a; void* _head; long _size; };   // 0x004DF84E
 struct CMapLongComboMultiplierData { CMapLongComboMultiplierData(); void* _a; void* _head; long _size; };   // 0x004EB953
 struct CMapStatIncreasePerHitType  { CMapStatIncreasePerHitType();  void* _a; void* _head; long _size; };   // 0x004EB971
 
-struct CHeroExperienceDef : CDefinitionBase {
+class CHeroExperienceDef : public CDefinitionBase { public:
     CRetailVector<long>                 ExperienceLevelThresholds;     // +0x28
     CRetailVector<long>                 HeroLevelTitles;               // +0x34
     CRetailVector<long>                 FallbackMultipliers;           // +0x40

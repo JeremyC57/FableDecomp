@@ -7,17 +7,17 @@
 // is modelled locally.
 // Shape: the float result goes through a named local (`call ; ret`, not a tail jump).
 namespace NPlayerGui {
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     float GetAlpha() const;                              // 0x00643F9E
 };
 }
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x1d0];
     CCountedPointer<NPlayerGui::CDrawGuildSeal> PDrawGuildSeal;   // +0x1d0
     float GetGuildSealAlpha() const;

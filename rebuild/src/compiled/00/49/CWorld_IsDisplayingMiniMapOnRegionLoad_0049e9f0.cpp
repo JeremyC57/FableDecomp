@@ -6,7 +6,7 @@
 struct CGlobalGui { char pad[0xf6]; bool suppressMiniMap; };
 extern CGlobalGui* g_pGlobalGui;  // ds:0x13b8790
 
-struct CWorld {
+class CWorld { public:
     char pad[0x12f];
     bool bDisplayMiniMapOnRegionLoad;  // +0x12f
     bool IsDisplayingMiniMapOnRegionLoad();

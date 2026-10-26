@@ -12,10 +12,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00AA52B0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -42,19 +42,19 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _body[0x28];             // CChunkedFileChunk (0x10) + the sub chunk containers (retail 0x2C total)
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
 
-struct C3DAnimFileMovementVectorChunk : CChunkedFileSuperChunk {
+class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:
     C3DVector Vector;                      // +0x2C
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);
 };

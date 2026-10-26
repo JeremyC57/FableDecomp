@@ -7,7 +7,7 @@
 // Leaf: ApplyAcceleration
 #include "engine/CTCPhysicsBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
@@ -17,7 +17,7 @@ struct SPhysicsBaseFlags {                  // CTCPhysicsBase +0x3c bool:1 group
     bool OldMoving : 1;                     // bit 1
 };
 
-struct CThing {
+class CThing { public:
     void SetAsFrameUpdated();               // 0x004C7C40
 };
 

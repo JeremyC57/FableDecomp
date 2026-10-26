@@ -33,19 +33,19 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 // (placement new from <new>)
 
-struct CThing;
+class CThing;
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent;
-struct CPrimitive;
+class CAGraphicAppearanceComponent;
+class CPrimitive;
 }
 struct CTCGraphicAppearance {
     void RegisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component);   // 0x004BD390
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;        // +0x64 (retail)
 };
-struct CTCBase {                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                       // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00() {}
     CThing* ParentThing;                               // +0x04
     bool    ToBeRemoved;                               // +0x08
@@ -53,7 +53,7 @@ struct CTCBase {                                       // 0x0c bytes: vptr, Pare
     CTCBase(CThing* owner);                            // 0x00686800
 };
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent {                  // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:                  // vtable 0x0125A170
     virtual void v00() {}
     CAGraphicAppearanceComponent() { }
 };
@@ -127,7 +127,7 @@ struct CModifierListVector {                           // vector<vector<CModifie
 
 struct CModifierGraphic { unsigned char _body[0x10]; };
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     unsigned long                                FrameLastChanged;         // +0x10
     bool                                         Changed : 1;              // +0x14
     bool                                         RecreatePrimitives : 1;

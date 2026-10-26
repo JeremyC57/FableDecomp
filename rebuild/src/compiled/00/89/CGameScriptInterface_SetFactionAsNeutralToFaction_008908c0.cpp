@@ -5,7 +5,7 @@ struct CFactionThing {
 struct CFactionMgr {
     CFactionThing* Lookup(int factionId);
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x54];
     CFactionMgr* PFactionManager; // +0x54
 };

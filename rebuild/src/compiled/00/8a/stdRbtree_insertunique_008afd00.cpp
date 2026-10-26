@@ -6,7 +6,7 @@
 //   "std::map::find" is propagated/behavioural. Model: the landed twin 0x00AD3EF0 (map<unsigned long, float>) verbatim.
 // Callees: _Rb_tree_iterator::operator-- 0x008AED60 (the per-instantiation out-of-line copy, defined here under
 //   auto_inline(off) as in the landed twin), _M_insert(x, y, v, w) 0x008AF120.
-class CombatDialogueManager { public: struct TSpeechGroupInfo { long NextAllowedFrame; }; };
+class CombatDialogueManager { public: class TSpeechGroupInfo { public: long NextAllowedFrame; }; };
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc {

@@ -9,7 +9,7 @@
 //   the thing's interface bitset +0x20 / vector map +0x44 / dead bit +0x91 as the landed 0x0095D310.
 // Shape: the UID is read once into a named local and handed by value to the inline IsCreatureAttacking / GetCombatantInfo
 //   (landed 0x006E9E40); the interface key temporaries live in the dead `creature` slot.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -41,13 +41,13 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CTCCarrying {                            // interface type 0x46
+class CTCCarrying { public:                            // interface type 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
 
-struct CTCWeapon {                              // interface type 0x48
+class CTCWeapon { public:                              // interface type 0x48
     bool IsProjectileWeapon();                  // 0x005DAA40
     void ReadyProjectile();                     // 0x005DA4E0
 };
@@ -71,7 +71,7 @@ struct CRetailRbMap_UID_CombatantInfo {         // STLport map<unsigned __int64,
     node* end() { return header; }
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];              // +0x04
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

@@ -16,7 +16,7 @@ struct SVarChunk_00a64500 {                           // a chunk of the variable
 extern long g_LastAllocatorChunkCounter_013d28d8;   // 0x013D28D8
 extern long g_LastAllocatorUsage_013d28d4;          // 0x013D28D4
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char     _pad00[0xc14];
     long              m_usage;                     // +0xc14
     long              m_chunkCounter;              // +0xc18

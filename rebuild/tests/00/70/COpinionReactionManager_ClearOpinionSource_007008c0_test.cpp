@@ -1,18 +1,18 @@
 // behaviour test for 0x007008C0 COpinionReactionManager::ClearOpinionSource
 #include <cstdio>
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     int depth;
     bool PopSourceDef() { if (!depth) return false; --depth; return true; }
     bool HasNoSourceDefs() const { return depth == 0; }
 };
-struct CThing {
+class CThing { public:
     CTCOpinionSource* tc; int removed;
     unsigned int HasTC(long) const { return tc != 0; }
     CTCOpinionSource* GetTC(long) { return tc; }
     void RemoveTC(long) { tc = 0; ++removed; }
 };
 struct CIntelligentPointer { void* item; void* GetPItem() const { return item; } void SetPItem(void* p) { item = p; } };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     CIntelligentPointer ExclusiveOpinionSource;
     void ClearOpinionSource(CThing* thing, bool popOneDef)
     {

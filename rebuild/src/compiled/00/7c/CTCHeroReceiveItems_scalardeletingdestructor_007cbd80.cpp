@@ -1,4 +1,4 @@
-struct CTCHeroReceiveItems {
+class CTCHeroReceiveItems { public:
     void* vftable;
 };
 

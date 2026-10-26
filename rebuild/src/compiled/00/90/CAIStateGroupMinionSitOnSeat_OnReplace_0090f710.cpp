@@ -6,7 +6,7 @@
 // Shape: the frame rate is read into a named local before the frame call (only a local keeps the global read in
 // edi across the call; the bare expression reloads it after), `g * 80` is `lea ecx,[edi+edi*4] ; shl ecx,4`, then
 // `FrameToSitDown = frame + fps * 80` (+0x3c, engine header).
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();

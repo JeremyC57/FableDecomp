@@ -32,7 +32,7 @@ struct CDefBase : CDefVirtual, CRefCounted {            // CDefPointeeBase: vptr
     }
 };
 
-struct CGiftDef : CDefBase {
+class CGiftDef : public CDefBase { public:
     unsigned char _pad_0x08[0x20];
     EGiftType     Type;                                 // +0x28
 };
@@ -50,7 +50,7 @@ struct CDefPointer_CGiftDef {
     CGiftDef* operator->() const { return m_pDef; }
 };
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     bool GetSubDef(CDefPointer_CGiftDef* subDef);       // 0x006D3EF0 (CDefClassBase::GetSubDef<CGiftDef>)
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -71,13 +71,13 @@ struct CThingBaseDefPointer {                          // CDefPointer<const CThi
     CThingBaseDef* Object;
     CThingBaseDef* operator->() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CThingBaseDefPointer PBaseDef;                      // +0x70 (retail)
     const CThingBaseDefPointer& GetPDef() const { return PBaseDef; }
 };
 
-struct CTCGift {
+class CTCGift { public:
     unsigned char _pad_0x00[0x04];                      // vptr
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool IsGiftOfType(EGiftType type);

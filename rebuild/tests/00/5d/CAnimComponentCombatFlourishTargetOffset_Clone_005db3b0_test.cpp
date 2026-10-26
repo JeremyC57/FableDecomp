@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 #pragma pack(push,1)
-struct CAnimComponentBase
-{
+class CAnimComponentBase
+{ public:
     virtual void v0() {}
     virtual void v1() {}
     virtual void v2() {}
@@ -15,8 +15,8 @@ struct CAnimComponentBase
 };
 #pragma pack(pop)
 
-struct CAnimComponentCombatFlourishTargetOffset : public CAnimComponentBase
-{
+class CAnimComponentCombatFlourishTargetOffset : public CAnimComponentBase
+{ public:
     CAnimComponentBase* Clone() const;
 };
 

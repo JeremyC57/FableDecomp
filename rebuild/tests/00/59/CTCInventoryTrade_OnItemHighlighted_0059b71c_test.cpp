@@ -6,7 +6,7 @@ struct CTCInventoryBase_Retail {
     void OnItemHighlighted(long item) { g_arg[g_n] = item; g_seq[g_n++] = 2; }
     void ResetInventoryAnim(long item) { g_arg[g_n] = item; g_seq[g_n++] = 3; }
 };
-struct CTCInventoryTrade : CTCInventoryBase_Retail {
+class CTCInventoryTrade : public CTCInventoryBase_Retail { public:
     void OnItemHighlighted(long item)
     {
         SetNumberOfSelectedItemOwned(item);

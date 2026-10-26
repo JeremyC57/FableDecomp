@@ -4,7 +4,7 @@ struct ListNode {
     ListNode* next; // +0x00
 };
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     char pad00[0x18];
     ListNode* list;   // +0x18  (intrusive list head; empty when head->next == head)
     char pad1c[0x40 - 0x1c];

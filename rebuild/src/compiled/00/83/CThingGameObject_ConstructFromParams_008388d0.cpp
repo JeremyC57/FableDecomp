@@ -9,21 +9,21 @@
 // manifest's CThingPhysical prototype; the 3rd/4th/8th are not established (descriptive).
 // Shape: the fifth argument is not forwarded (the pushes skip [esp+18h]); `if (index > 0 && Base(...)) { if (name !=
 // "") ScriptName = name; return true; } return false;`.
-struct C3DVector;
+class C3DVector;
 struct CThingPhysicalArg;
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     bool operator!=(const char* text) const;        // 0x0099E960
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4,
                              CThingPhysicalArg* creator, CThingPhysicalArg* originalCreator, bool a7);   // 0x006A5950
 };
 
-struct CThingGameObject : CThingPhysical {
+class CThingGameObject : public CThingPhysical { public:
     unsigned char _pad00[0x74];
     CCharString   ScriptName;                       // +0x74
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,

@@ -9,21 +9,21 @@
 // into the caller's named default (the return slot) and destroyed at once,
 // then pushes &default, value, name (right to left) with `this` restored into ecx, and destroys the default; `ret 8`.
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                   // 0x0099AED0
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                  // 0x0099B510
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

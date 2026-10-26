@@ -11,18 +11,18 @@
 // 12-byte containers put it at +0x2C, so this is a local model (vptr + 0x28 bytes of chunk-base members, then the list).
 // Shape: same as the landed CLandscapePatchTesselator twin 0x00B6C9B0: the container's address in esi, `size()` as the
 // signed pointer difference (the divide survives the `!= 0` test), `first` loaded before the branch.
-struct C3DTriangle2 {
+class C3DTriangle2 { public:
     unsigned short VertexIndex[3];
 };
 
-template <class T> struct CArray {                 // retail STLport-shaped vector: first / last / end of storage
+template <class T> class CArray { public:                 // retail STLport-shaped vector: first / last / end of storage
     T* m_first;
     T* m_last;
     T* m_end;
     long size() const { return m_last - m_first; }
 };
 
-struct C3DMeshFileTrianglesChunk {
+class C3DMeshFileTrianglesChunk { public:
     void*                 __vftable;               // +0x00
     unsigned char         _chunkBase[0x28];        // +0x04 CChunkedFileChunk members
     CArray<C3DTriangle2>  TriangleList;            // +0x2C

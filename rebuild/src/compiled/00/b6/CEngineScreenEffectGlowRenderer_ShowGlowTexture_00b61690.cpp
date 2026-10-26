@@ -14,8 +14,8 @@
 //   VertexShaderShowDebug +0x6c, PixelShaderShowDebug +0x74, ShowDebug +0x218, GlowToBackBufferVerts +0x220).
 #include "engine/CEngineScreenEffectGlowRenderer.h"
 
-struct C4DVector { float X, Y, Z, W; };
-struct CTexture;
+class C4DVector { public: float X, Y, Z, W; };
+class CTexture;
 
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
@@ -118,26 +118,26 @@ struct CShaderEnableState {                             // the static shader man
 };
 extern CShaderEnableState g_ShaderRenderManager;        // 0x013BC470
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
     unsigned long Size() const { return Last - First; }
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:

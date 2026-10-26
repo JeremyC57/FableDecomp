@@ -106,7 +106,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                // 0x0040F020
 };
 struct CPresenceBits { bool test(long kind) const; };    // 0x00410DE0
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                            // +0x20
     unsigned char  _pad21[0x44 - 0x21];

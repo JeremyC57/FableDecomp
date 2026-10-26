@@ -6,7 +6,7 @@
 // Leaf: TryToRespawnDefNamed
 #include <string.h>
 struct CThing_Retail;
-struct CScriptThing;
+class CScriptThing;
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
 struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
@@ -16,7 +16,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -40,7 +40,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                        // 0x0099A2D0
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
-struct CScriptThing : CBase {                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
+class CScriptThing : public CBase { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();
     virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)
@@ -135,9 +135,9 @@ struct CPlayerManager_Retail {
 struct CTCVillage_Retail {                          // interface type 0x22
     CThing_Retail* TryToRespawnDefNamed(const CCharString& defName, long count);   // 0x0065B349
 };
-struct CWorld;
+class CWorld;
 struct CDefinitionManager_Retail;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                    World;               // +0x04 (engine/CGameScriptInterface.h)
     void*                      Component;           // +0x08

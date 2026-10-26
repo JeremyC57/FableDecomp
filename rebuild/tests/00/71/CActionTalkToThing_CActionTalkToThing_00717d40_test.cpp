@@ -54,8 +54,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_STATIC_ASSERT(expression) \
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -63,8 +63,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -168,7 +168,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
 struct CAutoPickupBar;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCrimeStatBar;
 struct CDraw2DText;
 struct CDrawAbilityButtons;
@@ -204,19 +204,19 @@ struct CDrawStamina;
 struct CDrawStatUpdates;
 struct CDrawTargetInfo;
 struct CDrawWorldTime;
-struct CFontBank;
-struct CGamePlayerInterface;
-struct CGraphicDataBank;
-struct CMainGameComponent;
+class CFontBank;
+class CGamePlayerInterface;
+class CGraphicDataBank;
+class CMainGameComponent;
 struct CManager;
 struct CMultiStatBar;
-struct CPlayerManager;
+class CPlayerManager;
 struct CStatBar;
-struct CWorld;
+class CWorld;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CPlayerGui {
+class CPlayerGui { public:
     void*                             __vftable;             // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                           World;                 // +0x04
     CPlayerManager*                   PlayerManager;         // +0x08
@@ -758,12 +758,12 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DisplayBottomHalfGUI) == 0x35c);
 #include <stddef.h>
 
 
-struct CFontBank;
-struct CGraphicDataBank;
-struct CWideStringData;
+class CFontBank;
+class CGraphicDataBank;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     float             VWindow_TLX;                           // +0x04 C2DBoxF::TLX
     float             VWindow_TLY;                           // +0x08 C2DBoxF::TLY

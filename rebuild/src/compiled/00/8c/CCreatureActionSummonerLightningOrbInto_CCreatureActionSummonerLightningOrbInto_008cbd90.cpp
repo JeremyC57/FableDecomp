@@ -8,9 +8,9 @@
 // plus the default-constructed intelligent pointer member, whose vtable store is scheduled after the string constructor's pushes.
 // The PDB header (CCreatureAction_SummonerLightningOrbInto.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
-struct CThingCreatureBase;
-struct CThing;
-struct CSoundPair {
+class CThingCreatureBase;
+class CThing;
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -25,13 +25,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     void SetName(const CCharString& name);  // 0x008574D0
 };
-struct CCreatureAction_SummonerLightningOrbInto : CCombatActionBase {   // vtable 0x012830EC
+class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase { public:   // vtable 0x012830EC
     CIntelligentPointer POrb;               // +0x114 CIntelligentPointer<CThing>
     virtual void v00();
     CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase* owner, CThing* thing);

@@ -12,7 +12,7 @@ struct CVideoSys {
 };
 static CVideoSys* g_pVideoSys;
 struct CPrimitive { long RefCount; void Destroy() { ++g_destroyed; } void OnLastHandleReleased() { ++g_lastRelease; } };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitive* Object;
     void Clear()
     {

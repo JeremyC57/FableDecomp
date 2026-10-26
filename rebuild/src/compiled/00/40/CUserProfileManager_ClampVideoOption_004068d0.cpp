@@ -19,7 +19,7 @@ __forceinline void ClampToLimit(float* out, float limit, float secondaryLimit)
         *out = 0.0f;
 }
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void ClampVideoOption(float* out, float value, float fallback, float limit, float secondaryLimit);
 };
 

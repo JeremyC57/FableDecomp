@@ -6,7 +6,7 @@
 // Shape: STLport `__unguarded_insertion_sort_aux(first, last, _Tp*, comp)`, /Gr (__fastcall: first in ecx, last in
 //   edx, the null value-type pointer and the comparator on the stack). The comparator is loaded once into ebx;
 //   `_Tp(*i)` is built in the argument area by the pair's user copy constructor (`sub esp,10h ; mov eax,esp`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -23,7 +23,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

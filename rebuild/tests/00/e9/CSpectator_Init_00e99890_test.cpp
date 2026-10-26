@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls {
     int calls; CScriptThing* t516; long a516; CScriptThing* t517; long a517, b517;
     virtual void Slot516(CScriptThing* thing, long a) { ++calls; t516 = thing; a516 = a; }

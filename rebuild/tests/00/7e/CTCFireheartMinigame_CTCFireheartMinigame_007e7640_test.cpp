@@ -2,7 +2,7 @@
 #include <cstdio>
 struct MinigameDef { int id; };
 struct ParentDef { MinigameDef* sub; bool GetSubDef(MinigameDef** out) { *out = sub; return sub != 0; } };
-struct CThing { ParentDef* PDef; };
+class CThing { public: ParentDef* PDef; };
 struct Game {
     CThing* ParentThing; bool InSession, ForceQuit, Initialised, Moving, QuitWithDelay;
     void* scriptData; void* scriptInfo; void* handlesFirst; MinigameDef* PDef;

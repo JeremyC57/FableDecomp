@@ -8,8 +8,8 @@
 //   GetPos (CScriptThing slot 6, virtual on the member). Float 2.0f 0x0122DCDC.
 // Layout: CTollBandit as Ego_r.pdb (Game +4, Me +8, ParentClass +0x14, BanditEscapeMarker +0x28); CV_BanditTollScript
 //   BanditsFlee +0x4f (PDB - 0x14); CScriptDef TollBanditCloseToExit +0x43c, TollBanditTimeToFade +0x440 (retail; PDB +0x470/+0x474).
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                       // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                                // 0x004AA840
     virtual void t01() const; virtual void t02() const; virtual void t03() const; virtual void t04() const; virtual void t05() const;
     virtual const C3DVector& GetPos() const;                // slot 6 (+0x18)
@@ -18,7 +18,7 @@ struct CScriptThing {                                       // vtable 0x01238C8C
 };
 enum EScriptEntityMoveType { MOVE_TYPE_WALK = 0, MOVE_TYPE_RUN = 1 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
-struct CScriptGameResourceObjectScriptedThingBase {         // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0127094C, 0x10 bytes
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     virtual void s001(); virtual void s002(); virtual void s003();
     virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b); // slot 4 (+0x10)
@@ -36,13 +36,13 @@ struct CScriptGameResourceObjectScriptedThingBase {         // vtable 0x0127094C
 };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool kill, bool removeOnFade);   // 0x00CBE716
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority); // slot 8 (+0x20)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x43c];
     float         TollBanditCloseToExit;                    // +0x43c
     float         TollBanditTimeToFade;                     // +0x440

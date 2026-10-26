@@ -1,6 +1,6 @@
 // Behaviour test for CThing::SetAsGameStatePersisted @ 0x0078DDB0: writes bit 5 only, leaving the other bits.
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char b0 : 1, b1 : 1, b2 : 1, b3 : 1, b4 : 1;
     unsigned char GameStatePersisted : 1;
     unsigned char b6 : 1, b7 : 1;

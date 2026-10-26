@@ -7,7 +7,7 @@
 // the shipped CBankFile/CDataBank is smaller than in Ego_r.pdb, so the PDB header cannot be included).
 struct CDataBankEntry;
 
-template <class T> struct CArray {      // retail CArray: 12 bytes
+template <class T> class CArray { public:      // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

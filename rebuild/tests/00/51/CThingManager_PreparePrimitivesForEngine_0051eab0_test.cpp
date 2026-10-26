@@ -8,7 +8,7 @@ struct CBulletTime {
     float Convert(float f) { return f * 0.5f; }
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CThing {
+class CThing { public:
     CThing* m_pNextRender; bool Dead; bool Rendered; bool RenderedAfter; bool Affected;
     int Calls; float SeenCurrent; bool Removed;
     bool IsRenderedThisFrame() { return Calls ? RenderedAfter : Rendered; }
@@ -16,7 +16,7 @@ struct CThing {
     void PreparePrimitivesForEngine(const CInfo& info) { ++Calls; SeenCurrent = info.Current; }
 };
 static bool g_Latch;
-struct CThingManager {
+class CThingManager { public:
     CBulletTime* BT; bool FirstRenderOfFrame; CThing* Head; bool UpdateAndRenderAllFlag;
     CBulletTime* GetBulletTime() { return BT; }
     void RemoveFromRenderList(CThing* t) { t->Removed = true; }

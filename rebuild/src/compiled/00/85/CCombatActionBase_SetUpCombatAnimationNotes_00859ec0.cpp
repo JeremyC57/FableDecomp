@@ -18,7 +18,7 @@ struct CStrikeEventList {                       // retail std::list<CCountedPoin
     CStrikeEventNode* end() const { return m_pHead; }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x14 - 4];             // +0x04
     long ActionTime;                            // +0x14

@@ -13,21 +13,21 @@ static long g_setMap = 0;
 static u64 g_setUid = 0;
 static bool g_setBlocked = false;
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     long m_activeMap;
     bool IsNavigationMapActivated(long mapIndex) const { return mapIndex == m_activeMap; }
     void SetSwitchableNodesAsBlocked(long mapIndex, u64 uid, bool blocked) { ++g_setCalls; g_setMap = mapIndex; g_setUid = uid; g_setBlocked = blocked; }
 };
 
-struct CWorld { CNavigatorManager* PNavigationManager; };
+class CWorld { public: CNavigatorManager* PNavigationManager; };
 static CNavigatorManager g_nav;
 static CWorld g_world = { &g_nav };
 
-struct CThing { u64 UniqueID; };
+class CThing { public: u64 UniqueID; };
 
 static const u64 kUid40 = (((u64)0xFF) << 32) | 0xFFFFFFFFUL;
 
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     CThing* ParentThing;
     long    MapIndex;
     CWorld* GetWorld() { return &g_world; }

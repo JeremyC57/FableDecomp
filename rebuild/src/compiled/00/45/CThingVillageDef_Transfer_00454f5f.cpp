@@ -2,7 +2,7 @@
 struct CTransferArc {
     void TransferField(int* field);
 };
-struct CThingVillageDef {
+class CThingVillageDef { public:
     void BaseTransfer(CTransferArc* arc);
     char pad[0x70];
     int member70;

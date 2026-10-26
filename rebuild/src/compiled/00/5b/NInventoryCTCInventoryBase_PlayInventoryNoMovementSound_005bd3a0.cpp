@@ -14,8 +14,8 @@
 // is released by hand on the already-dereferenced pointer).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CASoundBank;
-struct CSoundInit {                                     // 0x20 bytes (ctor 0x0041C930)
+class CASoundBank;
+class CSoundInit { public:                                     // 0x20 bytes (ctor 0x0041C930)
     float Volume;                                       // +0x00
     float Pitch;                                        // +0x04
     long  Delay;                                        // +0x08
@@ -36,10 +36,10 @@ struct CGameState {
     virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
 };
 extern CGameState* g_pGameState;                        // 0x013B8394
-struct CThing {
+class CThing { public:
     CASoundBank& GetSampleBank() const;                 // 0x004C7A80
 };
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v000();
     virtual void Destroy() const;                       // slot 1 (+0x04)
     mutable long RefCount;                              // +0x04

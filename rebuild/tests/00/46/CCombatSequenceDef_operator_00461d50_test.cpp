@@ -4,7 +4,7 @@
 static int g_order[4];
 static int g_calls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -27,7 +27,7 @@ struct CActionRegisteredTypeVector {
     }
 };
 
-struct CCombatSequenceDef : CParentDefClassBase {
+class CCombatSequenceDef : public CParentDefClassBase { public:
     long                        ValidCombatZones;
     long                        Type;
     long                        InterruptionType;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingBuildingDef {};
+class CThingBuildingDef { public:};
 
 unsigned long __fastcall CThingBuildingDef_GetSizeofClass(const CThingBuildingDef* self)
 {

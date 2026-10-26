@@ -23,7 +23,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     ~CCountedPointer()
@@ -41,7 +41,7 @@ struct CCountedPointer {
 };
 
 template <class T>
-struct CArray {                             // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
@@ -49,19 +49,19 @@ struct CArray {                             // retail CArray is 12 bytes (the PD
     ~CArray() { if (m_pBegin) free(m_pBegin); }
 };
 
-struct CChunkedFileSuperChunk;
-struct CChunkedFileChunk {                  // PDB sizeof 0x10
+class CChunkedFileSuperChunk;
+class CChunkedFileChunk { public:                  // PDB sizeof 0x10
     char ChunkType[5];                      // +0x04
     unsigned char _pad_0x09[3];
     CChunkedFileSuperChunk* Parent;         // +0x0c
     CChunkedFileChunk(const char* type);    // 0x00AA7590
     virtual ~CChunkedFileChunk();           // 0x00AA75C0
 };
-struct C3DAnimFileXSequenceChunk : CChunkedFileChunk {          // 0x1c
+class C3DAnimFileXSequenceChunk : public CChunkedFileChunk { public:          // 0x1c
     CArray<unsigned char> CompressedData;   // +0x10
     C3DAnimFileXSequenceChunk() : CChunkedFileChunk("XSEQ") {}
 };
-struct C3DAnimFileXAllocationSizeChunk : CChunkedFileChunk {    // 0x14
+class C3DAnimFileXAllocationSizeChunk : public CChunkedFileChunk { public:    // 0x14
     unsigned long AllocSize;                // +0x10
     C3DAnimFileXAllocationSizeChunk() : CChunkedFileChunk("XALO") {}
 };
@@ -84,7 +84,7 @@ struct C3DAnimFileLoader {                  // 0x60
     CCountedPointer<CChunkedFileChunk> AddHelpersSubChunkType(const CChunkedFileChunk& prototype);         // 0x00A98D20
 };
 
-struct C3DAnimFileXLoader : C3DAnimFileLoader {
+class C3DAnimFileXLoader : public C3DAnimFileLoader { public:
     C3DAnimFileXLoader();
     virtual ~C3DAnimFileXLoader();
 };

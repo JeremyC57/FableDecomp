@@ -6,7 +6,7 @@
 
 static long g_CCharStringInstanceCount = 0;
 
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;
     long  NoRefs;
     CCharStringData(const char* text) : NoRefs(1)

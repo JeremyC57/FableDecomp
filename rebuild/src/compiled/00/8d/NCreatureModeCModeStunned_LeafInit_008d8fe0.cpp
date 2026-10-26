@@ -8,7 +8,7 @@
 // Name: FableWin.pdb `?LeafInit@CModeStunned@NCreatureMode@@EAEXXZ` (slot 12 of the out-of-action modes).
 // Shape: the first lookup is the out-parameter GetInterface (the component lands as `mov eax,[eax+4] ; mov ecx,eax`), the
 //   second HasTC + a returned GetTC (`mov ecx,[eax+4]`); both keys share one frame word; ParentThing is re-read.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -54,7 +54,7 @@ struct CTCTargetedFlags {                  // the type-9 component: a flags word
     void SetFlags(unsigned long flags);    // 0x007EA270
 };
 
-struct CTCCombat {                         // interface 0x30
+class CTCCombat { public:                         // interface 0x30
     void RemoveFromCombat();               // 0x00733580
 };
 

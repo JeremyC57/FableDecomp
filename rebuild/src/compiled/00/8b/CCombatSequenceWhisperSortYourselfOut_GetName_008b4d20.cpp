@@ -4,8 +4,8 @@
 // ctor at 0x99ebf0 (const char*, int len = -1). 'this' (ecx) is unused.
 
 #include "engine/CCombatSequenceWhisperSortYourselfOut.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString
-{
+class CCharString
+{ public:
     void* buf;
     CCharString(const char* s, int len);   // ctor @ 0x0099ebf0 (not defined here)
 };

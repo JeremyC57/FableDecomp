@@ -9,7 +9,7 @@ typedef unsigned long ulong;
 struct StatMap { int dummy; };
 enum EEnginePrimitiveStatIndex { EPSI_A = 0 };
 
-struct CEngineInternalPrimitiveMeshBase;
+class CEngineInternalPrimitiveMeshBase;
 
 // inner CollectStats: __fastcall(member self, map&, statIndex, count)
 void __fastcall Inner_CollectStats(CEngineInternalPrimitiveMeshBase* self,
@@ -17,7 +17,7 @@ void __fastcall Inner_CollectStats(CEngineInternalPrimitiveMeshBase* self,
                                    EEnginePrimitiveStatIndex idx,
                                    ulong count);
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     char pad[0x50];
     CEngineInternalPrimitiveMeshBase* m_inner; // +0x50
     void CollectStats(StatMap& stats, EEnginePrimitiveStatIndex idx, ulong count);

@@ -24,15 +24,15 @@ static int g_ok = 1;
 // Shape: a straight forward of the two out references to the component; the three argument loads
 // are all hoisted (radius, centre, thing), the pushes follow right to left, then `this` = thing->PhysicsTC.
 // `ret 0Ch`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };

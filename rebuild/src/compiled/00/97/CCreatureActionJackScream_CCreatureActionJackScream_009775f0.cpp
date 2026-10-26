@@ -11,7 +11,7 @@
 // PDB, has it at +0x12c with sizeof 0x134: the retail CCombatActionBase is 0x114 bytes), so the header
 // disagrees with the bytes and a local model with the retail offsets is used.
 // The manifest label "CScriptGameResourceObjectScriptedThingBase" is propagated (the vtable names the class).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                                     // +0x00 shared reference count
 };
 
@@ -27,13 +27,13 @@ struct CCountedPointer_CModeJackOfBladesScream {
     }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];                   // retail sizeof(CCombatActionBase) = 0x114
     CCombatActionBase(const CCombatActionBase& other);         // 0x0062F3B0
 };
 
-struct CCreatureAction_JackScream : CCombatActionBase {
+class CCreatureAction_JackScream : public CCombatActionBase { public:
     CCountedPointer_CModeJackOfBladesScream PModeCountedPointer;   // +0x114
     virtual void v00();
     CCreatureAction_JackScream(const CCreatureAction_JackScream& other);

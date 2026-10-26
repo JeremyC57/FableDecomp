@@ -6,7 +6,7 @@ struct EditMapEntry {
     void* map;    // +0x4
     void* c;      // +0x8
 };
-struct CEditWorldMap {
+class CEditWorldMap { public:
     char pad[0x3c];
     EditMapEntry* maps;   // +0x3c
 };

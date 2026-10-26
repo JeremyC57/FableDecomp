@@ -5,12 +5,12 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 class CThing;
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
@@ -21,7 +21,7 @@ struct CCreatureSubDef : CDefPointeeBase {
     bool IsGhost;
 };
 static CCreatureSubDef* g_subDef = 0; static int g_getSubDef = 0; static long g_countAtGet = -1;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureSubDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CCreatureSubDef>* out)

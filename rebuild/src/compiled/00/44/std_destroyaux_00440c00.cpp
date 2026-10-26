@@ -11,7 +11,7 @@
 // by-value parameter) and aligns the loop. The deque iterator is {_M_cur, _M_first, _M_last, _M_node}; `++` steps `_M_cur`
 // and at `_M_last` calls `_M_set_node(_M_node + 1)` (buffer = 128 / sizeof(T) = 16 elements = 0x80 bytes) then
 // `_M_cur = _M_first`; `!=` compares `_M_cur` only. Speed TU.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };

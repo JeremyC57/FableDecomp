@@ -12,8 +12,8 @@
 //   argument slot; end is re-read after the call; the hit's shape pointer is stored through out.
 // Layout: retail CTCShapeManager (as the landed 0x00760910): PersistantShapes (vector<CCountedPointer<NShape::CShape> >,
 //   8-byte elements {Data, Info}) +0x0C/+0x10/+0x14, SelectedShape +0x18.
-struct CThing;
-struct CCPPointerInfo;
+class CThing;
+class CCPPointerInfo;
 
 namespace NShape {
 class CShape {
@@ -32,7 +32,7 @@ public:
 };
 
 namespace NShape {
-struct CIsShapeTrack {
+class CIsShapeTrack { public:
     bool operator()(CCountedPointer<CShape> shape) const;
 };
 }

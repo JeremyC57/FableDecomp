@@ -5,11 +5,11 @@
 //   Roll +0x20, ShuttleSpeed +0x24, Duration +0x28, PauseTime +0x2c, EventName (CCharString) +0x30, SpeedFraction +0x34.
 // Shape: C3DVector copies are its inline memberwise copy constructor (direct [esi+N] stores); the five floats are
 //   init-list copies (the scheduler interleaves them), then the default CCharString constructor, then SpeedFraction = 0.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };

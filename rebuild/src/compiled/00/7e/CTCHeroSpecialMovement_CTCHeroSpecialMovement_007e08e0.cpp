@@ -11,7 +11,7 @@ struct CTCBase_00686800 {
 
 struct SZeroWord_007e08e0 { long m_value; SZeroWord_007e08e0() : m_value(0) { } };
 
-struct CTCHeroSpecialMovement : CTCBase_00686800 { // vtable 0x0126FE3C
+class CTCHeroSpecialMovement : public CTCBase_00686800 { public: // vtable 0x0126FE3C
     bool  m_active;                                // +0x0c
     bool  m_pending;                               // +0x0d
     unsigned char _pad0e[6];

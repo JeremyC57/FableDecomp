@@ -4,7 +4,7 @@
 // Virtual const (the mangled name).
 // Leaf: ?IsEqualTo@CGameScriptThing@@UBE_NABVCScriptThing@@@Z
 struct CTCGraphicAppearance_Retail;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -30,13 +30,13 @@ struct CIntelligentPointer_Retail {                // 8 bytes: vptr + the pointe
     void* m_pItem;
     CThing_Retail* GetPItem();                     // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v00();
     unsigned char             _pad04[8];
     CIntelligentPointer_Retail m_thing;            // +0x0c
 };
 
-struct CGameScriptThing : CScriptThing {
+class CGameScriptThing : public CScriptThing { public:
     virtual bool IsEqualTo(const CScriptThing& other) const;
 };
 

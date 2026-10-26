@@ -6,16 +6,16 @@
 // const CSoundPair&) @ 0x00857F30, CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the landed 10-body GetSoundPair constructor family (0x008C4F50) with a null name; the byte argument is read after the
 // string temporary dies and stored after the vtable. `ret 0Ch`: three arguments.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                        // one pointer; the default length makes the null pointer convert implicitly
+class CCharString { public:                        // one pointer; the default length makes the null pointer convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // a user constructor makes the 8-byte result return through the hidden pointer
+class CSoundPair { public:                         // a user constructor makes the 8-byte result return through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -23,13 +23,13 @@ struct CSoundPair {                         // a user constructor makes the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_SummonCreatures : CCombatActionBase {   // vtable 0x0127ADDC
+class CCreatureAction_SummonCreatures : public CCombatActionBase { public:   // vtable 0x0127ADDC
     unsigned char m_isFromInventory;        // +0x114
     virtual void v00();
     CCreatureAction_SummonCreatures(CThingCreatureBase* owner, CThing* target, bool isFromInventory);

@@ -14,14 +14,14 @@
 //   release-to-null clears Info before Data.
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 void __cdecl operator delete(void* p);               // 0x00BFE9BC
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {                   // STLport vector<T> (12 bytes in retail)
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:                   // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     CArray& operator=(const CArray& other);          // 0x0075B8D0 (C3DVector) / 0x0045BC09 (unsigned long)
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                 // +0x00
     float             Tension;                       // +0x0C
     bool              EndPointsConnected;            // +0x10
@@ -31,7 +31,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);          // +4
     void* m_pObject;                                 // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     void Reset(T* object);                           // 0x00B23240 / 0x00B23170
@@ -50,15 +50,15 @@ template <class T> struct CCountedPointer {
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;                 // +0x04
     bool UpdateStarted : 1;                          // +0x08
     bool Initialised : 1;
 };
-struct CPSCSplineBase : CPSCBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase : public CPSCBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;             // +0x00
         CCardinalSpline   ThisSpline;                // +0x04
         CCardinalSpline   PreviousSpline;            // +0x18
@@ -76,7 +76,7 @@ struct CPSCSplineBase : CPSCBase {
             return *this;
         }
     };
-    struct CSplinePosParamData {
+    class CSplinePosParamData { public:
         CParticleSystem*      PParentParticleSystem; // +0x00
         CCardinalSpline*      Spline;                // +0x04
         bool                  MaintainSplineShape;   // +0x08

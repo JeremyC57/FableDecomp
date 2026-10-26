@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_baseCtors = 0;
 struct CBase { virtual int Kind() { return 0; } CBase() { ++g_baseCtors; } virtual ~CBase() { } };
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
         PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
@@ -11,7 +11,7 @@ struct CVertexBufferBase : CBase {
     void* PVertexBuffer; unsigned int Length; long Type; unsigned char Stride; CVertexCompressionParams CompressionParams;
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {
+class CVertexBufferWin32 : public CVertexBufferBase { public:
     virtual int Kind() { return 2; }
     CVertexBufferWin32() : CVertexBufferBase() { PVertexBuffer = 0; Stride = 0; }
 };

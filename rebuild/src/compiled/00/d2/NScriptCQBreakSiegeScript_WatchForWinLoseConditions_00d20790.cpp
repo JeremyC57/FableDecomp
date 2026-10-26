@@ -14,12 +14,12 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                            // slot 0; complete destructor 0x004AA840
     void* PImp_Data;
     void* PImp_Info;
@@ -42,7 +42,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     }
 };
 bool __fastcall AreAllThingsInVectorDead(const CScriptThingVector& things);   // 0x00CBED00
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();

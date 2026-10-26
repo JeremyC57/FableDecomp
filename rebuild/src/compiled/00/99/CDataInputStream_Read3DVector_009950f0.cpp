@@ -14,7 +14,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

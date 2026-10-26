@@ -1,4 +1,4 @@
-struct CCreatureAction_BriarRoseShotFarInto {
+class CCreatureAction_BriarRoseShotFarInto { public:
     void* vftable;
 };
 

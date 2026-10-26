@@ -13,8 +13,8 @@
 // Shape: if/else on IsSaving (the saving arm returns early for a dependent emitter); the loading default string is built by the
 // inline by-value getter returning a named local (no NRVO: built, copied into the argument and destroyed); the database is a
 // named local fetched before the argument pushes.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                          // 0x0099E4B0
     CCharString(const CCharString& other);                  // 0x0099EC30
@@ -27,7 +27,7 @@ static inline CCharString EmptyCCharString()
     return empty;
 }
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                     // +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -41,7 +41,7 @@ struct CSymbolInfo {
     CCharString EntryName;                                  // +0x04
     long        Val;                                        // +0x08
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     CSymbolInfo* FindFirstSymbolWithVal(long value);        // 0x009E5090
     bool Lookup(const CCharString& name, long* value);      // 0x009E5170
 };

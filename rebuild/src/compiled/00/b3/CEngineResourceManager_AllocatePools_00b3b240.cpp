@@ -15,7 +15,7 @@ __forceinline long ROUND(float value)
     __asm fistp result
     return result;
 }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -56,7 +56,7 @@ struct CEngineResourcePoolSizes {
     long  StaticKB;                            // +0x20
     long  IndexKB;                             // +0x24
 };
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char         _pad000[0x1c];
     CRenderDeviceBudgets* Budgets;             // +0x1c
     unsigned char         _pad020[0x8e0 - 0x20];

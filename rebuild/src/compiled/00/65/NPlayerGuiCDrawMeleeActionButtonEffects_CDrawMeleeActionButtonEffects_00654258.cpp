@@ -6,7 +6,7 @@
 // Size TU: the -1 stores are `or dword ptr [..],-1`, the zeroes share eax, and the emitter vector's three words are zeroed through its address in ecx
 // (an inline constructor on the member; ecx then serves as `this` of the Reserve call). PDB (80 bytes): the emitter vector +0x2c, FlashTimer +0x3c,
 // ComboLoadingIconTimer +0x40, FlourishCounter +0x44, FlourishEffect +0x48, PMeleeAbilityDef +0x4c -- retail 4 lower for the vector, 8 lower after it.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
@@ -25,7 +25,7 @@ struct CRetailEmitterVector {                      // VC6 Dinkumware vector<CInt
     void Reserve(long count);                      // 0x00657037
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
@@ -37,7 +37,7 @@ struct CDefPointer_Melee {
     CDefPointer_Melee() : m_p(0) { }
 };
 
-struct CDrawMeleeActionButtonEffects : CDrawBase {   // vtable 0x0125A714
+class CDrawMeleeActionButtonEffects : public CDrawBase { public:   // vtable 0x0125A714
     virtual void v00();
     CRetailEmitterVector Emitters;                 // +0x28
     long  FlashTimer;                              // +0x34

@@ -1,7 +1,7 @@
 // Behaviour test (0x00530da0): NUISystem::CComponent::MakeAvailableDynamically scales R, G, B of every UI state by 4/3, then fades to the current state's colour keeping the component's own alpha
 #include <cstdio>
 #include <cmath>
-struct CRGBColour { unsigned char B, G, R, A; void Set(int r, int g, int b, int a) { R = (unsigned char)r; G = (unsigned char)g; B = (unsigned char)b; A = (unsigned char)a; } };
+class CRGBColour { public: unsigned char B, G, R, A; void Set(int r, int g, int b, int a) { R = (unsigned char)r; G = (unsigned char)g; B = (unsigned char)b; A = (unsigned char)a; } };
 struct CUIState { CRGBColour Colour; };
 struct CComponent {
     CUIState States[3]; int NumStates; int Current; CRGBColour Colour;

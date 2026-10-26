@@ -7,9 +7,9 @@
 // CTCThingOwner constructor 0x004DDAED shows the member is 4 bytes), so erase() is unlink + destroy + free with no
 // count update. The node is {next, prev, CIntelligentPointer value} (value at +8, its vptr at +8). The head is re-read
 // at the bottom of every iteration (`cmp esi,[ebx+0Ch]`) because the destroy is a call.
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                  // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -38,7 +38,7 @@ struct CThingComponent {
     unsigned char _pad_0x04[0x8];           // +0x04 .. +0x0B
 };
 
-struct CTCThingOwner : CThingComponent {
+class CTCThingOwner : public CThingComponent { public:
     SThingListNode* ObjectList;             // +0x0C retail std::list (sentinel pointer only)
     bool CallOnDie;                         // +0x10
     void ClearDeadEntries();

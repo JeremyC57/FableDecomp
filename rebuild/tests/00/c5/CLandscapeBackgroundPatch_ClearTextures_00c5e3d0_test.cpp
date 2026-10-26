@@ -10,8 +10,8 @@ void __stdcall ReleaseImpl(int handle)
 }
 void (__stdcall *g_ReleaseTexture)(int handle) = ReleaseImpl;
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     int field_0;
     int textureHandle;
     void ClearTextures();

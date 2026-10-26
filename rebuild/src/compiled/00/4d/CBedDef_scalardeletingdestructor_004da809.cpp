@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CBedDef
-{
+class CBedDef
+{ public:
     void* vftable;
 };
 extern void* const g_CBedDef_vftable;

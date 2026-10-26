@@ -12,9 +12,9 @@
 // Shape: CScriptThing's GetPos / GetDataString are inline virtuals (devirtualised on the locals, so expanded inline);
 //   the swap runs through a default-constructed temporary declared before the loop with the inline CCountedPointer
 //   copy-assign.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
  void* PStringData;
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  CCharString(const CCharString& other);             // 0x0099EC30
@@ -28,7 +28,7 @@ struct CScriptThingImp {
  virtual void i4(); virtual void i5();
  virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
  long RefCount;
  void (__fastcall* DeleteFunc)(void* data);
  void* Data;
@@ -57,11 +57,11 @@ struct CCountedPointer {
   return *this;
  }
 };
-struct CBaseClass {                                 // polymorphic root (vptr at +0)
+class CBaseClass { public:                                 // polymorphic root (vptr at +0)
  virtual void v0();
  CBaseClass();                                      // 0x0099A2D0
 };
-struct CScriptThing : CBaseClass {                  // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
  CCountedPointer PImp;
  CScriptThing() { }
  ~CScriptThing();                                   // 0x004AA840
@@ -72,7 +72,7 @@ struct CScriptThing : CBaseClass {                  // vtable 0x01238C8C
  virtual const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPosition(); }      // slot 6
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

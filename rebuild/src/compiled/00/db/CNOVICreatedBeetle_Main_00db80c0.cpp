@@ -11,7 +11,7 @@
 //   PMasterData +0x18.
 // Shape: the functor is a scoped 0x10-byte frame object; the timer index stays in edi; the early exit inside the wait loop
 //   deregisters the timer itself (its own copy of the epilogue), the normal path falls through to the same call.
-struct CScriptThing {                                  // 12 bytes
+class CScriptThing { public:                                  // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
@@ -22,7 +22,7 @@ struct CScriptThingFunctor_00ef7ab0 {                  // vtable 0x012C2FE8: an 
     CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
     ~CScriptThingFunctor_00ef7ab0() { }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -45,7 +45,7 @@ struct CGameScriptInterface {
     virtual void RemoveThing(const CScriptThing& thing, bool withEffects, bool b) const;   // slot 108 (+0x1b0)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                        // 4 bytes: an index into the global script timers
+class CTimer { public:                                        // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer(long time) { TimerIndex = g_pGameScriptInterface->RegisterTimer(); g_pGameScriptInterface->SetTimer(TimerIndex, time); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }

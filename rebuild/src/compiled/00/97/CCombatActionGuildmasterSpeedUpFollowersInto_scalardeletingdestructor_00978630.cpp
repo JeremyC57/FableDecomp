@@ -1,4 +1,4 @@
-struct CCombatAction_Guildmaster_SpeedUpFollowersInto {
+class CCombatAction_Guildmaster_SpeedUpFollowersInto { public:
     void* vftable;
 };
 

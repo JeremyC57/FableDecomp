@@ -23,7 +23,7 @@ public:
     void* m_pItem;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

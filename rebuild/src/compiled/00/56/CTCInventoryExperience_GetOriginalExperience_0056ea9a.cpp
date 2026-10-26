@@ -6,7 +6,7 @@
 // the shared `ret 4`.
 #pragma optimize("s", on)
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1AC];
     long OrigGeneral;           // +0x1AC
     long OrigStrength;          // +0x1B0

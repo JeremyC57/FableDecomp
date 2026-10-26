@@ -4,16 +4,16 @@
 #include <string>
 static int g_calls = 0; static int g_bad = 0; static std::string g_names;
 static void Note(const char* name) { ++g_calls; g_names += name; g_names += ","; }
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* text = "", long length = -1) : s(text) { (void)length; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x = 0, float y = 0, float z = 0) : X(x), Y(y), Z(z) {}
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE = 0 };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, unsigned long& value, const unsigned long& d) { Note(name); value = d; }
     void Transfer(const char* name, C3DVector& value, const C3DVector& d) { Note(name); value = d; }
     void Transfer(const char* name, float& value, const float& d) { Note(name); value = d; }
@@ -22,11 +22,11 @@ struct CPersistContext {
     void Transfer(const char* name, CCharString& value, const CCharString& d) { Note(name); value = d; }
     void Transfer(const char* name, bool& value, const bool& d) { Note(name); value = d; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual ~CDefClassBase() {}
     virtual void Transfer(CPersistContext& context) { (void)context; }
 };
-struct CAIScratchpadDef : CDefClassBase {
+class CAIScratchpadDef : public CDefClassBase { public:
     unsigned long ThankingPhrase;                       // +0x28
     unsigned long IgnoringPhrase;                       // +0x2c
     C3DVector     WanderCentrePoint;                    // +0x30

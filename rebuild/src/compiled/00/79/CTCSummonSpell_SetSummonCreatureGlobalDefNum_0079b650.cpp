@@ -11,8 +11,8 @@
 // Shape: the component is a named local (`mov esi,[eax+4]`); the CCharString is a named local in its own block, sharing the dead defNum
 // argument slot with the lookup key.
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -50,11 +50,11 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<CThingAIC
     void* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void PlaySound(const CCharString& name, bool attached, long a, long b, long c);   // 0x0066BD00
 };
 #pragma pack(push, 1)
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     unsigned char _base08[4];

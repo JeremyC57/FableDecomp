@@ -1,4 +1,4 @@
-struct CCombatAction_StabThing {
+class CCombatAction_StabThing { public:
     void* vftable;
 };
 

@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int framesUntilLoaded;
     bool IsRegionLoaded(const char* r) { return std::strcmp(r, "Witchwood2") == 0 && framesUntilLoaded <= 0; }
     void NewScriptFrame() { Log("frame"); --framesUntilLoaded; }

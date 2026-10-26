@@ -9,7 +9,7 @@ template <class T> struct CRetailVector {
     CRetailVector() : m_start(0), m_finish(0), m_endOfStorage(0) {}
 };
 struct CDefPointerRegionDef { void* Object; CDefPointerRegionDef() : Object(0) {} };
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
 struct CExitTextOffsetMap {
     struct node { unsigned char colour; node* parent; node* left; node* right; unsigned char value[12]; };
     node* m_header; unsigned int m_nodeCount; unsigned char m_keyCompare;
@@ -19,7 +19,7 @@ struct CExitTextOffsetMap {
         m_nodeCount = 0; m_header->colour = 0; m_header->parent = 0; m_header->left = m_header; m_header->right = m_header;
     }
 };
-struct CRegion {
+class CRegion { public:
     CRetailVector<int> Maps, VisMaps;
     CCharString Name, DisplayName, RegionDefName;
     CDefPointerRegionDef PDef;

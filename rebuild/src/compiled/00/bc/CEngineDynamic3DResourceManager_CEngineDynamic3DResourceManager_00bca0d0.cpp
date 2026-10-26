@@ -27,7 +27,7 @@ public:
     CEngineTreeFiler() {}
 };
 
-template <class TResource> class CEngineDynamic3DResourceManager {
+template <class TResource> struct CEngineDynamic3DResourceManager {
 public:
     struct CListHeader;
     long AllocCount;                                    // +0x04

@@ -22,10 +22,10 @@ class C3DVector { public:
     void RotateAboutZ(float angle);                          // 0x00A14040
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     float GetProgressRatio();                                // 0x006925E0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char        _pad00[0x100];
     CCreatureActionBase* PCurrentAction;                     // +0x100 (CCountedPointer<CCreatureActionBase> data)
 };

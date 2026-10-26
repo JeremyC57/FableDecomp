@@ -4,12 +4,12 @@
 #include <vector>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CQ_BanditCampBossBattleScript { bool HostagesRescued, HostageKilled; };
 struct CScripted { bool Scripting; int Releases; std::vector<std::string> Anims;
     bool IsScripting() { return Scripting; } void Release() { ++Releases; Scripting = false; }
     void PlayAnimation(const char* a) { Anims.push_back(a); } };
-struct CGame {
+class CGame { public:
     int Frame; int StartAfter; long Timers[4]; int NextTimer; float Distance; int RescueAtFrame;
     CQ_BanditCampBossBattleScript* Quest; std::vector<std::string> Lines; int Faces; CScriptThing Hero;
     void NewScriptFrame() { ++Frame; for (int i = 0; i < NextTimer; ++i) --Timers[i]; if (Frame == RescueAtFrame) Quest->HostagesRescued = true; }
@@ -24,7 +24,7 @@ struct CGame {
     void AddLineToConversation(long, const char* text, bool, const CScriptThing&, const CScriptThing&) { Lines.push_back(text); }
 };
 static CGame* g_game;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_game->RegisterTimer()) { }
     long GetTime() const { return g_game->GetTimer(Index); }

@@ -6,7 +6,7 @@
 // Shape: `IsAlive(PPub) && IsAlive(PBar)` -- the int-typed `&&` materialises `mov eax,1` /
 // `xor eax,eax` (full register), each pointer's address is formed once into esi and reused for
 // both GetPItem calls. The base is modelled locally (the generated header has no vtable).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
 };
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

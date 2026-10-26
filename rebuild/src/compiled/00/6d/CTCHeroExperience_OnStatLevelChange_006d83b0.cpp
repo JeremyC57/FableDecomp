@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,16 +48,16 @@ template <class T> __forceinline void GFLimit(T& value, const T& lo, const T& hi
         value = hi;
 }
 
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void SetStrength(float strength);           // 0x0071BE20
     void SetSkill(float skill);                 // 0x0071BF40
 };
-struct CTCInventoryAbilities { void UpdateWillMorph(); };          // 0x005EE887
-struct CTCHeroStats { void CheckForNewExpressions(); };            // 0x0057BE71
-struct CTCCreatureModeManager { void UpdateFrontMode(); };         // 0x0073A840
+class CTCInventoryAbilities { public: void UpdateWillMorph(); };          // 0x005EE887
+class CTCHeroStats { public: void CheckForNewExpressions(); };            // 0x0057BE71
+class CTCCreatureModeManager { public: void UpdateFrontMode(); };         // 0x0073A840
 
 enum EHeroExperienceStatCategory { HERO_STAT_CATEGORY_NONE };
-struct CAbilityTrackLevelDef { unsigned char _body[0x48]; };
+class CAbilityTrackLevelDef { public: unsigned char _body[0x48]; };
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
@@ -67,17 +67,17 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     unsigned int size() const { return (unsigned int)(end() - begin()); }
     const T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CAbilityTrackDef {                       // 0x50 bytes in retail
+class CAbilityTrackDef { public:                       // 0x50 bytes in retail
     unsigned char _base00[0x3c];
     EHeroExperienceStatCategory ExperienceStat;            // +0x3c
     CRetailVector<CAbilityTrackLevelDef> Abilities;         // +0x40
     long MaxedOutDescription;                               // +0x4c
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CRetailVector<CAbilityTrackDef> StatLevels;             // +0xfc
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     const T* operator->() const { return Object; }
 };

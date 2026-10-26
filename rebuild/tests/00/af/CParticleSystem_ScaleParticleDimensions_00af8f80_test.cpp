@@ -2,7 +2,7 @@
 // Behaviour of CParticleSystem::ScaleParticleDimensions (0x00AF8F80): with ScaleParticles set the size is multiplied
 // by the largest Scale component, otherwise it is left alone.
 #define PS_MAX(a, b) ((a) > (b) ? (a) : (b))
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CParticleSystem {
     unsigned char m_pad00[0x50];
     bool Initialised : 1; bool Enabled : 1; bool Dead : 1; bool NormalisedTimeEnabled : 1;

@@ -16,7 +16,7 @@ namespace NShape {
 struct CPointList;                                 // the retail 12-byte C3DVector vector
 struct CShapeManager;
 
-struct CShape {
+class CShape { public:
     virtual ~CShape();
 };
 
@@ -25,7 +25,7 @@ struct CBasicShape : CShape {                      // 0x2C bytes
     CBasicShape(CShapeManager* manager, const CPointList& points);   // 0x00762440
 };
 
-struct CTrack : CShape {                           // 0x28 bytes
+class CTrack : public CShape { public:                           // 0x28 bytes
     unsigned char _body[0x24];
     CTrack(CShapeManager* manager, const CPointList& points);        // 0x00761F40
 };

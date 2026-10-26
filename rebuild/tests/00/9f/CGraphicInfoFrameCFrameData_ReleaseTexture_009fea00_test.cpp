@@ -1,15 +1,15 @@
 // Behaviour test for 009fea00 CGraphicInfoFrame::CFrameData::ReleaseTexture (copy of the source model).
 #include <cstdio>
 
-struct CBankFileAsyncData { int dummy; };
+class CBankFileAsyncData { public: int dummy; };
 static int g_unloads = 0;
 static unsigned long g_lastFrame = 0;
 static const void* g_lastInfo = 0;
-struct CGraphicInfo {
+class CGraphicInfo { public:
     int dummy;
     void UnloadFrame(unsigned long frameNum) { ++g_unloads; g_lastFrame = frameNum; g_lastInfo = this; }
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     void*          vtable;
     unsigned short FrameNum;
     signed char    SmallMipmapLevel;

@@ -1,11 +1,11 @@
 // Behaviour test for CEngineClothSimulationMeshBase::ConvertVectorToLocal @ 0x00B80AD0
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CMatrix3x4 { float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
+class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
 struct CEngineClothSimulationMeshBase {
     CMatrix3x4 InverseTransform;
     C3DVector ConvertVectorToLocal(const C3DVector& v) const

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DragonFireBlastLeft {
+class CCreatureAction_DragonFireBlastLeft { public:
     void* vftable;
     int destroyed;
 };

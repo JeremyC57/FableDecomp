@@ -11,7 +11,7 @@
 // Callee: CAnimationEntry::CAnimationEntry(const CAnimationEntry&) @ 0x004B73A0.
 // Shape: STLport `make_pair(const T1& x, const T2& y) { return pair<T1, T2>(x, y); }` with the pair constructor inlined
 //   straight into the hidden result; the key is loaded and the entry reference fetched before `push esi`.
-struct CAnimationEntry {                                // 0x10 bytes (Ego_r.pdb)
+class CAnimationEntry { public:                                // 0x10 bytes (Ego_r.pdb)
     long  BankIndex;                                    // +0x00
     void* AnimName;                                     // +0x04 CDefString
     void* GroupName;                                    // +0x08 CDefString

@@ -10,8 +10,8 @@ typedef unsigned char fable_u8;
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -19,8 +19,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -128,12 +128,12 @@ inline CFilenameNode* NextFilenameNode(CFilenameNode* p) {
     return p;
 }
 struct CRuntimeData { unsigned long DataOffset,DataSize; unsigned char DataType; bool Valid; };
-template<class T> struct CArray { T* First;T* Last;T* Limit; };
+template<class T> class CArray { public: T* First;T* Last;T* Limit; };
 struct CPackedUIntArray {
     unsigned long* PackedInts;unsigned long Size;unsigned char Bits;unsigned long Bias;
     unsigned long operator[](unsigned long) const; //00A629F0
 };
-struct CBankFile {
+class CBankFile { public:
     void* VTable;unsigned long Size;
     CArray<CCharString> Symbols; CArray<unsigned long> Checksums;
     CArray<CRuntimeData> RuntimeData; CArray<void*> UpdateData;

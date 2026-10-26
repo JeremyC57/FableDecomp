@@ -7,7 +7,7 @@ static char g_log[64];
 static void logc(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
 static unsigned long ror13(unsigned long v) { return (v >> 13) | (v << 19); }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -19,13 +19,13 @@ struct CRandomGenerator {
 };
 struct CGameState { bool SuspendIdling, SuspendIdlingForCutscene; };
 struct CGlobals { CGameState state; CRandomGenerator rng; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     float VelocityX, VelocityY, maxJog; C3DVector pos, vel;
     const C3DVector& GetPosition() const { return pos; }
     C3DVector GetVelocity() const { return vel; }
     float GetMaxJoggingSpeed(const C3DVector&) { return maxJog; }
 };
-struct CAnimateThing { int dummy; };
+class CAnimateThing { public: int dummy; };
 static void AddCombinationIdles(CThingCreatureBase*, CAnimateThing&) { logc('C'); }
 
 struct CModeStandBase {

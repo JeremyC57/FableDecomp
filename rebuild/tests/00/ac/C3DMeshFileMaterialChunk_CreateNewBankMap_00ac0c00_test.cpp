@@ -15,8 +15,8 @@ typedef unsigned int fable_u32;typedef int fable_i32;typedef unsigned char fable
 #define FABLE_FASTCALL
 #define FABLE_STATIC_ASSERT(x)
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -24,8 +24,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -117,7 +117,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CDataInputStream;struct CDataOutputStream;struct CChunkedFileLoader;struct CChunkedFileSaver;
+class CDataInputStream;class CDataOutputStream;class CChunkedFileLoader;class CChunkedFileSaver;
 struct NativeSuperChunk;
 template<class T> struct CountedPointer;
 struct NativeChunk {
@@ -153,7 +153,7 @@ public:
  NativeChunkVector SubChunks,RegisteredSubChunkTypes;unsigned long CurrentChunkIndex;
 };
 enum EMaterialMapType { MATERIAL_MAP_UNSPECIFIED=-1 };
-struct C3DMeshFileMapChunk:NativeSuperChunk {
+class C3DMeshFileMapChunk:public NativeSuperChunk { public:
  EMaterialMapType MapType;CCharString MapDescription,Filename;unsigned long CRC;
  C3DMeshFileMapChunk(EMaterialMapType type):NativeSuperChunk("MMAP"),MapType(type){}
  virtual const CCharString GetChunkDescription() const; //AC1290
@@ -163,7 +163,7 @@ struct C3DMeshFileMapChunk:NativeSuperChunk {
  virtual NativeChunk* CreateNewInstance() const; //ABFFB0
 };
 void __fastcall DeleteMapChunk(void*); //AC1460: if(p) delete static_cast<C3DMeshFileMapChunk*>(p)
-struct CCPPointerInfo {unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(void* p):RefCount(1),DeleteFunc(DeleteMapChunk),Data(p){} };
+class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(void* p):RefCount(1),DeleteFunc(DeleteMapChunk),Data(p){} };
 template<class T> struct CountedPointer {
  T* Data;CCPPointerInfo* Info;
  __forceinline CountedPointer(T* p):Data(p),Info(p?new CCPPointerInfo(p):0){}
@@ -200,7 +200,7 @@ void NativeSuperChunk::WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const{
 NativeChunk* NativeSuperChunk::InitNewInstance(NativeChunk* p) const{dispatched|=1<<10;return p;}
 const CCharString C3DMeshFileMapChunk::GetChunkDescription() const{dispatched|=1<<1;return CCharString("map",3);}
 const CCharString C3DMeshFileMapChunk::GetChunkInfo() const{dispatched|=1<<2;return CCharString("info",4);}
-struct CDataInputStream{};struct CDataOutputStream{};struct CChunkedFileLoader{};struct CChunkedFileSaver{};
+class CDataInputStream{ public:};class CDataOutputStream{ public:};class CChunkedFileLoader{ public:};class CChunkedFileSaver{ public:};
 void C3DMeshFileMapChunk::ReadFromFile(CDataInputStream&,unsigned long n,CChunkedFileLoader&){dispatched|=1<<7;ok=ok&&n==17;}
 void C3DMeshFileMapChunk::WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const{dispatched|=1<<8;}
 NativeChunk* C3DMeshFileMapChunk::CreateNewInstance() const{dispatched|=1<<9;return 0;}

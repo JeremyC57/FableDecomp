@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSnowTrollDef { int v; };
+class CSnowTrollDef { public: int v; };
 static int g_called = 0;
 void __fastcall CSnowTrollDef_CopyImpl(CSnowTrollDef* self, const CSnowTrollDef* other)
 {

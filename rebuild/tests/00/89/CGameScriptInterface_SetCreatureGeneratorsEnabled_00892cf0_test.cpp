@@ -10,7 +10,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const { return strcmp(PData, text) == 0; }
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -37,7 +37,7 @@ struct CWorldMap_Retail {
     CRegion_Retail& GetRegionEntry(long region) { ++g_entryCalls; g_lastEntry = region; return regions[region]; }
     long GetRegionNumberFromName(const CCharString& name) { ++g_lookups; return g_regionFor; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000() {} virtual void w001() {} virtual void w002() {} virtual void w003() {} virtual void w004() {} virtual void w005() {} virtual void w006() {} virtual void w007() {}
     virtual void w008() {} virtual void w009() {} virtual void w010() {} virtual void w011() {}
     virtual CWorldMap_Retail* GetWorldMap() { ++g_getCalls; return &map; }   // slot 12 (+0x30)
@@ -46,7 +46,7 @@ struct CWorld {
     bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
     CWorldMap_Retail map;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     CWorld*                    World;               // +0x04
     void SetCreatureGeneratorsEnabled(const CCharString& regionName, bool enabled) const;

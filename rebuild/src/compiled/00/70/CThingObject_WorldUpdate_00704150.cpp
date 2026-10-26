@@ -11,7 +11,7 @@
 //   +0x2c bit 23), interface map +0x44; the TC 0x47 component's hold word +0x10 (class not identified).
 // Shape: DiesOff read once into a bool local (bl); the TC 0x47 test is the out-parameter const GetInterface (component left in eax), the shot TC through the
 //   non-const one; the update path is the nested success path returning false, the kill block laid out last.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -70,7 +70,7 @@ public:
     }
 };
 
-struct CThingObjectDef;
+class CThingObjectDef;
 class CThingObject : public CThingGameObject {
 public:
     unsigned char _padb8[0xd0 - 0xb8];

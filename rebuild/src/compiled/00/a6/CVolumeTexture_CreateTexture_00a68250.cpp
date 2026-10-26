@@ -15,7 +15,7 @@ struct CRenderSystem {
     unsigned char      _pad0c[0x58 - 0x0c];
     IDirect3DDevice9*  m_pDevice;           // +0x58
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x60];
     CRenderSystem* m_pRender;               // +0x60
 };
@@ -26,8 +26,8 @@ extern "C" long __stdcall D3DXCreateVolumeTexture(IDirect3DDevice9* device, unsi
 struct C3DVectorI { long X, Y, Z; };
 struct SPixelFormatInfo { long d3dFormat; long rest[8]; };   // 0x24 bytes
 extern SPixelFormatInfo g_pixelFormatInfo[];                 // 0x0129BA40
-struct CPixelFormat { long m_format; };
-struct CVolumeTexture {
+class CPixelFormat { public: long m_format; };
+class CVolumeTexture { public:
     virtual ~CVolumeTexture();
     IDirect3DVolumeTexture9* m_pTexture;    // +0x04
     long                     m_format;      // +0x08

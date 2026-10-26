@@ -3,16 +3,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -24,12 +24,12 @@ static CSoundPair GetSoundPair(CThingCreatureBase* owner, const CCharString& nam
     p.LastSound = std::strcmp(name.m_pData, "SWORD_SWING") == 0 ? 77 : -1;
     return p;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_owner; CThing* m_target; long m_code; CSoundPair m_sound; int m_stringsAlive;
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
         : m_owner(owner), m_target(target), m_code(actionCode), m_sound(sound), m_stringsAlive(g_liveStrings) { }
 };
-struct CCreatureAction_DragonFireBeamInto : CCombatActionBase {
+class CCreatureAction_DragonFireBeamInto : public CCombatActionBase { public:
     float Timer;
     CCreatureAction_DragonFireBeamInto(CThingCreatureBase* owner, CThing* target, float n)
         : CCombatActionBase(owner, target, 250, GetSoundPair(owner, "SWORD_SWING")), Timer(n) { }

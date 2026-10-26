@@ -3,14 +3,14 @@
 // Behaviour test for 0x009B77B0: _Push_heap over pair<unsigned long, CDefClassInfo> (string + alloc func +
 // owning CArray<unsigned long>; the by-value argument is destroyed, freeing its array).
 static int g_frees = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     int Data;
     CCharString() : Data(0) { }
     CCharString(const CCharString& o) : Data(o.Data) { }
     CCharString& operator=(const CCharString& o) { Data = o.Data; return *this; }
     ~CCharString() { ++g_strDtors; }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     CArray(const CArray& o) : _M_start(0), _M_finish(0), _M_end_of_storage(0) { *this = o; }
@@ -26,7 +26,7 @@ template<class T> struct CArray {
     }
     ~CArray() { if (_M_start) { std::free(_M_start); ++g_frees; } }
 };
-struct CDefClassBase;
+class CDefClassBase;
 static CDefClassBase* AllocA() { return 0; }
 struct CDefClassInfo {
     CCharString Name;
@@ -34,7 +34,7 @@ struct CDefClassInfo {
     CArray<unsigned long> GlobalIndices;
 };
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

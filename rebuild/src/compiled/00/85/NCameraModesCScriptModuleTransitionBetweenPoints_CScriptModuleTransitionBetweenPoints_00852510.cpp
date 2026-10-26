@@ -7,8 +7,8 @@
 // Shape: as the five-argument overload 0x008524C0, the six arguments forwarded in order (loaded three at
 // a time through eax/ecx/edx, pushed right to left). `ret 18h`.
 // Layout: see 0x008524C0. Parameter names are descriptive.
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseIntelligentPointer {
     virtual void v00();

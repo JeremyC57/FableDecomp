@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CMiniMapDisplay::DrawMap (0x0082BE60): early-outs (no hero, hero flag, no graphic), the layer
 // choice, the prison-courtyard switch on height 51 and the Headsman's Hill switch on y 4740, then sprite + markers.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CHero { unsigned char Flags91; C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
 static CHero* g_hero = 0;
 static long g_lastLayer = -1, g_lastGraphic = -1, g_sprites = 0, g_markers = 0;

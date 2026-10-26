@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 struct CMember { };
-struct CTargetingDef {
+class CTargetingDef { public:
     void* vtbl;
     int Parent;
     void* f8;

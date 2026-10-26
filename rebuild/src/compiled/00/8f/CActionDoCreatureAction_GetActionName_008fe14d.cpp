@@ -10,7 +10,7 @@
 // call and returns it (eax=this). Model the callee as a real C++ member method
 // (native __fastcall: ecx=this + stack args), and return self.
 
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 
 struct CActionDoCreatureAction {
     int dummy;

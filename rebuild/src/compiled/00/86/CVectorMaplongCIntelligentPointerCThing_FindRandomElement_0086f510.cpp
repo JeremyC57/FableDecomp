@@ -13,7 +13,7 @@ struct CRandomGenerator {
     __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
     __forceinline unsigned long Random(unsigned long n) { unsigned long r = Next(); return n ? r % n : 0; }
 };
-struct CThing;
+class CThing;
 struct CIntelligentPointer_CThing {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;

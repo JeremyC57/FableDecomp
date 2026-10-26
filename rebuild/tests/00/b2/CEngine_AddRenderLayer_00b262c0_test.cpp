@@ -2,7 +2,7 @@
 #include <cstring>
 
 // Model of CEngine::AddRenderLayer (retail 0x00B262C0): report progress, push the layer, return it by reference.
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
 };
@@ -14,7 +14,7 @@ static void DisplayProgress(const CCharString& text, float progress, bool a, boo
     ++g_progressCalls; g_lastText = text.text; g_lastProgress = progress; (void)a; (void)b;
 }
 
-struct CEngineLayerRenderer { int id; };
+class CEngineLayerRenderer { public: int id; };
 
 static int g_overflow = 0;
 struct LayerVector {
@@ -28,7 +28,7 @@ struct LayerVector {
     }
 };
 
-struct CEngine {
+class CEngine { public:
     LayerVector RenderLayers;
     CEngineLayerRenderer& AddRenderLayer(CEngineLayerRenderer* layer)
     {

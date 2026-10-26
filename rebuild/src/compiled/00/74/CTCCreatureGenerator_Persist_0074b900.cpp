@@ -12,7 +12,7 @@
 // slot; the script-name default is a block-scoped local copied from an inline EmptyName() that returns a named
 // local (no NRVO in VC7.1: ctor in the dead argument slot, copy into the frame word, dtor before the Transfer); with the flag set,
 // Active defaults to SelfTrigger and NumTriggersLeft to NumTriggers (the members are passed as the defaults).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const CCharString& other);          // 0x0099EC30
@@ -23,7 +23,7 @@ inline CCharString EmptyName() { CCharString name; return name; }
 
 struct CDefIndexArray { unsigned char _pad[0x10]; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, CDefIndexArray& value);                                 // 0x0074DE50
     void Transfer(const char* name, float& value, const float& defaultValue);               // 0x00410620
     void Transfer(const char* name, bool& value, const bool& defaultValue);                 // 0x004045C0
@@ -43,7 +43,7 @@ struct TGenerationParameters {
     CCharString ScriptNameOfAllGeneratedCreatures;  // +0x48
 };
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     unsigned char         _pad04[0x08];             // +0x04 CTCBase
     CDefIndexArray        CreatureFamilies;         // +0x0c
     unsigned char         _pad1c[0x0c];             // +0x1c CreatedCreatures (retail size)

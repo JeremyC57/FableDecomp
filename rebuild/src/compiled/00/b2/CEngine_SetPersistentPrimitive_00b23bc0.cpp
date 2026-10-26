@@ -1,5 +1,5 @@
-struct CEnginePrimitiveHandle {};
-struct CEnginePrimitive {};
+class CEnginePrimitiveHandle { public:};
+class CEnginePrimitive { public:};
 
 struct CGlobalTarget {
     void RealSet(CEnginePrimitiveHandle* h, CEnginePrimitive* p, unsigned long x, int flag);

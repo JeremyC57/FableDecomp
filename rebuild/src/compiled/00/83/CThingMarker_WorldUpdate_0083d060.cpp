@@ -7,7 +7,7 @@
 // Tiny-body shape `IsStateOne` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. `this` passes through ecx untouched to the callee; the `dec/neg/sbb/inc` tail is VC's `== 1` on a byte.
-struct CThingMarker {
+class CThingMarker { public:
     unsigned char GetState();             // 0x00838BA0
     unsigned char WorldUpdate();                   // a byte result: a `bool` return would widen through eax
 };

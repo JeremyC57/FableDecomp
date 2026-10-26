@@ -12,17 +12,17 @@
 //   Release) read twice; the orientation is a local copy, the empty name a named local; the created object's component is
 //   the HasTC + end/hit ternary lookup.
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -75,7 +75,7 @@ public:
 class CThingObject : public CThing {};
 CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long mapLevel, const CRightHandedSet* orientation,
                                 unsigned long flags, const CCharString& scriptName);   // 0x00703210
-struct CSmashableDef {
+class CSmashableDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long          m_refCount;                           // +0x04
@@ -94,7 +94,7 @@ struct CTCSmashableComponent {                          // interface 0x4E (named
     unsigned char _pad00[0x0c];
     long          LastWorldFrameHit;                    // +0x0c
 };
-struct CTCSmashableBase {
+class CTCSmashableBase { public:
     void*       __vftable;                              // +0x00 (CTCBase)
     CThing*     ParentThing;                            // +0x04
     bool        ToBeRemoved;                            // +0x08

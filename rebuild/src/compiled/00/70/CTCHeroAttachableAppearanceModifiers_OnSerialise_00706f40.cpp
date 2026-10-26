@@ -13,9 +13,9 @@
 // into a named local before the element assignment (RHS first); the name vector's destructor is inline (element destructor
 // loop over a by-value range, then the member re-read for free).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
-struct CThing;
-struct CCharStringData;
-struct CCharString {
+class CThing;
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
@@ -40,18 +40,18 @@ struct CCharStringVector {                              // STLport vector<CCharS
     unsigned long size() const { return _M_finish - _M_start; }
     CCharString& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CDefString {
+class CDefString { public:
     long ID;
 };
 struct CDefStringTable {
     CCharString GetString(CDefString id);               // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     void Transfer(const char* name, CCharStringVector& value);   // 0x0049B8D0
@@ -74,14 +74,14 @@ struct CModifierVectorVector {
     CModifierVector* _Myend;
     CModifierVector& operator[](long i) { return _Myfirst[i]; }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
     CDefinitionManager* GetDefinitions();               // 0x006869D0
 };
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                 // +0x0c secondary vptr
     unsigned long FrameLastChanged;                     // +0x10
     bool Changed : 1;                                   // +0x14 bit 0

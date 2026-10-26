@@ -1,7 +1,7 @@
 // Behaviour test for CTCTavernGameCardBase::NewGame @ 0x008F0930: base NewGame, selection state and counter reset, state 7.
 #include <cstdio>
-struct CCard { int id; };
-struct CTCTavernGame {
+class CCard { public: int id; };
+class CTCTavernGame { public:
     long BaseBet, CurrentMoney; bool GameFinished, NewBestScore, GameStarted; long state;
     void NewGameBase() { CurrentMoney -= BaseBet; NewBestScore = false; GameStarted = false; }
     void SetState(long s) { state = s; }

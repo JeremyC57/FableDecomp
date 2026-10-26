@@ -12,13 +12,13 @@
 // value pointer: CPersistTraits<C3DVector>::TransferBinaryIn, `this` unused, `ret 8`. The vector
 // comes back in a 12-byte frame temporary and is copied to *value as a POD under /Os (three
 // `movsd` through esi/edi).
-struct C3DVector {
+class C3DVector { public:
     float x;
     float y;
     float z;
 };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     C3DVector Read3DVector();              // 0x009950F0
 };
 

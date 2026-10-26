@@ -12,9 +12,9 @@
 // Matching: the bool is tested in place (`cmp byte ptr [eax],0`) with the output string loaded into ecx
 // before the branch; each arm keeps its own `call ; ret 8` (no tail jump: the callee pops one argument,
 // this function two); the true arm comes first, so the source tests `if (*m_pValue)`.
-struct CPersistContext;
+class CPersistContext;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString& operator+=(const char* text);   // append a C string (0x0099F100)
 };

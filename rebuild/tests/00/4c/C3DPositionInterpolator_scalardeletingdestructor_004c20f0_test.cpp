@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DPositionInterpolator {
+class C3DPositionInterpolator { public:
     void* vftable;
     int destroyed;
 };

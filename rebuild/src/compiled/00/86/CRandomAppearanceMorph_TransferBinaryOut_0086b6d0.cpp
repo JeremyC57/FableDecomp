@@ -10,13 +10,13 @@
 // longs, a flag byte.
 // Shape: fixed-count part loops (`< 3`, strength-reduced to byte offsets), size() loops with unsigned `jbe` guards
 // and down-counted trip counts.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                        // 0x00993E30
     void WriteULong(unsigned long value);              // 0x00993EA0
     void WriteLong(long value);                        // 0x00993EB0
 };
 
-template <class T> struct CArray {                     // STLport vector (12 bytes)
+template <class T> class CArray { public:                     // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -24,7 +24,7 @@ template <class T> struct CArray {                     // STLport vector (12 byt
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
 
-struct CTextureMorphEntry {                            // pair<unsigned long, CTextureMorph> (12 bytes)
+class CTextureMorphEntry { public:                            // pair<unsigned long, CTextureMorph> (12 bytes)
     unsigned long Key;
     long          A;
     long          B;
@@ -54,7 +54,7 @@ struct CSkeletalMorphMap {                             // CVectorMap<long, CSkel
     long                        Compare;
 };
 
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> > BodyParts;          // +0x00
     CArray<CTextureMorphMap>       BodyPartTextureMorphs;   // +0x0c
     CSkeletalMorphMap              SkeletalMorphs;     // +0x18

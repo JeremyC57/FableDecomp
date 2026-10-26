@@ -3,15 +3,15 @@
 #include <cstring>
 
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString() { Text[0] = 0; ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_strings; }
     ~CCharString() { --g_strings; }
 };
 inline CCharString EmptyString() { CCharString empty; return empty; }
-struct CDefString { long m_tablePos; CDefString() : m_tablePos(0) {} };
-struct CDefinitionManager {
+class CDefString { public: long m_tablePos; CDefString() : m_tablePos(0) {} };
+class CDefinitionManager { public:
     static CDefinitionManager& Get() { static CDefinitionManager m; return m; }
     CDefString GetDefNameFromGlobalIndex(long index) { CDefString s; s.m_tablePos = index * 10; return s; }
     long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.Text, "ATMOS_CAVE") == 0 ? 7 : -5; }
@@ -19,7 +19,7 @@ struct CDefinitionManager {
 static long g_savedLong = 0, g_longDefault = 0;
 static const char* g_lastName = 0;
 static bool g_stringDefaultEmpty = false;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer_007e39d0(const char* name, long& value, const long& defaultValue) { g_lastName = name; g_savedLong = value; g_longDefault = defaultValue; }

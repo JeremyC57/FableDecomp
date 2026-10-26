@@ -1,21 +1,21 @@
 // behaviour test for CThingCreatureBase::AnimExists (0x00662CC0): mode-filtered lookup, optional any-group fallback, def released on every exit
 #include <cstdio>
-struct CCharString { int m_id; };
-struct CAnimFilterBase { int m_kind; CAnimFilterBase(int k) : m_kind(k) {} };
+class CCharString { public: int m_id; };
+class CAnimFilterBase { public: int m_kind; CAnimFilterBase(int k) : m_kind(k) {} };
 struct CAnimFilterNoGroup : CAnimFilterBase { CAnimFilterNoGroup() : CAnimFilterBase(0) {} };
 static int g_modeHas = -1, g_anyHas = -1, g_lookups = 0;
-struct CAnimationSet { bool AnimExists(const CCharString& n, const CAnimFilterBase& f) const
+class CAnimationSet { public: bool AnimExists(const CCharString& n, const CAnimFilterBase& f) const
     { ++g_lookups; return f.m_kind == 0 ? n.m_id == g_anyHas : n.m_id == g_modeHas; } };
 static int g_destroyed = 0;
-struct CDefPointeeBase { long RefCount; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() {} };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) {} };
+class CDefPointeeBase { public: long RefCount; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() {} };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) {} };
 template <class T> struct CHeldDef { T* Object; CHeldDef(T* o) : Object(o) {}
     ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } } T* operator->() const { return Object; } };
-struct CAppearanceDef : CDefPointeeBase { CAnimationSet Animation; };
+class CAppearanceDef : public CDefPointeeBase { public: CAnimationSet Animation; };
 static CAppearanceDef g_def;
-struct CThingBaseDef { bool GetSubDef(CDefPointer<CAppearanceDef>* out) const { ++g_def.RefCount; out->Object = &g_def; return true; } };
+class CThingBaseDef { public: bool GetSubDef(CDefPointer<CAppearanceDef>* out) const { ++g_def.RefCount; out->Object = &g_def; return true; } };
 struct CCreatureModeBase { CAnimFilterBase m_filter; CCreatureModeBase() : m_filter(1) {} const CAnimFilterBase& GetAnimFilter_slot4() { return m_filter; } };
-struct CTCCreatureModeManager { CCreatureModeBase m_mode; CCreatureModeBase* GetCurrentMode() { return &m_mode; } };
+class CTCCreatureModeManager { public: CCreatureModeBase m_mode; CCreatureModeBase* GetCurrentMode() { return &m_mode; } };
 class CThingCreatureBase { public:
     CThingBaseDef* PBaseDef; CTCCreatureModeManager* PTCModeManager;
     virtual bool AnimExists(const CCharString& name, bool useModeFilterOnly) const

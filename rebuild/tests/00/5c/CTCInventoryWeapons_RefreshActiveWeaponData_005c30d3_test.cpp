@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour of CTCInventoryWeapons::RefreshActiveWeaponData (0x005C30D3).
-struct CThing { bool m_alive; long m_refreshes; };
+class CThing { public: bool m_alive; long m_refreshes; };
 struct CIntelligentPointer { CThing* m_p; CThing* GetPItem() { return m_p; } };
 bool IS_THING_ALIVE(CIntelligentPointer* pointer) { return pointer->m_p && pointer->m_p->m_alive; }
 struct CTCInventoryBase_Retail { void RefreshItemData(CThing* item) { ++item->m_refreshes; } };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     CIntelligentPointer PActiveMeleeWeapon; CIntelligentPointer PActiveRangedWeapon;
     void RefreshActiveWeaponData()
     {

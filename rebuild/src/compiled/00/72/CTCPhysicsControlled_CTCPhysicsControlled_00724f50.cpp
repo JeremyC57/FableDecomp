@@ -6,9 +6,9 @@
 // Shape: everything is stored before the vtable as body assignments in source order: the bit pair cleared in one `and 0FCh`,
 //   then the two floats from the xor zero register (as initialisers the floats are stored first).
 // Leaf: ??0CTCPhysicsControlled
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };

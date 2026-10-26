@@ -15,7 +15,7 @@
 // to just before the Blinking store.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -40,7 +40,7 @@ struct CRetailList {                                        // retail std::list:
     }
 };
 
-struct CTCCreatureExpression : CTCBase_Calls {              // vtable 0x012665CC
+class CTCCreatureExpression : public CTCBase_Calls { public:              // vtable 0x012665CC
     CRetailList<CExpressionState> ExpressionStates;         // +0x0c
     bool                          Blinking;                 // +0x10
     virtual void v00();

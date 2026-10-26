@@ -1,12 +1,12 @@
 // Behaviour test for 0x00E8AF70 CV_FisticuffsClubScript::AddQuestInfo: panel shown, bar arguments, id stored.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CRGBColour {
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool shown; float value, maxValue, scale; CRGBColour c1, c2; char icon[32], text[32];
     CGameScriptInterface() : shown(false), c1(0,0,0,0), c2(0,0,0,0) { }
     virtual void DisplayQuestInfo(bool show) { shown = show; }

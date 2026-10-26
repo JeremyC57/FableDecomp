@@ -12,7 +12,7 @@ struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned int UsingCom
 struct CPlayerMethods:CPlayer {CThingNative* GetHeroThing();}; //00487DC0
 struct CPlayerManagerMethods:CPlayerManager {CPlayerMethods* GetMainPlayer();}; //00449970
 struct CTCInventoryWeaponsNative {unsigned char Base[0x168];long PreviouslyWieldedMeleeWeaponDefIndex,PreviouslyWieldedRangedWeaponDefIndex; __forceinline long GetPreviousRanged()const{return PreviouslyWieldedRangedWeaponDefIndex;}}; // donor184/188; native168/16c
-struct CDefString {long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
+class CDefString { public:long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
 struct CDefinitionManagerMethods {CDefString GetDefNameFromGlobalIndex(long);}; //009ACCC0
 struct CDefStringTable {CCharString GetString(long);}; //009D49B0
 extern CDefStringTable g_DefStringTable; //013CA828

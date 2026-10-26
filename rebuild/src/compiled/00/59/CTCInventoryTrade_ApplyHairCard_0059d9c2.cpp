@@ -14,7 +14,7 @@
 // The local view is named CTCInventoryTrade_Retail so it does not shadow the PDB header engine/CTCInventoryTrade.h.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                      // 0x00410DE0 (std::bitset::test)
@@ -27,7 +27,7 @@ struct CInterfaceMap {                        // CVectorMap<ETCInterfaceType, CT
     SEntry* LowerBound(const long* type);     // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                  // +0x20
     unsigned char _pad_0x21[0x23];
@@ -47,11 +47,11 @@ struct CThing {
     }
 };
 
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     void AddAppearanceModifierWithReplace(long modifierDefIndex);   // 0x00706950
 };
 
-struct CHairCardDef {
+class CHairCardDef { public:
     unsigned char _pad_0x00[0x28];
     long AppearanceModifier;                  // +0x28
 };

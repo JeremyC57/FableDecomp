@@ -6,7 +6,7 @@
 // Shape: `if (creature->GetInterface(&p, 0xD3)) p->ChooseNewIdle();` -- the lookup's bool is tested so the
 // miss path falls straight to the epilogue; frame = one `push ecx` for the key temporary. The engine header
 // flattens the base into pads, so the base layout is modelled locally (PDB names).
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -39,12 +39,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18 CThingAICreature*
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -55,7 +55,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CTCIdleScheduler {                       // interface type 0xD3 component
+class CTCIdleScheduler { public:                       // interface type 0xD3 component
     void ChooseNewIdle();                       // 0x00801A50
 };
 

@@ -19,7 +19,7 @@ static int NumOf(const CCharString& s) { const char* p = s.c_str(); while (*p &&
 static bool Same(const CCharString& s, const char* prefix, int k) { char buf[32]; std::sprintf(buf, "%s%03d", prefix, k); return std::strcmp(s.c_str(), buf) == 0; }
 static bool StrLess(const CCharString& a, const CCharString& b) { return std::strcmp(a.c_str(), b.c_str()) < 0; }
 
-struct C3DVector {
+class C3DVector { public:
     int data[3];
     C3DVector() { data[0] = data[1] = data[2] = 0; }
     C3DVector(const C3DVector& o) { data[0] = o.data[0]; data[1] = o.data[1]; data[2] = o.data[2]; }

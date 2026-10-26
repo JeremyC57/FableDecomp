@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway (0x0093D3A0): model copy with stub callees.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -15,14 +15,14 @@ struct CPhysicsBody {
     const C3DVector& GetPrevPosition() const { return PrevPosition; }
     C3DVector GetFacing() const { return Facing; }
 };
-struct CThing;
-struct CTCPerceiveThing {
+class CThing;
+class CTCPerceiveThing { public:
     CThing* perceived; float range;
     CThing* GetPerceivedThing() { return perceived; }
     float GetPerceptionRange() { return range; }
 };
-struct CTCAIScratchpad { float CombatNearbyEnemyFleeingBreakOffRange; };
-struct CThing {
+class CTCAIScratchpad { public: float CombatNearbyEnemyFleeingBreakOffRange; };
+class CThing { public:
     CPhysicsBody* m_pBody;
     CTCPerceiveThing* perceive;
     CTCAIScratchpad* scratchpad;
@@ -33,7 +33,7 @@ struct CThing {
     template<class T> T* GetTC(long) const { return scratchpad; }
 };
 struct CPointer { CThing* item; CThing* GetPItem() const { return item; } };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 struct CAIStateGroup_MeleeCombatNearbyBase {
     CAIBrain* PBrain; CPointer PEnemy;

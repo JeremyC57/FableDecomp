@@ -13,12 +13,12 @@ typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
 
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     virtual void Destroy() { ++g_destroyed; }
     LONG32 RefCount;
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     LONG32 GetRefCount() const { return Data ? Data->RefCount : 0; }
     void Release()
@@ -32,7 +32,7 @@ template <class T> struct CIVCountedPointer {
         Data = 0;
     }
 };
-struct CPhysicsMeshInfo { unsigned char pad[12]; CIVCountedPointer<CIVCountedPointeeBase> MeshData; };
+class CPhysicsMeshInfo { public: unsigned char pad[12]; CIVCountedPointer<CIVCountedPointeeBase> MeshData; };
 struct CMeshData {
     CIVCountedPointer<CIVCountedPointeeBase> m_resource;
     CPhysicsMeshInfo* m_pOwner;

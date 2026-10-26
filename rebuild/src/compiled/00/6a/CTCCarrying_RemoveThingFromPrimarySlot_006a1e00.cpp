@@ -10,7 +10,7 @@
 // Layout: CTCBase ParentThing +4; CThing bitset +0x20, map +0x44, dead flag +0x91; the 0x1A component's armed pointer +0x10.
 // Shape: the whole body sits in `if (!IsPrimarySlotEmpty()) { ... return thing; } return 0;` (an early `return 0` is laid
 // out first); HasTC + ternary GetTC lookups sharing one key slot; `this` is homed in the frame for the final RemoveThing.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     SEntry* LowerBound(const long* type) const;         // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -45,17 +45,17 @@ struct CTCInterface1A {
     void*         Armed;                                // +0x10
     void OnUseFailed();                                 // 0x005D8E50
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool IsProjectileWeapon();                          // 0x005DAA40
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
     bool IsMeleeWeapon();                               // 0x005DAA70
 };
-struct CTCAnimatingObject {
+class CTCAnimatingObject { public:
     void PlayDefaultAnimation();                        // 0x007F8F30
 };
-struct CTCCarrying;
+class CTCCarrying;
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
-struct CTCCarrying {
+class CTCCarrying { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     bool IsPrimarySlotEmpty();                          // 0x006A1270

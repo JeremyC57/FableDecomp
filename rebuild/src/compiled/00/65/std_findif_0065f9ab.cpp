@@ -44,7 +44,7 @@ InputIter __fastcall __find_if(InputIter first, InputIter last, Predicate pred, 
     return first;
 }
 }
-class HasGuardProperty {                          // empty functor (its operator() never reads `this`)
+struct HasGuardProperty {                          // empty functor (its operator() never reads `this`)
 public:
     HasGuardProperty() {}
     bool operator()(CIntelligentPointer<CThingAICreature> creature) const;   // 0x0065F152 (out of line)

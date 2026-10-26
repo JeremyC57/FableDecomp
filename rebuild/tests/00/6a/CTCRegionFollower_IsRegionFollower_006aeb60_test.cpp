@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBaseIntelligentPointer {
     CThing* PData;
     CThing* GetPItem() const { return PData; }
@@ -18,7 +18,7 @@ struct CRetailList {
     iterator begin() const { return iterator(head->next); }
     iterator end() const { return iterator(head); }
 };
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     CRetailList<CBaseIntelligentPointer> Followers;
     bool IsRegionFollower(CThing* thing)
     {

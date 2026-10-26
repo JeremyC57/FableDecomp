@@ -24,11 +24,11 @@
 #undef CThing
 #include "fable_string.h"
 
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -101,8 +101,8 @@ struct CCreatureActionBase {
     virtual bool WaitForMeshToLoad() const;
     unsigned char nativeFields[0xa4]; // native ActionBase70 slots, size0xa8
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -148,12 +148,12 @@ struct CCombatActionBase : CCreatureActionBase {
     unsigned char nativeCombatFields[0x6c]; // retail extends the native 0xa8 action base to 0x114
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
-struct CCreatureAction_VillagerAttackKnockdown : CCombatActionBase {
+class CCreatureAction_VillagerAttackKnockdown : public CCombatActionBase { public:
     bool Blockable;                   // native +0x114; PDB donor offset +0x12c
     unsigned char nativePadding[3];
     CCreatureAction_VillagerAttackKnockdown(CThingCreatureBase& owner, CThingCreatureBase& target, bool blockable); // 0x0097CF90
 };
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:
     long InterruptTime; // +0x114 native; intentionally untouched by this ctor
     virtual ~CCreatureAction_InterruptableMidAttack();
     virtual CCreatureActionBase* Clone() const;
@@ -195,7 +195,7 @@ struct CCountedPointer {
         }
     }
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     void* nativeVptr; // data-only vptr; no sequence vtable is emitted by this caller
     unsigned char nativePrefix[0x18];
     CThingCreatureBase* Creature; // native +0x1c (donor base header has a 4-byte difference)

@@ -4,7 +4,7 @@
 //         (`mov edx,[eax] ; mov [ecx+0D18h],edx`), so the float axes are written through float views of those words
 //         (a float-to-long assignment would emit an _ftol call).
 #include "engine/CJoystickDX.h"
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 
 void __fastcall CJoystickDX_SetAxes(CJoystickDX* joystickDX, int /*edx*/, const C2DVector& v)
 {

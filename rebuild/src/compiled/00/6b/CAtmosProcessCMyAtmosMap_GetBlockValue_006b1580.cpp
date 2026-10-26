@@ -7,21 +7,21 @@
 // virtual call is evaluated before the argument is loaded (an inline expression pushes the argument first); the
 // long result (`xor eax,eax`) and the pass-through argument make the forwarding a sibling-call `jmp`. The byte
 // at +0x4c of the map is a disabled flag.
-struct C2DCoordI;
+class C2DCoordI;
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char _pad[0x4c];
     bool m_disabled;                                     // +0x4c
     long GetBlockValue(const C2DCoordI& block);          // 0x0063A6E0
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetMap();                         // slot 12 (+0x30)
 };
 
-struct CGame {
+class CGame { public:
     unsigned char _pad[0x24];
     CWorld* m_pWorld;                                    // +0x24
 };

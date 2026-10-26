@@ -1,7 +1,7 @@
 // Behaviour test for 0x0084C170 CCreatureAction_ShopkeeperGetOut copy constructor.
 #include <cstdio>
-struct CTCShop { int id; };
-struct CCreatureActionBase { int m_base; CCreatureActionBase() : m_base(5) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
+class CTCShop { public: int id; };
+class CCreatureActionBase { public: int m_base; CCreatureActionBase() : m_base(5) { } CCreatureActionBase(const CCreatureActionBase& o) : m_base(o.m_base) { } };
 struct CAction : CCreatureActionBase {
     CTCShop* TCShop; int Goods;
     float PosX, PosY, PosZ, UpX, UpY, UpZ, ForwardX, ForwardY, ForwardZ;

@@ -7,13 +7,13 @@ struct CThing_Retail {
     unsigned char m_91_0 : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
-struct CPlayer {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
     void RemoveMode(long mode);                    // 0x00634190
 };
 bool __fastcall IsThingToKeepStrafing_0068eb20(CThing_Retail* thing);   // 0x0068EB20
-struct CProcessedInput;
-struct CInputProcessWatchForRangedWeaponThirdPersonModeTermination {
+class CProcessedInput;
+class CInputProcessWatchForRangedWeaponThirdPersonModeTermination { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void Update(CProcessedInput& processed);
     unsigned char _pad04[0x14];

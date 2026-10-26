@@ -3,11 +3,11 @@
 #include <cstdio>
 #include <string>
 
-struct CConsole {
+class CConsole { public:
     std::string Log;
     void SendMessageToUser(const std::string& m) { Log += m; Log += "\n"; }
 };
-struct CStringParser {
+class CStringParser { public:
     std::string Rest;
     CStringParser(const std::string& line) {
         std::string::size_type sp = line.find(' ');

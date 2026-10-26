@@ -30,7 +30,7 @@ public:
 };
 class CChecksumCacheFile {
 public:
-    class CEntry {
+    struct CEntry {
     public:
         CDateAndTime  TimeStamp;                            // +0x00
         unsigned long Checksum;                             // +0x1c

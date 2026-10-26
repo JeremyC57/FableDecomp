@@ -1,23 +1,23 @@
 #include <cstdio>
 static int g_calls = 0;
-struct C3DAnimationStateBase {
+class C3DAnimationStateBase { public:
     int m_validated;
     C3DAnimationStateBase() : m_validated(0) {}
     virtual ~C3DAnimationStateBase() {}
     virtual void Validate() { ++m_validated; ++g_calls; }
 };
-struct C3DAnimationStateAlpha : C3DAnimationStateBase { float AlphaWeight; };
-template <class T> struct CArray {
+class C3DAnimationStateAlpha : public C3DAnimationStateBase { public: float AlphaWeight; };
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     unsigned long Size() const { return (unsigned long)(m_pEnd - m_pBegin); }
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-template <class T> struct CIVCountedPointer { T* m_pObject; T* operator->() const { return m_pObject; } };
+template <class T> class CIVCountedPointer { public: T* m_pObject; T* operator->() const { return m_pObject; } };
 struct CSharedData {
     CIVCountedPointer<C3DAnimationStateBase> BaseAnimation;
     CArray<C3DAnimationStateAlpha> CombinationBlends;
 };
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     CSharedData* Data;
     void Validate() const
     {

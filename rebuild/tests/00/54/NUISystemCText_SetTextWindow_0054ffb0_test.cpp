@@ -1,6 +1,6 @@
 // Behaviour test for 0x0054FFB0 NUISystem::CText::SetTextWindow: copies the 2D box into the text's Window
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CText {
 public:
     virtual void SetTextWindow(C2DBoxF& window);

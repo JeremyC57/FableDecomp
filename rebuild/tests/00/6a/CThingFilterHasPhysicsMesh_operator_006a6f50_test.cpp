@@ -1,14 +1,14 @@
 // Behaviour test for 0x006A6F50 CThingFilter_HasPhysicsMesh::operator()
 #include <cstdio>
-struct CPhysicsMesh { int x; };
-struct CTCPhysicsBase {
+class CPhysicsMesh { public: int x; };
+class CTCPhysicsBase { public:
     CPhysicsMesh* m_mesh;
     virtual CPhysicsMesh* GetPhysicsMesh() { return m_mesh; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
 };
-struct CThingFilter_HasPhysicsMesh {
+class CThingFilter_HasPhysicsMesh { public:
     bool operator()(CThing* thing) const
     {
         CTCPhysicsBase* physics = thing->PhysicsTC;

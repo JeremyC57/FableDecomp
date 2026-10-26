@@ -11,7 +11,7 @@
 // `this` uses engine/CScriptGameResourceObjectScriptedThing.h (PThing reached through a local view).
 #include "engine/CScriptGameResourceObjectScriptedThing.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -47,7 +47,7 @@ struct CIntelligentPointer_Retail {
     CThing_Retail* GetPItem();                     // 0x00A01B50
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void CleanupAllActions();                      // 0x00713630
 };
 

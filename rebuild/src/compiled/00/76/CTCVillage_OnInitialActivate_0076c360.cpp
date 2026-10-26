@@ -6,7 +6,7 @@ struct Callee;
 // The engine callee at 0x76c000: __fastcall (ecx, edx, stack arg)
 extern void __fastcall Callee_Do(Callee* ecx, void* edx, unsigned char arg);
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee* field0;   // +0x00  -> passed in ecx
     void*   ParentThing;   // +0x04  -> passed in edx
     // +0x08 padding

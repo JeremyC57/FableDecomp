@@ -8,7 +8,7 @@
  * so the exact target need not match.
  */
 
-struct CMeleeCombatKnockdownEffects;
+class CMeleeCombatKnockdownEffects;
 
 /* extern target of the tail jump (relocation-masked address/operand) */
 extern void __fastcall CMeleeCombatKnockdownEffects_Copy_impl(

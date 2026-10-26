@@ -23,7 +23,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CBaseClass {                                  // the CStringParser root (polymorphic)
+class CBaseClass { public:                                  // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                   // 0x0099A2E0
 };
@@ -31,7 +31,7 @@ struct CStringParserCommentList {                    // retail std::list<CString
     void* m_pHead;
     ~CStringParserCommentList();                     // 0x004046B0
 };
-struct CStringParser : CBaseClass {                  // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char*                    String;                 // +0x04
     unsigned long            BaseLineOffset;         // +0x08
     CCharString              Filename;               // +0x0c
@@ -47,8 +47,8 @@ class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CSymbolMap;
-struct CPersistContext {                             // retail 0x2c bytes, trivial destructor
+class CSymbolMap;
+class CPersistContext { public:                             // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0

@@ -11,24 +11,24 @@
 // LoadingScreenTextures +0x1c) and the flags 0x10 lower (DebugDisplay +0x78, Initialised +0x79, BlackScreen +0x7b), as the
 // landed RenderProgress 0x00499880.
 // Shape: a named C2DBoxF local (a temporary schedules its zero X0/Y0 stores early); the black CRGBColour temporary reuses the dead `clearScreen` argument slot; each texture loop recomputes the size.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0, Y0, X1, Y1;
     C2DBoxF(float x0, float y0, float x1, float y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CRenderManager {
+class CRenderManager { public:
     bool Draw2DBox(const C2DBoxF& box, const CRGBColour& colour, long flags);   // 0x009DE3F0
     void Render2DDrawList(bool wait);                  // 0x009DA9F0
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     void*           __vftable;
     void*           SystemManager;                     // +0x04
     CRenderManager* PRenderManager;                    // +0x08
@@ -38,7 +38,7 @@ struct CDisplayManager {
     void EndRender();                                  // 0x009BEF50
     void SwapScreens();                                // 0x009BEEB0
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                   // +0x60
 };
@@ -49,7 +49,7 @@ extern bool   g_ProgressDisplayEnabled;                // 0x01375445
 extern bool   g_ProgressDisplaySuppressed;             // 0x013B89D3
 extern bool   g_ProgressBlackScreenA;                  // 0x013B89C1
 extern bool   g_ProgressBlackScreenB;                  // 0x013B89C0
-struct CTexture {                                      // 8 bytes
+class CTexture { public:                                      // 8 bytes
     void* __vftable;
     void* PData;
     void Uninitialise();                               // 0x009F9F70
@@ -63,7 +63,7 @@ struct TextureVector {                                 // STLport vector<CTextur
     CTexture* erase(CTexture* first, CTexture* last);  // 0x0049B3B0
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void UninitialiseGraphics();                       // 0x00437570
 };
 extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790

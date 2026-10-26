@@ -10,7 +10,7 @@
 // Shape: STLport's `resize(n) { resize(n, T()); }`: the default element is built in a 0x10-byte frame slot
 // (three string constructors, then the two bools zeroed), passed BY ADDRESS together with the count, and
 // destroyed member by member in reverse order after the call. `ret 4`: one stack argument.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0

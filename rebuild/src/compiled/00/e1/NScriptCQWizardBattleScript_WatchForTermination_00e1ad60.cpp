@@ -13,25 +13,25 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CWideString {                                     // 4 bytes
+class CWideString { public:                                     // 4 bytes
     void* PStringData;
     CWideString(const unsigned short* text);             // 0x0099B6B0 (wchar_t is unsigned short in the retail build)
     ~CWideString();                                      // 0x0099B510
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -48,12 +48,12 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}                                   // out of line 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const; virtual void v06() const; virtual void v07() const; virtual void v08() const;
@@ -68,7 +68,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual void v73() const; virtual void v74() const;
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
 };
-struct CGameScriptInterface {                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c) 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -157,7 +157,7 @@ struct CGameScriptInterface {                           // retail vtable 0x01260
     virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName();   // slot 655 (+0xa3c) 0x00891880
 };
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

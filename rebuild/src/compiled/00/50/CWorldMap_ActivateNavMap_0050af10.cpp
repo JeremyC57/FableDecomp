@@ -13,12 +13,12 @@
 //   "NULL" literal is an implicit temporary homed in the dead `map` argument slot; the derived destructor frees its
 //   two POD vectors inline (zero held in esi) and calls the out-of-line base destructor.
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI() : TLX(0), TLY(0), BRX(0), BRY(0) { }
 };
@@ -34,9 +34,9 @@ template <class T> struct vector {                     // STLport vector of PODs
     }
 };
 struct CNavigationLayerUpdate;
-struct CNavigationTransitionPoint;
-struct CNavigationPosition { float X, Y, Z; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class CNavigationTransitionPoint;
+class CNavigationPosition { public: float X, Y, Z; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CVectorOfLayerUpdates {                         // vector<CNavigationLayerUpdate> (its dtor lives in the base dtor)
     CNavigationLayerUpdate* _M_start;
     CNavigationLayerUpdate* _M_finish;
@@ -49,30 +49,30 @@ template <class T> struct CPodVector {                 // base members: construc
     T* _M_end_of_storage;
     CPodVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CNavigationAreaUpdate {                         // 0x30 bytes in retail (PDB 0x40: four 16-byte vectors)
+class CNavigationAreaUpdate { public:                         // 0x30 bytes in retail (PDB 0x40: four 16-byte vectors)
     CVectorOfLayerUpdates                  NavigationLayers;   // +0x00
     CPodVector<CNavigationTransitionPoint> TransitionPoints;   // +0x0C
     CPodVector<CNavigationPosition>        ActionPoints;       // +0x18
     CPodVector<unsigned char>              TopologyWeights;    // +0x24
     ~CNavigationAreaUpdate();                          // 0x0051D530
 };
-struct CNavigationAreaInit : CNavigationAreaUpdate {   // 0x5C bytes in retail (PDB 0x74)
+class CNavigationAreaInit : public CNavigationAreaUpdate { public:   // 0x5C bytes in retail (PDB 0x74)
     C2DBoxI                     WorldArea;             // +0x30
     long                        MapIndex;              // +0x40
     vector<C2DBoxF>             DetailedAreas;         // +0x44
     vector<CNavigationPosition> NavRegionSeeds;        // +0x50
     CNavigationAreaInit() : MapIndex(0) { }
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapLoaded(long map) const;                    // 0x00A14E80
     void AddNavigationMap(long map, const CNavigationAreaInit& init);   // 0x00A156D0
     void ActivateNavigationMap(long map);                          // 0x00A16050
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x48];
     CNavigatorManager* PNavigationManager;             // +0x48
 };
-struct CMapInfo {                                      // 0x48 bytes
+class CMapInfo { public:                                      // 0x48 bytes
     C2DBoxI       Area;                                // +0x00
     unsigned char _body[0x38];
 };

@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -19,7 +19,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     void operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; }
 };
-struct C2DBoxI { long Left; long Top; long Right; long Bottom; };
+class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
 class CThing;
 struct CThingPtrVector {                            // retail STLport vector<CThing*> (12 bytes)
     CThing** first;
@@ -28,7 +28,7 @@ struct CThingPtrVector {                            // retail STLport vector<CTh
     CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
     ~CThingPtrVector() { if (first) std::free(first); }
 };
-struct CPhysicsDef;
+class CPhysicsDef;
 class CThing {
 public:
     unsigned char  _pad00[0x20];

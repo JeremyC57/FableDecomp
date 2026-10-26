@@ -14,7 +14,7 @@
 //   copy of X on the x87 stack), with `dot >= 0 && length < limit` as one condition; the length limit is `!(length > 0.0001f)`.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -28,12 +28,12 @@ struct CPhysicsHit {
     C3DVector Normal;
     float     Time;
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     unsigned char Data[0x40];
     ~CPhysicsMeshObject();                                  // 0x00A127D0
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CPhysicsHit& hit) const;   // 0x00A120D0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF10(7) VF10(8)
@@ -41,7 +41,7 @@ struct CTCPhysicsBase {
     virtual void* GetPhysicsMesh() const;                   // slot 93 (+0x174)
     CPhysicsMeshObject GetPhysicsMeshObject() const;        // 0x006B0850
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                              // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }

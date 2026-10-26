@@ -10,9 +10,9 @@
 // Shape: the manager in a named local is loaded into ecx before the argument (as retail); the index is stored before
 //   its zero test; the message temporary is homed in the dead parser-argument slot.
 //   Speed-optimised (default) TU.
-struct CCharStringData;
-struct CStringParser;
-struct CCharString {
+class CCharStringData;
+class CStringParser;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -23,17 +23,17 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0x00 (PDB)
 };
-struct CDefIndex {
+class CDefIndex { public:
     long Val;                                           // +0x00 (PDB)
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
     CDefString GetDefNameFromGlobalIndex(long index);           // 0x009ACCC0
 };
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager* PDefinitionManager;             // +0x00
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
 };

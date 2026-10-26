@@ -9,9 +9,9 @@
 //   +0..+8 (the Position). The manifest label "PerEffectInfo" agrees with the PDB.
 // Shape: the member pointer is formed once in edi (`lea edi,[esi+0xc]`), the base constructor, then its vtable store;
 //   C3DVector's empty default constructor emits nothing. No engine header exists for CTCUnholyPower; minimal local model.
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

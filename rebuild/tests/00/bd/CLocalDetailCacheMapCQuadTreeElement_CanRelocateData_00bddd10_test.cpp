@@ -1,6 +1,6 @@
 // Behaviour test for 00bddd10 CQuadTreeElement::CanRelocateData (copy of the model).
 #include <cstdio>
-struct CLocalDetailCacheMap { bool LockedFromMemoryRelocation; void* FileBlockManager; };
+class CLocalDetailCacheMap { public: bool LockedFromMemoryRelocation; void* FileBlockManager; };
 struct CQuadTreeElement {
     virtual ~CQuadTreeElement() {}
     void* ObjectCacheGroupCollections;

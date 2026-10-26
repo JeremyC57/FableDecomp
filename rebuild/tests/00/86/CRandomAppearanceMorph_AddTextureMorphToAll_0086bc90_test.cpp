@@ -7,8 +7,8 @@ struct SKeyLess { template <class P> bool operator()(const P& a, const P& b) con
 
 template <class K, class V> struct SPair { K first; V second; SPair(const K& k, const V& v) : first(k), second(v) { } };
 
-template <class K, class V> struct CVectorMap
-{
+template <class K, class V> class CVectorMap
+{ public:
     std::vector<SPair<K, V> > Vector;
     bool Dirty;
     CVectorMap() : Dirty(false) { }
@@ -18,8 +18,8 @@ template <class K, class V> struct CVectorMap
 };
 
 struct CTextureMorph { unsigned int NewTexture; unsigned int GroupID; CTextureMorph(unsigned int n, unsigned int g) : NewTexture(n), GroupID(g) { } };
-struct CRandomAppearanceMorph
-{
+class CRandomAppearanceMorph
+{ public:
     CVectorMap<unsigned int, CTextureMorph> GeneralTextureMorphs;
     void AddTextureToTextureMorph(CVectorMap<unsigned int, CTextureMorph>& map, int key, const CTextureMorph& morph)
     {

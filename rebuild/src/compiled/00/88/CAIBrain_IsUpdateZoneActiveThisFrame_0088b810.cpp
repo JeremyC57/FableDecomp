@@ -11,12 +11,12 @@
 // The zone's period (+4, unsigned long, zero-extended with `push 0`) divides the creature's
 // 64-bit update offset (+0x18 of the creature) plus the frame number (zero-extended: `xor ecx`
 // / `adc`); a zero remainder is "active". The group test keeps its explicit null check.
-struct CBrainUpdateZone {
+class CBrainUpdateZone { public:
     unsigned char _pad[4];
     unsigned long m_updatePeriod;           // +0x04 frames between updates
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long GetFrameNumber();         // 0x004167C8 -> 0x0049D870
 };
 
@@ -31,7 +31,7 @@ struct CAIStateGroupBaseCalls {
     virtual bool IsTimingCritical();        // slot 7 (+0x1c)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void*                   __vftable;      // +0x00
     unsigned char           _pad0[0x10];    // +0x04..+0x14
     CMainGameComponent*     Component;      // +0x14

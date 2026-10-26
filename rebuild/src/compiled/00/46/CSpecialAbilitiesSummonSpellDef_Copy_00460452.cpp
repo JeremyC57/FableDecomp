@@ -4,7 +4,7 @@
 // Retail is a 5-byte jump thunk: e9 rel32 (a tail-call to the real Copy impl).
 // rel32 is relocation-masked, so any tail-call producing a single `jmp` matches.
 
-struct CSpecialAbilitiesSummonSpellDef;
+class CSpecialAbilitiesSummonSpellDef;
 
 // The real implementation the thunk tail-calls (address relocation-masked).
 extern void __fastcall CSpecialAbilitiesSummonSpellDef_Copy_impl(

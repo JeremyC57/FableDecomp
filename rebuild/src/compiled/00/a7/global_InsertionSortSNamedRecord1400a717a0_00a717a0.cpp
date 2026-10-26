@@ -11,7 +11,7 @@
 // the strength-reduced i+0xC pointer and the word at +0x10); the callee destroys it. The same element layout as this
 // chunk's __uninitialized_copy 0x00A6ED80 (the record before the word moves the pointer from +0x10 to +0xC, cf. 0x00A46680).
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };

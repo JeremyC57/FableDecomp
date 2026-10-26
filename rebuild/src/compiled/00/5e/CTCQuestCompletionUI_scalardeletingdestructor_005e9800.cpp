@@ -1,4 +1,4 @@
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     void* vftable;
 };
 

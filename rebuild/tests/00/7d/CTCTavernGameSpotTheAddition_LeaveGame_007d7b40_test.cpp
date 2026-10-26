@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCTavernGameSpotTheAddition::vfunc_30 (0x007D7B40).
 static int g_release = 0, g_reset = 0, g_base = 0;
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ReleaseScriptedControl() { ++g_release; }
     void ResetCamera() { ++g_reset; }
 };
@@ -10,12 +10,12 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera) { *camera = &g_camera; return true; }
     virtual ~CCameraManagerSource() {}
 };
-struct CWorld {
+class CWorld { public:
     CCameraManagerSource* m_pCameraSource;
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 static CWorld g_world;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x108];
     CWorld* GetWorld() { return &g_world; }
     void LeaveGame() { ++g_base; }

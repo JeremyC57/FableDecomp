@@ -97,7 +97,7 @@ static WStr ExpandPath(const WStr& path, const WStr& base)
     return base + WStr("\\") + path;
 }
 
-struct CAFile {
+class CAFile { public:
     static WStr ConvertPathToFullPath(const WStr& path) { return ExpandPath(path, GetCurrentPath()); }
     static CStr ConvertPathToFullPath(const CStr& path)
     {

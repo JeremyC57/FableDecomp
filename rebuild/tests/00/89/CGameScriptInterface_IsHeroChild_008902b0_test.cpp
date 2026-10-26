@@ -6,7 +6,7 @@ struct Hero {
     unsigned char flags;
 };
 
-struct CPlayerManager { int dummy; };
+class CPlayerManager { public: int dummy; };
 
 static Hero g_hero;
 static CPlayerManager g_world;

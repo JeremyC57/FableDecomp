@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCreditsUI {
+class CTCCreditsUI { public:
     void* vftable;
     int destroyed;
 };

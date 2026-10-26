@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CWorldMap { long m_count; long GetNoMaps() { return m_count; } }; static long g_resizeN = 0, g_resizeValue = 0, g_args[4];
+class CWorldMap { public: long m_count; long GetNoMaps() { return m_count; } }; static long g_resizeN = 0, g_resizeValue = 0, g_args[4];
 struct CRetailVector_long { long* first; long* last; long* end; void Resize(unsigned long n, const long& value) { std::strcat(g_seq, "R"); g_resizeN = n; g_resizeValue = value; last = first + n; } unsigned long Size() { return last - first; } };
 static long g_stamp = 0; static CRetailVector_long g_vec;
 struct CSegment { virtual void v000() { } virtual void v001() { } virtual void v002() { } virtual void v003() { } virtual void CollectCollidedTriangles(long a, long b, long c, long d) { std::strcat(g_seq, "C"); g_args[0] = a; g_args[1] = b; g_args[2] = c; g_args[3] = d; }

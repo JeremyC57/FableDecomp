@@ -3,8 +3,8 @@
 #include <string.h>
 static long g_usedTrophy = 0; static bool g_usedFlag = false; static int g_subtitles = 0; static const char* g_lastText = 0;
 static unsigned long g_lastColour = 0; static float g_lastTime = 1.0f;
-struct CTCInventory { void UseTrophy(long trophy, bool* fromShop) { g_usedTrophy = trophy; g_usedFlag = *fromShop; *fromShop = false; } };
-struct CThing { CTCInventory* inventory; bool GetInterface(CTCInventory** out) { if (inventory) { *out = inventory; return true; } return false; } };
+class CTCInventory { public: void UseTrophy(long trophy, bool* fromShop) { g_usedTrophy = trophy; g_usedFlag = *fromShop; *fromShop = false; } };
+class CThing { public: CTCInventory* inventory; bool GetInterface(CTCInventory** out) { if (inventory) { *out = inventory; return true; } return false; } };
 struct Model {
     CThing* ParentThing; bool WarningNeeded; long TrophyUseNeeded;
     void ShowWarningIfNeeded()

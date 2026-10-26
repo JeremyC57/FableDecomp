@@ -5,7 +5,7 @@
 // the record address formed with `add edi,28h`, the hidden pointer read from the stack on both arms, `ret 4`.
 // Leaf: ?GetCurrentMapName@CGameScriptThing@@UBE?AVCCharString@@XZ
 struct CTCGraphicAppearance_Retail;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -18,13 +18,13 @@ struct CWorldMap_Retail {
     virtual long GetMapNumberForRecord(const void* record);   // slot 16 (+0x40)
     const CCharString& GetLevelScriptName(long map);   // 0x004FCFC0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual CWorldMap_Retail* GetWorldMap();         // slot 13 (+0x34)
 };
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     virtual void v00();
     unsigned char _pad04[0x24];
     unsigned char m_record[4];                     // +0x28

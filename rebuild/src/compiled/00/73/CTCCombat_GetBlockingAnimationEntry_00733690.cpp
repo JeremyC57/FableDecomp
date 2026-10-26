@@ -20,12 +20,12 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return seed % range;
     return 0;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 template <class T> struct CRetailVector {               // STLport vector, 12 bytes
     T* first; T* last; T* end_of_storage;
     struct iterator { T* p; explicit iterator(T* q) : p(q) {} iterator operator+(long n) const { return iterator(p + n); } T& operator*() const { return *p; } };
@@ -36,7 +36,7 @@ template <class T> struct CRetailVector {               // STLport vector, 12 by
     unsigned long size() const { return (unsigned long)(last - first); }
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CRetailVector<const CAnimationEntry*>& anims) const;   // 0x006668A0
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };

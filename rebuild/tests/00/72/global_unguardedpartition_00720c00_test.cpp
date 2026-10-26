@@ -2,8 +2,8 @@
 // (iter_swap 0x0071FDF0 modelled as a plain swap).
 #include <cstdio>
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
-struct CCompositeBlendDesc { unsigned long TextureIndex; long BlendType; unsigned char Diffuse[4]; unsigned char Specular[4]; };
-struct CTextureMorphEntry { long TextureLayer; CCompositeBlendDesc Blend; };
+class CCompositeBlendDesc { public: unsigned long TextureIndex; long BlendType; unsigned char Diffuse[4]; unsigned char Specular[4]; };
+class CTextureMorphEntry { public: long TextureLayer; CCompositeBlendDesc Blend; };
 struct CMorphPair { EHeroMorphType first; CTextureMorphEntry second; };
 struct CMorphLess {
     char m_tag;

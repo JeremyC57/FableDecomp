@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCTavernGame { void QuitMidGame(); };
+class CTCTavernGame { public: void QuitMidGame(); };
 void CTCTavernGame::QuitMidGame() {}

@@ -5,12 +5,12 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
@@ -25,7 +25,7 @@ struct SMemoryStreamState_00995f50 {              // a second, non-polymorphic b
     SMemoryStreamState_00995f50() : m_position(0), m_size(0), m_pData(0), m_flags(0), m_sizeCopy(0) { }
 };
 
-struct CMemoryDataInputStream : CBaseClassNonCopyable, SMemoryStreamState_00995f50 {   // vtable 0x0123675C
+class CMemoryDataInputStream : public CBaseClassNonCopyable, public SMemoryStreamState_00995f50 { public:   // vtable 0x0123675C
     const char* m_pDataCopy;                       // +0x18
     CMemoryDataInputStream(const CCharString& text);
     __forceinline void SetSource(const char* data, unsigned long length)

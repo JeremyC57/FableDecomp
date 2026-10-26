@@ -18,11 +18,11 @@
 // 0x0076FD40, so the tag escapes and VC7.1 homes it over the live alpha argument slot (`lea ebx,[esp+28h]`), as retail does.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CEnginePrimitiveThemeChannelDesc {                // 4 bytes (PDB)
+class CEnginePrimitiveThemeChannelDesc { public:                // 4 bytes (PDB)
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEnginePrimitive {                                // 12 bytes (PDB)
+class CEnginePrimitive { public:                                // 12 bytes (PDB)
     long                             Type;               // +0x00 EEnginePrimitiveType
     long                             InterpolationSet;   // +0x04 EEngineInterpolationSet
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;   // +0x08

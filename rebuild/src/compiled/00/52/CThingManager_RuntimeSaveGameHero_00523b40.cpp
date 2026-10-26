@@ -26,7 +26,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 void* GrowThingVectorStorage(unsigned int count);                                     // stand-in allocator
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* PStringData;
@@ -52,7 +52,7 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer();                                                          // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;                                                     // +0x1c
 };

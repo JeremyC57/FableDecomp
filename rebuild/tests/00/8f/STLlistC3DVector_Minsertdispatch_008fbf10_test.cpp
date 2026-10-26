@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct Node { Node* next; Node* prev; C3DVector data; };
 

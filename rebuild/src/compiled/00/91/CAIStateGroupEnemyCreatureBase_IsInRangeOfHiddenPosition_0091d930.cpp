@@ -7,7 +7,7 @@
 // Shape: C3DVector has a user copy ctor so the candidate and the target position are frame copies; the furthest
 // position is kept in registers (its uninitialised home loaded first); the empty test shares the final exit.
 #include <stdlib.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -22,25 +22,25 @@ struct CPositionVector {                        // STLport vector<C3DVector> (12
     C3DVector* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CWorldMap;
-struct CThingSearchTools;
-struct CTCShapeManager;
+class CWorldMap;
+class CThingSearchTools;
+class CTCShapeManager;
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10(); virtual void v14();
     virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
     virtual void v30(); virtual void v34(); virtual void v38(); virtual void v3c(); virtual void v40(); virtual void v44();

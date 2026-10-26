@@ -9,7 +9,7 @@
 //   component map @ 0x013B8C30 (Map +8). Caller: CCombatAction_GenericStrikeResponseKnockdownRecoverBase::Initialise 0x00865EB0.
 enum EAnimComponent { ANIM_COMPONENT_FOLLOWING_ON_ANIM = 8 };
 
-struct CAnimComponentBase {                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
+class CAnimComponentBase { public:                                // CIVCountedPointeeBase-derived: vptr, reference count at +4
     virtual void v00();
     virtual void Delete();                                 // slot 1
     long IVRefCount;                                       // +0x04
@@ -20,7 +20,7 @@ public:
     static EAnimComponent StaticType() { return ANIM_COMPONENT_FOLLOWING_ON_ANIM; }   // GetType 0x005DF7D0 returns 8
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
 };
 
@@ -29,7 +29,7 @@ template <class K, class V> struct pair {
     V second;
 };
 
-template <class K, class V> struct CVectorMap {            // retail: a 12-byte STLport vector + comparator/dirty bytes
+template <class K, class V> class CVectorMap { public:            // retail: a 12-byte STLport vector + comparator/dirty bytes
     typedef pair<K, V> value_type;
     value_type* m_first;                                   // +0x00
     value_type* m_last;                                    // +0x04
@@ -60,17 +60,17 @@ template <class K, class V> struct CVectorMap {            // retail: a 12-byte 
     }
 };
 
-struct CAnimComponentMap : CAnimComponentBase {            // vptr, count, Map at +8
+class CAnimComponentMap : public CAnimComponentBase { public:            // vptr, count, Map at +8
     CVectorMap<EAnimComponent, CIVCountedPointer<CAnimComponentBase> > Map;   // +0x08
 };
 
 extern CAnimComponentMap g_DefaultAnimComponents;          // 0x013B8C30
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
-struct CAnimationEntry {                                   // Ego_r.pdb, 0x10 bytes
+class CAnimationEntry { public:                                   // Ego_r.pdb, 0x10 bytes
     long                                 BankIndex;        // +0x00
     CDefString                           AnimName;         // +0x04
     CDefString                           GroupName;        // +0x08

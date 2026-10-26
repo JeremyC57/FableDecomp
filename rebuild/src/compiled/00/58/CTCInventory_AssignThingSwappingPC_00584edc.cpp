@@ -20,7 +20,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     void AssignThingPC(long item, unsigned long slot, CComponent* component);   // 0x00584B86

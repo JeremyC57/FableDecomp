@@ -8,7 +8,7 @@
 //   (struct_layouts_egor.tsv): CameraDesc at camera +0x14, SunVector at lighting manager +0x18.
 #include "engine/CEngineSkyRenderer.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -16,8 +16,8 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CMatrix3x4 { float M[12]; };
-struct C2DBoxF { float X0, Y0, X1, Y1; };
+class CMatrix3x4 { public: float M[12]; };
+class C2DBoxF { public: float X0, Y0, X1, Y1; };
 struct CEngineCameraDesc {                               // 0x6c bytes (PDB)
     C2DBoxF    Window;                                   // +0x00
     CMatrix3x4 RotationMatrix;                           // +0x10
@@ -32,13 +32,13 @@ struct CEngineCameraDesc {                               // 0x6c bytes (PDB)
     bool       StateValid;                               // +0x68
     CEngineCameraDesc(const CEngineCameraDesc& other);   // 0x00B4AF50
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char     _pad00[0x14];
     CEngineCameraDesc CameraDesc;                        // +0x14
     void SetCameraState(const CEngineCameraDesc* desc, bool a, bool b);   // 0x00B30B50
 };
 extern CEngineCamera* g_pEngineCamera;                   // 0x01436EA0
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char _pad00[0x18];
     C3DVector     SunVector;                             // +0x18
 };
@@ -50,11 +50,11 @@ extern CEngineRendererView* g_pRenderer_01436e5c;        // 0x01436E5C
 extern float g_skyZBufferStart_0139a704;                 // 0x0139A704
 
 struct CEngineInterpolationInfoSet { float GTPredictedRenderAt, GTPredictedTimeSinceLastRenderFrame, WFInterpolate; };
-struct CEngineComponentParams {
+class CEngineComponentParams { public:
     float                       FrameInterpolation;      // +0x00
     CEngineInterpolationInfoSet Current, Last, PausedCurrent, PausedLast, BulletTimeCurrent;   // +0x04..
 };
-struct CEngineComponentRenderParams {
+class CEngineComponentRenderParams { public:
     CEngineComponentParams* Params;                      // +0x00
     long                    RenderLayer;                 // +0x04
     unsigned long           RenderLayerFlags;            // +0x08

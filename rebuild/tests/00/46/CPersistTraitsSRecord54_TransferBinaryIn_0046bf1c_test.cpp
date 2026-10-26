@@ -11,7 +11,7 @@ typedef long long int64;
 
 static int g_overflowCalls = 0;
 
-struct CDataInputStream {
+class CDataInputStream { public:
     long           Pad00;
     long           ReadPosition;
     long           Pad08;

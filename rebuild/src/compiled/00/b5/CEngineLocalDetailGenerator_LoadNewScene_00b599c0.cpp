@@ -6,15 +6,15 @@
 // Shape: the list is a VC6-era std::list {head}: a pointer local to it (`add edi,2Ch`) gives begin = head->next and the end
 // test re-reads head after every call; each node's value is a map whose +4 word is its detail cache (null-tested). The
 // parameter is unused (`ret 4`), the result is `xor al,al`.
-struct CEngineCamera;
-struct CEngineComponentLoadNewSceneParams;
+class CEngineCamera;
+class CEngineComponentLoadNewSceneParams;
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     bool Update(double time);                      // 0x00BDED90
     void Render(CEngineCamera* camera, float alpha);   // 0x00BDDD70
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     void*                 LandscapeMap;             // +0x00
     CLocalDetailCacheMap* m_pLocalDetailCache;     // +0x04
 };
@@ -37,7 +37,7 @@ struct SEngineState_01436e8c {
 extern SEngineState_01436e8c* g_pEngineState_01436e8c;   // 0x01436E8C
 extern CEngineCamera* g_pEngineCamera_01436ea0;          // 0x01436EA0
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);
 };
 

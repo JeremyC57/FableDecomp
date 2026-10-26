@@ -15,10 +15,10 @@
 // Shape: the fraction is read first into the dead `info` slot; the physics pointer is a named local so GetHeroThing and
 //   the +0x60 load come before the argument pushes; the camera returned with its position replaced is a named local
 //   copied out through the copy ctor (no NRVO).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera {
 public:
     C3DVector       WorldPosition;            // +0x00
@@ -31,40 +31,40 @@ public:
     float           Zoom;                     // +0x34
     CCamera(const CCamera& o);                // 0x0049D380
 };
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     long  Frame;                              // +0x00
     float Fraction;                           // +0x04
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector GetInterpolatedPosition(float t) const;   // 0x0049D150
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad[0x60];
     CTCPhysicsBase* PPhysics;                 // +0x60
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x220];
     bool          UsingFreeCamera;            // +0x220
     CCamera GetFreeCamera(float t) const;     // 0x00487180
     CThing* GetHeroThing();                   // 0x00487DC0
 };
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CGameCameraManager { bool IsUsingScriptedCameraMode() const; };   // 0x00697AE0
-struct CAIGameCameraBase {
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CGameCameraManager { public: bool IsUsingScriptedCameraMode() const; };   // 0x00697AE0
+class CAIGameCameraBase { public:
     virtual void v00();
     virtual CCamera GetCamera(float t) const;          // slot 1 (+0x04)
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool GetCameraManager(CGameCameraManager*& manager);   // slot 10 (+0x28)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsEditorActive();                     // slot 9 (+0x24)
 };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 extern void* g_pSoundManager;                          // 0x013B86E0
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual CCamera GetCurrentRenderCamera() const;    // slot 6 (+0x18) (overloads sit in reverse order)
     virtual CCamera GetCurrentRenderCamera(const CInterpolationInfo& info) const;   // slot 5 (+0x14)

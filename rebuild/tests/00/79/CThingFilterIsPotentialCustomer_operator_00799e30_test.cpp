@@ -19,8 +19,8 @@
 //   const @ 0x004C73D0; 6.0f @ 0x0126C11C.
 // Layout (Ego_r.pdb, matches retail): ShopperContainer +0, Pos +4, TCShopKeeper +0x10, AllowExistingShopper +0x14;
 //   CTCBase::ParentThing +4. CThing (retail, 0x10 below the PDB): thing-type byte +0x10, bitset +0x20, map +0x44.
-struct CTCBase { void* vfptr; struct CThing* ParentThing; };
-struct C3DVector {
+class CTCBase { public: void* vfptr; class CThing* ParentThing; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -43,7 +43,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x10];
     unsigned char  ThingType;                           // +0x10
     unsigned char  _pad11[0x20 - 0x11];
@@ -65,17 +65,17 @@ struct CThing {
         return (it == end || type < it->type ? end : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetCreatureType() const;                       // 0x00662000
 };
 
 struct CVillage {
     bool IsVillagerPerformingVillageTask(const CThing* thing) const;   // 0x00659104
 };
-struct CTCVillageMember : CTCBase {
+class CTCVillageMember : public CTCBase { public:
     CVillage* GetPVillage() const;                      // 0x007EE540
 };
-struct CTCShopKeeper : CTCBase {
+class CTCShopKeeper : public CTCBase { public:
     bool HasBeenCustomer(const CThing* thing) const;    // 0x00798DD0
 };
 struct CIntelligentPointer {
@@ -93,7 +93,7 @@ struct CGameSub { unsigned char _pad[0x74]; COpinionManager* Opinions; };
 struct CGameTop { unsigned char _pad[0x24]; CGameSub* Sub; };
 extern CGameTop* g_013B8A1C;
 
-struct CThingFilter_IsPotentialCustomer {
+class CThingFilter_IsPotentialCustomer { public:
     CThing*        ShopperContainer;                    // +0x00
     C3DVector      Pos;                                 // +0x04
     CTCShopKeeper* TCShopKeeper;                        // +0x10

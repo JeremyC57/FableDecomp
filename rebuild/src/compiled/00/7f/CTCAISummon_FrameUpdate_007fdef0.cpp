@@ -11,7 +11,7 @@
 // Shape: an 8-byte stack temporary CIntelligentPointer<CThing>(0): the inline converting constructor runs
 // the base constructor, stores the derived vtable 0x01238C6C, then SetPItem(0); the derived class has no
 // destructor of its own, so the temporary dies through the base destructor right after remove().
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
 };
 
 template<class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01238C6C
+class CIntelligentPointer : public CBaseIntelligentPointer { public:      // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
@@ -44,8 +44,8 @@ struct CTCBase_Calls                                   // engine/CTCBase.h layou
     void FrameUpdate();                                     // 0x006868A0
 };
 
-struct CTCAISummon : CTCBase_Calls
-{
+class CTCAISummon : public CTCBase_Calls
+{ public:
     void*                                         PSummonDef;            // +0x0c CDefPointer<CSummonDef>
     CRetailList<CIntelligentPointer<CThing> >     MySummonedCreatures;   // +0x10
     long                                          LastSummonTick;        // +0x14

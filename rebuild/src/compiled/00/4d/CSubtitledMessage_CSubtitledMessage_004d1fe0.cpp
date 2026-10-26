@@ -27,8 +27,8 @@ template <class T> struct CTagVector {             // STLport vector<pair<float,
     CTagVector(const CTagVector& other);           // out of line per element type
     CTagVector& operator=(const CTagVector& other);
 };
-template <class T> struct CKeyPairCompareLess { };  // empty comparator (+0x0c)
-template <class T> struct CVectorMap {             // CVectorMap<float, T, CKeyPairCompareLess<float, T> >, 16 bytes
+template <class T> class CKeyPairCompareLess { public: };  // empty comparator (+0x0c)
+template <class T> class CVectorMap { public:             // CVectorMap<float, T, CKeyPairCompareLess<float, T> >, 16 bytes
     CTagVector<T>          Vector;                 // +0x00
     CKeyPairCompareLess<T> Compare;                // +0x0c
     bool                   Dirty;                  // +0x0d

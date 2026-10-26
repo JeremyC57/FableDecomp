@@ -10,13 +10,13 @@
 // Shape: same body as the landed CTCActionUseScriptedHook::GetRegionEntranceName (0x00729C50): the first
 // world-map fetch is a named local (its vtable is loaded before the argument), the two outer calls fetch
 // the map again each time; the pointer member's address stays in ebx for both GetPItem calls.
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* m_pData; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* m_pData; };
 
 extern CCharString g_EmptyName;                // 0x013BD804
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;      // 0x004C73D0
 };
 
@@ -32,12 +32,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 };
 #pragma pack(pop)
 
-struct CRegion {
+class CRegion { public:
     unsigned char _vectors[0x18];              // +0x00 Maps, VisMaps (12-byte retail vectors)
     CCharString Name;                          // +0x18
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -47,7 +47,7 @@ struct CWorldMap {
     const CRegion& GetRegion(long region) const;         // 0x004FC180
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -56,7 +56,7 @@ struct CTCBase {                               // engine/CTCBase.h layout, model
 };
 
 #pragma pack(push, 1)
-struct CTCDRegionExit : CTCBase {
+class CTCDRegionExit : public CTCBase { public:
     bool                Active;                             // +0x0c
     bool                InLetterBoxMode;                    // +0x0d
     bool                WaitingForConfirmation;             // +0x0e

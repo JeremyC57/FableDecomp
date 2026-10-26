@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CTCBase { int x; };
+class CTCBase { public: int x; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char _pad1[0x45]; unsigned char m_flags91;
     bool HasInterface(long t) const { return (m_presentBits[t >> 5] & (1UL << (t & 31))) != 0; }
     template<class T> bool GetInterface(T** ppOut, long t)
@@ -18,7 +18,7 @@ struct CThing {
 static CInterfaceMap::SEntry g_entries[8];
 static void InitThing(CThing& t) { for (int i = 0; i < 9; ++i) t.m_presentBits[i] = 0; t.m_interfaces.first = g_entries; t.m_interfaces.last = g_entries; t.m_flags91 = 0; }
 
-struct CTCCombat : CTCBase { bool vulnerable; bool IsVulnerableToUnblockableAttack() { return vulnerable; } };
+class CTCCombat : public CTCBase { public: bool vulnerable; bool IsVulnerableToUnblockableAttack() { return vulnerable; } };
 struct CSeq { CThing* Target; bool IsValid() { CTCCombat* p; if (Target->GetInterface(&p, 0x30) && !p->IsVulnerableToUnblockableAttack()) return false; return true; } };
 int main()
 {

@@ -13,7 +13,7 @@
 // branch because both arms call on `context`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CPersistContext {
+class CPersistContext { public:
     bool IsSaving();                                                         // 0x004AEF50
     void Transfer(const char* name, bool& value, const bool& defaultValue); // 0x004045C0
     void Transfer(const char* name, bool& value);                           // 0x004107C0

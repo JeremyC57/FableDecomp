@@ -3,7 +3,7 @@
 struct CComponent;
 static long g_equipped[4]; static long g_n = 0;
 struct CTCInventoryBase_Retail { long m_baseCalls; void ReturnAllConfiscatedItems() { ++m_baseCalls; } };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     long ConfiscatedActiveMeleeWeaponDefIndex; long ConfiscatedActiveRangedWeaponDefIndex;
     void SetThingAsActiveWeapon(long defIndex, CComponent* menuEntry) { if (menuEntry == 0) g_equipped[g_n++] = defIndex; }
     void ReturnAllConfiscatedItems()

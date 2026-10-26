@@ -1,4 +1,4 @@
-struct CCreatureAction_VillagerBackOff {
+class CCreatureAction_VillagerBackOff { public:
     void* vftable;
 };
 

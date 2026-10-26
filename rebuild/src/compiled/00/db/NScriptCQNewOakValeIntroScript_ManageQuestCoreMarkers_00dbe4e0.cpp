@@ -13,24 +13,24 @@
 // Shape: the by-value CScriptThing model of the landed WatchForPickpocketing/CheckVictimHit; every wait is the rotated
 //   script idiom; ~CScriptThing is __forceinline and `#pragma inline_depth(0)` opens after the first wait, so only
 //   that wait's return expands the three destructors inline and every later exit calls 0x004AA840.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCPPointerInfo {                                 // counted-pointer block (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
@@ -49,7 +49,7 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
     }
 };
 
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerScriptThing PImp;                    // +0x04
     virtual __forceinline ~CScriptThing() {}            // slot 0; out of line: 0x004AA840
     virtual void v001();    virtual void v002();    virtual void v003();    virtual void v004();    virtual void v005();    virtual void v006();    virtual void v007();    virtual void v008();
@@ -75,7 +75,7 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
 
 enum ETutorialCategory { TUTORIAL_CATEGORY_0x13 = 0x13 };   // value 0x13 (enumerator unnamed in the dumps)
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -144,7 +144,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_NewOakValeIntroScript : CScriptBase {
+class CQ_NewOakValeIntroScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 PMasterData;                  // +0x44
     unsigned char         _pad48[0x4c];

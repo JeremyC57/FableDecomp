@@ -12,9 +12,9 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void s000() const; virtual void s001() const; virtual void s002() const; virtual void s003() const;
     virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
@@ -31,7 +31,7 @@ struct CScriptThing {
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void g000() const; virtual void g001() const; virtual void g002() const; virtual void g003() const; virtual void g004() const; virtual void g005() const; virtual void g006() const; virtual void g007() const; 
     virtual void g008() const; virtual void g009() const; virtual void g010() const; virtual void g011() const; virtual void g012() const; virtual void g013() const; virtual void g014() const; virtual void g015() const; 
     virtual void g016() const; virtual void g017() const; virtual void g018() const; virtual void g019() const; virtual void g020() const; virtual void g021() const; virtual void g022() const; virtual void g023() const; 

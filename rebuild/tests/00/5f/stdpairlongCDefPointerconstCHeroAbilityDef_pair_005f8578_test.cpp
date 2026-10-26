@@ -1,13 +1,13 @@
 // Behaviour test for 005f8578: std::pair<long,CDefPointer<const CHeroAbilityDef> > copy constructor.
 #include <cstdio>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase() { }
     mutable long m_refCount;
 };
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* p) : Object(p) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object)

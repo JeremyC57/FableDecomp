@@ -5,7 +5,7 @@
 // local, twelve dword copies through esi in destination order, then `UpdateFlags |= 0x20` in memory form.
 // Layout: PDB BoneMatrices (CArray<CPreTransposedBoneMatrix>) +0x3fc, UpdateFlags +0x3f8; retail +0x3dc
 // (the array's data pointer) and +0x3d8. Floats copied as dwords (unsigned int).
-struct CMatrix3x4 {                              // 4 rows of 3 floats
+class CMatrix3x4 { public:                              // 4 rows of 3 floats
     unsigned int m[12];
 };
 
@@ -13,7 +13,7 @@ struct CPreTransposedBoneMatrix {                // 3 rows of 4 floats (0x30 byt
     unsigned int m[12];
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char             _pad000[0x3d8];
     unsigned int              UpdateFlags;       // +0x3d8
     CPreTransposedBoneMatrix* BoneMatrices;      // +0x3dc (CArray data)

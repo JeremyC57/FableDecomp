@@ -2,8 +2,8 @@
 
 extern "C" void __stdcall PersistHelper_580371(char* name, long* value, long* out);
 
-struct CPersistContext
-{
+class CPersistContext
+{ public:
     void Transfer_long_(char* name, long* value)
     {
         long temp = 0;

@@ -2,9 +2,9 @@
 // Behaviour test: ForEachIf applies the functor only to live things whose mode manager (interface 0x31) is in mode 0x42.
 class CTCBase;
 struct CMode { int type; int GetModeType() { return type; } };
-struct CTCCreatureModeManager { CMode* mode; CMode* GetCurrentMode() { return mode; } };
+class CTCCreatureModeManager { public: CMode* mode; CMode* GetCurrentMode() { return mode; } };
 struct SEntry { int type; CTCBase* component; };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     SEntry* first; SEntry* last;
     unsigned char Dead : 1;

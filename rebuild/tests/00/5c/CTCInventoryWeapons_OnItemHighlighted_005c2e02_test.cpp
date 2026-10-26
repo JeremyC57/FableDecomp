@@ -5,7 +5,7 @@ struct CTCInventoryBase_Retail {
     void OnItemHighlighted(long item) { g_arg[g_n] = item; g_seq[g_n++] = 2; }
     void ResetInventoryAnim(long item) { g_arg[g_n] = item; g_seq[g_n++] = 3; }
 };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     void OnItemHighlighted(long item)
     {
         CTCInventoryBase_Retail::OnItemHighlighted(item);

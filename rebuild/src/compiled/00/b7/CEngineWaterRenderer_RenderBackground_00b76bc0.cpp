@@ -16,29 +16,29 @@
 // operator* keeps a 0x44 frame and stores the product late). The +0x28b8 SetState after the first list reads the state's
 // capture mask into a local first (retail loads it before the core mask; the plain inline swaps the two loads).
 
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour;
-struct C4DVector {
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour;
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
     inline C4DVector(const CRGBFloatColour& c);
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
 inline C4DVector::C4DVector(const CRGBFloatColour& c) : X(c.R), Y(c.G), Z(c.B), W(c.A) { }
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -47,21 +47,21 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;
     long Offset;
     unsigned long Count;
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
 
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:
@@ -261,7 +261,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetIndices(void* indexData) = 0;
 };
 
-struct CTexture {                                  // engine/CTexture.h: device texture at +0
+class CTexture { public:                                  // engine/CTexture.h: device texture at +0
     void* PD3DTexture;                             // +0x00
     unsigned long ByteLengthAndSource;             // +0x04
 };
@@ -384,7 +384,7 @@ static __forceinline void SetStateStateMaskFirst(CTrackedRenderState& state, uns
 }
 
 struct SCaptureEntry { void* Block; unsigned long State; };
-struct CRenderStateManager {                       // @ 0x013CB508
+class CRenderStateManager { public:                       // @ 0x013CB508
     void RestoreCaptureBlock();                    // 0x00A05840
     unsigned char _pad000[8];
     SCaptureEntry CaptureStack[0x500];             // +0x008
@@ -412,9 +412,9 @@ struct CEngineLightingView {                       // @ 0x01436E9C
 };
 extern CEngineLightingView* g_pEngineLighting;     // 0x01436E9C
 
-struct CEngineWaterBackgroundSubPatch;
+class CEngineWaterBackgroundSubPatch;
 
-struct CEngineWaterRenderer {                      // retail layout (12-byte CArrays)
+class CEngineWaterRenderer { public:                      // retail layout (12-byte CArrays)
     unsigned char _pad000[0x104];
     unsigned char BackgroundVertexShader[8];       // +0x104
     unsigned char BackgroundPixelShader[8];        // +0x10C

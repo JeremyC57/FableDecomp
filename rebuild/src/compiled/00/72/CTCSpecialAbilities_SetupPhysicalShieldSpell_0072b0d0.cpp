@@ -10,8 +10,8 @@
 // Shape: HasTC `if (bits & mask) return true; return false;`; the CCharString is a named local (retail `lea ecx ; push ecx`) in its own `{}`
 // block so it shares the lookup key's frame word.
 class CTCBase;
-struct CTCParamsBase;
-struct CCharString {
+class CTCParamsBase;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -44,11 +44,11 @@ public:
     }
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     bool IsShieldActive() const;                // 0x0079DCB0
     void CancelMove();                          // 0x0079E300
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

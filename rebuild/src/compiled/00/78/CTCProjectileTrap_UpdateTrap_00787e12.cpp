@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
-struct C3DVector;
+class C3DVector;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ public:
     CInterfaceMap    m_interfaces;                      // +0x44
     const C3DVector& GetPosition();                     // 0x004C73D0
 };
-struct CTCLook {
+class CTCLook { public:
     void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
 void LookAtSink_s7(CTCLook* look, float x, long priority);   // stand-in: the look update (outside the bytes graded here)
@@ -65,10 +65,10 @@ __declspec(noinline) void CTCLook::LookAtPos(const C3DVector& position, long pri
     LookAtSink_s7(this, *(const float*)&position, priority);
 }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CBaseIntelligentPointer {
@@ -104,12 +104,12 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(CThing* const& thing)
 }
 #pragma auto_inline(on)
 extern long g_framesPerSecond;                          // 0x01375550
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad00[0x58];
     long  NumShotsToFireBeforeIdle;                     // +0x58 (PDB +0x5c)
     float SecondsIdle;                                  // +0x5c (PDB +0x60)
 };
-struct CTCTrapBase {
+class CTCTrapBase { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x54 - 0x08];

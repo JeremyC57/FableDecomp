@@ -1,13 +1,13 @@
 // Behaviour test for 0x0087B6F0 CFixedDolly::OnInitLeaf: the target's type-0x3f component of kind 1 supplies DollyVector.
 // (The retail fallback arm reads a never-assigned pointer and the absent-interface path reads garbage, so only the defined path is exercised.)
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCBase { public:
     int kind; C3DVector centre;
     int GetKind() { return kind; }
     C3DVector GetCentre() { return centre; }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9]; CTCBase* m_component;
     template<class T> bool GetInterface(T** ppOut, int type)
     {

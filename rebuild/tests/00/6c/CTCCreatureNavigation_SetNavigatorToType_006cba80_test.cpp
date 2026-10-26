@@ -1,10 +1,10 @@
 // Test for 006cba80 CTCCreatureNavigation::SetNavigatorToType: interrupt + switch only when the type differs.
 #include <cstdio>
-struct CNavigatorBase {
+class CNavigatorBase { public:
     unsigned char NavigatorType; int InterruptCalls;
     void Interrupt() { ++InterruptCalls; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     CNavigatorBase* PNavigator;
     CNavigatorBase** first; CNavigatorBase** last;
     static CNavigatorBase** FindNavigator(CNavigatorBase** f, CNavigatorBase** l, long type)

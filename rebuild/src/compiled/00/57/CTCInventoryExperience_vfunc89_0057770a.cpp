@@ -66,11 +66,11 @@ struct CAbilityUndoMap {
     void clear();                                            // 0x00579ECC
 };
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     void ModifyTrainableStatLevel(EHeroTrainableStatType stat, long delta);   // 0x006D6810
     void UpgradeTrainableStat(EHeroTrainableStatType stat);  // 0x006D8980
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x18];
     long* ExperienceSpentOn;                                 // +0x18 vector<long>
     unsigned char _pad1c[0x13c - 0x1c];
@@ -84,8 +84,8 @@ struct CTCHeroAbilities {
 };
 
 namespace NUISystem {
-struct CComponent { virtual ~CComponent(); };
-struct CManager {
+class CComponent { public: virtual ~CComponent(); };
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04(); virtual void m05();
     virtual void ResetA();                                   // slot 6 (+0x18)
     virtual void m07(); virtual void m08(); virtual void m09(); virtual void m10(); virtual void m11(); virtual void m12();
@@ -102,7 +102,7 @@ struct CManager {
 struct CGlobalList { void clear(); };                        // 0x004855A3
 extern CGlobalList g_UIList;                                 // 0x013B8A98
 struct CHeroInfoScreens { void SetScreenType(long type); };  // 0x0066E799
-struct CPlayerGui { CHeroInfoScreens* GetHeroInfoScreens(); };   // 0x00437CD0
+class CPlayerGui { public: CHeroInfoScreens* GetHeroInfoScreens(); };   // 0x00437CD0
 extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
 
 struct CComponentVector {                                    // vector<NUISystem::CComponent*>
@@ -124,7 +124,7 @@ struct CTCInventoryBase {
     CComponentVector Components;                             // +0x0C
     void OnInventoryClosed();                                // 0x005BD597
 };
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     unsigned char   _pad18[0x140 - 0x18];
     CStatUndoMap    UndoableStatBuys;                        // +0x140
     CAbilityUndoMap UndoableAbilityBuys;                     // +0x14C

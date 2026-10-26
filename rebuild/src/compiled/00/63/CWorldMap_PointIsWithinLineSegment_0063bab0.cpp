@@ -5,8 +5,8 @@
 // For X then Y: min(a,b) <= p (`a < b ? a : b`, `test ah,5 ; jp` then `test ah,41h ; jp`) and
 // max(a,b) >= p (`a > b ? a : b`, `test ah,41h ; jne` then `test ah,1 ; jne`). No float constants;
 // `return a && b && c && d` gives the int-valued `mov eax,1` / `xor eax,eax` exits.
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X;
     float Y;
     float Z;

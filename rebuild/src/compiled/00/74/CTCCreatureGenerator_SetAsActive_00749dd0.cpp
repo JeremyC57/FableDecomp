@@ -1,4 +1,4 @@
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     char pad00[0x4c];
     bool active;
     char pad4d[0x0f];

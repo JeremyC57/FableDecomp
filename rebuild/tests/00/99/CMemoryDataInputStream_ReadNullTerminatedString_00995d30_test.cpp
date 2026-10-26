@@ -3,8 +3,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char*      text;
     fable_u32  length;
     fable_u32  unknown08;
@@ -13,8 +13,8 @@ struct CCharStringData
 };
 #pragma pack(pop)
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage_;
 
     CCharString(const char* text, long length);
@@ -60,8 +60,8 @@ CCharString::~CCharString()
     ++g_dtorCalls;
 }
 
-struct CMemoryDataInputStream
-{
+class CMemoryDataInputStream
+{ public:
     void**   vtable;
     long     position;
     long     sourceLength;

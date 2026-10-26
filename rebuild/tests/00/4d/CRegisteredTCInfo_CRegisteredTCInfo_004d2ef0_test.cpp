@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing; struct CTCBase;
+class CThing; class CTCBase;
 static int g_copies = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* s) { std::strcpy(m_text, s); }
     CCharString(const CCharString& other) { ++g_copies; std::strcpy(m_text, other.m_text); }

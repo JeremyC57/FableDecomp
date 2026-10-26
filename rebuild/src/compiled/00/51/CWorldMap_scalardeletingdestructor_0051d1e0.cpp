@@ -1,4 +1,4 @@
-struct CWorldMap {
+class CWorldMap { public:
     void* vftable;
 };
 

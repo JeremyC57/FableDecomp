@@ -5,7 +5,7 @@
 // Model the this-only member as a free __fastcall(thisptr, arg) and tail-call
 // the (relocation-masked) real target so VC7.1 emits the same `e9 xx xx xx xx`.
 
-struct CSkyDef;
+class CSkyDef;
 
 // Real implementation target (relocation-masked in parity).
 extern void __fastcall CSkyDef_Copy_impl(CSkyDef* thisptr, const CSkyDef* src);

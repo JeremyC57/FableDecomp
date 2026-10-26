@@ -7,16 +7,16 @@
 // and its own vtable store is dead (dropped). Members are the PDB ones (engine/CResource.h; the unnamed +4 word is the
 // counted-pointee reference count). A local polymorphic model is used (the generated header flattens the vptr).
 // Shape: the base's count store precedes the derived vtable store; the five derived initialisers share one zero register.
-struct CResourceList;
+class CResourceList;
 
 // engine/CIVCountedPointeeBase.h names the count IVRefCount (+4); its generated header flattens the vptr.
-struct CIVCountedPointeeBase {               // vtable 0x012354D0
+class CIVCountedPointeeBase { public:               // vtable 0x012354D0
     virtual ~CIVCountedPointeeBase();
     long IVRefCount;                           // +0x04
     CIVCountedPointeeBase() : IVRefCount(1) { }
 };
 
-struct CResource : CIVCountedPointeeBase {   // vtable 0x012354A4, 0x1C bytes
+class CResource : public CIVCountedPointeeBase { public:   // vtable 0x012354A4, 0x1C bytes
     CResourceList* ResourceList;             // +0x08
     CResource*     PrevResource;             // +0x0C
     CResource*     NextResource;             // +0x10

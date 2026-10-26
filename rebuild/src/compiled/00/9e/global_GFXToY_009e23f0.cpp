@@ -15,13 +15,13 @@ public:
     long Y;                                           // height
 };
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     C2DExtentsI GetRenderTargetDimensions() const;   // 0x009BEDC0
 };
 
-struct CSystemManager
-{
+class CSystemManager
+{ public:
     unsigned char _pad000[0x60];
     CDisplayManager* DisplayManager;                  // +0x60
 };

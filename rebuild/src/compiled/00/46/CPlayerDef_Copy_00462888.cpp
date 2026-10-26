@@ -3,9 +3,9 @@
 // __fastcall void CCardDef::Copy(CCardDef* this, CDefClassBase const* src)
 // Modeled as __fastcall with an edx dummy so `src` lands on the stack (true __fastcall shape).
 
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CCardDef {
+class CCardDef { public:
     char pad[0x3c];
     unsigned int f3c;   // +0x3c
     unsigned int CardName;   // +0x40

@@ -9,10 +9,10 @@
 //   GetInterface, bit 0x31) reuses the string's dead frame word for its key.
 // Layout: Ego_r.pdb puts OnlyHitEnemies at +0x12c (PDB CCombatActionBase 0x12c bytes, retail 0x114): +0x114 here;
 //   engine/CCreatureAction_ForcePushOutOf.h is the PDB build and is not used.
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -25,7 +25,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -51,16 +51,16 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCForcePushPower {                  // Ego_r.pdb, 0x28 bytes
+class CTCForcePushPower { public:                  // Ego_r.pdb, 0x28 bytes
     unsigned char _pad00[0x24];
     bool IgnoreFriendlies;                  // +0x24
 };
 
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();
     unsigned char _pad04[4];                // +0x04
@@ -68,7 +68,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_ForcePushOutOf : CCombatActionBase {
+class CCreatureAction_ForcePushOutOf : public CCombatActionBase { public:
     bool OnlyHitEnemies;                    // +0x114 (PDB +0x12c)
     virtual void PerformAction();
 };

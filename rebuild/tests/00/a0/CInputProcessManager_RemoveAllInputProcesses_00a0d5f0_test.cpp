@@ -1,16 +1,16 @@
 // Behaviour test for CInputProcessManager::RemoveAllInputProcesses (0x00A0D5F0): every process is detached even
 // though each detach unlinks its own node during the scan; the scan is unregistered and an outer scan survives.
 #include <cstdio>
-struct CBaseClass { virtual ~CBaseClass() {} };
-struct CLinkedListPosition { CBaseClass* Data; CLinkedListPosition* Next; CLinkedListPosition* Previous; };
+class CBaseClass { public: virtual ~CBaseClass() {} };
+class CLinkedListPosition { public: CBaseClass* Data; CLinkedListPosition* Next; CLinkedListPosition* Previous; };
 
 struct CInputProcessList;
-struct CAInputProcess : CBaseClass {
+class CAInputProcess : public CBaseClass { public:
     CInputProcessList* m_list; CLinkedListPosition m_pos; int m_removed;
     void RemoveFromInterface();                    // 0x00A0D2D0 (test: unlink like RemoveInputProcess)
 };
 
-struct CLinkedListScanInfo;
+class CLinkedListScanInfo;
 struct CInputProcessList {                         // CLinkedList<CAInputProcess>
     CLinkedListPosition* Head;
     CLinkedListPosition* Tail;
@@ -20,7 +20,7 @@ struct CInputProcessList {                         // CLinkedList<CAInputProcess
     CAInputProcess* ScanForward(CLinkedListScanInfo* s) const;
     void RemoveScanInfo(CLinkedListScanInfo* s) const;
 };
-struct CLinkedListScanInfo {
+class CLinkedListScanInfo { public:
     CLinkedListPosition* Current;
     CLinkedListPosition* Next;
     CLinkedListPosition* Previous;
@@ -71,7 +71,7 @@ inline void CInputProcessList::RemoveScanInfo(CLinkedListScanInfo* s) const
         s->NextScan->PreviousScan = s->PreviousScan;
 }
 
-struct CInputProcessManager : CBaseClass {         // vtable 0x0129CA38
+class CInputProcessManager : public CBaseClass { public:         // vtable 0x0129CA38
     CInputProcessList InputProcessList;            // +0x04
     unsigned char QueuedProcessedInputs[10][0xb0]; // +0x14 CProcessedInput[10]
     long NoQueuedProcessedInputs;                  // +0x6f4

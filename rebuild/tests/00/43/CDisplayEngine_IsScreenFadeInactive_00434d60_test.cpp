@@ -1,6 +1,6 @@
 #include <stdio.h>
-struct CFadeInFadeOutBase { bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
-struct CDisplayEngine { unsigned char _pad[0xbc]; unsigned char ScreenFadeOutInfo[0x1c]; };
+class CFadeInFadeOutBase { public: bool Active; float FadeInTime; float FadeOutTime; bool Closing; bool Opening; float OpenTimer; float CloseTimer; unsigned long ToColour; };
+class CDisplayEngine { public: unsigned char _pad[0xbc]; unsigned char ScreenFadeOutInfo[0x1c]; };
 struct CDisplayEngine_Methods : CDisplayEngine { bool IsScreenFadeInactive() const; };
 
 bool CDisplayEngine_Methods::IsScreenFadeInactive() const

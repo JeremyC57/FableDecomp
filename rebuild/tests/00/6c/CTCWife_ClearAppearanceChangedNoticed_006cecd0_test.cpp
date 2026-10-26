@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCWife { unsigned char pad[0xAC]; long FrameNoticedChangeInAppearance[16];
+class CTCWife { public: unsigned char pad[0xAC]; long FrameNoticedChangeInAppearance[16];
     void Clear(long* c) { FrameNoticedChangeInAppearance[*c - 2] = 0; } };
 int main()
 {

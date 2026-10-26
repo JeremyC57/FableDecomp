@@ -2,8 +2,8 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CTCDParticleEmitter { void ClearAttachments_006e0de0() { Log(1); } };
-struct CThing {
+class CTCDParticleEmitter { public: void ClearAttachments_006e0de0() { Log(1); } };
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCDParticleEmitter* m_pParticles;
     unsigned char m_flags91;

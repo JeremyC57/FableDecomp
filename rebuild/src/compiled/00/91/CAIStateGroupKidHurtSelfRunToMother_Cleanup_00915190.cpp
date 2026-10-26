@@ -6,8 +6,8 @@
 #include "engine/CAIBrain.h"
 #else
 #define __forceinline inline
-struct CAIBrain{char prefix[24];void* Creature;};
-struct CAIStateGroupBase{void* vtable;CAIBrain* PBrain;char state[12];};
+class CAIBrain{ public:char prefix[24];void* Creature;};
+class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_KidHurtSelfRunToMother:CAIStateGroupBase{bool AddedSadMode;};
 #endif
 struct KidThing;

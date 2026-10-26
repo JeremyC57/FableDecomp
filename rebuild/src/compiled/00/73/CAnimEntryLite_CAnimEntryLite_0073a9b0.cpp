@@ -7,13 +7,13 @@
 // Layout: PDB CAnimEntryLite (0x10): BankIndex +0x00, DelayTime +0x04, TransitionTime +0x08, AnimFlags +0x0c.
 // Shape: body assignments, not an initialiser list -- TransitionTime (+0x08) is computed before DelayTime (+0x04).
 // The out-pointer local is homed in the dead argument slot ([esp+0Ch] = the entry reference's slot).
-struct CAnimComponentFlags {
+class CAnimComponentFlags { public:
     unsigned char _pad[8];                      // vptr, ref count
     long Flags;                                 // +0x08
 };
 
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString

@@ -33,7 +33,7 @@ struct CMaintainedEventList {
             free(m_pNode);
     }
 };
-struct CInputManager;
+class CInputManager;
 class CJoystick {
 public:
     virtual void v00();

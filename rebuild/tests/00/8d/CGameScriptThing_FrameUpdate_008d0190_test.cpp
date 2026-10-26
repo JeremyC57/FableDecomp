@@ -12,7 +12,7 @@ static int fails = 0;
 //          component's virtual GetAngleXY (slot 63, +0xFC, float).
 // Shape: the thing's placement record at +0x60 is re-fetched through GetPItem for every use; its position (+0x0c) is
 // copied dword by dword through a `lea edx,[edi+28h]` destination (plain C3DVector assignment from a reference).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CThingPlacement_Retail {                    // the thing's placement / physics record (+0x60)
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<CThing
     void*          m_pItem;
     CThing_Retail* GetPItem() const;               // 0x00A01B50
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();

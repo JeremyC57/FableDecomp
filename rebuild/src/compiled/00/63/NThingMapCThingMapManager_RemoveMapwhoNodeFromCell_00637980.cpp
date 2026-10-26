@@ -16,7 +16,7 @@ struct CMapwhoNode {
     CMapwhoCell* PCell;                         // +0x0c
 };
 namespace NThingMap {
-struct CThingMapManager {
+class CThingMapManager { public:
     void RemoveMapwhoNodeFromCell(CMapwhoCell* cell, CMapwhoNode* node);
 };
 

@@ -6,7 +6,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 
-struct CCharString {
+class CCharString { public:
     std::string* PStringData;                       // null = empty string, as in the engine
     CCharString() : PStringData(0) {}
     CCharString(const std::string& s) : PStringData(s.empty() ? 0 : new std::string(s)) {}
@@ -20,7 +20,7 @@ struct CCharString {
         return *PStringData == text;
     }
 };
-struct CWideString {
+class CWideString { public:
     std::string s;
     CWideString() {}
     CWideString(const char* t) : s(t) {}
@@ -46,7 +46,7 @@ static unsigned long GetFileSize(void* file, unsigned long* high) { return file 
 
 static unsigned long g_ThreadedFilePhysicalSortKey;
 enum EThreadedFileDeviceID { THREADED_FILE_DEVICE_HD = 0, THREADED_FILE_DEVICE_D = 1 };
-struct CThreadedFile {
+class CThreadedFile { public:
     EThreadedFileDeviceID DeviceID; void* FileHandle; CWideString Filename;
     unsigned long Length, PhysicalSortKey; bool OpenedForWrite, OpenFlag;
     CThreadedFile() : DeviceID(THREADED_FILE_DEVICE_HD), FileHandle(0), Length(0), PhysicalSortKey(0), OpenedForWrite(true), OpenFlag(false) {}

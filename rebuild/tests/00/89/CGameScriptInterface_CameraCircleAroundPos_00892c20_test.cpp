@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
@@ -19,7 +19,7 @@ public:
         : PosAround(posAround), DollyVector(dollyVector), TimeFor360Turn(timeFor360Turn) {}
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

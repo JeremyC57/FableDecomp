@@ -14,21 +14,21 @@
 // `level == max + 1`; the text id is a named local tested after the register pops.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString { void* PStringData; CWideString(const CWideString&); ~CWideString(); };   // 0x0099B720 / 0x0099B510
+class CWideString { public: void* PStringData; CWideString(const CWideString&); ~CWideString(); };   // 0x0099B720 / 0x0099B510
 extern CWideString g_EmptyWideString;                   // 0x013BCA24
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
-struct CAbilityTrackLevelDef {                          // retail 0x48 bytes
+class CAbilityTrackLevelDef { public:                          // retail 0x48 bytes
     unsigned char _pad00[0x44];
     long Description;                                   // +0x44
 };
-struct CAbilityTrackDef {                               // retail 0x50 bytes
+class CAbilityTrackDef { public:                               // retail 0x50 bytes
     unsigned char _pad00[0x40];
     CAbilityTrackLevelDef* Abilities_first;             // +0x40 std::vector<CAbilityTrackLevelDef>
     CAbilityTrackLevelDef* Abilities_last;
     CAbilityTrackLevelDef* Abilities_end;
     long MaxedOutDescription;                           // +0x4c
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CAbilityTrackDef* StatLevels_first;                 // +0xfc std::vector<CAbilityTrackDef>
     CAbilityTrackDef* StatLevels_last;
@@ -38,7 +38,7 @@ struct CDefinitionHolder {
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                       // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
-struct CTCHeroExperience {                              // interface type 0x68
+class CTCHeroExperience { public:                              // interface type 0x68
     long GetTrainableStatMaxLevel(EHeroTrainableStatType stat);   // 0x006D6770
 };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
@@ -47,7 +47,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     Entry* LowerBound(const long*);                     // 0x0040F020
 };
 struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
@@ -63,7 +63,7 @@ struct CTCInventoryBase {
     CDefinitionHolder* GetDefinitions() const;          // 0x006869D0 (CTCBase)
     CWideString GetInventoryText(long text_id);         // 0x005BD273
 };
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     CWideString GetExperienceStatDescription(long stat, long level);
 };
 CWideString CTCInventoryExperience::GetExperienceStatDescription(long stat, long level)

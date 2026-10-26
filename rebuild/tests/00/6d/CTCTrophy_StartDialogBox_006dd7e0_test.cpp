@@ -3,7 +3,7 @@
 // ---- test-side string stubs (narrow text buffers; the wide type stores chars) ----
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char m_text[160];
     CWideString() { m_text[0] = 0; }
     CWideString(const char* s) { std::strcpy(m_text, s); }
@@ -15,7 +15,7 @@ struct CWideString {
 };
 inline CWideString operator+(const CWideString& a, const CWideString& b) { CWideString r(a); r += b; return r; }
 inline CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a); r += CWideString(b); return r; }
-struct CCharString {
+class CCharString { public:
     char m_text[160];
     CCharString(const char* s, long length = -1) { (void)length; std::strcpy(m_text, s); }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); }
@@ -26,28 +26,28 @@ struct CCharString {
 inline CCharString GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CCharString(b); }
 inline bool Same(const CWideString& w, const char* s) { return std::strcmp(w.m_text, s) == 0; }
 // ---- end stubs ----
-struct CFontBank { int id; };
+class CFontBank { public: int id; };
 static int g_three = 0, g_two = 0, g_registered = 0; static char g_lastText[64];
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank*, const CWideString& text, const CWideString& name, const CWideString&, const CWideString&,
                  const CWideString&, unsigned long, float, bool, bool) { ++g_three; std::strcpy(g_lastText, text.m_text); (void)name; }
     void SetText(CFontBank*, const CWideString& text, const CWideString&, const CWideString&,
                  const CWideString&, unsigned long, float, bool, bool) { ++g_two; std::strcpy(g_lastText, text.m_text); }
 };
-namespace NHeroInformationScreens { struct CManager { bool ScreenActive; }; }
+namespace NHeroInformationScreens { class CManager { public: bool ScreenActive; }; }
 static NHeroInformationScreens::CManager g_screens;
-struct CPlayerGui {
+class CPlayerGui { public:
     CSubtitleRenderer SubtitleRenderer;
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() { return &g_screens; }
 };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
-struct CMainGameComponent { CFontBank* Font; };
+class CMainGameComponent { public: CFontBank* Font; };
 static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     void AddToGlobalUpdateTCs() { ++g_registered; }
 };
-struct CTCTrophy : CTCBase {
+class CTCTrophy : public CTCBase { public:
     bool WaitingForConfirmation;
     bool IsGlobalTC;
     void StartDialogBox(CWideString text, unsigned long flags, CWideString button1, CWideString button2, CWideString button3);

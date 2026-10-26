@@ -40,7 +40,7 @@ struct CDataInputStreamReader : CDataInputStream {         // the engine layout 
     }
 };
 
-struct CMemoryDataOutputStream {                           // 24 bytes
+class CMemoryDataOutputStream { public:                           // 24 bytes
     unsigned char _body[0x18];
     void SetSize(long size);                               // 0x00996BC0
     void ReadFromInputStream(CDataInputStreamReader& in, long size);   // 0x00996970

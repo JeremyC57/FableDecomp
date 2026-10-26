@@ -12,19 +12,19 @@
 // names are scoped named CCharStrings with the appearance read into a local after the ctor; the coin flip is
 // `long side = r & 1; bool b = side == 1;` (cmp/sete); MoveAndFace is written in each arm (the common arg-push prefix is
 // hoisted by VC7.1) and GFRandom is called inside each talk arm (hoisted too); the look speed is 0.0027777f (0x3B360A13).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -38,7 +38,7 @@ struct CInterfaceMap {
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -70,7 +70,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x012443
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad91[0x170 - 0x68];
     CBaseIntelligentPointer Workplace;          // +0x170
 };
@@ -79,7 +79,7 @@ struct CVillage {
     bool LessonOn;                              // +0xBC
     bool GetSchoolTimes(float* start, float* end);   // 0x00658ACB
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CVillage* GetPVillage();                    // 0x007EE540
 };
 struct CTimeOfDay {
@@ -92,11 +92,11 @@ struct CThingWorld {
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

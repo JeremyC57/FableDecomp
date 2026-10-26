@@ -36,7 +36,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameSpotTheAdditionDef : CDefVirtual {
+class CTavernGameSpotTheAdditionDef : public CDefVirtual { public:
     long m_count;                               // +0x04
     unsigned char _pad_0x08[0x28];
     float CoverWidth;                           // +0x30
@@ -52,10 +52,10 @@ struct CSpotTheAdditionDefPointer {             // CDefPointer<const CTavernGame
     ~CSpotTheAdditionDefPointer() { if (Object) Object->Release(); }
     CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CTavernGameSpotTheAdditionDef* PeekDefFromGlobalIndex(long index);   // stand-in only
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
     unsigned char       _pad_0x04[0x18];
     CDefinitionManager* m_pManager;             // +0x1c
@@ -88,7 +88,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0xe8];

@@ -1,4 +1,4 @@
-struct CTCLook {
+class CTCLook { public:
     char pad0[0x14];
     unsigned long flags;   // +0x14
     char pad1[0x100 - 0x18];

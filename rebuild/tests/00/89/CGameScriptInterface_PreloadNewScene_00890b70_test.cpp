@@ -47,8 +47,8 @@ struct SceneRootHolder
 
 SceneRootHolder* g_sceneRoot;
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     void PreloadNewScene(float param);
 };
 

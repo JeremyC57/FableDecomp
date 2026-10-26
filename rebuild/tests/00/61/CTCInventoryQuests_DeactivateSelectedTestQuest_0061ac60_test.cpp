@@ -4,7 +4,7 @@
 
 static int g_completed = 0, g_finishShown = 0, g_deactivated = 0, g_executed = 0;
 static char g_lastPath[128];
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString() { text[0] = 0; }
     CCharString(const char* t) { std::strcpy(text, t); }
@@ -15,21 +15,21 @@ CCharString operator+(const char* left, const CCharString& right)
     CCharString r(left); std::strcat(r.text, right.text); return r;
 }
 static bool PathExists(const CCharString& path) { return std::strstr(path.text, "missing") == 0; }
-struct CTestQuest { CCharString QuestName, IniFile, OutiFile; };
+class CTestQuest { public: CCharString QuestName, IniFile, OutiFile; };
 static CTestQuest g_quests[2];
 struct CTestQuestVector { CTestQuest* _M_start; CTestQuest& operator[](unsigned long n) { return *(_M_start + n); } };
-struct CQuestManager {
+class CQuestManager { public:
     bool SetQuestAsCompleted(const CCharString&, bool a, bool b, bool c) { if (!a && !b && !c) ++g_completed; return true; }
     bool OnQuestFinishScreenDisplayed(const CCharString&) { ++g_finishShown; return true; }
     void DeactivateQuest(const CCharString&, unsigned long reason) { if (reason == 0) ++g_deactivated; }
 };
 static CQuestManager g_qm; static CQuestManager* g_pQuestManager = &g_qm;
 static bool g_bQuestFinishScreensEnabled = true;
-struct CConsole {
+class CConsole { public:
     static CConsole* Get() { static CConsole c; return &c; }
     void ExecuteConfigFile(const CCharString& path) { ++g_executed; std::strcpy(g_lastPath, path.text); }
 };
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     bool ActiveTestQuestMode;
     long TestQuestSelectedIndex;
     void GetTestQuestsToDisplay(CTestQuestVector* quests) { quests->_M_start = g_quests; }

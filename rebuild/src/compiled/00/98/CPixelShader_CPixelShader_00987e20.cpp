@@ -13,12 +13,12 @@ struct CPixelShaderData {
     long  m_refCount;                              // +0x08
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual void v00();
     ~CShaderBase() { }
 };
 
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* m_pData;                     // +0x04
     virtual void v00();
     ~CPixelShader();

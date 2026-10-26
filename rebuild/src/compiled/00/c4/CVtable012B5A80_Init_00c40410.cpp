@@ -8,7 +8,7 @@
 // Shape: the first two vectors are cleared with chained assignments (`X = Y = Z = 0.0f` stores Z, Y, X), the axes through
 // an inline Set(x, y, z); VC7.1 shares one zero register and one 1.0f register (`mov edx,3F800000h`) for all the float
 // stores and schedules each axis's zero stores before its 1.0f; `mov al,1` returns true.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { X = x; Y = y; Z = z; }
 };

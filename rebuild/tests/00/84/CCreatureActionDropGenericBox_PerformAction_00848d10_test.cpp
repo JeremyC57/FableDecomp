@@ -2,14 +2,14 @@
 // primary-slot thing (argument true) and the mode manager (0x31) removes mode 0x22.
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -49,9 +49,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCarrying : CTCBase { void RemoveThingFromPrimarySlot(bool drop) { ++calls; arg = drop ? (void*)1 : (void*)0; } };
-struct CTCCreatureModeManager : CTCBase { void RemoveMode(unsigned long mode) { ++calls; arg = (void*)mode; } };
-struct CCreatureAction_DropGenericBox {
+class CTCCarrying : public CTCBase { public: void RemoveThingFromPrimarySlot(bool drop) { ++calls; arg = drop ? (void*)1 : (void*)0; } };
+class CTCCreatureModeManager : public CTCBase { public: void RemoveMode(unsigned long mode) { ++calls; arg = (void*)mode; } };
+class CCreatureAction_DropGenericBox { public:
     CBaseIntelligentPointer PCreature;
     void PerformAction()
     {

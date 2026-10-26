@@ -1,8 +1,8 @@
 #include <wchar.h>
 #include <stdio.h>
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     unsigned long unknown04;
     unsigned long unknown08;

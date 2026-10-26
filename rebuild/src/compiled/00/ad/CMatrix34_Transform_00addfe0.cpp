@@ -9,7 +9,7 @@
 // Shape: the input is copied into a 16-byte local first (`C4DVector t = out;`, its w copy is dead); each component is a sum
 // of four `row * t` products in the source order retail evaluates (z, y first; the w and x terms swap in row 0); the
 // out.w store is an integer move scheduled before the last fstp.
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 struct CRow_Retail {                               // one matrix row: three direction terms and the translation term

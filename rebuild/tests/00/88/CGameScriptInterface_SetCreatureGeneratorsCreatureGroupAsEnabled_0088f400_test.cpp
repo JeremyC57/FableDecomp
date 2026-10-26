@@ -11,7 +11,7 @@ struct RecordedCall {
 
 static RecordedCall g_rec = { 0, 0, false, false };
 
-struct CWorld {
+class CWorld { public:
     int m_id;
     void __fastcall SetCreatureGenerationGroupAsEnabled(ECreatureGroup group, bool enabled) {
         g_rec.self = this;
@@ -26,7 +26,7 @@ struct Overlay {
     CWorld* pWorld;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void __fastcall SetCreatureGeneratorsCreatureGroupAsEnabled(ECreatureGroup group, bool enabled) const {
         reinterpret_cast<const Overlay*>(this)->pWorld->SetCreatureGenerationGroupAsEnabled(group, enabled);
     }

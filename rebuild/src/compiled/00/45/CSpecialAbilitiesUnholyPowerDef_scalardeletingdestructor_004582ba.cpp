@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesUnholyPowerDef;
+class CSpecialAbilitiesUnholyPowerDef;
 extern "C" void __fastcall CSpecialAbilitiesUnholyPowerDef_dtor(CSpecialAbilitiesUnholyPowerDef* def);
 extern "C" void __cdecl op_delete(void* p);
 

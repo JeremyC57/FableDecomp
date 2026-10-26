@@ -65,5 +65,5 @@ struct P {
   virtual char d63(){return 0;}
   virtual char tgt();
 };
-struct CScriptThing { char pad[4]; P* f4; char IsOpenDoor(); };
+class CScriptThing { public: char pad[4]; P* f4; char IsOpenDoor(); };
 char CScriptThing::IsOpenDoor(){ P* p=this->f4; if(!p) return 0; return p->tgt(); }

@@ -13,7 +13,7 @@
 // Raw Spell secondary table012475a0 shares Observer slots2..7 with01246020;
 // slot7=0041c580 writes PreventObservation at+0x10, confirming the4byte drift.
 namespace NUISystem {
-struct CObserver { virtual void Obs0()=0; virtual void Obs1()=0; virtual void Obs2()=0; virtual void ObserveEvent(int event)=0; unsigned char EventsToObserve[0xc]; bool PreventObservation; unsigned char Alignment[3]; };
+class CObserver { public: virtual void Obs0()=0; virtual void Obs1()=0; virtual void Obs2()=0; virtual void ObserveEvent(int event)=0; unsigned char EventsToObserve[0xc]; bool PreventObservation; unsigned char Alignment[3]; };
 struct Primary {
  virtual void Slot000() = 0;
  virtual void Slot001() = 0;
@@ -169,14 +169,14 @@ struct Primary {
  virtual void ScrollDown() = 0;
 };
 struct Third { virtual void Third0()=0; };
-struct CChangingStateComponent:Primary,CObserver,Third { void ChangeState(unsigned long); // 0x0052cf40
+class CChangingStateComponent:public Primary,public CObserver,public Third { public: void ChangeState(unsigned long); // 0x0052cf40
 };
 struct CManagerCalls {
  virtual void Front0()=0; virtual void Front1()=0; virtual void AddObserver(CObserver*)=0;
  virtual void Front3()=0; virtual void Front4()=0; virtual void RemoveObserver(CObserver*)=0;
  static CManagerCalls* __fastcall GetInstance(); // 0x0041e5f2
 };
-struct CSpellContainerList:CChangingStateComponent {
+class CSpellContainerList:public CChangingStateComponent { public:
  unsigned char InheritedState[0x164-0x1c];
  unsigned int SelectedChild;
  void* SpellSelectionChild;

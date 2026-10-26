@@ -10,7 +10,7 @@ struct CShoveHaPennyRegionDef_Base {               // the def base whose constru
     CShoveHaPennyRegionDef_Base();                 // 0x0044C0C0
 };
 
-struct CRumbleDef : CShoveHaPennyRegionDef_Base {
+class CRumbleDef : public CShoveHaPennyRegionDef_Base { public:
     CDefMember_004dfac5    m_28;                 // +0x28 (12 bytes; constructor 0x004DFAC5)
     CDefMember_004dfae3    m_34;                 // +0x34 (constructor 0x004DFAE3)
     virtual void v00();

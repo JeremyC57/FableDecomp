@@ -10,7 +10,7 @@
 // Shape: the BeardyBaldy (0x00E503D0) wait: the name is an implicit conversion; the handle has THREE destructor sites (the
 // return inside the loop, a second `if (IsDone()) return;` after it, and the end): VC7.1 expands the inline destructor at
 // the first site only and calls the out-of-line ~CScriptThing (0x004AA840) at the other two, which tail-merge.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -43,7 +43,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual bool IsAlive();                                 // slot 75 (+0x12c)
 };
 
-struct CScriptThing : CBase {                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
     CScriptThingImpl* PImp_Data;                            // +0x04
     SScriptThingInfo* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);
@@ -64,7 +64,7 @@ struct CScriptThing : CBase {                               // vtable 0x01238C8C
         return PImp_Data && PImp_Data->IsAlive();
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();                                  // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

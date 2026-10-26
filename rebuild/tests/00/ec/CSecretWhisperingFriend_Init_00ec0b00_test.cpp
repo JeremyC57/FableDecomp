@@ -1,12 +1,12 @@
 // Behaviour test for CSecretWhisperingFriend::Init (0x00EC0B00): the interface gets (Me, 1), StartPos becomes Me's position.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     C3DVector m_pos;
     virtual ~CScriptThing() {}
     virtual const C3DVector& GetPos() const { return m_pos; }
 };
-struct CGameScriptInterfaceBase {
+class CGameScriptInterfaceBase { public:
     const CScriptThing* m_thing; long m_flag;
     virtual ~CGameScriptInterfaceBase() {}
     virtual void Slot477(const CScriptThing& thing, long flag) { m_thing = &thing; m_flag = flag; }

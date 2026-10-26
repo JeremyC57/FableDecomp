@@ -8,7 +8,7 @@ struct IBufImplVtbl {
     void (__stdcall *GetDesc)(IBufImpl* self, Desc* out);
 };
 struct IBufImpl { IBufImplVtbl* vtbl; };
-struct CIndexBuffer { void* f0; IBufImpl* PD3DIndexBuffer; };
+class CIndexBuffer { public: void* f0; IBufImpl* PD3DIndexBuffer; };
 
 long __fastcall GetSize(CIndexBuffer* self);
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p("") {}
     CCharString(const char* t, long = -1) : p(t) {}
@@ -34,14 +34,14 @@ struct CTimerS {
     void SetTime(long t) { g_timerSet[Index] = t; g_timerAt[Index] = g_frame; }
     long GetTime() const { return g_timerSet[Index] - (g_frame - g_timerAt[Index]); }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 // Things: an id into a small world table (health > 0 means alive).
 static float g_health[64];
 static C3DVector g_pos[64];
 static int g_nextThing = 10;
 static const char* g_data[64];
 static bool (*g_isHit)(int id, int kind, const char* by) = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing() : id(0) {}
     explicit CScriptThing(int i) : id(i) {}
@@ -59,7 +59,7 @@ inline CCharString operator+(const CCharString& a, const CCharString& b)
 }
 inline CCharString operator+(const CCharString& a, const char* b) { return a + CCharString(b); }
 // bordello harness: timers count down one tick per frame and stop at 0
-struct CTimer {
+class CTimer { public:
     long setTo, setAt;
     CTimer() : setTo(0), setAt(0) {}
     void SetTime(long t) { setTo = t; setAt = g_frame; }

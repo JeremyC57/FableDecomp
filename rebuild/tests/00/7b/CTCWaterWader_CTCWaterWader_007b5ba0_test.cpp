@@ -28,7 +28,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { ++g_baseDtor; }
     CThing* ParentThing;
 };

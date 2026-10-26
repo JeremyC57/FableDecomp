@@ -3,14 +3,14 @@
 #include <cstdio>
 
 static int g_threadedOpens = 0; static bool g_lastNonCached = false;
-struct CThreadedFile { bool Open(const char*, bool nonCached) { ++g_threadedOpens; g_lastNonCached = nonCached; return true; } };
-struct CBankFile {
+class CThreadedFile { public: bool Open(const char*, bool nonCached) { ++g_threadedOpens; g_lastNonCached = nonCached; return true; } };
+class CBankFile { public:
     bool baseResult;
     virtual ~CBankFile() {}
     virtual bool OpenFileReadOnly(const char*, unsigned int) { return baseResult; }
     const char* GetBankPathname() { return "bank.big"; }
 };
-struct CBankFileAsync : CBankFile {
+class CBankFileAsync : public CBankFile { public:
     CThreadedFile* ThreadedFile; bool NonCached, DisableAsync;
     virtual bool OpenFileReadOnly(const char* filename, unsigned int flags)
     {

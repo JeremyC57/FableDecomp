@@ -50,7 +50,7 @@ static SCountBlock* NewBlock(int i)
 }
 static void Set(CCountedPointer& p, SCountBlock* b) { p.m_pCount = b; p.m_pObject = b ? b->m_pObject : 0; }
 
-struct CCompositeSurfaceInfo {
+class CCompositeSurfaceInfo { public:
     virtual long Tag() const { return 7; }
     CCountedPointer m_pObject;
 };

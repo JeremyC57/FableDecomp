@@ -4,7 +4,7 @@
 // Shape: the year is a signed long (`setl`); every later field is unsigned, so its `<` is the carry idiom
 // `sbb eax,eax ; neg eax`, and VC merges the six identical tails into one block entered by the `jne` of the
 // field that differed (the `cmp` before each `jne` still holds the flags). The Millisecond compare falls into it.
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

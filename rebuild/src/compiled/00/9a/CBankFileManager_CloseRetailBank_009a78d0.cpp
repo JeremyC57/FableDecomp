@@ -16,13 +16,13 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 extern const char g_emptyString[];                 // "" @ 0x0129AAF4
 
-struct CCharStringData { const char* Text; };
-struct CCharString {
+class CCharStringData { public: const char* Text; };
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                // 0x0099EAE0
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;       // 0x0099B2C0
 };
@@ -32,7 +32,7 @@ struct SCountBlock {
     void* m_pObject;                               // +8
 };
 namespace NBankFileManager {
-struct CRetailBank {
+class CRetailBank { public:
     unsigned char _pad[0x24];
     CCharString FilePath;                          // +0x24 (PDB +0x28: the retail map is 12 bytes)
 };

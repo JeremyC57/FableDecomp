@@ -3,12 +3,12 @@
 // Callees: CDiskFileWin32::Open @ 0x0099A6A0 (vtable 0x0122D06C slot 1), CDiskFileWin32::Write @ 0x0099AA90 (slot 4).
 // Same body as OpenPackageFileForSaving (0x009F4AD0) plus the Saving flag (+0x39) store at the end; PackageFile is the
 // embedded CDiskFileWin32 at +0x60, CurrentFilePackageIndex at +0x58 (PDB CInputManager with 12-byte vectors).
-struct CWideString;
-struct CVersion;
-struct CASuspendableProcess;
+class CWideString;
+class CVersion;
+class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CDiskFileWin32 {                             // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0 (slot 1)
     virtual void Close();                           // 0x0099A920 (slot 2)
@@ -17,7 +17,7 @@ struct CDiskFileWin32 {                             // vtable 0x0122D06C, 0x1c b
     unsigned char _body[0x18];
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char  _pad04[0x34];                    // +0x04 vectors, counters, devices
     bool           Loading;                         // +0x38

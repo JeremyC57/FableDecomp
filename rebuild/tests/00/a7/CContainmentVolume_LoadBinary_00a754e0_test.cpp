@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CContainmentVolume::LoadBinary @ 0x00A754E0.
-struct CPlane { float X, Y, Z, D; };
+class CPlane { public: float X, Y, Z, D; };
 static unsigned char g_poolMemory[256];
 static float g_source[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 struct Stream {

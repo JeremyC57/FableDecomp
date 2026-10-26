@@ -10,14 +10,14 @@
 //   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; g_CCharString_013bacb4 = "SHOT_CREATION_DUMMY".
 class CTCBase;
 class CThing;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
-struct CBaseClass {                                     // vtable 0x01231710 (RTTI .?AVCBaseClass@@)
+class CBaseClass { public:                                     // vtable 0x01231710 (RTTI .?AVCBaseClass@@)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // slot 0: Ego_r.pdb ??1CBaseClass@@UAE@XZ (scalar deleting dtor 0x004371F0)
 };
@@ -63,7 +63,7 @@ struct CParticleUpdateParameters : CBaseClass {         // <unsigned long, unsig
     virtual ~CParticleUpdateParameters();               // 0x006E2500
 };
 }
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -72,7 +72,7 @@ struct CCharString {
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 extern CCharString g_CCharString_013bacb4;              // 0x013BACB4 "SHOT_CREATION_DUMMY"
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, long flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
@@ -154,7 +154,7 @@ struct CTCPhysics {
     virtual void v69();
     virtual C3DVector GetDirection();                   // slot 70 (+0x118)
 };
-struct CThingShotDef {
+class CThingShotDef { public:
     unsigned char _pad00[0x48];
     long          AttachedContinuousEffect;             // +0x48
     long          AttachedContinuousSound;              // +0x4c

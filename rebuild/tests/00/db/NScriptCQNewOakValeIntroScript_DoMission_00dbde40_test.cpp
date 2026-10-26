@@ -7,7 +7,7 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0;
 struct CQ_NewOakValeIntroScript;
 static CQ_NewOakValeIntroScript* g_s;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const;
     bool IsRegionLoaded(const char*) const { return g_frames > 0; }
     void FadeScreenOutUntilNextCallToFadeScreenIn(float t, float) { L(t == 2.0f ? "fade2" : "fade05"); }

@@ -8,8 +8,8 @@
 // Layout: the landed CCombatManager_Retail model (Combatants +0x10, node key +0x10, info +0x18); retail CCombatantInfo has a
 //          0x30-byte attacker part, so DefenderInfo sits at +0x34 (attackers map, PLastAttacker +0x28, PAttackPattern +0x30,
 //          AttackPatternIndex +0x34); the being-attacked flag is bit 3 of creature +0x15c.
-struct CThing;
-struct CThingCreatureBase {
+class CThing;
+class CThingCreatureBase { public:
     unsigned char    _pad[0x18];
     unsigned __int64 UniqueID;                         // +0x18
     unsigned char    _pad20[0x15c - 0x20];
@@ -36,12 +36,12 @@ struct CDefVirtual {
     virtual ~CDefVirtual();                            // slot 0
     virtual void Destroy();                            // slot 1
 };
-struct CAttackPatternDef : CDefVirtual {
+class CAttackPatternDef : public CDefVirtual { public:
     long RefCount;                                     // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer& operator=(T* p)
     {
@@ -68,7 +68,7 @@ struct CAttackerMap {                                  // STLport map (12 bytes)
     unsigned long size() const { return _M_node_count; }
     SAttackerNode* begin() const { return _M_header->_M_left; }
 };
-struct CDefendingCombatantInfo {                       // retail 0x40 bytes
+class CDefendingCombatantInfo { public:                       // retail 0x40 bytes
     CAttackerMap  Attackers;                           // +0x00
     unsigned char CombatWheel[0x0c];                   // +0x0c
     float         LastVictimWheelUpdatePos[3];         // +0x18

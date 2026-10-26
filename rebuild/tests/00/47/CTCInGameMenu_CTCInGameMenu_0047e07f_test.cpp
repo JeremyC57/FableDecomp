@@ -24,7 +24,7 @@ struct CFrontEndManager {
 };
 struct CNodeList { void clear() { ++g_cleared; } };
 static CNodeList g_frontEndNodeList;
-struct CInventoryDef {
+class CInventoryDef { public:
     long RefCount;
     virtual void Destroy() { ++g_defDestroyed; }
     void Release() { if (--RefCount == 0) Destroy(); }
@@ -34,11 +34,11 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) { Object->Release(); Object = 0; } }
 };
 struct CYesNo;
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { ++g_baseDtor; }
     void RemoveFromGlobalTCs() { ++g_removed; }
 };
-struct CTCInGameMenu : CTCBase {
+class CTCInGameMenu : public CTCBase { public:
     CDefPointer PDef;
     CPODVector<CComponent*> Components;
     CPODVector<long> FilePlayTimes;

@@ -23,11 +23,11 @@ inline T* CopyTrivial(const T* first, const T* last, T* result)
     return (T*)((char*)memmove(result, first, n) + n);
 }
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };
-struct CWaterPatchMesh;
-struct CEngineWaterBackgroundSubPatch;
-struct CEngineComponentParams;
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
+class CWaterPatchMesh;
+class CEngineWaterBackgroundSubPatch;
+class CEngineComponentParams;
 
 struct SIcePatchEntry {                            // std::pair<C3DBoundingBox, CWaterPatchMesh*>, 28 bytes
     C3DBoundingBox   first;
@@ -59,7 +59,7 @@ struct CIcePatchArray {                            // retail STLport vector<pair
     void clear() { erase(m_pFirst, m_pLast); }
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     virtual void FrameStart(const CEngineComponentParams& params);
     unsigned char _pad004[0x1fc - 0x4];
     CPtrArray<CWaterPatchMesh>                ForegroundRenderList;            // +0x1fc

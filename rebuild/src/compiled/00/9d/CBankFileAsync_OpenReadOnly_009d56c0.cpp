@@ -17,12 +17,12 @@
 //          temporary's two words are then loaded before either is stored, retail's `cmp eax,ebx` ahead of the stores),
 //          assigned out of line and destroyed at once; the disk arm is the landed OpenFileReadOnly tail (GetBankPathname
 //          temporary in the same dead slot).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };
@@ -34,7 +34,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {        // {object, count block}
+template <class T> class CCountedPointer { public:        // {object, count block}
     T*           Data;
     SCountBlock* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -44,8 +44,8 @@ template <class T> struct CCountedPointer {        // {object, count block}
     void Reset(T* object);                         // 0x009A9C80 (CThreadedFile)
     T* operator->() const { return Data; }
 };
-struct CDiskFileWin32;
-struct CThreadedFile {
+class CDiskFileWin32;
+class CThreadedFile { public:
     unsigned char _body[0x1c];
     CThreadedFile();                               // 0x0098DFD0
     bool Open(const CWideString& filename, bool nonCached);   // 0x0098E1E0

@@ -11,7 +11,7 @@ struct TestWideStringData {
     long unknown08;
     int owners;
 };
-struct CWideString {
+class CWideString { public:
     TestWideStringData* storage_;
     explicit CWideString(const wchar_t* text);
     CWideString(const CWideString& other);

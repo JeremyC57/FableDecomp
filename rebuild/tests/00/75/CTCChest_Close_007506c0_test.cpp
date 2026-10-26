@@ -1,7 +1,7 @@
 // behaviour test for 0x007506C0 CTCChest::Close
 #include <cstdio>
 struct Flagged { bool m_flag; };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Flagged* comp; int forced;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = comp; return true; } return false; }
     void SetForceFrameUpdate(bool f) { if (f) ++forced; }

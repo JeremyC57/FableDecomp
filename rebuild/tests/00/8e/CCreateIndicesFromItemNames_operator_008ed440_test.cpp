@@ -17,7 +17,7 @@ struct ItemVector {
     void push_back(const Item& x) { items[count++] = x; }
 };
 
-struct CCreateIndicesFromItemNames {
+class CCreateIndicesFromItemNames { public:
     ItemVector* ItemIndices;
     CCreateIndicesFromItemNames(ItemVector& v) : ItemIndices(&v) {}
     void operator()(const char* name)

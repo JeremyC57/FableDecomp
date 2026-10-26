@@ -3,37 +3,37 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
 };
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) { } };
-struct CThing { int id; };
-struct CAnimationEntry {
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) { } };
+class CThing { public: int id; };
+class CAnimationEntry { public:
     long BankIndex;
     unsigned long GetAnimateThingFlags() const { return 8; }
     long GetTimeToBlendIn(CThing*) const { return 3; }
 };
-struct CAnimInit {
+class CAnimInit { public:
     unsigned char type; long anim, updateMode; bool looping; long priority;
     CAnimInit(unsigned char t, unsigned long, long a, long m, bool l, unsigned long, long p)
         : type(t), anim(a), updateMode(m), looping(l), priority(p) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     short* m_animsFirst; short* m_animsLast;
     unsigned char Type; bool Finished;
     int calls; unsigned char lastType; long lastAnim;
     void SetMainAnim(const CAnimInit& init, long, long) { ++calls; lastType = init.type; lastAnim = init.anim; }
 };
-struct CCreatureActionBase { char name[32]; };
-struct CThingCreatureBase;
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureActionBase { public: char name[32]; };
+class CThingCreatureBase;
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase&, const CCharString& n, const CSoundPair&, bool, bool, bool, long, long)
     { std::strcpy(name, n.text); }
 };
 static CAnimationEntry g_entry = { 17 };
 static char g_lastAction[32], g_lastLookup[32];
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool accept;
     CAnimationEntry* GetAnimFromName(const CCharString& n, long) { std::strcpy(g_lastLookup, n.text); return &g_entry; }
     bool SetCurrentAction(const CCreatureActionBase& a) { std::strcpy(g_lastAction, a.name); return accept; }

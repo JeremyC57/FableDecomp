@@ -7,8 +7,8 @@ static int g_frames = 0, g_endAt = 1000, g_limboOn = 0, g_limboOff = 0, g_themes
 static const char* g_reason = "";
 struct CQ_BreakSiegeScript;
 static CQ_BreakSiegeScript* g_s = 0;
-struct CScriptThing { const char* name; bool IsAlive() const { return std::strcmp(name, "Blockage") == 0; } };
-struct CGameScriptInterface {
+class CScriptThing { public: const char* name; bool IsAlive() const { return std::strcmp(name, "Blockage") == 0; } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const;
     bool IsRegionLoaded(const char*) const { return g_frames < g_unloadAt; }
     bool MsgOnRegionLoaded(const char*& region) const { if (g_frames == 2) { region = "KnotholeGlade"; return true; } return false; }

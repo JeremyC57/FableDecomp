@@ -9,7 +9,7 @@ struct CAction {
     virtual ~CAction() {}
 };
 struct CModes { void OnUnsheatheFinished() { ++g_modeNotified; } };
-struct CThing {
+class CThing { public:
     bool m_accepts;
     unsigned int m_bits[9];
     CModes* m_modes;

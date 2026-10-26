@@ -1,7 +1,7 @@
 #include <cstdio>
 struct Inner { char pad[0xb]; unsigned char flags; };
 struct Held { Inner* p; };
-struct C3DAnimation2 { char pad[0x40]; Held* held; };
+class C3DAnimation2 { public: char pad[0x40]; Held* held; };
 
 bool HasRotation(C3DAnimation2* animation2)
 {

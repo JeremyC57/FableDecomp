@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; } };
-struct CThingCreatureBase { unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CThingCreatureBase { public: unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) { long type = interfaceType; CInterfaceMap* map = &m_interfaces;
             CInterfaceMap::SEntry* it = map->LowerBound(&type); if (it == map->last || interfaceType < it->type) it = map->last; *ppOut = (T*)it->component; return true; }
@@ -11,8 +11,8 @@ struct CThingCreatureBase { unsigned char _pad0[0x20]; unsigned long m_presentBi
 struct CTCSpellCastState { unsigned char _pad0[0x0c]; unsigned char m_isCasting; long m_castLevel; };
 struct CBaseIntelligentPointer { virtual void v00() { } CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
 static int g_baseCalls;
-struct CCombatActionBase { virtual void v00() { } virtual void FinishAction() { ++g_baseCalls; } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0x114 - 0x10]; };
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase { virtual void FinishAction(); };
+class CCombatActionBase { public: virtual void v00() { } virtual void FinishAction() { ++g_baseCalls; } unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0x114 - 0x10]; };
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public: virtual void FinishAction(); };
 void CCreatureAction_CastPhysicalShieldSpell::FinishAction()
 {
     CCombatActionBase::FinishAction();

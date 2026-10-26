@@ -1,6 +1,6 @@
 // Behaviour test for 0x007173D0 NTCScriptedControl::CActionTalkToThing::Update
 #include <cstdio>
-struct CProfile {
+class CProfile { public:
     bool UseNewProfileValues, SubtitlingEnabled, SubtitlingEnabledNewProfile;
     bool IsSubtitlingEnabled() const { if (UseNewProfileValues) return SubtitlingEnabledNewProfile; return SubtitlingEnabled; }
 };

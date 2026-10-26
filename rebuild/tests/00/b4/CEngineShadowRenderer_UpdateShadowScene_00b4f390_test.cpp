@@ -1,14 +1,14 @@
 // Behaviour test for 0x00B4F390 CEngineShadowRenderer::UpdateShadowScene: latch unless locked, dispatch on technique / flag.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float m[12]; };
-struct CEngineCamera { C3DVector WorldPosition; CMatrix3x4 ViewTransform; C3DVector LookVector; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float m[12]; };
+class CEngineCamera { public: C3DVector WorldPosition; CMatrix3x4 ViewTransform; C3DVector LookVector; };
 struct CSpot { int id; };
 
 static int g_call = 0; static void* g_arg = 0;
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     C3DVector CameraPos; C3DVector CameraLookVector; CMatrix3x4 CameraViewMatrix;
     bool SceneOriginLocked; long RenderingTechnique;
     void SetShadowClipVolumesToNeverShadow() { g_call = 1; g_arg = 0; }

@@ -1,5 +1,5 @@
 // std::vector::operator=(const vector<CGameMapCell>& x) -- STLport assignment of the 7-byte game-map cell vector: reallocate and copy when x outgrows the capacity, else assign over the live cells and copy-construct the rest; returns *this
-// Leaf: ??4?$vector@UCGameMapCell@@
+// Leaf: ??4?$vector@VCGameMapCell@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B7E20, 336 bytes (+ int3 padding), thiscall, `ret 4`, no EH frame.
 // Identity: the catalog's "Vector_CopyAssign" is a descriptive auto label. The element is CGameMapCell (Ego_r.pdb:
 //   AtmosThemes uchar[3], AtmosBlends uchar[2], SoundTheme schar, Music uchar; 7 bytes, alignment 1 -- the `/7`
@@ -18,7 +18,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CGameMapCell {                                       // 7 bytes, alignment 1
+class CGameMapCell { public:                                       // 7 bytes, alignment 1
     unsigned char AtmosThemes[3];                           // +0
     unsigned char AtmosBlends[2];                           // +3
     signed char   SoundTheme;                               // +5

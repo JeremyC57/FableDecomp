@@ -2,12 +2,12 @@
 #include <cstring>
 // Behaviour test for CThingPhysical::OnCreate (0x006A4D20): sound-player component added, base result normalised.
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* t, long) { std::strcpy(text, t); ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     char added[32]; bool addedActive; void* addedParams; int liveDuringAdd; unsigned char baseResult;
     void AddTC(const CCharString& name, bool activate, void* params)
     { std::strcpy(added, name.text); addedActive = activate; addedParams = params; liveDuringAdd = g_live; }

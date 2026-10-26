@@ -12,8 +12,8 @@ typedef long long i64;
 #else
 typedef __int64 i64;
 #endif
-struct CPersistContext;
-struct CMemoryDataInputStream {
+class CPersistContext;
+class CMemoryDataInputStream { public:
     void* m_pVtable; unsigned long m_position; long StreamSize; const unsigned char* m_pData; long SourceChunkStreamPos; long m_remaining;
     long overflow;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { LOG("overflow"); long v = 3; std::memcpy(buffer, &v, 4); overflow++; }
@@ -27,7 +27,7 @@ struct CMemoryDataInputStream {
     }
     long ReadLong() { long value = 0; Read(&value, 4); return value; }   /* 4-byte stream long (host long may be wider) */
 };
-struct CDataOutputStream { long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CDataOutputStream { public: long written; void WriteLong(long v) { LOG("write"); written = v; } };
 static int g_transfers;
 class CBlurredAttitudesDef { public: long id; virtual void Transfer(CPersistContext&) { g_transfers += id; } virtual ~CBlurredAttitudesDef() {} };
 template <class T> struct vector {
@@ -36,7 +36,7 @@ template <class T> struct vector {
     T& operator[](long index) { return _M_start[index]; }
     void resize(long count) { LOG("resize"); _M_finish = _M_start + count; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void CheckCRC(const char* name) { LOG(name[0] == 0 ? "crc" : "crc?"); }
     template <class T> void TransferVectorOfSubComponents(vector<T>& value);

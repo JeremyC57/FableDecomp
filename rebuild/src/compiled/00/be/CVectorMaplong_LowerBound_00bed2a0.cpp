@@ -11,13 +11,13 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorph {            // CRandomAppearanceMorph::CSkeletalMorph, Ego_r.pdb 12 bytes
     long       GroupID;          // +0x0
     CDefString Name;             // +0x4
     bool       AllowVariation;   // +0x8
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

@@ -22,13 +22,13 @@
 class CTCBase;
 class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*>: {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -89,7 +89,7 @@ public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -108,7 +108,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
 #pragma pack(pop)
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     operator T*() const { return (T*)GetPItem(); }
     T* operator->() const { return (T*)GetPItem(); }
 };

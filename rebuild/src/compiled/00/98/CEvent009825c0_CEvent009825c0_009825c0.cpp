@@ -7,7 +7,7 @@
 // `#pragma pack(1)`; the members are named descriptively. The most-derived class is novtable
 // (no vtable store of its own); members are destroyed in reverse order, then the inline empty
 // base destructor writes the base vtable.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {
 };
 
 namespace NEntityEvents {
-struct CEventBase {                        // vtable 0x0124F2C4
+class CEventBase { public:                        // vtable 0x0124F2C4
     virtual void v00();
     long m_eventType;                      // +4
     ~CEventBase() { }

@@ -6,9 +6,9 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
+class CThing;
 struct CInterfaceMap {
     struct Entry { long Type; void* Component; };
     Entry* First;
@@ -45,7 +45,7 @@ struct CTCGraphicAppearance {
     bool GetHelperPoint(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, float scale); // 0x004C0560
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale); // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -53,7 +53,7 @@ struct CThing {
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
     C3DVector* GetPosition(); // 0x004C73D0
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     void AddExcludedThing(CThing* thing); // 0x0080CBF0
 };
 struct CActionEventExplosion {

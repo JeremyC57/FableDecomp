@@ -20,7 +20,7 @@
 //   destructor in bl).
 // Layout: Ego_r.pdb CTCMultiArrow with the retail 12-byte vector (as the landed siblings 0x007CC230 / 0x007CC060):
 //   PDef +0x0C, CreateAmmoEffectCount +0x24, AmmoEffects +0x30.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing;
 class CBaseObject;
 class CTCBase;
@@ -32,12 +32,12 @@ public:
     void* m_pStringData;
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                            // slot 0
     virtual void Delete();                             // slot 1 (+0x04)
     long m_refCount;                                   // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -47,7 +47,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
@@ -63,10 +63,10 @@ __declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& n
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);       // 0x00669580
 };
-struct CSpecialAbilitiesMultiArrowDef : CDefClassBase { };
+class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public: };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee of the stand-in body below
 // Same-TU stand-in for the out-of-line GetSubDef<CSpecialEffectsDef> (the landed 0x008C4170 idiom): it writes the out
 // slot only inline, so VC7.1 knows the def pointer's address does not escape and keeps the def in ebp.
@@ -143,7 +143,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };

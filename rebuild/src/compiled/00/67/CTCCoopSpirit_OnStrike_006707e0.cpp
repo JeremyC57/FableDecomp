@@ -9,7 +9,7 @@
 // Shape: the string is a named local in the `push ecx` slot (re-addressed with `lea` for the call and the
 // destructor), the def's table position pushed before the hidden result pointer.
 // The manifest labels this body "OnHit" like its twin; 0x006707A0 is OnHit (OnHitParticle); this one reads OnStrikeParticle.
-struct CCharString {
+class CCharString { public:
     void* PStringData;                                      // +0 the shared string block
     ~CCharString();                                         // 0x0099EAE0
 };
@@ -20,7 +20,7 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;                    // 0x013CA828
 
-struct CCoopSpiritDef {
+class CCoopSpiritDef { public:
     unsigned char _pad[0x28];
     long          OnHitParticle;                            // +0x28 CDefString
     long          OnStrikeParticle;                         // +0x2c CDefString
@@ -29,7 +29,7 @@ struct CCoopSpiritDef {
     float         MeleeTargetRange;                         // +0x38
 };
 
-struct CTCCoopSpirit {
+class CTCCoopSpirit { public:
     void*                 __vftable;                        // +0x00
     unsigned char         _pad04[0x24];                     // +0x04 CTCBase .. Master
     const CCoopSpiritDef* PCoopSpiritDef;                   // +0x28 CDefPointer<CCoopSpiritDef const>

@@ -16,11 +16,11 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern long g_framesPerSecond;                          // 0x01375550
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CCamera {                                        // 0x38 bytes
+class CCamera { public:                                        // 0x38 bytes
     float          WorldPosition[3];                    // +0x00
     float          RHSet[6];                            // +0x0c CRightHandedSet
     bool           HeightLocked;                        // +0x24
@@ -45,8 +45,8 @@ template <class T> struct CList {                       // retail STLport list: 
     }
 };
 
-struct CWorld;
-struct CAIGameCameraBase {                              // vtable 0x0125C1F4 (store dead)
+class CWorld;
+class CAIGameCameraBase { public:                              // vtable 0x0125C1F4 (store dead)
     virtual void v00();
     CAIGameCameraBase() {}
 };

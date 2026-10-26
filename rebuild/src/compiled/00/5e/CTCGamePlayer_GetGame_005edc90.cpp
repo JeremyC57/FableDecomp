@@ -5,9 +5,9 @@
 // retail CThing: the Dead bit = bit 0 of +0x91.
 // Shape: the pointer's address held in esi for both GetPItem calls (the item is fetched again for the Dead test),
 // nested `if`s sharing the `xor eax,eax` tail.
-struct CTCTavernGame;
+class CTCTavernGame;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                             // +0x91 bit 0 (retail)
     unsigned char _flags_0x91 : 7;
@@ -19,7 +19,7 @@ struct CIntelligentPointer_CThing {                     // 8 bytes: vptr + the p
     CThing* GetPItem();                                 // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
 
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     unsigned char              _pad_0x00[0x0c];         // CTCBase: vptr, ParentThing, flags
     CTCTavernGame*             Game;                    // +0x0c
     CIntelligentPointer_CThing GameTable;               // +0x10

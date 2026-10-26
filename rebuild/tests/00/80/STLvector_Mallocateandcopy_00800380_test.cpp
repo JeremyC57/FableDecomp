@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 #pragma pack(push, 1)
 struct SPoint { C2DVector first; unsigned char second; SPoint(const C2DVector& a, unsigned char b) : first(a), second(b) { } SPoint(const SPoint& o) : first(o.first), second(o.second) { } };
 #pragma pack(pop)

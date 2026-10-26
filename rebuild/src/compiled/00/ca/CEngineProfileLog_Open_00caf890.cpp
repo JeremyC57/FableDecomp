@@ -14,7 +14,7 @@ struct CCriticalSectionLock_00caf890 {
     ~CCriticalSectionLock_00caf890() { LeaveCriticalSection(m_pSection); }
 };
 
-struct CEngineProfileLog {
+class CEngineProfileLog { public:
     unsigned char _pad[8];
     unsigned char m_section[0x5c];         // +8: the critical section
     long m_entries;                        // +0x64

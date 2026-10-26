@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesDrainLifeDef { int marker; };
+class CSpecialAbilitiesDrainLifeDef { public: int marker; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

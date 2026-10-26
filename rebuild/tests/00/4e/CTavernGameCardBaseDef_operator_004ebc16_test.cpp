@@ -1,9 +1,9 @@
 // behaviour test for CTavernGameCardBaseDef::operator= (0x004EBC16): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
- struct CRGBColour { unsigned char B, G, R, A; }; struct C2DVector { float X, Y; };struct CCardPositionsVector { unsigned long m_words[3]; CCardPositionsVector& operator=(const CCardPositionsVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };struct CCardDefVector { unsigned long m_words[3]; CCardDefVector& operator=(const CCardDefVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CTavernGameCardBaseDef : CDefClassBase {
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+ class CRGBColour { public: unsigned char B, G, R, A; }; class C2DVector { public: float X, Y; };struct CCardPositionsVector { unsigned long m_words[3]; CCardPositionsVector& operator=(const CCardPositionsVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };struct CCardDefVector { unsigned long m_words[3]; CCardDefVector& operator=(const CCardDefVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };
+class CTavernGameCardBaseDef : public CDefClassBase { public:
     long ControlType;
     float CardWidth;
     float CardHeight;

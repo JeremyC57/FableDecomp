@@ -9,12 +9,12 @@
 struct CSpeechEmitter {
     void StopSample(unsigned long sampleID);   // 0x0066ADD0
 };
-struct CWorld {
+class CWorld { public:
     long GetFrame();                         // 0x00416225
 };
 extern CWorld* g_pWorld;                     // 0x013B86A0
 
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x0c];               // CTCBase: vptr, ParentThing, flags
     long          SpeechSample;              // +0x0c
     long          SampleStartedFrame;        // +0x10

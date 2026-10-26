@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CInputProcessInventoryMapScreen
-{
+class CInputProcessInventoryMapScreen
+{ public:
     int marker;
     void Destroy();
     void* ScalarDeletingDestructor(unsigned int flags);

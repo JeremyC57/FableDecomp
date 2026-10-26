@@ -20,13 +20,13 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                       // +0x04..+0x25
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 #pragma pack(pop)
-struct CShopItem {                                   // 28 bytes, POD
+class CShopItem { public:                                   // 28 bytes, POD
     float Quantity;                                  // +0x00
     float PriceMultiplier;                           // +0x04
     float MaxStock;                                  // +0x08
@@ -35,7 +35,7 @@ struct CShopItem {                                   // 28 bytes, POD
     float SalesPerDay;                               // +0x14
     float SalesPerDayRandomness;                     // +0x18
 };
-struct CShopItemDef : CDefClassBase {                // vtable 0x0123B644
+class CShopItemDef : public CDefClassBase { public:                // vtable 0x0123B644
     long      Type;                                  // +0x28
     CShopItem Item;                                  // +0x2c
     virtual void v00();

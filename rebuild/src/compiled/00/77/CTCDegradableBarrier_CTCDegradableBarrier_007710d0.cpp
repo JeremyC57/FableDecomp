@@ -7,7 +7,7 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x008EC850; the compiler then stores this class's vtable (0x0126A6A4, named
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
-struct CThing;
+class CThing;
 
 namespace N_008ec850 { struct CTCCameraCollision {
     virtual void v00();

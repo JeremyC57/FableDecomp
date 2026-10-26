@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 static int g_live;
-struct CCharString {
+class CCharString { public:
     char* m_pStringData;
     CCharString() : m_pStringData(0) { ++g_live; }
     CCharString(const char* s) { m_pStringData = (char*)malloc(strlen(s) + 1); strcpy(m_pStringData, s); ++g_live; }

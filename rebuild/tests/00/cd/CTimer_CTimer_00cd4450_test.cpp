@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CTimer::CTimer (0x00CD4450): each timer takes a fresh index from the manager.
-struct CThingManager { long next; virtual long CreateTimer() { return next++; } };
+class CThingManager { public: long next; virtual long CreateTimer() { return next++; } };
 static CThingManager g_mgr;
 static CThingManager* g_pThingManager = &g_mgr;
-struct CTimer { long TimerIndex; CTimer() : TimerIndex(g_pThingManager->CreateTimer()) { } };
+class CTimer { public: long TimerIndex; CTimer() : TimerIndex(g_pThingManager->CreateTimer()) { } };
 int main()
 {
     g_mgr.next = 40;

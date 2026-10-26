@@ -5,14 +5,14 @@
 // Layout: Ego_r.pdb CInputProcessInGameMenu (56 bytes: PInGameMenu +0x28, FrameSinceLastMovement +0x2c, CurrentMovement +0x30, StartedRepeatingMovement +0x34); CInputProcessGameBase::MyPlayer +0x18 (engine header), modelled locally with the base names.
 // Shape: one `push ecx` frame slot for the lookup key, the map pointer advanced into esi once, the member itself is the out pointer of the
 // lookup (`mov ecx,[eax+4] ; mov [edi+N],ecx`; a local out pointer copied to the member loads through eax instead); the state words are cleared after the lookup block from one zero register.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                              // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -30,11 +30,11 @@ struct CThingPlayerCreature {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPlayerCreature();      // 0x00487DC0
 };
-struct CTCInGameMenu;
-struct CInputProcessInGameMenu {                                         // vtable 0x01237D20
+class CTCInGameMenu;
+class CInputProcessInGameMenu { public:                                         // vtable 0x01237D20
     virtual void v00(); virtual void v01();
     virtual void Init();                            // slot 2
     unsigned char _pad04[0x10];                     // +0x04 CAInputProcess

@@ -1,15 +1,15 @@
 #include <cstdio>
 // behaviour test: CEngineScene::RenderSceneAndCheckVisibility sets the occlusion bit, runs every grid's visibility render, then both lists
-struct CEngineCamera {}; struct CEngineSceneRenderStats {}; struct CEngineInternalPrimitiveBase {};
+class CEngineCamera { public:}; class CEngineSceneRenderStats { public:}; class CEngineInternalPrimitiveBase { public:};
 static int g_cells = 0, g_lists = 0; static unsigned long g_lastMask = 0; static bool g_visibleWasFalse = true;
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     bool RenderCellClippedAndCheckVisibility(unsigned long, unsigned long, long, unsigned long mask, const CEngineCamera&, bool clipped,
                                              CEngineSceneRenderStats&, long, bool, bool& visible)
     { ++g_cells; g_lastMask = mask; if (visible || clipped) g_visibleWasFalse = false; visible = true; return true; }
     void RenderCellAndCheck(long layer, unsigned long mask, const CEngineCamera& camera, CEngineSceneRenderStats& stats, long occlusion, bool flag)
     { bool visible = false; RenderCellClippedAndCheckVisibility(0, 0, layer, mask, camera, false, stats, occlusion, flag, visible); }
 };
-struct CEngineScene {
+class CEngineScene { public:
     CEngineSceneGrid* Grids[2]; int GridCount; unsigned long GridLayerMask;
     CEngineInternalPrimitiveBase* PrimitiveListA; CEngineInternalPrimitiveBase* PrimitiveListB;
     CEngineSceneRenderStats Stats; unsigned long CurrentOcclusionMask;

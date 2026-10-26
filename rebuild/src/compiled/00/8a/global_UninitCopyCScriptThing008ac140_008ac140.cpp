@@ -12,13 +12,13 @@
 //   of the implicit copy constructor -- the vtable store, then PImp's copy (Data, Info, `if (Info) ++Info->RefCount`).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCPPointerInfo {                        // Ego_r.pdb, 12 bytes
+class CCPPointerInfo { public:                        // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                    // +0x0
     void (__cdecl* DeleteFunc)(void*);         // +0x4
     void* Data;                                // +0x8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                   // +0x0
     CCPPointerInfo* Info;                      // +0x4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)

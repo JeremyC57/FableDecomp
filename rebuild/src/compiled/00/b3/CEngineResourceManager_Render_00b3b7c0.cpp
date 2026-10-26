@@ -12,7 +12,7 @@ struct SDeviceRecord_013ca618 {
 };
 SDeviceRecord_013ca618* __cdecl GetDeviceRecord_009a4ec0();   // 0x009A4EC0
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void Reload(long flags);                       // 0x009FD100
 };
 
@@ -21,7 +21,7 @@ struct SRenderRequest_00b3b7c0 {
     long m_kind;                                   // +0x04
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char     _pad[0x954];
     CGraphicDataBank* m_pDataBank;                 // +0x954
     void Render(SRenderRequest_00b3b7c0* request);

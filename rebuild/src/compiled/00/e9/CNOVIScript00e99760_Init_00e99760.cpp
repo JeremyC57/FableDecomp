@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E99760, length 80 bytes.
 // Leaf: Init
 // Callees: __ftol2 @ 0x00BFEA70. The chunk label (CNOVI_BarrelThug::Init) is propagated; named by address. Shape: `this` in esi, the thing in edi, `ret`.
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls_00e99760 {
     virtual void v000();
     virtual void v001();

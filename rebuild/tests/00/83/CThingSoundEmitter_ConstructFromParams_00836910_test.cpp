@@ -1,14 +1,14 @@
 // Behaviour test for CThingSoundEmitter::ConstructFromParams (0x00836910).
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 class CThing;
 
 static long g_baseArgs[4];
 static bool g_baseResult = true;
 static const C3DVector* g_queried = 0;
 
-struct CWorldMap { long GetMapNumberAt(const C3DVector& pos) const { g_queried = &pos; return 42; } };
-struct CThingManager { CWorldMap* WorldMap; };
+class CWorldMap { public: long GetMapNumberAt(const C3DVector& pos) const { g_queried = &pos; return 42; } };
+class CThingManager { public: CWorldMap* WorldMap; };
 static CWorldMap g_map;
 static CThingManager g_mgr = { &g_map };
 static CThingManager* g_pThingManager = &g_mgr;

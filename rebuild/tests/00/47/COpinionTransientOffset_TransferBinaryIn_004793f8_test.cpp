@@ -6,8 +6,8 @@
 // then drives the fast path (window has >= 0x18 bytes) and the slow path
 // (window too small) and checks the observable effects.
 
-struct CDataInputStream
-{
+class CDataInputStream
+{ public:
     long           Pad00;                  // +0x00
     long           ReadPosition;           // +0x04
     long           Pad08;                  // +0x08
@@ -18,8 +18,8 @@ struct CDataInputStream
     void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
 };
 
-struct COpinionTransientOffset
-{
+class COpinionTransientOffset
+{ public:
     unsigned char Bytes[0x18];
 
     void TransferBinaryIn(CDataInputStream* stream);

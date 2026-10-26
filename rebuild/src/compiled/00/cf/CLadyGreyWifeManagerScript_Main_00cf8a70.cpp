@@ -8,8 +8,8 @@
 //   the landed CHTE_AssaultGuard::Main 0x00D6AEA0 (PImp assignment 0x00704580).
 // Shape: the per-function inline budget expands the first GetThingWithScriptName temporary's ~CScriptThing (vtable from
 //   ebp) and calls 0x004AA840 for the later ones.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
@@ -17,12 +17,12 @@ struct CCharString {
     CCharString& operator=(const char* text);          // 0x0099EFE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -45,7 +45,7 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
@@ -71,7 +71,7 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
 static inline bool IsThingDead(const CScriptThing& thing) { return thing.IsDead(); }
 static inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }
 static inline const C3DVector& PositionOf(const CScriptThing& thing) { return thing.GetPos(); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006e7410
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -178,7 +178,7 @@ struct CGameScriptInterface {
     virtual void v648(); virtual void v649(); virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

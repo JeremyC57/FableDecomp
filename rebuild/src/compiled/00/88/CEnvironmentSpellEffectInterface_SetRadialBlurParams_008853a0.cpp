@@ -8,7 +8,7 @@ struct C3DVector_008853a0 {
     C3DVector_008853a0(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     void SetRadialBlurParams(const C3DVector_008853a0& strength, long a, const C3DVector_008853a0& radius, long b, long c, long d, long e);   // 0x00885070
     void SetRadialBlurParams(float strength, long a, float radius, long b, long c, long d, long e);
 };

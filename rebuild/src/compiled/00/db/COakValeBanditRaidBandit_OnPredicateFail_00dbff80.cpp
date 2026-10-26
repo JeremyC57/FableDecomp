@@ -12,8 +12,8 @@
 // Shape: the CScriptThing assignment is the inline CCountedPointer operator= (source words read first); the name string
 //   is the implicit conversion temporary built before the nested GetHero call.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -47,7 +47,7 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         return *this;
     }
 };
-struct CScriptThing {                              // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                              // 12 bytes, vtable 0x01238C8C
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -72,7 +72,7 @@ struct CScriptThing {                              // 12 bytes, vtable 0x01238C8
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };
 bool __fastcall IsDistanceFromThingToPositionUnder(const CScriptThing& thing, const C3DVector& position, float distance);   // 0x00CBE4B7
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

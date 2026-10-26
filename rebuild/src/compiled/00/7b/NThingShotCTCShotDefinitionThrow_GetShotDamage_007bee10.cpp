@@ -10,7 +10,7 @@
 // Tiny-body shape `GetScaledTargetValue` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CThingShotDef {
+class CThingShotDef { public:
     unsigned char _pad1[0x54];
     float HitThingDamage;                         // +0x54
 };

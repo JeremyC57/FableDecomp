@@ -6,7 +6,7 @@ struct CArray_char {
     long GetCount() const { return m_pLast - m_pFirst; }
     const char* GetData() const { return m_pLast - m_pFirst != 0 ? m_pFirst : reinterpret_cast<const char*>(this); }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long m_infoSize; char* m_pInfo;
     void SetInfo(const CArray_char& info)
     {

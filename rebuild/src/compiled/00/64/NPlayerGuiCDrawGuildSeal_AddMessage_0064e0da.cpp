@@ -19,14 +19,14 @@
 // ctor is __forceinline; the alive test's thing copy, the interface key, the seal name and the queued
 // message's time all share the frame word [ebp-4] (each in its own block); the interface lookup is the landed
 // `__forceinline` GetInterfaceUnchecked template after an inline HasInterface.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);        // 0x0099EC30
     ~CCharString();                               // 0x0099EAE0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
 };
@@ -36,7 +36,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -51,16 +51,16 @@ struct CThing {
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild();                                // 0x00661F70
 };
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 struct CDefinitionOwner {
@@ -83,7 +83,7 @@ struct CMessageDeque {                             // STLport deque<SGuildSealMe
     bool empty() const { return FinishCur == StartCur; }
     void push_back(const SGuildSealMessage& message);   // 0x00656E0C
 };
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     unsigned char _pad0[8];
     CPlayerManager* PlayerManager;                 // +0x08
     CDefinitionOwner* Definitions;                 // +0x0c

@@ -14,7 +14,7 @@
 // Shape: the inlined GetInterface template (landed 0x00949320) with an UNINITIALISED component local: hit
 // path -> the lookup result in eax; miss path -> the never-written local, homed in the argument's own
 // stack slot (`mov eax,[esp+8]` beside the argument load). Frame: one `push ecx` (the key temporary).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,11 +42,11 @@ struct CThing {
     }
 };
 
-struct CTCNoise {                               // interface type 0x37 component
+class CTCNoise { public:                               // interface type 0x37 component
     void TakeThing(CThing* thing);              // 0x00749880
 };
 
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     void PassToNoiseComponent(CThing* thing);
 };
 

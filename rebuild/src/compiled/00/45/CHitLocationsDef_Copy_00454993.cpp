@@ -1,4 +1,4 @@
-struct CHitLocationsDef {
+class CHitLocationsDef { public:
     unsigned char _tail[0x34];
     void BaseCopy(const CHitLocationsDef* src);
 };

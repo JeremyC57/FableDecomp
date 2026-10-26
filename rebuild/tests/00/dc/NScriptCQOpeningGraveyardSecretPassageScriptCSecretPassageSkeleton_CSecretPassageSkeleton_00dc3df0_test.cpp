@@ -2,8 +2,8 @@
 // Behaviour test for 00dc3df0: CSecretPassageSkeleton's ctor copies the parent's interface and Me, keeps the parent and the
 // master data, and default-constructs the four skeleton_object strings.
 static int g_strings = 0;
-struct CScriptThing { int id; CScriptThing(int i) : id(i) {} CScriptThing(const CScriptThing& o) : id(o.id) {} };
-struct CCharString { const char* p; CCharString() : p("") { ++g_strings; } };
+class CScriptThing { public: int id; CScriptThing(int i) : id(i) {} CScriptThing(const CScriptThing& o) : id(o.id) {} };
+class CCharString { public: const char* p; CCharString() : p("") { ++g_strings; } };
 struct Interface { int unused; };
 struct Parent { Interface* Game; };
 struct Base { Interface* Game; CScriptThing Me; Base(const CScriptThing& t, Interface* g) : Game(g), Me(t) {} };

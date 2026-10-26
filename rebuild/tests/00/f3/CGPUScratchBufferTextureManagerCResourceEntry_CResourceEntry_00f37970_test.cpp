@@ -1,7 +1,7 @@
 // Behaviour test for CGPUScratchBufferTextureManager::CResourceEntry copy constructor (0x00F37970): every member copied.
 #include <cstdio>
-struct C2DExtentsI { long Width, Height; };
-struct CPixelFormat { unsigned long Format; };
+class C2DExtentsI { public: long Width, Height; };
+class CPixelFormat { public: unsigned long Format; };
 struct CResourceEntry {
     long ResourceType; void* Texture; void* Surface; long PageIndex; C2DExtentsI Dimensions; long NoLevels;
     CPixelFormat PixelFormat; long MultiSampleType; unsigned long UseageFlags; long MemoryPool;

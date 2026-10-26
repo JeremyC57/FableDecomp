@@ -7,7 +7,7 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0, g_loadedAt = 2, g_defeatAt = 4, g_endAt = 1000;
 struct CData { bool NostroDefeated; };
 static CData g_data;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; if (g_frames >= g_defeatAt) g_data.NostroDefeated = true; }
     bool IsRegionLoaded(const char*) const { return g_frames >= g_loadedAt; }
     void PostAddScriptedEntities() const { L("gpost"); }

@@ -38,7 +38,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CMusicSetEntry {
+class CMusicSetEntry { public:
     long NormalMusicID;                                     // +0x00
     long DangerMusicID;                                     // +0x04
     long LoopCount;                                         // +0x08 (left unset by the constructor)

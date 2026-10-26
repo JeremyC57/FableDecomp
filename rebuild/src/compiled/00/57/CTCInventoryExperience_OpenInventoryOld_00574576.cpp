@@ -15,13 +15,13 @@
 // named local that push_back takes by reference (its home store [ebp-8] lands right after CreateComponent).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
     ~CCharString();                                               // 0x0099EAE0
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -35,10 +35,10 @@ struct CComponent {
     virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
     virtual void SetState(long state);                            // slot 48 (+0xC0)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 }
@@ -58,18 +58,18 @@ __declspec(noinline) void CComponentVector::push_back(NUISystem::CComponent* con
 }
 #pragma auto_inline(on)
 namespace NHeroInformationScreens {
-struct CBase {                                                    // vtable 0x0123A3E0
+class CBase { public:                                                    // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual long GetScreenType();                                 // slot 2
     virtual bool IsOpenedFromHeroInformationScreens();            // slot 3
 };
-struct CManager {
+class CManager { public:
     CBase* GetCurrentScreen();                                    // 0x0066E7BD
     void SetCurrentScreenType(long type);                         // 0x0066E799 (stores +0x28)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                                  // 0x013B8790

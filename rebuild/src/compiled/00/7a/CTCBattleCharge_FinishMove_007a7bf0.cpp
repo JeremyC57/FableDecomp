@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)other.GetPItem()); }
 };
@@ -41,27 +41,27 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
 };
 class CThingCreatureBase;
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _body[0x10];
     CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase* owner, const CCharString& animation, CThing* item,
                                                long priority, long timeout, CCreatureActionBase* next);   // 0x0069F0F0
     ~CCreatureAction_UnsheatheItemFromInventory();   // 0x005CC091
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_BattleChargeImpact : CCombatActionBase {
+class CCreatureAction_BattleChargeImpact : public CCombatActionBase { public:
     CIntelligentPointer<CThing> PLeftFeetEffect;    // +0x114
     CIntelligentPointer<CThing> PRightFeetEffect;   // +0x11c
     CCreatureAction_BattleChargeImpact(CThingCreatureBase* owner, CIntelligentPointer<CThing> leftFeetEffect,

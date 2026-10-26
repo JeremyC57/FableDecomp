@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 struct __false_type { __false_type() { } };
-struct C2DCoordI { long X; long Y; };
+class C2DCoordI { public: long X; long Y; };
 static long g_overflows = 0;
 struct CCoordVector {
     C2DCoordI* _M_start; C2DCoordI* _M_finish; C2DCoordI* _M_end_of_storage;
@@ -20,9 +20,9 @@ struct CCoordVector {
         else _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CRegion { long id; };
-struct CWorldMap { CRegion regions[4]; CRegion& GetRegion(long index) { return regions[index]; } };
-struct CWorld {
+class CRegion { public: long id; };
+class CWorldMap { public: CRegion regions[4]; CRegion& GetRegion(long index) { return regions[index]; } };
+class CWorld { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual CWorldMap* GetWorldMap() { return 0; }
@@ -35,10 +35,10 @@ struct CActiveQuest {
 };
 struct CActiveQuestNode { CActiveQuestNode* _M_next; CActiveQuestNode* _M_prev; CActiveQuest* Data; void* Info; };
 struct CActiveQuestList { CActiveQuestNode* _M_node; CActiveQuestNode* begin() const { return _M_node->_M_next; } CActiveQuestNode* end() const { return _M_node; } };
-struct CQuestManager { unsigned char _pad00[0x38]; CActiveQuestList ActiveQuests; };
+class CQuestManager { public: unsigned char _pad00[0x38]; CActiveQuestList ActiveQuests; };
 static CQuestManager g_questManager;
 static CQuestManager* g_pQuestManager = &g_questManager;
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad00[0x1dc]; CCoordVector ActiveRegionQuestPositions; unsigned char _pad1e8[0x238 - 0x1e8]; long ActiveRegionIndex;
     CWorld* world; CWorld* GetWorld() const { return world; }
     void FindQuestsForActiveRegion();

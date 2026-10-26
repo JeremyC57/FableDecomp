@@ -22,7 +22,7 @@ namespace NPlayerGui {
 
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CStatBase {
+class CStatBase { public:
     virtual void v00();
     unsigned char _body[0x68 - 4];                          // +0x04 .. +0x68: the stat-bar base state
     CStatBase(CStatBarInfo* info);                          // 0x0065431D
@@ -38,7 +38,7 @@ struct CRGBColour {                                         // D3DCOLOR byte ord
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
-struct CMultiStatBar : CStatBase {                          // vtable 0x0125A758
+class CMultiStatBar : public CStatBase { public:                          // vtable 0x0125A758
     virtual void v00();
     CRetailList_StatUpdate Updates;                         // +0x68
     long                   CurrentType;                     // +0x6c EStatUpdateType

@@ -21,11 +21,11 @@
 //   _Construct @ 0x004EBDF1 (polymorphic CParentDefClassBase body + the 12-byte STLport vector<C2DVector>).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CParentDefClassBase {                               // retail 0x3C bytes
+class CParentDefClassBase { public:                               // retail 0x3C bytes
     virtual void v00();
     unsigned char _body[0x38];                              // +0x04 def-class base body
 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct C2DVectorVector {                                    // STLport vector<C2DVector>, 12 bytes
     C2DVector* _M_start;
     C2DVector* _M_finish;

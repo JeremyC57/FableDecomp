@@ -20,11 +20,11 @@ struct CAnimationOwner {
     CAnimationBank* m_pBank;                    // +0x3c
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimationIndex;                        // +0x00
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[0x74 - 4];             // +0x04
     CAnimationEntry* PAnimEntry;                // +0x74

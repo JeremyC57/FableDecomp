@@ -1,13 +1,13 @@
 // Behaviour test for 0x00806CF0 STLport remove_copy_if<CTargetPoint*, CTargetPoint*, CThingFilter_IsInFOV>: keep the points the filter rejects, in order.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer {
     CThing* Item;
     CThing* GetPItem() const { return Item; }
     void SetPItem(CThing* item) { Item = item; }
     CPointer& operator=(const CPointer& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTargetPoint { CPointer PThing; long Index; C3DVector TargetingPosition; long FrameRejected; };
 struct CFilterInFOV { float MaxX; bool operator()(const CTargetPoint& p) const { return p.TargetingPosition.X <= MaxX; } };
 static CTargetPoint* RemoveCopyIf(CTargetPoint* first, CTargetPoint* last, CTargetPoint* result, CFilterInFOV pred)

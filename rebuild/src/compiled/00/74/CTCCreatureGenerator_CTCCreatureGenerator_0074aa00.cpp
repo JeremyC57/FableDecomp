@@ -20,14 +20,14 @@
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
 class CThing;
 class CTCShapeManager;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     CTCBase(CThing* thing);                             // 0x00686800
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
 };
@@ -37,7 +37,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                          // 0x00A01B10
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item = 0) : CBaseIntelligentPointer() { SetPItem(item); }
 };
@@ -72,15 +72,15 @@ struct CCreatureList {                                  // STLport list (retail:
         _M_node.m_data = node;
     }
 };
-struct CDefIndex { long Index; };
-template <class T> struct CArray {                      // retail CArray<T> (12 bytes)
+class CDefIndex { public: long Index; };
+template <class T> class CArray { public:                      // retail CArray<T> (12 bytes)
     T*   Data;
     long Size;
     long Capacity;
     CArray() : Data(0), Size(0), Capacity(0) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CEnginePrimitiveHandle { void* __vftable; void* Data; };
+class C3DVector { public: float X, Y, Z; };
+class CEnginePrimitiveHandle { public: void* __vftable; void* Data; };
 class CThingCreatureBase;
 struct TGenerationParameters {
     float       GenerationRadius;                       // +0x00
@@ -93,13 +93,13 @@ struct TGenerationParameters {
     long        NumTriggers;                            // +0x1c
     CCharString ScriptNameOfAllGeneratedCreatures;      // +0x20
 };
-struct CCreatureGeneratorDef;
-template <class T> struct CDefPointer {
+class CCreatureGeneratorDef;
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CTCCreatureGenerator : CTCBase {                 // vtable 0x01268C24
+class CTCCreatureGenerator : public CTCBase { public:                 // vtable 0x01268C24
     CArray<CDefIndex>                                   CreatureFamilies;      // +0x0c
     CCreatureList                                       CreatedCreatures;      // +0x18
     CRetailVector<CIntelligentPointer<CThingCreatureBase> > CreatureTriggerers;  // +0x1c

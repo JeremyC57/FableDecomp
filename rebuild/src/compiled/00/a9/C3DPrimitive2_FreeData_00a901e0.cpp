@@ -11,7 +11,7 @@
 // member read once), the byte count added to memmove's result; each scoped_ptr reset clears the member before the null
 // test; one zero register (edi) for every store.
 #include <string.h>
-template <class T> struct CArray {                 // retail CArray: first / last / end
+template <class T> class CArray { public:                 // retail CArray: first / last / end
     T* m_first; T* m_last; T* m_end;
     static T* CopyTrivial(const T* first, const T* last, T* result)
     {
@@ -40,14 +40,14 @@ template <class T> struct scoped_ptr {
 };
 struct CPolymorphicResource { virtual ~CPolymorphicResource(); };
 struct CDeviceIndependent : CPolymorphicResource {};
-struct CVertexBufferWin32 : CPolymorphicResource {};
-struct CIndexBuffer : CPolymorphicResource {};
+class CVertexBufferWin32 : public CPolymorphicResource { public:};
+class CIndexBuffer : public CPolymorphicResource { public:};
 struct CStaticBlock;
 struct CAnimatedBlock;
 struct CCountedPointerAny { void* m_object; void* m_block; };
 void __fastcall DestroyAnimatedBlocks(CAnimatedBlock* blocks, unsigned long count);   // 0x00A96810
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     long                             MaterialIndex;        // +0x04
     long                             RepeatingMeshReps;    // +0x08

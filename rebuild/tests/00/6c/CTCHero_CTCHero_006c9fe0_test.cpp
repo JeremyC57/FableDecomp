@@ -2,12 +2,12 @@
 
 // Model of CTCHero::CTCHero(CThing*) @ 0x006C9FE0: base keeps the owner; flags, title, defs, podium flag and the
 // 64-bit weapon id are zeroed; both intelligent pointers start empty.
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* t) : ParentThing(t), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { } virtual ~CTCBase() { } };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } };
-struct CTCHero : CTCBase {
+class CTCHero : public CTCBase { public:
     bool WeaponsUsable, WillUsable, WeaponUseOverriddenByScripts, WillUseOverriddenByScripts;
     long Title; long HeroTitleObjectDef; CDefPointer PHeroTitleSubDef; bool OnBoastingPodium;
     CIntelligentPointer LastWeaponEquipped; unsigned long long LastWeaponEquippedID; CIntelligentPointer PTeleportParticle;

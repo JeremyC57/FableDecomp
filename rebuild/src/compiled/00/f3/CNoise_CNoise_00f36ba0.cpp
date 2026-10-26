@@ -3,7 +3,7 @@
 // Layout from the PDB (CNoise, 6148 bytes): P[512] +0x0000, G2[512] (C2DVector) +0x0800, Seed +0x1800. Shape: the
 // seed is an initialiser (an immediate store before the call), the table fill is the body call on `this`.
 // Leaf: ??0CNoise
-struct C2DVector {
+class C2DVector { public:
     float x;
     float y;
 };

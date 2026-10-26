@@ -18,11 +18,11 @@ struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteULONG(unsigned long value);                   // 0x00993EA0
     void WriteSLONG(long value);                             // 0x00993EB0
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;                                          // +0x00 def-string table index
     void TransferBinaryOut(CDataOutputStreamWriter& stream) const { stream.WriteSLONG(TablePos); }
 };
-struct CAtmosBankEntry {
+class CAtmosBankEntry { public:
     unsigned long ID;                                       // +0x00
     CDefString    Filename;                                 // +0x04
 };

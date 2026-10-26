@@ -17,8 +17,8 @@
 // AllocVirtual(long, CMovableResource*) / FreeVirtual(void*), SEngine_01436ea8* g_pEngine_01436ea8 with the
 // manager at +0x6b0, as in the landed class allocators 0x00BEA7E0 / 0x00BF6530); the generated
 // engine/CEngineLandscapeMemoryManager.h carries no methods, so the callee view is local.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
     void FreeVirtual(void* block);                            // 0x00BD9B90
 };

@@ -10,8 +10,8 @@
 //   {vtable, vector*} wrapper shared by the two text arms; the key stays in edi from the CheckCRC push.
 //   The element is std::pair<CCharString, long> (catalog label), modelled as an opaque record; the reset is the inline
 //   clear() calling the out-of-line erase(begin(), end()) (result dropped).
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 struct CNamedLong;                         // std::pair<CCharString, long>
 
 template <class T> struct vector {
@@ -27,7 +27,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<CNamedLong>& value);   // 0x006D4B40
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<CNamedLong>& value);       // 0x006D3A30
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x0125ED48 for T = CNamedLong
@@ -36,7 +36,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

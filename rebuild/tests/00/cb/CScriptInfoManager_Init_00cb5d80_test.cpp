@@ -5,7 +5,7 @@
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { if (g_n < 63) { g_log[g_n++] = c; g_log[g_n] = 0; } }
 
-struct CCharString { const char* text; CCharString(const char* t, long = -1) : text(t) { } };
+class CCharString { public: const char* text; CCharString(const char* t, long = -1) : text(t) { } };
 static const char* g_progress[4]; static int g_progressN = 0; static float g_progressValue;
 static void DisplayProgress(const CCharString& text, float progress, bool, bool)
 { Log('D'); g_progress[g_progressN++] = text.text; g_progressValue = progress; }
@@ -34,7 +34,7 @@ struct CScriptMap {
     void Sort() { if (Dirty) { ::Sort(_M_start, _M_finish, Compare); Dirty = false; } }
 };
 static SScriptEntry g_entries[3];
-struct CScriptInfoManager {
+class CScriptInfoManager { public:
     long CurrentScriptID; CScriptMap Scripts;
     void RegisterDefs() { Log('d'); }
     void RegisterScripts()

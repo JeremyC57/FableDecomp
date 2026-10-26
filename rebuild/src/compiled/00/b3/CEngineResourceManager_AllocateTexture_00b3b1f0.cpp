@@ -11,8 +11,8 @@
 // Layout: PDB CTexture (8 bytes: PD3DTexture +0, the ByteLength:28/AllocationSource:4 word +4); engine/CTexture.h
 // cannot carry the constructor, so it is modelled locally (the bitfield word as one dword the constructor clears).
 struct IDirect3DTexture9;
-struct C2DExtentsI;
-struct CPixelFormat;
+class C2DExtentsI;
+class CPixelFormat;
 enum ESurfacePool { SURFACE_POOL_DEFAULT = 0, SURFACE_POOL_MANAGED = 1 };
 
 class CTexture {
@@ -24,7 +24,7 @@ public:
                     ESurfacePool pool, bool dynamic, bool renderTarget);   // 0x009FA280
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     CTexture* AllocateTexture(unsigned long id, const C2DExtentsI& size, long levels, const CPixelFormat& format);
 };
 

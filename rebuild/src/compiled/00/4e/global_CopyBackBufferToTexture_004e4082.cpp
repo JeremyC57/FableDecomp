@@ -8,8 +8,8 @@
 #pragma optimize("y",off)   // retail kept the ebp frame (leave epilog)
 #pragma optimize("s",on)    // retail favored size here (leave, no CSE fold)
 
-struct CTexture;
-struct CDisplayManager;
+class CTexture;
+class CDisplayManager;
 
 // worker @ 0x4dd487 (TextureFormat_Handler_14): __stdcall(bool*, bool*)
 void __stdcall CopyBackBuffer_FormatStep(bool* a, bool* b);

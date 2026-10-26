@@ -7,7 +7,7 @@ struct CGameMapGrid {
 struct CQuarterGrid {
     long GetMemoryFootprint();                     // 0x006B74B0
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1a78];
     CQuarterGrid* m_pQuarterGrid;                  // +0x1a78
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c

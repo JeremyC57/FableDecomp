@@ -1,6 +1,6 @@
 // CRegionMinimap_Methods::InitialiseRegionMinimapSize  0x0066cc40  __fastcall void(CWorldMap*, CRegion*)
 #include "engine/CRegionMinimap.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CRegion;
+class CRegion;
 
 struct RegionVec {
     CRegion** begin;
@@ -12,7 +12,7 @@ extern "C" void __cdecl FreeArrayBuf(void* p);
 
 // CWorldMap: model the two virtual slots at +0x28 and +0x4c.
 // 0x28/4 = slot 10, 0x4c/4 = slot 19.
-struct CWorldMap {
+class CWorldMap { public:
     virtual void  s0();  virtual void s1();  virtual void s2();  virtual void s3();
     virtual void  s4();  virtual void s5();  virtual void s6();  virtual void s7();
     virtual void  s8();  virtual void s9();

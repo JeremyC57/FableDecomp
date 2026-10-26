@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTavernTableDef {
+class CTavernTableDef { public:
     unsigned char pad[0x25];
     unsigned char AddTankards;
     unsigned char HighQualityTankards;

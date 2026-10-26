@@ -13,7 +13,7 @@
 // Shape: the warm-up count is 1 or 4 (an unsigned loop VC turns into a down-counter in the dead `params` slot); the transform
 //   handed to every Update is rebuilt each pass as an identity rotation (chained zero/one assignments, stored from E32/E33
 //   downwards) with the centre as translation.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -32,7 +32,7 @@ unsigned long* GetParticleRandomSeed();         // 0x00AEAAD0
 
 namespace NParticleEngine {
 
-struct CParticleSystem;
+class CParticleSystem;
 
 struct COrbitSettings {                         // 48 bytes
     long  Type;
@@ -55,7 +55,7 @@ struct COrbitState {                            // 0x44 bytes
     void Update(const COrbitSettings& settings, CMatrix3x4& transform, float time);     // 0x00B16410
 };
 
-struct CPSCBase {
+class CPSCBase { public:
     virtual ~CPSCBase();
     CParticleSystem* ParticleSystem;            // +0x04
     bool             UpdateStarted : 1;         // +0x08 bit 0
@@ -64,7 +64,7 @@ struct CPSCBase {
                                  const unsigned long& param, float scale, bool local, unsigned long flags) const;  // 0x00AF2780
 };
 
-struct CPSCOrbit : CPSCBase {                   // vtable 0x012A0374
+class CPSCOrbit : public CPSCBase { public:                   // vtable 0x012A0374
     unsigned long  CentreParam;                 // +0x0c
     COrbitSettings Orbits[3];                   // +0x10
     COrbitState    OrbitStates[3];              // +0xa0

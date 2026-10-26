@@ -7,7 +7,7 @@
 //   (the screen-position setters 0x008851A0 / 0x00885210 store 2).
 // Shape: the blur centre is set first, then the area centre; each C3DVector copy re-reads the argument through a scratch
 //   register; the constant 1 lives in esi for all four track stores.
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION {
     ENVIRONMENT_RADIAL_BLUR_TRACK_NONE = 0,
@@ -22,9 +22,9 @@ struct CRadialBlurPositionParams {
     ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION BlurTrackPos;      // +0x1c
 };
 
-struct CEnvironment;
+class CEnvironment;
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CEnvironment*             Environment;                    // +0x00
     unsigned char             _pad4[0x34 - 0x4];              // CRadialBlurParams RadialBlurParams
     CRadialBlurPositionParams RadialBlurPositionParams;       // +0x34

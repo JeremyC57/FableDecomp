@@ -9,9 +9,9 @@
 // (Ego_r.pdb CActionInputControl, 0x1c bytes: five enums and a C2DVector ControlDirection). The traits object
 // ({ CActionInputControl DefaultVal; }, the `sub esp,1Ch` frame) is zeroed member by member through one register
 // by the element's inline default constructor, ahead of the argument loads; no destructor runs.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class C2DVector {
 public:
@@ -19,7 +19,7 @@ public:
     float Y;
 };
 
-struct CActionInputControl {
+class CActionInputControl { public:
     long      GameAction;                          // +0x00 EGameAction
     long      ControllerType;                      // +0x04 EControllerType
     long      KeyboardKey;                         // +0x08 EInputKey

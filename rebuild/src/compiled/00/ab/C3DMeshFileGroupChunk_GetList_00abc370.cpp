@@ -5,7 +5,7 @@
 //
 #include "rebuild_abi.h"
 struct Vec8 { void* m_begin; void* m_end; void* m_capacity; };
-struct C3DMeshFileGroupChunk {
+class C3DMeshFileGroupChunk { public:
     unsigned char _base[0x30];     // C3DMeshFileChunk (0x2c) + BoneIndex (+0x2c)
     Vec8 VertexList;               // +0x30 CArray<C3DVertexBlend2>
     void* GetList();

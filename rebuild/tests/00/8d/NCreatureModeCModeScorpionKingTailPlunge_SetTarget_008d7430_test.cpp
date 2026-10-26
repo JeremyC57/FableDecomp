@@ -1,7 +1,7 @@
 #include <cstdio>
 // CModeScorpionKingTailPlunge::SetTarget model: PTarget = target, TargetPos = its position.
-struct C3DVector { float x, y, z; };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class C3DVector { public: float x, y, z; };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CIntelligentPointer {
     CThing* m_pItem;
     CIntelligentPointer(CThing* item) : m_pItem(item) { }

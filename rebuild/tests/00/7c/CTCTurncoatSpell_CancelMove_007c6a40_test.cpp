@@ -1,7 +1,7 @@
 // Behaviour test for CTCTurncoatSpell::CancelMove (0x007C6A40): links the reconstructed object; LowerBound is a stub.
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -20,7 +20,7 @@ public:
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
 };
-struct CTCSpecialAbilities { unsigned char _pad00[0x0c]; bool AbilityMutexLock; long CurrentAbility; };
+class CTCSpecialAbilities { public: unsigned char _pad00[0x0c]; bool AbilityMutexLock; long CurrentAbility; };
 struct CWillButtonHelperTimer { long ButtonHeldDownTimer; long WillAccumulatedLevel; unsigned char PCreature[0x8]; long MyAbility; long CurrentState; };
 class CTCTurncoatSpell {
 public:

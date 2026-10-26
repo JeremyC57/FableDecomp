@@ -17,8 +17,8 @@ public:
     void* data;
 };
 
-struct CParsedItem
-{
+class CParsedItem
+{ public:
     long type;         // +0x00
     long m_pad0;        // +0x04
     CCharString value; // +0x08 (embedded)

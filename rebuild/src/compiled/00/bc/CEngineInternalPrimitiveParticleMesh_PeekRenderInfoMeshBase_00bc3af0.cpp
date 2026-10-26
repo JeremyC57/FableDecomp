@@ -1,5 +1,5 @@
 #include "engine/CEngineInternalPrimitiveParticleMesh.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEngineLocalLightArray;
+class CEngineLocalLightArray;
 struct CEngineInternalPrimitiveParticleMesh_Methods : CEngineInternalPrimitiveParticleMesh {
     CEngineLocalLightArray* M();
 };

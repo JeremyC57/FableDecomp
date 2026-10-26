@@ -9,7 +9,7 @@
 //   the threshold to `1 - c * |blend| / 255`, otherwise `c * blend / 255 + 1`.
 #include "engine/CEngineScreenEffectGlowRenderer.h"
 
-struct CRGBColour {                                // B,G,R,A bytes over a packed 32-bit colour
+class CRGBColour { public:                                // B,G,R,A bytes over a packed 32-bit colour
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b) { R = r; G = g; B = b; }
 };
@@ -32,7 +32,7 @@ struct CEnvironmentTheme {
     SGlowSettings* m_pGlowSettings;                // +0x54
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual CEnvironmentTheme* GetTheme();         // slot 1
 };

@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void SetInLimbo(bool inLimbo);                   // 0x004C8CF0
     void Kill(bool b);                               // 0x004C9B80
     unsigned char _pad_0x00[0x20];
@@ -43,7 +43,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCTrophy {                                   // interface type 0x39
+class CTCTrophy { public:                                   // interface type 0x39
     unsigned char _pad_0x00[0x14];
     bool MinigameInProgress;                         // +0x14
     void EndMinigame();                              // 0x006DDA50

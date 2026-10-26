@@ -2,7 +2,7 @@
 
 // Host model: pair<CCharString, unsigned long> entries of a name-keyed CVectorMap; the string compares like
 // CCharString::operator< (same block -> false, null sorts first).
-struct CCharString {
+class CCharString { public:
     const char* Text;
     bool operator<(const CCharString& other) const
     {

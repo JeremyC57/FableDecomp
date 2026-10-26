@@ -4,7 +4,7 @@
 #include <new>
 static int g_live = 0;
 static const char* const g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-struct CCharString {                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
+class CCharString { public:                            // stands in for the engine string (copy 0x0099EC30, dtor 0x0099EAE0)
     const char* m_pData;
     explicit CCharString(int k) : m_pData(g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
@@ -12,7 +12,7 @@ struct CCharString {                            // stands in for the engine stri
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     int Key() const { return m_pData[0] - 'a'; }
 };
-struct C3DVector {                              // memberwise user copy constructor, as retail
+class C3DVector { public:                              // memberwise user copy constructor, as retail
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

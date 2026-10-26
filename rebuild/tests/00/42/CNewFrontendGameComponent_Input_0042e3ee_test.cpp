@@ -3,8 +3,8 @@
 // key, stick and pad buttons gather direction flags, and the flags then fire one UI command (with the 0.333 s initial
 // and 0.085 s repeat delay of the repeat timer).
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CInputEvent {
+class C2DVector { public: float X, Y; };
+class CInputEvent { public:
     long Type, Key, Char, Button, Device; float Wheel; C2DVector MousePosition; C2DVector Stick;
     long GetType() const { return Type; }
     long GetDeviceNumber() const { return Device; }
@@ -14,8 +14,8 @@ struct CInputEvent {
     float GetMouseWheel() const { return Wheel; }
     C2DVector GetJoystickPosition() const { return Stick; }
 };
-struct CInputEventScanInfo { bool Started; long Index; CInputEventScanInfo() : Started(false), Index(0) {} };
-struct CInputManager {
+class CInputEventScanInfo { public: bool Started; long Index; CInputEventScanInfo() : Started(false), Index(0) {} };
+class CInputManager { public:
     CInputEvent* events; long count; int cleared; int updates; int scansEnded;
     void Update() { ++updates; }
     bool EventScanStart(CInputEventScanInfo& s, CInputEvent& e) { s.Started = true; s.Index = 0; if (count <= 0) return false; e = events[0]; return true; }
@@ -32,7 +32,7 @@ struct CManager {
 static CManager g_ui;
 static CManager* GetInstance() { return &g_ui; }
 static int g_consoleKeys;
-struct CConsole { void ProcessInput(const CInputEvent&) { ++g_consoleKeys; } };
+class CConsole { public: void ProcessInput(const CInputEvent&) { ++g_consoleKeys; } };
 static CConsole g_console;
 struct CActiveJoystick { long DeviceNumber; bool Locked; bool IsLocked() const { return Locked; } long GetDeviceNumber() const { return DeviceNumber; } };
 static CActiveJoystick g_pad;
@@ -46,7 +46,7 @@ struct CStopWatch {
     bool IsRunning() const { return m_bIsRunning; }
 };
 static const float g_epsilon = 0.0001f;
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     bool m_bAllowInputs; CStopWatch m_RepeatTimer; float m_fRepeatDelay; unsigned long m_dwDPadTriggerState;
     CStopWatch m_attractModeTimer; CStopWatch m_inputDelayTimer; long LastActiveJoystickDeviceNumber;
     void Input()

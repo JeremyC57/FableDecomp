@@ -1,6 +1,6 @@
 // behaviour test for CAIStateGroup_CreatureUseCoverBase::IsRunnable (0x00970AB0)
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CTC8 { CThing* target; CThing* GetTarget() { return target; } };
 struct Creature { unsigned int bits[9]; CTC8* tc8; bool HasTC(long k) const { return (bits[k >> 5] & (1u << (k & 31))) != 0; } };
 static bool attackOk;

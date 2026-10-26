@@ -8,18 +8,18 @@
 //   +0x60, interface bitset +0x20 (TC 0x4d: word +0x28 bit 13), CVectorMap +0x44; CTCBase ParentThing +0x04.
 // Shape: the agent160 GetTC form with the key in the dead thing-argument slot (no frame); the owner thing taken
 //   through the filter's physics component each time.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing;
+class CThing;
 struct CTCCollisionExclusion {                  // the component behind ETCInterfaceType 0x4d (class not identified)
     bool CanCollideWith(CThing* thing);         // 0x00770DE0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -33,7 +33,7 @@ struct CTCPhysicsBase {
     virtual bool GetCollidesWithThings();       // slot 57 (+0xe4)
     CThing* ParentThing;                        // +0x04
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,7 +56,7 @@ struct CThing {
     }
 };
 
-struct CThingFilter_CanCollideWithThing {
+class CThingFilter_CanCollideWithThing { public:
     CTCPhysicsBase* TCPhysics;                  // +0x00
     bool operator()(CThing* thing) const;
 };

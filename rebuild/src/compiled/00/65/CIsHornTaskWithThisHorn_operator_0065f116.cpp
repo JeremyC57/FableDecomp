@@ -18,7 +18,7 @@ struct CCountedPointer_0065f116 {                  // 8 bytes: the task and its 
 };
 void __fastcall DestroyCountedPointer_0065d5a0(CCountedPointer_0065f116* pointer);   // 0x0065D5A0 (labelled "_Dest_val<...>")
 __forceinline CCountedPointer_0065f116::~CCountedPointer_0065f116() { DestroyCountedPointer_0065d5a0(this); }
-struct CIsHornTaskWithThisHorn : CBaseIntelligentPointer {
+class CIsHornTaskWithThisHorn : public CBaseIntelligentPointer { public:
     bool operator()(CCountedPointer_0065f116 task);
 };
 

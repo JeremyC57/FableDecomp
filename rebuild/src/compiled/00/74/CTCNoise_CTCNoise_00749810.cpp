@@ -10,7 +10,7 @@
 // Shape: CDefClassBase's constructor (out of line @ 0x0044C0C0 elsewhere) inlined here: its bit-field clear
 // (`and cl,0F8h` on +0x24: Setup/Template/DefaultValsApplied) and PDefManager = 0 (+0x1c); its own vtable store is dead
 // under CTCNoiseDef's. Definition's address stays in edi; the CTCNoise scalars share eax's zero.
-struct CThing;
+class CThing;
 
 struct CResourceRoot {                              // the def root (0x1c bytes)
     virtual void v00();
@@ -19,7 +19,7 @@ struct CResourceRoot {                              // the def root (0x1c bytes)
 };
 
 #pragma pack(push, 1)
-struct CDefClassBase : CResourceRoot {
+class CDefClassBase : public CResourceRoot { public:
     void*         PDefManager;                      // +0x1c
     unsigned long GlobalIndex;                      // +0x20
     unsigned char Setup : 1;                        // +0x24
@@ -36,7 +36,7 @@ struct CDefClassBase : CResourceRoot {
 };
 #pragma pack(pop)
 
-struct CTCNoiseDef : CDefClassBase {                // 0x34 bytes
+class CTCNoiseDef : public CDefClassBase { public:                // 0x34 bytes
     long  Type;                                     // +0x28 ENoiseType
     float LifeTime;                                 // +0x2c
     float DistanceCanBeHeardFrom;                   // +0x30
@@ -50,7 +50,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     virtual void v00();
 };
@@ -62,7 +62,7 @@ struct CTCBase_00749810 {
     CTCBase_00749810(CThing* owner);                // 0x00686800
 };
 
-struct CTCNoise : CTCBase_00749810 {
+class CTCNoise : public CTCBase_00749810 { public:
     CTCNoiseDef                       Definition;   // +0x0c
     long                              LifeTimer;    // +0x40
     float                             DistanceCanBeHeardFrom;   // +0x44

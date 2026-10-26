@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour copy of C2DBoxI::ClipLineTo (0x00A39FE0) with a real segment intersection for IntersectsWith.
-struct C2DVector { float x; float y; };
-struct C2DLineF {
+class C2DVector { public: float x; float y; };
+class C2DLineF { public:
     float x1, y1, x2, y2;
     C2DLineF(float ax, float ay, float bx, float by) : x1(ax), y1(ay), x2(bx), y2(by) {}
     bool IntersectsWith(const C2DLineF& o, C2DVector* p, float tol) {
@@ -12,7 +12,7 @@ struct C2DLineF {
         p->x = x1 + t * dx; p->y = y1 + t * dy; return true;
     }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long minX, minY, maxX, maxY;
     void ClipLineTo(C2DLineF& line) const {
         C2DVector hit; bool first = true; float eps = 0.0001f;

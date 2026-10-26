@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct Arg { void* got; };
-struct CGameScriptThing { char pad[0x24]; char data; };
+class CGameScriptThing { public: char pad[0x24]; char data; };
 
 static void model_consume(Arg* a, void* p) { a->got = p; }
 

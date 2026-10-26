@@ -8,8 +8,8 @@
 //   pop esi; ret
 // i.e. returns (unsigned)param % this->vtbl[2]()  as bool.
 
-struct CCombatSequenceBase
-{
+class CCombatSequenceBase
+{ public:
     virtual unsigned int v0();
     virtual unsigned int v1();
     virtual unsigned int GetPeriod();   // slot 2 -> call [eax+8]

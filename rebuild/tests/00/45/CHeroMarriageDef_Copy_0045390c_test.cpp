@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHeroMarriageDef { int tag; };
+class CHeroMarriageDef { public: int tag; };
 
 static int g_calls = 0;
 static CHeroMarriageDef* g_self = 0;

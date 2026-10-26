@@ -21,12 +21,12 @@ extern "C" size_t __cdecl wcslen(const wchar_t* text);                          
 extern "C" wchar_t* __cdecl wcsrchr(const wchar_t* text, wchar_t c);            // 0x00BFEDB2
 extern "C" wchar_t* __cdecl wcscpy(wchar_t* dest, const wchar_t* src);          // 0x00BFED76
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                          // 0x0099EAE0
     CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const wchar_t* text);                        // 0x0099B6B0
     ~CWideString();                                          // 0x0099B510

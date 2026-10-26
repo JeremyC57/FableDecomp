@@ -9,7 +9,7 @@ struct CSourceStream_00994360 {                   // the underlying file: slot 3
     virtual void Seek(long position);              // slot 5 (+0x14)
 };
 
-struct CFileDataInputStream {
+class CFileDataInputStream { public:
     virtual void v00(); virtual void v01();
     virtual long GetPosition();                    // slot 2 (+0x08)
     unsigned char           _pad04[4];

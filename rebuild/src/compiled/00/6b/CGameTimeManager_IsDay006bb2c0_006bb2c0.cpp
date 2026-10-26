@@ -4,7 +4,7 @@
 // `mov al,1` / `xor al,al`. The chunk label "IsDay" is shared by three twins with different bounds.
 extern const float g_dayStart_0125d624;   // 0x0125D624 (0.3333)
 extern const float g_dayEnd_0125d628;   // 0x0125D628 (0.7083)
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad[8];
     float         m_timeOfDay;                     // +0x08 (a fraction of the day)
     bool IsDay_006bb2c0();

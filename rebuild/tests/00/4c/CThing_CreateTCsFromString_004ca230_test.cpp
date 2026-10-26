@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CThing::CreateTCsFromString adds one activated component per `CreateTC "<name>";` statement
-struct CCharString {
+class CCharString { public:
     char m[32];
     CCharString(const char* text, long) { std::strncpy(m, text, 31); m[31] = 0; }
     CCharString() { m[0] = 0; }
 };
 static const char* g_text = 0;
-struct CStringParser {
+class CStringParser { public:
     const char* pos;
     CStringParser(const CCharString& text, void (*)(CCharString*), const CCharString&, long) : pos(g_text) {}
     void skipSpace() { while (*pos == ' ') ++pos; }
@@ -21,8 +21,8 @@ static const char g_emptyString_0122d70e[] = "";
 static const char g_createTC[] = "CreateTC";
 static const char g_quote[] = "\"";
 static const char g_semicolon[] = ";";
-struct CTCBase; struct CTCParamsBase;
-struct CThing {
+class CTCBase; class CTCParamsBase;
+class CThing { public:
     char added[4][32]; int n; bool allActive;
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params)
     { std::strcpy(added[n++], name.m); allActive = allActive && activate && params == 0; return 0; }

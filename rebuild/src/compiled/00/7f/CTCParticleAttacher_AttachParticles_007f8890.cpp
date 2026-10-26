@@ -26,7 +26,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -51,7 +51,7 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;               // 0x013CA828
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing;
 class CBaseObject;
 
@@ -73,7 +73,7 @@ struct CParticleAttachmentInfo {                       // NParticleAttachment::C
     float GenerationCutoffDistance;                    // +0x08
     bool  DummyObject;                                 // +0x0c
 };
-struct CParticleAttacherDef {
+class CParticleAttacherDef { public:
     unsigned char _pad00[0x28];
     CParticleAttachmentInfo* ParticlesToAttachFirst;   // +0x28
     CParticleAttachmentInfo* ParticlesToAttachLast;    // +0x2c
@@ -127,7 +127,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                        // 0x00A01C10
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing> vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing> vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };

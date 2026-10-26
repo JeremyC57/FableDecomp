@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CThing {
+class CThing { public:
     C3DVector m_position;
     const C3DVector& GetPosition() const { return m_position; }
 };
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
     const CThing* GetPItem() const { return PData; }
     const CThing* operator->() const { return GetPItem(); }
 };
-struct CTCPreCalculatedNavigationRoute {
+class CTCPreCalculatedNavigationRoute { public:
     CBaseIntelligentPointer PThingToCalculateRouteTo;
     C3DVector GetRouteDestination() const { return PThingToCalculateRouteTo->GetPosition(); }
 };

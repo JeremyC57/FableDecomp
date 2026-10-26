@@ -47,7 +47,7 @@ struct CScriptThingInner {
   virtual bool m43(int name){ return true; }
   virtual bool m44(int name){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsHitByAnyNonAggressive(int name); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgIsHitByAnyNonAggressive(int name); };
 bool CScriptThing::MsgIsHitByAnyNonAggressive(int name){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m44(name); }
 int main(){
     CScriptThing t; t.m_impl=0;

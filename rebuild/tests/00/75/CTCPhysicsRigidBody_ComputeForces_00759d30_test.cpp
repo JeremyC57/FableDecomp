@@ -4,8 +4,8 @@
 // the debug kick on key 0x2e, gravity when affected, and linear/angular damping.
 enum EInputEventType { EIET_NONE = 0 };
 enum EInputKey { EIK_NONE = 0 };
-struct CInputEvent { int dummy; };
-struct CInputManager {
+class CInputEvent { public: int dummy; };
+class CInputManager { public:
     long m_enabled;
     bool pressed;
     EInputEventType type; EInputKey key;
@@ -15,7 +15,7 @@ static CInputManager g_input = { 0, false, EIET_NONE, EIK_NONE };
 static CInputManager* g_pInputManager = &g_input;
 static int g_randoms = 0;
 static float GFFloatRandom(float range, unsigned long* seed) { ++*seed; ++g_randoms; return range * (float)g_randoms; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -24,7 +24,7 @@ struct C3DVector {
     void Normalise() { float l = sqrtf(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }
 };
 struct CRigidBodyConfig { C3DVector CMVelocity; C3DVector CMForce; C3DVector Torque; C3DVector AngularVelocity; };
-struct CWorld {
+class CWorld { public:
     unsigned long seed;
     unsigned long* GetRandomSeed() { return &seed; }
 };

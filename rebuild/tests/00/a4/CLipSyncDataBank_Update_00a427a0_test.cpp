@@ -2,7 +2,7 @@
 
 static int g_called = 0;
 
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     char pad[0x178];
     unsigned char m_bSuspended; // +0x178
     void DoUpdate();

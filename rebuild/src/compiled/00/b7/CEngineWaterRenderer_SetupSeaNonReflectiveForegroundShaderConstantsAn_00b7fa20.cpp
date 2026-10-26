@@ -12,20 +12,20 @@
 // Layout: as SetupBackgroundShaderConstantsAndFog 0x00B7F0F0 (Settings +0x280 in retail; WaterBumpFactor +0x5c0); Settings members from the PDB
 //   CEngineWaterSettings: EnableSwell +0x0e, EnableFresnel +0x13, FresnelFactor +0x18, SwellFactor +0x1c, ShoreSwellFactor
 //   +0x20, Colour +0x28, BumpMatFactor +0x5c, ColourToReflectionFactor +0x84, RefOffset +0x88, OtherSeaShaderVars +0x254.
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 inline C4DVector operator*(const C4DVector& a, const CRGBFloatColour& c) { return C4DVector(a.X * c.R, a.Y * c.G, a.Z * c.B, a.W * c.A); }
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -34,13 +34,13 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
@@ -144,7 +144,7 @@ inline float Clamp(float value, float lo, float hi)
     return value;
 }
 
-struct CEngineWaterSettings {                           // PDB CEngineWaterSettings (0x2e4)
+class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char   _pad00[0xd];
     bool            EnableBumpMap;                      // +0x0d
     bool            EnableSwell;                        // +0x0e
@@ -179,7 +179,7 @@ struct CEnvironmentTheme {
     unsigned char   _pad[0x54];
     SThemeSettings* m_pSettings;                        // +0x54
 };
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual CEnvironmentTheme* GetTheme();              // slot 1
 };
@@ -193,7 +193,7 @@ struct SEngineState {
 };
 extern SEngineState* g_pEngineState;                    // 0x01436E8C
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char        _pad000[0x280];                // vptr, buffers, shaders, render lists (retail 12-byte CArrays)
     CEngineWaterSettings Settings;                      // +0x280
     unsigned char        _pad564[0x5c0 - 0x564];

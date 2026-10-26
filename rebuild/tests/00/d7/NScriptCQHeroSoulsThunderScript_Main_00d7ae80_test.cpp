@@ -7,7 +7,7 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0, g_endAt = 1000;
 struct CData { bool ThunderDefeated; long ArenaState; bool LineA; bool LineB; };
 static CData g_data;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; if (g_frames >= 3) g_data.ThunderDefeated = true; }
     bool IsRegionLoaded(const char*) const { return g_frames >= 1; }
     void PostAddScriptedEntities() const {}

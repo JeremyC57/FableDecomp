@@ -6,7 +6,7 @@ extern const float g_nightStart_0125d62c;   // 0x0125D62C (0.7917)
 extern const float g_one_0122ded8;          // 0x0122DED8 (1.0)
 extern const float g_nightEnd_0125d620;     // 0x0125D620 (0.25)
 extern const float g_zero_0122dedc;         // 0x0122DEDC (0.0)
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad[8];
     float         m_timeOfDay;                     // +0x08 (a fraction of the day)
     bool IsNightTime();

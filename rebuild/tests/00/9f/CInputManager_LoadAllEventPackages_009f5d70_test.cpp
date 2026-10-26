@@ -23,13 +23,13 @@
 // is first stored just before the package constructor (the only call that can throw), the package needs no state
 // of its own, and -1 is restored right after its destructor. The catch body is empty: its continuation
 // (0x009F5DEF) reloads `this` and falls into the index reset after the loop.
-struct CVersion {                                  // 12 bytes, read straight from the file
+class CVersion { public:                                  // 12 bytes, read straight from the file
     long Major;
     long Minor;
     long Build;
 };
-struct CASuspendableProcess;
-struct CAFile {                                    // abstract file (vtable 0x0122ECCC is all __purecall)
+class CASuspendableProcess;
+class CAFile { public:                                    // abstract file (vtable 0x0122ECCC is all __purecall)
     virtual ~CAFile();                                                                   // slot 0
     virtual void Open(const void* pathname, long access, unsigned long flags);          // slot 1
     virtual void Close();                                                                // slot 2
@@ -41,7 +41,7 @@ struct CAFile {                                    // abstract file (vtable 0x01
     virtual void SetLength(long length);                                                // slot 8
     virtual long GetLength() throw();                                                   // slot 9 (+0x24)
 };
-struct CInputEventPackage {                        // 48 bytes: one frame's worth of recorded input
+class CInputEventPackage { public:                        // 48 bytes: one frame's worth of recorded input
     unsigned char _events[0x0c];                   // +0x00 Events (vector<CInputEvent>)
     long          TimeStamp;                       // +0x0c
     unsigned char _rest[0x20];                     // +0x10 Checksum, MousePos, JoystickPos
@@ -55,7 +55,7 @@ struct CInputEventPackageVector {                  // vector<CInputEventPackage>
     void push_back(const CInputEventPackage& package) throw();   // 0x009F6FE0 (grow-and-copy, treated as non-throwing)
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char            _pad04[0x48];         // +0x04 vectors, counters, devices, flags, Checksum
     CInputEventPackageVector LoadedEventPackages;  // +0x4c

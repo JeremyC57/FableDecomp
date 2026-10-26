@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 struct CIntelligentPointer {                            // CIntelligentPointer<const CThing>: ctor/SetPItem/GetPItem/dtor counted
     const CThing* item;

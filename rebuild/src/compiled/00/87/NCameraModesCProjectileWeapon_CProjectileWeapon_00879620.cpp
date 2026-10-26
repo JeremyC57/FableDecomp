@@ -8,13 +8,13 @@
 // ShotFiredTimer +0xa4, Finished +0xa8, Attractors +0xf0, MaxZoomInFOV +0xfc, MinZoomInFOV +0x100.
 // Shape: the Finished byte is scheduled before the vtable store, ShotFiredTimer = -1 and the vector's inline
 // zeroing constructor after it; the float arguments move through edx/eax.
-struct CGameCameraManager;
-struct CCameraModeDef;
-template <class T> struct CDefPointer {
+class CGameCameraManager;
+class CCameraModeDef;
+template <class T> class CDefPointer { public:
     T* m_pDef;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -33,7 +33,7 @@ struct CCameraModeBase {
     unsigned char _body[0xa0];                              // +0x04 .. +0xa4
 };
 
-struct CProjectileWeapon : CCameraModeBase {                // vtable 0x01277804
+class CProjectileWeapon : public CCameraModeBase { public:                // vtable 0x01277804
     long            ShotFiredTimer;                         // +0xa4
     bool            Finished;                               // +0xa8
     C3DVector       XAxis;                                  // +0xac

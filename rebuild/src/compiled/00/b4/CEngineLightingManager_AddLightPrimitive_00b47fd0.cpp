@@ -11,8 +11,8 @@
 // Shape: as the spot-light twin 0x00B480E0 (parked): `x < k` early returns, the inlined heap Alloc merged with new's null test,
 // an inline CManagerLocalLight constructor (vtable, element, flag) whose by-value floats are homed in the frame / dead
 // argument slot, STLport push_back with the __true_type tag.
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CObjectEntry { CObjectEntry* Next; };
 
@@ -45,7 +45,7 @@ template <int SIZE, int COUNT> struct CDynamicObjectHeap : CDynamicObjectHeapBas
 
 extern CDynamicObjectHeap<72, 16> g_LocalLightHeap;   // 0x01436FB0 (CreateMoreBlocks 0x00B48F90)
 
-struct CEngineLocalLightElement {
+class CEngineLocalLightElement { public:
     unsigned char _body[52];
     CEngineLocalLightElement(const C3DVector& position, float radius, float spotRadius, const CRGBFloatColour& colour,
                              unsigned long channelMask);   // 0x00B44E30
@@ -65,7 +65,7 @@ struct CManagerLocalLight {                        // vtable 0x012A2228, 0x48 by
     static void operator delete(void*) { }
 };
 
-struct CEngineInternalPrimitiveLight {
+class CEngineInternalPrimitiveLight { public:
     unsigned char   _base[0x48];
     C3DVector       WorldPos;                      // +0x48
     CRGBFloatColour Colour;                        // +0x54
@@ -105,7 +105,7 @@ __declspec(noinline) void CPointerVector<T>::_M_insert_overflow(T** position, T*
 }
 #pragma auto_inline(on)
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char                      _pad[0xac];
     CPointerVector<CManagerLocalLight> LocalLightList;   // +0xac
     void AddLightPrimitive(const CEngineInternalPrimitiveLight& light);

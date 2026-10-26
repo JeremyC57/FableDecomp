@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMusicManager {
+class CMusicManager { public:
     void* f0;
     void* f4;
     void* f8;

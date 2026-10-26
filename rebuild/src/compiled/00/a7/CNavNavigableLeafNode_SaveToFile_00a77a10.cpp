@@ -10,15 +10,15 @@
 // Shape: the region ID and one long `value` (the neighbour count, then each index) are locals VC homes in dead argument slots; the table lookup is the inline
 //   STLport map::find (lower bound walk, then the `k < key(y)` reject) and its ->second is written without an end() test; the
 //   loop re-reads the neighbour vector's data and size for its end test.
-struct CAFile {
+class CAFile { public:
     virtual void Slot0();
     virtual void Slot1();
     virtual void Slot2();
     virtual void Slot3();
     virtual void Write(const void* data, long size, long flags);   // slot 4 (+0x10)
 };
-struct C2DVector { float X, Y; };
-struct CANavQuadTreeNode;
+class C2DVector { public: float X, Y; };
+class CANavQuadTreeNode;
 namespace std {
 template <class T> struct allocator { };
 template <class T> struct less { bool operator()(const T& a, const T& b) const { return a < b; } };
@@ -57,7 +57,7 @@ template <class K, class V, class C = less<K>, class A = allocator<pair<const K,
 };
 }
 typedef std::map<const CANavQuadTreeNode*, long> CNodeIndexTable;
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                            // +0
     signed char m_size;                            // +4
     signed char m_capacity;                        // +5
@@ -65,7 +65,7 @@ template <class T, int N> struct CSmallVector {
     T* end() const { return m_data + m_size; }
     long size() const { return m_size; }
 };
-struct CNavRegion {
+class CNavRegion { public:
     long RegionID;                                 // +0x00
 };
 class CANavQuadTreeNode {

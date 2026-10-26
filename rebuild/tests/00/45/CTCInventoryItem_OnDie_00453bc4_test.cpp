@@ -6,7 +6,7 @@ extern "C" void engine_free(void* p) { freed = 1; freed_ptr = p; }
 void* const g_CTCInventoryItem_vtbl = (void*)0x1230ba0;
 static int base_called = 0;
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vptr;
     unsigned char _pad_0x4[0x24];
     void* ptr28;

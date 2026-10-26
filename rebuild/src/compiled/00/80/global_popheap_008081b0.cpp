@@ -13,7 +13,7 @@
 // "s" pass-through push). The element copy for __adjust_heap is built in the argument area by the inlined user copy
 // constructor (base constructor, vtable store, SetPItem(other.GetPItem())); the assignment and the copy constructor must be
 // __forceinline. The by-value `value` parameter is destroyed by this callee at the end (`lea ecx,[esp+14h] ; call ~`).
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                        // +4

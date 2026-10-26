@@ -13,7 +13,7 @@
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -23,12 +23,12 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 enum { GAME_EVENT_PAUSE = 9 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     unsigned char _pad000[0xdc];
     bool          PausedGame;                     // +0xdc
     unsigned char _pad0dd[9];

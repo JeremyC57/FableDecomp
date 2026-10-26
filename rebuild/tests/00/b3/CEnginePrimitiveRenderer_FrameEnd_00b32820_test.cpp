@@ -4,10 +4,10 @@
 #include <cstring>
 #define CHECK(c) do { if (!(c)) { std::printf("00b32820_TEST FAIL\n"); return 1; } } while (0)
 
-struct CEngineScene { int frameEnds; int resets; int order; void FrameEnd() { ++frameEnds; } void ResetRenderLists() { ++resets; } };
+class CEngineScene { public: int frameEnds; int resets; int order; void FrameEnd() { ++frameEnds; } void ResetRenderLists() { ++resets; } };
 struct CRenderable { int ended; void EndFrame() { ++ended; } };
 struct SRenderEntry { CRenderable* m_pObject; int m_key; };
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     bool m_frameFlag;
     SRenderEntry* nsFirst; SRenderEntry* nsLast;
     CEngineScene** scFirst; CEngineScene** scLast;

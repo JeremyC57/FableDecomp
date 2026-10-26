@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSkyDef;
+class CSkyDef;
 unsigned long __fastcall CSkyDef_GetSizeofClass(const CSkyDef* self)
 {
     (void)self;

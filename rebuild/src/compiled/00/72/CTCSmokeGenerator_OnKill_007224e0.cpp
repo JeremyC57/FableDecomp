@@ -8,7 +8,7 @@
 // The thing's flag byte +0x91 bit 0 marks it as already killed.
 // Shape: `last` re-read every iteration; the loop keeps the element and its pointer member in two strength-reduced
 // registers.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                                  // +0x91, bit 0: killed
     void Kill(bool immediately);                            // 0x004C9B80
@@ -25,7 +25,7 @@ struct CGenerationPos {                                     // CTCSmokeGenerator
     CBaseIntelligentPointer PThing;                         // +0x0c
 };
 
-struct CTCSmokeGenerator {
+class CTCSmokeGenerator { public:
     void*           __vftable;                              // +0x00
     CThing*         ParentThing;                            // +0x04
     bool            ToBeRemoved;                            // +0x08

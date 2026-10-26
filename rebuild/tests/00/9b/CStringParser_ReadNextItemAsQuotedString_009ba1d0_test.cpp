@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char buf[64];
     unsigned long len;
     CCharString() : len(0) { buf[0] = 0; }
@@ -10,7 +10,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
 };
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
-struct CStringParser {
+class CStringParser { public:
     char* String;
     CCursorPos CursorPos;
     long SkipWhitespace() { while (String[CursorPos.StringPos] == ' ') ++CursorPos.StringPos; return 0; }

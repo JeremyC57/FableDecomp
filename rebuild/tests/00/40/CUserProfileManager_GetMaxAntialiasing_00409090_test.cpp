@@ -14,7 +14,7 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
 static const long g_supported[] = { 0, 2, 4, 8 };
-struct CDisplayManager {
+class CDisplayManager { public:
     void GetSupportedAntialiasingLevels(CLongVector& levels)
     {
         levels._M_start = (long*)std::malloc(sizeof(g_supported));
@@ -23,14 +23,14 @@ struct CDisplayManager {
         levels._M_finish = levels._M_end_of_storage = levels._M_start + 4;
     }
 };
-struct CSystemManager {
+class CSystemManager { public:
     CDisplayManager* PDisplayManager;
 };
 static CDisplayManager g_display;
 static CSystemManager g_system = { &g_display };
 static CSystemManager* GFGetSystemManager() { return &g_system; }
 static long g_ConfigLevel = -1;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned long GetMaxAntialiasing() const
     {
         CLongVector levels;

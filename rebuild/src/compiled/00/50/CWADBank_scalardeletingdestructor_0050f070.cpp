@@ -1,4 +1,4 @@
-struct CWADBank {
+class CWADBank { public:
     void* vftable;
 };
 

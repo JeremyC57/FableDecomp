@@ -86,7 +86,7 @@ struct CTCInventoryBase_Calls {
     void ProcessInventoryInputUp();                             // 0x005BDD8C
 };
 
-struct CTCInventoryQuests : CTCInventoryBase_Calls {     // vtable 0x012585B4
+class CTCInventoryQuests : public CTCInventoryBase_Calls { public:     // vtable 0x012585B4
     unsigned char _pad_0x20[0x157 - 0x20];
     bool          m_questListActive;           // +0x157
     void QuestListHook_0061AA80();           // 0x0061AA80

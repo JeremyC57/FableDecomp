@@ -1,4 +1,4 @@
-struct CInputProcessCreditsUI {
+class CInputProcessCreditsUI { public:
     void* vftable;
 };
 

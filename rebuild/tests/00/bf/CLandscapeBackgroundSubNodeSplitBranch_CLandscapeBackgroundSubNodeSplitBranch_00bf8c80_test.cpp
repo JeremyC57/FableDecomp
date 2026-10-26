@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-static long g_calls = 0, g_args[3]; static void* g_nodes[2]; struct CMovableResource { virtual void v00() { } }; struct CTreeNode { unsigned char _body[0xe8]; CTreeNode(long a, long b, long c) { g_nodes[g_calls++] = this; g_args[0] = a; g_args[1] = b; g_args[2] = c; } };
+static long g_calls = 0, g_args[3]; static void* g_nodes[2]; class CMovableResource { public: virtual void v00() { } }; struct CTreeNode { unsigned char _body[0xe8]; CTreeNode(long a, long b, long c) { g_nodes[g_calls++] = this; g_args[0] = a; g_args[1] = b; g_args[2] = c; } };
 struct CBranch : CMovableResource { CTreeNode m_nodeA; CTreeNode m_nodeB; virtual void v00() { } CBranch(long a, long b, long c) : m_nodeA(a, b, c), m_nodeB(a, b, c) { } };
 
 int main() {

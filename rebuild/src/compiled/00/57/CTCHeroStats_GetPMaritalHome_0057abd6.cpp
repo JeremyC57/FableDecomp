@@ -15,14 +15,14 @@
 // from the PDB (WifeUID +0x00, MaritalHomeUID +0x08 -> node +0x08/+0x10); CThing::UniqueID +0x18 (PDB).
 #pragma optimize("s", on)
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x10];
     unsigned char    ThingType;                // +0x10 (3 = building)
     unsigned char    _pad_0x11[0x7];
     unsigned __int64 UniqueID;                 // +0x18
 };
 
-struct CWorld {
+class CWorld { public:
     CThing* GetThingFromUID(unsigned __int64 uid);   // 0x0051ED60
 };
 

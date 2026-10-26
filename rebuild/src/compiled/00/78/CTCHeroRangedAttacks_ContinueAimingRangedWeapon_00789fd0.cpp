@@ -1,4 +1,4 @@
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     char pad[0x14];
     unsigned char FireCycleInProgress;
     unsigned char Aiming;

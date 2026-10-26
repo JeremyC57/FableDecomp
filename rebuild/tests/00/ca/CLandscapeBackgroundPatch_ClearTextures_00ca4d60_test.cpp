@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     char pad[0xc0];
     void* tex;
 };

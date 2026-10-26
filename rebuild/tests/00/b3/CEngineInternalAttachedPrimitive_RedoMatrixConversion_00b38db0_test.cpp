@@ -1,7 +1,7 @@
 // Behaviour test for CEngineInternalAttachedPrimitive::RedoMatrixConversion @ 0x00b38db0
 #include <cstdio>
-struct CMatrix3x4 { float m_elements[12]; };
-struct CEngineInternalAttachedPrimitive { void RedoMatrixConversion(CMatrix3x4* matrix); };
+class CMatrix3x4 { public: float m_elements[12]; };
+class CEngineInternalAttachedPrimitive { public: void RedoMatrixConversion(CMatrix3x4* matrix); };
 void CEngineInternalAttachedPrimitive::RedoMatrixConversion(CMatrix3x4* matrix)
 {
     matrix->m_elements[6] *= 100.0f;

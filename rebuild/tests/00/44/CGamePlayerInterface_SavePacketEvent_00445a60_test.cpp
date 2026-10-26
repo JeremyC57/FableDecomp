@@ -2,19 +2,19 @@
 #include <cstdio>
 #include <cstring>
 static int g_eventDtors = 0;
-struct CInputEvent { unsigned char body[0x34]; CInputEvent() { std::memset(body, 0, sizeof(body)); } ~CInputEvent() { ++g_eventDtors; } };
-struct C2DVector { float X, Y; };
-struct CCamera { bool HeightLocked, ViewVecZLocked; CCamera() : HeightLocked(false), ViewVecZLocked(false) {} };
+class CInputEvent { public: unsigned char body[0x34]; CInputEvent() { std::memset(body, 0, sizeof(body)); } ~CInputEvent() { ++g_eventDtors; } };
+class C2DVector { public: float X, Y; };
+class CCamera { public: bool HeightLocked, ViewVecZLocked; CCamera() : HeightLocked(false), ViewVecZLocked(false) {} };
 struct CSavedInputEvent { unsigned int Frame; CInputEvent InputEvent; C2DVector MousePos; CCamera Camera; };
 struct CMouseDevice { void GetPosition(C2DVector* p) { p->X = 3.0f; p->Y = 4.0f; } };
 struct CLoader { CMouseDevice* m_pMouse; };
 static CLoader g_loader; static CLoader* g_Loader = &g_loader;
-struct CMainGameComponent { unsigned int frame; unsigned int GetFrame() { return frame; } };
-struct CDiskFileWin32 {
+class CMainGameComponent { public: unsigned int frame; unsigned int GetFrame() { return frame; } };
+class CDiskFileWin32 { public:
     CSavedInputEvent last; unsigned int size; int writes;
     void Write(const void* buffer, unsigned int s, int) { std::memcpy(&last, buffer, sizeof(last)); size = s; ++writes; }
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     CMainGameComponent* Component; CDiskFileWin32 PacketFile;
     void SavePacketEvent(const CInputEvent& event)
     {

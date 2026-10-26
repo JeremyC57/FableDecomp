@@ -41,7 +41,7 @@ template <class T> struct CVectorBase {                     // STLport _Vector_b
 template <class T> struct CRetailVector : CVectorBase<T> {  // STLport vector<T> (12 bytes)
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CEnginePrimitiveHandleVector {                       // std::vector<CEnginePrimitiveHandle> (12 bytes)
     void* m_first; void* m_last; void* m_end;
     CEnginePrimitiveHandleVector();
@@ -52,11 +52,11 @@ struct CSignatureMap {                                      // std::map<CWideStr
     CSignatureMap();                                        // 0x00486055
 };
 
-struct CWideString;
-struct CCharString;
-struct CDateAndTime;
-struct CDefPointeeBase;
-namespace NUISystem { struct CComponent; struct CYesNo; }
+class CWideString;
+class CCharString;
+class CDateAndTime;
+class CDefPointeeBase;
+namespace NUISystem { class CComponent; class CYesNo; }
 
 class CTCInGameMenu : public CTCBase {                      // vtable 0x01236804
 public:

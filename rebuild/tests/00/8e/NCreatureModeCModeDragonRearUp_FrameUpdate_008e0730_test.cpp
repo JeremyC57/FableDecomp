@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDragonRearUp::FrameUpdate (retail 0x008E0730): the rear-up timer only counts while
 // the dragon is not performing an action; once it is spent the dragon starts the rear-up-out-of action.
-struct CThing { unsigned char m_state; unsigned char m_flags91; };
-struct CCreatureActionBase { int Kind; CThing* Owner; CThing* Target; };
-struct CThingCreatureBase : CThing {
+class CThing { public: unsigned char m_state; unsigned char m_flags91; };
+class CCreatureActionBase { public: int Kind; CThing* Owner; CThing* Target; };
+class CThingCreatureBase : public CThing { public:
     int actions;
     CCreatureActionBase last;
     bool SetCurrentAction(const CCreatureActionBase& action) { ++actions; last = action; return true; }
@@ -21,7 +21,7 @@ static bool g_busy;
 struct CDragon : CThingCreatureBase {
     bool IsPerformingAnyAction() { return g_busy; }
 };
-struct CCreatureAction_DragonRearUpOutOf : CCreatureActionBase {
+class CCreatureAction_DragonRearUpOutOf : public CCreatureActionBase { public:
     CCreatureAction_DragonRearUpOutOf(CThingCreatureBase* owner) { Kind = 3; Owner = owner; Target = 0; }
 };
 struct CModeDragonRearUp {

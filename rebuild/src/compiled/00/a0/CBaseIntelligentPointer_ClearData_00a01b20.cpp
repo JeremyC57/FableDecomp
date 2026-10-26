@@ -11,7 +11,7 @@
 // count may alias it), and frees the record only when nobody references it any more AND the
 // observed object has already detached (PItem == 0); the member is then nulled.  `delete` on the
 // POD record is the bare operator delete call, no null test.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseObjectPointer {
     CBaseObject* PItem;        // +0x00 the observed object, 0 once it died

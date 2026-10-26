@@ -9,12 +9,12 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CSnowTrollDef : CDefClassBase {
+class CSnowTrollDef : public CDefClassBase { public:
     long                     IcicleAttackIndex;           // +0x28
     float                    SecondsIcicleAttackTargetPositionPredictionTime; // +0x2c
     float                    DistancePoundGroundRange;    // +0x30

@@ -2,10 +2,10 @@
 // 1/(15*fadeTime) per script frame until it reaches 1, and return the new thing.
 #include <cstdio>
 
-struct CCharString { const char* text; };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CCharString { public: const char* text; };
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     float alphas[64];
     int alphaCount;
     int frames;

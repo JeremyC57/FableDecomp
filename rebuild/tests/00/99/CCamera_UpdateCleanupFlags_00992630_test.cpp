@@ -9,8 +9,8 @@
 // Grade: RELOCATION_MATCH -- verified behavior PASS under g++ and VC7.1.
 struct CCameraInfo { long refs; void (__fastcall *destroy)(void *); void *object; };
 struct CCountedPointer { void *data; CCameraInfo *info; };
-struct CCharString { void *data; CCharString *operator=(CCharString const&); };
-struct CCamera {
+class CCharString { public: void *data; CCharString *operator=(CCharString const&); };
+class CCamera { public:
     CCountedPointer first;
     CCountedPointer second;
     CCharString text0, text1, text2, text3;

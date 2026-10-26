@@ -7,7 +7,7 @@
 // Layout: engine/CEngineSkyRenderer.h (SkySpriteVertexShader +0x110, SkySpritePixelShader +0x130).
 #include "engine/CEngineSkyRenderer.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -15,12 +15,12 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct C4DVector { float X, Y, Z, W; };
-struct CRGBColour {                                      // D3DCOLOR byte order
+class C4DVector { public: float X, Y, Z, W; };
+class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((A << 8) + R) << 8) + G) << 8) + B; }
 };
-struct CTexture;
+class CTexture;
 struct SSkySpriteVertex {                                // 0x18 bytes
     C3DVector     Pos;
     unsigned long Colour;
@@ -31,26 +31,26 @@ struct CRenderManagerCoreView {
                            long vertexCount, const void* indices, long triangleCount);   // 0x00A0AEA0
 };
 extern CRenderManagerCoreView* g_pRenderManagerCore;   // 0x01436E18
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
     unsigned long Size() const { return Last - First; }
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:

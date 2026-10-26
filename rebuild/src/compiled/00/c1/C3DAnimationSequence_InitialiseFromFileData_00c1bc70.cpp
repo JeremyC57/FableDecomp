@@ -12,8 +12,8 @@
 // SCALE is a float literal (rdata memory operand of fmul), NOT an extern
 // global -- an extern global makes VC7.1 fld the global first (wrong order).
 
-struct C3DAnimationSequence
-{
+class C3DAnimationSequence
+{ public:
     char  pad0[0xe];
     short m_field_e;   // offset 0xe
 

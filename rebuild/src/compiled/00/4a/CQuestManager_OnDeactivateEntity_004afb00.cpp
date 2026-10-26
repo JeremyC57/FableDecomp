@@ -11,15 +11,15 @@
 // retail CQuestManager ActiveQuests list at +0x38, CActiveQuest PScript (CCountedPointer<CScriptBase>) Data at +0x08.
 // Shape: the CScriptThing is a named local of the hit block (`lea ; push` of its frame word); the flag argument is
 // pushed first, so it is the first value loaded.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[12];
     ~CScriptThing();                               // 0x004AA840
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x10];
     unsigned char    ThingType;                    // +0x10
     unsigned char    _pad11[7];
@@ -34,7 +34,7 @@ struct CThing {
     unsigned char    _93_4 : 4;
     CScriptThing GetScriptThing();                 // 0x004C7E50
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool BindsEntityScript(const CCharString& name);                                              // 0x00CB7D60
     void OnScriptedEntityDeactivated(unsigned __int64 uid, CScriptThing& thing, bool flag);        // 0x00CB88B0
 };
@@ -50,7 +50,7 @@ struct SActiveQuestNode {                          // STLport list node of CCoun
     CActiveQuest*     m_pData;                     // +0x08
     void*             m_pInfo;                     // +0x0c
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad00[0x38];
     SActiveQuestNode* ActiveQuests;                // +0x38
     void OnDeactivateEntity(CThing& thing, bool flag);

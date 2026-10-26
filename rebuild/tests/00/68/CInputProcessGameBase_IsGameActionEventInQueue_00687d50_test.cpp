@@ -1,8 +1,8 @@
 #include <cstdio>
 // CInputProcessGameBase::IsGameActionEventInQueue: forward (a, b, MyPlayer->GetPlayerNumber()) to the player interface
 static long g_a, g_b, g_player, g_calls;
-struct CPlayer { long number; long GetPlayerNumber() { ++g_calls; return number; } };
-struct CGamePlayerInterface {
+class CPlayer { public: long number; long GetPlayerNumber() { ++g_calls; return number; } };
+class CGamePlayerInterface { public:
     bool result;
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber) { g_a = action; g_b = buttonEventType; g_player = playerNumber; return result; }
 };

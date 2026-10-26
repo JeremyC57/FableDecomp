@@ -38,7 +38,7 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CQuestCardDef {                             // intrusively counted (vptr, count +4)
+class CQuestCardDef { public:                             // intrusively counted (vptr, count +4)
     virtual void v00();
     virtual void Release();                        // slot 1 (+4)
     long          m_refs;                          // +0x04
@@ -52,7 +52,7 @@ struct CQuestCardDefPtr {
     CQuestCardDefPtr(const CQuestCardDefPtr& other) : p(other.p) { if (p) p->AddRef(); }
     ~CQuestCardDefPtr() { if (p) p->DecRef(); }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     unsigned char    _pad00[0xc];
     CQuestCardDefPtr Def;                          // +0x0c
     unsigned char    _pad10[4];
@@ -75,7 +75,7 @@ __forceinline CTCQuestCard* GetQuestCard(CThing_Retail* thing)
         tc = (CTCQuestCard*)GetTC(thing, 0x6c);
     return tc;
 }
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x5c];
     CCardNode*    ActiveQuestCards;                // +0x5c
     bool IsAnyQuestActive();

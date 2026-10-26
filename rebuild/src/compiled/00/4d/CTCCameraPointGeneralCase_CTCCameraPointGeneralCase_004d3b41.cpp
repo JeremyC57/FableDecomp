@@ -10,7 +10,7 @@
 // AllowRightStickRotation +0x4d, AllowZTarget +0x4e (AutoGoBehind +0x4f and AutoGoBehindTime +0x50 are left alone).
 // Shape: /Os pass-through base argument. 0x0122DCDC holds 2.0f.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCCameraPointShapeActivationBase {
     virtual void v00();
@@ -18,7 +18,7 @@ struct CTCCameraPointShapeActivationBase {
     CTCCameraPointShapeActivationBase(CThing* parent);      // 0x004D3A03
 };
 
-struct CTCCameraPointGeneralCase : CTCCameraPointShapeActivationBase {
+class CTCCameraPointGeneralCase : public CTCCameraPointShapeActivationBase { public:
     float CameraStringLength;                               // +0x40
     float CameraCageRadius;                                 // +0x44
     float CameraHeightOffset;                               // +0x48

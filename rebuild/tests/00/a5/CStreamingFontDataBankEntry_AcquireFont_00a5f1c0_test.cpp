@@ -7,7 +7,7 @@ struct CCountedPointer_00a5f1c0 { CStreamingFontBank* m_pObject; long* m_pCount;
     CCountedPointer_00a5f1c0() { }
     CCountedPointer_00a5f1c0(const CCountedPointer_00a5f1c0& o) : m_pObject(o.m_pObject), m_pCount(o.m_pCount) { if (m_pCount) ++*m_pCount; }
     void Reset(CStreamingFontBank* o) { g_reset = o; m_pObject = o; m_pCount = &g_count; } };
-struct CStreamingFontDataBankEntry { virtual void v00() { } CCountedPointer_00a5f1c0 m_font; long Bank; long m_b;
+class CStreamingFontDataBankEntry { public: virtual void v00() { } CCountedPointer_00a5f1c0 m_font; long Bank; long m_b;
     static CStreamingFontBank* CreateBank(long a, long b) { return new CStreamingFontBank(a, b); }
     CCountedPointer_00a5f1c0 AcquireFont() { if (!m_font.m_pObject) m_font.Reset(CreateBank(Bank, m_b)); return m_font; } };
 int main() {

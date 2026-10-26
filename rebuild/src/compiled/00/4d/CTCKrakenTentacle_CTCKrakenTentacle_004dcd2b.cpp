@@ -12,9 +12,9 @@
 #pragma optimize("s", on)
 #define FORCEINLINE __forceinline
 
-struct CThing;
+class CThing;
 
-struct CTCBase {                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
+class CTCBase { public:                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
     void* __vftable;                        // +0x00
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -22,7 +22,7 @@ struct CTCBase {                            // CTCBase root: vptr, ParentThing, 
     ~CTCBase();                             // 0x00686830 (stores the CTCBase vtable, then the CBaseObject destructor)
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -47,14 +47,14 @@ struct CIntelligentPointer {                // CIntelligentPointer<CThing>
     ~CIntelligentPointer();                 // 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer)
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                      // +0x00
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCKrakenTentacle : CTCBase {
+class CTCKrakenTentacle : public CTCBase { public:
     CDefPointer PTentacleDef;               // +0x0c
     CIntelligentPointer PKraken;            // +0x10
     CIntelligentPointer PObstruction;       // +0x18

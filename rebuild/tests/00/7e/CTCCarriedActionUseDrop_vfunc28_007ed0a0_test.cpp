@@ -1,7 +1,7 @@
 // behaviour test for 0x007ED0A0 CTCCarriedActionUseDrop::vfunc_28
 #include <cstdio>
 struct Entry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Entry* first; Entry* last; unsigned char flags6c; int actions;
     unsigned int HasInterface(long t) const { return bits[t >> 5] & (1u << (t & 31)); }
     Entry* LowerBound(const long* t) { Entry* e = first; while (e != last && e->type < *t) ++e; return e; }

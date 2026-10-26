@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
@@ -30,7 +30,7 @@ public:
     float ReadFLOAT() { float value = 0.0f; Read(&value, 4); return value; }
 };
 class CChunkedFileLoader { };
-struct C3DAnimFileTimingEventChunk {
+class C3DAnimFileTimingEventChunk { public:
     CCharString Name;
     float Time;
     void ReadFromFile(CDataInputStream& in, unsigned long size, CChunkedFileLoader& loader)

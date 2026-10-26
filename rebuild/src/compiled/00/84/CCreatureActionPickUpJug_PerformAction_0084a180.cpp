@@ -5,14 +5,14 @@
 // bit 27 of the presence word at +0x34).
 // Shape: IS_THING_ALIVE inlined (null test, then the +0x91 dead bit); the GetInterface result is ignored, so the absent arm stores
 // through the uninitialised out pointer read from the key's frame word (`mov eax,[esp+4]`), and the byte store is tail-duplicated.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -52,16 +52,16 @@ struct CTCJug {                             // interface type 0xBB
     bool m_putDown;                         // +0x10 (PickUpJug clears it, PutDownJug sets it)
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[0xa8 - 4];
 };
-struct CCreatureAction_PickUpThingAtTable : CCreatureActionBase {
+class CCreatureAction_PickUpThingAtTable : public CCreatureActionBase { public:
     CBaseIntelligentPointer PThing;         // +0xa8 the thing picked up
     virtual void PerformAction();           // 0x00849F70
 };
-struct CCreatureAction_PickUpJug : CCreatureAction_PickUpThingAtTable {
+class CCreatureAction_PickUpJug : public CCreatureAction_PickUpThingAtTable { public:
     virtual void PerformAction();
 };
 

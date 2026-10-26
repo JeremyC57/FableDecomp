@@ -12,7 +12,7 @@ struct CPrimitive {
     void OnLastHandleReleased() { ++g_lastNotified; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     CPrimitive* Object;
     void Clear()
     {

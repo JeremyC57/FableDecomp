@@ -30,7 +30,7 @@ struct CRetailEntryVector_00b84320 {
     unsigned long GetCount() const { return m_pLast - m_pFirst; }
 };
 
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     static void __stdcall RenderListTwoPass(CRetailEntryVector_00b84320* list, void* firstPassParams, void* secondPassParams);
 };
 

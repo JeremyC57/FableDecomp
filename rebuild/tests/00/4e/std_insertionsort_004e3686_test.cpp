@@ -3,7 +3,7 @@
 #include <new>
 static int g_live = 0;
 static const char* const g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     explicit CCharString(int k) : m_pData((void*)g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }   // stands in for 0x0099EC30

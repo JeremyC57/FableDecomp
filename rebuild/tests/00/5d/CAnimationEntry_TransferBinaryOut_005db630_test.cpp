@@ -3,18 +3,18 @@
 #include <cstdio>
 
 static long g_out[32]; static int g_n = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long v) { g_out[g_n++] = v; }
     void WriteULong(unsigned long v) { g_out[g_n++] = (long)v; }
 };
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     long payload;
     virtual ~CAnimComponentBase() {}
     virtual void TransferBinaryOut(CDataOutputStream& s) const { s.WriteLong(payload); }
 };
 struct CAnimComponentEntry { int first; CAnimComponentBase* second; };
-struct CAnimComponentMap { CAnimComponentEntry* m_pFirst; CAnimComponentEntry* m_pLast; long Size() const { return (long)(m_pLast - m_pFirst); } };
-struct CAnimationEntry {
+class CAnimComponentMap { public: CAnimComponentEntry* m_pFirst; CAnimComponentEntry* m_pLast; long Size() const { return (long)(m_pLast - m_pFirst); } };
+class CAnimationEntry { public:
     long BankIndex, AnimName, GroupName; CAnimComponentMap* Components;
     void TransferBinaryOut(CDataOutputStream& stream) const
     {

@@ -8,7 +8,7 @@
 // STACK (not edx), we give the fn a dummy edx slot so the real flags arg spills
 // to the stack, reproducing `test byte[esp+8],1` and `ret 4`.
 
-struct CSubtitleRenderer;
+class CSubtitleRenderer;
 
 extern "C" void __fastcall LBP_dtor(CSubtitleRenderer* renderer);   // inner (non-deleting) dtor
 extern "C" void __cdecl LBP_op_delete(void* p);                          // operator delete

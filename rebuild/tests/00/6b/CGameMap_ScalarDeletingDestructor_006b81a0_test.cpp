@@ -5,7 +5,7 @@ static int g_freed, g_base; static void* g_freedPtr;
 void MyFree(void* p) { ++g_freed; g_freedPtr = p; }
 struct CMapBuffer { void* m_pData; ~CMapBuffer() { if (m_pData != 0) MyFree(m_pData); } };
 namespace N_0099a300 { struct CBaseClass { virtual ~CBaseClass() { ++g_base; } }; } using N_0099a300::CBaseClass;
-struct CGameMap : CBaseClass { CMapBuffer m_cells; virtual ~CGameMap() {} };
+class CGameMap : public CBaseClass { public: CMapBuffer m_cells; virtual ~CGameMap() {} };
 int main()
 {
     int cell;

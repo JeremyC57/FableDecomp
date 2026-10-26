@@ -2,13 +2,13 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CPresenceBits { bool test(long bit) const; };           // 0x00410DE0
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -52,7 +52,7 @@ __declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(cons
     return lo;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
@@ -93,12 +93,12 @@ struct CThing {
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                              // slot 1
     mutable long RefCount;                                     // +0x04
 };
-struct CHeroAbilityDef : CDefPointeeBase {
+class CHeroAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     long  TrainableStat;                                       // +0x40
     unsigned char _pad44[0x70 - 0x44];
@@ -106,7 +106,7 @@ struct CHeroAbilityDef : CDefPointeeBase {
     unsigned char _pad74[0x7c - 0x74];
     long  TrainableStatExperience;                             // +0x7c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
     __forceinline ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
@@ -118,28 +118,28 @@ struct CAbilityEntryVector {
     SAbilityEntry& operator[](unsigned long n) { return _M_start[n]; }
 };
 
-struct CTCSpecialAbilities {                                   // interface 0xA7
+class CTCSpecialAbilities { public:                                   // interface 0xA7
     bool ToggleUsingAbility(EHeroAbility ability);             // 0x0072AC90
     bool UseSpecialAbility(EHeroAbility ability);              // 0x0072CF40
 };
-struct CTCHeroStats {                                          // interface 4
+class CTCHeroStats { public:                                          // interface 4
     unsigned char _pad00[0x130];
     long* AbilityUseCounts;                                    // +0x130
     void ModifyStaminaBy(long amount);                         // 0x0057B1DB
 };
 struct CTCHeroState { unsigned char _pad00[0xd]; bool CanUseAbilities; };   // interface 0x29
 struct CTCSpellCost { long GetCost(); };                       // interface 0x91, 0x0079A610
-struct CTCHeroExperience { void AddTrainableStatExperience(long stat, long amount); };   // interface 0x68, 0x006D8300
+class CTCHeroExperience { public: void AddTrainableStatExperience(long stat, long amount); };   // interface 0x68, 0x006D8300
 struct CSoundInfo { unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d); };   // interface 0x10, 0x0066BD00
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
-struct CWorld { unsigned char _pad00[0x60]; CMessageEventManager* PMessageEventManager; };   // +0x60
+class CWorld { public: unsigned char _pad00[0x60]; CMessageEventManager* PMessageEventManager; };   // +0x60
 extern long g_FrameRate;                                       // 0x01375550
 
 // Layout: retail CTCInventoryAbilities (Ego_r.pdb - 0x18): CurrentSpecialAbilityUsedFromQuickAccess +0x142, Abilities +0x160.
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     unsigned char _pad08[0x142 - 0x08];

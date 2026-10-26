@@ -1,7 +1,7 @@
 
 #include <cstdio>
-struct CRegion { int id; };
-struct CMiniMapDisplay { int lastRegion; void* lastInit; int initCount; };
+class CRegion { public: int id; };
+class CMiniMapDisplay { public: int lastRegion; void* lastInit; int initCount; };
 static void dispSet(CMiniMapDisplay* d, CRegion* r){ d->lastRegion = r? r->id : -1; }
 static void dispInit(CMiniMapDisplay* d, void* s){ d->lastInit = s; d->initCount++; }
 struct CDrawMiniMap { char pad0[0xc]; char* World; char pad1[0x28-0x10]; CMiniMapDisplay disp; };

@@ -78,7 +78,7 @@ struct CSoundManagerInit {                      // descriptive: the derived mana
     unsigned long ResourceMemory;               // +0x1c
 };
 
-struct CSoundBankEntry;
+class CSoundBankEntry;
 
 class CASoundManager : public CBaseClassNonCopyable {
 public:

@@ -21,13 +21,13 @@ public:
     CBaseClass();                                // 0x0099A2D0
     ~CBaseClass();                               // 0x0099A300
 }; } using N_0099a300::CBaseClass;
-struct CManagedTextureData {
+class CManagedTextureData { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long RefCount;                               // +0x04
     __forceinline void DecRef() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     __forceinline ~CIVCountedPointer()
     {
@@ -50,7 +50,7 @@ template <class T> struct CRetailVector {        // STLport vector over a free()
             free(_M_start);
     }
 };
-struct CResourceList {                           // vtable 0x0129C808, 0x3C bytes
+class CResourceList { public:                           // vtable 0x0129C808, 0x3C bytes
     virtual void v00();
     unsigned char _pad04[0x38];
     ~CResourceList();                            // 0x009FC5C0

@@ -20,28 +20,28 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     const CDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
 extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
 };
 
 namespace NUISystem {
-struct CComponent;
-struct CList;
+class CComponent;
+class CList;
 }
 
 namespace std {

@@ -1,4 +1,4 @@
-struct CSpecialAbilitiesBattleChargeDef {};
+class CSpecialAbilitiesBattleChargeDef { public:};
 
 unsigned long __fastcall CSpecialAbilitiesBattleChargeDef_GetSizeofClass(const CSpecialAbilitiesBattleChargeDef* self)
 {

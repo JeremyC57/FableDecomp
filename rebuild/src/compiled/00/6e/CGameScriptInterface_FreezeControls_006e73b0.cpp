@@ -8,16 +8,16 @@
 // the manager for the final thiscall.
 #include "engine/CGameScriptInterface.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_stateFlags;                     // +0x91 (bit 0 = controls already locked)
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                // 0x00487DD0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
     void FreezePlayerControls(long player);         // 0x00449A30
 };

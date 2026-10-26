@@ -3,7 +3,7 @@
 
 static int g_assigns = 0;
 
-struct CConfigOptionsDefaultsDef {               // 124 bytes (0x7c); its own assignment copies the body
+class CConfigOptionsDefaultsDef { public:               // 124 bytes (0x7c); its own assignment copies the body
     unsigned char _body[0x7c];
     CConfigOptionsDefaultsDef& operator=(const CConfigOptionsDefaultsDef& other) { std::memcpy(_body, other._body, sizeof(_body)); ++g_assigns; return *this; }
 };

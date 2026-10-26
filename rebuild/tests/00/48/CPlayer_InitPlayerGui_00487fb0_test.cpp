@@ -12,7 +12,7 @@
 // null test and before the pushes; locals declared before `new` load before the call, plain arguments interleave.
 #include "engine/CPlayer.h"
 
-struct CGraphicDataBank;
+class CGraphicDataBank;
 
 struct CMainGameComponentBank {
     unsigned char     _pad00[0x161c8];
@@ -23,7 +23,7 @@ struct CPlayerManagerCalls {
     long GetMainPlayerNumber();                             // 0x00449700
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _body[0x338];
     CPlayerGui(CMainGameComponent* component, CWorld* world, CGamePlayerInterface* playerInterface,
                CPlayerManager* playerManager, CGraphicDataBank* bank);   // 0x0043B570

@@ -10,7 +10,7 @@
 // Shape: the two 2D offsets are C3DVector differences (the hero one is spilled, giving retail's 0x28 frame); the night
 //   branch comes first; the show toggle calls GetCreature() twice; the day branch uses the out-parameter GetInterface
 //   (component left in eax).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -51,7 +51,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 unsigned long __fastcall GFROR13(unsigned long value);    // 0x00497890
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -59,7 +59,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float Get2DLengthSquared() const { return Y * Y + X * X; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v0a(); virtual void v0b();
     virtual void v0c(); virtual void v0d(); virtual void v0e(); virtual void v0f(); virtual void v10(); virtual void v11();
@@ -101,28 +101,28 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad94[0xe8 - 0x94];
     C3DVector InitialPos;                       // +0xe8
 };
-struct CTCLight {
+class CTCLight { public:
     void SetActive(bool active);                // 0x006412B0
 };
-struct CPlayer { CThing* GetHeroCreature();     // 0x00487DC0
+class CPlayer { public: CThing* GetHeroCreature();     // 0x00487DC0
 };
-struct CPlayerManager { CPlayer* GetMainPlayer();   // 0x00449970
+class CPlayerManager { public: CPlayer* GetMainPlayer();   // 0x00449970
 };
-struct CEnvironment { bool IsDaytime();         // 0x006BB2C0
+class CEnvironment { public: bool IsDaytime();         // 0x006BB2C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x1c];
     CEnvironment* PEnvironment;                 // +0x1c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

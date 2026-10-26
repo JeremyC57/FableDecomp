@@ -8,7 +8,7 @@
 // Shape: `if (alpha < 0.0f) alpha = 0.0f; else if (alpha > 1.0f) alpha = 1.0f;` (`fcom 0.0 ; test ah,5 ; jp`, then
 //   `fcom 1.0 ; test ah,41h ; jne`), then `LastAlpha = CurrentAlpha; CurrentAlpha = alpha;` -- VC7.1 duplicates the two
 //   stores into the zero arm (fstp st(0) ; fld 0.0) and lets the 1.0 arm fall into the shared tail.
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
 };

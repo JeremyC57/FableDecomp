@@ -3,11 +3,11 @@
 // Callees: CDataOutputStream::WriteCBYTE(char) @ 0x00993E50 (three times). Virtual (vtable 0x01230BCC).
 // Shape: each 1-bit member is widened with `xor eax,eax ; mov al,[esi+24h]`, shifted to bit 0 and masked with
 // `and eax,0FFFFFF01h` (the char conversion of a bitfield), then pushed; the stream stays in edi.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteCBYTE(char value);                   // 0x00993E50
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char       _body[0x20];               // +0x04 .. +0x24: CResource links, PDefManager, GlobalIndex
     unsigned char       Setup : 1;                 // +0x24 bit 0

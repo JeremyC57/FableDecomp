@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern void __cdecl engine_operator_delete(void *p);
 
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     void *vptr;
     void real_dtor();
     void * CHeroMarriageDef_scalar_deleting_destructor(unsigned int flags);

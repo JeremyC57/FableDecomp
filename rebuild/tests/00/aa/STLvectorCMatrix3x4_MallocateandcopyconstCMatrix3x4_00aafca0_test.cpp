@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CMatrix3x4 { float m_row[3][4]; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 
 static CMatrix3x4* allocate_and_copy(unsigned int n, const CMatrix3x4* first, const CMatrix3x4* last)
 {

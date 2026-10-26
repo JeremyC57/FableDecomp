@@ -6,7 +6,7 @@
 // Shape: the output array kept in ebx; the element count (`/12` via 0x2AAAAAAB) is re-derived from first/last every pass
 // with an unsigned index (`jb`), the loop entered only for a non-empty array; each element is reached as
 // `*(begin() + i)` (the STLport operator[] form) and the centre subtracted component by component; `ret 4`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector& operator-=(const C3DVector& other)
     {
@@ -18,7 +18,7 @@ struct C3DVector {
 };
 
 template <class T>
-struct CArray {                                    // retail CArray<T>: first / last / end
+class CArray { public:                                    // retail CArray<T>: first / last / end
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -28,7 +28,7 @@ struct CArray {                                    // retail CArray<T>: first / 
     CArray& operator=(const CArray& other);        // 0x0075B8D0 for C3DVector
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char      _pad00[0x3c];
     CArray<C3DVector>  TotalPoints;                // +0x3c
     unsigned char      _pad48[0xa8 - 0x48];

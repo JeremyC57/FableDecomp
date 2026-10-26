@@ -7,7 +7,7 @@ struct SCountBlock {
     long m_references; void (*m_pfnDestroy)(void*); void* m_pObject;
     SCountBlock(void* o, void (*d)(void*)) : m_references(1), m_pfnDestroy(d), m_pObject(o) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o, void (*d)(void*)) : m_pObject(o) { if (o) m_pCount = new SCountBlock(o, d); else m_pCount = 0; }
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }

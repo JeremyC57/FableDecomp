@@ -5,7 +5,7 @@
 // virtual dispatch is expressed through a local interface view of the same vtable.
 
 #include "engine/CScriptThing.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString;
+class CCharString;
 
 struct CScriptThingVirtuals {
     virtual void v0();

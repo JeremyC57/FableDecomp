@@ -7,7 +7,7 @@
 // explicit __fastcall with a dummy edx slot so the index stays a STACK arg
 // (matching __fastcall's ABI: this in ecx, first real arg on the stack).
 struct MapEntry { char pad[0x24]; unsigned char used; char pad2[0x48-0x25]; };
-struct CWorldMap { char pad[0x20]; MapEntry* maps; };
+class CWorldMap { public: char pad[0x20]; MapEntry* maps; };
 unsigned char __fastcall IsMapUsed(CWorldMap* self, int /*edx*/, int index)
 {
     return self->maps[index].used;

@@ -3,9 +3,9 @@
 #include <new>
 
 static long g_removed = -1; static int g_removes;
-struct CPlayer { long m_mode; long GetCurrentMode() { return m_mode; } void RemoveMode(long mode) { g_removed = mode; ++g_removes; } };
-struct CPlayerManager { CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } };
-struct CGameScriptInterface { void* vt; void* a; void* b; void* c; void* d; CPlayerManager* PlayerManager;
+class CPlayer { public: long m_mode; long GetCurrentMode() { return m_mode; } void RemoveMode(long mode) { g_removed = mode; ++g_removes; } };
+class CPlayerManager { public: CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } };
+class CGameScriptInterface { public: void* vt; void* a; void* b; void* c; void* d; CPlayerManager* PlayerManager;
     void HeroStopDigging() { CPlayer* player = PlayerManager->GetMainPlayer(); long mode = player->GetCurrentMode(); if (mode == 0x1e) player->RemoveMode(mode); } };
 int main()
 {

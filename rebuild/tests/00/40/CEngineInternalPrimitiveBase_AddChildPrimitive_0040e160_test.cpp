@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveBase { unsigned char pad[4]; };
+class CEngineInternalPrimitiveBase { public: unsigned char pad[4]; };
 
 unsigned long __fastcall CEngineInternalPrimitiveBase_AddChildPrimitive(CEngineInternalPrimitiveBase* self)
 {

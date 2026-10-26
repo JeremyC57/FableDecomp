@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 static const bool g_is32 = sizeof(void*) == 4 && sizeof(long) == 4;   // the layout checks hold for the 32-bit VC7.1 build
-struct CProcessedInput { long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; };
-struct CInputProcessManager { virtual void v00() { } unsigned char InputProcessList[0x10]; CProcessedInput QueuedProcessedInputs[10]; long NoQueuedProcessedInputs;
+class CProcessedInput { public: long Player; long Type; unsigned char GameEvents[0xa0]; unsigned char NoGameEvents; unsigned char _pad[3]; long Priority; };
+class CInputProcessManager { public: virtual void v00() { } unsigned char InputProcessList[0x10]; CProcessedInput QueuedProcessedInputs[10]; long NoQueuedProcessedInputs;
     void AddQueuedProcessedInput(const CProcessedInput& input) { if (NoQueuedProcessedInputs >= 0 && NoQueuedProcessedInputs < 10) { QueuedProcessedInputs[NoQueuedProcessedInputs] = input; ++NoQueuedProcessedInputs; } } };
 int main()
 {

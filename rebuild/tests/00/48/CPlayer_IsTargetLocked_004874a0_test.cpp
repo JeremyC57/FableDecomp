@@ -1,7 +1,7 @@
 // behaviour test for 0x004874A0
 #include <stdio.h>
 #include <string.h>
-struct CPlayer { unsigned char _pad[0x20a]; bool ZTargeting; bool ProjectileTargetLocked; bool RightTriggerTargetLocked; };
+class CPlayer { public: unsigned char _pad[0x20a]; bool ZTargeting; bool ProjectileTargetLocked; bool RightTriggerTargetLocked; };
 struct CPlayer_Methods : CPlayer {
     bool IsTargetLocked() const;
 };

@@ -1,12 +1,12 @@
 // Behaviour test for 0x006C5800 CTCHeroOpinionDeedLog::FindCriminalDeed(EOpinionDeedType, const CThing*).
 #include <cstdio>
 #include <map>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct IPtr { const CThing* item; const CThing* GetPItem() const { return item; } };
-struct COpinionDeed {
+class COpinionDeed { public:
     int DeedType; long DeedHandle; IPtr PTarget; bool IsCrime; long ExtraData;
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     std::map<long, COpinionDeed*> OpinionDeedMap;
     long FindWitnessDeed(long deedHandle) {
         for (std::map<long, COpinionDeed*>::iterator it = OpinionDeedMap.begin(); it != OpinionDeedMap.end(); ++it) {

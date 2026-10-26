@@ -10,7 +10,7 @@
 // the user copy constructor the copy is a block copy (`inc ecx` base, 97 v 95).
 // Layout: Ego_r.pdb CDefendingCombatantInfo::CProng (0x1c, packed): Blocked +0, Prong (C3DVector) +1, ProngBlockageTimer +0x10,
 // POccupier +0x14. No engine header; modelled locally (the nested class is written at namespace scope).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

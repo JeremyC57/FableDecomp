@@ -3,7 +3,7 @@
 // Callees: ComputeGlowColor @ 0x00B5F8C0 (on `this`, ecx passed straight through), CaptureBackBuffer @ 0x00B5FAB0, ApplyGlow @ 0x00B60F70, ShowGlowTexture @ 0x00B61690,
 // the finish @ 0x00B5EC90 (the manifest label "CCombatAbilityData::TransferBinaryOut" is propagated); all on `this` (re-loaded from esi). Shape: the two flag
 // bytes are tested through al; the argument is unused (`ret 4`).
-struct CEngineScreenEffectGlowRenderer {
+class CEngineScreenEffectGlowRenderer { public:
     unsigned char _pad[8];
     bool          m_enabled;                       // +0x08
     unsigned char _pad09[3];

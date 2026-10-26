@@ -2,7 +2,7 @@
 // then string length 5, cage radius and height offset 2, the three stick/target flags on.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 
 struct CTCCameraPointShapeActivationBase {
@@ -10,7 +10,7 @@ struct CTCCameraPointShapeActivationBase {
     CTCCameraPointShapeActivationBase(CThing* parent) { g_baseParent = parent; }
 };
 
-struct CTCCameraPointGeneralCase : CTCCameraPointShapeActivationBase {
+class CTCCameraPointGeneralCase : public CTCCameraPointShapeActivationBase { public:
     float CameraStringLength;
     float CameraCageRadius;
     float CameraHeightOffset;

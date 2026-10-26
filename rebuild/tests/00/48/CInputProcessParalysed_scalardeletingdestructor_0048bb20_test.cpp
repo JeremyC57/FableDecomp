@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessParalysed {
+class CInputProcessParalysed { public:
     void* vftable;
     int destroyed;
 };

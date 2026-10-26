@@ -8,7 +8,7 @@
 // then one `mov eax,[eax]`), and the upper bound is a namespace-scope `const long` bound to a const reference, which is why
 // retail takes its address (0x0126D7CC) instead of an immediate.
 // Local model: no engine header exists for CTCGuard; only FrameLastReceivedApology (+0x4c) is read.
-struct CThing;
+class CThing;
 long __fastcall GetCurrentFrame();                         // 0x0049D870
 extern long g_FramesPerSecond;                             // 0x01375550
 const long MAX_APOLOGY_SECONDS = 10;                       // 0x0126D7CC (.rdata: bound to a const reference)
@@ -18,7 +18,7 @@ template<class T> inline const T& Clamp(const T& value, const T& low, const T& h
     return (value < low) ? low : ((high < value) ? high : value);
 }
 
-struct CTCGuard {
+class CTCGuard { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[0x44];

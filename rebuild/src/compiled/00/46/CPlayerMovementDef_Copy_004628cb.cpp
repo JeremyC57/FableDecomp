@@ -5,7 +5,7 @@
 // Model as a tail-call: the compiler emits exactly one `jmp rel32` for the
 // forwarded call, matching the retail thunk byte-for-byte (post-mask).
 
-struct CPlayerMovementDef;
+class CPlayerMovementDef;
 
 // Real target of the thunk (address relocation-masked in parity).
 extern void __fastcall CPlayerMovementDef_Copy_impl(CPlayerMovementDef* thisptr, CPlayerMovementDef* src);

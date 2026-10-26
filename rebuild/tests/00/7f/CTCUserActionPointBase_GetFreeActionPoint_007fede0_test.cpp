@@ -24,9 +24,9 @@
 //   pointer in a named local (edi) and the value as a named copy; the owner is a named GetPItem before the virtual call;
 //   the overflow insert is a same-TU stand-in as in the landed sibling.
 class CThing;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 
 #include <stdlib.h>
 #include <string.h>
@@ -197,7 +197,7 @@ bool CTCUserActionPointBase::GetFreeActionPoint(CThing& thing, C3DVector& positi
 
 // ---- behaviour test stubs ----
 class CThing { public: int id; };
-struct CBaseObject { int dummy; };
+class CBaseObject { public: int dummy; };
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("CHECK failed line %d\n", __LINE__); g_fail = 1; } } while (0)
 static unsigned long g_rand[8]; static int g_randPos = 0;

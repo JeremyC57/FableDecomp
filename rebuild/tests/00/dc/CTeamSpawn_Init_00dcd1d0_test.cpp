@@ -7,13 +7,13 @@
 #include <string>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* t = "", long = -1) : s(t) {}
     CCharString& operator=(const char* t) { s = t; return *this; }
     bool operator==(const char* t) const { return s == t; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int id; CCharString name;
     CScriptThing(int i = 0, const char* n = "") : id(i), name(n) { ++g_live; }
     CScriptThing(const CScriptThing& o) : id(o.id), name(o.name) { ++g_live; }
@@ -21,11 +21,11 @@ struct CScriptThing {
     ~CScriptThing() { --g_live; }
     const CCharString& GetName() const { return name; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetRandomThingWithScriptName(const CCharString& n) const
     { return n == "EitherTeamSpawn" ? CScriptThing(77, "EitherTeamSpawn") : CScriptThing(); }
 };
-struct CScriptDef { long GuardReinforcementsYourTeam, GuardReinforcementsEnemyTeam; };
+class CScriptDef { public: long GuardReinforcementsYourTeam, GuardReinforcementsEnemyTeam; };
 static CScriptDef g_def = { 11, 22 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CQ_OrchardFarmRaidScript { long HeroTeam; };

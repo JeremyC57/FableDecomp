@@ -10,7 +10,7 @@
 // Shape: the entry is a named local; the inline push_back captures the head node BEFORE _Buynode (edi survives the
 // call) and links before it; the handle (&back()) stays in esi for the return while the set insert takes it by
 // reference from the dead `time` argument slot -- the by-value parameter of a __forceinline AddDisplacementKey.
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 extern const long g_FramesPerSecond;                 // 0x01375550
 

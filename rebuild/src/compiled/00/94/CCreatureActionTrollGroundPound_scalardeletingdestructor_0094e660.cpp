@@ -1,4 +1,4 @@
-struct CCreatureAction_TrollGroundPound {
+class CCreatureAction_TrollGroundPound { public:
     void* vftable;
 };
 

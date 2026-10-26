@@ -14,8 +14,8 @@ static long Compare(const char* a, const char* b)
     }
 }
 
-struct CCharStringData { const char* Chars; unsigned long Length; };
-struct CCharString {
+class CCharStringData { public: const char* Chars; unsigned long Length; };
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {

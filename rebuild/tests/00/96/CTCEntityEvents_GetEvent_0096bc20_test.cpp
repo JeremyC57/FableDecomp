@@ -2,10 +2,10 @@
 // (walking the STLport list in reverse); nothing when no event of that type passes; the counted-pointer copies leave the counts unchanged.
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 static int g_deleted = 0;
 void __fastcall KillEvent(void*) { ++g_deleted; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
@@ -37,15 +37,15 @@ struct CEventList {
     reverse_iterator rend() const { return reverse_iterator(begin()); }
 };
 namespace NEntityEvents {
-struct CIsEventCreatedAfter { long WorldFrame; bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; } };
-struct CEventHitBySpecialAbility : CEventBase { enum { EventType = 0x1b }; bool Explosion; };
+class CIsEventCreatedAfter { public: long WorldFrame; bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; } };
+class CEventHitBySpecialAbility : public CEventBase { public: enum { EventType = 0x1b }; bool Explosion; };
 
 }
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A& First; const B& Second;
     template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
 };
-struct CTCEntityEvents { unsigned char pad[0xc]; void* Events; };
+class CTCEntityEvents { public: unsigned char pad[0xc]; void* Events; };
 struct CTCEntityEventsMethods : CTCEntityEvents {
     const CEventList& GetEvents() const { return *(const CEventList*)Events; }
     template <class TEvent, class TFilter> bool GetEvent(TEvent** out, const TFilter& filter) const

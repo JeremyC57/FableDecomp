@@ -16,25 +16,25 @@
 // emitter is `T* p = 0; if (HasTC) p = PTCDriver;` on one GetPItem result (landed CTCResurrectionItem::OnItemUsed 0x007F04C0
 // model); the opener flags are set through an inline COpenCloseHelper member (written directly they sink below the
 // SetForceFrameUpdate argument push); IS_THING_ALIVE is `__forceinline`.
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct CWideString {
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -44,12 +44,12 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CChestDef : CDefPointeeBase {
+class CChestDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x25 - 0x08];
     bool          PersistOnOpening;                     // +0x25
     long          OpenParticleEffect;                   // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CDefPointeeBase* FindSubDef();
     bool GetSubDef(CDefPointer<CChestDef>* out);        // 0x0074F7D0
 };
@@ -119,7 +119,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)

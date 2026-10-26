@@ -10,7 +10,7 @@ namespace N_00c3c5c0 { struct CScriptDefinitionManagerBase {
     ~CScriptDefinitionManagerBase();                          // 0x00C3C5C0
 }; } using N_00c3c5c0::CScriptDefinitionManagerBase;
 
-struct CScriptDefinitionManager : CScriptDefinitionManagerBase {                 // vtable 0x012B4F74
+class CScriptDefinitionManager : public CScriptDefinitionManagerBase { public:                 // vtable 0x012B4F74
     void Shutdown_00c3c450();                       // 0x00C3C450
     ~CScriptDefinitionManager();
 };

@@ -39,7 +39,7 @@ struct CLockedRect {
     long Pitch;                                             // +0x08
     unsigned char* Bits;                                    // +0x0c
 };
-struct CTexture {
+class CTexture { public:
     CLockedRect Lock(long level, unsigned long flags);      // 0x009FA450
     void Unlock(long level);                                // 0x009F9DE0
 };

@@ -13,13 +13,13 @@
 // destroyed after the base call in reverse order and the vtable store follows them.
 // No engine header used (the PDB headers flatten the base); modelled locally (retail CCreatureActionBase is 0xa8 bytes).
 #include "fable_string.h"
-struct CAnimationEntry;
-struct CSoundPair {                         // two sound ids (user constructor: returned through a hidden pointer)
+class CAnimationEntry;
+class CSoundPair { public:                         // two sound ids (user constructor: returned through a hidden pointer)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
@@ -36,7 +36,7 @@ struct CThingCreatureBase {
 };
 CAnimationEntry* __fastcall GetTableAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -44,7 +44,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
 
 static inline CCharString AnimationName() { return CCharString("STANDARD_DIE", -1); }
 static inline CCharString SoundName() { return CCharString("DEATH", -1); }
-struct CCreatureAction_Die : CCreatureActionBase {             // vtable 0x01287FC4
+class CCreatureAction_Die : public CCreatureActionBase { public:             // vtable 0x01287FC4
     bool Violent;                           // +0xa8
     virtual void v00();
     CCreatureAction_Die(CThingCreatureBase* owner, bool violent);

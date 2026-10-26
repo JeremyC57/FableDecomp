@@ -11,10 +11,10 @@
 // idles, bails out through Terminate, and computes the elapsed frames (stored into the dead parameter slot for
 // the fild) before the `fraction < 0.995f || elapsed < wait` test.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -89,12 +89,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -121,12 +121,12 @@ struct CAIStateGroupBase {
 // temporaries live in the caller's frame until the call returns; the empty one-byte filter has a user
 // constructor so it takes no store and sits in the high byte of a slot), and FindMostRecentMessage takes the
 // bound filter by const reference (one `lea ; push`) -- the landed 0x00910D50 / 0x00939D70 model.
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_HasExtraData {
+class CMessageEventFilter_HasExtraData { public:
     CMessageEventFilter_HasExtraData() { }
 };
 
@@ -135,18 +135,18 @@ struct CMessageEventFilter_IsForThing {
     CMessageEventFilter_IsForThing(CThing* thing) : m_pThing(thing) { }
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF2B0 (0x006AF2B0 / 0x006AF290 twins, out of line, `ret 4`)
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -156,9 +156,9 @@ template<class A, class B, class C> struct CFilter_Bind3 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(ab, c); }
 
-struct CMessageEvent;
-struct CMessageEventManager;
-struct CWorld {
+class CMessageEvent;
+class CMessageEventManager;
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
@@ -171,8 +171,8 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     float Length() const { return (float)sqrt(x * x + y * y); }
 };
@@ -189,19 +189,19 @@ struct CDefPointee {
     void Release() const { if (--m_refCount == 0) Delete(); }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;                                  // +0x00
     CDefPointer() : Object(0) { }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CJackDragonDef : CDefPointee {
+class CJackDragonDef : public CDefPointee { public:
     unsigned char _pad08[0x5c];
     float HoverRange;                           // +0x64
 };
 
-struct CDefClassBase : CDefPointee {
+class CDefClassBase : public CDefPointee { public:
     bool GetSubDef(CDefPointer<const CJackDragonDef>* out);    // 0x008E3300 GetSubDef<...>
 };
 

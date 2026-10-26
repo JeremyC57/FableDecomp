@@ -48,7 +48,7 @@ struct CTCMinionTimer {                         // interface 0x9B component
     long  Target;                               // +0x18
 };
 #pragma pack(push, 1)
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     void* __vfptr;                              // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     unsigned char _base08[4];

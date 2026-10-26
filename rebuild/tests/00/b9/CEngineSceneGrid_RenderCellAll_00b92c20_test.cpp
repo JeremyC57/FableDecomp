@@ -1,21 +1,21 @@
 // CEngineSceneGrid::RenderCellAll -- mask-guarded primitive dispatch then recurse four child cells and mark rendered. Retail00b92c20 complete237bytes. Uses shared native primitive/typeinfo headers; no scene-grid/cell/stats headers. Layout matches landed GetCellRenderMask B91DC0. Direct calleeB91DC0 and recursiveB92C20, virtualmanager slot7RenderPrimitive. Globals1436e84typeinfo/143b8d8frame.
 #ifndef _MSC_VER
-struct CEngineInternalPrimitiveBase {void* __vftable;unsigned char _pad_0x04[sizeof(long)],_pad_0x08[sizeof(long)];unsigned long EnginePrimitiveFlags;float AlphaMipBias,FadeDistance_FadeBeginDistance,FadeDistance_MaxDrawDistance;unsigned long OcclusionLayerBitMask;void* GridCell;unsigned char GridPos[4];unsigned char Other[8];unsigned long RenderLayerMask;unsigned char PostRenderEnable[2];unsigned short LastFrameRendered;CEngineInternalPrimitiveBase* NextPrimitive;void* RefPrimitive;CEngineInternalPrimitiveBase* NextLayerMask;void* RefLayerMask;};
-struct CEnginePrimitiveManager;struct CEnginePrimitiveTypeInfo {void* Head;CEnginePrimitiveManager* PrimitiveManagers[47];};
+class CEngineInternalPrimitiveBase { public:void* __vftable;unsigned char _pad_0x04[sizeof(long)],_pad_0x08[sizeof(long)];unsigned long EnginePrimitiveFlags;float AlphaMipBias,FadeDistance_FadeBeginDistance,FadeDistance_MaxDrawDistance;unsigned long OcclusionLayerBitMask;void* GridCell;unsigned char GridPos[4];unsigned char Other[8];unsigned long RenderLayerMask;unsigned char PostRenderEnable[2];unsigned short LastFrameRendered;CEngineInternalPrimitiveBase* NextPrimitive;void* RefPrimitive;CEngineInternalPrimitiveBase* NextLayerMask;void* RefLayerMask;};
+class CEnginePrimitiveManager;class CEnginePrimitiveTypeInfo { public:void* Head;CEnginePrimitiveManager* PrimitiveManagers[47];};
 #else
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
 #endif
 enum EEngineRenderLayer {ENGINE_RENDER_LAYER_DEFAULT=0};
 enum ERendered {RENDERED_NOTHING=0,RENDERED_SUB_PRIMITIVES=2};
-struct CEngineSubPrimitiveChain {void* First;void* Last;CEngineSubPrimitiveChain():First(0),Last(0){}};
-struct CEnginePrimitiveManager {virtual void v00();virtual void v01();virtual void v02();virtual void v03();virtual void v04();virtual void v05();virtual void v06();virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);};
+class CEngineSubPrimitiveChain { public:void* First;void* Last;CEngineSubPrimitiveChain():First(0),Last(0){}};
+class CEnginePrimitiveManager { public:virtual void v00();virtual void v01();virtual void v02();virtual void v03();virtual void v04();virtual void v05();virtual void v06();virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase&,EEngineRenderLayer,CEngineSubPrimitiveChain&);};
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo; //01436e84
 extern unsigned short g_engineFrameNumber; //0143b8d8
-struct CEngineSceneRenderStats;
-struct CEngineSceneGridCell {CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;unsigned char BoundsAndGroups[0x2c];unsigned long LocalCount,TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;};
-template<class T>struct CArray {T* Data;long Size,Capacity;};
-struct CEngineSceneGrid {unsigned long Base,Level;CEngineSceneGrid *LevelUp,*LevelDown;unsigned long Size;CArray<CEngineSceneGridCell*> GridCells;
+class CEngineSceneRenderStats;
+class CEngineSceneGridCell { public:CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;unsigned char BoundsAndGroups[0x2c];unsigned long LocalCount,TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;};
+template<class T>class CArray { public:T* Data;long Size,Capacity;};
+class CEngineSceneGrid { public:unsigned long Base,Level;CEngineSceneGrid *LevelUp,*LevelDown;unsigned long Size;CArray<CEngineSceneGridCell*> GridCells;
  unsigned long GetCellRenderMask(unsigned long,unsigned long); //00b91dc0
  void RenderCellAll(unsigned long x,unsigned long y,EEngineRenderLayer layer,CEngineSceneRenderStats& stats);
 };
@@ -38,7 +38,7 @@ void CEngineSceneGrid::RenderCellAll(unsigned long x,unsigned long y,EEngineRend
 #include <cstdio>
 #include <cstring>
 #include <cstddef>
-struct CEngineSceneRenderStats {unsigned long Guard;};
+class CEngineSceneRenderStats { public:unsigned long Guard;};
 CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo=0;unsigned short g_engineFrameNumber=0;
 static int fail=0,renderCount=0,maskCount=0,ids[20],managerIds[20];static unsigned long coords[20];static CEngineInternalPrimitiveBase* primitives=0;static CEnginePrimitiveManager* expectedManagers[2];static CEnginePrimitiveTypeInfo* replacement=0;
 static void check(bool b){if(!b)++fail;}

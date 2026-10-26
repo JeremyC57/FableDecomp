@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_created = 0, g_lock = 0, g_unlock = 0; static long g_size = 0; static unsigned char g_buf[256]; static bool g_fail = false;
-struct CMemoryAllocator { void* InternalAllocate(long size, unsigned long, bool) { g_size = size; return g_fail ? 0 : g_buf + 1; } };
+class CMemoryAllocator { public: void* InternalAllocate(long size, unsigned long, bool) { g_size = size; return g_fail ? 0 : g_buf + 1; } };
 static CMemoryAllocator g_a; static CMemoryAllocator* g_alloc = 0;
 static void Create() { ++g_created; g_alloc = &g_a; } static void Enter() { ++g_lock; } static void Leave() { ++g_unlock; }
 struct CMM { void* AllocVirtualAligned(long size, unsigned long alignment, long) {

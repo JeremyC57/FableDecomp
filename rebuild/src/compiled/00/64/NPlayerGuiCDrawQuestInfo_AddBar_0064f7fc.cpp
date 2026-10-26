@@ -12,7 +12,7 @@
 // Shape: as the timer/counter adders (0x0064F93F / 0x0064F9A7): frame-pointer size TU, both sprite lookups in named locals
 // (edi, ebx) before the allocation, null-checked placement constructor with three float arguments copied through the x87,
 // by-value base pointer converted in the argument area, the ID read through the local before its destructor; `ret 1Ch`.
-struct CCharString { char* m_pData; };            // one pointer
+class CCharString { public: char* m_pData; };            // one pointer
 
 extern void* __cdecl operator_new_shim(unsigned int);   // (unused; operator new @ 0x00BFEA1A is the global one)
 
@@ -50,7 +50,7 @@ struct CQuestInfoElementBar : CQuestInfoElement {  // retail 0x58 bytes, vtable 
                          long graphic1, long graphic2, float scale);   // 0x00656B1B
 };
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     long GetScriptSpriteBySymbol(const CCharString& symbol);           // 0x0064A37B
     void AddElement(CCountedPointer<CQuestInfoElement> element);       // 0x0064A3ED
     long AddBar(float value, float maxValue, const CRGBColour& colour, const CRGBColour& fadeColour,

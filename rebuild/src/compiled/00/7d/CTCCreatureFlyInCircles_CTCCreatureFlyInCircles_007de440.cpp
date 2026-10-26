@@ -11,11 +11,11 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -35,11 +35,11 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // no destructor of its
 };
 #pragma pack(pop)
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     C3DVector* m_pControlPoints;                   // +0x00 CArray<C3DVector> ControlPoints
     long m_count;                                  // +0x04
     long m_capacity;                               // +0x08

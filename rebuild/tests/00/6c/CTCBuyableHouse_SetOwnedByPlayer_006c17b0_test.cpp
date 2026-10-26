@@ -3,10 +3,10 @@
 #include <cstdio>
 
 static long g_frame = 77; static int g_refresh = 0, g_evict = 0, g_add = 0, g_remove = 0, g_kill = 0, g_create = 0;
-struct CThing { bool Dead; bool persisted; void Kill(bool) { ++g_kill; } };
-struct CTCHeroStats { void AddHousePosition(long) { ++g_add; } void RemoveHousePosition(long) { ++g_remove; } };
-struct CBuyableHouseDef { bool EvictOnSale; };
-struct CTCBuyableHouse {
+class CThing { public: bool Dead; bool persisted; void Kill(bool) { ++g_kill; } };
+class CTCHeroStats { public: void AddHousePosition(long) { ++g_add; } void RemoveHousePosition(long) { ++g_remove; } };
+class CBuyableHouseDef { public: bool EvictOnSale; };
+class CTCBuyableHouse { public:
     CThing* Thing; CBuyableHouseDef* PDef; bool OwnedByPlayer; CThing* MainSignPost; long Frame; bool needsPost;
     void Evict() { ++g_evict; }
     void SetOwnedByPlayer(CThing* hero, CTCHeroStats* stats, bool owned)

@@ -16,11 +16,11 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     C3DVector GetMapwhoPosition() const;         // 0x006AFCB0
 };
-struct CTCMapwho {
+class CTCMapwho { public:
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                  // +0x50 bit 0
     void PlaceInMapwho(const C3DVector& position);   // 0x0071A710

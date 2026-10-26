@@ -7,9 +7,9 @@
 //   (0x24 lower, like PCreatureInteraction +0x12c vs PDB +0x150), so the class is modelled locally.
 // Shape: boost::scoped_ptr::reset inlined on both arms (old pointer read, new stored, old deleted); the two
 //   deletes share one tail. Active with a reorienter already present returns at once.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThingBodyReorienter {               // 0x28 bytes
+class CThingBodyReorienter { public:               // 0x28 bytes
     unsigned char _body[0x28];
     CThingBodyReorienter(CThingCreatureBase* owner);    // 0x00863750
     ~CThingBodyReorienter();                            // 0x00863790
@@ -29,7 +29,7 @@ template<class T> struct scoped_ptr {
     }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x140];
     scoped_ptr<CThingBodyReorienter> BodyReorienter;    // +0x140
     void SetBodyReorienterActive(bool active);

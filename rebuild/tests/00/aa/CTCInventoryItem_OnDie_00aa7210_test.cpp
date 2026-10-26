@@ -15,8 +15,8 @@ struct CTCInventoryItemBase
     void BaseOnDie();
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase
-{
+class CTCInventoryItem : public CTCInventoryItemBase
+{ public:
     char pad0[0x10];
     void* PInventory;
     void OnDie();

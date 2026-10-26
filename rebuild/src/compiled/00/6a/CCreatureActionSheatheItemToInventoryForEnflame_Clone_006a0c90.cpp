@@ -7,13 +7,13 @@
 // Virtual clone of a class that adds no data to its base: the implicit copy constructor is
 // inlined as the base copy constructor @ 0x006A0C50 plus this class's vtable store
 // (0x0125C95C, named through rtti-vtables.tsv). sizeof = 0xb0. One of 196 bodies of this shape.
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     virtual void v00();
     unsigned char _body[0xb0 - 4];    // sizeof(CScriptGameResourceObjectScriptedThingBase) = sizeof(CCreatureAction_SheatheItemToInventory_ForEnflame) = 0xb0
     CScriptGameResourceObjectScriptedThingBase(const CScriptGameResourceObjectScriptedThingBase& other);     // 0x006A0C50
 };
 
-struct CCreatureAction_SheatheItemToInventory_ForEnflame : CScriptGameResourceObjectScriptedThingBase {
+class CCreatureAction_SheatheItemToInventory_ForEnflame : public CScriptGameResourceObjectScriptedThingBase { public:
     virtual void v00();                    // own vtable; copy constructor implicit
     CScriptGameResourceObjectScriptedThingBase* Clone();
 };

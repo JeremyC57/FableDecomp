@@ -5,7 +5,7 @@ struct Faction {
 struct FactionMgr {
     Faction* GetFaction(int id);
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x54];
     FactionMgr* mgr; // +0x54
 };

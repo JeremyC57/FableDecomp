@@ -19,15 +19,15 @@
 #include "engine/CEngineInternalPrimitiveBase.h"
 
 extern const float g_fUVOffsetEpsilon;               // 0x0129BA3C (0.0001f)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     float GetLengthSquared() const { return X * X + Y * Y; }
     bool IsNonZero() const { return GetLengthSquared() > g_fUVOffsetEpsilon * g_fUVOffsetEpsilon; }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct C2DExtentsI { long X, Y; };
-struct CTexture {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class C2DExtentsI { public: long X, Y; };
+class CTexture { public:
     C2DExtentsI GetDimensions(unsigned long level);   // 0x009F9DB0
 };
 class CEnginePrimitive {
@@ -57,13 +57,13 @@ struct CGraphicHeader {
     unsigned short FrameWidth;      // +0x06
     unsigned short FrameHeight;     // +0x08
 };
-struct CGraphicInfo;
-struct CGraphicInfoFrame {          // 16 bytes
+class CGraphicInfo;
+class CGraphicInfoFrame { public:          // 16 bytes
     unsigned char _pad[0xc];
     CGraphicInfo* GraphicInfo;      // +0x0c
     void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
 };
-struct CGraphicInfo {               // 0x2c bytes
+class CGraphicInfo { public:               // 0x2c bytes
     CGraphicHeader     Header;
     unsigned char      _pad[0x28 - sizeof(CGraphicHeader)];
     CGraphicInfoFrame* Frames;      // +0x28
@@ -88,7 +88,7 @@ struct CEngineGlobal_01436e98 {
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;   // 0x01436E98
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitive2DSprite : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitive2DSprite : public CEngineInternalPrimitiveBase { public:
     C2DBoxF       ClipBox;          // +0x48
     long          Layer;            // +0x58
     unsigned long BankIndex;        // +0x5c

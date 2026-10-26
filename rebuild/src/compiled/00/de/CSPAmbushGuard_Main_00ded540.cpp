@@ -11,12 +11,12 @@
 // Layout: the entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_SecretPassageScript*), PMasterData +0x18.
 // Shape: the landed CUndeadRisingZombieAttacker::Main (0x00E0CFF0) prelude and scripted-thing handle; the handle is
 //   released again before its destructor at the end; the line text is passed straight to the `const CCharString&`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing {                                    // 12 bytes
+class CScriptThing { public:                                    // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing();                                     // 0x004AA840
@@ -32,12 +32,12 @@ struct CCountedPointerWords {                            // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
+class CBaseObject { public:                                     // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                         // +0x04
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -45,7 +45,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                      // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)

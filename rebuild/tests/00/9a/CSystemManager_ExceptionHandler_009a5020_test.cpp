@@ -6,7 +6,7 @@
 
 static char g_SystemExceptionMessage[256];
 
-struct CSystemManager {
+class CSystemManager { public:
     bool Valid;
     bool ExclusiveMode;
     bool IsValid() const { return Valid; }

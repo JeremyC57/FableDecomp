@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static long g_frame = 100;
-struct CTCWife {
+class CTCWife { public:
     long married; bool sex; bool willing;
     bool Get(const char*& text) const {
         if (married <= g_frame) { if (sex) { text = "TEXT_GUI_WIFE_GO_TO_BED"; return true; } }

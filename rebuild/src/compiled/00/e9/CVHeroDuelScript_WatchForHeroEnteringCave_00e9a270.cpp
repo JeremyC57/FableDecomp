@@ -11,19 +11,19 @@
 //   flag); the cutscene follows the landed CQ_MinionCampScript::DoMission 0x00DA0230 template (`game` local in edi
 //   for the pause pair); each arm's terminate exit unpauses first, and VC7.1 tail-merges the two RunCutsceneMacro calls.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, MissionOver +0x4a, DuelStarted +0x4c, ThunderEnteredCaveFirst +0x4f.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -51,17 +51,17 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass {                                      // vtable 0x01231710
+class CBaseClass { public:                                      // vtable 0x01231710
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 struct CScriptThingImp {                                 // the game-side thing behind a CScriptThing
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;        // slot 6 (+0x18)
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04 Data, +0x08 Info
     CScriptThing() {}
     virtual ~CScriptThing();                             // 0x004AA840
@@ -81,11 +81,11 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
         return *this;
     }
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                    // 0x00CB7940
 };
-struct CScriptGameResourceObjectScriptedThingBase {     // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0127094C, 0x10 bytes
     virtual void h000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
@@ -94,7 +94,7 @@ struct CScriptGameResourceObjectScriptedThingBase {     // vtable 0x0127094C, 0x
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
-struct CScriptGameResourceObjectMovieBase {             // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
     virtual void m000();
     unsigned char _body[0xc];
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
@@ -111,7 +111,7 @@ struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 typedef long ECutsceneBehaviour;
-struct CGameScriptInterface {                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame(void) const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(CScriptThing const &, CScriptGameResourceObjectScriptedThingBase &, EScriptAIPriority);   // slot 8 (+0x20) 0x0089B5B0

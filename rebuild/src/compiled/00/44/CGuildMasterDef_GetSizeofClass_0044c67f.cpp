@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CGuildMasterDef { int _pad; };
+class CGuildMasterDef { public: int _pad; };
 
 unsigned long __fastcall CGuildMasterDef_GetSizeofClass(const CGuildMasterDef* self)
 {

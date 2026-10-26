@@ -6,7 +6,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CMap { unsigned char _pad[0x1d30]; u64 m_nextThingUID; u64 AllocateMapThingUID() { return m_nextThingUID++; } };
+class CMap { public: unsigned char _pad[0x1d30]; u64 m_nextThingUID; u64 AllocateMapThingUID() { return m_nextThingUID++; } };
 
 int main()
 {

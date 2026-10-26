@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void* pGui;
     void* pVar;
     int   pad8;

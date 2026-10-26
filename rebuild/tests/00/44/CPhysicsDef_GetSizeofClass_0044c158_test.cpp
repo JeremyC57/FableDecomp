@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPhysicsDef { int _dummy; };
+class CPhysicsDef { public: int _dummy; };
 
 unsigned long __fastcall CPhysicsDef_GetSizeofClass(const CPhysicsDef* self)
 {

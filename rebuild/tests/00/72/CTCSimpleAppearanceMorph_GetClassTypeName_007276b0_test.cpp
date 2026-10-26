@@ -2,8 +2,8 @@
 
 struct StringRep;
 
-struct CCharString
-{
+class CCharString
+{ public:
     StringRep* rep;
     CCharString(const char* s, int n);
 };

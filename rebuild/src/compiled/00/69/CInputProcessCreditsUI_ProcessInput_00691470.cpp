@@ -50,7 +50,7 @@ class CPlayer {
 public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

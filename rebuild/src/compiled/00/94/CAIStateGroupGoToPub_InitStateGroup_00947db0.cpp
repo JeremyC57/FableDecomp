@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item);                  // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                         // one vtable per instantiation
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -36,10 +36,10 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer { virtual void v00() { } CBaseObject* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { }
     CBaseObject* GetPItem() const { return m_pItem; } void SetPItem(CBaseObject* item) { m_pItem = item; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer() { }

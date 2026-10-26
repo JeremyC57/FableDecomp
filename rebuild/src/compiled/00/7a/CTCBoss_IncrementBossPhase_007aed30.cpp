@@ -7,7 +7,7 @@
 // Tiny-body shape `CountIfEnabled` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTCBoss {
+class CTCBoss { public:
     unsigned char _pad1[0x14];
     long m_count;                           // +0x14
     unsigned char _pad2[0x8];

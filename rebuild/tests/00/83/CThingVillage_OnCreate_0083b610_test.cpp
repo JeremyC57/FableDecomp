@@ -1,18 +1,18 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[40];
     CCharString(const char* t, long = -1) { std::strcpy(Text, t); }
 };
-struct CTCBase; struct CTCParamsBase;
+class CTCBase; class CTCParamsBase;
 #pragma pack(push, 2)
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 #pragma pack(pop)
 struct CTCGraphicAppearance { CEngineGraphic Graphic; };
 static char g_added[2][40]; static int g_nAdded = 0; static bool g_baseOk = true;
 static CTCGraphicAppearance g_app;
 static CEngineGraphic g_current = { 7, 0.5f, 2.0f, true, 3 };
-struct CThingGameObject {
+class CThingGameObject { public:
     CTCGraphicAppearance* PTCGraphicAppearance;
     float MaxHealth;
     CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* p)
@@ -23,7 +23,7 @@ struct CThingGameObject {
     }
     bool OnCreate() { return g_baseOk; }
 };
-struct CThingVillage : CThingGameObject {
+class CThingVillage : public CThingGameObject { public:
     const CEngineGraphic* GetCurrentGraphic() { return &g_current; }
     bool OnCreate();
 };

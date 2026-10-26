@@ -8,18 +8,18 @@
 // Shape: plain member assignments with the implicit operator= (dword moves through the `lea` /
 // `add esi,22h` destination register).
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
 
 struct CPhysics;
 
-struct CThing {
+class CThing { public:
     unsigned char        _pad_0x00[0x60];
     CPhysics*            m_pPhysics;                 // +0x60
     const C3DVector& GetPosition() const;           // 0x004C73D0
@@ -41,7 +41,7 @@ struct CPhysics {
     virtual const CRightHandedSet& GetOrientation() const;   // slot 72 (+0x120)
 };
 
-struct CTCCameraPointDefinitionBase {
+class CTCCameraPointDefinitionBase { public:
     void*           __vftable;                      // +0x00 (CTCBase)
     CThing*         ParentThing;                    // +0x04
     unsigned char   _pad08[4];

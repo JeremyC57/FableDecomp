@@ -22,14 +22,14 @@ static int fails = 0;
 // returns first); ParentThing is read into a local after the string, so `this` dies there and its register (edi) takes it,
 // which also puts the user in esi; the action temporary is passed by reference straight from the ctor's eax and destroyed
 // inline with no vtable store (novtable leaf): PObjectToUse, ScriptName, then the base.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
 class CThing {
 public:
     unsigned char _pad00[0x70];
-    struct CDefClassBase* PDef;                     // +0x70
+    class CDefClassBase* PDef;                     // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                          // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
@@ -41,22 +41,22 @@ public:
 };
 inline CThingCreatureBase* CastToCreature(CThing* thing) { return (CThingCreatureBase*)thing; }
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                         // slot 0
     virtual void Delete();                          // slot 1 (+0x04)
     long m_refCount;                                // +0x04
     void Release() { if (--m_refCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CActivateQuestDef : CDefPointeeBase {
+class CActivateQuestDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long ScriptName;                                // +0x28 CDefString (string-table index)
     bool LoadResources;                             // +0x2c
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CActivateQuestDef>* out) const;   // 0x007B5680
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below

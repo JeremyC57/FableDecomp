@@ -18,7 +18,7 @@ struct CLongVector {                        // retail std::vector<long>, 12 byte
     long* _M_end_of_storage;
 };
 
-struct CVillageDef {
+class CVillageDef { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long          RefCount;                 // +0x04
@@ -44,7 +44,7 @@ struct CDefPointerVillageDef {
     const CVillageDef* operator->() const { return Object; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*                 __vftable;        // +0x00
     unsigned char         _pad_0x04[0x90];
     CDefPointerVillageDef PDef;             // +0x94

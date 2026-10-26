@@ -29,15 +29,15 @@ struct CInputStreamAccess : CDataInputStream {
  }
  __forceinline unsigned long ReadULong() {unsigned long value;Read(&value,4);return value;}
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}
  T* GetData(){return Size()>0?Begin:(T*)this;}
  void Resize(unsigned long,const T&); // 0x004122D0
 };
-struct CVertexCompressionParams;
+class CVertexCompressionParams;
 void __fastcall ReadFromFile(CVertexCompressionParams& params, CDataInputStream& in); // 0x00AA5460
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFileXVertexDataChunkMethods : C3DMeshFileXVertexDataChunk {
  CArray<char>& Data(){return *(CArray<char>*)VertexData;}
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);

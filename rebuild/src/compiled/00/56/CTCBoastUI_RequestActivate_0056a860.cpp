@@ -1,4 +1,4 @@
-struct CTCBoastUI {
+class CTCBoastUI { public:
     char pad0[0x18];
     unsigned char f18;
     char pad19[0x0f];

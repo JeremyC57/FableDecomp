@@ -5,7 +5,7 @@
 // Retail bytes:  mov eax,[esp+0Ch] ; mov edx,[esp+4] ; push esi ; mov esi,ecx ; mov ecx,[esp+0Ch] ; push eax ; push ecx ; push edx ;
 //                mov ecx,esi ; call CBankFile::OpenFileReadWrite ; mov byte ptr [esi+149h],1 ; pop esi ; ret 0Ch
 // The wide-string twin of OpenReadWrite @ 0x009D51D0 (RTTI name ?OpenFileReadWrite@CBankFileAsync@@UAEXABVCWideString@@KK@Z).
-struct CWideString;
+class CWideString;
 
 struct CBankFile_Retail {
     virtual void v00();
@@ -13,7 +13,7 @@ struct CBankFile_Retail {
     void OpenFileReadWrite(const CWideString& filename, unsigned long flags, unsigned long alignment);   // 0x009D1160
 };
 
-struct CBankFileAsync : CBankFile_Retail {
+class CBankFileAsync : public CBankFile_Retail { public:
     bool m_asyncReading;                                                                                 // +0x148 (untouched here)
     bool m_asyncOpen;                                                                                    // +0x149
     virtual void OpenFileReadWrite(const CWideString& filename, unsigned long flags, unsigned long alignment);   // 0x009D5200

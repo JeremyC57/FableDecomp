@@ -10,12 +10,12 @@
 // Shape: the outer call's argument (the C2DVector conversion temporary, the manager) is pushed before the inner call that
 //   feeds it (GetAreaCovering, GetSize), as VC does for a call used as `this` / an argument; the open-node update returns
 //   through its own epilogue.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;
     C2DBoxF(float minX, float minY, float maxX, float maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
     bool ContainsPoint(const C2DVector& p) const;  // 0x00535CD0

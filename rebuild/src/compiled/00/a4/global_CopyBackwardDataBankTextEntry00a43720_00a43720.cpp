@@ -9,7 +9,7 @@
 // 0x00A43890 _Fill / 0x00A438E0 _Move / 0x00A43CD0 insert range). The implicit operator= runs the inlined intrusive
 // CIVCountedPointer::operator= (same-object skip, release through virtual slot 1 at refcount 0 and clear the slot,
 // adopt + add a reference; modelled as the landed 0x0083CE60 / 0x00BBC310), then copies NarratorIndex.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);         // slot 0
     virtual void Delete();                   // slot 1 (+0x04)
     unsigned long IVRefCount;                // +0x04

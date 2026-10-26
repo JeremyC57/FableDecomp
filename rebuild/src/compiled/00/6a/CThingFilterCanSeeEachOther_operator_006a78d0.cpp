@@ -8,9 +8,9 @@
 // assigned in an `if` (`xor edi,edi ; test cl,dl ; je ; mov edi,eax`; a ternary becomes branchless `neg ; sbb ; and`), the
 // 10h kept in cl for both tests; with both present the helper returns `see(a, b) && see(b, a)` as a full-register 0/1
 // (`mov eax,1` / `xor eax,eax`), otherwise the caller's `return false` (`xor al,al`).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned char m_typeFlags;                  // +0x6c (bit 4: a creature)
     const CThingCreatureBase* AsCreature() const
@@ -22,7 +22,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
 
 bool __fastcall CanCreatureSeeCreature(const CThingCreatureBase* viewer, const CThingCreatureBase* target, bool ignoreLight);   // 0x008645E0
@@ -32,7 +32,7 @@ inline bool CanSeeEachOther(const CThingCreatureBase* a, const CThingCreatureBas
     return CanCreatureSeeCreature(a, b, false) && CanCreatureSeeCreature(b, a, false);
 }
 
-struct CThingFilter_CanSeeEachOther {
+class CThingFilter_CanSeeEachOther { public:
     const CThing* m_thing;                      // +0x00
     bool operator()(const CThingCreatureBase& creature) const;
 };

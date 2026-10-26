@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCExplodingObject {
+class CTCExplodingObject { public:
     void* vftable;
     int destroyed;
 };

@@ -29,7 +29,7 @@ struct CRetailList_Creature {                               // STLport list: the
 extern long g_GeneratedCreatureLimit;                       // 0x013824A8
 extern long g_GeneratedCreatureCount;                       // 0x013BAD54
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void*                __vftable;                         // +0x00
     unsigned char        _pad04[0x14];                      // +0x04 CTCBase, CreatureFamilies
     CRetailList_Creature CreatedCreatures;                  // +0x18

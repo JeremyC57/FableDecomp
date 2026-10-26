@@ -3,7 +3,7 @@
 // with a member-functor priority compare, out-of-line pair assignment and destructor.
 class CContextSensitiveItemDef { public: long Priority; };
 static int g_assigns = 0, g_dtors = 0;
-template<class T> struct CDefPointer { T* Def; };
+template<class T> class CDefPointer { public: T* Def; };
 template<class K, class V> struct pair {
     K first;
     V second;
@@ -13,7 +13,7 @@ template<class K, class V> struct pair {
     ~pair() { ++g_dtors; }
 };
 typedef pair<long, CDefPointer<const CContextSensitiveItemDef> > Elem;
-struct CContextSensitivePriorityCompare {
+class CContextSensitivePriorityCompare { public:
     bool operator()(const Elem& a, const Elem& b) const { return a.second.Def->Priority < b.second.Def->Priority; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

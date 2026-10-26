@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_ctors = 0, g_dtors = 0, g_overflows = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -42,7 +42,7 @@ template <class T> struct CRetailVector {
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00() { }
     CRetailVector<CIntelligentPointer> SpecifiedThingsToHit;
     void SetSpecificThingsToHit(const CRetailVector<CThing*>& things);

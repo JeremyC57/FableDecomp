@@ -3,7 +3,7 @@
 #include <new>
 static int g_ptrDtors = 0, g_defDestroys = 0, g_baseDtors = 0;
 class CIntelligentPointer { public: virtual ~CIntelligentPointer() { ++g_ptrDtors; } void* m_pItem; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> inline void DestroyRange(T* first, T* last) { for (; first != last; ++first) first->~T(); }
 struct CCardVector {
     CIntelligentPointer* m_pStart; CIntelligentPointer* m_pFinish; CIntelligentPointer* m_pEnd;
@@ -12,8 +12,8 @@ struct CCardVector {
 struct CPosVector { C3DVector* m_pStart; C3DVector* m_pFinish; C3DVector* m_pEnd; ~CPosVector() { if (m_pStart) std::free(m_pStart); } };
 class CDef { public: long RefCount; virtual ~CDef() { } virtual void Destroy() { ++g_defDestroys; } void Release() { if (--RefCount == 0) Destroy(); } };
 struct CDefPointer { CDef* m_pDef; ~CDefPointer() { if (m_pDef) { m_pDef->Release(); m_pDef = 0; } } };
-struct CTCBase { ~CTCBase() { ++g_baseDtors; } };
-struct CTCHeroCentre : CTCBase {
+class CTCBase { public: ~CTCBase() { ++g_baseDtors; } };
+class CTCHeroCentre : public CTCBase { public:
     CDefPointer PDef; long CurrentGUIMode; unsigned int FrameQuestCardListFrom;
     CCardVector QuestCards; CPosVector QuestCardPositions; bool WaitingForTutorialToFinish;
     ~CTCHeroCentre() { }

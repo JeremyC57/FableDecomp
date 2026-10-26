@@ -30,7 +30,7 @@ struct LDocumentPartVector {                       // STLport vector<LHHttpDocum
     LHHttpDocumentParts** end() { return _M_finish; }
 };
 
-struct LHHttp2 {                                   // retail offsets (Ego_r.pdb names; its 0x1C-byte strings shift every field)
+class LHHttp2 { public:                                   // retail offsets (Ego_r.pdb names; its 0x1C-byte strings shift every field)
     LSocket*            Host;                      // +0x000
     CRetailString       Hostname;                  // +0x004
     unsigned short      Port;                      // +0x010

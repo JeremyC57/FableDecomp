@@ -9,7 +9,7 @@
 //   16-byte pairs, comparator byte +0x2c, Dirty +0x2d); the leaf base's Blocked +0x0f and PRegion +0x10.
 // Shape: the count and the loop index are homed in the dead `regions` / `readPreferability` slots; each id is added
 //   through the vector map's inline Add (push_back, then Dirty), the map is sorted once through the inline Sort().
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CAFile {
 public:
     virtual void v00(); virtual void v01(); virtual void v02();

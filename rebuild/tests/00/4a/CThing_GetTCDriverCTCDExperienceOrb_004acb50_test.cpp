@@ -1,8 +1,8 @@
 // Behaviour test for CThing::GetTCDriver<CTCDExperienceOrb> @ 0x004ACB50: bitset word 2 mask 0x800 gates the driver hand-back.
 #include <cstdio>
-struct CTCDriverBase { int id; };
-struct CTCDExperienceOrb;
-struct CThing {
+class CTCDriverBase { public: int id; };
+class CTCDExperienceOrb;
+class CThing { public:
     unsigned long  UsingComponents[9];
     CTCDriverBase* PTCDriver;
     template <class T> bool GetTCDriver(T** out)

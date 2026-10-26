@@ -14,19 +14,19 @@
 // Shape: the CEndScythe (0x00D79D50) handle model; __forceinline CTimer ctor/dtor/accessors keep the timer index in ebp (home
 //   slot) across the loop, inline_depth(0) in the hit block keeps the movie and CTimer destructors out of line there as retail does,
 //   and the main loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }` so the loop exit keeps its own ~CTimer copy.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct C3DVector;
+class C3DVector;
 struct CScriptThingImpl;
 struct CBase {                                          // vtable 0x01231710
     CBase() { }
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const;
     virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -62,7 +62,7 @@ struct CResourcePImp {                                  // the handles' counted 
     CResourcePImp() : Data(0), Info(0) { }
     ~CResourcePImp();                                   // 0x006E7AB0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
@@ -74,12 +74,12 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CResourcePImp PImp;                                 // +0x08
     CScriptGameResourceObjectMovieBase() { }
     // implicit destructor; out-of-line copy 0x006E7B80
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -163,7 +163,7 @@ struct CGameScriptInterface {
     virtual void EntitySetThingAsAllyOfThing(const CScriptThing& thing, const CScriptThing& other) const;   // slot 599 (+0x95c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     __forceinline CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
     __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
@@ -183,7 +183,7 @@ struct CQS_ScytheInfoScript {
     CCutsceneCastMap Cast;                              // +0x58
     void PlayCutscene(CCharString name, bool a);        // 0x00E2A900
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveOcclusionInfo {
+class CEnginePrimitiveOcclusionInfo { public:
     void* vftable;
     int destroyed;
 };

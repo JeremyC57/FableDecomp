@@ -43,9 +43,9 @@ __declspec(noinline) void CRetailVector_long::InsertGrow(long* where, const long
 }
 #pragma auto_inline(on)
 
-struct CThing;
+class CThing;
 
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

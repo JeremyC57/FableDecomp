@@ -10,7 +10,7 @@ struct SubObj {
 // external helper called thiscall on the sub-object at +8 (ecx = &sub)
 extern "C" void __fastcall SubHelper(SubObj* sub);
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     char pad[8];
     SubObj sub;   // at +8
 };

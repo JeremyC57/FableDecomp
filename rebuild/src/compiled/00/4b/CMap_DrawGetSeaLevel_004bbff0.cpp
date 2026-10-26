@@ -4,7 +4,7 @@
 //   fmul dword ptr [ecx+0x34]
 //   ret
 // __fastcall returning float: this->f4c * this->f34
-struct CMap {
+class CMap { public:
     char pad00[0x34];
     float f34;      // +0x34 scale factor
     char pad38[0x14];

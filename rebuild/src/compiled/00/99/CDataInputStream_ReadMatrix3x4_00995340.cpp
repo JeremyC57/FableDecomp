@@ -9,10 +9,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0();
     unsigned long m_position;              // +4
     long m_08;

@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_RecoverStealableItem::IsRunnable (0x00965320): same logic over mocks.
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing { bool dead; C3DVector pos; float range; CThing() : dead(false), range(0) { pos.x = pos.y = pos.z = 0; } };
+class C3DVector { public: float x, y, z; };
+class CThing { public: bool dead; C3DVector pos; float range; CThing() : dead(false), range(0) { pos.x = pos.y = pos.z = 0; } };
 static bool IS_THING_ALIVE(CThing* p) { return p != 0 && !p->dead; }
 struct CState {
     bool canRecover; CThing* targetCandidate; CThing* item; float lastRange;

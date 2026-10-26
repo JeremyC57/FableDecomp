@@ -3,7 +3,7 @@
 // Retail thiscall reads its single argument from the stack ([esp+4]) rather
 // than edx, so model it as __fastcall with a dummy edx slot forcing the real
 // argument onto the stack.
-struct CAnimateThing {
+class CAnimateThing { public:
     char pad[0x48];
     // 0x26: flag byte, 0x48: stored value
 };

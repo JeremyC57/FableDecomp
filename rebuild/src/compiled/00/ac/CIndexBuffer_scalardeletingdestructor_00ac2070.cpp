@@ -3,11 +3,11 @@
 // Leaf: ??_GCIndexBuffer@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129EF2C) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }                        // inline: the vtable store
 };
-struct CIndexBuffer : CMovableResource {              // vtable 0x0129EF2C
+class CIndexBuffer : public CMovableResource { public:              // vtable 0x0129EF2C
     void Release();                                // 0x00AC1EE0 (labelled "CVolume::ReleaseVolume")
     __forceinline virtual ~CIndexBuffer()
     {

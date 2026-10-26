@@ -5,14 +5,14 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -32,8 +32,8 @@ struct CIVCountedPointer {
 };
 
 namespace NGameText {
-struct CTextEntry : CIVCountedPointeeBase { };
-struct CDataBankTextEntry {                     // 8 bytes
+class CTextEntry : public CIVCountedPointeeBase { public: };
+class CDataBankTextEntry { public:                     // 8 bytes
     CIVCountedPointer<CTextEntry> PText;        // +0x00
     long                          NarratorIndex; // +0x04
 };

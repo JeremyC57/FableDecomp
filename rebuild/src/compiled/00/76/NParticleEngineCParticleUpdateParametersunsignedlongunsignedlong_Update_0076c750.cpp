@@ -12,7 +12,7 @@
 // byte +0x10, Dirty +0x11), UpdateParams +0x14 (data +0x14/+0x18, comparator +0x20, Dirty +0x21).
 // Shape: each map's inline Sort() -- `if (Dirty) { sort(begin, end, Compare); Dirty = false; }`; the comparator
 // byte is zero-extended into the pushed dword.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
@@ -25,7 +25,7 @@ template <class T> struct CVector {                    // STLport vector, 12 byt
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
 };
-template <class K, class V, class C> struct CVectorMap {   // retail 16 bytes
+template <class K, class V, class C> class CVectorMap { public:   // retail 16 bytes
     CVector<std::pair<K, V> > Data;                   // +0x00
     C                          Compare;                // +0x0c empty comparator
     bool                       Dirty;                  // +0x0d
@@ -39,14 +39,14 @@ template <class K, class V, class C> struct CVectorMap {   // retail 16 bytes
 };
 
 namespace NParticleEngine {
-template <class A, class B> struct CParticleUpdateParamCallback;
-template <class A, class B> struct CParticleUpdateParamDesc {
+template <class A, class B> class CParticleUpdateParamCallback;
+template <class A, class B> class CParticleUpdateParamDesc { public:
     void*                                 __vftable;   // +0x00
     CParticleUpdateParamCallback<A, B>*   Callback;    // +0x04
     unsigned long                         Index;       // +0x08
 };
 
-template <class A, class B> struct CParticleUpdateParameters {        // vtable 0x0125FFDC (CBase-derived)
+template <class A, class B> class CParticleUpdateParameters { public:        // vtable 0x0125FFDC (CBase-derived)
     template <class K> struct CParticleUpdateCCompareVector { };
     template <class K> struct CParticleUpdateCCompareParamDesc { };
     void* __vftable;                                                                         // +0x00

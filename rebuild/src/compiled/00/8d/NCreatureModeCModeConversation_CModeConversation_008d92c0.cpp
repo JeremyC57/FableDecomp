@@ -7,8 +7,8 @@
 // becomes CurrentAttitude, and if InitialAttitude differs (`cmp [esi+20h],eax`: the member is the
 // left operand) the filter is re-targeted (0x0073DFF0). Unlike the one-argument twin @ 0x008D9220 the
 // stores go to CurrentAttitude only. Field names from the PDB (CModeConversation, 52 bytes).
-struct CCharString;
-struct CTCBase;
+class CCharString;
+class CTCBase;
 
 typedef long EConversationAttitude;
 
@@ -21,7 +21,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -40,11 +40,11 @@ struct CThing {
     }
 };
 
-struct CTCTalk {
+class CTCTalk { public:
     EConversationAttitude GetAttitude();     // 0x006E3180
 };
 
-struct CAnimFilterOfGroup {                  // vtable 0x01267568
+class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     virtual void v00();
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8

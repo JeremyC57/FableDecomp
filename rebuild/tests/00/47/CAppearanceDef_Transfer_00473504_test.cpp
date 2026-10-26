@@ -3,9 +3,9 @@
 #include <cstdio>
 
 static int g_order[16]; static int g_n = 0;
-struct CEngineGraphic { int id; };
-struct CAnimationSet { bool sorted; void EnsureSorted() { sorted = true; g_order[g_n++] = 99; } };
-struct CPersistContext {
+class CEngineGraphic { public: int id; };
+class CAnimationSet { public: bool sorted; void EnsureSorted() { sorted = true; g_order[g_n++] = 99; } };
+class CPersistContext { public:
     void Transfer(CEngineGraphic* v) { g_order[g_n++] = v->id; }
     void Transfer(CAnimationSet*) { g_order[g_n++] = 2; }
     void Transfer(unsigned char* v) { g_order[g_n++] = *v; }
@@ -13,7 +13,7 @@ struct CPersistContext {
     void Transfer(int* v) { g_order[g_n++] = *v; }
     void Transfer(float* v) { g_order[g_n++] = (int)*v; }
 };
-struct CAppearanceDef {
+class CAppearanceDef { public:
     CEngineGraphic Graphic; CAnimationSet Animation; unsigned char Ref, Bias; bool Override; int Channel;
     CEngineGraphic Fade; bool HasFade; float D1, D2, D3;
     void Transfer(CPersistContext& c)

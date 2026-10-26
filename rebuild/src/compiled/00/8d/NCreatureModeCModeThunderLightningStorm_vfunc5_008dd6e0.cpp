@@ -21,11 +21,11 @@
 #include "fable_definition_table.h"
 #undef CDefStringTable
 
-struct CThing;
-struct CAnimateThing;
-struct CAnimFilterBase;
-struct CTCCreatureModeManager {
-    struct CModeBase {
+class CThing;
+class CAnimateThing;
+class CAnimFilterBase;
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
         virtual ~CModeBase();
         virtual unsigned long GetType()const=0;
         virtual void AnimUpdate(CAnimateThing&); //00739e40, base no-op
@@ -48,7 +48,7 @@ struct CModeStandBase:CTCCreatureModeManager::CModeBase {
 // Layout: raw9fbec0 confirms resource prefix28B, RefCount+4; raw430370 confirms
 // CDefClassBase remains packed37B (manager1c/index20/flags24), matching donor.
 #pragma pack(push,1)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase(); //RTTI01230ba0 slot0=0042d9a0; fablewin3958
     virtual void Delete() const;
     mutable long RefCount;
@@ -56,18 +56,18 @@ struct CDefPointeeBase {
     void AddRef()const {++RefCount;}
     void Release()const {if(--RefCount==0)Delete();}
 };
-struct CDefClassBase:CDefPointeeBase {
+class CDefClassBase:public CDefPointeeBase { public:
     CDefinitionManager* PDefManager;
     unsigned long GlobalIndex;
     unsigned char DefinitionFlags;
 };
-struct CDefString {long TablePos;}; //original PDB type,4B, not an owned CCharString
-struct CParentDefClassBase:CDefClassBase {
+class CDefString { public:long TablePos;}; //original PDB type,4B, not an owned CCharString
+class CParentDefClassBase:public CDefClassBase { public:
     CDefString InstantiationName; //+25
     unsigned char SubDefInfoMap[0x10]; //+29: retail vector12+comparator; debug20B->retail16B
 };
 #pragma pack(pop)
-struct CSpecialAbilitiesThunderLightningStormDef:CParentDefClassBase {
+class CSpecialAbilitiesThunderLightningStormDef:public CParentDefClassBase { public:
     long NumBeams; //+3c: packed parent39 rounded for derived long; debug+40
     float StartRadius,EndRadius,SkyBeamStartTime,MainBeamsStartTime;
     float BeamRotationStartSpeed,BeamRotationEndSpeed,TotalLifetime,Damage;
@@ -80,7 +80,7 @@ FABLE_STATIC_ASSERT(sizeof(CSpecialAbilitiesThunderLightningStormDef)==0x68);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef,StartRadius)==0x40);
 FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesThunderLightningStormDef,InitSound)==0x60);
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     const CDefPointeeBase* Object;
     CDefPointer():Object(0){}
     CDefPointer(const CDefPointer& p):Object(p.Object){if(Object)Object->AddRef();}
@@ -91,11 +91,11 @@ template<class T> struct CDefPointer {
     }
 };
 // Layout: shared definition-manager donor retained; only missing original methods added.
-struct CDefinitionManager:CDefinitionManagerPdb {
+class CDefinitionManager:public CDefinitionManagerPdb { public:
     long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
     template<class T> bool GetDef(long,CDefPointer<const T>*)const; //008e31d0 Storm specialization
 };
-struct CGameDefinitionManager:CDefinitionManager {
+class CGameDefinitionManager:public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get(); //0044c6b0
 };
 struct CDefStringTable:CDefStringTablePdb {
@@ -105,8 +105,8 @@ extern CDefStringTable g_DefStringTable;
 extern unsigned long g_InvalidSoundHandle;
 
 enum ETCInterfaceType {TC_SOUND_PLAYER=16};
-template<class K,class V> struct CKeyPairCompareLess {};
-template<class K,class V,class Compare> struct CVectorMap {
+template<class K,class V> class CKeyPairCompareLess { public:};
+template<class K,class V,class Compare> class CVectorMap { public:
     struct Entry {K first;V second;};
     typedef Entry* iterator; //retail one-pointer iterator ABI: EAX, no hidden return
     Entry* First;Entry* Last;Entry* Limit;
@@ -114,7 +114,7 @@ template<class K,class V,class Compare> struct CVectorMap {
 };
 // Layout: no shared CThing header exists; this retail view uses UsingComponents+20,
 // interface vector+44; fields outside this operation are not asserted.
-struct CThing {
+class CThing { public:
     unsigned char BeforeComponents[0x20];
     unsigned long UsingComponents[9];
     CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Interfaces;
@@ -129,8 +129,8 @@ struct CThing {
 };
 // Layout: no extra fields needed in this method view; shared AICreature donor
 // records AISuspended/Suspenders. Retail helper uses flags1c8,set1cc (debug-30).
-struct CThingAICreature:CThing {void SuspendAI(bool,void*);}; //00833a10
-struct CTCSoundPlayer:CTCBase {
+class CThingAICreature:public CThing { public:void SuspendAI(bool,void*);}; //00833a10
+class CTCSoundPlayer:public CTCBase { public:
     unsigned long PlayAttachedCriteria(const CCharString&,bool,bool,bool,long); //0066bd00
 };
 namespace NCreatureMode {

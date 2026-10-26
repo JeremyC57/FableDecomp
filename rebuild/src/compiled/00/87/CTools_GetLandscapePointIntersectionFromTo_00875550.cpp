@@ -9,20 +9,20 @@
 // Shape: the ground height is a named float homed in the dead `from` slot; the water height enters through a ternary
 // over an inline by-value `HigherOf(water, ground)` (an if/assign stores and reloads the height; the ternary keeps it on
 // the FPU for the compare and the `fstp` into hitPos.z); the fallback returns the call's bool via `setne`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& pos) const;    // 0x0063A300
     float GetWaterSizeZAt(const C3DVector& pos) const;     // 0x0063A420
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;   // 0x0063AB10
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* PeekWorldMap();                      // slot 13 (+0x34)
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad00[0x74];
     CWorld*       World;                                    // +0x74
 };

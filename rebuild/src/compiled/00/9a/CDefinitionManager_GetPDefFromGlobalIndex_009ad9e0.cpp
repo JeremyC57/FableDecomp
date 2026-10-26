@@ -11,8 +11,8 @@
 // CDefPointer (a raw pointer at offset 0), and if non-null bumps the def's
 // refcount (def+0x4), matching CDefPointer's copy/attach semantics.
 
-struct CDefClassBase
-{
+class CDefClassBase
+{ public:
     long pad0;      // +0x00
     long RefCount;  // +0x04
 };
@@ -42,8 +42,8 @@ struct CDefPointer_CDefClassBase
     }
 };
 
-struct CDefinitionManager
-{
+class CDefinitionManager
+{ public:
     char pad[0xa4];
     CDefTableEntry** GlobalIndexTable; // +0xa4
 

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnvironment {
+class CEnvironment { public:
     void* vftable;
     int destroyed;
 };

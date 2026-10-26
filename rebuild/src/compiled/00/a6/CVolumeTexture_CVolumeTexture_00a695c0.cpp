@@ -8,12 +8,12 @@
 // untouched, then the derived vtable store (plain initialisers precede it).
 struct IDirect3DVolumeTexture9;
 
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     CBaseClass();                                           // 0x0099A2D0
     virtual void v00();
 };
 
-struct CVolumeTexture : CBaseClass {                        // vtable 0x0129DC18
+class CVolumeTexture : public CBaseClass { public:                        // vtable 0x0129DC18
     IDirect3DVolumeTexture9* PD3DVolumeTexture;             // +0x04
     long                     ByteLength;                    // +0x08
     void*                    PData;                         // +0x0c

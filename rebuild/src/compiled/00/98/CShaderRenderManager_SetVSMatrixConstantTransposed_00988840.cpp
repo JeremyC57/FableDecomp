@@ -5,7 +5,7 @@
 // Shape: the transposed copy is an element-by-element store into a 16-dword local array (one scratch
 // register), then `if (rows)` around the device call. The device pointer sits at +0x1d4 (PDB D3DDevice
 // +0x1e4; retail's 12-byte CArrays put it 0x10 lower). Floats are copied as dwords (unsigned int).
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     unsigned int m[16];
 };
 
@@ -107,7 +107,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetVertexShaderConstantF(unsigned int startRegister, const float* data, unsigned int vector4fCount);   // slot 94 (+0x178)
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char     _pad000[0x1d4];
     IDirect3DDevice9* D3DDevice;                 // +0x1d4
     void SetVSMatrixConstantTransposed(unsigned long startRegister, const CMatrix4x4* matrix, unsigned long rows);

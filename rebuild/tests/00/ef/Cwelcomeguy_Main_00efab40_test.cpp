@@ -1,7 +1,7 @@
 // Behaviour test (0x00efab40): Cwelcome_guy::Main takes Me under scripted control (retrying each frame, priority 4), walks it to the hero (MoveToThing hero, 3.0, walk, false, true, false, true), then each frame waits for the hero to come within squared 2D distance 3 and turns Me to face the hero; every wait stops when the script thread terminates, and the handle is always destroyed
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 // The mock game: a frame counter, a terminate frame, a start-scripting success frame and a hero path.
 static int g_frame = 0;
@@ -20,7 +20,7 @@ static int g_releaseCalls = 0;
 static C3DVector g_heroPath[64];
 static int g_pathLength = 0;
 
-struct CScriptThing {
+class CScriptThing { public:
     bool IsHero;
     C3DVector MyPos;
     const C3DVector& GetPos() const

@@ -1,4 +1,4 @@
-struct CTCExplodingObject {
+class CTCExplodingObject { public:
     void* vftable;
 };
 

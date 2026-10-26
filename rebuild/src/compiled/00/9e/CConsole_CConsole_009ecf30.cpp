@@ -171,7 +171,7 @@ public:
 
 }
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pStringData;
@@ -184,7 +184,7 @@ public:
     virtual ~CBaseClass();                          // 0x0099A2E0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                         // +0x00
     void (__fastcall* DeleteFunc)(void* data);      // +0x04
     void* Data;                                     // +0x08
@@ -217,7 +217,7 @@ class CConsoleInputBase;
 class CFontBank;
 enum EInputKey { INPUT_KEY_NONE = 0 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 

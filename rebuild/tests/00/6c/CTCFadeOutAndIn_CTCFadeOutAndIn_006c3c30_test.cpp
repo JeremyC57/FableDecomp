@@ -1,6 +1,6 @@
 // behaviour test for 0x006C3C30 CTCFadeOutAndIn::CTCFadeOutAndIn(CThing&)
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Fade {
     CThing* ParentThing; bool FadingOut, FadingIn; float Alpha; long FramesLeft; CThing* things[4]; unsigned int count;
     Fade(CThing& t) : ParentThing(&t), FadingOut(false), FadingIn(false), Alpha(1.0f), FramesLeft(0), count(0)

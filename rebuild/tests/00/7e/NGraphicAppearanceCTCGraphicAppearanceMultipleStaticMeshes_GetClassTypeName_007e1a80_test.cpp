@@ -6,7 +6,7 @@
 // pointer + length it was constructed with, then confirm the factory forwards
 // the expected (literal, -1) pair and returns the same buffer.
 
-struct CCharString {
+class CCharString { public:
     const char* rec_s;
     int rec_len;
     CCharString(const char* s, int len) { rec_s = s; rec_len = len; }

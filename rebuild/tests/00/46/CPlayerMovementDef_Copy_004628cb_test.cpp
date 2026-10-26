@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPlayerMovementDef;
+class CPlayerMovementDef;
 
 extern void __fastcall CPlayerMovementDef_Copy(CPlayerMovementDef* thisptr, CPlayerMovementDef* src);
 

@@ -12,14 +12,14 @@
 // Shape: the delta is `thing->GetPosition() - Position` through an inline operator-, its squared length the inline chain
 //   `s = Z*Z; s += Y*Y; s += X*X;` kept in a named float local (parked in the dead argument slot); the cone test is a temporary
 //   CThingFilter_IsInFOV called in place; the lock-target test is the inline IS_THING_ALIVE plus an identity compare.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float Radius;                               // +0x34
 };
@@ -37,7 +37,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing && 
 extern const float g_epsilon_0129ba3c;          // 0x0129BA3C (1e-4f)
 float __fastcall GetTargetingRangeForTarget(CThing* target, CThing* targeter, CThing* carried);   // 0x00802B60
 
-struct CThingFilter_IsInFOV {
+class CThingFilter_IsInFOV { public:
     C3DVector FromPos;                          // +0x00
     C3DVector Direction;                        // +0x0c
     float CosFOV;                               // +0x18
@@ -47,7 +47,7 @@ struct CThingFilter_IsInFOV {
     bool operator()(CThing* thing);             // 0x006A7390
 };
 
-struct CTargetingDef;
+class CTargetingDef;
 struct CThingFilter_IsInTargetingRangeAndFOV {
     C3DVector Position;                         // +0x00
     C3DVector FacingVector;                     // +0x0c

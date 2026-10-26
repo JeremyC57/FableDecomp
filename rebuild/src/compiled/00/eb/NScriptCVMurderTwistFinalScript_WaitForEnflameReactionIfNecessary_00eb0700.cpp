@@ -9,8 +9,8 @@
 //   inside the loop gets its own copy); the `while (GetTime() > 0)` test is rotated by VC (test before the loop and
 //   at the bottom); the post-loop `if (IsActiveThreadTerminating()) return;` before the re-enable (not an `if (!..)` guard) is
 //   what keeps the in-loop exit as its own deregister tail.
-struct CScriptThing;
-struct CGameScriptInterface {
+class CScriptThing;
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -32,7 +32,7 @@ struct CGameScriptInterface {
     virtual void SetHeroWillAsUsable(bool usable);   // slot 131 (+0x20c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
@@ -44,7 +44,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CV_MurderTwistFinalScript : CScriptBase {
+class CV_MurderTwistFinalScript : public CScriptBase { public:
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44
     bool HasHeroEnflamedEntity(const CScriptThing& thing);   // 0x00EB07D0

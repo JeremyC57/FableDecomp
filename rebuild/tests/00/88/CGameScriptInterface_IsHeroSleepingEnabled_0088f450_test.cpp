@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct CWorld { char pad[0xd9]; unsigned char flag; };
+class CWorld { public: char pad[0xd9]; unsigned char flag; };
 
 unsigned char __fastcall CGameScriptInterface_IsHeroSleepingEnabled(const CGameScriptInterface* self)
 {

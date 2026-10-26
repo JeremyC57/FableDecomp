@@ -9,21 +9,21 @@
 // Shape: the whole CDefClassBase constructor (0x0042D9E0) is inline here, so its vtable store is dead
 // and only CResource's out-of-line constructor is called; the CDefString and CVectorMap member
 // constructors are inline (-1 and three null pointers + the Dirty byte, sharing the eax zero).
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _resource[0x18];          // +0x04 resource list links, size, last used frame
     CResource();                            // 0x009FBEC0
 };
 
-struct CDefPointeeBase : CResource {        // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:        // vtable 0x01230BA0
     virtual void v00();
     CDefPointeeBase() { }
 };
 
 #pragma pack(push, 1)                       // def classes are byte packed
-struct CDefClassBase : CDefPointeeBase {    // vtable 0x01230BCC
+class CDefClassBase : public CDefPointeeBase { public:    // vtable 0x01230BCC
     CDefinitionManager* PDefManager;        // +0x1c
     unsigned long       GlobalIndex;        // +0x20
     unsigned char       Setup : 1;          // +0x24 bit 0
@@ -39,7 +39,7 @@ struct CDefClassBase : CDefPointeeBase {    // vtable 0x01230BCC
     }
 };
 
-struct CDefString {                         // a def-name string-table position
+class CDefString { public:                         // a def-name string-table position
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -55,7 +55,7 @@ struct CSubDefInfoVectorMap {               // retail CVectorMap<unsigned long, 
 };
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {    // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:    // vtable 0x01230CBC
     CDefString           InstantiationName; // +0x25
     CSubDefInfoVectorMap SubDefInfoMap;     // +0x29
     virtual void v00();

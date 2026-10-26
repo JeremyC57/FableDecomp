@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTCInventoryAbilities::GetAvailableAbilityDefs (0x005F4C45): same logic over a copy of the model.
-struct CHeroAbilityDef { long Ability; };
+class CHeroAbilityDef { public: long Ability; };
 struct CHeroAbilityDefPointer { const CHeroAbilityDef* Object; };
 struct CHeroAbilityDefPointerVector {
     const CHeroAbilityDef* items[8]; int count;

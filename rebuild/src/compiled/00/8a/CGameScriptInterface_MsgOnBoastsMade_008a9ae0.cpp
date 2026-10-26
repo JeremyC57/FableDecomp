@@ -12,7 +12,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -87,16 +87,16 @@ struct CMessageList {                                   // STLport list<CMessage
         return n;
     }
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -115,11 +115,11 @@ void CMessageEventManager_Retail::FindAllMessages(const CSeenOrHeardFilter& filt
     AppendMatchingMessages(this, filter.m_pFirst->m_type, filter.m_pSecond->m_frame, filter.m_pSecond->m_maxFrame, out._M_node);
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char                _pad00[0x60];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
     long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)

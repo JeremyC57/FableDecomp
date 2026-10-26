@@ -26,29 +26,29 @@
 //   same-TU noinline stand-in (gives the short `dec [edi+4] ; jne` release). The sound pair is a named local built from
 //   the second PeekDefinition before the call (a temporary pair moves the CSoundInit stores above the call), and
 //   CSoundInit assigns PlaybackType in its ctor body (retail stores it after OverrideID).
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CEventBase { virtual void v00(); };
 
 namespace NEntityEvents {
-struct CEventTriggered : CEventBase {
+class CEventTriggered : public CEventBase { public:
     unsigned char _body[0x10 - 4];
     CEventTriggered(CThing* triggerer);                 // 0x0083CF20
 };
 }
 
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);                   // 0x008113C0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair(long sound) : FirstSound(sound), LastSound(sound) {}
 };
 
-struct CSoundInit {
+class CSoundInit { public:
     float         Volume;
     float         Pitch;
     float         Pan;
@@ -63,11 +63,11 @@ struct CSoundInit {
     }
 };
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlaySound(const CSoundPair& sound, const CSoundInit& init, bool attach, bool a, bool b);   // 0x0066B280
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef();                          // slot 1
     long m_refCount;                                    // +4
@@ -78,17 +78,17 @@ struct CDefPointeeBase {
     }
 };
 
-struct CThingPhysicalSwitchDef : CDefPointeeBase {
+class CThingPhysicalSwitchDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x90 - 8];
     long          TriggerSound;                         // +0x90
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) {}
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingPhysicalSwitchDef>& out);   // 0x0083E0D0
 };
 void* FindSwitchDef(long index);                        // stand-in callee of the stand-in body below
@@ -112,7 +112,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -136,7 +136,7 @@ struct CThing {
     }
 };
 
-struct CThingPhysicalSwitch : CThing {
+class CThingPhysicalSwitch : public CThing { public:
     unsigned char _pad90[0xd0 - 0x90];
     bool          Triggered;                            // +0xd0
     const CThingPhysicalSwitchDef& PeekDefinition() const;   // 0x0083D900

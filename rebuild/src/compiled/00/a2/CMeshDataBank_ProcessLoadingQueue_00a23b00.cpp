@@ -7,7 +7,7 @@ struct CLoadingQueue_00a23b00 {
     void Process(void* context, double time);      // 0x009FC410
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char          _pad00[0x170];
     CLoadingQueue_00a23b00 m_queueA;               // +0x170
     unsigned char          _pad174[0xf4];

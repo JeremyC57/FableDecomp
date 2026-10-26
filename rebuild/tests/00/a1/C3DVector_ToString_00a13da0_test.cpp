@@ -5,10 +5,10 @@
 #if !defined(_MSC_VER)
 #define __fastcall
 #endif
-struct CCharString { void* PStringData; CCharString(const char* text, long length=-1); ~CCharString(); static CCharString __fastcall FormatDouble(long digits, double value); };
+class CCharString { public: void* PStringData; CCharString(const char* text, long length=-1); ~CCharString(); static CCharString __fastcall FormatDouble(long digits, double value); };
 CCharString __fastcall operator+(const CCharString& left,const CCharString& right);
 CCharString __fastcall operator+(const CCharString& left,const char* right);
-struct C3DVector { float X,Y,Z; CCharString ToString() const; };
+class C3DVector { public: float X,Y,Z; CCharString ToString() const; };
 CCharString C3DVector::ToString() const { return CCharString("(") + CCharString::FormatDouble(2,X) + ", " + CCharString::FormatDouble(2,Y) + ", " + CCharString::FormatDouble(2,Z) + ")"; }
 
 #include <cstdio>

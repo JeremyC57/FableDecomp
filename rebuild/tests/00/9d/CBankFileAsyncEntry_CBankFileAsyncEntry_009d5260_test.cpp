@@ -2,12 +2,12 @@
 #include <cstdlib>
 #include <cstring>
 struct CBase { virtual void v00() {} CBase() {} };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned long m_sizes[4]; unsigned long m_alignment;
     unsigned long GetEntryDataSize(unsigned long i) const { return m_sizes[i]; }
     unsigned long Align(unsigned long size) const { return (size + m_alignment - 1) / m_alignment * m_alignment; }
 };
-struct CBankFileAsyncEntry : CBase {
+class CBankFileAsyncEntry : public CBase { public:
     CBankFileAsync* m_pBank; unsigned long m_index; unsigned long m_alignedSize;
     CBankFileAsyncEntry(CBankFileAsync* bank, unsigned long index) : CBase(), m_pBank(bank), m_index(index)
     { m_alignedSize = m_pBank->Align(m_pBank->GetEntryDataSize(index)); }

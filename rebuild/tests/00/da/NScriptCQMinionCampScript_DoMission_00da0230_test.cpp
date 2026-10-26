@@ -7,7 +7,7 @@
 static int g_frames = 0, g_endAt = 1000, g_startScreens = 0, g_fadeIns = 0, g_phases = 0, g_failed = 0, g_completed = 0;
 static int g_generatorsOn = 0, g_deactivated = 0, g_cutscenes = 0, g_stage5At = 6; static bool g_failNow = false;
 struct CQ_MinionCampScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_MinionCampScript* Owner;
     void NewScriptFrame() const;
     bool IsLevelLoaded(const char* n) const { return !std::strcmp(n, "Darkwood_5") && g_frames >= 1; }

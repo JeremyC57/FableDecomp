@@ -2,13 +2,13 @@
 // otherwise it locks it and shows the locked message each time the hero uses it, until the script is done.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[48];
     CCharString(const char* text) { std::strncpy(Text, text, 47); Text[47] = 0; }
 };
 static int g_frames = 0;
 static int g_thingsAlive = 0;
-struct CScriptThing {
+class CScriptThing { public:
     bool alive; int usedAt;
     CScriptThing(bool a) : alive(a), usedAt(-1) { ++g_thingsAlive; }
     CScriptThing(const CScriptThing& o) : alive(o.alive), usedAt(o.usedAt) { ++g_thingsAlive; }
@@ -16,7 +16,7 @@ struct CScriptThing {
     bool IsAlive() const { return alive; }
     bool MsgIsUsedBy(const CCharString& user) const { return std::strcmp(user.Text, "SCRIPT_NAME_HERO") == 0 && g_frames == usedAt; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool traderAlive; int locks, unlocks, infos, clickAt;
     void NewScriptFrame() { ++g_frames; }
     bool MsgIsGameInfoClickedPast() { return g_frames >= clickAt; }

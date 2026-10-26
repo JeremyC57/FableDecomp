@@ -5,7 +5,7 @@
 // CTCPhysicsBase::GetAirResistance on `this`, so `this` is a physics-component class (no xrefs: a vtable slot).
 // Shape: `call ; fsubr [1.0]` is `1.0f - GetAirResistance()`; the factor stays on the x87 stack and each
 // component is `fld st(0) ; fmul [m] ; fstp [m]`, the last one consuming it: an inline C3DVector `*=` float.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void operator*=(float f)
     {
@@ -15,7 +15,7 @@ struct C3DVector {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -35,7 +35,7 @@ struct CTCPhysicsBase {
     float GetAirResistance();                        // 0x006AFDE0
 };
 
-struct CThing : CTCPhysicsBase {
+class CThing : public CTCPhysicsBase { public:
     void AddToRenderList();
 };
 

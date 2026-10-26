@@ -14,7 +14,7 @@ struct __declspec(novtable) CShaderConstantRangeBase : CBase {
     CShaderConstantRangeBase(long first) : CBase(), m_first(first) { }
 };
 
-struct CShaderConstantRange : CShaderConstantRangeBase {      // vtable 0x0129A04C
+class CShaderConstantRange : public CShaderConstantRangeBase { public:      // vtable 0x0129A04C
     long m_count;                             // +0x08
     virtual void v00();
     CShaderConstantRange(long first, long count);

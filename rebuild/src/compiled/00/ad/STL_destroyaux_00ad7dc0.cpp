@@ -22,7 +22,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                    // +0x00

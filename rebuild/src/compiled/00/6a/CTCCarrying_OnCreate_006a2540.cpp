@@ -16,7 +16,7 @@
 //   __false_type tag, then Dirty = true) with the null pointer temporary built at the call site; then the inline
 //   SortIfDirty (sort, Dirty = false).
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
@@ -71,12 +71,12 @@ struct CCarrySlotMap {                                  // CVectorMap<long, CInt
         }
     }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -98,11 +98,11 @@ struct CLongVector {                                    // STLport vector<long> 
     const long* begin_() const { return _M_start; }
     const long& operator[](unsigned long n) const { return *(begin_() + n); }
 };
-struct CCarryingDef : CDefPointeeBase {
+class CCarryingDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CLongVector AvailableCarrySlots;                    // +0x28
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCarryingDef>* out);     // 0x006A2FA0
 };
 void* FindDef_CDefClassBase_GetSubDef();       // stand-in callee of the stand-in body below
@@ -118,11 +118,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCarryingDef>* ou
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool    ToBeRemoved;                                // +0x08

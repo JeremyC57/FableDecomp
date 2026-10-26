@@ -5,10 +5,10 @@ template <class T> struct CRetailList {
     node* head;
     CRetailList() : head(0) { node* s = (node*)std::malloc(sizeof(node)); s->next = s; s->prev = s; head = s; }
 };
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* p) : ParentThing(p) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* p) : ParentThing(p) { } virtual ~CTCBase() { } };
 struct CQuestReward { unsigned char _body[8]; };
-struct CTCHeroGuide : CTCBase {
+class CTCHeroGuide : public CTCBase { public:
     
     CRetailList<CQuestReward> QuestRewards;
     CTCHeroGuide(CThing* parent) : CTCBase(parent)  { }

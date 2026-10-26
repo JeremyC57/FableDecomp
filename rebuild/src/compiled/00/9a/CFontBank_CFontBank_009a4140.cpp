@@ -8,14 +8,14 @@
 // out of line and `this` is returned.
 #include "fable_string.h"
 
-struct CFontManager;
+class CFontManager;
 
 struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                // 0x0099A2F0
 };
 
-struct CFontBank : CBaseClassNonCopyable {  // vtable 0x0129AB38
+class CFontBank : public CBaseClassNonCopyable { public:  // vtable 0x0129AB38
     unsigned long FontHeight;               // +0x04
     CCharString   Name;                     // +0x08
     CFontManager* PManager;                 // +0x0c

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessBoastUI {
+class CInputProcessBoastUI { public:
     void* vftable;
     int destroyed;
 };

@@ -9,8 +9,8 @@
 //   engine header layout (DisplayDamage +0x25, DisplayRepair +0x26, DisplayRenown +0x27).
 #include "engine/COverheadDisplayDef.h"
 
-struct CMemoryDataInputStream;
-struct CDataOutputStream {
+class CMemoryDataInputStream;
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
 };
 template<class T> struct CPersistTraits;
@@ -19,7 +19,7 @@ template<> struct CPersistTraits<bool> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];

@@ -15,11 +15,11 @@
 //   released last (`dec [ebp]`).
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CWideString ToWideString() const;                  // 0x0099E480
 };
@@ -41,13 +41,13 @@ public:
     unsigned char _body[0x18];
 };
 void __fastcall Destroy_0050be40(void* object);       // 0x0050BE40: the CAFile deleter stored in the block
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
     CCPPointerInfo(void* data) : RefCount(1), DeleteFunc(Destroy_0050be40), Data(data) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* object) : Data(object)
@@ -75,8 +75,8 @@ struct CFileLargeThemePalette
 };
 
 #pragma pack(push, 1)
-struct CFileFormatLevel
-{
+class CFileFormatLevel
+{ public:
     unsigned long ByteLength;                          // +0x00 CReplaceSerialise
     unsigned char SerialiseVersionNumber;              // +0x04
     long          MapDataOffset;                       // +0x05
@@ -87,8 +87,8 @@ struct CFileFormatLevel
     void ReadFromFile(CAFile* file, CASuspendableProcess* process);  // 0x0051A240
 };
 
-struct CFileFormatMapHeader
-{
+class CFileFormatMapHeader
+{ public:
     unsigned long          ByteLength;                 // +0x00 CReplaceSerialise
     unsigned char          SerialiseVersionNumber;     // +0x04
     unsigned long          ThingUIDCount[2];           // +0x05 ulong64

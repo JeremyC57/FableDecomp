@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_log[32]; static int g_n = 0;
-struct CDefPointeeBase { virtual ~CDefPointeeBase() {} virtual void DeleteThis() { g_log[g_n++] = 50; } unsigned long RefCount; };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: virtual ~CDefPointeeBase() {} virtual void DeleteThis() { g_log[g_n++] = 50; } unsigned long RefCount; };
+template<class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     ~CDefPointer() { CDefPointeeBase* object = Object; if (object) { if (--object->RefCount == 0) object->DeleteThis(); Object = 0; } }
 };
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer() { g_log[g_n++] = 40; } void* PItem; };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct C3DVector { float X, Y, Z; };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+class C3DVector { public: float X, Y, Z; };
 struct SNonscalarPtrIteratorTag { };
 struct CCombatRing { long Ring; };
 static void DestroyRange(CCombatRing*, CCombatRing*, const SNonscalarPtrIteratorTag&) { g_log[g_n++] = 60; }
@@ -30,7 +30,7 @@ struct CAttackerTree {
     }
 };
 class CThing; class CAttackPatternDef;
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     CAttackerTree Attackers; CCombatWheel CombatWheel; C3DVector LastVictimWheelUpdatePos; long LastWheelUpdateWorldFrame;
     CIntelligentPointer<CThing> PLastAttacker; CDefPointer<const CAttackPatternDef> PAttackPattern;
     long AttackPatternIndex; long FrameForNextInstruction;

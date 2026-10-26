@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
-struct CThingAICreature;
-struct CThingGameObject;
+class CCharStringData;
+class CThingAICreature;
+class CThingGameObject;
 
 #pragma pack(push, 1)
 struct CAIStateGroup_ApprenticeHero {

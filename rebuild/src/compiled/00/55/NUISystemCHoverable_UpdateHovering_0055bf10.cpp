@@ -16,7 +16,7 @@ struct CMouse {
     virtual void m017(); virtual void m018(); virtual void m019(); virtual void m020(); virtual void m021(); virtual void m022();
     virtual C2DVector GetSize();                     // slot 23 (+0x5C)
 };
-struct CManager {
+class CManager { public:
     void*         __vftable;
     unsigned char _pad04[0xa0];
     bool          FlagA4;                            // +0xA4 (restoring)
@@ -62,11 +62,11 @@ template <class T> struct CRetailList {              // STLport list: one word, 
     }
     void push_back(const T& x) { insert(end(), x); }
 };
-struct CComponent;
-struct CHoverable;
+class CComponent;
+class CHoverable;
 extern CRetailList<CHoverable*> g_HoverList;         // 0x013B8AD4
 bool __fastcall GIsAnyAlreadyHovered(C2DBoxI* mouse, CComponent* component);   // 0x0055BB40
-struct CObserver {
+class CObserver { public:
     virtual void o00(); virtual void o01();
     virtual bool IsListeningTo(long event);          // slot 2 (+0x08)
 };
@@ -107,7 +107,7 @@ struct CComponentBase {
     virtual void OnHovered();                        // slot 143 (+0x23C)
     virtual void OnUnhovered();                      // slot 144 (+0x240)
 };
-struct CHoverable : CComponentBase, CObserver {
+class CHoverable : public CComponentBase, public CObserver { public:
     unsigned char _pad_0x08[0x158];
     bool          Hovered;                           // +0x160
     void UpdateHovering();

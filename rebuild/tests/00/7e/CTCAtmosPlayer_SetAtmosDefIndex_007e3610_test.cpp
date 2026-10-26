@@ -2,7 +2,7 @@
 #include <cmath>
 // Behaviour test: CTCAtmosPlayer::SetAtmosDefIndex -- stores the index; a non-zero index creates an emitter at the parent position (when a sound system exists) and plays the def name on it.
 #define CHECK(c) if (!(c)) { std::printf("007e3610_TEST FAIL\n"); return 1; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CEmitter { int plays; const char* last; CEmitter() : plays(0), last(0) { } void Play(const char* name) { ++plays; last = name; } };
 static CEmitter gEmitter;
 static int g_created = 0;
@@ -11,7 +11,7 @@ struct CSoundSystem { CEmitter* CreateEmitter(const C3DVector& p) { ++g_created;
 static CSoundSystem g_system;
 static CSoundSystem* g_pSoundSystem = 0;
 static const char* g_names[3] = { "", "ATMOS_FOREST", "ATMOS_CAVE" };
-struct CThing { C3DVector Position; const C3DVector& GetPosition() const { return Position; } };
+class CThing { public: C3DVector Position; const C3DVector& GetPosition() const { return Position; } };
 struct CTCAtmosPlayer {
     CThing*   ParentThing;
     long      AtmosDefIndex;

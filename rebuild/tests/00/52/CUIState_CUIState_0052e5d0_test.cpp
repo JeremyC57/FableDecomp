@@ -1,8 +1,8 @@
 // Behaviour test for NUISystem::CUIState::CUIState (0x0052E5D0).
 #include <cstdio>
 
-struct C2DVector { float X, Y; C2DVector() { } };
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour() { } };
+class C2DVector { public: float X, Y; C2DVector() { } };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour() { } };
 struct CUIState {
     unsigned long StateChangeFlag;
     long StateChangeType;

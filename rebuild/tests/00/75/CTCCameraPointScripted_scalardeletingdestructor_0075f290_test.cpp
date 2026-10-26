@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCameraPointScripted {
+class CTCCameraPointScripted { public:
     void* vftable;
     int destroyed;
 };

@@ -9,10 +9,10 @@
 // calls an out-of-line `??1CTCActionUseBase` from inside the forced inline. `__declspec(novtable)` on CTCActionUseBase keeps
 // that explicit destructor from storing 0x0123F09C (retail has no such store; the class's real destructor is implicit,
 // see 0x004DA967). The inline constructor + `new` factory pull the vtable, and with it `??_G`, into the TU.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08

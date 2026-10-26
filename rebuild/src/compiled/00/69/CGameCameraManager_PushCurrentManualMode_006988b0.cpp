@@ -9,7 +9,7 @@
 // Shape: the IS_THING_ALIVE idiom on PObservedThing (address kept in edi); `CDefPointer def = *CameraListIndex;` is a named local
 // (add-ref `inc [edi+4]`) copied again into the by-value argument (`push ecx ; mov eax,esp ; mov [eax],edi`); its destructor
 // releases with `dec [edi+4] ; jne` and tail-jumps the virtual Destroy.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
 };
@@ -23,7 +23,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                 // slot 1
 };
-struct CCameraModeDef : CDefVirtual {
+class CCameraModeDef : public CDefVirtual { public:
     long m_count;                           // +4
 };
 struct CDefPointer_CCameraModeDef {
@@ -43,7 +43,7 @@ struct CDefPointer_CCameraModeDef {
 };
 
 namespace NCameraModes {
-struct CScriptModuleBase {
+class CScriptModuleBase { public:
     virtual void v00();
     virtual void v01();
     virtual bool AllowsManualControl();     // slot 2 (+8)
@@ -51,12 +51,12 @@ struct CScriptModuleBase {
 }
 struct SCountBlock;
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*         __vftable;                                            // +0x00
     unsigned char _pad04[0xd0];                                         // +0x04
     CCountedPointer<NCameraModes::CScriptModuleBase> PCurrentScriptModule; // +0xd4

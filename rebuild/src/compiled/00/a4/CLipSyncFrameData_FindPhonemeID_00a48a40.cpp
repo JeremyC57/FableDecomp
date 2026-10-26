@@ -11,13 +11,13 @@ public:
 private:
     void* m_pData;
 };
-struct CLipSyncPhoneme {                            // 12 bytes
+class CLipSyncPhoneme { public:                            // 12 bytes
     CCharString Name;                              // +0x00
     unsigned long ID;                               // +0x04
     long        Value;                             // +0x08
     CLipSyncPhoneme() : ID(0), Value(0) { }
 };
-struct CLipSyncFrameData {
+class CLipSyncFrameData { public:
     CLipSyncPhoneme* m_first;                       // +0x00 the phoneme record vector
     CLipSyncPhoneme* m_last;
     CLipSyncPhoneme* m_end;

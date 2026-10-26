@@ -13,7 +13,7 @@
 #pragma intrinsic(sqrt)
 #include "engine/CEnginePrimitiveAttachmentManager.h"
 #include "engine/CEngineCamera.h"
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -21,8 +21,8 @@ struct C3DVector {
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CPlane { C3DVector Normal; float D; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class CPlane { public: C3DVector Normal; float D; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 struct CCameraVector {                             // STLport vector<CEngineCamera*> (12 bytes)
     CEngineCamera** _M_start;
     CEngineCamera** _M_finish;

@@ -16,7 +16,7 @@
 // members as opaque byte arrays, so this source models the class locally with the header's
 // member names and offsets.
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -27,17 +27,17 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
+{ public:
     virtual void v00();
     CIntelligentPointer() {}
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 #pragma pack(push, 1)
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
@@ -47,8 +47,8 @@ struct CTCBase
     ~CTCBase();                                     // 0x00686830
 };
 
-struct CTCBoastingPosition : CTCBase                // vtable 0x0126B24C
-{
+class CTCBoastingPosition : public CTCBase                // vtable 0x0126B24C
+{ public:
     CIntelligentPointer<CThing> PBoastingPodium;    // +0x0c
     C3DVector     OrbPosition;                      // +0x14
     bool          PositionActivated;                // +0x20

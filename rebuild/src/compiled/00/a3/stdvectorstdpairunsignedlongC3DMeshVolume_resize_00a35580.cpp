@@ -13,7 +13,7 @@
 //   this TU's counted-pointer dtor clears both words after the release.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
@@ -23,7 +23,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);     // +4 per-type deleter, object in ecx
     void* m_pObject;                            // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* m_pCount;
     CCountedPointer() : Data(0), m_pCount(0) { }
@@ -37,8 +37,8 @@ template <class T> struct CCountedPointer {
         m_pCount = 0;
     }
 };
-struct CContainmentVolume;
-struct C3DMeshVolume {                          // 12 bytes
+class CContainmentVolume;
+class C3DMeshVolume { public:                          // 12 bytes
     CCharString Name;                           // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };

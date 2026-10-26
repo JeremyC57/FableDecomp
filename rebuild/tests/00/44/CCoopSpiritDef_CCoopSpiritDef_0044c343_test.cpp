@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stddef.h>
 static int g_baseCalls;
-struct CShoveHaPennyRegionDef { virtual void v00() {} unsigned char _body[0x24]; CShoveHaPennyRegionDef() { ++g_baseCalls; } };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
-struct CCoopSpiritDef : CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public: virtual void v00() {} unsigned char _body[0x24]; CShoveHaPennyRegionDef() { ++g_baseCalls; } };
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
+class CCoopSpiritDef : public CShoveHaPennyRegionDef { public:
     CDefString m_name0, m_name1, m_name2, m_name3;
     virtual void v00() {}
     CCoopSpiritDef();

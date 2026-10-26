@@ -23,7 +23,7 @@ struct CModeList_Retail {                       // STLport list<...>: the sentin
     CModeBase_Retail* front() const { return node->next->data; }
 };
 
-struct CTCCreatureModeManager {                 // vtable 0x01268854
+class CTCCreatureModeManager { public:                 // vtable 0x01268854
     virtual void v00();
     virtual void v01();
     virtual void v02();

@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
-struct CCharString { const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class CCharString { public: const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CPresenceBits { unsigned long Bits[9]; bool test(long bit) const { return (Bits[bit >> 5] >> (bit & 31)) & 1; } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {
     }
     SEntry* LowerBound(const long* type) { return (SEntry*)((const CInterfaceMap*)this)->LowerBound(type); }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits  m_present;
     CInterfaceMap  m_interfaces;
     C3DVector Pos;
@@ -63,9 +63,9 @@ struct CThing {
     }
 };
 static int g_destroys;
-struct CDefPointeeBase { void Destroy() const { ++g_destroys; } mutable long RefCount; };
-struct CHeroAbilityDef : CDefPointeeBase { long TrainableStat; long* WillCosts; long TrainableStatExperience; };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: void Destroy() const { ++g_destroys; } mutable long RefCount; };
+class CHeroAbilityDef : public CDefPointeeBase { public: long TrainableStat; long* WillCosts; long TrainableStatExperience; };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
@@ -79,27 +79,27 @@ struct CAbilityEntryVector {
 };
 static bool g_toggle, g_use = true, g_able = true;
 static long g_lastUsed = -1;
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     bool ToggleUsingAbility(EHeroAbility) { return g_toggle; }
     bool UseSpecialAbility(EHeroAbility a) { g_lastUsed = a; return g_use; }
 };
-struct CTCHeroStats { long* AbilityUseCounts; long Stamina; void ModifyStaminaBy(long amount) { Stamina += amount; } };
+class CTCHeroStats { public: long* AbilityUseCounts; long Stamina; void ModifyStaminaBy(long amount) { Stamina += amount; } };
 struct CTCHeroState { bool CanUseAbilities; };
 struct CTCSpellCost { long Cost; long GetCost() { return Cost; } };
-struct CTCHeroExperience { long Stat, Amount; void AddTrainableStatExperience(long stat, long amount) { Stat = stat; Amount += amount; } };
+class CTCHeroExperience { public: long Stat, Amount; void AddTrainableStatExperience(long stat, long amount) { Stat = stat; Amount += amount; } };
 static int g_sounds;
 struct CSoundInfo { unsigned long PlaySound(const CCharString& name, long, long, long, long) { if (!strcmp(name.Text, "HERO_ABILITY_CAST_FAILED")) ++g_sounds; return 0; } };
-struct CMessageEvent;
+class CMessageEvent;
 static int g_messages; static long g_msgParam; static unsigned long g_msgFlags;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector*, CThing*, CThing*, float, float, long priority)
     { if (type == 0x44) { ++g_messages; g_msgParam = priority; g_msgFlags = flags; } return 0; }
 };
 static CMessageEventManager g_mem;
-struct CWorld { CMessageEventManager* PMessageEventManager; };
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
 static CWorld g_world = { &g_mem };
 static long g_FrameRate = 30;
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CThing* ParentThing;
     bool    CurrentSpecialAbilityUsedFromQuickAccess;
     CAbilityEntryVector Abilities;

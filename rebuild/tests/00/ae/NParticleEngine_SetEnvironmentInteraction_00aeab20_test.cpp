@@ -3,7 +3,7 @@
 static int gDeleted = 0;
 struct CCountBlock { long RefCount; void (*DeleteData)(void* data); void* Data; };
 template <class T> struct TDeleter { static void DeleteData(void* data) { ++gDeleted; delete (T*)data; } };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCountBlock* Block;
     CCountedPointer() : Data(0), Block(0) { }
     explicit CCountedPointer(T* p) : Data(p), Block(0)

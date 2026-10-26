@@ -5,7 +5,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 static bool near_(float a, float b) { return fabs(a - b) < 1e-4f; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -15,13 +15,13 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
 };
-struct CThing { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+class CThing { public: C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
 static CThing g_hero;
-struct CPlayerManager { CThing* GetMainHero() { return &g_hero; } };
+class CPlayerManager { public: CThing* GetMainHero() { return &g_hero; } };
 static CPlayerManager g_pm;
-struct CGame { CPlayerManager* GetPlayerManager() { return &g_pm; } };
+class CGame { public: CPlayerManager* GetPlayerManager() { return &g_pm; } };
 static CGame g_game;
-struct CTCCameraPointTrack {
+class CTCCameraPointTrack { public:
     float CameraStringLength, CameraCageRadius;
     C3DVector DragCamPos;
     CGame* GetGame() { return &g_game; }

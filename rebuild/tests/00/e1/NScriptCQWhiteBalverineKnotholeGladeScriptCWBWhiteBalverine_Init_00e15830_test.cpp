@@ -2,11 +2,11 @@
 // gate handle's reference released at the end.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void DeleteThing(void*) { ++g_deleted; }
-struct CScriptThing {
+class CScriptThing { public:
     void* Data; CCPPointerInfo* Info;
     CScriptThing() : Data(0), Info(0) { }
     CScriptThing(const CScriptThing& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -16,7 +16,7 @@ struct CScriptThing {
         Data = 0; Info = 0;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CCPPointerInfo* block; char lastName[32], sound[32]; const CScriptThing* soundThing; long music; bool m1, m2;
     virtual CScriptThing GetThingWithScriptName(const CCharString& name)
     { std::strcpy(lastName, name.text); CScriptThing t; t.Info = block; ++block->RefCount; t.Data = block; return t; }

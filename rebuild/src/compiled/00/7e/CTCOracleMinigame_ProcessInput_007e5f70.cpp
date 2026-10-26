@@ -61,7 +61,7 @@ public:
 };
 }
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Count;
     T* operator->() const { return Data; }

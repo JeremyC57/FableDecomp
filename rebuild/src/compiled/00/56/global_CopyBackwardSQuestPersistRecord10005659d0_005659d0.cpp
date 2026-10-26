@@ -9,7 +9,7 @@
 // (moved after the third call, the count's `dec ebx` scheduled ahead of them). The manifest label pair<CCharString,
 // CRuntimeQuestPersistence::CPersistInfo> is 12 bytes (Ego_r.pdb CPersistInfo = two strings), so this row is a
 // different, 16-byte record: the label is propagated; modelled as the label's three strings plus two flags.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

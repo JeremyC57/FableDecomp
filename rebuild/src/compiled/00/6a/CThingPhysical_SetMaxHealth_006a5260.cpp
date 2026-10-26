@@ -13,7 +13,7 @@ template <class T> inline void ClampMax(T& value, const T& maximum)
         value = maximum;
 }
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad00[0xb0];
     float         MaxHealth;                             // +0xb0
     float         Health;                                // +0xb4

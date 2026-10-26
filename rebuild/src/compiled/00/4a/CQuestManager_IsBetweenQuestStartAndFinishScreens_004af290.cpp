@@ -1,6 +1,6 @@
 extern unsigned char g_questScreenFlag;
 
-struct CQuestManager {
+class CQuestManager { public:
     char pad[0x98];
     void* screenPtr;
 };

@@ -3,7 +3,7 @@
 // small vector; the by-value argument frees its buffer).
 struct CEvent { long m_a, m_b; };
 static int g_deletes = 0;
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;
     int Size;
     CSmallVector() : Start(0), Size(0) { }
@@ -20,7 +20,7 @@ template<class T, int N> struct CSmallVector {
     ~CSmallVector() { if (Start) ++g_deletes; delete[] Start; }
 };
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
 };

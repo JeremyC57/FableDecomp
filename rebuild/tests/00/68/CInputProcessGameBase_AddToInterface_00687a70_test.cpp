@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static void* g_manager = 0;
-struct CInputProcessManager;
+class CInputProcessManager;
 
 struct CInputProcessGameBase_Methods : CInputProcessGameBase {
     bool AddToInterface(CInputProcessManager* manager);

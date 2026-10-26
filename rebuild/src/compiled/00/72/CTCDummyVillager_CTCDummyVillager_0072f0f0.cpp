@@ -11,21 +11,21 @@
 // DayToBeRecreated +0x40, FrameToBeRecreated +0x44, Respawnable +0x48, Guard +0x49.
 // Shape: plain initialisers in declaration order; one zero register (ebx), each pointer member
 // addressed once in edi for its base ctor + vtable store.
-struct CThing;
-struct CThingBuilding;
-struct CThingAICreature;
+class CThing;
+class CThingBuilding;
+class CThingAICreature;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
     void* m_pItem;                                          // +4
     CBaseIntelligentPointer();                              // 0x00A01B10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -33,7 +33,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CTCDummyVillager : CTCBase {                         // vtable 0x01266CDC
+class CTCDummyVillager : public CTCBase { public:                         // vtable 0x01266CDC
     unsigned long                         DefType;          // +0x0c
     CIntelligentPointer<CThingBuilding>   HomeBuilding;     // +0x10
     unsigned __int64                      HomeBuildingUID;  // +0x18

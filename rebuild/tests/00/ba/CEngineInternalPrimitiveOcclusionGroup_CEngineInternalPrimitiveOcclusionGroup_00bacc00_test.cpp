@@ -2,7 +2,7 @@
 #include <cstring>
 #include <new>
 static long g_type = 0; static unsigned long g_flags = 0;
-struct CIVCountedPointeeBase { virtual void v00() { } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual void v00() { } unsigned long IVRefCount; };
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; CIVCountedPointer() : Object(0) { } };
 struct CBase { virtual void v00() { } unsigned char _pad04[0x44]; CBase(long type, unsigned long flags) { g_type = type; g_flags = flags; } };
 struct COccBase : CBase { CIVCountedPointer OcclusionInfo[2]; COccBase(long t, unsigned long f) : CBase(t, f) { } };

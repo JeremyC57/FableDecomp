@@ -4,12 +4,12 @@
 #endif
 // Model of std::remove_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> > @ 0x008AC060: find the first
 // point within the XY radius, then compact the remaining far points over it; returns the new end.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { return X * X + Y * Y; }

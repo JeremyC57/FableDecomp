@@ -11,10 +11,10 @@
 // "CTCAvoidRegionExit::CTCAvoidRegionExit" is propagated.
 // Shape: the init list in declaration order; VC interleaves the argument loads with the stores and
 // shares one `xor eax,eax` between Burning and FireDamageAfterFrame.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
 };

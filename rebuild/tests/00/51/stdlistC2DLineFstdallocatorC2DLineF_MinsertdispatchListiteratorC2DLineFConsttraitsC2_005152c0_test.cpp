@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct C2DVector { float X, Y; };
-struct C2DLineF { C2DVector Point1, Point2; };
+class C2DVector { public: float X, Y; };
+class C2DLineF { public: C2DVector Point1, Point2; };
 struct NodeBase { NodeBase* _M_next; NodeBase* _M_prev; };
 struct LineNode : NodeBase { C2DLineF _M_data; };
 

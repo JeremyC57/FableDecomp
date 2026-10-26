@@ -9,7 +9,7 @@
 // the owner must carry thing-type flag 0x40 (ThingTypeFlags +0x6c) before it is stored through the
 // out pointer. Two exits: `mov al,1` after the store, the shared `xor al,al` for every failure.
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer
 {
@@ -19,12 +19,12 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -34,8 +34,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44

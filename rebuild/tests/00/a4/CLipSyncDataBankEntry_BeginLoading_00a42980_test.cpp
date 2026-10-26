@@ -62,13 +62,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CPhonemeDataBank;
-struct CResourceBank;
-struct CSpeechAnalyser;
+class CCPPointerInfo;
+class CPhonemeDataBank;
+class CResourceBank;
+class CSpeechAnalyser;
 
 #pragma pack(push, 1)
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     long              object;                                // +0x04 retail-only long (previous header)
     unsigned char     _pad_0x08[0x4];                        // +0x08
@@ -223,15 +223,15 @@ FABLE_STATIC_ASSERT(offsetof(CLipSyncDataBank, PhonemeBank) == 0x1fc);
 #include <stddef.h>
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -327,10 +327,10 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -362,7 +362,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CResourceList {
+class CResourceList { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Head[0x1c];                                // +0x04 CResource
     unsigned long ResourceCount;                             // +0x20
@@ -399,7 +399,7 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
 
 
 struct CBufferChunk;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CFileInfo;
 
 #pragma pack(push, 1)
@@ -466,7 +466,7 @@ FABLE_STATIC_ASSERT(offsetof(CActiveFile, DecompressFinish) == 0xc0);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };

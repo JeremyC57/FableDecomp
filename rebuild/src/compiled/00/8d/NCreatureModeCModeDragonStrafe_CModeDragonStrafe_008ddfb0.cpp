@@ -12,16 +12,16 @@
 // Shape: CModeDragonFlyingBase is `__declspec(novtable)` with an inline ctor (only the derived vptr is stored);
 // the spline's inline ctor gives the three zero words from ebx, the 0.5 tension and the bool before the filter;
 // the frame counts are body assignments (`fild fps ; fmul [arg]`), BurninateStartTime re-reading Timer.
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -33,7 +33,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -80,7 +80,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CModeBase {                         // retail 0x1c: vptr, ParentThing, WeaponBasedFilter, FramesBeforeRemovingSelf, Active
     virtual void v00();
@@ -92,14 +92,14 @@ template <class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template <class T> struct CArray {         // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
+template <class T> class CArray { public:         // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
     T*                  _M_start;
     T*                  _M_finish;
     CArrayAllocProxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CCardinalSpline {                   // retail 0x14
+class CCardinalSpline { public:                   // retail 0x14
     CArray<C3DVector> ControlPoints;       // +0
     float             Tension;             // +0xc
     bool              EndPointsConnected;  // +0x10

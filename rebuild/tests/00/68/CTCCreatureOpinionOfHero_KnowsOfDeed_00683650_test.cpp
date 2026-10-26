@@ -10,7 +10,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -18,17 +18,17 @@ struct CThing {
     unsigned char Flags91;
     __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct COpinionDeed { long Type; };
+class COpinionDeed { public: long Type; };
 static long g_handleSeen = -1;
 static COpinionDeed* g_deedToReturn = 0;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle) { g_handleSeen = handle; return g_deedToReturn; }
 };
-struct CPlayer { CThing* hero; CThing* GetHeroThing() { return hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CPlayer { public: CThing* hero; CThing* GetHeroThing() { return hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
 static CPlayerManager g_pm;
 static long g_typedHandle = -2, g_typedType = -2; static int g_typedPending = -1; static bool g_typedResult = false; static int g_typedCalls = 0;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00() {}
     CThing* ParentThing;
     CPlayerManager* GetPlayerManager_00686d50() { return &g_pm; }

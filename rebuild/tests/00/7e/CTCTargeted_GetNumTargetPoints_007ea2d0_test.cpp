@@ -17,7 +17,7 @@ long Inner::Query(void* p, float f)
     return g_ret;
 }
 
-struct CTCTargeted {
+class CTCTargeted { public:
     void* v;
     Inner* obj;
 };

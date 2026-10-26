@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CCharString
-{
+class CCharString
+{ public:
 	void* p;
 };
 
-struct CRegion
-{
+class CRegion
+{ public:
 	void* m0;
 	void SetMiniMapRegionExitTextOffsetX(CCharString* out, float unused);
 };

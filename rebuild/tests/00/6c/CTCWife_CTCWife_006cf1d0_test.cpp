@@ -26,11 +26,11 @@
 //   node released through `free`; the def pointer release is the pointee's inline `Release()` (`if (--RefCount == 0) DeleteThis()`,
 //   through ecx; open-coded in the holder dtor it goes through eax) with the zero store inside the null test.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-struct CThing;
+class CThing;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -40,23 +40,23 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBool(bool value) { Copy(1, &value); }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void EndScreenFadeOut();                       // 0x00434C90
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                // +0x28
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool ToBeRemoved;                              // +0x08
@@ -114,7 +114,7 @@ struct CLongTree {                                 // set<long> (12 bytes)
     }
     ~CLongTree() { clear(); if (m_pHeader) free(m_pHeader); }
 };
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long RefCount;                                 // +0x04
@@ -130,7 +130,7 @@ struct CDefPointerHeroMarriage {
         }
     }
 };
-struct CTCWife : CTCBase {                         // vtable 0x0125ED5C
+class CTCWife : public CTCBase { public:                         // vtable 0x0125ED5C
     CDefPointerHeroMarriage PHeroMarriageDef;      // +0x0c
     long OpinionAttitude;                          // +0x10
     unsigned char AttitudeUpdateCounter;           // +0x14

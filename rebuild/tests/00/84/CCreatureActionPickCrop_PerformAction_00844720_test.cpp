@@ -14,7 +14,7 @@ int Sub::M() {
     return r;
 }
 
-struct CCreatureAction_PickCrop {
+class CCreatureAction_PickCrop { public:
     char pad[0xa8];
     Sub sub;
     void PerformAction();

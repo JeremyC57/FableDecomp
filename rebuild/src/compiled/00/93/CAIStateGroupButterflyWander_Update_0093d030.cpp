@@ -12,44 +12,44 @@
 // (VC cross-jumps it into the common Terminate call with `mov ecx,esi` hoisted above the `je`).
 // Layout: Ego_r.pdb CAIStateGroup_ButterflyWander StartPos +0x24.
 // Leaf: Update@CAIStateGroup_ButterflyWander
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                     // +0x04..+0xa7
     ~CCreatureActionBase();                        // 0x00693EF0
 };
 
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                     // +0xa8..+0xb3
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                 // +0x18
 };
 
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                              // +0x04
     unsigned char _pad[0x0c];                      // +0x08..+0x13

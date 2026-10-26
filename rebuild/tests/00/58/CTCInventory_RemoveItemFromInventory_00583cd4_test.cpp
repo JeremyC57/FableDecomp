@@ -2,11 +2,11 @@
 // Behaviour test for CTCInventory::RemoveItemFromInventory (0x00583CD4): same body as src/, with the base removal,
 // the held-count query, the def lookups and the light interface stubbed and recorded.
 static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     long RefCount;
     void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     ~CDefPointer()
@@ -16,7 +16,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CLightDef : CDefClassBase { };
+class CLightDef : public CDefClassBase { public: };
 static CLightDef g_lightDef;
 struct CThingDef : CDefClassBase {
     bool hasLight;
@@ -27,7 +27,7 @@ struct CThingDef : CDefClassBase {
     }
 };
 static CThingDef g_thingDef;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out)
     {
         ++g_thingDef.RefCount; out->Object = &g_thingDef; return true;
@@ -35,9 +35,9 @@ struct CDefinitionManager {
 };
 static CDefinitionManager g_defs;
 static int g_lightCalls = 0; static bool g_lightState = true;
-struct CTCLight { void SetActive(bool a) { ++g_lightCalls; g_lightState = a; } };
+class CTCLight { public: void SetActive(bool a) { ++g_lightCalls; g_lightState = a; } };
 static CTCLight g_light;
-struct CThing {
+class CThing { public:
     bool hasLight;
     template<class T> bool GetInterface(T** ppOut, long type)
     {
@@ -59,7 +59,7 @@ struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long d) { ++g_countCalls; return g_held; }
     void RemoveItemFromInventory(long d, long c) { g_baseDef = d; g_baseCount = c; }
 };
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     CRetailVector<long> SlotItems;
     CRetailVector<long> QuickAccessItems;
     bool NeedsRefresh;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessFreezeControls {
+class CInputProcessFreezeControls { public:
     void* vftable;
     int destroyed;
 };

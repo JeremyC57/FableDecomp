@@ -10,7 +10,7 @@ static int fails = 0;
 // Flags: /GS
 // Shape: one CPlayer* local holds both GetPlayer results (the mode test, then the hero lookup), which gives retail's
 //   callee-saved assignment (event in ebp, creature in edi).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -35,28 +35,28 @@ public:
     bool          Replacement;                     // +0x27
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
     bool IsBlocking();                             // 0x00664D00
     void UseAbility(long ability, float charge);   // 0x00665510
 };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(EPlayerMode mode);                // 0x00634160
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                    // 0x00449700
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void OnEventAttack();                          // 0x004379B0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CWorld {
+class CWorld { public:
     unsigned char       _pad00[0xc];
     CPlayerManager*     PlayerManager;             // +0x0C
     CDefinitionManager* DefinitionManager;         // +0x10

@@ -9,7 +9,7 @@
 // comparator; the by-value pair is destroyed here at the end.  `top` lives in the `push ecx` slot.
 // CKeyPairCompareLess<float,...>: `a.first < b.first` (`fld ; fcomp ; test ah,5 ; jp`).
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; the bottom case reuses idx (`first[idx - 1]`).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -22,7 +22,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<float, CCharString> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

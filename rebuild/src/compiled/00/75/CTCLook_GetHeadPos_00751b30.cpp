@@ -7,20 +7,20 @@
 // so the record is packed here to keep it at +0xa1). Shape: a C3DVector with a user constructor comes back through the
 // hidden pointer (`ret 4`, eax = result); the cached copy is three dword moves through edx/ecx, which needs the
 // memberwise user copy constructor (the implicit copy of the packed member is a block copy through esi).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector GetHeadPos(bool exact);              // 0x00661B40
 };
 
 extern bool g_bQueryCreatureHeadPos;             // 0x013BAE1B
 
 #pragma pack(push, 1)
-struct CTCLook {
+class CTCLook { public:
     unsigned char       _pad_0x00[0x10];
     CThingCreatureBase* PParentCreature;         // +0x10
     unsigned char       _pad_0x14[0xa0 - 0x14];

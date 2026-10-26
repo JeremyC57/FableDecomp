@@ -24,7 +24,7 @@ struct C2DVector {
 struct CRGBColour {
     unsigned char B, G, R, A;
 };
-struct CUIState {                           // map value (key: the state index)
+class CUIState { public:                           // map value (key: the state index)
     unsigned long StateChangeFlag;          // +0x00
     long          StateChangeType;          // +0x04
     C2DVector     Position;                 // +0x08

@@ -6,7 +6,7 @@
 // Layout = Ego_r.pdb CTCRegionDisplay (0x28): CurrentAreaName +0x0c, CurrentAreaNameExtra +0x10 (CWideString, one pointer each),
 // FrameNameChanged +0x14, CurrentAlpha +0x18, LastAlpha +0x1c, DisplayTime +0x20, TimeOut +0x24, InfoDisplay +0x25,
 // UpdateWhilePaused +0x26.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -17,12 +17,12 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void AddToGlobalUpdateTCs();                            // 0x00686ED0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                          // 0x0099AED0
 };
 
-struct CTCRegionDisplay : CTCBase_Calls {                   // vtable 0x0125A0EC
+class CTCRegionDisplay : public CTCBase_Calls { public:                   // vtable 0x0125A0EC
     CWideString CurrentAreaName;                            // +0x0c
     CWideString CurrentAreaNameExtra;                       // +0x10
     long        FrameNameChanged;                           // +0x14

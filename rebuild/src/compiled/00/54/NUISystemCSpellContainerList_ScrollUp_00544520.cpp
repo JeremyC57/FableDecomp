@@ -21,7 +21,7 @@ struct CRGBColour {
     unsigned char B, G, R, A;
     CRGBColour() {}
 };
-struct CComponent {
+class CComponent { public:
     virtual void c000() const; virtual void c001() const; virtual void c002() const; virtual void c003() const; virtual void c004() const; virtual void c005() const;
     virtual void c006() const; virtual void c007() const; virtual void c008() const; virtual void c009() const; virtual void c010() const; virtual void c011() const;
     virtual void c012() const; virtual void c013() const; virtual void c014() const; virtual void c015() const; virtual void c016() const; virtual void c017() const;
@@ -53,7 +53,7 @@ template <class T> struct CRetailVector {        // STLport vector (12 bytes)
     unsigned int size() const { return (unsigned int)(end() - begin()); }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CSpellContainerList {
+class CSpellContainerList { public:
     unsigned char _pad00[0x164];
     unsigned long SelectedChild;                 // +0x164
     unsigned char _pad168[0x170 - 0x168];

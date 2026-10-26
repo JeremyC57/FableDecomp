@@ -1,8 +1,8 @@
 // CGameScriptInterface::GetAllActiveQuestInfo
 struct CCharStringVector;
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void GetAllActiveQuestInfo(
         CCharStringVector& questNames,
         CCharStringVector& questInfo);

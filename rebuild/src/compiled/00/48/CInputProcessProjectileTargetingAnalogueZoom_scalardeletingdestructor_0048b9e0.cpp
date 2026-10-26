@@ -1,4 +1,4 @@
-struct CInputProcessProjectileTargetingAnalogueZoom {
+class CInputProcessProjectileTargetingAnalogueZoom { public:
     void* vftable;
 };
 

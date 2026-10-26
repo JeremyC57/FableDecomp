@@ -1,5 +1,5 @@
 #include "engine/CGameScriptThing.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharStringData {
+class CCharStringData { public:
     void* p0;
     int   v4;
 };

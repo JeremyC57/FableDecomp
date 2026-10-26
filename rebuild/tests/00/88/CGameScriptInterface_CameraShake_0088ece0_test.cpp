@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 
-struct C3DVector { float x; float y; float z; };
+class C3DVector { public: float x; float y; float z; };
 
 static C3DVector g_seenPos = {0,0,0};
 static float g_seenMag = 0.0f, g_seenDur = 0.0f;
@@ -37,7 +37,7 @@ struct CCamMgr {
     virtual bool GetObj(CCamObj** out){ *out = &g_obj; return true; }
 };
 
-struct CWorld { char pad[0x38]; };
+class CWorld { public: char pad[0x38]; };
 
 void __fastcall CGameScriptInterface_CameraShake(const CGameScriptInterface* self, float magnitude, float duration)
 {

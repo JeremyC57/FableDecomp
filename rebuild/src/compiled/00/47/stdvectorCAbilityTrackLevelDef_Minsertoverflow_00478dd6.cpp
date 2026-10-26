@@ -18,7 +18,7 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 
-struct CAbilityTrackLevelDef {
+class CAbilityTrackLevelDef { public:
     unsigned char _body[0x48];
     CAbilityTrackLevelDef(const CAbilityTrackLevelDef& other);                  // 0x004787F6
 };

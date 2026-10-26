@@ -42,7 +42,7 @@ inline C3DVector operator*(const C3DVector& v, const CMatrix3x4& m)
                      v.Z * m.E33 + v.Y * m.E23 + v.X * m.E13);
 }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void*         Data;

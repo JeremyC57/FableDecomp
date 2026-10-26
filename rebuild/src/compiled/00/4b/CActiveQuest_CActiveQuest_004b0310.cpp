@@ -13,7 +13,7 @@
 // tails of the second pointer's branches.
 void* operator new(unsigned int size);              // 0x00BFEA1A
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);          // 0x0099EC30
 };
@@ -28,7 +28,7 @@ template<void (__fastcall* Destroy)(void*)> struct SCountBlock {
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy), m_pObject(object) { }
 };
 
-template<class T, void (__fastcall* Destroy)(void*)> struct CCountedPointer {
+template<class T, void (__fastcall* Destroy)(void*)> class CCountedPointer { public:
     T* m_pObject;                                   // +0
     SCountBlock<Destroy>* m_pCount;                 // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -40,10 +40,10 @@ template<class T, void (__fastcall* Destroy)(void*)> struct CCountedPointer {
     }
 };
 
-struct CScriptInfo;
-struct CScriptBase;
-struct CScriptDataBase;
-struct CRegion;
+class CScriptInfo;
+class CScriptBase;
+class CScriptDataBase;
+class CRegion;
 
 struct CRegionVector {                              // retail vector<const CRegion*> (first, last, end)
     const CRegion** m_first;
@@ -52,7 +52,7 @@ struct CRegionVector {                              // retail vector<const CRegi
     CRegionVector() : m_first(0), m_last(0), m_end(0) { }
 };
 
-struct C2DCoordI { long X, Y; };
+class C2DCoordI { public: long X, Y; };
 
 struct CActiveQuest {
     long         ID;                                // +0x00

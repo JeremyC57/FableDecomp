@@ -8,12 +8,12 @@
 // constructor @ 0x00BACDB0; the compiler then stores this class's vtable (0x012A5780, named
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     CEnginePrimitiveManager(void* argument);            // 0x00BACDB0
 };
 
-struct CEnginePrimitiveManagerWeatherMask : CEnginePrimitiveManager {
+class CEnginePrimitiveManagerWeatherMask : public CEnginePrimitiveManager { public:
     virtual void v00();
     CEnginePrimitiveManagerWeatherMask(void* argument);
 };

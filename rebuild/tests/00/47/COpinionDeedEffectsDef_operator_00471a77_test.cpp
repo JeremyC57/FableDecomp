@@ -69,7 +69,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct COpinionDeedEffectsDef {
+class COpinionDeedEffectsDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -135,7 +135,7 @@ FABLE_STATIC_ASSERT(offsetof(COpinionDeedEffectsDef, BlockWhileFollowingPlayer) 
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x21];                          // +0x04 flattened base-class subobject(s)
     long          InstantiationName_TablePos;                // +0x25 CDefString::TablePos
@@ -157,7 +157,7 @@ typedef long S32;
 typedef int S32;
 #endif
 #pragma pack(push,1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __vftable;
     unsigned char DefClassBase[0x21]; // donor named flattened base, actual bytes4..24
     S32 InstantiationName_TablePos;
@@ -166,13 +166,13 @@ struct CParentDefClassBase {
 };
 #pragma pack(pop)
 
-struct COpinionTransientOffset;
+class COpinionTransientOffset;
 struct OpinionOffsetNode;
 struct OpinionOffsetList { OpinionOffsetNode* Head; OpinionOffsetList& operator=(const OpinionOffsetList&); }; // 00471b73
-struct COpinionDeedReactionDef; struct CCharString;
+class COpinionDeedReactionDef; class CCharString;
 struct ReactionVector { COpinionDeedReactionDef *Start,*Finish,*End; ReactionVector& operator=(const ReactionVector&); }; // 00471cc5
 struct WarningVector { CCharString *Start,*Finish,*End; WarningVector& operator=(const WarningVector&); }; // 00432ee9
-struct COpinionDeedEffectsDef : CParentDefClassBase {
+class COpinionDeedEffectsDef : public CParentDefClassBase { public:
     S32 KnowledgeLifeInSeconds,MinimumSecondsBetweenPostings,MinimumSecondsBetweenEffectsForIndividual;
     float PreReactionDelayIgnoreOnDelay; OpinionOffsetList Effects;
     S32 ReactionPriority; ReactionVector Reaction;

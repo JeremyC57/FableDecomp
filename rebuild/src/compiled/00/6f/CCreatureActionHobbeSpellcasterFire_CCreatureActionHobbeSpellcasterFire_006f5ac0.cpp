@@ -13,7 +13,7 @@ namespace N_008bfa40 { struct C3DAnimFileHelpersChunk {
     C3DAnimFileHelpersChunk();                           // 0x008BFA40
 }; } using N_008bfa40::C3DAnimFileHelpersChunk;
 
-struct CCreatureAction_HobbeSpellcasterFire : C3DAnimFileHelpersChunk {
+class CCreatureAction_HobbeSpellcasterFire : public C3DAnimFileHelpersChunk { public:
     virtual void v00();                    // this class has its own vtable
     CCreatureAction_HobbeSpellcasterFire();
 };

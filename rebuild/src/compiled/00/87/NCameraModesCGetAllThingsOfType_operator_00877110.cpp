@@ -14,7 +14,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }   // placement new (the null test on the node)
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0
     CDefString(const CDefString& other);                // user copy ctor: returned through a hidden pointer
     bool operator==(const char* text) const;            // 0x005B3440

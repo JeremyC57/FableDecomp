@@ -14,16 +14,16 @@
 //   destructor is STLport's `_Destroy(first, last)` + free.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 void operator delete(void* p);                     // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -57,24 +57,24 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
             free(_M_start);
     }
 };
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     unsigned char _pad00[0x0c];
     float         Duration;                        // +0x0c
     float GetDuration() const { return Duration; }
     void GetTimingEventNames(vector<CCharString>& names) const;   // 0x00A4EF90
     float GetTimingEventTime(const CCharString& name) const;      // 0x00A4EAE0
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimationStats> GetAnimationStats();  // 0x00A269C0
 };
 struct CAnimationBank {
     C3DAnimationInfo* GetAnimationInfo(long animation);            // 0x00A242C0
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned long Lookup(const CCharString& name);                 // 0x009E5120
 };
 namespace NAnimationEvents {
-struct CEvent {                                    // 8 bytes
+class CEvent { public:                                    // 8 bytes
     unsigned long Index : 30;
     unsigned long ExternallyImported : 1;
     unsigned long StopEvent : 1;
@@ -86,7 +86,7 @@ template <class T, int N> struct CSmallVector {
     long Size;                                     // +0x04
     void resize(long size, const T& fill);         // 0x006FADE0
 };
-struct CManager {
+class CManager { public:
     void*           __vftable;                     // +0x00
     CAnimationBank* Bank;                          // +0x04
     CSymbolMap      Symbols;                       // +0x08

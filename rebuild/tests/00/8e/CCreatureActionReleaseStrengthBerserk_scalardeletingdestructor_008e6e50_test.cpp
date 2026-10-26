@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ReleaseStrengthBerserk {
+class CCreatureAction_ReleaseStrengthBerserk { public:
     void* vftable;
     int destroyed;
 };

@@ -10,7 +10,7 @@
 // with `lea`), the 2D centres take X and Y separately.
 #include "engine/CEngineScreenEffectRadialBlurRenderer.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -38,7 +38,7 @@ struct SEnvironmentSettings {
     SEnvironmentRadialBlur RadialBlur;             // +0x60
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual SEnvironmentSettings* GetSettings();   // slot 1
 };

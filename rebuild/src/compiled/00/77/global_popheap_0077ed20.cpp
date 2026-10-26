@@ -20,7 +20,7 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct C3DVector {
+class C3DVector { public:
     unsigned long X, Y, Z;                    // floats, moved as dwords (a float member copy would go through the FPU)
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

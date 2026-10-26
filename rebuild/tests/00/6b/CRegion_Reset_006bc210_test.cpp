@@ -3,7 +3,7 @@
 #include <cstring>
 static int g_assigns = 0, g_moves = 0;
 using std::memmove;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString& operator=(const char* text) { ++g_assigns; PStringData = text; return *this; }
 };
@@ -27,13 +27,13 @@ struct CLongVector {
     }
     void clear() { erase(begin(), end()); }
 };
-struct C2DVector {
+class C2DVector { public:
     void Set(float x, float y) { X = x; Y = y; }
     float X; float Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CRegion {
+class CRegion { public:
     CLongVector Maps;
     CLongVector VisMaps;
     CCharString Name;

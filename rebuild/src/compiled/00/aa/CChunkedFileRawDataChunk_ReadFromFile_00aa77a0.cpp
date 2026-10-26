@@ -16,9 +16,9 @@ void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00B
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;

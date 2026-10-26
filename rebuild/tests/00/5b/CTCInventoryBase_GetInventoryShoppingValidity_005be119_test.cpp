@@ -3,9 +3,9 @@
 // Behaviour test for CTCInventoryBase::GetInventoryShoppingValidity (0x005BE119): same body as src/, with the alive
 // tests, interface lookups, player chain and the facing component stubbed and recorded.
 using std::atan2; using std::fmod;
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
-struct CTCShop; struct CTCFacing;
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
+class CTCShop; struct CTCFacing;
 class CThing {
 public:
     bool alive; C3DVector pos; void* shop; void* facing;
@@ -32,16 +32,16 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* item;
     CThingCreatureBase* GetPItem() const { return item; }
 };
-struct CTCShop { CBaseIntelligentPointer PKeeper; };
+class CTCShop { public: CBaseIntelligentPointer PKeeper; };
 static float g_angle = -5.0f; static int g_sets = 0;
 struct CTCFacing {
     float X, Y;
     void SetFacingAngle(float a) { g_angle = a; ++g_sets; }
 };
 static CThingHero* g_hero = 0;
-struct CPlayer { CThingHero* GetHeroThing() { return g_hero; } };
+class CPlayer { public: CThingHero* GetHeroThing() { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_pm;
 struct CTCInventoryBase {
     CThing* ParentThing;

@@ -1,7 +1,7 @@
 // Behaviour test for C3DVector::DotProduct(const C3DVector&) @ 0x00C256A0
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float DotProduct(const C3DVector& other) const { return Z * other.Z + Y * other.Y + X * other.X; }
 };

@@ -3,13 +3,13 @@
 // Callees: CShaderBase's virtual scalar deleting destructor (slot 0, `push 1 ; call [edx]`).
 // Shape: an unsigned index in edi against `(last - first) >> 2` re-computed after every iteration (`jb`), the
 // slot re-read through `first` after the call for the null store, `mov [esi+4],0` after the loop.
-struct CShaderDataBank;
+class CShaderDataBank;
 
-struct CShaderBase {
+class CShaderBase { public:
     virtual ~CShaderBase();
 };
 
-template <class T> struct CArray {              // retail CArray: first, last, end (12 bytes)
+template <class T> class CArray { public:              // retail CArray: first, last, end (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -17,7 +17,7 @@ template <class T> struct CArray {              // retail CArray: first, last, e
     T& operator[](unsigned long i) { return m_pFirst[i]; }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     void*                 __vftable;            // +0x00
     CShaderDataBank*      ShaderBank;           // +0x04
     CArray<CShaderBase*>  Shaders;              // +0x08

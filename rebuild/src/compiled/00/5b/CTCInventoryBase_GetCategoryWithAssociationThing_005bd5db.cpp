@@ -12,7 +12,7 @@
 // Shape: the vector's operator[] is STLport's `*(begin() + n)` through an inline begin() accessor (`_SweepBegin1()`): the element
 //   address is formed from the accessor's returned pointer plus the scaled index as retail; `first[n]` folds the index into the
 //   load and recolours the registers (the GOTCHAS wave-25 rule, confirmed on the RTM compiler).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     void* m_a; void* m_b;
     CThing* GetPItem() const;                    // 0x00A01B50

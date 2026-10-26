@@ -6,8 +6,8 @@
 // The jmp target is relocation-masked, so any plausible extern of the same
 // signature produces byte-identical output (just `jmp rel32`).
 
-struct CDefClassBase;
-struct CSpecialAbilitiesMultiStrikeDef;
+class CDefClassBase;
+class CSpecialAbilitiesMultiStrikeDef;
 
 // Shared implementation the thunk tail-calls into.
 extern void __fastcall CSpecialAbilitiesMultiStrikeDef_Copy_impl(

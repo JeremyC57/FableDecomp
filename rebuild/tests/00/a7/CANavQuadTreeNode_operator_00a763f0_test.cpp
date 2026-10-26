@@ -21,7 +21,7 @@ static int fails = 0;
 #include <math.h>
 #pragma intrinsic(fabs)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     bool IsNear(const C2DVector& node) const { return fabs(X - node.X) <= 0.0001f && fabs(Y - node.Y) <= 0.0001f; }
 };

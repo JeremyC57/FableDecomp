@@ -13,7 +13,7 @@
 // before the allocation (a named local), the null-checked placement constructor feeds the counted-pointer local at
 // [ebp-8], the by-value base-class counted pointer is converted straight into the argument area (`push ecx ; push ecx ;
 // mov ecx,esp`), and the element ID is read through the local before its destructor runs.
-struct CCharString { char* m_pData; };            // one pointer
+class CCharString { public: char* m_pData; };            // one pointer
 
 extern void* __cdecl operator_new_shim(unsigned int);   // (unused; operator new @ 0x00BFEA1A is the global one)
 
@@ -44,7 +44,7 @@ struct CQuestInfoElementTimer : CQuestInfoElement {   // retail 0x24 bytes, vtab
     CQuestInfoElementTimer(const CTimer* timer, long graphic, float scale);   // 0x0064A4E9
 };
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     long GetScriptSpriteBySymbol(const CCharString& symbol);           // 0x0064A37B
     void AddElement(CCountedPointer<CQuestInfoElement> element);       // 0x0064A3ED
     long AddTimer(const CTimer* timer, const CCharString& symbol, float scale);

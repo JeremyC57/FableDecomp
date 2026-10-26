@@ -8,7 +8,7 @@
 // register (separate scalar members: a C3DVector member is copied through `lea` base pointers),
 // the intelligent pointer (its address in ebx), the Extra word. `ret 4`.
 // No engine header for this class; modelled locally (retail CCreatureActionBase is 0xa8 bytes, see PerformAction 0x008491E0).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -23,7 +23,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPo
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CMessageEventDef {                   // a counted definition: reference count at +4
+class CMessageEventDef { public:                   // a counted definition: reference count at +4
     void* __vftable;
     long m_refCount;                        // +0x04
     void AddRef() { ++m_refCount; }
@@ -33,13 +33,13 @@ struct CDefPointer {                        // counted def pointer: add-ref on c
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) m_pDef->AddRef(); }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];          // retail sizeof 0xa8
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_SendMessage : CCreatureActionBase {    // vtable 0x0129947C; retail sizeof 0xc4
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:    // vtable 0x0129947C; retail sizeof 0xc4
     CDefPointer MessageDef;                 // +0xa8
     float PositionX;                        // +0xac C3DVector Position, copied word by word (a struct member copies through `lea`)
     float PositionY;                        // +0xb0

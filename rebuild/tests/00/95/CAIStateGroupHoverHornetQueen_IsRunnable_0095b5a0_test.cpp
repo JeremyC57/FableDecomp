@@ -5,16 +5,16 @@
 #define __forceinline inline
 #endif
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_registers = 0, g_arenas = 0, g_lowerBounds = 0;
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -43,17 +43,17 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { ++g_dtors; }
     void SetPItem(CThing* item) { ++g_sets; m_pItem = item; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CCombatManager;
-struct CWorld {
+class CCombatManager;
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* CombatManager;
 };
 static CWorld g_world;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void Cleanup() {}
     virtual void OnReplace() {}
@@ -74,14 +74,14 @@ struct CTCCombatTarget {
     virtual CThing* GetEnemy() { return g_combatEnemy; }
 };
 static CThing* g_hero = 0;
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter() { return g_hero; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() { static CPlayer p; return &p; }
 };
 static CThing* g_regCreature = 0; static CThing* g_regTarget = 0; static bool g_regNotify = false;
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool notify) { ++g_registers; g_regCreature = creature; g_regTarget = target; g_regNotify = notify; }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {

@@ -3,7 +3,7 @@
 // Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString @ 0x0099E4B0 twice. Vtable 0x0125C0D8 = NCreatureAction::CActionEventTriggerParticle (rtti-vtables.tsv; the chunk label
 // "CFireheartMinigameDef" is propagated). Shape: the byte clear sits BEFORE the vtable store: it belongs to an intermediate (novtable) base whose inline constructor
 // runs between CBase and the derived vtable store (a plain member initialiser of the derived class is scheduled after the vtable store); `this` is returned.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };

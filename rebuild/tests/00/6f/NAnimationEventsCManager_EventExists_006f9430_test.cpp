@@ -64,20 +64,20 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -296,8 +296,8 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -305,8 +305,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -391,7 +391,7 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 namespace NAnimationEvents {
-struct CEvent { CEvent(); // FableWin PDB023f9630, fixture stub uses same signature
+class CEvent { public: CEvent(); // FableWin PDB023f9630, fixture stub uses same signature
  unsigned int Index:30; unsigned int ExternallyImported:1; unsigned int StopEvent:1; float Time;
  bool operator==(const CEvent& b) const { return Index==b.Index && StopEvent==b.StopEvent && fabs(Time-b.Time)<0.0001f; }
 };
@@ -402,7 +402,7 @@ struct EventMap {
  const_iterator LowerBound(const unsigned long&) const; // 0x006faf80
  const_iterator Find(unsigned long key) const { unsigned long lookupKey=key; const_iterator i=LowerBound(lookupKey); if(i==Last || key<i->Key) i=Last; return i; }
 };
-struct CManager {
+class CManager { public:
  CManager(const CMeshDataBank&,const CWideString&,bool); // FableWin023fa5c0
  unsigned char EventSymbolMapAndBank[0x2c]; EventMap AnimToExtraEventsMap; bool DifferentToSavedCopy,UseEmbeddedEvents;
  bool EventExists(long,const CEvent&) const;

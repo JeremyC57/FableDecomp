@@ -9,7 +9,7 @@
 // allocated (NewChunk 0x00A65720) and marked Permanent (+0x1c); the size is pushed once for both arms.
 // The first argument is not read by this body.
 struct CMemoryAreaChunk;
-struct CMemoryAllocatorVariableSize;
+class CMemoryAllocatorVariableSize;
 
 // Process-wide copies of the active allocator's alignment, refreshed on entry to the allocator's
 // public methods (0x013D28D4 alignment, 0x013D28D8 alignment shift).
@@ -56,7 +56,7 @@ struct CMemoryAllocatorBase {                   // PDB: 3100 bytes
     CMemoryAllocatorBase(unsigned long alignment);   // 0x00A65AD0
 };
 
-struct CMemoryAllocatorVariableSize : CMemoryAllocatorBase {   // PDB: 3128 bytes, vtable 0x0129DB1C
+class CMemoryAllocatorVariableSize : public CMemoryAllocatorBase { public:   // PDB: 3128 bytes, vtable 0x0129DB1C
     CMemoryAreaChunk* PFirstChunk;              // +0xc1c
     long              MinChunkSize;             // +0xc20
     long              NoFreesSinceConsolidation;// +0xc24

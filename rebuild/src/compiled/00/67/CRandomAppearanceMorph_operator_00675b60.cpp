@@ -9,14 +9,14 @@
 // Shape: the class's member-wise assignment; each CVectorMap's implicit assignment is inlined with its own `this`/`other`
 // registers (ebp/ebx: the vector's operator=, nothing for the empty comparator, then the sorted byte).
 // Leaf: ??4CRandomAppearanceMorph
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_first; T* m_last; T* m_end;
     CArray& operator=(const CArray& other);             // out of line per instantiation
 };
 
 struct CKeyPairCompareLess {};
 
-template<class K, class V> struct CVectorMap {          // retail: 16 bytes
+template<class K, class V> class CVectorMap { public:          // retail: 16 bytes
     CArray<V>           m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
@@ -26,7 +26,7 @@ struct CBodyPartMesh;
 struct CTextureMorph;
 struct CSkeletalMorph;
 
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> >                         BodyParts;               // +0x00
     CArray<CVectorMap<unsigned long, CTextureMorph> >      BodyPartTextureMorphs;   // +0x0c
     CVectorMap<long, CSkeletalMorph>                       SkeletalMorphs;          // +0x18

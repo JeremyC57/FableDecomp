@@ -25,24 +25,24 @@ public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;                       // +0x00
     float     Radius;                       // +0x0c
 };
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     unsigned char     _pad00[0x28];         // vptr, MeshData, BoundingBox
     C3DBoundingSphere BoundingSphere;       // +0x28
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
     float E41, E42, E43;
 };
 
-struct CEngineInternalPrimitiveStaticMesh {   // the cloth owner (CEngineInternalPrimitiveMeshBase is 0x70 bytes)
+class CEngineInternalPrimitiveStaticMesh { public:   // the cloth owner (CEngineInternalPrimitiveMeshBase is 0x70 bytes)
     unsigned char _pad00[0x58];
     float         Scale;                    // +0x58
     unsigned char _pad5c[0x70 - 0x5c];

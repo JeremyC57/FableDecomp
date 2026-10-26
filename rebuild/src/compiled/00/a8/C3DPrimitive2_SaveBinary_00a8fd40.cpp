@@ -12,10 +12,10 @@
 // in front of their loops); the static-block loop steps a byte offset kept in the dead stream-argument slot;
 // the repeat count is max(RepeatingMeshReps, 1); the vertex buffer's 32-byte compression params are block-copied
 // to a local before the virtual WriteData.
-struct C3DVector { float X, Y, Z; };
-struct CVertexCompressionParams { float PosScale[4]; float PosBias[4]; };
+class C3DVector { public: float X, Y, Z; };
+class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteBool(bool value);                         // 0x00993E30
@@ -27,7 +27,7 @@ struct CDataOutputStream {
     void WriteBuffer(const void* data, long size);      // 0x00996610 (compressed block)
 };
 
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     virtual ~CVertexBufferWin32();
     unsigned long m_handle;                             // +0x04
     unsigned long ByteLength;                           // +0x08
@@ -37,15 +37,15 @@ struct CVertexBufferWin32 {
     void* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
     void Unlock();                                      // 0x00AC20B0
 };
-struct CIndexBuffer {
+class CIndexBuffer { public:
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
     void Unlock();                                      // 0x00AC1F00
 };
-struct C3DClothPrimitive {
+class C3DClothPrimitive { public:
     void SaveBinary(CDataOutputStream& out) const;      // 0x00AC3B00
 };
-template<class T> struct CCountedPointer { T* Data; void* Info; };
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long size() const { return (unsigned long)(m_end - m_begin); }
     T& operator[](unsigned long i) const { return m_begin[i]; }
@@ -65,7 +65,7 @@ struct CAnimatedBlock {                                 // 0x30 bytes
     void SaveBinary(CDataOutputStream& out) const;      // 0x00A8E770
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     long MaterialIndex;                                 // +0x04
     long RepeatingMeshReps;                             // +0x08

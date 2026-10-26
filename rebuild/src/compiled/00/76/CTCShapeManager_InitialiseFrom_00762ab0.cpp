@@ -13,17 +13,17 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 void* operator new(size_t size);                    // 0x00BFEA1A
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     CPointVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     CPointVector(const CPointVector& other);        // 0x006F0810
     ~CPointVector() { if (_M_start) free(_M_start); }
 };
-struct CTCShapeManager;
+class CTCShapeManager;
 struct CSubdivisionTriangle;
 namespace NShape {
-struct CShape {                                     // vtable 0x0126A208
+class CShape { public:                                     // vtable 0x0126A208
     virtual void v00();
     CTCShapeManager* Owner;                         // +0x04
     CPointVector Points;                            // +0x08
@@ -42,7 +42,7 @@ struct CBasicShape : CShape {                       // vtable 0x0126A31C
 };
 }
 void __fastcall Destroy_00763a10(void* object);     // 0x00763A10: the per-type deleter stored in the count block
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;                                // +0
     void (__fastcall* PfnDestroy)(void*);           // +4
     void* Object;                                   // +8
@@ -55,7 +55,7 @@ struct CShapePointer {                              // CCountedPointer<NShape::C
     CShapePointer(const CShapePointer& other);
     ~CShapePointer();
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     void*          ParentThing;                     // +0x04 (CTCBase)
     bool           ToBeRemoved;                     // +0x08

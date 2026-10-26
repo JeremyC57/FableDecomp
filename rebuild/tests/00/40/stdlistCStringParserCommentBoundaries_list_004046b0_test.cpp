@@ -6,7 +6,7 @@ static int g_frees = 0;
 static void* g_freed[16];
 static void TestFree(void* p) { g_freed[g_frees++] = p; std::free(p); }
 
-struct CStringParserCommentBoundaries { long Start; long End; };
+class CStringParserCommentBoundaries { public: long Start; long End; };
 struct NodeBase { NodeBase* next; NodeBase* prev; };
 struct Node : NodeBase { CStringParserCommentBoundaries data; };
 

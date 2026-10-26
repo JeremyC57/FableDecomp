@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector& operator+=(const C2DVector& v) { X += v.X; Y += v.Y; return *this; }
 };

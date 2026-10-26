@@ -2,8 +2,8 @@
 #include <cstring>
 #include <new>
 
-struct CWorld { int x; };
-struct CGameNavigatorManagerExternalInterface {
+class CWorld { public: int x; };
+class CGameNavigatorManagerExternalInterface { public:
     virtual ~CGameNavigatorManagerExternalInterface() {}
     virtual void Initialise() {}
     virtual CGameNavigatorManagerExternalInterface* Clone() const { return new CGameNavigatorManagerExternalInterface(*this); }

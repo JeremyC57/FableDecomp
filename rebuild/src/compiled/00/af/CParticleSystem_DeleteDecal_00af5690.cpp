@@ -7,7 +7,7 @@
 // out-of-line destructor and the class's static `__fastcall operator delete`, the decal held in ebx across both.
 // NoActiveDecals (+0x4c, PDB +0x68) is decremented with a load/dec/store after the node is freed.
 namespace NParticleEngine {
-struct CDecal {
+class CDecal { public:
     ~CDecal();                                                        // 0x00AF7C10
     static void __fastcall operator delete(void* p);                  // 0x00AF8AD0
 };

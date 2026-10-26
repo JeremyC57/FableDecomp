@@ -9,26 +9,26 @@
 //   below the PDB (as in the landed PeekScreenPos 0x00AB4870): Pos +0x3414, LMBOn +0x4848, MMBOn +0x4849, RMBOn +0x484a.
 // Shape: the surface extents are fetched before the switch for every event; the movement cases clamp through a float local
 //   (`fst` into the local and the member), the upper bound is (extent - 1) converted with fild through the dead event slot.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
 };
 
-struct CSurface {
+class CSurface { public:
     C2DExtentsI GetDimensions() const;              // 0x009F2F90
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad00[0x2c];
     CSurface      BackBuffer;                       // +0x2c
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                // +0x60
 };
@@ -48,7 +48,7 @@ enum EMouseEventType {
     MOUSE_EVENT_SET_POSITION = 11
 };
 
-struct CMouseEvent {
+class CMouseEvent { public:
     double          Time;                           // +0x00
     EMouseEventType Type;                           // +0x08
     float           Movement;                       // +0x0c

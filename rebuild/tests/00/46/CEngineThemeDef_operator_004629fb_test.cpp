@@ -12,14 +12,14 @@
 // Shape: memberwise assignment in declaration order; the last member is the one-bit `bool Passable : 1`,
 // whose copy is the read-xor-mask-xor merge into the destination byte.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CEngineThemeDef : CParentDefClassBase {  // vtable 0x01235194
+class CEngineThemeDef : public CParentDefClassBase { public:  // vtable 0x01235194
     long  BaseTexture;                  // +0x3c
     long  BackgroundTexture;            // +0x40
     long  CliffBaseTexture;             // +0x44

@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
     CBaseObject* m_pItem;
@@ -24,12 +24,12 @@ struct CActionBase {
     CActionBase() : m_baseWord(0) { }
     CActionBase(const CActionBase& other) : m_baseWord(other.m_baseWord) { ++g_baseCopies; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CCreatureAction_CastBattleCharge : CActionBase {
+class CCreatureAction_CastBattleCharge : public CActionBase { public:
     bool Override;
     C3DVector Dir;
     float Distance;

@@ -1,6 +1,6 @@
 // CModeSitBase::RemoveModeWithAction  (retail 0x00835af0)
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v0();
     virtual int v1();   // slot 1: [eax+4], returns int
 };

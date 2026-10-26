@@ -6,11 +6,11 @@
 // the first maximum is an inline by-value helper whose if/else result local becomes the highest frame word (the X arm
 // `fstp`s, the Y arm copies through edx; a plain if/else local in the body takes [esp] instead); the second maximum is a
 // ternary kept on the FPU; `a *= 0.5f` goes through the frame before `b *= 0.5f`; `a*a + b*b` squares the FP top (b) first.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad[0x1d4];
     C3DVector     m_boxSize;                       // +0x1d4
     float GetBoxBoundingSphereRadiusSquared() const;

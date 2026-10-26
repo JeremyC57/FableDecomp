@@ -12,19 +12,19 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x38];      // +0x04 CDefClassBase part, InstantiationName, SubDefInfoMap
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CCharString {                    // 4-byte string handle
+class CCharString { public:                    // 4-byte string handle
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CEnvironmentDef : CParentDefClassBase {// vtable 0x012335A4
+class CEnvironmentDef : public CParentDefClassBase { public:// vtable 0x012335A4
     CCharString ColourLookupTexture;                                 // +0x3c
     long        DiffuseLookupRow;                                    // +0x40
     long        AmbientLookupRow;                                    // +0x44

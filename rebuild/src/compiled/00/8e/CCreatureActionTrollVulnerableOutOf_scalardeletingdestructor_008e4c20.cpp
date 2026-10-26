@@ -1,4 +1,4 @@
-struct CCreatureAction_TrollVulnerableOutOf {
+class CCreatureAction_TrollVulnerableOutOf { public:
     void* vftable;
 };
 

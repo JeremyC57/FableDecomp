@@ -17,7 +17,7 @@ struct CMember_005dd2e0 {
     CMember_005dd2e0();                              // 0x005DD2E0
 };
 
-struct CAnimatingObjectDef : CBase_0044c0c0 {
+class CAnimatingObjectDef : public CBase_0044c0c0 { public:
     unsigned char _pad[0x24];
     CMember_005dd2e0 m_member;                       // +0x28
     virtual void v00();

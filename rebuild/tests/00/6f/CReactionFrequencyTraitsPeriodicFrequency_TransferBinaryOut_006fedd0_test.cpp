@@ -1,7 +1,7 @@
 // Behaviour test for CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryOut @ 0x006FEDD0.
 #include <cstdio>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     int kinds[16]; float values[16]; int n;
     CDataOutputStream() : n(0) {}
     void WriteULong(unsigned long v) { kinds[n] = 2; values[n++] = (float)v; }

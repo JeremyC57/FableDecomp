@@ -1,6 +1,6 @@
 // Behaviour test for 00ae15d0 (CParticleProgram::GetUsedBones): bones of every group with at least one vertex blend are marked used, simulated groups first, then the non-simulated groups; groups with no blends mark nothing.
 #include <cstdio>
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -9,8 +9,8 @@ template <class T> struct CArray {
     const T& operator[](unsigned int i) const { return _M_start[i]; }
     void Set(T* first, unsigned int n) { _M_start = first; _M_finish = first + n; _M_end_of_storage = first + n; }
 };
-struct C3DVertexBlend2 { long Vertex; float Weight; };
-struct C3DGroup2 {
+class C3DVertexBlend2 { public: long Vertex; float Weight; };
+class C3DGroup2 { public:
     long                     BoneIndex;
     CArray<C3DVertexBlend2>  VertexBlends;
 };

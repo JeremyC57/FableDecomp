@@ -8,9 +8,9 @@
 // bitfield); the byte member at +0x1c is zero-extended (`xor ecx,ecx ; mov cl`) for an unsigned char
 // parameter and pushed first (last argument), the long at +0x18 second; the position result feeds
 // the __fastcall creator with the strength at +0x14 in edx.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_isDead : 1;                         // +0x91 bit 0
     C3DVector* GetBonePosition(long bone, unsigned char flag);    // 0x004C73D0

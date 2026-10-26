@@ -7,8 +7,8 @@
 // Shape: the converted string lives in the dead argument slot (VC reuses it once `name` has been loaded into edx).
 // The descriptor's bytes are all cleared first and the third set afterwards (store order +8,+9,+b..+e then +a=1).
 // The device is a named local read after the conversion: it and its vtable go into esi/ebx before the pushes.
-struct CCharString { void* m_pData; };
-struct CWideString {
+class CCharString { public: void* m_pData; };
+class CWideString { public:
     void* m_pData;
     operator const unsigned short*() const;   // 0x0099AF10
     ~CWideString();                           // 0x0099B510
@@ -26,7 +26,7 @@ struct CDevice {
     virtual long Create(const unsigned short* name, const SCreateDesc* desc);   // slot 10 (+0x28)
 };
 struct COwner { unsigned char _pad[0x40]; CDevice* m_pDevice; };   // device at +0x40
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad[0xc];
     COwner* m_pOwner;                         // +0x0c
     long    m_handle;                         // +0x10

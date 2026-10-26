@@ -192,8 +192,8 @@ virtual void ManagerSlot41()=0;
 virtual MiscPointer GetMiscThingsDef()=0;
 static Manager* __fastcall GetInstance();};
 struct ActionList {struct Node {Node* Next;Node* Prev;unsigned long Value;};Node* Head;};
-struct CMenuEntry:Component,Observer {unsigned char BeforeTime[0x30-0x18];unsigned long CurrentTime;unsigned char BeforeParent[0xc8-0x34];Component* Parent;unsigned char BeforeLast[0x194-0xcc];unsigned long LastTime;unsigned long Unknown198;ActionList* Actions28;ActionList* Actions25;unsigned char BeforeState[8];unsigned long TargetState;void GoBackwards();};
-struct CRedefinerList {static void __fastcall Cancel();};double __fastcall GFGetTime();extern double LastMenuTime_013b8aa0;
+class CMenuEntry:public Component,public Observer { public:unsigned char BeforeTime[0x30-0x18];unsigned long CurrentTime;unsigned char BeforeParent[0xc8-0x34];Component* Parent;unsigned char BeforeLast[0x194-0xcc];unsigned long LastTime;unsigned long Unknown198;ActionList* Actions28;ActionList* Actions25;unsigned char BeforeState[8];unsigned long TargetState;void GoBackwards();};
+class CRedefinerList { public:static void __fastcall Cancel();};double __fastcall GFGetTime();extern double LastMenuTime_013b8aa0;
 void CMenuEntry::GoBackwards(){if(Parent&&Parent->GetType()==8){CRedefinerList::Cancel();if(!Parent->GetDef()->PartOfListTree){SetTargetState(TargetState);LastTime=CurrentTime;return;}}
 if(MenuStack_013b8a98.size()>1){Manager::GetInstance()->PlaySoundW(Manager::GetInstance()->GetMiscThingsDef()->SoundBack,1);bool immediate=GetDef()->PCStyle;if(immediate)MenuStack_013b8a98.front()->ChangeState(0);else MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);if(Actions28)for(ActionList::Node*p=Actions28->Head->Next;p!=Actions28->Head;p=p->Next)Manager::GetInstance()->Action28(p->Value);if(Actions25)for(ActionList::Node*p=Actions25->Head->Next;p!=Actions25->Head;p=p->Next)Manager::GetInstance()->Action25(p->Value);Manager::GetInstance()->RemoveObserver(this);}
 SetTargetState(TargetState);LastTime=CurrentTime;LastMenuTime_013b8aa0=GFGetTime();}

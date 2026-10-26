@@ -26,19 +26,19 @@
 // Shape: the landed CMuteGuardOutsideWoods::Main 0x00D86150 / CWaitingGuardInWoods::Main 0x00D86680 models; each costume
 //   test owns five conditional CCharString temporaries (flag word in ebx) and is materialised as a bool before its branch;
 //   the full- and part-costume arms share one cross-jumped tail; the security line is a switch with the default arm first.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void s000();
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
 };
-struct CBaseObject {                                   // CBaseIntelligentPointer root
+class CBaseObject { public:                                   // CBaseIntelligentPointer root
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -48,7 +48,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -127,8 +127,8 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData;
-struct CQ_TraderConflictGoodScript {
+class CQ_SunnyvaleMasterData;
+class CQ_TraderConflictGoodScript { public:
     unsigned char _pad[0x54];
     long TradersFollowing;                             // +0x54
     long TradersReachedTeleporter;                     // +0x58

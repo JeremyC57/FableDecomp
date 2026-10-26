@@ -19,7 +19,7 @@ class C3DVector {
 public:
     float X, Y, Z;
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
 };
@@ -29,16 +29,16 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DPositionInterpolator : CBase {                    // vtable 0x0123981C (Ego_r.pdb 0x1c)
+class C3DPositionInterpolator : public CBase { public:                    // vtable 0x0123981C (Ego_r.pdb 0x1c)
     C3DVector StartPosition;                                // +0x04
     C3DVector EndPosition;                                  // +0x10
 };
-struct C3DOrientationInterpolator : CBase {                 // vtable 0x01239824 (Ego_r.pdb 0x34)
+class C3DOrientationInterpolator : public CBase { public:                 // vtable 0x01239824 (Ego_r.pdb 0x34)
     CRightHandedSet StartOrientation;                       // +0x04
     CRightHandedSet EndOrientation;                         // +0x1c
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetOrientationInterpolator(C3DOrientationInterpolator& out) const;   // 0x006B0460
 };
 
@@ -57,7 +57,7 @@ extern bool g_PreparePrimitivesEnabled;                     // 0x01375480
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                               // +0x00 (CTCBase)
     CThing*        ParentThing;                             // +0x04
     unsigned char  _pad08[0x58 - 0x08];

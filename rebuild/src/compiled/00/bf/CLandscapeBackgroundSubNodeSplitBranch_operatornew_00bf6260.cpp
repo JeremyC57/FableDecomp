@@ -7,8 +7,8 @@
 // 0x01436EA8 (+0x6b0), as modelled in landed 0x00BF6530.
 // Shape: the manager in a named local makes VC7.1 park the size in eax and load the manager straight into ecx
 // (the direct expression loads the global into eax and pushes ecx).
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner);   // 0x00BD9AF0
 };
 struct SEngine_01436ea8 {

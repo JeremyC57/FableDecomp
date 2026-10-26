@@ -1,7 +1,7 @@
 // Byte-exact reconstruction of _Cons_val for pair<CCharString const, CArray<unsigned long> >
 // retail 0x00518b60
 
-struct CCharString {
+class CCharString { public:
     char* p;
     void copy(const CCharString* src);  // __fastcall copy-construct
 };

@@ -12,7 +12,7 @@
 // CIVCountedPointer release (as the landed CHitLocation destructor 0x00710900).
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4

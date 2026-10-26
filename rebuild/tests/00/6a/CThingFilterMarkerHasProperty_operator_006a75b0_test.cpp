@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingMarker {
+class CThingMarker { public:
     virtual int v00()=0;  virtual int v01()=0;  virtual int v02()=0;  virtual int v03()=0;
     virtual int v04()=0;  virtual int v05()=0;  virtual int v06()=0;  virtual int v07()=0;
     virtual int v08()=0;  virtual int v09()=0;  virtual int v10()=0;  virtual int v11()=0;
@@ -16,7 +16,7 @@ struct CThingMarker {
     virtual int GetProperties()=0;
 };
 
-struct CThingFilter_MarkerHasProperty {
+class CThingFilter_MarkerHasProperty { public:
     int m_mask;
     bool operator()(CThingMarker* marker);
 };

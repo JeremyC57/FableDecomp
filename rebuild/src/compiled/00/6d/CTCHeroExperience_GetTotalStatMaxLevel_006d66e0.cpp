@@ -6,7 +6,7 @@
 // clamped with `if (n < 0) n = 0;`; the stats def is read once through the CDefPointer.
 // Layout: retail PHeroStatsDef +0x5c; CHeroStatsDef::StatLevels +0xfc; CAbilityTrackDef ExperienceStat +0x3c, Abilities +0x40.
 enum EHeroExperienceStatCategory { HERO_STAT_CATEGORY_NONE };
-struct CAbilityTrackLevelDef { unsigned char _body[0x48]; };
+class CAbilityTrackLevelDef { public: unsigned char _body[0x48]; };
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
@@ -16,17 +16,17 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     unsigned int size() const { return (unsigned int)(end() - begin()); }
     const T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CAbilityTrackDef {                       // 0x50 bytes in retail
+class CAbilityTrackDef { public:                       // 0x50 bytes in retail
     unsigned char _base00[0x3c];
     EHeroExperienceStatCategory ExperienceStat;            // +0x3c
     CRetailVector<CAbilityTrackLevelDef> Abilities;         // +0x40
     long MaxedOutDescription;                               // +0x4c
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0xfc];
     CRetailVector<CAbilityTrackDef> StatLevels;             // +0xfc
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     const T* operator->() const { return Object; }
 };

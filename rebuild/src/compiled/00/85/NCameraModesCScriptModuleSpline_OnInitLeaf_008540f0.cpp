@@ -10,14 +10,14 @@
 //         the spline's KeyCameras vector of 0x38-byte CKeyCamera at +0x68 (landed InitialiseSpline).
 // Shape: Index = (float)start / (size() - 1) (`fild ; fidiv` of a frame int); the index is saved in a local across the
 //        virtual Update and stored back.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                               // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -35,14 +35,14 @@ struct CThing {
         return false;
     }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                            // +0x04
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CKeyCamera { unsigned char _body[0x38]; };
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     unsigned char _pad00[0x68];
     CKeyCamera*   KeyCameras_first;                  // +0x68 vector<CKeyCamera>
     CKeyCamera*   KeyCameras_last;                   // +0x6c
@@ -50,11 +50,11 @@ struct CTCCameraPointScriptedSpline {
     long NumKeyCameras() const { return KeyCameras_last - KeyCameras_first; }
     void InitialiseSpline(long startNode, long endNode);   // 0x0075D050
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 namespace NCameraModes {
-struct CBase;
-struct CScriptModuleBase {                           // vtable 0x01255F74, 0x4c bytes
+class CBase;
+class CScriptModuleBase { public:                           // vtable 0x01255F74, 0x4c bytes
     virtual ~CScriptModuleBase();                    // slot 0
     virtual void Update() = 0;                       // slot 1
     virtual bool IsFinished() const;                 // slot 2

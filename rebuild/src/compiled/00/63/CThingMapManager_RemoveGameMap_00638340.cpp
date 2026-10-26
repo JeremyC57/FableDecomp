@@ -18,18 +18,18 @@
 // Layout (retail): as 0x006381A0 -- ThingMaps +0x08, ActiveThingMaps +0x14, ActiveGameMaps +0x20 (STLport set<long>:
 //   header node pointer first; node left +8, right +0xc, value +0x10), Dimensions.X +0x30; the world map's game-map
 //   records (0x48 bytes, area box first) at +0x20.
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DExtentsI { long X, Y; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DExtentsI { public: long X, Y; };
 struct CGameMapRecord {
     C2DBoxI       Area;                                 // +0x00
     unsigned char _pad10[0x48 - 0x10];
 };
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char   _pad00[0x20];
     CGameMapRecord* GameMaps;                           // +0x20
     CGameMapRecord* GetGameMaps() const { return GameMaps; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                   // slot 12 (+0x30)

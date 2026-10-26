@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void* target;
     void* context;
     char  pad8[4];

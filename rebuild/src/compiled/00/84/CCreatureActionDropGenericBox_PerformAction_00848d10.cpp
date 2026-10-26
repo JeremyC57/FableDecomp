@@ -8,7 +8,7 @@
 //   test of +0x28 (`test byte ptr [eax+28h],40h`), bit 0x31 a dword test of +0x24; the first call is reached from a
 //   merged join, the second is tail-duplicated.
 // Layout: CCreatureActionBase (retail 0xa8 bytes) with PCreature at +8; nothing else of the class is touched.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -40,15 +40,15 @@ struct CBaseIntelligentPointer {            // CIntelligentPointer<T>: vptr + it
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CTCCarrying {                        // interface type 0x46 component
+class CTCCarrying { public:                        // interface type 0x46 component
     void RemoveThingFromPrimarySlot(bool drop);   // 0x006A1E00
 };
 
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();
     unsigned char _pad04[4];                // +0x04
@@ -56,7 +56,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     unsigned char _pad10[0xa8 - 0x10];
 };
 
-struct CCreatureAction_DropGenericBox : CCreatureActionBase {
+class CCreatureAction_DropGenericBox : public CCreatureActionBase { public:
     virtual void PerformAction();
 };
 

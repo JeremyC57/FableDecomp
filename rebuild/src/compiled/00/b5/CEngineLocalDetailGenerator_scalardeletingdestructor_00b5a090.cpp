@@ -1,4 +1,4 @@
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     void* vftable;
 };
 

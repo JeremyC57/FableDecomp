@@ -1,8 +1,8 @@
 // Behaviour test for 0x009E6530 CCharString::FastCompare: identity, null-first, length, then word-wise order.
 #include <cstdio>
 #include <cstring>
-struct CCharStringData { char* PData; unsigned long StringLength; };
-struct CCharString {
+class CCharStringData { public: char* PData; unsigned long StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     bool FastCompare(const CCharString& other) const
     {

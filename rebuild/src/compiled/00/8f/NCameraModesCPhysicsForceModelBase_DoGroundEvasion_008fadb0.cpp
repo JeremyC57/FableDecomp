@@ -12,7 +12,7 @@
 // Layout: retail Ground +0x50 (PDB +0x80), CameraManager +0xA8 (PDB +0xF0).
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -26,26 +26,26 @@ inline float Magnitude(const C3DVector& v) { return (float)sqrt(v.Z * v.Z + v.Y 
 struct SVectorNode { SVectorNode* _M_next; SVectorNode* _M_prev; C3DVector _M_data; };
 extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z
 
-struct CWorldMap;
+class CWorldMap;
 struct CWorldMapOwner {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual const CWorldMap& GetWorldMap() const;  // slot 13 (+0x34)
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char   _pad00[0x74];
     CWorldMapOwner* World;                         // +0x74
 };
 namespace NCameraModes {
-struct CPhysicsState {
+class CPhysicsState { public:
     C3DVector Position;                            // +0x00
 };
-struct CPhysicsCollisionPointsObject {             // retail 0x24 bytes
+class CPhysicsCollisionPointsObject { public:             // retail 0x24 bytes
     SVectorNode* Points;                           // +0x00 list<C3DVector> header
     unsigned char _pad04[0x20];
     void Finalise();                               // 0x008FA9F0
 };
-struct CPhysicsForceModelBase {
+class CPhysicsForceModelBase { public:
     virtual void v00();
     CPhysicsState*                LinkedState;     // +0x04
     unsigned char                 _pad08[0x50 - 0x08];

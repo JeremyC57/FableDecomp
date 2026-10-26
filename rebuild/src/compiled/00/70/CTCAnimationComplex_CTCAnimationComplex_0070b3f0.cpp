@@ -7,14 +7,14 @@
 // landed `??_G` @ 0x0070BB80 deletes it).
 // Shape: a member initialised by a call lands after the vtable store; the `new` null test splits the store into two
 // tails (the constructor result, or a zero register), each with its own epilogue. No EH frame (the module is not /EHsc).
-struct CThing;
+class CThing;
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _body[0xbc];                 // sizeof(CAnimateThing) = 0xbc in retail
     CAnimateThing(CThing& owner);              // 0x0070E710
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -22,7 +22,7 @@ struct CTCBase {                               // engine/CTCBase.h layout, model
     CTCBase(CThing& owner);                    // 0x00686800
 };
 
-struct CTCAnimationComplex : CTCBase {         // vtable 0x012650A4
+class CTCAnimationComplex : public CTCBase { public:         // vtable 0x012650A4
     CAnimateThing* PAnimation;                 // +0x0c
     virtual void v00();
     CTCAnimationComplex(CThing& owner);

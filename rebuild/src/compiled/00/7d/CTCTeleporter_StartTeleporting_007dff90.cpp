@@ -17,7 +17,7 @@
 //        frame word); the lookup key and the out flag are homed in the dead `hero` argument slot (hero stays in edi);
 //        the event path returns with its own cookie check, every failure joins the trailing `= true` store.
 class CThing;
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -47,14 +47,14 @@ public:
     }
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad_0x00[0x240];
     bool          InventoryScreen;              // +0x240
     bool          OpenedViaGuildSeal;           // +0x241
     void BuildMapTeleportUI(long screen, bool forceRebuild, bool* built);   // 0x0060C900
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad_0x00[0xfd];
     bool          m_blockingFD;                 // +0xfd
 };
@@ -64,7 +64,7 @@ extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                         // +0x00
     signed char   Player;                       // +0x04
     unsigned char Data[32];                     // +0x05
@@ -74,16 +74,16 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event); // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x104];
     long          m_mode;                       // +0x104
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
 };
 
@@ -96,7 +96,7 @@ struct CTCBaseModel {
     const CWorld* GetWorld() const;             // 0x00686A80
     CPlayerManager* GetPlayerManager() const;   // 0x00686D50
 };
-struct CTCTeleporter : CTCBaseModel {
+class CTCTeleporter : public CTCBaseModel { public:
     void StartTeleporting(CThing* hero);
 };
 

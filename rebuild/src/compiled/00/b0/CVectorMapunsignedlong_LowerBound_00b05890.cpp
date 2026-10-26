@@ -11,15 +11,15 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-struct CCharString { void* PStringData; };
-struct CContainmentVolume;
+class CCharString { public: void* PStringData; };
+class CContainmentVolume;
 struct CCountedPointerContainmentVolume { CContainmentVolume* Data; };
-struct C3DMeshVolume {             // Ego_r.pdb 12 bytes
+class C3DMeshVolume { public:             // Ego_r.pdb 12 bytes
     CCharString Name;              // +0x0
     CCountedPointerContainmentVolume ConvexVolume; // +0x4
     long        Index;             // +0x8
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

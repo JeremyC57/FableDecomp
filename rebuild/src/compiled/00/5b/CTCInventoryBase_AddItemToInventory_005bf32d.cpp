@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -43,7 +43,7 @@ struct CTCAugmentations {                            // interface type 0x29
     void AddAugmentation(long itemType);             // 0x006CA400
 };
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
     bool AddItem(long itemType, bool silent, long price, long count);   // 0x005BF060
 };

@@ -11,11 +11,11 @@ struct CDiskFile {
     void Seek(unsigned int p) { pos = p; }
     void Write(const void* d, unsigned int n) { std::memcpy(data + pos, d, n); pos += n; }
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     const unsigned char* src;
     void CopyTo(CDiskFile* out, unsigned int size) { out->Write(src, size); src += size; }
 };
-struct CBankFile {
+class CBankFile { public:
     CDiskFile* BankFile_Data; bool WrittenToFile;
     void MakeWritable()
     {

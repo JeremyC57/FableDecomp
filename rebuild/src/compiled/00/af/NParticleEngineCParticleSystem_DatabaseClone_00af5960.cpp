@@ -14,7 +14,7 @@
 
 namespace NParticleEngine {
 
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _body[0x70];
     CParticleSystem();                                                    // 0x00AF4E10
     void DatabaseCopy(const CParticleSystem& other);                      // 0x00AF4EE0

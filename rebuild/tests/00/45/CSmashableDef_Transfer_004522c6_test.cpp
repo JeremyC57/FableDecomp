@@ -3,7 +3,7 @@
 
 static unsigned char* g_a; static unsigned char* g_b; static int* g_c;
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void PersistA(unsigned char* p){ calls++; g_a=p; }
     void PersistB(unsigned char* p){ calls++; g_b=p; }

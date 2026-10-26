@@ -11,12 +11,12 @@
 //          gravity and drag are expressions of the inline ctor.
 enum EInputEventType { EIET_NONE = 0 };
 enum EInputKey { EIK_NONE = 0 };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _d[0x34];
     CInputEvent();                                 // 0x00A04410
     ~CInputEvent();                                // 0x00A03B30
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char _pad00[0x28];
     long          m_enabled;                       // +0x28 (descriptive)
     bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent* event);   // 0x009F50A0
@@ -41,7 +41,7 @@ struct CRigidBodyConfig {
     unsigned char InverseWorldInertiaTensor[0x30]; // +0x6c
     C3DVector     AngularVelocity;                 // +0x9c
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetRandomSeed();                // 0x0049D810
 };
 class CTCPhysicsRigidBody {

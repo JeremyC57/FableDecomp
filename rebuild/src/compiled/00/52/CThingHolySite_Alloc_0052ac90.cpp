@@ -12,7 +12,7 @@
 // Shape: `new (false) T` through CThing's protected static __fastcall operator new(size, bool); the CDefPointer member's
 //   inline default ctor stores the zero after the derived vtable.
 class CThingHolySiteDef;
-template <class T> struct CDefPointer {         // 4 bytes: the counted def pointee
+template <class T> class CDefPointer { public:         // 4 bytes: the counted def pointee
     T* Object;
     CDefPointer() : Object(0) { }
 };

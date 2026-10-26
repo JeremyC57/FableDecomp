@@ -10,10 +10,10 @@
 // def pointer is at +0x70 (as CTCAISummon::OnInitialActivate 0x007FDE70).
 // Shape: vtable first, then the member constructors in order (the def pointer's inline constructor stores an immediate
 // zero, the bool initialiser, the intelligent pointer's base call + vtable), then the body's GetSubDef into PDef.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -21,7 +21,7 @@ struct CTCBase {
     CTCBase(CThing* parent);                                // 0x00686800
 };
 
-struct CSummonableCreatureDef;
+class CSummonableCreatureDef;
 
 struct CDefPointerSummonable {                              // CDefPointer<CSummonableCreatureDef const>
     const CSummonableCreatureDef* Object;
@@ -32,7 +32,7 @@ struct CThingDef {
     bool GetSubDef(CDefPointerSummonable* out) const;       // 0x0079C4B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x70];
     CThingDef*    PDef;                                     // +0x70 (counted def pointer: object word)
 };
@@ -49,7 +49,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPoint
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCSummonableCreature : CTCBase {
+class CTCSummonableCreature : public CTCBase { public:
     CDefPointerSummonable PDef;                             // +0x0c
     bool                  HasBeenSummoned;                  // +0x10
     CIntelligentPointer   Summoner;                         // +0x11

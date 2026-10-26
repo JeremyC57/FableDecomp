@@ -1,7 +1,7 @@
 // behaviour test for 0x005BCACE
 #include <stdio.h>
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
 };
 struct CCategoryVector {

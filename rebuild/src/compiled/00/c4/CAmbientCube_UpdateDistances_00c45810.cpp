@@ -1,5 +1,5 @@
 // CAmbientCube::UpdateDistances(const C3DVector& listener, float height) -- for each of the cube's eight apexes, measure the distance from the listener (raised by up to `height`, but not above an apex that is higher than the listener) to the apex position and keep the smallest distance seen
-// Leaf: ?UpdateDistances@CAmbientCube@@QAEXABUC3DVector@@M@Z
+// Leaf: ?UpdateDistances@CAmbientCube@@QAEXABVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C45810, 142 bytes (+ int3 padding), __fastcall `ret 8`.
 // Library: libpk ambient sound (no PDB/RTTI): descriptive names (the TU's dump prints "Ambient cube:-" and
 //   "   Apex (" per corner). Only caller the API forwarder 0x00C36220 (`add ecx,4Ch ; jmp`: the cube lives at +0x4C of
@@ -9,7 +9,7 @@
 // Shape: the listener is copied into a local every pass; the raised height is `top > apex.Z ? apex.Z : top` (one
 //   store per arm); the difference must be a NAMED local (GetMagnitude then takes `lea ecx,[esp+18h]`, a direct
 //   `(a - b).GetMagnitude()` passes the returned pointer, `mov ecx,eax`, 140 bytes).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };
@@ -16,7 +16,7 @@ public:
         return false;
     }
 };
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

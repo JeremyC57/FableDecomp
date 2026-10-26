@@ -31,8 +31,8 @@ struct CManager {
 static CManager g_manager;
 static CManager* GetInstance() { return &g_manager; }
 
-struct CTCInGameMenu { long LoadGameIndex; long SaveGameToLoad; };
-struct CThing {
+class CTCInGameMenu { public: long LoadGameIndex; long SaveGameToLoad; };
+class CThing { public:
     bool hasMenu;
     CTCInGameMenu* menu;
     bool HasInterface(long type) const { return type == 0xC6 && hasMenu; }

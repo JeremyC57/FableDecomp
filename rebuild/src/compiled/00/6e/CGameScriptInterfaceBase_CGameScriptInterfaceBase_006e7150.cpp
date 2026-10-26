@@ -13,7 +13,7 @@ struct CBase {
     CBase();                           // 0x0099A2F0
 };
 
-struct CGameScriptInterfaceBase : CBase {
+class CGameScriptInterfaceBase : public CBase { public:
     virtual void v00();                    // this class has its own vtable
     CGameScriptInterfaceBase();
 };

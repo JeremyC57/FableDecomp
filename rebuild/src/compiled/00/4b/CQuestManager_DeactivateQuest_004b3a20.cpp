@@ -22,7 +22,7 @@ void* __cdecl operator_new(unsigned int size);      // 0x00BFEA1A
 void __cdecl operator delete(void* p);              // 0x00BFE9BC
 
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
@@ -56,7 +56,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     T* operator->() const { return Data; }
@@ -77,7 +77,7 @@ template <class T> struct CCountedPointer {
     }
     ~CCountedPointer() { Release(); }
 };
-struct CScriptBase { void Shutdown(); };            // 0x00CB7F60
+class CScriptBase { public: void Shutdown(); };            // 0x00CB7F60
 struct CActiveQuest {
     long ID;                                        // +0x00
     void* PScriptInfo;                              // +0x04
@@ -103,9 +103,9 @@ struct CSectionSet {                                // set<CCharString>, out-of-
     ~CSectionSet();                                 // 0x004AD4A0
     CSectionInsertResult insert(const CCharString& value);   // 0x004AC380
 };
-struct CThingManager { void DeleteThingsWithSectionName(const CCharString& section); };   // 0x0051FC20
-struct CWorldMap { void UpdateNavMaps(const CSectionSet& sections, bool a2); };          // 0x00501990
-struct CWorld {
+class CThingManager { public: void DeleteThingsWithSectionName(const CCharString& section); };   // 0x0051FC20
+class CWorldMap { public: void UpdateNavMaps(const CSectionSet& sections, bool a2); };          // 0x00501990
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();       // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -113,12 +113,12 @@ struct CWorld {
     virtual CWorldMap* GetWorldMap();               // slot 12 (+0x30)
 };
 struct CDrawQuestInfo { void RemoveElementsFromScript(long scriptID); };   // 0x00647403
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0x1c8];
     CDrawQuestInfo* PDrawQuestInfo;                 // +0x1c8
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
-struct CCodeSectionManager {
+class CCodeSectionManager { public:
     unsigned char _body[0x2c];
     CCodeSectionManager();                          // 0x009F0320
     bool Contains(CCharString name);                // 0x009F0570
@@ -138,7 +138,7 @@ __forceinline CCodeSectionManager* GetCodeSectionManager()
     return g_pCodeSectionManager.m_pObject;
 }
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char    _pad00[0x38];
     CActiveQuestList ActiveQuests;                  // +0x38
     unsigned char    _pad3c[0x4c - 0x3c];

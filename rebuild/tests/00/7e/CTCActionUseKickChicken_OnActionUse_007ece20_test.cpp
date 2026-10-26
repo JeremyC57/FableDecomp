@@ -1,21 +1,21 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
-struct CThingCreatureBase;
+class CThing { public: int id; };
+class CThingCreatureBase;
 static int g_live = 0, g_ctors = 0, g_dtors = 0;
 static CThingCreatureBase* g_ctorCreature = 0; static CThing* g_ctorThing = 0;
-struct CCreatureActionBase { int kind; };
-struct CCombatAction_KickThingOnGround : CCreatureActionBase {
+class CCreatureActionBase { public: int kind; };
+class CCombatAction_KickThingOnGround : public CCreatureActionBase { public:
     CThingCreatureBase* m_creature; CThing* m_thing;
     CCombatAction_KickThingOnGround(CThingCreatureBase* c, CThing* t) : m_creature(c), m_thing(t) { kind = 42; ++g_ctors; ++g_live; g_ctorCreature = c; g_ctorThing = t; }
     ~CCombatAction_KickThingOnGround() { ++g_dtors; --g_live; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     int m_seenKind; int m_liveAtCall;
     bool SetCurrentAction(CCreatureActionBase* action) { m_seenKind = action->kind; m_liveAtCall = g_live; return true; }
 };
-struct CTCBase { CThing* ParentThing; CThing* GetThing() const { return ParentThing; } };
+class CTCBase { public: CThing* ParentThing; CThing* GetThing() const { return ParentThing; } };
 struct CTCActionUseKickChicken : CTCBase {
     void OnActionUse(CThing& user)
     {

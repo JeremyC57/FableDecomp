@@ -1,4 +1,4 @@
-struct CCreatureAction_StrafeBackward {
+class CCreatureAction_StrafeBackward { public:
     void* vftable;
 };
 

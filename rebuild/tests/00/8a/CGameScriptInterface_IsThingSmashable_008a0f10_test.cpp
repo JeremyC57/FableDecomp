@@ -12,7 +12,7 @@ struct IGSIVtbl {
     Thing* (__fastcall* getThing)(void* self);
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     IGSIVtbl* vt;
 };
 

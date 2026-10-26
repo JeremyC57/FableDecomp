@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing {
+class CThing { public:
     void* vftable;
     int destroyed;
 };

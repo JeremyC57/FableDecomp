@@ -5,25 +5,25 @@
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the owner rides in edi for the base call and the later read of its word at +0xb4; both members are initialiser-list
 // entries (stored after the vtable here); the name is a scoped local.
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0xb4];
     long m_b4;                              // +0xb4 the owner word copied into the action (meaning not pinned down)
 };
-struct CThing;
+class CThing;
 
-struct CCharString {                        // one pointer; the default length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the default length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CSoundPair {                         // a user constructor makes the 8-byte result return through the hidden pointer
+class CSoundPair { public:                         // a user constructor makes the 8-byte result return through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030

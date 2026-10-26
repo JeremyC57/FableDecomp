@@ -5,8 +5,8 @@ typedef unsigned short wchar16;
 static int t_isdigit(wchar16 c) { return c >= '0' && c <= '9'; }
 static int t_isalpha(wchar16 c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
 static int t_isspace(wchar16 c) { return c == ' ' || c == '\t' || c == '\n' || c == '\r'; }
-struct CWideString { const wchar16* text; long length; void SetAsSubString(const wchar16* t, long n) { text = t; length = n; } };
-struct CWParsedItem { long Type; long Value; CWideString String; };
+class CWideString { public: const wchar16* text; long length; void SetAsSubString(const wchar16* t, long n) { text = t; length = n; } };
+class CWParsedItem { public: long Type; long Value; CWideString String; };
 struct CWStringParser {
     wchar16* String; unsigned long StringPos; unsigned long Line; int numbers, strings;
     bool ReadNextNumber(CWParsedItem* item) { ++numbers; item->Type = 3; return true; }

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch { int dummy; };
+class CLandscapeBackgroundPatch { public: int dummy; };
 
 extern "C" void __fastcall CCombatSequenceDef_dtor(CLandscapeBackgroundPatch* thisptr){ (void)thisptr; }
 extern "C" void __cdecl LBP_operator_delete(void* p){ (void)p; }

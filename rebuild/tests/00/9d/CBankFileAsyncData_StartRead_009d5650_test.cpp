@@ -11,7 +11,7 @@ struct Inner {
     Reader* m110;
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     char    pad0[0x18];
     int     f18;
     char    pad1c[0x28 - 0x1c];

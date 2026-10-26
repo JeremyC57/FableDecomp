@@ -99,8 +99,8 @@ static CStr operator+(const CStr& l, const CStr& r) { CStr s(l); s += r; return 
 static CStr operator+(const char* l, const CStr& r) { CStr s(l); s += r; return s; }
 static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CStr(b); }
 
-struct CPersistContext { CStr* output; CPersistContext(CStr& o) : output(&o) {} };
-struct CFaction { const char* name; };
+class CPersistContext { public: CStr* output; CPersistContext(CStr& o) : output(&o) {} };
+class CFaction { public: const char* name; };
 struct Traits {
     void TransferOut(CPersistContext* context, CStr* out, const CFaction* value) { if (context->output == out) *out += value->name; }
     unsigned long GetLength(const CStr& s) const { return s.PStringData == 0 ? 0 : (unsigned long)strlen(s.PStringData); }

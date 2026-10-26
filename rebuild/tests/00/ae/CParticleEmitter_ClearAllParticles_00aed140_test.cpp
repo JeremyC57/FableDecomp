@@ -2,7 +2,7 @@
 // primitive group to every system, then sets ClearedParticles (the other flag untouched).
 #include <cstdio>
 
-struct CEnginePrimitiveHandle { void* m_pGroup; long m_index; };
+class CEnginePrimitiveHandle { public: void* m_pGroup; long m_index; };
 
 static const CEnginePrimitiveHandle* g_lastGroup = 0;
 
@@ -14,7 +14,7 @@ struct CParticleSystem {
 struct CParticleSystemPtr { CParticleSystem* m_pObject; void* m_pCount; };
 struct CParticleSystemPtrVector { CParticleSystemPtr* m_first; CParticleSystemPtr* m_last; CParticleSystemPtr* m_end; };
 
-struct CIEngine;
+class CIEngine;
 
 struct CParticleEmitter {
     virtual void v00() {}

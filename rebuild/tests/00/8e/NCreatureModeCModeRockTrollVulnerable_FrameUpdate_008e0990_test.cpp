@@ -2,7 +2,7 @@
 // Behaviour test for NCreatureMode::CModeRockTrollVulnerable::FrameUpdate (retail 0x008E0990): the recovery count runs down;
 // once spent the troll recovers when its animation list (interface 0x5a) is empty or its current animation may be
 // replaced; then the base update.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -55,15 +55,15 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup {
+class CThing : public CThingLookup { public:
     template<class T> T* GetTCIfPresent(long type) { T* p = 0; if (HasTC(type)) p = GetTC<T>(type); return p; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     int AnimsBegin;
     int AnimsEnd;
     unsigned char CurrentAnimFlags;
 };
-struct CTCAnimationComplex : CTCBase {
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing Animate;
     CAnimateThing& GetAnimation() { return Animate; }
 };

@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharStringData {
+class CCharStringData { public:
     char* Data;                             // +0
     long  Length;                           // +4
 };

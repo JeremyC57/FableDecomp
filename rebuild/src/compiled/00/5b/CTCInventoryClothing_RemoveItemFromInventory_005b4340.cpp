@@ -10,7 +10,7 @@
 // (engine/CTCInventoryClothing.h has it at +0x180: 16-byte PDB containers), so a local view is used.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 long __fastcall GetReplacementItemForType(long itemType);      // 0x005D99B0
 struct CTCInventoryBase_Retail {
     void*   __vftable;                                          // +0x000

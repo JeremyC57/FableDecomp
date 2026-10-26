@@ -17,7 +17,7 @@ public:
     CTCPerceiveThing() : LastPerceivedPos(1.0f, 2.0f, 3.0f), runnableFor(0) { }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     int terminated;
     int moves;
     const long* script;                         // test knob: the move results in order

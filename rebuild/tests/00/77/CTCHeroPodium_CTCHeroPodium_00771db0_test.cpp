@@ -2,18 +2,18 @@
 #include <cstring>
 #include <new>
 // Behaviour of CTCHeroPodium::CTCHeroPodium (0x00771DB0): CTCBase(parent), no occupants, an empty occupation vector.
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     virtual long v00() { return 0; }
     CThing* ParentThing;
     CTCBase(CThing* parent) : ParentThing(parent) {}
 };
-struct C3DVector { float x, y, z; C3DVector() {} };
+class C3DVector { public: float x, y, z; C3DVector() {} };
 struct CLongVector {
     long* m_pFirst; long* m_pLast; long* m_pEnd;
     CLongVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) {}
 };
-struct CTCHeroPodium : CTCBase {
+class CTCHeroPodium : public CTCBase { public:
     long NumberOfCrowdOccupants;
     CLongVector CrowdOccupation;
     C3DVector E_X;

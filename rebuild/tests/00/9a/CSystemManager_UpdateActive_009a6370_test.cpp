@@ -34,8 +34,8 @@ class CDisplayManager {
 public:
     bool ProcessLostDevice();                              // 0x009C00C0
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }

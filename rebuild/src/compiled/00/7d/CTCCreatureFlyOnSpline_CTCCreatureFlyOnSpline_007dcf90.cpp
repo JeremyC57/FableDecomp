@@ -7,9 +7,9 @@
 // (vector<CEnginePrimitiveHandle>), Progress +0x20, DeltaProgress +0x24, Looping +0x28.
 // Shape: every store follows the vtable store (the counted pointer and the vector are member objects
 // with inline constructors); the zeroes share eax, the 0.01f delta is an immediate.
-struct CThing;
-struct CCardinalSpline;
-struct CEnginePrimitiveHandle;
+class CThing;
+class CCardinalSpline;
+class CEnginePrimitiveHandle;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -32,7 +32,7 @@ struct CRetailVector_EngineHandle {                         // retail std::vecto
     CRetailVector_EngineHandle() : First(0), Last(0), End(0) { }
 };
 
-struct CTCCreatureFlyOnSpline : CTCBase_Calls {             // vtable 0x0126F9F4
+class CTCCreatureFlyOnSpline : public CTCBase_Calls { public:             // vtable 0x0126F9F4
     CCountedPointer_CardinalSpline PSpline;                 // +0x0c
     CRetailVector_EngineHandle     EngineHandles;           // +0x14
     float                          Progress;                // +0x20

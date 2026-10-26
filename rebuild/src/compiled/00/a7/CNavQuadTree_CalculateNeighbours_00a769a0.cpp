@@ -7,9 +7,9 @@
 //   `size()` is the pointer difference `sar 2` re-evaluated every iteration; `operator[]` is `*(begin() + n)`; VC strength-reduces
 //   the `i - width - 1` index into the negated-width byte offset in ebp; the index is advanced right after the children call
 //   (a `for` with `++i` in the header computes `i + 1` separately and indexes differently).
-struct CNavRegion;
-struct CAFile;
-struct CANavQuadTreeNode;
+class CNavRegion;
+class CAFile;
+class CANavQuadTreeNode;
 void* __cdecl operator new(unsigned int size);             // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 namespace std {
@@ -48,7 +48,7 @@ template <class T, class A = allocator<T> > struct list { // STLport list: the h
 template <class T> struct less { };
 template <class K, class V, class C = less<K>, class A = allocator<V> > struct map;
 }
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                                    // +0
     signed char m_size;                                    // +4
     signed char m_capacity;                                // +5
@@ -63,9 +63,9 @@ template <class T, int N> struct CSmallVector {
 };
 typedef CSmallVector<const CANavQuadTreeNode*, 8> CNeighbourVector;
 typedef std::list<CANavQuadTreeNode*> CNodeList;
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 enum ENavNodeType { NAV_NODE_QUADTREE = 0, NAV_NODE_NAVIGABLE = 1, NAV_NODE_BLOCKED = 2, NAV_NODE_SWITCHABLE = 3 };
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual ~CANavQuadTreeNode();                                                   // slot 0
     virtual const CNeighbourVector* GetNeighbours() const;                          // slot 2 (overloads sit in reverse order)
     virtual CNeighbourVector* GetNeighbours();                                      // slot 1
@@ -106,7 +106,7 @@ template <class T, class A = allocator<T> > struct vector {           // STLport
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
 }
-struct CNavQuadTree {
+class CNavQuadTree { public:
     void*         __vftable;                       // +0x00
     bool          Initialised;                     // +0x04
     bool          Activated;                       // +0x05

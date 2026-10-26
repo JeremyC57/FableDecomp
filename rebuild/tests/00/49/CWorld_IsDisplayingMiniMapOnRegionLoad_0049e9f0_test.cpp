@@ -5,7 +5,7 @@ struct CGlobalGui { char pad[0xf6]; unsigned char suppressMiniMap; };
 static CGlobalGui g_globalGuiInst;
 CGlobalGui* g_pGlobalGui = &g_globalGuiInst;
 
-struct CWorld {
+class CWorld { public:
     char pad[0x12f];
     unsigned char bDisplayMiniMapOnRegionLoad;  // +0x12f
 };

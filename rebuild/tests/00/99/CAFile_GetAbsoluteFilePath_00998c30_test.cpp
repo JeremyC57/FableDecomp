@@ -98,7 +98,7 @@ static WStr ExpandPath(const WStr& path, const WStr& base)
 }
 
 static int g_narrowCalls = 0;
-struct CAFile {
+class CAFile { public:
     static CStr GetAbsoluteFilePath(const CStr& path, const CStr& basePath)   // narrow overload stand-in (0x00998250)
     {
         ++g_narrowCalls;

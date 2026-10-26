@@ -20,7 +20,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-template <class T> struct CArray {                      // retail CArray (STLport vector): 12 bytes
+template <class T> class CArray { public:                      // retail CArray (STLport vector): 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

@@ -15,10 +15,10 @@
 
 typedef long EPlayerMode;
 
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber() const;              // 0x00449700
 };
-struct CThing {
+class CThing { public:
     void Kill(bool silently);                      // 0x004C9B80
 };
 struct CIntelligentPointer_CThing {                // CIntelligentPointer<CThingPlayerCreature>, 8 bytes

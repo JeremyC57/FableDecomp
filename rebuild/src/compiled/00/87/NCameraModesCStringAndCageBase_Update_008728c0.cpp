@@ -17,7 +17,7 @@
 // manager disables smoothing, the result parked across a GetCamTools call. Shape lessons: C3DVector needs a memberwise user
 // copy ctor (retail copies Y first, straight from the member; the implicit copy goes through `lea eax,[esi+54h]`), and the
 // observed thing is a named local so GetObservedThing runs before the GetCameraFocalPos argument pushes.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
@@ -35,7 +35,7 @@ public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* Appearance;                              // +0x64
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad000[0xb0];
     bool          NoSmoothing;                                     // +0xb0
     float GetNoControlMovementTime();                              // 0x00697710

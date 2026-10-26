@@ -4,7 +4,7 @@
 //   push esi ; mov esi,[esp+8] ; push -1 ; push 0x123db28 ; mov ecx,esi
 //   call 0x99ebf0 (CCharString ctor(const char*,int)) ; mov eax,esi ; pop esi ; ret 4
 
-struct CCharString {
+class CCharString { public:
     // Real ctor at 0x99ebf0: CCharString::CCharString(const char* s, int len)
     // Declared as an ordinary member so VC7.1 emits: push len ; push s ; mov ecx,this ; call ctor.
     CCharString(const char* s, int len);

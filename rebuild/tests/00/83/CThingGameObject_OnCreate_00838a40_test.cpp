@@ -1,6 +1,6 @@
 // Behaviour test for 0x00838A40 CThingGameObject::OnCreate
 #include <cstdio>
-struct CThing { int x; };
+class CThing { public: int x; };
 struct CBaseIntelligentPointer {
     CThing* PItem;
     CBaseIntelligentPointer() : PItem(0) {}
@@ -12,11 +12,11 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     bool m_ok;
     bool OnCreate() { return m_ok; }
 };
-struct CThingGameObject : CThingPhysical {
+class CThingGameObject : public CThingPhysical { public:
     CIntelligentPointerThing PThingStandingOn;
     unsigned char AddToComboMultiplierOnHit : 1;
     unsigned char AddToComboMultiplierOnHitOverrideSet : 1;

@@ -1,5 +1,5 @@
 // CQuestManager::LoadGameState(CPersistContext&) -- read the quest game-state text (length-prefixed in binary contexts, else from the context's parser), load it, then transfer the boasts
-// Leaf: ?LoadGameState@CQuestManager@@QAEXAAUCPersistContext
+// Leaf: ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext
 // Retail 0x004B6380, 346 bytes, ret 4 (the reader of the landed SaveGameState 0x004B64E0). Callees: the stream's inline
 // ReadLong (slow path CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0), vector<unsigned char>(n) 0x00411910, the
 // stream's virtual ReadBuffer (slot 4, +0x10), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
@@ -14,7 +14,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);            // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
@@ -26,7 +26,7 @@ namespace N_00411910 { struct CByteArray {                                      
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
 }; } using N_00411910::CByteArray;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ReadBuffer(void* buffer, long size);      // slot 4 (+0x10)
     unsigned long StreamPos;                               // +0x04
@@ -59,7 +59,7 @@ struct CMemoryDataInputStream {
         return value;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -67,7 +67,7 @@ struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -78,7 +78,7 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
-struct CPersistContext {                           // Ego_r.pdb, 0x2c bytes
+class CPersistContext { public:                           // Ego_r.pdb, 0x2c bytes
     void*                   PDefinitionManager;    // +0x00
     void*                   PSymbolMap;            // +0x04
     CStringParser*          PParser;               // +0x08
@@ -92,7 +92,7 @@ struct CPersistContext {                           // Ego_r.pdb, 0x2c bytes
     void*                   PSaveStream;           // +0x28
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ""
-struct CQuestManager {
+class CQuestManager { public:
     void LoadGameState(CStringParser& parser);     // 0x004B5500
     void TransferBoasts(CPersistContext& context); // 0x004B05C0
     void LoadGameState(CPersistContext& context);

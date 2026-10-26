@@ -16,13 +16,13 @@
 
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;
     float     Distance;
     CPlane();                                                      // 0x0063EC80 (empty, out of line)
@@ -30,11 +30,11 @@ struct CPlane {
 
 CPlane* __fastcall CopyPlanes(const CPlane* first, const CPlane* last, CPlane* dest);   // 0x00A759E0
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle);                       // 0x00A026B0
 };
 
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, void* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 

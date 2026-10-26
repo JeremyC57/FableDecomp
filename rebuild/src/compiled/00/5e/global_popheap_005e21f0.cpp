@@ -13,7 +13,7 @@
 // Shape: the by-value `value` is copied into __adjust_heap's argument area by the pair's implicit copy ctor (four dword moves,
 // then the counted pointer's inline copy with `inc [edi+4]`), the comparator dword is pushed first, the count is the /20
 // reciprocal multiply; this callee destroys its own `value` parameter at the end (the inline counted release).
-struct CAnimComponentMap {                  // intrusively counted object: vptr, count at +4
+class CAnimComponentMap { public:                  // intrusively counted object: vptr, count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long m_count;                           // +4
@@ -23,7 +23,7 @@ struct CIVCountedPointer {
     CIVCountedPointer(const CIVCountedPointer& o) : m_p(o.m_p) { if (m_p) ++m_p->m_count; }
     ~CIVCountedPointer() { if (m_p && --m_p->m_count == 0) m_p->Destroy(); }
 };
-struct CAnimationEntry {                    // 0x10 bytes
+class CAnimationEntry { public:                    // 0x10 bytes
     long BankIndex;                         // +0x00
     long AnimName;                          // +0x04 CDefString (table position)
     long GroupName;                         // +0x08 CDefString (table position)

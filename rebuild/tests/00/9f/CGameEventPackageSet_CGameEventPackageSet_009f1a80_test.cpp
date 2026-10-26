@@ -2,10 +2,10 @@
 #include <cstring>
 #include <new>
 
-struct CGameEvent { long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
+class CGameEvent { public: long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent() { Player = -1; Valid = false; } };
-struct CGameEventPackage { long TimeStamp; unsigned long NoEvents; CGameEvent Events[40]; CGameEventPackage() : NoEvents(0) {} };
-struct CGameEventPackageSet { unsigned long NoPackages; CGameEventPackage Packages[50]; CGameEventPackageSet() { NoPackages = 0; } };
+class CGameEventPackage { public: long TimeStamp; unsigned long NoEvents; CGameEvent Events[40]; CGameEventPackage() : NoEvents(0) {} };
+class CGameEventPackageSet { public: unsigned long NoPackages; CGameEventPackage Packages[50]; CGameEventPackageSet() { NoPackages = 0; } };
 static unsigned char g_raw[sizeof(CGameEventPackageSet)];
 int main()
 {

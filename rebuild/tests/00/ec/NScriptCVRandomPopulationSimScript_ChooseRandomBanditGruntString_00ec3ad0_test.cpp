@@ -3,7 +3,7 @@
 #include <cstring>
 static int g_roll = 0;
 static int test_rand() { return g_roll; }
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }

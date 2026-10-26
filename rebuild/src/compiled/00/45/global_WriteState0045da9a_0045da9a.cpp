@@ -27,7 +27,7 @@ struct SHead {
     SNode* m_leftmost;                     // +8
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void Write(long value);                // 0x00993EB0
     void WriteFloat(float value);          // 0x00993EE0
 };

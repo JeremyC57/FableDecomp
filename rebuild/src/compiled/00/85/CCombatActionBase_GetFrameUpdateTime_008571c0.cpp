@@ -23,7 +23,7 @@ struct CSpeedVariationHandle {                  // 4-byte class with a construct
     CSpeedVariationHandle(const CSpeedVariation* pVariation) : m_pVariation(pVariation) { }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     CSpeedVariationHandle GetSpeedVariation();  // 0x0085AD30
 };
 

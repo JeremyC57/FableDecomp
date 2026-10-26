@@ -8,7 +8,7 @@
 // Shape: the first cofactor is a named local (kept on the x87 stack and reused for E11), the determinant's other two
 // terms are recomputed for the result rows; `1.0f / det` is `fdivr [1.0f]`; the zero translation is integer stores.
 // `fld [a] ; fmul [b]` is `b * a` (the right operand is loaded first).
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E11, E12, E13;
     float E21, E22, E23;
     float E31, E32, E33;
@@ -32,7 +32,7 @@ struct CMatrix3x4 {
     }
 };
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

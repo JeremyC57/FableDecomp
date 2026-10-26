@@ -1,18 +1,18 @@
 #include <cstdio>
 // behaviour test for CThingCreatureBase::UpdateLastAttackingCreature (0x006624A0)
-struct CBaseObject { int dummy; };
+class CBaseObject { public: int dummy; };
 static long g_frame = 0;
 long g_GameFramesPerSecond = 30;
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() { return m_pItem; }
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_frame; }
     unsigned long GetFramesSince(unsigned long frame) { return GetWorldFrame() - frame; }
 };
 static CWorld g_world;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CBaseIntelligentPointer PLastAttackedByCreature;
     unsigned long WFLastAttackedByCreature;
     int clears;

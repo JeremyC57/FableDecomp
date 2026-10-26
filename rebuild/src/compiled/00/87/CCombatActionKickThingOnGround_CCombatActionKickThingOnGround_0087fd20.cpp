@@ -7,7 +7,7 @@
 // Shape: C3DVector operator-/operator+ inline, returning by value; the sum is assigned as a dword block. The target's
 //   difference is the left operand (the right one, the creature's, is evaluated first); the position out-parameter is a
 //   block-scoped local so it shares the frame with the vector temporaries (sub esp,24h).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -34,7 +34,7 @@ struct CThingPhysics {                          // the thing's +0x60 object
     C3DVector m_previous;                       // +0x18
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -54,21 +54,21 @@ struct CThing {
     CThingPhysics* m_pPhysics;                  // +0x60
 };
 
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
     unsigned char _body[0x120 - 4];
 };
 
-struct CCombatAction_KickThingOnGround : CCombatActionBase {
+class CCombatAction_KickThingOnGround : public CCombatActionBase { public:
     C3DVector KickVector;                       // +0x120
     float KickValue;                            // +0x12c
     virtual void v00();

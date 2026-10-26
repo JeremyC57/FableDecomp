@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for CThingObject::vfunc_64 (0x00703780).
-struct CTCBase { unsigned long props; bool HasProperty(unsigned long mask) { return (props & mask) != 0; } };
+class CTCBase { public: unsigned long props; bool HasProperty(unsigned long mask) { return (props & mask) != 0; } };
 struct SEntry { long type; CTCBase* component; };
-struct CThingObject {
+class CThingObject { public:
     unsigned long m_presentBits[9]; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* key) { SEntry* it = first; while (it != last && it->type < *key) ++it; return it; }
     bool GetInterface(long type, CTCBase** out)

@@ -9,9 +9,9 @@
 #endif
 
 static int g_live = 0; static const char* g_name = 0; static long g_local = 0;
-struct CCharString { const char* m_p; long m_len; CCharString(const char* p, long len) : m_p(p), m_len(len) { ++g_live; } ~CCharString() { --g_live; } };
-struct CGameDefinitionManager { long GetGlobalIndexFromLocal(const CCharString& className, long localIndex) { g_name = className.m_p; g_local = localIndex; return localIndex + 1000; } };
-struct CEnvironment { void* __vftable; CGameDefinitionManager* DefinitionManager;
+class CCharString { public: const char* m_p; long m_len; CCharString(const char* p, long len) : m_p(p), m_len(len) { ++g_live; } ~CCharString() { --g_live; } };
+class CGameDefinitionManager { public: long GetGlobalIndexFromLocal(const CCharString& className, long localIndex) { g_name = className.m_p; g_local = localIndex; return localIndex + 1000; } };
+class CEnvironment { public: void* __vftable; CGameDefinitionManager* DefinitionManager;
     long GetGlobalEnvironmentThemeIndexFromLocal(long localIndex) { CCharString className("ENVIRONMENT_THEME_DAY", -1); return DefinitionManager->GetGlobalIndexFromLocal(className, localIndex); } };
 int main()
 {

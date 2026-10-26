@@ -8,13 +8,13 @@
 //   CScriptThing vtable 0x01238C8C stored into the argument area, PImp copied with add-ref), EntitySheatheWeapons 506
 //   0x00890BA0; CScriptThing slot 7 GetHomePos() (+0x1c, C3DVector built straight into the argument area).
 // Layout: entity-script base as the landed CNOVI_Theresa::Init 0x00DAC4F0: vptr +0, CGameScriptInterface* +4, Me +8.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -26,13 +26,13 @@ struct CBase {                                   // vtable 0x01231710
     virtual C3DVector GetHomePos() const;        // CScriptThing slot 7 (+0x1c) 0x004AA9A0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBase {                    // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                    // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : CBase(), PImp(other.PImp) {}
     virtual ~CScriptThing();
     virtual C3DVector GetHomePos() const;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

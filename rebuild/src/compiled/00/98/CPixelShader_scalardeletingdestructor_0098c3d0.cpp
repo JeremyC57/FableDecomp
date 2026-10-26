@@ -16,11 +16,11 @@ struct CPixelShaderData {
     long  m_refCount;                         // +0x08
 };
 
-struct CShaderBase {                          // vtable 0x0129A030
+class CShaderBase { public:                          // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
 
-struct CPixelShader : CShaderBase {           // vtable 0x0129A054
+class CPixelShader : public CShaderBase { public:           // vtable 0x0129A054
     CPixelShaderData* Data;                   // +0x04
     __forceinline virtual ~CPixelShader()      // __forceinline keeps the release in the ??_G body (else it collapses to `call ??1`)
     {

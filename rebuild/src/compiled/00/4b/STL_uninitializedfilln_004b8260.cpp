@@ -19,7 +19,7 @@
 //   three-string record.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);          // 0x0099EC30
 };

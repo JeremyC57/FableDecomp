@@ -34,7 +34,7 @@ struct CDefPointerBase {                             // CDefPointer<CDefBase>: t
     CDefPointerBase() { }
     ~CDefPointerBase() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
 };
-struct CHighlightItemDef : CDefBase {
+class CHighlightItemDef : public CDefBase { public:
     unsigned char _pad_0x08[0x20];
     long          ParticleEmitter;                   // +0x28
     long          PickupParticleEmitter;             // +0x2C
@@ -57,10 +57,10 @@ struct CHighlightItemDefPointer {                    // CDefPointer<const CHighl
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointerBase GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -89,11 +89,11 @@ bool CDefClassBase::GetSubDef(CHighlightItemDefPointer& out)
 }
 #pragma auto_inline(on)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                             // +0x70 CDefPointer<const CThingDef>::Object
     const C3DVector& GetPosition() const;            // 0x004C73D0

@@ -11,15 +11,15 @@
 // MapWidth/MapHeight are retail +0x5c/+0x5e (PDB +0x60: the debug list iterator is wider).
 // Shape: Map is a BODY assignment (stored after every member constructor) while the quad-tree arguments use
 // the parameter; the zero stores after the quad-tree call are the two containers' inline constructors.
-struct CEngineMap {
+class CEngineMap { public:
     unsigned char  _pad00[0x5c];
     unsigned short MapWidth;                                // +0x5c (PDB +0x60: debug list iterator)
     unsigned short MapHeight;                               // +0x5e
 };
 
-struct CEngineStaticMapFileBlockManager;
-struct C2DBoxI;
-struct CLocalDetailObjectCollectionType;
+class CEngineStaticMapFileBlockManager;
+class C2DBoxI;
+class CLocalDetailObjectCollectionType;
 
 template <class T> struct CRetailVector {                   // retail std::vector / CArray: three pointers
     T* m_pFirst;
@@ -32,8 +32,8 @@ struct CObjectTypeCollectionPalette {
     CRetailVector<const CLocalDetailObjectCollectionType*> Entries;
 };
 
-struct CLocalDetailCacheMap {
-    struct CQuadTreeElement {                               // 0x4c bytes
+class CLocalDetailCacheMap { public:
+    class CQuadTreeElement { public:                               // 0x4c bytes
         unsigned char _body[0x4c];
         CQuadTreeElement(CLocalDetailCacheMap* map, long x, long y, long width, long height);   // 0x00BDDF30
     };

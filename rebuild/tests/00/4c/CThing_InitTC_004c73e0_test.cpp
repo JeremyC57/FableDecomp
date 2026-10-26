@@ -1,6 +1,6 @@
 // Behaviour test for CThing::InitTC @ 0x004C73E0: runs the staged initialisers up to the thing's stage, skips removed TCs.
 #include <cstdio>
-struct CTCBase {
+class CTCBase { public:
     int  calls[3];
     bool ToBeRemoved;
     CTCBase() : ToBeRemoved(false) { calls[0] = calls[1] = calls[2] = 0; }
@@ -8,7 +8,7 @@ struct CTCBase {
     virtual void InitialiseStage2() { ++calls[1]; }
     virtual void InitialiseStage3() { ++calls[2]; }
 };
-struct CThing {
+class CThing { public:
     unsigned char InitialisationStage : 3;
     void InitTC(CTCBase* tc)
     {

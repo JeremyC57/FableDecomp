@@ -3,7 +3,7 @@
 // depth 0 forces the partial_sort fallback.
 #include <cstdio>
 struct CHitLocation { int id; };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

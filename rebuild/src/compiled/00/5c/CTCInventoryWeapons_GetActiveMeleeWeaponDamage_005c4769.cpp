@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -49,11 +49,11 @@ struct CIntelligentPointer {
     CThing* GetPItem() const;                 // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* pointer);   // 0x004CC340
-struct CTCWeapon {                            // interface type 0x48
+class CTCWeapon { public:                            // interface type 0x48
     float GetDamage() const;                  // 0x005DAAA0
 };
 
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     unsigned char _pad00[0x134];
     CIntelligentPointer PActiveMeleeWeapon;   // +0x134
     float GetActiveMeleeWeaponDamage() const;

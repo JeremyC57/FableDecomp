@@ -28,7 +28,7 @@ struct CBase {                                     // the engine root class: a v
 
 struct CGraphicDataBankInfo { unsigned char _body[0x38]; };   // CGraphicBankManager::CGraphicDataBankInfo (retail 0x38 bytes)
 
-struct CGraphicBankManager : CBase {               // vtable 0x0129C7E4
+class CGraphicBankManager : public CBase { public:               // vtable 0x0129C7E4
     CRetailList<CGraphicDataBankInfo> GraphicDataBanks;   // +0x04
     virtual void v00();
     CGraphicBankManager();

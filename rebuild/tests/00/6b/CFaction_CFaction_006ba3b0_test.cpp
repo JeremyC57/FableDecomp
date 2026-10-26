@@ -4,7 +4,7 @@
 
 static int g_stringCopies = 0;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(void* p) : PStringData(p) { }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_stringCopies; }
@@ -28,7 +28,7 @@ struct CCharStringSet {
     }
 };
 
-struct CFaction {
+class CFaction { public:
     CCharString    Name;
     CCharStringSet AlliedFactions;
     CCharStringSet EnemyFactions;

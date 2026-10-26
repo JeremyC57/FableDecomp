@@ -13,7 +13,7 @@
 //   VC7.1 reload Object through `this` after the store (may-alias) and re-test the count (99 v 92 bytes).
 // Convention: /Gr (link-time __fastcall): first in ecx (esi), last in edx (ebx), result and the value reference on
 //   the stack; the empty-range exit returns result straight from its slot.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Release();                             // slot 1 (+0x04)
     long RefCount;                                      // +0x04
@@ -23,8 +23,8 @@ struct CDefPointeeBase {
             Release();
     }
 };
-struct CMeleeCombatAbilityDef;
-template <class T> struct CDefPointer {                 // 4 bytes
+class CMeleeCombatAbilityDef;
+template <class T> class CDefPointer { public:                 // 4 bytes
     CDefPointeeBase* Object;
     CDefPointer& operator=(const CDefPointer& o)
     {

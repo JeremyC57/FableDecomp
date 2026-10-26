@@ -11,8 +11,8 @@ struct Obj
 // cdecl free function -> push esi; call 0xbfe9bc; add esp,4
 void __cdecl operator delete(void* block);   // MSVCR71 import thunk 0x00BFE9BC
 
-struct CTCMapwho
-{
+class CTCMapwho
+{ public:
     void OnDie(Obj* p);
 };
 

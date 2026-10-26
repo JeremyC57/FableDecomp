@@ -13,16 +13,16 @@
 //   IsDone exit jumps to one shared `done:` return at the end, which moves the destroy-spawnPos exit block below the inline GetPos
 //   ternary as in retail (a plain in-loop `return` keeps it inline after the post-loop IsDone test).
 //   built before the position argument; the CreateCreature result is a discarded temporary (it reuses the filter's slot).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 extern C3DVector g_ZeroVector;                     // 0x0143E8E0
-struct CCPPointerInfo;
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class CCPPointerInfo;
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v00() const; virtual void v01() const; virtual void v02() const; virtual void v03() const;
     virtual void v04() const; virtual void v05() const;
     virtual __forceinline const C3DVector& GetPos() const   // slot 6 (+0x18), 0x004AA980
@@ -37,7 +37,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
     ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;
@@ -65,7 +65,7 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x72c];
     float         RockTrollTriggerDistance;        // +0x72c (descriptive)
 };

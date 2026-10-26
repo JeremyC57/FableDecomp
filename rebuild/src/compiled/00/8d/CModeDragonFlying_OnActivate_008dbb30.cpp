@@ -16,7 +16,7 @@
 //   1 / (AnimLength * frames per second) clamped to [0, 1] and written to both speeds.
 #include <math.h>
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 struct CModeBase;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                   // +0x10 (1 = player creature)
     unsigned char _pad11[0x0f];
@@ -49,12 +49,12 @@ struct CTCFlagged {                         // the type-0x3a component
     unsigned char _pad00[0x50];
     unsigned char m_flag : 1;               // +0x50 bit 0
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x1c];
     float         PlaybackSpeed;            // +0x1c
     float         TargetPlaybackSpeed;      // +0x20
 };
-struct CTCAnimationComplex {                // the type-0x5a component
+class CTCAnimationComplex { public:                // the type-0x5a component
     CAnimateThing* GetAnimateThing();       // 0x0070B460
     long GetAnimIndex();                    // 0x0070B490
     float GetAnimDuration(long animIndex);  // 0x0070B4A0
@@ -63,7 +63,7 @@ void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable
 
 extern long g_GameFramesPerSecond;          // 0x01375550
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

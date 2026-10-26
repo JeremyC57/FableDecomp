@@ -4,7 +4,7 @@
 //   test eax,eax; je false; mov eax,1; ret; false: xor eax,eax; ret
 
 #include "engine/CAIStateGroup_MinionKidGroupTag.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CTCCreatureGroupTag {
+class CTCCreatureGroupTag { public:
     int CheckValid();    // __fastcall @ 0x8138e0, ecx=this
 };
 

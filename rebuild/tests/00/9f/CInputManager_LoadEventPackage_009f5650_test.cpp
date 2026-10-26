@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static const void* g_setPackage = 0;
-struct CInputEventPackage { unsigned char _events[0x0c]; long TimeStamp; unsigned char _rest[0x20]; };
-struct CChecksum { long Checksum1, Checksum2, Checksum3, Checksum4; };
-struct CInputManager {
+class CInputEventPackage { public: unsigned char _events[0x0c]; long TimeStamp; unsigned char _rest[0x20]; };
+class CChecksum { public: long Checksum1, Checksum2, Checksum3, Checksum4; };
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x38];
     CChecksum Checksum;

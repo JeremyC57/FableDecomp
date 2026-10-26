@@ -12,7 +12,7 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -24,7 +24,7 @@ struct CContainmentMap {                // std::map<CDefString, long, CCompareDe
     CContainmentMap& operator=(const CContainmentMap& other);   // 0x004E5878
 };
 
-struct CFireEffectCreationSet {         // PDB 0x18 bytes (retail 0x14): vptr, a base byte at +4, ContainmentMap +8
+class CFireEffectCreationSet { public:         // PDB 0x18 bytes (retail 0x14): vptr, a base byte at +4, ContainmentMap +8
     virtual void v00();
     bool m_baseFlag;                    // +0x04 (unnamed base-class byte in the PDB)
     CContainmentMap ContainmentMap;     // +0x08
@@ -36,7 +36,7 @@ struct CFireEffectCreationSet {         // PDB 0x18 bytes (retail 0x14): vptr, a
     }
 };
 
-struct CFlammableDef : CDefClassBase {
+class CFlammableDef : public CDefClassBase { public:
     long FireResistance;                // +0x28
     float MaxDamageCaused;              // +0x2c
     float FireDamagePerCycle;           // +0x30

@@ -10,12 +10,12 @@
 // (16 bytes): FrameNum (unsigned short) +4, GraphicInfo +0xc.
 // Shape: the frame number is zero-extended (`movzx`) into the unsigned long argument and pushed before the
 // GraphicInfo load; the call is the last statement, so the function falls into a single `ret`.
-struct CBankFileAsyncData;
-struct CGraphicInfo {
+class CBankFileAsyncData;
+class CGraphicInfo { public:
     void UnloadFrame(unsigned long frameNum);   // 0x009FE8E0
 };
 
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     void*          __vftable;           // +0x00
     unsigned short FrameNum;            // +0x04
     signed char    SmallMipmapLevel;    // +0x06

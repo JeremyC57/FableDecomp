@@ -16,7 +16,7 @@ static int fails = 0;
 // SetPItem) and the inline operator= (`SetPItem(other.GetPItem())`); the pointer's address is formed once (edi);
 // the pointer-to-bool return is `neg ; sbb ; neg`. Same model as the landed sibling 0x0093EDF0.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -33,19 +33,19 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     CThing* GetHornForCreature(CThing* creature);   // 0x006590D4
 };
 
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThing* GetCreature() const { return PBrain->PCreature; }

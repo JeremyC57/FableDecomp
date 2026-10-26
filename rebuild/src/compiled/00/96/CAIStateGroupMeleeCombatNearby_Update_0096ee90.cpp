@@ -15,13 +15,13 @@
 //          creature then world (GetPWorld after the creature load).
 // Layout: engine/CAIStateGroup_MeleeCombatNearby.h is flattened (vptr spelled as a data member) and this function makes
 //          virtual calls through slots 14/15, so the class is modelled locally (PBrain +0x04, PEnemy +0x14).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     bool IsInCombatMode();                      // 0x006621A0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsInMeleeAsAttacker() const;           // 0x00662410 (Ego_r.pdb ?IsInMeleeAsAttacker@CThingCreatureBase@@QBE_NXZ)
 };
 bool __fastcall IsAbleToMove(CThing* thing);                  // 0x0085F3E0
@@ -36,7 +36,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
@@ -49,19 +49,19 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

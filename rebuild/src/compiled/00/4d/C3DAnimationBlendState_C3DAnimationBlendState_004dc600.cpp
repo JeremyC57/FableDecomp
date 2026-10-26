@@ -14,7 +14,7 @@ struct RefObj {
     int      refcnt; // +4
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     char    pad[0xc];  // +0
     RefObj* ptr;       // +0xc
 };

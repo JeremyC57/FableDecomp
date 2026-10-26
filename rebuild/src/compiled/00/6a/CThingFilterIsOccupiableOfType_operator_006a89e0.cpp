@@ -12,7 +12,7 @@
 // ; mov ecx,eax`), key homed in a frame/argument slot and passed by address to the const LowerBound.
 // `if (GetInterface(..) && occupiable->IsOfType(4)) return true; return false;` (two exits, the false tail shared);
 // kind 0xac = `mov ecx,[eax+34h] ; test ch,10h`.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -26,7 +26,7 @@ struct CTCMap {                                 // the thing's component map at 
     STCEntry* LowerBound(const long* kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -46,7 +46,7 @@ struct CThing {
     }
 };
 
-struct CTCSinglePersonOccupiable {              // component kind 0xac
+class CTCSinglePersonOccupiable { public:              // component kind 0xac
     bool IsOfType(unsigned long typeMask) const;    // 0x0087C420
 };
 

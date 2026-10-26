@@ -39,9 +39,9 @@ static void InitState(CTrackedRenderState& s, unsigned long v) { s.m_stateId = 0
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CTexture { int id; };
-struct CVertexShader { int id; };
-struct CPixelShader { int id; };
+class CTexture { public: int id; };
+class CVertexShader { public: int id; };
+class CPixelShader { public: int id; };
 struct CStaticShaderManager {
     bool VertexShadersEnabled, PixelShadersEnabled;
     long CurrentVSConstantLayoutIndex;
@@ -94,9 +94,9 @@ struct CRenderStateCaptureBlock {
 static void ResetEnv() { g_log[0] = 0; g_drawnTexture = 0; g_ShaderRenderManager.VertexShadersEnabled = false; g_ShaderRenderManager.PixelShadersEnabled = false; g_ShaderRenderManager.CurrentVSConstantLayoutIndex = 0; g_rsm.depth = 0; }
 struct Core : CoreBase { CTrackedRenderState s2b60, s2b74, s2840, s28cc, s28e0; };
 static Core g_core;
-struct C2DBoxF { float X0, Y0, X1, Y1; };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CMatrix3x4 { float M[12]; };
+class C2DBoxF { public: float X0, Y0, X1, Y1; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CMatrix3x4 { public: float M[12]; };
 static C2DBoxF g_window; static int g_clearFlags; static unsigned int g_clearColour; static CMatrix3x4 g_view;
 static void SetRenderTarget() { Log("T"); }
 static void ClearRenderTarget(const CRGBColour* c, int flags) { g_clearFlags = flags; g_clearColour = (unsigned int)c->A << 24 | (unsigned int)c->R << 16 | (unsigned int)c->G << 8 | c->B; Log("C"); }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual bool IsActionReadyForInterruption() const;
     char pad[0xd8 - 4];
     bool m_flagA;

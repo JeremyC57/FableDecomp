@@ -13,8 +13,8 @@
 // out-pointer in the dead temporary's word.
 // Layout: Ego_r.pdb CTCKraken: PTarget +0x20 (CIntelligentPointer<CThing>), Tentacles +0x30 (STLport list: one node
 // pointer). No engine header.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -38,7 +38,7 @@ struct CTCMap_Retail {
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 UsingComponents
     unsigned char  _pad40[4];
@@ -56,13 +56,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 namespace NEntityEvents {
-struct CEventHitBy;
-struct CIsHitEventHitBy {
+class CEventHitBy;
+class CIsHitEventHitBy { public:
     CThing* HitBy;
     CIsHitEventHitBy(CThing* thing) : HitBy(thing) { }
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     bool GetEvent(NEntityEvents::CEventHitBy** event, const NEntityEvents::CIsHitEventHitBy& isHit);   // 0x007FCE10 (template instantiation)
 };
 struct SThingListNode {                         // STLport _List_node<CIntelligentPointer<CThing> >
@@ -82,7 +82,7 @@ struct CThingPointerList {                      // STLport list<CIntelligentPoin
     void remove(const CIntelligentPointer& value);   // 0x0065DE8A
 };
 
-struct CTCKraken {
+class CTCKraken { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x20 - 0x08];

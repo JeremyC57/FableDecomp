@@ -3,25 +3,25 @@
 #include <cstring>
 // behaviour test: CEngineWorldMap::DeleteMap tears one map down and trims trailing empty slots
 static int g_unloaded = 0, g_hidden = 0, g_unlinked = 0, g_rendererDeleted = 0, g_detailDeleted = 0, g_destroyed = 0;
-struct CEngineMap;
-struct CEngineLandscapeMap { void OnGameMapUnloaded() { ++g_unloaded; } void OnMapVisibilityChanged(bool v) { if (!v) ++g_hidden; } };
-struct CLocalDetailCacheMap { void OnMapVisibilityChanged(bool v) { if (!v) ++g_hidden; } };
+class CEngineMap;
+class CEngineLandscapeMap { public: void OnGameMapUnloaded() { ++g_unloaded; } void OnMapVisibilityChanged(bool v) { if (!v) ++g_hidden; } };
+class CLocalDetailCacheMap { public: void OnMapVisibilityChanged(bool v) { if (!v) ++g_hidden; } };
 struct _List_node { _List_node* _M_next; _List_node* _M_prev; CEngineMap* _M_data; };
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap* LandscapeMap; CLocalDetailCacheMap* LocalDetailCacheMap; void* GameMap;
     _List_node* VisibleMapListIterator; bool IsInVisibleMapList;
     ~CEngineMap() { ++g_destroyed; }
     void ReleaseGameMap() { if (LandscapeMap) LandscapeMap->OnGameMapUnloaded(); GameMap = 0; }
 };
 static bool g_haveRenderers = true;
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     bool empty() const { return size() == 0; }
     T& operator[](unsigned long i) { return _M_start[i]; }
     void resize(unsigned long n) { if (n < size()) _M_finish = _M_start + n; }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     short* Map;
     CArray<CEngineMap*> MapList;
     _List_node* VisibleMapList;

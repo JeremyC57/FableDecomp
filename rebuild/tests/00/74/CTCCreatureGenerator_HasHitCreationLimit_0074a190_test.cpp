@@ -11,7 +11,7 @@ struct CRetailList_Creature {
 };
 static long g_GeneratedCreatureLimit = -1;
 static long g_GeneratedCreatureCount = 0;
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     CRetailList_Creature CreatedCreatures; long ActiveCreatureLimit; long TotalGenerationLimit; long CreationCount;
     bool HasHitCreationLimit() const
     {

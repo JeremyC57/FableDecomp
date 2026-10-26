@@ -47,8 +47,8 @@ public:
     __forceinline unsigned __int64 ReadULong64() { unsigned __int64 v; Read(&v, sizeof(v)); return v; }
 };
 
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI { C2DCoordI TopLeft, BottomRight; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public: C2DCoordI TopLeft, BottomRight; };
 struct CCountedPointerCMap { void* Data; void* Info; };
 
 class CMapInfo {

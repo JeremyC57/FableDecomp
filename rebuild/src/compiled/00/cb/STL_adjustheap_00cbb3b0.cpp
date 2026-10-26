@@ -12,7 +12,7 @@
 //   count block stays in esi across __push_heap (no out-of-line call sees val, so its destructor's null stores die).
 extern void __cdecl operator delete(void* block);                                    // 0x00BFE9BC
 
-struct CCPPointerInfo {                                 // Ego_r.pdb, 12 bytes
+class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                             // +0x0
     void (__fastcall* DeleteFunc)(void* data);          // +0x4
     void* Data;                                         // +0x8

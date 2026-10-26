@@ -12,10 +12,10 @@
 // RegionChangeDetected +0x118, QuestStage +0x11C.
 // Shape: the script wait idiom; a nested `GSI->F(GSI->GetHero(), ...)` / `handle.F(GSI->GetHero())` fetches the
 // callee's vtable before the inner GetHero call.
-struct CScriptThing { unsigned char _body[12]; };
+class CScriptThing { public: unsigned char _body[12]; };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 
-struct CScriptGameResourceObjectScriptedThingBase {     // vtable 0x0128D86C (CScriptGameResourceObjectScriptedThing)
+class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0128D86C (CScriptGameResourceObjectScriptedThing)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void StopFollowingThing(const CScriptThing& thing);              // slot 8 (+0x20)
@@ -25,7 +25,7 @@ struct CScriptGameResourceObjectScriptedThingBase {     // vtable 0x0128D86C (CS
     void Release();                                     // 0x00CD2770
 };
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -105,7 +105,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C
     virtual void EntitySetAsDisplayingEmoteIcon(const CScriptThing& thing, bool display) const;   // slot 530 (+0x848)
 };
 
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

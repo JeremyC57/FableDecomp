@@ -9,12 +9,12 @@
 // Shape: an out-of-line memberwise copy constructor. C3DVector has a memberwise USER copy constructor (its three
 // words copy straight from the source); CRGBFloatColour copies IMPLICITLY, which VC forms through re-based address
 // registers (`lea edx,[ecx+18h] ; lea esi,[eax+18h]`). The scalars are plain dword moves.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
 
-struct CRGBFloatColour {                        // implicit copy constructor
+class CRGBFloatColour { public:                        // implicit copy constructor
     float R, G, B, A;
 };
 

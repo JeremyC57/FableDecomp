@@ -12,16 +12,16 @@
 // The console twin @ 0x0059B79A is byte-identical apart from the UI_TRADING_MENU_* literals; the catalog label (no PC
 // suffix) is propagated -- this copy reads the PC_TRADING_MENU_* names, so it is GetMenuBranchFromDefIndexPC.
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PImp;
     CCharString(const char* text, long length);   // 0x0099EBF0
     CCharString(const CCharString& other);        // 0x0099EC30 (declared: the by-value argument is built in its slot)
     ~CCharString();                                // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 long __fastcall GetInventoryCategory(long defIndex);          // 0x005D97B0
@@ -35,7 +35,7 @@ struct CMenuTree {
     virtual void V2();
     virtual CMenuBranch* GetBranch(CCharString name);   // vtable +0x0C
 };
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     CMenuBranch* GetMenuBranchFromDefIndexPC(long defIndex, CMenuTree* menu, long* type);
 };
 

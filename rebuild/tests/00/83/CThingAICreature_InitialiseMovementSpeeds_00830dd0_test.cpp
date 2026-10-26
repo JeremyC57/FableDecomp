@@ -11,12 +11,12 @@ public:
     ~CCharString() { --g_strings; delete[] PStringData; }
 };
 static int g_filtersAlive = 0;
-struct CAnimFilterBase { virtual ~CAnimFilterBase() { --g_filtersAlive; } virtual int Kind() const { return 0; } CAnimFilterBase() { ++g_filtersAlive; } };
+class CAnimFilterBase { public: virtual ~CAnimFilterBase() { --g_filtersAlive; } virtual int Kind() const { return 0; } CAnimFilterBase() { ++g_filtersAlive; } };
 struct CAnimFilterAnyGroup : CAnimFilterBase { virtual int Kind() const { return 1; } };
 static const float g_epsilon_0129ba3c = 1e-4f;
 struct CCreatureSpeedSource { unsigned char _pad00[0xb0]; float SpeedVariation; };
 static bool g_hasFly = false; static int g_hasAnimCalls = 0, g_initCalls = 0, g_randomCalls = 0; static float* g_randomised[8]; static int g_hasAnimFilterKind = -1;
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0xe0]; CCreatureSpeedSource* m_pSpeedSource; unsigned char _pade4[0x1b8 - 0xe4];
     float MaxWalkingSpeed; float MaxJoggingSpeed; float MaxRunningSpeed; float MaxFlyingSpeed;
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) { ++g_hasAnimCalls; g_hasAnimFilterKind = filter.Kind(); return std::strcmp(name.PStringData, "STANDARD_FLY") == 0 && g_hasFly; }

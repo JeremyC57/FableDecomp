@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharStringData { const char* m_pChars; unsigned long m_length; };
+class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 static const char g_empty[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_empty : m_pStringData->m_pChars; }
@@ -16,12 +16,12 @@ static unsigned long Calc(unsigned long seed, const char* data, unsigned long le
     return h + 1;
 }
 static unsigned long g_asked = 0;
-struct C3DMeshStats {
+class C3DMeshStats { public:
     unsigned long m_known;
     bool HasDummyObject(unsigned long nameHash) const { g_asked = nameHash; return nameHash == m_known; }
 };
 struct CCountedPointer { const C3DMeshStats* Data; void* Info; };
-struct C3DMeshObject {
+class C3DMeshObject { public:
     void* MeshInfo;
     CCountedPointer Mesh;
     bool HasDummyObject(const CCharString& name) const

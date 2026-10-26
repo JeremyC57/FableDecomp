@@ -2,15 +2,15 @@
 // the player), a hit copies the intersection normal and position into the response with Z lowered by the radius, and the mesh
 // object is destroyed on both paths.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CPhysicsCollideResponse { C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
-struct CMeshIntersectionData { C3DVector IntersectionPosition; C3DVector Normal; float DistanceSquared; };
+class CPhysicsCollideResponse { public: C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
+class CMeshIntersectionData { public: C3DVector IntersectionPosition; C3DVector Normal; float DistanceSquared; };
 static int g_live = 0; static bool g_hit = false; static float g_radius = 0; static C3DVector g_from, g_to;
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     int m_id;
     CPhysicsMeshObject(int id) : m_id(id) { ++g_live; }
     CPhysicsMeshObject(const CPhysicsMeshObject& o) : m_id(o.m_id) { ++g_live; }
@@ -22,8 +22,8 @@ struct CPhysicsMeshObject {
         return g_hit && m_id == 5;
     }
 };
-struct CThing { unsigned char Type; };
-struct CTCPhysicsBase {
+class CThing { public: unsigned char Type; };
+class CTCPhysicsBase { public:
     CThing*   ParentThing;
     float     Radius;
     CPhysicsMeshObject GetPhysicsMeshObject() const { return CPhysicsMeshObject(5); }

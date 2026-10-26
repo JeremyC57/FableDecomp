@@ -9,7 +9,7 @@
 // reproduced as compiled.
 // Shape: name is the frame local, suffix is homed in the dead symbol-argument slot (symbol stays in esi); the sub-string
 // temporaries share one frame word.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0

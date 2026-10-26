@@ -3,7 +3,7 @@
 enum EExpressionType { E0, E_FORCE_DWORD = 0x7fffffff };
 struct Payload { long a; long b; };   // CExpressionSet::CEntry: two dwords
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

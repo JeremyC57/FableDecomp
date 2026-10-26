@@ -19,17 +19,17 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 #include "fable_string.h"
-struct CTCCombat {unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
+class CTCCombat { public:unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
 struct CInterfaceMap {
     struct Entry {long type;CTCCombat* component;};
     Entry* first;Entry* last;
     Entry* LowerBound(const long*); //0040F020
 };
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -102,8 +102,8 @@ struct CCreatureActionBase {
     virtual bool WaitForMeshToLoad() const;
     unsigned char nativeFields[0xa4]; // native ActionBase70 slots, size0xa8
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -150,14 +150,14 @@ struct CCombatActionBase : CCreatureActionBase {
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _nativeBeforeUsingComponents[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
     bool IsFreeToPerformAction(const CCreatureActionBase&) const; //00662210 accepts native CCreatureActionBase prefix
     bool SetCurrentAction(const CCreatureActionBase&); //006644F0
 };
-struct CCreatureAction_UnsheatheWeapons : CCombatActionBase {
+class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
     long WeaponType;
     CCreatureAction_UnsheatheWeapons(CThingCreatureBase&,long); //008B85D0
     virtual void PerformAction(); //008B7BA0
@@ -169,7 +169,7 @@ FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheWeapons)==0x118);
 extern bool FABLE_FASTCALL ShouldPlayUnsheatheWeaponAction(CThingCreatureBase*,long,bool*,bool*); //008B7CF0
 extern bool FABLE_FASTCALL IsIncapacitated(CThingCreatureBase*); //0085F0C0
 extern bool FABLE_FASTCALL IsKnockedDown(CThingCreatureBase*); //0085F010
-struct CCombatManager {void CreatureUnsheathWeapon(CThingCreatureBase*,long);};
+class CCombatManager { public:void CreatureUnsheathWeapon(CThingCreatureBase*,long);};
 void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long weapon)
 {
     bool animate;

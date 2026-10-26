@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __stdcall
 #endif
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct D3DSURFACE_DESC {
     long          Format;                        // +0x00 D3DFORMAT
     long          Type;                          // +0x04
@@ -42,11 +42,11 @@ struct IDirect3DTexture9 {                       // IUnknown + IDirect3DResource
     virtual long __stdcall LockRect(unsigned long level, D3DLOCKED_RECT* locked, const RECT* rect, unsigned long flags);   // slot 19 (+0x4c)
     virtual long __stdcall UnlockRect(unsigned long level);                  // slot 20 (+0x50)
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) { }
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(long d3dFormat) { Initialise(d3dFormat); }
     void Initialise(long d3dFormat);                                         // 0x009E3830

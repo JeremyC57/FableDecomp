@@ -15,7 +15,7 @@
 // as retail does (a plain `first != last` loop lets VC7.1's register-usage tracking keep last in edx).
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CEnginePrimitiveBase {               // counted primitive: vptr, then the reference count
     virtual void v00();
     virtual void Destroy();                 // slot 1
@@ -48,7 +48,7 @@ struct CIVCountedPointer_Primitive {
 struct CBase {
     virtual void v00();
 };
-struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;       // +4
     void Clear()
     {
@@ -58,7 +58,7 @@ struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
     }
 };
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 #pragma auto_inline(off)
 __declspec(noinline) CComponent** __fastcall find(CComponent** first, CComponent** last, CComponent* const& value,
                              const random_access_iterator_tag&)   // 0x00535FE4 stand-in
@@ -86,7 +86,7 @@ struct CComponentVector {                   // retail STLport vector<CComponent*
         return pos;
     }
 };
-struct CScrollingViewport {
+class CScrollingViewport { public:
     virtual void v00();
     unsigned char _viewport[0x158];         // +0x004
     CEnginePrimitiveHandle m_handle;        // +0x15c

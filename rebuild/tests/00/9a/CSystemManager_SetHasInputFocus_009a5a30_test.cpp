@@ -16,8 +16,8 @@ void FocusSink::NotifyFocus(bool focus)
     g_lastSelf = this;
 }
 
-struct CSystemManager
-{
+class CSystemManager
+{ public:
     char pad0[0xa];
     bool m_hasInputFocus;
     char pad1[0x58 - 0xa - 1];

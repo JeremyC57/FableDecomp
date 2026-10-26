@@ -10,7 +10,7 @@
 // Shape: an if/else on the flag with one `if (call()) return true;` per arm and a shared `return false`: the interface
 //   and its vtable are loaded once above the flag branch (common to both arms), the two calls merge into one byte
 //   test and the early returns give `mov al,1` / `xor al,al` (a ternary of the two calls gives `setne al`, 37 v 41).
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

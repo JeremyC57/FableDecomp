@@ -17,7 +17,7 @@ struct CInterfaceMap {                         // a thing's sorted {type, compon
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];            // +0x20 std::bitset<274> UsingComponents
     CInterfaceMap m_interfaces;                // +0x44 Components
@@ -36,32 +36,32 @@ struct CThing {
     }
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CAnimInit;
+class CAnimInit;
 
-struct CAnimSet {                              // CAnimateThing::CurrentAnim.MainAnimSet (retail layout)
+class CAnimSet { public:                              // CAnimateThing::CurrentAnim.MainAnimSet (retail layout)
     long  UpdateMode;                          // +0x00 EAnimUpdateMode
     unsigned char _vectors[0x18];              // +0x04 Anims, InternalAlphas (12-byte retail vectors)
     float CurrentPercentageComplete;           // +0x1c
     float LastPercentageComplete;              // +0x20
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     CAnimSet CurrentAnim;                      // +0x00 (the CCompleteAnimation's MainAnimSet)
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
 
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();             // 0x0070B460 (`mov eax,[ecx+0Ch]`, PAnimation)
 };
 
-struct CTCAnimatingObject : CTCBase {
+class CTCAnimatingObject : public CTCBase { public:
     bool Animating;                            // +0x0c
     long CurrentAnimationPriority;             // +0x10
     void SetCurrentAnimAsManualUpdate();

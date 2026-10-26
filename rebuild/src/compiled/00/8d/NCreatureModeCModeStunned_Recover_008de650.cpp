@@ -11,29 +11,29 @@
 // plus the CanBeHit/Flip bytes), as the landed CModeCreatureIsProjectile::Recover 0x008E08C0.
 // Shape: the creature is read once into esi (a named local); the action is an unnamed temporary passed by
 // reference, destroyed by the implicit derived destructor (= the out-of-line base destructor). Plain `ret`.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _body[0x110];
     ~CCombatActionBase();                  // 0x0062E900
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsAbleToRecoverFromStunned() const;                    // 0x00664C60
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115
     CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
 };
 
-struct CCombatAction_RecoverFromStunned : CCombatAction_GenericStrikeResponseKnockdownRecoverBase {   // vtable 0x0127851C
+class CCombatAction_RecoverFromStunned : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x0127851C
     virtual void v00();
     CCombatAction_RecoverFromStunned(CThingCreatureBase* owner)
         : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, false)

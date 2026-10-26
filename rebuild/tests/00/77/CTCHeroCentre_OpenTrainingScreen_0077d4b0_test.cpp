@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -26,10 +26,10 @@ struct CThing {
     }
 };
 static long g_tutorialCategory = -1;
-struct CTCHero { bool pending; bool GiveTutorialForCategory(long category, bool) { g_tutorialCategory = category; bool r = pending; pending = false; return r; } };
+class CTCHero { public: bool pending; bool GiveTutorialForCategory(long category, bool) { g_tutorialCategory = category; bool r = pending; pending = false; return r; } };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroThing() { return g_hero; } };
-struct CPlayerManager {
+class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
+class CPlayerManager { public:
     CPlayer player;
     CPlayer* GetMainPlayer() const { return const_cast<CPlayer*>(&player); }
     long GetMainPlayerNumber() { return 2; }
@@ -39,19 +39,19 @@ struct CMemoryBuffer {
     unsigned char bytes[8]; unsigned long used;
     void Copy(unsigned long length, const void* data) { std::memcpy(bytes, data, length); used = length; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long Type; signed char Player; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { used = 0; }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& e) { ++g_events; g_lastType = e.Type; std::memcpy(&g_lastPayload, e.bytes, 4); g_lastPlayer = e.Player; }
 };
 static CMainGameComponent g_main;
 CMainGameComponent* g_pMainGameComponent = &g_main;
 static CPlayerManager g_pm;
-struct CTCBase { CPlayerManager* GetPlayerManager() const { return &g_pm; } };
-struct CTCHeroCentre : CTCBase {
+class CTCBase { public: CPlayerManager* GetPlayerManager() const { return &g_pm; } };
+class CTCHeroCentre : public CTCBase { public:
     bool WaitingForTutorialToFinish;
     void OpenTrainingScreen();
 };

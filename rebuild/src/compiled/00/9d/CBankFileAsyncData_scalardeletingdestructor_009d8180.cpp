@@ -1,4 +1,4 @@
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     void* vftable;
 };
 

@@ -6,9 +6,9 @@
 // compares with Time (`fcom [ecx+8]`), bumps DayCount on `<` and stores the time.
 // Layout: Ego_r.pdb CGameTimeManager (Time +0x08, DayCount +0x14, FastForwardingToTime +0x21,
 // TimeFastForwardingTo +0x24, SecondsLeftToFastForwardTime +0x28).
-struct CWorld;
-struct CMainGameComponent;
-struct CGameTimeManager {
+class CWorld;
+class CMainGameComponent;
+class CGameTimeManager { public:
     CWorld*             World;                     // +0x00
     CMainGameComponent* GameComponent;             // +0x04
     float               Time;                      // +0x08

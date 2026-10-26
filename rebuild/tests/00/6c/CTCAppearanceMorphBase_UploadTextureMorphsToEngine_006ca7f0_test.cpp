@@ -3,14 +3,14 @@
 #include <math.h>
 
 struct CLongSet { int n; };
-struct CEngineTextureMorphSet { int id; };
+class CEngineTextureMorphSet { public: int id; };
 struct CMeshMorphSet { CEngineTextureMorphSet OriginalMeshTextureMorphs; };
 static int g_uploads = 0; static const CEngineTextureMorphSet* g_morphs = 0; static bool g_flag = false; static float g_amount = 0.0f; static const CLongSet* g_ids = 0;
-struct CIEngine {
+class CIEngine { public:
     void UploadTextureMorphs(const CEngineTextureMorphSet& m, bool flag, float amount, const CLongSet* ids) { ++g_uploads; g_morphs = &m; g_flag = flag; g_amount = amount; g_ids = ids; }
 };
 static bool g_bTextureMorphsEnabled = true;
-struct CTCAppearanceMorphBase {
+class CTCAppearanceMorphBase { public:
     CMeshMorphSet m_set; int m_updates;
     void UpdateMorphs() { ++m_updates; }
     CMeshMorphSet* GetMeshTextureMorphs() { return &m_set; }

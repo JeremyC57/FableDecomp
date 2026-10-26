@@ -5,7 +5,7 @@ inline void ClampFloat(float& value, float lo, float hi)
     if (value < lo) value = lo;
     else if (value > hi) value = hi;
 }
-struct CThingDrawInformation {
+class CThingDrawInformation { public:
     void* DrawString; float RelativeSize; float BarPercentage;
     void SetBarPercentage(float percentage) { BarPercentage = percentage; ClampFloat(BarPercentage, 0.0f, 1.0f); }
 };

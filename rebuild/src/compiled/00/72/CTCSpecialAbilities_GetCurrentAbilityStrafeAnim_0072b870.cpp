@@ -11,7 +11,7 @@
 // GetInterface (component in eax, then `mov ecx,eax`) and returns the getter's CCharString straight through the hidden
 // pointer; the default builds the empty string there.
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);        // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -42,13 +42,13 @@ public:
         return false;
     }
 };
-struct CTCFireballSpell {
+class CTCFireballSpell { public:
     CCharString GetStrafeAnimName() const;             // 0x007C85F0
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     CCharString GetStrafeAnimName() const;             // 0x0079F610
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

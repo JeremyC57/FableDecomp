@@ -5,7 +5,7 @@
 #define __cdecl
 #define __forceinline inline
 #define FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLEMESHGROUP_H
-struct CEnginePrimitiveManagerParticleMeshGroup {};
+class CEnginePrimitiveManagerParticleMeshGroup { public:};
 #endif
 #define malloc ObserveListAllocate
 // CEnginePrimitiveManagerParticleMeshGroup::CreateInternalPrimitive(long) -- creates one of the two particle-mesh primitive types; retail 0x00BC3410 length 0xbd. Uses retail constructors evidenced by its type switches and vtables (0x012A61FC and 0x012A6184); shared CEngineInternalPrimitiveBase layout confirms the 0x48 prefix but has no constructor declaration, so a constructor-bearing shell repeats that prefix; RTTI confirms intermediate particle-group vtable 0x012A59D4 and final particle-mesh-group/mesh vtables 0x012A61FC/0x012A6184. The generated particle-mesh-group PDB size 0xfc is 0x14 larger than this retail allocation, so the container-bearing group uses observed retail size 0xe8.
@@ -15,11 +15,11 @@ void* __cdecl operator new(size_t); // 0x00BFEA1A
 extern "C" void* __cdecl malloc(size_t); // 0x00BFEA0E
 // The shared base has an explicit vptr data member; this equivalent virtual shell has one compiler
 // vptr and the missing constructor, avoiding a second vptr from inheriting that storage header.
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00() {}; unsigned char _pad04[0x44];
     CEngineInternalPrimitiveBase(long type, unsigned long flags); // 0x00B8FF00
 };
-struct CEnginePrimitiveHandle { void* vptr; void* data; };
+class CEnginePrimitiveHandle { public: void* vptr; void* data; };
 template<class T> struct CRetailList {
     struct Node { Node* next; Node* prev; T value; };
     Node* node;
@@ -27,7 +27,7 @@ template<class T> struct CRetailList {
 };
 struct CIterator { unsigned char used; void* node; };
 struct CIteratorArray { CIterator* first; CIterator* last; CIterator* end; CIteratorArray():first(0),last(0),end(0){} };
-struct C3DBoundingSphere { float m_centreX, m_centreY, m_centreZ, m_radius; C3DBoundingSphere():m_centreX(0),m_centreY(0),m_centreZ(0),m_radius(0){} };
+class C3DBoundingSphere { public: float m_centreX, m_centreY, m_centreZ, m_radius; C3DBoundingSphere():m_centreX(0),m_centreY(0),m_centreZ(0),m_radius(0){} };
 struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {
     CRetailList<CEnginePrimitiveHandle> Primitives;
     CIteratorArray PrimitiveIDToIterator;

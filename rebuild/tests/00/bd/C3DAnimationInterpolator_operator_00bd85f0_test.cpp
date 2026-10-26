@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     unsigned long IVRefCount;
     virtual ~CIVCountedPointeeBase() {}
     virtual void Delete() { ++g_deleted; }
@@ -8,7 +8,7 @@ struct CIVCountedPointeeBase {
     void Release() { if (--IVRefCount == 0) Delete(); }
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -25,8 +25,8 @@ struct CIVCountedPointer {
     }
 };
 struct CSharedData : CIVCountedPointeeBase { };
-struct C3DAnimationBlendState { virtual ~C3DAnimationBlendState() {} CIVCountedPointer<CSharedData> Data; };
-struct C3DAnimationInterpolator {
+class C3DAnimationBlendState { public: virtual ~C3DAnimationBlendState() {} CIVCountedPointer<CSharedData> Data; };
+class C3DAnimationInterpolator { public:
     C3DAnimationBlendState StartState;
     C3DAnimationBlendState EndState;
     C3DAnimationInterpolator& operator=(const C3DAnimationInterpolator& other)

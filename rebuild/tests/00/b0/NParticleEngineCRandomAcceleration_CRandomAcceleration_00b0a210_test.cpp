@@ -2,7 +2,7 @@
 // caller's seed (written back after every step), the low bytes going to IndexX/Y/Z then TimeOffsetX/Y/Z; the seed
 // ends at the sixth draw; OldOffset is zeroed; the base constructor runs first.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

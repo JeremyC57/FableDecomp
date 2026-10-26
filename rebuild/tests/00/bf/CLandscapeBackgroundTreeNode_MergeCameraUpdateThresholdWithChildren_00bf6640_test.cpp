@@ -63,14 +63,14 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineLandscapeMap;
-struct CLandscapeBackgroundDynamicBuildTemplate;
+class CEngineLandscapeMap;
+class CLandscapeBackgroundDynamicBuildTemplate;
 struct CLandscapeBackgroundLoadTask;
 struct CLandscapeBackgroundSubNodeBase;
 struct CLandscapeGPUUpdateTask;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                             _pad_0x04[0x4]; // +0x04
     unsigned char                             _pad_0x08[0x4]; // +0x08
@@ -165,7 +165,7 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0)
 
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char LeftBranch[0xf0];                          // +0x04 CLandscapeBackgroundTreeNode
     unsigned char RightBranch[0xf0];                         // +0xf4 CLandscapeBackgroundTreeNode
@@ -189,15 +189,15 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeSplitBranch, RightBranch
 #include <stddef.h>
 
 
-struct CEngineWaterBackgroundSubPatch;
-struct CIndexBuffer;
-struct CLandscapeBackgroundTreeNode;
-struct CSubPatchTreeLODLockElement;
-struct CTexture;
-struct CVertexBufferWin32;
+class CEngineWaterBackgroundSubPatch;
+class CIndexBuffer;
+class CLandscapeBackgroundTreeNode;
+class CSubPatchTreeLODLockElement;
+class CTexture;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void*                           __vftable;               // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     unsigned char                   EdgeStrips[0xb0];        // +0x08 CPatchTesselationEdgeStrip[4]
@@ -274,7 +274,7 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x1
 
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -294,20 +294,20 @@ FABLE_STATIC_ASSERT(offsetof(CMovableResource, __vftable) == 0x0);
 #include <stddef.h>
 
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CEngineLandscapeLODMap;
-struct CEngineLandscapePatch;
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
-struct CGraphicDataBank;
-struct CLandscapeBackgroundDynamicBuildTemplate;
-struct CLandscapeBackgroundTreeNode;
-struct CRGBColour;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CEngineLandscapeLODMap;
+class CEngineLandscapePatch;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
+class CGraphicDataBank;
+class CLandscapeBackgroundDynamicBuildTemplate;
+class CLandscapeBackgroundTreeNode;
+class CRGBColour;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*             PatchTree;     // +0x04
     CEngineLandscapePatch*                    Patches;       // +0x08
@@ -379,7 +379,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMap, BackgroundBuildTemplate) == 0x
 struct COccluderEntry;
 
 #pragma pack(push, 1)
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08
@@ -430,7 +430,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineOcclusionManager, OcclusionBoxPixelShader) =
 #endif // FABLE_ENGINE_CENGINEOCCLUSIONMANAGER_H
 
 #include <math.h>
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 namespace Native {
 struct Tree;struct Split;
 enum LANDSCAPE_EDGE_STRIP_SIDE { Side0,Side1,Side2,Side3 };

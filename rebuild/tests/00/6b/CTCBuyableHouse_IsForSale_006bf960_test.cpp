@@ -1,8 +1,8 @@
 // Behaviour test for 006bf960 CTCBuyableHouse::IsForSale: not owned by the player and the main sign post exists and is alive.
 #include <cstdio>
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char Dead : 1;
     bool IsDead() const { return Dead; }
 };
@@ -14,13 +14,13 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     bool OwnedByPlayer;
     CIntelligentPointer<CThing> MainSignPost;
 

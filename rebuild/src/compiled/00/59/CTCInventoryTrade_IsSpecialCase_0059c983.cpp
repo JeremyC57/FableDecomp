@@ -30,7 +30,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {              // a counted def reference returned by value
+template <class T> class CDefPointer { public:              // a counted def reference returned by value
     T* m_p;
     __forceinline ~CDefPointer()
     {
@@ -58,12 +58,12 @@ template <class T> struct CDefSlot {                 // an owning out slot for G
     }
 };
 struct CTattooCardDef : CDefBase { };
-struct CHairCardDef : CDefBase { };
-struct CAbilityDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CHairCardDef : public CDefBase { public: };
+class CAbilityDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefSlot<CAbilityDef>* out);      // 0x005B1E5A
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefSlot<CDefClassBase>* out);   // 0x0042AF3C
 };
 CDefClassBase* FindRef_CDefinitionManager_GetDef(CDefinitionManager* manager, long index);   // stand-in callee
@@ -87,7 +87,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<CAbilityDef>* out)
 CDefPointer<CHairCardDef> __fastcall GetHairCardDef(long itemType);              // 0x005D9A10
 CClearingDefPointer<CTattooCardDef> __fastcall GetTattooCardDef(long itemType);  // 0x005D9AA0
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     CDefinitionManager* GetDefinitions() const;      // 0x006869D0 (CTCBase)
     bool IsSpecialCase(long itemType);
 };

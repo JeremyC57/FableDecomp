@@ -10,7 +10,7 @@
 // "CDefClassBase::CopyConstructRange" names the helper.
 #include <new>
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                     // +0x04 .. +0x25: CResource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase(const CDefClassBase& other);     // 0x0046644C
@@ -30,7 +30,7 @@ struct CSubDefInfoMap {                            // CVectorMap<unsigned long, 
     CSubDefInfoMap(const CSubDefInfoMap& other) : m_entries(other.m_entries), m_compare(other.m_compare), m_sorted(other.m_sorted) { }
 };
 
-struct CParentDefClassBase : CDefClassBase {       // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:       // vtable 0x01230CBC
     virtual void v00();
     long           InstantiationName;              // +0x25 CDefString
     CSubDefInfoMap SubDefInfoMap;                  // +0x29
@@ -43,7 +43,7 @@ struct CAttitudeVector {                           // retail 12-byte vector<EOpi
     CAttitudeVector(const CAttitudeVector& other); // 0x00471F97
 };
 
-struct CBlurredAttitudesDef : CParentDefClassBase {   // vtable 0x0125B8AC
+class CBlurredAttitudesDef : public CParentDefClassBase { public:   // vtable 0x0125B8AC
     virtual void v00();
     unsigned char   _pad[0x3c - 0x37];             // +0x37 .. +0x3c
     CAttitudeVector Attitudes;                     // +0x3c

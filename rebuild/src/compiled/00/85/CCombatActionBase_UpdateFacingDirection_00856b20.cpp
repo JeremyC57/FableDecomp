@@ -13,7 +13,7 @@ extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(atan2, fmod, fabs)
 inline float fabs(float x) { return (float)fabs((double)x); }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
 struct CPhysicsBody {
     virtual void p000(); virtual void p001(); virtual void p002(); virtual void p003(); virtual void p004(); virtual void p005(); virtual void p006(); virtual void p007();
@@ -29,13 +29,13 @@ struct CPhysicsBody {
     virtual void p067(); virtual void p068(); virtual void p069();
     virtual C3DVector GetFacing();   // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pPhysics;                   // +0x60
     const C3DVector& GetPosition() const;       // 0x004C73D0
     CPhysicsBody* GetPhysics() const { return m_pPhysics; }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     void GetRotationInAnimation(float* pRotation) const;   // 0x005DBFD0
 };
 struct CBaseIntelligentPointer {
@@ -53,7 +53,7 @@ __forceinline float FacingFraction(float x, float y)
     }
     return fraction;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

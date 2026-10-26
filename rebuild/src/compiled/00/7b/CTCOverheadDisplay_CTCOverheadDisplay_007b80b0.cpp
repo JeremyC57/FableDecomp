@@ -14,14 +14,14 @@
 // order: the vector (range destroy with `last` read first, then the null-tested free), the def pointer (`if (p) { p->Release(); p = 0; }`,
 // Release a member of the def), the three lists out of line.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
-struct CThing;
-struct CTCBase {                                // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CThing;
+class CTCBase { public:                                // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual ~CTCBase();                         // 0x00686830
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CEnginePrimitiveHandle {                 // 8 bytes: vptr + handle
+class CEnginePrimitiveHandle { public:                 // 8 bytes: vptr + handle
     virtual ~CEnginePrimitiveHandle();
     unsigned long m_handle;
 };
@@ -41,7 +41,7 @@ struct CPrimitiveHandleVector {                 // retail std::vector: first, la
             free(m_pFirst);
     }
 };
-struct COverheadDisplayDef {
+class COverheadDisplayDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04

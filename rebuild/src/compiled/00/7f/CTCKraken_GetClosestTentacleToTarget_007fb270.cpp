@@ -10,11 +10,11 @@
 #pragma intrinsic(fmod, fabs, atan2)
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
 };
@@ -94,7 +94,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                         // 0x00A01B50
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char _pad00[0x44];
     float AngleOffset;                                // +0x44
 };
@@ -117,7 +117,7 @@ struct CTentacleList {
         return n;
     }
 };
-struct CTCKraken {
+class CTCKraken { public:
     void*                   __vftable;                // +0x00
     CThing*                 ParentThing;              // +0x04
     unsigned char           _pad08[0x18 - 0x08];

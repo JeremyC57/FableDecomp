@@ -7,7 +7,7 @@ struct HWND__ { int unused; };
 static HWND__* g_foreground = 0;
 static HWND__* GetForegroundWindowStub() { return g_foreground; }
 
-struct CSystemManager {
+class CSystemManager { public:
     bool    ApplicationActive;
     HWND__* ApplicationWinHandle;
     bool    EverBeenActive;

@@ -12,7 +12,7 @@
 //   FPU stack as the result.
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetMagnitudeAndNormalise();
 };

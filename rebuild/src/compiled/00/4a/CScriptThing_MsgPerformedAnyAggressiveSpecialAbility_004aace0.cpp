@@ -1,5 +1,5 @@
 struct Sub { void** vtbl; };
-struct CScriptThing { void* pad0; Sub* sub; };
+class CScriptThing { public: void* pad0; Sub* sub; };
 
 typedef bool (__fastcall *SubFn)(Sub* self);
 

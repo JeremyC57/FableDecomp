@@ -7,7 +7,7 @@ struct Writer {
     virtual void Write(const void* data, int size) { std::memcpy(bytes + used, data, size); used += size; ++writes; }
     void WriteSLONG(int v) { Write(&v, 4); }
 };
-struct CReverbEnvironmentEntry { float Params[21]; };
+class CReverbEnvironmentEntry { public: float Params[21]; };
 struct EntryVector { CReverbEnvironmentEntry* _M_start; CReverbEnvironmentEntry* _M_finish; CReverbEnvironmentEntry* _M_end_of_storage; };
 static void SerialiseOut(Writer& stream, EntryVector& value)
 {

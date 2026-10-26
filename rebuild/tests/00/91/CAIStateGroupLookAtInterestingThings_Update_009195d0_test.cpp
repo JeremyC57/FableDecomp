@@ -1,9 +1,9 @@
 // Behaviour test for CAIStateGroup_LookAtInterestingThings::Update (0x009195D0): model copy, scripted stubs.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_released, g_destroyed;
-struct CCreatureNavigationDef {
+class CCreatureNavigationDef { public:
     long RefCount;
     bool AvoidDynamicObstacles;
     void DeleteThis() { ++g_destroyed; }
@@ -16,11 +16,11 @@ struct CDefPointerNavigation {
     CCreatureNavigationDef* operator->() const { return m_p; }
 };
 static CCreatureNavigationDef* g_def;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerNavigation* out) const { out->m_p = g_def; if (g_def) ++g_def->RefCount; return g_def != 0; }
 };
 static int g_removed;
-struct CThing {
+class CThing { public:
     CDefClassBase* PhysicsTC;
     unsigned char m_flags91;
     C3DVector pos;
@@ -35,7 +35,7 @@ struct CIntelligentPointer {
     CThing* GetPItem() const { if (g_dropAfter >= 0 && g_reads++ >= g_dropAfter) return 0; return m_pItem; }
 };
 inline bool IsThingAlive(const CIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_move[16], g_mi, g_look[16], g_li, g_terminated, g_lastAvoid, g_lastFlags;
 static float g_lastProximity, g_lastTurn;

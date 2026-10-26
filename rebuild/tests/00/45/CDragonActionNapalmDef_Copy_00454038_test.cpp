@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDragonActionNapalmDef { int v; };
+class CDragonActionNapalmDef { public: int v; };
 static int g_called = 0;
 static void* g_last_self = 0;
 static void* g_last_src = 0;

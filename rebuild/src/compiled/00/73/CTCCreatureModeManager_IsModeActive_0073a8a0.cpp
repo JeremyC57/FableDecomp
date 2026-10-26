@@ -22,7 +22,7 @@ struct SModeNode {                                 // list node: next, prev, CCo
     void*          m_pModeInfo;                    // +0x0c (CCountedPointer::Info)
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned char _pad00[0xc];
     SModeNode*    PModes;                          // +0x0c list head (the sentinel)
     bool IsModeActive(unsigned long type) const;

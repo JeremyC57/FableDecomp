@@ -1,13 +1,13 @@
 // Behaviour test for 0x008B0B10 CCombatSequenceBase::PushAction: the action is appended (its count block gains a reference) and counted.
 #include <cstdio>
 #include <new>
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 struct CCountedPointer {
     void* Data; CCPPointerInfo* Info;
     CCountedPointer(void* d, CCPPointerInfo* i) : Data(d), Info(i) {}
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
 };
-struct CCombatAction { CCountedPointer CreatureAction; CCombatAction(void* d, CCPPointerInfo* i) : CreatureAction(d, i) {} };
+class CCombatAction { public: CCountedPointer CreatureAction; CCombatAction(void* d, CCPPointerInfo* i) : CreatureAction(d, i) {} };
 struct Seq {
     long NoAvailableActions;
     CCombatAction* start; CCombatAction* finish; CCombatAction* eos;

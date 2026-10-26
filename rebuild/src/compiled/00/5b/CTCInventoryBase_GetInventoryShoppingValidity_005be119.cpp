@@ -30,8 +30,8 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } };
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -88,7 +88,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThingCreatureBase* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCShop {                                            // interface 0x53
+class CTCShop { public:                                            // interface 0x53
     unsigned char _pad00[0x10];
     CBaseIntelligentPointer PKeeper;                        // +0x10
 };
@@ -112,8 +112,8 @@ struct CTCFacing {                                          // interface 2
     float X;                                                // +0x0C
     float Y;                                                // +0x10
 };
-struct CPlayer { CThingHero* GetHeroThing(); };             // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };        // 0x00449970
+class CPlayer { public: CThingHero* GetHeroThing(); };             // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
 
 struct CTCInventoryBase {
     void*         __vftable;                                // +0x00

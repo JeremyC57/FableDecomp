@@ -11,7 +11,7 @@
 // the filter stores. `if (ev) { copy +0x40 then +0x3c; return true; } return false;` with `mov al,1` /
 // shared `xor al,al`. Base layout local (PDB names); member names descriptive (no engine
 // header for this class).
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x3c];
     void* m_pSource;                        // +0x3c
     long m_id;                              // +0x40
@@ -23,22 +23,22 @@ struct CMessageEvent {
 // temporaries live in the caller's frame until the call returns; the empty one-byte filter has a user
 // constructor so it takes no store and sits in the high byte of a slot), and FindMostRecentMessage takes the
 // bound filter by const reference (one `lea ; push`).
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_HasExtraData {
+class CMessageEventFilter_HasExtraData { public:
     CMessageEventFilter_HasExtraData() { }
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -48,24 +48,24 @@ template<class A, class B, class C> struct CFilter_Bind3 {
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(ab, c); }
 
-struct CMessageEventFilter_CanBeSeenOrHeard {      // "newer than the recorded id" per the bytes
+class CMessageEventFilter_CanBeSeenOrHeard { public:      // "newer than the recorded id" per the bytes
     long m_sinceId;
     CMessageEventFilter_CanBeSeenOrHeard(long sinceId) : m_sinceId(sinceId) { }
 };
 
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CWarningFilter;
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage_00939cb0(const CWarningFilter& filter);   // 0x00939CB0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
     CWorld* GetPThingWorld();               // 0x008FCFA0

@@ -6,9 +6,9 @@
 static int g_strings = 0, g_wide = 0, g_textures = 0, g_frees = 0, g_stops = 0;
 static int g_order[16]; static int g_n = 0;
 
-struct CCharString { int tag; ~CCharString() { ++g_strings; g_order[g_n++] = tag; } };
-struct CWideString { ~CWideString() { ++g_wide; g_order[g_n++] = 100; } };
-struct CTexture { void* a; void* b; ~CTexture() { ++g_textures; } };
+class CCharString { public: int tag; ~CCharString() { ++g_strings; g_order[g_n++] = tag; } };
+class CWideString { public: ~CWideString() { ++g_wide; g_order[g_n++] = 100; } };
+class CTexture { public: void* a; void* b; ~CTexture() { ++g_textures; } };
 
 template <class T> inline void _Destroy(T* first, T* last)
 {
@@ -23,7 +23,7 @@ template <class T> struct CVector {
     ~CVector() { _Destroy(_M_start, _M_finish); if (_M_start) { std::free(_M_start); ++g_frees; } }
 };
 
-struct CAProgressDisplay {
+class CAProgressDisplay { public:
     virtual ~CAProgressDisplay() {}
     virtual void StopProgress(bool a, bool b) = 0;
 };

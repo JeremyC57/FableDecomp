@@ -5,14 +5,14 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 enum LANDSCAPE_EDGE_STRIP_SIDE { EDGE_SIDE_0, EDGE_SIDE_1, EDGE_SIDE_2, EDGE_SIDE_3 };
 
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     CPatchTesselationEdgeStrip* GetEdgeStrip(long x, long y, LANDSCAPE_EDGE_STRIP_SIDE side);   // 0x00BF6930
 };
-struct CEngineLandscapeMap;
-struct CEngineMap {
+class CEngineLandscapeMap;
+class CEngineMap { public:
     CEngineLandscapeMap* Landscape;                // +0x00
     unsigned char  _pad04[0x58];
     unsigned short MapWidth;                       // +0x5c
@@ -20,13 +20,13 @@ struct CEngineMap {
     unsigned short WorldPosX;                      // +0x60
     unsigned short WorldPosY;                      // +0x62
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*               _vptr;                     // +0x00
     unsigned char       _pad04[0x8];
     short*              Map;                       // +0x0c
@@ -49,7 +49,7 @@ struct CEngineWorldMap {
 };
 CEngineWorldMap* g_pEngineWorldMap;
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                         _vptr;           // +0x00
     CLandscapeBackgroundTreeNode* BackgroundTree;  // +0x04
     unsigned char                 _pad08[0xc];

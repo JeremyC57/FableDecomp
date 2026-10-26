@@ -4,7 +4,7 @@
 static int g_order[8];
 static int g_calls = 0;
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     unsigned char _body[0x38];
     CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -27,7 +27,7 @@ struct CBoolVector {
     { m_words = o.m_words; m_size = o.m_size; m_capacity = o.m_capacity; g_order[g_calls++] = 3; return *this; }
 };
 
-struct CPlayerInventoryDef : CParentDefClassBase {
+class CPlayerInventoryDef : public CParentDefClassBase { public:
     CLongVector Slot;
     CLongVector MaxInSlot;
     CLongVector InitialAmount;

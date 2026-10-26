@@ -1,5 +1,5 @@
-struct CDefClassBase;
-struct CTCNoiseDef;
+class CDefClassBase;
+class CTCNoiseDef;
 extern void __fastcall CTCNoiseDef_Copy_impl(CTCNoiseDef* def, void* edx, const CDefClassBase* other);
 void __fastcall CTCNoiseDef_Copy(CTCNoiseDef* def, void* edx, const CDefClassBase* other)
 {

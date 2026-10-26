@@ -20,17 +20,17 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CMainGameComponent;
-struct CGameDefinitionManager;
-struct CPlayerManager;
-struct CDisplayEngine;
-struct CThingSearchTools;
-struct CWorld {
+class CMainGameComponent;
+class CGameDefinitionManager;
+class CPlayerManager;
+class CDisplayEngine;
+class CThingSearchTools;
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* ThingSearchTools;  // +0x20
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                         // 0x0099A2D0
     virtual ~CBaseClass();                // 0x0099A2E0
 };
@@ -44,7 +44,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) {}
 };
-struct CScriptThing : CBaseClass {        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:        // vtable 0x01238C8C
     CCountedPointerWords PImp;
     CScriptThing() {}
     virtual ~CScriptThing();

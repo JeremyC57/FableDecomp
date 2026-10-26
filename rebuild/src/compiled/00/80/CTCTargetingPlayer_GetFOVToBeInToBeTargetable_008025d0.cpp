@@ -13,29 +13,29 @@
 //   PCProjectileWeaponThirdPersonAimingMode +0x21A (PDB +0x222; the landed CPlayer rows use +0x21A).
 // Shape: two complete `return def->x * K;` arms (`fld [def+N] ; fmul [K]`, the def loaded into a different register on
 //   each arm because the test's flag byte was held in cl).
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0x21a];
     bool          PCProjectileWeaponThirdPersonAimingMode;   // +0x21A
 };
 
-struct CThing {
+class CThing { public:
     CPlayer* GetPlayer();                                    // 0x004C7A10
 };
 
-struct CTargetingDef {
+class CTargetingDef { public:
     unsigned char _pad00[0x30];
     float         TargetArc;                                 // +0x30 (degrees)
     float         TargetArcPCThirdPersonAimingMode;          // +0x34 (degrees)
 };
 
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     void*          __vftable;                                // +0x00
     CThing*        ParentThing;                              // +0x04 (CTCBase)
     unsigned char  _pad08[0x30 - 0x08];
     CTargetingDef* PSubDef;                                  // +0x30
 };
 
-struct CTCTargetingPlayer : CTCTargetingAI {
+class CTCTargetingPlayer : public CTCTargetingAI { public:
     float GetFOVToBeInToBeTargetable() const;
 };
 

@@ -10,7 +10,7 @@
 #include "engine/_quarantine/CEngineLandscapeMap.h"
 #include "engine/CEngineOcclusionManager.h"
 #include <math.h>
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 namespace Native {
 struct Tree;struct Split;
 enum LANDSCAPE_EDGE_STRIP_SIDE { Side0,Side1,Side2,Side3 };

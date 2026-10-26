@@ -101,7 +101,7 @@ static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); r
 
 struct CDefStringTable { CStr GetString(long id) { return id == 3 ? CStr("OBJECT_SWORD") : CStr(""); } };
 static CDefStringTable g_DefStringTable;
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct Traits { void TransferOut(void* context, CStr* out, const CDefString* value)
 {
     CStr text = g_DefStringTable.GetString(value->Index);

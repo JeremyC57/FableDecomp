@@ -3,11 +3,11 @@
 // Model of 0x00404E10 NUISystem::CIME::Callback_DrawFans: convert the fan centre once, then for each rim vertex i
 // (1..count-1) draw the triangle (centre, v[i], v[i+1], wrapping the last back to v[1]) with v[i]'s RGB and the
 // composition alpha, all in converted coordinates. Coordinate conversion and the 2D render manager are stubs.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -28,10 +28,10 @@ struct CRenderManager2D {
         return true;
     }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CRenderManager2D* RenderManager2D;
 };
-struct CSystemManager {
+class CSystemManager { public:
     CDisplayManager* DisplayManager;
 };
 static CRenderManager2D g_render;

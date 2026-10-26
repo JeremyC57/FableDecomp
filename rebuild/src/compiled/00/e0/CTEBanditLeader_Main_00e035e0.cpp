@@ -10,17 +10,17 @@
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8} (landed CHTE_Prisoner::Main 0x00D69F50).
 // Shape: the filter (vtable kept in ebx for its inline dtor) and the line's string are scoped frame objects sharing one
 //   slot; the conversation id stays in ebx; the wait is `while (!test) { NewScriptFrame(); if (IsDone()) return; }`.
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
     ~CScriptThing();                          // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                           // 0x0099EAE0
 };
-struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
+class CGameScriptInterface { public:                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();                               // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

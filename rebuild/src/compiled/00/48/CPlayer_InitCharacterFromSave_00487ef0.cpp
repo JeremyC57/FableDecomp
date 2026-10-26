@@ -15,12 +15,12 @@
 // component goes through an inline accessor (loaded straight into ecx). The camera manager is an uninitialised out
 // local in its own block (the getter's bool is ignored): it lives in the dead `save` argument slot and is re-read from
 // there for each call.
-struct CBaseObject;
-struct CThingManager;
-struct CWorldMap;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingManager;
+class CWorldMap;
+class CThingCreatureBase;
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -37,13 +37,13 @@ struct CTCPhysicsBase {
     virtual float GetFacingAngle();                     // slot 63 (+0xFC; CTCPhysicsStandard 0x00723B30: atan2 of the facing)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60 (PDB +0x70)
     void SetPlayerNumber(long number);                  // 0x004C7440
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 
 class CBaseIntelligentPointer {
 public:
@@ -56,7 +56,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -72,7 +72,7 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager* GetThingManager();           // slot 3 (+0xC)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -82,14 +82,14 @@ struct CWorld {
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                         // 0x00449700
 };
 
-namespace NPlayerManager { struct CPlayerSave; }
+namespace NPlayerManager { class CPlayerSave; }
 typedef long EPlayerMode;
 
-struct CPlayer {
+class CPlayer { public:
     void*           __vftable;
     unsigned char   _pad04[0x10 - 0x04];
     CPlayerManager* PlayerManager;                      // +0x10
@@ -105,7 +105,7 @@ struct CPlayer {
     bool InitCharacterFromSave(const NPlayerManager::CPlayerSave& save);
 };
 
-struct CThingPlayerCreature : CThing { };
+class CThingPlayerCreature : public CThing { public: };
 
 bool CPlayer::InitCharacterFromSave(const NPlayerManager::CPlayerSave& save)
 {

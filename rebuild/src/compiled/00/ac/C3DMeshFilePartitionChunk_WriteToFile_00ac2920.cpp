@@ -1,5 +1,5 @@
 #include "engine/C3DMeshFilePartitionChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C3DMeshPartitionElement { void N(void* stream); };
+class C3DMeshPartitionElement { public: void N(void* stream); };
 struct C3DMeshFilePartitionChunk_Methods : C3DMeshFilePartitionChunk {
     void WriteToFile(void* stream, int saver);
 };

@@ -12,13 +12,13 @@
 // `__forceinline` POD-vector destructors.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-struct CParentDefClassBase {                       // retail 0x3c bytes (with the CDefClassBase part)
+class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
     unsigned char m_baseData[0x3c];
     ~CParentDefClassBase();                        // 0x00430300
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
 struct CLongVector {                               // retail std::vector<long> (12 bytes)
     long* m_first;
     long* m_last;
@@ -37,7 +37,7 @@ struct CFloatVector {                              // retail std::vector<float> 
     float* m_end;
     __forceinline ~CFloatVector() { if (m_first) free(m_first); }
 };
-struct CCharString {                               // 4-byte string handle
+class CCharString { public:                               // 4-byte string handle
     void* m_pData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -67,7 +67,7 @@ struct CStringGameActionMap {                   // retail map<CCharString,EGameA
     void* m_words[3];
     ~CStringGameActionMap();                    // 0x004543C6
 };
-struct CPlayerGuiDef : CParentDefClassBase {
+class CPlayerGuiDef : public CParentDefClassBase { public:
     long                               InventoryNoMovementSound;                        // +0x3c
     float                              SecondsToFadeWholeGui;                           // +0x40
     float                              AlphaValueToFadeWholeGui;                        // +0x44

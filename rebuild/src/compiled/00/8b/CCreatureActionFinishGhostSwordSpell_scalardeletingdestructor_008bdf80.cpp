@@ -1,4 +1,4 @@
-struct CCreatureAction_FinishGhostSwordSpell {
+class CCreatureAction_FinishGhostSwordSpell { public:
     void* vftable;
 };
 

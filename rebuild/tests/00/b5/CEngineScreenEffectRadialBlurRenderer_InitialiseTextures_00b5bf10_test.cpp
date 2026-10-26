@@ -6,12 +6,12 @@
 #include "engine/CPixelFormat.h"
 #else
 // Host semantic view: independent native pointer and handle members stay separate on LP64.
-struct CEngineScreenEffectRadialBlurRenderer { void* BlurTexture256_1; void* BlurTexture256_2; long BlurTextureHandle256_1,BlurTextureHandle256_2,DynamicTexturePageHandle; };
-struct CPixelFormat { long FormatIndex; };
+class CEngineScreenEffectRadialBlurRenderer { public: void* BlurTexture256_1; void* BlurTexture256_2; long BlurTextureHandle256_1,BlurTextureHandle256_2,DynamicTexturePageHandle; };
+class CPixelFormat { public: long FormatIndex; };
 #endif
 struct PixelFormatMethods : CPixelFormat { PixelFormatMethods(long f) { FormatIndex=-1; Initialise(f); } void Initialise(long); }; // 009e3830
-struct C2DExtentsI { long X,Y; C2DExtentsI(long x,long y):X(x),Y(y){} };
-struct CGPUScratchBufferTextureManager {
+class C2DExtentsI { public: long X,Y; C2DExtentsI(long x,long y):X(x),Y(y){} };
+class CGPUScratchBufferTextureManager { public:
  void FreeMemoryPage(long); // 00f37030
  long AllocteMemoryPage(long,bool); // 00f37660
  long AllocateTexture(long,const C2DExtentsI&,long,const CPixelFormat&,unsigned long,bool); // 00f37440

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CProceduralTexture;
-struct CWorld;
+class CProceduralTexture;
+class CWorld;
 
 CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *world);
 

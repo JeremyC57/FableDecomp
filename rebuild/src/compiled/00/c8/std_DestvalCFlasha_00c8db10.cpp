@@ -24,8 +24,8 @@ namespace NCreatureHitNotification
 {
     struct CFlashListNode; // opaque; list internals not needed by this thunk
 
-    struct CFlash
-    {
+    class CFlash
+    { public:
         CFlashListNode* FlashGeometryHead; // std::list<CWeaponTrailEntry> head pointer
         long            FlashGeometrySize; // std::list<CWeaponTrailEntry> cached size
         long            CreationFrame;

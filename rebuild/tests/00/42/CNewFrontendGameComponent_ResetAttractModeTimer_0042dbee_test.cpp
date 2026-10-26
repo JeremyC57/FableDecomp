@@ -1,7 +1,7 @@
 #include <stdio.h>
 static const void* g_this; static int g_calls;
 struct CStopWatch { double start; void Reset() { g_this = this; ++g_calls; start = 0; } };
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     unsigned char _pad00[0x100];
     CStopWatch    m_attractModeTimer;
     void ResetAttractModeTimer();

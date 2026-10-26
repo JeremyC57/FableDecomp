@@ -11,24 +11,24 @@
 // Set (stores R, G, B, A); the step is `1.0f / size()` (unsigned) added to the running progress, clamped to [0, 1] every step;
 // the thing's id is a named local read first; the handle is `*(begin() + i)` (operator[] forms the address before the
 // line constructor call, retail keeps only the base across it).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
 };
-struct CEnginePrimitiveHandle { unsigned long m_data[2]; };
-struct CEnginePrimitive { };
-struct CEnginePrimitiveLine : CEnginePrimitive {
+class CEnginePrimitiveHandle { public: unsigned long m_data[2]; };
+class CEnginePrimitive { public: };
+class CEnginePrimitiveLine : public CEnginePrimitive { public:
     unsigned char _body[0x3c];
     CEnginePrimitiveLine(unsigned __int64 id, const C3DVector& start, const C3DVector& end, const CRGBColour& colour,
                          float width, long blendMode, unsigned long flags, bool depthTest, long interpolation,
                          long blendOp);                                     // 0x004C3090
 };
-struct CIEngine {
+class CIEngine { public:
 #define VF(n) virtual void v##n();
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16)
     VF(17) VF(18) VF(19) VF(20) VF(21) VF(22)
@@ -36,19 +36,19 @@ struct CIEngine {
     virtual void SetPersistentPrimitive(CEnginePrimitiveHandle& handle, const CEnginePrimitive& primitive,
                                         unsigned long flags);              // slot 23 (+0x5c)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine* Engine;                                   // +0x34
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;                          // +0x18
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                            // +0
     SCountBlock* m_pCount;                              // +4
     T* operator->() const { return Data; }
@@ -61,7 +61,7 @@ struct CEnginePrimitiveHandleVector {                   // STLport vector<CEngin
     CEnginePrimitiveHandle& operator[](unsigned long n) { return _M_start[n]; }
     CEnginePrimitiveHandle* begin() { return _M_start; }
 };
-struct CTCCreatureFlyOnSpline {
+class CTCCreatureFlyOnSpline { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool    ToBeRemoved;                                // +0x08

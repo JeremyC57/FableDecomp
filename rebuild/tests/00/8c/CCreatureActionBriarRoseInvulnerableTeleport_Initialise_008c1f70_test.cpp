@@ -14,9 +14,9 @@
 static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { std::printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 
-struct CTCBase { };
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase { public: };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     char Text[64];
     CCharString(const char* text, long length = -1) { (void)length; std::strncpy(Text, text, 63); Text[63] = 0; }
 };
@@ -40,13 +40,13 @@ struct CDefBase {
     virtual ~CDefBase() { }
     virtual void Destroy() { ++Destroyed; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     long PopEffect;                         // -1: no TELEPORT_POP entry
     bool CalcAndLookup(const CCharString& name, long* value)
     {
@@ -56,7 +56,7 @@ struct CSpecialEffectsDef : CDefBase {
         return true;
     }
 };
-struct CSoundMap {
+class CSoundMap { public:
     long WankSound;
     bool HasWank;
     const long* GetPSound(const CCharString& name) const
@@ -66,10 +66,10 @@ struct CSoundMap {
         return &WankSound;
     }
 };
-struct CEntitySoundDef : CDefBase {
+class CEntitySoundDef : public CDefBase { public:
     CSoundMap SoundMap;
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     CSpecialEffectsDef* Effects;
     CEntitySoundDef*    Sounds;
     int                 MaxRefSeen;
@@ -108,7 +108,7 @@ public:
         PlaybackType = 1;
     }
 };
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     int        Calls;
     long       Sound;
     CSoundInit Init;
@@ -120,7 +120,7 @@ struct CTCSoundPlayer : CTCBase {
         return 0;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long  m_presentBits[9];
     CInterfaceMap  m_interfaces;
     CDefClassBase* m_pDef;
@@ -155,7 +155,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
 static int       g_effectCalls = 0;
 static long      g_effect = 0;
@@ -176,7 +176,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CModeBase { virtual ~CModeBase() { } };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     CCountedPointer(T* object) : m_pObject(object) { }
 };
@@ -185,7 +185,7 @@ struct CModeBriarRoseTeleportIntangible : CModeBase {
     CThingCreatureBase* Enemy;
     CModeBriarRoseTeleportIntangible(CThing* owner, CThingCreatureBase* enemy) : Owner(owner), Enemy(enemy) { }
 };
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     int        Calls;
     CModeBase* Last;
     CTCCreatureModeManager() : Calls(0), Last(0) { }

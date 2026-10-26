@@ -2,12 +2,12 @@
 // Behaviour test for CTCTavernGameCoinGolf::vfunc_11 (0x007D4A60).
 struct CRenderContext { int id; };
 static int g_prepare = 0, g_fade = 0, g_fadeArg = -1;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x20];
     bool IsBeingPlayed;
     void DrawPreparePrimitivesForRendering(CRenderContext* context) { if (context) ++g_prepare; }
 };
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     void FadeOutTableOccupants(bool fadeOut) { ++g_fade; g_fadeArg = fadeOut ? 1 : 0; }
     void vfunc_11(CRenderContext* context);
 };

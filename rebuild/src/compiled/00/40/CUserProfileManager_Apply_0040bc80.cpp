@@ -1,4 +1,4 @@
-struct CUserProfileManager { char pad[0x33]; char flag; };
+class CUserProfileManager { public: char pad[0x33]; char flag; };
 extern "C" void __fastcall UPM_Prep(CUserProfileManager* manager);
 extern "C" void __fastcall UPM_Commit(CUserProfileManager* manager);
 

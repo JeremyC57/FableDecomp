@@ -11,7 +11,7 @@
 // auto_inline(off) as in the landed sibling CountVertices 0x00ABC080, so the inner pointer stays in edi/ebx.
 // Layout: Ego_r.pdb C3DMeshFileTrianglesChunk TriangleList +0x34 -> retail +0x2c (C3DMeshFileChunk base 0x2c, not 0x34).
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count) { if (Count) ++Count->references; }
@@ -31,31 +31,31 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-template <class T> struct CArray {                 // retail STLport vector layout
+template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct C3DTriangle2 { unsigned short Index[3]; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
 
-struct CChunkedFileChunk;
-struct CChunkedFileSuperChunk {
+class CChunkedFileChunk;
+class CChunkedFileSuperChunk { public:
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const;   // 0x00AA7F40
     CCountedPointer<CChunkedFileChunk> FindNextSubChunk(const CCountedPointer<CChunkedFileChunk>& current) const;   // 0x00AA7FF0
 };
 
-struct C3DMeshFileTrianglesChunk {
+class C3DMeshFileTrianglesChunk { public:
     unsigned char _base_body[0x2c];        // C3DMeshFileChunk (retail 0x2c)
     CArray<C3DTriangle2> TriangleList;     // +0x2c
 };
 
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DMeshFileTrianglesChunk> FindFirstTriangles() const;   // 0x00ABB300
     CCountedPointer<const C3DMeshFileTrianglesChunk> FindNextTriangles(const CCountedPointer<const C3DMeshFileTrianglesChunk>& current) const;   // 0x00ABB390
 };
 
-struct C3DMeshFileSubMeshChunk : CChunkedFileSuperChunk {
+class C3DMeshFileSubMeshChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DMeshFilePrimitiveChunk> FindFirstPrimitive() const;   // 0x00ABA980
     CCountedPointer<const C3DMeshFilePrimitiveChunk> FindNextPrimitive(const CCountedPointer<const C3DMeshFilePrimitiveChunk>& current) const;   // 0x00ABAA10
     unsigned long CountTriangles() const;

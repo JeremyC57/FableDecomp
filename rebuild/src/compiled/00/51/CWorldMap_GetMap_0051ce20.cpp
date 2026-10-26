@@ -14,7 +14,7 @@ struct MapEntry {
     void* map;                    // 0x10  <- returned field
     char pad1[0x48 - 0x10 - 4];   // pad the entry to a 0x48-byte stride
 };
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x20];               // 0x00..0x1F
     MapEntry* m_maps;             // 0x20
 };

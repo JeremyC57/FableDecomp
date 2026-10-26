@@ -7,11 +7,11 @@
 #include "engine/CPixelFormat.h"
 #endif
 #ifndef _MSC_VER
-struct CPixelFormat {long FormatIndex;};
+class CPixelFormat { public:long FormatIndex;};
 #endif
 struct PixelFormatMethods:CPixelFormat {void Initialise(int);}; //009e3830 D3DFORMAT enum passed as32bit int
-struct C2DExtentsI { long X,Y; C2DExtentsI(long x,long y):X(x),Y(y){} };
-struct CGPUScratchBufferTextureManager {
+class C2DExtentsI { public: long X,Y; C2DExtentsI(long x,long y):X(x),Y(y){} };
+class CGPUScratchBufferTextureManager { public:
  long AllocteMemoryPage(long,bool); // 00f37660
  long AllocateTexture(long,const C2DExtentsI&,long,const CPixelFormat&,unsigned long,bool); // 00f37440
 };

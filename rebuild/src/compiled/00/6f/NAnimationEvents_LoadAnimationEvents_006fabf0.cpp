@@ -13,7 +13,7 @@
 //   `GetXManager().Load(GetMiscDir() + CWideString(L"..."))`.
 // Lane note: wchar_t is not a built-in type in the lane's VC7.1 build, so the literal constructor takes `const unsigned
 //   short*` (same mangling-independent code).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);      // 0x0099EBF0
     ~CCharString();                                       // 0x0099EAE0

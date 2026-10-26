@@ -13,10 +13,10 @@
 // inline constructors -- six consecutive zero stores, which is what fixes the retail vector at 12 bytes
 // (the PDB says 0x10 and puts Pillars at +0x44). The shared CIntelligentPointer<CThing> vtable constant
 // is hoisted into ebx by the compiler (only under optimize("s"): the TU is size-optimised). EnemyKnockDownFrame/SpeechCounter (+0x2c/+0x30) stay uninitialised.
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIStateGroupBase();                        // 0x008FD255
 };
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }      // inlined: base ctor + vtable
 };

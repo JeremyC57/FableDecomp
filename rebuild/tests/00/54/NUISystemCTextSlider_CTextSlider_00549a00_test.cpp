@@ -4,8 +4,8 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     T* operator->() const { return Data; }
@@ -13,7 +13,7 @@ template <class T> struct CCountedPointer {
 struct CActionAllocator {                        // std::allocator<CCountedPointer<CAction> > (empty; the user ctor keeps
     CActionAllocator() { }                       //   VC7.1 from zero-filling the temporary byte)
 };
-namespace NUISystem { struct CAction; }
+namespace NUISystem { class CAction; }
 void __fastcall DestroyActionRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,
                                    const CActionAllocator& allocator);   // 0x0054A1C0
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
@@ -52,11 +52,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     ~CDraggableInto();                           // 0x0052CCF0
 };
-struct CTextSlider : CDraggableInto {            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
+class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164
@@ -80,7 +80,7 @@ struct CSliderValue { unsigned char _pad[8]; unsigned long Selected; };         
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };           // +0x08
 struct CSliderTargetRef { CSliderTarget* Target; };                             // +0x00
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                   // +0x04
 };

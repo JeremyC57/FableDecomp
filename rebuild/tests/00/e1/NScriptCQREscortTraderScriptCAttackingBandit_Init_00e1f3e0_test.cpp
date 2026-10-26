@@ -32,8 +32,8 @@ typedef unsigned int fable_u32;
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -41,8 +41,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -133,10 +133,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -156,12 +156,12 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CCPPointerInfo;
-struct CCharStringData;
+class CCPPointerInfo;
+class CCharStringData;
 struct CPredicateBase;
 
 #pragma pack(push, 1)
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -201,7 +201,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate_Info) == 0x30);
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
 #pragma pack(push, 1)
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     bool          Running;                                   // +0x04
     bool          StopRunning;                               // +0x05
@@ -269,15 +269,15 @@ const CCharString& CCharString::operator=(const char* text)
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -319,8 +319,8 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CameraResetToViewBehindHeroCo
 FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x50);
 
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime;
 struct CCountedScriptThingRuntime {
@@ -436,7 +436,7 @@ struct CSpawnedFuncPhase3 : CSpawnedFuncBaseRuntime {
 FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncPhase3) == 0x48);
 #endif
 
-struct CEntityScriptBase {                 // donor layout: +0 vptr, +4 Game, +8 Me
+class CEntityScriptBase { public:                 // donor layout: +0 vptr, +4 Game, +8 Me
     void* __vftable;
     CGameScriptInterface* Game;             // +0x04
     CScriptThingRuntime Me;                 // +0x08

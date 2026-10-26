@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,16 +46,16 @@ struct CMode {
     bool m_headTurning;                         // +0x7c (dragon modes 0x47 / 0x4e)
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     CMode* GetCurrentMode();                    // 0x0073A6E0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

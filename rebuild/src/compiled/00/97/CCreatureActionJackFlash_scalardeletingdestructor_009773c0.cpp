@@ -1,4 +1,4 @@
-struct CCreatureAction_JackFlash {
+class CCreatureAction_JackFlash { public:
     void* vftable;
 };
 

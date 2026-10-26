@@ -14,7 +14,7 @@
 // Shape: size TU (#pragma optimize("s", on)), no frame pointer.
 #pragma optimize("s", on)
 
-struct COpinionTransientOffset {                    // PDB 24 bytes
+class COpinionTransientOffset { public:                    // PDB 24 bytes
     long  Opinion;                                  // +0x00 EOpinion
     float OffsetPerFrameRunIn;                      // +0x04
     long  FramesToRunIn;                            // +0x08

@@ -2,7 +2,7 @@
 
 unsigned char g_CheapHeadLooking;
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 bool __fastcall CGameScriptInterface_GetCheapHeadLooking(const CGameScriptInterface* self)
 {

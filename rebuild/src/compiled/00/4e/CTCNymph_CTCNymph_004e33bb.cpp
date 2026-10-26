@@ -14,10 +14,10 @@
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
@@ -31,7 +31,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                 // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v00();
 };
@@ -59,7 +59,7 @@ struct CNymphDefPointer {                          // CDefPointer<CNymphDef cons
     }
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct CSplinePointVector {                        // STLport vector<C3DVector> (malloc allocator)
     C3DVector* _M_start;
@@ -73,7 +73,7 @@ struct CSplinePointVector {                        // STLport vector<C3DVector> 
     }
 };
 
-struct CCardinalSpline {                           // 0x14 bytes in retail
+class CCardinalSpline { public:                           // 0x14 bytes in retail
     CSplinePointVector m_points;                   // +0x00
     float              m_tension;                  // +0x0c
     long               m_segmentCount;             // +0x10
@@ -81,7 +81,7 @@ struct CCardinalSpline {                           // 0x14 bytes in retail
 };
 
 #pragma pack(push, 1)
-struct CTCNymph : CTCBase {
+class CTCNymph : public CTCBase { public:
     CNymphDefPointer                        PDef;               // +0x0c
     C3DVector                               PointToFlyAround;   // +0x10
     float                                   EffectHeightOffset; // +0x1c

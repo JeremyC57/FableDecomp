@@ -9,7 +9,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R;                                       // +0x00
     float G;                                       // +0x04
     float B;                                       // +0x08
@@ -19,7 +19,7 @@ struct CRGBFloatColour {
 
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CRGBFloatColour GetExperienceAbilityColour(EHeroAbility ability);
 };
 

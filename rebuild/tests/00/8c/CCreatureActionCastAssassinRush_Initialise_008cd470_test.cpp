@@ -63,11 +63,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
+class CCPPointerInfo;
+class CCreatureActionBase;
 
 #pragma pack(push, 1)
-struct CCreatureAction_CastAssassinRush {
+class CCreatureAction_CastAssassinRush { public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _base_0x04[0x128];                  // +0x04 flattened base-class subobject(s)
     bool                 Override;                           // +0x12c
@@ -107,10 +107,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush, IsZTargetting) ==
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -236,14 +236,14 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -316,10 +316,10 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -369,7 +369,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 
 
 #pragma pack(push, 1)
-struct CClass {
+class CClass { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x4];                           // +0x04 flattened base-class subobject(s)
     unsigned char ClassListPos[0x4];                         // +0x08 _List_iterator<std::_List_val<CClass_*,std::allocator<CClass_*>_>_>
@@ -392,8 +392,8 @@ FABLE_STATIC_ASSERT(offsetof(CClass, Type) == 0x10);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -401,8 +401,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -487,13 +487,13 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 #include <string.h>
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){};};
-struct CRightHandedSet {C3DVector Up,Forward;};
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){};};
+class CRightHandedSet { public:C3DVector Up,Forward;};
 struct CPhysicsMethods:CTCPhysicsBase {void SetFacingAnglesFromRHSet(const CRightHandedSet&);};
 union CPhysicsSlot {void* Address;void(CPhysicsMethods::*SetFacingAnglesFromRHSet)(const CRightHandedSet&);};
 inline void CPhysicsMethods::SetFacingAnglesFromRHSet(const CRightHandedSet& v){(this->*reinterpret_cast<CPhysicsSlot*>(__vftable)[74].SetFacingAnglesFromRHSet)(v);}
 FABLE_STATIC_ASSERT(sizeof(CPhysicsSlot)==4);
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCountedActionInfo {long References;void(FABLE_FASTCALL *Destroy)(void*);void* Owner;};
 struct CCountedAction {
  CCreatureActionBase* Data;CCountedActionInfo* Info;
@@ -501,28 +501,28 @@ struct CCountedAction {
  CCountedAction(const CCountedAction& p):Data(p.Data),Info(p.Info){if(Info)++Info->References;}
  ~CCountedAction(){if(Info&&!--Info->References){Info->Destroy(Info->Owner);delete Info;}}
 };
-struct CThing;
+class CThing;
 // CTCAssassinRush generated header absent. PDB native member offsets are donor minus4 (TC base).
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
  unsigned char _beforeDashDistance[0x70];float DashDistance;
  unsigned char _beforeSpellLevel[0x18];long SpellLevel;CCountedAction FinalAction;void* RadialBlurFadeKey;bool UseCollision;bool IsZTargetting;
  void SetPTarget(CThing*,bool); //007A9AB0
  void SetFinalAction(CCountedAction); //008CEAE0; PDB906010; propagated CMeshDataBank label rejected
 };
-struct CTCParamsBase;
-struct CThing:CClass {
+class CTCParamsBase;
+class CThing:public CClass { public:
  unsigned char _beforePhysics[0x4f];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
  void RemoveTC(long); //004C9840
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem()const;}; //00A01C10/00A01B50
-struct CCombatActionBase {
+class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  unsigned char _beforeTarget[0x98];CBaseIntelligentPointer PTarget;unsigned char _remainingBase[0x64];
  void Initialise(); //00857520
 };
-struct CCreatureAction_CastAssassinRush:CCombatActionBase {
+class CCreatureAction_CastAssassinRush:public CCombatActionBase { public:
  bool Override;unsigned char Dir[15];float Distance;long Level;CCountedAction FinalAction;bool UseCollision;bool IsZTargetting;
  void CopyDirection(C3DVector& v)const{memcpy(&v.X,Dir,4);memcpy(&v.Y,Dir+4,4);memcpy(&v.Z,Dir+8,4);}
  void Initialise();
@@ -568,7 +568,7 @@ CTCAssassinRush* CThing::AddTC(const CCharString& name,bool active,CTCParamsBase
 void CTCAssassinRush::SetPTarget(CThing* target,bool z){++g_setTarget;check(this==g_rush&&target==g_target&&z&&g_targetGets==1&&g_strings==0);}
 void CTCAssassinRush::SetFinalAction(CCountedAction p){++g_setFinal;check(this==g_rush&&p.Data==g_action->FinalAction.Data&&p.Info==g_action->FinalAction.Info&&p.Info->References==2);FinalAction.Data=p.Data;FinalAction.Info=p.Info;++FinalAction.Info->References;}
 struct TestPhysics:CPhysicsMethods{void Set(const CRightHandedSet& v){++g_setOrientation;check(g_setTarget==1&&g_rush->DashDistance==g_action->Distance&&g_rush->UseCollision==g_action->UseCollision);g_orientation=v;}};
-struct CCreatureActionBase {int Token;};
+class CCreatureActionBase { public:int Token;};
 static void FABLE_FASTCALL DestroyAction(void* p){++g_destroyed;delete static_cast<CCreatureActionBase*>(p);}
 int main(){
  CPhysicsSlot table[75];std::memset(table,0,sizeof table);table[74].SetFacingAnglesFromRHSet=static_cast<void(CPhysicsMethods::*)(const CRightHandedSet&)>(&TestPhysics::Set);TestPhysics physics;physics.__vftable=table;

@@ -27,7 +27,7 @@ public:
     void* m_pLast;
     CEngineSubPrimitiveChain() : m_pFirst(0), m_pLast(0) { }
 };
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& primitive, EEngineRenderLayer layer,

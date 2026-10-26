@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char buf[32];
     CWideString() { buf[0] = 0; }
     CWideString(const char* t) { std::strcpy(buf, t); }
@@ -36,7 +36,7 @@ struct CDataBank {
 };
 static CDataBank g_bank;
 
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     bool        TextGroupHasEntriesRemaining;
     long        TextGroupIndex;
     CWideString TextGroupTag;

@@ -7,9 +7,9 @@
 // the persist context's mode word at +0x18.
 // Shape: the context pointer is kept in edi across the base call; the success path is the `if` body with the shared
 // `mov al,1` exit, the two mode compares an `&&` of `!=` tests that skip the definition re-fetch.
-struct CThingCreatureDef;
+class CThingCreatureDef;
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          m_mode;                       // +0x18
 };
@@ -18,18 +18,18 @@ struct CDefPointerCreature {                    // CDefPointer<const CThingCreat
     CThingCreatureDef* m_pObject;
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out);      // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char  _pad00[0x8c];
     unsigned short m_defGlobalIndex;            // +0x8c
     CDefinitionManager* GetDefinitionManager() const;       // 0x004C7990
     bool SerialiseGameState(CPersistContext& context);      // 0x006A5AF0
 };
 
-struct CThingCreatureBase : CThingPhysical {
+class CThingCreatureBase : public CThingPhysical { public:
     unsigned char       _pad8e[0x52];
     CDefPointerCreature m_def;                  // +0xe0
     bool SerialiseGameState(CPersistContext& context);

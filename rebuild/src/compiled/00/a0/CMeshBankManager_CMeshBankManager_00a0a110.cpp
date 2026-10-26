@@ -34,7 +34,7 @@ struct CRetailList0x14 {                        // std::list<T> with 12-byte T: 
     }
 };
 
-struct CMeshBankManager : CBase, CMeshBankListener {
+class CMeshBankManager : public CBase, public CMeshBankListener { public:
     CRetailList0x14 m_banks;                    // +0x08
     virtual void v00();
     CMeshBankManager();

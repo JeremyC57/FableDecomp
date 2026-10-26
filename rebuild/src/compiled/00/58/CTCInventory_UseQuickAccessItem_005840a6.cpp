@@ -18,7 +18,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -31,10 +31,10 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CBaseObject {
+class CBaseObject { public:
 };
 
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char  _pad_0x00[0x20];
     CPresenceBits  m_present;                        // +0x20
     unsigned char  _pad_0x21[0x23];
@@ -64,7 +64,7 @@ struct CThing : CBaseObject {
 
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 
-struct CTCCarrying {                                 // interface type 0x46
+class CTCCarrying { public:                                 // interface type 0x46
     CThing* GetThingInPrimarySlot();                 // 0x006A1440
 };
 
@@ -76,7 +76,7 @@ struct CLongVector {                                 // std::vector<long> {first
     const long& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCInventory {                                // vtable 0x01250DE4
+class CTCInventory { public:                                // vtable 0x01250DE4
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

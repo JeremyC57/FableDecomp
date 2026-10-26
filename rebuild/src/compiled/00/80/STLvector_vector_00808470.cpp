@@ -14,8 +14,8 @@
 //   the empty tag is homed in the `x` argument slot (x itself lives in ebx).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CThing;
-struct C3DVector { float X, Y, Z; };
+class CThing;
+class C3DVector { public: float X, Y, Z; };
 
 class CBaseIntelligentPointer {
 public:

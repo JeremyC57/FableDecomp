@@ -8,7 +8,7 @@
 // the byte at +0x135 is set true (name descriptive). No engine header exists for this class.
 // Shape: `push esi ; push edi ; push 0FAh ; mov esi,ecx ; call base ; lea edi,[esi+114h] ; mov ecx,edi ;
 // mov [esi],vtable ; call CBaseIntelligentPointer ; mov [edi],ptr-vtable ; pop edi ; mov byte [esi+135h],1`.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,13 +21,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(long actionCode);         // 0x00857E40
 };
 
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     CIntelligentPointer PAttacker;              // +0x114
     unsigned char _pad[0x135 - 0x11c];          // +0x11c
     bool m_respondToStrike;                     // +0x135

@@ -1,8 +1,8 @@
 // Behaviour test for CEngineLandscapeRenderer::CalcForegroundFadeFactors @ 0x00B671E0.
 #include <cstdio>
 #include <cmath>
-struct C4DVector { float x, y, z, w; void Set(float a, float b, float c, float d) { x = a; y = b; z = c; w = d; } };
-struct CEngineLandscapeRenderer {
+class C4DVector { public: float x, y, z, w; void Set(float a, float b, float c, float d) { x = a; y = b; z = c; w = d; } };
+class CEngineLandscapeRenderer { public:
     float m_foregroundFadeStart, m_foregroundFadeEnd;
     C4DVector m_fadeInFactors, m_fadeOutFactors;
     void CalcForegroundFadeFactors()

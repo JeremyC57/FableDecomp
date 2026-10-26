@@ -10,17 +10,17 @@
 // scheduled right before the call; `return handle >= 0;` from a bool goes through ecx (`xor ecx,ecx ; setge cl ; mov al,cl`).
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(unsigned long d3dFormat);         // 0x009E3830
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page);                // 0x00F37030
     long AllocateMemoryPage(long a, long b);       // 0x00F37660
     long AllocateTexture(long page, const C2DCoordI* size, long mipLevels, const CPixelFormat* format, long count, long flags);   // 0x00F37440

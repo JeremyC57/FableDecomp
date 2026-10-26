@@ -1,4 +1,4 @@
-struct CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend {
+class CCreatureAction_JackOfBladesUnblockableMidAttackNoBlend { public:
     void* vftable;
 };
 

@@ -16,7 +16,7 @@ class CThing;
 class CTCCreatureModeManager {
 public:
     class CModeBase;
-    struct CRegisteredModeInfo {                         // Ego_r.pdb 4 bytes
+    class CRegisteredModeInfo { public:                         // Ego_r.pdb 4 bytes
         CModeBase* (__cdecl* AllocFunc)(CThing*);
     };
 };

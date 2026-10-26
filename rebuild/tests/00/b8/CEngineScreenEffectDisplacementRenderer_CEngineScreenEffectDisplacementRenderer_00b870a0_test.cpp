@@ -67,10 +67,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #include <stddef.h>
 
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectDisplacementRenderer {
+class CEngineScreenEffectDisplacementRenderer { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -152,7 +152,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectDisplacementRenderer, EnableDisp
 
 
 #pragma pack(push, 1)
-struct CEngineComponent {
+class CEngineComponent { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         GlobalPointerAddress;                      // +0x04 void * *
     bool          RenderEnabled;                             // +0x08
@@ -185,7 +185,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineComponent, KeepAlive) == 0x9);
 struct IDirect3DSurface9;
 
 #pragma pack(push, 1)
-struct CSurface {
+class CSurface { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DSurface9* PD3DSurface;                          // +0x04
     unsigned long      AllocationSource;                     // +0x08
@@ -217,7 +217,7 @@ FABLE_STATIC_ASSERT(offsetof(CSurface, PAllocatedMemory) == 0xc);
 struct CVertexShaderData;
 
 #pragma pack(push, 1)
-struct CVertexShader {
+class CVertexShader { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     CVertexShaderData* Data;                                 // +0x04
 };
@@ -245,7 +245,7 @@ struct CStateInfo;
 struct IDirect3DDevice9;
 
 #pragma pack(push, 1)
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DDevice9* PD3DDevice;                            // +0x04
     unsigned char     StateStack[0x2000];                    // +0x08 CStateStackElement[1024]
@@ -319,11 +319,11 @@ struct CBase {
     virtual ~CBase(); // 0x0099A2E0; native vtable is 0x01231710
 };
 
-struct CShaderBase {
+class CShaderBase { public:
     virtual ~CShaderBase(); // native shared shader-base vtable is 0x0129A030
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual ~CEngineComponent();
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -332,7 +332,7 @@ struct CEngineComponent {
 };
 
 struct IDirect3DSurface9;
-struct CSurface {
+class CSurface { public:
     IDirect3DSurface9* PD3DSurface;
     unsigned int AllocationSource;
     void* PAllocatedMemory;
@@ -340,7 +340,7 @@ struct CSurface {
     virtual ~CSurface(); // vtable 0x0122F84C; slot 0 destructor
 };
 
-struct CRenderTarget : CBase {
+class CRenderTarget : public CBase { public:
     CSurface RenderToSurface;
     CSurface ZBufferSurface;
 };
@@ -361,12 +361,12 @@ struct CPixelShaderData {
     int* ConstIndices;
 };
 
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     virtual ~CVertexShader();
 };
 
-struct CPixelShader : CShaderBase {
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* Data;
     virtual ~CPixelShader();
 };
@@ -376,9 +376,9 @@ struct CRenderStateCaptureBlockRetail {
     unsigned char Padding;
 };
 
-struct CEngineInit; // No quarantined header exists; the exact PDB constructor signature uses this reference.
+class CEngineInit; // No quarantined header exists; the exact PDB constructor signature uses this reference.
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page); // 0x00F37030
 };
 
@@ -391,7 +391,7 @@ extern CEngineGlobal_01436e98* g_pEngine_01436e98; // 0x01436E98
 extern CRenderStateManagerCaptureView* g_pRenderStateManager_013cb508; // 0x013CB508
 extern void FABLE_FASTCALL RestoreCaptureBlockAtGlobal(CRenderStateManagerCaptureView* manager); // 0x00A05840
 
-struct CEngineScreenEffectDisplacementRenderer : CEngineComponent {
+class CEngineScreenEffectDisplacementRenderer : public CEngineComponent { public:
     void* BackBufferCopyTexture;                         // native +0x0c
     void* DisplacementTexture;                           // native +0x10
     fable_i32 DisplacementTextureHandle;                 // native +0x14
@@ -501,7 +501,7 @@ static unsigned int g_surfaceReleaseCalls;
 // No CEngineInit header is quarantined. The native constructor at 0042D830
 // documents the retail 0x64-byte argument extent; this zeroed fixture view is
 // ignored by the same-signature constructor stub below.
-struct CEngineInit {
+class CEngineInit { public:
     unsigned char NativeArguments[0x64];
     CEngineInit()
     {

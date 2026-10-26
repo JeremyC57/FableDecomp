@@ -7,19 +7,19 @@
 // and FlourishParticles shrinks too), the layout landed IsMeleeWeapon documents.
 // Layout: Ego_r.pdb CTCWeapon WeaponDef +0x0c.
 // Shape: /O2 (`mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax`, result held in bl), as sibling 0x005DA7D0.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual ~CDefPointeeBase();
     virtual void Delete() const;                         // slot 1 (+4)
     unsigned long IVRefCount;                            // +0x04
     __forceinline void Release() { if (--IVRefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& p) : Object(p.Object) { if (Object) ++Object->IVRefCount; }
     __forceinline ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x1c];                          // +0x08
     unsigned char _pad24[0x6c];                          // +0x24 Type, Class, ... (as Ego_r.pdb up to +0x50)
     bool          UseAnalogueLoading;                    // +0x90

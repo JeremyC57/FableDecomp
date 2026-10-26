@@ -9,21 +9,21 @@
 // one-pointer message list at +0x04 (node next +0, prev +4, value +8), the filter's four member pointers, the matching
 // message as a named pointer local; the head re-read for each end test. std::unary_negate holds its predicate by value, so
 // its address is the PF3 pointer itself.
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad00[0x48];
     unsigned char POriginator[8];               // +0x48 CIntelligentPointer<CThing>
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1C0
 };
-struct CMessageEventFilter_IsOriginatorAlive {
+class CMessageEventFilter_IsOriginatorAlive { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF2D0
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     typedef CMessageEvent argument_type;
     bool operator()(const CMessageEvent& message) const;   // 0x006AF200
 };
-struct CMessageEventFilter_HasExtraData {
+class CMessageEventFilter_HasExtraData { public:
     bool operator()(const CMessageEvent& message) const;   // 0x006AF1A0
 };
 namespace std {
@@ -35,7 +35,7 @@ public:
     bool operator()(const typename Predicate::argument_type& x) const { return !_M_pred(x); }
 };
 }
-template <class F1, class F2, class F3, class F4> struct CFilter_Bind4 {
+template <class F1, class F2, class F3, class F4> class CFilter_Bind4 { public:
     F1* PF1;                                    // +0x00
     F2* PF2;                                    // +0x04
     F3* PF3;                                    // +0x08
@@ -49,8 +49,8 @@ struct CMessageList {                            // retail one-pointer list
     struct node { node* next; node* prev; CMessageEvent value; };
     node* head;
 };
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                         // +0x00
     CMessageList Messages;                      // +0x04
     template <class Filter> const CMessageEvent* FindMostRecentMessage(const Filter& filter) const;

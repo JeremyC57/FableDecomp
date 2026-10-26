@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_baseCalls;
 struct CBase { virtual void v00() { } CBase() { ++g_baseCalls; } };
-struct CASuspendableProcess : CBase {
+class CASuspendableProcess : public CBase { public:
     unsigned char Running, StopRunning, TerminateUsingExceptions; long TimeProcessSliceStarted; long TimesliceLength;
     virtual void v00() { }
     CASuspendableProcess(bool t, long unused, long ts) : CBase(), Running(0), StopRunning(0), TerminateUsingExceptions(t), TimesliceLength(ts) { }

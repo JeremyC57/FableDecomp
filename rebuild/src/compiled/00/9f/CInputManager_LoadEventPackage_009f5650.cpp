@@ -6,19 +6,19 @@
 // CurrentFilePackageIndex +0x58, TimeStamp +0x5c.
 // Shape: the record address is `lea eax,[eax+eax*2] ; shl eax,4` plus first (a named pointer kept in eax across the compare),
 // `cmp [eax+0Ch],edx` with the package's stamp first, then the two calls and `inc dword ptr [esi+58h]`.
-struct CInputEventPackage {                         // 48 bytes
+class CInputEventPackage { public:                         // 48 bytes
     unsigned char _events[0x0c];                    // +0x00 Events (std::vector<CInputEvent>)
     long          TimeStamp;                        // +0x0c
     unsigned char _rest[0x20];                      // +0x10 Checksum, MousePos, JoystickPos
 };
-struct CChecksum {
+class CChecksum { public:
     long Checksum1;                                 // +0x00
     long Checksum2;                                 // +0x04
     long Checksum3;                                 // +0x08
     long Checksum4;                                 // +0x0c
 };
 
-struct CInputManager {
+class CInputManager { public:
     virtual void v00();
     unsigned char       _pad04[0x38];               // +0x04 vectors, counters, devices, flags
     CChecksum           Checksum;                   // +0x3c

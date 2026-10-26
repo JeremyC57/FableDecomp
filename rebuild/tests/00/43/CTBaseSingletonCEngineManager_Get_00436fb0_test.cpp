@@ -16,7 +16,7 @@ public:
 };
 struct Node { Node* next; Node* prev; void* data; };
 class EngineList { public: EngineList() : node(0) { Node* n = (Node*)std::malloc(sizeof(Node)); n->next = n; n->prev = n; node = n; } Node* node; };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class BoxVector { public: BoxVector() : start(0), finish(0), end(0) {} C2DBoxI* start; C2DBoxI* finish; C2DBoxI* end; };
 class CEngineManager : public CTBaseSingleton<CEngineManager> {
 public:

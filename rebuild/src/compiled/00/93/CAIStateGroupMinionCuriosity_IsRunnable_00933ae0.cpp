@@ -7,18 +7,18 @@
 // translation unit: `if (t && !(t->flags91 & 1)) { CuriosityPos = t->GetPosition(); return true; } return
 // false;` with the implicit C3DVector operator= (`add esi,14h` + three dword moves) and one shared `xor al,al`.
 // Base layout local (PDB names); no engine header for this class.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPosition_006a4d00();         // 0x006A4D00
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     // raw masked value, not a bool: the caller branches on it (a bool result comes out as `shr ; test dl,1`)
@@ -26,12 +26,12 @@ struct CThingCreatureBase {
     CThing* GetCuriosityThing();            // 0x0082FEC0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

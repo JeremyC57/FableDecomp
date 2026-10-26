@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CThingShotDef { float Speed; };
+class CThingShotDef { public: float Speed; };
 long g_GameFramesPerSecond = 15;
 static float g_nextRandom = 0.0f;
 static unsigned long g_seed = 0;
 float GFFloatRandom(float range, unsigned long* seed) { ++*seed; return g_nextRandom * range; }
-struct CWorld { unsigned long* GetPRandomSeed() { return &g_seed; } };
+class CWorld { public: unsigned long* GetPRandomSeed() { return &g_seed; } };
 static CWorld g_world;
 struct CTCShotDefinitionBase {
     const CThingShotDef* PShotDef;

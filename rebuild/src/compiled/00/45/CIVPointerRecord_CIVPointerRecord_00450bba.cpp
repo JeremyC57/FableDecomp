@@ -7,13 +7,13 @@
 // Layout: +0x00..+0x0b trivially destructible data (unknown, folded body); +0x0c CIVCountedPointer<T> (one pointer).
 // Opt: size TU (`and dword ptr [esi+0Ch],0`).
 #pragma optimize("s", on)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                          // slot 1 (+4)
     unsigned long IVRefCount;                           // +0x04
     __forceinline void Release() { if (--IVRefCount == 0) DeleteThis(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     __forceinline ~CIVCountedPointer()
     {

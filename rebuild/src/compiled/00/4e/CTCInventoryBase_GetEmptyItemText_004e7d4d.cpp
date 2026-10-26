@@ -8,7 +8,7 @@
 // Shape: a by-value class result: the hidden result pointer is the first stack argument (`mov ecx,[esp+4]`), re-read for the
 // return value (`mov eax,[esp+4]`), `ret 8` for it plus the unused argument; `this` is never read.
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);                       // 0x0099B720
     ~CWideString();                                              // 0x0099B510

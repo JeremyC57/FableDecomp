@@ -14,15 +14,15 @@
 // is a named float (spilled; its slot is reused by the Bind2 temporary); the empty filter has a user ctor (no byte store).
 // IS_THING_ALIVE names the item before the dead-bit test: the plain `if (GetPItem() && !(GetPItem()->flags & 1))` form
 // turns the final `return true` into VC's `mov al,1 ; test al,cl` select instead of retail's test/jne + two epilogues.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct C3DVector { float x, y, z; };
-struct CThing {
+class C3DVector { public: float x, y, z; };
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,7 +43,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingBuilding;
+class CThingBuilding;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
@@ -66,34 +66,34 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase;
-struct CTCIdleScheduler {
+class CAIStateGroupBase;
+class CTCIdleScheduler { public:
     bool IsPreferredIdle(CAIStateGroupBase* group);   // 0x00801BE0
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     float GetSightRadius();                     // 0x007448F0
 };
 struct CThingFilter_OnFire { CThingFilter_OnFire() { } };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector m_pos;
     CThingCompare_Nearest(const C3DVector& pos) : m_pos(pos) { }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestLeafThing(const CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>& filter,
         const CThingCompare_Nearest& compare, CThingBuilding** out);   // 0x00936070
 };
@@ -107,7 +107,7 @@ __declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CFilter_Bin
     return best != 0;
 }
 #pragma auto_inline(on)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();

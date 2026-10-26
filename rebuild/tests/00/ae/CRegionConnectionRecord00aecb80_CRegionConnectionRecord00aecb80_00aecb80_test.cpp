@@ -3,16 +3,16 @@
 #include <cstdlib>
 static int g_log[32]; static int g_n = 0;
 class CCharString { public: int id; ~CCharString() { g_log[g_n++] = id; } };
-struct CCPPointerInfo { unsigned long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: unsigned long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static void DeleteData(void* data) { (void)data; g_log[g_n++] = 50; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     void ReleaseInfo() { if (Info) { --Info->RefCount; if (Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } }
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
 };
 static CCPPointerInfo* NewInfo(unsigned long refs) { CCPPointerInfo* i = new CCPPointerInfo; i->RefCount = refs; i->DeleteFunc = DeleteData; i->Data = 0; return i; }
 struct SNonscalarPtrIteratorTag { };
-struct CRegionConnectionNode;
+class CRegionConnectionNode;
 struct SNodeEntry { long first; CCountedPointer<CRegionConnectionNode> second; };
 static void DestroyRange(SNodeEntry* first, SNodeEntry* last, const SNonscalarPtrIteratorTag&)
 {

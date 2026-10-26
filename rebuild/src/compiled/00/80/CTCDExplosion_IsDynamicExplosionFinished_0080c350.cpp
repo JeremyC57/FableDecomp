@@ -10,7 +10,7 @@
 // hoisted into ebx; the bool result is the compare's `setg`.
 extern long g_framesPerSecond;                  // 0x01375550
 
-struct CExplosionRing {                         // 16 bytes
+class CExplosionRing { public:                         // 16 bytes
     float RingRadius;                           // +0x00
     long  NumExplosions;                        // +0x04
     float AngleOffset;                          // +0x08
@@ -24,11 +24,11 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x58];
     CRetailVector<CExplosionRing> ExplosionRings;   // +0x58
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00();
     unsigned char _pad04[0x38 - 0x04];
     const CExplosionDef* PExplosionDef;         // +0x38 CDefPointer<CExplosionDef const>

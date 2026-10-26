@@ -5,7 +5,7 @@
 // not 16): CurrentAlpha +0x2c (PDB 52), ChangeAlphaBy +0x38 (PDB 64), the bit-field byte +0x51 (PDB 89):
 // Looping:1, Finished:1, Forwards:1, HadUpdate:1, OwnedByMainAnim:1. The clamp writes the parameter slot
 // in place (`mov [esp+4],eax` then `fild [esp+4]`), and the flag byte is read once, or'ed and stored.
-struct CAnimSet {
+class CAnimSet { public:
     unsigned char _pad0[0x2c];
     float CurrentAlpha;                                  // +0x2c
     unsigned char _pad1[0x8];

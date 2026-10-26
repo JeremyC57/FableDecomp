@@ -1,9 +1,9 @@
 // behaviour test for CExplosionDef::operator= (0x004E2ECF): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
 struct CExplosionRingVector { unsigned long m_words[3]; CExplosionRingVector& operator=(const CExplosionRingVector& o) { ++g_ops; for (int i = 0; i < 3; ++i) m_words[i] = o.m_words[i]; return *this; } };
-struct CExplosionDef : CDefClassBase {
+class CExplosionDef : public CDefClassBase { public:
     float Damage;
     float ExplosionRadius;
     long FireDamage;

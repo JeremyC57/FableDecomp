@@ -8,7 +8,7 @@
 // zero register in declaration order; CurrentScriptID = 1 is the LAST store, an immediate: it is a body
 // assignment (in the initialiser list it is stored first, before the member constructors).
 // No engine header exists for CScriptInfoManager; the containers are modelled with their retail layout.
-struct CCharString { char* m_pData; };
+class CCharString { public: char* m_pData; };
 struct CScriptInfoEntry;                              // pair<CCharString, CScriptInfo>
 
 template <class T>
@@ -28,7 +28,7 @@ struct CScriptInfoMap {
     CScriptInfoMap() : Dirty(false) { }
 };
 
-struct CScriptInfoManager {
+class CScriptInfoManager { public:
     long                      CurrentScriptID;
     CScriptInfoMap            Scripts;
     CRetailVector<CCharString> CodeSectionNames;

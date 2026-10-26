@@ -8,7 +8,7 @@ struct CInner;
 // Modeled as __fastcall: ecx=obj, edx=arg1, pushed byte.
 void __fastcall Inner_Do(CInner* obj, int arg1, unsigned char b);
 
-struct CTCVillage {
+class CTCVillage { public:
     CInner* obj;        // +0x00
     int     ParentThing;     // +0x04
     // +0x08 unknown

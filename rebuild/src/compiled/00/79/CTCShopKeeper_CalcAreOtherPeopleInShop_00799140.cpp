@@ -10,21 +10,21 @@
 //   the constant type), which lets the village pointer's spill share the key's frame word (sub esp,0xc); the building test
 //   is an inline IsThingAlive (keeps retail's second inline `return false` exit); the villager is a named local before
 //   its home-building read (`lea ecx,[eax+0x170]` instead of mov/add).
-struct C3DVector { float X, Y, Z; };
-struct CBaseObject;
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CBaseObject;
+class CThing;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CBaseObject* m_pItem;
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last; SEntry* end;
     SEntry* LowerBound(const long& key);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                            // +0x10
     unsigned char _pad11[0x0f];
@@ -48,7 +48,7 @@ struct CThing {
     }
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool IsPointInside(const C3DVector& pos);       // 0x0082D000
     bool IsDoorBlockedBy(CThing* thing);            // 0x0082D9C0
 };
@@ -58,11 +58,11 @@ struct CVillage {
     unsigned char _pad00[0x2c];
     CVillagerNode* Villagers;                       // +0x2c (list header)
 };
-struct CTCVillageMember { CVillage* GetPVillage(); };   // 0x007EE540
+class CTCVillageMember { public: CVillage* GetPVillage(); };   // 0x007EE540
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
-struct CPlayer { CThing* GetHeroCreature(); };      // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CTCShopKeeper {
+class CPlayer { public: CThing* GetHeroCreature(); };      // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CTCShopKeeper { public:
     void*   __vftable;
     CThing* ParentThing;                            // +0x04
     CPlayerManager* GetPlayerManager();             // 0x00686D40

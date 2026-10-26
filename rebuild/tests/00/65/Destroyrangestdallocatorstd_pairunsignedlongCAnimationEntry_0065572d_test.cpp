@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAnimationEntry { unsigned long a; };
+class CAnimationEntry { public: unsigned long a; };
 struct Alloc { char dummy; };
 struct Pair { unsigned long first; CAnimationEntry second; };
 

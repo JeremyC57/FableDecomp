@@ -1,6 +1,6 @@
 #include <stdio.h>
 static int g_destroyed, g_ipDtors, g_ipCtors, g_blocksFreed;
-struct CCharString { void* m_pStringData; ~CCharString() { ++g_ipDtors; } };
+class CCharString { public: void* m_pStringData; ~CCharString() { ++g_ipDtors; } };
 struct CPointee { long m_tag; };
 static void __fastcall DestroyPointee(CPointee* p) { ++g_destroyed; p->m_tag = -1; }
 struct SCountBlock {

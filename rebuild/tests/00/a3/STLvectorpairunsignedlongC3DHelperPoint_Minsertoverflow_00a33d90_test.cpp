@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A33D90 vector<pair<unsigned long, C3DHelperPoint> >::_M_insert_overflow: growth to max(2*size, size+n), the head, n copies of x and (unless appending) the tail, the old block freed.
 #include <cstdio>
 #include <new>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
-struct C3DHelperPoint { C3DVector Position; int BoneIndex; };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+class C3DHelperPoint { public: C3DVector Position; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

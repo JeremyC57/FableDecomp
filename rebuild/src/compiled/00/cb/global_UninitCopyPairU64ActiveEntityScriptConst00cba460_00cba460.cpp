@@ -16,7 +16,7 @@
 //   names the right element type; the body is STLport's `__uninitialized_copy`, not Dinkumware's `_Uninit_copy`).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CActiveEntityScriptBase;
+class CActiveEntityScriptBase;
 struct SCountBlock { long RefCount; };
 
 struct CCountedPointer_CActiveEntityScriptBase {

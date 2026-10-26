@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 class CThing;
-struct CDefClassBase;
+class CDefClassBase;
 static int g_destroyed = 0;
 struct CPickUpDef {
     virtual void v00() {}
@@ -12,7 +12,7 @@ struct CPickUpDef {
     long RefCount;
     void ReleaseTemporary() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}
     ~CDefPointer()
@@ -22,7 +22,7 @@ template <class T> struct CDefPointer {
     }
 };
 static CPickUpDef* g_def = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CPickUpDef>* out) const;
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CPickUpDef>* out) const

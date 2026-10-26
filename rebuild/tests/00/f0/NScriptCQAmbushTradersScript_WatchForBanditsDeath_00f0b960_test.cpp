@@ -9,7 +9,7 @@
 #define __forceinline inline
 #define __int64 long long
 #endif
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {} virtual void v007() {} virtual void v008() {} virtual void v009() {}
     virtual void v010() {} virtual void v011() {} virtual void v012() {} virtual void v013() {} virtual void v014() {} virtual void v015() {} virtual void v016() {} virtual void v017() {} virtual void v018() {} virtual void v019() {}
     virtual void v020() {} virtual void v021() {} virtual void v022() {} virtual void v023() {} virtual void v024() {} virtual void v025() {} virtual void v026() {} virtual void v027() {} virtual void v028() {} virtual void v029() {}
@@ -23,7 +23,7 @@ struct CScriptThing {
     void* PImp_Info;                                    // +0x08
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {}
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
 };
@@ -46,7 +46,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_AmbushTradersScript : CScriptBase {
+class CQ_AmbushTradersScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 PMasterData;                  // +0x44
     unsigned char _flags048[0x0a];                      // +0x48 .. +0x52 (QuestFailed .. ConvoyTrigger2)

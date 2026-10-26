@@ -21,7 +21,7 @@
 // share one `displayDimension` local (two `cmp/jbe` sequences); the `== 1` test on the progress-display
 // result is a byte compare.
 
-struct CDisplayManager;
+class CDisplayManager;
 
 #pragma pack(push, 1)
 // The engine root object as far as this function needs it.
@@ -47,8 +47,8 @@ struct FableDisplayPrimitive
     fable_u32 maximumHeight3AB4;        // largest supported display height
 };
 
-struct CDisplayManager
-{
+class CDisplayManager
+{ public:
     fable_u8 unknown00[0x08];
     FableDisplayPrimitive* displayPrimitive08;  // the primary display primitive
     fable_u8 unknown0C[0x1BC];

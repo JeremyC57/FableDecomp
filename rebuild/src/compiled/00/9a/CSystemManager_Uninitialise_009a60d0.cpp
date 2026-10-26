@@ -17,7 +17,7 @@ struct SCountBlock {
     void* Object;                               // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                    // +0
     SCountBlock* Info;                          // +4
     void Release()
@@ -34,20 +34,20 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CDeviceResetCallback { virtual void OnDeviceReset(); };
-struct CDebugManager; struct CInputManager; struct CGraphicBankManager; struct CFontManager; struct CDriveManager;
-struct CProfileManager; struct CSystemObject;
-struct CMeshBankManager { void* Base0; CDeviceResetCallback ResetCallback; };   // the reset-callback base sits at +4
-struct CDisplayManager { void RemoveDeviceResetCallback(CDeviceResetCallback* callback); };   // 0x009BF5A0
+class CDeviceResetCallback { public: virtual void OnDeviceReset(); };
+class CDebugManager; class CInputManager; class CGraphicBankManager; class CFontManager; class CDriveManager;
+class CProfileManager; struct CSystemObject;
+class CMeshBankManager { public: void* Base0; CDeviceResetCallback ResetCallback; };   // the reset-callback base sits at +4
+class CDisplayManager { public: void RemoveDeviceResetCallback(CDeviceResetCallback* callback); };   // 0x009BF5A0
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                 // +0x04
     bool IsInitialised() const;                 // 0x0099A330
     void Uninitialise();                        // 0x0099A360
 };
 
-struct CScratchBuffer : CInitBaseClass {
+class CScratchBuffer : public CInitBaseClass { public:
     void Uninitialise();                        // 0x009F4950
 };
 

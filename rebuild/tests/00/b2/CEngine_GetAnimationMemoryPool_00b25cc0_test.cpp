@@ -11,7 +11,7 @@ struct CCountedPointer_Pool { CMemoryPool* m_pObject; SCountedInfo* m_pInfo;
     ~CCountedPointer_Pool() { if (m_pInfo) { if (--m_pInfo->m_count == 0) { m_pInfo->m_pfnDestroy(m_pInfo->m_pObject); operator_delete_x(m_pInfo); } } } };
 struct CEngineData { unsigned char _pad[0x8f0]; CCountedPointer_Pool m_pool; };
 static CEngineData g_data; static CEngineData* g_pEngineData = &g_data;
-struct CEngine { static CMemoryPool* GetAnimationMemoryPool() { CCountedPointer_Pool pool(g_pEngineData->m_pool); return pool.m_pObject; } };
+class CEngine { public: static CMemoryPool* GetAnimationMemoryPool() { CCountedPointer_Pool pool(g_pEngineData->m_pool); return pool.m_pObject; } };
 int main() { CMemoryPool pool; SCountedInfo info = { 1, DestroyPool, &pool }; g_data.m_pool.m_pObject = &pool; g_data.m_pool.m_pInfo = &info;
     if (CEngine::GetAnimationMemoryPool() != &pool || info.m_count != 1 || g_destroyed || g_deleted) { std::printf("00b25cc0_TEST FAIL\n"); return 1; }
     info.m_count = 0; /* a dead holder: the temporary copy's release destroys */ if (CEngine::GetAnimationMemoryPool() != &pool || g_destroyed != 1 || g_deleted != 1) { std::printf("00b25cc0_TEST FAIL\n"); return 1; }

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CInventoryCategoryDef { int f0; };
+class CInventoryCategoryDef { public: int f0; };
 extern void __fastcall CInventoryCategoryDef_dtor(CInventoryCategoryDef* def);
 extern void __cdecl operator_delete_impl(void* p);
 

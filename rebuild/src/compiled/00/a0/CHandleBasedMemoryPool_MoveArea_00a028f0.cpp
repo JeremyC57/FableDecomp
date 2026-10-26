@@ -34,7 +34,7 @@ struct CHeader {                                   // CHandleBasedMemoryPool::CH
     }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     virtual void MoveResourceData(void* resource, long handle, void* from, void* to, long size);   // slot 1 (+4)
     CHeader*      Buffer;                          // +0x04

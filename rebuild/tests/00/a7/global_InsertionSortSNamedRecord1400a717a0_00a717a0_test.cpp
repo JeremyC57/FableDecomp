@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }

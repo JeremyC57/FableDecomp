@@ -7,14 +7,14 @@
 // fourth dword before the counted pointer at +0x10, so it is the pair's assignment.
 // Shape: memberwise with the CIVCountedPointer operator= inlined (`if (p != o.p) { Release(); p = o.p;
 // if (p) ++p->count; }`); plain `mov [esi+10h],0` null store (not a size TU).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04): called when the intrusive count hits zero
     long m_refCount;                            // +0x04
 };
 
 // Intrusive counted pointer (4 bytes): the pointee carries the count at +4.
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     __forceinline void Release()
     {
@@ -38,10 +38,10 @@ template<class T> struct CIVCountedPointer {
     }
 };
 
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
 
-struct CAnimationEntry {                        // PDB layout, 0x10 bytes
+class CAnimationEntry { public:                        // PDB layout, 0x10 bytes
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08

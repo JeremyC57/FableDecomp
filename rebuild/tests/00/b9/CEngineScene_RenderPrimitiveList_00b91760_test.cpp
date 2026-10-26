@@ -5,7 +5,7 @@
 #include <cmath>
 #define CHECK(c) do { if (!(c)) { std::printf("00b91760_TEST FAIL\n"); return 1; } } while (0)
 
-struct CEngineSubPrimitiveChain { void* f; void* l; CEngineSubPrimitiveChain() : f(0), l(0) { } };
+class CEngineSubPrimitiveChain { public: void* f; void* l; CEngineSubPrimitiveChain() : f(0), l(0) { } };
 struct CPrim;
 struct CManager { int calls; int result; int lastLayer; int RenderPrimitive(CPrim&, int layer, CEngineSubPrimitiveChain& c) { ++calls; lastLayer = layer; return (c.f == 0 && c.l == 0) ? result : -1; } };
 struct CPrim { int Type; unsigned int RenderLayerMask; unsigned char Enable : 1; bool visible; unsigned short LastFrameRendered; CPrim* NextPrimitive; CPrim* NextLayerMask;

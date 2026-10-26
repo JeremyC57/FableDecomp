@@ -11,13 +11,13 @@ typedef unsigned __int64 UInt64;
 // Behaviour test for 005819f2: ValidateIndex evaluates the world -> main player -> item list count once and returns the index unchanged.
 static int g_counted = 0;
 struct CItemList { unsigned long GetCount() { ++g_counted; return 8; } };
-struct CPlayer { long _pad[3]; CItemList* m_pItems; };
+class CPlayer { public: long _pad[3]; CItemList* m_pItems; };
 static CItemList g_items;
 static CPlayer g_player;
-struct CWorld { CPlayer* GetMainPlayer() { return &g_player; } };
+class CWorld { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CWorld g_world;
 static CWorld* GetWorld() { return &g_world; }
-struct CTCInventory { long ValidateIndex(long index); };
+class CTCInventory { public: long ValidateIndex(long index); };
 long CTCInventory::ValidateIndex(long index)
 {
     GetWorld()->GetMainPlayer()->m_pItems->GetCount();

@@ -4,7 +4,7 @@
 #include <cstring>
 
 typedef unsigned short WCH;
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 
 class CWideString {
 public:

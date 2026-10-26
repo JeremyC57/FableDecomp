@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAbilityStrafeDef { int x; };
+class CCombatAbilityStrafeDef { public: int x; };
 
 static int g_called = 0;
 static CCombatAbilityStrafeDef* g_self = 0;

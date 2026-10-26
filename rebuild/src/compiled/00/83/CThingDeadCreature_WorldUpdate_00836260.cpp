@@ -17,8 +17,8 @@
 //   +0xc / +0xd.
 // Shape: the first def read is an inline PeekDefinition (the CDefPointer temporary released before the float load);
 //   GetDef and GetTCDriver get same-TU noinline stand-ins that only write their out slot.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -30,14 +30,14 @@ struct CDefVirtual {
 struct CRefCounted {
     long m_refCount;
 };
-struct CDefPointeeBase : CDefVirtual, CRefCounted {
+class CDefPointeeBase : public CDefVirtual, public CRefCounted { public:
     void ReleaseDef()
     {
         if (--m_refCount == 0)
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
@@ -47,13 +47,13 @@ template<class T> struct CDefPointer {
     }
     T& operator*() const { return *m_pObject; }
 };
-struct CThingCreatureDef : CDefPointeeBase {
+class CThingCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x88 - 0x08];
     float NumSecondsToPersistOnDeath;                   // +0x88
     unsigned char _pad8c[0x144 - 0x8c];
     long DeadBodyDecayEffect;                           // +0x144
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);   // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 void* FindDef_CDefinitionManager_GetDef_6260();
@@ -68,7 +68,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
 }
 #pragma auto_inline(on)
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -76,17 +76,17 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CTCFadeOutAndIn {
+class CTCFadeOutAndIn { public:
     unsigned char _pad00[0x0c];
     bool FadingA;                                       // +0x0c
     bool FadingB;                                       // +0x0d
     void Fade(float time, bool fadeIn);                 // 0x006C3B70
 };
 class CThing;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CThingBodyReorienter {
+class CThingBodyReorienter { public:
     bool IsUpdateNeeded();                              // 0x00863250
     void UpdateBodyReorienation();                      // 0x00863E10
     void SetFlag_00863260(bool value);                  // 0x00863260

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n) { p = (char*)s; last_n = n; }
     static int last_n;
@@ -9,7 +9,7 @@ int CCharString::last_n = 0;
 
 const char kActionName_0123bffc[] = "DoCreatureAction";
 
-struct CTCSkeletalMorph {};
+class CTCSkeletalMorph { public:};
 
 CCharString GetClassTypeName(CTCSkeletalMorph* self);
 

@@ -1,5 +1,5 @@
 // CTCQuestCompletionUI::IsOverridingScreenFade  @ 0x005e3e70  (__fastcall, this=ecx)
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     char   pad00[0x0c];
     unsigned char Active;
     char   pad0d[0x10-0x0d];

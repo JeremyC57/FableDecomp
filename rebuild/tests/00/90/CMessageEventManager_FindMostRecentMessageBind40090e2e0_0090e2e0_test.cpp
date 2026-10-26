@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned long ThingTypeFlags;
     long X;
     bool Gossipee;
     bool Visible;
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     enum { ThingTypeMask = 0x1f };
 };
 template <class T> inline bool IsThingOfType(const CThing* thing)
@@ -13,36 +13,36 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
     unsigned long mask = T::ThingTypeMask;
     return !(~thing->ThingTypeFlags & mask);
 }
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseObject* GetPItem() const { return PData; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     template <class U> U* GetTypedPItem() const
     {
         return GetPItem() && IsThingOfType<U>((U*)GetPItem()) ? (U*)GetPItem() : 0;
     }
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     long Type;
     CIntelligentPointer<CThing> POriginator;
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long Type;
     bool operator()(const CMessageEvent& message) const { return message.Type == Type; }
 };
-struct CThingFilter_IsValidGossipee {
+class CThingFilter_IsValidGossipee { public:
     bool operator()(CThingAICreature* creature) const { return creature->Gossipee; }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     long Range;
     bool operator()(CThing* thing) const { return thing->X < Range; }
 };
-struct CThingFilter_IsNavLineOfSightToThing {
+class CThingFilter_IsNavLineOfSightToThing { public:
     bool operator()(CThing* thing) const { return thing->Visible; }
 };
-template <class F> struct CMessageEventFilter_ThingSearchFilter {
+template <class F> class CMessageEventFilter_ThingSearchFilter { public:
     F* Filter;
     bool operator()(const CMessageEvent& message) const
     {
@@ -52,7 +52,7 @@ template <class F> struct CMessageEventFilter_ThingSearchFilter {
         return (*Filter)(creature);
     }
 };
-template <> struct CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing> {
+template <> class CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing> { public:
     CThingFilter_IsNavLineOfSightToThing* Filter;
     bool operator()(const CMessageEvent& message) const
     {
@@ -62,7 +62,7 @@ template <> struct CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineO
         return (*Filter)(creature);
     }
 };
-template <class F1, class F2, class F3, class F4> struct CFilter_Bind4 {
+template <class F1, class F2, class F3, class F4> class CFilter_Bind4 { public:
     F1* PF1;
     F2* PF2;
     F3* PF3;
@@ -76,8 +76,8 @@ struct CMessageList {                            // retail one-pointer list
     struct node { node* next; node* prev; CMessageEvent value; };
     node* head;
 };
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                         // +0x00
     CMessageList Messages;                      // +0x04
     template <class Filter> const CMessageEvent* FindMostRecentMessage(const Filter& filter) const;

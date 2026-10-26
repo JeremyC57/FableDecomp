@@ -1,4 +1,4 @@
-struct C3DMeshFileEngineMaterialChunk {
+class C3DMeshFileEngineMaterialChunk { public:
     void* vftable;
 };
 

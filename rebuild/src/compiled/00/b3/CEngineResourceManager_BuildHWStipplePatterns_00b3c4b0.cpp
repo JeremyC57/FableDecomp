@@ -8,7 +8,7 @@
 // `stipple[row * 32 + column]` with `1 << (31 - column)`, is unrolled by four (a pointer walk with a down-counting bit stays rolled)
 // by VC7.1 (bit index counting down), the level loop is strength-reduced into the output offset (level*32 + 31) * 4;
 // the byte swap is the explicit two-half shift/mask form.
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_begin;
     T* m_end;
     T* m_capacity;
@@ -18,7 +18,7 @@ template <class T> struct CArray {
     void resize(unsigned long n, const T& value);       // 0x00464931 for T = unsigned long
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char         _pad[0x2ab4];
     CArray<unsigned long> HWInverseStipplePatterns;      // +0x2ab4
     void BuildHWStipplePatterns(const CArray<unsigned char>& stipple);

@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour of CTCInventoryStats::~CTCInventoryStats (0x005CD2FE): the mannequin is killed (if any), then the members and bases go.
 static long g_order[8]; static long g_count = 0;
-struct CThing { long m_kills; void Kill(bool immediate) { if (!immediate) ++m_kills; g_order[g_count++] = 1; } };
+class CThing { public: long m_kills; void Kill(bool immediate) { if (!immediate) ++m_kills; g_order[g_count++] = 1; } };
 struct CTCInventoryBase_Retail { virtual ~CTCInventoryBase_Retail() { g_order[g_count++] = 4; } };
 struct CBase { virtual long vfunc_1() { return 0; } ~CBase() { g_order[g_count++] = 3; } };
 struct CCreatureKillMap { ~CCreatureKillMap() { g_order[g_count++] = 2; } };
-struct CTCInventoryStats : CTCInventoryBase_Retail, CBase {
+class CTCInventoryStats : public CTCInventoryBase_Retail, public CBase { public:
     CCreatureKillMap CreaturesKilled; CThing* pMannequin; bool UseMannequin;
     virtual ~CTCInventoryStats() { if (pMannequin) pMannequin->Kill(false); }
 };

@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_shownEnded = 0, g_pointerDtors = 0;
 struct CTCShowableItem { void OnShowEnded() { ++g_shownEnded; } };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9]; bool m_dead; CTCShowableItem* m_pShowable;
     bool GetInterface(CTCShowableItem** out, long type)
     {

@@ -21,14 +21,14 @@ struct CCountedPointer_Imp {                       // CCountedPointer<CScriptThi
     CCountedPointer_Imp() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CScriptThing : CBase {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedPointer_Imp PImp;                      // +0x04
     virtual void v00();
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };
@@ -49,7 +49,7 @@ struct CEntityScriptRoot {                         // root: its vtable store is 
     CEntityScriptRoot(CGameScriptInterface_Calls* quest) : PQuest(quest) { }
 };
 
-struct CEntityScriptBase : CEntityScriptRoot {     // vtable 0x012C3224
+class CEntityScriptBase : public CEntityScriptRoot { public:     // vtable 0x012C3224
     virtual void v00();
     CScriptThing Thing;                            // +0x08
     CEntityScriptBase(CQuestScriptBase_Retail* parent, const CScriptThing& thing)

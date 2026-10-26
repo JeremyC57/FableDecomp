@@ -2,7 +2,7 @@
 
 struct Sub { char pad[0x48]; float f48; float f4c; };
 struct Ctx { char pad[0x1c]; void* p1c; };
-struct CTCPerceiveThing { char pad[0x34]; Sub* p34; };
+class CTCPerceiveThing { public: char pad[0x34]; Sub* p34; };
 
 int g_a = 0, g_b = 0;
 Ctx g_ctx;

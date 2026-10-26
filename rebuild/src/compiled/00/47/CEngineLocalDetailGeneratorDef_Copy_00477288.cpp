@@ -1,5 +1,5 @@
 // CEngineLocalDetailGeneratorDef::Copy @ 0x00477288
-struct CDefClassBase {
+class CDefClassBase { public:
     char base_storage[0x3c];               // base subobject occupies +0x00..+0x3c
     void Copy_00431ed0(CDefClassBase const* src);   // 0x431ed0 (thiscall)
 };
@@ -9,7 +9,7 @@ struct MemberSub {
     void Copy(MemberSub const* src);       // 0x4772a7 (thiscall, ret 4)
 };
 
-struct CEngineLocalDetailGeneratorDef : public CDefClassBase {
+class CEngineLocalDetailGeneratorDef : public CDefClassBase { public:
     MemberSub sub;   // at +0x3c
     void Copy(CDefClassBase const* src);
 };

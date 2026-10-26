@@ -1,4 +1,4 @@
-struct CTCBattleCharge {
+class CTCBattleCharge { public:
     void* vftable;
 };
 

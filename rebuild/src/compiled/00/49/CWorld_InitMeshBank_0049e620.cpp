@@ -15,7 +15,7 @@
 //   then the result's inline destructor (release, both words cleared) and the string's. The operator= copies the
 //   source words into locals first (retail's ebx/edi pair) and the bank manager is reached through an inline
 //   reference getter, which puts GFGetSystemManager ahead of the argument pushes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -23,12 +23,12 @@ struct CCharString {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -63,27 +63,27 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return Data; }
     T& operator*() const { return *Data; }
 };
-struct C3DAnimationManager;
-struct CMeshDataBank {
+class C3DAnimationManager;
+class CMeshDataBank { public:
     unsigned char        _pad[0x3c0];
     C3DAnimationManager* AnimationManager;             // +0x3C0
 };
-struct CMeshBankManager {
+class CMeshBankManager { public:
     CCountedPointer<CMeshDataBank> OpenMeshBank(const CCharString& name, bool async);   // 0x00A09F20
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char     _pad[0x74];
     CMeshBankManager* MeshBankManager;                 // +0x74
     CMeshBankManager& GetMeshBankManager() { return *MeshBankManager; }
 };
 CSystemManager* __fastcall GFGetSystemManager();       // 0x009A4EC0
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     static void __fastcall SetMeshBank(CMeshDataBank& bank);   // 0x004BBFD0
 };
 }
 
-struct CWorld {
+class CWorld { public:
     unsigned char                  _pad00[0x3c];
     CCountedPointer<CMeshDataBank> PMainMeshBank;      // +0x3C
     C3DAnimationManager*           PAnimationManager;  // +0x44

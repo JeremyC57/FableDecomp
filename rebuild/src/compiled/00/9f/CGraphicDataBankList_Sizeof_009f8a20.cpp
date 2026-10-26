@@ -6,7 +6,7 @@
 //   `cmp esi,[ebx]`) instead of the manager (list at +4).
 // Layout: Ego_r.pdb CGraphicDataBankInfo (0x38 bytes): Init +0x00, BankHandle +0x2C, GraphicDataBank CCountedPointer +0x30
 //   (node + 8 + 0x30 = node + 0x38).
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     long Sizeof();                                  // 0x009FD8D0
 };
 struct SGraphicDataBankNode {                       // STLport _List_node<CGraphicDataBankInfo> (0x40 bytes)

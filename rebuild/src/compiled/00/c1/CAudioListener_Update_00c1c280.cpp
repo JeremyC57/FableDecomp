@@ -19,7 +19,7 @@ struct CScopedLock {                        // 8-byte scoped lock
     ~CScopedLock();                         // 0x00C0FFE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector SwapYZ() const;               // 0x00C1C070
 };

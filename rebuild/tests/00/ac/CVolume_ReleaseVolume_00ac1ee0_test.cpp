@@ -10,7 +10,7 @@ struct IResource {
     IResVtbl* vtbl;
 };
 
-struct CVolume {
+class CVolume { public:
     void* pad0;
     IResource* res;
     void ReleaseVolume();

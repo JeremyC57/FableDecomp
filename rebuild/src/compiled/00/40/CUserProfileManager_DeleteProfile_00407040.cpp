@@ -13,8 +13,8 @@
 // Shape: the directory name is one expression `GetSaveDir() + GetValidProfileName(name) + L"\\"` (right operand first);
 //          the file tests are a named bool built from implicit-conversion temporaries (construction flags in ebx); the
 //          entry and the directory are passed as implicit conversions too.
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const unsigned short* text);    // 0x0099B6B0
     ~CWideString();                             // 0x0099B510
@@ -37,8 +37,8 @@ bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle
 bool __fastcall PathExists(const CWideString& path);                                 // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);                                 // 0x00999A30
 
-struct CSystemManager;
-struct CDriveManager {
+class CSystemManager;
+class CDriveManager { public:
     void*           __vftable;                  // +0x00
     CSystemManager* SystemManager;              // +0x04
     long DeleteFile(const CWideString& path);       // 0x009E4BC0

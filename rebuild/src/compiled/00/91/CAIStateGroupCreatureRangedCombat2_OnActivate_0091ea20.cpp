@@ -7,12 +7,12 @@
 // read into esi, replacing `this` which is no longer needed), then the combat manager object
 // expression. The target's byte at +0x91 bit 0 is its "dead" flag (`test byte ptr [eax+91h],1`),
 // a one-bit bitfield. PTargetThing's address lives in edi across the calls.
-struct CThingCreatureBase;
-struct CCombatManager {
+class CThingCreatureBase;
+class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* combatant, CThingCreatureBase* target, bool hostile);   // 0x006EDC50
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char IsDead : 1;               // +0x91 bit 0
     CCombatManager* GetCombatManager();     // 0x00661ED0
@@ -27,12 +27,12 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

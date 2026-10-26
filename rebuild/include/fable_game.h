@@ -22,8 +22,8 @@ public:
     CWideString fourthWideString;
 };
 
-struct CFrontendGameComponentInit
-{
+class CFrontendGameComponentInit
+{ public:
     fable_u32 value;
 };
 

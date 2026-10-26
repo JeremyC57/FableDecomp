@@ -2,9 +2,9 @@
 // asked and afterwards, null handlers skipped, timing members written.
 #include <cstdio>
 #include <cstring>
-struct CWorld;
-struct CGameEvent { long Type; int id; };
-struct CGameEventPackage {
+class CWorld;
+class CGameEvent { public: long Type; int id; };
+class CGameEventPackage { public:
     CGameEvent* events; unsigned long count;
     unsigned long GetNoEvents() const { return count; }
     const CGameEvent* GetEvent(unsigned long i) const { return &events[i]; }
@@ -13,12 +13,12 @@ struct SGameEventHandler { void (CWorld::*ActionFunction)(const CGameEvent* even
 static SGameEventHandler g_GameEventHandlers[4];
 static double g_time = 100.0;
 static double GFGetTime() { g_time += 2.5; return g_time; }
-struct CThingManager { int id; };
+class CThingManager { public: int id; };
 static CThingManager* g_current = 0;
 static void SetCurrentThingManager(CThingManager* m) { g_current = m; }
 struct CWorldPrimaryBase { virtual ~CWorldPrimaryBase() { } virtual CThingManager& GetThingManager() = 0; };
 struct CWorldSecondaryBase { virtual ~CWorldSecondaryBase() { } };
-struct CWorld : CWorldPrimaryBase, CWorldSecondaryBase {
+class CWorld : public CWorldPrimaryBase, public CWorldSecondaryBase { public:
     CThingManager things; char log[64]; double LastUpdateTimeLength, LastUpdateTime;
     CThingManager& GetThingManager() { return things; }
     void Handle(const CGameEvent* e) { char b[8]; std::sprintf(b, "%d,", e->id); std::strcat(log, b); }

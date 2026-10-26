@@ -2,7 +2,7 @@
 // selected table; an empty table is reset first; a missing action returns false.
 #include <cstdio>
 
-struct CActionInputControl { long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float X, Y; };
+class CActionInputControl { public: long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton; float X, Y; };
 struct CTable {
     CActionInputControl Items[8]; unsigned long Count;
     bool empty() const { return Count == 0; }
@@ -10,7 +10,7 @@ struct CTable {
     CActionInputControl& operator[](unsigned long i) { return Items[i]; }
 };
 static int g_resets;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CTable AssignedInputsPassive, AssignedInputsAggressive;
     void ResetAssignedInputs()
     {

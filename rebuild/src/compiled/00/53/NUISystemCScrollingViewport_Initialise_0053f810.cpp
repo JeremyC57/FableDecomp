@@ -66,7 +66,7 @@ template<class T> struct CRetailVector {   // STLport vector: 12 bytes
 };
 }
 inline void* __cdecl operator new(size_t, void* where) { return where; }
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -102,7 +102,7 @@ struct CDefPointer {
     }
     CScrollingViewportDef* operator->() const { return m_p; }
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
@@ -131,18 +131,18 @@ struct CComponent {
     unsigned char _pad004[0xb0 - 0x04];
     CRetailVector<CCountedPointer<CComponent> > Children;   // +0xb0
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(long definition);                     // 0x0041D21B
     CComponent* CreateComponent(const CCharString& name, bool flag);  // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
-struct CViewport : CComponent {
+class CViewport : public CComponent { public:
     unsigned char _pad0bc[0x188 - 0xbc];
     void Initialise();                                  // 0x0054E640
 };
-struct CScrollingViewport : CViewport {
+class CScrollingViewport : public CViewport { public:
     CComponent* PScrollBar;                             // +0x188
     CComponent* PScrollBarOutside;                      // +0x18c
     virtual void Initialise();

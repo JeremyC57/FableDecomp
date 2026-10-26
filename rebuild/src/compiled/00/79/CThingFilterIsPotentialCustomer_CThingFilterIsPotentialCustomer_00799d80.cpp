@@ -13,13 +13,13 @@
 //   assignments after the shop and its physics component are read into locals (Pos copied through the implicit
 //   C3DVector assignment, `lea edx,[esi+4]`); the mesh object is a block-scoped local with the string an implicit
 //   conversion temporary (re-addressed with lea), and the found flag survives its destructor in bl.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;                            // +0x04 CIVCountedPointer<CPhysicsMesh const>
     float         PositionMatrix[12];              // +0x08 CMatrix3x4
@@ -31,7 +31,7 @@ struct CPhysicsMeshObject {
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6) FILL10(7) FILL10(8)
@@ -45,17 +45,17 @@ public:
     CTCPhysicsBase* PhysicsTC;                     // +0x60
     const C3DVector& GetPosition() const;          // 0x004C73D0
 };
-struct CTCShop {
+class CTCShop { public:
     void* __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
     unsigned char _pad08[0x50 - 0x08];
     bool StallLike;                                // +0x50
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CTCShop* GetShopTC();                          // 0x00798F50
 };
 
-struct CThingFilter_IsPotentialCustomer {
+class CThingFilter_IsPotentialCustomer { public:
     CThing* ShopperContainer;                      // +0x00
     C3DVector Pos;                                 // +0x04
     CTCShopKeeper* TCShopKeeper;                   // +0x10

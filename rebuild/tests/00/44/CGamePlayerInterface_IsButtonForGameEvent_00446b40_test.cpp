@@ -3,7 +3,7 @@
 #include <cstdio>
 enum EGameAction { GA_0 = 0 };
 enum EXboxControllerButton { BTN_0 = 0 };
-struct CInputTypeBase {
+class CInputTypeBase { public:
     int Button;
     explicit CInputTypeBase(int b) : Button(b) { }
     virtual ~CInputTypeBase() { }
@@ -27,7 +27,7 @@ struct CControlsMap {
         return (it == last || key < it->first) ? last : it;
     }
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     CControlsMap Controls;
     bool IsButtonForGameEvent(EXboxControllerButton button, EGameAction action) const
     {

@@ -18,7 +18,7 @@
 //   `push ecx` frame word.
 class CThing { };
 class CThingCreatureBase;
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -44,7 +44,7 @@ public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThingCreatureBase* GetPBestEnemyCreatureForAttack() const;   // slot 29 (+0x74)
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;               // +0x00
 };
 struct CCombatantInfo {

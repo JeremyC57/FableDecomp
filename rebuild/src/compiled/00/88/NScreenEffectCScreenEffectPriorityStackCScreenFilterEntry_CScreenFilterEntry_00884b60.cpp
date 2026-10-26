@@ -35,7 +35,7 @@ struct CRetailEntryList_00884b60 {                    // a retail list: head nod
 };
 
 namespace NScreenEffect {
-struct CScreenEffectPriorityStack {
+class CScreenEffectPriorityStack { public:
     struct CStackEntry {                           // vtable 0x01277FF0
         virtual void v00();
         unsigned char _pad[0x2c];                  // +0x04 .. +0x30

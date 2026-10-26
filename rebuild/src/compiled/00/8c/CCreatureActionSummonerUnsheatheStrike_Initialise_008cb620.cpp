@@ -9,14 +9,14 @@
 // the block-scoped name string reuses); the CDefPointer local is zeroed inside the string construction and released at
 // the end through the def's inline ReleaseTemporary on its ref-count base at +4 (null test kept, null store elided).
 // Layout: owner CIntelligentPointer +8.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -35,7 +35,7 @@ struct CThing {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -58,7 +58,7 @@ struct CAttackStyleDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -70,11 +70,11 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer<CAttackStyleDef>* def);   // 0x00669770
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);         // 0x007355F0
 };
 

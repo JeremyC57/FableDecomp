@@ -5,7 +5,7 @@
 // Label: the manifest's "CTextContainer::CTextContainer" is propagated -- the vtable stored, 0x0126B0F4, is CTCHeroGuide
 // in rtti-vtables.tsv; PDB CTCHeroGuide holds only QuestRewards at +0xc.
 // Shape: identical to CTCRegionFollower's constructor (0x006AED80) with a 0xc-byte element.
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 // The retail (STLport) std::list: one sentinel-node pointer, nulled by the alloc-proxy initialiser, then a node is
@@ -30,7 +30,7 @@ struct CTCBase_Calls {                             // CTCBase, 0xc bytes
 
 struct CQuestReward { unsigned char _body[0xc]; };  // CTCHeroGuide::CQuestReward (retail 0xc bytes)
 
-struct CTCHeroGuide : CTCBase_Calls {              // vtable 0x0126B0F4
+class CTCHeroGuide : public CTCBase_Calls { public:              // vtable 0x0126B0F4
     CRetailList<CQuestReward> QuestRewards;        // +0x0c
     virtual void v00();
     CTCHeroGuide(CThing* parent);

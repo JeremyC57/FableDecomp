@@ -6,7 +6,7 @@ void __cdecl operator delete(void* block);         // 0x00BFE9BC
 void* __fastcall AllocateAligned_009f2be0(unsigned long size, unsigned long alignment);   // 0x009F2BE0
 void __fastcall DeallocateAligned_009f2b20(void* block);   // 0x009F2B20
 
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void Destroy(int flags);
     virtual void Delete();
     unsigned long IVRefCount;                      // +0x04

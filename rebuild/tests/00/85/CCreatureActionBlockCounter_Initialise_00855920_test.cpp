@@ -1,14 +1,14 @@
 // Behaviour test for 0x00855920 CCreatureAction_BlockCounter::Initialise.
 #include <cstdio>
-struct CTCCombat { int notified; int flourishCalls; bool flourish; void NotifyCounterStarted() { ++notified; } void SetMeleeFlourishValid(bool v) { ++flourishCalls; flourish = v; } };
-struct CThing {
+class CTCCombat { public: int notified; int flourishCalls; bool flourish; void NotifyCounterStarted() { ++notified; } void SetMeleeFlourishValid(bool v) { ++flourishCalls; flourish = v; } };
+class CThing { public:
     unsigned char m_state, m_flags91; bool hasCombat; CTCCombat* combat;
     bool HasTC(long t) const { return t == 0x30 && hasCombat; }
     CTCCombat* FindEntryComponent(long) { return combat; }
     bool GetInterface(CTCCombat** pp, long t) { if (HasTC(t)) { *pp = combat; return true; } return false; }
 };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } };
-struct CCreatureAction_BlockCounter {
+class CCreatureAction_BlockCounter { public:
     CBaseIntelligentPointer Owner, Target; int baseInit;
     void Initialise()
     {

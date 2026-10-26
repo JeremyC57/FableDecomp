@@ -7,7 +7,7 @@
 //        address is formed by advancing `this` (`add esi,348h`) since `this` is dead afterwards.
 // The retail card games are far larger than the PDB's CTCTavernGame (0x108): the card base is a
 // local model padded to the Blackjack members (+0x318.. zeroed by the constructor at 0x007DB280).
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_00410620(const char* name, long& value, const long& defaultValue);   // 0x00410620
 };
 

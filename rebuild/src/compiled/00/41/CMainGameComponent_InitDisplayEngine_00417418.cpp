@@ -31,9 +31,9 @@
 #include "engine/_quarantine/CGameDefinitionManager.h"
 #pragma pop_macro("FABLE_STATIC_ASSERT")
 #undef CGameDefinitionManager
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-struct C2DExtentsI { long Width,Height; };
-struct CSurface : CSurfaceDonor {
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class C2DExtentsI { public: long Width,Height; };
+class CSurface : public CSurfaceDonor { public:
  unsigned long GetHeight()const; //00415bf0
  C2DExtentsI GetDimensions()const; //009f2f90
  unsigned long GetWidth()const {return GetDimensions().Width;}
@@ -41,15 +41,15 @@ struct CSurface : CSurfaceDonor {
 };
 struct CDisplayDevice { unsigned char DisplayState[0x2c]; CSurface BackSurface; CSurface& GetBackSurface(){return BackSurface;} };
 extern CDisplayDevice* g_DisplayDevice; //013b8390
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); };
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private: CBaseClassNonCopyable(const CBaseClassNonCopyable&); CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
-struct CMainGameComponent; struct CGamePlayerInterface;
-struct CDisplayEngineInit {
+class CMainGameComponent; class CGamePlayerInterface;
+class CDisplayEngineInit { public:
  CMainGameComponent* Component; CGameDefinitionManager* DefinitionManager; CPlayerManager* PlayerManager; CWorld* World;
  CGraphicDataBank* MainGraphicBank; unsigned long Width,Height; CPixelFormat PixelFormat; CMeshDataBank* MeshBank;
  CDisplayEngineInit(); //00419270 signature confirmed PDB
 };
-struct CDisplayEngine : CBaseClassNonCopyable {
+class CDisplayEngine : public CBaseClassNonCopyable { public:
  virtual ~CDisplayEngine(); //native slot0 00437070
  virtual bool InitEngine(); //slot1 00435190
  virtual void UninitEngine(); //slot2 004354a0
@@ -58,7 +58,7 @@ struct CDisplayEngine : CBaseClassNonCopyable {
  void Init(); //004350d0
 };
 template<class T> struct scoped_ptr { T* ptr; void reset(T*); }; //0041940c
-struct CMainGameComponent {
+class CMainGameComponent { public:
  unsigned char BaseAndBanks[0x1c]; CPlayerManager* PPlayerManager; CGamePlayerInterface* PPlayerInterface;
  CWorld* PWorld; scoped_ptr<CDisplayEngine> PDisplayEngine;
  unsigned char LUAAndWorldState[0x1619c]; CGraphicDataBank* PMainGraphicBank; void* PMainGraphicBankInfo;

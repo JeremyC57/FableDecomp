@@ -13,12 +13,12 @@
 // +0xe8..+0xf4, the snoop timings +0xf8..+0x108) -- exactly the offsets the body uses.
 // Shape: memberwise assignment in declaration order; dword members copy through eax.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CDefString {                     // a def-string table index (4 bytes, trivially copied)
+class CDefString { public:                     // a def-string table index (4 bytes, trivially copied)
     long Index;
 };
 
@@ -36,12 +36,12 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
-struct CCharString {                    // ref-counted string handle (4 bytes)
+class CCharString { public:                    // ref-counted string handle (4 bytes)
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CVillageDef : CDefClassBase {                                // vtable 0x01241DDC
+class CVillageDef : public CDefClassBase { public:                                // vtable 0x01241DDC
     CVillageTaskTypeVector Tasks;               // +0x28
     CDefString PatrolTrackName;                 // +0x34
     long DefaultStanceToHero;                   // +0x38 EVillageStanceToHero

@@ -3,7 +3,7 @@
 // Leaf: ??_GSStringRecord_004a90f0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: no vtable (a non-polymorphic class deleted with `delete`), `this` in esi, `test byte ptr [esp+8],1`, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };

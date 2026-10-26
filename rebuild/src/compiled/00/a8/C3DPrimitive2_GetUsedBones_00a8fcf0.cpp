@@ -19,7 +19,7 @@ struct CDeviceIndependent {
     void GetUsedBones(CBoolArray& used);   // 0x00A8EF50
 };
 
-struct C3DClothPrimitive {
+class C3DClothPrimitive { public:
     void GetUsedBones(CBoolArray& used);   // 0x00AC3AE0
 };
 
@@ -36,7 +36,7 @@ struct CClothArray {                       // retail CArray<CCountedPointer<C3DC
     CCountedClothPointer& operator[](unsigned long i) { return m_pFirst[i]; }
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char       _pad_0x04[0x20 - 0x04];
     CClothArray         ClothPrimitives;   // +0x20

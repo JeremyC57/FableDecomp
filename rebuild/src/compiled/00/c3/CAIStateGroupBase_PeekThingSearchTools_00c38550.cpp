@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CAIStateGroupBase::PeekThingSearchTools @ 0x00c38550
-struct CThingSearchTools;
+class CThingSearchTools;
 
 struct Inner3 {
     char pad[0x70];
@@ -18,7 +18,7 @@ struct Sub;
 // method at self+0xc, __fastcall, float arg -> CThingSearchTools*
 extern "C" CThingSearchTools* __fastcall SubPeek(Sub* self, float scaled);
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     char pad0[4];
     Inner1* PBrain;     // +4
     char pad8[4];   // +8

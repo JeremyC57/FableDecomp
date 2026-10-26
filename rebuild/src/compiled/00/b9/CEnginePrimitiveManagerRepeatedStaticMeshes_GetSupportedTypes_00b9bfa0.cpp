@@ -22,7 +22,7 @@ struct CRetailVector_dword {
     }
 };
 
-struct CEnginePrimitiveManagerRepeatedStaticMeshes {
+class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     void GetSupportedTypes(CRetailVector_dword& types);
 };
 

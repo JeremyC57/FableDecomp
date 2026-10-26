@@ -11,12 +11,12 @@
 //   copied memberwise into its argument slot first (ten dwords and the CompareInXYPlane byte, hoisted into bl: the
 //   engine C3DVector's user copy constructor makes the implicit copies non-trivial), then the value through STLport's
 //   explicit pair copy constructor (four dwords).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

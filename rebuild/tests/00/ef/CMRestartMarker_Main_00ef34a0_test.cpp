@@ -4,7 +4,7 @@
 // walk to Marker1, reset speed, walk to Marker2, until the thread terminates.
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CScriptThing { const char* Name; };
+class CScriptThing { public: const char* Name; };
 struct CScripted {
     bool Scripting;
     CScripted() : Scripting(false) { }
@@ -12,7 +12,7 @@ struct CScripted {
     void Release() { Log("R"); }
     void MoveToThing(const CScriptThing& t, float, int, bool, bool, bool, bool) { Log(t.Name); }
 };
-struct CGame {
+class CGame { public:
     int Frames, StartAfter, TerminateAt;
     void NewScriptFrame() { Frames++; Log("F"); }
     bool StartScriptingEntity(const CScriptThing&, CScripted&, int priority) { return priority == 4 && Frames >= StartAfter; }

@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CLightDef
-{
+class CLightDef
+{ public:
     void* vftable;
 };
 extern void* const g_CLightDef_vftable;

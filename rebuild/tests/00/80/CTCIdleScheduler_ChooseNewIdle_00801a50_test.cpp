@@ -1,15 +1,15 @@
 #include <cstdio>
 // Behaviour test for CTCIdleScheduler::ChooseNewIdle (0x00801A50): same body as src/ over a hand-built STLport tree
 // of idle groups, with the def lookups, weight maps and world frame stubbed.
-struct CAIStateGroupBase { bool runnable; bool CanRun() { return runnable; } };
-struct CWorld { static long frame; static long GetWorldFrame() { return frame; } };
+class CAIStateGroupBase { public: bool runnable; bool CanRun() { return runnable; } };
+class CWorld { public: static long frame; static long GetWorldFrame() { return frame; } };
 long CWorld::frame = 0;
 static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     long RefCount;
     void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -79,7 +79,7 @@ struct CIdleMap {
     CIdleMapIterator begin() { return CIdleMapIterator(_M_header->left); }
     CIdleMapIterator end() { return CIdleMapIterator(_M_header); }
 };
-struct CIdleSchedulerDef : CDefClassBase { CWeightMap IdleWeights; };
+class CIdleSchedulerDef : public CDefClassBase { public: CWeightMap IdleWeights; };
 static CIdleSchedulerDef* g_subDef = 0;
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CIdleSchedulerDef>* out)
@@ -91,7 +91,7 @@ struct CThingDef : CDefClassBase {
 };
 static CThingDef g_thingDef;
 static long g_requestedIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out)
     {
         g_requestedIndex = index;
@@ -101,8 +101,8 @@ struct CDefinitionManager {
 };
 static CDefinitionManager g_manager;
 static CWorld g_world;
-struct CThing { unsigned short DefIndex; long GetDefIndex() const { return DefIndex; } };
-struct CTCIdleScheduler {
+class CThing { public: unsigned short DefIndex; long GetDefIndex() const { return DefIndex; } };
+class CTCIdleScheduler { public:
     CThing*       ParentThing;
     CIdleMap      IdleStates;
     CWeightMap    IdleStatesWeight;

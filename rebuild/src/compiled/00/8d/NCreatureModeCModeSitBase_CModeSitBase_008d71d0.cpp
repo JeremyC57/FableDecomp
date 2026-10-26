@@ -3,16 +3,16 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D71D0, length 81 bytes.
 // Callees: the info block's deleter through its +4 slot (`__fastcall`, the data at +8 in ecx), operator delete @ 0x00BFE9BC, CCharString::~CCharString @ 0x0099EAE0. The counted release re-reads the member for every access (`dec [eax] ; mov eax,[esi+28h] ; cmp [eax],0`), the landed CCountedPointer shape. Shape: `this` in esi, `ret`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CAnimFilterBase {                           // vtable 0x0122FFCC
+class CAnimFilterBase { public:                           // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }                         // inline: the vtable store
 };
-struct CCreatureActionBase;
-struct CCPPointerInfo {                            // the counted pointer's info block
+class CCreatureActionBase;
+class CCPPointerInfo { public:                            // the counted pointer's info block
     long                 m_count;                  // +0x00
     void (__fastcall* m_pfnDelete)(void* data);    // +0x04
     void*                m_pData;                  // +0x08
@@ -33,7 +33,7 @@ struct CCountedActionPointer {                     // CCountedPointer<CCreatureA
         m_pInfo = 0;
     }
 };
-struct CThing;
+class CThing;
 
 namespace NCreatureMode {
 struct CModeBase {                                 // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
@@ -43,7 +43,7 @@ struct CModeBase {                                 // CTCCreatureModeManager::CM
     CCharString     m_name;                        // +0x0c
 };
 
-struct CModeSitBase : CModeBase {                  // vtable 0x01285698
+class CModeSitBase : public CModeBase { public:                  // vtable 0x01285698
     unsigned char         _pad10[0x14];            // +0x10 .. +0x24
     CCountedActionPointer m_pendingAction;         // +0x24
     virtual ~CModeSitBase();

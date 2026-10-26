@@ -12,7 +12,7 @@
 // nothing at +0x20..+0x50, so a local CThing model is used.
 // Shape: `HasTC(k) ? GetTC(k)->f() : 0.0f` with the pointer-returning inline find (component loaded straight into ecx),
 // the float pool 0x0122DEDC = 0.0f for the absent case, `ret 4` for the unused reference argument.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -33,7 +33,7 @@ struct CTCMap {                                 // the thing's component map at 
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -42,13 +42,13 @@ struct CThing {
     CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
 
-struct C3DVector;
+class C3DVector;
 
 struct CTCSneakMovement {                       // component kind 0x36
     float GetMaxSneakingSpeed() const;          // 0x00747020
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetMaxSneakingSpeed(const C3DVector& direction) const;
 };
 

@@ -7,9 +7,9 @@
 // CTCContainerRewardHero's bool Enabled +0x18 and bool CreateObjectsThatTimeOut +0x19 (PDB +0x1c/+0x1d).
 // Shape: the intermediate CTCContainer constructor is inline -- its vtable store is dead under the derived one, its vector
 // member's inline constructor zeroes three words; the derived bools are plain initialisers, all ahead of the vtable store.
-struct CThing;
+class CThing;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -26,13 +26,13 @@ struct CContainerItemVector {                  // retail std::vector (12 bytes)
     CContainerItemVector() : m_first(0), m_last(0), m_end(0) { }
 };
 
-struct CTCContainer : CTCBase {
+class CTCContainer : public CTCBase { public:
     CContainerItemVector ContainerItems;       // +0x0c
     virtual void v00();
     CTCContainer(CThing& owner) : CTCBase(owner) { }
 };
 
-struct CTCContainerRewardHero : CTCContainer { // vtable 0x01269424
+class CTCContainerRewardHero : public CTCContainer { public: // vtable 0x01269424
     bool Enabled;                              // +0x18
     bool CreateObjectsThatTimeOut;             // +0x19
     virtual void v00();

@@ -7,7 +7,7 @@
 // Shape: ecx = owner, edx = thing; 0x84 bytes allocated and null-checked, then the inlined
 // constructor: root CScriptBase() on this, thing stored at +0x40 and owner at +0x44, this class's
 // vtable. Returns the object (0 when new failed).
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     CScriptBase();                           // 0x00CB8110
 };

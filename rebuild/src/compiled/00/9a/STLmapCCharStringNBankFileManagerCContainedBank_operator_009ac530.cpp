@@ -33,7 +33,7 @@ public:
     }
 };
 namespace NBankFileManager {
-struct CContainedBank {
+class CContainedBank { public:
     unsigned long DataVersion;                           // +0x00
     unsigned long EntryCount;                            // +0x04
     unsigned long InfoOffset;                            // +0x08

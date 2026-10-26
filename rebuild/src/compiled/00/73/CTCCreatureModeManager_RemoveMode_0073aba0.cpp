@@ -11,14 +11,14 @@
 // remove_if call; the idle delay `(long)(fps * 30.0f)` is a named local computed before GetWorldFrame (written inline in the sum
 // VC7.1 calls GetWorldFrame first and folds the add into a `sub` of the negated product).
 extern long g_framesPerSecond;                          // 0x01375550
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -33,10 +33,10 @@ struct CThing {
         return it->component;
     }
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                        // 0x0049D870
 };
-struct CTCLook {
+class CTCLook { public:
     void UpdateTurningAnims();                          // 0x00754050
 };
 struct CModeBase {                                      // CTCCreatureModeManager::CModeBase
@@ -67,7 +67,7 @@ struct CModeList {                                      // retail STLport list: 
     CModePointer& front() { return m_pHead->m_pNext->m_data; }
     void remove_if(CModeBase::CIsType predicate);       // 0x0073E790
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

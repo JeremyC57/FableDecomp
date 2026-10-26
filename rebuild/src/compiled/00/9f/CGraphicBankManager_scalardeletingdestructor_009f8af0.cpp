@@ -1,4 +1,4 @@
-struct CGraphicBankManager {
+class CGraphicBankManager { public:
     void* vftable;
 };
 

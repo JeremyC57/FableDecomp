@@ -3,7 +3,7 @@
 // is freed.
 #include <cstdio>
 static int g_viewsDeleted = 0;
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 template <class T> class CCountedPointer {
 public:
     T* Data; CCPPointerInfo* Info;

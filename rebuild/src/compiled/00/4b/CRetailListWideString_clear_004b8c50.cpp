@@ -4,7 +4,7 @@
 // Callees: ~CWideString @ 0x0099B510, free @ 0x00BFEA14. Shape: the landed list clear @ 0x00A80A20 with a one-word value (`lea ecx,[edi+8]`). The chunk label
 // "CGuiControlTreePane::SortTreeRecursively" is a propagated STL label.
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
-struct CWideString { void* m_pData; ~CWideString(); };   // 0x0099B510
+class CWideString { public: void* m_pData; ~CWideString(); };   // 0x0099B510
 
 struct CRetailList_WideString {
     struct node {

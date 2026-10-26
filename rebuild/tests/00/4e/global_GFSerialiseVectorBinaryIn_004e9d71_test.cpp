@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour copy of GFSerialiseVectorBinaryIn<CMusicEntry>: read the count, resize (new elements default), then read each
 // element in place through the traits.
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CMusicEntry {
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CMusicEntry { public:
     unsigned long ID; CDefString Filename; float Gain; bool CacheToHD;
     CMusicEntry() : ID(0), Gain(0.0f), CacheToHD(false) { }
 };

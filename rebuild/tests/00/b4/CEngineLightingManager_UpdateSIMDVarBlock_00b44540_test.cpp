@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CLightingSIMDVarBlock {
     float Zero[4]; float One[4];
     float DiffuseVectorX[4]; float DiffuseVectorY[4]; float DiffuseVectorZ[4];
@@ -9,7 +9,7 @@ struct CLightingSIMDVarBlock {
     float AmbientColourR[4]; float AmbientColourG[4]; float AmbientColourB[4];
     float ObjectPosX[4]; float ObjectPosY[4]; float ObjectPosZ[4];
 };
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     C3DVector DiffuseVector;
     CRGBFloatColour PrimitiveDiffuseColour, PrimitiveAmbientColour, PrimitiveBacklightColour;
     CLightingSIMDVarBlock* SIMDVarBlock;

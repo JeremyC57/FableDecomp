@@ -8,7 +8,7 @@
 // -1000000 ("woke up a long time ago"). The engine header for CTCBase is a flat POD, hence `_Calls`.
 // The pass-through `push dword ptr [esp+8]` and immediate byte stores mark a size-optimised TU.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -16,9 +16,9 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCSleep : CTCBase_Calls {
+class CTCSleep : public CTCBase_Calls { public:
     bool      IsReadyToSleep;                               // +0x0c
     bool      FastTrack;                                    // +0x0d
     long      LastFrameWokeUp;                              // +0x10

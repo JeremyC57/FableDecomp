@@ -2,7 +2,7 @@
 
 // Model of CCombatActionBase::IsDecapitatingAttack @ 0x00857CB0
 
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 enum ETCInterfaceType { TC_INTERFACE_HERO = 0x29, TC_INTERFACE_BERSERK = 0x84 };
 struct CInterfacePair { ETCInterfaceType first; CTCBase* second; };
 struct CInterfaceMap {
@@ -12,12 +12,12 @@ struct CInterfaceMap {
 };
 
 static bool g_should = false; static int g_shouldCalls = 0;
-struct CTCBerserk { int id; bool ShouldAttackDecapitate() { ++g_shouldCalls; return g_should; } };
-struct CThingCreatureBase { unsigned char _pad[0x30]; unsigned long Flags30; unsigned char _pad34[0x44 - 0x34]; CInterfaceMap Interfaces;
+class CTCBerserk { public: int id; bool ShouldAttackDecapitate() { ++g_shouldCalls; return g_should; } };
+class CThingCreatureBase { public: unsigned char _pad[0x30]; unsigned long Flags30; unsigned char _pad34[0x44 - 0x34]; CInterfaceMap Interfaces;
     CTCBerserk* GetBerserkInterface() { return reinterpret_cast<CTCBerserk*>(Interfaces.Find(TC_INTERFACE_BERSERK)->second); } };
-struct CMeleeCombatAbilityDef { unsigned char _pad[0x5c]; bool CanDecapitate; };
+class CMeleeCombatAbilityDef { public: unsigned char _pad[0x5c]; bool CanDecapitate; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xb8 - 0x10]; CMeleeCombatAbilityDef* PMeleeAbilityDef; unsigned char _padbc[0x114 - 0xbc];
     bool IsDecapitatingAttack() const {
         if (PMeleeAbilityDef != 0 && PMeleeAbilityDef->CanDecapitate) {

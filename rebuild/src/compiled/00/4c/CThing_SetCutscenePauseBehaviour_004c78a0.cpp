@@ -3,7 +3,7 @@
 // Shape: `sub eax,0 ; je ; dec eax ; je ; dec eax ; jne` is a three-case switch on the by-value enum (a long).
 // PausedDuringCutscenes is bit 7 of +0x92, NotPausedDuringCutscenes bit 0 of +0x93 (retail offsets; PDB +0x10
 // higher). Cases 0 and 1 share the store of +0x92 and the `and byte ptr [..],0FEh` clear.
-struct CThing {
+class CThing { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x92 - 0x04];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1; // +0x92 bit 0 (PDB +0xa2)

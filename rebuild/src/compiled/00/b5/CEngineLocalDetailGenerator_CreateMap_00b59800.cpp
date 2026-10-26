@@ -16,7 +16,7 @@ struct SMapEntry {
     CLocalDetailMap_00bdefc0* m_pMap;              // +0x04
 };
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     void CreateMap(SMapEntry& entry);
 };
 

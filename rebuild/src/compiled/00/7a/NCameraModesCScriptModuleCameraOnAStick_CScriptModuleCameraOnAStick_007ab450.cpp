@@ -10,7 +10,7 @@
 // before the vtable store (the compiler hoists the pointer store next to the argument load), then the
 // two C3DVector members at +0x50 and +0x5C are copied as three dword moves each. No PDB layout for the
 // camera module classes; member names are descriptive.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };

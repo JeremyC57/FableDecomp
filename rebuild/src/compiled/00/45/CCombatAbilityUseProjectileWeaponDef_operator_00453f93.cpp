@@ -10,12 +10,12 @@
 //   one) and its byte + dword are copied relative to the record pointers (here edi/esi, `this` in ebx).
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual void v00();
     long PercentageChance;              // +0x04
     float SecondsDuration;              // +0x08
@@ -25,7 +25,7 @@ struct CCombatAbilityData {
     CCombatAbilityData& operator=(const CCombatAbilityData& other);   // 0x00453F18
 };
 
-struct CCombatAbilityProjectileAttackData : CCombatAbilityData {
+class CCombatAbilityProjectileAttackData : public CCombatAbilityData { public:
     bool AbleToStrafeAndShoot;          // +0x18
     long ShotAccuracyPercentage;        // +0x1c
     __forceinline CCombatAbilityProjectileAttackData& operator=(const CCombatAbilityProjectileAttackData& other)
@@ -37,7 +37,7 @@ struct CCombatAbilityProjectileAttackData : CCombatAbilityData {
     }
 };
 
-struct CCombatAbilityUseProjectileWeaponDef : CDefClassBase {
+class CCombatAbilityUseProjectileWeaponDef : public CDefClassBase { public:
     CCombatAbilityProjectileAttackData CombatAbility;   // +0x28
     CCombatAbilityUseProjectileWeaponDef& operator=(const CCombatAbilityUseProjectileWeaponDef& other);
 };

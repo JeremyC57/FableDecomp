@@ -15,16 +15,16 @@
 //   NextNodeUID +0xd8, PreviousNodeUID +0xe0, TrackName +0xe8, IsStart +0xec, IsEnd +0xed. CPersistContext::Mode +0x18.
 // Shape: the mode is read once per test pair; each AddTC name is an implicit conversion temporary in the dead context
 //   slot; the two 64-bit defaults share one 8-byte frame temporary, the long/bool defaults use the dead argument slot.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CTCBase;
-struct CTCParamsBase;
+class CTCBase;
+class CTCParamsBase;
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
@@ -33,16 +33,16 @@ struct CPersistContext {
     void Transfer(const char* name, CCharString* value);                                              // 0x00411010
 };
 
-struct CThing {
+class CThing { public:
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
 
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     unsigned char _pad00[0xd0];
     bool SerialiseGameState(CPersistContext* context);  // 0x006A5AF0
 };
 
-struct CThingTrackNode : CThingPhysical {
+class CThingTrackNode : public CThingPhysical { public:
     long             NextNodeThingFileID;               // +0xd0
     long             PreviousNodeThingFileID;           // +0xd4
     unsigned __int64 NextNodeUID;                       // +0xd8

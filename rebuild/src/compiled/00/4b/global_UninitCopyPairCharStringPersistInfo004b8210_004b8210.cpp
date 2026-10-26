@@ -31,7 +31,7 @@ struct pair {
 
 namespace NQuestManager {
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {                      // 8 bytes
+    class CPersistInfo { public:                      // 8 bytes
         CCharString QuestName;                 // +0x0
         CCharString PersistScript;             // +0x4
     };

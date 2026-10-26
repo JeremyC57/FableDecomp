@@ -10,18 +10,18 @@
 //   parameter is converted before the other arguments); ParentThing is a named local
 //   read into esi before the conversion call (the direct member form keeps `this` in esi and reloads it after), and the
 //   index survives the temporary's dtor in esi.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CAnimationEntry {                   // Ego_r.pdb CAnimationEntry (0x10)
+class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (0x10)
     long BankIndex;                        // +0
     unsigned char _rest[0xc];              // AnimName, GroupName, Components
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };
 

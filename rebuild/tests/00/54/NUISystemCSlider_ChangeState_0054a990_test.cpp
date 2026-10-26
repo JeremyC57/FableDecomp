@@ -11,14 +11,14 @@ typedef long long __int64;
 
 
 #include <math.h>
-struct C2DVector { float X, Y; };
-struct CRGBColour {
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -58,7 +58,7 @@ struct CChangingStateComponent : IPrimary_0054a990, CObserver, ISecondaryB_0054a
     unsigned char _pad88[0x188 - 0x88];
     void ChangeState(unsigned long state);               // 0x0052CF40
 };
-namespace NUISystem { struct CAction; }
+namespace NUISystem { class CAction; }
 struct CFrontEndManager {
     virtual void v000() {} virtual void v001() {}
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
@@ -78,7 +78,7 @@ struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00() {}
     CSliderTargetRef* PTarget;                           // +0x04
 };
@@ -87,7 +87,7 @@ static __forceinline bool Differs(const C2DVector& a, const C2DVector& b)
     return !(fabs(a.X - b.X) <= 0.0001f) || !(fabs(a.Y - b.Y) <= 0.0001f);
 }
 #pragma pack(push, 1)
-struct CSlider : CChangingStateComponent {
+class CSlider : public CChangingStateComponent { public:
     unsigned char _pad188[0x18c - 0x188];
     C2DVector     Min;                           // +0x18c
     C2DVector     Max;                           // +0x194

@@ -11,7 +11,7 @@
 //        assigned into `out`, then destroyed. Same (out, long, bool) signature as the landed overrides
 //        0x005BEAD5 / 0x005BF2ED.
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                     // 0x0099B510

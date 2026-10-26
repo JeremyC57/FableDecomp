@@ -5,12 +5,12 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C3DMeshInfo { int id; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C3DMeshInfo { public: int id; };
 
 static int g_currentCalls = 0, g_interpolatedCalls = 0, g_assigns = 0, g_live = 0;
-struct C3DMeshObject {
+class C3DMeshObject { public:
     const C3DMeshInfo* MeshInfo;
     C3DVector Position;
     CRightHandedSet Orientation;
@@ -27,11 +27,11 @@ struct C3DMeshObject {
 };
 
 static C3DMeshInfo g_infos[4] = { { 10 }, { 11 }, { 12 }, { 13 } };
-struct CMeshDataBank { const C3DMeshInfo* GetMeshInfo(int index) { return &g_infos[index]; } };
+class CMeshDataBank { public: const C3DMeshInfo* GetMeshInfo(int index) { return &g_infos[index]; } };
 static CMeshDataBank g_bank;
 static CMeshDataBank* g_pMeshDataBank = &g_bank;
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     CRightHandedSet current, old;
     const CRightHandedSet& GetRHSet() const { ++g_currentCalls; return current; }
     CRightHandedSet GetRHSet(float t) const
@@ -42,7 +42,7 @@ struct CTCPhysicsBase {
         return r;
     }
 };
-struct CThing { CTCPhysicsBase* PhysicsTC; C3DVector pos; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; C3DVector pos; };
 static C3DVector GetRenderPositionForThing(const CThing& thing, float t)
 {
     C3DVector p = thing.pos; p.Z += t; return p;

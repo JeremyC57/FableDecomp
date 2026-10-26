@@ -1,6 +1,6 @@
 #include <stdio.h>
-struct CInputTypeBase; struct CCPPointerInfo;
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info; };
+class CInputTypeBase; class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 struct CGamePlayerInterface_Retail {
     unsigned char _pad00[0x7b8];

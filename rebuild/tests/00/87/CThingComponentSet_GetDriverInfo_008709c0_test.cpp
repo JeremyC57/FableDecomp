@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct CEntry { int NameTablePos; unsigned int DriverType; bool Override; };
-struct CPred_EntryIsDriver { bool operator()(const CEntry& e) const { return e.DriverType != 0u; } };
+class CPred_EntryIsDriver { public: bool operator()(const CEntry& e) const { return e.DriverType != 0u; } };
 
 template <class It, class Pred> It find_if_model(It first, It last, Pred pred)
 {
@@ -10,8 +10,8 @@ template <class It, class Pred> It find_if_model(It first, It last, Pred pred)
     return first;
 }
 
-struct CThingComponentSet
-{
+class CThingComponentSet
+{ public:
     CEntry* Start;
     signed char Size;
     const CEntry& GetDriverInfo() const { const CEntry* begin = Start; return *find_if_model(begin, begin + Size, CPred_EntryIsDriver()); }

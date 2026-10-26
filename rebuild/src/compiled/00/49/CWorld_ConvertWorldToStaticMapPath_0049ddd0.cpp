@@ -1,5 +1,5 @@
 // CWorld::ConvertWorldToStaticMapPath(const CWideString&) const -- static-map path for a world: Data\Levels\ + the world's file name + L"_RT.stb" when the runtime-level-files flag is set, else L".stb" (the three-argument overload inlined with xbox = false)
-// Leaf: ?ConvertWorldToStaticMapPath@CWorld_Methods@@QBE?AUCWideString@@ABU2@@Z
+// Leaf: ?ConvertWorldToStaticMapPath@CWorld_Methods@@QBE?AVCWideString@@ABV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049DDD0, 232 bytes, `ret 8` (__fastcall: hidden result + the world path on
 //   the stack; `this` is never read). PDB name ?ConvertWorldToStaticMapPath@CWorld@@QBE?AVCWideString@@ABV2@@Z.
 // Callees: CWideString() 0x0099AED0, SplitPath 0x00997620 (`__fastcall`: path ecx, drive edx, directory/name/extension on
@@ -16,7 +16,7 @@
 #include "engine/CWorld.h"
 
 typedef unsigned short wchar16;                    // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720

@@ -12,13 +12,13 @@
 // Layout: Ego_r.pdb CWaveFile {Channels +0, SampleLength +4, SamplingFrequency +8, AudioData CArray<short> +0xC}
 //   (retail 12-byte STLport vector). CMemoryDataOutputStream is 0x18 bytes in retail (landed ctor 0x00996AF0;
 //   engine/CMemoryDataOutputStream.h carries the PDB 0x1C view), so a local model is used.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     CDataOutputStream();                                // CDataOutputStream base ctor (inline in retail)
     virtual ~CDataOutputStream();
     virtual void SetPosition(unsigned long position);
@@ -31,7 +31,7 @@ struct CDataOutputStream {
     void WriteString(const CCharString& text);          // 0x009959F0
 };
 
-struct CMemoryDataOutputStream : CDataOutputStream {    // 0x18 bytes in retail
+class CMemoryDataOutputStream : public CDataOutputStream { public:    // 0x18 bytes in retail
     char* First; char* Last; char* End;                 // +0x08 CArray<char>
     unsigned long Position;                             // +0x14
     CMemoryDataOutputStream();                          // 0x00996AF0
@@ -41,13 +41,13 @@ struct CMemoryDataOutputStream : CDataOutputStream {    // 0x18 bytes in retail
     const void* PeekData() const;                       // 0x00995E70
 };
 
-template<class T> struct CArray {                       // retail STLport vector, 12 bytes
+template<class T> class CArray { public:                       // retail STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned int size() const { return _M_finish - _M_start; }
     const T* GetData() const { return size() > 0 ? _M_start : (const T*)this; }
 };
 
-struct CWaveFile {
+class CWaveFile { public:
     unsigned long Channels;                             // +0x00
     unsigned long SampleLength;                         // +0x04
     unsigned long SamplingFrequency;                    // +0x08

@@ -17,18 +17,18 @@ struct COpenCloseHelper {
         return !Opening && !Closing && !(LastOpenCloseTransitionAmount != OpenCloseTransitionAmount);
     }
 };
-struct CThing {
+class CThing { public:
     int ForceCalls; bool Force;
     void SetForceFrameUpdate(bool force) { ++ForceCalls; Force = force; }
 };
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual void v00() {}
     CThing* ParentThing;
     int Rewards;
     bool RewardHeroWithItems() { ++Rewards; return true; }
     CFrameSource* GetFrameSource() { ++g_world; return 0; }
 };
-struct CTCChest : CTCContainerRewardHero {
+class CTCChest : public CTCContainerRewardHero { public:
     COpenCloseHelper ChestOpener;
     int Anims, Inits; float AnimTime;
     void UpdateAnimation(float time) { ++Anims; AnimTime = time; }

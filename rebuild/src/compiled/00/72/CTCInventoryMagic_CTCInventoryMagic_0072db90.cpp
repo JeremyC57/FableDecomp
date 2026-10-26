@@ -9,7 +9,7 @@
 // and pushed rather than a pass-through `push [esp+n]`).
 // Leaf: ??0CTCInventoryMagic
 
-struct CThing;
+class CThing;
 
 struct CTCInventoryBase {
     virtual void v00();
@@ -18,13 +18,13 @@ struct CTCInventoryBase {
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                     // vtable 0x0123A3E0
+class CBase { public:                                     // vtable 0x0123A3E0
     virtual void v00();
     CBase();                                       // 0x0066E734
 };
 }
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct SPrimitiveHandleVector {                    // STLport vector<CEnginePrimitiveHandle>
     CEnginePrimitiveHandle* _M_start;
     CEnginePrimitiveHandle* _M_finish;
@@ -32,7 +32,7 @@ struct SPrimitiveHandleVector {                    // STLport vector<CEnginePrim
     SPrimitiveHandleVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CTCInventoryMagic : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryMagic : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     SPrimitiveHandleVector InventoryMagicPrimitiveHandles;  // +0x134
     virtual void v00();
     CTCInventoryMagic(CThing* thing);

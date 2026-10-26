@@ -20,14 +20,14 @@ static int fails = 0;
 // named local homed in the dead displayOverScreenFade slot.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14 (MSVCR71 free import thunk)
 
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                  // 0x0099E4B0
 };
 
-struct CSubtitledMessage {                          // 0x44 bytes
+class CSubtitledMessage { public:                          // 0x44 bytes
     unsigned char _body[0x44];
     CSubtitledMessage(const CSubtitledMessage& other);
     ~CSubtitledMessage();                           // 0x004D1DB0 (manifest "~CPatchTesselationEdgeStrip" propagated)
@@ -103,7 +103,7 @@ __declspec(noinline) CSubtitledMessageArray& CSubtitledMessageArray::operator=(c
 
 CSubtitledMessage __fastcall GetMessageFromTextIndex(unsigned long textIndex, const char* groupName);   // 0x004CEA60
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0xf6];
     bool m_inCutscene;                              // +0xf6
 };

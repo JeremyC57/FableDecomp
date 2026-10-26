@@ -39,35 +39,35 @@ struct CEngineOcclusionRenderer {                  // 0x01436E60
     SSceneRenderInfo GetRenderInfo();              // 0x00B38890
 };
 extern CEngineOcclusionRenderer* g_pOcclusionRenderer;   // 0x01436E60
-struct CEngineWaterRenderer {                      // 0x01436E3C
+class CEngineWaterRenderer { public:                      // 0x01436E3C
     unsigned char _pad00[8];
     bool          Enabled;                         // +0x08
     void BeginReflection();                        // 0x00B89A20
     void EndReflection();                          // 0x00B89140
 };
 extern CEngineWaterRenderer* g_pWaterRenderer;     // 0x01436E3C
-struct CEngineShadowRenderer {                     // 0x01436E38
+class CEngineShadowRenderer { public:                     // 0x01436E38
     bool BeginShadows();                           // 0x00B87680
     void EndShadows();                             // 0x00B869A0
     void BeginShadowCasters();                     // 0x00B871B0
     void EndShadowCasters();                       // 0x00B86BB0
 };
 extern CEngineShadowRenderer* g_pShadowRenderer;   // 0x01436E38
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     void RenderList(long list, bool sort);         // 0x00B849F0
     unsigned long GetListSize(long list);          // 0x00B842B0
     void ClearList(long list);                     // 0x00B847B0
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
-struct CEngineLightingManager;
+class CEngineLightingManager;
 extern CEngineLightingManager* g_pLightingManager_01436ea0;   // 0x01436EA0
 
-struct CEngineScene {
+class CEngineScene { public:
     void RenderOcclusion(long layer, const unsigned char (&settings)[0x130]);   // 0x00B94060
     void RenderLit(long layer, CEngineLightingManager* lighting, long mode, bool flag);   // 0x00B942A0
     void Render(long layer, CEngineLightingManager* lighting);   // 0x00B93F40
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -75,11 +75,11 @@ template <class T> struct CArray {
     T* end() { return Last; }
 };
 
-struct CCamera {
+class CCamera { public:
     unsigned char _pad[0x78];
     unsigned char Flags;                           // +0x78
 };
-struct CEngineComponentRenderParams {
+class CEngineComponentRenderParams { public:
     CCamera*      Camera;                          // +0x00
     long          Layer;                           // +0x04
     unsigned long Flags;                           // +0x08
@@ -93,11 +93,11 @@ struct CEngineRendererBase {                       // 0x268 bytes
     bool          SelfShadowing;                   // +0xbe
     unsigned char _pad0bf[0x268 - 0xbf];
 };
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void c00();
     virtual void Render(const CEngineComponentRenderParams& params);
 };
-struct CEnginePrimitiveRenderer : CEngineRendererBase, CEngineComponent {
+class CEnginePrimitiveRenderer : public CEngineRendererBase, public CEngineComponent { public:
     unsigned char         _pad26c[0x338 - 0x26c];
     CArray<CEngineScene*> Scenes;                  // +0x338
     virtual void Render(const CEngineComponentRenderParams& params);

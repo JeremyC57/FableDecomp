@@ -11,15 +11,15 @@
 // Pragma: `#pragma optimize("s", on)` (the module is size-optimised): it keeps the key load/store in ecx before the second
 //   argument is fetched; the speed form hoists the `mov ecx,[esp+8]` above the first store (edx carries the key).
 #pragma optimize("s", on)
-struct CDefPointeeBase {                    // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                    // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1
     mutable long m_refCount;                // +0x04 (mutable: const defs are add-ref'd)
 };
 
-struct CContextSensitiveItemDef : CDefPointeeBase { };
+class CContextSensitiveItemDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;                              // +0x00
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {

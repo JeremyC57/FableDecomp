@@ -1,14 +1,14 @@
 // Behaviour test for NParticleEngine::CPSCLight::AddToBoundingSphere @ 0x00B18AF0.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
 static float g_ParticleEpsilon = 0.0001f;
 static long g_frameRate = 30;
 long GetParticleFrameRate() { return g_frameRate; }
 inline float Lerp(float a, float b, float t) { return (b - a) * t + a; }
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector point; float radius; int calls;
     void AddToBounds(const C3DVector& p, float r) { point = p; radius = r; ++calls; }
 };

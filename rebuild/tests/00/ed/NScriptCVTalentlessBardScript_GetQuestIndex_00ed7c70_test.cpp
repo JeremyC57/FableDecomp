@@ -6,7 +6,7 @@
 #define __declspec(x)
 #endif
 static int g_dtors = 0, g_termCalls = 0; static unsigned char g_terminating = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pStringData;
     CCharString(const char* s) : m_pStringData(s) { }
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { }

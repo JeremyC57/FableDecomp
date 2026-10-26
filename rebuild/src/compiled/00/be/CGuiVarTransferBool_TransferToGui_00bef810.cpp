@@ -7,7 +7,7 @@ struct CGuiTarget;
 // callee @ 0xbef5c0 : ecx=self(+0), edx=(+4), stack=byte(+0xc)
 void __fastcall CGuiTarget_Set(CGuiTarget* self, int edx, bool value);
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     CGuiTarget* target;   // +0x00
     int         param;    // +0x04
     char        pad8[4];  // +0x08

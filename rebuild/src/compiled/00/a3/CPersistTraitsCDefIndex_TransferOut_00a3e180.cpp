@@ -16,12 +16,12 @@
 //   Speed-optimised (default) TU.
 #include <string.h>
 #pragma intrinsic(strcmp)
-struct CCharStringData;
-struct CStringParser;
+class CCharStringData;
+class CStringParser;
 struct CBasicStringChar {
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
@@ -42,18 +42,18 @@ struct CDefStringTable {
     CCharString GetString(long id);                     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0x00 (PDB)
     CDefString() {}
     CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
 };
-struct CDefIndex {
+class CDefIndex { public:
     long Val;                                           // +0x00 (PDB)
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
 };
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager* PDefinitionManager;             // +0x00
 };
 

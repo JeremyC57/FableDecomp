@@ -92,5 +92,5 @@ struct GMgr {
     virtual void Release(void *p); // slot 88 = 0x160
 };
 extern GMgr *g_timerMgr_cd4470;
-struct CTimer { void *m_first; void Dtor(); };
+class CTimer { public: void *m_first; void Dtor(); };
 void CTimer::Dtor(){ g_timerMgr_cd4470->Release(m_first); }

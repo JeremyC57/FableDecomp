@@ -11,7 +11,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { ++g_gets; return (CThingCreatureBase*)m_pItem; }
     void SetPItem(void* item) { ++g_sets; m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
@@ -23,26 +23,26 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 static CThingCreatureBase g_hero, g_creature;
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetPCharacter() { return &g_hero; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() { static CPlayer p; return &p; }
 };
 static CThingCreatureBase* g_regCreature = 0; static CThingCreatureBase* g_regEnemy = 0; static bool g_regFight = false;
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool fight) { ++g_registers; g_regCreature = creature; g_regEnemy = enemy; g_regFight = fight; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;
 };
 static CWorld g_world; static CCombatManager g_combat; static CPlayerManager g_players;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain;
     long ScriptAIPriority;

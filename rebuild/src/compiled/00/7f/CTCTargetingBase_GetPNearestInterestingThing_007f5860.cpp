@@ -5,8 +5,8 @@
 // PScriptOverrideInterestingThing +0x15 (byte-packed intelligent pointers).
 // Shape: the override pointer's address is formed once (`lea esi,[edi+15h]`) and reused for the second GetPItem; both
 // pointer reads return straight through sibling-call jumps.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -15,11 +15,11 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;           // 0x00A01B50
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void*         __vftable;                 // +0x00
     CThing*       ParentThing;               // +0x04
     unsigned char _pad_0x08[4];              // CTCBase flags

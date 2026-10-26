@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAbilityDef { char pad[0x28]; int marker; };
+class CAbilityDef { public: char pad[0x28]; int marker; };
 
 static void* g_passed = 0;
 struct CTransferData {

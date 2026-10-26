@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing;
+class C3DVector { public: float X, Y, Z; };
+class CThing;
 struct CTCVillager { int village; };
 struct CMode { long type; long GetModeType() { return type; } };
-struct CTCCreatureModeManager { CMode* cur; CMode* GetCurrentMode() { return cur; } };
+class CTCCreatureModeManager { public: CMode* cur; CMode* GetCurrentMode() { return cur; } };
 struct CTCModeManager42 { unsigned long active; bool IsModeActive(unsigned long t) const { return (active >> t) & 1; } };
 
-struct CThing {
+class CThing { public:
     unsigned char flags91;
     C3DVector pos;
     CTCVillager* villager;
@@ -26,7 +26,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static int g_villageMessage;
 static int g_lastType; static const CThing* g_lastOrigin;
 

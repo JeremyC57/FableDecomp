@@ -76,7 +76,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CComponent {
@@ -256,22 +256,22 @@ FABLE_STATIC_ASSERT(offsetof(CObserver, PreventObservation) == 0x14);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {
@@ -392,7 +392,7 @@ FABLE_STATIC_ASSERT(offsetof(CManager, AssignmentSpellsSwapping) == 0xfb);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -410,8 +410,8 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -419,8 +419,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;

@@ -3,8 +3,8 @@
 // insert, the intelligent-pointer primitives and PrepareToShowItems stubbed and recorded.
 class CThing;
 class CThingObject;
-struct CRightHandedSet;
-struct C3DVector { float X, Y, Z; };
+class CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
 class CCharString { public: const char* m_pData; };
 
 class CThing {
@@ -31,14 +31,14 @@ public:
         return (CThingObject*)t;
     }
 };
-struct CTCBase { CThing* ParentThing; };
+class CTCBase { public: CThing* ParentThing; };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
@@ -85,7 +85,7 @@ struct CGiveItemVector {
     const SGiveItem& operator[](unsigned int n) const { return _M_start[n]; }
 };
 static const C3DVector* g_preparedAt = 0;
-struct CTCHeroReceiveItems : CTCBase {
+class CTCHeroReceiveItems : public CTCBase { public:
     CItemList Items;
     bool SendMessage;
     CIntelligentPointer<CThing> PContainer;

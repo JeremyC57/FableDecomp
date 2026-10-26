@@ -1,10 +1,10 @@
 // behaviour test for CThingAICreature::OnCollision (0x00832840)
 #include <cstdio>
 static int g_base = 0, g_aware = 0, g_world = 0;
-struct CThing;
-struct CTCPerceiveThing { CThing* perceived; CThing* GetPerceivedThing() { return perceived; } void SetAsDirectlyAwareOfPerceivedThing() { ++g_aware; } };
-struct CThing { bool Dead; bool hasPerceive; CTCPerceiveThing* perceive; void PeekWorld() { ++g_world; } };
-struct CThingAICreature : CThing {
+class CThing;
+class CTCPerceiveThing { public: CThing* perceived; CThing* GetPerceivedThing() { return perceived; } void SetAsDirectlyAwareOfPerceivedThing() { ++g_aware; } };
+class CThing { public: bool Dead; bool hasPerceive; CTCPerceiveThing* perceive; void PeekWorld() { ++g_world; } };
+class CThingAICreature : public CThing { public:
     void BaseOnCollision(int, CThing*) { ++g_base; }
     void OnCollision(int type, CThing* other)
     {

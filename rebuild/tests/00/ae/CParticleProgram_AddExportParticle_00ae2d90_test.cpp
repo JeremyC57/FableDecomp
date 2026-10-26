@@ -19,7 +19,7 @@ struct CExportMap {
     void push_back(const SEntry& x) { if (Finish != EndOfStorage) { *Finish = x; ++Finish; } else InsertOverflow(x); }
     void Add(const char* key, unsigned long value) { SEntry e; e.first = key; e.second = value; push_back(e); Dirty = true; }
 };
-struct CParticleProgram {
+class CParticleProgram { public:
     CExportMap ExportParticles;
     void AddExportParticle(const char* name, unsigned long particle) { ExportParticles.Add(name, particle); }
 };

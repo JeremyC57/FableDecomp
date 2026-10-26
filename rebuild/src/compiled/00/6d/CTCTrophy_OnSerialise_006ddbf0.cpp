@@ -9,12 +9,12 @@
 // bound to the const reference, homed in the dead context-argument slot (`mov byte ptr [esp+1Ch],0`); the second
 // member address is formed by advancing `this` (`add esi,48h`). The bool parameter is unused.
 // Layout: Ego_r.pdb CTCTrophy with the retail one-pointer lists: BestWitnessesAheadToDate +0x18, Mountable +0x48.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
-struct CTCTrophy {
+class CTCTrophy { public:
     unsigned char _pad_0x04[0x14];          // +0x04 CTCBase, PDef, NonMinigameDeedHandle, MinigameInProgress
     long          BestWitnessesAheadToDate; // +0x18
     unsigned char _pad_0x1c[0x2C];          // +0x1C minigame counters, witness lists, flags, page

@@ -5,7 +5,7 @@
 #define __fastcall
 #endif
 // Test model of CScriptThing (polymorphic root + CCountedPointer PImp) with the counted pointer's copy/assignment.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;

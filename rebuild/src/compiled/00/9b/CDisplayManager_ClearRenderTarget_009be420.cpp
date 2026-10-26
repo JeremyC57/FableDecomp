@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 
-struct CRGBColour
-{
+class CRGBColour
+{ public:
     fable_u32 value;
 };
 

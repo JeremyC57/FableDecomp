@@ -1,4 +1,4 @@
-struct CEnvironment {
+class CEnvironment { public:
     void* vftable;
 };
 

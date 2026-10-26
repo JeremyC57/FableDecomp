@@ -10,11 +10,11 @@
 // Shape: one expression `GetText(def->RequiredScore) + GFIntToCharString(TargetRound).ToWideString()`: the right operand
 //        is evaluated first (its return slot pushed before the integer conversion); the temporaries die in reverse order;
 //        the null-tested CDefPointer dtor calls the def's inline ReleaseTemporary().
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -31,7 +31,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xb4];
     unsigned long RequiredScore;                // +0xbc
     void ReleaseTemporary()
@@ -48,7 +48,7 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     CWideString GetText(unsigned long id);      // 0x005E9E70
@@ -56,7 +56,7 @@ struct CTCTavernGame {
     long          TargetRound;                  // +0x9c
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     CWideString GetRequiredScore();
 };
 

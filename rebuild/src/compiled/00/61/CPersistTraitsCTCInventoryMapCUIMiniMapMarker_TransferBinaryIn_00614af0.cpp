@@ -20,7 +20,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 
 class CCharString {
 public:
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     CCharString& operator=(const CCharString& other);  // 0x0099EFB0

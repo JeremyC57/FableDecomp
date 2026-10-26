@@ -1,4 +1,4 @@
-struct CThing {
+class CThing { public:
     char pad0[0x28];
     unsigned char f28;   // 0x28
     char pad1[0x5c-0x29];

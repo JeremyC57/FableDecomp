@@ -13,7 +13,7 @@
 //   ??4CLevelFiles@CObject@CLevelLoader@@QAEAAV012@ABV012@@Z.
 void operator delete(void* p);                          // 0x00BFE9BC
 
-struct CCPPointerInfo {                                 // 12 bytes (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // 12 bytes (Ego_r.pdb)
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void*);               // +0x04
     void*         Data;                                 // +0x08

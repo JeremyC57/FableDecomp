@@ -4,7 +4,7 @@
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 struct CMasterScriptData { bool HeroWonThunderDuel, HeroLostThunderDuel, ThunderDuelResolved; int outcome; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CMasterScriptData* data;
     bool active, completed;
     int frame;

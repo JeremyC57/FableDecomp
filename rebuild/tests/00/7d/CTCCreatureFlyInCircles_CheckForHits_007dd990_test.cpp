@@ -1,6 +1,6 @@
 // behaviour test for 0x007DD990 CTCCreatureFlyInCircles::CheckForHits
 #include <cstdio>
-struct CThing { unsigned char flags91; };
+class CThing { public: unsigned char flags91; };
 struct HitBy { const CThing* who; HitBy(const CThing* w) : who(w) {} };
 struct Shot { Shot() {} };
 struct Filter { const HitBy& a; const Shot& b; Filter(const HitBy& x, const Shot& y) : a(x), b(y) {} };

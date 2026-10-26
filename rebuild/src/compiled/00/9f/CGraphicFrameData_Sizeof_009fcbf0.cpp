@@ -7,7 +7,7 @@ struct CTexture_009fcbf0 {
     long Sizeof() { return (m_header & 0xfffffff) + 0xc; }
 };
 
-struct CGraphicFrameData {
+class CGraphicFrameData { public:
     unsigned char       _pad[8];
     CTexture_009fcbf0*  m_pTexture;                // +0x08
     unsigned char       _pad0c[0xe];

@@ -5,15 +5,15 @@
 #include <math.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     void Clear() { X = Y = Z = 0.0f; }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DBoxI { long Left; long Top; long Right; long Bottom; };
-struct CThing;
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
+class CThing;
 struct CThingPtrVector {
     CThing** first; CThing** last; CThing** endOfStorage;
     CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
@@ -21,24 +21,24 @@ struct CThingPtrVector {
 };
 const float g_FloatEpsilon = 0.0001f;
 const float g_OnGroundTolerance = 0.5f;
-struct C3DMeshInfo { long PhysicsMeshIndex; bool HasPhysicsMesh() const { return PhysicsMeshIndex != -1; } };
+class C3DMeshInfo { public: long PhysicsMeshIndex; bool HasPhysicsMesh() const { return PhysicsMeshIndex != -1; } };
 static C3DMeshInfo g_meshes[4], g_anims[4];
 static int g_meshCalls = 0, g_animCalls = 0;
 struct CGraphicBank {
     C3DMeshInfo* GetMesh(unsigned long index) { ++g_meshCalls; return &g_meshes[index]; }
     C3DMeshInfo* GetAnimatedMesh(unsigned long index) { ++g_animCalls; return &g_anims[index]; }
 };
-struct CWorld { CGraphicBank* PGraphicBank; };
+class CWorld { public: CGraphicBank* PGraphicBank; };
 static float g_ground = 0.0f;
-struct CWorldMap { float GetGroundSizeZAt(const C3DVector&) const { return g_ground; } };
+class CWorldMap { public: float GetGroundSizeZAt(const C3DVector&) const { return g_ground; } };
 struct CGraphicDataRef {
     unsigned long Index;
     unsigned char Type;
     bool IsValid() const { return Type != 0; }
 };
 struct CTCGraphicAppearance { CGraphicDataRef GraphicData; };
-struct CThing { CTCGraphicAppearance* PGraphicAppearance; };
-struct CPhysicsDef { float Mass; long InteractionFlags; bool PushableByHero; float Air; };
+class CThing { public: CTCGraphicAppearance* PGraphicAppearance; };
+class CPhysicsDef { public: float Mass; long InteractionFlags; bool PushableByHero; float Air; };
 static CWorld g_world; static CWorldMap g_map;
 static const CGraphicDataRef* g_created = 0;
 static int g_base = 0, g_interactCalls = 0, g_surface = 0;

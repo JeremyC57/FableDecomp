@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void* vftable;
     int destroyed;
 };

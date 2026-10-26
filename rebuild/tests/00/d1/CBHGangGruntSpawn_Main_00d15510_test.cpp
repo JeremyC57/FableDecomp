@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_ZeroVector = { 0, 0, 0 };
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString() : text("") { }
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
@@ -12,7 +12,7 @@ struct CCharString {
 };
 static long GFCharStringToInt(const CCharString& s) { return std::atol(s.text); }
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-struct CScriptThing {
+class CScriptThing { public:
     int id; bool alive; C3DVector pos; const char* data;
     int hitFrame;                                      // frame at which the hero hits it (-1 never)
     CCharString GetDataString() const { return CCharString(data); }
@@ -22,7 +22,7 @@ struct CScriptThing {
     bool MsgIsHitBySpecialAbilityFrom(EHeroAbility, const CCharString&) const { return false; }
     bool IsAlive() const { return alive; }
 };
-struct CGame {
+class CGame { public:
     int frame; long timer[4]; int startTries; CScriptThing hero, exitPoint;
     int targetOf; int fades; C3DVector moveTarget; int terminateAt;
     bool questSucceeded;
@@ -46,7 +46,7 @@ struct CScripted {
 };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float) { return g_game->frame >= 9; }
 static void FadeOutAndKillEntity(const CScriptThing&, bool, float, bool) { ++g_game->fades; }
-struct CTimer {
+class CTimer { public:
     long Handle;
     void SetTime(long t) { g_game->SetTimer(Handle, t); }
     long GetTime() const { return g_game->GetTimer(Handle); }

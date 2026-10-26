@@ -3,9 +3,9 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { const char* def; float health; int sex; const char* GetDefName() const { return def; } };
+class CScriptThing { public: const char* def; float health; int sex; const char* GetDefName() const { return def; } };
 struct CHandle { const char* name; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int time; int day;
     void NewScriptFrame() { Log("frame"); }
     float GetHealth(const CScriptThing& t) { return t.health; }

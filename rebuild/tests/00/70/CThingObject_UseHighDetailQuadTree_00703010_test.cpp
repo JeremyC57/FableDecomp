@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CThingObject::UseHighDetailQuadTree (0x00703010): bit 3 of the def flag byte.
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char IsFragile : 1; unsigned char IsClothing : 1; unsigned char IsSelfIlluminating : 1;
     unsigned char UseHighDetailQuadTree : 1; unsigned char Electrocutable : 1;
 };
-struct CThingObject {
+class CThingObject { public:
     const CThingObjectDef* PDef;
     unsigned char UseHighDetailQuadTree() const { return PDef->UseHighDetailQuadTree; }
 };

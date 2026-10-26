@@ -1,7 +1,7 @@
 // Behaviour test for 0043e430 CThingFilter_IsValid::operator() (forwards to virtual slot 1)
 #include <cstdio>
 static long g_value = 42;
-struct CThingFilter_IsValid {
+class CThingFilter_IsValid { public:
     virtual void  Slot00() {}
     virtual long* Slot01() { return &g_value; }
     long* operator()();

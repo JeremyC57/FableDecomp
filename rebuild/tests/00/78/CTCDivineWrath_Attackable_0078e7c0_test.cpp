@@ -12,15 +12,15 @@
 // is (`return enemies` with the bool named: retail has no `xor al,al`). ParentThing is a named reference before
 // each call (`mov ebx,[esi+4]` ahead of the GetPItem call; `mov ecx,[esi+4]` before `mov edx,[creature]`).
 // Without the label the first `return true` is laid out inline and the second test becomes `setne`.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                                // +0x91 bit 0: Dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
 
-struct CTCEnemy {
+class CTCEnemy { public:
     static bool __fastcall AreThingsEnemies(const CThing& a, const CThing& b);   // 0x0076D2F0
 };
 
@@ -31,7 +31,7 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     CThing* GetPItem() const;                               // 0x00A01B50
 };
 
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     virtual void v00();
     CThing*                 ParentThing;                    // +0x04 (CTCBase)
     unsigned char           _body[0x6d - 0x08];             // ToBeRemoved .. CutSceneCancel (+0x6c)

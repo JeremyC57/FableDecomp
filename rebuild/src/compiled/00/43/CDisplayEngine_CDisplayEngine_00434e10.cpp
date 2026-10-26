@@ -11,16 +11,16 @@
 // Shape: members in declaration order (one ebx zero register), the two camera vectors built as temporaries in the frame (the direction
 // first: right-to-left), the CFadeInFadeOutBase inline ctor assigning its members in the body (Active, Duration, StartFrame, FadingOut, FadingIn) and
 // then `Colour = CRGBColour(0, 0, 0, 255)` (the temporary built byte-wise in a frame word and copied as a dword); the readiness count, fade duration, world pointer and the gamma trio are assigned in the body (stored out of declaration order).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char R, G, B, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { A = a; B = b; G = g; R = r; }
 };
-struct CFadeInFadeOutBase {                     // 0x1c bytes
+class CFadeInFadeOutBase { public:                     // 0x1c bytes
     bool Active;                                // +0x00
     unsigned char _pad01[0x0c - 0x01];
     bool FadingIn;                              // +0x0c
@@ -41,13 +41,13 @@ struct CFadeInFadeOutBase {                     // 0x1c bytes
 struct CLetterBoxModeInfo : CFadeInFadeOutBase {   // 0x20 bytes
     long Mode;                                  // +0x1c (left uninitialised)
 };
-struct CCamera {                                // 0x38 bytes
+class CCamera { public:                                // 0x38 bytes
     unsigned char _body[0x38];
     CCamera(const C3DVector& position, const C3DVector& direction, float fov, long flags);   // 0x00A0BF20
 };
-struct CMainGameComponent; struct CPlayerManager; struct CGameDefinitionManager; struct CGraphicDataBank; struct CMeshDataBank;
-struct CIEngine; struct CDisplayViewManager; struct CCPPointerInfo; struct CWorld;
-struct CDisplayEngineInit {
+class CMainGameComponent; class CPlayerManager; class CGameDefinitionManager; class CGraphicDataBank; class CMeshDataBank;
+class CIEngine; class CDisplayViewManager; class CCPPointerInfo; class CWorld;
+class CDisplayEngineInit { public:
     CMainGameComponent*     Component;          // +0x00
     CGameDefinitionManager* DefinitionManager;  // +0x04
     CPlayerManager*         PlayerManager;      // +0x08

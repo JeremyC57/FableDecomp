@@ -12,7 +12,7 @@
 //   CCountedPointer is modelled with the release form the D rows need (decrement, re-read, test, then Data = Info = 0):
 //   VC7.1 emits the same bytes for this row as with the short `if (Info && --Info->RefCount == 0)` form.
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
-struct CCPPointerInfo {                                    // CCountedPointer count block
+class CCPPointerInfo { public:                                    // CCountedPointer count block
     long  RefCount;                                        // +0x00
     void  (__fastcall* DeleteFunc)(void* data);            // +0x04
     void* Data;                                            // +0x08

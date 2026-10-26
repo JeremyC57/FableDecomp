@@ -13,11 +13,11 @@
 #else
 #define __forceinline inline
 #endif
-struct CDefString { long TablePos; };
-struct CCharString;
-struct CDefClassBase { struct CSubDefInfo; };
-struct CPersistContext;
-struct CParentDefClassBase {
+class CDefString { public: long TablePos; };
+class CCharString;
+class CDefClassBase { public: class CSubDefInfo; };
+class CPersistContext;
+class CParentDefClassBase { public:
  virtual ~CParentDefClassBase(); // slot0 virtual deleting destructor (native derived00458B81)
  virtual void Delete() const; // slot1 0042D930
  virtual bool UnloadResource(); // slot2 009ACE90
@@ -49,17 +49,17 @@ template <class T> struct CPODVector {             // retail std::vector<T> (12 
     T* m_end;
     __forceinline CPODVector() : m_first(0),m_last(0),m_end(0) {}
 };
-struct CFloatRange { float Min, Max; CFloatRange() : Min(0),Max(0) {} };
-struct CHeroAbilityStatWeight {                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)
+class CFloatRange { public: float Min, Max; CFloatRange() : Min(0),Max(0) {} };
+class CHeroAbilityStatWeight { public:                    // map<EHeroTrainableStatType, float> (STLport, 12 bytes)
     unsigned char StatWeights[12];
     CHeroAbilityStatWeight();                     // 0x0045326D
 };
-struct CHeroAbilityStatPackage {                   // map<EHeroTrainableStatType, long> (STLport, 12 bytes)
+class CHeroAbilityStatPackage { public:                   // map<EHeroTrainableStatType, long> (STLport, 12 bytes)
     unsigned char StatThresholds[12];
     CHeroAbilityStatPackage();                    // 0x0045324F
 };
 
-struct CHeroCombatDef : CParentDefClassBase {      // vtable 0x01234CF4, retail 0x148 bytes
+class CHeroCombatDef : public CParentDefClassBase { public:      // vtable 0x01234CF4, retail 0x148 bytes
     CFloatRange RangedAccuracySecondsForMaximumWithSkill;      // +0x3c
     CFloatRange RangedAccuracyPercentFractionWithBuildup;      // +0x44
     CFloatRange RangedAccuracyPercentWithStats;                // +0x4c

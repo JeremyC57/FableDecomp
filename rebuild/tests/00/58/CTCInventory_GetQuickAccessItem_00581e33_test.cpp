@@ -5,7 +5,7 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     long& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     CLongVector ContextSensitiveItems;
     long GetQuickAccessItem(unsigned long index);

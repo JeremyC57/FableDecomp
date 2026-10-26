@@ -21,7 +21,7 @@ struct CTCInventoryAbilities_Calls {
     EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability) { return (EHeroExperienceStatCategory)category[(long)ability]; }
     void UpgradeAbility(EHeroAbility ability) { ++upgrades; cost[(long)ability] *= 2; }
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool; SSpendInfoVector ExperienceSpendValuesStats; SSpendInfoVector ExperienceSpendValuesAbility;
     CTCHeroExperience_Calls* hero; CTCInventoryAbilities_Calls* abilities; long externals; long externalAbility; long externalAmount;

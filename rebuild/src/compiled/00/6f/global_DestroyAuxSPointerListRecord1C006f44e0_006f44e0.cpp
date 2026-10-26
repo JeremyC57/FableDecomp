@@ -12,7 +12,7 @@
 // (no destination, `ret 4`).
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                           // 8 bytes (PDB)
     virtual void v00();

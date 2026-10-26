@@ -7,14 +7,14 @@ long g_framesPerSecond = 15;
 static long g_frame = 1000;
 static char g_log[32];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -28,8 +28,8 @@ struct CThing {
         return it->component;
     }
 };
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CTCLook { int Updates; void UpdateTurningAnims() { ++Updates; Log('u'); } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CTCLook { public: int Updates; void UpdateTurningAnims() { ++Updates; Log('u'); } };
 struct CModeBase {
     unsigned long Type; char Name;
     virtual unsigned long GetModeType() { return Type; }
@@ -64,7 +64,7 @@ struct CModeList {
         }
     }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual void v00() { }
     CThing* ParentThing;
     CModeList PModes;

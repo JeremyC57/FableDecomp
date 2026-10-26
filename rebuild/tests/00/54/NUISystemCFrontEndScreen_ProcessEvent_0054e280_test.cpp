@@ -6,7 +6,7 @@ static void Log(const char* s) { strcat(g_log, s); strcat(g_log, " "); }
 static void LogN(const char* s, long n) { char b[64]; sprintf(b, "%s%lx", s, n); Log(b); }
 static void Reset() { g_log[0] = 0; }
 static bool Is(const char* want) { return strcmp(g_log, want) == 0; }
-struct CCPPointerInfo { long Count; int Destroyed; };
+class CCPPointerInfo { public: long Count; int Destroyed; };
 static int g_deleted;
 struct CActionPointer {
  void* Data; CCPPointerInfo* Info;

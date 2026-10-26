@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CAtmosBankEntry { int a; int b; };
+class CAtmosBankEntry { public: int a; int b; };
 struct GFVector { CAtmosBankEntry* begin; CAtmosBankEntry* end; };
 
 struct Serialiser {

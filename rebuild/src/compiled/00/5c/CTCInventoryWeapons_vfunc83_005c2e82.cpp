@@ -13,7 +13,7 @@
 // retail; PActiveRangedWeapon really is unaligned (+0x141), so the 8-byte CIntelligentPointer is modelled as a
 // byte-aligned blob. The real method name is unknown. Local model (no engine header for CTCInventoryWeapons).
 #pragma optimize("s", on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x8c];
     unsigned short DefIndex;                  // +0x8C
     void SetInLimbo(bool inLimbo);            // 0x004C8CF0
@@ -27,9 +27,9 @@ struct CTCInventoryBase_Retail {
     void vfunc_83(CThing* thing);             // 0x005BF4ED
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     CIntelligentPointer PActiveMeleeWeapon;   // +0x134
     long ActiveMeleeWeaponDefIndex;           // +0x13C
     bool MeleeWeaponCarriedOnLoad;            // +0x140

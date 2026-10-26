@@ -1,13 +1,13 @@
 // behaviour test for 0x00701840 COpinionReactionManager::GetThingAttitudeToPlayer and 0x007018B0 ...AsString
 #include <cstdio>
-struct CTCOpinionSource { int id; };
-struct CThing { bool has; CTCOpinionSource* tc;
+class CTCOpinionSource { public: int id; };
+class CThing { public: bool has; CTCOpinionSource* tc;
     unsigned int HasTC(long) const { return has; } CTCOpinionSource* GetTC(long) { return tc; } };
-struct CPlayer { CThing* creature; CThing* GetControlledCreature() { return creature; } };
-struct CWorld { CPlayer* player; CPlayer* GetCurrentPlayer() { return player; } };
-struct CCharString { const char* text; };
+class CPlayer { public: CThing* creature; CThing* GetControlledCreature() { return creature; } };
+class CWorld { public: CPlayer* player; CPlayer* GetCurrentPlayer() { return player; } };
+class CCharString { public: const char* text; };
 static CCharString g_OpinionAttitudeNames[4] = { { "NONE" }, { "LIKE" }, { "HATE" }, { "FEAR" } };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     CWorld* World; bool AttitudeMask[79];
     const CTCOpinionSource* lastSource; const bool* lastMask;
     long GetAttitudeOrReactionType(const CThing*, bool attitudeOnly, bool* mask, CTCOpinionSource* source)

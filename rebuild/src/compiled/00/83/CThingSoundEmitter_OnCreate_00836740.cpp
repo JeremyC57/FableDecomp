@@ -11,7 +11,7 @@
 //   AttachedToThing +0x9c, PAttachedThing +0x9d, ContinuePlayingAfterAttachedThingDeath +0xa5, Pos +0xa6.
 // Shape: `if (base && global) { store; if (stored) return true; } return false;` -- one `xor al,al` exit at the end; the new sound object is
 //   stored before its null test (`test eax,eax ; mov [esi+98h],eax ; je`).
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CSoundPlayer;
 
 struct CGameState {                                      // 0x013B8394
@@ -20,14 +20,14 @@ struct CGameState {                                      // 0x013B8394
 };
 extern CGameState* g_pGameState;                         // 0x013B8394
 
-struct CThing {
+class CThing { public:
     virtual void v000();
     unsigned char _pad04[0x94];
     bool OnCreate();                                     // 0x004C9560
 };
 
 #pragma pack(push, 1)
-struct CThingSoundEmitter : CThing {
+class CThingSoundEmitter : public CThing { public:
     CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
     bool           AttachedToThing;                      // +0x9c
     unsigned char  PAttachedThing[8];                    // +0x9d CIntelligentPointer<CThing>

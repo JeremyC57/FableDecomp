@@ -26,13 +26,13 @@ static int fails = 0;
 //        taker of the coin; extern, the tag gets its own frame byte, frame 0x50). The mesh call reaches the coin's
 //        thing pointer through a reference local, so its address is formed before the stack arguments (retail).
 class CThing;
-struct CThingObject;
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class CThingObject;
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { float m[6]; };
+class CRightHandedSet { public: float m[6]; };
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     C2DVector Velocity;                         // +0x0c
@@ -87,7 +87,7 @@ __declspec(noinline) void CCoinVector::_M_insert_overflow(Coin* position, const 
 void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CRightHandedSet& rh,
                              const C3DVector& offset, long a, float angle);   // 0x005EABC0
 
-struct CTavernGameCoinBaseDef {
+class CTavernGameCoinBaseDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          m_count;                      // +0x04
@@ -133,7 +133,7 @@ struct CThingDefOwner {
     CThingDefHolder* DefHolder;                 // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThingDefOwner* ParentThing;                // +0x04
     CThing* CreateGamePiece(long model);        // 0x005EA9B0 (CThingObject*)

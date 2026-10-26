@@ -10,7 +10,7 @@
 //   pre-allocation zero store and the three byte stores; the position members get no initialiser (no stores).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     long DecrementScriptCounter();                 // 0x00A3E420
 };
 

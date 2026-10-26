@@ -5,7 +5,7 @@
 // Identity: FableWin.pdb names ?OnPostRelocation@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ.
 // Shape: the manager is read once into ebx (a named local); the four children are a counted loop (ebp = 4, esi
 // walks &Children[i]) with a null test; the collection chain is a for loop over Next (aligned loop heads).
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CQuadTreeElement;
 
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
@@ -13,11 +13,11 @@ struct CObjectCacheGroupCollection {               // polymorphic; the chain is 
     CObjectCacheGroupCollection* Next;             // +0x04
 };
 
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CQuadTreeElement* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail)
 };
 

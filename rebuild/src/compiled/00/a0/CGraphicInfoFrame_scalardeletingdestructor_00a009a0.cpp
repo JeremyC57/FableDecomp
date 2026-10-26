@@ -25,11 +25,11 @@ struct CSharedPointer {
         }
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                         // 0x0099A2E0
 };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     CBaseClass     m_base;                 // +0x00 (vptr)
     long           m_frame;                // +0x04
     CSharedPointer m_pInfo;                // +0x08

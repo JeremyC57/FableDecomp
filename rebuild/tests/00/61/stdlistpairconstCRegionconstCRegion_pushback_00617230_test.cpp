@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CRegion { int m_id; };
+class CRegion { public: int m_id; };
 
 namespace stl {
 template <class _T1, class _T2> struct pair {

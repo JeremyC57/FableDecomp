@@ -6,9 +6,9 @@ struct Entity {
     unsigned char flags; // +0x91
 };
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 typedef Entity* (__fastcall* GetEntityFn)(CGameScriptInterface*);
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void** vt;
 };
 

@@ -50,12 +50,12 @@ public:
 }
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
 enum ECreateDeviceSuccess { CREATE_DEVICE_OK = 0 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
     C2DExtentsI(long width, long height) : Width(width), Height(height) {}
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };

@@ -21,7 +21,7 @@ struct CEngineStateBlockDiffuseOnly : CEngineStateBlock { virtual void v00(); CE
 struct CEngineStateBlockDiffuse2X : CEngineStateBlock { virtual void v00(); CEngineStateBlockDiffuse2X() { } };   // vtable 0x012A0EBC
 struct CEngineStateBlockDiffuseEnv2X : CEngineStateBlock { virtual void v00(); CEngineStateBlockDiffuseEnv2X() { } };   // vtable 0x012A0EC4
 
-struct CEngineStateBlocks : CStateBlocksBase_00b59710 {   // vtable 0x012A0ECC
+class CEngineStateBlocks : public CStateBlocksBase_00b59710 { public:   // vtable 0x012A0ECC
     CEngineStateBlockSolid             m_00;    // +0x0c
     CEngineStateBlockSolid2X           m_01;    // +0x10
     CEngineStateBlockAlpha             m_02;    // +0x14

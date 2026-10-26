@@ -1,4 +1,4 @@
-struct CCreatureDef {
+class CCreatureDef { public:
     void* vftable;
 };
 

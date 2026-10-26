@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     char pad[0x19c];
     float f19c;
     float f1a0;

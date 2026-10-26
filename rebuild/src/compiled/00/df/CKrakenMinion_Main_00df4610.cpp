@@ -10,18 +10,18 @@
 // Shape: the landed CFH_BriarRose / CV_ChickenKickingScript models: the handle is a 0x10-byte local (out-of-line base ctor,
 //   own vtable store, PImp words zeroed through eax, out-of-line dtor on every exit after its construction); the start loop is
 //   `while (!Start(...)) { NewScriptFrame(); if (IsDone()) return; }` (rotated); the marker name is an implicit conversion.
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
     ~CScriptThing();                          // 0x004AA840
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGH = 3 };
-struct CBaseObject {                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
+class CBaseObject { public:                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
     virtual void v00();
     void* m_pIntelligentPointer;               // +0x04
     CBaseObject();                             // 0x0099A380
@@ -31,7 +31,7 @@ struct CCountedPointerWords {                  // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
@@ -39,7 +39,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     bool IsScripting();                        // 0x00CD23B9
     void Release();                            // 0x00CD2770
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)

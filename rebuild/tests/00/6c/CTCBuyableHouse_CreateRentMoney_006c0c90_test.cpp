@@ -4,15 +4,15 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CCharString {
+class CTCBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
     ~CCharString() {}
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -29,9 +29,9 @@ struct CInterfaceMap {
         return lo;
     }
 };
-struct CTCOwnedEntity { CThing* Owner; void SetPOwner(CThing* owner) { Owner = owner; } };
-struct CTCGold { long Gold; };
-struct CThing {
+class CTCOwnedEntity { public: CThing* Owner; void SetPOwner(CThing* owner) { Owner = owner; } };
+class CTCGold { public: long Gold; };
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry Entries[2];
@@ -60,7 +60,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player, void*, unsigned long, const CCharString&);
 };
 static CThingObject g_bags[16];
@@ -78,14 +78,14 @@ CThingObject* __fastcall CThingObject::Create(long defIndex, const C3DVector* po
     return b;
 }
 static long g_goldIndex = 7;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return strcmp(name.Text, "OBJECT_GOLDBAG_SMALL_WITH_COINS") == 0 ? g_goldIndex : 0; }
 };
 static CDefinitionManager g_defs;
 struct CGameTime { long Day; };
-struct CWorld { CGameTime* Time; };
+class CWorld { public: CGameTime* Time; };
 static CGameTime g_time; static CWorld g_world = { &g_time };
-struct CBuyableHouseDef {
+class CBuyableHouseDef { public:
     long* Rent_First;
     long* Rent_Last;
     long* Rent_End;
@@ -95,7 +95,7 @@ struct CBuyableHouseDef {
 template<class T> inline const T& min_of(const T& a, const T& b) { return b < a ? b : a; }
 static long g_existingBags, g_destroyed, g_trophies;
 static int g_posFailIndex = -1;
-struct CTCBuyableHouse {
+class CTCBuyableHouse { public:
     CThing*           ParentThing;
     CBuyableHouseDef* PDef;
     bool              Rented;

@@ -14,9 +14,9 @@
 #define __int64 long long
 #endif
 
-struct CTCBase;
-struct CBaseObject {};
-struct CThing;
+class CTCBase;
+class CBaseObject { public:};
+class CThing;
 
 struct CInterfaceMap {                                    // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -52,11 +52,11 @@ struct CThingDef {
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CCreatureDef : CThingDef {
+class CCreatureDef : public CThingDef { public:
     unsigned char _pad08[0x148 - 0x08];
     unsigned char Flags148;                               // +0x148 (bit 5: a melee attacker needs a melee weapon)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Data;
     CDefPointer() : Data(0) {}                            // test only: things are built here
     CDefPointer(const CDefPointer& other) : Data(other.Data) { if (Data) Data->AddRef(); }
@@ -64,18 +64,18 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Data; }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* PrimarySlot;                                  // test: the item in the primary slot
     CThing* GetThingInPrimarySlot() const { return PrimarySlot; }   // 0x006A1440
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     bool Projectile;                                      // test
     bool Melee;                                           // test
     bool IsProjectileWeapon() const { return Projectile; }    // 0x005DAA40
     bool IsMeleeWeapon() const { return Melee; }              // 0x005DAA00
 };
-struct CThingCreatureBase;
-struct CTCCombat {
+class CThingCreatureBase;
+class CTCCombat { public:
     CThingCreatureBase* Owner;                            // test: the creature this component belongs to
     bool EndsAttack;                                      // test: the response takes the owner out of melee
     int Calls;                                            // test
@@ -83,7 +83,7 @@ struct CTCCombat {
     void ApplyBlockResponse(CThing* attacked);            // 0x00733CF0
 };
 
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;                            // +0x18
     unsigned long UsingComponents[9];                     // +0x20
@@ -114,7 +114,7 @@ struct CThing : CBaseObject {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long RangedWeaponDef;                                 // test
     long MeleeWeaponDef;                                  // test
     bool InMeleeAsAttacker;                               // test
@@ -139,7 +139,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { ++g_setPItemCalls; PData = item; }   // 0x00A01B90
     CBaseObject* PData;                                   // +0x04
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPointer(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPointer(other.GetPointer()); return *this; }
@@ -148,7 +148,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vt
     void SetPointer(T* item) { SetPItem(item); }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual void v05() {}
     virtual void v06() {}
@@ -173,7 +173,7 @@ template<class T> struct CRetailVector {                  // STLport vector, 12 
     T* last;
     T* end_of_storage;
 };
-struct CAttackingCombatantInfo {                          // retail 0x30 bytes
+class CAttackingCombatantInfo { public:                          // retail 0x30 bytes
     CThingCreatureBase* Attacked;                         // +0x00
     long AttackerNumber;                                  // +0x04
     long CombatWheelRingIndex;                            // +0x08
@@ -215,8 +215,8 @@ CCombatantMap::node* CCombatantMap::find(const unsigned __int64& key)
             return g_nodes[i];
     return header;
 }
-struct CCombatManager;
-struct CombatDialogueManager {
+class CCombatManager;
+class CombatDialogueManager { public:
     unsigned long NextSpeech;                             // test: what GetBestSpeechForCreature answers
     int BestCalls;                                        // test
     int SayCalls;                                         // test
@@ -247,7 +247,7 @@ bool CombatDialogueManager::SaySpeech(CThingCreatureBase& speaker, unsigned long
     SaidSpeech = speech;
     return true;
 }
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00() {}
     unsigned char _sequences[0xc];                        // +0x04 RegisteredCombatSequences
     CCombatantMap Combatants;                             // +0x10

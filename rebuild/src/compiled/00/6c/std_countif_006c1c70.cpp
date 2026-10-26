@@ -12,7 +12,7 @@
 // Building is loaded once into ebp, the counter is a frame slot (register pressure), the empty-range test is hoisted
 // (speed TU: loop head aligned with `lea ecx,[ecx]`). The work building is read through an inline accessor on the
 // creature (`lea ecx,[eax+170h]`); chaining `->WorkBuilding.GetPItem()` directly gives `add eax,170h ; mov ecx,eax`.
-struct CBaseObject;
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v000();
@@ -62,7 +62,7 @@ public:
     CThing* GetWorkBuilding() const { return WorkBuilding.GetPItem(); }
 };
 
-struct HasBuildingAsWork {
+class HasBuildingAsWork { public:
     CThing* Building;                                        // +0x00
     bool operator()(const CIntelligentPointer<CThingAICreature>& creature) const
     {

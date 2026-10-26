@@ -14,8 +14,8 @@
 // PCameraModeDef +0x44, SubComponents +0x48, GoTo +0x54 (lists +0x78/+0x7C), CameraFOV +0x84 .. ViewOccluded +0xA0.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
 struct CAttractorList {                            // list<pair<C3DVector,float>> (STLport, 4 bytes)
     void* _M_node;
     ~CAttractorList();                             // 0x0056CF20
@@ -28,13 +28,13 @@ struct CPhysicsState {                             // retail 0x30 bytes
     CAttractorList IncidentalAttractors;           // +0x28
     bool CullPhysics;                              // +0x2c
 };
-struct CCameraModeDef {
+class CCameraModeDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long RefCount;                                 // +0x04
     void ReleaseTemporary() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Def;
     ~CDefPointer()
     {
@@ -44,9 +44,9 @@ template <class T> struct CDefPointer {
         }
     }
 };
-template <class T> struct CCountedPointer { T* Data; void* Count; };
+template <class T> class CCountedPointer { public: T* Data; void* Count; };
 
-namespace NCameraModes { struct CSubComponentBase; }
+namespace NCameraModes { class CSubComponentBase; }
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 void __fastcall DestroyRange(CCountedPointer<NCameraModes::CSubComponentBase>* first,
                              CCountedPointer<NCameraModes::CSubComponentBase>* last,
@@ -62,10 +62,10 @@ struct CSubComponentVector {                       // vector<CCountedPointer<NCa
             free(_M_start);
     }
 };
-struct CGameCameraManager;
+class CGameCameraManager;
 
 namespace NCameraModes {
-struct CBase {                                     // vtable 0x0124DD74
+class CBase { public:                                     // vtable 0x0124DD74
     float DefaultFOV;                              // +0x04
     float DefaultRollAngle;                        // +0x08
     float DefaultObservedPositionZOffset;          // +0x0c

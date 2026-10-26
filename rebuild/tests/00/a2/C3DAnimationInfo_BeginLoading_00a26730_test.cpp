@@ -24,7 +24,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);        // +4
     void* m_pObject;                               // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                                     // +0
     SCountBlock* Info;                             // +4
     ~CCountedPointer()
@@ -41,7 +41,7 @@ template <class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     void Reset()
     {
@@ -63,30 +63,30 @@ template <class T> struct CIVCountedPointer {
 
 enum EThreadedFilePriority { };
 extern EThreadedFilePriority g_AnimationReadPriority;   // 0x01397244
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry {
+class CBankFileAsyncData;
+class CBankFileAsyncEntry { public:
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+4): last reference
     long m_references;                             // +0x04
     unsigned char _body[0x14];                     // to 0x1c
     void SetResourceSize(unsigned long size);      // 0x009FBF20
 };
-struct CResourceBank {
+class CResourceBank { public:
     void AddResource(CResource* resource);         // 0x009FC3D0
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned char _pad[0x268];
     CResourceBank ResourceBank;                    // +0x268
     unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 
-struct C3DAnimationInfo {
-    struct CAnimationData : CResource {
+class C3DAnimationInfo { public:
+    class CAnimationData : public CResource { public:
         unsigned char _1c[0x14];                   // track map +0x1c, +0x24, +0x28
         CCountedPointer<CBankFileAsyncData> FileData;   // +0x30
         const C3DAnimationInfo* Owner;             // +0x38

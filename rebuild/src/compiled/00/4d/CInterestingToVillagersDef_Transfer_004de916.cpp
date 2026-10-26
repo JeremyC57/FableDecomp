@@ -1,5 +1,5 @@
 #include "engine/CInterestingToVillagersDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer_00431061(void* sub); };
+class CPersistContext { public: void Xfer_00431061(void* sub); };
 struct CInterestingToVillagersDef_Methods : CInterestingToVillagersDef {
     void Transfer(CPersistContext* ctx);
 };

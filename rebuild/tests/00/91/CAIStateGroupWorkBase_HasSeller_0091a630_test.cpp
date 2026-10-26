@@ -2,7 +2,7 @@
 // an interaction, it is of type 8, and its participant list holds exactly two entries.
 #include <stdio.h>
 #include <string.h>
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace std {
 
@@ -49,7 +49,7 @@ public:
     const CCountedPointer<CCreatureInteraction>& GetPCreatureInteraction() const { return PCreatureInteraction; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };

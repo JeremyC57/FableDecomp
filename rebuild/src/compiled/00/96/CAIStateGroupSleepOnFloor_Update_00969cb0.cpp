@@ -13,15 +13,15 @@
 // Layout: local stand-ins; CAIStateGroupBase +0x4 PBrain, +0x14 PSleepPoint (IP, 8 bytes), +0x1c Asleep (retail
 //         disassembly). The mode strings are passed as const char* and converted implicitly (an explicit
 //         CCharString temporary pushes each address right after its ctor instead of after both).
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,7 +56,7 @@ struct CTCOccupiable {                          // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
     void SetOccupant(CThing* occupant);         // 0x0087C390
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -73,20 +73,20 @@ struct CCountedModePointer {                    // CCountedPointer<CModeBase>
     ~CCountedModePointer();                     // run by the callee
 };
 namespace NCreatureMode {
-struct CModeSleepBed : CModeBase {              // 0x34 bytes, vtable 0x01275760
+class CModeSleepBed : public CModeBase { public:              // 0x34 bytes, vtable 0x01275760
     unsigned char _body[0x30];
     CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group);   // 0x0084B7C0
 };
 }
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     bool AddMode(CCountedModePointer mode);     // 0x0073ACC0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -94,7 +94,7 @@ struct CCreatureActionBase {
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
@@ -117,7 +117,7 @@ struct CCountedPointer {
         Block = 0;
     }
 };
-struct CBrainOutput {                               // 0x48 bytes
+class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                        // +0x20
@@ -128,12 +128,12 @@ struct CBrainOutput {                               // 0x48 bytes
 struct CThingCreature : CThing {
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

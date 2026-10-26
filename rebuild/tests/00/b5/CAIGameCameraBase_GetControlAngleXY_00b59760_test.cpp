@@ -3,7 +3,7 @@
 struct Loc { int v; };
 static int g_consumed=0;
 extern "C" void FABLE_FASTCALL FableConsume_b59760(Loc *p){ g_consumed=p->v; }
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v0(){} virtual void v1(){} virtual void v2(){} virtual void v3(){}
     virtual void v4(){} virtual void v5(){} virtual void v6(){} virtual void v7(){}
     virtual void v8(){} virtual void GetSub(Loc *out){ out->v=99; }

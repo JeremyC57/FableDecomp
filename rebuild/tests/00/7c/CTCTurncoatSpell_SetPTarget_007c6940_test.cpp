@@ -2,7 +2,7 @@
 // TurncoatTime entry for the caster's turncoat ability level (ability 5); nothing when the caster has no abilities TC
 #include <cstdio>
 class CThing;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -32,7 +32,7 @@ public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static int g_live = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() {}
@@ -42,7 +42,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return (CThing*)PData; }
     void SetPItem(CThing* item) { PData = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -60,16 +60,16 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCTurncoat { float timeLast; void SetTurncoatTimeLast(float time) { timeLast = time; } };
-struct CTCInventoryAbilities { long level; long GetAbilityLevel(long ability) const { return ability == 5 ? level : -1; } };
+class CTCTurncoat { public: float timeLast; void SetTurncoatTimeLast(float time) { timeLast = time; } };
+class CTCInventoryAbilities { public: long level; long GetAbilityLevel(long ability) const { return ability == 5 ? level : -1; } };
 struct CFloatVector {
     float* _M_start;
     float* _M_finish;
     float* _M_end_of_storage;
     const float& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CSpecialAbilitiesTurncoatSpellDef { CFloatVector TurncoatTime; };
-struct CTCTurncoatSpell {
+class CSpecialAbilitiesTurncoatSpellDef { public: CFloatVector TurncoatTime; };
+class CTCTurncoatSpell { public:
     void*                     __vftable;
     CThing*                   ParentThing;
     CSpecialAbilitiesTurncoatSpellDef* PDef;

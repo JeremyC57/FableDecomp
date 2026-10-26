@@ -5,14 +5,14 @@ typedef unsigned long ulong;
 struct StatMap { int dummy; };
 enum EEnginePrimitiveStatIndex { EPSI_A = 0 };
 
-struct CEngineInternalPrimitiveMeshBase;
+class CEngineInternalPrimitiveMeshBase;
 
 void __fastcall Inner_CollectStats(CEngineInternalPrimitiveMeshBase* self,
                                    StatMap& stats,
                                    EEnginePrimitiveStatIndex idx,
                                    ulong count);
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     char pad[0x50];
     CEngineInternalPrimitiveMeshBase* m_inner;
     void CollectStats(StatMap& stats, EEnginePrimitiveStatIndex idx, ulong count);

@@ -15,7 +15,7 @@ void __fastcall SubCall(Obj* self, void* arg2, unsigned char flag)
     ++g_callCount;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Obj*          field0;
     void*         ParentThing;
     unsigned char ToBeRemoved;

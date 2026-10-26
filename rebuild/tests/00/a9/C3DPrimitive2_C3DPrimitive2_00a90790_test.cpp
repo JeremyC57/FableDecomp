@@ -9,9 +9,9 @@ static int g_armed;
 static void Log(const char* s) { if (g_armed) { std::strcat(g_log, s); std::strcat(g_log, ";"); } }
 static void free_spy(void* p) { char b[32]; std::sprintf(b, "free%d", *(int*)p); Log(b); }
 static void delete_block_spy(void*) { Log("deleteblock"); }
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static void DestroyTree(void*) { Log("tree"); }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     ~CCountedPointer()
     {
@@ -22,21 +22,21 @@ template<class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct C3DClothPrimitive; struct C3DMeshPartitionElement;
+class C3DClothPrimitive; class C3DMeshPartitionElement;
 static void DestroyRange_CountedPointer_00a96940(CCountedPointer<C3DClothPrimitive>* first, CCountedPointer<C3DClothPrimitive>* last)
 { char b[32]; std::sprintf(b, "cloth%d", (int)(last - first)); Log(b); }
 inline void DestroyRange(unsigned short*, unsigned short*) {}
 inline void DestroyRange(unsigned long*, unsigned long*) {}
 inline void DestroyRange(CCountedPointer<C3DClothPrimitive>* first, CCountedPointer<C3DClothPrimitive>* last)
 { DestroyRange_CountedPointer_00a96940(first, last); }
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     ~CArray() { DestroyRange(m_begin, m_end); if (m_begin) free_spy(m_begin); }
 };
 struct CPolymorphicResource { const char* Name; virtual ~CPolymorphicResource() { Log(Name); } };
 template<class T> struct scoped_ptr { T* m_p; ~scoped_ptr() { if (m_p) m_p->~T(); } };   // the test objects are static: run the dtor only
-struct CMovableResource { virtual ~CMovableResource() { Log("base"); } };
-struct C3DPrimitive2 : CMovableResource {
+class CMovableResource { public: virtual ~CMovableResource() { Log("base"); } };
+class C3DPrimitive2 : public CMovableResource { public:
     CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;
     scoped_ptr<CPolymorphicResource> Data, VertexBuffer, IndexBuffer;
     CArray<unsigned short> PartitionedMeshSourceIndexBuffer;

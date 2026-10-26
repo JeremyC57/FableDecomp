@@ -4,8 +4,8 @@
 #include <cstring>
 #include <string>
 
-struct CConsoleInputBase
-{
+class CConsoleInputBase
+{ public:
     const char* Type;
     std::string Name;
     std::string GetTypeAsString() const { return Type; }
@@ -39,8 +39,8 @@ struct CInputIterator
     }
 };
 
-struct CConsole
-{
+class CConsole
+{ public:
     SInputNode* Header;
     std::string Output;
     void SendMessageToUser(const std::string& m) { Output += m; Output += ";"; }

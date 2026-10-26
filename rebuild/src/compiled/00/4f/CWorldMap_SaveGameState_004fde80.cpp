@@ -11,7 +11,7 @@
 // Layout: retail CWorldMap Regions vector<CRegion> at +0x2C (0x58-byte CRegion, Name +0x18), as the landed
 //   SetRegionAsLoaded 0x004FC8A0 (the PDB header rebuild/include/engine/CWorldMap.h has 16-byte containers: +0x34);
 //   CPersistContext Mode +0x18, load stream +0x24, save stream +0x28.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -21,10 +21,10 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                          // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() {}
@@ -32,7 +32,7 @@ template <class T> struct CPersistTraits {
 };
 
 template <class T> struct CPersistTraits;
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 extern "C" int StandInSink(int, int);
 #pragma auto_inline(off)
 template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInputStream* stream, unsigned long* value)
@@ -40,7 +40,7 @@ template <> void CPersistTraits<unsigned long>::TransferBinaryIn(CMemoryDataInpu
     *value = (unsigned long)StandInSink((int)stream, (int)DefaultVal);
 }
 #pragma auto_inline(on)
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                        // +0x18
     unsigned char           _pad1c[8];
@@ -65,7 +65,7 @@ struct CPersistContext {
     }
 };
 
-struct CRegion {                                         // 0x58 bytes
+class CRegion { public:                                         // 0x58 bytes
     unsigned char _pad00[0x18];
     CCharString   Name;                                  // +0x18
     unsigned char _rest[0x58 - 0x1c];
@@ -80,7 +80,7 @@ template <class T> struct CRetailVector {
     T& operator[](unsigned long i) { return *(begin() + i); }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char          _pad[0x2c];
     CRetailVector<CRegion> Regions;             // +0x2C
     void SaveGameState(CPersistContext& context);

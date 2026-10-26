@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CBankFile {
+class CBankFile { public:
     void* vftable;
     int destroyed;
 };

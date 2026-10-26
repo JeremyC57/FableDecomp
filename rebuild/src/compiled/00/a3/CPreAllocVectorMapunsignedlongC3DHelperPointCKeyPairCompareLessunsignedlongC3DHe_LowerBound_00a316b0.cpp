@@ -13,13 +13,13 @@ template <class K, class V> struct pair {
     V second;
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DHelperPoint {                 // Ego_r.pdb, 16 bytes
+class C3DVector { public: float X, Y, Z; };
+class C3DHelperPoint { public:                 // Ego_r.pdb, 16 bytes
     C3DVector Position;                 // +0x00
     long      BoneIndex;                // +0x0C
 };
 
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C> struct CPreAllocVectorMap {
     C              Compare;             // +0x00

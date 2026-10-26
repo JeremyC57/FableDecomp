@@ -11,18 +11,18 @@
 //        (an extern Reset makes VC7.1 reload the count after the decrement, `dec [eax] ; cmp [esi],0`).
 void* operator new(unsigned int size);                 // 0x00BFEA1A
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CWideString ToWideString() const;                  // 0x0099E480
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 class CAFile { public: virtual void v00(); };
-struct CWADBank;
+class CWADBank;
 class CWADFile : public CAFile {
 public:
     CWADFile(CWADBank* bank, const CWideString& name, FileAccessType access, unsigned long flags);   // 0x00A39D80
@@ -33,12 +33,12 @@ public:
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);         // 0x0099AD80
     unsigned char _body[0x18];
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }

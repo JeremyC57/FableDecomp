@@ -1,4 +1,4 @@
-struct CTCHeroSpecialMovement {
+class CTCHeroSpecialMovement { public:
     void* vftable;
 };
 

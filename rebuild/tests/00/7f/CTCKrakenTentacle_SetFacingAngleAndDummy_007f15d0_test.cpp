@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* t) { std::strcpy(m_text, t); }
     CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     float FacingAngle; CCharString DummyName; int returns; bool lastImmediate;
     CTCKrakenTentacle() : FacingAngle(0), DummyName(""), returns(0), lastImmediate(false) { }
     void ReturnToDesiredPos(bool immediately) { ++returns; lastImmediate = immediately; }

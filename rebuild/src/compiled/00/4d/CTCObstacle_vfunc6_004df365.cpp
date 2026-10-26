@@ -11,7 +11,7 @@
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 
-struct CThing;
+class CThing;
 
 struct SAllocator { SAllocator() {} };          // empty allocator (user constructor: no zero fill of the temporary)
 
@@ -31,14 +31,14 @@ template<class T> struct CRetailVector : CVectorBase<T> {
     CRetailVector() : CVectorBase<T>(SAllocator()) {}
 };
 
-struct CObstacleNavigatorExternalInterface {
+class CObstacleNavigatorExternalInterface { public:
     virtual void v00();
     CThing*               m_pThing;                 // +0x04
     CRetailVector<void*>  m_entries;                // +0x08 (three words)
     CObstacleNavigatorExternalInterface(CThing* thing) : m_pThing(thing) {}
 };
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     unsigned char _body[0x68];
     CSteeringAgent(CObstacleNavigatorExternalInterface* navigatorInterface, bool flag);   // 0x00A1C700
 };
@@ -49,7 +49,7 @@ struct CTCBase_004df365 {
     unsigned char _pad08[4];
 };
 
-struct CTCObstacle : CTCBase_004df365 {
+class CTCObstacle : public CTCBase_004df365 { public:
     CSteeringAgent*                      SteeringAgent;   // +0x0c
     CObstacleNavigatorExternalInterface* PInterface;      // +0x10
     virtual void vfunc_6();

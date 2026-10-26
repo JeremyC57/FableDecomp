@@ -26,16 +26,16 @@ struct CSharedPointer {
         }
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                         // 0x0099E4B0
     ~CCharString();                        // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();
     virtual ~CBaseClass();                 // 0x0099A2E0
 };
-struct C3DMeshMaterial : CBaseClass {
+class C3DMeshMaterial : public CBaseClass { public:
     long           m_flags;                // +0x04
     CCharString    m_name;                 // +0x08
     unsigned char  _pad0c[0x20];           // +0x0c (plain material parameters)

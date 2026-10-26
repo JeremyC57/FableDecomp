@@ -64,12 +64,12 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineLandscapeMap;
-struct CIndexBuffer;
-struct CVertexBufferWin32;
+class CEngineLandscapeMap;
+class CIndexBuffer;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch { public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08
@@ -128,16 +128,16 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWaterBackgroundSubPatch, MaxZ) == 0x5c);
 #include <stddef.h>
 
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CStaticMapBankFile;
-struct CTexture;
-struct CWaterGenerator;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CCharStringData;
+class CStaticMapBankFile;
+class CTexture;
+class CWaterGenerator;
 
 #pragma pack(push, 1)
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04
     unsigned char        _pad_0x08[0x4];                     // +0x08
@@ -305,8 +305,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x604);
 #endif // FABLE_ENGINE_CENGINEWATERRENDERER_H
 
 #undef CEngineWaterRenderer
-struct CEngineMap;struct CPatchTesselationEdgeStrip;struct CMovableResource;
-struct CTesselationData {
+class CEngineMap;class CPatchTesselationEdgeStrip;class CMovableResource;
+class CTesselationData { public:
  void* VTable;int PatchWorldX,PatchWorldY,Width,Height;CEngineMap* EngineMap;CIndexBuffer* IndexBuffer;
  CPatchTesselationEdgeStrip* EdgeStrips[4];CVertexBufferWin32* BridgeVertexBuffers[4];CIndexBuffer* BridgeIndexBuffers[4];int BridgePolyCount[4];
 };

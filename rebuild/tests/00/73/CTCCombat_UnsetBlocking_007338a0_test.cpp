@@ -3,7 +3,7 @@
 // are cleared and the neighbouring flags are untouched.
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -16,7 +16,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     while (p != last && p->type < *type) ++p;
     return p;
 }
-struct CTCCreatureModeManager { void RemoveMode(unsigned long mode); };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long mode); };
 static unsigned long g_removed = 0xffffffff;
 static int g_calls;
 void CTCCreatureModeManager::RemoveMode(unsigned long mode) { g_removed = mode; ++g_calls; }

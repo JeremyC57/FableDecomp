@@ -1,7 +1,7 @@
 // Behaviour test for 0x008111F0 CEventPerformedSpecialAbility(EHeroAbility) (model copy with a stub definition manager).
 #include <cstdio>
 #include <cstring>
-struct CHeroAbilityDef { int RefCount; int released; long Ability; bool Aggressive; };
+class CHeroAbilityDef { public: int RefCount; int released; long Ability; bool Aggressive; };
 static CHeroAbilityDef g_defs[5];
 static int g_lookups = 0, g_badType = 0;
 struct DefPtr {

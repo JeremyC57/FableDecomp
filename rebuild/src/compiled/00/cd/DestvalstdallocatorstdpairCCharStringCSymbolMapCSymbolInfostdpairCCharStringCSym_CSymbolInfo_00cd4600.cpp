@@ -6,7 +6,7 @@
 // by CCharString::~CCharString (retail 0x0099eae0, a this-in-ecx call). The
 // final dtor call is a tail-call (mov ecx,esi; pop esi; jmp).
 
-struct CCharString {
+class CCharString { public:
     char* p;
 };
 

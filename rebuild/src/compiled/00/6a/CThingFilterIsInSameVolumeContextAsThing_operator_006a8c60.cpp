@@ -9,7 +9,7 @@
 //   the TC 0x33 component's owner pointer at +0xd (CTCOwnedEntity::POwner, an odd-offset intelligent pointer).
 // Shape: the volume thing is chosen by HasTC/GetTC on 0x75 then 0x33 (the two GetPItem calls merge into one site), both
 //   aliveness tests are the inline IS_THING_ALIVE into bool locals, and the agreement is `(!a && !b) || (a && b)`.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CInterfaceMap {
 };
 
 class CThing;
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;              // 0x00A01B50
     CThing* GetThing() const { return (CThing*)GetPItem(); }
@@ -27,7 +27,7 @@ struct CTCInsideBuilding {                      // TC 0x75
     unsigned char _pad00[0x0c];
     CBaseIntelligentPointer PBuilding;          // +0x0c
 };
-struct CTCOwnedEntity {                         // TC 0x33
+class CTCOwnedEntity { public:                         // TC 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };
@@ -57,7 +57,7 @@ public:
 };
 inline bool IS_THING_ALIVE(const CThing* thing) { return thing && !thing->Dead; }
 
-struct CThingFilter_IsInSameVolumeContextAsThing {
+class CThingFilter_IsInSameVolumeContextAsThing { public:
     CThing* PThingInside;                       // +0x00
     bool Override;                              // +0x04
     bool operator()(CThing* thing) const;

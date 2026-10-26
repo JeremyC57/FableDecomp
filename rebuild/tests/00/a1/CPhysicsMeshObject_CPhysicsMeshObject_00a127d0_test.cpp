@@ -1,12 +1,12 @@
 // self-contained copy of the CPhysicsMeshObject model
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCharString { const char* m_pData; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCharString { public: const char* m_pData; };
 struct C3DVectorVector { C3DVector* first; C3DVector* last; C3DVector* end_of_storage; };
 static int g_meshDestroyed = 0;
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     long m_refCount; bool m_navInfo; const char* m_volume; C3DVector m_points[2];
     virtual void v00() { }
     virtual void DeleteThis() { ++g_meshDestroyed; }
@@ -14,7 +14,7 @@ struct CPhysicsMesh {
     bool HasNavigationLineListInfo() const { return m_navInfo; }
     void GetRigidBodyBoundingPoints(C3DVectorVector& points) const { points.first[0] = m_points[0]; points.first[1] = m_points[1]; points.last = points.first + 2; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) ++m_pObject->m_refCount; }
@@ -38,8 +38,8 @@ struct CScaleElements {
 static CScaleElements ForEach_ScaleElements(C3DVector* first, C3DVector* last, CScaleElements f)
 { for (; first != last; ++first) { first->X *= f.m_scale; first->Y *= f.m_scale; first->Z *= f.m_scale; } return f; }
 static int g_baseDestroyed = 0;
-struct CBaseClass { virtual void v00() { } CBaseClass() { } ~CBaseClass() { ++g_baseDestroyed; } };
-struct CPhysicsMeshObject : CBaseClass {
+class CBaseClass { public: virtual void v00() { } CBaseClass() { } ~CBaseClass() { ++g_baseDestroyed; } };
+class CPhysicsMeshObject : public CBaseClass { public:
     CIVCountedPointer<CPhysicsMesh> Mesh;
     C3DVector m_position; CRightHandedSet m_orientation;
     float Scale; float OO_Scale;

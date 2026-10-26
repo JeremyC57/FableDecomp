@@ -1,12 +1,12 @@
 // behaviour test for 0x0045EE9B COpinionSourceDef::operator=
 #include <cstdio>
 static int g_copies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
 struct CBox { int v; CBox& operator=(const CBox& o) { v = o.v; ++g_copies; return *this; } };
-struct COpinionSourceDef : CParentDefClassBase {
+class COpinionSourceDef : public CParentDefClassBase { public:
     CBox ProducedOpinion;
     bool AlwaysAwareOf, UnknownThreatSource, ReactNonstop, ReactToSelfPermitted, ReactionFlagDefault;
     CBox ReactionFlag;

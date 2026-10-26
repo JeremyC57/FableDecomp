@@ -8,17 +8,17 @@
 //   (`fld X ; fstp [eax] ; fstp [eax+4]` with Y still on the x87 stack); `a < b || c < d` gives the `test ah,5 ; jnp / jp` pair.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-struct CEngine;
+class CEngine;
 extern CEngine* g_pEngine;                         // 0x013B86A0
 float GetScreenWidth();                            // 0x0041CC14
 float GetScreenHeight();                           // 0x0041CC2B
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     C2DVector GetUIScale();
 };
 C2DVector CManager::GetUIScale()

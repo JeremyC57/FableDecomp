@@ -2,7 +2,7 @@
 // __fastcall member returning a CCharString by value, constructed from a
 // literal C-string with len=-1. The this pointer is unused.
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     int   m_len;
     int   m_ref;

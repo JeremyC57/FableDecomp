@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CCreatureInteraction::RemoveCreature (0x008631B0): same logic over a copy of the model.
-struct CThing { int id; };
-struct CThingCreatureBase : CThing { };
+class CThing { public: int id; };
+class CThingCreatureBase : public CThing { public: };
 struct CThingPointerList {
     CThing* items[4]; int count;
     void remove(CThing* const& value) { int w = 0; for (int r = 0; r < count; ++r) if (items[r] != value) items[w++] = items[r]; count = w; }
 };
-struct CCreatureInteraction {
+class CCreatureInteraction { public:
     CThingPointerList Participants;
     void RemoveCreature(CThingCreatureBase* creature) { Participants.remove(creature); }
 };

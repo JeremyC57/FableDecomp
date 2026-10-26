@@ -1,6 +1,6 @@
 // Behaviour test for NUISystem::CScrollingViewport::GetDataFromDef (0x0053ED40): copies speed + window from the def and drops the temporary's reference (destroying at zero).
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 static int g_destroyed = 0;
 struct CUIDef {
     long m_count;

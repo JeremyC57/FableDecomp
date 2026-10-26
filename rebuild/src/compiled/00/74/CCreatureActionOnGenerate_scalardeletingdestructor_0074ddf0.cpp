@@ -1,4 +1,4 @@
-struct CCreatureAction_OnGenerate {
+class CCreatureAction_OnGenerate { public:
     void* vftable;
 };
 

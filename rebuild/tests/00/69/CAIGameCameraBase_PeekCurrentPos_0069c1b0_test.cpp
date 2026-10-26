@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { unsigned long X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DVector { public: unsigned long X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 struct SCameraState { unsigned char _raw[0x38]; };
 static float g_blend = 0.0f; static C3DVector g_pos;
-struct CAIGameCameraBase { virtual void v00() {} virtual const C3DVector& Evaluate(SCameraState& state, float blend) { g_blend = blend; state._raw[0] = 1; return g_pos; } C3DVector PeekCurrentPos(); };
+class CAIGameCameraBase { public: virtual void v00() {} virtual const C3DVector& Evaluate(SCameraState& state, float blend) { g_blend = blend; state._raw[0] = 1; return g_pos; } C3DVector PeekCurrentPos(); };
 C3DVector CAIGameCameraBase::PeekCurrentPos() { SCameraState state; return Evaluate(state, 1.0f); }
 int main()
 {

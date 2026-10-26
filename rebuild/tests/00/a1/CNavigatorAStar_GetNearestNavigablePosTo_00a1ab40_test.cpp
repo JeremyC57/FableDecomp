@@ -1,7 +1,7 @@
 #include <stdio.h>
 // Behaviour test for CNavigatorAStar::GetNearestNavigablePosTo (0x00A1AB40).
-struct C3DVector { float X, Y, Z; void SetXY(float x, float y) { X = x; Y = y; } };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; void SetXY(float x, float y) { X = x; Y = y; } };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }

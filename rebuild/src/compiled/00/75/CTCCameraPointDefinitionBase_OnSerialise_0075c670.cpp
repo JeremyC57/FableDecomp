@@ -12,7 +12,7 @@
 // Shape: CoordBase is saved relative to the parent's position under an "IsCoordBaseRelativeToParent" flag (always written
 // true) and rebuilt on load; the axes are transferred through a local copy (Up default +Z, Forward default +X) and copied
 // back.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -20,16 +20,16 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& b) const { return C3DVector(X - b.X, Y - b.Y, Z - b.Z); }
     C3DVector operator+(const C3DVector& b) const { return C3DVector(X + b.X, Y + b.Y, Z + b.Z); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     CRightHandedSet() {}
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) { Up = up; Forward = forward; }
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

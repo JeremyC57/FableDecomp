@@ -8,11 +8,11 @@
 // `add edi,0Ch` for the position); both copies are whole-struct assignments (`lea ecx,[esi+N]` then
 // dword moves); the ForceVisible clear is the last statement.
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward, Up; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward, Up; };
 
-struct CTCPhysicsBase
-{
+class CTCPhysicsBase
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -36,15 +36,15 @@ struct CTCPhysicsBase
     C3DVector     Position;                         // +0x0c
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char   _pad_0x00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
 #pragma pack(push, 1)
-struct CTCBob
-{
+class CTCBob
+{ public:
     void*           __vftable;                      // +0x00 (CTCBase)
     CThing*         ParentThing;                    // +0x04 (CTCBase)
     unsigned char   _pad_0x08[0x4];                 // +0x08 (CTCBase flags)

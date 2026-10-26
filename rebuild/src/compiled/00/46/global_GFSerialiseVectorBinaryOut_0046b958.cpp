@@ -17,7 +17,7 @@
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteSLONG(long value);                             // 0x00993EB0
 };
-struct CMusicSetEntry {
+class CMusicSetEntry { public:
     long NormalMusicID;                                     // +0x00
     long DangerMusicID;                                     // +0x04
     long LoopCount;                                         // +0x08

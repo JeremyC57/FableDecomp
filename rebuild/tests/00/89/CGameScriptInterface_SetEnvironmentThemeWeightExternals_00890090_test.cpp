@@ -7,7 +7,7 @@ struct Inner {
     }
 };
 struct CMid { char pad[0x18]; Inner* PEnvironment; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+class CGameScriptInterface { public: void* vt; CMid* mid; };
 
 static Inner g_inner = {0,0,0};
 static int g_countReturn = 0;

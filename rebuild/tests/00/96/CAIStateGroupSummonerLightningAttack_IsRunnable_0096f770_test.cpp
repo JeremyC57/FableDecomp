@@ -12,7 +12,7 @@
 //   SMatch out dies at the call (retail packs it with the IP temporaries and the LOS distance word: frame 0x44); the world is a
 //   named local before the camera-manager call (this straight into ecx); the from-vector reads PBrain->PCreature directly.
 // Leaf: IsRunnable
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -20,17 +20,17 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
 };
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
     float GetLengthSquared() const { return x * x + y * y; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -80,12 +80,12 @@ struct CCameraManager {
     unsigned char _pad[0x78];
     CTools Tools;                               // +0x78
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool GetCameraManager(CCameraManager** out);   // slot 10 (+0x28)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     unsigned long* GetPRandomSeed();            // 0x0049D810
@@ -110,18 +110,18 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
     CIntelligentPointerThing& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CSummonerDef {
+class CSummonerDef { public:
     unsigned char _pad[0x28];
     float LightningRange;                       // +0x28
     float LightningChance;                      // +0x2c
     float LightningLOSChance;                   // +0x30
     float PreemptiveDelaySeconds;               // +0x34
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

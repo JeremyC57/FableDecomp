@@ -20,7 +20,7 @@ template<class T> inline const T& max(const T& a, const T& b) { return a < b ? b
 }
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     long RefCount;                                     // +0x04
@@ -30,7 +30,7 @@ struct CUIMiscThingsDef : CDefPointeeBase {
     unsigned char _pad_0x08[0x14c - 0x08];
     unsigned long TotalSpellsInContainer;              // +0x14c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other);
     explicit CDefPointer(T* object) : Object(object) { if (object) ++object->RefCount; }
@@ -51,7 +51,7 @@ struct CAbilityVector {                                // vector<EHeroAbility> (
     void clear() { erase(begin(), end()); }
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     unsigned char _pad_0x000[0x144];
     long CurrentAssignedAbilityLevel;                  // +0x144
     unsigned char _pad_0x148[0x154 - 0x148];

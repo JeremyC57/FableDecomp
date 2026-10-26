@@ -15,11 +15,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { ++g_livePointers; }
     ~CBaseIntelligentPointer() { --g_livePointers; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };

@@ -22,7 +22,7 @@ struct SScriptThingInfo {                          // the counted block behind C
     void* m_pObject;                               // +8
 };
 
-struct CScriptThing : CBase {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
     void* PImp_Data;                               // +0x04
     SScriptThingInfo* PImp_Info;                   // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }

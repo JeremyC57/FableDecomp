@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065688F, 20 bytes. Catalog name: std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>.
 // Body: destroy the member at +0x39 (CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10), then tail-call
 // the +0x10 member std::vector<CConversation,std::allocator<CConversation> >::~vector @ 0x00440C40. __thiscall, this = ecx.
-struct CConversation;
+class CConversation;
 namespace std {
 template<class T> struct allocator;
 template<class T, class A> struct vector {   // {first, last, end of storage}

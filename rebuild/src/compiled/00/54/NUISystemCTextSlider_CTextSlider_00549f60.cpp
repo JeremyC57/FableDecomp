@@ -7,8 +7,8 @@
 //        PActionsOnSelect, InputDelay, PDefAction, PLeftArrow, PRightArrow, PAcceptButton, MaxChild (the selection words,
 //        Move, LastInputTime and OriginalSelectedChild are left to Initialize()).
 // Layout: as RevertValue 0x005491A0 (retail = PDB - 0x30 up to Actions, - 0x34 after the 12-byte STLport vector).
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     T* operator->() const { return Data; }
@@ -25,7 +25,7 @@ template <class T> struct CRetailVector {        // STLport vector (12 bytes; PD
 template <class T> struct CRetailList;
 struct CComponent;
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CComponentInterface {
     virtual void v000();
 };
@@ -36,11 +36,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     CDraggableInto(long id);                     // 0x0052CC50
 };
-struct CTextSlider : CDraggableInto {            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
+class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164

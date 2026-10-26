@@ -2,11 +2,11 @@
 // handed over and released, melee re-entry, and the in-building flag on every path.
 #include <cstdio>
 static int g_removed = -1, g_destroyed = 0, g_set = 0, g_melee = 0, g_inMelee = 0;
-struct CPlayer { void RemoveMode(long mode) { g_removed = mode; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CEngine { CPlayerManager* m_pPlayerManager; };
+class CPlayer { public: void RemoveMode(long mode) { g_removed = mode; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CEngine { public: CPlayerManager* m_pPlayerManager; };
 static CEngine* g_pEngine;
-struct CCameraManagerSetDef {
+class CCameraManagerSetDef { public:
     long m_count;
     virtual ~CCameraManagerSetDef() {}
     virtual void Destroy() { ++g_destroyed; }
@@ -14,20 +14,20 @@ struct CCameraManagerSetDef {
     long GetRefCount() const { return m_count; }
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* o) : Object(o) { if (Object) ++Object->m_count; }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
 };
-struct CThing { unsigned char m_dead : 1; unsigned char m_91_1 : 7; CThing* building; };
-struct CThingBuilding : CThing {
+class CThing { public: unsigned char m_dead : 1; unsigned char m_91_1 : 7; CThing* building; };
+class CThingBuilding : public CThing { public:
     CCameraManagerSetDef* setDef;
     CDefPointer<CCameraManagerSetDef> PeekPCameraManagerSetDefinition() { return CDefPointer<CCameraManagerSetDef>(setDef); }
 };
 static CThingBuilding* GetPBuildingThingOccupying(CThing* thing) { return (CThingBuilding*)thing->building; }
 struct CBaseIntelligentPointer { CThing* item; CThing* GetPItem() const { return item; } };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); } };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); } };
 class CGameCameraManager {
 public:
     bool ObservedThingInBuilding;

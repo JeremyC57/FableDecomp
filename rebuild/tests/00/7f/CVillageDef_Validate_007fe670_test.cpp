@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CValidateDefinitionInitBase {};
-struct CCharString {};
+class CValidateDefinitionInitBase { public:};
+class CCharString { public:};
 enum EWeaponClass { WEAPON_CLASS_NONE = 0, WEAPON_CLASS_1 = 1 };
 struct random_access_iterator_tag {
     random_access_iterator_tag() { }
@@ -19,7 +19,7 @@ const EWeaponClass* __fastcall find_weapon_class(const EWeaponClass* first, cons
     return last;
 }
 static int g_eqCalls = 0; static const char* g_eqText = 0;
-struct CDefString {
+class CDefString { public:
     long TablePos;
     bool operator==(const char* text) const { ++g_eqCalls; g_eqText = text; return false; }
 };
@@ -30,7 +30,7 @@ struct CWeaponClassVector {
     const EWeaponClass* begin() const { return _M_start; }
     const EWeaponClass* end() const { return _M_finish; }
 };
-struct CVillageDef {
+class CVillageDef { public:
     virtual void v00() {}
     unsigned char      _pad04[0x24];
     CWeaponClassVector m_weaponClasses;

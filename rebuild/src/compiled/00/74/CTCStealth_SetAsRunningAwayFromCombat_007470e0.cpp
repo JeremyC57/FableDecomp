@@ -10,7 +10,7 @@
 // Shape: `fild [fps] ; fmul [def+44h]` = `def->Hangtime * fps` (right operand loaded first); the null-def fallback 1.0f is
 // a float arm of the same ternary, so each arm converts with its own __ftol2 call (VC tail-duplicates the store).
 extern long g_FramesPerSecond;                              // 0x01375550
-struct CThing;
+class CThing;
 
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
     struct CPointer {
@@ -22,12 +22,12 @@ struct CDangerThing {                                       // pair<CIntelligent
     long Timer;                                             // +0x0c
 };
 
-struct CStealthDef {
+class CStealthDef { public:
     unsigned char _pad[0x44];
     float         RunningAwayFromCombatHangtimeSeconds;     // +0x44
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

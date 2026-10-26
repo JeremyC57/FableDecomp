@@ -3,7 +3,7 @@
 // Layout (PDB C2DBoxF): TopLeft {X,Y} +0/+4, BottomRight {X,Y} +8/+0xC. Each coordinate is an
 // if/else-if clamp: `test ah,5 ; jp` is the ordered `<` against the low bound, `test ah,41h ; jne`
 // the `>` against the high bound; the float copies go through eax (plain float assignment).
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0;   // +0x00 TopLeft.X
     float Y0;   // +0x04 TopLeft.Y
     float X1;   // +0x08 BottomRight.X

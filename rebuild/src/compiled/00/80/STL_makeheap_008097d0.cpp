@@ -11,12 +11,12 @@
 // Shape: STLport `__make_heap(first, last, comp, _STLP_VALUE_TYPE(first, ..), _STLP_DISTANCE_TYPE(first, ..))` --
 //   the two null type pointers pushed first, then the comparator copied memberwise into its slot (ten dwords and the
 //   CompareInXYPlane byte through cl).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

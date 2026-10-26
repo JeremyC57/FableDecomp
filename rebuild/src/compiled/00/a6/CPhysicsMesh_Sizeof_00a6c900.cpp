@@ -13,31 +13,31 @@
 //   the fixed 252 bytes and the constant multipliers into one `lea` chain (3*(n + 2*(m + k) + 42)*2 ...). The terms are listed in the order that reproduces retail's
 //   evaluation (dummy objects before helper points, ContainmentVolumes before the navigation volumes). The root
 //   segment pointer (the CCountedPointer's data) is null-tested before its virtual call.
-struct C3DTriangle2 { short Index[3]; };                       // 6 bytes
-struct C3DVector { float X, Y, Z; };
+class C3DTriangle2 { public: short Index[3]; };                       // 6 bytes
+class C3DVector { public: float X, Y, Z; };
 struct CArrayOfLines { void* a; void* b; void* c; };           // CArray<C2DLineF>, 12 bytes
 struct CHelperPointPair { unsigned char _d[20]; };             // pair<CCharString, C3DHelperPoint>
 struct CDummyObjectPair { unsigned char _d[56]; };             // pair<CCharString, C3DDummyObject>
 struct CMeshVolumePair { unsigned char _d[16]; };              // pair<key, C3DMeshVolume>
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
     long capacity() const { return _M_end_of_storage - _M_start; }
 };
-template <class T> struct CVectorMap {
+template <class T> class CVectorMap { public:
     CArray<T> Data;
     long      Compare;                                         // empty comparator, padded
 };
 
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual void v00();
     virtual long Sizeof() const;                               // slot 1 (+4)
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
     bool IsValid() const { return Data != 0; }

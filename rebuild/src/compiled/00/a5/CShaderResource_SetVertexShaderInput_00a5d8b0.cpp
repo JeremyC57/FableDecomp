@@ -15,7 +15,7 @@ struct _D3DVERTEXELEMENT9 {                     // 8 bytes
 
 struct SStreamInput;
 
-template <class T> struct CArray {              // retail CArray: first, last, end (12 bytes)
+template <class T> class CArray { public:              // retail CArray: first, last, end (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -24,20 +24,20 @@ template <class T> struct CArray {              // retail CArray: first, last, e
     T* GetData() { return Size() > 0 ? m_pFirst : (T*)this; }
 };
 
-struct CBaseClass {                             // vtable 0x01231710
+class CBaseClass { public:                             // vtable 0x01231710
     virtual ~CBaseClass();
 };
 
-struct CVertexShaderInput : CBaseClass {        // vtable 0x0129EA08, 0x1c bytes
+class CVertexShaderInput : public CBaseClass { public:        // vtable 0x0129EA08, 0x1c bytes
     CArray<SStreamInput>       Streams;         // +0x04
     CArray<_D3DVERTEXELEMENT9> Elements;        // +0x10
 };
 
-struct CShaderDataBank;
-struct CShaderRenderManager;
-struct CShaderBase;
+class CShaderDataBank;
+class CShaderRenderManager;
+class CShaderBase;
 
-struct CShaderResource {
+class CShaderResource { public:
     void*                 __vftable;                // +0x00
     CShaderDataBank*      ShaderBank;               // +0x04
     CArray<CShaderBase*>  Shaders;                  // +0x08

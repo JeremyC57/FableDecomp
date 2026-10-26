@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CANavQuadTreeNode;
+class CANavQuadTreeNode;
 struct CSmallVector_Nav {
     CANavQuadTreeNode** m_data;
 };

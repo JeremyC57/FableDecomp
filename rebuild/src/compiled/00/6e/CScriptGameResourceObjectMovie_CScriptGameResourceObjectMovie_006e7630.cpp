@@ -40,11 +40,11 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {               // the int
     CBaseIntelligentPointer();                 // 0x0099A380
 }; } using N_0099a380::CBaseIntelligentPointer;
 
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     virtual void v00();
 };
 
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     virtual void v00();
     CCountedPointerRetail PImp;                // +0x08
 };

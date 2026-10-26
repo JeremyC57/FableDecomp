@@ -19,13 +19,13 @@
 //   interface bitset +0x20, interface map +0x44, graphic object +0x60, dead flag bit 0 of +0x91.
 #include "engine/CTCBase.h"
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CTCBaseComponent;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
@@ -49,7 +49,7 @@ struct CThingGraphic {
     virtual void Slot43(long value);                        // slot 43 (+0xAC)
     virtual void Slot44();                                  // slot 44 (+0xB0)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CInterfaceBits present;                                 // +0x20
     CInterfaceMap m_interfaces;                             // +0x44
@@ -71,10 +71,10 @@ struct CThing {
     const C3DVector& GetPosition() const;                   // 0x004C73D0
     void Kill(bool silent);                                 // 0x004C9B80
 };
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     void SetSwitchedOn(bool on);                            // 0x00787580
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(const CCharString& name, const C3DVector& position, bool attached);   // 0x006E0970
 };
 
@@ -87,7 +87,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -99,7 +99,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
 };
 #pragma pack(pop)
 
-struct CTCJackShield : CTCBase {
+class CTCJackShield : public CTCBase { public:
     CIntelligentPointer<CThing> PEmitter;                   // +0x0C
     void EnableShield(bool enable);
 };

@@ -11,7 +11,7 @@
 // then a merged value live across the calls, so VC spills it once at entry (`fst [esp]`, the `push ecx` word) and
 // reloads it there; a direct `return alpha` there is constant-folded to a fresh `fld 1.0`, and assigning the fade
 // result to alpha moves the reload block. The tail multiply is shared by the fade and plain paths.
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {
     long     Type;
     CTCBase* TC;
@@ -29,7 +29,7 @@ struct CTCMap {
         return it->TC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                  // +0x20
     unsigned char _pad40[4];
@@ -39,13 +39,13 @@ struct CThing {
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
-struct CTCInventory {                                  // TC type 0x11
+class CTCInventory { public:                                  // TC type 0x11
     float GetContextSensitiveFadeAlpha(long button);   // 0x00581D2A
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPlayerCharacter();                      // 0x00487B70
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                          // 0x00449970
 };
 
@@ -59,7 +59,7 @@ template <class T> struct vector {                     // STLport vector (12 byt
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char   _pad000[8];
     CPlayerManager* PlayerManager;                     // +0x08
     unsigned char   _pad00c[0x254];

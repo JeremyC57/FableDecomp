@@ -19,7 +19,7 @@ struct __true_type { __true_type() {} };
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
 // ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
 // IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
@@ -90,26 +90,26 @@ template <class T> __declspec(noinline) void CResultVector<T>::_M_insert_overflo
 }
 #pragma auto_inline(on)
 
-struct CThingAICreature : CThing { enum { ThingTypeMask = 0x1f }; };
-struct CThingFilter_None {
+class CThingAICreature : public CThing { public: enum { ThingTypeMask = 0x1f }; };
+class CThingFilter_None { public:
     bool operator()(const CThing&) const { return true; }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                       // ETCInterfaceType
     bool operator()(const CThing& thing) const;       // 0x006A80A0
 };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     template <class T> bool operator()(const T& thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
+template <class A, class B, class C, class D, class E> class CFilter_Bind5 { public:
     const A& First;
     const B& Second;
     const C& Third;
@@ -118,7 +118,7 @@ template <class A, class B, class C, class D, class E> struct CFilter_Bind5 {
     template <class T> __forceinline bool operator()(const T& thing) const
     { return First(thing) && Second(thing) && Third(thing) && Fourth(thing) && Fifth(thing); }
 };
-template <class A> struct CFilter_Not {               // the negated filter, held by reference
+template <class A> class CFilter_Not { public:               // the negated filter, held by reference
     const A& Filter;
     template <class T> bool operator()(const T& thing) const { return !Filter(thing); }
 };

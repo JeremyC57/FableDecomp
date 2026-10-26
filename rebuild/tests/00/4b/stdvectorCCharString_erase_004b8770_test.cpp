@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_assigns = 0, g_dtors = 0;
-struct CCharString {
+class CCharString { public:
     int m_value;
     CCharString(int v) : m_value(v) {}
     CCharString& operator=(const CCharString& o) { m_value = o.m_value; ++g_assigns; return *this; }

@@ -1,12 +1,12 @@
 // Behaviour test for 0x00EDAAD0 CV_TalentlessBardScript::ProcessSongsRenown: renown level -> verse tag (or none).
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[40]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CCharString { public: char text[40]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
 struct CCharStringVector {
     int count; char last[40];
     void push_back(const CCharString& x) { ++count; std::strcpy(last, x.text); }
 };
-struct CGameScriptInterface { long renown; virtual long GetHeroRenownLevel() { return renown; } };
+class CGameScriptInterface { public: long renown; virtual long GetHeroRenownLevel() { return renown; } };
 struct CV_TalentlessBardScript {
     CGameScriptInterface* Game; CCharStringVector SongItems;
     void ProcessSongsRenown()

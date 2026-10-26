@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CInputProcessHeroAbilitiesScreen
-{
+class CInputProcessHeroAbilitiesScreen
+{ public:
     int tag;
     void scalar_destructor();
 };

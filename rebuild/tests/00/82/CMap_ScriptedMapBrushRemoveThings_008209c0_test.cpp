@@ -75,14 +75,14 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCachedVolumes;
-struct CGameDefinitionManager;
-struct CGameMap;
-struct CHeightMap;
-struct CWorld;
+class CCachedVolumes;
+class CGameDefinitionManager;
+class CGameMap;
+class CHeightMap;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CMap {
+class CMap { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr
@@ -156,14 +156,14 @@ FABLE_STATIC_ASSERT(offsetof(CMap, InitialisePassabilityFromThemes) == 0x1d48);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -235,34 +235,34 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -501,16 +501,16 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CLevelLoader;
-struct CMainGameComponent;
-struct CRegionConnectionGraph;
+class CCPPointerInfo;
+class CLevelLoader;
+class CMainGameComponent;
+class CRegionConnectionGraph;
 struct CThingMapManager;
-struct CWADBank;
-struct CWorld;
+class CWADBank;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CWorldMap {
+class CWorldMap { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)
     CWorld*                 World;                           // +0x08
@@ -601,10 +601,10 @@ FABLE_STATIC_ASSERT(offsetof(CWorldMap, PassabilityBeingShown) == 0xf9);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    Cells[0x10];                            // +0x08 vector<CScriptedMapBrush::CScriptedMapCell,std::allocator<CScriptedMapBrush::CScriptedMapCell>_>
@@ -656,22 +656,22 @@ struct UIDList {
  void Clear(){UIDNode* p=Head->Next;while(p!=Head){UIDNode* old=p;p=p->Next;free(old);}Head->Next=Head;Head->Previous=Head;}
  ~UIDList(){Clear();free(Head);}
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
  void GetThingsToAdd(UIDList&)const; //0082E9C0 PDB007355A0
  void GetThingsToDelete(UIDList&)const; //0082E910 PDB00735500
 };
-struct CThing {
+class CThing { public:
  unsigned char NativeThingPrefix[0x91];unsigned char Dead:1;
  void SetAsActivated(bool); //004C7770
  void Kill(bool); //004C9B80
 };
-struct CThingManager {CThing* GetPThingWithUID(ThingUID);}; //0051ED80 actual byvalue64bit lookup; PDB00529000
-struct C2DCoordI {long X,Y;};
-struct CWorldMap {
+class CThingManager { public:CThing* GetPThingWithUID(ThingUID);}; //0051ED80 actual byvalue64bit lookup; PDB00529000
+class C2DCoordI { public:long X,Y;};
+class CWorldMap { public:
  void* VTable;typedef long(CWorldMap::*MapNumberMethod)(const C2DCoordI&)const;
  __forceinline long GetMapNumberAt(const C2DCoordI& p)const{return(this->*static_cast<MapNumberMethod*>(VTable)[17])(p);}
 };
-struct CWorld {
+class CWorld { public:
  void* VTable;
  typedef CThingManager&(CWorld::*ThingManagerMethod)();
  typedef const CWorldMap&(CWorld::*WorldMapMethod)()const;
@@ -679,7 +679,7 @@ struct CWorld {
  __forceinline CThing* GetPThingWithUID(ThingUID uid){return GetThingManager().GetPThingWithUID(uid);}
  __forceinline const CWorldMap& PeekWorldMap()const{return(this->*static_cast<WorldMapMethod*>(VTable)[13])();}
 };
-struct CMap {
+class CMap { public:
  unsigned char NativeMapPrefix[0x20];CWorld* World;
  unsigned char NativeRippleAndMapState[0x1d24-0x20-sizeof(CWorld*)];C2DCoordI WorldPos;
  __forceinline CWorld& GetWorld(){return *World;} // Named native member accessor projection.

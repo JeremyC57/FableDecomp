@@ -1,4 +1,4 @@
-struct CTCLook {
+class CTCLook { public:
     char pad[0x1dc];
 };
 

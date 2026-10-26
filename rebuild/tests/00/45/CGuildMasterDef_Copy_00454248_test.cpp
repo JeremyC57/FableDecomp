@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_called = 0;
 struct CBase { void Copy(const CBase* other); unsigned char _b[0x30]; };
-struct CGuildMasterDef : CBase { void Copy(const CGuildMasterDef* other); };
+class CGuildMasterDef : public CBase { public: void Copy(const CGuildMasterDef* other); };
 void CBase::Copy(const CBase* other) { g_called = 1; }
 void CGuildMasterDef::Copy(const CGuildMasterDef* other) {
     this->CBase::Copy((const CBase*)other);

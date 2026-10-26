@@ -4,7 +4,7 @@
 static long g_frame = 0;
 long GFGetCurrentFrame() { return g_frame; }
 
-struct CThingAICreature { int m_id; };
+class CThingAICreature { public: int m_id; };
 
 struct CReactionFrequencyTraits_ControlledCount {
     bool AllowIndividualRepeats; CThingAICreature* PLastReactionCreature; bool InRisingPhase;

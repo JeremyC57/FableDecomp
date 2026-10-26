@@ -24,14 +24,14 @@ static int g_ok = 1;
 // Shape: the handle's inline Clear() from the landed destructor, verbatim: the null-safe `GetRefCount() == 1` test
 // (handle address formed in esi first), then `Data = 0` = the counted release plus the second unconditional zero
 // store. Plain `ret`.
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                           // 0x0099A2E0
 };
 
 class CEnginePrimitiveHandle;
 
-struct CEngineInternalPrimitiveBase {        // the referenced primitive: count at +4
+class CEngineInternalPrimitiveBase { public:        // the referenced primitive: count at +4
     virtual void v00();
     virtual void Destroy();                  // slot 1 (+0x04)
     virtual void v02();
@@ -75,7 +75,7 @@ public:
 };
 
 namespace NParticleEngine {
-struct CPSCLight {                          // vtable 0x012A0624
+class CPSCLight { public:                          // vtable 0x012A0624
     virtual void v00();
     unsigned char          _body[0x58 - 4];  // the component base's state and the light parameters
     CEnginePrimitiveHandle PrimHandle;       // +0x58

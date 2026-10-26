@@ -1,13 +1,13 @@
 // Behaviour test for 0x00846660 CCreatureAction_Talk::PerformAction: runs the reconstructed body over stubbed callees;
 // checks the class-byte gate, the entity-events lookup, the CEventTalkedTo(owner) event and the SetHasInformation flags.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_thingClass; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -21,14 +21,14 @@ struct CThing {
     }
 };
 static int g_info = 0; static bool g_flags[4];
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     void SetHasInformation(bool a, bool b, bool c, bool d) { ++g_info; g_flags[0] = a; g_flags[1] = b; g_flags[2] = c; g_flags[3] = d; }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 struct CEventBase { virtual ~CEventBase() { } };
 struct CEventTalkedTo : CEventBase { CThing* talker; CEventTalkedTo(CThing* t) : talker(t) { } };
 static CEventTalkedTo* g_event = 0; static int g_events = 0;
-struct CTCEntityEvents { void AddEvent(CEventBase* e) { g_event = (CEventTalkedTo*)e; ++g_events; } };
+class CTCEntityEvents { public: void AddEvent(CEventBase* e) { g_event = (CEventTalkedTo*)e; ++g_events; } };
 class CCreatureActionBase { public: virtual void PerformAction() { } CBaseIntelligentPointer PCreature; };
 class CCreatureAction_Talk : public CCreatureActionBase { public: CBaseIntelligentPointer PTarget; virtual void PerformAction(); };
 void CCreatureAction_Talk::PerformAction()

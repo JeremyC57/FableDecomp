@@ -1,15 +1,15 @@
 #include <cstdio>
 static int g_calls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     long m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_calls; return *this; }
 };
-struct CFloatRange { float HighValue; float LowValue; };
-struct CHeroAbilityStatWeight { long v; CHeroAbilityStatWeight& operator=(const CHeroAbilityStatWeight& o) { v = o.v; ++g_calls; return *this; } };
+class CFloatRange { public: float HighValue; float LowValue; };
+class CHeroAbilityStatWeight { public: long v; CHeroAbilityStatWeight& operator=(const CHeroAbilityStatWeight& o) { v = o.v; ++g_calls; return *this; } };
 struct CLongVector { long v; CLongVector& operator=(const CLongVector& o) { v = o.v; ++g_calls; return *this; } };
 struct CFloatVector { long v; CFloatVector& operator=(const CFloatVector& o) { v = o.v; ++g_calls; return *this; } };
-struct CHeroAbilityStatPackage { long v; CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& o) { v = o.v; ++g_calls; return *this; } };
-struct CHeroCombatDef : CParentDefClassBase {
+class CHeroAbilityStatPackage { public: long v; CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& o) { v = o.v; ++g_calls; return *this; } };
+class CHeroCombatDef : public CParentDefClassBase { public:
     CFloatRange RangedAccuracySecondsForMaximumWithSkill;
     CFloatRange RangedAccuracyPercentFractionWithBuildup;
     CFloatRange RangedAccuracyPercentWithStats;

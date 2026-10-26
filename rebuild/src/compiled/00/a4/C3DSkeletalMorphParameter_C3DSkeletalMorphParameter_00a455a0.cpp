@@ -14,12 +14,12 @@
 // three plain zeroing words the second name's `lea ecx,[esi+10h]` is scheduled before the +8 store (the "24i" fix);
 // the positive target is assigned through C3DSkeletalMorphTarget's inline memberwise operator= on the block read
 // once, then SignedFlag, CurrentValue and SkeletalMorph are body assignments from the zero register.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                                       // 0x0099E4B0
     CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
-struct C3DSkeletalBoneMorph;
+class C3DSkeletalBoneMorph;
 struct SAllocator { SAllocator() {} };                   // empty allocator (user constructor: no zero fill of the temporary)
 template<class T> struct SAllocProxy : SAllocator {      // STLport _STLP_alloc_proxy: the end-of-storage pointer over the allocator
     T* m_data;
@@ -31,11 +31,11 @@ template<class T> struct CVectorBase {                   // STLport _Vector_base
     SAllocProxy<T> m_capacity;
     CVectorBase(const SAllocator& a) : m_begin(0), m_end(0), m_capacity(a, 0) {}
 };
-template<class T> struct CArray : CVectorBase<T> {       // retail CArray<T> = STLport vector (12 bytes)
+template<class T> class CArray : public CVectorBase<T> { public:       // retail CArray<T> = STLport vector (12 bytes)
     CArray() : CVectorBase<T>(SAllocator()) { }
     CArray& operator=(const CArray& other);              // 0x00A46790
 };
-struct C3DSkeletalMorphTarget {                          // 16 bytes (retail)
+class C3DSkeletalMorphTarget { public:                          // 16 bytes (retail)
     CCharString                  Name;                   // +0x00
     CArray<C3DSkeletalBoneMorph> BoneMorphs;             // +0x04
     C3DSkeletalMorphTarget& operator=(const C3DSkeletalMorphTarget& other)
@@ -45,7 +45,7 @@ struct C3DSkeletalMorphTarget {                          // 16 bytes (retail)
         return *this;
     }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Data;                                          // +0
     void* Info;                                          // +4
     CCountedPointer() : Data(0), Info(0) { }
@@ -58,9 +58,9 @@ struct CBase {
     CBase();                                             // 0x0099A2F0
 };
 
-struct C3DSkeletalMorph;
-struct C3DSkeletalMorphParameter : CBase {
-    struct CShared {                                     // 0x24 bytes
+class C3DSkeletalMorph;
+class C3DSkeletalMorphParameter : public CBase { public:
+    class CShared { public:                                     // 0x24 bytes
         C3DSkeletalMorphTarget PositiveTarget;           // +0x00
         C3DSkeletalMorphTarget NegativeTarget;           // +0x10
         bool                   SignedFlag;               // +0x20

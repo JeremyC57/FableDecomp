@@ -1,7 +1,7 @@
 #include <stdio.h>
 static int g_renders = 0;
 static int g_lastFlags = -1;
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void Render(int flags);
 };
 void CLandscapeBackgroundTreeNode::Render(int flags) { g_renders++; g_lastFlags = flags; }

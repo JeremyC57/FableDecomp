@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_RecoverFromDazed {
+class CCombatAction_RecoverFromDazed { public:
     void* vftable;
     int destroyed;
 };

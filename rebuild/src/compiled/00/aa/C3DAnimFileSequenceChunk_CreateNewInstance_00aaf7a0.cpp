@@ -7,14 +7,14 @@
 // The inlined constructor is the one @ 0x00AAF730: BoneIndex = -1, BoneName default, BoneType and the
 // Matrices array zeroed (through the register that already holds the null-test zero).
 // the generated engine headers for these chunk classes cannot model the bodies -- a local model is used instead.
-struct CChunkedFileSaver;
+class CChunkedFileSaver;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;                          // CBasicString<char> data block
     CCharString();                          // 0x0099E4B0
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -28,7 +28,7 @@ struct CDataOutputStream {
 };
 
 template <class T>
-struct CArray {                             // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;                            // +0
     T* m_pEnd;                              // +4
     T* m_pEndOfStorage;                     // +8
@@ -45,7 +45,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                           // +0
     SCountBlock* m_pCount;                  // +4
     ~CCountedPointer()
@@ -60,9 +60,9 @@ struct CCountedPointer {
     }
 };
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
-struct CChunkedFileChunk {                  // PDB sizeof 0x10
+class CChunkedFileChunk { public:                  // PDB sizeof 0x10
     virtual void v00();                     // slot 0: deleting destructor
     virtual void v01();                     // slot 1: GetChunkDescription
     virtual void v02();                     // slot 2: GetChunkInfo
@@ -80,7 +80,7 @@ struct CChunkedFileChunk {                  // PDB sizeof 0x10
     CChunkedFileChunk(const char* type);    // 0x00AA7590
 };
 
-struct CChunkedFileSuperChunk : CChunkedFileChunk {   // retail sizeof 0x2c
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail sizeof 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;                 // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;   // +0x1c
     unsigned long CurrentChunkIndex;                                       // +0x28
@@ -89,7 +89,7 @@ struct CChunkedFileSuperChunk : CChunkedFileChunk {   // retail sizeof 0x2c
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
 };
 
-struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {   // retail sizeof 0x4c (PDB 0x58: two CArrays 4 bytes wider each)
+class C3DAnimFileSequenceChunk : public CChunkedFileSuperChunk { public:   // retail sizeof 0x4c (PDB 0x58: two CArrays 4 bytes wider each)
     long BoneIndex;                         // +0x2c
     long ParentIndex;                       // +0x30
     CCharString BoneName;                   // +0x34

@@ -14,12 +14,12 @@
 // count block ({refs, __fastcall destroy, object}) and zeroes both words; the def pointer releases through the
 // pointee's inline Release() (ecx) with no zero store.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
@@ -27,7 +27,7 @@ struct CWideString {
 void operator delete(void* p);                         // 0x00BFE9BC
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     long m_refCount;                                   // +0x04
@@ -37,7 +37,7 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -47,7 +47,7 @@ template <class T> struct CDefPointer {
     }
 };
 struct CUIMiscThingsDef : CDefPointeeBase {};
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
     template <class T> bool GetDef(long globalIndex, CDefPointer<T>* out);                     // 0x0042B312
 };
@@ -79,7 +79,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long p0,
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
@@ -88,7 +88,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);            // +4: per-type deleter, object in ecx
     void* m_pObject;                                   // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                            // +0
     SCountBlock* m_pCount;                             // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
@@ -107,7 +107,7 @@ template <class T> struct CCountedPointer {
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -169,16 +169,16 @@ struct CComponent {
     virtual void v058();
     virtual void AddChild(const CCountedPointer<CComponent>& child);   // slot 59 (+0xEC)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance(); // 0x0041E5F2
 };
 }
-struct CRegion;
+class CRegion;
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc);
 };
 

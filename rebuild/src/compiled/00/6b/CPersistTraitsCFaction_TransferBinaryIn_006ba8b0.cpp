@@ -19,12 +19,12 @@ extern "C" void* __cdecl memset(void* dest, int value, size_t bytes);
 extern "C" void* __cdecl malloc(size_t size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -32,7 +32,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -43,9 +43,9 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                           // retail 0x2c bytes, trivial destructor
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0

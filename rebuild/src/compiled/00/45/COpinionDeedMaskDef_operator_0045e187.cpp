@@ -17,7 +17,7 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally as a packed polymorphic base
 // whose operator= is out of line; the derived members follow at their natural alignment.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -31,7 +31,7 @@ struct CDeedEnabledMap {                // retail map<EOpinionDeedType,bool> (12
     CDeedEnabledMap& operator=(const CDeedEnabledMap& other);   // 0x0045E1AE
 };
 
-struct COpinionDeedMaskDef : CParentDefClassBase { // vtable 0x01233DEC
+class COpinionDeedMaskDef : public CParentDefClassBase { public: // vtable 0x01233DEC
     bool                 DeedEnabledDefault;          // +0x39
     CDeedEnabledMap      DeedEnabled;                 // +0x3c
     COpinionDeedMaskDef& operator=(const COpinionDeedMaskDef& other);

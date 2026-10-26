@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingGameObject {
+class CThingGameObject { public:
     char pad[0xc8];
     unsigned char flags;
     void SetAddToComboMultiplierOnHit(bool v);

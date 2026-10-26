@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CContainmentVolume {
+class CContainmentVolume { public:
   int dummy0;
   char* data;
 };

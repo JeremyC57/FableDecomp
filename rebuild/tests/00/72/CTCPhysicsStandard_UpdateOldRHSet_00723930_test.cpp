@@ -1,9 +1,9 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 static long g_frame = 0;
 static int g_getWorldCalls = 0;
-struct CWorld { static long GetFrameNumber() { return g_frame; } };
+class CWorld { public: static long GetFrameNumber() { return g_frame; } };
 static CWorld g_world;
 struct CTCPhysicsStandard {
     CRightHandedSet RHSet, OldRHSet;

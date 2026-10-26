@@ -10,8 +10,8 @@
 // Shape: the change test is one ternary on the weapon pointer (ActiveWeapon read before the branch); usability defaults to
 // true and is replaced by IsUsableBy only for a live weapon thing; `if (usable != LastUsable) SetChangeOfWeapon(weapon);
 // LastUsable = usable;` is duplicated by VC7.1 per known value of the bool (bl).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
@@ -58,11 +58,11 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                       // interface type 0x46
+class CTCCarrying { public:                       // interface type 0x46
     CThing* GetThingInPrimarySlot() const; // 0x006A1440
 };
 
-struct CTCWeapon {                         // interface type 0x48
+class CTCWeapon { public:                         // interface type 0x48
     bool IsUsableBy(CThing* user) const;   // 0x005DAB10
 };
 

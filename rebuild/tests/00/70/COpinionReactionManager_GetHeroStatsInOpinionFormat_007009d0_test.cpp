@@ -10,14 +10,14 @@
 // Shape: dense switch -> jump table. Case 0 names the -1..1 limits first (retail stores both before the maximum call) and reads
 //   Morality/AppearanceGoodstrength through inline getters (the getter return copies Morality through edx into a stack slot
 //   before `fild`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
@@ -36,13 +36,13 @@ struct CThing {
         return (const T*)sel->component;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const; // 0x00487DD0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer() const;        // 0x0049D9D0
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x28];
     long          Morality;                // +0x28
     unsigned char _pad2c[0x70 - 0x2c];
@@ -62,7 +62,7 @@ template <class T> const T& __fastcall GFLimitReturn(const T& value, const T& lo
 
 enum EOpinion { OPINION_MORALITY, OPINION_RENOWN, OPINION_SCARINESS, OPINION_AGREEABLENESS, OPINION_ATTRACTIVENESS };
 
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void*   __vftable;
     CWorld* World;                         // +0x04
     float GetHeroStatsInOpinionFormat(EOpinion opinion) const;

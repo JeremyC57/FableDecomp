@@ -1,14 +1,14 @@
 // Behaviour test for CTCCreatureGroup::CTCCreatureGroup (0x004E5C2F): base gets the thing, counts zero, ShutdownOnEmpty true, map built.
 #include <cstdio>
-struct CThing { int m_id; };
-struct CTCBase {
+class CThing { public: int m_id; };
+class CTCBase { public:
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {}
     virtual ~CTCBase() {}
 };
 static int g_mapsBuilt = 0;
 struct CGroupMemberMap { unsigned long _Mysize; CGroupMemberMap() : _Mysize(0) { ++g_mapsBuilt; } };
-struct CTCCreatureGroup : CTCBase {
+class CTCCreatureGroup : public CTCBase { public:
     unsigned long MemberCount; unsigned long ActiveMemberCount; bool ShutdownOnEmpty; CGroupMemberMap Members;
     CTCCreatureGroup(CThing* thing) : CTCBase(thing), MemberCount(0), ActiveMemberCount(0), ShutdownOnEmpty(true) {}
 };

@@ -23,18 +23,18 @@ enum EWeaponType { WEAPON_TYPE_NONE };
 enum EWeaponClass { WEAPON_CLASS_NONE };
 enum EDamageAttribute { DAMAGE_ATTRIBUTE_NONE };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CObjectAugmentationParticleSet { unsigned char _body[0x2c]; };
-struct CWeaponTrailGraphicSet { long Graphic; long Trail; };
+class CObjectAugmentationParticleSet { public: unsigned char _body[0x2c]; };
+class CWeaponTrailGraphicSet { public: long Graphic; long Trail; };
 struct CWeaponTrailMap { void* _M_header[3]; };           // map<EObjectAugmentationType,CWeaponTrailGraphicSet>
 struct CArrowTrailMap { void* _M_header[3]; };            // map<EObjectAugmentationType,long>
-struct CFloatRange { float Min; float Max; };
+class CFloatRange { public: float Min; float Max; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(EWeaponType& value);                  // 0x004E8EE8
     void Transfer(EWeaponClass& value);                 // 0x004E8F8C
     void Transfer(unsigned long& value);                // 0x00431020
@@ -52,7 +52,7 @@ struct CPersistContext {
     void Transfer(CCharString& value, const CCharString& defaultValue) { Transfer(value); }
 };
 
-struct CWeaponDef {
+class CWeaponDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x24];                          // +0x04..+0x27 CDefClassBase
     EWeaponType Type;                                   // +0x28

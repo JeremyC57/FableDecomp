@@ -31,7 +31,7 @@ struct CBankFileAsyncRetail {
     _RTL_CRITICAL_SECTION CriticalSection; // +0x14c, retail async-bank view
     unsigned long Align(unsigned long size); // 0x009CBB90, inherited CBankFile method
 };
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     void* __primaryVftable; // +0, primary object view evidenced by native constructor
     CMovableResource MovableResource; // +4, secondary base passed to AllocateResource
     void* Data; // +8

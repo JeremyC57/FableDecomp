@@ -3,7 +3,7 @@
 // Callees: 0x0099F830 __fastcall GFIntToCharString, 0x0099EBF0 CCharString(const char*, long), 0x0099F570 __fastcall operator+(const CCharString&, const CCharString&), 0x0099EAE0 ~CCharString x2
 //
 #include "engine/C3DMeshFileMaterialExtChunk.h"   // PDB layout agrees with retail here (SelfIllumination +0x10)
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     void* m_pStringData;

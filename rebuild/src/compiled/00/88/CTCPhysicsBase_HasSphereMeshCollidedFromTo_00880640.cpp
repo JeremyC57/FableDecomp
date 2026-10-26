@@ -9,22 +9,22 @@
 // Shape: the radius is a float local assigned in an if/else (dword copies, homed at [esp]); the raised start/end points are
 //   named locals built by the 3-float constructor (Z first: arguments evaluate right to left); the normal is copied before the
 //   position with the implicit assignment (address formed with `lea ecx,[eax+0Ch]`), then `CollidePos.Z -= radius`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                               // +0x00
     C3DVector CollideNormal;                            // +0x0c
     float     Friction;                                 // +0x18
 };
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;                     // +0x00
     C3DVector Normal;                                   // +0x0c
     float     DistanceSquared;                          // +0x18
 };
-struct CPhysicsMeshObject {                             // 0x40 bytes
+class CPhysicsMeshObject { public:                             // 0x40 bytes
     void*         __vftable;                            // +0x00
     void*         Mesh[1];                              // +0x04 CIVCountedPointer<const CPhysicsMesh>
     unsigned char PositionMatrix[0x30];                 // +0x08 CMatrix3x4
@@ -34,11 +34,11 @@ struct CPhysicsMeshObject {                             // 0x40 bytes
     bool GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to,
                                      CMeshIntersectionData& data) const;   // 0x00A120D0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                                 // +0x10 (2 = player)
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000();
     CThing*   ParentThing;                              // +0x04 (CTCBase)
     bool      ToBeRemoved;                              // +0x08

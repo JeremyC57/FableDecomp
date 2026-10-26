@@ -8,19 +8,19 @@
 // Opened +0x14, CWideString Pathname +0x18. No EH frame in retail (the TU builds without /EHsc).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                              // 0x0099B510
 };
 
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CAFile {
+class CAFile { public:
     virtual ~CAFile();                           // 0x0099A300
 };
 
-struct CDiskFileWin32 : CAFile {                 // vtable 0x0122D06C
+class CDiskFileWin32 : public CAFile { public:                 // vtable 0x0122D06C
     FileAccessType AccessType;                   // +0x04
     long           Position;                     // +0x08
     long           Length;                       // +0x0C
@@ -34,7 +34,7 @@ struct CDiskFileWin32 : CAFile {                 // vtable 0x0122D06C
 
 void __fastcall CopyFile(CAFile& source, CAFile& destination);   // 0x00998E70
 
-struct CWorld {
+class CWorld { public:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;
 };
 

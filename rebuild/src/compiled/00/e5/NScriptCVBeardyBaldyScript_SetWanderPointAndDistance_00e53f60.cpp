@@ -12,15 +12,15 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct C3DVector {                                      // engine C3DVector: user copy ctor (dword copy through ecx)
+class C3DVector { public:                                      // engine C3DVector: user copy ctor (dword copy through ecx)
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     CBaseClass() {}
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -35,12 +35,12 @@ struct CCountedScriptImp {
             ++Info->RefCount;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedScriptImp PImp;                             // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
     virtual ~CScriptThing();                            // 0x004AA840
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -127,13 +127,13 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual void v780(); virtual void v781(); virtual void v782(); virtual void v783();
     virtual void SetScriptingStateGroup(CScriptThing thing, long group);   // slot 784 (+0xc40) CGameScriptInterface::SetScriptingStateGroup @ 0x008A36D0
 };
-struct CScriptDef {                                     // the global script def
+class CScriptDef { public:                                     // the global script def
     unsigned char _pad0[0x448];
     float WanderMinDistance;                            // +0x448
     float WanderMaxDistance;                            // +0x44c
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];
 };

@@ -9,24 +9,24 @@
 // record vector at +0x3E64 (Add2DLine uses +0x3E88/+0x3E94).
 // Shape: Add2DLine with the viewport origin added to each coordinate before the scale: (x + TLX) / width * 2 - 1 and
 // 1 - (y + TLY) / height * 2.
-struct CTVertexRHWColSpecTex1 {                         // 32 bytes
+class CTVertexRHWColSpecTex1 { public:                         // 32 bytes
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;
     float U, V;
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -34,7 +34,7 @@ struct CWideString {
 };
 
 struct IDirect3DTexture9;
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLength : 28;                 // +0x04
     unsigned long      AllocationSource : 4;
@@ -44,7 +44,7 @@ struct CTexture {
     void Uninitialise();                                // 0x009F9F70
 };
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04
@@ -105,7 +105,7 @@ __declspec(noinline) void CVertexVector::_M_insert_overflow(CTVertexRHWColSpecTe
 }
 #pragma auto_inline(on)
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x1d8];
     bool          ViewportOffscreen;                    // +0x1d8
 };

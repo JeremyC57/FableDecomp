@@ -10,7 +10,7 @@
 // @ 0x0095B680, CThing::GetPosition @ 0x004C73D0, DiveBomb @ 0x0095B9E0.
 // Layout: Ego_r.pdb CAIStateGroup_HoverHornetQueen PTarget +0x14, ArenaCentrePos +0x28; CWorld +0x4c combat manager.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -18,14 +18,14 @@ struct C3DVector {
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 extern float g_HornetDiveBombRange;             // 0x0138D2D8 (15.0f)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,19 +40,19 @@ struct CThing {
         }
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 bool __fastcall IsKnockedDown(CThing* thing);   // 0x0085F010
-struct CTCBoss {                                // interface 0xad
+class CTCBoss { public:                                // interface 0xad
     long GetBossPhase();                        // 0x007AED10
     void IncrementBossPhase();                  // 0x007AED20
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
     bool IsReadyForPhaseChange();               // 0x007AEE90
 };
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
     void RegisterCombatant(CThing* creature, CThing* target, bool flag);   // 0x006EDC50
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
@@ -61,11 +61,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

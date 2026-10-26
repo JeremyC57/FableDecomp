@@ -14,7 +14,7 @@
 // Release() is inlined (the count is re-read after the decrement); Data is re-read through `this` for the block.
 class COpinionReactionManager;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
     void (__fastcall* DeleteFunc)(void* data);    // +4
     void* Data;                                   // +8

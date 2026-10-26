@@ -1,7 +1,7 @@
 #include <cstdio>
 
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     bool saving; int count; char names[3][16]; long values[3];
     template<class T> void Transfer(const char* name, T& v, T)
     {
@@ -10,7 +10,7 @@ struct CPersistContext {
         ++count;
     }
 };
-struct CTCStockItem {
+class CTCStockItem { public:
     bool ForSale; bool Stealable; bool Initialised; long Price;
     void OnSerialise(CPersistContext& context, bool)
     {

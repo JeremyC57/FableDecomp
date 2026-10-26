@@ -11,7 +11,7 @@
 // the fine dialogue's out word in the frame), the villager lookup is HasTC + the ternary GetTC; the callee-saved pushes
 // of edi (hero map) and ebp (fine amount) sink into the branches that need them.
 // Layout: engine/CAIStateGroup_MeleeCombatNearbyBase.h flattens the base; local model with its PEnemy (+0x14).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,20 +58,20 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     long GetFineAmountForCurrentCrimes();       // 0x0065A41C
 };
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CTCFineDialogue {                        // interface 0xF3
+class CTCFineDialogue { public:                        // interface 0xF3
     bool IsAllowed();                           // 0x007E2790
     void Show(long fine, long amount, CTCVillage* village);     // 0x007E27F0
 };
@@ -79,18 +79,18 @@ struct CTCHeroInterface4 {                      // interface 4 on the hero
     unsigned char _pad[0x3c];
     long m_amount;                              // +0x3c
 };
-struct CTCTargetingAI {                         // interface 8
+class CTCTargetingAI { public:                         // interface 8
     void UpdatePBestEnemyCreatureForAttack(bool force);     // 0x007F6200
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

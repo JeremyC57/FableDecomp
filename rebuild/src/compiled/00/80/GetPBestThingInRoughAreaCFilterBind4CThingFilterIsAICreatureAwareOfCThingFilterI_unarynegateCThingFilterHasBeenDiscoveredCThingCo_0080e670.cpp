@@ -32,12 +32,12 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-struct CThingCreatureBase;
+class CThingCreatureBase;
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 struct ThingList {
@@ -63,12 +63,12 @@ struct ThingList {
  CThingCreatureBase* at(unsigned i)const{Node* p=Sentinel->Next;while(i--)p=p->Next;return p->Value;}
  void clear(){Node* p=Sentinel->Next;while(p!=Sentinel){Node* n=p->Next;free(p);p=n;}Sentinel->Next=Sentinel->Previous=Sentinel;}
 };
-struct CThingPhysical:CThing {enum {ThingTypeMask=3};};
-struct CThingGameObject:CThingPhysical {enum {ThingTypeMask=7};};
-struct CThingCreatureBase:CThingGameObject {enum {ThingTypeMask=15};};
-struct CThingAICreature:CThingCreatureBase {enum {ThingTypeMask=31};};
-struct CThingObject:CThingGameObject {enum {ThingTypeMask=0x807};};
-struct C2DBoxI {
+class CThingPhysical:public CThing { public:enum {ThingTypeMask=3};};
+class CThingGameObject:public CThingPhysical { public:enum {ThingTypeMask=7};};
+class CThingCreatureBase:public CThingGameObject { public:enum {ThingTypeMask=15};};
+class CThingAICreature:public CThingCreatureBase { public:enum {ThingTypeMask=31};};
+class CThingObject:public CThingGameObject { public:enum {ThingTypeMask=0x807};};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -79,8 +79,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -96,11 +96,11 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct C3DVector;
-struct CThingFilter_IsNot {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
-template<class T> struct CIntelligentPointer;
-struct CThingFilter_IsNotList {RetailVector<const CThing*>* PNotList;RetailVector<CIntelligentPointer<CThing> >* PNotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
-struct CThingFilter_IsWithinArea {C3DVector* StartPos;C3DVector* EndPos;float Radius;bool IncludeThingRad;bool operator()(const CThing&)const;}; // 0x007fd830
+class C3DVector;
+class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
+template<class T> class CIntelligentPointer;
+class CThingFilter_IsNotList { public:RetailVector<const CThing*>* PNotList;RetailVector<CIntelligentPointer<CThing> >* PNotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
+class CThingFilter_IsWithinArea { public:C3DVector* StartPos;C3DVector* EndPos;float Radius;bool IncludeThingRad;bool operator()(const CThing&)const;}; // 0x007fd830
 namespace { struct CThingFilter_IsEvadeExplosion {C3DVector* StartPos;C3DVector* EndPos;bool operator()(const CThing&)const;}; } // 0x0080dc90
 // Original std::unary_negate owns its predicate by value (PDB struct130456).
 namespace std {
@@ -110,7 +110,7 @@ template<class Predicate> struct unary_negate {
  __forceinline bool operator()(const CThing& p)const{return !_Functor(p);}
 };
 }
-template<class P1,class P2,class P3,class P4> struct CFilter_Bind4 {
+template<class P1,class P2,class P3,class P4> class CFilter_Bind4 { public:
  P1* F1;P2* F2;P3* F3;P4* F4;
  __forceinline bool operator()(const CThingCreatureBase& p)const{return (*F1)(p)&&(*F2)(p)&&(*F3)(p)&&(*F4)(p);}
 };

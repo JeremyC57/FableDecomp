@@ -1,4 +1,4 @@
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     void* vftable;
 };
 

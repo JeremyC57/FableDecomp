@@ -11,22 +11,22 @@
 // CThing::Kill(bool) @ 0x004C9B80, CThing::GetPosition @ 0x004C73D0.
 // Layout: as the landed FrameUpdate (0x00784500): PHero +0x24, CrowdState +0x2c, CurrentOpinionDeedHandle +0x38,
 // HeroOpinionSourcesPushed +0x3c; CWorld opinion reaction manager +0x74.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
     CCharString& operator=(const char* text);                // 0x0099EFE0
     bool operator!=(const char* text) const;                 // 0x0099E960
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                    // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
@@ -51,15 +51,15 @@ struct COpinionSourceParams {                                // 4 bytes, left un
     long Reserved;
     COpinionSourceParams() { }
 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately);   // 0x007008C0
     bool AddOpinionSource(CThing* source, const CCharString& name, const COpinionSourceParams& params);   // 0x00700780
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;        // +0x74
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     void RemoveDeed(long handle);                            // 0x006C5920
     long AddDeed(long type, const C3DVector& position, long a, long b, long c, long d, long e, long f, long g, long h);   // 0x006C6990
 };
@@ -68,7 +68,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                           // +0x04
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     CThing* ParentThing;                                     // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];

@@ -21,7 +21,7 @@ Inner* Sub100::get(ScopedGuard*) { return &g_innerObj; }
 static const char kStrA[] = "A";
 static const char kStrB[] = "B";
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0x100];
     Sub100 sub100;
     char pad1[0x2c - sizeof(Sub100)];

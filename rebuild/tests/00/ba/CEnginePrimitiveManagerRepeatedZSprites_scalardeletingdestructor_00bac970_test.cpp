@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerRepeatedZSprites {
+class CEnginePrimitiveManagerRepeatedZSprites { public:
     void* vftable;
     int destroyed;
 };

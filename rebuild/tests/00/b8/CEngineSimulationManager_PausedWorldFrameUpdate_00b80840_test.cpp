@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B80840 CEngineSimulationManager::PausedWorldFrameUpdate: wind = direction * strength, ++steps.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -9,13 +9,13 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
 struct SWindRecord { C3DVector Direction; float Strength; };
-struct CEnvironment { SWindRecord wind; int calls; virtual SWindRecord* GetWind() { ++calls; return &wind; } };
+class CEnvironment { public: SWindRecord wind; int calls; virtual SWindRecord* GetWind() { ++calls; return &wind; } };
 struct CEnvironmentProvider { CEnvironment* env; virtual CEnvironment* GetCurrentEnvironment() { return env; } };
 struct SEngineState { CEnvironmentProvider* m_pEnvironmentProvider; };
 static SEngineState g_state;
 static SEngineState* g_pEngineState = &g_state;
 
-struct CEngineSimulationManager {
+class CEngineSimulationManager { public:
     C3DVector WindVector;
     unsigned long PausedStepsPending;
     virtual void PausedWorldFrameUpdate()

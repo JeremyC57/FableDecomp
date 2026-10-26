@@ -14,7 +14,7 @@ struct SubObject {
     void Finalise();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Persist(SubObject* p);
 };
 
@@ -28,7 +28,7 @@ void CPersistContext::Persist(SubObject* p) {
     g_ctx_order = g_step++;
 }
 
-struct CAnimatingObjectDef {
+class CAnimatingObjectDef { public:
     char pad[0x28];
     SubObject sub;
 };

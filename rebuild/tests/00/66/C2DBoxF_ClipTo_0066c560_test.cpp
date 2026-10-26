@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0, Y0, X1, Y1;
     void ClipTo(const C2DBoxF& other);
 };

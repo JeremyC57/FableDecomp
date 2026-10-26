@@ -9,7 +9,7 @@
 //   TC 0x77 = word +0x2c bit 23), map +0x44, PhysicsTC +0x60, ThingTypeFlags +0x6c (bit 3 creature, bit 7 dead).
 // Shape: the landed CThingFilter_CanCollideOrInteractWithThing::operator() 0x006A8370 body with the dead-creature
 //   exclusion after the creature one and the two extra pass tests before the final `return false`.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -21,7 +21,7 @@ class CThing;
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4)
@@ -34,7 +34,7 @@ struct CTCPhysicsBase {
     CThing* ParentThing;                        // +0x04 (CTCBase)
 };
 
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     bool IsSolidToThing(const CThing* thing) const;     // 0x00770DE0
 };
 struct CTCMeleeHittable {                       // interface type 0x77 (class name not pinned)

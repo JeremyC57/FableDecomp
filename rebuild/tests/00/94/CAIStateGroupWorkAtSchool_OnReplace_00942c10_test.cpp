@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_WorkAtSchool::OnReplace @ 0x00942C10: clear the village's teacher flag through the villager component.
-struct CTCVillage { bool m_teacherPresent; };
+class CTCVillage { public: bool m_teacherPresent; };
 struct CTCVillager { CTCVillage* village; };
 static CTCVillage g_village; static CTCVillager g_villager; static bool g_hasVillager; static int g_lookups;
 CTCVillage* GFGetPVillageInterface(CTCVillager* v) { ++g_lookups; return v->village; }

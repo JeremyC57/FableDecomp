@@ -50,7 +50,7 @@ struct CItemVector {                          // retail std::vector<NInventory::
     CItem& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CThing;
+class CThing;
 class CWideString {
 public:
     void* PStringData;

@@ -1,4 +1,4 @@
-struct CIDrawEnvironment;
+class CIDrawEnvironment;
 // Leaf: DrawGetEnvironment
 
 struct CWorld_0066fb20

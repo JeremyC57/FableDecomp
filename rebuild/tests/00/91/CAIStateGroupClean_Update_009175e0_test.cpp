@@ -7,7 +7,7 @@ static int g_fail = 0;
 static std::string g_log;
 static void logs(const char* s) { g_log += s; g_log += ";"; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -17,37 +17,37 @@ struct C3DVector {
     void RotateAboutZ(float angle, bool flag) { (void)flag; float t = X; X = Y; Y = t + angle; }
 };
 static float g_radius = 10.0f;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius) { *centre = C3DVector(1.0f, 2.0f, 3.0f); *radius = g_radius; }
 };
 static int g_insideLimit = 100, g_insideCalls = 0;
-struct CThingBuilding {
+class CThingBuilding { public:
     CTCPhysicsBase* Physics;
     unsigned char m_flags91;
     bool IsPointInside(const C3DVector& point) { (void)point; return ++g_insideCalls <= g_insideLimit; }
 };
-struct CThing { int Id; };
-struct CCharString {
+class CThing { public: int Id; };
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first, m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 static int g_actionIds = 100;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     std::string Anim; long Id;
     long GetActionID() { return Id; }
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThing* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d)
     { (void)owner; (void)sound; (void)useAnimationMovement; (void)usePhysics; (void)cameraUpdate; (void)c; (void)d;
       Anim = animationName.S; Id = ++g_actionIds; }
 };
 template <class T> static T* tmpaddr(const T& t) { return const_cast<T*>(&t); }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 static unsigned long GFROR13(unsigned long v) { v &= 0xFFFFFFFFUL; return ((v >> 13) | (v << 19)) & 0xFFFFFFFFUL; }
 static float GFFloatRandom(float range, unsigned long* seed) { (void)seed; return range * 0.5f; }
 

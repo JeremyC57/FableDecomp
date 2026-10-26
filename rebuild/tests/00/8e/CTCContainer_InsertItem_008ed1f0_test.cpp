@@ -5,7 +5,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCopies = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(void* p) : PStringData(p) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_strCopies; }
@@ -50,7 +50,7 @@ struct CThingDef {
     unsigned char Flags42;
     bool PersistsGameState() const { return (Flags42 & 2) != 0; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -61,7 +61,7 @@ template <class T> struct CDefHolder {
     T* operator->() const { return Object; }
 };
 static CThingDef* g_def = 0; static int g_getDef = 0; static long g_askedIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const
     {
         ++g_getDef; g_askedIndex = index;
@@ -71,11 +71,11 @@ struct CDefinitionManager {
 };
 static CDefinitionManager g_manager;
 static bool g_persisted = false; static int g_setPersisted = 0;
-struct CThing {
+class CThing { public:
     bool IsGameStatePersisted() const { return g_persisted; }
     void SetAsGameStatePersisted(bool persisted) { ++g_setPersisted; g_persisted = persisted; }
 };
-struct CTCContainer {
+class CTCContainer { public:
     virtual void v00() {}
     CThing* ParentThing;
     unsigned char _pad08[0x0c - 0x08];

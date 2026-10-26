@@ -15,7 +15,7 @@
 //          +0x21, FrameOfLastInteraction +0x24); PBrain is the first dword at +0x04.
 #include "engine/CAIStateGroup_MinionReactToNoise.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,10 +34,10 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return f;
 }
 #pragma auto_inline(on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,7 +57,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x32];
     bool CanHear;                               // +0x32 (descriptive)
     CThing* GetPerceivedThing();                // 0x007446A0
@@ -67,38 +67,38 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x168 - 0x4c];
     CBaseIntelligentPointer PHome;              // +0x168
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF290
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CFilter_Bind2<CMessageEventFilter_IsOfType,
                                          CMessageEventFilter_IsOriginatedByThing>& filter);   // 0x008D46D0
     CMessageEvent* AddMessage(long type, unsigned long duration, const C3DVector* pos, CThing* from, CThing* about,
                               float a, float b, long c);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageManager;      // +0x60
 };
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long FramesPerSecond;                    // 0x01375550
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };

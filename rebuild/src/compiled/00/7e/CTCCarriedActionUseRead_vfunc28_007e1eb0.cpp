@@ -8,20 +8,20 @@
 // [+20h],10h`; type 0x1a = bit 26), component map +0x44, def +0x70.
 // Shape: the def object is taken out of the out pointer right after GetSubDef into a holder (ebx) whose destructor releases it
 // with `dec [ebx+4] ; jne` (GOTCHAS 24f/retry 8: a holder with a direct `--count`); the AlreadyRead store sits inside the block.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-struct CBonusItemDef : CDefPointeeBase { };
-template <class T> struct CDefPointer {
+class CBonusItemDef : public CDefPointeeBase { public: };
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -34,7 +34,7 @@ template <class T> struct CDefHolder {                  // the def taken out of 
             Object->Delete();
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBonusItemDef>* out);    // 0x007E1D30
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -50,7 +50,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CBonusItemDef>* o
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -75,7 +75,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void ApplyBonusItemEffects(CBonusItemDef* def);     // 0x0057C4F1
 };
 struct CTCShowableItem {

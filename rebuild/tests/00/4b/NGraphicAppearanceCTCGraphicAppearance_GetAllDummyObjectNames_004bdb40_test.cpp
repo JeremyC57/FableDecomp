@@ -39,7 +39,7 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase() { ++g_baseDtors; }
 }; } using N_0099a2d0::CBase;
 
-struct C3DMeshObject : CBase {
+class C3DMeshObject : public CBase { public:
     CCountedPointer    Mesh;
     bool               InversePositionMatrixSetup;
     float              Scale;
@@ -54,7 +54,7 @@ struct C3DMeshObject : CBase {
 };
 
 namespace NGraphicAppearance {
-struct CMeshInfo { long Index; float SizeX; };
+class CMeshInfo { public: long Index; float SizeX; };
 }
 
 template <class T> struct CRetailVector {
@@ -69,7 +69,7 @@ template <class T> struct CRetailVector {
 typedef CRetailVector<NGraphicAppearance::CMeshInfo> CMeshVector;
 
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     long first, second;
     void GetAllMeshes(CMeshVector& meshes) const
     {
@@ -89,7 +89,7 @@ struct CComponentList { CComponentListNode* m_head; };
 static float g_lastScale = 0.0f;
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     CComponentList Components;
     void GetAllMeshes(CMeshVector& meshes) const
     {

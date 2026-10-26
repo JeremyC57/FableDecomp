@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     long* enumTarget; const char* name; long* valueTarget; long defaultSeen;
     void TransferEnum_00431102(long* value) { enumTarget = value; }
     void Transfer(const char* n, long& value, const long& defaultValue) { name = n; valueTarget = &value; defaultSeen = defaultValue; }
 };
-struct CCrateStackDef {
+class CCrateStackDef { public:
     void* __vftable;
     unsigned char _pad[0x24];
     long StackType;

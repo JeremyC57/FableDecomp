@@ -7,7 +7,7 @@ static int g_freeCount = 0;
 static void FreeStub(void* p) { if (g_freeCount < 4) g_freed[g_freeCount] = p; ++g_freeCount; }
 
 template<class T>
-struct CArray {
+class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;

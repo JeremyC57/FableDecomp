@@ -3,13 +3,13 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     int frame; int dieAt; const int* hits; float health;
     bool IsAlive() const { return frame < dieAt; }
     bool MsgIsHitBy(const char* who) const { return std::strcmp(who, "SCRIPT_NAME_HERO") == 0 && hits[frame] == 1; }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const char* who) const { return std::strcmp(who, "SCRIPT_NAME_HERO") == 0 && hits[frame] == 2; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing* briar;
     void NewScriptFrame() { Log("frame"); ++briar->frame; }
     float GetHealth(const CScriptThing& t) { return t.health; }

@@ -15,7 +15,7 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                                       // 0x0099EAE0
 };

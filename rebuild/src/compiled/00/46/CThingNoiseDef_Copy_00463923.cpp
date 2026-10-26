@@ -1,5 +1,5 @@
 // CThingNoiseDef::Copy @ 0x00463923
-struct CDefClassBase;
+class CDefClassBase;
 
 struct SubMember {
     char pad[4];
@@ -12,7 +12,7 @@ struct CBaseNoiseDef {
     void Copy(const CDefClassBase* src); // @ 0x463950  (thiscall, 1 arg)
 };
 
-struct CThingNoiseDef : public CBaseNoiseDef {
+class CThingNoiseDef : public CBaseNoiseDef { public:
     void Copy(const CDefClassBase* src);
 };
 

@@ -1,5 +1,5 @@
 #include "engine/CEngineScreenEffectColourFilter.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CEngineVideoOptionsDef {
+class CEngineVideoOptionsDef { public:
     char pad[0x72];
     unsigned char EnableGlow;   // +0x72
 };

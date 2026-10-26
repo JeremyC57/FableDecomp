@@ -19,7 +19,7 @@ struct SCountBlock {                         // the shared count block of CCount
 };
 
 template <class T>
-struct CCountedPointer {                     // {object, count block}
+class CCountedPointer { public:                     // {object, count block}
     T*           m_pObject;
     SCountBlock* m_pCount;
     ~CCountedPointer()
@@ -39,7 +39,7 @@ struct CCountedPointer {                     // {object, count block}
 class CCharString {
 public:
     ~CCharString();                          // 0x0099EAE0
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
 };
 
 template <class T>
@@ -54,12 +54,12 @@ struct CRetailVector {                       // STLport vector of pointers: 12 b
     }
 };
 
-struct CScriptInfo;
-struct CScriptBase;
-struct CScriptDataBase;
-struct CRegion;
+class CScriptInfo;
+class CScriptBase;
+class CScriptDataBase;
+class CRegion;
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
 

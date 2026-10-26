@@ -7,7 +7,7 @@
 // leaves the vptrs alone). Each is the inlined CIVCountedPointer::operator=: compare the pointers, release the old pointee through an inline member of the
 // pointee (`dec [p+4] ; jne ; call [vt+4]`, the pointer stays in ecx), clear, then re-read the source,
 // store and add-ref (`inc [p+4]`).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1 (+4)
     unsigned long IVRefCount;              // +4
@@ -16,7 +16,7 @@ struct CIVCountedPointeeBase {
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -35,12 +35,12 @@ struct CIVCountedPointer {
 
 struct CSharedData : CIVCountedPointeeBase { };       // C3DAnimationBlendState::CSharedData
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CIVCountedPointer<CSharedData> Data;                     // +4
 };
 
-struct C3DAnimationInterpolator {
+class C3DAnimationInterpolator { public:
     virtual void v00();
     C3DAnimationBlendState StartState;                       // +0x04
     C3DAnimationBlendState EndState;                         // +0x0C

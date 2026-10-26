@@ -20,7 +20,7 @@ struct CRetailList_CountedPointer {
     void clear();                                  // 0x0073E6A0
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned char              _pad[0xc];
     CRetailList_CountedPointer m_modes;            // +0x0c
     void AddMode(long mode);                       // 0x0073AE10

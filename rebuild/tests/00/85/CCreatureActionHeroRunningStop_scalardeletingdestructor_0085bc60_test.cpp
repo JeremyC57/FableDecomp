@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureActionHeroRunningStop {
+class CCreatureActionHeroRunningStop { public:
     void* vftable;
     int destroyed;
 };

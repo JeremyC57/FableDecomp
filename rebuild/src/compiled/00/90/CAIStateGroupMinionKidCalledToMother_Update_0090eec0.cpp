@@ -11,12 +11,12 @@
 // (PBrain +4, brain PCreature +0x18, creature PMother +0x180, dead bit +0x91 bit 0), as in the landed 0x0090EE20.
 // Shape: the move result is a function-scope long initialised to 3 before the loop (retail keeps it in ebp and tests it
 // after the inner Terminate); the 8-byte held pointer forces the `and esp,-8` frame.
-struct CTCBase;
-struct CBaseObject {
+class CTCBase;
+class CBaseObject { public:
     virtual ~CBaseObject();
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing : CBaseObject {
+class C3DVector { public: float X, Y, Z; };
+class CThing : public CBaseObject { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -49,7 +49,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-struct CMessageEvent : CBaseObject { };
+class CMessageEvent : public CBaseObject { public: };
 struct CIntelligentPointerMessage : CBaseIntelligentPointer {    // CIntelligentPointer<CMessageEvent>, vtable 0x0128B0C0
     virtual void v00();
     __forceinline CIntelligentPointerMessage(CMessageEvent* item) { SetPItem(item); }
@@ -58,21 +58,21 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligent
     virtual void v00();
     __forceinline CIntelligentPointerConstThing(CThing* item) { SetPItem(item); }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x180 - 0x94];
     CBaseIntelligentPointer PMother;            // +0x180
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();            // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

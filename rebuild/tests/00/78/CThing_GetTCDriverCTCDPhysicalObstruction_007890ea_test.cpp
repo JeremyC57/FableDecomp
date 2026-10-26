@@ -1,12 +1,12 @@
 // Behaviour test for CThing::GetTCDriver<CTCDPhysicalObstruction> @ 0x007890EA: bitset bit 0xed gates the driver hand-back.
 #include <cstdio>
-struct CTCDriverBase { int id; };
-struct CTCDPhysicalObstruction;
+class CTCDriverBase { public: int id; };
+class CTCDPhysicalObstruction;
 struct CTCBitset {
     unsigned long m_words[9];
     bool test(unsigned long position) const { return (m_words[position >> 5] >> (position & 31)) & 1; }
 };
-struct CThing {
+class CThing { public:
     CTCBitset      UsingComponents;
     CTCDriverBase* PTCDriver;
     template <class T> bool GetTCDriver(T** out)

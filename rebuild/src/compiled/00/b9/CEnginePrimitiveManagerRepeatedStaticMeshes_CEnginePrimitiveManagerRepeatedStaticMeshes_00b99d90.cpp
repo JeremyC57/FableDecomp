@@ -7,7 +7,7 @@
 //   AllocateAligned @ 0x009F2BE0 (`__fastcall`, size 0xC00, alignment 0x10).
 // Layout: engine/CEnginePrimitiveManagerRepeatedStaticMeshes.h offsets hold (0x94 bytes); its shader members are opaque byte arrays,
 //   so the class is restated locally with the real shader types (models as the landed 0x00BAD040).
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -30,10 +30,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -46,7 +46,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -60,7 +60,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
@@ -79,7 +79,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -94,7 +94,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -102,7 +102,7 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
@@ -114,17 +114,17 @@ extern CEngineDisplay* g_pEngineDisplay;           // 0x01436E1C
 void* __fastcall AllocateAligned(unsigned long size, unsigned long alignment);   // 0x009F2BE0
 struct CSIMDVariableBlock;
 
-struct CEnginePrimitiveManager {                   // 0x0c bytes
+class CEnginePrimitiveManager { public:                   // 0x0c bytes
     virtual ~CEnginePrimitiveManager();
     unsigned char _body[0x8];
     void RegisterEnable(const CCharString& name);  // 0x00BACD80
 };
-struct CEnginePrimitiveGroupManager : CEnginePrimitiveManager {   // 0x20 bytes
+class CEnginePrimitiveGroupManager : public CEnginePrimitiveManager { public:   // 0x20 bytes
     unsigned char _group[0x14];
     CEnginePrimitiveGroupManager(CEngineSceneArray* scenes);   // 0x00BEBC30
 };
 
-struct CEnginePrimitiveManagerRepeatedStaticMeshes : CEnginePrimitiveGroupManager {   // vtable 0x012A3E9C, 0x94 bytes
+class CEnginePrimitiveManagerRepeatedStaticMeshes : public CEnginePrimitiveGroupManager { public:   // vtable 0x012A3E9C, 0x94 bytes
     CPixelShader   PixelShader;                                    // +0x20
     CVertexShader  VertexShader;                                   // +0x28
     CPixelShader   PixelShaderStippleAlpha;                        // +0x30

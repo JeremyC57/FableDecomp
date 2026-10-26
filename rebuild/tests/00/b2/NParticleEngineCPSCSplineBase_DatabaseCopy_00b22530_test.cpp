@@ -3,7 +3,7 @@
 #include <cstdio>
 
 struct CArray { int count; int tag; CArray() : count(0), tag(0) {} CArray& operator=(const CArray& o) { count = o.count; tag = o.tag; return *this; } };
-struct CCardinalSpline { CArray ControlPoints; float Tension; bool EndPointsConnected; };
+class CCardinalSpline { public: CArray ControlPoints; float Tension; bool EndPointsConnected; };
 static int g_destroyed;
 struct CSplineRandomOffsetData {
     CCardinalSpline* InitialSpline; bool OffsetOnlyAtStartup, ResetEachFrame; CArray Limits, Speed;

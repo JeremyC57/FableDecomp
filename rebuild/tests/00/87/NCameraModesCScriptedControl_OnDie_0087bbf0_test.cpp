@@ -2,7 +2,7 @@
 #include <cmath>
 #include <cstring>
 // Behaviour model of NCameraModes::CScriptedControl::OnDie @ 0x0087BBF0 (copy of the source logic, stand-in callees).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -12,14 +12,14 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLength() const { return (float)std::sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCamera {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCamera { public:
     C3DVector WorldPosition; CRightHandedSet RHSet; float HorizontalFOV;
     float GetHorizontalFOV() const { return HorizontalFOV; }
 };
-struct CThing { C3DVector pos; unsigned char m_flags91; const C3DVector& GetPosition() const { return pos; } };
+class CThing { public: C3DVector pos; unsigned char m_flags91; const C3DVector& GetPosition() const { return pos; } };
 static bool IS_THING_ALIVE(const CThing* t) { return t && !(t->m_flags91 & 1); }
-struct CGameCameraManager { CCamera Camera, OldCamera; bool SingleCut; void CutCamera() { OldCamera = Camera; SingleCut = true; } };
+class CGameCameraManager { public: CCamera Camera, OldCamera; bool SingleCut; void CutCamera() { OldCamera = Camera; SingleCut = true; } };
 struct CScriptModuleBase { bool finished; bool IsFinished() { return finished; } };
 struct CScriptedControl {
     C3DVector LookAtPosition, GoToPosition; float CameraFOV;

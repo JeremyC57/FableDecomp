@@ -6,11 +6,11 @@
 // Shape: the sibling C3DPositionInterpolator(start, end) (landed 0x006AF570) with 24-byte members: every dword
 // moves through ecx/edx in turn -- the engine's memberwise C3DVector copy constructor under CRightHandedSet's
 // implicit copy constructor.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
-struct CRightHandedSet {                   // 24 bytes (PDB)
+class CRightHandedSet { public:                   // 24 bytes (PDB)
     C3DVector Up;                          // +0x00
     C3DVector Forward;                     // +0x0c
 };
@@ -20,7 +20,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                               // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DOrientationInterpolator : CBase {
+class C3DOrientationInterpolator : public CBase { public:
     virtual void v00();                    // own vtable (0x01239824)
     CRightHandedSet StartOrientation;      // +0x04
     CRightHandedSet EndOrientation;        // +0x1c

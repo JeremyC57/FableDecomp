@@ -10,13 +10,13 @@
 // AssassinDisplacementTrail +0x20, TrailDelay +0x28, StartTrailDelay +0x2c, JustReleased +0x42, SlowTimeLength
 // +0x44, RadialBlurFadeKey +0x98, ScheduleForCancel +0x9e, RushDelayFrameCount +0xa0, CompletedExitModes +0xa4;
 // retail def blur height +0x44, blur fade time +0x4c; CThing state byte +0x10 (1 = player), interface 0xA7's mode +0x10.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                                // +0x10
     unsigned char _pad11[0x20 - 0x11];
@@ -79,14 +79,14 @@ struct CEnvironmentSpellEffects {
     void RadialBlurFadeOut(float time, void* key);      // 0x006B82E0
     void RadialBlurSetCenterWorldPos(void* key, const C3DVector& pos);   // 0x006B8310
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad00[0x1964];
     CEnvironmentSpellEffects* SpellEffects;             // +0x1964
 };
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                         // +0x18
     unsigned char _pad1c[0x68 - 0x1c];
@@ -99,7 +99,7 @@ struct CAssassinRushDef {
     unsigned char _pad48[0x4c - 0x48];
     float         BlurFadeTime;                         // +0x4c
 };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x14 - 0x08];

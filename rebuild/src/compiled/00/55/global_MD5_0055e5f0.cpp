@@ -29,7 +29,7 @@ extern "C" void __fastcall md5_init(md5_state_t* pms);                          
 extern "C" void __fastcall md5_append(md5_state_t* pms, const md5_byte_t* data, int nbytes);     // 0x00A3DF30
 extern "C" void __fastcall md5_finish(md5_state_t* pms, md5_byte_t digest[16]);                  // 0x00A3E010
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pData;                    // +0x00
     long m_length;                          // +0x04
 };

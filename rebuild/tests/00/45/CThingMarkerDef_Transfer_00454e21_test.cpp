@@ -1,13 +1,13 @@
 #include <cstdio>
 static void* g_calls[8];
 static int g_n = 0;
-struct CThingMarkerDef;
+class CThingMarkerDef;
 struct CXfer {
     void M70(void* p){ g_calls[g_n++] = p; }
     void M80(void* p){ g_calls[g_n++] = p; }
     void M84(void* p){ g_calls[g_n++] = p; }
 };
-struct CThingMarkerDef {
+class CThingMarkerDef { public:
     char b[0x100];
     void BaseTransfer(CXfer* x){ g_calls[g_n++] = this; g_calls[g_n++] = x; }
     void Transfer(CXfer* x);

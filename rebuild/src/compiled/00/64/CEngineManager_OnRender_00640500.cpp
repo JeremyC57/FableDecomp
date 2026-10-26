@@ -34,7 +34,7 @@ struct CRetailViewVector {                        // VC6 Dinkumware vector<SView
     void erase(SViewEntry* first, SViewEntry* last);   // 0x00515BC0 (Vector_RemoveAt)
 };
 
-struct CEngineManager {
+class CEngineManager { public:
     unsigned char     _pad[4];
     SComponentNode*   m_pComponents;               // +0x04 (sentinel node)
     CRetailViewVector m_views;                     // +0x08

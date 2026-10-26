@@ -15,7 +15,7 @@
 // destructor called; `ret`.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -55,10 +55,10 @@ struct __declspec(novtable) CVertexShaderInput : CBaseClass {   // vtable 0x0129
     virtual void v00();
 };
 
-struct CShaderDataBank;
-struct CShaderBase;
-struct CShaderRenderManager;
-struct CShaderResource : CBase {                   // vtable 0x0129D580, retail 0x3c bytes
+class CShaderDataBank;
+class CShaderBase;
+class CShaderRenderManager;
+class CShaderResource : public CBase { public:                   // vtable 0x0129D580, retail 0x3c bytes
     CShaderDataBank*          ShaderBank;          // +0x04
     CPodArray<CShaderBase*>   Shaders;             // +0x08
     CShaderRenderManager*     ShaderRenderManager; // +0x14

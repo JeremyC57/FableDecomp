@@ -13,11 +13,11 @@
 // both ends, esi/edi/edx), as implicit struct assignments do in this module.
 #include "engine/CEnginePrimitiveManagerRepeatedZSprites.h"
 
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
-struct CEngineFadeDistance { float Near; float Far; };
-struct C3DMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
+class CEngineFadeDistance { public: float Near; float Far; };
+class C3DMeshInfo;
 struct CObjectEntry;
 
 namespace NEnginePrimitiveManagerRepeatedZSprites {
@@ -36,7 +36,7 @@ struct CAddPrimitiveDesc {                               // PDB, 0x50 bytes
 };
 }
 
-struct CEngineInternalPrimitiveRepeatedZSprite {        // CEngineInternalPrimitiveBase (0x48) + the sprite data (PDB)
+class CEngineInternalPrimitiveRepeatedZSprite { public:        // CEngineInternalPrimitiveBase (0x48) + the sprite data (PDB)
     void*               vptr;                            // +0x00
     unsigned char       _pad04[0x8];
     unsigned long       EnginePrimitiveFlags;            // +0x0c
@@ -56,7 +56,7 @@ struct CEngineInternalPrimitiveRepeatedZSprite {        // CEngineInternalPrimit
     float               MaxScale;                        // +0x90
 };
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void*                                    vptr;       // +0x00
     CEngineInternalPrimitiveRepeatedZSprite* Data;       // +0x04 (CIVCountedPointer object)
 };

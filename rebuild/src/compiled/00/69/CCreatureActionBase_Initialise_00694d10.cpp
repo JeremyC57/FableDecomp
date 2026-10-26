@@ -10,7 +10,7 @@
 //   PAnimEntry_Data +0x74); modelled locally because the header's vptr is a plain void* and this body makes virtual calls.
 // Shape: the anim entry pointer is a named local read first (held in ebp); the creature is fetched into a named local
 //   before the entry's dword is pushed; the entry's first dword is passed by value.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -65,11 +65,11 @@ struct CTCInterface5A {                         // interface type 0x5A
     CControlFlags* GetControlFlags();           // 0x0070B460
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long Animation;                             // +0x00
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

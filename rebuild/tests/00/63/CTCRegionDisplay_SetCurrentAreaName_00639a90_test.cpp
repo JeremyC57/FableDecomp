@@ -3,26 +3,26 @@
 #include <cstdio>
 #include <stddef.h>
 static long g_frame = 0; static int g_getWorldCalls = 0;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static bool SameText(const wchar_t* a, const wchar_t* b)
 {
     if (!a) a = L""; if (!b) b = L"";
     while (*a && *a == *b) { ++a; ++b; }
     return *a == *b;
 }
-struct CWideString {
+class CWideString { public:
     const wchar_t* m_pData;
     bool operator!=(const wchar_t* text) const { return !SameText(m_pData, text); }
     CWideString& operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
     const CWideString& operator=(const wchar_t* text) { m_pData = text; return *this; }
 };
 static CWorld g_world;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     void* ParentThing;
     CWorld* GetWorld() { ++g_getWorldCalls; return &g_world; }
 };
-struct CTCRegionDisplay : CTCBase {
+class CTCRegionDisplay : public CTCBase { public:
     CWideString   CurrentAreaName;
     CWideString   CurrentAreaNameExtra;
     long          FrameNameChanged;

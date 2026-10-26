@@ -11,7 +11,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatTypeDef {
+class CCombatTypeDef {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x38];                          // +0x04 flattened CParentDefClassBase (0x39) + alignment
     unsigned char DefenderCombatRingOccupationNumbers[0xc];  // +0x3c vector<long,std::allocator<long>_>

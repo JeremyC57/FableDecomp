@@ -13,7 +13,7 @@
 //   built in a plain statement (no `&&` around it, so no conditional-destruction flag); the action class declares no dtor,
 //   so its generated dtor is just the ~CCombatActionBase call; the SetCurrentAction result rides in bl across it. All the
 //   fall-through paths join at the RemoveMode block (out-parameter GetInterface, component in eax then ecx).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -22,9 +22,9 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -44,11 +44,11 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CTCCreatureModeManager {            // interface 0x31
+class CTCCreatureModeManager { public:            // interface 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0
 };
 
@@ -58,18 +58,18 @@ struct CBaseIntelligentPointer {           // vtable + PData (8 bytes)
     CThingCreatureBase* GetPItem() const;  // 0x00A01B50
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_CastWillDrainLifeSpell : CCombatActionBase {   // retail sizeof 0x11c
+class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public:   // retail sizeof 0x11c
     unsigned char _spell[0x08];
 };
-struct CCreatureAction_BriarRoseConcentrateOutof : CCreatureAction_CastWillDrainLifeSpell {
+class CCreatureAction_BriarRoseConcentrateOutof : public CCreatureAction_CastWillDrainLifeSpell { public:
     CCreatureAction_BriarRoseConcentrateOutof(CThingCreatureBase* owner, CThingCreatureBase* target);   // 0x008C2CB0
 };
 
@@ -84,7 +84,7 @@ struct CModeStandBase : CModeBase {        // retail sizeof 0x68
 };
 
 namespace NCreatureMode {
-struct CModeBriarRoseConcentrate : CModeStandBase {   // vtable 0x01268548
+class CModeBriarRoseConcentrate : public CModeStandBase { public:   // vtable 0x01268548
     unsigned char           Filter[0x0c];  // +0x68 CAnimFilterOfGroup
     long                    Timer;         // +0x74
     CBaseIntelligentPointer PTarget;       // +0x78 CIntelligentPointer<CThingCreatureBase>

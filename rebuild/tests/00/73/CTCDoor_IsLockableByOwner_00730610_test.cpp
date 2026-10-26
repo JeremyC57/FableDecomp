@@ -1,6 +1,6 @@
 #include "engine/CTCDoor.h"
 #include <stdio.h>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     char pad[0x3a];
     unsigned char lockedFlag;
 };

@@ -4,7 +4,7 @@
 
 static long g_frame = 0;
 static long GFGetCurrentFrame() { return g_frame; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

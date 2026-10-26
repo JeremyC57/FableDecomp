@@ -10,7 +10,7 @@
 // def's distance (+0x6c); both only grow the ring (`fcom ; test ah,41h ; jne` = `size > RingThickness`,
 // the comparand kept on the FPU stack for the store). The weapon call is written in each arm (retail
 // duplicates the whole call and return); its arguments are pushed before the GetCombatManager call.
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad[0x6c];
     float m_ringDistance;                  // +0x6c
 };
@@ -20,9 +20,9 @@ struct SCollisionData {
     float m_radius;                        // +0x34
 };
 
-struct CCombatManager;
+class CCombatManager;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x60];
     SCollisionData* m_pCollision;          // +0x60
     CCombatTypeDef* GetCombatTypeDef();    // 0x00666D10
@@ -31,7 +31,7 @@ struct CThingCreatureBase {
 
 enum EUnsheatheWeaponType { UNSHEATHE_INNER_RING = 4, UNSHEATHE_OUTER_RING = 5 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, EUnsheatheWeaponType type);   // 0x006EBDD0
 };
 
@@ -39,7 +39,7 @@ struct CProng {
     void SetPOccupyingAttacker(CThingCreatureBase* attacker);   // 0x006F17A0
 };
 
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;          // +0x00
     long AttackerNumber;                   // +0x04
     long CombatWheelRingIndex;             // +0x08

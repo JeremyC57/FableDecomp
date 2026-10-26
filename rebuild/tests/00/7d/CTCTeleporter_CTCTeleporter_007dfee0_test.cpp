@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <new>
 // Behaviour test for CTCTeleporter::CTCTeleporter (0x007DFEE0).
-struct CTeleporterDef { int id; };
+class CTeleporterDef { public: int id; };
 static CTeleporterDef g_def;
 struct CDefPointer { CTeleporterDef* m_p; CDefPointer() : m_p(0) {} };
-struct CDefClassBase {
+class CDefClassBase { public:
     int calls; CDefPointer* lastOut;
     bool GetSubDef_007e0540(CDefPointer* out) { ++calls; lastOut = out; out->m_p = &g_def; return true; }
 };
@@ -20,13 +20,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() {}
     CIntelligentPointer() : CBaseIntelligentPointer() {}
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     virtual ~CTCBase() {}
     CThingDefs* m_pParentThing;
     CTCBase(CThing* parent) : m_pParentThing(parent) {}
 };
-struct CTCTeleporter : CTCBase {
+class CTCTeleporter : public CTCBase { public:
     CDefPointer PDef;
     bool Active;
     bool Activated;

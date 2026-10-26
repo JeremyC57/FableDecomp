@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
-struct CTCBase { CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* Thing; CTCBase(CThing* t) : Thing(t) { } virtual ~CTCBase() { } };
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } virtual ~CIntelligentPointer() { } };
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
 struct CDefPointerTrackerDef { const void* Object; CDefPointerTrackerDef() : Object(0) { } };
-struct CTCVolumeContainmentTracker : CTCBase {
+class CTCVolumeContainmentTracker : public CTCBase { public:
     CIntelligentPointer PThingInside; CEnginePrimitiveThemeChannelDesc CurrentThemeChannel; bool PreviouslyUpdated;
     CDefPointerTrackerDef PDef; bool UpdateLightingChannels;
     CTCVolumeContainmentTracker(CThing* thing) : CTCBase(thing), PreviouslyUpdated(false), UpdateLightingChannels(true) { }

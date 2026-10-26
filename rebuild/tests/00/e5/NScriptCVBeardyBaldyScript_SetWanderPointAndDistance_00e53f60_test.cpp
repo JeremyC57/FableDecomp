@@ -1,27 +1,27 @@
 // Behaviour test for CV_BeardyBaldyScript::SetWanderPointAndDistance (0x00E53F60): the four interface calls in order,
 // each with a by-value copy of the thing (refcount bumped per copy) and the def's wander distances.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CCPPointerInfo { long RefCount; };
-struct CScriptThing {
+class CCPPointerInfo { public: long RefCount; };
+class CScriptThing { public:
     void* Data;
     CCPPointerInfo* Info;
     CScriptThing(void* d, CCPPointerInfo* i) : Data(d), Info(i) {}
     CScriptThing(const CScriptThing& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
     ~CScriptThing() {}                      // callee-owned copies: leak-count observable by the test
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void SetWanderCentrePoint(CScriptThing thing, C3DVector point) = 0;
     virtual void SetWanderMinDistance(CScriptThing thing, float distance) = 0;
     virtual void SetWanderMaxDistance(CScriptThing thing, float distance) = 0;
     virtual void SetScriptingStateGroup(CScriptThing thing, long group) = 0;
     virtual ~CGameScriptInterface() {}
 };
-struct CScriptDef { float WanderMinDistance, WanderMaxDistance; };
+class CScriptDef { public: float WanderMinDistance, WanderMaxDistance; };
 static CScriptDef g_def = { 2.5f, 9.0f };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CV_BeardyBaldyScript {

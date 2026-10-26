@@ -7,7 +7,7 @@
 // @ 0x00B51F00 uses the next byte/float pair. The engine header (CEngineWeatherRenderer.h) puts OverridenRainStrength/RainOverriden at
 // +0x12e8/+0x12ec (Ego PDB); retail has the float at +0x5c8 and the flag at +0x5d0 while MaximumWeatherParticlePercentage stays at
 // +0x12f8, so the retail layout is modelled locally (the 0x5c8 pair sits inside the retail weather settings block).
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x5c8];
     float         OverridenRainStrength;           // +0x5c8
     float         OverridenSnowStrength;           // +0x5cc

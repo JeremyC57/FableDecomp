@@ -20,7 +20,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                // +0x00
     unsigned long Length;               // +0x04
 };

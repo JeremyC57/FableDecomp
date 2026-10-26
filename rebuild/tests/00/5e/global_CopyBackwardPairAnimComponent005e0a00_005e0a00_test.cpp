@@ -10,7 +10,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
 enum EAnimComponent { ANIM_COMPONENT_NONE = 0 };
 
-struct CAnimComponentBase {                  // CIVCountedPointeeBase-derived
+class CAnimComponentBase { public:                  // CIVCountedPointeeBase-derived
     virtual void Destroy(int flags);         // slot 0
     virtual void Delete();                   // slot 1 (+0x04)
     unsigned long IVRefCount;                // +0x04

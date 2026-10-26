@@ -8,8 +8,8 @@ struct CCreatureAction_Base
     virtual void Initialise();
 };
 
-struct CCreatureAction_DragonFlight : public CCreatureAction_Base
-{
+class CCreatureAction_DragonFlight : public CCreatureAction_Base
+{ public:
     char pad4[0x10 - 4];
     int  TotalTime;
     int  ActionTime;

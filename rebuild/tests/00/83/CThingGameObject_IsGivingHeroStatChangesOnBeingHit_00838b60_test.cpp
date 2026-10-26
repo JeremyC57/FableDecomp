@@ -20,7 +20,7 @@ struct CDefPointer {
     }
     CThingGameObjectDef* operator->() const { return m_p; }
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     CDefPointer   PBaseDef;
     unsigned char AddToComboMultiplierOnHitOverride : 1;
     unsigned char AddToComboMultiplierOnHitOverrideSet : 1;

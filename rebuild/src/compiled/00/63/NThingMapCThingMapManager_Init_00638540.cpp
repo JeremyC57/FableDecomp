@@ -10,16 +10,16 @@
 // Shape: GetWorldMap()->GetBounds() is called once per extent with the inline box GetWidth()/GetHeight() (box in ecx);
 // `/ 128` signed; Height is stored after the
 // resize argument push (Width re-read from the member).
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     long GetWidth() const { return BRX - TLX; }
     long GetHeight() const { return BRY - TLY; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual const C2DBoxI& GetBounds() const;   // slot 13 (+0x34)
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual CWorldMap* GetWorldMap();           // slot 12 (+0x30)
 };
@@ -31,7 +31,7 @@ struct CGameMapCellVector {                     // STLport vector<SGameMapCell>
     SGameMapCell* _M_end_of_storage;
     void resize(unsigned int n);                // 0x00639810
 };
-struct CThingMapManager {
+class CThingMapManager { public:
     void*              __vftable;               // +0x00
     CWorld*            PWorld;                  // +0x04
     CGameMapCellVector Cells;                   // +0x08

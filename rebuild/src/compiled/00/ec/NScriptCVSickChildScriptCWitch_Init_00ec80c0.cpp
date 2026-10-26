@@ -12,10 +12,10 @@
 // the interface re-read for every call; the by-value CScriptThing is built in the argument area by its inline copy
 // constructor, which here stores both vtables (CBaseClass 0x01231710 then CScriptThing 0x01238C8C) before the
 // counted PImp copy (`inc` of the count block).
-struct CThing;
+class CThing;
 struct SCount { long m_references; };
 
-struct CBaseClass {                              // vtable 0x01231710
+class CBaseClass { public:                              // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                       // 0x0099A2E0
 };
@@ -26,13 +26,13 @@ struct CCountedPointer_CThing {                  // CScriptThing::PImp: object, 
     CCountedPointer_CThing(const CCountedPointer_CThing& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
 
-struct CScriptThing : CBaseClass {               // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:               // 12 bytes, vtable 0x01238C8C
     CCountedPointer_CThing PImp;                 // +4
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
     virtual ~CScriptThing();
 };
 
-struct CGameScriptInterface {                  // vtable 0x01260F0C
+class CGameScriptInterface { public:                  // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

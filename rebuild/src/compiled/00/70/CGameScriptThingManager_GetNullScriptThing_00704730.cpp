@@ -13,7 +13,7 @@
 // precedes the copied words because they belong to the member's inline copy constructor.
 // Leaf: GetNullScriptThing
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                       // +0 reference count
 };
 
@@ -21,7 +21,7 @@ struct CBase {
     virtual ~CBase();                        // 0x0099A2E0
 };
 
-struct CScriptThing;
+class CScriptThing;
 
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;                      // +0
@@ -34,7 +34,7 @@ struct CCountedPointer_CScriptThing {
     }
 };
 
-struct CScriptThing : CBase {                // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}   // 0x004ABE90 (inlined)
     virtual ~CScriptThing();
@@ -44,7 +44,7 @@ struct CScriptThingInfoList {                // std::list<CGameScriptThingManage
     void* m_pHead;                           // +0x00
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     CScriptThingInfoList ScriptThings;       // +0x00
     CScriptThing NullThing;                  // +0x04
     CScriptThing GetNullScriptThing();

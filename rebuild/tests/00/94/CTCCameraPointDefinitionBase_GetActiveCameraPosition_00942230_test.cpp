@@ -1,11 +1,11 @@
 // Behaviour test for 00942230 (catalog GetActiveCameraPosition): the sphere takes the thing's position and its physics radius.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase { float Radius; };
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public: float Radius; };
 
-struct CThing
-{
+class CThing
+{ public:
     CTCPhysicsBase* PhysicsTC;
     C3DVector       m_pos;
     const C3DVector& GetPosition() const { return m_pos; }

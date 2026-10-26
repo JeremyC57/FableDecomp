@@ -4,7 +4,7 @@ struct MapEntry {
     char pad2[0x48 - 0x10 - 4];
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x20];
     MapEntry* entries;  // +0x20
 };

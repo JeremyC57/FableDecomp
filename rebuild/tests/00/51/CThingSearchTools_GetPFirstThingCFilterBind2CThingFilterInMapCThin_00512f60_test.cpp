@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThingSearchTools { void* WorldMap; void* PThingMapManager; void* ThingManager; };
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -42,10 +42,10 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     enum { ThingTypeMask = 0x7 };
 };
-struct CThingBuilding : CThingGameObject {    // a CThingGameObject subclass with type bit 0x40 (label says CThingGameObject)
+class CThingBuilding : public CThingGameObject { public:    // a CThingGameObject subclass with type bit 0x40 (label says CThingGameObject)
     enum { ThingTypeMask = 0x47 };
 };
 
@@ -57,13 +57,13 @@ namespace N_006a7c20 { struct CThingFilter_IsInQuest {
     long MapNumber;
     bool operator()(const CThing* thing) const;      // 0x006A7C20
 }; } using N_006a7c20::CThingFilter_IsInQuest;
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
     template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;

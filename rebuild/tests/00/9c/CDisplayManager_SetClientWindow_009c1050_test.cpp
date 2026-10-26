@@ -1,14 +1,14 @@
 // Behaviour test for 0x009C1050 CDisplayManager::SetClientWindow (model copy).
 #include <cstdio>
 
-struct C2DExtentsI { int X, Y; C2DExtentsI() : X(0), Y(0) {} };
+class C2DExtentsI { public: int X, Y; C2DExtentsI() : X(0), Y(0) {} };
 struct CPresentationIntervalDesc { int Type, Interval; };
 struct CCreateDeviceParameters {
     int WinHandle; C2DExtentsI BackBufferDimensions; int BackBufferBitDepth; int ZBufferBitDepth; int BackBufferCount;
     int RefreshRate; bool ExclusiveMode; CPresentationIntervalDesc PresentationInterval; int MultisampleType;
 };
 struct CDevice { int Released; CDevice() : Released(0) {} void Release() { ++Released; } };
-struct CSurface { int Released; CSurface() : Released(0) {} void Release() { ++Released; } };
+class CSurface { public: int Released; CSurface() : Released(0) {} void Release() { ++Released; } };
 static int g_Deleted = 0;
 struct CRenderManagerBase {
     int Flags; CDevice* Device;
@@ -16,7 +16,7 @@ struct CRenderManagerBase {
     virtual ~CRenderManagerBase() { ++g_Deleted; }
     void Init(CDevice* d) { Device = d; }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     CRenderManagerBase* PRenderManager; CSurface BackBufferSurface, DepthBufferSurface; CDevice* D3DDevice;
     int RenderManagerInitFlags; CCreateDeviceParameters LastDeviceCreationParameters;
     int WinW, WinH, WinDepth, CreateResult, StateInits; CCreateDeviceParameters Seen;

@@ -18,7 +18,7 @@
 // Flags: /EHsc
 void __cdecl operator delete(void* block) throw();       // 0x00BFE9BC
 
-struct CFailedAllocationHandler {          // embedded at +0x34, vtable 0x012B37FC
+class CFailedAllocationHandler { public:          // embedded at +0x34, vtable 0x012B37FC
     virtual void v00();
     ~CFailedAllocationHandler() { }
 };
@@ -48,7 +48,7 @@ struct CPoolName {                  // +0x450
     ~CPoolName();                          // 0x00C0BA40
 };
 
-struct CHandleBasedMemoryPool {              // vtable 0x012B4098
+class CHandleBasedMemoryPool { public:              // vtable 0x012B4098
     virtual void v00();
     void* Buffer;                          // +0x04
     void* UnalignedBuffer;                 // +0x08

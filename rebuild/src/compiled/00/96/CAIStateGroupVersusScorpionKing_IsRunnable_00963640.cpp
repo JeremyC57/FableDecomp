@@ -21,28 +21,28 @@
 //          is a ternary `missing ? enemy : centre`; GetPFirstThing gets a same-TU noinline stand-in that does not let
 //          the out-pointer's address escape -- with an external declaration VC keeps the out slot alive across the IP
 //          temporaries and the frame words shift by 4 (out +0x18 / temps +0x10 instead of retail's shared +0x14).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CEnemyDef {
+class CEnemyDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
     unsigned char _pad08[0xac - 0x08];
     long CreatureType;                          // +0xac
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -62,10 +62,10 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CEnemyDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -90,7 +90,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CEnemyDef>* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -128,11 +128,11 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntellige
     __forceinline CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     CCharString ScriptName;
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out);   // 0x0056D050
 };
 long FirstSink_56D050(const void* self, const void* name);
@@ -161,14 +161,14 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
         return seed % range;
     return 0;
 }
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -3,8 +3,8 @@
 static int g_order[8], g_n, g_deleted;
 struct CCountedObject { long m_refCount; void Delete() { ++g_deleted; } };
 struct CCountedPointer { CCountedObject* m_pObject; ~CCountedPointer() { CCountedObject* o = m_pObject; if (o) { if (--o->m_refCount == 0) o->Delete(); m_pObject = 0; } g_order[g_n++] = 1; } };
-struct C3DAnimationInterpolator { ~C3DAnimationInterpolator() { g_order[g_n++] = 2; } };
-struct CBaseClass { int tag; ~CBaseClass() { g_order[g_n++] = tag; } };
+class C3DAnimationInterpolator { public: ~C3DAnimationInterpolator() { g_order[g_n++] = 2; } };
+class CBaseClass { public: int tag; ~CBaseClass() { g_order[g_n++] = tag; } };
 struct X { CBaseClass m_first; CBaseClass m_second; C3DAnimationInterpolator m_interpolator; CCountedPointer m_pAnimation; ~X(); };
 X::~X() {}
 int main()

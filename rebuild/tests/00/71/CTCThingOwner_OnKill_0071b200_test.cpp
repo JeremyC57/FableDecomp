@@ -13,14 +13,14 @@ struct CThingList {
     CThingListIterator end() { return CThingListIterator(m_node); }
     void clear() { m_node->Next = m_node->Prev = m_node; }
 };
-struct CKillThing { bool Immediate; CKillThing(bool immediate) : Immediate(immediate) {} };
+class CKillThing { public: bool Immediate; CKillThing(bool immediate) : Immediate(immediate) {} };
 static CKillThing for_each(CThingListIterator first, CThingListIterator last, CKillThing func)
 {
     for (SThingNode* n = first.m_node; n != last.m_node; n = n->Next)
         if (n->Value) n->Value->Kill(func.Immediate);
     return func;
 }
-struct CTCThingOwner {
+class CTCThingOwner { public:
     CThingList ObjectList;
     bool CallOnDie;
     void OnKill();

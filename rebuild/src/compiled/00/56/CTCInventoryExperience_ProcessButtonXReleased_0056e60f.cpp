@@ -19,7 +19,7 @@ struct CTCInventoryBase {
     void ProcessButtonXReleased();      // 0x005BC68F
 };
 
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     void* __vftable;                    // +0x000
     unsigned char _pad_04[0x18];
     long InventorySelectionState;       // +0x01C (CTCInventoryBase; 1 = an item is selected)

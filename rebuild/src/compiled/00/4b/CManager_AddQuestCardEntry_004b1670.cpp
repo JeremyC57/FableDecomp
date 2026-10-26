@@ -15,7 +15,7 @@
 //   CCharString&)`; 0x004B91F0 is the landed std::__find_if whose third argument is a predicate class (its other caller,
 //   STLport find_if 0x004B9E70, passes its own predicate word on the stack with edx unused). Bytes unchanged.
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0

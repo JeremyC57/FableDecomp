@@ -10,7 +10,7 @@
 // Leaf: OnCreate
 #include "engine/CTCPhysicsBase.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
 };

@@ -15,11 +15,11 @@
 // Shape: as the ShoveHaPenny override 0x007CFF40, but the round count is the inline `size()` of a vector member, which
 //        is not a dereference of the def pointer, so the sub-def's release keeps its null test (`test edi,edi ; je`).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -56,11 +56,11 @@ struct CLongVector {                            // STLport vector<long> (12 byte
     long* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad_0x08[0xb8];
     unsigned long AdditionalInfo;               // +0xc0
 };
-struct CTavernGameSpotTheAdditionDef : CDefBase {
+class CTavernGameSpotTheAdditionDef : public CDefBase { public:
     unsigned char _pad_0x08[0x3c];
     CLongVector   ItemsPerRound;                // +0x44
 };
@@ -83,7 +83,7 @@ struct CSpotTheAdditionDefPointer {                // CDefPointer<const CTavernG
     CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CSpotTheAdditionDefPointer* out);   // 0x007D9A80
 };
 CTavernGameSpotTheAdditionDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
@@ -101,12 +101,12 @@ bool CDefClassBase::GetSubDef(CSpotTheAdditionDefPointer* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* DefClass;                    // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       Owner;                        // +0x04
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000

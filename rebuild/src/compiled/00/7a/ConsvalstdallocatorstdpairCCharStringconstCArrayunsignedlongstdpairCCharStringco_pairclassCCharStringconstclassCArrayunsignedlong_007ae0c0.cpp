@@ -3,7 +3,7 @@
 // Copy-construct first (CCharString @+0) then second (CArray @+4) from *val.
 // Callees are __fastcall member copy-ctors (this in ecx, src pushed on stack) -> no edx setup.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     // copy-ctor modelled as a member that takes src on the stack (this in ecx)
     void CopyFrom(CCharString* src);

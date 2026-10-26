@@ -12,7 +12,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                    // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
     void* m_pSurface;                           // +0x04
     void* m_pTexture;                           // +0x08
@@ -20,7 +20,7 @@ struct CSurface {                               // vtable 0x0122F84C, 0x10 bytes
     CSurface() : m_pSurface(0), m_pTexture(0) { }
 };
 
-struct CRenderTarget : CBase {
+class CRenderTarget : public CBase { public:
     CSurface m_colour;                          // +0x04
     CSurface m_depth;                           // +0x14
     virtual void v00();

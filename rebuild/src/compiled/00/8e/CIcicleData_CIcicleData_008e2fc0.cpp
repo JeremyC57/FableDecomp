@@ -7,7 +7,7 @@
 // +0x10, TrapTimer +0x14, C3DVector Position +0x18.
 // Shape: an out-of-line copy constructor whose members copy one register per word; the position goes through
 // C3DVector's memberwise user copy constructor (a POD position copies through `lea` and a re-based pointer).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                               // +0x04
@@ -15,11 +15,11 @@ struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointe
     CThing* GetPItem() const;                      // 0x00A01B50
     void SetPItem(CThing* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
 };

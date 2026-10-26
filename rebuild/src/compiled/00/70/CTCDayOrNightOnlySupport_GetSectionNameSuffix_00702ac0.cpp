@@ -9,7 +9,7 @@
 // Shape: `ret 8` = hidden result + one argument; the two `dec eax ; je` tests are a two-case switch
 // (case 1 = day only, case 2 = night only) with the default (empty string) laid out first; the result
 // pointer is hoisted into esi/ecx above the dispatch.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                                    // CCharStringData*
     CCharString(const char* text, long length);             // 0x0099EBF0 (-1 = strlen)
     CCharString(const CCharString& other);                  // 0x0099EC30
@@ -20,7 +20,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 extern CCharString g_DayOnlySuffix;                         // 0x013BAC18 "DayOnly"
 extern CCharString g_NightOnlySuffix;                       // 0x013BAC1C "NightOnly"
 
-struct CTCDayOrNightOnlySupport {
+class CTCDayOrNightOnlySupport { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     long          DayNightOrBoth;                           // +0x0c EDayNightOrBoth

@@ -1,8 +1,8 @@
 #include <cstdio>
 // mock Atan2 / rotations record their inputs so the data flow can be checked
 static float Atan2(float x, float y) { return x + 10.0f * y; }
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Position;
     void RotateA(float angle) { Forward.Z += angle; Forward.Y = 1.0f; }
     void RotateB(float angle) { Right.X = angle; Right.Y = -2.0f; }

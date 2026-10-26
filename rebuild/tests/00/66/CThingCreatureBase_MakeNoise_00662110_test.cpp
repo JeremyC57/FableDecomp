@@ -1,21 +1,21 @@
 #include <cstdio>
 // behaviour test for CThingCreatureBase::MakeNoise (0x00662110)
 class CCharString { public: const char* text; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static long g_lookup = 0;
 static int g_creates = 0, g_passes = 0;
 static float g_radius = 0.0f;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return name.text[0] == 'N' ? g_lookup : 0; }
 };
 static CDefinitionManager g_defs;
 static C3DVector g_pos = { 1.0f, 2.0f, 3.0f };
-struct CThing {
+class CThing { public:
     unsigned char m_dead : 1;
     CDefinitionManager* GetDefinitionManager() { return &g_defs; }
     const C3DVector& GetPosition() { return g_pos; }
 };
-struct CThingNoise : CThing {
+class CThingNoise : public CThing { public:
     CThing* passed;
     static CThingNoise* Create(long defIndex, const C3DVector& pos, float radius);
     void PassToNoiseComponent(CThing* thing) { ++g_passes; passed = thing; }
@@ -28,7 +28,7 @@ CThingNoise* CThingNoise::Create(long defIndex, const C3DVector& pos, float radi
     if (g_createFails || defIndex != 42 || pos.Y != 2.0f) return 0;
     return &g_noise;
 }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void MakeNoise(const CCharString& noiseDefName);
 };
 void CThingCreatureBase::MakeNoise(const CCharString& noiseDefName)

@@ -14,10 +14,10 @@
 // The header's layout therefore disagrees with the bytes and the class is modelled locally with its member names.
 // Shape: the ~CTCTargetingBase 0x004DA8B7 shape (no vtable store: `__declspec(novtable)`, size TU, inline def release with
 // `and [..],0`); TrapOpener (CFadeInFadeOutBase) has a trivial destructor and emits nothing.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08
@@ -67,7 +67,7 @@ struct CThingPointerVector {                 // retail vector<CIntelligentPointe
     ~CThingPointerVector();                  // 0x004406D0
 };
 
-struct CFadeInFadeOutBase {                  // 0x1c bytes, trivially destructible here
+class CFadeInFadeOutBase { public:                  // 0x1c bytes, trivially destructible here
     unsigned char _body[0x1c];
 };
 

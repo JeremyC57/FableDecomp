@@ -15,8 +15,8 @@
 //   _Vector_base `if (_M_start) deallocate` (start re-read), then the node's free.
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                     // 0x0099B510
 };

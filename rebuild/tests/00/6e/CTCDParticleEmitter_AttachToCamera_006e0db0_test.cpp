@@ -4,7 +4,7 @@
 static int g_order = 0, g_clearAt = 0, g_updateAt = 0;
 static bool g_updateArg = false;
 static bool g_cameraBitAtUpdate = false;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     unsigned char _base[0x8]; unsigned char _body0[0x24 - 0x0c];
     long AttachmentFlags; void* AttachmentPosName; long AttachmentPosIndex; float FloatOffset;

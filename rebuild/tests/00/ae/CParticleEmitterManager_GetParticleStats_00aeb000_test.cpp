@@ -1,7 +1,7 @@
 // Behaviour of CParticleEmitterManager::GetParticleStats (0x00AEB000): active count = list size, visible count copied,
 // sleeping emitters counted, and every active emitter adds its own statistics.
 #include <cstdio>
-struct CIEngine { int id; };
+class CIEngine { public: int id; };
 struct CParticleStats;
 struct CParticleEmitter {
     unsigned short Priority : 3; unsigned short IsScreenDisplacement : 1; unsigned short ReadZBuffer : 1;

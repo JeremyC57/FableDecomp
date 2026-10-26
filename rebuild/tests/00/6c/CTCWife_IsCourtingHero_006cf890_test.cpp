@@ -1,7 +1,7 @@
 #include <cstdio>
 struct COp { bool courting; };
-struct CThing { unsigned int bits[9]; COp* op; };
-struct CTCWife {
+class CThing { public: unsigned int bits[9]; COp* op; };
+class CTCWife { public:
     CThing* parent; bool courtable;
     bool IsCourtable() const { return courtable; }
     bool Get() const { if (IsCourtable() && (parent->bits[2] & 0x8000u)) { if (parent->op->courting) return true; } return false; }

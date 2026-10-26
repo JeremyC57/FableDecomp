@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CWeaponDef {
+class CWeaponDef { public:
     unsigned char _pad_0x00[0xc5];
     bool          ProjectileWeaponLoaded;
 };
@@ -12,7 +12,7 @@ struct CWeaponDefPointer {
     CWeaponDef* operator->() const { return Object; }
 };
 static CWeaponDef* g_weaponDef = 0; static int g_getSubDef = 0; static int g_destroyed = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_count;
@@ -39,7 +39,7 @@ struct CDefClassReference {
     CDefClassBase* operator->() const { return Object; }
 };
 static CDefClassBase* g_classDef = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefClassPointer* out);
 };
 bool CDefinitionManager::GetDef(long index, CDefClassPointer* out)
@@ -49,11 +49,11 @@ bool CDefinitionManager::GetDef(long index, CDefClassPointer* out)
     ++g_classDef->m_count; out->Object = g_classDef; return true;
 }
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x8c];
     unsigned short DefClassIndex;
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     virtual void v00() {}
     CThing*           ParentThing;
     unsigned char     _pad_0x08[0x4];

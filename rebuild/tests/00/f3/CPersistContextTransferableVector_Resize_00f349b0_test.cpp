@@ -13,12 +13,12 @@ static int g_constructed = 0;
 static int g_resourceDestroyed = 0;
 static unsigned long g_count = 0;
 static long g_valueTag = 0;
-struct CResource {
+class CResource { public:
     virtual ~CResource() { ++g_resourceDestroyed; }
     unsigned long m_refCount;
 };
-struct CDefPointeeBase : CResource { virtual ~CDefPointeeBase() {} };
-struct CDefClassBase : CDefPointeeBase { virtual ~CDefClassBase() {} long m_defBody[3]; };
+class CDefPointeeBase : public CResource { public: virtual ~CDefPointeeBase() {} };
+class CDefClassBase : public CDefPointeeBase { public: virtual ~CDefClassBase() {} long m_defBody[3]; };
 struct CDefRecord64 : CDefClassBase {
     long m_tag;
     CDefRecord64() : m_tag(64) { ++g_constructed; }

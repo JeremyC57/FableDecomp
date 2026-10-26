@@ -9,7 +9,7 @@
 // (the stores may alias the vector pointers), which is why `[esi+10h]` is reloaded three times.
 extern "C" long __fastcall GFGetFrameCount();          // 0x0049D870
 
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float Current;
     float Last;
 };
@@ -20,7 +20,7 @@ template<class T> struct CRetailVector {
     unsigned long size() const { return (unsigned long)(last - first); }
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode;                                     // +0
     CRetailVector<short> Anims;                          // +4
     CRetailVector<CTransitionBlendAlpha> InternalAlphas; // +0x10

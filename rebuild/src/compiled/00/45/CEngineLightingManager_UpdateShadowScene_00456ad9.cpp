@@ -2,7 +2,7 @@ struct LM_Local { void build(void* obj24, void* arg); };
 // Leaf: UpdateShadowScene
 struct LM_Obj28 { void apply(int arg); };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad0[0x18];
     int mode;      /* +0x18 */
     char pad1c[0x24-0x1c];

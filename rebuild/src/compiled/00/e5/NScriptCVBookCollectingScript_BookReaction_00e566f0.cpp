@@ -14,20 +14,20 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptThing;
+class CScriptGameResourceObjectScriptedThingBase;
 typedef long EScriptAIPriority;
-struct CCPPointerInfo { long RefCount; };
-struct CBaseClass {                                      // vtable 0x01231710
+class CCPPointerInfo { public: long RefCount; };
+class CBaseClass { public:                                      // vtable 0x01231710
     virtual void v00();
     CBaseClass() { }
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     virtual void v01();
     void* PImp_Data;
     CCPPointerInfo* PImp_Info;
@@ -151,7 +151,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v841(); virtual void v842(); virtual void v843();
  virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CScriptGameResourceObjectScriptedThingBase {      // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:      // vtable 0x0127094C, 16 bytes
     virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04();
     virtual void s05(); virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09();
     virtual void ClearCommands();                        // slot 10 (+0x28) 0x007E7360
@@ -170,18 +170,18 @@ template <class T> struct vector {                      // STLport vector: {_M_s
     T* begin() { return _M_start; }
     T& operator[](unsigned int i) { return *(begin() + i); }
 };
-struct CConversation {                                   // retail 0x5c bytes
+class CConversation { public:                                   // retail 0x5c bytes
     unsigned char _pad00[0x28];
     long Lines;                                          // +0x28
     unsigned char _pad2c[0x5c - 0x2c];
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x4b0];
     vector<CCharString> BookBoyMarks;                    // +0x4b0
     vector<CCharString> BookGirlMarks;                   // +0x4bc
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

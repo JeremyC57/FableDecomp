@@ -11,22 +11,22 @@
 // by an add; a user-written memberwise operator= addresses [esi+24h] directly). Member
 // names from rebuild/include/engine/CAIStateGroup_MazeTutorialBattleTeleport.h; the header flattens the base,
 // so the layout is local.
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     const C3DVector& GetPosition();         // 0x004C73D0
 };
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
-struct CWorld {
+class CWorld { public:
     static long GetFrameCount() { return GFGetCurrentFrame(); }
 };
 
@@ -35,7 +35,7 @@ struct CAIBrainModel {
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrainModel* PBrain;                  // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct Filter { CScriptThing m_thing; Filter(const CScriptThing& t) : m_thing(t) { } };
 struct Game {
     int updates, opened; const char* activeQuest;

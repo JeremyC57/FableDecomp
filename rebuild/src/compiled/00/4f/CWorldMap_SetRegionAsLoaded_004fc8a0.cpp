@@ -25,19 +25,19 @@ template <class T> struct CRetailVector {
 };
 // Shape: as the landed CThingManager::ActivateAfterLoading 0x0051E5A0: each progress text is a named CCharString in its
 // own block; the region reference is formed from the re-read LoadedRegion before the GUI getter.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 
-struct CRegion { unsigned char _body[0x58]; };
-struct CMiniMapDisplay { void InitialiseOnRegionLoad(const CRegion& region); };   // 0x0082BA00
-struct CPlayerGui { CMiniMapDisplay* GetPMiniMapDisplay(); };                     // 0x00437CE0
+class CRegion { public: unsigned char _body[0x58]; };
+class CMiniMapDisplay { public: void InitialiseOnRegionLoad(const CRegion& region); };   // 0x0082BA00
+class CPlayerGui { public: CMiniMapDisplay* GetPMiniMapDisplay(); };                     // 0x00437CE0
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char          _pad[0x2c];
     CRetailVector<CRegion> Regions;             // +0x2C
     unsigned char          _pad38[0x64];

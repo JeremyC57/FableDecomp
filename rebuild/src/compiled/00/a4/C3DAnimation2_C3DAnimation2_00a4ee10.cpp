@@ -12,23 +12,23 @@
 // Shape: init-list zeroes in member order (one zero register), FrameCount / SamplesPerSecond / the base word +8
 // assigned in the body, then `Allocator.Reset(new CSimpleMemoryPool(256, 4096))`.
 // Leaf: ??0C3DAnimation2
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     void Reset(T* object);                          // 0x00A52BE0
 };
 
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     CSimpleMemoryPool(unsigned long count, unsigned long size);   // 0x00A5C570
     unsigned char _body[0x1c];
 };
 
-struct C3DAnimationSequence;
-struct C3DAnimationSequenceData;
-struct C3DVector;
-struct CMovableResourceMemoryPool;
+class C3DAnimationSequence;
+class C3DAnimationSequenceData;
+class C3DVector;
+class CMovableResourceMemoryPool;
 struct CIntelligentPointerNode {                    // list<CIntelligentPointer<C3DAnimation2> > node (0x10)
     CIntelligentPointerNode* _M_next;
     CIntelligentPointerNode* _M_prev;
@@ -46,19 +46,19 @@ struct CInstanceList {                              // STLport list: the sentine
     }
 };
 
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     C3DAnimationStats();                            // 0x00A4EB00
     virtual ~C3DAnimationStats();
     long _04;
     long m_08;                                      // +0x08
     unsigned char _0c[0x20];
 };
-struct CMovableResource {
+class CMovableResource { public:
     CMovableResource() {}
     virtual void RelocateData();
 };
 
-struct C3DAnimation2 : C3DAnimationStats, CMovableResource {
+class C3DAnimation2 : public C3DAnimationStats, public CMovableResource { public:
     CCountedPointer<CSimpleMemoryPool> Allocator;               // +0x30
     CMovableResourceMemoryPool* MemoryPool;                     // +0x38
     long MemoryHandle;                                          // +0x3c

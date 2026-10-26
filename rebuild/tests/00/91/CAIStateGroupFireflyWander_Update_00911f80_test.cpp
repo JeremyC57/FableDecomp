@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroup_FireflyWander::Update @ 0x00911F80: day hides, night picks home/hero target and toggles.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -8,12 +8,12 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float Get2DLengthSquared() const { return Y * Y + X * X; }
 };
-struct CTCLight {
+class CTCLight { public:
     bool active; int calls;
     CTCLight() : active(false), calls(0) { }
     void SetActive(bool a) { active = a; ++calls; }
 };
-struct CThing {
+class CThing { public:
     C3DVector pos; unsigned char m_flags91; bool hasLight; CTCLight light;
     CThing() : m_flags91(0), hasLight(true) { }
     const C3DVector& GetPosition() const { return pos; }
@@ -25,16 +25,16 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool shown; C3DVector InitialPos;
     CThingAICreature() : shown(false) { }
     bool IsShown() { return shown; }
     void SetShown(bool s) { shown = s; }
 };
-struct CPlayer { CThing* hero; CThing* GetHeroCreature() { return hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CEnvironment { bool day; bool IsDaytime() { return day; } };
-struct CWorld { CEnvironment* PEnvironment; };
+class CPlayer { public: CThing* hero; CThing* GetHeroCreature() { return hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CEnvironment { public: bool day; bool IsDaytime() { return day; } };
+class CWorld { public: CEnvironment* PEnvironment; };
 struct CAIStateGroup_FireflyWander {
     CThingAICreature* creature; CPlayerManager* players; CWorld* world; unsigned long seed;
     bool terminated; bool flightOk; C3DVector flightCentre; C3DVector executed; int executions;

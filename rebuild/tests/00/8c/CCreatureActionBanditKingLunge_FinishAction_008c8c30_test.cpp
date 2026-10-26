@@ -10,8 +10,8 @@
 #define __fastcall
 #endif
 
-struct CTCBase { };
-struct C3DVector {
+class CTCBase { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -21,7 +21,7 @@ struct C3DVector {
 };
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[64];
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
@@ -41,13 +41,13 @@ struct CInterfaceMap {
     }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector m_facing;
     virtual ~CTCPhysicsBase() { }
     virtual C3DVector GetFacing() const { return m_facing; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
     CTCPhysicsBase* PhysicsTC;
@@ -92,7 +92,7 @@ struct CThing {
 };
 
 enum EActionKind { ACTION_NONE, ACTION_STUCK, ACTION_UNSTUCK };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 static int  g_setActionCalls = 0;
 static bool g_acceptAction = true;
 static int  g_lastKind = ACTION_NONE;
@@ -106,12 +106,12 @@ static long g_unstuckCode = 0;
 static bool g_unstuckNoTarget = false;
 static long g_soundFirst = -1, g_soundSecond = -1;
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CThingCreatureBase* m_self;
     bool SetCurrentAction(const CCreatureActionBase& action);
 };
 
-struct CTCCreatureModeManager : CTCBase {
+class CTCCreatureModeManager : public CTCBase { public:
     unsigned long m_lastMode;
     int           m_calls;
     bool AddMode(unsigned long mode) { m_lastMode = mode; ++m_calls; return true; }
@@ -121,7 +121,7 @@ struct CHitLocation {
     bool m_enabled;
     void SetEnabled(bool enabled) { ++m_calls; m_enabled = enabled; }
 };
-struct CTCHitLocations : CTCBase {
+class CTCHitLocations : public CTCBase { public:
     CHitLocation* m_stuck;
     CHitLocation* m_normal;
     CHitLocation* GetPHitLocationFromName(const CCharString& name)
@@ -131,17 +131,17 @@ struct CTCHitLocations : CTCBase {
         return 0;
     }
 };
-struct CBossDef {
+class CBossDef { public:
     long TwinBladeStuckLoops;
 };
-struct CTCBoss : CTCBase {
+class CTCBoss : public CTCBase { public:
     CBossDef* PBossDef;
 };
 static CThing*   g_createResult = 0;
 static C3DVector g_createStart(0.0f, 0.0f, 0.0f), g_createEnd(0.0f, 0.0f, 0.0f);
 static float     g_createRadius = 0.0f;
 static int       g_createCalls = 0;
-struct CTCDPhysicalObstruction : CTCBase {
+class CTCDPhysicalObstruction : public CTCBase { public:
     CThing* m_ignored;
     static CThing* __fastcall Create(const C3DVector& start, const C3DVector& end, float radius)
     {
@@ -171,19 +171,19 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CSoundPair {
+class CSoundPair { public:
     long First;
     long Second;
     CSoundPair() : First(0), Second(0) { }
 };
 static int g_baseFinish = 0;
 static int g_baseDestroyed = 0;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     int m_kind;
     CCreatureActionBase() : m_kind(ACTION_NONE) { }
     virtual ~CCreatureActionBase() { }
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CCreaturePointer        PCreature;
     long                    TotalTime;
     long                    FramesRunning;
@@ -197,7 +197,7 @@ struct CCombatActionBase : CCreatureActionBase {
     ~CCombatActionBase() { ++g_baseDestroyed; }
     virtual void FinishAction() { ++g_baseFinish; }
 };
-struct CCreatureAction_BanditKingStuck : CCombatActionBase {
+class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:
     long                    TimesToLoop;
     CBaseIntelligentPointer PStuckEffect;
     CBaseIntelligentPointer PObstruction;
@@ -209,7 +209,7 @@ struct CCreatureAction_BanditKingStuck : CCombatActionBase {
         TimesToLoop = timesToLoop;
     }
 };
-struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {
+class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:
     bool Knockdown;
     bool NoTarget;
     CCreatureAction_BanditKingUnstuck(CThingCreatureBase* owner, bool noTarget)
@@ -220,7 +220,7 @@ struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {
     }
     virtual void FinishAction() { }
 };
-struct CCreatureAction_BanditKingLunge : CCombatActionBase {
+class CCreatureAction_BanditKingLunge : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

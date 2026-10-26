@@ -1,11 +1,11 @@
 #include <stdio.h>
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 struct Sub {
     CTCCreatureNavigation* got_nav; C3DVector* got_dest; bool ret;
     bool v7(CTCCreatureNavigation* nav, C3DVector* dest){ got_nav=nav; got_dest=dest; return ret; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0; Sub* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return ParentThing->v7(this, dest); }
 };

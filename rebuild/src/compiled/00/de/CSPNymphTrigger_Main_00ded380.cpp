@@ -11,20 +11,20 @@
 // Shape: the top-tested wait loop of the landed CHTG_AmbushPoint::Main 0x00D73610 (distance test repeated at the
 // bottom, the 10.0f pushed before GetHero); the two literal names are implicit CCharString conversions built before
 // every other argument (right to left), the created creature is a named local destroyed after them.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
     ~CScriptThing();                               // 0x004AA840
     unsigned char _body[8];
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {                     // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

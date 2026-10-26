@@ -3,7 +3,7 @@
 static long g_lookedUp = -1;
 static int g_live = 0;
 static long g_added = -1;
-struct CCharString {
+class CCharString { public:
     long Id;
     CCharString(long id) : Id(id) { ++g_live; }
     CCharString(const CCharString& o) : Id(o.Id) { ++g_live; }
@@ -11,8 +11,8 @@ struct CCharString {
 };
 struct CDefStringTable { CCharString GetString(long id) { g_lookedUp = id; return CCharString(id * 10); } };
 static CDefStringTable g_DefStringTable;
-struct CCoopSpiritDef { long OnHitParticle; long OnStrikeParticle; long DefaultParticle; long AttackTargetParticle; float MeleeTargetRange; };
-struct CTCCoopSpirit {
+class CCoopSpiritDef { public: long OnHitParticle; long OnStrikeParticle; long DefaultParticle; long AttackTargetParticle; float MeleeTargetRange; };
+class CTCCoopSpirit { public:
     const CCoopSpiritDef* PCoopSpiritDef;
     void AddAppearanceParticle(const CCharString& particleName) { g_added = particleName.Id; }
     void OnHit()

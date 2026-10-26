@@ -3,14 +3,14 @@
 static char g_log[512]; static int g_n;
 static void Log(const char* s) { int l = (int)std::strlen(s); if (g_n + l + 1 < (int)sizeof(g_log)) { std::memcpy(g_log + g_n, s, l); g_n += l; g_log[g_n++] = ' '; g_log[g_n] = 0; } }
 static int Check(const char* addr, const char* want) { if (std::strcmp(g_log, want) != 0) { std::printf("%s_TEST FAIL\n%s\n", addr, g_log); return 1; } std::printf("%s_TEST PASS\n", addr); return 0; }
-struct CAIBrain {}; struct CAIStateGroupBase;
-struct CTCIdleScheduler { void RegisterIdleStateGroup(CAIStateGroupBase*, long t) { Log(t == 2 ? "register2" : "register?"); } };
+class CAIBrain { public:}; class CAIStateGroupBase;
+class CTCIdleScheduler { public: void RegisterIdleStateGroup(CAIStateGroupBase*, long t) { Log(t == 2 ? "register2" : "register?"); } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCIdleScheduler* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     bool GetInterface(long type, CTCIdleScheduler** out)
     {
@@ -25,7 +25,7 @@ struct CThingAICreature {
     void Clear() { for (int i = 0; i < 9; ++i) m_presentBits[i] = 0; m_interfaces.first = m_interfaces.last = 0; }
 };
 
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
 struct CAIStateGroup_CleanHouse : CAIStateGroupBase {
     bool m_startedCleaning; bool m_finishedCleaning; unsigned char _pad2[0xa]; long m_cleanCount; bool m_registered;
     virtual void InitStateGroup(CAIBrain&, CThingAICreature& creature)

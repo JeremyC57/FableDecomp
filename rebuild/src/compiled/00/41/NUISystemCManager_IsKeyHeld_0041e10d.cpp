@@ -12,19 +12,19 @@
 #pragma optimize("s", on)
 enum EInputEventType { EIET_KEY_DOWN = 1 };
 enum EInputKey { EIK_NONE = 0 };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _pad00[0x20];
     long          m_state;                         // +0x20
     unsigned char _pad24[0x10];
     CInputEvent();                                 // 0x00A04410
     ~CInputEvent();                                // 0x00A03B30
 };
-struct CInputManager {
+class CInputManager { public:
     bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent* event);   // 0x009F50A0
     void RemoveEventFromQueue(CInputEvent* event);                                          // 0x009F4F70
 };
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     enum EUsedKeys { EUK_NONE };
     struct CKeyMap {
         long& operator[](const EUsedKeys& key);    // 0x0042D201

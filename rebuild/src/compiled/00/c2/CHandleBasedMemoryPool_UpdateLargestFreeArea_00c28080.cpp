@@ -12,7 +12,7 @@ struct SFreeArea_00c28080 {                           // a pool area record: res
     SFreeArea_00c28080*  m_pNext;                     // +0x14
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char       _pad[0x1c];
     long                m_largestFreeArea;         // +0x1c
     unsigned char       _pad20[0x1c];

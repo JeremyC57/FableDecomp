@@ -2,9 +2,9 @@
 // (0 torch, 1 patrol, 2 crops, 3 sweep, 4 horn, 5 crate) with a copy of the task pointer and the thing
 #include <cstdio>
 class CThing { public: int id; };
-struct CVillageTaskTorch; struct CVillageTaskHorn; struct CVillageTaskPatrol;
-struct CVillageTaskPickCrops; struct CVillageTaskSecuritySweep; struct CVillageTaskCarryCrate;
-struct CVillageTaskBase {
+class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol;
+class CVillageTaskPickCrops; class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
+class CVillageTaskBase { public:
     long type;
     virtual void v00() {}
     virtual void v01() {}
@@ -17,14 +17,14 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { --g_live; }
     CVillageTaskBase* GetPItem() const { return (CVillageTaskBase*)m_pItem; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() {}
     CIntelligentPointer(T* item) { m_pItem = item; ++g_live; }
     CIntelligentPointer(const CIntelligentPointer& other) { m_pItem = other.m_pItem; ++g_copies; ++g_live; }
 };
 template<class T> struct CTaskList { int id; };
 static int g_list = -1; static const CThing* g_thing = 0; static void* g_task = 0;
-struct CTCVillage {
+class CTCVillage { public:
     void*                                 __vftable;
     CTaskList<CVillageTaskTorch>          TorchTasks;
     CTaskList<CVillageTaskHorn>           HornTasks;

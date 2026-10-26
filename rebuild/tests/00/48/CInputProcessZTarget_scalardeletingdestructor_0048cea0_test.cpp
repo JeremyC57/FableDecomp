@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessZTarget {
+class CInputProcessZTarget { public:
     void* vftable;
     int destroyed;
 };

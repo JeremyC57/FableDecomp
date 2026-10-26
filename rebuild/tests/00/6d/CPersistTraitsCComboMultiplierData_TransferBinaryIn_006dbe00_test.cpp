@@ -52,7 +52,7 @@ struct CMultiplierMap {                         // map<EDamageAttribute, float> 
     void insert(int key, float value) { for (int i = 0; i < Size; ++i) if (Keys[i] == key) return; Keys[Size] = key; Values[Size] = value; ++Size; }
     float Get(int key) const { for (int i = 0; i < Size; ++i) if (Keys[i] == key) return Values[i]; return -1.0f; }
 };
-struct CComboMultiplierData { CMultiplierMap ComboMultiplier; float ExperienceMultiplierNumSecondsForAttenuation; float ExperienceMultiplierParamDecayDeltaPerSecond; };
+class CComboMultiplierData { public: CMultiplierMap ComboMultiplier; float ExperienceMultiplierNumSecondsForAttenuation; float ExperienceMultiplierParamDecayDeltaPerSecond; };
 static void ReadFloat(TestStream* s, float* v) { float f; s->Read(&f, 4); *v = f; }
 static void TransferBinaryIn(TestStream* stream, CComboMultiplierData* value)
 {

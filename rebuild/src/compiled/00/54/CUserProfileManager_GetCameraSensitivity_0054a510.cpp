@@ -1,6 +1,6 @@
 // CUserProfileManager::GetCameraSensitivity @ 0x0054a510
 // __fastcall, returns float in st(0)
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char useAlternate;   // +0xc
     char pad1[0x7c - 0xd];

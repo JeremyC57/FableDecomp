@@ -65,11 +65,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -162,10 +162,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -292,7 +292,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_ScreamerDrainOutOf {
+class CCreatureAction_ScreamerDrainOutOf { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x128];                         // +0x04 flattened base-class subobject(s)
 };
@@ -316,7 +316,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScreamerDrainOutOf, __vftable) == 0
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_ScreamerDrainAttack {
+class CCreatureAction_ScreamerDrainAttack { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x130];                         // +0x04 flattened base-class subobject(s)
 };
@@ -340,14 +340,14 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_ScreamerDrainAttack, __vftable) == 
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -419,15 +419,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -575,7 +575,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -593,8 +593,8 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -602,8 +602,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -687,9 +687,9 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -698,7 +698,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  T* operator->()const{return static_cast<T*>(GetPItem());}
@@ -707,10 +707,10 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
  unsigned char ThingState[0x89];unsigned char DeadFlags;
 };
-struct CThingCreatureBase:CThing {bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -881,7 +881,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
-struct CCreatureAction_ScreamerDrainOutOf:CCombatActionBase {
+class CCreatureAction_ScreamerDrainOutOf:public CCombatActionBase { public:
     virtual long GetAnimationTransitionInTime() const;
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -890,7 +890,7 @@ struct CCreatureAction_ScreamerDrainOutOf:CCombatActionBase {
  CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase* actor,CThing* target):CCombatActionBase(actor,target,150,CSoundPair()){}
  CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase* actor):CCombatActionBase(actor,150,CSoundPair()){}
 };
-struct CCreatureAction_ScreamerDrainAttack:CCombatActionBase {
+class CCreatureAction_ScreamerDrainAttack:public CCombatActionBase { public:
     virtual void PerformAction();
     virtual void FinishAction();
     virtual long GetAnimationTransitionInTime() const;

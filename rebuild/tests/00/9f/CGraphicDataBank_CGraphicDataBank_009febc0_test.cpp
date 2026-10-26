@@ -64,11 +64,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CTextureManager;
+class CCPPointerInfo;
+class CTextureManager;
 
 #pragma pack(push, 1)
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -272,15 +272,15 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, BlankTextures) == 0x330);
 #include <stddef.h>
 
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>
@@ -377,7 +377,7 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, CurrentEntryDependencies) == 0x170);
 
 
 #pragma pack(push, 1)
-struct CResourceList {
+class CResourceList { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Head[0x1c];                                // +0x04 CResource
     unsigned long ResourceCount;                             // +0x20
@@ -414,7 +414,7 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
 
 
 #pragma pack(push, 1)
-struct CGraphicBankStateBlock {
+class CGraphicBankStateBlock { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char State[0x60];                               // +0x04 CStateBlock
 };
@@ -439,7 +439,7 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicBankStateBlock, State) == 0x4);
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                          // +0x00
     unsigned char      ByteLength[0x3];                      // +0x04 bitfield group: ulong:28
     unsigned char      AllocationSource[0x1];                // +0x07 bitfield group: ulong:4
@@ -464,7 +464,7 @@ FABLE_STATIC_ASSERT(offsetof(CTexture, AllocationSource) == 0x7);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -480,8 +480,8 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -489,8 +489,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -578,12 +578,12 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 struct CharArray;
 // RTTI129C8CC/129C938: primary Async->BankFile->NonCopy->Base; secondary ResourceBank->NonCopy->Base.
 // Native BankFile110 (ctor9CD480 final ChecksumCacheF8..110), Async164 (ctor9D5F80); donor174/1D8.
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 struct BankState;struct OutputStream;struct BankTypeCount;struct PointerInfo;
 template<class T>struct BankArrayView {T*First,*Last,*End;};
 struct StatePointer {BankState*Data;PointerInfo*Info;StatePointer(const StatePointer&);~StatePointer();}; // genuine non-POD counted pointer passed by value
-struct CDateAndTime {fable_i32 Year;fable_u32 Month,Day,Hour,Minute,Second,Millisecond;CDateAndTime();}; // genuine defaultFW0308B860; hidden-result class
+class CDateAndTime { public:fable_i32 Year;fable_u32 Month,Day,Hour,Minute,Second,Millisecond;CDateAndTime();}; // genuine defaultFW0308B860; hidden-result class
 struct CBankFileNative:CBaseClassNonCopyable {
  CBankFileNative();virtual ~CBankFileNative();
  virtual bool OpenReadOnly(const CCharString&,unsigned long);
@@ -607,8 +607,8 @@ struct CBankFileNative:CBaseClassNonCopyable {
  virtual CCharString GetEnumerationType(unsigned long)const;
  unsigned char UntouchedBankState[0x10c];
 };
-struct CBankFileAsync:CBankFileNative {CBankFileAsync();virtual ~CBankFileAsync();virtual bool OpenReadOnly(const CCharString&,unsigned long);virtual void OpenReadWrite(const CCharString&,unsigned long,unsigned long);virtual bool OpenFileReadOnly(const CWideString&,unsigned long);virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);virtual void Close();unsigned char UntouchedAsyncState[0x54];}; // defaultFW02FF5CA0; dtor9D6490
-struct CResourceBank:CBaseClassNonCopyable {CResourceBank();virtual ~CResourceBank();unsigned char UntouchedResourceLists[0x78];}; // defaultFW03178950/9FC5F0, dtor9FC690; native124
+class CBankFileAsync:public CBankFileNative { public:CBankFileAsync();virtual ~CBankFileAsync();virtual bool OpenReadOnly(const CCharString&,unsigned long);virtual void OpenReadWrite(const CCharString&,unsigned long,unsigned long);virtual bool OpenFileReadOnly(const CWideString&,unsigned long);virtual void OpenFileReadWrite(const CWideString&,unsigned long,unsigned long);virtual void Close();unsigned char UntouchedAsyncState[0x54];}; // defaultFW02FF5CA0; dtor9D6490
+class CResourceBank:public CBaseClassNonCopyable { public:CResourceBank();virtual ~CResourceBank();unsigned char UntouchedResourceLists[0x78];}; // defaultFW03178950/9FC5F0, dtor9FC690; native124
 
 struct GraphicInfo;
 struct GraphicInfoFrame:CBaseClass {GraphicInfoFrame();virtual ~GraphicInfoFrame();unsigned short FrameNum;signed char SmallMipmapLevel;void*Data;GraphicInfo*GraphicInfoPtr;}; // VT129C878->A009A0; true BaseClass hierarchy; FW03126720/031267D0
@@ -623,7 +623,7 @@ struct GraphicBankState:BankState {GraphicBankState();virtual ~GraphicBankState(
 struct NativeTexture {NativeTexture();~NativeTexture();void*Texture;fable_u32 Flags;}; // CTexture actual defaultFW018BB0B0,dtor9F9F70/FW018B3DE0;8
 struct PointerInfo {fable_u32 ReferenceCount;void(__fastcall*DeleteFunction)(void*);void*Data;};
 struct TextureManagerPointer {void*Data;PointerInfo*Info;TextureManagerPointer():Data(0),Info(0){}~TextureManagerPointer(){if(Info){--Info->ReferenceCount;if(Info->ReferenceCount==0){Info->DeleteFunction(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct CGraphicDataBank:CBankFileAsync,CResourceBank {CGraphicDataBank();void CloseGraphics(){GraphicList.clear();GraphicFrameBuffer.clear();CBankFileNative::Close();}
+class CGraphicDataBank:public CBankFileAsync,public CResourceBank { public:CGraphicDataBank();void CloseGraphics(){GraphicList.clear();GraphicFrameBuffer.clear();CBankFileNative::Close();}
  virtual ~CGraphicDataBank();
  virtual void Close();virtual unsigned long GetDataFormatVersion();virtual void NotifyBankSize(unsigned long,const BankArrayView<BankTypeCount>&);virtual void NotifyBankOpened();
  virtual void NotifyEntryAdded(unsigned long,unsigned long,const CharArray&);virtual void NotifyEntryUpdated(unsigned long,unsigned long,const CharArray&);virtual void NotifyEntryRemoved(unsigned long);

@@ -8,7 +8,7 @@
 // through the hidden pointer) and the implicit copy: both iterators are pushed straight from their
 // slots, the value reference passes through edx, and the empty tag temporary (user constructor:
 // no zero store) is homed in the dead `last` argument slot (`lea eax,[esp+0Ch]`).
-struct CThing;
+class CThing;
 struct SThingListNode;
 
 struct CThingListIterator {

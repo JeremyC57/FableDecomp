@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CMessageEvent {
+class CMessageEvent { public:
     int pad[13];
     int timestamp; // +0x34
 };
 
-struct CMessageEventFilter_OccuredBetween {
+class CMessageEventFilter_OccuredBetween { public:
     int minTime;
     int maxTime;
     int operator()(CMessageEvent* ev);

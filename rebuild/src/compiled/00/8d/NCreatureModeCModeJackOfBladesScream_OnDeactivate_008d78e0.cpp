@@ -7,7 +7,7 @@
 //   (`&= 0xfa` there, `|= 5` here), dead bit +0x91; the mode's PEmitter (CIntelligentPointer<CThing>) at +0x9c.
 // Shape: the flag fix-up through a block-scoped thing local (the OnActivate form); then the IS_THING_ALIVE idiom with
 //   GetPItem re-called for the null test, the dead bit and the call (the pointer's address held in esi).
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x6c];
     unsigned long  ThingTypeFlags;              // +0x6C
     unsigned char  _pad70[0x91 - 0x70];
@@ -30,7 +30,7 @@ struct CModeStandBase {                         // retail sizeof 0x68
 };
 
 namespace NCreatureMode {
-struct CModeJackOfBladesScream : CModeStandBase {   // vtable 0x01267D5C
+class CModeJackOfBladesScream : public CModeStandBase { public:   // vtable 0x01267D5C
     unsigned char           _pad68[0x9c - 0x68];
     CBaseIntelligentPointer PEmitter;           // +0x9C
     void OnDeactivate();

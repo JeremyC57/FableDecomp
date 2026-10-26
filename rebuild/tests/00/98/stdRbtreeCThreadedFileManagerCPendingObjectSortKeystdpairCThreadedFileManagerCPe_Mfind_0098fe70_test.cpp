@@ -2,18 +2,18 @@
 // node whose key equals k (ordered by physical sort key, then file position, then object address), else the header.
 #include <stdio.h>
 #include <string.h>
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned char _pad00[0x14];
     unsigned long PhysicalSortKey;             // +0x14
 };
-struct CThreadedFileObjectDesc {
+class CThreadedFileObjectDesc { public:
     void*         PDst;                        // +0x00
     unsigned long FilePos;                     // +0x04
     unsigned char _pad08[0x10];
 };
 class CThreadedFileManager {
 public:
-    struct CFileObject {
+    class CFileObject { public:
         CThreadedFileObjectDesc Desc;          // +0x00
         unsigned long  UID;                    // +0x18
         long           LoadingStatus;          // +0x1C

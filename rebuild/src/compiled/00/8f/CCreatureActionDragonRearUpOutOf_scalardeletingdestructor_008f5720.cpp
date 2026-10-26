@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonRearUpOutOf {
+class CCreatureAction_DragonRearUpOutOf { public:
     void* vftable;
 };
 

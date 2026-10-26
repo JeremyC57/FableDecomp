@@ -9,9 +9,9 @@
 // CTexture*. VC7.1 emits two separate `lea eax,[ebp-1]` because the two temps
 // are distinct source objects that happen to share the reused slot.
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void Grab_00451a9c(char* a, char* b);
     CTexture* CopyBackBufferToTexture();
 };

@@ -16,7 +16,7 @@ __forceinline bool FramesExceed(const unsigned long& since, float seconds)
 template<class T> inline void ClampMin(T& v, const T& lo) { if (v < lo) v = lo; }
 template<class T> inline void ClampMax(T& v, const T& hi) { if (v > hi) v = hi; }
 namespace NPlayerGui {
-struct CStatBar {                                       // CStatBase (Ego_r.pdb offsets)
+class CStatBar { public:                                       // CStatBase (Ego_r.pdb offsets)
     void*         __vftable;
     void*         GuiDef;                               // +0x04
     bool          ValueInitialised;                     // +0x08
@@ -34,7 +34,7 @@ struct CStatBar {                                       // CStatBase (Ego_r.pdb 
     }
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     void UpdateStat(float value, float jumpThreshold, float step, float settleTime, float holdTime, NPlayerGui::CStatBar* bar);
 };
 

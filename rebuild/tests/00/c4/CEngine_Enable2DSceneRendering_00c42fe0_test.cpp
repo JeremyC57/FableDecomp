@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngine {
+class CEngine { public:
     char pad0[0x14];
     unsigned int flags;   // +0x14
     char pad1[0x08];

@@ -1,6 +1,6 @@
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void helperA();                          // @0x744db0 __fastcall(this)
     void helperB(C3DAnimationStateAlpha* a); // @0x686910 __fastcall(this, a on stack)
     void AddCombinationBlend(C3DAnimationStateAlpha* a);

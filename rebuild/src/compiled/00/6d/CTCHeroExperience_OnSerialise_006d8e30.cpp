@@ -11,7 +11,7 @@
 // Layout: retail CTCHeroExperience keeps 12-byte vectors (engine/CTCHeroExperience.h carries the 16-byte PDB
 // containers): FishingLevel +0x0C, TotalExperiencePoints +0x10, ExperiencePointsAvailableToSpend +0x14,
 // StatExperiencePoints +0x18, TrainableStatLevels +0x24 (PDB +0x28).
-struct CThing;
+class CThing;
 
 struct CLongVector {                                   // retail std::vector<long> {first, last, end}
     long* _M_start;
@@ -21,7 +21,7 @@ struct CLongVector {                                   // retail std::vector<lon
     void resize(unsigned long n, const long& value);   // 0x004428F0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -29,7 +29,7 @@ struct CPersistContext {
     void TransferVector(const char* name, CLongVector* value);              // 0x005815D6
 };
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 CTCBase
     unsigned char _pad08[4];                            // +0x08 CTCBase flags

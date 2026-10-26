@@ -17,7 +17,7 @@
 //   +0 and a counted pointer {object +4, count block +8}, so the map at +0x18 holds {CCharString, CCountedPointer} pairs.
 //   Declaration only: the out-of-line helper takes the bounds, so the bytes are unchanged.
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
@@ -65,7 +65,7 @@ template <class T> struct CRangeVector {    // STLport vector<T> whose elements 
             free(_M_start);
     }
 };
-template <class T> struct CVectorMap {      // retail 16 bytes
+template <class T> class CVectorMap { public:      // retail 16 bytes
     CRangeVector<T> Data;                   // +0x00
     unsigned char   Compare;                // +0x0c
     bool            Dirty;                  // +0x0d

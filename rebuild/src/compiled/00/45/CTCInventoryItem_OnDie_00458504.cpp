@@ -6,7 +6,7 @@
 void __cdecl my_free(void* p);                // -> 0xbfea14
 void __fastcall base_OnDie(void* self);       // -> 0x430300
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x3c];
     void* f3c;
     void OnDie();

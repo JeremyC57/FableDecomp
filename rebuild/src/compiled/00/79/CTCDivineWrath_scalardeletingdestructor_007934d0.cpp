@@ -1,4 +1,4 @@
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     void* vftable;
 };
 

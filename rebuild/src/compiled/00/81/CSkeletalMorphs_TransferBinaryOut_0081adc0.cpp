@@ -7,7 +7,7 @@
 // Shape: STLport `operator[]` as `*(begin() + n)` (the element base re-read from the member each pass); the entry is a
 // reference local (`lea edi,[ebx+edx+4]`); VC keeps the down-counter in the dead stream-argument slot.
 // Leaf: TransferBinaryOut
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);           // 0x00993EA0
     void WriteLong(long value);                     // 0x00993EB0
     void WriteUShort_00993e90(unsigned short value);         // 0x00993E90
@@ -32,7 +32,7 @@ struct CMorphVector {
     const SMorphPair& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CSkeletalMorphs {
+class CSkeletalMorphs { public:
     CMorphVector Morphs;                            // +0x00 (CVectorMap<unsigned long, CEntry>)
     void TransferBinaryOut(CDataOutputStream* stream) const;
 };

@@ -4,7 +4,7 @@
 // `mov al,1` / `xor al,al`.
 extern const float g_dayStart_0125d640;   // 0x0125D640 (0.1667)
 extern const float g_dayEnd_0124f6f4;   // 0x0124F6F4 (0.875)
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad[8];
     float         m_timeOfDay;                     // +0x08 (a fraction of the day)
     bool IsDay();

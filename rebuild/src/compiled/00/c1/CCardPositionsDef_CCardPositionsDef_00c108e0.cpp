@@ -19,7 +19,7 @@ struct __declspec(dllimport) CImportedPositions_00c108e0 {   // +0xc
     ~CImportedPositions_00c108e0();
 };
 
-struct CCardPositionsDef : CImportedDefBase_00c108e0 {   // vtable 0x012B263C
+class CCardPositionsDef : public CImportedDefBase_00c108e0 { public:   // vtable 0x012B263C
     CImportedPositions_00c108e0 m_positions;   // +0xc
     CCardPositionsDef(void* source);
 };

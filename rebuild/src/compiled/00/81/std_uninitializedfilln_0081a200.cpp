@@ -12,7 +12,7 @@
 #include <new>
 enum EHeroMorphType { HERO_MORPH_TYPE_NONE };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE };
-struct CTextureMorphEntry {                     // 20 bytes
+class CTextureMorphEntry { public:                     // 20 bytes
     EHeroMorphType      MorphType;              // +0x00
     long                TextureLayer;           // +0x04
     long                ReplacingTextureIndex;  // +0x08

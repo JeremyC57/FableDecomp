@@ -5,7 +5,7 @@
 // slot 10 (+0x28) OnReplace.
 // Runnable only when the leaf test passes and a seat could be claimed; claiming one re-runs
 // OnReplace so the seat position is picked up. `mov al,1` / `xor al,al`: a bool result.
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();

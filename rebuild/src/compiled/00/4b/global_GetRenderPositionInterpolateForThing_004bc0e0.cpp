@@ -15,7 +15,7 @@
 // its two Z members raised (`fadd ; fstp` into the frame), then copied into the result with the
 // implicit copy constructor over C3DVector's memberwise user copy constructor (vtable store + six
 // dword moves) and destroyed through ~CBase.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
@@ -26,12 +26,12 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                                // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DPositionInterpolator : CBase {                    // vtable 0x0123981C
+class C3DPositionInterpolator : public CBase { public:                    // vtable 0x0123981C
     C3DVector StartPosition;                                // +0x04
     C3DVector EndPosition;                                  // +0x10
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -56,7 +56,7 @@ struct CTCPhysicsBase {
     void GetPositionInterpolator(C3DPositionInterpolator& out) const;   // 0x006B0250
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x10];
     unsigned char   Type;                                   // +0x10
     unsigned char   _pad11[0x60 - 0x11];

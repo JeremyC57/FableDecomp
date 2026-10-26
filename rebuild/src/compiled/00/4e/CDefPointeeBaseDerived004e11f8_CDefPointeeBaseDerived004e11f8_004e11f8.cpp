@@ -26,7 +26,7 @@ struct CResource_Calls {                                    // engine/CResource.
     ~CResource_Calls();                                     // 0x009FC550
 };
 
-struct CDefPointeeBase : CResource_Calls {                  // vtable 0x01230BA0
+class CDefPointeeBase : public CResource_Calls { public:                  // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                                  // inline, empty: inlined into every derived destructor
 };

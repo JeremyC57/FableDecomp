@@ -1,7 +1,7 @@
 // behaviour test for 0x004CFE10 _Push_heap<pair<float,CCharString>, CKeyPairCompareLess<float,CCharString>>
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[16];
     CCharString() { text[0] = 0; }
     explicit CCharString(const char* s) { std::strcpy(text, s); }

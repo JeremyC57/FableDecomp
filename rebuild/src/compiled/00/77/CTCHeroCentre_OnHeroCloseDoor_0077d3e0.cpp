@@ -2,7 +2,7 @@ struct CSingletonTarget;
 extern "C" void __fastcall Singleton_Method_4374b0(CSingletonTarget* self);
 extern CSingletonTarget* g_singleton_13b8790;
 
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     char pad[0x10];
     int CurrentGUIMode;
 };

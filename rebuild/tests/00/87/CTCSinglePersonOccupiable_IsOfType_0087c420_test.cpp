@@ -35,7 +35,7 @@ struct CDefPointer_CSubDef {
     CSubDef* operator->() const { return m_pDef; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CSubDef* out); // 0x0087C490
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -52,12 +52,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer_CSubDef* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x70];
     CDefClassBase* m_pDef;                   // +0x70
 };
 
-struct CTCSinglePersonOccupiable {
+class CTCSinglePersonOccupiable { public:
     void*   m_vtable;                        // +0x00
     CThing* ParentThing;                     // +0x04 (CTCBase)
     bool IsOfType(unsigned long typeMask);

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CPSCLight::WriteBinary (0x00B18950): records the stream calls.
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct Stream {
     char kinds[64]; long vals[64]; int n;
     Stream() : n(0) {}

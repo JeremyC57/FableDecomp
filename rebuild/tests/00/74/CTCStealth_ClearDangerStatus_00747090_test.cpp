@@ -5,13 +5,13 @@
 static int g_musicCalls = 0, g_rainCalls = 0, g_worldCalls = 0;
 static bool g_musicArg = true, g_rainArg = false;
 
-struct CPlayer {
+class CPlayer { public:
     bool m_main;
     bool IsMainPlayer() const { return m_main; }
 };
-struct CMusicManager { void EnableDangerMusic(bool enable) { ++g_musicCalls; g_musicArg = enable; } };
-struct CEnvironment { void SetRainEnabled(bool enabled) { ++g_rainCalls; g_rainArg = enabled; } };
-struct CWorld {
+class CMusicManager { public: void EnableDangerMusic(bool enable) { ++g_musicCalls; g_musicArg = enable; } };
+class CEnvironment { public: void SetRainEnabled(bool enabled) { ++g_rainCalls; g_rainArg = enabled; } };
+class CWorld { public:
     CEnvironment*  PEnvironment;
     CMusicManager* PMusicManager;
 };
@@ -19,13 +19,13 @@ static CMusicManager g_music;
 static CEnvironment g_environment;
 static CWorld g_world = { &g_environment, &g_music };
 
-struct CThing {
+class CThing { public:
     unsigned char m_thingType;
     CPlayer*      m_pPlayer;
     CPlayer* GetPlayer() const { return m_pPlayer; }
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     CThing* ParentThing;
     long    InDangerCoolOffTimer;
     CWorld* GetWorld() { ++g_worldCalls; return &g_world; }

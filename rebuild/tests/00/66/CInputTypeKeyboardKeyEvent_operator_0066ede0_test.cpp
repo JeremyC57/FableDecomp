@@ -1,7 +1,7 @@
 #include <cstdio>
 enum EInputType {};
 enum EInputKey {};
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 class CInputTypeBase {
 public:
     virtual ~CInputTypeBase();

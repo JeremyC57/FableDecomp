@@ -1,4 +1,4 @@
-struct CTCHealLife {
+class CTCHealLife { public:
     void* vftable;
 };
 

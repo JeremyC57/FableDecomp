@@ -6,7 +6,7 @@
 // vector is 0x0C bytes (PDB 0x14) and the five handle vectors 0x0C (PDB 0x10), so every member
 // after them sits 0x1C lower -- the engine header's layout does not match, hence the local model.
 // Shape: the `const float&` zero default is homed in the dead `arg` slot; `this` advanced in place.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);  // 0x00410620
 };
 

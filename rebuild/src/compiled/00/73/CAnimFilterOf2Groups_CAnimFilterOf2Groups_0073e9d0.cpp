@@ -6,12 +6,12 @@
 // PDB size 20); the base CAnimFilterBase contributes only the vptr (its inline constructor's
 // vtable store is dead and dropped). `ret 8`: two stack arguments. The manifest label
 // (CAIStateGroup_CreatureUseCoverBase dtor) is propagated garbage.
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString();                          // 0x0099E4B0
 };
 
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual void v00();
     CAnimFilterBase() { }
 };

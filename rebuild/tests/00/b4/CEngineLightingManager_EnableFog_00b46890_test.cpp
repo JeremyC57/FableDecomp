@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CTrackedRenderState { long m_stateId; unsigned int m_value; unsigned int m_captureMask; long m_appliedValue; bool m_queued; };
 struct SCapturedRenderState { CTrackedRenderState* m_pState; unsigned int m_priorValue; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     SCapturedRenderState m_captured[16]; CTrackedRenderState* m_dirty[16];
     long m_capturedCount, m_dirtyCount; unsigned int m_captureMask; CTrackedRenderState m_fogEnable;
     void SetState(CTrackedRenderState& state, unsigned int value)
@@ -20,7 +20,7 @@ struct CRenderStateManager {
     }
 };
 static CRenderStateManager g_mgr; static CRenderStateManager* g_pMgr = &g_mgr;
-struct CEngineLightingManager { void EnableFog() { g_pMgr->SetState(g_pMgr->m_fogEnable, 1); } };
+class CEngineLightingManager { public: void EnableFog() { g_pMgr->SetState(g_pMgr->m_fogEnable, 1); } };
 int main()
 {
     CEngineLightingManager l; CTrackedRenderState& s = g_mgr.m_fogEnable;

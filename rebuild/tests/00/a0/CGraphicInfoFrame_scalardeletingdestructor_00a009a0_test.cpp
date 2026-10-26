@@ -12,7 +12,7 @@ struct CSharedPointer {
 };
 struct CBase { ~CBase() { g_order[g_n++] = 1; } };
 struct CMember { ~CMember() { g_order[g_n++] = 3; } };
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     CBase          m_base;
     CSharedPointer m_pShared;
     long           m_frame;

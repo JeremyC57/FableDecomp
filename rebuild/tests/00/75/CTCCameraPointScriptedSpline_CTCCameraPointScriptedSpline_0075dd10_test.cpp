@@ -4,14 +4,14 @@
 #include <cstdlib>
 #include <new>
 
-struct CThing;
-struct CCharString { void* PStringData; CCharString() : PStringData(0) {} };
+class CThing;
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) {} };
 static CThing* g_baseThing = 0;
-struct CTCCameraPointDefinitionBase {
+class CTCCameraPointDefinitionBase { public:
     void* vptr;
     CTCCameraPointDefinitionBase(CThing* thing) : vptr(0) { g_baseThing = thing; }
 };
-struct CCardinalSpline;
+class CCardinalSpline;
 struct CCountedPointerSpline { CCardinalSpline* Data; void* Info; CCountedPointerSpline() : Data(0), Info(0) {} };
 struct CKeyCamera;
 struct CKeyCameraVector {
@@ -34,7 +34,7 @@ struct CLongSet {
         _M_header->_M_color = false; _M_header->_M_parent = 0; _M_header->_M_left = _M_header; _M_header->_M_right = _M_header;
     }
 };
-struct CTCCameraPointScriptedSpline : CTCCameraPointDefinitionBase {
+class CTCCameraPointScriptedSpline : public CTCCameraPointDefinitionBase { public:
     CCountedPointerSpline PTimingSpline; CKeyCameraVector KeyCameras; CKeyCamera* SelectedKeyCamera;
     CCountedPointerSpline PPositionSpline, PViewDirectionSpline, PScalarSpline, PAnimationSpeedSpline;
     CCharStringList MyMessages; CCharString MessageToBeSent; bool NextCrossInvalid;

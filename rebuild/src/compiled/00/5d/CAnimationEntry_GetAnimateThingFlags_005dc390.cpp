@@ -4,13 +4,13 @@
 // map, or the default one, through its out pointer; the slot is re-read after the call).
 // Shape: the out-pointer local is the one frame slot (`push ecx`); its component's Flags (+0x08) are read into
 // cl and tested bit by bit with the result accumulated in eax (`xor eax,eax` first, then `or`).
-struct CAnimComponentFlags {
+class CAnimComponentFlags { public:
     unsigned char _pad[8];                      // vptr, ref count
     long Flags;                                 // +0x08
 };
 
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     long AnimName;                              // +0x04 CDefString
     long GroupName;                             // +0x08 CDefString

@@ -13,7 +13,7 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int count);
 
 struct CHeader;
 
-struct CHandleBasedMemoryPool {                 // this library's pool variant (see Layout)
+class CHandleBasedMemoryPool { public:                 // this library's pool variant (see Layout)
     void*         __vftable;                    // +0x00
     void*         Buffer;                       // +0x04
     void*         UnalignedBuffer;              // +0x08

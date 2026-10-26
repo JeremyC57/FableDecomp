@@ -12,8 +12,8 @@
 // Shape: STLport 4.x `__find_if` (trip count `(last - first) >> 2`, four tests per pass, `switch (last - first)` over
 //   3/2/1); the bind is `(*F1)(t) && (*F2)(t)`; VC7.1's per-function inline budget expands the stock-item filter (the
 //   landed 0x00809270 body, plain inline) at the first site only and calls it out of line at the other six.
-struct CTCBase;
-struct CTCShop;
+class CTCBase;
+class CTCShop;
 enum ETCInterfaceType { TC_STOCK_ITEM = 0x54, TC_FORCE_DWORD = 0x7fffffff };
 template <class K, class V> struct pair { K first; V second; };
 struct CTCMap {                                           // CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<...>>
@@ -23,7 +23,7 @@ struct CTCMap {                                           // CVectorMap<ETCInter
     value_type* _M_end_of_storage;                        // +0x8
     value_type* LowerBound(const ETCInterfaceType* key) const;   // 0x004365B0 (const copy)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];                     // +0x20 bitset<274>
     CTCMap Components;                                    // +0x44
@@ -42,7 +42,7 @@ struct CThing {
         return (it == end || type < it->first ? end : it)->second;
     }
 };
-struct CTCStockItem {
+class CTCStockItem { public:
     unsigned char _pad00[0xc];
     bool ForSale;                                         // +0x0C
     bool Stealable;                                       // +0x0D
@@ -55,10 +55,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                      // +0x04
     CThing* GetPItem() const;                             // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct C3DVector { float X, Y, Z; };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+class C3DVector { public: float X, Y, Z; };
 namespace NPlayerTargeting {
-struct CTargetPoint {                                     // 0x1c bytes
+class CTargetPoint { public:                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00
     long Index;                                           // +0x08
     C3DVector TargetingPosition;                          // +0x0C

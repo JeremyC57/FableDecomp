@@ -18,11 +18,11 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();                // 0x0049D810
 };
 
-struct CNymphDef {
+class CNymphDef { public:
     unsigned char _pad00[0x2c];
     float         MaxHeight;                        // +0x2c
     float         MinHeight;                        // +0x30
@@ -34,7 +34,7 @@ struct CTCBase_0080f130 {
     CWorld* GetWorld() const;                       // 0x00686A70
 };
 
-struct CTCNymph : CTCBase_0080f130 {
+class CTCNymph : public CTCBase_0080f130 { public:
     const CNymphDef* PDef;                          // +0x0c
     float GetRandomFlightHeight() const;
 };

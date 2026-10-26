@@ -17,7 +17,7 @@
 // operator=, and the by-value argument of the unguarded insert is copy-constructed in the argument area
 // (`sub esp,1Ch ; mov ecx,esp`) after the comparator copy is pushed. Layout from the landed CTestQuest
 // sources (PDB names).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
@@ -35,7 +35,7 @@ public:
     CCharString QuestCardDefName;                  // +0x18
 };
 
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const;   // 0x006238A0
 };
 

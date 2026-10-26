@@ -7,7 +7,7 @@
 // then `inc dword ptr [ecx+1Ch]` and the compare against the static re-read.
 extern long g_framesPerSecond;                      // 0x01375550
 
-struct CThing {
+class CThing { public:
     void RemoveTC(long type);                       // 0x004C9840
 };
 
@@ -17,7 +17,7 @@ struct CTCBase_007bba70 {
     unsigned char _pad08[4];
 };
 
-struct CTCOnHeroPush : CTCBase_007bba70 {
+class CTCOnHeroPush : public CTCBase_007bba70 { public:
     float DistPushed;                               // +0x0c
     float PushDir[3];                               // +0x10
     long  FrameSincePushed;                         // +0x1c

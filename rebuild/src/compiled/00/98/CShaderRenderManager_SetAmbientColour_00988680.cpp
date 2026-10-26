@@ -10,11 +10,11 @@
 // exists for CShaderRenderManager.
 // Leaf: ?SetAmbientColour@CShaderRenderManager
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char   _pad_0x000[0x1ac];
     CRGBFloatColour AmbientColour;               // +0x1AC
     unsigned char   _pad_0x1bc[0x3d8 - 0x1bc];

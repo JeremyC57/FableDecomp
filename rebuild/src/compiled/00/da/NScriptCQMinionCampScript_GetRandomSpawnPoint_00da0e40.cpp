@@ -11,7 +11,7 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" int __cdecl rand();                     // 0x00BFEB16
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[12];
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
@@ -27,7 +27,7 @@ struct CRetailList_CScriptThing {                  // STLport list<CScriptThing>
     CListNode_CScriptThing* begin() const { return _M_node->_M_next; }
     CListNode_CScriptThing* end() const { return _M_node; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating();              // 0x00CB7940
 };
 namespace NScript {

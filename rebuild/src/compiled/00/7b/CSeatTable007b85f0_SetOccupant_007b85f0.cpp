@@ -8,7 +8,7 @@
 // Shape: the temporary CIntelligentPointer (vtable 0x0125A858) is built first; the vector's start pointer is loaded into esi
 // BEFORE GetPItem and the index scaled AFTER it (`lea ecx,[esi+ecx*8]`): STLport `operator[]` as `*(begin() + n)` with an
 // inline begin() (a raw pointer member folds the address before the call).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

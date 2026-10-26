@@ -1,9 +1,9 @@
 #pragma optimize("s",on)
-struct CPersistContext {
+class CPersistContext { public:
     void TransferA_0045228f(void* field);
     void TransferB(void* field);
 };
-struct CCoopSpiritDef {
+class CCoopSpiritDef { public:
     unsigned char _tail[0x3c];
     void CCoopSpiritDef_Transfer(CPersistContext& ctx);
 };

@@ -8,7 +8,7 @@
 // Shape: `(unsigned char)(flags >> 14) & 1` gives `shr eax,0Eh ; test al,1`; the squared distance sums `x*x + y*y + z*z`
 // over three float locals; `!(d <= max)` style exit through `test ah,41h ; jp`; the lookup result feeds
 // `GetTC(...)->IsActionPointFree()` directly (`mov ecx,[eax+4]`) and its bool is returned by a tail `call ; ret`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CTCBase_Retail;

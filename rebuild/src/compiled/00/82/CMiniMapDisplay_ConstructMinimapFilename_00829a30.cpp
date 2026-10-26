@@ -10,7 +10,7 @@
 // Strings: L"_" 0x0122DE7C, L"%d" 0x0122DE44, L".tga" 0x01231634.
 // Shape: the number strings come from an inline by-value ToString (local Format, copy out, no NRVO); the region
 //   name + number sum is built into a named local that is never used (retail destroys it with the others).
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720
@@ -23,17 +23,17 @@ struct CWideString {
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);           // 0x00999110
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* dir, CWideString* name, CWideString* ext);   // 0x00997620
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     CWideString ToWideString() const;              // 0x0099E480
 };
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x18];
     CCharString   Name;                            // +0x18
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionIndex() const;            // 0x004FB150
     CRegion& GetRegion(long index);                // 0x004FC180
 };
@@ -45,7 +45,7 @@ inline CWideString ToString(long value)
     return text;
 }
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     CWideString ConstructMinimapFilename(const CWideString& path, CWorldMap* map, long index);
 };
 

@@ -5,7 +5,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { u64 UniqueID; u64 GetUniqueID() const { return UniqueID; } };
+class CThing { public: u64 UniqueID; u64 GetUniqueID() const { return UniqueID; } };
 struct CUIDToThingMap {
     u64 keys[8]; int count;
     unsigned long erase(const u64& key)
@@ -14,7 +14,7 @@ struct CUIDToThingMap {
         return 0;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     CUIDToThingMap UIDToThingMap;
     void OnDeleteClass(CThing& thing) { UIDToThingMap.erase(thing.GetUniqueID()); }
 };

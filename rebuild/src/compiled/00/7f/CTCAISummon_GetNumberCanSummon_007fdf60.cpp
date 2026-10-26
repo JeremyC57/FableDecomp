@@ -49,7 +49,7 @@ namespace std {
 template <class T> inline const T& min(const T& a, const T& b) { return b < a ? b : a; }
 }
 
-struct CSummonDef {
+class CSummonDef { public:
     unsigned char _pad00[0x28];
     long  CreatureToSummon;                                     // +0x28
     long  CreatureFamilyToSummon;                               // +0x2c
@@ -60,7 +60,7 @@ struct CSummonDef {
     float TimeBetweenSummons;                                   // +0x40
 };
 
-template <class T> struct CDefPointer {                         // the def pointer's inline accessor (one word in retail)
+template <class T> class CDefPointer { public:                         // the def pointer's inline accessor (one word in retail)
     T* Def;
     T* operator->() const { return Def; }
 };

@@ -12,7 +12,7 @@
 struct IDirect3DSurface9;
 struct IDirect3DTexture9;
 
-struct CSurface {
+class CSurface { public:
     IDirect3DSurface9* PD3DSurface;                     // +0x04
     unsigned long      AllocationSource;                // +0x08
     void*              PAllocatedMemory;                // +0x0c
@@ -20,7 +20,7 @@ struct CSurface {
     virtual ~CSurface();                                // slot 0 (0x0041C9C0)
 };
 
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLengthAndSource;             // +0x04 ByteLength:28, AllocationSource:4
     CTexture() : PD3DTexture(0), ByteLengthAndSource(0) {}
@@ -31,9 +31,9 @@ template<class T> struct CRetailVector {                // retail std::vector: t
     CRetailVector() : m_first(0), m_last(0), m_end(0) {}
 };
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct RegionMinimapCellData;
 
 struct CRegionMinimap {

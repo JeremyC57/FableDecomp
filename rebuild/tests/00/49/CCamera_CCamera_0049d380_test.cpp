@@ -4,12 +4,12 @@ struct C3DVectorBits {
     C3DVectorBits() : X(0), Y(0), Z(0) { }
     C3DVectorBits(const C3DVectorBits& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVectorBits Up, Forward;
     CRightHandedSet() { }
     CRightHandedSet(const CRightHandedSet& o) : Up(o.Up), Forward(o.Forward) { }
 };
-struct CCamera {
+class CCamera { public:
     C3DVectorBits WorldPosition; CRightHandedSet RHSet; bool HeightLocked; bool ViewVecZLocked;
     unsigned long FOVFlags, HorizontalFOV, VerticalFOV, Zoom;
     CCamera() { }

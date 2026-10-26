@@ -3,7 +3,7 @@
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     unsigned int vftable;
     char inner[0xb4];
     void* tex;

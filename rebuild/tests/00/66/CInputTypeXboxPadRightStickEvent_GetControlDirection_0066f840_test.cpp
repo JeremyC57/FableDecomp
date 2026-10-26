@@ -1,8 +1,8 @@
 // Behaviour test for 0x0066F840 CInputTypeXboxPadRightStickEvent::GetControlDirection.
 #include <cstdio>
 #include <cmath>
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
-struct CInputEvent { C2DVector pos; C2DVector GetAnaloguePosition() const { return pos; } };
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} };
+class CInputEvent { public: C2DVector pos; C2DVector GetAnaloguePosition() const { return pos; } };
 static const float g_InputDeadZone = 0.0001f;
 static C2DVector GetControlDirection(const CInputEvent& event)
 {

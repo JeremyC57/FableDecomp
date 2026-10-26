@@ -1,4 +1,4 @@
-struct CThingBuilding;
+class CThingBuilding;
 
 struct CIntelligentPointer {
     CThingBuilding* p;

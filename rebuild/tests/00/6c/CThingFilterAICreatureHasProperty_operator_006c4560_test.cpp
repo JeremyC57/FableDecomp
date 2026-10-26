@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingAICreature { long m_type; virtual ~CThingAICreature() { } virtual long GetType() const { return m_type; } };
-struct CThingFilter_AICreatureHasProperty {
+class CThingAICreature { public: long m_type; virtual ~CThingAICreature() { } virtual long GetType() const { return m_type; } };
+class CThingFilter_AICreatureHasProperty { public:
     long m_property;
     bool operator()(const CThingAICreature& creature) const { return creature.GetType() == m_property; }
 };

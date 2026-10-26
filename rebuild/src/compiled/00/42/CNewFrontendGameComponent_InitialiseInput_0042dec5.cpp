@@ -4,11 +4,11 @@
 // stored in CNewFrontendGameComponent::m_pInputManager (+0x68). The call clobbers ecx, hence `this` in esi.
 // No engine headers exist for either class: local models sized to the PDB offsets.
 class CInputManager;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*   Data;                      // +0x00
     long* RefCount;                 // +0x04
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad00[0x58];
     CCountedPointer<CInputManager> PInputManager;   // +0x58
 };

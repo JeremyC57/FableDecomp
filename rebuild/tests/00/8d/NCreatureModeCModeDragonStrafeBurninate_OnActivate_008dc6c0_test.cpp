@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDragonStrafeBurninate::OnActivate (retail 0x008DC6C0): the flying-mode activation,
 // the leg animation blend reset to 0, and the type-9 component switched on.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 struct CTCType9 : CTCBase { bool m_active; };
 static int g_flyingActivations;
 struct CModeDragonFlying {

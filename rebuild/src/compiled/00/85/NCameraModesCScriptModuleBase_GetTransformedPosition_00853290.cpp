@@ -9,16 +9,16 @@
 // through the inline three-float ctor: its arguments evaluate right to left, so Z is summed first and the
 // three results pop into the hidden result in X, Y, Z order. `ret 8` (result pointer + offset).
 // Layout: PDB NCameraModes::CScriptModuleBase (0x4c bytes): PThingOrigin +0xc, CoordOrigin +0x14.
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
@@ -40,7 +40,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {                           // vtable 0x01255F74
+class CScriptModuleBase { public:                           // vtable 0x01255F74
     virtual void v00();
     CIntelligentPointer_CThing      PCamPoint;       // +0x04
     CIntelligentPointer_CThingConst PThingOrigin;    // +0x0c

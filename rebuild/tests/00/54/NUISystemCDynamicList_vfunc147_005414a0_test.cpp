@@ -4,7 +4,7 @@
 #include <new>
 #include <stdlib.h>
 namespace NUISystem {
-struct CComponent {void AddChild(struct CountedPointer&); //00533b50
+class CComponent { public:void AddChild(struct CountedPointer&); //00533b50
 
 virtual void Slot000()=0;
 virtual void Slot001()=0;
@@ -163,9 +163,9 @@ struct ChildVector {CComponent** Start;CComponent** Finish;CComponent** Limit;
 #pragma auto_inline(off)
 void ChildVector::Grow(CComponent** position,CComponent*const& value,const EmptyTag&,unsigned int count,bool atEnd){unsigned int oldSize=Finish-Start;unsigned int capacity=oldSize+(oldSize>count?oldSize:count);CComponent** storage=capacity?(CComponent**)malloc(capacity*sizeof(CComponent*)):0;CComponent** out=storage;CComponent** p;for(p=Start;p!=position;++p,++out)*out=*p;for(unsigned int i=0;i<count;++i,++out)*out=value;if(!atEnd)for(p=position;p!=Finish;++p,++out)*out=*p;if(Start)free(Start);Start=storage;Finish=out;Limit=storage+capacity;}
 #pragma auto_inline(on)
-struct CChangingStateComponent:CComponent {void AddChildDynamically(CountedPointer&);}; //0052cab0
+class CChangingStateComponent:public CComponent { public:void AddChildDynamically(CountedPointer&);}; //0052cab0
 
-struct CDynamicList:CChangingStateComponent {
+class CDynamicList:public CChangingStateComponent { public:
  unsigned char BeforeInit[0x15c-4];int Initialised;unsigned char BeforeTop[8];int TopIndex,SelectionIndex,NumVisible;ChildVector Children;
  void InsertChild(unsigned long,CountedPointer&);
 };

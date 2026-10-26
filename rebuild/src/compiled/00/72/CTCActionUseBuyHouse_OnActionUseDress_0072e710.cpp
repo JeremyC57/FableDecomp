@@ -8,12 +8,12 @@
 // Shape: no frame -- the symbol string is homed in the dead `money` slot and the wide text in the dead `house` slot; each
 // arm builds its own text and calls SetText, and VC7.1 tail-merges the two SetText calls (the arms only push different
 // flags, 4 = confirm, 2 = plain), so the shared tail destroys the text once.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     unsigned short* m_pData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -22,18 +22,18 @@ struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol) const;  // 0x009C95E0
 };
 class CFontBank;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank* TextBank;                                // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank* Font;                                    // +0x1614C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time,
                  bool clickPast, bool pauseGame);       // 0x00492E4B
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };

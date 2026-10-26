@@ -2,7 +2,7 @@
 // blocked, no region, every unique id added as closed and the id map sorted ascending.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct SUniqueIDOpen { unsigned long long first; bool second; };
 struct CNode {
     C2DVector Position; unsigned char QuadTreeLevel, NavLayer; bool LeafNode, Blocked; void* PRegion; unsigned char PreferabilityCost;

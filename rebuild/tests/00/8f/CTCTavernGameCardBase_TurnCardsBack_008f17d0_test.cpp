@@ -9,9 +9,9 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CTCBase;
-struct CCard;
-struct CThingObject;
+class CTCBase;
+class CCard;
+class CThingObject;
 
 struct CCardVector {                            // STLport vector<CCard*> (12 bytes)
     CCard** _M_start;
@@ -21,14 +21,14 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
     CCard** end() { return _M_finish; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void ClearMeshEffect_004bffc0(void* key);            // 0x004BFFC0
 };
 }
@@ -39,7 +39,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -52,7 +52,7 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CCard {                                  // Ego_r.pdb CCard (0x58 bytes)
+class CCard { public:                                  // Ego_r.pdb CCard (0x58 bytes)
     CThing* Thing;                              // +0x00 CThingObject*
     long    Name;                               // +0x04
     long    Value;                              // +0x08
@@ -80,7 +80,7 @@ struct CCard {                                  // Ego_r.pdb CCard (0x58 bytes)
     }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
     unsigned long PlaySound(const CCharString& name);   // 0x005EA950

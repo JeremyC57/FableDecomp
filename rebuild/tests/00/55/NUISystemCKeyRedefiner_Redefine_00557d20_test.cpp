@@ -1,8 +1,8 @@
 // Behaviour test for NUISystem::CKeyRedefiner::Redefine @ 0x00557D20 (copy of the model with stub profile/parent/sound).
 #include <cstdio>
-struct CActionInputControl { long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton; float DX, DY; };
+class CActionInputControl { public: long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton; float DX, DY; };
 static int g_redefines, g_lastIndex, g_sounds, g_notified; static long g_actionsSeen[4];
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void RedefineControlPassive(CActionInputControl* c, CActionInputControl* prev, long subType)
     { if (c->GameAction == prev->GameAction) g_actionsSeen[g_redefines++ & 3] = c->GameAction; g_lastIndex = (int)subType; }
 };

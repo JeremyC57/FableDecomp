@@ -1,7 +1,7 @@
 // Behaviour test for 0x0045BB8F std::_Construct<CRGBColour>(p, value): placement copy of a B,G,R,A colour, null-safe
 #include <cstdio>
 #include <new>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

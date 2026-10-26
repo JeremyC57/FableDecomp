@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCForcePushPower { void FinalCleanup(); };
+class CTCForcePushPower { public: void FinalCleanup(); };
 void CTCForcePushPower::FinalCleanup() {}

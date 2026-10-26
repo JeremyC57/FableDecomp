@@ -11,7 +11,7 @@
 
 struct CCreatureAction;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool HasQueuedActions();                                // 0x00661F20
     void QueueAction(CCreatureAction* action);              // 0x00664490
 };

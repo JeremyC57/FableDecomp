@@ -5,7 +5,7 @@
 
 static const char* g_names[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l" };
 struct __false_type { __false_type() { } };
-struct CCharString { const char* PStringData; CCharString(const char* s) : PStringData(s) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { } };
+class CCharString { public: const char* PStringData; CCharString(const char* s) : PStringData(s) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { } };
 struct TElem { CCharString first, second; TElem(int k) : first(g_names[k]), second(g_names[k + 1]) { } TElem(const TElem& o) : first(o.first), second(o.second) { } };
 static bool Is(const TElem& e, int k) { return e.first.PStringData == g_names[k] && e.second.PStringData == g_names[k + 1]; }
 

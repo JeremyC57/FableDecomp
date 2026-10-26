@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DLineF { float m_x0, m_y0, m_x1, m_y1; };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; };
+class C2DLineF { public: float m_x0, m_y0, m_x1, m_y1; };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
 template <class T> struct CRetailVector {
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     struct iterator {
@@ -13,7 +13,7 @@ template <class T> struct CRetailVector {
     long size() const { return m_pLast - m_pFirst; }
     T& operator[](long n) const { return *(begin() + n); }
 };
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     CRetailVector< CArray<C2DLineF> > NavigationLines;
     const CArray<C2DLineF>* GetNavigationLines(long level) const
     {

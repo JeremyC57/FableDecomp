@@ -1,7 +1,7 @@
 // Behaviour test for CTCCombat::FrameUpdate (0x00736AE0): timers, usable abilities, flourish particles, in that order.
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
-struct CTCCombat {
+class CTCCombat { public:
     int frames;
     void UpdateCombatTimers() { g_log[g_n++] = 1; ++frames; }
     void UpdateUsableMeleeCombatAbilities() { g_log[g_n++] = 2; }

@@ -15,7 +15,7 @@
 //   temporary's release re-reads Info after the call (insert_unique is out of line); &(*i).second is node + 0x18.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8

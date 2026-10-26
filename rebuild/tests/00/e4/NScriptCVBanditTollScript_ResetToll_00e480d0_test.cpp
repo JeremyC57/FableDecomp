@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* t, long = -1) : p(t) {}
     CCharString(const CCharString& o) : p(o.p) {}

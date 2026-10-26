@@ -4,16 +4,16 @@
 #define __fastcall
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString& operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_stringAssigns; return *this; }
 };
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
 };
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {                   // 28 bytes
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:                   // 28 bytes
         long        Region;                     // +0x00
         CCharString UIDefName;                  // +0x04
         C2DVector   Position;                   // +0x08

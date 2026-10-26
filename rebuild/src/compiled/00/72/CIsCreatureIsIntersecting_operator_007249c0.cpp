@@ -12,10 +12,10 @@
 //   the flag test; the squared distance of the position difference is compared with the squared radius sum
 //   (`fcompp ; test ah,41h ; jne`), Owner re-read from `this` for its own radius; the creature check returns false
 //   through its own tail.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCPhysicsBase {                        // retail layout, only the used fields
+class CTCPhysicsBase { public:                        // retail layout, only the used fields
     unsigned char _pad00[0xc];
     C3DVector Position;          // +0x0c
     unsigned char _pad18[0x34 - 0x18];
@@ -36,7 +36,7 @@ public:
     bool IsPerformingAnyAction() const;     // 0x006622A0
     bool IsBlocking() const;                // 0x00664D00
 };
-struct CIsCreatureIsIntersecting {             // 4 bytes (PDB)
+class CIsCreatureIsIntersecting { public:             // 4 bytes (PDB)
     CThing* Owner;                              // +0x00
     bool operator()(CThing* thing) const;
 };

@@ -32,7 +32,7 @@ public:
     T& operator*() const { return *static_cast<T*>(GetPItem()); }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

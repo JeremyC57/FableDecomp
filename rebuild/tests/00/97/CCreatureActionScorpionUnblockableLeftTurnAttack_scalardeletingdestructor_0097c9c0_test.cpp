@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScorpionUnblockableLeftTurnAttack {
+class CCreatureAction_ScorpionUnblockableLeftTurnAttack { public:
     void* vftable;
     int destroyed;
 };

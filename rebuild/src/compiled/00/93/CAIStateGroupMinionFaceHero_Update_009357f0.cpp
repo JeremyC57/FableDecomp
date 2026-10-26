@@ -13,7 +13,7 @@
 //          expression (VC7.1 sums Z first).
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04), the hero
 //          intelligent pointer at +0x14.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,12 +34,12 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector operator-(const C3DVector& v) const { C3DVector r; r.X = X - v.X; r.Y = Y - v.Y; r.Z = Z - v.Z; return r; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -59,7 +59,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     bool IsPlayerExtendedLineOfSight();         // 0x00744830
 };
 unsigned long __fastcall GFGetCurrentFrame();   // 0x0049D870
@@ -74,7 +74,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
@@ -86,12 +86,12 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

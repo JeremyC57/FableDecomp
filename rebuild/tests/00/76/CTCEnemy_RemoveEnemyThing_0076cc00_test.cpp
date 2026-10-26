@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointer(T* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };

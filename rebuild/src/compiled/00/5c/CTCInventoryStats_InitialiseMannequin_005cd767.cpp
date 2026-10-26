@@ -14,18 +14,18 @@
 //   interface map +0x44, component +0x64, base def +0x70; hero def mannequin def index +0x2E0; appearance animation set +0x34.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct C3DVector;
-struct CCharString {
+class CTCBase;
+class C3DVector;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                                     // +0x00
     unsigned long GetAnimateThingFlags() const;         // 0x005DC390
 };
-struct CAnimFilterBase {                                // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -34,15 +34,15 @@ struct CAnimFilterNoGroup : CAnimFilterBase {           // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;
     virtual CAnimFilterBase* Clone() const;
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     CAnimationEntry* GetAnimation(const CCharString& name, long n, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef();                          // slot 1 (+4)
     long m_refCount;                                    // +4
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     __forceinline CDefPointer(T* p) : m_pObject(p) { if (p) ++p->m_refCount; }
@@ -55,11 +55,11 @@ template<class T> struct CDefRef {
     __forceinline ~CDefRef() { if (--m_pObject->m_refCount == 0) m_pObject->DestroyDef(); }
     T* operator->() const { return m_pObject; }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet Animation;                            // +0x34
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     CAppearanceDef* FindAppearanceDef();
     bool GetSubDef(CDefPointer<CAppearanceDef>* out);   // 0x0042B0A2
 };
@@ -78,7 +78,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     long          Mode;
     unsigned char AnimType;
     bool          Flag05;
@@ -94,10 +94,10 @@ struct CAnimInit {                                      // 0x2c bytes
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                      // 0x0070B460
 };
 struct CTCEditable {
@@ -110,7 +110,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 struct CPresenceBits { bool test(long kind) const; };   // bitset<>::test 0x00410DE0
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
@@ -135,11 +135,11 @@ struct CThing {
     }
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, bool b);   // 0x00835A20
-struct CHeroDef : CDefPointeeBase {
+class CHeroDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2e0 - 0x08];
     long MannequinDef;                                  // +0x2e0
 };
-struct CTCInventoryStats {
+class CTCInventoryStats { public:
     void*     __vftable;
     CThing*   ParentThing;                              // +0x04
     unsigned char _pad08[0x68 - 0x08];

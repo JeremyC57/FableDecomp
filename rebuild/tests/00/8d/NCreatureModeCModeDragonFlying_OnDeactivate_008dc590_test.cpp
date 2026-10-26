@@ -1,7 +1,7 @@
 #include <cstdio>
 // CModeDragonFlying::OnDeactivate model.
 struct CTCFlagged { unsigned char flag; };
-struct CThing {
+class CThing { public:
     unsigned char type; bool notWillable; bool liftable; int resumes; bool hasComponent; CTCFlagged component;
     void SetSuspendAnimation(bool s, void*) { if (!s) ++resumes; }
     bool GetInterface(CTCFlagged** out, long) { if (!hasComponent) return false; *out = &component; return true; }

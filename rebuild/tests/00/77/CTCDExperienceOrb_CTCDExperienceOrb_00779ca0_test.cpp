@@ -4,16 +4,16 @@
 #include <new>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThing;
+class CThing;
 static CThing* g_baseParent = 0; static int g_baseCalls = 0;
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00() {}
     unsigned char _body[0x8];
     CTCDriverBase(CThing* parent) { ++g_baseCalls; g_baseParent = parent; }
 };
 struct CIndexM1 { long v; CIndexM1() : v(-1) {} };
 struct CZeroWord { long v; CZeroWord() : v(0) {} };
-struct CTCDExperienceOrb : CTCDriverBase {
+class CTCDExperienceOrb : public CTCDriverBase { public:
     long          m_target;
     CIndexM1      m_index10;
     CIndexM1      m_index14;

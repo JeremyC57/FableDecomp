@@ -4,7 +4,7 @@
 //   this in ecx, src on the stack, ret 4.
 // Callees are also members => __fastcall (this=ecx, arg on stack).
 
-struct CDefClassBase {
+class CDefClassBase { public:
     // base Copy @ 0x431ed0 : __fastcall CDefClassBase::Copy(src)
     void Copy_00431ed0(CDefClassBase const* src);
 };
@@ -14,7 +14,7 @@ struct SubVoices {
     void Copy(SubVoices const* src);
 };
 
-struct CSimVoicesDef {
+class CSimVoicesDef { public:
     char pad_base[0x3c];  // base region
     SubVoices sub;        // at +0x3c
 

@@ -18,7 +18,7 @@
 // is the right operand, built first and destroyed after the concatenation.
 typedef unsigned short wchar16;                   // VC7.1 default: wchar_t is not a native type
 
-struct CWideStringData;
+class CWideStringData;
 
 class CWideString {
 public:

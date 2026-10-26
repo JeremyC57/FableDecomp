@@ -28,9 +28,9 @@ struct System { unsigned char Pad[0x60]; CDataBank* TextBank; CDataBank* GetText
 extern Game* Game_013b86a0;                          // 0x013B86A0
 extern System* System_013b871c;                      // 0x013B871C
 extern CWideString Empty_013bca24;                   // 0x013BCA24
-struct C2DBoxF { float Left, Top, Right, Bottom; };
+class C2DBoxF { public: float Left, Top, Right, Bottom; };
 namespace NUISystem {
-struct CIconText {
+class CIconText { public:
  virtual void Slot000()=0; virtual void Slot001()=0; virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0;
  virtual void Slot006()=0; virtual void Slot007()=0; virtual void Slot008()=0; virtual void Slot009()=0; virtual void Slot010()=0; virtual void Slot011()=0;
  virtual void Slot012()=0; virtual void Slot013()=0; virtual void Slot014()=0; virtual void Slot015()=0; virtual void Slot016()=0; virtual void Slot017()=0;

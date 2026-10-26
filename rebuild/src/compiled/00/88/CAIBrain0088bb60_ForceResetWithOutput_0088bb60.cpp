@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088BB60, length 79 bytes.
 // Callees: CBrainOutput::CBrainOutput @ 0x00835620, CAIBrain::ForceReset(CBrainOutput*) @ 0x0088BA40, CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10, operator delete @ 0x00BFE9BC. The chunk label "CManager::GetEmbeddedEventNames" is propagated; the 0x48-byte frame is the CBrainOutput of the landed 0x00835620 constructor. Shape: the output at [esp+4], `pop esi` before the inlined release, `ret`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock {                               // the shared count block of a CCountedPointer
     long m_references;                             // +0x00
     void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);   // +0x04
@@ -31,9 +31,9 @@ struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointe
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // no destructor of its own (no vtable store before the base call)
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput { long m_00, m_04, m_08, m_0c, m_10, m_14; };
-struct CBrainOutput {                              // 0x48 bytes (Ego_r.pdb)
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public: long m_00, m_04, m_08, m_0c, m_10, m_14; };
+class CBrainOutput { public:                              // 0x48 bytes (Ego_r.pdb)
     unsigned long                       Types;             // +0x00
     long                                LookFlags;         // +0x04
     CNavigationInput                    NavigationInput;   // +0x08

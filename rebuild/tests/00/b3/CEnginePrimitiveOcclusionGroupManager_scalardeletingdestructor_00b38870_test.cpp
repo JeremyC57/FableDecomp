@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveOcclusionGroupManager {
+class CEnginePrimitiveOcclusionGroupManager { public:
     void* vftable;
     int destroyed;
 };

@@ -1,7 +1,7 @@
 // Behaviour test for 0x007B3B80 GFSerialiseVectorBinaryOut<CCrimeWaitingForBribe>: count then (handle, type) pairs.
 #include <cstdio>
 struct Stream { int vals[16]; int n; void WriteLong(long v) { vals[n++] = (int)v; } };
-struct CCrimeWaitingForBribe { int DeedHandle; int Type; };
+class CCrimeWaitingForBribe { public: int DeedHandle; int Type; };
 struct Vec { CCrimeWaitingForBribe* s; CCrimeWaitingForBribe* f; unsigned int size() const { return (unsigned int)(f - s); } CCrimeWaitingForBribe& operator[](unsigned int i) { return *(s + i); } };
 static void Out(Stream& stream, Vec& value)
 {

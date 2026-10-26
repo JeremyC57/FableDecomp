@@ -9,7 +9,7 @@ struct CAStarState {
     bool OnOpenList;
     bool OnClosedList;
 };
-struct CAStarStateTotalGreaterThan {
+class CAStarStateTotalGreaterThan { public:
     char m_tag;
     bool operator()(const CAStarState* a, const CAStarState* b) const { return a->TotalCost > b->TotalCost; }
 };

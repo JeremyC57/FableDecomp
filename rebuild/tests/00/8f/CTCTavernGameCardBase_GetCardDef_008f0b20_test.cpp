@@ -9,8 +9,8 @@ struct CDefPointee {
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-struct CTavernGameCardBaseDef : CDefPointee { };
-template<class T> struct CDefPointer {
+class CTavernGameCardBaseDef : public CDefPointee { public: };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -40,7 +40,7 @@ template<class T> struct CDefPointer {
     }
 };
 static CTavernGameCardBaseDef* g_cardDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTavernGameCardBaseDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameCardBaseDef>* out)
@@ -49,7 +49,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameCardBaseDef>* out)
     if (!g_cardDef) return false;
     ++g_cardDef->m_refCount; out->Object = g_cardDef; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;
 };

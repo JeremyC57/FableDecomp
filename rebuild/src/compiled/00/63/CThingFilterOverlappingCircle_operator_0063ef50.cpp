@@ -7,23 +7,23 @@
 // physics component's own radius float at +0x34 (local model).
 // Shape: C3DVector has a user constructor (hidden-pointer return); the component pointer stays in edi across the
 // call; `if (dist2 < r * r) return true; return false;` gives byte-constant exits.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         m_radius;                         // +0x34
     C3DVector GetMapwhoPosition() const;            // 0x006AFCB0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_OverlappingCircle {
+class CThingFilter_OverlappingCircle { public:
     C3DVector SpherePos;                            // +0x00
     float     Radius;                               // +0x0c
     bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const

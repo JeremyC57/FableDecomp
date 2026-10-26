@@ -7,7 +7,7 @@
 // converting constructor -- vtable 0x01237F1C, SetPItem(0) -- the inline operator= and the base destructor);
 // the scalar resets follow in source order with the -1 stores (`or eax,-1`) sunk to the end.
 // Model: local (no engine header for this class; member names from struct_layouts_egor.tsv).
-struct CThing;
+class CThing;
 class CWorld;
 class CThingAICreature;
 
@@ -26,7 +26,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

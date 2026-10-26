@@ -3,9 +3,9 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CAugmentationDef;
+class CAugmentationDef;
 static int g_released = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy() {}
     virtual void Release() { ++g_released; }
     long RefCount;
@@ -15,7 +15,7 @@ struct CDefClassBase {
             Release();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -25,11 +25,11 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 static CAugmentationDef* g_subDefs[4]; static int g_getSubDef = 0;
-struct CThingBaseDef : CDefClassBase {
+class CThingBaseDef : public CDefClassBase { public:
     int index;
     bool GetSubDef(CDefPointer<CAugmentationDef>* out) const;
 };
-struct CAugmentationDef : CDefClassBase {
+class CAugmentationDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     unsigned long Name;
     long  Type;
@@ -57,7 +57,7 @@ static void Setup()
     g_entries[3].Object = 0;
     g_augs[0].Type = 1; g_augs[0].DamageMultiplier = 2.0f; g_augs[1].Type = 4; g_augs[1].DamageMultiplier = 0.5f; g_augs[2].Type = 4; g_augs[2].DamageMultiplier = 3.0f;
 }
-struct CTCObjectAugmentations {
+class CTCObjectAugmentations { public:
     virtual void v00() {}
     void* ParentThing;
     unsigned char _base08[4];

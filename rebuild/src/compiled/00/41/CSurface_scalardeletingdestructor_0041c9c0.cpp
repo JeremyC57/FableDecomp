@@ -1,5 +1,5 @@
 extern void __cdecl operator_delete_stub(void*);
-struct CSurface { void* vftable; };
+class CSurface { public: void* vftable; };
 extern const void* CSurface_vftable;
 extern void __fastcall CSurface_dtor(CSurface* surface);
 void* __fastcall CSurface_scalar_deleting_destructor(CSurface* surface, int _edx, unsigned int flags)

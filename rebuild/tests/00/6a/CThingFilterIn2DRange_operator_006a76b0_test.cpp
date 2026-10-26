@@ -1,9 +1,9 @@
 // Behaviour test for 0x006A76B0 CThingFilter_In2DRange::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCPhysicsBase { C3DVector m_position; };
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CThingFilter_In2DRange {
+class C3DVector { public: float x, y, z; };
+class CTCPhysicsBase { public: C3DVector m_position; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float     Range;
     bool operator()(CThing* thing) const

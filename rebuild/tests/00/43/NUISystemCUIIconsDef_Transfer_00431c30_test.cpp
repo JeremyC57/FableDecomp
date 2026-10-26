@@ -1,7 +1,7 @@
 // Behaviour test for 0x00431C30 NUISystem::CUIIconsDef::Transfer: every icon index is transferred once, in retail order.
 #include <cstdio>
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned long* seen[64];
     int count;
     unsigned long next;
@@ -9,7 +9,7 @@ struct CPersistContext {
     void Transfer(unsigned long& value) { seen[count++] = &value; value = next++; }   // binary load: fill in sequence
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context) {}
     virtual ~CDefClassBase() {}
 };

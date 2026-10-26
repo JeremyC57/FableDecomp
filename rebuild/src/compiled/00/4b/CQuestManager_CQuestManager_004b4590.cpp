@@ -58,11 +58,11 @@ struct CStringSet {                                  // STLport set<CCharString>
         Head->Right = Head;
     }
 };
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     unsigned char _pad[0x10];
     CGameScriptThingManager();                       // 0x00704A80
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -73,21 +73,21 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                   // +0x04
     CBaseIntelligentPointer();                       // 0x00A01B10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     virtual void v000();
 };
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
 };
-struct CWorld;
-struct CScriptInfoManager;
-struct CGameScriptInterface;
+class CWorld;
+class CScriptInfoManager;
+class CGameScriptInterface;
 struct CActiveQuest;
 
-struct CQuestManager {
+class CQuestManager { public:
     CCountedPointer<CGameScriptThingManager> PGameScriptThingManager;   // +0x04
     CRuntimeQuestPersistence RuntimeQuestPersistence;                   // +0x0c
     CSTLVector               RegisteredQuestNames;                      // +0x2c

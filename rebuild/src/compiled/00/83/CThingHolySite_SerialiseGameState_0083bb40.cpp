@@ -8,11 +8,11 @@
 // manager call (VC evaluates arguments before the object expression); PlayerStart (+0xd4) is
 // written `Def->PlayerStart != 0` from the def's byte (`test al,al ; setne dl`). The catalog
 // label "vfunc_3" is the vtable slot (the base call 0x006A5AF0 is CThingPhysical::SerialiseGameState).
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          m_mode;                                  // +0x18
 };
-struct CThingHolySiteDef {
+class CThingHolySiteDef { public:
     unsigned char _pad00[0x7e];
     unsigned char PlayerStart;                             // +0x7e
 };
@@ -20,10 +20,10 @@ struct CDefPointerHolySiteDef {
     CThingHolySiteDef* m_pDef;
     CThingHolySiteDef* operator->() const { return m_pDef; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerHolySiteDef& out);   // 0x0083BD10
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short m_defIndex;                             // +0x8c
@@ -31,7 +31,7 @@ struct CThingPhysical {
     CDefinitionManager* GetDefinitionManager();            // 0x004C7990
     virtual bool SerialiseGameState(CPersistContext& context);   // 0x006A5AF0
 };
-struct CThingHolySite : CThingPhysical {
+class CThingHolySite : public CThingPhysical { public:
     CDefPointerHolySiteDef Def;                            // +0xd0
     bool                   PlayerStart;                    // +0xd4
     virtual bool SerialiseGameState(CPersistContext& context);

@@ -16,14 +16,14 @@
 #include <stddef.h>
 #include "engine/CTCBuyableHouse.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -41,23 +41,23 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                      // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                           // 0x0099AED0
     ~CWideString();                                          // 0x0099B510
@@ -70,18 +70,18 @@ class CFontBank;
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);  // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank*    PFont;                                     // +0x1614C
     CDataBank* GetTextBank() const { return PTextBank; }
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast,
                  bool pauseGame);                            // 0x00492E4B
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };

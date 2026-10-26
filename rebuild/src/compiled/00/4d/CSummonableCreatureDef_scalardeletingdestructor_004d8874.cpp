@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CSummonableCreatureDef
-{
+class CSummonableCreatureDef
+{ public:
     void* vftable;
 };
 extern void* const g_CSummonableCreatureDef_vftable;

@@ -8,9 +8,9 @@
 // Shape: a NAMED CCharString copy of the component's marker name, then the filter holding its own copy (inline copy
 // ctor) in an inner block; the bool result is declared outside it (kept in bl across both destructors). No engine header for this class.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,12 +58,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -97,7 +97,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
@@ -110,12 +110,12 @@ struct CTCWalkToMarker {                        // the interface-0xAA component
     CCharString MarkerName;                     // +0x50
 };
 
-struct CThingFilter_HasScriptName {
+class CThingFilter_HasScriptName { public:
     CCharString ScriptName;
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
 };
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** ppThing);   // 0x0056D050
 };
 

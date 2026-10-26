@@ -13,18 +13,18 @@
 // Shape: a size-optimised TU (`#pragma optimize("s", on)`: `or [esi+2Ch],-1`, `fldz ; fstp` float zeros, immediate byte
 // stores); the four empty vectors are the STLport `_Vector_base` + `_STLP_alloc_proxy` model (`lea eax ; mov [eax],ebx` x3).
 #pragma optimize("s", on)
-struct CGraphicDataBank;
-struct CFontBank;
-struct CEnginePrimitiveHandle;
+class CGraphicDataBank;
+class CFontBank;
+class CEnginePrimitiveHandle;
 struct CEmbeddedGraphic;
 struct CEmbeddedHighlight;
-struct CWideStringData;
+class CWideStringData;
 
 struct CBase {
     virtual void v00();
     CBase();                                                  // 0x0099A2F0
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                            // 0x0099AED0
 };
@@ -57,7 +57,7 @@ struct CFadeTimer {
     CFadeTimer();                                             // 0x00436560
 };
 
-struct CSubtitleRenderer : CBase {
+class CSubtitleRenderer : public CBase { public:
     float                                 VWindow[4];                       // +0x04
     float                                 VTelevisionWindow[4];             // +0x14
     long                                  TextCharactersShowing;            // +0x24

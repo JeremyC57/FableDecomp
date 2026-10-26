@@ -5,11 +5,11 @@
 // user copy constructor (`sub esp,8 ; mov eax,esp ; mov [eax],ecx ; mov [eax+4],esi ; inc [esi]`), then UsingCameraManually
 // (+0x12c) is set, and the function destroys its own by-value parameter (`dec [esi] ; jne ; call [esi+4] ; delete`), the flag
 // store being scheduled between the null test and the decrement. The count block is {references, deleter, object}.
-struct CWorld;
-struct CThing;
+class CWorld;
+class CThing;
 
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     virtual void v01();
     virtual long GetMode();                         // slot 2: NCameraModes::EMode
@@ -25,7 +25,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                   // +0
     SCountBlock* m_pCount;                          // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -43,7 +43,7 @@ struct CCountedPointer {
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1: runs when the last reference goes
     long m_refCount;                                // +4
@@ -75,7 +75,7 @@ struct CTools {                                     // retail CTools is 0x20 byt
 // onwards -- retail CTools is 0x20, retail std::vector is 12 bytes and the STLport list 4 bytes -- so the header's offsets
 // (CurrentMode +0x9c, UsingCameraManually +0x144, PDef +0x14c) do not match the bytes (+0x98, +0x12c, +0x134); the member
 // names are the PDB's.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void* __vftable;                                // +0x00
     unsigned char Camera[0x38];                     // +0x04 CCamera
     unsigned char OldCamera[0x38];                  // +0x3c CCamera

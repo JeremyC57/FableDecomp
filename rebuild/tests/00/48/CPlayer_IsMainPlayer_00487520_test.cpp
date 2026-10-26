@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CPlayerManager { long main; long GetMainPlayerNumber() { return main; } };
-struct CPlayer { unsigned char pad[0x10]; CPlayerManager* PlayerManager; unsigned char pad2[0x14]; long Number;
+class CPlayerManager { public: long main; long GetMainPlayerNumber() { return main; } };
+class CPlayer { public: unsigned char pad[0x10]; CPlayerManager* PlayerManager; unsigned char pad2[0x14]; long Number;
     bool IsMainPlayer() { return PlayerManager->GetMainPlayerNumber() == Number; } };
 int main()
 {

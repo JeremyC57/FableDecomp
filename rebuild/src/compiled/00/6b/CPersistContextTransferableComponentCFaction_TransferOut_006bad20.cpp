@@ -10,9 +10,9 @@
 // apart from the traits callee.
 // Shape and layout: those of the landed TransferIn -- the traits object fills the 0x1C-byte frame (retail CFaction:
 // Name + two 12-byte STLport sets), its out-of-line constructor and destructor bracket the traits call.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString { struct SBlock* m_pBlock; };
+class CPersistContext;
+class CStringParser;
+class CCharString { public: struct SBlock* m_pBlock; };
 
 template <class T> struct set {                        // STLport set (_Rb_tree), 12 bytes in retail
     void*         _M_header;
@@ -34,7 +34,7 @@ template <class T> struct CPersistTraits {
     void TransferOut(CPersistContext& context, CCharString& out, const T* value);   // 0x006B91A0 for CFaction
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

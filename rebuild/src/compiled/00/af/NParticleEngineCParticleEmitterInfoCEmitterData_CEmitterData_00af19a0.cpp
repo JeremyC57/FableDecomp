@@ -4,7 +4,7 @@
 // (rtti-vtables.tsv: NParticleEngine::CParticleEmitterInfo::CEmitterData). CResource spans
 // +0..+0x1c. The vtable store precedes the four register-zeroed stores at +0x1c..+0x28 (an
 // embedded member object with an inline constructor); the argument is assigned to +0x2c in the body.
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c
     CResource();                            // 0x009FBEC0
@@ -19,8 +19,8 @@ struct SEmitterBuffers {                    // four raw pointers, nulled by the 
 };
 
 namespace NParticleEngine {
-struct CParticleEmitterInfo {
-    struct CEmitterData : CResource {       // vtable 0x0129F354
+class CParticleEmitterInfo { public:
+    class CEmitterData : public CResource { public:       // vtable 0x0129F354
         SEmitterBuffers m_buffers;          // +0x1c
         unsigned long   m_size;             // +0x2c
         virtual void v00();

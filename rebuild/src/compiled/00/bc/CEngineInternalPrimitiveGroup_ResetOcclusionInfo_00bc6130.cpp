@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC6130, length 70 bytes.
 // Callees: CEngineInternalPrimitiveOcclusionBase::ResetOcclusionInfo(EEngineOcclusionLayer) @ 0x00B90390 (the base, a direct call on `this`), virtual slots 27 and 28
 // of the children. Shape: `cmp ebx,-1 ; je` is the "no layer" exit, the layer stays in ebx for the pushes, the end pointer is re-read after each child.
-struct CEngineInternalPrimitiveBase;
-struct C3DBoundingBox { float Min[3]; float Max[3]; };
+class CEngineInternalPrimitiveBase;
+class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
 struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalPrimitiveBase vtable slots used by the group/changer/viewport bodies
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -19,14 +19,14 @@ struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalP
     virtual void ResetOcclusionInfo(long layer);                     // slot 28 (+0x70)
 };
 
-struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
+class CEngineInternalPrimitiveBase : public CEngineInternalPrimitiveVtable { public:   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
     unsigned char  _pad04[0x2c];                   // +0x04 .. +0x30
     unsigned long  RenderLayerMask;                // +0x30
     unsigned char  PostRenderEnable;               // +0x34 bitfield group: bit 3 = post-render enabled
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

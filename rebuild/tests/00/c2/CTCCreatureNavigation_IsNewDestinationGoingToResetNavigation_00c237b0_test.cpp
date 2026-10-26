@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 static int g_calls = 0;
 static void* g_seenNav = 0;
 static C3DVector* g_seenDest = 0;
@@ -16,7 +16,7 @@ struct Helper {
         g_calls++; g_seenNav = (void*)nav; g_seenDest = dest; return g_ret;
     }
 };
-struct CTCCreatureNavigation { void* pad0; Helper* helper; };
+class CTCCreatureNavigation { public: void* pad0; Helper* helper; };
 bool __fastcall IsNewDestinationGoingToResetNavigation(CTCCreatureNavigation* self, int, C3DVector* dest);
 int main() {
     Helper h;

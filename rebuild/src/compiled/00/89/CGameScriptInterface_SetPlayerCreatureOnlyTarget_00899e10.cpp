@@ -7,7 +7,7 @@
 // `target` slot) gets 0x008ABC90(t).
 // Layout: as 0x00899E90. The interface-8 class and the 0x008ABC90 name are not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

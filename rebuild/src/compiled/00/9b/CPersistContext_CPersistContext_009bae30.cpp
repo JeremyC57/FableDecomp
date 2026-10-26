@@ -6,15 +6,15 @@
 // Shape: `mov eax,ecx`, the stream stored first, one zero register (ecx) for +0x28, +0x00 and the byte +0x15, the
 // Mode immediate scheduled between; `ret 8`.
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

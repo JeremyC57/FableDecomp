@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B2B790 CEngineSurfaceCompositionManager::GetGraphicInfo: top-bit handles use the local table.
 #include <cstdio>
 
-struct CGraphicInfoFrame { int id; };
+class CGraphicInfoFrame { public: int id; };
 struct SComposedGraphic { unsigned char _pad[0x28]; CGraphicInfoFrame* m_pFrame; };
 struct SBankGraphic { unsigned char _pad[0x28]; CGraphicInfoFrame* m_pFrame; };
 template <class T> struct CRetailVector {
@@ -18,7 +18,7 @@ struct CGraphicBank {
 struct CEngineGlobal { CGraphicBank* m_pGraphicBank; };
 static CEngineGlobal g_engine;
 static CEngineGlobal* g_pEngine = &g_engine;
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     CRetailVector<SComposedGraphic> m_composedGraphics;
     SComposedGraphic* GetComposed(unsigned long index) { return index < m_composedGraphics.size() ? &m_composedGraphics[index] : 0; }
     CGraphicInfoFrame* GetGraphicInfo(unsigned long handle)

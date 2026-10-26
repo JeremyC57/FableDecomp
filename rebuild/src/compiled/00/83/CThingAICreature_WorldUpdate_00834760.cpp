@@ -19,7 +19,7 @@
 //   vector and the camera distance follow the landed player / bullet-time bodies; the weapon trail comes through the
 //   plain entry pick (component loaded straight into ecx).
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -34,7 +34,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                      // 0x0040F020
 };
-struct CCamera {
+class CCamera { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetPosition() const;                     // slot 8 (+0x20)

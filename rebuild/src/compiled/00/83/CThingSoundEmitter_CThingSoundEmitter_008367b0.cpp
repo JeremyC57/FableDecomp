@@ -11,14 +11,14 @@
 // Shape: init-list members in declaration order around the intelligent pointer, whose inline derived
 // constructor stores its own vtable after the out-of-line base constructor (`mov [edi],1237F1Ch`); the
 // member address is kept in edi; the engine query is a body `if`.
-struct CThing {
+class CThing { public:
     virtual void v000();
     unsigned char _pad04[0x94];
     CThing(unsigned long thingType);                     // 0x004C9030
     void SetToKillOnLevelUnload(bool kill);              // 0x004C9C40
 };
 
-struct CEngine {
+class CEngine { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008();
@@ -33,15 +33,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                           // 0x00A01B10
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     virtual void v000();
 };
 
 struct CSoundPlayer;
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CThingSoundEmitter : CThing {
+class CThingSoundEmitter : public CThing { public:
     CSoundPlayer*               m_pSoundPlayer;          // +0x98
     bool                        AttachedToThing;         // +0x9c
     CIntelligentPointer<CThing> PAttachedThing;          // +0x9d

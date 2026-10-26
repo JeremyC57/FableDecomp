@@ -2,13 +2,13 @@
 
 struct Field { unsigned char b[4]; };
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void* last;
     void Xfer(Field* p) { calls++; last = p; }
 };
 
-struct CDragonActionNapalmDef {
+class CDragonActionNapalmDef { public:
     unsigned char _pad[0x28];
     Field f0;
     Field f1;

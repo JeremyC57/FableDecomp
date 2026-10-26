@@ -12,9 +12,9 @@
 // `PBurglar = CIntelligentPointer(player)` through a named out-of-line-constructed pointer + operator=; the clock is a named local (GetPWorld before the argument loads).
 // No engine header for this class; PBurglar is +0x14.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -62,12 +62,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -101,15 +101,15 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     void GetSleepTimes(long* start, long* end); // 0x00833390
 };
 struct CThingPos {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     bool IsPointInside(const C3DVector& point); // 0x0082D000
 };
 struct CHomeOwner {
@@ -121,10 +121,10 @@ struct CHomeOwner {
 struct CWorldClock {
     bool IsTimeOfDayInRange(long start, long end);  // 0x006BB390
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CThing* GetPlayerCharacter();               // 0x00487DD0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CWorldClock* PClock;                        // +0x1c
     CPlayerManager* GetPlayerManager();         // 0x0049D9D0

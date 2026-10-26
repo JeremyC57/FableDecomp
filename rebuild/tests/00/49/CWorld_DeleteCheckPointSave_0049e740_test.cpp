@@ -2,7 +2,7 @@
 #include <cstring>
 
 // Behaviour model of CWorld::DeleteCheckPointSave (0x0049E740): delete the check-point save and its ".hs" companion.
-struct CWideString {
+class CWideString { public:
     char s[128];
     CWideString(const char* p) { std::strcpy(s, p); }
     CWideString(const CWideString& o) { std::strcpy(s, o.s); }
@@ -15,10 +15,10 @@ static int g_deletes = 0;
 
 static int Find(const char* p) { for (int i = 0; i < g_nFiles; ++i) if (std::strcmp(g_files[i], p) == 0) return i; return -1; }
 
-struct CAFile { static bool PathExists(const CWideString& path) { return Find(path.s) >= 0; } };
-struct CUserProfileManager { CWideString GetAutoSaveCheckPointPathName() const { return CWideString("Saves\\Profile1\\CheckPoint.sav"); } };
+class CAFile { public: static bool PathExists(const CWideString& path) { return Find(path.s) >= 0; } };
+class CUserProfileManager { public: CWideString GetAutoSaveCheckPointPathName() const { return CWideString("Saves\\Profile1\\CheckPoint.sav"); } };
 static CUserProfileManager g_profiles;
-struct CDriveManager {
+class CDriveManager { public:
     int DeleteFile(const CWideString& path)
     {
         ++g_deletes;

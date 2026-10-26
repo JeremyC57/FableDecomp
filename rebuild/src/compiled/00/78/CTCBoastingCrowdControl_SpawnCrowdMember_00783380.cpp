@@ -12,7 +12,7 @@
 // FemaleDef +0x84; creature flag bytes +0x92 (bit 4), +0x15c (bit 6), +0x1c9 (bit 0).
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -20,7 +20,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern CCharString g_CrowdMemberScriptName;             // 0x013BADE8
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 __forceinline unsigned long GFRandom(unsigned long* seed)
@@ -38,9 +38,9 @@ __forceinline float WrapAngle(float angle)
     }
     return angle;
 }
-struct CThingPhysical;
-struct CThingBuilding;
-struct CThingAICreatureInit {                           // Ego_r.pdb, 28 bytes
+class CThingPhysical;
+class CThingBuilding;
+class CThingAICreatureInit { public:                           // Ego_r.pdb, 28 bytes
     CThingPhysical* OriginalThing;                      // +0x00
     CThingPhysical* PreviousThing;                      // +0x04
     CCharString ScriptName;                             // +0x08
@@ -73,8 +73,8 @@ struct CTCPlacement {
     virtual void v65();
     virtual void SetFacingAngleXY(float angle);         // slot 66 (+0x108)
 };
-struct CThing;
-struct CTCVillage {
+class CThing;
+class CTCVillage { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
     void AddThingToVillage(CThing* thing);              // 0x0065B854
@@ -101,13 +101,13 @@ struct CCrowdDef {
     long          MaleDef;                              // +0x80
     long          FemaleDef;                            // +0x84
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CCrowdDef>* out);        // 0x00512FE0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();             // stand-in callee
@@ -121,7 +121,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCrowdDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[9];                         // +0x20
     CTCMap         m_tcs;                               // +0x44
@@ -144,13 +144,13 @@ struct CThing {
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline void* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     void AutoPlaceNear(const C3DVector& pos, float radius);   // 0x00665DF0
     void AutoSetupSexuality(float maleChance);          // 0x008330D0
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                                CThingAICreatureInit* init);   // 0x00833800
 };
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
     unsigned long* GetRandomSeed();                     // 0x00686DA0

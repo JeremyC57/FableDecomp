@@ -1,7 +1,7 @@
 // Behaviour test for CTCTavernGameCoinGolf::GetCamera (0x007d3560): overview camera vs coin chase camera.
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -37,7 +37,7 @@ struct CCoinGolfCoin {                              // descriptive: the coin rec
     CBaseIntelligentPointer Thing;                  // +0x25
 };
 #pragma pack(pop)
-struct CTCTavernGameCoinGolf {
+class CTCTavernGameCoinGolf { public:
     virtual void v00();
     unsigned char _pad04[0x108 - 0x04];
     CCoinGolfCoin* PCoin;                           // +0x108

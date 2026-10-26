@@ -5,7 +5,7 @@ static int g_deallocated = 0;
 static int g_locks = 0;
 static int g_unlocks = 0;
 static int g_allocatorsDestroyed = 0;
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     long m_count;
     void InternalDeallocate(void*) { ++g_deallocated; --m_count; }   // stands in for 0x009F2920
     long GetAllocationCount() { return m_count; }                     // stands in for 0x009F1F10
@@ -29,8 +29,8 @@ inline void GFFreeFromGlobalAllocator(void* block)
     }
     GFLeaveAllocatorLock();
 }
-struct CFileInstaller {
-    struct CBufferChunk {
+class CFileInstaller { public:
+    class CBufferChunk { public:
         unsigned char* Mem;
         bool           Used;
         ~CBufferChunk()

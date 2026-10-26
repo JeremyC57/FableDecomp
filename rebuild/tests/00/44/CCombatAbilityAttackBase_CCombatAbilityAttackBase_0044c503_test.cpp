@@ -4,12 +4,12 @@
 
 static int g_order[4];
 static int g_n = 0;
-struct CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public:
     virtual ~CShoveHaPennyRegionDef() {}
     unsigned char _body[0x24];
     CShoveHaPennyRegionDef() { g_order[g_n++] = 1; }
 };
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     virtual ~CCombatAbilityData() {}
     long  PercentageChance;
     float SecondsDuration;
@@ -17,7 +17,7 @@ struct CCombatAbilityData {
     long  Anim;
     long  InterfaceType;
 };
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:
     bool  Blockable;
     bool  Knockdown;
     float Damage;
@@ -28,7 +28,7 @@ struct CCombatAbilityMeleeAttackData : CCombatAbilityData {
         InterfaceType = interfaceType; Blockable = true; Knockdown = false; Damage = 0.0f;
     }
 };
-struct CCombatAbilityAttackBase : CShoveHaPennyRegionDef {
+class CCombatAbilityAttackBase : public CShoveHaPennyRegionDef { public:
     CCombatAbilityMeleeAttackData CombatAbility;
     CCombatAbilityAttackBase(long interfaceType);
 };

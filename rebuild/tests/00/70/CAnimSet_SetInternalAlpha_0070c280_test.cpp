@@ -1,9 +1,9 @@
 #include <cstdio>
 static long g_frame = 77;
 long __fastcall GFGetFrameCount() { return g_frame; }
-struct CTransitionBlendAlpha { float Current; float Last; };
+class CTransitionBlendAlpha { public: float Current; float Last; };
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage; T& operator[](unsigned long n) { return first[n]; } };
-struct CAnimSet {
+class CAnimSet { public:
     long UpdateMode; CRetailVector<short> Anims; CRetailVector<CTransitionBlendAlpha> InternalAlphas;
     float a, b, c; unsigned long FrameInternalAlphasUpdated;
     void SetInternalAlpha(long index, float alpha, bool setLastToo) {

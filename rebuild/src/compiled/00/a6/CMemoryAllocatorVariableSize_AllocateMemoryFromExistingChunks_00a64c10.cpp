@@ -11,7 +11,7 @@ struct SVarChunk_00a64c10 {                        // the chunk tree node: left 
     long                m_largestFree;             // +0x18
 };
 
-struct CMemoryAllocatorVariableSize {
+class CMemoryAllocatorVariableSize { public:
     unsigned char       _pad00[0xc34];
     SVarChunk_00a64c10* m_pChunkTreeRoot;          // +0xc34
     SVarChunk_00a64c10* AllocateMemoryFromExistingChunks(long size);

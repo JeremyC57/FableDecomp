@@ -1,9 +1,9 @@
 // Behaviour test for CProjectileWeapon::GetPhiForTargetedThing (0x008798C0): the targeting position at full height
 // (1.0) in the mode's world is handed to GetPhiForPosition.
 #include <cstdio>
-struct CWorld { float offset; };
-struct CThing { float x, y, z; };
-struct C3DVector { float X, Y, Z; C3DVector() { } };
+class CWorld { public: float offset; };
+class CThing { public: float x, y, z; };
+class C3DVector { public: float X, Y, Z; C3DVector() { } };
 static float g_height = 0.0f; static const CWorld* g_world = 0;
 static C3DVector GetTargetingPositionOnThing(const CWorld& w, const CThing& t, float h)
 {

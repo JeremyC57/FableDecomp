@@ -7,7 +7,7 @@
 //   the found entry; its IsResidential byte is at +0x49 (engine/CTCBuyableHouse.h).
 #include "engine/CTCBuyableHouse.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -35,7 +35,7 @@ struct CThing {
     }
 };
 
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     void SetIsAvailableForResidency(bool available);
 };
 

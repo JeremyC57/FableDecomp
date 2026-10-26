@@ -9,13 +9,13 @@
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
-struct CGameComponent : CBaseClassNonCopyable {
+class CGameComponent : public CBaseClassNonCopyable { public:
 };
-struct CDeviceResetCallback {
+class CDeviceResetCallback { public:
     virtual bool OnPreDeviceReset() = 0;
     virtual bool OnPostDeviceReset() = 0;
 };
-struct CMainGameComponent : CGameComponent, CDeviceResetCallback {
+class CMainGameComponent : public CGameComponent, public CDeviceResetCallback { public:
     void InitialiseFonts();                              // 0x004168DC
     virtual bool OnPreDeviceReset();
     virtual bool OnPostDeviceReset();

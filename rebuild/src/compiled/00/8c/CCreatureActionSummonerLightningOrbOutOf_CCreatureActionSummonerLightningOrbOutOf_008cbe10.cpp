@@ -8,12 +8,12 @@
 // assigned to PTarget (+0xa8, a CCombatActionBase member) through the temporary (`PTarget.SetPItem(temp.GetPItem())`), whose implicit destructor
 // stores no vtable before ~CBaseIntelligentPointer (the landed 0x008C99C0 shape).
 // No engine header for this class; modelled locally (CCombatActionBase is 0x114 bytes in retail).
-struct CThingCreatureBase;
-struct CThing {
+class CThingCreatureBase;
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -31,14 +31,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0xa8 - 4];         // +0x04
     CBaseIntelligentPointer PTarget;        // +0xa8 CIntelligentPointer<CThing>
     unsigned char _padb0[0x114 - 0xb0];     // +0xb0
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
-struct CCreatureAction_SummonerLightningOrbOutOf : CCombatActionBase {   // vtable 0x01283234
+class CCreatureAction_SummonerLightningOrbOutOf : public CCombatActionBase { public:   // vtable 0x01283234
     virtual void v00();
     CCreatureAction_SummonerLightningOrbOutOf(CThingCreatureBase* owner, CThing* orb);
 };

@@ -2,7 +2,7 @@ struct Arg {
     void Consume(void* p);
 };
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     char pad[0x24];
     char data;
 };

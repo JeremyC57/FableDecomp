@@ -5,16 +5,16 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static float g_gameSpeed; static int g_divCalls; static float g_divArg;
-struct CDisplayEngine {
+class CDisplayEngine { public:
     static float __stdcall DivideByGameSpeed(float value) { ++g_divCalls; g_divArg = value; return value / g_gameSpeed; }
 };
 static bool g_baseDrawable; static int g_engineCalls; static CDisplayEngine g_engine;
-struct CThing {
+class CThing { public:
     virtual void v00() {}
     CDisplayEngine* GetDisplayEngine() { ++g_engineCalls; return &g_engine; }
     virtual bool DrawIsDrawable() { return g_baseDrawable; }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     unsigned char _pad04[0xd0];
     long          DieOffTimer;
     bool          DiesOff;

@@ -6,7 +6,7 @@
 // C3DVector[3]; retail CCombatActionBase is 0x114 bytes). The component at +0x60 is the same object whose +0xc is the
 // position vector (CThing::GetPosition @ 0x004C73D0), i.e. the physics/transform component; its slot 31 is modelled by
 // name only.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CTCPhysicsComponent {                // the object at creature+0x60; only slot 31 is modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Retail* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
@@ -38,7 +38,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_DragonSwoop : CCombatActionBase {
+class CCreatureAction_DragonSwoop : public CCombatActionBase { public:
     C3DVector SwoopPoints[3];               // +0x114 (PDB +0x12c)
     virtual void Initialise();
 };

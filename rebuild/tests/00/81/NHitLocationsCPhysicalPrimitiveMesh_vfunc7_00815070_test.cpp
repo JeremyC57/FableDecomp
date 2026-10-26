@@ -5,7 +5,7 @@
 // retail 0x00815070. Isolated main-review fidelity source; author009 remains frozen. PDB identity: egor 19838 / debug 0x0080DF40.
 extern float g_MinVectorLengthSquared_0129ba3c;       // retail 0x0129BA3C
 extern const float g_NegativeOne_0122dee0;                  // retail 0x0122DEE0
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
@@ -18,14 +18,14 @@ struct C3DVector {
     }
     float SquaredLength() const { return X * X + (Y * Y + Z * Z); }
 };
-struct CThing;
-struct CThingPhysicsMeshInfo;
-struct CPhysicsMeshObject;
+class CThing;
+class CThingPhysicsMeshInfo;
+class CPhysicsMeshObject;
 #define CTCPhysicsBase CTCPhysicsBasePdb
 #include "engine/CTCPhysicsBase.h"
 #undef CTCPhysicsBase
 // Retail virtual interface overlay; generated donor records data, not virtual methods.
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
 #define PHYSICS_SLOT(n) virtual void PhysicsSlot##n() {}
     virtual ~CTCPhysicsBase() {}
     PHYSICS_SLOT(1) PHYSICS_SLOT(2) PHYSICS_SLOT(3)
@@ -66,12 +66,12 @@ struct CTCPhysicsBase {
 };
 FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==sizeof(CTCPhysicsBasePdb));
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase,Position)==offsetof(CTCPhysicsBasePdb,Position_X));
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* Physics;                            // +0x60
 };
 // Original physics component resource description, distinct from CPhysicsMeshInfo.
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short BankIndex;
     float RenderSizeX;
     C3DVector ToCentre;
@@ -87,17 +87,17 @@ namespace NBBBMaths { struct CSphere {
                                             C3DVector& pos,
                                             C3DVector& normal) const; // 0x00A58790
 }; }
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;                 // +0x00
     C3DVector Normal;                               // +0x0c
     float DistanceSquared;                          // +0x18
 };
 // RTTI0125d084: CPhysicsMeshObject derives CBaseClass at offset0.
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 #define CIVCountedPointeeBase CIVCountedPointeeBasePdb
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() {}
     virtual void Delete() const;
     mutable unsigned long IVRefCount;
@@ -107,7 +107,7 @@ struct CIVCountedPointeeBase {
     long GetRefCount()const { return (long)IVRefCount; }
 };
 FABLE_STATIC_ASSERT(sizeof(CIVCountedPointeeBase)==sizeof(CIVCountedPointeeBasePdb));
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     CIVCountedPointer():Object(0){}
     CIVCountedPointer(const CIVCountedPointer& other):Object(other.Object) { if(Object)Object->AddRef(); }
@@ -117,11 +117,11 @@ template<class T> struct CIVCountedPointer {
     }
     ~CIVCountedPointer(){Unassign();}
 };
-struct CPhysicsMesh;
-struct CMatrix3x4 {
+class CPhysicsMesh;
+class CMatrix3x4 { public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
 };
-struct CPhysicsMeshObject : CBaseClass {
+class CPhysicsMeshObject : public CBaseClass { public:
     CIVCountedPointer<const CPhysicsMesh> Mesh;
     CMatrix3x4 PositionMatrix;
     float Scale,OO_Scale;
@@ -139,7 +139,7 @@ FABLE_STATIC_ASSERT(offsetof(CPhysicsMeshObject,PositionMatrix)==8);
 FABLE_STATIC_ASSERT(offsetof(CPhysicsMeshObject,Scale)==0x38);
 FABLE_STATIC_ASSERT(sizeof(CMeshIntersectionData)==28);
 namespace NHitLocations {
-struct CPhysicalPrimitiveBase : CBaseClass {};
+class CPhysicalPrimitiveBase : public CBaseClass { public:};
 struct CPhysicalPrimitiveMesh : CPhysicalPrimitiveBase {
     virtual ~CPhysicalPrimitiveMesh() {}
     virtual void MeshSlot1() {}

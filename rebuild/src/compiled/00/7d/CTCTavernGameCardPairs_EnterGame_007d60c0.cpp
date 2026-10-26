@@ -35,7 +35,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x3c - 0x08];
     long  PointerDef;                           // +0x3c
     unsigned char _pad40[0x48 - 0x40];

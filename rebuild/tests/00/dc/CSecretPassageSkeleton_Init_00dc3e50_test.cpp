@@ -1,7 +1,7 @@
 // Behaviour test for CSecretPassageSkeleton::Init (0x00DC3E50): returned[] and collected_all cleared, the four object names assigned.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     CCharString& operator=(const char* text) { m_text = text; return *this; }
 };

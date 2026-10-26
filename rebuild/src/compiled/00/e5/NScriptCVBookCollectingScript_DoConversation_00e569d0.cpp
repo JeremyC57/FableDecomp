@@ -39,12 +39,12 @@ struct CBasicStringChar {                                // CBasicString<char>, 
     bool          UseFastExtend : 1;                     // +0x0c
     bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                                 // 17 bytes
+class CCharStringData { public:                                 // 17 bytes
     CBasicStringChar Data;                               // +0x00
     long             NoRefs;                             // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
@@ -59,8 +59,8 @@ struct CCharString {
         return PStringData->Data == text;
     }
 };
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CScriptThing {                                    // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptGameResourceObjectScriptedThingBase;
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     virtual void v00();
     void* PImp_Data;
     void* PImp_Info;
@@ -123,7 +123,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void RemoveConversation(long, bool) const; //slot367 0x008907c0
  virtual bool IsConversationActive(long) const; //slot368 0x008907d0
 };
-struct CScriptGameResourceObjectScriptedThingBase {      // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:      // vtable 0x0127094C, 16 bytes
     virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04();
     virtual void s05(); virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09();
     virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14();
@@ -145,7 +145,7 @@ template <class T> struct vector {                       // STLport vector: {_M_
     T* begin() { return _M_start; }
     T& operator[](unsigned int i) { return *(begin() + i); }
 };
-struct CConversation {                                   // retail 0x5c bytes
+class CConversation { public:                                   // retail 0x5c bytes
     unsigned char _pad00[0x28];
     long Lines;                                          // +0x28
     vector<CCharString> Speaker;                         // +0x2c
@@ -153,7 +153,7 @@ struct CConversation {                                   // retail 0x5c bytes
     vector<CCharString> Animation;                       // +0x44
     vector<CCharString> AnimLoop;                        // +0x50
 };
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

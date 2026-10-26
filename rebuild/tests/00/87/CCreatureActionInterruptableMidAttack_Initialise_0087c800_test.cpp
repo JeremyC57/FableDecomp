@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
 static const char* g_anim; static int g_baseInit; static int g_order;
-struct CCharString { const char* m_text; CCharString(const char* t, long) : m_text(t) { } ~CCharString() { } };
-struct CCombatActionBase { virtual void v00() { } virtual void Initialise() { ++g_baseInit; g_order = g_order * 10 + 2; }
+class CCharString { public: const char* m_text; CCharString(const char* t, long) : m_text(t) { } ~CCharString() { } };
+class CCombatActionBase { public: virtual void v00() { } virtual void Initialise() { ++g_baseInit; g_order = g_order * 10 + 2; }
     void SetAnimationName(const CCharString& name) { g_anim = name.m_text; g_order = g_order * 10 + 1; }
     unsigned char _body[0x114 - 4];
 };
 
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase { long InterruptTime; virtual void Initialise(); };
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public: long InterruptTime; virtual void Initialise(); };
 void CCreatureAction_InterruptableMidAttack::Initialise() { { CCharString name("STRIKE_MEDIUM_FRONT", -1); SetAnimationName(name); } CCombatActionBase::Initialise(); InterruptTime = -999; }
 int main()
 {

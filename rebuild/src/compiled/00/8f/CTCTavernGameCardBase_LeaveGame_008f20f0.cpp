@@ -25,8 +25,8 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     CBaseObject* GetPItem() const;              // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>
     T* Get() const { return (T*)GetPItem(); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
@@ -81,7 +81,7 @@ struct CEffectVector {                          // STLport vector<CIntelligentPo
     }
 };
 
-struct CCard {
+class CCard { public:
     CThing* Thing;                              // +0x00 CThingObject*
 };
 struct CCardVector {                            // STLport vector<CCard*> (12 bytes)
@@ -98,7 +98,7 @@ struct CCardVector {                            // STLport vector<CCard*> (12 by
     }
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ReleaseScriptedControl();              // 0x00698950
     void ResetCamera();                         // 0x0069A990
 };
@@ -107,13 +107,13 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);     // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x34];
     CCameraManagerSource* m_pCameraSource;      // +0x34
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
     void LeaveGame();                           // 0x005EC650

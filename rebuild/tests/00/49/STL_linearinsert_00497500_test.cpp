@@ -15,7 +15,7 @@ static int Wcsicmp(const char* a, const char* b)
     }
 }
 
-struct CWideString {
+class CWideString { public:
     const char* PStringData;
     CWideString() : PStringData("") {}
     CWideString(const char* s) : PStringData(s) {}

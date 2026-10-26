@@ -13,28 +13,28 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strings = 0, g_deleted = 0, g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length = -1) : PStringData(text) { (void)length; ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass() { }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 static void __fastcall DestroyData(void* data) { (void)data; ++g_destroyed; }
 static void ReleaseInfo(CCPPointerInfo* info) { if (info && --info->RefCount == 0) { info->DeleteFunc(info->Data); ++g_deleted; } }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer() { ReleaseInfo(Info); Data = 0; Info = 0; }
 };
 static int g_talkCalls = 0;
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     explicit CScriptThing(CCPPointerInfo* info) { PImp.Data = 0; PImp.Info = info; ++info->RefCount; }
     CScriptThing(const CScriptThing& other) { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
@@ -49,7 +49,7 @@ struct GameCalls {
     virtual void SetHeroGuideToShowQuestCardsWhenSpokenTo(bool show) { if (g_sets < 16) g_setArgs[g_sets] = show; ++g_sets; }
 };
 namespace NScript {
-struct CPredicateBase {
+class CPredicateBase { public:
     virtual bool operator()() const = 0;
     virtual CPredicateBase* Clone() const = 0;
     virtual ~CPredicateBase() {}
@@ -75,7 +75,7 @@ struct CIsThingStored : CPredicateBase {
     virtual CPredicateBase* Clone() const { return 0; }
     ~CIsThingStored() {}
 };
-struct CIsThingAlive : CPredicateBase {
+class CIsThingAlive : public CPredicateBase { public:
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) {}
     virtual bool operator()() const { return true; }

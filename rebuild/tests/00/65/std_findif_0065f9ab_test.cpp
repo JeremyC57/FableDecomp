@@ -58,7 +58,7 @@ InputIter __fastcall __find_if(InputIter first, InputIter last, Predicate pred, 
     return first;
 }
 }
-class HasGuardProperty {
+struct HasGuardProperty {
 public:
     HasGuardProperty() {}
     bool operator()(CIntelligentPointer<CThingAICreature> creature) const { return creature.GetPItem() && creature.GetPItem()->m_isGuard; }

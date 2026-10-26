@@ -70,7 +70,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CEngineComponent {
+class CEngineComponent { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         GlobalPointerAddress;                      // +0x04 void * *
     bool          RenderEnabled;                             // +0x08
@@ -97,11 +97,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineComponent, KeepAlive) == 0x9);
 #include <stddef.h>
 
 
-struct CEngineLandscapeMemoryManager;
-struct CPixelShader;
+class CEngineLandscapeMemoryManager;
+class CPixelShader;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                  _pad_0x04[0x4];           // +0x04
     unsigned char                  _pad_0x08[0x4];           // +0x08
@@ -207,11 +207,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0xf58);
 #include <stddef.h>
 
 
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     CMovableResourceMemoryPool* VirtualMemPool;              // +0x08
@@ -254,20 +254,20 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMemoryManager, EnableDelayedResourc
 #include <stddef.h>
 
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CEngineLandscapeLODMap;
-struct CEngineLandscapePatch;
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
-struct CGraphicDataBank;
-struct CLandscapeBackgroundDynamicBuildTemplate;
-struct CLandscapeBackgroundTreeNode;
-struct CRGBColour;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CEngineLandscapeLODMap;
+class CEngineLandscapePatch;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
+class CGraphicDataBank;
+class CLandscapeBackgroundDynamicBuildTemplate;
+class CLandscapeBackgroundTreeNode;
+class CRGBColour;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*             PatchTree;     // +0x04
     CEngineLandscapePatch*                    Patches;       // +0x08
@@ -334,8 +334,8 @@ enum LS_LOADING_STATUS
     LS_LOADING_FAILED = 3
 };
 
-struct CLandscapeGPUUpdateQueue;
-struct CEngineComponentLoadNewSceneParams;
+class CLandscapeGPUUpdateQueue;
+class CEngineComponentLoadNewSceneParams;
 
 struct CEngineLandscapeMapCallView : CEngineLandscapeMap
 {
@@ -356,8 +356,8 @@ struct CEngineLandscapeRendererCallView : CEngineLandscapeRenderer
     bool LoadForegroundTextures(bool forceLoad); // 0x00B68070
 };
 
-struct CEngineComponentParams
-{
+class CEngineComponentParams
+{ public:
     float FrameInterpolation;
     unsigned char InterpolationInfo[0x70];
     unsigned int FrameID;
@@ -366,8 +366,8 @@ struct CEngineComponentParams
     unsigned char _pad_0x7d[3];
 };
 
-struct CEngineComponentLoadNewSceneParams
-{
+class CEngineComponentLoadNewSceneParams
+{ public:
     CEngineComponentParams Params;
     void* Camera;
     float Progress;
@@ -475,8 +475,8 @@ bool CEngineLandscapeRendererCallView::LoadNewScene(const CEngineComponentLoadNe
 #include <cstdio>
 #include <cstring>
 
-struct CLandscapeGPUUpdateQueue
-{
+class CLandscapeGPUUpdateQueue
+{ public:
     unsigned int Marker;
 };
 

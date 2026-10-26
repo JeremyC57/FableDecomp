@@ -17,11 +17,11 @@
 // into esi once, reused by the destructor); the destructor is the null-tested intrusive release on
 // a local copy of the object (`dec [esi+4] ; jne ; call [eax+4]`, no trailing null store).
 
-template <class T> struct CDefPointer;
-struct CCameraCollisionDef;
+template <class T> class CDefPointer;
+class CCameraCollisionDef;
 
-struct CDefClassBase
-{
+class CDefClassBase
+{ public:
     virtual void v00();
     virtual void Destroy();                         // slot 1 (+0x04)
     long m_refCount;                                // +0x04
@@ -42,8 +42,8 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCameraCollisionD
 #pragma auto_inline(on)
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -59,10 +59,10 @@ struct CDefPointer
 };
 
 struct CThingDef : CDefClassBase {};
-struct CCameraCollisionDef : CDefClassBase {};
+class CCameraCollisionDef : public CDefClassBase { public:};
 
-struct CDefinitionManager
-{
+class CDefinitionManager
+{ public:
     bool GetDef(long globalIndex, CDefPointer<CThingDef>* out);   // GetDef<T> instance @ 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -79,15 +79,15 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
 }
 #pragma auto_inline(on)
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char  _pad_0x00[0x8c];
     unsigned short DefGlobalIndex;                  // +0x8c
 };
 
 #pragma pack(push, 1)
-struct CTCBase
-{
+class CTCBase
+{ public:
     void*   __vftable;                              // +0x00
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
@@ -97,8 +97,8 @@ struct CTCBase
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCCameraCollision : CTCBase
-{
+class CTCCameraCollision : public CTCBase
+{ public:
     CDefPointer<CCameraCollisionDef> CameraCollisionDef;   // +0x0c
     void OnCreate();
 };

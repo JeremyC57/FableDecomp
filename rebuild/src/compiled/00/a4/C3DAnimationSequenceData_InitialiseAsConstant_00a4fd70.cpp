@@ -12,27 +12,27 @@
 // stores follow the call in source order (the bitfield clear is `and dl,0E0h`).
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CMatrix3x4 { float m_row[3][4]; };           // 48 bytes
+class CMatrix3x4 { public: float m_row[3][4]; };           // 48 bytes
 
 template <class T>
-struct CArray {                                     // retail CArray: begin/end/capacity
+class CArray { public:                                     // retail CArray: begin/end/capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pEndOfStorage;
     ~CArray() { if (m_pBegin) free(m_pBegin); }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual ~CChunkedFileSuperChunk();              // 0x00AA8490
     unsigned char _body[0x28];                      // +0x04 .. +0x2B
 };
 
-struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {
+class C3DAnimFileSequenceChunk : public CChunkedFileSuperChunk { public:
     long BoneIndex;                                 // +0x2C
     long ParentIndex;                               // +0x30
     CCharString BoneName;                           // +0x34
@@ -43,7 +43,7 @@ struct C3DAnimFileSequenceChunk : CChunkedFileSuperChunk {
     void AddMatrix(const CMatrix3x4& matrix);       // 0x00AAF800
 };
 
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     char* BoneName;                                 // +0x00
     float SamplesPerSecond;                         // +0x04
     unsigned short FrameCount;                      // +0x08

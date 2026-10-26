@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern "C" void __cdecl eng_operator_delete(void* p);
 
-struct CSpecialAbilitiesBurntEffectDef {
+class CSpecialAbilitiesBurntEffectDef { public:
     void* vftable;
     void Dtor();
     void* scalar_deleting_destructor(unsigned int flags);

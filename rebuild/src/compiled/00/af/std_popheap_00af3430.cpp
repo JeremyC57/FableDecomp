@@ -17,7 +17,7 @@
 // by-value `value` is destroyed here at the end (GUIName, then the key).
 class CPSCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CCharString {
 enum EPSCType { PSC_TYPE_NONE = 0 };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();           // +0x0
     EPSCType ComponentType;                     // +0x4
     CCharString GUIName;                        // +0x8
@@ -40,7 +40,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const;
 };
 typedef std::pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;

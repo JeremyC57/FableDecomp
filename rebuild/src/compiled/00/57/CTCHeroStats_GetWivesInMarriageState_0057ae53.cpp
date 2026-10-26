@@ -15,12 +15,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x10];
     unsigned char ThingType;                         // +0x10 (1 = creature)
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
 
 struct CThingList {                                  // std::list<CThingCreatureBase*> (retail: head pointer only)
@@ -29,7 +29,7 @@ struct CThingList {                                  // std::list<CThingCreature
     void push_back(CThingCreatureBase* const& wife); // 0x005805C9
 };
 
-struct CWorld {
+class CWorld { public:
     CThing* GetThingFromUID(unsigned __int64 uid);   // 0x0051ED60
 };
 
@@ -42,7 +42,7 @@ struct CHeroMarriageInfoNode {
     bool                   GayMarriage;              // +0x1C
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*                  __vftable;                // +0x00
     void*                  ParentThing;              // +0x04 CTCBase
     unsigned char          _pad_0x08[0x1D0];

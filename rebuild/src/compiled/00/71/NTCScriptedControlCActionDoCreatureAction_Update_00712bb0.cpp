@@ -16,14 +16,14 @@ struct CCreatureActionQueue {
     long GetCurrentActionID();                  // 0x00692620
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CCreatureActionQueue* PActionQueue;         // +0x100
     bool IsPerformingAnyAction();               // 0x006622A0
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void* __vftable;
     CThingCreatureBase* PThing;                 // +0x04
 };

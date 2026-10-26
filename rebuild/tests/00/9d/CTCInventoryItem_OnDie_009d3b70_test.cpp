@@ -13,8 +13,8 @@ struct CTCInventoryItemBase
     void OnDieBase() { g_base_called = 1; }
 };
 
-struct CTCInventoryItem : public CTCInventoryItemBase
-{
+class CTCInventoryItem : public CTCInventoryItemBase
+{ public:
     void OnDie();
 };
 

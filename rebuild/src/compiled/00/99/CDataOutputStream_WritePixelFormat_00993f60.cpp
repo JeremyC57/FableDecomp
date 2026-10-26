@@ -9,7 +9,7 @@
 // through the stream's virtual slot 4 (WriteBytes(const void*, long)).
 #include "engine/CPixelFormat.h"
 
-struct CPixelFormatInit {
+class CPixelFormatInit { public:
     unsigned char Raw[8];           // 6 significant bytes + padding
     CPixelFormatInit();
 };

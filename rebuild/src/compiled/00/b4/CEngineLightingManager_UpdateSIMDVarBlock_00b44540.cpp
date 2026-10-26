@@ -7,8 +7,8 @@
 // ThemeChannels CArray is 12 bytes (not 16), so everything after +0x3C moves down 4 (colours at +0x48 / +0x58 / +0x68)
 // and the block pointer sits at +0x4690 -- modelled locally with the PDB member names. CLightingSIMDVarBlock is the PDB's
 // 0x110-byte record of float[4] lanes.
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CLightingSIMDVarBlock {                     // 0x110 bytes (PDB)
     float Zero[4];                                 // +0x00
@@ -30,7 +30,7 @@ struct CLightingSIMDVarBlock {                     // 0x110 bytes (PDB)
     float ObjectPosZ[4];                           // +0x100
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char          _pad0000[0x30];
     C3DVector              DiffuseVector;                  // +0x30
     unsigned char          ThemeChannels[0xc];             // +0x3C (retail 12-byte CArray)

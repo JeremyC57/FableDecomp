@@ -6,7 +6,7 @@
 #endif
 #include <string.h>
 // Behaviour test for NEntityEvents::CEventHitBase::CEventHitBase(const CHitParameters&) (0x00811760).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];       // +0x20
     struct CInterfaceMap {
@@ -30,13 +30,13 @@ struct CThing {
     }
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* Info;
     CBaseObject* GetPItem() const { return (CBaseObject*)Info; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
@@ -56,7 +56,7 @@ public:
     void SetWeapon(CThing* w) { setWeapon = w; }
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     CCountedPointer() : Data(0), Info(0) {}

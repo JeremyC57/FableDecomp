@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[32];
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right)

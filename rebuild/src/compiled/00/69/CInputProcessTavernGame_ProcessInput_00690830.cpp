@@ -15,7 +15,7 @@
 //   on its own (no SetHandled in this process).
 #include "engine/CInputProcessGameBase.h"
 class CProcessedInput;
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
@@ -34,14 +34,14 @@ public:
 };
 }
 class CInputProcessTavernGame;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual void ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessTavernGame* process);   // slot 28 (+0x70)
 };
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     CTCTavernGame* GetGame();                      // 0x005EDC90
 };
 struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
@@ -59,7 +59,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];
@@ -67,10 +67,10 @@ struct CThing {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCGamePlayer* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
 struct CMainGameComponentView {

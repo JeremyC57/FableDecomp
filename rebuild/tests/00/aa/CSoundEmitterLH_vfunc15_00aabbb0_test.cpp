@@ -12,7 +12,7 @@ typedef unsigned __int64 u64;
 static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 class CSoundPlayer {
 public:
     int   Calls;

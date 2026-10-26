@@ -4,8 +4,8 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CCharString { char text[16]; CCharString() { text[0] = 0; } CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; } };
-struct C3DVector { float X, Y, Z; };
+class CCharString { public: char text[16]; CCharString() { text[0] = 0; } CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; } };
+class C3DVector { public: float X, Y, Z; };
 struct CKeyCamera {
     float DeltaIndex; C3DVector Pos; C3DVector LookDirection; float FOV, Roll, ShuttleSpeed, Duration, PauseTime; CCharString EventName; float SpeedFraction;
     CKeyCamera() {}

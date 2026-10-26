@@ -15,7 +15,7 @@
 //   `GetPosition()` temporary (C3DVector with a user copy ctor): VC7.1 then loads Y and X up front into separate 8-byte
 //   frame slots ([esp+48h], [esp+50h]) and feeds Z straight to the x87, as retail does. One named C3DVector copy packs
 //   the fields adjacently (frame 0x64), float locals fold into reloads (frame 0x5c).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
@@ -24,9 +24,9 @@ namespace N_0099a300 { struct CBase {
     ~CBase();                                          // 0x0099A300
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CAFile : CBase {
+class CAFile : public CBase { public:
 };
-struct CDiskFileWin32 : CAFile {                       // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CAFile { public:                       // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                              // 0x0099A920 (slot 2)
@@ -39,7 +39,7 @@ struct CDiskFileWin32 : CAFile {                       // vtable 0x0122D06C, 0x1
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     ~CCharString();                                    // 0x0099EAE0
@@ -51,12 +51,12 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const char* a, const CCharString& b);          // 0x0099F690
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _state00[0x50];
     bool Initialised : 1;                              // +0x50
     bool Enabled : 1;
@@ -66,7 +66,7 @@ struct CParticleSystemPtr {                            // CCountedPointer<CParti
     CParticleSystem* Data;
     void*            Info;
 };
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char       _base00[0x08];
     CParticleSystemPtr* ParticleSystems_start;         // +0x08
     CParticleSystemPtr* ParticleSystems_finish;        // +0x0c
@@ -83,7 +83,7 @@ struct SEmitterNode {                                  // STLport list node
     SEmitterNode*     _M_prev;
     CParticleEmitter* _M_data;
 };
-struct CParticleEmitterManager {
+class CParticleEmitterManager { public:
     SEmitterNode* Emitters;                            // +0x00 STLport list<CParticleEmitter*> head
     void DumpInfo(const CWideString& fileName);
 };

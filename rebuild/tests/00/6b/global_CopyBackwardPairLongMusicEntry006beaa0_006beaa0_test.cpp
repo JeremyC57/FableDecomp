@@ -8,7 +8,7 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
-struct CWideString {                         // one-word handle
+class CWideString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CWideString& operator=(const CWideString& other);     // 0x0099B7D0
 };

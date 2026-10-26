@@ -71,7 +71,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x21];                          // +0x04 flattened base-class subobject(s)
     long          InstantiationName_TablePos;                // +0x25 CDefString::TablePos
@@ -103,7 +103,7 @@ FABLE_STATIC_ASSERT(offsetof(CParentDefClassBase, SubDefInfoMap) == 0x29);
 
 
 #pragma pack(push, 1)
-struct CEngineLocalDetailObjectDef {
+class CEngineLocalDetailObjectDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -172,13 +172,13 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLocalDetailObjectDef, HasWindSkew) == 0x88);
 #define FABLE_STATIC_ASSERT(expression) typedef char FABLE_JOIN(fable_native_projection_assert_, __LINE__)[(expression) ? 1 : -1]
 #endif
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __nativeVftable;
     unsigned char _nativeBaseTail[0x38];
     CParentDefClassBase(const CParentDefClassBase& other); // 0x0046EE98
 };
 
-struct CEngineLocalDetailObjectDef : CParentDefClassBase {
+class CEngineLocalDetailObjectDef : public CParentDefClassBase { public:
     unsigned long Mesh;
     unsigned long ShadowMesh;
     float Probability;

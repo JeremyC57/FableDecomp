@@ -65,7 +65,7 @@ private:
     TVec& operator=(const TVec&);
 };
 
-struct C3DIndexedBoneWeight { unsigned long BoneIndex; unsigned long Weight; };
+class C3DIndexedBoneWeight { public: unsigned long BoneIndex; unsigned long Weight; };
 class C3DMeshFileXAnimatedPrimitiveBlockChunk {
 public:
     unsigned long               BonesPerVertex;

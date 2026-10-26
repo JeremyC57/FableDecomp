@@ -3,12 +3,12 @@
 // Behaviour model of CAIStateGroup_Guildmaster::CAIStateGroup_Guildmaster @ 0x009030CB: base, then the two
 // intelligent pointers, then the vector zeroed, in declaration order.
 static int g_order[8]; static int g_n = 0;
-struct CAIStateGroupBase { virtual void v00() {} CAIStateGroupBase() { g_order[g_n++] = 1; } };
+class CAIStateGroupBase { public: virtual void v00() {} CAIStateGroupBase() { g_order[g_n++] = 1; } };
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { g_order[g_n++] = 2; } };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() {} };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: virtual void v00() {} CIntelligentPointer() : CBaseIntelligentPointer() {} };
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage;
     CRetailVector() : first(0), last(0), end_of_storage(0) { g_order[g_n++] = 3; } };
-struct CThing; struct CThingCreatureBase;
+class CThing; class CThingCreatureBase;
 struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
     unsigned char _base[0x10];
     long AttackNum;

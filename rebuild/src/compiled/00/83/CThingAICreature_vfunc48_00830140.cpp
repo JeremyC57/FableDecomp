@@ -12,7 +12,7 @@ struct CTarget {
     long m_value;                          // +0xf0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad[0xe0];
     CTarget* m_object;                     // +0xe0
     long vfunc_48();

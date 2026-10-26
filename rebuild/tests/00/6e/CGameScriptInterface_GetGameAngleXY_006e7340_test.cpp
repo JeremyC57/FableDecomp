@@ -21,7 +21,7 @@ struct Holder {
     virtual bool tryGet(Obj** out)=0;
 };
 
-struct CWorld {
+class CWorld { public:
     char pad34[0x34];
     Holder* holder;
 };

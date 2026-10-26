@@ -10,19 +10,19 @@
 //   HighlightColourError sit 8 below the PDB at +0x50..+0x8C. No engine header for this class.
 #pragma optimize("s", on)
 
-struct CRGBColour { unsigned long m_argb; };
+class CRGBColour { public: unsigned long m_argb; };
 struct CLongVector {                             // std::vector<long> (retail 12 bytes)
     long* _M_start;
     long* _M_finish;
     long* _M_end_of_storage;
 };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                  // 0x00431102
     void Transfer(float& value);                 // 0x00431061
     void Transfer(CLongVector& value);           // 0x00466A47
     void Transfer(CRGBColour& value);            // 0x004595A3
 };
-struct CTavernGameSpotTheAdditionDef {
+class CTavernGameSpotTheAdditionDef { public:
     unsigned char _head[0x24];                   // CDefClassBase body after the vptr (links, index, flag bits)
     long        Pointer;                         // +0x28
     long        Cover;                           // +0x2c

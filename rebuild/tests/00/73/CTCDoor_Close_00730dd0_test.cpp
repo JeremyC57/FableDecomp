@@ -38,14 +38,14 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
 extern const CCharString g_DoorCloseAnimName;   // 0x013BAD38
-struct CAnimationEntry { long AnimIndex; };
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimationEntry { public: long AnimIndex; };
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -54,7 +54,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 struct CBlendPair {
@@ -62,7 +62,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long          Mode;
     unsigned char AnimType;
     bool          Flag05;
@@ -78,24 +78,24 @@ struct CAnimInit {                              // 0x2c bytes
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-struct CTCSwitchableNavigation { void SetBlocking(bool blocking); };   // 0x00787580
-struct CTCObstacle {                            // interface 9
+class CTCSwitchableNavigation { public: void SetBlocking(bool blocking); };   // 0x00787580
+class CTCObstacle { public:                            // interface 9
     unsigned char _pad00[0x10];
     bool          Enabled;                      // +0x10
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
 __forceinline bool DecRefToZero(long& c) { return --c == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
@@ -108,11 +108,11 @@ template <class T> struct CDefPointer {
     operator T*() const { return Object; }
     T* operator->() const { return Object; }
 };
-struct CAnimatingObjectDef : CDefPointeeBase {
+class CAnimatingObjectDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAnimatingObjectDef>* out) const;   // 0x0042B0A2
 };
 void* FindDef_CThingBaseDef_GetSubDef();         // stand-in callee of the stand-in body below
@@ -130,8 +130,8 @@ struct CThingEventSink {                        // the thing's +0x60 object; slo
     virtual void v80(); virtual void v81(); virtual void v82(); virtual void v83(); virtual void v84();
     virtual void TriggerEvent(long event);      // slot 85
 };
-struct CThingSoundEmitter;
-struct CThing {
+class CThingSoundEmitter;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
@@ -178,7 +178,7 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAnimatingObjectD
     return true;
 }
 #pragma auto_inline(on)
-struct CDoorDef {
+class CDoorDef { public:
     unsigned char _pad00[0x30];
     long OpenEvent;                             // +0x30
     long CloseEvent;                            // +0x34

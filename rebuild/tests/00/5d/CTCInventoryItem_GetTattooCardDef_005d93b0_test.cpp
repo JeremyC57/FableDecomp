@@ -17,7 +17,7 @@ struct CDefPointer {
     ~CDefPointer() { if (m_p) m_p->Release(); }
     operator bool() const { return m_p != 0; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     CDefBase* sub;                                   // the sub-def this def resolves (0 = none)
     CDefClassBase() : sub(0) {}
     bool GetSubDefTattoo(CDefPointer& out)
@@ -27,8 +27,8 @@ struct CDefClassBase : CDefBase {
         return true;
     }
 };
-struct CThing { CDefClassBase* m_pDef; };
-struct CTCInventoryItem {
+class CThing { public: CDefClassBase* m_pDef; };
+class CTCInventoryItem { public:
     CThing* m_pThing;
     CDefPointer GetTattooCardDef();
 };

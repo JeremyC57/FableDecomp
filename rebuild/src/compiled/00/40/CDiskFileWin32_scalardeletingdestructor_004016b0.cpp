@@ -10,7 +10,7 @@
 //
 // Matching: `flags` is tested with `test [esp+..],1` after the base destructor; `edx` is the unused
 // __fastcall second register so `flags` lands on the stack; the free is a plain `__cdecl` call.
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void* vptr;                 // vtable pointer, reset to this class's table on entry
     char pad[0x18 - 4];         // base-class state (untouched here)
     int member18;               // owned sub-object destroyed by Member18Dtor

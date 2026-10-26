@@ -1,4 +1,4 @@
-struct CInputProcessOracleMinigame {
+class CInputProcessOracleMinigame { public:
     void* vftable;
 };
 

@@ -8,14 +8,14 @@
 // i.e. the hidden CCharString return pointer arrives on the stack; this
 // (CTCHitOnCollision*) is passed in ecx but unused.
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* m_data;
     CCharString(const char* text, int length);
 };
 
-struct CTCHitOnCollision
-{
+class CTCHitOnCollision
+{ public:
     CCharString GetClassTypeName();
 };
 

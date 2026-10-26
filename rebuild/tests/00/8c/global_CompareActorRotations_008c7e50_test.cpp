@@ -7,7 +7,7 @@
 // Model of CompareActorRotations(creature, target) @ 0x008C7E50: the target's XY bearing from the creature as a 0..1
 // turn fraction (atan2(dx, dy) / 2pi, wrapped), compared with the body's facing through AngleDifference; true when
 // more than 70 degrees apart.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CPhysicsBody {
 public:
     float Facing;

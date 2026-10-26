@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_loads = 0, g_adds = 0, g_builds = 0;
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     CResourceList* ResourceList;
     CResource* PrevResource;
     CResource* NextResource;
@@ -10,10 +10,10 @@ struct CResource {
     void ListInsert(CResource* prev, CResource* next) { PrevResource = prev; NextResource = next; prev->NextResource = this; NextResource->PrevResource = this; }
     void AddToResourceList() { ++g_adds; }
 };
-struct CResourceList { CResource Head; unsigned long CurrentFrame; };
+class CResourceList { public: CResource Head; unsigned long CurrentFrame; };
 struct SCountBlock { long m_references; };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o, SCountBlock* b) : m_pObject(o), m_pCount(b) {}
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -21,7 +21,7 @@ struct CCountedPointer {
         if (m_pCount) ++m_pCount->m_references;
     }
 };
-struct C3DAnimationStats { int v; };
+class C3DAnimationStats { public: int v; };
 static C3DAnimationStats g_stats;
 static SCountBlock g_block;
 struct CAnimationData : CResource {
@@ -39,7 +39,7 @@ struct CAnimationData : CResource {
     }
 };
 static CAnimationData g_data;
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CAnimationData* Data;
     void BeginLoading(bool wait) { ++g_loads; Data = &g_data; }
     bool HasStats() const { return Data && Data->Stats.m_pObject; }

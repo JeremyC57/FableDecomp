@@ -6,8 +6,8 @@ static void Log(const char* s) { strcat(g_log, s); strcat(g_log, " "); }
 static void LogN(const char* s, long n) { char b[64]; sprintf(b, "%s%lx", s, n); Log(b); }
 static void Reset() { g_log[0] = 0; }
 static bool Is(const char* want) { return strcmp(g_log, want) == 0; }
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct CFontBank { int Refs; C2DVector GetTextExtent(const unsigned short* t, long) { long n = 0; while (t[n]) ++n; return C2DVector(n * 10.0f, 12.0f); } };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class CFontBank { public: int Refs; C2DVector GetTextExtent(const unsigned short* t, long) { long n = 0; while (t[n]) ++n; return C2DVector(n * 10.0f, 12.0f); } };
 static CFontBank g_font;
 struct CFontPointer { CFontBank* Data; CFontPointer(CFontBank* p) : Data(p) { ++p->Refs; } CFontPointer(const CFontPointer& o) : Data(o.Data) { ++Data->Refs; } ~CFontPointer() { --Data->Refs; } };
 struct CIMEFont {

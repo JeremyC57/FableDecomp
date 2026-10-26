@@ -9,7 +9,7 @@
 // Shape: the base hook first (both arguments forwarded), then the transfer; its `false` default is a
 // one-byte temporary bound to the const reference and homed in the dead second-argument slot
 // (`mov byte ptr [esp+1Ch],0`), the member address formed by advancing `this` (`add esi,30h`).
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
@@ -25,7 +25,7 @@ struct CTCContainerRewardHero_Calls : CTCContainer_Calls {  // retail 0x1c bytes
     unsigned char _pad1a[2];
 };
 
-struct CTCChest : CTCContainerRewardHero_Calls {            // vtable 0x0126957C
+class CTCChest : public CTCContainerRewardHero_Calls { public:            // vtable 0x0126957C
     unsigned char ChestOpener[0x14];                        // +0x1c COpenCloseHelper
     bool          ChestOpen;                                // +0x30
     virtual void Persist(CPersistContext* context, bool flag);

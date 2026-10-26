@@ -20,7 +20,7 @@ struct CResource_Calls {                                    // engine/CResource.
     virtual void v00();
     ~CResource_Calls();                                     // 0x009FC550
 };
-struct CDefPointeeBase : CResource_Calls {                  // vtable 0x01230BA0
+class CDefPointeeBase : public CResource_Calls { public:                  // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }
 };
@@ -71,13 +71,13 @@ template<int Kind> struct CRbTree {                         // STLport map (12 b
     }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                         // 0x0099B510
 };
 
 namespace NUISystem {
-struct CUIStateDef {                                        // 0x7c bytes, virtual destructor in slot 0
+class CUIStateDef { public:                                        // 0x7c bytes, virtual destructor in slot 0
     virtual ~CUIStateDef();
     unsigned char _body[0x78];
 };
@@ -88,7 +88,7 @@ struct CParentDefClassBase : CDefPointeeBase {              // 0x39 bytes
     CRetailVector<unsigned long> SubDefInfoMap;             // +0x29
     unsigned char                _pad35[0x39 - 0x35];
 };
-struct CUIDef : CParentDefClassBase {                       // vtable 0x01259F8C
+class CUIDef : public CParentDefClassBase { public:                       // vtable 0x01259F8C
     unsigned char              _pad39[3];
     long                       Type;                        // +0x3c
     CRetailVector<CUIStateDef> States;                      // +0x40

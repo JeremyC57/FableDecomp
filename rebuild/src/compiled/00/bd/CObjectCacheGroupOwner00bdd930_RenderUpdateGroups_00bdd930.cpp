@@ -4,7 +4,7 @@
 // precedes any register save; the three last arguments are hoisted into ebx/ebp/edi once the chain is known non-empty, the first two are re-read from their
 // slots each iteration (the floats are forwarded as dwords); `ret 14h` pops the five arguments. The chunk label (CEngineLandscapePatch::DeleteForegroundVertexBuffers)
 // is propagated; the owner is modelled locally.
-struct CEngineCamera;
+class CEngineCamera;
 
 struct CObjectCacheGroupCollection {
     unsigned char                _pad[0xc];

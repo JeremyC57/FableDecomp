@@ -13,7 +13,7 @@
 // stored); the two mallocs' arguments are popped together (`add esp,8`) after the second.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -51,7 +51,7 @@ struct CRetailList {                                        // retail std::list:
 struct SCountedActionPointer { void* m_pObject; void* m_pBlock; };   // CCountedPointer<CTCScriptedControl::CActionBase>
 struct SAttitudeTag { long m_tag; long m_attitude; };              // pair<long, EConversationAttitude>
 
-struct CTCScriptedControl : CTCBase_Calls {                 // vtable 0x012658E4
+class CTCScriptedControl : public CTCBase_Calls { public:                 // vtable 0x012658E4
     CIntelligentPointer                PScriptHandleImp;    // +0x0c
     CRetailList<SCountedActionPointer> PActionList;         // +0x14
     bool                               Locked;              // +0x18

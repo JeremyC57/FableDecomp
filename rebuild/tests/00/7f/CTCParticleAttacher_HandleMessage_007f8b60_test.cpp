@@ -3,7 +3,7 @@
 static int g_step = 0, g_clearStep = 0, g_attachStep = 0, g_kills = 0;
 struct CTCMessage { long type; virtual long GetType() const { return type; } virtual ~CTCMessage() {} };
 struct CParticlePointer { int alive; };
-struct CKillParticle { CKillParticle() {} void operator()(CParticlePointer& p) const { if (p.alive) { p.alive = 0; ++g_kills; } } };
+class CKillParticle { public: CKillParticle() {} void operator()(CParticlePointer& p) const { if (p.alive) { p.alive = 0; ++g_kills; } } };
 static CKillParticle for_each(CParticlePointer* first, CParticlePointer* last, CKillParticle f)
 { for (; first != last; ++first) f(*first); return f; }
 struct CParticleVector {
@@ -11,7 +11,7 @@ struct CParticleVector {
     CParticlePointer* erase(CParticlePointer* first, CParticlePointer*) { g_clearStep = ++g_step; m_pLast = first; return first; }
     void clear() { erase(m_pFirst, m_pLast); }
 };
-struct CTCParticleAttacher {
+class CTCParticleAttacher { public:
     CParticleVector ParticleList;
     void AttachParticles() { g_attachStep = ++g_step; }
     void HandleMessage(CTCMessage* msg)

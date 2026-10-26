@@ -14,14 +14,14 @@
 //   (seconds) constructor from `scaled ? seconds / scale : seconds`.
 extern "C" void __cdecl free(void* memory);     // 0x00BFEA14
 extern long g_framesPerSecond;                  // 0x01375550
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,7 +40,7 @@ struct CThing {
     }
     bool IsAffectedByBulletTime();              // 0x004C9920
 };
-struct CAnimInit {                              // PDB 44 bytes
+class CAnimInit { public:                              // PDB 44 bytes
     long          UpdateMode;
     unsigned char Type;
     bool          Looping;
@@ -78,7 +78,7 @@ struct CAnimFrameTime {                         // 12-byte UpdateFrameLogic argu
     long  Reserved2;
     CAnimFrameTime(float seconds) : Seconds(seconds), Reserved1(0), Reserved2(0) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x04];
     void*         m_pCurrent;                   // +0x04
     void*         m_pEnd;                       // +0x08
@@ -87,7 +87,7 @@ struct CAnimateThing {
     void UpdateFrameLogic(const CAnimFrameTime& time);   // 0x0070E8B0
     bool IsFinished() const { return m_pCurrent == m_pEnd || (m_stateFlags & 2); }
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
 struct CBulletTime {
@@ -98,7 +98,7 @@ struct CBulletTime {
     float GetTimeScale();                       // 0x004C5FA0
     bool IsActive() const { return m_active || m_pController != 0; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  m_pBulletTime;                // +0x68
 };

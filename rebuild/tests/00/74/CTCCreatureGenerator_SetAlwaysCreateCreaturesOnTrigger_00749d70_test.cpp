@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     char m_leading[0x50];
     bool m_bSuppressCreateOnTrigger;
     void SetAlwaysCreateCreaturesOnTrigger(bool bAlways);

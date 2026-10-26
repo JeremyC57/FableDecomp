@@ -1,14 +1,14 @@
 // behaviour test for 0x0067e650 _Push_heap (CDegradableInfo, `>` on HealthPercentage)
 #include <cstdio>
 #include <cstring>
-struct CEngineGraphic {   // PDB: 14 bytes of data, 16 with the dword alignment
+class CEngineGraphic { public:   // PDB: 14 bytes of data, 16 with the dword alignment
     unsigned long BankIndex;      // +0x0
     float AnimStep;               // +0x4
     float RenderSizeX;            // +0x8
     bool AdditiveAlpha;           // +0xc
     unsigned char Type;           // +0xd
 };
-struct CDegradableInfo {
+class CDegradableInfo { public:
     float HealthPercentage;
     CEngineGraphic EngineGraphic;
     int SmashParticleEmitter;

@@ -1,7 +1,7 @@
 // CMansLover::Init() -- register the lover thing with the quest (slot 477 with (&Thing, true)) and clear the flag at +0x1c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC9CB0, length 26 bytes.
 // Callees: the quest interface's virtual slot 477 (+0x774, (CScriptThing*, bool)). Shape: the byte store after the call, `ret`.
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000();
     virtual void* GetInfo(long which);              // slot 1 (+0x04)
     void* PImp_Data;                               // +0x04 (CCountedPointer<CThing>::Data)

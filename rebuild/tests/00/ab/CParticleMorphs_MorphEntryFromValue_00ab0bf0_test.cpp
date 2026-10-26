@@ -3,7 +3,7 @@
 #include <cstring>
 struct CStr { char buf[32]; CStr(const char* s, int) { std::strcpy(buf, s); } };
 struct SMorphEntry { const char* m_pName; CStr GetName() const { return m_pName ? CStr(m_pName, -1) : CStr("", -1); } };
-struct CParticleMorphs { const SMorphEntry* m_pEntry; CStr MorphEntry_FromValue() const { return m_pEntry->GetName(); } };
+class CParticleMorphs { public: const SMorphEntry* m_pEntry; CStr MorphEntry_FromValue() const { return m_pEntry->GetName(); } };
 int main()
 {
     SMorphEntry e1 = { "Spark" }, e2 = { 0 };

@@ -39,20 +39,20 @@ public:
         return false;
     }
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0x90];
     float SecondsRunOutWifeOnViolenceHateSpike; // +0x90
     float PeakEffectWifeOnViolenceHateSpike;    // +0x94
     float PersistEffectWifeOnViolenceHateSpike; // +0x98
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void ApplyOpinionTransientOffset(long attitude, float peak, long unused, long runOutFrames, float persist, bool ignorePersonality);   // 0x00682140 (6th parameter bool: retail tests it as a byte)
 };
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing*          ParentThing;                // +0x04
     unsigned char    _pad_0x08[4];

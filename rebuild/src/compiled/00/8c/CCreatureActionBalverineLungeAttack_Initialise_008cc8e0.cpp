@@ -16,9 +16,9 @@
 //   the creature's def class is a named local so GetPItem is called before the out pointer is pushed.
 #include "fable_string.h"
 
-struct CTCParamsBase;
+class CTCParamsBase;
 
-struct CTCHitOnCollision {                      // the component AddTC returns
+class CTCHitOnCollision { public:                      // the component AddTC returns
     unsigned char _pad[0x19];
     bool m_hitsCreatures;                       // +0x19
     bool m_hitsObjects;                         // +0x1a
@@ -130,7 +130,7 @@ struct CLungeDef : CDefBase {
     long m_damage;                              // +0x40
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -141,7 +141,7 @@ template<class T> struct CDefPointer {
     T* operator->() const { return m_p; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     template<class T> bool GetSubDef(CDefPointer<T>& out);     // 0x008CD0D0 (this instantiation)
 };
 void* FindSubDef_CDefClassBase_GetSubDef(CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -158,7 +158,7 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x38];
     unsigned long m_flags38;                    // +0x38
     unsigned char _pad3c[0x60 - 0x3c];
@@ -177,7 +177,7 @@ struct CBaseIntelligentPointer {
 
 void __fastcall SetLungedThisFrame();           // 0x009054F0
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char _pad04[4];
@@ -186,7 +186,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_BalverineLungeAttack : CCombatActionBase {
+class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

@@ -12,13 +12,13 @@
 // Shape: size-optimised module (`push dword ptr [esp+8]` pass-through): `#pragma optimize("s", on)`. Base call,
 // the argument push, the member's `lea`, the vtable store, then the member constructor.
 #pragma optimize("s", on)
-struct CShoveHaPennyRegionDef {                // the def-class base subobject (0x28 bytes: CResource .. CDefClassBase)
+class CShoveHaPennyRegionDef { public:                // the def-class base subobject (0x28 bytes: CResource .. CDefClassBase)
     virtual void v00();
     unsigned char _body[0x24];                 // +0x04 .. +0x28
     CShoveHaPennyRegionDef();                  // 0x0044C0C0
 };
 
-struct CCombatAbilityData {                    // vtable 0x01232484, 0x18 bytes
+class CCombatAbilityData { public:                    // vtable 0x01232484, 0x18 bytes
     virtual void v00();
     long  PercentageChance;                    // +0x04
     float SecondsDuration;                     // +0x08
@@ -27,14 +27,14 @@ struct CCombatAbilityData {                    // vtable 0x01232484, 0x18 bytes
     long  InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
 
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {   // vtable 0x01232498
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:   // vtable 0x01232498
     bool  Blockable;                           // +0x18
     bool  Knockdown;                           // +0x19
     float Damage;                              // +0x1c
     CCombatAbilityMeleeAttackData(long interfaceType);        // 0x0044C47B
 };
 
-struct CCombatAbilityAttackBase : CShoveHaPennyRegionDef {   // vtable 0x012324D4
+class CCombatAbilityAttackBase : public CShoveHaPennyRegionDef { public:   // vtable 0x012324D4
     CCombatAbilityMeleeAttackData CombatAbility;              // +0x28
     virtual void v00();
     CCombatAbilityAttackBase(long interfaceType);

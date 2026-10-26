@@ -3,7 +3,7 @@ struct SNode { unsigned char _pad[4]; SNode* m_pNext; };
 struct COwner;
 static int g_calls = 0; static SNode* g_nodes[4]; static const COwner* g_owner = 0;
 struct CMM { void Dispose(SNode* n, COwner* o) { g_nodes[g_calls++] = n; g_owner = o; } };
-struct CEngine { unsigned char _pad[0x6b0]; CMM* m_pLandscapeMemoryManager; };
+class CEngine { public: unsigned char _pad[0x6b0]; CMM* m_pLandscapeMemoryManager; };
 static CEngine g_engine; static CEngine* g_pEngine = &g_engine;
 struct COwner { unsigned char _pad[8]; SNode* m_pHead;
     void Destroy() { CMM* mm = g_pEngine->m_pLandscapeMemoryManager; for (SNode* n = m_pHead; n; n = n->m_pNext) mm->Dispose(n, this); } };

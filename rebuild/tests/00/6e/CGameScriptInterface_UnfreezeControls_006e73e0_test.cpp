@@ -2,11 +2,11 @@
 #include <cstring>
 #include <new>
 
-struct CThing { unsigned char _pad[0x91]; unsigned char m_stateFlags; };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_stateFlags; };
 static long g_frozenPlayer = -1; static int g_calls;
-struct CPlayer { CThing* m_creature; CThing* GetControlledCreature() { return m_creature; } };
-struct CPlayerManager { CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } void Toggle(long player) { g_frozenPlayer = player; ++g_calls; } };
-struct CGameScriptInterface {
+class CPlayer { public: CThing* m_creature; CThing* GetControlledCreature() { return m_creature; } };
+class CPlayerManager { public: CPlayer m_player; CPlayer* GetMainPlayer() { return &m_player; } void Toggle(long player) { g_frozenPlayer = player; ++g_calls; } };
+class CGameScriptInterface { public:
     void* vt; void* World; void* Component; void* DisplayEngine; void* DefinitionManager; CPlayerManager* PlayerManager; void* ThingSearchTools; long CurrentPlayer;
     void Run() { CThing* creature = PlayerManager->GetMainPlayer()->GetControlledCreature();
         if (creature && !(creature->m_stateFlags & 1)) PlayerManager->Toggle(CurrentPlayer); }

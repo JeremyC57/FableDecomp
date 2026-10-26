@@ -1,6 +1,6 @@
 // Behaviour test for 0x006b85d0 CEnvironmentSpellEffectInterpolator::ScreenFilterFadeTo
 #include <cstdio>
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CScreenFilterParams { float Alpha, Saturation, Contrast, Brightness; CRGBFloatColour Tint; };
 struct CThingGraphicArgList { int n; };
 static bool g_ok = false;
@@ -11,7 +11,7 @@ struct CScreenEffectPriorityStack {
             && p->Contrast == 2.0f && p->Brightness == 3.0f && p->Tint.R == 0.125f && p->Tint.A == 1.0f;
     }
 };
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     CScreenEffectPriorityStack ScreenEffectPriorityStack;
     void ScreenFilterFadeTo(float duration, long priority, float alpha, float saturation, float contrast, float brightness,
                             const CRGBFloatColour& tint, const CThingGraphicArgList* things)

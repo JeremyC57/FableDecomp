@@ -62,7 +62,7 @@ template <class T> class CArray : public std::vector<T> { };     // retail CArra
 namespace NEnvironmentInternal {
 class CEnvironmentThemePriorityStackEntry {                   // 48 bytes (Ego_r.pdb 56 with its 16-byte CArray)
 public:
-    class CThemeWeight {                                      // 12 bytes (Ego_r.pdb)
+    struct CThemeWeight {                                      // 12 bytes (Ego_r.pdb)
     public:
         long ThemeID;
         float Weight;

@@ -5,14 +5,14 @@
 //         call CCharString::ctor(const char*,int); mov eax,esi; pop esi; ret 4
 // The action name string lives at 0x123de20 (pushed as an immediate offset).
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n); // ctor @ 0x99ebf0
 };
 
 extern char kActionStr[];
 
-struct CTCQuickAccessMenu {
+class CTCQuickAccessMenu { public:
     int x;
     CCharString GetClassTypeName();
 };

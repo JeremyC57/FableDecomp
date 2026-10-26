@@ -1,6 +1,6 @@
 // Behaviour test for 0x00761740 NShape::CTrack::IsPosInShape
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTrack {
     long m_points;
     float m_lineY;                                 // the track is the line y = m_lineY

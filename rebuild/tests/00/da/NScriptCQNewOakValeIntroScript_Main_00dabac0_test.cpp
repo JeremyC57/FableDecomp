@@ -4,7 +4,7 @@
 // attack is over (and the thread is alive), set the active quest's first objective, spawn StartBarrelTimer, run DoMission
 static int g_bound, g_deact, g_obj, g_spawned, g_mission;
 static bool g_term;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void PostAddScriptedEntities() const {}
     void DeactivateQuest(const char* q, unsigned long f) const { if (!std::strcmp(q, "Q__OakValeIntro_PostAttack") && f == 0) ++g_deact; }
     void SetQuestCardObjective(const char* q, const char* t, const char* r, const char* l) const

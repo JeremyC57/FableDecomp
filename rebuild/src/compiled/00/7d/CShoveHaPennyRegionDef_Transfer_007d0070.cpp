@@ -6,9 +6,9 @@
 // Shape: the landed CActivateQuestDef::Transfer (0x007B5740) template -- two inline CPersistContext::Transfer<float>,
 // the load traits an empty temporary in the dead argument slot, the second save arm ending in its own epilogue.
 // Leaf: Transfer
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
@@ -19,7 +19,7 @@ template<> struct CPersistTraits<float> {
     static void TransferBinaryOut(CDataOutputStream* stream, const float& value) { stream->WriteFloat(value); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];
@@ -40,7 +40,7 @@ struct CPersistContext {
     }
 };
 
-struct CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public:
     virtual void v00();
     unsigned char _pad04[0x24];
     float Start;                                        // +0x28

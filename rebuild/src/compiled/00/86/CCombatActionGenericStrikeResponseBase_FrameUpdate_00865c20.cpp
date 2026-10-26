@@ -8,17 +8,17 @@
 //          propagated), virtual slot 4 (+0x10, FinishAction). Float 0.1f @ 0x0122EE58.
 // Layout (Ego_r.pdb names, retail offsets = PDB - 0x18): PCreature +0x08, current frame +0x1C, PTarget +0xA8, base flag +0xDC,
 //          CreateDustEffect +0x135, FrameForDust +0x138, DustTravelDirection +0x13C; CThing type byte +0x10, creature velocity +0x1C0.
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char ThingType;                    // +0x10
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetLength() const;
 };
 #include <math.h>
 inline float C3DVector::GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad11[0x1c0 - 0x11];
     C3DVector     Velocity;                     // +0x1C0
 };
@@ -27,8 +27,8 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CWorldMap;
-struct CGameDefinitionManager;
+class CWorldMap;
+class CGameDefinitionManager;
 struct CThingVector;
 bool __fastcall IsToCreateCombatParticleEffects(CThing* creature, CThing* target);   // 0x008F7860
 void __fastcall CreateDustEffectForCreature(CThing* creature, CWorldMap* map, CGameDefinitionManager* defs,

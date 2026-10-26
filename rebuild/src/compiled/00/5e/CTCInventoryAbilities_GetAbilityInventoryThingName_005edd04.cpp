@@ -7,15 +7,15 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
 };
 
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CCharString GetAbilityInventoryThingName(EHeroAbility ability);
 };
 

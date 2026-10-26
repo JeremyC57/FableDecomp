@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CDefClassBase {
+class CDefClassBase { public:
     int pad[10];
     unsigned int field28; // 0x28
     void Copy(const CDefClassBase* src);
 };
 
-struct CBoastingPodiumDef : CDefClassBase {
+class CBoastingPodiumDef : public CDefClassBase { public:
     void Copy(const CDefClassBase* src);
 };
 

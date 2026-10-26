@@ -11,7 +11,8 @@
 struct IDirect3DIndexBuffer9;
 
 #pragma pack(push, 1)
-struct CIndexBuffer {
+class CIndexBuffer {
+public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DIndexBuffer9* PD3DIndexBuffer;                  // +0x04
     unsigned long          ByteLength;                       // +0x08

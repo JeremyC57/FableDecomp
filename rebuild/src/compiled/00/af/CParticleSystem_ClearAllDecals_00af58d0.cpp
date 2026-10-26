@@ -10,8 +10,8 @@
 // frame after every call (retail was built with whole-program optimisation and knew ClearDecal leaves it
 // alone); a temporary copy stores it right before the call. Walking the node and re-pointing the iterator
 // object after each step is the source form that gives the retail order.
-namespace NParticleEngine { struct CParticle; struct CDecal; }
-struct CEnginePrimitiveHandle;
+namespace NParticleEngine { class CParticle; class CDecal; }
+class CEnginePrimitiveHandle;
 
 // STLport list (retail: ONE word, the sentinel node pointer): node = next, prev, data.
 template <class T> struct SListNode {

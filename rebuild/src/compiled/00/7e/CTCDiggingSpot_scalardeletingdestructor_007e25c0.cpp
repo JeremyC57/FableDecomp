@@ -1,4 +1,4 @@
-struct CTCDiggingSpot {
+class CTCDiggingSpot { public:
     void* vftable;
 };
 

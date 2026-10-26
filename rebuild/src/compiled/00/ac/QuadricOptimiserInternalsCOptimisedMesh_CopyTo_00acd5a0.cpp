@@ -11,7 +11,7 @@
 // Layout (retail, STLport 12-byte vectors): COptimisedMesh {vptr, SubMeshes +4}; COptimisedSubMesh 0x18 {Primitives +0
 //   (CCountedPointer, 8 bytes each), Bones +0xc}; COptimisedPrimitive Faces +0x1c (COptimisedFace 0x48 bytes, the
 //   live flag at +0x3c); CCPPointerInfo {RefCount +0, DeleteFunc +4 (__fastcall), Data +8}.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                              // +0x00
     void (__fastcall* DeleteFunc)(void* data);           // +0x04
     void*         Data;                                  // +0x08

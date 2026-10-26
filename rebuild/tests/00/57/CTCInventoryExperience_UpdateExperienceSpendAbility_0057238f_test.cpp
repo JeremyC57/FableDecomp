@@ -3,7 +3,7 @@
 
 static int g_destroyed = 0; static long g_poolCat = -1, g_poolAmount = 0; static int g_poolCalls = 0;
 static bool g_available = true;
-struct CInventoryDef {
+class CInventoryDef { public:
     long refCount;
     long ExperienceSpendRate;
     virtual void Destroy() { ++g_destroyed; }
@@ -23,13 +23,13 @@ struct CSpendInfoVector {
     ExperienceSpendInfo* begin() { return _M_start; }
     ExperienceSpendInfo& operator[](long n) { return *(begin() + n); }
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     long GetAbilityStatType(long ability) { return ability == 0 ? 2 : 1; }
     bool IsAbilityAvailable(long) { return g_available; }
 };
 static CTCInventoryAbilities g_abilities;
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CInventoryDefPointer PDef;
     long statIndicatorPos;
     CSpendInfoVector ExperienceSpendValuesPool;

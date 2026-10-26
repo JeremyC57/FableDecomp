@@ -11,9 +11,9 @@ public:
     float Dot(const C3DVector& v) const { float dot = Z * v.Z + X * v.X; dot += Y * v.Y; return dot; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CPlane { C3DVector Normal; float D; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct CShadowClipVolume {
+class CPlane { public: C3DVector Normal; float D; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class CShadowClipVolume { public:
     CPlane ClipPlanes[8]; long ClipPlaneCount; C3DBoundingSphere BoundingSphere; bool ClipToSphere;
     bool ClipSphere(const C3DBoundingSphere& sphere) const
     {

@@ -140,7 +140,7 @@ public:
 
 class CRegionConnectionNode;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Object;                                       // +0x00
     void* PBlock;                                       // +0x04
 };

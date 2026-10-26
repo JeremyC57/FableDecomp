@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CReactionFrequencyTraits_PeriodicFrequency::CalculateWeight @ 0x006FFB10 (copy of the source logic).
 static unsigned int g_frame = 0;
-struct CWorld { static unsigned int GetWorldFrame() { return g_frame; } };
+class CWorld { public: static unsigned int GetWorldFrame() { return g_frame; } };
 static const float& Clamp(const float& v, const float& lo, const float& hi) { if (v < lo) return lo; if (v > hi) return hi; return v; }
 struct CReactionFrequencyTraits_PeriodicFrequency {
     float LowFreqPerMin, HighLowFreqInterval;

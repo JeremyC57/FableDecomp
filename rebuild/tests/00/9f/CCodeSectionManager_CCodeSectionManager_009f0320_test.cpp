@@ -22,8 +22,8 @@ template <unsigned int ValueSize> struct Tree           // node = 0x10-byte base
     bool Empty() const { return Count == 0 && !Header->Color && Header->Parent == 0 && Header->Left == Header && Header->Right == Header; }
 };
 
-struct CCodeSectionManager
-{
+class CCodeSectionManager
+{ public:
     Tree<0x08> ShortNameToHandle;
     Tree<0x08> LongNameToHandle;
     Tree<0x14> SectionDesc;

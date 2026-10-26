@@ -28,7 +28,7 @@ template <class T> __forceinline void ReleaseDef(T* def)
     if (def && --def->m_refCount == 0)
         def->Destroy();
 }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { T* object = Object; ReleaseDef(object); }
@@ -50,8 +50,8 @@ template <class T> struct CDefHolder {                  // owns the reference Ge
     T* Object;
     __forceinline ~CDefHolder() { ReleaseDef(Object); }
 };
-struct CAugmentationDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CAugmentationDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out) const;   // 0x0042B248 (T = const CAugmentationDef)
 };
 void* FindDef_s7r_0();
@@ -72,8 +72,8 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CThingBaseDef : CDefClassBase { };
-struct CGameDefinitionManager {
+class CThingBaseDef : public CDefClassBase { public: };
+class CGameDefinitionManager { public:
     template <class T> bool GetDef(long index, CDefPointer<T>& out) const;   // 0x0042AF3C (T = const CThingBaseDef)
 };
 void* FindDef_s7r_1();
@@ -98,8 +98,8 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CThing;
-struct CTCObjectAugmentations {
+class CThing;
+class CTCObjectAugmentations { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

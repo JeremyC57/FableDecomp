@@ -14,7 +14,7 @@ struct CCountedPointer { void* m_pObject; SCountBlock* m_pCount;
     } };
 static void __fastcall Destroy(void* p) { ++g_destroyed; if (p != (void*)0x11) std::exit(1); }
 struct CSharedData { virtual void v0() { } virtual void v1() { } unsigned long IVRefCount; void* BaseAnimation; unsigned char CombinationBlends[0xc]; CCountedPointer SkeletalMorph; };
-struct C3DAnimationBlendState { virtual void v00() { } CSharedData* Data; void MakeOwnCopyOfData() { ++g_copies; }
+class C3DAnimationBlendState { public: virtual void v00() { } CSharedData* Data; void MakeOwnCopyOfData() { ++g_copies; }
     void SetSkeletalMorph(const CCountedPointer& m) { MakeOwnCopyOfData(); Data->SkeletalMorph = m; } };
 int main()
 {

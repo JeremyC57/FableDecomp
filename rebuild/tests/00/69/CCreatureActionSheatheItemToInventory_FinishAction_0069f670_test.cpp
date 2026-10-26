@@ -2,9 +2,9 @@
 #include <cstdio>
 static int g_log[16]; static int g_n = 0;
 static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
-struct CTCCreatureModeManager { void UpdateFrontMode() { Log(6); } };
+class CTCCreatureModeManager { public: void UpdateFrontMode() { Log(6); } };
 struct CAction;
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCCreatureModeManager* m_modes;
     bool m_accept;

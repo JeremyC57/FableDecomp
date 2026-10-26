@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveParticleDecalGroup {
+class CEngineInternalPrimitiveParticleDecalGroup { public:
     void* vftable;
     int destroyed;
 };

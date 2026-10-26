@@ -12,7 +12,7 @@
 void __cdecl operator delete[](void* block);       // 0x00BFEB1C
 
 #pragma pack(push, 1)
-template <class T> struct CBasicString {
+template <class T> class CBasicString { public:
     T*            PData;                          // +0x00
     unsigned long StringLength;                   // +0x04
     unsigned long DataLength : 31;                // +0x08
@@ -29,4 +29,4 @@ template <class T> struct CBasicString {
 };
 #pragma pack(pop)
 
-template struct CBasicString<char>;
+template class CBasicString<char>;

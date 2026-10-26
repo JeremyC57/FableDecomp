@@ -12,7 +12,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -21,13 +21,13 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-struct CCPPointerInfo {                                 // counted-pointer block (Ego_r.pdb)
+class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
     long RefCount;                                      // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -62,29 +62,29 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
     virtual ~CScriptThing();                            // 0x004AA840
 };
 
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
     void* IntelligentPointer;                           // +0x04
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual __forceinline ~CScriptGameResourceObjectBase() {}
 };
 
 struct CScriptThingImp;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // 16 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;              // +0x08
     CScriptGameResourceObjectScriptedThingBase() {}
     // implicit destructor (no vptr store of its own); out of line 0x007E74D0
@@ -97,7 +97,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // 16 bytes, vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x01260EF4
     CMovieImpPointer PImp;                              // +0x08
     CScriptGameResourceObjectMovieBase() {}
     // implicit destructor
@@ -137,7 +137,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETutorialCategory { TUTORIAL_CATEGORY_COMBAT_MULTIPLIER = 9 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)

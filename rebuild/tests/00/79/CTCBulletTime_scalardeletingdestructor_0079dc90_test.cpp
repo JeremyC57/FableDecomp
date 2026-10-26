@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBulletTime {
+class CTCBulletTime { public:
     void* vftable;
     int destroyed;
 };

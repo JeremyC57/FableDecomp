@@ -4,12 +4,12 @@
 #include <cstring>
 static char g_sounds[8][32];
 static int g_soundCount = 0, g_baseCalls = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[48];
     CCharString(const char* text, long) { std::strcpy(m_text, text); }
     ~CCharString() {}
 };
-struct CCard {
+class CCard { public:
     void* Thing;
     long  Name;
     long  Value;

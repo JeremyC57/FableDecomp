@@ -10,7 +10,7 @@ struct Lock {
     ~Lock() { if (locked) Unlock(); }
     void Unlock() { if (locked) { locked = false; ++g_unlocks; } }
 };
-struct CFileInstaller {
+class CFileInstaller { public:
     bool Running; unsigned int Paused; void* Event; void* PauseStartEvent;
     static bool DirtyDiscError;   // 0x013CA814
     void Pause()

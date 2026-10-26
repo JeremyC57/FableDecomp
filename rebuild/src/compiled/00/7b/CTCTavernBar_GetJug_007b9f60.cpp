@@ -10,8 +10,8 @@
 // (`*(begin() + n)`, the landed CRetailVector of 0x004AF3C0): a raw `first[index]` forms the element address before the
 // constructor and computes size() first-load-first (94v94); the iterator keeps index/first in ebx/edi and re-derives
 // `lea ecx,[edi+ebx*8]` after the base constructor.
-struct CBaseObject;
-struct CThingObject;
+class CBaseObject;
+class CThingObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);        // 0x00A01B90
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858 for T = CThingObject
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A858 for T = CThingObject
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
@@ -40,7 +40,7 @@ template<class T> struct CRetailVector {     // retail std::vector: first, last,
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCTavernBar {
+class CTCTavernBar { public:
     void*         __vftable;                 // +0x00
     unsigned char _pad_0x04[8];              // CTCBase
     CRetailVector<CIntelligentPointer<CThingObject> > Jugs;   // +0x0c

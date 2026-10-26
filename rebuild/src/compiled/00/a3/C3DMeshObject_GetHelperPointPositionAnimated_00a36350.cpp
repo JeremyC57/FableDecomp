@@ -13,31 +13,31 @@
 //   re-read for the virtual call. The same transform tail as the landed GetHelperPointPositionStatic 0x00A361A0: the animated position comes back
 //   by hidden pointer into the local, x and y are copied to named float locals (homed in the dead name/index argument
 //   slots) and each component is `x*Ei1 + y*Ei2 ... + z*Ei3 + E4i` evaluated through the FPU, stored x, y, z.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& p) : X(p.X), Y(p.Y), Z(p.Z) { }
 };
-struct C3DHelperPoint {                            // 16 bytes
+class C3DHelperPoint { public:                            // 16 bytes
     C3DVector Position;                            // +0x00
     long      BoneIndex;                           // +0x0c
 };
-struct C3DAnimationBlendState;
-struct C3DAnimationManager;
+class C3DAnimationBlendState;
+class C3DAnimationManager;
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();                            // slot 0: scalar deleting destructor 0x00A353F0
     virtual void v01();                            // slot 1: RelocateData 0x00A2E820
     virtual void v02();                            // slot 2
@@ -48,15 +48,15 @@ struct C3DMeshStats {
     const C3DHelperPoint* GetHelperPoint(unsigned long nameHash, unsigned long index) const;     // 0x00A2E8C0
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                    // +0
     void* Info;                                    // +4
     T* operator->() const { return Data; }
 };
 
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*                         MeshInfo;        // +0x04
     CCountedPointer<const C3DMeshStats>  Mesh;            // +0x08

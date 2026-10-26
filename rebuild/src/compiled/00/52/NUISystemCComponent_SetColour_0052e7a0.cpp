@@ -8,12 +8,12 @@
 // InitialColour +0x8c. CRGBColour is one packed dword.
 // Shape: the dword is read once into eax and stored target, initial, current: the argument is copied into a
 // local first (written straight from the reference, VC re-reads it after each store because it may alias).
-struct CRGBColour {
+class CRGBColour { public:
     unsigned long Colour;
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     unsigned char _pad00[0x84];
     CRGBColour Colour;                      // +0x84
     CRGBColour TargetColour;                // +0x88

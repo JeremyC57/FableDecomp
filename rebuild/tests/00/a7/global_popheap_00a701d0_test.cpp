@@ -1,15 +1,15 @@
 // Behaviour test for 0x00A701D0 __pop_heap: *result = *first, then __adjust_heap(first, 0, last - first, value, comp); value destroyed once.
 #include <cstdio>
 static int g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     const char* s;
     CCharString() : s(0) {}
     CCharString(const CCharString& o) : s(o.s) {}
     ~CCharString() { ++g_strDtors; }
     CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
 };
-struct C3DVector { float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct C3DHelperPoint { C3DVector Position; int BoneIndex; }; struct Elem { CCharString first; C3DHelperPoint second; };
+class C3DVector { public: float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C3DHelperPoint { public: C3DVector Position; int BoneIndex; }; struct Elem { CCharString first; C3DHelperPoint second; };
 struct Comp { int tag; };
 static Elem* g_first = 0; static int g_hole = -1, g_len = -1, g_compTag = 0;
 static Elem g_value;

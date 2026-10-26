@@ -21,7 +21,7 @@ public:
     void WriteLong(long value);                          // 0x00993EB0
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;

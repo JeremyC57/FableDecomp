@@ -3,30 +3,30 @@
 #include <cstdio>
 #include <cstring>
 
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem; int m_sets;
     CBaseIntelligentPointer() : m_pItem(0), m_sets(0) { }
     CBaseObject* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* p) { m_pItem = p; ++m_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     int m_baseValue; int m_copies;
     CCreatureActionBase() : m_baseValue(0), m_copies(0) { }
     CCreatureActionBase(const CCreatureActionBase& o) : m_baseValue(o.m_baseValue), m_copies(o.m_copies + 1) { }
 };
-struct CThing; struct CThingAICreature; struct CThingBuilding;
-struct CMeleeCombatAbilityDef { int vt; mutable long m_refCount; };
-template <class T> struct CDefPointer {
+class CThing; class CThingAICreature; class CThingBuilding;
+class CMeleeCombatAbilityDef { public: int vt; mutable long m_refCount; };
+template <class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
     CDefPointer(const CDefPointer& o) : m_pDef(o.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
 };
-struct CCreatureAction_FireMissileWeapon : CCreatureActionBase {
+class CCreatureAction_FireMissileWeapon : public CCreatureActionBase { public:
     CIntelligentPointer<const CThing> PTarget;
     float ShotAccuracyPercentage, ShotDamageMultiplier, ShotBuildupTime; bool Decapitate; long DelayTimer;
     CDefPointer<const CMeleeCombatAbilityDef> PSpecialShotDef;

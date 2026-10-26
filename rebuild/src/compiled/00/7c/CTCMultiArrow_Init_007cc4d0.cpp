@@ -17,19 +17,19 @@
 class CThing;
 class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -39,7 +39,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_CalcAndLookup(const void* def, const CCharString& name);   // stand-in callee
@@ -54,7 +54,7 @@ __declspec(noinline) bool CSpecialEffectsDef::CalcAndLookup(const CCharString& n
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();
@@ -69,7 +69,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CSpecialAbilitiesMultiArrowDef : CDefClassBase {
+class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long  NumberOfShots[4];                             // +0x3c
     long  NumberInVolley[4];                            // +0x4c

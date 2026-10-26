@@ -18,8 +18,8 @@
 //          without letting their addresses escape -- with an external declaration VC stores the comparator's x/y
 //          right after each load instead of retail's load-all-three-then-interleave-with-pushes.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -32,7 +32,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -173,7 +173,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -181,7 +181,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -217,8 +217,8 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
 };
@@ -227,7 +227,7 @@ struct CRefCounted {                            // reference count base at +4 of
     void DecRef() { --Count; }
     long GetRefCount() const { return Count; }
 };
-struct CMaterialDef {
+class CMaterialDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1 (+0x04)
     CRefCounted Ref;                            // +0x04
@@ -236,12 +236,12 @@ struct CMaterialDef {
     __forceinline void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     __forceinline ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     CDefPointer<CMaterialDef> PeekPMaterial();  // 0x0082D2D0
     const C3DVector& GetPosition();             // 0x004C73D0
 };
@@ -249,33 +249,33 @@ struct CThingPos : CThing {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
-struct CTCVillage;
+class CTCVillage;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
 struct CThingVillagerBase : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PWorkplace;         // +0x170
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool IsCookTime();                          // 0x00658A80
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) {}
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector Pos;
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) {}
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out);   // 0x009107B0
 };
 long BestSink_9107B0(const void* self, long index, float x);

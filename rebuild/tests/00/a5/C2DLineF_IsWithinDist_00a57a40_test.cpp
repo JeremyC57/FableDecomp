@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}
@@ -9,7 +9,7 @@ struct C2DVector {
     C2DVector operator*(float s) const { return C2DVector(X * s, Y * s); }
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
-struct C2DLineF {
+class C2DLineF { public:
     C2DVector Point1;
     C2DVector Point2;
     int IsWithinDist(const C2DVector& pos, float dist) const;

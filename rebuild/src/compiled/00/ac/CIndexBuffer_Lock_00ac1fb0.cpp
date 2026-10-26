@@ -21,7 +21,7 @@ struct SDeviceRecord_013ca618 {
     SRenderDevice_Retail*  m_pRender;              // +0x60
 };
 SDeviceRecord_013ca618* __cdecl GetDeviceRecord_009a4ec0();   // 0x009A4EC0 (labelled "GFGetSystemManager")
-struct CIndexBuffer {
+class CIndexBuffer { public:
     virtual void v00();
     IDirect3DIndexBuffer_Retail* m_pBuffer;        // +0x04
     void* Lock(unsigned long flags, unsigned long offset, unsigned long size);

@@ -18,7 +18,7 @@
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
-struct CCharStringData {                            // the shared string block
+class CCharStringData { public:                            // the shared string block
     const char*   m_pData;                          // +0x00
     unsigned long m_length;                         // +0x04
 };
@@ -41,7 +41,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);          // 0x0099EC30
     bool operator==(const CCharString& other) const
@@ -109,7 +109,7 @@ inline CCharString* find(CCharString* first, CCharString* last, const CCharStrin
     return FindString(first, last, value, random_access_iterator_tag());
 }
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x4c];
     CStringVector BetweenStartAndEndScreenQuests;               // +0x4c
     unsigned char _pad58[0x40];

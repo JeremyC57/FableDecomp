@@ -8,14 +8,14 @@
 // Shape: four float locals (the fourth shares the lookup key's frame word), each clamped `if (v < 0) v = 0; else if (v > 1) v = 1;`
 // (`test ah,5 ; jp` / `test ah,41h ; jne`); the joystick entries are 8-byte {device, id} pairs at the input manager's +0x2c; the
 // rumble parameters are a 20-byte {a, b, c, d, true} temporary built by an inline ctor in the argument area's frame slot.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                // +0x44
@@ -34,7 +34,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCBerserk {                             // interface type 0x84
+class CTCBerserk { public:                             // interface type 0x84
     void GetSuperRumble(float& a, float& b, float& c, float& d);   // 0x0078BE70
 };
 struct CRumbleParams {                          // 20 bytes
@@ -55,12 +55,12 @@ struct CJoystickEntry {                         // 8 bytes
     CJoystickDevice* Device;
     long             Id;
 };
-struct CInputManager {
+class CInputManager { public:
     unsigned char   _pad00[0x2c];
     CJoystickEntry* Joysticks;                  // +0x2c (vector begin)
     CJoystickDevice* GetJoystick(long n) const { return Joysticks[n].Device; }
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x58];
     CInputManager* InputManager;                // +0x58
 };
@@ -70,14 +70,14 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +4
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void FrameUpdate();                 // 0x00859D80
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char _pad10[0x114 - 0x10];         // +0x10
 };
-struct CCreatureAction_ReleaseStrengthBerserk : CCombatActionBase {
+class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase { public:
     virtual void FrameUpdate();
 };
 

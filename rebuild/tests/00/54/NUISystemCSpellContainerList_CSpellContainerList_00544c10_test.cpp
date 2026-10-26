@@ -15,7 +15,7 @@ struct CAction {
 };
 static void DestroyAction(void* object) { ++g_actionsDestroyed; delete (CAction*)object; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; SCountBlock(void* o) : m_references(1), m_pfnDestroy(DestroyAction), m_pObject(o) {} };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object) { if (object) m_pCount = new SCountBlock(m_pObject); else m_pCount = 0; }
     ~CCountedPointer()

@@ -12,11 +12,11 @@
 //   FrameHitByPerceivedThing +0x54. UpdateOffset = (ParentThing word at +0x18) & 3 spreads the perception updates over 4 frames.
 // Shape: init list in declaration order (also tried: body assignments in retail order; same instructions).
 //   One shared zero register.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned long m_uidLow;                     // +0x18 (low word of the thing's UID)
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     virtual void v00();
     CBaseObject* m_pItem;                       // +4
@@ -27,21 +27,21 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { SetPItem(0); }
 };
-struct CDefPointeeBase;
-struct CTCBase {
+class CDefPointeeBase;
+class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
 };
-struct C3DVector { float X, Y, Z; };
-struct CPerceivedThingDef;
-template <class T> struct CDefPointer {          // CDefPointer<T const>: the def object pointer with its inline constructor (released by the out-of-line destructor)
+class C3DVector { public: float X, Y, Z; };
+class CPerceivedThingDef;
+template <class T> class CDefPointer { public:          // CDefPointer<T const>: the def object pointer with its inline constructor (released by the out-of-line destructor)
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCPerceiveThing : CTCBase {
+class CTCPerceiveThing : public CTCBase { public:
     CIntelligentPointer PerceivedThing;         // +0x0c
     float     DistanceFromPerceivedThingSquared;// +0x14
     float     AwarenessTimer;                   // +0x18

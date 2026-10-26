@@ -7,7 +7,7 @@
 // ActiveTestQuestMode +0x177, TestQuestSelectedIndex +0x178, TestQuestTopIndex +0x17C, TestQuestShowAll +0x180), each
 // 0x20 lower in retail (eight 12-byte vectors before them). The real method name is unknown (catalog label kept).
 // Local model (no engine header).
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     unsigned char _pad_0x00[0x157];
     bool ActiveTestQuestMode;                 // +0x157
     long TestQuestSelectedIndex;              // +0x158

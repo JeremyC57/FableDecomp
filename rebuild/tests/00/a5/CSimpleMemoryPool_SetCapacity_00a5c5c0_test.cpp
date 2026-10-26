@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CSimpleMemoryPool { char pad00[8]; unsigned int capacity; void SetCapacity(unsigned int n); };
+class CSimpleMemoryPool { public: char pad00[8]; unsigned int capacity; void SetCapacity(unsigned int n); };
 void CSimpleMemoryPool::SetCapacity(unsigned int n) { capacity = ((n + 0xf) / 16) * 16; }
 int main(){
     CSimpleMemoryPool p; p.capacity=0;

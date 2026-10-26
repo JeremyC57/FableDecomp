@@ -15,15 +15,15 @@
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CDefPointeeBase {                    // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                    // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy() const;           // slot 1
     mutable long m_refCount;                // +0x04
 };
 
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;                              // +0x00
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
 };

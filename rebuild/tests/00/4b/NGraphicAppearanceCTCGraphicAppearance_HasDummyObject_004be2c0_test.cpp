@@ -5,8 +5,8 @@
 
 static int g_destroyCalls = 0;
 
-struct CCharStringData { char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetPString() const { return m_pStringData == 0 ? "" : m_pStringData->m_pData; }
@@ -20,7 +20,7 @@ unsigned long Calc_004014a0(unsigned long seed, const char* data, unsigned long 
 
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 static void DestroyStats(void*) { ++g_destroyCalls; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pCount;
     T* operator->() const { return m_pObject; }
@@ -38,11 +38,11 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     unsigned long dummyKey;
     bool HasDummyObject(unsigned long key) const { return key == dummyKey; }
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     C3DMeshStats* stats;
     CCountedPointer<const C3DMeshStats> GetMeshStats() const
     {
@@ -55,10 +55,10 @@ struct C3DMeshInfo {
 };
 static C3DMeshStats g_stats[3];
 static C3DMeshInfo g_infos[3];
-struct CMeshDataBank { const C3DMeshInfo* GetMeshInfo(long index) { return &g_infos[index]; } };
+class CMeshDataBank { public: const C3DMeshInfo* GetMeshInfo(long index) { return &g_infos[index]; } };
 CMeshDataBank* g_pMeshDataBank = 0;
 
-namespace NGraphicAppearance { struct CMeshInfo { long Index; float SizeX; }; }
+namespace NGraphicAppearance { class CMeshInfo { public: long Index; float SizeX; }; }
 
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end;
@@ -72,7 +72,7 @@ template <class T> struct CRetailVector {
 typedef CRetailVector<NGraphicAppearance::CMeshInfo> CMeshVector;
 
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     long index;
     void GetAllMeshes(CMeshVector& meshes) const { CMeshInfo a = { index, 1.0f }; meshes.push_back(a); }
 };
@@ -81,7 +81,7 @@ struct CComponentListNode { CComponentListNode* m_next; CComponentListNode* m_pr
 struct CComponentList { CComponentListNode* m_head; };
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     CComponentList Components;
     void GetAllMeshes(CMeshVector& meshes) const
     {

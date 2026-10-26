@@ -4,15 +4,15 @@
 extern "C" long g_charStringRefTrace_013bd800 = 0;
 extern "C" char g_emptyCharStringData = 0;
 
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* data;
     long length;
     char pad[16]; // real header has more fields; refCount-ish byte lives at +0xd
 };
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage;
 
     CCharStringData* AllocStringData(char* data, long len);

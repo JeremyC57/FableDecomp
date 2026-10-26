@@ -6,7 +6,7 @@
 // Shape: the landed "scoped name + base Initialise" family (0x008CC760) with one virtual call on the creature in between (the shape of 0x008C9DF0 on the creature itself).
 #include "fable_string.h"
 
-struct CThingCreatureBase {                 // only virtual slot 28 is modelled
+class CThingCreatureBase { public:                 // only virtual slot 28 is modelled
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];
@@ -28,7 +28,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_TentacleRise : CCombatActionBase {
+class CCreatureAction_TentacleRise : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

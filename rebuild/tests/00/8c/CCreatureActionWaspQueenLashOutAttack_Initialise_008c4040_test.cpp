@@ -5,7 +5,7 @@
 static int g_base = 0, g_removed = -1; static char g_anim[64]; static char g_added[64];
 struct CHit { unsigned char m_hitsObjects; };
 static CHit g_hit;
-struct CThing {
+class CThing { public:
     bool m_refuse;
     void RemoveTC(int type) { g_removed = type; }
     CHit* AddTC(const char* name, bool, void*) { std::strcpy(g_added, name); return m_refuse ? 0 : &g_hit; }

@@ -9,16 +9,16 @@
 // Shape: memberwise assignment in declaration order; a CDefString is a single string-table position,
 // so each one copies as one dword.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 
-struct CExpressionDef : CParentDefClassBase {   // vtable 0x01233D1C
+class CExpressionDef : public CParentDefClassBase { public:   // vtable 0x01233D1C
     CDefString Animation;               // +0x3c
     CDefString AnimationInto;           // +0x40
     CDefString AnimationLoop;           // +0x44

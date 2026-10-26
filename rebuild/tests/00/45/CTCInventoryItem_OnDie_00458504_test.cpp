@@ -8,7 +8,7 @@ static void* g_base_self = 0;
 void __cdecl my_free(void* p) { g_freed++; g_freed_ptr = p; }
 void __fastcall base_OnDie(void* self) { g_base_called++; g_base_self = self; }
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x3c];
     void* f3c;
     void OnDie();

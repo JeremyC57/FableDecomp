@@ -12,20 +12,20 @@
 #define CComponent DonorCComponent
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
-struct C2DVector {float X,Y; C2DVector(float x,float y):X(x),Y(y){} };
+class C2DVector { public:float X,Y; C2DVector(float x,float y):X(x),Y(y){} };
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union ComponentMethod {
  void* Address;
  void (CComponent::*ChangeVector)(const C2DVector&,float,bool);
  void (CComponent::*Refresh)();
 };
-struct CComponent {void* __vftable;};
+class CComponent { public:void* __vftable;};
 template<class T> struct Vector {T* First;T* Last;T* End; unsigned int size()const{return (unsigned int)(Last-First);} bool empty()const{return First==Last;} };
-struct CList;
+class CList;
 union ListMethod {void* Address; void(CList::*Refresh)();void(CList::*ChangeVector)(const C2DVector&,float,bool);};
-struct CList {
+class CList { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08

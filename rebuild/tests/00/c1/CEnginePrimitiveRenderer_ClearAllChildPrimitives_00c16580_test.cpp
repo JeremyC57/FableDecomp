@@ -4,9 +4,9 @@ struct IChild {
     virtual void slot0() = 0;
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void*   m_vtbl;
     int     m_pad4;
     IChild* m_child;

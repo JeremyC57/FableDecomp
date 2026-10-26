@@ -9,7 +9,7 @@
 // out-of-line CCharString::operator= @ 0x0099EFB0, then the inlined CCountedPointer::operator= (the source's fields
 // read first; when the count blocks differ release the old block -- destroy function at +4 with the object, then
 // operator delete @ 0x00BFE9BC -- adopt both words and add a reference), modelled as the landed 0x0084F130.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };

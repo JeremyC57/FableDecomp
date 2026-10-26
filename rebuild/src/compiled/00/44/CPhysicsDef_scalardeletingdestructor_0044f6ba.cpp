@@ -3,7 +3,7 @@ extern void __fastcall CPhysicsDef_dtor(void* def);
 extern void __cdecl op_delete(void* p);
 extern void* const CPhysicsDef_vftable;
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     void* vftable;
 };
 

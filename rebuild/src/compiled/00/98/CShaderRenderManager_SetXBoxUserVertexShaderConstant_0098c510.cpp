@@ -1,10 +1,10 @@
-struct CRGBFloatColour { float x, y, z, w; };
+class CRGBFloatColour { public: float x, y, z, w; };
 
 struct IShaderDevice {
     void* vtbl;
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x1d4];
     IShaderDevice* dev;   // +0x1d4
 };

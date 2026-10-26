@@ -9,13 +9,13 @@
 // reference (a Set(const CMatrix4x4&) member swaps the two induction registers).
 // Layout: C3DAnimationManager frame pool +0x30; C3DMesh2 bone count +0x98.
 // Leaf: ?CalcBlendedMeshTransformations@C3DAnimationManager@@QAEXPBVC3DAnimationBlendState@@0MPAVC3DVector@@PBVC3DMesh2@@PAVCMatrix3x4@@K@Z
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct C3DVector4 { float X, Y, Z, W; };
-struct CMatrix4x4 { C3DVector4 Row[4]; };
-struct CMatrix3x4 {
+class CMatrix4x4 { public: C3DVector4 Row[4]; };
+class CMatrix3x4 { public:
     C3DVector Row[4];
 };
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void* Allocate(unsigned long bytes);           // 0x00A5C910
     void FreeAll();                                // 0x00A5C720
 };
@@ -23,12 +23,12 @@ template <class T> inline T* PoolNewArray(CSimpleMemoryPool& pool, unsigned long
 {
     return count != 0 ? ((unsigned __int64)count * sizeof(T) > 0xffffffff ? 0 : (T*)pool.Allocate(count * sizeof(T))) : 0;
 }
-struct C3DAnimationBlendState;
-struct C3DMesh2 {
+class C3DAnimationBlendState;
+class C3DMesh2 { public:
     unsigned char _pad[0x98];
     unsigned long NumBones;                        // +0x98
 };
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     unsigned char _pad[0x30];
     CSimpleMemoryPool MemoryPool;                  // +0x30
     void CalcBlendedMeshTransformations(const C3DAnimationBlendState* a, const C3DAnimationBlendState* b, float t,

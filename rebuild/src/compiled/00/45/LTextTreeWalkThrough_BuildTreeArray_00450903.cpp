@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct TreeNode { int pad0; int pad4; TreeNode* next; TreeNode* child; };
+class TreeNode { public: int pad0; int pad4; TreeNode* next; TreeNode* child; };
 extern void FreeNode(TreeNode* n);
 
 struct LTextTreeWalkThrough {

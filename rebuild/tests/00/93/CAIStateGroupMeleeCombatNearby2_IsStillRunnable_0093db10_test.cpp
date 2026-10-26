@@ -1,9 +1,9 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing { C3DVector pos; long region; const C3DVector& GetPosition() { return pos; } long GetRegionAtPosition(const C3DVector& p) { return region + (long)p.x; } };
+class C3DVector { public: float x, y, z; };
+class CThing { public: C3DVector pos; long region; const C3DVector& GetPosition() { return pos; } long GetRegionAtPosition(const C3DVector& p) { return region + (long)p.x; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() { return m_pItem; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
 static bool g_baseOk = true;
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase { CBaseIntelligentPointer PEnemy; bool IsStillRunnable(bool) { return g_baseOk; } };
 struct CAIStateGroup_MeleeCombatNearby2 : CAIStateGroup_MeleeCombatNearbyBase { bool Archer; bool IsStillRunnable(bool checkEnemy); };

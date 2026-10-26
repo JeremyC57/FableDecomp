@@ -19,7 +19,7 @@
 #pragma optimize("s", on)
 
 class CWideString;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -29,14 +29,14 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
 };
-struct CWeaponDef : CDefPointeeBase {
+class CWeaponDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c - 0x08];
     long WeaponClass;                           // +0x2c
 };
-struct CAbilityDef : CDefPointeeBase {
+class CAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xa0 - 0x08];
     long DamageDefIndex;                        // +0xa0
 };
@@ -44,7 +44,7 @@ struct CDamageDef : CDefPointeeBase {
     unsigned char _pad08[0x54 - 0x08];
     float Damage;                               // +0x54
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAbilityDef>* out);   // 0x0042B1A6
 };
 struct CDefBasePointer {                        // CDefPointer<CDefClassBase>: GetPDefFromGlobalIndex's by-value result
@@ -67,7 +67,7 @@ __forceinline CDefPointeeBase* AddRef(const CDefBasePointer& pointer)
         ++object->m_refCount;
     return object;
 }
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefBasePointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
@@ -102,7 +102,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -133,17 +133,17 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const;                               // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 #pragma pack(pop)
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x004CC340
 
 bool __fastcall IsWeaponItem(long defIndex);                // 0x005D97F0
 bool __fastcall IsMeleeWeaponClass(long weaponClass);       // 0x005DA510
-struct CTCWeapon { float GetDamage() const; };              // 0x005DAAA0
-struct CTCObjectAugmentations { float GetDamageMultiplier() const; };   // 0x00766140
+class CTCWeapon { public: float GetDamage() const; };              // 0x005DAAA0
+class CTCObjectAugmentations { public: float GetDamageMultiplier() const; };   // 0x00766140
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     unsigned char _pad08[0x134 - 0x08];
@@ -151,7 +151,7 @@ struct CTCInventoryBase {
     void GetItemDescription(CWideString& description, long defIndex, bool flag) const;   // 0x005BC6B3 (virtual; called qualified)
 };
 }
-struct CTCInventoryWeapons : NInventory::CTCInventoryBase {
+class CTCInventoryWeapons : public NInventory::CTCInventoryBase { public:
     CIntelligentPointer<CThing> PActiveMeleeWeapon;         // +0x134
     long          ActiveMeleeWeaponDefIndex;                // +0x13C
     bool          MeleeWeaponCarriedOnLoad;                 // +0x140

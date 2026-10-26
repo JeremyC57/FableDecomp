@@ -1,6 +1,6 @@
-struct CDefClassBase { int base[10]; int f28; };
+class CDefClassBase { public: int base[10]; int f28; };
 
-struct CExpressionSubDef {
+class CExpressionSubDef { public:
     int base[10];
     int f28;
     // base class copy: real __fastcall member (this in ECX, src pushed on stack)

@@ -17,7 +17,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                    // +0x00
     SCountBlock* Info;                          // +0x04
     CCountedPointer& operator=(const CCountedPointer& other)
@@ -41,13 +41,13 @@ struct CCountedPointer {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CContainmentVolume;
-struct C3DMeshVolume {                          // 12 bytes
+class C3DMeshVolume { public:                          // 12 bytes
     CCharString                         Name;           // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
 };

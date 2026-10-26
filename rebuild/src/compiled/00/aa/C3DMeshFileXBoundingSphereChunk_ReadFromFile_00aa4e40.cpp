@@ -12,7 +12,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct CInputStreamAccess : CDataInputStream {
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

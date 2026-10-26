@@ -61,7 +61,7 @@ struct CTCInventoryBase_Calls {
     virtual void v35();
     virtual void OnItemSelected(long itemType);   // slot 36 (+0x90)
 };
-struct CInventoryCategoryDef;
+class CInventoryCategoryDef;
 
 struct CCategory_Retail {
     unsigned char           PAssociatedThing[0x8];   // +0x00 CIntelligentPointer<CThing>

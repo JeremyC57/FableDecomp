@@ -40,7 +40,7 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
-struct CASuspendableProcess {
+class CASuspendableProcess { public:
     bool CheckTermination();                       // 0x0072A860
 };
 class CPlayer {
@@ -48,7 +48,7 @@ public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
     void RemoveMode(long mode);                    // 0x00634190
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

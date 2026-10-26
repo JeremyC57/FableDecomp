@@ -1,14 +1,14 @@
 // Behaviour test for CTCTrespassable::CTCTrespassable(CThing*) @ 0x007BAD20: both flags cleared.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
     unsigned char _body[0x8];
     CTCBase_Calls(CThing* parent) { g_baseParent = parent; }
 };
-struct CTCTrespassable : CTCBase_Calls {
+class CTCTrespassable : public CTCBase_Calls { public:
     bool Trespassable;
     bool IsBeingTrespassedIn;
     virtual void v00() { }

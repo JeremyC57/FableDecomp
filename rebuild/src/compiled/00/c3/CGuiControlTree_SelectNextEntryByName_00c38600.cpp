@@ -17,7 +17,7 @@ struct CGuiTree_00c38600 {
     void Select(void* name, void* previous, void* context);   // 0x00C0B570
 };
 
-struct CGuiControlTree {
+class CGuiControlTree { public:
     unsigned char _pad[0xc];
     CGuiTree_00c38600 m_tree;              // +0xc
     void SelectNextEntryByName(void* name, void* context);

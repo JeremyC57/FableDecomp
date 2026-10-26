@@ -7,9 +7,9 @@
 //                fmul dword ptr [__real@1/360] ; fstp dword ptr [eax+4] ; mov edx,[esi] ; mov ecx,[edx+54h] ; mov [eax+8],ecx ; pop esi ; ret 8
 // The def pointer is a reference whose pointee is re-read before each field (the stores into the
 // new mode may alias it); the float is scaled by the literal 1/360 (`fld member ; fmul literal`).
-struct CGameCameraManager;
+class CGameCameraManager;
 
-struct CCameraModeDef {
+class CCameraModeDef { public:
     unsigned char _pad[0x4c];
     unsigned long m_flags;          // +0x4c
     float         m_turnDegrees;    // +0x50

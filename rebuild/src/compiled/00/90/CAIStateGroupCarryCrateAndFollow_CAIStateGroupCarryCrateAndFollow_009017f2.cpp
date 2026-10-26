@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer {         // 8 bytes: vptr + the pointee link
 struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     ~CAIStateGroupBase();                   // 0x008FD288
     unsigned char _pad[0x10];               // +0x4..+0x13

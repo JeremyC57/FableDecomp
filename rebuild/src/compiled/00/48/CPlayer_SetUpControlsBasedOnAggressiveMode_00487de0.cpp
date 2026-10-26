@@ -12,17 +12,17 @@
 // Shape: the global def is copied into a local CDefPointer (`inc [edi+4]` behind a null test; the release at the end is
 // the def's inline Release() with no null test: `dec [edi+4] ; jne ; call [vtable+4]`); the sheathe action is a
 // 0xb0-byte temporary passed straight from its constructor, the creature for `this` fetched first (ebx).
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead / being deleted)
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
 };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 
 bool __fastcall IsThingCarryingWeapon(const CThing* thing);   // 0x006A1540
 
@@ -31,11 +31,11 @@ inline bool IsThingAlive(const CThing* thing)
     return thing && !(thing->m_stateFlags & 1);
 }
 
-struct CCreatureActionBase {                            // retail sizeof 0xa8
+class CCreatureActionBase { public:                            // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {   // retail sizeof 0xb0
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // retail sizeof 0xb0
     unsigned char PNextAction[8];                       // +0xa8 CCountedPointer<CCreatureActionBase>
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* next, long kind);   // 0x0069FFD0
     ~CCreatureAction_SheatheItemToInventory();          // 0x0048C950 (out-of-line copy)
@@ -52,35 +52,35 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CGlobalDef : CDefPointeeBase {
+class CGlobalDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long ControlSchemePC;                               // +0x3c
     long ControlSchemePCAggressive;                     // +0x40
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     unsigned char _pad00[0xd0];
     CDefPointer<CGlobalDef> GlobalDef;                  // +0xd0
 };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     void SetControlScheme(long scheme);                 // 0x00446EF0
 };
 
-struct CPlayer {
+class CPlayer { public:
     void*                   __vftable;
     unsigned char           _pad04[0x0c - 0x04];
     CGamePlayerInterface*   PlayerInterface;            // +0x0c

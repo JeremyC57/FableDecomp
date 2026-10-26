@@ -19,7 +19,7 @@ public:
 namespace NScript {
 class CRuntimeScriptedEntityPersist {
 public:
-    struct CPersistInfo {                        // Ego_r.pdb: 16 bytes (8-aligned)
+    class CPersistInfo { public:                        // Ego_r.pdb: 16 bytes (8-aligned)
         unsigned __int64 UID;                    // +0x00
         CCharString      PersistScript;          // +0x08
     };

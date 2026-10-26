@@ -4,8 +4,8 @@
 #include "engine/CEnginePrimitiveOcclusionManager.h"
 #include "engine/CEngineCamera.h"
 #else
-struct CEnginePrimitiveOcclusionManager {unsigned long PrimitiveOccludeDelay;long ShowVisibilityInfo;float LastCameraDirection_X,LastCameraDirection_Y,LastCameraDirection_Z;float LastCameraPosition_X,LastCameraPosition_Y,LastCameraPosition_Z;float MaxCameraAngleStep,MaxCameraPositionStep;bool InvalidateOcclusion,NewSceneFlag;};
-struct CEngineCamera {unsigned char CameraDesc[0x6c];float LookVector_X,LookVector_Y,LookVector_Z;};
+class CEnginePrimitiveOcclusionManager { public:unsigned long PrimitiveOccludeDelay;long ShowVisibilityInfo;float LastCameraDirection_X,LastCameraDirection_Y,LastCameraDirection_Z;float LastCameraPosition_X,LastCameraPosition_Y,LastCameraPosition_Z;float MaxCameraAngleStep,MaxCameraPositionStep;bool InvalidateOcclusion,NewSceneFlag;};
+class CEngineCamera { public:unsigned char CameraDesc[0x6c];float LookVector_X,LookVector_Y,LookVector_Z;};
 #endif
 struct CCameraVector {
  float X,Y,Z;
@@ -17,7 +17,7 @@ struct CCameraVector {
 };
 struct CCameraDescriptionView {unsigned char Window[0x10];unsigned char RotationMatrix[0x30];CCameraVector WorldPosition;};
 extern CEngineCamera* g_pEngineCamera; //01436ea0
-struct CEngineComponentParams;
+class CEngineComponentParams;
 struct CEnginePrimitiveOcclusionManager_Methods:CEnginePrimitiveOcclusionManager {void FrameStart(const CEngineComponentParams&);};
 void CEnginePrimitiveOcclusionManager_Methods::FrameStart(const CEngineComponentParams&)
 {

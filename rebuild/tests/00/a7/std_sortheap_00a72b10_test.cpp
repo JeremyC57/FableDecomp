@@ -26,7 +26,7 @@ struct SCountBlock {
     void* m_pObject;
 };
 static void DestroyObject(void*) { ++g_destroyed; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -61,7 +61,7 @@ template <class T> struct CCountedPointer {
 };
 static SCountBlock g_counts[100];
 
-struct CFaction { long m_id; };
+class CFaction { public: long m_id; };
 static CFaction g_factions[100];
 struct SNamedPointer {
     CCharString               Name;

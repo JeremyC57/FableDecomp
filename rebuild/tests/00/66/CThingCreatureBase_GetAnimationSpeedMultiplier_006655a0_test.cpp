@@ -25,7 +25,7 @@
 //   action +0x100 (PDB view 0x10 larger). Action: +0x20 / +0x24 longs, +0x61 finished byte. World +0x68 bullet time
 //   (+0x4 dword, +0xc byte).
 #include <math.h>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -39,7 +39,7 @@ struct CBulletTime {
     bool          Active;                       // +0x0c
     float GetTimeScale();                       // 0x004C5FA0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  BulletTime;                   // +0x68
 };
@@ -66,7 +66,7 @@ public:
     CWorld* GetWorld();                         // 0x004C7AB0
     bool IsAffectedByBulletTime();              // 0x004C9920
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
 #define VF(n) virtual void v##n() { }
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF(10) VF(11) VF(12) VF(13) VF(14)
@@ -81,18 +81,18 @@ struct CCreatureActionBase {
     unsigned char _pad28[0x61 - 0x28];
     bool          Finished;                     // +0x61
 };
-struct CTCLook {
+class CTCLook { public:
     bool IsCurrentlyTurningViaAnimation();      // 0x00753B40
     float GetTurnAnimationSpeed();              // 0x00751B70
 };
-struct CTCHaste { float GetActionSpeedMultiplier(); };          // 0x007FFFB0
-struct CTCHeroExperience {
+class CTCHaste { public: float GetActionSpeedMultiplier(); };          // 0x007FFFB0
+class CTCHeroExperience { public:
     float GetMeleeStrikeAnimationSpeedMultiplier();             // 0x006D6870
     float GetMinStrikeSpeed();                                  // 0x006D6530
     float GetMaxStrikeSpeed();                                  // 0x006D6540
 };
-struct CTCCarrying { CThing* GetThingInPrimarySlot(); };        // 0x006A1440
-struct CTCWeapon { float GetAnimationSpeedValue(); };           // 0x005DA850
+class CTCCarrying { public: CThing* GetThingInPrimarySlot(); };        // 0x006A1440
+class CTCWeapon { public: float GetAnimationSpeedValue(); };           // 0x005DA850
 class CThingCreatureBase : public CThing {
 public:
     unsigned char        _pad94[0x100 - 0x94];

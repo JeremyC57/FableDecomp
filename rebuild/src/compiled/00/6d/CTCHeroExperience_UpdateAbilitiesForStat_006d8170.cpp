@@ -16,7 +16,7 @@
 // Layout: retail CTCHeroExperience TrainableStatLevels +0x24, PHeroStatsDef +0x5c (landed model, engine header has PDB offsets);
 // CHeroStatsDef MaxHitPointsPerHealthLevel +0x108, MaxStaminaPointsPerMagicPowerLevel +0x114 (as the landed 0x006D64B0 model);
 // retail CTCHeroStats (PDB -8): MaxStamina +0x5c, ExtraMaxHealth +0x8c, ExtraMaxStamina +0x90; CThingPhysical MaxHealth +0xb0.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,7 +59,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     virtual void _v00(); virtual void _v01(); virtual void _v02(); virtual void _v03(); virtual void _v04();
     virtual void _v05(); virtual void _v06(); virtual void _v07(); virtual void _v08(); virtual void _v09();
     virtual void _v10(); virtual void _v11(); virtual void _v12(); virtual void _v13(); virtual void _v14();
@@ -96,12 +96,12 @@ struct CThing {
         return false;
     }
 };
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     unsigned char _pad4c[0xb0 - 0x4c];
     float MaxHealth;                                        // +0xb0
     void SetMaxHealth(float health, bool flag);             // 0x006A5260
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x5c];
     long  MaxStamina;                                       // +0x5c
     unsigned char _pad60[0x8c - 0x60];
@@ -119,7 +119,7 @@ template <class T> struct CRetailVector {
     unsigned long size() const { return _M_finish - _M_start; }
     T& operator[](unsigned long i) const { return _M_start[i]; }
 };
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0x108];
     CRetailVector<float> MaxHitPointsPerHealthLevel;        // +0x108
     CRetailVector<long>  MaxStaminaPointsPerMagicPowerLevel;   // +0x114

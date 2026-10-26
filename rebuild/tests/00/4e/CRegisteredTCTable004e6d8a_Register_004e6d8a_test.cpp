@@ -1,6 +1,6 @@
 #include <stdio.h>
 static int g_strDtors;
-struct CCharString { void* m_pStringData; ~CCharString() { ++g_strDtors; } };
+class CCharString { public: void* m_pStringData; ~CCharString() { ++g_strDtors; } };
 struct CRegisteredTCInfo { long m_type; long m_index; CCharString m_name; };
 struct SPair {
     CCharString first; CRegisteredTCInfo second;

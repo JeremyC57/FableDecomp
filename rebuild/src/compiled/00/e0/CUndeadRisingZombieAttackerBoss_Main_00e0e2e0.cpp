@@ -14,14 +14,14 @@
 //   (0x48 bytes: base 0x34, Func +0x34, PClass +0x38, Par1 +0x3c).
 // Shape: generated script code; the spawn is `ParentClass->Add(new CSpawnedFunc1(...), "")` (conditional name temporaries
 //   with frame flags, the by-value thing parameter destroyed before Add).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
     virtual ~CScriptThing();                            // 0x004AA840
     void* PImpData;
     void* PImpInfo;
@@ -41,12 +41,12 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer root (polymorphic: vptr +0)
+class CBaseObject { public:                                    // CBaseIntelligentPointer root (polymorphic: vptr +0)
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -120,7 +120,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v449(); virtual void v450();
  virtual void GiveThingBestEnemyTarget(CScriptThing const &, CScriptThing const &) const; //slot451 0x008a0260
 };
-struct CSpawnedFuncBase {                               // 0x34 bytes
+class CSpawnedFuncBase { public:                               // 0x34 bytes
     virtual ~CSpawnedFuncBase();
     unsigned char _body[0x30];
     CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450

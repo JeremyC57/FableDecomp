@@ -7,7 +7,7 @@
 //   Dead +0x91 bit 0; the TC 9 component's flag word at +0xc (bit 2 tested; component class not identified).
 // Shape: IS_THING_ALIVE inline; the TC 9 lookup is the out-parameter GetInterface(&tc, 9) (the component re-uses eax;
 //   a GetTC return value takes ecx); the hero read once.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CTCInterface9 {                          // the component behind ETCInter
     unsigned char _pad[0xc];
     unsigned long m_flags;                      // +0x0c (bit 2: low-priority target)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,8 +56,8 @@ struct CThing {
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);     // 0x0076D2F0
 __forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
 
-struct CVectorCompare_BestForTargeting { unsigned long m_words[11]; };
-struct CThingCompare_BestForTargeting2 {
+class CVectorCompare_BestForTargeting { public: unsigned long m_words[11]; };
+class CThingCompare_BestForTargeting2 { public:
     CThing* Hero;                               // +0x00
     CVectorCompare_BestForTargeting VectorCompare;  // +0x04
     float EnemyPreferenceFactor;                // +0x30

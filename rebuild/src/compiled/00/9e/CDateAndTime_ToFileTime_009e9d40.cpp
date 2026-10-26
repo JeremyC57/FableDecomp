@@ -25,7 +25,7 @@ typedef struct _FILETIME {
 } FILETIME;
 extern "C" __declspec(dllimport) BOOL __stdcall SystemTimeToFileTime(const SYSTEMTIME* lpSystemTime, FILETIME* lpFileTime);
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;                     // +0x00
     unsigned long Month;                    // +0x04
     unsigned long Day;                      // +0x08

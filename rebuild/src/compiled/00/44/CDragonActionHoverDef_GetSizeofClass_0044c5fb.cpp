@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CDragonActionHoverDef { };
+class CDragonActionHoverDef { public: };
 
 unsigned long __fastcall CDragonActionHoverDef_GetSizeofClass(const CDragonActionHoverDef* self)
 {

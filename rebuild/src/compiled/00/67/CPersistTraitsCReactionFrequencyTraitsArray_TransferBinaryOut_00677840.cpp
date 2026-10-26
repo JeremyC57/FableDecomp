@@ -11,7 +11,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteLong(long value);                     // 0x00993EB0
 };
 
-struct CReactionFrequencyTraits {
+class CReactionFrequencyTraits { public:
     virtual void v00();
     virtual void v01();
     virtual long GetType() const;                                       // +0x08
@@ -19,7 +19,7 @@ struct CReactionFrequencyTraits {
     virtual void TransferBinaryOut(CDataOutputStream* stream) const;    // +0x10
 };
 
-struct CReactionFrequencyTraitsArray {
+class CReactionFrequencyTraitsArray { public:
     CReactionFrequencyTraits* LowHigh[2][79];       // +0x000
 };
 

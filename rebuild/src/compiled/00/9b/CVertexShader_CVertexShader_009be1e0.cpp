@@ -16,12 +16,12 @@ struct CVertexShaderData {
     long  m_refCount;                              // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual void v00();
     ~CShaderBase() { }
 };
 
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0
     CVertexShaderData* m_pData;                    // +0x04
     virtual void v00();
     ~CVertexShader();

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CTCInventoryAbilities::GetAbilityMaximumLevel (0x005EDEA3): same logic over a copy of the model.
 struct CLongVector { long* first; long* last; long* end_of_storage; unsigned long size() const { return (unsigned long)(last - first); } };
-struct CHeroAbilityDef { CLongVector ExperienceCostsToUpgrade; };
+class CHeroAbilityDef { public: CLongVector ExperienceCostsToUpgrade; };
 struct SAbilityEntry { long Level; const CHeroAbilityDef* PDef; };
 struct CAbilityEntryVector { SAbilityEntry* first; SAbilityEntry* last; SAbilityEntry* end_of_storage; SAbilityEntry& operator[](unsigned long n) { return first[n]; } };
 template <class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }

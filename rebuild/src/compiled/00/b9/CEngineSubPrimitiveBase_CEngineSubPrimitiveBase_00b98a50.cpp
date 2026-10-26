@@ -7,7 +7,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CEngineSubPrimitiveBase : CBase {           // vtable 0x012A3E7C
+class CEngineSubPrimitiveBase : public CBase { public:           // vtable 0x012A3E7C
     unsigned char _pad04[8];                       // +0x04 .. +0x0c
     void*         m_pPrimitive;                    // +0x0c
     long          m_pNext;                         // +0x10

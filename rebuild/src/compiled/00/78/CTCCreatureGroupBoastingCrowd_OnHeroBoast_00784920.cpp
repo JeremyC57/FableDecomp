@@ -17,7 +17,7 @@ struct CBoast {
     unsigned char _pad00[0x18];
     bool Evil;                              // +0x18
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     unsigned char _pad04[0x2c - 0x04];          // CTCBase, CTCCreatureGroup, PHero
     long CrowdState;                            // +0x2c

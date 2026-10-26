@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_UnsheatheItemFromInventoryWithHasteAction {
+class CCreatureAction_UnsheatheItemFromInventoryWithHasteAction { public:
     void* vftable;
     int destroyed;
 };

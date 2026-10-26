@@ -6,12 +6,12 @@
 #define __declspec(x)
 #endif
 static int g_ctors = 0, g_dtors = 0, g_termCalls = 0; static unsigned char g_terminating = 0, g_enflamed = 0; static long g_kind = 0; static const char* g_name = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pStringData;
     CCharString(const char* text, long length = -1) : m_pStringData(text) { ++g_ctors; if (length != -1) g_ctors = -100; }
     ~CCharString() { ++g_dtors; }
 };
-struct CScriptThing { virtual void v000() { } virtual bool IsEnflamedBy(long kind, const CCharString& name) { g_kind = kind; g_name = name.m_pStringData; return g_enflamed != 0; } };
+class CScriptThing { public: virtual void v000() { } virtual bool IsEnflamedBy(long kind, const CCharString& name) { g_kind = kind; g_name = name.m_pStringData; return g_enflamed != 0; } };
 struct CV_MurderTwistFinalScript {
     virtual void v00() { }
     unsigned char IsActiveThreadTerminating() { ++g_termCalls; return g_terminating; }

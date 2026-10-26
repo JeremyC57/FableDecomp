@@ -14,27 +14,27 @@
 //   descending address order and the three diagonal ones last, which VC7.1 follows only in statement order, so the inline
 //   matrix ctor writes its members in that order. C3DVector needs a user operator= for the camera-position copy to read
 //   through the camera pointer (`mov ecx,[eax+54h]`) instead of forming the member address.
-struct CRGBFloatColour;
-struct C4DVector {
+class CRGBFloatColour;
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
     inline C4DVector(const CRGBFloatColour& c);
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
 inline C4DVector::C4DVector(const CRGBFloatColour& c) : X(c.R), Y(c.G), Z(c.B), W(c.A) { }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector& operator=(const C3DVector& o) { X = o.X; Y = o.Y; Z = o.Z; return *this; }
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float M[9];                                         // rotation rows
     C3DVector Pos;                                      // translation
     CMatrix3x4() { }
@@ -52,7 +52,7 @@ struct CPreTransposedBoneMatrix {
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -61,13 +61,13 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
@@ -163,7 +163,7 @@ private:
 };
 extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
 
-struct CEngineWaterSettings {                           // PDB CEngineWaterSettings (0x2e4)
+class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char   _pad00[0xd];
     bool            EnableBumpMap;                      // +0x0d
     bool            EnableSwell;                        // +0x0e
@@ -200,7 +200,7 @@ struct CEnvironmentTheme {
     unsigned char   _pad[0x54];
     SThemeSettings* m_pSettings;                        // +0x54
 };
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual CEnvironmentTheme* GetTheme();              // slot 1
 };
@@ -216,19 +216,19 @@ extern SEngineState* g_pEngineState;                    // 0x01436E8C
 
 struct CThemeChannel { CRGBFloatColour Colour; };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char  _pad00[0x3c];
     CThemeChannel* ThemeChannels;                       // +0x3c (CArray first pointer)
 };
 extern CEngineLightingManager* g_pLightingManager;      // 0x01436E9C
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                        // +0x54
 };
 extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char        _pad000[0x274];                // vptr, buffers, shaders, render lists (retail 12-byte CArrays)
     bool                 HighendWaterEnabled;           // +0x274
     unsigned char        _pad275[0xb];

@@ -1,4 +1,4 @@
-struct CCreatureAction_SpiritReturnToHero {
+class CCreatureAction_SpiritReturnToHero { public:
     void* vftable;
 };
 

@@ -12,7 +12,7 @@
 // __pop_heap_aux inline; the value copy is built in the argument area by the pair's implicit copy constructor:
 // the key dword, then CIntelligentPointer's user copy constructor (base ctor, derived vtable store,
 // `SetPItem(other.GetPItem())`). Pointer model as in the landed CThingSoundEmitter sources.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

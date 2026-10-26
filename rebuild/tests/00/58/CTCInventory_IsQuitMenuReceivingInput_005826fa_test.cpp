@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CTCInventory::IsQuitMenuReceivingInput (retail 0x005826FA).
 static int g_lookups = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }
@@ -30,7 +30,7 @@ struct CComponentVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     CUIComponent*& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CComponentVector Components;
     bool IsQuitMenuReceivingInput();
 };

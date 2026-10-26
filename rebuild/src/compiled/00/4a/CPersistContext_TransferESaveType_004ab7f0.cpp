@@ -8,7 +8,7 @@
 //   three pushes; `this` stays in ecx; `pop ecx ; ret 8`. The sibling double instance is the landed 0x004AB810.
 enum ESaveType { SAVE_TYPE_DEFAULT = 0 };
 
-struct CPersistContext {
+class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004AB640 for T = ESaveType
     template <class T> void Transfer(const char* name, T& value)
     {

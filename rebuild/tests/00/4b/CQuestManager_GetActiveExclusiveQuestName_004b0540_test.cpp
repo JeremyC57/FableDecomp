@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { int dummy; };
+class CCharString { public: int dummy; };
 
 struct SubNode {
     int key; SubNode* next; char pad[0x28 - 8]; CCharString* name;

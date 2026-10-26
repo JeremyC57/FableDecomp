@@ -1,6 +1,6 @@
 // CTCMapwho::OnDie @ 0071a730
 
-struct CTCMapwho;
+class CTCMapwho;
 
 struct Helper2 {
     void Notify(CTCMapwho* thing);  // __fastcall: ecx=this(that), stack arg=thing
@@ -11,7 +11,7 @@ struct HelperObj {
     Helper2* f10; // +0x10
 };
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad[0x50];
     unsigned char f50; // +0x50
 };

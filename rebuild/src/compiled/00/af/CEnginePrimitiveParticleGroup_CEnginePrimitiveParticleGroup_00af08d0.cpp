@@ -9,32 +9,32 @@
 // bytes from one zero register; the bounding sphere is copied memberwise (C3DVector has a user copy
 // constructor, so the implicit sphere copy goes member by member through one register per dword).
 
-struct C3DVector {                                       // memberwise user copy constructor: one register per dword
+class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
-struct CRGBColour {                                      // the union's channel view: D3DCOLOR byte order
+class CRGBColour { public:                                      // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
-struct CEnginePrimitiveThemeChannelDesc {                // 4 bytes (PDB)
+class CEnginePrimitiveThemeChannelDesc { public:                // 4 bytes (PDB)
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEnginePrimitive {                                // 12 bytes (PDB)
+class CEnginePrimitive { public:                                // 12 bytes (PDB)
     long                             Type;               // +0x00 EEnginePrimitiveType
     long                             InterpolationSet;   // +0x04 EEngineInterpolationSet
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;   // +0x08
     CEnginePrimitive(long type, long interpolationSet = 0) : Type(type), InterpolationSet(interpolationSet) { }
 };
 
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
 struct CEnginePrimitiveParticleGroup : CEnginePrimitive {
     float             DistanceFromCam;                   // +0x0c

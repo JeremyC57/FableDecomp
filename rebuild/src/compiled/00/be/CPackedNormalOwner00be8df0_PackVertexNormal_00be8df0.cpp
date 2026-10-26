@@ -5,7 +5,7 @@
 // Callees: none. Float pool: 0x0129EF90 = 1023.0f, 0x0129EF94 = 511.0f (the z scale).
 // Shape: the three rounded components land in a 3-word frame (y at [esp], z at [esp+4], x at [esp+8]) and are
 // combined as ((y & 0x7ff) | (z << 11)) << 11 | (x & 0x7ff).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPackedNormalOwner_00be8df0 {
     unsigned long m_packedNormal;                  // +0x00 (the packed vertex normal; `this` is the vertex)
     unsigned long& PackVertexNormal(const C3DVector& normal);

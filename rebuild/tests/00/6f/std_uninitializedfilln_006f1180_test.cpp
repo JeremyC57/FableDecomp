@@ -15,7 +15,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); }
 };
 #pragma pack(push, 1)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(pop)
 struct CProng { bool Blocked; C3DVector Prong; long ProngBlockageTimer; CIntelligentPointer POccupier; };
 struct __false_type { };

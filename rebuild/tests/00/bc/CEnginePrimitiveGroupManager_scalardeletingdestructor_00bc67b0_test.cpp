@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveGroupManager {
+class CEnginePrimitiveGroupManager { public:
     void* vftable;
     int destroyed;
 };

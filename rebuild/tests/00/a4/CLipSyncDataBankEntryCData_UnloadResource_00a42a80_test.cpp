@@ -3,7 +3,7 @@
 #include <cstdio>
 
 static int g_deletes = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int) {}
     virtual void Delete() { ++g_deletes; }
     unsigned long IVRefCount;
@@ -28,16 +28,16 @@ struct CIVCountedPointer {
         return *this;
     }
 };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     bool IsValid() const { return Data != 0; }
     long GetRefCount() const { return Info ? Info->RefCount : 0; }
 };
-struct CLipSyncSampleData { int x; };
-struct CBankFileAsyncData;
-struct CLipSyncDataBank;
-struct CLipSyncDataBankEntry { CIVCountedPointer Data; };
+class CLipSyncSampleData { public: int x; };
+class CBankFileAsyncData;
+class CLipSyncDataBank;
+class CLipSyncDataBankEntry { public: CIVCountedPointer Data; };
 struct CData {
     unsigned char                       _resource[0x1c];
     CCountedPointer<CLipSyncSampleData> LipSyncData;

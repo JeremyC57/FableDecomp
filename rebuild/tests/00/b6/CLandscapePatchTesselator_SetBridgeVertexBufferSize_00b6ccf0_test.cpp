@@ -11,7 +11,7 @@ struct BridgeBuffer {
     void SetSize(long n, Buf24* out);
 };
 
-struct CLandscapePatchTesselator {
+class CLandscapePatchTesselator { public:
     char m_pad[0x14];
     BridgeBuffer m_bridge;
 

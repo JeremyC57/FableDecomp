@@ -1,27 +1,27 @@
 // Behaviour test for CInputProcessFishing::ProcessInput @ 0x00690B20 (copy of the model with stub callees).
 #include <cstdio>
 #include <cstring>
-struct CInputEvent { int pressed; long action; };
+class CInputEvent { public: int pressed; long action; };
 struct CMemoryBuffer { unsigned char buf[8]; int len; void Copy(unsigned long n, const void* d) { std::memcpy(buf + len, d, n); len += (int)n; } };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long Type;
     CGameEvent(long type) : Type(type) { len = 0; }
     void AddLong(long value) { int v = (int)value; Copy(4, &v); }
     void AddBool(bool value) { Copy(1, &value); }
 };
-struct CProcessedInput {
+class CProcessedInput { public:
     bool handled; int events; long type; unsigned char data[8]; int len;
     void SetHandled() { handled = true; }
     void AddGameEvent(const CGameEvent& e) { ++events; type = e.Type; len = e.len; std::memcpy(data, e.buf, 8); }
 };
-struct CTCFishing { int reel, cast; void ReelInButtonPressed() { ++reel; } void CastButtonPressed() { ++cast; } };
-struct CThing {
+class CTCFishing { public: int reel, cast; void ReelInButtonPressed() { ++reel; } void CastButtonPressed() { ++cast; } };
+class CThing { public:
     unsigned long m_tcMask[8]; CTCFishing* fishing;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     CTCFishing* GetTC(long) { return fishing; }
 };
 static CThing g_hero;
-struct CInputProcessFishing {
+class CInputProcessFishing { public:
     bool IsEventButtonPressed(const CInputEvent& e) { return e.pressed != 0; }
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.action == a; }
     void ProcessInput(const CInputEvent& event, CProcessedInput& processed)

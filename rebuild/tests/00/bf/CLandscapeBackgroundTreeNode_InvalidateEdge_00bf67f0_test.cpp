@@ -64,15 +64,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CEngineWaterBackgroundSubPatch;
-struct CIndexBuffer;
-struct CLandscapeBackgroundTreeNode;
-struct CSubPatchTreeLODLockElement;
-struct CTexture;
-struct CVertexBufferWin32;
+class CEngineWaterBackgroundSubPatch;
+class CIndexBuffer;
+class CLandscapeBackgroundTreeNode;
+class CSubPatchTreeLODLockElement;
+class CTexture;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void*                           __vftable;               // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     unsigned char                   EdgeStrips[0xb0];        // +0x08 CPatchTesselationEdgeStrip[4]
@@ -149,7 +149,7 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundPatch, IsDefaultSection) == 0x1
 
 
 #pragma pack(push, 1)
-struct CMovableResource {
+class CMovableResource { public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
 };
 #pragma pack(pop)
@@ -190,14 +190,14 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0)
 #include <stddef.h>
 
 
-struct CEngineLandscapeMap;
-struct CLandscapeBackgroundDynamicBuildTemplate;
+class CEngineLandscapeMap;
+class CLandscapeBackgroundDynamicBuildTemplate;
 struct CLandscapeBackgroundLoadTask;
 struct CLandscapeBackgroundSubNodeBase;
 struct CLandscapeGPUUpdateTask;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                             _pad_0x04[0x4]; // +0x04
     unsigned char                             _pad_0x08[0x4]; // +0x08
@@ -270,20 +270,20 @@ FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundTreeNode, HasSubPatchLoadInfo) 
 #include <stddef.h>
 
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CEngineLandscapeLODMap;
-struct CEngineLandscapePatch;
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
-struct CGraphicDataBank;
-struct CLandscapeBackgroundDynamicBuildTemplate;
-struct CLandscapeBackgroundTreeNode;
-struct CRGBColour;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CEngineLandscapeLODMap;
+class CEngineLandscapePatch;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
+class CGraphicDataBank;
+class CLandscapeBackgroundDynamicBuildTemplate;
+class CLandscapeBackgroundTreeNode;
+class CRGBColour;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*             PatchTree;     // +0x04
     CEngineLandscapePatch*                    Patches;       // +0x08

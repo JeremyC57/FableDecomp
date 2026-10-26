@@ -1,9 +1,9 @@
 // Behaviour test for 0x00860950 CVillageTaskPatrol::RemoveThingFromTask: start-node hit clears the start and asks for
 // removal; any other thing clears the assigned creature; the task is always unlocked.
 #include <cstdio>
-struct CBaseObject { int id; };
-struct CThing : CBaseObject { };
-struct CThingTrackNode : CThing { };
+class CBaseObject { public: int id; };
+class CThing : public CBaseObject { public: };
+class CThingTrackNode : public CThing { public: };
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { }
@@ -11,11 +11,11 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CVillageTaskPatrol {
+class CVillageTaskPatrol { public:
     CIntelligentPointer<const CThingTrackNode> PatrolStart;
     CIntelligentPointer<const CThing> CreatureAssignedToTask;
     bool TaskLocked;

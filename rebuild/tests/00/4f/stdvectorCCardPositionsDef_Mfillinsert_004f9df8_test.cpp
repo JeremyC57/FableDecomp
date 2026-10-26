@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CCardPositionsDef {
+class CCardPositionsDef { public:
     int Key;                                         // stands for the def's base-class body
     int OffsetCount; float OffsetX;
     CCardPositionsDef() : Key(0) { ++g_live; }

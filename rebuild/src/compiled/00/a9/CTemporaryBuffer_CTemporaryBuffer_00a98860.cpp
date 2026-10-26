@@ -15,14 +15,14 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                   // 0x0099A2F0
 };
-struct CScratchBuffer {
+class CScratchBuffer { public:
     unsigned char _pad00[8];
     unsigned char* Buffer;                     // +0x08
     bool           Locked;                     // +0x0c
     long           NoBytes;                    // +0x10
     bool Lock(void** ppBuffer);                // 0x009F4980
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool  Allocate(long* handle, unsigned long size, unsigned long flags);   // 0x00A03180
     void  Lock(long handle);                   // 0x00A026F0
     void* GetPointerFromHandle(long handle);   // 0x00A026B0

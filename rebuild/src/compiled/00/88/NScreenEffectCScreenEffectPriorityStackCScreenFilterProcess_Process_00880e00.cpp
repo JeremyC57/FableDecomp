@@ -9,7 +9,7 @@
 // Shape: the call result assigned straight to the member: the 0x20-byte POD (implicit copy) moves as an 8-dword `rep movsd`
 // from the pointer the call returns in eax into the re-read member address.
 // Leaf: ?Process@CScreenFilterProcess
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 

@@ -31,8 +31,8 @@ FABLE_STATIC_ASSERT(
 
 namespace NBankFileManager
 {
-    struct CContainedBank
-    {
+    class CContainedBank
+    { public:
         fable_u32 dataVersion_;
         fable_u32 entryCount_;
         fable_u32 infoOffset_;

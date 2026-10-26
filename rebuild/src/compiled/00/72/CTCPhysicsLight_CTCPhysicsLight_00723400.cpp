@@ -5,9 +5,9 @@
 //   struct, so the polymorphic base is modelled locally for the constructor), AffectedByGravity bool:1 at +0x40.
 // Shape: the bit cleared (`and byte ptr [esi+40h],0FEh`) before the vtable store.
 // Leaf: ??0CTCPhysicsLight
-struct CThing;
+class CThing;
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000();
     unsigned char _base[0x3c];              // +0x04 .. +0x40
     CTCPhysicsBase(CThing* thing);          // 0x006B0730

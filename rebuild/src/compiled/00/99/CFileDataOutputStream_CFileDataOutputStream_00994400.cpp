@@ -8,12 +8,12 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
 };
 
-struct CDataOutputStream : CBase {                 // vtable 0x0129A6E0
+class CDataOutputStream : public CBase { public:                 // vtable 0x0129A6E0
     CCharString m_lineEnding;                      // +0x04
     virtual void v00();
     CDataOutputStream() : CBase(), m_lineEnding("\r\n", -1) { }

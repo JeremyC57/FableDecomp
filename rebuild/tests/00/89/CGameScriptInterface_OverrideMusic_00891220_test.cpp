@@ -4,9 +4,9 @@
 #  define __fastcall
 #  define __cdecl
 #endif
-struct CWorld;
-struct CGameScriptInterface                        // test-local view (engine/CGameScriptInterface.h is 32-bit only)
-{
+class CWorld;
+class CGameScriptInterface                        // test-local view (engine/CGameScriptInterface.h is 32-bit only)
+{ public:
     virtual void v000() { }
     CWorld* World;                                 // +0x04
 };

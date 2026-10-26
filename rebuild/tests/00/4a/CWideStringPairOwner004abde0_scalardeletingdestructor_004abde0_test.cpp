@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_n = 0; static void* g_d[2];
-struct CWideString { void* m_pData; ~CWideString() { g_d[g_n++] = m_pData; } };
+class CWideString { public: void* m_pData; ~CWideString() { g_d[g_n++] = m_pData; } };
 struct SWideStringPair_004abde0 { CWideString m_first; CWideString m_second; };
 struct CWideStringPairOwner_004abde0 { long m_0; SWideStringPair_004abde0 m_pair; ~CWideStringPairOwner_004abde0() { } };
 static void Destroy_CWideStringPairOwner_004abde0(CWideStringPairOwner_004abde0* o) { delete o; }

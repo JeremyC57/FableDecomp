@@ -10,23 +10,23 @@
 // (C2DBoxF's memberwise user copy constructor: four direct moves) and the string/texture copy constructors; the body
 // assigns both union views field by field (+0x20/+0x24 copied twice) and the colour through CRGBColour's inline
 // Set(r, g, b, a) assignment (all four bytes loaded before any store).
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(const C2DBoxF& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);              // 0x0099B720
 };
 
-struct CTexture {
+class CTexture { public:
     void* m_p0;
     void* m_p1;
     CTexture(const CTexture& other);                    // 0x009F9D00
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour& operator=(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); return *this; }
@@ -34,7 +34,7 @@ struct CRGBColour {
 
 class CFontBank;
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04

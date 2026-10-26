@@ -12,12 +12,12 @@
 // Shape: `optimize("s")` (fldz float zeros, lea'd member addresses, one ebx zero register); the CEngineGraphic inline ctor
 // zeroes its two floats first.
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                              // 0x0099E4B0
 };
 #pragma pack(push, 1)
-struct CEngineGraphic {                         // 14 bytes
+class CEngineGraphic { public:                         // 14 bytes
     unsigned long BankIndex;                    // +0x00
     float AnimStep;                             // +0x04
     float RenderSizeX;                          // +0x08
@@ -37,12 +37,12 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 struct CDialogueLayerDef;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x90 - 0x04];           // the def root and CGlobalDef's scalar members up to +0x8C
     CParentDefClassBase();                      // 0x00430370
 };
-struct CGlobalDef : CParentDefClassBase {
+class CGlobalDef : public CParentDefClassBase { public:
     CCharString PickupGoldSoundCriteria;        // +0x90
     CCharString PickupItemSoundCriteria;        // +0x94
     CCharString OnClickSoundCriteria;           // +0x98

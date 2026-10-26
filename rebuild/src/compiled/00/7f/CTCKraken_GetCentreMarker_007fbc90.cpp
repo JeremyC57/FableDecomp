@@ -14,12 +14,12 @@
 // out pointer; one box and one `found` serve both searches; the intelligent-pointer temporaries take `CThing* const&` (the
 // out word is read after the base ctor) and operator= names the item in a local.
 // Layout (local model): retail CTCKraken PChamber +0x10, PCentreMarker +0x18, PTarget +0x20 (PDB offsets; before the lists).
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -29,31 +29,31 @@ class CThing {
 public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CThingFilter_HasDefGlobalIndex {
+class CThingFilter_HasDefGlobalIndex { public:
     long m_defGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : m_defGlobalIndex(index) { }
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** out) const;   // 0x007FCEF0
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;        // 0x007FD110
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsLoading();                           // slot 9 (+0x24) (name descriptive)
 };
-struct CThingPlayerCreature;
-struct CPlayer {
+class CThingPlayerCreature;
+class CPlayer { public:
     CThing* GetPPlayerCharacter() const;                // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CBaseIntelligentPointer {
@@ -74,7 +74,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<C
         return *this;
     }
 };
-struct CTCBase {
+class CTCBase { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     CPlayerManager*     GetPlayerManager();             // 0x00686D40
@@ -82,7 +82,7 @@ struct CTCBase {
     CThingSearchTools*  GetThingSearchTools() const;    // 0x00686D90
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
-struct CTCKraken : CTCBase {
+class CTCKraken : public CTCBase { public:
     unsigned char       _pad08[0x10 - 0x08];
     CIntelligentPointer PChamber;                       // +0x10
     CIntelligentPointer PCentreMarker;                  // +0x18

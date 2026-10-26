@@ -18,7 +18,7 @@ public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CCPPointerInfo {                                  // CCountedPointer count block
+class CCPPointerInfo { public:                                  // CCountedPointer count block
     long  RefCount;                                      // +0x00
     void  (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                          // +0x08

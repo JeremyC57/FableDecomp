@@ -7,7 +7,7 @@
 // Shape: the last index is a named long (kept in esi and homed in the frame for `fild`), `pos * (float)lastIndex` truncated by __ftol2 (0x00BFEA70).
 // Leaf: GetClosestParameterisedControlPoints
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CParticleUpdateParameters;           // CParticleUpdateParameters<unsigned long, unsigned long>
 
 struct C3DVector {

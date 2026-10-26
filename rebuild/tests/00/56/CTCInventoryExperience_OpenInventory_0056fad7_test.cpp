@@ -3,12 +3,12 @@
 
 static int g_menus = 0, g_notified = 0, g_prepared = 0, g_hudOff = 0, g_refresh = 0, g_cleared = 0, g_active = 0;
 void OnOpenMenus() { ++g_menus; }
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     long GeneralExperience;
     long Stat[3];
     long GetStatExperience(long stat) { return Stat[stat]; }
 };
-struct CThing {
+class CThing { public:
     CTCHeroExperience* m_experience;
     template<class T> bool GetInterface(T** out, long wanted)
     {
@@ -22,7 +22,7 @@ struct CFrontEndManager {
 };
 struct CHudOwner { virtual void SetEnabled(bool enabled) { if (!enabled) ++g_hudOff; } };
 struct CWorldPart { CHudOwner* Hud; };
-struct CMainGameComponent { CWorldPart* World; };
+class CMainGameComponent { public: CWorldPart* World; };
 static CHudOwner g_hud; static CWorldPart g_worldPart = { &g_hud }; static CMainGameComponent g_mgc = { &g_worldPart };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
 struct CSoundSystem {
@@ -31,7 +31,7 @@ struct CSoundSystem {
 static CSoundSystem g_sound; static CSoundSystem* g_pSoundSystem = &g_sound;
 struct CTutorialSoundHandleMap { void clear() { ++g_cleared; } };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CThing* ParentThing;
     CTutorialSoundHandleMap TutorialSoundHandles;
     long OrigGeneral, OrigStrength, OrigSkill, OrigWill;

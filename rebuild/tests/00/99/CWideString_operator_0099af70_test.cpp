@@ -5,8 +5,8 @@
 // Host model of CWideString::operator<(const CWideString&): wcscmp(this text, other text) < 0, an unassigned string
 // (null storage) reading as the shared empty wide string.
 static wchar_t g_empty[1] = { 0 };
-struct CWideStringData { wchar_t* text; unsigned int unknown04; unsigned int unknown08; long owners; };
-struct CWideString {
+class CWideStringData { public: wchar_t* text; unsigned int unknown04; unsigned int unknown08; long owners; };
+class CWideString { public:
     CWideStringData* storage_;
     const wchar_t* GetAsCharArray() const { return storage_ == 0 ? g_empty : storage_->text; }
     bool operator<(const CWideString& other) const { return wcscmp(GetAsCharArray(), other.GetAsCharArray()) < 0; }

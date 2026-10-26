@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -18,7 +18,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned short m_globalDefIndex;
@@ -58,33 +58,33 @@ struct CDefPointee {
     void Destroy() { ++g_destroyed; }
 };
 static __inline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
     T* operator->() const { return Object; }
 };
-struct CCreatureDef : CDefPointee { long m_value40; };
+class CCreatureDef : public CDefPointee { public: long m_value40; };
 static CCreatureDef g_creatureDef;
-struct CDefClassBase : CDefPointee {
+class CDefClassBase : public CDefPointee { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out) { out->Object = &g_creatureDef; ++g_creatureDef.m_refCount; return true; }
 };
 static CDefClassBase g_thingDef;
 static long g_requestedIndex;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CDefClassBase>* out)
     { g_requestedIndex = globalIndex; out->Object = &g_thingDef; ++g_thingDef.m_refCount; return true; }
     static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; }
 };
 static long g_reported = -1; static int g_reportCount;
 struct CStatEvent { long m_value; CStatEvent(long v) : m_value(v) {} };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void InformOfEvent(const CStatEvent* event) { g_reported = event->m_value; ++g_reportCount; }
 };
 struct CTCInterface_a0 { bool m_flag10; };
 static bool g_ghost;
 static bool IsThingGhostSword(const CThing*) { return g_ghost; }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     CThing* ParentThing;
     const CThing* GetThing() const { return ParentThing; }
 };

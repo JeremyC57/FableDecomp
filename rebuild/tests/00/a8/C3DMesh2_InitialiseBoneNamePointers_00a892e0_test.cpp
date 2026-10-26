@@ -1,7 +1,7 @@
 #include <cstdio>
 static unsigned short g_names[8];
-struct CHandleBasedMemoryPool { void* GetPointerFromHandle(long h) { return h == 77 ? (void*)g_names : 0; } };
-struct C3DMesh2 { void* m_vptr; CHandleBasedMemoryPool* MemoryPool; unsigned char _pad_0x08[0x7c]; long BoneNameMemoryHandle; unsigned char _pad_0x88[0x10]; unsigned long BoneCount; unsigned char _pad_0x9c[0x8]; unsigned short* BoneNameIndices; char* BoneNameData;
+class CHandleBasedMemoryPool { public: void* GetPointerFromHandle(long h) { return h == 77 ? (void*)g_names : 0; } };
+class C3DMesh2 { public: void* m_vptr; CHandleBasedMemoryPool* MemoryPool; unsigned char _pad_0x08[0x7c]; long BoneNameMemoryHandle; unsigned char _pad_0x88[0x10]; unsigned long BoneCount; unsigned char _pad_0x9c[0x8]; unsigned short* BoneNameIndices; char* BoneNameData;
     void InitialiseBoneNamePointers(long has) { if (has) { unsigned short* i = (unsigned short*)MemoryPool->GetPointerFromHandle(BoneNameMemoryHandle); BoneNameIndices = i; BoneNameData = (char*)(i + BoneCount); } } };
 int main()
 {

@@ -19,7 +19,8 @@ Outputs
 
 Header contract (see docs/pipeline/... and CONTRIBUTING.md)
   * self-contained: forward decls only, no engine-to-engine includes
-  * `#pragma pack(push,1)` POD struct; every byte accounted for; real PDB member names
+  * `#pragma pack(push,1)` POD layout; every byte accounted for; real PDB member names; the
+    class-key is retail's (`class X { public:` when the PDBs mangle X with V, else `struct X {`)
   * composites/templates are opaque `unsigned char Name[N]` with the real type in a comment
   * compile-time size/offset checks via FABLE_STATIC_ASSERT (rebuild_abi.h); never spell
     lowercase `static_assert` (the verify harness strips those lines from candidates)
@@ -406,6 +407,25 @@ def reconcile(cls: str, donor: DonorStruct, emitted: list[Emitted],
     return rows, emitted
 
 
+CLASS_KEYS = ROOT / "ghidra_out" / "pdb_class_keys.tsv"
+_KEYS: dict[str, str] | None = None
+
+
+def class_key(name: str) -> str:
+    """`class` when the retail PDBs mangle `name` with `V`, `struct` when `U` or unknown.
+    ghidra_out/pdb_class_keys.tsv is written by tools/decomp_pipeline/pdb_class_keys.py from the
+    Ego_r/FableWin name sets; a type keyed both ways (`U/V`) keeps `struct`."""
+    global _KEYS
+    if _KEYS is None:
+        _KEYS = {}
+        if CLASS_KEYS.exists():
+            for line in CLASS_KEYS.read_text(encoding="utf-8").splitlines()[1:]:
+                p = line.split("\t")
+                if len(p) > 2 and p[1] == "type" and p[2] in ("U", "V"):
+                    _KEYS[p[0]] = "class" if p[2] == "V" else "struct"
+    return _KEYS.get(name, "struct")
+
+
 def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[str],
                 n_retail: int, status: str) -> str:
     guard = "FABLE_ENGINE_" + re.sub(r"\W", "_", cls).upper() + "_H"
@@ -417,10 +437,13 @@ def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[s
              "// `unsigned char X[N]` members carry their real (composite/template) type in a comment.",
              "#include <stddef.h>", '#include "rebuild_abi.h"', ""]
     for f in sorted(fwd - {cls}):
-        lines.append(f"struct {f};")
+        lines.append(f"{class_key(f)} {f};")
     if fwd - {cls}:
         lines.append("")
-    lines += ["#pragma pack(push, 1)", f"struct {cls} {{"]
+    # Retail's class-key (`class` V / `struct` U in the PDB manglings) so symbols mangle as retail's;
+    # a `class` opens with `public:` so every member stays accessible to the landed bodies.
+    key = class_key(cls)
+    lines += ["#pragma pack(push, 1)", f"{key} {cls} {{"] + (["public:"] if key == "class" else [])
     w = max((len(e.ctype) for e in emitted), default=10)
     for e in emitted:
         decl = f"    {e.ctype:<{w}} {e.name}{e.suffix};"

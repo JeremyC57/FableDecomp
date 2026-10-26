@@ -1,18 +1,18 @@
 // Behaviour test for 0x0098F570 std::less<CThreadedFileManager::CPendingObjectSortKey>::operator():
 // order pending loads by the file's physical sort key, then the file position, then the object address
 #include <stdio.h>
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned char _pad00[0x14];
     unsigned long PhysicalSortKey;
 };
-struct CThreadedFileObjectDesc {
+class CThreadedFileObjectDesc { public:
     void*         PDst;
     unsigned long FilePos;
     unsigned char _pad08[0x10];
 };
 class CThreadedFileManager {
 public:
-    struct CFileObject {
+    class CFileObject { public:
         CThreadedFileObjectDesc Desc;
         unsigned long  UID;
         long           LoadingStatus;

@@ -13,7 +13,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -80,7 +80,7 @@ inline SExpressionPair* GetData(CExpressionPairVector& a)
     return reinterpret_cast<SExpressionPair*>(&a);
 }
 
-struct CExpressionSet {
+class CExpressionSet { public:
     CExpressionPairVector Pairs;           // +0x00
     SExpressionCompare Compare;            // +0x0C
     bool Dirty;                            // +0x0D

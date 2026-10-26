@@ -30,7 +30,7 @@ public:
     long GetSize();                                                    // 0x00994B40
     void* PeekData();                                                  // 0x00995E70
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0();
     unsigned long StreamPos;                                           // +0x04
     long StreamSize;                                                   // +0x08
@@ -55,7 +55,7 @@ struct CDataInputStream {
     }
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, 4); return value; }
 };
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned long m_source;                                            // +0x18
     CMemoryDataInputStream(const CMemoryDataOutputStream& source);     // 0x00995EE0
     ~CMemoryDataInputStream();                                         // 0x00993B10

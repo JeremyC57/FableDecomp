@@ -12,14 +12,14 @@
 //   0x0122D70E "", -1.0f 0x0122DEE0.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CCharString {
+class CCharString { public:
     void* PData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
 };
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
@@ -30,7 +30,7 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);  // 0x0099BF30 (wchar_t is unsigned short under VC7.1 defaults)
 CWideString __fastcall GetLevelsDirectory();                                     // 0x0041A060
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 {                                // 0x1c bytes
+class CDiskFileWin32 { public:                                // 0x1c bytes
     void* _vtbl;
     unsigned char _body[0x18];
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
@@ -42,7 +42,7 @@ void __fastcall DisplayProgress(const CCharString& text, float progress, bool a,
 }
 void __fastcall LoadingStage(const CCharString& stage, long level);     // 0x009D8240
 void __fastcall LoadingStageDone(long level);                           // 0x009D8250
-struct CQuestManager { void ActivateQuest(const CCharString& name, bool a, bool b); };   // 0x004B4A10
+class CQuestManager { public: void ActivateQuest(const CCharString& name, bool a, bool b); };   // 0x004B4A10
 extern CQuestManager* g_pQuestManager;                 // 0x013B89FC
 extern bool        g_bSaveLoadFailed;                  // 0x013B89C0
 extern CWideString g_WorldToLoad;                      // 0x013B8668
@@ -51,8 +51,8 @@ extern bool        g_bExportStaticMaps;                // 0x013B8648
 extern bool        g_b13B8616;                         // 0x013B8616
 struct CRegistration;
 extern CRegistration g_Registration;                   // 0x013B8674
-struct CDisplayEngine;
-struct CWorld {
+class CDisplayEngine;
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual void SetDisplayEngine(CDisplayEngine* engine);                  // slot 7 (+0x1c)
@@ -69,7 +69,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     T* get() const { return ptr; }
 };
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     CWideString WorldName;                             // +0x0
     CWideString WorldName2;                            // +0x4
     CCharString InitialQuest;                          // +0x8

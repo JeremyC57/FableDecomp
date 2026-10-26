@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTimeAppearanceFadeDef
-{
+class CTimeAppearanceFadeDef
+{ public:
     void* vftable;
 };
 extern void* const g_CTimeAppearanceFadeDef_vftable;

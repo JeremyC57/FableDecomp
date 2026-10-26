@@ -1,8 +1,8 @@
 // Behaviour test for 0x0072ce20 CTCSpecialAbilities::SetupUnholyPower (copy of the source logic over spy actions).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
-struct CCharString { const char* text; };
+class CTCBase { public: virtual ~CTCBase() {} };
+class CCharString { public: const char* text; };
 static CCharString g_CCharString_013bad30 = { "SHEATHE_SLOT" };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ public:
     }
 };
 static CThing* g_primary = 0;
-struct CTCCarrying : CTCBase { CThing* GetThingInPrimarySlot() { return g_primary; } };
+class CTCCarrying : public CTCBase { public: CThing* GetThingInPrimarySlot() { return g_primary; } };
 struct CIntelligentPointerThing {
     CThing* m_pItem;
     CIntelligentPointerThing() : m_pItem(0) {}
@@ -34,18 +34,18 @@ struct CIntelligentPointerThing {
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& o) { m_pItem = o.m_pItem; return *this; }
 };
 class CThingCreatureBase;
-struct CCreatureActionBase { int kind; virtual ~CCreatureActionBase() {} };
+class CCreatureActionBase { public: int kind; virtual ~CCreatureActionBase() {} };
 static int g_combatDtors = 0, g_sheatheDtors = 0;
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     CIntelligentPointerThing PItem;
     ~CCombatActionBase() { ++g_combatDtors; }
 };
-struct CCreatureAction_CastUnholyPowerSpell : CCombatActionBase {
+class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public:
     CThingCreatureBase* owner;
     CCreatureAction_CastUnholyPowerSpell(CThingCreatureBase* o) : owner(o) { kind = 1; }
 };
 static const char* g_slot = 0; static CCreatureActionBase* g_next = 0;
-struct CCreatureAction_SheatheItemToInventory_ForUnholyPower : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory_ForUnholyPower : public CCreatureActionBase { public:
     CCreatureAction_SheatheItemToInventory_ForUnholyPower(CThingCreatureBase*, const CCharString& slot, CCreatureActionBase* next, long)
     { kind = 2; g_slot = slot.text; g_next = next; }
     ~CCreatureAction_SheatheItemToInventory_ForUnholyPower() { ++g_sheatheDtors; }
@@ -55,7 +55,7 @@ class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action) { g_lastKind = action.kind; return action.kind == 2; }
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     CThingCreatureBase* Creature;
     bool SetupUnholyPower();
 };

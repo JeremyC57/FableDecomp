@@ -4,15 +4,15 @@ static int g_log[256];
 static int g_count = 0;
 static int g_frees = 0;
 static int g_next = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     ~CParentDefClassBase() { g_log[g_count++] = 0; }
 };
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct C2DVectorVector { int id; void* m_first; C2DVectorVector() : id(++g_next), m_first(std::malloc(4)) { } ~C2DVectorVector() { if (m_first) { std::free(m_first); ++g_frees; } g_log[g_count++] = id; } };
 struct CAbilityButtonGuiDefVector { int id; CAbilityButtonGuiDefVector() : id(++g_next) { } ~CAbilityButtonGuiDefVector() { g_log[g_count++] = id; } };
-struct CCharString { int id; CCharString() : id(++g_next) { } ~CCharString() { g_log[g_count++] = id; } };
+class CCharString { public: int id; CCharString() : id(++g_next) { } ~CCharString() { g_log[g_count++] = id; } };
 struct CCharStringVector { int id; CCharStringVector() : id(++g_next) { } ~CCharStringVector() { g_log[g_count++] = id; } };
 struct CFloatVector { int id; void* m_first; CFloatVector() : id(++g_next), m_first(std::malloc(4)) { } ~CFloatVector() { if (m_first) { std::free(m_first); ++g_frees; } g_log[g_count++] = id; } };
 struct CLongVector { int id; void* m_first; CLongVector() : id(++g_next), m_first(std::malloc(4)) { } ~CLongVector() { if (m_first) { std::free(m_first); ++g_frees; } g_log[g_count++] = id; } };
@@ -20,7 +20,7 @@ struct CQuickAccessItemButtonGuiDefVector { int id; CQuickAccessItemButtonGuiDef
 struct CRGBColourVector { int id; void* m_first; CRGBColourVector() : id(++g_next), m_first(std::malloc(4)) { } ~CRGBColourVector() { if (m_first) { std::free(m_first); ++g_frees; } g_log[g_count++] = id; } };
 struct CStringGameActionMap { int id; CStringGameActionMap() : id(++g_next) { } ~CStringGameActionMap() { g_log[g_count++] = id; } };
 struct CStringLongMap { int id; CStringLongMap() : id(++g_next) { } ~CStringLongMap() { g_log[g_count++] = id; } };
-struct CPlayerGuiDef : CParentDefClassBase {
+class CPlayerGuiDef : public CParentDefClassBase { public:
     long InventoryNoMovementSound;
     float SecondsToFadeWholeGui;
     float AlphaValueToFadeWholeGui;

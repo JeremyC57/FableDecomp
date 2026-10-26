@@ -10,16 +10,16 @@
 //   ParentClass +0x14 is the owning quest script whose bool at +0x58 records that the quest card was given.
 // Shape: every literal is an implicit CCharString conversion (built right to left before the call's other arguments,
 //   GetActiveQuestName last); the IsDone exit skips the closing RemoveThing.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CScriptThing {                              // 12 bytes
+class CScriptThing { public:                              // 12 bytes
     unsigned char _body[12];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

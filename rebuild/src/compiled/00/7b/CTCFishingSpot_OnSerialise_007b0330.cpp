@@ -11,11 +11,11 @@
 // stored right before the call); the member address is `add ecx,24h` on `this`.
 #include "engine/CTCBase.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
-struct CTCFishingSpot : CTCBase {
+class CTCFishingSpot : public CTCBase { public:
     unsigned char PParticle1[8];                 // +0x0c CIntelligentPointer<CThing>
     unsigned char PParticle2[8];                 // +0x14
     unsigned char PParticleFish[8];              // +0x1c

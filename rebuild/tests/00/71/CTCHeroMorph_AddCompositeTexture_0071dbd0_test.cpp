@@ -2,13 +2,13 @@
 // behaviour test: AddCompositeTexture does nothing below strength 1e-4 or without a morph def / matching entries; otherwise every
 // entry of the type becomes a (layer -> {replacing texture, blend(bank, white diffuse with alpha = strength*255, black specular)})
 // item of the map, which is flagged dirty
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCompositeBlendDesc { unsigned long TextureIndex; long BlendType; CRGBColour DiffuseColour, SpecularColour; };
-struct CTextureMorphEntry { int MorphType; long TextureLayer; long ReplacingTextureIndex; unsigned long BankIndex; long Blend; };
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCompositeBlendDesc { public: unsigned long TextureIndex; long BlendType; CRGBColour DiffuseColour, SpecularColour; };
+class CTextureMorphEntry { public: int MorphType; long TextureLayer; long ReplacingTextureIndex; unsigned long BankIndex; long Blend; };
 struct CTextureLayer { long TextureID; CCompositeBlendDesc Blend; };
 struct CItem { long first; CTextureLayer second; };
-struct CMap { CItem items[8]; int n; bool Dirty; };
-struct CHeroMorphDef { CTextureMorphEntry entries[4]; int count; };
+class CMap { public: CItem items[8]; int n; bool Dirty; };
+class CHeroMorphDef { public: CTextureMorphEntry entries[4]; int count; };
 static CHeroMorphDef* g_def = 0;
 static void AddCompositeTexture(int type, float strength, CMap& layers)
 {

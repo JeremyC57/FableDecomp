@@ -53,11 +53,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAIBrain;
-struct CCharStringData;
+class CAIBrain;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04
     unsigned char    ScriptAIPriority[0x4];                  // +0x08 EScriptAIPriority
@@ -90,17 +90,17 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
 #include <stddef.h>
 
 
-struct CAIStateGroupBase;
-struct CBrainUpdateZone;
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingAICreature;
-struct CThingManager;
-struct CWorld;
+class CAIStateGroupBase;
+class CBrainUpdateZone;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingAICreature;
+class CThingManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CAIBrain {
+class CAIBrain { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -161,15 +161,15 @@ FABLE_STATIC_ASSERT(offsetof(CAIBrain, OnKillCalled) == 0xac);
 #include <stddef.h>
 
 
-struct CAIBrain;
-struct CBrainOutput;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CAIBrain;
+class CBrainOutput;
+class CCPPointerInfo;
+class CCharStringData;
 struct CRelationshipsInit;
 struct CVillageTask;
 
 #pragma pack(push, 1)
-struct CThingAICreature {
+class CThingAICreature { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -332,12 +332,12 @@ FABLE_STATIC_ASSERT(offsetof(CThingAICreature, Suspenders) == 0x1fc);
 #define FABLE_FORCEINLINE inline
 #endif
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     FABLE_FORCEINLINE C3DVector& Normalise();
 };
 
-struct CTCOnHeroPush {
+class CTCOnHeroPush { public:
     void* __vftable;
     fable_u32 Unknown04;
     fable_u32 Unknown08;

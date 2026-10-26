@@ -20,7 +20,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                   // +0
     SCountBlock* m_pCount;                          // +4
     ~CCountedPointer()

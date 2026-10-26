@@ -11,7 +11,7 @@ struct Stream {
         position += size;
     }
 };
-struct CCrimeWaitingForBribe { int DeedHandle; int Type; };
+class CCrimeWaitingForBribe { public: int DeedHandle; int Type; };
 struct Vec {
     CCrimeWaitingForBribe storage[8]; unsigned int size;
     void resize(unsigned int n) { for (unsigned int i = size; i < n && i < 8; ++i) { storage[i].DeedHandle = 0; storage[i].Type = 0; } size = n; }

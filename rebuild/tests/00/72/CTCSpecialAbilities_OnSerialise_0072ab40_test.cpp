@@ -7,11 +7,11 @@ static const char* g_name = 0;
 static long* g_value = 0;
 static long g_default = -5;
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue) { g_name = name; g_value = &value; g_default = defaultValue; value = 42; }
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     static long CurrentCreatureGlobalDefNum;
     virtual ~CTCSpecialAbilities() { }
     virtual void OnSerialise(CPersistContext* context, long unused);

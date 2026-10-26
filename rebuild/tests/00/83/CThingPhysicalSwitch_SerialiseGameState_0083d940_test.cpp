@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pData; };
-struct CPersistContext {
+class CCharString { public: const char* m_pData; };
+class CPersistContext { public:
     long Mode;
     const char* m_lastName; CCharString* m_lastValue;
     void Transfer(const char* name, CCharString* value) { m_lastName = name; m_lastValue = value; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     bool m_baseOk;
     bool SerialiseGameState(CPersistContext* context) { (void)context; return m_baseOk; }
 };
-struct CThingPhysicalSwitch : CThingPhysical {
+class CThingPhysicalSwitch : public CThingPhysical { public:
     bool          Triggered;
     CCharString   TriggerableObjectScriptName;
     bool SerialiseGameState(CPersistContext* context);

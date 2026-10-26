@@ -1,6 +1,6 @@
 extern void __cdecl EngineFree(void* p);
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
   char pad0[0xc];
   void* Buffer;      /* +0x0c */
   char pad10[0x1c-0x10];

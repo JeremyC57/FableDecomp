@@ -36,13 +36,13 @@
 //     sub-object address (this+4) in ecx -> exactly `lea ecx,[esi+4]; call`.
 //   * ++_First on the 12-byte element type lowers to `add esi,0xc`.
 
-struct CCharString {
+class CCharString { public:
     char* _ptr;   // +0x00 within CCharString
     // Out-of-line destructor -> forces a relocation-masked __fastcall call.
     ~CCharString();
 };
 
-struct CSpeechFrame {
+class CSpeechFrame { public:
     long         _id;    // +0x00
     CCharString  text;   // +0x04  (the only sub-object with a destructor)
     long         _data;  // +0x08   -> sizeof(CSpeechFrame) == 0x0c

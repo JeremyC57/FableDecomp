@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     void* vftable;
     int destroyed;
 };

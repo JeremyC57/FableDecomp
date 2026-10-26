@@ -1,7 +1,7 @@
 // Behaviour test for the converting pair constructor @ 0x00788D68: pointer copied, float truncated toward zero.
 #include <cstdio>
-struct CThing { long id; };
-template<class T> struct CIntelligentPointer {
+class CThing { public: long id; };
+template<class T> class CIntelligentPointer { public:
     T* m_pItem;
     CIntelligentPointer(T* p) : m_pItem(p) {}
     CIntelligentPointer(const CIntelligentPointer& other) : m_pItem(other.m_pItem) {}

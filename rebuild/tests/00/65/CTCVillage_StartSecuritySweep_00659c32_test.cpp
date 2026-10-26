@@ -5,9 +5,9 @@ struct CSweepTaskList {
     unsigned long size() const { unsigned long n = 0; for (SSweepTaskNode* p = _M_node->next; p != _M_node; p = p->next) ++n; return n; }
 };
 static long g_frame = 0;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
 static CWorld g_world;
-struct CTCVillage {
+class CTCVillage { public:
     long FrameStartedSecuritySweep; CSweepTaskList SecuritySweepTasks; bool SecuritySweepUrgent; float InitialSecuritySweepRadius;
     int invalidated, calculated;
     const CWorld* GetWorld() const { return &g_world; }

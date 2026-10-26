@@ -8,21 +8,21 @@ static char g_lastAnim[64];
 static int g_actionDtors = 0, g_stringDtors = 0, g_performed = 0;
 static long g_performResult = 2, g_doNothingResult = 4;
 
-struct CThingCreatureBase { int dummy; };
-struct CCharString {
+class CThingCreatureBase { public: int dummy; };
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long) : m_pData(text) {}
     ~CCharString() { ++g_stringDtors; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first, m_second;
     CSoundPair() : m_first(0), m_second(0) {}
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { ++g_actionDtors; }
 };
 static CThingCreatureBase* g_actionCreature = 0;
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool, bool b, bool, long, long)
     {
@@ -33,8 +33,8 @@ struct CCreatureAction_PlayAnimation : CCreatureActionBase {
 };
 // The retail source passes &TemporaryAction (VC extension); Tmp() gives the same lifetime under g++.
 template<class T> T* Tmp(const T& t) { return const_cast<T*>(&t); }
-struct CAIBrain { CThingCreatureBase* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: CThingCreatureBase* PCreature; };
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     long AIAction_DoNothing() { return g_doNothingResult; }

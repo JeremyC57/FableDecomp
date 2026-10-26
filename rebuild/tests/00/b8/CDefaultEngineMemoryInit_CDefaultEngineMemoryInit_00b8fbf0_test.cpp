@@ -3,7 +3,7 @@
 #include <cstring>
 
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     long  LandscapePoolSize;
     float LandscapePhysicalMemoryRatio;
     long  LandscapeVirtualMemoryMinSize;

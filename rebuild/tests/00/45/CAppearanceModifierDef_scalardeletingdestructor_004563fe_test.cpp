@@ -4,7 +4,7 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void* g_deleted = 0;
 
-struct CAppearanceModifierDef {
+class CAppearanceModifierDef { public:
     int f0;
     int Parent;
     void* f8;

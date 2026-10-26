@@ -6,21 +6,21 @@
 // +0x70: the retail CDefBase is 4 bytes narrower). Local model.
 // Shape: two returns that each re-read the def pointer member (no local), through the def pointer's
 // inline operator->.
-struct CThing;
+class CThing;
 bool __fastcall IsCarryingTooHeavyWeapon(CThing* thing);   // 0x0085EF70
 
-struct CPlayerMovementDef {
+class CPlayerMovementDef { public:
     unsigned char _pad00[0x68];
     float         MaxTurnSpeed;                          // +0x68
     float         MaxTurnSpeedHeavyWeapon;               // +0x6c
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char                    _pad00[0x1ec];
     CDefPointer<CPlayerMovementDef>  PPlayerMovementDef; // +0x1ec
     float GetMaxTurnSpeed();

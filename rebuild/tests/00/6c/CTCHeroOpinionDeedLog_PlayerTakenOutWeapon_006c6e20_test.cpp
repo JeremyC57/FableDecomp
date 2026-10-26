@@ -2,10 +2,10 @@
 // Behaviour of CTCHeroOpinionDeedLog::PlayerTakenOutWeapon (0x006C6E20): an old weapon-out deed is removed from the
 // three registries and forgotten; when weapon-out crimes are enabled a new deed (type 1, hero position, post type 2)
 // is posted and its handle remembered.
-struct C3DVector { float x, y, z; };
-struct CThingAICreature; struct CFaction;
+class C3DVector { public: float x, y, z; };
+class CThingAICreature; class CFaction;
 static long g_removed[3]; static int g_removeCount = 0; static int g_posts = 0; static const C3DVector* g_postPos = 0; static bool g_ok = true;
-struct CThing {
+class CThing { public:
     C3DVector Position;
     const C3DVector& GetPosition() { return Position; }
 };

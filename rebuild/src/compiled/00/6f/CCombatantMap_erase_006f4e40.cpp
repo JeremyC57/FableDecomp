@@ -35,12 +35,12 @@ struct CSequenceVector {                                    // retail vector<CCo
     }
 };
 
-struct CAttackingCombatantInfo {                            // retail 0x30 bytes
+class CAttackingCombatantInfo { public:                            // retail 0x30 bytes
     unsigned char _data[0x24];
     CSequenceVector CombatSequences;                        // +0x24
 };
 
-struct CDefendingCombatantInfo {                            // retail 0x3c bytes
+class CDefendingCombatantInfo { public:                            // retail 0x3c bytes
     unsigned char _data[0x3c];
     ~CDefendingCombatantInfo();                             // 0x006F48A0
 };

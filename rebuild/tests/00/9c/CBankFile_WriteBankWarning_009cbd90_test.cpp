@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { int x; };
+class CCharString { public: int x; };
 static const CCharString* g_msg = 0;
 struct CB { virtual void v00(){} virtual void v04(){} virtual void v08(){} virtual void Warning(const CCharString& m) { g_msg = &m; } };
 struct B { unsigned char pad[0xec]; CB* ProgressCallback; void* h; bool WarningFlag;

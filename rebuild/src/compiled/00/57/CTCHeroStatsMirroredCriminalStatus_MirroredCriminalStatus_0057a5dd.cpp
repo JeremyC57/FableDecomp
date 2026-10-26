@@ -9,7 +9,7 @@
 //        `fldz ; fstp`; the body order (loop, X/Y/Z, LastTimeSeenByGuard, the flag, LastTimeExited, angle) is retail's store
 //        order (declaration order or an init list put LastTimeExited before the flag byte).
 #pragma optimize("s", on)
-struct CTCHeroStats {
+class CTCHeroStats { public:
     struct MirroredCriminalStatus {
         long  Crimes[10];                            // +0x00
         long  LastTimeSeenByGuard;                   // +0x28

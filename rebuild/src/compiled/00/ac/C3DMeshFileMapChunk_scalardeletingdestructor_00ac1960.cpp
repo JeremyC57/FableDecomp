@@ -9,11 +9,11 @@
 #include "engine/CChunkedFileSuperChunk.h"
 #undef CChunkedFileSuperChunk
 #pragma optimize("t", on)
-struct CChunkedFileSuperChunk {             // vtable 0x0129E4F0 (.?AVCChunkedFileSuperChunk@@)
+class CChunkedFileSuperChunk { public:             // vtable 0x0129E4F0 (.?AVCChunkedFileSuperChunk@@)
     void* _vptr;
     ~CChunkedFileSuperChunk();              // 0x00AA8490
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

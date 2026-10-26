@@ -5,7 +5,7 @@
 
 struct PairSrc;
 
-struct CWideString {
+class CWideString { public:
     void* buf;   // +0x0
     int   a;     // +0x4
     int   b;     // +0x8

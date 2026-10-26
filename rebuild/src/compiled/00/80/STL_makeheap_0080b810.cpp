@@ -9,8 +9,8 @@
 // Shape: STLport `__make_heap(first, last, comp, _STLP_VALUE_TYPE(first, ..), _STLP_DISTANCE_TYPE(first, ..))` -- the
 //   two null type pointers pushed first, then the comparator's implicit copy expanded inline (thirteen dwords and the
 //   CompareInXYPlane byte through cl); the twin of 0x008097D0.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* PData;                                 // +0x04
@@ -21,18 +21,18 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
 namespace NPlayerTargeting {
-struct CTargetPoint {
+class CTargetPoint { public:
     CIntelligentPointer<CThing> PThing;          // +0x00
     long                        Index;           // +0x08
     C3DVector                   TargetingPosition; // +0x0C
@@ -52,7 +52,7 @@ struct CTargetPoint {
 }
 using NPlayerTargeting::CTargetPoint;
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                         // +0x00
     C3DVector PreferredLine;                     // +0x0C
     float     AngleCompare;                      // +0x18
@@ -62,7 +62,7 @@ struct CVectorCompare_BestForTargeting {
     bool      CompareInXYPlane;                  // +0x28
 };
 
-struct CThingCompare_BestForTargeting2 {
+class CThingCompare_BestForTargeting2 { public:
     CThing*                         Hero;                  // +0x00
     CVectorCompare_BestForTargeting VectorCompare;         // +0x04
     float                           EnemyPreferenceFactor; // +0x30

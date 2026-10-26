@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CInputManagerDX;
-struct CSurface;
+class CCPPointerInfo;
+class CInputManagerDX;
+class CSurface;
 struct IDirectInputDevice8W;
 
 #pragma pack(push, 1)

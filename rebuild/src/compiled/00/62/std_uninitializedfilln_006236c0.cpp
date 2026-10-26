@@ -13,12 +13,12 @@
 //   index, then calls the string copy on &cur->ItemText; the placement new null-tests the destination.
 #include <new>
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);          // 0x0099B720
 };
 
-struct CQuestCardItem {                             // 8 bytes (Ego_r.pdb)
+class CQuestCardItem { public:                             // 8 bytes (Ego_r.pdb)
     long        ItemIndex;                          // +0x00
     CWideString ItemText;                           // +0x04
 };

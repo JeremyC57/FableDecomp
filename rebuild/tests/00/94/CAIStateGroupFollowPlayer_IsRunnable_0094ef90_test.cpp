@@ -1,6 +1,6 @@
 // Behaviour test for 0x0094EF90: FollowPlayer::IsRunnable remembers a live hero.
 #include <cstdio>
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CGroup { CThing* hero; CThing* PThingToFollow;
     bool IsRunnable()
     {

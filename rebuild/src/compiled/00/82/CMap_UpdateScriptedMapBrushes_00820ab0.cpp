@@ -10,12 +10,12 @@
 //   tail down only when the erased element is not the last, then destroys the old last element. The empty tag needs a user constructor
 //   (`random_access_iterator_tag() {}`) so its temporary in the frame word's high byte is not zero-initialised; `time < 0.0f` is the
 //   `fcom ; test ah,5 ; jp` erase test.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
     CCharString& operator=(const CCharString& other);
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     unsigned char _pad[0x4c];
     float CreationTimeSeconds;                     // +0x4c
 };
@@ -43,7 +43,7 @@ struct CUpdateAreaVector {
     }
 };
 extern long g_GameFramesPerSecond;                 // 0x01375550
-struct CMap {
+class CMap { public:
     unsigned char      _pad00[0x10];
     CUpdateAreaVector  ScriptedMapBrushUpdateAreas;   // +0x10 (PDB +0x18)
     CScriptedMapBrush* GetScriptedMapBrush(const CCharString& name);         // 0x0081E960

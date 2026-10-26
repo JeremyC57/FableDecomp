@@ -11,17 +11,17 @@
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30, std::__unguarded_linear_insert @ 0x00CBA9B0.
 // Shape: the value is built in the argument slot by the STLport memberwise pair copy constructor; the counted pointer
 // copy constructor copies both words and adds a reference on the block under a null test (`inc dword ptr [eax]`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0
 };
-struct CCPPointerInfo {                     // counted-pointer block
+class CCPPointerInfo { public:                     // counted-pointer block
     long  RefCount;                         // +0x00
     void  (__fastcall* DeleteFunc)(void* data);   // +0x04
     void* Data;                             // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                   // +0x00
     CCPPointerInfo* Info;                   // +0x04
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info)

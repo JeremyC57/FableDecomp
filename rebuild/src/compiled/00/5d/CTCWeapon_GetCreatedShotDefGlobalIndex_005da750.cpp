@@ -7,15 +7,15 @@
 //        Release() member does the decrement (`--Object->RefCount` written in the CDefPointer dtor gives `dec eax` before the
 //        `[ecx+0xa0]` load). The name string "SHOT_CROSSBOW_BOLT" (0x0125556C) is a named CCharString local (`lea eax ; push eax`).
 // Layout: CTCWeapon (engine header): ParentThing +0x04, WeaponDef +0x0C; CWeaponDef: RefCount +0x04, created-shot index +0xA0.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);  // 0x0099EBF0
     ~CCharString();                              // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
-struct CWeaponDef {
+class CWeaponDef { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long RefCount;                               // +0x04
@@ -23,14 +23,14 @@ struct CWeaponDef {
     unsigned char _pad_0x08[0xa0 - 0x08];
     long CreatedShotDefIndex;                    // +0xa0
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     __forceinline ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 class CThing;
-struct CTCWeapon {
+class CTCWeapon { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];

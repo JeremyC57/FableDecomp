@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -14,12 +14,12 @@ struct CRGBColour {
     }
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) {}
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x2c4];
     float         TextBoxCutsceneSecondsBeforeSkip;   // +0x2c4 (retail)
 };
 extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
-struct CFadeInFadeOutBase {                            // landed layout (0x00644526)
+class CFadeInFadeOutBase { public:                            // landed layout (0x00644526)
     bool       Active;                                  // +0x00
     float      FadeInTime;                              // +0x04
     float      FadeOutTime;                             // +0x08
@@ -37,7 +37,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad[0x2bc];
     bool          NotInCutscene;                        // +0x2bc
 };
@@ -57,7 +57,7 @@ struct CMainGameSubsystem {
     unsigned char      _pad[0x38];
     CCutsceneListener* Listener;                        // +0x38
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char       _pad[0x24];
     CMainGameSubsystem* Subsystem;                      // +0x24
 };

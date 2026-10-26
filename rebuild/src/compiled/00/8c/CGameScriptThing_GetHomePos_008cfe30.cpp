@@ -6,8 +6,8 @@
 // A constructor taking const REFERENCES does: each member is read through its reference
 // before the store, which is what pins the retail instruction order.
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float x, y, z;
     C3DVector(const float& xx, const float& yy, const float& zz) : x(xx), y(yy), z(zz) {}
 };

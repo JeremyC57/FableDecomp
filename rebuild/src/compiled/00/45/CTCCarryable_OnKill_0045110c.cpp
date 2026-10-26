@@ -7,7 +7,7 @@ struct Node {
     Node* fc;
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     Node* node;
     unsigned f4;
 };

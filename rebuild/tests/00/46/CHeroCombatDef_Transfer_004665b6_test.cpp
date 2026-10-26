@@ -1,12 +1,12 @@
 // behaviour test for CHeroCombatDef::Transfer (0x004665B6): 44 typed transfers; HeavyWeapons goes between the two vectors
 #include <cstdio>
-struct CFloatRange { float Min, Max; };
-struct CHeroAbilityStatWeight { float W[3]; };
-struct CHeroAbilityStatPackage { unsigned char b[0x10]; };
+class CFloatRange { public: float Min, Max; };
+class CHeroAbilityStatWeight { public: float W[3]; };
+class CHeroAbilityStatPackage { public: unsigned char b[0x10]; };
 struct CLongVector { long* a[3]; };
 struct CFloatVector { float* a[3]; };
 static const void* g_log[64]; static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(CFloatRange& v) { g_log[g_n++] = &v; }
     void Transfer(CHeroAbilityStatWeight& v) { g_log[g_n++] = &v; }
     void Transfer(float& v) { g_log[g_n++] = &v; }
@@ -16,7 +16,7 @@ struct CPersistContext {
     void Transfer(CHeroAbilityStatPackage& v) { g_log[g_n++] = &v; }
     void Transfer(CFloatVector& v) { g_log[g_n++] = &v; }
 };
-struct CHeroCombatDef {
+class CHeroCombatDef { public:
     CFloatRange r0, r1, r2; CHeroAbilityStatWeight w3; CFloatRange r4; CHeroAbilityStatWeight w5; float f6; CHeroAbilityStatWeight w7;
     float f8, f9, f10, f11, f12, f13; CHeroAbilityStatWeight w14; CFloatRange r15; CHeroAbilityStatWeight w16; CFloatRange r17;
     CHeroAbilityStatWeight w18; bool b19; long l20; bool b21; float f22; bool b23, b24, b25; float f26, f27; long l28;

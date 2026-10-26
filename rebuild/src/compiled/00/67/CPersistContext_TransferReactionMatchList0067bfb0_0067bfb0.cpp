@@ -12,9 +12,9 @@
 // an inline constructor (malloc'd self-linked head) before the mode ladder; its destructor is the out-of-line ~list.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CReactionMatch;
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CReactionMatch;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
 struct SReactionMatchNode {
     SReactionMatchNode* m_next;
@@ -40,7 +40,7 @@ struct CPersistTraitsReactionMatchList {            // CPersistTraits<list<CReac
     void TransferBinaryIn(CMemoryDataInputStream* stream, CReactionMatchList* value); // 0x006782B0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad0[0x18];
     long                    m_mode;                 // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1[8];

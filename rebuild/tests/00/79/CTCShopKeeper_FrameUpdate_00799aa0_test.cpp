@@ -5,14 +5,14 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned __int64 UniqueID;
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -26,21 +26,21 @@ struct CThing {
     }
 };
 static long g_frame;
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_frame; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool criminal;
     bool IsHeroCriminal() { return criminal; }
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* village;
     CTCVillage* GetPVillage() const { return village; }
 };
-struct CTCShop {
+class CTCShop { public:
     long StockState;
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool RepressedOpinions;

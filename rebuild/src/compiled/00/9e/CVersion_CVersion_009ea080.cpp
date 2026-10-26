@@ -3,7 +3,7 @@
 // Shape: no frame; the two bytes are loaded (dl = arg1, cl = arg2) before the stores, the stores follow the
 // member declaration order (+0 = arg2, +1 = arg1, +4 = arg3, +8 = arg4), `ret 10h` and `this` returned in eax.
 // Layout: 12 bytes, no vtable (no engine header for CVersion); member names descriptive.
-struct CVersion {
+class CVersion { public:
     unsigned char m_major;      // +0x00 (second argument)
     unsigned char m_minor;      // +0x01 (first argument)
     long          m_build;      // +0x04

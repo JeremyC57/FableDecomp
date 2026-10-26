@@ -1,6 +1,6 @@
 #include <cstdio>
 struct SSymbolValueRecord { long m_flags; long m_symbol; long m_reserved08; long m_value; unsigned char _pad10[0x14]; };
-struct CSymbolMap {
+class CSymbolMap { public:
     SSymbolValueRecord* m_pFirst; SSymbolValueRecord* m_pLast;
     long FindFirstSymbolWithVal(long symbol) const
     {

@@ -12,14 +12,14 @@
 // then `FrameLastPlayedIn = frame - r` and a clamp `if (FrameLastPlayedIn > GFGetCurrentFrame())
 // FrameLastPlayedIn = GFGetCurrentFrame();` with the frame re-read for each use (no local). FrameLastPlayedIn is +0x2c (engine header name); the header flattens
 // the base, so the layout is local.
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_framesPerSecond;              // 0x01375550
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
     unsigned long* GetPWorldSeed();         // 0x008FCFD0

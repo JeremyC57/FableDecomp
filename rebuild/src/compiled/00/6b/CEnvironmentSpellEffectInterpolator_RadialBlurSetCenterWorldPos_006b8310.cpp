@@ -9,7 +9,7 @@ struct CScreenEffectPriorityStack {
     void SetAreaTrackPosB(void* position, long flag);    // 0x008811D0
 };
 
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     unsigned char              _pad[0x90];
     CScreenEffectPriorityStack m_radialBlurStack;  // +0x90
     void RadialBlurSetCenterWorldPos(void* position, void* pos);

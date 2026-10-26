@@ -1,7 +1,7 @@
 // Behaviour test for 0x0069B650 CGameCameraManager::UpdateObservedThingInBuilding.
 #include <cstdio>
 static int g_push = 0, g_remove = 0;
-struct CThing { unsigned char m_statusFlags; CThing* building; };
+class CThing { public: unsigned char m_statusFlags; CThing* building; };
 static CThing* GetPBuildingThingOccupying(CThing* t) { return t->building; }
 struct M {
     bool interruptable; void* PendingMode; bool ObservedThingInBuilding; CThing* PObservedThing;

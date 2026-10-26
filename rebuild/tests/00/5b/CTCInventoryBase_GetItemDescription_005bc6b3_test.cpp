@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CTCInventoryBase::GetItemDescription (0x005BC6B3): same logic over a copy of the model.
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     const char* m_pData;
     CWideString(const char* s) : m_pData(s) { ++g_live; }
     CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_live; }

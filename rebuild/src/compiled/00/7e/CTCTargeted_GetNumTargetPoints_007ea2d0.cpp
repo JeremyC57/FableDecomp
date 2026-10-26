@@ -8,7 +8,7 @@ struct Inner {
     long Query(void* p, float f);
 };
 
-struct CTCTargeted {
+class CTCTargeted { public:
     void* v;      // +0
     Inner* obj;   // +4
 };

@@ -14,7 +14,7 @@
 // Shape: the unchecked out-parameter GetInterface (the absent arm reads the never-written scoreboard pointer from the
 // key's `push ecx` frame word); the winnings are read into a `long` local, and its `fild` needs memory, so VC parks it in
 // that same dead frame word; the winning streak is `fild`ed straight from the member. Returns false.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type);    // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -42,16 +42,16 @@ struct CThing {
     }
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                  // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;          // 0x00449960 (const)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;           // +0x1c
 };

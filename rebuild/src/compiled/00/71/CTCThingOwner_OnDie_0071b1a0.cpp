@@ -6,7 +6,7 @@
 // Retail bytes:  mov byte ptr [ecx+0x10],1 ; ret
 // Virtual setter: writes 1 into the one-byte member at +0x10 and returns. The class comes
 // from the vtable-slot label of this address; the flag's name is descriptive. One of 8 bodies.
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00();
     virtual void OnDie();
     unsigned char _pad[0xc];

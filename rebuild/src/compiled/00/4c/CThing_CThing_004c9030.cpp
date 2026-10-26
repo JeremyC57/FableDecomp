@@ -16,12 +16,12 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void* __cdecl memset(void* block, int value, unsigned int size);
 #pragma intrinsic(memset)
-struct CClassFactory;
-struct CClass {
+class CClassFactory;
+class CClass { public:
     virtual void v00();
     CClass(CClassFactory& factory, unsigned long type, bool registerNow);   // 0x00A372D0
 };
-struct CThingManager;
+class CThingManager;
 extern CThingManager* g_pThingManager;                // 0x013B8A1C
 extern long g_thingCount;                             // 0x013B8A20
 class CCharString {
@@ -33,7 +33,7 @@ struct CPresenceBits {                                // std::bitset<274>
     unsigned long words[9];
     CPresenceBits() { memset(words, 0, sizeof(words)); }   // STLport _Base_bitset: _M_do_reset
 };
-struct CTCBase;
+class CTCBase;
 struct SComponentPair { long first; CTCBase* second; };
 struct CKeyPairCompareLess { };
 struct CComponentMap {                                // CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess>: vector + compare + sorted
@@ -55,12 +55,12 @@ struct CTCList {                                      // std::list<CTCBase*>: th
         _M_node = node;
     }
 };
-struct CThingBaseDef;
+class CThingBaseDef;
 struct CDefPointer {                                  // CDefPointer<const CThingBaseDef>
     const CThingBaseDef* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCDriverBase; struct CTCPhysicsBase; struct CTCGraphicAppearance;
+class CTCDriverBase; class CTCPhysicsBase; struct CTCGraphicAppearance;
 class CThing : public CClass {                        // vtable 0x01239ABC
 public:
     unsigned char          _pad04[0x18 - 0x04];

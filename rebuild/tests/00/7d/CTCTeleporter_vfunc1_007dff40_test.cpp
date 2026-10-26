@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CTCTeleporter::vfunc_1 (0x007DFF40).
-struct CPersistContext {
+class CPersistContext { public:
     int calls; const char* names[4]; bool* values[4]; bool defs[4];
     void Transfer(const char* n, bool& v, const bool& d) { names[calls] = n; values[calls] = &v; defs[calls] = d; ++calls; }
 };
-struct CTCTeleporter {
+class CTCTeleporter { public:
     unsigned char _pad[0x10];
     bool m_teleportActive;
     bool m_teleportActivated;

@@ -10,7 +10,7 @@ struct _SYSTEMTIME {
 };
 extern "C" __declspec(dllimport) int __stdcall FileTimeToSystemTime(const _FILETIME* fileTime, _SYSTEMTIME* systemTime);   // IAT 0x0143FD50
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

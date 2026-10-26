@@ -1,8 +1,8 @@
 // Behaviour test for CTCOwnedEntity::vfunc_23 @ 0x007E8420: true only for a set, live owner.
 #include <cstdio>
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CTCOwnedEntity {
+class CTCOwnedEntity { public:
     CBaseIntelligentPointer POwner;
     bool vfunc_23() const
     {

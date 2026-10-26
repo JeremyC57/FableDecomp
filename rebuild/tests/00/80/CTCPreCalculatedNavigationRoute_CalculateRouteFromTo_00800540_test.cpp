@@ -4,17 +4,17 @@
 // nothing unless the game runs and both ends share a region; otherwise a throwaway navigation creature is created at the
 // owner, asked for the route through its navigation interface, and killed.
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     char text[96];
     CCharString(const char* t, long length = -1) { strcpy(text, t); ++g_liveStrings; }
     CCharString(const CCharString& o) { strcpy(text, o.text); ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CRoute { int points; };
-struct CThingPhysical;
-struct CThingBuilding;
-struct CThingAICreatureInit {
+class CThingPhysical;
+class CThingBuilding;
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;
     CThingPhysical* PreviousThing;
     CCharString     ScriptName;
@@ -63,14 +63,14 @@ CThingAICreature* CThingAICreature::Create(long defIndex, const C3DVector& p, lo
     return &g_creature;
 }
 static char g_defName[96];
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { strcpy(g_defName, name.text); return 123; }
 };
 static CDefinitionManager g_defs;
-struct CGameDefinitionManager { static CDefinitionManager& Get() { return g_defs; } };
+class CGameDefinitionManager { public: static CDefinitionManager& Get() { return g_defs; } };
 struct CGameRunState { bool running; bool IsRunning() { return running; } };
 static CGameRunState g_run = { false };
-struct CWorldMap {
+class CWorldMap { public:
     long GetMapNumberAt(const C3DVector& p) const { return (long)p.X; }
     long GetRegionNumberMapIsIn(long mapNumber) { return mapNumber / 10; }
 };

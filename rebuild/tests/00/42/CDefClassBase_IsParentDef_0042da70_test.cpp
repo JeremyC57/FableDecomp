@@ -1,8 +1,8 @@
 // Standalone behaviour test for CDefClassBase::IsParentDef @ 0x0042da70
 #include <stdio.h>
 
-struct CDefClassBase
-{
+class CDefClassBase
+{ public:
     void* vftable;
 };
 

@@ -14,7 +14,7 @@ struct SEntryHandle_0048daa2 {                     // the class result (returned
     SEntryHandle_0048daa2() {}
 };
 
-struct CGuiControlListBox {
+class CGuiControlListBox { public:
     virtual void v00();
     virtual SEntryHandle_0048daa2 SelectEntryFromName(const char* name, long mode);   // slot 1 (+0x04)
     SEntryHandle_0048daa2 SelectEntryFromName(const CCharString& name, long mode);

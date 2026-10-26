@@ -21,17 +21,17 @@ static int fails = 0;
 //   test and once for the UID; the load arm tests the UID with `!= 0` (`or ecx,edx ; je`), and ebx (zero) also serves the
 //   `false` push and the Transfer default.
 #include "engine/CTCBase.h"
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char _pad20[0x8e - 0x20];
     short m_level;                              // +0x8e
     bool IsLevelLess();                         // 0x004C7930
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -42,7 +42,7 @@ struct CBaseIntelligentPointer {
     void* m_pNext;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CVillageMemberDef;
+class CVillageMemberDef;
 class CTCVillageMember : public CTCBase {
 public:
     CVillageMemberDef*      PDef;               // +0x0c

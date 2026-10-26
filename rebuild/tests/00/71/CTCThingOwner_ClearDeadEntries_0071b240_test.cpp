@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing { unsigned char _pad[0x91]; unsigned char m_flags; bool IsDead() const { return (m_flags & 1) != 0; } };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_flags; bool IsDead() const { return (m_flags & 1) != 0; } };
 static int g_destroyed = 0, g_freed = 0;
 struct CIntelligentPointer {
     CThing* m_pItem;
@@ -10,7 +10,7 @@ struct CIntelligentPointer {
 };
 struct SThingListNode { SThingListNode* next; SThingListNode* prev; CIntelligentPointer value; };
 static void FreeNode(void* p) { ++g_freed; std::free(p); }
-struct CTCThingOwner {
+class CTCThingOwner { public:
     SThingListNode* ObjectList;
     void ClearDeadEntries();
 };

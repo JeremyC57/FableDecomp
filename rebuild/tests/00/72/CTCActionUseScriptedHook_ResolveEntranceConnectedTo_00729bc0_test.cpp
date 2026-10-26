@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0, g_lookups = 0;
-struct CThing {};
-struct CBaseObject {};
+class CThing { public:};
+class CBaseObject { public:};
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) { ++g_ctors; }
@@ -11,17 +11,17 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const { ++g_gets; return m_pItem; }
     void SetPItem(CBaseObject* item) { ++g_sets; m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 static CThing g_entrance; static unsigned __int64 g_lookedUp = 0; static bool g_found = true;
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid) { ++g_lookups; g_lookedUp = uid; return g_found ? &g_entrance : 0; }
 };
 static CThingManager g_things;
-struct CTCActionUseScriptedHook {
+class CTCActionUseScriptedHook { public:
     void*   __vftable;
     CThing* ParentThing;
     bool    ToBeRemoved;

@@ -9,8 +9,8 @@
 // PushSideways +0x1b, Damage +0x1c.
 // Shape: every store follows the vtable store (the vector is a member object with an inline
 // constructor); the zero bytes share al and are scheduled before the `1` byte store.
-struct CThing;
-struct CThingGameObject;
+class CThing;
+class CThingGameObject;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -27,7 +27,7 @@ struct CRetailVector_GameObjectPtr {                        // retail std::vecto
     CRetailVector_GameObjectPtr() : First(0), Last(0), End(0) { }
 };
 
-struct CTCHitOnCollision : CTCBase_Calls {                  // vtable 0x0126E7A4
+class CTCHitOnCollision : public CTCBase_Calls { public:                  // vtable 0x0126E7A4
     CRetailVector_GameObjectPtr CollidedList;               // +0x0c
     bool                        DontHitWhenCombatAction;    // +0x18
     bool                        Blockable;                  // +0x19

@@ -24,7 +24,7 @@ struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long type);   // 0x005BDF08
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     CLongVector QuickAccessItems;                    // +0x148 (PDB +0x168)
     void InitialActivate();
 };

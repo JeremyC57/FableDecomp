@@ -4,7 +4,7 @@ static bool g_freed = false;
 static void* g_freed_ptr = 0;
 void __cdecl operator delete[](void* p) { g_freed = true; g_freed_ptr = p; }
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void* m_ptr;
     unsigned char m_flag;
 };

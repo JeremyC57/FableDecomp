@@ -14,8 +14,8 @@
 //   argument, destroyed after the erase; the first ring test reads begin/end directly, the second goes through the def
 //   vector's inline empty() (`add eax,58h` forms its `this`); the kill tail is early returns (a ternary on CreatedEmitter
 //   materialises sete/movzx), the emitters' emptiness through Emitters.empty() (addressed off the erase's edi).
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     void Kill(bool immediately);                // 0x004C9B80
 };
 struct CBaseIntelligentPointer {
@@ -55,12 +55,12 @@ struct CRingVector {                            // STLport vector (12 bytes)
     void* _M_end_of_storage;
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x58];
     CRingVector DynamicRings;                   // +0x58
     bool IsDynamic() const { return DynamicRings._M_start != DynamicRings._M_finish; }
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

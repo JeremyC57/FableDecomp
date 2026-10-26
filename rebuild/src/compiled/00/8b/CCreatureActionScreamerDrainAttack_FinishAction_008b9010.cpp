@@ -23,9 +23,9 @@
 #undef CThing
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  T* operator->()const{return static_cast<T*>(GetPItem());}
@@ -43,10 +43,10 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
  unsigned char ThingState[0x89];unsigned char DeadFlags;
 };
-struct CThingCreatureBase:CThing {bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
@@ -217,7 +217,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
-struct CCreatureAction_ScreamerDrainOutOf:CCombatActionBase {
+class CCreatureAction_ScreamerDrainOutOf:public CCombatActionBase { public:
     virtual long GetAnimationTransitionInTime() const;
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -226,7 +226,7 @@ struct CCreatureAction_ScreamerDrainOutOf:CCombatActionBase {
  CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase* actor,CThing* target):CCombatActionBase(actor,target,150,CSoundPair()){}
  CCreatureAction_ScreamerDrainOutOf(CThingCreatureBase* actor):CCombatActionBase(actor,150,CSoundPair()){}
 };
-struct CCreatureAction_ScreamerDrainAttack:CCombatActionBase {
+class CCreatureAction_ScreamerDrainAttack:public CCombatActionBase { public:
     virtual void PerformAction();
     virtual void FinishAction();
     virtual long GetAnimationTransitionInTime() const;

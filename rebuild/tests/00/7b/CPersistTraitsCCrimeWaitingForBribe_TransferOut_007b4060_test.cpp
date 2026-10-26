@@ -5,10 +5,10 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CPersistContext { int id; };
+class CPersistContext { public: int id; };
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Buf[128];
     CCharString() { Buf[0] = 0; ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Buf, o.Buf); ++g_live; }
@@ -18,7 +18,7 @@ struct CCharString {
 };
 CCharString __fastcall GFIntToCharString(long value) { CCharString r; std::sprintf(r.Buf, "%ld", value); return r; }
 
-struct CCrimeWaitingForBribe { long DeedHandle; long Type; };
+class CCrimeWaitingForBribe { public: long DeedHandle; long Type; };
 
 template <class T> struct CPersistTraits {
     T DefaultVal;

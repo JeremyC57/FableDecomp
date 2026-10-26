@@ -16,7 +16,7 @@
 // `mov ecx,[eax+4]`), the key converted into a frame temporary for the const LowerBound.
 // Ego_r.pdb `??RCThingFilter_HasFreeActionPoint@@QBE_NABVCThing@@@Z`. `if (HasTC(k) && GetTC(k)->f()) return true;
 // return false;` (two exits); kind 0x6d = `mov ecx,[eax+2Ch] ; test ch,20h`.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;

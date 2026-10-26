@@ -11,10 +11,10 @@
 // ONCE into esi, and released through it by hand (a CDefPointer destructor re-reads the address-taken slot in the lane);
 // the functor (a 4-byte class with a user constructor: returned through the hidden pointer, passed by value as a plain
 // `push edi`) comes back into the def pointer's dead frame slot.
-struct CMeshDataBank;
+class CMeshDataBank;
 struct SAnimationSetEntry;
 
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -25,23 +25,23 @@ struct CDefPointeeBase {                        // a counted definition object
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer() { if (m_pObject) m_pObject->ReleaseDef(); }
 };
 
-struct CAnimationSet {                          // vector<SAnimationSetEntry>: begin, end, end of storage
+class CAnimationSet { public:                          // vector<SAnimationSetEntry>: begin, end, end of storage
     SAnimationSetEntry* m_first;
     SAnimationSetEntry* m_last;
     SAnimationSetEntry* m_end;
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char       _pad08[0x2c];
     CAnimationSet       m_anims;                // +0x34
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     CAppearanceDef* FindAppearanceDef();        // stand-in callee of the stand-in body below
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
 };
@@ -59,7 +59,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& 
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;               // +0x3c
 };
@@ -82,13 +82,13 @@ __declspec(noinline) CPreloadDeadAnimation __fastcall ForEachAnimation(SAnimatio
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
     const CWorld& PeekWorld() const;            // 0x004C7AB0
 };
 
-struct CThingDeadCreature : CThing {
+class CThingDeadCreature : public CThing { public:
     void PreloadDeadAnimation();
 };
 

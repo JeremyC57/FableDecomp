@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -35,7 +35,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void UpdateEmitterThingAttachment(bool attach, float time);   // 0x006DFFB0
 };
 struct CIntelligentPointer {                    // CIntelligentPointer<CThing> (8 bytes)
@@ -53,7 +53,7 @@ struct CParticleList {
     SParticleNode* begin() const { return m_node->m_next; }
     SParticleNode* end() const   { return m_node; }
 };
-struct CTCParticleAttachmentTracker {
+class CTCParticleAttachmentTracker { public:
     void*         __vftable;                    // +0x00 (CTCBase)
     CThing*       ParentThing;                  // +0x04
     bool          ToBeRemoved;                  // +0x08

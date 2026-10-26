@@ -1,11 +1,11 @@
 // behaviour test for 0x004E46CD CJackOfBladesBattleDef::operator=: base part then 17 scalars copied, *this returned
 #include <cstdio>
 static int g_baseCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char body[0x35];
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { ++g_baseCopies; for (int i = 0; i < 0x35; ++i) body[i] = o.body[i]; return *this; }
 };
-struct CJackOfBladesBattleDef : CParentDefClassBase {
+class CJackOfBladesBattleDef : public CParentDefClassBase { public:
     float IdealShootDistance; long NumGetHitsBeforeRush; float TimeBetweenShots, ScreamInAirTime, TimeBetweenPillars,
         BattleFloatHeight, BattleScale, ScaleUpTime, ScaleDownTime, DeathScreamTime, DeathHeight, BurnDamage, FlashDuration,
         FlashBuildUpTime, RushTriggerDistance, RushToDistance, RushAwayDistance;

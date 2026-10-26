@@ -1,4 +1,4 @@
-struct CTCGuard {
+class CTCGuard { public:
     void* vftable;
 };
 

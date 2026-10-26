@@ -9,7 +9,7 @@
 //   element vector: size() tested before the loop and recomputed at the bottom (begin re-read: the body may write
 //   memory), `operator[]` is `*(begin() + n)` (the element address strength-reduced to ebx + esi), and every match
 //   assigns (no early exit, so the last matching element wins).
-struct CCharStringData {                        // the shared string block (CBasicString<char>)
+class CCharStringData { public:                        // the shared string block (CBasicString<char>)
     const char*   m_pData;                      // +0x00
     unsigned long m_length;                     // +0x04
 };

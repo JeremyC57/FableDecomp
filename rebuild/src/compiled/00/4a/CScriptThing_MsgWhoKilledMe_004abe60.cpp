@@ -1,4 +1,4 @@
-struct CScriptThing;
+class CScriptThing;
 
 struct CInner {
     // 19 dummy virtuals so the real one lands at vtable offset 0x4c (0x13*4)
@@ -10,7 +10,7 @@ struct CInner {
     virtual void OnKilled(CScriptThing* msg); // vtable +0x4c
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner; // +0x4
     CScriptThing* MsgWhoKilledMe(CScriptThing* msg);

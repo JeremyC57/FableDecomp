@@ -11,7 +11,7 @@
 // second setter @ 0x00C404A0 (+0x18, dirty bit 0x10000).
 // The manifest label "CContainmentVolume::IsContainingPoint" is propagated and rejected (that
 // shape is 0x00A75430); class and method names are descriptive (script module, no RTTI).
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

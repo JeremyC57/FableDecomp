@@ -14,7 +14,7 @@ long count_if(_InputIter __first, _InputIter __last, _Predicate __pred)
 class CThing { public: int id; };
 template <class T> class CIntelligentPointer { public: T* PItem; T* GetPItem() const { return PItem; } };
 class CThingAICreature { public: CThing* Home; CThing* Work; };
-struct HasBuildingAsHomeOrWork { CThing* Building;
+class HasBuildingAsHomeOrWork { public: CThing* Building;
     bool operator()(const CIntelligentPointer<CThingAICreature>& c) const { return c.GetPItem() && (c.GetPItem()->Home == Building || c.GetPItem()->Work == Building); } };
 int main()
 {

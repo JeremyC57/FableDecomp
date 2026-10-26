@@ -13,41 +13,41 @@
 //   `_M_node(0)` then a malloc'd sentinel linked to itself.
 #include <stdlib.h>
 
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CGameDefinitionManager;
-struct CWorldMap;
-struct CEnvironment;
-struct CGameTimeManager;
-struct CThingSearchTools;
-struct CAtmosProcess;
-struct CAIGameCameraBase;
-struct CGameScriptInterface;
-struct CMeshDataBank;
-struct C3DAnimationManager;
-struct CNavigatorManager;
-struct CCombatManager;
-struct CThingManager;
-struct CFactionManager;
-struct CScriptInfoManager;
-struct CMessageEventManager;
-struct CBulletTimeManager;
-struct CMusicManager;
-struct COpinionReactionManager;
-struct CScriptConversationManager;
-struct CCPPointerInfo;
+class CMainGameComponent;
+class CPlayerManager;
+class CGameDefinitionManager;
+class CWorldMap;
+class CEnvironment;
+class CGameTimeManager;
+class CThingSearchTools;
+class CAtmosProcess;
+class CAIGameCameraBase;
+class CGameScriptInterface;
+class CMeshDataBank;
+class C3DAnimationManager;
+class CNavigatorManager;
+class CCombatManager;
+class CThingManager;
+class CFactionManager;
+class CScriptInfoManager;
+class CMessageEventManager;
+class CBulletTimeManager;
+class CMusicManager;
+class COpinionReactionManager;
+class CScriptConversationManager;
+class CCPPointerInfo;
 
 template <class T> struct scoped_ptr {
     T* ptr;
     scoped_ptr() : ptr(0) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
 
-struct CWorldInit {
+class CWorldInit { public:
     CMainGameComponent* Component;                 // +0x00
     void* Reserved;                                // +0x04
     CPlayerManager* PlayerManager;                 // +0x08
@@ -59,14 +59,14 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CIDrawWorld {
+class CIDrawWorld { public:
     virtual void DrawWorld() = 0;
 };
 
-struct CCharString { void* PStringData; CCharString(); /* 0x0099E4B0 */ };
-struct CWideString { void* PStringData; CWideString(); /* 0x0099AED0 */ };
+class CCharString { public: void* PStringData; CCharString(); /* 0x0099E4B0 */ };
+class CWideString { public: void* PStringData; CWideString(); /* 0x0099AED0 */ };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -83,7 +83,7 @@ template <class T> struct CPtrVector {
     CPtrVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 
-struct CAtmosCopyInfo { long A, B, C; };
+class CAtmosCopyInfo { public: long A, B, C; };
 struct SAtmosNode { SAtmosNode* _M_next; SAtmosNode* _M_prev; CAtmosCopyInfo _M_data; };
 struct CAtmosCopyList {
     SAtmosNode* _M_node;
@@ -98,7 +98,7 @@ struct CAtmosCopyList {
 
 double GFGetTime();                                // 0x009E1BC0
 
-struct CWorld : CBaseClassNonCopyable, CIDrawWorld {
+class CWorld : public CBaseClassNonCopyable, public CIDrawWorld { public:
     CMainGameComponent* Component;                 // +0x08
     CPlayerManager* PlayerManager;                 // +0x0c
     CGameDefinitionManager* DefinitionManager;     // +0x10

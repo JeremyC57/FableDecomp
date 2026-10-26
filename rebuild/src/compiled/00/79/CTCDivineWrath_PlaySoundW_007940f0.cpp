@@ -9,9 +9,9 @@
 // named local (edi), the component is taken into a named local right after the lookup (esi) and the
 // noise name is a CCharString in its own `{}` block, sharing the lookup key's `push ecx` frame word.
 // The name is the Unicode-renamed "PlaySound" (windows.h maps it to PlaySoundW).
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -30,8 +30,8 @@ struct CInterfaceMap                                        // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -50,8 +50,8 @@ struct CThing
 
 extern unsigned long g_InvalidSoundHandle;                  // 0x0129D25C
 
-struct CTCDivineWrath
-{
+class CTCDivineWrath
+{ public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     unsigned long PlaySoundW(unsigned long sound, unsigned long flags);

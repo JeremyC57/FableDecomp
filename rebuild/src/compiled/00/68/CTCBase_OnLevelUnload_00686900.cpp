@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCBase { void OnLevelUnload(); };
+class CTCBase { public: void OnLevelUnload(); };
 void CTCBase::OnLevelUnload() {}

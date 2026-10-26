@@ -6,7 +6,7 @@
 static int g_names = 0, g_deleted = 0, g_freed = 0;
 class CCharString { public: void* PData; CCharString() : PData(0) {} ~CCharString() { ++g_names; } };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
@@ -33,7 +33,7 @@ public:
 };
 
 class CNavQuadTree;
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 class CNavQuadTreeMap {
 public:
     CCountedPointer<CNavQuadTree> PQuadTree;

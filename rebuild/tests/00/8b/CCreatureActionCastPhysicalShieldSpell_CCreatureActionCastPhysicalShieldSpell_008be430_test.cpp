@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
 static int g_baseCopies;
-struct CCombatActionBase { virtual void v00() { } unsigned char _body[0x114 - 4];
+class CCombatActionBase { public: virtual void v00() { } unsigned char _body[0x114 - 4];
     CCombatActionBase() { std::memset(_body, 0, sizeof(_body)); }
     CCombatActionBase(const CCombatActionBase& o) { ++g_baseCopies; std::memcpy(_body, o._body, sizeof(_body)); } };
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:
     unsigned char ImmediateCast, OneAnimCast; long LevelToCast, TimeLimit, ShieldHealth;
     virtual void v00() { }
     CCreatureAction_CastPhysicalShieldSpell() { }

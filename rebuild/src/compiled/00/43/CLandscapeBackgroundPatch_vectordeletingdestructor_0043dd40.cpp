@@ -1,4 +1,4 @@
-struct CLandscapeBackgroundPatch { void* vftable; };
+class CLandscapeBackgroundPatch { public: void* vftable; };
 // Leaf: `vector_deleting_destructor'
 extern "C" void __fastcall CLandscapeBackgroundPatch_scalar_dtor_0099b510(CLandscapeBackgroundPatch* self);
 extern "C" void __cdecl CLandscapeBackgroundPatch_op_delete(void* p);

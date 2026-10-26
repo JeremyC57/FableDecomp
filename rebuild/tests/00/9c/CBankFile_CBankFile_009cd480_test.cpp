@@ -4,15 +4,15 @@
 #include <new>
 static int g_packed, g_strings, g_wide, g_cacheSize = -1;
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
-struct CWideString { void* PStringData; CWideString() : PStringData(0) { ++g_wide; } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CWideString { public: void* PStringData; CWideString() : PStringData(0) { ++g_wide; } };
 template <class T> struct allocator { allocator() { } };
 template <class T, class A> struct _STLP_alloc_proxy : A { T _M_data; _STLP_alloc_proxy(const A& a, T p) : A(a), _M_data(p) { } };
 template <class T> struct _Vector_base {
     T* _M_start; T* _M_finish; _STLP_alloc_proxy<T*, allocator<T> > _M_end_of_storage;
     _Vector_base(const allocator<T>& a) : _M_start(0), _M_finish(0), _M_end_of_storage(a, (T*)0) { }
 };
-template <class T> struct CArray : _Vector_base<T> { explicit CArray(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { } };
+template <class T> class CArray : public _Vector_base<T> { public: explicit CArray(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { } };
 struct CPackedUIntArray { unsigned int* PackedInts; unsigned int Size; unsigned char Bits; unsigned int Bias;
     CPackedUIntArray() : PackedInts(0), Size(0), Bits(0), Bias(0) { ++g_packed; } };
 struct CDiskFilePointer { void* Data; void* Info; CDiskFilePointer() : Data(0), Info(0) {} };
@@ -32,7 +32,7 @@ struct CSymbolTree {
 struct SKeyPair { unsigned int Key, Value; };
 struct CCRCMap { CArray<SKeyPair> Entries; unsigned char Compare; bool Dirty; CCRCMap() : Dirty(false) {} };
 struct CChecksumCacheFile { int _body[7]; CChecksumCacheFile(int bufferSize) { g_cacheSize = bufferSize; } };
-struct CBankFile : CBaseClassNonCopyable {
+class CBankFile : public CBaseClassNonCopyable { public:
     unsigned int Size;
     CArray<CCharString> Symbols; CArray<unsigned int> Checksums; CArray<unsigned int> RuntimeData; CArray<void*> UpdateData;
     CPackedUIntArray PackedDataOffset, PackedDataSize, PackedDataType, PackedValid;

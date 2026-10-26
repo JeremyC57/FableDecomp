@@ -15,16 +15,16 @@
 // the action's cast parameters at +0x114 / +0x118 (descriptive names); the drain's target pointer +0x14.
 // Frame: the same-TU CVectorMap::LowerBound stand-in (auto_inline(off), above the caller) is what lets the lookup key
 // share its frame word with the name temporary and the by-value operator= parameter, as retail (LTCG) does.
-struct CTCParamsBase;
-struct CBaseObject;
-struct CTCBase;
+class CTCParamsBase;
+class CBaseObject;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;                              // +4
@@ -64,7 +64,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -92,7 +92,7 @@ struct CThing {
     }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08 (the owning creature)
@@ -113,13 +113,13 @@ struct CTCSpellCasting {                        // interface type 8
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33();
     virtual void SetSpellTarget(CThing* target);    // slot 34 (+0x88)
 };
-struct CTCDrainLife {
+class CTCDrainLife { public:
     unsigned char _pad00[0x14];
     CIntelligentPointerThing PTarget;           // +0x14
     void SetAICast(long level, long power);     // 0x007C3040
 };
 
-struct CCreatureAction_CastWillDrainLifeSpell : CCombatActionBase {
+class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public:
     long SpellLevel;                            // +0x114
     long SpellPower;                            // +0x118
     virtual void PerformAction();

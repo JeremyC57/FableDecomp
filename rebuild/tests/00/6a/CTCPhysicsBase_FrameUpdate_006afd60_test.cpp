@@ -2,8 +2,8 @@
 // Behaviour model of CTCPhysicsBase::FrameUpdate (0x006AFD60)
 static int g_refresh, g_finished, g_moved; static long g_flags;
 struct CTCGraphicAppearance { void SetActivePersistenceFlags(long f) { g_flags = f; } };
-struct CThing { CTCGraphicAppearance* PGraphicAppearance; void RefreshGraphic(bool) { ++g_refresh; } };
-struct CTCPhysicsBase {
+class CThing { public: CTCGraphicAppearance* PGraphicAppearance; void RefreshGraphic(bool) { ++g_refresh; } };
+class CTCPhysicsBase { public:
     CThing* ParentThing; bool enabled; bool Moving, OldMoving;
     bool IsPhysicsEnabled() { return enabled; } void OnMoved() { ++g_moved; } void OnMoveFinished() { ++g_finished; }
     void FrameUpdate() {

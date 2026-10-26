@@ -1,11 +1,11 @@
-struct CRGBFloatColour { float x, y, z; };
+class CRGBFloatColour { public: float x, y, z; };
 
 struct IDevice;
 typedef void (__stdcall *SetConstFn)(IDevice* self, int reg, void* pData, int count);
 struct IDeviceVtbl { void* slots[0x5f]; };
 struct IDevice { IDeviceVtbl* vtbl; };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x1d4];
     IDevice* device; // +0x1d4
     void SetXBoxUserVertexShaderConstant(int reg, CRGBFloatColour* colour, int packedIdx);

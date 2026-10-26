@@ -27,7 +27,7 @@ struct CCountedPointer_00ef7ab0 {                      // the thing and its coun
         m_pCount = 0;
     }
 };
-struct CScriptThing : CBase {                      // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                      // vtable 0x01238C8C
     CCountedPointer_00ef7ab0 m_thing;                  // +0x04
     virtual ~CScriptThing() {}
 };

@@ -8,12 +8,12 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player;
     unsigned char Data[32];
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, 32); buffer.Length = 32; return 32; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -24,18 +24,18 @@ static C3DVector g_lastAccel(0, 0, 0);
 static EGameAction g_lastAction = GAME_ACTION_NONE;
 static long g_lastPlayer = -1;
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     bool Dead;
     void ApplyRelativeMovementAcceleration(const C3DVector& a, EGameAction action) { ++g_applied; g_lastAccel = a; g_lastAction = action; }
 };
 static CThingPlayerCreature g_creature;
-struct CThingManager {
+class CThingManager { public:
     CThingPlayerCreature* GetThingWithUID(long long uid) { return uid == 0x123456789LL ? &g_creature : 0; }
 };
 static CThingManager g_manager;
-struct CPlayer;
+class CPlayer;
 
-struct CWorld {
+class CWorld { public:
     virtual CThingManager* GetThingManager() { return &g_manager; }
     virtual ~CWorld() {}
     CPlayer* GetPlayer(long number) { g_lastPlayer = number; return 0; }

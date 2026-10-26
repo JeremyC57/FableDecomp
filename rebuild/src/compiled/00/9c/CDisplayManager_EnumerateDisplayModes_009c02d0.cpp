@@ -276,7 +276,7 @@ public:
 
 template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;                                         // +0x00
     long Y;                                         // +0x04
     C2DExtentsI() {}

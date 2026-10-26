@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     const char* PStringData;
     explicit CWideString(const char* s) : PStringData(s) { ++g_live; }
     CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_live; }

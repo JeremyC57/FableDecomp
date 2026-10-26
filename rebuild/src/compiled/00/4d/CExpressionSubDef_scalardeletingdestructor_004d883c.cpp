@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CExpressionSubDef
-{
+class CExpressionSubDef
+{ public:
     void* vftable;
 };
 extern void* const g_CExpressionSubDef_vftable;

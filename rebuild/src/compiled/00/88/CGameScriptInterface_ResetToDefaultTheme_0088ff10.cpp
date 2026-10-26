@@ -2,7 +2,7 @@
 struct CInner {
     void Method(int a, int b);
 };
-struct CWorld {
+class CWorld { public:
     char pad[0x18];
     CInner* PEnvironment;
 };

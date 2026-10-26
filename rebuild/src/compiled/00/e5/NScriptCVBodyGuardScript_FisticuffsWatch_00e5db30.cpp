@@ -12,21 +12,21 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
+class CScriptThing;
 CCharString __fastcall GFIntToCharString(long value);                        // 0x0099F830 (hidden result in ecx)
 CCharString __fastcall operator+(const char* left, const CCharString& right); // 0x0099F690 (hidden result in ecx)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -60,11 +60,11 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const; virtual void t005() const; virtual void t006() const; virtual void t007() const; virtual void t008() const;
     virtual void t009() const;
     virtual float GetAngleXY() const;                    // slot 10 (+0x28) 0x004AAA40
@@ -145,7 +145,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v473();
  virtual void EntitySetFacingAngle(CScriptThing const &, float, bool) const; //slot474 0x0089bdf0
 };
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

@@ -72,7 +72,7 @@ public:
 
 class CSymbolMap;
 class CDefinitionManager;
-struct CPersistContext {                               // Ego_r.pdb, 0x2C bytes, no destructor
+class CPersistContext { public:                               // Ego_r.pdb, 0x2C bytes, no destructor
     unsigned char _body[0x2c];
     void Init(CCharString& data, CDefinitionManager* defs);                                                       // 0x009BAA10
     void Init(CStringParser* parser, TStringParserErrorCallback callback, bool loading, CDefinitionManager* defs,

@@ -13,7 +13,7 @@ struct CKeyEntryVectorMap {
     SKeyEntry* End() { return m_pLast; }
     SKeyEntry* Find(const unsigned long& key) { SKeyEntry* it = LowerBound(key); return (it == End() || key < it->m_key) ? End() : it; }
 };
-struct CDataBank {
+class CDataBank { public:
     unsigned char _pad00[0xd0]; CKeyEntryVectorMap m_entries;
     void* LookupValue(unsigned long key) { SKeyEntry* it = m_entries.Find(key); if (it != m_entries.End()) return it->m_value; return 0; }
 };

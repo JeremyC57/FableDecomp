@@ -2,12 +2,12 @@
 // __fastcall, returns CCharString by value (hidden return pointer).
 // Body: construct CCharString from literal string ptr 0x123a680 with -1.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n);
 };
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     CCharString GetClassTypeName();
 };
 

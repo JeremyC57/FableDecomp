@@ -2,7 +2,7 @@
 // Leaf: ChangeScene
 // this-call (self in ecx) modeled as __fastcall free fn (leading ptr -> ecx).
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void* vtbl;      // +0x00
     char  pad[0x10 - 0x04];
     void* p10;       // +0x10

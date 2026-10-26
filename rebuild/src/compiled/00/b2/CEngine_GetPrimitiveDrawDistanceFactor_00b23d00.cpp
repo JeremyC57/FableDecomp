@@ -13,7 +13,7 @@ struct SViewRecord_01436e80 {
 extern SRenderSettings_01436e20* g_pRenderSettings_01436e20;   // 0x01436E20
 extern SViewRecord_01436e80*     g_pViewRecord_01436e80;       // 0x01436E80
 
-struct CEngine {
+class CEngine { public:
     static float GetPrimitiveDrawDistanceFactor();
 };
 

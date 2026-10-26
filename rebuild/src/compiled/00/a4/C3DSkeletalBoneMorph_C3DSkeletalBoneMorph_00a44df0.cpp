@@ -15,7 +15,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 };
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* Data;                                // +0x00
     long        Length;                              // +0x04
 };

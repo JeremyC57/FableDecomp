@@ -14,8 +14,8 @@
 //   declared before the profile-path call; the search buffer is 262 wchars (fixes the /GS frame to 0x228); the third arm
 //   loads the profile path (as retail) but queues fullPath.
 typedef unsigned short wchar16;
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -29,13 +29,13 @@ bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
 struct CFileFinder { void* Handle; unsigned long Flags; };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
 };
 extern bool g_bLoadFromAnyDirectory;                    // 0x013B8646 (console variable)
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0xf8];
     long          SaveGameLoadStatus;                   // +0xf8
     CWideString   SaveGamePathName;                     // +0xfc

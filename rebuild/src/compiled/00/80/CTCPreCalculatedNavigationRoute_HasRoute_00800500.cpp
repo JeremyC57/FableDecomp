@@ -7,7 +7,7 @@
 // Layout = Ego_r.pdb CTCPreCalculatedNavigationRoute with the 12-byte retail vector: PThingToCalculateRouteTo +0x0c,
 // ThingToCalculateRouteToUID +0x18, Route (vector<pair<C2DVector, unsigned char>>) +0x20. CThing's dead flag is bit 0 of +0x91
 // (as the landed IS_THING_DEAD bodies model it; the PDB CThing layout does not match retail there).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                                  // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -45,7 +45,7 @@ struct CTCBase_Layout {                                     // engine/CTCBase.h 
     bool    IsInGlobalUpdateTCs;                            // +0x09
 };
 
-struct CTCPreCalculatedNavigationRoute : CTCBase_Layout {
+class CTCPreCalculatedNavigationRoute : public CTCBase_Layout { public:
     CBaseIntelligentPointer PThingToCalculateRouteTo;       // +0x0c CIntelligentPointer<const CThing>
     unsigned __int64        ThingToCalculateRouteToUID;     // +0x18
     CRetailVector_RouteNode Route;                          // +0x20

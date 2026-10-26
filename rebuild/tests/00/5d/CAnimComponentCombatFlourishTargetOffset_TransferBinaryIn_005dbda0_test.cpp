@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long m_position; const unsigned char* m_pData; long m_remaining; int overflowReads;
     const unsigned char* m_pNext;     // the next chunk, used by the overflow reader
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
@@ -23,7 +23,7 @@ struct CMemoryDataInputStream {
     }
 };
 
-struct CAnimComponentCombatFlourishTargetOffset {
+class CAnimComponentCombatFlourishTargetOffset { public:
     bool TargetOffset; C2DVector TargetOffsetVector;
     void TransferBinaryIn(CMemoryDataInputStream& stream)
     {

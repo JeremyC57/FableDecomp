@@ -4,7 +4,7 @@
 #include <math.h>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -14,23 +14,23 @@ struct C3DVector {
 };
 static int g_seq; static int g_actionAt, g_baseAt, g_cameraAt, g_posAt, g_animAt; static float g_animDist;
 static C3DVector g_cameraPos, g_thingPos;
-struct CCamera {
+class CCamera { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual C3DVector GetPosition() const { return g_cameraPos; }
 };
 static CCamera g_camera;
-struct CThing {
+class CThing { public:
     virtual void v00() {}
     const C3DVector& GetPosition() const { g_posAt = ++g_seq; return g_thingPos; }
     CCamera* GetCamera() const { g_cameraAt = ++g_seq; return &g_camera; }
     void WorldUpdateBulletTime() { g_baseAt = ++g_seq; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void UpdateAction() { g_actionAt = ++g_seq; }
     void UpdateAnimation(float distanceToCamera) { g_animAt = ++g_seq; g_animDist = distanceToCamera; }
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     void WorldUpdateBulletTime();
 };
 void CThingAICreature::WorldUpdateBulletTime()

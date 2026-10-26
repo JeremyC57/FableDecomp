@@ -62,10 +62,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectRadialBlurRenderer {
+class CEngineScreenEffectRadialBlurRenderer { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

@@ -12,18 +12,18 @@
 // Shape: the marker is assigned from the GetThingWithScriptName temporary through the inline CScriptThing / CCountedPointer
 // operator= (the source's fields read first, the old block released, the new one add-ref'd), then the temporary's
 // inline destructor (vtable store, release, zeroing, ~CBaseClass) and the name's; both names are implicit conversions.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -58,11 +58,11 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
@@ -80,7 +80,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual void s067() const; virtual void s068() const; virtual void s069() const; virtual void s070() const; virtual void s071() const; virtual void s072() const;
     virtual void s073() const; virtual void s074() const; virtual void s075() const;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const;
     virtual void v006() const; virtual void v007() const; virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const;
     virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const; virtual void v016() const; virtual void v017() const;
@@ -186,7 +186,7 @@ struct CGameScriptInterface {
     virtual void v599() const; virtual void v600() const;
     virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x414];
     long          TollBanditPayMeDistance;               // +0x414
 };

@@ -11,7 +11,7 @@ static void* g_lastDeleted = 0;
 
 struct SubObj { int x; };
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     char   pad0[0x10];
     SubObj sub;
 };

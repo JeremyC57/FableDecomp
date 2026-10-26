@@ -1,7 +1,7 @@
 // NGraphicAppearance::CTCGraphicAppearanceStaticMesh::GetClassTypeName @ 0x0077bd00
 // __fastcall, returns CCharString by value.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     int   len;
     CCharString(const char* s, int n);

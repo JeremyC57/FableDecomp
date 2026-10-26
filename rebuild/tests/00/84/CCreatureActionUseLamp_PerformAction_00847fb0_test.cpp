@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -27,11 +27,11 @@ struct CThing {
 };
 
 static int g_setActive = 0; static bool g_activeArg = false; static void* g_activeThis = 0;
-struct CTCLight { unsigned char _pad[0x1c]; bool Active; void SetActive(bool active) { ++g_setActive; g_activeArg = active; g_activeThis = this; Active = active; } };
+class CTCLight { public: unsigned char _pad[0x1c]; bool Active; void SetActive(bool active) { ++g_setActive; g_activeArg = active; g_activeThis = this; Active = active; } };
 static int g_getPItem = 0;
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { ++g_getPItem; return m_pItem; } };
-struct CCreatureActionBase { virtual void v00() {} unsigned char _pad04[0xa8 - 4]; };
-struct CCreatureAction_UseLamp : CCreatureActionBase {
+class CCreatureActionBase { public: virtual void v00() {} unsigned char _pad04[0xa8 - 4]; };
+class CCreatureAction_UseLamp : public CCreatureActionBase { public:
     CBaseIntelligentPointer PObjectToUse;
     void PerformAction();
 };

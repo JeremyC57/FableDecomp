@@ -9,9 +9,9 @@
 // with it. The local is copied into the hidden return slot (0x0099B720) and destroyed (0x0099B510).
 #include <stddef.h>    // wchar_t (a typedef under VC7.1 without /Zc:wchar_t)
 
-struct CWideStringData;
+class CWideStringData;
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const wchar_t* text);           // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
@@ -19,7 +19,7 @@ struct CWideString {
     long GetDataSize() const;                   // 0x0099B240: size in bytes
 };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v00();
     virtual void v01();
     virtual long GetPosition();                 // slot 2

@@ -8,12 +8,12 @@
 // (present / not dead, thing byte +0x91 bit 0) and with the explosion's own dead test; the driver lookup is unchecked
 // (bit 1 of +0x28, cached +0x5c) and its absent arm reads the string's frame word.
 // Layout: Ego_r.pdb PObstruction +0x12c, retail +0x114 (CCombatActionBase is 0x114 in retail).
-struct C3DVector { float x, y, z; };
-struct CThing;
+class C3DVector { public: float x, y, z; };
+class CThing;
 struct CExplosionDriver {
     void AddExcludedThing(CThing* thing);   // 0x0080CBF0
 };
-struct CThing {
+class CThing { public:
     unsigned char     _pad0[0x28];
     unsigned char     m_driverFlags;        // +0x28 bit 1: the driver component is cached
     unsigned char     _pad1[0x5c - 0x29];
@@ -33,12 +33,12 @@ struct CThing {
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);   // 0x0080C460
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
@@ -48,13 +48,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
-struct CCreatureAction_SummonerFlameSlice : CCombatActionBase {
+class CCreatureAction_SummonerFlameSlice : public CCombatActionBase { public:
     CBaseIntelligentPointer PObstruction;   // +0x114 (PDB +0x12c)
     void PerformAction();
 };

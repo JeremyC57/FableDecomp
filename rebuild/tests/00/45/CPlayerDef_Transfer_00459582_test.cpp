@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CPersistContext { int log[8]; int n; };
-struct CPlayerDef { char pad3c[0x3c]; char m3c[4]; char m40[4]; };
+class CPersistContext { public: int log[8]; int n; };
+class CPlayerDef { public: char pad3c[0x3c]; char m3c[4]; char m40[4]; };
 
 static void CtxTransferA(CPersistContext* ctx, void* member) { ctx->log[ctx->n++] = 0x3c; (void)member; }
 static void CtxTransferB(CPersistContext* ctx, void* member) { ctx->log[ctx->n++] = 0x40; (void)member; }

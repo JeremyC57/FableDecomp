@@ -3,7 +3,7 @@
 // lost target resets and picks the next action only when the target cannot be attacked.
 #include <cstdio>
 
-struct CThing { bool attackable; };
+class CThing { public: bool attackable; };
 struct CCreature { bool performing, freeToFinish; int finished; bool IsPerformingAnyAction() { return performing; } bool IsFreeToFinishAction() { return freeToFinish; } void FinishCurrentAction() { ++finished; } };
 static bool IsAbleToBeAttacked(CThing* t) { return t->attackable; }
 struct CSequence { bool finished, zoneValid, resetOnLost, ready;

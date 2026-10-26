@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing;
-struct CGameScriptInterface {
+class CThing;
+class CGameScriptInterface { public:
     bool CanThingBe_Seen_ByOtherThing(CThing* thing1, CThing* thing2);
     bool CanSeeImpl(CThing* thing1, CThing* thing2, int mode);
 };

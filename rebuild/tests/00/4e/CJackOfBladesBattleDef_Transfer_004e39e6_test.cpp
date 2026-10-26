@@ -1,12 +1,12 @@
 // Behaviour test for CJackOfBladesBattleDef::Transfer (0x004E39E6): every member is handed to the right typed
 // transfer, in declaration order (a loading context writes a running sequence number into each member).
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
     int seq; int kinds[32]; void* addrs[32];
     void TransferLong(long* value) { kinds[seq] = 1; addrs[seq] = value; *value = 100 + seq; ++seq; }
     void TransferFloat(float* value) { kinds[seq] = 2; addrs[seq] = value; *value = (float)seq; ++seq; }
 };
-struct CJackOfBladesBattleDef {
+class CJackOfBladesBattleDef { public:
     virtual void v00() {}
     unsigned char _defBase[0x38];
     float IdealShootDistance; long NumGetHitsBeforeRush; float TimeBetweenShots; float ScreamInAirTime;

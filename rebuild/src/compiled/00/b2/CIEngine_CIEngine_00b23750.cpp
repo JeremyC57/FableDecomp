@@ -4,13 +4,13 @@
 // instance counter). Vtable 0x012A0D24 is CIEngine's (rtti-vtables.tsv). The manifest label
 // "CAIStateGroup_MoveGoodsBase ctor" is propagated from a byte-identical shell and rejected.
 // Shape: base constructor, the derived vtable store, then the body assignment `m_initialised = false` (+8).
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();                         // (a non-virtual destructor keeps the deleting destructor out of the TU)
     bool Valid;                              // +0x04 (cleared by the base constructor)
     CInitBaseClass();                           // 0x0099A310
 };
 
-struct CIEngine : CInitBaseClass {              // vtable 0x012A0D24
+class CIEngine : public CInitBaseClass { public:              // vtable 0x012A0D24
     bool m_initialised;                         // +0x08
     CIEngine();
 };

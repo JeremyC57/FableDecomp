@@ -1,6 +1,6 @@
 #include <cstdio>
 // behaviour copy of GFDataIsInsideBlock<C4DVector*> @ 0x00BFB750
-struct C4DVector { float x, y, z, w; };
+class C4DVector { public: float x, y, z, w; };
 
 template <class T>
 bool GFDataIsInsideBlock(T& pointer, void* block, long size)

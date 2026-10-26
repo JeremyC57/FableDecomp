@@ -3,7 +3,7 @@
 // Layout: local view (engine/CFrontEndManager.h declares no methods); members +0x1c..+0xd9 descriptive from the retail accesses.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                        // 0x0099B510
@@ -11,7 +11,7 @@ struct CWideString {
 };
 extern "C" int __cdecl _wcsicmp(const unsigned short* a, const unsigned short* b);   // 0x00F3FB84
 double __fastcall GFGetTime();                             // 0x009E1BC0
-struct CFileInstaller {
+class CFileInstaller { public:
     void Unpause();                                        // 0x009C3250
     static CFileInstaller* __fastcall Get();               // 0x00404440 (folded CTBaseSingleton<>::Get)
 };

@@ -6,7 +6,7 @@ static int g_frees = 0;
 static int g_stringsDestroyed = 0;
 static void CountingFree(void* p) { if (p) ++g_frees; std::free(p); }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString() { ++g_stringsDestroyed; m_pData = 0; }
 };

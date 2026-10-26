@@ -1,6 +1,6 @@
 // CTCSpecialAbilities::CreateParticleEffect(long particleDef, const C3DVector& position) -- spawn a particle-emitter thing at the position and, when it is alive, mark its emitter component always-updating; return the new thing
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the inlined GetInterface tail is the F88 form (`if (found != map->last && !(type < found->type)) it = found; else it = map->last;` then one `*ppOut = it->component`), which VC7.1 tail-duplicates so the component lands straight in the register retail uses
-// Leaf: ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABUC3DVector@@@Z
+// Leaf: ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072AB70, 88 bytes (96 with padding), `ret` (static __fastcall).
 // Label: catalog "CreateParticleEffect" (module _global); Ego_r.pdb name set has
 //   ?CreateParticleEffect@CTCSpecialAbilities@@SIPAVCThing@@JABVC3DVector@@@Z (static, __fastcall); ~74 callers in
@@ -13,7 +13,7 @@
 // Shape: the emitter lookup is GetTC with a null default (`xor ecx,ecx` before the presence test); the component is
 //   used unconditionally (ecx may be null on the call, as in retail).
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,11 +59,11 @@ public:
         return result;
     }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long particleDef, const C3DVector& position, bool attach);   // 0x006E0880
     void SetAlwaysUpdate(bool alwaysUpdate);                                                    // 0x006E0590
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     static CThing* __fastcall CreateParticleEffect(long particleDef, const C3DVector& position);
 };
 

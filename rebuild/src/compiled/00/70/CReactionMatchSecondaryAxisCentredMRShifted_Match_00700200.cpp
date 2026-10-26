@@ -11,14 +11,14 @@
 #include <math.h>
 #include "engine/CReactionMatch_SecondaryAxisCentredMRShifted.h"
 
-template <class T> struct CArray {                      // retail CArray<T>: begin/end/capacity (0x0c; PDB says 0x10)
+template <class T> class CArray { public:                      // retail CArray<T>: begin/end/capacity (0x0c; PDB says 0x10)
     T*   Data;                                          // +0x00
     T*   m_end;                                         // +0x04
     T*   m_capacity;                                    // +0x08
     const T& operator[](long i) const { return Data[i]; }
 };
 
-struct COpinionSet {
+class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00
 };
 

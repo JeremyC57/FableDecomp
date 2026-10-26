@@ -5,14 +5,14 @@
 //         call CCharString::ctor(const char*,int); mov eax,esi; pop esi; ret 4
 // The layout name string lives at 0x12a7d0c (pushed as an immediate offset).
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n); // ctor @ 0x99ebf0
 };
 
 extern char kLayoutName[];
 
-struct CEngineVSConstantLayoutLightsBones {
+class CEngineVSConstantLayoutLightsBones { public:
     int x;
     CCharString PeekName();
 };

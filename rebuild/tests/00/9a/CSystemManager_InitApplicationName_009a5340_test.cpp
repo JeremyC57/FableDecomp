@@ -6,8 +6,8 @@
 static const wchar_t* g_commandLine = 0;
 static const wchar_t* GetCommandLineW_stub() { return g_commandLine; }
 
-struct CCharString { char text[300]; CCharString() { text[0] = 0; } };
-struct CWideString {
+class CCharString { public: char text[300]; CCharString() { text[0] = 0; } };
+class CWideString { public:
     const wchar_t* w;
     CWideString(const wchar_t* t) : w(t) {}
     CCharString ConvertToCharString() const
@@ -18,7 +18,7 @@ struct CWideString {
         return r;
     }
 };
-struct CSystemManager {
+class CSystemManager { public:
     CCharString ApplicationName;
     void InitApplicationName()
     {

@@ -11,7 +11,7 @@
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 
 namespace NParticleEngine {
-struct CParticleSystemCost {
+class CParticleSystemCost { public:
     float PolyCount;                        // +0x00
     float PixelCount;                       // +0x04
     float LightCount;                       // +0x08
@@ -19,7 +19,7 @@ struct CParticleSystemCost {
     float SetupCost;                        // +0x10
     float LightCost;                        // +0x14
 };
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char  _pad00[0x40];
     unsigned short Priority : 3;            // +0x40 bits 0-2
     unsigned short IsScreenDisplacement : 1;
@@ -40,7 +40,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                          // +0x04
     void* GetPItem() const;                 // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual ~CIntelligentPointer();
     T* Get() const { return (T*)GetPItem(); }
 };
@@ -76,7 +76,7 @@ template <class T> struct CRetailList {     // STLport list (4 bytes: the head n
 typedef CIntelligentPointer<NParticleEngine::CParticleEmitter> CEmitterPointer;
 
 namespace NParticleEngine {
-struct CPSCUpdateNormal {
+class CPSCUpdateNormal { public:
     unsigned char                _pad00[0x9c];
     CRetailList<CEmitterPointer> DecalEmitterList;     // +0x9c
     void KillAllDecalEmitters();

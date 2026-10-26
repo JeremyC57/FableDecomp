@@ -3,11 +3,11 @@
 // Callees: NCameraModes::CBase::GetWorld() const @ 0x0084D050, NTargeting::GetTargetingPositionOnThing @
 // 0x007EA2F0 (`__fastcall`, hidden result in ecx), GetPhiForPosition(const C3DVector&) const @ 0x00879680.
 // Shape: as 0x00879560 -- the position in a named local, re-addressed with `lea` for the last call.
-struct CWorld;
-struct CThing;
-struct CGameCameraManager;
+class CWorld;
+class CThing;
+class CGameCameraManager;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
@@ -18,12 +18,12 @@ C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThi
 
 namespace NCameraModes {
 
-struct CBase {
+class CBase { public:
     virtual void v00();
     const CWorld& GetWorld() const;                         // 0x0084D050
 };
 
-struct CProjectileWeapon : CBase {
+class CProjectileWeapon : public CBase { public:
     float GetPhiForPosition(const C3DVector& position) const;   // 0x00879680
     float GetPhiForTargetedThing(const CThing& thing) const;
 };

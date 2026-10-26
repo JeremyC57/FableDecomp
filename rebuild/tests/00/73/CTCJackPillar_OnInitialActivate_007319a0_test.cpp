@@ -3,7 +3,7 @@
 struct CEngineGlobals { bool m_answer; virtual bool QuerySlot9() { return m_answer; } };
 CEngineGlobals g_engine;
 CEngineGlobals* g_pEngineGlobals = &g_engine;
-struct CTCJackPillar {
+class CTCJackPillar { public:
     long m_enableCalls; bool m_enabled;
     void Enable(bool enable) { ++m_enableCalls; m_enabled = enable; }
     void OnInitialActivate()

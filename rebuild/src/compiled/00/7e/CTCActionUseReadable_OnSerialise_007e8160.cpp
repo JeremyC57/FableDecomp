@@ -8,14 +8,14 @@
 // const reference and destroyed after: the default value comes from an inline helper that returns a NAMED local by value
 // (VC7.1 has no NRVO, so the local is copied into the return temporary and destroyed at the helper's end). The base
 // OnSerialise is not called; `loading` is unused.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                             // 0x0099AED0
     CWideString(const CWideString& other);     // 0x0099B720
     ~CWideString();                            // 0x0099B510
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, CWideString& value, const CWideString& defaultValue);   // 0x00410AC0
 };
 
@@ -25,20 +25,20 @@ inline CWideString EmptyWideString()
     return empty;
 }
 
-struct CThing;
+class CThing;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CTCActionUseBase : CTCBase {
+class CTCActionUseBase : public CTCBase { public:
     unsigned char _pad0c[8];                   // +0x0c PActionUseDef, +0x10 Usable
 };
 
-struct CTCActionUseReadable : CTCActionUseBase {
+class CTCActionUseReadable : public CTCActionUseBase { public:
     void*       PDef;                          // +0x14 CDefPointer<CReadableDef const>
     CWideString TextTag;                       // +0x18
     virtual void OnSerialise(CPersistContext& context, bool loading);

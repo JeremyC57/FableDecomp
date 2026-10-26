@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour of CTCInventoryQuests::vfunc_61 (0x0061A170): toggles show-all and rewinds both indices in test mode only.
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     bool ActiveTestQuestMode; long TestQuestSelectedIndex; long TestQuestTopIndex; bool TestQuestShowAll;
     void vfunc_61()
     {

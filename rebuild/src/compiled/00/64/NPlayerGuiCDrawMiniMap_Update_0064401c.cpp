@@ -11,7 +11,7 @@
 // Shape: NPlayerGui module (`#pragma optimize("s", on)`); the by-value CRGBColour argument (user copy constructor) is built in its argument slot (stores R, G,
 // B, A); the world pointer is named inside the third `&&` term; the fade close is the inline FadeOut() helper (Opening = false, Closing = true) of the landed SetAsActive.
 #pragma optimize("s", on)
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -22,7 +22,7 @@ struct CRGBColour {
     }
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) {}
 };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                             // +0x00
     float      FadeInTime;                         // +0x04
     float      FadeOutTime;                        // +0x08
@@ -39,14 +39,14 @@ struct CFadeInFadeOutBase {
         Closing = true;
     }
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     bool IsScreenFullyFadedOut();                  // 0x004A9210
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x28];
     CDisplayEngine* m_pDisplayEngine;              // +0x28
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0xdd];
     bool MiniMapEnabled;                           // +0xdd
     bool MiniMapActive;                            // +0xde

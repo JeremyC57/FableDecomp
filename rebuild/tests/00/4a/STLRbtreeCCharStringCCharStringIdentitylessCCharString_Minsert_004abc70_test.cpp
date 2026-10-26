@@ -5,7 +5,7 @@
 
 // Behaviour model of _Rb_tree<CCharString,...>::_M_insert (0x004ABC70): link a new node left of y when y is the
 // header, x is set or v < key(y) (without a hint), else right of y; fix root/leftmost/rightmost; rebalance; count.
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { }
     CCharString(const CCharString& o) : p(o.p) { }

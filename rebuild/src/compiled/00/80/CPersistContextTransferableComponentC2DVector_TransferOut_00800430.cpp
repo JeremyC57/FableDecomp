@@ -8,9 +8,9 @@
 // label `CPersistContext_TransferableComponent<float>` is propagated: the 8-byte traits frame and the callee name
 // the type. The traits object (PDB: { C2DVector DefaultVal; }) lives in the `sub esp,8` frame; C2DVector's inline
 // constructor stores X = Y = 0.0f as immediates, which VC schedules after the argument pushes.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class C2DVector {
 public:
@@ -25,7 +25,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);   // 0x009E81E0 for C2DVector
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

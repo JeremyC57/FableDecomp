@@ -6,7 +6,7 @@
 // ahead of them (12-byte STLport containers), so a local retail-offset model is used.
 #pragma optimize("s", on)
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1BC];
     long statIndicatorPos;          // +0x1BC
     long statIndicatorMax;          // +0x1C0

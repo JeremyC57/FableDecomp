@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct COpinionPersonalityDef { char _pad[0x54]; };
+class COpinionPersonalityDef { public: char _pad[0x54]; };
 
 unsigned long __fastcall COpinionPersonalityDef_GetSizeofClass(const COpinionPersonalityDef* self)
 {

@@ -6,7 +6,7 @@ static unsigned int g_inner_b = 0;
 static int g_free_called = 0;
 static void* g_freed = 0;
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
   char pad0[0xc];
   void* Buffer;
   char pad10[0x1c-0x10];

@@ -14,7 +14,7 @@
 //   after the switch reads through it; every case RETURNS (retail duplicates the release and the epilogue per case),
 //   cases written 1, 2, 3, default (default = the adult pair, merged with case 2); the fallback def comes from a named
 //   manager local so the def pointer is loaded before the age (ecx/eax as retail).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -23,13 +23,13 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     const SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long m_refCount;                                        // +4
 };
 
-struct CVillageDef : CDefPointeeBase {
+class CVillageDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xb4 - 0x08];
     long SleepAdultStartTime;                               // +0xb4
     long SleepAdultEndTime;                                 // +0xb8
@@ -49,13 +49,13 @@ struct CDefaultVillageTimes {                               // the definition ma
     long SleepElderlyEndTime;                               // +0xc4
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _pad00[0xd0];
     CDefaultVillageTimes* DefaultVillageDef;                // +0xd0
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {
@@ -70,21 +70,21 @@ struct CDefPointer {
     T* operator->() const { return Object; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char           _pad00[0x94];
     CDefPointer<CVillageDef> PDef;                          // +0x94 CDefPointer<const CVillageDef>
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage* GetPVillage() const;                        // 0x007EE540
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0xc4];
     long Age;                                               // +0xc4 (1 child, 2 adult, 3 elderly)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -104,7 +104,7 @@ struct CThing {
     CDefinitionManager* GetDefinitionManager();             // 0x004C7990
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char      _pad4c[0xe0 - 0x4c];
     CThingCreatureDef* PDef;                                // +0xe0 CDefPointer<CThingCreatureDef const>::Object
     void GetSleepTimes(long& start, long& end);

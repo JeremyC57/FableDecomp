@@ -10,7 +10,7 @@
 // Layout (PDB CMiniMapDisplay with retail 12-byte vectors): vptr +0, MapPrimitiveHandles +4, MarkerPrimitiveHandles +0x10.
 // engine/CMiniMapDisplay.h carries the Ego_r 16-byte vectors (MarkerPrimitiveHandles +0x14), so `this` is a local model.
 // Shape: both dropped functor results share the one `push ecx` frame word.
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -39,7 +39,7 @@ struct CRetailHandleVector {                       // retail vector<CEnginePrimi
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     void*               _vtable;                   // +0x00
     CRetailHandleVector MapPrimitiveHandles;       // +0x04
     CRetailHandleVector MarkerPrimitiveHandles;    // +0x10

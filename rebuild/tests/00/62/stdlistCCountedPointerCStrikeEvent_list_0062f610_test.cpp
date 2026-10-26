@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 // Test model: STLport list<CCountedPointer<CStrikeEvent> > with a malloc'd self-linked sentinel; the counted pointer copy adds a reference.
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 struct CStrikeEvent { int Frame; };
 struct CCountedPointer {
     CStrikeEvent* Data; CCPPointerInfo* Info;

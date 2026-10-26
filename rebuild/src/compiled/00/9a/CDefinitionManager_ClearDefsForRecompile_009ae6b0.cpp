@@ -4,7 +4,7 @@
 // Note: the +1/+1/-1 refcount triple is a by-value pass-through copy (param copy, return copy, param dtor); the map-slot assignment keeps the old pointer in a local (short release form).
 extern "C" int __cdecl _stricmp(const char*, const char*);
 struct CStringData { char* Data; int Length; };
-struct CCharString {
+class CCharString { public:
     CStringData* PData;
     bool IsEmpty() const { return PData == 0 || PData->Length == 0; }
     const char* c_str() const { return PData->Data; }

@@ -9,7 +9,7 @@
 // The colour copy loads all four bytes before storing any (one spilled into the dead first-argument slot): its copy
 // constructor forwards the four channels to an inline Set(r, g, b, a), whose right-to-left argument evaluation fixes the
 // load order A, B, G, R. Member names past the PDB-less layout are descriptive.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {

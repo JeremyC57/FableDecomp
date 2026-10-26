@@ -19,9 +19,9 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()                                  // chained assignments: the stores run right to left

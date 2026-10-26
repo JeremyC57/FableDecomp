@@ -17,7 +17,7 @@ static int fails = 0;
 //          0x0099EAE0, _CxxThrowException 0x00BFEB84 (CBBBFileException ThrowInfo 0x01369380); literal 0x0129C37C.
 // Model: the landed CCachedFile::OpenFromFile (0x00A5B210) layout, the landed CMemoryFile::MovePosition (0x009E9140)
 //          exception model, the CDiskFileWin32 of CBankFile::PrepareDataForInclusion (0x009CC9F0, this chunk).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -25,7 +25,7 @@ struct CCharString {
     operator const char*() const;                       // 0x0099E4C0
     friend CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -45,12 +45,12 @@ public:
     CBBBFileException(CCharString text, EFileExceptionType type) : CExceptionBase(static_cast<const char*>(text)), Type(type) { }
 };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
-struct CAFile;
+class CAFile;
 struct CBase {                                          // the polymorphic root (vptr at +0)
     CBase();                                            // 0x0099A2F0
     virtual ~CBase();                                   // 0x0099A300
 };
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C
     long        AccessType;                             // +0x04
     long        Position;                               // +0x08
     long        Length;                                 // +0x0c
@@ -67,7 +67,7 @@ struct CCountedPointer_CAFile {                         // {object, count block}
     void*   m_pCount;
     void Reset(CAFile* file);                           // 0x0050F550
 };
-struct CCachedFile {
+class CCachedFile { public:
     void*                  _vptr;                       // +0x00
     long                   Position;                    // +0x04
     long                   BufferStartPosition;         // +0x08

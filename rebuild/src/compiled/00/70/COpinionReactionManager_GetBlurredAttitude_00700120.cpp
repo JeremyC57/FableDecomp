@@ -31,7 +31,7 @@ struct CAttitudeVector {                           // retail std::vector<EOpinio
     EOpinionAttitudeType operator[](unsigned long index) const { return m_pFirst[index]; }
 };
 
-struct CBlurredAttitudesDef {                      // 0x48 bytes in retail
+class CBlurredAttitudesDef { public:                      // 0x48 bytes in retail
     unsigned char   _base[0x3C];                   // def base
     CAttitudeVector Attitudes;                     // +0x3C
 };
@@ -43,12 +43,12 @@ struct CBlurredAttitudesDefVector {                // retail std::vector<CBlurre
     const CBlurredAttitudesDef& operator[](long index) const { return m_pFirst[index]; }
 };
 
-struct COpinionReactionManagerDef {
+class COpinionReactionManagerDef { public:
     unsigned char              _base[0x3C];        // def base
     CBlurredAttitudesDefVector AttitudeBlur;       // +0x3C
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();               // 0x0049D810
 };
 

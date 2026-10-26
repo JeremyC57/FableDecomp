@@ -15,12 +15,12 @@
 // the decrement) followed by zero stores.
 #include <string.h>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                             // +0
     void (__fastcall* Destroy)(void* data);                  // +4
     void* Data;                                              // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Clear()
@@ -88,37 +88,37 @@ struct CLongArray {                                          // CArray<long> (12
     }
 };
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMap;
-struct CMapInfo {                                            // 0x48 bytes
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMap;
+class CMapInfo { public:                                            // 0x48 bytes
     C2DBoxI               Area;                              // +0x00
     CCountedPointer<CMap> PMap;                              // +0x10
     unsigned char         _pad18[0x0e];
     bool                  Activated;                         // +0x26
     unsigned char         _rest[0x21];                       // +0x27 .. +0x48
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                                // +0x00
     T* Finish;                                               // +0x04
     T* EndOfStorage;                                         // +0x08
     T& operator[](unsigned long i) { return Start[i]; }
 };
 
-struct CEngineManager {
+class CEngineManager { public:
     static CEngineManager& __fastcall Get();                 // 0x00436FB0 CTBaseSingleton<CEngineManager>::Get
     void RemoveMap(long map);                                // 0x00640430
 };
-struct CThingManager {
+class CThingManager { public:
     void OnLevelUnload(long map, bool b);                    // 0x00525D90
 };
 struct CThingMapManager {
     void RemoveGameMap(long map);                            // 0x00638340
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     bool IsNavigationMapLoaded(long map) const;              // 0x00A14E80
     void RemoveNavigationMap(long map);                      // 0x00A155D0
 };
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();
@@ -127,7 +127,7 @@ struct CWorld {
     CNavigatorManager* NavigatorManager;                     // +0x48
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     void*             _vptr;                                 // +0x00
     long              f4;                                    // +0x04
     CWorld*           World;                                 // +0x08

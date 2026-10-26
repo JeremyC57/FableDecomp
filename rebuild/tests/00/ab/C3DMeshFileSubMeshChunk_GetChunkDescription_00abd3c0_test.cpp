@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char* Data;
     int Length;
     CCharString(const char* text, int length);

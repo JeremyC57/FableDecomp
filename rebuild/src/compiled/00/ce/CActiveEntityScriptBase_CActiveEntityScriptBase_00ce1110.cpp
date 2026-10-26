@@ -16,7 +16,7 @@
 // The CSpawnedFuncBase constructor must be `__forceinline` (a plain inline one is emitted out of line).
 // Leaf: ??0CActiveEntityScriptBase
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     CCharString(const CCharString& other);      // 0x0099EC30
@@ -36,11 +36,11 @@ struct CScriptThingImpPointer {                 // CCountedPointer<CScriptThing>
     }
 };
 
-struct CBaseObject {                            // root of CScriptThing (vtable 0x01231710)
+class CBaseObject { public:                            // root of CScriptThing (vtable 0x01231710)
     virtual void v00();
 };
 
-struct CScriptThing : CBaseObject {             // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes
     CScriptThingImpPointer PImp;                // +0x04
     virtual void v00();
     virtual const CCharString& GetName() const; // slot 1 (+0x04)
@@ -64,7 +64,7 @@ struct CScriptProcessBase {                     // the process root (0x14 bytes)
     CScriptProcessBase(long a, long size, float fraction);   // 0x00A44740
 };
 
-struct CSpawnedFuncBase : CScriptProcessBase {  // vtable 0x012C2F9C, 0x34 bytes
+class CSpawnedFuncBase : public CScriptProcessBase { public:  // vtable 0x012C2F9C, 0x34 bytes
     unsigned long ID;                           // +0x14
     long LastScriptFrame;                       // +0x18
     long CurrentScriptFrame;                    // +0x1c
@@ -79,7 +79,7 @@ struct CSpawnedFuncBase : CScriptProcessBase {  // vtable 0x012C2F9C, 0x34 bytes
           AssociatedRegionName(), FuncPaused(false), Interrupted(false), PPredicate() { }
 };
 
-struct CActiveEntityScriptBase : CSpawnedFuncBase {   // vtable 0x012C3594, 0x58 bytes
+class CActiveEntityScriptBase : public CSpawnedFuncBase { public:   // vtable 0x012C3594, 0x58 bytes
     CEntityScriptPointer PEntityScript;         // +0x34
     unsigned long Flags;                        // +0x3c
     unsigned __int64 EntityUID;                 // +0x40

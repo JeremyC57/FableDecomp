@@ -14,13 +14,13 @@
 //   erase(begin(), end()) pushing last then first; the colour is a CRGBColour local built R, G, B, A.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CFrontEndDef {
+class CFrontEndDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
     __forceinline void ReleaseRef() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline void Clear() { if (Object) { Object->ReleaseRef(); Object = 0; } }
     __forceinline CDefPointer& operator=(T* p) { Clear(); Object = p; return *this; }
@@ -32,9 +32,9 @@ template <class T> struct vector {                 // STLport vector, 12 bytes
     T* erase(T* first, T* last);                   // out of line
     __forceinline void clear() { erase(_M_start, _M_finish); }
 };
-struct CWideString { void* m_pData; };
-struct CDateAndTime { unsigned char _body[0x10]; };
-struct CRGBColour {
+class CWideString { public: void* m_pData; };
+class CDateAndTime { public: unsigned char _body[0x10]; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

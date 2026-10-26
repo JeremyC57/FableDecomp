@@ -1,12 +1,12 @@
 #include <stdio.h>
 static int g_fonts; static const void* g_this;
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() {} };
-struct CGameComponent : CBaseClassNonCopyable { };
-struct CDeviceResetCallback {
+class CGameComponent : public CBaseClassNonCopyable { public: };
+class CDeviceResetCallback { public:
     virtual bool OnPreDeviceReset() = 0;
     virtual bool OnPostDeviceReset() = 0;
 };
-struct CMainGameComponent : CGameComponent, CDeviceResetCallback {
+class CMainGameComponent : public CGameComponent, public CDeviceResetCallback { public:
     void InitialiseFonts() { ++g_fonts; g_this = this; }
     virtual bool OnPreDeviceReset() { return false; }
     virtual bool OnPostDeviceReset();

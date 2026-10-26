@@ -13,7 +13,7 @@
 // with the box members tested directly VC7.1 caches TLX/TLY in registers and pushes ebx, where retail
 // compares against memory, re-reads TLY for the subtraction and copies TLX (`mov esi,edi ; sub eax,esi`).
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;                                // +0x00
     long TLY;                                // +0x04
     long BRX;                                // +0x08
@@ -28,7 +28,7 @@ struct CScriptedMapCell {
     unsigned char ThemeBlend[4];             // +0x10
 };
 
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     void* __vftable;                         // +0x00
     unsigned char _pad_0x04[0x4];            // +0x04
     CScriptedMapCell* Cells;                 // +0x08 vector<CScriptedMapCell> first

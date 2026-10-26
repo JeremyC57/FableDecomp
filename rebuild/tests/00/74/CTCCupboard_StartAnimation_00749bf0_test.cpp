@@ -11,7 +11,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -24,19 +24,19 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CTCBase { virtual void v00() {} CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; };
-struct CAnimFrameInfo { float Current; float Last; CAnimFrameInfo() : Current(0), Last(0) {} };
+class CTCBase { public: virtual void v00() {} CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; };
+class CAnimFrameInfo { public: float Current; float Last; CAnimFrameInfo() : Current(0), Last(0) {} };
 static int g_sets = 0;
-struct CAnimInit {
+class CAnimInit { public:
     long  UpdateMode; unsigned char Type; bool Looping; long Anim; float Speed; float Alpha; float LastAlpha; CAnimFrameInfo Frame; unsigned long Flags; unsigned long TypeFlags; long Priority;
     CAnimInit() {}
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority)
     { ++g_sets; Type = type; TypeFlags = typeFlags; Anim = anim; UpdateMode = updateMode; Looping = looping; Flags = flags; Priority = priority; }
 };
 static int g_setMain = 0; static const CAnimInit* g_mainInit = 0; static long g_mainMode = -1; static long g_mainDelay = -1; static void* g_mainThis = 0;
-struct CAnimateThing { void SetMainAnim(const CAnimInit& init, long mode, long delay) { ++g_setMain; g_mainInit = &init; g_mainMode = mode; g_mainDelay = delay; g_mainThis = this; } };
-struct CTCAnimationComplex { CAnimateThing m_anim; CAnimateThing& GetAnimation() { return m_anim; } };
-struct CTCCupboard : CTCBase {
+class CAnimateThing { public: void SetMainAnim(const CAnimInit& init, long mode, long delay) { ++g_setMain; g_mainInit = &init; g_mainMode = mode; g_mainDelay = delay; g_mainThis = this; } };
+class CTCAnimationComplex { public: CAnimateThing m_anim; CAnimateThing& GetAnimation() { return m_anim; } };
+class CTCCupboard : public CTCBase { public:
     bool Animating;
     void StartAnimation(long anim);
 };

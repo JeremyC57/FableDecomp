@@ -9,7 +9,7 @@
 // Layout (retail CTCWillLightning, as the landed InitialiseBeams 0x007A16F0): m_lspDef +0x28, m_lbBeams +0x68,
 //   m_cbpPlayer +0x70, BeamsInitialised +0x95, m_fAreaEffect +0x9c, m_fActivationTime +0xa8, m_fDeActivationTime +0xac,
 //   m_fTemporaryBeamLife +0xc0; def angle ranges +0xcc / +0xd4; CLightningBeam (0x7c, landed ctor 0x007A0630).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -22,11 +22,11 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
     const float* pa = &a.X; const float* pb = &b.X;
     return C3DVector((float)(double)(pb[2] * pa[1] - pa[2] * pb[1]), (float)(double)(*(&b.Y - 1) * pa[2] - pa[0] * pb[2]), (float)(double)(pb[1] * pa[0] - pa[1] * *(&b.Y - 1)));
 }
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CFloatRange { float Min, Max; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CFloatRange { public: float Min, Max; };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -41,7 +41,7 @@ struct CTCPhysicsBase {
     virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
     virtual const CRightHandedSet& GetRHSet() const;   // slot 72 (+0x120)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -52,20 +52,20 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 
 void operator delete(void* p);                  // 0x00BFE9BC
 #include <stdlib.h>
 
-struct CCPPointerInfo {                         // counted-pointer info block
+class CCPPointerInfo { public:                         // counted-pointer info block
     long Count;                                 // +0
     void (__fastcall* Destroy)(void*);          // +4 per-type deleter, object in ecx
     void* Object;                               // +8
     CCPPointerInfo(void (__fastcall* destroy)(void*), void* object) : Count(1), Destroy(destroy), Object(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                    // +0
     CCPPointerInfo* Info;                       // +4
     static void __fastcall DestroyObject(void* object);   // 0x007A4120
@@ -105,7 +105,7 @@ struct CDefNative {
     virtual void Delete() const;
     unsigned long IVRefCount;
 };
-struct CSpecialAbilitiesLightningSpellDef : CDefNative {
+class CSpecialAbilitiesLightningSpellDef : public CDefNative { public:
     unsigned char _pad08[0xcc - 0x08];
     CFloatRange RandomBeamYawRange;             // +0xcc (descriptive)
     CFloatRange RandomBeamPitchRange;           // +0xd4 (descriptive)
@@ -157,7 +157,7 @@ struct CLightningBeam {
     void Activate();                            // 0x007A1380
 };
 
-struct CTCWillLightning {
+class CTCWillLightning { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];

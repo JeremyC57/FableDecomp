@@ -17,7 +17,7 @@ struct CSprite : ISpritePrimary_0055c510, ISpriteListener_0055c510, ISpriteSecon
     ~CSprite();                                    // 0x0041AB40
 };
 
-namespace NUISystem { struct CMouseCursor; }
+namespace NUISystem { class CMouseCursor; }
 struct CFrontEndManager {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveListener(ISpriteListener_0055c510* listener);   // slot 5 (+0x14)
@@ -27,7 +27,7 @@ struct CFrontEndManager {
 };
 
 namespace NUISystem {
-struct CMouseCursor : CSprite {                    // vtables 0x0124C22C / 0x0124C208 / 0x0124C200
+class CMouseCursor : public CSprite { public:                    // vtables 0x0124C22C / 0x0124C208 / 0x0124C200
     virtual void v00();
     virtual void a00();
     virtual void b00();

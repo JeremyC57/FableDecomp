@@ -2,7 +2,7 @@
 // push esi; mov esi,ecx; call scalar_dtor(this); test [esp+8],1;
 // if set { mov ecx,esi; call operator_delete(this); } mov eax,esi; ret 4
 
-struct CEngineSubPrimitiveMeshBase;
+class CEngineSubPrimitiveMeshBase;
 
 // scalar destructor at 0x0099a300 (this in ecx)
 extern void __fastcall SubPrim_ScalarDtor(CEngineSubPrimitiveMeshBase* mesh);

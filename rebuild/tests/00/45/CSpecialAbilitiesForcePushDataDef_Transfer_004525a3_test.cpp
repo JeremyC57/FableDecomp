@@ -8,7 +8,7 @@ struct CTransferContext {
     int Xfer(void* p);
 };
 
-struct CSpecialAbilitiesForcePushDataDef {
+class CSpecialAbilitiesForcePushDataDef { public:
     unsigned char _tail[0x2c];
     void Transfer(CTransferContext* ctx);
 };

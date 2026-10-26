@@ -11,20 +11,20 @@
 // the creature (named local, ebx -- read before the GetPWorld call) and the target item are
 // registered with `true`. The combat manager is a second named local (esi) so it is fetched before
 // the right-to-left argument pushes (as a bare object expression it would be evaluated after them).
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void RegisterCombatant(CThingAICreature* creature, CThing* target, bool attacker);    // 0x006EDC50
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;           // +0x4c
 };
@@ -43,12 +43,12 @@ struct CBaseIntelligentPointer {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

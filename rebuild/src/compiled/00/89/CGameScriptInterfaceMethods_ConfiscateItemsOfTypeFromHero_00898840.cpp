@@ -12,7 +12,7 @@ struct PlayerMethods:CPlayer{CThingNative* GetHeroThing();}; //00487DC0
 struct PlayerManagerMethods:CPlayerManager{PlayerMethods* GetMainPlayer();}; //00449970
 struct InventoryMethods:CTCInventoryBase{void ConfiscateAllItems();void ConfiscateAllItemsOfType(long);}; //005BFA8E,005BFAC6; actual quarantined donor header; this leaf uses no discrepant inventory fields
 struct HeroStatsMethods:CTCHeroStats{void SetMoneyAsConfiscated(bool);}; //0057C999
-struct CGameDefinitionManager{static CGameDefinitionManager& __fastcall Get();long GetDefGlobalIndexFromName(const CCharString&);}; //0044C6B0,009AD410
+class CGameDefinitionManager{ public:static CGameDefinitionManager& __fastcall Get();long GetDefGlobalIndexFromName(const CCharString&);}; //0044C6B0,009AD410
 template<int Key,class T> __forceinline T* GetComponent(CThingNative* thing){T* result;if(thing->UsingComponents[0]&(1u<<Key)){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(Key);ComponentEntry* end=map->Finish;result=static_cast<T*>((it==end||it->Type>Key?end:it)->Component);}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ConfiscateItemsOfTypeFromHero(const CCharString& type)const;};
 void CGameScriptInterfaceMethods::ConfiscateItemsOfTypeFromHero(const CCharString& type)const{

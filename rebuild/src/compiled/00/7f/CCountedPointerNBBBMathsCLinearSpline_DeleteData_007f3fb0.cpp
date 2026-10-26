@@ -12,7 +12,7 @@
 extern "C" void __cdecl free(void* block);                       // 0x00BFEA14
 void __cdecl operator delete(void* block);                       // 0x00BFE9BC
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 template <class T> struct CRetailVector {                        // STLport vector over the malloc allocator
     T* _M_start;

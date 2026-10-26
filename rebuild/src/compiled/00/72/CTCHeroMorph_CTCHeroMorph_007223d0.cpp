@@ -15,8 +15,8 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
     bool ToBeRemoved;                                       // +0x08
     bool IsInGlobalUpdateTCs;                               // +0x09
@@ -24,12 +24,12 @@ struct CTCBase {
 };
 
 struct CCountedItem { };
-struct CCPPointerInfo {                                     // the shared count block
+class CCPPointerInfo { public:                                     // the shared count block
     long m_count;                                           // +0x00
     void (CCountedItem::*m_pfnDestroy)();                   // +0x04 (called with the item as `this`)
     CCountedItem* m_pItem;                                  // +0x08
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -101,7 +101,7 @@ struct CRetailTree_erase0071f8f0 {                          // map<CCharString, 
 
 struct CMeshMorphSet;
 
-struct CTCHeroMorph : CTCBase {                             // vtable 0x01265CF4
+class CTCHeroMorph : public CTCBase { public:                             // vtable 0x01265CF4
     CCountedPointer<CMeshMorphSet> PMeshMorphSet;           // +0x0c
     CRetailList_004b8050       ParticleEmitters;            // +0x14
     CRetailList_004b8050       IdleParticleEmitters;        // +0x18

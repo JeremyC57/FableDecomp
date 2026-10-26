@@ -10,7 +10,7 @@
 // constructor is a scheduling region of its own, so the most-derived class's vtable store cannot
 // move above it (a member list on the vtable-owning class puts the store before the -1).
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                  // +0x04..+0x1b
     CResource();                                // 0x009FBEC0
@@ -23,7 +23,7 @@ struct __declspec(novtable) CDefinitionBase : CResource {   // abstract: no vtab
     CDefinitionBase() : CResource(), m_defIndex(0), m_flags(0) { }
 };
 
-struct CDefString {                             // a name index into the def string table
+class CDefString { public:                             // a name index into the def string table
     long m_index;
     CDefString() : m_index(-1) { }
 };
@@ -38,7 +38,7 @@ struct __declspec(novtable) CCardDefBase : CDefinitionBase {   // abstract: the 
     CCardDefBase() : CDefinitionBase(), m_name(), m_first(0), m_last(0), m_end(0), m_flag(0) { }
 };
 
-struct CCardDef : CCardDefBase {                // vtable 0x01243A44
+class CCardDef : public CCardDefBase { public:                // vtable 0x01243A44
     virtual void v00();
     CCardDef();
 };

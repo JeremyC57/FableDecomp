@@ -8,8 +8,8 @@
 // Shape: `CollidedThing = thing;` -- the converting constructor builds the 8-byte frame temporary (base constructor, its
 // vtable, SetPItem(thing)), the inline operator= copies it (`SetPItem(other.GetPItem())`), and the temporary's destructor
 // is the base destructor (CIntelligentPointer declares none). `#pragma pack(1)` reproduces the unaligned members.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -27,9 +27,9 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCAssassinRush {                       // CTCBase is flattened here (engine/CTCBase.h layout)
+class CTCAssassinRush { public:                       // CTCBase is flattened here (engine/CTCBase.h layout)
     void*               __vftable;             // +0x00
     CThing*             ParentThing;           // +0x04
     bool                ToBeRemoved;           // +0x08

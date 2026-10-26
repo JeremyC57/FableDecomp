@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[16] = "";
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* p) : ParentThing(p) { std::strcat(g_seq, "B"); } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* p) : ParentThing(p) { std::strcat(g_seq, "B"); } virtual ~CTCBase() { } };
 struct CIdleStateMap { int size; CIdleStateMap() : size(3) { std::strcat(g_seq, "M"); } };
 struct CIdleWeightMap { int size; CIdleWeightMap() : size(4) { std::strcat(g_seq, "W"); } };
-struct CTCIdleScheduler : CTCBase {
+class CTCIdleScheduler : public CTCBase { public:
     CIdleStateMap IdleStates; CIdleWeightMap IdleStatesWeight; long Preferred; long FrameLastChecked;
     CTCIdleScheduler(CThing* parent) : CTCBase(parent) { Reset(); }
     void Reset() { std::strcat(g_seq, "R"); IdleStates.size = 0; IdleStatesWeight.size = 0; Preferred = 0; FrameLastChecked = 0; }

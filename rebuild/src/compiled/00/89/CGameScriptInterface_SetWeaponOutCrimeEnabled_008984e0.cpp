@@ -10,7 +10,7 @@
 //   CGameScriptInterface +0x14 PlayerManager; CThing retail UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0;
 //   CTCHeroOpinionDeedLog::WeaponOutCrimeEnabled retail +0x2c (Ego_r.pdb CTCHeroOpinionDeedLog WeaponOutCrimeEnabled +0x38; retail map 12 bytes and list 4 bytes put NextHandle +0x1c, VillageForCrimes +0x20, WeaponOutDeedHandle +0x28 (landed OnInitialActivate 0x006C5680 model), so this field is +0x2c).
 // Setter: CTCHeroOpinionDeedLog::SetWeaponOutCrimeEnabled(bool) (FableWin.pdb ?SetWeaponOutCrimeEnabled@CTCHeroOpinionDeedLog@@QAEX_N@Z), inline.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

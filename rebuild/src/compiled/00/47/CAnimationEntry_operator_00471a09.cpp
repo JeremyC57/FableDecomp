@@ -8,14 +8,14 @@
 // (`dec [ecx+4] ; jne ; call [eax+4]`, then the null store). `and dword ptr [esi+0Ch],0` for the null store
 // marks a size-optimised translation unit: #pragma optimize("s", on).
 #pragma optimize("s", on)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04): called when the intrusive count hits zero
     long m_refCount;                            // +0x04
 };
 
 // Intrusive counted pointer (4 bytes): the pointee carries the count at +4.
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     __forceinline void Release()
     {
@@ -39,10 +39,10 @@ template<class T> struct CIVCountedPointer {
     }
 };
 
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
 
-struct CAnimationEntry {                        // PDB layout, 0x10 bytes
+class CAnimationEntry { public:                        // PDB layout, 0x10 bytes
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08

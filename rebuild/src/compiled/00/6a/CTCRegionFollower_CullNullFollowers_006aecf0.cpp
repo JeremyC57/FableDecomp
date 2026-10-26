@@ -9,7 +9,7 @@
 // first word is the sentinel node pointer; node = { next +0, prev +4, value +8 }.
 // Shape: a copy of each element (inline copy ctor: base ctor, vtable store, SetPItem(other.GetPItem())) is tested;
 // STLport's inline erase unlinks the node, destroys the value through the vtable and frees the node.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();             // slot 0; out of line 0x00A01C10
     CBaseObject* m_pItem;                           // +4
@@ -43,7 +43,7 @@ struct CFollowerList {                              // STLport list<CIntelligent
         return next;
     }
 };
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     virtual void v00();
     void*         ParentThing;                      // +0x04 (CTCBase)
     bool          ToBeRemoved;                      // +0x08

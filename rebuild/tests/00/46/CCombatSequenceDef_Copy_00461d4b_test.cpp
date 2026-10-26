@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CCombatSequenceDef { int x; };
+class CCombatSequenceDef { public: int x; };
 
 // Provide the (normally extern) tail-call target for the local test build.
 static int g_called = 0;

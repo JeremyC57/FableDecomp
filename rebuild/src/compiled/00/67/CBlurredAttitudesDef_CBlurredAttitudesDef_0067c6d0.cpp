@@ -18,14 +18,14 @@
 // the Ego layout (opaque 0x14-byte map), so the classes are modelled locally.
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x21];                                            // +0x04..+0x25
     CDefClassBase(const CDefClassBase& other);                            // 0x0046644C
 };
 #pragma pack(pop)
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -50,7 +50,7 @@ struct CSubDefInfoMap {                                                   // CVe
 };
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {                              // vtable 0x01230CBC
+class CParentDefClassBase : public CDefClassBase { public:                              // vtable 0x01230CBC
     CDefString     InstantiationName;                                     // +0x25
     CSubDefInfoMap SubDefInfoMap;                                         // +0x29
     virtual void v00();
@@ -70,7 +70,7 @@ struct CAttitudeVector {                                                  // ret
     CAttitudeVector(const CAttitudeVector& other);                        // 0x00471F97
 };
 
-struct CBlurredAttitudesDef : CParentDefClassBase {                       // vtable 0x0125B8AC
+class CBlurredAttitudesDef : public CParentDefClassBase { public:                       // vtable 0x0125B8AC
     CAttitudeVector Attitudes;                                            // +0x3c
     virtual void v00();
     CBlurredAttitudesDef(const CBlurredAttitudesDef& other);

@@ -13,7 +13,7 @@
 extern "C" double __cdecl sqrt(double value);
 #pragma intrinsic(sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
@@ -21,18 +21,18 @@ struct C3DVector {
     float Length() const { return (float)sqrt(x * x + y * y + z * z); }
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Centre;                            // +0x00
     float     Radius;                            // +0x0c
     C3DVector GetCentre() const { return Centre; }
 };
 
-struct CWeatherMask {                            // 0x5c bytes
+class CWeatherMask { public:                            // 0x5c bytes
     C3DBoundingSphere BSphere;                   // +0x00
     unsigned char     _rest[0x5c - 0x10];        // BBox, InvTransform, Scale
 };
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x66c];
     CWeatherMask  WeatherMaskList[3];            // +0x66c
     float GetBoxBoundingSphereRadiusSquared();   // 0x00B50E50

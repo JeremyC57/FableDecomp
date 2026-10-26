@@ -1,4 +1,4 @@
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     void* vftable;
 };
 

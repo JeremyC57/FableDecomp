@@ -1,10 +1,10 @@
 #include <cstdio>
 
 // Model of CCombatActionBase::IsBlockable @ 0x00857220
-struct CMeleeCombatAbilityDef { int id; };
-struct CThingCreatureBase { unsigned char _pad[0x30]; unsigned long Flags30; };
+class CMeleeCombatAbilityDef { public: int id; };
+class CThingCreatureBase { public: unsigned char _pad[0x30]; unsigned long Flags30; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xb8 - 0x10]; CMeleeCombatAbilityDef* PMeleeAbilityDef; unsigned char _padbc[0x114 - 0xbc];
     bool IsBlockable() const { if (PCreature.GetPItem()->Flags30 & 0x10) return false; bool blockable = (PMeleeAbilityDef == 0); return blockable; }
 };

@@ -15,7 +15,7 @@
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float M[12];
 };
 
@@ -70,7 +70,7 @@ template <class Tag> __declspec(noinline) void CHandleVector::_M_insert_overflow
     _M_end_of_storage = newStart + len;
 }
 
-struct CEnginePrimitiveOcclusionInfo {
+class CEnginePrimitiveOcclusionInfo { public:
     void*          _vptr;                          // +0x00
     unsigned long  RefCount;                       // +0x04
     long           InvisibleFrames;                // +0x08
@@ -79,7 +79,7 @@ struct CEnginePrimitiveOcclusionInfo {
     unsigned long  TestFrame;                      // +0x1c
 };
 
-struct CEnginePrimitiveOcclusionManager {
+class CEnginePrimitiveOcclusionManager { public:
     void CheckVisibilityResult(CEnginePrimitiveOcclusionInfo& info);   // 0x00B2F8E0
     void SetVisible(CEnginePrimitiveOcclusionInfo& info);              // 0x00B2FA40
 };
@@ -90,7 +90,7 @@ struct COccluderEntry {
     unsigned long Bits;
 };
 
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager { public:
     unsigned char   _pad0000[0x4010];
     unsigned long   CurrentFrame;                  // +0x4010
     COccluderEntry* Entries;                       // +0x4014

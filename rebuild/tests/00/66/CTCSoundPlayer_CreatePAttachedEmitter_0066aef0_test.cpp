@@ -6,8 +6,8 @@
 #endif
 class CThing;
 class CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                                 // +0x0c
 };
@@ -18,15 +18,15 @@ public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
 };
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     static CThingSoundEmitter* __fastcall Create(const C3DVector& position, const CThing* parent, bool unattached);
     static CThingSoundEmitter* g_next; static const C3DVector* g_pos; static const CThing* g_parent; static bool g_unattached; static int g_calls;
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool inMap;
     bool IsPosInMap(const C3DVector& pos) const { return inMap && pos.X >= 0.0f; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { }
     virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { }
     virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { }
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125B1B8
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125B1B8
     virtual void v00() { }
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -53,7 +53,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
         return *this;
     }
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     virtual void v00() { }
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

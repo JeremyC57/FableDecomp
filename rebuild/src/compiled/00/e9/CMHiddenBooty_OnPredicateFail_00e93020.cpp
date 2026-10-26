@@ -1,7 +1,7 @@
 // CM_HiddenBooty::OnPredicateFail() -- hand the booty thing's info (its slot 1 with 0) to the quest's slot 281
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E93020, length 31 bytes.
 // Callees: CScriptThing virtual slot 1 (+0x4, on the thing at +8 with 0), the quest interface's virtual slot 281 (+0x464). Shape: the nested call form (the quest's vtable in edi fetched before the inner call), `ret`.
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000();
     virtual void* GetInfo(long which);              // slot 1 (+0x04)
     void* PImp_Data;                               // +0x04 (CCountedPointer<CThing>::Data)

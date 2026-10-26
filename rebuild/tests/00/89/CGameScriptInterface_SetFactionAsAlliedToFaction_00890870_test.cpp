@@ -17,7 +17,7 @@ struct FactionMgr {
     Faction* fb;
     Faction* GetFaction(int id);
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x54];
     FactionMgr* mgr;
 };

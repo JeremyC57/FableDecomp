@@ -25,7 +25,7 @@ struct CLongList {                                      // STLport list<long>: t
     explicit CLongList(const SAllocator& allocator = SAllocator());   // 0x0042AB58
     ~CLongList();                                       // 0x0042AB73
 };
-struct CTCHeroAttachableAppearanceModifiers {           // interface 0x5E
+class CTCHeroAttachableAppearanceModifiers { public:           // interface 0x5E
     void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
     void RemoveAllAppearanceModifiers(long type);       // 0x00706640
     void AddAppearanceModifierWithReplace(long def);    // 0x00706950
@@ -37,7 +37,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                           // +0x20
     unsigned char  _pad21[0x23];
@@ -54,7 +54,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void*   __vftable;
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[0x158 - 0x08];

@@ -7,10 +7,10 @@ static int g_transfers;
 static const char* g_name;
 static bool* g_value;
 static bool g_default;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue) { ++g_transfers; g_name = name; g_value = &value; g_default = defaultValue; }
 };
-struct CTCBoastingCrowdControl {
+class CTCBoastingCrowdControl { public:
     bool CrowdSizesSuppressed;
     void vfunc_1(CPersistContext& context, bool transfer)
     {

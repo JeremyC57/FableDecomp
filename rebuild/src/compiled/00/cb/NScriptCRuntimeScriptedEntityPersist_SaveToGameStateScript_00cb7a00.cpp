@@ -11,9 +11,9 @@
 // "END_NEW_ENTITY_SCRIPT\r\n" 0x012C1614.
 // Shape: `out += "..." + CCharString(id) + "\r\n";` (the "\r\n" right operand is pushed first, the three
 // temporaries die in reverse order), then the script, then the end marker; end is re-read every pass.
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
@@ -26,7 +26,7 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 namespace NScript {
 
 struct CRuntimeScriptedEntityPersist {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         unsigned __int64 EntityID;       // +0x00 (pair +0x08)
         CCharString      Script;         // +0x08 (pair +0x10)
         long             Flags;          // +0x0C (pair +0x14)

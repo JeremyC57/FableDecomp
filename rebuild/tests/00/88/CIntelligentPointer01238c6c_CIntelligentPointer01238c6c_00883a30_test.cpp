@@ -2,7 +2,7 @@
 #include <new>
 
 // Model of CIntelligentPointer_01238c6c::CIntelligentPointer_01238c6c(long) @ 0x00883A30
-struct CBaseObject;
+class CBaseObject;
 static int g_baseCtorCalls = 0; static CBaseObject* g_setItem = (CBaseObject*)1; static int g_setCalls = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() {}

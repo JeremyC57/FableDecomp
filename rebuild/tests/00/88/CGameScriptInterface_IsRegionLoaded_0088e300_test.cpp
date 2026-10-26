@@ -3,14 +3,14 @@
 class CCharString;
 class CIDrawEnvironment;
 
-struct CWorldMap {
+class CWorldMap { public:
     CIDrawEnvironment* GetRegionNumberFromName(const CCharString& regionName);
 };
-struct CWorld {
+class CWorld { public:
     CIDrawEnvironment* DrawGetEnvironment();
 };
 struct WorldProvider { void** vtable; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     WorldProvider* worldProvider;
     bool IsRegionLoaded(const CCharString& regionName) const;
 };

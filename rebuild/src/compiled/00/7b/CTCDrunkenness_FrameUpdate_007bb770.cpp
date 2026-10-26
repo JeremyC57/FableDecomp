@@ -11,15 +11,15 @@
 // Shape: `x -= (float)frames * SecondsPerFrame * rate` (fild through the frame word, two fmul, fsubr);
 // the frame store sits after the first compare's fcomp; the clamp zeroes store immediates; the Drunk
 // flag is the comparison result materialised as `mov eax,1` / `xor eax,eax`.
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-struct CThing {
+class CThing { public:
     bool IsUnderScriptSupervision() const;                  // 0x004C7E90
 };
 
-struct CTCDrunkenness {
+class CTCDrunkenness { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     bool    ToBeRemoved;                                    // +0x08

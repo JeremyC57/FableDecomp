@@ -3,13 +3,13 @@
 // and marks the data when time remained; the timer is deregistered exactly once on every path.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* text) { std::strncpy(Text, text, 31); Text[31] = 0; }
 };
-struct CTimer;
+class CTimer;
 struct CQ_TraderConflictData { bool TimeLimitBeaten; bool StartTimeLimit; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int frames, registered, deregistered, displayed, removed, startAfter, timeLeft, setLimit;
     CQ_TraderConflictData* data; bool* succeeded; int succeedAfter; char icon[32];
     void NewScriptFrame() { ++frames; if (frames == startAfter) data->StartTimeLimit = true; if (frames == succeedAfter) *succeeded = true; }
@@ -23,7 +23,7 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_game;
 static CGameScriptInterface* g_pGameScriptInterface = &g_game;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
@@ -35,7 +35,7 @@ long CGameScriptInterface::AddQuestInfoTimer(const CTimer& timer, const CCharStr
     std::strcpy(icon, text.Text);
     return (timer.Index == 42 && scale == 1.0f) ? 7 : 0;
 }
-struct CScriptDef { long TraderConflictTimeLimit; };
+class CScriptDef { public: long TraderConflictTimeLimit; };
 static CScriptDef g_def = { 300 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CScript {

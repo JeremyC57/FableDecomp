@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveManager2DSprites {
+class CEnginePrimitiveManager2DSprites {
+public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     unsigned char  active;                                   // +0x08 retail-only unsigned char (CEnginePrimitiveManager2DSprites_Render2DPrimitive_00baced0.cpp)

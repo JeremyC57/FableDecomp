@@ -14,8 +14,8 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CPersistContext;
-struct CMemoryDataInputStream {
+class CPersistContext;
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -45,7 +45,7 @@ struct CMemoryDataInputStream {
         return value;
     }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);            // 0x00993EB0
 };
 
@@ -69,7 +69,7 @@ template <class T> struct vector {
     void resize(long count, const T& x);   // 0x00632F10 for this T
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                 // +0x18 (2 = binary load)
     unsigned char           _pad1c[8];

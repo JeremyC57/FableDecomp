@@ -2,7 +2,7 @@
 // Compiles standalone; provides a trivial stub for the relocation-masked helper.
 #include <cstdio>
 
-struct CCombatManager;
+class CCombatManager;
 
 struct CThingCreatureHelperResult
 {
@@ -10,8 +10,8 @@ struct CThingCreatureHelperResult
     CCombatManager *pCombatManager; // +0x4c
 };
 
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     char _opaque[4];
 };
 

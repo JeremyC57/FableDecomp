@@ -7,9 +7,9 @@ static int g_deleted = 0;
 static int g_removed = 0;
 static int g_orderOk = 1;
 
-struct CSB { virtual ~CSB() { ++g_deleted; if (!g_removed) g_orderOk = 0; } };
-struct CSBInput { virtual ~CSBInput() { ++g_deleted; } };
-struct CSBConstraint { virtual ~CSBConstraint() { ++g_deleted; } };
+class CSB { public: virtual ~CSB() { ++g_deleted; if (!g_removed) g_orderOk = 0; } };
+class CSBInput { public: virtual ~CSBInput() { ++g_deleted; } };
+class CSBConstraint { public: virtual ~CSBConstraint() { ++g_deleted; } };
 
 template <class T>
 struct SListNode {

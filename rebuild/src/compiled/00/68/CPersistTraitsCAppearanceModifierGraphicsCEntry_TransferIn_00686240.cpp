@@ -18,7 +18,7 @@ struct CBasicStringChar {
     unsigned long StringLength;
     bool operator==(const char* text) const;           // 0x004115A0
 };
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -31,16 +31,16 @@ struct CCharString {
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 extern const char g_msgUnknownSymbol_0122dfe8[];       // 0x0122DFE8 (the float traits' message)
-struct CStringParser {
+class CStringParser { public:
     long PeekNextItemType();                           // 0x009BA900 (EParsedItemType)
     CCharString ReadAsSymbol();                        // 0x009BA790
     CCharString ReadAsString();                        // 0x009BA6F0
     float ReadAsFloat();                               // 0x009BA650
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
 };
-struct CPersistContext {                               // Ego_r.pdb, 0x2C bytes
+class CPersistContext { public:                               // Ego_r.pdb, 0x2C bytes
     void*       PDefinitionManager;                    // +0x00
     CSymbolMap* PSymbolMap;                            // +0x04
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90

@@ -5,14 +5,14 @@
 // the component's flags setter @ 0x007EA270 (`mov [this+0Ch],arg`; the manifest "CObservable::AddExclusiveObserver" label is propagated).
 // Shape: one `push ecx` frame for the lookup key; the flag is cleared as a conditional toggle (`test al,4 ; je ; xor eax,4`): retail did not fold it to `and`,
 // so the source is the toggle-if-set form, not `& ~4`.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -41,7 +41,7 @@ struct CTCType9Component {                  // the type-9 component: a flags wor
     void SetFlags(unsigned long flags);     // 0x007EA270
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
@@ -49,7 +49,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
-struct CCreatureAction_StabbedToDeath : CCreatureActionBase {
+class CCreatureAction_StabbedToDeath : public CCreatureActionBase { public:
     virtual void Initialise();
 };
 

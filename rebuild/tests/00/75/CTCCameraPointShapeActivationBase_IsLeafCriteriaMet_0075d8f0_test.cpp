@@ -20,7 +20,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T> bool GetInterface(long type, T** out)
@@ -38,7 +38,7 @@ struct CThing {
     }
 };
 
-struct CTCBase { CThing* ParentThing; };
+class CTCBase { public: CThing* ParentThing; };
 
 struct CTCCameraPointShapeActivationBase : CTCBase {
     bool IsLeafCriteriaMet()

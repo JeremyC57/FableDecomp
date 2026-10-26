@@ -10,12 +10,12 @@
 // Local model: no engine header exists for CTCHero.
 enum ETutorialCategory { TUTORIAL_CATEGORY_NULL };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x0040B790
 };
 CUserProfileManager& __fastcall GetUserProfileManager();   // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
 
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
 };
 

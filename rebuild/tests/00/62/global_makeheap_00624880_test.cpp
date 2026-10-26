@@ -5,7 +5,7 @@
 #endif
 // Test model: CTestQuest with CCharString members reduced to C strings; the comparator orders by QuestName
 // (CTestQuestNameCompare 0x006238A0 compares the quest names).
-struct CCharString { const char* Text; };
+class CCharString { public: const char* Text; };
 class CTestQuest {
 public:
     CCharString QuestName;
@@ -16,7 +16,7 @@ public:
     CCharString OutiFile;
     CCharString QuestCardDefName;
 };
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const { return std::strcmp(a.QuestName.Text, b.QuestName.Text) < 0; }
 };
 static CTestQuest Q(const char* name, long colour)

@@ -1,14 +1,14 @@
 // Behaviour test for CShadowClipVolume::CShadowClipVolume(const CShadowClipVolume&) @ 0x00B36C50 (implicit member-wise copy)
 #include <cstdio>
 #include <new>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CPlane { C3DVector Normal; float Distance; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct CShadowClipVolume {
+class CPlane { public: C3DVector Normal; float Distance; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class CShadowClipVolume { public:
     CPlane            ClipPlanes[8];
     long              ClipPlaneCount;
     C3DBoundingSphere BoundingSphere;

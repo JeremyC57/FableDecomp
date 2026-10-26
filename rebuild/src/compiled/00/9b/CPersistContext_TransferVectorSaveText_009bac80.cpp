@@ -10,9 +10,9 @@
 //   temporaries destroyed in reverse order of construction after the append. The element text is written by the
 //   wrapper's TransferOut straight into the context's output string, then ";\r\n" ends the line.
 //   Layout from Ego_r.pdb: CPersistContext PStringToSaveTo +0x20 (0x2C bytes).
-struct CStringParser;
-struct CCharStringData;
-struct CCharString {
+class CStringParser;
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -23,15 +23,15 @@ CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830 (hidden re
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-struct CPersistContext;
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext;
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
     virtual void Resize(long count);
     virtual void TransferOut(CPersistContext* context, CCharString* out, long index);
     virtual void TransferIn(CPersistContext* context, CStringParser* parser, long index);
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x20];
     CCharString*            PStringToSaveTo;      // +0x20
     unsigned char           _pad24[8];

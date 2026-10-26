@@ -10,14 +10,14 @@
 // StartTick = -1, Interrupt = false, StartHealth = 0 through the zero register shared with the CSoundPair() temporary.
 // Layout: Ego_r.pdb PTCTentacle +0x12c (retail +0x114); CCreatureAction_TentacleStrikeLoop StartTick / Interrupt /
 // StartHealth at PDB +0x12c / +0x130 / +0x134, retail +0x114 / +0x118 / +0x11c (CCombatActionBase 0x114 in retail).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -36,21 +36,21 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);           // 0x0073AE10
 };
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     void QueueStrikeDamage();                   // 0x007F1170
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
@@ -60,7 +60,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -70,7 +70,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCreatureAction_TentacleStrikeLoop : CCombatActionBase {   // vtable 0x01284EF4
+class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   // vtable 0x01284EF4
     long  StartTick;                            // +0x114
     bool  Interrupt;                            // +0x118
     float StartHealth;                          // +0x11c
@@ -79,7 +79,7 @@ struct CCreatureAction_TentacleStrikeLoop : CCombatActionBase {   // vtable 0x01
         : CCombatActionBase(owner, 150, CSoundPair()), StartTick(-1), Interrupt(false), StartHealth(0) { }
 };
 
-struct CCreatureAction_TentacleStrikeInto : CCombatActionBase {
+class CCreatureAction_TentacleStrikeInto : public CCombatActionBase { public:
     CTCKrakenTentacle* PTCTentacle;             // +0x114 (PDB +0x12c)
     void FinishAction();
 };

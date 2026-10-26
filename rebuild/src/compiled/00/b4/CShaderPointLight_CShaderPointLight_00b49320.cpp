@@ -14,17 +14,17 @@ struct CBase {
     CBase();                                     // 0x0099A2F0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-struct CShaderLightAttenuation {
+class CShaderLightAttenuation { public:
     float Attenuation0;                          // +0x00
     float Attenuation1;                          // +0x04
     float Attenuation2;                          // +0x08

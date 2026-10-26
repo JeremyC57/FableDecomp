@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TrollVulnerableInto {
+class CCreatureAction_TrollVulnerableInto { public:
     void* vftable;
     int destroyed;
 };

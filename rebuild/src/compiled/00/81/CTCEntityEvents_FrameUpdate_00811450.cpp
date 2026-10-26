@@ -10,7 +10,7 @@ struct CSubObject {
 
 extern int helper_49d870(void); // cdecl global, 0x0049d870
 
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     // base subobject at offset 0
     CBaseEntityEvents base;   // +0x00
     char pad[0x0c - sizeof(CBaseEntityEvents)]; // pad to +0x0c

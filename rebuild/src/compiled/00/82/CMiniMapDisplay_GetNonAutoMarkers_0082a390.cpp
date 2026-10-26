@@ -50,7 +50,7 @@ struct CMarkerPtrList {                            // list<CMarkerInfo*> (STLpor
     void push_back(CMarkerInfo* const& value) { Insert(end(), value); }
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     virtual void v00();
     unsigned char _pad04[0x1c];                    // +0x04 .. +0x20
     CMarkerList   Markers;                         // +0x20 (retail)

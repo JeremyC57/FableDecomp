@@ -6,8 +6,8 @@
 // Persist READ hook (vtable slot 1) of a short component: the target pointer at +0x4 is read before
 // the call (kept in esi), the long reader parses into a local that VC homes in the parser's dead
 // argument slot (`lea eax,[esp+0Ch]`), and the low word is stored (`mov cx,[esp+0Ch] ; mov [esi],cx`).
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 void __fastcall TransferInLong(CPersistContext* context, CStringParser* parser, long* result);   // 0x009E2590
 
 struct CPersistContext_TransferableComponent {

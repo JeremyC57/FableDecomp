@@ -10,7 +10,7 @@
 // Shape: memberwise assignment in declaration order; the bool[79] array is copied by the element loop the
 // compiler writes for an array member (`sub edi,esi` turns the source into a this-relative offset).
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
@@ -27,12 +27,12 @@ struct CReactionFlagMap {               // retail map<EOpinionReactionType,bool>
     CReactionFlagMap& operator=(const CReactionFlagMap& other);   // 0x0045DD2C
 };
 
-struct COpinionSet {                    // retail 12 bytes: a vector<float> of opinion values
+class COpinionSet { public:                    // retail 12 bytes: a vector<float> of opinion values
     float* m_first; float* m_last; float* m_end;
     COpinionSet& operator=(const COpinionSet& other);       // 0x0045EF2D
 };
 
-struct COpinionSourceDef : CParentDefClassBase {    // vtable 0x01233FF4
+class COpinionSourceDef : public CParentDefClassBase { public:    // vtable 0x01233FF4
     COpinionMap ProducedOpinion;                // +0x3c
     bool AlwaysAwareOf;                         // +0x48
     bool UnknownThreatSource;                   // +0x49

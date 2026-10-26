@@ -16,11 +16,11 @@
 // +0x20, UserEntry +0x24, CursorPosition +0x28); CStringParser as the landed 0x00CB7CB0 with the PDB CCursorPos
 // {InQuotes, StringPos, Line} at +0x1c.
 extern const char g_emptyText_0129aaf4[];  // 0x0129AAF4 ("", CCharString's empty text)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                    // +0
     unsigned long StringLength;             // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                          // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -44,7 +44,7 @@ struct CCharString {
     CCharString& operator+=(const char* text);          // 0x0099F100
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                          // 0x0099A2E0
 };
@@ -57,7 +57,7 @@ struct CCursorPos {
     unsigned long StringPos;                // +0x04
     unsigned long Line;                     // +0x08
 };
-struct CStringParser : CBaseClass {         // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:         // retail 0x28 bytes
     char*                    String;        // +0x04
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;      // +0x0c
@@ -67,17 +67,17 @@ struct CStringParser : CBaseClass {         // retail 0x28 bytes
     CCursorPos               CursorPos;     // +0x1c
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);     // 0x00404720
-    bool ReadNextItem(struct CParsedItem& item);    // 0x009BA080
-    bool ReadAsStringUntilString(const CCharString& until, struct CParsedItem& item);  // 0x009BA110
+    bool ReadNextItem(class CParsedItem& item);    // 0x009BA080
+    bool ReadAsStringUntilString(const CCharString& until, class CParsedItem& item);  // 0x009BA110
 };
-struct CParsedItem {                        // 12 bytes
+class CParsedItem { public:                        // 12 bytes
     long        Type;                       // +0x00 (1 = symbol, 2 = identifier, 3 = number)
     long        Value;                      // +0x04
     CCharString Text;                       // +0x08
     const CCharString& GetString();         // 0x009B9880
     const CCharString& GetSymbol();         // 0x009B9870
 };
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

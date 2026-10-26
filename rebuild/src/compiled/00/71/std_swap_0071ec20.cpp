@@ -10,7 +10,7 @@
 //   swap<CTCHeroMorph::CTextureLayer> here, a 20-byte type in Ego_r -- a different T).
 // Shape: STLport `swap`: `_Tp __tmp = __a; __a = __b; __b = __tmp;` -- a's three words loaded first (the third spilled to
 //   the 12-byte frame temporary), b copied into a, then the saved words stored into b.
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0x00
 };
 class CSkeletalMorphs {

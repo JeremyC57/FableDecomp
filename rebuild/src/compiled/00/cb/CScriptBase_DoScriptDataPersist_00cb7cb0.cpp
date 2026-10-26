@@ -10,12 +10,12 @@
 // Shape: two scoped arms (the save context and the parser share the frame base); the loading arm is the landed
 // CGameTimeManager::Load 0x006BBBA0 form with the "" temporary homed in the dead `saving` slot; CPersistContext has a
 // trivial destructor, so neither context is destroyed.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBaseClass {                                // the CStringParser root (polymorphic)
+class CBaseClass { public:                                // the CStringParser root (polymorphic)
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -23,7 +23,7 @@ struct CStringParserCommentList {                  // retail std::list<CStringPa
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -34,9 +34,9 @@ struct CStringParser : CBaseClass {                // retail 0x28 bytes
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {                           // retail 0x2c bytes, trivial destructor
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
     CPersistContext(CCharString& output);          // 0x009BAE10 (saving: writes into the string)
     CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,

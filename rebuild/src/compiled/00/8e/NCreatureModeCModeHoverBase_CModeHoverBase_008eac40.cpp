@@ -12,8 +12,8 @@
 // `mov ecx,edi` between its second and third zero store; zeros share ebx; list zeroes then mallocs its sentinel as in landed 0x0070A520),
 // then `CurrentName = ""` in the body.
 #include <stdlib.h>
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* m_pData;
     CCharString();                                  // 0x0099E4B0
     CCharString& operator=(const char* text);       // 0x0099EFE0

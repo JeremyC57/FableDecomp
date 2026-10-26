@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveBase { unsigned char pad[4]; };
+class CEngineInternalPrimitiveBase { public: unsigned char pad[4]; };
 // Leaf: AddChildPrimitive
 
 unsigned long __fastcall CEngineInternalPrimitiveBase_AddChildPrimitive(CEngineInternalPrimitiveBase* self)

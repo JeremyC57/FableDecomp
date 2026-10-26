@@ -4,7 +4,7 @@
 // `call [eax+24h]`, through the counted pointer's object at +0 of the 8-byte element).
 // Vtable 0x0122F5D4 slot 9. Children is the retail 12-byte vector at +0xb0; its size and `first` are
 // re-read every iteration (the virtual call may change it), the index is unsigned.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }

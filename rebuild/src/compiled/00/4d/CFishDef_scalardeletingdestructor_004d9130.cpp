@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CFishDef
-{
+class CFishDef
+{ public:
     void* vftable;
 };
 extern void* const g_CFishDef_vftable;

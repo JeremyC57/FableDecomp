@@ -11,7 +11,7 @@
 // __uninitialized_copy(x.begin(), x.end(), _M_start, _IsPODType()); }`; for a pointer element the __true_type chain
 // reduces to __copy_trivial. The by-value allocator temporary is homed in the dead `x` argument slot
 // (`lea eax,[esp+0Ch]`), x stays in edi; size() is `(finish - start) >> 2`.
-struct CAnimationEntry;
+class CAnimationEntry;
 
 void* __fastcall __copy_trivial(const void* __first, const void* __last, void* __result);   // 0x00405BA0
 

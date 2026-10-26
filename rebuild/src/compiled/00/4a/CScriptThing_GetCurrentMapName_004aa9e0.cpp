@@ -1,5 +1,5 @@
 #include "engine/CScriptThing.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString { char* p; CCharString(const char* s); };
+class CCharString { public: char* p; CCharString(const char* s); };
 extern const char kDefaultMapName[];
 // Vtable model for the CScriptThing pointed to by PImp_Data (header: void* __vftable);
 // slot 8 is the virtual name getter. Layout-only: every slot is a plain virtual.

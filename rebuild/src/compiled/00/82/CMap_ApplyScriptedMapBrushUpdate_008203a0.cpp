@@ -9,30 +9,30 @@ extern const float g_zero_0122dedc;               // 0x0122DEDC (0.0f)
 extern const float g_maxSize_012724c0;            // 0x012724C0 (2048.0f)
 extern const float g_epsilon_0129ba3c;            // 0x0129BA3C (1e-4f)
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
     C2DCoordI operator-(const C2DCoordI& o) const { return C2DCoordI(X - o.X, Y - o.Y); }
     C2DCoordI operator/(long d) const { return C2DCoordI(X / d, Y / d); }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     explicit C2DVector(const C2DCoordI& c) : X((float)c.X), Y((float)c.Y) {}
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI() {}
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     const C2DBoxI& GetGameArea() const;                                   // 0x0082E280
     float GetGameHeight(long x, long y) const;                            // 0x0082E290
     unsigned long GetTheme(long x, long y, unsigned long layer) const;    // 0x0082E330
     unsigned char GetThemeBlend(long x, long y, unsigned long layer) const;   // 0x0082E3D0
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -45,7 +45,7 @@ template <class T> struct CRetailVector {
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMap {
+class CHeightMap { public:
     virtual ~CHeightMap();
     void*                          World;          // +0x04
     void*                          Map;            // +0x08
@@ -92,7 +92,7 @@ struct CMapOwner {
     virtual CMapUpdateSink* GetUpdateSink();       // slot 12 (+0x30)
     virtual CMapRegionTable* GetRegionTable();     // slot 13 (+0x34)
 };
-struct CMap {
+class CMap { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04(); virtual void m05();
     virtual void m06(); virtual void m07(); virtual void m08(); virtual void m09();
     virtual void UpdateBrushHeights(CScriptedMapBrush* brush);   // slot 10 (+0x28)

@@ -6,7 +6,7 @@
 // Shape: three `fld arg ; fld member ; fucompp ; test ah,44h` compares chained with `||` (`jp` to the update for
 // the first two, `jnp` past it for the last: `member != argument`), the 12-byte POD copied through eax/eax/edx,
 // `or dword ptr [ecx+48h],8000h`, `ret 4`.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

@@ -3,7 +3,7 @@
 // Callees: the stream's virtual slot 4 (+0x10: `this`, 0x1c), CDataOutputStream::WritePixelFormat @ 0x00993F60 (the format at +0xc by address). Shape: the stream in edi,
 // `this` in esi, the format address by `add esi,0Ch`, `ret 4`.
 struct SPixelFormat_009fd1e0 { unsigned char _body[16]; };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long length);   // slot 4 (+0x10)
     void WritePixelFormat(SPixelFormat_009fd1e0* format);   // 0x00993F60

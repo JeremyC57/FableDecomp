@@ -2,7 +2,7 @@
 #include <string.h>
 
 static const char g_empty[] = "";
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;
     unsigned long StringLength;
 };

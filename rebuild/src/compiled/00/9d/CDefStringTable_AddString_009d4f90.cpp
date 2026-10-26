@@ -15,19 +15,19 @@
 // the end); the CRC call's arguments come from two null-first CCharString accessors (length evaluated first, then the
 // text with the "" fallback); the CRC is written through an inlined WriteULong whose parameter is homed in the dead
 // `text` argument slot; the shared-string path returns the node's value straight from the find result.
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;                                    // +0x00
     long Length;                                   // +0x04
 };
 extern const char g_emptyString[];                 // 0x0129AAF4 ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetPString() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
 };
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CRC
 
-struct CMemoryDataOutputStream {                   // 0x18 bytes, vtable 0x0129A788
+class CMemoryDataOutputStream { public:                   // 0x18 bytes, vtable 0x0129A788
     virtual void v00();
     virtual void v01();
     virtual void v02();

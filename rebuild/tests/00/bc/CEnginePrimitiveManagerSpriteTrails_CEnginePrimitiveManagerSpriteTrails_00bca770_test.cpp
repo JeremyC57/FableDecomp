@@ -63,11 +63,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCamera;
-struct CDefPointeeBase;
+class CCamera;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CEngine {
+class CEngine { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    f;                                      // +0x08 retail-only unsigned char (previous header)
@@ -196,7 +196,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngine, EngineComponents) == 0x178);
 struct CVertexShaderData;
 
 #pragma pack(push, 1)
-struct CVertexShader {
+class CVertexShader { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     CVertexShaderData* Data;                                 // +0x04
 };
@@ -220,11 +220,11 @@ FABLE_STATIC_ASSERT(offsetof(CVertexShader, Data) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CShaderPreParser;
+class CCharStringData;
+class CShaderPreParser;
 
 #pragma pack(push, 1)
-struct CShaderDataBank {
+class CShaderDataBank { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char     _pad_0x04[0x4];                        // +0x04
     unsigned char     _pad_0x08[0x4];                        // +0x08
@@ -343,8 +343,8 @@ FABLE_STATIC_ASSERT(offsetof(CShaderDataBank, StateBlock) == 0x19c);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -352,8 +352,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -442,18 +442,18 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #define __forceinline inline
 #endif
 
-struct CEngineScene;
-template<class T> struct CArray;
-struct CEngineInternalPrimitiveBase;
-struct CEngineSubPrimitiveBase;
-struct CEngineSubPrimitiveChain;
-struct CEnginePrimitiveTypeList;
-struct C3DVector;
+class CEngineScene;
+template<class T> class CArray;
+class CEngineInternalPrimitiveBase;
+class CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveChain;
+class CEnginePrimitiveTypeList;
+class C3DVector;
 struct CNodeHeader;
 struct IDirect3DVertexDeclaration9;
 struct IDirect3DVertexShader9;
 struct _D3DVERTEXELEMENT9;
-namespace NEngineShadowRenderer { struct CShadowSceneContext; }
+namespace NEngineShadowRenderer { class CShadowSceneContext; }
 
 enum ERendered { ERenderedNativeView = 0 };
 enum EEngineRenderLayer { EEngineRenderLayerNativeView = 0 };
@@ -466,7 +466,7 @@ enum EVertexType { EVertexTypeNativeView = 0 };
 // SpriteTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass. The two
 // engine PDB headers flatten that ancestry; keep its real virtual destructors
 // and constructors here, with no synthetic members in these bases.
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // FableWin PDB 03044700; retail native base initializer 0099A2D0/E0
     virtual ~CBaseClass(); // FableWin PDB 03044720
 };
@@ -482,7 +482,7 @@ struct CEnginePrimitiveRenderUtil : CBaseClassNonCopyable {
 
 // Manager extends the actual RenderUtil base chain and owns only the fields
 // proven at +4/+8 by BACDB0; native base extent remains 0x0C.
-struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
+class CEnginePrimitiveManager : public CEnginePrimitiveRenderUtil { public:
     virtual ~CEnginePrimitiveManager();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType) = 0;
     virtual void GetSupportedTypes(CEnginePrimitiveTypeList&) const = 0;
@@ -502,7 +502,7 @@ struct CEnginePrimitiveManager : CEnginePrimitiveRenderUtil {
     void AddEnableConsoleVariable(const CCharString&); // 00BACD80, retail hook
 };
 
-struct CShaderBase {
+class CShaderBase {
 protected:
     CShaderBase(); // FableWin PDB: 02C938E0
     __forceinline virtual ~CShaderBase() { } // FableWin PDB: 02C8DBF0, empty body
@@ -525,7 +525,7 @@ private:
 
 // CVertexShader.h is a flattened donor record; retail RTTI/vtable plus PDB
 // signatures prove the real CShaderBase -> CVertexShader virtual hierarchy.
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(); // retail helper 00A62FB0; FableWin PDB 032F34F0
     CVertexShader(const CVertexShader& other) : CShaderBase(other), Data(other.Data) {
@@ -596,7 +596,7 @@ struct CEngineVertexBufferPoolNativeView : CEngineDynamic3DResourceManagerNative
     }
 };
 
-struct CEnginePrimitiveManagerSpriteTrails : CEnginePrimitiveManager {
+class CEnginePrimitiveManagerSpriteTrails : public CEnginePrimitiveManager { public:
     CVertexShader VertexShaderZSortedUnlit; // +0x0C, PDB layout
     CEngineVertexBufferPoolNativeView VertexBufferPool; // +0x14, PDB layout / native vptr audit
     CEnginePrimitiveManagerSpriteTrails(CArray<CEngineScene*>&);
@@ -660,18 +660,18 @@ typedef char CEngineResourceAccessorNativeOffset[(offsetof(CEngineResourceAccess
 #include <cstring>
 #include <new>
 
-template<class T> struct CArray { };
-struct CEngineScene { int unused; };
-struct CEngineInternalPrimitiveBase { };
-struct CEngineSubPrimitiveBase { };
-struct CEngineSubPrimitiveChain { };
-struct CEnginePrimitiveTypeList { };
-struct C3DVector { };
+template<class T> class CArray { public: };
+class CEngineScene { public: int unused; };
+class CEngineInternalPrimitiveBase { public: };
+class CEngineSubPrimitiveBase { public: };
+class CEngineSubPrimitiveChain { public: };
+class CEnginePrimitiveTypeList { public: };
+class C3DVector { public: };
 struct CNodeHeader { unsigned char bytes[0x20]; };
 struct IDirect3DVertexDeclaration9 { };
 struct IDirect3DVertexShader9 { };
 struct _D3DVERTEXELEMENT9 { };
-namespace NEngineShadowRenderer { struct CShadowSceneContext { }; }
+namespace NEngineShadowRenderer { class CShadowSceneContext { public: }; }
 
 static int g_failures;
 static int g_base_ctor_calls;

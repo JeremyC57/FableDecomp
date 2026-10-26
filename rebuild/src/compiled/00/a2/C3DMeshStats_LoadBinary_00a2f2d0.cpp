@@ -12,15 +12,15 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMovableResourceMemoryPool;
-struct CCharString {
+class CMovableResourceMemoryPool;
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Read(void* buffer, unsigned long size);  // slot 4 (+0x10)
     virtual void v5();
@@ -53,18 +53,18 @@ struct CMemoryDataInputStream {
     __forceinline unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
 };
 
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };
-struct C3DBoundingBox {
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
+class C3DBoundingBox { public:
     C3DVector Min; C3DVector Max;
     void Set(const C3DVector& mn, const C3DVector& mx) { Min = mn; Max = mx; }
 };
-struct C3DHelperPoint { unsigned char _data[0x14]; };
-struct C3DDummyObject { unsigned char _data[0x38]; };
-struct C3DMeshVolume {
+class C3DHelperPoint { public: unsigned char _data[0x14]; };
+class C3DDummyObject { public: unsigned char _data[0x38]; };
+class C3DMeshVolume { public:
     unsigned char _data[0xc];
     bool LoadBinary(CMemoryDataInputStream* in, CMovableResourceMemoryPool* pool);   // 0x00A2E860
 };
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     unsigned char _data[0x40];
     void LoadBinary(CMemoryDataInputStream* in);                                    // 0x00A2E5B0
 };
@@ -95,7 +95,7 @@ struct CGeneratorArray {
     void resize(unsigned long n);          // 0x00A34DF0
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     void* __vftable;                                       // +0x00
     CMovableResourceMemoryPool* MemoryPool;                // +0x04
     long StatsMemoryHandle;                                // +0x08

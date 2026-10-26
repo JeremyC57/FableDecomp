@@ -14,7 +14,7 @@
 // `add esp,4`. RELOCATION_MATCH.
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;       // +0x00
     ~CWideString();          // 0x0099B510
     const wchar_t* GetText();   // 0x004071C0 (text accessor on the temporary)

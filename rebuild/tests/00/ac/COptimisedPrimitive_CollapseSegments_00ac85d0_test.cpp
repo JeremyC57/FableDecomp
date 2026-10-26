@@ -37,8 +37,8 @@ __declspec(noinline) CByteArray::CByteArray(unsigned long count, const unsigned 
     m_end = m_last;
 }
 #pragma auto_inline(on)
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {                   // retail CArray (STLport vector): first / last / end
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:                   // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
@@ -46,7 +46,7 @@ template <class T> struct CArray {                   // retail CArray (STLport v
     T& operator[](unsigned long n) const { return m_first[n]; }
 };
 namespace QuadricOptimiserInternals {
-struct COptimisedFace {                              // 72 bytes
+class COptimisedFace { public:                              // 72 bytes
     unsigned long VertexIndices[3];                  // +0x00
     unsigned long UniqueVertexIndices[3];            // +0x0c
     long          Edges[3];                          // +0x18

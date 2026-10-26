@@ -1,13 +1,13 @@
 #include <cstdio>
 
 struct CEntity;
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
 struct CGSIVtbl {
     void* slot0[11];
     CEntity* (__fastcall* getEntity)(CGameScriptInterface* self);
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CGSIVtbl* vt;
 };
 struct CEntity {

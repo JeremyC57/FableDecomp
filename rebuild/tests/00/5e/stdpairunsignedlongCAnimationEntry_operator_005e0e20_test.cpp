@@ -2,16 +2,16 @@
 #include <cstdio>
 #include <cstddef>
 static int g_destroyed = 0;
-struct CIVCountedPointeeBase { virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
-template<class T> struct CIVCountedPointer {
+class CIVCountedPointeeBase { public: virtual void v0() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; };
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release() { T* p = m_pObject; if (p) { if (--p->m_refCount == 0) p->Destroy(); m_pObject = 0; } }
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     { if (m_pObject != other.m_pObject) { Release(); T* p = other.m_pObject; m_pObject = p; if (p) ++p->m_refCount; } return *this; }
 };
-struct CDefString { long TablePos; };
-struct CAnimComponentMap : CIVCountedPointeeBase { };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; };
+class CAnimComponentMap : public CIVCountedPointeeBase { public: };
+class CAnimationEntry { public:
     long BankIndex; CDefString AnimName; CDefString GroupName; CIVCountedPointer<CAnimComponentMap> Components;
     CAnimationEntry& operator=(const CAnimationEntry& o) { BankIndex = o.BankIndex; AnimName = o.AnimName; GroupName = o.GroupName; Components = o.Components; return *this; }
 };

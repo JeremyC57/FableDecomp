@@ -7,7 +7,7 @@
 // on the miss path retail reads the never-written slot (`mov eax,[esp+4]`, shared with the key temporary)
 // and the store to LastCompletedPhase (+0x20, engine header name) is duplicated on both paths. Frame = one
 // `push ecx`. The engine header flattens the base, so the layout is local.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound -- the same shape the landed
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,12 +40,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18 CThingAICreature*
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -56,7 +56,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CTCBoss {                                // interface type 0xAD component
+class CTCBoss { public:                                // interface type 0xAD component
     long GetCurrentPhase();                     // 0x007AED10
 };
 

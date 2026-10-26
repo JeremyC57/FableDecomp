@@ -9,10 +9,10 @@
 //   Ego_r.pdb CInterpolationInfo (Current +0x00, PausedCurrent +0x10; CInterpolationInfoSet WFInterpolate +0x04).
 // Shape: the selected fraction is homed in the dead `info` argument slot; both returns construct straight into the
 //   hidden result (RVO through the callees' own hidden pointers).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera {
 public:
     C3DVector       WorldPosition;            // +0x00
@@ -39,13 +39,13 @@ public:
     CInterpolationInfoSet BulletTimeLast;     // +0x28
     long                  WFServerCurrentTime; // +0x30
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x220];
     bool          UsingFreeCamera;            // +0x220
     CCamera GetFreeCamera(float t) const;     // 0x00487180
 };
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CAIGameCameraBase {
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CAIGameCameraBase { public:
     virtual void v00();
     virtual CCamera GetCamera(float t) const;          // slot 1 (+0x04)
 };

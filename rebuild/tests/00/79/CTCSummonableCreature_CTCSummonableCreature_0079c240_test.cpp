@@ -2,13 +2,13 @@
 // sub-def fetched from the parent thing's def into PDef.
 #include <cstdio>
 
-struct CThing;
+class CThing;
 static CThing* g_baseParent = 0;
 static int g_ipCtors = 0;
-struct CSummonableCreatureDef { int id; };
+class CSummonableCreatureDef { public: int id; };
 static CSummonableCreatureDef g_subDef;
 
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     virtual ~CTCBase() { }
     CTCBase(CThing* parent) : ParentThing(parent) { g_baseParent = parent; }
@@ -24,7 +24,7 @@ struct CThingDef {
     bool GetSubDef(CDefPointerSummonable* out) const { if (m_has) out->Object = &g_subDef; return m_has; }
 };
 
-struct CThing {
+class CThing { public:
     CThingDef* PDef;
 };
 
@@ -37,7 +37,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCSummonableCreature : CTCBase {
+class CTCSummonableCreature : public CTCBase { public:
     CDefPointerSummonable PDef;
     bool                  HasBeenSummoned;
     CIntelligentPointer   Summoner;

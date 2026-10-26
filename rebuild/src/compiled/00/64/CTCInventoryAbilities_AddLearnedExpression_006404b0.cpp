@@ -1,5 +1,5 @@
 // CTCInventoryAbilities::AddLearnedExpression @ 006404b0
-struct CTCBase;
+class CTCBase;
 
 // std::list<CTCBase*>; remove() is a real thiscall member (ecx=this, one stack
 // arg by const-reference, callee-cleaned ret 4) matching callee @ 0x6405b0.
@@ -8,7 +8,7 @@ struct TList {
     void remove(CTCBase* const& val);   // @ 0x6405b0
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     int pad0;                 // +0
     TList learned;            // +4
 };

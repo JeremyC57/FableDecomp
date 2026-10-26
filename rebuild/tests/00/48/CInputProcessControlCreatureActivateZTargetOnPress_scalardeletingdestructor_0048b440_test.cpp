@@ -4,8 +4,8 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 static void* g_last_deleted = 0;
 
-struct CInputProcessControlCreatureActivateZTargetOnPress
-{
+class CInputProcessControlCreatureActivateZTargetOnPress
+{ public:
     int marker;
     void dtor();
 };

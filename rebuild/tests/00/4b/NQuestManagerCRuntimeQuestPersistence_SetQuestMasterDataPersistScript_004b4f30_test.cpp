@@ -33,11 +33,11 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // The sort's first/last/Compare loads go through `CPersistMap* const& self = this` (a pointer that went through a
 // reference is may-alias): the `Dirty = true` store then stays before them as in retail; read directly, VC7.1 sinks the
 // store below the comparator load (the 00a02b30 rule).
-struct CCharStringData {
+class CCharStringData { public:
     bool operator<(const CCharStringData& other) const;   // 0x00429950 (CBasicString<char>::operator<)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
@@ -57,7 +57,7 @@ struct CCharString {
 namespace NQuestManager {
 
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
         CPersistInfo(const CCharString& questName, const CCharString& persistScript)

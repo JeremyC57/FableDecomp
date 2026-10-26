@@ -17,8 +17,8 @@ struct CRetailList_DecalEntry {
         return next;
     }
 };
-struct CThing { int requests; long last; void ForwardToGraphicAppearance(long r) { ++requests; last = r; } };
-struct CTCTextureDecal {
+class CThing { public: int requests; long last; void ForwardToGraphicAppearance(long r) { ++requests; last = r; } };
+class CTCTextureDecal { public:
     CThing* m_pParentThing;
     CRetailList_DecalEntry Decals;
     bool Dirty;

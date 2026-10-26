@@ -14,25 +14,25 @@
 // body needs four callee-saved registers (ebx = this, ebp = other).
 // The engine header CParentDefClassBase.h is the PDB layout (0x3d bytes); the retail base is 0x39 bytes.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 #pragma pack(pop)
 
-struct CHeroPostcardGeneratorDef : CParentDefClassBase {    // vtable 0x01233CB4
+class CHeroPostcardGeneratorDef : public CParentDefClassBase { public:    // vtable 0x01233CB4
     C2DVector MeshAreaTLPos;                // +0x39
     C2DVector MeshAreaBRPos;                // +0x41
     C3DVector DollCentreOffset;             // +0x49

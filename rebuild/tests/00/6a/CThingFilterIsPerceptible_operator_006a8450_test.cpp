@@ -1,6 +1,6 @@
 // Behaviour test for 0x006a8450
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -34,7 +34,7 @@ struct CTCInterface36 {
     unsigned char _pad[0x0c];
     bool m_flagA; bool m_flagB; bool m_flagC;
 };
-struct CThingFilter_IsPerceptible {
+class CThingFilter_IsPerceptible { public:
     bool operator()(CThing* thing) const
     {
         CTCInterface36* component;

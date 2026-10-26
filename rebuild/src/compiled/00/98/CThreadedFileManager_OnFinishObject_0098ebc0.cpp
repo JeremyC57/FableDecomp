@@ -55,7 +55,7 @@ struct CObjectMap {                                // Objects: map<unsigned long
     unsigned long erase(const unsigned long& key);   // 0x00990D60
     CObjectIterator end() { return CObjectIterator(head); }
 };
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     unsigned char _pad00[0x138];                   // vtable, DeviceQueue, device levels, time slices
     CFileObject* CurrentlyReadingObject;           // +0x138
     CObjectMap Objects;                            // +0x13c

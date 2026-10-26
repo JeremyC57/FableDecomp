@@ -12,7 +12,7 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
+class CProcessedInput;
 
 struct CAInputProcessCalls {
     void RemoveFromInterface();                       // 0x00A0D2D0 (non-virtual)

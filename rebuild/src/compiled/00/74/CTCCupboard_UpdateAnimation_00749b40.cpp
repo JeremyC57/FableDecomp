@@ -12,14 +12,14 @@
 // `1.0f - eps < fraction` is `fld 1.0 ; fsub eps ; fcomp [esi+1Ch] ; test ah,5 ; jp`.
 extern long g_framesPerSecond;                          // 0x01375550
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -45,15 +45,15 @@ struct CAnimFrameTime {                                 // 12-byte UpdateFrameLo
     long  Reserved2;
     CAnimFrameTime() : Seconds(0), Reserved1(0), Reserved2(0) { }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad00[0x1c];
     float PlayFraction;                                 // +0x1c
     void UpdateFrameLogic(const CAnimFrameTime& time);  // 0x0070E8B0
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();                      // 0x0070B460
 };
-struct CTCCupboard {
+class CTCCupboard { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

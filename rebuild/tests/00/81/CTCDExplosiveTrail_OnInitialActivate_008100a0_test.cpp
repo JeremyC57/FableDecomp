@@ -1,16 +1,16 @@
 // Test for 008100a0 CTCDExplosiveTrail::OnInitialActivate: a counted copy of the thing's def fetches the trail sub-def;
 // the copy's add-ref is undone afterwards (destroy only when the copy held the last count).
 #include <cstdio>
-struct CExplosiveTrailDef;
-template <class T> struct CDefPointer;
-struct CDefClassBase {
+class CExplosiveTrailDef;
+template <class T> class CDefPointer;
+class CDefClassBase { public:
     long m_refCount; int Destroyed; CExplosiveTrailDef* SubDef; long CountDuringCall;
     virtual ~CDefClassBase() {}
     virtual void Destroy() { ++Destroyed; }
     bool GetSubDef(CDefPointer<CExplosiveTrailDef>* out);
 };
-struct CExplosiveTrailDef : CDefClassBase {};
-template <class T> struct CDefPointer {
+class CExplosiveTrailDef : public CDefClassBase { public:};
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
@@ -26,8 +26,8 @@ template <class T> struct CDefPointer {
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CExplosiveTrailDef>* out) { CountDuringCall = m_refCount; out->Object = SubDef; return true; }
 struct CThingDef : CDefClassBase {};
-struct CThing { CDefPointer<CThingDef> PDef; };
-struct CTCDExplosiveTrail {
+class CThing { public: CDefPointer<CThingDef> PDef; };
+class CTCDExplosiveTrail { public:
     CThing* ParentThing;
     CDefPointer<CExplosiveTrailDef> PDef;
     void OnInitialActivate()

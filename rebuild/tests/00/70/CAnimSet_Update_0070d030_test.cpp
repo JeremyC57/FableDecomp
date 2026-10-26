@@ -4,7 +4,7 @@
 
 struct CAnimSetUpdateInfo { float TimePassed, DistanceMoved, PercentageComplete; };
 
-struct CAnimSet {
+class CAnimSet { public:
     int UpdateMode;
     float CurrentPercentageComplete, LastPercentageComplete;
     float timeSeen, distanceSeen;

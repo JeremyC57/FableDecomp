@@ -12,32 +12,32 @@ typedef unsigned long long U64;
 static int g_live = 0;
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString() { Text[0] = 0; ++g_live; }
     CCharString(const char* t, long = -1) { std::strcpy(Text, t); ++g_live; }
     ~CCharString() { --g_live; }
 };
 struct CPlayerSave { U64 CharacterUID; CCharString RegionName; };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, U64& value, const U64& def) { Log(name); value = def + 0x1234; }
     void Transfer(const char* name, CCharString& value, const CCharString& def) { Log(name); std::strcpy(value.Text, def.Text); std::strcat(value.Text, "Oakvale"); }
 };
 static U64 g_uid = 0; static char g_region[32];
-struct CPlayer {
+class CPlayer { public:
     long PlayerID; long Number;
     void UninitCharacter() { char b[16]; std::sprintf(b, "uninit%ld", PlayerID); Log(b); }
     bool InitCharacterFromSave(CPlayerSave* s) { g_uid = s->CharacterUID; std::strcpy(g_region, s->RegionName.Text); char b[16]; std::sprintf(b, "init%ld", PlayerID); Log(b); return true; }
     long GetJoystickDeviceNumber() const { return Number; }
 };
 static long g_device = -1;
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     static CGameJoystickManager* Get() { static CGameJoystickManager m; return &m; }
     void SetMainPlayerJoystickDeviceNumber(long d) { g_device = d; }
 };
 template <class T> struct vector { T* _M_start; T* _M_finish;
     long size() const { return _M_finish - _M_start; } T& operator[](long n) { return *(_M_start + n); } };
-struct CPlayerManager {
+class CPlayerManager { public:
     vector<CPlayer*> Players; long PlayerNeutral; long MainPlayer;
     bool IsPlayerAssociatedWithJoystickDeviceNumber(long d) { return d == 0 || d == 2; }
     CPlayer* GetPlayer(long id) { return FindPlayer(id); }

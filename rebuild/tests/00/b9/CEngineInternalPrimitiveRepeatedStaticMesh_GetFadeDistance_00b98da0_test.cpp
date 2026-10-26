@@ -1,7 +1,7 @@
 #include <cstdio>
 struct SView { unsigned char _pad[0x88]; float m_fadeDistanceScale; };
 static SView g_view; static SView* g_pView = &g_view;
-struct CEngineFadeDistance { float FadeBeginDistance, MaxDrawDistance; CEngineFadeDistance(float b, float m) : FadeBeginDistance(b), MaxDrawDistance(m) { } };
+class CEngineFadeDistance { public: float FadeBeginDistance, MaxDrawDistance; CEngineFadeDistance(float b, float m) : FadeBeginDistance(b), MaxDrawDistance(m) { } };
 struct CMesh { unsigned char _pad[0x14]; float begin, max; CEngineFadeDistance GetFadeDistance() const { float scale = g_pView->m_fadeDistanceScale; CEngineFadeDistance d(begin * scale, max * scale); return d; } };
 int main()
 {

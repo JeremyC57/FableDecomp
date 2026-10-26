@@ -1,10 +1,10 @@
 #pragma optimize("s",on)
 // Leaf: SetMiniMapRegionExitTextOffsetX
-struct CRegion;
+class CRegion;
 
 extern "C" void* __cdecl helper_4292c0(void* arg);
 
-struct CRegion {
+class CRegion { public:
     void* f0;
 };
 

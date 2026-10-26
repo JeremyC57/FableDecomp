@@ -9,7 +9,7 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00c1bff0: Copy returns (x, y, z) unchanged.
-struct C3DVector {
+class C3DVector { public:
     float x; float y; float z;
     C3DVector Copy() const;
 };

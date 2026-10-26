@@ -1,10 +1,10 @@
 // Behaviour test for CTCTalk::CTCTalk @ 0x006E27E0: initial member values.
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
-struct CCharString { const char* m_pData; CCharString() : m_pData("") {} CCharString(const char* s, long = -1) : m_pData(s) {} };
-struct CTCBase { CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; CTCBase(CThing* o) : ParentThing(o), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {} };
-struct CTCTalk : CTCBase {
+class CThing { public: int id; };
+class CCharString { public: const char* m_pData; CCharString() : m_pData("") {} CCharString(const char* s, long = -1) : m_pData(s) {} };
+class CTCBase { public: CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; CTCBase(CThing* o) : ParentThing(o), ToBeRemoved(false), IsInGlobalUpdateTCs(false) {} };
+class CTCTalk : public CTCBase { public:
     long SpeechSample, SampleStartedFrame, SampleDurationFrames, Attitude; float MimeStartTime, SampleLoadedTime; void* PSpeechBank;
     unsigned long SampleID; long LastTextIndex; CCharString LastNarrator; bool IsPureAISpeaker, LipSynching, UseLipSynching; CCharString DialogueVoice;
     CTCTalk(CThing* o) : CTCBase(o), SpeechSample(0), SampleStartedFrame(0), SampleDurationFrames(0), Attitude(1), MimeStartTime(0.0f),

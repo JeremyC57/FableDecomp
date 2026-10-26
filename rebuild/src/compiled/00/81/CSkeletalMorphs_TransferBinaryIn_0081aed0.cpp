@@ -15,7 +15,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -41,7 +41,7 @@ struct CMemoryDataInputStream {
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x0044FC00
@@ -63,7 +63,7 @@ struct CMorphVector {
     CMorphPair* _M_end_of_storage;
     void resize(unsigned long count, const CMorphPair& value);   // 0x0081D9F0
 };
-struct CSkeletalMorphs {
+class CSkeletalMorphs { public:
     CMorphVector Morphs;      // +0
     bool Compare;             // +0xc
     bool Dirty;               // +0xd

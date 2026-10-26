@@ -38,7 +38,7 @@ public:
 struct SValue {
     unsigned char _payload[12];                           // opaque CRandomAppearanceMorph::CSkeletalMorph
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
 };
 template <class K, class V, class C> class CVectorMap {

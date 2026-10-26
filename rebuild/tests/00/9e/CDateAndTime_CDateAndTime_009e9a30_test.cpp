@@ -1,6 +1,6 @@
 #include <cstdio>
 struct _SYSTEMTIME { unsigned short wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds; };
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     CDateAndTime(const _SYSTEMTIME& st) : Year(st.wYear), Month(st.wMonth), Day(st.wDay), Hour(st.wHour), Minute(st.wMinute), Second(st.wSecond), Millisecond(st.wMilliseconds) { }
 };

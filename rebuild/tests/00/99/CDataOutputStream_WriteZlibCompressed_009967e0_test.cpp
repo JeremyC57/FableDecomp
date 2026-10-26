@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-struct CCompressorZlib {
+class CCompressorZlib { public:
     const unsigned char* src; long left; int finishCalls;
     CCompressorZlib() : src(0), left(0), finishCalls(0) {}
     void SetStreamInput(const void* s, long n) { src = (const unsigned char*)s; left = n; }
@@ -12,7 +12,7 @@ struct CCompressorZlib {
 };
 struct CByteArray { unsigned char* b; unsigned char* e; unsigned char* c; CByteArray(unsigned long n) { b = (unsigned char*)calloc(n, 1); e = b + n; c = e; } ~CByteArray() { free(b); }
     unsigned char* GetData() { return e - b != 0 ? b : (unsigned char*)this; } };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned char out[4096]; long pos; long lastChunk;
     CDataOutputStream() : pos(0), lastChunk(0) { memset(out, 0, sizeof out); }
     void SetPosition(long p) { pos = p; }

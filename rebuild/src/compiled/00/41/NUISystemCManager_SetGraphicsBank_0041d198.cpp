@@ -7,7 +7,7 @@
 // Opt: size TU (`push dword ptr [esp+8]` forwarding twice).
 #pragma optimize("s", on)
 class CGraphicDataBank;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer_0042918c {
 public:
     T*              Data;

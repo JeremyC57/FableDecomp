@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_copies = 0;
-struct CSubtitledMessage {
+class CSubtitledMessage { public:
     int SpeechIndex; unsigned char rest[0x40];
     CSubtitledMessage(int i) : SpeechIndex(i) {}
     CSubtitledMessage(const CSubtitledMessage& o) : SpeechIndex(o.SpeechIndex) { ++g_copies; }

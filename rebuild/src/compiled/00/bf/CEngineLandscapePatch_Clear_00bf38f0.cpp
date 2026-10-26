@@ -11,7 +11,7 @@
 // test; the second owned pointer (+0x14) is deleted through the reference helper, which keeps it (`mov ecx,eax ;
 // test ecx,ecx`). The patch has no PDB header; it is modelled locally (the landed destructor @ 0x00BF3A40
 // shows the CMovableResource vptr at +0 and the counted pointer at +0x40).
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 struct SEngine_01436ea8 {
@@ -38,7 +38,7 @@ struct COwnedResource {
 };
 
 template <class T> inline void SafeDeleteRef(T*& p) { delete p; p = 0; }
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     virtual ~CEngineLandscapePatch();              // +0x00 vptr (CMovableResource)
     unsigned char           _pad04[0x4];
     CTextureOwner*          m_pTextureOwners;      // +0x08

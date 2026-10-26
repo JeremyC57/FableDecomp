@@ -11,12 +11,12 @@
 // Shape: STLport `__partial_sort(first, middle, last, _STLP_VALUE_TYPE(first, ..), comp)` -- the comparator copied
 //   memberwise into its slot first (ten dwords and the CompareInXYPlane byte through cl), then the null type pointer
 //   and last.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

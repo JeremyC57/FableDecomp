@@ -13,9 +13,9 @@
 namespace std { template<class T> struct less; template<class T> class allocator; template<class A,class B> struct pair; template<class K,class V,class C,class A> class map; }
 enum EEnginePrimitiveStatIndex { PrimitiveStatCount = 0 };
 typedef std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > > PrimitiveStatsMap;
-struct CEnginePrimitiveHandle;
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); }; // 0x0099A2E0
-struct CIVCountedPointeeBase {
+class CEnginePrimitiveHandle;
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); }; // 0x0099A2E0
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const; // 0x0042D930
  unsigned long IVRefCount;
@@ -23,7 +23,7 @@ struct CIVCountedPointeeBase {
  long GetRefCount()const{return IVRefCount;}
  __forceinline void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
 };
-struct CEnginePersistentPrimitiveBase : CIVCountedPointeeBase {
+class CEnginePersistentPrimitiveBase : public CIVCountedPointeeBase { public:
  long Type;
  virtual void CollectStats(PrimitiveStatsMap&,EEnginePrimitiveStatIndex,unsigned long) const = 0; // genuine pure slot2 (fablewin PDB)
  virtual void NotifyReleased(const CEnginePrimitiveHandle&); // slot3 0x00B8FFC0
@@ -40,19 +40,19 @@ struct CIVPrimitivePointer {
  __forceinline ~CIVPrimitivePointer() { Clear(); }
  __forceinline CIVPrimitivePointer& operator=(const CIVPrimitivePointer& r) { if(Object!=r.Object) { Clear(); Object=r.Object; if(Object) ++Object->IVRefCount; } return *this; }
 };
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
  CIVPrimitivePointer Data;
  __forceinline void Clear() { if(Data.GetRefCount()==1) Data->NotifyReleased(*this); Data.Clear(); Data.Object=0; }
  __forceinline CEnginePrimitiveHandle& operator=(const CEnginePrimitiveHandle& r) { Clear(); Data=r.Data; return *this; }
  __forceinline virtual ~CEnginePrimitiveHandle() { Clear(); }
 }; // actual vtable 0x0122F598
-struct CMovableResource {
+class CMovableResource { public:
  virtual ~CMovableResource() {} // 0x0129B860
  virtual void RelocateData(long,void*,void*,long)=0;
  virtual bool CanRelocateData(long) const;
  virtual unsigned long Verify() const;
 };
-struct CEngineCamera; struct CLocalDetailObjectCollectionType; struct CDataInputStream;
+class CEngineCamera; class CLocalDetailObjectCollectionType; class CDataInputStream;
 enum LOCAL_DETAIL_PRIMITIVE_TYPE { LocalDetailPrimitiveUnspecified = 0 };
 // Native VTs contain ten slots; donor's extra virtual APIs are not projected.
 struct __declspec(novtable) CLocalDetailPrimitiveBase : CMovableResource {
@@ -68,7 +68,7 @@ struct __declspec(novtable) CLocalDetailPrimitiveBase : CMovableResource {
  float BoundingBox[6]; float BoundingSphere[4];
  void* Type; void* Map;
 };
-struct C4DVector { float X,Y,Z,W; };
+class C4DVector { public: float X,Y,Z,W; };
 struct CSubsectionElement;
 struct CAddMeshDesc {
  void* MeshInfo; float MaxScale; float* VectorNormals; long ObjectCount;
@@ -100,7 +100,7 @@ struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase {
 
 };
 struct CLocalDetailPrimitiveMeshZSpriteBatch : CLocalDetailPrimitiveBase {
- struct CObject { float Matrix[12],Scale,BoundingSphere[4]; CEnginePrimitiveHandle PrimitiveHandle; ~CObject(); }; // 0x00BFBBF0
+ class CObject { public: float Matrix[12],Scale,BoundingSphere[4]; CEnginePrimitiveHandle PrimitiveHandle; ~CObject(); }; // 0x00BFBBF0
  CObject* Objects; void* ZSpriteEntries; long ObjectCount; bool HasMeshPrimitiveHandles;
  CEnginePrimitiveHandle ZSpriteHandle;
  CAddPrimitiveDesc SetupPrimitiveDesc(); // 0x00BF9FA0

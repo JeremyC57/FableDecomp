@@ -12,13 +12,13 @@
 // PMasterData +0x18 (neither used here).
 // Shape: the landed CHTE_Audience::Main 0x00D6B240 handle (inline ctor, out-of-line dtor at every exit) and the
 // CRockTrollTrigger::Main 0x00E0AD40 scoped filter.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
     virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
     void* PImp[2];
@@ -33,12 +33,12 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 struct CCountedPointerWords { void* Data; void* Info; };
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -58,14 +58,14 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
-    struct CGameScriptInterface* Game;                 // +0x04
+    class CGameScriptInterface* Game;                 // +0x04
     CScriptThing          Me;                          // +0x08
     void RegisterFilter(CIsThingAlive& filter);        // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)

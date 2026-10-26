@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_RockTrollShakeAndExplode {
+class CCreatureAction_RockTrollShakeAndExplode { public:
     void* vftable;
     int destroyed;
 };

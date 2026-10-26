@@ -16,13 +16,13 @@
 #pragma optimize("s", on)
 class CThing;
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
 
-struct CFadeInFadeOutBase {                              // 0x1c bytes
+class CFadeInFadeOutBase { public:                              // 0x1c bytes
     bool       Active;                                   // +0x00
     float      FadeInTime;                               // +0x04
     float      FadeOutTime;                              // +0x08

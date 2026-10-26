@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char enabled;                                   // +0x08 retail-only unsigned char (previous header)

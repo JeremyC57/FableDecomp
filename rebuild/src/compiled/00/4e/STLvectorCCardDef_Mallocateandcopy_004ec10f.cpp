@@ -17,7 +17,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-struct CParentDefClassBase {                    // retail 0x3C bytes
+class CParentDefClassBase { public:                    // retail 0x3C bytes
     virtual void v00();
     unsigned char _body[0x38];                  // +0x04 def-class base body
 };

@@ -11,18 +11,18 @@
 //   byte +0x10, PCurrentAction +0x100 (CCountedPointer<CCreatureActionBase>, PDB +0x11c less the retail 0x1c shift).
 // Shape: the current action is read through an inline accessor (`mov eax,[eax+100h] ; test ; mov ecx,eax`); the timer is
 //   decremented in memory then re-read after UpdateBeam; the creature named local is read only in the final block.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
     bool HasPerformedAction() const;       // 0x006925A0
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                 // +0x10 (1 = player creature)
     unsigned char _pad11[0x100 - 0x11];
@@ -32,7 +32,7 @@ struct CThingCreatureBase {
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureAction_DragonFireBeamOutOf : CCombatActionBase {
+class CCreatureAction_DragonFireBeamOutOf : public CCombatActionBase { public:
     CCreatureAction_DragonFireBeamOutOf(CThingCreatureBase* owner);   // 0x008E4A60
 };
 
@@ -46,7 +46,7 @@ struct CModeStandBase : CModeBase {        // retail sizeof 0x68
 };
 
 namespace NCreatureMode {
-struct CModeDragonHover : CModeStandBase { // retail sizeof 0x80
+class CModeDragonHover : public CModeStandBase { public: // retail sizeof 0x80
     unsigned char _hover[0x18];            // Filter +0x68, PTarget +0x74, UseHeadTurning +0x7c
     void FrameUpdate();                    // 0x008DB460
 };

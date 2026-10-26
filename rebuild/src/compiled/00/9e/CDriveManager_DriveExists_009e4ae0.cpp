@@ -14,16 +14,16 @@ typedef unsigned short wchar16;
 
 extern "C" int __cdecl _wchdir(const wchar16* path);   // 0x00BFEAFE
 
-struct CWideString {
+class CWideString { public:
     wchar16* m_pchData;
     operator const wchar16*();               // 0x0099AF00
     ~CWideString();                          // 0x0099B510
 };
 CWideString __fastcall GetCurrentWorkingDirectory();   // 0x00997F80
 
-struct CSystemManager;
+class CSystemManager;
 
-struct CDriveManager {
+class CDriveManager { public:
     void*           __vftable;               // +0x00
     CSystemManager* SystemManager;           // +0x04
     long DriveExists(wchar16 driveLetter);

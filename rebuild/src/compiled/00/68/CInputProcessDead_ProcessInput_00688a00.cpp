@@ -9,8 +9,8 @@
 // the stack -> callee cleans 8 bytes -> `ret 8`.
 
 #include "engine/CInputProcessDead.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CInputEvent { int _pad; };
-struct CProcessedInput { int _pad; };
+class CInputEvent { public: int _pad; };
+class CProcessedInput { public: int _pad; };
 
 void __fastcall ProcessInput(CInputProcessDead* process,
                              int edx_dummy,

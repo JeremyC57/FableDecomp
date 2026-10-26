@@ -1,8 +1,8 @@
 // behaviour test for 0x009FD160 CGraphicHeader::Load
 #include <cstdio>
 #include <cstring>
-struct CPixelFormat { int FormatIndex; CPixelFormat() {} };
-struct CDataInputStream {
+class CPixelFormat { public: int FormatIndex; CPixelFormat() {} };
+class CDataInputStream { public:
     unsigned int StreamPos; int StreamSize; unsigned char* CurrentSourcePtr; unsigned int SourceChunkStreamPos; int SourceChunkBytesRemaining;
     int overflowCalls;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, int size) { ++overflowCalls; std::memset(buffer, 0xEE, size); StreamPos += size; }

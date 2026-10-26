@@ -12,15 +12,15 @@
 // Shape: the local vector's destructor is expanded inline at the function end and called out of line at the early
 //   IsDone exit; its element walk is a by-value `_Destroy(first, last)` over the virtual destructor.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float x, y, z; };
-struct CCPPointerInfo;
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float x, y, z; };
+class CCPPointerInfo;
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                       // slot 0; complete destructor 0x004AA840
     virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
@@ -51,7 +51,7 @@ public:
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
 };
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -119,7 +119,7 @@ struct CGameScriptInterface {
     virtual void v484(); virtual void v485(); virtual void v486(); virtual void v487(); virtual void v488(); virtual void v489(); virtual void v490(); virtual void v491();
     virtual void EntityAttachToVillage(const CScriptThing& thing, const CScriptThing& village) const; // slot 492 (+0x7b0)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x444];
     unsigned long MaxTauntingBandits;              // +0x444
 };

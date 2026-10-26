@@ -1,4 +1,4 @@
-struct CCreatureAction_ScreamerDrainAttack {
+class CCreatureAction_ScreamerDrainAttack { public:
     void* vftable;
 };
 

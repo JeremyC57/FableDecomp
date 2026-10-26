@@ -4,7 +4,7 @@
 // behaviour test for 0x00405F00: exercises the same logic through a copy of the model (compiled separately from the source)
 typedef unsigned short wchar_retail;
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     wchar_retail m_text[16];
     CWideString() { m_text[0] = 0; ++g_live; }
     CWideString(const CWideString& other) { std::memcpy(m_text, other.m_text, sizeof(m_text)); ++g_live; }

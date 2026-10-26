@@ -7,7 +7,7 @@
 // constructor = the out-of-line base constructor then its vtable store (no SetPItem), the init-list byte store scheduled
 // before that call.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -15,7 +15,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() {}
     virtual void v00();
 };
@@ -28,7 +28,7 @@ struct CTCBase_004d7e46 {
     CTCBase_004d7e46(CThing* owner);                // 0x00686800
 };
 
-struct CTCOwnedEntity : CTCBase_004d7e46 {
+class CTCOwnedEntity : public CTCBase_004d7e46 { public:
     bool                        SwitchableNavigationTCAdded;   // +0x0c
     CIntelligentPointer<CThing> POwner;             // +0x0d
     unsigned char               _pad15[3];

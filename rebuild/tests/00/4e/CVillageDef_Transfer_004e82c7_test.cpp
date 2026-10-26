@@ -2,8 +2,8 @@
 #include <cstdio>
 enum EVillageStanceToHero { VILLAGE_STANCE_DEFAULT };
 enum EVillageTaskType { VILLAGE_TASK_DEFAULT };
-struct CDefString { long Index; };
-struct CCharString { void* PData; };
+class CDefString { public: long Index; };
+class CCharString { public: void* PData; };
 struct CTaskVector { EVillageTaskType* a; EVillageTaskType* b; EVillageTaskType* c; };
 struct CLongVector { long* a; long* b; long* c; };
 
@@ -12,7 +12,7 @@ static int g_kind[64];
 static int g_count = 0;
 static void Record(const void* p, int kind) { if (g_count < 64) { g_seen[g_count] = p; g_kind[g_count] = kind; } ++g_count; }
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(CTaskVector& v) { Record(&v, 1); }
     void Transfer(CDefString& v) { Record(&v, 2); }
     void Transfer(EVillageStanceToHero& v) { Record(&v, 3); }
@@ -22,7 +22,7 @@ struct CPersistContext {
     void Transfer(CCharString& v) { Record(&v, 7); }
 };
 
-struct CVillageDef {
+class CVillageDef { public:
     CTaskVector Tasks; CDefString PatrolTrackName; EVillageStanceToHero DefaultStanceToHero;
     long SecondsSecuritySweepLasts; long WarehouseCrateDef;
     CLongVector StoryStartTimes; long StoryDuration; CLongVector SchoolStartTimes; long SchoolDuration;

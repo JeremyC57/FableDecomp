@@ -8,13 +8,13 @@
 // address once, the inlined operator=(T*) with null then reads/writes through it -- hence the double null store).
 // Shape: `if (CanUnload()) { ...; return false; } return true;` -- the true tail (`mov al,1`) sits after the
 // release path, so the body is the if-wrapped form, not an early `return true`.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
 
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     void Release()
     {
@@ -33,7 +33,7 @@ template<class T> struct CIVCountedPointer {
     }
 };
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad[0x0c];
     CIVCountedPointer<CIVCountedPointeeBase> m_data;    // +0x0c the shared animation data block
 };

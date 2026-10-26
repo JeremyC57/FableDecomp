@@ -40,7 +40,7 @@ struct CCountedPointer_MeshMorphSet {
     }
 };
 
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     virtual void v00();
     unsigned char                _base[0x0c];               // +0x04 CTCAppearanceMorphBase body
     CCountedPointer_MeshMorphSet PMeshMorphSet;             // +0x10

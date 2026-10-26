@@ -8,9 +8,9 @@
 // Shape: the two inline `Data && member` tests re-test Data (the second test's null check is kept); the
 // touch block is the inline resource-list move-to-tail; the result is the counted pointer's copy
 // constructor into the hidden return slot (add-ref `inc [block]`), Data re-read after the calls.
-struct CResourceList;
+class CResourceList;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned long IVRefCount;                  // +4
     CResourceList* ResourceList;           // +8
@@ -23,7 +23,7 @@ struct CResource {
     void AddToResourceList();              // 0x009FC440
 };
 
-struct CResourceList {
+class CResourceList { public:
     long m_pad0;                           // +0
     CResource Head;                        // +4
     unsigned long ResourceCount;           // +0x20
@@ -35,7 +35,7 @@ struct CResourceList {
 struct SCountBlock { long m_references; };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -44,7 +44,7 @@ struct CCountedPointer {
     }
 };
 
-struct C3DAnimationStats;
+class C3DAnimationStats;
 struct CAsyncLoadTask;
 
 struct CAnimationData : CResource {
@@ -62,7 +62,7 @@ struct CAnimationData : CResource {
     }
 };
 
-struct C3DAnimationInfo {                  // engine/C3DAnimationInfo.h offsets
+class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();
     void* Bank;                            // +4
     unsigned long Index;                   // +8

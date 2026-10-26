@@ -5,10 +5,10 @@
 // zeroes its two counted pointers (+0x48, +0x4c) from the zero register; the group's init list stores the cell, the grid, the zero frame count and the
 // coordinates with the vtable store scheduled between them; `mov eax,esi` returns `this`. Members from engine/CEngineInternalPrimitiveOcclusionGroup.h (PDB):
 // GridCell +0x50, Grid +0x54, GridX +0x58, GridY +0x5c, FramesRendered +0x60.
-struct CEngineSceneGridCell;
-struct CEngineSceneGrid;
+class CEngineSceneGridCell;
+class CEngineSceneGrid;
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     unsigned long IVRefCount;
 };
@@ -18,7 +18,7 @@ struct CIVCountedPointer {
     CIVCountedPointer() : Object(0) { }
 };
 
-struct CEngineInternalPrimitiveBase {               // engine/CEngineInternalPrimitiveBase.h: 0x48 bytes
+class CEngineInternalPrimitiveBase { public:               // engine/CEngineInternalPrimitiveBase.h: 0x48 bytes
     virtual void v00();
     unsigned char _pad04[0x44];
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -29,7 +29,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveOcclusionBase : CEngineInter
     CEngineInternalPrimitiveOcclusionBase(long type, unsigned long flags) : CEngineInternalPrimitiveBase(type, flags) { }
 };
 
-struct CEngineInternalPrimitiveOcclusionGroup : CEngineInternalPrimitiveOcclusionBase {   // vtable 0x012A5364
+class CEngineInternalPrimitiveOcclusionGroup : public CEngineInternalPrimitiveOcclusionBase { public:   // vtable 0x012A5364
     CEngineSceneGridCell* GridCell;                // +0x50
     CEngineSceneGrid*     Grid;                    // +0x54
     unsigned long         GridX;                   // +0x58

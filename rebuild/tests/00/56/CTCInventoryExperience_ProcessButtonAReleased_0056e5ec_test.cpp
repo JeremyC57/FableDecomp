@@ -3,7 +3,7 @@
 struct ExperienceSpendEvent { bool enable; bool initiate; unsigned char _pad[2]; long time; };
 static int g_baseCalls = 0;
 struct CTCInventoryBase { void ProcessButtonAReleased() { ++g_baseCalls; } };
-struct CTCInventoryExperience : CTCInventoryBase {
+class CTCInventoryExperience : public CTCInventoryBase { public:
     long InventorySelectionState;
     ExperienceSpendEvent ExperienceSpendAdd;
     ExperienceSpendEvent ExperienceSpendRemove;

@@ -10,7 +10,7 @@
 //   only then stores it (the landed list constructor 0x0084F1F0 model); the bool is an init-list member after the lists.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 namespace std {
 template <class T1, class T2> struct pair {

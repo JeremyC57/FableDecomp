@@ -7,11 +7,11 @@
 // `this` copy in edx and each component through esi as a dword (a user memberwise operator= copies
 // through edx straight off ecx, 32 v 36); the float distance is a plain dword copy through edx, and
 // the constant true result is `mov al,1` (`ret 8`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;                              // +0x00
     float     Distance;                            // +0x0c
     bool Initialise(const C3DVector& normal, float distance);

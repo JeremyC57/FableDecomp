@@ -1,5 +1,5 @@
 extern void SoundMutedChanged(void);
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad[0x31];
     char muted;
     void SetSoundAsMuted(char v);

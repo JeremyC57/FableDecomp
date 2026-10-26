@@ -8,8 +8,8 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     if (range == 0) return 0;
     return seed % range;
 }
-struct CNymphDef { float MaxHeight, MinHeight; };
-struct CTCNymph {
+class CNymphDef { public: float MaxHeight, MinHeight; };
+class CTCNymph { public:
     const CNymphDef* PDef;
     unsigned long* m_pSeed;
     float GetRandomFlightHeight() const

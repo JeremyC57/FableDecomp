@@ -11,7 +11,7 @@
 //   unrolls it four times (`(count - 4) >> 2` + 1 passes, then the remainder loop), re-reads the vector start for every
 //   element (the float store may alias it) and loads the multiplier first (`fld [esp+..] ; fmul [edi+8]`).
 // Emission: the `_Use` caller sits before the definition (VC7.1 would discard the unreferenced internal function).
-struct CDefString {
+class CDefString { public:
     long TablePos;                                      // +0x00
 };
 class CSkeletalMorphs {

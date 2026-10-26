@@ -5,17 +5,17 @@ static int g_constructed = 0;
 static int g_destroyed = 0;
 static int g_resizeCalls = 0;
 static int g_liveDuringResize = 0;
-struct CResource {
+class CResource { public:
     unsigned long m_refCount;
     CResource() : m_refCount(0) { }
     ~CResource() { ++g_destroyed; }
 };
-struct CDefPointeeBase : CResource { };
-struct CSubDefClassBase : CDefPointeeBase {
+class CDefPointeeBase : public CResource { public: };
+class CSubDefClassBase : public CDefPointeeBase { public:
     long m_defIndex;
     CSubDefClassBase() : m_defIndex(0) { ++g_constructed; }
 };
-struct CMultiStaticMeshEntryDef : CSubDefClassBase {
+class CMultiStaticMeshEntryDef : public CSubDefClassBase { public:
     CMultiStaticMeshEntryDef() { }
 };
 struct CVector {

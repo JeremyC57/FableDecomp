@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesBurntEffectDef {};
+class CSpecialAbilitiesBurntEffectDef { public:};
 
 unsigned long __fastcall CSpecialAbilitiesBurntEffectDef_GetSizeofClass(const CSpecialAbilitiesBurntEffectDef* self)
 {

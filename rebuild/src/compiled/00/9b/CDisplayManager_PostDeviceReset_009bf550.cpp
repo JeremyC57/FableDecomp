@@ -13,11 +13,11 @@ struct CRenderManagerCore {
     void Init(IDirect3DDevice9* device);               // 0x00A0A940
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     void OnDisplayDeviceReset();                       // 0x009A52C0
 };
 
-struct CDeviceResetCallback {
+class CDeviceResetCallback { public:
     virtual void v00();
     virtual bool OnDeviceReset();                      // slot 1
 };
@@ -27,7 +27,7 @@ struct CRetailCallbackList {                           // VC6 Dinkumware list<CD
     node* head;
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void*               __vftable;                     // +0x000
     CSystemManager*     SystemManager;                 // +0x004
     CRenderManagerCore* PRenderManager;                // +0x008 scoped_ptr<CRenderManager>

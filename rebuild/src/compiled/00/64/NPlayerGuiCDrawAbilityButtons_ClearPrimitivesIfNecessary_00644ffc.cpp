@@ -11,7 +11,7 @@
 // store, then the unconditional zero store), here in a /Os TU WITHOUT a frame pointer (`optimize("s",on)` only): the shared zero
 // lives in ebx, each handle's address in esi, the for_each result in the `push ecx` word.
 #pragma optimize("s", on)
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 
 struct CEnginePrimitiveBase {                      // counted primitive: vptr, then the reference count
     virtual void v00();
@@ -48,7 +48,7 @@ struct CBase {
     virtual void v00();
 };
 
-struct CEnginePrimitiveHandle : CBase {            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;              // +4
     __forceinline void Clear()                     // 0x0041BE70 out of line (inlined here: size TU needs __forceinline)
     {
@@ -83,14 +83,14 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0: 0x00644627
     unsigned char       _body04[0x18 - 4];
     bool                Drawing;                   // +0x18
     CRetailHandleVector PrimitiveHandles;          // +0x1c
 };
 
-struct CDrawAbilityButtons : CDrawBase {           // vtable 0x0125A6C8
+class CDrawAbilityButtons : public CDrawBase { public:           // vtable 0x0125A6C8
     long                   Columns;                // +0x28
     CEnginePrimitiveHandle ButtonPrimitiveHandle;  // +0x2c
     CEnginePrimitiveHandle HighlightPrimitiveHandle;   // +0x34

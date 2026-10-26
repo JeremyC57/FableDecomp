@@ -17,7 +17,7 @@
 #include <string.h>
 extern char g_emptyString[];                            // 0x0129AAF4
 struct CStringData { char* Text; long Length; };
-struct CCharString {
+class CCharString { public:
     CStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -32,13 +32,13 @@ struct CCharString {
     }
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     float GetHoverSpeedSlow() const;                    // 0x006620E0
     float GetHoverSpeedMedium() const;                  // 0x006620F0
     float GetHoverSpeedFast() const;                    // 0x00662100
 };
 float __fastcall GetAnimMovementSpeed(const CCharString& animName, CThingCreatureBase* creature, long world3c);   // 0x00861C90
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     long          Value3c;                              // +0x3c
 };
@@ -53,8 +53,8 @@ struct CModeBase {
 };
 namespace NCreatureMode {
 struct CModeHoverBase : CModeBase {
-    struct CRadialArea { float ThetaLow, ThetaHigh, RadHigh; };
-    struct CHoverState {
+    class CRadialArea { public: float ThetaLow, ThetaHigh, RadHigh; };
+    class CHoverState { public:
         CCharString AnimName;                           // +0x00
         CRadialArea Area;                               // +0x04
         long        MovementType;                       // +0x10

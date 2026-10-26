@@ -13,7 +13,7 @@
 // the traits object (case 2) and the 8-byte TransferableComponent wrapper {vtable, value*} (cases 0/1); `ret 0Ch`.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CDataInputStream;
 class CDataOutputStream {
 public:

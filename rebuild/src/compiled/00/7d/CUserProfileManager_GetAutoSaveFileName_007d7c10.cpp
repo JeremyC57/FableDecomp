@@ -8,7 +8,7 @@
 // (`mov esi,[esp+8]`), `this` is unused, the temporary is constructed in place.
 #include "fable_string.h"
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetAutoSaveFileName();
 };
 

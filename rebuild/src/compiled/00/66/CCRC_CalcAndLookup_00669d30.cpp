@@ -9,7 +9,7 @@
 // on its own; the length is evaluated first because Calc's stack argument is pushed first); the hash is homed in the
 // dead `name` argument slot (`mov [esp+14h],eax`) and passed to find by address with the 4-byte iterator result in
 // the frame; end() is the header pointer re-read after the call.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                      // +0x00
     unsigned long StringLength;               // +0x04
 };

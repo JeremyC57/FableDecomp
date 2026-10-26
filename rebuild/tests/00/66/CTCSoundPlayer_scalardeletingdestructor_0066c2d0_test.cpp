@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void* vftable;
     int destroyed;
 };

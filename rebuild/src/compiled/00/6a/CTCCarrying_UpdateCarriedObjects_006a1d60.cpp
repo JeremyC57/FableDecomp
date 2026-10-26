@@ -8,7 +8,7 @@
 // `mov cl,[eax+28h] ; test cl,cl ; jns`) is declared OUTSIDE the loop and never initialised, so a
 // thing without the interface reuses the previous value (edi, first loaded from the frame word
 // that also homes the lookup key).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -36,7 +36,7 @@ struct CThing {
     }
 };
 
-struct CTCCarryable {
+class CTCCarryable { public:
     void UpdateCarriedPosition(bool force);                      // 0x00705B60
 };
 
@@ -62,7 +62,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     SCarrySlotEntry& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x0c - 0x04];           // +0x04 .. +0x0c: CTCBase state
     CCarrySlotMap CarrySlots;                       // +0x0c

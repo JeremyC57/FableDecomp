@@ -3,10 +3,10 @@
 
 // NPlayerGui::CDrawQuestInfo::AddTimer: the sprite is looked up from the symbol, a new element is created and appended through
 // AddElement (which assigns the next ID), and the element's new ID is returned.
-struct CCharString { const char* m_pData; };
+class CCharString { public: const char* m_pData; };
 struct CQuestInfoElement { long ID; long ScriptID; float Scale; virtual ~CQuestInfoElement() { } };
 struct CElement : CQuestInfoElement { long a; long graphic; long graphic2; float scale; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     explicit CCountedPointer(T* object) : m_pObject(object) { }
     template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject) { }

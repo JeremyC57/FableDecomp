@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCSummonSpell { void FinalCleanup(); };
+class CTCSummonSpell { public: void FinalCleanup(); };
 void CTCSummonSpell::FinalCleanup() {}

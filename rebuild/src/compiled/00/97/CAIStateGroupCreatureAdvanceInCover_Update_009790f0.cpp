@@ -20,13 +20,13 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -61,16 +61,16 @@ struct CIntelligentPointerVector {              // vector<CIntelligentPointer<CT
     void clear() { erase(first, last); }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     unsigned char _body[0x114];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_ProjectileCrouch : CCombatActionBase {
+class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:
     unsigned char _crouch[0x124 - 0x114];       // the crouch action is 0x124 bytes (the frame slot it takes)
     CCreatureAction_ProjectileCrouch(CThing* creature, CThing* enemy, const C3DVector& coverPos);   // 0x008B8310
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

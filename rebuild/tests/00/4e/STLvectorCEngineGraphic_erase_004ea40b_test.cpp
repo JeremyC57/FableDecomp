@@ -2,7 +2,7 @@
 // Behaviour copy of STLport vector<CEngineGraphic>::erase(first, last): slide [last, finish) down to first, finish = first +
 // (finish - last), return first.
 #pragma pack(push, 2)
-struct CEngineGraphic { unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 #pragma pack(pop)
 struct SVec {
     CEngineGraphic* start; CEngineGraphic* finish; CEngineGraphic* eos;

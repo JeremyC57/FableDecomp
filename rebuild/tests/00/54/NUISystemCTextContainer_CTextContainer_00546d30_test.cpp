@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[8] = "";
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CComponentInterface { virtual void v000() { } virtual ~CComponentInterface() { } };
 struct CObserver_Retail { virtual void ProcessEvent() { } unsigned char _body[0x10]; };
 struct CEventSinkInterface { virtual void v0() { } };

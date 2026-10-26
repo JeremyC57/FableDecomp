@@ -47,7 +47,7 @@ struct CBasicStringW {                                  // STLport basic_string<
     CBasicStringW& _M_append(const wchar16* first, const wchar16* last, const forward_iterator_tag& tag);   // 0x0099C7E0
     CBasicStringW& append(const wchar16* s) { return _M_append(s, s + length(s), forward_iterator_tag()); }
 };
-struct CWideStringData {                                // 16 bytes
+class CWideStringData { public:                                // 16 bytes
     CBasicStringW Data;                                 // +0x00
     long          NoRefs;                               // +0x0c
     CWideStringData(const wchar16* text, unsigned long n) : Data(text, n), NoRefs(1) { }

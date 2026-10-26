@@ -11,7 +11,7 @@
 #define __declspec(x)
 #define __int64 long long
 #endif
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     int   position;
     int   sourceLength;

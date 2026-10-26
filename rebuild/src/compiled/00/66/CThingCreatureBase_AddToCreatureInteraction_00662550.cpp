@@ -15,7 +15,7 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                            // +0
     SCountBlock* m_pCount;                              // +4
     CCountedPointer& operator=(const CCountedPointer& other)
@@ -39,12 +39,12 @@ struct CCountedPointer {
     T* operator->() const { return Data; }
 };
 
-struct CThingCreatureBase;
-struct CCreatureInteraction {
+class CThingCreatureBase;
+class CCreatureInteraction { public:
     void AddCreature(CThingCreatureBase* creature);     // 0x008631D0
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x12c];
     CCountedPointer<CCreatureInteraction> PCreatureInteraction;     // +0x12c
     void AddToCreatureInteraction(const CCountedPointer<CCreatureInteraction>& interaction);

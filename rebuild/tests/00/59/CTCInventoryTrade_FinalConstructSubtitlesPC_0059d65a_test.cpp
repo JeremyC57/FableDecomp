@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char s[64];
     CWideString() { s[0] = 0; }
     CWideString(const char* t) { std::strcpy(s, t); }

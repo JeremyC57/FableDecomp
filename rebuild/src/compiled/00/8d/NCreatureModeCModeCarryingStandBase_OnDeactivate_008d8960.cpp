@@ -9,7 +9,7 @@
 // Shape: the landed sibling CModeCarryingStandBase::FrameUpdate @ 0x008D88A0: the GetInterface result is not tested, so the
 //   absent path joins with the never-written out variable, which shares the lookup key's frame word (`mov eax,[esp+4]`).
 //   The animation is a named reference: chained `GetAnimation().Remove(0x18)` schedules the `push 18h` before the getter call.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -37,10 +37,10 @@ struct CThing {
     }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     void RemoveCombinationAnimsOfType(long type);   // 0x0070D8C0
 };
-struct CTCAnimationComplex {               // interface type 0x5a
+class CTCAnimationComplex { public:               // interface type 0x5a
     CAnimateThing& GetAnimation();         // 0x0070B460
 };
 

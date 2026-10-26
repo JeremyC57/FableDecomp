@@ -70,7 +70,7 @@ FABLE_STATIC_ASSERT(sizeof(NativeD3DDevice::GammaMethod)==4);
 #endif
 extern const float g_RampZero; //0122DEDC
 extern const float g_RampMaximum; //0129B3F0
-struct CDisplayManager {
+class CDisplayManager { public:
  unsigned char DisplayState[0x58];NativeD3DDevice* PD3DDevice;
  unsigned char DisplayStateTail[0x2c4-0x5c];float Gamma;
  void SetGamma(float gamma,bool calibrate);

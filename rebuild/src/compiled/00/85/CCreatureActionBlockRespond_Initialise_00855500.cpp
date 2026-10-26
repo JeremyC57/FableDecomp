@@ -13,7 +13,7 @@
 #pragma intrinsic(cos)
 extern unsigned long g_InvSqrtMantissaTable[128];       // 0x013CE558
 
-struct CTCBase;
+class CTCBase;
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
@@ -22,7 +22,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -34,7 +34,7 @@ struct C3DVector {
     __forceinline void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -67,13 +67,13 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
-struct CTCPhysicsBase {                                 // interface 2
+class CTCPhysicsBase { public:                                 // interface 2
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();                      // slot 70 (+0x118)
     unsigned char _pad04[8];
     C3DVector     Position;                             // +0x0c
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CAnimationEntryVector {                          // STLport vector<const CAnimationEntry*>
     CAnimationEntry** _M_start;
     CAnimationEntry** _M_finish;
@@ -81,7 +81,7 @@ struct CAnimationEntryVector {                          // STLport vector<const 
     CAnimationEntryVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CAnimationEntryVector() { if (_M_start) free(_M_start); }
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
@@ -102,7 +102,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& out);   // 0x006668A0
 };
 struct CBaseIntelligentPointer {

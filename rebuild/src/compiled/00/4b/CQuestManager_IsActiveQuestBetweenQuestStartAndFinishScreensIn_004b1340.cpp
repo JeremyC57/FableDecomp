@@ -13,7 +13,7 @@
 // the match bool survives the temporary's destructor in bl.
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharStringData {                               // the shared string block
+class CCharStringData { public:                               // the shared string block
     const char*   Data;                                // +0x00
     unsigned long Length;                              // +0x04
     bool IsEqual(const CCharStringData& other) const
@@ -23,7 +23,7 @@ struct CCharStringData {                               // the shared string bloc
         return Compare_00411570(Data, other.Data) == 0;
     }
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
@@ -77,11 +77,11 @@ template <class T> struct CRetailVector {              // STLport vector (12 byt
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     bool IsVignette() const;                           // 0x007022E0
     CCharString GetRegionName();                       // 0x007025A0
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char             _pad_0x00[0x4c];
     CRetailVector<CCharString> BetweenStartAndEndScreenQuests;   // +0x4c
     CThing_Retail* GetActiveQuestCardFromScriptName(const CCharString& name);   // 0x004B0C80

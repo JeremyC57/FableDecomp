@@ -39,7 +39,7 @@ struct CThing_Retail {
     unsigned char  _pad28[0x1c];
     CTCMap_Retail  m_tcs;                          // +0x44
 };
-struct CIsFreeHopscotchBoard {
+class CIsFreeHopscotchBoard { public:
     bool operator()(CThing_Retail* thing);
 };
 

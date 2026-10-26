@@ -32,41 +32,41 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 //   read keeps it in ecx and loads the flags into edx).
 // Layout: engine/CTCBuyableHouse.h (PDef +0x0c, IsScripted +0x10, OwnedByPlayer +0x11, WifeLivingHere +0x38);
 //   CBuyableHouseDef IsBuyable +0x25, IsBuyableWithoutSignpost +0x49 (retail); CTCVillageMember interface 0x23.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                      // slot 1
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Delete(); }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;
     CCountedPointer(const CCountedPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
     ~CCountedPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
     operator bool() const { return Object != 0; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     T* operator->() const { return (T*)Object; }
 };
-struct CBuyableHouseDef : CDefPointeeBase {
+class CBuyableHouseDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x25 - 0x08];
     bool          IsBuyable;                    // +0x25
     unsigned char _pad26[0x49 - 0x26];
     bool          IsBuyableWithoutSignpost;     // +0x49
 };
-struct CVillageDef : CDefPointeeBase {
+class CVillageDef : public CDefPointeeBase { public:
     unsigned char _pad08[0xe5 - 0x08];
     bool          IsResidential;                // +0xe5
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x94];
     CCountedPointer<CVillageDef> PDef;          // +0x94
     unsigned char _pad98[0xb3 - 0x98];
     bool          Flag_b3;                      // +0xb3
     CCountedPointer<CVillageDef> GetPDef() const { return PDef; }
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
 class CTCBase;

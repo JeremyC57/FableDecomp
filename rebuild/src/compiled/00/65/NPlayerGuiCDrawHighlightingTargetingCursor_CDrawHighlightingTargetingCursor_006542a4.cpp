@@ -7,8 +7,8 @@
 // colour bytes and the three longs; the alpha 0xff and the float zeroes (`fldz`/`fstp`) are separate. The colour's own constructor
 // stores B, G, R, A in that order (its parameters are (b, g, r, a)); the rest is the init list in declaration order. PDB layout (76 bytes): PTargetedThing +0x2c,
 // CurrentColour +0x34, CurrentWidthScreenSpace +0x38, CurrentWidthWorldSpace +0x3c, CurrentFadeStep +0x40, Width +0x44, CursorType +0x48 -- retail 4 lower.
-struct CPlayerGui;
-struct CThing;
+class CPlayerGui;
+class CThing;
 
 struct CIntelligentPointer_CThing {
     void* m_pItem;
@@ -16,7 +16,7 @@ struct CIntelligentPointer_CThing {
     CIntelligentPointer_CThing(CThing* thing);     // 0x004A96F0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char R, G, B, A;
     CRGBColour(unsigned char b, unsigned char g, unsigned char r, unsigned char a) { B = b; G = g; R = r; A = a; }
 };
@@ -30,14 +30,14 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     void Reserve(long count);                      // 0x00443F90
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawHighlightingTargetingCursor : CDrawBase {   // vtable 0x0125A720
+class CDrawHighlightingTargetingCursor : public CDrawBase { public:   // vtable 0x0125A720
     virtual void v00();
     CIntelligentPointer_CThing PTargetedThing;     // +0x28
     CRGBColour                 CurrentColour;      // +0x30

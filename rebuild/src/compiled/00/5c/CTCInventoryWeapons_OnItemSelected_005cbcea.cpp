@@ -9,9 +9,9 @@
 // SetThingAsActiveWeapon (`push 0 ; push dword ptr [esp+0Ch]`). Size TU (`#pragma optimize("s", on)`). No member is
 // touched, so the model is the bare class.
 #pragma optimize("s", on)
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 bool __fastcall IsAugmentation(long defIndex);   // 0x005D97F0
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void SetThingAsActiveWeapon(long defIndex, NUISystem::CComponent* menuEntry);   // 0x005CB2B0
     void OnItemSelected(long defIndex, bool* handled);
 };

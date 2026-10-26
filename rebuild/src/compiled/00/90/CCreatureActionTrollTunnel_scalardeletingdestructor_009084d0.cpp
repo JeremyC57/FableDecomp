@@ -1,4 +1,4 @@
-struct CCreatureAction_TrollTunnel {
+class CCreatureAction_TrollTunnel { public:
     void* vftable;
 };
 

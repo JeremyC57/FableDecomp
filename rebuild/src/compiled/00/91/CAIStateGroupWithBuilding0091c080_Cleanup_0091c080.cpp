@@ -8,7 +8,7 @@
 // temporary (base constructor, vtable store, SetPItem(0)), the inline `SetPItem(other.GetPItem())` assignment
 // and the temporary's destructor. The manifest label "CAIStateGroup_MinionPutOutFires::Cleanup" is
 // propagated (that class is 28 bytes, pointer at +0x14); the owner is modelled locally and named descriptively.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

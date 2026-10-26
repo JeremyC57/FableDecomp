@@ -17,7 +17,7 @@
 // modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised: every copy pair goes through eax
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
@@ -30,7 +30,7 @@ struct CActionRegisteredTypeVector {                                      // ret
     CActionRegisteredTypeVector& operator=(const CActionRegisteredTypeVector& other);   // 0x00461DA1
 };
 
-struct CCombatSequenceDef : CParentDefClassBase {                         // vtable 0x01234BBC
+class CCombatSequenceDef : public CParentDefClassBase { public:                         // vtable 0x01234BBC
     long                        ValidCombatZones;                         // +0x3c
     long                        Type;                                     // +0x40 ECombatSequenceType
     long                        InterruptionType;                         // +0x44 ECombatSequenceInterruptionType

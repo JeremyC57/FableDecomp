@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CTCAnimationBase;
+class CTCAnimationBase;
 
 #pragma pack(push, 1)
 struct CTCGraphicAppearance {
@@ -139,10 +139,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCGraphicAppearance, ByPassColorFilter) == 0x73);
 #include <stddef.h>
 
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
-struct CTCBase {
+class CTCBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08
@@ -169,14 +169,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -244,7 +244,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stdlib.h>
 struct CGraphicDefinition {unsigned char Prefix[0x43];unsigned char Flags;unsigned char BeforePersistence[8];unsigned short Persistence;};
 struct CGraphicThing {unsigned char Prefix[0x70];CGraphicDefinition* Definition;};
-struct CTCBase {CGraphicThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;CTCBase(CGraphicThing*);virtual ~CTCBase();}; //686800/686830
+class CTCBase { public:CGraphicThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;CTCBase(CGraphicThing*);virtual ~CTCBase();}; //686800/686830
 struct CMeshPriority {unsigned char Bytes[12];};
 template<class V>struct CGraphicMap {
  struct Node {unsigned char Colour;unsigned char Pad[3];Node* Parent;Node* Left;Node* Right;void* Key;V Value;};

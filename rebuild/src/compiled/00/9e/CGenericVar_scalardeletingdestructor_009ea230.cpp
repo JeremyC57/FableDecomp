@@ -3,14 +3,14 @@
 // Leaf: ??_GCGenericVar@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x0129C3E4) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
 struct CGenericVarRoot_009ea230 {
     virtual void v00();
 };
-struct CGenericVar : CGenericVarRoot_009ea230 {              // vtable 0x0129C3E4
+class CGenericVar : public CGenericVarRoot_009ea230 { public:              // vtable 0x0129C3E4
     long        Type;                               // +0x04
     CCharString m_name;                            // +0x08
     __forceinline virtual ~CGenericVar() { }

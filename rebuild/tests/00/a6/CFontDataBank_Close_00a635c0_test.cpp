@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CFontDataBank;
+class CFontDataBank;
 static int g_seq=0;
-struct CFontDataBank { int x; };
+class CFontDataBank { public: int x; };
 void __fastcall h1(CFontDataBank* bank){ g_seq=g_seq*10+1; }
 void __fastcall h2(CFontDataBank* bank){ g_seq=g_seq*10+2; }
 void __fastcall Close(CFontDataBank* bank){ h1(bank); h2(bank); }

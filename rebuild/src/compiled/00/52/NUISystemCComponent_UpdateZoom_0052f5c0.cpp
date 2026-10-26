@@ -20,7 +20,7 @@
 //   with the zoom-ignored test inverted (`if (!IsZoomIgnored())` arm first); the screen conversion of the relative render
 //   zoom is the converter's inline per-axis form there and the out-of-line ConvertVector in the zoom-ignored arm.
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}

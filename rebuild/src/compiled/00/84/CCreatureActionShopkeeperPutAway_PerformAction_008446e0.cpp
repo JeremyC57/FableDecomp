@@ -4,7 +4,7 @@
 // then the call target), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: the member pointer rides in esi (`lea esi,[ecx+0A8h]`); the shape of the landed 0x008445A0 without the range test. Retail
 // CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so the pointer (PDB +0xb4) is at +0xa8 and `this` is modelled locally.
-struct CThing {                             // only the dead bit and the call are modelled
+class CThing { public:                             // only the dead bit and the call are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void Kill(bool silent);                 // 0x004C9B80
@@ -26,7 +26,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureAction_ShopkeeperPutAway {
+class CCreatureAction_ShopkeeperPutAway { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     unsigned char _pad04[0xa8 - 4];         // +0x04 (retail CCreatureActionBase body)

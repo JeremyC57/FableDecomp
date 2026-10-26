@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CCharString { void* m_pData; CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; } };
-struct CThingAICreature; struct CThingAIManager;
-struct CThingManager { unsigned char _pad[0x24]; CThingAIManager* m_pAIManager; };
-struct CAIBrain { void* __vftable; unsigned char _pad[0x18]; CThingManager* ThingManager; };
+class CCharString { public: void* m_pData; CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; } };
+class CThingAICreature; struct CThingAIManager;
+class CThingManager { public: unsigned char _pad[0x24]; CThingAIManager* m_pAIManager; };
+class CAIBrain { public: void* __vftable; unsigned char _pad[0x18]; CThingManager* ThingManager; };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE = 0, SCRIPT_AI_PRIORITY_HIGH = 3 };
 static CThingAIManager* g_initManager = 0; static CThingAICreature* g_initCreature = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain; EScriptAIPriority ScriptAIPriority; CCharString Name; bool Terminated; unsigned char Priority; bool Enabled;
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {}
     virtual void InitStateGroup(CThingAIManager* manager, CThingAICreature& creature) { g_initManager = manager; g_initCreature = &creature; }

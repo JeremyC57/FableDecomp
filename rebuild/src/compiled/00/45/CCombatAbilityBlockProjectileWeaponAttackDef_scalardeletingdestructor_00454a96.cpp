@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 #include <new>
-struct CCombatAbilityBlockProjectileWeaponAttackDef { int f0; };
+class CCombatAbilityBlockProjectileWeaponAttackDef { public: int f0; };
 extern void __fastcall CCombatAbilityBlockProjectileWeaponAttackDef_scalar_dtor(CCombatAbilityBlockProjectileWeaponAttackDef* def);
 
 void* __fastcall CCombatAbilityBlockProjectileWeaponAttackDef_scalar_deleting_destructor(CCombatAbilityBlockProjectileWeaponAttackDef* def, int edx_unused, unsigned int flags)

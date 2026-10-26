@@ -5,10 +5,10 @@
 #define __fastcall
 #endif
 static int g_resets = 0, g_stops = 0, g_inits = 0, g_clears = 0, g_worldCalls = 0, g_lowerBounds = 0;
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 namespace NFire {
-struct CFirePoint {
+class CFirePoint { public:
     unsigned char _data[0x2c];
     void Reset() { ++g_resets; }
 };
@@ -36,7 +36,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { ++g_lowerBounds; SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -52,19 +52,19 @@ struct CThing {
     }
 };
 static CThing* g_clearedThing = 0; static bool g_clearedNow = false;
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately) { ++g_clears; g_clearedThing = source; g_clearedNow = immediately; }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;
 };
-struct CFlammableDef {
+class CFlammableDef { public:
     unsigned char _pad[0x28];
     long FireResistance;
 };
 static CWorld g_world; static COpinionReactionManager g_opinions;
-struct CTCFlammable {
+class CTCFlammable { public:
     virtual void v00() {}
     CThing*        ParentThing;
     bool           ToBeRemoved;

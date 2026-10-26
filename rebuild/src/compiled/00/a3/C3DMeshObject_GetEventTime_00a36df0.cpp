@@ -11,14 +11,14 @@
 // the manifest's; the argument types are descriptive models of the pointer chains the body walks.
 // Shape: the float result is a named local (homed in the dead `animation` argument slot by `fst`, popped around
 // the release and reloaded); the counted temporary's inline destructor runs after it.
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                // +0
     CCPPointerInfo* Info;                                // +4
     ~CCountedPointer()
@@ -34,10 +34,10 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Data; }
 };
 
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     float GetEventTime(long event) const;                // 0x00A4EAE0
 };
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimationStats> GetAnimationStats();   // 0x00A269C0
 };
 struct C3DAnimationBank {
@@ -65,7 +65,7 @@ struct SAnimationSource {
     C3DAnimationBank* GetBank() const { return Bank; }
 };
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     float GetEventTime(long event, const SAnimationRef* animation, const SAnimationSource* source);
 };

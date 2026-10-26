@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_unlocked[4]; static int g_n = 0;
-struct CHandleBasedMemoryPool { void Unlock(long h) { g_unlocked[g_n++] = h; } };
-struct C3DMesh2 { void* m_vptr; CHandleBasedMemoryPool* MemoryPool; unsigned char _pad_0x08[0x74]; long MemoryHandle; long PrimMemoryHandle; long BoneNameMemoryHandle;
+class CHandleBasedMemoryPool { public: void Unlock(long h) { g_unlocked[g_n++] = h; } };
+class C3DMesh2 { public: void* m_vptr; CHandleBasedMemoryPool* MemoryPool; unsigned char _pad_0x08[0x74]; long MemoryHandle; long PrimMemoryHandle; long BoneNameMemoryHandle;
     void UnlockPrimitive(long) { MemoryPool->Unlock(MemoryHandle); MemoryPool->Unlock(PrimMemoryHandle); if (BoneNameMemoryHandle != -1) MemoryPool->Unlock(BoneNameMemoryHandle); } };
 int main()
 {

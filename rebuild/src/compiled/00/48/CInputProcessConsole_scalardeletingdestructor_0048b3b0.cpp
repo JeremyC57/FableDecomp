@@ -17,8 +17,8 @@
 // operator delete (cdecl, one ptr arg) -> matches call;add esp,4
 void operator_delete_impl(void* p);
 
-struct CInputProcessConsole
-{
+class CInputProcessConsole
+{ public:
 	// scalar destructor: this in ecx, no args. Out-of-line -> a plain call.
 	void ScalarDtor();
 

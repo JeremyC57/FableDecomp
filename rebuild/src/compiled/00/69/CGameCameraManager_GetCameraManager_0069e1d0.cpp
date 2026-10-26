@@ -7,7 +7,7 @@
 // Tiny-body shape `GetSelf` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     bool GetCameraManager(void** out);
 };
 

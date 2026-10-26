@@ -3,8 +3,8 @@
 // Standard MSVC scalar/vector deleting destructor shape:
 //   push esi; mov esi,ecx; call ~dtor; test [flags],1; je; mov ecx,esi; call op_delete; mov eax,esi; pop esi; ret 4
 
-struct CEngineSubPrimitiveBase
-{
+class CEngineSubPrimitiveBase
+{ public:
     void Destroy();      // scalar destructor body  (retail 0x0099a300)
     void FreeSelf();     // operator delete forwarder (retail 0x00beb550)
 

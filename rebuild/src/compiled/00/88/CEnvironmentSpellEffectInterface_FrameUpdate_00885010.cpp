@@ -6,7 +6,7 @@ struct SRecord30_00885010 { unsigned char _body[0x30]; };
 struct SRecord20_00885010 { unsigned char _body[0x20]; };
 struct SColourF_00885010 { float m_r, m_g, m_b, m_a; };
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char      _pad[4];
     SRecord30_00885010 m_filter;                   // +0x04
     SRecord20_00885010 m_blur;                     // +0x34

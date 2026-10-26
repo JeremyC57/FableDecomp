@@ -12,7 +12,7 @@
 // sits between the dword and the first flag in declaration order.
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pData;
     CWideString(const CWideString& other);     // 0x0099B720
 };

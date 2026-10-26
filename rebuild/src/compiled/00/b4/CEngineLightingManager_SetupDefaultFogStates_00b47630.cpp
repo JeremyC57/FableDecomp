@@ -13,12 +13,12 @@
 //   (`SetState(state, value, mgr)`): VC7.1 emits the live-range copies in parameter order, so retail's
 //   `mov ecx,esi ; mov edi,edx` (manager copy before the value copy) needs the manager parameter to follow the value. The
 //   thiscall member form (EnableFog's) and a `(mgr, state, value)` static put the value copy first (2 swapped movs).
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CThemeChannel {                             // 0x70 bytes (PDB)
     CRGBFloatColour DiffuseColour;                 // +0x00
     CRGBFloatColour AmbientColour;                 // +0x10
@@ -31,7 +31,7 @@ struct CThemeChannel {                             // 0x70 bytes (PDB)
     float           FadedShadowFactor;             // +0x5c
     C4DVector       FogTransform;                  // +0x60
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];
     CMatrix3x4(float a, float b, float c, float d, float e, float f, float g, float h, float i, float j, float k, float l)
     {
@@ -55,7 +55,7 @@ struct CMatrix3x4 {
         m[11] = a.m[5] * l.m[10] + a.m[8] * l.m[11] + a.m[2] * l.m[9] + a.m[11];
     }
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad000[0x114];
     CMatrix3x4    NoScaleViewTransform;            // +0x114
 };
@@ -72,7 +72,7 @@ struct SCapturedRenderState {
     CTrackedRenderState* m_pState;                 // +0x00
     unsigned long        m_priorValue;             // +0x04
 };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     unsigned char        _pad0000[0x8];
     SCapturedRenderState m_captured[0x400];        // +0x0008
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
@@ -111,7 +111,7 @@ struct CShaderConstantBlock {
     unsigned char _pad00[0x30];
     C4DVector     FogParameters;                   // +0x30
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char         _pad000[0x3cc];
     CShaderConstantBlock* Constants;               // +0x3cc
     unsigned char         _pad3d0[8];
@@ -126,7 +126,7 @@ struct CShaderRenderManager {
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;   // 0x01436E14
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char   _pad00[0x3c];
     CThemeChannel*  ThemeChannels;                 // +0x3c (12-byte STLport vector, first pointer)
     void SetupDefaultFogStates();

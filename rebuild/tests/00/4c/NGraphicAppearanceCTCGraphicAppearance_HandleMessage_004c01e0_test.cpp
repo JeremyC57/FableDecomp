@@ -25,8 +25,8 @@ static int g_ok = 1;
 // Shape: two `if` tests each with its own virtual GetType call; the type-1 arm is CatchMessage(CMessageClearPrimitives)
 // = SetAsChanged(8) inlined with the constant folded (`test byte ptr [esi+58h],8`, `or al,8`; the landed out-of-line
 // CatchMessage 0x004BFCE0 keeps the 8 in bl). `ret 4`.
-struct C3DVector { float X, Y, Z; };
-struct CTCAnimationBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCAnimationBase;
 
 class CThing {
 public:
@@ -54,7 +54,7 @@ struct CPrimitiveList {                                 // STLport list<CPrimiti
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     // +0x00 vftable (CTCBase), from the virtual below
     CThing*        ParentThing;                         // +0x04
     bool           ToBeRemoved;                         // +0x08

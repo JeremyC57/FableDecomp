@@ -7,7 +7,7 @@
 // Leaf: CleanupActions
 #include <string.h>
 struct CThing_Retail;
-struct CScriptThing;
+class CScriptThing;
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
 struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
@@ -17,7 +17,7 @@ struct CBasicStringChar {                   // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;        // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                    // 17 bytes
+class CCharStringData { public:                    // 17 bytes
     CBasicStringChar Data;                  // +0x00
     long             NoRefs;                // +0x0d
 };
@@ -41,7 +41,7 @@ struct CBase {
     CBase();                                        // 0x0099A2D0
     virtual ~CBase();
 };
-struct CScriptThing : CBase {                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
+class CScriptThing : public CBase { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();
     virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)
@@ -131,7 +131,7 @@ struct CAIGameCameraBase_Retail {
     virtual void c008(); virtual void c009(); virtual void c010(); virtual void c011(); virtual void c012(); virtual void c013();
     virtual void ScriptEnd();   // slot 14 (+0x38)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char             _pad00[0x34];
     CAIGameCameraBase_Retail* PCurrentGameCamera;   // +0x34 (engine/CWorld.h)
 };
@@ -149,7 +149,7 @@ extern CPlayerGui_Retail* g_pPlayerGui;             // 0x013B8790
 struct CDisplayEngine_Retail {
     void EndScreenFadeOut();                        // 0x00434C90
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006(); virtual void g007();
     virtual void g008(); virtual void g009(); virtual void g010(); virtual void g011(); virtual void g012(); virtual void g013(); virtual void g014(); virtual void g015();
     virtual void g016(); virtual void g017(); virtual void g018(); virtual void g019(); virtual void g020(); virtual void g021(); virtual void g022(); virtual void g023();

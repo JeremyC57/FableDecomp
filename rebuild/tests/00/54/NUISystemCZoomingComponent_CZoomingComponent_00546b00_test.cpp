@@ -1,6 +1,6 @@
 // Behaviour test for NUISystem::CZoomingComponent::CZoomingComponent (0x00546B00): InputDelay/ScrollingSpeed zeroed before GetDataFromDef.
 #include <cstdio>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CChangingStateComponent {
     long m_owner;
     CChangingStateComponent(long owner) : m_owner(owner) {}

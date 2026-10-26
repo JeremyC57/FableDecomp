@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CResource { virtual void v00() {} unsigned char _body[0x18]; CResource() {} };
+class CResource { public: virtual void v00() {} unsigned char _body[0x18]; CResource() {} };
 struct SLipSyncBuffers { void* m_pPhonemes; void* m_pTimes; void* m_pWeights; void* m_pOwner; SLipSyncBuffers() : m_pPhonemes(0), m_pTimes(0), m_pWeights(0), m_pOwner(0) { } };
-struct CLipSyncDataBankEntry { struct CData : CResource { SLipSyncBuffers m_buffers; void* m_pData; unsigned long m_size; virtual void v00() {} CData(void* data, unsigned long size); }; };
+class CLipSyncDataBankEntry { public: class CData : public CResource { public: SLipSyncBuffers m_buffers; void* m_pData; unsigned long m_size; virtual void v00() {} CData(void* data, unsigned long size); }; };
 CLipSyncDataBankEntry::CData::CData(void* data, unsigned long size) : CResource(), m_buffers() { m_pData = data; m_size = size; }
 int main()
 {

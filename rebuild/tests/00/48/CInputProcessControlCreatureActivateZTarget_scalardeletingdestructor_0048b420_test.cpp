@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CInputProcessControlCreatureActivateZTarget { int tag; };
+class CInputProcessControlCreatureActivateZTarget { public: int tag; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

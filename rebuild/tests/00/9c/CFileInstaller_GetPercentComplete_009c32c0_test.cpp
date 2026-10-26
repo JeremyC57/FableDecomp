@@ -3,7 +3,7 @@
 static int g_locks = 0;
 struct Lock { Lock() { ++g_locks; } ~Lock() { --g_locks; } };
 struct CActiveFile { int m_bytesProcessed; };
-struct CFileInstaller {
+class CFileInstaller { public:
     CActiveFile* PCurrentWriteFile; int NoTotalBytesWritten; int TotalSizeOfAllFiles;
     float GetPercentComplete()
     {

@@ -1,6 +1,6 @@
 // CGameScriptInterface::TellHeroQuestObjectiveCompleted
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetObjectiveAsCompleted(unsigned long objectiveId);
 };
 

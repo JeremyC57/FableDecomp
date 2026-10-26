@@ -7,7 +7,7 @@
 // destructor AND the counted pointer's destructor `__forceinline`, plus a `new CPhysicsMeshInfo`
 // factory so the TU emits the vtable (and with it the deleting destructor). The flag test is
 // scheduled before the base vtable store.
-struct CMeshDataBank;
+class CMeshDataBank;
 
 struct CMeshData_a2b740 {                          // CPhysicsMeshInfo::CMeshData
     virtual void v00();
@@ -15,7 +15,7 @@ struct CMeshData_a2b740 {                          // CPhysicsMeshInfo::CMeshDat
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     __forceinline ~CIVCountedPointer()
@@ -29,14 +29,14 @@ template <class T> struct CIVCountedPointer {
     }
 };
 
-struct CMeshDataBankEntry {                        // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                        // vtable 0x0129CD28
     CMeshDataBank* Bank;                           // +0x04
     unsigned long  Index;                          // +0x08
     CMeshDataBankEntry() : Bank(0), Index(0) { }
     __forceinline virtual ~CMeshDataBankEntry() { }
 };
 
-struct CPhysicsMeshInfo : CMeshDataBankEntry {     // vtable 0x0129CD50
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:     // vtable 0x0129CD50
     CIVCountedPointer<CMeshData_a2b740> MeshData;  // +0x0c
     CPhysicsMeshInfo() { }
     __forceinline virtual ~CPhysicsMeshInfo() { }

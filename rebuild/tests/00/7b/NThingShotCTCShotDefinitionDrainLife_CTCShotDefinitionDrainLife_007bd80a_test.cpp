@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { bool m_dead; int m_kills; void Kill(bool) { ++m_kills; m_dead = true; } };
+class CThing { public: bool m_dead; int m_kills; void Kill(bool) { ++m_kills; m_dead = true; } };
 struct CIntelligentPointer_CThing {
     CThing* m_pItem;
     CThing* operator->() const { return m_pItem; }

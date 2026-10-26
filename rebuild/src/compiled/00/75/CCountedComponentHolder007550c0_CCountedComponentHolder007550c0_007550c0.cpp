@@ -8,12 +8,12 @@
 // Shape: ~CIVCountedPointer inlined -- the object read into ecx, the count decrement, the slot-1 call on zero and the zero
 // store INSIDE the non-null arm (`if (Object) { Release(); Object = 0; }`, GOTCHAS 0070cad0); `mov`, not `and`, so not a
 // size TU. Bytes +0x00..+0x3b are trivially destructible (no code).
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long IVRefCount;                                // +0x04
 };
-struct CAnimComponentBase : CIVCountedPointeeBase { };
+class CAnimComponentBase : public CIVCountedPointeeBase { public: };
 
 template<class T> class CIVCountedPointer {
 public:

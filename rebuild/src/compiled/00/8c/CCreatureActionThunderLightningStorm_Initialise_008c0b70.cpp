@@ -8,14 +8,14 @@
 // unconditionally, so the AddMode call and the epilogue are duplicated into the miss path (which reads the never-written frame word).
 // The PDB header (CCreatureAction_ThunderLightningStorm.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
 #include "fable_string.h"
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -38,11 +38,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -50,7 +50,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
     void SetName(const CCharString& name);  // 0x008574D0
 };
-struct CCreatureAction_ThunderLightningStorm : CCombatActionBase {
+class CCreatureAction_ThunderLightningStorm : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

@@ -3,21 +3,21 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
 };
 static C3DVector g_pos; static int g_posCalls;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         m_radius;
     C3DVector GetMapwhoPosition() const { ++g_posCalls; return g_pos; }
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;
 };
-struct CThingFilter_OverlappingCircle {
+class CThingFilter_OverlappingCircle { public:
     C3DVector SpherePos;
     float     Radius;
     bool Overlaps(const C3DVector& pos, const CTCPhysicsBase* physics) const

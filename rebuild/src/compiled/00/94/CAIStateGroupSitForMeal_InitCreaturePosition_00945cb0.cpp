@@ -7,22 +7,22 @@
 // then `pot != 0 && creature->AutoPlaceNear(pot->GetPosition(), 3.0f)` materialises as the
 // full-register `mov eax,1` / `xor eax,eax` form of an int-typed `&&` expression. The creature is
 // read into a named local (esi) before the radius push so retail's load pair stays ahead of the call.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

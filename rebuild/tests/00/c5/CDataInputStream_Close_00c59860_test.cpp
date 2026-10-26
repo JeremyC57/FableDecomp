@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDataInputStream {
+class CDataInputStream { public:
     char pad[0x18];
     unsigned int f18;
     unsigned int f1c;

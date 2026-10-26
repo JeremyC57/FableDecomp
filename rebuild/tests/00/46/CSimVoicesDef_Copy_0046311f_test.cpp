@@ -9,7 +9,7 @@ struct SubVoices {
     void Copy(SubVoices const* s){ val = s->val + 1000; }
 };
 
-struct CSimVoicesDef {
+class CSimVoicesDef { public:
     char base_region[0x3c]; // base occupies [0,0x3c)
     SubVoices sub;          // sub at +0x3c
 

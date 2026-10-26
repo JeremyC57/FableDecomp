@@ -4,21 +4,21 @@
 class CNavigatorManager;
 static int g_activates = 0, g_links = 0, g_focus = 0; static const CNavigatorManager* g_linkedWith = 0;
 static float g_fx = 0, g_fy = 0; static bool g_fflag = false;
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DCoordI& c) : X((float)c.X), Y((float)c.Y) { }
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DCoordI GetTopLeft() const { return C2DCoordI(TLX, TLY); }
 };
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 class CNavigatorManager;
 class CNavQuadTree {                               // 0x88 bytes
 public:
@@ -30,12 +30,12 @@ public:
     void LinkToNeighbouringMaps(const CNavigatorManager& manager) { g_linkedWith = &manager; ++g_links; }
     static float GetHalfCellSize_00a76320() { return 0.5f; }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
 };
-struct CNavQuadTreeMap {                           // 32 bytes
+class CNavQuadTreeMap { public:                           // 32 bytes
     CCountedPointer<CNavQuadTree> PQuadTree;       // +0x00
     long                          Index;           // +0x08
     C2DBoxI                       MapArea;         // +0x0c

@@ -6,8 +6,8 @@
 // Shape: both display-manager pointers are fetched first (esi / edi) -- two named locals; the product
 // `x * width` (a float) is parked in the dead argument slot across the second dimension call, then
 // `fild height ; fdivr [x]`.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

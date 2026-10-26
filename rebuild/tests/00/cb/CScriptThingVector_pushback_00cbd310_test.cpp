@@ -2,13 +2,13 @@
 #include <cstring>
 #include <stddef.h>
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-struct CCharString { const char* m_pData; CCharString(const char* s) : m_pData(s) {} CCharString(const CCharString& o) : m_pData(o.m_pData) {} };
+class CCharString { public: const char* m_pData; CCharString(const char* s) : m_pData(s) {} CCharString(const CCharString& o) : m_pData(o.m_pData) {} };
 struct CCountedPointer {
     void* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(void* o, SCountBlock* b) : m_pObject(o), m_pCount(b) {}
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
-struct CScriptThing { CCharString Name; CCountedPointer PImp; CScriptThing(const char* n, void* o, SCountBlock* b) : Name(n), PImp(o, b) {} };
+class CScriptThing { public: CCharString Name; CCountedPointer PImp; CScriptThing(const char* n, void* o, SCountBlock* b) : Name(n), PImp(o, b) {} };
 struct __false_type { __false_type() {} };
 inline void* operator new(size_t, void* where) { return where; }
 static int g_overflow = 0;

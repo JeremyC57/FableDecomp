@@ -4,12 +4,12 @@
 #include <new>
 
 static int g_copies = 0;
-struct CWideString {
+class CWideString { public:
     int m_value;
     explicit CWideString(int v) : m_value(v) { }
     CWideString(const CWideString& other) : m_value(other.m_value) { ++g_copies; }
 };
-struct CCharString {
+class CCharString { public:
     int m_value;
     explicit CCharString(int v) : m_value(v) { }
     CCharString(const CCharString& other) : m_value(other.m_value) { ++g_copies; }

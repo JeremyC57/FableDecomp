@@ -2,15 +2,15 @@
 // troll, one yield, wait for the kill, then health bar removed, quest info hidden and MissionOver set.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* Text; CCharString(const char* t) : Text(t) {} };
+class CCharString { public: const char* Text; CCharString(const char* t) : Text(t) {} };
 struct Impl { int KilledAfter, calls; bool MsgIsKilledBy(const CCharString& k) { return std::strcmp(k.Text, "") == 0 && ++calls > KilledAfter; } };
-struct CScriptThing {
+class CScriptThing { public:
     Impl* Data;
     bool MsgIsKilledBy(const CCharString& k) const { if (!Data) return false; return Data->MsgIsKilledBy(k); }
 };
 struct CIsThingAlive { CScriptThing Thing; CIsThingAlive(const CScriptThing& t) : Thing(t) {} };
 static int g_frames, g_termAt, g_termCalls; static Impl* g_pred; static long g_removed; static int g_display;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     void DisplayQuestInfo(bool show) const { g_display = show ? 1 : 0; }
     void RemoveQuestInfoElement(long id) const { g_removed = id; }

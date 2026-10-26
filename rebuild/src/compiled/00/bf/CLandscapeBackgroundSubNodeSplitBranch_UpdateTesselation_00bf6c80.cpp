@@ -6,7 +6,7 @@ struct CPatch_00bf6c80 {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void Tesselate();                      // slot 5 (+0x14)
 };
-struct CLandscapeBackgroundTreeNode {              // 0xe8 bytes
+class CLandscapeBackgroundTreeNode { public:              // 0xe8 bytes
     unsigned char     _pad[0xa0];
     CPatch_00bf6c80*  m_pPatch;                    // +0xa0
     unsigned char     _pada4[0x3f];
@@ -21,7 +21,7 @@ struct CLandscapeBackgroundTreeNode {              // 0xe8 bytes
         }
     }
 };
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void UpdateTesselation();
     CLandscapeBackgroundTreeNode m_nodeA;          // +0x04

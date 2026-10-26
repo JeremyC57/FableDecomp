@@ -23,7 +23,7 @@ public:
 
 void __fastcall GFVBoxToABox(const C2DBoxF& vbox, C2DBoxF& abox);   // 0x009E1E70
 
-struct CDisplayManager {
+class CDisplayManager { public:
     void SetViewport(const C2DBoxF& viewport);       // 0x009BF490
 };
 

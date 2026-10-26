@@ -1,8 +1,8 @@
 // Behaviour test for 0x00856D30 CCombatActionBase::UpdateActionMoveToPos.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CCreature { C3DVector pos; float movement; const C3DVector& GetPosition() const { return pos; } float GetAnimMovementLength(long) { return movement; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CCreature* creature; bool usingActionMovement; bool PreferredFinalPosSet; C3DVector next; C3DVector moveTo;
     long GetAnimationIndex() { return 1; }
     C3DVector GetNextPos() { return next; }

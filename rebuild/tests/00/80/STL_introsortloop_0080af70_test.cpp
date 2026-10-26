@@ -5,7 +5,7 @@
 static unsigned int g_seed = 12345u;
 static int NextValue() { g_seed = g_seed * 1103515245u + 12345u; return (int)((g_seed >> 16) % 1000u); }
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct SPtr { CThing* Item; };                              // CIntelligentPointer<CThing>
 struct CCompare {                                           // deterministic stand-in for the coin-flip predicate
     bool operator()(const SPtr& a, const SPtr& b) const { return a.Item->id < b.Item->id; }

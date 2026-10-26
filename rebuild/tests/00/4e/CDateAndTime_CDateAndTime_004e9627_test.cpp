@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CDateAndTime {
+class CDateAndTime { public:
     float  f00;
     int    pad04[4];
     int    m14;
@@ -24,13 +24,13 @@ CDateAndTime * __fastcall CDateAndTime(CDateAndTime *this_)
 
 int main(void)
 {
-    struct CDateAndTime obj;
+    class CDateAndTime obj;
     unsigned char *p = (unsigned char *)&obj;
     int i;
-    for (i = 0; i < (int)sizeof(struct CDateAndTime); ++i) p[i] = 0xAB;
+    for (i = 0; i < (int)sizeof(class CDateAndTime); ++i) p[i] = 0xAB;
     obj.pad04[0] = 0x11111111;
 
-    struct CDateAndTime *ret;
+    class CDateAndTime *ret;
     void *self = &obj;
     __asm {
         mov ecx, self

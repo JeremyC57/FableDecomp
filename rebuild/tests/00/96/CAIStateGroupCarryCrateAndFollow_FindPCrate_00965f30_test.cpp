@@ -18,43 +18,43 @@ static int fails = 0;
 // the result pointer at +0xc is returned. The search tools are fetched last (the object expression after the
 // argument pushes).
 // Model: local (engine/CAIStateGroup_CarryCrateAndFollow.h flattens the base).
-struct CThingObject;
-struct CThingSearchTools;
+class CThingObject;
+class CThingSearchTools;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() const;           // 0x004C73D0
 };
 
-struct CThingFilter_ObjectHasProperty {
+class CThingFilter_ObjectHasProperty { public:
     unsigned long m_property;
     CThingFilter_ObjectHasProperty(unsigned long property) : m_property(property) { }
 };
 
-struct CThingFilter_HasFreeActionPoint {
+class CThingFilter_HasFreeActionPoint { public:
     CThingFilter_HasFreeActionPoint() { }
 };
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long m_type;
     CThingFilter_HasTC(long type) : m_type(type) { }
 };
 
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     float m_x, m_y, m_z;                            // the reference position, three scalar members
     CThingCompare_Nearest(const C3DVector& position) : m_x(position.X), m_y(position.Y), m_z(position.Z) { }
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -66,7 +66,7 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 
 typedef CFilter_Bind3<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC> CCrateFilter;
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CCrateFilter& filter, const CThingCompare_Nearest& compare, CThingObject** ppBest);   // 0x00965E80
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestThing runs (returns the best thing or 0)
@@ -83,12 +83,12 @@ __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CCrateFilter& f
 }
 #pragma auto_inline(on)
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     long ScriptAIPriority;                          // +0x08

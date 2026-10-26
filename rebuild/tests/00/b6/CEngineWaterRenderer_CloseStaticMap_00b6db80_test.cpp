@@ -6,11 +6,11 @@
 #include "engine/CVertexBufferWin32.h"
 #else
 #define __fastcall
-struct CIndexBuffer {unsigned char State[0x14];};
-struct CVertexBufferWin32 {unsigned char State[0x34];};
+class CIndexBuffer { public:unsigned char State[0x14];};
+class CVertexBufferWin32 { public:unsigned char State[0x34];};
 #define __forceinline inline
 #endif
-struct CCPPointerInfo {unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo { public:unsigned long RefCount;void (__fastcall *DeleteFunc)(void*);void* Data;};
 struct CAsyncPointer {void* Data;CCPPointerInfo* Info;
  __forceinline void Reset(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Info=0;Data=0;}
 };

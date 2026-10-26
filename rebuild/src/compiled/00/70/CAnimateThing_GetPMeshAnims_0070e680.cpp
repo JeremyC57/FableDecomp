@@ -1,10 +1,10 @@
-struct C3DAnimationBlendState;
+class C3DAnimationBlendState;
 
 struct CAnimateThingBase {
     void BaseGetPMeshAnims();  // 0x70e520, void thiscall, same this
 };
 
-struct CAnimateThing : public CAnimateThingBase {
+class CAnimateThing : public CAnimateThingBase { public:
     char pad[0x68];
     // 0x68: first blend-state member (interior ptr &+0x68)
     // 0x70: second blend-state member (interior ptr &+0x70)

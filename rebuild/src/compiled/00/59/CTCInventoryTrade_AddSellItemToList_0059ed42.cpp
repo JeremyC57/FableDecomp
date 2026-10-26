@@ -16,13 +16,13 @@
 //   is the flattened PDB layout (16-byte containers), so the class is modelled locally (landed ctor 0x0059EC48 offsets).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
@@ -36,7 +36,7 @@ struct CInterfaceMap {
     SEntry* last;                                       // +0x04
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                            // +0x20
     unsigned char _pad_0x21[0x23];
@@ -54,11 +54,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCShop {                                        // interface type 0x53
+class CTCShop { public:                                        // interface type 0x53
     bool HasDefaultStockItem(long defIndex);            // 0x007723D0
 };
 namespace NUISystem {
-struct CActionParam {
+class CActionParam { public:
     virtual void v00();
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
@@ -67,7 +67,7 @@ struct CActionParamLong : CActionParam {                // vtable 0x012366F4
     long Value;                                         // +0x08
     CActionParamLong(long value) : CActionParam(3), Value(value) {}
 };
-struct CActionParamString : CActionParam {
+class CActionParamString : public CActionParam { public:
     CWideString Value;                                  // +0x08
     CActionParamString(CWideString& text);              // 0x0054DAE0
 };
@@ -83,7 +83,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
@@ -93,7 +93,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     long             ActionType;
     CActionParamList UIActionParams;
     void*            ThingActionParams;
@@ -143,9 +143,9 @@ struct CComponentBase {
     virtual void AddUnfocusAction(const CCountedPointer<CAction>& action);    // slot 153 (+0x264)
     unsigned char _pad04[0x18 - 0x04];
 };
-struct CComponent : CComponentBase, CActionParam {};
-struct CViewport : CComponent {};
-struct CList {
+class CComponent : public CComponentBase, public CActionParam { public:};
+class CViewport : public CComponent { public:};
+class CList { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -180,11 +180,11 @@ struct CList {
     virtual void AddEntry(const CCountedPointer<CComponent>& entry);         // slot 152 (+0x260)
     virtual void AddEntryAtTop(const CCountedPointer<CComponent>& entry);    // slot 153 (+0x264)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
@@ -211,7 +211,7 @@ struct CComponentPairMap {                              // map<CComponent*, pair
     long          _M_key_compare;
     insert_result insert(const SSellRecord& value);     // 0x005B2872
 };
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     unsigned char     _pad000[0x150];
     CComponentPairMap ItemsToSell;                      // +0x150
     CThing* GetTradingThing();                          // 0x005BC4C4 (CTCInventoryBase)

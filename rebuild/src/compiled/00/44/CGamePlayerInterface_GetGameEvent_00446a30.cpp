@@ -14,7 +14,7 @@
 // (`rep movsd` x 0x2C) with the post-increment of the index; GetNoGameEvents is the inline `movzx` byte read
 // compared unsigned.
 
-struct CGameEvent {
+class CGameEvent { public:
     long Type;
     signed char Player;
     unsigned char Data[32];

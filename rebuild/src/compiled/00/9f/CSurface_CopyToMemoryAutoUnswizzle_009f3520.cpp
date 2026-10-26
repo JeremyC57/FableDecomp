@@ -45,12 +45,12 @@ struct IDirect3DSurface9 {
     virtual long __stdcall UnlockRect();                                     // slot 14 (+0x38)
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;
     long Y;
 };
 
-struct CSurfaceLockedRect {                        // PDB CSurfaceLockedRect, 16 bytes
+class CSurfaceLockedRect { public:                        // PDB CSurfaceLockedRect, 16 bytes
     C2DExtentsI    Dimensions;                     // +0x00
     long           Pitch;                          // +0x08
     unsigned char* PMem;                           // +0x0c

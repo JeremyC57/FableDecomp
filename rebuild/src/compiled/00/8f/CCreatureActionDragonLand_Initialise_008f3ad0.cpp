@@ -14,7 +14,7 @@
 #include "engine/CTCTargeted.h"
 #include "engine/CTCPhysicsBase.h"
 #include "fable_string.h"
-struct C3DVector {float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+class C3DVector { public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
 struct CPhysicsMethods : CTCPhysicsBase { void ResetPosition(const C3DVector&); const C3DVector& GetFacingVectorInto(C3DVector&)const;};
 union CPhysicsSlot {
  void* Address;
@@ -28,7 +28,7 @@ FABLE_STATIC_ASSERT(sizeof(CPhysicsMethods)==sizeof(CTCPhysicsBase));
 // Interface0x3a proven CTCMapwho: RTTI table1265A3C slot21=71A7E0 returns58.
 #include "engine/CTCMapwho.h"
 struct CInterfaceMap {struct Entry {long Type;void* Component;};Entry* First;Entry* Last;Entry* LowerBound(const long*);}; //0040F020
-struct CThing : CClass {
+class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
@@ -36,12 +36,12 @@ struct CThing : CClass {
  void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
-struct CCombatActionBase {void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
+class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  void SetAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern const float g_DragonLandingHeightDrop; //0128838C =30.148378372192383
-struct CCreatureAction_DragonLand : CCombatActionBase {void Initialise();};
+class CCreatureAction_DragonLand : public CCombatActionBase { public:void Initialise();};
 FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 void CCreatureAction_DragonLand::Initialise(){
  {CCharString animation("LAND",-1);SetAnimation(animation);}

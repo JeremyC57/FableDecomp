@@ -13,7 +13,7 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
+class CProcessedInput;
 
 struct CInputProcessVirtuals {
     virtual void v00();
@@ -57,7 +57,7 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*        vfptr;
     CBaseObject* m_pItem;

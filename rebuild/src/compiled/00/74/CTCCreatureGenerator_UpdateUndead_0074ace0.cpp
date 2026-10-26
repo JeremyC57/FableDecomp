@@ -12,11 +12,11 @@
 // @ 0x008EC6A0. RiseUpStrike vtable 0x01268F44, name "RISE_UP_STRIKE" @ 0x01268F30.
 // Layout (retail, not the PDB header's): CreatedCreatures list head +0x18, CreatureTriggerers start/finish +0x1c/+0x20,
 // trigger radius +0x2c, UndeadTriggered +0x88.
-struct CThing;
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct CCharString {
+class CThing;
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
@@ -26,10 +26,10 @@ namespace N_0062e900 { struct CCreatureActionBase {
     unsigned char _body[0x110];
     ~CCreatureActionBase();                                  // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     void SetAnimationName(const CCharString& name);          // 0x008574D0
 };
-struct CCreatureAction_RiseUp : CCombatActionBase {          // vtable 0x01268C9C
+class CCreatureAction_RiseUp : public CCombatActionBase { public:          // vtable 0x01268C9C
     bool m_hasTarget;                                        // +0x114
     CCreatureAction_RiseUp(CThingCreatureBase* owner, CThing* thing);   // 0x0074DAC0
 };
@@ -45,22 +45,22 @@ struct CCreatureAction_RiseUpStrike : CCreatureAction_RiseUp {   // vtable 0x012
         m_strike = true;
     }
 };
-struct CCreatureAction_UndeadReturnToEarth : CCreatureActionBase {
+class CCreatureAction_UndeadReturnToEarth : public CCreatureActionBase { public:
     CCreatureAction_UndeadReturnToEarth(CThingCreatureBase* creature);   // 0x008EC6A0
 };
 #define VF(n) virtual void v##n();
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18)
     VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29) VF(30)
     virtual void SetPosition(const C3DVector& pos);          // slot 31 (+0x7c)
 };
 #undef VF
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     const C3DVector& GetPosition() const;                    // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
     void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
 };
@@ -70,7 +70,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct SListNode {
@@ -78,7 +78,7 @@ struct SListNode {
     SListNode* prev;
     CIntelligentPointer<CThingCreatureBase> data;            // +0x08
 };
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     virtual void v00();
     CThing*        ParentThing;                              // +0x04
     unsigned char  _pad08[0x18 - 0x08];

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
-struct CDefinitionManager; struct CSymbolMap; struct CStringParser; struct CCharString; struct CMemoryDataInputStream; struct CDataOutputStream;
-struct CPersistContext {
+class CDefinitionManager; class CSymbolMap; class CStringParser; class CCharString; class CMemoryDataInputStream; class CDataOutputStream;
+class CPersistContext { public:
     CDefinitionManager* PDefinitionManager; CSymbolMap* PSymbolMap; CStringParser* PParser; void (__cdecl* ErrorCallback)(CCharString*); CCharString* PStringToClean;
     bool UseDefaults; bool UseCRCCheck; bool SingleTransfer; bool Finished; long Mode; bool Binary; CCharString* PStringToSaveTo; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void Init(CStringParser* parser, void (__cdecl* errorCallback)(CCharString*), bool useDefaults, CDefinitionManager* definitionManager, CSymbolMap* symbolMap, CCharString* stringToClean);

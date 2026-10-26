@@ -1,18 +1,18 @@
 // CThreadedFile::FinishAndGetFileHandle  @ 0x0098ec70
 // __fastcall, returns void* (the file handle stored at this+8)
 
-struct CThreadedFile;
+class CThreadedFile;
 
-struct CThreadedFileManager
-{
+class CThreadedFileManager
+{ public:
     void RemovePending(CThreadedFile* f);
 };
 
 // Global manager instance at 0x13bc870
 extern CThreadedFileManager g_ThreadedFileManager;
 
-struct CThreadedFile
-{
+class CThreadedFile
+{ public:
     int   field_0;   // +0
     int   DeviceID;   // +4
     void* handle;    // +8

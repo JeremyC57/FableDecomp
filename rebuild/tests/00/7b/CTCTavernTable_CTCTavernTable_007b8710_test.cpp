@@ -5,15 +5,15 @@
 class CThing;
 static int g_live = 0;
 static CThing* g_baseOwner = 0;
-struct CCharStringData { char* Text; long Length; };
-struct CCharString {
+class CCharStringData { public: char* Text; long Length; };
+class CCharString { public:
     CCharStringData* m_data;
     CCharStringData  m_storage;
     CCharString(const char* text, long length = -1) { (void)length; ++g_live; m_storage.Text = 0; m_storage.Length = (long)std::strlen(text); m_data = m_storage.Length ? &m_storage : 0; }
     ~CCharString() { --g_live; }
     long GetLength() const { return m_data == 0 ? 0 : m_data->Length; }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -27,8 +27,8 @@ template<class T> struct CRetailVector {
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 struct CIntelligentPointerSlot { void* _vfptr; void* m_pItem; };
-struct CThingAICreature;
-struct CTCTavernTable : CTCBase {
+class CThingAICreature;
+class CTCTavernTable : public CTCBase { public:
     bool  BeingServed;
     CRetailVector<CThingAICreature*>        Occupants;
     CRetailVector<CIntelligentPointerSlot>  Tankards;

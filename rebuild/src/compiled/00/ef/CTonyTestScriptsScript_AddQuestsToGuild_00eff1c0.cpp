@@ -5,12 +5,12 @@
 // Shape: seven copies of the CQ_OrchardFarmRaidScript::ReplaceQuestCards statement (0x00DD0EB0): both string
 // arguments are implicit conversion temporaries built right to left (quest name first), then the two `false`
 // pushes, then the virtual call; the temporaries die at the end of each statement, alternating the two 4-byte slots.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CGameScriptInterface {                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                           // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -50,7 +50,7 @@ struct CGameScriptInterface {                           // retail vtable 0x01260
     virtual void v288(); virtual void v289(); virtual void v290(); virtual void v291();
     virtual void AddQuestCard(const CCharString&, const CCharString&, bool, bool);   // slot 292 (+0x490) 0x008913F0
 };
-struct CScriptBase {                                     // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                           // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                    // 0x00CB7940

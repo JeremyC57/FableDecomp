@@ -5,7 +5,7 @@
 // Local model (CComponent is quarantined; the engine CList.h / CFrontEndList.h are flattened donor layouts):
 // retail CurrentState +0x144, TargetState +0x148 (landed CChangingStateComponent rows), Parent +0xc8.
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
  virtual void Slot000()=0;
  virtual void Update(float); // slot 1 (+0x4)
  virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0; virtual void Slot006()=0; virtual void Slot007()=0;
@@ -35,10 +35,10 @@ struct CComponent {
  virtual bool ChangedStateLastUpdate(); // slot 137 (+0x224)
  virtual void Slot138()=0; virtual void Slot139()=0; virtual void Slot140()=0; virtual void Slot141()=0;
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
  virtual long GetSelectedChild();     // slot 142 (+0x238), 0x0053CDC3
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
  unsigned char _pad04[0xc8 - 4];
  CComponent* Parent;                  // +0xc8
  unsigned char _padcc[0x144 - 0xcc];
@@ -46,7 +46,7 @@ struct CChangingStateComponent : CComponent {
  unsigned long TargetState;           // +0x148
  void Update(float);                  // 0x0052C7E0
 };
-struct CFrontEndList : CChangingStateComponent {
+class CFrontEndList : public CChangingStateComponent { public:
  void Update(float);
 };
 void CFrontEndList::Update(float time)

@@ -19,7 +19,7 @@
 //   `--_M_finish; _Destroy(_M_finish)` -- the explicit destructor call goes through the vtable with flag 0). Both empty
 //   tag temporaries are homed in the dead `user` argument slot only when the two inline calls are separate statements
 //   (`erase(remove(...))` nests remove's scope in erase's, so the second tag gets a new frame word: `sub esp,0Ch`).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();         // 0x00A01C10 (slot 0)
@@ -60,7 +60,7 @@ struct CPtrVector {                             // STLport vector<CIntelligentPo
     }
 };
 
-struct CTCGatherPointBase {
+class CTCGatherPointBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08

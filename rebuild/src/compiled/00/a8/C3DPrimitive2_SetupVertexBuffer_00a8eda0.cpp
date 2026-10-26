@@ -11,7 +11,7 @@ struct CBase {
 #include "engine/CVertexBufferWin32.h"   // PDB header: an opaque 0x30-byte flattened base, so the retail
                                             // members (CVertexBufferBase in the PDB) are modelled locally
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {               // PDB: PosScale XYZW then PosBias XYZW
+class CVertexCompressionParams { public:               // PDB: PosScale XYZW then PosBias XYZW
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -48,7 +48,7 @@ struct CVertexBufferOwner {
         if (old) ((IScalarDeleteView*)old)->Destroy(1);
     }
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _beforeVertexBuffer[0x30];
     CVertexBufferOwner VertexBuffer;
     bool SetupVertexBuffer(long first, long second, unsigned long count, unsigned long flags);

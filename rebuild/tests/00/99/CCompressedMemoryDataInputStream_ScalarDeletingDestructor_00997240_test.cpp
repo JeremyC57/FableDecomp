@@ -2,7 +2,7 @@
 #include <stddef.h>
 static int g_arrayDeletes = 0, g_compressorDeletes = 0, g_baseDtors = 0, g_deletes = 0;
 struct CByte { unsigned char b; static void operator delete[](void* p) { ++g_arrayDeletes; ::operator delete(p); } };
-struct CCompressorZlib { virtual ~CCompressorZlib() { ++g_compressorDeletes; } };
+class CCompressorZlib { public: virtual ~CCompressorZlib() { ++g_compressorDeletes; } };
 struct CBaseClassNonCopyable { virtual void v00() { } CBaseClassNonCopyable() { } ~CBaseClassNonCopyable() { ++g_baseDtors; } };
 struct CDataStream : CBaseClassNonCopyable { unsigned char _state[0x14]; virtual void v00() { } ~CDataStream() { } };
 template<class T> struct CScopedPointer { T* ptr; CScopedPointer() : ptr(0) { } ~CScopedPointer() { if (ptr) delete ptr; } };

@@ -1,4 +1,4 @@
-struct CKeyboard {
+class CKeyboard { public:
     void* vftable;
 };
 

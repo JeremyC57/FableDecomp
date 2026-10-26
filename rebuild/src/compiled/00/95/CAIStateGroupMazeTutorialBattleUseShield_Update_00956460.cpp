@@ -15,7 +15,7 @@
 // PDB: FrameOfLastShield +0x20. The engine header is flattened data-only: local model.
 class CThingCreatureBase;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
@@ -35,32 +35,32 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                  // +0x04..+0xa7
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                // +0xa8..+0x113
     ~CCombatActionBase();                       // 0x0062E900
 };
 
-struct CCombatAction_WillShieldInto : CCombatActionBase {
+class CCombatAction_WillShieldInto : public CCombatActionBase { public:
     float m_first;                              // +0x114
     float m_second;                             // +0x118
     CCombatAction_WillShieldInto(CThingCreatureBase* creature, float first, float second);   // 0x00956760
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetCurrentFrame();              // 0x0049D870
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

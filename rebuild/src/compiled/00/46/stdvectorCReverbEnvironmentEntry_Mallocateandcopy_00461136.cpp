@@ -14,7 +14,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CReverbEnvironmentEntry {                   // PDB 84 bytes
+class CReverbEnvironmentEntry { public:                   // PDB 84 bytes
     float Params[21];
 };
 

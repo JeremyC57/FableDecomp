@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -36,11 +36,11 @@ struct CThing {
     }
     unsigned long HasTC(long wanted) { return m_present.test(wanted); }
 };
-struct CTCInventoryItem {                             // interface type 0x1A
+class CTCInventoryItem { public:                             // interface type 0x1A
     long GetCategoryIdentifier() const;              // 0x005D91F0
 };
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
     void UpdateItemStatsForThing(const CThing& thing);   // 0x005BF16E
 };

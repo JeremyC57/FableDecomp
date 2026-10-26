@@ -1,7 +1,7 @@
 #include "engine/CTCQuestCard.h"
 #include <stdio.h>
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     char pad[0x59];
     char b59;
     char b5a;

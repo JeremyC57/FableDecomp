@@ -7,13 +7,13 @@
 // Shape: the corners are a local C3DVector[8] of +-1; the box-to-camera matrix is a full inline CMatrix3x4 product written
 //   component-wise (z term first) of which only the Z column survives dead-store elimination; the per-corner depth is
 //   `x*R.z + y*U.z + z*F.z + P.z` in source order (VC7.1 evaluates the z product first).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right;                               // +0x00
     C3DVector Up;                                  // +0x0c
     C3DVector Forward;                             // +0x18
@@ -36,7 +36,7 @@ __forceinline void Multiply(CMatrix3x4& r, const CMatrix3x4& a, const CMatrix3x4
     r.Pos.Z = a.Pos.Z * b.Forward.Z + a.Pos.Y * b.Up.Z + a.Pos.X * b.Right.Z + b.Pos.Z;
 }
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad000[0x6c];
     float         NearClip;                        // +0x6c (CameraDesc +0x58)
     unsigned char _pad070[0x114 - 0x70];

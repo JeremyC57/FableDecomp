@@ -16,7 +16,7 @@ struct CWorldTime {
     static long __stdcall SecondsToFrames(float seconds);   // 0x00415FC1
 };
 
-struct CTCEmoteIcon : CTCBase {
+class CTCEmoteIcon : public CTCBase { public:
     long          ActiveTimer;                     // +0x0c
     void*         EmoteText;                       // +0x10 CWideString
     long          EmoteIcon;                       // +0x14

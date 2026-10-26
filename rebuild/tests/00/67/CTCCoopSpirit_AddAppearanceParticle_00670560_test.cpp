@@ -1,10 +1,10 @@
 // behaviour test for 0x00670560 CTCCoopSpirit::AddAppearanceParticle
 #include <cstdio>
 #include <cstring>
-struct CThing;
+class CThing;
 struct Emitter { CThing* attachedTo; long bone; const char* boneName; long flags; float scale;
     void AttachToThing(CThing* t, long b, const char* n, long f, float s) { attachedTo = t; bone = b; boneName = n; flags = f; scale = s; } };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Emitter* em; float pos;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = em; return true; } return false; }
 };

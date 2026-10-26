@@ -8,7 +8,7 @@
 // +0x95, ForcedMoveToPos +0xa1, ForcedMoveToPosSet / ForcedMoveToPosUsePhysics bits 0 / 1 of +0xad. engine/CTCPhysicsNavigator.h
 // matches these offsets but flattens the vectors and has no virtuals, so the class is modelled locally with #pragma pack(1)
 // (the members sit at odd offsets in retail too).
-struct C3DVector { float X, Y, Z; };          // plain POD: the implicit assignment is the lea-based dword copy
+class C3DVector { public: float X, Y, Z; };          // plain POD: the implicit assignment is the lea-based dword copy
 
 #pragma pack(push, 1)
 struct CTCPhysicsNavigator {

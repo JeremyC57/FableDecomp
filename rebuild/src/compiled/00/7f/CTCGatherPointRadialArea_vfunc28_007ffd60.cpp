@@ -7,9 +7,9 @@
 // Shape: the owner is read into a local first (`mov eax,ecx` then the owner into ecx), the radius into a named local BEFORE the call (it is homed in the `push ecx` slot and re-read as
 // `fld [esp] ; fmul [esp]`); the two deltas are named locals kept on the x87 stack; `dx*dx + dy*dy` written as one
 // sum squares the top-of-stack delta (dy) first; `long` result (`mov eax,1` / `xor eax,eax`).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();                     // 0x004C73D0
 };
 

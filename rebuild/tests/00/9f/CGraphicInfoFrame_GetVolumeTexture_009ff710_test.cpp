@@ -1,14 +1,14 @@
 // Behaviour test for CGraphicInfoFrame::GetVolumeTexture @ 0x009FF710 (copy of the model with stub loading and LRU list).
 #include <cstdio>
 static int g_waits, g_uploads, g_touches, g_begins;
-struct CBankFileAsyncData { bool done; bool IsFinished() { return done; } void WaitUntilFinished() { ++g_waits; done = true; } };
-struct CResourceList { unsigned long Stamp; };
-struct CResource {
+class CBankFileAsyncData { public: bool done; bool IsFinished() { return done; } void WaitUntilFinished() { ++g_waits; done = true; } };
+class CResourceList { public: unsigned long Stamp; };
+class CResource { public:
     CResourceList* List; unsigned long Stamp;
     void Touch() { if (List && Stamp != List->Stamp) { ++g_touches; Stamp = List->Stamp; } }
 };
 struct SCountBlock { long refs; };
-struct CVolumeTexture { int id; };
+class CVolumeTexture { public: int id; };
 struct CTexturePointer {
     CVolumeTexture* m_pObject; SCountBlock* m_pCount;
     CTexturePointer() : m_pObject(0), m_pCount(0) {}
@@ -22,7 +22,7 @@ struct CFrameData : CResource {
     void CompleteLoad() { AsyncRead = 0; } bool UploadFrame(bool) { ++g_uploads; return true; }
 };
 static unsigned long g_frameStamp;
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame { public:
     CFrameData* Data;
     void BeginLoading(unsigned long, unsigned long) { ++g_begins; }
     bool GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel)

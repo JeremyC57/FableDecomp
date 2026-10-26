@@ -9,8 +9,8 @@
 // @ 0x00908000 (manifest label CCombatAction_StabThing, propagated) takes the owner (+0x1c) and the
 // target (+0x20). Counted pointer: default-constructed, assigned through Reset, released inline.
 // The engine header for the sequence only carries a flattened base blob, so it is modelled locally.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -18,7 +18,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 

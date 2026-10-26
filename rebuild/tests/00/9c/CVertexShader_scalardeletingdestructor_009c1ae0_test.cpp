@@ -10,8 +10,8 @@ struct CVertexShaderData {
     void* m_pShader; void* m_pDeclaration; long m_handle; long m_refCount;
     CVertexShaderData(long n) : m_pShader(0), m_pDeclaration(0), m_handle(0), m_refCount(n) { }
 };
-struct CShaderBase { virtual ~CShaderBase() { ++g_baseDtor; } };
-struct CVertexShader : CShaderBase {
+class CShaderBase { public: virtual ~CShaderBase() { ++g_baseDtor; } };
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     CVertexShader(CVertexShaderData* d) : Data(d) { }
     __forceinline virtual ~CVertexShader() { CVertexShaderData* data = Data; if (data) { if (--data->m_refCount == 0) delete data; } }

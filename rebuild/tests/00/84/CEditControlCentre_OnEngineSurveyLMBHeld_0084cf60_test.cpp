@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DVector { float x; float y; float z; };
+class C3DVector { public: float x; float y; float z; };
 
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char pad[0x98];
     unsigned int f98;
     unsigned int f9c;

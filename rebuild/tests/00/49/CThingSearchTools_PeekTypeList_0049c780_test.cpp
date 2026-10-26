@@ -3,7 +3,7 @@
 
 struct TypeList { char data[20]; }; // sizeof 20
 
-struct CThingManager {
+class CThingManager { public:
     TypeList* base;
     TypeList* lists;
 };

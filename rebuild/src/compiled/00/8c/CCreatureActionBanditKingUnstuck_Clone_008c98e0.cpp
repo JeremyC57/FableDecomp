@@ -14,7 +14,7 @@ struct CBase_0062f3b0 {
     CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
 };
 
-struct CCreatureAction_BanditKingUnstuck : CBase_0062f3b0 {
+class CCreatureAction_BanditKingUnstuck : public CBase_0062f3b0 { public:
     unsigned char m_114;                // +0x114
     unsigned char m_115;                // +0x115
     virtual void v00();                    // own vtable; copy constructor implicit

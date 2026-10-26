@@ -7,7 +7,7 @@
 // C3DMeshFileChunk base is 0x34 bytes; in retail TLC it is 0x2c (every derived member sits 8 bytes
 // lower, and the vtable slots are the same).  The bytes decide, so this file models the retail layout
 // with the PDB member names and says so here instead of including the disagreeing header.
-struct CCharString {
+class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default
     CCharString(const char* text, long length);         // 0x0099EBF0 (-1 = strlen)
     CCharString(const CCharString& other);              // 0x0099EC30 copy
@@ -18,11 +18,11 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
-struct CMatrix3x4 { float m_row[3][4]; };               // 48 bytes, copied with rep movsd
-struct C3DVector  { float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
+class CMatrix3x4 { public: float m_row[3][4]; };               // 48 bytes, copied with rep movsd
+class C3DVector  { public: float X, Y, Z; C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {} };
 
-struct CChunkedFileSaver;
-struct CDataOutputStream {
+class CChunkedFileSaver;
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
@@ -54,8 +54,8 @@ struct CChunkedFileChunkFactory {
 };
 // ------------------------------------------------------------------------------------------------
 
-struct CRGBColour { unsigned long m_argb; };
-struct C3DMeshFileMaterialChunk : C3DMeshFileChunk {
+class CRGBColour { public: unsigned long m_argb; };
+class C3DMeshFileMaterialChunk : public C3DMeshFileChunk { public:
     long          MaterialIndex;     // +0x2c (PDB +0x34)
     bool          TwoSided;          // +0x30
     CRGBColour    Ambient;           // +0x34

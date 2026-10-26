@@ -1,31 +1,31 @@
 // Behaviour test for CTCLook::CTCLook(CThing*) (0x00753170).
 #include <cstdio>
-struct CThing;
-struct CLookDef;
-struct CAppearanceDef;
+class CThing;
+class CLookDef;
+class CAppearanceDef;
 struct CPrimitive;
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 struct CAnimEntryLite;
-struct CThingCreatureBase;
+class CThingCreatureBase;
 namespace NGraphicAppearance {
-struct CAGraphicAppearanceComponent;
-struct CTCGraphicAppearance {
+class CAGraphicAppearanceComponent;
+class CTCGraphicAppearance { public:
     CAGraphicAppearanceComponent* Registered; int Count;
     void RegisterComponent(CAGraphicAppearanceComponent* component) { Registered = component; ++Count; }
 };
-struct CAGraphicAppearanceComponent {               // vtable 0x0125A170
+class CAGraphicAppearanceComponent { public:               // vtable 0x0125A170
     virtual void OnAppearanceDraw() { }
     CAGraphicAppearanceComponent() { }
 };
 }
-struct CThing {
+class CThing { public:
     NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
     unsigned long ThingTypeFlags;                   // +0x6c (PDB +0x7c)
 };
 static bool g_bLookConstructedOnce = false;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -33,11 +33,11 @@ struct C3DVector {
 #pragma pack(push, 1)
 struct CPackedVector { float X, Y, Z; CPackedVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
 #pragma pack(pop)
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -59,14 +59,14 @@ struct STurningAnim { float Angle; const CAnimationEntry* Entry; };   // std::pa
 template<class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
 };
-struct CTCLook : CTCBase, NGraphicAppearance::CAGraphicAppearanceComponent {   // vtables 0x01269744 / 0x012697B8
+class CTCLook : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:   // vtables 0x01269744 / 0x012697B8
     CThingCreatureBase*          PParentCreature;               // +0x10
     CDefPointer<const CLookDef>  PDef;                          // +0x14
     CDefPointer<const CAppearanceDef> PAppearanceDef;           // +0x18

@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for CRenderTarget::~CRenderTarget (0x004979A0): depth then colour surface uninitialised, base last.
 static int g_order[4]; static int g_n = 0;
-struct CSurface {
+class CSurface { public:
     int id;
     void Uninitialise() { g_order[g_n++] = id; }
     virtual ~CSurface() { Uninitialise(); }
 };
 struct CBase { virtual void v00() { } ~CBase() { g_order[g_n++] = 0; } };
-struct CRenderTarget : CBase {
+class CRenderTarget : public CBase { public:
     CSurface ColourSurface; CSurface DepthSurface;
     CRenderTarget() { ColourSurface.id = 1; DepthSurface.id = 2; }
     ~CRenderTarget() { }

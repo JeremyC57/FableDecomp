@@ -41,7 +41,7 @@ struct SSoundNode {                                    // VC6 list node, 16 byte
     long          extra;                               // +0x0c
 };
 
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
 
 struct CSoundEmitterLH {                               // vtable 0x0129E6EC
     virtual void v00();

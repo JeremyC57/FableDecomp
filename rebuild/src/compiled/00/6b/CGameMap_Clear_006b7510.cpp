@@ -7,7 +7,7 @@
 // the signed SoundTheme is hoisted into dl, the unsigned 0xff blend stays an immediate.
 #include <string.h>
 
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];                   // +0
     unsigned char AtmosBlends[2];                   // +3
     signed char   SoundTheme;                       // +5
@@ -23,7 +23,7 @@ struct CGameMapCell {
     }
 };
 
-struct CGameMap {
+class CGameMap { public:
     void* __vftable;                                // +0x00
     CGameMapCell* m_pCellsBegin;                    // +0x04 vector<CGameMapCell> (retail 12-byte vector)
     CGameMapCell* m_pCellsEnd;                      // +0x08

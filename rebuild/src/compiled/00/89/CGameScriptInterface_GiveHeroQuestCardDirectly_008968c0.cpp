@@ -11,16 +11,16 @@
 //   word 3 bit 12), component map +0x44 (the landed 0x00896A30 / 0x006223C0 model); CTCQuestCard quest name +0x28.
 // Shape: the scratch strings live in dead argument slots (cardDefName after the index lookup, silent after its test);
 //   the guild-master message's two literals are temporaries built right to left.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 
-struct CTCBase;
+class CTCBase;
 struct STCEntry { long m_kind; CTCBase* m_pTC; };
 struct CTCMap {
     STCEntry* m_pFirst;
@@ -33,7 +33,7 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                         // +0x20 UsingComponents
     unsigned char  _pad40[4];
@@ -44,24 +44,24 @@ struct CThing {
     const C3DVector& GetPosition() const;               // 0x004C73D0
     void Kill(bool silent);                             // 0x004C9B80
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     unsigned char _pad00[0x28];
     CCharString QuestName;                              // +0x28
     bool IsVignette() const;                            // 0x007022E0
 };
-struct CPlayer { CThing* GetHeroThing(); };             // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
-struct CQuestManager {
+class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CQuestManager { public:
     bool IsQuestCardActive(const CCharString& name);    // 0x004AF560
     bool ActivateQuestCard(CThing* card, bool b);       // 0x004B4AA0
 };
 extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
@@ -75,7 +75,7 @@ struct CGameDefinitionManager {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD256(pa) VPAD16(pb) VPAD2(pc)                    // slots 0..273
     virtual void HeroReceiveMessageFromGuildMaster(const CCharString& message, const CCharString& orb,
                                                    bool immediate, bool b) const;   // slot 274

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCMapwho {
+class CTCMapwho { public:
     int marker;
     void Cleanup();
 };

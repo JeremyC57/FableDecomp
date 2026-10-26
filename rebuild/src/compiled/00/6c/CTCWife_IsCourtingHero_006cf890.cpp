@@ -35,17 +35,17 @@ public:
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned char _pad_0x000[0x340];
     bool CourtingHero;                           // +0x340 (descriptive)
 };
@@ -61,7 +61,7 @@ template <class T> __forceinline T* GetTC(CThing* thing, long type)
     thing->GetInterface(&tc, type);
     return tc;
 }
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     bool IsCourtableAndNotBlockingIt() const;    // 0x006CF810

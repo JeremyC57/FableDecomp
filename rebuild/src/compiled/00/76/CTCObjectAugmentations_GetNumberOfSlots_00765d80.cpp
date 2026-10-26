@@ -8,7 +8,7 @@
 //   retail, 4-byte elements); its one caller CTCInventoryBase::CreateInventoryObject 0x005BE8F3 (0x005BEA21) also calls
 //   the sibling GetMaximumNumberOfSlots 0x00765D90.
 // Model: the class is declared locally (no engine header); the vector is STLport's three-pointer layout.
-struct CThingBaseDef;
+class CThingBaseDef;
 class CDefPointeeBase;
 class CObjectAugmentationsDef;
 

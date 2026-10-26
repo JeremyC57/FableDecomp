@@ -9,7 +9,7 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x004DCAB9 on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-struct CPlayerGuiDef;
+class CPlayerGuiDef;
 
 struct CTCShotDefinitionForcePushBall {
     unsigned char _body[0xa8];       // sizeof(CTCShotDefinitionForcePushBall) = 0xa8

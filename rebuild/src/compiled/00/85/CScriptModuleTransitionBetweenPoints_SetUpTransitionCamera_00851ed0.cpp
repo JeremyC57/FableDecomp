@@ -10,7 +10,7 @@
 // move is flagged self-terminating; the flag store follows the second increment.
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

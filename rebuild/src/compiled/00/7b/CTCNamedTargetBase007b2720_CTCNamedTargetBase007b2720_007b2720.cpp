@@ -28,7 +28,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad[0x8];                    // +0x04..+0x0b
     ~CTCBase();                                 // 0x00686830

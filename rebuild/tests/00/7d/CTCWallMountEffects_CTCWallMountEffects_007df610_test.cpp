@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CWallMountEffectsDef { int id; };
+class CWallMountEffectsDef { public: int id; };
 static CWallMountEffectsDef g_sub;
 static int g_calls = 0;
-struct CThing;
+class CThing;
 struct CTCBase_Calls {
     virtual void v00() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
@@ -12,13 +12,13 @@ struct CTCBase_Calls {
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } virtual ~CBaseIntelligentPointer() { } };
 struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer { virtual void v00() { } };
 struct CDefPointer_CWallMountEffectsDef { const CWallMountEffectsDef* Object; CDefPointer_CWallMountEffectsDef() : Object(0) { } };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CWallMountEffectsDef* out) { ++g_calls; if (out->Object != 0) return false; out->Object = &g_sub; return true; }
 };
 struct CDefPointer_CThingDef { CDefClassBase* Object; CDefClassBase* operator->() const { return Object; } };
-struct CThing { CDefPointer_CThingDef PDef; };
+class CThing { public: CDefPointer_CThingDef PDef; };
 enum EWallMountEffectsConfirmationType { WALL_MOUNT_CONFIRMATION_NONE = 0, WALL_MOUNT_CONFIRMATION_OTHER = 1 };
-struct CTCWallMountEffects : CTCBase_Calls {
+class CTCWallMountEffects : public CTCBase_Calls { public:
     CDefPointer_CWallMountEffectsDef PDef;
     EWallMountEffectsConfirmationType WaitingForConfirmation;
     CIntelligentPointer_CThingCreatureBase CreaturePerformingAction;

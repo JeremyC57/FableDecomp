@@ -19,7 +19,7 @@ static int fails = 0;
 #include <new>
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CGuiVarTransferBase;
+class CGuiVarTransferBase;
 void __fastcall DestroyGuiVarTransfer(void* object);   // 0x00AF0710: the per-type deleter stored in the block
 struct SCountBlock {
     long  m_references;                            // +0
@@ -27,7 +27,7 @@ struct SCountBlock {
     void* m_pObject;                               // +8
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyGuiVarTransfer), m_pObject(object) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     CCountedPointer(T* p) : Data(p) { Info = p ? new SCountBlock(p) : 0; }
@@ -73,7 +73,7 @@ __declspec(noinline) void CRetailVector<T>::InsertGrow(T* where, const T& value,
     
 }
 #pragma auto_inline(on)
-struct CGuiVarTransferStruct {
+class CGuiVarTransferStruct { public:
     virtual void v00();
     long                                                m_04;
     CRetailVector< CCountedPointer<CGuiVarTransferBase> > Members;   // +0x08

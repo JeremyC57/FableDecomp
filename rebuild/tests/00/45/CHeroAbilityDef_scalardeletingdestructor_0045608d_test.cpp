@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     int f0;
     void CHeroAbilityDef_dtor();
     void* scalar_deleting_destructor(unsigned int flags);

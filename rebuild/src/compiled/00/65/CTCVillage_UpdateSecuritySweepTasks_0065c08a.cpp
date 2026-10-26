@@ -15,17 +15,17 @@
 //        statement-by-statement `d = dx*dx; d += dy*dy;` against 100 (`test ah,41h`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
@@ -36,7 +36,7 @@ struct CTaskList {                              // retail STLport list: the head
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         __vftable;                    // +0x00
     void*         ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x8];

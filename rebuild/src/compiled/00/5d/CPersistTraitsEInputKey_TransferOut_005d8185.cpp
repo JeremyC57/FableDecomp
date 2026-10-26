@@ -7,8 +7,8 @@
 //   argument slot (`lea ecx,[ebp+0Ch]`) and passes the context's PStringToSaveTo (+0x20).
 // Shape: the enum is copied as a long into the dead value-argument slot ([ebp+10h]) whose address goes to the helper.
 #pragma optimize("s", on)
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 enum EInputKey { INPUT_KEY_NULL = 0, INPUT_KEY_FORCE_DWORD = 0x7fffffff };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 

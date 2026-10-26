@@ -22,7 +22,7 @@ public:
     CWideString();                                          // 0x0099AED0
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0, Y0, X1, Y1;
     C2DBoxF() { }
 };
@@ -44,7 +44,7 @@ struct CRetailList_SubTitle {                               // STLport list<CSub
     }
 };
 
-struct CMovieSubtitles {
+class CMovieSubtitles { public:
     CRetailList_SubTitle SubTitles;                         // +0x00
     CDataBank*           pTextBank;                         // +0x04
     long                 Fps;                               // +0x08

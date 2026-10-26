@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CArmourDef;
+class CArmourDef;
 
 /* provide the impl the thunk jumps to so the test links & runs */
 extern "C" void mark_called();

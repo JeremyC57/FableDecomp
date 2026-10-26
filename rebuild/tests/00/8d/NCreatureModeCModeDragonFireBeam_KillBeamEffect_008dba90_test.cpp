@@ -3,14 +3,14 @@
 // a null or dead effect makes no call.
 #include <cstdio>
 
-struct CTCBase { int calls; };
+class CTCBase { public: int calls; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
@@ -39,7 +39,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCDParticleEmitter : CTCBase { void FadeOrKill() { ++calls; } };
+class CTCDParticleEmitter : public CTCBase { public: void FadeOrKill() { ++calls; } };
 struct CModeDragonFireBeam {
     CIntelligentPointer<CThing> PBeamWeaponEffect;
     bool BeamActive;

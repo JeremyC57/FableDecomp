@@ -2,8 +2,8 @@
 
 extern "C" int __cdecl SetMiniMapRegionExitTextOffsetX_helper(int p);
 
-struct CRegion { int m0; };
-struct CCharString { int h0; };
+class CRegion { public: int m0; };
+class CCharString { public: int h0; };
 
 void __fastcall CRegion_SetMiniMapRegionExitTextOffsetX(CRegion* self, int edx, CCharString* out, float x);
 

@@ -50,7 +50,7 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

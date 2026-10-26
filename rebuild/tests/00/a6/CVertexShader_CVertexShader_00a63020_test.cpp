@@ -6,7 +6,7 @@
 #define __fastcall
 #define FABLE_ENGINE_CVERTEXSHADER_H
 struct CVertexShaderData;
-struct CVertexShader { void* __vftable; CVertexShaderData* Data; };
+class CVertexShader { public: void* __vftable; CVertexShaderData* Data; };
 #endif
 static int bad, stage, systemCalls, shaderCalls, declarationCalls, baseCalls, allocs, failAllocation, failCom;
 void* operator new(size_t count)
@@ -59,7 +59,7 @@ struct CVertexShaderData : CBaseClassNonCopyable {
     CVertexShaderData(D3DVertexDeclaration* declaration, D3DVertexShader* shader, const D3DVertexElement* format)
         : CBaseClassNonCopyable(), VertexDeclaration(declaration), VertexShader(shader), FormatDecl(format), ReferenceCount(1) {}
 };
-struct CShaderBase { virtual ~CShaderBase() {} };
+class CShaderBase { public: virtual ~CShaderBase() {} };
 struct CVertexShaderConstructorView : CShaderBase {
     CVertexShaderData* Data;
     virtual ~CVertexShaderConstructorView();

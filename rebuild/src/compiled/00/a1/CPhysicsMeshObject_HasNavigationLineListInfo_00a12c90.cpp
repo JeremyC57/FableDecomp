@@ -6,14 +6,14 @@
 // NavigationLineListInfo member), the mesh's virtual release (slot 1, `call [eax+4]`).
 // Shape: the HasContainmentVolume twin (0x00A128A0) without the argument: a LOCAL copy of the Mesh
 // counted pointer, the bool result kept in bl across the release, plain `ret`.
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
     bool HasNavigationLineListInfo() const;        // 0x00A73CE0
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
@@ -32,11 +32,11 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
 };
 
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38

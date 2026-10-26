@@ -13,7 +13,7 @@
 // must NOT be initialised. `m_kind != 7 ? true : false` gives `cmp byte ; setne al` (a bare `!= 7` goes through
 // `xor ecx,ecx ; setne cl ; mov al,cl` and merges the two tails). The helper sits in an
 // anonymous namespace; a file-scope pointer to it keeps the otherwise unreferenced definition emitted.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;     // 0x004365B0
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -50,9 +50,9 @@ struct CTCTurnSource {                              // interface 90
     CTurnState* GetState();                         // 0x0070B470
 };
 
-struct CBrainOutput;
-struct CTCLook;
-struct C3DVector;
+class CBrainOutput;
+class CTCLook;
+class C3DVector;
 
 enum { TC_INTERFACE_90 = 90 };
 

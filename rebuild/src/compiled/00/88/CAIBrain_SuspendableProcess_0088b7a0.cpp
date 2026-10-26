@@ -8,7 +8,7 @@
 // CAIStateGroupBase::Terminated is +0x10 (engine/CAIStateGroupBase.h). Modelled locally because
 // the header's offsets disagree with the bytes. The group pointer is read once into a local
 // so the call reuses the loaded register.
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*         __vftable;                // +0x00
     void*         PBrain;                   // +0x04
     unsigned char ScriptAIPriority[4];      // +0x08
@@ -19,7 +19,7 @@ struct CAIStateGroupBase {
     void Process();                         // 0x008FCF30 (forwards to slot 12)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void*              __vftable;           // +0x00
     unsigned char      _pad0[0x34];         // +0x04..+0x38
     CAIStateGroupBase* PActiveStateGroup;   // +0x38 (retail; PDB +0x3c)

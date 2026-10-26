@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DBCD00, length 96 bytes.
 // Leaf: GivenTeddy
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CQ_NewOakValeIntroScript::AddBadDeed @ 0x00DAEA70. Shape: a 4-byte frame for the named string local, `this` in esi, `ret`.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CScriptThing { unsigned char m_body[0xc]; };
+class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls_00dbcd00 {
     virtual void v000();
     virtual void v001();

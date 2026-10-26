@@ -1,6 +1,6 @@
 // Behaviour test for 0x00819A60 __unguarded_linear_insert<pair<unsigned long, CSoundPair>> (model copy).
 #include <cstdio>
-struct CSoundPair { int FirstSound; int LastSound; };
+class CSoundPair { public: int FirstSound; int LastSound; };
 struct E {
     unsigned int first; CSoundPair second;
     E() : first(0) { second.FirstSound = 0; second.LastSound = 0; }

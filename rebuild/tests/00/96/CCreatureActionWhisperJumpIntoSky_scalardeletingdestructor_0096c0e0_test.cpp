@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_WhisperJumpIntoSky {
+class CCreatureAction_WhisperJumpIntoSky { public:
     void* vftable;
     int destroyed;
 };

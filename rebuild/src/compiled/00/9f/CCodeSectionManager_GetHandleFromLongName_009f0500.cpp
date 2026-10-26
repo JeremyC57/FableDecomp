@@ -8,7 +8,7 @@
 // the node's mapped handle at +0x14 (links +0..+0xc, key +0x10).
 // Shape: the header is read AFTER the find (`cmp eax,[esi]`); the by-value parameter's destructor is inlined into both return
 // paths (the miss path returns `or eax,-1`, the hit path parks the handle in esi across the destructor).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const CCharString& other);             // 0x0099EC30

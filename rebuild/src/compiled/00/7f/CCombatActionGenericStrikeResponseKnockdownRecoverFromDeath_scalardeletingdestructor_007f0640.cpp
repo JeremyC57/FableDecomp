@@ -1,4 +1,4 @@
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath { public:
     void* vftable;
 };
 

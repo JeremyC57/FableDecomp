@@ -3,16 +3,16 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -27,13 +27,13 @@ struct CThing {
 };
 
 static int g_pickup = 0; static bool g_pickupResult = false; static CThing* g_pickupCreature = 0; static void* g_pickupPos = 0; static void* g_pickupRh = 0; static void* g_pickupAp = 0; static void* g_pickupBar = 0; static bool g_pickupReserve = true; static void* g_pickupThis = 0;
-struct CTCTavernBar {
+class CTCTavernBar { public:
     bool GetPickupSlot(CThing* creature, C3DVector* pos, CRightHandedSet* rhSet, long* actionPointIndex, long* barIndex, bool reserve)
     { ++g_pickup; g_pickupCreature = creature; g_pickupPos = pos; g_pickupRh = rhSet; g_pickupAp = actionPointIndex; g_pickupBar = barIndex; g_pickupReserve = reserve; g_pickupThis = this; return g_pickupResult; }
 };
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CThing* GetPItem() const { return (CThing*)m_pItem; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThing* PCreature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0x0c]; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThing* PCreature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0x0c]; };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CBaseIntelligentPointer PPub, PBar, PTable, PBarman, PTankard;
     long SeatIndex; C3DVector Pos; CRightHandedSet RHSet; long ActionPointIndex; long NextFramePub; long FrameLeavePub; bool Sitting;

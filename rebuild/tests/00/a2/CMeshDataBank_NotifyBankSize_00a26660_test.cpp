@@ -1,7 +1,7 @@
 #include <cstdio>
 static unsigned long g_resizeN = 0, g_reserve[3] = { 99, 99, 99 }; static void* g_resizeVal = (void*)1;
-struct CMeshDataBankEntry; struct C3DMeshInfo; struct CPhysicsMeshInfo; struct C3DAnimationInfo;
-template<class T> struct CArray { void resize(unsigned long n, const T& v) { g_resizeN = n; g_resizeVal = (void*)v; } void reserve(unsigned long); };
+class CMeshDataBankEntry; class C3DMeshInfo; class CPhysicsMeshInfo; class C3DAnimationInfo;
+template<class T> class CArray { public: void resize(unsigned long n, const T& v) { g_resizeN = n; g_resizeVal = (void*)v; } void reserve(unsigned long); };
 template<> void CArray<C3DMeshInfo>::reserve(unsigned long n) { g_reserve[0] = n; }
 template<> void CArray<CPhysicsMeshInfo>::reserve(unsigned long n) { g_reserve[1] = n; }
 template<> void CArray<C3DAnimationInfo>::reserve(unsigned long n) { g_reserve[2] = n; }
@@ -13,7 +13,7 @@ template<class T> struct vector {
 };
 inline bool IsMeshType(long type) { return type == 1 || type == 2 || type == 4 || type == 5; }
 inline bool IsAnimationType(long type) { return type == 6 || type == 10 || type == 7 || type == 8 || type == 9; }
-struct CMeshDataBank {
+class CMeshDataBank { public:
     bool ReadOnly;
     CArray<CMeshDataBankEntry*> MeshesAndAnimations; CArray<C3DMeshInfo> MeshInfoBuffer; CArray<CPhysicsMeshInfo> PhysicsMeshInfoBuffer; CArray<C3DAnimationInfo> AnimationInfoBuffer;
     void NotifyBankSize(unsigned long noEntries, const vector<CBankEntryTypeSize>& entries);

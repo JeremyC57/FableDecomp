@@ -2,7 +2,7 @@
 #include <cmath>
 // Behaviour test: CTCActionUseStartExtrapolationMorph::OnActionUse -- turns the user to face the morph thing: atan2 of the offset as a turn fraction, wrapped into [0,1), plus a half turn.
 #define CHECK(c) if (!(c)) { std::printf("007ebc20_TEST FAIL\n"); return 1; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float WrapAngle(float angle)
 {
     if (angle < 0.0f || angle >= 1.0f) {

@@ -18,7 +18,7 @@
 // Ego layout (0x3d bytes, 16-byte CVectorMap), so the 0x3c-byte retail base is modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised: every copy pair goes through eax
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
@@ -38,7 +38,7 @@ struct CDamageAttributeMap {                                              // ret
     CDamageAttributeMap& operator=(const CDamageAttributeMap& other);     // 0x004614C0
 };
 
-struct CArmourDef : CParentDefClassBase {                                 // vtable 0x01234AEC
+class CArmourDef : public CParentDefClassBase { public:                                 // vtable 0x01234AEC
     CAugmentationResponseMap AugmentationResponse;                        // +0x3c
     CDamageAttributeMap      DamageTypeResponse;                          // +0x48
     CDamageAttributeMap      ArmourThresholds;                            // +0x54

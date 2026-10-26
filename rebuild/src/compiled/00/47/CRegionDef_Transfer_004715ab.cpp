@@ -13,11 +13,11 @@
 #pragma optimize("s", on)
 enum EReverbEnvironmentType { REVERB_ENVIRONMENT_DEFAULT };
 enum EWorldMapNameGraphic { WORLD_MAP_NAME_GRAPHIC_NONE };
-struct CDefString { long Index; };
-struct CSoundMap { unsigned long _words[8]; };
-struct C2DVector { float X; float Y; };
+class CDefString { public: long Index; };
+class CSoundMap { public: unsigned long _words[8]; };
+class C2DVector { public: float X; float Y; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(long& value);                     // 0x00431102
     void Transfer(bool& value);                     // 0x0043314A
     void Transfer(float& value);                    // 0x00431061
@@ -28,7 +28,7 @@ struct CPersistContext {
     void Transfer(EWorldMapNameGraphic& value);     // 0x00471765
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     unsigned char _defBase[0x38];                   // +0x04 after the vptr
     long EnvironmentTheme;                          // +0x3C
     long InternalEnvironmentTheme;                  // +0x40

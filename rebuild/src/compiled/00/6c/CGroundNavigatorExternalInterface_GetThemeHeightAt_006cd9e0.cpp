@@ -1,7 +1,7 @@
 #include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CTerrainResult { float GetHeight_0063a390(); };
-struct CThingCreatureBase { CTerrainResult* Lookup(const C3DVector& pos); };
+class CThingCreatureBase { public: CTerrainResult* Lookup(const C3DVector& pos); };
 float __fastcall CGroundNavigatorExternalInterface_GetTerrainHeightAt(CGroundNavigatorExternalInterface* self, void* edx, const C3DVector& pos)
 {
     CTerrainResult* r = self->Creature->Lookup(pos);

@@ -1,6 +1,6 @@
 typedef unsigned short wchar16;
 
-struct CWideString {
+class CWideString { public:
     const wchar16* p;
     CWideString(const wchar16* s);          // 1-arg ctor 0x594cd0 (else branch)
     ~CWideString();                          // dtor 0x598100
@@ -8,7 +8,7 @@ struct CWideString {
 
 // The (lit,-1) temporary is a CCharString symbol name (relocation identity: ctor 0x0099EBF0, dtor 0x0099EAE0),
 // handed to CDataBank::GetTextBySymbol 0x009C95E0.
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s, long n);      // 0x0099EBF0
     ~CCharString();                          // 0x0099EAE0
@@ -27,7 +27,7 @@ extern SlotB* g_13b871c;
 extern const char k_122df40[];
 extern const wchar16 k_122de80[];
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CWideString GetAutoSaveDisplayName();
 };
 

@@ -14,7 +14,7 @@
 //   follow the lookup), the vector is filled by the collector, walked with cached begin/end pointers (esi/ebp) and freed
 //   by its inline destructor; one zero register (ebx) serves every zero compare and store.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +24,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
 struct CTCGraphicAppearance {
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -47,10 +47,10 @@ struct CThingVector {                           // STLport vector<CThing*> (12 b
     CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CThingVector() { if (_M_start) free(_M_start); }
 };
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     void GetCarriedThings(CThingVector& things);    // 0x006A2220
 };
-struct CTCEffectOnDie {
+class CTCEffectOnDie { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool    ToBeRemoved;                        // +0x08

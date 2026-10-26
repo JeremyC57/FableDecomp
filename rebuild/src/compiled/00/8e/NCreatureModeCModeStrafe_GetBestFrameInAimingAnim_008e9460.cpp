@@ -17,7 +17,7 @@
 extern "C" double __cdecl sqrt(double);
 extern "C" double __cdecl acos(double);
 #pragma intrinsic(sqrt, acos)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,8 +25,8 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLength2() const { return X * X + Y * Y + Z * Z; }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -55,12 +55,12 @@ __declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(cons
     return it;
 }
 #pragma auto_inline(on)
-struct CThing;
+class CThing;
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
@@ -79,12 +79,12 @@ struct CTCTargeting {                                   // interface 8
     virtual void v34(); virtual void v35(); virtual void v36();
     virtual bool GetTargetPosition(C3DVector* position, float scale);   // slot 37 (+0x94)
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad0[0x21a];
     bool          m_bLockedOn;                          // +0x21a
     bool IsFirstPersonTargeting() const;                // 0x004874D0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -110,11 +110,11 @@ struct CThing {
 };
 inline bool IsAlive(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
 bool __fastcall IsValidRangedWeaponTargetForShooter(CThing* shooter, CThing* target, float angle);   // 0x0085F8D0
-struct CCamera {
+class CCamera { public:
     unsigned char _pad0[0x1c];
     C3DVector     Forward;                              // +0x1c
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void GetCurrentCamera(CCamera** camera);    // slot 10 (+0x28)
 };

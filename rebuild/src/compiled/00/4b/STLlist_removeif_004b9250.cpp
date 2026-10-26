@@ -11,7 +11,7 @@
 //   memory and reuses the `next` it loaded before the test for the unlink (declared only, the erase re-reads both links).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
-struct CCharStringData {                                // the shared string block
+class CCharStringData { public:                                // the shared string block
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
 };

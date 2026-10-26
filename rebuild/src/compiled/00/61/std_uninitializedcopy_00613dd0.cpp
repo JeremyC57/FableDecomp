@@ -15,18 +15,18 @@
 // Model: CCharString is modelled locally (fable_string.h inlines its copy constructor; retail calls 0x0099EC30).
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {                      // 0x1C bytes (Ego_r.pdb)
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:                      // 0x1C bytes (Ego_r.pdb)
         long        Region;                        // +0x00
         CCharString UIDefName;                     // +0x04
         C2DVector   Position;                      // +0x08

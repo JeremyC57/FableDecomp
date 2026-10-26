@@ -11,26 +11,26 @@
 // accessor (right-to-left: the argument of GetRegion, then its object expression). The two system accessors are
 // members of the screen that ignore `this` (retail still calls them with ecx = this).
 // Local model: no engine headers for CTCInventoryMap / CThing / CWorldMap.
-struct CRegion;
+class CRegion;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_flags;                    // +0x91, bit 0: dead
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing_00487dd0();              // 0x00487DD0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                 // 0x00449960
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     CRegion& GetRegion(long index);           // 0x004FC180
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPlayerManager* GetPlayerManager();       // 0x00686D50
     CWorldMap* GetWorldMap();                 // 0x00686D20
     CThing* GetRegionTeleporter(CRegion* region);       // 0x005FBEA0

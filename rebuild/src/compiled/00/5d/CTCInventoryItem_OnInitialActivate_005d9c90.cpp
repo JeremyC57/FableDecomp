@@ -13,20 +13,20 @@
 // map key homed in the frame word; the found component is pushed straight into AddToInventory's first slot.
 extern "C" int  __cdecl puts(const char* text);    // 0x00BFEAF2
 extern "C" __declspec(noreturn) void __cdecl abort();   // 0x00BFEAEC (noreturn as in <stdlib.h>: the throw path tail-jumps)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_refCount;                               // +0x04
     void AddRef() { ++m_refCount; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CInventoryItemDef : CDefPointeeBase {
+class CInventoryItemDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x50 - 0x08];
     long InventoryType;                            // +0x50 ETCInterfaceType
 };
@@ -47,7 +47,7 @@ struct CInterfaceMap {
     SEntry* last;                                  // +0x04
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                       // +0x20
     CInterfaceMap m_interfaces;                    // +0x44
@@ -67,7 +67,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
 struct CTCInventoryBase;
@@ -79,7 +79,7 @@ struct CTCBase_Item {
     CThingManager* GetThingManager();              // 0x00686AE0
 };
 #pragma pack(push, 4)
-struct CTCInventoryItem : CTCBase_Item {
+class CTCInventoryItem : public CTCBase_Item { public:
     CDefPointer<CInventoryItemDef> PDef;           // +0x0c
     CTCInventoryBase* PInventory;                  // +0x10
     long              call;                        // +0x14

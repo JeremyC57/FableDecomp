@@ -7,7 +7,7 @@ struct CCountedPointer_00be03a0 { void* m_pObject; SCountBlock_00be03a0* m_pCoun
     void Release() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } }
     CCountedPointer_00be03a0& operator=(const CCountedPointer_00be03a0& o) { if (m_pCount != o.m_pCount) { Release(); m_pObject = o.m_pObject; m_pCount = o.m_pCount; if (m_pCount) ++m_pCount->m_references; } return *this; }
     ~CCountedPointer_00be03a0() { Release(); m_pObject = 0; m_pCount = 0; } };
-struct CEngineStaticMapFileBlockManager { CCountedPointer_00be03a0 m_bankFileEntry; void SetBankFileEntry(CCountedPointer_00be03a0 e) { m_bankFileEntry = e; } };
+class CEngineStaticMapFileBlockManager { public: CCountedPointer_00be03a0 m_bankFileEntry; void SetBankFileEntry(CCountedPointer_00be03a0 e) { m_bankFileEntry = e; } };
 int main() {
     SCountBlock_00be03a0* oldb = new SCountBlock_00be03a0; oldb->m_references = 1; oldb->m_pfnDestroy = &Destroy; oldb->m_pObject = (void*)1; SCountBlock_00be03a0* newb = new SCountBlock_00be03a0; newb->m_references = 1; newb->m_pfnDestroy = &Destroy; newb->m_pObject = (void*)2;
     CEngineStaticMapFileBlockManager m; m.m_bankFileEntry.m_pObject = (void*)1; m.m_bankFileEntry.m_pCount = oldb; { CCountedPointer_00be03a0 e; e.m_pObject = (void*)2; e.m_pCount = newb; ++newb->m_references; m.SetBankFileEntry(e); }

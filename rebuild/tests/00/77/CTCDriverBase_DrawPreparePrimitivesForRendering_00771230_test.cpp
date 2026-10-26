@@ -1,17 +1,17 @@
 // Behaviour test for CTCDriverBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) @ 0x00771230:
 // the call is forwarded (with the same argument) only when the parent has a graphic-appearance component.
 #include <cstdio>
-struct CEnginePrimitivePrepareInfo { int id; };
+class CEnginePrimitivePrepareInfo { public: int id; };
 static int g_calls = 0;
 static const CEnginePrimitivePrepareInfo* g_arg = 0;
 struct CTCGraphicAppearance {
     void DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { ++g_calls; g_arg = &info; }
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;
 };
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool    ToBeRemoved;

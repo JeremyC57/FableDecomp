@@ -17,10 +17,10 @@
 #include "engine/CMeshDataBank.h"
 #undef CMeshDataBank
 #include "engine/CIVCountedPointeeBase.h"
-struct C3DAnimationInfo:C3DAnimationInfo_PDB {void BeginLoading(bool)const;}; //A26730 donorB65BA0 QBEX_N
-struct CMeshDataBank:CMeshDataBank_PDB {const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //A242C0 donorB60570
-struct CWorld {unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
-struct CThingCreatureBase {
+class C3DAnimationInfo:public C3DAnimationInfo_PDB { public:void BeginLoading(bool)const;}; //A26730 donorB65BA0 QBEX_N
+class CMeshDataBank:public CMeshDataBank_PDB { public:const C3DAnimationInfo* PeekAnimation(unsigned long)const;}; //A242C0 donorB60570
+class CWorld { public:unsigned char _beforeMainMeshBank[0x3c];CMeshDataBank* PMainMeshBank;};
+class CThingCreatureBase { public:
     float GetAnimDuration(long); //0x006627F0
     CWorld* GetWorld(); //0x004C7AB0
 };
@@ -29,9 +29,9 @@ struct CBaseIntelligentPointer {
     void* PData;
     CThingCreatureBase* GetPItem() const; //0x00A01B50
 };
-struct CAnimComponentMap:CIVCountedPointeeBase {};
+class CAnimComponentMap:public CIVCountedPointeeBase { public:};
 struct CAnimComponentPointer {CAnimComponentMap* Object;CAnimComponentPointer():Object(0){}CAnimComponentPointer(const CAnimComponentPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}};
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;
     unsigned long AnimName;
     unsigned long GroupName;
@@ -48,7 +48,7 @@ struct CAnimationEntryPointer {
     void Reset(CAnimationEntry*); //0x00696830
 };
 extern long g_GameFramesPerSecond; //0x01375550
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase(); //0x0062ED20 deleting
     virtual void Validate()const; //0x0099A400
     virtual void EditUpdate(float); //0x00692DB0

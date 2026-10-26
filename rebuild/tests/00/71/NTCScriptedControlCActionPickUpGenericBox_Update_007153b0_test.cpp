@@ -6,8 +6,8 @@
 
 static int g_liveActions = 0;
 static int g_defRefs = 0;
-struct CCarryableDef { long RefCount; long CarrySlot; };
-struct CThing { CCarryableDef* def; bool alive; };
+class CCarryableDef { public: long RefCount; long CarrySlot; };
+class CThing { public: CCarryableDef* def; bool alive; };
 struct CDefPointer {
     CCarryableDef* Object;
     CDefPointer() : Object(0) {}
@@ -18,12 +18,12 @@ static bool GetSubDef(CThing* box, CDefPointer* out)
     if (!box->def) return false;
     out->Object = box->def; ++box->def->RefCount; ++g_defRefs; return true;
 }
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* held; long heldSlot; int removes;
     CThing* RemoveThingFromPrimarySlot(bool) { ++removes; CThing* t = held; held = 0; return t; }
     void PutThingInCarrySlot(CThing* t, long slot, bool) { held = t; heldSlot = slot; }
 };
-struct CTCCreatureModeManager { unsigned long lastMode; int adds; bool AddMode(unsigned long m) { lastMode = m; ++adds; return true; } };
+class CTCCreatureModeManager { public: unsigned long lastMode; int adds; bool AddMode(unsigned long m) { lastMode = m; ++adds; return true; } };
 struct CAction {
     CThing* box; long id;
     CAction(long i, CThing* b) : box(b), id(i) { ++g_liveActions; }
@@ -36,7 +36,7 @@ struct CCreature {
     bool IsPerformingAnyAction() const { return busy; }
     bool SetCurrentAction(const CAction& a) { if (!accepts) return false; currentID = a.id; busy = true; return true; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     CThing* thing; bool valid; int refreshes;
     bool IsValid() const { return valid; }
     void Refresh() { ++refreshes; valid = true; }

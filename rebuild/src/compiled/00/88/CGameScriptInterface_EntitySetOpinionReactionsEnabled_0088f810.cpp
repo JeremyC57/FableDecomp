@@ -2,7 +2,7 @@
 
 class CScriptThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pRep;
     CCharString(const char* text, int length);
     ~CCharString();

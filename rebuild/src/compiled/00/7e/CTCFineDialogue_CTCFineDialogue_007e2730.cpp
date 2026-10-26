@@ -8,7 +8,7 @@
 // WaitingForConfirmation +0x15, Village +0x18 (Fine, Money and Village are left uninitialised).
 // Shape: speed TU; `mov ecx,esi` for the body call is hoisted above the vtable store, the two bool initialisers are byte
 // immediates after it.
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -19,9 +19,9 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     void AddToGlobalUpdateTCs();                            // 0x00686ED0
 };
 
-struct CTCVillage;
+class CTCVillage;
 
-struct CTCFineDialogue : CTCBase_Calls {                    // vtable 0x01270274
+class CTCFineDialogue : public CTCBase_Calls { public:                    // vtable 0x01270274
     long        Fine;                                       // +0x0c
     long        Money;                                      // +0x10
     bool        GivePlayerChanceToPayFine;                  // +0x14

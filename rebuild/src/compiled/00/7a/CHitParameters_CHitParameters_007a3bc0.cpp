@@ -22,7 +22,7 @@ class CHitLocation;
 class CMaterialDef;
 
 #pragma pack(push, 1)
-struct C3DVector {                                       // pack(1) in the engine (engine/C3DVector); no default initialisation
+class C3DVector { public:                                       // pack(1) in the engine (engine/C3DVector); no default initialisation
     float X, Y, Z;
 };
 #pragma pack(pop)
@@ -66,11 +66,11 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };

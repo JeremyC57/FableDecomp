@@ -1,4 +1,4 @@
-struct CTCDrunkenness {
+class CTCDrunkenness { public:
     void* vftable;
 };
 

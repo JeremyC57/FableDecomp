@@ -1,4 +1,4 @@
-struct CPersistContext;
+class CPersistContext;
 
 struct SubObj {
     void Method(CPersistContext* ctx);

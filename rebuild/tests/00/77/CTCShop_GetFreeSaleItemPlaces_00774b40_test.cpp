@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 class CThing { public: int id; };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct GoodsPlace { C3DVector Position; long extra[6]; };
 struct CGoodsPlaceVector {
     GoodsPlace* _M_start; GoodsPlace* _M_finish; GoodsPlace* _M_end_of_storage;
@@ -29,19 +29,19 @@ struct CGoodsPlaceVector {
         *_M_finish++ = x;
     }
 };
-struct CThingFilter_IsNot { CThing* Thing; CThingFilter_IsNot(CThing* t) : Thing(t) {} };
-struct CThingFilter_In2DRange {
+class CThingFilter_IsNot { public: CThing* Thing; CThingFilter_IsNot(CThing* t) : Thing(t) {} };
+class CThingFilter_In2DRange { public:
     C3DVector Position; float Range;
     CThingFilter_In2DRange(const C3DVector& p, float r) : Position(p), Range(r) {}
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* PA; const B* PB;
     CFilter_Bind2(const A& a, const B& b) : PA(&a), PB(&b) {}
 };
 static CThing g_other, g_self;
 static float g_occupiedX = 2.0f;
 static CThing* g_seenNot = 0; static float g_seenRange = 0.0f;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>& filter, CThing** out)
     {
         g_seenNot = filter.PA->Thing; g_seenRange = filter.PB->Range;
@@ -50,13 +50,13 @@ struct CThingSearchTools {
     }
 };
 static CThingSearchTools g_tools;
-struct CWorld {
+class CWorld { public:
     CThingSearchTools* PThingSearchTools;
     CThingSearchTools* GetThingSearchTools() const { return PThingSearchTools; }
 };
 static CWorld g_world = { &g_tools };
 static int g_inits = 0;
-struct CTCShop {
+class CTCShop { public:
     CThing*           ParentThing;
     CGoodsPlaceVector GoodsPlaces;
     CWorld* GetWorld() const { return &g_world; }

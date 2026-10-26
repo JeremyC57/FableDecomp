@@ -2,10 +2,10 @@
 #include <cstring>
 #include <new>
 
-struct CThing { unsigned char m_thingKind; unsigned char m_followBit0 : 1; unsigned char m_followBit1 : 1; unsigned char m_followBit2 : 1;
+class CThing { public: unsigned char m_thingKind; unsigned char m_followBit0 : 1; unsigned char m_followBit1 : 1; unsigned char m_followBit2 : 1;
     unsigned char Bits() const { return (unsigned char)(m_followBit0 | (m_followBit1 << 1) | (m_followBit2 << 2)); } };
-struct CScriptThing { virtual CThing* GetThing() const { return m_thing; } virtual bool IsValid() const { return m_valid; } CThing* m_thing; bool m_valid; };
-struct CGameScriptInterface {
+class CScriptThing { public: virtual CThing* GetThing() const { return m_thing; } virtual bool IsValid() const { return m_valid; } CThing* m_thing; bool m_valid; };
+class CGameScriptInterface { public:
     void Set(const CScriptThing& thing, bool flag) const {
         if (thing.IsValid()) { CThing* object = thing.GetThing(); if (object->m_thingKind == 1) object->m_followBit1 = !flag; } }
 };

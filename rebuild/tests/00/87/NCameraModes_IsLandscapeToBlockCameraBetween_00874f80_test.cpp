@@ -4,7 +4,7 @@
 #endif
 // Model of NCameraModes::IsLandscapeToBlockCameraBetween(map, a, b, includeWater) @ 0x00874F80: an end outside the map or in an
 // unloaded map blocks; otherwise the landscape blocks when a is above its camera height and b is below its own.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CWorldMap {
 public:
     float Ground;

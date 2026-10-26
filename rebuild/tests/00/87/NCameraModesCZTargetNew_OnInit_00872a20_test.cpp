@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,10 +12,10 @@ struct C3DVector {
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }
 };
 struct CThingPhysics { C3DVector Facing; C3DVector GetFacingVector() const { return Facing; } };
-struct CThingGameObject { CThingPhysics* m_pPhysics; CThingPhysics* GetPhysics() const { return m_pPhysics; } };
+class CThingGameObject { public: CThingPhysics* m_pPhysics; CThingPhysics* GetPhysics() const { return m_pPhysics; } };
 struct CBase;
 static int g_resets = 0;
-struct CGameCameraManager { CBase* CurrentModeData; void ResetRightStickLookAroundVector() { ++g_resets; } };
+class CGameCameraManager { public: CBase* CurrentModeData; void ResetRightStickLookAroundVector() { ++g_resets; } };
 static int g_transitions = 0, g_coords = 0;
 struct CBase {
     CGameCameraManager* CameraManager; float ObservedPositionZOffset; const CThingGameObject* Observed;

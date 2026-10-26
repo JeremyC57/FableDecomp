@@ -9,7 +9,7 @@ namespace NUISystem {
 struct CManagerCalls {static CManagerCalls* __fastcall GetInstance(); Vec GetUIScale()const;}; //0041e5f2,0041cf47
 // CUIScreenUnitConverter::ConvertVector recovered PDB debug0055ed1a, retail0052e580.
 struct CUIScreenUnitConverter {static Vec __fastcall ConvertVector(Vec value);};
-struct CComponent {
+class CComponent { public:
  virtual void Slot000()=0;
  virtual void Slot001()=0;
  virtual void Slot002()=0;

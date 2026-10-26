@@ -3,12 +3,12 @@
 #include <cstring>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct CCharString { char m_text[40]; CCharString(const char* t, int) { std::strcpy(m_text, t); } ~CCharString() { Log(8); } };
-struct CDefinitionManager {
+class CCharString { public: char m_text[40]; CCharString(const char* t, int) { std::strcpy(m_text, t); } ~CCharString() { Log(8); } };
+class CDefinitionManager { public:
     int GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.m_text, "CARRY_SLOT_PRIMARY_SHEATHE") == 0 ? 42 : -1; }
 };
 static CDefinitionManager g_defs;
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     void* m_carrying;
     unsigned char m_flags91;
@@ -21,7 +21,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     int m_slot; CThing* m_inSlot;
     CThing* RemoveThingInCarrySlot(int slot, bool drop) { m_slot = slot; Log(drop ? 9 : 2); CThing* t = m_inSlot; m_inSlot = 0; return t; }
 };

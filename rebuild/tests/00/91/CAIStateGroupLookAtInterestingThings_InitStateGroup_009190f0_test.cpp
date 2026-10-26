@@ -1,6 +1,6 @@
 #include <cstdio>
 // ---- test model: a thing's interface bitset + sorted {type, component} table, intelligent pointers ----
-struct CThing;
+class CThing;
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -55,7 +55,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static unsigned int GFROR13(unsigned int v) { return (v >> 13) | (v << 19); }
 inline unsigned int WorldRandomRange(unsigned int& seed, unsigned int range)
@@ -69,7 +69,7 @@ inline unsigned int WorldRandomRange(unsigned int& seed, unsigned int range)
 static long g_FramesPerSecond = 15, g_frame = 1000;
 long GFGetCurrentFrame() { return g_frame; }
 static void* g_registered = 0; static long g_type = 0;
-struct CTCIdleScheduler { void RegisterIdleStateGroup(void* g, long t) { g_registered = g; g_type = t; } };
+class CTCIdleScheduler { public: void RegisterIdleStateGroup(void* g, long t) { g_registered = g; g_type = t; } };
 
 struct CAIStateGroup_LookAtInterestingThings {
     long FrameToLook;

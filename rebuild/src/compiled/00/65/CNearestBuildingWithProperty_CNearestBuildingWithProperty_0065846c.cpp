@@ -10,7 +10,7 @@
 // Leaf: ??0CNearestBuildingWithProperty
 #pragma optimize("s", on)
 
-struct C3DVector {                       // three float words; the copy moves them as raw dwords
+class C3DVector { public:                       // three float words; the copy moves them as raw dwords
     unsigned long x;
     unsigned long y;
     unsigned long z;
@@ -20,7 +20,7 @@ struct C3DVector {                       // three float words; the copy moves th
 class CThingBuilding;
 enum ESimBuildingProperty { SIM_BUILDING_PROPERTY_NONE = 0 };
 
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     ESimBuildingProperty BuildingProperty;   // +0x00
     C3DVector            Pos;                // +0x04
     CThingBuilding*      NearestBuilding;    // +0x10

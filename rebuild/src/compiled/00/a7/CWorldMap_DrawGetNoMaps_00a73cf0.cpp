@@ -7,7 +7,7 @@ struct MapEntry6 {
     unsigned short f;
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad[0x48];
     MapEntry6* begin; // +0x48
     MapEntry6* end;   // +0x4c

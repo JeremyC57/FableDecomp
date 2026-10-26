@@ -12,7 +12,7 @@
 #include "engine/_quarantine/CComponent.h"
 #undef CComponent
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}};
 struct InputTag {InputTag(){}};struct ForwardTag:InputTag {};struct BidirectionalTag:ForwardTag {};struct RandomAccessTag:BidirectionalTag {};
 CComponent** __fastcall FindChild(CComponent**,CComponent**,CComponent* const&,const RandomAccessTag&); //00535FE4
@@ -29,7 +29,7 @@ struct ChildArray {ChildPointer* Start;ChildPointer* Finish;ChildPointer* Limit;
 struct ScrollingArray {CComponent** Start;CComponent** Finish;CComponent** Limit;unsigned long size()const{return Finish-Start;}CComponent*& operator[](unsigned long n){return Start[n];}
  void erase(CComponent** pos){CComponent** next=pos+1;if(Finish!=next)memmove(pos,next,reinterpret_cast<char*>(Finish)-reinterpret_cast<char*>(next));--Finish;}
 };
-struct CDynamicList {
+class CDynamicList { public:
  void* VTable;unsigned char ComponentPrefix[0xb0-4];ChildArray Children;unsigned char ComponentSuffix[0x15c-0xbc];
  long BInitialised;float PositionOffsetX,PositionOffsetY;long TopIndex,SelectionIndex,NumVisible;ScrollingArray ScrollingChildren;
  typedef void(CDynamicList::*ResetMethod)();

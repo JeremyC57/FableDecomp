@@ -1,7 +1,7 @@
 // Behaviour test for 00747450 (catalog CTCBuyableHouse::MovedInNotification): true when the thing is held by one of the 16-byte entries.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct SRandomAccessTag { SRandomAccessTag() {} };
 
 struct SThingEntry { CThing* m_pThing; long a, b; };

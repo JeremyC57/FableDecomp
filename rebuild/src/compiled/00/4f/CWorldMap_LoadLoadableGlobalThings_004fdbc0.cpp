@@ -8,16 +8,16 @@
 // LoadedOnPlayerProximity +0x28.
 // Shape: the loop index is a signed long compared against the unsigned size() (`jb`), its float conversion goes
 // through the frame; the progress text is an implicit CCharString conversion built before the other arguments.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CMapInfo {                                            // 0x48 bytes
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CMapInfo { public:                                            // 0x48 bytes
     C2DBoxI       Area;                                      // +0x00
     unsigned char _pad10[0x14];
     bool          Used;                                      // +0x24
@@ -27,7 +27,7 @@ struct CMapInfo {                                            // 0x48 bytes
     bool          LoadedOnPlayerProximity;                   // +0x28
     unsigned char _rest[0x1f];                               // +0x29 .. +0x48
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                                // +0x00
     T* Finish;                                               // +0x04
     T* EndOfStorage;                                         // +0x08
@@ -35,7 +35,7 @@ template <class T> struct CArray {
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char    _pad00[0x20];
     CArray<CMapInfo> Maps;                                   // +0x20
     void LoadLoadableGlobalThingsForLevel(long level);       // 0x004FBF60

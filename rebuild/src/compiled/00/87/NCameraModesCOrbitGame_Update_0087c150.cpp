@@ -10,8 +10,8 @@
 //   Thing: interface bitset +0x20, map +0x44; CTCBase ParentThing +4.
 // Shape: the GetInterface template's out pointer is never initialised (the absent arm reads the shared key word); the
 //   C3DVector copies go through the implicit assignment of a class with a user copy constructor (`lea` destination).
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -22,7 +22,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -40,20 +40,20 @@ struct CThing {
         return false;
     }
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void*   __vftable;
     CThing* ParentThing;                        // +0x04 (CTCBase)
 };
-struct CTCGamePlayer {
+class CTCGamePlayer { public:
     CTCTavernGame* GetGame() const;             // 0x005EDC90
 };
-struct CTCTavernGameCoinGolf {
+class CTCTavernGameCoinGolf { public:
     void GetCamera(C3DVector& position, C3DVector& target);   // 0x007D3560
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;               // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer() const;             // 0x0049D9D0
 };
 struct CPhysicsState {                          // retail 0x30 bytes
@@ -63,7 +63,7 @@ struct CPhysicsState {                          // retail 0x30 bytes
 
 namespace NCameraModes {
 
-struct CBase {
+class CBase { public:
     virtual void v00();
     float         DefaultFOV;                   // +0x04
     float         DefaultRollAngle;             // +0x08

@@ -5,7 +5,7 @@
 // flag word. Ego_r.pdb: `?OnCreate@CTCActionUseTorch@@UAEXXZ`, CTCActionUseTorch = CTCActionUseBase (0x14) + bool TorchLit +0x14.
 // Shape: `shr eax,8 ; not al ; and al,1` is `!((flags >> 8) & 1)` on a SCALAR return. A struct-of-bitfields return gives
 // the same bit code, but a member function returns any struct through a hidden pointer (`lea edx,[esp+4] ; push edx`).
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -17,14 +17,14 @@ struct CThing {
     virtual unsigned long GetStateFlags();     // slot 48 (+0xc0)
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CTCActionUseBase : CTCBase {
+class CTCActionUseBase : public CTCBase { public:
     unsigned char _pad0c[8];                   // +0x0c PActionUseDef, +0x10 Usable
     virtual void OnCreate();                   // 0x007EAC10
 };

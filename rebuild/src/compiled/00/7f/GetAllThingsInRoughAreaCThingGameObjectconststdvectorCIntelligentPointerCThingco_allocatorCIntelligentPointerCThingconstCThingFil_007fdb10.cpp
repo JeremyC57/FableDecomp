@@ -33,8 +33,8 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CTCCreatureModeManager {
- struct CModeBase {virtual ~CModeBase();virtual unsigned long GetType()const=0;};
+class CTCCreatureModeManager { public:
+ class CModeBase { public:virtual ~CModeBase();virtual unsigned long GetType()const=0;};
  CModeBase& GetCurrentMode()const; // 0x0073a6e0
 };
 struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
@@ -42,12 +42,12 @@ struct InterfaceMap {
  InterfaceEntry* Start;InterfaceEntry* Finish;
  const InterfaceEntry* LowerBound(const long*)const; // 0x004365b0
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeComponents[0x20];unsigned long UsingComponents[9];InterfaceMap Components;unsigned char BeforeType[0x6c-0x4c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-struct CThingCreatureBase;
+class CThingCreatureBase;
 // Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
 extern "C" void* __cdecl malloc(unsigned int);
@@ -69,9 +69,9 @@ void ThingVector::_M_insert_overflow(CThingCreatureBase** position,CThingCreatur
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {enum {ThingTypeMask=15};};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:enum {ThingTypeMask=15};};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -82,8 +82,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -99,9 +99,9 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct C3DVector;
-struct CThingFilter_IsNotList {void* NotList;void* NotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
-struct CThingFilter_IsWithinArea {C3DVector* StartPos;C3DVector* EndPos;float Radius;bool IncludeThingRad;bool operator()(const CThing&)const;}; // 0x007fd830
+class C3DVector;
+class CThingFilter_IsNotList { public:void* NotList;void* NotList2;bool operator()(const CThing&)const;}; // 0x006a7eb0
+class CThingFilter_IsWithinArea { public:C3DVector* StartPos;C3DVector* EndPos;float Radius;bool IncludeThingRad;bool operator()(const CThing&)const;}; // 0x007fd830
 struct CThingFilter_IsAffectedByObstructions {
  __forceinline bool operator()(const CThing& thing)const{
   if(!(thing.UsingComponents[1]&(1UL<<17)))return true;

@@ -7,7 +7,7 @@ struct ICountedBuffer {
 };
 struct IServiceHub { virtual void v0() = 0; virtual void v1() = 0; virtual void Shutdown() = 0; };
 extern void __cdecl operator delete(void*); // 0x00BFE9BC
-struct CScriptDefinitionManager {
+class CScriptDefinitionManager { public:
     void* vftable;
     unsigned char pad04[0x54];
     IDeletingService* service58;

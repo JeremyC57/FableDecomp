@@ -66,11 +66,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CMovableResourceMemoryPool;
-struct CXboxBufferMemoryPool;
+class CMovableResourceMemoryPool;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     CMovableResourceMemoryPool* VirtualMemPool;              // +0x08
@@ -113,11 +113,11 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeMemoryManager, EnableDelayedResourc
 #include <stddef.h>
 
 
-struct CEngineLandscapeMemoryManager;
-struct CPixelShader;
+class CEngineLandscapeMemoryManager;
+class CPixelShader;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void*                          __vftable;                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                  _pad_0x04[0x4];           // +0x04
     unsigned char                  _pad_0x08[0x4];           // +0x08
@@ -214,7 +214,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0xf58);
 #endif // FABLE_ENGINE_CENGINELANDSCAPERENDERER_H
 
 // Donor renderer MemoryManager+F58 differs from native+6B0; use a documented native view below.
-struct CMovableResource;
+class CMovableResource;
 struct CEngineLandscapeMemoryManager_Methods : CEngineLandscapeMemoryManager {
  void* AllocVirtual(int bytes, CMovableResource* owner); // 00BD9AF0
  void FreeVirtual(void* block); // 00BD9B90

@@ -12,14 +12,14 @@
 // Layout: CAction is the landed 0x10-byte model (AddSoundAction 0x0056F615); slot names 66/68 are descriptive.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
 namespace NUISystem {
-struct CActionParam {
+class CActionParam { public:
     virtual void v00();
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
@@ -32,7 +32,7 @@ struct CActionParamList {                               // STLport list<CActionP
     void* _M_node;
     void push_back(CActionParam* const& value);         // 0x0042B646
 };
-struct CAction {                                        // retail 0x10 bytes
+class CAction { public:                                        // retail 0x10 bytes
     long             ActionType;                        // +0x00
     CActionParamList UIActionParams;                    // +0x04
     void*            ThingActionParams;                 // +0x08
@@ -47,7 +47,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                         // 0x0042AA29
@@ -57,7 +57,7 @@ template<class T> struct CCountedPointer {
 namespace NUISystem {
 struct CComponentBase {
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* GetChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* GetChild(CCharString name);   // slot 3 (+0x0C)
     virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -74,9 +74,9 @@ struct CComponentBase {
     virtual void AddBackAction(const CCountedPointer<CAction>& action);       // slot 68 (+0x110)
     unsigned char _pad04[0x18 - 0x04];
 };
-struct CComponent : CComponentBase, CActionParam {      // the action-parameter subobject at +0x18
+class CComponent : public CComponentBase, public CActionParam { public:      // the action-parameter subobject at +0x18
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
 };

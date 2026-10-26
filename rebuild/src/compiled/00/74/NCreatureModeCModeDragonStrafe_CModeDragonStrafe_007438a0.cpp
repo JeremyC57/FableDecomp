@@ -9,15 +9,15 @@
 // 0x01268658 is never stored); the filter (vtable 0x01267568) is built from an implicit CCharString conversion of the
 // literal; its CRC is one `p ? .. : ..` guard pair that VC folds into one null test.
 // Layout: retail CArray is 0x0c (PDB 0x10), so every PDB offset after the spline sits 4 bytes lower.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
@@ -27,7 +27,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -58,29 +58,29 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 template <class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own constructor
     T* p;
     CArrayAllocProxy(T* v) : p(v) { }
 };
-template <class T> struct CArray {         // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
+template <class T> class CArray { public:         // retail CArray is 0x0c with the STLport _Vector_base shape (start, finish, alloc-proxy end)
     T*                  _M_start;
     T*                  _M_finish;
     CArrayAllocProxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CCardinalSpline {                   // retail 0x14 (PDB 0x18 with the 16-byte CArray)
+class CCardinalSpline { public:                   // retail 0x14 (PDB 0x18 with the 16-byte CArray)
     CArray<C3DVector> ControlPoints;       // +0
     float             Tension;             // +0xc
     bool              EndPointsConnected;  // +0x10
     CCardinalSpline() : Tension(0.5f), EndPointsConnected(false) { }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }

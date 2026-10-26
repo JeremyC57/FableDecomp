@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimFileXAllocationSizeChunk {
+class C3DAnimFileXAllocationSizeChunk { public:
     void* vftable;
     int destroyed;
 };

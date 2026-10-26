@@ -1,6 +1,6 @@
 // CGameScriptInterface::TellHeroQuestObjectiveFailed
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetObjectiveAsFailed(unsigned long objectiveId);
 };
 

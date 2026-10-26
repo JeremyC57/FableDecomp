@@ -4,7 +4,7 @@
 // caster position, flags it temporary/main with the caster's hand, activates it and appends it to the beam list.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -21,14 +21,14 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
     return C3DVector((float)(double)(pb[2] * pa[1] - pa[2] * pb[1]), (float)(double)(*(&b.Y - 1) * pa[2] - pa[0] * pb[2]),
                      (float)(double)(pb[1] * pa[0] - pa[1] * *(&b.Y - 1)));
 }
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CFloatRange { float Min, Max; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CFloatRange { public: float Min, Max; };
 struct CLightningBeamDef { CFloatRange RandomBeamYawRange, RandomBeamPitchRange; };
 
 static float g_randoms[2] = { 90.0f, 45.0f }; static int g_nRand = 0;
 static float GFFloatRandom(float range) { (void)range; return g_randoms[g_nRand++]; }
 
-struct CThing {
+class CThing { public:
     CRightHandedSet Set; C3DVector Position;
     const CRightHandedSet& GetRHSet() const { return Set; }
     const C3DVector& GetPosition() const { return Position; }
@@ -39,7 +39,7 @@ struct CLightningBeam {
     CLightningBeam(CThing* s) : Source(s), Life(0), Temporary(false), MainBeam(false), RightHand(false), Activated(0) { }
     void Activate() { ++Activated; }
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     CThing* Player; CLightningBeamDef* m_lspDef; CLightningBeam* m_lbBeams[4]; int m_nBeams;
     bool BeamsInitialised, LeftHand;
     float m_fAreaEffect, m_fActivationTime, m_fDeActivationTime, m_fTemporaryBeamLife;

@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour model of CBeggar::Main: scripted waits on "talked to by the hero", sit / stand calls, termination exits.
-struct CCharString { const char* text; CCharString(const char* t, int = -1) : text(t) {} };
+class CCharString { public: const char* text; CCharString(const char* t, int = -1) : text(t) {} };
 static int g_frame, g_terminateAt, g_talkFrames[8], g_talkCount, g_sitLog[8], g_sitCount, g_badName;
-struct CScriptThing {
+class CScriptThing { public:
     bool MsgIsTalkedToBy(const CCharString& name) const
     {
         if (std::strcmp(name.text, "SCRIPT_NAME_HERO") != 0) ++g_badName;
@@ -11,7 +11,7 @@ struct CScriptThing {
         return false;
     }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     void EntitySetAsSittingOnFloor(const CScriptThing&, bool sitting) const { g_sitLog[g_sitCount++] = sitting ? g_frame + 100 : g_frame; }
 };

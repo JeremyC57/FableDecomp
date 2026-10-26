@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BreakIntoMelee {
+class CCreatureAction_BreakIntoMelee { public:
     void* vftable;
     int destroyed;
 };

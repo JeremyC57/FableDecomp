@@ -1,6 +1,6 @@
 #include <cstdio>
 typedef unsigned long ulong;
-struct CCombatActionBase { void* vtbl; };
+class CCombatActionBase { public: void* vtbl; };
 ulong __fastcall CCombatActionBase_GetAnimExtraFlags(const CCombatActionBase* action)
 {
     (void)action;

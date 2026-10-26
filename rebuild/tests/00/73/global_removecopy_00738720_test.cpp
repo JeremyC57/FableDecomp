@@ -1,6 +1,6 @@
 // Behaviour test for 0x00738720 remove_copy over CDefPointer<const CMeleeCombatAbilityDef>.
 #include <stdio.h>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Release() { ++Released; }
     long RefCount;
@@ -12,8 +12,8 @@ struct CDefPointeeBase {
             Release();
     }
 };
-struct CMeleeCombatAbilityDef;
-template <class T> struct CDefPointer {
+class CMeleeCombatAbilityDef;
+template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer& operator=(const CDefPointer& o)
     {

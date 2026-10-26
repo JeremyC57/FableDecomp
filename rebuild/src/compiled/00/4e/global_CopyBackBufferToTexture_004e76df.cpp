@@ -4,9 +4,9 @@
 // the same 1-byte frame slot) and forwards both to a texture-format helper, then
 // returns the display manager itself.
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     CTexture* CopyBackBufferToTexture();
     void Helper(char* a, char* b);   // __fastcall @ 0x004dd170 (TextureFormat_Handler_01)
 };

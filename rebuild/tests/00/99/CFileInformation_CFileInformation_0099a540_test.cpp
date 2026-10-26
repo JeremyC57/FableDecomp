@@ -10,12 +10,12 @@ typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0099a540: CFileInformation's constructor default-constructs its three CDateAndTime members (zeroed) in order.
 static int g_order = 0;
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned long Month, Day, Hour, Minute, Second, Millisecond;
     long m_order;
     CDateAndTime() : Year(0), Month(0), Day(0), Hour(0), Minute(0), Second(0), Millisecond(0), m_order(++g_order) {}
 };
-struct CFileInformation {
+class CFileInformation { public:
     CDateAndTime CreationTime;
     CDateAndTime LastAccessTime;
     CDateAndTime LastWriteTime;

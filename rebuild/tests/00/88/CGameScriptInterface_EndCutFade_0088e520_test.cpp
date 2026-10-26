@@ -3,7 +3,7 @@
 static int g_a = 0;
 static int g_b = 0;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void helperA() { g_a = 1; }
     void helperB(int f) { g_b = f; }
     void EndCutFade();

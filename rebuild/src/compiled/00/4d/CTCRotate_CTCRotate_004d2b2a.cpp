@@ -7,20 +7,20 @@
 // Shape: a size-optimised TU (`push dword ptr [esp+8]` pass-through, `and dword ptr [..],0` zero stores, `or [..],-1`) =
 // `#pragma optimize("s", on)`; the scalar initialisers ahead of the CCharString member are scheduled around the vtable store.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                           // 0x0099E4B0
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _body[0x8];                // ParentThing +4, flags +8/+9
     CTCBase(CThing* parent);                 // 0x00686800
 };
 
-struct CTCRotate : CTCBase {
+class CTCRotate : public CTCBase { public:
     float         m_axis[3];                 // +0x0c C3DVector (not initialised)
     float         m_speed;                   // +0x18
     long          m_unknown1c;               // +0x1c (not initialised)

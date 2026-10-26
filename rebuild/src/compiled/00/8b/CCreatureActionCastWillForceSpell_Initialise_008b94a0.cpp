@@ -10,9 +10,9 @@
 #include "engine/CClass.h"
 #include "fable_string.h"
 
-struct CThing;
-struct CTCParamsBase;
-struct CTCForcePushPower;
+class CThing;
+class CTCParamsBase;
+class CTCForcePushPower;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
 
 struct CBaseIntelligentPointer {
@@ -27,7 +27,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct CThing : CClass {
+class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
     CTCForcePushPower* AddTC(const CCharString&, bool, CTCParamsBase*); // 0x004C9D60
@@ -35,13 +35,13 @@ struct CThing : CClass {
 FABLE_STATIC_ASSERT(offsetof(CThing, Type) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
 
-struct CTCForcePushPower {
+class CTCForcePushPower { public:
     unsigned char _pad00[0x10];
     long SpellLevel;                                   // native +0x10
     CIntelligentPointer_CThing PItemRemoved;            // native +0x14
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void* __vftable;
     unsigned char _pad04[0x04];
     CIntelligentPointer_CThing PCreature;              // +0x08
@@ -53,7 +53,7 @@ struct CCombatActionBase {
     void Initialise();                                 // 0x00857520
 };
 
-struct CCreatureAction_CastWillForceSpell : CCombatActionBase {
+class CCreatureAction_CastWillForceSpell : public CCombatActionBase { public:
     unsigned char _pad114[0x04];
     long LevelToCast;                                  // native +0x118
     void Initialise();

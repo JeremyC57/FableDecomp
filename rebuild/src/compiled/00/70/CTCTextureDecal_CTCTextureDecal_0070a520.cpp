@@ -10,8 +10,8 @@
 // itself and then stores it (STLport _List_base); the vector is a member object with an inline
 // constructor; the zeroes share ebx; malloc's `add esp,4` is delayed past the member stores.
 #include <stdlib.h>
-struct CThing;
-struct CEngineTextureDecal;
+class CThing;
+class CEngineTextureDecal;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -45,7 +45,7 @@ struct CRetailVector_EngineDecal {                          // retail std::vecto
     CRetailVector_EngineDecal() : First(0), Last(0), End(0) { }
 };
 
-struct CTCTextureDecal : CTCBase_Calls {                    // vtable 0x01264FAC
+class CTCTextureDecal : public CTCBase_Calls { public:                    // vtable 0x01264FAC
     CRetailList_DecalEntry    Decals;                       // +0x0c
     CRetailVector_EngineDecal EngineDecals;                 // +0x10
     long                      CurrentAllocEntryID;          // +0x1c

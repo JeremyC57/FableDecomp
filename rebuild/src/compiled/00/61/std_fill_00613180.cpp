@@ -9,16 +9,16 @@
 // string assignment call (its argument &val.UIDefName hoisted into ebp), then the five words after it. VC7.1
 // strength-reduces the destination into a second induction register at the Position member (`lea esi,[ebx+8]`; the
 // string's `this` is `lea ecx,[esi-4]`) and re-reads `last` from the frame word for the loop test.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
 };
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {                   // 28 bytes
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:                   // 28 bytes
         long        Region;                     // +0x00
         CCharString UIDefName;                  // +0x04
         C2DVector   Position;                   // +0x08

@@ -2,7 +2,7 @@
 // and the pending list is told to the informed creature, or reported to the village; linked deeds (0x35) report the link.
 #include <cstdio>
 
-struct COpinionDeed { long Type; bool Decriminalised; bool IsCrime; long LinkedHandle; };
+class COpinionDeed { public: long Type; bool Decriminalised; bool IsCrime; long LinkedHandle; };
 static COpinionDeed g_deeds[8];
 static int g_informed[16], g_reported[16], g_nInformed = 0, g_nReported = 0;
 static bool g_handled[16];
@@ -15,7 +15,7 @@ static bool IsCrime(const COpinionDeed* deed)
 }
 struct SListNode { SListNode* next; long data; };
 struct CLongList { SListNode* node; };
-struct CTCVillage {
+class CTCVillage { public:
     bool IsCrimeHandled(long h) { return g_handled[h]; }
     void ReportCrime(long h) { g_reported[g_nReported++] = (int)h; }
 };

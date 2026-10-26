@@ -4,7 +4,7 @@
 #include <string>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct CCharString { const char* PStringData; };            // 0 = null data
+class CCharString { public: const char* PStringData; };            // 0 = null data
 struct ComponentEntry { long Type; void* Component; };
 struct ComponentMap {
     ComponentEntry* Start; ComponentEntry* Finish;
@@ -12,7 +12,7 @@ struct ComponentMap {
 };
 struct CThingNative { unsigned int UsingComponents[9]; ComponentMap Components; unsigned char LifeFlags; };
 struct PointerView { CThingNative* Item; CThingNative* GetPItem() const { return Item; } };
-struct CSpawnedFuncBase { long LastScriptFrame, CurrentScriptFrame; };
+class CSpawnedFuncBase { public: long LastScriptFrame, CurrentScriptFrame; };
 struct ScriptBaseNative { CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { ScriptBaseNative* Script; };
 struct QuestManagerNative { ActiveQuest* PQuestCurrentlyRunning; };
@@ -23,8 +23,8 @@ struct CEventHitBy { long Frame; std::string Attacker; };
 struct CIsEventCreatedAfter { long Frame; CIsEventCreatedAfter(long f) : Frame(f) {} };
 struct CIsEventCreatedBeforeOrOn { long Frame; CIsEventCreatedBeforeOrOn(long f) : Frame(f) {} };
 struct CIsHitEventHitByThingWithScriptName { std::string ScriptName; CIsHitEventHitByThingWithScriptName(const CCharString& s) : ScriptName(s.PStringData ? s.PStringData : "") {} };
-template <class A, class B> struct CFilter_Bind2 { const A* First; const B* Second; CFilter_Bind2(const A& a, const B& b) : First(&a), Second(&b) {} };
-template <class A, class B, class C> struct CFilter_Bind3 { const A* First; const B* Second; const C* Third; CFilter_Bind3(const A& a, const B& b, const C& c) : First(&a), Second(&b), Third(&c) {} };
+template <class A, class B> class CFilter_Bind2 { public: const A* First; const B* Second; CFilter_Bind2(const A& a, const B& b) : First(&a), Second(&b) {} };
+template <class A, class B, class C> class CFilter_Bind3 { public: const A* First; const B* Second; const C* Third; CFilter_Bind3(const A& a, const B& b, const C& c) : First(&a), Second(&b), Third(&c) {} };
 typedef CFilter_Bind2<CIsEventCreatedAfter, CIsEventCreatedBeforeOrOn> CInFramesFilter;
 struct CTCEntityEventsNative {
     CEventHitBy Events[4]; int Count;
@@ -35,7 +35,7 @@ struct CTCEntityEventsNative {
         for (int i = 0; i < Count; ++i) if (Events[i].Frame > f.First->Frame && Events[i].Frame <= f.Second->Frame) { *out = (CEventHitBy*)&Events[i]; return true; }
         return false; }
 };
-struct CGameScriptThing { PointerView* PThing; bool MsgIsHitBy(const CCharString& attackerScriptName) const; };
+class CGameScriptThing { public: PointerView* PThing; bool MsgIsHitBy(const CCharString& attackerScriptName) const; };
 bool CGameScriptThing::MsgIsHitBy(const CCharString& attackerScriptName) const
 {
     const PointerView* p = PThing;

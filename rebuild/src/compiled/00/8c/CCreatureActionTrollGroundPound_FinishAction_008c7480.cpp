@@ -8,15 +8,15 @@
 // Shape: the out-parameter GetInterface as the if (component in esi, pushed only inside); `this` is passed to the erase by const reference, so it is
 // copied into the frame word the lookup key used (`mov [esp+0Ch],edi` after the `lea ; push`).
 // No engine header for this class; modelled locally (CCombatActionBase is 0x114 bytes in retail).
-struct CTCBase;
-struct CCreatureActionBase;
+class CTCBase;
+class CCreatureActionBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -42,23 +42,23 @@ struct CBaseIntelligentPointer {
 struct CActionSet {                         // std::set<CCreatureActionBase*>
     unsigned long erase(CCreatureActionBase* const& key);   // 0x0058119B
 };
-struct CTCHaste {                           // interface type 0x8c component
+class CTCHaste { public:                           // interface type 0x8c component
     unsigned char _pad0[0x18];
     CActionSet SpeedSources;                // +0x18
     void RecalculateSpeed();                // 0x00800020
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
     virtual void FinishAction();            // 0x00859A20
 };
-struct CCreatureAction_TrollGroundPound : CCombatActionBase {
+class CCreatureAction_TrollGroundPound : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

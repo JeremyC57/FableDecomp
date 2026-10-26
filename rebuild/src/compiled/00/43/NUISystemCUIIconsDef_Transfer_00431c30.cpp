@@ -8,18 +8,18 @@
 // so IconFriendRequestReceived sits at +0x3c and IconListHighlight at +0xb8. No generated engine header.
 // Shape: speed TU; the context (the argument) is held in edi and reloaded into ecx before every call, the member
 // addresses rotate through eax/ecx/edx, and the last member uses `this` itself (`add esi,0B8h`) since it is dead after.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& value);                  // 0x00431020
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x3c - 4];
 };
 
 namespace NUISystem {
 
-struct CUIIconsDef : CDefClassBase {
+class CUIIconsDef : public CDefClassBase { public:
     unsigned long IconFriendRequestReceived;     // +0x3c
     unsigned long IconFriendRequestReceivedOn;   // +0x40
     unsigned long IconFriendRequestSent;         // +0x44

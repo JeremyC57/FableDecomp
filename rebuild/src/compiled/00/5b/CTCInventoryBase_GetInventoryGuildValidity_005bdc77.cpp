@@ -8,12 +8,12 @@
 // TC store lands after the pushes), and the bool result uses the `mov al,1 / xor al,al` two-exit form.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CThingFilter_HasTC {
+class CThing;
+class CThingFilter_HasTC { public:
     long m_tc;
     CThingFilter_HasTC(long tc) : m_tc(tc) {}
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstLeafThing(const CThingFilter_HasTC& filter, CThing** out);   // 0x005C0D9D
 };
 CThingSearchTools* GetThingSearchTools();       // 0x00686D80

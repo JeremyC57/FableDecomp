@@ -11,7 +11,7 @@
 //   of an inline CWorld helper on a named world local (`world = GetWorld(); world->GetFramesSince(WF)`; written as one
 //   chained expression the lane loads the argument before the GetWorld call), then the inline
 //   body's static call); the difference is unsigned (`jbe`) because WFLastAttackedByCreature is unsigned long.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -19,14 +19,14 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem();                        // 0x00A01B50
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
     unsigned long GetFramesSince(unsigned long frame) { return GetWorldFrame() - frame; }
 };
 
 extern long g_GameFramesPerSecond;                  // 0x01375550
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0xf4];
     CBaseIntelligentPointer PLastAttackedByCreature;    // +0xf4
     unsigned long WFLastAttackedByCreature;             // +0xfc

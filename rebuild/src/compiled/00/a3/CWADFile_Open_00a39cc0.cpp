@@ -13,21 +13,21 @@
 // right to left through two null-case-first accessors (length, then text with the shared empty string
 // 0x0129AAF4), each testing the block again. A named local is read back from the frame, the two tests merge
 // into one, and its destructor runs after the FilePos store.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pText;                           // +0
     unsigned long m_length;                          // +4
 };
 
 extern const char g_EmptyString[];                   // 0x0129AAF4
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     ~CCharString();                                  // 0x0099EAE0
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetData() const { return m_pData == 0 ? g_EmptyString : m_pData->m_pText; }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
@@ -39,13 +39,13 @@ inline unsigned long GetNameCRC(const CCharString& name)
     return Calc_004014a0(0, name.GetData(), name.GetLength());
 }
 
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned long LookupValue(unsigned long nameCRC);   // 0x009CC410
 };
 
 enum FileAccessType { FILE_ACCESS_READ };
 
-struct CWADFile {
+class CWADFile { public:
     void*           m_vtable;                        // +0x00
     CBankFileAsync* Bank;                            // +0x04
     unsigned long   Index;                           // +0x08

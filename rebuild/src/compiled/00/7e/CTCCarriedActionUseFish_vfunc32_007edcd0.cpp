@@ -13,10 +13,10 @@
 // is the inline IsThingAlive on the raw pointer (null, then dead bit +0x91 & 1); the criminal is
 // the parent thing (this +4) and the sheathe action is given to the parent thing too; the parent is a
 // named local in each arm (edi, overwriting the dead `this`).
-struct CCreatureActionBase;
-struct CThingPlayerCreature;
+class CCreatureActionBase;
+class CThingPlayerCreature;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                     // +0x91 (bit 0 = dead)
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
@@ -33,18 +33,18 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer { };
+class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
-struct CCreatureActionBase {                        // retail sizeof 0xa8
+class CCreatureActionBase { public:                        // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_DeclarePlayerACriminal : CCreatureActionBase {
+class CCreatureAction_DeclarePlayerACriminal : public CCreatureActionBase { public:
     CIntelligentPointer<CThingPlayerCreature> PCriminal;   // +0xa8
     CCreatureAction_DeclarePlayerACriminal(CThingCreatureBase* owner, CThingPlayerCreature* criminal);   // 0x00843610
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {   // retail sizeof 0xb0
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:   // retail sizeof 0xb0
     unsigned char PNextAction[8];                   // +0xa8 CCountedPointer<CCreatureActionBase>
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* next, long kind);   // 0x0069FFD0
     ~CCreatureAction_SheatheItemToInventory();      // 0x0048C950 (out-of-line copy)

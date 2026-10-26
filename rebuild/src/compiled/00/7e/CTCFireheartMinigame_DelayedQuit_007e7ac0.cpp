@@ -19,7 +19,7 @@
 // inline by-value AddBOOL (the payload byte homed in the frame).
 #include <stddef.h>
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -36,7 +36,7 @@ public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
@@ -44,7 +44,7 @@ extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);      // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                     // +0x00
     signed char   Player;                                   // +0x04
     unsigned char Data[32];                                 // +0x05
@@ -54,19 +54,19 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBOOL(bool value) { Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank* Font;                                        // +0x1614c
     void AddGameEvent(const CGameEvent& event);             // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
-struct CFireheartMinigameDef {
+class CFireheartMinigameDef { public:
     unsigned char _pad00[0x30];
     unsigned long QuitText;                                 // +0x30
     unsigned long YesText;                                  // +0x34
     unsigned long NoText;                                   // +0x38
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

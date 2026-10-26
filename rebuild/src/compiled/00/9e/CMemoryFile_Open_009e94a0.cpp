@@ -12,7 +12,7 @@
 //   the 12-byte STLport vector<unsigned char>), Opened +0x1c, Pathname +0x20 -- engine/CMemoryFile.h is the PDB layout (16-byte
 //   container), so a local model is used. String "File does not exist: " @ 0x0129C37C.
 // Shape: the exception path follows the landed Read (no EH frame: the TU has no /EHsc, the throw leaves locals undestroyed).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -20,7 +20,7 @@ struct CCharString {
     operator const char*() const;                       // 0x0099E4C0
     friend CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
@@ -47,7 +47,7 @@ namespace N_0099a300 { struct CBase {
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)

@@ -13,7 +13,7 @@
 // byte of the already-consumed argument slot (`lea eax,[ebp+0Bh]`) instead of reserving a stack slot.
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CPlayerGui;
+class CPlayerGui;
 
 struct CDrawBase {
     virtual void v00();

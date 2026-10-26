@@ -6,13 +6,13 @@ struct Subobject
     int GetId(); // thiscall @ 0xa01b50, ecx=this, returns int
 };
 
-struct CThingAICreature
-{
+class CThingAICreature
+{ public:
     char pad[0x174];
 };
 
-struct CThingFilter_HasBuildingAsHome
-{
+class CThingFilter_HasBuildingAsHome
+{ public:
     int m_expected; // +0x00
 
     bool operator()(CThingAICreature* creature);

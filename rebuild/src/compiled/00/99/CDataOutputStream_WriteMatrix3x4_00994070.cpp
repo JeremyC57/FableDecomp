@@ -10,10 +10,10 @@
 #undef CDataOutputStream
 #include "fable_string.h"
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                         // RTTI base vtable 0x01231710
 };
 
@@ -28,7 +28,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual void Close() = 0;                             // slot 3
 };
 
-struct CDataOutputStream : CDataStream {
+class CDataOutputStream : public CDataStream { public:
     virtual ~CDataOutputStream();                  // slot 0, retail destructor 0x00996F00
     CCharString NewLine;                           // +0x04, actual CCharString member
     virtual void Write(const void* data, long length) = 0; // slot 4

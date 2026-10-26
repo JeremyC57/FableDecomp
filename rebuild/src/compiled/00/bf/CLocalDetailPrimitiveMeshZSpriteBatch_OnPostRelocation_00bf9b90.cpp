@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF9B90, length 48 bytes.
 // Leaf: OnPostRelocation
 // Callees: 0x00BD9AB0 (manager member, `ret 8`). The chunk label (vfunc_7) is the slot; the body mirrors CLandscapeLayerMesh::OnPostRelocation @ 0x00BFDD70. Shape: the manager in edi, `this` in esi, `ret`.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);   // 0x00BD9AB0 (an empty `ret 8` in retail; the landed 0x00BDD8E0 model calls it too)
     void AppendFreeEdgeNode(void* block);          // 0x00BDA090
     void FreeBlock(void* block);                   // 0x00BDA0D0

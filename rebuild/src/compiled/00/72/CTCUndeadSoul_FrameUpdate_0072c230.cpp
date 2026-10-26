@@ -13,7 +13,7 @@
 //        targeted component uses the `T* p = 0; if (HasTC) p = GetTC;` zero preload; the two arms are written out in
 //        full (each re-reads ParentThing).
 class CThing;
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -57,17 +57,17 @@ public:
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     bool IsAbleToUseAbility(long ability, bool checkLevel) const;   // 0x005EE49A (EHeroAbility)
 };
-struct CTCTargeted {
+class CTCTargeted { public:
     unsigned char _pad_0x00[0x10];
     bool          Targetable;                   // +0x10
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();            // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 

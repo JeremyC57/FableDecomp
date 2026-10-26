@@ -6,7 +6,7 @@
 //   "BinaryTree_InsertNode" is propagated/behavioural. Model: the landed twin 0x00AD3EF0 (map<unsigned long, float>) verbatim.
 // Callees: _Rb_tree_iterator::operator-- 0x00882E50 (the per-instantiation out-of-line copy, defined here under
 //   auto_inline(off) as in the landed twin), _M_insert(x, y, v, w) 0x00883920.
-namespace NScreenEffect { class CScreenEffectPriorityStack { public: class CStackEntry; }; }
+namespace NScreenEffect { class CScreenEffectPriorityStack { public: struct CStackEntry; }; }
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc {

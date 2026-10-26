@@ -13,12 +13,12 @@ void MicrothreadEntry(void* param) { (void)param; ++g_entryRuns; }
 long g_NumMicrothreads = 0;
 struct CFibreException { const char* m_text; CFibreException(const char* text) : m_text(text) { } };
 struct CBase { virtual ~CBase() { } };
-struct CASuspendableProcess : CBase {
+class CASuspendableProcess : public CBase { public:
     unsigned char Running, StopRunning, TerminateUsingExceptions; long TimeProcessSliceStarted; long TimesliceLength;
     CASuspendableProcess(bool terminateUsingExceptions, long unused, long timesliceLength)
         : Running(0), StopRunning(0), TerminateUsingExceptions(terminateUsingExceptions), TimeProcessSliceStarted(0), TimesliceLength(timesliceLength) { (void)unused; }
 };
-struct CSuspendableProcessMicrothread : CASuspendableProcess {
+class CSuspendableProcessMicrothread : public CASuspendableProcess { public:
     MicroThreadInfo* PMicrothread;
     CSuspendableProcessMicrothread(bool terminateUsingExceptions, long unused, long timesliceLength);
 };

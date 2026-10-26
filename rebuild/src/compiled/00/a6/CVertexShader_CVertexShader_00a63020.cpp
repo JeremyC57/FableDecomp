@@ -39,7 +39,7 @@ struct CVertexShaderData : CBaseClassNonCopyable {
     CVertexShaderData(D3DVertexDeclaration* declaration, D3DVertexShader* shader, const D3DVertexElement* format)
         : CBaseClassNonCopyable(), VertexDeclaration(declaration), VertexShader(shader), FormatDecl(format), ReferenceCount(1) {}
 };
-struct CShaderBase { virtual ~CShaderBase() {} };
+class CShaderBase { public: virtual ~CShaderBase() {} };
 struct CVertexShaderConstructorView : CShaderBase {
     CVertexShaderData* Data;
     virtual ~CVertexShaderConstructorView();

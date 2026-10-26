@@ -21,14 +21,14 @@ struct CManager {
     void Open() { Log("open;"); }
 };
 static CManager g_manager;
-struct CPlayerGui { CManager* GetPHeroInfoScreensManager() { return &g_manager; } };
+class CPlayerGui { public: CManager* GetPHeroInfoScreensManager() { return &g_manager; } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CPlayer {
+class CPlayer { public:
     void RemoveMode(EPlayerMode m) { char b[16]; std::sprintf(b, "-%d;", (int)m); Log(b); }
     void AddMode(EPlayerMode m, bool f) { char b[16]; std::sprintf(b, "+%d%c;", (int)m, f ? 't' : 'f'); Log(b); }
 };
-struct CPlayerManager { CPlayer p; CPlayer* GetMainPlayer() { return &p; } };
-struct CWorld {
+class CPlayerManager { public: CPlayer p; CPlayer* GetMainPlayer() { return &p; } };
+class CWorld { public:
     CPlayerManager* PlayerManager; bool Paused;
     void SetAsPaused(bool paused) { if (Paused != paused) Paused = paused; }
     void OpenHeroInformationScreen(EPlayerMode mode)

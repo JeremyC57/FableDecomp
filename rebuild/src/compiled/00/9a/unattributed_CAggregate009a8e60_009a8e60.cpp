@@ -9,7 +9,7 @@
 // destructor (@ 0x0099B510) is reached by tail call. Member types are named from the destructor
 // labels when unique, else by the destructor address. The manifest label (`_Dest_val<...>` /
 // `~allocator<CMacro>,CMacro>`) is propagated. One of 13 bodies of this shape.
-struct CWideString {
+class CWideString { public:
     unsigned char _body[0x4];
     ~CWideString();                            // 0x0099B510
 };

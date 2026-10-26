@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void* vftable;
     int destroyed;
 };

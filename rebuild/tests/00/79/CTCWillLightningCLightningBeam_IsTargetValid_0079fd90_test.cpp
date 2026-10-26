@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase { };
-struct CThing;
+class CTCBase { public: };
+class CThing;
 static int g_getPItem = 0;
 struct CBaseIntelligentPointer {
     void* __vftable;
@@ -32,7 +32,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_thingType;
     unsigned char _pad11[0x20 - 0x11];

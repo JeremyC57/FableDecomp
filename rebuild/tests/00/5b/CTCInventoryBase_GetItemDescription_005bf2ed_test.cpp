@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWideString { int v; };
+class CWideString { public: int v; };
 
 static int g_r;
 static void* g_ecx; static void* g_edx; static int g_arg;

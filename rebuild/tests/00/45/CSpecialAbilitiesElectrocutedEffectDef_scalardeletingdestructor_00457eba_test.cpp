@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesElectrocutedEffectDef { void* vftable; };
+class CSpecialAbilitiesElectrocutedEffectDef { public: void* vftable; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

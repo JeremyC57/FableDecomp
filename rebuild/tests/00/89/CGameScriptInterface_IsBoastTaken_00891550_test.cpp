@@ -2,16 +2,16 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::IsBoastTaken @ 0x00891550.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
 
     CCharString(const CCharString& other);
     explicit CCharString(const char* value) : text(value) {}
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     bool IsBoastTaken(long questId, CCharString boast);
 };
 

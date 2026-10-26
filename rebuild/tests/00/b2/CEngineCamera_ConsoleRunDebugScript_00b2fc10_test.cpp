@@ -7,7 +7,7 @@ static double GFGetTime() { ++g_timeCalls; return g_time; }
 
 struct CGenericVarVector { int dummy; };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     long   CurrentDebugScriptElement;
     bool   DebugScriptRunning;
     double DebugScriptElementStartTime;

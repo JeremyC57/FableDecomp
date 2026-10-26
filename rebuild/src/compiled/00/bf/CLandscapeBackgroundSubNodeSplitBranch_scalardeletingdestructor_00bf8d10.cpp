@@ -3,7 +3,7 @@
 // Leaf: ??_GCLandscapeBackgroundSubNodeSplitBranch@@QAEPAXI@Z
 // Shape: the derived vtable store folds into the base's; the class's own `operator delete` frees through the landscape memory manager, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FreeVirtual(void* block);                 // 0x00BD9B90
 };
 struct SEngine_01436ea8 {
@@ -11,11 +11,11 @@ struct SEngine_01436ea8 {
     CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
-struct CLandscapeBackgroundTreeNode {              // 0xe8 bytes
+class CLandscapeBackgroundTreeNode { public:              // 0xe8 bytes
     unsigned char _body[0xe8];
     ~CLandscapeBackgroundTreeNode();               // 0x00BF73A0
 };
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual void v00();
     ~CMovableResource() { }                        // inline: the vtable store
 };

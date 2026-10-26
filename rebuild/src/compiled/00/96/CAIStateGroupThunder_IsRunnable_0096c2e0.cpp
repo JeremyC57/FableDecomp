@@ -11,7 +11,7 @@
 // Shape: the const-thing pointer is a named local in its own block (an unnamed temporary lets VC use the ctor's eax
 //          `this` and tail-merge the two latch exits); GetInterface uses a separate `long type` key local.
 // Layout: Ego_r.pdb CAIStateGroup_Thunder (pack 1): PArenaCentre +0x14, bIsRangeAttack +0x1c, PTargetThing +0x1d, HitCount +0x28.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -47,7 +47,7 @@ public:
     CCharString ScriptName;
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
 };
-struct CThing;
+class CThing;
 class CThingSearchTools {
 public:
     template<class F, class T> bool GetPFirstThing(const F& filter, T** ppThing) const;   // 0x0056D050
@@ -73,7 +73,7 @@ struct CThunderDef : CDefVirtual {
     long          HitsBeforeTarget;                    // +0x3c
     long          EnvironmentThreshold;                // +0x40
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     template <class T> bool GetSubDef(T** out);        // 0x008E3240
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -87,7 +87,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(T** out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                   // +0x10 (2: creature)
     unsigned char _pad11[0x20 - 0x11];
@@ -118,7 +118,7 @@ struct CTCTargeting {                           // interface 8
 struct CTCEnvironmentValue {                    // interface 0xAD
     long GetValue();                            // 0x007AED40
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -145,7 +145,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {       // vtable 0
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

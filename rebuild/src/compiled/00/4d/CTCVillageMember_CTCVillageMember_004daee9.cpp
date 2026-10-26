@@ -8,16 +8,16 @@
 // PVillage(0) through the out-of-line converting constructor, VillageUID(0) as two `and` stores.
 // Layout: Ego_r.pdb CTCVillageMember (no containers, so retail = PDB): PDef +0x0C, PVillage +0x10, VillageUID +0x18,
 // sizeof 0x20 (the landed factory 0x004DC620). No engine header.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       Thing;                    // +0x04
     unsigned char _pad_0x08[0x4];
     CTCBase(CThing* thing);                 // 0x00686800
 };
 
-struct CVillageMemberDef;
+class CVillageMemberDef;
 
 struct CDefPointerVillageMemberDef {
     const CVillageMemberDef* Object;
@@ -30,7 +30,7 @@ struct CIntelligentPointer {
     CIntelligentPointer(CThing* thing);     // 0x004A96F0
 };
 
-struct CTCVillageMember : CTCBase {
+class CTCVillageMember : public CTCBase { public:
     CDefPointerVillageMemberDef PDef;       // +0x0C
     CIntelligentPointer         PVillage;   // +0x10
     unsigned __int64            VillageUID; // +0x18

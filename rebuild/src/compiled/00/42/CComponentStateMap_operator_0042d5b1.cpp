@@ -22,7 +22,7 @@
 // (`lea eax,[ebp+8]`). The default CUIState is a NAMED local: retail re-addresses it with
 // `lea eax,[ebp-24h]` after its constructor, where a bare `CUIState()` temporary pushes the
 // constructor's returned eax (80 v 83 bytes).
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 
 struct CUIState {
     unsigned char m_body[0x24];

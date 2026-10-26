@@ -2,7 +2,7 @@
 // virtual when PImp_Data is set, else returns a copy of the static default.
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int m_id;
     explicit CCharString(int id) : m_id(id) { }
     CCharString(const CCharString& other) : m_id(other.m_id) { }
@@ -17,7 +17,7 @@ struct CScriptThingVirtuals {
     virtual ~CScriptThingVirtuals() { }
 };
 
-struct CScriptThing {                               // the handle: vptr, PImp_Data, PImp_Info
+class CScriptThing { public:                               // the handle: vptr, PImp_Data, PImp_Info
     void* __vftable;
     CScriptThingVirtuals* PImp_Data;
     void* PImp_Info;

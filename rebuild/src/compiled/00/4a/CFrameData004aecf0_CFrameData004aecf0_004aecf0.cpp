@@ -3,7 +3,7 @@
 // Callees: CCharString::CCharString @ 0x0099E4B0 (+0xc), the string constructor @ 0x0099AED0 twice (+0x10, +0x14; labelled CCharString::CCharString, another
 // overload). Shape: no vtable store, the three clears share eax, `this` is returned. The manifest label "CFrameData::ResetTexture" is propagated.
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };

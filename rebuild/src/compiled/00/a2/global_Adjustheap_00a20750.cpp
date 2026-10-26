@@ -9,7 +9,7 @@
 // OnOpenList +0x10, OnClosedList +0x11.  The comparator is `a->TotalCost > b->TotalCost`
 // (`fld [a+0xc] ; fcomp [b+0xc] ; test ah,0x41 ; jne`), giving a min-heap on total cost.
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; the bottom case reuses idx (`first[idx - 1]`).
-struct CANavQuadTreeNode;
+class CANavQuadTreeNode;
 
 struct CAStarState {
     CAStarState* ParentState;          // +0x0
@@ -20,7 +20,7 @@ struct CAStarState {
     bool OnClosedList;                 // +0x11
 };
 
-struct CAStarStateTotalGreaterThan {
+class CAStarStateTotalGreaterThan { public:
     char m_tag;
     bool operator()(const CAStarState* a, const CAStarState* b) const { return a->TotalCost > b->TotalCost; }
 };

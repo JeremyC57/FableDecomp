@@ -16,7 +16,7 @@ class CBaseObject;
 class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct C3DVector {                                      // 1-aligned in retail (CProng::Prong sits at +1)
+class C3DVector { public:                                      // 1-aligned in retail (CProng::Prong sits at +1)
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };

@@ -9,27 +9,27 @@
 // (edi); the sleep window lives in two frame longs filled through pointers; the secondary lookup runs only when
 // the first returned null and the two definitions differ; the last call's result is returned as is.
 // Model: local (engine/CAIStateGroup_Gaze.h flattens the base; member names from it).
-struct CThingGameObject;
+class CThingGameObject;
 
 struct CGameTime {
     bool IsTimeOfDayInRange(long start, long end);          // 0x006BB390
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CGameTime* GameTime;                                    // +0x1c
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     void GetSleepTimes(long* start, long* end);             // 0x00833390
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

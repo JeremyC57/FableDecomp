@@ -21,7 +21,7 @@ struct CPtr {
         return *this;
     }
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     CPtr MemoryFailureHandler;
     CBankFileAsync() : MemoryFailureHandler(0, 0) {}
     void SetLoadingMemoryFailureHandler(CPtr handler)

@@ -11,9 +11,9 @@
 // virtual's zero al inline); the warehouse (edi) and the creature (ebx, a named
 // local read before GetPWorld) are fetched first, then the arguments right to left: the random
 // radius is computed into the reserved slot (`push ecx ; fstp [esp]`), then the position.
-struct C3DVector;
+class C3DVector;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char PWarehouse[8];                // +0x10 CIntelligentPointer<CThing>
     const C3DVector& GetPosition();             // 0x004C73D0
@@ -29,16 +29,16 @@ struct CThingCrate : CThing {
     CThing* GetPWarehouse() { return reinterpret_cast<CBaseIntelligentPointer*>(PWarehouse)->GetPItem(); }
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0
 };
 
-struct CGame {
+class CGame { public:
     unsigned char _pad[0x1613c];
     unsigned long m_randomSeed;                 // +0x1613c
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[8];
     CGame* m_pGame;                             // +0x08
     unsigned long* GetPRandomSeed();            // 0x0049D810
@@ -46,12 +46,12 @@ struct CWorld {
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

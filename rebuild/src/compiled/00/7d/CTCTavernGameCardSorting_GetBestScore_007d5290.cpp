@@ -12,13 +12,13 @@
 // Shape: the text is fetched before the mode test; a one-case `switch` (`return text;` inside the case, the empty-string return
 //        after the switch, its temporary homed in the dead hidden-result slot) gives `dec esi ; je` with the default arm first; `best != 0.0f` is
 //        `fld [0.0] ; fld best ; fucompp ; test ah,44h ; jnp`; the stats out pointer is left uninitialised.
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0xac];
     unsigned long BestScore;                    // +0xb4
     void ReleaseTemporary()
@@ -52,13 +52,13 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CTCHeroStats {                           // retail layout (PDB - 0x18 here)
+class CTCHeroStats { public:                           // retail layout (PDB - 0x18 here)
     unsigned char _pad[0x178];
     float BestTimePairs;                        // +0x178
     float BestTimeSorting;                      // +0x17c
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
     void GetHeroStats(CTCHeroStats** stats);    // 0x005EB4B0

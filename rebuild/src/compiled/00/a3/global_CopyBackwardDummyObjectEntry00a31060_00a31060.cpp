@@ -9,13 +9,13 @@
 // +0x3C. The TU is the mesh dummy-object one (0x00A314E0 / 0x00A33800 sort pair<unsigned long, C3DDummyObject>); the
 // manifest's `pair<CCharString,C3DDummyObject>` label is propagated (that pair is 0x38 bytes), so the record stays
 // descriptive. The count is kept in the `push ecx` frame word.
-struct CCharString {                         // one-word handle
+class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject {                      // Ego_r.pdb, 0x34 bytes
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public:                      // Ego_r.pdb, 0x34 bytes
     CMatrix3x4 Transform;                    // +0x00
     long       BoneIndex;                    // +0x30
 };

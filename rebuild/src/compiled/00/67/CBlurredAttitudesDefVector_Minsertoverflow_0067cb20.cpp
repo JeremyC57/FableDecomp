@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CBlurredAttitudesDef {                          // 0x48 bytes (vtable 0x0125B8AC)
+class CBlurredAttitudesDef { public:                          // 0x48 bytes (vtable 0x0125B8AC)
     virtual ~CBlurredAttitudesDef();
     unsigned char _body[0x44];
     CBlurredAttitudesDef(const CBlurredAttitudesDef& other);   // 0x0067C6D0

@@ -8,15 +8,15 @@
 // Shape: the members are transferred in source order of the def file, not layout order (the Sea*/Day*/BumpMap groups move).
 // Leaf: Transfer
 #pragma optimize("s", on)
-struct CCharString { void* Data; };
+class CCharString { public: void* Data; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(CCharString& value);               // 0x00431143
     void TransferBinary(long* value);                // 0x00431102
     void TransferBinary(float* value);               // 0x00431061
 };
 
-struct CEnvironmentDef {
+class CEnvironmentDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad04[0x38];                      // definition base (retail 4 bytes below the PDB)
     CCharString ColourLookupTexture;                 // +0x3c

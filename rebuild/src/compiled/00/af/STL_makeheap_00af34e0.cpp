@@ -56,7 +56,7 @@ public:
 enum EPSCType { PSC_TYPE_NONE = 0 };
 
 namespace NParticleEngine {
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CPSCBase* (__cdecl* AllocFunc)();                       // +0x0
     EPSCType ComponentType;                                 // +0x4
     CCharString GUIName;                                    // +0x8

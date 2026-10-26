@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CThing {
+class CThing { public:
     long m_pointers;
     long m_id;
 };

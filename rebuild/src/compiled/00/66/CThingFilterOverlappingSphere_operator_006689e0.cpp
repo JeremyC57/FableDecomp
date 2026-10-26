@@ -7,17 +7,17 @@
 // Shape: the bounding centre is a C3DVector local, the bounding radius lands in the dead thing argument slot; the deltas
 // are thing minus SpherePos, the radii summed as `boundRadius + Radius`; `if (d2 < r*r) return true; return false;`
 // gives the byte-constant exits.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
-struct CThingFilter_OverlappingSphere {
+class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                        // +0x00
     float     Radius;                           // +0x0c
     bool operator()(CThing* thing) const;

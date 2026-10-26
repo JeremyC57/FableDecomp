@@ -48,7 +48,7 @@ struct TMap {
     }
 };
 
-struct CWoundMorphs {
+class CWoundMorphs { public:
     mutable TMap Morphs;
     const CEntry* GetPRandomWoundForLocation(EBodyLocation location, u32& seed, long& index) const;
 };

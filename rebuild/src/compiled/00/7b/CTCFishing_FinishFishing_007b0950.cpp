@@ -31,7 +31,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
@@ -116,7 +116,7 @@ public:
     void SetButton1OverrideText(const CCharString& text);   // 0x0048F7C0
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
     unsigned char _pad19[0xf8 - 0x19];

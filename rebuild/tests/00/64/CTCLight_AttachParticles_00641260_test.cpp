@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test: CTCLight::AttachParticles -- only when the parent thing has interface 0x82 (bit 2 of the bitset word 4),
 // the particle attacher found through the interface map gets AttachParticles if its particle list is empty.
-struct CTCBase { int Kind; };
-struct CTCParticleAttacher : CTCBase {
+class CTCBase { public: int Kind; };
+class CTCParticleAttacher : public CTCBase { public:
     int* ParticleList_start; int* ParticleList_finish; int Attached;
     void AttachParticles() { ++Attached; }
 };
 struct Entry { long type; CTCBase* component; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     Entry* first; Entry* last;
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
@@ -18,7 +18,7 @@ struct CThing {
         return (it == last || type < it->type ? last : it)->component;
     }
 };
-struct CTCLight {
+class CTCLight { public:
     CThing* ParentThing;
     void AttachParticles()
     {

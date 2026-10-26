@@ -1,7 +1,7 @@
 // Behaviour test for 0x007C2980 std::__find over CIntelligentPointer<const CThing> (random-access, 4-way unrolled).
 #include <cstdio>
 
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 
 struct CBaseIntelligentPointer {
     CBaseObject* PItem;

@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    AccessType[0x4];                        // +0x04 FileAccessType
     long             Position;                               // +0x08
@@ -95,21 +95,21 @@ FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 #else
 #define NATIVE_ONLY(x)
 #endif
-struct CInputEvent;
-struct CInputEventPackage;
-struct CMouse;
-struct CKeyboard;
-struct CJoystick;
+class CInputEvent;
+class CInputEventPackage;
+class CMouse;
+class CKeyboard;
+class CJoystick;
 struct CCountedJoystick;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // 0099A2D0; native vtable01231710
     virtual ~CBaseClass();
 };
 template<class T> struct NativeVector { T* Start; T* Finish; T* End; };
-struct CChecksum { unsigned int Value[4]; };
+class CChecksum { public: unsigned int Value[4]; };
 enum EInputEventType { INPUT_NULL, INPUT_KEY_PRESSED, INPUT_KEY_HELD, INPUT_KEY_RELEASED };
 enum EInputKey { INPUT_KEY_NONE };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char Data[32]; // actual UInputEventData; no member interpreted in this method
     int DeviceType;
     int DeviceNumber;
@@ -123,8 +123,8 @@ struct CInputEvent {
     void SetAsKeyboardKeyReleased(EInputKey,double,double); // 00A03C50
     unsigned long GetChecksum() const; // 00A04160
 };
-struct CInputManagerInit { bool UseMouse,UseJoystick,UseKeyboard; };
-struct CInputManager : CBaseClass {
+class CInputManagerInit { public: bool UseMouse,UseJoystick,UseKeyboard; };
+class CInputManager : public CBaseClass { public:
     CInputManager(const CInputManagerInit&,bool); // authentic009F5BD0 dependency
     NativeVector<CInputEvent> ProcessedEvents;
     NativeVector<CInputEvent> EventStore;

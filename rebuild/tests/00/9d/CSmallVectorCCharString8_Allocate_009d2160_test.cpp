@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* PData;
     CCharString() : PData("") { ++g_live; }
     ~CCharString() { --g_live; }

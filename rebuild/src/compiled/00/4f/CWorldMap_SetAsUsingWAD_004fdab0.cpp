@@ -20,7 +20,7 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 
 static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
 
-struct CWideStringData {                                // STLport basic_string<wchar_t> + NoRefs
+class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
     unsigned short* _M_end_of_storage;
@@ -31,12 +31,12 @@ public:
     CWideStringData* PStringData;
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Reset(T* data);                                // 0x0050F2B0 for T = CWADBank

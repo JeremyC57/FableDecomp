@@ -16,7 +16,7 @@
 #include <new>
 #include <stddef.h>
 #include <stdlib.h>
-struct CCPPointerInfo {                                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                                    // CCountedPointer's shared block
     long  RefCount;                                        // +0x0
     void  (__fastcall* DeleteFunc)(void* data);            // +0x4
     void* Data;                                            // +0x8

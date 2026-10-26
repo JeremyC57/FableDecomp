@@ -2,7 +2,7 @@
 #include <stdio.h>
 static int g_log[8]; static int g_n = 0; static const void* g_removed;
 class CEngineInit;
-struct CIEngine {
+class CIEngine { public:
     virtual ~CIEngine() {}
     virtual void Validate() const {}
     virtual bool Initialise(const CEngineInit&) { return true; }
@@ -16,7 +16,7 @@ template <class T> class CTBaseSingleton {
 public:
     static T& __fastcall Get() { static T inst; g_log[g_n++] = 2; return inst; }
 };
-struct CDisplayEngine { unsigned char _pad[0x2c]; CIEngine* Engine3D; };
+class CDisplayEngine { public: unsigned char _pad[0x2c]; CIEngine* Engine3D; };
 struct CDisplayEngine_Methods : CDisplayEngine {
     void UninitEngine();
 };

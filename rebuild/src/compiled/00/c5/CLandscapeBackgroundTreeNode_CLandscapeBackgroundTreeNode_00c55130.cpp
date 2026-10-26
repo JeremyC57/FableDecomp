@@ -20,7 +20,7 @@ struct CTreeNodeSlot_00c55130 {            // +0x1f0: vtable 0x012B5868
     ~CTreeNodeSlot_00c55130() { }
 };
 
-struct CLandscapeBackgroundTreeNode : CTreeNodeBase_00c55130 {   // vtable 0x012B8AE0
+class CLandscapeBackgroundTreeNode : public CTreeNodeBase_00c55130 { public:   // vtable 0x012B8AE0
     unsigned char _pad[0x1ec];
     CTreeNodeSlot_00c55130 m_slot;         // +0x1f0
     unsigned char _pad2[0x2c];

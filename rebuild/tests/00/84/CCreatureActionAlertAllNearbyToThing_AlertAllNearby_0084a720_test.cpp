@@ -25,20 +25,20 @@
 //        destructor.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing { };
-struct CTCPerceiveThing {
+class CThingCreatureBase : public CThing { public: };
+class CTCPerceiveThing { public:
     void SetAsIndirectlyAwareOfPerceivedThing();   // 0x007449E0
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI(const C2DCoordI& topLeft, const C2DCoordI& bottomRight) : TopLeft(topLeft), BottomRight(bottomRight) {}
@@ -54,15 +54,15 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* end() const { return _M_finish; }
 };
 
-struct CThingFilter_IsPerceivingThing {
+class CThingFilter_IsPerceivingThing { public:
     const CThing* PerceivedThing;
     CThingFilter_IsPerceivingThing(const CThing* thing) : PerceivedThing(thing) {}
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     const CThing* Thing;
     CThingFilter_IsNot(const CThing* thing) : Thing(thing) {}
 };
-template <class F1, class F2> struct CFilter_Bind2 {
+template <class F1, class F2> class CFilter_Bind2 { public:
     const F1* F1_;
     const F2* F2_;
     CFilter_Bind2(const F1& a, const F2& b) : F1_(&a), F2_(&b) {}
@@ -70,7 +70,7 @@ template <class F1, class F2> struct CFilter_Bind2 {
 typedef CFilter_Bind2<CThingFilter_IsPerceivingThing, CThingFilter_IsNot> CAlertFilter;
 
 extern "C" void* __cdecl malloc(unsigned int size);     // stand-in only
-struct CThingSearchTools {
+class CThingSearchTools { public:
     CThing* FirstThingInArea(const C2DBoxI& area) const;           // stand-in callees of the stand-in body below
     CThing* NextThingInArea(const C2DBoxI& area, CThing* previous) const;
     template <class TFilter> bool Accepts(const TFilter& filter, CThing* thing) const;
@@ -113,7 +113,7 @@ template <class R, class T> inline mem_fun_t<R, T> mem_fun(R (T::*f)()) { return
 template <class I, class F> F __fastcall for_each(I first, I last, F f);   // 0x0084AD60 (this instantiation)
 }
 
-struct CCreatureAction_AlertAllNearbyToThing {
+class CCreatureAction_AlertAllNearbyToThing { public:
     static void __fastcall AlertAllNearby(const CThingSearchTools& tools, const CThing& perceived, CThingCreatureBase& alerter,
                                           float radius);
 };

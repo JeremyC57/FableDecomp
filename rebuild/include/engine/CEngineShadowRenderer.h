@@ -11,7 +11,8 @@
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x8];                           // +0x04 flattened base-class subobject(s)
     unsigned char SceneData[0x240];                          // +0x0c CShadowRendererSceneData

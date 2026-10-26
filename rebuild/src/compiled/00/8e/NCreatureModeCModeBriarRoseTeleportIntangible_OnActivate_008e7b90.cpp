@@ -14,19 +14,19 @@
 //   released at the end; GetSubDef has a same-TU stand-in body (out pointer does not escape, so the holder lives in ebx); the
 //   six channel transitions run only for a positive count, through an inline CGlobalComponents::GetEnvironment() (the getter call
 //   then precedes the argument pushes).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1 (+0x04)
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -57,7 +57,7 @@ struct CBriarRoseTeleportDef : CDefPointeeBase {
     long          ThemeChangeCount;             // +0x3c
     float         ThemeScale;                   // +0x40
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CBriarRoseTeleportDef>* out);   // 0x008E7790
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -74,7 +74,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CBriarRoseTelepor
 }
 #pragma auto_inline(on)
 struct CModeBase;
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -111,7 +111,7 @@ struct CTCType9 {                               // the type-9 component
     unsigned char _pad00[0x10];
     bool          m_active;                     // +0x10
 };
-struct CEnvironment {
+class CEnvironment { public:
     void TransitionToTheme(long channel, long mode, long count, float scale);   // 0x006B3800
 };
 struct CGlobalComponents {

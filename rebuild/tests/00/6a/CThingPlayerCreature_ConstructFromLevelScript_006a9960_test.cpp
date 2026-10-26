@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CThingCreatureDef { float MaxHealth; };
-template <class T> struct CDefPointer {
+class CThingCreatureDef { public: float MaxHealth; };
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;
     unsigned char Drawable : 1;
     unsigned char _flags92_2 : 6;
@@ -14,7 +14,7 @@ struct CThingCreatureBase {
     bool m_baseOk;
     bool ConstructFromLevelScript(const char* script) { (void)script; return m_baseOk; }
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     bool vfunc_4(const char* script);
 };
 bool CThingPlayerCreature::vfunc_4(const char* script)

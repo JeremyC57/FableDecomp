@@ -11,12 +11,12 @@ public:
 class CMeshDataBank
 {
 public:
-    struct CLipSyncEntry;
+    class CLipSyncEntry;
 };
 
 template <typename T>
-struct CArray
-{
+class CArray
+{ public:
     int m_pFirst;
     int m_pLast;
 };

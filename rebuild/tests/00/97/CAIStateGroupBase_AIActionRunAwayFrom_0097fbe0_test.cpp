@@ -1,25 +1,25 @@
 // Behaviour test for CAIStateGroupBase::AIAction_RunAwayFrom @ 0x0097FBE0: abort/done exits, directed run, wander retry, idle.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CThing {
+class CThing { public:
     C3DVector pos; bool dead; unsigned char m_flags6c;
     const C3DVector& GetPosition() const { return pos; }
 };
 static int g_awareLeft = 0; static int g_directedOk = 0; static int g_wanderOk = 0;
 static int g_moveResults[8]; static int g_moveN = 0; static int g_lastRepeat = -1; static C3DVector g_lastDir;
 static int g_idle = 0; static int g_idleResult = 2;
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool GetNearbyDirectedPosition(const C3DVector& from, float radius, const C3DVector& dir, float spread, C3DVector* out)
     { (void)from; (void)radius; (void)spread; g_lastDir = dir; if (!g_directedOk) return false; *out = C3DVector(9, 9, 9); return true; }
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag)
     { (void)from; (void)radius; (void)flag; if (!g_wanderOk) return false; *out = C3DVector(7, 7, 7); return true; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CTCCreatureNavigation nav;
     static float GetPersonalSpaceRadius() { return 2.0f; }
     void GetInterfaceR(CTCCreatureNavigation** out, long type, bool& has) { has = type == 7; if (has) *out = &nav; }
@@ -28,12 +28,12 @@ struct CIntelligentPointerConstThing { CThing* m_pItem; CThing* GetPItem() const
 struct CIntelligentPointerConstCreature { CThing* m_pItem; CIntelligentPointerConstCreature(CThing* p) : m_pItem(p) { } CThing* GetPItem() const { return m_pItem; } };
 template <class P> static bool IS_THING_ALIVE(const P& p) { return p.GetPItem() != 0 && !p.GetPItem()->dead; }
 static bool IsAwareOfThingImplementation(CThingCreatureBase* c, CThing* t, bool f) { (void)c; (void)t; (void)f; if (g_awareLeft > 0) { --g_awareLeft; return true; } return false; }
-struct CAIBrain { CThingCreatureBase* Creature; };
+class CAIBrain { public: CThingCreatureBase* Creature; };
 enum EAIActionRepeat { AI_ACTION_REPEAT_ONCE = 0, AI_ACTION_REPEAT_UNTIL_DONE = 1, AI_ACTION_REPEAT_POLL = 2 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 enum EMovementType { MOVEMENT_DEFAULT, MOVEMENT_RUN = 5 };
-struct CCreatureActionBase;
-struct CAIStateGroupBase {
+class CCreatureActionBase;
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1,

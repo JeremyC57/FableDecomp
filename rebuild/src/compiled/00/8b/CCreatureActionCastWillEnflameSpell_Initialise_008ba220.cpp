@@ -16,16 +16,16 @@
 // +0x114 / +0x118. The component's fields (active byte +0xc, level +0x14, target pointer +0x18) are descriptive.
 // Frame: the same-TU CVectorMap::LowerBound stand-in (auto_inline(off), above the caller) is what lets the lookup key
 // share its frame word with the name temporary and the by-value operator= parameter, as retail (LTCG) does.
-struct CTCParamsBase;
-struct CBaseObject;
-struct CTCBase;
+class CTCParamsBase;
+class CBaseObject;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     virtual void v00();
     CThing* PItem;                              // +4
@@ -65,7 +65,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CTCWillEnflame {                         // interface type 0x95
+class CTCWillEnflame { public:                         // interface type 0x95
     unsigned char _pad00[0xc];
     bool          Active;                       // +0x0c
     unsigned char _pad0d[7];
@@ -73,7 +73,7 @@ struct CTCWillEnflame {                         // interface type 0x95
     CIntelligentPointerThing PTarget;           // +0x18
     void SetPTarget(CThing* target, bool zTargetting);   // 0x007A4350
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -101,7 +101,7 @@ struct CThing {
     }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer PCreature;          // +0x08 (the owning creature)
@@ -113,7 +113,7 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CCreatureAction_CastWillEnflameSpell : CCombatActionBase {
+class CCreatureAction_CastWillEnflameSpell : public CCombatActionBase { public:
     long Level;                                 // +0x114 (PDB +0x12c)
     bool IsZTargetting;                         // +0x118 (PDB +0x130)
     virtual void Initialise();

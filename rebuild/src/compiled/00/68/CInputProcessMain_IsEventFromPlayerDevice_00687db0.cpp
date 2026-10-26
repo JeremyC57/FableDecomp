@@ -4,11 +4,11 @@
 // CPlayer::IsUsingJoystickDeviceNumber(long) @ 0x004874F0 (MyPlayer +0x18, engine/CInputProcessGameBase.h).
 // Shape: the event reference in edi for both accessor calls, `cmp eax,1 ; jne` to the `mov al,1` tail, the bool of the player call
 // passed through al, `ret 4`.
-struct CInputEvent {
+class CInputEvent { public:
     long GetDevice() const;                         // 0x00A03B50
     long GetDeviceNumber() const;                   // 0x00A03B60
 };
-struct CPlayer {
+class CPlayer { public:
     bool IsUsingJoystickDeviceNumber(long deviceNumber);   // 0x004874F0
 };
 struct CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -20,7 +20,7 @@ struct CInputProcessGameBase {                      // engine/CInputProcessGameB
     void*         Component;                        // +0x20
     void*         PGamePlayerInterface;             // +0x24
 };
-struct CInputProcessMain : CInputProcessGameBase {  // vtable 0x0123758C
+class CInputProcessMain : public CInputProcessGameBase { public:  // vtable 0x0123758C
     bool IsEventFromPlayerDevice(const CInputEvent& event);
 };
 

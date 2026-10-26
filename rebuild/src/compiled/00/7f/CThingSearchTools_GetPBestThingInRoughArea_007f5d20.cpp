@@ -9,16 +9,16 @@
 
 #include <string.h>
 #include <stdlib.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
 // Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-struct CThing {
+class CThing { public:
     enum { TypeMask = 0 };
     unsigned char _pad00[0x60];
-    struct CTCPhysicsBase* PhysicsTC;                      // +0x60
+    class CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
@@ -31,24 +31,24 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
 }
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
-struct CThingPhysical : CThing { enum { TypeMask = 0x3 }; };
-struct CThingFilter_IsInterestingToCreature {
+class CThingPhysical : public CThing { public: enum { TypeMask = 0x3 }; };
+class CThingFilter_IsInterestingToCreature { public:
     bool operator()(const CThing* thing) const;   // 0x006A7120
 };
-struct CThingFilter_IsInCreatureFOV {
+class CThingFilter_IsInCreatureFOV { public:
     bool operator()(const CThing* thing) const;   // 0x006A73C0
 };
-struct CThingFilter_IsPerceptible {
+class CThingFilter_IsPerceptible { public:
     bool operator()(const CThing* thing) const;   // 0x006A8450
 };
 // CFilter_Bind3: holds references to its sub-filters (+0, +4, ...) and ANDs them in order.
-template <class F1, class F2, class F3> struct CFilter_Bind3 {
+template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1& Filter1;
     const F2& Filter2;
     const F3& Filter3;
     bool operator()(const CThing* thing) const { return Filter1(thing) && Filter2(thing) && Filter3(thing); }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     CThingPhysical* operator()(CThingPhysical* best, CThingPhysical* candidate) const;   // 0x007F5730
 };
 // One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
@@ -99,7 +99,7 @@ struct CMapVector {
 };
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08

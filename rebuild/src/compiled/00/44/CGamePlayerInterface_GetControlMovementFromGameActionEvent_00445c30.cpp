@@ -7,14 +7,14 @@
 // {EGameAction, CCountedPointer<const CInputTypeBase>} = 12 bytes, the input type object at +4.
 // Shape: the upper bound is taken first (kept in ebx), then the lower bound walks to it; the input type object is a named local per entry (esi, used by
 // both virtual calls; going through the entry twice re-reads it); the movement is the implicit two-dword copy of the returned vector.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct CInputEvent;
+class CInputEvent;
 
-struct CInputTypeBase {
+class CInputTypeBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -40,7 +40,7 @@ struct CControlsMap {                       // CVectorMap<EGameAction, CCountedP
     SControlEntry* LowerBound(const long* key);   // 0x00447C80
 };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     unsigned char _pad[0x7a8];
     CControlsMap  Controls;                 // +0x7a8
     bool GetControlMovementFromGameActionEvent(long action, const CInputEvent& event, C2DVector& movement);

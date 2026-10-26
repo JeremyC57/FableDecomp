@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CStringParser {
+class CStringParser { public:
     const char* String;
     CStringParser(const char* text) : String(text) {}
 };
@@ -17,7 +17,7 @@ struct CPersistTraits {
     }
 };
 
-struct CAnimComponentStrikeSpeedMultiplier {
+class CAnimComponentStrikeSpeedMultiplier { public:
     float AnimationSpeedMultiplier;
     int resets;
     virtual ~CAnimComponentStrikeSpeedMultiplier() {}

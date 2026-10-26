@@ -7,7 +7,7 @@
 // Shape: the out pointer is an UNinitialised local (no zero store; the CoinGolf override 0x007D4A90
 //        initialises it and tests the result) living in the `push ecx` slot and re-read for each
 //        call; the +0x34 object comes through an inline accessor so it loads straight into ecx.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ReleaseScriptedControl();                  // 0x00698950
     void ResetCamera();                             // 0x0069A990
 };
@@ -18,13 +18,13 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera);     // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x34];
     CCameraManagerSource* m_pCameraSource;          // +0x34
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x108];
     CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void LeaveGame();                               // 0x005EC650

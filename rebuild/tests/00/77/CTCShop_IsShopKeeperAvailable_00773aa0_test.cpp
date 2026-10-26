@@ -25,7 +25,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return it;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -59,11 +59,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char _pad00[0x42];
     bool RepressedOpinions;
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00() {}
     void*                   ParentThing;
     bool                    ToBeRemoved;

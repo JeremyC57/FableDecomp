@@ -2,9 +2,9 @@
 // Behaviour test for CTCEffectOnDie scalar deleting destructor (0x007E0DB0): the death-sound string dies
 // before the CTCBase base, once per delete.
 static int g_order[8]; static int g_n = 0;
-struct CTCBase { virtual ~CTCBase() { g_order[g_n++] = 1; } long ParentThing; bool ToBeRemoved; };
-struct CCharString { void* m_pData; ~CCharString() { g_order[g_n++] = 2; } };
-struct CTCEffectOnDie : CTCBase {
+class CTCBase { public: virtual ~CTCBase() { g_order[g_n++] = 1; } long ParentThing; bool ToBeRemoved; };
+class CCharString { public: void* m_pData; ~CCharString() { g_order[g_n++] = 2; } };
+class CTCEffectOnDie : public CTCBase { public:
     bool StartedNonRecoverableFadeout; long Effect, Timer, FadeOutTimer;
     CCharString DeathSoundCriteria; bool Pausable, Paused;
     virtual ~CTCEffectOnDie() { }

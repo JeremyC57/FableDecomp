@@ -6,14 +6,14 @@
 // or hand-copied, is copied through `lea` base pointers; a C3DVector user copy constructor goes through the x87). `ret 4`.
 // Layout as PerformAction (0x00842D40): TCShop +0xa8, Goods +0xac, Pos +0xb0, RHSet {Up, Forward} +0xbc (PDB names; the PDB header sits
 // 0x0c bytes high against retail's 0xa8-byte CCreatureActionBase).
-struct CTCShop;
+class CTCShop;
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);     // 0x0062EBC0
 };
-struct CCreatureAction_ShopkeeperGetOut : CCreatureActionBase {   // vtable 0x01273FCC; retail sizeof 0xd4
+class CCreatureAction_ShopkeeperGetOut : public CCreatureActionBase { public:   // vtable 0x01273FCC; retail sizeof 0xd4
     CTCShop* TCShop;                        // +0xa8
     long Goods;                             // +0xac
     float PosX, PosY, PosZ;                 // +0xb0 C3DVector Pos

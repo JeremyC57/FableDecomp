@@ -15,14 +15,14 @@
 // Shape: the deed log comes through the landed GetInterface idiom (uninitialised pointer, the dead argument slot read when the
 // interface is absent); the effects def pointer's release is the DecRef / GetRefCount form (as the landed InformOfDeed
 // 0x00683590); the self test reads ParentThing before the GetPItem call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -43,13 +43,13 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld* World;                                      // +0x24
 };
@@ -65,7 +65,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
+class COpinionDeedEffectsDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0x70 - 0x08];
     long Severity;                                      // +0x70 ECrimeSeverity
     void ReleaseTemporary()
@@ -75,7 +75,7 @@ struct COpinionDeedEffectsDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -89,23 +89,23 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                      // +0x04
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long Type;                                          // +0x00 EOpinionDeedType
     unsigned char _pad04[0x14];
     CBaseIntelligentPointer Perpetrator;                // +0x18
 };
-struct CTCHeroOpinionDeedLog {                          // interface 0x51
+class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long deedType);   // 0x006C5630
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool IsDeedHandled(long handle);                    // 0x0065914B
     void RecalculateSecuritySweep(long flags);          // 0x00659C32
 };
-struct CTCVillageMember {                               // interface 0x23
+class CTCVillageMember { public:                               // interface 0x23
     CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 
-struct CTCGuard {
+class CTCGuard { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x44 - 0x08];

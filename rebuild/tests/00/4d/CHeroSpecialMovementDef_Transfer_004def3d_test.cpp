@@ -7,13 +7,13 @@ struct C { int x; };
 int g_seq[8];
 int g_n = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistA(A* p) { g_seq[g_n++] = 1; p->x += 10; }
     void PersistB(B* p) { g_seq[g_n++] = 2; p->x += 20; }
     void PersistC(C* p) { g_seq[g_n++] = 3; p->x += 30; }
 };
 
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     unsigned char _pad[0x28];
     A a;
     B b;

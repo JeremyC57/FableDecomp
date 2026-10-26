@@ -24,7 +24,7 @@ struct CIntelligentPointer : CMemberBase_00a01b10 {
     CIntelligentPointer() : CMemberBase_00a01b10() { }            // inlined into every constructor that embeds it
 };
 
-struct CAIStateGroup_LightHomeCandle : CBase_008fd255 {
+class CAIStateGroup_LightHomeCandle : public CBase_008fd255 { public:
     unsigned char _pad[0x10];        // base members / earlier members, not touched here
     CIntelligentPointer m_member;                       // +0x14
     virtual void v00();

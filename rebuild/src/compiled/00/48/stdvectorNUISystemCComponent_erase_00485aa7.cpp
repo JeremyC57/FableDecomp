@@ -4,8 +4,8 @@ typedef unsigned long ulong;
 // External helper at 0x405ba0: __fastcall(ecx=first, edx=second, stack=third)
 unsigned long __fastcall ListBoxDataHelper(ulong a, ulong b, ulong c);
 
-struct CGuiControlListBox
-{
+class CGuiControlListBox
+{ public:
     void *m_vtbl;      // +0
     ulong m_entry;     // +4
 

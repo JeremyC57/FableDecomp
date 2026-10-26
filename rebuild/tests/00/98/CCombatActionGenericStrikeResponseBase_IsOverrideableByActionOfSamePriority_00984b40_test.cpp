@@ -1,14 +1,14 @@
 // Behaviour test for 0x00984B40 (label IsOverrideableByActionOfSamePriority): target present, alive, interface 81, farther than 3 m.
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     float Length() const { return (float)std::sqrt(X * X + Y * Y + Z * Z); }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { C3DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; r.Z = a.Z - b.Z; return r; }
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9]; unsigned char m_flags; C3DVector pos;
     CThing() : m_flags(0) { for (int i = 0; i < 9; ++i) m_presentBits[i] = 0; pos.X = pos.Y = pos.Z = 0; }
     bool IsDead() const { return (m_flags & 1) != 0; }

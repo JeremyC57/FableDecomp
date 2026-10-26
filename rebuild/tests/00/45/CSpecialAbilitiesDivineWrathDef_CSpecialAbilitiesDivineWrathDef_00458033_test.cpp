@@ -8,7 +8,7 @@ public:
     unsigned long _body[0x0E];
     CParentDefClassBase();                         // 0x00430370
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 template <class T> struct CRetailVector {          // retail std::vector<T> (12 bytes)

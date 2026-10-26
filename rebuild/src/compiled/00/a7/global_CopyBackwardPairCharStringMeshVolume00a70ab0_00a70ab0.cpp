@@ -9,7 +9,7 @@
 // CCharString::operator= @ 0x0099EFB0 for the name, then runs the inlined CCountedPointer::operator= (source fields
 // read first; when the count blocks differ release the old block -- destroy function at +4 with the object, then
 // operator delete @ 0x00BFE9BC -- adopt both words and add a reference), modelled as the landed 0x0084F130.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                           // +0x00
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
@@ -44,7 +44,7 @@ struct CCountedPointer {                     // CCountedPointer<CContainmentVolu
     }
 };
 
-struct C3DMeshVolume {                       // Ego_r.pdb, 12 bytes
+class C3DMeshVolume { public:                       // Ego_r.pdb, 12 bytes
     CCharString     Name;                    // +0x00
     CCountedPointer ConvexVolume;            // +0x04 CCountedPointer<CContainmentVolume>
 };

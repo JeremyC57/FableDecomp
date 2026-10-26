@@ -7,7 +7,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, ::SetPItem @ 0x00A01B90, ::CBaseIntelligentPointer() @ 0x00A01B10,
 // ::~CBaseIntelligentPointer @ 0x00A01C10, __adjust_heap @ 0x00926850. Callers 0x00927577 / 0x00927727.
 // Shape: identical to 0x008081B0 (speed TU, /Gr __fastcall, __forceinline copy constructor and assignment).
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                        // +4

@@ -7,9 +7,9 @@ struct Thing {
     unsigned char flags91;  // +0x91
 };
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 typedef Thing* (__fastcall *GetThingFn)(CGameScriptInterface*);
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     GetThingFn* vt;
 };
 

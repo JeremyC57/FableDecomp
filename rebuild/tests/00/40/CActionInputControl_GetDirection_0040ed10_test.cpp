@@ -4,9 +4,9 @@
 const float g_floatEpsilon = 0.0001f;
 const float g_floatZero = 0.0f;
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction; long ControllerType; long KeyboardKey; long XboxButton; long MouseButton;
     C2DVector ControlDirection;
     long GetDirection() const

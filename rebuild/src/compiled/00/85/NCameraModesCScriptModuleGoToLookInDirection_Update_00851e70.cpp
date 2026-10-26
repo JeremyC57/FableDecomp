@@ -10,7 +10,7 @@
 // Layout: PDB NCameraModes::CScriptModuleGoToLookInDirection (0x64 bytes): GoTo +0x4c, LookDirection
 // +0x58 over the 0x4c-byte CScriptModuleBase (POwner +0x38, typed CBase* in the PDB; the object written
 // here holds the look-at at +0x10 and the position at +0x54 and is modelled locally as CCameraState).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector operator+(const C3DVector& other) const

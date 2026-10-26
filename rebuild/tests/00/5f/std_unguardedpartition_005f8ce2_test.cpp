@@ -27,7 +27,7 @@ inline void iter_swap(ForwardIter1 a, ForwardIter2 b)
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const stl::pair<K, V>& a, const stl::pair<K, V>& b) const { return a.first < b.first; }
 };
 

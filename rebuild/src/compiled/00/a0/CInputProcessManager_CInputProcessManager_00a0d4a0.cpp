@@ -7,7 +7,7 @@
 // object with an inline constructor), the outer array is `dec ebx ; jne` over `add edi,0B0h`, and the count is stored after the loop
 // (a body assignment; an initialiser would be stored first).
 // Leaf: ??0CInputProcessManager
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                             // +0x00
     signed char   Player;                           // +0x04
     unsigned char Data[32];                         // +0x05
@@ -16,7 +16,7 @@ struct CGameEvent {
     bool          Replacement;                      // +0x27
     CGameEvent();                                   // 0x004159A0
 };
-struct CProcessedInput {                            // 0xb0 bytes
+class CProcessedInput { public:                            // 0xb0 bytes
     long          Player;                           // +0x00
     long          Type;                             // +0x04 EProcessedEventType
     CGameEvent    GameEvents[4];                    // +0x08
@@ -35,7 +35,7 @@ struct CBase {
     virtual void v00();
     CBase();                                        // 0x0099A2F0
 };
-struct CInputProcessManager : CBase {               // vtable 0x0129CA38
+class CInputProcessManager : public CBase { public:               // vtable 0x0129CA38
     virtual void v00();
     CLinkedList_CAInputProcess InputProcessList;    // +0x04
     CProcessedInput QueuedProcessedInputs[10];      // +0x14

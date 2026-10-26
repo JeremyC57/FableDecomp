@@ -10,7 +10,7 @@
 extern long g_framesPerSecond;                  // 0x01375550
 long __fastcall GFGetFrameCount();              // 0x0049D870
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
 };

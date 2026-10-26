@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstring>
 static int g_seq[8]; static int g_n = 0;
-struct CSoundPair { long First, Second; };
+class CSoundPair { public: long First, Second; };
 struct CSoundPlayParams {
     float Volume, Pitch, Delay; long Loop, Priority, Pan, Flags, Handle;
     CSoundPlayParams() { Volume = 1.0f; Pitch = 1.0f; Delay = 0.0f; Loop = 1; Pan = 0; Flags = 0; Handle = -1; Priority = 1; }
 };
 static const char* g_soundName = 0; static long g_played = 0; static long g_handle = 0;
-struct CTCSoundPlayer { void PlaySound(const CSoundPair& s, const CSoundPlayParams& p, long, long, long) { g_played = s.First; g_handle = p.Handle; g_seq[g_n++] = 3; } };
-struct CThingCreatureBase {
+class CTCSoundPlayer { public: void PlaySound(const CSoundPair& s, const CSoundPlayParams& p, long, long, long) { g_played = s.First; g_handle = p.Handle; g_seq[g_n++] = 3; } };
+class CThingCreatureBase { public:
     unsigned char m_state; bool hasSound; CTCSoundPlayer player; bool suspended;
     CSoundPair GetSoundPair(const char* name) { g_soundName = name; CSoundPair p = { 42, 0 }; return p; }
     void SetSuspendAnimation(bool s, long) { suspended = s; g_seq[g_n++] = 2; }

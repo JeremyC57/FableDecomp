@@ -5,13 +5,13 @@
 #include <new>
 
 static int g_live = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned long Name;
     CParentDefClassBase() : Name(0) { ++g_live; }
     CParentDefClassBase(const CParentDefClassBase& o) : Name(o.Name) { ++g_live; }
     virtual ~CParentDefClassBase() { --g_live; }
 };
-struct CEnvironmentThemeDef : CParentDefClassBase {
+class CEnvironmentThemeDef : public CParentDefClassBase { public:
     unsigned long Fields[34];
     CEnvironmentThemeDef() { }
     CEnvironmentThemeDef(const CEnvironmentThemeDef& o) : CParentDefClassBase(o) { for (int i = 0; i < 34; ++i) Fields[i] = o.Fields[i]; }

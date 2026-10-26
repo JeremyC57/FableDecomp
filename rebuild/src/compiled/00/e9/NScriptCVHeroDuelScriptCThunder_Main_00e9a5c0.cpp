@@ -11,20 +11,20 @@
 //   MaxHealth +0x1c, RecoveredHealth +0x20 (both unsigned long). CV_HeroDuelScript is retail = Ego_r.pdb - 0x14:
 //   DuelStarted +0x4c, MyHealth +0x58 (unsigned long).
 // Shape: generated script code; the handle is released before and after it is scripted (the START/STOP_SCRIPTING macros).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     virtual void v00();
 };
-struct CScriptThing : CBaseClass {                          // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                          // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     void* PImpData;
     void* PImpInfo;
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
 };
-struct CScriptGameResourceObjectScriptedThingBase {         // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0127094C, 16 bytes
     virtual void s00();
     void* m_pIntelligentPointer;
     void* PImpData;
@@ -110,7 +110,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void SetEntityAsRegionFollowing(CScriptThing const &, CScriptThing const &, bool) const; //slot480 0x008a0b10
 };
 namespace NScript {
-struct CPredicateBase {
+class CPredicateBase { public:
     virtual bool IsTrue() = 0;
 };
 }
@@ -128,7 +128,7 @@ struct CEntityScriptBase {                                  // {vptr, Game +4, M
     void SetPredicate(const CPredicateBase& predicate);     // 0x00F35B10
     bool IsActiveThreadTerminating();                       // 0x00F35B30
 };
-struct CV_HeroDuelScript {
+class CV_HeroDuelScript { public:
     unsigned char _pad00[0x4c];
     bool          DuelStarted;                              // +0x4c
     unsigned char _pad4d[0x58 - 0x4d];

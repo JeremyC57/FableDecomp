@@ -3,8 +3,8 @@
 // Behaviour test for 00daed30 CNOVI_Bully::Init: member reset values, parent flag cleared, interface calls in order with args.
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     CScriptThing hero;
     virtual CScriptThing& GetHero() { Log("Hero"); return hero; }
     virtual void SetThingHasInformation(const CScriptThing& t, bool a, bool b, bool c) const { Log(t.id == 5 && !a && !b && !c ? "Info" : "InfoBAD"); }

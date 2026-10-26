@@ -22,8 +22,8 @@ static int fails = 0;
 #include <string.h>
 extern "C" void __cdecl free(void* block);    // 0x00BFEA14
 
-struct CCharStringData { char* PData; };
-struct CCharString {
+class CCharStringData { public: char* PData; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                             // 0x0099E4B0
     ~CCharString();                            // 0x0099EAE0
@@ -40,7 +40,7 @@ template <class T> struct _Vector_base {
     _STLP_alloc_proxy<T> _M_end_of_storage;
     ~_Vector_base() { if (_M_start) free(_M_start); }
 };
-template <class T> struct CArray : _Vector_base<T> {
+template <class T> class CArray : public _Vector_base<T> { public:
     CArray(T* start, T* finish) { this->_M_start = start; this->_M_finish = finish; this->_M_end_of_storage._M_data = finish; }
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     T& operator[](unsigned int n) { return *(this->_M_start + n); }

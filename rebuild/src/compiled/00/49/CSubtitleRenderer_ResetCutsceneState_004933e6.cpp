@@ -5,7 +5,7 @@
 // the +0xe0.. flag bytes and the subtitle callee place it in the renderer; module/leaf are descriptive).
 // Shape: the call first (`push 0` before `mov esi,ecx` is scheduling), then one `true` and three `false`
 // byte stores at +0xe0, +0xe1, +0xe2, +0xe6 in statement order.
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     unsigned char _pad[0xe0];
     bool m_visible;                         // +0xe0
     bool m_fading;                          // +0xe1

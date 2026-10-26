@@ -8,8 +8,8 @@ struct CCreatureAction_Base
     void BaseOnAnimationLoaded();  // -> 0x859ef0
 };
 
-struct CCreatureAction_BanditKingLunge : public CCreatureAction_Base
-{
+class CCreatureAction_BanditKingLunge : public CCreatureAction_Base
+{ public:
     void OnAnimationLoaded();
 };
 

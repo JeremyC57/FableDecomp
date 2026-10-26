@@ -1,7 +1,7 @@
 #include <stdio.h>
 // Behaviour test for CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector&, const C3DVector&, float&, float&) (0x00A1DF60).
-struct C3DVector { float X, Y, Z; };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -18,7 +18,7 @@ class CNavigatorExternalInterface { public:
     virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual void v12() {} virtual void v13() {} virtual void v14() {} virtual void v15() {}
     virtual bool GetLayerAt(const C3DVector&) const { return false; } };
-struct CNavWayPoint {
+class CNavWayPoint { public:
     C2DVector Position; unsigned char NavLayer; bool Removable;
     CNavWayPoint(const C2DVector& p, unsigned char layer, bool removable) : Position(p), NavLayer(layer), Removable(removable) { }
 };

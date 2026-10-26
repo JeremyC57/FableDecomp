@@ -3,7 +3,7 @@
 // Behaviour test for NCreatureMode::CModeCarryingWeaponStand::OnActivate (retail 0x008D87C0): the stand filter's group is
 // cleared, then set to the animation group of the weapon in the primary carry slot when that thing is a weapon
 // (interfaces 0x46 carrying / 0x48 weapon), then the carrying-stand activation runs.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -56,16 +56,16 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CTCWeapon : CTCBase {
+class CThing : public CThingLookup { public: };
+class CTCWeapon : public CTCBase { public:
     const char* Group;
     const char* GetAnimationGroupName() const { return Group; }
 };
-struct CTCCarrying : CTCBase {
+class CTCCarrying : public CTCBase { public:
     CThing* Primary;
     CThing* GetThingInPrimarySlot() { return Primary; }
 };
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     char Group[32];
     void SetGroupInline(const char* name) { std::strcpy(Group, name); }
     void SetGroup(const char* name) { std::strcpy(Group, name); }

@@ -9,15 +9,15 @@
 // Shape: the follow-up action is the object word of a counted pointer at +0xa8 (the block word at +0xac, see 0x006DD980), read again from
 // the member for the virtual call (`mov ecx,[esi+0A8h]`); the mode-manager call sits inside the GetInterface if, so the miss path
 // returns directly. `this` rides in esi until the lookup re-uses it for the map.
-struct CTCBase;
-struct CCreatureActionBase;
+class CTCBase;
+class CCreatureActionBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -41,11 +41,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31 component
+class CTCCreatureModeManager { public:             // interface type 0x31 component
     void UpdateFrontMode();                 // 0x0073A840
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void PerformAction();           // slot 3
     virtual void FinishAction();            // slot 4, 0x00694430
@@ -65,7 +65,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     bool GetPerformedAction() const;        // 0x006925A0
 };
 struct SCountedBlock;
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     CCreatureActionBase* m_pNextAction;     // +0xa8 CCountedPointer<CCreatureActionBase>: object word
     SCountedBlock* m_pNextActionBlock;      // +0xac                                      count block
     virtual void FinishAction();

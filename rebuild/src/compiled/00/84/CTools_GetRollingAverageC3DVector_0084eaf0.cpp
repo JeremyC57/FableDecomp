@@ -5,7 +5,7 @@
 // Constant: 0x0122DED8 = 1.0f (twice: `count + 1.0f` and the reciprocal `1.0f / (count + 1.0f)`).
 // Shape: inline C3DVector operators with a user constructor (hidden-pointer result); `operator/` multiplies by one
 // reciprocal.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }

@@ -19,7 +19,7 @@ static void InitTable()
     }
 }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -38,8 +38,8 @@ struct C3DVector {
         X *= r; Y *= r; Z *= r;
     }
 };
-struct CPhysicsCollideResponse { C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
-struct CTCPhysicsBase {
+class CPhysicsCollideResponse { public: C3DVector CollidePos; C3DVector CollideNormal; float Friction; };
+class CTCPhysicsBase { public:
     C3DVector Position;
     float     Radius;
     bool HasSphereCylinderCollidedAt(const CTCPhysicsBase* other, const C3DVector& pos, CPhysicsCollideResponse* response) const

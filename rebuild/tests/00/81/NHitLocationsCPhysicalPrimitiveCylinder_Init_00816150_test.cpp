@@ -26,7 +26,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -46,16 +46,16 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CPersistContext;
+class CPersistContext;
 struct CBase { virtual ~CBase(); };             // dtor 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };   // 0x004046B0
-struct CStringParser : CBase {
+class CStringParser : public CBase { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
     CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
     CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);   // 0x00404720
     bool SkipPastNextItemIfIs(const CCharString&);  // 0x009B9E00
 };
-struct CDefString {
+class CDefString { public:
     long Index;
     CDefString() : Index(-1) {}
 };
@@ -105,7 +105,7 @@ bool CPhysicalPrimitiveCylinder::Init(CPersistContext& context, const CCharStrin
 }
 
 // ---- stubs and driver ----
-struct CPersistContext { int tag; };
+class CPersistContext { public: int tag; };
 static int g_live = 0;                 // live CCharString objects
 static int g_ctxBad = 0;               // calls that got the wrong context
 static CPersistContext* g_ctx = 0;

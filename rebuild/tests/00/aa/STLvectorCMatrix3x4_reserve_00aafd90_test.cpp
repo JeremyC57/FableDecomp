@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CMatrix3x4 { float m_row[3][4]; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 
 struct CMatrixVector {
     CMatrix3x4* _M_start;

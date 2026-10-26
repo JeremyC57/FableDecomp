@@ -2,7 +2,7 @@
 static long g_framesPerSecond = 30; static unsigned long g_minSecondsBetweenBuys = 10; static long g_frame;
 static long GFGetFrameCount() { return g_frame; }
 static bool g_open, g_hasSeller; static int g_acquires;
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} unsigned char _pad[0x10]; };
 struct CAIStateGroup_WorkBase : CAIStateGroupBase { bool IsInWorkHours() { return g_open; } bool HasSeller() { return g_hasSeller; } void AcquireSeller() { ++g_acquires; g_hasSeller = true; } };
 struct CAIStateGroup_BuyFromSeller : CAIStateGroup_WorkBase {
     long FrameLastBought;

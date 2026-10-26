@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicalShieldSpell::Pause (0x0079E3A0)
-struct CThing { unsigned char Flags91; int kills; void Kill(bool) { ++kills; } };
+class CThing { public: unsigned char Flags91; int kills; void Kill(bool) { ++kills; } };
 struct CPtr { CThing* p; CThing* GetPItem() const { return p; } };
 static bool IsThingAlive(const CPtr& p) { return p.GetPItem() && !(p.GetPItem()->Flags91 & 1); }
 static unsigned long g_stopped;
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     CPtr ShieldEffect, SwirlyEffect; unsigned long LoopingSound; bool Pausable, Paused;
     void StopSound(unsigned long s) { g_stopped = s; }
     void Pause() {

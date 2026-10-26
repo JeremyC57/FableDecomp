@@ -5,13 +5,13 @@
 // Callees: CParentDefClassBase::CParentDefClassBase(const CParentDefClassBase&) @ 0x0046EE98.
 // Vtable 0x01236504 = CAbilityTrackLevelDef (rtti-vtables.tsv). Memberwise one-register copies
 // = a user copy constructor. Retail CParentDefClassBase is 0x3c bytes (local model, see 0046f1b4).
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                   // +0x04..+0x3c
     CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
 };
 
-struct CAbilityTrackLevelDef : CParentDefClassBase {             // vtable 0x01236504
+class CAbilityTrackLevelDef : public CParentDefClassBase { public:             // vtable 0x01236504
     long m_level;                                                // +0x3c
     long m_experienceCost;                                       // +0x40
     long m_value;                                                // +0x44

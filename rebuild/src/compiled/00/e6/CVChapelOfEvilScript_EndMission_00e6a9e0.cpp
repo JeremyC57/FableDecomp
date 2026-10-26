@@ -10,12 +10,12 @@
 // test through an inline helper holding a NAMED CCharString local (a bare temporary argument lets VC fetch the
 // interface vtable into edi before the string is built) and `? true : false` (the plain bool return gives
 // `mov bl,al` where retail re-tests with `test al,al ; setne bl`); the bool survives the destructor in bl.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CGameScriptInterface {                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -54,7 +54,7 @@ struct CGameScriptInterface {                       // CGameScriptInterface, ret
     virtual void DisplayQuestInfo(bool display) const;   // slot 321 (+0x504) CGameScriptInterface::DisplayQuestInfo @ 0x00891920
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };

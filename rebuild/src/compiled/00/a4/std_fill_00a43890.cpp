@@ -10,14 +10,14 @@
 // (`dec [ecx+4] ; jne ; call [eax+4]`, the member zeroed), then stores the new pointer and bumps its count when set.
 // Local base model, not engine/CIVCountedPointeeBase.h: the generated header flattens the vptr into a plain
 // `void* __vftable`, which cannot make the slot-1 virtual destroy call the release runs.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -37,8 +37,8 @@ struct CIVCountedPointer {
 };
 
 namespace NGameText {
-struct CTextEntry : CIVCountedPointeeBase { };
-struct CDataBankTextEntry {                     // 8 bytes
+class CTextEntry : public CIVCountedPointeeBase { public: };
+class CDataBankTextEntry { public:                     // 8 bytes
     CIVCountedPointer<CTextEntry> PText;        // +0x00
     long                          NarratorIndex; // +0x04
 };

@@ -3,7 +3,7 @@
 // sideways by 2 x RandomDirection, 4 up, looking at the speaker's focal point; otherwise nothing changes.
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,7 +12,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     void Normalise() { float l = (float)std::sqrt(X * X + Y * Y + Z * Z); X /= l; Y /= l; Z /= l; }
 };
-struct CThing {
+class CThing { public:
     C3DVector Pos;
     C3DVector Focal;
     const C3DVector& GetPosition() const { return Pos; }

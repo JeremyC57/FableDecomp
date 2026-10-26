@@ -12,14 +12,14 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
 
-struct CShaderConstantRange : CBase {
+class CShaderConstantRange : public CBase { public:
     long Offset;                                   // +0x04
     unsigned long Count;                           // +0x08
     CShaderConstantRange() : Offset(0), Count(0) {}
     virtual ~CShaderConstantRange();
 };
 
-struct CVertexShaderConstant;
+class CVertexShaderConstant;
 struct CVertexShaderConstantArray {
     CVertexShaderConstant* Data;                   // +0x00
     long Count;                                    // +0x04
@@ -27,7 +27,7 @@ struct CVertexShaderConstantArray {
     CVertexShaderConstantArray() : Data(0), Count(0), Allocated(0) {}
 };
 
-struct CVertexShaderConstantLayout : CBase {
+class CVertexShaderConstantLayout : public CBase { public:
     CShaderConstantRange Reserved;                 // +0x04
     CShaderConstantRange User;                     // +0x10
     CShaderConstantRange Compression;              // +0x1c

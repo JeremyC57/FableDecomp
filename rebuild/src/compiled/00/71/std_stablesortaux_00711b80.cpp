@@ -59,7 +59,7 @@ template <class _Tp, class _Traits> struct _List_iterator : public _List_iterato
 }
 typedef std::_List_iterator<CAnimSet, std::_Const_traits<CAnimSet> > CAnimSetConstIterator;   // list<CAnimSet>::const_iterator
 
-struct CAnimSetItPriorityLessThan {                     // empty functor (a 4-byte argument slot)
+class CAnimSetItPriorityLessThan { public:                     // empty functor (a 4-byte argument slot)
     bool operator()(const CAnimSetConstIterator& a, const CAnimSetConstIterator& b) const { return (*a).Priority < (*b).Priority; }
 };
 

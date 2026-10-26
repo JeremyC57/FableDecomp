@@ -1,4 +1,4 @@
-struct CParticleContext {
+class CParticleContext { public:
     void* vftable;
 };
 

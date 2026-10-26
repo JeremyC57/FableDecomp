@@ -26,11 +26,11 @@ struct CVertexShaderObject {
     long m_refCount;                               // +0x10
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
 
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderObject* m_pShader;
     virtual ~CPixelShader()
     {
@@ -42,7 +42,7 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     }
 };
 
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderObject* m_pShader;
     virtual ~CVertexShader()
     {

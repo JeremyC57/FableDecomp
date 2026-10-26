@@ -21,9 +21,9 @@ public:
     void* PData;                               // +0x0
 };
 
-struct CCPPointerInfo { unsigned long RefCount; };
+class CCPPointerInfo { public: unsigned long RefCount; };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                   // +0x0
     CCPPointerInfo* Info;                      // +0x4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -33,9 +33,9 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CContainmentVolume;
+class CContainmentVolume;
 
-struct C3DMeshVolume {                         // Ego_r.pdb, 12 bytes
+class C3DMeshVolume { public:                         // Ego_r.pdb, 12 bytes
     CCharString Name;                          // +0x0
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x4
 };

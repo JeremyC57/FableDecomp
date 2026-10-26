@@ -73,7 +73,7 @@ public:
 
 }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                         // +0x00
     void (__fastcall* DeleteFunc)(void* data);      // +0x04
     void* Data;                                     // +0x08
@@ -105,15 +105,15 @@ public:
 
 class CFileInstaller {
 public:
-    struct CFileInfo;
-    struct CActiveRead;
-    struct CBufferChunk;
-    struct CPendingWrite {                          // 0x0C bytes
+    class CFileInfo;
+    class CActiveRead;
+    class CBufferChunk;
+    class CPendingWrite { public:                          // 0x0C bytes
         unsigned long Offset;
         unsigned long Size;
         CBufferChunk* Buffer;
     };
-    struct CActiveFile {                            // retail 0xB0 bytes
+    class CActiveFile { public:                            // retail 0xB0 bytes
         void* SrcFileHandle;                        // +0x00
         void* DstFileHandle;                        // +0x04
         unsigned long CurrentSrcOffset;             // +0x08

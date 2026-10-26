@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* PData;
     CCharString(const char* s) : PData(s) { }
     bool operator<(const CCharString& other) const

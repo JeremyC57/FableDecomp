@@ -7,7 +7,7 @@
 // Shape: the owner's lookup is the entry-returning HasTC + FindEntry form (`mov ecx,[eax+4]`), the target's the out-parameter
 // GetInterface form (`mov eax,[eax+4]` then `mov ecx,eax`) as the last term of a short-circuit chain (GOTCHAS).
 // Target: the CCombatActionBase target pointer at +0xa8; thing flag byte +0x91 bit 0 = dead, byte +0x10 = thing state.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,12 +16,12 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     void NotifyCounterStarted();                // 0x007338A0
     void SetMeleeFlourishValid(bool valid);     // 0x00733E10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                      // +0x10
     unsigned char _pad11[0x0f];
@@ -65,7 +65,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
@@ -75,7 +75,7 @@ struct CCombatActionBase {
     virtual void Initialise();                  // 0x00857520
 };
 
-struct CCreatureAction_BlockCounter : CCombatActionBase {
+class CCreatureAction_BlockCounter : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

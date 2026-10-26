@@ -13,7 +13,7 @@
 // byte of the already-consumed argument slot (`lea eax,[ebp+0Bh]`) instead of reserving a stack slot.
 struct CRetailAllocator { CRetailAllocator() { } };
 
-struct CThing;
+class CThing;
 
 struct CThingComponent {
     virtual void v00();
@@ -26,7 +26,7 @@ namespace N_004db60e { struct CRetailList_node0x10 {                   // retail
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator());   // 0x004DB60E
 }; } using N_004db60e::CRetailList_node0x10;
 
-struct CTCEntityEvents : CThingComponent {
+class CTCEntityEvents : public CThingComponent { public:
     virtual void v00();                          // own vtable (0x01242FDC)
     CRetailList_node0x10 Events;                  // +0x0C
     CTCEntityEvents(CThing* owner);

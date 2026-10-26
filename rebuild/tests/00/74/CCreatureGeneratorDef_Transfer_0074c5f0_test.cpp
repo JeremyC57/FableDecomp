@@ -2,9 +2,9 @@
 // in load mode (2), save mode (3) and an unknown mode, checking the CRC keys and which stream call each member takes.
 #include <cstdio>
 #include <cstring>
-struct CMemoryDataInputStream { long values[8]; int pos; };
-struct CDataOutputStream { long written[8]; int count; void WriteLong(long v) { written[count++] = v; } };
-struct CDefString { long TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TablePos = s->values[s->pos++]; } };
+class CMemoryDataInputStream { public: long values[8]; int pos; };
+class CDataOutputStream { public: long written[8]; int count; void WriteLong(long v) { written[count++] = v; } };
+class CDefString { public: long TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TablePos = s->values[s->pos++]; } };
 struct CLongVector { long* _First; long* _Last; long* _End; };
 static int g_vecIn = 0, g_vecOut = 0;
 void GFSerialiseVectorBinaryOutLong(CDataOutputStream* s, CLongVector*) { ++g_vecOut; s->WriteLong(-7); }
@@ -20,7 +20,7 @@ template<> struct CPersistTraits<CDefString> {
     void TransferBinaryIn(CMemoryDataInputStream* s, CDefString* v) { v->TransferBinaryIn(s); }
     static void TransferBinaryOut(CDataOutputStream* s, const CDefString& v) { s->WriteLong(v.TablePos); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode; CMemoryDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream; int m_crcs;
     void CheckCRC(const char* name) { if (std::strcmp(name, "") == 0) ++m_crcs; }
     template<class T> void Transfer(const char* name, T& value)
@@ -40,7 +40,7 @@ struct CPersistContext {
         }
     }
 };
-struct CCreatureGeneratorDef {
+class CCreatureGeneratorDef { public:
     virtual void Transfer(CPersistContext& context);
     CLongVector RandomEffects; CDefString RandomSoundCriteria; long SecondsBetweenEffects; long SecondsBetweenSoundEffects;
 };

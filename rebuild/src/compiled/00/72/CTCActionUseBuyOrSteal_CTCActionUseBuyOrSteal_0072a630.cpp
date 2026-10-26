@@ -12,10 +12,10 @@
 // pointer is built by its inline converting constructor (base ctor, its vtable, SetPItem(0)); the bool follows in member
 // order and AddToGlobalTCs is the constructor body. engine/CTCBase.h is a flattened POD (no virtuals), so the polymorphic
 // CTCBase is modelled locally as the landed CTCBase-derived constructors do.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
@@ -47,7 +47,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CTCActionUseBase : CTCBase {            // vtable 0x0123F09C (own constructor 0x004DA939)
+class CTCActionUseBase : public CTCBase { public:            // vtable 0x0123F09C (own constructor 0x004DA939)
     CDefPointer PActionUseDef;                 // +0x0c
     bool        Usable;                        // +0x10
     CTCActionUseBase(CThing& owner) : CTCBase(owner), Usable(true) { }

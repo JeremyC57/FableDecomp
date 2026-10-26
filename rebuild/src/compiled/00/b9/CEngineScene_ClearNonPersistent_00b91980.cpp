@@ -13,7 +13,7 @@ struct CSceneNode_00b91980 {
     CSceneNode_00b91980* m_pPrevSkipped;           // +0x44
 };
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned char        _pad[0x24];
     CSceneNode_00b91980* m_pNonPersistent;         // +0x24
     void ClearNonPersistent();

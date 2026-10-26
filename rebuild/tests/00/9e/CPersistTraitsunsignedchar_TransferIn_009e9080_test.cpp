@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 
 static unsigned char g_next;
 

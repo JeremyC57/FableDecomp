@@ -14,7 +14,7 @@ extern "C" void __cdecl free(void* block);                                  // 0
 struct SCriticalSection { unsigned char _body[0x18]; };                      // RTL_CRITICAL_SECTION
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(SCriticalSection* section);   // [0x0143FDE4]
 
-struct CBankFileAsync;
+class CBankFileAsync;
 
 template <class T> struct CRetailArray {                                     // retail CArray: {first, last, end}
     T* first;
@@ -27,12 +27,12 @@ template <class T> struct CRetailArray {                                     // 
     }
 };
 
-struct CFailedAllocationHandler {                                            // vtable 0x0129B874
+class CFailedAllocationHandler { public:                                            // vtable 0x0129B874
     virtual void v00();
     ~CFailedAllocationHandler() { }
 };
 
-struct CLoadingMemoryFailureHandler : CFailedAllocationHandler {             // vtable 0x0129B8C4
+class CLoadingMemoryFailureHandler : public CFailedAllocationHandler { public:             // vtable 0x0129B8C4
     CRetailArray<CBankFileAsync*> Banks;                                    // +0x04
     SCriticalSection              CriticalSection;                          // +0x10
     virtual void v00();

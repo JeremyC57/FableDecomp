@@ -1,9 +1,9 @@
 extern unsigned char g_aggressiveEnabled;
 
-struct CPlayer;
+class CPlayer;
 extern "C" void __fastcall CPlayer_OnAggressiveChanged(CPlayer* player);
 
-struct CPlayer {
+class CPlayer { public:
     char pad[0x217];
     unsigned char aggressive;
 };

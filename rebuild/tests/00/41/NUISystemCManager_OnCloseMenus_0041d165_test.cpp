@@ -4,7 +4,7 @@
 struct CHandleBasedMemoryPool_Methods : CHandleBasedMemoryPool {
     bool ResizePool(unsigned long new_size, float time);  // 0x00A02680
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void _slot00(); virtual void _slot01(); virtual void _slot02(); virtual void _slot03();
     virtual void _slot04(); virtual void _slot05(); virtual void _slot06(); virtual void _slot07();
     virtual void _slot08(); virtual void _slot09(); virtual void _slot10(); virtual void _slot11();
@@ -25,7 +25,7 @@ struct CIEngine {
     virtual void _slot68(); virtual void _slot69(); virtual void _slot70(); virtual void _slot71();
     virtual CHandleBasedMemoryPool_Methods* GetResourceMemoryPool();   // +0x120
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
 };

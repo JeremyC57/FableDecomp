@@ -40,7 +40,7 @@ struct CCombatWheel {                           // one vector of rings
     }
 };
 
-struct CAttackPatternDef {
+class CAttackPatternDef { public:
     unsigned char _pad00[0x3c];
     CRetailVector<long> AttackPattern;          // +0x3c (PDB +0x40)
 };
@@ -58,7 +58,7 @@ struct CCombatantInfo {                         // retail layout (Ego_r.pdb name
     long FrameForNextInstruction;               // +0x6c
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char _pad00[0x30];
     float AttackPatternIdleStandardInterval;    // +0x30
     void IncrementDefenderAttackPattern(CCombatantInfo& info);   // 0x006E8600

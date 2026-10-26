@@ -11,14 +11,14 @@
 // the `__fastcall` writer @ 0x00464CED. The `dec/dec` sequence is the size-optimised lowering of
 // the two-way switch on the mode (the lander's "s" pragma). Labels are propagated; the streams are modelled as opaque
 // pointers. One of 24 bodies of this shape.
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 struct SValue;
 
 void __fastcall GFSerialiseVectorBinaryOut_float_00464ced(CDataOutputStream* stream, SValue* value);        // 0x00464CED
 void __fastcall GFSerialiseVectorBinaryIn_CRGBColour_00464d23(CMemoryDataInputStream* stream, SValue* value);   // 0x00464D23
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad0[0x18];
     long m_mode;                           // +0x18 (EMode: 2 = save)
     unsigned char _pad1[8];

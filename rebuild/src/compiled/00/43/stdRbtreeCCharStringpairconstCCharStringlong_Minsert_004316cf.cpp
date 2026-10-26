@@ -14,7 +14,7 @@
 // CCharString is one CCharStringData* whose block starts with the C string (the landed 0x0099E900 model).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };

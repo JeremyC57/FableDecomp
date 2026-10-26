@@ -8,36 +8,36 @@
 static char g_log[512];
 static void Log(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CThingGraphic {
     const C3DVector* pos; long flags;
     void SetPosition(const C3DVector* p) { pos = p; Log("pos"); }
     void SetFlags(long f) { flags = f; Log("flags"); }
     void Restore() { Log("restore"); }
 };
-struct CThing {
+class CThing { public:
     CThingGraphic* PGraphic;
     unsigned char m_flags91;
     void SetActive(bool a) { Log(a ? "active1" : "active0"); }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CIntelligentPointerThing {
     CThing* m_pItem;
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CCreatureActionBase { int kind; };
-struct CCreatureAction_WhisperJumpIntoSky : CCreatureActionBase {
+class CCreatureActionBase { public: int kind; };
+class CCreatureAction_WhisperJumpIntoSky : public CCreatureActionBase { public:
     CCreatureAction_WhisperJumpIntoSky(CThingCreatureBase*, CThing*) { kind = 1; }
 };
 struct CCreatureAction_WhisperLand : CCreatureActionBase {
     CCreatureAction_WhisperLand(CThingCreatureBase*) { kind = 2; }
 };
 struct CThingCreature : CThing { };
-struct CAIBrain { CThingCreature* PCreature; };
+class CAIBrain { public: CThingCreature* PCreature; };
 
 static long g_frame;
 static long g_frameStep;
-struct CWorld { static long GetWorldFrame() { long f = g_frame; g_frame += g_frameStep; return f; } };
+class CWorld { public: static long GetWorldFrame() { long f = g_frame; g_frame += g_frameStep; return f; } };
 long g_FramesPerSecond = 10;
 
 static int g_stopAt;      // IsStopping() returns true from this call number on (0 = never)
@@ -48,7 +48,7 @@ static int g_nothingCalls;
 static int g_terminated;
 static CWorld g_world;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CWorld* GetPWorld() const { return &g_world; }
     bool IsStopping() { ++g_stopCalls; return g_stopAt != 0 && g_stopCalls >= g_stopAt; }

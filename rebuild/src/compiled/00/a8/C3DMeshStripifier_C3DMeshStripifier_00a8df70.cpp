@@ -20,7 +20,7 @@ struct SStripifierBuffers {                     // embedded block with an inline
     SStripifierBuffers() : m_pVertices(0), m_pIndices(0), m_pStrips(0), m_pAdjacency(0) { }
 };
 
-struct C3DMeshStripifier : CBase {
+class C3DMeshStripifier : public CBase { public:
     SStripifierBuffers m_buffers;               // +0x04
     float m_cacheWeight;                        // +0x14 = 3.0f
     long m_maxStripLength;                      // +0x18 = 500

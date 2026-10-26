@@ -1,7 +1,7 @@
 // Behaviour test for NCameraModes::CProjectileWeapon's constructor (0x00879620): the base gets the manager and def,
 // ShotFiredTimer = -1, not finished, no attractors, the two zoom-in FOV limits stored.
 #include <cstdio>
-struct CGameCameraManager { int id; };
+class CGameCameraManager { public: int id; };
 struct CDefPointer { const void* m_pDef; };
 static CGameCameraManager* g_baseManager = 0; static const CDefPointer* g_baseDef = 0;
 struct CBase { CBase(CGameCameraManager& m, const CDefPointer& d) { g_baseManager = &m; g_baseDef = &d; } virtual ~CBase() { } };

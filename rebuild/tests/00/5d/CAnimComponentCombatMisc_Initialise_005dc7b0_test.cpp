@@ -11,11 +11,11 @@
 // cleanup callees are 0x0099EBF0, 0x00404720, 0x0099EAE0, 0x004046B0, 0x0099A2E0.
 // Header is data-only (size 0x0a), confirming MeleeFlourish +8 and MeleeKnockdown +9;
 // the polymorphic local model supplies Initialise at slot 3 and Reset at slot 8.
-struct CPersistContext;
-struct CCharString { void* data; CCharString(const char*, long); ~CCharString(); };
+class CPersistContext;
+class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
 struct CBase { virtual ~CBase(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
-struct CStringParser : CBase {
+class CStringParser : public CBase { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
@@ -23,7 +23,7 @@ struct CStringParser : CBase {
 };
 // bool TransferIn: 00403FF0 (thiscall).
 template<class T> struct CPersistTraits { CPersistTraits() {} void TransferIn(CPersistContext&, CStringParser&, T*); };
-struct CAnimComponentCombatMisc {
+class CAnimComponentCombatMisc { public:
  virtual ~CAnimComponentCombatMisc(); virtual void v1(); virtual void v2(); virtual bool Initialise(CPersistContext&, const CCharString&);
  virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void Reset();
  long base; bool MeleeFlourish; bool MeleeKnockdown;
@@ -39,7 +39,7 @@ bool CAnimComponentCombatMisc::Initialise(CPersistContext& context, const CCharS
  return true;
 }
 
-struct CPersistContext { bool values[2]; int calls; };
+class CPersistContext { public: bool values[2]; int calls; };
 static bool bad,found;static char events[48];static int eventCount;
 static CPersistContext* gContext;static const CCharString* gText;static CStringParser* gParser;
 static CAnimComponentCombatMisc* gOwner;

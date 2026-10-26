@@ -19,15 +19,15 @@ static int fails = 0;
 //        escapes) and the name as a named local in the AddTC block (008967f0 idiom; with the temporary argument 35 lines).
 // Layout: CThing UniqueID +0x18, presence bits +0x20, Components +0x44, Dead +0x91 bit 0; CTCOnHeroPush DistPushed +0x0C,
 //         PushDir +0x10, FrameSincePushed +0x1C (Ego_r.pdb).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CCharString {
 public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CTCBase; struct CTCParamsBase;
-struct CTCOnHeroPush {                               // interface type 0xC4
+class CTCBase; class CTCParamsBase;
+class CTCOnHeroPush { public:                               // interface type 0xC4
     unsigned char _pad00[0x0c];
     float         DistPushed;                        // +0x0c
     C3DVector     PushDir;                           // +0x10
@@ -53,7 +53,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                       // +0x18
     unsigned long    m_presentBits[9];               // +0x20 UsingComponents
@@ -81,13 +81,13 @@ struct CThing {
     }
     CTCBase* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;                    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CPlayerManager* GetPlayerManager();              // 0x004C7A00
     void OnHeroPush(CThing* pusher, float distance, const C3DVector& direction);
 };

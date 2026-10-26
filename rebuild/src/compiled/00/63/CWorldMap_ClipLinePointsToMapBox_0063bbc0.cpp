@@ -15,8 +15,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X;
     float Y;
     float Z;
@@ -26,16 +26,16 @@ struct C3DVector
 };
 __forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;
     long BRY;
 };
 
-struct CPlane
-{
+class CPlane
+{ public:
     C3DVector Normal;
     float     Distance;
     bool Initialise(const C3DVector& a, const C3DVector& b, const C3DVector& c);                       // 0x00A42170

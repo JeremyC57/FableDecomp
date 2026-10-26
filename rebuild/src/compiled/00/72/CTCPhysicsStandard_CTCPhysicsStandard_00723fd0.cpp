@@ -9,12 +9,12 @@
 // (`mov al,4` shared by the two bytes); all initialisers sit before the vtable store (plain members, no member-object
 // constructors). engine/CTCPhysicsStandard.h / CTCPhysicsBase.h are flattened PDB PODs (no virtuals, opaque bitfield bytes),
 // so the polymorphic classes are modelled locally with the same offsets.
-struct CThing;
-struct CThingPhysicsMeshInfo;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CThing;
+class CThingPhysicsMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CTCPhysicsBase {                        // vtable 0x0125D2C4, 0x40 bytes
+class CTCPhysicsBase { public:                        // vtable 0x0125D2C4, 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];                 // +0x04 CTCBase .. +0x3c Moving/OldMoving
     CTCPhysicsBase(CThing& owner);             // 0x006B0730

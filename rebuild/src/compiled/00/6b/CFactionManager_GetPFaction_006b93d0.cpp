@@ -1,6 +1,6 @@
 // CFactionManager::GetPFaction(const CCharString& name) -- CRC the faction name and look it up in the hash-keyed faction map; null when absent
 // Grade: RELOCATION_MATCH (lane re-grade 2026-10-24; an earlier draft differed only by an esi/edi swap, notes below kept for history)
-// Leaf: ?GetPFaction@CFactionManager@@QAEPAVCFaction@@ABUCCharString@@@Z
+// Leaf: ?GetPFaction@CFactionManager@@QAEPAVCFaction@@ABVCCharString@@@Z
 // Retail: Fable.exe @ 0x006B93D0, 92 bytes, `__fastcall`, `ret 4`. Label correction: the manifest's "Faction::FindFactionByHash"
 // is Ego_r.pdb ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z (11 callers); CFactionManager::Factions is
 // a CVectorMap<unsigned long, CCountedPointer<CFaction> > at +0 (Ego_r.pdb).
@@ -10,17 +10,17 @@
 // register for the `hash < it->first` test); the CRC arguments as `Data == 0 ? ... : ...` (null arm first).
 // Tried: inline Find helper (92v92, more diffs), key copy + null-first ternaries, positive `it != Last` return (this file),
 // a named outer hash local (no change). Next: a `const` method/LowerBound (the PDB is QBE) or a same-TU LowerBound body.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                     // +0x00
     unsigned long Length;                   // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;           // +0x00
 };
 unsigned long __fastcall CRCCalc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 
 class CFaction;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     T* Get() const { return Data; }
 };

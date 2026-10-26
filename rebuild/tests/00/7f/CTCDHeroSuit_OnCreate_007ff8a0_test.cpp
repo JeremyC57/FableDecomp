@@ -29,10 +29,10 @@ static const SNode* Increment(const SNode* node)
     else { const SNode* y = node->_M_parent; while (node == y->_M_right) { node = y; y = y->_M_parent; } if (node->_M_right != y) node = y; }
     return node;
 }
-struct CHeroSuitDef { SNode* header; };
-struct CDefClassBase { const CHeroSuitDef* sub; bool GetSubDef(const CHeroSuitDef** out) const { *out = sub; return true; } };
-struct CThing { CDefClassBase* PDef; };
-struct CTCDHeroSuit {
+class CHeroSuitDef { public: SNode* header; };
+class CDefClassBase { public: const CHeroSuitDef* sub; bool GetSubDef(const CHeroSuitDef** out) const { *out = sub; return true; } };
+class CThing { public: CDefClassBase* PDef; };
+class CTCDHeroSuit { public:
     CThing* ParentThing; const CHeroSuitDef* PDef; CVector SuitParts;
     void OnCreate()
     {

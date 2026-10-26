@@ -9,16 +9,16 @@
 //   with BoundingVertices at +0xa8 -> +0xe4, +0x198, +0x24c). Matrices / vectors of floats are left uninitialised.
 // Shape: member vectors zeroed by their inline ctors in declaration order with one shared zero register; PPhysicsMeshInfo is a
 //   body assignment (stored last).
-struct CThing;
+class CThing;
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct C2DVector { float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class C2DVector { public: float X, Y; };
 struct CRigidBodyConfig {                       // retail 0xb4
     unsigned char _pad00[0xa8];                 // CMPosition, Orientation, CMVelocity, AngularMomentum, CMForce, Torque,
                                                 // InverseWorldInertiaTensor, AngularVelocity
@@ -30,12 +30,12 @@ struct CRigidBody {
     CRigidBodyConfig CurrentConfig;             // +0x50
     CRigidBodyConfig LastConfig;                // +0x104
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual ~CTCPhysicsBase();
     unsigned char _pad04[0x3c];
     CTCPhysicsBase(CThing* parent);             // 0x006B0730
 };
-struct CThingPhysicsMeshInfo;
+class CThingPhysicsMeshInfo;
 struct CTCPhysicsRigidBody : CTCPhysicsBase {
     CRetailVector<C3DVector> CollisionNormal;   // +0x40
     CRetailVector<long>      CollidingVertexIndex;   // +0x4c

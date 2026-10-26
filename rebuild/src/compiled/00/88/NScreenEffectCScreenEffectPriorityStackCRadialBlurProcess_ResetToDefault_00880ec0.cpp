@@ -10,13 +10,13 @@
 // `add eax,1Ch`), the two centres through the inline C3DVector::Initialise(x,y,z) (address formed first); assigning C3DVector
 // temporaries leaves dead frame stores. The search loop reuses the zero register as the index; the found list's front entry's
 // PosParams is a 32-byte POD copied with `rep movsd`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     void Initialise(float x, float y, float z) { X = x; Y = y; Z = z; }
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
 };

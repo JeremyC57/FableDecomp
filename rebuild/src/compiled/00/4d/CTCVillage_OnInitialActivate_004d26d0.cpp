@@ -5,7 +5,7 @@ struct Callee;
 // 0x4d2570: __fastcall(this=ecx, arg2=edx, stack byte)
 extern "C" void __fastcall Callee_Do(Callee* self, void* arg2, unsigned char flag);
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee* m_pCallee;      // +0x00  -> ecx for the call
     void*   m_arg;          // +0x04  -> edx for the call
     // +0x08 gap

@@ -1,4 +1,4 @@
-struct CCreatureAction_NymphIdleAfterShot {
+class CCreatureAction_NymphIdleAfterShot { public:
     void* vftable;
 };
 

@@ -6,13 +6,13 @@
 // spline/vector headers exist. Array assignment0075B8D0; spline evaluator00A567A0.
 // Stable-count path evaluates current into a discarded local before evaluating previous toout;
 // changed count snapshots current and evaluates current. Third float parameter is unused.
-struct C3DVector { float X, Y, Z; };
-template<class T> struct CArray {
+class C3DVector { public: float X, Y, Z; };
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray& operator=(const CArray& other);
     long Size() const { return (long)(m_end-m_begin); }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float Tension;
     bool EndPointsConnected;

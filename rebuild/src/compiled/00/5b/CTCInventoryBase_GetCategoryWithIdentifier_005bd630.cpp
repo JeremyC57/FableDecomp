@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CInventoryCategoryDef {
+class CInventoryCategoryDef { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1 (+0x04)
     long          RefCount;                          // +0x04
@@ -22,7 +22,7 @@ struct CInventoryCategoryDef {
     long          Identifier;                        // +0x50
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     __forceinline ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
@@ -31,7 +31,7 @@ template <class T> struct CDefPointer {
 
 namespace NInventory {
 
-struct CCategory {                                   // retail 0x2C bytes
+class CCategory { public:                                   // retail 0x2C bytes
     unsigned char _pad_0x00[0x14];                   // PAssociatedThing, ItemsInCategory
     CDefPointer<CInventoryCategoryDef> PDef;         // +0x14
     unsigned char _pad_0x18[0x10];                   // PInventory, GlobalDefIndex, SelectedItemIndex, HighlightedItemIndex
@@ -51,7 +51,7 @@ template <class T> struct CRetailVector {            // STLport vector (12 bytes
     T& operator[](long n) const { return *(begin() + n); }
 };
 
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x18];

@@ -6,7 +6,7 @@
 // Components +0x44, Dead +0x91 bit 0).
 // CTCSpecialAbilities (interface 0xa7) retail: AbilityAvailability +0x1c (Ego_r.pdb +0x24 after a 12-byte list; retail list 4 bytes).
 // Retail stores a byte per ability, so the vector is modelled over bool elements.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

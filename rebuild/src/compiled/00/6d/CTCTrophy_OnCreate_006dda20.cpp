@@ -8,7 +8,7 @@
 // Layout: Ego_r.pdb CTCTrophy with the retail one-pointer std::list (PDB 12 bytes -> 4): PDef +0x0C,
 // AvailableWitnesses +0x34, WitnessesAchieved +0x38, the Waiting* flags +0x3C, IsGlobalTC +0x40,
 // CurrentInstructionsPage +0x44, Mountable +0x48. CTrophyDef (PDB): EvilTrophy +0x34, FakeTrophy +0x35. No engine header.
-struct CTrophyDef {
+class CTrophyDef { public:
     unsigned char _pad[0x34];
     bool          EvilTrophy;               // +0x34
     bool          FakeTrophy;               // +0x35
@@ -18,11 +18,11 @@ struct CDefPointerTrophyDef {
     const CTrophyDef* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerTrophyDef* out);   // 0x005DA300
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x70];
     CDefClassBase* Def;                     // +0x70
 };
@@ -32,7 +32,7 @@ struct CWitnessList {                       // retail std::list<CIntelligentPoin
     void clear();                           // 0x00510D40
 };
 
-struct CTCTrophy {
+class CTCTrophy { public:
     virtual void v00();
     CThing*              Thing;             // +0x04
     unsigned char        _pad_0x08[0x4];

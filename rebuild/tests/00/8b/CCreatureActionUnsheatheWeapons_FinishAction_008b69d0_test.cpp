@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct CCreatureAction_UnsheatheWeapons;
+class CCreatureAction_UnsheatheWeapons;
 
 bool __fastcall UnsheatheWeapons_CheckPredicate(CCreatureAction_UnsheatheWeapons* self);
 void __fastcall UnsheatheWeapons_BaseFinishAction(CCreatureAction_UnsheatheWeapons* self);
 
-struct CCreatureAction_UnsheatheWeapons
-{
+class CCreatureAction_UnsheatheWeapons
+{ public:
     virtual void v0() = 0;
     virtual void v1() = 0;
     virtual void v2() = 0;

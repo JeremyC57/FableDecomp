@@ -12,10 +12,10 @@
 // Shape: `if (base) { ...; return true; } return false;` puts the `xor al,al` exit last; the `false` argument is pushed before the map query (arguments right to left); each branch assigns the
 //   intelligent pointer from a temporary built from the raw pointer (the landed 0x00830360 model) -- VC hoists the
 //   shared temporary construction above the null test; the flag store sinks below the temporary's destructor.
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 class CThing;
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -23,7 +23,7 @@ struct CWorldMap {
     virtual long GetMapNumberAt(const C3DVector& pos) const;   // slot 16 (+0x40)
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x28];
     CWorldMap*    WorldMap;                              // +0x28 (PDB +0x34)
 };

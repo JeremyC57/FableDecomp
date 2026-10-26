@@ -13,7 +13,7 @@
 // Shape: the list's default allocator argument is an empty temporary homed in the high byte of the
 // `push ecx` frame slot (`lea eax,[esp+7]`); the STLport vectors' inline constructors zero their three
 // words from one `xor eax,eax` after the list (members with inline constructors follow the vtable store).
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                     // +0x04 .. +0x3c
     CParentDefClassBase();                         // 0x00430370
@@ -23,9 +23,9 @@ template <class T> struct allocator {
     allocator() { }
 };
 
-struct COpinionTransientOffset;
-struct COpinionDeedReactionDef;
-struct CCharString;
+class COpinionTransientOffset;
+class COpinionDeedReactionDef;
+class CCharString;
 
 template <class T> struct list {                   // STLport list: one node word
     void* _M_node;
@@ -39,7 +39,7 @@ template <class T> struct vector {                 // STLport vector: start, fin
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct COpinionDeedEffectsDef : CParentDefClassBase {   // vtable 0x01233E54
+class COpinionDeedEffectsDef : public CParentDefClassBase { public:   // vtable 0x01233E54
     long                              KnowledgeLifeInSeconds;                     // +0x3c
     long                              MinimumSecondsBetweenPostings;              // +0x40
     long                              MinimumSecondsBetweenEffectsForIndividual;  // +0x44

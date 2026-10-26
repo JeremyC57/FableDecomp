@@ -15,8 +15,8 @@
 #define CCharString CCharStringDonor
 #include "fable_string.h"
 #undef CCharString
-struct CCharString { CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
-struct CIVCountedPointeeBase {
+class CCharString { public: CCharStringData* Data; CCharString(const char*,long); CCharString(const CCharString&); ~CCharString(); };
+class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const;
  unsigned long IVRefCount;
@@ -25,16 +25,16 @@ struct CIVCountedPointeeBase {
  void RemoveReference(){DecRef();if(GetRefCount()==0)Delete();}
  long GetRefCount()const{return IVRefCount;}
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
  CIVCountedPointeeBase* PObject;
  CDefPointer():PObject(0){}
  CDefPointer(const CDefPointer& p):PObject(p.PObject){if(PObject)PObject->AddReference();}
  ~CDefPointer(){if(PObject)PObject->RemoveReference();}
  CDefPointer& operator=(const CDefPointer& p){if(PObject!=p.PObject){if(PObject){PObject->RemoveReference();PObject=0;}PObject=p.PObject;if(PObject)PObject->AddReference();}return *this;}
 };
-struct CDefClassBase;
+class CDefClassBase;
 #include "engine/_quarantine/CConfigOptionsDefaultsDef.h"
-struct CDefinitionManager {
+class CDefinitionManager { public:
  CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009AD9E0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009AD390
  bool GetDef(long,CDefPointer<const CConfigOptionsDefaultsDef>*); //00410890 native mutable helper projection
@@ -50,7 +50,7 @@ extern void* g_pMainGameComponent; //013B86A0 (only presence is inspected)
 extern void* g_pFrontendRuntime; //013B871C (only presence is inspected)
 CDefinitionManager* __fastcall GetGameDefinitionManager(); //0044C6B0 loads013B879C
 CDefinitionManager* __fastcall GetFrontendDefinitionManager(); //0043368D loads013B8760
-struct CUserProfileManager {CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef()const;};
+class CUserProfileManager { public:CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef()const;};
 CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptionsDefaultsDef()const{
  CDefPointer<const CConfigOptionsDefaultsDef> result;
  if(g_pMainGameComponent){

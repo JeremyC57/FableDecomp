@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CSpecialAbilitiesBulletTimeDef;
-struct CDefClassBase;
+class CSpecialAbilitiesBulletTimeDef;
+class CDefClassBase;
 
 static int g_hit = 0;
 

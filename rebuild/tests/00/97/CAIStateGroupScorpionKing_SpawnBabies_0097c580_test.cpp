@@ -15,21 +15,21 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* m_pItem;
     CThingCreatureBase* GetPItem() const { return m_pItem; }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* Creature;
     CThingCreatureBase* Enemy;
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     ~CCombatActionBase() { Log(LOG_DESTROYED); }
 };
-struct CCreatureAction_ScorpionSummon : CCombatActionBase {
+class CCreatureAction_ScorpionSummon : public CCombatActionBase { public:
     CCreatureAction_ScorpionSummon(CThingCreatureBase& creature, CThingCreatureBase& enemy)
     {
         Creature = &creature; Enemy = &enemy; Log(LOG_BUILT);
     }
 };
-struct CAIBrain { CThingCreatureBase* PCreature; };
-struct CAIStateGroupBase {
+class CAIBrain { public: CThingCreatureBase* PCreature; };
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CCreatureActionBase* LastAction;
     bool LastWait;

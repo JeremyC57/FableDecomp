@@ -12,8 +12,8 @@ enum ESystemReturn
     FABLE_SYSTEM_BUSY = 2
 };
 
-struct CSystemManager
-{
+class CSystemManager
+{ public:
     unsigned char unknown00[0x08];
     bool WindowsQuit;
     bool notifyObserver09;

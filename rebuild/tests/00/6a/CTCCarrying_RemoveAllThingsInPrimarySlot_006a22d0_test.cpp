@@ -6,7 +6,7 @@ struct SEntry { long first; CThing* second; };
 static bool g_primary[8];
 static bool g_lastFlag = false;
 static int g_released = 0;
-struct CTCCarrying {
+class CTCCarrying { public:
     SEntry* first; SEntry* last;
     bool IsSlotPrimarySlot(long slot) { ++g_released; return g_primary[slot]; }   // def fetched and released once
     CThing* RemoveThingInCarrySlot(long slot, bool flag)

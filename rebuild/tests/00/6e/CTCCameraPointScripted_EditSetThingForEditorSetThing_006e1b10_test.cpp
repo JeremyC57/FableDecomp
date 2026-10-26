@@ -1,8 +1,8 @@
 // Behaviour test for 006e1b10 (catalog EditSetThingForEditorSetThing): returns a copy of the stored position.
 #include <cstdio>
 
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}

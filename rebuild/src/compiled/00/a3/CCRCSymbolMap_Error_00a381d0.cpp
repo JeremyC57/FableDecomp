@@ -10,7 +10,7 @@ struct CRetailWideString : CWideString {
 };
 CCharString FABLE_FASTCALL operator+(const CCharString&,const CCharString&); // 0x0099F570
 // Existing operator+(CCharString,const char*) is native0x0099F600.
-struct CCRCSymbolMap { void Error(const CRetailWideString& file,long line,const char* format,...); };
+class CCRCSymbolMap { public: void Error(const CRetailWideString& file,long line,const char* format,...); };
 void CCRCSymbolMap::Error(const CRetailWideString& file,long line,const char* format,...) {
     CCharString result;
     char lineText[12]; char message[256];

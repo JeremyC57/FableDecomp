@@ -1,8 +1,8 @@
 // CModeSitBase::RemoveModeWithAction  0x008d7230
 // void __fastcall(CModeSitBase*, CCreatureActionBase*)
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
 	virtual void v00();
 	virtual void v01();
 	virtual void v02();

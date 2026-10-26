@@ -17,14 +17,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
-struct CVillageTaskTorch;
-struct CVillageTaskHorn;
-struct CVillageTaskPatrol;
-struct CVillageTaskPickCrops;
-struct CVillageTaskSecuritySweep;
-struct CVillageTaskCarryCrate;
+class CVillageTaskTorch;
+class CVillageTaskHorn;
+class CVillageTaskPatrol;
+class CVillageTaskPickCrops;
+class CVillageTaskSecuritySweep;
+class CVillageTaskCarryCrate;
 
-struct CVillageTaskBase {
+class CVillageTaskBase { public:
     virtual void v00();
     virtual void v01();
     virtual long GetTaskType();                 // slot 2 (+0x08)
@@ -35,16 +35,16 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                 // 0x00A01C10
     CVillageTaskBase* GetPItem() const;         // 0x00A01B50 (CBaseObject*)
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(const CIntelligentPointer& other);   // 0x0065E37E (T = CVillageTaskBase)
 };
-template<class T> struct CCountedPointer { T* Data; void* Info; };
+template<class T> class CCountedPointer { public: T* Data; void* Info; };
 template<class T> struct CTaskList {            // retail std::list<CCountedPointer<T> >, sentinel pointer only
     void* _M_node;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void*                                 __vftable;          // +0x00
     unsigned char                         _pad_0x04[0x48];
     CTaskList<CVillageTaskTorch>          TorchTasks;         // +0x4c

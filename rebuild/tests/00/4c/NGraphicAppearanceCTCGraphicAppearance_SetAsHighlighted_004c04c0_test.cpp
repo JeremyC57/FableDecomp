@@ -18,15 +18,15 @@ static int fails = 0;
 // thing is read into a local first (the def is staged in eax, `mov ecx,eax` after the out push). The counted pointer
 // argument is built in the argument area (declared copy ctor) from the raw `new` result.
 // Layout: CTCBase ParentThing +0x04; the thing's def CDefPointer +0x70.
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1: `call [eax+4]`
     long m_refCount;                            // +0x04
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     CDefPointeeBase* Object;
     CDefPointer() : Object(0) {}
     T* operator->() const { return (T*)Object; }
@@ -36,7 +36,7 @@ struct CHighlightDef : CDefPointeeBase {
     unsigned char HighlightMode;                // +0x54
     unsigned char HighlightExtra;               // +0x55
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CHighlightDef** out);   // 0x0042B0A2
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -50,19 +50,19 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CHighlightDef** out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;            // +0x70
 };
 
-struct CEngineMeshEffect {
+class CEngineMeshEffect { public:
     virtual void v00();
     long m_refCount;
     unsigned char _pad08[0x1c - 0x08];
     CEngineMeshEffect(float a, float b, const CRGBColour& colour, bool flag, long mode, long extra);   // 0x004C3000
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Data;
     CIVCountedPointer(T* p) : Data(p) {}
     CIVCountedPointer(const CIVCountedPointer& o);

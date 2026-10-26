@@ -1,6 +1,6 @@
 #include "engine/CAIStateGroup_MinionGuardReactToCriminal.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 struct CAIStateGroup_MinionGuardReactToCriminal_Methods : CAIStateGroup_MinionGuardReactToCriminal {
     // +0x30

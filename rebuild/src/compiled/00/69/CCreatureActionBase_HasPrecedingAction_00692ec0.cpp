@@ -8,14 +8,14 @@
 // Shape: three exits -- `xor al,al` for the trailing false (a bool store), while `!query()` is computed as an int (`mov eax,1` /
 // `xor eax,eax`) and the trailing `return false` shares its zero block. One `push ecx` frame slot for the lookup key.
 // Layout: engine/CCreatureActionBase.h (PDB) agrees on PCreature at +8; a local model carries the virtual slot.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*>: the thing's sorted {type, component} map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -42,7 +42,7 @@ struct CTCActionQueue {                     // the interface-70 component
     bool HasPendingActions();               // 0x006A1270
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

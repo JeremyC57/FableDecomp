@@ -1,8 +1,8 @@
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString(const char* s, int n);
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     CCharString GetClassTypeName();
 };
 CCharString CTCScriptedControl::GetClassTypeName(){

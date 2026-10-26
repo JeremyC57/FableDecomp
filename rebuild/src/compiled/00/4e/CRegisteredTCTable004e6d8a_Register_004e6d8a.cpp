@@ -14,7 +14,7 @@
 // is named by what the body does.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
 };

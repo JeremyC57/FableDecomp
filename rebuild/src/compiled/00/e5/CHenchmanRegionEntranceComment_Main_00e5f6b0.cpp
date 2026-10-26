@@ -13,18 +13,18 @@
 //   CScriptThing = engine/CScriptThing.h {vptr, PImp {Data, Info}} over CBaseClass, modelled locally for its virtuals.
 // Shape: `size() == 0` exits through a duplicated `if (IsDone()) return;` tail; the walk is `for (unsigned i ...)` with
 //   the element offset strength-reduced into a frame word; the comment result survives the temporaries in bl.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CBaseClass {                               // vtable 0x01231710
+class CBaseClass { public:                               // vtable 0x01231710
     virtual void v000();
     CBaseClass();                                  // 0x0099A2D0
 };
-struct CCPPointerInfo;
-struct CScriptThing : CBaseClass {                 // vtable 0x01238C8C, 12 bytes
+class CCPPointerInfo;
+class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
     virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
     CScriptThing*   PImp_Data;                     // +0x04
@@ -45,7 +45,7 @@ public:
 };
 }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

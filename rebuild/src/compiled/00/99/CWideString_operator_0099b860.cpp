@@ -11,7 +11,7 @@
 // [esp+0Ah],0`); the release is the landed literal constructor's (0x0099B6B0) inline unassign: `--NoRefs <= 0`
 // through a register copy, the block re-read and null-tested, its buffer freed when present, the block deleted,
 // the handle cleared; the emptiness test reads the array's first element.
-struct CWideStringData {                      // 16 bytes
+class CWideStringData { public:                      // 16 bytes
     unsigned short* Start;                    // +0x00 basic_string<wchar_t>::_M_start
     unsigned short* Finish;                   // +0x04
     unsigned short* EndOfStorage;             // +0x08

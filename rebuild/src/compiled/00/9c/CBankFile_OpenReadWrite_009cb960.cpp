@@ -15,11 +15,11 @@
 // in the disk arm); the zero register ebx serves all the resets.
 // The disk path is a named local built before the virtual call, so `alignment` is live across GetBankPath and VC7.1
 // keeps it in ebp for the whole body (the argument pushes follow the path call, as retail).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                // 0x0099B510

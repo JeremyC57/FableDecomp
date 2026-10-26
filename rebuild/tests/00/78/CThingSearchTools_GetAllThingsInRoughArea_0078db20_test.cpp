@@ -6,16 +6,16 @@
 #endif
 #include <string.h>
 #include <stdlib.h>
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
 // Retail CThing: ThingTypeFlags at +0x6c (THING_TYPE_* inheritance bits); TypeMask selects the searched class.
-struct CThing {
+class CThing { public:
     enum { TypeMask = 0 };
     unsigned char _pad00[0x60];
-    struct CTCPhysicsBase* PhysicsTC;                      // +0x60
+    class CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags;                          // +0x6c
 };
@@ -27,15 +27,15 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 struct __true_type { __true_type() {} };
-struct CThingGameObject : CThing { enum { TypeMask = 0x7 }; };
-struct CThingFilter_In2DRange {
+class CThingGameObject : public CThing { public: enum { TypeMask = 0x7 }; };
+class CThingFilter_In2DRange { public:
     bool operator()(const CThing* thing) const;   // 0x006A76B0
 };
-struct CThingFilter_CanBeHitByEpicSpell {
+class CThingFilter_CanBeHitByEpicSpell { public:
     bool operator()(const CThing* thing) const;   // 0x006A8D30
 };
 // CFilter_Bind2: holds references to its sub-filters (+0, +4, ...) and ANDs them in order.
-template <class F1, class F2> struct CFilter_Bind2 {
+template <class F1, class F2> class CFilter_Bind2 { public:
     const F1& Filter1;
     const F2& Filter2;
     bool operator()(const CThing* thing) const { return Filter1(thing) && Filter2(thing); }
@@ -118,7 +118,7 @@ struct CResultList {
 };
 // CThingSearchTools: engine/CThingSearchTools.h names +0x0c "AreaMaps" (vector<NThingMap::CThingMap*>, 16 bytes in
 // the PDB); retail's STLport vector is 12 bytes and only the scratch-vector role matters here, so a local model.
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void*      WorldMap;                                   // +0x00
     void*      PThingMapManager;                           // +0x04
     void*      ThingManager;                               // +0x08

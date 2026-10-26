@@ -1,7 +1,7 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
 struct HealthObj { char pad[0x91]; unsigned char flags; char pad2[0xb4-0x92]; float health; };
-struct CPlayerManager { int junk; };
+class CPlayerManager { public: int junk; };
 
 static HealthObj g_obj;
 static CPlayerManager g_mid;

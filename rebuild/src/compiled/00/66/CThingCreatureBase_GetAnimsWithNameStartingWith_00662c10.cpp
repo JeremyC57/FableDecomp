@@ -12,10 +12,10 @@
 // before the call); retail loads the filled def pointer ONCE into esi before the query and releases through it
 // (`dec [esi+4] ; jne`), so the release is written by hand on a named pointer local (a CDefPointer destructor re-reads
 // the address-taken slot in the lane).
-struct CCharString;
-struct CAnimationEntry;
+class CCharString;
+class CAnimationEntry;
 
-struct CDefPointeeBase {                        // a counted definition object
+class CDefPointeeBase { public:                        // a counted definition object
     virtual void v000();
     virtual void DestroyDef();                  // slot 1 (+4): called when the count drops to zero
     long m_refCount;                            // +4
@@ -26,7 +26,7 @@ struct CDefPointeeBase {                        // a counted definition object
     }
 };
 
-template<class T> struct CDefPointer {          // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:          // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
 };
@@ -46,17 +46,17 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual void v002();
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims,
                                       const CAnimFilterBase& filter) const;     // 0x005DCB00
 };
 
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x2c];
     CAnimationSet AnimationSet;                 // +0x34
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>& out);       // 0x0042B0A2
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -73,12 +73,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAppearanceDef>& 
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void GetAnimsWithNameStartingWith(const CCharString& prefix, CAnimationEntryVector& anims) const;
 };
 

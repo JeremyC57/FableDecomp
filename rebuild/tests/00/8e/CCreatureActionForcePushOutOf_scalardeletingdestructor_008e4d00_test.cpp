@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ForcePushOutOf {
+class CCreatureAction_ForcePushOutOf { public:
     void* vftable;
     int destroyed;
 };

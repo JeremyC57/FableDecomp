@@ -10,27 +10,27 @@
 // inline member of the pointee so the pointer stays in ecx (`if (--m_p->count == 0)` re-reads the member).
 #include <stddef.h>
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1 (+4)
     unsigned long IVRefCount;              // +4
     void Release() { if (--IVRefCount == 0) Delete(); }
 };
 
-struct C3DAnimationStateBase : CIVCountedPointeeBase {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public:
     virtual void v02();
     virtual void v03();
     virtual void v04();
     virtual void Validate();               // slot 5 (+0x14)
 };
 
-struct C3DAnimationState : C3DAnimationStateBase {      // 0x10 bytes (engine/C3DAnimationState.h)
+class C3DAnimationState : public C3DAnimationStateBase { public:      // 0x10 bytes (engine/C3DAnimationState.h)
     long AnimationIndex;                   // +0x08
     float AnimationTime;                   // +0x0C
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* m_pObject;
     T* operator->() const { return m_pObject; }
     CIVCountedPointer& operator=(T* object)
@@ -44,9 +44,9 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DAnimationStateAlpha;
+class C3DAnimationStateAlpha;
 template <class T>
-struct CArray {                            // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                            // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;                           // +0
     T* m_pEnd;                             // +4
     T* m_pEndOfStorage;                    // +8
@@ -60,7 +60,7 @@ struct CSharedData {
     CArray<C3DAnimationStateAlpha> CombinationBlends;         // +0xc
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4 CIVCountedPointer<CSharedData>
     void MakeOwnCopyOfData();              // 0x00A3C1A0

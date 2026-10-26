@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -29,7 +29,7 @@ struct CIVCountedPointer {
 };
 struct CSharedData : CIVCountedPointeeBase { CIVCountedPointer BaseAnimation; unsigned char CombinationBlends[0xc]; void* SkeletalMorph[2]; };
 static int g_copies = 0;
-struct C3DAnimationBlendState { virtual void v00() { } CSharedData* Data;
+class C3DAnimationBlendState { public: virtual void v00() { } CSharedData* Data;
     void MakeOwnCopyOfData() { ++g_copies; }
     void SetBaseAnimation(const CIVCountedPointer& a) { MakeOwnCopyOfData(); Data->BaseAnimation = a; } };
 int main()

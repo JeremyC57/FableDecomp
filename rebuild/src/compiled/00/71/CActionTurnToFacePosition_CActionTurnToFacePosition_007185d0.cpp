@@ -5,14 +5,14 @@
 // constructor, zero stores (+4, +8, +9) sharing eax, the vtable store, then the three dwords of the
 // by-reference C3DVector copied through ecx/edx/eax interleaved with the flags load (a plain POD
 // member copy) and the flags store at +0x18 (ret 8).
-struct C3DVector {                          // copied memberwise (one register per dword, see GOTCHAS wave 19); modelled as dwords because retail moves them with mov, not through the FPU
+class C3DVector { public:                          // copied memberwise (one register per dword, see GOTCHAS wave 19); modelled as dwords because retail moves them with mov, not through the FPU
     long x;
     long y;
     long z;
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) { }
 };
 
-struct CThing;
+class CThing;
 
 struct CBase {
     virtual void v00();

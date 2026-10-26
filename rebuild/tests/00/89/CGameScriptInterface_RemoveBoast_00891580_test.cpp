@@ -2,16 +2,16 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::RemoveBoast @ 0x00891580.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
 
     CCharString(const CCharString& other);
     explicit CCharString(const char* value) : text(value) {}
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void RemoveBoast(long questId, CCharString boast);
 };
 

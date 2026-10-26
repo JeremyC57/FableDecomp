@@ -3,7 +3,7 @@
 
 void operator delete[](void*);
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void* m_data;
     char  m_flag;
     ~CThingComponentSet();

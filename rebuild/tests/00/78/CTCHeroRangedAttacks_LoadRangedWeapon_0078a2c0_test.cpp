@@ -1,14 +1,14 @@
 // Behaviour test for CTCHeroRangedAttacks::LoadRangedWeapon (0x0078A2C0): the load action is started only for a
 // live carried thing with a weapon component that is a projectile weapon, not loaded, while not already loading.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
     const SEntry* LowerBound(const long* type) const { const SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -38,20 +38,20 @@ struct CThing {
     }
 };
 inline bool IS_THING_ALIVE(const CThing* thing) { if (thing != 0) { if (!(thing->m_flags91 & 1)) return true; } return false; }
-struct CTCCarrying { CThing* InHand; CThing* GetThingInPrimarySlot() { return InHand; } };
-struct CTCWeapon {
+class CTCCarrying { public: CThing* InHand; CThing* GetThingInPrimarySlot() { return InHand; } };
+class CTCWeapon { public:
     bool Projectile, Loaded;
     bool IsProjectileWeapon() { return Projectile; }
     bool IsProjectileWeaponLoaded() { return Loaded; }
 };
-struct CCreatureActionBase { CThing* Weapon; };
+class CCreatureActionBase { public: CThing* Weapon; };
 static int g_actions = 0; static CThing* g_actionWeapon = 0; static int g_live = 0;
-struct CThingCreatureBase { bool SetCurrentAction(const CCreatureActionBase& a) { ++g_actions; g_actionWeapon = a.Weapon; return true; } };
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase {
+class CThingCreatureBase { public: bool SetCurrentAction(const CCreatureActionBase& a) { ++g_actions; g_actionWeapon = a.Weapon; return true; } };
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase*, CThing* weapon) { Weapon = weapon; ++g_live; }
     ~CCreatureAction_HeroLoadRangedWeapon() { --g_live; }
 };
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     CThing* ParentThing; CThingCreatureBase* PParentCreature; bool Loading;
     void LoadRangedWeapon();
 };

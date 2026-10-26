@@ -24,8 +24,8 @@ static int fails = 0;
 // `float&` accessor, which makes VC7.1 store and reload the timer (`fstp ; fld`) as retail does.
 // Layout: engine/CTCPerceiveThing.h names (AwarenessTimer +0x18, LineOfSight .. Heard +0x2d..+0x32); the header flattens
 // the CIntelligentPointer member to bytes, so the class is modelled locally as in the landed relatives.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     virtual ~CBaseIntelligentPointer();         // 0x00A01C10
@@ -35,21 +35,21 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing const>, vtable 0x01237F1C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CPlayerGui {                             // the global g_pPlayerGui @ 0x013B8790
+class CPlayerGui { public:                             // the global g_pPlayerGui @ 0x013B8790
     void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
     void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     unsigned char _pad00[0x40];
     long StartWithoutTarget;                    // +0x40 CPerceivedThingDef word: 0 = start searching for a target
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CGameSubsystem {
     static long FrameRate;                      // 0x01375550 (frames per second)
     static float GetSecondsPerFrame() { return 1.0f / FrameRate; }
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04
     bool      ToBeRemoved;                      // +0x08

@@ -3,17 +3,17 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct CBaseClass {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class CBaseClass { public:
     CBaseClass() {}
     virtual ~CBaseClass() {}
 };
 static int g_impDeleted = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -35,9 +35,9 @@ struct CCountedScriptImp {
         Info = 0;
     }
 };
-struct CThing;
+class CThing;
 static bool g_alive = false; static C3DVector g_entityPos = { 1, 2, 3 }; static CThing* g_entityThing = 0; static int g_assigns = 0;
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedScriptImp PImp;
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -48,7 +48,7 @@ struct CScriptThing : CBaseClass {
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 static int g_defDestroyed = 0;
-struct CThingObjectDef {
+class CThingObjectDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_defDestroyed; }
     long RefCount;
@@ -59,7 +59,7 @@ struct CDefPointerThingObjectDef {
     ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
 };
 static CThingObjectDef* g_def = 0; static int g_getDef = 0; static long g_getDefIndex = -1; static int g_nameLookups = 0;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameLookups; CHECK(strcmp((const char*)name.PStringData, "OBJECT_X") == 0); return 456; }
     bool GetDef(long globalIndex, CDefPointerThingObjectDef* out) { ++g_getDef; g_getDefIndex = globalIndex; if (!g_def) return false; ++g_def->RefCount; out->Object = g_def; return true; }
 };
@@ -74,18 +74,18 @@ struct CThingVirtuals {
 static void __fastcall DeleteImp(void*) { ++g_impDeleted; }
 static CCPPointerInfo g_info = { 1, DeleteImp, (void*)0x5555 };
 static int g_getScript = 0;
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CAttachmentHolder* Attachments;
     CThingVirtuals* GetTargetAttachments() const { return (CThingVirtuals*)Attachments; }
     CScriptThing GetScriptThing() { ++g_getScript; CScriptThing s; s.PImp.Data = (void*)0x5555; s.PImp.Info = &g_info; ++g_info.RefCount; return s; }
 };
 static CThing* g_object = 0; static int g_creates = 0; static long g_createDef = -1; static const C3DVector* g_createPos = 0; static long g_createPlayer = -1; static const char* g_createName = 0;
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player, const CRightHandedSet* orientation, unsigned long uid, const CCharString& scriptName)
     { ++g_creates; g_createDef = defIndex; g_createPos = &position; g_createPlayer = player; g_createName = (const char*)scriptName.PStringData; CHECK(orientation == 0 && uid == 0); return (CThingObject*)g_object; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   _vptr;
     void*                   World;
     void*                   Component;

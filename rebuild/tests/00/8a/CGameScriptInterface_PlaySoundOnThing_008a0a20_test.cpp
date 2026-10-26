@@ -53,15 +53,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -114,10 +114,10 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -142,14 +142,14 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -219,8 +219,8 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -228,8 +228,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -313,7 +313,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct C3DVector{float X,Y,Z;};
+class C3DVector{ public:float X,Y,Z;};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char AfterComponents[0x45];unsigned char Dead:1;unsigned char OtherLifeFlags:7;const C3DVector& GetPosition()const;ScriptMethods GetScriptThing()const;}; //004C73D0,004C7E50
@@ -322,7 +322,7 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
 struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
-struct CCPPointerInfo{unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
+class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}};
 struct ScriptMethods:CBaseClassNative{
  CountedScriptImp PImp;
@@ -411,11 +411,11 @@ virtual bool IsEqualTo(const ScriptMethods&) const; //slot78 0x004AA8A0
 FABLE_STATIC_ASSERT(sizeof(ScriptMethods)==sizeof(CScriptThing));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Data));
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
-struct CASoundBank{long GetSoundIndexFromSymbol(const CCharString&)const;}; //00A01920
+class CASoundBank{ public:long GetSoundIndexFromSymbol(const CCharString&)const;}; //00A01920
 struct MainGameSoundView{unsigned char BeforeSampleBank[16];CASoundBank* PSampleBank;};extern MainGameSoundView* g_MainGameComponent; //013B86A0
 extern unsigned long g_InvalidSoundHandle; //0129D25C
-struct CSoundPair{long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
-struct CSoundInit{float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
+class CSoundPair{ public:long FirstSound,LastSound;CSoundPair(long n):FirstSound(n),LastSound(n){}};
+class CSoundInit{ public:float Volume,Pitch,Pan;long NoPlays,PlaybackType;unsigned long GainFaderBits,PitchFaderBits;long OverrideID;CSoundInit():Volume(1.0f),Pitch(1.0f),Pan(0.0f),NoPlays(1),PlaybackType(1),GainFaderBits(0),PitchFaderBits(0),OverrideID(-1){}};
 struct SoundPlayerMethods{unsigned long PlayAttachedSample(const CSoundPair&,const CSoundInit&,bool,bool,bool);}; //0066B280, donor PlayAttachedSample without explicit bank
 struct CGameScriptInterfaceMethods:CGameScriptInterface{unsigned long PlaySoundOnThing(const ScriptMethods&,const CCharString&)const;};
 unsigned long CGameScriptInterfaceMethods::PlaySoundOnThing(const ScriptMethods& thing,const CCharString& symbol)const{

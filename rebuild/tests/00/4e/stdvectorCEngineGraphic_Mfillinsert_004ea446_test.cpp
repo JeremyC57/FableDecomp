@@ -4,7 +4,7 @@
 #include <new>
 
 #pragma pack(push, 1)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned int  ByteLength;      // BankIndex
     float         AnimStep;
     float         RenderSizeX;

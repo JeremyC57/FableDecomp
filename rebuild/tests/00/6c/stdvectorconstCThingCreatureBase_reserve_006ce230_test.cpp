@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct CThingCreatureBase { int m_id; };
+class CThingCreatureBase { public: int m_id; };
 typedef const CThingCreatureBase* Elem;
 
 struct Vec {

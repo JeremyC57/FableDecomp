@@ -1,11 +1,11 @@
-struct CCharString;
+class CCharString;
 // Leaf: GetPixelShader
-struct CPixelShader { int a, b, c, d; };
+class CPixelShader { public: int a, b, c, d; };
 // 0x9ccdc0 : native __fastcall member (ecx=this, name on stack, no edx dummy)
 struct CSubResource {
     void* lookup(CCharString* name);
 };
-struct CShaderResource {
+class CShaderResource { public:
     void* pad0; CSubResource* sub;
     // 0xa5d510 : native __fastcall member (ecx=this, (ret,found) on stack, no edx dummy)
     CPixelShader* emit(CPixelShader* ret, void* found);

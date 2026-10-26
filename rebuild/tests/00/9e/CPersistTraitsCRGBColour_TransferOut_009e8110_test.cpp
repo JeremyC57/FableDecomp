@@ -99,7 +99,7 @@ static CStr operator+(const CStr& l, const CStr& r) { CStr s(l); s += r; return 
 static CStr operator+(const char* l, const CStr& r) { CStr s(l); s += r; return s; }
 static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CStr(b); }
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct Traits { void TransferOut(void* context, CStr* out, const CRGBColour* value)
 {
     *out += "CRGBColour(";

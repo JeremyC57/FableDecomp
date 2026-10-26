@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-static const float g_zero_0122dedc = 0.0f; struct C3DVector { float X, Y, Z; };
+static const float g_zero_0122dedc = 0.0f; class C3DVector { public: float X, Y, Z; };
 struct CGetBestIciclePointForTarget { unsigned char _pad[0xc]; float m_bestScore; C3DVector m_bestPosition; bool GetBestPosition(C3DVector* out) { if (m_bestScore > g_zero_0122dedc) { *out = m_bestPosition; return true; } return false; } };
 
 int main() {

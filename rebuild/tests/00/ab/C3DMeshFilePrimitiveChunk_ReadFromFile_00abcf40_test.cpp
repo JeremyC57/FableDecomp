@@ -5,8 +5,8 @@
 #define __int64 long long
 #define FABLE_ENGINE_CDATAINPUTSTREAM_H
 #define FABLE_ENGINE_CCHUNKEDFILECHUNK_H
-struct CDataInputStream {void* __vftable;unsigned int StreamPos;int StreamSize;void* CurrentSourcePtr;unsigned int SourceChunkStreamPos;int SourceChunkBytesRemaining;};
-struct CChunkedFileChunk {void* vptr;};
+class CDataInputStream { public:void* __vftable;unsigned int StreamPos;int StreamSize;void* CurrentSourcePtr;unsigned int SourceChunkStreamPos;int SourceChunkBytesRemaining;};
+class CChunkedFileChunk { public:void* vptr;};
 #endif
 // C3DMeshFilePrimitiveChunk::ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&) -- read one index or a high-bit-tagged index array, then its subchunks
 // Retail 0x00ABCF40, 318 bytes. ReadWithSrcChunkOverflow 0x00993CA0; Resize 0x004428F0; base reader 0x00AA8830.
@@ -34,20 +34,20 @@ struct CInputStreamAccess : CDataInputStream {
  }
  __forceinline int ReadLong() {int value;Read(&value,4);return value;}
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
  T* Begin; T* End; T* EndOfStorage;
  void Resize(unsigned long,const T&); // material-index specialization 0x004428F0
  T& operator[](long i) {return Begin[i];}
 };
 struct CCountedChunk {void* Object;void* Count;};
-struct CChunkedFileLoader;
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileLoader;
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
  CArray<CCountedChunk> SubChunks;
  CArray<CCountedChunk> RegisteredSubChunkTypes;
  unsigned long CurrentChunkIndex;
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&); // 0x00AA8830
 };
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
  CArray<int> MaterialIndices;
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
 };
@@ -67,7 +67,7 @@ void C3DMeshFilePrimitiveChunk::ReadFromFile(CDataInputStream& input,unsigned lo
  CChunkedFileSuperChunk::ReadFromFile(input,chunkSize-headerSize,loader);
 }
 
-struct CChunkedFileLoader {};
+class CChunkedFileLoader { public:};
 static int errors, baseCalls, slowCalls, posCalls, resizeCalls;
 static CDataInputStream* expectedInput;
 static CChunkedFileLoader* expectedLoader;

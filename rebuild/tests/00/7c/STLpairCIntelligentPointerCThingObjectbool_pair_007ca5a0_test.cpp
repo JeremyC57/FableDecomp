@@ -11,7 +11,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { ++g_get; return m_pItem; }
     void SetPItem(CThing* item) { ++g_set; m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }

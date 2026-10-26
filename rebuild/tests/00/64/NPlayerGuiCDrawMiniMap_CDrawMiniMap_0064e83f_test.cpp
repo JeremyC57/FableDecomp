@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for 0064e83f.
 
-struct CPlayerGui { int id; };
+class CPlayerGui { public: int id; };
 struct CRetailHandleVector { unsigned int reserved; CRetailHandleVector() : reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
 struct CRetailEmitterVector { void* m_pFirst; void* m_pLast; void* m_pEnd; unsigned int reserved;
     CRetailEmitterVector() : m_pFirst(0), m_pLast(0), m_pEnd(0), reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
-struct CFadeInFadeOutBase { int built; CFadeInFadeOutBase() : built(1) { } };
+class CFadeInFadeOutBase { public: int built; CFadeInFadeOutBase() : built(1) { } };
 struct CDrawBase {
     CPlayerGui* PlayerGui; void* DrawList; CRetailHandleVector PrimitiveHandles;
     CDrawBase(CPlayerGui* gui, void* list) : PlayerGui(gui), DrawList(list) { }
@@ -14,10 +14,10 @@ struct CDrawBase {
 
 // NPlayerGui::CDrawMiniMap::CDrawMiniMap: display built, flags enabled/active, alpha 255, fades built, display initialised with
 // the GUI def's world resolution, nine primitive handles reserved.
-struct CPlayerGuiDef { float MiniMapWorldResolution; };
+class CPlayerGuiDef { public: float MiniMapWorldResolution; };
 static CPlayerGuiDef g_def;
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
-struct CMiniMapDisplay { float resolution; CMiniMapDisplay() : resolution(-1.0f) { } void Initialise(float r) { resolution = r; } };
+class CMiniMapDisplay { public: float resolution; CMiniMapDisplay() : resolution(-1.0f) { } void Initialise(float r) { resolution = r; } };
 struct CDrawMiniMap : CDrawBase {
     CMiniMapDisplay MiniMap; bool Enabled, Active, OldActive, RegionChange; unsigned char Alpha;
     CFadeInFadeOutBase FadeInOut, TextFadeInOut, ScreenPosFadeInOut; void* RegionExits;

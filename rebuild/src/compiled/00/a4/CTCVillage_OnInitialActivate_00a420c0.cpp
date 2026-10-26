@@ -1,7 +1,7 @@
 // CTCVillage::OnInitialActivate @ 0x00a420c0
 // Leaf: OnInitialActivate
 
-struct CTCVillage {
+class CTCVillage { public:
     void*         f0;     // +0x00  -> ecx to callee
     void*         ParentThing;     // +0x04  -> edx to callee (arg1)
     char          pad8[4];

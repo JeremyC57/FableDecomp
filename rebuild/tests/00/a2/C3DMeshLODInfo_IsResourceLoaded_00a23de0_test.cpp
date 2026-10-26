@@ -1,11 +1,11 @@
 #include <stdio.h>
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool finished;
     bool IsFinished();
 };
 bool CBankFileAsyncData::IsFinished() { return finished; }
 
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo { public:
     char m_leading[0x24];
     CBankFileAsyncData* m_pAsyncData;
     bool IsResourceLoaded();

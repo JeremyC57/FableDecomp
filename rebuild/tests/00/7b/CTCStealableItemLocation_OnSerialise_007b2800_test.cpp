@@ -7,14 +7,14 @@ static float* g_values[2];
 static float g_defaults[2] = { -1.0f, -1.0f };
 static int g_count = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue)
     {
         g_names[g_count] = name; g_values[g_count] = &value; g_defaults[g_count] = defaultValue; ++g_count;
     }
 };
 
-struct CTCStealableItemLocation {
+class CTCStealableItemLocation { public:
     float RadiusToBeWithin;
     float RadiusToTakeItemsBackTo;
     void OnSerialise(CPersistContext* context, long unused);

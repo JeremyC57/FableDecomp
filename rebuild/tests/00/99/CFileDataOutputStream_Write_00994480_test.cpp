@@ -1,7 +1,7 @@
 #include "engine/CFileDataOutputStream.h"
 #include <cstdio>
 
-struct CAFile {
+class CAFile { public:
     virtual void v0() = 0;
     virtual void v1() = 0;
     virtual void v2() = 0;

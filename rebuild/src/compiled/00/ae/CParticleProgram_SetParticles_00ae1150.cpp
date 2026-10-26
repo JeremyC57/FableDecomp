@@ -7,16 +7,16 @@
 //          model of this allocator; the program derives from it here so the call binds to the same symbol).
 // Shape: the count is the signed 12-byte element difference stored straight into the member; each point is built as a
 // C4DVector temporary (W = 0.0f, hoisted out of the loop as the zero register) and copied as four dwords.
-struct C3DVector { float X, Y, Z; };
-struct C4DVector {
+class C3DVector { public: float X, Y, Z; };
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector(const C3DVector& v, float w) : X(v.X), Y(v.Y), Z(v.Z), W(w) {}
 };
 
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
 struct CParticleArrayOwner : CMovableResource {
     unsigned char               _pad04[0xb8];
@@ -36,7 +36,7 @@ template<class T> struct CRetailVector {
     const T& operator[](unsigned long i) const { return m_first[i]; }
 };
 
-struct CParticleProgram : CParticleArrayOwner {
+class CParticleProgram : public CParticleArrayOwner { public:
     bool SetParticles(const CRetailVector<C3DVector>& points, CMovableResourceMemoryPool* pool);
 };
 

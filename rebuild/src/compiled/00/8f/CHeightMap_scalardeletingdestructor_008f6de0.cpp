@@ -17,10 +17,10 @@ namespace N_0099a300 { struct CBaseClass {
     virtual ~CBaseClass();                                                // 0x0099A300
 }; } using N_0099a300::CBaseClass;
 
-struct CWorld;
-struct CMap;
+class CWorld;
+class CMap;
 
-struct CHeightMapCell {
+class CHeightMapCell { public:
     unsigned char _cell[0x10];
 };
 
@@ -36,7 +36,7 @@ struct CHeightMapCellVector {                                             // ret
     }
 };
 
-struct CHeightMap : CBaseClass {                                          // vtable 0x01288BEC
+class CHeightMap : public CBaseClass { public:                                          // vtable 0x01288BEC
     CWorld*              World;                                           // +0x04
     CMap*                Map;                                             // +0x08
     unsigned long*       WorldSeed;                                       // +0x0c

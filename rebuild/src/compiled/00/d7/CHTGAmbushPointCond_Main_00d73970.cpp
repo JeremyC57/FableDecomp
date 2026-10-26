@@ -12,16 +12,16 @@
 //   called (GetPos inlined and devirtualised on the by-value local, as the landed CScriptThing::GetPos 0x004AA980).
 // Shape: the marker name is an implicit CCharString conversion temporary built before the other arguments; the
 //   marker's position is taken before its data string for SpawnEnemies.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 extern C3DVector g_ZeroVector;                     // 0x0143E8E0
-struct CCPPointerInfo;
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class CCPPointerInfo;
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c), 0x004AA900
     virtual void v004(); virtual void v005();
@@ -36,7 +36,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
     ~CScriptThing();                               // 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                 // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

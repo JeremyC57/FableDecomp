@@ -9,7 +9,7 @@
 // Shape: the squared length is kept in the dead `point` argument slot (`fst [esp+4]`) and pushed from there as a dword.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -18,7 +18,7 @@ struct C3DVector {
     void operator*=(float f) { X *= f; Y *= f; Z *= f; }
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
 };
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                           // +0x00
     C3DVector PreferredLine;                       // +0x0c
     float     AngleCompare;                        // +0x18

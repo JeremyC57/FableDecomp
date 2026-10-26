@@ -8,12 +8,12 @@
 // reads as length 0, otherwise the block's StringLength at +4 (CBasicString<char> layout as in
 // the landed CCharString::operator= @ 0x0099EFE0), which is why the body forks on the block
 // pointer with two copies of the epilogue.
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;            // +0x00
     unsigned long StringLength;     // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);     // 0x0099EC30
     long GetLength() const
@@ -29,7 +29,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                   // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CConsoleCommandLine : CBase {           // vtable 0x0129C400
+class CConsoleCommandLine : public CBase { public:           // vtable 0x0129C400
     virtual void v00();
     CCharString CurrentEntry;       // +0x04
     bool        UserEntry;          // +0x08

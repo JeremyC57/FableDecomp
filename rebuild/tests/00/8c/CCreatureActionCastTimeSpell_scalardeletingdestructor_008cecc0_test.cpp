@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_CastTimeSpell {
+class CCreatureAction_CastTimeSpell { public:
     void* vftable;
     int destroyed;
 };

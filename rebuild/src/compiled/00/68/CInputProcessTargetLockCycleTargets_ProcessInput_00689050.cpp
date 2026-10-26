@@ -31,7 +31,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -41,7 +41,7 @@ struct CThing {
     unsigned char  _bits91 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     void SetAsTargetNextThing();                   // 0x00802590
 };
 __forceinline CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
@@ -55,7 +55,7 @@ class CPlayer {
 public:
     CThing* GetHeroThing();                        // 0x00487DC0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

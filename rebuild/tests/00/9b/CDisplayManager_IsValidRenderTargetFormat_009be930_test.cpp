@@ -8,10 +8,10 @@ struct IDirect3D9 {
     virtual long __stdcall v11(unsigned long, long, long, int, long, unsigned long*) { return 0; }
     virtual long __stdcall CheckDepthStencilMatch(unsigned long adapter, long devType, long adapterFormat, long rt, long ds) { g_args[0] = adapter; g_args[1] = devType; g_args[2] = adapterFormat; g_args[3] = rt; g_args[4] = ds; return g_hr; }
 };
-struct CPixelFormat { long FormatIndex; };
+class CPixelFormat { public: long FormatIndex; };
 struct SPixelFormatInfo { long m_d3dFormat; unsigned char _rest[0x20]; };
 SPixelFormatInfo g_PixelFormatTable[3] = { { 21 }, { 22 }, { 75 } };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x54]; IDirect3D9* D3D; void* D3DDevice; long D3DDeviceCaps_DeviceType; unsigned long D3DDeviceCaps_AdapterOrdinal; unsigned char _caps[0x1b8 - 0x64];
     unsigned long CurrentMode_Width, CurrentMode_Height, CurrentMode_RefreshRate; long CurrentMode_Format;
     static long GetD3DFormat(const CPixelFormat& f) { return g_PixelFormatTable[f.FormatIndex].m_d3dFormat; }

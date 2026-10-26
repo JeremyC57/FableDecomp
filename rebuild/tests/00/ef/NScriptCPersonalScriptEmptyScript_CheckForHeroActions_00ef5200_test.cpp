@@ -7,7 +7,7 @@
 #include <cstring>
 #include <string>
 
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString() { }
     CCharString(const char* text) : s(text) { }
@@ -31,12 +31,12 @@ template <class T> struct vector {
     T& operator[](unsigned int i) { return _M_start[i]; }
 };
 }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
@@ -54,11 +54,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass() { }
     virtual ~CBaseClass() { }
 };
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     CScriptThing(CScriptThing* data, CCPPointerInfo* info) : PImp(data, info) { }
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
@@ -93,7 +93,7 @@ struct CHeroImpl : CScriptThing {                       // the counted implement
 static void NoDelete(void*) { }
 
 typedef long ETextGroupSelectionMethod;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing* hero;
     int frames;
     int messages;
@@ -102,14 +102,14 @@ struct CGameScriptInterface {
     CScriptThing& GetHero() { return *hero; }
     void AddScreenMessage(const CCharString& text, ETextGroupSelectionMethod) { ++messages; last = text.s; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     CGameScriptInterface* GSI;
     int calls;
     int stopAt;                                          // IsActiveThreadTerminating returns true from this call on
     bool IsActiveThreadTerminating() { return ++calls >= stopAt; }
 };
 namespace NScript {
-struct CPersonalScript_EmptyScript : CScriptBase {
+class CPersonalScript_EmptyScript : public CScriptBase { public:
     void CheckForHeroActions();
 };
 

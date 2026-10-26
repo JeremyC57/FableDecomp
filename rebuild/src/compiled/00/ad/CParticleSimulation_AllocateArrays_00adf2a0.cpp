@@ -8,23 +8,23 @@
 // the pool (`mov eax,[edi] ; mov ecx,[esi+78h] ; push eax`; the member read inline is pushed before the pool
 // load). The arrays are chained pointer additions of Size C4DVectors (16 bytes) each; the accelerations pointer
 // is stored AFTER the alphas are derived from it (`add ecx,eax` keeps it live in eax): a local stored last.
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle);         // 0x00A026B0
 };
 
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 
-struct CParticleSimulation : CMovableResource {
+class CParticleSimulation : public CMovableResource { public:
     unsigned char               RenderData[0x08];    // +0x04 CCountedPointer<CParticleSimulationRenderData>
     float                       Timestep;            // +0x0c
     bool                        TimestepChanged;     // +0x10

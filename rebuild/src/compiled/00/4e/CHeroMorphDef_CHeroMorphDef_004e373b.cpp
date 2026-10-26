@@ -14,7 +14,7 @@ struct SMorphRecord_004e373b {                     // 16 bytes
     unsigned char _pade[2];
     SMorphRecord_004e373b() : m_a(0), m_b(0), m_c(0), m_flag(false) { }
 };
-struct CHeroMorphDef : CDefBase_0044c0c0 {         // vtable 0x01242BCC
+class CHeroMorphDef : public CDefBase_0044c0c0 { public:         // vtable 0x01242BCC
     unsigned char          _pad04[0x24];
     SMorphRecord_004e373b  m_morph28;              // +0x28
     SMorphRecord_004e373b  m_morph38;              // +0x38

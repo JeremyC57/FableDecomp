@@ -52,22 +52,22 @@ public:
         return false;
     }
 };
-struct CPlayer { CThing* GetHeroCreature(); };                      // 0x00487DC0
+class CPlayer { public: CThing* GetHeroCreature(); };                      // 0x00487DC0
 struct CTCInventoryBase;
 long __fastcall GetInventoryCategory_005d99d0(long defIndex);       // 0x005D99D0
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };          // 0x00449960
-struct CEngine {
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
+class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1C
 };
 extern CEngine* g_pEngine;                                  // 0x013B86A0
 
 namespace NInventory {
-struct CItem {
+class CItem { public:
     long DefIndex;                                          // +0x00
     long Count;                                             // +0x04
 };
-struct CCategory {
+class CCategory { public:
     unsigned char _pad00[0x24];
     long HighlightedIndex;                                  // +0x24
     long GetItemInSlotWithIndex(long index) const;          // 0x005BC9B0
@@ -84,11 +84,11 @@ struct CPairVector {                                        // STLport vector<pa
             free(_M_start);
     }
 };
-struct CTCShop {
+class CTCShop { public:
     long GetCurrentBuyPrice_007743b0(long defIndex, long count) const;   // 0x007743B0
     void SellItem(long defIndex);                           // 0x00774730
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x3c];
     long Money;                                             // +0x3C
     void AddMoney(long amount, bool showMessage);           // 0x0057B327
@@ -117,7 +117,7 @@ struct CTCInventoryBase {
     void SetNumberOfSelectedItemOwned(long item);           // 0x005BE284
     bool CanAddItem(long item) const;                       // 0x005BF2ED
 };
-struct CTCInventoryTrade : CTCInventoryBase {
+class CTCInventoryTrade : public CTCInventoryBase { public:
     long          CategoryCount;                            // +0x160
     long          ItemSellCount;                            // +0x164
     long          ItemBuyCount;                             // +0x168

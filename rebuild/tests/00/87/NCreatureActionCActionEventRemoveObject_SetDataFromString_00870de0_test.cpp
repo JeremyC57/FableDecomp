@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureAction::CActionEventRemoveObject::SetDataFromString (retail 0x00870DE0): field 0 of the
 // event string becomes the Hand name; the result is the parser's success flag normalised to bool.
-struct CCharString {
+class CCharString { public:
     char Text[32];
 };
 static int g_parseResult;

@@ -3,16 +3,16 @@
 #include <cstring>
 static char g_log[256];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString { const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
+class CCharString { public: const char* Text; CCharString(const char* t, long = -1) : Text(t) {} ~CCharString() {} };
 void DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2) { LOG(std::strcmp(text.Text, "Asset Wait: Physics Mesh") == 0 && !flag && fraction == -1.0f && !flag2 ? "progress" : "progress?"); }
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     CResourceList* ResourceList; unsigned long LastUsedFrame; CResource* PrevResource;
     void ListRemove() { LOG("remove"); }
     void ListInsert(CResource*, CResource*) { LOG("insert"); }
     void Touch();
 };
-struct CResourceList { CResource Head; unsigned long CurrentFrame; };
+class CResourceList { public: CResource Head; unsigned long CurrentFrame; };
 inline void CResource::Touch()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
@@ -21,15 +21,15 @@ inline void CResource::Touch()
         LastUsedFrame = ResourceList->CurrentFrame;
     }
 }
-struct CBankFileAsyncData { bool done; bool IsFinished() { return done; } bool WaitUntilFinished() { LOG("wait"); done = true; return true; } };
-template <class T> struct CCountedPointer { T* Data; T* operator->() const { return Data; } };
+class CBankFileAsyncData { public: bool done; bool IsFinished() { return done; } bool WaitUntilFinished() { LOG("wait"); done = true; return true; } };
+template <class T> class CCountedPointer { public: T* Data; T* operator->() const { return Data; } };
 struct CIVCountedObject { mutable long RefCount; };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) {}
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
 };
-struct CPhysicsMesh : CIVCountedObject {};
+class CPhysicsMesh : public CIVCountedObject { public:};
 static CPhysicsMesh g_mesh;
 static CBankFileAsyncData g_file;
 struct CMeshData : CResource {
@@ -37,7 +37,7 @@ struct CMeshData : CResource {
     void BuildMesh() { LOG("build"); Mesh.Object = &g_mesh; }
 };
 static CMeshData g_data;
-struct CPhysicsMeshInfo {
+class CPhysicsMeshInfo { public:
     CMeshData* MeshData;
     void BeginLoading() { LOG("begin"); MeshData = &g_data; g_data.FileData.Data = &g_file; }
     CIVCountedPointer<const CPhysicsMesh> GetMesh()

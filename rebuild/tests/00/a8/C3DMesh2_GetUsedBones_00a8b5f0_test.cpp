@@ -2,14 +2,14 @@
 // Retail 0x00A8B5F0, 194 bytes. Primitive GetUsedBones 0x00A8FCF0.
 // PDB helper/dummy names and record sizes; retail base C3DMeshStats is 0x7c, so PrimitiveCount/Primitives are +0x90/+0x94.
 // No shared headers exist for these classes. Array values are byte bools, not packed vector<bool> bits.
-struct C3DMeshStats;
-struct CMovableResourceMemoryPool {
+class C3DMeshStats;
+class CMovableResourceMemoryPool { public:
     bool Allocate(long*, C3DMeshStats*, unsigned long, unsigned long);
     char* GetBuffer(long);
 };
-struct CCharString { void* PStringData; };
-struct C3DBoundingSphere { float values[4]; };
-struct C3DBoundingBox { float values[6]; };
+class CCharString { public: void* PStringData; };
+class C3DBoundingSphere { public: float values[4]; };
+class C3DBoundingBox { public: float values[6]; };
 template<class T> struct CPreAllocVectorMap {
     unsigned long Compare;
     T* Elements;
@@ -33,17 +33,17 @@ struct CBoolArray {
     unsigned long size() const { return (unsigned long)(Last - First); }
     unsigned char& operator[](unsigned long n) { return First[n]; }
 };
-struct C3DHelperPoint {
+class C3DHelperPoint { public:
  float Position[3]; long BoneIndex;
  void GetUsedBones(CBoolArray& used) const { if (BoneIndex != -1) used[BoneIndex] = true; }
 };
 struct C3DHelperPointEntry { unsigned long Key; C3DHelperPoint Value; };
-struct C3DDummyObject {
+class C3DDummyObject { public:
  float Transform[12]; long BoneIndex;
  void GetUsedBones(CBoolArray& used) const { if (BoneIndex != -1) used[BoneIndex] = true; }
 };
 struct C3DDummyObjectEntry { unsigned long Key; C3DDummyObject Value; };
-struct C3DMeshStats {
+class C3DMeshStats { public:
     void* __vftable;
     CMovableResourceMemoryPool* MemoryPool;
     long StatsMemoryHandle;
@@ -60,11 +60,11 @@ struct C3DMeshStats {
     bool AllocateBuffers(unsigned long helpers, unsigned long dummies, unsigned long names);
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _retailPrimitive[0xa0]; // PDB 0xac minus 3 retail vector shrinkages
     void GetUsedBones(CBoolArray&); // 0x00A8FCF0
 };
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;
     long PrimMemoryHandle;
     long BoneNameMemoryHandle;

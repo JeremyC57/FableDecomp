@@ -6,22 +6,22 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static void ResetLog() { g_log[0] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CWideString {
+class CWideString { public:
     const void* Text;
     CWideString(const void* text) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     const bool* AliveFlag;
     CScriptThing() : Name(""), AliveFlag(0) {}
     CScriptThing(const char* n, const bool* a) : Name(n), AliveFlag(a) {}
     bool IsAlive() const { return AliveFlag && *AliveFlag; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     long TerminateAfter;                                 // IsActiveThreadTerminating() turns true after this many calls
     long TerminateCalls;
     CScriptBase() : TerminateAfter(1000), TerminateCalls(0) {}
@@ -35,7 +35,7 @@ struct CFrameEvents {
     void Schedule(int i, bool* f, long at, bool v) { Flag[i] = f; At[i] = at; Value[i] = v; }
     void Tick() { ++Frames; for (int i = 0; i < 4; ++i) if (Flag[i] && At[i] == Frames) *Flag[i] = Value[i]; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CFrameEvents Ev;
     void NewScriptFrame() { Ev.Tick(); }
     CCharString GetActiveQuestName() { return CCharString("Q_SecretPassage"); }

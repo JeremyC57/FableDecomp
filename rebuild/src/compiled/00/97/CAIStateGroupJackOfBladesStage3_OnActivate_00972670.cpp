@@ -11,14 +11,14 @@
 // UNCHECKED inline accessors (the absent path reads the lookup key's frame word), the def pointer and its release as the
 // landed 0x008CB620 model; each hit location is fetched into a named local (its name temporary dies first) and then set.
 // Layout: CTCWillPower (interface 0xce) flag byte +0x18 (descriptive, as landed 0x009098E0's component).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,7 +42,7 @@ struct CThing {
         return component;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -64,7 +64,7 @@ struct CAttackStyleDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -75,27 +75,27 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer<CAttackStyleDef>* def);   // 0x00669770
 };
 struct CTCWillPower {                           // interface 0xce
     unsigned char _pad0[0x18];
     bool Active;                                // +0x18 (descriptive)
 };
-struct CTCCombat {                              // interface 0x30
+class CTCCombat { public:                              // interface 0x30
     void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);   // 0x007355F0
 };
 struct CHitLocation {
     void SetEnabled(bool enabled);              // 0x00816390
 };
-struct CTCHitLocations {                        // interface 0x7f
+class CTCHitLocations { public:                        // interface 0x7f
     CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThing* GetCreature() const { return PBrain->PCreature; }

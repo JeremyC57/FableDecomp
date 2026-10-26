@@ -6,19 +6,19 @@
 // Retail offsets: CWorld PlayerManager +0x0C, AutoSaveLocked +0x100 (PDB +0x10C); CThing Dead +0x91 bit 0 (PDB - 0x10).
 // Shape: the two SaveGameState calls (quest-screen flag true/false) are complete statements that VC7.1 merges into
 // one call after the argument pushes.
-struct CWideStringData;
-struct CWideString { CWideStringData* PStringData; };
+class CWideStringData;
+class CWideString { public: CWideStringData* PStringData; };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char Dead : 1;                      // +0x91 bit 0
 };
-struct CPlayer { CThing* GetHeroThing(); };                   // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };          // 0x00449970
-struct CQuestManager { bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
+class CPlayer { public: CThing* GetHeroThing(); };                   // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };          // 0x00449970
+class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad[0xc];
     CPlayerManager* PlayerManager;               // +0x0C
     unsigned char   _pad10[0xf0];

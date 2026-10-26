@@ -15,8 +15,8 @@
 // unaligned +0x1d (pack(1), as the landed rows read it).
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -76,29 +76,29 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 };
 
 #pragma pack(push, 1)
-struct CTCTargetingAI {                         // interface 8
+class CTCTargetingAI { public:                         // interface 8
     unsigned char _pad0[0x1d];
     CBaseIntelligentPointer PEnemy;             // +0x1d
 };
 #pragma pack(pop)
-struct CTCBoss {                                // interface 0xAD
+class CTCBoss { public:                                // interface 0xAD
     long GetCurrentPhase();                     // 0x007AED10
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

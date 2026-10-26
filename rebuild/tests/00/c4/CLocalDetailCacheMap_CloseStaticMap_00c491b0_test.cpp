@@ -4,7 +4,7 @@ static void* g_freed = (void*)0;
 
  void operator delete[](void* p) { g_freed = p; }
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     char pad[0x10];
     void* f10;
 };

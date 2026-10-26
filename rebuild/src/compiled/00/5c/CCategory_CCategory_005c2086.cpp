@@ -9,7 +9,7 @@
 // +0x24 HighlightedItemIndex, +0x28 Selected, +0x29 DisplayItems. The header therefore cannot
 // model `this` here; the local CCategory view below carries the PDB names at the retail offsets.
 // The CDefPointer copy is inline: store the object pointer, then AddRef it when non-null (retail stores before the null test).
-struct CThing;
+class CThing;
 
 struct CIntelligentPointer {                     // CIntelligentPointer<const CThing>, 8 bytes
     void* m_pObject;

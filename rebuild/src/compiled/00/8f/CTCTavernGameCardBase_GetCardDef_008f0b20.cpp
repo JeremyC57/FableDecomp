@@ -15,10 +15,10 @@ struct CDefPointee {                         // counted def: count at +4, slot 1
     long m_refCount;                         // +0x04
 };
 
-struct CTavernGameCardBaseDef : CDefPointee {
+class CTavernGameCardBaseDef : public CDefPointee { public:
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -48,7 +48,7 @@ template<class T> struct CDefPointer {
     }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTavernGameCardBaseDef>* out);   // 0x008F27A0
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -65,7 +65,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CTavernGameCardBa
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                     // +0x70
 };

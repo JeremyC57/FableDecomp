@@ -8,7 +8,7 @@
 //         CTavernGameCardBaseDef::CardOrders (vector<CCardPositionsDef>, 72-byte entries, retail 12-byte vector) +0x6c.
 // Shape: `size()` divides the byte span by 72 (`imul 0x38E38E39 ; sar 4`); null-tested CDefPointer dtor with the def's inline
 //        ReleaseTemporary().
-struct CCardPositionsDef { unsigned char _data[0x48]; };
+class CCardPositionsDef { public: unsigned char _data[0x48]; };
 
 struct CRefCounted {
     long m_count;
@@ -23,7 +23,7 @@ template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x64];
     CRetailVector<CCardPositionsDef> CardOrders;   // +0x6c
     void ReleaseTemporary()

@@ -4,8 +4,8 @@
 
 extern "C" long g_CCharString_liveCount;
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* data;
 
     void ReleaseData();

@@ -2,7 +2,7 @@
 #include <cstring>
 static int g_baseCtor = 0, g_baseDtor = 0, g_destroyed = 0, g_commentCtor = 0, g_commentDtor = 0; static const char* g_commentText = 0; static long g_commentLength = 0; static void* g_destroyedObject = 0;
 struct CBase { virtual void VSlot0() { } CBase() { ++g_baseCtor; } ~CBase() { ++g_baseDtor; } };
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
 static void __fastcall DestroyChunk(void* object) { ++g_destroyed; g_destroyedObject = object; }
 struct CCountedSuperChunkPointer {
@@ -21,7 +21,7 @@ public:
     CCharString(const char* text, long length) : PStringData(0) { ++g_commentCtor; g_commentText = text; g_commentLength = length; }
     ~CCharString() { ++g_commentDtor; }
 };
-struct CChunkedFile : CBase {
+class CChunkedFile : public CBase { public:
     CCountedSuperChunkPointer RootChunk; unsigned long Version; CCharString FileComment;
     CChunkedFile(const CCountedSuperChunkPointer& rootChunk) : CBase(), RootChunk(rootChunk), Version(0), FileComment("", -1) { }
     ~CChunkedFile() { }

@@ -15,7 +15,7 @@
 
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 namespace std {
 struct __true_type { };

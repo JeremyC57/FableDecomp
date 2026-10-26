@@ -60,7 +60,7 @@ public:
 
 class CProfileManager {
 public:
-    class CProfileTreeEntry {                           // 0x5C bytes
+    struct CProfileTreeEntry {                           // 0x5C bytes
     public:
         CProfile                          Profile;      // +0x00
         long                              ID;           // +0x48

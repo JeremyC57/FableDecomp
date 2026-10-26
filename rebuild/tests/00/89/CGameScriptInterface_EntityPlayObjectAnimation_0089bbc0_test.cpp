@@ -35,12 +35,12 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CScriptThing {
+class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
     virtual bool IsValid() const { return valid; }
 };
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 static int g_playCalls = 0; static const CCharString* g_playAnim = 0; static long g_playId = -99; static int g_playLoop = -1; static void* g_playThis = 0;
 struct CTCAnimatingObject_Retail {
     unsigned char _pad[0xc];
@@ -51,7 +51,7 @@ struct CTCAnimatingObject_Retail {
     void PlayAnimation(const CCharString& anim, long id, bool loop) { ++g_playCalls; g_playAnim = &anim; g_playId = id; g_playLoop = loop; g_playThis = this; }
     __forceinline void PlayNextAnimation(const CCharString& anim, bool loop) { PlayAnimation(anim, GetId() + 1, loop); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     virtual void EntityPlayObjectAnimation(const CScriptThing& thing, const CCharString& anim, bool loop) const;
 };

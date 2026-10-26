@@ -11,18 +11,18 @@
 // The parent script's +0x48 word (below CV_MurderTwistFinalScript's own PDB members, in its quest-script base) is the
 // tested "started" flag; its name is not recovered.
 // Shape: early-out `return` arm laid out first; the zero arguments are immediates here (ebx holds the cached vtable).
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
 };
-struct CBaseClass {                              // vtable 0x01231710
+class CBaseClass { public:                              // vtable 0x01231710
     CBaseClass() {}
     virtual ~CBaseClass();
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:               // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) {}
     virtual ~CScriptThing();
@@ -35,7 +35,7 @@ struct CScriptThing : CBaseClass {               // vtable 0x01238C8C, 12 bytes
     virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066();
     virtual void SetFriendsWithEverythingFlag(bool friends);   // slot 67 (+0x10c) 0x004AB060
 };
-struct CGameScriptInterface {                    // vtable 0x01260F0C (slots from rtti-vtables.tsv)
+class CGameScriptInterface { public:                    // vtable 0x01260F0C (slots from rtti-vtables.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -134,7 +134,7 @@ struct CGameScriptInterface {                    // vtable 0x01260F0C (slots fro
     virtual void v836(); virtual void v837(); virtual void v838(); virtual void v839(); virtual void v840(); virtual void v841(); virtual void v842(); virtual void v843();
     virtual void SetIsPushableByHero(CScriptThing thing, bool pushable);   // slot 844 (+0xd30) 0x008A6DD0 (by value)
 };
-struct CScriptGameResourceObjectScriptedThingBase { unsigned char _body[0x10]; };
+class CScriptGameResourceObjectScriptedThingBase { public: unsigned char _body[0x10]; };
 struct CQ_SunnyvaleMasterData;
 struct CV_MurderTwistFinalScript {
     unsigned char _base[0x48];

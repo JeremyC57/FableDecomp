@@ -1,7 +1,7 @@
 // Behaviour test for CTCKrakenTentacle::GetShouldStrike @ 0x007F1410 (self-contained model of the candidate logic).
 #include <stdio.h>
 #include <string.h>
-struct CThing { bool Dead; unsigned long modes; bool HasMode(unsigned long m) { return (modes & m) != 0; } };
+class CThing { public: bool Dead; unsigned long modes; bool HasMode(unsigned long m) { return (modes & m) != 0; } };
 static long g_worldFrame = 1000; static long g_fps = 30;
 struct Model {
     CThing* ParentThing; float TentacleTimeBetweenAttacks; CThing* kraken; bool CanStrike; long LastStrikeTick;

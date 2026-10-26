@@ -16,8 +16,8 @@
 // InventoryAnimThingDefIndex +0x124, RHSetInvItemDefIndex +0x128.
 #pragma optimize("s", on)
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {                           // 24 bytes: Up, Forward
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:                           // 24 bytes: Up, Forward
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() {}
@@ -29,7 +29,7 @@ extern C3DVector g_InventoryAnimYAxis;             // 0x0137CDF0
 extern C3DVector g_InventoryAnimZAxis;             // 0x0137CE08
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     unsigned char _pad_0x000[0xcc];
     CRightHandedSet InventoryAnimCurrentRHSet;     // +0x0cc
     CRightHandedSet InventoryAnimLastRHSet;        // +0x0e4

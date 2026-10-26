@@ -8,7 +8,7 @@
 // The manifest label "CAIStateGroup_MinionPutOutFires::Cleanup" is propagated from a byte-identical body:
 // CAIStateGroup_MinionPutOutFires is 28 bytes (PDB) and keeps PBuildingOnFire at +0x14, while this body
 // assigns the pointer at +0xd0, so the owner is a larger state group modelled locally and named descriptively.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

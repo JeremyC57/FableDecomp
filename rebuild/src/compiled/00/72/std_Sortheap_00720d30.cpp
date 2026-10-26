@@ -10,7 +10,7 @@
 // `_Ty(*(_Last - 1))` temporary keeps MorphName in ecx, spills the Priority/flag dword to the frame and holds the
 // float weight on the x87 stack (the pair's memberwise user copy constructor); `*_Dest = *_First` is the
 // implicit assignment (three dword moves through ebp) and the value argument is stored field by field (`fstp`).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -26,7 +26,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct CThingSoundEmitter { bool DrawIsDrawable(); };
+class CThingSoundEmitter { public: bool DrawIsDrawable(); };
 bool CThingSoundEmitter::DrawIsDrawable() { return false; }

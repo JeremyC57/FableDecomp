@@ -8,7 +8,7 @@ struct CPackedUIntArray {
     unsigned int operator[](unsigned int i) const { return PackedInts[i]; }
     bool IsPacked() const { return Size != 0; }
 };
-struct CBankFile {
+class CBankFile { public:
     unsigned int Size; CRuntimeData* RuntimeData; CPackedUIntArray PackedDataSize, PackedValid;
     bool EntryExists(unsigned int index) const
     {

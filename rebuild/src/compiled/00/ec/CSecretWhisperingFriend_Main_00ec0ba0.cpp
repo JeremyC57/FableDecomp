@@ -8,19 +8,19 @@
 //   dtor 0x007E74D0, IsDistanceFromThingToPositionOver 0x00CBE45C (__fastcall); GameCalls slots 7, 8, 70, 72, 108, 284, 451, 475;
 //   CScriptThing slots 6 GetPos, 7 GetHomePos (results unused).
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (quest stage +0x48), home position C3DVector +0x1c.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     __forceinline CCountedPointer& operator=(const CCountedPointer& other)
@@ -60,7 +60,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual C3DVector GetHomePos() const;   // slot 7 (+0x1c)
@@ -81,7 +81,7 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
     CBaseIntelligentPointer();                          // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
@@ -92,7 +92,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   
     void ClearCommands();                               // 0x007E7360
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -158,7 +158,7 @@ struct CQuestParent {
     unsigned char _pad00[0x48];
     long Stage;                                         // +0x48
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

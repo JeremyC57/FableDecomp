@@ -6,7 +6,7 @@ struct CScreenFilterSource_00c596e0 {
     void*         m_pRecord;                       // +0xf4
 };
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char _pad[0xc];
     long          m_filterA;                       // +0x0c
     unsigned char _pad10[0x1c];

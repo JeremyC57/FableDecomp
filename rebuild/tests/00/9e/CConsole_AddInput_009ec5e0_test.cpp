@@ -58,8 +58,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -67,8 +67,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -157,7 +157,7 @@ struct CRetailString : CCharString {
     CRetailString(const CRetailString&); // 0x0099EC30 native copy
     CRetailString ToLower() const; // 0x0099ED10
 };
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual ~CConsoleInputBase(); // real slot0 deleting destructor consumed by DeleteData
     CRetailString Name; // +4 native and donor layout
 };
@@ -192,7 +192,7 @@ struct CInputInsertResult { void* iterator; bool inserted; CInputInsertResult();
 struct CInputMap {
     CInputInsertResult Insert(const CInputValue&); // 0x009EFB80
 };
-struct CConsole {
+class CConsole { public:
     unsigned char _nativeBeforeRegisteredInputs[0x40];
     CInputMap RegisteredConsoleInputs;
     void AddInput(CConsoleInputBase*);

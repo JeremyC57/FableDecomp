@@ -3,9 +3,9 @@
 // Forwards two scratch byte flags to the texture-format handler at 0x004dd1f2, then
 // returns *this. The two flags live in disjoint scopes so the optimizer overlays them
 // on the same stack slot while still emitting a separate lea for each argument.
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     CTexture& CopyBackBufferToTexture();
     void Handler(char* a, char* b);   // 0x004dd1f2, __fastcall(this, a, b)
 };

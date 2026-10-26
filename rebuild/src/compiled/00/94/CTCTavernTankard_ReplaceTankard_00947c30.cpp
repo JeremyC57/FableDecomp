@@ -8,10 +8,10 @@
 // (no engine header). The parent thing (+4) holds the physics component at +0x60.
 // Shape: the component is a named local (esi); `&Pos` is `lea eax,[edi+28h]`, `&RHSet` advances
 //        `this` in place (`add edi,10h`). Compare ReplaceJug 0x00968090 (null-tested, slot 75).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };          // 0x18 bytes
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };          // 0x18 bytes
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -25,14 +25,14 @@ struct CTCPhysicsBase {
     virtual void SetPhysicsActive(bool active);                 // slot 36 (+0x90)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x60];
     CTCPhysicsBase* m_pPhysics;                                 // +0x60
 };
 
-struct CThingAICreature;
+class CThingAICreature;
 
-struct CTCTavernTankard {
+class CTCTavernTankard { public:
     void* __vftable;                                            // +0x00
     CThing* m_pParentThing;                                     // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];

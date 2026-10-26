@@ -55,7 +55,7 @@ struct LDocumentPartVector {                                     // STLport vect
     ~LDocumentPartVector() { if (_M_start != 0) free(_M_start); }
 };
 
-struct LHHttpHeaders {                                           // 24 bytes in retail
+class LHHttpHeaders { public:                                           // 24 bytes in retail
     CRetailStringVector HdrDocumentHeader;                       // +0x00
     CRetailString       HeaderString;                            // +0x0c
     ~LHHttpHeaders() { Reset(); }
@@ -66,7 +66,7 @@ struct LHHttpHeaders {                                           // 24 bytes in 
     }
 };
 
-struct LHHttp2 {
+class LHHttp2 { public:
     LSocket*            Host;                                    // +0x000
     CRetailString       Hostname;                                // +0x004
     unsigned short      Port;                                    // +0x010

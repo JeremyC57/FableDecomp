@@ -18,7 +18,7 @@ static int fails = 0;
 //   C3DVector(0, 0, 1) * offset (1 * offset folds, 0 * offset is computed once and reused for X and Y). The focal point
 //   is a named local in an inner block, so VC7.1 gives it the dead raise temporary's 12 bytes (0x3C frame); at function
 //   scope it takes its own slot (0x48), and assigning LookAt straight from the call copies through eax.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -52,7 +52,7 @@ public:
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
 };
 class CThingGameObject : public CThing { };
-struct CGameCameraManager;
+class CGameCameraManager;
 namespace NCameraModes {
 class CBase {
 public:

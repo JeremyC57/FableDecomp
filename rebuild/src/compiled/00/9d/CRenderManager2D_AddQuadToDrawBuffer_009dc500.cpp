@@ -5,8 +5,8 @@
 // Shape: `if (blendMode == 1)` passes the literal 1; the first call of each arm reuses the incoming ecx (`this`
 // untouched since `mov esi,ecx`), the second reloads it from esi.
 // Leaf: AddQuadToDrawBuffer
-struct CTVertexRHWColSpecTex1;
-struct CTexture;
+class CTVertexRHWColSpecTex1;
+class CTexture;
 
 struct CRenderManager2D {
     void AddTri(const CTVertexRHWColSpecTex1& v0, const CTVertexRHWColSpecTex1& v1, const CTVertexRHWColSpecTex1& v2,

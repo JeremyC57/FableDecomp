@@ -3,7 +3,7 @@
 #include <new>
 
 struct C2DVectorF { float X, Y; };
-struct C2DLineF { C2DVectorF Start; C2DVectorF End; };
+class C2DLineF { public: C2DVectorF Start; C2DVectorF End; };
 struct FalseType { };
 
 static C2DLineF* UninitCopy(const C2DLineF* first, const C2DLineF* last, C2DLineF* result, const FalseType&)

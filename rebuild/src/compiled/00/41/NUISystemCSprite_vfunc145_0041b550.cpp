@@ -227,6 +227,6 @@ struct CManagerGraphicsView {
     CSpriteGraphicsPointer GetGraphicsBank() const { return PGraphicsBank; }
 };
 
-struct CSprite {unsigned char ToSize[0xcc];float SizeX,SizeY;unsigned char ToGraphic[0x178-0xd4];unsigned long GraphicIndex;void SetGraphicIndex(unsigned long);};
+class CSprite { public:unsigned char ToSize[0xcc];float SizeX,SizeY;unsigned char ToGraphic[0x178-0xd4];unsigned long GraphicIndex;void SetGraphicIndex(unsigned long);};
 void CSprite::SetGraphicIndex(unsigned long index){GraphicIndex=index;if(GraphicIndex>0){SizeX=(float)CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex,0);SizeY=(float)CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex,0);CGraphicInfoFrame* frames=CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrames(GraphicIndex);frames->BeginLoading(0,0x10);CGraphicFrame frame;frames->GetFrame(frame,0,1);}}
 }

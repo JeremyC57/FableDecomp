@@ -11,15 +11,15 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CCharString {
+class CChunkedFileLoader;
+class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     void* m_pStringData;                                // CCharStringData*
 };
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CDataInputStream {
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     virtual void v3(); virtual void v4(); virtual void v5();
@@ -53,13 +53,13 @@ struct CDataInputStream {
     __forceinline bool ReadBool() { unsigned char value; Read(&value, sizeof(value)); return value != 0; }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
 
-struct C3DAnimFileObjectChunk : CChunkedFileSuperChunk {
+class C3DAnimFileObjectChunk : public CChunkedFileSuperChunk { public:
     CCharString Name;                      // +0x2c (PDB +0x34)
     long SubMeshIndex;                     // +0x30 (PDB +0x38)
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);

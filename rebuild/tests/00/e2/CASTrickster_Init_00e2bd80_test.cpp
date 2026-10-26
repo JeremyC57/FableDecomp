@@ -1,14 +1,14 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SCountInfo { long RefCount; };
-struct CScriptThing {
+class CScriptThing { public:
     int id; SCountInfo* Info; C3DVector pos;
     CScriptThing(int i, SCountInfo* c) : id(i), Info(c) { pos.X = 1; pos.Y = 2; pos.Z = 3; }
     CScriptThing(const CScriptThing& o) : id(o.id), Info(o.Info), pos(o.pos) { if (Info) ++Info->RefCount; }
     ~CScriptThing() { if (Info) --Info->RefCount; }
     const C3DVector& GetPos() const { return pos; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero; int allies; C3DVector centre; float minD, maxD; int group; bool info;
     CGameScriptInterface() : hero(1, 0), allies(0), minD(-1), maxD(-1), group(0), info(false) { }
     CScriptThing& GetHero() { return hero; }
@@ -19,7 +19,7 @@ struct CGameScriptInterface {
     void SetScriptingStateGroup(CScriptThing, int g) { group = g; }
     void SetThingHasInformation(const CScriptThing&, bool i, bool, bool) const { const_cast<CGameScriptInterface*>(this)->info = i; }
 };
-struct CScriptDef { float AmbushScamTricksterWanderMax; };
+class CScriptDef { public: float AmbushScamTricksterWanderMax; };
 static CScriptDef g_def = { 12.5f };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CAS_Trickster {

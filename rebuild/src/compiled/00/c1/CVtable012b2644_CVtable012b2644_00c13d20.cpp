@@ -7,7 +7,7 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x00C13A00; the compiler then stores this class's vtable (0x012B2644, named
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
-struct CPlayerGui;
+class CPlayerGui;
 
 struct CDrawQuickAccessIconsPC {
     virtual void v00();

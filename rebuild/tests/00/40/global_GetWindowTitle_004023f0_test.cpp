@@ -9,14 +9,14 @@ static int g_banks = 0, g_entries = 0, g_opened = 0;
 static unsigned long g_wantKey = 0;     // CRC key the bank knows (0 = none)
 static const wchar_t* g_entryText = 0;  // text of the group entry (0 = GetPGroupEntry returns null)
 
-struct CWideString {
+class CWideString { public:
     wchar_t s[64];
     CWideString(const wchar_t* t) { std::wcscpy(s, t); }
     CWideString(const CWideString& o) { std::wcscpy(s, o.s); }
     CWideString& operator=(const CWideString& o) { std::wcscpy(s, o.s); return *this; }
 };
 CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a); std::wcscat(r.s, b); return r; }
-struct CCharString {
+class CCharString { public:
     const char* d;
     CCharString(const char* t) : d(t) { }
     const char* GetString() const { return d; }
@@ -34,7 +34,7 @@ struct CGroupEntry {
     void Release() { if (--refs == 0) { --g_entries; delete this; } }
     CWideString GetText() const { return CWideString(g_entryText); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     ~CIVCountedPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }

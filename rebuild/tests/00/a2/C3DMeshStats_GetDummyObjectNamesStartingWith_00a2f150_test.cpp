@@ -1,7 +1,7 @@
 // Behaviour test for 0x00A2F150 C3DMeshStats::GetDummyObjectNamesStartingWith: forwards to UnpackNames with dummyObjects = true.
 #include <cstdio>
 
-struct CCharString { const char* m_text; };
+class CCharString { public: const char* m_text; };
 struct CCharStringVector { int m_count; };
 
 static CCharStringVector* g_names = 0;
@@ -10,7 +10,7 @@ static const CCharString* g_prefix = 0;
 static bool g_once = false;
 static int g_calls = 0;
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     int m_id;
     void GetDummyObjectNamesStartingWith(CCharStringVector& names, const CCharString& prefix, bool once) const
     {

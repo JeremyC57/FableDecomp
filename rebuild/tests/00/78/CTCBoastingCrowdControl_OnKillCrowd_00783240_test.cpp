@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     ~CBaseIntelligentPointer() { ++g_ptrDtors; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 struct _Rb_tree_node_base {
     long                _M_color;

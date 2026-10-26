@@ -18,8 +18,8 @@ static int fails = 0;
 // sum builds its three components through an aggregate initialiser (evaluated x, y, z, stored after `fxch st(2)`),
 // while the subtraction and scaling use the member-wise constructor.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -31,7 +31,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -178,7 +178,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -186,7 +186,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -222,7 +222,7 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
@@ -247,7 +247,7 @@ struct CTrollThrowDef {
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }               // a plain holder filled by GetSubDef
 };
@@ -257,7 +257,7 @@ struct CDefReleaser {                           // releases a def copied out of 
     CDefReleaser(T* object) : Object(object) { }
     ~CDefReleaser() { if (Object) Object->Release(); }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTrollThrowDef>* out);   // 0x008C78F0
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below

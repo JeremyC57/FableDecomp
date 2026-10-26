@@ -15,7 +15,7 @@ namespace N_0099a300 { struct CBase {                                     // roo
     virtual ~CBase();                              // 0x0099A300
 }; } using N_0099a300::CBase;
 
-struct CChunkedFileChunk : CBase {                 // vtable 0x0129E474
+class CChunkedFileChunk : public CBase { public:                 // vtable 0x0129E474
     unsigned char _pad_0x04[0x0c];                 // +0x04
     CChunkedFileChunk() { }
     virtual ~CChunkedFileChunk() { }

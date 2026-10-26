@@ -60,8 +60,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -69,8 +69,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -155,9 +155,9 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 void operator delete(void*) throw(); //00BFE9BC scalar CRT delete
-struct C2DBoxI { long TLX,TLY,BRX,BRY; };
-struct CCPPointerInfo { unsigned long RefCount; void(FABLE_FASTCALL* DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
+class C2DBoxI { public: long TLX,TLY,BRX,BRY; };
+class CCPPointerInfo { public: unsigned long RefCount; void(FABLE_FASTCALL* DeleteFunc)(void*); void* Data; };
+template<class T> class CCountedPointer { public:
  T* Data; CCPPointerInfo* Info;
  CCountedPointer& operator=(const CCountedPointer& o){
   T* data=o.Data; CCPPointerInfo* info=o.Info;
@@ -165,8 +165,8 @@ template<class T> struct CCountedPointer {
   return *this;
  }
 };
-struct CMap;
-struct CMapInfo {
+class CMap;
+class CMapInfo { public:
  C2DBoxI Area; CCountedPointer<CMap> PMap; CCharString LevelName,LevelScriptName;
  unsigned long MapUID; bool Used,Placed,Activated,Loading,LoadedOnPlayerProximity;
  CCharString SerialiseScript;
@@ -196,7 +196,7 @@ CCharString::CCharString(const char* s,long):storage_((CCharStringData*)s){}
 CCharString::~CCharString(){}
 CCharString& CCharString::operator=(const CCharString& s){++assigns;storage_=s.storage_;return *this;}
 CCharString::operator const char*()const{return (const char*)storage_;}
-struct CMap { int id; };
+class CMap { public: int id; };
 static CMap* expected;
 static CCPPointerInfo* dying;
 void FABLE_FASTCALL Dispose(void* p){if(p!=expected||dying->RefCount!=0)abort();++callbacks;}

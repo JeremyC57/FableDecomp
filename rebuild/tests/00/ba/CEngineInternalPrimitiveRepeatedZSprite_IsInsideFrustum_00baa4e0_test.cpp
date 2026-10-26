@@ -1,7 +1,7 @@
 // behaviour test for 00baa4e0 CEngineInternalPrimitiveRepeatedZSprite::IsInsideFrustum
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -9,8 +9,8 @@ struct C3DVector {
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
     float GetLength() const { return (float)std::sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CPlane { C3DVector Normal; float D; };
-struct CCamera { C3DVector WorldPosition; float NearZPlane, FarZPlane; C3DVector LookVector; CPlane FrustrumPlanes[4]; };
+class CPlane { public: C3DVector Normal; float D; };
+class CCamera { public: C3DVector WorldPosition; float NearZPlane, FarZPlane; C3DVector LookVector; CPlane FrustrumPlanes[4]; };
 struct CSprite { float FadeFar; float FadeInStart; C3DVector Center; float Radius; };
 static float g_fadeScale = 1.0f;
 static bool IsSphereInFrustum(const CCamera& camera, const C3DVector& centre, float radius)

@@ -13,7 +13,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;
     unsigned char _pad_0x21[0x23 + 0x20 - 0x24];
@@ -34,7 +34,7 @@ struct CThing {
 enum { APPEARANCE_MODIFIER_CLOTHING = 2 };
 static const char* g_log[32]; static long g_logArg[32]; static int g_logN = 0;
 static void Log(const char* s, long a) { g_log[g_logN] = s; g_logArg[g_logN++] = a; }
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     void RemoveAllAppearanceModifiers(long type) { Log("remove", type); }
     void AddAppearanceModifierWithReplace(long defIndex) { Log("add", defIndex); }
     void EditFrameUpdate() { Log("update", 0); }
@@ -57,21 +57,21 @@ struct CSuitPartMap {
     SNode* end() { return _M_header; }
 };
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CHeroSuitDef : CDefPointeeBase {
+class CHeroSuitDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CSuitPartMap  SuitParts;
 };
 static CHeroSuitDef* g_suit = 0;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CHeroSuitDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CHeroSuitDef>* out)
@@ -80,7 +80,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CHeroSuitDef>* out)
     ++g_suit->m_refCount; out->Object = g_suit; return true;
 }
 static CDefClassBase* g_classDef = 0; static long g_askedIndex = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);
 };
 bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
@@ -91,7 +91,7 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<CDefClassBase>* out)
 }
 static CDefinitionManager g_manager; static long g_counts[64];
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     unsigned char _pad00[0x130];
     CDefinitionManager* GetDefinitions() { return &g_manager; }
     long GetNumberOfItemsOfTypeInInventory(long itemType) { Log("count", itemType); return g_counts[itemType]; }

@@ -22,7 +22,7 @@ struct CAnimationOwner {
     virtual CAnimationPlayer* GetAnimationPlayer();   // slot 6 (+0x18)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad[0x40];
     CAnimationOwner* m_pAnimationOwner;            // +0x40
 };

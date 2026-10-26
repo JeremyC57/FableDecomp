@@ -11,9 +11,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRegion;
+class CRegion;
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
 };

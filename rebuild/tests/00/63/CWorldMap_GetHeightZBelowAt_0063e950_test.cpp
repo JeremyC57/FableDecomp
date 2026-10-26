@@ -19,30 +19,30 @@
 //   0x0125A168, 0.007f @ 0x0125A164.
 // Layout: CWorldMap World +0x08 (as the PDB header); CWorld ThingSearchTools +0x20; CThing PhysicsTC +0x60; the
 //   CPhysicsMeshObject / CMeshIntersectionData models of the landed CThingFindHeightZBelowAt::operator() 0x00668AB0.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long x0, long y0, long x1, long y1) : TLX(x0), TLY(y0), BRX(x1), BRY(y1) { }
     void ValidateOrientationAndFlip();                  // 0x00A3A150
 };
-struct CMeshIntersectionData {
+class CMeshIntersectionData { public:
     C3DVector IntersectionPosition;             // +0x00
     C3DVector Normal;                           // +0x0c
     float     DistanceSquared;                  // +0x18
 };
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     void*         __vftable;
     void*         m_pMesh;                      // +0x04 counted mesh
     unsigned char _pad08[0x38];
     ~CPhysicsMeshObject();                      // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData* out);   // 0x00A12450
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -56,7 +56,7 @@ struct CTCPhysicsBase {
     virtual void* GetPhysicsMeshParameters();   // slot 93 (+0x174)
     CPhysicsMeshObject GetPhysicsMeshObject();  // 0x006B0850
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
@@ -105,7 +105,7 @@ struct CThingList {                                      // STLport list<CThing*
     }
 };
 
-struct CThingFilter_OverlappingCircle {
+class CThingFilter_OverlappingCircle { public:
     C3DVector Center;
     float     Radius;
     CThingFilter_OverlappingCircle(const C3DVector& center, float radius) : Center(center), Radius(radius) { }
@@ -118,7 +118,7 @@ struct CBoundThingFilter {                               // the circle test and 
 
 CThing* NextThingInRoughArea(const C2DBoxI& box, CThing* previous);
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void ForEachInRoughArea(const C2DBoxI& box, const CBoundThingFilter& filter, CThingList& things);   // 0x0063FD40
 };
 // Same-TU stand-in for the 0x0063FD40 template instance (retail emits it in this TU after the caller): with its body in
@@ -132,7 +132,7 @@ void CThingSearchTools::ForEachInRoughArea(const C2DBoxI& box, const CBoundThing
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;         // +0x20
 };

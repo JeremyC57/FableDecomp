@@ -10,7 +10,7 @@
 // already stamped this frame. Otherwise it is unlinked (each neighbour's back link, or the chain end when there is no
 // neighbour), then linked as the newest: newer = none, older = the old newest, whose newer becomes `index`
 // (VC forwards the just-stored `older` word: `movzx edx,ax`).
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x25c];
     long          FrameCounter;                 // +0x25c
 };
@@ -18,7 +18,7 @@ struct CDisplayManagerPointer {                 // CCountedPointer<CDisplayManag
     CDisplayManager* Object;                    // +0x00
     long*            Count;                     // +0x04
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char          _pad000[0x60];
     CDisplayManagerPointer PDisplayManager;     // +0x60
 };

@@ -13,12 +13,12 @@
 #include <math.h>
 #include <new>
 #include "fable_string.h"
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CTCPhysicsBase {                                 // CThing::PhysicsTC (+0x60)
+class CTCPhysicsBase { public:                                 // CThing::PhysicsTC (+0x60)
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
@@ -26,19 +26,19 @@ struct CTCPhysicsBase {                                 // CThing::PhysicsTC (+0
 #undef VF
     virtual C3DVector GetFacing() const;                // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     const C3DVector& GetPosition() const;               // 0x004C73D0
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
 };
-struct CThingCreatureBase : CThing { };
-struct CSoundPair {
+class CThingCreatureBase : public CThing { public: };
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCombatActionBase {                              // retail sizeof 0x114
+class CCombatActionBase { public:                              // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
@@ -64,7 +64,7 @@ static __forceinline float WrapTurnDifference(float turns)
         return (float)fmod((double)(turns - -0.5f), 1.0) - 0.5f;
     return turns;
 }
-struct CCreatureAction_DragonFlight : CCombatActionBase {   // vtable 0x01288544
+class CCreatureAction_DragonFlight : public CCombatActionBase { public:   // vtable 0x01288544
     bool  FaceTarget;                                   // +0x114
     float TurnRate;                                     // +0x118
     virtual void v00();

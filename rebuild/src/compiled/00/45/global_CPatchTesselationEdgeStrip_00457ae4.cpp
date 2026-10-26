@@ -5,11 +5,11 @@
 // operator delete (retail 0x7a6f30) — relocation-masked call target
 extern "C" void __cdecl free(void* block);   // MSVCR71 import thunk 0x00BFEA14
 
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 // base destructor tail-called at end (relocation-masked target)
 void __fastcall CPatchTesselationEdgeStrip_base_dtor(CPatchTesselationEdgeStrip* thisptr);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad00[0x3c];
     void* p3c;   // +0x3c
     char pad40[0x48 - 0x40];

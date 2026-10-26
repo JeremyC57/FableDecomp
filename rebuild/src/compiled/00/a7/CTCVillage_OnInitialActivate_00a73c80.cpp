@@ -5,7 +5,7 @@ struct Obj;
 // callee 0xa73b20: __fastcall(ecx=field0, edx=field4, stack byte)
 extern void __fastcall SubCall(Obj* self, void* arg2, unsigned char flag);
 
-struct CTCVillage {
+class CTCVillage { public:
     Obj*          field0;   // +0x00 -> ecx
     void*         ParentThing;   // +0x04 -> edx
     unsigned char ToBeRemoved;

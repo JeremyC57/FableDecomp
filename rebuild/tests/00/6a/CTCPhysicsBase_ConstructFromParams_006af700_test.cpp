@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPhysicsBaseParams { long m_header; C3DVector Position; };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector Position;
     C3DVector OldPosition;
     void ConstructFromParams(const CTCPhysicsBaseParams& params)

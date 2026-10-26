@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 00f33d20: CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>::AreDefaultValsApplied on a model vector.
-struct CPersistContext { int calls; };
+class CPersistContext { public: int calls; };
 struct Def {
     int transferred;
     unsigned char Setup : 1;

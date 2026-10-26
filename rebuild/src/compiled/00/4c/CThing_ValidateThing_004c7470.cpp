@@ -4,14 +4,14 @@
 // Shape: Components (CVectorMap<ETCInterfaceType, CTCBase*>) is a vector of 8-byte {type, component} pairs at retail
 // +0x44/+0x48 (PDB +0x48: the retail CThing is narrower); the loop re-reads the last pointer after every call
 // and loads the argument once into ebx after the entry test. `mov al,1` / `xor al,al` = bool.
-struct CTCBase;
+class CTCBase;
 
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>
     long     first;
     CTCBase* second;
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -22,7 +22,7 @@ struct CTCBase {
     bool  ToBeRemoved;                               // +0x08
 };
 
-struct CThing {
+class CThing { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x44 - 0x04];
     SComponentPair* m_componentsFirst;               // +0x44 Components

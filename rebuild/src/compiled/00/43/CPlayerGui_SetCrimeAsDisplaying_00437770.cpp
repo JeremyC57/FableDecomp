@@ -25,15 +25,15 @@ struct CStatBase {
     EPlayerGuiMode GuiMode;                                 // +0x28
 };
 struct CCrimeStatBar : CStatBase { };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char                  _pad[0x2ec];
     CCountedPointer<CCrimeStatBar> PCrime;                  // +0x2ec
     void SetCrimeAsDisplaying();

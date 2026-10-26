@@ -6,7 +6,7 @@
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
 struct CEngineScene_00bdc4f0 { void Clear(); };                   // 0x00BDC4F0
-struct CLocalDetailCacheMap { void CloseStaticMap(); };          // 0x00BDDD50
+class CLocalDetailCacheMap { public: void CloseStaticMap(); };          // 0x00BDDD50
 
 struct CCountedItem_00b3ef40 { };                  // the item: destroyed through the block's member-function pointer (`mov ecx,[eax+8] ; call [eax+4]`)
 
@@ -16,7 +16,7 @@ struct SCountedBlock_00b3ef40 {                    // the counted-pointer contro
     CCountedItem_00b3ef40* m_pItem;                // +0x08
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineScene_00bdc4f0* m_pScene;               // +0x00
     CLocalDetailCacheMap*  m_pDetailCache;         // +0x04
     unsigned char          _pad08[0x18];

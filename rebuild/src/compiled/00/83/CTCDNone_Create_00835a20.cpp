@@ -14,11 +14,11 @@
 // Shape: the map is a zero-initialised local overwritten when the flag is clear (`xor eax,eax` before the flag test; a
 //   `?:` argument puts the zero in the taken arm); a zero result declared after the create
 //   call (edi), then `if (thing && GetTCDriver(&driver) && Activate) result = thing; return result;`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CTCDNone;
 class CTCDriverBase;
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -26,7 +26,7 @@ struct CWorldMap {
     virtual long GetMapNumberAt(const C3DVector& pos) const;   // slot 16 (+0x40)
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x28];
     CWorldMap*    WorldMap;                              // +0x28 (PDB +0x34)
 };

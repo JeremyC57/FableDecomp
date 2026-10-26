@@ -11,16 +11,16 @@
 //   the first length reuses the zero data pointer, the second pair shares one test with the empty arm laid out first
 //   (the `?:` form inverts both). Length pushed first.
 //   Speed-optimised (default) TU.
-struct CDataOutputStream;
+class CDataOutputStream;
 struct CBasicStringChar {
     char*         PData;                              // +0x00
     unsigned long StringLength;                       // +0x04
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
 };
 extern const char g_EmptyCharString[];                // 0x0129AAF4
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                    // 0x0099E4B0
     ~CCharString();                                   // 0x0099EAE0
@@ -41,7 +41,7 @@ struct CDataOutputStream_Methods {
     void WriteULong(unsigned long value);             // 0x00993EA0
     void WriteData(const void* data, unsigned long size);   // 0x00996610
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2C];
     CPersistContext(CCharString& output);             // 0x009BAE10
 };
@@ -50,7 +50,7 @@ struct CCharStringSet {                               // STLport set<CCharString
     unsigned long m_count;
     long          m_compare;
 };
-struct CFaction {
+class CFaction { public:
     CCharString    Name;                              // +0x00
     CCharStringSet AlliedFactions;                    // +0x04
     CCharStringSet EnemyFactions;                     // +0x10

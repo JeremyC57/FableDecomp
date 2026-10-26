@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     int   m_len;
     int   m_ref;

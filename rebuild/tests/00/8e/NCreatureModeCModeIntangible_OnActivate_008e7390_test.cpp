@@ -6,11 +6,11 @@
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 
-struct CTCBase { int dummy; };
-struct CTCMapwho : CTCBase { unsigned char InMapwho : 1; };
-struct CTCTargeted : CTCBase { bool Targetable; };
-struct CTCBoss : CTCBase { long phase; long GetBossPhase() { Log("phase"); return phase; } };
-struct CTCWeaponTrail : CTCBase { int cleared; void ClearAllWeaponTrails() { ++cleared; Log("trails"); } };
+class CTCBase { public: int dummy; };
+class CTCMapwho : public CTCBase { public: unsigned char InMapwho : 1; };
+class CTCTargeted : public CTCBase { public: bool Targetable; };
+class CTCBoss : public CTCBase { public: long phase; long GetBossPhase() { Log("phase"); return phase; } };
+class CTCWeaponTrail : public CTCBase { public: int cleared; void ClearAllWeaponTrails() { ++cleared; Log("trails"); } };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -28,7 +28,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool active, bit85;
     unsigned long flags;
     void SetFlag85Bit2(bool on) { bit85 = on; Log("bit85"); }
@@ -36,7 +36,7 @@ struct CTCPhysicsBase {
     void SetPhysicsFlags(unsigned long f) { flags = f; Log("flags"); }
 };
 struct CModeBase;
-struct CThing {
+class CThing { public:
     unsigned char m_type;
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;

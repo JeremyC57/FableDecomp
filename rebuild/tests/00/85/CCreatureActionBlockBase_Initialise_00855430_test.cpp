@@ -1,24 +1,24 @@
 // Behaviour test for 0x00855430 CCreatureAction_BlockBase::Initialise: play "HIT_BLOCKING" through component 0x10 when present, then base Initialise.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CSoundPair { long First, Second; };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CSoundPair { public: long First, Second; };
 struct CSoundPlayParams {
     float Volume, Pitch, Delay; long Loop, Priority, Pan, Flags, Handle;
     CSoundPlayParams() { Volume = 1.0f; Pitch = 1.0f; Delay = 0.0f; Loop = 1; Pan = 0; Flags = 0; Handle = -1; Priority = 1; }
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     int plays; long first; CSoundPlayParams p; long a;
     void PlaySound(const CSoundPair& s, const CSoundPlayParams& pp, long a_, long, long) { ++plays; first = s.First; p = pp; a = a_; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool has; CTCSoundPlayer* comp; const char* asked;
     template<class T> bool GetInterface(T** pp, long type) { if (type == 0x10 && has) { *pp = (T*)comp; return true; } return false; }
     CSoundPair GetSoundPair(const CCharString& n) { asked = n.t; CSoundPair s; s.First = 77; s.Second = 78; return s; }
 };
 struct CBaseIntelligentPointer { CThingCreatureBase* PItem; CThingCreatureBase* GetPItem() const { return PItem; } };
-struct CCombatActionBase { CBaseIntelligentPointer Owner; int baseInit; void Initialise() { ++baseInit; } };
-struct CCreatureAction_BlockBase : CCombatActionBase {
+class CCombatActionBase { public: CBaseIntelligentPointer Owner; int baseInit; void Initialise() { ++baseInit; } };
+class CCreatureAction_BlockBase : public CCombatActionBase { public:
     void Initialise()
     {
         CTCSoundPlayer* player;

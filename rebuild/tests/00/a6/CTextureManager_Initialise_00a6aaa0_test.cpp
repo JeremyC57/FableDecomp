@@ -62,7 +62,7 @@ struct CPreallocTexturePool {                    // 0x54 bytes
     unsigned char _body[0x54];
     void Initialise(unsigned long index, unsigned long textureSize, unsigned long count);   // 0x00A6A540
 };
-struct CTextureManager {
+class CTextureManager { public:
     void*         __vftable;                     // +0x00
     bool          Initialised;                   // +0x04
     unsigned long PoolCount;                     // +0x08

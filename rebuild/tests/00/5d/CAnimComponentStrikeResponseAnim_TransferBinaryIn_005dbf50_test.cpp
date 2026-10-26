@@ -4,12 +4,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString() { text[0] = 0; }
 };
 
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned int m_position;
     const unsigned char* m_pData;
     long m_remaining;
@@ -47,7 +47,7 @@ struct CDataInputStream {
     }
 };
 
-struct CAnimComponentStrikeResponseAnim {
+class CAnimComponentStrikeResponseAnim { public:
     CCharString ResponseAnimName;
     void TransferBinaryIn(CDataInputStream& in)
     {

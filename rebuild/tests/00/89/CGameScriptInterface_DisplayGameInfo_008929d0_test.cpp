@@ -20,8 +20,8 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  unsigned long colour, float time, bool b1, bool b2);   // 0x00493049
 };

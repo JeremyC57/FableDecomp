@@ -8,9 +8,9 @@
 // through `xor ecx,ecx ; setne cl ; mov al,cl`); the shared `xor al,al` tail is the fall-out `return false`.
 // Leaf: ??RCOpinionDeedFilter_IsCrimeToRunAndFindAGuard
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE = 0 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CIntelligentPointerThing { void* m_pData; void* m_pBlock; };
-struct COpinionDeed {
+class COpinionDeed { public:
     EOpinionDeedType         DeedType;                    // +0x00
     long                     DeedHandle;                  // +0x04
     C3DVector                Position;                    // +0x08
@@ -22,7 +22,7 @@ struct COpinionDeed {
     bool                     IsCrime;                     // +0x23
     long                     ExtraData;                   // +0x24
 };
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     bool operator()(const COpinionDeed& deed) const;
 };
 bool COpinionDeedFilter_IsCrimeToRunAndFindAGuard::operator()(const COpinionDeed& deed) const

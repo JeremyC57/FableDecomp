@@ -6,16 +6,16 @@
 // Shape: `ret 4`; memberwise copy in declaration order: the pointer (its address in ebx), TargetPos through C3DVector's memberwise copy constructor
 // (three fixed-offset word moves through eax/ecx/edx), the flag byte through al, the last word.
 // The PDB header (CCreatureAction_TrollThrowProjectile.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
-struct CThingCreatureBase;
-struct C3DVector {
+class CThingCreatureBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }                          // leaves the words unset
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor (fixed-offset moves);
 };                                                                                 // assignment stays implicit (re-based through `lea`)
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -33,13 +33,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPo
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);  // 0x00857F30
     CCombatActionBase(const CCombatActionBase& other);                                                    // 0x0062F3B0
 };
-struct CCreatureAction_TrollThrowProjectile : CCombatActionBase {   // vtable 0x01281694; retail sizeof 0x130
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public:   // vtable 0x01281694; retail sizeof 0x130
     CIntelligentPointer PProjectile;        // +0x114 CIntelligentPointer<CThing>
     C3DVector TargetPos;                    // +0x11c
     bool TargetIsPosition;                  // +0x128

@@ -12,7 +12,7 @@
 // constructor makes the element's implicit copy constructor memberwise). Plain `inline` leaves copy_backward an
 // out-of-line call here (measured, with and without the SGI Distance* tag level); `__forceinline` restores retail's body.
 struct CHitLocation;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

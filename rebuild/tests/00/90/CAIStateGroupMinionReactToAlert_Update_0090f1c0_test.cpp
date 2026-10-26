@@ -14,10 +14,10 @@
 // ebx,ebx`) and takes the typed read; the perceive component is an uninitialised local filled by the inlined
 // lookup; the compare is `GetPerceivedThing() == target`. m_lastAlertId is +0x14 (descriptive, no engine header).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
-struct CThingAICreature;
+class CTCBase;
+class CThing;
+class CWorld;
+class CThingAICreature;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -73,12 +73,12 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -111,7 +111,7 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad0[0x40];
     long MessageID;                             // +0x40
     unsigned char _pad1[4];
@@ -119,7 +119,7 @@ struct CMessageEvent {
     CBaseIntelligentPointer PSubject;           // +0x50 the thing the alert is about
 };
 
-struct CTCPerceiveThing {                       // interface type 0x34
+class CTCPerceiveThing { public:                       // interface type 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
     void SetAsIndirectlyAwareOfPerceivedThing();    // 0x007449E0
 };

@@ -9,8 +9,8 @@ struct CCreatureAction_Base
     virtual void Initialise();
 };
 
-struct CCreatureAction_DragonFlight : public CCreatureAction_Base
-{
+class CCreatureAction_DragonFlight : public CCreatureAction_Base
+{ public:
     // vtable ptr at +0x00
     char pad4[0x10 - 4]; // bring field10 to offset 0x10
     int  TotalTime;        // [esi+0x10]

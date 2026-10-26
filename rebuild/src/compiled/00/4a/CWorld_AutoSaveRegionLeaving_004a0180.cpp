@@ -11,15 +11,15 @@
 // across the temporary's and the local's destructors.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                         // 0x0099B510
     bool operator!=(const wchar_t* text) const;             // 0x0099B150
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
     CWideString GetAutoSaveQuestStartPathName() const;      // 0x00407FD0 ("AutoSave" + ".qs" path)
@@ -28,7 +28,7 @@ struct CUserProfileManager {
 };
 bool __fastcall PathExists(const CWideString& path);         // 0x00999230
 
-struct CWorld {
+class CWorld { public:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
     bool SaveHeroStateInternal(const CWideString& name, bool b);                            // 0x004A00E0
     bool AutoSaveRegionLeaving();

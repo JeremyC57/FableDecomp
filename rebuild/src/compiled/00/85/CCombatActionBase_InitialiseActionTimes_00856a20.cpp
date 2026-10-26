@@ -33,11 +33,11 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimID;                                // +0x00
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual long GetAnimDelayTime();            // slot 6 (+0x18): 0x0062EA00
     unsigned char _pad04[4];                    // +0x04

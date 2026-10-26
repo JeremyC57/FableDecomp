@@ -9,13 +9,13 @@
 // PDB layout (struct_layouts_egor.tsv, CRightHandedSet = 24 bytes): +0 C3DVector Up, +0xC C3DVector Forward.
 // Shape: C3DVector's implicit assignment (a 12-byte bitwise copy) addresses each destination through its own register
 // (`mov edx,ecx` for Up, `add ecx,0Ch` for Forward), the floats moving through integer registers.
-struct C3DVector {
+class C3DVector { public:
     float X;                                 // +0x00
     float Y;                                 // +0x04
     float Z;                                 // +0x08
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                            // +0x00
     C3DVector Forward;                       // +0x0C
     void Set(const C3DVector& up, const C3DVector& forward);

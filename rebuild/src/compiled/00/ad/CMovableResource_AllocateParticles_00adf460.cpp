@@ -7,19 +7,19 @@
 // Shape: the 64-bit size guard `mul edx ; test edx,edx ; ja ; cmp eax,-1 ; jbe` is an `unsigned __int64` product
 //   compared against 0xFFFFFFFF; the pool argument stays in ecx for the allocate call (its store sinks above);
 //   the handle member is read inline as the argument (a named local moves it into ebx).
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle);         // 0x00A026B0
 };
 
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long alignment);   // 0x00A62E40
 };
 

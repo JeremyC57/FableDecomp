@@ -7,10 +7,10 @@
 // donor Ego_r layout (RightStickForce +0xc0, BastardChild +0xa8); retail has BastardChild +0x80, BastardChildren +0x88,
 // RightStickForce +0x94.
 #include "fable_string.h"
-struct C2DVector { float X, Y; };
-struct CCPPointerInfo;
+class C2DVector { public: float X, Y; };
+class CCPPointerInfo;
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct CComponentPointer {                 // CCountedPointer<NUISystem::CComponent>
  CComponent* Data; CCPPointerInfo* Info;
  void ReleaseData();                       // 0x004291DE
@@ -32,7 +32,7 @@ struct CBastardChildMap {
  CBastardIterator end() const { return CBastardIterator(Header); }
  void clear();                             // 0x0042C02F
 };
-struct CManager {
+class CManager { public:
  virtual void Slot0();
  unsigned char _pad04[0x80 - 4];
  CComponentPointer BastardChild;           // +0x80

@@ -10,7 +10,7 @@
 // mov [eax+4],eax ; mov [esi+14h],eax`), the three bytes stored around the `add esp,4`, the manager re-read from +4 for the last call.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CSoundManagerLH {
     long TakeNextEmitterNumber();                  // 0x00A3E420 (descriptive): return EmitterCounter++ (+0x50)

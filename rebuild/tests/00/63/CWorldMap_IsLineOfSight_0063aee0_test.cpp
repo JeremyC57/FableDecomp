@@ -4,13 +4,13 @@
 #include <math.h>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long x, y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}

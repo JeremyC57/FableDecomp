@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing { unsigned char pad[0x92]; };
+class CThing { public: unsigned char pad[0x92]; };
 
 struct CThingRef {
     CThing* target;
@@ -9,7 +9,7 @@ struct CThingRef {
 
 CThing* CThingRef::Get() { return target; }
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     char pad[0xc];
     CThingRef ref;
 };

@@ -4,7 +4,7 @@
 // The destructor loads the object's first member (a pointer, field0),
 // passes it to a __stdcall helper (callee-cleans, so no add esp), and returns.
 
-struct CReactionFrequencyTraitsArray;
+class CReactionFrequencyTraitsArray;
 
 // External helper at 0xcb13f0: one pointer arg, callee-cleans the stack.
 void __stdcall PersistTraitsHelper(void* p);

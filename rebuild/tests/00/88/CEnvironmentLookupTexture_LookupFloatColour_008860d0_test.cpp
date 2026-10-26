@@ -1,6 +1,6 @@
 // Behaviour test for 0x008860d0 CEnvironmentLookupTexture::LookupFloatColour
 #include <cstdio>
-struct CRGBFloatColour { float R, G, B, A; CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {} };
+class CRGBFloatColour { public: float R, G, B, A; CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {} };
 struct CEnvironmentLookupTexture {
     long m_pitch; unsigned char* m_pData;
     static float ByteToFloat(unsigned char c) { return (float)((c + 0.5) * (1.0 / 255.0)); }

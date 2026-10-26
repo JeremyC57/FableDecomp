@@ -7,7 +7,7 @@
 #define __forceinline inline
 #define __fastcall
 #endif
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -45,9 +45,9 @@ public:
     }
 };
 class CThingObject : public CThing { };
-struct C3DVector;
-struct CRightHandedSet;
-struct CCharString {
+class C3DVector;
+class CRightHandedSet;
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -63,7 +63,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 struct CJugVector {                                 // retail STLport vector<CIntelligentPointer<CThingObject> > (12 bytes)
@@ -77,10 +77,10 @@ struct CTCJug {                                     // interface 0xBB
     void* Contents;                                 // +0x0c (descriptive)
     bool Filled;                                    // +0x10 (descriptive)
 };
-struct CTCNamedUserActionPoints {                   // interface 0x2E
+class CTCNamedUserActionPoints { public:                   // interface 0x2E
     bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& pointIndex, long flags = 0, bool claim = true);   // 0x007FF190
 };
-struct CTCTavernBar {
+class CTCTavernBar { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

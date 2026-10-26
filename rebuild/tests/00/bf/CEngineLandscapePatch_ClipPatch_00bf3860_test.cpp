@@ -1,13 +1,13 @@
 // Behaviour test for CEngineLandscapePatch::ClipPatch @ 0x00BF3860.
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CFrustumPlane { float nx, ny, nz, d; };
-struct CEngineCamera { unsigned char m_unknown[0x1c0]; CFrustumPlane m_planes[6]; };
+class CEngineCamera { public: unsigned char m_unknown[0x1c0]; CFrustumPlane m_planes[6]; };
 static CEngineCamera g_camera;
 static CEngineCamera* g_pEngineCamera = &g_camera;
 
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch { public:
     unsigned char _pad00[0x20];
     C3DVector m_boxMin, m_boxMax;
     bool ClipPatch()

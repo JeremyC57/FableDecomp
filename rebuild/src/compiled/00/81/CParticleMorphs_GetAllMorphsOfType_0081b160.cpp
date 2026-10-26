@@ -10,7 +10,7 @@
 // Shape: the matching range is [lower_bound, upper_bound) (count = byte difference / 40); the output is resized
 // with a value-initialised CEntry() temporary -- VC7.1 zero-fills all nine dwords and then runs the implicit
 // constructor (the CDefString's -1) -- and each entry is copied as nine dwords (rep movsd).
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };
@@ -53,7 +53,7 @@ struct CParticleMorphsEntryVector {                // vector<CParticleMorphs::CE
     CParticleMorphsEntry& operator[](long i) { return m_first[i]; }
 };
 
-struct CParticleMorphs {
+class CParticleMorphs { public:
     CVectorMap_00819ec0 Morphs;                    // +0x00
     bool GetAllMorphsOfType(long type, CParticleMorphsEntryVector& out);
 };

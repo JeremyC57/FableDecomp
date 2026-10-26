@@ -21,14 +21,14 @@
 
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
 
-struct CThing;
+class CThing;
 
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_count;                                   // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
@@ -49,11 +49,11 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CHeroExperienceDef : CDefBase { };
-struct CHeroCombatDef : CDefBase { };
-struct CHeroStatsDef : CDefBase { };
+class CHeroExperienceDef : public CDefBase { public: };
+class CHeroCombatDef : public CDefBase { public: };
+class CHeroStatsDef : public CDefBase { public: };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _pad00[0xdc];
     CDefPointer<CHeroStatsDef> HeroStatsDef;        // +0xdc
     CDefPointer<CHeroStatsDef> GetHeroStatsDef() const { return HeroStatsDef; }
@@ -111,7 +111,7 @@ template <class T> struct CRetailList {             // STLport list<T>: the head
 struct SPickup { long Type; long Amount; };             // pair<long,long>
 struct SAttack { long Attribute; long Count; };         // pair<EDamageAttribute,long>
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                        // 0x00686800
     virtual ~CTCBase();
     CThing* ParentThing;                            // +0x04
@@ -120,7 +120,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 
-struct CTCHeroExperience : CTCBase {                // vtable 0x0125F6C4
+class CTCHeroExperience : public CTCBase { public:                // vtable 0x0125F6C4
     long                 FishingLevel;              // +0x0C
     long                 TotalExperiencePoints;     // +0x10
     long                 ExperiencePointsAvailableToSpend;  // +0x14

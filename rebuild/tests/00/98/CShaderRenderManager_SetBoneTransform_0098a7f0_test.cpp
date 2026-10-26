@@ -1,6 +1,6 @@
 // Behaviour test for 0x0098A7F0 CShaderRenderManager::SetBoneTransform.
 #include <cstdio>
-struct CMatrix3x4 { unsigned int m[12]; };
+class CMatrix3x4 { public: unsigned int m[12]; };
 struct Bone { unsigned int m[12]; };
 struct Mgr {
     unsigned int UpdateFlags; Bone* BoneMatrices;

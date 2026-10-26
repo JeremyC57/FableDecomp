@@ -8,7 +8,7 @@
 // constructor @ 0x0099A310 runs, then the compiler stores this class's vtable (0x0129C784
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     CInitBaseClass();                           // 0x0099A310
 };

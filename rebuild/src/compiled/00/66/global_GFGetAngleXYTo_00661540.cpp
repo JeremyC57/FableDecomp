@@ -13,7 +13,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

@@ -23,13 +23,13 @@ public:
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                               // +0
     CCPPointerInfo* Info;                               // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -67,7 +67,7 @@ template <class T> struct CCountedPointer {
 
 class CContainmentVolume;
 
-struct C3DMeshVolume {                                        // 12 bytes (Ego_r.pdb)
+class C3DMeshVolume { public:                                        // 12 bytes (Ego_r.pdb)
     CCharString                         Name;                   // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;           // +0x04
     C3DMeshVolume& operator=(const C3DMeshVolume& other)        // out of line @ 0x00A32960 where not inlined

@@ -13,7 +13,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod, sqrt)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -36,7 +36,7 @@ __forceinline float WrapAngle(float angle)
     return angle;
 }
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*         __vftable;                            // +0x00
     unsigned char _pad04[0x0c - 0x04];
     C3DVector     Position;                             // +0x0c

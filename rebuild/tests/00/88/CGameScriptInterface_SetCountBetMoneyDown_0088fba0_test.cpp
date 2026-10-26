@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 unsigned char g_countBetMoneyDown = 0;
 
 void __fastcall CGameScriptInterface_SetCountBetMoneyDown(CGameScriptInterface* self, void* edx, bool count)

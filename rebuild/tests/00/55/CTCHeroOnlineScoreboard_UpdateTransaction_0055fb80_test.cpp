@@ -8,7 +8,7 @@ struct CHttpResponse {
     CHttpResponse() : StatusCode(0) { ++g_responses; }
     ~CHttpResponse() { --g_responses; }
 };
-struct LHHttp2 {
+class LHHttp2 { public:
     long send, headers, code, document; int parsed;
     long SendRequest() { return send; }
     long ReceiveResponseHeaders() { return headers; }
@@ -16,7 +16,7 @@ struct LHHttp2 {
     long ReceiveDocumentAsync() { return document; }
 };
 }
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     enum ENetworkSuccess { NETWORK_SUCCESS = 1000, NETWORK_BUSY = 1001, NETWORK_FAILED = 1002 };
     enum ETaskState { TASK_IDLE = 100, TASK_BEGIN = 101, TASK_SEND_REQUEST = 102, TASK_RECEIVE_HEADERS = 103, TASK_RECEIVE_DOCUMENT = 104 };
     LHNetworkLib::LHHttp2* PHttp;

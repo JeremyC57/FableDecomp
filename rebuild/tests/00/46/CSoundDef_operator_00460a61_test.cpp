@@ -1,12 +1,12 @@
 // behaviour test for 0x00460A61 CSoundDef::operator=
 #include <cstdio>
 static int g_copies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
 struct CVec { int v; CVec& operator=(const CVec& o) { v = o.v; ++g_copies; return *this; } };
-struct CSoundDef : CParentDefClassBase {
+class CSoundDef : public CParentDefClassBase { public:
     CVec SoundBankEntries, AtmosBankEntries, MusicEntries, MusicSetEntries, ReverbEnvironmentEntries;
     float AtmosListenerDampingMin, AtmosListenerDampingRange, DistanceModelCurve;
     CSoundDef& operator=(const CSoundDef& other)

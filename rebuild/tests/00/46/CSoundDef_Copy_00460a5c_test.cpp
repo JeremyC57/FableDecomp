@@ -4,7 +4,7 @@
    We only assert the reconstruction's control-flow semantics (delegates to
    impl, returns void) deterministically. */
 
-struct CSoundDef { int tag; };
+class CSoundDef { public: int tag; };
 
 static int g_called = 0;
 static CSoundDef* g_this = 0;

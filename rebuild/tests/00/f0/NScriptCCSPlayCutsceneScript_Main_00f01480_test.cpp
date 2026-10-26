@@ -11,7 +11,7 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 static int g_requestAt = -1, g_alive = 0;
 static bool GlobalConsolePlayCutscene = false;
 static char GlobalConsoleCutsceneName[32] = "CS_TEST";
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CHandle {
     int Who;
     CHandle() : Who(0) { ++g_alive; }
@@ -25,7 +25,7 @@ struct CCast {
     int& operator[](const char* k) { std::strcpy(keys[n], k); return who[n++]; }
 };
 struct CMovie { CMovie() { ++g_alive; } ~CMovie() { --g_alive; } };
-struct CGame {
+class CGame { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frame; if (g_frame == g_requestAt) GlobalConsolePlayCutscene = true; }
     bool StartScriptingEntity(const CScriptThing& t, CHandle& h, int p) { char x[32]; std::sprintf(x, "start %d %d", t.Id, p); Log(x); h.Who = t.Id; return true; }

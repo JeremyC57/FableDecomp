@@ -1,14 +1,14 @@
 
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 struct Sub {
     bool result;
     void* self_seen;
     void* v_seen;
     bool Query(CTCCreatureNavigation* outer, C3DVector* v){ self_seen=outer; v_seen=v; return result; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* m_x0;
     Sub* m_sub;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return m_sub->Query(this, dest); }

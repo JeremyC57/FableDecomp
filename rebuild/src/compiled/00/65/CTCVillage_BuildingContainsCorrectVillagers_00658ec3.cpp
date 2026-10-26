@@ -11,14 +11,14 @@
 //         CIntelligentPointer<CThingBuilding> at +0x168.
 // Shape: `this` is spilled to the frame (`mov [ebp-4],esi`) and the list end re-read through it; the two mismatch tests
 //        share one `xor al,al` exit.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThingBuilding;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     void* _vfptr;
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer {   // 8 bytes: vptr + item
+template <class T> class CIntelligentPointer { public:   // 8 bytes: vptr + item
     void* _vfptr;
     T*    m_pItem;
     T* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
@@ -84,7 +84,7 @@ struct SVillagerNode {                          // STLport list node
     CIntelligentPointer<CThingAICreature> _M_data;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;               // +0x2c list head node
     bool BuildingContainsCorrectVillagers(CThingBuilding* building);

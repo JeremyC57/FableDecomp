@@ -16,8 +16,8 @@
 // Label: the catalog's `fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>` is a propagated label.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-struct CBaseObject;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     void* PData;                                            // +0x04
@@ -28,12 +28,12 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x0123E7D8 for CThingCreatureBase
+class CIntelligentPointer : public CBaseIntelligentPointer { public:      // vtable 0x0123E7D8 for CThingCreatureBase
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
 #pragma pack(push, 1)
-struct C3DVector {                                          // 1-aligned in retail (CProng::Prong sits at +1)
+class C3DVector { public:                                          // 1-aligned in retail (CProng::Prong sits at +1)
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

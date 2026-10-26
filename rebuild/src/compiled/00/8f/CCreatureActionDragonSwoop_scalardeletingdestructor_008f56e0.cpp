@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonSwoop {
+class CCreatureAction_DragonSwoop { public:
     void* vftable;
 };
 

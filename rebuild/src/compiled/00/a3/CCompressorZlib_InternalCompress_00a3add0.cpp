@@ -12,7 +12,7 @@
 // first : this`, sharing the size subtraction with the size argument).
 #include "engine/CCompressorZlib.h"
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first;                                                 // +0
     T* m_last;                                                  // +4
     T* m_end;                                                   // +8

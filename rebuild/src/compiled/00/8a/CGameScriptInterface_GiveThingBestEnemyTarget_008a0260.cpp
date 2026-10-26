@@ -10,12 +10,12 @@
 //   if/else SetScriptTargetOverride calls; the class-name compare is the landed IsActionRunning 0x00712D70 operator== (nested SameText), its bool in bl
 //   across the two string dtors; the previous target is a frame word zeroed before the first GetThing.
 struct CThing_Retail;
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                    // +0x00
     unsigned long StringLength;             // +0x04
 };
 long __fastcall CompareStrings(const char* a, const char* b);   // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -87,7 +87,7 @@ struct CThing_Retail {
         return it->component;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
@@ -101,10 +101,10 @@ struct CScriptThing {
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CTCTargetingAI : CTCBase_Retail { void SetScriptTargetOverride(CThing_Retail* target); };   // 0x008ABBA0
+class CTCTargetingAI : public CTCBase_Retail { public: void SetScriptTargetOverride(CThing_Retail* target); };   // 0x008ABBA0
 struct CTCEnemyList { void AddEnemy(CThing_Retail* enemy); };                                       // 0x0076D1B0
 struct CThingPlayerCreature_Retail { void OnBestEnemyTargetChanged(); };                            // 0x006D5AB0
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;
 };
 

@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -54,7 +54,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCInGameMenu {                               // interface type 0xC6
+class CTCInGameMenu { public:                               // interface type 0xC6
     unsigned char _pad_0x00[0x0c];
     bool InGameMenuOpen;                             // +0x0c
 };
@@ -68,19 +68,19 @@ struct CTCInventoryMenu {                            // interface type 0xF6
     void Open();                                     // 0x00628000
 };
 namespace NHeroInformationScreens {
-struct CManager {
+class CManager { public:
     unsigned char _pad_0x00[0x34];
     bool ScreenShowing;                              // +0x34 (descriptive)
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad_0x000[0xf6];
     bool GuiBusy;                                    // +0xf6 (descriptive)
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-struct CTCInventory {
+class CTCInventory { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
     __forceinline const CThing* GetConstParent() const { return ParentThing; }

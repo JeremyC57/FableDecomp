@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <vector>
 #include <algorithm>
-struct CThing { int id; bool dead; CThing* carried[2]; };
+class CThing { public: int id; bool dead; CThing* carried[2]; };
 struct IPtr { CThing* item; CThing* GetPItem() const { return item; } };
-struct CIsThingDead { bool operator()(const IPtr& p) const { return p.GetPItem() == 0 || p.GetPItem()->dead; } };
-struct CTCFadeOutAndIn {
+class CIsThingDead { public: bool operator()(const IPtr& p) const { return p.GetPItem() == 0 || p.GetPItem()->dead; } };
+class CTCFadeOutAndIn { public:
     CThing* ParentThing;
     std::vector<IPtr> FadingThings;
     void AddThingToFade(CThing& t) {

@@ -12,7 +12,7 @@ struct CDefPointer {
 };
 struct CTCShopSign { bool m_closed; };
 struct CTCBuildingGuarded { bool Guarded; };
-struct CThing {
+class CThing { public:
     unsigned char ThingType;
     unsigned char m_flags91;
     bool has53;

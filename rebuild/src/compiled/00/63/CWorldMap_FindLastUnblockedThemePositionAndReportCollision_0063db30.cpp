@@ -27,16 +27,16 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
 }
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
-struct C2DCoordI
-{
+class C2DCoordI
+{ public:
     long x;
     long y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     long TLX;
     long TLY;
     long BRX;

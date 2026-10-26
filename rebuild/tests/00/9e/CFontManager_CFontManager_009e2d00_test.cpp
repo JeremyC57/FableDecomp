@@ -59,8 +59,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -68,8 +68,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -163,10 +163,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CFontDataBank {
+class CFontDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -285,7 +285,7 @@ FABLE_STATIC_ASSERT(offsetof(CFontDataBank, Filename_PStringData) == 0x194);
 
 
 #pragma pack(push, 1)
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x30];                          // +0x04 flattened base-class subobject(s)
 };
@@ -312,9 +312,9 @@ struct CFontBufferArray {
  ~CFontBufferArray(){if(Begin)free(Begin);} //00bfea14 is MSVCR71 free
 };
 // Native RTTI129BA38: CFontManager -> CBaseClassNonCopyable -> CBaseClass.
-struct CBaseClass {virtual ~CBaseClass();};
+class CBaseClass { public:virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();}; //0099A300
-struct CFontManager:CBaseClassNonCopyable {
+class CFontManager:public CBaseClassNonCopyable { public:
  CFontManager(const CCharString&,const CCharString&); //fablewin124255,030A2F20
  CFontCountedPointer<CFontDataBank> PFontDataBank;
  CFontCountedPointer<void> PStreamingFontDataBank,PSymbols,PStreamingSymbols;

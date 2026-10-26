@@ -14,7 +14,7 @@ extern "C" double __cdecl fmod(double x, double y);
 #pragma intrinsic(atan2, fmod)
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -34,17 +34,17 @@ struct C3DVector {
         Z *= r;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF(60) VF(61) VF(62) VF(63) VF(64) VF(65)
     virtual void SetFacingAngle(float fraction);   // slot 66 (+0x108)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* m_pPhysics;             // +0x60
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
@@ -54,7 +54,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();              // 0x00857520
     unsigned char _pad04[4];                // +0x04
@@ -62,7 +62,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_DuckAndCover : CCombatActionBase {
+class CCreatureAction_DuckAndCover : public CCombatActionBase { public:
     C3DVector Direction;                    // +0x114 the dive direction
     virtual void Initialise();
 };

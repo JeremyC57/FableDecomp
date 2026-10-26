@@ -18,15 +18,15 @@ template <class K, class V> struct pair {};
 template <class K, class V, class C, class A> class map;
 }
 typedef std::map<unsigned long, unsigned long, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, unsigned long> > > CBoneRemap;
-struct C4DVector;
-struct CMovableResourceMemoryPool;
-struct C3DTriangle2; struct C3DQuad2; struct C3DClothRenderVertex; struct C2DVector; struct C3DGroup2;
-template <class T> struct CArray {                     // retail CArray<T>: STLport vector, three pointers
+class C4DVector;
+class CMovableResourceMemoryPool;
+class C3DTriangle2; class C3DQuad2; class C3DClothRenderVertex; class C2DVector; class C3DGroup2;
+template <class T> class CArray { public:                     // retail CArray<T>: STLport vector, three pointers
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
 };
-struct CMovableResource {                              // vtable 0x0129B860
+class CMovableResource { public:                              // vtable 0x0129B860
     virtual ~CMovableResource();
 };
 class CParticleProgram : public CMovableResource {     // retail 0x140 bytes, vtable 0x0129F0D8

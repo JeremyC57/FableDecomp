@@ -27,7 +27,7 @@ public:
 
 class CVertexStreamFormat : public CBaseClass {    // vtable 0x0129D578, 16 bytes
 public:
-    struct CDataElement { unsigned long Usage; long Type; };
+    class CDataElement { public: unsigned long Usage; long Type; };
     CArray<CDataElement> DataElements;             // +0x04
     CVertexStreamFormat(const CVertexStreamFormat& other) : DataElements(other.DataElements) { }
     virtual ~CVertexStreamFormat() { }

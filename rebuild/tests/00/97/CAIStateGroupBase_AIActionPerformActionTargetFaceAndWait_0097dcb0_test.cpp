@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait @ 0x0097DCB0: post once, face while performing.
 #include <cstdio>
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 struct CIntelligentPointerConstThing {
     CThing* item;
     CIntelligentPointerConstThing(CThing* t) : item(t) { }
@@ -14,22 +14,22 @@ inline bool IS_THING_ALIVE(const CIntelligentPointerConstThing& p)
     }
     return false;
 }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     long id;
     long GetActionID() const { return id; }
     const CCreatureActionBase* Clone() const { return this; }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; const CCreatureActionBase* PAction; CThing* LookAtThing;
     CBrainOutput() : Types(0), LookFlags(0), PAction(0), LookAtThing(0) { }
     void SetAsLookAtThing(CThing* thing, long flags) { Types |= 4; LookAtThing = thing; LookFlags = flags; }
     void SetAsPerformAction(const CCreatureActionBase* action) { Types |= 8; PAction = action->Clone(); }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     const CCreatureActionBase* CurrentAction; int busyTicks;
     bool IsPerformingAnyAction() { return busyTicks > 0; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     CThingCreatureBase* Creature; int posts, yields, looks, stopAfter; bool stopping; CThing* killAt; int killTick;
     CBrainOutput last;
     void SetBrainOutput(const CBrainOutput& o) { ++posts; last = o; if (o.Types & 4) ++looks; }
@@ -42,7 +42,7 @@ struct CAIBrain {
     }
 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     bool IsStopping() { return PBrain->stopping; }
     EAIActionReturn AIAction_PerformActionTargetFaceAndWait(const CCreatureActionBase& action,

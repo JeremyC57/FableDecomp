@@ -16,7 +16,7 @@
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -76,7 +76,7 @@ public:
     virtual bool IsAlive() const;                  // slot 75 (+0x12c) 0x004AB130
 };
 
-struct CTCScriptedControl;
+class CTCScriptedControl;
 
 namespace NTCScriptedControl {
 struct CActionBase {                               // vtable 0x01265504
@@ -87,11 +87,11 @@ struct CActionBase {                               // vtable 0x01265504
 
 class CCharString;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction();                   // 0x00662650
 };
 
-struct CTCScriptedControl {                       // interface 0x1f component
+class CTCScriptedControl { public:                       // interface 0x1f component
     void CleanupAllActions();                     // 0x00713630
     void AddAction(NTCScriptedControl::CActionBase* action);   // 0x007137D0
 };

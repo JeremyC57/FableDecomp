@@ -21,14 +21,14 @@
 // the address into `mov eax,[ecx+6Ch]` (tried). `neg ; sbb al,al ; inc al` for Compare == 0; a hit
 // returns the re-read object pointer, a miss `xor eax,eax`.
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
 
 long __fastcall Compare_00411570(const char* a, const char* b);           // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
 };
 

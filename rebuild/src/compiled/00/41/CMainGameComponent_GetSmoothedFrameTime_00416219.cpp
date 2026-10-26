@@ -12,7 +12,7 @@
 struct CFrameRateSmoother {
     double GetSmoothedTime() const;                      // 0x0049B990
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char      _pad00[0x16178];
     CFrameRateSmoother FrameRateSmoother;                // +0x16178
     double GetSmoothedFrameTime() const;

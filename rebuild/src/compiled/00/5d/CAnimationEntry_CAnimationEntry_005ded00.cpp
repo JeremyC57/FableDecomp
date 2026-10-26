@@ -38,12 +38,12 @@ public:
     virtual void v00();
 };
 
-template<class T> struct CIVCountedPointer {        // intrusive counted pointer (4 bytes)
+template<class T> class CIVCountedPointer { public:        // intrusive counted pointer (4 bytes)
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) {}
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) {}
 };

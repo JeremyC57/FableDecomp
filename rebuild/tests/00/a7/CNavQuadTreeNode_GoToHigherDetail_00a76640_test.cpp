@@ -2,8 +2,8 @@
 // side = level size) lies in one of the areas (half-open on the far edges); false for no areas or no corner inside.
 #include <cstdio>
 
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C2DBoxF {
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     bool Contains(float x, float y) const { return x >= TLX && x < BRX && y >= TLY && y < BRY; }
     bool ContainsPoint(const C2DVector& p) const { return Contains(p.X, p.Y); }

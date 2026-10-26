@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CTCBase { long type; };
+class CTCBase { public: long type; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_entries[4];
@@ -51,12 +51,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CTCBoss : CTCBase { long NextWeapon; long GetNextWeapon() { return NextWeapon; } };
+class CTCBoss : public CTCBase { public: long NextWeapon; long GetNextWeapon() { return NextWeapon; } };
 static int g_created = 0; static CThing* g_createdFor[2]; static long g_createdDef[2];
-struct CThingCreatureBase { static void FASTCALL CreateWeaponForThingFromDef(CThing& thing, long def); };
+class CThingCreatureBase { public: static void FASTCALL CreateWeaponForThingFromDef(CThing& thing, long def); };
 void FASTCALL CThingCreatureBase::CreateWeaponForThingFromDef(CThing& thing, long def) { if (g_created < 2) { g_createdFor[g_created] = &thing; g_createdDef[g_created] = def; } ++g_created; }
-struct CCombatActionBase { virtual ~CCombatActionBase() { } CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_BanditKingChangeWeapons : CCombatActionBase { void PerformAction(); };
+class CCombatActionBase { public: virtual ~CCombatActionBase() { } CBaseIntelligentPointer PCreature; };
+class CCreatureAction_BanditKingChangeWeapons : public CCombatActionBase { public: void PerformAction(); };
 void CCreatureAction_BanditKingChangeWeapons::PerformAction()
 {
     CTCBoss* pBoss;

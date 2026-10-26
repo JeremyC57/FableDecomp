@@ -1,4 +1,4 @@
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void* vftable;
 };
 

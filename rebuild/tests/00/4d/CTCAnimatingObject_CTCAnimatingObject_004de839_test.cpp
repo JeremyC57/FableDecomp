@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
@@ -13,7 +13,7 @@ struct CRetailList_CAnimInit {            // one sentinel-node pointer, the sent
     CRetailList_CAnimInit() : head(&g_sentinel) { g_sentinel.next = g_sentinel.prev = &g_sentinel; }
     bool empty() const { return head->next == head; }
 };
-struct CTCAnimatingObject : CTCBase {
+class CTCAnimatingObject : public CTCBase { public:
     bool                  Animating;
     long                  CurrentAnimationPriority;
     CRetailList_CAnimInit QueuedAnims;

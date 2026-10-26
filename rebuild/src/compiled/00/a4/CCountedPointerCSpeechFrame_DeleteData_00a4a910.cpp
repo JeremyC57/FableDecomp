@@ -67,7 +67,7 @@ public:
     float FrequencyVariance;                         // +0x18
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T>
 class CCountedPointer {
 public:

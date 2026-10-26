@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCombatDialogueDef;
+class CCombatDialogueDef;
 extern void __fastcall CCombatDialogueDef_dtor(CCombatDialogueDef* def);
 extern void __cdecl op_delete(void* p);
 

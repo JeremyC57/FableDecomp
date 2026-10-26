@@ -20,8 +20,8 @@ enum LS_LOADING_STATUS
     LS_LOADING_FAILED = 3
 };
 
-struct CLandscapeGPUUpdateQueue;
-struct CEngineComponentLoadNewSceneParams;
+class CLandscapeGPUUpdateQueue;
+class CEngineComponentLoadNewSceneParams;
 
 struct CEngineLandscapeMapCallView : CEngineLandscapeMap
 {
@@ -42,8 +42,8 @@ struct CEngineLandscapeRendererCallView : CEngineLandscapeRenderer
     bool LoadForegroundTextures(bool forceLoad); // 0x00B68070
 };
 
-struct CEngineComponentParams
-{
+class CEngineComponentParams
+{ public:
     float FrameInterpolation;
     unsigned char InterpolationInfo[0x70];
     unsigned int FrameID;
@@ -52,8 +52,8 @@ struct CEngineComponentParams
     unsigned char _pad_0x7d[3];
 };
 
-struct CEngineComponentLoadNewSceneParams
-{
+class CEngineComponentLoadNewSceneParams
+{ public:
     CEngineComponentParams Params;
     void* Camera;
     float Progress;

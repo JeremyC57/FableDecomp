@@ -18,7 +18,7 @@ public:
 
 class CSharerParserOutputToDebugContextMapper {
 public:
-    class CEntry {                              // 0xC bytes
+    struct CEntry {                              // 0xC bytes
     public:
         long          SrcLine;                  // +0x0
         long          DestLine;                 // +0x4

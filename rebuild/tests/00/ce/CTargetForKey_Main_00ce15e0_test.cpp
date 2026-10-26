@@ -26,17 +26,17 @@
 // Layout: Ego_r.pdb CTargetForKey (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, TargetForKeyDone +0x1c. Handle / map / movie classes as the landed CMK_GHC_HERO3::Main 0x00D29DB0
 //   and CRockTrollTrigger::Main 0x00E0AD40.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 struct CScriptThingImpl {
     virtual void i000() { } virtual void i001() { } virtual void i002() { } virtual void i003() { }
     virtual void SetClickText(const CCharString& text);   // slot 4 (+0x10)
 };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                           // slot 0 (out of line 0x004AA840)
     virtual void t001() { } virtual void t002() { } virtual void t003() { } virtual void t004() { } virtual void t005() { } virtual void t006() { } virtual void t007() { } virtual void t008() { }
     virtual void t009() { } virtual void t010() { } virtual void t011() { } virtual void t012() { } virtual void t013() { } virtual void t014() { } virtual void t015() { } virtual void t016() { }
@@ -53,7 +53,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000() { }
     void* m_pIntelligentPointer;                        // +0x04
     CBaseObject();                                      // 0x0099A380
@@ -71,7 +71,7 @@ struct CHandlePImp {
     CCPPointerInfo* Info;
     CHandlePImp& operator=(const CHandlePImp& other);   // 0x008AB1E0
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     __forceinline CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void h001() { }
@@ -89,7 +89,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                                // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001() { }
@@ -109,7 +109,7 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000() { } virtual void v001() { } virtual void v002() { } virtual void v003() { } virtual void v004() { } virtual void v005() { } virtual void v006() { }
     virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -186,7 +186,7 @@ struct CGameScriptInterface {                           // vtable 0x01260F0C
     virtual void v476() { }
     virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const;   // slot 477 (+0x774)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00() { }
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

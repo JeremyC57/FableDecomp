@@ -10,13 +10,13 @@
 //   User (+0x10) is the base's user range. engine/CEngineVSConstantLayoutRepeatedMesh.h is a flattened pad: modelled locally.
 // Shape: the default range constructor zeroes both words after the base ctor; each assignment builds the stack temporary,
 //   copies its two words and runs the implicit derived destructor (out-of-line base dtor only).
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
 
-struct CShaderConstantRange : CBaseClass {         // vtable 0x0129A04C: a register range {first register, register count}
+class CShaderConstantRange : public CBaseClass { public:         // vtable 0x0129A04C: a register range {first register, register count}
     long m_firstRegister;                          // +0x04
     long m_registerCount;                          // +0x08
     virtual void v00();
@@ -32,7 +32,7 @@ namespace N_00bdbb70 { struct CVertexShaderConstantLayout {               // ret
     CVertexShaderConstantLayout();                 // 0x00BDBB70
 }; } using N_00bdbb70::CVertexShaderConstantLayout;
 
-struct CEngineVSConstantLayoutRepeatedMesh : CVertexShaderConstantLayout {   // vtable 0x012A7CE4
+class CEngineVSConstantLayoutRepeatedMesh : public CVertexShaderConstantLayout { public:   // vtable 0x012A7CE4
     CShaderConstantRange LightingResults;          // +0x14c
     CShaderConstantRange MainLightLightingResults; // +0x158
     CShaderConstantRange ObjectMatricies;          // +0x164

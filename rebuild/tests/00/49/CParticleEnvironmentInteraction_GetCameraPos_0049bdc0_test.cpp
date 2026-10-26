@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour of CParticleEnvironmentInteraction::GetCameraPos (0x0049BDC0): the world's LOD centre when a world is
 // attached, else the stored (byte-packed) CameraPos.
-struct C3DVector { float X, Y, Z; };
-struct CWorld {
+class C3DVector { public: float X, Y, Z; };
+class CWorld { public:
     C3DVector m_centre;
     virtual C3DVector GetGameLODCentre() const { return m_centre; }
     virtual ~CWorld() {}

@@ -5,26 +5,26 @@
 #include <cstring>
 
 static int g_deleted = 0, g_added = 0;
-struct CResource {
+class CResource { public:
     long RefCount;
     CResource() : RefCount(1) {}
     virtual ~CResource() {}
     virtual void DeleteThis() { ++g_deleted; delete this; }
     void Release() { if (--RefCount == 0) DeleteThis(); }
 };
-struct CTexture { void* a; void* b; CTexture() : a(0), b(0) {} };
-template <class T> struct CCountedPointer { T* Data; CCountedPointer() : Data(0) {} void Reset(T* o) { delete Data; Data = o; } ~CCountedPointer() { delete Data; } };
-struct CManagedTextureData : CResource {
+class CTexture { public: void* a; void* b; CTexture() : a(0), b(0) {} };
+template <class T> class CCountedPointer { public: T* Data; CCountedPointer() : Data(0) {} void Reset(T* o) { delete Data; Data = o; } ~CCountedPointer() { delete Data; } };
+class CManagedTextureData : public CResource { public:
     unsigned short Width, Height; CCountedPointer<CTexture> Texture; void* Owner; void* Data;
     unsigned long AllocSize, PoolIndex; bool Allocated, Locked, BusyFlag;
     CManagedTextureData() : Width(0), Height(0), Owner(0), Data(0), AllocSize(0), PoolIndex(0), Allocated(false), Locked(false), BusyFlag(false) {}
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) {}
     CIVCountedPointer& operator=(T* o) { if (Object) { Object->Release(); Object = 0; } Object = o; return *this; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; T storage[8];
     void resize(unsigned int n, const T& x) { _M_start = storage; for (unsigned int i = (unsigned int)(_M_finish - _M_start); i < n; ++i) storage[i] = x; _M_finish = storage + n; }
     T& operator[](unsigned long n) { return *(_M_start + n); }

@@ -1,6 +1,6 @@
 #include <cstdio>
 static void* g_baseArg = 0;
-struct CThing { int x; };
+class CThing { public: int x; };
 struct CTCShotDefinitionProjectile { virtual void v00() { } unsigned char _body[0xa4 - 4]; CTCShotDefinitionProjectile(CThing* t) { g_baseArg = t; } };
 namespace NThingShot { struct CTCShotDefinitionForcePushBall : CTCShotDefinitionProjectile { float DistanceToPush; CTCShotDefinitionForcePushBall(CThing* t) : CTCShotDefinitionProjectile(t), DistanceToPush(0.0f) { } }; }
 int main()

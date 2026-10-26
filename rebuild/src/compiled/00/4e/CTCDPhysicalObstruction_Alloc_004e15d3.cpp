@@ -9,9 +9,9 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x004DF14B on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-struct CThing;
+class CThing;
 
-struct CTCDPhysicalObstruction {
+class CTCDPhysicalObstruction { public:
     unsigned char _body[0x50];       // sizeof(CTCDPhysicalObstruction) = 0x50
     CTCDPhysicalObstruction(CThing* owner);                   // 0x004DF14B
 };

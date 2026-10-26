@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCThingUIDDummyForSerialisation {
+class CTCThingUIDDummyForSerialisation { public:
     void* vftable;
     int destroyed;
 };

@@ -12,7 +12,7 @@ struct C2DVector {
 struct CRGBColour {
     unsigned char B, G, R, A;
 };
-struct CUIState {
+class CUIState { public:
     unsigned long StateChangeFlag;   // +0x00
     long          StateChangeType;   // +0x04
     C2DVector     Position;          // +0x08
@@ -52,9 +52,9 @@ struct CStateHolder {                // the component's second base (+4)
     virtual void ClearStateFlag(long flag);   // slot 4 (+0x10)
     virtual void UpdateStates();     // slot 5 (+0x14)
 };
-struct CComponent : CComponentBase, CStateHolder {
+class CComponent : public CComponentBase, public CStateHolder { public:
 };
-struct CScrollableList {
+class CScrollableList { public:
     unsigned char _pad000[0x14c];
     long          Active;            // +0x14c
     void UnhideComponent(CComponent* component, float positionTime, float fadeTime, C2DVector position);

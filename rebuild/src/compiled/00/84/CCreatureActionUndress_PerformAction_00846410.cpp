@@ -16,18 +16,18 @@
 //   their own so the "" CCharString dies right after Create.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E (MSVCR71 import thunk)
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CRightHandedSet;
+class CRightHandedSet;
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(b.X + a.X, b.Y + a.Y, a.Z); }
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -73,20 +73,20 @@ struct CDefBase {
     virtual void Destroy();                                  // slot 1
     long RefCount;                                           // +4
 };
-struct CAppearanceModifierDef : CDefBase {
+class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x44 - 8];
     bool          IsRemoveable;                              // +0x44
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CThingObjectDef : CDefBase {
+class CThingObjectDef : public CDefBase { public:
     bool GetSubDef(CDefPointer<CAppearanceModifierDef>* out);   // 0x0057FF92
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingObjectDef>* out);   // 0x0042B040
 };
 CThingObjectDef* FindThingObjectDef(long index);                       // stand-in: the def lookup (not graded here)
@@ -109,23 +109,23 @@ __declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModi
 struct CRandomSource {
     unsigned long* GetRandomSeed();                          // 0x0049D810
 };
-struct CWorld;
-struct CPlayer {
+class CWorld;
+class CPlayer { public:
     unsigned char _pad00[0x28];
     long          ID;                                        // +0x28
 };
-struct CThingObject {
+class CThingObject { public:
     void SetVelocity(const C3DVector& velocity);             // 0x006A4DC0
     static CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long player,
                                            CRightHandedSet* orientation, unsigned long flags,
                                            const CCharString& name);   // 0x00703210
 };
 
-struct CTCHeroAttachableAppearanceModifiers {
+class CTCHeroAttachableAppearanceModifiers { public:
     void GetModifiers(CLongList& out, long type);            // 0x00706800
     void AddAppearanceModifier_00706370(long def);                    // 0x00706370
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -168,7 +168,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                                // 0x00A01B50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                       // +0x08

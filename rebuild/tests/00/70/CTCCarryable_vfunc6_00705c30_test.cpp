@@ -1,7 +1,7 @@
 // behaviour test for 0x00705C30 CTCCarryable::vfunc_6 (def offset copy + normalise + release)
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     C3DVector& Normalise() { float l = std::sqrt(GetLengthSquared()); X /= l; Y /= l; Z /= l; return *this; }

@@ -11,36 +11,36 @@ static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 
 static long g_FramesPerSecond = 30;
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
     CCharString(const CCharString& o) : S(o.S) { }
 };
-struct CTCBase { virtual ~CTCBase() { } };
+class CTCBase { public: virtual ~CTCBase() { } };
 struct CEventBase { virtual ~CEventBase() { } };
 struct CEventCutScene : CEventBase {
     CCharString Name;
     CEventCutScene(const CCharString& name) : Name(name) { }
 };
-struct CTCEntityEvents : CTCBase {
+class CTCEntityEvents : public CTCBase { public:
     std::vector<std::string> Got;
     void AddEvent(CEventBase* event) { Got.push_back(((CEventCutScene*)event)->Name.S); delete event; }
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SPausePair { CCreatureActionBase* first; long second; SPausePair(CCreatureActionBase* a, long b) : first(a), second(b) { } };
 struct CPauseSet {
     std::map<CCreatureActionBase*, long> M;
     unsigned long Erase(CCreatureActionBase* const& key) { return (unsigned long)M.erase(key); }
     void Insert(const SPausePair& v) { M.insert(std::make_pair(v.first, v.second)); }
 };
-struct CTCHaste : CTCBase {
+class CTCHaste : public CTCBase { public:
     CPauseSet Paused;
     int Recalcs;
     CTCHaste() : Recalcs(0) { }
     void Recalculate() { ++Recalcs; }
 };
-struct CSoundPair { long FirstSound, LastSound; };
-struct CSoundInit { bool a; long b, c; CSoundInit(bool x, long y, long z) : a(x), b(y), c(z) { } };
+class CSoundPair { public: long FirstSound, LastSound; };
+class CSoundInit { public: bool a; long b, c; CSoundInit(bool x, long y, long z) : a(x), b(y), c(z) { } };
 struct CTCSound : CTCBase {
     unsigned long PlayRandomSound(const CSoundPair& s, const CSoundInit& init) { (void)init; return 1000 + s.FirstSound; }
 };
@@ -50,7 +50,7 @@ struct CInterfaceMap {
 };
 static CTCHaste g_haste;
 static int g_addTCFailures = 0;
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CThing() { for (int i = 0; i < 9; ++i) m_presentBits[i] = 0; }
@@ -139,7 +139,7 @@ struct SCutSceneTree {
     }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CBaseIntelligentPointer PCreature;
     long TotalTime, ActionTime, FramesRunning;
     CSoundPair Sounds;

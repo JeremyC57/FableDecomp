@@ -7,12 +7,12 @@ typedef unsigned __int64 u64; typedef __int64 s64;
 typedef unsigned long long u64; typedef long long s64;
 #endif
 static int g_temps = 0, g_tempDtors = 0;
-struct CThing {
+class CThing { public:
     bool Dead; int Kills; bool KillFlag;
     void Kill(bool immediately) { ++Kills; KillFlag = immediately; }
 };
 static CThing* g_lookup = 0; static s64 g_askedUID = 0;
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(s64 uid) { g_askedUID = uid; return g_lookup; }
 };
 static CThingManager g_tm;
@@ -29,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;
     CThingManager* GetThingManager() { return &g_tm; }

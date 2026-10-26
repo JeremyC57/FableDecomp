@@ -18,11 +18,11 @@ struct CVertexShaderData {
     long  m_refCount;                         // +0x10
 };
 
-struct CShaderBase {                          // vtable 0x0129A030
+class CShaderBase { public:                          // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
 
-struct CVertexShader : CShaderBase {           // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:           // vtable 0x0129B3D0
     CVertexShaderData* Data;                   // +0x04
     __forceinline virtual ~CVertexShader()     // __forceinline keeps the release in the ??_G body (else it collapses to `call ??1`)
     {

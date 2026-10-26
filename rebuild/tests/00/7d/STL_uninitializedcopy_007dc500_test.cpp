@@ -5,7 +5,7 @@
 #include <cstring>
 #include <new>
 
-struct CCard { int id; };
+class CCard { public: int id; };
 struct CardVector {
     CCard** _M_start; CCard** _M_finish; CCard** _M_end_of_storage;
     CardVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }

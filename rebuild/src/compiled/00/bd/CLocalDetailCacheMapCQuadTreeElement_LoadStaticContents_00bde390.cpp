@@ -13,7 +13,7 @@
 #include <string.h>
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -41,31 +41,31 @@ struct CDataInputStream {
         return value;
     }
 };
-struct CMemoryDataInputStream : CDataInputStream {
+class CMemoryDataInputStream : public CDataInputStream { public:
     unsigned char* StreamSource;                        // +0x18
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
     ~CMemoryDataInputStream();                          // 0x00993B10
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void RequestFileBlock(long pos, long size, long priority);   // 0x00BE06B0
     bool IsFileBlockLoaded(long pos);                   // 0x00BE0480
     unsigned char* GetFileBlockData(long pos);          // 0x00BE04C0
     void ReleaseRequest(long pos);                      // 0x00BE0400
 };
-struct CMovableResource { virtual ~CMovableResource() {} };
-struct CEngineLandscapeMemoryManager {
+class CMovableResource { public: virtual ~CMovableResource() {} };
+class CEngineLandscapeMemoryManager { public:
     void* Allocate(unsigned long size, CMovableResource* owner);   // 0x00BD9AF0
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char _pad[0x6b0];
     CEngineLandscapeMemoryManager* MemoryManager;       // +0x6b0
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;  // 0x01436EA8
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0), Y(0), Z(0), Radius(0) {}
 };
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectTypeCollection;
 struct CObjectTypeCollectionPalette;
 struct CObjectCacheGroupCollection : CMovableResource {     // retail 0x38 bytes, vtable 0x012A7DDC

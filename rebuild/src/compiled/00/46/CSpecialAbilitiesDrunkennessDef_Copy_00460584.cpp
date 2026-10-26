@@ -5,7 +5,7 @@
 // The rel32 target is relocation-masked, so any extern callee produces byte-identical
 // output once the __fastcall->__fastcall lowering is applied by the lander.
 
-struct CSpecialAbilitiesDrunkennessDef;
+class CSpecialAbilitiesDrunkennessDef;
 
 // The forwarded-to copy implementation (real target relocation-masked).
 extern void __fastcall CSpecialAbilitiesDrunkennessDef_CopyImpl(

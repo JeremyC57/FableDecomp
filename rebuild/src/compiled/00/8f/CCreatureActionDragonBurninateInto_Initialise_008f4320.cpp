@@ -12,14 +12,14 @@
 // (tested here, as in 0x008C1E80).
 // Layout: retail PreviousPoint +0x114, MovementPoints (std::vector<C3DVector>, 12 bytes) +0x120, BurnStart +0x12c, BurnStop
 // +0x130, FlameStartPos +0x134, FlameEndPos +0x140 (PDB +0x12c.. with a 16-byte vector).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -39,7 +39,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
 struct CBaseIntelligentPointer {
     void*   __vftable;
@@ -51,13 +51,13 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CVectorC3DVector {                       // std::vector<C3DVector> (retail 12 bytes)
@@ -67,7 +67,7 @@ struct CVectorC3DVector {                       // std::vector<C3DVector> (retai
 };
 
 struct CModeBase { };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;                            // +0
     void* m_pCount;                             // +4
     CCountedPointer(T* object);                 // 0x00718A00
@@ -78,7 +78,7 @@ struct CModeDragonStrafeBurninate : CModeBase {
     CModeDragonStrafeBurninate(CThing* owner, const CVectorC3DVector& points, const C3DVector& previous, float burnStart, float burnStop,
                                const C3DVector& flameStart, const C3DVector& flameEnd);   // 0x008E1580
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(CCountedPointer<CModeBase> mode);   // 0x0073ACC0
 };
 

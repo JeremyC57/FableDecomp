@@ -5,15 +5,15 @@
 // every call. Loop: the component-map walk of EnterTimelineEnd (0x00AF4070) with the end compared from memory at
 // entry (`cmp ebx,[esi+10h]`: no end local before the test).
 
-struct CIEngine;
-struct C3DBoundingSphere;
-struct CEnginePrimitivePrepareInfo;
-struct CEnginePrimitiveHandle;
+class CIEngine;
+class C3DBoundingSphere;
+class CEnginePrimitivePrepareInfo;
+class CEnginePrimitiveHandle;
 struct CParticleSystem;
 struct CParticleUpdateParameters { unsigned char m_data[0x24]; };   // retail 0x24 bytes (PDB 0x2c)
 
 namespace NParticleEngine {
-struct CPSCBase {                                    // particle-system component; slots by retail call offsets
+class CPSCBase { public:                                    // particle-system component; slots by retail call offsets
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

@@ -13,19 +13,19 @@
 struct CBoneMap {                                   // map<unsigned long, unsigned long>
     unsigned long& operator[](const unsigned long& key);   // 0x00553E60
 };
-struct C3DClothPrimitive {
+class C3DClothPrimitive { public:
     void RemapBoneIndices(CBoneMap& remap);         // 0x00AC3AF0
 };
 namespace N3DPrimitive {
-struct CDeviceIndependent {
+class CDeviceIndependent { public:
     void RemapBoneIndices(CBoneMap& remap);         // 0x00A90D60
 };
 }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; void* Count;
     T* operator->() const { return Object; }
 };
-template<class T> struct CArray {                   // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                   // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     T* begin() const { return m_begin; }
     unsigned long size() const { return (unsigned long)(m_end - m_begin); }
@@ -41,7 +41,7 @@ struct CAnimatedBlock {                             // 0x30
     unsigned char Groups[18];                       // +0x18
     void* Data;                                     // +0x2c
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char _pad[0x20];
     CArray<CCountedPointer<C3DClothPrimitive> > ClothPrimitives;   // +0x20
     N3DPrimitive::CDeviceIndependent* Data;         // +0x2c scoped_ptr

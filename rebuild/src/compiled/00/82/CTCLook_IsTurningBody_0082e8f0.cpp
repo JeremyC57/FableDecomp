@@ -27,8 +27,8 @@ struct LookSub
     int pad[8];
 };
 
-struct CTCLook
-{
+class CTCLook
+{ public:
     char pad0[0x14];
     LookSub sub;   // at +0x14
 

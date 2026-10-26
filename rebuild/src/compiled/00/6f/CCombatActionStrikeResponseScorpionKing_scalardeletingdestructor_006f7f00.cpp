@@ -1,4 +1,4 @@
-struct CCombatAction_StrikeResponseScorpionKing {
+class CCombatAction_StrikeResponseScorpionKing { public:
     void* vftable;
 };
 

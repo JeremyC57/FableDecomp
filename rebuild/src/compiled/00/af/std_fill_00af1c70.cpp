@@ -11,14 +11,14 @@
 // local copy, store, count bump) then Bank and Index.
 // Local base model, not engine/CIVCountedPointeeBase.h: the generated header flattens the vptr into a plain
 // `void* __vftable`, which cannot make the slot-1 virtual destroy call the release runs.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* Object;                                  // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -38,9 +38,9 @@ struct CIVCountedPointer {
 };
 
 namespace NParticleEngine {
-struct CParticleDataBank;
-struct CParticleEmitterInfo {                   // 12 bytes
-    struct CEmitterData : CIVCountedPointeeBase { };
+class CParticleDataBank;
+class CParticleEmitterInfo { public:                   // 12 bytes
+    class CEmitterData : public CIVCountedPointeeBase { public: };
     CIVCountedPointer<CEmitterData> Data;       // +0x00
     CParticleDataBank*              Bank;       // +0x04
     unsigned long                   Index;      // +0x08

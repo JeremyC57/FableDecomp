@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CTavernGameCoinGolfDef
-{
+class CTavernGameCoinGolfDef
+{ public:
     void* vftable;
 };
 void* const g_CTavernGameCoinGolfDef_vftable = (void*)0x12345678;

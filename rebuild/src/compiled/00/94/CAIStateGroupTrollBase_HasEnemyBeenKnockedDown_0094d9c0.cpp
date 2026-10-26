@@ -9,8 +9,8 @@
 // Shape: the landed filter chain (`a && b` binds pointers to the two frame temporaries; the explosion filter is
 // empty, one byte); each search has its own event local in its own block.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -152,7 +152,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -160,7 +160,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -196,8 +196,8 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }
 };
@@ -215,7 +215,7 @@ inline CTCEnemyTracker* GetEnemyTracker(CThing* thing)
     thing->GetInterfaceX(&tracker, 8);
     return tracker;
 }
-struct CThingPhysical : CThing {
+class CThingPhysical : public CThing { public:
     const C3DVector& GetPhysicsPosition();      // 0x006A4D00 (the +0x60 physics sub-object's position)
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
@@ -236,29 +236,29 @@ struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     bool HasEnemyBeenKnockedDown();             // 0x0094D9C0
 };
 namespace NEntityEvents {
-struct CEventHitBy {
+class CEventHitBy { public:
     void* __vftable;
     long CreationFrame;                         // +0x04
 };
-struct CIsEventCreatedAfter {
+class CIsEventCreatedAfter { public:
     long Frame;
     CIsEventCreatedAfter(long frame) : Frame(frame) { }
 };
-struct CIsHitEventHitAndKnockedDownBy {
+class CIsHitEventHitAndKnockedDownBy { public:
     const CThing* m_pAttacker;
     CIsHitEventHitAndKnockedDownBy(const CThing* attacker) : m_pAttacker(attacker) { }
 };
-struct CIsHitEventHitByExplosion {
+class CIsHitEventHitByExplosion { public:
     CIsHitEventHitByExplosion() { }
 };
 }
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-struct CTCEntityEvents {                        // interface 0x42
+class CTCEntityEvents { public:                        // interface 0x42
     bool GetEvent(NEntityEvents::CEventHitBy** out, const CFilter_Bind2<NEntityEvents::CIsEventCreatedAfter,
         NEntityEvents::CIsHitEventHitAndKnockedDownBy>& filter);           // 0x0094E480
     bool GetEvent(NEntityEvents::CEventHitBy** out, const CFilter_Bind2<NEntityEvents::CIsEventCreatedAfter,

@@ -20,13 +20,13 @@ template <class T> struct CDefHolder {
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad08[0x110 - 0x08];
     long MinBet;                                        // +0x110
     long MaxBet;                                        // +0x114
     long BetIncrement;                                  // +0x118
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out);   // 0x005ED4A0
 };
 void* FindDef_CDefClassBase_GetSubDef_005ed4a0_0();
@@ -38,11 +38,11 @@ bool CDefClassBase::GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out)
     *(void**)&out = def;
     return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -52,7 +52,7 @@ extern long g_BetRepeatDelayFrames;                     // 0x0137D38C (6)
 extern long g_BetRepeatSlowPeriod;                      // 0x0137D390 (2)
 extern long g_BetRepeatFastPeriod;                      // 0x0137D394 (1)
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x34 - 0x08];

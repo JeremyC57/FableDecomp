@@ -5,7 +5,7 @@
 
 struct SInfo { long Type, Reserved; bool A, B, C; long BankIndex; unsigned short Flags; unsigned long BlendMode, BlendOp; };
 static SInfo g_last[4]; static int g_creates;
-struct CIEngine { long CreateChildPrimitive(void* parent, const SInfo* info, long) { g_last[g_creates] = *info; return 100 + g_creates++; } };
+class CIEngine { public: long CreateChildPrimitive(void* parent, const SInfo* info, long) { g_last[g_creates] = *info; return 100 + g_creates++; } };
 struct CPSCRenderSprite {
     bool Initialised; long SpriteBankIndex, TrailBankIndex;
     unsigned long BlendMode : 3, TrailBlendMode : 3, BlendOp : 3, TrailBlendOp : 3, Flags : 10;

@@ -10,7 +10,7 @@
 extern "C" unsigned int __cdecl strlen(const char* text);
 #pragma intrinsic(strlen)
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size); // slot 4 (+0x10)
     void WriteBool(bool value);                                // 0x00993E30
@@ -21,10 +21,10 @@ struct CDataOutputStream {
     void WriteFloat(float value);                              // 0x00993EE0
 };
 
-struct CQuaternion { float X, Y, Z, W; };
+class CQuaternion { public: float X, Y, Z, W; };
 struct C3DVectorWord { short X, Y, Z; };
 
-struct C3DAnimationSequenceData {
+class C3DAnimationSequenceData { public:
     char* BoneName;                            // +0x00
     float SamplesPerSecond;                    // +0x04
     unsigned short FrameCount;                 // +0x08

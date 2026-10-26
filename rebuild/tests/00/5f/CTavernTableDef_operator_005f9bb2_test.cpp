@@ -6,7 +6,7 @@ struct BaseDef {
     BaseDef* AssignBase_005f9074(const BaseDef* rhs);
 };
 
-struct CTavernTableDef : public BaseDef {
+class CTavernTableDef : public BaseDef { public:
     char m_flag;
     CTavernTableDef& operator=(const CTavernTableDef& rhs);
 };

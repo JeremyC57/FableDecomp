@@ -1,8 +1,8 @@
 // Standalone behaviour test for GetStaticMapUpdatePassCount @ 0x00b23470
 #include <cstdio>
 
-struct CIEngine
-{
+class CIEngine
+{ public:
     void *vftable;
 };
 

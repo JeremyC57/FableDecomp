@@ -13,7 +13,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
 };
 
 namespace NHitLocations {
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -24,13 +24,13 @@ struct CPhysicalPrimitiveBase {
 };
 }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
     T* Get() const { return Data; }
 };
 
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> PPrimitive;   // +0x00
 };
 

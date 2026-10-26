@@ -9,16 +9,16 @@
 // Shape: the record is a 0x78-byte frame local; the event copy is CInputEvent's implicit (bitwise) assignment (`rep movsd`, 13 dwords);
 // the frame getter's result is stored straight into the record; the mouse device is a named local (the member chain twice swaps the
 // eax/edx roles of the vtable and the argument); only the InputEvent member is destroyed at the end.
-struct CInputEvent {                                    // 0x34 bytes
+class CInputEvent { public:                                    // 0x34 bytes
     unsigned char _body[0x34];
     CInputEvent();                                      // 0x00A04410
     ~CInputEvent();                                     // 0x00A03B30
 };
 
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;                      // +0x00
     unsigned char   RHSet[0x18];                        // +0x0c CRightHandedSet (opaque here)
     bool            HeightLocked;                       // +0x24
@@ -47,17 +47,17 @@ struct CLoader {
 };
 extern CLoader* g_Loader;                               // 0x013B8388
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long GetFrame();                           // 0x00416225
 };
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* buffer, unsigned long size, long flags);   // slot 4 (+0x10)
     unsigned char _body[0x18];
 };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     unsigned char       _pad[0x6f8];
     CMainGameComponent* Component;                      // +0x6f8
     void*               PlayerManager;                  // +0x6fc

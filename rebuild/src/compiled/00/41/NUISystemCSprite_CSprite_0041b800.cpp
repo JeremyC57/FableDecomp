@@ -14,7 +14,7 @@ public:
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
@@ -26,9 +26,9 @@ public:
     virtual void v001();
     CEnginePrimitiveHandle() { }
 };
-struct CTexture;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CTexture;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -45,11 +45,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     CDraggableInto(long id);                       // 0x0052CC50
 };
-struct CSprite : CDraggableInto {
+class CSprite : public CDraggableInto { public:
     CEnginePrimitiveHandle    Handle;              // +0x15c
     float                     Angle;               // +0x164
     unsigned long             Width;               // +0x168

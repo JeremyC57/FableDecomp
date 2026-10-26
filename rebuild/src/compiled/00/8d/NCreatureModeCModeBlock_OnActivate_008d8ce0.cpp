@@ -9,7 +9,7 @@
 // Layout (PDB CModeBlock 0x20): CModeBase 0x1c (ParentThing +0x04), PCreature +0x1c. Creature: state byte +0x10.
 // Shape: the landed CCreatureAction_BlockBase::Initialise 0x00855430 sound block (string temporary first, the play-parameter
 // block assigned in its ctor body) inside the GetInterface test, after the suspend test.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -18,13 +18,13 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long First;
     long Second;
 };
@@ -41,18 +41,18 @@ struct CSoundPlayParams {                  // as the landed 0x00855430
     CSoundPlayParams() { Volume = 1.0f; Pitch = 1.0f; Delay = 0.0f; Loop = 1; Pan = 0; Flags = 0; Handle = -1; Priority = 1; }
 };
 
-struct CTCSoundPlayer {                    // the interface-0x10 component
+class CTCSoundPlayer { public:                    // the interface-0x10 component
     void PlaySound(const CSoundPair& sound, const CSoundPlayParams& params, long a, long b, long c);   // 0x0066B280
 };
 
-struct CThing;
+class CThing;
 
 struct CThingAnimatable {                  // the thing's polymorphic root here (vptr at +0); only its member is called
     virtual void v000();
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThingCreatureBase : CThingAnimatable {
+class CThingCreatureBase : public CThingAnimatable { public:
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

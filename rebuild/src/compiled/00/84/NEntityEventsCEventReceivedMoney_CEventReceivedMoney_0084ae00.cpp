@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
 };
 
 namespace NEntityEvents {
-struct CEventReceivedMoney : CEventBase_NEntityEvents {   // vtable 0x01274210
+class CEventReceivedMoney : public CEventBase_NEntityEvents { public:   // vtable 0x01274210
     CIntelligentPointer m_giver;                   // +0x08
     long                m_amount;                  // +0x10
     virtual void v00();

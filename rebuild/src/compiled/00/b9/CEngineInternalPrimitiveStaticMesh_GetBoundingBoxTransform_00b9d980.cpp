@@ -14,7 +14,7 @@
 #include "engine/CEngineInternalPrimitiveStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -46,7 +46,7 @@ public:
     }
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0x00
     C3DVector MaxCoord;                            // +0x0c
     void CalculateMatrix(CMatrix3x4& matrix) const;   // 0x00ADEBC0

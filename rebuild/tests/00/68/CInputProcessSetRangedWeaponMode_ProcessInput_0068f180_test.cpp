@@ -15,7 +15,7 @@
 class CInputEvent { public: int m_held, m_action; };
 struct CMemoryBuffer {
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -61,7 +61,7 @@ struct CTC81 {                                     // component kind 0x81
     unsigned char _pad00[0x15];
     bool          m_15;                            // +0x15
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -91,7 +91,7 @@ public:
     CThing* GetHeroThing() { return m_hero; }
 };
 bool g_rangedWeaponModeGate;
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00() {}

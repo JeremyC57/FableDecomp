@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CTCMapwho {
+class CTCMapwho { public:
     unsigned char pad[0x50];
     unsigned char flags;
 };

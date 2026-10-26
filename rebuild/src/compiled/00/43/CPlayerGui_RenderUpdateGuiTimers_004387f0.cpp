@@ -8,12 +8,12 @@
 // renderer's tail, - 0x14 after it): PDrawQuestInfo +0x1c8, GuiMode +0x294, FadeInTimer +0x298, the stat bars +0x2cc..+0x2fc.
 // Shape: the lazily loaded def via the landed __forceinline GetPlayerGuiDef helper; the two stat-bar times are float locals; the
 // quest-info secondary fade passes the address of a local mode forced to 2.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x4e4];
     float         StatBarOpenTime;                          // +0x4e4 (descriptive)
     unsigned char _pad4e8[0x4f0 - 0x4e8];
@@ -25,10 +25,10 @@ struct CPlayerGuiDefPointer {
     CPlayerGuiDef* Object;
 };
 extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
@@ -41,12 +41,12 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 }
 enum EPlayerGuiMode { GUI_MODE_CLOSED, GUI_MODE_1, GUI_MODE_OPENING, GUI_MODE_CLOSING };
 namespace NPlayerGui {
-struct CStatBase {                                          // CStatBase (Ego_r.pdb offsets)
+class CStatBase { public:                                          // CStatBase (Ego_r.pdb offsets)
     unsigned char  _pad00[0x28];
     EPlayerGuiMode GuiMode;                                 // +0x28
     float          FadeInTimer;                             // +0x2c
 };
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char  _pad00[0x28];
     EPlayerGuiMode GuiMode;                                 // +0x28
     float          FadeInTimer;                             // +0x2c
@@ -54,12 +54,12 @@ struct CDrawQuestInfo {
     bool           ShowingSecondary;                        // +0x34 (descriptive)
 };
 }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Ptr;
     void* Count;
     T* operator->() const { return Ptr; }
 };
-struct CPlayerGui {                                         // retail-offset view (PDB - 8 / - 0x14)
+class CPlayerGui { public:                                         // retail-offset view (PDB - 8 / - 0x14)
     unsigned char _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;   // +0x1c8 (PDB +0x1d0)
     unsigned char _pad1d0[0x294 - 0x1d0];

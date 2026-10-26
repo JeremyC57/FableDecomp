@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_InterruptableNearAttack {
+class CCreatureAction_InterruptableNearAttack { public:
     void* vftable;
     int destroyed;
 };

@@ -1,10 +1,10 @@
 // Behaviour test for 0x007BA3C0 CTCTavernBar::GetRandomBarSlot (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
-struct CCharString {
+class CTCBase { public: virtual ~CTCBase() {} };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
+class CCharString { public:
     char buf[64];
     CCharString() { buf[0] = 0; }
     CCharString(const char* t, long = -1) { std::strcpy(buf, t); }
@@ -43,7 +43,7 @@ public:
     }
 };
 static char g_askedName[64]; static CThing* g_user = 0; static bool g_free = true;
-struct CTCNamedUserActionPoints : CTCBase {
+class CTCNamedUserActionPoints : public CTCBase { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet*, CCharString name, long* index, long, bool)
     { std::strcpy(g_askedName, name.buf); g_user = user; if (!g_free) return false; pos->X = 5.0f; *index = 42; return true; }
 };

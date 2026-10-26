@@ -1,7 +1,7 @@
 // CHitLocation::~CHitLocation() -- release the two counted pointers at +0xc and +8 (the count at the pointee's +4 decremented, virtual slot 1 at zero, the word cleared), then the inlined CIVCountedPointeeBase destructor stores its vtable (0x012354D0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00710900, length 59 bytes.
 // Shape: `this` in esi, the two releases with `mov dword ptr [esi+N],0`, the base vtable last.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4

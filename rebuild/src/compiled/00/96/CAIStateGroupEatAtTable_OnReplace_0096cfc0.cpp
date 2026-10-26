@@ -10,7 +10,7 @@
 //          no engine header, modelled locally.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -75,24 +75,24 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 bool __fastcall GetUpFromSitting(CThing* creature, long movement, const CCharString* anim, CAIBrain* brain);   // 0x0085FF10
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
     void RemoveThingFromPrimarySlot(bool b);    // 0x006A1E00
 };
-struct CTCTavernTankard {                       // interface 0xba
+class CTCTavernTankard { public:                       // interface 0xba
     void ReplaceTankard();                      // 0x00947C30
 };
 struct CTCSeatTable {                           // interface 0xb8
@@ -102,7 +102,7 @@ struct CTCSeatTable {                           // interface 0xb8
     void FreeSeat(long seat, long actionPoint); // 0x007B8AA0
     void SetOccupant(long seat, CThing* occupant);   // 0x007B85F0
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];

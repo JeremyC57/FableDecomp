@@ -12,7 +12,7 @@ struct CTarget {
     long m_value;                          // +0x88
 };
 
-struct CThingObject {
+class CThingObject { public:
     unsigned char _pad[0xd0];
     CTarget* m_object;                     // +0xd0
     long vfunc_40();

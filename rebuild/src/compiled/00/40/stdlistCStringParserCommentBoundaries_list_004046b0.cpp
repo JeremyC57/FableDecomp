@@ -11,7 +11,7 @@
 //   type comes from the catalog label (CStringParser::Comments is such a list).
 extern "C" void __cdecl free(void*);                                            // 0x00BFEA14
 
-struct CStringParserCommentBoundaries {
+class CStringParserCommentBoundaries { public:
     long Start;                                         // +0x00 comment start offset
     long End;                                           // +0x04 comment end offset
 };

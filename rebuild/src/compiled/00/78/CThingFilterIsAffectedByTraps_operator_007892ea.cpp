@@ -9,7 +9,7 @@
 // dead `thing` slot ([ebp+8]), `add esi,44h` re-uses the thing register for the map, and the two exits share one tail.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -23,7 +23,7 @@ struct CInterfaceBitset {                           // std::bitset<288>
     bool test(unsigned long pos) const;             // 0x00410DE0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CInterfaceBitset m_presentBits;                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44

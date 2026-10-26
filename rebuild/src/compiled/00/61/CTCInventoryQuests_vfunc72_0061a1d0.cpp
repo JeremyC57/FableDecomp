@@ -6,7 +6,7 @@
 // memory decrement and a sign test. `this` is unused. The real method name is unknown (catalog label kept).
 extern long g_testQuestIndex;                 // 0x013B8C64
 extern long g_testQuestCount;                 // 0x013B8C68
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     void vfunc_72();
 };
 void CTCInventoryQuests::vfunc_72()

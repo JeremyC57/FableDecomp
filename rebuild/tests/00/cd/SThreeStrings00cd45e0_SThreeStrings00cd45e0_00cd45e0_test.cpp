@@ -10,7 +10,7 @@ typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00cd45e0: the record's constructor default-constructs its three CCharString members in declaration order.
 static int g_order = 0;
-struct CCharString { long m_order; CCharString() : m_order(++g_order) {} };
+class CCharString { public: long m_order; CCharString() : m_order(++g_order) {} };
 struct SThreeStrings_00cd45e0 {
     CCharString m_first;
     CCharString m_second;

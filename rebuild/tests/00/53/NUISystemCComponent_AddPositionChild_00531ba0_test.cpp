@@ -2,7 +2,7 @@
 // Behaviour test for NUISystem::CComponent::AddPositionChild @ 0x00531BA0: the child is added to the set, gets this
 // component as its position parent, the two render zooms, and a parent / relative parent position chosen by the three
 // virtual predicates (relative root, zoom ignored, screen converted). Same C2DVector forms as the reconstruction.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}

@@ -7,12 +7,12 @@
 extern double g_VirtualScreenWidth_013961e8;    // 0x013961E8 (65536.0 in the shipped binary)
 extern double g_VirtualScreenHeight_013961f0;   // 0x013961F0 (65536.0 in the shipped binary)
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;
 };
 

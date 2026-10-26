@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 // Spy for CCharString::~CCharString (0x0099EAE0): records the order of the destroyed member addresses.
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     ~CCharString();
 };

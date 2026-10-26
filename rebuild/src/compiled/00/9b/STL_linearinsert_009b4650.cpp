@@ -51,7 +51,7 @@ struct SValue8 {                                // 8-byte mapped value (two word
     long b;                                     // +0x04
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

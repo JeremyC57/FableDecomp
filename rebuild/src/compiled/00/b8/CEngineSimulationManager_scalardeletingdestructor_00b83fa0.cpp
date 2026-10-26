@@ -1,4 +1,4 @@
-struct CEngineSimulationManager {
+class CEngineSimulationManager { public:
     void* vftable;
 };
 

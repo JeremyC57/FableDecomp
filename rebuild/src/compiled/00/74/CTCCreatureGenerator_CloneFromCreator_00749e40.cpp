@@ -9,7 +9,7 @@
 // ActiveCreatureLimit +0x14, TotalGenerationLimit +0x18, NumTriggers +0x1c, ScriptNameOfAllGeneratedCreatures +0x20.
 // Shape: `GenParams = other->GenParams` is the implicit memberwise assignment inlined (integer moves for
 // the floats, the string through its operator=), then the three stores in source order.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
@@ -26,7 +26,7 @@ struct TGenerationParameters {                              // 0x24 bytes
     CCharString ScriptNameOfAllGeneratedCreatures;          // +0x20
 };
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void*                 __vftable;                        // +0x00
     unsigned char         _pad04[0x24];                     // +0x04 CTCBase, CreatureFamilies, CreatedCreatures, CreatureTriggerers
     TGenerationParameters GenParams;                        // +0x28

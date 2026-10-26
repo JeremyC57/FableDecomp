@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(void* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +0x04
@@ -47,7 +47,7 @@ struct CIVCountedPointer {
 
 #pragma pack(push, 1)
 namespace NEntityEvents {
-struct CEventVillagerInteraction : CEventBase_NEntityEvents {   // vtable 0x012995A8; byte-packed
+class CEventVillagerInteraction : public CEventBase_NEntityEvents { public:   // vtable 0x012995A8; byte-packed
     unsigned char       m_flag;                    // +0x08
     CIntelligentPointer m_villager;                // +0x09 .. +0x11
     unsigned char       _pad11[3];                 // +0x11 .. +0x14 (not initialised)

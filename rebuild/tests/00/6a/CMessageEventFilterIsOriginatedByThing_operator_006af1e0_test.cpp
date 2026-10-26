@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CMessageEvent {
+class CMessageEvent { public:
     char pad[0x28];
     unsigned int originatorType;   // +0x28
     unsigned int originatorId;     // +0x2c

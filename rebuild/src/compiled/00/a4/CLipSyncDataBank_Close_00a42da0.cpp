@@ -11,12 +11,12 @@ struct SAllocatorTag_00a42da0 { SAllocatorTag_00a42da0() { } };
 SEntry_00a42da0* __fastcall __copy(const SEntry_00a42da0* first, const SEntry_00a42da0* last, SEntry_00a42da0* result, const random_access_iterator_tag&, int*);   // 0x00A438E0
 void __fastcall Destroy_00a43a00(SEntry_00a42da0* first, SEntry_00a42da0* last, const SAllocatorTag_00a42da0& allocator);   // 0x00A43A00
 
-struct CBankFile {
+class CBankFile { public:
     unsigned char _body[0x164];
     void Close_009ce360();                                  // 0x009CE360
 };
 
-struct CLipSyncDataBank : CBankFile {
+class CLipSyncDataBank : public CBankFile { public:
     SEntry_00a42da0* m_first;                      // +0x164
     SEntry_00a42da0* m_last;                       // +0x168
     SEntry_00a42da0* m_end;                        // +0x16c

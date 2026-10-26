@@ -5,26 +5,26 @@
 // @ 0x006994F0, AddMeleeCameraMode @ 0x0069A8B0 (manifest "CTCCombat::AddMeleeFlourishAbility" is propagated).
 // Globals: the engine singleton @ 0x013B86A0 whose player manager sits at +0x1c (retail CEngine layout).
 // Shape: `push 2Fh` precedes the GetMainPlayer call because VC evaluates the HasMode argument before the object expression.
-struct CPlayer {
+class CPlayer { public:
     bool HasMode(long mode);                        // 0x00634160
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
-struct CEngine {
+class CEngine { public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1c
 };
 
 extern CEngine* g_pEngine;                          // 0x013B86A0
 
-struct CWorld;
-struct CThing;
+class CWorld;
+class CThing;
 
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     virtual void v01();
     virtual long GetMode();                         // slot 2: NCameraModes::EMode
@@ -40,7 +40,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                   // +0
     SCountBlock* m_pCount;                          // +4
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -58,7 +58,7 @@ struct CCountedPointer {
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1: runs when the last reference goes
     long m_refCount;                                // +4
@@ -95,7 +95,7 @@ struct CTools {                                     // retail CTools is 0x20 byt
 // onwards -- retail CTools is 0x20, retail std::vector is 12 bytes and the STLport list 4 bytes -- so the header's offsets
 // (CurrentMode +0x9c, UsingCameraManually +0x144, PDef +0x14c) do not match the bytes (+0x98, +0x12c, +0x134); the member
 // names are the PDB's.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void* __vftable;                                // +0x00
     unsigned char Camera[0x38];                     // +0x04 CCamera
     unsigned char OldCamera[0x38];                  // +0x3c CCamera

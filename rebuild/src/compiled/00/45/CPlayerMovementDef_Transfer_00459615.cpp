@@ -5,11 +5,11 @@
 //   long fields (+0x54, +0x58, +0x60) use Transfer(long&) 0x00431102.
 // Layout: PDB (Ego_r) names and types; the TLC def base is 0x3c bytes (PDB 0x40), so retail offset = PDB offset - 4.
 //   Local model: no engine/ header exists for CPlayerMovementDef or CPersistContext.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float&);                              // 0x00431061
     void Transfer(long&);                               // 0x00431102
 };
-struct CPlayerMovementDef {
+class CPlayerMovementDef { public:
     unsigned char _base[0x3c];                          // CDefClassBase/CParentDefClassBase
     float JoystickMovementStationaryBand;               // +0x3c
     float JoystickMovementSlowBand;                     // +0x40

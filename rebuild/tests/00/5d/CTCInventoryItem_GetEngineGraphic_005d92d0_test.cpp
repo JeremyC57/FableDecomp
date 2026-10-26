@@ -9,13 +9,13 @@ struct RcObj {
     long    refs;   // +0x04
     char    payload[0x40];
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char   pad[0x0c];
     RcObj *m_holder; // +0x0c
 };
 
 // ---- function under test (copy of source_cpp) ----
-struct CEngineGraphic;
+class CEngineGraphic;
 CEngineGraphic * __fastcall GetEngineGraphic(CTCInventoryItem *self)
 {
     RcObj *p = self->m_holder;

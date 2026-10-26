@@ -4,7 +4,7 @@
 
 typedef unsigned char u8;
 
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 
 struct CMousePoint { long x; long y; };
 struct CMouseRect { long left; long top; long right; long bottom; };

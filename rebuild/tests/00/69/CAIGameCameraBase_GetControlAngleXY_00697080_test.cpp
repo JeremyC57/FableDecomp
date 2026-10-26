@@ -14,7 +14,7 @@ float __fastcall Helper_0x00a0c380(SomeObj *self)
 
 static SomeObj g_obj;
 
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     float storedT;
     ScratchTemp *gotBuf;
     virtual SomeObj *vf0() { return 0; }

@@ -6,7 +6,7 @@ struct PoolEntry {
     uchar locked;   // +0xf
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     char pad0[0x18];
     int lockCount;          // +0x18
     char pad1[0x440 - 0x1c];

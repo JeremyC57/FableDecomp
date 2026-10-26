@@ -8,15 +8,15 @@
 //         InitCamera (CCamera) +0xb0.
 // Shape: the out-float is a frame local (`push ecx` slot), returned with `fld` on success; the fallback is a member call
 //        whose st0 result is returned as is.
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward, Up; };
-struct CCamera {                                             // 0x38 bytes
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward, Up; };
+class CCamera { public:                                             // 0x38 bytes
     C3DVector       WorldPosition;                           // +0x00
     CRightHandedSet RHSet;                                   // +0x0c
     bool            HeightLocked;                            // +0x24
@@ -28,7 +28,7 @@ struct CCamera {                                             // 0x38 bytes
     float GetHorizontalFOV() const;                          // 0x00A0BEB0
 };
 namespace NCameraModes {
-struct CScriptModuleBase {                                   // vtable 0x01255F74
+class CScriptModuleBase { public:                                   // vtable 0x01255F74
     virtual ~CScriptModuleBase();                            // slot 0
     virtual void Update() = 0;                               // slot 1
     virtual bool IsFinished() const;                         // slot 2
@@ -37,7 +37,7 @@ struct CScriptModuleBase {                                   // vtable 0x01255F7
     virtual bool GetModuleFOV(float& fov) const;             // slot 5 (+0x14)
     virtual bool GetModuleRollAngle(float& angle) const;     // slot 6 (+0x18)
 };
-struct CBase {                                               // retail sizeof 0xa4
+class CBase { public:                                               // retail sizeof 0xa4
     virtual void v00();
     unsigned char _body[0xa4 - 4];
 };

@@ -3,8 +3,8 @@
 struct FakeGSI { long timers; long RegisterTimer() { return ++timers; } long GetWorldFrame() const { return 500; } };
 static FakeGSI g_gsi = { 0 };
 static FakeGSI* g_pGameScriptInterface = &g_gsi;
-struct CTimer { long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
-struct CCounter { long StartFrame; CCounter() : StartFrame(g_pGameScriptInterface->GetWorldFrame()) { } };
+class CTimer { public: long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
+class CCounter { public: long StartFrame; CCounter() : StartFrame(g_pGameScriptInterface->GetWorldFrame()) { } };
 struct Vec { void* a; void* b; void* c; Vec() : a(0), b(0), c(0) { } };
 struct Base { FakeGSI* Game; void* Data; Base(void* d, FakeGSI* g) : Game(g), Data(d) { } };
 struct BodyGuard : Base {

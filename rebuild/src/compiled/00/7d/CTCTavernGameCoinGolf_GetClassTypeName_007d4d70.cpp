@@ -1,9 +1,9 @@
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* lit, int len);
 };
 
-struct CTCTavernGameCoinGolf {
+class CTCTavernGameCoinGolf { public:
     CCharString GetClassTypeName();
 };
 

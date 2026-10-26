@@ -18,14 +18,14 @@
 //   out of line at the second; `cur - new > eps` gives `test ah,41h ; jne` to the shared return; the component comes from
 //   the out-parameter GetInterface; its call is the last statement, so VC7.1 tail-jumps.
 extern float g_epsilon_0129ba3c;                            // 0x0129BA3C (1e-4f)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -43,13 +43,13 @@ struct CThing {
         return false;
     }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad0[0xbc];
     unsigned char Hittable : 1;                             // +0xbc bit 0
     float GetHealthPercentage();                            // 0x006A4E40
 };
-struct CEngineGraphic { unsigned char _body[0x10]; };
-struct CDegradableInfo {                                    // 0x1c bytes
+class CEngineGraphic { public: unsigned char _body[0x10]; };
+class CDegradableInfo { public:                                    // 0x1c bytes
     float          HealthPercentage;                        // +0x00
     CEngineGraphic EngineGraphic;                           // +0x04
     long           SmashParticleEmitter;                    // +0x14
@@ -61,7 +61,7 @@ template<class T> struct CRetailVector {
     T* m_pEnd;
     T& back() const { return *(m_pLast - 1); }
 };
-struct CDegradableDef {
+class CDegradableDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long          RefCount;                                 // +0x04
@@ -72,16 +72,16 @@ struct CDegradableDef {
     void AddRef() { ++RefCount; }
     void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     void SetAsBlockingNavigation(bool blocking);            // 0x00787580
 };
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     CThing*                     ParentThing;                // +0x04 (CTCBase)
     bool                        ToBeRemoved;                // +0x08

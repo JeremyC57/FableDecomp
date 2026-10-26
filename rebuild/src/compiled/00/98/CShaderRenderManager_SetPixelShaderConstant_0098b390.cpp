@@ -9,11 +9,11 @@
 // 16-byte copy and `UpdateFlags |= 2` in memory form.
 // Layout: PDB PSConstNames (CIndexedArray<CCharString>) +0x3c8, PSConstTable +0x3e8, UpdateFlags +0x3f8;
 // retail +0x3b4 (its name array, then the name -> index map at +0xc), +0x3cc, +0x3d8.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
 };
 
@@ -50,7 +50,7 @@ struct CC4DVectorArray {                         // CArray<C4DVector>
     C4DVector& operator[](long i) { return *(first + i); }
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char           _pad000[0x3b4];
     CIndexedCharStringArray PSConstNames;        // +0x3b4
     CC4DVectorArray         PSConstTable;        // +0x3cc

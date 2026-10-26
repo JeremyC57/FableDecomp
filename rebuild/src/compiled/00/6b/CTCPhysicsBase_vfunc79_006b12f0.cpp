@@ -7,7 +7,7 @@
 // Tiny-body shape `GetConstant` synthesised from the instruction pattern (the class comes from the
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     float vfunc_79(long);                    // the literal is pooled in .rdata (@ 0x0122DEDC)
 };
 

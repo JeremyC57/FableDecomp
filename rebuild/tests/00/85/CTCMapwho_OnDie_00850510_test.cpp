@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CTCMapwho { int dummy; };
+class CTCMapwho { public: int dummy; };
 static int g_pre=0, g_free=0;
 extern "C" void __fastcall Mapwho_PreDie_00850360(CTCMapwho* self){ g_pre++; }
  void operator delete(void* p){ g_free++; }

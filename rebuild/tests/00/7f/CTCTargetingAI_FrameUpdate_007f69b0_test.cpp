@@ -4,8 +4,8 @@
 #include <new>
 #include <cstdlib>
 static int g_frees = 0; static void spy_free(void* p) { ++g_frees; std::free(p); }
-struct CTCBase { virtual ~CTCBase() {} };
-struct C3DVector {
+class CTCBase { public: virtual ~CTCBase() {} };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -41,7 +41,7 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     bool available;
     bool IsAvailableForAttack() { return available; }
 };
@@ -73,7 +73,7 @@ struct CThingList {                                     // STLport list<CIntelli
     }
 };
 static int g_bestUpdates = 0, g_nearestUpdates = 0;
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     void UpdateNearestInterestingThing() { ++g_nearestUpdates; }
     void FrameUpdate();
     CThing*       ParentThing;                          // +0x04 (CTCBase)

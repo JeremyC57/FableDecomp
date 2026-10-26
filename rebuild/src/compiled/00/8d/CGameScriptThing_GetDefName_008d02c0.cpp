@@ -7,14 +7,14 @@
 // Shape: two 4-byte frame temporaries (the CDefString and the looked-up name); the name is a NAMED local returned by value
 // (VC7.1 has no NRVO: copy constructor into the hidden pointer, then the local's destructor).
 // Leaf: ?GetDefName@CGameScriptThing@@UBE?AVCCharString@@XZ
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
-struct CDefString {                                // a definition-string handle: one table index
+class CDefString { public:                                // a definition-string handle: one table index
     long m_index;
 };
 struct CDefStringTable {
@@ -32,7 +32,7 @@ struct CBaseIntelligentPointer {                   // CIntelligentPointer<CThing
     void*          m_pItem;
     CThing_Retail* GetPItem() const;               // 0x00A01B50
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     virtual void v00();
     unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>

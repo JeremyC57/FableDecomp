@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00814C10, length 35 bytes.
 // Callees: CDataOutputStream::WriteCBYTE @ 0x00993EB0, WriteFloat @ 0x00993EE0 (the float pushed as a word). Shape: the stream kept in edi, `ret 4`.
 // The chunk label "CGraphicDataBank::ChangeScene" is propagated; named by address.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteCBYTE(long value);                   // 0x00993EB0
     void WriteFloat(float value);                  // 0x00993EE0
 };

@@ -1,13 +1,13 @@
 // behaviour test for CThingCreatureBase::CanSeeTarget (0x006650E0): look-component forwarding, else 2*|angle diff| <= fov
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
-struct CTCPhysicsBase { float m_facing; float GetFacingAngleXY() { return m_facing; } };
+class CTCPhysicsBase { public: float m_facing; float GetFacingAngleXY() { return m_facing; } };
 static int g_lookCalls = 0;
-struct CTCLook { bool m_answer; bool IsPosInViewRange(const C3DVector&, float fov, bool a, bool b) { ++g_lookCalls; return m_answer && fov > 0 && a && !b; } };
+class CTCLook { public: bool m_answer; bool IsPosInViewRange(const C3DVector&, float fov, bool a, bool b) { ++g_lookCalls; return m_answer && fov > 0 && a && !b; } };
 static float AngleBetweenPositions(const C3DVector& from, const C3DVector& to) { return (float)std::atan2(to.Y - from.Y, to.X - from.X); }
 static float AngleDifference(float a, float b) { return b - a; }
 class CThing { public:

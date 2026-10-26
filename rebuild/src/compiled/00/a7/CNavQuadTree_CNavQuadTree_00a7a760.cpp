@@ -19,7 +19,7 @@ struct CBase {
     virtual void v00();
     CBase();                                // 0x0099A2F0
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
 };
@@ -33,7 +33,7 @@ template <class T> struct CRetailVector {   // STLport vector (_Vector_base, 12 
     CStorageProxy<T> _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-template <class K, class V> struct CVectorMap {     // retail CVectorMap (0x10 bytes)
+template <class K, class V> class CVectorMap { public:     // retail CVectorMap (0x10 bytes)
     struct SEntry { K first; V second; };
     CRetailVector<SEntry> m_entries;        // +0x00
     unsigned char         m_compare;        // +0x0c (empty comparator)
@@ -62,12 +62,12 @@ template <class T> struct CRetailList {     // STLport list (4 bytes: the head n
 };
 
 struct CNavigationLayer;
-struct CNavigationTransitionPoint;
-struct CNavigationPosition { unsigned char _body[8]; };
-struct C2DBoxF { float m[4]; };
-struct CANavQuadTreeNode;
+class CNavigationTransitionPoint;
+class CNavigationPosition { public: unsigned char _body[8]; };
+class C2DBoxF { public: float m[4]; };
+class CANavQuadTreeNode;
 struct CNavConnectorNodePointer { void* Data; void* Info; };
-struct CNavRegion { unsigned char _body[0xc]; };
+class CNavRegion { public: unsigned char _body[0xc]; };
 
 class CNavQuadTree : public CBase {         // vtable 0x0129DE64
 public:

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
 // Model of CTurningAnimCompare::operator()(a, b) @ 0x0087C660 with its retail quirk: both rotations are read from a.
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     mutable int Calls;
     void GetRotationInAnimation(float* rotation) const { ++Calls; *rotation = Rotation; }

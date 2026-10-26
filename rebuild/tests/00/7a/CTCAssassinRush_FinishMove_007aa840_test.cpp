@@ -2,17 +2,17 @@
 // the FinalAction started when held, StartTrailDelay set and the effects cleaned up.
 #include <cstdio>
 
-struct CCreatureActionBase { long m_id; };
+class CCreatureActionBase { public: long m_id; };
 static int g_log[8];
 static int g_n;
 static CCreatureActionBase* g_started;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction() { g_log[g_n++] = 1; }
     bool SetCurrentAction(CCreatureActionBase* action) { g_log[g_n++] = 2; g_started = action; return true; }
 };
 struct CCountedActionPointer { CCreatureActionBase* m_pObject; void* m_pCount; };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     bool                  StartTrailDelay;
     CCountedActionPointer FinalAction;
     void CleanUpEffects() { g_log[g_n++] = StartTrailDelay ? 3 : 4; }

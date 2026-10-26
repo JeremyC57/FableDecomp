@@ -15,7 +15,7 @@
 #include <stdio.h>
 unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558 (test: filled in main)
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08

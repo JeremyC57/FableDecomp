@@ -18,7 +18,7 @@
 //   STLport vector (_Vector_base + _STLP_alloc_proxy over an allocator temporary) so its three zero stores interleave with the first
 //   CCharString pushes; the two 256x256 sizes are C2DCoordI TEMPORARIES passed by const reference (they share the shader-temporary
 //   frame slot: sub esp,10h; named locals grow the frame to 0x18/0x20).
-struct CCharString {
+class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
     void* m_pData;
@@ -41,10 +41,10 @@ struct CPixelShaderData {
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
 
-struct CShaderBase {                               // vtable 0x0129A030
+class CShaderBase { public:                               // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
+class CVertexShader : public CShaderBase { public:               // vtable 0x0129B3D0, 8 bytes
     CVertexShaderData* Data;
     CVertexShader();                               // 0x00A62FB0
     CVertexShader(const CVertexShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -57,7 +57,7 @@ struct CVertexShader : CShaderBase {               // vtable 0x0129B3D0, 8 bytes
     }
     virtual ~CVertexShader() { if (Data) { CVertexShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
-struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
+class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054, 8 bytes
     CPixelShaderData* Data;
     CPixelShader();                                // 0x00A5EC00
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
@@ -71,21 +71,21 @@ struct CPixelShader : CShaderBase {                // vtable 0x0129A054, 8 bytes
     virtual ~CPixelShader() { if (Data) { CPixelShaderData* current = Data; if (!current->RemoveReference()) delete current; } }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     CVertexShader GetVertexShader(const CCharString& name);   // 0x00A5D5F0
     CPixelShader  GetPixelShader(const CCharString& name);    // 0x00A5D720
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat(unsigned long d3dFormat);         // 0x009E3830
     void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
     CPixelFormat() { }
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     long AllocateMemoryPage(long a, long b);       // 0x00F37660
     long AllocateTexture(long page, const C2DCoordI& size, long mipLevels, const CPixelFormat* format, long count, long flags);   // 0x00F37440
     long AllocateDepthBufferSurface(long page, const C2DCoordI& size, const CPixelFormat* format, long flags);   // 0x00F37390
@@ -107,7 +107,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -122,7 +122,7 @@ struct CVertexBufferBase : CBase {                 // 0x34 bytes
     CVertexCompressionParams CompressionParams;    // +0x14
     CVertexBufferBase() : Length(0), Type(0), CompressionParams() { }
 };
-struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
+class CVertexBufferWin32 : public CVertexBufferBase { public:    // vtable 0x0129BA20
     virtual void VSlot1();
     CVertexBufferWin32()
     {
@@ -130,7 +130,7 @@ struct CVertexBufferWin32 : CVertexBufferBase {    // vtable 0x0129BA20
         Stride = 0;
     }
 };
-struct CIndexBuffer {                              // 0x14 bytes
+class CIndexBuffer { public:                              // 0x14 bytes
     void* _vtable;
     unsigned char _body[0x10];
     CIndexBuffer();                                // 0x00AC1EC0
@@ -149,13 +149,13 @@ template <class T> struct _Vector_base {
 template <class T> struct CPODArray : _Vector_base<T> {   // retail 12-byte STLport vector
     CPODArray(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { }
 };
-struct CEngineBillboard {                          // 0x18 bytes
+class CEngineBillboard { public:                          // 0x18 bytes
     void* Texture;
     void* Surface;
     unsigned char _rest[0x10];
 };
-struct CEngineInternalPrimitiveRepeatedZSprite;
-struct C3DMeshInfo;
+class CEngineInternalPrimitiveRepeatedZSprite;
+class C3DMeshInfo;
 
 struct CEnginePrimitiveManagerOcclusionBase {      // 0x20 bytes
     virtual ~CEnginePrimitiveManagerOcclusionBase();
@@ -164,7 +164,7 @@ struct CEnginePrimitiveManagerOcclusionBase {      // 0x20 bytes
     void RegisterEnable(const CCharString& name);  // 0x00BACD80
 };
 
-struct CEnginePrimitiveManagerRepeatedZSprites : CEnginePrimitiveManagerOcclusionBase {   // vtable 0x012A5314
+class CEnginePrimitiveManagerRepeatedZSprites : public CEnginePrimitiveManagerOcclusionBase { public:   // vtable 0x012A5314
     CVertexShader      VertexShader;               // +0x20
     CPixelShader       PixelShader;                // +0x28
     CPixelShader       PixelShaderNoStipple;       // +0x30

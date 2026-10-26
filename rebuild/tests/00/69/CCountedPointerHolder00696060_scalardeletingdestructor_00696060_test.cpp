@@ -7,7 +7,7 @@ struct CCountedObject {
     CCountedObject(long c) : m_refCount(c) {}
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) {}
     ~CIVCountedPointer()

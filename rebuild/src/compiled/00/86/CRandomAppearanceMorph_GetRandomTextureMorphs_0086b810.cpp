@@ -12,7 +12,7 @@
 // room, else the grow call with an empty tag temporary); the outer iterator jumps to the run's end.
 #include <new>
 struct SScalarTag { SScalarTag() {} };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     void InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool atEnd);   // 0x0086CA20 (T = CMorphSetTextureMorph)
     void push_back(const T& value)
@@ -39,7 +39,7 @@ __declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const 
 }
 #pragma auto_inline(on)
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     struct SEntry { K Key; V Value; };
     CArray<SEntry> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;
     SEntry* begin() const { return m_vector.m_first; }
@@ -57,8 +57,8 @@ struct CMorphSet {
     };
 };
 
-struct CRandomAppearanceMorph {
-    struct CTextureMorph {
+class CRandomAppearanceMorph { public:
+    class CTextureMorph { public:
         unsigned long NewTexture;                        // +0x00
         unsigned long GroupID;                           // +0x04
     };

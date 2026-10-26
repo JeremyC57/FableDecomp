@@ -7,9 +7,9 @@
 // Shape: `ret 8`; the GetDef arguments (&PDef formed in place with `add ecx,0Ch`, then the index) are pushed
 // BEFORE the singleton call that yields the object -- the plain chained `Get().GetDef(index, PDef)`; the
 // bool result is dropped and the call is not a sibling jump (different argument count).
-struct CSpecialAbilitiesDrainLifeDef;
+class CSpecialAbilitiesDrainLifeDef;
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
 };
 
@@ -17,11 +17,11 @@ struct CDefinitionManager_Calls {
     template<class T> bool GetDef(long globalIndex, CDefPointer<T>& out);   // 0x007C3A60 for T = CSpecialAbilitiesDrainLifeDef
 };
 
-struct CGameDefinitionManager : CDefinitionManager_Calls {
+class CGameDefinitionManager : public CDefinitionManager_Calls { public:
     static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
 
-struct CTCDrainLife {
+class CTCDrainLife { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     CDefPointer<const CSpecialAbilitiesDrainLifeDef> PDef;  // +0x0c

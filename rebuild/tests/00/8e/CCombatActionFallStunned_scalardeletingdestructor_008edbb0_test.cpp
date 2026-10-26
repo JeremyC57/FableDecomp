@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_FallStunned {
+class CCombatAction_FallStunned { public:
     void* vftable;
     int destroyed;
 };

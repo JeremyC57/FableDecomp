@@ -10,8 +10,8 @@
 // and stops on the first wider mode.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 extern long g_FableConfigWidth;                    // 0x01375084
-struct C2DExtentsI { long Width; long Height; };
-struct CDisplayModeDesc {
+class C2DExtentsI { public: long Width; long Height; };
+class CDisplayModeDesc { public:
     C2DExtentsI Dimensions;                        // +0x00
     long        BitsPerPixel;                      // +0x08
     long        RefreshRate;                       // +0x0c
@@ -26,7 +26,7 @@ struct CDisplayModeVector {                        // STLport vector<CDisplayMod
     CDisplayModeDesc* end() const { return _M_finish; }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char      _pad00[0x80];
     CDisplayModeVector DisplayModes;               // +0x80
     long GetMaxResolution() const;

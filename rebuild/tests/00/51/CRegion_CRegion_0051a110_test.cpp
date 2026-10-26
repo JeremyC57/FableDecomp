@@ -7,12 +7,12 @@ static void Log(const char* s) { std::strcat(g_log, s); }
 static int g_freed = 0;
 static void FreeBlock(void* p) { if (p) ++g_freed; }
 
-struct CCharString {
+class CCharString { public:
     const char* tag;
     ~CCharString() { Log(tag); }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long RefCount; int destroyed;
     void Destroy() { ++destroyed; }
 };
@@ -54,7 +54,7 @@ struct CExitTextOffsetMap {
     ~CExitTextOffsetMap() { clear(); Log("M"); }
 };
 
-struct CRegion {
+class CRegion { public:
     CLongVector Maps; CLongVector VisMaps;
     CCharString Name; CCharString DisplayName; CCharString RegionDefName;
     CDefPointer PDef; CCharString MiniMapGraphic;

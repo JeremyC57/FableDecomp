@@ -11,9 +11,9 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
+class CProcessedInput;
 
-struct CCamera {                                            // 0x38 bytes, implicit copy
+class CCamera { public:                                            // 0x38 bytes, implicit copy
     unsigned long m_words[0xe];
 };
 

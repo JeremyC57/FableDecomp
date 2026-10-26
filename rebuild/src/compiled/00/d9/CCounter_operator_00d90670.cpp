@@ -668,7 +668,7 @@ struct CThingManager_Calls {             // retail vtable: slots 653/654 are the
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-struct CCounter {
+class CCounter { public:
     long RelevantWorldFrame;                   // +0x00
     long operator>(float seconds) const;
 };

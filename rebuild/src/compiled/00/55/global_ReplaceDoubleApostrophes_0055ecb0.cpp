@@ -18,7 +18,7 @@
 
 extern "C" char* __cdecl strstr(const char* text, const char* pattern);   // 0x00BFEB3A
 
-struct CCharStringData { char* m_pString; };
+class CCharStringData { public: char* m_pString; };
 class CCharString {
 public:
     CCharStringData* PStringData;

@@ -18,7 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 struct CFileInfo;
-struct CCPPointerInfo { long RefCount; };
+class CCPPointerInfo { public: long RefCount; };
 struct CBufferChunk;
 
 struct CCountedPointerFileInfo {
@@ -27,7 +27,7 @@ struct CCountedPointerFileInfo {
     CCountedPointerFileInfo(const CCountedPointerFileInfo& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
 };
 
-struct CCompressorZlib {                     // retail 0x58 bytes
+class CCompressorZlib { public:                     // retail 0x58 bytes
     void* _vtable;
     unsigned char _body[0x54];
     CCompressorZlib(const CCompressorZlib& other);   // 0x009C7060

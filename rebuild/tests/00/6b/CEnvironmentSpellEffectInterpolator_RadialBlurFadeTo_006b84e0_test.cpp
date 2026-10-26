@@ -1,6 +1,6 @@
 // Behaviour test for 0x006b84e0 CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo
 #include <cstdio>
-struct C3DVector { float x, y, z; C3DVector() : x(0.0f), y(0.0f), z(0.0f) {} };
+class C3DVector { public: float x, y, z; C3DVector() : x(0.0f), y(0.0f), z(0.0f) {} };
 struct CRadialBlurParams { float Length; };
 struct CRadialBlurPositionParams {
     C3DVector AreaCenter, BlurCenter; long AreaTrackPos, BlurTrackPos;
@@ -15,7 +15,7 @@ struct CScreenEffectPriorityStack {
             && position->AreaCenter.x == 0.0f && position->BlurCenter.z == 0.0f;
     }
 };
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     CScreenEffectPriorityStack ScreenEffectPriorityStack;
     void RadialBlurFadeTo(float duration, long priority, const CRadialBlurParams& params)
     {

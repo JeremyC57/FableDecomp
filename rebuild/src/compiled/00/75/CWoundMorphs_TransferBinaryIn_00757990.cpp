@@ -14,7 +14,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -41,8 +41,8 @@ struct CMemoryDataInputStream {
 
 enum EBodyLocation { BODY_LOCATION_NONE };
 
-struct CWoundMorphs {
-    struct CEntry {
+class CWoundMorphs { public:
+    class CEntry { public:
         EBodyLocation Location;
         long          ReplacingTextureIndex;
         long          ReplacingBumpMapIndex;

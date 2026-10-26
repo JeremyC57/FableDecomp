@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CWeaponTrailGraphicSet { int Attack; int Knockdown; };
+class CWeaponTrailGraphicSet { public: int Attack; int Knockdown; };
 struct Traits { void TransferBinaryIn(CIn* in, CWeaponTrailGraphicSet* value)
 {
     value->Attack = (int)in->ReadLong();

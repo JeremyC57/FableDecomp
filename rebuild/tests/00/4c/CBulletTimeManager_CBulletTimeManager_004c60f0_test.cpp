@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 struct Node { bool color; Node* parent; Node* left; Node* right; void* key; float m, p; };
-struct CWorld { int x; }; struct CPlayerManager { int y; };
+class CWorld { public: int x; }; class CPlayerManager { public: int y; };
 struct Manager {
     Node* header; unsigned count; unsigned cmp;
     bool Override; bool UseDefault; long Tick; CWorld* World; CPlayerManager* PM;

@@ -25,8 +25,8 @@ template <class T> struct CPODVector {             // STLport vector of a trivia
             free(_M_start);
     }
 };
-namespace NInventory { struct CItem; struct CCategory; }
-namespace NUISystem { struct CComponent; }
+namespace NInventory { class CItem; class CCategory; }
+namespace NUISystem { class CComponent; }
 struct CItemVector {                               // vector<NInventory::CItem>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CItemVector();                                // 0x005C1E30
@@ -43,7 +43,7 @@ struct CSerialisedSelectedItemsPointer {           // CCountedPointer<vector<CCh
     void* Data; void* Info;
     ~CSerialisedSelectedItemsPointer();            // 0x005C0563
 };
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
@@ -63,7 +63,7 @@ struct CDefPointer {                               // CDefPointer<CInventoryDef 
         }
     }
 };
-struct C2DBoxF { float X0, Y0, X1, Y1; };
+class C2DBoxF { public: float X0, Y0, X1, Y1; };
 
 class CTCBase {                                    // engine/CTCBase.h offsets
 public:

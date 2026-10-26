@@ -1,6 +1,6 @@
 extern int g_someInt;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char pad[0x48];
     int field48;
 };

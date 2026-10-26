@@ -16,7 +16,7 @@
 // parameters come from an inline member-init ctor; the exception is an empty class with a user ctor (no zero store; the byte copy reads the
 // dead bool slot); the render-manager base is polymorphic so the derived ctor overwrites the vptr and the object is 0x3ea4 bytes.
 // Leaf: Init
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
@@ -30,7 +30,7 @@ struct IDirect3D9 {
     virtual long __stdcall GetDeviceCaps(unsigned int adapter, long deviceType, D3DCAPS9* caps);   // slot 14 (+0x38)
 };
 extern "C" IDirect3D9* __stdcall Direct3DCreate9(unsigned int sdkVersion);   // 0x00BFEFB0
-struct CDisplayManager;
+class CDisplayManager;
 struct CRenderManagerCore {
     virtual ~CRenderManagerCore();
     void Init(IDirect3DDevice9* device);               // 0x00A0A940
@@ -39,12 +39,12 @@ struct CRenderManager2D : CRenderManagerCore {
     unsigned char _body[0x3ea0];
     CRenderManager2D(CDisplayManager* displayManager, const CWideString& fontPath, unsigned long b);   // 0x009D9A30
 };
-struct CRenderManager : CRenderManager2D {             // vtable 0x0129B400
+class CRenderManager : public CRenderManager2D { public:             // vtable 0x0129B400
     CRenderManager(CDisplayManager* displayManager, const CWideString& fontPath, unsigned long b)
         : CRenderManager2D(displayManager, fontPath, b) {}
     virtual ~CRenderManager();
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void Initialise(CRenderManager* renderManager, IDirect3DDevice9* device);   // 0x0098ACF0
 };
 extern CShaderRenderManager g_ShaderRenderManager;    // 0x013BC470
@@ -84,7 +84,7 @@ struct CCreateDeviceParameters {
         : Window(window), Width(width), Height(height), BitDepth(bitDepth), A(a), B(b), RefreshRate(refreshRate), Windowed(windowed),
           C(c), D(d), F(f), G(g) {}
 };
-struct CDisplayManagerInit {
+class CDisplayManagerInit { public:
     long Width;                                        // +0x00
     long Height;                                       // +0x04
     long BitDepth;                                     // +0x08
@@ -108,7 +108,7 @@ struct CDisplayManagerInit {
 };
 struct CCreateDeviceFailed { CCreateDeviceFailed() {} };
 enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED, CREATE_DEVICE_RETRY, CREATE_DEVICE_OK };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[8];
     CAutoPtr<CRenderManager> PRenderManager;           // +0x008
     unsigned char _pad00c[0x54 - 0xc];

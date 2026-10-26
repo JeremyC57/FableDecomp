@@ -7,22 +7,22 @@
 
 static char g_log[256];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
 static void DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2)
 { if (std::strcmp(text.t, "CPlayer::InitCharacterAs") == 0 && !flag && fraction == -1.0f && !flag2) Log("progress"); }
-struct CThing { bool dead; bool has7a; };
+class CThing { public: bool dead; bool has7a; };
 struct CTCPlayerCharacterLinks { void AddThing(CThing* t) { (void)t; Log("link"); } };
 static CTCPlayerCharacterLinks g_links;
 struct CPtr { CThing* item; CThing* GetPItem() const { return item; } };
-struct CGameCameraManager { CThing* followed; void SetFollowedThing(CThing* t) { followed = t; Log("follow"); } void ResetCamera() { Log("reset"); } };
+class CGameCameraManager { public: CThing* followed; void SetFollowedThing(CThing* t) { followed = t; Log("follow"); } void ResetCamera() { Log("reset"); } };
 static CGameCameraManager g_cam;
-struct CThingManager { int x; }; struct CWorldMap { int y; };
+class CThingManager { public: int x; }; class CWorldMap { public: int y; };
 static CThingManager g_tm; static CWorldMap g_wm;
-struct CWorld { CThingManager* GetThingManager() { return &g_tm; } CWorldMap* GetWorldMap() { return &g_wm; }
+class CWorld { public: CThingManager* GetThingManager() { return &g_tm; } CWorldMap* GetWorldMap() { return &g_wm; }
     bool GetCameraManager(CGameCameraManager** c) { *c = &g_cam; return true; } };
-struct CPlayer;
-struct CPlayerManager { long mainID; CPlayer* main; long GetMainPlayerID() const { return mainID; } CPlayer* GetMainPlayer() { return main; } };
-struct CPlayer {
+class CPlayer;
+class CPlayerManager { public: long mainID; CPlayer* main; long GetMainPlayerID() const { return mainID; } CPlayer* GetMainPlayer() { return main; } };
+class CPlayer { public:
     CPlayerManager* PlayerManager; CWorld* World; CThingManager* ThingManager; CWorldMap* PWorldMap; long Number;
     CPtr ControlledCreaturePtr; CPtr PlayerCharacterPtr; CThing* newChar;
     bool CreateCharacter(const CCharString& d) { (void)d; PlayerCharacterPtr.item = newChar; Log("create"); return true; }

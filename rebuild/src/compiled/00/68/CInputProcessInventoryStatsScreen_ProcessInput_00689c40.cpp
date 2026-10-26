@@ -11,7 +11,7 @@
 //   locally because the process's own virtual is called (the header's vptr is a plain word).
 // Shape: `y > 0.6f` gives `test ah,41h`, `y < -0.6f` gives `test ah,5 ; jp`; the release arm's sends and the press
 //   arm's 0x25/0x26 sends cross-jump into the analogue arms' Send(0)/Send(1) blocks.
-struct C2DVector {
+class C2DVector { public:
     float x, y;
 };
 class CInputEvent {

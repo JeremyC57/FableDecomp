@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour test for CQ_PrisonWardenGameScript::WardenKeyMiniGame (0x00DDE230): the key rack is targetable only while
 // the hero is close; once the hero uses it the diary key is taken, the race's year code is shown and the sparkles removed.
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CGSI {
     int Frames; int UseFrame; bool Targetable; int TargetCalls; char Info[64]; bool SparklesRemoved; int ClickFrame;
     void NewScriptFrame() { ++Frames; }

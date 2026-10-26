@@ -16,7 +16,7 @@ struct CVectorMap_00a84e40 {
     }
 };
 
-struct CNavSwitchableLeafNode {
+class CNavSwitchableLeafNode { public:
     unsigned char       _pad00[0x20];
     CVectorMap_00a84e40 m_states;                  // +0x20
     bool IsSwitchableOn(unsigned __int64 key);

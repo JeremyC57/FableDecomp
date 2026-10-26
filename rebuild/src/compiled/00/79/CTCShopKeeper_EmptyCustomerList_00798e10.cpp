@@ -6,8 +6,8 @@
 // strength-reduced to a byte offset. The slots are a retail std::vector (first at +0x1c); `slot.SetPItem(tmp.GetPItem())`
 // keeps the vector's first pointer loaded before the GetPItem call and forms the element address after it. VC7.1 aligns
 // this frame (`and esp,-8`) by itself.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -39,7 +39,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char        _pad[0x1c];
     CRetailVector<CIntelligentPointer> m_recentCustomers;   // +0x1c: vector of three slots (first/last/end)
     void EmptyCustomerList();

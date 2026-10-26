@@ -107,7 +107,7 @@ struct CTCInventoryBase_Calls {
     virtual void v78();
     virtual void RemoveItems(long itemType, long numberOfItems);   // slot 79 (+0x13C)
 };
-struct CInventoryCategoryDef;
+class CInventoryCategoryDef;
 
 struct CCategory_Retail {
     unsigned char           PAssociatedThing[0x8];   // +0x00 CIntelligentPointer<CThing>

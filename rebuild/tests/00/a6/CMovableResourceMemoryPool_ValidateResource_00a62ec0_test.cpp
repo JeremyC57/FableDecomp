@@ -7,8 +7,8 @@ struct IValidatable
 
 typedef void (__fastcall *ValidateFn)(void* self);
 
-struct CMovableResourceMemoryPool
-{
+class CMovableResourceMemoryPool
+{ public:
     void* vtbl0;
 
     void ValidateResource(void* p);

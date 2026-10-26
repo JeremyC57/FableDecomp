@@ -11,7 +11,7 @@
 // Shape: arguments are built right to left, both in the argument area: the comparator first -- its implicit memberwise
 // copy (C3DVector has a user copy constructor, so ten direct dword moves re-read from the comparator slot each pass and
 // the bool byte, hoisted once into bl; the three pad bytes are not copied) -- then STLport's explicit pair copy of `*i`.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
@@ -22,7 +22,7 @@ struct PairVectorLong {                                // std::pair<C3DVector, l
     PairVectorLong(const PairVectorLong& o) : first(o.first), second(o.second) { }
 };
 
-struct CVectorCompare_BestForTargeting {               // Ego_r.pdb, 0x2C bytes (implicit memberwise copy)
+class CVectorCompare_BestForTargeting { public:               // Ego_r.pdb, 0x2C bytes (implicit memberwise copy)
     C3DVector AnchorPos;                               // +0x00
     C3DVector PreferredLine;                           // +0x0C
     float     AngleCompare;                            // +0x18

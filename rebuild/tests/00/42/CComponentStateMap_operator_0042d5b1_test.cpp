@@ -10,7 +10,7 @@ typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0042d5b1: operator[] returns the mapped value of an existing key and inserts a default CUIState for a missing one
 // (lower_bound and insert are small test doubles over a sorted node array; the operator[] body is the reconstructed logic).
-namespace NUISystem { struct CComponent { long m_id; }; }
+namespace NUISystem { class CComponent { public: long m_id; }; }
 static int g_inserts = 0;
 struct CUIState {
     long m_marker;

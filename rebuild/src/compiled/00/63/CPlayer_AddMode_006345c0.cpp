@@ -64,7 +64,7 @@ struct CModeList {                                      // STLport list<EPlayerM
     void clear();                                       // 0x0044B770
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char  _pad00[0x208];
     bool           Local;                               // +0x208
     unsigned char  _pad209[0x210 - 0x209];

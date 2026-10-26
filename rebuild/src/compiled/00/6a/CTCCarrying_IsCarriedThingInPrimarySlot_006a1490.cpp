@@ -11,7 +11,7 @@
 // by a CDefPointer dtor calling the def's own inline Release() with no null test (`mov eax,[ecx+4] ; dec eax ; mov [ecx+4],eax
 // ; jne`, GOTCHAS chunk 172); the flag survives the release in bl and both results share the earlier `return false` tail.
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
@@ -40,7 +40,7 @@ struct CCarrySlotMap {                                  // retail CVectorMap<lon
         return m_pLast;
     }
 };
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
@@ -48,13 +48,13 @@ struct CCarrySlotDef {
     bool PrimarySlot;                                   // +0x30
     __forceinline void Release() { if (DecRefToZero(m_refCount)) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager& Get();                   // 0x0044C6B0
     bool GetDef(long index, CDefPointer<CCarrySlotDef>* out);   // 0x006A3060
 };
@@ -71,7 +71,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CCa
     return true;
 }
 #pragma auto_inline(on)
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad04[0x0c - 0x04];                  // CTCBase state
     CCarrySlotMap CarrySlots;                           // +0x0c

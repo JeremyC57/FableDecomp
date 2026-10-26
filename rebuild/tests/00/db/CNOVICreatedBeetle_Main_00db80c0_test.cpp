@@ -2,7 +2,7 @@
 // Behaviour test for CNOVI_CreatedBeetle::Main (0x00DB80C0): register the alive functor, wait one frame, then wait out a
 // 5-tick timer (one script frame per tick) and remove the beetle unless the script finished meanwhile.
 static int g_things = 0, g_frames = 0, g_timers = 0, g_removed = 0, g_functors = 0; static long g_time = 0;
-struct CScriptThing {                                  // 12 bytes
+class CScriptThing { public:                                  // 12 bytes
     unsigned char _body[12];
     CScriptThing() { _body[0] = 0; ++g_things; }
     CScriptThing(const CScriptThing& other) { _body[0] = other._body[0]; ++g_things; }
@@ -14,7 +14,7 @@ struct CScriptThingFunctor_00ef7ab0 {                  // vtable 0x012C2FE8: an 
     CScriptThingFunctor_00ef7ab0(const CScriptThing& thing) : m_thing(thing) { }
     ~CScriptThingFunctor_00ef7ab0() { }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {} virtual void v005() {} virtual void v006() {}
     virtual void NewScriptFrame() const { ++g_frames; }
     virtual void v008() {} virtual void v009() {} virtual void v010() {} virtual void v011() {} virtual void v012() {} virtual void v013() {} virtual void v014() {} virtual void v015() {}
@@ -37,7 +37,7 @@ struct CGameScriptInterface {
     virtual void RemoveThing(const CScriptThing&, bool a, bool b) const { if (a && b) ++g_removed; }
 };
 CGameScriptInterface* g_pGameScriptInterface;
-struct CTimer {                                        // 4 bytes: an index into the global script timers
+class CTimer { public:                                        // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer(long time) { TimerIndex = g_pGameScriptInterface->RegisterTimer(); g_pGameScriptInterface->SetTimer(TimerIndex, time); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }

@@ -8,12 +8,12 @@
 // TablePos); float Radius (+0x8); float Height (+0xC) }. No engine header exists for the class, so
 // it is modelled locally with those names. The stream (argument) is kept in edi, `this` in esi; the
 // two floats are pushed as dwords (plain copies). Same shape as the landed sibling 0x00814C10.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);            // 0x00993EB0
     void WriteFloat(float value);          // 0x00993EE0
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 

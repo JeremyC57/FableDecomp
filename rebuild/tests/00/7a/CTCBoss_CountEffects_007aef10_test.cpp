@@ -1,7 +1,7 @@
 // Behaviour test for 007aef10 CTCBoss::CountEffects: counts the entries of Effects that point at a thing that is not dead.
 #include <cstdio>
 
-struct CThing { unsigned char Dead : 1; };
+class CThing { public: unsigned char Dead : 1; };
 
 struct CBaseIntelligentPointer
 {
@@ -10,8 +10,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -23,8 +23,8 @@ struct CRetailVector
     const T& operator[](unsigned int i) const { return _First[i]; }
 };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     CRetailVector<CIntelligentPointer<CThing> > Effects;
 
     long CountEffects() const

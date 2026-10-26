@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     void*        field_0;   // +0x00 -> ecx for callee
     int          field_4;   // +0x04 -> edx for callee
     char         pad_8[4];  // +0x08

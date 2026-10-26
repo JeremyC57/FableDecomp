@@ -5,14 +5,14 @@
 #define __cdecl
 #endif
 static int g_deleted = 0;
-struct CShaderBase { virtual ~CShaderBase() { ++g_deleted; } };
-struct CShaderDataBank { int m_unused; };
-template <class T> struct CArray {
+class CShaderBase { public: virtual ~CShaderBase() { ++g_deleted; } };
+class CShaderDataBank { public: int m_unused; };
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     unsigned long Size() const { return m_pLast - m_pFirst; }
     T& operator[](unsigned long i) { return m_pFirst[i]; }
 };
-struct CShaderResource {
+class CShaderResource { public:
     CShaderDataBank*     ShaderBank;
     CArray<CShaderBase*> Shaders;
     void CloseShaderBank()

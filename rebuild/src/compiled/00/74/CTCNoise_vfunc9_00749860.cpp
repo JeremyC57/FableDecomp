@@ -3,7 +3,7 @@
 // Callees: CThing::Kill @ 0x004C9B80 (__fastcall, one argument, pushed as 1).
 // PDB CTCNoise: Definition (CTCNoiseDef, 0x34 bytes) at +0x0c, LifeTimer +0x40.
 // Shape: the decrement goes through eax and is stored; the zero test re-reads the member at the join.
-struct CThing {
+class CThing { public:
     void Kill(bool removeNow);                      // 0x004C9B80
 };
 
@@ -13,7 +13,7 @@ struct CTCBase_00749860 {
     unsigned char _pad08[4];
 };
 
-struct CTCNoise : CTCBase_00749860 {
+class CTCNoise : public CTCBase_00749860 { public:
     unsigned char Definition[0x34];                 // +0x0c CTCNoiseDef
     long          LifeTimer;                        // +0x40
     virtual void vfunc_9();

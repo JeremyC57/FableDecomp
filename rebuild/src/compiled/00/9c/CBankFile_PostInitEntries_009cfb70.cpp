@@ -39,7 +39,7 @@ struct CCRCVectorMap {                      // CVectorMap<unsigned long, unsigne
     void DeallocateUnusedMemory();          // 0x009B7B10
 };
 
-struct CBankFile {
+class CBankFile { public:
     void*         __vftable;                // +0x00
     unsigned char _pad_0x04[0x88];
     bool          RetailMode;               // +0x8C

@@ -6,8 +6,8 @@
 //
 // Modeled as __fastcall (ecx = this) per VC7.1 thiscall rules for a free fn.
 
-struct CThingCreatureBase; // opaque
-struct CCombatManager;      // opaque
+class CThingCreatureBase; // opaque
+class CCombatManager;      // opaque
 
 // Relocation-masked engine helper. Returns some base pointer in eax whose
 // field at +0x4c holds the CCombatManager*. It is thiscall on the object

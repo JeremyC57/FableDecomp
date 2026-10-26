@@ -7,7 +7,7 @@ struct CPatchTesselationEdgeStripBase {
 
 extern void __fastcall Base_dtor_00430300(void* self);
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad00[0x40];
     void* p40;   /* +0x40 */
     char pad44[0x4c-0x44];

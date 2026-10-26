@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046B422 GFSerialiseVectorBinaryOut<CMusicEntry>: count, then one traits write per entry
 #include <cstdio>
 struct Writer { float log[32]; int n; void Write(float v) { log[n++] = v; } };
-struct CMusicEntry {
+class CMusicEntry { public:
     unsigned int ID; int Filename; float Gain; bool CacheToHD;
     CMusicEntry() : ID(0), Filename(-1), Gain(0.0f), CacheToHD(false) {}
 };

@@ -1,7 +1,7 @@
 // Behaviour test for CPersistContext::TransferVectorSaveText (0x009BAC80): one `name[i] value;\r\n` line per element.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[256];
     CCharString(const char* text, long = -1) { std::strcpy(Text, text); }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); }
@@ -12,16 +12,16 @@ struct CCharString {
 CCharString GFIntToCharString(long value) { char b[16]; std::sprintf(b, "%ld", value); return CCharString(b); }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r(left); r += right; return r; }
 CCharString operator+(const CCharString& left, const CCharString& right) { CCharString r(left); r += right; return r; }
-struct CPersistContext;
-struct CStringParser;
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext;
+class CStringParser;
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount() = 0;
     virtual void Resize(long) {}
     virtual void TransferOut(CPersistContext* context, CCharString* out, long index) = 0;
     virtual void TransferIn(CPersistContext*, CStringParser*, long) {}
     virtual ~CPersistContext_TransferableVectorGenericType() {}
 };
-struct CPersistContext {
+class CPersistContext { public:
     CCharString* PStringToSaveTo;
     void TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& vec)
     {

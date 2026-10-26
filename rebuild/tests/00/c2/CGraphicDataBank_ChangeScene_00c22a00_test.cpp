@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void* vtbl;
     char  pad[0x10 - 0x04];
     void* p10;

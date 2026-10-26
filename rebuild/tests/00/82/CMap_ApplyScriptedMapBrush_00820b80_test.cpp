@@ -4,15 +4,15 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCopies = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString() : PStringData(0) { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_strCopies; }
     ~CCharString() { ++g_strDtors; }
 };
-struct C2DBoxI { long X0, Y0, X1, Y1; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; };
 static int g_getArea = 0, g_getName = 0;
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     C2DBoxI       GameArea;
     CCharString   BrushName;
     float         CreationTimeSeconds;
@@ -47,7 +47,7 @@ struct CUpdateAreaVector {
 };
 long g_FramesPerSecond = 30;
 static CScriptedMapBrush g_brush; static int g_getBrush = 0, g_apply = 0; static const CCharString* g_name = 0; static float g_applyAmount = 0; static CScriptedMapBrush* g_applyBrush = 0;
-struct CMap {
+class CMap { public:
     void*             __vftable;
     unsigned char     _pad04[0xc];
     CUpdateAreaVector ScriptedMapBrushUpdateAreas;

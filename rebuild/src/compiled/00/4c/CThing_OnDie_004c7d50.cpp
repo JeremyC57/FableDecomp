@@ -12,20 +12,20 @@
 // AddingTCsPermitted at bit 6 (`and dl,0BFh` / `or byte ptr [..],40h`). The functor is VALUE-initialised
 // (`CCallOnDie()` with no user constructor), which is the `mov byte ptr [esp+4],0` store into the `push ecx`
 // slot before the dword push.
-struct CTCBase;
+class CTCBase;
 
 struct SComponentPair {                              // pair<ETCInterfaceType, CTCBase*>, 8 bytes
     long     first;
     CTCBase* second;
 };
 
-struct CCallOnDie {                                  // empty functor: p.second->OnDie()
+class CCallOnDie { public:                                  // empty functor: p.second->OnDie()
     void operator()(SComponentPair& p) const;
 };
 
 CCallOnDie __fastcall for_each(SComponentPair* first, SComponentPair* last, CCallOnDie f);   // 0x004CBA30
 
-struct CThing {
+class CThing { public:
     unsigned char   m_pad00[0x44];
     SComponentPair* m_componentsFirst;               // +0x44  Components (CVectorMap)
     SComponentPair* m_componentsLast;                // +0x48

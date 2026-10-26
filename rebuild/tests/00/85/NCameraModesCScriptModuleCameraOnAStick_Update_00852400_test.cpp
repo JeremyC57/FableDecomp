@@ -1,12 +1,12 @@
 // Behaviour test for 0x00852400 NCameraModes::CScriptModuleCameraOnAStick::Update.
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator+(const C3DVector& o) const { C3DVector r; r.X = X + o.X; r.Y = Y + o.Y; r.Z = Z + o.Z; return r; }
 };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CCameraState { C3DVector LookAt; C3DVector Position; };
 struct Module {
     CCameraState* POwner; CThing* PThing; C3DVector LocalRel; C3DVector RelVector;

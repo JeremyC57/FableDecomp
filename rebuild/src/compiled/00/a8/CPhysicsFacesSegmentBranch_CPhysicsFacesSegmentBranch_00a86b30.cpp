@@ -14,7 +14,7 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void* operator new(unsigned int size);              // 0x00BFEA1A
 
-template <class T> struct CArray {                  // STLport vector<T> with the malloc allocator: start, finish, end of storage
+template <class T> class CArray { public:                  // STLport vector<T> with the malloc allocator: start, finish, end of storage
     T* m_pStart;
     T* m_pFinish;
     T* m_pEndOfStorage;
@@ -27,11 +27,11 @@ template <class T> struct CArray {                  // STLport vector<T> with th
     }
     void clear() { m_pFinish = m_pStart; }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DTriangle2 { unsigned short Index[3]; };
-struct CPlane { float A, B, C, D; CPlane() { } CPlane(const CPlane& o) : A(o.A), B(o.B), C(o.C), D(o.D) { } };
+class C3DVector { public: float X, Y, Z; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
+class CPlane { public: float A, B, C, D; CPlane() { } CPlane(const CPlane& o) : A(o.A), B(o.B), C(o.C), D(o.D) { } };
 
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual ~CIPhysicsFacesSegmentBase();
 };
 struct CPhysicsFacesSegmentLeaf : CIPhysicsFacesSegmentBase {   // vtable 0x0129DEA4, 0x10 bytes

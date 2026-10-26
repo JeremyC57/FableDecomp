@@ -99,11 +99,11 @@ static CStr operator+(const CStr& l, const CStr& r) { CStr s(l); s += r; return 
 static CStr operator+(const char* l, const CStr& r) { CStr s(l); s += r; return s; }
 static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CStr(b); }
 
-struct CStringParser {
+class CStringParser { public:
     const char* items[8]; int pos;
     CStr ReadAsSymbol() { return CStr(items[pos++]); }
 };
-struct CPersistContext { int dummy; };
+class CPersistContext { public: int dummy; };
 static long atoi_(const char* s) { long v = 0; while (*s) v = v * 10 + (*s++ - 48); return v; }
 static void TransferIn(CPersistContext*, CStringParser* parser, long* value) { *value = atoi_(parser->items[parser->pos++]); }
 static long TransferInLong(CPersistContext* context, CStringParser* parser) { long value; TransferIn(context, parser, &value); return value; }

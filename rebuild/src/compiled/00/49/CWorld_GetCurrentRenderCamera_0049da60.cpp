@@ -7,10 +7,10 @@
 // Layout: local model (engine/CWorld.h models the vptr as a data member, so CWorld's virtuals cannot be declared on it):
 //   PlayerManager +0x0C, PCurrentGameCamera +0x34; CPlayer UsingFreeCamera +0x220.
 // Shape: the shared 1.0f argument is pushed once ahead of the branch (`push 3F800000h` before `je`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
 class CCamera {
 public:
     C3DVector       WorldPosition;            // +0x00
@@ -37,13 +37,13 @@ public:
     CInterpolationInfoSet BulletTimeLast;     // +0x28
     long                  WFServerCurrentTime; // +0x30
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x220];
     bool          UsingFreeCamera;            // +0x220
     CCamera GetFreeCamera(float t) const;     // 0x00487180
 };
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CAIGameCameraBase {
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CAIGameCameraBase { public:
     virtual void v00();
     virtual CCamera GetCamera(float t) const;          // slot 1 (+0x04)
 };

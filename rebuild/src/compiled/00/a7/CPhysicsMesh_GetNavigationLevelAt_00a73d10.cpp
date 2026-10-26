@@ -7,7 +7,7 @@
 // is re-read from `this` every iteration (the call may change it; `this` spilled to the `push ecx`
 // slot under register pressure), while the found record is a reference local so its level is read
 // back through the same pointer after the call (`mov eax,[esi]`).
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CContainmentVolume_a2e710 {
     unsigned char _body[0xc];
     bool IsContaining(const C3DVector& position) const;   // 0x00A2E710
@@ -17,7 +17,7 @@ struct SNavigationLevel {                          // pair<long, C3DMeshVolume>,
     CContainmentVolume_a2e710  m_volume;           // +0x04
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char     _pad00[0x54];
     SNavigationLevel* m_pLevelsFirst;              // +0x54 (NavigationContainmentVolumes, PDB +0x68)
     SNavigationLevel* m_pLevelsLast;               // +0x58

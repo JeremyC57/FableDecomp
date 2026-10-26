@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CMemoryFile {
+class CMemoryFile { public:
     void* vptr;      // +0x0
     char pad4[0x0C]; // +0x4 .. +0x10
     void* member10;  // +0x10

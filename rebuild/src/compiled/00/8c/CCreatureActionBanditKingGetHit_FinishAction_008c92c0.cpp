@@ -10,20 +10,20 @@
 // Shape: each branch builds a named animation string, then fetches the action's target creature into a named local,
 //   then the SetCurrentAction statement; the tails (attacker, owner, ctor, call, both
 //   destructors) the compiler merges; the attacker and creature are named locals fetched before the test.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned char m_flags6c;                    // +0x6c bit 3
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
 
-struct CCombatActionBase;
+class CCombatActionBase;
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -52,7 +52,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 
 bool __fastcall IsHitFromBehind(CThingCreatureBase* creature, CThing* attacker);   // 0x008C7E50
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CCreaturePointer PCreature;                 // +0x08
@@ -60,16 +60,16 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     ~CCombatActionBase();                       // 0x0062E900
 };
 
-struct CCreatureAction_BanditKingAttack : CCombatActionBase {   // retail sizeof 0x118
+class CCreatureAction_BanditKingAttack : public CCombatActionBase { public:   // retail sizeof 0x118
     unsigned char _body[4];
     CCreatureAction_BanditKingAttack(CThingCreatureBase* owner, CThing* target, const CCharString& animation, long first, long second);   // 0x008C9410
 };
 
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     void FinishAction();                        // 0x008663D0
 };
 
-struct CCreatureAction_BanditKingGetHit : CCombatAction_GenericStrikeResponseBase {
+class CCreatureAction_BanditKingGetHit : public CCombatAction_GenericStrikeResponseBase { public:
     CBaseIntelligentPointer PAttacker;          // +0x114
     void FinishAction();
 };

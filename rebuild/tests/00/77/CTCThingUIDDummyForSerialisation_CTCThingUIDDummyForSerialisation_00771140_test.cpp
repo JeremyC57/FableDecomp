@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int g_baseCtor;
 struct CTCBase_Calls {
@@ -21,7 +21,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CTCThingUIDDummyForSerialisation : CTCBase_Calls {
+class CTCThingUIDDummyForSerialisation : public CTCBase_Calls { public:
     u64 ThingUID;
     CTCThingUIDDummyForSerialisation(CThing* thing) : CTCBase_Calls(thing), ThingUID(0) { }
 };

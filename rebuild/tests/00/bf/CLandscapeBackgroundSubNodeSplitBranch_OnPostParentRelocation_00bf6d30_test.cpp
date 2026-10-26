@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CLandscapeBackgroundTreeNode;
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundTreeNode;
+class CLandscapeBackgroundSubNodeSplitBranch { public:
     char pad00[0xa0]; CLandscapeBackgroundTreeNode *f_a0; char padA4[0x188-0xa4]; CLandscapeBackgroundTreeNode *f_188;
     void OnPostParentRelocation(CLandscapeBackgroundTreeNode *parent);
 };

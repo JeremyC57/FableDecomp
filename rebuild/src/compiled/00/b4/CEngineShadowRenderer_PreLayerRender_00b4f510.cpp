@@ -9,18 +9,18 @@
 //   ShadowBufferTexture +0x2e8, RenderingTechnique +0x334); the projection matrix sits in SceneData at +0x4c.
 #include "engine/CEngineShadowRenderer.h"
 
-struct C2DExtentsI { unsigned long Width; unsigned long Height; };
-struct C2DBoxF { float X0, Y0, X1, Y1; };
-struct CMatrix3x4 { float M[12]; };
-struct CMatrix4x4 { float M[16]; };
-struct CRGBColour {
+class C2DExtentsI { public: unsigned long Width; unsigned long Height; };
+class C2DBoxF { public: float X0, Y0, X1, Y1; };
+class CMatrix3x4 { public: float M[12]; };
+class CMatrix4x4 { public: float M[16]; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
-struct CRenderTarget;
+class CRenderTarget;
 struct CTextureView {
     C2DExtentsI GetDimensions(long level) const;        // 0x009F9DB0
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     void SetRenderTarget(CRenderTarget* target);        // 0x009BF160
     void ClearRenderTarget(const CRGBColour* colour, unsigned long flags);   // 0x009BE420
 };
@@ -32,7 +32,7 @@ public:
 };
 extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
 extern CEngineShadowRenderer* g_pShadowRenderer_01436e60;        // 0x01436E60
-struct CEngineComponentRenderParams {
+class CEngineComponentRenderParams { public:
     void*         Params;                               // +0x00
     long          RenderLayer;                          // +0x04
     unsigned long RenderLayerFlags;                     // +0x08

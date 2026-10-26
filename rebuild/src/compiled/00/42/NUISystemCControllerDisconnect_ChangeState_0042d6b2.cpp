@@ -93,7 +93,7 @@ struct CComponentRoot_Retail {              // primary base: vptr only
     virtual void ChangeState(unsigned long state);       // slot 48
 };
 
-struct CChangingStateComponent : CComponentRoot_Retail, CInputHandler_Retail, CComponentBase3_Retail {
+class CChangingStateComponent : public CComponentRoot_Retail, public CInputHandler_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];      // +0x1c..+0x15c
     virtual void ChangeState(unsigned long state);   // 0x0052CF40
 };

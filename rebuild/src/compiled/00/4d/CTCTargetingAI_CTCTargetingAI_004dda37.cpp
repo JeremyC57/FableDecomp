@@ -13,10 +13,10 @@
 // Leaf: ??0CTCTargetingAI
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     virtual void v00();
     unsigned char _pad04[0x38 - 0x04];                      // CTCBase + the targeting base state
     CTCTargetingBase(CThing* thing);                        // 0x007F58E0
@@ -40,7 +40,7 @@ struct CRetailList_node0x10 {                               // retail std::list,
     CRetailList_node0x10(const CRetailAllocator& al = CRetailAllocator());   // 0x004B8920
 };
 
-struct CTCTargetingAI : CTCTargetingBase {                  // vtable 0x012411FC
+class CTCTargetingAI : public CTCTargetingBase { public:                  // vtable 0x012411FC
     CCreatureIntelligentPointer PBestEnemyCreatureForAttack;    // +0x38
     CCreatureIntelligentPointer PScriptTargetOverride;          // +0x40
     CRetailList_node0x10        ThingsToNotAttack;              // +0x48

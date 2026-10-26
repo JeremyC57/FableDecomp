@@ -15,7 +15,7 @@
 //   `Compare(..) ? false : true` = `neg ; sbb al,al ; inc al`); STLport `set::count` compares `_M_find(k)` with the header node, which
 //   reads the header word AFTER the out-of-line `_M_find` call (`find(..) != end()` evaluates end() first and hoists it).
 // Label correction: the catalog `FactionMap_FindAndCompare` is descriptive.
-struct CCharStringData {                                // the shared string block
+class CCharStringData { public:                                // the shared string block
     const char*   m_pData;                              // +0x00
     unsigned long m_length;                             // +0x04
 };

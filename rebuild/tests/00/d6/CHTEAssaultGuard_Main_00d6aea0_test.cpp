@@ -6,11 +6,11 @@ static int g_fail = 0;
 static std::string g_log;
 static int g_calls = 0, g_termAt = 0, g_frames = 0;
 static void L(const char* s) { g_log += s; g_log += ";"; }
-struct CCharString { std::string S; CCharString(const char* t, long n = -1) : S(t) { (void)n; } };
+class CCharString { public: std::string S; CCharString(const char* t, long n = -1) : S(t) { (void)n; } };
 struct HostImp { int Id; int Hp; bool IsAlive() const { return Hp > 0; } };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) {} };
 static HostImp* g_cur = 0;
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointerWords PImp;
     CScriptThing() {}
     explicit CScriptThing(HostImp* imp) { PImp.Data = imp; }
@@ -24,11 +24,11 @@ struct CScriptThingView {
 };
 static inline bool IsThingImpAlive(const CScriptThing& t) { HostImp* imp = (HostImp*)t.PImp.Data; L("impalive?"); return imp && imp->IsAlive(); }
 namespace NScript {
-struct CPredicateBase { virtual ~CPredicateBase() {} };
-struct CIsThingAlive : CPredicateBase { CScriptThing Thing; CIsThingAlive(const CScriptThing& t) : Thing(t) {} };
+class CPredicateBase { public: virtual ~CPredicateBase() {} };
+class CIsThingAlive : public CPredicateBase { public: CScriptThing Thing; CIsThingAlive(const CScriptThing& t) : Thing(t) {} };
 }
 static int g_scripting = 0, g_startAt = 0, g_farUntil = 0, g_taskBusy = 0, g_handles = 0;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     CScriptGameResourceObjectScriptedThingBase() { ++g_handles; }
     ~CScriptGameResourceObjectScriptedThingBase() { --g_handles; L("~handle"); }
     bool IsScripting() { return g_scripting != 0; }

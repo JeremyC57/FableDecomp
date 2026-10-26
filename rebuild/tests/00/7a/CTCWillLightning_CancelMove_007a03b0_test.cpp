@@ -36,7 +36,7 @@ public:
     }
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     bool AbilityMutexLock;
     long CurrentAbility;
 };

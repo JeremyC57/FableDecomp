@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CPersistContext
-{
+class CPersistContext
+{ public:
     void TransferImpl(char* name, long* value, long* defaultValue);
     void Transfer_long_(char* name, long* value);
 };

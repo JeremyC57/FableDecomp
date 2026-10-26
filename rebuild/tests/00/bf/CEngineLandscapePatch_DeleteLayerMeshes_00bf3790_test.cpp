@@ -2,7 +2,7 @@
 static int g_meshDeleted = 0, g_freed = 0; static void* g_freedBlock = 0;
 struct CLayerMesh { virtual ~CLayerMesh() { ++g_meshDeleted; } };
 struct CMM { void FreeVirtual(void* b) { ++g_freed; g_freedBlock = b; } };
-struct CEngine { unsigned char _pad[0x6b0]; CMM* m_pLandscapeMemoryManager; };
+class CEngine { public: unsigned char _pad[0x6b0]; CMM* m_pLandscapeMemoryManager; };
 static CEngine g_engine; static CEngine* g_pEngine = &g_engine;
 struct CPatch { unsigned char _pad[8]; CLayerMesh* m_pLayerMesh; void* m_pLayerBlock; unsigned char _pad10[0x2c]; unsigned char m_layerCount : 3; unsigned char m_other : 5;
     void DeleteLayerMeshes() { if (m_pLayerMesh) { delete m_pLayerMesh; m_pLayerMesh = 0; m_layerCount = 0; } if (m_pLayerBlock) { g_pEngine->m_pLandscapeMemoryManager->FreeVirtual(m_pLayerBlock); m_pLayerBlock = 0; } } };

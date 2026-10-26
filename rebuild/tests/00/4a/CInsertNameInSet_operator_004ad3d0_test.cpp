@@ -3,20 +3,20 @@
 // Behaviour model of CInsertNameInSet::operator()(const CThing*) (0x004AD3D0): a thing with a physics component that
 // has a mesh, whose mesh object carries no navigation line-list info, gets its def name inserted into the set.
 static int g_meshObjects = 0, g_meshObjectsAlive = 0;
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     bool nav;
     CPhysicsMeshObject(bool n) : nav(n) { ++g_meshObjects; ++g_meshObjectsAlive; }
     CPhysicsMeshObject(const CPhysicsMeshObject& o) : nav(o.nav) { ++g_meshObjectsAlive; }
     ~CPhysicsMeshObject() { --g_meshObjectsAlive; }
     bool HasNavigationLineListInfo() const { return nav; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     const void* meshInfo; bool nav;
     const void* GetPhysicsMeshInfo() { return meshInfo; }
     CPhysicsMeshObject GetPhysicsMeshObject() const { return CPhysicsMeshObject(nav); }
 };
-struct CDefString { long TablePos; const char* GetString() const { static const char* names[] = { "TREE", "ROCK", "WALL" }; return names[TablePos]; } };
-struct CThing { CTCPhysicsBase* PhysicsTC; CDefString def; CDefString GetDefName() const { return def; } };
+class CDefString { public: long TablePos; const char* GetString() const { static const char* names[] = { "TREE", "ROCK", "WALL" }; return names[TablePos]; } };
+class CThing { public: CTCPhysicsBase* PhysicsTC; CDefString def; CDefString GetDefName() const { return def; } };
 struct CCharStringSet { const char* items[8]; int n; void insert(const char* s) { for (int i = 0; i < n; ++i) if (items[i] == s) return; items[n++] = s; } };
 struct CInsertNameInSet {
     CCharStringSet* DefNames;

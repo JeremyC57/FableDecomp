@@ -13,7 +13,7 @@
 // the int difference parked in the `push ecx` slot). No engine header for the class: local model.
 extern long g_framesPerSecond;                  // 0x01375550
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
@@ -33,11 +33,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

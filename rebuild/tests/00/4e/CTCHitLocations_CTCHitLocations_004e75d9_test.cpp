@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CTCHitLocations::CTCHitLocations(CThing*) (retail 0x004E75D9).
-struct CThing { int dummy; };
+class CThing { public: int dummy; };
 struct CHitLocation;
-struct CHitLocationsDef;
+class CHitLocationsDef;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -25,12 +25,12 @@ struct CHitLocationsDefPointer {
     CHitLocationsDefPointer() : Object(0) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CTCHitLocations : CTCBase {
+class CTCHitLocations : public CTCBase { public:
     virtual void v00() { }
     CHitLocationVector      HitLocations;
     CHitLocation*           PDefaultHitLocation;

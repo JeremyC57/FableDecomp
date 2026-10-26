@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <stdio.h>
 
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     char _pad[0x68];
 };
 

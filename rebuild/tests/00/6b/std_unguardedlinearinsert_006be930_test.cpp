@@ -3,7 +3,7 @@
 #include <cstring>
 #include <new>
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     char text[16];
     CWideString(const char* t) { std::strcpy(text, t); ++g_live; }
     CWideString(const CWideString& o) { std::strcpy(text, o.text); ++g_live; }

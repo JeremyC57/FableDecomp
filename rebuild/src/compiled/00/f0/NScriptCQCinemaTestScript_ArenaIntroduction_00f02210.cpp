@@ -14,18 +14,18 @@
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -59,19 +59,19 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing;
-struct CBaseObject {
+class CScriptThing;
+class CBaseObject { public:
     virtual void v00();
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     ~CBaseObject();                                    // 0x0099A430
     CBaseObject& operator=(const CBaseObject& other);  // 0x0099A3B0
 };
-struct CScriptGameResourceObjectBase : CBaseObject {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CScriptThingImp;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;
     void Release();                                    // 0x00CD2770
 };
@@ -81,7 +81,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                               // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -94,7 +94,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)

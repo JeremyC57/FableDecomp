@@ -1,7 +1,7 @@
 // Behaviour test for CBRIAR_ROSE_IMPOSTER::Main (0x00D81820): a hero hit (or any special ability but 14) with the taunt timer expired runs the taunt conversation and restarts both timers; the "here" line needs the here timer expired, the taunt timer above 7 and the hero over 13 units away.
 #include <cstdio>
 #include <cstring>
-struct CTimer { long t; long GetTime() const { return t; } void SetTime(long v) { t = v; } };
+class CTimer { public: long t; long GetTime() const { return t; } void SetTime(long v) { t = v; } };
 struct CImposter {
     CTimer Taunt, Here; int taunts, heres;
     void Step(bool hitBy, bool anySpecial, bool special14, float distance)

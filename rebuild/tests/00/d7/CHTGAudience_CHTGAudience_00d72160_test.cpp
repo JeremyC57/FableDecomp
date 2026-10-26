@@ -9,12 +9,12 @@ struct CCountedPointer {
     void* m_pObject; SCountBlock* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
 };
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer PImp;
     CScriptThing() : CBase() {}
     CScriptThing(const CScriptThing& o) : CBase() { PImp = o.PImp; ++g_copies; }
 };
-struct CGameScriptInterface { int dummy; };
+class CGameScriptInterface { public: int dummy; };
 struct CQ_HangingTreeGoodScript { CGameScriptInterface* GSI; };
 struct CQ_SunnyvaleMasterData { int dummy; };
 struct CEntityScriptRoot {
@@ -22,7 +22,7 @@ struct CEntityScriptRoot {
     CGameScriptInterface* PQuest;
     CEntityScriptRoot(CGameScriptInterface* q) : PQuest(q) {}
 };
-struct CEntityScriptBase : CEntityScriptRoot {
+class CEntityScriptBase : public CEntityScriptRoot { public:
     CScriptThing Thing;
     CEntityScriptBase(CQ_HangingTreeGoodScript* parent, const CScriptThing& thing) : CEntityScriptRoot(parent->GSI), Thing(thing) {}
 };

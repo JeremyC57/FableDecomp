@@ -6,15 +6,15 @@
 // Template, DefaultValsApplied. The engine header flattens the base and the bit group, so the class is modelled
 // locally with the real names. Shape: each 1-bit member initialiser is the xor/and/xor read-modify-write of the
 // flag byte (the first through memory, the next two through al/cl).
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];                     // +0x04 .. +0x1c: list links, size, last-used frame
     CResource(const CResource& other);             // 0x0046649A
 };
 
-struct CDefClassBase : CResource {                 // vtable 0x01230BCC
+class CDefClassBase : public CResource { public:                 // vtable 0x01230BCC
     virtual void v00();
     CDefinitionManager* PDefManager;               // +0x1c
     unsigned long       GlobalIndex;               // +0x20

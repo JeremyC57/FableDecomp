@@ -7,8 +7,8 @@ struct SKeyLess { template <class P> bool operator()(const P& a, const P& b) con
 
 template <class K, class V> struct SPair { K first; V second; SPair(const K& k, const V& v) : first(k), second(v) { } };
 
-template <class K, class V> struct CVectorMap
-{
+template <class K, class V> class CVectorMap
+{ public:
     std::vector<SPair<K, V> > Vector;
     bool Dirty;
     CVectorMap() : Dirty(false) { }
@@ -18,14 +18,14 @@ template <class K, class V> struct CVectorMap
 };
 
 #include <cstring>
-struct CDefString { int TablePos; CDefString(const char* name) : TablePos((int)std::strlen(name)) { } };
+class CDefString { public: int TablePos; CDefString(const char* name) : TablePos((int)std::strlen(name)) { } };
 struct CSkeletalMorph
 {
     int GroupID; int NameTablePos; bool AllowVariation;
     CSkeletalMorph(int g, const char* name, bool a) : GroupID(g), NameTablePos(CDefString(name).TablePos), AllowVariation(a) { }
 };
-struct CRandomAppearanceMorph
-{
+class CRandomAppearanceMorph
+{ public:
     CVectorMap<int, CSkeletalMorph> SkeletalMorphs;
     void AddSkeletalMorph(unsigned int groupID, const char* name, bool allowVariation)
     {

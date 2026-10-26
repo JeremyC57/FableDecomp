@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_base=0;
 void *FableVtbl_CChunkedFileChunk_c10a10[4];
-struct CChunkedFileChunk { void *vptr; void Dtor(); };
+class CChunkedFileChunk { public: void *vptr; void Dtor(); };
 extern "C" void FABLE_FASTCALL FableBaseDtor_c10a10(CChunkedFileChunk *self){ g_base=1; }
 void CChunkedFileChunk::Dtor(){ vptr=(void*)&FableVtbl_CChunkedFileChunk_c10a10; FableBaseDtor_c10a10(this); }
 int main(){ CChunkedFileChunk o; o.Dtor();

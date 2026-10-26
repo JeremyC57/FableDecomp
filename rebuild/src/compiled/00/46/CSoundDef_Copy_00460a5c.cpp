@@ -4,7 +4,7 @@
    The rel32 target is relocation-masked, so any single tail-call to an
    extern __fastcall(objptr,...) compiles to the identical `jmp rel32`. */
 
-struct CSoundDef;
+class CSoundDef;
 
 /* real implementation the thunk tail-jumps to (relocation-masked target) */
 extern void __fastcall CSoundDef_Copy_impl(CSoundDef* thisptr, void* src);

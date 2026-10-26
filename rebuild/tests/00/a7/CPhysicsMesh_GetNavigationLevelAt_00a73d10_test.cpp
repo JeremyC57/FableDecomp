@@ -1,11 +1,11 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct CContainmentVolume_a2e710 {
     float m_min, m_max;
     bool IsContaining(const C3DVector& p) const { return p.x >= m_min && p.x < m_max; }
 };
 struct SNavigationLevel { long m_level; CContainmentVolume_a2e710 m_volume; };
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     SNavigationLevel* m_pLevelsFirst; SNavigationLevel* m_pLevelsLast;
     long GetNavigationLevelAt(const C3DVector& position) const
     {

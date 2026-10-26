@@ -6,7 +6,7 @@
 #define __declspec(x)
 #endif
 static int g_termCalls = 0, g_termAt = 0, g_yields = 0; static unsigned char g_condition = 0;
-struct CGameScriptInterface { virtual void v000() { } virtual void YieldFrame() { ++g_yields; } virtual unsigned char IsDonationConditionMet() { return g_condition; } };
+class CGameScriptInterface { public: virtual void v000() { } virtual void YieldFrame() { ++g_yields; } virtual unsigned char IsDonationConditionMet() { return g_condition; } };
 struct CV_TempleOfLightScript {
     virtual void v00() { }
     unsigned char _pad04[0x3c]; CGameScriptInterface* m_pInterface; unsigned char _pad44[0x11]; unsigned char m_donationNoted;

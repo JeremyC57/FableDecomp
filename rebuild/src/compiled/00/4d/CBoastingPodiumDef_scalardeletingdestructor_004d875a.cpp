@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CBoastingPodiumDef
-{
+class CBoastingPodiumDef
+{ public:
     void* vftable;
 };
 extern void* const g_CBoastingPodiumDef_vftable;

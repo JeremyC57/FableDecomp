@@ -1,4 +1,4 @@
-struct CCreatureAction_ProjectileCrouch {
+class CCreatureAction_ProjectileCrouch { public:
     void* vftable;
 };
 

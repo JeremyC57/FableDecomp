@@ -10,12 +10,12 @@
 //   CV_MurderTwistFinalScript is 0x14 smaller in retail than in the PDB view (SheriffState PDB +0x5c = retail +0x48,
 //   AssassinState +0x60 = +0x4c, Sheriff +0x68 = +0x54, seh_Sheriff +0x84 = +0x6c after the 12-byte Guards vector).
 // Shape: generated script code -- `if (IsActiveThreadTerminating()) return;` ahead of each statement that follows a wait.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void v00();
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
@@ -23,7 +23,7 @@ struct CScriptThing {                                  // 12 bytes, vtable 0x012
     ~CScriptThing();                                   // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
-struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes
     unsigned char _body[0x10];
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
@@ -31,7 +31,7 @@ struct CScriptGameResourceObjectScriptedThingBase {    // 0x10 bytes
 };
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) 0x0089B5B0
@@ -118,7 +118,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a p
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                  // 0x00E241B0 (out of line here)
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08
@@ -138,7 +138,7 @@ struct CV_MurderTwistFinalScript {
     CScriptGameResourceObjectScriptedThingBase seh_Sheriff;   // +0x6c
     void PlayBeingRumbledCutscene();                   // 0x00EAF1E0
 };
-struct CTimer { unsigned long _handle; };
+class CTimer { public: unsigned long _handle; };
 struct CMurderTwistSheriff : CEntityScriptBase {
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18

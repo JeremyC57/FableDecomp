@@ -20,7 +20,7 @@ int CThingVector::g_frees = 0;
 static int g_killed = 0;
 static int g_fadeCalls = 0;
 static char g_lastName[64];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long GetAllThingsWithScriptName(const char* name, CThingVector& things) const
     {
         std::strcpy(g_lastName, name);

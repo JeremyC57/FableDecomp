@@ -3,19 +3,19 @@
 // Behaviour test for NCreatureMode::CModeDragonHover::AnimUpdate (retail 0x008D6FF0): an idle hovering dragon whose
 // animation list is empty or replaceable gets a random loaded "ST_IDLE_SUBTLE" animation as its main animation
 // (type 6, mode 1, looping flag, the entry's flags, 100%) with the entry's blend-in and transition times.
-struct CThing { int id; };
-struct CAnimInit {
+class CThing { public: int id; };
+class CAnimInit { public:
     long Mode; long AnimType; bool Flag05; long AnimIndex; unsigned long Flags; long Arg24; long Percent;
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent)
         : Mode(mode), AnimType(animType), Flag05(flag05), AnimIndex(animIndex), Flags(flags), Arg24(arg24), Percent(percent) { }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;
     unsigned long GetAnimateThingFlags() { return 0x40; }
     long GetAnimationTransitionInTime() { return 7; }
     long GetTimeToBlendIn(CThing* thing) { return thing ? 5 : -1; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     int AnimsBegin;
     int AnimsEnd;
     unsigned char CurrentAnimFlags;
@@ -30,7 +30,7 @@ struct CAnimateThing {
 };
 static CAnimationEntry* g_idle;
 static bool g_busy;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() { return g_busy; }
     CAnimationEntry* GetRandomLoadedAnimFromName(const char* name, bool loadedOnly)
     {

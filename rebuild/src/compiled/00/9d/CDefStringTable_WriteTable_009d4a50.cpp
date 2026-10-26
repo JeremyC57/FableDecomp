@@ -5,13 +5,13 @@
 // Shape: the stream sub-object is addressed once (`add edi,0Ch`) and read through a named pointer; the virtual
 // WriteData pushes its size argument before evaluating PeekData() (right-to-left). PDB CDefStringTable: StringStream
 // +16, StringCount +44, RandomID +52; retail map (12) and stream (24) are 8 bytes smaller in all.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteULong(unsigned long value);                            // 0x00993EA0
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     unsigned long GetSize();                       // 0x00994B40
     void* PeekData();                              // 0x00995E70
 };

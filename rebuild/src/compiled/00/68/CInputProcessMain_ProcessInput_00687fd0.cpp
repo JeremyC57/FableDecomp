@@ -18,7 +18,7 @@
 // Shape: the mouse movement is a NAMED C2DVector local (retail re-takes its address with `lea` for MoveCursor); passing the
 //   call result straight through pushes the returned pointer instead.
 extern "C" __declspec(dllimport) short __stdcall GetAsyncKeyState(int key);
-struct C2DVector { float X, Y; C2DVector() {} };
+class C2DVector { public: float X, Y; C2DVector() {} };
 class CInputEvent {
 public:
     unsigned char _body[0x34];
@@ -30,7 +30,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     void TakeQuickScreenshotNoHud();               // 0x0055D490
     void TakeQuickScreenshot();                    // 0x0055D180
 };
@@ -46,7 +46,7 @@ struct CTCMap {
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20
     unsigned char _pad40[4];
@@ -54,19 +54,19 @@ struct CThing {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCPhotojournalCapture* GetTC(long kind) { return m_tcs.Find(kind); }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xf8];
     long          PendingState;                    // +0xf8 (descriptive)
     unsigned char _padfc[0x104 - 0xfc];
     long          SaveGameLoadStatus;              // +0x104
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1c
     unsigned char   _pad20[4];
@@ -74,11 +74,11 @@ struct CMainGameComponent {
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
-struct CPlayerGui {
+class CPlayerGui { public:
     void MoveCursor(const C2DVector& movement);    // 0x004379C0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-struct CConsole {                                  // vtable 0x0129C600, 0x9c bytes
+class CConsole { public:                                  // vtable 0x0129C600, 0x9c bytes
     virtual void v00();
     unsigned char _pad04[0x78 - 0x04];
     bool          IsOpen;                          // +0x78 (descriptive)
@@ -93,7 +93,7 @@ struct CCountedPointer_CConsole {
     void Reset(CConsole* object);                  // 0x00413520
 };
 extern CCountedPointer_CConsole g_pConsole;        // 0x013CAA40
-struct CGamePlayerInterface;
+class CGamePlayerInterface;
 class CInputProcessMain {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

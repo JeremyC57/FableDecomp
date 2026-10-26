@@ -5,7 +5,7 @@
 // Shape: `message ? true : false` gives the `setne` tail (`message != 0` gives `neg ; sbb ; neg`). The global tutorial switch byte @ 0x01375740 is read before the frame is set up; the profile's "tutorials on" test is an
 // inline accessor choosing between two bytes (+0xd7 when the profile flag at +0xc is set, else +0x17); `setne` for `message != 0`.
 // Leaf: MsgIsTutorialClickedPast
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString& operator=(const char* text);           // 0x0099EFE0
@@ -15,16 +15,16 @@ struct CMessageEvent_Retail {
     unsigned char _pad[0x3c];
     long          m_extraData;                      // +0x3c (the message's payload word: region/quest index, feat id, record pointer ...)
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {   // the bound filter holds POINTERS to its operands
+template<class A, class B> class CFilter_Bind2 { public:   // the bound filter holds POINTERS to its operands
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
@@ -55,14 +55,14 @@ struct CRegion_Retail {
 struct CWorldMap_Retail {
     CRegion_Retail& GetRegion(long index);          // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012();
     virtual CWorldMap_Retail* PeekWorldMap();       // slot 13 (+0x34)
     unsigned char                _pad04[0x5c];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
     void*   Component;                              // +0x08

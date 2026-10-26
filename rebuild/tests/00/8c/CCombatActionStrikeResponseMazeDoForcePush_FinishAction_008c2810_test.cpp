@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct CThing { float X, Y; bool Dead; };
+class CThing { public: float X, Y; bool Dead; };
 struct CBoss { long GenericCounter; long Phase; };
 struct CAction {
     CThing* PCreature; CThing* PAttacker; CBoss* Boss; long TutorialNumGetHits; int Base; int ForcePushes;

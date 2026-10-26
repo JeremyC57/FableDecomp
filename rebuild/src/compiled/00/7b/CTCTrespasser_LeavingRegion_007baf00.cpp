@@ -20,14 +20,14 @@
 //   cleared through an inline helper taking the parent thing and an inline CWorld getter for the reaction manager
 //   (the parent loads into edi before GetWorld; with the field read directly VC7.1 pushes the arguments first and the
 //   whole function's register assignment changes: `this` lands in ebp).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -56,15 +56,15 @@ struct CThing {
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CTCHeroOpinionDeedLog {                          // interface 0x51
+class CTCHeroOpinionDeedLog { public:                          // interface 0x51
     void EndDeed(long handle);                          // 0x006C5920 (descriptive)
     void RemoveDeed(long handle);                       // 0x006C59E0
 };
-struct CTCTrespassable {                                // interface 0xBD
+class CTCTrespassable { public:                                // interface 0xBD
     unsigned char _pad00[0x0d];
     bool          BeingTrespassed;                      // +0x0d (descriptive)
 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing& thing, bool immediately);   // 0x007008C0
 };
 class CWorld {
@@ -100,7 +100,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCTrespasser {
+class CTCTrespasser { public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

@@ -7,7 +7,7 @@ static int g_newCalls = 0; static unsigned int g_newSize = 0; static unsigned ch
 void* operator_new_array_spy(unsigned int size) { ++g_newCalls; g_newSize = size; return g_heap; }
 #define new_array(size) ((unsigned char*)operator_new_array_spy(size))
 struct CBaseClassNonCopyable { virtual void v00() {} CBaseClassNonCopyable() {} };
-struct CScratchBuffer {
+class CScratchBuffer { public:
     unsigned char _pad00[8];
     unsigned char* Buffer;
     bool           Locked;
@@ -15,7 +15,7 @@ struct CScratchBuffer {
     int            lockCalls;
     bool Lock(void** ppBuffer) { ++lockCalls; Locked = true; *ppBuffer = Buffer; return true; }
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool grant; int allocCalls; int lockCalls; long lockedHandle; unsigned long allocSize; unsigned long allocFlags; unsigned char poolMem[32];
     bool  Allocate(long* handle, unsigned long size, unsigned long flags) { ++allocCalls; allocSize = size; allocFlags = flags; if (!grant) return false; *handle = 0x1234; return true; }
     void  Lock(long handle) { ++lockCalls; lockedHandle = handle; }

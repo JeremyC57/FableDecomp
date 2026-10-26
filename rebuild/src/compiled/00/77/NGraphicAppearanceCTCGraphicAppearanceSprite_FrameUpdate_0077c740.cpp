@@ -14,7 +14,7 @@
 // (`fld [10h] ; fadd [14h]`, `fld step ; fmul speed ; fadd stage`); the new stage stays on the FPU for the
 // `!=` test (`fucompp ; test ah,44h ; jp`), then `RotationAmountPerFrame > 0.0f`. The owner is loaded once (edx).
 // Plain `ret`.
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -34,7 +34,7 @@ public:
     void SetGraphicAppearanceChanged(unsigned long flags);   // 0x004C7590
 };
 
-struct CTCBase {                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
+class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -43,13 +43,13 @@ struct CTCBase {                                        // 0x0c bytes: vptr, Par
 
 namespace NGraphicAppearance {
 
-struct CPrimitive;
+class CPrimitive;
 
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     virtual void v00();
 };
 
-struct CTCGraphicAppearanceSprite : CTCBase, CAGraphicAppearanceComponent {
+class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceComponent { public:
     float       RotationAmountPerFrame;                 // +0x10
     float       RotationAngle;                          // +0x14
     float       OldRotationAngle;                       // +0x18

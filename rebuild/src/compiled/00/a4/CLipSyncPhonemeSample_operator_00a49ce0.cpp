@@ -24,12 +24,12 @@ struct CCountedPointer_00a49ce0 {                       // {object, count block}
         m_pCount = 0;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct CLipSyncPhonemeSample {
+class CLipSyncPhonemeSample { public:
     CCharString               m_name;              // +0x00
     long                      m_4;                 // +0x04
     CCountedPointer_00a49ce0  m_data;              // +0x08

@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeDragonStrafeBurninate::OnDeactivate (retail 0x008DCB00): the type-9 component is
 // switched off, a running flame beam is ended, then the flying-mode deactivation runs.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +54,7 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
+class CThing : public CThingLookup { public: };
 struct CTCType9 : CTCBase { bool m_active; };
 static int g_flyingDeactivations;
 struct CModeDragonFlying {

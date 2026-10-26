@@ -9,13 +9,13 @@
 // `and dword [esi+34h],0`; both colours copy the same argument through the __forceinline CRGBColour copy ctor / Set.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
-struct CThing;
-struct CThingPhysical {
+class CThing;
+class CThingPhysical { public:
     unsigned char      _pad00[0x18];
     unsigned __int64   m_UID;                      // +0x18 (the thing's 64-bit UID)
     unsigned char      _pad20[0x8e - 0x20];

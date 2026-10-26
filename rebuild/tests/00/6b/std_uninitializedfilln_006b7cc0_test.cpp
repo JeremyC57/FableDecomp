@@ -1,7 +1,7 @@
 // Behaviour test for 0x006B7CC0 STLport uninitialized_fill_n over CGameMapCell.
 #include <cstdio>
 #include <new>
-struct CGameMapCell {
+class CGameMapCell { public:
     unsigned char AtmosThemes[3];
     unsigned char AtmosBlends[2];
     signed char   SoundTheme;

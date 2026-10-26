@@ -22,12 +22,12 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const unsigned short* text);                   // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
@@ -43,7 +43,7 @@ struct CBankFileManager {
 };
 extern CBankFileManager g_bankFileManager;              // 0x013CA79C
 
-struct CShaderDataBank {
+class CShaderDataBank { public:
     virtual ~CShaderDataBank();
     virtual bool OpenReadOnly(const CCharString& name, unsigned long flags);   // slot 1
     unsigned char NativeBankState[0x124];
@@ -59,10 +59,10 @@ struct CVertexShaderData {
     long RemoveReference() { return --ReferenceCount; }
     void ReleaseReference() { if (--ReferenceCount == 0) delete this; }
 };
-struct CShaderBase {                                    // vtable 0x0129A030
+class CShaderBase { public:                                    // vtable 0x0129A030
     virtual ~CShaderBase() { }
 };
-struct CVertexShader : CShaderBase {                    // vtable 0x0129B3D0
+class CVertexShader : public CShaderBase { public:                    // vtable 0x0129B3D0
     CVertexShaderData* Data;
     CVertexShader();                                    // 0x00A62FB0
     CVertexShader& operator=(const CVertexShader& other)
@@ -78,14 +78,14 @@ struct CVertexShader : CShaderBase {                    // vtable 0x0129B3D0
 struct _D3DVERTEXELEMENT9;
 extern const _D3DVERTEXELEMENT9 g_Declaration2D[];     // 0x0129D708
 enum EVertexType { VERTEX_TYPE_2D = 0x1c4 };
-struct CShaderResource {
+class CShaderResource { public:
     void OpenShaderBank(const CShaderDataBank* bank);                       // 0x00A5D7C0
     void SetVertexShaderDeclaration(const _D3DVERTEXELEMENT9* declaration); // 0x00A5D4E0
     void SetVertexFormat(EVertexType format);                               // 0x00A5D4F0
     CVertexShader GetVertexShader(const CCharString& name);                 // 0x00A5D5F0
 };
 typedef void (__fastcall *CCPPointerDeleteFunc)(void*);
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     CCPPointerDeleteFunc DeleteFunc;
     void* Data;
@@ -108,19 +108,19 @@ struct CShaderResourcePointer {                         // CCountedPointer<CShad
     CShaderResourcePointer& operator=(const CShaderResourcePointer& other);   // 0x009DE7C0
     CShaderResource* operator->() const { return Data; }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CShaderResourcePointer CreateResource();            // 0x0098B860
 };
 extern CShaderRenderManager g_ShaderRenderManager;      // 0x013BC470
 
-struct CTVertexRHWColSpecTex1;
-struct CQuickDrawTriInfo;
+class CTVertexRHWColSpecTex1;
+class CQuickDrawTriInfo;
 template<class T> struct CVector {                      // STLport vector (12 bytes)
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CDisplayManager;
+class CDisplayManager;
 struct CRenderManagerCore {
     virtual ~CRenderManagerCore();
     unsigned char _pad0004[0x3d1c];

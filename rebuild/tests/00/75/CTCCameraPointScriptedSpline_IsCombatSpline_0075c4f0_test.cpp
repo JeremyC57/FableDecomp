@@ -1,16 +1,16 @@
 // Behaviour test for 0x0075C4F0 CTCCameraPointScriptedSpline::IsCombatSpline
 #include <cstdio>
 #include <cstring>
-struct CDefString {
+class CDefString { public:
     const char* m_name;
     CDefString() : m_name("") {}
     bool operator==(const char* text) const { return std::strcmp(m_name, text) == 0; }
 };
-struct CThing {
+class CThing { public:
     const char* m_defName;
     CDefString GetDefName() const { CDefString s; s.m_name = m_defName; return s; }
 };
-struct CTCCameraPointScriptedSpline {
+class CTCCameraPointScriptedSpline { public:
     long m_type;
     CThing* ParentThing;
     virtual long GetCameraPointType() { return m_type; }

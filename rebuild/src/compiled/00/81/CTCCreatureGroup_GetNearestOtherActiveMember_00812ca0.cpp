@@ -7,7 +7,7 @@
 // node: key +0x10, CGroupMemberData {PMember +0x18, IsActive +0x20}; CThing::UniqueID +0x18 (as the landed DrawPrepare rows).
 // Shape: the map walk is the inlined STLport _M_increment; the best distance lives in the dead argument slot and starts as the
 // integer zero; retail compares a squared distance against the squared best (squared) distance, kept as written.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -15,19 +15,19 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                              // +0x18
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     const C3DVector& GetPosition() const;                   // 0x006A4D00 (the members' out-of-line copy; the query creature's call goes through CThing's 0x004C73D0)
 };
 struct CIntelligentPointer_AICreature {                     // CIntelligentPointer<CThingAICreature const>: 8 bytes
     void* Data[2];
     const CThingAICreature* GetPItem() const;               // 0x00A01B50
 };
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CIntelligentPointer_AICreature PMember;                 // +0x00
     bool                           IsActive;                // +0x08
     unsigned long                  JoinedFrame;             // +0x0c
@@ -59,7 +59,7 @@ inline CMemberNode* IncrementNode(CMemberNode* node)        // STLport _Rb_globa
     return node;
 }
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     void*         __vftable;                                // +0x00
     unsigned char _pad04[0x8];                              // +0x04
     unsigned long MemberCount;                              // +0x0c

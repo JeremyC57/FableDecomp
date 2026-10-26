@@ -11,13 +11,13 @@
 // Shape: the front-end manager goes through a named local so GetInstance is called before CreateComponent's pushes.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
@@ -31,14 +31,14 @@ struct CDefBase {
     virtual void Destroy();
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline ~CDefPointer() { if (Object) { if (--Object->m_refCount == 0) Object->Destroy(); } }
 };
 struct CMiscThingsDef : CDefBase { };
 void* FindDef_c();
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
@@ -61,7 +61,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 struct CTCInventoryBase { bool CanAddItem(long defIndex) const; };   // 0x005BF2ED
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -78,13 +78,13 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer { CThing* GetControlledCreature(); };    // 0x00487DD0
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };   // 0x00449960
-struct CMainGameComponent { unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
+class CPlayer { public: CThing* GetControlledCreature(); };    // 0x00487DD0
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 long __fastcall GetInventoryInterfaceType(long defIndex);   // 0x005D99D0
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);    // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -114,7 +114,7 @@ struct CComponent {
     virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);   // slot 144 (+0x240)
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
 };
@@ -136,7 +136,7 @@ struct CLongList {
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
 // Layout: retail CTCInventoryTrade (landed ctor 0x0059EC48): NotInStock +0x140, TotSpecialItemsToBuy +0x1F8, SpecialItemString +0x1FC.
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     unsigned char _pad00[0x140];
     CLongList     NotInStock;                           // +0x140
     unsigned char _pad144[0x1f8 - 0x144];

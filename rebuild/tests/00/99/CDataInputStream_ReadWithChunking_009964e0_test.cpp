@@ -58,7 +58,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CDataInputStream {
+class CDataInputStream { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long StreamPos;                                 // +0x04
     long          StreamSize;                                // +0x08
@@ -89,10 +89,10 @@ FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SourceChunkBytesRemaining) == 0x1
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
@@ -111,8 +111,8 @@ FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -120,8 +120,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -208,7 +208,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stdlib.h>
 #include <string.h>
 #pragma intrinsic(memcpy, memset)
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();
@@ -216,7 +216,7 @@ struct CDataStream : CBaseClassNonCopyable {
     virtual unsigned long GetPosition() const=0;
     virtual void Close()=0;
 };
-struct CDataOutputStream : CDataStream {
+class CDataOutputStream : public CDataStream { public:
     virtual ~CDataOutputStream();
     CCharString NewLine;
     virtual void Write(const void*, long)=0;

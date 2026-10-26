@@ -26,7 +26,7 @@ struct DefinitionCleanupFC {
     unsigned char pad08[4];
     void Cleanup(); // 0x00453406
 };
-struct CHeroStatsDef : CDefinitionBaseModel {
+class CHeroStatsDef : public CDefinitionBaseModel { public:
     DefinitionCleanup70 cleanup70; // +0x70
     DefinitionCleanupFC cleanupFC; // +0xfc
     void* p108;

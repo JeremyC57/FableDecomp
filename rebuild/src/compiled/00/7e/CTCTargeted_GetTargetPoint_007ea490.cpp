@@ -7,32 +7,32 @@
 // Layout: CThing::PTCGraphicAppearance at retail +0x64 (PDB +0x74). CTCTargeted per engine/CTCTargeted.h (members unused here).
 // Shape: the appearance is a named local read before the pushes; the helper point is a local returned through the user copy ctor (`fld X ; fstp [eax]`, Y/Z dword moves); the fallback passes the
 // hidden pointer straight to the helper (args right to left: radius, thing, then the GetWorld call).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 extern CCharString g_TargetHelperName;          // 0x013BAC50
 struct CTCGraphicAppearance {
     bool GetHelperPoint(const CCharString& name, long index, unsigned long flags, C3DVector* out, float scale);   // 0x004C0560
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64 (PDB +0x74)
 };
-struct CWorld;
+class CWorld;
 namespace NTargeting {
 C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float height);   // 0x007EA2F0
 }
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
     const CWorld& GetWorld() const;             // 0x00686A80
 };
-struct CTCTargeted : CTCBase {
+class CTCTargeted : public CTCBase { public:
     unsigned long TargetingFlags;               // +0x0c
     bool Targetable;                            // +0x10
     bool UseTargetGlow;                         // +0x11

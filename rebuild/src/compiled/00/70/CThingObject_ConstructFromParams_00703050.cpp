@@ -8,12 +8,12 @@
 // starting health float at +0x50.
 // Shape: `MaxHealth = Health = PDef->Health;` gives `fld ; fst [b4] ; fstp [b0]`; the PDef address is kept in edi across
 // the GetDef call and re-read for the def pointer.
-struct C3DVector;
+class C3DVector;
 struct CThingPhysicalArg;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char _pad00[0x50];
     float         Health;                              // +0x50
 };
@@ -21,10 +21,10 @@ struct CDefPointerObjectDef {
     CThingObjectDef* m_pDef;
     CThingObjectDef* operator->() const { return m_pDef; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerObjectDef& out);   // 0x0042B040
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short m_defIndex;                         // +0x8c
@@ -36,7 +36,7 @@ struct CThingGameObject {
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,
                              CThingPhysicalArg* creator, CThingPhysicalArg* originalCreator, bool a8);   // 0x008388D0
 };
-struct CThingObject : CThingGameObject {
+class CThingObject : public CThingGameObject { public:
     CDefPointerObjectDef PDef;                         // +0xd0
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName);
 };

@@ -1,12 +1,12 @@
 // Behaviour test for CTCInventoryExperience::GetExperienceAbilityColour 0x0056EDD2 (model copy)
 #include <cstdio>
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) {}
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CRGBFloatColour GetExperienceAbilityColour(long ability);
 };
 

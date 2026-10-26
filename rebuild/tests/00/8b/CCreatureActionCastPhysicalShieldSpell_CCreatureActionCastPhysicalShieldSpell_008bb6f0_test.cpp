@@ -5,8 +5,8 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 static int g_baseCalls = 0, g_baseCode = 0; static const void* g_baseOwner = 0; static const void* g_baseTarget = 0; static long g_baseSound[2] = {9, 9};
 static int g_setNameCalls = 0; static char g_setName[64];
 #pragma pack(push, 1)
@@ -15,7 +15,7 @@ struct CBasicStringChar {                       // CBasicString<char>
     unsigned long StringLength;                 // +0x04
     bool operator==(const char* text) const { return strcmp(PData, text) == 0; }
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                      // +0x00
 };
 #pragma pack(pop)
@@ -34,13 +34,13 @@ public:
     const char* Text() const { return PStringData ? PStringData->Data.PData : ""; }
 };
 
-struct CSoundPair {                             // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                             // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00() {}
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound) { ++g_baseCalls; g_baseOwner = owner; g_baseTarget = 0; g_baseCode = actionCode; g_baseSound[0] = sound.FirstSound; g_baseSound[1] = sound.LastSound; }
@@ -48,7 +48,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     void SetAnimationName(const CCharString& name) { ++g_setNameCalls; strncpy(g_setName, name.Text(), 63); g_setName[63] = 0; }
 };
 
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {   // vtable 0x0127BDCC
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:   // vtable 0x0127BDCC
     bool  ImmediateCast;                        // +0x114 (PDB +0x12c)
     bool  OneAnimCast;                          // +0x115 (PDB +0x12d)
     unsigned char _pad116[2];

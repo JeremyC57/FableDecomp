@@ -3,18 +3,18 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString& operator=(const char* text) { PStringData = text; return *this; }
 };
-struct CArenaRoundDef { int v; };
+class CArenaRoundDef { public: int v; };
 struct CArenaRoundVector {
     CArenaRoundDef* _M_start; CArenaRoundDef* _M_finish; CArenaRoundDef* _M_end_of_storage;
     int copies;
     CArenaRoundVector& operator=(const CArenaRoundVector& o)
     { _M_start = o._M_start; _M_finish = o._M_finish; _M_end_of_storage = o._M_end_of_storage; ++copies; return *this; }
 };
-struct CScriptDef { CArenaRoundVector ArenaRounds; };
+class CScriptDef { public: CArenaRoundVector ArenaRounds; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 

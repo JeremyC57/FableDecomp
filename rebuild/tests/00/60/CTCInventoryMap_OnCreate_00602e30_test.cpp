@@ -4,28 +4,28 @@
 static int g_registered = 0, g_destroyed = 0, g_baseOnCreate = 0, g_resize = 0, g_cleared = 0;
 static long g_setPDef = 0;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     long m_refCount;
     virtual void Destroy() { ++g_destroyed; }
 };
-template <class T> struct CDefPointer { T* Object; };
+template <class T> class CDefPointer { public: T* Object; };
 struct CInventoryMapDef : CDefPointeeBase { long InventoryDefIndex; };
 static CInventoryMapDef g_mapDef;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryMapDef>* out) { ++g_mapDef.m_refCount; out->Object = &g_mapDef; return true; }
 };
-struct CThing { CDefPointer<CDefClassBase> PDef; };
+class CThing { public: CDefPointer<CDefClassBase> PDef; };
 struct CBaseScreen { virtual void v00() {} };
 struct CManager { void RegisterScreen(const CBaseScreen* s) { if (s) ++g_registered; } };
-struct CPlayerGui { CManager m; CManager* GetPHeroInfoScreensManager() { return &m; } };
+class CPlayerGui { public: CManager m; CManager* GetPHeroInfoScreensManager() { return &m; } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
 struct CPrimitiveHandleVector {
     void Resize(long count) { g_resize = (int)count; }
     void erase() { ++g_cleared; }
     void clear() { erase(); }
 };
-struct CWorldMap { long GetNoRegions() { return 12; } };
-struct CWorld { CWorldMap wm; virtual CWorldMap* GetWorldMap() { return &wm; } };
+class CWorldMap { public: long GetNoRegions() { return 12; } };
+class CWorld { public: CWorldMap wm; virtual CWorldMap* GetWorldMap() { return &wm; } };
 static CWorld g_world;
 struct CTCInventoryBase_Map {
     CThing* ParentThing;
@@ -33,7 +33,7 @@ struct CTCInventoryBase_Map {
     void SetPDef(long index) { g_setPDef = index; }
     CWorld* GetWorld() const { return &g_world; }
 };
-struct CTCInventoryMap : CTCInventoryBase_Map, CBaseScreen {
+class CTCInventoryMap : public CTCInventoryBase_Map, public CBaseScreen { public:
     CPrimitiveHandleVector MapScreenPrimitiveHandles, MapScreenQuestPrimitiveHandles,
                            MapScreenTeleportPrimitiveHandles, MapScreenHousePrimitiveHandles;
     long NumRegions;

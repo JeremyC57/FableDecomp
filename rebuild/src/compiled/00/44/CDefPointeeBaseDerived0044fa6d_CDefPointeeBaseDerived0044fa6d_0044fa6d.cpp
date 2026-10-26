@@ -6,7 +6,7 @@
 // +0x28); the derived class cannot be named from the body. Same shape as the landed 0x004D9861:
 // the derived class is `__declspec(novtable)` (abstract) so only the inlined CDefPointeeBase
 // destructor's vtable store appears; members are destroyed in reverse declaration order.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
 };
@@ -16,7 +16,7 @@ struct CBase_009fc550 {
     ~CBase_009fc550();                          // 0x009FC550
 };
 
-struct CDefPointeeBase : CBase_009fc550 {       // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:       // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                      // inline: inlined into every derived destructor
 };

@@ -19,7 +19,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);            // 0x00A13C60
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00();  virtual void v01();  virtual void v02();  virtual void v03();  virtual void v04();
     virtual void v05();  virtual void v06();  virtual void v07();  virtual void v08();  virtual void v09();
     virtual void v10();  virtual void v11();  virtual void v12();  virtual void v13();  virtual void v14();
@@ -36,16 +36,16 @@ struct CTCPhysicsBase {
     virtual void v65();  virtual void v66();  virtual void v67();  virtual void v68();  virtual void v69();
     virtual C3DVector GetFacingVector() const;                  // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                                  // +0x60 (PDB +0x70)
 };
 struct CSpotLightInfo { float Angle; };                         // CTCSpotLight::CSpotLightInfo, Angle +0
-struct CSpotLightDef {
+class CSpotLightDef { public:
     unsigned char _pad00[0x40];
     float Angle;                                                // +0x40
 };
-struct CTCSpotLight {
+class CTCSpotLight { public:
     virtual void v00();
     CThing* ParentThing;                                        // +0x04 (CTCBase)
     unsigned char _base08[4];

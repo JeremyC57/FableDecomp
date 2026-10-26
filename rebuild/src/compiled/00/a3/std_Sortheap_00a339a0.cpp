@@ -10,10 +10,10 @@
 // temporary built by the pair's memberwise user copy constructor (key, then `rep movsd` x13 for the trivially
 // copyable C3DDummyObject), `*_Dest = *_First` the trivial assignment (`rep movsd` x14), the value argument
 // copied from the temporary the same split way; the loop calls _Pop_heap_0 directly.
-struct CMatrix3x4 {                         // 48 bytes, trivially copyable
+class CMatrix3x4 { public:                         // 48 bytes, trivially copyable
     float m_rows[3][4];
 };
-struct C3DDummyObject {                     // 52 bytes (Ego_r.pdb)
+class C3DDummyObject { public:                     // 52 bytes (Ego_r.pdb)
     CMatrix3x4 Transform;                   // +0x00
     long       BoneIndex;                   // +0x30
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_SitForMeal::IsRunnable @ 0x00945B90: new day && meal hours && cooking pot.
-struct CWorldClock { long m_day; }; struct CWorld { CWorldClock* m_pClock; };
+struct CWorldClock { long m_day; }; class CWorld { public: CWorldClock* m_pClock; };
 static CWorldClock g_clock; static CWorld g_world = { &g_clock }; static bool g_meal; static int g_pot;
 struct Group {
     long DayLastAte;

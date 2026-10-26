@@ -13,7 +13,7 @@
 // The component local is NOT initialised: when the bit is clear retail calls the getter on the stale argument slot
 // (`mov eax,[esp+0Ch]`), exactly the landed CThingNoise::PassToNoiseComponent 0x008386E0 shape; the comparison with the
 // filter's thing is `getter() == m_thing` as a full-register result (`sub eax,[edi] ; neg ; sbb eax,eax ; inc eax`).
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -27,7 +27,7 @@ struct CTCMap {                                 // the thing's component map at 
     STCEntry* LowerBound(const long* kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -47,11 +47,11 @@ struct CThing {
     }
 };
 
-struct CTCPerceiveThing {                       // component kind 0x34
+class CTCPerceiveThing { public:                       // component kind 0x34
     const CThing* GetPerceivedThing() const;    // 0x007446A0
 };
 
-struct CThingFilter_IsPerceivingThing {
+class CThingFilter_IsPerceivingThing { public:
     const CThing* m_thing;                      // +0x00
     bool operator()(const CThing& thing) const;
 };

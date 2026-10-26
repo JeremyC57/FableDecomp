@@ -22,7 +22,7 @@ struct CDisplayOwnerControl {
     void* object;                                  // +0x8
 };
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     void*                 vptr;                     // +0x00
     char                  pad_04[0x2C - 0x04];
     CDisplayRenderTarget* m_renderTarget;           // +0x2C

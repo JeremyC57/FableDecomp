@@ -46,13 +46,13 @@ struct InterfaceMap {
   return ((first==last || type<first->Type) ? last : first)->Component;
  }
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeComponents[0x20];unsigned long UsingComponents[9];InterfaceMap Components;
  unsigned char BeforeType[0x6c-0x4c];unsigned long ThingTypeFlags;
  enum{ThingTypeMask=0};
  __forceinline bool HasComponent(long type)const{return (UsingComponents[type/32]&(1UL<<(type%32)))!=0;}
 };
-struct CTCPerceiveThing;
+class CTCPerceiveThing;
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
 // Same-TU non-inlined STLport overflow model. Only GetAllTCsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
@@ -81,9 +81,9 @@ struct ThingList {
  CTCPerceiveThing* at(unsigned i)const{Node* p=Sentinel->Next;while(i--)p=p->Next;return p->Value;}
  void clear(){Node* p=Sentinel->Next;while(p!=Sentinel){Node* n=p->Next;free(p);p=n;}Sentinel->Next=Sentinel->Previous=Sentinel;}
 };
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -94,8 +94,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -111,8 +111,8 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsPerceivingThing {CThing* PerceivedThing;bool operator()(const CThing&)const;}; // 0x006a80e0
-struct CThingFilter_IsNot {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
+class CThingFilter_IsPerceivingThing { public:CThing* PerceivedThing;bool operator()(const CThing&)const;}; // 0x006a80e0
+class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
 struct Filters {CThingFilter_IsPerceivingThing* F1;CThingFilter_IsNot* F2;__forceinline bool operator()(const CThing& p)const{return (*F1)(p)&&(*F2)(p);}};
 struct CThingSearchTools_Calls {
  CWorldMap* WorldMap;
@@ -176,7 +176,7 @@ static bool Available[5],Aware[5],ThirdPass[5];
 static int FirstCalls,SecondCalls,ThirdCalls,AreaCalls,ClipCalls;
 static int Score[5]={9,2,7,4,1};
 static int Index(const CThing* p){int i=int(static_cast<const CThing*>(p)-Things);if(i<0||i>=5)exit(80);return i;}
-struct CTCPerceiveThing {long Token;};
+class CTCPerceiveThing { public:long Token;};
 static CTCPerceiveThing Components[5];
 bool CThingFilter_IsPerceivingThing::operator()(const CThing& p)const{++FirstCalls;return Available[Index(&p)];}
 bool CThingFilter_IsNot::operator()(const CThing& p)const{++SecondCalls;return Aware[Index(&p)];}

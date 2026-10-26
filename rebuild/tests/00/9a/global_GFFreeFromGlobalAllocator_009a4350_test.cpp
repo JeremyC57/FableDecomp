@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_lock = 0, g_unlock = 0, g_dealloc = 0, g_dtor = 0, g_vfree = 0; static long g_count = 0; static void* g_lastBlock = 0;
-struct CMemoryAllocator { void InternalDeallocate(void* b) { ++g_dealloc; g_lastBlock = b; } long GetAllocationCount() { return g_count; } ~CMemoryAllocator() { ++g_dtor; }
+class CMemoryAllocator { public: void InternalDeallocate(void* b) { ++g_dealloc; g_lastBlock = b; } long GetAllocationCount() { return g_count; } ~CMemoryAllocator() { ++g_dtor; }
     static void operator delete(void* p) { ++g_vfree; ::operator delete(p); } };
 static void Enter() { ++g_lock; } static void Leave() { ++g_unlock; }
 static CMemoryAllocator* g_alloc = 0; static bool g_destroyWhenEmpty = false;

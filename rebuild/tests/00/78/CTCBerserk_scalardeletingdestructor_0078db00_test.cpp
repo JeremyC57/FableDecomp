@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCBerserk {
+class CTCBerserk { public:
     void* vftable;
     int destroyed;
 };

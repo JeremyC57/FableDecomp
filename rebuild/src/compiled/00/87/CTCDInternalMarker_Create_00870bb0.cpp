@@ -10,7 +10,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 without the Kill branch: `push 1` (the last Create argument) goes
 // before the GetMapNumberAt call that yields the third, the result local lives in ebx (`xor ebx,ebx`), the driver pointer
 // is PTCDriver +0x5C read through the GetTCDriver out-pointer helper.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CWorldMap {
 public:

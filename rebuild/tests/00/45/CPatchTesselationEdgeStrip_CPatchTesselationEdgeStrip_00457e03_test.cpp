@@ -7,7 +7,7 @@ struct CMember {
 static int g_calls = 0;
 void __fastcall CMember::dtor() { g_calls++; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad_0x0[0x3c];
     void* p3c;
     unsigned char _pad_0x40[0x18];

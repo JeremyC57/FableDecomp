@@ -12,7 +12,7 @@
 #define __int64 long long
 #endif
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     long  position;
     long  sourceLength;

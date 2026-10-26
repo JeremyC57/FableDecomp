@@ -14,36 +14,36 @@
 #include "engine/CAIStateGroup_StealStealableItem.h"
 
 
-struct C3DVector {                              // POD: a whole-record copy loads all three dwords first
+class C3DVector { public:                              // POD: a whole-record copy loads all three dwords first
     float X, Y, Z;
 };
 
-struct CThing {
+class CThing { public:
     C3DVector* GetPosition();                   // 0x004C73D0
 };
 
-struct CThingObject;
+class CThingObject;
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CThingCompare_Nearest {                  // 12 bytes: the reference position
+class CThingCompare_Nearest { public:                  // 12 bytes: the reference position
     C3DVector Position;
     CThingCompare_Nearest(const C3DVector& position) { Position = position; }
 };
 
-struct CThingFilter_ObjectHasProperty {         // one word: the property mask
+class CThingFilter_ObjectHasProperty { public:         // one word: the property mask
     unsigned long Property;
     CThingFilter_ObjectHasProperty(unsigned long property) : Property(property) {}
 };
 
-struct CThingFilter_HasFreeActionPoint {        // empty filter
+class CThingFilter_HasFreeActionPoint { public:        // empty filter
     CThingFilter_HasFreeActionPoint() {}
 };
 
-template<class A, class B> struct CFilter_Bind2 {   // two const references
+template<class A, class B> class CFilter_Bind2 { public:   // two const references
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& first, const B& second) : First(first), Second(second) {}
@@ -51,7 +51,7 @@ template<class A, class B> struct CFilter_Bind2 {   // two const references
 
 typedef CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint> CStealableFilter;
 
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThing(const CStealableFilter& filter, const CThingCompare_Nearest& compare,
                        CThingObject** result);  // 0x00964230
 };

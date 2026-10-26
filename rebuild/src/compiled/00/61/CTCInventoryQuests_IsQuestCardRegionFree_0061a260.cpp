@@ -15,7 +15,7 @@
 // `unsigned char` result (a bool return adds `xor eax,eax` before the sete).
 // Leaf: IsQuestCardRegionFree
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                // 0x0099EAE0
@@ -26,12 +26,12 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 
-struct CQuestManager {
+class CQuestManager { public:
     bool IsActiveQuestStartedInRegion(const CCharString& region);  // 0x004B1270
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
-struct CQuestCardDef {
+class CQuestCardDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x04
@@ -48,20 +48,20 @@ struct CQuestCardDefPointer {                      // CDefPointer<const CQuestCa
     CQuestCardDef* operator->() const { return Object; }
 };
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
 };
 
-struct CTCQuestCard : CTCBase {
+class CTCQuestCard : public CTCBase { public:
     CQuestCardDefPointer PDef;                     // +0x0C
 };
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     static unsigned char __stdcall IsQuestCardRegionFree(CTCQuestCard* card);
 };
 

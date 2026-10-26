@@ -7,8 +7,8 @@
 // the hierarchy and provide no constructors or virtual destructor. This local method model
 // restores the CBase and CANavQuadTreeNode construction required by the retail vtable writes.
 // Leaf: ??0CNavQuadTreeNode
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
-struct CAFile {
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
+class CAFile { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual void Read(void* dst, unsigned long bytes, bool raw); // 0x00A7F880
 };
@@ -16,7 +16,7 @@ struct CBase {
     virtual ~CBase();
     CBase(); // 0x0099A2F0
 };
-struct CANavQuadTreeNode : CBase {
+class CANavQuadTreeNode : public CBase { public:
     C2DVector Position;
     unsigned char QuadTreeLevel;
     unsigned char NavLayer;
@@ -26,7 +26,7 @@ struct CANavQuadTreeNode : CBase {
         : Position(p), QuadTreeLevel(level), NavLayer(layer), Blocked(false) {}
     virtual ~CANavQuadTreeNode();
 };
-struct CNavQuadTreeNode : CANavQuadTreeNode {
+class CNavQuadTreeNode : public CANavQuadTreeNode { public:
     CANavQuadTreeNode* TLNode;
     CANavQuadTreeNode* TRNode;
     CANavQuadTreeNode* BLNode;

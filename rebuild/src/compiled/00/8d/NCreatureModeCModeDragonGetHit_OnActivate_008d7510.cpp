@@ -19,15 +19,15 @@ struct CThing {
 }
 using NCreatureMode::CThing;
 
-struct CPlayer { CThing* GetHeroThing();  };       // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
-struct CEngine {
+class CPlayer { public: CThing* GetHeroThing();  };       // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CEngine { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* m_pPlayerManager;              // +0x1c
 };
 extern CEngine* g_pEngine;                         // 0x013B86A0
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                          // +4

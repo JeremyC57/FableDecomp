@@ -5,9 +5,9 @@
 // scared-master marker
 static int g_frames = 0, g_endAt = 1000, g_created = 0; static const char* g_where = 0;
 static const char g_loaded[] = "1100111001110000";
-struct C3DVector { const char* Marker; };
-struct CScriptThing { const char* name; C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
-struct CGameScriptInterface {
+class C3DVector { public: const char* Marker; };
+class CScriptThing { public: const char* name; C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsRegionLoaded(const char* n) const { return !std::strcmp(n, "OakBay") && g_loaded[g_frames] == '1'; }
     CScriptThing GetThingWithScriptName(const char* n) const { CScriptThing t; t.name = n; t.Pos.Marker = n; return t; }

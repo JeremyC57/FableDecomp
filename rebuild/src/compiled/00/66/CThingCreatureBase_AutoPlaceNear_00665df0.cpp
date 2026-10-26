@@ -8,24 +8,24 @@
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC(k);` (the preloaded `xor esi,esi`), the result vector initialised from the
 //   argument through a `__forceinline` memberwise copy ctor (dword copies straight from the argument pointer in eax;
 //   the implicit copy goes through `mov ecx,eax`), the `false` pushed first.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     bool GetNearbyWanderPosition(const C3DVector* from, float radius, C3DVector* result, bool flag);    // 0x006CB6E0
     void ResetNavigator();                      // 0x006CB6B0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -34,7 +34,7 @@ struct CTCPhysicsBase {
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);     // slot 31 (+0x7c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,7 +57,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);
 };
 

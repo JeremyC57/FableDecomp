@@ -1,7 +1,7 @@
 // behaviour test for 0x005E0940 _Push_heap<pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase> >, CKeyPairCompareLess>
 #include <cstdio>
 static int g_deleted = 0;
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     unsigned int IVRefCount;
     int id;
     void Delete() { ++g_deleted; }

@@ -21,16 +21,16 @@ struct CDeletionParents {
     CDeletionParents(const CDeletionParents&); //0042BF06
     ~CDeletionParents(); //0042ABCA
 };
-struct CDeletion {
+class CDeletion { public:
     unsigned long Method;
     CDeletionParents AssociatedParents;
     CDeletion() { Method=2; }
     CDeletion(const CDeletion&); //0042CD84
 };
 struct CUIInterface { virtual ~CUIInterface() {} };
-struct CObserver { virtual ~CObserver() {} unsigned char EventsToObserve[0xc]; bool PreventObservation; unsigned char ObserverPadding[3]; };
-struct CActionParam { virtual ~CActionParam() {} };
-struct CComponent : CUIInterface,CObserver,CActionParam {
+class CObserver { public: virtual ~CObserver() {} unsigned char EventsToObserve[0xc]; bool PreventObservation; unsigned char ObserverPadding[3]; };
+class CActionParam { public: virtual ~CActionParam() {} };
+class CComponent : public CUIInterface,public CObserver,public CActionParam { public:
     unsigned char ComponentState[0x134-0x1c];
     virtual void v01();
     virtual void v02();
@@ -95,11 +95,11 @@ struct CComponent : CUIInterface,CObserver,CActionParam {
     virtual void v61();
     virtual void SetDeletion(CDeletion); //slot62/00531E90
 };
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     unsigned char ChangingState[0x15c-0x134];
     ~CChangingStateComponent(); //0052CCF0
 };
-struct CScrollableList : CChangingStateComponent {
+class CScrollableList : public CChangingStateComponent { public:
     unsigned char ListLayout[0x10];
     float ScrollTimer;
     CComponent* PUpArrow;

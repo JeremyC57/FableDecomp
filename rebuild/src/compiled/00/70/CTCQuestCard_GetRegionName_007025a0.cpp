@@ -18,7 +18,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
@@ -42,8 +42,8 @@ struct CDefStringTable {
     CCharString GetString(long id);             // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
-struct CDefPointeeBase { virtual void v00(); long m_refCount; };
-struct CQuestCardDef : CDefPointeeBase {
+class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
+class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x38 - 0x08];
     long RegionName;                            // +0x38 CDefString id
 };

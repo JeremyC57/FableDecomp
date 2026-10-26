@@ -45,7 +45,7 @@ __declspec(noinline) bool CBasicStringChar::operator==(const char* text) const
     return strcmp(PData, text) == 0;
 }
 #pragma auto_inline(on)
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                              // +0x00
 };
 

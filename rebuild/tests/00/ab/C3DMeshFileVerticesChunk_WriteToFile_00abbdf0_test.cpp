@@ -6,14 +6,14 @@ struct COut {
     void WriteULong(unsigned long v) { u[nu++] = v; }
     void WriteFloat(float v) { f[nf++] = v; }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DVertex2 { C3DVector Position; C3DVector Normal; float U; float V; };
-struct C3DMeshFileVerticesChunk {
+class C3DVector { public: float X, Y, Z; };
+class C3DVertex2 { public: C3DVector Position; C3DVector Normal; float U; float V; };
+class C3DMeshFileVerticesChunk { public:
     CArray<C3DVertex2> VertexList;
     void WriteToFile(COut& out) const
     {

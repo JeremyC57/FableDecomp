@@ -15,14 +15,14 @@
 //   CThingPhysical::Damageable bit 0 of +0xBC (PDB +0xD4).
 // Shape: CModeBase::OnDeactivate is the inline `Active = false` between the first two calls; the player-creature tail runs on a
 //   named thing local (edi survives the calls); the bit store is a one-bit bitfield assignment (xor/and/xor).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -37,16 +37,16 @@ struct CTCPhysicsBase {
     virtual void ResetPhysicsFlagsToDef();      // slot 44 (+0xB0), 0x00723A50
 };
 struct CModeBase;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnRefused();                   // slot 4 (+0x10)
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -78,15 +78,15 @@ struct CThing {
     void SetSuspendAnimation(bool suspend, CModeBase* mode);                   // 0x00833A10
     bool SetCurrentAction(const CCountedPointer<CCreatureActionBase>& action); // 0x00664670
 };
-struct CTCMapwho {                              // interface 0x3a
+class CTCMapwho { public:                              // interface 0x3a
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                 // +0x50 bit 0
 };
-struct CTCTargeted {                            // interface 9
+class CTCTargeted { public:                            // interface 9
     unsigned char _pad00[0x10];
     bool          Targetable;                   // +0x10
 };
-struct CTCWillResponse {
+class CTCWillResponse { public:
     static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 };
 

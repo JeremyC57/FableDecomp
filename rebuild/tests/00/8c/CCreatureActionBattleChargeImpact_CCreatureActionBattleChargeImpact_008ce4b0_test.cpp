@@ -1,10 +1,10 @@
 // Behaviour test for 0x008CE4B0 CCreatureAction_BattleChargeImpact ctor: base(owner,145,{0,0}), Left/Right copied from the by-value pointers, animation "ST_BATTLE_CHARGE_IMPACT".
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CBaseObject { int id; };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
+class CThingCreatureBase { public: int id; };
+class CBaseObject { public: int id; };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
 struct CBaseIntelligentPointer {
     CBaseObject* PItem;
     CBaseIntelligentPointer() : PItem(0) {}
@@ -15,12 +15,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CBaseObject* i) { SetPItem(i); }
     CIntelligentPointerThing(const CIntelligentPointerThing& o) : CBaseIntelligentPointer() { SetPItem(o.GetPItem()); }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* owner; long code, s0, s1; const char* anim;
     CCombatActionBase(CThingCreatureBase* o, long c, const CSoundPair& s) : owner(o), code(c), s0(s.FirstSound), s1(s.LastSound), anim(0) {}
     void SetAnimationName(const CCharString& n) { anim = n.t; }
 };
-struct CCreatureAction_BattleChargeImpact : CCombatActionBase {
+class CCreatureAction_BattleChargeImpact : public CCombatActionBase { public:
     CIntelligentPointerThing Left, Right;
     CCreatureAction_BattleChargeImpact(CThingCreatureBase* owner, CIntelligentPointerThing left, CIntelligentPointerThing right)
         : CCombatActionBase(owner, 145, CSoundPair()), Left(left), Right(right)

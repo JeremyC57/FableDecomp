@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstring>
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     char t[32];
     CCharString(const char* s) { std::strcpy(t, s); ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CScriptThing { bool accept; virtual bool Accepts(const CCharString& n) const { return accept && n.t[0] == 0; } virtual ~CScriptThing() {} };
-struct CGameScriptInterface {
+class CScriptThing { public: bool accept; virtual bool Accepts(const CCharString& n) const { return accept && n.t[0] == 0; } virtual ~CScriptThing() {} };
+class CGameScriptInterface { public:
     bool loaded; int queries;
     virtual bool IsRegionLoaded(const CCharString& r) const { const_cast<CGameScriptInterface*>(this)->queries++; return loaded && std::strcmp(r.t, "KnotholeGlade") == 0; }
     virtual ~CGameScriptInterface() {}

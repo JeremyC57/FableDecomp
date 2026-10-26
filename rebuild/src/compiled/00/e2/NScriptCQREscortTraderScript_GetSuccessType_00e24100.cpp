@@ -16,9 +16,9 @@
 // Shape: three early returns in source order. `GetHealth(trader) == TraderInitialHealth` gives the call then
 // `fld member ; fucompp ; test ah,44h ; jp`; each tier is a hit-limit `if` holding a block-local def pointer and the
 // fraction test `limit <= health / initial` (`fcomp [ebx+N] ; test ah,1 ; jne`); the global is reloaded per tier.
-struct CScriptThing;
+class CScriptThing;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -49,7 +49,7 @@ struct CGameScriptInterface {
     virtual float GetHealth(const CScriptThing& thing) const;        // slot 264 (+0x420)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0x988];
     long  EscortTraderGreatMaxHits;                     // +0x988
     long  EscortTraderGoodMaxHits;                      // +0x98c
@@ -64,7 +64,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     unsigned char _body[0x3c];                          // +0x04 .. +0x40
 };
 
-struct CQR_EscortTraderScript : CScriptBase {
+class CQR_EscortTraderScript : public CScriptBase { public:
     enum EscortTraderSuccessType {
         ESCORT_TRADER_SUCCESS_BASIC   = 0,
         ESCORT_TRADER_SUCCESS_GOOD    = 1,

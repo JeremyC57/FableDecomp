@@ -12,7 +12,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stdlib.h>
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
 };
@@ -39,7 +39,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     mutable CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];
@@ -64,10 +64,10 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
     return thing != 0 && IsThingAliveImpl(thing);
 }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();               // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
 struct LongVector {
@@ -76,7 +76,7 @@ struct LongVector {
     ~LongVector() { if (Start) free(Start); }
     unsigned int size() const { return Finish - Start; }
 };
-struct CHeroAbilityDef;
+class CHeroAbilityDef;
 struct CAbilityDefPointer { CHeroAbilityDef* Object; };
 struct AbilityVector {                             // vector<CDefPointer<const CHeroAbilityDef> >
     CAbilityDefPointer *Start, *Finish, *End;
@@ -89,10 +89,10 @@ struct CTCHeroAbilities {
     long          ScrollIndex;                     // +0x144
     void GetAbilities(AbilityVector& out);         // 0x005F4B30
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
 namespace NPlayerGui {
-struct CDrawAbilityButtons {
+class CDrawAbilityButtons { public:
     void*           PlayerGui;              // +0x04
     CPlayerManager* PlayerManager;          // +0x08
     void*           World;                  // +0x0c

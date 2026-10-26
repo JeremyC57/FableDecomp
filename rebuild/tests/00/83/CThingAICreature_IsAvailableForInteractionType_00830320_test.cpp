@@ -1,7 +1,7 @@
 // Behaviour test for CThingAICreature::IsAvailableForInteractionType @ 0x00830320: def lists the type and no current interaction.
 #include <cstdio>
-struct CCreatureDef { unsigned long m_interactionTypes; };
-struct CThingAICreature {
+class CCreatureDef { public: unsigned long m_interactionTypes; };
+class CThingAICreature { public:
     CCreatureDef* m_pCreatureDef; void* m_pCurrentInteraction;
     bool IsAvailableForInteractionType(long interactionType)
     {

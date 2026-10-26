@@ -8,9 +8,9 @@
 // Shape: the interaction is used without a null test; the counted pointer is cleared by an inline release that
 // re-reads the block member after the decrement (`dec [eax] ; mov eax,[esi+130h] ; cmp [eax],edi`), then the block and
 // the object are zeroed in that order (the inline `Reset(0)` shape of the out-of-line 0x00669440).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCreatureInteraction {
+class CCreatureInteraction { public:
     void RemoveParticipant(CThingCreatureBase& creature);   // 0x008631B0
 };
 
@@ -38,7 +38,7 @@ struct CInteractionPointer {                    // CCountedPointer<CCreatureInte
     CCreatureInteraction* operator->() const { return m_pObject; }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char       _pad00[0x12c];
     CInteractionPointer m_creatureInteraction;  // +0x12c
     void RemoveFromCreatureInteraction();

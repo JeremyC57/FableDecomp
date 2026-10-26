@@ -1,4 +1,4 @@
-struct CCreatureAction_PutDownTankard {
+class CCreatureAction_PutDownTankard { public:
     void* vftable;
 };
 

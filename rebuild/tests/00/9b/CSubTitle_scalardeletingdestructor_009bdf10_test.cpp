@@ -20,7 +20,7 @@ public:
 };
 
 namespace NGameText {
-struct CTextEntry {                                          // intrusive virtual counted pointee
+class CTextEntry { public:                                          // intrusive virtual counted pointee
     virtual void v00();
     virtual void DeleteThis();                               // slot 1 (+4)
     long RefCount;                                           // +0x04

@@ -15,7 +15,7 @@
 //   and the result take the right frame words) on a named def local (the null test on ecx, which then carries the
 //   vcall's `this`; testing the member loads eax); the load lookup pushes its arguments before the manager
 //   getter.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -28,22 +28,22 @@ struct CDefStringTable {
     CCharString GetString(long id);                     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
-struct CDefString {                                     // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                                     // 4-byte def-name handle (user constructor: hidden-pointer return)
     long Index;
     CDefString();
     CCharString GetString() const { return g_DefStringTable.GetString(Index); }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual CDefString GetInstantiationName() const;    // slot 10 (+0x28)
 };
-struct CExpressionDef : CDefClassBase { };
-template <class T> struct CDefPointer { T* Object; };
-struct CDefinitionManager {
+class CExpressionDef : public CDefClassBase { public: };
+template <class T> class CDefPointer { public: T* Object; };
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer<const CExpressionDef>* out);   // 0x00593666
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

@@ -10,7 +10,7 @@
 // Body: STLport 4.6 -- `_Destroy(_M_start, _M_finish)` then the block freed when non-null. __destroy_aux is a same-TU noinline
 //   stand-in under auto_inline(off) (retail calls it out of line); the empty tag temporary lives in the `push ecx` slot.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {             // 8 bytes
 public:
     T*              Data;                             // +0x00

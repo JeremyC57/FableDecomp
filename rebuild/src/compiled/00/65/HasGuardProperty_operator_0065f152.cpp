@@ -9,7 +9,7 @@
 // intelligent pointer is a local model (vptr + item, 8 bytes) with the out-of-line base destructor.
 // Shape: the compare is taken into bl (`sete bl`) before the argument's destructor runs, then returned.
 #pragma optimize("s", on)
-struct CThingAICreature {
+class CThingAICreature { public:
     virtual void v000();
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                       // 0x00A01C10
     void* GetPItem() const;                           // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 

@@ -1,7 +1,7 @@
 // Behaviour test for CReactionMatch_MRPyramid::TransferBinaryOut @ 0x006FECA0: base state first, then the three shifts.
 #include <cstdio>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     float values[16]; int n; int baseCalls;
     CDataOutputStream() : n(0), baseCalls(0) {}
     void WriteFloat(float v) { values[n++] = v; }

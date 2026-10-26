@@ -44,7 +44,7 @@ struct CScriptThingInner {
   virtual bool m40(int a0,int name){ return true; }
   virtual bool m41(int a0,int name){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgIsHitBySpecialAbilityFrom(int a0,int name); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgIsHitBySpecialAbilityFrom(int a0,int name); };
 bool CScriptThing::MsgIsHitBySpecialAbilityFrom(int a0,int name){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m41(a0,name); }
 int main(){
     CScriptThing t; t.m_impl=0;

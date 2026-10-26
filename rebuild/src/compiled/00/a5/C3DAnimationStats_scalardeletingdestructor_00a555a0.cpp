@@ -1,4 +1,4 @@
-struct C3DAnimationStats {
+class C3DAnimationStats { public:
     void* vftable;
 };
 

@@ -13,12 +13,12 @@
 // retail +0x71 (quest-script base 0x14 smaller); CScriptDef TE_EarthTrollTriggerDistance PDB +0xECC = retail +0xE1C.
 // Shape: the landed CPrisonRaceWarden::Main 0x00DDD030 (handle / map / movie storage views) and CHTE_Prisoner::Main
 // 0x00D69F50 (scoped alive-filter).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // 12 bytes
+class CScriptThing { public:                                  // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     ~CScriptThing();                                   // 0x004AA840
@@ -30,13 +30,13 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
     ~CIsThingAlive() { }
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x007E72A0 (out-of-line ctor)
     void Destroy();                                    // 0x007E74D0 (out-of-line dtor)
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
-struct CScriptGameResourceObjectMovieBase {            // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase { public:            // vtable 0x01260EF4, 0x10 bytes
     void* _body[4];
     void Construct();                                  // 0x006E7B60
     void Destroy();                                    // 0x006E7B80
@@ -60,7 +60,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -73,7 +73,7 @@ struct CGameScriptInterface {
     VPAD8(ta)                                                                        // slots 371..378
     virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5ec)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xe1c];
     long TE_EarthTrollTriggerDistance;                 // +0xE1C (PDB +0xECC)
 };
@@ -82,7 +82,7 @@ struct CQ_TraderEscortScript {
     unsigned char _pad[0x71];
     bool ShownEarthTroll;                              // +0x71 (PDB +0x85)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

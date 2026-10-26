@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CEntryObject { int shut; CEntryObject() : shut(0) { } virtual void Shutdown() { ++shut; } };
 struct SEntry { unsigned long m_key; CEntryObject* m_pObject; unsigned char pad[28]; };
-struct CThing {
+class CThing { public:
     bool m_active; int deactivations; bool activeDuringCall;
     SEntry* m_entriesFirst; SEntry* m_entriesLast;
     virtual void Deactivate() { ++deactivations; activeDuringCall = m_active; }

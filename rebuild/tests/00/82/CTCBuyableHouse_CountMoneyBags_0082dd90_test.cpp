@@ -1,11 +1,11 @@
 // behaviour test for 0x0082DD90 (thing: any live contained thing with interface 0x26)
 #include <cstdio>
-struct CThing;
+class CThing;
 struct Ptr { CThing* p; CThing* Get() const { return p; } };
 struct Node { Node* next; Node* prev; Ptr thing; };
 struct List { Node* head; };
 struct Entry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned int bits[9];
     Entry* first; Entry* last;
     unsigned char flags;

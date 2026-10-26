@@ -15,21 +15,21 @@
 #include "engine/CIVCountedPointeeBase.h"
 #include "fable_string.h"
 struct CCameraNativeDef:CIVCountedPointeeBase {void ReleaseReference(){--IVRefCount;if(!IVRefCount){typedef void(CCameraNativeDef::*F)()const;(this->*static_cast<const F*>(__vftable)[1])();}}};
-struct CCameraModeDef:CCameraNativeDef {unsigned char BeforeMode[0x34];long CameraMode;}; //native3C vs donor40
-struct CCameraManagerDef {unsigned char BeforeModes[0x54];int InitialMode,ZTargetMode,ProjectileWeaponMode;}; //native58/5C vs donor64/68
+class CCameraModeDef:public CCameraNativeDef { public:unsigned char BeforeMode[0x34];long CameraMode;}; //native3C vs donor40
+class CCameraManagerDef { public:unsigned char BeforeModes[0x54];int InitialMode,ZTargetMode,ProjectileWeaponMode;}; //native58/5C vs donor64/68
 struct CCameraDefPointer {CCameraModeDef* Object;CCameraDefPointer():Object(0){}CCameraDefPointer(const CCameraDefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}~CCameraDefPointer(){if(Object)Object->ReleaseReference();}};
 // Quarantined manager header internally contradicts sizeof1/vptr4; declaration-only view.
-struct CGameDefinitionManager {bool GetDef(long,CCameraDefPointer*);}; //56D0C0
+class CGameDefinitionManager { public:bool GetDef(long,CCameraDefPointer*);}; //56D0C0
 struct CCameraMode {void* Vtable;};
 struct CCameraModeOwner {unsigned References;void(__fastcall* Destroy)(void*);void* Data;};
 struct CCameraModePointer {CCameraMode* Data;CCameraModeOwner* Info;CCameraModePointer();/*PDB fablewin55953*/CCameraModePointer(const CCameraModePointer&);~CCameraModePointer();void Reset(CCameraMode*);}; //56C050
 struct CCameraScript {void* Vtable;bool IsFinished()const{typedef bool(CCameraScript::*F)()const;return(this->*static_cast<const F*>(Vtable)[2])();}};
 struct CCameraScriptPointer {CCameraScript* Data;CCameraModeOwner* Info;};
-struct CThing {unsigned char BeforeDeleted[0x91];unsigned char Deleted;};
+class CThing { public:unsigned char BeforeDeleted[0x91];unsigned char Deleted;};
 struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50
 struct CCameraDefArray {CCameraDefPointer* Begin;CCameraDefPointer* End;CCameraDefPointer* Capacity;};
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing*,const CCameraManagerDef&,const CCharString&); //698A30
-struct CGameCameraManager;
+class CGameCameraManager;
 struct CCameraBaseInit {CCameraMode* AllocMain(CGameCameraManager&,const CCameraDefPointer&)const;}; //84D270; PDB20801
 struct CCameraInitPointer {CCameraBaseInit* Data;CCameraModeOwner* Info;CCameraBaseInit* operator->()const{return Data;}};
 struct CCameraRegisteredValue {int Key;CCameraInitPointer Second;};
@@ -39,7 +39,7 @@ struct CCameraRegisteredEntry {unsigned Color;CCameraRegisteredEntry* Parent;CCa
 struct CCameraRegisteredIterator {CCameraRegisteredEntry* Node;explicit CCameraRegisteredIterator(CCameraRegisteredEntry* p):Node(p){}CCameraRegisteredIterator(const CCameraRegisteredIterator& x):Node(x.Node){}~CCameraRegisteredIterator(){}CCameraRegisteredValue* operator->()const{return &Node->Value;}};
 namespace NCameraModes {enum EMode {}; } //real map key enum; mode definition stores long
 struct CCameraRegisteredMap {unsigned char State[12];CCameraRegisteredIterator Find(const NCameraModes::EMode&);}; //69CF90
-struct CGameCameraManager {
+class CGameCameraManager { public:
  CGameCameraManager(const CWorld&); //actual PDB13517
  unsigned char Prefix[0x74];CWorld* World;unsigned char CamTools[0x20];CCameraModePointer CurrentMode,PendingMode;
  unsigned char BeforeScripts[0x2c];CCameraScriptPointer CurrentScript,PendingScript;unsigned char BeforeObserved[0x1c];CCameraObservedPointer Observed;

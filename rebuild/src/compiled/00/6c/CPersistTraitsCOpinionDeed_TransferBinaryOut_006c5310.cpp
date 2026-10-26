@@ -14,7 +14,7 @@
 //   or 0 for an empty pointer. Speed-optimised (default) TU.
 #include "engine/CDataOutputStream.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                    // 0x00993E30
@@ -25,7 +25,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
 
 long GFGetCurrentFrame();                           // 0x0049D870
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad_0x00[0x18];
     unsigned __int64 UniqueID;                      // +0x18
 };
@@ -37,12 +37,12 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() {}
 };
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long                               DeedType;                    // +0x00 EOpinionDeedType
     long                               DeedHandle;                  // +0x04
     C3DVector                          Position;                    // +0x08

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <new>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CSoundManagerLH;
 

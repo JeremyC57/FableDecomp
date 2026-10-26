@@ -1,8 +1,8 @@
 // CPersistTraits<long>::TransferOut  @ 0x00c20400
 // __fastcall void(this, arg)  -- retail cleans ret 4 (one stack arg used)
 
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 
 // sub-object living at this+8; its Write is a real out-of-line __fastcall helper
 struct PersistWriter

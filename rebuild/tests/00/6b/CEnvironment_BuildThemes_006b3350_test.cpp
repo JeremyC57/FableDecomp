@@ -11,7 +11,7 @@
 #else
 #define __fastcall
 // Host declarations mirror fable_string.h while avoiding its mandatory 32-bit ABI assertions.
-struct CWideString {
+class CWideString { public:
  void* Data;
  CWideString(const wchar_t*); //0099b6b0
  CWideString(const CWideString&); //0099b720
@@ -19,13 +19,13 @@ struct CWideString {
  const CWideString& operator+=(const CWideString&); //0099b8d0
  CWideString& operator=(const CWideString&); //0099b7d0
 };
-struct CCharString { void* Data; CWideString ToWideString() const; }; //0099e480
+class CCharString { public: void* Data; CWideString ToWideString() const; }; //0099e480
 #endif
-struct CAFile { static CWideString __fastcall ConvertPathToFullPath(const CWideString&); }; //00999110 (LTCG result ecx,source edx)
+class CAFile { public: static CWideString __fastcall ConvertPathToFullPath(const CWideString&); }; //00999110 (LTCG result ecx,source edx)
 // Donor CEnvironmentDef ColourLookupTexture is+40; native+3c reflects a four-byte base-layout difference.
-struct CEnvironmentDef { unsigned char beforeLookup[0x3c]; CCharString ColourLookupTexture; };
+class CEnvironmentDef { public: unsigned char beforeLookup[0x3c]; CCharString ColourLookupTexture; };
 // Generated _quarantine/CGameDefinitionManager.h is unusable: sizeof1 contradicts its void* vptr. Native EnvironmentDef is audited+d8.
-struct CGameDefinitionManager { unsigned char beforeEnvironment[0xd8]; CEnvironmentDef* EnvironmentDef; };
+class CGameDefinitionManager { public: unsigned char beforeEnvironment[0xd8]; CEnvironmentDef* EnvironmentDef; };
 // DDK <new> omits the ordinary array-delete declaration; declare it before the inline destructor.
 void operator delete[](void*) throw();
 namespace NEnvironmentInternal {
@@ -34,7 +34,7 @@ struct CEnvironmentLookupTexture {
  CEnvironmentLookupTexture(CWideString); //00885f50
  ~CEnvironmentLookupTexture() { delete[] Data; }
 };
-struct CEnvironmentThemeResourcePallette {
+class CEnvironmentThemeResourcePallette { public:
  void Build(const CGameDefinitionManager&,const CEnvironmentDef&,const CEnvironmentLookupTexture&); //00888a60
 };
 }
@@ -67,7 +67,7 @@ void operator delete[](void* p) throw() {
  free(p);
 }
 #ifndef _MSC_VER
-struct CWideStringData {wchar_t* text;};
+class CWideStringData { public:wchar_t* text;};
 #endif
 static int live,failed,built;
 static CEnvironmentNativeView* active;

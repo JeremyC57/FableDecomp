@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCombatAbilityBlockingData {
+class CCombatAbilityBlockingData { public:
     int f0;
     int Parent;
     void* f8;

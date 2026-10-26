@@ -5,11 +5,11 @@
 #include <new>
 // Layout: retail CWideStringData uses text/start+0,finish+4,storage+8 and signed refs+12,total16; copy0099b758 and release0099b4d9 prove refs+12.
 #pragma pack(push,1)
-struct CWideStringData{unsigned short*PData,*Finish,*Storage;int RefCount;};
+class CWideStringData{ public:unsigned short*PData,*Finish,*Storage;int RefCount;};
 #pragma pack(pop)
-struct CWideString{CWideStringData*PData;CWideString();CWideString(const CWideString&);~CWideString();};
+class CWideString{ public:CWideStringData*PData;CWideString();CWideString(const CWideString&);~CWideString();};
 // Layout: PDB CRegisteredMusicEntry has SrcFileName+0,DstFileName+4,Gain+8,Offset+12,CacheToHD+16, total20; pair stride24.
-struct CMusicManager{struct CRegisteredMusicEntry{CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};};
+class CMusicManager{ public:class CRegisteredMusicEntry{ public:CWideString SrcFileName,DstFileName;float Gain,Offset;bool CacheToHD;};};
 namespace std{
 struct __false_type{__false_type(){}};
 template<class A,class B>struct pair{A first;B second;pair(){}__forceinline pair(const pair&x):first(x.first),second(x.second){}};

@@ -14,10 +14,10 @@ struct Local {
     ~Local(){ g_dtor = 1; }
 };
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 typedef void (__fastcall *PFN)(CGameScriptInterface*, Local*, int, Local*, int);
 struct VT { PFN slots[0x300]; };
-struct CGameScriptInterface { VT* vt; };
+class CGameScriptInterface { public: VT* vt; };
 
 void __fastcall vimpl(CGameScriptInterface*, Local* edxLoc, int entity, Local* loc, int enabled)
 {

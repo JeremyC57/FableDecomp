@@ -1,9 +1,9 @@
 #include <string.h>
 
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     char pad[0x18];
     int CurrentReactionType;
     unsigned char states[79];

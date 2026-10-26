@@ -33,8 +33,8 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // RandomFrames(seconds) helper that copies g_framesPerSecond into a local BEFORE fetching the seed and forms the range
 // before the seed update: retail loads fps into a callee-saved register ahead of GetPWorldSeed and multiplies (x40/x5)
 // between the seed arithmetic and GFROR13; the leave test's fps load stays inside the `over` branch this way.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -44,12 +44,12 @@ struct C3DVector {
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 __forceinline float C3DVector::GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
@@ -60,7 +60,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -79,13 +79,13 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CVillage {
     unsigned char _pad[0xbc];
     bool LessonOn;                              // +0xBC
     bool GetSchoolTimes(float* start, float* end);   // 0x00658ACB
 };
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CVillage* GetPVillage();                    // 0x007EE540
 };
 struct CTimeOfDay {
@@ -103,26 +103,26 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

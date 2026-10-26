@@ -1,8 +1,8 @@
 // Behaviour test for CAIStateGroup_MinionKidCalledToMother::Update (0x0090EEC0): model copy, scripted stubs.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     unsigned char m_flags91;
     C3DVector pos;
     const C3DVector& GetPosition() const { return pos; }
@@ -11,7 +11,7 @@ struct CPtr {
     CThing* item;
     CThing* GetPItem() const { return item; }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CPtr PMother;
     float turn;
     float GetTurnAngleDegrees() { return turn; }
@@ -36,7 +36,7 @@ struct CHeld {
         return item;
     }
 };
-struct CAIBrain { CThingAICreature* PCreature; };
+class CAIBrain { public: CThingAICreature* PCreature; };
 struct CAIStateGroup_MinionKidCalledToMother {
     CAIBrain* PBrain;
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }

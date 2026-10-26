@@ -3,7 +3,7 @@
 // scripted thing is alive and the entity is alive; the by-value script-thing temporaries are destroyed
 static int g_live = 0, g_added = 0;
 struct CThing_Retail;
-struct CScriptThing {
+class CScriptThing { public:
     CThing_Retail* t;
     CScriptThing(CThing_Retail* x) : t(x) { ++g_live; }
     CScriptThing(const CScriptThing& o) : t(o.t) { ++g_live; }
@@ -19,7 +19,7 @@ struct CActionWaitForThingToFinishPerformingTasks : CActionBase {
     CScriptThing Target;
     CActionWaitForThingToFinishPerformingTasks(CThing_Retail* target) : Target(target->GetScriptThing()) { g_target = Target.t; }
 };
-struct CTCScriptedControl { void AddAction(CActionBase* a) { ++g_added; delete a; } };
+class CTCScriptedControl { public: void AddAction(CActionBase* a) { ++g_added; delete a; } };
 static CTCScriptedControl g_control;
 struct CThingWithControl : CThing_Retail { bool GetInterface(CTCScriptedControl** out, long) { *out = &g_control; return true; } };
 struct CIntelligentPointer_Retail { CThingWithControl* item; CThingWithControl* GetPItem() { return item; } };

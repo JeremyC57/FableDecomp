@@ -8,9 +8,9 @@
 #include "rebuild_abi.h"
 
 struct C3DVectorF { float X, Y, Z; };
-struct C3DBoundingBox    { C3DVectorF Min, Max; };
-struct C3DBoundingSphere { C3DVectorF Center; float Radius; };
-struct C3DMeshPartitionElement {
+class C3DBoundingBox    { public: C3DVectorF Min, Max; };
+class C3DBoundingSphere { public: C3DVectorF Center; float Radius; };
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1c

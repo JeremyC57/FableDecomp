@@ -7,7 +7,7 @@
 // GetName) is ignored by the body.
 
 #include "engine/CCombatSequence_TrollOpeningGroundPound.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString(const char* s, int len);   // 0x0099ebf0
 };

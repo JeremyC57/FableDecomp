@@ -4,16 +4,16 @@ static int g_log[16]; static int g_n = 0;
 namespace N_0099a300 { struct CBase { virtual ~CBase() { g_log[g_n++] = 99; } }; } using N_0099a300::CBase;
 struct CPixelShaderObject { int id; long m_refCount; virtual ~CPixelShaderObject() { g_log[g_n++] = id; } };
 struct CVertexShaderObject { int id; long m_refCount; virtual ~CVertexShaderObject() { g_log[g_n++] = id; } };
-struct CShaderBase { virtual ~CShaderBase() { } };
-struct CPixelShader : CShaderBase {
+class CShaderBase { public: virtual ~CShaderBase() { } };
+class CPixelShader : public CShaderBase { public:
     CPixelShaderObject* m_pShader;
     virtual ~CPixelShader() { CPixelShaderObject* s = m_pShader; if (s) { if (--s->m_refCount == 0) delete s; } }
 };
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderObject* m_pShader;
     virtual ~CVertexShader() { CVertexShaderObject* s = m_pShader; if (s) { if (--s->m_refCount == 0) delete s; } }
 };
-struct CEnginePrimitiveManager2DSprites : CBase {
+class CEnginePrimitiveManager2DSprites : public CBase { public:
     unsigned char active; CVertexShader VertexShader2DSprite, VertexShader2DClockSprite;
     CPixelShader PixelShader2DClockSprite, PixelShader2DClockSpriteAdditive; unsigned short Indices[6];
     virtual ~CEnginePrimitiveManager2DSprites() { }

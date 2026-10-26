@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
-struct CCombatAbilityBlockingData {
+class CCombatAbilityBlockingData { public:
     int f0;
     int Parent;
     void* f8;

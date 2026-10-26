@@ -1,7 +1,7 @@
 // Behaviour test for 0x00AA4D80 C3DMeshFileXTextureIndexChunk::ReadFromFile
 #include <cstdio>
 #include <cstring>
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     long m_remaining;

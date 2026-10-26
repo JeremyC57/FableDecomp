@@ -7,8 +7,8 @@ struct COwner
     void Release(int slot);
 };
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     int    field0;      // +0x00
     int    slot;        // +0x04  (arg pushed to the call)
     int    field8;      // +0x08

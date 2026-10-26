@@ -1,7 +1,7 @@
 #include <cstdio>
 enum EPlayerMode { PLAYER_MODE_NULL = 0, PLAYER_MODE_A = 3, PLAYER_MODE_B = 7, PLAYER_MODE_C = 11 };
 struct SModeNode { SModeNode* m_pNext; SModeNode* m_pPrev; EPlayerMode m_value; };
-struct CPlayer {
+class CPlayer { public:
     SModeNode* PlayerModes;
     bool HasMode(EPlayerMode mode) const
     {

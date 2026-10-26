@@ -9,12 +9,12 @@
 // the vtable (and with it this `??_G`) into the object; the extractor selects `??_G` by name.
 // Model: as 0x00A85FF0 -- the engine header flattens the vptr, so the class is local with the PDB
 // member names and offsets.
-struct CPlane {
+class CPlane { public:
     float m_normal[3];
     float m_distance;
 };
 
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual unsigned char HasChildren() = 0;   // slot 0
     virtual long Sizeof() = 0;                 // slot 1
     virtual long GetNoFaces() = 0;             // slot 2

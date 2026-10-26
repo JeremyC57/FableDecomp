@@ -2,20 +2,20 @@
 // balverine is killed, then the objective / alive flag / pause / music / trophy / generators follow in order.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* text) { std::strncpy(Text, text, 63); Text[63] = 0; }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 static int g_frames = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int killedAt;
     bool MsgIsKilledBy(const CCharString& killer) const { return killer.Text[0] == 0 && g_frames >= killedAt; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char log[512];
     void Add(const char* s) { std::strcat(log, s); std::strcat(log, ";"); }
     void NewScriptFrame() { ++g_frames; }

@@ -1,14 +1,14 @@
 // Behaviour test for CRandomAppearanceMorph::AddTextureMorphToBodyPart @ 0x0086BCC0: the morph goes to the indexed map, the max id rises.
 #include <cstdio>
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     T& operator[](unsigned long index) { return m_first[index]; }
 };
 struct CTextureMorph { unsigned long NewTexture, GroupID; };
 struct CTextureMorphMap { unsigned long keys[8]; CTextureMorph morphs[8]; int count; };
 
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CTextureMorphMap> BodyPartTextureMorphs;
     unsigned long MaxTextureGroupID;
     void AddTextureMorph(CTextureMorphMap& morphs, unsigned long originalTexture, const CTextureMorph& morph)

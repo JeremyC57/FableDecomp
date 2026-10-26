@@ -6,11 +6,11 @@
 //        slot (`mov byte ptr [esp+1Ch],0`); the first member address is `lea ecx,[esi+10h]`, the
 //        second advances `this`. Members: TeleportActive / TeleportActivated (the persisted keys;
 //        the constructor at 0x007DFEE0 clears both).
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
-struct CTCTeleporter {
+class CTCTeleporter { public:
     unsigned char _pad[0x10];
     bool m_teleportActive;              // +0x10
     bool m_teleportActivated;           // +0x11

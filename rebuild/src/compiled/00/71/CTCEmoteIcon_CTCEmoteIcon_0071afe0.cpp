@@ -11,9 +11,9 @@
 // CIVCountedPointer member's inline null constructor (`mov [edi+4],ebx` after the vtable store).
 // Local model: no engine header exists for CTCEmoteIcon; engine/CTCBase.h is a flattened POD (vptr as a data member), so the
 // polymorphic CTCBase is modelled locally.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -21,28 +21,28 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass();                                           // 0x0099A2D0
 };
 
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {                                  // CIVCountedPointer<CEnginePersistentPrimitiveBase>
     CEnginePersistentPrimitiveBase* Object;
     CIVCountedPointer() : Object(0) { }
 };
-struct CEnginePrimitiveHandle : CBaseClass {                // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598
     CIVCountedPointer Data;                                 // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
 };
 
-struct CTCEmoteIcon : CTCBase {                             // vtable 0x01265ABC
+class CTCEmoteIcon : public CTCBase { public:                             // vtable 0x01265ABC
     long ActiveTimer;                                       // +0x0c
     CWideString EmoteText;                                  // +0x10
     long EmoteIcon;                                         // +0x14

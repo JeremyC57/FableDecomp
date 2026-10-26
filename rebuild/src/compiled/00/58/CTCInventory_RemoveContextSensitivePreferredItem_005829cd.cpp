@@ -11,9 +11,9 @@
 // Shape: the name argument is pushed before the definition-manager getter runs (VC evaluates the object after
 // the arguments); `item > 0` guards the walk; first/last are both read once (nothing in the loop writes
 // memory); the record test keeps its own `> 0` before the equality; erase's iterator result is dropped.
-struct CCharString;
+class CCharString;
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
@@ -32,7 +32,7 @@ struct CPreferredItemVector {
     CPreferredItem* erase(CPreferredItem* where);    // 0x0059310D
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     static CPreferredItemVector ContextSensitivePreferredItems;   // 0x013B8B40
     CDefinitionManager* GetDefinitions();            // CTCBase, 0x006869D0
     bool RemoveContextSensitivePreferredItem(const CCharString& itemName);

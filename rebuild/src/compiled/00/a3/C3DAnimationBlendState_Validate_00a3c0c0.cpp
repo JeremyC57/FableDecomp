@@ -7,7 +7,7 @@
 // the size recomputed after every virtual call (the loop test is `i < Size()` through the member);
 // VC strength-reduces the element address to a running byte offset. BaseAnimation must be a
 // CIVCountedPointer with an inline operator-> (a raw pointer member fetches the vtable into edx, not eax).
-struct C3DAnimationStateBase {
+class C3DAnimationStateBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -17,13 +17,13 @@ struct C3DAnimationStateBase {
     unsigned long IVRefCount;              // +4
 };
 
-struct C3DAnimationStateAlpha : C3DAnimationStateBase {   // 0x14 bytes
+class C3DAnimationStateAlpha : public C3DAnimationStateBase { public:   // 0x14 bytes
     unsigned char _body[0x08];             // +0x08 .. +0x0F
     float AlphaWeight;                     // +0x10
 };
 
 template <class T>
-struct CArray {                            // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                            // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;                           // +0
     T* m_pEnd;                             // +4
     T* m_pEndOfStorage;                    // +8
@@ -32,7 +32,7 @@ struct CArray {                            // retail CArray is 12 bytes (the PDB
 };
 
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* m_pObject;
     T* operator->() const { return m_pObject; }
 };
@@ -45,7 +45,7 @@ struct CSharedData {
     CArray<C3DAnimationStateAlpha> CombinationBlends;  // +0xc
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4 CIVCountedPointer<CSharedData>
     void Validate() const;

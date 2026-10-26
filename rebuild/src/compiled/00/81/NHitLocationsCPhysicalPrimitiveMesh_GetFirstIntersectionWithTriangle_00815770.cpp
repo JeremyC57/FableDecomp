@@ -7,8 +7,8 @@
 //   start and the vtable are re-read every pass and `this` is spilled across the call. The hit position and normal
 //   are frame C3DVectors copied out dword by dword only on a hit. CPhysicalPrimitiveMesh is the 4-byte polymorphic
 //   base only (Ego_r.pdb).
-struct CThing;
-struct C3DVector { float X, Y, Z; };
+class CThing;
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct vector {
     T* _M_start;
     T* _M_finish;

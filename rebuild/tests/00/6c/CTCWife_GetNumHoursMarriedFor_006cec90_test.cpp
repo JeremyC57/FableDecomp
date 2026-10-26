@@ -2,7 +2,7 @@
 static long g_frame = 0;
 static long g_FramesPerSecond = 15;
 static long GetWorldFrame() { return g_frame; }
-struct CTCWife {
+class CTCWife { public:
     long FrameGotMarriedToThePlayer;
     float GetNumHoursMarriedFor() const
     {

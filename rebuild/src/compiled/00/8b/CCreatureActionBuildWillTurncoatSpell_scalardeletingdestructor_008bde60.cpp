@@ -1,4 +1,4 @@
-struct CCreatureAction_BuildWillTurncoatSpell {
+class CCreatureAction_BuildWillTurncoatSpell { public:
     void* vftable;
 };
 

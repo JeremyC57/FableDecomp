@@ -1,4 +1,4 @@
-struct CAnimateThing {
+class CAnimateThing { public:
     char pad0[4];
     int curFrame;
     int endFrame;

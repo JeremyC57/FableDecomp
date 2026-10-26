@@ -7,7 +7,7 @@
 #include <cmath>
 
 struct CConsoleCommand { const char* Name; void* Object; int Type; };
-struct CConsole { CConsoleCommand* Inputs[4]; int Count; CConsole() : Count(0) {} void AddInput(CConsoleCommand* c) { Inputs[Count++] = c; } };
+class CConsole { public: CConsoleCommand* Inputs[4]; int Count; CConsole() : Count(0) {} void AddInput(CConsoleCommand* c) { Inputs[Count++] = c; } };
 static CConsole* g_pConsole = 0; static int g_consoles = 0;
 inline CConsole* GetConsole() { if (g_pConsole == 0) { g_pConsole = new CConsole(); ++g_consoles; } return g_pConsole; }
 struct SSetNode { char Color; SSetNode* Parent; SSetNode* Left; SSetNode* Right; long Value; };
@@ -18,11 +18,11 @@ struct CLongSet {
         _M_header->Color = 0; _M_header->Parent = 0; _M_header->Left = _M_header; _M_header->Right = _M_header;
     }
 };
-struct CEnvironmentDef { float StartTime, DaySpeed; };
-struct CEnvironment { const CEnvironmentDef* Def; };
-struct CWorld { CEnvironment* Environment; };
-struct CMainGameComponent { int x; };
-struct CGameTimeManager {
+class CEnvironmentDef { public: float StartTime, DaySpeed; };
+class CEnvironment { public: const CEnvironmentDef* Def; };
+class CWorld { public: CEnvironment* Environment; };
+class CMainGameComponent { public: int x; };
+class CGameTimeManager { public:
     CWorld* World; CMainGameComponent* GameComponent; float Time, PrevTime, TimeStep; long DayCount; bool UsingVillageTime;
     float VillageTime; bool VillageDay, FastForwardingToTime; float TimeFastForwardingTo, SecondsLeftToFastForwardTime;
     CLongSet StopTimeIndexes; long NextStopTimeIndex;

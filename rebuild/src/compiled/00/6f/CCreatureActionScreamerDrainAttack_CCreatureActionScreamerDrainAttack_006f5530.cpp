@@ -8,12 +8,12 @@
 // constructor @ 0x008BBB10 runs, then the compiler stores this class's vtable (0x01261F7C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct C3DMeshFileXAnimatedPrimitiveChunk {
+class C3DMeshFileXAnimatedPrimitiveChunk { public:
     virtual void v00();
     C3DMeshFileXAnimatedPrimitiveChunk();                           // 0x008BBB10
 };
 
-struct CCreatureAction_ScreamerDrainAttack : C3DMeshFileXAnimatedPrimitiveChunk {
+class CCreatureAction_ScreamerDrainAttack : public C3DMeshFileXAnimatedPrimitiveChunk { public:
     virtual void v00();                    // this class has its own vtable
     CCreatureAction_ScreamerDrainAttack();
 };

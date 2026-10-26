@@ -29,7 +29,7 @@ struct CDataElementArray {                         // CArray<CDataElement>: deep
 private:
     CDataElementArray& operator=(const CDataElementArray&);
 };
-struct CVertexStreamFormat {
+class CVertexStreamFormat { public:
     CDataElementArray DataElements;
     CVertexStreamFormat() { ++g_live; }
     CVertexStreamFormat(const CVertexStreamFormat& o) : DataElements(o.DataElements) { ++g_live; }

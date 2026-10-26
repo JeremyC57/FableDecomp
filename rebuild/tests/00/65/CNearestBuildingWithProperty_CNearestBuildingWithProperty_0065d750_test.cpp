@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CNearestBuildingWithProperty::CNearestBuildingWithProperty(const CNearestBuildingWithProperty&) @ 0x0065D750
-struct CThingBuilding { int m_id; };
-struct CNearestBuildingWithProperty {
+class CThingBuilding { public: int m_id; };
+class CNearestBuildingWithProperty { public:
     long            BuildingProperty;
     unsigned long   PosX, PosY, PosZ;
     CThingBuilding* NearestBuilding;

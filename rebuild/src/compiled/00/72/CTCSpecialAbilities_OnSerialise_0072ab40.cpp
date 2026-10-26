@@ -6,11 +6,11 @@
 // slot-1 hook 0x007FFE40) with the key "CurrentCreatureGlobalDefNum" @ 0x0126681C.
 // The value is not a member: 0x0138306C is a static long in .data (initial value -1), so `this` is never read.
 // Shape: the zero default lives in the `push ecx` frame slot; the context is loaded straight into ecx.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     static long CurrentCreatureGlobalDefNum;                // 0x0138306C
     virtual void v00();
     virtual void OnSerialise(CPersistContext* context, long unused);

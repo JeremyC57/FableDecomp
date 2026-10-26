@@ -1,7 +1,7 @@
 // behaviour test for 00b32300 CEnginePrimitiveRenderer::InitialiseGlobalLights: lighting update, two tracked states from the
 // default, white colours handed over, third state enabled; capture/dirty bookkeeping as the render core does it
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

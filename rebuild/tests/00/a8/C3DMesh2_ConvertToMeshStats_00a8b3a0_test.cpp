@@ -13,25 +13,25 @@ static bool reloc_saw_lock=false;
 #include <string.h>
 #include <string.h>
 // C3DMesh2::ConvertToMeshStats() -- destroy mesh arrays and migrate the retained bone block into stats memory. Retail Fable.exe @ 0x00A8B3A0, 276 bytes; calls AllocateResource @ 0x00A62E40, GetPointerFromHandle @ 0x00A026B0, Free @ 0x00A62ED0, and virtual RelocateData slot +4. No C3DMesh2 header exists: layout follows landed C3DMesh2::Sizeof/InitialisePointers and RelocateData. The lock assignment uses an ordinary bool pointer to the named member; this preserves the actual field access while matching retail ordering without volatile.
-struct C3DMesh2;
-struct CMovableResourceMemoryPool {
+class C3DMesh2;
+class CMovableResourceMemoryPool { public:
     bool AllocateResource(long* handle, C3DMesh2* owner, unsigned long size, unsigned long flags); // 0x00A62E40
     void* GetPointerFromHandle(long handle); // 0x00A026B0
     void Free(long handle);                 // 0x00A62ED0
 };
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual ~C3DMeshStats();
     CMovableResourceMemoryPool* MemoryPool;
     long StatsMemoryHandle;
     unsigned char _stats[0x70];
     virtual void RelocateData(long,void*,void*,long);
 };
-struct C3DMeshMaterial { virtual void Destroy(unsigned long flags); unsigned char _body[0x2c]; };
-struct C3DPrimitive2 { virtual void Destroy(unsigned long flags); unsigned char _body[0x9c]; virtual void RelocateData(long,void*,void*,long); };
-struct C3DBone2 { unsigned char _body[0x3c]; };
-struct C3DKeyframe { unsigned char _body[0x30]; };
-struct CMatrix4x4 { float m[16]; };
-struct C3DMesh2 : C3DMeshStats {
+class C3DMeshMaterial { public: virtual void Destroy(unsigned long flags); unsigned char _body[0x2c]; };
+class C3DPrimitive2 { public: virtual void Destroy(unsigned long flags); unsigned char _body[0x9c]; virtual void RelocateData(long,void*,void*,long); };
+class C3DBone2 { public: unsigned char _body[0x3c]; };
+class C3DKeyframe { public: unsigned char _body[0x30]; };
+class CMatrix4x4 { public: float m[16]; };
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;                 // +0x7c
     long PrimMemoryHandle;             // +0x80
     long BoneNameMemoryHandle;         // +0x84

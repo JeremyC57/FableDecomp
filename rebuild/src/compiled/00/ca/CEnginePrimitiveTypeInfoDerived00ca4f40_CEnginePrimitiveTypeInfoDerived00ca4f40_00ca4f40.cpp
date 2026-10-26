@@ -16,7 +16,7 @@ struct IPrimitiveType1 { virtual void f1(); };                                  
 struct IPrimitiveType2 { virtual void f2(); unsigned char _pad[0x84]; };       // +0x10
 struct IPrimitiveType3 { virtual void f3(); unsigned char _pad[0x3c]; };       // +0x98
 
-struct CEnginePrimitiveTypeInfo : IPrimitiveType0, IPrimitiveType1, IPrimitiveType2, IPrimitiveType3 {
+class CEnginePrimitiveTypeInfo : public IPrimitiveType0, public IPrimitiveType1, public IPrimitiveType2, public IPrimitiveType3 { public:
     CEnginePrimitiveTypeInfo(long zero, COwnerBlock* owner, void* block, long b, long c);   // 0x00CAC260
 };
 

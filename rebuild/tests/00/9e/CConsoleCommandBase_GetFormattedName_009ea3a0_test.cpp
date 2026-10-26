@@ -1,7 +1,7 @@
 #include "engine/CConsoleCommandBase.h"
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     void* p;
     CCharString() {}
     CCharString(const CCharString& o) { p = o.p; }

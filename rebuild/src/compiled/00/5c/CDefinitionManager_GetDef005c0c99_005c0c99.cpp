@@ -66,7 +66,7 @@ struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
     bool GetDef_005c0c99(long index, CDefPointer& out);
 };

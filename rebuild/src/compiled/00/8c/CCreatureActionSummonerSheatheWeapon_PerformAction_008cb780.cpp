@@ -12,19 +12,19 @@
 // Shape: `this` spills to the frame across the carrying block (ebx holds the slot index); the creature def is taken as a by-value
 // CDefPointer temporary converted to a raw pointer (add-ref then immediate release, the index read afterwards); the attack-style
 // def is a CDefPointer local released by the inline dtor through the pointee `Release() { DecRef(); if (GetRefCount() == 0) Destroy(); }` (retail's long release form).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
@@ -37,12 +37,12 @@ struct CDefClassBase {
             Destroy();
     }
 };
-struct CCreatureDef : CDefClassBase {
+class CCreatureDef : public CDefClassBase { public:
     unsigned char _pad08[0x124 - 0x08];
     long AttackStyleDefIndex;                   // +0x124
 };
 struct CAttackStyleDef : CDefClassBase { };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& o) : Object(o.Object)
@@ -57,11 +57,11 @@ template<class T> struct CDefPointer {
     }
     operator T*() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
     void GetDef(long index, CDefPointer<CAttackStyleDef>* out);   // 0x00669640
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -90,25 +90,25 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
     void RemoveThing(CThing* thing);            // 0x006A19B0
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
-struct CTCCombat {
+class CTCCombat { public:
     void SetAttackStyleDef(const CDefPointer<CAttackStyleDef>* def);   // 0x007355F0
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
     CDefinitionManager* GetDefinitionManager(); // 0x00692910
 };
-struct CCreatureAction_SheatheWeapons : CCombatActionBase {
+class CCreatureAction_SheatheWeapons : public CCombatActionBase { public:
     void PerformAction();                       // 0x008B7B10
 };
-struct CCreatureAction_SummonerSheatheWeapon : CCreatureAction_SheatheWeapons {
+class CCreatureAction_SummonerSheatheWeapon : public CCreatureAction_SheatheWeapons { public:
     void PerformAction();
 };
 

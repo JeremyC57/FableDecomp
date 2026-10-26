@@ -3,7 +3,7 @@
 #include <string.h>
 #include <new>
 namespace NThingMap { struct CThingMap_; }
-struct CThingManager;
+class CThingManager;
 struct CThingMapManager;
 template <class T> class allocator { public: allocator() {} };
 template <class V, class A> struct _STLP_alloc_proxy : public A {

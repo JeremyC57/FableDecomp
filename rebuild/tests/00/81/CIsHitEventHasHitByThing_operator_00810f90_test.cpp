@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CThing { unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; struct CIntelligentPointer { virtual void v00() { } void* m_pItem; CThing* GetPItem() const { return (CThing*)m_pItem; } };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; struct CIntelligentPointer { virtual void v00() { } void* m_pItem; CThing* GetPItem() const { return (CThing*)m_pItem; } };
 struct SHitRecord { unsigned char _pad[0x50]; CIntelligentPointer m_hitBy; CThing* GetHitBy() const { return m_hitBy.GetPItem(); } }; struct SHitEvent { unsigned char _pad[8]; SHitRecord* m_pRecord; };
 struct CIsHitEventHasHitByThing { bool operator()(const SHitEvent* event) { CThing* thing = event->m_pRecord->GetHitBy(); if (thing && !thing->m_91_0) return true; return false; } };
 

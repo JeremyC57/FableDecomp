@@ -9,9 +9,9 @@
 #endif
 
 static int g_order = 0, g_vb = 0, g_ib = 0;
-struct CIndexBuffer { unsigned char _body[0x14]; void Uninitialise() { g_ib = ++g_order; } };
-struct CVertexBufferWin32 { unsigned char _body[0x34]; void Uninitialise() { g_vb = ++g_order; } };
-struct CEngineWaterRenderer { unsigned char _pad0[0x68]; CIndexBuffer SeaBackgroundIndexBuffer; CVertexBufferWin32 SeaBackgroundVertexBuffer; long SeaBackgroundVertexCount; long SeaBackgroundPolyCount; unsigned char _pad1[0x276 - 0xb8]; bool HaveBackgroundSea;
+class CIndexBuffer { public: unsigned char _body[0x14]; void Uninitialise() { g_ib = ++g_order; } };
+class CVertexBufferWin32 { public: unsigned char _body[0x34]; void Uninitialise() { g_vb = ++g_order; } };
+class CEngineWaterRenderer { public: unsigned char _pad0[0x68]; CIndexBuffer SeaBackgroundIndexBuffer; CVertexBufferWin32 SeaBackgroundVertexBuffer; long SeaBackgroundVertexCount; long SeaBackgroundPolyCount; unsigned char _pad1[0x276 - 0xb8]; bool HaveBackgroundSea;
     void ReleaseSeaBuffers() { SeaBackgroundVertexBuffer.Uninitialise(); SeaBackgroundVertexCount = 0; SeaBackgroundIndexBuffer.Uninitialise(); SeaBackgroundPolyCount = 0; HaveBackgroundSea = false; } };
 int main()
 {

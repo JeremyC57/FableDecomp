@@ -29,7 +29,7 @@ struct CSwitchableNodeMap {                                 // retail CVectorMap
     SSwitchableNode& operator[](unsigned int i) { return m_pFirst[i]; }
 };
 
-struct CNavQuadTree {
+class CNavQuadTree { public:
     virtual void v00();
     unsigned char      _pad04[0x3c];
     CSwitchableNodeMap SwitchableNodes;                     // +0x40

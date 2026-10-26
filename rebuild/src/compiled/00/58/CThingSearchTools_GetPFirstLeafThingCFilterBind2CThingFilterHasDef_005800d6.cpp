@@ -14,10 +14,10 @@
 #pragma optimize("s", on)
 #include "engine/CThingSearchTools.h"
 
-struct CThing {
+class CThing { public:
     bool IsIncludedInThingScans();                       // 0x0048BC40
 };
-struct CThingMarker { enum { ThingListType = 0x0b }; };
+class CThingMarker { public: enum { ThingListType = 0x0b }; };
 
 struct CThingList {                                      // std::list<CThing*> (VC6)
     struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_value; };
@@ -33,14 +33,14 @@ struct CThingList {                                      // std::list<CThing*> (
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingFilter_HasDefName {
+class CThingFilter_HasDefName { public:
     bool operator()(CThing* thing) const;                // 0x006A7BE0
 };
-struct CThingFilter_HasScriptData {
+class CThingFilter_HasScriptData { public:
     bool operator()(CThing* thing) const;                // 0x006A7E70
 };
 
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A& m_first;
     const B& m_second;
     __forceinline bool operator()(CThing* thing) const { return m_first(thing) && m_second(thing); }

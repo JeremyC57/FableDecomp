@@ -11,7 +11,7 @@ struct CBaseIntelligentPointer {
     void* GetPItem();                      // 0x00A01B50
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     unsigned char _pad[0x1c];
     CBaseIntelligentPointer m_pointer;     // +0x1c
     void* DrawPreparePrimitivesForRendering(long unused);

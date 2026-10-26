@@ -13,7 +13,7 @@ struct CRandomSeed {
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CWorld {
+class CWorld { public:
     CRandomSeed* GetRandomSeed();          // 0x0049D810
 };
 
@@ -28,7 +28,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
 };
 
 namespace NCreatureMode {
-struct CModeSitBase : CModeBase {
+class CModeSitBase : public CModeBase { public:
     long          IdleCounter;             // +0x1c
     bool          PlayingIdle;             // +0x20
     unsigned char PRemoveAction[8];        // +0x24 CCountedPointer<CCreatureActionBase>

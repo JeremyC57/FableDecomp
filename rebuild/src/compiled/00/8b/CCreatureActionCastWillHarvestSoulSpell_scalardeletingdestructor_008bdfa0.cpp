@@ -1,4 +1,4 @@
-struct CCreatureAction_CastWillHarvestSoulSpell {
+class CCreatureAction_CastWillHarvestSoulSpell { public:
     void* vftable;
 };
 

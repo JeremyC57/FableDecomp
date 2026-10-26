@@ -21,7 +21,7 @@ struct IDirectInputDevice8_Retail {
     virtual long __stdcall SetProperty(const void* guid, const void* header) { return 0; }
 };
 static int g_assigns = 0;
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString& operator=(const unsigned short* text) { ++g_assigns; PStringData = (void*)text; return *this; }
 };

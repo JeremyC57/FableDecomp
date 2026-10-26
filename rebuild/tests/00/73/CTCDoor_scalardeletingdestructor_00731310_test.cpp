@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDoor {
+class CTCDoor { public:
     void* vftable;
     int destroyed;
 };

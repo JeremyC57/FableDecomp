@@ -11,33 +11,33 @@
 // Layout: engine/CAIStateGroup_KidHurtSelfRunToMother.h (PBrain is the first dword of the base at +0x04).
 #include "engine/CAIStateGroup_KidHurtSelfRunToMother.h"
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CAnimationEntry;
-struct CThing {
+class CAnimationEntry;
+class CThing { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void* __vftable;
     unsigned char _body[0xa4];                  // +0x04..+0xa7
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];                  // +0xa8..+0xb3
     CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
     CCreatureAction_PlayAnimation(CThing* creature, CAnimationEntry* animation, bool loop, bool f, long loops,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008425E0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

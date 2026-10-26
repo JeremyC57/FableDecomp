@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour copy of GFSerialiseMapBinaryOut<CWeaponTrailGraphicSet, EObjectAugmentationType>: count, then key/Attack/Knockdown
 // per node in in-order (key) order, walking an STLport-shaped tree (header->left = leftmost, successor step).
-struct CWeaponTrailGraphicSet { long Attack; long Knockdown; };
+class CWeaponTrailGraphicSet { public: long Attack; long Knockdown; };
 struct SNodeBase { unsigned char color; SNodeBase* parent; SNodeBase* left; SNodeBase* right; };
 struct SNode : SNodeBase { long key; CWeaponTrailGraphicSet value; };
 struct SMap { SNodeBase* header; unsigned long count; };

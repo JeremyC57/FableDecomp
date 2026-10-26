@@ -8,7 +8,7 @@ struct CSoundSystem {
 static CSoundSystem g_system;
 static CSoundSystem* g_pSoundSystem = &g_system;
 static int g_thingDtors = 0;
-struct CThing {
+class CThing { public:
     virtual ~CThing() { ++g_thingDtors; }
 };
 static int g_ptrDtors = 0;
@@ -23,7 +23,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 static CThing* g_seen = (CThing*)1;
-struct CThingSoundEmitter : CThing {
+class CThingSoundEmitter : public CThing { public:
     CSoundObject* m_pSoundObject;
     bool AttachedToThing;
     CIntelligentPointerThing PAttachedThing;

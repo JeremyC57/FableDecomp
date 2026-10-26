@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileSaver { int dummy; };
+class CChunkedFileSaver { public: int dummy; };
 static char g_trace[256];
 static void Log(const char* s) { std::strcat(g_trace, s); }
-struct CDataOutputStream { void WriteLONG(long v) { char b[32]; std::sprintf(b, "L%lx;", (unsigned long)v & 0xffffffffUL); Log(b); } };
-struct CChunkedFileSuperChunk { void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
+class CDataOutputStream { public: void WriteLONG(long v) { char b[32]; std::sprintf(b, "L%lx;", (unsigned long)v & 0xffffffffUL); Log(b); } };
+class CChunkedFileSuperChunk { public: void WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const { Log("SUPER;"); } };
 template <class T>
 struct CVectorArray {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -13,7 +13,7 @@ struct CVectorArray {
     unsigned long size() const { return (unsigned long)(end() - begin()); }
     const T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct C3DMeshFilePrimitiveChunk : CChunkedFileSuperChunk {
+class C3DMeshFilePrimitiveChunk : public CChunkedFileSuperChunk { public:
     CVectorArray<int> MaterialIndices;
     void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const
     {

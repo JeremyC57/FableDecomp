@@ -2,7 +2,7 @@
 // Leaf: ??1CHeroMarriageDef@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044F81A, length 69 bytes.
 // Shape: `this` in esi, the strings last-to-first, `mov dword ptr [esi],vtable ; mov ecx,esi ; pop esi ; jmp`.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -10,7 +10,7 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550 (labelled "~CMemoryBlock")
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                         // inlined into every derived destructor: the vtable store then the base tail jump
 };

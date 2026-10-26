@@ -9,13 +9,13 @@
 // user copy constructor but no operator=, so each vector member is copied through a pair of re-based pointer
 // registers (`lea ecx,[eax+N] ; lea edx,[ebx+N]` then three dword moves); the plain 3x4 matrices are `rep movsd`
 // blocks; the vector member goes through its out-of-line assignment last.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float M[3][4];
 };
 

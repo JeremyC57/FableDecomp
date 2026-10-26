@@ -9,7 +9,7 @@ struct CAnimManager_Calls {
 };
 static CAnimManager_Calls g_manager;
 CAnimManager_Calls* __fastcall GetAnimManager_006f90b0() { return &g_manager; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual long GetAnimID() = 0;
     virtual float GetActionRunningTimeSeconds() = 0;
     float GetActionStartRunningTimeSeconds();

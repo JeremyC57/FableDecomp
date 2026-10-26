@@ -2,7 +2,7 @@
 // Behaviour of CTCInventoryWeapons::SetHighlightedWeaponAsActiveWeapon (0x005CBD12).
 struct CComponent;
 struct CTCInventoryBase_Retail { long m_highlighted; long GetHighlightedItem() { return m_highlighted; } };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     long m_active; long m_calls;
     void SetThingAsActiveWeapon(long defIndex, CComponent* menuEntry) { ++m_calls; if (!menuEntry) m_active = defIndex; }
     void SetHighlightedWeaponAsActiveWeapon()

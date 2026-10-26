@@ -9,11 +9,11 @@
 #include "engine/CTCBase.h"
 #undef CTCBase
 #pragma optimize("t", on)
-struct CTCBase {                            // vtable 0x0125BE0C (.?AVCTCBase@@)
+class CTCBase { public:                            // vtable 0x0125BE0C (.?AVCTCBase@@)
     void* _vptr;
     ~CTCBase();                             // 0x00686830 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
-struct CConversation;
+class CConversation;
 namespace std {
 template<class T> struct allocator;
 template<class T, class A> struct vector {   // {first, last, end of storage}

@@ -13,11 +13,11 @@ public:
 static const char* g_loaded;   // one char per IsRegionLoaded call: '1' loaded, '0' not
 static const char* g_term;     // one char per IsActiveThreadTerminating call
 static int g_frames = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void NewScriptFrame() { ++g_frames; }
     virtual bool IsRegionLoaded(const CCharString&) { char c = *g_loaded; if (c) ++g_loaded; return c == '1'; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { char c = *g_term; if (c) ++g_term; return c != '0'; }
 };
 struct CV_BordelloScript : CScriptBase {

@@ -43,7 +43,7 @@ template <class K, class V> pair<typename _Rb_tree<K, V>::iterator, typename _Rb
 }
 }
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 private:
     CCharStringData* m_pData;

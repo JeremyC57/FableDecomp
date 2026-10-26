@@ -2,7 +2,7 @@
 // __fastcall void Copy(CBuyHouseDef* this, CDefClassBase* src)
 // calls base Copy (target 0xa5ae00) then copies own byte field at +0xd
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CBuyHouseBase {
     char pad[0xd];
@@ -10,7 +10,7 @@ struct CBuyHouseBase {
     void BaseCopy(CDefClassBase* src);   // base Copy @ 0xa5ae00, real __fastcall
 };
 
-struct CBuyHouseDef : CBuyHouseBase {
+class CBuyHouseDef : public CBuyHouseBase { public:
     void Copy(CDefClassBase* src);
 };
 

@@ -2,11 +2,11 @@
 #include <cstdio>
 
 static int g_physicsCalls = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool m_flag;
     virtual bool IsPhysicsFlagSet() { ++g_physicsCalls; return m_flag; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     bool m_blocks;
     CTCPhysicsBase* PhysicsTC;
     virtual bool CanBlockNavigatingCreature() { return m_blocks; }

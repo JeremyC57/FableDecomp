@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CPlayerGuiDef { int dummy; };
+class CPlayerGuiDef { public: int dummy; };
 
 extern void __fastcall CPlayerGuiDef_Copy(CPlayerGuiDef* thisptr, void* other);
 

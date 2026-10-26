@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for 0x0056f26f: the def is add-ref'd/released around the ExperienceItemLabelStat lookup; id 0 -> empty string.
-struct CWideString {
+class CWideString { public:
     char m_text[32];
     CWideString(const char* t) { std::strcpy(m_text, t); }
     CWideString(const CWideString& other) { std::strcpy(m_text, other.m_text); }
@@ -10,7 +10,7 @@ struct CWideString {
 static CWideString g_EmptyWideString("");
 static int g_destroyed = 0;
 struct SLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
-struct CInventoryDef {
+class CInventoryDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long refCount;
@@ -27,7 +27,7 @@ struct CInventoryDefPointer {
     CInventoryDef* operator->() const { return m_p; }
 };
 static long g_peakRef = 0;
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CInventoryDefPointer PDef;
     CTCInventoryExperience(CInventoryDef* d) : PDef(d) {}
     CWideString GetInventoryText(long textId) { char b[32]; std::sprintf(b, "T%ld", textId); return CWideString(b); }

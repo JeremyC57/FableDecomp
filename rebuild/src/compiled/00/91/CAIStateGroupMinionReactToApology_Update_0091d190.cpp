@@ -7,9 +7,9 @@
 #include "engine/CTCEntityEvents.h"
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
-struct CCharString;
+class CCharString;
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {

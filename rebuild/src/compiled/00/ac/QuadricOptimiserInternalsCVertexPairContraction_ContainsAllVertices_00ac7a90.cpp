@@ -18,7 +18,7 @@ struct CSubContraction {
     unsigned long Index1;                          // +0x00
     unsigned long Index2;                          // +0x04
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_pFirst;                                   // +0x00
     T* m_pLast;                                    // +0x04
     T* m_pEnd;                                     // +0x08

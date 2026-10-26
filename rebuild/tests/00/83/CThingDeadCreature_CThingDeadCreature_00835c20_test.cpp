@@ -8,16 +8,16 @@ struct CBaseIntelligentPointer {
 };
 struct CThingPointer : CBaseIntelligentPointer { CThingPointer() { } };
 struct CCreaturePointer : CBaseIntelligentPointer { CCreaturePointer() { } };
-struct CAnimFilterBase; struct CCPPointerInfo;
+class CAnimFilterBase; class CCPPointerInfo;
 struct CAnimFilterPointer { CAnimFilterBase* Data; CCPPointerInfo* Info; CAnimFilterPointer() : Data(0), Info(0) { } };
-struct CThingBodyReorienter;
+class CThingBodyReorienter;
 struct CReorienterPointer { CThingBodyReorienter* ptr; explicit CReorienterPointer(CThingBodyReorienter* p = 0) : ptr(p) { } };
-struct CThingPhysical { long m_type; CThingPhysical(long type) : m_type(type) { g_physicalType = type; } virtual ~CThingPhysical() { } };
-struct CThingGameObject : CThingPhysical {
+class CThingPhysical { public: long m_type; CThingPhysical(long type) : m_type(type) { g_physicalType = type; } virtual ~CThingPhysical() { } };
+class CThingGameObject : public CThingPhysical { public:
     CThingPointer PThingStandingOn; unsigned char m_gameObjectFlags;
     CThingGameObject(long type) : CThingPhysical(type) { }
 };
-struct CThingDeadCreature : CThingGameObject {
+class CThingDeadCreature : public CThingGameObject { public:
     CAnimFilterPointer PAnimFilter; CCreaturePointer PKiller; long BodyDieTimer; CReorienterPointer BodyReorienter; bool StartedDecay;
     CThingDeadCreature() : CThingGameObject(13), StartedDecay(false) { }
 };

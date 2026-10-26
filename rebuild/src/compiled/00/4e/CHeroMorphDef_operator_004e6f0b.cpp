@@ -11,7 +11,7 @@
 // Each morph class wraps one CVectorMap whose implicit assignment inlines: vector operator=, nothing for the empty comparator, the sorted byte at +0x0d.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -28,7 +28,7 @@ struct CParticleMorphEntryVector {      // retail std::vector<pair<EHeroMorphTyp
     void* m_first; void* m_last; void* m_end;
     CParticleMorphEntryVector& operator=(const CParticleMorphEntryVector& other); // 0x004E711E
 };
-template<class V> struct CVectorMap {   // retail 16 bytes (PDB 20): vector, empty comparator +0x0c, sorted flag +0x0d
+template<class V> class CVectorMap { public:   // retail 16 bytes (PDB 20): vector, empty comparator +0x0c, sorted flag +0x0d
     V m_vector;
     CKeyPairCompareLess m_compare;
     bool m_sorted;
@@ -40,20 +40,20 @@ template<class V> struct CVectorMap {   // retail 16 bytes (PDB 20): vector, emp
         return *this;
     }
 };
-struct CTextureMorphs {
+class CTextureMorphs { public:
     CVectorMap<CTextureMorphEntryVector> Morphs;
     __forceinline CTextureMorphs& operator=(const CTextureMorphs& other) { Morphs = other.Morphs; return *this; }
 };
-struct CSkeletalMorphs {
+class CSkeletalMorphs { public:
     CVectorMap<CSkeletalMorphEntryVector> Morphs;
     __forceinline CSkeletalMorphs& operator=(const CSkeletalMorphs& other) { Morphs = other.Morphs; return *this; }
 };
-struct CParticleMorphs {
+class CParticleMorphs { public:
     CVectorMap<CParticleMorphEntryVector> Morphs;
     __forceinline CParticleMorphs& operator=(const CParticleMorphs& other) { Morphs = other.Morphs; return *this; }
 };
 
-struct CHeroMorphDef : CDefClassBase {
+class CHeroMorphDef : public CDefClassBase { public:
     CTextureMorphs           TextureMorphs;               // +0x28
     CSkeletalMorphs          SkeletalMorphs;              // +0x38
     CParticleMorphs          ParticleMorphs;              // +0x48

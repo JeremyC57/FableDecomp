@@ -1,6 +1,6 @@
 // std::vector<CSubtitleRenderer::CEmbeddedGraphic>::_M_insert_overflow(CEmbeddedGraphic*, const CEmbeddedGraphic&, const __false_type&, unsigned int, bool) -- STLport reallocating insert of 16-byte embedded-graphic records: allocate old_size + max(old_size, n), copy the head, construct the n new records, copy the tail unless appending, free the old block
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- same-TU auto_inline(off) __uninitialized_copy/__uninitialized_fill_n bodies + optimize(y off), the landed twin 0x00580A7B shape: the tag temporaries pack into the __atend slot padding
-// Leaf: ?_M_insert_overflow@?$vector@UCEmbeddedGraphic@CSubtitleRenderer@@@std@@QAEXPAUCEmbeddedGraphic@CSubtitleRenderer@@ABU34@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@VCEmbeddedGraphic@CSubtitleRenderer@@@std@@QAEXPAVCEmbeddedGraphic@CSubtitleRenderer@@ABV34@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00493FF8, 180 bytes, `ret 14h` (__fastcall; size-optimised TU with an ebp
 //   frame: `#pragma optimize("s", on)`).
 // Callees: 0x00BFEA0E malloc / 0x00BFEA14 free (STLport's malloc allocator: `n != 0 ? malloc(n * 16) : 0`, `if (p) free(p)`),
@@ -28,14 +28,14 @@
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
 class CSubtitleRenderer {
 public:
-    struct CEmbeddedGraphic {                       // Ego_r.pdb, 16 bytes
+    class CEmbeddedGraphic { public:                       // Ego_r.pdb, 16 bytes
         long      Graphic;                          // +0x00
         long      CharIndex;                        // +0x04
         C2DVector Offset;                           // +0x08

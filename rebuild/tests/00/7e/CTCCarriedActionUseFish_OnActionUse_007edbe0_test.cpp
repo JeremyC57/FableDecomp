@@ -26,18 +26,18 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() { ++g_destroyed; }
     long RefCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CBonusItemDef : CDefPointeeBase {
+class CBonusItemDef : public CDefPointeeBase { public:
 };
 static CBonusItemDef* g_bonus = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CBonusItemDef>* out) const { ++g_getSubDef; if (!g_bonus) return false; ++g_bonus->RefCount; out->Object = g_bonus; return true; }
 };
 static int g_kills = 0; static class CThing* g_killed = 0;

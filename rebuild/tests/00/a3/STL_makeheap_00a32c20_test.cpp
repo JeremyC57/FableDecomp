@@ -1,14 +1,14 @@
 // Behaviour test for 0x00A32C20 std::__make_heap over pair<unsigned long, C3DHelperPoint> by the unsigned key (the SGI __adjust_heap / __push_heap pair stands in for 0x00A32440).
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
-struct C3DHelperPoint { C3DVector Position; long BoneIndex; };
+class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef pair<unsigned long, C3DHelperPoint> T;

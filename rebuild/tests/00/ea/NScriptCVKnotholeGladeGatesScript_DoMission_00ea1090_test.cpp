@@ -3,8 +3,8 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { const char* name; };
-struct CGameScriptInterface {
+class CScriptThing { public: const char* name; };
+class CGameScriptInterface { public:
     int framesUntilLoaded;
     void NewScriptFrame() { Log("frame"); }
     bool IsLevelLoaded(const char* level) { Log(level); return framesUntilLoaded-- <= 0; }

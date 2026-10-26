@@ -4,13 +4,13 @@
 //   type does not escape and the CIntelligentPointer temp overlays its word as retail; `out` declared before `effectType`
 //   (zero-store order).
 // Callees: CModeStandBase::OnActivate 0x008621A0, __ftol2 0x00BFEA70, SetSuspendAnimation 0x00833A10, LowerBound 0x0040F020, CTCBoss::IsReadyForPhaseChange 0x007AEE90 / IncrementBossPhase 0x007AED20, GetSubDef 0x00669580, CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPosition 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,12 +36,12 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();
     long m_refCount;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -65,7 +65,7 @@ template <class T> struct CDefCopy {
     }
     T* operator->() const { return Object; }
 };
-struct CSpecialEffectsDef : CDefPointeeBase {
+class CSpecialEffectsDef : public CDefPointeeBase { public:
     bool GetEffectFromString(const CCharString& name, long* type);   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
@@ -81,7 +81,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out);   // 0x00669580
 };
 void* FindDef_CDefClassBase_GetSubDef_0();
@@ -96,7 +96,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDe
 }
 #pragma auto_inline(on)
 struct CModeBase;
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x10];
     unsigned char  m_type;                      // +0x10
     unsigned char  _pad11[0x0f];
@@ -122,7 +122,7 @@ struct CThing {
     void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CTCBoss {
+class CTCBoss { public:
     bool IsReadyForPhaseChange();               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct COpinionDeedEffectsDef { int f0; };
+class COpinionDeedEffectsDef { public: int f0; };
 extern "C" void __fastcall COpinionDeedEffectsDef_dtor(COpinionDeedEffectsDef* def);
 extern "C" void operator_delete_impl(void* p);
 

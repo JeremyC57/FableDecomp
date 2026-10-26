@@ -13,15 +13,15 @@
 // Shape: the arrays are zeroed by their inline member ctors but the map word in the body -- that split is what puts
 // `xor edi,edi` between the two vtable stores (all-inline ctors: after both; all in the body: the stores sink below the push).
 // edi first holds the CResourceBank subobject for its ctor and secondary vtable store, then the shared zero.
-struct CCharString;
+class CCharString;
 
-struct CBankFileAsync {                                 // 0x164 bytes
+class CBankFileAsync { public:                                 // 0x164 bytes
     CBankFileAsync();                                   // 0x009D5F80
     virtual ~CBankFileAsync();
     unsigned char BankFileState[0x160];
 };
 
-struct CResourceList {                                  // 0x3C bytes (vptr, CResource Head, counters)
+class CResourceList { public:                                  // 0x3C bytes (vptr, CResource Head, counters)
     virtual ~CResourceList();
     unsigned char  Head[0x1c];                          // +0x04
     long           ResourceCount;                       // +0x20
@@ -35,7 +35,7 @@ struct CResourceList {                                  // 0x3C bytes (vptr, CRe
     void SetResourceUnloadDelay(unsigned long delay) { UnloadDelay = delay; }
 };
 
-struct CResourceBank {                                  // 0x7C bytes
+class CResourceBank { public:                                  // 0x7C bytes
     CResourceBank();                                    // 0x009FC5F0
     virtual ~CResourceBank();
     CResourceList ResourceList;                         // +0x04
@@ -43,7 +43,7 @@ struct CResourceBank {                                  // 0x7C bytes
     CResourceList& GetResourceList() { return ResourceList; }
 };
 
-template<class T> struct CArray {                       // retail CArray: 12 bytes
+template<class T> class CArray { public:                       // retail CArray: 12 bytes
     T* First;
     T* Last;
     T* End;

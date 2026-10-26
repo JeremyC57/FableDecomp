@@ -8,9 +8,9 @@
 // PDB 16) are member objects with inline zeroing constructors, sharing one zero register.
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* parent);                // 0x00686800
     virtual void v00();
     CThing* ParentThing;                    // +0x04
@@ -30,7 +30,7 @@ struct CThingPointerVector {                // vector<CIntelligentPointer<CThing
     CThingPointerVector() : First(0), Last(0), End(0) { }
 };
 
-struct CTCParticleAttacher : CTCBase {
+class CTCParticleAttacher : public CTCBase { public:
     CDefPointer PDef;                       // +0x0c
     CThingPointerVector ParticleList;       // +0x10
     CTCParticleAttacher(CThing* parent);

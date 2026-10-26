@@ -2,16 +2,16 @@
 // StopFlyingAround(-1) only with a nymph component, HeightOnInit = Z - ground height, then the base Initialise.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPhysics { int log[3]; int n; void SetMovementType(long t) { log[n++] = (int)t; } void SetCollisionType(long t) { log[n++] = 10 + (int)t; } void ResetMovement() { log[n++] = 99; } };
-struct CTCNymph { long stopped; void StopFlyingAround(long m) { stopped = m; } };
-struct CThing {
+class CTCNymph { public: long stopped; void StopFlyingAround(long m) { stopped = m; } };
+class CThing { public:
     CPhysics physics; C3DVector pos; bool isNymph; CTCNymph nymph;
     CPhysics* GetPhysics() { return &physics; }
     const C3DVector& GetPosition() const { return pos; }
     bool GetNymph(CTCNymph** out) { if (!isNymph) return false; *out = &nymph; return true; }
 };
-struct CWorldMap { float ground; float GetHeightZBelowPos(const C3DVector*) { return ground; } };
+class CWorldMap { public: float ground; float GetHeightZBelowPos(const C3DVector*) { return ground; } };
 struct CPtr { CThing* item; CThing* GetPItem() const { return item; } };
 struct CAction {
     CPtr PCreature; CWorldMap* map; char anim[16]; float HeightOnInit; int baseInit;

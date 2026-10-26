@@ -13,7 +13,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
 };
@@ -42,8 +42,8 @@ struct CRefVirtual {
     virtual void Destroy();                             // slot 1
 };
 namespace NGameText {
-struct CDataBankTextEntry;
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CDataBankTextEntry;
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     CWideString GetText() const;                        // 0x009C7A40
     void ReleaseTemporary()
     {
@@ -53,7 +53,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     ~CIVCountedPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
@@ -66,15 +66,15 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
 extern CEngine* g_pEngine;                              // 0x013B86A0
 inline NGameText::CDataBank* GetGameTextBank() { return g_pEngine->PGameTextDataBank; }
 
-struct CQuestManager {
-    struct CObjective {                                 // 0x0c bytes
+class CQuestManager { public:
+    class CObjective { public:                                 // 0x0c bytes
         CWideString   Text;
         unsigned long ID;
         long          State;

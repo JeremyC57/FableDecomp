@@ -1,4 +1,4 @@
-struct CAIBrain {
+class CAIBrain { public:
     void* vftable;
 };
 

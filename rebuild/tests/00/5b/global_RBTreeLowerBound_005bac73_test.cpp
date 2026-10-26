@@ -1,5 +1,5 @@
 #include <cstdio>
-struct TreeNode { TreeNode* dummy0; TreeNode* parent; TreeNode* left; TreeNode* right; int key; };
+class TreeNode { public: TreeNode* dummy0; TreeNode* parent; TreeNode* left; TreeNode* right; int key; };
 struct Tree { TreeNode* header; TreeNode* RBTree_LowerBound(int* keyp); };
 TreeNode* Tree::RBTree_LowerBound(int* keyp) {
     TreeNode* bound = header;

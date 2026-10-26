@@ -3,7 +3,7 @@
 // (type 0xd3), the group registers itself as idle group 7.
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -35,11 +35,11 @@ struct CThingAICreature {
     }
 };
 
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 static CAIStateGroupBase* g_registered = 0;
 static long g_idleGroup = -1;
 
-struct CTCIdleScheduler : CTCBase {
+class CTCIdleScheduler : public CTCBase { public:
     void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleGroup) { g_registered = group; g_idleGroup = idleGroup; }
 };
 
@@ -51,15 +51,15 @@ struct CBaseIntelligentPointer {
     void SetPItem(void* item) { m_pItem = item; }
 };
 
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThingGameObject { int dummy; };
-struct CWorld { int dummy; };
+class CThingGameObject { public: int dummy; };
+class CWorld { public: int dummy; };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature) {}
 };

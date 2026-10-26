@@ -8,8 +8,8 @@
 #include "engine/CASuspendableProcess.h"
 #include "engine/CGameScriptInterface.h"
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime;
 struct CCountedScriptThingRuntime {
@@ -125,7 +125,7 @@ struct CSpawnedFuncPhase3 : CSpawnedFuncBaseRuntime {
 FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncPhase3) == 0x48);
 #endif
 
-struct CEntityScriptBase {                 // donor layout: +0 vptr, +4 Game, +8 Me
+class CEntityScriptBase { public:                 // donor layout: +0 vptr, +4 Game, +8 Me
     void* __vftable;
     CGameScriptInterface* Game;             // +0x04
     CScriptThingRuntime Me;                 // +0x08

@@ -3,8 +3,8 @@
 // Model of CTCHeroExperience::OnRegionLoad @ 0x006D7570: only with a combat def -- param *= region-change multiplier,
 // timer = (long)(fps * seconds-for-attenuation of the active combo data).
 static int g_destroyed = 0;
-struct CDefPointeeBase { long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { } };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: long m_count; virtual void Destroy() { ++g_destroyed; } virtual ~CDefPointeeBase() { } };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_count; }
     explicit CDefPointer(T* p) : Object(p) { }
@@ -13,10 +13,10 @@ template<class T> struct CDefPointer {
     bool IsValid() const { return Object != 0; }
 };
 static long g_FramesPerSecond = 30;
-struct CHeroCombatDef : CDefPointeeBase { };
-struct CComboMultiplierData { float ExperienceMultiplierNumSecondsForAttenuation; };
-struct CHeroExperienceDef { float ExperienceMultiplierRegionChangeMultiplier; CComboMultiplierData Active; };
-struct CTCHeroExperience {
+class CHeroCombatDef : public CDefPointeeBase { public: };
+class CComboMultiplierData { public: float ExperienceMultiplierNumSecondsForAttenuation; };
+class CHeroExperienceDef { public: float ExperienceMultiplierRegionChangeMultiplier; CComboMultiplierData Active; };
+class CTCHeroExperience { public:
     float ExperienceMultiplierParam; long ExperienceAttenuationTimer; CHeroExperienceDef* PDef; CDefPointer<CHeroCombatDef> PHeroCombatDef;
     CTCHeroExperience(CHeroCombatDef* d) : PHeroCombatDef(d) { }
     CDefPointer<CHeroCombatDef> GetPHeroCombatDef() const { return PHeroCombatDef; }

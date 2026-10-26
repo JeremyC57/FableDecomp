@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRGBFloatColour { float r; float g; float b; };
+class CRGBFloatColour { public: float r; float g; float b; };
 struct Consts4 { float x; float y; float z; float w; };
 
 struct Captured {
@@ -15,7 +15,7 @@ struct ConstTargetVtbl {
 };
 struct ConstTarget { ConstTargetVtbl* vtbl; };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     char pad[0x1d4];
     ConstTarget* device;
 };

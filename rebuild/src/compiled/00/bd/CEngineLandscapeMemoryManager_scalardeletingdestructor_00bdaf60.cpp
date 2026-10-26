@@ -1,4 +1,4 @@
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* vftable;
 };
 

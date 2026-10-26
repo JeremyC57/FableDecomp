@@ -16,13 +16,13 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Release();                             // slot 1 (+0x04)
     long RefCount;                                      // +0x04
 };
-struct CThingBaseDef;
-template <class T> struct CDefPointer {                 // 4 bytes
+class CThingBaseDef;
+template <class T> class CDefPointer { public:                 // 4 bytes
     CDefPointeeBase* Object;
 };
 typedef CDefPointer<const CThingBaseDef> TDefPtr;

@@ -1,6 +1,6 @@
 // Behaviour test for 0x00C1E9F0 CSequenceClient00c1e9f0::GetAlignedDuration
 #include <cstdio>
-struct CCombatSequenceBase { long period; };
+class CCombatSequenceBase { public: long period; };
 static long CombatSequence_AlignDuration(CCombatSequenceBase* sequence, long time, long extra)
 {
     long t = time + extra;

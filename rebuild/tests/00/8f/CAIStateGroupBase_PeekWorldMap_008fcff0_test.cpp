@@ -1,7 +1,7 @@
 #include "engine/CAIStateGroupBase.h"
 #include <cstdio>
 
-struct CWorldMap { int tag; };
+class CWorldMap { public: int tag; };
 
 struct CInner {
     virtual CWorldMap* Peek0(){return 0;}
@@ -21,7 +21,7 @@ struct CInner {
 };
 
 struct CMid { char pad[0x24]; CInner* inner; };
-struct CAIBrain { char pad[0x1c]; CMid* mid; };
+class CAIBrain { public: char pad[0x1c]; CMid* mid; };
 
 static CWorldMap g_wm = { 0xABCD };
 

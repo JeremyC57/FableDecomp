@@ -15,14 +15,14 @@ struct CThingPhysicalDef {
     unsigned char AbleToComeBetweenCameraAndObservedThing : 1;   // +0x42 bit 2
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
     ~CDefPointer() { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); }
     T* operator->() const { return m_pDef; }
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char                   _pad00[0x70];
     CDefPointer<CThingPhysicalDef>  PBaseDef;            // +0x70
     unsigned char                   _pad74[0x44];

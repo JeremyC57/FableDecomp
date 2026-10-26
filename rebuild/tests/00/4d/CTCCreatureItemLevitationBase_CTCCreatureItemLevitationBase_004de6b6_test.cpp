@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase {
+class CThing { public: int id; };
+class CTCBase { public:
     CThing* m_pParent;
     CTCBase(CThing* parent) : m_pParent(parent) { }
     virtual ~CTCBase() { }
@@ -12,7 +12,7 @@ struct CLevitatedItemList {
     CLevitatedItemList(const SAllocator&) { m_pNode = &m_sentinel; m_sentinel.next = m_sentinel.prev = &m_sentinel; }
     bool empty() const { return m_pNode->next == m_pNode; }
 };
-struct CTCCreatureItemLevitationBase : CTCBase {
+class CTCCreatureItemLevitationBase : public CTCBase { public:
     CLevitatedItemList m_items; long m_count; long m_current;
     CTCCreatureItemLevitationBase(CThing* parent) : CTCBase(parent), m_items(SAllocator()), m_count(0), m_current(0) { }
 };

@@ -17,8 +17,8 @@ extern void __fastcall SubObj_dtor(SubObj* self);   // 0x440c40
 // operator delete (cdecl)
 extern "C" void __cdecl eng_operator_delete(void* p); // 0xbfe9bc
 
-struct CLandscapeBackgroundPatch
-{
+class CLandscapeBackgroundPatch
+{ public:
     char   pad0[0x10];   // +0x00
     SubObj sub;          // +0x10
 };

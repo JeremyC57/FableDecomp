@@ -18,7 +18,7 @@
 // `.Object` (an inline `operator->` leaves a dead `add eax,60h`). The loop index is an `unsigned short`
 // (`movzx eax,ax`; VC strength-reduces `i - 1` into ecx and re-reads `entries` per pass because the word stores
 // may alias it). oldestEntry = numEntries - 1.
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x25c];
     long          FrameCounter;                 // +0x25c
 };
@@ -27,7 +27,7 @@ struct CDisplayManagerPointer {                 // CCountedPointer<CDisplayManag
     long*            Count;                     // +0x04
     CDisplayManager* operator->() const { return Object; }
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char          _pad000[0x60];
     CDisplayManagerPointer PDisplayManager;     // +0x60
 };

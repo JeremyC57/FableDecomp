@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CActivateQuestDef
-{
+class CActivateQuestDef
+{ public:
     void* vftable;
 };
 extern void* const g_CActivateQuestDef_vftable;

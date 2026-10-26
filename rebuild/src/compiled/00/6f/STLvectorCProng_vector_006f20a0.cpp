@@ -12,17 +12,17 @@
 //   the empty `__false_type()` tag is homed in the dead `x` argument slot (`lea ecx,[esp+10h]`).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CBaseObject;
-struct CThingCreatureBase;
+class CBaseObject;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     void* PData;                                            // +0x04
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
 #pragma pack(push, 1)
-struct C3DVector {                                          // 1-aligned in retail (CProng::Prong sits at +1)
+class C3DVector { public:                                          // 1-aligned in retail (CProng::Prong sits at +1)
     float X, Y, Z;
 };
 #pragma pack(pop)

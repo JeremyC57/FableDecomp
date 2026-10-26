@@ -10,7 +10,7 @@
 //        `push ecx` slot for each call. The bool result is tested with `test al,al`. The +0x34 object
 //        goes through an inline accessor so it is loaded straight into ecx (`mov ecx,[eax+34h]`; the
 //        plain member read loads eax and copies).
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();               // 0x00699090
     void ResetCamera();                             // 0x0069A990
 };
@@ -21,7 +21,7 @@ struct CCameraManagerSource {
     virtual bool GetCameraManager(CGameCameraManager** camera);     // slot 9 (+0x24)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x34];
     CCameraManagerSource* m_pCameraSource;          // +0x34
     CCameraManagerSource* GetCameraSource() { return m_pCameraSource; }
@@ -33,7 +33,7 @@ struct CTCTavernGameCoinBase {
     void LeaveGame();                               // 0x008EF110
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     void FadeOutTableOccupants(bool fadeOut);       // 0x007D46D0
     void vfunc_30();
 };

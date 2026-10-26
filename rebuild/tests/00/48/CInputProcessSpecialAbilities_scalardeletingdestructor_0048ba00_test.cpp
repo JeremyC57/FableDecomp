@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessSpecialAbilities {
+class CInputProcessSpecialAbilities { public:
     void* vftable;
     int destroyed;
 };

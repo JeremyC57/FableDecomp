@@ -9,7 +9,7 @@
 // Shape: STLport `if (pos + 1 != end()) __copy_ptrs(pos + 1, _M_finish, pos, ...); --_M_finish; _Destroy(_M_finish);`
 // with the counted pointer's inline destructor (null test, `dec [count]`, re-read, destroy + delete, then both words
 // zeroed); the empty iterator tag sits in the dead `position` argument slot in retail.
-struct CGuiVarTransferBase;
+class CGuiVarTransferBase;
 
 struct random_access_iterator_tag {
     random_access_iterator_tag() {}
@@ -21,7 +21,7 @@ struct SCountBlock {
     void* Object;                                    // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     ~CCountedPointer()

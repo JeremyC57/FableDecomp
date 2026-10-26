@@ -1,8 +1,8 @@
 // Behaviour test for CGameScriptThingManager::GetNullScriptThing (0x00704730): returns a counted copy of NullThing.
 #include <cstdio>
 
-struct CCPPointerInfo { long m_references; };
-struct CScriptThing;
+class CCPPointerInfo { public: long m_references; };
+class CScriptThing;
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;
     CCPPointerInfo* Info;
@@ -14,13 +14,13 @@ struct CCountedPointer_CScriptThing {
             ++Info->m_references;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing(CScriptThing* d, CCPPointerInfo* i) : PImp(d, i) {}
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
     virtual ~CScriptThing() {}
 };
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     void* ScriptThings;
     CScriptThing NullThing;
     CGameScriptThingManager(CScriptThing* d, CCPPointerInfo* i) : ScriptThings(0), NullThing(d, i) {}

@@ -1,6 +1,6 @@
 // Byte-exact reconstruction of CMiniMapDisplay::InitialiseOnRegionLoad @ 0x0082a180
 
-struct CCharString;
+class CCharString;
 
 // Global singleton object with a vtable.
 struct GSlot0x24Ret; // bool at vtable slot +0x24

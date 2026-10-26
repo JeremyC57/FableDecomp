@@ -1,10 +1,10 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
-struct CAIGameCameraBase { C3DVector m_pos; virtual ~CAIGameCameraBase() { } virtual C3DVector GetPosition() const { return m_pos; } };
-struct CWorld { CAIGameCameraBase* PCurrentGameCamera; };
-struct CEnginePrimitivePrepareInfo { int m_draws; float m_lastZ; };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } };
+class CAIGameCameraBase { public: C3DVector m_pos; virtual ~CAIGameCameraBase() { } virtual C3DVector GetPosition() const { return m_pos; } };
+class CWorld { public: CAIGameCameraBase* PCurrentGameCamera; };
+class CEnginePrimitivePrepareInfo { public: int m_draws; float m_lastZ; };
 static CWorld g_world;
-struct CTCShapeManager {
+class CTCShapeManager { public:
     const CWorld* GetWorld() const { return &g_world; }
     void DrawShapes(CEnginePrimitivePrepareInfo* info, const C3DVector* position) { ++info->m_draws; info->m_lastZ = position->Z; }
     void DrawPreparePrimitivesForRendering(CEnginePrimitivePrepareInfo* info)

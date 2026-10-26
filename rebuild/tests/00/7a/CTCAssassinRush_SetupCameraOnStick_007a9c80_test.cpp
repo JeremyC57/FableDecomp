@@ -1,14 +1,14 @@
 // Behaviour test for CTCAssassinRush::SetupCameraOnStick (0x007A9C80).
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
     C3DVector operator-(const C3DVector& b) const { return C3DVector(X - b.X, Y - b.Y, Z - b.Z); }
 };
-struct CCharString { const char* PStringData; };
+class CCharString { public: const char* PStringData; };
 CCharString g_CameraStickHelperName = { "camera_stick" };
 static bool g_hasHelper = true;
 static const CCharString* g_askedName = 0;
@@ -22,9 +22,9 @@ struct CTCGraphicAppearance {
     }
 };
 static C3DVector g_heroPos(1.0f, 2.0f, 3.0f);
-struct CThing { CTCGraphicAppearance* PGraphicAppearance; const C3DVector& GetPosition() const { return g_heroPos; } };
-struct CGameCameraManager { virtual C3DVector PeekCurrentPos() const { return C3DVector(15.0f, 25.0f, 50.0f); } };
-struct CWorld { CGameCameraManager* PCameraManager; CGameCameraManager* GetCameraManager() const { return PCameraManager; } };
+class CThing { public: CTCGraphicAppearance* PGraphicAppearance; const C3DVector& GetPosition() const { return g_heroPos; } };
+class CGameCameraManager { public: virtual C3DVector PeekCurrentPos() const { return C3DVector(15.0f, 25.0f, 50.0f); } };
+class CWorld { public: CGameCameraManager* PCameraManager; CGameCameraManager* GetCameraManager() const { return PCameraManager; } };
 static CWorld* g_world = 0;
 static int g_setups = 0;
 class CTCAssassinRush {

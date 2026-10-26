@@ -2,13 +2,13 @@
 // triggers the leaving-area handling.
 #include <cstdio>
 
-struct CThing { unsigned char m_dead : 1; };
+class CThing { public: unsigned char m_dead : 1; };
 static CThing* g_hero;
 static CThing* g_left;
 static int g_calls;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CPlayerManager g_manager;
 static CPlayerManager* GetPlayerManager() { return &g_manager; }
 enum EHeroWithinRadiusState { HERO_OUTSIDE = 0, HERO_WITHIN_ANTICIPATION = 1, HERO_WITHIN_RADIUS = 2 };

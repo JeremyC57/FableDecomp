@@ -3,11 +3,11 @@
 static char g_log[16]; static int g_n = 0;
 static void Log(char c) { if (g_n < 15) g_log[g_n++] = c; g_log[g_n] = 0; }
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     virtual ~CRenderStateManager() { Log('S'); }
 };
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     bool initialised;
     CInitBaseClass() : initialised(false) { }
     bool IsInitialised() { return initialised; }

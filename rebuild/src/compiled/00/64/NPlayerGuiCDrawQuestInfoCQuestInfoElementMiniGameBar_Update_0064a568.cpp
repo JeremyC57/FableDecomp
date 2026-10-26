@@ -16,13 +16,13 @@
 // dtor, the flag clear); case 4 is laid out first.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -37,7 +37,7 @@ struct CTCBitset {                                       // std::bitset<274> CTh
     unsigned long _M_w[9];
     bool test(long bit) const;                           // 0x00410DE0
 };
-struct CThing {                                          // retail CThing (local model)
+class CThing { public:                                          // retail CThing (local model)
     unsigned char _pad00[0x20];
     CTCBitset     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
@@ -55,19 +55,19 @@ struct CThing {                                          // retail CThing (local
         return false;
     }
 };
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0 (T = CThingPlayerCreature*, unproven)
 
-struct CTCInventory {                                    // TC type 0x11
+class CTCInventory { public:                                    // TC type 0x11
     bool IsButtonHeldForExpression(const CCharString& expression);  // 0x00582A16
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing() const;                        // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                            // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
 };

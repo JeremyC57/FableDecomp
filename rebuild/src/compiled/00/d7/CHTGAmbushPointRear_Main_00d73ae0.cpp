@@ -10,13 +10,13 @@
 //   CScriptThing Me +8}, ParentClass +0x14 whose tracked script thing sits at +0x68).
 // Shape: the four waits are top-tested `while` loops (test repeated at the bottom) each followed by an IsDone check;
 //   the outer `do { } while (on screen)` restarts with a script frame; the closing IsDone result is unused.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);
     ~CCharString();
 };
-struct C3DVector { float x, y, z; };
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float x, y, z; };
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
     virtual void v004(); virtual void v005();
@@ -25,7 +25,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                 // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

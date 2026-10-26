@@ -17,7 +17,7 @@ static const CEntry* g_pick = 0;
 static long g_pickIndex = 0;
 static long g_seenIndexIn = 0;
 
-struct CTCWound {
+class CTCWound { public:
     unsigned long lastFrameChanged;
     std::list<CWound> wounds;
     void AddWound(long)

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void* vftable;
     int destroyed;
 };

@@ -8,12 +8,12 @@ static bool g_paidShow = false;
 static int g_sales = 0, g_payments = 0, g_removes = 0;
 
 class CTCBase { };
-struct CTCShop : CTCBase {
+class CTCShop : public CTCBase { public:
     long priceEach;
     long GetCurrentBuyPrice(long defIndex, long count) const { return priceEach * count + defIndex; }
     void SellHighlightedItem(long defIndex) { ++g_sales; g_soldItem = defIndex; }
 };
-struct CTCHeroStats : CTCBase {
+class CTCHeroStats : public CTCBase { public:
     void AddMoney(long amount, bool showMessage) { ++g_payments; g_paid = amount; g_paidShow = showMessage; }
 };
 struct CInterfaceMap {
@@ -44,13 +44,13 @@ public:
     }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroCreature() { return g_hero; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CEngine { CPlayerManager* PlayerManager; };
+class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CEngine { public: CPlayerManager* PlayerManager; };
 static CEngine* g_pEngine = 0;
 
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     long HighlightedIndex;
     long slots[4];
     long GetItemInSlotWithIndex(long index) const { return slots[index]; }
@@ -76,7 +76,7 @@ struct CTCInventoryBase {
     virtual void RemoveItem(long item, long count) { ++g_removes; g_removedItem = item; g_removedCount = count; }
     virtual ~CTCInventoryBase() { }
 };
-struct CTCInventoryTrade : CTCInventoryBase {
+class CTCInventoryTrade : public CTCInventoryBase { public:
     long CategoryIdent;
     void ResetTradeLists() { g_resetAt = ++g_order; }
     void InitialiseBuyableItems(CPairVector& items)

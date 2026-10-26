@@ -8,7 +8,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is C3DMeshInfo (its landed operator= @ 0x00A2B3C0; catalog "CAnimationEntry::operator=").
-struct C3DMeshInfo {                             // 96 bytes (0x60); its own assignment copies the body
+class C3DMeshInfo { public:                             // 96 bytes (0x60); its own assignment copies the body
     unsigned char _body[0x60];
     C3DMeshInfo& operator=(const C3DMeshInfo& other);   // 0x00A2B3C0
 };

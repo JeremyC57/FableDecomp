@@ -5,7 +5,7 @@
 // non-polymorphic aggregate whose destructor is declared and defined out of line so it is the
 // TU's symbol. The manifest label (CarryCrateAndFollow dtor) is propagated garbage; the class is
 // named by shape.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                         // 0x0099B510
 };

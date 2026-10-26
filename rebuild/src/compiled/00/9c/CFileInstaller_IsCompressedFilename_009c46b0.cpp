@@ -9,15 +9,15 @@
 #include "fable_string.h"
 #undef CWideString
 #undef CCharString
-struct CWideString;
-struct CCharString:CCharStringCore {CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
-struct CWideString:CWideStringCore {CWideString();~CWideString();CCharString ConvertToCharString() const;CWideString& operator=(const CWideString&);};
+class CWideString;
+class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
+class CWideString:public CWideStringCore { public:CWideString();~CWideString();CCharString ConvertToCharString() const;CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 struct CExtensionNode {unsigned char TreeLinks[0x10];CCharString first,second;};
 struct CExtensionTree { CExtensionNode* Head;CExtensionNode* Find(const CCharString&); };
 struct CExtensionMap:CExtensionTree { CExtensionNode* find(const CCharString& key){return Find(key);} };
-struct CAFile {static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);};
-struct CFileInstaller {unsigned char EarlierState[0x94];CExtensionMap CompressedFileTypes;bool IsCompressedFilename(const CWideString&,CWideString&);};
+class CAFile { public:static void __fastcall SplitPath(const CWideString&,CWideString*,CWideString*,CWideString*,CWideString*);};
+class CFileInstaller { public:unsigned char EarlierState[0x94];CExtensionMap CompressedFileTypes;bool IsCompressedFilename(const CWideString&,CWideString&);};
 bool CFileInstaller::IsCompressedFilename(const CWideString& filename,CWideString& output){
  bool result;
  { CWideString stem,extension;

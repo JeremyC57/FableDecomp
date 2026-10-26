@@ -2,13 +2,13 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::DeactivateQuest @ 0x00892f00.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void DeactivateQuest(
         const CCharString& questName,
         unsigned long flags);

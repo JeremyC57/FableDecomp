@@ -23,7 +23,7 @@ struct CArea {                                     // 12 bytes; each area has a 
     EAreaStatus   Status;                          // +0x08
 };
 
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     long m_references;                             // +0x04
     CIVCountedPointeeBase() : m_references(1) {}
     virtual ~CIVCountedPointeeBase() {}
@@ -51,7 +51,7 @@ struct CMemoryBlock : CIVCountedPointeeBase {      // CSimpleMemoryPool::CMemory
     virtual ~CMemoryBlock() { if (OwnsData) FreeAligned(BlockData); }   // 0x00A5C9B0 (deleting)
 };
 
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void*         __vftable;                       // +0x00
     CMemoryBlock* FirstMemoryBlock;                // +0x04
     unsigned long Capacity;                        // +0x08

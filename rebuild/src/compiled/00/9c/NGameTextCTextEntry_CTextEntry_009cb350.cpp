@@ -17,11 +17,11 @@
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
 };
@@ -31,7 +31,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;                                        // +0
     SCountBlock* Info;                              // +4
     ~CCountedPointer()
@@ -48,7 +48,7 @@ struct CCountedPointer {
     }
 };
 namespace NGameText {
-struct CTextTag {                                   // 8 bytes
+class CTextTag { public:                                   // 8 bytes
     long        Position;                           // +0
     CCharString Tag;                                // +4
 };
@@ -69,11 +69,11 @@ struct CTextTagArray {                              // CArray<NGameText::CTextTa
             free(_M_start);
     }
 };
-struct CResource {                                  // 0x1c bytes
+class CResource { public:                                  // 0x1c bytes
     virtual ~CResource();                           // 0x009FC550
     unsigned char _body[0x18];
 };
-struct CBankFileAsyncData;
+class CBankFileAsyncData;
 struct CDataBankTextEntry;
 namespace NGameText {
 struct __declspec(novtable) CTextEntry : CResource {

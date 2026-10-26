@@ -6,7 +6,7 @@
 // retail CCombatActionBase is 0x114 bytes, so it is at +0x114 -- modelled locally).
 #include "fable_string.h"
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
@@ -14,7 +14,7 @@ struct CCombatActionBase {
     unsigned char _body[0x114 - 4];
 };
 
-struct CCreatureAction_InterruptableMidAttack : CCombatActionBase {
+class CCreatureAction_InterruptableMidAttack : public CCombatActionBase { public:
     long InterruptTime;                     // +0x114 (PDB +0x12c)
     virtual void Initialise();
 };

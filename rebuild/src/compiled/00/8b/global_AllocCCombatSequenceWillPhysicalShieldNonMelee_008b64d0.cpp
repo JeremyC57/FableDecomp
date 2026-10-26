@@ -3,9 +3,9 @@
 // Callees: operator new @ 0x00BFEA1A (0x28), CCombatSequenceBase::CCombatSequenceBase @ 0x008B0AB0 (on the new block, first, second). Vtable 0x0127A3B4 =
 // CCombatSequence_WillPhysicalShieldNonMelee (rtti-vtables.tsv). Shape: the landed factory family (`test ; je` on the block, the derived vtable stored after the
 // base constructor, `xor eax,eax` on the null arm). The manifest label "CFirstPersonInit::Alloc" is propagated.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];                 // sizeof = 0x28
     CCombatSequenceBase(CThingCreatureBase* first, CThingCreatureBase* second);   // 0x008B0AB0

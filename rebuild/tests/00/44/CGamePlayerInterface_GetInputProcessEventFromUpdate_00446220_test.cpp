@@ -62,12 +62,12 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
 
 #pragma pack(push, 1)
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -573,12 +573,12 @@ FABLE_STATIC_ASSERT(offsetof(CGamePlayerInterface, HasCalledInputUpdateThisFrame
 #include <stddef.h>
 
 
-struct CBaseClass;
-struct CInputProcessManager;
-struct CLinkedListPosition;
+class CBaseClass;
+class CInputProcessManager;
+class CLinkedListPosition;
 
 #pragma pack(push, 1)
-struct CAInputProcess {
+class CAInputProcess { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
     CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data
@@ -609,7 +609,7 @@ FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Previous) == 0x
 
 
 #pragma pack(push, 1)
-struct CProcessedInput {
+class CProcessedInput { public:
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]
@@ -630,7 +630,7 @@ FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
 
 #undef CProcessedInput
 // Actual storage matches native B0; field-free adapter restores missing methods.
-struct CProcessedInput:CProcessedInputStorage {void Clear();void SetPlayer(unsigned long);}; //A0D300/A0D3A0
+class CProcessedInput:public CProcessedInputStorage { public:void Clear();void SetPlayer(unsigned long);}; //A0D300/A0D3A0
 #define CPlayerManager CPlayerManagerDonor
 #ifndef FABLE_ENGINE_CPLAYERMANAGER_H
 #define FABLE_ENGINE_CPLAYERMANAGER_H
@@ -642,11 +642,11 @@ struct CProcessedInput:CProcessedInputStorage {void Clear();void SetPlayer(unsig
 #include <stddef.h>
 
 
-struct CGameDefinitionManager;
-struct CMainGameComponent;
+class CGameDefinitionManager;
+class CMainGameComponent;
 
 #pragma pack(push, 1)
-struct CPlayerManager {
+class CPlayerManager { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CMainGameComponent*     Component;                       // +0x04
     CGameDefinitionManager* DefinitionManager;               // +0x08
@@ -671,7 +671,7 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerManager, HeroSwapPlayerScriptNames) == 0x24)
 #undef CPlayerManager
 // The donor Players vector is 16 bytes versus retail 12, moving MainPlayer
 // from donor20 to native1C. No storage is accessed by this field-free adapter.
-struct CPlayerManager:CPlayerManagerDonor {long GetMainPlayerNumber()const;}; //449700
+class CPlayerManager:public CPlayerManagerDonor { public:long GetMainPlayerNumber()const;}; //449700
 struct CInputNode {CAInputProcess* Data;CInputNode* Next;CInputNode* Previous;};
 struct CInputScan;
 struct CInputList {CInputNode* Head;CInputNode* Tail;int Count;CInputScan* FirstScan;};
@@ -682,7 +682,7 @@ struct CInputScan {
  CAInputProcess* Advance(){Current=Next;if(!Current)return 0;Next=Current->Next;Previous=Current->Previous;return Current->Data;}
  void End(CInputList& list){if(!PreviousScan){list.FirstScan=NextScan;if(NextScan)NextScan->PreviousScan=0;}else{PreviousScan->NextScan=NextScan;if(NextScan)NextScan->PreviousScan=PreviousScan;}}
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
  void* Vtable;mutable CInputList InputProcesses;unsigned char BeforePlayer[0x6e8];CPlayerManager* PlayerManager;unsigned char BeforeProcessed[0x194];mutable bool AlreadyProcessed;
  bool GetInputProcessEventFromUpdate(CProcessedInput&)const;
 };

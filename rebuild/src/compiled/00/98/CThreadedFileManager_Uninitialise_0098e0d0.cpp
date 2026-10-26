@@ -14,7 +14,7 @@ extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);           
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long ms);                // IAT 0x0143FE1C
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);               // IAT 0x0143FE30
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     unsigned char _pad00[0x148];                   // vtable, DeviceQueue, device levels, time slices, current object, Objects
     bool  Initialised;                             // +0x148
     bool  ExitThread;                              // +0x149

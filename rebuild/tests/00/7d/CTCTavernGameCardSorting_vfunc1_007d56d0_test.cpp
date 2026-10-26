@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CTCTavernGameCardSorting::vfunc_1 (0x007D56D0).
-struct CPersistContext {
+class CPersistContext { public:
     int calls; const char* names[4]; long* values[4]; long defs[4]; long baseArg;
     void Transfer(const char* n, long& v, const long& d) { names[calls] = n; values[calls] = &v; defs[calls] = d; ++calls; }
 };

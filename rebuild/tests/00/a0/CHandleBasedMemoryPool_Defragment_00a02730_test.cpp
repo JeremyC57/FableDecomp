@@ -7,7 +7,7 @@ struct CHeader {
 };
 union CHandleInfo { CHeader* Header; long NextFree; };
 static int g_moves, g_inserted;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     CHeader* Buffer; long PoolSize, AllocatedSize, LockCount; bool MultiThreaded, ShutdownFlag, EnableDefrag;
     CHeader* FreeLists[256]; CHandleInfo* Handles; CHeader* lastFree;
     void BeginCritical(bool) { }

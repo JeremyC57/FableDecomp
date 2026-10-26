@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     bool operator!=(const char* text) const { return std::strcmp(m_text ? m_text : "", text) != 0; }
 };
-struct CThing { CCharString m_scriptName; };
-struct CThingFilter_HasAnyScriptName {
+class CThing { public: CCharString m_scriptName; };
+class CThingFilter_HasAnyScriptName { public:
     bool operator()(const CThing& thing) const
     {
         const CCharString* name = &thing.m_scriptName;

@@ -1,6 +1,6 @@
 // behaviour test for CThingObject::WorldUpdate (0x00704150): base result, die-off countdown (held by TC 0x47 or a shot TC), kill rules, own and shot updates
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
 struct CTCDieOffHold_47 { long HoldCount; };

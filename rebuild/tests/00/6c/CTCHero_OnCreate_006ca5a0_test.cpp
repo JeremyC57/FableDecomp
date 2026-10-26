@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CRegionDef { bool PreventHeroWeaponUse; bool PreventHeroWillUse; };
-struct CRegion { CRegionDef* def; };
-struct CTCHero {
+class CRegionDef { public: bool PreventHeroWeaponUse; bool PreventHeroWillUse; };
+class CRegion { public: CRegionDef* def; };
+class CTCHero { public:
     bool WeaponsUsable, WillUsable; int setCalls;
     CTCHero() : WeaponsUsable(false), WillUsable(false), setCalls(0) {}
     void SetWeaponsAsUsable(bool b) { ++setCalls; WeaponsUsable = b; }

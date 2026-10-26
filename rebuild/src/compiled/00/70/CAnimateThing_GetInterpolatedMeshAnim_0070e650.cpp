@@ -6,13 +6,13 @@
 // CCompleteAnimation); each C3DAnimationBlendState is 8 bytes.
 // Shape: arguments pushed right to left (t, &EndAnimState, &StartAnimState); `this` in esi is advanced to the start
 // state for the last push because it is dead afterwards. `ret 8`.
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     long m_anim;                                // +0x00
     float m_time;                               // +0x04
     void SetInterpolate(const C3DAnimationBlendState& start, const C3DAnimationBlendState& end, float t);   // 0x00A3C3B0
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad[0x68];
     C3DAnimationBlendState StartAnimState;      // +0x68
     C3DAnimationBlendState EndAnimState;        // +0x70

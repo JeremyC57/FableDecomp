@@ -13,7 +13,7 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct C2DLineF { float x1, y1, x2, y2; };
+class C2DLineF { public: float x1, y1, x2, y2; };
 struct _List_node_base {
     _List_node_base* _M_next;
     _List_node_base* _M_prev;

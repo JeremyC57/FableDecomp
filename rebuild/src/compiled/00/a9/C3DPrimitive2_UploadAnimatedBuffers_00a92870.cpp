@@ -25,7 +25,7 @@ struct CCountedObject {                            // counted object: vptr, then
             Destroy();
     }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -51,7 +51,7 @@ struct CAnimatedBlock {                            // 48 bytes (PDB)
     CIVCountedPointer<CAnimatedBlockDeviceIndependent> Data;   // +0x2c
 };
 
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     virtual void v00();
     unsigned char                  _pad04[0x28];
     N3DPrimitiveDeviceIndependent* Data;                 // +0x2c scoped_ptr<N3DPrimitive::CDeviceIndependent>

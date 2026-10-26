@@ -13,7 +13,7 @@
 // Shape: initialiser list in declaration order; the vector is the STLport _Vector_base with an _STLP_alloc_proxy
 // end-of-storage member (three plain pointers schedule the last zero store before the map's `lea`); the vector zero words share ebx with the later zero members.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 struct CComponent;
 
 class CTCInventoryBase {                        // 0x130 bytes in retail

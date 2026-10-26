@@ -13,7 +13,7 @@
 #pragma optimize("y", off)              // frame pointer kept (`leave`), size-optimised TU
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                   // 0x00410DE0 (std::bitset::test)
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type); // 0x0040F020
 };
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];

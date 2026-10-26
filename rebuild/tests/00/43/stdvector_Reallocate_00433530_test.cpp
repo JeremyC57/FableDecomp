@@ -8,7 +8,7 @@ extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* __cdecl operator_new_place(unsigned int,void* p) {return p;}
 struct __false_type { __false_type() {} };
-struct CCharStringData;struct CCharString {CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharStringData;class CCharString { public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
 __forceinline void CopyConstruct(CCharString* p,const CCharString& x) { new(p) CCharString(x); }
 void* __cdecl Place(unsigned int,void*);
 __forceinline void Construct(CCharString* p,const CCharString& x) { if(p) CopyConstruct(p,x); }

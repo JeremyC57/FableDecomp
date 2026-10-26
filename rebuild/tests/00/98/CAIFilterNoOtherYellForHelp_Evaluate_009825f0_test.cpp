@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CMessageEvent;
-struct CMessageEventFilter_IsOfType { long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) { } };
+class CMessageEvent;
+class CMessageEventFilter_IsOfType { public: long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) { } };
 static long g_seenType = 0; static CMessageEvent* g_result = 0;
-struct CMessageEventManager { CMessageEvent* FindMostRecentMessage(CMessageEventFilter_IsOfType* filter) { g_seenType = filter->m_type; return g_result; } };
+class CMessageEventManager { public: CMessageEvent* FindMostRecentMessage(CMessageEventFilter_IsOfType* filter) { g_seenType = filter->m_type; return g_result; } };
 struct CThingCreature { unsigned char _pad[0x60]; CMessageEventManager* m_pMessageManager; CMessageEventManager* GetMessageManager() { return m_pMessageManager; } };
 struct CAIFilter_NoOtherYellForHelp { CThingCreature* m_pCreature; virtual bool Evaluate(); };
 bool CAIFilter_NoOtherYellForHelp::Evaluate() { CMessageEventFilter_IsOfType filter(11); return m_pCreature->GetMessageManager()->FindMostRecentMessage(&filter) == 0; }

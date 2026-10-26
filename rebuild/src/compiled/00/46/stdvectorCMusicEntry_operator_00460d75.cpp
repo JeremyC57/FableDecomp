@@ -11,7 +11,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CMusicEntry {                // PDB: 16 bytes
+class CMusicEntry { public:                // PDB: 16 bytes
     unsigned long ID;
     long          Filename;             // CDefString (a 4-byte string-table index)
     float         Gain;

@@ -22,7 +22,7 @@ __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 }
 
 class CThing;
-struct CFishDef {
+class CFishDef { public:
     virtual void v00();
     long RefCount;                                          // +0x04
     unsigned char _pad08[0x28 - 0x08];
@@ -33,12 +33,12 @@ struct CFishDef {
     float MinSpeed;                                         // +0x38
     float MaxSpeed;                                         // +0x3c
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CFishDef>* out) const; // 0x007B2600
 };
 

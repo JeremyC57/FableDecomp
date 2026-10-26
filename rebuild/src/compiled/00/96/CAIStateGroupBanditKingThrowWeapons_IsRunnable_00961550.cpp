@@ -8,22 +8,22 @@
 // (both out of line in this TU), CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: the boss component kept in esi (named local from the lookup); `d = dx*dx; d += dy*dy;` gives retail's X-term-first x87
 // order (a single sum puts the Y term first); the pointer is a named local (a temporary reuses the ctor's eax); `> R` gives `test ah,41h ; jne`.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
 };
 
-struct CPlayer
-{
+class CPlayer
+{ public:
     CThing* GetHeroThing();                         // 0x00487DC0
 };
 
-struct CPlayerManager
-{
+class CPlayerManager
+{ public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 
@@ -38,8 +38,8 @@ struct CBaseIntelligentPointer
 };
 
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };
@@ -51,7 +51,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer   // CIntelligentPo
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other);   // 0x0048BD20
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
     struct SEntry { long type; CTCBase* component; };
@@ -88,8 +88,8 @@ struct CThingWithTCs
     }
 };
 
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     bool IsOnFinalPhase();                          // 0x007AEDE0
     bool IsReadyForPhaseChange();                   // 0x007AEE90
 };

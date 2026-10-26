@@ -64,12 +64,12 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CIDrawWorld;
-struct CIDrawWorldMap;
-struct CWideStringData;
+class CIDrawWorld;
+class CIDrawWorldMap;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -145,8 +145,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, CommonHeaderPosLookupTable) == 0x4
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -154,8 +154,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;

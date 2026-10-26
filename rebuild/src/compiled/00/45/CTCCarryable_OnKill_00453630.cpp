@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Leaf: OnKill
 struct Node { void* p0; void* p4; void* p8; void* pc; };
-struct CTCCarryable { Node* node; int flag; };
+class CTCCarryable { public: Node* node; int flag; };
 extern "C" void __stdcall FreeThing(void* p);
 void __fastcall CTCCarryable_OnKill(CTCCarryable* self)
 {

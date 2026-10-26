@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_loads = 0, g_builds = 0;
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
     CResourceList* ResourceList;
     CResource* PrevResource;
     CResource* NextResource;
@@ -9,10 +9,10 @@ struct CResource {
     void ListRemove() { PrevResource->NextResource = NextResource; NextResource->PrevResource = PrevResource; }
     void ListInsert(CResource* prev, CResource* next) { PrevResource = prev; NextResource = next; prev->NextResource = this; NextResource->PrevResource = this; }
 };
-struct CResourceList { CResource Head; unsigned long CurrentFrame; };
+class CResourceList { public: CResource Head; unsigned long CurrentFrame; };
 struct SCountBlock { long m_references; };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o, SCountBlock* b) : m_pObject(o), m_pCount(b) {}
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -37,18 +37,18 @@ struct CLipSyncEntryData : CResource {
     }
 };
 static CLipSyncEntryData g_data;
-struct CLipSyncDataBank;
-struct CLipSyncDataBankEntry {
+class CLipSyncDataBank;
+class CLipSyncDataBankEntry { public:
     CLipSyncEntryData* Data;
     float Duration;
     void BeginLoading(long index, CLipSyncDataBank* bank) { ++g_loads; Data = &g_data; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage;
     T* begin() { return m_pBegin; }
     T& operator[](long i) { return *(begin() + i); }
 };
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     CArray<CLipSyncDataBankEntry> Entries;
     bool EntryExists(long index) { return index == 1; }
     CCountedPointer<const CLipSyncData> GetLipSyncData(long index)

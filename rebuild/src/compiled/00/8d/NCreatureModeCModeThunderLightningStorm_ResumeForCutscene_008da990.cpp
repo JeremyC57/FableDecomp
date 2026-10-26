@@ -10,7 +10,7 @@
 // Layout: PDB CModeThunderLightningStorm (0xd4) with 12-byte retail vectors: Owner thing +0x04, PLightningStormDef PDB +0xac ->
 //   retail +0xa4, LoopingSound PDB +0xd0 -> retail +0xc4. Def LoopingSound (CDefString id) at retail +0x64 (PDB +0x68).
 // Shape: as 0x007A0400 (named sound component in esi, string in its own block sharing the key's frame word).
-struct CCharString {
+class CCharString { public:
     void* PStringData;                          // +0 the shared string block
     ~CCharString();                             // 0x0099EAE0
 };
@@ -29,7 +29,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -47,7 +47,7 @@ struct CThing {
         return false;
     }
 };
-struct CSpecialAbilitiesThunderLightningStormDef {
+class CSpecialAbilitiesThunderLightningStormDef { public:
     unsigned char _pad00[0x64];
     long LoopingSound;                          // +0x64 CDefString id
 };

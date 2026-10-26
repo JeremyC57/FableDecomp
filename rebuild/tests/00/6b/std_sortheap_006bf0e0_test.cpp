@@ -14,8 +14,8 @@ public:
     void SetNarrow(const char* s) { int i = 0; for (; s[i] && i < 15; ++i) m_text[i] = (wchar_t)s[i]; m_text[i] = 0; }
     bool Equals(const char* s) const { int i = 0; for (; s[i]; ++i) if (m_text[i] != (wchar_t)s[i]) return false; return m_text[i] == 0; }
 };
-struct CMusicManager {
-    struct CRegisteredMusicEntry {
+class CMusicManager { public:
+    class CRegisteredMusicEntry { public:
         CWideString SrcFileName;
         CWideString DstFileName;
         float Gain;

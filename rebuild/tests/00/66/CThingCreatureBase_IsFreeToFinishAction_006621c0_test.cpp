@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {}
     virtual void v05() {} virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {}
     virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {} virtual void v14() {}
@@ -19,7 +19,7 @@ struct CCreatureActionBase {
     bool ready; int readyCalls;
     CCreatureActionBase() : InterruptionGroupID(0), InterruptionPriority(0), Finished(false), ready(false), readyCalls(0) {}
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0x100];
     CCreatureActionBase* PCurrentAction;
     bool IsPerformingAnyAction()

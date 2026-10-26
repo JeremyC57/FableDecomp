@@ -10,12 +10,12 @@
 // vtable + the null primitive (the landed CEngineInternalAttachedPrimitiveInfo constructor 0x00B3AAE0 model), then the attachment info's
 // inline constructor: Flags = 0 (stored before the first name's call) and the two string constructors.
 // Leaf: ??0CEngineInternalAttachedPrimitive
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                            // 0x0099A2D0
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     virtual void Release();                  // own vtable 0x0122F598
     void* m_pPrimitive;                      // +0x04
     CEnginePrimitiveHandle() : CBaseClass(), m_pPrimitive(0) {}
@@ -24,10 +24,10 @@ struct CEnginePrimitiveHandle : CBaseClass {
 class CCharString {
 public:
     CCharString();                           // 0x0099E4B0
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
 };
 
-struct CEnginePrimitiveAttachmentInfo {
+class CEnginePrimitiveAttachmentInfo { public:
     unsigned long Flags;                     // +0x00
     CCharString   ParentDummyName;           // +0x04
     long          ParentDummyIndex;          // +0x08
@@ -36,17 +36,17 @@ struct CEnginePrimitiveAttachmentInfo {
     CEnginePrimitiveAttachmentInfo() : Flags(0) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E[12];
 };
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual ~CEngineInternalPrimitiveBase();
     CEngineInternalPrimitiveBase(long type, long flags);   // 0x00B8FF00
     unsigned char _body[0x80 - 4];
 };
 
-struct CEngineInternalAttachedPrimitive : CEngineInternalPrimitiveBase {   // vtable 0x012A1A04
+class CEngineInternalAttachedPrimitive : public CEngineInternalPrimitiveBase { public:   // vtable 0x012A1A04
     CEnginePrimitiveHandle         ParentHandle;                // +0x80
     long                           ParentGroupIndex;            // +0x88
     CEnginePrimitiveHandle         OutputPrimitive;             // +0x8c

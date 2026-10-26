@@ -26,7 +26,7 @@ struct CRefCounted {
     long RefCount;                                   // +0x04
 };
 
-struct CInventoryItemDef : CRefCounted {
+class CInventoryItemDef : public CRefCounted { public:
     unsigned char _pad_0x08[0x34];
     long          CategoryIdentifier;                // +0x3C
 };
@@ -53,14 +53,14 @@ __declspec(noinline) bool CThingDef::GetSubDef(CRawDefPointer<CInventoryItemDef>
 }
 #pragma auto_inline(on)
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer() { T* object = Object; if (object && --object->RefCount == 0) object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get(); // 0x0044C6B0
     bool GetDef(long index, CDefPointer<CThingDef>* out);              // 0x0042AF3C
 };
@@ -80,7 +80,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
 
 namespace NInventory {
 
-struct CCategory {                                   // retail 0x2C bytes
+class CCategory { public:                                   // retail 0x2C bytes
     unsigned char _pad_0x00[0x2C];
     void SelectItemOfType(long defIndex);            // 0x005BDEC1
 };
@@ -92,7 +92,7 @@ struct CCategoryHasIdentifier {
 
 CCategory* __fastcall find_if(CCategory* first, CCategory* last, CCategoryHasIdentifier pred);   // 0x005C08D3
 
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x18];

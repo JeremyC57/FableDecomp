@@ -11,12 +11,12 @@
 //   +0x18. CQ_BountyHuntScript retail = PDB - 0x14: BanditCutsceneDone +0x6f, BountyHuntIntroComplete +0x70,
 //   BanditGruntTextCounter +0x74. CScriptDef BountyHuntBanditGruntWanderDistance is PDB +0xbc8, retail +0xb20 (the
 //   retail def is smaller ahead of it; read straight off the bytes).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -24,12 +24,12 @@ struct CCharString {
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointer {                               // {Data, Info}
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -60,7 +60,7 @@ enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
@@ -84,15 +84,15 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
     ~CIsThingAlive() { }
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CBaseObject {                                   // {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();                            // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseObject {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointer PImp;                              // +0x08
     VPAD2(s0) VPAD1(s1)                                // slots 1..3
     virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
@@ -100,7 +100,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Release();                                    // 0x00CD2770
     void ClearCommands();                              // 0x007E7360
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -134,7 +134,7 @@ struct CQ_BountyHuntScript {
     bool BountyHuntIntroComplete;                      // +0x70
     long BanditGruntTextCounter;                       // +0x74
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xb20];
     float BountyHuntBanditGruntWanderDistance;         // +0xb20
 };

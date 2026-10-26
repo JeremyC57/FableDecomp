@@ -24,8 +24,8 @@ public:
     virtual void Read(void* dst, long size, CASuspendableProcess* process) = 0;  // slot 3
     virtual void Write(const void* src, long size, CASuspendableProcess* process) = 0;   // slot 4 (+0x10)
 };
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 class CCamera {
 public:
     C3DVector     WorldPosition;                         // +0x00

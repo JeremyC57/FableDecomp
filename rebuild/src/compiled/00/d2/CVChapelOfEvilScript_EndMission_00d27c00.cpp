@@ -13,18 +13,18 @@
 // Identity: the label is doubtful -- Ego_r.pdb CV_ChapelOfEvilScript has no bool at retail +0x51 (PDB +0x65 sits in
 //   the long DonationCounter), and the body (guild region, guild map, hero guide) is a guild-quest ending; the
 //   neighbours at 0x00D26A50.. are CQ_DragonBossFightScript. The end flag at +0x51 is named descriptively.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CScriptThing {                                       // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
     ~CScriptThing();                                        // 0x004AA840
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -87,7 +87,7 @@ struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slo
     virtual void v538(); virtual void v539(); virtual void v540(); virtual void v541(); virtual void v542(); virtual void v543();
     virtual void SetHeroGuideToShowQuestCardsWhenSpokenTo(bool show);   // slot 544 (+0x880) CGameScriptInterface::SetHeroGuideToShowQuestCardsWhenSpokenTo @ 0x0088EC60
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

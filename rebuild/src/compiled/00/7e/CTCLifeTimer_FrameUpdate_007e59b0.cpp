@@ -34,13 +34,13 @@ struct CTCMap_Retail {                             // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CCharString {                               // fable_string.h layout: one data-block pointer
+class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CTCParamsBase;
-struct CThing {
+class CTCParamsBase;
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -49,14 +49,14 @@ struct CThing {
     CTCBase_Retail* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     void Kill(bool performOnDie);                  // 0x004C9B80
 };
-struct CTCFadeOutAndIn {
+class CTCFadeOutAndIn { public:
     unsigned char _pad00[0x0c];
     bool FadingIn;                                 // +0x0c
     bool FadingOut;                                // +0x0d
     void Fade(float time, bool fadeIn);            // 0x006C3B70
 };
 
-struct CTCLifeTimer {
+class CTCLifeTimer { public:
     void*   __vftable;                             // +0x00
     CThing* ParentThing;                           // +0x04 (CTCBase)
     long    m_baseWord;                            // +0x08

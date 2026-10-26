@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long = -1) { std::strncpy(text, t, 63); text[63] = 0; }
 };
@@ -12,7 +12,7 @@ static int g_frame = 0, g_loadedAt = 0, g_terminateAt = 1000;
 static int g_quests = 0, g_lampOn = 0;
 static char g_quest[64];
 
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     char name[64];
     unsigned long id;
     CSpawnedFuncBase(const CCharString& n, unsigned long i) : id(i) { std::strcpy(name, n.text); }
@@ -26,14 +26,14 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frame; }
     bool MsgIsLevelLoaded(const CCharString& level) const { return std::strcmp(level.text, "Empty") == 0 && g_frame >= g_loadedAt; }
     void ActivateQuest(const CCharString& quest) const { ++g_quests; std::strcpy(g_quest, quest.text); }
 };
 static CSpawnedFuncBase* g_spawned = 0;
 static char g_region[64];
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return g_frame >= g_terminateAt; }
     void AddSpawnedFunction(CSpawnedFuncBase* f, const CCharString& region) { g_spawned = f; std::strcpy(g_region, region.text); }
 };

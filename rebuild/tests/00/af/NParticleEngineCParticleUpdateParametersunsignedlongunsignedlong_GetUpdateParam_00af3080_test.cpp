@@ -1,11 +1,11 @@
 // Behaviour test for 00af3080 CParticleUpdateParameters<unsigned long,unsigned long>::GetUpdateParam (copy of the
 // model including the LowerBound body; the callback records its arguments).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class T> struct CAllocProxy { T* _M_data; };
 template <class T> struct CVector { T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage; };
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     typedef pair<K, V> value_type;
     typedef const value_type* const_iterator;
     CVector<value_type> Data;

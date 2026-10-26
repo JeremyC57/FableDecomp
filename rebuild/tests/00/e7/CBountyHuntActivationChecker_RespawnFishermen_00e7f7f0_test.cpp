@@ -8,15 +8,15 @@ static void Reset(int termAt) { g_log[0] = 0; g_frame = 0; g_termAt = termAt; }
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBountyHuntActivationChecker::RespawnFishermen creates the organiser and (unless attacked) both competitors
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     const char* Name; float X; char Data[8];
     CScriptThing(const char* n = "", float x = 0.0f) : Name(n), X(x) { Data[0] = 0; }
     C3DVector GetPos() const { C3DVector v; v.X = X; v.Y = v.Z = 0.0f; return v; }
     void SetDataString(const char* s) { std::strcpy(Data, s); char x[64]; std::sprintf(x, "data %s %s", Name, s); Log(x); }
 };
 static int g_n = 0;
-struct CGame {
+class CGame { public:
     CScriptThing GetThingWithScriptName(const char* n) const { return CScriptThing(n, n[std::strlen(n) - 1] == '2' ? 2.0f : 1.0f); }
     CScriptThing CreateCreature(const char* def, const C3DVector& p, const char* name, bool) const
     { char x[128]; std::sprintf(x, "create %s %s %g", def, name, p.X); Log(x); static const char* ids[] = { "A", "B", "C", "D" }; return CScriptThing(ids[g_n++ % 4]); }

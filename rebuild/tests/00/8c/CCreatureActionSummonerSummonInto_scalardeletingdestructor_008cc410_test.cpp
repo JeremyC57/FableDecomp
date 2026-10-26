@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_SummonerSummonInto {
+class CCreatureAction_SummonerSummonInto { public:
     void* vftable;
     int destroyed;
 };

@@ -1,11 +1,11 @@
 #include <cstdio>
 // behaviour test: CTCWillLightning::StartHandEffects creates primary/secondary hand effects (swapped when left-handed) and attaches them to the hand bones
-struct CThing { bool Dead; long Effect; bool HasEmitter; long AttachedHand; CThing* AttachedTo; };
+class CThing { public: bool Dead; long Effect; bool HasEmitter; long AttachedHand; CThing* AttachedTo; };
 static CThing g_things[8]; static int g_count = 0;
 static CThing* CreateParticleEffect(long effect) { CThing* t = &g_things[g_count++]; t->Dead = false; t->Effect = effect; t->HasEmitter = true; t->AttachedHand = 0; t->AttachedTo = 0; return t; }
 struct CPtr { CThing* Item; CPtr() : Item(0) {} };
 static bool IsAlive(const CPtr& p) { return p.Item != 0 && !p.Item->Dead; }
-struct CTCWillLightning {
+class CTCWillLightning { public:
     long WeaponState; bool LeftHandAnim; long Primary, Secondary, State;
     CPtr Player, Left, Right;
     bool IsRightHanded() const { switch (WeaponState) { case 0: return !LeftHandAnim; case 1: return false; } return true; }

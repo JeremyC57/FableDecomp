@@ -1,8 +1,8 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CDefClassBase;
-struct CSpecialAbilitiesMultiArrowDef;
+class CDefClassBase;
+class CSpecialAbilitiesMultiArrowDef;
 
 extern void __fastcall CSpecialAbilitiesMultiArrowDef_Copy(
     CSpecialAbilitiesMultiArrowDef* thisptr, void* edx, CDefClassBase* other);

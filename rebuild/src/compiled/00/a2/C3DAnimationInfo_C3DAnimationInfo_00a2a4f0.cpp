@@ -5,15 +5,15 @@
 // Rotation +0x24. The base copy is the compiler-generated memberwise copy (its vtable store
 // survives because the base is polymorphic and inlined first); the CIVCountedPointer copy
 // constructor stores and addrefs; the C3DVector is copied memberwise through one register.
-struct CMeshDataBank;
+class CMeshDataBank;
 
-struct CMeshDataBankEntry {                // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                // vtable 0x0129CD28
     virtual void v00();
     CMeshDataBank* Bank;                   // +4
     unsigned long Index;                   // +8
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);
     virtual void Delete();
     unsigned long IVRefCount;              // +4
@@ -28,12 +28,12 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct C3DAnimationInfo : CMeshDataBankEntry {   // vtable 0x0129CD64
+class C3DAnimationInfo : public CMeshDataBankEntry { public:   // vtable 0x0129CD64
     CIVCountedPointer Data;                // +0xc
     float Duration;                        // +0x10
     float NonLoopingDuration;              // +0x14

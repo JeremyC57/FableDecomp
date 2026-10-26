@@ -3,13 +3,13 @@
 
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; float m_health;
     CInterfaceMap::SEntry m_entries[4]; int m_count;
     CThing() : m_flags91(0), m_health(0), m_count(0)
@@ -35,17 +35,17 @@ struct CThing {
     }
 };
 static int g_strings = 0;
-struct CCharString { const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
 static char g_name[40];
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CCharString& n) { std::strcpy(g_name, n.m_pData); return 555; } };
-struct CWorld { CDefinitionManager* PDefinitionManager; };
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& n) { std::strcpy(g_name, n.m_pData); return 555; } };
+class CWorld { public: CDefinitionManager* PDefinitionManager; };
 struct CRefCounted { long m_count; void DecRef() { --m_count; } long GetRefCount() const { return m_count; } };
 static int g_destroyed = 0;
 struct CDefVirtual { virtual void v00() { } virtual void Destroy() { ++g_destroyed; } };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted { void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); } };
-template <class T> struct CDefPointer { T* m_p; CDefPointer() : m_p(0) { } ~CDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } } };
-struct CThingCreatureBase : CThing { long acc; long GetShotAccuracyPercentage() { return acc; } };
-struct C3DVector; struct CRightHandedSet;
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public: void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); } };
+template <class T> class CDefPointer { public: T* m_p; CDefPointer() : m_p(0) { } ~CDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } } };
+class CThingCreatureBase : public CThing { public: long acc; long GetShotAccuracyPercentage() { return acc; } };
+class C3DVector; class CRightHandedSet;
 static CMeleeCombatAbilityDef g_ability;
 static long s_idx; static CThing* s_shooter; static CThing* s_origin; static CThing* s_target; static float s_acc, s_a, s_b; static void* s_pos; static void* s_frame;
 CThing* CreateShot(long defIndex, CThing* shooter, CThing* origin, CThing* target, float accuracy, float a, float b,

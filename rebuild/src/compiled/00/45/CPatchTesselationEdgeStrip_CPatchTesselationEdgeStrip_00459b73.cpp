@@ -14,7 +14,7 @@ struct CPatchStripBase {
     ~CPatchStripBase();                             // 0x00430300
 };
 
-struct CPatchTesselationEdgeStrip : CPatchStripBase {
+class CPatchTesselationEdgeStrip : public CPatchStripBase { public:
     void*         m_pIndicesA;                      // +0x3c
     unsigned char m_recordA[0x08];
     void*         m_pIndicesB;                      // +0x48

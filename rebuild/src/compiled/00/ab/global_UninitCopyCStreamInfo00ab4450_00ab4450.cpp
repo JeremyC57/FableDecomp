@@ -23,7 +23,7 @@ public:
     virtual ~CBaseClass();
 };
 
-template <class T> struct CArray {              // retail 12-byte array: start, finish, end of storage
+template <class T> class CArray { public:              // retail 12-byte array: start, finish, end of storage
     T* start;
     T* finish;
     T* end;
@@ -32,7 +32,7 @@ template <class T> struct CArray {              // retail 12-byte array: start, 
 
 class CVertexStreamFormat : public CBaseClass { // vtable 0x0129D578, 16 bytes
 public:
-    struct CDataElement {                       // 8 bytes
+    class CDataElement { public:                       // 8 bytes
         unsigned int Register;
         int          DataType;
     };

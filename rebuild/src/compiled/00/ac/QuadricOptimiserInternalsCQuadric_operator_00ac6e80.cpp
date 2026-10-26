@@ -7,7 +7,7 @@
 // loads the right operand first and adds the member in memory).
 namespace QuadricOptimiserInternals {
 
-struct CQuadric {
+class CQuadric { public:
     double AA, AB, AC, AD;
     double BB, BC, BD;
     double CC, CD;

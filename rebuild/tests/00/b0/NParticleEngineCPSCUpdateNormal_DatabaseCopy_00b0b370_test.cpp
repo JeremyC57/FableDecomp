@@ -2,11 +2,11 @@
 // value while the fields DatabaseCopy skips (LifeTimer, the decal list, unrelated bits) keep their own.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     int m_id;
     CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CPSCBase { int m_dummy; };

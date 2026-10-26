@@ -41,24 +41,24 @@ static inline bool IsThingAlive(const CThing* thing)
     return thing && !(thing->m_flags91 & 1);
 }
 namespace NEntityEvents {
-struct CEventHitBy;
-struct CEventFilter_None { CEventFilter_None() { } };
+class CEventHitBy;
+class CEventFilter_None { public: CEventFilter_None() { } };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     bool GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x005ED5A0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer();                       // 0x00449970
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     CPlayerManager* GetPlayerManager();         // 0x00686D40
 };
-struct CTCTavernGame : CTCBase {
+class CTCTavernGame : public CTCBase { public:
     bool PlayerHasBeenHit();
 };
 

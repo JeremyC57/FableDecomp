@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing { int m_id; };
-struct CTCBase {
+class CThing { public: int m_id; };
+class CTCBase { public:
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* parent) : ParentThing(parent), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
 };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) { } };
 struct CList { void* head; CList() : head(&head) { } };
-struct CTCAISummon : CTCBase {
+class CTCAISummon : public CTCBase { public:
     CDefPointer PSummonDef; CList MySummonedCreatures; long LastSummonTick;
     CTCAISummon(CThing* parent) : CTCBase(parent), PSummonDef(), MySummonedCreatures(), LastSummonTick(0) { }
 };

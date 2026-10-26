@@ -1,13 +1,13 @@
 // Behaviour test for 0x00710310 std::merge of two sorted runs of list<CAnimSet>::const_iterator by the anim set's Priority.
 #include <cstdio>
 
-struct CAnimSet { unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };
+class CAnimSet { public: unsigned char _before[0x4c]; long Priority; unsigned char _after[0x0c]; };
 struct SAnimSetNode { SAnimSetNode* _M_next; SAnimSetNode* _M_prev; CAnimSet _M_data; };
 struct CAnimSetIterator {
     SAnimSetNode* _M_node;
     const CAnimSet& operator*() const { return _M_node->_M_data; }
 };
-struct CAnimSetItPriorityLessThan {
+class CAnimSetItPriorityLessThan { public:
     bool operator()(const CAnimSetIterator& a, const CAnimSetIterator& b) const { return (*a).Priority < (*b).Priority; }
 };
 static CAnimSetIterator* copy(CAnimSetIterator* first, CAnimSetIterator* last, CAnimSetIterator* result)

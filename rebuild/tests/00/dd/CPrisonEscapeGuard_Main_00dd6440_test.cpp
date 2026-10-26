@@ -6,7 +6,7 @@
 // the two "seen criminal" lines, restarting the 30-second timer; termination ends the watch
 static int g_frames = 0, g_endAt = 6, g_seenAt = 2, g_timerValue = 0;
 static std::vector<std::string> g_log;
-struct CScriptThing {
+class CScriptThing { public:
     bool hitBy, hitAny, hitAbility14;
     bool MsgIsHitBy(const char*) const { return hitBy; }
     bool MsgIsHitByAnySpecialAbilityFrom(const char*) const { return hitAny; }
@@ -18,7 +18,7 @@ struct CHandle {
     void PlayAnimation(const char* a) { g_log.push_back(a); busy = 2; }
     bool IsPerformingScriptTask() const { return busy > 0; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     CHandle* active;
     void NewScriptFrame() { ++g_frames; if (g_timerValue > 0) --g_timerValue; if (active && active->busy) --active->busy; }

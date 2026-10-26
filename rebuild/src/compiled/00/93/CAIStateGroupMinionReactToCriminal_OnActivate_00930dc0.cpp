@@ -9,10 +9,10 @@
 // shared with the key temporary of the hit path). Then AddMode(15) and the four members are reset from one
 // zeroed eax (FrameToNextSpeak +0x28, OverrodeLocking +0x2c, HeroInsideHouse +0x2d, MeInsideHouse +0x2e:
 // engine header names). Frame: one `push ecx`.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -72,14 +72,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CWorld;
+class CWorld;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -102,7 +102,7 @@ struct CAIStateGroupBase {
     long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31 component
+class CTCCreatureModeManager { public:                 // interface type 0x31 component
     bool AddMode(unsigned long mode);           // 0x0073AE10
 };
 

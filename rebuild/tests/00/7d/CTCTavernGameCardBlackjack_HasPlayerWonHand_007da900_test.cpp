@@ -1,7 +1,7 @@
 // behaviour test for 007da900 CTCTavernGameCardBlackjack::HasPlayerWonHand (self-contained copy of the model + body)
 #include <cstdio>
 #include <cstring>
-struct CCard {
+class CCard { public:
     void*         Thing;                     // +0x00 CThingObject*
     long          Name;                      // +0x04
     long          Value;                     // +0x08

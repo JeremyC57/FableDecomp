@@ -1,8 +1,8 @@
 // CThingFilter_CanBeUsedAsCover::operator()
 // Retail 0x006a7ab0: checks a flag on the CThing arg, then virtual-dispatches.
 
-struct CThing
-{
+class CThing
+{ public:
     // vtable ptr at +0; virtual method at slot 64 (offset 0x100) returns bool.
     virtual bool vf00();
     virtual bool vf01();
@@ -73,8 +73,8 @@ struct CThing
     unsigned char flags; // +0x6c
 };
 
-struct CThingFilter_CanBeUsedAsCover
-{
+class CThingFilter_CanBeUsedAsCover
+{ public:
     bool operator()(CThing *t);
 };
 

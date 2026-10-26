@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_base = 0; static unsigned long g_flags = 0; static int g_dyn = -1; static int g_order = 0;
-struct CVertexShaderInput { virtual void v00() { } CVertexShaderInput() { ++g_base; g_order = 1; } };
+class CVertexShaderInput { public: virtual void v00() { } CVertexShaderInput() { ++g_base; g_order = 1; } };
 struct CVertexShaderInputStatic : CVertexShaderInput {
     virtual void v00() { }
     CVertexShaderInputStatic(unsigned long flags, bool dynamic) : CVertexShaderInput() { Initialise(flags, dynamic); }

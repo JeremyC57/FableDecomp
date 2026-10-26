@@ -135,7 +135,7 @@ static int GetFileAttributesExW(const WStr& fullPath, int, WIN32_FILE_ATTRIBUTE_
     data->ftLastWriteTime.dwHighDateTime = f->writeHigh;
     return 1;
 }
-struct CAFile {
+class CAFile { public:
     static bool IsFileReadOnly(const WStr& path)
     {
         WStr fullPath;

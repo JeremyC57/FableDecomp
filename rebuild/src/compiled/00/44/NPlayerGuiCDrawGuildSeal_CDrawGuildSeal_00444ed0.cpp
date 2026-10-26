@@ -15,7 +15,7 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -35,14 +35,14 @@ template <class T> struct vector : _Vector_base<T> {
 };
 }
 
-struct CEnginePrimitiveHandle {                    // vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // vptr + counted primitive pointer
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
 };
 
@@ -65,13 +65,13 @@ struct CFadeInFadeOutBase {
     unsigned char _body[0x1c];
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char                        _body[0x1c - 4];   // +0x04 .. +0x1c
     std::vector<CEnginePrimitiveHandle>  PrimitiveHandles;  // +0x1c
 };
 
-struct CDrawGuildSeal : CDrawBase {                // vtable 0x0125A6BC
+class CDrawGuildSeal : public CDrawBase { public:                // vtable 0x0125A6BC
     virtual void v00();
     bool                                           Enabled;                  // +0x28
     bool                                           ReadyToLevelUp;           // +0x29

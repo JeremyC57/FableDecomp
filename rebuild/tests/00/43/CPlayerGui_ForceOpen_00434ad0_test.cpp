@@ -2,7 +2,7 @@
 #include <string.h>
 
 // Definition of function-under-test (mirrors source.cpp)
-struct CPlayerGui {
+class CPlayerGui { public:
     char pad_c8[0xc8];
     unsigned char b_c8;   // +0xc8
     unsigned char b_c9;   // +0xc9

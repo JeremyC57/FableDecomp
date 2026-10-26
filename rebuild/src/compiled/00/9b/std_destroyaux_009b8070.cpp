@@ -14,7 +14,7 @@
 // gives retail's strength-reduced element pointer (`lea esi,[edi+0Ch]`, CCharString at `[esi-8]`); a flat
 // three-pointer vector with `if (p) free(p)` addresses everything from `first` (52 v 53 bytes).
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
@@ -48,10 +48,10 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class T> struct CArray : std::vector<T> { };
-struct CDefClassBase;
-struct CDefinitionManager {
-    struct CDefClassInfo {
+template <class T> class CArray : public std::vector<T> { public: };
+class CDefClassBase;
+class CDefinitionManager { public:
+    class CDefClassInfo { public:
         CCharString Name;                       // +0x00
         CDefClassBase* (__cdecl* AllocFunc)();  // +0x04
         CArray<unsigned long> GlobalIndices;    // +0x08

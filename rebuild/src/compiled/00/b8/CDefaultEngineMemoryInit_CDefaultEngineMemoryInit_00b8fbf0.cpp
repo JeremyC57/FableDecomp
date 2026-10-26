@@ -9,7 +9,7 @@
 //   bytes, while retail stores LandscapePoolSize at +0 (no vptr) -- the named CEngineMemoryInit members are needed.
 // Shape: body assignments to the base record's members (they cannot sit in this class's initialiser list); VC7.1 keeps
 //   the shared 0x200 in ecx and stores HiresTextureMemory last, so the source sets it last.
-struct CEngineMemoryInit {
+class CEngineMemoryInit { public:
     long  LandscapePoolSize;                            // +0x00
     float LandscapePhysicalMemoryRatio;                 // +0x04
     long  LandscapeVirtualMemoryMinSize;                // +0x08

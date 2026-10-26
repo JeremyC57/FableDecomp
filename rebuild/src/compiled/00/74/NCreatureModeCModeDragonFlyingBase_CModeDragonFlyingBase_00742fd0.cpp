@@ -18,16 +18,16 @@
 
 class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* Data;                                    // +0x0
     long Size;                                  // +0x4
     long Capacity;                              // +0x8
@@ -39,24 +39,24 @@ template<class T> struct CArray {
     }
 };
 
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;            // +0x00
     float Tension;                              // +0x10
     bool EndPointsConnected;                    // +0x14
 };
 
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }
 };
 
-struct CAnimFilterOfGroup : CAnimFilterBase {   // 12 bytes
+class CAnimFilterOfGroup : public CAnimFilterBase { public:   // 12 bytes
     CCharString Group;                          // +0x4
     unsigned long GroupCRC;                     // +0x8
 };
 
 namespace CTCCreatureModeManager {
-struct CModeBase {                              // vtable 0x012673CC, 28 bytes
+class CModeBase { public:                              // vtable 0x012673CC, 28 bytes
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     CAnimFilterOfGroup WeaponBasedFilter;       // +0x08

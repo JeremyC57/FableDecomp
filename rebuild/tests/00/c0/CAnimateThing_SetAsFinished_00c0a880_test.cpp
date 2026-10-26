@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char pad[0x100];
 };
 

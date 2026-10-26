@@ -30,7 +30,7 @@ struct __declspec(align(8)) CCriticalSectionLock_Retail {   // 8 bytes on the st
     void Lock();                                                                  // 0x00A62980
 };
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
     ~CMemoryAllocator();                           // 0x009F2310
@@ -55,7 +55,7 @@ __forceinline void GFFreeFromGlobalAllocator(void* block)
     GFLeaveAllocatorLock();
 }
 
-struct CHandleBasedMemoryPool { void Free_00a62ed0(long handle); };   // 0x00A62ED0
+class CHandleBasedMemoryPool { public: void Free_00a62ed0(long handle); };   // 0x00A62ED0
 class CThreadedFile {
 public:
     bool HasReadFinished(unsigned long readUID);   // 0x0098EC90
@@ -67,7 +67,7 @@ struct CAsyncDataSet {                             // set<CBankFileAsyncData*> (
     unsigned char _M_key_compare;
     unsigned int erase(CBankFileAsyncData* const& key);   // 0x009D7F40
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned char _pad000[0x110];
     CThreadedFile* ThreadedFile;                   // +0x110 (counted pointer object)
     unsigned char _pad114[0x14];

@@ -14,7 +14,7 @@ struct CParticleCreationParameters {
     bool AlwaysUpdateFlag;                      // +0x03
 };
 namespace NParticleEngine {
-struct CParticleEmitter {                       // retail layout
+class CParticleEmitter { public:                       // retail layout
     unsigned char _pad00[0x40];
     unsigned short Priority : 3;                // +0x40
     unsigned short IsScreenDisplacement : 1;
@@ -36,12 +36,12 @@ struct CBaseIntelligentPointer {                // sizeof 8: vptr + PData
     void* PData;                                // +0x04
     NParticleEngine::CParticleEmitter* GetPItem() const;   // 0x00A01B50
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;
     long* PCount;
     T* operator->() const { return Object; }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];         // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;        // +0x0c CCharString

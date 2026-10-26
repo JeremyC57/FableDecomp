@@ -16,8 +16,8 @@ struct CDefRootBase {
     CDefRootBase& operator=(const CDefRootBase& other)
     { for (int i = 0; i < 6; ++i) m_words[i] = other.m_words[i]; g_order[g_calls++] = 1; return *this; }
 };
-struct CDefinitionManager;
-struct CDefClassBase : CDefRootBase {
+class CDefinitionManager;
+class CDefClassBase : public CDefRootBase { public:
     CDefinitionManager* PDefManager;
     unsigned long GlobalIndex;
     unsigned char Setup : 1;
@@ -42,7 +42,7 @@ template<class T> struct CRetailVector {
     { m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; g_order[g_calls++] = 2; return *this; }
 };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     CRetailVector<V>    m_vector;
     CKeyPairCompareLess m_compare;
     bool                m_sorted;
@@ -54,11 +54,11 @@ template<class K, class V> struct CVectorMap {
         return *this;
     }
 };
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSubDefInfo { long m_key; };
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;
     __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -71,7 +71,7 @@ struct CParentDefClassBase : CDefClassBase {
 };
 #pragma pack(pop)
 
-struct CConfigOptionsDefaultsDef : CParentDefClassBase {
+class CConfigOptionsDefaultsDef : public CParentDefClassBase { public:
     unsigned long Antialiasing;
     long  ResolutionWidth;
     long  ResolutionHeight;

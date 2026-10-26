@@ -10,10 +10,10 @@
 // Leaf: Transfer
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CAtmosGroupMap { void* _M_header[3]; };       // STLport multimap<CCharString, long>, 12 bytes
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferBinary(long* value);                // 0x00431102
     void TransferBinary(CRGBColour* value);          // 0x004595A3
     void TransferBinary(float* value);               // 0x00431061
@@ -21,7 +21,7 @@ struct CPersistContext {
     void TransferMap(const char* name, CAtmosGroupMap& map, const long& defaultValue);   // 0x00463334
 };
 
-struct CSoundThemeDef {
+class CSoundThemeDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char  _pad04[0x38];                     // definition base (retail 4 bytes below the PDB)
     CRGBColour     EditColour;                       // +0x3c

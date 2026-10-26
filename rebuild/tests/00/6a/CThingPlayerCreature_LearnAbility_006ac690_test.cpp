@@ -22,13 +22,13 @@
 //   bit 0; CHeroAbilityDef inventory object +0x98; interfaces 0x11 inventory, 0x1a inventory item, 0x6f abilities.
 // Shape: the def pointer returned by value is homed in the dead `learn` slot; its release is the null-tested
 //   CDefPointer dtor calling the pointee's inline ReleaseTemporary() (DecRef / GetRefCount).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() { }
     virtual void Destroy();                             // slot 1
     long m_refCount;                                    // +0x04
@@ -41,11 +41,11 @@ struct CDefPointeeBase {
             Destroy();
     }
 };
-struct CHeroAbilityDef : CDefPointeeBase {
+class CHeroAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x98 - 0x08];
     long InventoryObject;                               // +0x98
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -55,7 +55,7 @@ template <class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -63,21 +63,21 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 class CThing;
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00() { }
     long GetQuickAccessNextFreeSlot(long item);                         // 0x00582027
     void SetThingAsQuickAccessItem(long item, long slot, bool a);       // 0x00584157
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     bool AddToInventory(CTCInventory* inventory, bool a, bool b, long price, bool c, bool d);   // 0x005D8D50
     void RemoveFromInventory();                                         // 0x005D8E20
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     bool IsAbilityAvailable(EHeroAbility ability);                      // 0x005EDF08
     CDefPointer<CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability);  // 0x005EDFD9
     void SetAbilityAsAvailable(EHeroAbility ability, bool available, bool a);   // 0x005F6BD6
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                      unsigned long flags, const CCharString& name);   // 0x00703210
 

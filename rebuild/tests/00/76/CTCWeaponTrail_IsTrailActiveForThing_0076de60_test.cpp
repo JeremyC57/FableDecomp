@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThing { public: int id; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     CTCWeaponTrail* m_trail; long m_index;
     virtual CTCWeaponTrail* GetWeaponTrailUsedInStrikeAction(long& trailIndex) const { trailIndex = m_index; return m_trail; }
     virtual ~CCreatureActionBase() { }
 };
-struct CThingCreatureBase { CCreatureActionBase* PCurrentAction; };
-struct CTCWeaponTrail {
+class CThingCreatureBase { public: CCreatureActionBase* PCurrentAction; };
+class CTCWeaponTrail { public:
     bool IsTrailActiveForThing(long trailIndex, const CThing* thing, const CThingCreatureBase* creature) const
     {
         if (thing) return true;

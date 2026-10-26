@@ -3,7 +3,7 @@ static int g_releases;
 struct CTextureResource;
 struct CTextureResourceVTable { void* reserved0; void* reserved4; void (__stdcall *Release)(CTextureResource*); };
 struct CTextureResource { CTextureResourceVTable* vtable; };
-struct CTexture { CTextureResource* resource; void Uninitialise(); };
+class CTexture { public: CTextureResource* resource; void Uninitialise(); };
 static void __stdcall MockRelease(CTextureResource*) { ++g_releases; }
 void CTexture::Uninitialise() { if (resource != 0) resource->vtable->Release(resource); }
 int main() {

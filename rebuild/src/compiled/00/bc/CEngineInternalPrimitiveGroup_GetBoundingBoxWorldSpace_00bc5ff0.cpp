@@ -6,7 +6,7 @@
 // Leaf: GetBoundingBoxWorldSpace
 #include "engine/CEngineInternalPrimitiveGroup.h"
 #include "engine/CEngineInternalPrimitiveBase.h"
-struct C3DBoundingBox { float MinX,MinY,MinZ,MaxX,MaxY,MaxZ; };
+class C3DBoundingBox { public: float MinX,MinY,MinZ,MaxX,MaxY,MaxZ; };
 struct CEngineInternalPrimitiveBase_Methods : CEngineInternalPrimitiveBase {
  typedef bool (CEngineInternalPrimitiveBase_Methods::*BoundsMethod)(C3DBoundingBox&);
  bool DispatchBounds(C3DBoundingBox& bounds) {

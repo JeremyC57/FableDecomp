@@ -1,6 +1,6 @@
 // behaviour test for 0x006A10A0 CTCCarrying::IsCarryingThing(long defIndex)
 #include <cstdio>
-struct CThing { unsigned short m_defIndex; };
+class CThing { public: unsigned short m_defIndex; };
 struct Ptr { CThing* p; CThing* GetPItem() const { return p; } };
 struct Entry { long first; Ptr second; };
 struct Carrying {

@@ -1,6 +1,6 @@
 // behaviour test for 0x007B6790 CTCCrateStack::RemoveNextCrate
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Ptr { CThing* p; Ptr() : p(0) {} Ptr(CThing* t) : p(t) {} CThing* GetPItem() const { return p; } Ptr& operator=(const Ptr& o) { p = o.GetPItem(); return *this; } };
 struct Stack {
     Ptr FirstCrate, SecondCrate;

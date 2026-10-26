@@ -4,7 +4,7 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long Bits[9];
     bool test(long bit) { return (Bits[bit >> 5] >> (bit & 31)) & 1; }
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     }
     SEntry* LowerBound(const long* type) { return ((const CInterfaceMap*)this)->LowerBound(type); }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     bool Alive;
@@ -49,21 +49,21 @@ struct CThing {
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing && thing->Alive; }
 struct CTCA { unsigned char m_c; unsigned char m_d; unsigned char m_1c; unsigned char m_c0; };
 struct CTCB { unsigned char m_c; };
-struct CThingCreatureBase : CThing {};
+class CThingCreatureBase : public CThing { public:};
 static CThingCreatureBase* g_controlled;
 static CThingCreatureBase* g_hero;
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetControlledCreature() { return g_controlled; }
     CThingCreatureBase* GetHeroCreature() { return g_hero; }
 };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static bool g_frontEndActive;
 struct CFrontEnd { bool IsActive() { return g_frontEndActive; } };
-struct CMainGameComponent { CPlayerManager* PPlayerManager; CFrontEnd* m_pFrontEnd; };
+class CMainGameComponent { public: CPlayerManager* PPlayerManager; CFrontEnd* m_pFrontEnd; };
 struct CHeroInfoScreensManager { unsigned char m_open; };
 static CHeroInfoScreensManager g_screens;
-struct CPlayerGui { CHeroInfoScreensManager* GetPHeroInfoScreensManager() const { return &g_screens; } };
+class CPlayerGui { public: CHeroInfoScreensManager* GetPHeroInfoScreensManager() const { return &g_screens; } };
 static CPlayerManager g_pm; static CFrontEnd g_fe;
 static CMainGameComponent g_mgc = { &g_pm, &g_fe };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;

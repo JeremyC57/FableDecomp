@@ -5,7 +5,7 @@
 // propagated), the object-def vector's copy constructor @ 0x004774D6 (CEngineLocalDetailObjectDef_vector_CopyAndResize). Vtable 0x012362E4 =
 // CEngineLocalDetailLayerDef (rtti-vtables.tsv). Shape: the other object stays in edi; the first member address is formed with `lea`, the second with
 // `add edi,48h` after the first call (edi is dead afterwards).
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _pad[0x38];                      // +0x04 .. +0x3c
     CParentDefClassBase(const CParentDefClassBase& other);   // 0x0046EE98
@@ -21,7 +21,7 @@ struct CRetailObjectDefVector_004774d6 {           // at +0x48
     CRetailObjectDefVector_004774d6(const CRetailObjectDefVector_004774d6& other);   // 0x004774D6
 };
 
-struct CEngineLocalDetailLayerDef : CParentDefClassBase {   // vtable 0x012362E4
+class CEngineLocalDetailLayerDef : public CParentDefClassBase { public:   // vtable 0x012362E4
     CRetailLayerVector_00477428     m_layers;      // +0x3c
     CRetailObjectDefVector_004774d6 m_objectDefs;  // +0x48
     virtual void v00();

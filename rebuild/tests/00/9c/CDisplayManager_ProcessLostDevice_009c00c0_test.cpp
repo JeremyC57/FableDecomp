@@ -2,7 +2,7 @@
 // (last parameters, then without multisampling, then capped to 1024x768).
 #include <cstdio>
 struct IDirect3DDevice9 { long level; virtual long TestCooperativeLevel() { return level; } };
-struct C2DExtentsI { long X, Y; };
+class C2DExtentsI { public: long X, Y; };
 struct CPresentationIntervalDesc { long Type, Interval; };
 enum ESurfaceMultisampleType { MULTISAMPLE_NONE = 0 };
 enum ECreateDeviceSuccess { CREATE_DEVICE_FAILED = 1, CREATE_DEVICE_SUCCEEDED = 2 };

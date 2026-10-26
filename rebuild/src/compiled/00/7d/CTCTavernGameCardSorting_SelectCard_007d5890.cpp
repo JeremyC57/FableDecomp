@@ -14,20 +14,20 @@
 // Shape: the appearance pointer is declared (unset) outside the loop, so VC keeps it in edi across iterations and the
 //        absent-interface arm reuses it (its home is the lookup key's frame word); the game-type test is a one-case
 //        `switch` (`dec eax ; jne`).
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 
 namespace NGraphicAppearance {
 enum EAppearanceMeshEffectPriority { APPEARANCE_MESH_EFFECT_PRIORITY_3 = 3 };
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsHighlighted(float a, float b, const CRGBColour& colour, bool c, bool d, EAppearanceMeshEffectPriority priority,
                           void* owner);       // 0x004C04C0
 };
@@ -39,7 +39,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,7 +57,7 @@ struct CThing {
         return false;
     }
 };
-struct CCard {
+class CCard { public:
     CThing*       Thing;                        // +0x00 CThingObject*
     long          Name;                         // +0x04
     long          Value;                        // +0x08
@@ -80,7 +80,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameCardBaseDef : CDefVirtual, CRefCounted {
+class CTavernGameCardBaseDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x48];
     float         HighlightTime;                // +0x50
     unsigned char _pad_0x54[4];

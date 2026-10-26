@@ -5,8 +5,8 @@
 struct SScriptDef { float MCMinMinionSpawnPeriod, MCMaxMinionSpawnPeriod; long Cost[4]; };
 static SScriptDef g_def;
 static int g_regions = 0, g_boasts = 0, g_lastId = 0; static long g_costSum = 0;
-struct CTimer { long Value; void Set(long v) { Value = v; } };
-struct CGameScriptInterface {
+class CTimer { public: long Value; void Set(long v) { Value = v; } };
+class CGameScriptInterface { public:
     void AddQuestRegion(const char* q, const char* r) const { if (!std::strcmp(q, "Q_MinionCamp") && !std::strcmp(r, "Darkwood3")) ++g_regions; }
     void AddBoast(const char*, long id, long cost) const { ++g_boasts; g_lastId = id; g_costSum += cost; }
 };

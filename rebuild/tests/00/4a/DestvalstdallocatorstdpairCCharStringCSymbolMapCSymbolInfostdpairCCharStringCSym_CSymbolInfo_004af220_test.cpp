@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // Mirror of the source types (independent test).
-struct CCharString {
+class CCharString { public:
     char* p;
     ~CCharString();
 };

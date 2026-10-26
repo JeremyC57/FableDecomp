@@ -6,9 +6,9 @@ static char g_order[64]; static int g_n = 0;
 static void mark(char c) { if (g_n < 63) g_order[g_n++] = c; g_order[g_n] = 0; }
 static int g_frees = 0;
 static void spy_free(void* p) { if (p) ++g_frees; }
-struct CBaseClass { virtual ~CBaseClass() { mark('B'); } };
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CBaseClass { public: virtual ~CBaseClass() { mark('B'); } };
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     long m_refCount;
     int notified, destroyed;
     CEnginePersistentPrimitiveBase() : m_refCount(1), notified(0), destroyed(0) {}
@@ -16,7 +16,7 @@ struct CEnginePersistentPrimitiveBase {
     virtual void Destroy() { ++destroyed; }
     virtual void OnLastHandleReleased(CEnginePrimitiveHandle*) { ++notified; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -25,7 +25,7 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_p; }
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
-struct CEnginePrimitiveHandle : CBaseClass {
+class CEnginePrimitiveHandle : public CBaseClass { public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;
     ~CEnginePrimitiveHandle() { mark('H'); if (Data.GetRefCount() == 1) Data->OnLastHandleReleased(this); Data = 0; }
 };
@@ -35,12 +35,12 @@ struct CDefPointee {
     virtual ~CDefPointee() {}
     virtual void Destroy() { ++destroyed; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { mark('D'); T* p = Object; if (p) { if (--p->m_refCount == 0) p->Destroy(); Object = 0; } }
 };
-struct CCharString { ~CCharString() { mark('S'); } };
+class CCharString { public: ~CCharString() { mark('S'); } };
 template <class T> struct CVectorStorage {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CVectorStorage() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}

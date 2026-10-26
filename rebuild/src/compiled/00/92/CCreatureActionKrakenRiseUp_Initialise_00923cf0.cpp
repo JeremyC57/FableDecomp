@@ -7,14 +7,14 @@
 // bitset dword at +0x24; then 0xe2 = CTCKraken, bit 2 of the byte at +0x3c), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0,
 // CTCKraken::StartHeadEffects @ 0x007FBC30 (landed).
 // Shape: BOTH lookups are UNCHECKED out-parameter accessors (each absent arm reads the shared key word and still calls).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,14 +41,14 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCreatureModeManager {                 // interface type 0x31 component
+class CTCCreatureModeManager { public:                 // interface type 0x31 component
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-struct CTCKraken {                              // interface type 0xe2 component
+class CTCKraken { public:                              // interface type 0xe2 component
     void StartHeadEffects();                    // 0x007FBC30
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520 (slot 12)
     unsigned char           _pad04[4];          // +0x04

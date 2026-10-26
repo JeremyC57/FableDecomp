@@ -7,19 +7,19 @@ struct CBasicStringChar {
     const char* PData;
     bool operator==(const char* text) const { return strcmp(PData, text) == 0; }
 };
-struct CCharStringData { CBasicStringChar Data; };
-struct CWideString {
+class CCharStringData { public: CBasicStringChar Data; };
+class CWideString { public:
     const char* Text;
     CWideString() : Text("") {}
     CWideString(const char* text) : Text(text) {}
     CWideString& operator=(const CWideString& o) { Text = o.Text; return *this; }
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CWideString ToWideString() const { return CWideString(PStringData->Data.PData); }
 };
 static const char* s_Default = "TEXT_GUI_SKIP_SCENE";
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     CWideString Button2OverrideText;
     bool CutsceneActionMode;
     bool Button2TextOverridden;

@@ -10,7 +10,7 @@
 #define __cdecl
 #define long int   // g++ host: keep Fable's 4-byte long
 #endif
-namespace NUISystem { struct CComponent; struct CRedefinerListDef; }
+namespace NUISystem { class CComponent; struct CRedefinerListDef; }
 static int g_defDestroyed = 0, g_inits = 0, g_setParentCalls = 0, g_childCount = 0, g_baseInits = 0, g_actions = 0;
 static NUISystem::CComponent* g_setParent = 0;
 static NUISystem::CComponent* g_parent = 0;
@@ -47,7 +47,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CActionParam {
+class CActionParam { public:
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
     virtual void v00() {}
@@ -64,7 +64,7 @@ struct SParamNode {
 };
 struct CActionTarget { void* _vf; };
 struct CActionPointer;
-struct CAction {                                        // retail 0x10 bytes
+class CAction { public:                                        // retail 0x10 bytes
     long        ActionType;                             // +0x00
     SParamNode* UIActionParams;                         // +0x04 (STLport list head node)
     void*       ThingActionParams;                      // +0x08
@@ -139,9 +139,9 @@ struct CDefPointer {
     CRedefinerListDef* operator->() const { return m_p; }
 };
 
-struct CAction;
+class CAction;
 struct CActionPointer;
-struct CComponent {
+class CComponent { public:
     virtual void v00() {}
     virtual void v01() {}
     virtual void v02() {}
@@ -253,20 +253,20 @@ struct CComponent {
     virtual CDefPointer GetDef() { CDefPointer p; p.m_p = g_def; g_def->m_count++; return p; }                               // slot 108 (+0x1B0)
 };
 
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     unsigned char _pad004[0x14];
     CActionTarget ActionTarget;                         // +0x18
     unsigned char _pad01c[0x15c - 0x1c];
     void Initialise();                                  // 0x0052C730
 };
-struct CScrollableList : CChangingStateComponent {
+class CScrollableList : public CChangingStateComponent { public:
     long          ScrollPosition;                       // +0x15c
     long          VisibleItems;                         // +0x160
     long          ItemGap;                              // +0x164
@@ -324,7 +324,7 @@ template<class T> CCountedPointer<T>::CCountedPointer(T* object) : m_pObject(obj
 {
     m_pCount = new SCountBlock; m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroyNothing; m_pCount->m_pObject = object; g_liveBlocks++;
 }
-template struct CCountedPointer<CComponent>;
+template class CCountedPointer<CComponent>;
 CActionPointer::CActionPointer(CAction* object) : m_pObject(object)
 {
     m_pCount = new SCountBlock; m_pCount->m_references = 1; m_pCount->m_pfnDestroy = DestroyNothing; m_pCount->m_pObject = object; g_liveBlocks++;

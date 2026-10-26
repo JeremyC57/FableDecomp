@@ -1,8 +1,8 @@
 // Behaviour test for CThingAICreature::GetTargetPosition @ 0x0082FE60: position raised by the physics height.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CTCPhysicsBase { float m_height; };
-struct CThingAICreature {
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CTCPhysicsBase { public: float m_height; };
+class CThingAICreature { public:
     CTCPhysicsBase* PhysicsTC; C3DVector m_position;
     const C3DVector& GetPosition() const { return m_position; }
     C3DVector GetTargetPosition() const

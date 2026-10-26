@@ -6,7 +6,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CHeroMarriageInfo { u64 WifeUID; u64 MaritalHomeUID; long State; bool GayMarriage; };
+class CHeroMarriageInfo { public: u64 WifeUID; u64 MaritalHomeUID; long State; bool GayMarriage; };
 struct CHeroMarriageInfoNode { CHeroMarriageInfoNode* Next; CHeroMarriageInfoNode* Prev; CHeroMarriageInfo Info; };
 struct CTCHeroStats_Retail {
     CHeroMarriageInfoNode* Marriages_Head;

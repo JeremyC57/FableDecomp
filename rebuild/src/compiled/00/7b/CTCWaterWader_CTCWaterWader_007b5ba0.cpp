@@ -35,7 +35,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                         // 0x00686830
     CThing*       ParentThing;                  // +0x04
     bool          ToBeRemoved;                  // +0x08

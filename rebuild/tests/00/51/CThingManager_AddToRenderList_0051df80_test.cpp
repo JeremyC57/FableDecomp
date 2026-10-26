@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for CThingManager::AddToRenderList (0x0051DF80).
-struct CThing { CThing* PRenderPrev; CThing* PRenderNext; };
+class CThing { public: CThing* PRenderPrev; CThing* PRenderNext; };
 struct ThingLList { CThing* PHead; CThing* PTail; };
-struct CThingManager {
+class CThingManager { public:
     ThingLList RenderList;
     void AddToRenderList(CThing* thing)
     {

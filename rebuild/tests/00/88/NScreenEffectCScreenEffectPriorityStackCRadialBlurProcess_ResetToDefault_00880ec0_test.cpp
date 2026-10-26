@@ -1,7 +1,7 @@
 // Behaviour test for 0x00880EC0 NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess::ResetToDefault
 #include <cstdio>
-struct CRGBFloatColour { float R, G, B, A; };
-struct C3DVector { float X, Y, Z; void Initialise(float x, float y, float z) { X = x; Y = y; Z = z; } };
+class CRGBFloatColour { public: float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; void Initialise(float x, float y, float z) { X = x; Y = y; Z = z; } };
 struct CScreenFilterParams { float Alpha, Saturation, Contrast, Brightness; CRGBFloatColour Tint; };
 struct CRadialBlurParams { CRGBFloatColour ThresholdColour, IntensityColour; float Length, Fade, Range, Twist; };
 struct CRadialBlurPositionParams { C3DVector AreaCenter, BlurCenter; long AreaTrackPos, BlurTrackPos; };

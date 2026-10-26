@@ -8,13 +8,13 @@
 // Shape: the frame store at +0x2c, the budget at +0x34, then one `xor eax,eax` feeding the two dword zero
 // stores (+0x3c, +0x40) and finally the byte at +0x38 (the statements are in that order: VC keeps store order). No engine header exists for this class; the layout is local
 // with descriptive names (the PDB has no CAIStateGroup_KidWatchHopscotch entry).
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 extern long g_framesPerSecond;              // 0x01375550
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13 PBrain, ScriptAIPriority, Name, flags
 };

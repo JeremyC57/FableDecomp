@@ -7,20 +7,20 @@
 // Shape: the body under `if (base call)` with `return false` after it (an early `return false` reuses
 // the call's al and drops retail's trailing `xor al,al`), two-value mode test as an && of inequalities, the
 // member address formed by advancing `this` (`add edi,0D4h`) as its last use, bool true/false returns.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                  // +0x18 EMode
     void Transfer(const char* name, CCharString* value); // 0x00411010
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad00[0xd0];
     bool SerialiseGameState(CPersistContext* context);   // 0x006A5AF0
 };
 
-struct CThingPhysicalSwitch : CThingPhysical {
+class CThingPhysicalSwitch : public CThingPhysical { public:
     bool          Triggered;                             // +0xd0
     unsigned char _pad_d1[3];
     CCharString   TriggerableObjectScriptName;           // +0xd4

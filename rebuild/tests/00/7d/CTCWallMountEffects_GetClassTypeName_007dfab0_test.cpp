@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };
 
-struct CTCWallMountEffects {
+class CTCWallMountEffects { public:
     CCharString GetClassTypeName();
 };
 

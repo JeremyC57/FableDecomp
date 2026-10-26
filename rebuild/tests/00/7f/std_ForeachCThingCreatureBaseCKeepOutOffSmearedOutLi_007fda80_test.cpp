@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test: std::_For_each<CThingCreatureBase**, CKeepOutOffSmearedOutLine> -- applies the keep-out functor to every creature in the range and returns a copy of it.
 #define CHECK(c) if (!(c)) { std::printf("007fda80_TEST FAIL\n"); return 1; }
-struct C3DVector { float X, Y, Z; };
-struct CThing { int pushed; };
-struct CThingCreatureBase : CThing { };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: int pushed; };
+class CThingCreatureBase : public CThing { public: };
 static const CThing* g_order[8]; static int g_n = 0;
-struct CKeepOutOffSmearedOutLine {
+class CKeepOutOffSmearedOutLine { public:
     C3DVector* StartPos; C3DVector* EndPos; float Radius;
     CKeepOutOffSmearedOutLine(const C3DVector& s, const C3DVector& e, float r) : StartPos((C3DVector*)&s), EndPos((C3DVector*)&e), Radius(r) { }
     void operator()(CThing* thing) const { ++thing->pushed; g_order[g_n++] = thing; }

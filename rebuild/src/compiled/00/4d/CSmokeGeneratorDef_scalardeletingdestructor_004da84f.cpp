@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CSmokeGeneratorDef
-{
+class CSmokeGeneratorDef
+{ public:
     void* vftable;
 };
 extern void* const g_CSmokeGeneratorDef_vftable;

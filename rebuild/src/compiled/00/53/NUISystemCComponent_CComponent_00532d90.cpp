@@ -71,7 +71,7 @@ template <class T> struct CPodList {             // STLport list<T>, T trivially
             free(_M_node);
     }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }
@@ -186,7 +186,7 @@ template <class V, int Tag> struct CRetailTree {  // STLport _Rb_tree {header, c
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                              // 0x0099EAE0
 };
@@ -196,7 +196,7 @@ enum EEvent { EVENT_NONE };
 enum EDeletionMethod { DELETION_METHOD_NONE };
 struct C2DVector { float X, Y; };
 struct CStatePair { unsigned long first; struct { unsigned long a[8]; bool b; } second; };
-struct CUIState {
+class CUIState { public:
     unsigned long StateChangeFlag;
     long          StateChangeType;
     C2DVector     Position;
@@ -207,7 +207,7 @@ struct CUIState {
 };
 class CComponent;
 class CActionParam;
-struct CAction {
+class CAction { public:
     long                    ActionType;          // +0x00
     CPodList<CActionParam*> UIActionParams;      // +0x04
     CPodList<long>          ThingActionParams;   // +0x08
@@ -228,7 +228,7 @@ public:
     virtual ~CActionParam() {}
     long ActionParamType;                        // +0x04
 };
-struct CDeletion {
+class CDeletion { public:
     EDeletionMethod        Method;               // +0x00
     CPodList<CComponent*>  AssociatedParents;    // +0x04
 };

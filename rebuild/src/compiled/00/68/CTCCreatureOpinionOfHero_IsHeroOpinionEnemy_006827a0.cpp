@@ -15,7 +15,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -37,13 +37,13 @@ struct CThing {
         return false;
     }
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool GetIsHeroEnemyOfGuards();              // 0x00658604
 };
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetVillage();                   // 0x007EE540 (the manifest's "IS_THING_ALIVE<...>" is propagated)
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x342 - 0x08];

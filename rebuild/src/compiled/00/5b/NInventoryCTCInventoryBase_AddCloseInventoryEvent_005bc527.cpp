@@ -22,7 +22,7 @@ struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
 
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
     signed char   Player;                         // +0x04
     unsigned char Data[32];                       // +0x05
@@ -33,12 +33,12 @@ struct CGameEvent : CMemoryBuffer {
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                   // 0x00449700
 };
 CPlayerManager* GetPlayerManager_00686d50();               // 0x00686D50

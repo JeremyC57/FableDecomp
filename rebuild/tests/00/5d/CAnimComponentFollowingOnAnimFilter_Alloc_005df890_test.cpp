@@ -4,15 +4,15 @@
 static bool g_fail = false;
 void* operator new(size_t size) { if (g_fail) return 0; return std::malloc(size); }
 void operator delete(void* p) { std::free(p); }
-struct CPersistContext; struct CCharString; struct CDataInputStream; struct CDataOutputStream;
-struct CIVCountedPointeeBase { virtual void v0() { } long m_refCount; CIVCountedPointeeBase() : m_refCount(1) { } };
-struct CAnimComponentBase : CIVCountedPointeeBase {
+class CPersistContext; class CCharString; class CDataInputStream; class CDataOutputStream;
+class CIVCountedPointeeBase { public: virtual void v0() { } long m_refCount; CIVCountedPointeeBase() : m_refCount(1) { } };
+class CAnimComponentBase : public CIVCountedPointeeBase { public:
     virtual void v1() { }
     virtual long GetType() const { return -1; }
     virtual CAnimComponentBase* Alloc() const { return 0; }
 };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CAnimComponentFollowingOnAnimFilter : CAnimComponentBase {
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CAnimComponentFollowingOnAnimFilter : public CAnimComponentBase { public:
     CDefString NextFilter;
     CAnimComponentFollowingOnAnimFilter() { }
     virtual long GetType() const { return 7; }

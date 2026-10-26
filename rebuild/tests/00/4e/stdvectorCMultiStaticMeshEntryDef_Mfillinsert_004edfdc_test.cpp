@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CMultiStaticMeshEntryDef {
+class CMultiStaticMeshEntryDef { public:
     int Key;                                         // stands for the def's base-class body
     long Mesh; float RenderFadeDistance;
     CMultiStaticMeshEntryDef() : Key(0) { ++g_live; }

@@ -2,10 +2,10 @@
 #include <new>
 // Behaviour test for CThingObject::CThingObject (0x007031C0): type 5, owner pointer built, def/timer/flag cleared.
 struct CIntelligentPointer { void* m_pItem; CIntelligentPointer() : m_pItem(0) { } };
-struct CThing { long m_type; CThing(long type) : m_type(type) { } };
-struct CThingGameObject : CThing { CIntelligentPointer m_owner; CThingGameObject(long type) : CThing(type), m_owner() { } };
+class CThing { public: long m_type; CThing(long type) : m_type(type) { } };
+class CThingGameObject : public CThing { public: CIntelligentPointer m_owner; CThingGameObject(long type) : CThing(type), m_owner() { } };
 struct CDefPointer { const void* m_pDef; CDefPointer() : m_pDef(0) { } };
-struct CThingObject : CThingGameObject {
+class CThingObject : public CThingGameObject { public:
     CDefPointer PDef; long DieOffTimer; bool DiesOff;
     CThingObject() : CThingGameObject(5), PDef(), DieOffTimer(0), DiesOff(false) { }
 };

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-struct CActionUseDef {};
+class CActionUseDef { public:};
 
 ulong __fastcall CActionUseDef_GetSizeofClass(const CActionUseDef* self)
 {

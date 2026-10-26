@@ -3,7 +3,7 @@
 static void* g_freed = 0;
  void operator delete[](void* p) { g_freed = p; }
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     void* buf;
     char flag;
 };

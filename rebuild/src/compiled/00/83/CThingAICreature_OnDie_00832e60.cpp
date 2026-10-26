@@ -11,18 +11,18 @@
 // the faction component (TC 0x49) goes through the const LowerBound copy.
 // Layout: retail CThing interface bitset +0x20, CVectorMap +0x44; CThingAICreature's last-attacker intelligent pointer +0xF4
 // (descriptive); the world's message event manager +0x60; the faction component (TC 0x49) keeps its faction at +0x18.
-struct C3DVector;
-struct CFaction;
-struct CTCBase;
-struct CMessageEvent;
+class C3DVector;
+class CFaction;
+class CTCBase;
+class CMessageEvent;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CMessageEventDef {
+class CMessageEventDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long m_count;                                       // +4
@@ -31,7 +31,7 @@ struct CDefPointer {
     CMessageEventDef* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
 };
 void* FindDef_2e60(const CCharString& name);
@@ -54,17 +54,17 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing;
-struct CMessageEventManager {
+class CThing;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(CMessageEventDef* def, const C3DVector* position, CThing* thing1, CThing* thing2, long priority);   // 0x00687730
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* MessageEventManager;          // +0x60
 };
 
 #define VF(n) virtual void v##n();
-struct CThing {
+class CThing { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
     VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18) VF(19)
     VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29)
@@ -105,7 +105,7 @@ struct CBaseIntelligentPointer {
 };
 
 class CThingAICreature;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     long PostDeed(long deedType, const C3DVector& position, const CThing* target, CThingAICreature* victim,
                   long postType, bool b1, bool b2, const CFaction* faction, bool b3, long extra);   // 0x006C6990
 };
@@ -114,12 +114,12 @@ struct CTCFaction {
     CFaction* Faction;                                  // +0x18
     CFaction* GetFaction() const { return Faction; }
 };
-struct CTCWife {
+class CTCWife { public:
     void Murdered();                                    // 0x006D00A0
     void Died();                                        // 0x006D0020
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;               // 0x006A4D00
     void OnDie();                                       // 0x00663F50
 };

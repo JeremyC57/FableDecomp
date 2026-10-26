@@ -13,7 +13,7 @@
 // PushBackConstant form (placement copy when there is room, else _M_insert_overflow with the empty tag homed in the frame byte).
 #include <new>
 struct __false_type { __false_type() { } };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
 };
@@ -50,11 +50,11 @@ struct CCoordVector {                              // std::vector<C2DCoordI> (12
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CRegion;
-struct CWorldMap {
+class CRegion;
+class CWorldMap { public:
     CRegion& GetRegion(long index);                // 0x004FC180
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();              // slot 12
@@ -76,12 +76,12 @@ struct CActiveQuestList {                         // STLport list<CCountedPointe
     CActiveQuestNode* begin() const { return _M_node->_M_next; }
     CActiveQuestNode* end() const { return _M_node; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x38];
     CActiveQuestList ActiveQuests;                 // +0x38
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad00[0x1dc];
     CCoordVector  ActiveRegionQuestPositions;      // +0x1dc
     unsigned char _pad1e8[0x238 - 0x1e8];

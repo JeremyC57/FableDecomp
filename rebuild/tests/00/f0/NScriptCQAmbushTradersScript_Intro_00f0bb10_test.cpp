@@ -3,12 +3,12 @@
 // behaviour test: CQ_AmbushTradersScript::Intro -- script four bandits and the hero, cast BAN1..BAN4/HERO, play the intro
 // cut-scene with the quest's flag map inside a paused movie sequence, release all five handles, mark the intro done
 static int g_scripted = 0, g_played = 0, g_paused = 0, g_fixed = 0, g_released = 0;
-struct CScriptThing { const char* name; };
+class CScriptThing { public: const char* name; };
 struct CHandle { const CScriptThing* thing; CHandle() : thing(0) {} bool IsScripting() { return thing != 0; } void Release() { thing = 0; ++g_released; } };
 struct CCastMap { const char* keys[5]; const CScriptThing* things[5]; int n; CCastMap() : n(0) {}
     void Set(const char* k, const CHandle& h) { keys[n] = k; things[n] = h.thing; ++n; } };
 struct CFlagMap { int marker; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     bool StartScriptingEntity(const CScriptThing& t, CHandle& h, int priority) { if (priority != 4) return false; h.thing = &t; ++g_scripted; return true; }
     CScriptThing& GetHero() { return hero; }

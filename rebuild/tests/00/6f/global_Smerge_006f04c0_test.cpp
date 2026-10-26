@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThingMarker { float dist; };
+class CThingMarker { public: float dist; };
 struct SListNode { SListNode* Next; SListNode* Prev; CThingMarker* Value; };
 struct SMarkerList { SListNode* Node; };
-struct CThingCompare_Nearest { float X, Y, Z; long operator()(CThingMarker* a, CThingMarker* b) { return a->dist < b->dist ? 1 : 0; } };
+class CThingCompare_Nearest { public: float X, Y, Z; long operator()(CThingMarker* a, CThingMarker* b) { return a->dist < b->dist ? 1 : 0; } };
 static void _M_transfer(SListNode* position, SListNode* first, SListNode* last)
 {
     if (position != last) {

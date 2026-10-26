@@ -6,20 +6,20 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CThing;
+class CThing;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy() const;
     virtual void Release() const;                // slot 1
     mutable long RefCount;                       // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
-struct CThingBaseDef : CDefClassBase {
+class CThingBaseDef : public CDefClassBase { public:
 };
 
 class CDefinitionManager {
@@ -48,7 +48,7 @@ public:
 };
 }
 
-struct CObjectAugmentationsDef : CDefClassBase {
+class CObjectAugmentationsDef : public CDefClassBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long NumberOfSlots;                          // +0x28
     long MaximumNumberOfSlots;                   // +0x2C

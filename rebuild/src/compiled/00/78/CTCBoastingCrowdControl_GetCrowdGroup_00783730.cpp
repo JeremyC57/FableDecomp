@@ -60,7 +60,7 @@ struct CHeroCrowdMap {                          // STLport map<unsigned __int64,
     CHeroCrowdNode* end() const { return _M_header; }
     CHeroCrowdNode* find(const unsigned __int64& key) const;   // 0x00782E90
 };
-struct CTCCreatureGroupBoastingCrowd;
+class CTCCreatureGroupBoastingCrowd;
 
 class CTCBase {
 public:

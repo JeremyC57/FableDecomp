@@ -6,7 +6,7 @@ struct _RTL_CRITICAL_SECTION_Retail { long m_words[6]; };
 static int g_try = 0, g_enter = 0, g_tryResult = 1;
 static int TryEnterCriticalSection(_RTL_CRITICAL_SECTION_Retail*) { ++g_try; return g_tryResult; }
 static void EnterCriticalSection(_RTL_CRITICAL_SECTION_Retail*) { ++g_enter; }
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool MultiThreaded; _RTL_CRITICAL_SECTION_Retail CriticalSection;
     bool BeginCritical(bool tryOnly)
     {

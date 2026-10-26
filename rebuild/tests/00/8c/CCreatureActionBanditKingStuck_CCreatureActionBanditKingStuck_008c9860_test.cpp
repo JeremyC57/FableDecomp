@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
     CBaseObject* m_pItem;
@@ -24,7 +24,7 @@ struct CActionBase {
     CActionBase() : m_baseWord(0) { }
     CActionBase(const CActionBase& other) : m_baseWord(other.m_baseWord) { ++g_baseCopies; }
 };
-struct CCreatureAction_BanditKingStuck : CActionBase {
+class CCreatureAction_BanditKingStuck : public CActionBase { public:
     long TimesToLoop;
     CIntelligentPointer PStuckEffect;
     CIntelligentPointer PObstruction;

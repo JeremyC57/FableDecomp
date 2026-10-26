@@ -9,11 +9,11 @@
 // `ret 14h`: five arguments.
 // Layout: engine/CCreatureAction_BanditKingStuck.h has TimesToLoop +0x12c, PStuckEffect +0x130, PObstruction +0x138 (the PDB
 // CCombatActionBase is 0x12c bytes; retail 0x114), so `this` is modelled locally at +0x114 / +0x118 / +0x120.
-struct CThingCreatureBase;
-struct CThing;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CBaseObject;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed frame stores)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -31,13 +31,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_BanditKingStuck : CCombatActionBase {   // vtable 0x01281C54
+class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:   // vtable 0x01281C54
     long                TimesToLoop;        // +0x114 (PDB +0x12c)
     CIntelligentPointer PStuckEffect;       // +0x118 (PDB +0x130)
     CIntelligentPointer PObstruction;       // +0x120 (PDB +0x138)

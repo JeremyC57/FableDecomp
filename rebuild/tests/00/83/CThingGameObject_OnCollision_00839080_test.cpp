@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 enum ECollideType { ECT_DUMMY = 0, ECT_TWO = 2 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

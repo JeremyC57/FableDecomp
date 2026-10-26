@@ -12,7 +12,7 @@
 // Shape: /Os pass-through base argument; the float initialiser (`fldz ; fstp`) is stored before the
 // vtable store with the pointer constructor's `push 0` scheduled between the fld and the fstp.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 namespace NThingShot {
 
@@ -28,7 +28,7 @@ struct CIntelligentPointer_CThing {                         // vptr + PData
     CIntelligentPointer_CThing(CThing* thing);              // 0x004A96F0
 };
 
-struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase_Calls {
+class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase_Calls { public:
     float                      MaxCosAngleToTurn;           // +0x9c
     float                      MaxAngleToTurn;              // +0xa0
     float                      AmountToHeal;                // +0xa4

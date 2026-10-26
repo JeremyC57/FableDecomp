@@ -14,7 +14,7 @@ struct CBase_0062ebc0 {
     CBase_0062ebc0(const CBase_0062ebc0& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_AlertAllNearbyToThing : CBase_0062ebc0 {
+class CCreatureAction_AlertAllNearbyToThing : public CBase_0062ebc0 { public:
     long m_a8;                          // +0xa8
     long m_ac;                          // +0xac
     virtual void v00();                    // own vtable; copy constructor implicit

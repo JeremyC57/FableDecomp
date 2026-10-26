@@ -7,15 +7,15 @@
 // store is dead and dropped; the intermediate CAnimComponentBase adds only virtuals.
 // Members from engine/CAnimComponentCombatHandedness.h (PDB names); the header has no virtuals so the
 // class is modelled here with the real vtable layout (rtti-vtables.tsv slots 2..8).
-struct CPersistContext; struct CCharString; struct CDataInputStream; struct CDataOutputStream;
+class CPersistContext; class CCharString; class CDataInputStream; class CDataOutputStream;
 
-struct CIVCountedPointeeBase {                  // root: vptr + intrusive ref count
+class CIVCountedPointeeBase { public:                  // root: vptr + intrusive ref count
     virtual void v0();
     long m_refCount;                            // +0x04
     CIVCountedPointeeBase() : m_refCount(1) { }
 };
 
-struct CAnimComponentBase : CIVCountedPointeeBase {
+class CAnimComponentBase : public CIVCountedPointeeBase { public:
     virtual void v1();
     virtual long GetType() const;                                                // slot 2
     virtual bool Initialise(CPersistContext& context, const CCharString& name);  // slot 3
@@ -26,7 +26,7 @@ struct CAnimComponentBase : CIVCountedPointeeBase {
     virtual void SetDefaultValue();                                              // slot 8
 };
 
-struct CAnimComponentCombatHandedness : CAnimComponentBase {                // vtable 0x012556C0
+class CAnimComponentCombatHandedness : public CAnimComponentBase { public:                // vtable 0x012556C0
     long StartHandedness;                       // +0x08 ECombatAnimationHandedness (left uninitialised)
     long EndHandedness;                         // +0x0c
     CAnimComponentCombatHandedness() { }

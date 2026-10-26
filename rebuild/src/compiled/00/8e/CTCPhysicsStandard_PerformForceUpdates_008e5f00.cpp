@@ -6,17 +6,17 @@
 //   CWorldMap::GetGroundFaceNormalAt(const C3DVector&) const @ 0x0063AB10, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210.
 //   Floats: 0.98f @ 0x01287364, g_epsilon_0129ba3c @ 0x0129BA3C (1e-4f).
 // Shape: as 0x008E5670 (one `||` chain, inline GetLengthSquared() on the x87 stack).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C = 1e-4f
-struct CWorldMap {
+class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;   // 0x0063AB10
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

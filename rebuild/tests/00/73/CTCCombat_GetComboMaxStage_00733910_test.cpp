@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CAnimationEntryPair { unsigned long Key; long ChainID; long Stage; };
-struct CAnimationSet { const CAnimationEntryPair* First; const CAnimationEntryPair* Last; };
-struct CGetMaxComboStage {
+class CAnimationSet { public: const CAnimationEntryPair* First; const CAnimationEntryPair* Last; };
+class CGetMaxComboStage { public:
     long MaxStage; long ChainID;
     CGetMaxComboStage(long chainID) : MaxStage(-777), ChainID(chainID) { }
     void operator()(const CAnimationEntryPair& p) { if (p.ChainID == ChainID && p.Stage > MaxStage) MaxStage = p.Stage; }
@@ -11,11 +11,11 @@ static CGetMaxComboStage ForEachAnimation(const CAnimationEntryPair* first, cons
     for (; first != last; ++first) f(*first);
     return f;
 }
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationSet m_set;
     const CAnimationSet* GetCombatAnimationSet() { return &m_set; }
 };
-struct CTCCombat {
+class CTCCombat { public:
     long ComboChainID; CThingCreatureBase* ParentCreature;
     long GetComboMaxStage()
     {

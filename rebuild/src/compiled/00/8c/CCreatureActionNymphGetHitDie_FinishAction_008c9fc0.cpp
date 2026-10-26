@@ -15,8 +15,8 @@ struct Base
     virtual void FinishAction_008663d0();  // call 0x694430 (base FinishAction on this)
 };
 
-struct CCreatureAction_Die : public Base
-{
+class CCreatureAction_Die : public Base
+{ public:
     int    filler;   // +4
     SubObj sub;      // +8
 

@@ -12,12 +12,12 @@
 // CCharString::CCharString(char*, long) @ 0x0099EBF0 is a trusted (landed, PASS) identity.
 // Shape template (landed byte-exact): CUserProfileManager_GetAutoSaveFileName_0041a060.cpp.
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;                              // +0x00 CCharString::PStringData
     CCharString(const char* text, long length);     // 0x0099EBF0
 };
 
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     CCharString Name;                               // +0x00
     CTCTargetingPlayer();
 };

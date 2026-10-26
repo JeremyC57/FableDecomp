@@ -4,7 +4,7 @@
 static int g_destroyed = 0, g_log[32], g_n = 0;
 static void Destroy(void*) { ++g_destroyed; }
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object)
     {

@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CTCBase { long type; };
+class CTCBase { public: long type; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_entries[4];
@@ -51,13 +51,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CCharString { const char* m_text; CCharString(const char* text, long length = -1) : m_text(text) { (void)length; } };
+class CCharString { public: const char* m_text; CCharString(const char* text, long length = -1) : m_text(text) { (void)length; } };
 static int g_log[16]; static int g_logCount = 0;
 static void Log(int v) { if (g_logCount < 16) g_log[g_logCount] = v; ++g_logCount; }
-struct CTCPhysicsBase { virtual void SetFlying(bool flying) { Log(flying ? 301 : 300); } };
+class CTCPhysicsBase { public: virtual void SetFlying(bool flying) { Log(flying ? 301 : 300); } };
 struct CTCGraphicAppearance { unsigned char m_alpha; CTCGraphicAppearance() : m_alpha(0) { } void SetAlpha(unsigned char alpha) { m_alpha = alpha; Log(400 + alpha); } };
 struct CTCCreatureFlags9 : CTCBase { unsigned char m_canBeTargeted; CTCCreatureFlags9() : m_canBeTargeted(2) { } };
-struct CTCParticleAttacher : CTCBase { int m_attached; CTCParticleAttacher() : m_attached(0) { } void AttachParticles() { ++m_attached; Log(500); } };
+class CTCParticleAttacher : public CTCBase { public: int m_attached; CTCParticleAttacher() : m_attached(0) { } void AttachParticles() { ++m_attached; Log(500); } };
 struct CCreatureThing : CThing {
     CTCPhysicsBase m_physics; CTCGraphicAppearance m_graphics; bool m_invisible;
     CCreatureThing() : m_invisible(false) { }
@@ -68,14 +68,14 @@ struct CCreatureThing : CThing {
 static CThing* g_willableThing = 0; static int g_willableFlag = -1;
 void FASTCALL SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable) { g_willableThing = thing; g_willableFlag = notWillable ? 1 : 0; Log(notWillable ? 701 : 700); }
 static const char* g_animName = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase() { }
     virtual void Initialise() { Log(100); }
     virtual void FinishAction() { Log(101); }
     CBaseIntelligentPointer PCreature;
     void SetAnimationName(const CCharString& name) { g_animName = name.m_text; Log(200); }
 };
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase {
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     virtual void Initialise();
 };
 void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()

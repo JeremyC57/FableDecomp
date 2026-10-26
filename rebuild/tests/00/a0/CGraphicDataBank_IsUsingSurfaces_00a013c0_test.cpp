@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CGraphicDataBank
-{
+class CGraphicDataBank
+{ public:
     bool IsUsingSurfaces();
 };
 

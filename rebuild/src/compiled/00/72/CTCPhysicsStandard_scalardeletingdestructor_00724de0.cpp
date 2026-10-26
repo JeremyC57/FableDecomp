@@ -15,20 +15,20 @@
 // reset; a generated one was called out of line); the mesh info's delete is guarded explicitly (`delete p` of a
 // trivially destructible type emits no null test); the def pointer's release and the destructors are `__forceinline`;
 // a `new` factory pulls the vtable and the ??_G into the TU.
-struct CThing;
-struct CThingPhysicsMeshInfo { long m_data; };
+class CThing;
+class CThingPhysicsMeshInfo { public: long m_data; };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long m_refCount;                                // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) {}
     __forceinline ~CDefPointer()
@@ -42,7 +42,7 @@ template <class T> struct CDefPointer {
     }
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                             // 0x00686830
     CThing* ParentThing;                            // +0x04

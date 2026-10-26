@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureDef {
+class CCreatureDef { public:
     void* vftable;
     int destroyed;
 };

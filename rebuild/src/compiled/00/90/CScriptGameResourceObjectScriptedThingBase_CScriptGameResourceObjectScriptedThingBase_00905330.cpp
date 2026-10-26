@@ -13,11 +13,11 @@
 // base call and vptr store need this local class model with the same offsets.
 // CBaseObject (engine/CBaseObject.h: {vftable, IntelligentPointer}, 8 bytes) is likewise modelled as a
 // polymorphic base with its out-of-line copy constructor; the flat header cannot be derived from.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                                     // +0x00 shared reference count
 };
 
-struct CScriptGameResourceObjectScriptedThingBase;
+class CScriptGameResourceObjectScriptedThingBase;
 
 struct CCountedPointer_ScriptedThingBase {            // CCountedPointer<CScriptGameResourceObjectScriptedThingBase>
     CScriptGameResourceObjectScriptedThingBase* Data;
@@ -29,13 +29,13 @@ struct CCountedPointer_ScriptedThingBase {            // CCountedPointer<CScript
     }
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     void* IntelligentPointer;                         // +0x04
     CBaseObject(const CBaseObject& other);            // 0x0099A390
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:
     CCountedPointer_ScriptedThingBase PImp;           // +0x08 PImp_Data / +0x0c PImp_Info
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase(const CScriptGameResourceObjectScriptedThingBase& other);

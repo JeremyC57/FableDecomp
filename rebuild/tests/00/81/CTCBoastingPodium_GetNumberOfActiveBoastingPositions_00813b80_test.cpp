@@ -7,7 +7,7 @@ struct CInterfaceMap {
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) const

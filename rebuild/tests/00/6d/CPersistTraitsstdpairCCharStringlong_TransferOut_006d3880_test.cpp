@@ -23,7 +23,7 @@ public:
 };
 int CCharString::s_live = 0;
 
-struct CPersistContext { int id; };
+class CPersistContext { public: int id; };
 static CPersistContext* g_lastContext = 0;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, LONG32* value)
 {

@@ -30,7 +30,7 @@ struct CMaintainedEventList {                      // STLport list<CMaintainedEv
         m_pNode = node;
     }
 };
-struct CInputManager;
+class CInputManager;
 class CJoystick {
 public:
     virtual void v00();

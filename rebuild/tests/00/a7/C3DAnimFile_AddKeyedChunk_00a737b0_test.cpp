@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_strings = 0, g_destroyed = 0;
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const char* s) { m_pData = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(m_pData, s); ++g_strings; }
     CCharString(const CCharString& o) { m_pData = (char*)std::malloc(std::strlen(o.m_pData) + 1); std::strcpy(m_pData, o.m_pData); ++g_strings; }
@@ -15,7 +15,7 @@ struct SCountBlock {
     CCountedItem* m_pItem;
 };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pBlock;
     CCountedPointer(T* o, SCountBlock* b) : m_pObject(o), m_pBlock(b) {}
@@ -36,7 +36,7 @@ struct CCountedPointer {
         m_pBlock = 0;
     }
 };
-struct C3DAnimFileRootChunk { int id; };
+class C3DAnimFileRootChunk { public: int id; };
 struct SNamedChunk {
     CCharString Name;
     CCountedPointer<C3DAnimFileRootChunk> Chunk;
@@ -53,7 +53,7 @@ struct CVec {
     CVec() { m_pFirst = (SKeyedChunk*)std::malloc(4 * sizeof(SKeyedChunk)); m_pLast = m_pFirst; m_pEnd = m_pFirst + 4; }
     void push_back(const SKeyedChunk& r) { new (m_pLast) SKeyedChunk(r); ++m_pLast; }
 };
-struct C3DAnimFile {
+class C3DAnimFile { public:
     CVec m_Chunks; unsigned char m_flag0C; bool m_Changed;
     void AddKeyedChunk(const long& key, const SNamedChunk& value)
     {

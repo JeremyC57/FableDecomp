@@ -11,8 +11,8 @@
 //        CBase vtable 0x01231710 then CScriptThing vtable 0x01238C8C), EntitySetDeedReactionsEnabled 595 0x0088F850.
 // Layout: entity-script base: vptr +0x00, CGameScriptInterface* +0x04, CScriptThing Me +0x08 (12 bytes); ParentClass +0x14,
 //         PMasterData +0x18.
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
@@ -22,12 +22,12 @@ struct CBase {                                   // vtable 0x01231710
     virtual ~CBase();
 };
 struct CScriptThingImp;
-struct CScriptThing : CBase {                    // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                    // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : CBase(), PImp(other.PImp) {}
     virtual ~CScriptThing();
 };
-struct CGameScriptInterface {   // vtable slots by index from rtti-vtables.tsv / the PDB mangled names
+class CGameScriptInterface { public:   // vtable slots by index from rtti-vtables.tsv / the PDB mangled names
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

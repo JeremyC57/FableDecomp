@@ -1,5 +1,5 @@
 // std::vector<CQuickAccessItemButtonGuiDef>::_M_fill_insert(CQuickAccessItemButtonGuiDef* position, unsigned int n, const CQuickAccessItemButtonGuiDef& x) -- STLport insert of n copies of a quick-access button def: slide the tail inside the spare capacity, or grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@UCQuickAccessItemButtonGuiDef@@
+// Leaf: ?_M_fill_insert@?$vector@VCQuickAccessItemButtonGuiDef@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00476212, 411 bytes, thiscall `ret 0Ch`; size TU with a frame pointer.
 // Identity: the only caller is vector<CQuickAccessItemButtonGuiDef>::insert(position, n, x) 0x00476163; stride 0x50
 //   with the element copy constructor 0x0046EE2D and the __copy_backward_ptrs instance 0x00476497 (both landed). The
@@ -19,18 +19,18 @@
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char _body[0x3c - 4];                           // +0x04
     CParentDefClassBase& operator=(const CParentDefClassBase& other);    // 0x00431ED0
     virtual ~CParentDefClassBase();                          // 0x00430300 (identical-code folded)
 };
 
-struct CQuickAccessItemButtonGuiDef : CParentDefClassBase {  // vtable 0x012360A4, retail sizeof 0x50
+class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:  // vtable 0x012360A4, retail sizeof 0x50
     long      ButtonGraphic;                                 // +0x3c
     C2DVector Position;                                      // +0x40
     C2DVector Offset;                                        // +0x48

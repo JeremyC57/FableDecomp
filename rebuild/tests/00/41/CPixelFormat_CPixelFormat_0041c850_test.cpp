@@ -6,7 +6,7 @@ static const SFormatEntry g_formats[] = {
     { 2, 24, 0, 8, 8, 8 }, { 2, 32, 8, 8, 8, 8 }, { 2, 16, 0, 5, 6, 5 }, { -1, 0, 0, 0, 0, 0 }
 };
 static int g_lastOption = -1;
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long r, long g, long b, long a, bool option)
     {

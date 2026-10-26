@@ -16,7 +16,7 @@ class CThing;
 class CThingObject;
 class CBaseObject;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
@@ -25,7 +25,7 @@ public:
 };
 class CThingObject : public CThing { };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -40,7 +40,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858 for CThingObject
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A858 for CThingObject
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
@@ -67,7 +67,7 @@ struct CItemList {                                      // STLport list (retail:
     void push_back(const SItemEntry& x) { insert(end(), x); }
 };
 
-struct CTCHeroReceiveItems : CTCBase {
+class CTCHeroReceiveItems : public CTCBase { public:
     CItemList Items;                                    // +0x0c
     void PrepareToShowItems(const C3DVector& position); // 0x007CA670
     void GiveItem(CThingObject& item, bool persist);

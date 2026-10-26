@@ -7,16 +7,16 @@
 //   OffsetVector3D +0x44, RHSet +0x50, OldRHSet +0x68 (the header flattens RHSet to bytes, so modelled locally).
 //   The physics params: Position +0x04 (read by the base), RHSet +0x10 (CRightHandedSet: Up, Forward).
 // Shape: two implicit 24-byte POD assignments from the same source (the source address kept in eax for the second copy).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CTCParamsBase {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CTCParamsBase { public:
     void*     __vftable;                        // +0x00
 };
 struct CTCParamsPhysics : CTCParamsBase {
     C3DVector       Position;                   // +0x04
     CRightHandedSet RHSet;                      // +0x10
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual void ConstructFromParams(CTCParamsBase* params);   // slot 3 (+0xc): 0x006AF700
     unsigned char _pad04[0x3c];                 // +0x04 CTCBase body .. Moving bits (+0x3c)

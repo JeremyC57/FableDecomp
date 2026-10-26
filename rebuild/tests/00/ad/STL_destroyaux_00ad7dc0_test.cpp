@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 static int g_stringsDestroyed = 0, g_freed = 0, g_rangeDestroys = 0, g_pointersInRanges = 0;
-struct CCharString { void* PStringData; ~CCharString() { ++g_stringsDestroyed; } };
+class CCharString { public: void* PStringData; ~CCharString() { ++g_stringsDestroyed; } };
 struct SBone { CCharString BoneName; long Parent; bool Remapped; long NewIndex; };
 struct SCounted { void* Data; void* Info; };
 template <class T> struct SVector { T* Start; T* Finish; T* End; };

@@ -16,18 +16,18 @@ struct CItemList {
     unsigned long GetCount();              // 0x00445950
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x0C];
     CItemList*    m_pItems;                // +0x0C
 };
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetMainPlayer();              // 0x00449960
 };
 
 CWorld* GetWorld();                        // 0x00686D50
 
-struct CTCInventory {
+class CTCInventory { public:
     long ValidateIndex(long index);
 };
 

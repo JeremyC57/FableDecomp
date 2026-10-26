@@ -1,6 +1,6 @@
 // behaviour test for 0x00B161A0 COrbitState::Initialise
 #include <cstdio>
-struct C3DVector { float X, Y, Z; void Zero() { X = Y = Z = 0.0f; } };
+class C3DVector { public: float X, Y, Z; void Zero() { X = Y = Z = 0.0f; } };
 struct COrbitSettings { float RotateSpeed, RotateStart, RotateSpeedRandom, RotateStartRandom; };
 static float g_rand[2] = { 1.5f, 0.5f }; static int g_n = 0;
 float GFFloatRandom(float range, unsigned int* seed) { ++*seed; return g_rand[g_n++] * range / 2.0f; }

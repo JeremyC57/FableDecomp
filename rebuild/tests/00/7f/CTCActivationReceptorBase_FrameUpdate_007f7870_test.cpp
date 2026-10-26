@@ -2,7 +2,7 @@
 
 static long g_frame;
 struct CTrigger { bool Activated; };
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     bool Activated; CTrigger** first; CTrigger** last; long LogicType; bool DeactivateAfterSetTime;
     long FramesAfterActivationToDeactivate; long FrameAtLastActivation; int activations, deactivations;
     void Activate() { ++activations; }

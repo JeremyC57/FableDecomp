@@ -10,7 +10,7 @@ struct SCrimeIterator {
     SCrimeIterator& operator++() { _M_node = RbIncrement(_M_node); return *this; }
     bool operator!=(const SCrimeIterator& o) const { return _M_node != o._M_node; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     SNode header; int count;
     void Erase(SNode* n) { n->prev->next = n->next; n->next->prev = n->prev; n->erased = true; n->next = 0; --count; }
     void RemoveCrimeIfApologisable(long crime)

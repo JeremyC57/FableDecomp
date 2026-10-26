@@ -14,20 +14,20 @@
 // the case-0xd body first and the case-9 body last.
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-template <class T> struct CIVCountedPointer {     // intrusive counted pointer (one word)
+template <class T> class CIVCountedPointer { public:     // intrusive counted pointer (one word)
     T* m_p;
     __forceinline CIVCountedPointer() : m_p(0) { }
 };
-struct CEnginePrimitiveSimulationInfo;
-struct CEngineMeshEffect;
+class CEnginePrimitiveSimulationInfo;
+class CEngineMeshEffect;
 
-struct CEnginePrimitiveThemeChannelDesc {          // three flag bytes
+class CEnginePrimitiveThemeChannelDesc { public:          // three flag bytes
     bool m_a, m_b, m_c;
     __forceinline CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
 };
@@ -49,27 +49,27 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
 
-struct C3DAnimationBlendState : CBase {            // vtable 0x01239838, 8 bytes
-    struct CSharedData;
+class C3DAnimationBlendState : public CBase { public:            // vtable 0x01239838, 8 bytes
+    class CSharedData;
     CIVCountedPointer<CSharedData> Data;           // +0x04
     virtual ~C3DAnimationBlendState();
 };
 
-struct C3DAnimationInterpolator : CBase {          // vtable 0x01239840, 0x14 bytes
+class C3DAnimationInterpolator : public CBase { public:          // vtable 0x01239840, 0x14 bytes
     C3DAnimationBlendState StartState;             // +0x04
     C3DAnimationBlendState EndState;               // +0x0C
     virtual ~C3DAnimationInterpolator();
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DPositionInterpolator : CBase {           // vtable 0x0123981C, 0x1c bytes
+class C3DVector { public: float X, Y, Z; };
+class C3DPositionInterpolator : public CBase { public:           // vtable 0x0123981C, 0x1c bytes
     C3DVector StartPosition;                       // +0x04
     C3DVector EndPosition;                         // +0x10
     virtual ~C3DPositionInterpolator();
 };
 
-struct CRightHandedSet { float m[6]; };
-struct C3DOrientationInterpolator : CBase {        // vtable 0x01239824, 0x34 bytes
+class CRightHandedSet { public: float m[6]; };
+class C3DOrientationInterpolator : public CBase { public:        // vtable 0x01239824, 0x34 bytes
     CRightHandedSet StartOrientation;              // +0x04
     CRightHandedSet EndOrientation;                // +0x1C
     virtual ~C3DOrientationInterpolator();
@@ -91,14 +91,14 @@ struct CRetailMap {                                // STLport map: header node p
     }
 };
 
-struct CEngineRenderInfoAnimatedMesh {             // +0xe0 in the mesh; only two words initialised
+class CEngineRenderInfoAnimatedMesh { public:             // +0xe0 in the mesh; only two words initialised
     unsigned char _pad00[0x40];
     long          m_count;                         // +0x40 (+0x120)
     long          m_index;                         // +0x44 (+0x124)
     __forceinline CEngineRenderInfoAnimatedMesh() : m_count(0), m_index(-1) { }
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {   // vtable 0x012A79B4
+class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMeshBase { public:   // vtable 0x012A79B4
     C3DAnimationInterpolator      Anim;            // +0x70
     C3DPositionInterpolator       WorldPos;        // +0x84
     C3DOrientationInterpolator    Orientation;     // +0xA0
@@ -109,7 +109,7 @@ struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {
         : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x38];
     CEngineInternalPrimitiveMorphInfo();           // 0x00BAA250
 };

@@ -1,7 +1,7 @@
 // Behaviour test for 006a7050: CThingFilter_BoundingRadiusIntersectsInfiniteLine -- squared point-line distance against the bounding radius squared (model copy, stand-in helpers).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     C3DVector Centre; float Radius;
     void GetBoundingInfo(C3DVector& c, float& r) const { c = Centre; r = Radius; }
 };
@@ -14,8 +14,8 @@ static float GetSquaredDistanceToInfiniteLine(const C3DVector& a, const C3DVecto
     t = dot / dd;
     return px * px + py * py + pz * pz - dot * t;
 }
-struct CThing { CTCPhysicsBase* PhysicsTC; };
-struct CThingFilter_BoundingRadiusIntersectsInfiniteLine {
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
+class CThingFilter_BoundingRadiusIntersectsInfiniteLine { public:
     C3DVector Start, End;
     bool operator()(const CThing& thing) const
     {

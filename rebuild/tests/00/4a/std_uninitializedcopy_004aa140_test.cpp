@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <new>
 static int g_ctors = 0;
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 struct CBaseIntelligentPointer {
     CBaseObject* item;
     CBaseIntelligentPointer() : item(0) { ++g_ctors; }

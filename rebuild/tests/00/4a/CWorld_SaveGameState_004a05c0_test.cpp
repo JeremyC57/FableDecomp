@@ -5,7 +5,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString {
+class CWideString { public:
     char text[96];
     bool assigned;
     CWideString() : assigned(false) { text[0] = 0; }
@@ -40,7 +40,7 @@ static int g_beginCalls = 0, g_endCalls = 0, g_deleted = 0;
 static bool g_beginResult = true, g_hsExists = true;
 static char g_savedPath[96], g_heroName[96], g_deletedPath[96];
 static bool g_flagsAtSave[2], g_flagsAtHero[2];
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     bool BeginShutdown(float timeout) { ++g_beginCalls; return timeout == 2.0f && g_beginResult; }
     void EndShutdown() { ++g_endCalls; }
 };

@@ -4,7 +4,7 @@
 // External destructor body (retail 0xa0d3d0) - kept out-of-line via extern.
 extern void __fastcall CInputProcessInventoryExperienceScreen_dtor(void* process);
 
-struct CInputProcessInventoryExperienceScreen {
+class CInputProcessInventoryExperienceScreen { public:
     // The deleting destructor: __fastcall(this), uint flag arg, returns this.
     void* deleting_destructor(unsigned int flags);
 };

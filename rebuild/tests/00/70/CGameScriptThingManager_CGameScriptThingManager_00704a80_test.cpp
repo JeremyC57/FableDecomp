@@ -11,16 +11,16 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-struct CWorld;
+class CWorld;
 static int g_live = 0, g_deletes = 0;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
     CWorld* GetWorld() const { return PWorld; }
 };
 CMainGameComponent* g_pMainGameComponent;
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     unsigned char _body[0x48];
     CWorld* m_world;
     CGameScriptThing(CWorld* world) : m_world(world) { ++g_live; }
@@ -61,7 +61,7 @@ struct CCountedPointer {                           // CCountedPointer<CGameScrip
     }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00() {}
     CBaseClass() {}
 };
@@ -70,7 +70,7 @@ struct CCountedPointerWords {                      // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {                 // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
     CCountedPointerWords PImp;                     // +0x04
     virtual void v00() {}
     CScriptThing() : CBaseClass(), PImp() { }
@@ -103,7 +103,7 @@ struct CScriptThingInfoList {                      // retail: the sentinel point
     }
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     CScriptThingInfoList ScriptThings;             // +0x00
     CScriptThing         NullThing;                // +0x04
     CGameScriptThingManager();

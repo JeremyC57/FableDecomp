@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesUnholyPowerDef;
+class CSpecialAbilitiesUnholyPowerDef;
 
 unsigned long __fastcall CSpecialAbilitiesUnholyPowerDef_GetSizeofClass(const CSpecialAbilitiesUnholyPowerDef* self)
 {

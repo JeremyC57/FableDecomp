@@ -6,7 +6,7 @@ struct CFadeInFadeOutBase_Calls {
     void Update(float elapsed) { OpenTimer += elapsed; ++updates; }
 };
 struct CInterpolationInfoSet { float GTPredictedTimeSinceLastRenderFrame; float WFInterpolate; };
-struct CEnginePrimitivePrepareInfo { CInterpolationInfoSet Current; };
+class CEnginePrimitivePrepareInfo { public: CInterpolationInfoSet Current; };
 struct CLongVector {
     long* first; long* last; long* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
@@ -15,7 +15,7 @@ struct CFadeVector {
     CFadeInFadeOutBase_Calls* first; CFadeInFadeOutBase_Calls* last; CFadeInFadeOutBase_Calls* end_of_storage;
     CFadeInFadeOutBase_Calls& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector ContextSensitiveItems;
     CFadeVector ContextSensitiveFadeTimes;
     void UpdateContextSensitiveItemFades(const CEnginePrimitivePrepareInfo& info);

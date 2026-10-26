@@ -5,11 +5,11 @@
 // reference), CDataInputStream::ReadColour @ 0x009945E0 (on the load stream +0x24, through a 4-byte local, the colour returned by reference and copied as one dword).
 // Shape: the mode at +0x18 is switched with the size-optimised `dec ; dec ; je ; dec ; jne` ladder (cases 2 and 3, nothing for the rest); a frame pointer for the
 // local. The chunk label "CEngineLightingManager::UpdateShadowScene" is propagated from an unrelated body.
-struct CRGBColour { unsigned long m_argb; };
-struct CDataOutputStream { void WriteColour(const CRGBColour& colour); };          // 0x00993F30
-struct CDataInputStream { CRGBColour& ReadColour(CRGBColour& colour); };        // 0x009945E0
+class CRGBColour { public: unsigned long m_argb; };
+class CDataOutputStream { public: void WriteColour(const CRGBColour& colour); };          // 0x00993F30
+class CDataInputStream { public: CRGBColour& ReadColour(CRGBColour& colour); };        // 0x009945E0
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char     _pad0[0x18];
     long              m_mode;                      // +0x18 (2 = load, 3 = save)
     unsigned char     _pad1[8];

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_creates = 0, g_lockDepth = 0, g_allocs = 0, g_globalAllocs = 0, g_frees = 0;
-struct CMemoryAllocator { void* InternalAllocate(int size, unsigned int, bool) { ++g_allocs; return std::malloc(size); } };
+class CMemoryAllocator { public: void* InternalAllocate(int size, unsigned int, bool) { ++g_allocs; return std::malloc(size); } };
 static CMemoryAllocator g_alloc; static CMemoryAllocator* g_pGlobalAllocator = 0;
 static void GFCreateGlobalAllocator() { ++g_creates; g_pGlobalAllocator = &g_alloc; }
 static void* GFAllocateFromGlobalAllocator(int size)
@@ -19,7 +19,7 @@ struct CBufferChunkArray {
     CBufferChunk* m_pFirst; unsigned int m_n;
     void Resize(unsigned int n) { m_pFirst = new CBufferChunk[n]; m_n = n; for (unsigned int i = 0; i < n; ++i) { m_pFirst[i].Mem = 0; m_pFirst[i].Used = false; } }
 };
-struct CFileInstaller {
+class CFileInstaller { public:
     CBufferChunkArray BufferChunks; unsigned char* PReadBuffer; unsigned char* PWriteBuffer; int AvailableBuffers;
     unsigned int BufferChunkSize, NoBufferChunks;
     void FreeBuffers() { ++g_frees; }

@@ -2,7 +2,7 @@
 // vector is empty and MaxOccupation is 1000.
 #include <cstdio>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 static CThing* g_baseParent = 0;
 struct CTCBase_Calls {
     virtual void v00() { }
@@ -14,7 +14,7 @@ template<class T> struct CRetailVector {
     CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 struct CIntelligentPointerThing { void* __vftable; void* PData; };
-struct CTCGatherPointBase : CTCBase_Calls {
+class CTCGatherPointBase : public CTCBase_Calls { public:
     CRetailVector<CIntelligentPointerThing> Users;
     long                                    MaxOccupation;
     virtual void v00() { }

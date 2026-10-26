@@ -2,8 +2,8 @@
 
 #include <cstddef>
 static int g_scriptBase = 0, g_names = 0;
-struct CScriptBase { virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
-struct CCharString { char* m_p; CCharString() : m_p(0) { ++g_names; } };
+class CScriptBase { public: virtual void v00() { } unsigned char _body[0x3c]; CScriptBase() { ++g_scriptBase; } };
+class CCharString { public: char* m_p; CCharString() : m_p(0) { ++g_names; } };
 struct __declspec(novtable) CScriptObject : CScriptBase {
     void* m_pThing; void* m_pOwner;
     CScriptObject(void* owner, void* thing) : CScriptBase(), m_pThing(thing), m_pOwner(owner) { }

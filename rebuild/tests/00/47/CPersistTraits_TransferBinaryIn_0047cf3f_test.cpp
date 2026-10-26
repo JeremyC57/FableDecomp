@@ -9,9 +9,9 @@ typedef __int64 Int64;
 typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 0047cf3f: TransferBinaryIn stores the vector read from the stream through the output pointer.
-struct C3DVector { float x; float y; float z; };
+class C3DVector { public: float x; float y; float z; };
 static int g_reads = 0;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     float m_next;
     C3DVector Read3DVector() { C3DVector v; v.x = m_next; v.y = m_next + 1; v.z = m_next + 2; ++g_reads; return v; }
 };

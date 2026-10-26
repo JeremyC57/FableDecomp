@@ -17,19 +17,19 @@ struct CTargetingRangeMap {                                               // ret
     unsigned long _alloc;                                                 // +0x08 (allocator proxy word)
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(unsigned long& value);                                  // 0x00431020
     void Transfer(bool& value);                                           // 0x0043314A
     void Transfer(float& value);                                          // 0x00431061
     void Transfer(CTargetingRangeMap& value);                             // 0x0045DA65
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x24];                                            // +0x04..+0x28
 };
 
-struct CTargetingDef : CDefClassBase {                                    // vtable 0x01232D84
+class CTargetingDef : public CDefClassBase { public:                                    // vtable 0x01232D84
     unsigned long Type;                                                   // +0x28
     bool  UseGlowTargeting;                                               // +0x2c
     float TargetArc;                                                      // +0x30

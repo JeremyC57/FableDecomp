@@ -20,7 +20,7 @@ static int fails = 0;
 // GetCreature() (PBrain->PCreature) accessor; with both, the pointer's lea follows the GetPItem call and the creature
 // argument is pushed straight from ecx as retail.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     unsigned long HasTC(long interfaceType) const
@@ -44,19 +44,19 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     CThing* GetSecuritySweepThing(CThing* creature);   // 0x006590F4
 };
 
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThing* GetCreature() const { return PBrain->PCreature; }

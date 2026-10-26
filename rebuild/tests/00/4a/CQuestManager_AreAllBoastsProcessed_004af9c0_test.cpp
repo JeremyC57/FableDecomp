@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <string.h>
 
-struct CCharString {
+class CCharString { public:
     const char* m_text;
     bool operator!=(const CCharString& other) const { return strcmp(m_text, other.m_text) != 0; }
 };
@@ -10,7 +10,7 @@ struct CCharString {
 struct CBoast { long ID; CCharString ScriptName; bool Evil, Failed, Completed; };
 struct CBoastNode { CBoastNode* next; CBoastNode* prev; CBoast value; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CBoastNode* AcceptedBoasts;
     bool AreAllBoastsProcessed(CCharString& scriptName) const
     {

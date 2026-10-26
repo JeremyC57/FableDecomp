@@ -10,17 +10,17 @@
 // SetPItem(thing). The layout is byte-packed exactly as the PDB header declares it (DirectionOfHit at an
 // unaligned +0x12d, GotDirectionOfHit at +0x139); retail offsets = header offsets - 0x18 (the retail
 // CCombatActionBase is 0x114 bytes), so a local model with #pragma pack(1) is used.
-struct CThingCreatureBase;
-struct CThing;
-struct CBaseObject;
-struct CCharStringData;
+class CThingCreatureBase;
+class CThing;
+class CBaseObject;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -38,14 +38,14 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // CIntelli
     CIntelligentPointer_CThingConst(const CThing* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
 };
 
 #pragma pack(push, 1)
-struct CCombatAction_GenericStrikeResponseKnockdown : CCombatActionBase {   // vtable 0x01277344
+class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { public:   // vtable 0x01277344
     CCharString AnimName;                   // +0x114
     CIntelligentPointer_CThingConst PThingThatHit;  // +0x118
     float PointOfHit_X;                     // +0x120

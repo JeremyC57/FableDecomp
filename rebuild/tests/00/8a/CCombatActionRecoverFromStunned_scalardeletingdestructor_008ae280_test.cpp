@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_RecoverFromStunned {
+class CCombatAction_RecoverFromStunned { public:
     void* vftable;
     int destroyed;
 };

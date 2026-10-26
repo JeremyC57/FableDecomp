@@ -9,7 +9,7 @@
 // (`xor eax,eax ; xor ecx,ecx ; cmp eax,12h ; sete cl`).
 #include "engine/CInventoryItemDef.h"
 enum ETCInterfaceType { };                              // enumerator names not recovered; 0x12 is the clothing type
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };

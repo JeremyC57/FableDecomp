@@ -9,7 +9,7 @@
 // inline ?SetTextTag@CTCActionUseReadable@@QAEXABVCWideString@@@Z. Interface 0xd = CTCActionUseReadable is
 // inferred from that +0x18 store, not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

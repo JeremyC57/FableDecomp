@@ -13,14 +13,14 @@
 // external non-virtual __fastcall helpers; the harness masks the relocation
 // dwords so any consistent targets reproduce the bytes.
 
-struct CCharString;
+class CCharString;
 struct SymbolPair;
 
 // ecx = this. Modeled as single-arg free __fastcall (self in ecx, edx unused).
 extern "C" void __fastcall CCharString_Dtor(CCharString *self); // 0x99a2e0
 extern "C" void __fastcall SymbolPair_Dtor(SymbolPair *self);   // 0x4c2e90
 
-struct CCharString {};
+class CCharString { public:};
 
 struct SymbolPair
 {

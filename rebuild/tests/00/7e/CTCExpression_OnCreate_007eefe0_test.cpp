@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CDefClassBase;
-struct CExpressionDef;
+class CDefClassBase;
+class CExpressionDef;
 static int g_destroyed = 0;
 struct CRefCountedDef {
     virtual void v00() {}
@@ -17,7 +17,7 @@ template<class T> struct CDefPointerOut {
     T* Object;
     CDefPointerOut() : Object(0) { }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
@@ -29,7 +29,7 @@ struct CExpressionUserDef : CRefCountedDef {
     long          ExpressionDefIndex;
 };
 static CExpressionUserDef* g_userDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CRefCountedDef {
+class CDefClassBase : public CRefCountedDef { public:
     bool GetSubDef(CDefPointerOut<CExpressionUserDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointerOut<CExpressionUserDef>* out)
@@ -38,9 +38,9 @@ bool CDefClassBase::GetSubDef(CDefPointerOut<CExpressionUserDef>* out)
     if (!g_userDef) return false;
     ++g_userDef->RefCount; out->Object = g_userDef; return true;
 }
-struct CExpressionDef : CRefCountedDef { };
+class CExpressionDef : public CRefCountedDef { public: };
 static CExpressionDef* g_exprDef = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CExpressionDef>* out);
 };
 bool CDefinitionManager::GetDef(long index, CDefPointer<CExpressionDef>* out)
@@ -50,12 +50,12 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<CExpressionDef>* out)
     ++g_exprDef->RefCount; out->Object = g_exprDef; return true;
 }
 static CDefinitionManager g_manager;
-struct CThing {
+class CThing { public:
     unsigned char              _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
 };
-struct CTCExpression {
+class CTCExpression { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;

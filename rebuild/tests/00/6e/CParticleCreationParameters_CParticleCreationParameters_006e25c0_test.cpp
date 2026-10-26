@@ -1,8 +1,8 @@
 // behaviour test for 0x006E25C0 CParticleCreationParameters(long, const CRightHandedSet&)
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CMap { void* a; void* b; void* c; bool Dirty; CMap() : a(0), b(0), c(0), Dirty(false) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CMap { public: void* a; void* b; void* c; bool Dirty; CMap() : a(0), b(0), c(0), Dirty(false) {} };
 struct CParticleUpdateParameters { CMap VectorParams, UpdateParams; };
 struct CParticleCreationParameters {
     bool InterpolatingParticle, ParticleCreationDisabled, UpdateParametersSet, AlwaysUpdateFlag;

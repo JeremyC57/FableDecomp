@@ -11,15 +11,15 @@
 //   GetAnimationToUse (its CCharString result homed in the dead last-argument slot, destroyed after the base ctor), an
 //   intelligent pointer member built from the item (inline ctor: base ctor, vtable, SetPItem) and the counted follow-up.
 // Layout: retail CCreatureActionBase is 0xa8: PItem +0xa8, PFollowUpAction +0xb0.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall GetAnimationToUse(CThingCreatureBase* owner, CThing* item);   // 0x0069F980
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                   // +4
@@ -31,7 +31,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer { // CIntelligentPointer<CT
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -46,7 +46,7 @@ struct CPointeeVirtual {
     virtual void v00();
     virtual void Destroy();                            // slot 1
 };
-struct CAnimComponentMap : CPointeeVirtual, CRefCountedBase {
+class CAnimComponentMap : public CPointeeVirtual, public CRefCountedBase { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -55,7 +55,7 @@ struct CAnimComponentMap : CPointeeVirtual, CRefCountedBase {
     }
 };
 
-struct CAnimationEntry {                               // 16 bytes
+class CAnimationEntry { public:                               // 16 bytes
     long               BankIndex;                      // +0x00
     long               AnimName;                       // +0x04 CDefString
     long               GroupName;                      // +0x08 CDefString
@@ -72,7 +72,7 @@ struct CAnimationEntry {                               // 16 bytes
 
 const CAnimationEntry& __fastcall GetAnimationFromName(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                           // retail sizeof 0xa8
+class CCreatureActionBase { public:                           // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, const CAnimationEntry& animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -87,7 +87,7 @@ struct SCountBlock {
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(DeleteCreatureAction), m_pObject(object) { }
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                            // +0
     SCountBlock* m_pCount;                             // +4
     CCountedPointer(T* object) : m_pObject(object)
@@ -99,7 +99,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {   // vtable 0x0125CCBC
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:   // vtable 0x0125CCBC
     CIntelligentPointer PItem;                                                  // +0xa8
     CCountedPointer<CCreatureActionBase> PFollowUpAction;                       // +0xb0
     virtual void v00();

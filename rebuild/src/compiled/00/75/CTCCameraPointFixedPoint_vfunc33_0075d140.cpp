@@ -7,15 +7,15 @@
 // Layout: Ego_r.pdb CTCCameraPointFixedPoint (packed, 0x50): TrackThing +0x40, LookVector +0x41.
 // Shape: the defaults are literals bound to the const references; VC homes them in the frame word
 // (the bool) and in the dead context-argument slot (each 0.0f re-stored before its call).
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
 };
 
 #pragma pack(push, 1)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCCameraPointFixedPoint {
+class CTCCameraPointFixedPoint { public:
     virtual void v00();
     unsigned char _pad04[0x40 - 0x04];      // +0x04 CTCBase + CTCCameraPointDefinitionBase
     bool          TrackThing;               // +0x40

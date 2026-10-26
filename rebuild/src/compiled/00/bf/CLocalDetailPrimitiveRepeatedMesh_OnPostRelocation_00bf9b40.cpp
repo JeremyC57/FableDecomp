@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF9B40, length 78 bytes.
 // Leaf: OnPostRelocation
 // Callees: 0x00BD9AB0 and 0x00BD9AE0 (manager members, `ret 8`; both empty in retail). The chunk label (vfunc_7) is the vtable slot (0x012A82AC slot 7); the body mirrors CLocalDetailPrimitiveMeshZSpriteBatch::OnPostRelocation @ 0x00BF9B90. Shape: the manager in edi, `this` in esi, `ret`.
-struct CMovableResource;
-struct CEngineLandscapeMemoryManager {
+class CMovableResource;
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner);    // 0x00BD9AB0 (an empty `ret 8` in retail; the landed 0x00BDD8E0 model calls it too)
     void RebindBufferOwner(void* block, CMovableResource* owner);   // 0x00BD9AE0 (the second empty `ret 8` member, landed as E2::M(int, int))
     void AppendFreeEdgeNode(void* block);          // 0x00BDA090
@@ -14,7 +14,7 @@ struct SEngine_01436ea8 {
     CEngineLandscapeMemoryManager* m_pLandscapeMemory;   // +0x6b0
 };
 extern SEngine_01436ea8* g_pEngine_01436ea8;      // 0x01436EA8
-struct CMovableResource {
+class CMovableResource { public:
     virtual void v00();
 };
 struct CLocalDetailPrimitiveRepeatedMesh : CMovableResource {   // vtable 0x012A82AC

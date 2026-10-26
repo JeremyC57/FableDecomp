@@ -1,12 +1,12 @@
 // Behaviour test for 0x008bcea0 CCreatureAction_TeleportOut constructor (owner: the creature's own position).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
-struct CCharString { char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
-struct CSoundPair { int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector m_pos; const C3DVector& GetPosition() const { return m_pos; } };
+class CCharString { public: char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
+class CSoundPair { public: int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature; CThing* m_thing; int m_code; char m_name[32];
     CCombatActionBase(CThing* owner, int code, const CSoundPair&) : m_thing(0), m_code(code) { PCreature.m_pItem = owner; m_name[0] = 0; }
     CCombatActionBase(CThing* owner, CThing* thing, int code, const CSoundPair&) : m_thing(thing), m_code(code) { PCreature.m_pItem = owner; m_name[0] = 0; }

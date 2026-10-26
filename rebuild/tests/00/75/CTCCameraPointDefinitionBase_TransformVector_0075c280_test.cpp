@@ -22,7 +22,7 @@ static int fails = 0;
 extern "C" double __cdecl acos(double);
 #pragma intrinsic(acos)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -30,7 +30,7 @@ struct C3DVector {
     void Normalise();                                        // 0x00A14440
     void Rotate(const C3DVector& axis, float angle);         // 0x00A13C60
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                            // +0x00
     C3DVector Forward;                                       // +0x0c
 };

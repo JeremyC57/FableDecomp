@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cmath>
 // Behaviour test for CObstacleNavigatorExternalInterface::PeekNavigatorOrientation @ 0x004DF3F7
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}

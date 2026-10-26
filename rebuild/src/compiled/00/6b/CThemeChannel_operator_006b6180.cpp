@@ -7,11 +7,11 @@
 // Layout (Ego_r.pdb CThemeChannel with the retail 12-byte CArray, so 0x1F0 not 0x208):
 //          +0 Colours CRGBFloatColour[19], +0x130 Scalers float[30], +0x1A8 TextureSets CIDrawEnvironmentTextureSet[3]
 //          (+0 Textures CArray<long>, +0xC Blends CArray<float>).
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

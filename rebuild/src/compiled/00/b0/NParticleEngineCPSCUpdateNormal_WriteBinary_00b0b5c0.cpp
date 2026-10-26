@@ -12,8 +12,8 @@
 //   ParticleCollideWithGround and ParticleDieOnCollision); a 1-bit flag passed as bool extracts as
 //   `shr ; and r,0xffffff01`, bit 24 is read as the byte +0x0f.
 #include "engine/CDataOutputStream.h"
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* PStringData; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* PStringData; };
 struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteEBOOL(bool value);                        // 0x00993E30
     void WriteULong(unsigned long value);               // 0x00993EA0
@@ -22,7 +22,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
 };
 namespace NParticleEngine {
-struct CPSCUpdateNormal {
+class CPSCUpdateNormal { public:
     unsigned char _base[0xc];                           // CPSCBase
     unsigned long FadeInEndInteger : 10;                // +0x0c
     unsigned long FadeOutBeginInteger : 10;

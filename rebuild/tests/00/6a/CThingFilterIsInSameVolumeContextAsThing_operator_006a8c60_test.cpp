@@ -1,12 +1,12 @@
 // behaviour test for CThingFilter_IsInSameVolumeContextAsThing::operator() (0x006A8C60): override, volume choice (0x75 then 0x33), alive agreement
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
 class CThing;
 struct CBaseIntelligentPointer { CThing* m_p; CThing* GetPItem() const { return m_p; } };
 struct CTCInsideBuilding { CBaseIntelligentPointer PBuilding; };
-struct CTCOwnedEntity { CBaseIntelligentPointer POwner; };
+class CTCOwnedEntity { public: CBaseIntelligentPointer POwner; };
 class CThing { public:
     unsigned long UsingComponents[9]; CInterfaceMap Components; unsigned char Dead : 1;
     bool HasTC(long type) const { if (UsingComponents[type >> 5] & (1UL << (type & 31))) return true; return false; }
@@ -14,7 +14,7 @@ class CThing { public:
     { long type = interfaceType; const CInterfaceMap* map = &Components; CInterfaceMap::SEntry* it = map->LowerBound(&type);
       if (it == map->last || interfaceType < it->type) it = map->last; return (T*)it->component; } };
 inline bool IS_THING_ALIVE(const CThing* t) { return t && !t->Dead; }
-struct CThingFilter_IsInSameVolumeContextAsThing {
+class CThingFilter_IsInSameVolumeContextAsThing { public:
     CThing* PThingInside; bool Override;
     bool operator()(CThing* thing) const
     {

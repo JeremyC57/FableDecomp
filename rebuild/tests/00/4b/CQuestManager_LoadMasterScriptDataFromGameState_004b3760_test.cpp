@@ -5,23 +5,23 @@
 // nothing; otherwise copy the text, build a parser over it (file name "") and a loading context (report errors, the
 // definition manager, source text = the copy) and hand the context to the script data's OnPersist.
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     char text[32];
     CCharString(const char* s) { std::strcpy(text, s); ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CDefinitionManager { int tag; };
+class CDefinitionManager { public: int tag; };
 static CDefinitionManager g_defs = { 77 };
 static CDefinitionManager& GetDefs() { return g_defs; }
-struct CStringParser { const char* source; const char* filename; CStringParser(const CCharString& t, void*, const CCharString& f, long) : source(t.text), filename(f.text[0] ? "x" : "") { } };
-struct CPersistContext { CStringParser* parser; bool report; CDefinitionManager* defs; CCharString* text; };
-struct CScriptDataBase { int calls; char seen[32]; bool report; int defsTag; virtual void OnPersist(CPersistContext& c) { ++calls; std::strcpy(seen, c.parser->source); report = c.report; defsTag = c.defs->tag; } };
+class CStringParser { public: const char* source; const char* filename; CStringParser(const CCharString& t, void*, const CCharString& f, long) : source(t.text), filename(f.text[0] ? "x" : "") { } };
+class CPersistContext { public: CStringParser* parser; bool report; CDefinitionManager* defs; CCharString* text; };
+class CScriptDataBase { public: int calls; char seen[32]; bool report; int defsTag; virtual void OnPersist(CPersistContext& c) { ++calls; std::strcpy(seen, c.parser->source); report = c.report; defsTag = c.defs->tag; } };
 struct CRuntimeQuestPersistence {
     const char* key; const CCharString* script;
     const CCharString* GetQuestMasterDataPersistScript(const CCharString& name) const { return std::strcmp(name.text, key) == 0 ? script : 0; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     CRuntimeQuestPersistence RuntimeQuestPersistence;
     void Load(CScriptDataBase& data, const CCharString& name)
     {

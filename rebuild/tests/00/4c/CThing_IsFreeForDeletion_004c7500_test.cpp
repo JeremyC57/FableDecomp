@@ -1,12 +1,12 @@
 // Behaviour test for CThing::IsFreeForDeletion @ 0x004C7500: every live TC must agree; removed TCs are skipped.
 #include <cstdio>
-struct CTCBase {
+class CTCBase { public:
     bool ToBeRemoved; bool ok; int calls;
     CTCBase(bool removed, bool okay) : ToBeRemoved(removed), ok(okay), calls(0) { }
     virtual bool IsFreeForDeletion() { ++calls; return ok; }
 };
 struct SComponentPair { long first; CTCBase* second; };
-struct CThing {
+class CThing { public:
     SComponentPair* m_componentsFirst;
     SComponentPair* m_componentsLast;
     bool IsFreeForDeletion()

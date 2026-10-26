@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_Guildmaster_ShieldFollowersRelease {
+class CCombatAction_Guildmaster_ShieldFollowersRelease { public:
     void* vftable;
     int destroyed;
 };

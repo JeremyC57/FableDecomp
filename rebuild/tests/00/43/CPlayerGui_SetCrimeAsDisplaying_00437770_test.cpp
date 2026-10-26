@@ -3,7 +3,7 @@
 #include <cstdio>
 struct CStatBase { unsigned long FrameFullyOpenedOn; long GuiMode; };
 struct CCountedPointer { CStatBase* Data; void* Info; CStatBase* operator->() const { return Data; } };
-struct CPlayerGui {
+class CPlayerGui { public:
     CCountedPointer PCrime;
     void SetCrimeAsDisplaying()
     {

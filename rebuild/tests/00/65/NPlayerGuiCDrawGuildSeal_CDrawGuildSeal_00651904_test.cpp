@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for 00651904.
 
-struct CPlayerGui { int id; };
+class CPlayerGui { public: int id; };
 struct CRetailHandleVector { unsigned int reserved; CRetailHandleVector() : reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
 struct CRetailEmitterVector { void* m_pFirst; void* m_pLast; void* m_pEnd; unsigned int reserved;
     CRetailEmitterVector() : m_pFirst(0), m_pLast(0), m_pEnd(0), reserved(0) { } void Resize(long n) { reserved = (unsigned int)n; } };
-struct CFadeInFadeOutBase { int built; CFadeInFadeOutBase() : built(1) { } };
+class CFadeInFadeOutBase { public: int built; CFadeInFadeOutBase() : built(1) { } };
 struct CDrawBase {
     CPlayerGui* PlayerGui; void* DrawList; CRetailHandleVector PrimitiveHandles;
     CDrawBase(CPlayerGui* gui, void* list) : PlayerGui(gui), DrawList(list) { }
@@ -14,7 +14,7 @@ struct CDrawBase {
 
 // NPlayerGui::CDrawGuildSeal::CDrawGuildSeal: flags/flash cleared, fade built, reminder zeroed, level-up graphic read from the GUI def,
 // message frames zeroed, ten primitive handles reserved.
-struct CPlayerGuiDef { long GuildSealLevelUpGraphic; };
+class CPlayerGuiDef { public: long GuildSealLevelUpGraphic; };
 static CPlayerGuiDef g_def;
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 struct CMessageQueue { int built; CMessageQueue() : built(1) { } };

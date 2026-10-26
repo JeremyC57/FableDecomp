@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_destroyed = 0;
-struct CBankFileAsyncData { bool done; bool IsFinished() const { return done; } };
+class CBankFileAsyncData { public: bool done; bool IsFinished() const { return done; } };
 struct CResourceObject { virtual void v00() { } virtual void Destroy() { ++g_destroyed; } long m_refCount; void Release() { if (--m_refCount == 0) Destroy(); } };
 struct CIVCountedPointer_Resource { CResourceObject* m_p; CIVCountedPointer_Resource() : m_p(0) { } ~CIVCountedPointer_Resource() { Release(); }
     void Release() { if (m_p) { m_p->Release(); m_p = 0; } } CIVCountedPointer_Resource& operator=(const CIVCountedPointer_Resource& o) { Release(); m_p = o.m_p; if (m_p) ++m_p->m_refCount; return *this; } };

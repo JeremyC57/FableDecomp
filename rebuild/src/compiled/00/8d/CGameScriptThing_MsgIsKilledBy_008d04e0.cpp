@@ -26,7 +26,7 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;                    // +0x0c
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;                              // +0x00
     long             NoRefs;                            // +0x0d
 };
@@ -48,7 +48,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     __forceinline bool operator==(const CCharString& other) const
     {
@@ -60,13 +60,13 @@ struct CCharString {
     }
 };
 
-struct CScriptThing {                                   // vtable 0x01238C8C
+class CScriptThing { public:                                   // vtable 0x01238C8C
     virtual ~CScriptThing();                            // slot 0 (0x004AA840 is the out-of-line destructor)
     virtual const CCharString& GetName() const;         // slot 1
     void* PImp_Data;
     void* PImp_Info;
 };
-struct CBaseObject;
+class CBaseObject;
 struct CThingRetail {
     enum { ThingTypeMask = 0 };
     unsigned char _pad00[0x6c];
@@ -90,27 +90,27 @@ struct CBaseIntelligentPointer {
         return (GetPItem() != 0 && IsThingOfType<CThingRetail>((CThingRetail*)GetPItem())) ? (CThingRetail*)GetPItem() : 0;
     }
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char           _pad00[0x48];
     CBaseIntelligentPointer POriginator;                // +0x48
     CBaseIntelligentPointer PTarget;                    // +0x50
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) { }
 };
-struct CMessageEventFilter_IsTargettedAtThing {
+class CMessageEventFilter_IsTargettedAtThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsTargettedAtThing(unsigned __int64 uid) : UID(uid) { }
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsTargettedAtThing> CKilledMeFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CKilledMeFilter& filter);   // 0x008D46D0
 };
 

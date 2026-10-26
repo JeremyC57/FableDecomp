@@ -5,11 +5,11 @@
 // time he leaves); when the time is up, wait for him to be back and remove the three HUD elements
 static int g_frames = 0, g_endAt = 1000, g_removed = 0; static bool g_shown = false;
 static const char g_inArea[] = "11000000000000111111";  // OrchardFarmEast loaded per frame
-struct CTimer { float Time; void SetTime(float t) { Time = t; } float GetTime() const { return Time; } };
+class CTimer { public: float Time; void SetTime(float t) { Time = t; } float GetTime() const { return Time; } };
 static CTimer* g_timers[2]; static int g_timerCount = 0;
 struct SScriptDef { float HOB_TotalTime; };
 static SScriptDef g_def;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; for (int i = 0; i < g_timerCount; ++i) g_timers[i]->Time -= 1.0f; }
     bool IsLevelLoaded(const char* n) const { return !std::strcmp(n, "OrchardFarmEast") && g_inArea[g_frames] == '1'; }
     void DisplayQuestInfo(bool d) const { g_shown = d; }

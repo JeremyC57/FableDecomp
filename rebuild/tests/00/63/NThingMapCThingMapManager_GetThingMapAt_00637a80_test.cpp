@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for CThingMapManager::GetThingMapAt (0x00637A80).
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     bool Contains(const C2DCoordI& p) const { return p.X >= X0 && p.X < X1 && p.Y >= Y0 && p.Y < Y1; }
 };

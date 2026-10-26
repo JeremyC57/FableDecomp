@@ -24,7 +24,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 struct __false_type { __false_type() { } };
 
-struct CCompositeBlendDesc {                            // Ego_r.pdb, 16 bytes
+class CCompositeBlendDesc { public:                            // Ego_r.pdb, 16 bytes
     unsigned long TextureIndex;                         // +0x00
     long          BlendType;                            // +0x04 ECompositeBlendType
     unsigned long DiffuseColour;                        // +0x08 CRGBColour
@@ -71,7 +71,7 @@ template <class T> struct vector : _Vector_base<T> {
     }
 };
 
-struct CEngineTextureDecal {                            // 0x14 bytes in retail
+class CEngineTextureDecal { public:                            // 0x14 bytes in retail
     long                         OriginalTextureIndex;  // +0x00
     long                         DecalID;               // +0x04
     vector<CCompositeBlendDesc>  OverlaidBlends;        // +0x08

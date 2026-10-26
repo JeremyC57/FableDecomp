@@ -28,9 +28,9 @@ public:
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
 };

@@ -1,4 +1,4 @@
-struct CWorld {
+class CWorld { public:
     char pad[0x10];
     unsigned int m_val;
     int DrawGetEnvironment(unsigned int threshold);

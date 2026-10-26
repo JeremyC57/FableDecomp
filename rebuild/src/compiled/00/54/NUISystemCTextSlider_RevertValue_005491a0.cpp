@@ -8,8 +8,8 @@
 //        names) takes OriginalSelectedChild; Move is set after the loop.
 // Layout: retail NUISystem::CTextSlider = Ego_r.pdb minus 0x30 up to Actions (+0x16C, 12-byte STLport vector) and minus 0x34
 //         after it; OriginalSelectedChild +0x194.
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;                                     // +0
     CCPPointerInfo* Info;                        // +4
     T* operator->() const { return Data; }
@@ -25,7 +25,7 @@ template <class T> struct CRetailVector {        // STLport vector (12 bytes; PD
 template <class T> struct CRetailList;
 struct CComponent;
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CComponentInterface {
     virtual void v000();
 };
@@ -36,11 +36,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponentInterface, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
     CDraggableInto(long id);                     // 0x0052CC50
 };
-struct CTextSlider : CDraggableInto {            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
+class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164
@@ -66,7 +66,7 @@ struct CSliderValue { unsigned char _pad[8]; unsigned long Selected; };         
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };           // +0x08
 struct CSliderTargetRef { CSliderTarget* Target; };                             // +0x00
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00();
     CSliderTargetRef* PTarget;                   // +0x04
 };

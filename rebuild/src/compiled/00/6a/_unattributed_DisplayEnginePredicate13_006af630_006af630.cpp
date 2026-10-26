@@ -16,7 +16,7 @@
 //
 // Build: cl /c /O2 /Oy /W3
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     // Only the vtable layout matters for byte parity: 13 unused virtual slots
     // (0x00..0x30) ahead of the bool predicate at slot 0x34.
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();

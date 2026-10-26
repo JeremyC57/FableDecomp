@@ -6,7 +6,7 @@ static int g_delete_calls = 0;
 static void* g_last_dtor_self = 0;
 static void* g_last_delete_self = 0;
 
-struct CLandscapeBackgroundPatch { char pad[8]; void* sub; };
+class CLandscapeBackgroundPatch { public: char pad[8]; void* sub; };
 
 void __fastcall Sub_dtor_00a01c10(void* subself) { g_dtor_calls++; g_last_dtor_self = subself; }
 void __cdecl op_delete(void* p) { g_delete_calls++; g_last_delete_self = p; }

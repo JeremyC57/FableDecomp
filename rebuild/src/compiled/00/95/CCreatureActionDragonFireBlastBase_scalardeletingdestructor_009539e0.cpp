@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonFireBlastBase {
+class CCreatureAction_DragonFireBlastBase { public:
     void* vftable;
 };
 

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct PointVector {
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     PointVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}

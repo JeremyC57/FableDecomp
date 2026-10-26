@@ -13,13 +13,13 @@
 // and the cutscene's plain initialisers precede the vtable store; the vectors' inline constructors (three zero words each)
 // follow it. One zero register serves every store.
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c
     CResource();                            // 0x009FBEC0
 };
 
-struct CDefinitionManager;
+class CDefinitionManager;
 struct __declspec(novtable) CDefClassBase : CResource {   // abstract: no vtable store of its own
     CDefinitionManager* PDefManager;        // +0x1c
     unsigned long GlobalIndex;              // +0x20 (not initialised here)
@@ -29,7 +29,7 @@ struct __declspec(novtable) CDefClassBase : CResource {   // abstract: no vtable
     CDefClassBase() : CResource(), PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 };
 
-struct CCharString;
+class CCharString;
 template <class T> struct CAllocProxy {     // STLport _STLP_alloc_proxy<T*, T, allocator<T> >: the end-of-storage pointer with its own constructor
     T* p;
     CAllocProxy(T* v) : p(v) { }
@@ -41,7 +41,7 @@ struct CCharStringVector {                  // std::vector<CCharString> (STLport
     CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CDefIndex {                          // a def index member with its own inline constructor (-1)
+class CDefIndex { public:                          // a def index member with its own inline constructor (-1)
     long Index;
     CDefIndex() : Index(-1) { }
 };
@@ -56,7 +56,7 @@ struct __declspec(novtable) CCutsceneDefBase : CDefClassBase {   // the scalar b
     unsigned char _pad37[5];                // +0x37..+0x3c
     CCutsceneDefBase() : m_value29(0), m_value2d(0), m_value31(0), m_flag36(0) { }
 };
-struct CCutsceneDef : CCutsceneDefBase {       // vtable 0x012FB6E0
+class CCutsceneDef : public CCutsceneDefBase { public:       // vtable 0x012FB6E0
     CCharStringVector Macro;                // +0x3c
     CCharStringVector SkipCond;             // +0x48
     CCharStringVector Lights;               // +0x54

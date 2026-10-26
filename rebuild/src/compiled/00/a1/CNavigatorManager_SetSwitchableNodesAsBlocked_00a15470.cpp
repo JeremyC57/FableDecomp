@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A15470, length 96 bytes.
 // Leaf: SetSwitchableNodesAsBlocked
 // Shape: `this` in edi, the id search with its `jmp` past the call, the navigator loop head aligned with `mov edi,edi`, `ret 10h`.
-struct CNavQuadTree {
+class CNavQuadTree { public:
     void BlockRange(long a, long b, long c);       // 0x00A79240
 };
 struct SMapNode_00a15470 {
@@ -39,7 +39,7 @@ struct SNavNode_00a15470 {
     INavigator_00a15470* m_pNavigator;             // +0x08
 };
 
-struct CNavigatorManager {
+class CNavigatorManager { public:
     unsigned char       _pad00[0x18];
     SNavNode_00a15470*  m_pNavigators;             // +0x18: the sentinel
     unsigned char       _pad1c[8];

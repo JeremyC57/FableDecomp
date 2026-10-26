@@ -1,10 +1,10 @@
 // behaviour test for 0x0045E863 COpinionPersonalityTraits::TransferBinaryOut
 #include <cstdio>
-struct CDataOutputStream {
+class CDataOutputStream { public:
     float out[16]; int n;
     void WriteFloat(float value) { out[n++] = value; }
 };
-struct COpinionPersonalityTraits {
+class COpinionPersonalityTraits { public:
     float BaseOffset, HeroStatScaling, VillageOpinionScaling, TimeScalingRunIn, TimeScalingRunOut,
           PeakScalingIfPos, PeakScalingIfNeg, PersistScalingIfPos, PersistScalingIfNeg;
     void TransferBinaryOut(CDataOutputStream& stream) const

@@ -8,15 +8,15 @@ static void Reset(int termAt) { g_log[0] = 0; g_frame = 0; g_termAt = termAt; }
 static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL %s [%s]\n", addr, what, g_log); return 1; }
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBountyHuntActivationChecker::Main branches on the bounty-hunt/competition state and catches up the attack counter
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static bool g_huntActive = false;
 static long g_day = 10;
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     CScriptThing(const char* n = "") : Name(n) { }
     C3DVector GetPos() const { C3DVector v; v.X = 5.0f; v.Y = v.Z = 0.0f; return v; }
 };
-struct CGame {
+class CGame { public:
     CScriptThing GetThingWithScriptName(const char* n) const { return CScriptThing(n); }
     CScriptThing CreateCreature(const char* def, const C3DVector& p, const char* name, bool) const
     { char x[96]; std::sprintf(x, "create %s %s %g", def, name, p.X); Log(x); return CScriptThing(name); }

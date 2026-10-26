@@ -8,7 +8,7 @@ struct SCollectionBlock_00be2680 {                 // 0x34 bytes of plain data a
     long m_words[13];
 };
 
-struct CLocalDetailObjectCollectionType {
+class CLocalDetailObjectCollectionType { public:
     unsigned char             _pad00[0x14];
     long                      MeshBankIndex;                // +0x14
     long                      m_18;                // +0x18

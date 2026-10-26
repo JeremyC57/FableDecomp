@@ -12,12 +12,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include "engine/CItem.h"
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
 };
-struct CInventoryItemDef : CIVCountedPointeeBase {
+class CInventoryItemDef : public CIVCountedPointeeBase { public:
 };
 struct CInventoryItemDefPointer {                  // CDefPointer<CInventoryItemDef const>
     CInventoryItemDef* Object;
@@ -33,7 +33,7 @@ struct CInventoryItemDefPointer {                  // CDefPointer<CInventoryItem
             Object->Delete();
     }
 };
-struct CDefClassBase : CIVCountedPointeeBase {
+class CDefClassBase : public CIVCountedPointeeBase { public:
     void GetSubDef(CInventoryItemDefPointer& out); // 0x005BADE1
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -60,7 +60,7 @@ struct CDefClassBasePointer {                      // CDefPointer<CDefClassBase 
     }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefClassBasePointer& out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -80,7 +80,7 @@ struct CGameComponentDefs {
     unsigned char       _pad00[0x10];
     CDefinitionManager* DefinitionManager;         // +0x10
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char       _pad00[0x24];
     CGameComponentDefs* Defs;                      // +0x24
 };

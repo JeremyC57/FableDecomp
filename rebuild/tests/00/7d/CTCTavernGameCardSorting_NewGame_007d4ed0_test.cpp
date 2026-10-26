@@ -1,6 +1,6 @@
 // Behaviour test for CTCTavernGameCardSorting::NewGame (0x007D4ED0): NumRounds = number of 72-byte card-order entries.
 #include <cstdio>
-struct CCardPositionsDef { unsigned char d[0x48]; };
+class CCardPositionsDef { public: unsigned char d[0x48]; };
 struct Def { CCardPositionsDef* first; CCardPositionsDef* last; };
 struct Game {
     long NumRounds; long NumCards; float Counter; int base;

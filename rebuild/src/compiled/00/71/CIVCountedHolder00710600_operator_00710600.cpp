@@ -8,7 +8,7 @@
 // hold the same object, releases the old one (`dec [ecx+4] ; jne`, virtual slot 1 at zero, then a
 // null store), re-reads other's pointer (the argument is a reference, so it is reloaded after the
 // virtual call), stores it and bumps the count. The vptr is not copied.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1: `call [eax+4]`
     unsigned long IVRefCount;              // +4

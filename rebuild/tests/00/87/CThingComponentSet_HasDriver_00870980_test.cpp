@@ -1,7 +1,7 @@
 #include <cstdio>
 // behaviour test for CThingComponentSet::HasDriver (0x00870980)
 #pragma pack(push, 1)
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { } };
 struct CEntry {
     CDefString Name;
     unsigned int DriverType;
@@ -23,13 +23,13 @@ inline CEntry* find_if(CEntry* first, CEntry* last, CIsDriverEntry pred)
 {
     return find_if_entries(first, last, pred, random_access_iterator_tag());
 }
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;
     signed char Size;
     T* begin() const { return Start; }
     T* end() const { return Start + Size; }
 };
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;
     bool HasDriver() const;
 };

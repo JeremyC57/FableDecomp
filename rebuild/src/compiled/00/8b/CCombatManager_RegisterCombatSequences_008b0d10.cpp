@@ -9,9 +9,9 @@
 // No engine header exists for CCombatManager, so the member map is a local model.
 // Shape: straight-line calls in source order; the names are implicit const char* -> CCharString conversions built in
 // the by-value parameter slot; the last call is a tail call (`lea ecx,[esi+4] ; pop esi ; jmp`).
-struct CThingCreatureBase;
-struct CCombatSequenceBase;
-struct CCharString {
+class CThingCreatureBase;
+class CCombatSequenceBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     CCharString(const CCharString& other);

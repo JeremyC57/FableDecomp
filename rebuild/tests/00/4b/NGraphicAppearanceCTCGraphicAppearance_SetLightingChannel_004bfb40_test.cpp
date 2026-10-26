@@ -37,14 +37,14 @@ template <class T> struct CRetailVector {
     T& operator[](unsigned int n) const { return *(begin() + n); }
     void push_back(T v) { if (!_M_start) { _M_start = _M_finish = (T*)std::malloc(sizeof(T) * 8); _M_end = _M_start + 8; } *_M_finish++ = v; }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* things[4]; int count;
     void GetAllCarriedThings(CRetailVector<CThing*>& out) const { for (int i = 0; i < count; ++i) out.push_back(things[i]); }
 };
-struct CEnginePrimitiveThemeChannelDesc { unsigned long Channel; };
+class CEnginePrimitiveThemeChannelDesc { public: unsigned long Channel; };
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     CThing*        ParentThing;
     CEnginePrimitiveThemeChannelDesc LightingChannel;
     unsigned char  UpdatePrimitiveReasons;

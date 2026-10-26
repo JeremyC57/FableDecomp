@@ -3,7 +3,7 @@
 struct CCategory { long Id; long GetCategoryIdentifier() { return Id; } };
 struct STrainableEntry { long Result; long Category; long Button; };
 static STrainableEntry g_Table[20 + 1];
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CCategory* Selected;
     CCategory* GetSelectedCategory() { return Selected; }
     long GetHeroTrainableAbilityType(long button);

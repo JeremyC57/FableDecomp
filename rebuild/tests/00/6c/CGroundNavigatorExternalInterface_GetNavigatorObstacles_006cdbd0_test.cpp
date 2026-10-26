@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 // behaviour test for 0x006CDBD0: exercises the same logic through a copy of the model (compiled separately from the source)
-struct C3DVector { float x, y, z; C3DVector() {} C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {} };
+class C3DVector { public: float x, y, z; C3DVector() {} C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {} };
 struct CTCBase_Retail { long m_kind; };
 struct STCEntry_Retail { long m_kind; CTCBase_Retail* m_pTC; };
 struct CTCMap_Retail {
@@ -20,7 +20,7 @@ struct CPhysicsBody_Retail {
 };
 struct CTCCreatureNavigation_Retail { CTCBase_Retail m_base; unsigned char m_obstacles[0x18]; float m_proximityForDirectApproach; };
 struct CDefClassBase_Retail;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned long m_presentBits[9]; CTCMap_Retail m_tcs; CPhysicsBody_Retail* m_pBody; CDefClassBase_Retail* PhysicsTC; unsigned char m_dead; float m_maxSpeed[4];
     virtual float GetMaxSpeed(long mode) { return m_maxSpeed[mode]; }
     template<class T> void GetInterface(T** ppOut, long kind) const
@@ -35,7 +35,7 @@ struct CThingCreatureBase {
         }
     }
 };
-struct CGroundNavigatorExternalInterface { void* __vftable; CThingCreatureBase* Creature; float Radius; };
+class CGroundNavigatorExternalInterface { public: void* __vftable; CThingCreatureBase* Creature; float Radius; };
 static STCEntry_Retail g_entries[3];
 static CTCBase_Retail g_tc3, g_tc9;
 static CTCCreatureNavigation_Retail g_nav;

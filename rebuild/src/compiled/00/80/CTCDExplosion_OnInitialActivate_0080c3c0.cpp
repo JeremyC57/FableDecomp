@@ -10,14 +10,14 @@
 // Layout: CTCDExplosion (Ego_r.pdb) to +0x3c; Emitters is a 12-byte STLport vector in retail (PDB 16), so
 // ExplosionEvolutionTimer/CurrentExplosionRing sit at +0x4c/+0x50. CExplosionDef offsets are the PDB's. Local model (no
 // engine header for CTCDExplosion).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
-struct CExplosionDef {
+class CExplosionDef { public:
     unsigned char _pad00[0x28];
     float Damage;                           // +0x28
     float ExplosionRadius;                  // +0x2c
@@ -29,14 +29,14 @@ struct CThingDef {
     bool GetSubDef(CDefPointer<CExplosionDef>* out) const;   // GetSubDef<CExplosionDef> @ 0x00751190
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CThingDef> PDef;            // +0x70
 };
 
 extern long g_GameFramesPerSecond;          // 0x01375550
 
-struct CTCDExplosion {
+class CTCDExplosion { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

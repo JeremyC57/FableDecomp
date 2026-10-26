@@ -15,14 +15,14 @@
 //   both); the members die in reverse order: the inline set destructor (erase, header reset, free), the out-of-line
 //   intelligent-pointer destructors, the inline def release with its zero store; the base destructor is called.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr 
     CThing* GetPItem() const;                   // 0x00A01B50
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CTCDParticleEmitter {                    // interface type 0x4b component
+class CTCDParticleEmitter { public:                    // interface type 0x4b component
     void FadeOrKill();                          // 0x006E05F0
 };
 struct CDefPointee {
@@ -81,13 +81,13 @@ struct CThingPointerSet {                       // STLport set<CThing*>: {header
             free(head);
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                         // 0x00686830
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CTCPhysicalShieldSpell : CTCBase {       // vtable 0x0126C53C
+class CTCPhysicalShieldSpell : public CTCBase { public:       // vtable 0x0126C53C
     CShieldDefPointer PDef;                     // +0x0c
     long  SpellLevel;                           // +0x10
     long  ShieldFadeOutTimer;                   // +0x14

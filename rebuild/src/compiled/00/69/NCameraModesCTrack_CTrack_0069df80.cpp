@@ -10,10 +10,10 @@
 // Shape: as CSnapToPoint (0x0056E330): root constructor, the intermediate base's surviving vtable store, the
 // inlined CIntelligentPointer converting constructor, the derived vtable, the flag from the initialiser
 // list; PTrack and the fraction are left alone. `ret 0Ch`.
-struct CGameCameraManager;
-struct CCameraModeDef;
-struct CBaseObject;
-struct CThing;
+class CGameCameraManager;
+class CCameraModeDef;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -27,11 +27,11 @@ struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointe
     CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 namespace NCameraModes {
 
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                  // +0x04..+0xa3 (retail; the PDB body is 0x24 bytes wider)
     CBase(CGameCameraManager* manager, const CCameraModeDef* def);   // 0x0084E420

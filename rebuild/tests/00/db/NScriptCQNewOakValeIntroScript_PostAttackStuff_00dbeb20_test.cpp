@@ -6,7 +6,7 @@ static char g_log[2048];
 static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0;
 static bool g_paused = false;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool MarkerAlive() const { return g_frames >= 2; }
     bool NearDad() const { return g_frames >= 5; }

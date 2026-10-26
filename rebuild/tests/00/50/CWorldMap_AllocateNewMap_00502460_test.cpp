@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CMapInfo { long Area[4]; bool Used; };
+class CMapInfo { public: long Area[4]; bool Used; };
 static CMapInfo g_store[8];
 struct CMapInfoArray
 {
@@ -8,8 +8,8 @@ struct CMapInfoArray
     CMapInfo& operator[](unsigned int n) { return *(_M_start + n); }
     void resize(unsigned int n) { for (unsigned int i = size(); i < n; ++i) g_store[i].Used = false; _M_finish = _M_start + n; }
 };
-struct CWorldMap
-{
+class CWorldMap
+{ public:
     CMapInfoArray Maps;
     long AllocateNewMap();
 };

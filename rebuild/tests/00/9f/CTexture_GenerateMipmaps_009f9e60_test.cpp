@@ -2,7 +2,7 @@
 
 typedef unsigned long ulong;
 
-struct CTexture {
+class CTexture { public:
     void* field0;
 };
 

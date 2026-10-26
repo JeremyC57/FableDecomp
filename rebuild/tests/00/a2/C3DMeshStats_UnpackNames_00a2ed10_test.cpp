@@ -4,7 +4,7 @@
 #include <cstring>
 static unsigned int Crc(const char* t) { unsigned int h = 7; while (*t) h = h * 31 + (unsigned char)*t++; return h; }
 struct CNames { char items[16][16]; int n; void push_back(const char* s) { std::strcpy(items[n++], s); } };
-struct CMap { unsigned int keys[8]; int n; int Count(unsigned int k) const { int c = 0; for (int i = 0; i < n; ++i) if (keys[i] == k) ++c; return c; } };
+class CMap { public: unsigned int keys[8]; int n; int Count(unsigned int k) const { int c = 0; for (int i = 0; i < n; ++i) if (keys[i] == k) ++c; return c; } };
 struct CStats {
     CMap HelperPoints, DummyObjects; char* PackedNames;
     void UnpackNames(CNames& names, bool dummyObjects, const char* prefix, bool once) const

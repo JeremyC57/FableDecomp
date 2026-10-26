@@ -30,7 +30,7 @@ template<class T>struct CScratchArray {
  T& operator[](unsigned i){return Begin[i];}
 };
 struct CScratchPage {int ScratchPool;CScratchArray<int> ResourceList;unsigned char* NextFreeBufferAddress;int FreeSpaceSize;bool EnableAutoRestore;};
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
  void* VTable;CScratchArray<CScratchResource> Resources;CScratchArray<CScratchPage> MemoryPages;
  CScratchArray<int> ScratchPools,FreeTexturePageSlots,FreeTextureSlots;bool ShutdownFlag;
  void FreeMemoryPage(int); //00f37030

@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CSteeringGroup;
-struct CSteeringAgent { unsigned char _pad_0x00[0x30]; CSteeringGroup* m_pGroup; CSteeringAgent* m_pNextInGroup; };
+class CSteeringAgent { public: unsigned char _pad_0x00[0x30]; CSteeringGroup* m_pGroup; CSteeringAgent* m_pNextInGroup; };
 struct CSteeringGroup {
     void* __vftable; long m_index; CSteeringAgent* m_pFirst;
     void AddAgent(CSteeringAgent* agent) { agent->m_pGroup = this; agent->m_pNextInGroup = m_pFirst; m_pFirst = agent; }

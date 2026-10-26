@@ -1,7 +1,7 @@
 // Behaviour test for 0x00A55D80 CMatrix3x4::InitialiseSkewedSymmetric: M*w must equal v x w for the rotation part, translation zero.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector m_row0, m_row1, m_row2, m_translation;
     void SetIdentity()
     {

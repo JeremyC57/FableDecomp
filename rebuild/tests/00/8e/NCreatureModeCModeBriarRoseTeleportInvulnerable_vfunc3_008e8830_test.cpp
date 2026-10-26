@@ -15,7 +15,7 @@
 
 extern long g_FrameTicks_01375550;
 struct CTCGraphicAppearance { void SetAlpha(unsigned char); }; // 004BFAC0
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     unsigned char BeforeAppearance[0x64-sizeof(CBaseObject)];
     CTCGraphicAppearance* PTCGraphicAppearance;
     unsigned char BeforeFlags[4];
@@ -23,8 +23,8 @@ struct CThing : CBaseObject {
     unsigned char BeforeKilled[0x91-0x70];
     unsigned char KilledFlags;
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const; // 006622A0
     bool SetCurrentAction(const CCreatureActionBase&); // 006644F0
 };
@@ -37,13 +37,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const; // 0x00a01b50
     void SetPItem(CBaseObject*);
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     T* Get() const { return static_cast<T*>(GetPItem()); }
 };
-struct CAnimateThing;
-struct CTCCreatureModeManager {
-    struct CModeBase {
+class CAnimateThing;
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
         virtual ~CModeBase() {}
         virtual unsigned long GetType() const = 0;
         virtual void AnimUpdate(CAnimateThing&) = 0;
@@ -62,15 +62,15 @@ struct CModeStandBase : CTCCreatureModeManager::CModeBase {
 // Layout: donor is 0xb4; retail is 0xa8 because its three STLport containers
 // are each four bytes smaller. Confirmed by 00693ef0 and 00858030 bodies.
 // This caller treats action state as opaque and invokes its genuine external cleanup.
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     unsigned char Opaque[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char CombatState[0x6c];
     virtual ~CCombatActionBase(); // 0x0062E900
 };
-struct CCreatureAction_BriarRoseForcePush : CCombatActionBase {
+class CCreatureAction_BriarRoseForcePush : public CCombatActionBase { public:
     CIntelligentPointer<CThingCreatureBase> PEnemy; // PDB129219, retail +0x114
     // CombatActionBase has a distinct PTarget at +0xa8 inside opaque CombatState.
     CCreatureAction_BriarRoseForcePush(CThingCreatureBase&,CThingCreatureBase&); // 008E8C50

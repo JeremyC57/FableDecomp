@@ -1,4 +1,4 @@
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     void* vftable;
 };
 

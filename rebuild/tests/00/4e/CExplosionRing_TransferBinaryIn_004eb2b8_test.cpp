@@ -7,7 +7,7 @@ typedef int S32;
 #endif
 // behaviour test: CExplosionRing::TransferBinaryIn reads NumExplosions, RingRadius, AngleOffset, SecondsBeforeSpawnNewRing in that order
 static int g_overflowCalls = 0;
-struct CDataInputStream {
+class CDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;
@@ -40,7 +40,7 @@ struct CDataInputStream {
     S32 ReadLong() { S32 v; Read(&v, 4); return v; }
     float ReadFloat() { float v; Read(&v, 4); return v; }
 };
-struct CExplosionRing {
+class CExplosionRing { public:
     float RingRadius;
     S32   NumExplosions;
     float AngleOffset;

@@ -19,7 +19,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 struct CUIDef : CDefVirtual, CRefCounted {
@@ -61,7 +61,7 @@ struct CComponentInterface {
     virtual CDefPointer_CUIDef LoadAndReturnDef() const;   // slot 108 (+0x1B0)
 };
 struct C2DVector { float X, Y; };
-struct CZoomingComponent : CComponentInterface {
+class CZoomingComponent : public CComponentInterface { public:
     unsigned char _pad_0x04[0x15c - 0x04];
     float     LastInputTime;                       // +0x15C
     C2DVector ZoomCenter;                          // +0x160

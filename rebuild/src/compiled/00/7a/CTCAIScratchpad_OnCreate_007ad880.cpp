@@ -8,14 +8,14 @@
 //   +0x0C..+0x7F mirrors the def's +0x28..+0x9B, PDef +0x80; the owner thing's base def at +0x70 (landed CTCLook::OnCreate).
 // Shape: one assignment per member in declaration order through the def pointer's inline operator-> (re-read after each
 //   out-of-line string assignment); WanderCentrePoint is the implicit C3DVector copy (`lea` of both sides).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 
-struct CAIScratchpadDef {
+class CAIScratchpadDef { public:
     unsigned char _base[0x28];                               // CDefClassBase part
     unsigned long ThankingPhrase;                            // +0x28
     unsigned long IgnoringPhrase;                            // +0x2c
@@ -52,20 +52,20 @@ struct CAIScratchpadDef {
     float         TargetingDistanceOffset;                   // +0x98
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CAIScratchpadDef>& out);    // 0x007AD9C0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PBaseDef;                                 // +0x70
 };
 
-struct CTCAIScratchpad {
+class CTCAIScratchpad { public:
     void*         __vftable;                                 // +0x00 (CTCBase)
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08

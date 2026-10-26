@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CThing;
+class CThing;
 static int g_released = 0;
 struct CBaseIntelligentPointer { CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) {} ~CBaseIntelligentPointer() {} };
 struct CCountBlock { long Count; void (__fastcall* Destroy)(void* object); void* Object; };
@@ -14,11 +14,11 @@ struct CCountedPointer {
     void Reset(void* object) { Object = object; Block = new CCountBlock; Block->Count = 1; Block->Destroy = DestroyAction; Block->Object = object; }
     ~CCountedPointer() { if (Block) { --Block->Count; if (Block->Count == 0) { Block->Destroy(Block->Object); delete Block; } } Object = 0; Block = 0; }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Flags; CCountedPointer PAction; CBaseIntelligentPointer PTarget;
     CBrainOutput() : Flags(0) {}
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     long ID;
     void* Clone() const { return (void*)this; }
     long GetActionID() const { return ID; }
@@ -26,19 +26,19 @@ struct CCreatureActionBase {
 static int g_yields = 0; static int g_freeAfter = 0; static int g_performYields = 0; static int g_stopAfter = 1000;
 static int g_stoppingCalls = 0; static unsigned long g_postedFlags = 0; static void* g_postedAction = 0;
 static CCreatureActionBase* g_replaceWith = 0; static int g_replaceAt = -1;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCreatureActionBase* CurrentAction;
     bool IsFreeToPerformAction(const CCreatureActionBase*) { return g_yields >= g_freeAfter; }
     bool IsPerformingAnyAction() { return CurrentAction != 0; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     CThing* Creature;
     void Yield();
     void SetBrainOutput(const CBrainOutput& output) { g_postedFlags = output.Flags; g_postedAction = output.PAction.Object; }
 };
 
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     bool IsStopping() { return ++g_stoppingCalls > g_stopAfter; }
     long Run(CCreatureActionBase* action, bool stop);

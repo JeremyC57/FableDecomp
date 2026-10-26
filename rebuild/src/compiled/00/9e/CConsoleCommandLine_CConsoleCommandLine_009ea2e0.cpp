@@ -17,12 +17,12 @@ public:
     CCharString(const CCharString& other);                      // 0x0099EC30
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();                                         // vtable 0x01231710
     CBaseClass();                                               // 0x0099A2D0
 };
 
-struct CConsoleCommandLine : CBaseClass {                       // vtable 0x0129C400 (16 bytes)
+class CConsoleCommandLine : public CBaseClass { public:                       // vtable 0x0129C400 (16 bytes)
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c

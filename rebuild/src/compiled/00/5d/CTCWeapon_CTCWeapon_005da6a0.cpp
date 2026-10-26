@@ -7,8 +7,8 @@
 // flattens the CTCBase base into pads, so a constructor needs the local model below (same offsets).
 // Shape: one zero register feeds the def pointer's inline constructor and the zero/false initialisers in
 // declaration order; AimingTime = -1 is assigned in the body (its immediate store comes last).
-struct CThing;
-struct CWeaponDef;
+class CThing;
+class CWeaponDef;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -23,7 +23,7 @@ struct CDefPointer_CWeaponDef {
     CDefPointer_CWeaponDef() : Object(0) { }
 };
 
-struct CTCWeapon : CTCBase_Calls {                          // vtable 0x012554FC
+class CTCWeapon : public CTCBase_Calls { public:                          // vtable 0x012554FC
     CDefPointer_CWeaponDef WeaponDef;                       // +0x0c
     bool                   ProjectileWeaponLoaded;          // +0x10
     long                   AimingTime;                      // +0x14

@@ -12,7 +12,7 @@ struct SomeOwner {
     SomeInner* f70;
 };
 
-struct CTCActionUseBase {
+class CTCActionUseBase { public:
     void OnCreate();
 };
 

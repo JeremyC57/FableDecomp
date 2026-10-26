@@ -2,8 +2,8 @@
 #include <cmath>
 // Behaviour test: CTCActivationReceptorBase::RemoveTrigger -- erases every occurrence of the trigger's parent thing from the Triggers vector, keeping the order of the rest.
 #define CHECK(c) if (!(c)) { std::printf("007f7750_TEST FAIL\n"); return 1; }
-struct CThing { int id; };
-struct CTCActivationTrigger { CThing* Parent; CThing* GetParentThing() { return Parent; } };
+class CThing { public: int id; };
+class CTCActivationTrigger { public: CThing* Parent; CThing* GetParentThing() { return Parent; } };
 static CThing** Find(CThing** first, CThing** last, CThing* val) { while (first != last && *first != val) ++first; return first; }
 static CThing** RemoveCopy(CThing** first, CThing** last, CThing** result, CThing* val)
 {
@@ -16,7 +16,7 @@ static CThing** Remove(CThing** first, CThing** last, CThing* val)
     CThing** i = first;
     return first == last ? first : RemoveCopy(++i, last, first, val);
 }
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     CThing* Items[8]; CThing** Finish;
     void RemoveTrigger(CTCActivationTrigger& trigger)
     {

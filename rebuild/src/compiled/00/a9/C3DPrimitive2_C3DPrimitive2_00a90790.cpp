@@ -14,12 +14,12 @@
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -35,8 +35,8 @@ template<class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DClothPrimitive;
-struct C3DMeshPartitionElement;
+class C3DClothPrimitive;
+class C3DMeshPartitionElement;
 struct CRetailAllocator { CRetailAllocator() {} };
 void __fastcall DestroyRange_CountedPointer_00a96940(CCountedPointer<C3DClothPrimitive>* first,
     CCountedPointer<C3DClothPrimitive>* last, const CRetailAllocator& allocator);   // 0x00A96940
@@ -47,7 +47,7 @@ inline void DestroyRange(CCountedPointer<C3DClothPrimitive>* first, CCountedPoin
 {
     DestroyRange_CountedPointer_00a96940(first, last, CRetailAllocator());
 }
-template<class T> struct CArray {                        // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                        // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     ~CArray()
     {
@@ -61,21 +61,21 @@ template<class T> struct scoped_ptr {
     ~scoped_ptr() { if (m_p) delete m_p; }
 };
 struct CPolymorphicResource { virtual ~CPolymorphicResource(); };
-namespace N3DPrimitive { struct CDeviceIndependent : CPolymorphicResource {}; }
-struct CVertexBufferWin32 : CPolymorphicResource {};
-struct CIndexBuffer : CPolymorphicResource {};
+namespace N3DPrimitive { class CDeviceIndependent : public CPolymorphicResource { public:}; }
+class CVertexBufferWin32 : public CPolymorphicResource { public:};
+class CIndexBuffer : public CPolymorphicResource { public:};
 struct CStaticBlock;
 struct CAnimatedBlock;
 
-struct C3DBoundingSphere { long m_x, m_y, m_z, m_radiusBits; };
-struct C3DTextureStages { long DiffuseTextureStage; long BumpTextureStage; bool UseBlankTextures; };
+class C3DBoundingSphere { public: long m_x, m_y, m_z, m_radiusBits; };
+class C3DTextureStages { public: long DiffuseTextureStage; long BumpTextureStage; bool UseBlankTextures; };
 
-struct CMovableResource {                                // vtable 0x0129B860
+class CMovableResource { public:                                // vtable 0x0129B860
     virtual ~CMovableResource() {}
     virtual void RelocateData();
 };
 
-struct C3DPrimitive2 : CMovableResource {
+class C3DPrimitive2 : public CMovableResource { public:
     long                                     MaterialIndex;               // +0x04
     long                                     RepeatingMeshReps;           // +0x08
     C3DBoundingSphere                        BoundingSphere;              // +0x0c

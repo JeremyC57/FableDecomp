@@ -4,9 +4,9 @@
 static int g_strings = 0;
 struct Interface { long nextTimer; long RegisterTimer() { return nextTimer++; } };
 static Interface g_interface;
-struct CTimer { long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
-struct CScriptThing { int id; CScriptThing(int i) : id(i) {} CScriptThing(const CScriptThing& o) : id(o.id) {} };
-struct CCharString { const char* p; CCharString() : p("") { ++g_strings; } };
+class CTimer { public: long Index; CTimer() : Index(g_interface.RegisterTimer()) {} };
+class CScriptThing { public: int id; CScriptThing(int i) : id(i) {} CScriptThing(const CScriptThing& o) : id(o.id) {} };
+class CCharString { public: const char* p; CCharString() : p("") { ++g_strings; } };
 struct Parent { Interface* Game; };
 struct Base { Interface* Game; CScriptThing Me; Base(const CScriptThing& t, Interface* g) : Game(g), Me(t) {} };
 struct Member : Base {

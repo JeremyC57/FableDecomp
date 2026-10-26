@@ -10,7 +10,7 @@
 // Shape: the landed CDoorToMothersTortureChamber::Main (0x00DEF1B0) with the loop condition not
 // negated: top-tested `while` duplicated at the bottom, parent and flag re-read every iteration, the
 // abort test returning straight out of the loop; `add esi,8` forms the thing's address.
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _body[8];
 };
 

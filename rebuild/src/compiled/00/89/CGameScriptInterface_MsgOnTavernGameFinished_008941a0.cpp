@@ -11,17 +11,17 @@
 // 0x008D04E0 (MsgIsKilledBy): `GetPItem() != 0 && IsThingOfType<CThing>(GetPItem())` with a zero type mask copied to a
 // local, which keeps the dead store of the second GetPItem result in the dead `winner` slot and the constant
 // `xor cl,cl ; jne`, then the third GetPItem as the target; `return a && b && c;` gives the full-register 0/1 exits.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CBaseObject* Item;
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };
     unsigned char _pad[0x6c];
     unsigned long ThingTypeFlags;                   // +0x6c
@@ -38,7 +38,7 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
 inline bool IS_THING_DEAD(CThing* const& thing) { return thing->m_dead; }
 template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing != 0 && !IS_THING_DEAD(thing); }
 
-struct CMessageEvent {
+class CMessageEvent { public:
     unsigned char _pad[0x48];
     CIntelligentPointer<CThing> PTarget;            // +0x48
     CThing* GetTarget() const
@@ -49,38 +49,38 @@ struct CMessageEvent {
         return target;
     }
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
-struct CMessageEventFilter_CanBeSeenOrHeard {
+class CMessageEventFilter_CanBeSeenOrHeard { public:
     long m_frame;
     long m_maxFrame;
     CMessageEventFilter_CanBeSeenOrHeard(long frame, long maxFrame) : m_frame(frame), m_maxFrame(maxFrame) { }
 };
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
 };
-struct CWorld {
+class CWorld { public:
     virtual void w000();
     unsigned char _pad04[0x5c];
     CMessageEventManager* PMessageEventManager_Data;   // +0x60
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void s000() const; virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; 
     virtual void s008() const; virtual void s009() const; virtual void s010() const; 
     virtual CThing* GetThing() const;              // slot 11 (+0x2c)
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual bool MsgOnTavernGameFinished(const CScriptThing& winner) const;
     CWorld* World;                                  // +0x04
     long GetCurrentWorldFrameForMessages() const;   // 0x006E7510

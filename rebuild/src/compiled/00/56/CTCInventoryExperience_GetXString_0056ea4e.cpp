@@ -14,7 +14,7 @@
 #pragma optimize("s", on)
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const wchar_t* text);              // 0x0099B6B0
     CWideString(const CWideString& other);         // 0x0099B720
@@ -24,7 +24,7 @@ CWideString __fastcall IntToWideString(long value);                             
 CWideString __fastcall GetXString();                                                // 0x005CC772
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right); // 0x0099BE70
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     CWideString GetXString(long count);
 };
 

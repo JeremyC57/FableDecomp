@@ -14,16 +14,16 @@
 // Leaf: CreateTitlePC
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
     ~CCharString();                                               // 0x0099EAE0
     CCharString& operator=(const char* text);                     // 0x0099EFE0
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                                   // 0x00429C15
@@ -31,7 +31,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -178,15 +178,15 @@ struct CComponent {
     virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);     // slot 144 (+0x240)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 }
 
-struct CTCInventoryStats {
+class CTCInventoryStats { public:
     void CreateTitlePC(const CWideString& text, NUISystem::CComponent* parent, bool statTitle);
 };
 

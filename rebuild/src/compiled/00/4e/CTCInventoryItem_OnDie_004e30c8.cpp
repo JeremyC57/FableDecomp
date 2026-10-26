@@ -5,8 +5,8 @@
 
 typedef unsigned int uint;
 
-struct CTCInventoryItem
-{
+class CTCInventoryItem
+{ public:
     void* vtbl;        // +0x00
     char  pad[0x54];   // +0x04 .. +0x57
     void* sub;         // +0x58

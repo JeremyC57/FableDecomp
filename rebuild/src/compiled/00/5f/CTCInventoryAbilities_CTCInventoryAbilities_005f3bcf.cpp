@@ -17,8 +17,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing;
-namespace NUISystem { struct CComponent; }
+class CThing;
+namespace NUISystem { class CComponent; }
 struct SAllocator { SAllocator() { } };
 
 template<class T> struct SAllocProxy { T* _M_data; SAllocProxy(T* p) : _M_data(p) {} };
@@ -38,8 +38,8 @@ template<class K, class V> struct CPODVectorMap {  // CVectorMap<K, V> (16 bytes
     bool              m_dirty;
     CPODVectorMap() : m_dirty(false) {}
 };
-struct CHeroAbilityDef;
-template<class T> struct CDefPointer {
+class CHeroAbilityDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
 };

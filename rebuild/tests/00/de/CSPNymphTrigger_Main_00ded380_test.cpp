@@ -3,13 +3,13 @@
 #include <cstring>
 
 static int g_stringDtors = 0, g_thingDtors = 0;
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) { }
     ~CCharString() { ++g_stringDtors; }
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:
     int id; C3DVector pos;
     CScriptThing(int i) : id(i) { pos.X = pos.Y = pos.Z = 0; }
     const C3DVector& GetPos() const { return pos; }
@@ -21,7 +21,7 @@ static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThi
     ++g_distanceCalls;
     return a.id == 1 && b.id == 2 && distance == 10.0f && g_distanceCalls > g_closeAfter;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero; int frames, creates; const char* defName; const char* scriptName; const C3DVector* where; bool flag;
     CGameScriptInterface() : hero(1), frames(0), creates(0) { }
     void NewScriptFrame() const { ++const_cast<CGameScriptInterface*>(this)->frames; }

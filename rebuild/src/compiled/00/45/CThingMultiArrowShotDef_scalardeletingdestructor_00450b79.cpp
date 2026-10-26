@@ -2,7 +2,7 @@
 extern const void* CThingMultiArrowShotDef_vftable;
 extern "C" void __cdecl FableFreeMem(void* p);
 
-struct CThingMultiArrowShotDef {
+class CThingMultiArrowShotDef { public:
     const void** vft;
 };
 

@@ -23,10 +23,10 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty
+template <class K, class V> class CKeyPairCompareLess { public:   // empty
 };
 
-template <class K, class V, class C> struct CVectorMap {   // STLport vector (12 bytes) + Compare + Dirty
+template <class K, class V, class C> class CVectorMap { public:   // STLport vector (12 bytes) + Compare + Dirty
     typedef pair<K, V> value_type;
     value_type*   m_first;                                 // +0x00
     value_type*   m_last;                                  // +0x04
@@ -42,7 +42,7 @@ template <class K, class V, class C> struct CVectorMap {   // STLport vector (12
     }
 };
 
-struct CTCInventoryAbilities {                             // retail layout (see above)
+class CTCInventoryAbilities { public:                             // retail layout (see above)
     unsigned char _pad_0x000[0x160];
     unsigned char Abilities[0x0c];                         // +0x160 vector<pair<long, CDefPointer<const CHeroAbilityDef> > >
     CVectorMap<long, EHeroAbility, CKeyPairCompareLess<long, EHeroAbility> > AbilityButtons;   // +0x16C

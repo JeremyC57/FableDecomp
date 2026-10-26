@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct C2DLineF { float X0, Y0, X1, Y1; };
+class C2DLineF { public: float X0, Y0, X1, Y1; };
 class CCounted {                    // stands in for the STLport containers: counts copies and assignments
 public:
     int Value;

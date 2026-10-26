@@ -102,10 +102,10 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessInventoryBase, StartedRepeatingMovemen
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CDefPointeeBase;
-struct CGraphicDataBank;
-struct CThing;
+class CCPPointerInfo;
+class CDefPointeeBase;
+class CGraphicDataBank;
+class CThing;
 
 #pragma pack(push, 1)
 struct CTCInventoryBase {
@@ -247,12 +247,12 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryBase, ParentMapNumber) == 0x140);
 #include <stddef.h>
 
 
-struct CBaseClass;
-struct CInputProcessManager;
-struct CLinkedListPosition;
+class CBaseClass;
+class CInputProcessManager;
+class CLinkedListPosition;
 
 #pragma pack(push, 1)
-struct CAInputProcess {
+class CAInputProcess { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
     CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data
@@ -282,11 +282,11 @@ FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Previous) == 0x
 #include <stddef.h>
 
 
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CMainGameComponent;
-struct CPlayer;
-struct CWorld;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CMainGameComponent;
+class CPlayer;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
@@ -325,7 +325,7 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessGameBase, PGamePlayerInterface) == 0x2
 
 
 #pragma pack(push, 1)
-struct CProcessedInput {
+class CProcessedInput { public:
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]
@@ -344,12 +344,12 @@ FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
 
 #endif // FABLE_ENGINE_CPROCESSEDINPUT_H
 
-struct CInputEvent; struct CEnginePrimitivePrepareInfo;
-struct CBaseClass {CBaseClass();virtual ~CBaseClass();};
+class CInputEvent; class CEnginePrimitivePrepareInfo;
+class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();public:virtual ~CBaseClassNonCopyable();};
-struct CLinkedListPosition {CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
-struct CInputProcessManager;
-struct CAInputProcess:CBaseClassNonCopyable {
+class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
+class CInputProcessManager;
+class CAInputProcess:public CBaseClassNonCopyable { public:
  CAInputProcess(); //PDBegorB74B80 genuine default
  CInputProcessManager* PPlayerInterface;
  CLinkedListPosition InputProcessListPos;
@@ -364,18 +364,18 @@ struct CAInputProcess:CBaseClassNonCopyable {
  virtual bool IsInputEventToBeSentToThisInputProcess(const CInputEvent&)const;
 };
 
-struct CGame;struct CMainGameComponentInit;
-struct CMainGameComponent { CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
+class CGame;class CMainGameComponentInit;
+class CMainGameComponent { public: CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
 namespace NInventory {
-struct CTCInventoryBase;
+class CTCInventoryBase;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union InventorySlot {
  void* Address;
  float(CTCInventoryBase::*RepeatDelay)()const;
 };
-struct CTCInventoryBase : ::CTCInventoryBase { CTCInventoryBase(CThing&); };
+class CTCInventoryBase : public ::CTCInventoryBase { public: CTCInventoryBase(CThing&); };
 }
-struct CInputProcessGameBaseInit {
+class CInputProcessGameBaseInit { public:
  CWorld* World;CPlayer* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;
  CInputProcessGameBaseInit(); //PDBfablewin1AC7CF0; no available header
 };
@@ -463,8 +463,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #define FABLE_STATIC_ASSERT(expression) \
 // END actual rebuild_abi.h
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -472,8 +472,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -576,14 +576,14 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -698,12 +698,12 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #endif // FABLE_ENGINE_CTHING_H
 // END actual engine/_quarantine/CThing.h
 #undef CThing
-struct CThing:DonorFixtureThing {protected:CThing(unsigned long);};
+class CThing:public DonorFixtureThing {protected:CThing(unsigned long);};
 CThing::CThing(unsigned long){}
 struct FixtureThing:CThing {FixtureThing():CThing(0){}};
-struct CGame { CGame(); }; //parameter-only fixture view; no engine fields accessed
+class CGame { public: CGame(); }; //parameter-only fixture view; no engine fields accessed
 CGame::CGame(){}
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
  CWideString InitialWorldName,InitialWorldHolySiteName;CCharString InitialQuestName;CWideString SaveGameName;
  CMainGameComponentInit();
 };

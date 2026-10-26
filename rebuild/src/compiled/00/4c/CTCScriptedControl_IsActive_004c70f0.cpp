@@ -5,7 +5,7 @@
 // 0x00667EB6, 0x0076CF0D. The +0x18 lock byte is the one SetLocked (0x00712C20) / ClearLocked (0x00712C80) write.
 // Shape: a 4-byte 0/1 result (`xor eax,eax` / `mov eax,1`) written `if (!locked && empty) return 0; return 1;` (two
 // separate ifs returning 1 then 0 fold the second test into `neg al ; sbb eax,eax ; inc eax`).
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0x18];
     unsigned char m_locked;                  // +0x18
     bool AreTasksEmpty();                    // 0x007122C0

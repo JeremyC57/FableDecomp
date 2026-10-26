@@ -5,7 +5,7 @@
 // Shape: a zero-initialised result local (ebx, cleared before the first call) ASSIGNED the call result in
 // each arm and returned at the end: both assignments become tail jumps (`jmp GetPItem`) and only the
 // empty case returns the zero register (GOTCHAS wave 24k).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item link
     virtual void v00();
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 
-struct CTCCrateStack {
+class CTCCrateStack { public:
     void*                   __vftable;                      // +0x00
     unsigned char           _pad04[8];                      // +0x04 CTCBase
     CBaseIntelligentPointer FirstCrate;                     // +0x0c CIntelligentPointer<CThing>

@@ -9,11 +9,11 @@ struct CLongVector {
         return *this;
     }
 };
-struct CTCBase { long m_baseState; };
+class CTCBase { public: long m_baseState; };
 struct CTCInventoryBase : CTCBase {
     void Copy(const CTCBase* other) { m_baseState = other->m_baseState; }
 };
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     CLongVector QuickAccessItems;
     void Copy(const CTCBase* other);
 };

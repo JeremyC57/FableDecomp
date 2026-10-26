@@ -13,7 +13,7 @@ namespace N_006e7b40 { struct CScriptThing {                              // 12 
     ~CScriptThing();                               // 0x004AA840
 }; } using N_006e7b40::CScriptThing;
 
-struct CScriptGameResourceObjectScriptedThingBase {   // 16 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:   // 16 bytes
     unsigned char _body[0x10];
     CScriptGameResourceObjectScriptedThingBase();     // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();    // 0x007E74D0

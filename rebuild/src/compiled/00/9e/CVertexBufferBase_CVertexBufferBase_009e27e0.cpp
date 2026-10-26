@@ -15,7 +15,7 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-struct CVertexCompressionParams {
+class CVertexCompressionParams { public:
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;           // +0x00..+0x0c
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;               // +0x10..+0x1c
     CVertexCompressionParams()

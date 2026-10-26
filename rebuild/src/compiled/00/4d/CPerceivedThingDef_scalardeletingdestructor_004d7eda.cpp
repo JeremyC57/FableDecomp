@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CPerceivedThingDef
-{
+class CPerceivedThingDef
+{ public:
     void* vftable;
 };
 extern void* const g_CPerceivedThingDef_vftable;

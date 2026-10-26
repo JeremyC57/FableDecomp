@@ -10,7 +10,7 @@ struct ErrSink {
 
 extern ErrSink g_errSink;
 
-struct CCreatureAction_FireMissileWeapon {
+class CCreatureAction_FireMissileWeapon { public:
     char pad[0xc];
     unsigned int counter; // +0xc
 };

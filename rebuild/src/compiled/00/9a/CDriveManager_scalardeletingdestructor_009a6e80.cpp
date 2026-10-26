@@ -1,4 +1,4 @@
-struct CDriveManager {
+class CDriveManager { public:
     void* vftable;
 };
 

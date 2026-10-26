@@ -11,7 +11,7 @@
 // Shape: the 12-byte stack record is a pair built by an inline constructor: the key word is stored first, then the
 // CIntelligentPointer copy constructor (base ctor, the source's GetPItem, the vtable store scheduled after that call,
 // SetPItem); the record is passed by address to push_back and destroyed before the flag store (inner scope).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

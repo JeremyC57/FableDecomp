@@ -12,7 +12,7 @@
 // Shape: two index loops over `size()` re-read every pass (the 24-byte element count by reciprocal multiply, signed
 // difference compared unsigned); the class element address is formed from the re-read first pointer and a 0x18 stride
 // register; the sub-def table getter is called twice (test, then the call's `this`).
-template <class T> struct CArray {                 // retail 12 bytes
+template <class T> class CArray { public:                 // retail 12 bytes
     T* First;
     T* Last;
     T* End;
@@ -20,12 +20,12 @@ template <class T> struct CArray {                 // retail 12 bytes
     T& operator[](unsigned long i) { return First[i]; }
     void DeallocateUnusedMemory();
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     void RemoveUnusedMemory();                     // 0x009E5350
 };
 struct CSubDefInfo { unsigned long a, b; };        // CDefClassBase::CSubDefInfo
 struct SSubDefEntry { unsigned long Key; CSubDefInfo Info; };   // pair<unsigned long, CSubDefInfo>, 12 bytes
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

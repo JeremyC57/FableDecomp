@@ -1,4 +1,4 @@
-struct CTCAIScratchpad {
+class CTCAIScratchpad { public:
     void* vftable;
 };
 

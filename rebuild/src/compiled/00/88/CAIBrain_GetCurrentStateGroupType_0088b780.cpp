@@ -15,7 +15,7 @@ struct CAIStateGroup {
     unsigned char f10;                      // +0x10
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     char pad[0x38];
     CAIStateGroup* f38;                     // +0x38
 };

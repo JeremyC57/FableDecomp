@@ -12,20 +12,20 @@
 //          implicit CCharString conversion temporaries whose calls tail-merge.
 // Layout: the base follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally so the member functions can be declared;
 //          CWorld +0x1c time object (descriptive).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CAnimationEntry;
-struct CThing {
+class CAnimationEntry;
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -43,24 +43,24 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool b);   // 0x00662FA0
     void GetSleepTimes(long* wakeTime, long* sleepTime);    // 0x00833390
 };
-struct CTCLook {                                // interface 0x43
+class CTCLook { public:                                // interface 0x43
     void TrackNearestInterestingThing(bool b);  // 0x00753840
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingAICreature* creature, CAnimationEntry* animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00842570
@@ -68,12 +68,12 @@ struct CCreatureAction_PlayAnimation : CCreatureActionBase {
 struct CGameTime {
     bool IsTimeOfDayInRange(long start, long end);  // 0x006BB390
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CGameTime* PTime;                           // +0x1c
     CGameTime* GetPTime() const { return PTime; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
@@ -87,7 +87,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
     return seed % range;
 }
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_RUNNING = 4 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

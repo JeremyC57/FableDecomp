@@ -11,24 +11,24 @@
 //   bRecovering +0x30.
 // Shape: the frame count is computed before the base call (VC7.1 hoists the fild above the frame set-up); PCreature is held in
 //   edi for the suspend and the SetCurrentAction receiver and re-read for the action's ctor argument.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
-struct CThingCreatureBase : CThingAnimatable {
+class CThingCreatureBase : public CThingAnimatable { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCreatureAction_TrollVulnerableInto : CCombatActionBase {
+class CCreatureAction_TrollVulnerableInto : public CCombatActionBase { public:
     CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner);   // 0x008E4420
 };
 

@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     CTCInGameMenu* Ctor(void* parent);   // this-call member; returns this
 };
 CTCInGameMenu* __fastcall CTCInGameMenu_Alloc(void* parent /*ecx*/)

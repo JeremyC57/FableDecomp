@@ -1,11 +1,11 @@
 #pragma optimize("s",on)
 struct CMember { int x; };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Persist(CMember* m);  // __fastcall: ecx=this, stack=m
 };
 
-struct CGuildMasterDef {
+class CGuildMasterDef { public:
     unsigned char pad0[0x28];
     CMember m28;
     CMember m2c;

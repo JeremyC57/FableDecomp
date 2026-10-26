@@ -12,7 +12,7 @@
 // Shape: the line is a by-value temporary from the landed family's __forceinline GetCurrentText(); the scroll test is
 //          `GetLength() >= 25` stored straight into ScrollText (`setge`) before the temporary dies, then re-read; the
 //          duration is `(float)GameTurnDuration / g_FrameRate` (`fild ; fidiv`).
-struct CTCBase;
+class CTCBase;
 class CWideStringText {                            // the message text as stored (converted by 0x0099B720)
 public:
     void* PStringData;
@@ -30,7 +30,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
@@ -49,15 +49,15 @@ struct CThing {
         return false;
     }
 };
-struct CTCEmoteIcon {                              // interface 0x45
+class CTCEmoteIcon { public:                              // interface 0x45
     void SetEmoteText(long style, const CWideString& text, float seconds, float fade);   // 0x0071AC70
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*   __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
 };
 extern long g_FrameRate;                           // 0x01375550
-struct CSubtitledMessage {                         // retail 0x44
+class CSubtitledMessage { public:                         // retail 0x44
     unsigned char   _pad00[0x0c];
     CWideStringText Text;                          // +0x0C
     unsigned char   _pad10[0x44 - 0x10];

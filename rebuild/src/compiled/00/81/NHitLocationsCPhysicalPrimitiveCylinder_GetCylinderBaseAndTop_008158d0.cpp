@@ -21,7 +21,7 @@
 //   C3DVector has a member-wise copy constructor; both branches end in the same `top = ...` store, which VC7.1 tail-merges.
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -29,7 +29,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
-struct CRightHandedSet {                                // 24 bytes (Ego_r.pdb)
+class CRightHandedSet { public:                                // 24 bytes (Ego_r.pdb)
     C3DVector Up;                                       // +0x00
     C3DVector Forward;                                  // +0x0c
     CRightHandedSet() {}
@@ -39,7 +39,7 @@ public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString {                                     // Ego_r.pdb: long TablePos
+class CDefString { public:                                     // Ego_r.pdb: long TablePos
     long TablePos;
     bool operator==(const char* text) const;            // 0x005B3440
 };

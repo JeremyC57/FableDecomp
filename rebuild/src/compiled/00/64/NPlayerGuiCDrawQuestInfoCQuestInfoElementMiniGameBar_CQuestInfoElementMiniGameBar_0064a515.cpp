@@ -16,7 +16,7 @@
 // destructor otherwise re-stores 0x0125A2B4 before the tail jump).
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 
 namespace NPlayerGui {
 
@@ -36,7 +36,7 @@ struct CRetailLongVector {                         // vector<long>: three words,
     ~CRetailLongVector() { if (m_pFirst) free(m_pFirst); }
 };
 
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     void RemoveElement(long id);                   // 0x00647357
 };
 

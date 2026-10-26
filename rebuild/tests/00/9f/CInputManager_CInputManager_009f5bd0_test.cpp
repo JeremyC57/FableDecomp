@@ -69,10 +69,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    AccessType[0x4];                        // +0x04 FileAccessType
     long             Position;                               // +0x08
@@ -105,8 +105,8 @@ FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -114,8 +114,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -217,13 +217,13 @@ extern CWideString g_CAFileCurrentPath_013BCA10;
 #else
 #define NATIVE_ONLY(x)
 #endif
-struct CInputEvent;
-struct CInputEventPackage;
-struct CMouse;
-struct CKeyboard;
-struct CJoystick;
+class CInputEvent;
+class CInputEventPackage;
+class CMouse;
+class CKeyboard;
+class CJoystick;
 struct CCountedJoystick;
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass(); // 0099A2D0; native vtable01231710
     virtual ~CBaseClass();
 };
@@ -231,10 +231,10 @@ template<class T> struct NativeAllocator {};
 template<class T> struct NativeStorageEnd:NativeAllocator<T> { T* Value; NativeStorageEnd(T* p):Value(p){} };
 template<class T> struct NativeVector { T* Start; T* Finish; NativeStorageEnd<T> End; NativeVector():Start(0),Finish(0),End(Start){} T* erase(T*,T*); void clear(){erase(Start,Finish);} struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };
 template<class T> struct NativeScoped { T* ptr; NativeScoped():ptr(0){} T* get() const {return ptr;} T& operator*() const {return *ptr;} T* operator->() const{return ptr;} };
-struct CChecksum { int Checksum1,Checksum2,Checksum3,Checksum4; CChecksum():Checksum1(0),Checksum2(0),Checksum3(0),Checksum4(0){} };
+class CChecksum { public: int Checksum1,Checksum2,Checksum3,Checksum4; CChecksum():Checksum1(0),Checksum2(0),Checksum3(0),Checksum4(0){} };
 enum EInputEventType { INPUT_NULL, INPUT_KEY_PRESSED, INPUT_KEY_HELD, INPUT_KEY_RELEASED };
 enum EInputKey { INPUT_KEY_NONE };
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char Data[32]; // actual UInputEventData; no member interpreted in this method
     int DeviceType;
     int DeviceNumber;
@@ -249,8 +249,8 @@ struct CInputEvent {
     unsigned long GetChecksum() const; // 00A04160
 };
 
-struct CASuspendableProcess;
-struct CFileInformation;
+class CASuspendableProcess;
+class CFileInformation;
 enum FileAccessType { FILE_READ=1,FILE_WRITE=2 };
 #ifdef _MSC_VER
 #define NATIVE_NOVTABLE __declspec(novtable)
@@ -276,7 +276,7 @@ struct NATIVE_NOVTABLE CAFile : CBaseClassNonCopyable {
     virtual CAFile* Clone()const=0;
     virtual CFileInformation GetFileInformation()=0;
 };
-struct CDiskFileWin32 : CAFile {
+class CDiskFileWin32 : public CAFile { public:
     FileAccessType AccessType;
     int Position,Length;
     void* WinFileHandle;
@@ -299,8 +299,8 @@ struct CDiskFileWin32 : CAFile {
     virtual CFileInformation GetFileInformation();
 };
 NATIVE_ONLY(sizeof(CDiskFileWin32)==sizeof(DonorCDiskFileWin32));
-struct CInputManagerInit { bool UseMouse,UseJoystick,UseKeyboard; };
-struct CInputManager : CBaseClass {
+class CInputManagerInit { public: bool UseMouse,UseJoystick,UseKeyboard; };
+class CInputManager : public CBaseClass { public:
     CInputManager(const CInputManagerInit&,bool);
     NativeVector<CInputEvent> ProcessedEvents;
     NativeVector<CInputEvent> EventStore;
@@ -352,7 +352,7 @@ CWideString::CWideString():storage_(0){++stringCalls;} CWideString::~CWideString
 CWideString::CWideString(const CWideString& s):storage_(s.storage_){}
 CWideString::operator const wchar_t*()const{return storage_?storage_->text:0;}
 struct NativeDate {int Year;unsigned int Month,Day,Hour,Minute,Second,Millisecond;};
-struct CFileInformation {NativeDate CreationTime,LastAccessTime,LastWriteTime;bool ReadOnly;};
+class CFileInformation { public:NativeDate CreationTime,LastAccessTime,LastWriteTime;bool ReadOnly;};
 CDiskFileWin32::~CDiskFileWin32(){}
 void CDiskFileWin32::Open(const CWideString&,FileAccessType,unsigned long){Opened=true;}
 void CDiskFileWin32::Close(){Opened=false;} void CDiskFileWin32::Read(void*,long,CASuspendableProcess*){} void CDiskFileWin32::Write(const void*,long,CASuspendableProcess*){}

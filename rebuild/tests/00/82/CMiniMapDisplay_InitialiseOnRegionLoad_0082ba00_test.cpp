@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <string.h>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* text, long) : p(text) { }
     ~CCharString() { }
@@ -12,20 +12,20 @@ struct CCharStringLongMap {
     SGraphicNode* find(const CCharString& key) { for (int i = 1; i < 4; ++i) if (!strcmp(g_nodes[i].Key.p, key.p)) return &g_nodes[i]; return _M_header; }
     SGraphicNode* end() const { return _M_header; }
 };
-struct CPlayerGuiDef { CCharStringLongMap MiniMapGraphics; };
+class CPlayerGuiDef { public: CCharStringLongMap MiniMapGraphics; };
 static CPlayerGuiDef g_def;
 CPlayerGuiDef* PeekGuiDef() { return &g_def; }
-struct CWorldMap { int x; };
+class CWorldMap { public: int x; };
 static CWorldMap g_map;
-struct CWorld { CWorldMap* PeekWorldMap() { return &g_map; } };
+class CWorld { public: CWorldMap* PeekWorldMap() { return &g_map; } };
 static bool g_persistent = false;
-struct CGame { bool IsLevelPersistent() { return g_persistent; } CWorld* World; };
+class CGame { public: bool IsLevelPersistent() { return g_persistent; } CWorld* World; };
 static CWorld g_world; static CGame g_game = { &g_world };
 static CGame* g_pGame = &g_game;
-struct CRegion { CCharString MiniMapGraphic; };
+class CRegion { public: CCharString MiniMapGraphic; };
 static int g_init = 0; static CWorldMap* g_sizeMap = 0; static CRegion* g_sizeRegion = 0;
 struct CRegionMinimap { void Initialise() { ++g_init; } void InitialiseRegionMinimapSize(CWorldMap* m, CRegion* r) { g_sizeMap = m; g_sizeRegion = r; } };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     long MiniMapGraphic;
     bool MiniMapIsPrisonCourtyard1, MiniMapIsPrisonCourtyard2, MiniMapIsHeadsmansHillNorth, MiniMapIsHeadsmansHillSouth;
     CRegionMinimap RegionMinimap; CRegion* PRegion; bool UpdateRequired;

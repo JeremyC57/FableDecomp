@@ -1,6 +1,6 @@
 
 #include "engine/CAIStateGroup_MinionKidCalledToMother.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CMessageEvent;
+class CMessageEvent;
 struct CAIStateGroup_MinionKidCalledToMother_Methods : CAIStateGroup_MinionKidCalledToMother {
     CMessageEvent* FindCallHomeEvent();
     bool IsRunnable();

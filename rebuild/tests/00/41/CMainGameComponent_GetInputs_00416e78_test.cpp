@@ -24,9 +24,9 @@ static int fails = 0;
 //   read through an inline GetPlayerInterface() accessor, which keeps retail's top-tested event loop.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CMemoryBuffer { };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -35,15 +35,15 @@ struct CGameEvent : CMemoryBuffer {
     bool          Replacement;                     // +0x27
     CGameEvent() : Player(-1), Valid(false) { }
 };
-struct CChecksum {
+class CChecksum { public:
     unsigned long WorldChecksum;
     unsigned long Frame;
     long          InputChecksum;
     unsigned long Spare;
     CChecksum(unsigned long world, unsigned long frame, long input) : WorldChecksum(world), Frame(frame), InputChecksum(input), Spare(0) { }
 };
-struct CRightHandedSet { C3DVector Up, Forward; };   // 24 bytes (Ego_r.pdb CCamera RHSet +0x0c..+0x24)
-struct CCamera {                                   // 56 bytes (Ego_r.pdb)
+class CRightHandedSet { public: C3DVector Up, Forward; };   // 24 bytes (Ego_r.pdb CCamera RHSet +0x0c..+0x24)
+class CCamera { public:                                   // 56 bytes (Ego_r.pdb)
     C3DVector       WorldPosition;                 // +0x00
     CRightHandedSet RHSet;                         // +0x0c
     bool            HeightLocked;                  // +0x24
@@ -61,18 +61,18 @@ struct CCameraOwner {
     unsigned char  _pad[0x34];
     CCameraSource* Camera;                         // +0x34
 };
-struct CInputManager {
+class CInputManager { public:
     virtual void v00(); virtual void v01();
     virtual void Update();                         // slot 2
     void UpdateChecksum(long channel, CChecksum* checksum);   // 0x009F4A90
 };
 extern CInputManager* g_pInputManager;             // 0x013B8388
-struct CSystemManager {
+class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 long GFGetPreMainMemoryUsed();                     // 0x0049D870
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     virtual void v00();
     virtual bool PopGameEvent(CGameEvent* event);  // slot 1
     void BeginEventPoll();                         // 0x004457F0

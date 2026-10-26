@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void* vftable;
     int destroyed;
 };

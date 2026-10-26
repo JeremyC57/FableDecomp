@@ -2,7 +2,7 @@
 
 /* Deterministic stand-in: the real thunk is a jmp to an engine routine,
  * so the test only exercises the tail-call shape via a local mock. */
-struct CSpecialAbilitiesCreatureTintDef { int v; };
+class CSpecialAbilitiesCreatureTintDef { public: int v; };
 
 static int g_called = 0;
 static void copy_impl(CSpecialAbilitiesCreatureTintDef* d,

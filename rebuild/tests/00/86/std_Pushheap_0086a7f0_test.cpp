@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for 0x0086a7f0: _Push_heap over a 16-byte pair<long, CRandomAppearanceMorph::CSkeletalMorph> keyed max-heap.
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorph { long GroupID; CDefString Name; bool AllowVariation; };
 typedef CSkeletalMorph Payload;
 #define SETPAY(p,i) ((p).GroupID = (i), (p).Name.TablePos = 10 * (i), (p).AllowVariation = ((i) & 1) != 0)
 #define CHKPAY(p,i) ((p).GroupID == (i) && (p).Name.TablePos == 10 * (i) && (p).AllowVariation == (((i) & 1) != 0))
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

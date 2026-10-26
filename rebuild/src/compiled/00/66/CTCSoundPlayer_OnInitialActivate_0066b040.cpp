@@ -18,7 +18,7 @@ struct CDefPointee {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -53,12 +53,12 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<CSoundPlayerDef>* out
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char          _pad[0x70];
     CDefPointer<CThingDef> PDef;                            // +0x70
 };
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04
     bool          ToBeRemoved;                              // +0x08

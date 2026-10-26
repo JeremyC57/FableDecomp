@@ -4,7 +4,7 @@
 static int g_destroyed = 0;
 static void Destroy(void*) { ++g_destroyed; }
 struct Info { long refs; void (*destroy)(void*); void* obj; };
-struct CScriptThing {
+class CScriptThing { public:
     void* Data; Info* PInfo;
     CScriptThing() : Data(0), PInfo(0) { }
     ~CScriptThing() { Release(); }

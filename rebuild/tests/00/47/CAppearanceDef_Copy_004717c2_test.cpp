@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CAppearanceDef { int dummy; };
+class CAppearanceDef { public: int dummy; };
 
 /* Stub the forwarded-to implementation so the test links & runs. */
 extern "C" void mark_called(void);

@@ -10,40 +10,40 @@
 // Shape: the three filters are named locals (frame: HasTC +4, CanCollide +8, Bind3 +0x10, sphere +0x1c) and the Bind3 a
 //   temporary in the call. C3DVector needs its memberwise user copy constructor: the implicit copy forms `lea eax,[esi+0Ch]`
 //   and reads through it, the user copy reads [esi+0Ch..14h] directly like retail.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct CThing;
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class CThing;
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-struct CTCPhysicsBase;
-struct CThingFilter_CanCollideOrInteractWithThing {
+class CTCPhysicsBase;
+class CThingFilter_CanCollideOrInteractWithThing { public:
     CTCPhysicsBase* TCPhysics;                          // +0x00
     bool            ExcludeCreatures;                   // +0x04
     CThingFilter_CanCollideOrInteractWithThing(CTCPhysicsBase* physics, bool excludeCreatures)
         : TCPhysics(physics), ExcludeCreatures(excludeCreatures) { }
 };
-struct CThingFilter_OverlappingSphere {
+class CThingFilter_OverlappingSphere { public:
     C3DVector SpherePos;                                // +0x00
     float     Radius;                                   // +0x0c
     CThingFilter_OverlappingSphere(const C3DVector& pos, float radius) : SpherePos(pos), Radius(radius) { }
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                          // ETCInterfaceType
     CThingFilter_HasTC(long type) : Type(type) { }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* F1;
     const B* F2;
     const C* F3;
     CFilter_Bind3(const A& a, const B& b, const C& c) : F1(&a), F2(&b), F3(&c) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class T, class TContainer, class TFilter>
     void GetAllThingsInRoughArea(const C2DBoxI& box, const TFilter& filter, TContainer& out) const;   // 0x008E60D0
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

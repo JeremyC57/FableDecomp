@@ -7,7 +7,7 @@ static int g_a = 0, g_b = 0;
 struct Tgt { void method(int duration, int b); };
 void Tgt::method(int duration, int b){ g_this = this; g_a = duration; g_b = b; }
 
-struct CWorld { char pad[0x18]; char* PEnvironment; };
+class CWorld { public: char pad[0x18]; char* PEnvironment; };
 
 void __fastcall CGameScriptInterface_RadialBlurFadeOut(CGameScriptInterface* self, int edx, int duration, int b)
 {

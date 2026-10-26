@@ -14,7 +14,7 @@ struct CBase_0099a300 {
     ~CBase_0099a300();                          // 0x0099A300
 };
 
-struct CGameJoystickManager : CBase_0099a300 {
+class CGameJoystickManager : public CBase_0099a300 { public:
     virtual ~CGameJoystickManager() { }
 };
 

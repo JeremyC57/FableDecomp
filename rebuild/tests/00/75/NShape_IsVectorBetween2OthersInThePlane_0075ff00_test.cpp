@@ -5,7 +5,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }   // test only

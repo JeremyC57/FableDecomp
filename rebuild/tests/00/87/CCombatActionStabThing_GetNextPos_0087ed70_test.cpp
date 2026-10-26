@@ -57,8 +57,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -66,8 +66,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -162,11 +162,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -259,10 +259,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -389,7 +389,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 
 
 #pragma pack(push, 1)
-struct CCombatAction_StabThing {
+class CCombatAction_StabThing { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -490,10 +490,10 @@ FABLE_STATIC_ASSERT(offsetof(CCombatAction_StabThing, StabPos_Z) == 0x134);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             sub;                                    // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -543,14 +543,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -624,15 +624,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
-struct CCreatureInteraction;
-struct CDefPointeeBase;
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CCPPointerInfo;
+class CCreatureActionBase;
+class CCreatureInteraction;
+class CDefPointeeBase;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 
 #pragma pack(push, 1)
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08
@@ -769,7 +769,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureBase, IsShowingDebugInfo) == 0x186);
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector {float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}};
+class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}};
 struct Creature;struct PhysicsView;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union PhysicsSlot {void* Address;void(PhysicsView::*SetFacingAngleXY)(float);};
@@ -777,7 +777,7 @@ union PhysicsSlot {void* Address;void(PhysicsView::*SetFacingAngleXY)(float);};
 FABLE_STATIC_ASSERT(sizeof(PhysicsSlot)==4);
 #endif
 struct PhysicsView:CTCPhysicsBase {__forceinline void SetFacingAngleXY(const float& angle){(this->*reinterpret_cast<PhysicsSlot*>(__vftable)[66].SetFacingAngleXY)(angle);}}; //slot66=00723760 nativeCTCPhysicsStandard
-struct CTCStealth {C3DVector GetPositionToMoveToForStabOn(Creature& target,float& angle)const;}; //00746EC0
+class CTCStealth { public:C3DVector GetPositionToMoveToForStabOn(Creature& target,float& angle)const;}; //00746EC0
 struct InterfaceEntry {long Type;CTCStealth* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type)const;}; //004365B0 const lower_bound
 struct Creature {
@@ -788,7 +788,7 @@ struct Creature {
 };
 struct CBaseObjectPointer{void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer{virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50
-struct CCombatAction_StabThing {
+class CCombatAction_StabThing { public:
  virtual ~CCombatAction_StabThing();unsigned char _baseState[4];CBaseIntelligentPointer PCreature;unsigned char _beforeFrame[0xc];long FramesRunning;unsigned char _beforeTarget[0x88];CBaseIntelligentPointer PTarget;
  C3DVector GetNextPos()const;
 };

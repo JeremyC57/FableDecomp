@@ -16,8 +16,8 @@
 // model is local. CTCVillage::PCriminalHandler +0xdc as in the landed 0x009331E0.
 #include <string.h>
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -82,10 +82,10 @@ struct CBasicStringChar {                       // CBasicString<char>
     bool UseFastExtend : 1;
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData { CBasicStringChar Data; long NoRefs; };
+class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                             // 0x0099EAE0
     __forceinline bool operator==(const char* text) const
@@ -99,14 +99,14 @@ struct CCharString {
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad0[0xdc];
     CBaseIntelligentPointer PCriminalHandler;   // +0xdc the guard assigned to the current criminal
     bool IsHeroCriminal();                      // 0x0065BFCE
@@ -115,18 +115,18 @@ struct CTCVillage {
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
     bool CanSeeOrSmellPerceivedThing() const;   // 0x00661600
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -18,7 +18,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 static inline void ClampMin(long& value, long minimum)
 {
@@ -37,7 +37,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -64,26 +64,26 @@ struct CLongVector {                                 // retail std::vector<long>
     const long& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0xAC];
     CLongVector   RenownLevelCosts;                  // +0xAC (PDB +0xB4)
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
 };
 
-struct CTCOverheadDisplay {
+class CTCOverheadDisplay { public:
     void AddRenownEntry(float renown);               // 0x007B7CD0
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void SetRenownChange_00437920(long renown);      // 0x00437920
 };
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x68];

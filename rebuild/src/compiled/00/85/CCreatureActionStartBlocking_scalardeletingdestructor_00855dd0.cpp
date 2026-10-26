@@ -1,4 +1,4 @@
-struct CCreatureAction_StartBlocking {
+class CCreatureAction_StartBlocking { public:
     void* vftable;
 };
 

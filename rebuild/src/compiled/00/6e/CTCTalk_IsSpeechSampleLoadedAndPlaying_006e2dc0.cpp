@@ -40,13 +40,13 @@ public:
 struct CSpeechEmitter {
     bool IsSampleLoadedAndPlaying(unsigned long sampleID);   // 0x0066AE60
 };
-struct CWorld {
+class CWorld { public:
     long GetFrame();                            // 0x00416225
 };
 extern CWorld* g_pWorld;                        // 0x013B86A0
 extern long g_FrameRate;                        // 0x01375550
 
-struct CTCTalk {
+class CTCTalk { public:
     void*         __vfptr;                      // +0x00 (CTCBase)
     const CThing* ParentThing;                  // +0x04
     unsigned char _base08[4];

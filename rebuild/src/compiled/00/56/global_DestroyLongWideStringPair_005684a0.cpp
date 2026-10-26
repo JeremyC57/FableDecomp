@@ -7,7 +7,7 @@
 // non-trivial part of the implicit element destructor.
 // Callees: CWideString::~CWideString @ 0x0099B510.
 // Shape: guarded do-while, `last` in edi, `lea ecx,[esi+4]` for the second member.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                         // 0x0099B510
 };

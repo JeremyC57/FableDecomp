@@ -3,7 +3,7 @@
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct CMeshInfo { long Index; float SizeX; unsigned char PrimaryMesh : 1; };
-struct CSortPrimaryMeshesLast {
+class CSortPrimaryMeshesLast { public:
     void* m_context;
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return !a.PrimaryMesh; }
 };

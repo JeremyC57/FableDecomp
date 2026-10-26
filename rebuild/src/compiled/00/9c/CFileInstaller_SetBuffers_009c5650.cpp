@@ -10,7 +10,7 @@ struct CCriticalSectionLock_Retail {              // 8 bytes on the stack
     ~CCriticalSectionLock_Retail();                                               // 0x00A629A0
 };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char          _pad[4];
     CRITICAL_SECTION_Fable m_section;              // +0x04
     void InitBuffers(void* buffers, long count);   // 0x009C5310

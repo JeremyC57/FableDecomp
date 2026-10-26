@@ -23,7 +23,7 @@ template <class T> inline T* copy_range(T* first, T* last, T* result)
     return result;
 }
 
-template <class T> struct CArray {                 // STLport vector
+template <class T> class CArray { public:                 // STLport vector
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -39,7 +39,7 @@ template <class T> struct CArray {                 // STLport vector
 };
 
 namespace NEnvironmentInternal {
-struct CEnvironmentThemePriorityStackEntry {
+class CEnvironmentThemePriorityStackEntry { public:
     float                BaseWeight;               // +0x00
     bool                 BaseWeightLocked;         // +0x04
     CArray<CThemeWeight> Themes;                   // +0x08

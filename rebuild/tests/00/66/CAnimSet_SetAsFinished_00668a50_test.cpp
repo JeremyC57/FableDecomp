@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CAnimSet {
+class CAnimSet { public:
     unsigned char _pad0[0x2c]; float CurrentAlpha; unsigned char _pad1[0x8]; float ChangeAlphaBy; unsigned char _pad2[0x15];
     unsigned char Looping : 1; unsigned char Finished : 1; unsigned char Forwards : 1; unsigned char HadUpdate : 1; unsigned char OwnedByMainAnim : 1;
     void SetAsFinished(long n) { if (!Finished) { Finished = 1; if (n < 1) n = 1; ChangeAlphaBy = CurrentAlpha / (float)n; } }

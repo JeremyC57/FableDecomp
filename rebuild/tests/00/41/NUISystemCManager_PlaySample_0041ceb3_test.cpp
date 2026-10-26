@@ -2,9 +2,9 @@
 // Behaviour test for NUISystem::CManager::PlaySample (retail 0x0041CEB3): 0 without a sound system, while a definition
 // manager is set, for an unknown bank or an unknown symbol (index 0); otherwise the sound player's index overload is
 // called with the bank, the index, loop = true, a CSoundInit with GainFaderBits 0x40 and attached = false.
-struct CCharString { long m_id; };
-struct CASoundBank { long m_base; long GetSoundIndexFromSymbol(const CCharString& s) { return s.m_id ? m_base + s.m_id : 0; } };
-struct CSoundInit { unsigned long GainFaderBits; CSoundInit() : GainFaderBits(0) {} };
+class CCharString { public: long m_id; };
+class CASoundBank { public: long m_base; long GetSoundIndexFromSymbol(const CCharString& s) { return s.m_id ? m_base + s.m_id : 0; } };
+class CSoundInit { public: unsigned long GainFaderBits; CSoundInit() : GainFaderBits(0) {} };
 static int g_calls = 0; static CASoundBank* g_bank = 0; static long g_index = 0; static bool g_loop = false, g_attached = true;
 static unsigned long g_gain = 0;
 struct CSoundPlayer {

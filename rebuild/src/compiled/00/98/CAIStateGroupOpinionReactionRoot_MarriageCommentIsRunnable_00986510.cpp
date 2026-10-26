@@ -12,14 +12,14 @@
 // Shape: one nested `if` chain with a single `return false` (retail pushes all four registers up front and shares one
 // false epilogue, keeping 0 in ebx); the loop reads the node's value afresh for each use; the UID goes through an inline
 // by-value getter (loads before the &info address); the state test is a named bool set in an `||` chain (1,3,2,4,5).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (const copy)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned long m_presentBits[9];             // +0x20
@@ -41,8 +41,8 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature;
-struct CTCVillage;
+class CThingAICreature;
+class CTCVillage;
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 template<class T> struct allocator { allocator() { } };
@@ -53,13 +53,13 @@ template<class T> struct list {
     ~list();                                    // 0x00685BC0
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     long a, b, c, d;
     long State;                                 // +0x10 EMarriageState
     bool Flag;                                  // +0x14
     CHeroMarriageInfo() : a(0), b(0), c(0), d(0), State(0), Flag(false) { }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad[0x1d8];
     list<const CThingAICreature*> Wives;        // +0x1d8
     void GetWivesInMarriageState(list<const CThingAICreature*>& wives, long state) const;   // 0x0057AE53
@@ -68,12 +68,12 @@ struct CTCHeroStats {
 struct CThingPointerView {
     CThing* GetPItem() const;                   // 0x00A01B50 CBaseIntelligentPointer::GetPItem
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 #pragma pack(push, 1)
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     void* __vftable;
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x6b - 0x08];

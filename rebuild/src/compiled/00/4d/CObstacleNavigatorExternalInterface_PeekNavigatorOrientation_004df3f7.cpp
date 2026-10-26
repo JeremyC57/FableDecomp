@@ -9,14 +9,14 @@
 // Leaf: PeekNavigatorOrientation
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) {}

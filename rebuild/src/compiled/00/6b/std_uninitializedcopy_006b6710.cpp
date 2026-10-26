@@ -27,7 +27,7 @@ struct CThemeWeightArray {                                  // retail CArray<CTh
     CThemeWeightArray(const CThemeWeightArray& other);      // 0x006B58F0
 };
 
-struct CEnvironmentThemePriorityStackEntry {                // 0x30 bytes in retail
+class CEnvironmentThemePriorityStackEntry { public:                // 0x30 bytes in retail
     float             BaseWeight;                           // +0x00
     bool              BaseWeightLocked;                     // +0x04
     CThemeWeightArray Themes;                               // +0x08

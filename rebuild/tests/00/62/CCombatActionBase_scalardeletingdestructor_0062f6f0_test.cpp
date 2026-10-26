@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void* vftable;
     int destroyed;
 };

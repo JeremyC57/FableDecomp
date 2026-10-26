@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharStringData { char Text[16]; long NoRefs; };
+class CCharStringData { public: char Text[16]; long NoRefs; };
 class CCharString {                                 // ref-counted model; a null block is the empty string
 public:
     CCharStringData* PStringData;
@@ -25,7 +25,7 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) {}
     pair(const pair<T1, T2>& o) : first(o.first), second(o.second) {}
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 typedef pair<CCharString, int> E;

@@ -17,7 +17,7 @@ typedef long long __int64;
 
 struct __false_type { __false_type() {} };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                           // 0x0099E4B0
     CCharString(const CCharString& other);                   // 0x0099EC30
@@ -25,7 +25,7 @@ struct CCharString {
     CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 
-template <class T> struct CArray {                           // STLport vector (12 bytes)
+template <class T> class CArray { public:                           // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     struct CStorageEnd { T* _M_data; CStorageEnd(T* p) : _M_data(p) {} } _M_end_of_storage;
@@ -100,7 +100,7 @@ struct CCharBuffer {                                         // CArray<char> bui
     char* GetData() { return size() != 0 ? _M_start : (char*)this; }
 };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void*                m_pVtable;                          // +0x00
     unsigned int        m_position;                         // +0x04
     long                 StreamSize;                         // +0x08
@@ -135,18 +135,18 @@ struct CMemoryDataInputStream {
     }
 };
 
-struct CBankFile {
+class CBankFile { public:
     unsigned int GetEntryDataSize(unsigned int index);                                         // 0x009CC240
     void ReadEntryData(unsigned int index, unsigned int offset, void* buffer, unsigned int size);   // 0x009CC2A0
 };
-struct CShaderDataBank : CBankFile {};
+class CShaderDataBank : public CBankFile { public:};
 
 struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CShaderBankEntry : CBaseClassNonCopyable {
+class CShaderBankEntry : public CBaseClassNonCopyable { public:
     unsigned int          ShaderType;                       // +0x04
     CArray<unsigned int>  ShaderCode;                       // +0x08
     CArray<CCharString>    ShaderConstants;                  // +0x14

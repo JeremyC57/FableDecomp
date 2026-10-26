@@ -50,10 +50,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -85,7 +85,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CResourceList {
+class CResourceList { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Head[0x1c];                                // +0x04 CResource
     unsigned long ResourceCount;                             // +0x20
@@ -121,10 +121,10 @@ FABLE_STATIC_ASSERT(offsetof(CResourceList, UnloadedThisFrame) == 0x38);
 #include <stddef.h>
 
 
-struct CGraphicFrameData;
+class CGraphicFrameData;
 
 #pragma pack(push, 1)
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;                            // +0x00
 };
 #pragma pack(pop)
@@ -145,11 +145,11 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicFrame, FrameData) == 0x0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CTextureManager;
+class CCPPointerInfo;
+class CTextureManager;
 
 #pragma pack(push, 1)
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -344,20 +344,20 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, BlankTextures) == 0x330);
 
 #undef CGraphicDataBank
 // Donor bank has opaque inherited bytes: native ResourceBank+164 and CurrentFrame+194 are verified by009fe380 and CResourceList+2c; donor derived fields start254 and disagree.
-struct CGraphicFrameData {long Sizeof();}; //009fcbf0
+class CGraphicFrameData { public:long Sizeof();}; //009fcbf0
 extern void* g_FrameDataVtable[]; //0129c89c CGraphicInfoFrame::CFrameData
 extern void* g_ManagedTextureVtable[]; //0129c880 CManagedTexture
 struct CBaseNative {void* Vtable;CBaseNative();}; //0099a2d0
-struct CManagedTexture : CBaseNative {
+class CManagedTexture : public CBaseNative { public:
  void* Data;
  CManagedTexture(){Vtable=g_ManagedTextureVtable;Data=0;}
  long Sizeof(); //00a69e60
 };
 struct CResourceNative : CResource {CResourceNative();void SetResourceSize(unsigned long);}; //009fbec0,009fbf20
-struct CResourceBank {void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
-struct CGraphicDataBank {unsigned char Base[0x164];CResourceBank Resources;};
+class CResourceBank { public:void* Vtable;CResourceList ResourceList;void AddResource_009fc380(CResource*);}; //009fc380
+class CGraphicDataBank { public:unsigned char Base[0x164];CResourceBank Resources;};
 struct CGraphicHeader {unsigned char Data[0x1c];};
-struct CGraphicInfo {CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
+class CGraphicInfo { public:CGraphicHeader Header;long TextureType;CGraphicDataBank* Bank;long Index;void* Frames;};
 class CGraphicInfoFrame {public:long Reserved;unsigned short FrameNum;signed char SmallMipmapLevel;void* Data;CGraphicInfo* GraphicInfo;class CFrameData;};
 // CGraphicInfoFrame::CFrameData (RTTI .?AVCFrameData@CGraphicInfoFrame@@ at vtable 0x0129C89C; Ego_r/FableWin.pdb
 // ??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z, i.e. the ctor takes a const CGraphicInfoFrame*).

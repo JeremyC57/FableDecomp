@@ -7,13 +7,13 @@
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static long g_live = 0;
-struct CFaction { long Id; CFaction() : Id(0) { ++g_live; } CFaction(const CFaction& o) : Id(o.Id) { ++g_live; } ~CFaction() { --g_live; } CFaction& operator=(const CFaction& o) { Id = o.Id; return *this; } };
+class CFaction { public: long Id; CFaction() : Id(0) { ++g_live; } CFaction(const CFaction& o) : Id(o.Id) { ++g_live; } ~CFaction() { --g_live; } CFaction& operator=(const CFaction& o) { Id = o.Id; return *this; } };
 typedef CFaction T;
 static T MK(long n) { CFaction f; f.Id = n; return f; }
 static long VAL(const T& v) { return v.Id; }
-struct CMemoryDataInputStream { int id;  };
-struct CDataOutputStream { int id; long written;  };
-struct CDataOutputStream;
+class CMemoryDataInputStream { public: int id;  };
+class CDataOutputStream { public: int id; long written;  };
+class CDataOutputStream;
 template <class U> struct CPersistTraits;
 template <> struct CPersistTraits<CFaction> { CFaction DefaultVal; void TransferBinaryOut(CDataOutputStream* s, const CFaction* v); void TransferBinaryIn(CMemoryDataInputStream* s, CFaction* v) { LOG(s->id == 1 && DefaultVal.Id == 0 ? "binin" : "binin?"); v->Id = 7; } };
 void CPersistTraits<CFaction>::TransferBinaryOut(CDataOutputStream* s, const CFaction* v) { LOG("write"); s->written = v->Id; }
@@ -23,7 +23,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     bool UseDefaults;
     long Mode;
     CMemoryDataInputStream* PLoadStream;

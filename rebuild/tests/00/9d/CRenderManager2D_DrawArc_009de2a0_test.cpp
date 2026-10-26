@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <math.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 float GFVXToAX(float x) { return x * 2.0f; }   // virtual -> screen stand-ins (0x009E1E10 / 0x009E1E40)
 float GFVYToAY(float y) { return y * 2.0f; }
 float GFAXToVX(float x) { return x * 0.5f; }   // screen -> virtual stand-ins (0x009E1DA0 / 0x009E1DD0)

@@ -11,7 +11,7 @@
 // Leaf: TransferBinaryOut@CReactionMatch_AsymmetricPyramid
 #include "engine/CReactionMatch_AsymmetricPyramid.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };

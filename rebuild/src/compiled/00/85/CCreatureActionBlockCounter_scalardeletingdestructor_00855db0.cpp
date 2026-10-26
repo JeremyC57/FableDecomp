@@ -1,4 +1,4 @@
-struct CCreatureAction_BlockCounter {
+class CCreatureAction_BlockCounter { public:
     void* vftable;
 };
 

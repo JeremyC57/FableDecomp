@@ -11,7 +11,7 @@
 //   a "constructed" flag word in the frame (`and [ebp-4],0` up front, `mov [ebp-4],1` before the call, `test byte
 //   [ebp-4],1` before the destructor); operator=='s argument is pushed before the getter's hidden pointer (right to
 //   left: the argument of the outer call is evaluated first). Frame-pointer size TU.
-struct CScriptThing {
+class CScriptThing { public:
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
     bool operator==(const CScriptThing& other) const;   // 0x008AAE20
@@ -19,7 +19,7 @@ struct CScriptThing {
     void* m_pImpData;
     void* m_pImpInfo;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

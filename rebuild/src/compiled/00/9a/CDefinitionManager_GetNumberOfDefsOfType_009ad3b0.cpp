@@ -26,7 +26,7 @@ struct CDefClassInfo {
     CRetailVector<unsigned long> Instances;        // +0x08 GlobalIndices
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefClassInfo* GetClassInfo(const CCharString& className);   // 0x009AD2E0
     long GetNumberOfDefsOfType(const CCharString& typeName);
 };

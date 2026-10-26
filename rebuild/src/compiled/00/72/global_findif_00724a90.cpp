@@ -11,7 +11,7 @@
 //   reference on the stack.  The switch lowers to the `dec eax ; je` chain.
 class CThing;
 
-struct CIsCreatureIsIntersecting {              // 4 bytes (PDB)
+class CIsCreatureIsIntersecting { public:              // 4 bytes (PDB)
     CThing* Owner;                              // +0x00
     bool operator()(CThing* thing) const;       // 0x007249C0
 };

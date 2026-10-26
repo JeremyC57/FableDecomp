@@ -8,8 +8,8 @@ struct FocusSink
     void NotifyFocus(bool focus);   // external __fastcall member (direct jmp -> 0x9f4e20)
 };
 
-struct CSystemManager
-{
+class CSystemManager
+{ public:
     char pad0[0xa];
     bool m_hasInputFocus;   // +0xa
     char pad1[0x58 - 0xa - 1];

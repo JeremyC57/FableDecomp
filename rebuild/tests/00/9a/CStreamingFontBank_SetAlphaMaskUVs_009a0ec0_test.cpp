@@ -1,7 +1,7 @@
 // Behaviour test for 0x009A0EC0 CStreamingFontBank::SetAlphaMaskUVs: both UV pairs are copied into the statics.
 #include <cstdio>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 static C2DVector g_StreamingFontAlphaMaskUV0;
 static C2DVector g_StreamingFontAlphaMaskUV1;
 

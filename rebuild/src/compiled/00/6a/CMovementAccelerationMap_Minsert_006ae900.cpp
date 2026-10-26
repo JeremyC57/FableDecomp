@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 enum EGameAction { GAME_ACTION_NONE };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

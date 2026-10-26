@@ -9,7 +9,7 @@ static int g_stringDtors = 0;
 static int g_frees = 0;
 static void TestFree(void* p) { if (p) { ++g_frees; std::free(p); } }
 
-struct CCharString {
+class CCharString { public:
     const char* m_pStringData;
     ~CCharString() { ++g_stringDtors; }
 };

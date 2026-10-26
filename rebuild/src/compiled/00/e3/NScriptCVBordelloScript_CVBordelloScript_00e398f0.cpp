@@ -18,7 +18,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (already NScript). Same bytes.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -109,7 +109,7 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -119,24 +119,24 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                         // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
-struct CBaseClass { virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();
 };
-struct CBaseObject {                                    // CBaseIntelligentPointer root, vtable 0x0129A7D8
+class CBaseObject { public:                                    // CBaseIntelligentPointer root, vtable 0x0129A7D8
     virtual ~CBaseObject();
     void* IntelligentPointer;                           // +0x04
     CBaseObject();                                      // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // 16 bytes, vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // 16 bytes, vtable 0x0127094C
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();
@@ -156,7 +156,7 @@ template<unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {   
     }
 };
 namespace NScript {
-struct CV_BordelloScript : CQuestScriptObject {
+class CV_BordelloScript : public CQuestScriptObject { public:
     bool HeroPartying, HeroTricking, MagicianSleeping, CutscenePlaying, PlayerOwned, BecomeNunnery, PlayerHasLeftRegion,
          HeroFoundDeeds, HeroFoundDeedsLocation;        // +0x48..+0x50
     long ClientsAlive;                                  // +0x54

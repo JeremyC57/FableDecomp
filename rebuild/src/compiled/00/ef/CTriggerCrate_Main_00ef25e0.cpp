@@ -8,18 +8,18 @@
 // Shape: script WAIT loops; the orb position is `Me.GetPos() + C3DVector(1, 1, 0)` through an inline operator+: VC7.1
 //   folds the `Z + 0.0f` term to a plain x87 load of Z, and the three sums stay on the FPU stack (Z loaded first) until the
 //   temporary is stored after the argument pushes. The orb handle is a discarded by-value result.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
-struct C3DVector {
+class CScriptThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005();
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
     virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012();
@@ -78,7 +78,7 @@ struct CIsThingAlive {                                   // vtable 0x012C32F0: a
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive();                                    // 0x00E241B0
 };
-struct CEntityScriptBase {                               // retail 0x14 bytes
+class CEntityScriptBase { public:                               // retail 0x14 bytes
     virtual void v00();
     GameCalls*   Game;                                   // +0x04
     CScriptThing Me;                                     // +0x08

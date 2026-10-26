@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CInterpolationInfoSet { float GTPredictedTimeSinceLastRenderFrame; float WFInterpolate; };
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     CInterpolationInfoSet Current, Last, PausedCurrent, PausedLast, BulletTimeCurrent, BulletTimeLast;
     long WFServerCurrentTime;
 };
@@ -10,7 +10,7 @@ struct CEngineInterpolationInfoSet {
     CEngineInterpolationInfoSet& operator=(const CInterpolationInfoSet& s)
     { GTPredictedTimeSinceLastRenderFrame = s.GTPredictedTimeSinceLastRenderFrame; WFInterpolate = s.WFInterpolate; return *this; }
 };
-struct CEngineInterpolationInfo {
+class CEngineInterpolationInfo { public:
     CEngineInterpolationInfoSet Current, Last, PausedCurrent, PausedLast, BulletTimeCurrent, BulletTimeLast;
     long WFServerCurrentTime;
     CEngineInterpolationInfoSet InterpolationSetList[3];

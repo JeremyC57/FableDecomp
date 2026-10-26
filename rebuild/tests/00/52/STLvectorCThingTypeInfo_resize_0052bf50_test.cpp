@@ -2,7 +2,7 @@
 // recording stand-in, the string counts constructions/destructions).
 #include <cstdio>
 static int g_ctor = 0, g_dtor = 0;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString() : PStringData(0) { ++g_ctor; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_ctor; }

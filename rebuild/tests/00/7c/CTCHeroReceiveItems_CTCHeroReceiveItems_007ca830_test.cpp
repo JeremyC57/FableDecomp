@@ -5,7 +5,7 @@
 class CThing;
 class CThingObject;
 static int g_registered = 0, g_pointers = 0, g_baseClasses = 0;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer() : m_pItem(0) { ++g_pointers; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtables 0x0125A858 / 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtables 0x0125A858 / 0x01238C6C
     virtual void v00() { }
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
@@ -55,14 +55,14 @@ struct CItemList {                                      // STLport list (retail:
         _M_node.m_data = node;
     }
 };
-struct C2DBoxF { float X0, Y0, X1, Y1; C2DBoxF() { } };
-struct CRightHandedSet { float M[6]; CRightHandedSet() { } };
+class C2DBoxF { public: float X0, Y0, X1, Y1; C2DBoxF() { } };
+class CRightHandedSet { public: float M[6]; CRightHandedSet() { } };
 class CBaseClass {                                      // vtable 0x01231710
 public:
     virtual void v000() { }
     CBaseClass() { ++g_baseClasses; }
 };
-struct CEnginePersistentPrimitiveBase;
+class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:
     CEnginePersistentPrimitiveBase* Object;
@@ -74,7 +74,7 @@ public:
     virtual void v001() { }
     CEnginePrimitiveHandle() { }
 };
-struct CTCHeroReceiveItems : CTCBase {
+class CTCHeroReceiveItems : public CTCBase { public:
     CItemList Items;                                    // +0x0c
     CRetailVector<long> PickedUpItems;                  // +0x10
     CIntelligentPointer<CThingObject> PCurrentItem;     // +0x1c

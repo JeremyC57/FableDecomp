@@ -19,14 +19,14 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     void Insert(long position, const char* text); // 0x009A06B0
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }
 };
 #pragma pack(pop)
-struct CAFile;
-struct CASuspendableProcess;
+class CAFile;
+class CASuspendableProcess;
 extern long g_CCharStringInstanceCount;         // 0x013BD800
 
 class CCharString {

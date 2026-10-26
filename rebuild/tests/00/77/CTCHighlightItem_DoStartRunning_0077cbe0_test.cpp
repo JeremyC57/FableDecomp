@@ -8,7 +8,7 @@ struct CDefBase {
     void Destroy() { ++destroyed; }
     void Release() { if (--m_count == 0) Destroy(); }
 };
-struct CHighlightItemDef : CDefBase { long ParticleEmitter; float DistanceFromGround; };
+class CHighlightItemDef : public CDefBase { public: long ParticleEmitter; float DistanceFromGround; };
 struct CHighlightItemDefPointer {
     CHighlightItemDef* m_p;
     CHighlightItemDefPointer() : m_p(0) {}
@@ -16,9 +16,9 @@ struct CHighlightItemDefPointer {
     CHighlightItemDef* operator->() const { return m_p; }
 };
 static CHighlightItemDef* g_def = 0;
-struct CDefClassBase { bool GetSubDef(CHighlightItemDefPointer& out) { out.m_p = g_def; ++g_def->m_count; return true; } };
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class CDefClassBase { public: bool GetSubDef(CHighlightItemDefPointer& out) { out.m_p = g_def; ++g_def->m_count; return true; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     CDefClassBase* PDef; C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };

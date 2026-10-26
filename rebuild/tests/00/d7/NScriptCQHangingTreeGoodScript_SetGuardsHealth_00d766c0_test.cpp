@@ -3,8 +3,8 @@
 // skipped; the saved list is cleared at the end; an empty list does nothing; a terminate request stops early.
 #include <cstdio>
 
-struct CBaseClass { virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass { bool alive; float hp; virtual bool IsAlive() const { return alive; } };
+class CBaseClass { public: virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public: bool alive; float hp; virtual bool IsAlive() const { return alive; } };
 template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned int size() const { return _M_finish - _M_start; }
@@ -14,12 +14,12 @@ template <class T> struct vector {
     T* erase(T* first, T* last) { T* d = first; for (T* s = last; s != _M_finish; ++s) *d++ = *s; _M_finish = d; return first; }
     void clear() { erase(begin(), end()); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int mods; const CScriptThing* who[8]; float delta[8];
     virtual float GetHealth(const CScriptThing& t) { return t.hp; }
     virtual void ModifyThingHealth(const CScriptThing& t, float d, bool b) { who[mods] = &t; delta[mods] = b ? -999.0f : d; ++mods; }
 };
-struct CScriptBase { int termAfter; bool IsActiveThreadTerminating() { return termAfter-- == 0; } };
+class CScriptBase { public: int termAfter; bool IsActiveThreadTerminating() { return termAfter-- == 0; } };
 struct CQ_HangingTreeGoodScript : CScriptBase {
     CGameScriptInterface* m_pInterface;
     vector<CScriptThing> CurrentGuardVector;

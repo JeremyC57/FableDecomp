@@ -17,7 +17,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*           Object;
     SCountBlock* Count;
     CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count)
@@ -28,12 +28,12 @@ struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct CParticleSimulationRenderData {
+class CParticleSimulationRenderData { public:
     virtual void v00();
     virtual bool IsBusy();                   // slot 1 (+0x04)
 };
 
-struct CParticleSimulation {
+class CParticleSimulation { public:
     void*                                          __vftable;    // +0x00
     CCountedPointer<CParticleSimulationRenderData> RenderData;   // +0x04
 };

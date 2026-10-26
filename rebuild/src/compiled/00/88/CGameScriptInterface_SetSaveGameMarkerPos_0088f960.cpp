@@ -1,5 +1,5 @@
-struct C3DVector
-{
+class C3DVector
+{ public:
     float x;
     float y;
     float z;

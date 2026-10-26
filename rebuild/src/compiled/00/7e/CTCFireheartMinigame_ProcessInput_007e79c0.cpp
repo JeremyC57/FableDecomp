@@ -11,9 +11,9 @@
 // SetHeroPos tail into both y-clamp arms.
 enum EFireheartMinigameInput { FIREHEART_UP, FIREHEART_RIGHT, FIREHEART_DOWN, FIREHEART_LEFT };
 
-struct CThing;
+class CThing;
 
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x68 - 0x08];

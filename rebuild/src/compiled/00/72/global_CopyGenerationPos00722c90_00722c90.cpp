@@ -8,7 +8,7 @@
 // PEmitter +0xC. The implicit operator= copies Pos through pointer registers (`mov eax,esi ; mov ecx,edi`: a C3DVector
 // with a user copy constructor and no operator=, GOTCHAS wave 25 chunk 185), then PEmitter = other.PEmitter as
 // SetPItem(other.GetPItem()) (CBaseIntelligentPointer @ 0x00A01B50 / 0x00A01B90, modelled as the landed 0x0080AA60).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -18,16 +18,16 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CThing;
+class CThing;
 
 struct CGenerationPos {                      // CTCSmokeGenerator::CGenerationPos, 0x14 bytes
     C3DVector                   Pos;         // +0x00

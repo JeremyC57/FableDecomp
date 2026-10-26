@@ -8,13 +8,13 @@
 // DangerThings (STLport vector, 16-byte elements) +0x38, MaxNumberOfDangerThings +0x44, RegionBasedMaxNumberOfDangerThings +0x48.
 // Shape: init list in declaration order; the zeroes share eax, the -1s ecx (`or ecx,-1`); the vector as the STLport _Vector_base +
 // _STLP_alloc_proxy model.
-struct CThing;
-struct CStealthDef;
-template<class T> struct CDefPointer {
+class CThing;
+class CStealthDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CStealthDef>* out) const;   // 0x00748900
 };
 struct CThingDefHolder {
@@ -40,14 +40,14 @@ template<class T> struct CVector : CVectorBase<T> { // STLport vector<T> (12 byt
 struct CDangerThing {                               // pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus>, 16 bytes
     unsigned char _data[16];
 };
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();
     CThingDefHolder* ParentThing;                   // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCStealth : CTCBase {                       // vtable 0x012689EC
+class CTCStealth : public CTCBase { public:                       // vtable 0x012689EC
     bool  Viewable;                                 // +0x0c
     bool  Smellable;                                // +0x0d
     bool  Hearable;                                 // +0x0e

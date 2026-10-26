@@ -7,16 +7,16 @@
 // store is dead and dropped; the intermediate CAnimComponentBase adds only virtuals.
 // Member from engine/CAnimComponentFollowingOnAnim.h (PDB name); the -1 store after the vtable is the
 // CDefString member default constructor.
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CPersistContext; struct CCharString; struct CDataInputStream; struct CDataOutputStream;
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CPersistContext; class CCharString; class CDataInputStream; class CDataOutputStream;
 
-struct CIVCountedPointeeBase {                  // root: vptr + intrusive ref count
+class CIVCountedPointeeBase { public:                  // root: vptr + intrusive ref count
     virtual void v0();
     long m_refCount;                            // +0x04
     CIVCountedPointeeBase() : m_refCount(1) { }
 };
 
-struct CAnimComponentBase : CIVCountedPointeeBase {
+class CAnimComponentBase : public CIVCountedPointeeBase { public:
     virtual void v1();
     virtual long GetType() const;                                                // slot 2
     virtual bool Initialise(CPersistContext& context, const CCharString& name);  // slot 3
@@ -27,7 +27,7 @@ struct CAnimComponentBase : CIVCountedPointeeBase {
     virtual void SetDefaultValue();                                              // slot 8
 };
 
-struct CAnimComponentFollowingOnAnim : CAnimComponentBase {                // vtable 0x01255788
+class CAnimComponentFollowingOnAnim : public CAnimComponentBase { public:                // vtable 0x01255788
     CDefString NextAnimName;                    // +0x08 TablePos = -1 (CDefString default constructor, inlined)
     CAnimComponentFollowingOnAnim() { }
     virtual CAnimComponentBase* Alloc() const;

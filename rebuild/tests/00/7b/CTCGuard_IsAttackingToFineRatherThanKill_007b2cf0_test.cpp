@@ -2,10 +2,10 @@
 
 // Model of CTCGuard::IsAttackingToFineRatherThanKill @ 0x007B2CF0: look up the village-member interface (0x23) in the
 // owner's interface map (presence bit + lower bound), then true only for an existing village with a positive fine.
-struct CTCVillage { long Fine; long GetFineAmountForCurrentCrimes() { return Fine; } };
-struct CTCVillageMember { CTCVillage* Village; CTCVillage* GetPVillage() const { return Village; } };
+class CTCVillage { public: long Fine; long GetFineAmountForCurrentCrimes() { return Fine; } };
+class CTCVillageMember { public: CTCVillage* Village; CTCVillage* GetPVillage() const { return Village; } };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     SEntry* first; SEntry* last;
     SEntry* LowerBound(long type) { SEntry* it = first; while (it != last && it->type < type) ++it; return it; }
@@ -20,7 +20,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCGuard {
+class CTCGuard { public:
     CThing* ParentThing;
     bool IsAttackingToFineRatherThanKill() const
     {

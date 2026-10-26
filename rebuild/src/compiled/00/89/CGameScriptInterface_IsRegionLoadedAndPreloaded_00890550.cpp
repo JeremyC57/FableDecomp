@@ -3,7 +3,7 @@
 // Callees: CWorld virtual slot 13 (+0x34) twice, CWorldMap::GetRegionNumberFromName @ 0x004FC210, CWorldMap::GetCurrentRegionNumber @ 0x004FB150, virtual slot 59 (+0xec) of the renderer. Shape: the region number in edi, the registers popped before the compare's branch, `mov al,1` / `xor al,al`, `ret 4`.
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
-struct CWorld;
+class CWorld;
 struct CThingPhysics_Retail;
 struct CThing_Retail {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -60,12 +60,12 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
-struct CCharString;
+class CCharString;
 struct CRegion_Retail {
     unsigned char _pad[0x18];
     unsigned char m_name[4];                       // +0x18 (a CCharString)
@@ -101,7 +101,7 @@ struct CScriptConversationManager_Retail {
     long MakeNewConversation(CThing_Retail* thing, bool a, bool b);   // 0x006E61A0
     void AddPersonToConversation(long conversation, CThing_Retail* thing);   // 0x006E5800
 };
-struct CWorld {
+class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
         virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -136,7 +136,7 @@ struct CEngine_00890550 {
     CEngineDevice_00890550* m_pDevice;             // +0x28
 };
 extern CEngine_00890550* g_pEngine_013b86a0;       // 0x013B86A0
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
     long                    Component;

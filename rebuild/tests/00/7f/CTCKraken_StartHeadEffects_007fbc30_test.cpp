@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 static int g_live;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* t, long) { std::strcpy(m_text, t); ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CTCKraken {
+class CTCKraken { public:
     char m_last[32]; int m_liveDuringCall;
     void CreateHeadEffect(const CCharString& name) { std::strcpy(m_last, name.m_text); m_liveDuringCall = g_live; }
     void StartHeadEffects() { CCharString effectName("MEETS_WATER", -1); CreateHeadEffect(effectName); }

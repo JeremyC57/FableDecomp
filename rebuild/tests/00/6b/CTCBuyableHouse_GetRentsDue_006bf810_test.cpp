@@ -3,12 +3,12 @@
 
 struct CGameTime { long Day; };
 struct CWorldSub { CGameTime* GameTime; };
-struct CBuyableHouseDef { long DaysBetweenRentPayments; };
+class CBuyableHouseDef { public: long DaysBetweenRentPayments; };
 
 static CWorldSub* g_world;
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     const CBuyableHouseDef* PDef_Object;
     bool Rented;
     long DayNextRentIsDue;

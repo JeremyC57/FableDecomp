@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s) { p = (char*)s; }
 };
@@ -11,7 +11,7 @@ struct CInner {
     virtual CCharString GetName() { return CCharString("VIRT"); }
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     unsigned char _pad_0x0[0x4];
     CInner* inner;
     CCharString GetHomeMapName();

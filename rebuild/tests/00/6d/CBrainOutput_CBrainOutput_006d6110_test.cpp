@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CBaseObject { int id; };
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct CNavigationInput {
+class CBaseObject { public: int id; };
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class CNavigationInput { public:
     C3DVector Destination; float Proximity; long MovementType; float Speed;
     CNavigationInput() { }
     CNavigationInput(const CNavigationInput& o) : Destination(o.Destination), Proximity(o.Proximity), MovementType(o.MovementType), Speed(o.Speed) { }
@@ -23,7 +23,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing() { }
     CIntelligentPointerThing(const CIntelligentPointerThing& o) : CBaseIntelligentPointer() { SetPItem(o.GetPItem()); }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long Types; long LookFlags; CNavigationInput NavigationInput; CCountedPointerAction PAction;
     C3DVector MoveToPos, LookAtPos; CIntelligentPointerThing LookAtThing;
     CBrainOutput() { }

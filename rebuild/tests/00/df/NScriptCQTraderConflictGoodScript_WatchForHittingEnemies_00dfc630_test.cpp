@@ -9,14 +9,14 @@ static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 static std::string num(int v) { char b[16]; sprintf(b, "%d", v); return b; }
 
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
 };
 enum EHeroAbility { HERO_ABILITY_NONE };
 
 static int g_frame = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     float X;
     int HitFrame;          // plainly hit by the hero on this frame
@@ -36,7 +36,7 @@ static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThi
 }
 
 static int g_followAt = 1000, g_teleportStep = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frame; }
     CScriptThing& GetHero() const { return const_cast<CScriptThing&>(Hero); }
@@ -62,7 +62,7 @@ struct CScriptBase {
     bool IsActiveThreadTerminating() { ++g_termCalls; return g_termCalls == g_termAt || g_frame >= g_termFrame; }
 };
 
-struct CQ_TraderConflictGoodScript : CScriptBase {
+class CQ_TraderConflictGoodScript : public CScriptBase { public:
     CGameScriptInterface* GSI;
     void*                 PMasterData;
     CScriptThingVector    AllCreatures;

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CTCKrakenTentacle { bool Tracking; };
-struct CThing {
+class CTCKrakenTentacle { public: bool Tracking; };
+class CThing { public:
     unsigned long m_presentBits[9]; CTCKrakenTentacle* m_tentacle;
     template <class T> bool GetInterface(long type, T** out)
     {
@@ -11,7 +11,7 @@ struct CThing {
 struct CIntelligentPointer { CThing* m_pItem; CThing* Get() const { return m_pItem; } };
 struct STentacleNode { STentacleNode* _M_next; STentacleNode* _M_prev; CIntelligentPointer _M_data; };
 struct STentacleIterator { STentacleNode* _M_node; CIntelligentPointer& operator*() const { return _M_node->_M_data; } };
-struct CTCKraken {
+class CTCKraken { public:
     STentacleIterator AttackingTentacleIterator; STentacleNode* m_closest;
     bool GetClosestTentacleToTarget(STentacleIterator* closest) { if (!m_closest) return false; closest->_M_node = m_closest; return true; }
     void UpdateTentaclesOnly()

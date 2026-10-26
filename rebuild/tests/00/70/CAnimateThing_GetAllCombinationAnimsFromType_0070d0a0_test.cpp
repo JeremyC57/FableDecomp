@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CAnimSet { unsigned char Type; int id; };
+class CAnimSet { public: unsigned char Type; int id; };
 struct SNode { SNode* next; SNode* prev; CAnimSet data; };
 struct CVector {
     CAnimSet** _M_start; CAnimSet** _M_finish; CAnimSet** _M_end_of_storage;
@@ -18,7 +18,7 @@ struct CVector {
         _M_start = p; _M_finish = p + size + 1; _M_end_of_storage = p + len;
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     SNode* CombinationAnims;
     void GetAllCombinationAnimsFromType(long type, CVector& out)
     {

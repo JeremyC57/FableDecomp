@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 static void* g_freed = 0; static unsigned long g_resized = 0, g_addId = 0, g_addFlags = 0; static const void* g_addPrim = 0;
-struct CEnginePrimitive { int x; };
+class CEnginePrimitive { public: int x; };
 struct SIdListNode { SIdListNode* m_pNext; SIdListNode* m_pPrev; unsigned long m_id; };
 static void free_x(void* p) { g_freed = p; std::free(p); }
 struct CIdList { SIdListNode* m_pNode; bool empty() const { return m_pNode->m_pNext == m_pNode; }

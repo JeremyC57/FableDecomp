@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 static int g_base = 0; static unsigned long g_old = 0x55; static long g_typeArg = -1;
-struct CThing { unsigned char pad[0x6c]; unsigned char f6c; unsigned char pad2[0x15b]; unsigned char f1c8; };
+class CThing { public: unsigned char pad[0x6c]; unsigned char f6c; unsigned char pad2[0x15b]; unsigned char f1c8; };
 unsigned long GetOld(CThing* t, long type) { g_typeArg = type; return g_old; }
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CModeStandBase : CModeBase { void OnActivate() { ++g_base; } };

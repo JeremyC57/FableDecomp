@@ -28,7 +28,7 @@ struct SVillagerNode {                          // STLport list node
     CBaseIntelligentPointer _M_data;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;               // +0x2c list head node
     long GetNumberOfGayVillagers();

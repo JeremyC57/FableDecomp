@@ -9,11 +9,11 @@
 #endif
 
 static int g_calls = 0; static long g_theme = -5; static float g_duration = 0; static void* g_entry = 0; static long g_classIndex = 0;
-struct CDefinitionManager { long GetDefClassIndexFromGlobalIndex(long globalIndex) { return g_classIndex; } };
+class CDefinitionManager { public: long GetDefClassIndexFromGlobalIndex(long globalIndex) { return g_classIndex; } };
 struct CEnvironmentThemePriorityStackEntry { long pad; void StartThemeTransition(long theme, float duration) { ++g_calls; g_theme = theme; g_duration = duration; g_entry = this; } };
 struct CEnvironmentThemePriorityStack { CEnvironmentThemePriorityStackEntry* m_pBegin; CEnvironmentThemePriorityStackEntry* m_pEnd; CEnvironmentThemePriorityStackEntry* m_pCapacity; };
 struct SThemeRecord { long m_a, m_b, m_c; };
-struct CEnvironment { void* __vftable; CDefinitionManager* DefinitionManager; unsigned char _pad0[0x3e - 0x8]; bool ForcedEnvironmentTheme; unsigned char _pad1[0x48 - 0x3f]; CEnvironmentThemePriorityStack* PriorityStackChannels; unsigned char _pad2[0x1954 - 0x4c]; SThemeRecord* m_pThemesBegin; SThemeRecord* m_pThemesEnd;
+class CEnvironment { public: void* __vftable; CDefinitionManager* DefinitionManager; unsigned char _pad0[0x3e - 0x8]; bool ForcedEnvironmentTheme; unsigned char _pad1[0x48 - 0x3f]; CEnvironmentThemePriorityStack* PriorityStackChannels; unsigned char _pad2[0x1954 - 0x4c]; SThemeRecord* m_pThemesBegin; SThemeRecord* m_pThemesEnd;
     void TransitionToTheme(long globalThemeIndex, float duration) {
         if (ForcedEnvironmentTheme) return;
         long theme = DefinitionManager->GetDefClassIndexFromGlobalIndex(globalThemeIndex) - 1;

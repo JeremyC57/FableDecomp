@@ -7,12 +7,12 @@ struct CBasicStringChar {
     CBasicStringChar(const char* text) : PData(0), StringLength(0), DataLength(0), UseFastExtend(1) { AssignFromData(text, (unsigned long)strlen(text)); }
     CBasicStringChar(const char* text, unsigned long length) : PData(0), StringLength(0), DataLength(0), UseFastExtend(1) { AssignFromData(text, length); }
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data; long NoRefs;
     CCharStringData(const char* text) : Data(text), NoRefs(1) { }
     CCharStringData(const char* text, unsigned long length) : Data(text, length), NoRefs(1) { }
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* AllocStringData(const char* text, long length)
     {
         if (length == -1) return new CCharStringData(text);

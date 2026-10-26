@@ -6,14 +6,14 @@
 // operator==), a thing holds an optional quest-card TC and a dead bit, the list is the STLport sentinel ring,
 // GetPItem returns the stored thing, Kill/Refresh/free are recording spies (free records only while armed and
 // never frees: the nodes live in static storage).
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
     bool operator==(const CCharString& o) const { return Text == o.Text || std::strcmp(Text, o.Text) == 0; }
 };
-struct CTCQuestCard { CCharString ScriptName; CTCQuestCard(const char* n) : ScriptName(n) {} };
+class CTCQuestCard { public: CCharString ScriptName; CTCQuestCard(const char* n) : ScriptName(n) {} };
 static int g_kills, g_refreshes, g_frees, g_freeArmed;
-struct CThing {
+class CThing { public:
     CTCQuestCard* Card; bool Dead; int Killed;
     CThing(CTCQuestCard* c, bool dead) : Card(c), Dead(dead), Killed(0) {}
     bool HasTC(long type) const { return type == 0x6c && Card != 0; }
@@ -34,7 +34,7 @@ static void EraseNode(CCardNode* node)
     next->_M_prev = prev;
     free_spy(node);
 }
-struct CPlayerGui { void Refresh(long flag) { if (flag == 0) ++g_refreshes; } };
+class CPlayerGui { public: void Refresh(long flag) { if (flag == 0) ++g_refreshes; } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
 static void Ring(CCardNode* head, CCardNode* nodes, CThing** things, int n)
@@ -44,7 +44,7 @@ static void Ring(CCardNode* head, CCardNode* nodes, CThing** things, int n)
     prev->_M_next = head; head->_M_prev = prev;
 }
 static int Count(CCardNode* head) { int n = 0; for (CCardNode* p = head->_M_next; p != head; p = p->_M_next) ++n; return n; }
-struct CQuestManager {
+class CQuestManager { public:
     CCardNode* ActiveQuestCards;
     CCardNode* CompletedQuestCards;
     bool IsCompletedQuestCard(CThing* card) const

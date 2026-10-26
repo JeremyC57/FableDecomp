@@ -30,7 +30,7 @@ struct CComponentRoot {                            // the primary base: vptr at 
     virtual ~CComponentRoot();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];             // +0x1c .. +0x15c: the base's state
     virtual ~CChangingStateComponent();            // 0x0052CCF0
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -84,7 +84,7 @@ struct CHoverCursor {                              // the front-end manager's me
     virtual void OnNoHoverTargetsLeft();           // slot 151 (+0x25c)
 };
 
-struct CFrontEndManager {
+class CFrontEndManager { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void RemoveObserver(IComponentA* observer);   // slot 5 (+0x14)
     unsigned char _pad04[0xb4];
@@ -92,7 +92,7 @@ struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 
-struct CHoverable;
+class CHoverable;
 struct SHoverableNode {                            // list<CHoverable*> node (12 bytes)
     SHoverableNode* m_pNext;
     SHoverableNode* m_pPrev;
@@ -129,7 +129,7 @@ template <class It, class T> inline It find_(It first, It last, const T& value)
 }
 extern CHoverableList g_hoverables;                // 0x013B8AD4
 
-struct CHoverable : CChangingStateComponent {      // vtables 0x0124BFB4 / 0x0124BF90 / 0x0124BF88
+class CHoverable : public CChangingStateComponent { public:      // vtables 0x0124BFB4 / 0x0124BF90 / 0x0124BF88
     virtual ~CHoverable();
 };
 

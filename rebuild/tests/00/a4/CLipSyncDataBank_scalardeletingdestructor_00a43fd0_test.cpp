@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLipSyncDataBank {
+class CLipSyncDataBank { public:
     void* vftable;
     int destroyed;
 };

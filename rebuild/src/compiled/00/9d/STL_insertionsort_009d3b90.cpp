@@ -15,7 +15,7 @@
 // result - n, first, n)` -- an element count adds `sar eax,2 ; shl eax,2`); `*first = val` re-reads `first`.
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

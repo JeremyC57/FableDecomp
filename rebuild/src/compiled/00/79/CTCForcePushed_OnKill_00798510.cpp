@@ -10,7 +10,7 @@
 // byte and the type compared with the literal 1; `push 0 ; push 0`: the component argument is a null pointer here.
 #include "engine/CTCBase.h"
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                          // +0x10
     unsigned char _pad11[0x80];
@@ -19,7 +19,7 @@ struct CThing {
     void SetComponentRegistered(bool registered, CTCBase* component);   // 0x00833A10
 };
 
-struct CTCForcePushed : CTCBase {
+class CTCForcePushed : public CTCBase { public:
     void OnKill();
 };
 

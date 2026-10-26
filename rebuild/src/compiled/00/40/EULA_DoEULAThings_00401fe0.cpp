@@ -13,7 +13,7 @@ extern "C" __declspec(dllimport) void* __stdcall LoadLibraryW(const unsigned sho
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* procName);   // import 0x0143FE44
 extern "C" __declspec(dllimport) int __stdcall FreeLibrary(void* module);                               // import 0x0143FE3C
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                     // +0x00
     unsigned long Length;                   // +0x04
 };

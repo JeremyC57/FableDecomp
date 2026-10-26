@@ -16,12 +16,12 @@
 //   bottom as `if (!IsActiveThreadTerminating()) continue; return;` (a plain `while (!flag)` or a bottom `if (term) return;`
 //   rotates it and duplicates the flag test). Every action is guarded by its own IsActiveThreadTerminating
 //   check; the message temporaries are built right to left ("" first) from implicit `const char*` conversions.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -79,7 +79,7 @@ struct CGameScriptInterface {
     virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xfd8];
     long          CombatMultFramesPerLevel;                 // +0xfd8
     long          CombatMultMasterLevel;                    // +0xfdc
@@ -90,7 +90,7 @@ struct CGameflowMasterData {
     unsigned char _pad[0x67];
     bool          StopAssistance;                           // +0x67
 };
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };

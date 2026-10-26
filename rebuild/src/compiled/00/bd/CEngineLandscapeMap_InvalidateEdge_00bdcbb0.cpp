@@ -8,11 +8,11 @@
 // Shape: for directions 0/1 the outside walk has no return, so it falls into the in-map clipping exactly as retail does
 //   (retail reaches the y < WorldPosY block after the walk); the 2/3 walk returns. The world map global is read at each
 //   PeekMap (retail reloads it after every call).
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void InvalidateEdge(long x, long y, long length, long direction);   // 0x00BF67F0
 };
-struct CEngineLandscapeMap;
-struct CEngineMap {
+class CEngineLandscapeMap;
+class CEngineMap { public:
     CEngineLandscapeMap* Landscape;                // +0x00
     unsigned char  _pad04[0x58];
     unsigned short MapWidth;                       // +0x5c
@@ -20,13 +20,13 @@ struct CEngineMap {
     unsigned short WorldPosX;                      // +0x60
     unsigned short WorldPosY;                      // +0x62
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*               _vptr;                     // +0x00
     unsigned char       _pad04[0x8];
     short*              Map;                       // +0x0c
@@ -49,7 +49,7 @@ struct CEngineWorldMap {
 };
 extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*                         _vptr;           // +0x00
     CLandscapeBackgroundTreeNode* BackgroundTree;  // +0x04
     unsigned char                 _pad08[0xc];

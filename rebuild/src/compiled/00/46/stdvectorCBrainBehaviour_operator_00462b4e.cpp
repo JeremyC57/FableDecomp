@@ -15,7 +15,7 @@
 #pragma optimize("s", on)
 #include <new>
 
-struct CBrainBehaviour {             // PDB: 12 bytes
+class CBrainBehaviour { public:             // PDB: 12 bytes
     long Name;                      // CDefString (a 4-byte string-table index, trivially copied)
     long Priority;
     long ScriptAIPriority;

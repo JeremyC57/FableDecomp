@@ -23,7 +23,7 @@ public:
     long          FirstFinishFrame;
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     long FramesRunning;
     std::list<CStrikeEvent*> StrikeEvents;
     CStrikeEvent* GetPActiveStrikeEvent()

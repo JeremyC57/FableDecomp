@@ -6,22 +6,22 @@
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static void ResetLog() { g_log[0] = 0; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) {}
 };
-struct CWideString {
+class CWideString { public:
     const void* Text;
     CWideString(const void* text) : Text(text) {}
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     const bool* AliveFlag;
     CScriptThing() : Name(""), AliveFlag(0) {}
     CScriptThing(const char* n, const bool* a) : Name(n), AliveFlag(a) {}
     bool IsAlive() const { return AliveFlag && *AliveFlag; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     long TerminateAfter;                                 // IsActiveThreadTerminating() turns true after this many calls
     long TerminateCalls;
     CScriptBase() : TerminateAfter(1000), TerminateCalls(0) {}
@@ -36,7 +36,7 @@ struct CFrameEvents {
     void Tick() { ++Frames; for (int i = 0; i < 4; ++i) if (Flag[i] && At[i] == Frames) *Flag[i] = Value[i]; }
 };
 static bool g_true = true;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long Timers[4];
     CScriptThing Hero;
     long GetTimer(long i) { return Timers[i]; }
@@ -49,10 +49,10 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_gsi;
 static CGameScriptInterface* g_pGameScriptInterface = &g_gsi;
-struct CScriptDef { long HC_BanditCommentTime; };
+class CScriptDef { public: long HC_BanditCommentTime; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
-struct CTimer {
+class CTimer { public:
     long TimerIndex;
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }

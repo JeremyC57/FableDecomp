@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPixelShader {
+class CPixelShader { public:
     void* f0;
     struct Inner { char pad[0x1c]; unsigned long refs; } * f4;
 };

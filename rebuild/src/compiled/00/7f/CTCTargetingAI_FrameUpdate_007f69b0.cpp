@@ -15,7 +15,7 @@
 //   returns the next node; the XY distance is `d.X * d.X + d.Y * d.Y` (VC emits the Y term first).
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -52,7 +52,7 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-struct CTCStealth {
+class CTCStealth { public:
     bool IsAvailableForAttack();                        // 0x00747B00
 };
 struct CBaseIntelligentPointer {
@@ -81,7 +81,7 @@ struct CThingList {                                     // STLport list<CIntelli
         return next;
     }
 };
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual void FrameUpdate();                         // slot 9

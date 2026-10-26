@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -12,7 +12,7 @@ struct C3DVector {
     C3DVector& operator+=(const C3DVector& other) { X += other.X; Y += other.Y; Z += other.Z; return *this; }
 };
 
-struct CSnowTrollDef {
+class CSnowTrollDef { public:
     long RefCount;
     int Deleted;
     float SecondsIcicleAttackTargetPositionPredictionTime;
@@ -29,7 +29,7 @@ struct CDefPointerSnowTroll {
     ~CDefPointerSnowTroll() { if (m_p) m_p->Release(); }
     CSnowTrollDef* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     long RefCount;
     int Deleted;
     CSnowTrollDef* SubDef;                      // the snow-troll def this class carries, if any (test model)
@@ -60,11 +60,11 @@ struct CDefClassTemp : CDefClassPointer {
     CDefClassTemp(const CDefClassPointer& other) : CDefClassPointer(other) { }
     ~CDefClassTemp() { if (m_p) m_p->Release(); }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector Position;
     C3DVector OldPosition;
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* m_pPhysics;
     CDefClassPointer PDefClass;
     CThing(CTCPhysicsBase* physics, CDefClassBase* defClass) : m_pPhysics(physics), PDefClass(defClass) { }

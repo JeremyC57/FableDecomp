@@ -11,8 +11,8 @@
 #else
 #define __forceinline inline
 class CCharString{public:CCharString(const char*,long);~CCharString();};
-struct CAIBrain{char prefix[24];void* Creature;};
-struct CAIStateGroupBase{void* vtable;CAIBrain* PBrain;char state[12];};
+class CAIBrain{ public:char prefix[24];void* Creature;};
+class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_MazeTutorialBattleTeleport:CAIStateGroupBase{void* _pad_0x14[2];char unused[4];long FrameOfLastTeleport;};
 #endif
 struct MazeThing;
@@ -123,7 +123,7 @@ struct CDefPointer {                       // CDefPointer<T>
 };
 
 #ifndef _MSC_VER
-struct CDefinitionManager {};
+class CDefinitionManager { public:};
 #endif
 struct MazeDefinitionManagerMethods:CDefinitionManager {
     CDefPointerBase GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)

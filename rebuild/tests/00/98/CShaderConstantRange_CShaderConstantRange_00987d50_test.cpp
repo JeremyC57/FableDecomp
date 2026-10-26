@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_base = 0;
-struct CBaseClass { CBaseClass() { ++g_base; } virtual void v00() { } virtual ~CBaseClass() { } };
-struct CShaderConstantRange : CBaseClass {
+class CBaseClass { public: CBaseClass() { ++g_base; } virtual void v00() { } virtual ~CBaseClass() { } };
+class CShaderConstantRange : public CBaseClass { public:
     long Offset; unsigned long Count;
     CShaderConstantRange() : Offset(0), Count(0) { }
     virtual void v00() { }

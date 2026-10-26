@@ -2,13 +2,13 @@
 // with counted-pointer add-ref, then a new transition-in-time component (count 1) handed to AddComponent.
 #include <cstdio>
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) {}
     virtual ~CIVCountedPointeeBase() {}
     virtual void Destroy() {}
 };
-struct CAnimComponentTransitionInTime : CIVCountedPointeeBase { long TransitionInTime; };
+class CAnimComponentTransitionInTime : public CIVCountedPointeeBase { public: long TransitionInTime; };
 struct CPtr {
     CIVCountedPointeeBase* m_pObject;
     CPtr() : m_pObject(0) {}
@@ -22,8 +22,8 @@ struct CPtr {
         return *this;
     }
 };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) {} };
-struct CAnimationEntry {
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) {} };
+class CAnimationEntry { public:
     long BankIndex; CDefString AnimName, GroupName; CPtr Components;
     CAnimComponentTransitionInTime* added;
     CAnimationEntry() : BankIndex(0), added(0) {}

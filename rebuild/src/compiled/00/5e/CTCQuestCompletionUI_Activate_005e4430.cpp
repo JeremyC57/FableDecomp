@@ -7,7 +7,7 @@
 //   SuccessSummary +0x3c, QuestObjective +0x40, LastRenderTime +0x48, ScriptName +0x50, GoldReward +0x58, RenownReward +0x5c,
 //   PBlack +0xbc and QuestCardDef +0xc4 (PDB -0x14 after the three maps).
 extern "C" void __cdecl free(void*);
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
@@ -15,14 +15,14 @@ struct CCharString {
     CCharString& operator=(const char* text);              // 0x0099EFE0
     bool operator!=(const CCharString& other) const;       // 0x0099E900
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                        // 0x0099B510
     CWideString& operator=(const CWideString& other);      // 0x0099B7D0
 };
 struct CDef { virtual void v00(); virtual void DeleteThis(); long RefCount;
     __forceinline void Release() { if (--RefCount == 0) DeleteThis(); } };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* P;
     __forceinline CDefPointer() : P(0) { }
     __forceinline T* operator->() const { return P; }
@@ -42,7 +42,7 @@ template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_stora
     unsigned long size() const { return _M_finish - _M_start; }
     const T& operator[](unsigned long i) const { return *(begin() + i); }
     const T* begin() const { return _M_start; } };
-struct CQuestCardDef : CDef {
+class CQuestCardDef : public CDef { public:
     unsigned char _pad08[0x4c - 0x08];
     vector<long> RewardObjects;                            // +0x4c
 };
@@ -50,7 +50,7 @@ struct CObjectDef : CDef {
     unsigned char _pad08[0x7d - 0x08];
     unsigned char Type;                                    // +0x7d
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     static CDefinitionManager* __fastcall Get();           // 0x0044C6B0
     bool GetDef(long index, CDefPointer<CObjectDef>* out); // 0x0042B040 (same-TU stand-in below)
 };
@@ -62,8 +62,8 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<COb
 }
 #pragma auto_inline(on)
 bool __fastcall IsAugmentation_005d9930(long index);                 // 0x005D9930
-struct CThing { unsigned char _pad00[0x8c]; unsigned short DefIndex; };
-struct CTCQuestCard {
+class CThing { public: unsigned char _pad00[0x8c]; unsigned short DefIndex; };
+class CTCQuestCard { public:
     void*  vftable;
     CThing* Owner;                                         // +0x04
     CThing* GetOwner() const { return Owner; }
@@ -84,7 +84,7 @@ struct CBoastList {
     CBoastList& operator=(const CBoastList& o);            // 0x005E9630
     void clear();                                          // 0x004B8C00
 };
-struct CQuestManager { unsigned char _pad00[0x6c]; CBoastList Boasts; };
+class CQuestManager { public: unsigned char _pad00[0x6c]; CBoastList Boasts; };
 extern CQuestManager* g_pQuestManager;                     // 0x013B89FC
 struct CComponent { virtual void v00(); };
 struct CFrontEndManager {
@@ -94,7 +94,7 @@ struct CFrontEndManager {
 struct CScreenFilter {
     void* vfp;
 };
-struct CPlayerGui { void Close(bool b); };                 // 0x00438400
+class CPlayerGui { public: void Close(bool b); };                 // 0x00438400
 extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
 double __fastcall GFGetTime();                             // 0x009E1BC0
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
@@ -110,7 +110,7 @@ struct CFilterComponent {
     virtual void vb0(); virtual void vb4(); virtual void vb8(); virtual void vbc();
     virtual void SetFocus(bool b);                                            // +0xc0
 };
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI { public:
     void* vftable;                                         // +0x00 (a real vptr pads to 8 beside the double)
     unsigned char _pad04[0x0c - 0x04];
     bool Active;                                           // +0x0c

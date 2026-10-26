@@ -9,7 +9,7 @@
 // lives in the `push ecx` frame slot and is destroyed after operator+ built the result in place.
 #include "fable_string.h"
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CWideString __fastcall GetDocumentsFolder();               // 0x0041A430
     static CWideString __fastcall GetAutoSaveCheckPointFileName();
 };

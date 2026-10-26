@@ -14,8 +14,8 @@
 // The bullet-time object is reached through an inline GetBulletTime() (direct `PWorld->m_pBulletTime` loads the
 // argument first and lets VC cross-jump the two virtual calls into one).
 #pragma pack(push, 4)
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCamera {
 public:
     C3DVector       WorldPosition;
@@ -32,7 +32,7 @@ struct CInterpolationInfoSet {
     float GTPredictedTimeSinceLastRenderFrame;
     float WFInterpolate;
 };
-struct CInterpolationInfo {
+class CInterpolationInfo { public:
     CInterpolationInfoSet Current;
     CInterpolationInfoSet Last;
     CInterpolationInfoSet PausedCurrent;
@@ -42,7 +42,7 @@ struct CInterpolationInfo {
     long                  WFServerCurrentTime;
 };
 class CIEngine;
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     CInterpolationInfo Interpolate;                            // +0x00
     CIEngine*          Engine;                                 // +0x34
     bool               Edit2DEngine;                           // +0x38

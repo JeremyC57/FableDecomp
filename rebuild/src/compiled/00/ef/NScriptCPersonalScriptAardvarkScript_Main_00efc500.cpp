@@ -15,18 +15,18 @@
 //   destructors only at the return inside the StartScriptingEntity wait loop and calls the out-of-line copies elsewhere, so
 //   both are destructor-less views destroyed by hand; the movie is destroyed inline except at the late terminate exit
 //   (0x006E7B80).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Release()
@@ -42,10 +42,10 @@ template <class T> struct CCountedPointer {
     ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
 struct CScriptThingImpl;
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C {vptr, PImp}
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C {vptr, PImp}
     CCountedPointer<CScriptThingImpl> PImp;            // +0x04
     ~CScriptThing();                                   // out-of-line copy 0x004AA840
 };
@@ -61,7 +61,7 @@ struct CScriptThingLocal {                             // a by-value CScriptThin
     void Destroy() { reinterpret_cast<CScriptThing*>(this)->CScriptThing::~CScriptThing(); }
     __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
 };
-struct CBaseObject {                                   // CBaseIntelligentPointer, vtable 0x0129A7D8
+class CBaseObject { public:                                   // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -73,7 +73,7 @@ struct CBaseObjectDtor {                               // destructor-only view o
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
         void* Data; CCPPointerInfo* Info;
         __forceinline void Release()
@@ -106,7 +106,7 @@ struct CMovieImpPointer {
     ~CMovieImpPointer();                               // 0x006E7AB0
 };
 struct CMovieImpWords { void* Data; void* Info; };
-struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4; destructor-less view, destroyed by hand
+class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4; destructor-less view, destroyed by hand
     CMovieImpWords PImp;                               // +0x08
     __forceinline CScriptGameResourceObjectMovieBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void m001();
@@ -118,7 +118,7 @@ struct CScriptGameResourceObjectMovieBase : CBaseObject {   // vtable 0x01260EF4
     void DestroyOutOfLine();                           // the implicit destructor's out-of-line copy 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -194,13 +194,13 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C
     virtual void v377(); virtual void v378();
     virtual void PauseAllNonScriptedEntities(bool pause);   // slot 379 (+0x5ec)
 };
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char         _base00[0x40];
     CGameScriptInterface* GSI;                         // +0x40
     bool IsActiveThreadTerminating();                  // 0x00CB7940
 };
 namespace NScript {
-struct CPersonalScript_AardvarkScript : CScriptBase {
+class CPersonalScript_AardvarkScript : public CScriptBase { public:
     void Main();
 };
 

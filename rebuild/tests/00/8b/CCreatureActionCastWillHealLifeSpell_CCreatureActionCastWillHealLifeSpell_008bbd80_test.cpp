@@ -2,10 +2,10 @@
 #define ADDR "008bbd80"
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
 struct CBaseIntelligentPointer {
     CThing* PItem;
     CBaseIntelligentPointer() : PItem((CThing*)1) {}
@@ -17,7 +17,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* i) { SetPItem(i); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& o) { SetPItem(o.GetPItem()); return *this; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* owner; long code; long s0; const char* anim; CIntelligentPointerThing PTarget;
     CCombatActionBase(CThingCreatureBase* o, long c, const CSoundPair& s) : owner(o), code(c), s0(s.FirstSound), anim(0) {}
     void SetAnimationName(const CCharString& n) { anim = n.t; }

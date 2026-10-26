@@ -14,7 +14,7 @@ struct CHeroStats {
     float m_bestSpotTheAdditionTime;    // +0x190
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x21];
     bool GameWon;                       // +0x21
     unsigned char _pad_0x22[0xa];

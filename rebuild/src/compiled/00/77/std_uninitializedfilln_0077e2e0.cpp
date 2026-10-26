@@ -11,8 +11,8 @@
 // Caller: the vector assign at 0x0077EF30.
 #include <new>
 struct __false_type { __false_type() {} };
-struct CCharStringData;
-struct CCharString { CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
 struct SRec { long a, b, c; SRec(const SRec& o) : a(o.a), b(o.b), c(o.c) {} };
 struct SElem { CCharString name; SRec rec; SElem(const SElem& o) : name(o.name), rec(o.rec) {} };
 namespace std {

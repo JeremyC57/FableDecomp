@@ -4,9 +4,9 @@
 #include <cstdio>
 #include <map>
 
-struct CThing;
-struct CTCStealth { CThing* lastSource; int calls; void SetAsInDanger(CThing* s, int status) { lastSource = s; calls += (status == 0); } };
-struct CThing { bool hasStealth; CTCStealth stealth; bool attacking, combatant; long id;
+class CThing;
+class CTCStealth { public: CThing* lastSource; int calls; void SetAsInDanger(CThing* s, int status) { lastSource = s; calls += (status == 0); } };
+class CThing { public: bool hasStealth; CTCStealth stealth; bool attacking, combatant; long id;
     bool GetInterface(CTCStealth** out) { if (!hasStealth) return false; *out = &stealth; return true; } };
 struct CManager {
     std::map<long, CThing*> attackedBy;                     // attacker id -> its target

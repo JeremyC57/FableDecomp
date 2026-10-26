@@ -7,12 +7,12 @@
 // containers InitialActiveQuests / RegisteredQuests / ActiveTestQuests ahead of them are 12 bytes in retail), so
 // engine/CWorld.h (PDB layout) is not used and a local model is.
 // Shape: a change test on the byte, the store, then on a disable the mini map's open state is captured.
-struct CPlayerGui {
+class CPlayerGui { public:
     bool IsMiniMapActive() const;               // 0x00437860
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0xdd];
     bool          MiniMapEnabled;               // +0xDD (PDB +0xE9)
     bool          MiniMapActiveBeforeDisabled;  // +0xDE (PDB +0xEA)

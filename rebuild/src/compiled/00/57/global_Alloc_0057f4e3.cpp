@@ -4,7 +4,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // MSVCR71 import thunk 0x00BFEA0E
 
-struct CScriptDataBase;
+class CScriptDataBase;
 
 // Subobject at +8 whose constructor takes the long arg (native thiscall, value-returning).
 namespace N_0057a3a2 { struct SubObj {

@@ -9,14 +9,14 @@
 // type 0xda = bit 26 of the +0x38 word), map +0x44, dead bit +0x91.
 // Shape: the trophy lookup is the unchecked out-parameter GetInterface (the absent arm reads the never-written local from the
 // dead `user` argument slot, GOTCHAS chunk 129); the target component is loaded straight into ecx (HasTC + one-ternary GetTC).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v000();                                // the polymorphic root holds the vptr
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
@@ -50,7 +50,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 #define V(n) virtual void v##n();
     V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39)
@@ -69,7 +69,7 @@ struct CTCCarriedActionUseWallMount {                   // embedded action (CTCC
     virtual void OnActionUse(CThingCreatureBase* user); // slot 28 (+0x70)
 #undef V
 };
-struct CTCTrophy {
+class CTCTrophy { public:
     unsigned char _pad00[0x14];
     bool MinigameInProgress;                            // +0x14
     void OnTrophyUseAction(CThingCreatureBase* user);   // 0x006DDD30

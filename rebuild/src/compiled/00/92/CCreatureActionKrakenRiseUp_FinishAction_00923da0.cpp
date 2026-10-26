@@ -7,14 +7,14 @@
 // @ 0x00859A20 (direct base call, last).
 // Shape: the UNCHECKED interface-9 accessor (absent arm reads the key word); `and byte ptr [eax+1c8h],0BFh` is a bool bit-field
 // cleared in place through a NAMED local (`GetAICreature()->ImmuneToAttack = false` adds `add eax,1c8h` and a byte round trip) (CThingAICreature::ImmuneToAttack, bit 6 of +0x1c8; Ego_r.pdb +0x1f8).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCreatureModeManager {                 // interface type 0x31 component
+class CTCCreatureModeManager { public:                 // interface type 0x31 component
     bool AddMode(unsigned long mode);           // 0x0073AE10
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
@@ -49,7 +49,7 @@ struct CTCInterface9 {                          // the owner's interface-9 compo
     unsigned char _pad[0x10];
     bool          m_flag10;                     // +0x10
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _padb8[0x1c8 - 0xb8];
     bool PerformingVillageTaskFlag : 1;         // +0x1c8 bit 0 (Ego_r.pdb +0x1f8)
     bool AISuspended : 1;
@@ -61,7 +61,7 @@ struct CThingAICreature : CThing {
     bool EnableCreatureAutoPlacing : 1;         // bit 7
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void FinishAction();                // 0x00859A20 (slot 4)
     unsigned char           _pad04[4];          // +0x04

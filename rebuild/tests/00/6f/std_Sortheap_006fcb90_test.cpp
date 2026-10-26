@@ -2,9 +2,9 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-namespace NAnimationEvents { struct CEvent { long m_a, m_b; }; }
+namespace NAnimationEvents { class CEvent { public: long m_a, m_b; }; }
 static int g_blocks = 0;
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T*  Start;
     int Size;
     CSmallVector() : Start(0), Size(0) { }

@@ -23,21 +23,21 @@
 //   is taken into a local before GetSubDef (else &def is pushed before the GetPThing call); the mode manager comes from
 //   an inline accessor returning an unset local over the ternary GetTC (the out-pointer GetInterface form leaves the
 //   pointer in eax and adds `mov ecx,eax`).
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CCarryableDef {
+class CCarryableDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
     unsigned char _pad08[0x28 - 0x08];
     long CarrySlot;                                     // +0x28
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -57,10 +57,10 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CCarryableDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c(); virtual void v10();
     virtual void v14(); virtual void v18(); virtual void v1c(); virtual void v20(); virtual void v24();
     virtual void v28(); virtual void v2c(); virtual void v30(); virtual void v34();
@@ -204,7 +204,7 @@ public:
     void* PImp_Info;                                    // +0x08
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*               __vftable;
     CThingCreatureBase* ParentThing;                    // +0x04
 };

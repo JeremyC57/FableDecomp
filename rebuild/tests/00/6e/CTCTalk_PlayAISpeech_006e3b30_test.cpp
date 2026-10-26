@@ -1,7 +1,7 @@
 // Behaviour test for CTCTalk::PlayAISpeech(name, force, layer, b1, b2) @ 0x006E3B30: gate on IsPureAISpeaker || force, layer pinned to 1.
 #include <cstdio>
-struct CCharString { const char* m_pData; };
-struct CTCTalk {
+class CCharString { public: const char* m_pData; };
+class CTCTalk { public:
     bool IsPureAISpeaker; int calls; long lastLayer; bool lastB1, lastB2; const CCharString* lastName;
     long PlaySpeech(const CCharString& name, long layer, bool b1, bool b2)
     { ++calls; lastName = &name; lastLayer = layer; lastB1 = b1; lastB2 = b2; return 0; }

@@ -6,11 +6,11 @@ static int g_persistCalls = 0;
 static bool g_persistArg = false;
 static int g_destroyCalls = 0;
 
-struct CThing {
+class CThing { public:
     void SetAsGameStatePersisted_004c9c10(bool persisted) { ++g_persistCalls; g_persistArg = persisted; }
 };
 
-struct CSmashableDef {
+class CSmashableDef { public:
     long m_refCount;
     bool Smashable;
     void Destroy() { ++g_destroyCalls; }
@@ -25,7 +25,7 @@ struct CDefPointer {
     CSmashableDef* operator->() const { return m_pDef; }
 };
 
-struct CTCSmashableBase {
+class CTCSmashableBase { public:
     CThing*     ParentThing;
     long        LastWorldFrameHit;
     bool        Smashed;

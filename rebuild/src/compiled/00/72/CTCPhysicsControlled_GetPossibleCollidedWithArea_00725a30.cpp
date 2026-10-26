@@ -14,9 +14,9 @@
 // Layout (PDB, as the landed AddImpulseVelocity 0x00725250 / GetPossibleCollidedWithArea 0x00759870): CTCBase ParentThing +0x04,
 // Position +0x0c, Velocity +0x28, Radius +0x34, CTCPhysicsControlled::ImpulseVelocity +0x88. engine/CTCPhysicsStandard.h does
 // not name the CTCPhysicsBase members (opaque pads), so the class is modelled locally.
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}
@@ -29,7 +29,7 @@ struct C2DBoxI {
     }
     void ValidateOrientationAndFlip();          // 0x00A3A150
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
 };

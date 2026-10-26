@@ -6,7 +6,7 @@
 // pointer at +0, a CCharString at +0x1c; the manifest's CBrainOutput label is propagated). The class
 // is not polymorphic: VC7.1 emits a non-virtual `??_G` in any TU that `delete`s one (the Destroy
 // helper); the flag test is scheduled before the two null stores.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                             // 0x0099EAE0
 };

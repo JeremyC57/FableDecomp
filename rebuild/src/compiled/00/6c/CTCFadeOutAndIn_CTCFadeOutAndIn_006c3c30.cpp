@@ -12,8 +12,8 @@
 // Shape: plain initialisers with one zero register; the vector is the STLport `_Vector_base` +
 // `_STLP_alloc_proxy` model addressed once in edi; the body pushes a CIntelligentPointer temporary
 // built in the frame (base ctor, vtable store, SetPItem) and destroys it out of line.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     ~CBaseIntelligentPointer();                             // 0x00A01C10
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -39,7 +39,7 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     void push_back(const T& value);                         // 0x004AD520
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -47,7 +47,7 @@ struct CTCBase {
     CTCBase(CThing& thing);                                 // 0x00686800
 };
 
-struct CTCFadeOutAndIn : CTCBase {                          // vtable 0x0125DA0C
+class CTCFadeOutAndIn : public CTCBase { public:                          // vtable 0x0125DA0C
     bool  FadingOut;                                        // +0x0c
     bool  FadingIn;                                         // +0x0d
     float Alpha;                                            // +0x10

@@ -12,14 +12,14 @@
 //   loading the filter's thing into a named local before the GetPItem call -- read inline it is compared from memory
 //   after the call); with the extra call the deed log stays in its frame
 //   word (the GetInterface key's slot) and `this` is parked in the frame.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -42,10 +42,10 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                    // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
 };
 struct CBaseIntelligentPointer {
@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                      // +0x04
     CThing* GetPItem() const;                           // 0x00A01B50
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
     long          DeedHandle;                           // +0x04
     unsigned char _pad08[0x18 - 0x08];
@@ -61,10 +61,10 @@ struct COpinionDeed {
     unsigned char _pad20;
     bool          IsStillHappening;                     // +0x21
 };
-struct COpinionDeedFilter_IsStillHappening {
+class COpinionDeedFilter_IsStillHappening { public:
     bool operator()(const COpinionDeed& deed) const { return deed.IsStillHappening; }
 };
-struct COpinionDeedFilter_TargetIs {
+class COpinionDeedFilter_TargetIs { public:
     CThing* Target;                                     // +0x00
     bool operator()(const COpinionDeed& deed) const
     {
@@ -72,13 +72,13 @@ struct COpinionDeedFilter_TargetIs {
         return deed.PTarget.GetPItem() == target;
     }
 };
-template <class F1, class F2> struct CFilter_Bind2 {
+template <class F1, class F2> class CFilter_Bind2 { public:
     const F1& First;                                    // +0x00
     const F2& Second;                                   // +0x04
     CFilter_Bind2(const F1& first, const F2& second) : First(first), Second(second) { }
     bool operator()(const COpinionDeed& deed) const { return First(deed) && Second(deed); }
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
 };
 struct SHandleNode {                                    // STLport list<long> node
@@ -89,7 +89,7 @@ struct SHandleNode {                                    // STLport list<long> no
 struct CHandleList {                                    // retail list: the sentinel node pointer
     SHandleNode* head;
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     unsigned char _pad04[0x54 - 0x04];
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)

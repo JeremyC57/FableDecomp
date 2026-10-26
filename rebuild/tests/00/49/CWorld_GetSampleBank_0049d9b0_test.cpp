@@ -3,7 +3,7 @@ struct RefTarget {
     char pad0[0x10];
     unsigned long refs;
 };
-struct CPixelShader {
+class CPixelShader { public:
     char pad0[8];
     RefTarget* inner;
 };

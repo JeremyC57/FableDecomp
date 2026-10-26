@@ -11,7 +11,7 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct CPlayerGui {
+class CPlayerGui { public:
     int m_calls; bool m_a, m_b;
     void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b) { ++m_calls; m_a = a; m_b = b; }
 };
@@ -44,7 +44,7 @@ struct CTCMenu {                                   // component kind 0xf6
     bool m_active;
     bool IsActive() { return m_active; }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -63,7 +63,7 @@ public:
     CThing* m_hero;
     CThing* GetHeroThing() { return m_hero; }
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00() {}

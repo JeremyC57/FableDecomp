@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     bool FastCompare(const CCharString& other) const { return std::strcmp(m_pData, other.m_pData) < 0; }
 };

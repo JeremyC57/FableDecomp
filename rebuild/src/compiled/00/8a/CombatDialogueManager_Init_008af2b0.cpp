@@ -11,7 +11,7 @@
 // Shape: the def name is an implicit (lea-passed) CCharString temporary built before the pushes; each insert builds its
 //   {group, {0}} pair in the same 8-byte frame slot (the zero kept in ebx), which with the 8-byte insert result gives the
 //   `and esp,-8` frame. Speed-optimised (default) TU.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -41,11 +41,11 @@ public:
     long  Scared;                                      // +0x84
     long  Flee;                                        // +0x88
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     T* operator->() const { return Data; }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     bool GetDef(const CCharString& name, CDefPointer<const CCombatDialogueDef>* out);   // 0x008AEE60
 };

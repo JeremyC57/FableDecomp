@@ -1,4 +1,4 @@
-struct CHeroTitleDef;
+class CHeroTitleDef;
 
 extern void __fastcall CHeroTitleDef_Copy_impl(CHeroTitleDef* self, void* src);
 

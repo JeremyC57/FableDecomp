@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 static int g_vectors = 0;
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;
     long          BlendType;
     unsigned long DiffuseColour;
@@ -29,7 +29,7 @@ template <class T> struct vector {
         _M_end_of_storage = _M_finish;
     }
 };
-struct CEngineTextureDecal {
+class CEngineTextureDecal { public:
     long                        OriginalTextureIndex;
     long                        DecalID;
     vector<CCompositeBlendDesc> OverlaidBlends;

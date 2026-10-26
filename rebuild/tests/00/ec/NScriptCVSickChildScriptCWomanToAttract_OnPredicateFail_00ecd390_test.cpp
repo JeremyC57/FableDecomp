@@ -2,13 +2,13 @@
 // killed and had not yet handed over her object.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CDefString { const char* name; operator CCharString() const { return CCharString(name); } };
-struct CScriptDef { CDefString IngredientObject; float KilledSomeoneForMushroom; };
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CDefString { public: const char* name; operator CCharString() const { return CCharString(name); } };
+class CScriptDef { public: CDefString IngredientObject; float KilledSomeoneForMushroom; };
 static CScriptDef g_def = { { "OBJECT_MUSHROOM" }, -5.0f };
 static CScriptDef* g_pScriptDef = &g_def;
-struct CScriptThing { bool killed; char asked[32]; bool MsgIsKilledBy(const CCharString& k) { std::strcpy(asked, k.text); return killed; } };
-struct CGameScriptInterface {
+class CScriptThing { public: bool killed; char asked[32]; bool MsgIsKilledBy(const CCharString& k) { std::strcpy(asked, k.text); return killed; } };
+class CGameScriptInterface { public:
     int gives; char object[32]; long count; bool show; float morality;
     void GiveHeroObject(const CCharString& o, long c, bool s) { ++gives; std::strcpy(object, o.text); count = c; show = s; }
     void GiveHeroMorality(float m) { morality = m; }

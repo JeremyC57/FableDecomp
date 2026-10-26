@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool m_forceFrameUpdate; int m_calls;
     void SetForceFrameUpdate(bool update) { m_forceFrameUpdate = update; ++m_calls; }
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CTCExplodingObject {
+class CTCExplodingObject { public:
     CThing* ParentThing; long CountdownTimer;
     void SetCountdownTimer(long frames)
     {

@@ -11,11 +11,11 @@
 extern const float g_floatEpsilon;              // 0x0129BA3C (1e-4f)
 extern const float g_floatZero;                 // 0x0122DEDC (0.0f)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 
-struct CActionInputControl {
+class CActionInputControl { public:
     long GameAction;                            // +0x00 EGameAction
     long ControllerType;                        // +0x04 EControllerType
     long KeyboardKey;                           // +0x08 EInputKey

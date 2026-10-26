@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_capture = 0, g_anim = 0;
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& Get() { static CUserProfileManager m; return m; }
     void CaptureBackBufferForUIBackgroundIfNonExistant() { ++g_capture; }
 };

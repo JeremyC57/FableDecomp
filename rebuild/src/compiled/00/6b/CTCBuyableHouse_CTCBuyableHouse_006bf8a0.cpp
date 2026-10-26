@@ -10,7 +10,7 @@
 // VirtualMoneyBags +0x44, HasPreviouslyBeenBuyable +0x48, IsResidential +0x49. The header flattens the vptrs and the pointer
 // members, so the class is restated polymorphically with the same names and offsets.
 class CThing;
-struct CBuyableHouseDef;
+class CBuyableHouseDef;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* PData;                                // +0x04
@@ -20,7 +20,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {     // CIntelligentPointe
     virtual void v00();
     CIntelligentPointer() {}
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
 };

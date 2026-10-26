@@ -8,12 +8,12 @@
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 extern const char g_EmptyCharString[];             // 0x0129AAF4
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     const char* GetChars() const { return m_pData == 0 ? g_EmptyCharString : m_pData->m_pChars; }
 };
@@ -26,7 +26,7 @@ struct SSymbolNameRecord {                         // 0x24 bytes
     unsigned char _pad18[0x24 - 0x18];
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     unsigned char      _pad00[0x30];
     SSymbolNameRecord* m_pFirst;                   // +0x30
     SSymbolNameRecord* m_pLast;                    // +0x34

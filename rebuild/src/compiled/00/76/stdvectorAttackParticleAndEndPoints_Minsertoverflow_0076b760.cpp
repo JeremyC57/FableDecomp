@@ -32,7 +32,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                        // +0x04
 };
 
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
 };
 
 struct AttackParticleAndEndPoints {                         // 0x18 (Ego_r.pdb)

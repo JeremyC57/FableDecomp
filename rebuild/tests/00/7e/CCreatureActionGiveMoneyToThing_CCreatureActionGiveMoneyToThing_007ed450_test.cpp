@@ -2,16 +2,16 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CAnimationEntry { char name[40]; bool loaded; int liveStrings; };
+class CAnimationEntry { public: char name[40]; bool loaded; int liveStrings; };
 static CAnimationEntry g_entry;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     int id;
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loaded)
     { std::strcpy(g_entry.name, name.m_pData); g_entry.loaded = loaded; g_entry.liveStrings = g_liveStrings; return &g_entry; }
@@ -20,7 +20,7 @@ static CAnimationEntry* GetRandomLoadedAnim(CThingCreatureBase* owner, const CCh
 {
     return owner->GetRandomLoadedAnimFromName(name, true);
 }
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -30,11 +30,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0), m_sets(0) { }
     void SetPItem(void* p) { m_pItem = p; ++m_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem(item); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* m_owner; float m_a, m_b; CAnimationEntry* m_anim; CSoundPair m_sound; long m_c, m_d;
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* anim, const CSoundPair& s, long c, long d)
         : m_owner(owner), m_a(a), m_b(b), m_anim(anim), m_sound(s), m_c(c), m_d(d) { }
@@ -45,7 +45,7 @@ static bool BaseOk(const CCreatureActionBase& a, CThingCreatureBase* owner, floa
         g_entry.loaded && g_entry.liveStrings == 1 && g_liveStrings == 0 && a.m_sound.FirstSound == 0 &&
         a.m_sound.LastSound == 0 && a.m_c == 0 && a.m_d == 0;
 }
-struct CCreatureAction_GiveMoneyToThing : CCreatureActionBase {
+class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:
     CIntelligentPointer<CThing> PReceivingThing; long Amount;
     CCreatureAction_GiveMoneyToThing(CThingCreatureBase* owner, CThing* r, long amount)
         : CCreatureActionBase(owner, -1.0f, 0.75f, GetRandomLoadedAnim(owner, "GIVE_MONEY"), CSoundPair(), 0, 0),

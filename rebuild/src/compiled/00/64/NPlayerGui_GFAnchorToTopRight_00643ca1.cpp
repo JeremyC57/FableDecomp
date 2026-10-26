@@ -8,14 +8,14 @@
 // Shape: the result is built with C2DVector's (x, y) constructor; arguments evaluate right to left, so pos.Y is read into a
 // frame word before the call; X = width + pos.X - 640.
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX;
     float TLY;
     float BRX;
@@ -24,12 +24,12 @@ struct C2DBoxF {
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayManager;                    // 0x013B8390

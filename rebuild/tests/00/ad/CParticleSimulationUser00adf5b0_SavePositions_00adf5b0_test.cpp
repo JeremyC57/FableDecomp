@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CParticleSimulationUser_00adf5b0::SavePositions @ 0x00ADF5B0
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 class CParticleSimulation { public: unsigned long Size; C4DVector* Positions; C4DVector* LastPositions; C4DVector* SavedPositions; };
 class CParticleSimulationUser_00adf5b0 {
 public:

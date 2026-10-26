@@ -8,8 +8,8 @@
 // Shape: speed TU (argument loaded and pushed); the derived vtable store sits between `lea edi` and the
 // member's base constructor; the CIntelligentPointer(item = 0) constructor is inlined (base ctor, its
 // vtable, SetPItem(0)); the bool is stored after the member constructor (declaration order).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -29,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01237F1C
     CIntelligentPointer(CBaseObject* item = 0) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CTCDeadShotInThingTracker : CTCBase_Calls {
+class CTCDeadShotInThingTracker : public CTCBase_Calls { public:
     CIntelligentPointer PThingStuckIn;                      // +0x0c CIntelligentPointer<const CThing>
     bool                HasThingStuckIn;                    // +0x14
     virtual void v00();                                     // own vtable 0x0127040C

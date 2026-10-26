@@ -1,20 +1,20 @@
 // Behaviour test: CThingAICreature::Create -- new + construct, InitialPos set, construct from the parameters, physics placed with the default facing, activation; null on any failure
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() { Up.X = 0.0f; Up.Y = 0.0f; Up.Z = 1.0f; Forward.X = 0.0f; Forward.Y = 1.0f; Forward.Z = 0.0f; }
 };
 static int g_paramsAlive = 0;
-struct CTCParamsPhysicsBase {
+class CTCParamsPhysicsBase { public:
     C3DVector       Position;
     CRightHandedSet Rhs;
     CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& r) : Position(p), Rhs(r) { ++g_paramsAlive; }
     ~CTCParamsPhysicsBase() { --g_paramsAlive; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     C3DVector placedAt;
     float     upZ, forwardY;
     int       constructs;
@@ -26,11 +26,11 @@ struct CTCPhysicsBase {
         ++constructs;
     }
 };
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 static bool g_failConstruct = false, g_failActivation = false, g_allocRefuses = false;
 
-struct CThingAICreatureInit { int dummy; };
-struct CThingAICreature {
+class CThingAICreatureInit { public: int dummy; };
+class CThingAICreature { public:
     CTCPhysicsBase  physics;
     CTCPhysicsBase* PhysicsTC;
     C3DVector InitialPos;

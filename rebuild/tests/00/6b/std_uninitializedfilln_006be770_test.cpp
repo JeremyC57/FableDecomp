@@ -6,12 +6,12 @@
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
 #include <new>
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;                        // +0x00
     CWideString(const CWideString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; }
 };
-struct CMusicManager {
-    struct CRegisteredMusicEntry {              // 20 bytes
+class CMusicManager { public:
+    class CRegisteredMusicEntry { public:              // 20 bytes
         CWideString SrcFileName;                // +0x00
         CWideString DstFileName;                // +0x04
         float       Gain;                       // +0x08

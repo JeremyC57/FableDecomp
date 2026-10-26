@@ -10,7 +10,7 @@
 //
 // Lane feedback: byte-exact only under #pragma optimize("s",on) (shared epilogue, pass-through push);
 // the lander sweep finds it. MATCH["s"].
-struct CThing;
+class CThing;
 
 // Vtable-shaped view of the crop task; only slots 4 and 8 are called here.
 struct CVillageTaskVirtuals {

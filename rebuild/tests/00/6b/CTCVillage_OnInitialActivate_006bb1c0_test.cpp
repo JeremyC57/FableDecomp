@@ -11,7 +11,7 @@ void __fastcall Inner_Do(Inner* self, int edx, unsigned char v){
     g_calls++; g_lastSelf=self; g_lastEdx=edx; g_lastV=v;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Inner* p0; int ParentThing;
     char pad8,pad9,pada,padb;
     unsigned char bytec; char flagd;

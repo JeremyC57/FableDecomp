@@ -9,11 +9,11 @@
 // Shape: the static frame getter is called through the world pointer (`GetWorld()->GetWorldFrame()`), so
 // GetWorld runs for nothing and no `mov ecx,eax` follows it; the false result is preloaded in bl before
 // the calls and the true arm is `mov al,1 ; jg` -- a result local initialised to false and set in the if.
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     long          LastWorldFrameHit;                        // +0x0c

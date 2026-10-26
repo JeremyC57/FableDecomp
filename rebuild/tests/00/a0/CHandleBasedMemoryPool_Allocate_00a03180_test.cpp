@@ -1,11 +1,11 @@
 // Behaviour test for CHandleBasedMemoryPool::Allocate @ 0x00A03180 (copy of the model with stub lock/handler/allocator).
 #include <cstdio>
 static int g_enter, g_leave, g_tryFail, g_handled, g_defrags;
-struct CFailedAllocationHandler {
-    long freePerCall; int budget; struct CHandleBasedMemoryPool* pool;
+class CFailedAllocationHandler { public:
+    long freePerCall; int budget; class CHandleBasedMemoryPool* pool;
     bool HandleFailure(unsigned long size);
 };
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     long PoolSize, AllocatedSize, LargestFreeArea; bool MultiThreaded, ShutdownFlag;
     unsigned long MaxFreeSizeBeforeDefrag, MaxFreeSizeBeforeFailure; CFailedAllocationHandler* FailureHandler; bool defragWorks;
     bool BeginCritical(bool tryOnly) { if (!MultiThreaded) return true; if (tryOnly && g_tryFail) return false; ++g_enter; return true; }

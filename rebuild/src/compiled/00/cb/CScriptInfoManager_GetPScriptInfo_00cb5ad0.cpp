@@ -51,7 +51,7 @@ struct pair {
 }
 
 template <class K, class V>
-struct CKeyPairCompareLess { };
+class CKeyPairCompareLess { public: };
 
 template <class K, class V, class C>
 class CVectorMap {

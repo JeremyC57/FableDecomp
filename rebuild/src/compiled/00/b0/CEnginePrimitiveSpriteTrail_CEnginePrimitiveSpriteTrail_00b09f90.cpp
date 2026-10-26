@@ -16,19 +16,19 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 enum EEnginePrimitiveType { ENGINE_PRIMITIVE_SPRITE_TRAIL = 0x14 };
-struct CEnginePrimitiveThemeChannelDesc {                // 4 bytes (PDB)
+class CEnginePrimitiveThemeChannelDesc { public:                // 4 bytes (PDB)
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEnginePrimitive {                                // 12 bytes (PDB)
+class CEnginePrimitive { public:                                // 12 bytes (PDB)
     EEnginePrimitiveType             Type;               // +0x00
     long                             InterpolationSet;   // +0x04 EEngineInterpolationSet
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;   // +0x08
     CEnginePrimitive(EEnginePrimitiveType type) : Type(type), InterpolationSet(0) { }
 };
 
-struct C3DVector  { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector  { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector XAxis, YAxis, ZAxis, Position;
     CMatrix3x4() { SetIdentity(); }
     void SetIdentity()                                   // chained assignments: the stores run right to left

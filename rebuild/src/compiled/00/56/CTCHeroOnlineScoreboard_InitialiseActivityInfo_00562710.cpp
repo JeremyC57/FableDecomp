@@ -8,8 +8,8 @@
 // +0x0d), as the landed CreateStringFromMyScores 0x0055F480.
 // Shape: one statement per field in retail order; operator[] is the inline _M_start[n], so every store reloads _M_start
 // through the cached &ActivityInfo (esi). The literals reused across activities are pooled by the linker.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString& operator=(const char* text);        // 0x0099EFE0
 };

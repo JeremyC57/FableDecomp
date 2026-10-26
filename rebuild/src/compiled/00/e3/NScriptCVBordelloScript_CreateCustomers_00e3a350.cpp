@@ -11,22 +11,22 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -42,9 +42,9 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const; virtual void t005() const;
     virtual const C3DVector& GetPos() const;                // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
@@ -74,14 +74,14 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual CScriptThing CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const; //slot91 0x008a9100
 };
 extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
-struct CTimer {                                             // a script timer: the interface's timer index
+class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
 };
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];                              // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                       // 0x00CB7940

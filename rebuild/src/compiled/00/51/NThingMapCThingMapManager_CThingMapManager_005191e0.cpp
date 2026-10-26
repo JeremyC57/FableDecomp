@@ -19,7 +19,7 @@ struct CBaseClassNonCopyable {                              // vtable 0x0129A7C4
     virtual void v00();
 };
 
-template <class T> struct CArray {                          // retail CArray: three pointers (12 bytes)
+template <class T> class CArray { public:                          // retail CArray: three pointers (12 bytes)
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -50,12 +50,12 @@ struct CLongSet : CLongSetBase {                            // std::set<long>
     }
 };
 
-struct CWorld;
+class CWorld;
 
 namespace NThingMap {
 
-struct CThingMapManager : CBaseClassNonCopyable {           // vtable 0x01244678
-    struct CThingMapInfo;
+class CThingMapManager : public CBaseClassNonCopyable { public:           // vtable 0x01244678
+    class CThingMapInfo;
     CWorld*                 PWorld;                         // +0x04
     CArray<CThingMapInfo>   ThingMaps;                      // +0x08
     CArray<CThingMapInfo*>  ActiveThingMaps;                // +0x14

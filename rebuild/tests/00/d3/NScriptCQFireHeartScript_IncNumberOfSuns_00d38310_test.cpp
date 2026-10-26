@@ -9,7 +9,7 @@
 #define __forceinline inline
 #define __int64 long long
 #endif
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CScriptBase {                                    // retail 0x40 bytes (PD
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
 
-struct CQ_FireHeartScript : CScriptBase {
+class CQ_FireHeartScript : public CScriptBase { public:
     void*         GSI;                                  // +0x40
     void*         PMasterData;                          // +0x44
     unsigned char _pad048[0x24];                        // +0x48 .. +0x6c (mission flags, cutscene maps, prophet counts)

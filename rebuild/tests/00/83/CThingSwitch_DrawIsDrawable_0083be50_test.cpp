@@ -1,17 +1,17 @@
 #include <cstdio>
 // Behaviour test for CThingSwitch::DrawIsDrawable (0x0083BE50): engine flag AND base predicate.
-struct CDisplayEngine {
+class CDisplayEngine { public:
     bool enabled;
     bool IsDrawingEnabled() { return enabled; }
 };
-struct CThing {
+class CThing { public:
     CDisplayEngine* engine;
     bool baseDrawable;
     int baseCalls;
     CDisplayEngine* GetDisplayEngine() { return engine; }
     bool BaseDrawIsDrawable() { ++baseCalls; return baseDrawable; }
 };
-struct CThingSwitch : CThing {
+class CThingSwitch : public CThing { public:
     bool DrawIsDrawable() { return GetDisplayEngine()->IsDrawingEnabled() && BaseDrawIsDrawable(); }
 };
 int main()

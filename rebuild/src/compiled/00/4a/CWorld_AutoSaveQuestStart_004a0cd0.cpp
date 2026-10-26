@@ -11,20 +11,20 @@
 // Shape: the save result is held in bl across the file-name temporary's destructor; both paths are named locals.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                          // 0x0099B510
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();            // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetAutoSaveQuestStartFileName() const;       // 0x004066B0 ("AutoSave" + ".qs")
     CWideString GetAutoSavePathName() const;                 // 0x00406F70 ("AutoSave" path)
     CWideString GetAutoSaveQuestStartPathName() const;       // 0x00407FD0 ("AutoSave" + ".qs" path)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x134];
     long          MostRecentSaveType;                         // +0x134 ESaveType (PDB +0x144)
     long          MostRecentSaveTypeBeforeManualSave;         // +0x138 ESaveType (PDB +0x148)

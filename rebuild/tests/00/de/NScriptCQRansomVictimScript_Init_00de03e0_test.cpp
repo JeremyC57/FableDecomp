@@ -4,20 +4,20 @@
 // activation, timer and member/master-data resets happen in retail order with retail values.
 static char g_log[4096];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString() { Text[0] = 0; }
     CCharString(const char* t) { std::strcpy(Text, t); }
     CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void SetTimer(long timer, long seconds) { char b[64]; std::sprintf(b, "T:%ld:%ld", timer, seconds); Log(b); }
     void AddQuestRegion(const CCharString& q, const CCharString& r) { char b[128]; std::sprintf(b, "R:%s:%s", q.Text, r.Text); Log(b); }
     void ActivateQuest(const CCharString& q) { char b[128]; std::sprintf(b, "A:%s", q.Text); Log(b); }
     void AddBoast(const CCharString& d, long id, long cost, long reward, bool flag, const CCharString& extra, long ev)
     { char b[160]; std::sprintf(b, "B:%s:%ld:%ld:%ld:%d:%s:%ld", d.Text, id, cost, reward, (int)flag, extra.Text, ev); Log(b); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x1b0];
     long RansomVictimNakedBoastCost;                    // +0x1B0
     long RansomVictimNakedBoastReward;                  // +0x1B4
@@ -39,7 +39,7 @@ struct CQ_SunnyvaleMasterData {
     bool RansomVictimSaveVictim;                        // +0x12C
     bool RansomVictimHaveVictimKilled;                  // +0x12D
 };
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
 struct CQ_RansomVictimScript : CScriptBase {

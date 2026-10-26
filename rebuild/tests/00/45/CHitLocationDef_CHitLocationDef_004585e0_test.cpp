@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_baseCtors = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() {}
     CParentDefClassBase()
     {
@@ -10,8 +10,8 @@ struct CParentDefClassBase {
         for (unsigned i = 4; i < 0x44; ++i) p[i] = 0xff;
     }
 };
-struct CPhysicalPrimitiveInit { long m_type; long m_param; CPhysicalPrimitiveInit() : m_type(0), m_param(0) {} };
-struct CHitLocationDef : CParentDefClassBase {
+class CPhysicalPrimitiveInit { public: long m_type; long m_param; CPhysicalPrimitiveInit() : m_type(0), m_param(0) {} };
+class CHitLocationDef : public CParentDefClassBase { public:
     unsigned char _body[0x38];
     CPhysicalPrimitiveInit PhysicalPrimitive;
     virtual void v00() {}

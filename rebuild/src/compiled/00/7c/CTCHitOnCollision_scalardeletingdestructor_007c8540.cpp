@@ -1,4 +1,4 @@
-struct CTCHitOnCollision {
+class CTCHitOnCollision { public:
     void* vftable;
 };
 

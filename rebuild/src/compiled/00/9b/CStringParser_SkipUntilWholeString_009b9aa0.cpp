@@ -13,11 +13,11 @@
 extern "C" int __cdecl isdigit(int c);   // 0x00BFEDA6 (CRT)
 extern "C" int __cdecl isalpha(int c);   // 0x00BFEDB8 (CRT)
 extern "C" char* __cdecl strstr(const char* text, const char* sub);   // 0x00BFEB3A (CRT)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                 // +0
     unsigned long Length;                // +4
 };
-struct CCharString {                     // one CCharStringData pointer
+class CCharString { public:                     // one CCharStringData pointer
     CCharStringData* PStringData;
     operator const char*() const;        // 0x0099E4C0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
@@ -28,7 +28,7 @@ struct CCursorPos {                      // PDB: InQuotes / StringPos / Line (12
     unsigned long Line;
 };
 // Retail layout (0x28 bytes; the Ego_r PDB's debug-build layout is 0x30):
-struct CStringParser {
+class CStringParser { public:
     virtual ~CStringParser();
     char*          String;               // +0x04
     unsigned long  BaseLineOffset;       // +0x08

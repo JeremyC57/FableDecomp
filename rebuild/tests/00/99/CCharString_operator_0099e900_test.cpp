@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                                 // +0x00
     unsigned long Length;                                // +0x04
 };

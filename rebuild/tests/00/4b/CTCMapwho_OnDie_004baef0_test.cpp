@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCMapwho { int x; };
+class CTCMapwho { public: int x; };
 static int g_sub=0; static int g_free=0; static CTCMapwho* g_freed=0;
 void sub(CTCMapwho* self){ g_sub++; }
 void freefn(CTCMapwho* self){ g_free++; g_freed=self; }

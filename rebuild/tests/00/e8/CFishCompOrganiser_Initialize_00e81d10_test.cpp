@@ -8,13 +8,13 @@ static int g_fail = 0;
 static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString() { }
     CCharString(const char* s) : S(s) { }
 };
-struct CScriptThing { std::string Name; };
-struct CGameScriptInterface {
+class CScriptThing { public: std::string Name; };
+class CGameScriptInterface { public:
     void SetThingHasInformation(const CScriptThing& thing, bool a, bool b, bool c)
     { logs("info " + thing.Name + (a ? " 1" : " 0") + (b ? "1" : "0") + (c ? "1" : "0")); }
     void SetThingPersistent(const CScriptThing& thing, bool persistent) { logs("persistent " + thing.Name + (persistent ? " 1" : " 0")); }
@@ -31,7 +31,7 @@ template <class T> struct vector {
     T* begin() { return _M_start; }
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     long FishTypesInGame;
     long FishingRodsInGame;
     long FishingPrizes;

@@ -9,13 +9,13 @@
 // has no extra text), then `return CCharString("", -1).ToWideString();` -- the hidden result is pushed
 // first and the temporary string is homed in the dead hidden-result argument slot; the def pointer's
 // destructor releases the long way (DecRef, then GetRefCount() == 0) with the null store elided.
-struct CCharString;
-struct CWideStringData;
-struct CWideString {
+class CCharString;
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0

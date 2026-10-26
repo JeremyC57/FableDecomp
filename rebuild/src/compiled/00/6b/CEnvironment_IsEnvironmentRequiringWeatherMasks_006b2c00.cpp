@@ -4,7 +4,7 @@
 // test ah,41h ; je` chains -- each `je` (neither C0 nor C3: member > threshold) jumps to `mov eax,1`, the fall-through is `xor eax,eax`:
 // a `||` chain returning a long. The three floats sit inside the game tick state (+0x58.. in engine/CEnvironment.h); their names are
 // descriptive since the PDB record is flattened there. Tested in the order +0x1c4, +0x1c0, +0x1c8.
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad0[0x1c0];
     float         m_snowStrength;                  // +0x1c0
     float         m_rainStrength;                  // +0x1c4

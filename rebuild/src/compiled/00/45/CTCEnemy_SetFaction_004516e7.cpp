@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CTCEnemy { void* vtbl; int ParentThing; };
+class CTCEnemy { public: void* vtbl; int ParentThing; };
 
 extern void __stdcall SF_helper(int a, int b);
 extern int __fastcall SF_make(void* obj, int p1, int p2);

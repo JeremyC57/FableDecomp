@@ -3,17 +3,17 @@
 // card are skipped; the world's map-table flag is cleared even when the list is empty.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* t) : Text(t) {}
     bool operator!=(const CCharString& o) const { return std::strcmp(Text, o.Text) != 0; }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CCharString ScriptName; bool Vignette;
     CTCQuestCard(const char* n, bool v) : ScriptName(n), Vignette(v) {}
     bool IsVignette() const { return Vignette; }
 };
-struct CThing {
+class CThing { public:
     CTCQuestCard* Card;
     bool HasTC(long type) const { return type == 0x6c && Card != 0; }
     CTCQuestCard* GetTC(long) const { return Card; }
@@ -21,9 +21,9 @@ struct CThing {
 static CTCQuestCard* GetQuestCard(CThing* thing) { CTCQuestCard* tc = 0; if (thing->HasTC(0x6c)) tc = thing->GetTC(0x6c); return tc; }
 struct CBaseIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
 struct CCardNode { CCardNode* _M_next; CCardNode* _M_prev; CBaseIntelligentPointer _M_data; };
-struct CWorld { bool MapTableShowQuestCardsOnUsed; };
+class CWorld { public: bool MapTableShowQuestCardsOnUsed; };
 static char g_log[256];
-struct CQuestManager {
+class CQuestManager { public:
     CCardNode* ActiveQuestCards;
     CWorld*    World;
     void AddPendingQuestToDeactivate(const CCharString& name, unsigned long reason)

@@ -9,7 +9,7 @@ struct CRetailVector_uint {
     void resize(unsigned long count, const unsigned long& fill);   // 0x00BAC990
 };
 
-struct CEnginePrimitiveManagerRepeatedZSprites {
+class CEnginePrimitiveManagerRepeatedZSprites { public:
     unsigned char      _pad[0x80];
     CRetailVector_uint m_indices;                  // +0x80
     unsigned char      _pad8c[0x34];

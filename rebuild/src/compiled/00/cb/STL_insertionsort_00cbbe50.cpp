@@ -12,7 +12,7 @@
 // (`sub esp,18h ; mov eax,esp`): four dword moves, then the string copy constructor on `[eax+10h]`. It must be ONE flat
 // record: a pair<u64, struct{long, long, CCharString}> makes VC7.1 strength-reduce `&i->second.m_name` into a second
 // induction register (`lea edi,[esi+10h]` hoisted, `[edi-8]`/`[edi-4]` loads) and reload the comparator every pass.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                        // shared string block
     CCharString(const CCharString& other);   // 0x0099EC30
 };

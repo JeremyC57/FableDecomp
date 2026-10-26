@@ -19,8 +19,8 @@ static int g_updateList = 0, g_events = 0, g_eventType = 0, g_fades = 0;
 static float g_fadeOut = 0, g_fadeIn = 0, g_hold = 0;
 static unsigned char g_rgba[4];
 
-struct CHeroMarriageDef { float WeddingTimeForScreenToFadeOut, WeddingTimeForScreenToFadeIn; };
-struct CTCWife {
+class CHeroMarriageDef { public: float WeddingTimeForScreenToFadeOut, WeddingTimeForScreenToFadeIn; };
+class CTCWife { public:
     const CHeroMarriageDef* PHeroMarriageDef;
     bool WaitingForFadeOut, WaitingForSex;
     void HaveSex()

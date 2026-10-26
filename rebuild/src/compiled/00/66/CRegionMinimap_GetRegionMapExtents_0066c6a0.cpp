@@ -13,7 +13,7 @@ struct C2DVectorI {
     C2DVectorI(long x, long y) : X(x), Y(y) {}
 };
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width, Height;
     C2DExtentsI(long width, long height) : Width(width), Height(height) {}
 };

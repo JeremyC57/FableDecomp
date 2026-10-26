@@ -13,7 +13,7 @@ static int g_fail = 0;
 static void Check(bool c) { if (!c) g_fail = 1; }
 static bool Near(float a, float b) { float d = a - b; return d < 0.0001f && d > -0.0001f; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;

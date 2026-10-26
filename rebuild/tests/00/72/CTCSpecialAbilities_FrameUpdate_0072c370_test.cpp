@@ -2,7 +2,7 @@
 // component exists with its +0x0d flag clear.
 #include <cstdio>
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template <class T>
@@ -42,7 +42,7 @@ struct CTCInterface29 {
     bool m_flag0d;
 };
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     void CancelAllAbilities() { ++g_cancelAll; }
     void FrameUpdate();

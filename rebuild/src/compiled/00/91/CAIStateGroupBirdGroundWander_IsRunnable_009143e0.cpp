@@ -10,13 +10,13 @@
 // `mov al,1`; the frame rate is read into a local (esi) before the frame call and doubled with `lea`, the elapsed
 // frames compared unsigned (`jbe`).
 // Model: local (engine/CAIStateGroup_BirdGroundWander.h agrees: FrameLastFinishedWalking +0x14, but flattens the base).
-struct CTCBase;
+class CTCBase;
 
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 extern long g_groundWanderMode;                 // 0x0129CBA4
 
-struct CWorld {
+class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
 };
 
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,16 +46,16 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {                 // interface 7
+class CTCCreatureModeManager { public:                 // interface 7
     long GetCurrentModeType();                  // 0x006CB6A0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

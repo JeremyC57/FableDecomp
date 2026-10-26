@@ -12,7 +12,7 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #define GSI_V10(p) virtual void v##p##0(); virtual void v##p##1(); virtual void v##p##2(); virtual void v##p##3(); virtual void v##p##4(); virtual void v##p##5(); virtual void v##p##6(); virtual void v##p##7(); virtual void v##p##8(); virtual void v##p##9();
 #define GSI_V100(p) GSI_V10(p##0) GSI_V10(p##1) GSI_V10(p##2) GSI_V10(p##3) GSI_V10(p##4) GSI_V10(p##5) GSI_V10(p##6) GSI_V10(p##7) GSI_V10(p##8) GSI_V10(p##9)
-struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
+class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;           // slot 7 (+0x1c)
     virtual void v008(); virtual void v009();
@@ -22,13 +22,13 @@ struct CGameScriptInterface {                      // retail vtable @ 0x01260F0C
     virtual void v640(); virtual void v641(); virtual void v642(); virtual void v643(); virtual void v644(); virtual void v645(); virtual void v646();
     virtual long GetTimeOfDay() const;             // slot 647 (+0xa1c)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x8e8];
     long TourGuideOpeningTime;                     // +0x8e8
     long TourGuideClosingTime;                     // +0x8ec
 };
 extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();              // 0x00CB7940

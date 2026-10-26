@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 static int g_baseCtor;
 struct CTCBase_Calls {

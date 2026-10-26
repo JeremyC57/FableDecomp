@@ -7,7 +7,7 @@
 // Frame: 0x10 bytes = the value pair {CCharString, long} at +4/+8 and the 8-byte insert result at +0xc. The map is
 // the member at +4 (`lea ecx,[esi+4]`). The by-value CCharString argument is addressed in its own slot (`lea
 // eax,[esp+1Ch]`), the signature of a 4-byte class with a user copy constructor passed by value.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& o);                   // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0

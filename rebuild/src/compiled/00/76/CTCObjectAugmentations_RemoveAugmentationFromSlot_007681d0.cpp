@@ -32,7 +32,7 @@ struct CTCBase_007681d0 {
     unsigned char _pad04[8];
 };
 
-struct CTCObjectAugmentations : CTCBase_007681d0 {
+class CTCObjectAugmentations : public CTCBase_007681d0 { public:
     const void*           PDef;                     // +0x0c
     bool                  LoadedFromSaveGame;       // +0x10
     CThingBaseDefPointer* m_pAugmentationsFirst;    // +0x14 Augmentations (vector)

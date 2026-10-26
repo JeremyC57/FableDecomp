@@ -13,15 +13,15 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 extern C3DVector g_ZeroVector;                          // 0x0143E8E0
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -53,12 +53,12 @@ struct CCountedPointerImp {
     }
 };
 
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerImp PImp;                            // +0x04
     virtual __forceinline ~CScriptThing() {}            // out of line: 0x004AA840
     const C3DVector& GetPos() const                     // 0x004AA980
@@ -77,7 +77,7 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
 
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -150,7 +150,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C
 };
 
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     unsigned char _pad000[0xe8];
     long          PrisonRaceNumber;                     // +0xe8
 };

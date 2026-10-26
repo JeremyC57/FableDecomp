@@ -9,7 +9,7 @@
 // `(unsigned char)(flags >> n) & 1` (`shr eax,n ; test al,1`); +0x10 is the thing type byte, +0x91 a flag byte.
 // Same model as the landed CIsFreeHopscotchBoard (0x00941BE0) / CThingFilter_HasFreeActionPoint (0x006A8B40) / 0x00938BF0.
 // Shape: `return free && count == 1;` -- true leaves eax == 1 after `cmp eax,1`, false is `xor eax,eax`; the outer false is `xor al,al`.
-struct CTCBase;
+class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
 struct CInterfaceMap {
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);         // 0x0040F020
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();

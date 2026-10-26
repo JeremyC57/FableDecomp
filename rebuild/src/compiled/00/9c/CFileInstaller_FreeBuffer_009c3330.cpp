@@ -10,7 +10,7 @@ struct SInstallBuffer_009c3330 {
     bool m_pending;                                // +0x05
 };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char _pad[0x30];
     long          m_freeBuffers;                   // +0x30
     long          m_pendingBuffers;                // +0x34

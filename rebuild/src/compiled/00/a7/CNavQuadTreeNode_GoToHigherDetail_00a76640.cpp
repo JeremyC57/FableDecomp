@@ -8,11 +8,11 @@
 // Shape: an early empty-range return, then the node box before the loop; the four corner tests are one
 //   `||` chain: the first two through an inline float-pair Contains, the last two through the out-of-line ContainsPoint
 //   with C2DVector temporaries (8-byte locals, hence the aligned frame).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     bool Contains(float x, float y) const { return x >= TLX && x < BRX && y >= TLY && y < BRY; }
     bool ContainsPoint(const C2DVector& p) const;  // 0x00535CD0

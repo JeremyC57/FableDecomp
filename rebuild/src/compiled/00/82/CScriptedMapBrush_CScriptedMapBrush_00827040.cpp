@@ -12,13 +12,13 @@
 // (retail: Cells +0x08, ThingsToDelete +0x14, ThingsToMove +0x20, ThingsToAdd +0x2c, GameArea +0x38,
 // BrushName +0x48, CreationTimeSeconds +0x4c, CreationPattern +0x50; sizeof 0x54). Modelled locally with
 // the header's member names.
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
     void* IntelligentPointer;                         // +0x04
     CBaseObject(const CBaseObject& other);            // 0x0099A390
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);            // 0x0099EC30
 };
@@ -35,12 +35,12 @@ struct CThingPosMap {                                 // map<unsigned __int64, C
     void* m_header; void* m_node; unsigned long m_count;
     CThingPosMap(const CThingPosMap& other);          // 0x008267C0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) {}
 };
 
-struct CScriptedMapBrush : CBaseObject {             // vtable 0x01272518
+class CScriptedMapBrush : public CBaseObject { public:             // vtable 0x01272518
     CScriptedMapCellVector Cells;                     // +0x08
     CThingIDSet            ThingsToDelete;            // +0x14
     CThingPosMap           ThingsToMove;              // +0x20

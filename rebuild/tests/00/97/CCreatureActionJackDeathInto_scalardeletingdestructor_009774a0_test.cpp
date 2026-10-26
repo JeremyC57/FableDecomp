@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_JackDeathInto {
+class CCreatureAction_JackDeathInto { public:
     void* vftable;
     int destroyed;
 };

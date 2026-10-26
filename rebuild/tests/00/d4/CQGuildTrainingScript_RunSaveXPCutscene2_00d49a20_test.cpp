@@ -4,8 +4,8 @@
 // (retrying each frame), cast them as GM / HERO and play CS_GUILD_SAVEXP2 with the world paused and the camera fixed
 static int g_frames = 0, g_endAt = 1000, g_gmOkAt = 1, g_heroOkAt = 3, g_paused = 0, g_fixed = 0, g_cast = 0;
 static const char* g_played = 0;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetThingWithScriptName(const char* n) const { CScriptThing t; t.id = std::strcmp(n, "TheRealGuildmaster") == 0 ? 2 : 0; return t; }
     CScriptThing GetHero() const { CScriptThing t; t.id = 1; return t; }

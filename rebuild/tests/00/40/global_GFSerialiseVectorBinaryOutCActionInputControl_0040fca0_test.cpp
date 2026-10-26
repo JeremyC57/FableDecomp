@@ -2,7 +2,7 @@
 
 // Model of 0x0040FCA0 GFSerialiseVectorBinaryOut<CActionInputControl>: write the element count, then each element's
 // TransferBinaryOut (five SLONGs and a 2D vector).
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

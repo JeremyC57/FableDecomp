@@ -14,9 +14,9 @@
 //          slots can be declared; the group's CIntelligentPointer<CThingBuilding> at +0x14 (descriptive);
 //          retail CThingAICreature WorkBuilding +0x170 (landed 0x00830360).
 
-struct CTCBase;
-struct CThing;
-struct CThingBuilding;
+class CTCBase;
+class CThing;
+class CThingBuilding;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -56,7 +56,7 @@ struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPoin
     CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(other.CBaseIntelligentPointer::GetPItem()); return *this; }
     CThingBuilding* GetPItem() const { return (CThingBuilding*)CBaseIntelligentPointer::GetPItem(); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -74,27 +74,27 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x170 - sizeof(CThing)];
     CBuildingPointer WorkBuilding;              // +0x170
 };
-struct CTCFollowed {                            // interface 0xbc
+class CTCFollowed { public:                            // interface 0xbc
     bool IsAIFollower(CThingAICreature* creature);   // 0x006D4D70
 };
-struct CTCRegionFollower {                      // interface 0x7a
+class CTCRegionFollower { public:                      // interface 0x7a
     bool IsRegionFollower(CThing* thing);       // 0x006AEB60
 };
 struct CVillage;
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage();                    // 0x007EE540
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
@@ -107,7 +107,7 @@ __forceinline bool IS_THING_ALIVE(CThing* const& thing)
     return false;
 }
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool v10();                         // +0x28 (result unused)

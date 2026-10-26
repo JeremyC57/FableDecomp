@@ -37,12 +37,12 @@ template <class T> const T* TempAddress(const T& value) { return &value; }   // 
 //   TC goes through an inline accessor (keeps the object in edi across the inner call); the physics TC and the world are
 //   locals ahead of AddMessage; each entity-events component is fetched before its `new` event.
 #define VF(n) virtual void v##n() {}
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class CTCBase;
 class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -56,14 +56,14 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                    // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
@@ -75,7 +75,7 @@ struct CInterfaceMap {
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
     VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16) VF(17) VF(18) VF(19)
     VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29)
@@ -92,7 +92,7 @@ struct CTCPhysicsBase {
     unsigned char _pad04[0x0c - 0x04];
     C3DVector Position;                                 // +0x0c
 };
-struct CEnginePrimitiveThemeChannelDesc;
+class CEnginePrimitiveThemeChannelDesc;
 struct CTCGraphicAppearance {
     void SetLightingChannel(CEnginePrimitiveThemeChannelDesc* channel, bool a, bool b);   // 0x004BFB40
     void SetAsChanged(unsigned long reasons);           // 0x004BF9E0
@@ -101,16 +101,16 @@ struct CTCLightingChannel {                             // interface 0x75: the c
     unsigned char _pad00[0x14];
     unsigned char Channel[4];                           // +0x14 CEnginePrimitiveThemeChannelDesc
 };
-struct CAnimFilterBase;
+class CAnimFilterBase;
 struct CCreatureModeBase {
     VF(00) VF(01) VF(02) VF(03)
     virtual CAnimFilterBase* GetDeathAnimFilter();      // slot 4 (+0x10, descriptive)
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CCreatureModeBase* GetCurrentMode() const;          // 0x0073A6E0
 };
 struct CEventBase;
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);                   // 0x008113C0
 };
 struct CEventKilledCreature {
@@ -121,11 +121,11 @@ struct CEventDied {
     unsigned char _body[0x18];
     CEventDied(CThing* killer, CThing* body);           // 0x00669300
 };
-struct CMessageEvent;
-struct CMessageEventManager {
+class CMessageEvent;
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* MessageEventManager;          // +0x60
 };
@@ -198,7 +198,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
 };
 
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0x148];
     bool LeaveDeadCreature : 1;                         // +0x148 bit 0
 };
@@ -322,7 +322,7 @@ CCharString __fastcall operator+(const CCharString& left, const char* right)
 }
 CDefVirtual::~CDefVirtual() { }
 void CDefVirtual::Destroy() { }
-struct CRightHandedSet { int tag; };
+class CRightHandedSet { public: int tag; };
 static CRightHandedSet g_rhSet;
 void CTCPhysicsBase::ResetRHSet(const CRightHandedSet&) { }
 void CTCPhysicsBase::SetGravityEnabled(bool) { }

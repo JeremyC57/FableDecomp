@@ -8,7 +8,7 @@
 //   Local classes -- Review at landing.
 #pragma optimize("s", on)
 class CThing;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                    // +0x00

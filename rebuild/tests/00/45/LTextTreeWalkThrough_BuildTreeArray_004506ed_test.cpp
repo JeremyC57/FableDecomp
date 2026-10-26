@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct TreeNode {
+class TreeNode { public:
     char pad[8];
     TreeNode* next;
     TreeNode* child;

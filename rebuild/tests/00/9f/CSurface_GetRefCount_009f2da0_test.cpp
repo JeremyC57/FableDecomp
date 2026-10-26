@@ -4,7 +4,7 @@ struct IRefObj;
 typedef long (__stdcall *PFN)(IRefObj*);
 struct IRefVtbl { PFN slot0; PFN slot1; PFN slot2; };
 struct IRefObj { IRefVtbl* vtbl; };
-struct CSurface { void* pad0; IRefObj* obj; };
+class CSurface { public: void* pad0; IRefObj* obj; };
 
 static int g_slot1_calls = 0;
 static long __stdcall impl_slot1(IRefObj*) { g_slot1_calls++; return 999; }

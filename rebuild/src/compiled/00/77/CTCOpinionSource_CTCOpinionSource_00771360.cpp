@@ -8,7 +8,7 @@
 // (CCountedPointer, two words) +0x78, VirtualDeed +0x80, VirtualDeedID +0x84, FrameToClearVirtualDeed +0x88 (uninitialised).
 // Shape: the vector's inline constructor comes first, so every store follows the vtable store, in declaration order,
 // through one zero register.
-struct CThing;
+class CThing;
 
 struct CLongVector {                                // std::vector<long>
     long* m_pFirst;
@@ -35,7 +35,7 @@ struct CTCBase_00771360 {
     CTCBase_00771360(CThing* owner);                // 0x00686800
 };
 
-struct CTCOpinionSource : CTCBase_00771360 {
+class CTCOpinionSource : public CTCBase_00771360 { public:
     CLongVector        DefStack;                    // +0x0c
     bool               UseNavLineOfSight;           // +0x18
     bool               WitnessesWillNotAttack;      // +0x19

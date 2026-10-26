@@ -10,13 +10,13 @@
 // (0x00CB7D60) and its CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>>::LowerBound
 // (0x00CBA1F0), so this is most likely that map's value_type; the record is named descriptively.
 // The manifest label "CScriptGameResourceObjectScriptedThingBase" is propagated from unrelated bodies.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                                     // +0x00 shared reference count
 };
 
-struct CEntityScriptBindingBase;
+class CEntityScriptBindingBase;
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString(const CCharString& other);            // 0x0099EC30
 };

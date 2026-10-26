@@ -7,7 +7,7 @@
 // Shape: a begin/end iterator loop; `this` lives in ebp (no frame pointer), end() re-read from the member every iteration
 //   (the virtual call may change the list), the element's address (`lea esi,[edi+8]`) kept in esi for the three GetPItem calls.
 // Leaf: SetAsDrawable
-struct CThing {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -36,7 +36,7 @@ struct CParticleList {                      // STLport list<CIntelligentPointer<
     SParticleNode* end() const   { return m_node; }
 };
 
-struct CTCParticleAttachmentTracker {
+class CTCParticleAttachmentTracker { public:
     void*         __vftable;                // +0x00 (CTCBase)
     CThing*       ParentThing;              // +0x04
     bool          ToBeRemoved;              // +0x08

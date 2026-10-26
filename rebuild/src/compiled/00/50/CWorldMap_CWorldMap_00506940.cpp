@@ -23,12 +23,12 @@ struct CWorldMapBase2 {
     virtual void v00();
     virtual ~CWorldMapBase2() {}
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -66,7 +66,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     ~CBaseIntelligentPointer();                        // 0x00A01C10
 };
-struct CRegion {
+class CRegion { public:
     unsigned char _body[0x58];
     ~CRegion();                                        // 0x0051A110
 };
@@ -85,7 +85,7 @@ struct CRegionVector {
         if (_M_start) free(_M_start);
     }
 };
-struct CMapInfo { unsigned char _body[0x48]; };
+class CMapInfo { public: unsigned char _body[0x48]; };
 struct SAllocTag { SAllocTag() {} };
 void __fastcall DestroyMapInfoRange(CMapInfo* first, CMapInfo* last, const SAllocTag& alloc);   // 0x00515250
 struct CMapInfoArray {
@@ -122,16 +122,16 @@ template <class T> struct CAutoPtr {
     T* P;
     ~CAutoPtr() { if (P) delete P; }
 };
-struct CEngineManager {
+class CEngineManager { public:
     static CEngineManager* __fastcall Get();           // 0x00436FB0
     void RemoveMap(long map);                          // 0x006403D0
 };
-struct CWADBank {
+class CWADBank { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void Close();                              // slot 5 (+0x14)
 };
 struct CRegionGraph;
-struct CThing;
+class CThing;
 
 class CWorldMap : public CBase, public CWorldMapBase2 {
 public:

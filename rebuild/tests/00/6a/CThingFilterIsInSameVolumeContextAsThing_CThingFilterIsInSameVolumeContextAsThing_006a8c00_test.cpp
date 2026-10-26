@@ -1,6 +1,6 @@
 // Behaviour test for 0x006a8c00
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -39,7 +39,7 @@ struct CTCInterface75 {
     unsigned char _pad[0x0c];
     CBaseIntelligentPointer m_inside;
 };
-struct CThingFilter_IsInSameVolumeContextAsThing {
+class CThingFilter_IsInSameVolumeContextAsThing { public:
     CThing* PThingInside;
     bool    Override;
     CThingFilter_IsInSameVolumeContextAsThing(CThing* thing, bool override)

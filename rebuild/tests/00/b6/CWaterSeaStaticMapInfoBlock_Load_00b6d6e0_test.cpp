@@ -6,7 +6,7 @@ typedef __int64 i64;
 typedef long long i64;
 #endif
 static int g_overflow = 0;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long m_position; const unsigned char* m_pData; long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char*, long) { ++g_overflow; }
     void Read(void* buffer, long size)

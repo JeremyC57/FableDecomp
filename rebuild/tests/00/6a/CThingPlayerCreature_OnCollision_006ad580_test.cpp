@@ -20,9 +20,9 @@
 //   same-TU body, so the orb out word does not escape and is homed in the dead `type` argument slot (as retail);
 //   the hero-experience component comes from the out-parameter GetInterface (ternary entry pick), and LowerBound
 //   has a same-TU body.
-struct CTCBase;
+class CTCBase;
 #pragma pack(push, 1)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 #pragma pack(pop)
 enum ECollideType { COLLIDE_TYPE_0 };
 
@@ -51,22 +51,22 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CPlayerManager;
-struct CThing;
-struct CPlayer { CThing* GetHeroThing(); };             // 0x00487DC0
-struct CPlayerManager {
+class CPlayerManager;
+class CThing;
+class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
     long GetMainPlayerNumber();                         // 0x00449700
 };
-struct CTCDExperienceOrb {
+class CTCDExperienceOrb { public:
     unsigned char _pad00[0x10];
     long          ExperiencePoints;                     // +0x10
     void OnCollected(CThing* collector);                // 0x0077A180
 };
-struct CTCHeroExperience { void AddExperience(long points); };   // 0x006D77C0
-struct CTCCoopSpirit { void AddExperience(long points); };       // 0x0066FB00
+class CTCHeroExperience { public: void AddExperience(long points); };   // 0x006D77C0
+class CTCCoopSpirit { public: void AddExperience(long points); };       // 0x0066FB00
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x10];
     unsigned char  ThingType;                           // +0x10
     unsigned char  _pad11[0x20 - 0x11];
@@ -127,10 +127,10 @@ __declspec(noinline) bool CThing::GetTCDriver(CTCDExperienceOrb** out)
     return false;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // 0x00667310
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     unsigned char _pad94[0x1cc - 0x94];                  // CThing rounds to 0x94
     bool          CollidedWithThing;                    // +0x1cc
     C3DVector     LastThingCollisionNormal;             // +0x1cd

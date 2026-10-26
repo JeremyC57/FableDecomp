@@ -31,7 +31,7 @@ struct CDefPointer_CUIDef {                        // CDefPointer<const NUISyste
     const CUIDef* operator->() const { return Data; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

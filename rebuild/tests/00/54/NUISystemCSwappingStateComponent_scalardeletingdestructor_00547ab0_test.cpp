@@ -15,7 +15,7 @@ struct IComponentA { virtual void va00() {} unsigned char _state[0x10]; };
 struct IComponentB { virtual void vb00() {} };
 struct CComponentRoot { virtual ~CComponentRoot() {} };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long) {}
     virtual ~CChangingStateComponent() { g_events[g_count++] = 2; }
@@ -29,7 +29,7 @@ struct CSwappingStateVector {
     ~CSwappingStateVector() { if (m_first) FreeBlock(m_first); }
 };
 
-struct CSwappingStateComponent : CChangingStateComponent {
+class CSwappingStateComponent : public CChangingStateComponent { public:
     CSwappingStateVector SwappingStates;
     float                LastSwapTime;
     unsigned long        Seed;

@@ -16,7 +16,7 @@
 //   live `position` slot (`lea [ebp+0Bh]`) -- that needs same-TU noinline bodies of the three tag-taking helpers (with them
 //   declaration-only the __false_type tags move to the `n` slot and the parked values to the `x` slot); `__n -
 //   __elems_after` and `__old_finish - __n` are parked in the dead `n` slot.
-struct CBaseObject;
+class CBaseObject;
 class CThing;
 
 class CBaseIntelligentPointer {

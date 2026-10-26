@@ -1,7 +1,7 @@
 // Behaviour test for 0075d940 CTCCameraPointBuilding::GetOwnerBuilding: through the interface-51 component's owner pointer, only a building (flag 0x40) is handed out.
 #include <cstdio>
 
-struct CTCBase { long tag; };
+class CTCBase { public: long tag; };
 
 struct CInterfaceMap
 {
@@ -16,8 +16,8 @@ struct CInterfaceMap
     }
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long ThingTypeFlags;
@@ -45,8 +45,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     T* Get() const { return (T*)GetPItem(); }
 };
 

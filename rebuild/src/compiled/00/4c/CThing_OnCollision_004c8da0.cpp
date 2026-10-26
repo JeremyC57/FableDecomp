@@ -8,24 +8,24 @@
 // Shape: the phase compare before the prologue; the presence bits for 0xA9/0xA8 both live in bitset word 5 (+0x34,
 //        tested through ah: bits 9 and 8); each lookup is the inlined GetInterface (lower bound on the key word, end
 //        when absent); Dead is bit 0 of the +0x91 flag byte; the other thing is kept in ebp for both calls.
-struct CThing;
+class CThing;
 struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; void* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CTCAssassinRush {                             // interface type 0xA9
+class CTCAssassinRush { public:                             // interface type 0xA9
     void SetThingCollisionPtr(CThing* thing);        // 0x004CBFB0
 };
 struct CTCCollisionHandler_0xA8 {                    // interface type 0xA8 (descriptive)
     void OnThingCollision(CThing* thing);            // 0x004CC000 (manifest label propagated)
 };
-struct CThingManager {
+class CThingManager { public:
     void AddToUpdateList(CThing* thing);             // 0x0051EC50
 };
 extern CThingManager* g_pThingManager;               // 0x013B8A1C
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20 UsingComponents (bitset<274>)
     CInterfaceMap m_interfaces;                      // +0x44

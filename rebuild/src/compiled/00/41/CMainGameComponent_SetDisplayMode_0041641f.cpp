@@ -21,22 +21,22 @@
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
     C2DExtentsI(long width, long height) : Width(width), Height(height) {}
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     unsigned long m_format;
     unsigned long GetColourDepth() const;          // 0x009E3820
 };
-struct CSurface {
+class CSurface { public:
     C2DExtentsI   GetDimensions() const;           // 0x009F2F90
     CPixelFormat  GetPixelFormat() const;          // 0x009F2F60
     unsigned long GetHeight() const;               // 0x00415BF0
 };
 enum ECreateDeviceSuccess { CREATE_DEVICE_OK = 0 };
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad00[0x2c];
     CSurface      m_backSurface;                   // +0x2c
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,

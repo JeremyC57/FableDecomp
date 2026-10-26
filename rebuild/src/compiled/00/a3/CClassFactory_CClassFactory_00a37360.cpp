@@ -17,7 +17,7 @@ struct SScalarTag {
     SScalarTag() { }
 };
 
-struct CClassTypeInfo;
+class CClassTypeInfo;
 void __fastcall _Destroy_range(CClassTypeInfo* first, CClassTypeInfo* last, const SScalarTag& tag);   // 0x00A37AF0
 
 struct SClassTypeInfoVector {
@@ -32,7 +32,7 @@ struct SClassTypeInfoVector {
     }
 };
 
-struct CClass;
+class CClass;
 struct SClassList {                                // std::list<CClass*>: retail keeps only the head
     void* head;
     ~SClassList();                                 // 0x00A376A0
@@ -43,7 +43,7 @@ struct CBaseClassNonCopyable {
     ~CBaseClassNonCopyable();                                      // 0x0099A300
 };
 
-struct CClassFactory : CBaseClassNonCopyable {                     // vtable 0x0129CF70
+class CClassFactory : public CBaseClassNonCopyable { public:                     // vtable 0x0129CF70
     SClassTypeInfoVector ClassTypeInfo;            // +0x04
     unsigned long MaxClassTypeID;                  // +0x10
     unsigned long NoAllocatedClasses;              // +0x14

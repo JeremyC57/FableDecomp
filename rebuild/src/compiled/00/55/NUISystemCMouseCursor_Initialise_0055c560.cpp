@@ -11,7 +11,7 @@ extern float g_mousePositionX;                     // 0x013B8AD8
 extern float g_mousePositionY;                     // 0x013B8ADC
 
 namespace NUISystem {
-struct CMouseCursor : CSprite {
+class CMouseCursor : public CSprite { public:
     float m_positionX;                             // +0x34
     float m_positionY;                             // +0x38
     void Initialise();

@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <new>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T1, class T2> struct Pair { T1 first; T2 second; };
 template <class T> class List {
 public:

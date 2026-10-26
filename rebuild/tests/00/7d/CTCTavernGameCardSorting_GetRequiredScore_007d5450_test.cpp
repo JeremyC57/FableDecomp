@@ -3,7 +3,7 @@
 // ---- test-side string stubs (narrow text buffers; the wide type stores chars) ----
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char m_text[160];
     CWideString() { m_text[0] = 0; }
     CWideString(const char* s) { std::strcpy(m_text, s); }
@@ -15,7 +15,7 @@ struct CWideString {
 };
 inline CWideString operator+(const CWideString& a, const CWideString& b) { CWideString r(a); r += b; return r; }
 inline CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a); r += CWideString(b); return r; }
-struct CCharString {
+class CCharString { public:
     char m_text[160];
     CCharString(const char* s, long length = -1) { (void)length; std::strcpy(m_text, s); }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); }
@@ -36,7 +36,7 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned long RequiredScore;
     void ReleaseTemporary()
     {
@@ -58,7 +58,7 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 static CTavernGameDef g_def;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00() {}
     void GetTavernGameDef(CDefPointer* out) { ++g_def.m_count; out->Object = &g_def; }
     CWideString GetText(unsigned long id) { char b[32]; std::sprintf(b, "T%lu:", id); return CWideString(b); }

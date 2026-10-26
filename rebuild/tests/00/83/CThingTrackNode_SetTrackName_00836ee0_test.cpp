@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[16];
     CCharString(const char* t) { std::strcpy(Text, t); }
     CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
     bool operator!=(const CCharString& o) const { return std::strcmp(Text, o.Text) != 0; }
 };
 static int g_sets = 0;
-struct CThingTrackNode {
+class CThingTrackNode { public:
     CThingTrackNode* PNextNode;
     CThingTrackNode* PPreviousNode;
     CCharString TrackName;

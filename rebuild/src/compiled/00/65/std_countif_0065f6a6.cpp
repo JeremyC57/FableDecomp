@@ -9,7 +9,7 @@
 // predicate's by-value parameter, which is built in place in the reserved argument slot (`push ecx ; push ecx ;
 // mov ecx,esp`). Opt: an unaligned size-optimised TU (`jmp` to the bottom loop test) -- `#pragma optimize("s", on)`.
 #pragma optimize("s", on)
-struct CBaseObject;
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v000();

@@ -1,7 +1,7 @@
 #include <cstdio>
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 static int g_destroyed = 0;
-struct CDefPointeeBase { virtual void v00() { } virtual void Destroy() { ++g_destroyed; } unsigned long RefCount; void Release() { if (--RefCount == 0) Destroy(); } };
+class CDefPointeeBase { public: virtual void v00() { } virtual void Destroy() { ++g_destroyed; } unsigned long RefCount; void Release() { if (--RefCount == 0) Destroy(); } };
 struct CDefPointer { CDefPointeeBase* Object; ~CDefPointer() { if (Object) { Object->Release(); Object = 0; } } };
 static int g_copied = 0;
 CDefPointer* __fastcall copy_sgi(CDefPointer* first, CDefPointer* last, CDefPointer* result, const random_access_iterator_tag&, long*)

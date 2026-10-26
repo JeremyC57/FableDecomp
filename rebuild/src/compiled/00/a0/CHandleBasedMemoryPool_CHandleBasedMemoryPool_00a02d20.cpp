@@ -23,7 +23,7 @@ struct CBase {
     virtual ~CBase();
     CBase();                                             // 0x0099A2F0
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                       // 0x0099E4B0
 };
@@ -34,11 +34,11 @@ struct CHandleInfoArray {                                // retail CArray<CHandl
     long         m_capacity;
     CHandleInfoArray() : m_pData(0), m_size(0), m_capacity(0) { }
 };
-struct CFailedAllocationHandler;
+class CFailedAllocationHandler;
 struct CHeader;
 struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 
-struct CHandleBasedMemoryPool : CBase {                  // vtable 0x0129C964
+class CHandleBasedMemoryPool : public CBase { public:                  // vtable 0x0129C964
     void*                     Buffer;                    // +0x04
     void*                     UnalignedBuffer;           // +0x08
     long                      PoolSize;                  // +0x0c

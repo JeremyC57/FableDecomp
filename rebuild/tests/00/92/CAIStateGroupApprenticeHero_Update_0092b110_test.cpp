@@ -8,9 +8,9 @@ static u32 GFROR13(u32 v) { return (v >> 13) | (v << 19); }
 static long g_framesPerSecond = 30;
 static long g_currentFrame = 1000;
 static long GFGetCurrentFrame() { return g_currentFrame; }
-struct CTCVillage { int cookChecks; int cookLimit; bool IsCookTime() { return cookChecks++ < cookLimit; } };
-struct CTCVillageMember { CTCVillage* village; CTCVillage* GetPVillage() { return village; } };
-struct CThing {
+class CTCVillage { public: int cookChecks; int cookLimit; bool IsCookTime() { return cookChecks++ < cookLimit; } };
+class CTCVillageMember { public: CTCVillage* village; CTCVillage* GetPVillage() { return village; } };
+class CThing { public:
     bool hasVillageMember; CTCVillageMember* member;
     bool HasTC(long) const { return hasVillageMember; }
 };

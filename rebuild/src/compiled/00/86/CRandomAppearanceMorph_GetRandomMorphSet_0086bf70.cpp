@@ -8,9 +8,9 @@
 // Shape: three member calls forwarding the seed and the set; the last passes group 0, the class's general texture-morph map
 // (`lea ecx,[esi+28h]`) and the set's array (`add edi,18h` on the set register, no longer needed).
 // Leaf: GetRandomMorphSet
-template<class T> struct CArray { T* m_first; T* m_last; T* m_end; };
+template<class T> class CArray { public: T* m_first; T* m_last; T* m_end; };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;
 };
 
@@ -27,7 +27,7 @@ struct CMorphSet {
     CArray<CMorphSetTextureMorph>  GeneralTextureMorphs;// +0x18
 };
 
-struct CRandomAppearanceMorph {
+class CRandomAppearanceMorph { public:
     CArray<CArray<CBodyPartMesh> >                    BodyParts;               // +0x00
     CArray<CVectorMap<unsigned long, CTextureMorph> > BodyPartTextureMorphs;   // +0x0c
     CVectorMap<long, CSkeletalMorph>                  SkeletalMorphs;          // +0x18

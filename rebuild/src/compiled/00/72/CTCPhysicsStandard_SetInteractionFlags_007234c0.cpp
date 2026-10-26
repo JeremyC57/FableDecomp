@@ -11,10 +11,10 @@
 //   The old Immoveable is read from the merged byte before its own `xor/and 8/xor` store, then `old && !new` calls slot 36.
 //   Flag word bits used: 1 landscape, 2 things, 3 things one-way, 4 interacts, 5 immoveable, 6 facing, 8 angled, 10 excluding
 //   creatures, 11 impassable.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CThingPhysicsMeshInfo;
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CThingPhysicsMeshInfo;
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

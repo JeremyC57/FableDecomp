@@ -11,8 +11,8 @@
 // pointer, a named local read after the sort) goes to the best-hit search with the two caller outs.
 // Layout: Ego_r.pdb CTCHitLocations HitLocations vector<pair<NHitLocations::CHitLocation, long> > at +0x0C (begin/
 // end at +0x0C/+0x10 in retail); CHitLocation (0x18): POwnerThing +0, PDef +4, Enabled +0x14.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -25,13 +25,13 @@ struct CHitVolume {
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual bool IntersectTriangle(CThing* owner, const CTriangle& triangle, C3DVector* hitA, C3DVector* hitB, long flags);   // slot 8 (+0x20)
 };
-struct CHitLocationDef {
+class CHitLocationDef { public:
     unsigned char _pad_0x00[0x3C];
     CHitVolume*   PVolume;                           // +0x3C
 };
 
 namespace NHitLocations {
-struct CHitLocation {                                // 0x18 bytes
+class CHitLocation { public:                                // 0x18 bytes
     CThing*          POwnerThing;                    // +0x00
     CHitLocationDef* PDef;                           // +0x04 CDefPointer<const CHitLocationDef>::Object
     void*            PArmourDef;                     // +0x08
@@ -65,7 +65,7 @@ void __fastcall sort(THitLocationIntersectionElement* first, THitLocationInterse
 NHitLocations::CHitLocation* __fastcall GetPBestHitLocationFromList(THitLocationIntersectionElement* elements,
     unsigned long count, C3DVector* vertices, C3DVector* outA, C3DVector* outB);   // 0x00815F00
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     void*              __vftable;                    // +0x00
     unsigned char      _pad_0x04[0x08];
     SHitLocationEntry* HitLocations_start;           // +0x0C vector begin

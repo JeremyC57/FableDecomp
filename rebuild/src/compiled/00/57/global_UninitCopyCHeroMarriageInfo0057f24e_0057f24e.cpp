@@ -12,7 +12,7 @@
 // type is named from the copy constructor's label when unique. One of 21 bodies.
 #include <new>
 
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     unsigned char _body[0x18];
     CHeroMarriageInfo(const CHeroMarriageInfo& other);           // 0x0057A3A2
 };

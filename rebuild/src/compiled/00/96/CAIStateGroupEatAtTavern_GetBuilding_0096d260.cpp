@@ -8,8 +8,8 @@
 // component stays in esi; the final call evaluates its arguments right to left (0x20, then the creature position)
 // before re-fetching the village as its object.
 // Model: local (no engine header for this class).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector* GetPosition() const;       // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -38,20 +38,20 @@ struct CThing {
     }
 };
 
-struct CThingBuilding;
+class CThingBuilding;
 
-struct CTCVillage {
+class CTCVillage { public:
     CThingBuilding* AIStateGroup_FindNearestBuildingWithProperty(const C3DVector& position, unsigned long property);   // 0x00658E38
 };
 struct CTCVillager;
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

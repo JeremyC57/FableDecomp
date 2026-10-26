@@ -4,9 +4,9 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CThingCreatureBase { int id; };
-struct CCombatSequenceBase { int id; };
-struct CCharString {
+class CThingCreatureBase { public: int id; };
+class CCombatSequenceBase { public: int id; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
     CCharString(const CCharString& o) : text(o.text) { }

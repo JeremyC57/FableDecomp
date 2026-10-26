@@ -14,7 +14,7 @@ struct IDirect3DDevice9 { IDirect3DDevice9Vtbl* lpVtbl; };
 
 #include "engine/CVertexShaderConstantLayout.h"
 
-struct CShaderConstantRange {                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
+class CShaderConstantRange { public:                   // the 12-byte ranges of engine/CVertexShaderConstantLayout.h (PDB layout)
     void*         __vftable;                    // +0
     long          Offset;                       // +4: first constant register
     unsigned long Count;                        // +8: vector count
@@ -25,11 +25,11 @@ inline const CShaderConstantRange& ConstantRange(const unsigned char* range)
     return *reinterpret_cast<const CShaderConstantRange*>(range);
 }
 
-struct C4DVector { float x, y, z, w; };
-struct CRGBFloatColour {float R,G,B,A;};
-struct CMatrix3x4 {float Values[12];};
+class C4DVector { public: float x, y, z, w; };
+class CRGBFloatColour { public:float R,G,B,A;};
+class CMatrix3x4 { public:float Values[12];};
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;                 // +0x000
     CVertexShaderConstantLayout* CurrentVSConstantLayout;   // +0x004
     unsigned char                _pad008[0x1cc];

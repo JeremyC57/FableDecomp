@@ -1,10 +1,10 @@
 // behaviour test for CThingFilter_CanCollideWithThing::operator() (0x006A8300)
 #include <cstdio>
-struct CThing;
+class CThing;
 struct CTCCollisionExclusion { CThing* excluded; bool CanCollideWith(CThing* t) { return t != excluded; } };
-struct CTCPhysicsBase { bool collides; CThing* ParentThing; bool GetCollidesWithThings() { return collides; } };
-struct CThing { CTCPhysicsBase* PhysicsTC; bool hasExcl; CTCCollisionExclusion* excl; };
-struct CThingFilter_CanCollideWithThing {
+class CTCPhysicsBase { public: bool collides; CThing* ParentThing; bool GetCollidesWithThings() { return collides; } };
+class CThing { public: CTCPhysicsBase* PhysicsTC; bool hasExcl; CTCCollisionExclusion* excl; };
+class CThingFilter_CanCollideWithThing { public:
     CTCPhysicsBase* TCPhysics;
     bool operator()(CThing* thing) const
     {

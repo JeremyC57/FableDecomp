@@ -15,7 +15,7 @@ struct SCountBlock {
     void* Object;                                    // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
     ~CCountedPointer()

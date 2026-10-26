@@ -7,12 +7,12 @@ static long g_lastValue = 0;
 static unsigned long g_lastFlags = 0;
 static const void* g_lastText = 0;
 static int g_textAlive = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long = -1) : PStringData(text) {}
     ~CCharString() {}
 };
-struct CWideString {
+class CWideString { public:
     const char* m_pData;
     CWideString(const char* s) : m_pData(s) { ++g_textAlive; }
     CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_textAlive; }
@@ -23,17 +23,17 @@ struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol) const { g_lastSymbol = symbol.PStringData; return CWideString(symbol.PStringData); }
 };
 class CFontBank { public: int dummy; };
-struct CMainGameComponent { CDataBank* TextBank; CFontBank* Font; };
+class CMainGameComponent { public: CDataBank* TextBank; CFontBank* Font; };
 static CMainGameComponent* g_pMainGameComponent;
 static const CFontBank* g_lastFont = 0;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast, bool pauseGame)
     {
         g_lastFont = &font; g_lastFlags = flags;
         if (time != 0.0f || clickPast || !pauseGame || text.m_pData != g_lastText) g_lastFlags = 0xdead;
     }
 };
-struct CPlayerGui { CSubtitleRenderer SubtitleRenderer; };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; };
 static CPlayerGui* g_pPlayerGui;
 class CTCBuyableHouse { public: long Price; long GetPriceForNextDressLevel() const { return Price; } };
 class CTCActionUseBuyHouse {

@@ -32,7 +32,7 @@ struct IDirect3DDevice9 {                          // COM: IUnknown + IDirect3DD
 
 const long D3DERR_DEVICELOST = (long)0x88760868;
 
-struct CVsyncCallbackTimer {
+class CVsyncCallbackTimer { public:
     void OnPostSwapScreens();                      // 0x009F73C0
 };
 
@@ -41,7 +41,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char     _pad0[0x58];
     IDirect3DDevice9* D3DDevice;                   // +0x58
     unsigned char     _pad5c[0x19c - 0x5c];

@@ -11,13 +11,13 @@
 // +0x340 / +0x39c / +0x3f8).
 #include "engine/CVertexShaderConstantLayout.h"
 
-struct CShaderConstantRange {                    // the 12-byte ranges of engine/CVertexShaderConstantLayout.h
+class CShaderConstantRange { public:                    // the 12-byte ranges of engine/CVertexShaderConstantLayout.h
     void*         __vftable;                     // +0
     long          Offset;                        // +4: first constant register
     unsigned long Count;                         // +8: vector count
 };
 
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     float m[16];
 };
 
@@ -119,7 +119,7 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetVertexShaderConstantF(unsigned int startRegister, const float* data, unsigned int vector4fCount);   // slot 94 (+0x178)
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;                 // +0x000
     CVertexShaderConstantLayout* CurrentVSConstantLayout;   // +0x004
     unsigned char                _pad008[0x1d4 - 8];

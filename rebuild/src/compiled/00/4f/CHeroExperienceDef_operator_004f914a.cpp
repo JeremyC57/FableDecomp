@@ -18,7 +18,7 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the class is local.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -58,7 +58,7 @@ struct CAttackHistoryComboVector {      // retail std::vector<CAttackHistoryComb
     CAttackHistoryComboVector& operator=(const CAttackHistoryComboVector& other);   // 0x004F932C
 };
 
-struct CHeroExperienceDef : CDefClassBase {                         // vtable 0x0124390C
+class CHeroExperienceDef : public CDefClassBase { public:                         // vtable 0x0124390C
     CLongVector ExperienceLevelThresholds;                          // +0x28
     CLongVector HeroLevelTitles;                                    // +0x34
     CLongVector FallbackMultipliers;                                // +0x40

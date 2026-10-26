@@ -6,7 +6,7 @@
 // Shape: the three deltas as named float locals in X, Y, Z order, then `dx*dx + dy*dy + dz*dz < distance*distance` --
 // VC7.1 pushes the later-defined delta first, giving retail's Z, Y, X squares (an inline C3DVector operator- temporary
 // gives X, Z, Y here); `fcompp ; test ah,41h ; jne` with `mov eax,1` / `xor eax,eax` for the bool. No pragma.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }

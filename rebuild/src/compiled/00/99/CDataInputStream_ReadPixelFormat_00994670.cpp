@@ -14,11 +14,11 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 #pragma intrinsic(memset)
 
-struct CPixelFormatInit {                          // 6-byte packed pixel-format description read from the stream
+class CPixelFormatInit { public:                          // 6-byte packed pixel-format description read from the stream
     unsigned long  m_formatBits;                   // +0 (low nibble of the first byte = format kind)
     unsigned short m_extra;                        // +4
 };
-struct CPixelFormat {                              // 4 bytes, non-POD (returned through the hidden pointer)
+class CPixelFormat { public:                              // 4 bytes, non-POD (returned through the hidden pointer)
     long m_format;
     CPixelFormat() { }
     void Initialise(const CPixelFormatInit& init); // 0x009E3640

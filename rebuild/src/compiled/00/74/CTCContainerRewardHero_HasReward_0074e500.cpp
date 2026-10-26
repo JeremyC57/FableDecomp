@@ -9,7 +9,7 @@
 // result inside the landed out-parameter GetInterface template (0x007504E0; the key in the `push ecx`
 // frame slot); `size() > 0 || gold > 0` is `sar ecx,3 ; test ; ja` then `test eax,eax ; jg`; a `long`
 // result (`mov eax,1` / `xor eax,eax`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -18,9 +18,9 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CTCGold;
+class CTCGold;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -39,7 +39,7 @@ struct CThing {
     }
 };
 
-struct CTCGold {
+class CTCGold { public:
     long GetGold();                         // 0x007CBDC0
 };
 
@@ -48,7 +48,7 @@ struct SContainerItem {                     // pair<long, CCharString>: 8 bytes
     void* second;
 };
 
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     void*           __vftable;              // +0x00
     CThing*         ParentThing;            // +0x04 (CTCBase)
     unsigned char   _pad08[4];              // +0x08

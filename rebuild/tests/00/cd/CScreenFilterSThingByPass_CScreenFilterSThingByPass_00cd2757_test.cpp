@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of 0x00CD2757: CScreenFilterSThingByPass(thing, bypassSet).
 static int g_copies = 0;
-struct CScriptThing { virtual ~CScriptThing() {} int m_id; CScriptThing(int id) : m_id(id) {} CScriptThing(const CScriptThing& o) : m_id(o.m_id) { ++g_copies; } };
+class CScriptThing { public: virtual ~CScriptThing() {} int m_id; CScriptThing(int id) : m_id(id) {} CScriptThing(const CScriptThing& o) : m_id(o.m_id) { ++g_copies; } };
 struct CScreenFilterSThingByPass {
     CScriptThing thing; bool bypassSet;
     CScreenFilterSThingByPass(const CScriptThing& t, bool b) : thing(t), bypassSet(b) {}

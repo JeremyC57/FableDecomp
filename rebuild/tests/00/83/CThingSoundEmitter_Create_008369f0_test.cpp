@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <new>
 #include <stddef.h>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 static bool g_allowAlloc = true, g_constructOk = true, g_activateOk = true;
 static int g_constructed = 0;

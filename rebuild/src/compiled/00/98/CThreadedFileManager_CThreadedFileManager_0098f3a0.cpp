@@ -76,7 +76,7 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CThreadedFileManager : CBaseClassNonCopyable {      // vtable 0x0129A164
+class CThreadedFileManager : public CBaseClassNonCopyable { public:      // vtable 0x0129A164
     CPendingObjectMap      DeviceQueue[2][7];              // +0x04
     long                   CurrentDeviceAtPriorityLevel[7]; // +0xe4 EThreadedFileDeviceID
     double                 CurrentDeviceEndOfTimeSlice[7];  // +0x100

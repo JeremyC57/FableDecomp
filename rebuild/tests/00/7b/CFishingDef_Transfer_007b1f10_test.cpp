@@ -3,8 +3,8 @@
 #include <cstdio>
 struct Log { int crc; int n; char kind[64]; double val[64]; };
 static Log g;
-struct CMemoryDataInputStream { double next; };
-struct CDataOutputStream {
+class CMemoryDataInputStream { public: double next; };
+class CDataOutputStream { public:
     void WriteLong(int value) { g.kind[g.n] = 'l'; g.val[g.n++] = value; }
     void WriteFloat(float value) { g.kind[g.n] = 'f'; g.val[g.n++] = value; }
 };
@@ -20,7 +20,7 @@ template<> struct CPersistTraits<float> {
     void TransferBinaryIn(CMemoryDataInputStream* s, float* value) { *value = (float)s->next; s->next += 1; g.kind[g.n] = 'F'; g.val[g.n++] = *value; }
     static void TransferBinaryOut(CDataOutputStream* s, const float& value) { s->WriteFloat(value); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     int m_mode; CMemoryDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream;
     void CheckCRC(const char*) { ++g.crc; }
     template<class T> void Transfer(const char* name, T& value)
@@ -40,7 +40,7 @@ struct CPersistContext {
         }
     }
 };
-struct CFishingDef {
+class CFishingDef { public:
     CLongVector FishTypes;
     float FishingSpotProximity, FishingSpotMinDepth, FishingSpotMinHeightDiff, FishingSpotMaxHeightDiff;
     int PointsPerFishingLevel;

@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Leaf: OnDie
 // CTCInventoryItem::OnDie @ 004583fa
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x44];
     void* f44;
 };

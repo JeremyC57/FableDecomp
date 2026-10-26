@@ -13,7 +13,7 @@
 // unique. One of 26 bodies.
 #include <new>
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     unsigned char _body[0x1c];
     CFadeInFadeOutBase(const CFadeInFadeOutBase& other);           // 0x00592D97
 };

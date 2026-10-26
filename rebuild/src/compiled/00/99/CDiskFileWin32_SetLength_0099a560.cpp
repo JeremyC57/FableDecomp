@@ -6,7 +6,7 @@
 // first call's pushes.
 extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void* file, long distance, long* distanceHigh, unsigned long moveMethod);   // IAT 0x0143FDE8
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     virtual void v00();
     long  AccessType;                  // +0x04 FileAccessType
     long  Position;                    // +0x08

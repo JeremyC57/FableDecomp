@@ -10,7 +10,7 @@ struct SubObj {
     bool Compute(Loc* out, Arg* in);
 };
 
-struct CTCLook {
+class CTCLook { public:
     char pad[0xc0];
     SubObj sub;   // at +0xc0
     bool IsTurningBody(Arg arg);

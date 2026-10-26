@@ -16,8 +16,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -49,7 +49,7 @@ struct CThingIface {                                        // CThing: interface
 };
 
 namespace NUISystem {
-struct CComponent { virtual ~CComponent(); };
+class CComponent { public: virtual ~CComponent(); };
 }
 
 struct SRbNode { long color; SRbNode* parent; SRbNode* left; SRbNode* right; };
@@ -135,13 +135,13 @@ struct CFrontEndManager {
     virtual CCountedRef GetScreenData();                    // +0xa8
 };
 
-struct CPlayer { void RemoveMode(long mode); };             // 0x00634190
-struct CPlayerManager { CPlayer* GetMainPlayer(); };        // 0x00449970
-struct CPlayerGui { void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b); };   // 0x00437580
+class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
+class CPlayerGui { public: void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b); };   // 0x00437580
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 struct CGameState { unsigned char _pad[0x104]; long Mode; };
-struct CEngine { unsigned char _pad[0x24]; CGameState* State; };
+class CEngine { public: unsigned char _pad[0x24]; CGameState* State; };
 extern CEngine* g_pEngine;                                  // 0x013B86A0
 
 struct CRetailVector_Component {                            // retail std::vector, 12 bytes
@@ -164,7 +164,7 @@ struct CRetailVector_Component {                            // retail std::vecto
     void clear() { erase(_M_start, _M_finish); }
 };
 
-struct CTCQuickAccessMenu {                                 // vtable 0x01258B74
+class CTCQuickAccessMenu { public:                                 // vtable 0x01258B74
     void*                   __vftable;                      // +0x00
     CThingIface*            ParentThing;                    // +0x04
     bool                    ToBeRemoved;                    // +0x08

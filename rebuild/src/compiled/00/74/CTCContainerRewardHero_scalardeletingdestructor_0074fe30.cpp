@@ -1,4 +1,4 @@
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     void* vftable;
 };
 

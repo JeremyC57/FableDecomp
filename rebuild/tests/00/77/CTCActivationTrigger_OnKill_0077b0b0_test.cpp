@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-struct CTCActivationTrigger;
+class CTCActivationTrigger;
 
 struct Sub {
     void destroy(CTCActivationTrigger* owner);
 };
 
-struct CTCActivationTrigger {
+class CTCActivationTrigger { public:
     char pad[0xc];
     Sub* PTCReceptor;   // +0xc
 };

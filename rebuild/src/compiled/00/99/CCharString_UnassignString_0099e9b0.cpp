@@ -1,7 +1,7 @@
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     unsigned int unknown04;
     unsigned int unknown08;
@@ -10,8 +10,8 @@ struct CCharStringData
 };
 #pragma pack(pop)
 
-struct CCharString
-{
+class CCharString
+{ public:
     CCharStringData* storage_;
 
     void __fastcall UnassignString();

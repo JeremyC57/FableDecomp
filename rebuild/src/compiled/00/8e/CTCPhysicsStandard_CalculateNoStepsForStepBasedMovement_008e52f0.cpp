@@ -5,7 +5,7 @@
 //   with UpdateIsMoving 0x008E5270); 1.0f from the pool 0x0122DED8.
 // Shape: scale = size / distance stays on the FPU stack for the count `(long)(1.0f / scale - stepsTaken)` (fisub) and the
 //   three in-place multiplies (`*step *= scale`); the short-move branch is if / else on the count store.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 };

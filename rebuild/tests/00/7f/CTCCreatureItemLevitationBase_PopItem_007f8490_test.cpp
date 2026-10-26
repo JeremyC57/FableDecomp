@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <stdlib.h>
 struct SThingListNode;
-struct CThing;
+class CThing;
 struct SThingListNode { SThingListNode* Next; SThingListNode* Prev; CThing* Data; };
 struct CThingList {
     SThingListNode* Header;
@@ -24,8 +24,8 @@ struct CThingList {
     }
     int size() const { int n = 0; for (SThingListNode* p = Header->Next; p != Header; p = p->Next) ++n; return n; }
 };
-struct CThing { int KillCalls; bool LastCheck; void Kill(bool c) { ++KillCalls; LastCheck = c; } };
-struct CTCCreatureItemLevitationBase {
+class CThing { public: int KillCalls; bool LastCheck; void Kill(bool c) { ++KillCalls; LastCheck = c; } };
+class CTCCreatureItemLevitationBase { public:
     CThingList LevitatingItems;
     long NumItems;
     void PopItem()

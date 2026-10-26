@@ -10,7 +10,7 @@ struct CDefBase {
     virtual void Destroy() { ++g_destroyed; }
     long m_count;
 };
-struct CGiftDef : CDefBase {
+class CGiftDef : public CDefBase { public:
     unsigned char _pad_0x08[0x20];
     EGiftType     Type;
 };
@@ -27,19 +27,19 @@ struct CDefPointer_CGiftDef {
     CGiftDef* operator->() const { return m_pDef; }
 };
 static CGiftDef* g_gift = 0; static int g_getSubDef = 0;
-struct CThingBaseDef {
+class CThingBaseDef { public:
     bool GetSubDef(CDefPointer_CGiftDef* subDef) { ++g_getSubDef; if (!g_gift) return false; ++g_gift->m_count; subDef->m_pDef = g_gift; return true; }
 };
 struct CThingBaseDefPointer {
     CThingBaseDef* Object;
     CThingBaseDef* operator->() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CThingBaseDefPointer PBaseDef;
     const CThingBaseDefPointer& GetPDef() const { return PBaseDef; }
 };
-struct CTCGift {
+class CTCGift { public:
     unsigned char _pad_0x00[0x04];
     CThing*       ParentThing;
     bool IsGiftOfType(EGiftType type);

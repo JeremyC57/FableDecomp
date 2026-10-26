@@ -6,7 +6,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CCardDef {
+class CCardDef { public:
     int Key;                                         // stands for the def's base-class body
     long CardName; long CardVal;
     CCardDef() : Key(0) { ++g_live; }

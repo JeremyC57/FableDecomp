@@ -2,8 +2,8 @@
 #include <stddef.h>
 #include <new>
 
-struct CInputProcessYesNoQuestion
-{
+class CInputProcessYesNoQuestion
+{ public:
     int marker;
     void* VectorDeletingDtor(unsigned int flags);
 };

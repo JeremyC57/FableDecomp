@@ -9,8 +9,8 @@ struct SCountBlock {
     void* m_pObject;
 };
 static void DestroyAction(void*) { ++g_destroyed; }
-struct CThingCreatureBase;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureActionBase { public:
     CThingCreatureBase* m_owner;
     unsigned char m_finished;
     virtual void FinishAction();
@@ -32,7 +32,7 @@ struct CActionPointer {
     }
     CCreatureActionBase* operator->() const { return m_pObject; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CActionPointer m_currentAction;
     unsigned char  m_flags15d_0 : 2;
     unsigned char  m_finishingAction : 1;

@@ -9,12 +9,12 @@
 // a named local; the spirit pointer is an UNINITIALISED out-parameter used unconditionally, so the OnHit call and the
 // epilogue are duplicated into the miss path (which reads the never-written frame word). `this` becomes &PCreature (`add edi,8`) once dead.
 // The PDB header (CCreatureAction_SpiritHitResponse.h) flattens the base and sits 0x0c high; modelled locally.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator*=(float scale) { X *= scale; Y *= scale; Z *= scale; return *this; }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
@@ -23,7 +23,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -48,12 +48,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCoopSpirit {                      // interface type 0xc7 component
+class CTCCoopSpirit { public:                      // interface type 0xc7 component
     void OnHit();                           // 0x006707A0
 };
 extern long g_SpiritHitResponseFrames;      // 0x01375550 (15)
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
@@ -62,7 +62,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     long TotalTime;                         // +0x10
     unsigned char _pad14[0xa8 - 0x14];      // +0x14
 };
-struct CCreatureAction_SpiritHitResponse : CCreatureActionBase {
+class CCreatureAction_SpiritHitResponse : public CCreatureActionBase { public:
     C3DVector Knockback;                    // +0xa8
     virtual void Initialise();
 };

@@ -19,8 +19,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     CCharString(const CCharString& other);            // (declared: by-value arguments are built in place)
@@ -28,17 +28,17 @@ struct CCharString {
 };
 
 namespace NUISystem {
-struct CObserver {                                   // the observer interface at +4 of every component
+class CObserver { public:                                   // the observer interface at +4 of every component
     virtual void o00(); virtual void o01(); virtual void o02();
     virtual void ObserveEvent(long eventType);       // slot 3 (+0x0C)
 };
 struct CComponentBase {                              // the primary vtable
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
-struct CManager {                                    // NUISystem::CManager (CObservable vtable part)
+class CManager { public:                                    // NUISystem::CManager (CObservable vtable part)
     virtual void SendEvent(long event);              // slot 0 (+0x00)
     virtual void m01();
     virtual void AddObserver(CObserver* observer);   // slot 2 (+0x08)
@@ -109,7 +109,7 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };

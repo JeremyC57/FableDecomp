@@ -30,7 +30,7 @@ struct CComponentRoot {                                                   // the
     virtual ~CComponentRoot();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];                                    // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);                                  // 0x0052CC50
     virtual ~CChangingStateComponent();                                   // 0x0052CCF0
@@ -53,7 +53,7 @@ struct CSwappingStateVector {                                             // ret
     }
 };
 
-struct CSwappingStateComponent : CChangingStateComponent {                // vtables 0x012485AC / 0x01248584 / 0x0124857C
+class CSwappingStateComponent : public CChangingStateComponent { public:                // vtables 0x012485AC / 0x01248584 / 0x0124857C
     CSwappingStateVector SwappingStates;                                  // +0x15c
     float                LastSwapTime;                                    // +0x168
     unsigned long        Seed;                                            // +0x16c

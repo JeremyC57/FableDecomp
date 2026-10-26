@@ -3,7 +3,7 @@
 // __fastcall(self); harness rewrites __fastcall->__fastcall.
 // Layout: +0x08 = count (long), +0x14 = long* array base.
 
-struct CWorldMap {
+class CWorldMap { public:
     char pad0[8];
     long count;      // +0x08
     char pad1[8];    // +0x0C..0x13

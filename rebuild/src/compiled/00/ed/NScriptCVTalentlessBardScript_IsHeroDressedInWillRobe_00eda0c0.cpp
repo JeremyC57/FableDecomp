@@ -12,13 +12,13 @@
 // Shape: three named bools, each one `&&` chain of four implicit-literal CCharString temporaries (the landed
 //   CDF_ThreeSuits::DressedAsBandit 0x00E72F00 shape: construction flags accumulate in ebx across the three chains,
 //   each chain's temporaries destroyed in reverse right after it); the result is `evil || plain || good`.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
-struct CGameScriptInterface {
+class CScriptThing;
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -56,7 +56,7 @@ struct CGameScriptInterface {
 };
 
 namespace NScript {
-struct CV_TalentlessBardScript {
+class CV_TalentlessBardScript { public:
     unsigned char          _base[0x40];
     CGameScriptInterface*  Game;                         // +0x40
     bool IsHeroDressedInWillRobe();

@@ -35,7 +35,7 @@ struct SEdgeStripState {                           // the strip's record at +4 (
         m_flag29 = false;
     }
 };
-struct CPatchTesselationEdgeStrip : CBase {       // vtable 0x012A8318
+class CPatchTesselationEdgeStrip : public CBase { public:       // vtable 0x012A8318
     virtual void v00();
     SEdgeStripState m_state;                       // +0x04
     CPatchTesselationEdgeStrip();

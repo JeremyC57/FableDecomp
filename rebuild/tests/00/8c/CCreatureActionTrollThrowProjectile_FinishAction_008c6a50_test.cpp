@@ -3,13 +3,13 @@
 
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; unsigned char m_flags91; float m_health;
     CInterfaceMap::SEntry m_entries[4]; int m_count;
     CThing() : m_flags91(0), m_health(0), m_count(0)
@@ -36,12 +36,12 @@ struct CThing {
 };
 static int g_kills = 0;
 struct CThingK : CThing { void Kill(bool s) { if (s) ++g_kills; } };
-struct CTCCarrying { CThing* carried; bool IsCarryingThing(CThing* t) { return t == carried; } };
-struct CTCCombat { long m_word7c; };
+class CTCCarrying { public: CThing* carried; bool IsCarryingThing(CThing* t) { return t == carried; } };
+class CTCCombat { public: long m_word7c; };
 struct CBaseIntelligentPointer { CThingK* m_pItem; CThingK* GetPItem() const { return m_pItem; } };
 static int g_base = 0;
-struct CCombatActionBase { virtual void FinishAction() { ++g_base; } CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_TrollThrowProjectile : CCombatActionBase { CBaseIntelligentPointer PShot; virtual void FinishAction(); };
+class CCombatActionBase { public: virtual void FinishAction() { ++g_base; } CBaseIntelligentPointer PCreature; };
+class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public: CBaseIntelligentPointer PShot; virtual void FinishAction(); };
 void CCreatureAction_TrollThrowProjectile::FinishAction()
 {
     CTCCarrying* carrying;

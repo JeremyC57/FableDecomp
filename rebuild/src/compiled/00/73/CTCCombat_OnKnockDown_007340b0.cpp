@@ -41,7 +41,7 @@ public:
         return false;
     }
 };
-struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
+class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  __vftable;                           // +0x00
     long   PercentageChance;                    // +0x04
     float  SecondsDuration;                     // +0x08
@@ -49,12 +49,12 @@ struct CCombatAbilityData {                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> struct CCountedPointer {     // 8 bytes: object + count block
+template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
     T*    Object;
     long* Count;
     T* operator->() const { return Object; }
 };
-struct CCombatAbility {                         // Ego_r.pdb, 8 bytes
+class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04
     void Reset()
@@ -153,7 +153,7 @@ struct CCombatAbilityMap {                      // STLport multimap<ECombatAbili
 };
 
 class CCombatManager;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 class CTCSpecialAbilities {
 public:

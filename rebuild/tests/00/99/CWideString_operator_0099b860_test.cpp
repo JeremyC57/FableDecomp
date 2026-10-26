@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <stdlib.h>
 #define FAIL { std::printf("0099b860_TEST FAIL\n"); return 1; }
-struct CWideStringData { unsigned short* Start; unsigned short* Finish; unsigned short* EndOfStorage; long NoRefs; };
+class CWideStringData { public: unsigned short* Start; unsigned short* Finish; unsigned short* EndOfStorage; long NoRefs; };
 static int g_freed = 0, g_deleted = 0;
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideStringData* AllocStringData(const unsigned short* text, long)
     {

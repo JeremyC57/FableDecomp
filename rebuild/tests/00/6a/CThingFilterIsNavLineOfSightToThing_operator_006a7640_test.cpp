@@ -1,11 +1,11 @@
 // Behaviour test for 0x006A7640 CThingFilter_IsNavLineOfSightToThing::operator()
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CThing {
+class C3DVector { public: float x, y, z; };
+class CThing { public:
     C3DVector m_pos;
     const C3DVector& GetPosition() const { return m_pos; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     float maxDist;
     const C3DVector* lastFrom;
     bool IsNavLineOfSight(const C3DVector* from, const C3DVector& to)
@@ -15,7 +15,7 @@ struct CTCCreatureNavigation {
         return d < maxDist && -d < maxDist;
     }
 };
-struct CThingFilter_IsNavLineOfSightToThing {
+class CThingFilter_IsNavLineOfSightToThing { public:
     C3DVector*             Pos;
     CTCCreatureNavigation* PTCNav;
     bool operator()(CThing* thing) const { return PTCNav->IsNavLineOfSight(Pos, thing->GetPosition()); }

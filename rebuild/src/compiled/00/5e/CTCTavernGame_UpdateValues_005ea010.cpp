@@ -28,18 +28,18 @@ template <class T> struct CDefHolder {                  // the def read once fro
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CPrizeScoreDef {
+class CPrizeScoreDef { public:
     unsigned char _pad00[0x28];
     float Score;                                        // +0x28
     long Mult;                                          // +0x2c
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad08[0x170 - 0x08];
     bool BestScoreHigh;                                 // +0x170
     CPrizeScoreDef* PrizeScores_first;                  // +0x174 PrizeScores
     CPrizeScoreDef* PrizeScores_last;                   // +0x178
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005ed4a0(CDefOut<CTavernGameDef>& out);   // 0x005ED4A0
 };
 void* FindDef_CDefClassBase_GetSubDef_005ed4a0_0();   // stand-in callee of the stand-in body below
@@ -55,7 +55,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005ed4a0(CDefOut<CTavernGameD
     return true;
 }
 #pragma auto_inline(on)
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0x5c];
     long MaximumMoney;                                  // +0x5c
 };
@@ -63,11 +63,11 @@ struct CDefinitionHolder {
     unsigned char _pad00[0xdc];
     CHeroStatsDef* PHeroStatsDef;                       // +0xdc CDefPointer<const CHeroStatsDef>
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x20 - 0x08];

@@ -8,7 +8,7 @@
 //   with end() re-computed after the call (a separate statement: in one expression the end is CSE'd with the
 //   argument) and returned through `return a != b;` (`xor edx,edx ; setne dl ; mov al,dl`).
 #pragma pack(push, 1)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -37,14 +37,14 @@ inline CEntry* find_if(CEntry* first, CEntry* last, CIsDriverEntry pred)    // S
     return find_if_entries(first, last, pred, random_access_iterator_tag());
 }
 
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;                           // +0x00
     signed char Size;                   // +0x04
     T* begin() const { return Start; }
     T* end() const { return Start + Size; }
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;    // +0x00
     bool HasDriver() const;
 };

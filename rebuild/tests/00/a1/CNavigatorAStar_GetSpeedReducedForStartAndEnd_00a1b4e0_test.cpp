@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test for 00a1b4e0 CNavigatorAStar::GetSpeedReducedForStartAndEnd: one way point left -> 35% inside speed+dist,
 // 65% inside 3*speed+dist, else the speed with SlowedDownForLastPoint cleared; any other route length keeps the speed too.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
-struct CNavWayPoint {                              // 10 bytes
+class CNavWayPoint { public:                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09

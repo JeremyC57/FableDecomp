@@ -14,7 +14,7 @@ struct CBase_0062f3b0 {
     CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
 };
 
-struct CCreatureAction_CastWillLightningSpell : CBase_0062f3b0 {
+class CCreatureAction_CastWillLightningSpell : public CBase_0062f3b0 { public:
     long m_114;                         // +0x114
     long m_118;                         // +0x118
     virtual void v00();                    // own vtable; copy constructor implicit

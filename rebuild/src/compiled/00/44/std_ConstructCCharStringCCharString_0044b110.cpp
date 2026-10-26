@@ -6,7 +6,7 @@
 // (catalog label "_Cons_val<pair<CWideString const,float>>" names a sibling instantiation).
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);               // 0x0099EC30
 };

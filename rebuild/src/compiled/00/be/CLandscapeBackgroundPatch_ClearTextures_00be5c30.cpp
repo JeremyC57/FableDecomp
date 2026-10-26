@@ -2,7 +2,7 @@ struct CTexMgr {
   void ReleaseTexture(void* t);
 };
 struct CGlobal { char pad[0x6b0]; CTexMgr* mgr; };
-struct CLandscapeBackgroundPatch { char pad[0xb8]; void* tex; };
+class CLandscapeBackgroundPatch { public: char pad[0xb8]; void* tex; };
 
 extern CGlobal* g_obj_01436ea8;
 

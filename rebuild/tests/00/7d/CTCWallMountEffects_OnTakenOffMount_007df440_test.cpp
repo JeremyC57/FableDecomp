@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool persisted; long removed; int removes;
     void RemoveTC(long type) { removed = type; ++removes; }
     void SetAsGameStatePersisted(bool p) { persisted = p; }
 };
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
-struct CWallMountEffectsDef { EWallMountEffects Effect; };
-struct CTCWallMountEffects {
+class CWallMountEffectsDef { public: EWallMountEffects Effect; };
+class CTCWallMountEffects { public:
     CThing* ParentThing; const CWallMountEffectsDef* PDef; bool ObjectWasGamePersistant;
     void OnTakenOffMount()
     {

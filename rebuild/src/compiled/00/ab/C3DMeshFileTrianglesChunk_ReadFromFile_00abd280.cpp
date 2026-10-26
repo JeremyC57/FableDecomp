@@ -18,8 +18,8 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
-struct CDataInputStream {
+class CChunkedFileLoader;
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -48,7 +48,7 @@ struct CDataInputStream {
     __forceinline unsigned long ReadULong() { unsigned long value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DTriangle2 {
+class C3DTriangle2 { public:
     unsigned short Index[3];
     C3DTriangle2() {}
 };
@@ -61,7 +61,7 @@ C3DTriangle2* __fastcall UninitializedCopyTriangles(C3DTriangle2* first, C3DTria
 void __fastcall FillTriangles(C3DTriangle2* first, C3DTriangle2* last, const C3DTriangle2& x);   // 0x00A945D0 STLport fill
 C3DTriangle2* __fastcall UninitializedFillTriangles(C3DTriangle2* first, unsigned long n, const C3DTriangle2& x);   // 0x00A95970 uninitialized_fill_n
 
-template <class T> struct CArray {                 // retail STLport vector layout
+template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -134,16 +134,16 @@ template <class T> struct CArray {                 // retail STLport vector layo
 };
 
 #pragma auto_inline(off)
-template struct CArray<C3DTriangle2>;
+template class CArray<C3DTriangle2>;
 #pragma auto_inline(on)
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _body[0x28];             // CChunkedFileChunk (0x10) + the sub chunk containers (retail 0x2C total)
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
 
-struct C3DMeshFileTrianglesChunk : CChunkedFileSuperChunk {
+class C3DMeshFileTrianglesChunk : public CChunkedFileSuperChunk { public:
     CArray<C3DTriangle2> TriangleList;     // +0x2C
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);
 };

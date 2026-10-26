@@ -8,12 +8,12 @@
 // constructor @ 0x0044C0C0 runs, then the compiler stores this class's vtable (0x012322E4
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public:
     virtual void v00();
     CShoveHaPennyRegionDef();                           // 0x0044C0C0
 };
 
-struct CBonusItemDef : CShoveHaPennyRegionDef {
+class CBonusItemDef : public CShoveHaPennyRegionDef { public:
     virtual void v00();                    // this class has its own vtable
     CBonusItemDef();
 };

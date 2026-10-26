@@ -23,7 +23,7 @@
 #pragma optimize("s", on)
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const wchar_t* text);                   // 0x0099B6B0
@@ -34,7 +34,7 @@ struct CWideString {
     CWideString& operator+=(const wchar_t* text);       // 0x0099B940
 };
 CWideString __fastcall operator+(const CWideString& s, const wchar_t* text);   // 0x0099BF30
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -44,12 +44,12 @@ struct CCharString {
 };
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 struct _FILETIME { unsigned long dwLowDateTime, dwHighDateTime; };
-struct CDateAndTime {
+class CDateAndTime { public:
     long _body[7];
     _FILETIME ToFileTime() const;                       // 0x009E9D40
 };
 void __fastcall FormatDateTime(const _FILETIME& time, wchar_t* dateText, wchar_t* timeText, long flags);   // 0x00A0D980
-struct CTCHeroStats {
+class CTCHeroStats { public:
     static CWideString __fastcall GetTimeSpentInGame(long seconds, bool brief);    // 0x005CCC91
 };
 void __fastcall SubstituteFileName(CWideString& text, const CWideString& name); // 0x009C7980
@@ -99,14 +99,14 @@ struct CDataBank {
     CTempPtr<CTextGroup> GetGroup(unsigned long entry, bool load);    // 0x009C8890
     CDefPtr<CTextEntry> GetEntry(unsigned long entry, bool load);     // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     long       _pad00[0x14 / 4];
     CDataBank* TextBank;                                // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 __forceinline CDataBank* GetTextBank() { return g_pMainGameComponent->TextBank; }
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
     virtual void m05(); virtual void m06(); virtual void m07(); virtual void m08(); virtual void m09();
     virtual void m10(); virtual void m11(); virtual void m12(); virtual void m13(); virtual void m14();
@@ -120,21 +120,21 @@ struct CManager {
     static CManager* __fastcall GetInstance();          // 0x0041E5F2
 };
 }
-struct CUserProfileManager {
+class CUserProfileManager { public:
     long        _pad00[2];
     CWideString ProfileName;                            // +0x08
     CWideString GetPathNameFromFileName(const CWideString& name, bool full);   // 0x00408120
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
 };
 struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
-struct CThing {
+class CThing { public:
     long          _pad00[0x20 / 4];
     CPresenceBits present;                              // +0x20
     long          _pad21[(0x44 - 0x24) / 4];
-    struct CTCBase** m_firstTC;                         // +0x44 (interface map, simplified)
+    class CTCBase** m_firstTC;                         // +0x44 (interface map, simplified)
     template<class T> __forceinline T* GetTC(long kind) { if (present.test(kind)) return (T*)m_firstTC[kind]; return 0; }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08

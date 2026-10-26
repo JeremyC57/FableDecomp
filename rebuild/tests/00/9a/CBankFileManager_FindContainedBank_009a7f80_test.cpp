@@ -20,7 +20,7 @@ static int fails = 0;
 //          shares one `push eax` instead (1 byte longer).
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -33,7 +33,7 @@ struct SCountBlock {                                       // CCPPointerInfo: co
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 
-template <class T> struct CCountedPointer {                // {object, count block}
+template <class T> class CCountedPointer { public:                // {object, count block}
     T*           Data;                                     // +0
     SCountBlock* Info;                                     // +4
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }

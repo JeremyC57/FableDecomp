@@ -16,7 +16,7 @@
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 namespace NParticleEngine {
-struct CParticleEmitterInfo;
+class CParticleEmitterInfo;
 }
 NParticleEngine::CParticleEmitterInfo* __fastcall __copy(const NParticleEngine::CParticleEmitterInfo* first,
     const NParticleEngine::CParticleEmitterInfo* last, NParticleEngine::CParticleEmitterInfo* result,
@@ -24,7 +24,7 @@ NParticleEngine::CParticleEmitterInfo* __fastcall __copy(const NParticleEngine::
 void __fastcall DestroyRange(NParticleEngine::CParticleEmitterInfo* first, NParticleEngine::CParticleEmitterInfo* last,
                              const __false_type& tag);                                  // 0x00AF1D90
 
-struct CBankFile {
+class CBankFile { public:
     unsigned char _body[0x164];
     void Close_009ce360();                                  // 0x009CE360
 };
@@ -35,7 +35,7 @@ template<class T> struct CArray {                           // retail 12 bytes: 
     T* _M_finish;
     T* _M_end_of_storage;
 };
-struct CParticleDataBank : CBankFile {
+class CParticleDataBank : public CBankFile { public:
     unsigned char _secondary164[0x1e0 - 0x164];             // secondary base (vtable 0x0129F380) and bank members
     CArray<CParticleEmitterInfo> ParticleEmitters;          // +0x1e0
     void Close();

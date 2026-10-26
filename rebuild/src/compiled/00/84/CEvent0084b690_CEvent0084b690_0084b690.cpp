@@ -7,7 +7,7 @@
 // own (novtable); its members are destroyed in reverse declaration order -- the CIVCountedPointer
 // (+0x10, inline release) then the CBaseIntelligentPointer (+8, out of line) -- and finally the
 // inline empty base destructor writes the base vtable.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {
 };
 
 namespace NEntityEvents {
-struct CEventBase {                        // vtable 0x0124F2C4
+class CEventBase { public:                        // vtable 0x0124F2C4
     virtual void v00();
     long m_eventType;                      // +4
     ~CEventBase() { }

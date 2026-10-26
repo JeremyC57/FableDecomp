@@ -34,7 +34,7 @@ struct CDataInputStreamReader : CDataInputStream {
 enum EPhysicalPrimitiveType { PHYSICAL_PRIMITIVE_NONE = 0 };
 
 namespace NHitLocations {
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -44,12 +44,12 @@ struct CPhysicalPrimitiveBase {
 };
 }
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
 };
 
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> PPrimitive;   // +0x00
     bool SetPPrimitiveFromType(EPhysicalPrimitiveType type);            // 0x0067F810
 };

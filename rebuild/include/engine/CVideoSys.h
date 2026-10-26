@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 struct CDataBank;
-struct CTexture;
+class CTexture;
 struct CTextureRenderer;
 struct IBaseFilter;
 struct IBasicAudio;

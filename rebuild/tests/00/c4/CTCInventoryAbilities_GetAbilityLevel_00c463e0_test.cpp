@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 struct CAbilityRec { long level; long b; long c; };
-struct CTCInventoryAbilities { char pad00[8]; CAbilityRec *m_abilities; long GetAbilityLevel(long index); };
+class CTCInventoryAbilities { public: char pad00[8]; CAbilityRec *m_abilities; long GetAbilityLevel(long index); };
 long CTCInventoryAbilities::GetAbilityLevel(long index){ return m_abilities[index].level; }
 int main(){
     CAbilityRec r[3]; r[0].level=10; r[2].level=30;

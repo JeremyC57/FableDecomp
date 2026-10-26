@@ -36,7 +36,7 @@ enum EOpinion { OPINION_COUNT = 5 };
 enum EOpinionReactionType { REACTION_COUNT = 0x4f };
 typedef CRetailMap<EOpinion, float> COpinionMap;
 typedef CRetailMap<EOpinionReactionType, bool> CReactionMap;
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     void Transfer(COpinionMap& value);          // 0x0045F2EA
@@ -45,15 +45,15 @@ struct CPersistContext {
     void Transfer(long& value);                 // 0x00431102
     void Transfer(float& value);                // 0x00431061
 };
-struct COpinionSet {
+class COpinionSet { public:
     float* Values;
     long   _pad[2];
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _pad04[0x38];
 };
-struct COpinionSourceDef : CDefClassBase {
+class COpinionSourceDef : public CDefClassBase { public:
     COpinionMap   ProducedOpinion;              // +0x3c
     bool          AlwaysAwareOf;                // +0x48
     bool          UnknownThreatSource;          // +0x49

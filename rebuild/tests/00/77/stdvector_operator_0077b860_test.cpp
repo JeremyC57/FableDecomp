@@ -7,7 +7,7 @@
 
 static int g_Blocks = 0;
 
-struct CCompositeBlendDesc { int a, b, c, d; };
+class CCompositeBlendDesc { public: int a, b, c, d; };
 
 struct BlendVec {
     CCompositeBlendDesc* s;
@@ -42,7 +42,7 @@ struct BlendVec {
     }
 };
 
-struct CEngineTextureDecal {
+class CEngineTextureDecal { public:
     int      OriginalTextureIndex;
     int      DecalID;
     BlendVec OverlaidBlends;

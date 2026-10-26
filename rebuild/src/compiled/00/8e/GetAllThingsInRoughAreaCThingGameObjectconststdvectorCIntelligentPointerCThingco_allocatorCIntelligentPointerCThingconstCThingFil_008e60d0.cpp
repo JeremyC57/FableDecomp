@@ -33,10 +33,10 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct C3DVector {float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+class C3DVector { public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
 // Donor supplies the shared object layout; adapter supplies its recovered method declaration.
 struct CTCPhysicsBase_Calls:CTCPhysicsBase {void GetBoundingInfo(C3DVector&,float&)const;}; // 0x006af640
-struct CThing {
+class CThing { public:
  unsigned char BeforePhysics[0x60];CTCPhysicsBase* PTCPhysics;unsigned char BeforeType[8];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
@@ -62,9 +62,9 @@ void ThingVector::_M_insert_overflow(CThing** position,CThing* const& value,cons
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -75,8 +75,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -92,15 +92,15 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_CanCollideOrInteractWithThing {CTCPhysicsBase* TCPhysics;bool ExcludeCreatures;bool operator()(const CThing&)const;}; // 0x006a8370
-struct CThingFilter_OverlappingSphere {C3DVector SpherePos;float Radius;
+class CThingFilter_CanCollideOrInteractWithThing { public:CTCPhysicsBase* TCPhysics;bool ExcludeCreatures;bool operator()(const CThing&)const;}; // 0x006a8370
+class CThingFilter_OverlappingSphere { public:C3DVector SpherePos;float Radius;
  __forceinline bool operator()(const CThing& thing)const{
   C3DVector centre;float radius;static_cast<const CTCPhysicsBase_Calls*>(thing.PTCPhysics)->GetBoundingInfo(centre,radius);
   float x=centre.X-SpherePos.X,y=centre.Y-SpherePos.Y,z=centre.Z-SpherePos.Z;float r=radius+Radius;
   return z*z+y*y+x*x<r*r;
  }
 };
-struct CThingFilter_HasTC {long Type;bool operator()(const CThing&)const;}; // 0x006a80a0
+class CThingFilter_HasTC { public:long Type;bool operator()(const CThing&)const;}; // 0x006a80a0
 struct Filters {CThingFilter_CanCollideOrInteractWithThing* F1;CThingFilter_OverlappingSphere* F2;CThingFilter_HasTC* F3;
  __forceinline bool operator()(const CThing& p)const{return (*F1)(p)&&(*F2)(p)&&(*F3)(p);}
 };

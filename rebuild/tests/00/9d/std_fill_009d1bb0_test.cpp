@@ -4,7 +4,7 @@
 #define __fastcall
 #endif
 static int g_stringCopies = 0, g_stringAssigns = 0;
-struct CSoundPair {                             // 8 bytes
+class CSoundPair { public:                             // 8 bytes
     long FirstSound;                            // +0x00
     long LastSound;                             // +0x04
 };

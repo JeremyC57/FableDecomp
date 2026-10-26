@@ -1,7 +1,7 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CWorldMap
-{
+class C3DVector { public: float X, Y, Z; };
+class CWorldMap
+{ public:
     bool PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* pos) const;
 };
 bool CWorldMap::PointIsWithinLineSegment(const C3DVector* point, const C3DVector* a, const C3DVector* pos) const

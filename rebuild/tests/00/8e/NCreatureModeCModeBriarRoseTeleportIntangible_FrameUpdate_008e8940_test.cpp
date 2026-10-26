@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeBriarRoseTeleportIntangible::FrameUpdate (retail 0x008E8940): after the base
 // update the teleport timer counts down; at zero, with a live target, the concentrate-into action is started at it.
-struct CThing { unsigned char m_flags91; };
-struct CCreatureActionBase { CThing* Target; bool Flag; };
+class CThing { public: unsigned char m_flags91; };
+class CCreatureActionBase { public: CThing* Target; bool Flag; };
 static CThing* g_startedAt;
 static int g_starts;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action) { ++g_starts; g_startedAt = action.Target; return !action.Flag; }
 };
-struct CCreatureAction_BriarRoseConcentrateInto : CCreatureActionBase {
+class CCreatureAction_BriarRoseConcentrateInto : public CCreatureActionBase { public:
     CCreatureAction_BriarRoseConcentrateInto(CThingCreatureBase* owner, CThing* target, bool flag) { Target = target; Flag = flag; (void)owner; }
 };
 struct CBaseIntelligentPointer {

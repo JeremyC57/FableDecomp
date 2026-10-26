@@ -1,7 +1,7 @@
 // Behaviour test for 0x00AD8FE0 CVertexGroupBlockOptimiser::CalcCurrentBestTheoreticalResultNewBlock.
 #include <cstdio>
 
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     unsigned int* First; unsigned int* Last;
     unsigned int GroupCount() const { return (unsigned int)(Last - First); }
 };

@@ -19,21 +19,21 @@ static int fails = 0;
 // Shape: SpawnFunction takes the region as `const CCharString& region = CCharString("")`: the default-argument temporary is
 //   built at the call site and gets its own frame slot (frame+4) as in retail; a `const char*` default converted inside
 //   the inline helper lets VC put the string in the dead `bandit` argument slot (0x10 frame).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -55,7 +55,7 @@ template <class T> struct CCountedPointer {
     }
 };
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     ~CScriptThing() { }
@@ -71,7 +71,7 @@ struct CScriptThingStored : CBaseClass {
 };
 
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_2 = 2 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CScriptThing GetScriptThing() const;            // slot 12 (+0x30)
@@ -80,7 +80,7 @@ struct CScriptGameResourceObjectScriptedThingBase {
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25();
     virtual bool IsPerformingScriptTask() const;            // slot 26 (+0x68)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -115,7 +115,7 @@ struct CGameScriptInterface {
     virtual float GetHealth(const CScriptThing& thing) const;   // slot 264 (+0x420)
 };
 
-struct CSpawnedFuncBase {                                    // 0x34 bytes
+class CSpawnedFuncBase { public:                                    // 0x34 bytes
     CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
     virtual void v00();
     unsigned char _body[0x30];
@@ -134,7 +134,7 @@ struct CQuestData {
     unsigned char _pad00[0xd0];
     long          BanditsHired;                            // +0xd0
 };
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -13,14 +13,14 @@
 //   their own), the root's inline virtual dtor stores its vtable at the end; each handle is the landed
 //   NParticleEngine::CParticleEmitter (0x00AF10E0) model: `__forceinline` dtor, `if (Data.GetRefCount() == 1)
 //   Data->OnLastHandleReleased(this); Data = 0;` over a CIVCountedPointer member whose own dtor releases again.
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                      // 0x0099A2D0
     ~CBaseClass();                                     // 0x0099A2E0
 };
 
-struct CEnginePrimitiveHandle;
-struct CEnginePersistentPrimitiveBase {
+class CEnginePrimitiveHandle;
+class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     virtual void v02();
@@ -28,7 +28,7 @@ struct CEnginePersistentPrimitiveBase {
     long m_refCount;                                   // +0x04
 };
 
-template <class T> struct CIVCountedPointer {          // intrusive counted pointer (count at +4 of the object)
+template <class T> class CIVCountedPointer { public:          // intrusive counted pointer (count at +4 of the object)
     T* m_p;
     CIVCountedPointer() : m_p(0) { }
     ~CIVCountedPointer() { Release(); }
@@ -46,7 +46,7 @@ template <class T> struct CIVCountedPointer {          // intrusive counted poin
     long GetRefCount() const { return m_p ? m_p->m_refCount : 0; }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass {           // vtable 0x0122F598, 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:           // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
     virtual void v00();
     CEnginePrimitiveHandle() { }
@@ -58,12 +58,12 @@ struct CEnginePrimitiveHandle : CBaseClass {           // vtable 0x0122F598, 8 b
     }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CEnginePrimitiveAttachmentInfo {
+class CEnginePrimitiveAttachmentInfo { public:
     unsigned long Flags;                               // +0x00
     CCharString   ParentDummyName;                     // +0x04
     long          ParentDummyIndex;                    // +0x08
@@ -71,11 +71,11 @@ struct CEnginePrimitiveAttachmentInfo {
     long          ChildDummyIndex;                     // +0x10
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float E[12];
 };
 
-struct CIVCountedPointeeBase {                         // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                         // vtable 0x012354D0
     long RefCount;                                     // +0x04
     virtual ~CIVCountedPointeeBase() { }
 };

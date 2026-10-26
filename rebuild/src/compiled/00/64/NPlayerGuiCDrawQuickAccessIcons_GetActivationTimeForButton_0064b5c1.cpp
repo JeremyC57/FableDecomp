@@ -14,8 +14,8 @@
 // an inline accessor that leaves its result unset when the interface is absent (VC loads the dead `button` slot there);
 // the def is a named CDefPointer whose destructor runs the inline ReleaseTemporary (`add eax,4 ; dec [eax] ; cmp
 // [eax],0`); the time is a named float local parked in the dead argument slot across the release.
-struct C2DVector { float X, Y; };
-struct CTCBase;
+class C2DVector { public: float X, Y; };
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
 };
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -40,13 +40,13 @@ struct CThing {
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsChild();                                // 0x00661F70
 };
-struct CPlayer {
+class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
 struct CRefCounted {
@@ -58,7 +58,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1
 };
-struct CInventoryItemDef : CDefVirtual, CRefCounted {
+class CInventoryItemDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _def[0x40];                      // +0x08
     float ActivationTime;                          // +0x48
     void ReleaseTemporary()
@@ -77,7 +77,7 @@ struct CDefPointer {
     }
     CInventoryItemDef* operator->() const { return m_p; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CDefPointer GetQuickAccessItemDef(long slot);  // 0x00581DDB
 };
 __forceinline CTCInventory* GetInventory(CThing* thing)
@@ -89,7 +89,7 @@ __forceinline CTCInventory* GetInventory(CThing* thing)
 }
 
 namespace NPlayerGui {
-struct CDrawQuickAccessIcons {
+class CDrawQuickAccessIcons { public:
     unsigned char _pad[8];
     CPlayerManager* PlayerManager;                 // +0x08
     float GetActivationTimeForButton(long button);

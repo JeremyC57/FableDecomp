@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CResurrectionItemDef
-{
+class CResurrectionItemDef
+{ public:
     void* vftable;
 };
 extern void* const g_CResurrectionItemDef_vftable;

@@ -3,7 +3,7 @@
 // the directory plus "*" (the host model uses '/' for the engine's backslash).
 #include <cstdio>
 #include <cstring>
-struct CWideString {                                   // narrow host stand-in for the engine's wide string
+class CWideString { public:                                   // narrow host stand-in for the engine's wide string
     char s[128];
     CWideString(const char* t) { std::strcpy(s, t); }
 };
@@ -33,7 +33,7 @@ static int Index(const char* n) { for (int i = 0; i < 4; ++i) if (std::strcmp(n,
 static bool PathExists(const CWideString& p) { int i = Index(p.s); return i >= 0 && g_exists[i]; }
 static bool IsPathFile(const CWideString& p) { int i = Index(p.s); return i >= 0 && g_isFile[i]; }
 static char g_log[256];
-struct CDriveManager {
+class CDriveManager { public:
     long DeleteFile(const CWideString& p) { std::strcat(g_log, "F:"); std::strcat(g_log, p.s); std::strcat(g_log, ";"); return 1; }
     long DeleteDirectory(const CWideString& p) { std::strcat(g_log, "D:"); std::strcat(g_log, p.s); std::strcat(g_log, ";"); return 1; }
 };

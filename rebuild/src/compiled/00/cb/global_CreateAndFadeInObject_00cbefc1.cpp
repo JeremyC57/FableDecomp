@@ -18,17 +18,17 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CScriptThing {
+class CScriptThing { public:
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
     void* m_vtable;
     void* m_pImpData;
     void* m_pImpInfo;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;                   // slot 7 (+0x1c)

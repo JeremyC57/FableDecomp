@@ -14,7 +14,7 @@ struct StatTable {
     StatEntry* entries;     // 0xfc
 };
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad0[0x5c];        // 0x00..0x5b
     StatTable* table;       // 0x5c
     EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat);

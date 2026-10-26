@@ -3,7 +3,7 @@
 #include <cstring>
 
 struct CVillage { int NextGreetFrame; };
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     bool hasStats;
     int stats114;

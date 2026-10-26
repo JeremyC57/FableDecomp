@@ -4,7 +4,7 @@ struct Inner {
     unsigned char _pad[0x91];
     unsigned char flags; // +0x91
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     Inner* (__fastcall **p0)(void*);
 };
 

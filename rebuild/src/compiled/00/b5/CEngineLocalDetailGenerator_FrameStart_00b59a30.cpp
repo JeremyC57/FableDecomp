@@ -12,13 +12,13 @@
 //   memberwise user copy ctor (direct offsets) and assigned to OldCameraPos at the end (implicit assignment: `add ebx,18h`);
 //   the render loop reads the camera global into a local first thing in the body (retail loads it at the rotated latch,
 //   before the cache test).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad[0x54];
     C3DVector     WorldPosition;                       // +0x54 (CameraDesc.WorldPosition)
 };
@@ -26,12 +26,12 @@ extern CEngineCamera* g_pEngineCamera;                 // 0x01436EA0
 
 double __fastcall GFGetFastSubFrameTimer();            // 0x009E1C70
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     bool Update(double time);                          // 0x00BDED90
     void Render(CEngineCamera* camera, float alpha);   // 0x00BDDD70
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     void*                 LandscapeMap;                // +0x00
     CLocalDetailCacheMap* LocalDetailCacheMap;         // +0x04
 };
@@ -51,12 +51,12 @@ struct SEngineState {
 };
 extern SEngineState* g_pEngineState;                   // 0x01436E8C
 
-struct CEngineComponentParams {
+class CEngineComponentParams { public:
     unsigned char _pad[0x7c];
     bool          OffWorldTickProcessFlag;             // +0x7c
 };
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     virtual void FrameStart(const CEngineComponentParams& params);
     unsigned char _pad04[0x18 - 4];
     C3DVector     OldCameraPos;                        // +0x18

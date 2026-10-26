@@ -12,12 +12,12 @@ public:
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     ~CCountedPointer()
     {
@@ -28,14 +28,14 @@ template <class T> struct CCountedPointer {
         Data = 0; Info = 0;
     }
 };
-struct CBaseClass { CBaseClass() {} virtual ~CBaseClass() {} };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: CBaseClass() {} virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
     CScriptThing(const CScriptThing& o) : CBaseClass() { PImp.Data = o.PImp.Data; PImp.Info = o.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
     ~CScriptThing() {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { R = o.R; G = o.G; B = o.B; A = o.A; }
@@ -46,7 +46,7 @@ static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static CScriptThing g_hero;
 static CScriptThing g_markerThing;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     float dur, hold; CRGBColour col; bool allow; const CScriptThing* tpEntity; const CScriptThing* tpTarget; long refAtTp;
     CGameScriptInterface() : col(1, 1, 1, 1) {}
     virtual CScriptThing& GetHero() { Log("hero"); return g_hero; }

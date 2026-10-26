@@ -8,7 +8,7 @@
 // Shape: the landed 0x00CB7210 push_back: placement new under VC's null test with a `__forceinline`
 // memberwise copy ctor, finish re-read and advanced by 0x14; the empty __false_type temporary is homed in
 // the dead `x` argument slot.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };

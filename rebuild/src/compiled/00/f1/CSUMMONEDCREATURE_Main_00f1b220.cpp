@@ -19,14 +19,14 @@
 // NewCrowdBaseLevel +0xfc, GlobalCrowdTimer +0x100.
 // Shape: the sibling CRansomRevenge::Main 0x00DE3830 hit chain (conditional string temporaries with flag bits 1, 2, 4,
 // here spilled to the frame); the watch loop is a rotated `while (!IsActiveThreadTerminating())`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
 };
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual void t00(); virtual void t01(); virtual void t02();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
@@ -67,7 +67,7 @@ struct CIsThingConscious {                             // vtable 0x012C2FE8: a f
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
     VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69
@@ -81,7 +81,7 @@ struct CGameScriptInterface {
     virtual unsigned long PlayCriteriaSoundOnThing(const CScriptThing& thing, const CCharString& criteria) const;   // slot 689 (+0xac4)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                        // a script timer: the interface's timer handle
+class CTimer { public:                                        // a script timer: the interface's timer handle
     long Handle;
     long GetTime() const { const long& handle = Handle; return g_pGameScriptInterface->GetTimer(handle); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Handle, time); }
@@ -100,7 +100,7 @@ struct CQ_ArenaScript {                                // retail = Ego_r.pdb - 0
     long          NewCrowdBaseLevel;                   // +0xfc
     CTimer        GlobalCrowdTimer;                    // +0x100
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

@@ -132,7 +132,7 @@ public:
     virtual bool IsInMovieSequence() const;         // slot 395 (+0x62C)
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x38];
     CGameScriptInterface* PGameScriptInterface;     // +0x38
     unsigned char _pad3c[0x8c - 0x3c];

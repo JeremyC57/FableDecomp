@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatDialogueDef { int dummy; };
+class CCombatDialogueDef { public: int dummy; };
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;

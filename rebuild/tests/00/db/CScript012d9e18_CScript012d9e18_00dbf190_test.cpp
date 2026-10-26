@@ -6,12 +6,12 @@
 #endif
 #include <string.h>
 #include <new>
-struct CBaseClass { virtual ~CBaseClass() { } CBaseClass() { } };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass { CCountedPointer<CScriptThing> PImp; CScriptThing() { } };
+class CBaseClass { public: virtual ~CBaseClass() { } CBaseClass() { } };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public: CCountedPointer<CScriptThing> PImp; CScriptThing() { } };
 static int g_scriptBases = 0;
-struct CScriptBase { virtual ~CScriptBase() { } CScriptBase() { ++g_scriptBases; } };
+class CScriptBase { public: virtual ~CScriptBase() { } CScriptBase() { ++g_scriptBases; } };
 template <class T> struct CAllocator { CAllocator() { } };
 template <class T> struct CAllocProxy : CAllocator<T> {
     T* m_data;
@@ -24,7 +24,7 @@ template <class T> struct CVectorBase {
 template <class T> struct CSTLportVector : CVectorBase<T> {
     explicit CSTLportVector(const CAllocator<T>& alloc = CAllocator<T>()) : CVectorBase<T>(alloc) { }
 };
-template <class T> struct CArray : CSTLportVector<T> { };
+template <class T> class CArray : public CSTLportVector<T> { public: };
 struct CScriptPairBase : CScriptBase {
     long  _pad[15];
     void* m_second;

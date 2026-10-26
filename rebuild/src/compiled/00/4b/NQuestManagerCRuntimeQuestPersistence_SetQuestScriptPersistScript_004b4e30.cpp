@@ -11,11 +11,11 @@
 // Shape: the map's inline Find (`last` read once after LowerBound), then a CPersistInfo local built from the arguments; a hit
 // assigns it through the inline memberwise operator=, a miss runs the inline Add (pair temporary in its own block, Dirty =
 // true) and the inline SortIfDirty (the test folds, the true store stays before the sort call, false after).
-struct CCharStringData {
+class CCharStringData { public:
     bool operator<(const CCharStringData& other) const;   // 0x00429950 (CBasicString<char>::operator<)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CCharString {
 namespace NQuestManager {
 
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
         CPersistInfo(const CCharString& questName, const CCharString& persistScript)

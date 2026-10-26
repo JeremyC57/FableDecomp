@@ -2,12 +2,12 @@
 
 // Model of CTCInventoryStats::CTCInventoryStats(CThing*) @ 0x005CD2A6: both bases built (the inventory base keeps the
 // owner), the kill map constructed empty, the five scalar members zeroed.
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_order[3]; static int g_step = 0;
 struct CTCInventoryBase { CThing* Owner; CTCInventoryBase(CThing* t) : Owner(t) { g_order[g_step++] = 1; } virtual ~CTCInventoryBase() { } };
 struct CInfoScreenBase { CInfoScreenBase() { g_order[g_step++] = 2; } virtual ~CInfoScreenBase() { } };
 struct CCreatureKillMap { long count; CCreatureKillMap() : count(0) { g_order[g_step++] = 3; } };
-struct CTCInventoryStats : CTCInventoryBase, CInfoScreenBase {
+class CTCInventoryStats : public CTCInventoryBase, public CInfoScreenBase { public:
     CCreatureKillMap CreaturesKilled;
     CThing* pMannequin; bool UseMannequin; long lastCategoryIdx; void* pTCHeroExperience; void* pTCHeroStats;
     CTCInventoryStats(CThing* thing)

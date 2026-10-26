@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame = 100;
 static long GetCurrentFrame() { return g_frame; }
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     bool IsStriking; long LastStrikeTick;
     void SetIsStriking(bool s) { if (IsStriking) LastStrikeTick = GetCurrentFrame(); IsStriking = s; }
 };

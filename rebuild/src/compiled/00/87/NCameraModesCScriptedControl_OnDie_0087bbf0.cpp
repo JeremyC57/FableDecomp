@@ -25,11 +25,11 @@ class C3DVector { public:
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
     C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c
 };
-struct CCamera {                            // 0x38 bytes
+class CCamera { public:                            // 0x38 bytes
     C3DVector       WorldPosition;          // +0x00
     CRightHandedSet RHSet;                  // +0x0c
     bool            HeightLocked;           // +0x24
@@ -44,12 +44,12 @@ struct CCamera {                            // 0x38 bytes
 };
 void __fastcall SetCameraRoll(CCamera* camera, float roll);   // 0x0084CD10
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
-struct CThingGameObject : CThing { };
+class CThingGameObject : public CThing { public: };
 inline bool IS_THING_ALIVE(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
 
 class CGameCameraManager {

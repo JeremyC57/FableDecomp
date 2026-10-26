@@ -68,7 +68,7 @@ public:
     float GetParameter(const CTCHeroExperience& experience) const;   // 0x00851BD0
 };
 
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;                                     // +0x00
     float LowValue;                                      // +0x04
 };

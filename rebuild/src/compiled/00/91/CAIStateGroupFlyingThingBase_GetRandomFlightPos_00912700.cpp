@@ -2,7 +2,7 @@
 // Retail00912700,309 bytes. Shared Base/Brain storage; FlyingThingBase absent from active headers. Final bool argument is unused by retail.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 struct CNavigationMethods {unsigned long GetNavigatorType();void SetNavigatorToType(unsigned long);bool GetNearbyWanderPosition(const C3DVector&,float,C3DVector*,bool);}; //006CB6A0,006CBA80,006CB6E0
 struct CInterfaceMap {struct Entry {long type;void* value;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040F020
 struct CThingRetail {unsigned char beforeComponents[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;

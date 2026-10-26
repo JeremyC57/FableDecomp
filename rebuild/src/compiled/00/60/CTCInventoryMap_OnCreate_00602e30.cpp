@@ -16,12 +16,12 @@
 // MapScreenPrimitiveHandles +0x1AC, MapScreenQuestPrimitiveHandles +0x1B8, MapScreenTeleportPrimitiveHandles +0x1C4,
 // MapScreenHousePrimitiveHandles +0x1D0, NumRegions +0x23C; the map def's inventory-def index at +0x8C.
 // Leaf: ?OnCreate@CTCInventoryMap
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -29,30 +29,30 @@ struct CInventoryMapDef : CDefPointeeBase {
     unsigned char _pad08[0x8c - 0x08];
     long InventoryDefIndex;                     // +0x8c
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryMapDef>* out);   // 0x00485815
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;            // +0x70
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0
+class CBase { public:                                  // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle> (12 bytes)
     CEnginePrimitiveHandle* _M_start;
     CEnginePrimitiveHandle* _M_finish;
@@ -63,10 +63,10 @@ struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle
     CEnginePrimitiveHandle* end() { return _M_finish; }
     void clear() { erase(begin(), end()); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetNoRegions();                        // 0x004FB470
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

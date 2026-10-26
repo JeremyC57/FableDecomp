@@ -26,15 +26,15 @@ extern "C" double __cdecl fmod(double x, double y);
 extern "C" double __cdecl acos(double x);
 #pragma intrinsic(atan2, fmod, acos)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CRightHandedSet { C3DVector Up, Forward; CRightHandedSet() {} CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {} };
+class CRightHandedSet { public: C3DVector Up, Forward; CRightHandedSet() {} CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {} };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2)
@@ -52,7 +52,7 @@ struct CTCPhysicsBase {
 #undef VF10
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -60,17 +60,17 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                      // 0x0040F020
     const SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad[0x20a];
     bool ZTargeting;                                           // +0x20A
 };
-struct CTCCombat {
+class CTCCombat { public:
     bool IsBlocking() const;                                   // 0x007331E0
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                          // 0x0073AE10
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
@@ -102,7 +102,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsBlocking() const
     {
         if (HasTC(0x30))
@@ -115,13 +115,13 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* m_pItem;                               // +0x04
     CThingCreatureBase* GetPItem() const;                      // 0x00A01B50
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
     CCharString& operator+=(const char* text);                 // 0x0099F100
 };
-struct CCombatManager {
+class CCombatManager { public:
     unsigned char _pad00[0x1c];
     bool CombatStrafeTurningEnabled;                           // +0x1C
 };

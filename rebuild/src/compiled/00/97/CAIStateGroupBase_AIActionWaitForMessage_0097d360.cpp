@@ -26,7 +26,7 @@ enum EAIActionReturn {
     AI_ACTION_RETURN_THREE = 3
 };
 
-struct CMessageEvent {
+class CMessageEvent { public:
     fable_u8 _header[8];
     fable_i32 Type;                                            // +0x08
     fable_u8 _opaque_0c[0x1c];
@@ -38,11 +38,11 @@ struct SMessageNode {
     SMessageNode* prev;
     CMessageEvent Event;                                       // +0x08
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     fable_i32 Type;
     bool operator()(CMessageEvent* event) const;               // 0x006af1c0
 };
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     fable_u32 UID[2];
     CMessageEventFilter_IsOriginatedByThing(const CThingCreatureBase* thing); // 0x006af290
     bool operator()(CMessageEvent* event) const;
@@ -52,7 +52,7 @@ struct COwnMessageFilter {
     const CMessageEventFilter_IsOriginatedByThing* OriginatorFilter;
 
 };
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CWorld* World;
     SMessageNode* Messages;                                    // +0x04 sentinel
     CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter); // 0x008d46d0

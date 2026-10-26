@@ -3,8 +3,8 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CBaseObject { int x; };
-struct CThing : CBaseObject {};
+class CBaseObject { public: int x; };
+class CThing : public CBaseObject { public:};
 struct CBaseIntelligentPointer {
     CBaseObject* PData;
     CBaseIntelligentPointer() : PData(0) {}
@@ -13,11 +13,11 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { PData = item; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
     bool operator==(const CIntelligentPointer& other) const { return GetPItem() == other.GetPItem(); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

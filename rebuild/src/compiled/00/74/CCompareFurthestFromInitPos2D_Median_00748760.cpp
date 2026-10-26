@@ -9,7 +9,7 @@
 // the two dereferenced pointers and calls the functor's out-of-line operator() with ecx = &comp (the
 // argument slot). Returns a pointer to the median element (`ret 8`). The comparator carries state
 // (it is not empty: `lea ecx,[esp+1Ch]` is its own slot), modelled as one word.
-struct CThing;
+class CThing;
 
 struct CCompare_FurthestFromInitPos2D {
     long m_reference;                       // comparator state (4-byte functor)

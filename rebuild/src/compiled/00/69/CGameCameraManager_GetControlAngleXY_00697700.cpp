@@ -8,8 +8,8 @@
 // and place the returned float member at exactly offset 0xB8.
 
 // Layout: single float member sits at +0xB8. Pad the leading region.
-struct CGameCameraManager
-{
+class CGameCameraManager
+{ public:
     char _pad0[0xB8];      // 0x00 .. 0xB7
     float m_controlAngleXY; // 0xB8  <-- fld DWORD PTR [ecx+0xB8]
 };

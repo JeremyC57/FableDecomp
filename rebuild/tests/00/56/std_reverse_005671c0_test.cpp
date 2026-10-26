@@ -5,7 +5,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CWideString {
+class CWideString { public:
     int* m_pData;
     explicit CWideString(int v) : m_pData((int*)std::malloc(sizeof(int))) { *m_pData = v; ++g_live; }
     CWideString(const CWideString& o) : m_pData((int*)std::malloc(sizeof(int))) { *m_pData = *o.m_pData; ++g_live; }

@@ -3,7 +3,7 @@
 // this->field2c.RemoveMode( action->GetActionId() )
 // virtual slot 1 (vtable+4) returns a value; passed to a thiscall on this+0x2c.
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void slot0();
     virtual int  slot1();   // vtable+4
 };

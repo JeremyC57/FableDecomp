@@ -21,8 +21,8 @@
 //   +0x0C : unsigned char* Cursor       (advanced by 0x18)
 //   +0x14 : long  RemainingInSourceChunk(decremented by 0x18)
 
-struct CDataInputStream
-{
+class CDataInputStream
+{ public:
     long           Pad00;                  // +0x00
     long           ReadPosition;           // +0x04
     long           Pad08;                  // +0x08
@@ -35,8 +35,8 @@ struct CDataInputStream
     void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
 };
 
-struct COpinionTransientOffset
-{
+class COpinionTransientOffset
+{ public:
     unsigned char Bytes[0x18];             // the 6-dword record this reader fills
 
     void TransferBinaryIn(CDataInputStream* stream);

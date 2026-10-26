@@ -5,7 +5,7 @@
 // @ 0x0090F9C0.
 // Shape: `frame > FrameToSitDown && Base::IsRunnable()` -- the signed compare (`jle`) and the bool `&&` return
 // through a full register (`mov eax,1` / `xor eax,eax`). FrameToSitDown is +0x3c (engine header).
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();

@@ -107,7 +107,7 @@ struct CThingManager_Calls {             // retail vtable of the thing manager g
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-struct CScriptThing {                          // 4 bytes: the thing id/handle
+class CScriptThing { public:                          // 4 bytes: the thing id/handle
     long m_thingId;
     const long& GetThingId() const { return m_thingId; }
 };

@@ -3,9 +3,9 @@
 // Leaf: ??4?$vector@UCLevelFiles@@@std@@
 #include <stdlib.h>
 #include <new>
-struct CCPPointerInfo{unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
-struct CAFile;
-template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;
+class CCPPointerInfo{ public:unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
+class CAFile;
+template<class T>class CCountedPointer{ public:T*Data;CCPPointerInfo*Info;
  CCountedPointer():Data(0),Info(0){}
  CCountedPointer(const CCountedPointer&x):Data(x.Data),Info(x.Info){if(Info)++Info->RefCount;}
  ~CCountedPointer(){if(Info&&!--Info->RefCount){Info->DeleteFunc(Info->Data);delete Info;}}

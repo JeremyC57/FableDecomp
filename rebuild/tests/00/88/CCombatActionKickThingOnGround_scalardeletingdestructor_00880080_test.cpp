@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_KickThingOnGround {
+class CCombatAction_KickThingOnGround { public:
     void* vftable;
     int destroyed;
 };

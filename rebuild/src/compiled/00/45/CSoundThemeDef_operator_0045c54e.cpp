@@ -13,14 +13,14 @@
 // retail base is 0x39 bytes (12-byte vector map), so it is modelled locally: a packed polymorphic base
 // whose operator= is out of line. Members follow at the natural 4-byte boundary +0x3c.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CRGBColour {                         // B, G, R, A bytes; 4-byte aligned in retail (the PDB puts
+class CRGBColour { public:                         // B, G, R, A bytes; 4-byte aligned in retail (the PDB puts
     unsigned long m_packed;                 // EditColour at +0x40, not right after the 0x3d-byte base)
 };
 
@@ -31,7 +31,7 @@ struct CAtmosGroupMultimap {                // retail multimap<CCharString,long>
     CAtmosGroupMultimap& operator=(const CAtmosGroupMultimap& other);   // 0x00432B38
 };
 
-struct CSoundThemeDef : CParentDefClassBase {   // vtable 0x01233824
+class CSoundThemeDef : public CParentDefClassBase { public:   // vtable 0x01233824
     CRGBColour          EditColour;             // +0x3c
     long                AtmosIndex;             // +0x40
     long                MusicSet;               // +0x44

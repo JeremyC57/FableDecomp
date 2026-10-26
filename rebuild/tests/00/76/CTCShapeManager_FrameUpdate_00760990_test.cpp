@@ -1,24 +1,24 @@
 // Behaviour test for CTCShapeManager::FrameUpdate (0x00760990): the hero inside the bounds selects the first closed shape
 // containing it; open shapes, shapes not containing the hero, a dead hero, no hero or out-of-bounds select end().
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TopLeft; C2DVector BottomRight; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TopLeft; C2DVector BottomRight; };
+class CThing { public:
     unsigned char Flags91;
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* Creature;
     CThing* GetControlledCreature() { return Creature; }
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* Player;
     CPlayer* GetCurrentPlayer() { return Player; }
 };
 namespace NShape {
-struct CShape {
+class CShape { public:
     long Open; float MinX, MaxX; int Asked;
     virtual void v00() { }
     virtual long GetShapeType() const { return Open; }
@@ -27,12 +27,12 @@ struct CShape {
     virtual bool IsPosInShape(const C3DVector& pos) { ++Asked; return pos.X >= MinX && pos.X <= MaxX; }
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {
     NShape::CShape* Data;
     CCPPointerInfo* Info;
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00() { }
     CThing*        ParentThing;
     bool           ToBeRemoved;

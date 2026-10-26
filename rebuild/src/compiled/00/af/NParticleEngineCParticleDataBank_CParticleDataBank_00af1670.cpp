@@ -15,7 +15,7 @@ namespace N_009d5f80 { struct CBankFile {
     unsigned char _bankFile[0x160];         // +0x004
     CBankFile();                            // 0x009D5F80
 }; } using N_009d5f80::CBankFile;
-struct CResourceList {
+class CResourceList { public:
     unsigned char _list[0x28];              // +0x00
     unsigned long m_maxSize;                // +0x28
     unsigned char _list2[0x08];             // +0x2c
@@ -23,19 +23,19 @@ struct CResourceList {
     unsigned char _list3[0x04];             // +0x38
     void SetMaxSize(unsigned long size);    // 0x009FC520
 };
-struct CResourceBank {
+class CResourceBank { public:
     virtual void v00();
     CResourceList ResourceList;             // +0x04
     CResourceList LoadingQueue;             // +0x40
     CResourceBank();                        // 0x009FC5F0
 };
-struct CCharString { void* m_pData; };
-struct CSymbolMap {
+class CCharString { public: void* m_pData; };
+class CSymbolMap { public:
     unsigned char _map[0x24];
     CSymbolMap();                           // 0x009E5200
 };
 namespace NParticleEngine {
-struct CParticleEmitterInfo;
+class CParticleEmitterInfo;
 template <class T> struct _STLP_alloc_proxy {   // STLport end-of-storage member with its own inline ctor
     T* _M_data;
     _STLP_alloc_proxy(T* p) : _M_data(p) {}
@@ -46,7 +46,7 @@ template <class T> struct CArray {          // retail 12 bytes: STLport _Vector_
     _STLP_alloc_proxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-struct CParticleDataBank : CBankFile, CResourceBank {   // vtables 0x0129F38C / 0x0129F380
+class CParticleDataBank : public CBankFile, public CResourceBank { public:   // vtables 0x0129F38C / 0x0129F380
     CArray<CParticleEmitterInfo> ParticleEmitters;   // +0x1e0
     CSymbolMap GraphicSymbols;              // +0x1ec
     CSymbolMap MeshSymbols;                 // +0x210

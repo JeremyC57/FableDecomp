@@ -6,11 +6,11 @@ struct RcObj {
     RcVtbl *vtbl;
     long    refs;
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char    pad[0x0c];
     RcObj  *m_holder;
 };
-struct CEngineGraphic;
+class CEngineGraphic;
 CEngineGraphic * __fastcall GetEngineGraphic(CTCInventoryItem *self)
 {
     RcObj *p = self->m_holder;

@@ -18,14 +18,14 @@ extern "C" void* __cdecl malloc(unsigned int size);      // 0x00BFEA0E (MSVCR71)
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -41,15 +41,15 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UID;                                // +0x18
     unsigned char    _pad20[0x74 - 0x20];
@@ -104,11 +104,11 @@ struct CThingList {                                      // STLport list<CThing*
     }
 };
 
-struct CThingFilter_HasAnyScriptName {                   // empty predicate
+class CThingFilter_HasAnyScriptName { public:                   // empty predicate
     CThingFilter_HasAnyScriptName() {}
     bool operator()(const CThing* thing) const;          // 0x006A74F0
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     unsigned char _pad00[0x0c];
     CThingList& GetThingList_0049c770();                 // 0x0049C770 (`return &[this+8]->+0x18`)
     void GetAllThings(const CThingFilter_HasAnyScriptName& filter, CThingList& things);   // 0x004BAA50
@@ -127,16 +127,16 @@ void CThingSearchTools::GetAllThings(const CThingFilter_HasAnyScriptName& filter
     }
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* PThingSearchTools;                // +0x20 scoped_ptr<CThingSearchTools>
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool BindsEntityScript(const CCharString& name);                              // 0x00CB7D60
     void ActivateEntity(unsigned __int64 uid, const CScriptThing& thing);         // 0x00CB8960
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x7c];
     CWorld*       World;                                 // +0x7c (PDB +0xd8)
     void AttachExistingScriptedEntitiesToScript(CScriptBase& script);

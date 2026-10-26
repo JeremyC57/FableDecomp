@@ -8,10 +8,10 @@ static unsigned int Calc(unsigned int seed, const void* data, unsigned int lengt
     for (unsigned int i = 0; i < length; ++i) h = (h ^ p[i]) * 16777619u;
     return h;
 }
-struct CCharStringData { const char* m_pData; unsigned int m_length; };
+class CCharStringData { public: const char* m_pData; unsigned int m_length; };
 static CCharStringData g_blocks[8];
 static int g_blockCount = 0;
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString() : m_pData(0) { }
     CCharString(const char* text, long length = -1)
@@ -22,7 +22,7 @@ struct CCharString {
     }
     CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 };
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     CCharString  Group;
     unsigned int GroupCRC;
     CAnimFilterOfGroup() : GroupCRC(0) { }
@@ -37,7 +37,7 @@ struct CAnimFilterOfGroup {
         GroupCRC = Calc(0, group.m_pData == 0 ? "" : group.m_pData->m_pData, group.m_pData == 0 ? 0 : group.m_pData->m_length);
     }
 };
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CIntelligentPointer {
     CThing* m_pItem;
     CIntelligentPointer() : m_pItem(0) { }

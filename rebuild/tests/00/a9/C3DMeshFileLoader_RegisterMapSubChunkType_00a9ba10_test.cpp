@@ -2,7 +2,7 @@
 // MapChunkType->GetAsSuperChunk() to AddChunkType (supplied here) and returns its counted pointer.
 #include <cstdio>
 #include <cstddef>
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 template <class T> class CCountedPointer {
 public:
     T* Data;

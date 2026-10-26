@@ -1,12 +1,12 @@
 // Behaviour test for CAnimateThing::GetInterpolatedMeshAnim @ 0x0070e650: UpdateCachedAnims first, then out->SetInterpolate(start, end, t).
 #include <cstdio>
 static int g_updated = 0;
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     long m_anim; float m_time;
     void SetInterpolate(const C3DAnimationBlendState& start, const C3DAnimationBlendState& end, float t)
     { if (g_updated != 1) { m_anim = -1; return; } m_anim = start.m_anim * 100 + end.m_anim; m_time = start.m_time + (end.m_time - start.m_time) * t; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad[0x68]; C3DAnimationBlendState StartAnimState; C3DAnimationBlendState EndAnimState;
     void UpdateCachedAnims() { ++g_updated; }
     void GetInterpolatedMeshAnim(C3DAnimationBlendState* pOut, float t) { UpdateCachedAnims(); pOut->SetInterpolate(StartAnimState, EndAnimState, t); }

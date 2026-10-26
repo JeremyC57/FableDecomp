@@ -6,7 +6,7 @@
 // PQuestCurrentlyRunning +0x88 (PDB +0xe4). CQuestManager::CActiveQuest (Ego_r.pdb): PScript (CCountedPointer<CScriptBase>) +0x08.
 class CScriptBase;
 class CScriptInfo;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;

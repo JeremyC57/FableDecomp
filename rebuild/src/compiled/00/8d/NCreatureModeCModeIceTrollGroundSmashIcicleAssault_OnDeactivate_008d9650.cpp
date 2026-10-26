@@ -12,7 +12,7 @@
 // Shape: begin() is taken once into a local (ebp) and the loop runs `while (icicle != end()) { ...; erase(icicle); }`; the
 // trap out pointer is declared outside the loop (a GetInterface miss leaves the previous value, as retail's ebx);
 // IS_THING_ALIVE as landed 0x008C92C0; erase as the landed STLport vector::erase 0x0084F570.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -25,7 +25,7 @@ struct CThingAnimatable {                  // empty here: only its member is cal
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char   _pad00[0x10];
     unsigned char   m_state;               // +0x10 creature state byte
     unsigned char   _pad11[0x0f];
@@ -48,7 +48,7 @@ struct CThing : CThingAnimatable {
     }
 };
 
-struct CTCTrapBase {                       // interface type 0x7d
+class CTCTrapBase { public:                       // interface type 0x7d
     unsigned char _pad00[0x5c];
     long          TrapType;                // +0x5c (ETrapType)
     void ManualReset();                    // 0x00787C0C
@@ -74,7 +74,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct random_access_iterator_tag {
     random_access_iterator_tag() {}

@@ -16,7 +16,7 @@ struct CAnimComponentDelayTime_Base {
     CAnimComponentDelayTime_Base() : m_count(1) { }
 };
 
-struct CAnimComponentDelayTime : CAnimComponentDelayTime_Base {
+class CAnimComponentDelayTime : public CAnimComponentDelayTime_Base { public:
     virtual void v00();
     unsigned char _tail[0x4];
     CAnimComponentDelayTime() : CAnimComponentDelayTime_Base() { }

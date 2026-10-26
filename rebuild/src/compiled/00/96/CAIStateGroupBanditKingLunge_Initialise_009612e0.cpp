@@ -1,7 +1,7 @@
 #include "engine/CAIStateGroup_BanditKingLunge.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 
 typedef long EScriptAIPriority;
 

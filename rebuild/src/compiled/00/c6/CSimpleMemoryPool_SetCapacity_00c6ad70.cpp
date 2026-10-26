@@ -1,4 +1,4 @@
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
 // Leaf: SetCapacity
     void* vtbl;
     char pad[0x21c - 4];

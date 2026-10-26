@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 struct CStr { char buf[32]; CStr(const char* s, int) { std::strcpy(buf, s); } };
-struct CParticleMorphs { const char* m_pName; CStr MorphEntry_FromPointer() const { return m_pName ? CStr(m_pName, -1) : CStr("", -1); } };
+class CParticleMorphs { public: const char* m_pName; CStr MorphEntry_FromPointer() const { return m_pName ? CStr(m_pName, -1) : CStr("", -1); } };
 int main()
 {
     CParticleMorphs a = { "Glow" }, b = { 0 };

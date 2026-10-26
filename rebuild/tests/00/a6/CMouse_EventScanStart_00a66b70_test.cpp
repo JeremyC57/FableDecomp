@@ -2,9 +2,9 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CInputEvent { unsigned char body[0x34]; };
+class CInputEvent { public: unsigned char body[0x34]; };
 struct CScan { bool Started; long Index; };
-struct CMouse { virtual ~CMouse() { } CInputEvent EventStore[256]; long NoStoredEvents; long NoEventScansRunning;
+class CMouse { public: virtual ~CMouse() { } CInputEvent EventStore[256]; long NoStoredEvents; long NoEventScansRunning;
     bool EventScanStart(CScan& scan, CInputEvent& ev) { scan.Started = true; ++NoEventScansRunning; if (NoStoredEvents > 0) { ++NoEventScansRunning; scan.Index = 0; ev = EventStore[0]; return true; } return false; } };
 int main()
 {

@@ -28,7 +28,7 @@ struct __declspec(novtable) INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
 
-struct CBaseObject { };
+class CBaseObject { public: };
 
 struct __declspec(novtable) CUnknown : INonDelegatingUnknown, CBaseObject {
     IUnknown_* m_pUnknown;                  // +0x04 within CUnknown

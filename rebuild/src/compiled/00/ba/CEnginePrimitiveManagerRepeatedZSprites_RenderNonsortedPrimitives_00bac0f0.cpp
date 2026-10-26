@@ -8,7 +8,7 @@
 //   ControlPointWeightingPower/count +0xc0).
 #include <string.h>
 
-struct CEngineInternalPrimitiveRepeatedZSprite {
+class CEngineInternalPrimitiveRepeatedZSprite { public:
     unsigned char _pad00[0x50];
     unsigned long MeshKey;                         // +0x50
     unsigned char _pad54[0x8c - 0x54];
@@ -56,7 +56,7 @@ static __forceinline void Swap(PSprite& a, PSprite& b)
     a = b;
     b = tmp;
 }
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     long StartSurfaceUse(long handle);             // 0x00F36EE0
     long StartSurfaceUse2(long handle);            // 0x00F36F10
     void EndSurfaceUse(long handle);               // 0x00F36F00
@@ -106,7 +106,7 @@ struct CEngineLightingManagerView {
 };
 extern CEngineLightingManagerView* g_pEngineLightingManager;   // 0x01436E9C
 
-struct CEnginePrimitiveManagerRepeatedZSprites {
+class CEnginePrimitiveManagerRepeatedZSprites { public:
     unsigned char _pad00[0x80];
     CSortList     PrimitiveSortList;               // +0x80
     long          BillboardSurface;                // +0x8c

@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 00492f69: CSubtitleRenderer members used by the body (retail layout names from the PDB), with
 // recording stand-ins for the out-of-line callees.
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank { public: int m_id; };
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool  Active;
     float FadeInTime;
     float FadeOutTime;

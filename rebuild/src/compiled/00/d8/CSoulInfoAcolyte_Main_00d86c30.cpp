@@ -9,18 +9,18 @@
 //   379 PauseAllNonScriptedEntities, 599 EntitySetThingAsAllyOfThing; CScriptThing slots 21, 27, 41, 42.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (ready flag +0x4a), PMasterData +0x18.
 // Shape: CEndScythe's body without its prelude; here the handle destructor is always the out-of-line copy.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -51,7 +51,7 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD16(ma) VPAD4(mb)                                // slots 1..20
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
     VPAD4(mc) VPAD1(mg)                                 // slots 22..26
@@ -74,12 +74,12 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a380::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -89,13 +89,13 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectMovieBase() { }
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
     virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority); // slot 8 (+0x20)
@@ -121,7 +121,7 @@ struct CQ_HeroSoulsGuildScript {
     bool AcolyteReady;                                  // +0x4a
 };
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

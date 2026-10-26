@@ -10,8 +10,8 @@ public:
     CCharString(const CCharString& other) : PData(other.PData) { ++g_stringCopies; }   // retail 0x0099EC30
     void* PData;
 };
-struct CCPPointerInfo { unsigned int RefCount; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: unsigned int RefCount; };
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -21,8 +21,8 @@ template <class T> struct CCountedPointer {
             ++Info->RefCount;
     }
 };
-struct CContainmentVolume { int Id; };
-struct C3DMeshVolume {
+class CContainmentVolume { public: int Id; };
+class C3DMeshVolume { public:
     CCharString Name;
     CCountedPointer<CContainmentVolume> ConvexVolume;
 };

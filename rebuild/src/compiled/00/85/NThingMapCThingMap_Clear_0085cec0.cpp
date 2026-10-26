@@ -11,21 +11,21 @@
 namespace NThingMap {
 struct C2DBoxI { long X0, Y0, X1, Y1; };
 struct C2DExtentsI { long X, Y; };
-struct CMapwhoLevelInfo {
+class CMapwhoLevelInfo { public:
     long        Size;                              // +0x00
     C2DExtentsI Extents;                           // +0x04
     long        ScaleShift;                        // +0x0c
     long        NoThings;                          // +0x10
 };
-struct CMapwhoNode;
-struct CThingMapCell {
+class CMapwhoNode;
+class CThingMapCell { public:
     CMapwhoNode* PFirstNode;
 };
 struct CTCMapwho {
     unsigned char _pad00[0x50];
     unsigned char InMapwho : 1;                    // +0x50 bit 0
 };
-struct CMapwhoNode {
+class CMapwhoNode { public:
     CTCMapwho*     PMapwho;                        // +0x00
     CMapwhoNode*   PNext;                          // +0x04
     CMapwhoNode*   PPrevious;                      // +0x08
@@ -39,7 +39,7 @@ template<class T> struct CRetailVector {           // STLport vector: {start, fi
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
 extern long g_NoMapwhoLevels;                      // 0x013BA848
-struct CThingMap {
+class CThingMap { public:
     virtual void v00();
     CRetailVector<CMapwhoLevelInfo>               MapwhoLevelInfo;   // +0x04
     void*                                         Manager;           // +0x10

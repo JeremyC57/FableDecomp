@@ -13,12 +13,12 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -108,7 +108,7 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void v649(); virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) GetActiveQuestName
 };
-struct CSpawnedFuncBase {                                // retail 0x34 bytes
+class CSpawnedFuncBase { public:                                // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -124,7 +124,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CScriptBase {                                     // retail 0x40 bytes
+class CScriptBase { public:                                     // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                    // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

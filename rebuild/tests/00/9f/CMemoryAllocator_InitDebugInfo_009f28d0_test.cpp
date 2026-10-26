@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct STrailer { long m_guard; unsigned long m_allocatorIndex; long m_size; }; static long g_size = 0; static long g_calls = 0;
-struct CMemoryAllocator { long m_bytesByIndex[0x104]; unsigned long m_no; unsigned char m_currentIndex; long GetAllocationSize(void*) { ++g_calls; return g_size; }
+class CMemoryAllocator { public: long m_bytesByIndex[0x104]; unsigned long m_no; unsigned char m_currentIndex; long GetAllocationSize(void*) { ++g_calls; return g_size; }
     void InitDebugInfo(void* block, long tag, long size) { GetAllocationSize(block); STrailer* t = (STrailer*)((char*)block + GetAllocationSize(block) - 0x14); t->m_guard = -1; t->m_allocatorIndex = m_currentIndex; t->m_size = size; ((long*)block)[-1] = -1; m_bytesByIndex[m_currentIndex] += size; } };
 
 int main() {

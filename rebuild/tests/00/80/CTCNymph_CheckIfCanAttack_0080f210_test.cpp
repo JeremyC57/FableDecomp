@@ -2,8 +2,8 @@
 #include <cstdio>
 static long g_GameFramesPerSecond = 15;
 static long g_frame = 0;
-struct CNymphDef { long FlyAroundTime; };
-struct CTCNymph {
+class CNymphDef { public: long FlyAroundTime; };
+class CTCNymph { public:
     const CNymphDef* PDef;
     bool CanAttack;
     void CheckIfCanAttack(unsigned long lastTargetTick)

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
-struct CThingInfo { const char* TypeName; const char* SubTypeName; };
+class CThingInfo { public: const char* TypeName; const char* SubTypeName; };
 static const char* g_names[3] = { "?", "OBJECT_A", "OBJECT_B" };
-struct CThing {
+class CThing { public:
     unsigned short DefGlobalIndex;
     void GetInfo(CThingInfo* info) const {
         if (DefGlobalIndex == 0) { info->TypeName = "None"; info->SubTypeName = "None"; return; }

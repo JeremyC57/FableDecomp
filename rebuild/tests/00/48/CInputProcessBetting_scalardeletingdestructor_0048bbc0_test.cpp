@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessBetting {
+class CInputProcessBetting { public:
     void* vftable;
     int destroyed;
 };

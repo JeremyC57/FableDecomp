@@ -1,10 +1,10 @@
 // Behaviour test for 0x008EC700 CCreatureAction_UndeadReturnToEarth::FinishAction: the base finish always runs; the
 // creature gets an action with code 50 only once FramesRunning >= TotalTime.
 #include <cstdio>
-struct CThingCreatureBase;
-struct CSoundPair { int a, b; CSoundPair() : a(0), b(0) {} };
+class CThingCreatureBase;
+class CSoundPair { public: int a, b; CSoundPair() : a(0), b(0) {} };
 static int g_baseFinish = 0, g_setCount = 0, g_lastCode = -1, g_dtors = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_creature;
     int TotalTime, FramesRunning, m_code;
     CCombatActionBase(CThingCreatureBase* c, int code, const CSoundPair&) : m_creature(c), TotalTime(0), FramesRunning(0), m_code(code) {}
@@ -12,7 +12,7 @@ struct CCombatActionBase {
     void FinishAction() { ++g_baseFinish; }
     CThingCreatureBase* GetCreature() { return m_creature; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(const CCombatActionBase& a) { ++g_setCount; g_lastCode = a.m_code; return true; }
 };
 struct CIdleUnderground : CCombatActionBase {

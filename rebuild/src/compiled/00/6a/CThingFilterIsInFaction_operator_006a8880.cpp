@@ -14,7 +14,7 @@
 // ; mov ecx,eax`), key homed in a frame/argument slot and passed by address to the const LowerBound.
 // The filter's value is read into ecx before the component (`mov ecx,[edi]`), then stored over the argument slot for the
 // tail jump: `return tc->IsMember(m_faction);` as the last statement.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -28,7 +28,7 @@ struct CTCMap {                                 // the thing's component map at 
     STCEntry* LowerBound(const long* kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];

@@ -9,7 +9,7 @@
 // Shape: `xor edx,edx` shared by the two byte compares, the zero push and the switch lowering (`sub eax,edx ; je`,
 // `dec eax ; jne`); case 0 is a tail `jmp [eax+80h]`, case 1 `push edx ; call [eax+0B8h] ; ret`.
 #pragma optimize("s", on)
-struct CTCInventory {                            // vtable 0x01250DE4
+class CTCInventory { public:                            // vtable 0x01250DE4
     virtual void v00();
     virtual void v01();
     virtual void v02();

@@ -8,12 +8,12 @@
 // constructor @ 0x00430370 runs, then the compiler stores this class's vtable (0x01233B7C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     CParentDefClassBase();                           // 0x00430370
 };
 
-struct CCameraModeDef : CParentDefClassBase {
+class CCameraModeDef : public CParentDefClassBase { public:
     virtual void v00();                    // this class has its own vtable
     CCameraModeDef();
 };

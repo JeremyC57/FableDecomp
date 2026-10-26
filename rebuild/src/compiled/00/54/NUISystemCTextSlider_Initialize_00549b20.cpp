@@ -56,7 +56,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CActionParam {
+class CActionParam { public:
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
     virtual void v00();
@@ -107,7 +107,7 @@ template <class T> struct CRetailList {              // STLport list: the header
     }
     void push_back(const T& x) { insert(end(), x); }
 };
-struct CAction {                                        // retail 0x10 bytes
+class CAction { public:                                        // retail 0x10 bytes
     long                       ActionType;              // +0x00
     CRetailList<CActionParam*> UIActionParams;          // +0x04
     CRetailList<long>          ThingActionParams;       // +0x08
@@ -181,9 +181,9 @@ struct CDefPointer {
     CTextSliderDef* operator->() const { return m_p; }
 };
 
-struct CAction;
+class CAction;
 struct CActionPointer;
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -361,14 +361,14 @@ __declspec(noinline) void CActionVector::_M_insert_overflow(CActionPointer* posi
 }
 #pragma auto_inline(on)
 
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 
-struct CTextSlider : CComponent {
+class CTextSlider : public CComponent { public:
     unsigned char _pad004[0x14];
     CActionTarget ActionTarget;                         // +0x18
     unsigned char _pad01c[0xb0 - 0x1c];

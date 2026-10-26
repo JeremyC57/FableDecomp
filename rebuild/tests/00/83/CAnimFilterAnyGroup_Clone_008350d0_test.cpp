@@ -4,7 +4,7 @@
 static bool g_fail = false;
 void* operator new(size_t size) { if (g_fail) return 0; return std::malloc(size); }
 void operator delete(void* p) { std::free(p); }
-struct CAnimFilterBase {
+class CAnimFilterBase { public:
     virtual ~CAnimFilterBase() { }
     virtual CAnimFilterBase* Clone() const = 0;
     virtual bool Matches(long group) const = 0;

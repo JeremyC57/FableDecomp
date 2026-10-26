@@ -6,11 +6,11 @@
 // DependentThings vector is 4 bytes narrower in retail), so the class is modelled locally.
 // Shape: the parent pointer is read into a local (edi) before the flag store; the guard is an `if`
 // around the body (the early-out shares the single exit).
-struct CThing {
+class CThing { public:
     void RemoveTC(long interfaceType);                      // 0x004C9840
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void FinishCurrentAction();                             // 0x00662650
 };
 

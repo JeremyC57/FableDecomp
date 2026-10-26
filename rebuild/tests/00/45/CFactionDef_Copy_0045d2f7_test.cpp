@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CFactionDef;
+class CFactionDef;
 
 /* Provide the impl so the thunk links; record that it was reached. */
 static int g_hit = 0;

@@ -1,13 +1,13 @@
 // Behaviour test for CEngineLightingManager::SetGlobalLightingParameters @ 0x00B47280.
 #include <cstdio>
 #include <cmath>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& Normalise() { float l = std::sqrt(X * X + Y * Y + Z * Z); float r = 1.0f / l; X *= r; Y *= r; Z *= r; return *this; }
 };
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CThemeChannel { CRGBFloatColour DiffuseColour, AmbientColour, BacklightColour, ReflectionColour, FogColour; };
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     C3DVector DiffuseVector; CThemeChannel* ThemeChannels; unsigned int StateUpdateFlags;
     void SetGlobalLightingParameters(const C3DVector& d, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& backlight)
     {

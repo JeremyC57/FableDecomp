@@ -11,10 +11,10 @@
 // (C3DVector, no constructor body) is left alone.
 // Layout: Ego_r.pdb CTCHighlightItem (no containers, retail = PDB): StartRunning +0x0C, Running +0x0D, LifeTimer
 // +0x10, StartPos +0x14, PParticleEmitter +0x20. No engine header.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       Thing;                    // +0x04
     unsigned char _pad_0x08[0x4];
@@ -32,7 +32,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {          // vtable 0x0123
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

@@ -10,7 +10,7 @@
 // Shape: the component comes from an inline accessor returning an unset local (`T* tc; if (HasTC) tc = GetTC; return tc;`):
 //   the hit path loads it straight into ecx and the absent path reads the never-written local from the key's frame word;
 //   RecoveryCount is decremented only when non-zero and re-read for the `<= 0` test.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -44,7 +44,7 @@ struct CThing {
     }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     long          UpdateMode;              // +0x00
     void*         AnimsBegin;              // +0x04
     void*         AnimsEnd;                // +0x08
@@ -52,7 +52,7 @@ struct CAnimateThing {
     unsigned char CurrentAnimType;         // +0x50
     unsigned char CurrentAnimFlags;        // +0x51
 };
-struct CTCAnimationComplex {               // interface type 0x5a
+class CTCAnimationComplex { public:               // interface type 0x5a
     CAnimateThing& GetAnimation();         // 0x0070B460
 };
 

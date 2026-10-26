@@ -16,8 +16,8 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CChunkedFileLoader;
-struct CDataInputStream {
+class CChunkedFileLoader;
+class CDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();                  // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -47,7 +47,7 @@ struct CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct C3DVertexBlend2 {
+class C3DVertexBlend2 { public:
     long VertexIndex;
     float Weight;
 };
@@ -81,12 +81,12 @@ struct CVertexBlendVector {
     }
 };
 
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     virtual void v0();
     unsigned char _base_body[0x28];        // +0x04 .. +0x2b (retail C3DMeshFileChunk size 0x2c)
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // 0x00AA8830
 };
-struct C3DMeshFileGroupChunk : CChunkedFileSuperChunk {
+class C3DMeshFileGroupChunk : public CChunkedFileSuperChunk { public:
     long BoneIndex;                        // +0x2c (PDB +0x34)
     CVertexBlendVector VertexList;         // +0x30
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);

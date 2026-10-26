@@ -1,7 +1,7 @@
 // Behaviour test for CTCStealth::IsAbleToFlourishDangerThings (0x007471A0).
 #include <cstdio>
 
-struct CThing { bool m_knockedDown; };
+class CThing { public: bool m_knockedDown; };
 bool g_FlourishDangerThings = true;
 bool IsKnockedDown(CThing* thing) { return thing->m_knockedDown; }
 
@@ -14,7 +14,7 @@ struct CDangerThing {
     long Timer;
 };
 
-struct CTCStealth {
+class CTCStealth { public:
     CDangerThing* m_pDangerFirst;
     CDangerThing* m_pDangerLast;
     bool IsAbleToFlourishDangerThings() const;

@@ -9,7 +9,7 @@ struct CInner {
     char pad[0x1964];
     CTarget* fld;
 };
-struct CWorld {
+class CWorld { public:
     char pad[0x18];
     CInner* inner;
 };

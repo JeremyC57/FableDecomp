@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CRegion { void *m_p; };
+class CRegion { public: void *m_p; };
 static void *g_in=0;
 extern "C" void *FABLE_STDCALL FableHelp_515700(void *v){ g_in=v; return (void*)((char*)v+1); }
 extern "C" CRegion *FABLE_STDCALL FableSet_515700(CRegion *self, void *v){ self->m_p=FableHelp_515700(v); return self; }

@@ -1,4 +1,4 @@
-struct CPlayerGuiDef;
+class CPlayerGuiDef;
 
 struct InitGuard
 {

@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-struct CRGBColour { unsigned long Value; };
+class CRGBColour { public: unsigned long Value; };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE };
 class CCompositeBlendDesc {                                 // 16 bytes (Ego_r.pdb; PDB class)
 public:

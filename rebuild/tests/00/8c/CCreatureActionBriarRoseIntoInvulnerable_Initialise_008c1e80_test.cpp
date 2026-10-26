@@ -1,17 +1,17 @@
 // Behaviour test for 0x008C1E80 CCreatureAction_BriarRoseIntoInvulnerable::Initialise.
 #include <cstdio>
 #include <cstring>
-struct CThing;
+class CThing;
 struct CModeBase { virtual ~CModeBase() {} };
 struct CModeBriarRoseTeleportInvulnerable : CModeBase { CThing* o; CThing* e; CModeBriarRoseTeleportInvulnerable(CThing* a, CThing* b) : o(a), e(b) {} };
-struct CTCCreatureModeManager { CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
-struct CThing {
+class CTCCreatureModeManager { public: CModeBase* added; void AddMode(CModeBase* m) { added = m; } };
+class CThing { public:
     bool has; unsigned char m_flags91; CTCCreatureModeManager mm;
     bool GetInterface(CTCCreatureModeManager** pp, long t) { if (t == 0x31 && has) { *pp = &mm; return true; } return false; }
 };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } operator CThing*() const { return GetPItem(); } };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CCreatureAction_BriarRoseIntoInvulnerable {
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCreatureAction_BriarRoseIntoInvulnerable { public:
     CBaseIntelligentPointer PCreature, PEnemy; const char* anim; int baseInit;
     void SetAnimationName(const CCharString& n) { anim = n.t; }
     void Initialise()

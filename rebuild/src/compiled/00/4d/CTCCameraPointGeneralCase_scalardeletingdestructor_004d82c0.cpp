@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTCCameraPointGeneralCase
-{
+class CTCCameraPointGeneralCase
+{ public:
     void* vftable;
 };
 extern void* const g_CTCCameraPointGeneralCase_vftable;

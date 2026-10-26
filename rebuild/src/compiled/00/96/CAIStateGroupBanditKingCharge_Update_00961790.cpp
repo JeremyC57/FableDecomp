@@ -9,8 +9,8 @@
 // Shape: the intelligent pointer argument is built in the argument area through an inline converting copy ctor
 // from PTargetThing (base ctor, vtable store, then GetPItem -- a T* ctor evaluates GetPItem first); a one-byte option
 // temporary is passed by reference; the animation name is a named local built before the creature is read.
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
@@ -26,8 +26,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
@@ -44,8 +44,8 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString(const char* text, long length);     // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
@@ -56,26 +56,26 @@ struct CMoveOptions                                 // one-byte option object pa
     CMoveOptions() { }
 };
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
 };
 
-struct CCombatActionBase : CCreatureActionBase
-{
+class CCombatActionBase : public CCreatureActionBase
+{ public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
     ~CCombatActionBase();                           // 0x0062E900
 };
 
-struct CCreatureAction_BanditKingAttack : CCombatActionBase
-{
+class CCreatureAction_BanditKingAttack : public CCombatActionBase
+{ public:
     unsigned char _own[0x04];
     CCreatureAction_BanditKingAttack(CThing* creature, CThing* target, const CCharString& anim, bool a, bool b);   // 0x008C9410
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThing* Creature;                               // +0x18
 };

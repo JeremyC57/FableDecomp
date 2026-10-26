@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 struct __false_type { __false_type() { } };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() : B(0), G(0), R(0), A(0) { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

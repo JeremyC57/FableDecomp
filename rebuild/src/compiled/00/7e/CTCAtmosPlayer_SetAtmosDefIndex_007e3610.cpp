@@ -16,9 +16,9 @@ public:
     ~CCharString();                                             // 0x0099EAE0
 };
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
 };

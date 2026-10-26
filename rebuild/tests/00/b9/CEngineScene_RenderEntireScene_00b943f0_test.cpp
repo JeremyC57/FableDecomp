@@ -1,19 +1,19 @@
 #include <cstdio>
 // behaviour test: CEngineScene::RenderEntireScene renders every map's top grid and the layer's moving primitives
-struct CEngineSceneRenderStats { int dummy; };
+class CEngineSceneRenderStats { public: int dummy; };
 static int g_cells = 0, g_rendered = 0; static unsigned short g_frame = 77;
-struct CEngineSubPrimitiveChain { void* a; void* b; CEngineSubPrimitiveChain() : a(0), b(0) {} };
-struct CEngineInternalPrimitiveBase {
+class CEngineSubPrimitiveChain { public: void* a; void* b; CEngineSubPrimitiveChain() : a(0), b(0) {} };
+class CEngineInternalPrimitiveBase { public:
     long Type; unsigned long RenderLayerMask; unsigned short LastFrameRendered;
     CEngineInternalPrimitiveBase* NextPrimitive; CEngineInternalPrimitiveBase* NextLayerMask;
 };
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     long result;
     long RenderPrimitive(CEngineInternalPrimitiveBase&, long, CEngineSubPrimitiveChain& c) { ++g_rendered; return (c.a == 0 && c.b == 0) ? result : -1; }
 };
 static CEnginePrimitiveManager g_managers[2];
-struct CEngineSceneGrid { void RenderCellAll(unsigned long x, unsigned long y, long, CEngineSceneRenderStats&) { if (x == 0 && y == 0) ++g_cells; } };
-struct CEngineScene {
+class CEngineSceneGrid { public: void RenderCellAll(unsigned long x, unsigned long y, long, CEngineSceneRenderStats&) { if (x == 0 && y == 0) ++g_cells; } };
+class CEngineScene { public:
     CEngineSceneGrid* Grids[3]; int GridCount;
     unsigned long GridLayerMask; CEngineInternalPrimitiveBase* PrimitiveListA; long CurrentCell;
     CEngineSceneRenderStats Stats;

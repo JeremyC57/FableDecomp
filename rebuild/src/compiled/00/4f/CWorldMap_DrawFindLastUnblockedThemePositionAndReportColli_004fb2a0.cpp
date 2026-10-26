@@ -6,13 +6,13 @@
 // the non-virtual CWorldMap member (manifest 0x0063DB30: FindLastUnblockedThemePositionAndReportCollision, thiscall,
 // three C3DVector arguments) moves `this` by -4 and becomes a tail jump.
 // Layout: local model (engine/CWorldMap.h is a flattened view without the two bases; its +0x04 "f4" is this vptr).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CIDrawWorldMap {                              // vtable 0x01244AB4 inside CWorldMap
+class CIDrawWorldMap { public:                              // vtable 0x01244AB4 inside CWorldMap
     virtual ~CIDrawWorldMap() {}
     virtual void Draw1() const = 0;
     virtual void Draw2() const = 0;
@@ -25,7 +25,7 @@ struct CIDrawWorldMap {                              // vtable 0x01244AB4 inside
     virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const = 0;
 };
 
-struct CWorldMap : CBaseClassNonCopyable, CIDrawWorldMap {
+class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap { public:
     bool FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const;   // 0x0063D960
     bool FindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const;    // 0x0063DB30
     virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& lastUnblocked) const;

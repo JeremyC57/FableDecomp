@@ -21,7 +21,7 @@ struct CTCCollisionFilter {                     // the interface-0x4D component
     bool CanCollideWith(CThing* other);         // 0x00770DE0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -76,7 +76,7 @@ public:
     }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
@@ -100,10 +100,10 @@ namespace NCreatureMode {
 bool __fastcall IsPhysicsPushableByHero(const CThing& thing);   // 0x0085FD70
 }
 
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld* World;                              // +0x24
 };
@@ -112,7 +112,7 @@ extern long __fastcall GFGetCurrentFrame();        // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 
-struct CApplyAdditionalPlayerImpulseIfTooClose {   // 0x14 bytes
+class CApplyAdditionalPlayerImpulseIfTooClose { public:   // 0x14 bytes
     C3DVector       Position;                   // +0x00
     float           Radius;                     // +0x0c
     CTCPhysicsBase* Owner;                      // +0x10

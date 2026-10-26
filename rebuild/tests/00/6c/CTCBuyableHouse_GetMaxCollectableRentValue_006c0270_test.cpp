@@ -3,8 +3,8 @@
 
 static int g_destroyed = 0;
 
-struct CBuyableHouseDef
-{
+class CBuyableHouseDef
+{ public:
     long  m_refCount;
     long* Rent_First;
     long  MaxRentBags;
@@ -28,8 +28,8 @@ struct CDefPointer
     CDefRef operator->() const { return CDefRef(Object); }
 };
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     CDefPointer PDef;
     long        CurrentDressLevel;
     long        m_trophies;

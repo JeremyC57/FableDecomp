@@ -35,10 +35,10 @@ struct CScrollBarComponent : IViewportPrimary, CObserver {
 };
 
 namespace NUISystem {
-struct CScrollingViewport;
+class CScrollingViewport;
 extern CScrollingViewport* g_pActiveScrollingViewport;  // 0x013B8AAC
 
-struct CScrollingViewport : CChangingStateComponent {
+class CScrollingViewport : public CChangingStateComponent { public:
     CScrollBarComponent* PScrollBar;                     // +0x188
     CScrollBarComponent* PScrollBarOutside;              // +0x18C
     bool  Changed;                                       // +0x190

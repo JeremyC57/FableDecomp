@@ -7,7 +7,7 @@
 //          @ 0x00A01B90, list<CIntelligentPointer<CThing>> copy @ 0x00618DA0 / destructor @ 0x004B96F0 (out of line here),
 //          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPosition @ 0x004C73D0 (x2).
 // Layout / shape: the landed sibling CAIStateGroup_WorkHammerAnvil::IsRunnable 0x00944E80 (PSawHorse at +0x15 as PAnvil).
-struct CTCBase;
+class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -48,14 +48,14 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     __forceinline C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
     __forceinline float GetLengthSquared() const { return x * x + y * y + z * z; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
     unsigned char ThingClass;                   // +0x10 (5: object)
@@ -150,22 +150,22 @@ struct CMode {
     virtual void v00();
     virtual long GetModeType();                 // slot 1
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     CMode* GetCurrentMode();                    // 0x0073A6E0
 };
-struct CTCThingOwner {                          // interface 0x21
+class CTCThingOwner { public:                          // interface 0x21
     unsigned char _pad[0x0c];
     CThingList ObjectList;                      // +0x0c
 };
 struct CTCUserActionPointBase {                 // interface 0x2D
     bool IsActionPointFree();                   // 0x007FEBF0
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

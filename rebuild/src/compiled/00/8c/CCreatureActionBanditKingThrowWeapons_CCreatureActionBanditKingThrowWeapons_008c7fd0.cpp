@@ -7,23 +7,23 @@
 // Shape: the literal's CCharString temporary is built before every other base argument (GOTCHAS); the member is default-constructed
 // in the init list and assigned in the body from a converted temporary (`Target = CIntelligentPointer(target)`: temporary ctor,
 // SetPItem, GetPItem, the member's SetPItem, temporary dtor) -- the temporary reuses the dead string slot.
-struct CCharString {                        // engine string (4 bytes: data pointer)
+class CCharString { public:                        // engine string (4 bytes: data pointer)
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -46,7 +46,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CCreatureAction_BanditKingThrowWeapons : CCreatureActionBase {   // vtable 0x0128193C
+class CCreatureAction_BanditKingThrowWeapons : public CCreatureActionBase { public:   // vtable 0x0128193C
     CIntelligentPointerCreature Target;     // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_BanditKingThrowWeapons(CThingCreatureBase* owner, CThingCreatureBase* target);

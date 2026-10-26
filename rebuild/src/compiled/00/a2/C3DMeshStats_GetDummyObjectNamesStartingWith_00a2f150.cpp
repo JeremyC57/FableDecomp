@@ -9,13 +9,13 @@
 //   @ 0x00A2ED10 (landed; `true` selects the dummy-object name table).
 // Shape: a plain __fastcall forwarder that cannot tail-jump (four arguments vs three): `once` and `prefix` are loaded
 //   first, the constant pushed, then `names` reloaded from its slot; `this` stays in ecx.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
 };
 
 struct CCharStringVector;                  // std::vector<CCharString> (12-byte STLport vector)
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     void GetDummyObjectNamesStartingWith(CCharStringVector& names, const CCharString& prefix, bool once) const;
     void UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool once) const;   // 0x00A2ED10

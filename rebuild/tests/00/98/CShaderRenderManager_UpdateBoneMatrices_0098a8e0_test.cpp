@@ -6,13 +6,13 @@ struct CDevice {
     long SetVertexShaderConstantF(unsigned long r, const float* d, unsigned long n) { reg = r; data = d; count = n; ++calls; return 0; }
 };
 struct CPreTransposedBoneMatrix { float Row[3][4]; };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetData() const { return Size() != 0 ? m_begin : (const T*)this; }
 };
 struct CLayout { long BoneOffset; };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CLayout* CurrentVSConstantLayout;
     CDevice* D3DDevice;
     unsigned long UpdateFlags;

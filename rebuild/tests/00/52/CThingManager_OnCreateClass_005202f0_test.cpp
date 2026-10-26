@@ -5,7 +5,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { u64 UniqueID; };
+class CThing { public: u64 UniqueID; };
 struct SUIDMapValue {
     u64 first; CThing* second;
     SUIDMapValue(const u64& k, CThing* const& v) : first(k), second(v) { }
@@ -18,7 +18,7 @@ struct CUIDToThingMap {
         keys[count] = v.first; values[count] = v.second; ++count; return true;
     }
 };
-struct CThingManager {
+class CThingManager { public:
     CUIDToThingMap UIDToThingMap;
     void OnCreateClass(CThing& thing) { UIDToThingMap.insert(SUIDMapValue(thing.UniqueID, &thing)); }
 };

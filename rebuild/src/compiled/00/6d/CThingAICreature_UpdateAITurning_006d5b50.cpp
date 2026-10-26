@@ -2,7 +2,7 @@
 // Leaf: UpdateAITurning
 // Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), CTCGraphicAppearance 0x4C10E0 / 0x4C1060(1.0f) (by-value C3DVector),
 //   CThing::GetPosition 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) { Z = o.Z; Y = o.Y; X = o.X; }
@@ -10,7 +10,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
 __forceinline float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     unsigned char _pad00[0x08];
     CBaseObject* GetPItem() const;                          // 0x00A01B50
@@ -19,7 +19,7 @@ struct CTCGraphicAppearance {
     C3DVector GetHeadPosition() const;                      // 0x004C10E0
     C3DVector GetHelperPointOrCentre(float fraction) const; // 0x004C1060
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* end;
     SEntry* LowerBound(const long& type);                   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                         // +0x20
     CInterfaceMap m_tcs;                                    // +0x44
@@ -45,7 +45,7 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CTCLook {
+class CTCLook { public:
     void LookAtPos(const C3DVector& position, long speed);  // 0x00753E90
 };
 struct CAITurnState {
@@ -60,7 +60,7 @@ struct CAITurnState {
     C3DVector Position;                                     // +0x34
     CBaseIntelligentPointer Thing;                          // +0x40
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x1a0 - 0x94];
     CAITurnState* PTurnState;                               // +0x1a0
     bool LooksAtHeadHelper() const;                         // 0x00661E80

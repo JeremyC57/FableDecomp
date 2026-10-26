@@ -8,8 +8,8 @@
 // on success its string is copied into the hidden result, otherwise the result is L"". No EH frame in retail.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                          // 0x0099AED0
     CWideString(const CWideString& other);  // 0x0099B720
@@ -17,7 +17,7 @@ struct CWideString {
     ~CWideString();                         // 0x0099B510
 };
 
-struct CWParsedItem {
+class CWParsedItem { public:
     long        Type;      // +0x00 EParsedItemType
     long        Integer;   // +0x04
     CWideString String;    // +0x08

@@ -9,7 +9,7 @@
 // context (2 distinct helpers, one per member type; their labels are propagated so they are
 // named by address). The last member's address is formed in place (`add esi,N`). Member types
 // are not recoverable beyond their 4-byte size. One of 9 bodies of this shape.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_00431061(long* value);   // 0x00431061
     void Transfer_00466a47(long* value);   // 0x00466A47
 };

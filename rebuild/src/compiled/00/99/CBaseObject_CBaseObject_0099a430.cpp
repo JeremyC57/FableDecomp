@@ -9,18 +9,18 @@
 // vptr). The member is read through `this` at every use: the `object = 0` store through the block
 // pointer may alias it, so the refcount test reloads `[esi+4]` (`mov eax,[esi+4]` after the store).
 // The block is a plain record, so `delete` is a direct operator delete call.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseObjectPointer {
     CBaseObject*  object;                          // +0x00
     unsigned long refcount;                        // +0x04
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     ~CBaseClass() { }
 };
 
-struct CBaseObject : CBaseClass {                  // vtable 0x0129A7D8
+class CBaseObject : public CBaseClass { public:                  // vtable 0x0129A7D8
     CBaseObjectPointer* IntelligentPointer;        // +0x04
     virtual void v00();
     ~CBaseObject();

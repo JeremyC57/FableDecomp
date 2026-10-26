@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTextureManager {
+class CTextureManager { public:
     void* vftable;
     int destroyed;
 };

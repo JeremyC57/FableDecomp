@@ -14,7 +14,7 @@
 // operator== (SameText), whose `xor al,al ; mov bl,al` keeps `this` spilled and reloaded after the loop.
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;
     unsigned long m_length;
 };
@@ -35,7 +35,7 @@ long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (
     }
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool SameText(const CCharStringData& other) const
     {
@@ -103,15 +103,15 @@ struct CSectionSet {                                 // STLport set<CCharString>
         return node;
     }
 };
-struct CWorldMap {
+class CWorldMap { public:
     void LoadThingsWithSectionNames(const CSectionSet& sections, bool a2);   // 0x00500EB0
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                // slot 12 (+0x30)
 };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x7c];
     CWorld*       World;                             // +0x7c
     unsigned char _pad80[0x0c];

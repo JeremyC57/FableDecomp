@@ -18,18 +18,18 @@
 // PDB8F0D10 PlayCombatAnimation takes two Creature references;8F3C30 shield takes Creature reference.
 // Field-free actual string API adapter restores the genuine implicit literal conversion and default length.
 struct CRetailString:CCharString {CRetailString(const char*,long=-1);}; //99EBF0, implicit actual base dtor99EAE0
-struct CThingCreatureBase;
-struct CThing;
-struct CCreatureActionBase { unsigned char nativeStorage[0xa8]; };
-struct CCombatActionBase : CCreatureActionBase { unsigned char nativeTail[0x6c]; };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CThingCreatureBase;
+class CThing;
+class CCreatureActionBase { public: unsigned char nativeStorage[0xa8]; };
+class CCombatActionBase : public CCreatureActionBase { public: unsigned char nativeTail[0x6c]; };
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     bool FaceTarget;
     bool UsePhysics;
     bool AlwaysUseMovementInAnim;
     unsigned char padding117;
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase&, CThingCreatureBase&, const CRetailString&, bool); // 0x008B7F80
 };
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:
     bool ImmediateCast;                 // native +0x114
     bool OneAnimCast;                    // native +0x115
     unsigned char padding116[2];
@@ -39,7 +39,7 @@ struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
     CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase&, long, bool, const CRetailString&, long, float); // 0x008BB6F0
 };
 struct SCountBlock { long refs; void (FABLE_FASTCALL* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* object;
     SCountBlock* count;
     CCountedPointer() : object(0), count(0) {}

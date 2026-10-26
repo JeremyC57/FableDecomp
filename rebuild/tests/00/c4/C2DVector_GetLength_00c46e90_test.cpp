@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     float GetLength() const { return (float)std::sqrt(X * X + Y * Y); }
 };

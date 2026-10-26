@@ -1,13 +1,13 @@
 // behaviour test for 0x0075D140 CTCCameraPointFixedPoint persist (TrackThing + LookVector)
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     int n; const char* names[8]; float fdef[8]; bool bdef;
     bool loading;
     void Transfer(const char* name, float& v, const float& d) { names[n++] = name; fdef[n - 1] = d; if (loading) v = d; }
     void Transfer(const char* name, bool& v, const bool& d) { names[n++] = name; bdef = d; if (loading) v = d; }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct FP {
     bool TrackThing; C3DVector LookVector;
     void vfunc_33(CPersistContext& context)

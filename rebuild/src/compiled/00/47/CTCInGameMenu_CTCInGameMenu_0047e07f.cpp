@@ -52,8 +52,8 @@ struct CSignatureMap {                             // map<CWideString,bool>
     void* _M_header; long _M_node_count; long _M_compare; void* _M_pad;
     ~CSignatureMap();                              // 0x00485E45
 };
-struct CDateAndTime { long Words[4]; };
-struct CInventoryDef {
+class CDateAndTime { public: long Words[4]; };
+class CInventoryDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1 (+0x04)
     long RefCount;                                 // +0x04
@@ -75,10 +75,10 @@ struct CDefPointer {                               // CDefPointer<CInventoryDef 
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();
 };
-struct CFrontEndManager {
+class CFrontEndManager { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

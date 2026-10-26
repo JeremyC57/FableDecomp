@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_upload = 0; static bool g_uploadOk = false; static int g_deleted = 0;
-struct CIVCountedPointeeBase { virtual void Destroy(int) { } virtual void Delete() { ++g_deleted; } unsigned long IVRefCount; };
+class CIVCountedPointeeBase { public: virtual void Destroy(int) { } virtual void Delete() { ++g_deleted; } unsigned long IVRefCount; };
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; void Release() { CIVCountedPointeeBase* old = Object; if (old) { if (--old->IVRefCount == 0) old->Delete(); Object = 0; } }
     CIVCountedPointer& operator=(CIVCountedPointeeBase* o) { Release(); Object = o; if (o) ++o->IVRefCount; return *this; } };
 struct CFrameOwner_009ff860 { unsigned char _pad[8]; CIVCountedPointer m_data; };

@@ -11,13 +11,13 @@
 // quest-start path reuses the dead bool argument slot, the autosave path the frame word.
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                          // 0x0099B510
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();            // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetAutoSaveFileName() const;                 // 0x00406690 ("AutoSave")
     CWideString GetAutoSavePathName() const;                 // 0x00406F70 ("AutoSave" path)
@@ -25,10 +25,10 @@ struct CUserProfileManager {
 };
 bool __fastcall PathExists(const CWideString& path);          // 0x00999230
 
-struct CQuestManager { bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
+class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;                        // 0x013B89FC
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x134];
     long          MostRecentSaveType;                         // +0x134 ESaveType (PDB +0x144)
     long          MostRecentSaveTypeBeforeManualSave;         // +0x138 ESaveType (PDB +0x148)

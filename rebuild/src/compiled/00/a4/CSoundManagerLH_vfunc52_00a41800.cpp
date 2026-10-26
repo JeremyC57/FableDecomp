@@ -4,7 +4,7 @@
 // Shape: the source address read once, the destination formed with `add ecx,74h`, then three dword moves
 // through edx/eax: the implicit (bitwise) assignment of a three-float POD (a user memberwise operator=
 // would move the floats through the x87), `ret 4`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 

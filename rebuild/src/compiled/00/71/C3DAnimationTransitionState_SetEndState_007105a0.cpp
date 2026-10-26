@@ -5,7 +5,7 @@
 // Progress +0x10 (the header is flat, so the counted pointer is modelled locally over the same
 // offsets). The argument is a reference to the counted pointer (`mov eax,[edi]`), re-read after
 // the virtual call. Same inlined CIVCountedPointer::operator= as 0x00710600.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -30,7 +30,7 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DAnimationTransitionState {       // engine/C3DAnimationTransitionState.h offsets
+class C3DAnimationTransitionState { public:       // engine/C3DAnimationTransitionState.h offsets
     virtual void v00();
     unsigned long IVRefCount;              // +4 (CIVCountedPointeeBase)
     CIVCountedPointer StartState;          // +8

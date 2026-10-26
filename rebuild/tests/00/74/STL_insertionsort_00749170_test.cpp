@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int key; };
+class CThing { public: int key; };
 
 struct CCompare_FurthestFromInitPos2D {
     bool operator()(CThing* a, CThing* b) const { return a->key > b->key; }   // stand-in ordering: larger key first

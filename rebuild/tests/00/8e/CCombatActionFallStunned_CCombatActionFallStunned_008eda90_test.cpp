@@ -28,7 +28,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
@@ -50,14 +50,14 @@ public:
     bool operator!=(const char* text) const { return !(*this == text); }
 };
 
-struct CThing { };
-struct CThingCreatureBase : CThing { };
-struct CSoundPair {
+class CThing { public: };
+class CThingCreatureBase : public CThing { public: };
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
@@ -65,7 +65,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
 };
 extern const char g_DefaultFallStunnedAnim[];  // 0x0127717C
 
-struct CCombatAction_FallStunned : CCombatActionBase {   // vtable 0x012880E4
+class CCombatAction_FallStunned : public CCombatActionBase { public:   // vtable 0x012880E4
     virtual void v00();
     CCombatAction_FallStunned(CThingCreatureBase* owner, CThing* thing, const CCharString& animName);
 };

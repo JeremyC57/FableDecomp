@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BeingForcePushed {
+class CCreatureAction_BeingForcePushed { public:
     void* vftable;
     int destroyed;
 };

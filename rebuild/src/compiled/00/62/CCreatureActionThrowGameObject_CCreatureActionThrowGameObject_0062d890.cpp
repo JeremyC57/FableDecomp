@@ -9,31 +9,31 @@
 // the string dies after the base call, then the vtable store and the target copied word by word through C3DVector's memberwise copy constructor.
 // No engine header layout used (the PDB flattens the base); modelled locally (retail CCreatureActionBase is 0xa8 bytes, Target at +0xa8).
 // CCharString is modelled locally because fable_string.h declares its (const char*, long) constructor without the default length.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct C3DVector {
+class CThingCreatureBase;
+class CAnimationEntry;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor: fixed-offset word moves
 };
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 CAnimationEntry* __fastcall GetTableAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CCreatureAction_ThrowGameObject : CCreatureActionBase {   // vtable 0x01259044
+class CCreatureAction_ThrowGameObject : public CCreatureActionBase { public:   // vtable 0x01259044
     C3DVector Target;                       // +0xa8
     virtual void v00();
     CCreatureAction_ThrowGameObject(CThingCreatureBase* owner, const C3DVector& target);

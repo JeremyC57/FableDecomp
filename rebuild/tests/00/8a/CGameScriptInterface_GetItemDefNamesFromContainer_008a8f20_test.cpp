@@ -5,7 +5,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 inline void* operator new(unsigned int, void* where) { return where; }
 static int g_strCopies = 0, g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(void* p) : m_pData(p) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_strCopies; }
@@ -29,7 +29,7 @@ struct CCharStringVector {
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CDefString { long m_index; CDefString(long i) : m_index(i) { } CDefString(const CDefString& other) : m_index(other.m_index) { } };
+class CDefString { public: long m_index; CDefString(long i) : m_index(i) { } CDefString(const CDefString& other) : m_index(other.m_index) { } };
 static int g_defName = 0, g_getString = 0;
 struct CDefinitionManager_Retail { CDefString GetDefNameFromGlobalIndex(long index) { ++g_defName; return CDefString(index + 1000); } };
 struct CDefStringTable_Retail { CCharString GetString(long index) { ++g_getString; return CCharString((void*)(index * 4)); } };
@@ -46,7 +46,7 @@ struct CInterfaceMap {
     }
 };
 struct CContainerItem { long DefIndex; long Data; };
-struct CTCContainer {
+class CTCContainer { public:
     unsigned char _pad00[0xc];
     CContainerItem* ItemsStart; CContainerItem* ItemsFinish;
     unsigned long ItemCount() const { return ItemsFinish - ItemsStart; }
@@ -68,12 +68,12 @@ public:
     }
 };
 static CThing g_thing; static bool g_alive = true; static int g_getThing = 0, g_isAlive = 0;
-struct CScriptThing {
+class CScriptThing { public:
     virtual CThing* GetThing() const { ++g_getThing; return &g_thing; }
     virtual bool IsAlive() const { ++g_isAlive; return g_alive; }
     void* PImp[2];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names) const;
     void* World; void* Component; void* DisplayEngine; CDefinitionManager_Retail* DefinitionManager;
 };

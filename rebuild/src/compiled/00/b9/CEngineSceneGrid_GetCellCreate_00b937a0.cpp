@@ -7,9 +7,9 @@
 // Shape: x and y stay in ebp/ebx; the parent local is zeroed (edi) before the LevelUp test; `new` keeps its null test
 // (`xor eax,eax` arm); the slot address is recomputed from Size and GridCells for the store.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, matches retail)
+class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB layout, matches retail)
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     float                         BoundingBox[6];  // +0x08 C3DBoundingBox
@@ -29,13 +29,13 @@ struct CEngineSceneGridCell {                      // 0x48 bytes (PDB layout, ma
     CEngineSceneGridCell(CEngineSceneGridCell* parent);   // 0x00B935C0
 };
 
-template <class T> struct CArray {                 // retail CArray: data pointer first
+template <class T> class CArray { public:                 // retail CArray: data pointer first
     T*   m_pData;
     long m_size;
     long m_capacity;
 };
 
-struct CEngineSceneGrid {                          // 0x24 bytes (PDB layout, matches retail)
+class CEngineSceneGrid { public:                          // 0x24 bytes (PDB layout, matches retail)
     unsigned long                 _vfptr_or_pad;   // +0x00
     unsigned long                 Level;           // +0x04
     CEngineSceneGrid*             LevelUp;         // +0x08

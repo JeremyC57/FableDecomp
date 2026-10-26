@@ -21,10 +21,10 @@ struct CPlayerVector {                                      // retail std::vecto
     CPlayer_Calls*& operator[](unsigned int i) { return m_pFirst[i]; }
 };
 
-struct CGameDefinitionManager;
-struct CMainGameComponent;
+class CGameDefinitionManager;
+class CMainGameComponent;
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void*                   __vftable;                      // +0x00
     CMainGameComponent*     Component;                      // +0x04
     CGameDefinitionManager* DefinitionManager;              // +0x08

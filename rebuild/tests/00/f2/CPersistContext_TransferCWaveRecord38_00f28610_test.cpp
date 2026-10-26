@@ -6,8 +6,8 @@
 #ifndef _MSC_VER
 #define __assume(x)
 #endif
-struct CPersistContext;
-struct CMemoryDataInputStream {
+class CPersistContext;
+class CMemoryDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     long m_remaining;
@@ -26,7 +26,7 @@ struct CMemoryDataInputStream {
     }
     long ReadLong() { int value; Read(&value, 4); return value; }
 };
-struct CDataOutputStream { long written; void WriteLong(long v) { written = v; } };
+class CDataOutputStream { public: long written; void WriteLong(long v) { written = v; } };
 struct CWaveRecord38 { int transfers; unsigned char body[0x38 - 8]; CWaveRecord38() : transfers(0) {} void Transfer(CPersistContext&) { ++transfers; } };
 static CWaveRecord38 g_store[16];
 template <class T> struct vector {
@@ -35,13 +35,13 @@ template <class T> struct vector {
     T& operator[](long index) { return _M_start[index]; }
     void resize(long count) { _M_finish = _M_start + count; }
 };
-struct CPersistContext_TransferableVectorGenericType { virtual long GetCount() { return -1; } virtual ~CPersistContext_TransferableVectorGenericType() {} };
+class CPersistContext_TransferableVectorGenericType { public: virtual long GetCount() { return -1; } virtual ~CPersistContext_TransferableVectorGenericType() {} };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {
     vector<T>* TransVector;
     CPersistContext_TransferableVector(vector<T>& v) : TransVector(&v) {}
     virtual long GetCount() { return TransVector->size(); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream; int crc; long textCount;
     void CheckCRC(const char* name) { if (std::strcmp(name, "Waves") == 0) ++crc; }
     void TransferSubComponentVectorLoadText(const char*, CPersistContext_TransferableVectorGenericType& item) { textCount = item.GetCount(); }

@@ -7,7 +7,7 @@ public:
     CBaseClass() {}
     virtual ~CBaseClass() {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* m_pCount;
     CCountedPointer() : Data(0), m_pCount(0) {}

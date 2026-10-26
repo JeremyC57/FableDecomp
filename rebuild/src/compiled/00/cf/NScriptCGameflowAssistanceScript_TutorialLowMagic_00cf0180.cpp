@@ -17,7 +17,7 @@
 // Shape: a rotated `while` over the warning count with the cooldown counter in edi; the def is read into a block-local
 //   pointer before the will-energy call (kept in ebx for the compare); both message strings are implicit
 //   conversion temporaries of the guild-master call (built before the pushes, destroyed after it).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -78,7 +78,7 @@ struct CGameScriptInterface_Calls {
     virtual void v387(); virtual void v388(); virtual void v389(); virtual void v390(); virtual void v391(); virtual void v392(); virtual void v393();
     virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0xff4];
     float LowWillEnergyThreshold;                       // +0xff4
     long  WillEnergyWarningCooldown;                    // +0xff8
@@ -95,7 +95,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CGameflowAssistanceScript : CScriptBase {
+class CGameflowAssistanceScript : public CScriptBase { public:
     CGameScriptInterface_Calls* GSI;                    // +0x40
     CQuestMasterData*           PMasterData;            // +0x44
     unsigned char               _pad48[0x5c - 0x48];

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stdlib.h>
 #include <new>
-struct CInputEvent {
+class CInputEvent { public:
     long Kind; long Key; float StartTime; float CurrentTime;
     long GetType() const { return Kind; }
     long GetKey() const { return Key; }
@@ -9,7 +9,7 @@ struct CInputEvent {
     { Kind = 2; Key = key; StartTime = (float)startTime; CurrentTime = (float)currentTime; }
 };
 static int g_dtors = 0;
-struct CMaintainedEvent {
+class CMaintainedEvent { public:
     virtual ~CMaintainedEvent() { ++g_dtors; }
     CInputEvent Event;
 };
@@ -33,7 +33,7 @@ struct CMaintainedEventList {
     }
     Node* last() { return head->prev; }
 };
-struct CKeyboard {
+class CKeyboard { public:
     CMaintainedEventList MaintainedEventsList;
     void ProcessMaintainedEventsFromEvent(const CInputEvent& event);
 };

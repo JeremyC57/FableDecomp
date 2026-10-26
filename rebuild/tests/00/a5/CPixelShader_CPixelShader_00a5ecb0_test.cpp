@@ -1,15 +1,15 @@
 #include <cstdio>
 struct IDirect3DPixelShader9 { long m_id; };
-struct CCharString { const char* m_pData; };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; };
+class CCharString { public: const char* m_pData; };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
 struct CPixelShaderData {
     IDirect3DPixelShader9* PixelShader; unsigned long ReferenceCount; unsigned long ConstCount; long* ConstIndices;
     CPixelShaderData(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString&)
         : PixelShader(shader), ReferenceCount(1), ConstCount(constIndices.m_pLast - constIndices.m_pFirst), ConstIndices(constIndices.m_pFirst) { }
     virtual ~CPixelShaderData() { }
 };
-struct CShaderBase { virtual void v00() { } CShaderBase() { } virtual ~CShaderBase() { } };
-struct CPixelShader : CShaderBase {
+class CShaderBase { public: virtual void v00() { } CShaderBase() { } virtual ~CShaderBase() { } };
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* Data;
     CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name)
         : Data(new CPixelShaderData(shader, constIndices, name)) { }

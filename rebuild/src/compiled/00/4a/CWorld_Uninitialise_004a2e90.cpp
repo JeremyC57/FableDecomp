@@ -11,14 +11,14 @@
 // CWorld (engine/CWorld.h offsets agree): PWorldMap +0x14, PGameCameraManager +0x30, PThingManager +0x50 (scoped_ptrs).
 // Shape: scoped_ptr::reset(0) (old read, zero stored, `delete old`); the singleton access is an inline static
 // GetInstance() that creates the manager on first use, its method call becomes the tail jump.
-struct CWorldMap { void PrepareForLoad(); };          // 0x004FF560
-struct CQuestManager { void OnWorldDestruction(); };  // 0x004B49E0
+class CWorldMap { public: void PrepareForLoad(); };          // 0x004FF560
+class CQuestManager { public: void OnWorldDestruction(); };  // 0x004B49E0
 extern CQuestManager* g_pQuestManager;                // 0x013B89FC
 
-struct CThingManager { virtual ~CThingManager(); };
+class CThingManager { public: virtual ~CThingManager(); };
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
 
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -33,8 +33,8 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
 };
 
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;                             // +0
     CCPPointerInfo* Info;                             // +4
     void Reset(T* object);                            // 0x004A9A80
@@ -56,7 +56,7 @@ private:
     unsigned char _body[0xc];
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00();
     unsigned char             _pad04[0x10];
     scoped_ptr<CWorldMap>     PWorldMap;              // +0x14

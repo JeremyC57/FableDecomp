@@ -9,21 +9,21 @@
 // Layout: the PDB CEngineSceneGrid / CEngineSceneGridCell as in the landed GetCellTotalPrimitiveCount 0x00B91D20 (Size
 //   +0x10, GridCells CArray data +0x14; the cell's Parent at +0x00). No engine header exists for these classes.
 // Shape: two unsigned loops over Size x Size (Size re-read at every test), cell = GridCells[y * Size + x], null-tested.
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CEngineSceneGridCell*         Parent;          // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;  // +0x04
     void MovePrimitivesTo(CEngineSceneGridCell& target);   // 0x00B918B0
 };
 
-template <class T> struct CArray {                 // retail CArray: data pointer first
+template <class T> class CArray { public:                 // retail CArray: data pointer first
     T*   m_pData;
     long m_size;
     long m_capacity;
 };
 
-struct CEngineSceneGrid {                          // 0x24 bytes (PDB layout, matches retail)
+class CEngineSceneGrid { public:                          // 0x24 bytes (PDB layout, matches retail)
     unsigned long                 _vfptr_or_pad;   // +0x00
     unsigned long                 Level;           // +0x04
     CEngineSceneGrid*             LevelUp;         // +0x08

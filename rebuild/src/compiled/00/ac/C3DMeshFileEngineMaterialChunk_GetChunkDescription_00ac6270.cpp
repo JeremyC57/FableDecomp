@@ -3,7 +3,7 @@
 // push -1 ; push <lit> ; ecx=retbuf ; call CCharString::ctor(char*, int) ; return retbuf
 
 #include "engine/C3DMeshFileEngineMaterialChunk.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* m_data;
     // ctor is defined out-of-line in another TU (retail 0x0099ebf0); leaving it
     // undefined here forces the compiler to treat the call as opaque so the

@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     int tag;
     CTexture& CopyBackBufferToTexture();
     void Handler(char* a, char* b);

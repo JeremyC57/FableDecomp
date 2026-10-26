@@ -5,7 +5,7 @@
 // tail destroyed (~CTexture = Uninitialise: drop the texture pointer), finish pulled back, first returned.
 static int g_assigns = 0, g_dtors = 0;
 
-struct CTexture {
+class CTexture { public:
     void*         PD3DTexture;
     unsigned long ByteLength : 28;
     unsigned long AllocationSource : 4;

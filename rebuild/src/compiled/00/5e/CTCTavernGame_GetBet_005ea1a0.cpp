@@ -33,18 +33,18 @@ struct CDefBase {
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad08[0xec - 0x08];
     unsigned long Bet;                                  // +0xec text id
     unsigned long PlayersMoney;                         // +0xf0 text id
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_005ed4a0(CDefPointer<CTavernGameDef>& out);   // 0x005ED4A0
 };
 void* FindSubDef_CDefClassBase_GetSubDef(CDefClassBase* def);   // stand-in callee of the stand-in body below
@@ -60,11 +60,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer<CTavernG
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x34 - 0x08];

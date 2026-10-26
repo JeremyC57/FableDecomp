@@ -10,10 +10,10 @@
 // Shape: the two strength getters' bodies sit above (auto_inline off) so the index stays in edi across them; the unsigned
 // Duration is pre-incremented against TotalDuration (`jb`); each decal call evaluates its strength
 // argument first (right-to-left).
-struct CTCTextureDecal;
+class CTCTextureDecal;
 enum EBodyLocation { BODY_LOCATION_NONE = 0 };
 
-struct CTCWound {
+class CTCWound { public:
     struct CEntry {                                          // 40 bytes
         EBodyLocation Location;                              // +0x00
         long          ReplacingTextureIndex;                 // +0x04
@@ -26,7 +26,7 @@ struct CTCWound {
         long          TotalDuration;                         // +0x20
         float         PermanentScarStrength;                 // +0x24
     };
-    struct CWound {
+    class CWound { public:
         CEntry        Desc;                                  // +0x00
         unsigned long Duration;                              // +0x28
         long          WoundTextureDecalEntryID;              // +0x2C

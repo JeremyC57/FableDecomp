@@ -3,12 +3,12 @@
 #include <cstring>
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing { int id; };
-struct CGame {
+class CScriptThing { public: int id; };
+class CGame { public:
     int startFailures;
     CScriptThing hero;
     void NewScriptFrame() { Log("frame"); }

@@ -5,29 +5,29 @@
 #include <cstring>
 #include <string>
 
-struct C3DVector { float X, Y, Z; };
-struct CCharString { std::string s; CCharString(const char* t) : s(t) {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: std::string s; CCharString(const char* t) : s(t) {} };
 struct CTCInterface9 { bool m_flag10; };
-struct CThing;
+class CThing;
 static std::string g_attachBone; static CThing* g_attachThing = 0; static long g_attachIndex = -1; static int g_attaches = 0;
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long index, const CCharString& bone, long, long) { g_attachThing = thing; g_attachIndex = index; g_attachBone = bone.s; ++g_attaches; }
 };
-struct CSpecialEffectsDef {
+class CSpecialEffectsDef { public:
     long RefCount; bool Destroyed; const char* Known; long KnownValue;
     void Destroy() { Destroyed = true; }
     bool CalcAndLookup(const CCharString& name, long* value) { if (name.s != Known) return false; *value = KnownValue; return true; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CSpecialEffectsDef* Effects;
     bool GetSubDef(CDefPointer<CSpecialEffectsDef>* out) { if (!Effects) return false; ++Effects->RefCount; out->Object = Effects; return true; }
 };
-struct CThing {
+class CThing { public:
     C3DVector Pos; CDefClassBase* Def; bool Dead; CTCInterface9* I9; CTCDParticleEmitter* Emitter; long EffectId;
     const C3DVector& GetPosition() const { return Pos; }
     CDefClassBase* GetDef() const { return Def; }
@@ -42,12 +42,12 @@ struct CIntelligentPointerThing {
     CIntelligentPointerThing(CThing* item) : m_pItem(item) {}
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CIntelligentPointerThing PCreature; std::string Anim; bool BaseInit;
     void SetAnimationName(const CCharString& n) { Anim = n.s; }
     void Initialise() { BaseInit = true; }
 };
-struct CCreatureAction_ScreamerDie : CCombatActionBase { CIntelligentPointerThing PDieEffect; void Initialise(); };
+class CCreatureAction_ScreamerDie : public CCombatActionBase { public: CIntelligentPointerThing PDieEffect; void Initialise(); };
 
 void CCreatureAction_ScreamerDie::Initialise()
 {

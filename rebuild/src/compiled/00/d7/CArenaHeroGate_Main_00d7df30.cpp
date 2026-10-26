@@ -11,7 +11,7 @@
 // Shape: each wait is a top-tested `while` (the flag test duplicated at the bottom, aligned loop head)
 // whose body ticks and returns on abort; after each loop the abort test runs once more before the
 // next gate call. The gate address is kept in edi; the parent/master pointers are re-read each pass.
-struct CScriptThing {
+class CScriptThing { public:
     long m_thingId;
 };
 

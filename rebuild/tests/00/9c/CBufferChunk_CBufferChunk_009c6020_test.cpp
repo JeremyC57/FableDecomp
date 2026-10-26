@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_enter = 0, g_leave = 0, g_freed = 0, g_destroyed = 0;
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     long m_count;
     void InternalDeallocate(void*) { ++g_freed; --m_count; }
     long GetAllocationCount() { return m_count; }

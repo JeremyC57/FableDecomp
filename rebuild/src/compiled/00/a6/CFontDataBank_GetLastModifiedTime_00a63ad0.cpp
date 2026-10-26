@@ -3,13 +3,13 @@
 // Callees: CDateAndTime::CDateAndTime @ 0x009E9A70 (seven arguments: 1, 1, 1, 1, 1, 0, 0) on the hidden return slot. Shape: the hidden pointer in esi, returned in eax,
 // `ret 8` (hidden pointer + the string reference). Protected virtual (the mangled name in the manifest).
 // Leaf: ?GetLastModifiedTime@CFontDataBank@@MAE?AVCDateAndTime@@ABVCCharString@@@Z
-struct CCharString;
-struct CDateAndTime {
+class CCharString;
+class CDateAndTime { public:
     unsigned char _body[16];
     CDateAndTime(long year, long month, long day, long hour, long minute, long second, long millisecond);   // 0x009E9A70
 };
 
-struct CFontDataBank {
+class CFontDataBank { public:
     virtual void v00();
 protected:
     virtual CDateAndTime GetLastModifiedTime(const CCharString& name);

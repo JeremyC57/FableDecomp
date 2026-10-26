@@ -8,26 +8,26 @@
 // The engine header is a flattened POD and the method needs the def-pointer member typed, so the class is a local model.
 // Shape: &PTargetingDef is formed once in edi and re-used to read the object (`mov edi,[edi]`) for the null-tested
 // flags copy; the two arms of that last `if` end in separate returns (no join).
-struct CTargetingDef {
+class CTargetingDef { public:
     unsigned char _pad_0x00[0x28];
     unsigned long TargetingFlags;            // +0x28
     bool          UseTargetGlow;             // +0x2c
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CTargetingDef>* out);   // 0x007EA960
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                     // +0x70
 };
 
-struct CTCTargeted {
+class CTCTargeted { public:
     void*         __vftable;                 // +0x00
     CThing*       ParentThing;               // +0x04
     unsigned char _pad_0x08[0x4];            // +0x08

@@ -7,7 +7,7 @@
 // Test copy of the 0x0082C5E0 model: CMarkerInfo as engine/CMarkerInfo.h lays it out (PThing opaque bytes, GraphicIndex,
 // AutoMarker), with PThing sized for the host pointer width so the placement-built intelligent pointer fits.
 static int g_links = 0;
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     CBaseObject* m_pItem;

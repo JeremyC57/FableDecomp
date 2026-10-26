@@ -11,9 +11,9 @@
 // The map key is passed by the member's address (edi = &Preferred).
 // Layout: PDB CTCIdleScheduler with retail 12-byte maps: IdleStates +0x0C, IdleStatesWeight +0x18, Preferred +0x24,
 // FrameLastChecked +0x28 (PDB +0x0C/+0x1C/+0x2C/+0x30).
-struct CAIStateGroupBase;
+class CAIStateGroupBase;
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 
@@ -24,7 +24,7 @@ struct CIdleStateMap {                               // std::map<EIdleStateGroup
     CAIStateGroupBase*& operator[](const long& group);   // 0x00802110
 };
 
-struct CTCIdleScheduler {
+class CTCIdleScheduler { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     bool          ToBeRemoved;                       // +0x08

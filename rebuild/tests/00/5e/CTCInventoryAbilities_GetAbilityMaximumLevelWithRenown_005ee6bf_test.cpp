@@ -2,7 +2,7 @@
 // for a good hero (> 0.33) with an evil-cost ability (< -eps) or an evil hero (< 0.66) with a good-cost ability (> eps).
 #include <cstdio>
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -13,7 +13,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry entries[4];
@@ -34,10 +34,10 @@ struct CThing {
     }
 };
 // --- end lookup copy ---
-struct CTCHeroStats { float Morality; float GetMoralityPercentage() const { return Morality; } };
+class CTCHeroStats { public: float Morality; float GetMoralityPercentage() const { return Morality; } };
 const float g_epsilon_0129ba3c = 1e-4f;
 enum EHeroAbility { HERO_ABILITY_NULL, HERO_ABILITY_X };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     CThing* ParentThing; long Max; float Cost;
     long GetAbilityMaximumLevel(EHeroAbility) { return Max; }
     float GetAbilityMoralityCostFactor(EHeroAbility) { return Cost; }

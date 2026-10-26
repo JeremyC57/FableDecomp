@@ -1,6 +1,6 @@
 // behaviour test for CAIStateGroup_BriarRoseWillUse::IsRunnable (0x00956CE0)
 #include <cstdio>
-struct CThing { bool dead; bool hasTC8; CThing* target; };
+class CThing { public: bool dead; bool hasTC8; CThing* target; };
 static long g_frame;
 struct Group {
     CThing* creature; CThing* PTargetThing; long NextUseFrame;

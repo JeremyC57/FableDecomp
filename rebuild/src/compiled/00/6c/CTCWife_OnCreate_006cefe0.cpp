@@ -29,7 +29,7 @@ struct CDefPointer_CHeroMarriageDef {
     const CHeroMarriageDef* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer_CHeroMarriageDef* out);      // 0x006D3D00
 };
 
@@ -38,7 +38,7 @@ struct CDefinitions {
     CDefClassBase* m_pMarriageDefs;                         // +0xd0
 };
 
-struct CTCWife {                                            // retail layout (see above)
+class CTCWife { public:                                            // retail layout (see above)
     void*                        __vftable;                 // +0x00
     void*                        ParentThing;               // +0x04
     bool                         ToBeRemoved;               // +0x08

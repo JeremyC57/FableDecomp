@@ -1,4 +1,4 @@
-struct CCreatureAction_PlayAnimationFromIndex {
+class CCreatureAction_PlayAnimationFromIndex { public:
     void* vftable;
 };
 

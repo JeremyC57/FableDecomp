@@ -12,9 +12,9 @@
 //   then the dword `test ch,1`, one-ternary returned GetTC, a same-TU lower_bound stand-in so every key shares the one frame
 //   word; the weapon component is a named local (esi); the "CROUCH" temporary is built before the group-name call (a
 //   literal bound to a const CCharString& parameter); the 0x36 component is the out-parameter GetInterface (`mov eax,[eax+4]`).
-struct CTCBase;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -57,7 +57,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44
@@ -88,10 +88,10 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                           // interface type 0x46
+class CTCCarrying { public:                           // interface type 0x46
     CThing* GetThingInPrimarySlot() const;     // 0x006A1440
 };
-struct CTCWeapon {                             // interface type 0x48
+class CTCWeapon { public:                             // interface type 0x48
     const CCharString& GetAnimationGroupName() const;   // 0x005DABE0
 };
 struct CTCInterface36 {                        // interface type 0x36 (two byte flags, cleared again by OnDeactivate)

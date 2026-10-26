@@ -12,12 +12,12 @@
 //   copied dword by dword into a `sub esp,10h` block, then remove_copy_if(++next, last, first, pred).
 //   GOTCHAS 24l: the tag lands in the live slot only with __find_if's real body visible (same-TU auto_inline(off) +
 //   noinline stand-in below).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     float GetLengthSquared() const { return X * X + Y * Y; }

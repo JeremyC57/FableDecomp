@@ -12,19 +12,19 @@
 #pragma optimize("s", on)
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x38];      // +0x04 CDefClassBase part, InstantiationName, SubDefInfoMap
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;
     float LowValue;
 };
 
-struct CHeroAbilityStatWeight {         // retail 12 bytes: map<EHeroTrainableStatType,float>
+class CHeroAbilityStatWeight { public:         // retail 12 bytes: map<EHeroTrainableStatType,float>
     void* m_first;
     void* m_last;
     void* m_end;
@@ -45,14 +45,14 @@ struct CFloatVector {                   // retail std::vector<float> (12 bytes)
     CFloatVector& operator=(const CFloatVector& other);   // 0x0045EF2D
 };
 
-struct CHeroAbilityStatPackage {        // retail 12 bytes: map<EHeroTrainableStatType,long>
+class CHeroAbilityStatPackage { public:        // retail 12 bytes: map<EHeroTrainableStatType,long>
     void* m_first;
     void* m_last;
     void* m_end;
     CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& other);   // 0x004621E9
 };
 
-struct CHeroCombatDef : CParentDefClassBase {// vtable 0x01234CF4
+class CHeroCombatDef : public CParentDefClassBase { public:// vtable 0x01234CF4
     CFloatRange             RangedAccuracySecondsForMaximumWithSkill;            // +0x3c
     CFloatRange             RangedAccuracyPercentFractionWithBuildup;            // +0x44
     CFloatRange             RangedAccuracyPercentWithStats;                      // +0x4c

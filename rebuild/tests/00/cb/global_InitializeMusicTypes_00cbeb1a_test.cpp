@@ -2,7 +2,7 @@
 // "<defs dir>atmos_types.h"; later calls do nothing.
 #include <cstdio>
 
-struct CWideString {
+class CWideString { public:
     wchar_t text[64];
     CWideString() { text[0] = 0; }
     CWideString(const wchar_t* t) { int i = 0; for (; t[i]; ++i) text[i] = t[i]; text[i] = 0; }
@@ -18,7 +18,7 @@ CWideString operator+(const CWideString& left, const wchar_t* right)
     r.text[n] = 0;
     return r;
 }
-struct CSymbolMap {
+class CSymbolMap { public:
     int loads;
     CWideString file;
     CSymbolMap() : loads(0) { }

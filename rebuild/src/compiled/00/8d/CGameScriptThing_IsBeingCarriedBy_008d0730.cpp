@@ -16,7 +16,7 @@
 #include <string.h>
 #include "engine/CGameScriptThing.h"
 
-struct CBaseObject;
+class CBaseObject;
 #pragma pack(push, 1)
 struct CBasicStringChar {                          // CBasicString<char>, 13 bytes
     char*         PData;                           // +0x00
@@ -27,7 +27,7 @@ struct CBasicStringChar {                          // CBasicString<char>, 13 byt
 };
 #pragma pack(pop)
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;                         // +0x00 (text, length)
 };
 class CCharString {
@@ -93,8 +93,8 @@ struct CThingRetail {
         return false;
     }
 };
-struct CTCCarrying;
-struct CTCCarryable {                              // component kind 0x47
+class CTCCarrying;
+class CTCCarryable { public:                              // component kind 0x47
     unsigned char _base[0x10];                     // CTCBase {vptr, ParentThing, flags} + ForceFragility
     CTCCarrying*  PCarryingTC;                     // +0x10
     CThingRetail* GetCarrier() const;              // 0x00705170

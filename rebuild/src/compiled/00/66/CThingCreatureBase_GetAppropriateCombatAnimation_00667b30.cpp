@@ -15,14 +15,14 @@
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCharString;
-struct CAnimationEntry;
+class CCharString;
+class CAnimationEntry;
 struct SAnimationSetEntry {                     // 0x14 bytes
     long Key;                                   // +0x00
     unsigned char Entry[0x10];                  // +0x04 CAnimationEntry
     long GetEntryAddress() const { return (long)Entry; }
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     SAnimationSetEntry* first;                  // +0x00
     SAnimationSetEntry* last;                   // +0x04
     SAnimationSetEntry* LowerBound_005dc020(const CCharString& name);   // 0x005DC020
@@ -60,20 +60,20 @@ __declspec(noinline) void CRetailVector_dword::InsertGrow_005e1420(long* where, 
 }
 #pragma auto_inline(on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 void* FindDef_CThingBaseDef_GetSubDef_0();   // stand-in callee of the stand-in body below

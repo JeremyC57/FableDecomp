@@ -8,7 +8,7 @@
 #define __declspec(x)
 #endif
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,11 +54,11 @@ public:
         return result;
     }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long particleDef, const C3DVector& position, bool attach);   // 0x006E0880
     void SetAlwaysUpdate(bool alwaysUpdate);                                                    // 0x006E0590
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     static CThing* __fastcall CreateParticleEffect(long particleDef, const C3DVector& position);
 };
 

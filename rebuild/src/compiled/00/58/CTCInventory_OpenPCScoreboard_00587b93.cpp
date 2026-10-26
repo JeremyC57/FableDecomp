@@ -13,7 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -46,15 +46,15 @@ struct CThing {
     }
 };
 
-struct CTCHeroOnlineScoreboard {                     // interface type 0x10D
+class CTCHeroOnlineScoreboard { public:                     // interface type 0x10D
     void ShowScoreboard();                           // 0x00563130
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                     // 0x00487DC0
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                        // 0x00449960
 };
 
@@ -67,7 +67,7 @@ extern CEngineGlobals* g_pEngineGlobals;             // 0x013B86A0
 
 enum { PC_SCREEN_SCOREBOARD = 8 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x214];

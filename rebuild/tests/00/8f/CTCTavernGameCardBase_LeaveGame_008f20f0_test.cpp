@@ -4,13 +4,13 @@
 // live particle effects killed and the effect list cleared, the table cards dropped, every pack card's thing killed and
 // the card freed, the selection cleared and the camera released and reset.
 static int g_baseLeave = 0, g_kills = 0, g_killThing = 0, g_release = 0, g_reset = 0, g_deleted = 0;
-struct CThing {
+class CThing { public:
     bool dead;
     int killed;
     bool IsDead() const { return dead; }
     void Kill(bool) { ++killed; ++g_kills; }
 };
-template<class T> struct CIntelligentPointer {
+template<class T> class CIntelligentPointer { public:
     T* item;
     T* Get() const { return item; }
 };
@@ -23,7 +23,7 @@ struct CEffectVector {
     T& operator[](unsigned long i) { return _M_start[i]; }
     void clear() { _M_finish = _M_start; }
 };
-struct CCard { CThing* Thing; };
+class CCard { public: CThing* Thing; };
 struct CCardVector {
     CCard** _M_start;
     CCard** _M_finish;
@@ -33,16 +33,16 @@ struct CCardVector {
     void pop_back() { --_M_finish; }
     void clear() { _M_finish = _M_start; }
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void ReleaseScriptedControl() { ++g_release; }
     void ResetCamera() { if (g_release) ++g_reset; }
 };
 static CGameCameraManager g_camera;
 struct CCameraManagerSource { bool GetCameraManager(CGameCameraManager** camera) { *camera = &g_camera; return true; } };
 static CCameraManagerSource g_source;
-struct CWorld { CCameraManagerSource* GetCameraSource() { return &g_source; } };
+class CWorld { public: CCameraManagerSource* GetCameraSource() { return &g_source; } };
 static CWorld g_world;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void LeaveGame() { ++g_baseLeave; }
     void KillThing(CThing* thing) { ++thing->killed; ++g_killThing; }
     CWorld* GetWorld() { return &g_world; }

@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct Inner { int calls; bool last; };
-struct CGameScriptInterface { void* pad0; Inner* inner; };
+class CGameScriptInterface { public: void* pad0; Inner* inner; };
 
 static void Inner_SetEnabled(Inner* p, bool b) { p->calls++; p->last = b; }
 

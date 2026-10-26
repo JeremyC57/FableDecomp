@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void* vftable;
     int destroyed;
 };

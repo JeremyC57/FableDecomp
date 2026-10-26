@@ -8,13 +8,13 @@
 // the quest names are argument temporaries. The inner wait is the scripts' WAIT_UNTIL(cond) = `while (!(cond))` over
 // `!IsQuestActive(..)`: the double negation is what gives retail's `test al,al ; setne bl` (a plain
 // `while (IsQuestActive(..))` gives `mov bl,al`, as the outer `if` does).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -63,7 +63,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CQ_BanditCampScript : CScriptBase {
+class CQ_BanditCampScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
     void*                 Data;                         // +0x44
     void WatchForEndOfScript();

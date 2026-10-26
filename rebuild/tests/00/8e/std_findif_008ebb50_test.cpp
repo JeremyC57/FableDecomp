@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cmath>
 
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CRadialArea {
     float ThetaLow, ThetaHigh, RadHigh;
     bool IsPosInArea(const C2DVector& pos, bool checkRadius) const

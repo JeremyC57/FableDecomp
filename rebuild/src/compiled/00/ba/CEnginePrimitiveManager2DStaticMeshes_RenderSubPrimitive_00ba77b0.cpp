@@ -9,9 +9,9 @@
 // +0x20 selects the simulation path (info at primitive+0x64, the renderer at +0x18 kept in edi for both calls, the current mesh
 // index through an inline accessor), else the plain mesh render on `this` (kept in edi across the first call).
 struct CEngineClothSimulationStaticMesh;
-struct CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveBase;
 
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     CEngineClothSimulationStaticMesh* FindSimulation(long index);   // 0x00B812C0
 };
 
@@ -19,7 +19,7 @@ struct CEngineClothSimulationStaticMesh {
     void Render(void* renderer, CEngineSubPrimitiveBase& sub, long pass);   // 0x00B812F0
 };
 
-struct CEngineInternalPrimitiveStaticMesh {
+class CEngineInternalPrimitiveStaticMesh { public:
     unsigned char                   _pad[0x64];
     CEnginePrimitiveSimulationInfo* m_pSimulationInfo;   // +0x64
 };
@@ -32,7 +32,7 @@ struct CMeshRenderer {
     long GetCurrentMeshIndex() const { return (*m_ppCurrent)->m_index; }
 };
 
-struct CEngineSubPrimitiveBase {
+class CEngineSubPrimitiveBase { public:
     unsigned char                       _pad0[0x4];
     unsigned char                       m_flags;   // +0x04 (bit 0: also render in pass 1)
     unsigned char                       _pad5[0x7];
@@ -48,7 +48,7 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
     void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass);    // 0x00BA6FA0
 };
 
-struct CEnginePrimitiveManager2DStaticMeshes : CEnginePrimitiveManagerStaticMeshesBase {
+class CEnginePrimitiveManager2DStaticMeshes : public CEnginePrimitiveManagerStaticMeshesBase { public:
     void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass);
 };
 

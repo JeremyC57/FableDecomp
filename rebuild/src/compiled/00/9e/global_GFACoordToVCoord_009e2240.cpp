@@ -14,8 +14,8 @@
 // GFAYToVY (0x009E1DD0: VirtualHeight * y formed BEFORE the dimension call and parked as a float), each re-fetching
 // GFGetSystemManager (0x009A4EC0; +0x60 = display manager) and CDisplayManager::GetRenderTargetDimensions
 // (0x009BEDC0, C2DExtentsI by hidden pointer). Globals: virtual width / height, doubles 65536.0 at 0x013961E8 / 0x013961F0.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

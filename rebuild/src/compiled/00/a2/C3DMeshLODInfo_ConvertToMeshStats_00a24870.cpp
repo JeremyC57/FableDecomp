@@ -13,14 +13,14 @@
 // local (kept in edi for both calls).
 #include "engine/C3DMeshLODInfo.h"
 
-struct C3DMesh2 {
+class C3DMesh2 { public:
     void ConvertToMeshStats();                           // 0x00A8B3A0
     unsigned long Sizeof() const;                        // 0x00A893C0
 };
-struct CBankFileAsyncData { unsigned long Sizeof() const; };   // 0x009D5620
+class CBankFileAsyncData { public: unsigned long Sizeof() const; };   // 0x009D5620
 
-struct CResource;
-struct CResourceList {
+class CResource;
+class CResourceList { public:
     void AddResource(CResource* resource);               // 0x009FBFE0
     bool MakeFreeSpace(unsigned long bytes);             // 0x009FC4F0
 };
@@ -28,7 +28,7 @@ struct CMeshInfoOwner {                                  // the bank owning the 
     unsigned char _pad000[0x1f0];
     CResourceList ResourceList;                          // +0x1f0
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*           __vftable;                           // +0x00
     CMeshInfoOwner* m_pOwner;                            // +0x04 (PDB header: `f4`)
 };

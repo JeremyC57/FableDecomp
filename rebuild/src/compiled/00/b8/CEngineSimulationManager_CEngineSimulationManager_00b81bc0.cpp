@@ -20,13 +20,13 @@ struct CBase {
     virtual void v00();
     CBase();                                       // 0x0099A2F0
 };
-struct CEngineComponent {                          // 0x0c bytes
+class CEngineComponent { public:                          // 0x0c bytes
     virtual void v01();
     void* m_pOwner;
     long  m_8;
     CEngineComponent();                            // 0x00B59710
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -37,8 +37,8 @@ struct CPerlinNoise {
     CPerlinNoise(unsigned long seed);              // 0x00F36BE0
 };
 
-struct CEnginePrimitiveSimulationInfo;
-template <class T> struct CIVCountedPointer { T* Object; };
+class CEnginePrimitiveSimulationInfo;
+template <class T> class CIVCountedPointer { public: T* Object; };
 template <class T>
 struct CRetailList {                               // STLport list<T>: the head node pointer
     struct node { node* _M_next; node* _M_prev; T _M_data; };
@@ -52,7 +52,7 @@ struct CRetailList {                               // STLport list<T>: the head 
     }
 };
 
-struct CEngineSimulationManager : CBase, CEngineComponent {   // vtables 0x012A3984 / 0x012A394C
+class CEngineSimulationManager : public CBase, public CEngineComponent { public:   // vtables 0x012A3984 / 0x012A394C
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > FullUpdateOnlySimulationInfoList;   // +0x10
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > AlwaysUpdateSimulationInfoList;     // +0x14
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > PausedSimulationInfoList;           // +0x18

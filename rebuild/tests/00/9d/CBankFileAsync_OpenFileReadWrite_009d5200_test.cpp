@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CWideString;
+class CWideString;
 static int g_calls = 0; static unsigned long g_a, g_b;
-struct CBankFile {
+class CBankFile { public:
     virtual void v00() {}
     unsigned char _pad[0x148 - 4];
     void OpenFileReadWrite(const CWideString*, unsigned long a, unsigned long b) { ++g_calls; g_a = a; g_b = b; }
 };
-struct CBankFileAsync : CBankFile {
+class CBankFileAsync : public CBankFile { public:
     bool m_asyncReading; bool m_asyncOpen;
     CBankFileAsync() : m_asyncReading(false), m_asyncOpen(false) {}
     virtual void OpenFileReadWrite(const CWideString* name, unsigned long a, unsigned long b) { CBankFile::OpenFileReadWrite(name, a, b); m_asyncOpen = true; }

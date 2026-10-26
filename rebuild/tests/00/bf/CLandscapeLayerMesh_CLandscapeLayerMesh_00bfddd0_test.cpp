@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeLayerMesh {
+class CLandscapeLayerMesh { public:
     void* vtbl;
     int ForegroundTextureIndex, BackgroundTextureIndex, BumpMapTextureIndex, f10, ForegroundTexture, BackgroundTexture, BumpMap, MinTextureMipMap, MinBumpMapMipMap, f28, ForegroundTextureMipmapLevel, ForegroundBumpmapTextureMipmapLevel, IndexBuffer, ForegroundVertexBuffer, Next, Map;
     short VertexCount, PolyCountIncDegenerates;

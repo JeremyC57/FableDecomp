@@ -14,14 +14,14 @@ struct CTextRecord_00a2d6c0 {
     CTextRecord_00a2d6c0& operator=(const CTextRecord_00a2d6c0& other);     // 0x006B9E00
 };
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     virtual void v00();
     SBankState_00a2d6c0   m_state;                 // +0x04
     CResourceRef_00a2d6c0 m_resource;              // +0x14
     CTextRecord_00a2d6c0  m_text;                  // +0x28
 };
 
-struct CMeshBankStateBlock : CBankStateBlock {
+class CMeshBankStateBlock : public CBankStateBlock { public:
     virtual void Set(const CBankStateBlock* other);
 };
 

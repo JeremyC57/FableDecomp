@@ -5,7 +5,7 @@
 // 0xC09D30, 0xC09D55 ... sort comparators) calls it with ecx only, no stack argument, and dereferences
 // the returned eax as a pointer; 0x004382CD also passes its address as a callback. It is an ICF-folded
 // "call virtual slot 1" body shared by several classes.
-struct CThingFilter_IsValid {
+class CThingFilter_IsValid { public:
     virtual void  Slot00();
     virtual long* Slot01();     // slot 1
     long* operator()();

@@ -10,7 +10,7 @@
 // Leaf: SavePositions
 #include <string.h>
 
-struct C4DVector {
+class C4DVector { public:
     float X;
     float Y;
     float Z;

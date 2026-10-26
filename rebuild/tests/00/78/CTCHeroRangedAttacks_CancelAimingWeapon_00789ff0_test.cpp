@@ -8,7 +8,7 @@
 //   and the sound player is fetched with GetInterface (not HasTC + FindTC): VC7.1 then loads the component into ecx before the
 //   BowDrawbackSoundID test as retail; the CVectorMap LowerBound instantiation is defined in this TU (noinline).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789FF0, 449 bytes (+ int3 padding), `ret`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -36,7 +36,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                  // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                      // +0x44
@@ -78,30 +78,30 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     return false;
 }
 
-struct CTCCarrying {                                 // interface type 0x46
+class CTCCarrying { public:                                 // interface type 0x46
     CThing* GetThingInPrimarySlot();                 // 0x006A1440
     CThing* RemoveThingInCarrySlot(long slot, bool drop);   // 0x006A16A0
 };
-struct CTCWeapon {                                   // interface type 0x48
+class CTCWeapon { public:                                   // interface type 0x48
     long GetAmmoCarrySlot();                         // 0x005DA920 (catalog "CCategory::GetCategoryIdentifier")
     bool IsProjectileWeapon();                       // 0x005DAA40
     bool IsAnalogueLoading();                        // 0x005DA950
     void SetProjectileWeaponLoaded(bool loaded, CThing* ammo);   // 0x005DAC50
 };
-struct CTCAnimatingObject {                          // interface type 0x83
+class CTCAnimatingObject { public:                          // interface type 0x83
     void PlayDefaultAnimation();                     // 0x007F8F30
 };
-struct CTCSoundPlayer {                              // interface type 0x10
+class CTCSoundPlayer { public:                              // interface type 0x10
     void StopSample(unsigned long sampleID);         // 0x0066ADD0
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();
     mutable long RefCount;                                   // +0x04
 };
-struct CHeroCombatDef : CDefPointeeBase { };
-template<class T> struct CDefPointer {
+class CHeroCombatDef : public CDefPointeeBase { public: };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer();
@@ -109,8 +109,8 @@ template<class T> struct CDefPointer {
 float __fastcall GetDamageMultiplierFromThingAtBuildUpTime(CThing* thing, CDefPointer<const CHeroCombatDef> def, float buildUpTime);    // 0x00789CE0
 float __fastcall GetAccuracyPercentageFromThingAtBuildUpTime(CThing* thing, CDefPointer<const CHeroCombatDef> def, float buildUpTime);  // 0x00789D90
 
-struct CThingCreatureBase;
-struct CTCHeroRangedAttacks {
+class CThingCreatureBase;
+class CTCHeroRangedAttacks { public:
     void*               __vftable;                   // +0x00
     CThing*             ParentThing;                 // +0x04 CTCBase
     unsigned char       _pad_0x08[0x04];

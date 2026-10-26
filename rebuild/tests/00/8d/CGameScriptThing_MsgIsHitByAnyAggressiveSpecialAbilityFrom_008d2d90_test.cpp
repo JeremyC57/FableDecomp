@@ -12,20 +12,20 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     explicit CCharString(const char* text) : Text(text) { }
     bool operator==(const char* text) const { return strcmp(Text, text) == 0; }
     bool operator==(const CCharString& other) const { return strcmp(Text, other.Text) == 0; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name;
     explicit CScriptThing(const char* name) : Name(name) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Name(o.Name) { ++g_live; }
     ~CScriptThing() { --g_live; }
     CCharString GetName() const { return CCharString(Name); }
 };
-struct CTCEntityEvents { union { unsigned char Events[0xc]; void* Align; }; };
+class CTCEntityEvents { public: union { unsigned char Events[0xc]; void* Align; }; };
 struct CThingNative {
     unsigned int UsingComponents[9];
     unsigned char LifeFlags;
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
 struct PointerView : CBaseIntelligentPointer {
     CThingNative* Get() const { return reinterpret_cast<CThingNative*>(GetPItem()); }
 };
-struct CSpawnedFuncBase { long LastScriptFrame; long CurrentScriptFrame; };
+class CSpawnedFuncBase { public: long LastScriptFrame; long CurrentScriptFrame; };
 struct ScriptBaseNative { CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { ScriptBaseNative* Script; };
 struct QuestManagerNative { ActiveQuest* PQuestCurrentlyRunning; };
@@ -62,7 +62,7 @@ struct CSpecialAbilityEvent : EventBase {
 };
 struct EventNode { EventNode* Next; EventNode* Previous; EventBase* Data; void* Info; };
 struct EventList { EventNode* Head; };
-struct CGameScriptThing { union { unsigned char PThing[sizeof(void*) * 2]; void* Align; }; };   // 8 bytes on x86
+class CGameScriptThing { public: union { unsigned char PThing[sizeof(void*) * 2]; void* Align; }; };   // 8 bytes on x86
 struct CGameScriptThingMethods : CGameScriptThing {
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& name) const;
 };

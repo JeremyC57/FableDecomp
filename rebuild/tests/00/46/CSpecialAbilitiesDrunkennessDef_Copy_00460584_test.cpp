@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CSpecialAbilitiesDrunkennessDef { int x; };
+class CSpecialAbilitiesDrunkennessDef { public: int x; };
 
 // Provide the extern callee so the test links.
 static int g_called = 0;

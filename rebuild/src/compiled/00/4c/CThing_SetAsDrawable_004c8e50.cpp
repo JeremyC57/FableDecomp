@@ -15,7 +15,7 @@
 //   `if (GetInterface(&tc, t)) tc->SetAsDrawable(drawable)` per interface -- the out-parameter lookup leaves the component
 //   in eax (`mov eax,[eax+4] ; push ebx ; mov ecx,eax`; a pointer-returning GetTC loads straight into ecx, GOTCHAS wave
 //   24k); the same-TU LowerBound stand-in lets VC7.1 put every key in the argument's slot (the argument lives in ebx).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -43,15 +43,15 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 #pragma auto_inline(on)
 
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAsChanged(unsigned long reasons);               // 0x004BF9E0
 };
 }
-struct CTCThingOwner { void SetAsDrawable(bool drawable); };                  // 0x0071B2D0 (interface 0x21)
-struct CTCCarrying { void SetAsDrawable(bool drawable); };                    // 0x006A1370 (interface 0x46)
-struct CTCEmoteIcon { void SetAsDrawable(bool drawable); };                   // 0x0071AC20 (interface 0x45)
-struct CTCParticleAttachmentTracker { void SetAsDrawable(bool drawable); };   // 0x0071A8A0 (interface 0xD8)
-struct CTCDParticleEmitter { void SetAsDrawable(bool drawable); };            // 0x006E1020 (interface 0x4B)
+class CTCThingOwner { public: void SetAsDrawable(bool drawable); };                  // 0x0071B2D0 (interface 0x21)
+class CTCCarrying { public: void SetAsDrawable(bool drawable); };                    // 0x006A1370 (interface 0x46)
+class CTCEmoteIcon { public: void SetAsDrawable(bool drawable); };                   // 0x0071AC20 (interface 0x45)
+class CTCParticleAttachmentTracker { public: void SetAsDrawable(bool drawable); };   // 0x0071A8A0 (interface 0xD8)
+class CTCDParticleEmitter { public: void SetAsDrawable(bool drawable); };            // 0x006E1020 (interface 0x4B)
 
 class CThing {
 public:

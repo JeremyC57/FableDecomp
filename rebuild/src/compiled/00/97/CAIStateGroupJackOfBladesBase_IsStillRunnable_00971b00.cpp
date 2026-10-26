@@ -6,7 +6,7 @@
 // Shape: two landed IS_THING_DEAD patterns (null, then the dead bit +0x91 & 1) around an IsStopping test, all
 // as nested ifs with ONE shared `xor al,al` tail and `mov al,1` on the success path. The engine header keeps
 // the pointers as opaque byte arrays, so the layout is modelled locally with their names.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -18,12 +18,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

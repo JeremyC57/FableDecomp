@@ -8,7 +8,7 @@ struct SCrimeDurationAndFine {
 };
 struct CCrimeMap { int entries; };
 static int g_order = 0; static bool g_ok = true;
-struct CPersistContext {
+class CPersistContext { public:
     void TransferMap(const char* name, CCrimeMap& value, const SCrimeDurationAndFine& defaultValue)
     {
         if (++g_order != 1 || std::strcmp(name, "RegionNamesToCrimeDurationAndFine") != 0 || defaultValue.Duration != 0 || defaultValue.Fine != 0) g_ok = false;
@@ -20,7 +20,7 @@ struct CPersistContext {
         value = 1;
     }
 };
-struct CTCHeroRememberCrimes {
+class CTCHeroRememberCrimes { public:
     CCrimeMap RegionNamesToCrimeDurationAndFine;
     signed char HasPaidTheFine;
     void OnSerialise(CPersistContext* context, long version)

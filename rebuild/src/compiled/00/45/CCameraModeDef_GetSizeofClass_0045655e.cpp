@@ -1,4 +1,4 @@
-struct CCameraModeDef;
+class CCameraModeDef;
 unsigned long __fastcall CCameraModeDef_GetSizeofClass(CCameraModeDef* self)
 {
     (void)self;

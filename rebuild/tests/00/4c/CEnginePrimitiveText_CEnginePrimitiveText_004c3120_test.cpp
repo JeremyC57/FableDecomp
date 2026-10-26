@@ -1,27 +1,27 @@
 // Behaviour test for 0x004C3120 (see src/004c3120.cpp): the constructor copied onto a portable model.
 #include <cstdio>
 #define CHECK(c) do { if (!(c)) { std::printf("004c3120_TEST FAIL\n"); return 1; } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { }
 };
-struct CRGBColour {                                      // D3DCOLOR byte order
+class CRGBColour { public:                                      // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) { }
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); }
 };
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     unsigned int Type;
     unsigned int InterpolationSet;
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;
@@ -39,9 +39,9 @@ static bool Col(const CRGBColour& c, unsigned char r, unsigned char g, unsigned 
 static bool Vec(const C3DVector& v, float x, float y, float z) { return v.X == x && v.Y == y && v.Z == z; }
 
 static int g_copies = 0;
-struct CWideString { const unsigned short* PStringData; CWideString(const unsigned short* s) : PStringData(s) { } CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_copies; } };
-struct CFontBank { int id; };
-struct CEnginePrimitiveText : CEnginePrimitive {
+class CWideString { public: const unsigned short* PStringData; CWideString(const unsigned short* s) : PStringData(s) { } CWideString(const CWideString& o) : PStringData(o.PStringData) { ++g_copies; } };
+class CFontBank { public: int id; };
+class CEnginePrimitiveText : public CEnginePrimitive { public:
     C3DVector Pos; float Scale; CRGBColour Colour; CWideString Text; CFontBank* PFont; bool ScaleIn3D;
     CEnginePrimitiveText(unsigned int, unsigned int, const C3DVector& p, float scale, const CWideString& t, const CFontBank& f, const CRGBColour& c, bool s3d, unsigned int interp)
         : CEnginePrimitive(5, interp), Pos(p), Scale(scale), Colour(c), Text(t), PFont(const_cast<CFontBank*>(&f)), ScaleIn3D(s3d) { }

@@ -8,8 +8,8 @@
 //   component's attitude word +0x18 (written directly: the inline CTCTalk::SetAttitude).
 // Shape: out-parameter GetInterface (component read back as `mov eax,[eax+4]`), then the inline CModeBase::OnDeactivate
 //   (`Active = false`) as the last statement.
-struct CCharString;
-struct CTCBase;
+class CCharString;
+class CTCBase;
 
 typedef long EConversationAttitude;
 
@@ -20,7 +20,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -39,13 +39,13 @@ struct CThing {
     }
 };
 
-struct CTCTalk {                             // interface 15
+class CTCTalk { public:                             // interface 15
     unsigned char _pad00[0x18];
     EConversationAttitude Attitude;          // +0x18
     void SetAttitude(EConversationAttitude attitude) { Attitude = attitude; }
 };
 
-struct CAnimFilterOfGroup {                  // vtable 0x01267568
+class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     virtual void v00();
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8

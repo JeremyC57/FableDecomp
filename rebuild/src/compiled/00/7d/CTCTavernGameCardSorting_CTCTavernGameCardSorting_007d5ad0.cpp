@@ -9,7 +9,7 @@
 //        released with no null test through the def's inline ReleaseTemporary().
 class CThing;
 
-struct CPrizeScoreDef { float Score; long Mult; };
+class CPrizeScoreDef { public: float Score; long Mult; };
 
 struct CRefCounted {
     long m_count;
@@ -20,7 +20,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad_0x08[0x16c];
     CPrizeScoreDef* PrizeScoresBegin;           // +0x174
     CPrizeScoreDef* PrizeScoresEnd;             // +0x178

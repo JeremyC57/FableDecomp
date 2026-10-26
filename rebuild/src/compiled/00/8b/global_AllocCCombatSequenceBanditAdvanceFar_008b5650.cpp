@@ -9,9 +9,9 @@
 // constructor, which only forwards both arguments to the base constructor @ 0x008B0AB0 and
 // installs this class's vtable (0x0127917C, named through rtti-vtables.tsv). Argument types
 // follow the base constructor's manifest prototype. One of 62 bodies of this shape.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];    // sizeof(CCombatSequenceBase) = sizeof(CCombatSequence_BanditAdvanceFar) = 0x28
     CCombatSequenceBase(CThingCreatureBase* first, CThingCreatureBase* second);   // 0x008B0AB0

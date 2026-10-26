@@ -40,7 +40,7 @@ struct CTCInventoryAbilities_Calls {
     long GetAbilityLevel(EHeroAbility ability) const;                                   // 0x005EE136
     long GetExperienceCostToUpgradeAbility(EHeroAbility ability, long levels, bool b);  // 0x005EE77C
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     SSpendInfoVector ExperienceSpendValuesStats;    // +0x1EC

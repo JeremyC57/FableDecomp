@@ -9,7 +9,7 @@ struct InnerVtbl {
 struct Inner {
     InnerVtbl* vptr;
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0x98];
     Inner* inner;
 };

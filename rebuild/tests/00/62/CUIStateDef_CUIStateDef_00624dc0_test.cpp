@@ -5,7 +5,7 @@ extern "C" void __cdecl free_stub(void* block) { g_freed[g_frees++ & 1] = block;
 #define free free_stub
 struct CFreeableBuffer { void* m_pData; ~CFreeableBuffer() { if (m_pData != 0) free(m_pData); } };
 struct CResource_Calls { virtual void v00() { } ~CResource_Calls() { ++g_rootDtors; } };
-struct CDefPointeeBase : CResource_Calls { virtual void v00() { } ~CDefPointeeBase() { } };
+class CDefPointeeBase : public CResource_Calls { public: virtual void v00() { } ~CDefPointeeBase() { } };
 #pragma pack(push, 1)
 struct CUIStateDef : CDefPointeeBase {
     unsigned char _pad0[0x29 - 0x04]; CFreeableBuffer m_buffer0; unsigned char _pad1[0x6c - 0x29 - 4]; CFreeableBuffer m_buffer1;

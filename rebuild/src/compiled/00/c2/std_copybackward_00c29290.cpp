@@ -13,7 +13,7 @@
 //   byte-identical body (EWeaponClass is a game enum, not a pool type).
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;                         // a pool block header (32 bytes)
+    class CHeader;                         // a pool block header (32 bytes)
 };
 
 extern "C" __declspec(dllimport) void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x01440144

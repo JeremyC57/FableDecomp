@@ -13,7 +13,7 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 template <class T> struct CAllocProxy {               // STLport _STLP_alloc_proxy<T*, T, allocator<T> >
     T* _M_data;
@@ -23,7 +23,7 @@ template <class T> struct CVector {                    // STLport vector, 12 byt
     T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-template <class K, class V> struct CVectorMap {        // retail 16 bytes
+template <class K, class V> class CVectorMap { public:        // retail 16 bytes
     CVector<V> Data;                                   // +0x00
     char       Compare;                                // +0x0c empty comparator
     bool       Dirty;                                  // +0x0d
@@ -31,9 +31,9 @@ template <class K, class V> struct CVectorMap {        // retail 16 bytes
 };
 
 namespace NParticleEngine {
-template <class A, class B> struct CParticleUpdateParamDesc { A Type; B Value; };
+template <class A, class B> class CParticleUpdateParamDesc { public: A Type; B Value; };
 
-template <class A, class B> struct CParticleUpdateParameters : CBase {     // vtable 0x0125FFDC, retail 0x24 bytes
+template <class A, class B> class CParticleUpdateParameters : public CBase { public:     // vtable 0x0125FFDC, retail 0x24 bytes
     CVectorMap<A, C3DVector>                         VectorParams;   // +0x04
     CVectorMap<A, CParticleUpdateParamDesc<A, B> >   UpdateParams;   // +0x14
     CParticleUpdateParameters();

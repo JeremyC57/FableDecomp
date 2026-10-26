@@ -17,7 +17,7 @@
 //          destructor releases without a null test after Terminate; the speech id is read once into a dead slot.
 // Layout: no engine header for this class; modelled locally like the landed OnReplace 0x0094BAD0 (next hawk frame
 //          +0x14, PStall +0x18); the sub-def's +0x2c speech id is descriptive.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,13 +34,13 @@ struct CHawkingDef : CDefPointee {
     unsigned char _pad08[0x2c - 0x08];
     unsigned long HawkSpeech;                   // +0x2c (descriptive)
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CHawkingDef>& out);   // 0x005130A0
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -55,7 +55,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHawkingDef>& out
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -80,15 +80,15 @@ struct CThing {
         return has;
     }
 };
-struct CTCShop {
+class CTCShop { public:
     void* __vftable;
     CThing* PThing;                             // +0x04
 };
-struct CTCShopKeeper {                          // interface 0x90
+class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
     void AcquireNewCustomer();                  // 0x00799900
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
@@ -102,18 +102,18 @@ struct CBaseIntelligentPointer {
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
-struct CThingCreatureBase;
-struct CAIBrain {
+class CThingCreatureBase;
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -188,8 +188,8 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = item; }
 void CBaseIntelligentPointer::v00() { }
 template <class T> void CIntelligentPointer<T>::v00() { }
-template struct CIntelligentPointer<const CThing>;
-template struct CIntelligentPointer<CThingCreatureBase>;
+template class CIntelligentPointer<const CThing>;
+template class CIntelligentPointer<CThingCreatureBase>;
 static CWorld g_world;
 CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
 static unsigned long g_seed;

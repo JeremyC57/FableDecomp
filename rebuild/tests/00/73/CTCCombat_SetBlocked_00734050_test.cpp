@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CTCBase { long m_frameCounter; };
+class CTCBase { public: long m_frameCounter; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned char m_thingType;
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -24,12 +24,12 @@ struct CThing {
     }
 };
 static long g_FramesPerSecond = 15;
-struct CThingCreatureBase { int id; };
-struct CCombatManager {
+class CThingCreatureBase { public: int id; };
+class CCombatManager { public:
     CThingCreatureBase* m_last; int m_count;
     void DeregisterCombatant_006ea430(CThingCreatureBase* creature) { m_last = creature; ++m_count; }
 };
-struct CTCCombat {
+class CTCCombat { public:
     CCombatManager* CombatManager; CThingCreatureBase* ParentCreature;
     void SetBlocked(CThing* blocker)
     {

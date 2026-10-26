@@ -10,11 +10,11 @@
 // pair<iterator,bool> temporary; `this` and the level counter live in the frame.
 namespace NThingMap {
 struct CTCMapwho;
-struct CMapwhoNode {
+class CMapwhoNode { public:
     CTCMapwho*   PThing;                        // +0x00
     CMapwhoNode* PNext;                         // +0x04
 };
-struct CThingMapCell {
+class CThingMapCell { public:
     CMapwhoNode* PFirstNode;
 };
 template<class T> struct CRetailVector {           // STLport vector: {start, finish, end_of_storage}
@@ -34,7 +34,7 @@ struct CTCMapwhoSet {                           // STLport set<CTCMapwho*>
     CInsertResult insert(CTCMapwho* const& value);   // 0x0085E140
 };
 extern long g_NoMapwhoLevels;                      // 0x013BA848
-struct CThingMap {
+class CThingMap { public:
     virtual void v00();
     CRetailVector<long>                          MapwhoLevelInfo;   // +0x04
     void*                                        Manager;           // +0x10

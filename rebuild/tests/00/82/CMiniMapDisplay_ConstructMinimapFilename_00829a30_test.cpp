@@ -10,8 +10,8 @@ static std::string SplitName(const std::string& path)
     return dot == std::string::npos ? name : name.substr(0, dot);
 }
 static std::string ToString(long value) { char buf[32]; std::sprintf(buf, "%ld", value); return buf; }
-struct CRegion { std::string Name; };
-struct CWorldMap {
+class CRegion { public: std::string Name; };
+class CWorldMap { public:
     long Current; CRegion Regions[3];
     long GetCurrentRegionIndex() const { return Current; }
     CRegion& GetRegion(long i) { return Regions[i]; }

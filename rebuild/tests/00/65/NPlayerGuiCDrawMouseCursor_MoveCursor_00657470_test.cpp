@@ -1,16 +1,16 @@
 // Behaviour test for NPlayerGui::CDrawMouseCursor::MoveCursor (0x00657470): scaled move (Y inverted) and clamping to
 // [0, screen size - cursor width] per axis.
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TopLeft, BottomRight; };
-struct CPlayerGuiDef { float MouseCursorScaleX, MouseCursorScaleY; long MouseCursorGraphic; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TopLeft, BottomRight; };
+class CPlayerGuiDef { public: float MouseCursorScaleX, MouseCursorScaleY; long MouseCursorGraphic; };
 static CPlayerGuiDef g_def;
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 struct CGraphicBank { virtual unsigned long GetGraphicWidth(long graphic) { return graphic == 5 ? 32 : 0; } };
-struct CPlayerGui { CGraphicBank* Bank; };
+class CPlayerGui { public: CGraphicBank* Bank; };
 static CPlayerGui* g_pPlayerGui;
 struct CScreen { C2DBoxF box; C2DBoxF GetScreenArea() const { return box; } };
-struct CMainGameComponent { CScreen* Screen; };
+class CMainGameComponent { public: CScreen* Screen; };
 struct CDrawMouseCursor {
     CMainGameComponent* Component; C2DVector Pos;
     void MoveCursor(const C2DVector& delta);

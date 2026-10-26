@@ -11,7 +11,7 @@ static SCriticalSection* g_deleted = 0;
 static void FreeBlock(void* p) { g_freed = p; g_freedAt = ++g_order; }
 static void DeleteSection(SCriticalSection* s) { g_deleted = s; g_deletedAt = ++g_order; }
 
-struct CBankFileAsync;
+class CBankFileAsync;
 
 template <class T> struct CRetailArray {
     T* first;
@@ -24,11 +24,11 @@ template <class T> struct CRetailArray {
     }
 };
 
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     virtual ~CFailedAllocationHandler() { }
 };
 
-struct CLoadingMemoryFailureHandler : CFailedAllocationHandler {
+class CLoadingMemoryFailureHandler : public CFailedAllocationHandler { public:
     CRetailArray<CBankFileAsync*> Banks;
     SCriticalSection              CriticalSection;
     ~CLoadingMemoryFailureHandler() { DeleteSection(&CriticalSection); }

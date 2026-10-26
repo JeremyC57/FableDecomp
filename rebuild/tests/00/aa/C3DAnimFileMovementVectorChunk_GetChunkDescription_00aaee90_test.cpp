@@ -11,7 +11,7 @@ public:
     int len;
 };
 
-struct C3DAnimFileMovementVectorChunk {
+class C3DAnimFileMovementVectorChunk { public:
     virtual ~C3DAnimFileMovementVectorChunk() {}
     virtual CCharString GetChunkDescription() const;
     int dummy;

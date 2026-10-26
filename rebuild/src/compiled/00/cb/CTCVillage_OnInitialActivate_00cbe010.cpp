@@ -6,7 +6,7 @@ struct Sub;
 // callee @ 0xcbdef0: __fastcall(this=ecx, edx arg, stack byte arg)
 extern "C" void __fastcall Sub_notify(Sub* self, int arg, unsigned char flag);
 
-struct CTCVillage {
+class CTCVillage { public:
     Sub*          field0;   // +0x00
     int           ParentThing;   // +0x04
     // +0x08 padding

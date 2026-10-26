@@ -34,12 +34,12 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;                    // +0x0c
     bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;                              // +0x00
     long             NoRefs;                            // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -57,12 +57,12 @@ struct CCharString {
 };
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -80,11 +80,11 @@ template <class T> struct CCountedPointer {
     }
 };
 struct CScriptThingImpl;
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
@@ -96,7 +96,7 @@ template <class T> struct vector {                      // STLport vector (retai
     T* _M_finish;
     T* _M_end_of_storage;
 };
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -112,7 +112,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();

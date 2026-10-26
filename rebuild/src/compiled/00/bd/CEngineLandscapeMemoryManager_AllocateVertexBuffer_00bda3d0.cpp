@@ -8,7 +8,7 @@
 // Stride +0x10, CompressionParams +0x14 (scale 1.0 x4, bias 0 x4); engine/CVertexBufferWin32.h only fixes the size.
 // Shape: inlined, the constructor stores the vtable BEFORE PVertexBuffer/Stride, so those two are body assignments of the most
 // derived constructor (in the base constructor body they land before the vtable store); ebx is the shared zero register.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
 };
 
@@ -35,7 +35,7 @@ struct CBase {                                     // the engine's polymorphic r
 };
 #include "engine/CVertexBufferWin32.h"             // PDB header: opaque flattened base, members modelled below
 struct IDirect3DVertexBuffer9;
-struct CVertexCompressionParams {                  // PDB: PosScale XYZW then PosBias XYZW
+class CVertexCompressionParams { public:                  // PDB: PosScale XYZW then PosBias XYZW
     float PosScaleX, PosScaleY, PosScaleZ, PosScaleW;
     float PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams()
@@ -62,7 +62,7 @@ struct CVertexBufferWin32_Retail : CVertexBufferBase {   // vtable 0x0129BA20
 };
 FABLE_STATIC_ASSERT(sizeof(CVertexBufferWin32_Retail) == sizeof(CVertexBufferWin32));
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void ProcessDisposalLists();                   // 0x00BDA150 (manifest "CDrawResourcePool_FlushCycle")
     CVertexBufferWin32_Retail* AllocateVertexBuffer(long owner, long type, long count, long stride, unsigned long usage);
 };

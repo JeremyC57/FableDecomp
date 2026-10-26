@@ -32,7 +32,7 @@ struct CChangingStateComponent_005383a4 {
 };
 
 namespace NUISystem {
-struct CList : CChangingStateComponent_005383a4 {
+class CList : public CChangingStateComponent_005383a4 { public:
     void AddChildDynamically(CComponent_005383a4* child);
 };
 }

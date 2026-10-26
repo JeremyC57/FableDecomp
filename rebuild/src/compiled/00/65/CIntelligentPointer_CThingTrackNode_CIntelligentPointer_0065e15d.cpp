@@ -4,17 +4,17 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065E15D, 31 bytes.
 #include <stddef.h>
 #pragma optimize("s", on)   // size-optimised TU: push dword ptr [esp+8]
-struct CBaseObject;
-struct CThingTrackNode;
+class CBaseObject;
+class CThingTrackNode;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseIntelligentPointer();                           // 0x00A01B10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);                    // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                                  // this instantiation's own vtable
     CIntelligentPointer(T* item);
 };
 template <class T> CIntelligentPointer<T>::CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-template struct CIntelligentPointer<CThingTrackNode>;
+template class CIntelligentPointer<CThingTrackNode>;

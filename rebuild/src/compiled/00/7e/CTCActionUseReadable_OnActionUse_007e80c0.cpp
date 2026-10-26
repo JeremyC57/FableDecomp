@@ -23,12 +23,12 @@ class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CWideString {
+class CWideString { public:
     void* PString;
     bool operator!=(const wchar_t* text) const;    // 0x0099B150
     ~CWideString();                                // 0x0099B510
 };
-struct CReadableDef {
+class CReadableDef { public:
     unsigned char _pad00[0x25];
     bool UseInfoDisplay;                           // +0x25
 };

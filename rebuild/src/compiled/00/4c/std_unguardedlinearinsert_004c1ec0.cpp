@@ -15,7 +15,7 @@ struct CMeshInfo {                        // NGraphicAppearance::CMeshInfo (Ego_
     unsigned char PrimaryMesh : 1;        // +0x08 bit 0
 };
 
-struct CSortPrimaryMeshesFirst {          // 4-byte comparator slot passed by value
+class CSortPrimaryMeshesFirst { public:          // 4-byte comparator slot passed by value
     void* m_context;
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return a.PrimaryMesh; }
 };

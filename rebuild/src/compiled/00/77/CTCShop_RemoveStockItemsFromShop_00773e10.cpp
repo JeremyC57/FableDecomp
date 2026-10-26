@@ -9,21 +9,21 @@
 // Shape: HasTC then the one-ternary GetTC into a named owner (kept in ebp); the stock def out pointer is zeroed through the
 // zero register and released only on the alive path (its scope is the inner block); the thing's def is fetched into a local
 // before the out pointer is pushed.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
 };
-struct CStockItemDef : CDefBase { };
-struct CDefClassBase : CDefBase {
+class CStockItemDef : public CDefBase { public: };
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_0059350c(CDefPointer<CStockItemDef>& out);   // 0x0059350C
 };
 void* FindDef_CDefClassBase_GetSubDef_0059350c_0();   // stand-in callee of the stand-in body below
@@ -64,7 +64,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -92,7 +92,7 @@ struct CObjectNode {                                    // STLport list node of 
     CObjectNode* _M_prev;
     CBaseIntelligentPointer _M_data;                    // +0x08
 };
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool ToBeRemoved;                                   // +0x08
@@ -100,7 +100,7 @@ struct CTCThingOwner {
     unsigned char _pad0a[2];
     CObjectNode* ObjectList;                            // +0x0c (header node)
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     void SetStockState(long state);                     // 0x00773C00

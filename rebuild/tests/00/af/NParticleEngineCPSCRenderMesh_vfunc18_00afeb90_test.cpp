@@ -6,15 +6,15 @@
 // this model follows PDB CPSCRenderMesh's 100-byte field layout and packed unsigned
 // bit units. Assignment order was transcribed from the retail field loads.
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v000() {}
     CParticleSystem* ParticleSystem;
     bool UpdateStarted : 1;
     bool Initialised : 1;
 };
 struct CRGBColour { unsigned int Colour; };
-struct CPSCRenderMesh : CPSCBase {
+class CPSCRenderMesh : public CPSCBase { public:
     unsigned int BankIndex;
     unsigned int TrailBankIndex;
     CRGBColour TrailStartColour, TrailMidColour, TrailEndColour;

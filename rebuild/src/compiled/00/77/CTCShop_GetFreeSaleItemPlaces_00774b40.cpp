@@ -16,7 +16,7 @@
 //   pointer is loaded once after the loop and kept in ebp across the return copy for the free, as retail's LTCG did.
 class CThing;
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct GoodsPlace {                                 // CTCShop::GoodsPlace, 36 bytes
     C3DVector     Position;                         // +0x00
     unsigned char _pad0c[0x24 - 0x0c];
@@ -66,29 +66,29 @@ void CGoodsPlaceVector::push_back(const GoodsPlace& place)
         _M_insert_overflow(_M_finish, place, 1, true);
 }
 #pragma auto_inline(on)
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) {}
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Position;
     float     Range;
     CThingFilter_In2DRange(const C3DVector& position, float range) : Position(position), Range(range) {}
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* PA;
     const B* PB;
     CFilter_Bind2(const A& a, const B& b) : PA(&a), PB(&b) {}
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>& filter, CThing** out);   // 0x00777000
 };
-struct CWorld {
+class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* PThingSearchTools;           // +0x20
     CThingSearchTools* GetThingSearchTools() const { return PThingSearchTools; }
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing*           ParentThing;                  // +0x04 (CTCBase)
     unsigned char     _pad08[0x28 - 0x08];

@@ -3,7 +3,7 @@
 // sprint continues while frames remain; a new sprint needs more frames than fps * recharge seconds.
 long g_FramesPerSecond = 15;
 bool g_SprintEnabled = true;
-struct CHeroSpecialMovementDef { float MinSprintRechargeSeconds; };
+class CHeroSpecialMovementDef { public: float MinSprintRechargeSeconds; };
 struct CTCHeroSpecialMovement_Retail {
     bool Sprinting;
     float SprintFramesRemaining;

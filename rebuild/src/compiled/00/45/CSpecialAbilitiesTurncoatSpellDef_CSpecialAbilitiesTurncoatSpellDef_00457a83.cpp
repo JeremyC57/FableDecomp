@@ -8,7 +8,7 @@
 // from +0x40, 144 bytes) shifted to the retail build (def root ends at +0x3c, 12-byte retail vectors).
 // Shape: `xor eax,eax` before the vtable store, the vtable store before fifteen `mov [esi+N],eax`: each
 // vector is a member object with an inline constructor.
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
@@ -22,7 +22,7 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesTurncoatSpellDef : CParentDefClassBase {
+class CSpecialAbilitiesTurncoatSpellDef : public CParentDefClassBase { public:
     CRetailVector<float> StaminaCostPerSec;         // +0x3c
     CRetailVector<float> ResistanceDamagePerSec;    // +0x48
     CRetailVector<float> TurncoatTime;              // +0x54

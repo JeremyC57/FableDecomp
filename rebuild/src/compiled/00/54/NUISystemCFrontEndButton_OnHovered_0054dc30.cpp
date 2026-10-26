@@ -24,7 +24,7 @@ namespace NUISystem {
 enum EEvent { EVENT_DUMMY = 0 };
 // Local models: rebuild/include/engine/CObserver.h / CHoverable.h are flattened PODs (`void* __vftable`)
 // that cannot carry the virtual dispatch these bodies make, and CComponent is quarantined.
-struct CComponent {
+class CComponent { public:
  virtual void Slot000()=0;
  virtual void Update(float); // slot 1 (+0x4)
  virtual void Slot002()=0; virtual void Slot003()=0; virtual void Slot004()=0; virtual void Slot005()=0; virtual void Slot006()=0; virtual void Slot007()=0;
@@ -61,7 +61,7 @@ struct CComponent {
 };
 // CObserver: secondary base at +4 (vtable 0x01249530 for CFrontEndButton): slot 1 ProcessEvent,
 // slot 3 ObserveEvent, slot 4 IgnoreEvent; EventsToObserve set + PreventObservation.
-struct CObserver {
+class CObserver { public:
  virtual void Slot0() = 0;
  virtual void ProcessEvent(EEvent);   // slot 1
  virtual void Slot2() = 0;
@@ -69,15 +69,15 @@ struct CObserver {
  virtual void IgnoreEvent(EEvent);    // slot 4 (+0x10)  0x0055BD50 (CHoverable override)
  unsigned char ObserverData[0x10];   // retail CObserver is 0x14 bytes (CClickable's third vptr sits at +0x18)
 };
-struct CChangingStateComponent : CComponent, CObserver {
+class CChangingStateComponent : public CComponent, public CObserver { public:
  void Initialise();                   // 0x0052C730
 };
-struct CClickable : CChangingStateComponent {
+class CClickable : public CChangingStateComponent { public:
  void Initialise();                   // 0x0055AC90
  void ProcessEvent(EEvent);           // 0x0055AD60 (CObserver-subobject `this`)
 };
 // CFrontEndButton (primary vtable 0x01249554, observer vtable 0x01249530). Retail offsets.
-struct CFrontEndButton : CClickable {
+class CFrontEndButton : public CClickable { public:
  unsigned char _pad18[0x30 - 0x18];
  float CurrentTime;                   // +0x30  component clock
  unsigned char _pad34[0x160 - 0x34];

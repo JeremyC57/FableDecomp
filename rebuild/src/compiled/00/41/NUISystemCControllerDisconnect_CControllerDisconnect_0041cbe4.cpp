@@ -24,7 +24,7 @@ struct CComponentBase3_Retail {                // base at +0x18
     virtual void v00();
 };
 
-struct CChangingStateComponent : CComponentRoot_Retail, CComponentBase2_Retail, CComponentBase3_Retail {
+class CChangingStateComponent : public CComponentRoot_Retail, public CComponentBase2_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];         // +0x1c..+0x15c
     CChangingStateComponent(long state);       // 0x0052CC50
 };

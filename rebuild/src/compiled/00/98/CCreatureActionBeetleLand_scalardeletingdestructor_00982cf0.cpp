@@ -1,4 +1,4 @@
-struct CCreatureAction_BeetleLand {
+class CCreatureAction_BeetleLand { public:
     void* vftable;
 };
 

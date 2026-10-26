@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cmath>
 
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -18,9 +18,9 @@ struct C3DVector {
 static float g_Epsilon = 1e-4f;
 static long g_framesPerSecond = 30;
 static float GFFloatRandom(float range, unsigned long* seed) { (void)seed; return range * 0.5f; }   // fixed: 0.25
-struct CThingCreatureBase { C3DVector Pos; const C3DVector& GetPosition_004c73d0() const { return Pos; } };
-struct CWorld { unsigned long Seed; unsigned long* GetRandomSeed() { return &Seed; } };
-struct CAttackingCombatantInfo { bool PreferredAttackDollySet; long PreferredAttackDollyTimer; C2DVector PreferredAttackDollyVector; };
+class CThingCreatureBase { public: C3DVector Pos; const C3DVector& GetPosition_004c73d0() const { return Pos; } };
+class CWorld { public: unsigned long Seed; unsigned long* GetRandomSeed() { return &Seed; } };
+class CAttackingCombatantInfo { public: bool PreferredAttackDollySet; long PreferredAttackDollyTimer; C2DVector PreferredAttackDollyVector; };
 struct CCombatantInfo { CThingCreatureBase* Parent; CAttackingCombatantInfo AttackerInfo; };
 struct CCombatWheel { void ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCombatantInfo* defender, const C3DVector* position); };
 

@@ -24,7 +24,7 @@ struct CRGBColour {                         // 4 bytes: B, G, R, A
 };
 struct C2DVector { float X, Y; };
 enum EStateChangeType { STATE_CHANGE_NONE };
-struct CUIState {                           // Ego_r.pdb 36 bytes
+class CUIState { public:                           // Ego_r.pdb 36 bytes
     unsigned long    StateChangeFlag;       // +0x00
     EStateChangeType StateChangeType;       // +0x04
     C2DVector        Position;              // +0x08

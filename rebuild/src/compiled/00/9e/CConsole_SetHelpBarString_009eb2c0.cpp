@@ -24,7 +24,7 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
 
 extern const char g_emptyText_0129aaf4[];  // 0x0129AAF4 ("", CCharString's empty text)
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                    // +0
     unsigned long StringLength;             // +4
 };
@@ -53,7 +53,7 @@ public:
 };
 extern CCharString g_CCharString_013caa48;  // 0x013CAA48 ("(")
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     virtual ~CBaseClass();                  // 0x0099A2E0
 };
@@ -61,7 +61,7 @@ struct CStringParserCommentList {           // retail std::list<CStringParserCom
     void* m_pHead;
     ~CStringParserCommentList();            // 0x004046B0
 };
-struct CStringParser : CBaseClass {         // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:         // retail 0x28 bytes
     char*                    String;        // +0x04
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;      // +0x0c
@@ -81,7 +81,7 @@ public:
     const CCharString& GetString() const;   // 0x009B9880
     const CCharString& GetSymbol() const;   // 0x009B9870
 };
-struct CConsoleInputBase {
+class CConsoleInputBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

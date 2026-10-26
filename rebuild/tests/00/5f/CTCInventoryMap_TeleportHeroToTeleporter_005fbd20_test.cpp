@@ -1,8 +1,8 @@
 // Behaviour test for 0x005FBD20 CTCInventoryMap::TeleportHeroToTeleporter
 #include <cstdio>
 static int g_teleports = 0;
-struct CTCTeleporter { void TeleportHero() { ++g_teleports; } };
-struct CThing {
+class CTCTeleporter { public: void TeleportHero() { ++g_teleports; } };
+class CThing { public:
     unsigned int m_presentBits[9]; CTCTeleporter* tc; unsigned char IsDead;
     bool GetInterface(CTCTeleporter** out, long t)
     {

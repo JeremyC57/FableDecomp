@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeScreamerAggressive::FrameUpdate (retail 0x008DA610): while the target is alive, a
 // screamer with a look component (interface 0x43) looks at the target's position (priority 0x67); then the base update.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,13 +54,13 @@ struct CThingLookup {
         return false;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing : CThingLookup {
+class C3DVector { public: float X, Y, Z; };
+class CThing : public CThingLookup { public:
     unsigned char m_flags91;
     C3DVector Position;
     const C3DVector& GetPosition() const { return Position; }
 };
-struct CTCLook : CTCBase {
+class CTCLook : public CTCBase { public:
     const C3DVector* At;
     long Priority;
     void LookAtPos(const C3DVector* position, long priority) { At = position; Priority = priority; }

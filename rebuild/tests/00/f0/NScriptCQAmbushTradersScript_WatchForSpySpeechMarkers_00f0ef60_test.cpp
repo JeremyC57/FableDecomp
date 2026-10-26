@@ -11,8 +11,8 @@ static long g_timer = -1;
 static bool g_near = true;
 static bool* g_enable = 0;
 static int test_rand() { static const int seq[] = { 3, 3, 1, 4, 4, 2 }; return seq[g_randSeq++ % 6]; }
-struct CScriptThing { bool spy; bool IsAlive() const { return !spy || g_frames < g_spyDiesAt; } };
-struct CGameScriptInterface {
+class CScriptThing { public: bool spy; bool IsAlive() const { return !spy || g_frames < g_spyDiesAt; } };
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; if (g_frames % 2 == 1) *g_enable = true; }   // the timer thread raises the flag
     CScriptThing& GetHero() { return hero; }

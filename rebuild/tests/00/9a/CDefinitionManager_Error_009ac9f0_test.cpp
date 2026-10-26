@@ -1,7 +1,7 @@
 // Behaviour test for CDefinitionManager::Error (0x009AC9F0): the callback receives "<file>(<line + 1>) : error : <message>".
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char text[128];
     CCharString() { text[0] = 0; }
     CCharString(const char* t) { std::strcpy(text, t); }
@@ -11,7 +11,7 @@ struct CCharString {
 static CCharString operator+(const CCharString& l, const CCharString& r) { CCharString s(l.text); std::strcat(s.text, r.text); return s; }
 static CCharString operator+(const CCharString& l, const char* r) { CCharString s(l.text); std::strcat(s.text, r); return s; }
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
-struct CStringParser { CCharString Filename; CCursorPos CursorPos; };
+class CStringParser { public: CCharString Filename; CCursorPos CursorPos; };
 static char g_reported[128]; static int g_calls = 0;
 static void ReportError(const CCharString& t) { ++g_calls; std::strcpy(g_reported, t.text); }
 class CDefinitionManager {

@@ -6,32 +6,32 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #define __forceinline inline
 #endif
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t = "") : text(t) { }
     CCharString(const CCharString& o) : text(o.text) { }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     int value;
     int merges;
     CBrainOutput() : value(0), merges(0) { }
     void Merge(const CBrainOutput& other) { value = other.value; ++merges; }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long frame;
     unsigned long GetWorldFrame() const { return frame; }
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     u64 UpdateOffset;
     unsigned char CreatureFlags;
     bool ready;
     bool IsReadyForBrain() const { return ready; }
 };
-struct CBrainUpdateZone {
+class CBrainUpdateZone { public:
     unsigned long UpdatePeriod;
     unsigned long PriorityCheckPeriod;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CCharString Name;
     bool Terminated;
     unsigned char Priority;
@@ -45,7 +45,7 @@ struct CAIStateGroupBase {
     void Reset() { ++resets; Terminated = false; }
     void Stop() { ++stops; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     CMainGameComponent* Component;
     CThingAICreature* Creature;
     int groupCount;

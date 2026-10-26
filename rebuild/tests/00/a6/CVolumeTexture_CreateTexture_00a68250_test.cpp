@@ -2,7 +2,7 @@
 #include <cstring>
 struct IDirect3DDevice9 { int id; };
 struct CRenderSystem { IDirect3DDevice9* m_pDevice; };
-struct CSystemManager { CRenderSystem* m_pRender; };
+class CSystemManager { public: CRenderSystem* m_pRender; };
 static IDirect3DDevice9 g_device; static CRenderSystem g_render; static CSystemManager g_system;
 CSystemManager* GFGetSystemManager() { g_render.m_pDevice = &g_device; g_system.m_pRender = &g_render; return &g_system; }
 struct IDirect3DVolumeTexture9 { int id; };
@@ -17,8 +17,8 @@ long D3DXCreateVolumeTexture(IDirect3DDevice9* device, unsigned long w, unsigned
 struct C3DVectorI { long X, Y, Z; };
 struct SPixelFormatInfo { long d3dFormat; long rest[8]; };
 static SPixelFormatInfo g_pixelFormatInfo[3] = { { 21, {0} }, { 22, {0} }, { 50, {0} } };
-struct CPixelFormat { long m_format; };
-struct CVolumeTexture {
+class CPixelFormat { public: long m_format; };
+class CVolumeTexture { public:
     IDirect3DVolumeTexture9* m_pTexture; long m_format; long m_levels;
     bool CreateTexture(const C3DVectorI& size, unsigned long mipLevels, unsigned long usage, const CPixelFormat& format, long pool, long)
     {

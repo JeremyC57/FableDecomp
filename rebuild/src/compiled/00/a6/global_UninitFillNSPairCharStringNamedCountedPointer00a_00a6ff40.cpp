@@ -15,12 +15,12 @@
 // 0x00A6FE70 (the {long, {CCharString, CCountedPointer}} twins), with the key copy now a call.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 

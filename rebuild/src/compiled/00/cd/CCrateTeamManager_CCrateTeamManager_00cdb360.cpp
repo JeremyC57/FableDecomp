@@ -59,7 +59,7 @@ struct CScriptThing_Retail : CBase {           // vtable 0x01238C8C; layout as e
     CScriptThing_Retail() : CBase(), PImp() { }
 };
 
-struct CTimer {
+class CTimer { public:
     long TimerIndex;
     CTimer() : TimerIndex(g_pThingManager_0143e8f8->CreateTimer()) { }
 };

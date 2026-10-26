@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CThing;
+class CThing;
 
 extern void* __fastcall Sub_GetManager(void* self);
 extern CThing* __fastcall Sub_ResolveHero(void* mgr);

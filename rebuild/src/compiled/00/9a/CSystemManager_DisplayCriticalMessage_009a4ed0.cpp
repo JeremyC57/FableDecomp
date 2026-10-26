@@ -25,7 +25,7 @@ public:
     CWideString ToWideString() const;              // 0x0099E480
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     void DisplayCriticalMessage(const char* message);   // `this` unused
 };
 

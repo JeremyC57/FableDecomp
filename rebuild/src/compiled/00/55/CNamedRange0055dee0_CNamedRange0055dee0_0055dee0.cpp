@@ -6,12 +6,12 @@
 // wide string, char string, long -1 (retail stores each -1 right after the preceding
 // constructor call, i.e. initialiser order, not body assignments). The manifest label
 // (CAIStateGroup_BalverineCornered ctor) is propagated garbage; the class is named by shape.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                          // 0x0099AED0
 };
 
-struct CCharString {
+class CCharString { public:
     char* m_pData;
     CCharString();                          // 0x0099E4B0
 };

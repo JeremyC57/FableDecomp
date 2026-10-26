@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_strDtors = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* t) : m_pData(t) { }
     CCharString(const CCharString& o) : m_pData(o.m_pData) { }
@@ -14,16 +14,16 @@ struct CCharString {
 static char g_log[32];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     const char* Def; long State;
     virtual void Reset() { Log('r'); }
     virtual void ChangeState(long state) { State = state; Log('s'); }
 };
 static CComponent g_made[4]; static int g_count = 0; static bool g_lastFlag = true;
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b) { g_lastFlag = b; g_made[g_count].Def = definition.m_pData; Log('c'); return &g_made[g_count++]; }
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
 };
 }
@@ -53,11 +53,11 @@ template <class T> struct CRetailVector {
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     void* ParentThing;
 };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;
     CRetailVector<NUISystem::CComponent*> Components;
     bool Quitting;

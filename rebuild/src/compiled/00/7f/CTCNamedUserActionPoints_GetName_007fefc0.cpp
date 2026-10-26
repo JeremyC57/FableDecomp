@@ -1,9 +1,9 @@
-struct CCharString {
+class CCharString { public:
     char* p;
     void Assign(const CCharString& src);
 };
 
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     char pad[0x34];
     CCharString* arr;
     void GetName(long index, CCharString* out);

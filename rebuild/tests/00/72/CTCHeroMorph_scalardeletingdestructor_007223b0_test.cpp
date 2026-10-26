@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void* vftable;
     int destroyed;
 };

@@ -12,14 +12,14 @@
 // engine/CIEngine.h is a flattened PDB POD (no virtuals), so the engine interface is modelled locally.
 struct CLongSet;                               // std::set<long>
 
-struct CEngineTextureMorphSet { unsigned char _body[4]; };
+class CEngineTextureMorphSet { public: unsigned char _body[4]; };
 
 struct CMeshMorphSet {
     unsigned char _meshParts[0xc];             // +0x00 CArray<CMeshMorphSetParts> (12-byte retail CArray)
     CEngineTextureMorphSet OriginalMeshTextureMorphs;   // +0x0c
 };
 
-struct CIEngine {
+class CIEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -35,7 +35,7 @@ struct CIEngine {
 
 extern bool g_bTextureMorphsEnabled;           // 0x0137573E
 
-struct CTCAppearanceMorphBase {
+class CTCAppearanceMorphBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

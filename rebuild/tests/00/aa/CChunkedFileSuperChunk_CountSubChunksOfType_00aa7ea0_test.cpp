@@ -1,8 +1,8 @@
 // Behaviour test for 0x00AA7EA0 CChunkedFileSuperChunk::CountSubChunksOfType: known chunks of the code; counted copies balanced.
 #include <cstdio>
 #include <cstring>
-struct CChunkedFileSuperChunk;
-struct CDataOutputStream {
+class CChunkedFileSuperChunk;
+class CDataOutputStream { public:
     unsigned char buf[256]; long pos; long end;
     CDataOutputStream() : pos(0), end(0) { std::memset(buf, 0, sizeof(buf)); }
     void SetPosition(long p) { pos = p; }
@@ -10,7 +10,7 @@ struct CDataOutputStream {
     void Write(const void* d, long n) { std::memcpy(buf + pos, d, n); pos += n; if (pos > end) end = pos; }
     void WriteLong(long v) { int x = (int)v; Write(&x, 4); }
 };
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     long unknown; long bodySize;
     char ChunkType[5];
     CChunkedFileSuperChunk* Parent;
@@ -33,7 +33,7 @@ struct CChunkRef {
     ~CChunkRef() { if (Count) --Count->m_references; }
     CChunkedFileChunk* operator->() const { return Object; }
 };
-struct CChunkedFileSuperChunk {
+class CChunkedFileSuperChunk { public:
     CChunkArray SubChunks;
     long CountSubChunksOfType(const char* type) const
     {

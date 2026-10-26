@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 struct Info { long RefCount; };
-struct CLevelLoader;
+class CLevelLoader;
 struct CObject {
     const CLevelLoader* PLevelLoader;
     int adds;
@@ -16,7 +16,7 @@ struct CP {
     CObject* operator->() const { return Data; }
 };
 struct Node { Node* next; Node* prev; CP value; };
-struct CLevelLoader {
+class CLevelLoader { public:
     Node* head;
     CLevelLoader() { head = (Node*)std::malloc(sizeof(Node)); head->next = head->prev = head; }
     ~CLevelLoader() { Node* n = head->next; while (n != head) { Node* x = n->next; std::free(n); n = x; } std::free(head); }

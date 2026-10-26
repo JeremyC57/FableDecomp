@@ -1,4 +1,4 @@
-struct CAIScratchpadDef {
+class CAIScratchpadDef { public:
     void* vftable;
 };
 

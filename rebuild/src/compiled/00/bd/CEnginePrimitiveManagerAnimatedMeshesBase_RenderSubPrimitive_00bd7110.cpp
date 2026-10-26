@@ -15,8 +15,8 @@
 // the eight argument pushes; the cloth primitive is reached through the counted pointer's `operator->` (a direct
 // `.Data->` read loads the index into edx instead of eax).
 
-struct C3DAnimationBlendState { unsigned long m_a, m_b; };     // 8 bytes (PDB)
-struct C3DClothPrimitive {
+class C3DAnimationBlendState { public: unsigned long m_a, m_b; };     // 8 bytes (PDB)
+class C3DClothPrimitive { public:
     unsigned char _pad00[0xc];
     unsigned long SimulationIndex;                       // +0x0c
 };
@@ -25,7 +25,7 @@ struct C3DClothPrimitivePointer {                         // CCountedPointer<C3D
     void*              Info;
     C3DClothPrimitive* operator->() const { return Data; }
 };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     unsigned char             _pad00[0x20];
     C3DClothPrimitivePointer* ClothPrimitives;           // +0x20 CArray data
 };
@@ -46,7 +46,7 @@ public:
     CEngineSimulationBase* FindSimulation(unsigned long index);   // 0x00B812C0
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh {
+class CEngineInternalPrimitiveAnimatedMesh { public:
     unsigned char                   _pad00[0x2c];
     long                            InterpolationSet;    // +0x2c
     unsigned char                   _pad30[0x30];

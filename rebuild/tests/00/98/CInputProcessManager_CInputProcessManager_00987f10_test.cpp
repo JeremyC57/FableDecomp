@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CInputProcessManager { void* vtbl; };
+class CInputProcessManager { public: void* vtbl; };
 static int g_sub=0, g_base=0;
 static CInputProcessManager* g_last_sub=0;
 static CInputProcessManager* g_last_base=0;

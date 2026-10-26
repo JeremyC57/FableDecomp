@@ -10,7 +10,7 @@
 // RequestActivate 0x0056A860).
 // Shape: nested ifs; the inner else clears ActivationRequested; the Close call is the last statement
 // so it becomes the sibling-call jmp with the global loaded into ecx.
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void SetAutomaticCameraControl();                       // 0x00699090
 };
 

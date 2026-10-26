@@ -43,9 +43,9 @@ struct CModePointer {                       // CCountedPointer<CTCCreatureModeMa
     }
 };
 
-struct CThing;
+class CThing;
 
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

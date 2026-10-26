@@ -16,7 +16,7 @@ public:
     void Uninitialise();                           // 0x009F9F70
 };
 
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     void FreeTexture(CTexture* texture);
 };
 

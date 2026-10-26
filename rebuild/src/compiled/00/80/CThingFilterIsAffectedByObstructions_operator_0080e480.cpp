@@ -6,7 +6,7 @@
 // virtual slot 1 (`call [edx+4]`, a type id).
 // Layout: interface 0x31 -> bitset word 1 (+0x24) bit 17 (`test dword ptr [eax+24h],20000h`).
 // Shape: `if (GetInterface && obj->Type() == 0x5F) return false; return true;` -- both exits are byte constants.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44

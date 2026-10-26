@@ -4,12 +4,12 @@
 #include <new>
 static int g_rootCalls = 0, g_componentCalls = 0;
 struct CEngineRoot_0099a2f0 { virtual void v00() { } CEngineRoot_0099a2f0() { ++g_rootCalls; } };
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void v00() { }
     long GlobalPointerAddress; bool m_enabled; bool KeepAlive;
     CEngineComponent() : GlobalPointerAddress(0), m_enabled(true), KeepAlive(false) { ++g_componentCalls; }
 };
-struct CEngineInternalAttachedPrimitiveInfo { long m_words[3]; };
+class CEngineInternalAttachedPrimitiveInfo { public: long m_words[3]; };
 template <class T> struct CRetailSTLportList {
     struct SNode { SNode* next; SNode* prev; T value; };
     SNode* m_node;
@@ -22,7 +22,7 @@ template <class T> struct CRetailSTLportList {
         m_node = node;
     }
 };
-struct CEnginePrimitiveAttachmentManager : CEngineRoot_0099a2f0, CEngineComponent {
+class CEnginePrimitiveAttachmentManager : public CEngineRoot_0099a2f0, public CEngineComponent { public:
     CRetailSTLportList<CEngineInternalAttachedPrimitiveInfo> AttachedPrimitives;
     virtual void v01() { }
     CEnginePrimitiveAttachmentManager() { }

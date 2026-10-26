@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test: CTCCarriedActionUseSpade::IsThingAbleToDig -- false when standing on a thing; else the strongest engine theme under the creature must resolve to a def whose material def is diggable; every def reference taken is released.
 #define CHECK(c) if (!(c)) { std::printf("007f0300_TEST FAIL\n"); return 1; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_live = 0;
 struct CDef { long RefCount; long MaterialDef; bool IsDiggable; void Release() { if (--RefCount == 0) --g_live; } };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
@@ -18,7 +18,7 @@ static bool GetDef(long index, CDefPointer<CDef>* out)
     out->Object = &g_defs[index];
     return true;
 }
-struct CThing { CThing* StandingOn; C3DVector Position; long Theme; };
+class CThing { public: CThing* StandingOn; C3DVector Position; long Theme; };
 static long GetStrongestEngineThemeAt(const CThing& c, long* weight) { *weight = 1; return c.Theme; }
 static bool IsThingAbleToDig(const CThing& creature)
 {

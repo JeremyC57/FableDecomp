@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x00807B70: STLport remove_copy_if over 28-byte CTargetPoints, dropping the live, non-null
 // things that are not enemies of the predicate's thing.
-struct CThing { unsigned char Dead : 1; int team; };
+class CThing { public: unsigned char Dead : 1; int team; };
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     CThing* m_pItem;
@@ -9,11 +9,11 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

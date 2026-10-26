@@ -15,7 +15,7 @@ struct SVolumeParams {
     }
 };
 
-struct CMusicManager {
+class CMusicManager { public:
     unsigned char _pad00[0x14];
     unsigned long m_dirtyFlags;                    // +0x14
     void SetVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value);

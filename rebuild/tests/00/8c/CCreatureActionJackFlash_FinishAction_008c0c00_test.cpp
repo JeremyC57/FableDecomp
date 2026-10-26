@@ -1,7 +1,7 @@
 // Behaviour test for 0x008C0C00 CCreatureAction_JackFlash::FinishAction: a flagged target gets a flash mode pushed on the
 // creature (aimed at the target, reference-counted correctly), a player creature has its animation suspended.
 #include <cstdio>
-struct CThing;
+class CThing;
 static int g_modes = 0;
 struct CMode { CThing* owner; CThing* target; int refs; CMode(CThing* o) : owner(o), target(0), refs(0) { ++g_modes; } ~CMode() { --g_modes; } void SetTarget(CThing* t) { target = t; } };
 struct CModePtr {
@@ -12,7 +12,7 @@ struct CModePtr {
     CMode* operator->() const { return object; }
 };
 struct CModes { CModePtr* held; int count; void AddMode(CModePtr m) { delete held; held = new CModePtr(m); ++count; } };
-struct CThing {
+class CThing { public:
     unsigned char type; unsigned char flags; CModes modes; bool suspended;
     void SetSuspendAnimation(bool s, long) { suspended = s; }
     bool GetModes(CModes** out) { *out = &modes; return true; }

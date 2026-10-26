@@ -17,7 +17,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CScriptThing {                                       // 12 bytes
+class CScriptThing { public:                                       // 12 bytes
     void* _vptr;
     void* m_pObject;
     void* m_pCount;
@@ -80,7 +80,7 @@ template <class T> struct CRetailVector {        // retail vector: begin, end, c
     void push_back(const T& value);              // 0x00568850 (float instance)
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

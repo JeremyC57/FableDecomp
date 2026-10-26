@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long m_position; const unsigned char* m_pData; long m_remaining;
     void Read(void* buffer, long size)
     {
@@ -11,8 +11,8 @@ struct CMemoryDataInputStream {
     }
 };
 template <class T> void TransferIn(CMemoryDataInputStream& s, T& out) { T v; s.Read(&v, sizeof(v)); out = v; }
-struct CDefString { int TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TransferIn(*s, TablePos); } };
-struct CCombatAbilityData {
+class CDefString { public: int TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TransferIn(*s, TablePos); } };
+class CCombatAbilityData { public:
     int PercentageChance; float SecondsDuration; float SecondsToWaitBeforeRepeat; CDefString Anim;
     void TransferBinaryIn(CMemoryDataInputStream& stream, CCombatAbilityData&)
     {

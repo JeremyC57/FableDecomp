@@ -11,7 +11,7 @@
 // Shape: STLport's explicit pair copy constructor builds the by-value `*i` in the argument area (`sub esp,10h ; mov
 // esi,esp`): the key string, then the nested second's implicit memberwise copy (two dwords and the string), its
 // sources read through a second induction pointer at the inner string (`lea ebx,[edi+0Ch]`, `[ebx-8]`, `[ebx-4]`).
-struct CCharString {
+class CCharString { public:
     void* m_pData;                                      // shared string block
     CCharString(const CCharString& other);              // 0x0099EC30
 };

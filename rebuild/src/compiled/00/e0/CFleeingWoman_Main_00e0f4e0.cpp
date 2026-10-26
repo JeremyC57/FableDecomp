@@ -1,8 +1,8 @@
 // CFleeingWoman::Main() -- fleeing-woman entity script
 // Leaf: ?Main@CFleeingWoman@@
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -11,7 +11,7 @@ struct CScriptThingImp {
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void t000();
     CScriptThingImp* PImpData;
     void* PImpInfo;
@@ -20,12 +20,12 @@ struct CScriptThing {
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_MOVE_DEFAULT };
-struct CBaseObject {
+class CBaseObject { public:
     virtual void b000();
     void* IntelligentPointer;
     CBaseObject();                                     // 0x0099A380
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     void* PImpData;
     void* PImpInfo;
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
@@ -45,7 +45,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
     virtual void NewScriptFrame() const;                                             // slot 7
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8
@@ -60,7 +60,7 @@ struct CGameScriptInterface {
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xe44];
     long  WomanFleeTriggerDistance;                    // +0xe44
     long  WomanFleeTalkDistance;                       // +0xe48
@@ -73,7 +73,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;
     CScriptThing          Me;

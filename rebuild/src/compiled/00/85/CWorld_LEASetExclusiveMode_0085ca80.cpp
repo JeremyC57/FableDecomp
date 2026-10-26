@@ -19,7 +19,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -29,9 +29,9 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CMainGameComponent { void SetExclusiveMode(bool exclusive); };   // 0x004163B7
+class CMainGameComponent { public: void SetExclusiveMode(bool exclusive); };   // 0x004163B7
 
-struct CWorld {
+class CWorld { public:
     void*               __vftable;                 // +0x00
     unsigned char       _base_0x04[0x4];
     CMainGameComponent* Component;                 // +0x08

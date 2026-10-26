@@ -16,7 +16,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy
 };

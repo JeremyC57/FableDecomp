@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CLandscapeLayerMesh {
+class CLandscapeLayerMesh { public:
     void* vtbl;
     void* pParam;
     int BackgroundTextureIndex; int BumpMapTextureIndex; int f10; int ForegroundTexture; int BackgroundTexture; int BumpMap;

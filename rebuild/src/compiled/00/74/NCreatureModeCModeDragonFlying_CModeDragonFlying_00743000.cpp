@@ -11,7 +11,7 @@
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                  // 0x0099EAE0
 };
@@ -24,7 +24,7 @@ struct SCountBlock {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                    // +0x00
     SCountBlock* m_pBlock;                           // +0x04
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }
@@ -42,17 +42,17 @@ struct CCountedPointer {
     }
 };
 
-struct CAnimFilterBase {                             // vtable 0x0122FFCC
+class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }
 };
 
-struct CAnimFilterOfGroup : CAnimFilterBase {        // vtable 0x01267568 (not stored by the implicit destructor)
+class CAnimFilterOfGroup : public CAnimFilterBase { public:        // vtable 0x01267568 (not stored by the implicit destructor)
     CCharString   Group;                             // +4
     unsigned long GroupCRC;                          // +8
 };
 
-struct CThing;
+class CThing;
 struct CModeBase {                                   // CTCCreatureModeManager::CModeBase, vtable 0x012673CC
     virtual void v00();
     CThing*            ParentThing;                  // +0x04
@@ -62,17 +62,17 @@ struct CModeBase {                                   // CTCCreatureModeManager::
     ~CModeBase() { }
 };
 
-struct CCreatureActionBase;
-struct C3DVector { float x, y, z; };
+class CCreatureActionBase;
+class C3DVector { public: float x, y, z; };
 
-template <class T> struct CArray {                   // retail CArray is 0x0c: data, size, capacity
+template <class T> class CArray { public:                   // retail CArray is 0x0c: data, size, capacity
     T*   m_pData;
     long m_size;
     long m_capacity;
     ~CArray() { if (m_pData) free(m_pData); }
 };
 
-struct CCardinalSpline {                             // retail 0x14
+class CCardinalSpline { public:                             // retail 0x14
     CArray<C3DVector> ControlPoints;                 // +0
     float             Tension;                       // +0xc
     bool              EndPointsConnected;            // +0x10

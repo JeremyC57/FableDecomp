@@ -16,26 +16,26 @@
 //          `do frame while (!done)`); the sound index is `rand() % size()` with the vector size as a pointer difference.
 // Layout: Ego_r.pdb CAS_Ambusher (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14,
 //          PMasterData +0x18. CScriptThing per the landed script model (CBaseClass + CCountedPointer, 12 bytes).
-struct CCharString {                                     // 4 bytes: the shared string block pointer
+class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CDefString {                                      // 4 bytes: a def-side string
+class CDefString { public:                                      // 4 bytes: a def-side string
     void* PStringData;
     operator CCharString() const;                        // 0x00415D70
 };
 extern "C" int __cdecl rand();                           // 0x00BFEB16 (MSVCR71)
 
-struct CCPPointerInfo;                                   // CCountedPointer's shared block
-template <class T> struct CCountedPointer {               // destroyed by the out-of-line ~CScriptThing here
+class CCPPointerInfo;                                   // CCountedPointer's shared block
+template <class T> class CCountedPointer { public:               // destroyed by the out-of-line ~CScriptThing here
     T*              Data;
     CCPPointerInfo* Info;
 };
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing();                                     // 0x004AA840 (both exits call it)
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const; virtual void v06() const; virtual void v07() const; virtual void v08() const;
@@ -52,7 +52,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -148,7 +148,7 @@ struct CGameScriptInterface {
     virtual unsigned long PlaySoundOnThing(const CScriptThing& thing, const CCharString& sound) const;   // slot 690 (+0xac8)
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x2c0];
     CDefString* AS_AmbushSoundsBegin;                    // +0x2c0 vector<CDefString> (retail STLport, 12 bytes)
     CDefString* AS_AmbushSoundsEnd;                      // +0x2c4

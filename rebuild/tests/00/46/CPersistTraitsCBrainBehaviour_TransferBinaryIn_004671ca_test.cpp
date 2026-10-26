@@ -8,7 +8,7 @@
 typedef long long __int64;
 #endif
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* __vftable;
     long  position;
     long  sourceLength;
@@ -46,7 +46,7 @@ public:
     long Index;
     void TransferBinaryIn(CMemoryDataInputStream& stream) { ++g_nameReads; g_nameStream = &stream; Index = 500 + g_nameReads; }
 };
-struct CBrainBehaviour { CDefString Name; long Priority; long ScriptAIPriority; };
+class CBrainBehaviour { public: CDefString Name; long Priority; long ScriptAIPriority; };
 
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<long> {

@@ -25,7 +25,7 @@ static int fails = 0;
 // same-TU noinline stand-ins (both take addresses by const reference) that forward to the retail addresses. Without
 // them the tag gets its own frame word. The pushed element is a temporary CIntelligentPointer built as in the landed
 // CThingGameObject::OnCreate (base constructor, derived vtable, SetPItem), destroyed through the base.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -70,9 +70,9 @@ __declspec(noinline) void CPeopleVector::push_back(const CIntelligentPointerThin
 }
 #pragma auto_inline(on)
 
-struct CScriptConversationManager;
+class CScriptConversationManager;
 
-struct CScriptConversation {
+class CScriptConversation { public:
     CScriptConversationManager* Manager;            // +0x00
     long                        ConversationIndex;  // +0x04
     CPeopleVector               PeopleInConversation;   // +0x08 (retail STLport, 12 bytes)
@@ -87,7 +87,7 @@ void CScriptConversation::AddPersonToConversation(CThing& person)
 }
 
 // ---- stubs and driver ----
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_finds = 0, g_pushes = 0;
 void CBaseIntelligentPointer::v00() { }
 void CIntelligentPointerThing::v00() { }

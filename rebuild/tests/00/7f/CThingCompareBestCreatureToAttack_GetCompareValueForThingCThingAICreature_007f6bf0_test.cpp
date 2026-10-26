@@ -1,24 +1,24 @@
 // behaviour test for CThingCompare_BestCreatureToAttack::GetCompareValueForThing<CThingAICreature> (0x007F6BF0): 1/(sqrt(2D dist)+1) and the four weights
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} float GetLength() const { return (float)std::sqrt(Y * Y + X * X); } };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {} float GetLength() const { return (float)std::sqrt(Y * Y + X * X); } };
+class CThing { public:
     unsigned long ThingTypeFlags; C3DVector m_pos;
     virtual ~CThing() {}
     const C3DVector& GetPosition() const { return m_pos; }
 };
 template<class T> inline bool IsThingOfType(const CThing* const& thing) { unsigned long mask = T::ThingTypeMask; return (thing->ThingTypeFlags & mask) == mask; }
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct CIntelligentPointer { CThingCreatureBase* m_p; CThingCreatureBase* GetTypedItem() const { return m_p; } };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool m_player, m_combatant; CIntelligentPointer PLastAttackedByCreature;
     virtual bool IsPlayer() const { return m_player; }
     bool IsCombatant() { return m_combatant; }
     CThingCreatureBase* GetLastAttackedByCreature() const { return PLastAttackedByCreature.GetTypedItem(); }
 };
-struct CThingAICreature : CThingCreatureBase { enum { ThingTypeMask = 8 }; };
-struct CThingCompare_BestCreatureToAttack {
+class CThingAICreature : public CThingCreatureBase { public: enum { ThingTypeMask = 8 }; };
+class CThingCompare_BestCreatureToAttack { public:
     CThingCreatureBase* Targeter; CThing* PCurrentBestTargetForAttack;
     float PreferPlayerWeight, PreferNonCombatantsWeight, PreferLastAttackerWeight, PreferCurrentBestEnemyWeight;
     template<class T> float GetCompareValueForThing(T* thing) const

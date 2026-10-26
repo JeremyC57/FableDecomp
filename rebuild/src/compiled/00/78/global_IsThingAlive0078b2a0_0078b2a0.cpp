@@ -9,7 +9,7 @@
 // and its dead bit (bit 0 of the byte at +0x91) decides; the nested-if form keeps both tests as
 // branches with the shared false tail at the end. Fastcall: the reference in ecx. The manifest
 // label is propagated; the thing class is opaque. One of 7 bodies of this shape.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                 // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }

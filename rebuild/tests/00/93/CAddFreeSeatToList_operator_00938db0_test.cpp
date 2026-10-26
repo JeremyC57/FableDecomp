@@ -13,7 +13,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __forceinline inline
 #define __declspec(x)
 #endif
-struct CTCBase;
+class CTCBase;
 // A thing's component table: the presence bitset at +0x20 (bit N of dword N/32) and the sorted {type, component}
 // CVectorMap at +0x44 searched by LowerBound (non-const copy 0x0040F020, const copy 0x004365B0).
 struct CInterfaceMap {

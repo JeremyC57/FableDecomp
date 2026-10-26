@@ -58,8 +58,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -67,8 +67,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -162,10 +162,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -189,15 +189,15 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -254,7 +254,7 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -278,10 +278,10 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     void*                                       __vftable;   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                               _pad_0x04[0x4]; // +0x04
     CScriptGameResourceObjectScriptedThingBase* PImp_Data;   // +0x08 CCountedPointer<CScriptGameResourceObjectScriptedThingBase>::Data
@@ -301,17 +301,17 @@ FABLE_STATIC_ASSERT(offsetof(CScriptGameResourceObjectScriptedThingBase, PImp_In
 #define __forceinline inline __attribute__((always_inline))
 #define __fastcall
 #endif
-struct C3DVector;
+class C3DVector;
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();}; //004ABE90/004AA840 genuine copy/release, field-free native projection
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
-struct CBaseObject {CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
-struct CCPPointerInfo;
+class CBaseObject { public:CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
+class CCPPointerInfo;
 enum EScriptEntityMoveType { ScriptMoveDefault=0 };enum ETextGroupSelectionMethod { TextGroupDefault=0 };
-struct CScriptGameResourceObjectBase:CBaseObject{virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
-struct CScriptGameResourceObjectScriptedThingBase:CScriptGameResourceObjectBase {
+class CScriptGameResourceObjectBase:public CBaseObject{ public:virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
+class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase { public:
  CScriptGameResourceObjectScriptedThingBase* PImp_Data;CCPPointerInfo* PImp_Info;
  __forceinline CScriptGameResourceObjectScriptedThingBase():PImp_Data(0),PImp_Info(0){}
  virtual ~CScriptGameResourceObjectScriptedThingBase(); //007E74D0 ordinary shared resource cleanup
@@ -359,8 +359,8 @@ struct GameScriptCalls:CGameScriptInterface {
 extern "C" int rand(); //00BFEB16
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float); //00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing&,float,bool,bool); //00CBE716
-struct CEntityScriptBase {void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();}; //00F35B10/00F35B30
-namespace NScript{struct CQ_EndGameFocalSitesScript{struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
+class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();}; //00F35B10/00F35B30
+namespace NScript{class CQ_EndGameFocalSitesScript{ public:struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
 void NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main(){
  SetPredicate(CIsThingAlive(Me));Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
  rand();CScriptGameResourceObjectScriptedThingBase resource;
@@ -378,7 +378,7 @@ static int termAt,termCalls,nearCount,distanceCalls,frames,fadeCalls;
 static char trace[256];static int traceN;static const CScriptThing* expectedMe;static CScriptThing hero;
 static NScript::CPredicateBase* storedPredicate;
 static void Add(char c){trace[traceN++]=c;trace[traceN]=0;}
-struct CCPPointerInfo{unsigned long refs;void(__fastcall* DeleteFunc)(void*);void* Data;};
+class CCPPointerInfo{ public:unsigned long refs;void(__fastcall* DeleteFunc)(void*);void* Data;};
 ScriptThingCopy::ScriptThingCopy(const CScriptThing& other){__vftable=other.__vftable;PImp_Data=other.PImp_Data;PImp_Info=other.PImp_Info;if(PImp_Info)++PImp_Info->refs;++copies;}
 ScriptThingCopy::~ScriptThingCopy(){if(PImp_Info)--PImp_Info->refs;++destroys;}
 bool NScript::CIsThingAlive::operator()()const{return Thing.PImp_Data!=0;}

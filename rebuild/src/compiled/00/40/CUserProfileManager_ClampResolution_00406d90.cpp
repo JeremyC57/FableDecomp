@@ -8,12 +8,12 @@
 // local and is stored back only when the loop ran. Elements are reached as `*(begin() + n)` (STLport operator[]).
 // The while condition is a __forceinline member with early returns (IsModeWiderThan): that keeps the loop UNROTATED
 // (`cmp ; jle ; dec ; sub ; jmp` back) like retail; a plain `DisplayModes[index].Dimensions.X > maxWidth` gets rotated.
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X;
     long Y;
 };
 
-struct CDisplayModeDesc {
+class CDisplayModeDesc { public:
     C2DExtentsI Dimensions;   // +0x00
     long BitsPerPixel;        // +0x08
     long RefreshRate;         // +0x0c
@@ -29,7 +29,7 @@ struct CRetailVector {        // STLport vector: three pointers, 12 bytes
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x80];
     CRetailVector<CDisplayModeDesc> DisplayModes;   // +0x80
     void ClampResolution(unsigned long* resolution, long maxWidth);

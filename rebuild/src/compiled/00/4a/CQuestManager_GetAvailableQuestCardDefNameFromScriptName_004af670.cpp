@@ -9,10 +9,10 @@
 // local declared before the loop is scheduled above the test; a read inside the loop is re-done per iteration);
 // the node's name on the left of the compare (`cmp eax,esi`), `neg ; sbb ; inc` for `Compare == 0`;
 // the found exit returns `&node->DefName` (`lea eax,[edi+8]`).
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
@@ -40,7 +40,7 @@ struct CQuestCardNode {
     CQuestCard      value;                     // +0x08
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char   _pad_0x00[0x58];
     CQuestCardNode* AvailableQuestCardTypes;   // +0x58 list<CQuestCard> (head node)
     const CCharString& GetAvailableQuestCardDefNameFromScriptName(const CCharString& scriptName) const;

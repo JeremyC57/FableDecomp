@@ -11,9 +11,9 @@
 // Shape: two vtable stores = the derived store, then the inline (empty) destructor of the polymorphic
 // intermediate CDataStream (vtable 0x0129A69C) after the member destructor, then the root base's
 // out-of-line destructor.
-struct CAFile;
+class CAFile;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0

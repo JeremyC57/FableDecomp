@@ -2,7 +2,7 @@
 // null outputs are skipped.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char buf[300]; int assigns; CCharString() : assigns(0) { buf[0] = 0; }
+class CCharString { public: char buf[300]; int assigns; CCharString() : assigns(0) { buf[0] = 0; }
     CCharString& operator=(const char* t) { std::strcpy(buf, t); ++assigns; return *this; } };
 static void FakeSplit(const char* path, char* drive, char* dir, char* fname, char* ext)
 {

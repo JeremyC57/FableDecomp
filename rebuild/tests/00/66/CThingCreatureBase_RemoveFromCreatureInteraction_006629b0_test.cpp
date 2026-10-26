@@ -1,8 +1,8 @@
 // Behaviour test for CThingCreatureBase::RemoveFromCreatureInteraction (0x006629B0)
 #include <cstdio>
-struct CThingCreatureBase;
+class CThingCreatureBase;
 static int g_destroyed = 0;
-struct CCreatureInteraction {
+class CCreatureInteraction { public:
     CThingCreatureBase* m_removed;
     void RemoveParticipant(CThingCreatureBase& creature) { m_removed = &creature; }
 };
@@ -29,7 +29,7 @@ struct CInteractionPointer {
     }
     CCreatureInteraction* operator->() const { return m_pObject; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CInteractionPointer m_creatureInteraction;
     void RemoveFromCreatureInteraction()
     {

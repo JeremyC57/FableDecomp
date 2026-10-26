@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptInterface;
+class CGameScriptInterface;
 long g_bettingAmount = 0;
 
 long __fastcall CGameScriptInterface_GetBettingAmount(CGameScriptInterface* self)

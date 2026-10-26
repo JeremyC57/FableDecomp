@@ -17,7 +17,7 @@ struct CCountedPointer_CSkeletalMorph {
     }
 };
 
-struct CTCSkeletalMorph {
+class CTCSkeletalMorph { public:
     unsigned char                  _pad[0xc];
     bool                           m_dirty;            // +0x0c
     unsigned char                  _pad0d[0xf];

@@ -31,7 +31,7 @@ struct CTCMap_Retail {                             // the thing's component map 
         return it->m_pTC;
     }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -61,12 +61,12 @@ struct _List_node {
 struct CAgentLists_Retail {                        // STLport list<vector<const CSteeringAgent*>*>: the sentinel node pointer
     _List_node* _M_node;
 };
-struct CNavigatorExternalInterface {               // vtable 0x01241D74
+class CNavigatorExternalInterface { public:               // vtable 0x01241D74
     virtual void v00();
     virtual ~CNavigatorExternalInterface() {}
     static CAgentLists_Retail AgentLists;          // 0x013D2834 (the agent vectors of every live ground navigator)
 };
-struct CGroundNavigatorExternalInterface : CNavigatorExternalInterface {   // vtable 0x0125EC9C
+class CGroundNavigatorExternalInterface : public CNavigatorExternalInterface { public:   // vtable 0x0125EC9C
     CThingCreatureBase* Creature;                  // +0x04
     float               Radius;                    // +0x08
     __forceinline CSteeringAgentVector* GetPNavigatorObstacles()   // inline twin of 0x006CD7B0

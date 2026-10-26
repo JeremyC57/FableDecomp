@@ -55,7 +55,7 @@ template <class T> struct CRetailList {                 // STLport list: the hea
     }
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long mode);                            // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790

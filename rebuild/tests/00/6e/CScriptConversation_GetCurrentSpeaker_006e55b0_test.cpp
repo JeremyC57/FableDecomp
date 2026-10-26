@@ -3,7 +3,7 @@
 struct Entry8 { int a; int b; };
 struct SpeakerRec { int index; int pad[3]; };
 
-struct CScriptConversation {
+class CScriptConversation { public:
     char pad0[8];
     Entry8*    entries;
     char pad2[8];

@@ -14,7 +14,7 @@ struct CEngineRenderers { unsigned char _pad[0x2c]; IWeatherOverride* m_pWeather
 struct CEngineGlobals { unsigned char _pad[0x28]; CEngineRenderers* m_pRenderers; };
 static CEngineGlobals* g_pEngineGlobals = 0;
 static inline IWeatherOverride* GetWeatherOverride() { return g_pEngineGlobals->m_pRenderers->m_pWeather; }
-struct CEnvironment { unsigned char _pad0[0x45]; bool RainEnabled;
+class CEnvironment { public: unsigned char _pad0[0x45]; bool RainEnabled;
     void SetRainEnabled(bool enabled) { if (enabled) GetWeatherOverride()->SetRainOverride(-1.0f); else GetWeatherOverride()->SetRainOverride(0.0f); RainEnabled = enabled; } };
 int main()
 {

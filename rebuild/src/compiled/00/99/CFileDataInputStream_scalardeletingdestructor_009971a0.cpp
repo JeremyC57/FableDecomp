@@ -10,7 +10,7 @@
 // the same offsets. Shape: the destructor body calls the virtual Close(), which VC7.1 binds
 // statically inside a destructor; the intermediate CDataStream's inline destructor stores its
 // vtable (0x0129A69C) before the root base's out-of-line destructor.
-struct CAFile;
+class CAFile;
 
 namespace N_0099a300 { struct CBase {                                     // root polymorphic base
     CBase();
@@ -22,7 +22,7 @@ struct CDataStream : CBase {                       // vtable 0x0129A69C
     virtual ~CDataStream() { }
 };
 
-struct CFileDataInputStream : CDataStream {        // vtable 0x0129A728
+class CFileDataInputStream : public CDataStream { public:        // vtable 0x0129A728
     unsigned char  _pad_0x04[0x14];                // +0x04
     CAFile*        File;                           // +0x18
     unsigned char* Buffer;                         // +0x1c

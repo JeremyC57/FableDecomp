@@ -4,19 +4,19 @@
 #include <cstdio>
 #include <list>
 
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     bool alive;
     bool killed;
     C3DVector pos;
-    struct CTCDummyVillager* dummy;     // interface 0xD6 (0 = absent)
+    class CTCDummyVillager* dummy;     // interface 0xD6 (0 = absent)
     int decriminalised;                 // interface 0x4F present when >= 0
     void Kill(bool) { killed = true; alive = false; }
 };
 static bool IS_THING_ALIVE(CThing* t) { return t && t->alive; }
 
-struct CTCVillage;
-struct CTCDummyVillager {
+class CTCVillage;
+class CTCDummyVillager { public:
     bool enabled;
     bool Guard;
     CThing* creature;
@@ -26,7 +26,7 @@ struct CTCDummyVillager {
     void CreateVillager(CTCVillage*, const C3DVector& p, bool) { ++created; createdAt = p; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     CThing* ParentThing;
     std::list<CThing*> VillageDummies, VillagePeople;
     int crimesCleared;

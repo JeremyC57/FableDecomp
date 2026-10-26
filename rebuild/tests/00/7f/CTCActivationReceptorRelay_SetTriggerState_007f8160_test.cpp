@@ -2,8 +2,8 @@
 #include <cmath>
 // Behaviour test: CTCActivationReceptorRelay::SetTriggerState -- forwards the state to the parent thing's activation trigger.
 #define CHECK(c) if (!(c)) { std::printf("007f8160_TEST FAIL\n"); return 1; }
-struct CTCActivationTrigger { int calls; bool last; void OnTriggerActivate(bool s) { ++calls; last = s; } };
-struct CThing { CTCActivationTrigger* Trigger; void GetTC(CTCActivationTrigger** out) { *out = Trigger; } };
+class CTCActivationTrigger { public: int calls; bool last; void OnTriggerActivate(bool s) { ++calls; last = s; } };
+class CThing { public: CTCActivationTrigger* Trigger; void GetTC(CTCActivationTrigger** out) { *out = Trigger; } };
 struct CTCActivationReceptorRelay {
     CThing* ParentThing;
     void SetTriggerState(bool state) { CTCActivationTrigger* trigger; ParentThing->GetTC(&trigger); trigger->OnTriggerActivate(state); }

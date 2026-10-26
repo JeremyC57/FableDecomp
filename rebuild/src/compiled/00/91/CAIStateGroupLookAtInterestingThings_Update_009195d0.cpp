@@ -12,12 +12,12 @@
 // edi and its count release is inline at each exit (null test only where the def was never dereferenced); the def class is
 // held in a local before the call; the look loop uses `== 4 continue; break` so it is not rotated.
 // Layout: CCreatureNavigationDef AvoidDynamicObstacles +0x34 (Ego_r.pdb), count at +4; CThing PhysicsTC +0x70 (retail).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CCreatureNavigationDef {
+class CCreatureNavigationDef { public:
     virtual void v00();
     virtual void DeleteThis();                  // slot 1
     long RefCount;                              // +0x04
@@ -31,7 +31,7 @@ struct CDefPointerNavigation {                  // CDefPointer<const CCreatureNa
     ~CDefPointerNavigation() { if (m_p) m_p->Release(); }
     CCreatureNavigationDef* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerNavigation* out) const;   // 0x006CD2F0 (GetSubDef<CCreatureNavigationDef>)
 };
 #pragma auto_inline(off)
@@ -43,7 +43,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerNavigation* out) c
     return out->m_p != 0;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x70];
     CDefClassBase* PhysicsTC;                   // +0x70
     unsigned char _pad74[0x91 - 0x74];
@@ -59,16 +59,16 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // <CThing>: vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <CThing>: vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

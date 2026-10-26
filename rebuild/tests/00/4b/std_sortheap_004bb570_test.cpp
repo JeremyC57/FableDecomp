@@ -21,7 +21,7 @@ static bool StrLess(const CCharString& a, const CCharString& b) { return std::st
 
 namespace NQuestManager {
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;
         CCharString PersistScript;
     };

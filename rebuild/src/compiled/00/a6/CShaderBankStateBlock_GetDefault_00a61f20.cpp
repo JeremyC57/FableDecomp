@@ -16,7 +16,7 @@ enum EShaderTarget {
     SHADER_TARGET_DEFAULT = 0
 };
 
-struct CBankStateBlock {
+class CBankStateBlock { public:
     virtual void CreateCRC();                    // slot 0
     virtual void GetDefault(CBankStateBlock& block);   // slot 1
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing { int x; };
+class CThing { public: int x; };
 static CThing* g_by = 0;
 struct Task { bool avail; virtual void v00(){} virtual void v04(){} virtual void v08(){} virtual void v0c(){} virtual bool IsAvailable() { return avail; }
     virtual void v14(){} virtual void v18(){} virtual void v1c(){} virtual void SetAcceptedBy(CThing* t) { g_by = t; } };

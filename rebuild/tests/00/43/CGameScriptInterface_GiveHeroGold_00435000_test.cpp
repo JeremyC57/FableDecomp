@@ -1,7 +1,7 @@
 // Behaviour test for 0x00435000 CGameScriptInterface::GiveHeroGold.
 #include <cstdio>
 struct CTCHeroMoney { int gold; void GiveGold(int a) { gold += a; } };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9]; CTCHeroMoney* money; unsigned char m_statusFlags;
     template<class T> bool GetInterface(T** ppOut, int type)
     {
@@ -9,9 +9,9 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer { CThing* c; CThing* GetControlledCreature() { return c; } };
-struct CPlayerManager { CPlayer* p; CPlayer* GetMainPlayer() const { return p; } };
-struct CGameScriptInterface {
+class CPlayer { public: CThing* c; CThing* GetControlledCreature() { return c; } };
+class CPlayerManager { public: CPlayer* p; CPlayer* GetMainPlayer() const { return p; } };
+class CGameScriptInterface { public:
     CPlayerManager* PlayerManager;
     void GiveHeroGold(int amount)
     {

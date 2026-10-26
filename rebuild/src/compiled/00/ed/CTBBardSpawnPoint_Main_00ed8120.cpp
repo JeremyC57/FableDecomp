@@ -10,22 +10,22 @@
 // locals ("TB_Bard" built first, so it sits above the def name), the returned CScriptThing is a frame temporary whose
 // inline destructor (vtable store, counted release, zero stores, ~CBaseClass) runs after the inlined PImp
 // assignment of the compiler-generated CScriptThing::operator=.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CCPPointerInfo {                                  // CCountedPointer's shared block
+class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 
-struct CScriptThing;
+class CScriptThing;
 struct CCountedScriptImp {                               // CCountedPointer<CScriptThing>
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -62,11 +62,11 @@ struct CCountedScriptImp {                               // CCountedPointer<CScr
     }
 };
 
-struct CBaseClass {                                      // polymorphic root of the script handles
+class CBaseClass { public:                                      // polymorphic root of the script handles
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedScriptImp PImp;                              // +0x04 Data, +0x08 Info
     virtual ~CScriptThing() {}
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const;
@@ -76,7 +76,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
 
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
-struct CGameScriptInterface {                            // retail vtable 0x01260F0C
+class CGameScriptInterface { public:                            // retail vtable 0x01260F0C
     VF10(00) VF10(01) VF10(02) VF10(03) VF10(04) VF10(05) VF10(06) VF10(07) VF10(08)
     VF(090)
     virtual CScriptThing CreateCreature(const CCharString& defName, const C3DVector& position,
@@ -88,7 +88,7 @@ struct CV_TalentlessBardScript {
     CScriptThing  stBard;                                // +0x54 (PDB +0x68)
 };
 
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void v00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08

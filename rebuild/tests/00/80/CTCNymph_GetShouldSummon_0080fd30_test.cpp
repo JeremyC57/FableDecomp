@@ -1,8 +1,8 @@
 // Behaviour test for CTCNymph::GetShouldSummon @ 0x0080FD30: ready, has the summon component, positive count.
 #include <cstdio>
-struct CTCAISummon { long count; long GetMaxCreatureCount() { return count; } };
+class CTCAISummon { public: long count; long GetMaxCreatureCount() { return count; } };
 struct SEntry { long type; void* component; };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     SEntry* first; SEntry* last;
     SEntry* LowerBound(long type) { SEntry* p = first; while (p != last && p->type < type) ++p; return p; }
@@ -17,7 +17,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCNymph {
+class CTCNymph { public:
     CThing* ParentThing;
     bool ReadyToSummon;
     bool GetShouldSummon()

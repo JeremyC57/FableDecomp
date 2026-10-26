@@ -6,14 +6,14 @@
 static int g_blendCopies = 0;
 static int g_rebalances = 0;
 struct CBlendVector { int tag; CBlendVector(int t) : tag(t) {} CBlendVector(const CBlendVector& o) : tag(o.tag) { ++g_blendCopies; } };
-struct CEngineTextureDecal { int OriginalTextureIndex; int DecalID; CBlendVector OverlaidBlends; CEngineTextureDecal(int k, int d) : OriginalTextureIndex(k), DecalID(d), OverlaidBlends(d) {} };
+class CEngineTextureDecal { public: int OriginalTextureIndex; int DecalID; CBlendVector OverlaidBlends; CEngineTextureDecal(int k, int d) : OriginalTextureIndex(k), DecalID(d), OverlaidBlends(d) {} };
 struct SValue { const int first; CEngineTextureDecal second; SValue(int k, int d) : first(k), second(k, d) {}
                 SValue(const SValue& o) : first(o.first), second(o.second) {} };
 struct SNodeBase { int color; SNodeBase* parent; SNodeBase* left; SNodeBase* right; };
 struct SNode : SNodeBase { SValue value; };
 static void Rebalance(SNodeBase*, SNodeBase*&) { ++g_rebalances; }
 
-struct CMap {
+class CMap { public:
     SNodeBase* header; unsigned int count;
     SNode* create(const SValue& v) { SNode* t = (SNode*)std::malloc(sizeof(SNode)); new (&t->value) SValue(v); return t; }
     SNodeBase* insert(SNodeBase* x, SNodeBase* y_, const SValue& v, SNodeBase* w)

@@ -12,7 +12,7 @@
 // PlayerManager +8); the perception component's two flags +0x2d/+0x2e (descriptive).
 // Shape: frame-pointer size TU; the hero and each thing are named locals bound by reference to IS_THING_ALIVE (kept in the frame and
 // re-read for the relation tests); the count before the interface test is kept in a local; the component lookup is one ternary.
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
@@ -42,7 +42,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     mutable CPresenceBits m_present;               // +0x20
     unsigned char _pad1[0x23];
@@ -56,8 +56,8 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingCreatureBase : public CThing { public: };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0 / 0x00436380
 void* FindRef_free_IS_THING_ALIVE_2();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
@@ -80,10 +80,10 @@ template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing)   // 
     return false;
 }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetControlledCreature(); // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
 };
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
@@ -117,7 +117,7 @@ __declspec(noinline) bool __fastcall AreThingsAllies(const CThing* a, const CThi
 }
 #pragma auto_inline(on)
 
-struct CTCPerceiveThing {                          // the thing's interface 0x34
+class CTCPerceiveThing { public:                          // the thing's interface 0x34
     unsigned char _pad[0x2d];
     bool          PerceivesHostile;                // +0x2d
     bool          PerceivesSomething;              // +0x2e
@@ -149,7 +149,7 @@ struct CRetailThingPointerList {                   // VC6 Dinkumware list<CIntel
 
 namespace NPlayerGui {
 
-struct CDrawPerceivers {
+class CDrawPerceivers { public:
     void*                   _vtable;               // +0x00
     void*                   PlayerGui;             // +0x04
     CPlayerManager*         PlayerManager;         // +0x08

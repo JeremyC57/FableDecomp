@@ -13,7 +13,7 @@
 // Shape: the owner read once into ecx; VC materialises the constant 1 in al and reuses it for the bit test
 // (`test al,dl`) and the `== 1` compare; the call is the last statement, so nothing follows it but `ret`.
 // Leaf: ?OnRemove@CTCForcePushed@@UAEXXZ
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x10];
     unsigned char m_type;                               // +0x10 (1 = the player creature)
     unsigned char _pad_0x11[0x80];

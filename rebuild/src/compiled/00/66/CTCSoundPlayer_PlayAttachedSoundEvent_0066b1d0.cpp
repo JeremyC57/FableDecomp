@@ -41,11 +41,11 @@ template <class T> struct CDefHolder {                  // the def read once fro
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CEntitySoundDef : CDefBase {
+class CEntitySoundDef : public CDefBase { public:
     unsigned char _pad08[0x48 - 0x08];
     CCharString SoundIdentifier;                        // +0x48
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef_0065f604(CDefOut<CEntitySoundDef>& out);   // 0x0065F604
 };
 class CASoundBank;

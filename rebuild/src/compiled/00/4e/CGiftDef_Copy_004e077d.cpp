@@ -1,14 +1,14 @@
 #pragma optimize("s",on)
 // CGiftDef::Copy @ 0x004e077d
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     // base copy is a real thiscall member: this in ecx, src on stack
     void Copy(const CDefClassBase* src);
     char basepad[0x28];
 };
 
-struct CGiftDef : CDefClassBase {
+class CGiftDef : public CDefClassBase { public:
     unsigned int Type;   // +0x28
     unsigned char IsWeddingRing;  // +0x2c
     void Copy(const CDefClassBase* src);

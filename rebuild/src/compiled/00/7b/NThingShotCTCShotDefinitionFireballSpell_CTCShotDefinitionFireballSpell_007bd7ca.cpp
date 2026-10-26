@@ -12,8 +12,8 @@
 // `#pragma optimize("y", off)` + `("s", on)` (`leave`); the GetPItem result is a temporary bound to IS_THING_ALIVE's `const T&` (`[ebp-4]`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

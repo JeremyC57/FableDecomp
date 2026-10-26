@@ -1,7 +1,7 @@
 // Behaviour test for 0076c750 CParticleUpdateParameters<unsigned long,unsigned long>::Update (copy of the model;
 // the STLport sort is a working insertion-sort stand-in that counts its calls).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 static int g_sorts = 0;
 template <class RandomIt, class Compare> void sort(RandomIt first, RandomIt last, Compare comp)
@@ -16,7 +16,7 @@ template <class T> struct CVector {
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
 };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     CVector<pair<K, V> > Data;
     C                    Compare;
     bool                 Dirty;

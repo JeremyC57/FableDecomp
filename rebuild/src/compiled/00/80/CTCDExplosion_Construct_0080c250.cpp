@@ -19,7 +19,7 @@ public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) {}
@@ -29,19 +29,19 @@ struct CBaseClassNonCopyable {                  // polymorphic: its out-of-line 
     CBaseClassNonCopyable();                    // 0x0099A2F0
     ~CBaseClassNonCopyable();                   // 0x0099A300
 };
-struct CTCParamsBase : CBaseClassNonCopyable {
+class CTCParamsBase : public CBaseClassNonCopyable { public:
 };
-struct CTCParamsPhysicsBase : CTCParamsBase {   // vtable 0x0125C818, 0x28 bytes
+class CTCParamsPhysicsBase : public CTCParamsBase { public:   // vtable 0x0125C818, 0x28 bytes
     C3DVector Position;                         // +0x04
     CRightHandedSet Rhs;                        // +0x10
     CTCParamsPhysicsBase(const C3DVector& position) : Position(position) {}
     virtual void v00();
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual void ConstructFromParams(CTCParamsBase* params);    // slot 3 (+0xc)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };

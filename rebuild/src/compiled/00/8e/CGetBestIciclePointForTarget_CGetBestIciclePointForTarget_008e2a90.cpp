@@ -8,7 +8,7 @@
 // copied into the member through a frame temporary (three dword moves).
 // Layout: Ego_r.pdb (TargetPos +0, BestPosScore +0x0c, BestPos +0x10).
 // Leaf: ??0CGetBestIciclePointForTarget
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -19,7 +19,7 @@ struct CThingPlacement_Retail {
     unsigned char _pad00[0x18];
     C3DVector     m_prevPosition;                  // +0x18
 };
-struct CThing {
+class CThing { public:
     unsigned char           _pad00[0x60];
     CThingPlacement_Retail* m_pPlacement;          // +0x60
     const C3DVector& GetPosition() const;          // 0x004C73D0

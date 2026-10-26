@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CSpotLightDef
-{
+class CSpotLightDef
+{ public:
     void* vftable;
 };
 extern void* const g_CSpotLightDef_vftable;

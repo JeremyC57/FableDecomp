@@ -5,7 +5,7 @@
 static int g_frees = 0;
 static int g_strings = 0;
 static void test_free(void* p) { ++g_frees; std::free(p); }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString() : m_pData(0) { }
     ~CCharString() { ++g_strings; }                  // stands in for 0x0099EAE0

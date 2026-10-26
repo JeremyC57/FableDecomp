@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CVillageTaskSecuritySweepSub { long v; };
 extern "C" long FABLE_FASTCALL FableAssignee_00860410(CVillageTaskSecuritySweepSub *sub){ return sub->v; }
-struct CVillageTaskSecuritySweep { char pad00[0x8]; char m_sub[4]; bool IsThingInvolved(long who); };
+class CVillageTaskSecuritySweep { public: char pad00[0x8]; char m_sub[4]; bool IsThingInvolved(long who); };
 bool CVillageTaskSecuritySweep::IsThingInvolved(long who){ return FableAssignee_00860410((CVillageTaskSecuritySweepSub*)&m_sub[0])==who; }
 int main(){
     CVillageTaskSecuritySweep o; *(long*)&o.m_sub[0]=42;

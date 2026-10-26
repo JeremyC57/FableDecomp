@@ -18,7 +18,7 @@
 //   gives `inc dword ptr [ecx]`, the member increment after the shift picks edi). The same inline matches 0x00B6B0B0.
 struct CStateInfo { unsigned char _body[0x14]; };
 struct CStateStackElement { CStateInfo* State; unsigned long Value; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*              __vftable;            // +0x00
     void*              PD3DDevice;           // +0x04
     CStateStackElement StateStack[1024];     // +0x08
@@ -49,13 +49,13 @@ extern SRenderSettings_01436e60* g_pRenderSettings_01436e60;   // 0x01436E60
 
 double __fastcall GFGetFastSubFrameTimer();        // 0x009E1C70
 
-struct CLandscapeGPUUpdateQueue { unsigned char _body[0x10]; };
-struct CEngineLandscapeMap {
+class CLandscapeGPUUpdateQueue { public: unsigned char _body[0x10]; };
+class CEngineLandscapeMap { public:
     int  UpdateBackgroundLOD(CLandscapeGPUUpdateQueue* queue, double time, bool force);   // 0x00BDC180
     void UpdateBackgroundTesselation();                                                   // 0x00BDC020
     int  UpdateForeground();                                                              // 0x00BDC510
 };
-struct CEngineMap { CEngineLandscapeMap* LandscapeMap; };
+class CEngineMap { public: CEngineLandscapeMap* LandscapeMap; };
 
 struct _List_node { _List_node* _M_next; _List_node* _M_prev; CEngineMap* _M_data; };
 struct _List_iterator {
@@ -70,17 +70,17 @@ struct CEngineMapList {                            // STLport list<CEngineMap*>
     _List_iterator begin() { return _List_iterator(_M_node->_M_next); }
     _List_iterator end() { return _List_iterator(_M_node); }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     unsigned char  _pad[0x2c];
     CEngineMapList VisibleMapList;                 // +0x2c
 };
 extern CEngineWorldMap* g_pEngineWorldMap;         // 0x01436E8C
 
-struct CEngineLandscapeMemoryManager { void FrameStart(); };   // 0x00BD9AC0
+class CEngineLandscapeMemoryManager { public: void FrameStart(); };   // 0x00BD9AC0
 
-struct CEngineComponentParams { unsigned char _pad[0x7c]; bool UpdateLandscape; };
+class CEngineComponentParams { public: unsigned char _pad[0x7c]; bool UpdateLandscape; };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     virtual void v00();
     unsigned char             _pad04[4];
     bool                      Enabled;                     // +0x08

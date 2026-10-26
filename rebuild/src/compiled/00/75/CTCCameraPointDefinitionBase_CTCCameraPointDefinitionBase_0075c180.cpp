@@ -10,14 +10,14 @@
 // before SelfTerminate are scheduled before the vtable store. FOV (72.0f) is stored last as an immediate: a BODY
 // assignment (in the initialiser list it is stored right after the vtable).
 #pragma pack(push, 1)
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(1.0f, 0.0f, 0.0f) {}
@@ -30,7 +30,7 @@ struct CTCBase_0075c180 {
     CTCBase_0075c180(CThing* owner);                // 0x00686800
 };
 
-struct CTCCameraPointDefinitionBase : CTCBase_0075c180 {
+class CTCCameraPointDefinitionBase : public CTCBase_0075c180 { public:
     bool            CutInto;                        // +0x0c
     bool            CutOutOf;                       // +0x0d
     bool            TestAngleBeforeActivation;      // +0x0e

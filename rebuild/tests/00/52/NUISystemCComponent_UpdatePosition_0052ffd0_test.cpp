@@ -15,7 +15,7 @@
 static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { std::printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -38,7 +38,7 @@ C2DVector __fastcall ConvertToScreen(C2DVector position)
 }
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     bool Scaled;
     bool Independent;
     int  ScaledCalls;

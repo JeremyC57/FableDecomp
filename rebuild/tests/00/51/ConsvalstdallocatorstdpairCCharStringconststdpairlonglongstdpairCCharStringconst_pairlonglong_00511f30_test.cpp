@@ -4,7 +4,7 @@
 // It copy-constructs the string subobject (modeled here as a pointer copy via a
 // stand-in "copy ctor") and copies the two longs. Null dest => no-op.
 
-struct CCharString {
+class CCharString { public:
     int refcopies; // how many times the copy ctor ran, for observability
     void* p;
 };

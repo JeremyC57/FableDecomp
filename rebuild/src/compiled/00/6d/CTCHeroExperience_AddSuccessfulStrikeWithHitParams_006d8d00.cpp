@@ -69,7 +69,7 @@ public:
 
 }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 #pragma pack(push, 1)                                       // the PDB really has the C3DVectors unaligned at +0x02/+0x0E
 class CHitParameters {                                      // Ego_r.pdb (prefix; retail-equal up to DamageMap)

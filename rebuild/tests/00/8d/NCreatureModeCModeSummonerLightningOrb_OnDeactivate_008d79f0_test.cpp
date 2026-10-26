@@ -1,6 +1,6 @@
 #include <cstdio>
 // CModeSummonerLightningOrb::OnDeactivate model.
-struct CThing {
+class CThing { public:
     unsigned char type; bool dead; int kills; int resumes; long removedTC;
     void Kill(bool) { ++kills; dead = true; }
     void SetSuspendAnimation(bool suspend, void*) { if (!suspend) ++resumes; }

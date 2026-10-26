@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { unsigned short m_defGlobalIndex; };
-struct CThingFilter_HasDefGlobalIndex {
+class CThing { public: unsigned short m_defGlobalIndex; };
+class CThingFilter_HasDefGlobalIndex { public:
     long m_defGlobalIndex;
     bool operator()(const CThing& thing) const { return thing.m_defGlobalIndex == m_defGlobalIndex; }
 };

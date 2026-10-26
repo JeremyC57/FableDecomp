@@ -15,8 +15,8 @@
 //          then the self-linked header node); the body assigns PTarget from a NULL temporary (built, read through
 //          GetPItem, destroyed) and calls the initialiser.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -70,13 +70,13 @@ struct CAnimationVector {                   // STLport vector<const CAnimationEn
     CAnimationVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(long priority, CThingCreatureBase* owner);   // 0x00693DC0
 };
 
-struct CCombatActionBase : CCreatureActionBase {   // vtable 0x01259E44
+class CCombatActionBase : public CCreatureActionBase { public:   // vtable 0x01259E44
     CIntelligentPointer PTarget;                    // +0xa8
     CConstIntelligentPointer PCameraPoint;          // +0xb0
     CDefPointer PMeleeAbilityDef;                   // +0xb8

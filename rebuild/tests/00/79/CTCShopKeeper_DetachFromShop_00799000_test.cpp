@@ -5,7 +5,7 @@
 class CThing;
 class CBaseObject;
 class CThingCreatureBase;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,20 +34,20 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-struct CTCShop {
+class CTCShop { public:
     int calls; CThingCreatureBase* keeper;
     void SetShopKeeper(CThingCreatureBase* shopKeeper) { ++calls; keeper = shopKeeper; }
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     int calls; long last;
     void Refresh(long flag) { ++calls; last = flag; }
 };
 CPlayerGui* g_pPlayerGui;
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00() { }
     CThing* ParentThing;
     bool ToBeRemoved;

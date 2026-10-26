@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationStateAlpha { int tag; };
+class C3DAnimationStateAlpha { public: int tag; };
 
 static int g_foo_calls = 0;
 static C3DAnimationStateAlpha* g_bar_alpha = 0;
@@ -15,7 +15,7 @@ struct MemberFour {
     BlendSub sub;
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     void* m_pad0;
     MemberFour* m_four;
     void Foo();

@@ -13,12 +13,12 @@
 // (`cdq ; and edx,0Fh ; add ; sar`) of the Y of a local {width, height} pair (the aggregate hides the zero-extension's range
 // from VC7.1, so it cannot fold the divide to `shr`); the counted-pointer clear re-reads the block after the decrement and stores the count word before
 // the object word.
-struct CGraphicDataBank;
-struct CLandscapeBackgroundTreeNode;
-struct CEngineLandscapePatch;
-struct CEngineStaticMapFileBlockManager;
+class CGraphicDataBank;
+class CLandscapeBackgroundTreeNode;
+class CEngineLandscapePatch;
+class CEngineStaticMapFileBlockManager;
 
-struct CEngineMap {
+class CEngineMap { public:
     unsigned char  _pad0[0x5c];
     unsigned short Width;                       // +0x5c
     unsigned short Height;                      // +0x5e

@@ -9,7 +9,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long m_position;              // +4
     long StreamSize;                       // +8
@@ -40,22 +40,22 @@ struct CDataInputStream {
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min, Max;
     void Set(const C3DVector& mn, const C3DVector& mx) { Min = mn; Max = mx; }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) {}
 };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1C

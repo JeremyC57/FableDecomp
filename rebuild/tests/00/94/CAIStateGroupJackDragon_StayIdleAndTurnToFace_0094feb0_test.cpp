@@ -5,13 +5,13 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #else
-struct CAIBrain{char prefix[24];void* Creature;};
-struct CAIStateGroupBase{void* vtable;CAIBrain* PBrain;char state[12];};
+class CAIBrain{ public:char prefix[24];void* Creature;};
+class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_JackDragon:CAIStateGroupBase{void* PEnemy[2];};
 #define __forceinline inline
 #endif
-struct C3DVector{float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
-struct CRightHandedSet{C3DVector Up,Forward;CRightHandedSet(const C3DVector& direction){Forward=direction;Up=C3DVector(0,0,1);}CRightHandedSet Interpolate(const CRightHandedSet&,float)const;}; //00a23190
+class C3DVector{ public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(const C3DVector& direction){Forward=direction;Up=C3DVector(0,0,1);}CRightHandedSet Interpolate(const CRightHandedSet&,float)const;}; //00a23190
 struct CDragonPhysics {
 virtual ~CDragonPhysics();
 virtual void slot1();

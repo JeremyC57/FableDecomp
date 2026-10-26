@@ -18,7 +18,7 @@ struct BaseInput {
     void baseDtor() { g_base_destroyed_order = ++g_order; }
 };
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     void* vtbl;
     int   pad;
     MemberAt8 member;

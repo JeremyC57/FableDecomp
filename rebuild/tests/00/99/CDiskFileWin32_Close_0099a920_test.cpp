@@ -3,7 +3,7 @@ static int g_seek = 0, g_flush = 0, g_close = 0; static void* g_closed = 0; stat
 static unsigned long __stdcall SetFilePointer(void* file, long distance, long* high, unsigned long method) { ++g_seek; g_method = method; return 0; }
 static int __stdcall FlushFileBuffers(void* file) { ++g_flush; return 1; }
 static int __stdcall CloseHandle(void* object) { ++g_close; g_closed = object; return 1; }
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     virtual void v00() { }
     long AccessType; long Position; long Length; void* WinFileHandle; bool Opened;
     virtual void Close() { if (Opened) { SetFilePointer(WinFileHandle, 0, 0, 1); FlushFileBuffers(WinFileHandle); CloseHandle(WinFileHandle); } Opened = false; }

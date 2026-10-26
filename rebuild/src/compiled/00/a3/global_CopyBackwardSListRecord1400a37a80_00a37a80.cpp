@@ -7,7 +7,7 @@
 // in ecx, last in edx, result + the two tags on the stack, `ret 0Ch`). The element's implicit operator= is inlined
 // memberwise: the out-of-line assignment at +0, the word +4, the bytes +8/+9, the word +0xC, the CCharString +0x10.
 // Label correction: the catalog's `_Copy_backward<CSymbolMap::CSymbolInfo*>` is propagated; member names are descriptive.
-struct CCharString {
+class CCharString { public:
     void* m_pData;                               // +0x00
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

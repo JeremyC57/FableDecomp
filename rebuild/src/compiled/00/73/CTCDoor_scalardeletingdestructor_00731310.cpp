@@ -1,4 +1,4 @@
-struct CTCDoor {
+class CTCDoor { public:
     void* vftable;
 };
 

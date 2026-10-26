@@ -14,7 +14,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() {} };
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
-struct CActionInputControl {                               // 0x1c bytes, trivially copyable
+class CActionInputControl { public:                               // 0x1c bytes, trivially copyable
     long          Action;                                  // +0x00
     unsigned long Data[6];                                 // +0x04
 };

@@ -6,7 +6,7 @@
 //   `stride` live across the check and gives retail's `mov eax,edi ; imul eax,[esp+14h]` (a single `count` is multiplied
 //   in place: `imul edi ; mov eax,edi`).
 extern "C" void __cdecl free(void*); // 0x00BFEA14
-struct CVertexCompressionParams { float PosScale[4]; float PosBias[4]; };
+class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 void __fastcall ConvertAnimatedVertices(const void*, unsigned long, void*, unsigned long, unsigned long, CVertexCompressionParams&); // 0x00A90FC0
 struct CVertexFormat { unsigned long GetVertexSize() const; }; // 0x00AB37B0
 struct CStreamInfo { long Unnamed00; CVertexFormat Format; };
@@ -40,11 +40,11 @@ struct CVertexElementArray {
     D3DVERTEXELEMENT9* end;
     ~CVertexElementArray() { if (first) free(first); }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
-struct CVertexShaderInput : CBaseClass {           // vtable 0x0129EA08
+class CVertexShaderInput : public CBaseClass { public:           // vtable 0x0129EA08
     CStreamInfoArray    DataStreams;               // +0x04
     CVertexElementArray D3DDeclaration;            // +0x10
     CVertexShaderInput();                          // 0x00AB3B10
@@ -80,7 +80,7 @@ struct CAnimatedBlock {                            // Layout: Ego_r.pdb CAnimate
     void TransformVerticesWithNormals(CAnimatedVertexWithNormals*, const CDeviceIndependent*); // 0x00A90040
     void TransformVertices(CAnimatedVertex*, const CDeviceIndependent*);                       // 0x00A8FF50
 };
-struct C3DPrimitive2 {                             // Layout: retail offsets (Ego_r.pdb - 4)
+class C3DPrimitive2 { public:                             // Layout: retail offsets (Ego_r.pdb - 4)
     unsigned char pad0[0x2c];
     CDeviceIndependent* Data;                      // +0x2c
     unsigned char pad30[0x18];

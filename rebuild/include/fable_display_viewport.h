@@ -3,7 +3,7 @@
 
 #include "rebuild_abi.h"
 
-struct C2DBoxF
+class C2DBoxF
 {
 public:
     float left;
@@ -12,7 +12,7 @@ public:
     float bottom;
 };
 
-struct C2DBoxI
+class C2DBoxI
 {
 public:
     fable_i32 left;

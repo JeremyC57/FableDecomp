@@ -8,10 +8,10 @@
 // Layout: Ego_r.pdb CTCVolumeContainmentTracker (no containers, retail = PDB): PThingInside +0x0C,
 // CurrentThemeChannel +0x14 (CEnginePrimitiveThemeChannelDesc: ChannelIndex0/1, ChannelBlendFactor, Pad),
 // PreviouslyUpdated +0x18, PDef +0x1C, UpdateLightingChannels +0x20. No engine header.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       Thing;                    // +0x04
     unsigned char _pad_0x08[0x4];
@@ -29,7 +29,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {          // vtable 0x0123
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     unsigned char ChannelIndex0;            // +0x00
     unsigned char ChannelIndex1;            // +0x01
     unsigned char ChannelBlendFactor;       // +0x02
@@ -37,14 +37,14 @@ struct CEnginePrimitiveThemeChannelDesc {
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
 };
 
-struct CTCVolumeContainmentTrackerDef;
+class CTCVolumeContainmentTrackerDef;
 
 struct CDefPointerTrackerDef {
     const CTCVolumeContainmentTrackerDef* Object;
     CDefPointerTrackerDef() : Object(0) { }
 };
 
-struct CTCVolumeContainmentTracker : CTCBase {
+class CTCVolumeContainmentTracker : public CTCBase { public:
     CIntelligentPointer              PThingInside;            // +0x0C
     CEnginePrimitiveThemeChannelDesc CurrentThemeChannel;     // +0x14
     bool                             PreviouslyUpdated;       // +0x18

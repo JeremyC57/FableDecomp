@@ -6,7 +6,7 @@ struct Sub {
 extern "C" void __fastcall Sub_dtor_0099eae0(Sub* self);
 extern "C" void __cdecl eng_delete(void* p);
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     int pad0;
     Sub sub;
 };

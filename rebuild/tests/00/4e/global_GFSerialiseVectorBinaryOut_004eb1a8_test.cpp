@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour copy of GFSerialiseVectorBinaryOut<CExplosionRing>: the count, then each ring's own writer in order.
 struct SStream { long out[64]; int n; SStream() : n(0) { } void WriteSLONG(long v) { out[n++] = v; } };
-struct CExplosionRing {
+class CExplosionRing { public:
     float RingRadius; long NumExplosions; float AngleOffset; float SecondsBeforeSpawnNewRing;
     void TransferBinaryOut(SStream& s) const { s.WriteSLONG(NumExplosions); s.WriteSLONG((long)RingRadius); }
 };

@@ -6,10 +6,10 @@
 // Shape: the two scalar initialisers are stored around the argument loads (DriverType's store scheduled first), then the
 // Name member's copy constructor runs on `esi+8`.
 // Leaf: ??0CRegisteredTCInfo
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
 };

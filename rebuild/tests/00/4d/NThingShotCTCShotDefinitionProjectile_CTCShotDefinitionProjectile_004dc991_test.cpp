@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CBaseClass { virtual ~CBaseClass() { } };
+class CThing { public: int id; };
+class CBaseClass { public: virtual ~CBaseClass() { } };
 struct CIVCountedPointer { void* Object; CIVCountedPointer() : Object(0) { } };
-struct CEnginePrimitiveHandle : CBaseClass { CIVCountedPointer Data; CEnginePrimitiveHandle() { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; CEnginePrimitiveHandle() { } };
 struct CTCShotDefinitionBase {
     CThing* m_pParent;
     CTCShotDefinitionBase(CThing* parent) : m_pParent(parent) { }

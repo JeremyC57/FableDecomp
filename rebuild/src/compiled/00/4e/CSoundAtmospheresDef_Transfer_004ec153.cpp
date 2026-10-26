@@ -8,14 +8,14 @@
 //
 // i.e.  ctx.Transfer( &this->m_member_at_0x28 );
 
-struct CPersistContext
-{
+class CPersistContext
+{ public:
     // Non-inline external __fastcall method -> plain call, ctx in ecx.
     void Transfer(void* p);
 };
 
-struct CSoundAtmospheresDef
-{
+class CSoundAtmospheresDef
+{ public:
     char pad[0x28];
     int  m_member;   // transferable member at +0x28
 

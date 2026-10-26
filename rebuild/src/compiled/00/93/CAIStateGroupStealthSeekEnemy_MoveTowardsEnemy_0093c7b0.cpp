@@ -27,7 +27,7 @@ public:
     C3DVector LastPerceivedPos;                 // +0x20
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x04..+0x13
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,

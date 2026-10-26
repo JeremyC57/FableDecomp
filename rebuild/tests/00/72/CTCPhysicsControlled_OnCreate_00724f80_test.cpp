@@ -4,8 +4,8 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_stdCreate = 0;
-struct CTCPhysicsBase { unsigned char _pad[0x3c]; unsigned char OldMoving[4]; };
-struct C3DVector {
+class CTCPhysicsBase { public: unsigned char _pad[0x3c]; unsigned char OldMoving[4]; };
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
 };

@@ -18,9 +18,9 @@
 // Leaf: ??0C3DAnimationStats
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -52,7 +52,7 @@ struct CTimingEventMultimap {                           // STLport multimap<CCha
     }
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pFirstPointer;                              // +0x04
     CBaseObject();                                      // 0x0099A380
     virtual void v00();
@@ -61,7 +61,7 @@ struct CBaseObject {
 enum EAnimationType { ANIMATION_TYPE_NONE = 0 };
 
 #pragma pack(push, 2)
-struct C3DAnimationStats : CBaseObject {
+class C3DAnimationStats : public CBaseObject { public:
     EAnimationType       AnimType;                      // +0x08
     float                Duration;                      // +0x0c
     bool                 LoopFlag;                      // +0x10

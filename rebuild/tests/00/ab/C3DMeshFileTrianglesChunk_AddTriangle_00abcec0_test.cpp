@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct C3DTriangle2 { unsigned short Index[3]; };
+class C3DTriangle2 { public: unsigned short Index[3]; };
 
 struct CTriangleList {
     C3DTriangle2* start;

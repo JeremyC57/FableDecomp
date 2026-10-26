@@ -8,13 +8,13 @@ static int g_fail = 0;
 static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long length = -1) : S(text) { (void)length; }
     CCharString(const std::string& s) : S(s) { }
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { return CCharString(a.S + b.S); }
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     std::vector<int>* UsedByHero;    // per-frame "used by hero" answers
     int* Frame;
@@ -26,8 +26,8 @@ struct CScriptThing {
         return *Frame < (int)UsedByHero->size() && (*UsedByHero)[*Frame] != 0;
     }
 };
-struct CScriptGameResourceObjectScriptedThingBase { std::string Who; };
-struct CScriptGameResourceObjectMovieBase { };
+class CScriptGameResourceObjectScriptedThingBase { public: std::string Who; };
+class CScriptGameResourceObjectMovieBase { public: };
 struct CCutsceneFlagMap { };
 struct CCutsceneCastMap {
     std::map<std::string, CScriptGameResourceObjectScriptedThingBase> M;
@@ -39,7 +39,7 @@ static void RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CC
     (void)flags; (void)args; (void)a5; (void)a6;
     logs("cutscene " + name.S + " hero=" + cast.M["HERO"].Who);
 }
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     std::string Name;
     unsigned long Id;
     CSpawnedFuncBase(const CCharString& name, unsigned long id) : Name(name.S), Id(id) { }
@@ -56,7 +56,7 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 static int g_frame = 0;
 static bool g_paused = false;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority)
@@ -90,7 +90,7 @@ struct CQ_SunnyvaleMasterData {
     bool JackBossBattleHeroGoodAtEnd;
 };
 static int g_termCalls = 0, g_termAt = -1, g_stopFrame = 1000;
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     CGameScriptInterface* Game;
     CScriptThing Me;
     bool IsActiveThreadTerminating() const

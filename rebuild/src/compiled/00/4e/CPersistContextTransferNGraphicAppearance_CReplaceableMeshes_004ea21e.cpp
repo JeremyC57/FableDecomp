@@ -19,8 +19,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 
 namespace NGraphicAppearance {
 struct CEngineGraphicVector {                   // CArray<CEngineGraphic> = STLport vector, 12 bytes
@@ -43,7 +43,7 @@ template <> struct CPersistTraits<NGraphicAppearance::CReplaceableMeshes> {
     void TransferBinaryIn(CMemoryDataInputStream* stream, NGraphicAppearance::CReplaceableMeshes* value);     // 0x004EA2C9
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                           // +0x18 (2 = binary load, 3 = binary save)
     unsigned char           _pad1c[8];

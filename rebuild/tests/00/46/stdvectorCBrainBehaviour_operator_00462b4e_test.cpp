@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CBrainBehaviour { long Name; long Priority; long ScriptAIPriority; };
+class CBrainBehaviour { public: long Name; long Priority; long ScriptAIPriority; };
 
 struct CBrainBehaviourVector {
     typedef CBrainBehaviour* pointer;

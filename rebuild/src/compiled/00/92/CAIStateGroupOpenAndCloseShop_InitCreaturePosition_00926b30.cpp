@@ -12,8 +12,8 @@
 // gives `mov dl ; add eax ; or dl ; mov` -- and the open flag); `!open` is passed straight to LockAllDoors and the
 // sign (`sete bl ; push ebx`): a named `bool closed` round-trips through a frame slot.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -120,7 +120,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -128,7 +128,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -164,17 +164,17 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct CTCShop {
+class CTCShop { public:
     bool IsOpeningHours();                      // 0x00773950
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CTCShop* GetShopTC();                       // 0x00798F50
 };
 struct CTCShopSign {                            // interface 0xBD on the shop building
     unsigned char _pad[0x0c];
     bool m_closed;                              // +0x0c
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     unsigned char _pad94[0xd4 - 0x94];
     unsigned char m_buildingFlags;              // +0xd4 (bit 0: keeper present)
     void LockAllDoors(bool locked, bool immediately);   // 0x0082DB00
@@ -184,7 +184,7 @@ struct CThingShopkeeper : CThing {
     CBaseIntelligentPointer PShop;              // +0x170 CIntelligentPointer<CThingBuilding>
     CThingBuilding* GetPShop() const { return (CThingBuilding*)PShop.GetPItem(); }
 };
-struct CThingAICreature;
+class CThingAICreature;
 
 struct CAIStateGroup_OpenAndCloseShop : CAIStateGroupBase {
     CThingShopkeeper* GetCreature() const { return (CThingShopkeeper*)PBrain->PCreature; }

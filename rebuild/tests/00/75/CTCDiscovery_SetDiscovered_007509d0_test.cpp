@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_ctors = 0, g_dtors = 0, g_sets = 0, g_gets = 0;
-struct CBaseObject {};
+class CBaseObject { public:};
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
     void* PData;
@@ -15,7 +15,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CBaseObject* item = 0) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CTCDiscovery {
+class CTCDiscovery { public:
     unsigned char       _base[0x8];
     bool                Discovered;
     CIntelligentPointer Discoverer;

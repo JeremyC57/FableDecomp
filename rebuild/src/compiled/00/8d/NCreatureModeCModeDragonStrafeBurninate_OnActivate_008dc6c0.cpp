@@ -8,7 +8,7 @@
 // Shape: the GetInterface result is not tested (as the landed CModeCarryingStandBase::FrameUpdate 0x008D88A0): the absent
 //   path stores through the never-written out variable in the key's frame word, and VC7.1 duplicates the store and the
 //   epilogue into both paths.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44

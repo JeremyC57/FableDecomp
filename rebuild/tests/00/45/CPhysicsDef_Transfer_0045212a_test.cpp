@@ -3,13 +3,13 @@
 static int g_count = 0;
 static void* g_ptrs[8];
 
-struct CPersistContext {
+class CPersistContext { public:
     void PersistFloat(void* p) { g_ptrs[g_count++] = p; }
     void PersistOther(void* p) { g_ptrs[g_count++] = p; }
     void PersistSub(void* p)   { g_ptrs[g_count++] = p; }
 };
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     unsigned char _pad[0x28];
     float Diameter;
     float Friction;

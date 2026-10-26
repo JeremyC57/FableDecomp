@@ -20,7 +20,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DVector {                          // 12 bytes, copied as three dwords
+class C3DVector { public:                          // 12 bytes, copied as three dwords
     int data[3];
     C3DVector(const C3DVector& o) { data[0] = o.data[0]; data[1] = o.data[1]; data[2] = o.data[2]; }
 };

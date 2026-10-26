@@ -5,8 +5,8 @@
 // Modeled as a free __fastcall(this-only + one arg) that tail-calls an extern impl;
 // VC7.1 compiles the tail-call to `e9 <rel32>` (rel32 relocation-masked in parity).
 
-struct CSpecialAbilitiesBulletTimeDef;
-struct CDefClassBase;
+class CSpecialAbilitiesBulletTimeDef;
+class CDefClassBase;
 
 // The real implementation this thunk jumps to (address relocation-masked).
 extern "C" void __fastcall CSpecialAbilitiesBulletTimeDef_Copy_impl(

@@ -6,7 +6,7 @@
 // pointer argument (`ret 4`) and returns their dot product on the x87 stack. C3DVector members X/Y/Z from the PDB.
 // Shape: `fld [arg+8] ; fmul [this+8]` (b * a loads the right operand first), Z term first, then Y, then X:
 // the sum is written Z + Y + X.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float DotProduct(const C3DVector& other) const;
 };

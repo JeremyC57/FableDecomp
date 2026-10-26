@@ -6,7 +6,7 @@
 // Shape so far: a `__forceinline` by-value def getter (local CDefPointer filled by GetDef, returned
 // by copy) consumed by `->Properties`; the returned temporary's release is emitted without a
 // null test as in retail. Properties is CThingMarkerDef +0x84 (PDB +0x88).
-struct CThingMarkerDef {
+class CThingMarkerDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long          m_count;                         // +0x04
@@ -23,7 +23,7 @@ struct CDefPointer {
     CThingMarkerDef* Get() const { return m_p; }
     CThingMarkerDef* operator->() const { return m_p; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef_0083d630(long globalIndex, CDefPointer& out);   // 0x0083D630
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -39,13 +39,13 @@ __declspec(noinline) bool CDefinitionManager::GetDef_0083d630(long globalIndex, 
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short DefGlobalIndex;                 // +0x8c
     CDefinitionManager* GetDefinitionManager();    // 0x004C7990
 };
-struct CThingMarker : CThing {
+class CThingMarker : public CThing { public:
     __forceinline CDefPointer GetMarkerDef()
     {
         CDefPointer def;

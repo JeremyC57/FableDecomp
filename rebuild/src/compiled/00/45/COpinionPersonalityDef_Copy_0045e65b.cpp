@@ -6,7 +6,7 @@
  * so any plausible extern callee with a matching signature byte-matches.
  */
 
-struct COpinionPersonalityDef;
+class COpinionPersonalityDef;
 
 /* real implementation the thunk tail-calls into (address relocation-masked) */
 extern void __fastcall COpinionPersonalityDef_Copy_impl(

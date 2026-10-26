@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCCreditsUI { void OnCreate(); };
+class CTCCreditsUI { public: void OnCreate(); };
 void CTCCreditsUI::OnCreate() {}

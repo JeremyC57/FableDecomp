@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CWorld;
-struct CThingAICreature;
+class CWorld;
+class CThingAICreature;
 
 struct CAIStateGroup_MinionGuardReactToCriminal {
     char pad[0x28];

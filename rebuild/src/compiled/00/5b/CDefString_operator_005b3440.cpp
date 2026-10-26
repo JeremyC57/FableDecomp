@@ -11,7 +11,7 @@ struct CDefStringTable {
 
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 
-struct CDefString {
+class CDefString { public:
     long TablePos;                                 // +0
     bool operator==(const char* text) const;
 };

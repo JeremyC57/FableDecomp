@@ -3,17 +3,17 @@
 #include <cstring>
 
 static int g_baseCopies = 0, g_soundCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int Instantiation;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { Instantiation = o.Instantiation; ++g_baseCopies; return *this; }
 };
-struct CDefString { long m_index; };
-struct C2DVector { float X, Y; };
-struct CSoundMap {
+class CDefString { public: long m_index; };
+class C2DVector { public: float X, Y; };
+class CSoundMap { public:
     int Default;
     CSoundMap& operator=(const CSoundMap& o) { Default = o.Default; ++g_soundCopies; return *this; }
 };
-struct CRegionDef : CParentDefClassBase {
+class CRegionDef : public CParentDefClassBase { public:
     long EnvironmentTheme, InternalEnvironmentTheme, InternalLightingChannelCount, CameraManagerSetIndex, CameraManagerSetBuildingIndex;
     CSoundMap SoundMap;
     bool PreventHeroWeaponUse, PreventHeroWillUse;

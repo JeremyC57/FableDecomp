@@ -12,9 +12,9 @@
 // homed in the dead stream-argument slot and pushed as a dword.
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template<class T> struct CArray {                          // retail CArray<T>: three pointers
+template<class T> class CArray { public:                          // retail CArray<T>: three pointers
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
@@ -24,14 +24,14 @@ template<class T> struct CArray {                          // retail CArray<T>: 
     T& operator[](unsigned long i) { return m_pData[i]; }
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                            // 0x00993E30
     void WriteULong(unsigned long value);                  // 0x00993EA0
     void Write3DVector(const C3DVector& value);            // 0x00993FD0
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
 struct CCardinalSpline {                    // 0x14 bytes in retail
     CArray<C3DVector> ControlPoints;        // +0x00
@@ -54,14 +54,14 @@ struct CSplinePosParamData {
     void WriteBinary(CDataOutputStream& stream);           // 0x00B20B10
 };
 
-struct CPSCBase {                           // vtable 0x0129F3F4
+class CPSCBase { public:                           // vtable 0x0129F3F4
     virtual void v000();
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
 };
 
-struct CPSCSplineBase : CPSCBase {          // vtable 0x012A0B14
+class CPSCSplineBase : public CPSCBase { public:          // vtable 0x012A0B14
     float                                     SplineAnimSpeed;        // +0x0c
     CCardinalSpline                           Spline;                 // +0x10
     CCountedPointer<CSplineRandomOffsetData>  SplineRandomOffsetData; // +0x24

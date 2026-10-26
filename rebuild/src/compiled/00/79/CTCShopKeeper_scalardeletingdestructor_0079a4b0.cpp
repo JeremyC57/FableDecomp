@@ -1,4 +1,4 @@
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     void* vftable;
 };
 

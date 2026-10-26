@@ -14,8 +14,8 @@
 // count and empty-initialises the header (re-reading it after every store); the malloc's `add esp,4` lands after the
 // following member ctors and before the body's byte store, then the reset call.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-struct CThing;
-struct CCombatManager;
+class CThing;
+class CCombatManager;
 template <class T> struct CAllocator {                  // STLport allocator<T>: empty
     CAllocator() { }
 };
@@ -61,11 +61,11 @@ struct CDefPointer {
     void* Object;
     CDefPointer() : Object(0) { }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x4c];
     CCombatManager* PCombatManager;                     // +0x4c
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -73,8 +73,8 @@ struct CTCBase {
     CTCBase(CThing* thing);                             // 0x00686800
     CWorld* GetWorld();                                 // 0x00686A70
 };
-struct CThingCreatureBase;
-struct CTCCombat : CTCBase {
+class CThingCreatureBase;
+class CTCCombat : public CTCBase { public:
     long                ComboChainPos;                  // +0x0c
     long                ComboChainID;                   // +0x10
     long                ComboChainGracePeriodCountdown; // +0x14

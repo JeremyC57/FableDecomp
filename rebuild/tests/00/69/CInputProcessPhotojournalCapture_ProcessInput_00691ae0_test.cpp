@@ -63,11 +63,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CMainGameComponent;
-struct CPlayer;
-struct CWorld;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CMainGameComponent;
+class CPlayer;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
@@ -105,7 +105,7 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessGameBase, PGamePlayerInterface) == 0x2
 
 
 #pragma pack(push, 1)
-struct CProcessedInput {
+class CProcessedInput { public:
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]
@@ -134,22 +134,22 @@ FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
-struct CDefinitionManager;
-struct CGraphicDataBank;
-struct CInputManager;
-struct CMeshDataBank;
-struct CTCHeroExperience;
-struct CTCInventory;
-struct CTCInventoryAbilities;
-struct CTCInventoryClothing;
-struct CTCInventoryExperience;
-struct CTCInventoryMap;
-struct CTCInventoryQuests;
-struct CTCInventoryTrade;
-struct CTCInventoryWeapons;
-struct CThing;
+class CDefinitionManager;
+class CGraphicDataBank;
+class CInputManager;
+class CMeshDataBank;
+class CTCHeroExperience;
+class CTCInventory;
+class CTCInventoryAbilities;
+class CTCInventoryClothing;
+class CTCInventoryExperience;
+class CTCInventoryMap;
+class CTCInventoryQuests;
+class CTCInventoryTrade;
+class CTCInventoryWeapons;
+class CThing;
 
 #pragma pack(push, 1)
 struct CManager {

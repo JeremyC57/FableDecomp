@@ -1,12 +1,12 @@
 // CAICreatureWillPowerIndicatorDef::Copy @ 004e14fd
-struct CDefClassBase;
+class CDefClassBase;
 
 // Base with an implicit-thiscall member (this->ecx, other->stack, rel32 call).
 struct CAICreatureWillPowerIndicatorDefBase {
     void CloneFields(const CDefClassBase* other); // extern, implicit __fastcall
 };
 
-struct CAICreatureWillPowerIndicatorDef : public CAICreatureWillPowerIndicatorDefBase {
+class CAICreatureWillPowerIndicatorDef : public CAICreatureWillPowerIndicatorDefBase { public:
     char pad[0x28];
     unsigned long field28;
 };

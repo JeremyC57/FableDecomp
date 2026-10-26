@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CUIState { unsigned char Flags; };
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 static float g_baseDt = 0.0f; static int g_settled = 0;
 struct CComponent {
     C2DVector InitialPosition, InitialZoom; CRGBColour TargetColour;

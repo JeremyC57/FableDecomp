@@ -5,8 +5,8 @@
 //   slot; the side flag is chosen with an explicit else (`onLeft = firstFlag`) so VC sinks the first flag into the else arm.
 // Layout: C2DLineF {X1, Y1, X2, Y2} (landed IntersectsWith 0x00A57AD0); C2DBoxF {MinX, MinY, MaxX, MaxY} floats.
 // Leaf: GetDist
-struct C2DBoxF { float MinX, MinY, MaxX, MaxY; };
-struct C2DLineF {
+class C2DBoxF { public: float MinX, MinY, MaxX, MaxY; };
+class C2DLineF { public:
     float X1, Y1, X2, Y2;
     C2DLineF(float x1, float y1, float x2, float y2) : X1(x1), Y1(y1), X2(x2), Y2(y2) {}
     bool IntersectsWith(const C2DBoxF* box) const;                                       // 0x00A577B0

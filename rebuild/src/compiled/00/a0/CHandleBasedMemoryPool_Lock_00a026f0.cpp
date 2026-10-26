@@ -3,7 +3,7 @@ struct PoolEntry {
     unsigned char locked;   // +0xf
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     char pad0[0x18];
     unsigned long lockCount;    // +0x18
     char pad1[0x438 - 0x18 - 4];

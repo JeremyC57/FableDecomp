@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     char pad[0xC0];
     int outputs[4];
     bool OutputsFiring();

@@ -92,7 +92,7 @@ static __forceinline void SetState(CTrackedRenderState& state, unsigned long val
     }
 }
 
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 
 struct COcclusionData {
     unsigned char _pad[0x94];

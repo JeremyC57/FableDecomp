@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAnimComponentBase {
+class CAnimComponentBase { public:
     virtual void v0() = 0;
     virtual void v1() = 0;
     int refcount;

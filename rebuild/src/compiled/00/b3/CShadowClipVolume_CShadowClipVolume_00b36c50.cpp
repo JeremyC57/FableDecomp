@@ -8,22 +8,22 @@
 // by the scalar members. That loop only comes out of the IMPLICIT copy constructor: a hand-written body loop is unrolled by the lane compiler,
 // and an array cannot be named in an initialiser list. VC7.1 emits the implicit constructor out of line for the copy site below.
 // Leaf: ??0CShadowClipVolume
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-struct CPlane {
+class CPlane { public:
     C3DVector Normal;                // +0x00
     float     Distance;              // +0x0c
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;                // +0x00
     float     Radius;                // +0x0c
 };
 
-struct CShadowClipVolume {             // no user copy constructor: retail's body is the compiler-generated one
+class CShadowClipVolume { public:             // no user copy constructor: retail's body is the compiler-generated one
     CPlane            ClipPlanes[8];   // +0x00
     long              ClipPlaneCount;  // +0x80
     C3DBoundingSphere BoundingSphere;  // +0x84

@@ -5,8 +5,8 @@ static int g_freed = 0;
 
 void __cdecl operator_delete_impl(void* p) { (void)p; g_freed = 1; }
 
-struct CInputProcessTargetLockCycleTargets
-{
+class CInputProcessTargetLockCycleTargets
+{ public:
     int dummy;
     void destroy();
 };

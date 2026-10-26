@@ -3,8 +3,8 @@
 #include <cstdio>
 static int g_log[16]; static int g_n = 0;
 static void Log(int v) { if (g_n < 16) g_log[g_n++] = v; }
-struct CCreatureActionBase;
-struct CThing { int m_kind; bool SetCurrentAction(CCreatureActionBase* action); };
+class CCreatureActionBase;
+class CThing { public: int m_kind; bool SetCurrentAction(CCreatureActionBase* action); };
 static int g_destroyed = 0;
 struct SCountBlock { int m_references; void (*m_pfnDestroy)(CCreatureActionBase*); CCreatureActionBase* m_pObject; };
 static void DestroyAction(CCreatureActionBase*) { ++g_destroyed; }
@@ -20,17 +20,17 @@ struct CCountedPointer {
     }
 };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CBaseIntelligentPointer PCreature;
     virtual ~CCreatureActionBase() { Log(9); }
 };
 static SCountBlock* g_nextBlock = 0;
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     CCountedPointer PNextAction; int m_kind;
     CCreatureAction_SheatheItemToInventory(CThing* owner, CCreatureActionBase*, int kind) : m_kind(kind)
     { PCreature.m_pItem = owner; PNextAction.m_pObject = 0; PNextAction.m_pCount = g_nextBlock; }
 };
-struct CCreatureAction_SheatheTrophy : CCreatureAction_SheatheItemToInventory {
+class CCreatureAction_SheatheTrophy : public CCreatureAction_SheatheItemToInventory { public:
     CCreatureAction_SheatheTrophy(CThing* owner) : CCreatureAction_SheatheItemToInventory(owner, 0, 1002) { }
 };
 bool CThing::SetCurrentAction(CCreatureActionBase* action) { m_kind = ((CCreatureAction_SheatheItemToInventory*)action)->m_kind; Log(2); return true; }

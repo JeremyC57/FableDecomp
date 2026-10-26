@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCameraManagerDef {};
+class CCameraManagerDef { public:};
 unsigned long __fastcall CCameraManagerDef_GetSizeofClass(const CCameraManagerDef* self)
 {
     (void)self;

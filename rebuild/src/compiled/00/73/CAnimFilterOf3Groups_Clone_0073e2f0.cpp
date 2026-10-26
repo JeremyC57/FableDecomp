@@ -3,7 +3,7 @@
 // Callees: operator new 0x00BFEA1A, CAnimFilterOf3Groups::CAnimFilterOf3Groups(const CCharString&, const CCharString&,
 //          const CCharString&) 0x0073E0D0 (returns `this`, which Clone hands back directly).
 // Layout (PDB, 0x1c bytes): vptr +0, Group1 +4, Group2 +8, Group3 +0xc, CRCs +0x10..+0x18.
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 
 struct CAnimFilterOf3Groups {
     virtual long Accepts(const void* anim);

@@ -11,7 +11,7 @@ static unsigned long Calc(unsigned long seed, const void* data, unsigned long le
 }
 struct SStringData { const char* Data; long Length; };
 struct SCharString { SStringData* PStringData; };
-struct C3DBone2 {
+class C3DBone2 { public:
     unsigned long NameCRC; long Parent; long OriginalNoChildren;
     // reconstructed body
     void SetName(const SCharString& name)

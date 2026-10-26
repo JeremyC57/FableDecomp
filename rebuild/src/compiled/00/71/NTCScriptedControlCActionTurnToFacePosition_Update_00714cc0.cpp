@@ -9,15 +9,15 @@
 // Layout: CActionBase {vptr, PTCScript +4, Activated +8, Terminated +9}; Position (C3DVector) +0x0C, Angle (float) +0x18;
 //          CTCScriptedControl ParentThing +4 (CTCBase); CThing UsingComponents +0x20, Components +0x44.
 // Shape: no look component branches straight to the Terminated store; the in-view result also lands on it.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     void*         __vftable;
     unsigned char _pad04[0x20 - 0x04];
     unsigned long UsingComponents[9];              // +0x20
@@ -36,11 +36,11 @@ struct CThing {
         return false;
     }
 };
-struct CTCLook {                                   // interface 0x43
+class CTCLook { public:                                   // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);           // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*   __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
 };

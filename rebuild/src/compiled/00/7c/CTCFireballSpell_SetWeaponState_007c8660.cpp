@@ -8,7 +8,7 @@
 // Shape: a three-case `switch` lowered to `sub eax,0 ; je / dec eax ; je / dec eax ; jne`; every case ends in the
 // assignment, which becomes a tail jump reusing the `state` argument slot for the string's address
 // (`mov [esp+4],offset g ; add ecx,6Ch ; jmp operator=`); case 0 selects the address with a ternary.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -16,7 +16,7 @@ struct CCharString {
 extern CCharString g_RightHandAttachmentName;      // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;       // 0x013BAC34
 
-struct CTCFireballSpell {
+class CTCFireballSpell { public:
     unsigned char _pad[0x64];
     long          WeaponState;                     // +0x64 EWEAPON_STATE
     bool          LeftHandAnim;                    // +0x68

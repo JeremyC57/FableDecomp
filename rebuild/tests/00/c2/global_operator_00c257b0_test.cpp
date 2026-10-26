@@ -3,7 +3,7 @@
 #include <cstring>
 // behaviour test for 0x00C257B0: exercises the same logic through a copy of the model (compiled separately from the source)
 static bool near(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 1e-4f; }
-struct C3DVector { float x, y, z; C3DVector(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {} };
+class C3DVector { public: float x, y, z; C3DVector(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {} };
 static C3DVector Subtract(const C3DVector& a, const C3DVector& b) { return C3DVector(a.x - b.x, a.y - b.y, a.z - b.z); }
 static bool Run()
 {

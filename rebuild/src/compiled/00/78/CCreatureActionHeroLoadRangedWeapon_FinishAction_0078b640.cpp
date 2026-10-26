@@ -10,14 +10,14 @@
 // bound to a `const&` parameter -- VC builds the temporary in the lookup-key frame word (`mov [esp+0Ch],edi` after the
 // push), the component stays in esi for both calls. Retail CCreatureActionBase is 0xa8 bytes (the PDB vectors are 16 bytes,
 // retail 12), so the class is modelled locally.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CActionKeyedMap {                    // std::map keyed by the action pointer
     unsigned long Erase(CCreatureActionBase* const& key);   // 0x0058119B
 };
@@ -51,7 +51,7 @@ struct CTCActionScaled {                    // interface type 0x8C component
     void Recalculate();                     // 0x00800020
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void FinishAction();            // slot 4: 0x00694430
     unsigned char _pad04[4];                // +0x04
@@ -61,7 +61,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
     unsigned char _pad62[0xa8 - 0x62];      // +0x62
 };
 
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase {
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     virtual void FinishAction();
     void SetWeaponLoaded();                 // 0x0078B6B0
 };

@@ -1,4 +1,4 @@
-struct CEngineWeatherRenderer;
+class CEngineWeatherRenderer;
 
 unsigned long __fastcall PeekSceneFilterFlags(CEngineWeatherRenderer* renderer)
 {

@@ -10,13 +10,13 @@
 // Shape: the world coordinate is a C2DCoordI temporary (X truncated first) whose slot the local C3DVector reuses; the
 // cell is an inline CGameMap accessor taking a C2DCoordI temporary (gives the X-first truncation order) and indexing
 // rows bottom-up (`(SizeY - y - 1) * SizeX + x`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 
-struct CGameMapCell {                                        // 7 bytes
+class CGameMapCell { public:                                        // 7 bytes
     unsigned char AtmosThemes[3];
     unsigned char AtmosBlends[2];
     signed char   SoundTheme;
@@ -29,7 +29,7 @@ template <class T> struct CVector {
     const T* begin() const { return _M_start; }
     const T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CGameMap {
+class CGameMap { public:
     void*                 _vptr;                             // +0x00
     CVector<CGameMapCell> Cells;                             // +0x04
     void*                 Map;                               // +0x10
@@ -39,12 +39,12 @@ struct CGameMap {
     long                  SizeY;                             // +0x20
     const CGameMapCell* PeekCell(const C2DCoordI& pos) const { return &Cells[(SizeY - pos.Y - 1) * SizeX + pos.X]; }
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1a78];
     CGameMap*     GameMap;                                   // +0x1A78 scoped_ptr<CGameMap>
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09();

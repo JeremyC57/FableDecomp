@@ -17,7 +17,7 @@ struct CMember_00453465 {
     CMember_00453465();                              // 0x00453465
 };
 
-struct COpinionDeedMaskDef : CBase_00430370 {
+class COpinionDeedMaskDef : public CBase_00430370 { public:
     unsigned char _pad[0x38];
     CMember_00453465 m_member;                       // +0x3c
     virtual void v00();

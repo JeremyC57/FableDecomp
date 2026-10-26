@@ -25,7 +25,7 @@ private:
     void* PStringData;
 };
 
-struct CCPPointerInfo {                                 // Ego_r.pdb, 12 bytes
+class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                             // +0x0
     void (__fastcall* DeleteFunc)(void* data);          // +0x4
     void* Data;                                         // +0x8

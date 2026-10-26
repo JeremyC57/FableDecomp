@@ -11,19 +11,19 @@
 //   as the argument) -- one load in ecx copied to eax for the push, where a named index local loads eax directly; the group
 //   entry's release is the pointee's long `DecRef(); if (GetRefCount() == 0) Delete();` (`dec edi ; mov edx,edi ; test edx,edx`).
 #include <stddef.h>
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     bool operator!=(const wchar_t* text) const;         // 0x0099B150
 };
 extern const CWideString g_EmptyWideString;             // 0x013BCA24
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;            // 0x0099E960
     CWideString ToWideString() const;                   // 0x0099E480
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);                    // slot 0
     virtual void Delete();                              // slot 1
     unsigned long IVRefCount;                           // +0x04
@@ -36,7 +36,7 @@ struct CIVCountedPointeeBase {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {           // 4 bytes
+template <class T> class CIVCountedPointer { public:           // 4 bytes
     T* Object;
     ~CIVCountedPointer()
     {
@@ -51,24 +51,24 @@ struct CDataBank {                                      // NGameText::CDataBank
     CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CQuestCardDef {
+class CQuestCardDef { public:
     unsigned char _pad00[0x28];
     long QuestName;                                     // +0x28 text index
     long QuestSummary;                                  // +0x2c
     long QuestObjective;                                // +0x30
     long SuccessSummary;                                // +0x34
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
-struct CThing;
-struct CTCQuestCard {
+class CThing;
+class CTCQuestCard { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     bool          ToBeRemoved;                          // +0x08

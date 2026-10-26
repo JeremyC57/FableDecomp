@@ -26,7 +26,7 @@ public:
 };
 
 // Shared representation block of a CCharString.
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                           // characters
     unsigned long Length;                          // character count
 };
@@ -64,7 +64,7 @@ struct CCursorPos {
     unsigned long Line;                            // line number for error messages
 };
 
-struct CParsedItem;
+class CParsedItem;
 typedef void (*TStringParserErrorCallback)(CCharString* message);
 
 class CStringParser : public CBase {               // vtable 0x0122D874

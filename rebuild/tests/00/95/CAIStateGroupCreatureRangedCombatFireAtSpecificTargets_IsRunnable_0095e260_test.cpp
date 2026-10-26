@@ -1,6 +1,6 @@
 // behaviour test for CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable (0x0095E260)
 #include <cstdio>
-struct CThing { bool carriesProjectile; bool hasTC8; CThing* specificTarget; };
+class CThing { public: bool carriesProjectile; bool hasTC8; CThing* specificTarget; };
 struct Group {
     CThing* creature; CThing* PTargetThing;
     bool IsRunnable()

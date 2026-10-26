@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2B6F0, length 80 bytes.
 // Leaf: ??1CMeshData@@QAE@XZ
 // Shape: a non-virtual destructor in a polymorphic class, `this` in edi, the array destroyed by a count-down loop (esi stepping back by 4, ebx the count), `ret`.
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void Destroy(int flags);
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +0x04

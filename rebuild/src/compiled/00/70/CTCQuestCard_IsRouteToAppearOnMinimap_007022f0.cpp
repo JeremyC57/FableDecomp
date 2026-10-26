@@ -1,5 +1,5 @@
 #include "engine/CTCQuestCard.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     char pad[0x59];
     char b59;
     char b5a;

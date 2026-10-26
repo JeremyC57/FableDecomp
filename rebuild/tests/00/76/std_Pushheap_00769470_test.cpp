@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for 0x00769470: _Push_heap over a 16-byte pair<unsigned long, C3DVector> keyed max-heap.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 typedef C3DVector Payload;
 #define SETPAY(p,i) ((p).X = (float)(i), (p).Y = 2.0f * (i), (p).Z = -1.0f)
 #define CHKPAY(p,i) ((p).X == (float)(i) && (p).Y == 2.0f * (i) && (p).Z == -1.0f)
 template<class K, class V> struct pair { K first; V second; };
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };
 template<class _RanIt, class _Diff, class _Ty, class _Pr>

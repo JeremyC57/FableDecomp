@@ -70,7 +70,7 @@ struct CThingFilter_IsThrownByExplosion {
 };
 }
 
-struct CApplyAdditionalExplosiveImpulseIfInsideRing {   // 0x14 bytes by value
+class CApplyAdditionalExplosiveImpulseIfInsideRing { public:   // 0x14 bytes by value
     float m_data[5];
     void operator()(CThing* thing) const;   // 0x0080DB70
 };

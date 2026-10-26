@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsStandard::SetPhysicsEnabled (0x00723630, slot 36)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCPhysicsStandard {
     C3DVector Velocity; bool Moving, OldMoving, OnGround, OnMesh, PhysicsEnabled; int movingCalls; void* standingOn;
     void SetAsMoving(bool m) { Moving = m; ++movingCalls; }

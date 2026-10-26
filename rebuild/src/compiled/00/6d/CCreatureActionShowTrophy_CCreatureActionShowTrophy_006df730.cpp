@@ -9,10 +9,10 @@
 // UNALIGNED offset +0xb5 (after the byte at +0xb4): the class is packed to 1 (Ego_r.pdb packs it the same way).
 // The PDB header (CCreatureAction_ShowTrophy, 0x0c bytes high) flattens the base, so `this` is modelled locally.
 #include "fable_string.h"
-struct CThing;
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CThing;
+class CThingCreatureBase;
+class CAnimationEntry;
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -31,14 +31,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x01238
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {      // vtable 0x0125F7B4; retail sizeof 0xbd
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:      // vtable 0x0125F7B4; retail sizeof 0xbd
     CIntelligentPointer PTrophy;            // +0xa8 CIntelligentPointer<CThing>
     long TrophyState;                       // +0xb0
     unsigned char Shown;                    // +0xb4

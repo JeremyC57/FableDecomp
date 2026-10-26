@@ -9,7 +9,7 @@ static void* g_freed = 0;
 
 static void FreeBlock(void* p) { g_freed = p; g_events[g_count++] = 1; std::free(p); }
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass() { g_events[g_count++] = 2; }
 };
 

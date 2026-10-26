@@ -15,7 +15,7 @@ template <class T1, class T2> struct pair {
 };
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const stl::pair<K, V>& a, const stl::pair<K, V>& b) const { return a.first < b.first; }
 };
 

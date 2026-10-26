@@ -13,8 +13,8 @@
 #include <stddef.h>
 #include "engine/CDefinitionManager.h"     // the base (PDB 0xf0 bytes); only its constructor is used here
 
-struct CCharString;
-struct CWideString {
+class CCharString;
+class CWideString { public:
     wchar_t* m_pData;
     CWideString(const wchar_t* text);          // 0x0099B6B0
     ~CWideString();                            // 0x0099B510
@@ -29,7 +29,7 @@ struct CDefinitionManagerRetail {              // CDefinitionManager as this con
 
 static inline CWideString ScriptDefinitionFileName() { return CWideString(L"script.bin"); }
 
-struct CScriptDefinitionManager : CDefinitionManagerRetail {   // vtable 0x012C2648
+class CScriptDefinitionManager : public CDefinitionManagerRetail { public:   // vtable 0x012C2648
     virtual void v00();
     CScriptDefinitionManager();
 };

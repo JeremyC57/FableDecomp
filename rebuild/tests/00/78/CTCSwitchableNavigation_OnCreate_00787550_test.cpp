@@ -1,7 +1,7 @@
 // Behaviour test for CTCSwitchableNavigation::OnCreate (0x00787550): MapIndex = the map index at the thing's position.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static const C3DVector* g_queried = 0;
 
 struct CNavMapSource {
@@ -10,12 +10,12 @@ struct CNavMapSource {
 };
 static CNavMapSource g_source;
 
-struct CThing {
+class CThing { public:
     C3DVector m_position;
     const C3DVector& GetPosition() const { return m_position; }
 };
 
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     CThing* ParentThing;
     long    MapIndex;
     CNavMapSource* GetNavMapSource() { return &g_source; }

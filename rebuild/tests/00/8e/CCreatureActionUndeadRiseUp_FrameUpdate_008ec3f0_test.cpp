@@ -3,7 +3,7 @@
 #include <cstdio>
 static int g_removed = 0, g_base = 0, g_unsuspend = 0;
 struct CComponent { unsigned char m_flag; };
-struct CThing {
+class CThing { public:
     unsigned int m_bits;
     CComponent* m_comp9;
     bool GetInterface(CComponent** out, int type) { if (m_bits & (1u << type)) { *out = m_comp9; return true; } return false; }

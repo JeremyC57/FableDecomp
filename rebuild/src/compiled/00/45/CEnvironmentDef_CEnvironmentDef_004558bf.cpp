@@ -17,7 +17,7 @@ struct CMember_0099e4b0 {
     CMember_0099e4b0();                              // 0x0099E4B0
 };
 
-struct CEnvironmentDef : CBase_00430370 {
+class CEnvironmentDef : public CBase_00430370 { public:
     unsigned char _pad[0x38];
     CMember_0099e4b0 m_member;                       // +0x3c
     virtual void v00();

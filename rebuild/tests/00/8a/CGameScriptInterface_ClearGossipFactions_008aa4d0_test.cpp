@@ -2,7 +2,7 @@
 
 struct CLipSyncEntry;
 
-struct CCharString {
+class CCharString { public:
     void* p;
     int* refcount;
     CCharString() : p(0), refcount(0) {}
@@ -28,7 +28,7 @@ struct GossipFactionLipSyncMap {
 
 GossipFactionLipSyncMap DAT_013bae5c;
 
-struct CGameScriptInterface { void* vt; };
+class CGameScriptInterface { public: void* vt; };
 
 void __fastcall CGameScriptInterface_ClearGossipFactions(CGameScriptInterface* self, CCharString gossipFaction)
 {

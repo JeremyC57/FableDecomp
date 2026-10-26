@@ -11,13 +11,13 @@
 // the compare and its `jle` because the store opens BOTH arms of the if/else and is hoisted above the
 // branch; a `bool available = IsAvailableToHit(); Set(frame); if (available)` form keeps the inline's
 // bl result register instead. Both position arguments are unused (`ret 8`).
-struct C3DVector;
+class C3DVector;
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     long          LastWorldFrameHit;                        // +0x0c

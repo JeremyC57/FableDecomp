@@ -5,7 +5,7 @@
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
 namespace NCameraModes {
-struct CScriptModuleBase {                 // vtable 0x01255F74 (.?AVCScriptModuleBase@NCameraModes@@)
+class CScriptModuleBase { public:                 // vtable 0x01255F74 (.?AVCScriptModuleBase@NCameraModes@@)
     void* _vptr;
     ~CScriptModuleBase();                   // 0x00854310
 };

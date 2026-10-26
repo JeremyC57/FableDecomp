@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCPPointerInfo { long RefCount; int deleted; };
+class CCPPointerInfo { public: long RefCount; int deleted; };
 struct CountedPtr {
     void* Data;
     CCPPointerInfo* Info;
@@ -26,7 +26,7 @@ struct CountedPtr {
         return *this;
     }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };

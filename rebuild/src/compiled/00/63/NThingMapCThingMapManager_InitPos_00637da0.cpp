@@ -6,7 +6,7 @@
 // cell grid width at +0x30 (Dimensions); CThingMap Area top-left (C2DCoordI) at +0x20 (as in the landed GetThingMapAt 0x00637A80).
 // Shape: the shift is read first; the cell index is `pos.Y / 128 * Width + pos.X / 128` (signed `cdq ; and edx,7Fh ; add ; sar 7`);
 // the out cell is stored before the tests; the -1 shift arm zeroes the offsets, the other computes them; both misses clear the cell.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
 };
@@ -17,7 +17,7 @@ struct SMapwhoLevel {                           // 16 bytes
 };
 extern SMapwhoLevel g_MapwhoLevels[];           // 0x0137DAD8
 namespace NThingMap {
-struct CThingMap {
+class CThingMap { public:
     unsigned char _pad00[0x20];
     C2DCoordI     Origin;                       // +0x20 (Area top-left)
 };
@@ -30,7 +30,7 @@ struct CMapwhoPos {
     long          X;                            // +0x04
     long          Y;                            // +0x08
 };
-struct CThingMapManager {
+class CThingMapManager { public:
     unsigned char _pad00[0x08];
     SGameMapCell* Cells;                        // +0x08
     unsigned char _pad0c[0x30 - 0x0c];

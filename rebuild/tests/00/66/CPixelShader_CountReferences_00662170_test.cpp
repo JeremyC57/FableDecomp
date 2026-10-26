@@ -5,7 +5,7 @@ struct CInner {
     unsigned long refCount;
 };
 
-struct CPixelShader {
+class CPixelShader { public:
     char pad[0xe0];
     CInner* inner;
 };

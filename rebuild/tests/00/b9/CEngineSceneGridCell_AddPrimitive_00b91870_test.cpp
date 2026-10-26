@@ -3,9 +3,9 @@
 #include <cstring>
 static int g_inv = 0; static void* g_list = 0;
 struct CSceneGridOwner_00b91710 { void InvalidateAll() { ++g_inv; } };
-struct CEngineSceneGridCell;
-struct CEngineInternalPrimitiveBase { unsigned char _pad[0x20]; CEngineSceneGridCell* m_pCell; void AddToList(void* l) { g_list = l; } };
-struct CEngineSceneGridCell { CSceneGridOwner_00b91710* m_pOwner; unsigned char m_list[0x30]; long m_count; unsigned char _pad38[0xc]; unsigned char m_dirtyFlags;
+class CEngineSceneGridCell;
+class CEngineInternalPrimitiveBase { public: unsigned char _pad[0x20]; CEngineSceneGridCell* m_pCell; void AddToList(void* l) { g_list = l; } };
+class CEngineSceneGridCell { public: CSceneGridOwner_00b91710* m_pOwner; unsigned char m_list[0x30]; long m_count; unsigned char _pad38[0xc]; unsigned char m_dirtyFlags;
     void AddPrimitive(CEngineInternalPrimitiveBase* p) { p->m_pCell = this; p->AddToList(m_list); ++m_count; if (m_dirtyFlags & 7) { m_dirtyFlags &= ~7; if (m_pOwner) m_pOwner->InvalidateAll(); } } };
 int main() {
     CEngineSceneGridCell c; CSceneGridOwner_00b91710 o; std::memset(&c, 0, sizeof c); c.m_pOwner = &o; CEngineInternalPrimitiveBase p; c.AddPrimitive(&p);

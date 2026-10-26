@@ -6,8 +6,8 @@
 // render-target dimensions. C2DVector = {X, Y}.
 // Shape: each inlined float argument is copied into the frame word [esp+8] (`mov eax,[edi] ; mov [esp+8],eax`)
 // before the GFGetSystemManager call; the converters keep the display manager in a named local.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

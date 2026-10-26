@@ -17,7 +17,7 @@ struct _GUID {
     unsigned char  Data4[8];
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     void*         _vtable;                  // +0x00
     unsigned char _pad04[4];                // +0x04
     bool          WindowsQuit;              // +0x08

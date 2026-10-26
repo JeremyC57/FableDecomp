@@ -11,14 +11,14 @@
 //   have same-TU stand-ins (their out slots do not escape, so every temporary lands in the dead argument slots); GetInterface
 //   stores the component as ONE ternary `*ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;`
 //   (the if/assign spelling leaves effectType its own frame word and the found bool in memory).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct CDefStringTable {
     CCharString GetString(CDefString name);           // 0x009D49B0
 };
@@ -30,7 +30,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                                  // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -44,7 +44,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -54,7 +54,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -68,11 +68,11 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
     return true;
 }
 #pragma auto_inline(on)
-struct CSpecialAbilitiesMultiArrowDef : CDefClassBase {
+class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public:
     unsigned char _pad08[0x60 - 0x08];
     CDefString    CastSound;                          // +0x60
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
     long GetDefIndexFromName(const CCharString& name, long column);       // 0x009AD390
     bool GetDef(long index, CDefPointer<CSpecialAbilitiesMultiArrowDef>* out);   // 0x007CC8E0
@@ -136,7 +136,7 @@ public:
 };
 class CThingCreatureBase : public CThing {};
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position);   // 0x0072AB70
-struct CSoundPair {
+class CSoundPair { public:
     long First, Second;
     CSoundPair() : First(0), Second(0) { }
 };

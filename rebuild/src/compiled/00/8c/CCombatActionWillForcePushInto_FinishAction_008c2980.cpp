@@ -10,9 +10,9 @@
 //          CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the landed WillEnflameInto::FinishAction (0x008C2A80) with a named animation string: the 0x120-byte frame
 // holds the string word below the 0x11c-byte action temporary; the temporary dies first, then the string.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -36,7 +36,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -44,7 +44,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCombatAction_WillForcePushInto : CCombatActionBase {
+class CCombatAction_WillForcePushInto : public CCombatActionBase { public:
     void FinishAction();
 };
 

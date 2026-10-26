@@ -12,7 +12,7 @@
 // Shape: `while (!GSI->MsgIsLevelLoaded("Empty"))` (implicit conversion temporary, neg/sbb/inc negation) with the
 //   termination test inside; the spawned thread is the TestForLampOff new-expression (its name a conditional temporary
 //   guarded by bit 0 of ebx, whose flag word is zeroed at entry).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -20,7 +20,7 @@ struct CCharString {
 };
 
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes (CScriptProcessBase + thread state)
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes (CScriptProcessBase + thread state)
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -38,7 +38,7 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
+class CGameScriptInterface { public:                 // vtable slots per ghidra_out/cgsi_slots_aligned.tsv
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                         // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -79,7 +79,7 @@ struct CGameScriptInterface {                 // vtable slots per ghidra_out/cgs
     virtual void ActivateQuest(const CCharString& quest) const;  // slot 276 (+0x450)
 };
 
-struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                    // retail 0x40 bytes (PDB 0x54: debug containers)
     unsigned char _body[0x40];                          // +0x00 .. +0x40 (vptr, PActiveThread at +0x2c)
     bool IsActiveThreadTerminating();                   // 0x00CB7940
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

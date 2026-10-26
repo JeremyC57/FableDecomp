@@ -11,9 +11,9 @@
 // local in edi, the 0xb0-byte action a temporary); the other arm tests the holder's bit 26 of
 // bitset word 0 (`test dword [eax+20h],4000000h`) and calls the component straight off the
 // GetInterface result (`mov ecx,[eax+4]`).
-struct CTCBase;
-struct CCreatureActionBase;
-struct CThingPlayerCreature;
+class CTCBase;
+class CCreatureActionBase;
+class CThingPlayerCreature;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CTCInterface1A {
     void Notify();                                          // 0x005D8E50
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -56,19 +56,19 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer { };
+class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 
-struct CCreatureActionBase {                        // retail sizeof 0xa8
+class CCreatureActionBase { public:                        // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_DeclarePlayerACriminal : CCreatureActionBase {
+class CCreatureAction_DeclarePlayerACriminal : public CCreatureActionBase { public:
     CIntelligentPointer<CThingPlayerCreature> PCriminal;   // +0xa8
     CCreatureAction_DeclarePlayerACriminal(CThingCreatureBase* owner, CThingPlayerCreature* criminal);   // 0x00843610
 };
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                // +0x04 (CTCBase)
     void OnUseBase(CThingCreatureBase* user);       // 0x007EAB90 (empty base implementation)

@@ -3,14 +3,14 @@
 #include <cstddef>
 // behaviour test: CCameraModeDef::Transfer visits every field once, in the retail order, with the right overload
 static char g_log[8192];
-struct CPersistContext {
+class CPersistContext { public:
     char* Base;
     void Note(const char* kind, void* p) { char b[32]; std::sprintf(b, "%s%d;", kind, (int)((char*)p - Base)); std::strcat(g_log, b); }
     void TransferLong(long* value) { Note("L", value); *value += 1; }
     void TransferFloat(float* value) { Note("F", value); *value += 0.5f; }
     void TransferBool(bool* value) { Note("B", value); *value = !*value; }
 };
-struct CCameraModeDef {
+class CCameraModeDef { public:
     long   CameraMode;                                      // +0x3c
     float  StringLengthXY;                                  // +0x40
     float  CageRadius;                                      // +0x44

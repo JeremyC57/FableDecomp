@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CFontManager {
+class CFontManager { public:
     void* vftable;
     int destroyed;
 };

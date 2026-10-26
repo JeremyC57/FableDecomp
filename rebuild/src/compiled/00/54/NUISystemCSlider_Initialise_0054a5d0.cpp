@@ -17,7 +17,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
@@ -34,7 +34,7 @@ template<class T> struct CCountedPointer {
 };
 
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -104,7 +104,7 @@ struct CSprite : NUISystem::CComponent {
 };
 
 namespace NUISystem {
-struct CSlider : CSprite {
+class CSlider : public CSprite { public:
     CComponent* PLeftArrow;                // +0x1d8
     CComponent* PRightArrow;               // +0x1dc
     virtual void Initialise();

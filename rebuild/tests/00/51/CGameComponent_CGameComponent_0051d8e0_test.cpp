@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstddef>
 // Behaviour model of CGameComponent::CGameComponent(CGame*) @ 0x0051D8E0.
-struct CGame { int x; };
+class CGame { public: int x; };
 struct CBase { virtual void v00() {} CBase() {} };
 struct CGameListener { virtual void v00() {} CGameListener() {} };
-struct CGameComponent : CBase, CGameListener {
+class CGameComponent : public CBase, public CGameListener { public:
     bool m_initialised; bool m_active; CGame* m_pGame;
     virtual void v00() {}
     CGameComponent(CGame* pGame) : CBase(), CGameListener(), m_initialised(false), m_active(false), m_pGame(pGame) {}

@@ -1,6 +1,6 @@
 #include <cstdio>
 static const char* g_t = 0; static long g_l = 0;
-struct CCharString { void* p; CCharString(const char* t, long l) { g_t = t; g_l = l; p = 0; } };
+class CCharString { public: void* p; CCharString(const char* t, long l) { g_t = t; g_l = l; p = 0; } };
 struct Tag { CCharString Name; Tag() : Name("CTCDNavigationSeed", -1) {} };
 int main()
 {

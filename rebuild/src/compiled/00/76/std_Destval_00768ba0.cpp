@@ -4,8 +4,8 @@
 // push esi; mov esi,ecx; lea ecx,[esi+0x4]; call 0x0099EAE0; mov ecx,esi; pop esi; jmp 0x0099EAE0
 // Destroys a record of two CCharString members, the one at +0x4 first and the one at +0x0 as the tail jump;
 // both calls go to CCharString::~CCharString @ 0x0099EAE0 (release 0x0099E9B0, instance count 0x013BD800).
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     ~CCharString();                 // 0x0099EAE0
 };

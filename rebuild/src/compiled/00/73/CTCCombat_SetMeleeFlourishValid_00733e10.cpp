@@ -12,14 +12,14 @@
 // lookup key and the block-scoped name string both live in the dead `valid` argument slot; `++index == 0` (`inc ; jne`) gates the
 // announcement; the def pointer's dtor is null-tested and calls the def's inline ReleaseTemporary() over its ref-count base
 // at +4 (`mov esi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec esi ; mov edx,esi ; test edx,edx`).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
 };
-struct CHeroCombatDef : CDefVirtual, CRefCounted {
+class CHeroCombatDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0xe1 - 0x08];
     bool MeleeFlourishUsable;                           // +0xe1
     void ReleaseTemporary()
@@ -43,7 +43,7 @@ struct CHeroCombatDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -55,7 +55,7 @@ template <class T> struct CDefPointer {
 struct CTCSound {
     unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -71,7 +71,7 @@ struct CThing {
     }
     CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
 };
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];

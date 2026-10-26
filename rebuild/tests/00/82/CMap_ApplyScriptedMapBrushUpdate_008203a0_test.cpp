@@ -20,22 +20,22 @@ static const float g_maxSize_012724c0 = 2048.0f;
 static const float g_epsilon_0129ba3c = 1e-4f;
 static float Abs(float v) { return v < 0 ? -v : v; }
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI() {}
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
 static int g_areaCalls = 0;
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     C2DBoxI Area;
     const C2DBoxI& GetGameArea() const { ++g_areaCalls; return Area; }
     float GetGameHeight(long x, long y) const
@@ -47,7 +47,7 @@ struct CScriptedMapBrush {
     unsigned long GetTheme(long x, long y, unsigned long layer) const { return (unsigned long)((x + y + layer) % 3); }
     unsigned char GetThemeBlend(long x, long y, unsigned long layer) const { return (unsigned char)(x * 16 + y * 4 + layer); }
 };
-struct CHeightMapCell {
+class CHeightMapCell { public:
     float         Height;
     unsigned char EngineThemePaletteIndex[3];
     unsigned char EngineBlend[2];
@@ -60,7 +60,7 @@ template <class T> struct CRetailVector {
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMap {
+class CHeightMap { public:
     CRetailVector<CHeightMapCell> Cells;
     long SizeX;
     long SizeY;
@@ -99,7 +99,7 @@ struct CMapOwner {
 };
 static char g_order[8];
 static int g_orderCount = 0;
-struct CMap {
+class CMap { public:
     CMapOwner*             POwner;
     scoped_ptr<CHeightMap> HeightMap;
     unsigned char          RegionKey[4];

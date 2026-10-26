@@ -7,10 +7,10 @@
 // `operator new(0x10)` and passes (element, false). The first two members follow the PDB names; +8/+0xC are
 // descriptive (a flag byte and a -1 index). The manifest label may be propagated.
 // Shape: plain init-list stores in member order; `this` returned in eax.
-struct CThing;
-struct CTCSolidToThing;
+class CThing;
+class CTCSolidToThing;
 
-struct CThingFilter_SolidToThing {
+class CThingFilter_SolidToThing { public:
     CThing*          SourceThing;                   // +0x00
     CTCSolidToThing* PTCSolidToThing;               // +0x04
     bool             m_flag;                        // +0x08

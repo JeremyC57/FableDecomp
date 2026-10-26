@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CAFile;
+class CAFile;
 static long CAFile_GetAlignment(const CAFile* file)
 {
     (void)file;

@@ -1,12 +1,12 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     void InitialiseFromSphere(const C3DVector& centre, const C3DVector& extent)
     {

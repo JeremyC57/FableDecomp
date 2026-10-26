@@ -7,9 +7,9 @@
 //          +0x11c, DirectionOfHit +0x128, MoveOnHitOverride +0x134, CreateDustEffect +0x135, FrameForDust +0x138,
 //          DustTravelDirection +0x13c.
 // Shape: memberwise copy in declaration order (same form as the landed TrollThrowProjectile copy 0x008C7D80).
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }                          // leaves the words unset
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy (fixed-offset moves)
@@ -26,12 +26,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {         // CIntelligentPo
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);                                                    // 0x0062F3B0
 };
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {   // vtable 0x01264734; retail sizeof 0x148
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:   // vtable 0x01264734; retail sizeof 0x148
     CIntelligentPointer PThingThatHit;      // +0x114
     C3DVector PointOfHit;                   // +0x11c
     C3DVector DirectionOfHit;               // +0x128

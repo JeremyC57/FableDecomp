@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct Node { Node* Next; Node* Prev; struct CClass* Value; };
+struct Node { Node* Next; Node* Prev; class CClass* Value; };
 static Node g_head; static int g_deleted = 0;
-struct CClass { Node* node; virtual ~CClass() { ++g_deleted; node->Prev->Next = node->Next; node->Next->Prev = node->Prev; } };
+class CClass { public: Node* node; virtual ~CClass() { ++g_deleted; node->Prev->Next = node->Next; node->Next->Prev = node->Prev; } };
 struct F { void* vt; unsigned char v[12]; unsigned long a, b; Node* Head;
     void DeleteAllClasses() { while (Head->Next != Head) { CClass* c = Head->Next->Value; if (c) delete c; } } };
 int main()

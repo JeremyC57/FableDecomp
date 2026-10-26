@@ -1,7 +1,7 @@
 // Behaviour test for CWorldMap::SetPlayerPos 0x005063E0: region/level loading decisions, position record, CacheMaps.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPlayerPositionInfo { bool Set; C3DVector Pos; };
 template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -13,7 +13,7 @@ static bool g_bRegionLoadingEnabled = true;
 static long g_unloadedRegion = -1, g_loadedRegion = -1, g_loadedLevel = -1; static int g_cache = 0;
 static bool g_mapLoaded = false;
 
-struct CWorldMap {
+class CWorldMap { public:
     CVector<CPlayerPositionInfo> PlayerPositionInfo;
     virtual bool IsMapLoaded(long) const { return g_mapLoaded; }
     virtual long GetMapNumberAt(const C3DVector& pos) const { return (long)(pos.X / 100.0f); }   // map 0 = none

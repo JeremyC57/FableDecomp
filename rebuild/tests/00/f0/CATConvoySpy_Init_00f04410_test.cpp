@@ -1,9 +1,9 @@
 #include <cstdio>
 
-struct CScriptThing { void* __vftable; void* PImp_Data; void* PImp_Info; };
+class CScriptThing { public: void* __vftable; void* PImp_Data; void* PImp_Info; };
 static CScriptThing g_hero; static int g_rel = 0; static const CScriptThing* g_relA[2]; static const CScriptThing* g_relB[2];
 static const CScriptThing* g_modeThing = 0; static long g_mode = -1; static const CScriptThing* g_targetThing = 0; static long g_sum = -1;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() { }
     virtual void v001() { }
     virtual void v002() { }

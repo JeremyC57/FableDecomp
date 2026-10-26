@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCSleep {
+class CTCSleep { public:
     unsigned char _body[0x20];       // sizeof(CTCSleep) = 0x20
     CTCSleep(long owner);                   // 0x004D60E5
 };

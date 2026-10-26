@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
 };
 
 namespace NEntityEvents {
-struct CEventHitThing : CEventBase_NEntityEvents { // vtable 0x01272390
+class CEventHitThing : public CEventBase_NEntityEvents { public: // vtable 0x01272390
     CIntelligentPointer m_thing;                   // +0x08
     bool                m_a;                       // +0x10
     bool                m_b;                       // +0x11

@@ -1,6 +1,6 @@
 // Behaviour test for CTCTavernGameCardBlackjack::CanSplit @ 0x007DA1A0: money covers the bet, not split yet, two cards of equal rank.
 #include <cstdio>
-struct CCard { long Index; };
+class CCard { public: long Index; };
 struct CVector { CCard** first; CCard** last; unsigned long size() const { return (unsigned long)(last - first); } };
 struct CTCTavernGameCardBlackjack {
     long BaseBet, CurrentMoney; CVector* CurrentPlayerCards; bool HasPlayerSplit;

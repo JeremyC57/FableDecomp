@@ -6,7 +6,7 @@
 //          last one a tail jump).
 // Shape: a non-polymorphic class of two 8-byte intelligent pointers; the dead flag is bit 0 of the thing's byte
 // +0x91; every use calls GetPItem again (no local).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                    // +0x91 bit 0: dead / being removed
     void Kill(bool immediate);                     // 0x004C9B80

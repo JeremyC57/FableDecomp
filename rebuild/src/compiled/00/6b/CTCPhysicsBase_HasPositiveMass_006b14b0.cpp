@@ -6,7 +6,7 @@
 // Leaf: HasPositiveMass
 #include "engine/CTCPhysicsBase.h"
 
-struct CPhysicsDef {
+class CPhysicsDef { public:
     unsigned char _pad00[0x38];
     float         Mass;                     // +0x38
 };

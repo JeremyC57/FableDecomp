@@ -6,12 +6,12 @@ struct CThingSub {
     float radius;      // +0x34
 };
 
-struct CThing {
+class CThing { public:
     char pad[0x60];
     CThingSub* sub;    // +0x60
 };
 
-struct CThingFilter_MinAllowedRadius {
+class CThingFilter_MinAllowedRadius { public:
     float minAllowedRadius; // +0x00
     bool operator()(CThing* thing);
 };

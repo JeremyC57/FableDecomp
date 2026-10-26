@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesSummonSpellDef { void* vftable; };
+class CSpecialAbilitiesSummonSpellDef { public: void* vftable; };
 
 extern void __fastcall CSpecialAbilitiesSummonSpellDef_dtor(CSpecialAbilitiesSummonSpellDef* def);
 extern void __cdecl op_delete(void* p);

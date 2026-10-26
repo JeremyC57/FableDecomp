@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -65,7 +65,7 @@ CANCEL_CLASS(CTCFireballSpell, CancelMove, 0x9d)
 CANCEL_CLASS(CTCDivineWrath, CancelAbilities, 0x85)
 CANCEL_CLASS(CTCUnholyPower, CancelAbilities, 0x86)
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;
     CThing* ParentThing;
     long    _base08;

@@ -1,4 +1,4 @@
-struct CCreatureAction_StartFillingTankard {
+class CCreatureAction_StartFillingTankard { public:
     void* vftable;
 };
 

@@ -1,8 +1,8 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CWorldMap { virtual ~CWorldMap() { } virtual long GetMapNumberAt(const C3DVector& pos) { return (long)pos.X + 70000; } };
+class C3DVector { public: float X, Y, Z; };
+class CWorldMap { public: virtual ~CWorldMap() { } virtual long GetMapNumberAt(const C3DVector& pos) { return (long)pos.X + 70000; } };
 static CWorldMap g_map;
-struct CThing { unsigned short MapNumber; void SetCurrentMapNumber(unsigned short m) { MapNumber = m; } };
+class CThing { public: unsigned short MapNumber; void SetCurrentMapNumber(unsigned short m) { MapNumber = m; } };
 static int g_moving = -1;
 struct CTCPhysicsLight {
     CThing* sub;

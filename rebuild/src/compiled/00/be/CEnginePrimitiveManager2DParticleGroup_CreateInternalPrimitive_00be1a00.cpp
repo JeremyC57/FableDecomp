@@ -14,7 +14,7 @@
 
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -38,7 +38,7 @@ struct CRetailSTLportList {                        // STLport list: the sentinel
     }
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };
@@ -46,7 +46,7 @@ struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and
 struct CPrimitiveIterator { unsigned char m_used; void* m_pNode; };
 
 template <class T>
-struct CArray {                                    // retail CArray: first, last, end
+class CArray { public:                                    // retail CArray: first, last, end
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -73,7 +73,7 @@ struct CEngineInternalPrimitive2DParticleGroup : CEngineInternalPrimitiveParticl
 
 enum EEnginePrimitiveType { ENGINE_PRIMITIVE_TYPE_2D_PARTICLE_GROUP = 0x20 };
 
-struct CEnginePrimitiveManager2DParticleGroup {
+class CEnginePrimitiveManager2DParticleGroup { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);
 };
 

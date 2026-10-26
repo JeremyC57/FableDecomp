@@ -12,37 +12,37 @@
 // Layout: PDB (Ego_r) CEnginePrimitiveAnimation (0x64): Anim +0x00, WorldPos +0x14, Orientation +0x30; member types and
 //   names from struct_layouts_egor.tsv. CIVCountedPointer's target keeps its reference count at +0x04.
 //   Local model: no engine/ header exists for these classes.
-struct C3DVector {                                      // the engine vector has a user-written member-wise copy
+class C3DVector { public:                                      // the engine vector has a user-written member-wise copy
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };   // 24 bytes
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };   // 24 bytes
 struct CCountedSharedData { long _header; long RefCount; };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* P;
     CIVCountedPointer(const CIVCountedPointer& o) : P(o.P) { if (P) ++P->RefCount; }
 };
-struct C3DAnimationBlendState {                         // 8 bytes
-    struct CSharedData : CCountedSharedData {};
+class C3DAnimationBlendState { public:                         // 8 bytes
+    class CSharedData : public CCountedSharedData { public:};
     virtual ~C3DAnimationBlendState();
     CIVCountedPointer<CSharedData> Data;                // +0x04
 };
-struct C3DAnimationInterpolator {                       // 20 bytes
+class C3DAnimationInterpolator { public:                       // 20 bytes
     virtual ~C3DAnimationInterpolator();
     C3DAnimationBlendState StartState;                  // +0x04
     C3DAnimationBlendState EndState;                    // +0x0c
 };
-struct C3DPositionInterpolator {                        // 28 bytes
+class C3DPositionInterpolator { public:                        // 28 bytes
     virtual ~C3DPositionInterpolator();
     C3DVector StartPosition;                            // +0x04
     C3DVector EndPosition;                              // +0x10
 };
-struct C3DOrientationInterpolator {                     // 52 bytes
+class C3DOrientationInterpolator { public:                     // 52 bytes
     virtual ~C3DOrientationInterpolator();
     CRightHandedSet StartOrientation;                   // +0x04
     CRightHandedSet EndOrientation;                     // +0x1c
 };
-struct CEnginePrimitiveAnimation {
+class CEnginePrimitiveAnimation { public:
     C3DAnimationInterpolator   Anim;                    // +0x00
     C3DPositionInterpolator    WorldPos;                // +0x14
     C3DOrientationInterpolator Orientation;             // +0x30

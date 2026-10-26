@@ -6,7 +6,7 @@
 // {PMember, IsActive, JoinedFrame, DeactivatedFrame}. The vtable stored at +0 (0x01264BAC) is
 // CIntelligentPointer's own, so the pointer is a MEMBER at +0 and the class itself is not
 // polymorphic. CIntelligentPointer(p) is the inlined family-44 shape: base ctor, vtable, SetPItem(p).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -20,7 +20,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {           // vtable 0x012
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CIntelligentPointer PMember;                                 // +0x00 CIntelligentPointer<const CThingAICreature>
     bool                IsActive;                                // +0x08
     unsigned long       JoinedFrame;                             // +0x0c

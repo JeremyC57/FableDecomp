@@ -12,7 +12,7 @@
 // Shape: GetTC is a `__forceinline` `T* c = 0; if (HasTC(k)) c = Find(k); return c;` inlined at each of the three zoom
 //   calls (the `xor ecx,ecx` preload each time); its key shares the dead `event` argument slot.
 #include "engine/CInputProcessGameBase.h"
-struct C2DVector {
+class C2DVector { public:
     float x, y;
 };
 class CInputEvent;
@@ -38,7 +38,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     CTCMap        m_tcs;                           // +0x44

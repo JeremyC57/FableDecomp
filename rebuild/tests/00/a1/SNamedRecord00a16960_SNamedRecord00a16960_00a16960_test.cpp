@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct SCountBlock { long m_references; }; static long g_copies = 0; struct CCountedRef { SCountBlock* m_pCount; CCountedRef() : m_pCount(0) { } CCountedRef(const CCountedRef& o) : m_pCount(o.m_pCount) { if (m_pCount) ++m_pCount->m_references; } };
-struct CCharString { void* m_p; CCharString() : m_p(0) { } CCharString(const CCharString& o) : m_p(o.m_p) { ++g_copies; } };
+class CCharString { public: void* m_p; CCharString() : m_p(0) { } CCharString(const CCharString& o) : m_p(o.m_p) { ++g_copies; } };
 struct SNamedRecord { long m_0; CCountedRef m_ref; long m_8, m_c, m_10, m_14, m_18; CCharString m_name; SNamedRecord() { } SNamedRecord(const SNamedRecord& o) : m_0(o.m_0), m_ref(o.m_ref), m_8(o.m_8), m_c(o.m_c), m_10(o.m_10), m_14(o.m_14), m_18(o.m_18), m_name(o.m_name) { } };
 
 int main() {

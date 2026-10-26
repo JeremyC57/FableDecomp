@@ -28,14 +28,14 @@ struct CLSocketServer { void CloseSocket(void*) { logs("C"); } };
 static CLSocketServer g_server; static CLSocketServer* g_pSocketServer = &g_server;
 static CCountedPointer g_GlobalCountedPointer = { (void*)1, 0, "g" };
 static int g_gameObj; static void* g_pGame = &g_gameObj;
-struct CInitBaseClass { bool init; bool IsInitialised() const { return init; } void Uninitialise_004ae990() { logs("U"); init = false; } };
-struct CEditWorld { void Shutdown() { logs("E"); } };
-struct CConsole { static CConsole* Get() { static CConsole c; return &c; } void Initialise(long w, long h, void*) { if (w == 0x60 && h == 0x29) logs("K"); } };
+class CInitBaseClass { public: bool init; bool IsInitialised() const { return init; } void Uninitialise_004ae990() { logs("U"); init = false; } };
+class CEditWorld { public: void Shutdown() { logs("E"); } };
+class CConsole { public: static CConsole* Get() { static CConsole c; return &c; } void Initialise(long w, long h, void*) { if (w == 0x60 && h == 0x29) logs("K"); } };
 static void UninitialiseParticles() { logs("P"); }
 static void* g_defManager = (void*)1;
-struct CGameDefinitionManager { static void Set(CGameDefinitionManager* m) { g_defManager = m; logs("D"); } };
+class CGameDefinitionManager { public: static void Set(CGameDefinitionManager* m) { g_defManager = m; logs("D"); } };
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     long m_10; CCountedPointer m_14; scoped_ptr<CPolymorphic> m_1c, m_20; scoped_ptr<CNetworkSession> NetworkSession;
     scoped_ptr<CPolymorphic> m_28; CCountedPointer m_2c; CInitBaseClass InputSystem; CCountedPointer ConsoleFont, ConsoleFont2;
     CEditWorld EditWorld; CCountedPointer m_161c8; bool Running; unsigned char Socket[12];

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CGlobalDef;
+class CGlobalDef;
 
 static int g_calls = 0;
 static unsigned long g_last_shared = 0;

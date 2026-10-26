@@ -6,7 +6,7 @@
 struct CSpeedVariation { unsigned char _pad[8]; float Multiplier; };
 struct CSpeedVariationHandle { const CSpeedVariation* m_pVariation; CSpeedVariationHandle(const CSpeedVariation* p) : m_pVariation(p) { } };
 static CSpeedVariation g_var; static int g_handleCalls = 0; static int g_baseCalls = 0;
-struct CAnimationEntry { CSpeedVariationHandle GetSpeedVariation(); };
+class CAnimationEntry { public: CSpeedVariationHandle GetSpeedVariation(); };
 CSpeedVariationHandle CAnimationEntry::GetSpeedVariation() { ++g_handleCalls; return CSpeedVariationHandle(&g_var); }
 class CCreatureActionBase {
 public:

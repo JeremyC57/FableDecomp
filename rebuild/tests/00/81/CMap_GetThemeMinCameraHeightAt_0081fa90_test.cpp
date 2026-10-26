@@ -3,27 +3,27 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
 };
 static int g_destroyed = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void DestroySelf() { ++g_destroyed; }
     long RefCount;
     void Release() { --RefCount; if (RefCount == 0) DestroySelf(); }
 };
-struct CEngineThemeDef : CDefPointeeBase {
+class CEngineThemeDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x80 - 8];
     float Height;
     float MinCameraHeight;
 };
 static CEngineThemeDef g_def; static int g_getDef = 0; static long g_getDefIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CEngineThemeDef** out) { ++g_getDef; g_getDefIndex = index; ++g_def.RefCount; *out = &g_def; return true; }
 };
 static CDefinitionManager g_manager;
 static long g_blend = 0; static long g_theme = 0; static const C2DCoordI* g_pos = 0;
-struct CMap {
+class CMap { public:
     unsigned char       _pad00[0x1c];
     CDefinitionManager* DefinitionManager;
     long GetDominantEngineThemeAt(const C2DCoordI& pos, long* blend) { g_pos = &pos; *blend = g_blend; return g_theme; }

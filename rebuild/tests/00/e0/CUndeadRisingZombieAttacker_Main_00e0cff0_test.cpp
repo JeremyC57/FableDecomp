@@ -2,11 +2,11 @@
 // the hero, waits for the quest state 2, then removes the zombie; an early termination skips the removal.
 #include <cstdio>
 
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 static int g_frames, g_starts, g_startsNeeded, g_released, g_removed, g_terminateAt; static const CScriptThing* g_target;
 struct CHandle { bool Scripting; CHandle() : Scripting(true) { } bool IsScripting() { return Scripting; } void Release() { Scripting = false; ++g_released; } };
 struct CQuest { long State; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero; CQuest* Quest;
     void NewScriptFrame() const { ++g_frames; if (g_frames == 6) Quest->State = 2; }
     bool StartScriptingEntity(const CScriptThing&, CHandle&, int priority) { ++g_starts; return priority == 3 && g_starts >= g_startsNeeded; }

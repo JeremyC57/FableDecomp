@@ -1,7 +1,7 @@
 // CInputProcessControlCreatureActivateZTarget::`vector_deleting_destructor'
 // __fastcall (this in ecx), uint flags on stack, returns this.
 
-struct CInputProcessControlCreatureActivateZTarget {
+class CInputProcessControlCreatureActivateZTarget { public:
     // scalar destructor lives at 0xa0d3d0 in retail; model as an extern.
 };
 

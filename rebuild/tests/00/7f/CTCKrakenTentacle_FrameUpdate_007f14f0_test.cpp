@@ -3,7 +3,7 @@
 #include <string.h>
 static char g_log[64]; static long g_worldFrame = 100;
 struct CTCCreatureFlags9 { unsigned char m_canBeTargeted; };
-struct CThing { bool Dead; float EmergeFraction; CTCCreatureFlags9* flags; bool killed;
+class CThing { public: bool Dead; float EmergeFraction; CTCCreatureFlags9* flags; bool killed;
     bool GetInterface(CTCCreatureFlags9** out) { if (flags) { *out = flags; return true; } return false; }
     void Kill(bool) { killed = true; strcat(g_log, "K"); } };
 struct Ptr { CThing* item; CThing* GetPItem() const { return item; } };

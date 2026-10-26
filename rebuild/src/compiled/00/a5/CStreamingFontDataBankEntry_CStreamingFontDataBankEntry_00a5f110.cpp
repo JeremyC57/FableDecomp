@@ -13,7 +13,7 @@ struct CCountedPointer_00a5f110 {                        // 8 bytes: object + co
     CCountedPointer_00a5f110() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CStreamingFontDataBankEntry : CBase {                        // vtable 0x0129D5B4
+class CStreamingFontDataBankEntry : public CBase { public:                        // vtable 0x0129D5B4
     CCountedPointer_00a5f110 m_font;                     // +0x04
     long Bank;                                      // +0x0c
     long m_b;                                      // +0x10

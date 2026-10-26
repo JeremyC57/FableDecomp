@@ -23,7 +23,7 @@ struct CArea {
     long          Status;                       // +0x08 (EAreaStatus, not initialised)
 };
 
-struct CSimpleMemoryPool : CBaseClassNonCopyable {      // vtable 0x0129A064
+class CSimpleMemoryPool : public CBaseClassNonCopyable { public:      // vtable 0x0129A064
     CMemoryBlock* FirstMemoryBlock;             // +0x04
     unsigned long Capacity;                     // +0x08
     unsigned long GrowthGranularity;            // +0x0c

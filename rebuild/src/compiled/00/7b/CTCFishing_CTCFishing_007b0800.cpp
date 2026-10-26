@@ -15,41 +15,41 @@
 // Shape: declaration-order initialisers sharing one zero register (ebx; in this init list the three
 // float zeros share it too), the Text ctor's pushes scheduled ahead of the stores; the body passes the
 // PDef address formed for its zero store.
-struct CBaseObject;
-struct CThing;
-struct CFishingDef;
+class CBaseObject;
+class CThing;
+class CFishingDef;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
     CBaseObject* m_pItem;                                   // +4
     CBaseIntelligentPointer();                              // 0x00A01B10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CFishingDef>* out);    // 0x007B2540
 };
 
-struct CThing {
+class CThing { public:
     unsigned char              _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;                        // +0x70
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -57,7 +57,7 @@ struct CTCBase {
     CTCBase(CThing* thing);                                 // 0x00686800
 };
 
-struct CTCFishing : CTCBase {                               // vtable 0x0126D5CC
+class CTCFishing : public CTCBase { public:                               // vtable 0x0126D5CC
     CIntelligentPointer<CThing> PFish;                      // +0x0c
     long          Stage;                                    // +0x14 EFishingStage
     bool          StageInitialised;                         // +0x18

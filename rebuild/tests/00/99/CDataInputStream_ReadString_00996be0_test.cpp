@@ -5,14 +5,14 @@
 #include <cstring>
 static int g_frees = 0;
 static void spy_free(void* p) { ++g_frees; std::free(p); }
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* t, long) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
     ~CCharString() {}
 };
 struct CDataStream { virtual ~CDataStream() {} };
-struct CDataOutputStream : CDataStream {
+class CDataOutputStream : public CDataStream { public:
     CCharString NewLine;
     CDataOutputStream() : NewLine("\r\n", -1) {}
     virtual void Write(const void* data, long length) = 0;
@@ -23,7 +23,7 @@ struct SByteBuffer {
     SByteBuffer() : First(0), Last(0), End(0), Position(0) {}
     unsigned char* GetData() { return (Last - First) ? First : (unsigned char*)this; }
 };
-struct CMemoryDataOutputStream : CDataOutputStream {
+class CMemoryDataOutputStream : public CDataOutputStream { public:
     SByteBuffer Buffer;
     CMemoryDataOutputStream() {}
     ~CMemoryDataOutputStream() { if (Buffer.First) spy_free(Buffer.First); }
@@ -37,7 +37,7 @@ struct CMemoryDataOutputStream : CDataOutputStream {
         Buffer.First = p; Buffer.Last = Buffer.End = p + used + length;
     }
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     const char* src; unsigned long pos;
     void ReadWithChunking(CDataOutputStream& output, unsigned long length) { output.Write(src + pos, (long)length); pos += length; }
     CCharString ReadString(long length);

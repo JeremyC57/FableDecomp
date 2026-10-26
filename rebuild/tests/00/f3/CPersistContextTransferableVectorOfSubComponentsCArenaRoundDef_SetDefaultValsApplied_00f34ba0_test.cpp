@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for 00f34ba0: CPersistContext_TransferableVectorOfSubComponents<CArenaRoundDef>::SetDefaultValsApplied on a model vector.
-struct CPersistContext { int calls; };
+class CPersistContext { public: int calls; };
 struct Def {
     int transferred;
     unsigned char Setup : 1;

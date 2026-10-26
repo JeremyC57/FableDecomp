@@ -6,9 +6,9 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { unsigned char ThingType; u64 UniqueID; };
+class CThing { public: unsigned char ThingType; u64 UniqueID; };
 static CThing* g_things[4]; static int g_lookups = 0;
-struct CWorld {
+class CWorld { public:
     CThing* GetThingFromUID(u64 uid)
     {
         ++g_lookups;

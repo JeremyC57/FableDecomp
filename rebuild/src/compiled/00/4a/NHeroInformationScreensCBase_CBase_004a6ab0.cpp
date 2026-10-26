@@ -47,39 +47,39 @@
 
 extern "C" void free(void*);
 void operator delete(void*);
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall *DeleteFunc)(void*);
     void* Data;
 };
-struct CBaseClass { CBaseClass(); virtual ~CBaseClass(); };
+class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
 protected:
     CBaseClassNonCopyable();
     virtual ~CBaseClassNonCopyable();
 };
-struct CProceduralTexture; struct CIDrawEnvironment; struct CIDrawWorldMap;
-struct CIDrawWorld {
+class CProceduralTexture; class CIDrawEnvironment; class CIDrawWorldMap;
+class CIDrawWorld { public:
     virtual const CProceduralTexture* DrawGetProceduralTexture() const;
     virtual const CIDrawEnvironment* DrawGetEnvironment() const;
     virtual const CIDrawWorldMap* DrawGetWorldMap() const;
     virtual ~CIDrawWorld() { }
 };
-struct CCharStringData;
-struct CWideStringData;
-struct CCharString {
+class CCharStringData;
+class CWideStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();
     ~CCharString(); // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();
     ~CWideString(); // 0x0099B510
 };
 struct CAllocator { };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) {
@@ -131,7 +131,7 @@ struct CCharStringArray {
         if(Start) free(Start);
     }
 };
-struct CTestQuest {
+class CTestQuest { public:
     CCharString QuestName;
     CCharString HSPName;
     long ColourIndex;
@@ -150,7 +150,7 @@ struct CTestQuestVector {
         if(Start) free(Start);
     }
 };
-struct CAtmosCopyInfo {
+class CAtmosCopyInfo { public:
     CWideString DVDFileName, HDFileName;
     long EntryID;
 };
@@ -164,23 +164,23 @@ struct CAtmosCopyList {
         if(Head) free(Head);
     }
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* PData; };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer { virtual ~CIntelligentPointer() { } };
-struct CEnginePrimitiveHandle { virtual ~CEnginePrimitiveHandle(); void* PData; };
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: virtual ~CIntelligentPointer() { } };
+class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle(); void* PData; };
 
-struct CWorldMap : CBaseClass { virtual ~CWorldMap(); };
-struct CEnvironment : CBaseClass { virtual ~CEnvironment(); };
-struct CGameTimeManager { };
-struct CThingSearchTools {
+class CWorldMap : public CBaseClass { public: virtual ~CWorldMap(); };
+class CEnvironment : public CBaseClass { public: virtual ~CEnvironment(); };
+class CGameTimeManager { public: };
+class CThingSearchTools { public:
     void* WorldMap;
     void* ThingMapManager;
     void* ThingManager;
     CVector<void*> AreaMaps;                  // +0c
     ~CThingSearchTools() { }
 };
-struct CAtmosProcess : CBaseClass { virtual ~CAtmosProcess(); };
-struct CAIGameCameraBase {
+class CAtmosProcess : public CBaseClass { public: virtual ~CAtmosProcess(); };
+class CAIGameCameraBase { public:
     virtual void CameraSlot01(); virtual void CameraSlot02(); virtual void CameraSlot03();
     virtual void CameraSlot04(); virtual void CameraSlot05(); virtual void CameraSlot06();
     virtual void CameraSlot07(); virtual void CameraSlot08(); virtual void CameraSlot09();
@@ -191,39 +191,39 @@ struct CAIGameCameraBase {
     virtual void CameraSlot22(); virtual void CameraSlot23(); virtual void CameraSlot24();
     virtual ~CAIGameCameraBase();
 };
-struct CGameScriptInterface : CBaseClass { virtual ~CGameScriptInterface(); };
-struct CMeshDataBank : CBaseClass { virtual ~CMeshDataBank(); };
-struct C3DAnimationManager;
-struct CNavigatorManager : CBaseClass { virtual ~CNavigatorManager(); };
-struct CCombatManager : CBaseClass { virtual ~CCombatManager(); };
-struct CThingManager : CBaseClass { virtual ~CThingManager(); };
-struct CFaction;
+class CGameScriptInterface : public CBaseClass { public: virtual ~CGameScriptInterface(); };
+class CMeshDataBank : public CBaseClass { public: virtual ~CMeshDataBank(); };
+class C3DAnimationManager;
+class CNavigatorManager : public CBaseClass { public: virtual ~CNavigatorManager(); };
+class CCombatManager : public CBaseClass { public: virtual ~CCombatManager(); };
+class CThingManager : public CBaseClass { public: virtual ~CThingManager(); };
+class CFaction;
 struct CCountedData { CFaction* Data; CCPPointerInfo* Info; };
 struct CFactionPair { unsigned long Key; CCountedData Value; };
 struct CFactionVectorMap {
     CFactionPair* Start; CFactionPair* Finish; CFactionPair* Limit;
     unsigned char Compare; unsigned char Dirty; unsigned char _pad0e[2];
 };
-struct CFactionManager { CFactionVectorMap Factions; };
-struct CScriptInfoManager : CBaseClass { virtual ~CScriptInfoManager(); };
-struct CMessageEventManager : CBaseClass { virtual ~CMessageEventManager(); };
-struct CBulletTimeManager : CBaseClass { virtual ~CBulletTimeManager(); };
-struct CMusicManager : CBaseClass { virtual ~CMusicManager(); };
-struct COpinionReactionManager : CBaseClass { virtual ~COpinionReactionManager(); };
-struct CScriptConversationManager : CBaseClass { virtual ~CScriptConversationManager(); };
-struct CPlayerManager; struct CGameDefinitionManager; struct CMainGameComponent;
-struct CGraphicDataBank;
+class CFactionManager { public: CFactionVectorMap Factions; };
+class CScriptInfoManager : public CBaseClass { public: virtual ~CScriptInfoManager(); };
+class CMessageEventManager : public CBaseClass { public: virtual ~CMessageEventManager(); };
+class CBulletTimeManager : public CBaseClass { public: virtual ~CBulletTimeManager(); };
+class CMusicManager : public CBaseClass { public: virtual ~CMusicManager(); };
+class COpinionReactionManager : public CBaseClass { public: virtual ~COpinionReactionManager(); };
+class CScriptConversationManager : public CBaseClass { public: virtual ~CScriptConversationManager(); };
+class CPlayerManager; class CGameDefinitionManager; class CMainGameComponent;
+class CGraphicDataBank;
 
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     static CManager* __fastcall GetInstance(); // 0x0041E5F2
     void SetMeshBank(CCountedPointer<CMeshDataBank>); // 0x0041D198, by value
 };
 }
-struct CMeshBankManager { void FlushUnusedBanks(); }; // 0x00A09E70
-struct CSystemManager { unsigned char _pad00[0x74]; CCountedPointer<CMeshBankManager> PMeshBankManager; };
+class CMeshBankManager { public: void FlushUnusedBanks(); }; // 0x00A09E70
+class CSystemManager { public: unsigned char _pad00[0x74]; CCountedPointer<CMeshBankManager> PMeshBankManager; };
 CSystemManager* __fastcall GFGetSystemManager(); // 0x009A4EC0
-struct C3DAnimationManager { virtual ~C3DAnimationManager(); };
+class C3DAnimationManager { public: virtual ~C3DAnimationManager(); };
 
 void __fastcall DestroyFactionRange(CFactionPair*,CFactionPair*,CAllocator&);
 void __fastcall CheckedDeleteGameTimeManager(CGameTimeManager*); // 0x004ADD30
@@ -273,7 +273,7 @@ template<> struct CScopedPtr<CThingSearchTools> {
 };
 
 #pragma pack(push,1)
-struct CWorld : CBaseClassNonCopyable, CIDrawWorld {
+class CWorld : public CBaseClassNonCopyable, public CIDrawWorld { public:
     CMainGameComponent* Component; CPlayerManager* PlayerManager; CGameDefinitionManager* DefinitionManager;
     CScopedPtr<CWorldMap> PWorldMap;
     CScopedPtr<CEnvironment> PEnvironment;

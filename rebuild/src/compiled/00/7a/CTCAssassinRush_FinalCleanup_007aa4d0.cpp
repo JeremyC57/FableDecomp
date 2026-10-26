@@ -13,14 +13,14 @@
 //   three alive tests go through an inline `bool IsDead() const { return (m_stateFlags & 1) != 0; }` (the raw
 //   `!(flags & 1)` test leaves immediates, 230 v 231); the two ability clears are immediate stores.
 // Leaf: ?FinalCleanup@CTCAssassinRush
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                                // +0x10
     unsigned char _pad11[0x20 - 0x11];
@@ -66,20 +66,20 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     }
     return false;
 }
-struct CTCSpecialAbilities {                            // interface 0xA7
+class CTCSpecialAbilities { public:                            // interface 0xA7
     unsigned char _pad00[0xc];
     bool          AbilityMutexLock;                     // +0x0c
     long          CurrentAbility;                       // +0x10 (13 = assassin rush)
 };
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     void RemoveBulletTimeSlowdown(unsigned long key);   // 0x004C6140
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x68];
     CBulletTimeManager* PBulletTimeManager;             // +0x68
     void RemoveBulletTimeSlowdown(unsigned long key) { PBulletTimeManager->RemoveBulletTimeSlowdown(key); }
 };
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x18 - 0x08];

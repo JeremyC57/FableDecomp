@@ -13,7 +13,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                           // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct C3DOrientationInterpolator : CBase {
+class C3DOrientationInterpolator : public CBase { public:
     virtual void v00();                    // this class has its own vtable
     C3DOrientationInterpolator();
 };

@@ -47,7 +47,7 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct CEngineGraphic { unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 static void TransferBinaryIn(TestStream* stream, CEngineGraphic* value)
 {
     int type;

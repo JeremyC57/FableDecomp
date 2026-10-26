@@ -7,16 +7,16 @@
 // Layout: Ego_r.pdb CTCPreCalculatedNavigationRoute: PThingToCalculateRouteTo +0x0c, Route +0x20 (12-byte STLport vector of
 //   9-byte pair<C2DVector, unsigned char> steps -- retail divides by 9); CThing region index short +0x8e, Dead bit +0x91.
 #include <stdlib.h>
-struct C2DVector { float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_data;
     ~CCharString();                                 // 0x0099EAE0
     const char* ToConstChar() const;                // 0x0099E4C0
 };
 CCharString __fastcall GFIntToCharString(long value);                       // 0x0099F830
 CCharString __fastcall operator+(const char* a, const CCharString& b);       // 0x0099F690
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8e];
     short          RegionIndex;                     // +0x8e
     unsigned char  _pad90;
@@ -27,10 +27,10 @@ struct CBaseIntelligentPointer {
     unsigned char _pad[0xc];
     CThing* GetPItem() const;                       // 0x00A01B50
 };
-struct CWorldMap {
+class CWorldMap { public:
     C2DVector ConvertWorldMapCoordsToLocalCoords(long region, const C2DVector& pos);   // 0x004FC330
 };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);                          // 0x00410BE0
     void Transfer(const char* name, C2DVector& value, const C2DVector& defaultValue);                // 0x00800B90
     void Transfer(const char* name, unsigned char& value, const unsigned char& defaultValue);        // 0x00405A60
@@ -46,13 +46,13 @@ struct CNavStepVector {
     ~CNavStepVector() { if (_M_start) free(_M_start); }
     long size() const { return _M_finish - _M_start; }
 };
-struct CTCBase {
+class CTCBase { public:
     void*   vtable;
     CThing* Owner;                                  // +0x04
     unsigned char _pad08[4];
     CWorldMap* GetWorldMap();                       // 0x00686D20
 };
-struct CTCPreCalculatedNavigationRoute : CTCBase {
+class CTCPreCalculatedNavigationRoute : public CTCBase { public:
     CBaseIntelligentPointer PThingToCalculateRouteTo;   // +0x0c
     unsigned __int64        ThingToCalculateRouteToUID; // +0x18
     CNavStepVector          Route;                      // +0x20

@@ -15,7 +15,7 @@
 //   destructor; the thread name `CCharString("ParentClass.") + CCharString("EndCompetition")` exists only when the
 //   new succeeded, so VC guards its three temporaries with the folded flag mask `mov ebx,7`; the empty region name is an
 //   explicit temporary (the landed CheckCompletion shape).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -24,7 +24,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017();
@@ -32,7 +32,7 @@ struct CScriptThing {
     void* PImp[2];                                      // +0x04
 };
 
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -54,7 +54,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];                          // vptr + script state (PActiveThread +0x2c)
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CV_FishingCompetitionScript : CScriptBase {
+class CV_FishingCompetitionScript : public CScriptBase { public:
     void* GSI;                                          // +0x40
     void* PMasterData;                                  // +0x44
     bool  QuestStartScreenShown;                        // +0x48

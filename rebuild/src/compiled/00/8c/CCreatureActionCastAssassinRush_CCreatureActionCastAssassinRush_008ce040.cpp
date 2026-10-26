@@ -8,13 +8,13 @@
 // UseCollision, IsZTargetting); the scoped named animation string; the by-value CCountedPointer<CCreatureActionBase> parameter is
 // destroyed by the callee at the end (dec, destroy through the block's pointer-to-member, delete the block).
 // Layout: byte-packed like the landed copy constructor 0x008CEF50 (PDB header + 0x18 = retail offsets in the comments).
-struct CThingCreatureBase;
-struct CThing;
-struct CCreatureActionBase;
+class CThingCreatureBase;
+class CThing;
+class CCreatureActionBase;
 void __cdecl operator delete(void* block);  // 0x00BFE9BC
 
 struct CCountedItem { };
-struct CCPPointerInfo {                     // the shared count block
+class CCPPointerInfo { public:                     // the shared count block
     long m_count;                           // +0x00
     void (CCountedItem::*m_pfnDestroy)();   // +0x04 (called with the item as `this`)
     CCountedItem* m_pItem;                  // +0x08
@@ -39,25 +39,25 @@ struct CCountedPointer_CCreatureActionBase {    // CCountedPointer<CCreatureActi
     }
 };
 
-struct C3DVector {                          // three floats; the memberwise user copy constructor copies each as a dword
+class C3DVector { public:                          // three floats; the memberwise user copy constructor copies each as a dword
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -66,7 +66,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_CastAssassinRush : CCombatActionBase {   // vtable 0x01284254; retail sizeof 0x138
+class CCreatureAction_CastAssassinRush : public CCombatActionBase { public:   // vtable 0x01284254; retail sizeof 0x138
     bool          Override;                 // +0x114 (PDB +0x12c)
     C3DVector     Dir;                      // +0x115 (PDB +0x12d), unaligned
     unsigned char _pad121[3];               // +0x121

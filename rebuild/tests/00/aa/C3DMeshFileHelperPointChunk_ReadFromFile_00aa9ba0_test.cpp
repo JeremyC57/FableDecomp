@@ -3,8 +3,8 @@
 #include <cstring>
 // Memory input stream model: position, read pointer and bytes left in the current chunk; the slow path
 // (ReadWithSrcChunkOverflow) copies from the same buffer and counts its use.
-struct CCharString { char text[64]; CCharString() { text[0] = 0; } };
-struct CDataInputStream {
+class CCharString { public: char text[64]; CCharString() { text[0] = 0; } };
+class CDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     int m_remaining;
@@ -37,7 +37,7 @@ static void PutI(int v) { std::memcpy(g_buf + g_len, &v, 4); g_len += 4; }
 static void PutF(float v) { std::memcpy(g_buf + g_len, &v, 4); g_len += 4; }
 static void PutS(const char* s) { int n = (int)std::strlen(s) + 1; std::memcpy(g_buf + g_len, s, n); g_len += n; }
 static void Open(CDataInputStream& in, int remaining) { in.m_position = 100; in.m_pData = g_buf; in.m_remaining = remaining; in.overflowReads = 0; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CHelperPointChunk : CBase {
     C3DVector Position; int SubMeshIndex; int BoneIndex; CCharString Name;
     void ReadFromFile(CDataInputStream& in, unsigned long chunkSize)

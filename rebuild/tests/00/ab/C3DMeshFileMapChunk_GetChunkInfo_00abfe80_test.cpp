@@ -17,7 +17,7 @@ static CCharString Cat(const char* a, const char* b)
 CCharString operator+(const char* left, const CCharString& right) { return Cat(left, right.m_pText); }
 CCharString operator+(const CCharString& left, const char* right) { return Cat(left.m_pText, right); }
 CCharString operator+(const CCharString& left, const CCharString& right) { return Cat(left.m_pText, right.m_pText); }
-struct C3DMeshFileMapChunk {
+class C3DMeshFileMapChunk { public:
     long MapIndex; CCharString Name; CCharString Filename;
     C3DMeshFileMapChunk() : MapIndex(0), Name("diffuse"), Filename("a.tga") {}
     CCharString GetName() const { return Name; }

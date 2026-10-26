@@ -17,7 +17,7 @@ public:
     CWideString ToWideString() const;              // 0x0099E480
 };
 class CFontBank;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, const CWideString& button1, const CWideString& button2,
                  const CWideString& button3, const CWideString& button4, unsigned long flags, float time,
                  bool clickPast, bool pauseGame);   // 0x00492973

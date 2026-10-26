@@ -16,7 +16,7 @@ struct CBasicStringChar {
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -47,7 +47,7 @@ struct CCursorPos {
     long StringPos;                                    // +0x04
     long Line;                                         // +0x08
 };
-struct CStringParser : CBase {                         // retail 0x28 bytes
+class CStringParser : public CBase { public:                         // retail 0x28 bytes
     char*                    String;                   // +0x04
     unsigned long            BaseLineOffset;           // +0x08
     CCharString              Filename;                 // +0x0c
@@ -60,7 +60,7 @@ struct CStringParser : CBase {                         // retail 0x28 bytes
     bool SkipToItem(const CCharString& name);          // 0x009B9C00
     CCharString ReadAsSymbol();                        // 0x009BA790
 };
-struct CPersistContext;
+class CPersistContext;
 template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferIn(CPersistContext* context, CStringParser* parser, T* value);   // 0x0040E510 for CCharString
@@ -93,14 +93,14 @@ struct CStringLongMap {                                // STLport map<CCharStrin
     CStringLongIterator insert(const CStringLongPair& value);       // 0x004636CF (the find-or-insert walk; iterator result)
     void clear();                                      // 0x0043027A
 };
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 void __fastcall TransferMapOut_0046367a(CDataOutputStream* stream, CStringLongMap& map);      // 0x0046367A
 void __fastcall TransferMapIn_00463732(CMemoryDataInputStream* stream, CStringLongMap& map);   // 0x00463732
 
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CPersistContext {
+class CDefinitionManager;
+class CSymbolMap;
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

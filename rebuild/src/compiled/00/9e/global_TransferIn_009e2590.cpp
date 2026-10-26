@@ -1,5 +1,5 @@
 // TransferIn(CPersistContext* context, CStringParser* parser, long* value) -- text persist read of a long with a tiny expression grammar: a symbol name is resolved through the context's symbol map (an unknown one reports "Unable to find symbol <name>"), anything else is read as an integer; then a following `|`, `+`, `-`, `<<` or `>>` reads the right-hand side recursively and combines it
-// Leaf: ?TransferIn@@YIXPAUCPersistContext@@
+// Leaf: ?TransferIn@@YIXPAVCPersistContext@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E2590, 513 bytes, `__fastcall` (context in ecx, parser in edx, value on the stack),
 //   `ret 4`. 115 call sites (every CPersistTraits<long>-style text read; the landed 0x00755F40 and the 21 transferable-
 //   component hooks such as 0x00EB68C0 call it with this signature). The catalog label "TransferIn" is kept; the PDB
@@ -20,7 +20,7 @@
 //   0x0040F7E0 model.
 #include "engine/CStringParser.h"
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
@@ -41,7 +41,7 @@ public:
     bool FindSymbol(const CCharString& name, long& value) const;   // 0x009E5170
 };
 
-struct CPersistContext {                                       // Ego_r.pdb, 0x2C bytes
+class CPersistContext { public:                                       // Ego_r.pdb, 0x2C bytes
     void* PDefinitionManager;                                  // +0x00
     CSymbolMap* PSymbolMap;                                    // +0x04
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90

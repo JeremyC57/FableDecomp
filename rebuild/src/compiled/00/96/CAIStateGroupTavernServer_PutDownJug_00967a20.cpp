@@ -11,8 +11,8 @@
 // the action is a named local in its own block with the `!= 2` result in bl across its destructor and FreeBarPoint.
 // Engine header names (rebuild/include/engine/CAIStateGroup_TavernServer.h; flattened base, modelled locally).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CWorld;
+class CTCBase;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
@@ -24,7 +24,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -154,7 +154,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
@@ -162,7 +162,7 @@ struct CAIBrain {
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -198,22 +198,22 @@ struct CAIStateGroupBase {
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct CThingCreatureBase;
-struct CCharString {
+class CThingCreatureBase;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_PutDownThingAtTable : CCreatureActionBase {
+class CCreatureAction_PutDownThingAtTable : public CCreatureActionBase { public:
     long m_thing;                                   // +0xa8
     CCreatureAction_PutDownThingAtTable(CThingCreatureBase* owner, const CCharString& animation, long mode);   // 0x00842A20
 };
-struct CCreatureAction_PutDownJug : CCreatureAction_PutDownThingAtTable {   // vtable 0x012964DC
+class CCreatureAction_PutDownJug : public CCreatureAction_PutDownThingAtTable { public:   // vtable 0x012964DC
     virtual void v00();
     CCreatureAction_PutDownJug(CThingCreatureBase* owner)
         : CCreatureAction_PutDownThingAtTable(owner, "PUT_EMPTY_JUG_ON_BAR", 0x29) { }

@@ -1,13 +1,13 @@
 // Behaviour test for CThingPhysicalSwitch::Create (0x0083DBE0): allocate through Alloc(), untriggered,, construct, place the physics at pos with identity axes, activate.
 #include <cstdio>
 #include <stddef.h>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet() { Up.X = 0; Up.Y = 0; Up.Z = 1; Forward.X = 0; Forward.Y = 1; Forward.Z = 0; }
 };
 static int g_paramsLive = 0;
-struct CTCParamsPhysicsBase {
+class CTCParamsPhysicsBase { public:
     C3DVector Position; CRightHandedSet Rhs;
     CTCParamsPhysicsBase(const C3DVector& p, const CRightHandedSet& a) : Position(p), Rhs(a) { ++g_paramsLive; }
     ~CTCParamsPhysicsBase() { --g_paramsLive; }
@@ -28,7 +28,7 @@ public:
     static void* operator new(size_t, bool) throw() { return g_alloc ? g_storage : 0; }
     static void operator delete(void*, bool) throw() {}
 };
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 class CThingPhysical;
 static unsigned long g_flags = 99; static const CCharString* g_name = 0; static bool g_last = false; static void* g_creators = (void*)1;
 class CThingGameObject : public CThing {

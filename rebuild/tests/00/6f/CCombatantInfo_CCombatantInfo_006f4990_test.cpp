@@ -3,18 +3,18 @@
 #include <cstdio>
 
 static int g_vectorCopies = 0, g_defenderCopies = 0;
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CSeqVector {
     int m_tag;
     CSeqVector() : m_tag(0) { }
     CSeqVector(const CSeqVector& o) : m_tag(o.m_tag + 100) { ++g_vectorCopies; }
 };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     void* Attacked; long AttackerNumber; long CombatWheelRingIndex; bool PreferredAttackDollySet;
     long PreferredAttackDollyTimer; C2DVector PreferredAttackDollyVector; bool UsingCombatWheel;
     long CurrentSequence; CSeqVector CombatSequences;
 };
-struct CDefendingCombatantInfo {
+class CDefendingCombatantInfo { public:
     long m_value;
     CDefendingCombatantInfo() : m_value(0) { }
     CDefendingCombatantInfo(const CDefendingCombatantInfo& o) : m_value(o.m_value) { ++g_defenderCopies; }

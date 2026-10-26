@@ -62,7 +62,7 @@ struct CScriptThingInner {
   virtual bool m58(int name){ return true; }
   virtual bool m59(int name){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgOnCutSceneAnimEvent(int name); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgOnCutSceneAnimEvent(int name); };
 bool CScriptThing::MsgOnCutSceneAnimEvent(int name){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m59(name); }
 int main(){
     CScriptThing t; t.m_impl=0;

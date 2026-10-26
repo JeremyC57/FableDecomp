@@ -1,6 +1,6 @@
 // Behaviour test for 0x006a81f0
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -34,7 +34,7 @@ struct CTCInterface37 {
     CThing* m_src;
     CThing* GetSourceThing() { return m_src; }
 };
-struct CThingFilter_NoiseCameFromThing {
+class CThingFilter_NoiseCameFromThing { public:
     CThing* Thing;
     bool operator()(CThing* thing) const
     {

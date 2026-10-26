@@ -14,7 +14,7 @@
 //   +0x54..+0x56 (Init writes them there): 0x58 bytes. Local model like the landed 0x00996990 (no engine header).
 // Shape: the base argument is the static call (ecx still holds `this` but is unused), the derived vtable store sits
 //   between the base constructor and the body's Init() call.
-struct CACompressor {                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
+class CACompressor { public:                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();
     unsigned char _body[0x1c - 4];                              // Workspace, WorkspaceSize, CompressionOn, OwnWorkspace
     CACompressor(long workspaceSize);                           // 0x00A3AEA0

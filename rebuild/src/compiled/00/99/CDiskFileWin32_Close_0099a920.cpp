@@ -7,7 +7,7 @@ extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void* fi
 extern "C" __declspec(dllimport) int __stdcall FlushFileBuffers(void* file);   // IAT 0x0143FDA8
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* object);      // IAT 0x0143FE30
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     virtual void v00();
     long  AccessType;                  // +0x04 FileAccessType
     long  Position;                    // +0x08

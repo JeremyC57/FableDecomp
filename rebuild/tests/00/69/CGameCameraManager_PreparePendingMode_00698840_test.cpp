@@ -2,7 +2,7 @@
 #include <cstdio>
 struct M;
 static int g_destroyed = 0;
-struct CCameraModeDef { int m_count; int Mode; void Destroy() { ++g_destroyed; } };
+class CCameraModeDef { public: int m_count; int Mode; void Destroy() { ++g_destroyed; } };
 struct CDefPointer {
     CCameraModeDef* m_p;
     CDefPointer(CCameraModeDef* p) : m_p(p) { if (m_p) ++m_p->m_count; }

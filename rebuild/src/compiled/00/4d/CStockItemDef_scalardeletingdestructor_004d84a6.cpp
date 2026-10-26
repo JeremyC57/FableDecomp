@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CStockItemDef
-{
+class CStockItemDef
+{ public:
     void* vftable;
 };
 extern void* const g_CStockItemDef_vftable;

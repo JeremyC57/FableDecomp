@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     long MorphType;
     long TextureLayer;
     long ReplacingTextureIndex;

@@ -15,12 +15,12 @@
 // STLport vector (free-based dtor) scoped in the 0x46 block.
 // Leaf: Initialise
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ template <class T> struct CRetailVector {   // STLport vector (12 bytes)
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -73,25 +73,25 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31
+class CTCCreatureModeManager { public:             // interface type 0x31
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
-struct CTCCarrying {                        // interface type 0x46
+class CTCCarrying { public:                        // interface type 0x46
     void GetCarriedThings(CRetailVector<CThing*>& things);   // 0x006A2220
 };
-struct CTCWeaponTrail {                     // interface type 0x4c
+class CTCWeaponTrail { public:                     // interface type 0x4c
     void ClearAllWeaponTrails();            // 0x0076E150
 };
 struct CTCType9 {                           // interface type 9
     unsigned char _pad00[0x10];
     bool m_flag10;                          // +0x10
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
@@ -100,7 +100,7 @@ struct CCombatActionBase {
     unsigned char _pad10[0x114 - 0x10];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_UndeadIdleUnderground : CCombatActionBase {
+class CCreatureAction_UndeadIdleUnderground : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

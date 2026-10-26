@@ -49,7 +49,7 @@ __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 
 class CThing;
 enum EOpinionAttitudeType { OPINION_ATTITUDE_IN_LOVE_COURTING = 12 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     EOpinionAttitudeType GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
 };
 class CWorld {
@@ -75,12 +75,12 @@ struct CThingAICreatureFlags {                              // CThingAICreature 
     bool CanBeCourted : 1;
     bool CanBeMarried : 1;                                  // +0x1c9 bit 4
 };
-struct CHeroMarriageDef {
+class CHeroMarriageDef { public:
     unsigned char _pad00[0x88];
     float         ProbabilityOfCourtingAdviceOnGreet;       // +0x88
 };
 
-struct CTCWife {
+class CTCWife { public:
     virtual void v00();
     CThing*                  ParentThing;                   // +0x04
     unsigned char            _pad08[4];

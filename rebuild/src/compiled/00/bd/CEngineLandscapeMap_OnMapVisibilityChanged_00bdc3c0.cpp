@@ -21,7 +21,7 @@ struct SCountBlock {                               // CCountedPointer's shared b
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*           Object;
     SCountBlock* Block;
     void Reset()

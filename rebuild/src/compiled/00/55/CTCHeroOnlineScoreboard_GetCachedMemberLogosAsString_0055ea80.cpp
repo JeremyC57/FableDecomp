@@ -18,12 +18,12 @@
 #include <stddef.h>
 typedef unsigned short wchar16;
 
-struct CCharStringData {
+class CCharStringData { public:
     char* m_pString;
     long  Length;
 };
-struct CWideString;
-struct CCharString {
+class CWideString;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                   // 0x0099E4B0
     CCharString(const char* text, long length);      // 0x0099EBF0
@@ -36,8 +36,8 @@ struct CCharString {
     CCharString GetSubString(unsigned long start, unsigned long count) const;   // 0x0099EC70
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const wchar16* text);                // 0x0099B6B0
     ~CWideString();                                  // 0x0099B510
@@ -77,11 +77,11 @@ template <class T> struct CList {
 
 class CTCHeroOnlineScoreboard {
 public:
-    struct CClanInfo {
+    class CClanInfo { public:
         CWideString Name;
         long        ID;
     };
-    struct CClanMember {
+    class CClanMember { public:
         CWideString Name;
         long        ID;
     };

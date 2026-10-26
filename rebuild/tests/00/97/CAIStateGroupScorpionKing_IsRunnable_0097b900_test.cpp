@@ -1,7 +1,7 @@
 // Behaviour test for CAIStateGroup_ScorpionKing::IsRunnable (0x0097B900): same logic over mocks.
 #include <cstdio>
 #include <cstring>
-struct CThing { int health; bool visible; };
+class CThing { public: int health; bool visible; };
 struct CCombat { CThing* creature; CThing* enemy; bool flag; int calls; };
 struct CState {
     CThing* creature; CThing* enemyOfSource; CThing* arenaMarker; CCombat combat; const char* lastName;

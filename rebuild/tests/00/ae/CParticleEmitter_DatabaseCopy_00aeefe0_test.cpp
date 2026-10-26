@@ -2,7 +2,7 @@
 // are cloned in, extra ones are erased (counted pointers released), and the flag bits / distances are copied.
 #include <cstdio>
 #include <cstdlib>
-struct CCharString {
+class CCharString { public:
     int m_id;
     CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
 };

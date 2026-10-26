@@ -7,7 +7,7 @@
 // component fetched for interface type 0x80, with the result compared `jle`. The object is a thing
 // component ({vptr, owning CThing* at +4, ..., default amount at +0xc}); the default is read into a local
 // first (retail loads +0xc into eax before the lookup frees ecx) and overwritten by the guard's answer. Named by what it does.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;      // 0x004365B0 (CVectorMap::LowerBound)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44 sorted {type, component} vector map
@@ -43,7 +43,7 @@ struct CThing {
     }
 };
 
-struct CTCGuard {
+class CTCGuard { public:
     long GetBribeAmountWillTake();             // 0x007B2D50
 };
 

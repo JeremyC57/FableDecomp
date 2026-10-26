@@ -4,7 +4,7 @@
 // Independent behaviour test. We provide a local CCharString ctor that copies
 // the pointer/length so we can observe PeekName wiring the literal + (-1).
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     int   m_len;
     CCharString(const char* s, int len) { m_data = (char*)s; m_len = len; }

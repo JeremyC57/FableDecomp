@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x24];
     unsigned int flags24; // +0x24
     unsigned char _pad2[0x91-0x28];
     unsigned char flags91; // +0x91
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void** vt; // +0x0
 };
 

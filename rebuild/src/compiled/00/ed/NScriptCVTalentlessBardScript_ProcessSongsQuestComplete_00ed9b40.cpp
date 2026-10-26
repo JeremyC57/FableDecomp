@@ -10,7 +10,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
@@ -32,7 +32,7 @@ struct QuestData {
     CCharString name;                              // +0
     CCharString tag;                               // +4
 };
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();              // 0x00CB7940

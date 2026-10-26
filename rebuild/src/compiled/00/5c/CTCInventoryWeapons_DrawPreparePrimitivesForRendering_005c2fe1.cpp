@@ -13,12 +13,12 @@
 double __fastcall GFGetTime();                                 // 0x009E1BC0
 
 struct CViewport;
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CViewport* PViewport;                                      // +0x34
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void Update(float deltaTime);                      // slot 1 (+4)
     virtual void Render(CViewport* viewport, long a, long b, long c, long d);   // slot 2 (+8)
@@ -37,7 +37,7 @@ struct CTCBase_Draw {                                          // the polymorphi
     virtual void v00();
     unsigned char    _pad04[0x08];
 };
-struct CTCInventoryWeapons : CTCBase_Draw {                    // a vptr declared next to the double would be padded to 8
+class CTCInventoryWeapons : public CTCBase_Draw { public:                    // a vptr declared next to the double would be padded to 8
     CComponentVector Components;                               // +0x0c
     bool             FirstRenderFrame;                         // +0x18
     unsigned char    _pad19[0x50 - 0x19];

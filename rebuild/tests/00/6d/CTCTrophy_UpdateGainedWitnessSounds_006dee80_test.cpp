@@ -61,10 +61,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CTrophyDef {
+class CTrophyDef { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -118,7 +118,7 @@ FABLE_STATIC_ASSERT(offsetof(CTrophyDef, SoundEndNoNewScore_PStringData) == 0x60
 
 // ---- end engine/CTrophyDef.h ----
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
@@ -127,13 +127,13 @@ struct CDefPointerTrophyDef {
     const CTrophyDef* Object;
 };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();            // 0x0049D870
 };
 
 extern long g_FramesPerSecond;              // 0x01375550
 
-struct CTCTrophy {
+class CTCTrophy { public:
     void*                __vftable;         // +0x00
     unsigned char        _pad_0x04[0x8];
     CDefPointerTrophyDef PDef;              // +0x0C

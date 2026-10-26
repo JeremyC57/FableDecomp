@@ -15,7 +15,7 @@ struct CMessageOnMorphChanged : CBase {
 struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long flags) { g_flagged = ++g_order; g_flags = flags; }
 };
-struct CThing {
+class CThing { public:
     CTCGraphicAppearance* m_pGraphicAppearance;
     void SendMessage(CBase* message) { g_sent = ++g_order; if (message->Kind() != 42) g_ok = false; }
 };

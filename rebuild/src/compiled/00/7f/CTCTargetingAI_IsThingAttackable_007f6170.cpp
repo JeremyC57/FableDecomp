@@ -10,7 +10,7 @@
 // +0x48 (list<CIntelligentPointer<CThing>>, retail one sentinel pointer); the CTCTargetingBase part is opaque here.
 // Shape: as CTCFollowed::IsFollower 0x006D4D70 with the list at +0x48 and the exits swapped (`mov al,1` when the walk
 // ends, `xor al,al` on a hit).
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                 // CIntelligentPointer<CThing>: 8 bytes
     void* m_pItem;
@@ -27,7 +27,7 @@ struct CThingPointerList {                       // retail std::list<CIntelligen
     node* head;
 };
 
-struct CTCTargetingAI {
+class CTCTargetingAI { public:
     unsigned char           _base[0x38];         // CTCTargetingBase
     CBaseIntelligentPointer PBestEnemyCreatureForAttack;   // +0x38
     CBaseIntelligentPointer PScriptTargetOverride;         // +0x40

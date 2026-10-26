@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct CInventoryItemDef { long id; };
+class CInventoryItemDef { public: long id; };
 struct CDef { CInventoryItemDef sub; int calls;
     void GetSubDef(CInventoryItemDef*& out) { ++calls; out = &sub; } };
-struct CThing { CDef* def; CDef* GetDef() { return def; } };
-struct CTCInventoryItem {
+class CThing { public: CDef* def; CDef* GetDef() { return def; } };
+class CTCInventoryItem { public:
     CThing* slot; CInventoryItemDef* PDef;
     CThing* GetThing() { return slot; }
     void OnCreate() { GetThing()->GetDef()->GetSubDef(PDef); }

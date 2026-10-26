@@ -10,8 +10,8 @@
 //   {vtable, vector*} wrapper shared by the two text arms; the key stays in edi from the CheckCRC push.
 //   The element is CHeroLogBook::CHeroLogBookEntry::ECategory (catalog label), modelled as a 4-byte enum; the reset
 //   calls the vector's out-of-line clear() (thiscall, no arguments).
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
+class CDataOutputStream;
+class CMemoryDataInputStream;
 enum ECategory { ECategory_Default };     // CHeroLogBook::CHeroLogBookEntry::ECategory
 
 template <class T> struct vector {
@@ -26,7 +26,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<ECategory>& value);   // 0x00619620
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<ECategory>& value);       // 0x00614750
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x012571A0 for T = ECategory
@@ -35,7 +35,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

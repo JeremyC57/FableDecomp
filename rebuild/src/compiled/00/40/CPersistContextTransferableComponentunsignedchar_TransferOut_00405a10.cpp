@@ -8,8 +8,8 @@
 // ecx, output string in edx, &value on the stack). Same shape as the landed 0x007B41A0 family with an
 // unsigned char target. The manifest label (`CPersistContext_TransferableComponent::vfunc_0`) is a
 // propagated template name; the element type is read from the `movzx`.
-struct CPersistContext;
-struct CCharString;
+class CPersistContext;
+class CCharString;
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
 struct CPersistContext_TransferableComponent {

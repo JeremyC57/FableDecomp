@@ -9,7 +9,7 @@
  * free function taking the object pointer (byte-identical to __fastcall).
  */
 
-struct CPlayerInventoryDef;
+class CPlayerInventoryDef;
 
 /* The real (non-thunk) implementation this thunk tail-calls into. */
 extern void __fastcall CPlayerInventoryDef_Copy_impl(CPlayerInventoryDef* thisptr, void* src);

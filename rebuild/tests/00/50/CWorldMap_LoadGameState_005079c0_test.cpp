@@ -4,11 +4,11 @@
 #include <cstdio>
 #include <cstring>
 
-struct CRegion {
+class CRegion { public:
     char Name[32];
     int  State;
 };
-struct CWorldMap {
+class CWorldMap { public:
     CRegion Regions[8];
     int     RegionCount;
     int GetRegionNumberFromName(const char* name) const

@@ -10,11 +10,11 @@
 // identity test: VC7.1 then CSEs the right operand's ADDRESS (`last - 1`) into a temporary emitted as its own
 // `sub eax,4 ; mov eax,[eax]`; with cached block locals the single load folds into `[eax-4]` (solved by the shared
 // retry advisor).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                                 // +0x00
     unsigned long m_length;                                 // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
 };
 int __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
@@ -39,7 +39,7 @@ struct CCharStringVector {                                  // retail std::vecto
 
 enum ETradeRoutes { TRADE_ROUTE_0, TRADE_ROUTE_1, TRADE_ROUTE_2 };
 
-struct CScriptBase {                                        // retail 0x40 bytes
+class CScriptBase { public:                                        // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
 };

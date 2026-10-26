@@ -1,4 +1,4 @@
-struct CCreatureAction_DragonRetreat {
+class CCreatureAction_DragonRetreat { public:
     void* vftable;
 };
 

@@ -9,7 +9,7 @@
 // through GetSubDef, then its destructor drops the count and destroys on zero.
 // Layout: retail offsets -- ComponentTraps is a 4-byte STLport list (+0x1c), ThingsToIgnore a 12-byte vector (+0x20), so
 // PDef sits at +0x2c (PDB 56). No engine header for the class, so a local model.
-template <class T> struct CDefPointer;
+template <class T> class CDefPointer;
 struct CExplosiveTrailDef_Retail;
 
 struct CDefClassBase_Retail
@@ -21,8 +21,8 @@ struct CDefClassBase_Retail
 };
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer()
@@ -40,14 +40,14 @@ struct CDefPointer
 struct CThingDef : CDefClassBase_Retail {};
 struct CExplosiveTrailDef_Retail : CDefClassBase_Retail {};
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char          _pad_0x00[0x70];
     CDefPointer<CThingDef> PDef;                    // +0x70
 };
 
-struct CTCDExplosiveTrail
-{
+class CTCDExplosiveTrail
+{ public:
     void*   __vftable;                              // +0x00 (CTCBase)
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08

@@ -13,31 +13,31 @@
 // `out.Object` and the body through the holder `def`: two base variables, so VC7.1 re-reads [esi+34h] for the push (retail)
 // instead of CSE-ing the test's load. The key name is a block-scoped named local (RVO into the frame slot, passed to
 // operator= by its address) -- an unnamed temporary passes GetString's returned eax.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString& operator=(const char* text);           // 0x0099EFE0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 struct CDefStringTable {
     CCharString GetString(long id);                     // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                             // slot 0
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
 };
-struct CChestDef : CDefPointeeBase {
+class CChestDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     long OpenerObject;                                  // +0x34 (global def index)
     long OpenersRequired;                               // +0x38
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -51,7 +51,7 @@ template <class T> struct CDefHolder {                  // the def taken out of 
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CChestDef>* out);        // 0x0074F7D0
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -67,11 +67,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CChestDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                                // +0x70
 };
-struct CTCChest {
+class CTCChest { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     const CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0 (CTCBase)

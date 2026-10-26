@@ -6,11 +6,11 @@
 // caller did not force it, nothing is played and result 1 is returned (`mov eax,1 ; ret 14h`); otherwise the
 // line is played with the layer pinned to 1 -- the caller's layer argument is ignored (its slot is never read).
 // Shape: the two byte tests are `if (!IsPureAISpeaker && !force) return 1;` with the forward call the fall-through.
-struct CCharString { void* m_pData; };
+class CCharString { public: void* m_pData; };
 typedef long EDialogueLayer;
 typedef long ESpeechPlaybackResult;
 
-struct CTCTalk {
+class CTCTalk { public:
     unsigned char _base[0x34];               // CTCBase + SpeechSample .. LastNarrator
     bool          IsPureAISpeaker;           // +0x34
     bool          LipSynching;               // +0x35

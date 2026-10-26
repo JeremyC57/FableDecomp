@@ -18,14 +18,14 @@
 //   an inline StopSound(sound) member (Ego_r.pdb `?StopSound@CTCUnholyPower@@AAEXK@Z`) whose argument loads into edi
 //   before the lookup.
 extern long g_framesPerSecond;                  // 0x01375550
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -68,10 +68,10 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 void __fastcall FadeOrKillEffect(CBaseIntelligentPointer& effect);   // 0x0072ABD0
-struct CEnvironment {
+class CEnvironment { public:
     void TransitionToDefaultThemeAllChannels(long channels, float time);   // 0x006B3950
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* PEnvironment;                 // +0x18
 };
@@ -83,11 +83,11 @@ struct CTCInterfaceA7 {                         // interface 0xA7 component
     bool m_active;                              // +0x0c
     long m_count;                               // +0x10
 };
-struct CSpecialAbilitiesUnholyPowerDef {
+class CSpecialAbilitiesUnholyPowerDef { public:
     unsigned char _pad00[0xc4];
     float* FadeOutTimes;                        // +0xc4 vector<float> first pointer (per spell level; descriptive)
 };
-struct CTCUnholyPower {
+class CTCUnholyPower { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

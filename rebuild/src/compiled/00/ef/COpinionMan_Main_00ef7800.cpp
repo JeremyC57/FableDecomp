@@ -22,21 +22,21 @@
 //   stay out of line, through CScriptThing's own 0x004AA840 symbol. Wrapping CIsThing itself in depth 0 also blocks
 //   its implicit CPredicateBase ctor/dtor (643v627), so the region goes one level down. No shadow class: every
 //   retail address binds one mangled name.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);         // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -52,7 +52,7 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -64,23 +64,23 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
     __forceinline ~CScriptThing() {}                   // out of line 0x004AA840
 };
 #include "engine/CGameScriptInterface.h"
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -954,7 +954,7 @@ virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
 namespace NScript {
-struct CPredicateBase {                                // vtable 0x012C2FF4
+class CPredicateBase { public:                                // vtable 0x012C2FF4
     virtual bool operator()() const = 0;
     virtual CPredicateBase* Clone() const = 0;
     virtual ~CPredicateBase() {}
@@ -979,7 +979,7 @@ struct CIsThingStored : CPredicateBase {               // the And's CIsThing mem
     virtual CPredicateBase* Clone() const;
     ~CIsThingStored();                                 // 0x00EF7AB0
 };
-struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
+class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) {}
     virtual bool operator()() const;

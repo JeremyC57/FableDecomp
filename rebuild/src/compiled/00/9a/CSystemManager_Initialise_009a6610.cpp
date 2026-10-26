@@ -16,18 +16,18 @@
 //   IsErrorFailureFunc +0x9c, Identifier +0xa0, ScratchBufferSize +0xb4, TempPath +0xbc, +0xc0/+0xc4 the two retail-only callbacks.
 //   The manager class sizes are the operator new sizes; manager names past the PDB are descriptive.
 // Shape: the base Initialise() == true guard wraps the once-only setup; the profile manager onward always runs.
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                      // 0x0099B510
 };
 struct CStringDataC { long RefCount; long Length; };
-struct CCharString {
+class CCharString { public:
     CStringDataC* PStringData;
     bool IsEmpty() const { return !PStringData || PStringData->Length == 0; }
 };
-struct CInputManagerInit { unsigned char _body[4]; };
-struct CDisplayManagerInit {                       // retail 0x3c bytes
+class CInputManagerInit { public: unsigned char _body[4]; };
+class CDisplayManagerInit { public:                       // retail 0x3c bytes
     long Width;                                    // +0x00
     long Height;                                   // +0x04
     unsigned char _pad08[0x14 - 0x08];
@@ -39,7 +39,7 @@ struct CDisplayManagerInit {                       // retail 0x3c bytes
     CDisplayManagerInit(const CDisplayManagerInit& other);   // 0x009A6A00
 };
 typedef bool (__cdecl* TErrorFunc)(long code);
-struct CSystemManagerInit {                        // retail layout
+class CSystemManagerInit { public:                        // retail layout
     void* InstanceHandle;                          // +0x00
     char* CommandLine;                             // +0x04
     int WindowsShow;                               // +0x08
@@ -72,28 +72,28 @@ struct CSystemManagerInit {                        // retail layout
     void* MessageFilter;                           // +0xc4
 };
 struct SCountBlock { long RefCount; void (__fastcall* Destroy)(void* object); void* Object; };
-struct CDeviceResetCallback { virtual void OnDeviceReset(); };
-struct CSystemManager;
-struct CDisplayManager {                       // 0x2c8 bytes
+class CDeviceResetCallback { public: virtual void OnDeviceReset(); };
+class CSystemManager;
+class CDisplayManager { public:                       // 0x2c8 bytes
     unsigned char _body[0x2c8];
     CDisplayManager(CSystemManager* owner);        // 0x009C0880
     void AddDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009C0190
     bool Init(const CDisplayManagerInit& init, bool exclusive);    // 0x009C0E50
 };
-struct CInputManagerDX { unsigned char _body[0x84]; CInputManagerDX(const CInputManagerInit& init, bool exclusive); };   // 0x00A60050
+class CInputManagerDX { public: unsigned char _body[0x84]; CInputManagerDX(const CInputManagerInit& init, bool exclusive); };   // 0x00A60050
 struct CSoundManager { unsigned char _body[0x80]; CSoundManager(const void* init, bool exclusive); };                  // 0x00A3EF00
-struct CFontManager { unsigned char _body[0x3c]; CFontManager(const CCharString& bank, const CCharString& streamingBank); };   // 0x009E2E30
-struct CGraphicBankManager { unsigned char _body[8]; CGraphicBankManager(); };   // 0x009F8690
-struct CMeshBankManager { void* Base0; CDeviceResetCallback ResetCallback; long Pad8; CMeshBankManager(); };   // 0x00A0A110
-struct CProfileManager { unsigned char _body[0x78]; CProfileManager(); };   // 0x009F9160
-struct CDriveManager {                             // 8 bytes, vtable 0x0129AFF4
+class CFontManager { public: unsigned char _body[0x3c]; CFontManager(const CCharString& bank, const CCharString& streamingBank); };   // 0x009E2E30
+class CGraphicBankManager { public: unsigned char _body[8]; CGraphicBankManager(); };   // 0x009F8690
+class CMeshBankManager { public: void* Base0; CDeviceResetCallback ResetCallback; long Pad8; CMeshBankManager(); };   // 0x00A0A110
+class CProfileManager { public: unsigned char _body[0x78]; CProfileManager(); };   // 0x009F9160
+class CDriveManager { public:                             // 8 bytes, vtable 0x0129AFF4
     virtual void v00();
     long Pad;
     CDriveManager() { }
     long Initialise(CSystemManager* owner);        // 0x009E4AD0
 };
-struct CInputManager;
-template <class T> struct CCountedPointer {
+class CInputManager;
+template <class T> class CCountedPointer { public:
     T* Data;
     SCountBlock* Info;
 };
@@ -105,12 +105,12 @@ struct CPFont : CCountedPointer<CFontManager> { void Reset(CFontManager* p); }; 
 struct CPGraphic : CCountedPointer<CGraphicBankManager> { void Reset(CGraphicBankManager* p); };   // 0x009A71F0
 struct CPMesh : CCountedPointer<CMeshBankManager> { void Reset(CMeshBankManager* p); };      // 0x009A7260
 struct CPProfile : CCountedPointer<CProfileManager> { void Reset(CProfileManager* p); };     // 0x009A7510
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                    // +0x04
     bool Initialise();                             // 0x0099A350
 };
-struct CScratchBuffer : CInitBaseClass { void Initialise(long size); };   // 0x009F4910
+class CScratchBuffer : public CInitBaseClass { public: void Initialise(long size); };   // 0x009F4910
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void* __stdcall ConvertThreadToFiber(void* parameter);              // [0x0143FD68]
 extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);                        // [0x01440644]
@@ -123,7 +123,7 @@ bool __cdecl DefaultErrorFunc(long code);          // 0x009A5260
 void __cdecl Math_InitializeCosineLookup();        // 0x00A0DB60
 void __cdecl GFInitVectorMath();                   // 0x00A5B850
 
-struct CSystemManager : CInitBaseClass {
+class CSystemManager : public CInitBaseClass { public:
     bool WindowsQuit;                                   // +0x08
     bool ApplicationActive;                             // +0x09
     bool ApplicationHasInputFocus;                      // +0x0a

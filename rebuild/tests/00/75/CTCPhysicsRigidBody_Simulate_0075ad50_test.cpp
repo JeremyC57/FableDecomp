@@ -7,7 +7,7 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
     return (last == first) ? result
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 inline C3DVector* CopyVectors(C3DVector* first, C3DVector* last, C3DVector* result)
 {
     for (long n = last - first; n > 0; --n) {

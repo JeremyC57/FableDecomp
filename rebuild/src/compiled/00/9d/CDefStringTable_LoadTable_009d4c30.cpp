@@ -16,14 +16,14 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                       // 0x0099A2F0
     ~CBaseClassNonCopyable();                      // 0x0099A300
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-struct CDiskFileWin32 : CBaseClassNonCopyable {                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -35,7 +35,7 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {                    // vtable 0x0
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
     virtual void Close();                          // 0x0099A920
 };
-struct CFileDataInputStream {                      // 0x24 bytes
+class CFileDataInputStream { public:                      // 0x24 bytes
     void* __vftable;
     unsigned char _body[0x20];
     CFileDataInputStream(CDiskFileWin32* file, unsigned long bufferSize);   // 0x00994700

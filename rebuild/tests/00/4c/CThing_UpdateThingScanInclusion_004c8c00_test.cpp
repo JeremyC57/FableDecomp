@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CMapwho { bool in; int placed, died; void Place() { in = true; ++placed; } void OnDie() { in = false; ++died; } };
-struct CThing {
+class CThing { public:
     CMapwho* mapwho; bool physics; bool toBePlaced;
     void Update() {
         if (mapwho) {

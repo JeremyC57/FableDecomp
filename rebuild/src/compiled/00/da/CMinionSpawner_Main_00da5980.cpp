@@ -8,16 +8,16 @@
 //   91 CreateCreature, 100 CreateEffect (+0x190), 108 RemoveThing, 376 Pause (+0x5e0), 475 EntitySetFacingAngleTowardsThing (+0x76c).
 // Layout: the entity-script base {vptr, Game +4, Me +8} of the landed entity Mains.
 // Shape: the distance is converted once to a float local (kept in ebx as its bit pattern for every loop push).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
-struct C3DVector { float x, y, z; };
-struct CCPPointerInfo;
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float x, y, z; };
+class CCPPointerInfo;
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                       // slot 0; complete destructor 0x004AA840
     virtual void v001() const; virtual void v002() const;
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
@@ -27,7 +27,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
     CCPPointerInfo* PImp_Info;                     // +0x08
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;

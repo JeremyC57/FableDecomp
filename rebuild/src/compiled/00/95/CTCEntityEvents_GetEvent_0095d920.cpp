@@ -13,12 +13,12 @@
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                   // +0x00
     void (__fastcall* DeleteFunc)(void* data);        // +0x04
     void* Data;                                       // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                             // +0x00
     CCPPointerInfo* Info;                             // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -70,26 +70,26 @@ struct CEventList {
 };
 
 namespace NEntityEvents {
-struct CIsEventCreatedAfter {
+class CIsEventCreatedAfter { public:
     long WorldFrame;
     bool operator()(const CEventBase& event) const { return event.WorldFrame > WorldFrame; }
 };
-struct CIsEventCreatedBeforeOrOn {
+class CIsEventCreatedBeforeOrOn { public:
     long WorldFrame;
     bool operator()(const CEventBase& event) const { return event.WorldFrame <= WorldFrame; }
 };
-struct CIsEventOfType {
+class CIsEventOfType { public:
     long Type;
     bool operator()(const CEventBase& event) const { return event.GetType() == Type; }
 };
 }
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     template <class T> bool operator()(const T& event) const { return First(event) && Second(event); }
 };
 namespace NEntityEvents {
-struct CEventFiredShot : CEventBase { enum { EventType = 0x26 }; };
+class CEventFiredShot : public CEventBase { public: enum { EventType = 0x26 }; };
 }
 
 struct CTCEntityEventsMethods : CTCEntityEvents {

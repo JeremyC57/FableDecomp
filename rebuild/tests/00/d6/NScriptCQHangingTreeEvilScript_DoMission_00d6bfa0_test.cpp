@@ -7,8 +7,8 @@ static int g_frames = 0, g_endAt = 1000, g_jailAt = 1, g_dualAt = 7, g_spawned =
 static long g_partySize = 0; static float g_timer = 0; static bool g_shown = false;
 struct SScriptDef { float HangingTreeEvilMissionTimer; };
 static SScriptDef g_def;
-struct CTimer { float Time; void SetTime(float t) { Time = t; } };
-struct CGameScriptInterface {
+class CTimer { public: float Time; void SetTime(float t) { Time = t; } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const char* n) const
     { return (!std::strcmp(n, "BowerstoneJail") && g_frames >= g_jailAt) || (!std::strcmp(n, "HeroDualArea") && g_frames >= g_dualAt); }

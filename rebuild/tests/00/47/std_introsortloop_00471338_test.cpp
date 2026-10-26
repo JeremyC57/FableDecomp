@@ -1,7 +1,7 @@
 // Behaviour test for 0x00470E9E __introsort_loop<pair<unsigned long, CDefString>*>: leaves runs of <= 16 unsorted inside but
 // partitioned so that the final insertion sort orders the keys; depth 0 hands the whole range to partial_sort
 #include <cstdio>
-struct CDefString { int TablePos; };
+class CDefString { public: int TablePos; };
 struct Entry { unsigned int first; CDefString second; };
 struct Less { bool operator()(const Entry& a, const Entry& b) const { return a.first < b.first; } };
 static int partialSorts = 0;

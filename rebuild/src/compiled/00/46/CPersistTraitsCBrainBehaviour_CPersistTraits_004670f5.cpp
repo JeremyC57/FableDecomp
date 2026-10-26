@@ -16,7 +16,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0

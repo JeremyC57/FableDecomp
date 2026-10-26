@@ -1,11 +1,11 @@
 // Behaviour test for CTCTargetingBase::SetPScriptOverrideInterestingThing @ 0x007F5890: any thing but the parent itself is stored.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CIntelligentPointer {
     CThing* p; CIntelligentPointer() : p(0) {} CIntelligentPointer(CThing* t) : p(0) { SetPItem(t); }
     CThing* GetPItem() const { return p; } void SetPItem(CThing* t) { p = t; }
 };
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     CThing* ParentThing; CIntelligentPointer PScriptOverrideInterestingThing;
     void SetPScriptOverrideInterestingThing(CThing* thing)
     { if (ParentThing != thing) { CIntelligentPointer ptr(thing); PScriptOverrideInterestingThing.SetPItem(ptr.GetPItem()); } }

@@ -5,7 +5,7 @@
 #include "engine/CCreatureAction_DropGenericBox.h"
 struct Creature;
 namespace Retail {struct ActionBase {unsigned char Data[0xa8];~ActionBase();long GetActionID()const;};struct DropGenericBox:ActionBase {DropGenericBox(Creature&);};}
-struct Thing;struct Component {};struct CTCCarrying:Component {Thing* RemoveThingFromPrimarySlot(bool);};struct CTCCreatureModeManager:Component {void RemoveMode(unsigned long);};
+struct Thing;struct Component {};class CTCCarrying:public Component { public:Thing* RemoveThingFromPrimarySlot(bool);};class CTCCreatureModeManager:public Component { public:void RemoveMode(unsigned long);};
 struct Pair {int Key;Component* Value;};
 struct ComponentMap {Pair* First;Pair* Last;Pair* Limit;Pair* LowerBound(const int&);__forceinline void Get(int key,Component** result){int query=key;Pair* i=LowerBound(query);*result=(i==Last||key<i->Key?Last:i)->Value;}};
 struct Creature {unsigned char ToFlags[0x24];unsigned int Flags24,Flags28;unsigned char ToMap[0x44-0x2c];ComponentMap Components;unsigned char ToAction[0x100-0x50];Retail::ActionBase* CurrentAction;bool IsPerformingAnyAction()const;bool SetCurrentAction(const Retail::ActionBase&);

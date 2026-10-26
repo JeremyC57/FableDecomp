@@ -11,24 +11,24 @@ typedef long long __int64;
 // behaviour test: CShaderRenderManager::UpdateWorldSpaceLighting flushes dirty light runs, fills disabled lights with (0,0,0,1), uploads attenuations and moves the dirty flags
 
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() {}
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) {}
 };
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     virtual ~CShaderConstantRange();
     long          Offset;                        // +0x4
     unsigned long Count;                         // +0x8
 };
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     unsigned char        _pad00[0x4c];
     unsigned long        LightSize;              // +0x4c
     CShaderConstantRange LightArray;             // +0x50
     CShaderConstantRange LightGlobals;           // +0x5c
     CShaderConstantRange LightAttenuations;      // +0x68
 };
-struct CShaderGenericLight {
+class CShaderGenericLight { public:
     C4DVector     Parameters[2];                 // +0x00
     long          Types[2];                      // +0x20
     float         Attenuation2;                  // +0x28
@@ -40,7 +40,7 @@ struct CLightInfo {
     bool          IsEnabled;                     // +0x34
     bool          UpdateFlag;                    // +0x35
 };
-template <class T> struct CArray {               // STLport vector (12 bytes)
+template <class T> class CArray { public:               // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -72,7 +72,7 @@ struct IDirect3DDevice9 {
     virtual void d090() const {} virtual void d091() const {} virtual void d092() const {} virtual void d093() const {}
     virtual long __stdcall SetVertexShaderConstantF(unsigned int startRegister, const float* data, unsigned int vector4fCount); // slot 94 (+0x178)
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                        __vftable;
     CVertexShaderConstantLayout* CurrentVSConstantLayout;    // +0x004
     unsigned char                _pad008[0x164 - 0x8];

@@ -2,7 +2,7 @@
 #include <cstdio>
 struct CVillageTaskCarryCrateSub { long v; };
 extern "C" long FABLE_FASTCALL FableAssignee_00860500(CVillageTaskCarryCrateSub *sub){ return sub->v; }
-struct CVillageTaskCarryCrate { char pad00[0x8]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
+class CVillageTaskCarryCrate { public: char pad00[0x8]; char m_sub[4]; bool IsCreatureAssignedToTask(long who); };
 bool CVillageTaskCarryCrate::IsCreatureAssignedToTask(long who){ return FableAssignee_00860500((CVillageTaskCarryCrateSub*)&m_sub[0])==who; }
 int main(){
     CVillageTaskCarryCrate o; *(long*)&o.m_sub[0]=42;

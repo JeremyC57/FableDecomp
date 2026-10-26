@@ -13,11 +13,11 @@
 #define __fastcall
 #endif
 
-struct CTCBase { };
-struct C3DVector { float X, Y, Z; };
+class CTCBase { public: };
+class C3DVector { public: float X, Y, Z; };
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[96];
     CCharString() { m_text[0] = 0; ++g_liveStrings; }
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_liveStrings; }
@@ -62,11 +62,11 @@ struct CInterfaceMap {
     }
 };
 
-struct CFontBank { int id; };
-struct CMainGameComponent { CFontBank* FontBank; };
+class CFontBank { public: int id; };
+class CMainGameComponent { public: CFontBank* FontBank; };
 static CMainGameComponent g_component;
 
-struct CThing {
+class CThing { public:
     unsigned long  m_presentBits[9];
     CInterfaceMap  m_interfaces;
     unsigned short DefIndex;
@@ -138,7 +138,7 @@ struct CThing {
     }
 };
 
-struct CRightHandedSet;
+class CRightHandedSet;
 static int       g_createCalls = 0;
 static long      g_createDef = -1;
 static C3DVector g_createPos;
@@ -181,18 +181,18 @@ static char       g_text[96];
 static unsigned long g_textColour = 99;
 static float      g_textTime = 0.0f;
 static bool       g_textA = true, g_textB = false;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b)
     {
         ++g_setTextCalls; g_textFont = font; std::strcpy(g_text, text.m_text); g_textColour = colour; g_textTime = time;
         g_textA = a; g_textB = b;
     }
 };
-struct CPlayerGui { CSubtitleRenderer SubtitleRenderer; };
+class CPlayerGui { public: CSubtitleRenderer SubtitleRenderer; };
 static CPlayerGui  g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
 
-struct CTCHeroStats : CTCBase {
+class CTCHeroStats : public CTCBase { public:
     long Money;
     int  m_calls;
     bool m_show;
@@ -207,7 +207,7 @@ static CTCInventoryBase* g_addInventory = 0;
 static long g_addPrice = 0;
 static bool g_addFlags[4];
 static int  g_addCalls = 0;
-struct CTCInventoryItem : CTCBase {
+class CTCInventoryItem : public CTCBase { public:
     long InventoryType;
     long MaxNumberItems;
     long GetInventoryType() const { return InventoryType; }
@@ -219,11 +219,11 @@ struct CTCInventoryItem : CTCBase {
         return true;
     }
 };
-struct CTCShop {
+class CTCShop { public:
     CBaseIntelligentPointer PShopKeeper;
     CThing* GetShopKeeper() const { return PShopKeeper.GetPItem(); }
 };
-struct CTCStockItem : CTCBase {
+class CTCStockItem : public CTCBase { public:
     long     Price;
     CTCShop* m_shop;
     CTCShop* GetShopTC() const { return m_shop; }
@@ -237,7 +237,7 @@ struct CEventSoldItem : CEventBase {
     CEventSoldItem(CThing* giver, CThing* item, bool ownsItem) : m_giver(giver), m_item(item), m_ownsItem(ownsItem) { }
 };
 }
-struct CTCEntityEvents : CTCBase {
+class CTCEntityEvents : public CTCBase { public:
     CEventBase* m_last;
     int         m_count;
     void AddEvent(CEventBase* event) { delete m_last; m_last = event; ++m_count; }
@@ -250,7 +250,7 @@ static CThing*   g_messageFrom = 0;
 static CThing*   g_messageTo = (CThing*)1;
 static float     g_messageV1 = 1.0f, g_messageV2 = 1.0f;
 static long      g_messageData = 1;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to,
                      float value1, float value2, long data)
     {
@@ -259,11 +259,11 @@ struct CMessageEventManager {
         return 0;
     }
 };
-struct CWorld { CMessageEventManager* MessageEventManager; };
+class CWorld { public: CMessageEventManager* MessageEventManager; };
 static CMessageEventManager g_manager;
 static CWorld g_world;
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CBaseIntelligentPointer PCreature;
     virtual ~CCreatureActionBase() { }
     virtual void PerformAction() { }

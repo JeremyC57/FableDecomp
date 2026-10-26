@@ -33,18 +33,18 @@ struct IDirect3DSurface9 {
     virtual long __stdcall LockRect(void* locked, const void* rect, unsigned long flags);   // slot 13 (+0x34)
     virtual long __stdcall UnlockRect();                           // slot 14 (+0x38)
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
 };
-struct CPixelFormat { long FormatIndex; };
-struct CSurfaceLockedRect {
+class CPixelFormat { public: long FormatIndex; };
+class CSurfaceLockedRect { public:
     C2DExtentsI    Dimensions;                     // +0x00
     long           Pitch;                          // +0x08
     unsigned char* PMem;                           // +0x0c
 };
 
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     virtual ~CSurface();
     IDirect3DSurface9* PD3DSurface;                // +0x04
     unsigned long      AllocationSource;           // +0x08

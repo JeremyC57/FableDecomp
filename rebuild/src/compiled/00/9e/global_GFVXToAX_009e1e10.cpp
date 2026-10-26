@@ -10,8 +10,8 @@
 // Shape: `fild [eax] ; fmul [x] ; fdiv qword [g]` -- the int dimension is loaded first because it can only be
 // converted on load, then the double divide. The display manager is a named local: written inline in the
 // expression, the hidden result slot's `lea ; push` is hoisted above the GFGetSystemManager call.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

@@ -12,32 +12,32 @@
 // Shape: a zeroed local CDefPointer filled by GetDef, its object taken into a pointer local and released by hand at the end
 // (`test ebp ; dec [ebp+4] ; jne`, no clear); the implicit
 // CTCNoiseDef operator= (base operator= then the three member copies); `switch` with case 0 / case 1.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x8c];
     unsigned short DefIndex;                    // +0x8c
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Destroy();
     virtual void Release();                     // slot 1
     long RefCount;                              // +0x04
     unsigned char _pad08[0x28 - 0x08];
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
-struct CTCNoiseDef : CDefClassBase {            // 0x34
+class CTCNoiseDef : public CDefClassBase { public:            // 0x34
     long  Type;                                 // +0x28 ENoiseType
     float LifeTime;                             // +0x2c (seconds)
     float DistanceCanBeHeardFrom;               // +0x30
 };
-struct CThingNoiseDef : CDefClassBase {
+class CThingNoiseDef : public CDefClassBase { public:
     unsigned char _pad28[0x70 - 0x28];
     CTCNoiseDef Noise;                          // +0x70 (PDB +0x74)
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CThingNoiseDef>* out) const;   // 0x00749AC0
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -61,7 +61,7 @@ struct CIntelligentPointerConstThing {
     virtual void v00();
     const CThing* m_pItem;
 };
-struct CTCNoise {
+class CTCNoise { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08

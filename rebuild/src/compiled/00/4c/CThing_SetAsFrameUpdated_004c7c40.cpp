@@ -1,9 +1,9 @@
-struct CThing;
+class CThing;
 struct GlobalMgr {
     void Notify(CThing* t);
 };
 extern GlobalMgr* g_mgr;
-struct CThing {
+class CThing { public:
     unsigned char pad[0x91];
     unsigned char flags;
 };

@@ -27,7 +27,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct C3DSkeletalMorph : CBase {
+class C3DSkeletalMorph : public CBase { public:
     virtual void v00();                    // own vtable (0x0129D498)
     CArray          MorphParameters;       // +0x4
     CCountedPointer CombinedMorph;         // +0x10

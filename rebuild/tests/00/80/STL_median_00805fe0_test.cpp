@@ -16,11 +16,11 @@ struct CRandomSeed {
         return Seed;
     }
 };
-struct CWorld { CRandomSeed RandomSeed; };
+class CWorld { public: CRandomSeed RandomSeed; };
 static CWorld g_world;
 static CWorld* g_pWorld = &g_world;
 
-struct CThing { int id; };
+class CThing { public: int id; };
 struct ThingPointer { CThing* item; };
 struct CDoNotUseBinaryPredicate {
     bool operator()(const ThingPointer&, const ThingPointer&) const

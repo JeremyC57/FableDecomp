@@ -33,7 +33,7 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
@@ -59,9 +59,9 @@ void ThingVector::_M_insert_overflow(const CThing** position,const CThing* const
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -72,8 +72,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -89,8 +89,8 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsNot {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
-struct CThingFilter_IsInFOV {float FromPos[3],Direction[3],CosFOV,FOV;bool AngleTest3D;bool operator()(const CThing&)const;}; // 0x006a7390
+class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
+class CThingFilter_IsInFOV { public:float FromPos[3],Direction[3],CosFOV,FOV;bool AngleTest3D;bool operator()(const CThing&)const;}; // 0x006a7390
 struct Filters {
  CThingFilter_IsNot* F1;
  CThingFilter_IsNot* F2;

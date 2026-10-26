@@ -3,7 +3,7 @@
 // of IsDay, MaxFrameToAssignTask -1, ResetCrier called, both looked-up defs released
 #include <cstdio>
 class CThing;
-struct CTCBase;
+class CTCBase;
 static int g_destroyed = 0, g_crier = 0;
 struct CDefBase {
     virtual void v00() {}
@@ -15,21 +15,21 @@ struct CDefBase {
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CVillageDef : CDefBase { long DefaultStanceToHero; };
-struct CVillagePeopleDef : CDefBase { long GuardRespawnMaxRenownBasedOffset; };
+class CVillageDef : public CDefBase { public: long DefaultStanceToHero; };
+class CVillagePeopleDef : public CDefBase { public: long GuardRespawnMaxRenownBasedOffset; };
 static CVillageDef g_villageDef; static CVillagePeopleDef g_peopleDef;
 struct CThingDef : CDefBase {
     bool GetSubDef(CDefPointer<CVillageDef>* out) { ++g_villageDef.m_count; out->Object = &g_villageDef; return true; }
     bool GetSubDef(CDefPointer<CVillagePeopleDef>* out) { ++g_peopleDef.m_count; out->Object = &g_peopleDef; return true; }
 };
 static CThingDef g_thingDef; static long g_requestedIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out) const { g_requestedIndex = index; ++g_thingDef.m_count; out->Object = &g_thingDef; return true; }
 };
 static CDefinitionManager g_defs;
@@ -61,14 +61,14 @@ bool IS_THING_ALIVE(const CThing* const& thing)
         return false;
     return (thing->Flags91 & 1) == 0;
 }
-struct CGameTimeManager { bool day; bool IsDay() const { return day; } };
+class CGameTimeManager { public: bool day; bool IsDay() const { return day; } };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetCharacterThing() { return g_hero; } };
-struct CWorld { CGameTimeManager* PGameTimeManager; CPlayer player; CPlayer* GetCurrentPlayer() const { return (CPlayer*)&player; } };
+class CPlayer { public: CThing* GetCharacterThing() { return g_hero; } };
+class CWorld { public: CGameTimeManager* PGameTimeManager; CPlayer player; CPlayer* GetCurrentPlayer() const { return (CPlayer*)&player; } };
 static CGameTimeManager g_time; static CWorld g_world;
-struct CMainGameComponent { CWorld* World; };
+class CMainGameComponent { public: CWorld* World; };
 static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
-struct CTCVillage {
+class CTCVillage { public:
     virtual void v00() {}
     CThing*       ParentThing;
     bool          InCurfew;

@@ -1,6 +1,6 @@
 #include <cstdio>
 #define FAIL { std::printf("0099b560_TEST FAIL\n"); return 1; }
-struct CWideStringData {
+class CWideStringData { public:
     unsigned short* _M_start; unsigned short* _M_finish; unsigned short* _M_end_of_storage; long NoRefs;
     CWideStringData(const unsigned short* s) : _M_start(0), _M_finish(0), _M_end_of_storage(0), NoRefs(1)
     {
@@ -9,7 +9,7 @@ struct CWideStringData {
         _M_finish = _M_start + n; _M_end_of_storage = _M_finish + 1;
     }
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     void UnassignString() { if (PStringData) { if (--PStringData->NoRefs <= 0) { delete[] PStringData->_M_start; delete PStringData; } PStringData = 0; } }
     void MakeOwnCopyOfData()

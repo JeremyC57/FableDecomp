@@ -65,7 +65,7 @@ public:
     }
 };
 namespace NThingShot {
-struct CTCShotDefinitionBase {
+class CTCShotDefinitionBase { public:
     virtual ~CTCShotDefinitionBase();              // 0x007BF2B0
     unsigned char _pad04[0x9c - 0x04];
 };

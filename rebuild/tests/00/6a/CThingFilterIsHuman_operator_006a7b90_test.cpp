@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CThingCreatureBase { long human; long IsHuman() { return human; } };
-struct CThingFilter_IsHuman { long operator()(CThingCreatureBase* c) { return c->IsHuman() != 0; } };
+class CThingCreatureBase { public: long human; long IsHuman() { return human; } };
+class CThingFilter_IsHuman { public: long operator()(CThingCreatureBase* c) { return c->IsHuman() != 0; } };
 int main()
 {
     CThingCreatureBase c; CThingFilter_IsHuman f;

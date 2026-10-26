@@ -80,7 +80,7 @@ static void GFSerialiseVectorBinaryOut(COut* out, const CArrayL* v)
     out->WriteLong(n);
     for (long i = 0; i < n; ++i) out->WriteLong(v->first[i]);
 }
-struct CObjectAugmentationParticleSet { float PeriodSecs; int ParticleEffect, ParticleEffectToBlendTo, AttackParticleEffect, AttackParticleEffectToBlendTo; CArrayL StartPoint, EndPoint; };
+class CObjectAugmentationParticleSet { public: float PeriodSecs; int ParticleEffect, ParticleEffectToBlendTo, AttackParticleEffect, AttackParticleEffectToBlendTo; CArrayL StartPoint, EndPoint; };
 struct Traits { void TransferBinaryOut(COut* out, const CObjectAugmentationParticleSet* value)
 {
     out->WriteFloat(value->PeriodSecs);

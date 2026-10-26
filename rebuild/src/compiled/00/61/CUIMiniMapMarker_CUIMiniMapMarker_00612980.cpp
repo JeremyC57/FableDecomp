@@ -7,12 +7,12 @@
 // Shape: the region load precedes the string's address set-up and its store follows the push; the five
 // trailing words are copied one register each with integer moves (floats included, and the C2DVector
 // member copied by its implicit bitwise copy): an out-of-line memberwise copy constructor.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

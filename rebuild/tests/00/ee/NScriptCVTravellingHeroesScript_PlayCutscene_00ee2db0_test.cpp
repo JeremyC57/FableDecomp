@@ -5,11 +5,11 @@
 #include <string>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct Handle { int who; };
 typedef std::map<std::string, int> Cast;
 struct ArgMap { int n; void clear() { n = 0; Log("clearargs"); } };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     CScriptThing& GetHero() { hero.id = 1; return hero; }
     bool StartScriptingEntity(const CScriptThing& t, Handle& h, long pri) { h.who = pri == 4 ? t.id : -1; return true; }

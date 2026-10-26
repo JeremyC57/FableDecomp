@@ -2,7 +2,7 @@
 // random index picks one allocator, which builds the mode for the parent thing; the result holds a fresh count block
 // (1 reference, the deleter, the mode); a null mode gives an empty pointer; no registration -> index 0 of the range.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CModeBase { CThing* Owner; int Kind; };
 static void Destroy_007180b0(void* object) { }
 static unsigned long GFROR13(unsigned long value) { return (value >> 13) | (value << 19); }
@@ -20,7 +20,7 @@ struct SCountBlock {
     void* m_pObject;
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_007180b0), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;
     SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object)
@@ -52,14 +52,14 @@ struct CModeRegistry {
 };
 static CModeRegistry g_CreatureModeRegistry;
 static unsigned long g_seed = 77;
-struct CWorld { unsigned long* GetPRandomSeed() { return &g_seed; } };
+class CWorld { public: unsigned long* GetPRandomSeed() { return &g_seed; } };
 static CWorld g_world;
 inline long CountRegisteredModes(const CModeRegistry& registry, const unsigned long& type)
 {
     const SRegisteredMode* last = registry.UpperBound(type);
     return last - registry.LowerBound(type);
 }
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual void v00() { }
     CThing* ParentThing;
     CWorld* GetWorld() const { return &g_world; }

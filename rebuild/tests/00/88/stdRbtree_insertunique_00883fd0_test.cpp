@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <stddef.h>
-namespace NScreenEffect { class CScreenEffectPriorityStack { public: class CStackEntry; }; }
+namespace NScreenEffect { class CScreenEffectPriorityStack { public: struct CStackEntry; }; }
 typedef NScreenEffect::CScreenEffectPriorityStack::CStackEntry* K;
 static K mk(unsigned int v) { return (K)(size_t)(v * 16 + 16); }
 struct Node { bool color; Node* parent; Node* left; Node* right; K key; };

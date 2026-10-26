@@ -10,18 +10,18 @@
 // ParentClass +0x14, PMasterData +0x18, BarIndex +0x1c.
 // Shape: the killed-by string is a named local in its own block with the result in a bool declared outside (retail
 // `lea edx ; push edx`); the message is a named local built before any argument push.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);       // 0x0099B6B0
     ~CWideString();                                // 0x0099B510
 };
 extern const unsigned short g_TextQuestFailedTradersDied[];   // 0x012DEC88 L"TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED"
-struct CGameScriptInterface {                     // vtable 0x01260F0C
+class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -110,7 +110,7 @@ struct CGameScriptInterface {                     // vtable 0x01260F0C
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
 };
 
-struct CScriptThing {                              // vtable 0x01238C8C
+class CScriptThing { public:                              // vtable 0x01238C8C
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

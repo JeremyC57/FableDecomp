@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ReleaseAndLoopDivineWrathSpell {
+class CCreatureAction_ReleaseAndLoopDivineWrathSpell { public:
     void* vftable;
     int destroyed;
 };

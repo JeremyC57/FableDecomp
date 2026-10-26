@@ -8,7 +8,7 @@ struct CThingMap {
     CThingMapCell Cells[2][16];
     CThingMapCell& GetCell(unsigned char level, long x, long y) { return Cells[level][ExtentsX[level] * y + x]; }
 };
-struct C2DCoordI { long X, Y; bool operator==(const C2DCoordI& o) const { return X == o.X && Y == o.Y; } };
+class C2DCoordI { public: long X, Y; bool operator==(const C2DCoordI& o) const { return X == o.X && Y == o.Y; } };
 struct CThingMapInfo { CThingMap* PThingMap; long RefCount; };
 struct CMapCellPosInfo { CThingMapInfo* PMapInfo; C2DCoordI LocalPos; CThingMapCell* PCell; };
 struct CMapCellPosInfoGroup { long Layer; CMapCellPosInfo TLPos, TRPos, BLPos, BRPos; };

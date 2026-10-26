@@ -6,7 +6,7 @@
 //   16-byte pivot and the comparator on the stack): both scans are rotated loops on the UNSIGNED key, and
 //   `iter_swap(first, last)` is inlined (`_Tp tmp = *a; *a = *b; *b = tmp;`). Only pivot.first is ever read, so VC
 //   parks tmp's three vector words in the pivot's dead argument slots (`[esp+18h..20h]`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -23,7 +23,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

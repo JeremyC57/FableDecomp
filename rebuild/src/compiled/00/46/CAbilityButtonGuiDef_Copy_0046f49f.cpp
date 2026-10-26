@@ -5,8 +5,8 @@
 // __fastcall accessor modeled as free __fastcall(thisptr, arg). The rel32
 // target is relocation-masked, so any plausible extern callee byte-matches.
 
-struct CDefClassBase;
-struct CAbilityButtonGuiDef;
+class CDefClassBase;
+class CAbilityButtonGuiDef;
 
 // Shared Copy implementation this thunk tail-calls into.
 extern "C" CAbilityButtonGuiDef* __fastcall

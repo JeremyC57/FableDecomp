@@ -1,13 +1,13 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 
 struct IHelper {
     virtual bool CheckReset(void* nav, C3DVector* dest) = 0;
     virtual ~IHelper() {}
 };
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* field0;
     IHelper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest) {

@@ -40,7 +40,7 @@ struct Sub4 {
     GuiProvider* provider70;        // +0x70
 };
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     void* v0field;                  // +0x0
     Sub4* ParentThing;                   // +0x4
     void ApplyGuiField(int v);      // __fastcall member (masked callee)

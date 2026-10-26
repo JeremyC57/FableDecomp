@@ -6,7 +6,7 @@
 // class and the member class are both `__declspec(novtable)` (the members' inline destructors
 // collapse to the out-of-line CBaseClass destructor). The manifest label (CarryCrateAndFollow
 // dtor) is propagated garbage; names are descriptive.
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                          // 0x0099A2E0
 };

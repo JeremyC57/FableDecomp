@@ -11,19 +11,19 @@
 //   (jump table, `ja` to the shared epilogue) whose arms are implicit-conversion SetAnimationName calls -- each arm's
 //   string temporary gets its own frame word (the dead argument slots and the two frame words), and VC duplicates the
 //   epilogue into every arm.
-struct CThingCreatureBase;
-struct CCharString {
+class CThingCreatureBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
 };
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); virtual void v##n##4(); \
     virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); virtual void v##n##8(); virtual void v##n##9();
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     V10(0) V10(1) V10(2) V10(3) V10(4) V10(5) V10(6) V10(7)                     // slots 0..79
     virtual void v80(); virtual void v81(); virtual void v82(); virtual void v83(); virtual void v84();
     virtual void v85(); virtual void v86(); virtual void v87(); virtual void v88();
@@ -31,13 +31,13 @@ struct CThingCreatureBase {
 };
 #undef V10
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_FinishWillForceSpell : CCombatActionBase {   // vtable 0x0127B87C
+class CCreatureAction_FinishWillForceSpell : public CCombatActionBase { public:   // vtable 0x0127B87C
     virtual void v00();
     CCreatureAction_FinishWillForceSpell(CThingCreatureBase* owner, long level);
 };

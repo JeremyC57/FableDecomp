@@ -13,12 +13,12 @@
 // @ 0x0122D70E, twice), ~CCharString @ 0x0099EAE0.
 // Shape: one `&&` chain returning bool; the "" arguments are IMPLICIT CCharString conversion temporaries (retail's
 // `lea ecx ; push ecx`), tracked by flag bits in ebx and destroyed after the result byte is stored.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CScriptThing {                              // vtable 0x01238C8C
+class CScriptThing { public:                              // vtable 0x01238C8C
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

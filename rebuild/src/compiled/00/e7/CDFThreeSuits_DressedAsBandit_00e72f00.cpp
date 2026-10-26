@@ -9,13 +9,13 @@
 // constructed temporaries in ebx (1, 3, 7, 0xf, 0x1f), parks the bool in a frame byte and destroys them in reverse.
 // Matched first try.
 // Leaf: DressedAsBandit
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CScriptThing;
-struct CGameScriptInterface {
+class CScriptThing;
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

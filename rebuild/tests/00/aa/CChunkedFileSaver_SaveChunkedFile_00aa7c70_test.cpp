@@ -58,8 +58,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -67,8 +67,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -163,10 +163,10 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CCharStringData* NewLine_PStringData;                    // +0x04 CCharString::PStringData
 };
@@ -190,10 +190,10 @@ FABLE_STATIC_ASSERT(offsetof(CDataOutputStream, NewLine_PStringData) == 0x4);
 #include <stddef.h>
 
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
 #pragma pack(push, 1)
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     char                    ChunkType[5];                    // +0x04
     unsigned char           _pad_0x09[0x3];                  // +0x09
@@ -210,8 +210,8 @@ FABLE_STATIC_ASSERT(offsetof(CChunkedFileChunk, Parent) == 0xc);
 
 #undef CChunkedFileChunk
 struct CRetailString : CCharString { CRetailString(const CCharString& s); }; // native copy0x0099EC30
-struct CChunkedFileSaver; struct CDataInputStream; struct CChunkedFileLoader;
-struct CDataOutputStream {
+class CChunkedFileSaver; class CDataInputStream; class CChunkedFileLoader;
+class CDataOutputStream { public:
     virtual ~CDataOutputStream();
     virtual void SetPosition(unsigned long position)=0;
     virtual unsigned long GetPosition() const=0;
@@ -221,7 +221,7 @@ struct CDataOutputStream {
     void WriteULong(unsigned long value); // 0x00993EA0
     void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
 };
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual ~CChunkedFileChunk();
     virtual CCharString GetChunkDescription() const;
     virtual CCharString GetChunkInfo() const;
@@ -243,12 +243,12 @@ struct ChunkPointer {
     ~ChunkPointer() { if(Info && --Info->References==0) { Info->Destroy(Info->Object); operator delete(Info); } }
     CChunkedFileChunk* operator->() const { return Data; }
 };
-struct CChunkedFile {
+class CChunkedFile { public:
     virtual ~CChunkedFile();
     ChunkPointer RootChunk; unsigned long Version; CCharString FileComment;
     ChunkPointer GetRootChunk() const { return RootChunk; }
 };
-struct CChunkedFileSaver {
+class CChunkedFileSaver { public:
     virtual ~CChunkedFileSaver();
     char SupportedFileType[5];
     unsigned long SaveChunkedFile(CChunkedFile& file,CDataOutputStream& out);

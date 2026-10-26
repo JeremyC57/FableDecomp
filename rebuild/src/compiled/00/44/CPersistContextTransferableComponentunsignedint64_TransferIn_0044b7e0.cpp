@@ -6,9 +6,9 @@
 // Persist READ hook (vtable slot 1) of a 64-bit component: the target pointer at +0x4 is read before
 // the call (named local, kept in esi), the parser (second argument) is `this` of the reader, and the
 // edx:eax result is stored as two dwords.
-struct CPersistContext;
+class CPersistContext;
 
-struct CStringParser {
+class CStringParser { public:
     __int64 ReadInt64();                   // 0x009BA5B0
 };
 

@@ -6,7 +6,7 @@
 //        inlined CMemoryDataInputStream::Read with its 64-bit position range check (each exit duplicates the member store).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -30,7 +30,7 @@ struct CMemoryDataInputStream {
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
-struct CTexture;
+class CTexture;
 struct CBaseBlock {
     unsigned long PrimitiveCount;          // +0x00
     unsigned long StartIndex;              // +0x04

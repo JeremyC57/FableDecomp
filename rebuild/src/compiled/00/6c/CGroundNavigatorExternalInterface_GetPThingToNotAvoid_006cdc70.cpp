@@ -20,7 +20,7 @@ struct CTCMap_Retail {                             // the creature's component m
     STCEntry_Retail* LowerBound_004365b0(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     STCEntry_Retail* LowerBound_004365b0(const long* kind) const;    // 0x004365B0 (the second instantiation)
 };
-struct CThingCreatureBase {                        // the retail creature as seen from the navigator interface
+class CThingCreatureBase { public:                        // the retail creature as seen from the navigator interface
     virtual void v000();
     unsigned char         _pad04[0x1c];
     unsigned long         m_presentBits[9];        // +0x20 bitset of the component kinds present

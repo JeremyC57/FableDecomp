@@ -2,7 +2,7 @@
 
 struct BridgeVertex { char pad[24]; };
 
-struct CLandscapePatchTesselator {
+class CLandscapePatchTesselator { public:
     char           pad0[0x14];
     BridgeVertex*  m_begin;
     BridgeVertex*  m_end;

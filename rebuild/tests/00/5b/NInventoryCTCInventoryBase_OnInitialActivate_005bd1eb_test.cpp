@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_calls = 0; static bool g_between = false;
-struct CQuestManager { bool IsBetweenQuestStartAndFinishScreens() { return g_between; } };
+class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() { return g_between; } };
 static CQuestManager g_qm; static CQuestManager* g_pQuestManager = &g_qm;
 struct CCategory { unsigned char _body[0x2C]; int stripped; void RemoveAllNonQuestPersistentItems() { ++stripped; ++g_calls; } };
 struct CCategoryVector {

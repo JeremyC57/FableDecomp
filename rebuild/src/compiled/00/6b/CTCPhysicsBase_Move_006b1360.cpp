@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCPhysicsBase { void Move(); };
+class CTCPhysicsBase { public: void Move(); };
 void CTCPhysicsBase::Move() {}

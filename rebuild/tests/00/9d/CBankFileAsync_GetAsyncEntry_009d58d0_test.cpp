@@ -1,8 +1,8 @@
 // Behaviour test for 0x009d58d0 CBankFileAsync::CreateEntry
 #include <cstdio>
 static int g_deleted = 0;
-struct CBankFileAsync;
-struct CBankFileAsyncEntry {
+class CBankFileAsync;
+class CBankFileAsyncEntry { public:
     CBankFileAsync* m_pBank; unsigned long m_index; unsigned long m_alignedSize;
     inline CBankFileAsyncEntry(CBankFileAsync* bank, unsigned long index);
     virtual ~CBankFileAsyncEntry() { ++g_deleted; }
@@ -12,13 +12,13 @@ struct SCountBlock {
     long m_references; void (*m_pfnDestroy)(void*); void* m_pObject;
     SCountBlock(void* o, void (*d)(void*)) : m_references(1), m_pfnDestroy(d), m_pObject(o) {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* o, void (*d)(void*)) : m_pObject(o) { if (o) m_pCount = new SCountBlock(o, d); else m_pCount = 0; }
     CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
     ~CCountedPointer() { if (m_pCount) { if (--m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } }
 };
-struct CBankFileAsync {
+class CBankFileAsync { public:
     unsigned long GetEntryDataSize(unsigned long index) const { return index * 10 + 3; }
     unsigned long Align(unsigned long size) const { return (size + 15) & ~15UL; }
     CCountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long index)

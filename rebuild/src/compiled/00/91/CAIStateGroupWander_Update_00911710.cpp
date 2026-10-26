@@ -12,9 +12,9 @@
 //          inner block and the action temporary in the call, the `!= 2` test lands in bl before both destructors.
 // Layout: CAIStateGroupBase per engine/CAIStateGroupBase.h (PBrain +4); the creature's bitset +0x20, interface map +0x44.
 //          No engine header exists for CAIStateGroup_Wander.
-struct CTCBase;
-struct CThing;
-struct CThingCreatureBase;
+class CTCBase;
+class CThing;
+class CThingCreatureBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -23,13 +23,13 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,39 +53,39 @@ struct CThing {
     }
 };
 
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation, float blend,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x00843A80
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

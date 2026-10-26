@@ -22,7 +22,7 @@ struct CDrawQuestInfo {
     void RemoveElement(long id) { if (g_removedCount < 8) g_removed[g_removedCount] = id; ++g_removedCount; }
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     CDrawQuestInfo* m_pDrawQuestInfo;
 };
 static CDrawQuestInfo g_drawQuestInfo;

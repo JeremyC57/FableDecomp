@@ -4,7 +4,7 @@ struct CXfer {
     void M80(void* p);
     void M84(void* p);
 };
-struct CThingMarkerDef {
+class CThingMarkerDef { public:
     void BaseTransfer(CXfer* x);
     void Transfer(CXfer* x);
 };

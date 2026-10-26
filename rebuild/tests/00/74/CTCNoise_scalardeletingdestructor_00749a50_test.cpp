@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCNoise {
+class CTCNoise { public:
     void* vftable;
     int destroyed;
 };

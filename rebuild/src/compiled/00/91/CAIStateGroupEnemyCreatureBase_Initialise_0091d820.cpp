@@ -5,12 +5,12 @@
 // EnemyCreatureBase family adds below CAIStateGroupBase's 14 slots (sibling of CleanupLeaf at
 // slot 17); named InitialiseLeaf here. The base is modelled with the 14 retail slots so the
 // hook lands at +0x38.
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 typedef long EScriptAIPriority;
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name);   // 0x008FCEC0
     virtual void OnActivate();

@@ -8,7 +8,7 @@
 // Shape: the vector is copied whole (implicit copy: two integer moves through eax/edx, no x87), then GetLength() runs on the
 // argument still in ecx and the result is stored with `fstp [esi+8]`.
 // Leaf: ??0SRegionLookupKey00c46550
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     float GetLength() const;                            // 0x00C46E90
 };

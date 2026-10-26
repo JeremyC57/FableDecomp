@@ -7,7 +7,7 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x00811760; the compiler then stores this class's vtable (0x01272FA8, named
 // through rtti-vtables.tsv) and returns `this`. One of 12 bodies of this shape.
-struct CHitParameters;
+class CHitParameters;
 
 struct CEventHitBase {
     virtual void v00();

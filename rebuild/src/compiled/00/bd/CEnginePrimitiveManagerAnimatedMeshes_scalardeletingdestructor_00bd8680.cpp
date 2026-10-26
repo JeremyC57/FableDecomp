@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerAnimatedMeshes {
+class CEnginePrimitiveManagerAnimatedMeshes { public:
     void* vftable;
 };
 

@@ -12,7 +12,7 @@
 // Shape: three else-if arms, each building and queueing its own event (retail tail-merges the two bool arms after
 //   the type store, and the 0x16 arm's Copy + AddGameEvent tail too); the inline Add* helpers home their by-value argument (and the name string temporary) in the dead `event` slot.
 class CInputEvent;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -20,7 +20,7 @@ struct CCharString {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -36,11 +36,11 @@ class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CPlayer;
-struct CWorld; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

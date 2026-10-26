@@ -14,22 +14,22 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                                  // 0x0099A2E0
     CBaseClass();                                           // 0x0099A2D0
 };
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -47,22 +47,22 @@ template <class T> struct CCountedPointer {
     }
 };
 struct CScriptThingImpl;
-struct CScriptThing : CBaseClass {                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     ~CScriptThing() {}                                      // out of line 0x004AA840
 };
-struct CBaseObject {                                        // CBaseIntelligentPointer root (vtable 0x0129A7D8)
+class CBaseObject { public:                                        // CBaseIntelligentPointer root (vtable 0x0129A7D8)
     virtual void b000();
     void* m_pIntelligentPointer;                            // +0x04
     CBaseObject();                                          // 0x0099A380
     ~CBaseObject();                                         // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseObject {        // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:        // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
 struct CScriptThingImp;
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<CScriptThingImp> PImp;                  // +0x08
     bool IsScripting();                                     // 0x00CD23B9
     void Release();                                         // 0x00CD2770
@@ -74,7 +74,7 @@ struct CMovieImpPointer {
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                    // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;                                  // +0x08
 };
 struct CCutsceneCastMap {                                   // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
@@ -87,7 +87,7 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) StartScriptingEntity

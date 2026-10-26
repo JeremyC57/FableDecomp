@@ -16,15 +16,15 @@
 //   pointer after the length, so the first pointer is copied eax->esi and `it = last` reuses esi), then insert(pair(this, 1.75f)) with the pair and the hidden result in the
 //   frame, the recalculation and the animation name (implicit conversions of the literals, so the strings are
 //   re-addressed with `lea`).
-struct CTCBase;
-struct CTCParamsBase;
-struct CCharString {
+class CTCBase;
+class CTCParamsBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
 struct SInterfaceEntry { long type; CTCBase* component; };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20 std::bitset of interface types
     SInterfaceEntry* m_interfacesFirst;               // +0x44
@@ -72,13 +72,13 @@ struct CMultiplierMap {
     void* m_head;
     insert_result insert(const CMultiplierEntry& value);   // 0x00580D21
 };
-struct CTCHaste {
+class CTCHaste { public:
     unsigned char _pad00[0x18];
     CMultiplierMap Multipliers;                       // +0x18
     void RecalculateMultiplier();                     // 0x00800020
 };
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -86,7 +86,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     void SetAnimationName(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
-struct CCreatureAction_CastStrengthMultiStrike : CCombatActionBase {
+class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:
     void Initialise();
 };
 

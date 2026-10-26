@@ -12,7 +12,7 @@ struct CBankFile_Retail {              // engine/CBankFile.h exists but is not u
     void SetIsStaticMap(bool isStaticMap);      // 0x009D5230 (empty body: `ret 4`)
 };
 
-struct CStaticMapBankFile : CBankFile_Retail {
+class CStaticMapBankFile : public CBankFile_Retail { public:
     virtual void v00();                         // own vtable 0x012A1EE4
     CStaticMapBankFile();
 };

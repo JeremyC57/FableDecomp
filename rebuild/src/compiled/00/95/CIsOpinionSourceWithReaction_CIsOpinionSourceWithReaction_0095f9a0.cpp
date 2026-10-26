@@ -13,7 +13,7 @@
 // Shape: the GetInterface out-parameter idiom with one ternary entry pick; each flag is ONE `&&`/`||` expression assigned to the member
 //   (retail's `mov eax,1 / xor eax,eax` then `mov [ebp+0xc],al`; if-statements or inline bool helpers add a frame byte and `mov al,1`);
 //   the creature is re-read in each call argument; the hero thing is a named local (ebx) set by an if/else.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -37,14 +37,14 @@ public:
         return false;
     }
 };
-struct CThingAICreature;
-struct CTCFollowed {
+class CThingAICreature;
+class CTCFollowed { public:
     bool IsAIFollower(CThingAICreature* creature);  // 0x006D4D70
 };
-struct CTCRegionFollower {
+class CTCRegionFollower { public:
     bool IsRegionFollower(CThing* thing);           // 0x006AEB60
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned char _pad00[0x18];
     float         Awareness;                        // +0x18
     unsigned char _pad1c[0x2f - 0x1c];
@@ -54,25 +54,25 @@ struct CTCCreatureOpinionOfHero {
 struct CPlayerCharacter {
     CThing* GetThing();                             // 0x00487DC0
 };
-struct CPlayer {
+class CPlayer { public:
     CPlayerCharacter* GetCharacter();               // 0x0049D9D0
 };
 struct CCreatureInfo {
     unsigned char     _pad00[0x18];
     CThingAICreature* Creature;                     // +0x18
 };
-struct CAIStateGroup_OpinionReactionRoot {
+class CAIStateGroup_OpinionReactionRoot { public:
     void*          __vftable;
     CCreatureInfo* Info;                            // +0x04
     CPlayer* GetPlayer();                           // 0x008FCFC0
     CThingAICreature* GetCreature() { return Info->Creature; }
 };
-struct COpinionReactionManager;
+class COpinionReactionManager;
 struct CWorldOpinion {
     unsigned char            _pad00[0x74];
     COpinionReactionManager* ReactionManager;       // +0x74
 };
-struct CWorld {
+class CWorld { public:
     unsigned char  _pad00[0x24];
     CWorldOpinion* Opinion;                         // +0x24
 };

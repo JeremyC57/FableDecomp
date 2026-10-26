@@ -1,6 +1,6 @@
 // CTCElectrocutedEffect::OnInitialActivate @ 006d8770
 // Leaf: OnInitialActivate
-struct CTCElectrocutedEffect {
+class CTCElectrocutedEffect { public:
     char pad[0x30];
     int f30; // +0x30
 };

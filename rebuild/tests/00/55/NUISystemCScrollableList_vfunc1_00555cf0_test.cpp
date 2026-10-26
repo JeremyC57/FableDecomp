@@ -103,8 +103,8 @@ virtual void PlaySoundW(CCharString&,long)=0;
 virtual void ManagerSlot41()=0;
 virtual DefPointer GetMiscThingsDef()=0;
 static Manager* __fastcall GetInstance();};
-struct CScrollableList:Component,Observer {unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void SetScroll(float,float);void ProcessEvent(int);};
-extern void* Game_013b86a0;struct CRedefinerList {static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
+class CScrollableList:public Component,public Observer { public:unsigned char BeforeChildren[0xb0-0x18];Vector Children;unsigned char BeforeTop[0x15c-0xbc];unsigned long Top,Visible;void SetScroll(float,float);void ProcessEvent(int);};
+extern void* Game_013b86a0;class CRedefinerList { public:static bool __fastcall CanAcceptChanges();};struct CUserProfileManager {void Save();};CUserProfileManager* __fastcall GetUserProfileManager();
 void CScrollableList::ProcessEvent(int event){Observer::ProcessEvent(event);switch(event){case 16:case 36:if(Top>0){--Top;SetScroll(.2f,.2f);}break;case 17:case 37:if(Children.size()>Visible&&Top<Children.size()-Visible){++Top;SetScroll(.2f,.2f);}break;case 4:if(Game_013b86a0&&CRedefinerList::CanAcceptChanges()){if(MenuStack_013b8a98.size()>1){MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);Manager::GetInstance()->RemoveObserver(this);}Manager::GetInstance()->PlaySoundW(Manager::GetInstance()->GetMiscThingsDef()->SoundForward,1);Manager::GetInstance()->SetChange(0);GetUserProfileManager()->Save();}break;}}
 }
 

@@ -11,13 +11,13 @@ struct CWorldState {
     long          m_value80;                             // +0x80
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     void ProcessCrimeDeeds();                            // 0x0065C2D0
 };
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x3c];
     long          PlayerRespawnDelay;                             // +0x3c
     void        GlobalEventCreatureDied(CThingCreatureBase* creature);   // 0x0087C580
@@ -25,13 +25,13 @@ struct CPlayer {
     CTCVillage* GetPNearestTCVillage();                  // 0x00488620
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CPlayer*     GetPlayer();                            // 0x004C7A30 (CThing)
     CWorldState* GetWorldState();                        // 0x004C79A0
     void         OnDie();                                // 0x00663F50
 };
 
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     void OnDie();
 };
 

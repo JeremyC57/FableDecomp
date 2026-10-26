@@ -12,7 +12,7 @@
 // the pathname, frees the buffer, then the base.
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 typedef unsigned short wchar16;                             // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;                                      // +0
     ~CWideString();                                         // 0x0099B510
     bool operator!=(const wchar16* text) const;             // 0x0099B150
@@ -24,7 +24,7 @@ enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 namespace N_0099a300 { struct CBase {
     virtual ~CBase();                                       // 0x0099A300
 }; } using N_0099a300::CBase;
-struct CAFile : CBase {
+class CAFile : public CBase { public:
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08
     long Length;                                            // +0x0c
@@ -35,7 +35,7 @@ struct CByteArray {                                         // CArray<unsigned c
     unsigned long  Capacity;
     ~CByteArray() { if (Data) free(Data); }
 };
-struct CMemoryFile : CAFile {                               // vtable 0x0122E0FC
+class CMemoryFile : public CAFile { public:                               // vtable 0x0122E0FC
     CByteArray  DataBuffer;                                 // +0x10
     bool        Opened;                                     // +0x1c
     CWideString Pathname;                                   // +0x20
@@ -45,7 +45,7 @@ struct CMemoryFile : CAFile {                               // vtable 0x0122E0FC
     void DumpToFile();                                      // 0x009E9330
 };
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     void*       m_vtable;                                   // +0x00
     unsigned char _pad04[4];
     CWideString ProfileName;                                // +0x08

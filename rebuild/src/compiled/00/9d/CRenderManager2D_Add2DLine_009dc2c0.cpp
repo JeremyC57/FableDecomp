@@ -14,24 +14,24 @@
 // slot) and calls GetViewportBoxFloat once: x / width * 2 - 1 (`fadd st,st`), 1 - y / height * 2; z 0, rhw 1. Inline
 // STLport push_backs with the `__true_type` tag in the dead argument slot. The record: blend mode, the texture copy
 // when one is given, the window, Line set / IsText cleared, pushed, then its destructors.
-struct CTVertexRHWColSpecTex1 {                         // 32 bytes
+class CTVertexRHWColSpecTex1 { public:                         // 32 bytes
     float X, Y, Z, RHW;
     unsigned long Diffuse;
     unsigned long Specular;
     float U, V;
 };
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CFontBank;
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CFontBank;
 struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -39,7 +39,7 @@ struct CWideString {
 };
 
 struct IDirect3DTexture9;
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;                     // +0x00
     unsigned long      ByteLength : 28;                 // +0x04
     unsigned long      AllocationSource : 4;
@@ -49,7 +49,7 @@ struct CTexture {
     void Uninitialise();                                // 0x009F9F70
 };
 
-struct CQuickDrawTriInfo {
+class CQuickDrawTriInfo { public:
     unsigned char Line   : 1;                           // +0x00 bit 0
     unsigned char IsText : 1;                           // +0x00 bit 1
     C2DBoxF     Window;                                 // +0x04
@@ -99,7 +99,7 @@ struct CVertexVector {                                  // STLport vector<CTVert
     }
 };
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad000[0x1d8];
     bool          ViewportOffscreen;                    // +0x1d8
     unsigned char _pad1d9[0x2b];

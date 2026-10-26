@@ -4,7 +4,7 @@
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 struct CThingRetail;
 struct CIntelligentPointerRetail { virtual void v00(); void* PData; CThingRetail* GetPItem() const; void SetPItem(CThingRetail*); }; //00A01B50/00A01B90
 struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointerRetail* last; CIntelligentPointerRetail* capacity; unsigned char allocators[4];

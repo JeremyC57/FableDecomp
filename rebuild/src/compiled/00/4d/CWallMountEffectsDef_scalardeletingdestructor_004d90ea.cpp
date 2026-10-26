@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CWallMountEffectsDef
-{
+class CWallMountEffectsDef
+{ public:
     void* vftable;
 };
 extern void* const g_CWallMountEffectsDef_vftable;

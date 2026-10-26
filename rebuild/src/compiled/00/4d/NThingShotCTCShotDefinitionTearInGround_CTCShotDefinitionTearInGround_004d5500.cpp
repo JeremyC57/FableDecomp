@@ -8,7 +8,7 @@
 // One-argument constructor of a polymorphic class that only forwards the argument to its base
 // constructor @ 0x007BF460; the compiler then stores this class's vtable (0x0123CF9C, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
-struct CThing;
+class CThing;
 
 struct CTCShotDefinitionBase {
     virtual void v00();

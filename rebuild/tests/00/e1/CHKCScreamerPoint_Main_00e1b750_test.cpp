@@ -7,15 +7,15 @@ static int g_fail = 0;
 static std::string g_log;
 static int g_calls = 0, g_termAt = 0, g_frames = 0;
 static void L(const char* s) { g_log += s; g_log += ";"; }
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* t, long n = -1) : S(t) { (void)n; }
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r(""); r.S = a.S + b.S; return r; }
-struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
+class CRGBColour { public: unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : B(b), G(g), R(r), A(a) {} };
 // a thing: Id, and how many IsAlive checks it survives
 static int g_alive[8];
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     CScriptThing() : Id(0) {}
     explicit CScriptThing(int id) : Id(id) {}
@@ -30,13 +30,13 @@ struct CScriptThingView {
 
 struct C3DVectorH { float X, Y, Z; };
 static int g_handles = 0, g_armAt = 0, g_stopAt = 0, g_nearMask = 0, g_spawned = 0, g_cur = 0;
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     CScriptGameResourceObjectScriptedThingBase() { ++g_handles; L("handle"); }
     ~CScriptGameResourceObjectScriptedThingBase() { --g_handles; L("~handle"); }
 };
 struct CHKCMasterData { bool ScreamersArmed; bool ScreamersStopped; };
 static CHKCMasterData* g_md;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     CGameScriptInterface() : Hero(1) {}
     void NewScriptFrame() const {
@@ -56,7 +56,7 @@ static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThi
 struct CIsThingAlive { CScriptThing m_thing; CIsThingAlive(const CScriptThing& t) : m_thing(t) {} };
 static C3DVectorH g_mePos = { 2.0f, 0, 0 };
 struct CMe : CScriptThing { CMe() : CScriptThing(2) {} const C3DVectorH& GetPos() const { return g_mePos; } };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     CGameScriptInterface* Game; CMe Me;
     void SetPredicate(CIsThingAlive& p) { CHECK(p.m_thing.Id == 2); L("pred"); }
     bool IsActiveThreadTerminating() const { L("t?"); return g_termAt && ++g_calls >= g_termAt; }

@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
-struct CCharString {
+class CThing { public: int id; };
+class CCharString { public:
     const char* text;                          // null = empty string
     bool operator==(const char* t) const
     {
@@ -15,14 +15,14 @@ struct CCharString {
         return std::strcmp(text, t) == 0;
     }
 };
-struct CDefString {
+class CDefString { public:
     const char* name;
     CDefString(const char* n) : name(n) { }
     CDefString(const CDefString& o) : name(o.name) { }
     bool operator==(const CCharString& s) const { return std::strcmp(name, s.text ? s.text : "") == 0; }
 };
 static int g_defReleased;
-struct CExpressionDef {
+class CExpressionDef { public:
     const char* name;
     long RefCount;
     CDefString GetName() const { return CDefString(name); }
@@ -44,20 +44,20 @@ struct CEventExpressionPerformedTo {
     CEventExpressionPerformedTo(CExpressionDef* d) : PExpressionDef(d) { }
     CDefPointerExpression GetPExpressionDef() const { return PExpressionDef; }
 };
-struct CIsEventOfType { long Type; CIsEventOfType(long t) : Type(t) { } };
-struct CTCEntityEvents {
+class CIsEventOfType { public: long Type; CIsEventOfType(long t) : Type(t) { } };
+class CTCEntityEvents { public:
     CEventExpressionPerformedTo* pending;
     long lastType; int removed;
     bool GetEvent(CEventExpressionPerformedTo** out, const CIsEventOfType* f) { lastType = f->Type; *out = pending; return pending != 0; }
     void RemoveEvent(void* e) { if (e == pending) ++removed; }
 };
-struct CTCAIScratchpad { bool AllowedToFollow; };
+class CTCAIScratchpad { public: bool AllowedToFollow; };
 struct CCreature {
     CTCEntityEvents* events; CTCAIScratchpad* scratchpad;
     bool GetInterface(CTCEntityEvents** out, long) { if (!events) return false; *out = events; return true; }
     bool GetInterface(CTCAIScratchpad** out, long) const { if (!scratchpad) return false; *out = scratchpad; return true; }
 };
-struct CAIBrain { CCreature* PCreature; };
+class CAIBrain { public: CCreature* PCreature; };
 
 struct CAIStateGroup_MinionFollowThing {
     CAIBrain* PBrain;

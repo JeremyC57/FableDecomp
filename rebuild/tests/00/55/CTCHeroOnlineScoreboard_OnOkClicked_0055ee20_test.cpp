@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry entries[4];
@@ -44,26 +44,26 @@ struct CThing {
     }
 };
 // --- end lookup copy ---
-struct CCharString { const char* Text; CCharString(const char* text, long) : Text(text) {} };
+class CCharString { public: const char* Text; CCharString(const char* text, long) : Text(text) {} };
 namespace NUISystem {
-struct CObserver { long Observed; CObserver() : Observed(0) {} virtual void ObserveEvent(long e) { Observed = e; } };
-struct CComponent;
+class CObserver { public: long Observed; CObserver() : Observed(0) {} virtual void ObserveEvent(long e) { Observed = e; } };
+class CComponent;
 struct CComponentBase {
     CComponent* Child; const char* ChildName; int Active;
     CComponentBase() : Child(0), ChildName(""), Active(1) {}
     virtual CComponent* FindChild(CCharString name) { return std::strcmp(name.Text, ChildName) == 0 ? Child : 0; }
     virtual void SetActive_slot48(bool active) { Active = active ? 1 : 0; }
 };
-struct CComponent : CComponentBase, CObserver {};
+class CComponent : public CComponentBase, public CObserver { public:};
 static CObserver* g_released[8]; static int g_nReleased = 0; static CObserver* g_added = 0;
-struct CManager {
+class CManager { public:
     virtual void AddObserver(CObserver* o) { g_added = o; }
     virtual void ReleaseObserver_0055ca00(CObserver* o) { g_released[g_nReleased++] = o; }
     static CManager* GetInstance() { static CManager m; return &m; }
 };
 }
-struct CTCInventory { NUISystem::CComponent* PMouse_Pointer; };
-struct CTCHeroOnlineScoreboard {
+class CTCInventory { public: NUISystem::CComponent* PMouse_Pointer; };
+class CTCHeroOnlineScoreboard { public:
     CThing* ParentThing; NUISystem::CComponent* PScoreboardScreen;
     void OnOkClicked();
 };

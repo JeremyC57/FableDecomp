@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CAnimComponentStrikeSpeedMultiplier; typedef CAnimComponentStrikeSpeedMultiplier* (__fastcall* VFn)(CAnimComponentStrikeSpeedMultiplier*);
-struct CAnimComponentStrikeSpeedMultiplier { VFn* vtbl; char pad[4]; void* f8; };
+class CAnimComponentStrikeSpeedMultiplier; typedef CAnimComponentStrikeSpeedMultiplier* (__fastcall* VFn)(CAnimComponentStrikeSpeedMultiplier*);
+class CAnimComponentStrikeSpeedMultiplier { public: VFn* vtbl; char pad[4]; void* f8; };
 static CAnimComponentStrikeSpeedMultiplier g_new;
 static CAnimComponentStrikeSpeedMultiplier* __fastcall vm(CAnimComponentStrikeSpeedMultiplier* p){ (void)p; return &g_new; }
 static CAnimComponentStrikeSpeedMultiplier* f(CAnimComponentStrikeSpeedMultiplier* component){ CAnimComponentStrikeSpeedMultiplier* p=component->vtbl[0x10/4](component); p->f8=component->f8; return p; }

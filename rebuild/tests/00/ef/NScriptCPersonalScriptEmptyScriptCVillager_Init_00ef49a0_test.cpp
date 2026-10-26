@@ -2,11 +2,11 @@
 // re-assigning the same block keeps the count).
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void* data); void* Data; };
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void* data); void* Data; };
 static int g_deleted = 0;
 static void DeleteThing(void*) { ++g_deleted; }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -26,11 +26,11 @@ template <class T> struct CCountedPointer {
         return *this;
     }
 };
-struct CBaseClass { virtual ~CBaseClass() { } };
-struct CScriptThing : CBaseClass { CCountedPointer<CScriptThing> PImp; ~CScriptThing() { } };
+class CBaseClass { public: virtual ~CBaseClass() { } };
+class CScriptThing : public CBaseClass { public: CCountedPointer<CScriptThing> PImp; ~CScriptThing() { } };
 static CCPPointerInfo* g_newBlock = 0;
 static char g_lastName[32];
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual CScriptThing GetThingWithScriptName(const CCharString& name)
     {
         std::strcpy(g_lastName, name.text);

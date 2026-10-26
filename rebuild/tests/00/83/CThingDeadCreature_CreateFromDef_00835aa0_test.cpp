@@ -1,7 +1,7 @@
 // Behaviour test for CThingDeadCreature::CreateFromDef (0x00835AA0)
 #include <cstdio>
-struct CThingBaseDef { unsigned char m_41_0 : 2; unsigned char m_inheritedFlag : 1; unsigned char m_41_3 : 5; };
-struct CThingDeadCreature {
+class CThingBaseDef { public: unsigned char m_41_0 : 2; unsigned char m_inheritedFlag : 1; unsigned char m_41_3 : 5; };
+class CThingDeadCreature { public:
     unsigned char m_91_0 : 6; unsigned char m_inheritedFlag : 1; unsigned char m_91_7 : 1;
     void CreateFromDef(const CThingBaseDef& def) { m_inheritedFlag = def.m_inheritedFlag; }
 };

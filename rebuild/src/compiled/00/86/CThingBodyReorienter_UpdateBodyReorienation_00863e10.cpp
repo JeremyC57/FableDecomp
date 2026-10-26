@@ -11,7 +11,7 @@
 //   is pre-incremented and `count % period == 0` is a signed `idiv`.
 extern long g_BodyReorientSlopePeriod;  // 0x01385AE4
 
-struct CThingBodyReorienter {
+class CThingBodyReorienter { public:
     bool BodyReorientationDone;                         // +0x00
     bool ReorientingBody;                               // +0x01
     long ReorientationCount;                            // +0x04

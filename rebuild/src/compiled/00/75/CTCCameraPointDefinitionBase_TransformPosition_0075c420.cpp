@@ -9,7 +9,7 @@
 // is a local that the rotated vector is assigned back into (dword copy from the call's hidden result); the sum is built member by member into the result.
 // Fix (retry 10): TransformVector (0x0075C280, same TU, C3DVector by hidden pointer) has a same-TU stand-in body; with only
 // the declaration VC7.1 scheduled the result's word copies differently around the first fadd.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -23,7 +23,7 @@ struct C3DVector {
         return C3DVector(X + b.X, Y + b.Y, Z + b.Z);
     }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 #pragma pack(push, 1)
 class CTCCameraPointDefinitionBase {
 public:

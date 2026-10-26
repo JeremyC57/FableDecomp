@@ -1,15 +1,15 @@
 // Behaviour test for CTCObstacle::vfunc_6 @ 0x004DF365: the interface wraps the parent thing, the agent is built on it.
 #include <cstdio>
-struct CThing { long id; };
-struct CObstacleNavigatorExternalInterface {
+class CThing { public: long id; };
+class CObstacleNavigatorExternalInterface { public:
     CThing* m_pThing; void* m_first; void* m_last; void* m_end;
     CObstacleNavigatorExternalInterface(CThing* thing) : m_pThing(thing), m_first(0), m_last(0), m_end(0) {}
 };
-struct CSteeringAgent {
+class CSteeringAgent { public:
     CObstacleNavigatorExternalInterface* m_pInterface; bool m_flag;
     CSteeringAgent(CObstacleNavigatorExternalInterface* i, bool flag) : m_pInterface(i), m_flag(flag) {}
 };
-struct CTCObstacle {
+class CTCObstacle { public:
     CThing* ParentThing;
     CSteeringAgent* SteeringAgent;
     CObstacleNavigatorExternalInterface* PInterface;

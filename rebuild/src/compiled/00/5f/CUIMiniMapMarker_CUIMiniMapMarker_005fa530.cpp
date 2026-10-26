@@ -7,12 +7,12 @@
 // Shape: one zero register (edi) set before the string's argument pushes serves the region store and the
 // five trailing words: the float members are zeroed by body assignments (the 0.0f bit pattern rides the
 // integer zero register).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

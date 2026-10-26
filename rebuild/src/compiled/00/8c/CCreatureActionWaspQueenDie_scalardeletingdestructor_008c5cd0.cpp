@@ -1,4 +1,4 @@
-struct CCreatureAction_WaspQueenDie {
+class CCreatureAction_WaspQueenDie { public:
     void* vftable;
 };
 

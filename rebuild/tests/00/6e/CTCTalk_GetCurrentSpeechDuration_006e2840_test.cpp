@@ -2,8 +2,8 @@
 
 int g_speechDurationDivisor;
 
-struct CTCTalk
-{
+class CTCTalk
+{ public:
     char pad0[0x14];
     int  m_speechTicks;   // +0x14
 

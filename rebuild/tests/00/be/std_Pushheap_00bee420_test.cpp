@@ -3,7 +3,7 @@
 // Behaviour test for 0x00BEE420: _Push_heap over pair<pair<long,long>, CEngineTextureDecal> ordered by the
 // lexicographic (long,long) key; the by-value decal frees its blend buffer.
 static int g_frees = 0;
-struct CCompositeBlendDesc { long m_v; };
+class CCompositeBlendDesc { public: long m_v; };
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
@@ -20,13 +20,13 @@ template <class T> struct CRetailVector {
     }
     ~CRetailVector() { if (_M_start) { std::free(_M_start); ++g_frees; } }
 };
-struct CEngineTextureDecal { long OriginalTextureIndex; long DecalID; CRetailVector<CCompositeBlendDesc> OverlaidBlends; };
+class CEngineTextureDecal { public: long OriginalTextureIndex; long DecalID; CRetailVector<CCompositeBlendDesc> OverlaidBlends; };
 template<class K, class V> struct pair { K first; V second; };
 template<class K, class V> inline bool operator<(const pair<K, V>& l, const pair<K, V>& r)
 {
     return l.first < r.first || !(r.first < l.first) && l.second < r.second;
 }
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
     bool operator()(const pair<K, V>& entry, long key0, const K& key) const
     {

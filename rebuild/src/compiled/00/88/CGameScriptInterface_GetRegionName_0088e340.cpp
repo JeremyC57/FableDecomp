@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString;
+class CCharString;
 struct CRegions;
 
 extern int __fastcall CRegions_GetCount(CRegions* r);

@@ -1,13 +1,13 @@
 // Behaviour test for CTCTalk::Persist @ 0x006E2CB0: two transfers (IsPureAISpeaker default true, DialogueVoice) only when flagged.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pData; };
-struct CPersistContext {
+class CCharString { public: const char* m_pData; };
+class CPersistContext { public:
     int count; const char* names[2]; bool defaultSeen;
     void Transfer(const char* name, bool& value, const bool& def) { names[count++] = name; defaultSeen = def; value = !value; }
     void Transfer(const char* name, CCharString* value) { names[count++] = name; value->m_pData = "LOADED"; }
 };
-struct CTCTalk {
+class CTCTalk { public:
     bool IsPureAISpeaker; CCharString DialogueVoice;
     void Persist(CPersistContext* c, bool flag)
     { if (flag) { c->Transfer("IsPureAISpeaker", IsPureAISpeaker, true); c->Transfer("DialogueVoice", &DialogueVoice); } }

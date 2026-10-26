@@ -20,14 +20,14 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct C3DVector { float X, Y, Z; };
-struct CDefPointeeBase {
+class C3DVector { public: float X, Y, Z; };
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
@@ -35,7 +35,7 @@ struct CInventoryClothingDef : CDefPointeeBase {
     unsigned char _pad08[0x7c - 0x08];
     long InventoryDefIndex;                     // +0x7c
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CInventoryClothingDef>* out);   // 0x00485815
 };
 CInventoryClothingDef* FindSubDef_00485815(CDefClassBase* defClass);   // the sub-def, add-ref'd (0 when absent)
@@ -60,7 +60,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits m_present;                    // +0x20
     unsigned char _pad21[0x23];
@@ -92,16 +92,16 @@ __declspec(noinline) const C3DVector& CThing::GetPosition() const
 #pragma auto_inline(on)
 
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0
+class CBase { public:                                  // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
@@ -115,7 +115,7 @@ struct CLongVector {
 };
 
 struct CTCInventoryBase_Clothing;
-struct CTCInventoryItem {                       // interface type 0x1A
+class CTCInventoryItem { public:                       // interface type 0x1A
     unsigned char _pad00[0x20];
     bool StartingItem;                          // +0x20 (descriptive)
     bool AddToInventory(CTCInventoryBase_Clothing* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50

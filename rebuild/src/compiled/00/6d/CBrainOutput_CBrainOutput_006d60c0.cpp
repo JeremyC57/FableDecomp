@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
 struct CIntelligentPointer : CBaseIntelligentPointer {   // shares the base vtable in this TU (no store of its own in the destructor)
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct SCountBlock {                            // the shared count block of a CCountedPointer
     long m_references;                          // +0x00
@@ -47,13 +47,13 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
     }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CNavigationInput {                       // 24 bytes, trivially destructible
+class CNavigationInput { public:                       // 24 bytes, trivially destructible
     unsigned char _body[0x18];
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                     Types;            // +0x00
     long                              LookFlags;        // +0x04
     CNavigationInput                  NavigationInput;  // +0x08

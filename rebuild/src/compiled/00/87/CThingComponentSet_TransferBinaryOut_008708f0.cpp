@@ -7,7 +7,7 @@
 //   this-register esi); the size byte is re-read after the first write and serves both the select and the byte count;
 //   0x01AB6CCE (outside the image) is a constant end marker, not an address.
 #pragma pack(push, 1)
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
@@ -20,19 +20,19 @@ struct CEntry {                         // CThingComponentSet::CEntry, 9 bytes (
 };
 #pragma pack(pop)
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, long bytes);  // slot 4
     void WriteLong(long value);                        // 0x00993EB0
 };
 
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;                           // +0x00
     signed char Size;                   // +0x04
     const T* GetData() const { return Size > 0 ? Start : (const T*)this; }
 };
 
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;    // +0x00
     void TransferBinaryOut(CDataOutputStream& stream) const;
 };

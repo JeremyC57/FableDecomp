@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <new>
 
-struct CAFile { int id; };
-struct CCPPointerInfo { unsigned long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CAFile { public: int id; };
+class CCPPointerInfo { public: unsigned long RefCount; void (*DeleteFunc)(void*); void* Data; };
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer(T* d, CCPPointerInfo* i) : Data(d), Info(i) { }

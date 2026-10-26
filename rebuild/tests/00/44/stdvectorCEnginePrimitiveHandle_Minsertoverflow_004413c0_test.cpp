@@ -5,7 +5,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CEnginePersistentPrimitiveBase { long RefCount; int Id; };
+class CEnginePersistentPrimitiveBase { public: long RefCount; int Id; };
 static CEnginePersistentPrimitiveBase g_prims[2048];
 class CBaseClass { public: CBaseClass() { ++g_live; } CBaseClass(const CBaseClass&) { ++g_live; } virtual ~CBaseClass() { --g_live; } };
 class CEnginePrimitiveHandle : public CBaseClass {

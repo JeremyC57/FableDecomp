@@ -7,7 +7,7 @@
 // Virtual getter that forwards to GetPItem @ 0x00A01B50 on the embedded smart pointer at
 // +0x178: `this` is advanced to the member and the call becomes a sibling jump (same
 // signature, no locals). The class comes from the vtable-slot label. One of 15 bodies.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

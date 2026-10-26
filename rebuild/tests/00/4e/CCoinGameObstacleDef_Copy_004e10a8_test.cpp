@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CDefBase {
     void Inherit(CDefClassBase const *src);
 };
 
-struct CCoinGameObstacleDef {
+class CCoinGameObstacleDef { public:
     char pad[0x28];
     unsigned long f28;
     void __fastcall Copy(int /*edx*/, CDefClassBase const *src);

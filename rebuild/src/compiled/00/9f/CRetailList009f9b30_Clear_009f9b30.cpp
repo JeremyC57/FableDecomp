@@ -3,7 +3,7 @@
 // Leaf: Clear
 // The chunk label (CNavigatorQueueManager::FrameUpdate) is propagated; named by effect. Callees: free @ 0x00BFEA14, CWideString::~CWideString @ 0x0099B510. Shape: the VC7.1 `list::clear`: the successor read before the node is destroyed, the sentinel relinked to itself at the end.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };

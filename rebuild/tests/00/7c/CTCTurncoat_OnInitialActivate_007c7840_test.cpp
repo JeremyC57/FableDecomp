@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CTurncoatDef { float MinimumResistance; float PercentageOfHealthAsResistance; float ExtraResistance; };
-struct CThingCreatureBase { float Health; };
-struct CTCTurncoat {
+class CTurncoatDef { public: float MinimumResistance; float PercentageOfHealthAsResistance; float ExtraResistance; };
+class CThingCreatureBase { public: float Health; };
+class CTCTurncoat { public:
     CThingCreatureBase* Thing; const CTurncoatDef* PDef_Object; float CreatureTurncoatResistance;
     void OnInitialActivate()
     {

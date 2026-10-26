@@ -1,5 +1,5 @@
 #include "engine/CGoldDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext { void Xfer(void* sub); };
+class CPersistContext { public: void Xfer(void* sub); };
 struct CGoldDef_Methods : CGoldDef {
     void Transfer(CPersistContext* ctx);
 };

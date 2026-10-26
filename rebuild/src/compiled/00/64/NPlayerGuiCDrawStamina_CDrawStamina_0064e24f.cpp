@@ -9,7 +9,7 @@
 // 4 lower for the first vector and 8/12 lower after it (the CDrawBase vector and these vectors are 12 bytes in the shipped build).
 // Shape: Effects is zeroed through its address in edi (an inline member constructor whose pointer is reused as `this` of the last Resize),
 // IncreaseEffects directly, the -1 values are `or dword ptr [..],-1` and the longs share the eax zero register.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
@@ -33,14 +33,14 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char       _body[0x1c - 4];           // +0x04 .. +0x1c
     CRetailHandleVector PrimitiveHandles;          // +0x1c
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawStamina : CDrawBase {                  // vtable 0x0125A618
+class CDrawStamina : public CDrawBase { public:                  // vtable 0x0125A618
     virtual void v00();
     CRetailEmitterVector Effects;                  // +0x28
     CRetailEmitterVector IncreaseEffects;          // +0x34

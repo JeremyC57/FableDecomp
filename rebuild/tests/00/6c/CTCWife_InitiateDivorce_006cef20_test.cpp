@@ -4,14 +4,14 @@
 // true flag is queued.
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* text; };
-struct CFontBank { int id; };
+class CCharString { public: const char* text; };
+class CFontBank { public: int id; };
 static CFontBank g_font = { 7 };
 struct CMemoryBuffer {
     unsigned char* m_cursor;
     void Copy(unsigned long length, const void* data) { std::memcpy(m_cursor, data, length); m_cursor += length; }
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -22,32 +22,32 @@ struct CGameEvent : CMemoryBuffer {
     void AddBool(bool value) { value = value ? true : false; Copy(1, &value); }
 };
 static long g_eventType = 0; static int g_eventPlayer = 99; static int g_eventFlag = 99; static int g_events = 0; static bool g_eventValid = false;
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank* m_pFontBank;
     void AddGameEvent(const CGameEvent& event) { ++g_events; g_eventType = event.Type; g_eventPlayer = event.Player; g_eventFlag = event.Data[0]; g_eventValid = event.Valid && !event.Replacement; }
 };
 static CMainGameComponent g_mainGame; static CMainGameComponent* g_pMainGameComponent = &g_mainGame;
 static int g_subtitles = 0; static const char* g_subtitleText = 0; static CFontBank* g_subtitleFont = 0; static unsigned long g_subtitleColour = 0; static float g_subtitleTime = 1; static bool g_subA = false, g_subB = false;
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b)
     { ++g_subtitles; g_subtitleFont = font; g_subtitleText = text.text; g_subtitleColour = colour; g_subtitleTime = time; g_subA = a; g_subB = b; }
 };
-namespace NHeroInformationScreens { struct CManager { unsigned char _pad00[0x34]; unsigned char m_screenActive; }; }
+namespace NHeroInformationScreens { class CManager { public: unsigned char _pad00[0x34]; unsigned char m_screenActive; }; }
 static NHeroInformationScreens::CManager g_screens;
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer m_subtitleRenderer;
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const { return &g_screens; }
 };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CPlayer { unsigned char _pad_0x00[0x28]; signed char m_playerNumber; };
+class CPlayer { public: unsigned char _pad_0x00[0x28]; signed char m_playerNumber; };
 static CPlayer g_player;
-struct CWorld { CPlayer* GetCurrentPlayer() const { return &g_player; } };
+class CWorld { public: CPlayer* GetCurrentPlayer() const { return &g_player; } };
 static CWorld g_world;
-struct CHeroMarriageDef { unsigned char _pad00[0xa4]; unsigned char TextGuiWifeDivorceOccurred[4]; };
+class CHeroMarriageDef { public: unsigned char _pad00[0xa4]; unsigned char TextGuiWifeDivorceOccurred[4]; };
 static int g_globalUpdates = 0;
-struct CTCWife {
+class CTCWife { public:
     virtual void v00() {}
     void*             ParentThing;
     unsigned char     _pad_0x08[4];

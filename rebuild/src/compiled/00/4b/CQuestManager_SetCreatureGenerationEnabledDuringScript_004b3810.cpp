@@ -8,7 +8,7 @@
 // Shape: the argument pointer in ebx, `last` cached in esi, the vector's address in edi; the empty tag temporary
 // is homed on the (live) `enabled` argument slot (`lea eax,[esp+14h]`), which is then re-read for both branches;
 // the push_back branch returns through its own epilogue.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
@@ -69,7 +69,7 @@ __declspec(noinline) CCharString* CCharStringVector::erase(CCharString* where)
 }
 #pragma auto_inline(on)
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x40];
     CCharStringVector CreatureGenerationDisabledQuests;   // +0x40
     void SetCreatureGenerationEnabledDuringScript(const CCharString& script, bool enabled);

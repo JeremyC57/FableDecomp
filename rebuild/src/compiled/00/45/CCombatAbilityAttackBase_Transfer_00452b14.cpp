@@ -1,6 +1,6 @@
 #pragma optimize("s",on)
 #include "engine/CCombatAbilityAttackBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CPersistContext {
+class CPersistContext { public:
     void TByte(unsigned char* p);
     void TWord(unsigned short* p);
     void TSub(void* p);

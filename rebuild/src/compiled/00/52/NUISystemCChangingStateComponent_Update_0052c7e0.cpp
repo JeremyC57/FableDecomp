@@ -14,11 +14,11 @@
 struct CUIState {
     unsigned char Flags;                      // +0x00 (bit 0x10 colour, 0x20 position, 0x40 zoom resets)
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
 };
 

@@ -7,9 +7,9 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
+class CScriptBase { public:                               // 0x40 bytes, the quest-script root (vtable 0x012C1648)
     virtual void v00() {}
     unsigned char _body[0x3c];
     CScriptBase() { _body[0] = 7; }
@@ -27,13 +27,13 @@ struct CCountedPointerWords {                      // {Data, Info}
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CBaseObject {                               // CBaseIntelligentPointer root
+class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00() {}
     void* m_pIntelligentPointer;                   // +0x04
     CBaseObject() : m_pIntelligentPointer(0) {}
 };
 
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual void v00() {}

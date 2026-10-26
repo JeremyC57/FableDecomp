@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CParticleSystem::GetParticleWorldTransform (0x00B05980): the unscaled transform with the diagonal scaled by Scale when ScaleParticles is set.
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { float m[12]; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: float m[12]; };
 static CMatrix3x4 g_emitterTransform;
 struct CParticleSystem {
     unsigned char m_pad00[0x50];

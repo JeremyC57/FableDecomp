@@ -12,10 +12,10 @@
 // Leaf: Transfer
 #include "engine/CReadableDef.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                         // 0x00993E30
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
@@ -24,7 +24,7 @@ template<> struct CPersistTraits<bool> {
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    m_mode;                     // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];

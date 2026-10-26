@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void* vftable;
     int destroyed;
 };

@@ -13,7 +13,7 @@
 // Shape: both interface lookups are the out-pointer GetInterface without a test, its entry pick a ternary (component lands in ecx); the
 //          squared distance is summed Z, X, Y; the def pointer's dtor releases with `dec [ebp+4]`.
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -24,21 +24,21 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CTargetingDef {
+class CTargetingDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
     void Release() { if (--m_count == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object) Object->Release(); }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CTargetingDef* PeekDefFromGlobalIndex(long index);  // stand-in only
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual long* GetSubDefIndex(const char* name);    // stand-in only (retail: slot 14, CCharString name)
     unsigned char       _pad_0x04[0x18];
     CDefinitionManager* m_pManager;             // +0x1c
@@ -83,11 +83,11 @@ public:
     }
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CTCTargeted {
+class CTCTargeted { public:
     unsigned char _pad00[0x0c];
     unsigned long TargetingFlags;               // +0x0c
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
 float __fastcall GetTargetingRangeForTargetType(unsigned long type, const CTargetingDef* def, CThing* owner, CThing* weapon);   // 0x008028D0
@@ -95,10 +95,10 @@ struct CGameSettings {                          // descriptive
     unsigned char _pad00[0x20a];
     bool FreeTargeting;                         // +0x20a
 };
-struct CWorld {
+class CWorld { public:
     CGameSettings* GetSettings() const;         // 0x0049D9D0
 };
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

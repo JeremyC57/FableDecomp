@@ -7,8 +7,8 @@
 //   polymorphic -- PDB (Ego_r) 8 bytes with the vptr slot at +0 and Data at +4, RTTI vtable 0x0122F598 (slot 0
 //   0x0041C500). Same size and the primitive still at +4, so the bytes are unchanged; the handle vector comment said
 //   VC6 Dinkumware, retail is STLport.
-struct CEngineInternalPrimitiveBase;
-struct C3DBoundingBox { float Min[3]; float Max[3]; };
+class CEngineInternalPrimitiveBase;
+class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
 struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalPrimitiveBase vtable slots used by the group/changer/viewport bodies
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -24,14 +24,14 @@ struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalP
     virtual void ResetOcclusionInfo(long layer);                     // slot 28 (+0x70)
 };
 
-struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
+class CEngineInternalPrimitiveBase : public CEngineInternalPrimitiveVtable { public:   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
     unsigned char  _pad04[0x2c];                   // +0x04 .. +0x30
     unsigned long  RenderLayerMask;                // +0x30
     unsigned char  PostRenderEnable;               // +0x34 bitfield group: bit 3 = post-render enabled
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + the primitive (PDB: _padding_ +0, Data +4; RTTI vtable 0x0122F598)
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + the primitive (PDB: _padding_ +0, Data +4; RTTI vtable 0x0122F598)
     virtual ~CEnginePrimitiveHandle();             // slot 0 (0x0041C500)
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

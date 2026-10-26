@@ -20,7 +20,7 @@ static int fails = 0;
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
@@ -28,7 +28,7 @@ struct CDefPointeeBase {
 template <class T> struct CSubDefPointer {    // the GetSubDef out pointer, released by hand
     T* Object;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     __forceinline CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
@@ -38,7 +38,7 @@ struct CCreatureKillDef : CDefPointeeBase {
     unsigned char _pad08[0xac - 0x08];
     long KillCategory;                          // +0xac
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CSubDefPointer<CCreatureKillDef>* out);   // 0x00485815
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -54,7 +54,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CSubDefPointer<CCreatureKillD
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -70,10 +70,10 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                    // +0x8c
 };
@@ -92,7 +92,7 @@ struct CKillMap {                               // STLport map<long,long>
     long& operator[](const long& key);          // 0x005D8933
 };
 
-struct CTCInventoryStats {
+class CTCInventoryStats { public:
     unsigned char _pad00[0x134];
     CKillMap KilledCreatures;                   // +0x134
     void SetCreatureAsKilled(CThing* creature);

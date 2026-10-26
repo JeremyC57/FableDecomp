@@ -12,7 +12,7 @@ struct IVolumeManager {
 // global singleton pointer at 0x13b8394
 IVolumeManager** const g_volumeManager = (IVolumeManager**)0x013b8394;
 
-struct CVolume {
+class CVolume { public:
     int f0;
     int PD3DVolume;
     int f8;

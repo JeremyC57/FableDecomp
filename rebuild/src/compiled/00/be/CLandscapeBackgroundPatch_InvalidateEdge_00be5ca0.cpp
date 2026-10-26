@@ -9,7 +9,7 @@
 //   bytes, so the strip is modelled here (StartPos +4, Size +6, the four vertex arrays +8..+0x27, Tesselated +0x28).
 #include "engine/CLandscapeBackgroundPatch.h"
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     void*          _vertexOwner;                  // +0x00
     unsigned short StartPos;                      // +0x04
     unsigned short Size;                          // +0x06

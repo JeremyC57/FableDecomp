@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstring>
 static int g_thingsAlive = 0;
-struct CCharString { char t[32]; CCharString(const char* s) { std::strcpy(t, s); } };
-struct CScriptThing {
+class CCharString { public: char t[32]; CCharString(const char* s) { std::strcpy(t, s); } };
+class CScriptThing { public:
     int id;
     CScriptThing(int i) : id(i) { ++g_thingsAlive; }
     CScriptThing(const CScriptThing& o) : id(o.id) { ++g_thingsAlive; }
     ~CScriptThing() { --g_thingsAlive; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const CScriptThing* facer; int target; char lookedUp[32];
     virtual CScriptThing GetThingWithScriptName(const CCharString& name, long) const
     { std::strcpy(const_cast<CGameScriptInterface*>(this)->lookedUp, name.t); return CScriptThing(std::strcmp(name.t, "AC_PlayerRing") == 0 ? 42 : -1); }

@@ -12,7 +12,7 @@ class CThing {
 public:
     bool IsMapwhoExempt() const;                // 0x004C7E30
 };
-struct CTCMapwho;
+class CTCMapwho;
 struct CThingMapCell;
 struct CMapwhoNode {
     CTCMapwho*     PMapwho;                     // +0x00
@@ -20,7 +20,7 @@ struct CMapwhoNode {
     CMapwhoNode*   PPrevious;                   // +0x08
     CThingMapCell* PCell;                       // +0x0c
 };
-struct CTCMapwho {
+class CTCMapwho { public:
     void*         __vftable;                    // +0x00
     CThing*       ParentThing;                  // +0x04
     unsigned char _pad08[4];
@@ -32,7 +32,7 @@ struct CTCMapwho {
     unsigned char InMapwho : 1;                 // +0x50 bit 0
 };
 namespace NThingMap {
-struct CThingMapManager {
+class CThingMapManager { public:
     unsigned char _pad00[0x2c];
     long          NoThings;                     // +0x2c (retail)
     void RemoveMapwhoNodeFromCell(CThingMapCell* cell, CMapwhoNode* node);   // 0x00637980

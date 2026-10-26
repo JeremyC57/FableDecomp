@@ -11,7 +11,7 @@
 // Model of list<CCountedPointer<const CFileInstaller::CFileInfo> >::remove(const&) @ 0x009C6E50: erase every entry that
 // points at the same file info as the value, releasing each erased entry's counted reference.
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

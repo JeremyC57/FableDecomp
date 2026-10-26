@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_BodgeSideStrike {
+class CCreatureAction_BodgeSideStrike { public:
     void* vftable;
     int destroyed;
 };

@@ -10,7 +10,7 @@ struct CWorldRegionMap {
     long GetActiveRegionIndex();                   // 0x004FB150
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -24,7 +24,7 @@ struct CTCInventoryBase {
     CWorld* GetWorld() const;                      // 0x00686A80 (CTCBase)
 };
 
-struct CTCInventoryMap : CTCInventoryBase {
+class CTCInventoryMap : public CTCInventoryBase { public:
     unsigned char _pad_130[0x104];
     bool WorldMapActive;                           // +0x234
     long ActiveRegionIndex;                        // +0x238

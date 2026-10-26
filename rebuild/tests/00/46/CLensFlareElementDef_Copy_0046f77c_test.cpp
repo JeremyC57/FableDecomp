@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CDefClassBase;
-struct CLensFlareElementDef;
+class CDefClassBase;
+class CLensFlareElementDef;
 
 // Stand-in impl for the test: record that the thunk forwarded correctly.
 static int g_called = 0;

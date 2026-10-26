@@ -5,12 +5,12 @@
 //       (CSnapToPoint overrides the same slot 29 with 0x0056E3B0, returning its LookDirection member).
 // Shape: a C3DVector with a user constructor is built straight into the caller's return slot (1.0f stored as an immediate,
 //        the two zeros through ecx); eax already holds the hidden pointer.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
 };

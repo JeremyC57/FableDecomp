@@ -13,26 +13,26 @@
 //   bank pointer is loaded) homed in the dead `on` slot, as is the lookup key; the bank comes through an inline getter (a
 //   direct member read loads it before the string address); the sound pair is built from the index twice.
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CASoundBank {
+class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x10];
     CASoundBank*  PSampleBank;                          // +0x10
     CASoundBank* GetSampleBank() const { return PSampleBank; }
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CSoundPair {
+class CSoundPair { public:
     long First;
     long Second;
     CSoundPair(long first, long second) : First(first), Second(second) {}
 };
-struct CSoundInit {                                     // 0x20 bytes (ctor 0x0041C930)
+class CSoundInit { public:                                     // 0x20 bytes (ctor 0x0041C930)
     float Volume;                                       // +0x00
     float Pitch;                                        // +0x04
     long  Delay;                                        // +0x08
@@ -43,7 +43,7 @@ struct CSoundInit {                                     // 0x20 bytes (ctor 0x00
     long  Id;                                           // +0x1c
     CSoundInit();                                       // 0x0041C930
 };
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned long PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool attach, long a, long b);   // 0x0066B280
     void StopSample_0066ad90(unsigned long sample);              // 0x0066AD90
     void StopAllAttachedSounds();                       // 0x0066AEB0
@@ -68,7 +68,7 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x54 - 0x08];

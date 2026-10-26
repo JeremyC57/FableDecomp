@@ -3,10 +3,10 @@
 #include <cstring>
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_ZeroVector = { 0.0f, 0.0f, 0.0f };
 static C3DVector g_MarkerPos = { 1.0f, 2.0f, 3.0f };
-struct CScriptThing {
+class CScriptThing { public:
     const char* name;
     bool alive;
     const C3DVector* pos;
@@ -15,7 +15,7 @@ struct CScriptThing {
     const C3DVector& GetPosition() const { return !pos ? g_ZeroVector : *pos; }
 };
 inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int framesUntilLoaded, framesUntilSuccess;
     bool ladyAlive, markerExists;
     bool* succeeded;

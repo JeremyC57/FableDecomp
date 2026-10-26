@@ -1,7 +1,7 @@
 #include <cstdio>
 struct SElement48 { unsigned char _body[0x30]; };
 static SElement48* g_ef = 0; static SElement48* g_el = 0; static SElement48* g_iw = 0; static unsigned long g_ic = 99;
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* first; T* last; T* end_of_storage;
     unsigned long size() const { return (unsigned long)(last - first); }
     void Erase(T* f, T* l) { g_ef = f; g_el = l; }

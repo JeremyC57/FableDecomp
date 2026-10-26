@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CCombatDialogueDef { int x; };
+class CCombatDialogueDef { public: int x; };
 
 // Provide the impl the thunk tail-jumps to.
 static int g_called = 0;

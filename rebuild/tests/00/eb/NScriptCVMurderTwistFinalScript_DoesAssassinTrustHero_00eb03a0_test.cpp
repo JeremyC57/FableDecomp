@@ -1,7 +1,7 @@
 // Behaviour test for CV_MurderTwistFinalScript::DoesAssassinTrustHero (0x00EB03A0).
 #include <cstdio>
 #include <cstring>
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     const char* outfit;    // "BANDITCAMP", "GUARD" or a mix
     int missing;           // which item (0..4) is not worn, -1 for none
     long morality;

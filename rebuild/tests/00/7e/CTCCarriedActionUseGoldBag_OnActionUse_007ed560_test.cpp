@@ -17,8 +17,8 @@ static int fails = 0;
 // a temporary passed straight to SetCurrentAction; the 0x1A report runs on every path.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -63,7 +63,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -96,7 +96,7 @@ struct CThing {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CCreatureActionBase {                                // retail sizeof 0xa8
+class CCreatureActionBase { public:                                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                                 // 0x00693EF0
@@ -106,16 +106,16 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                                          // +0x04
     ~CBaseIntelligentPointer();                             // 0x00A01C10
 };
-struct CThingCreatureBase;
-struct CCreatureAction_GiveMoneyToThing : CCreatureActionBase {
+class CThingCreatureBase;
+class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:
     unsigned char _body[0xb4 - 0xa8];
     CCreatureAction_GiveMoneyToThing(CThingCreatureBase* giver, CThing* receiver, long amount);   // 0x007ED450
     ~CCreatureAction_GiveMoneyToThing();                    // 0x007ED420
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0 (CThingCreatureBase)
 };
-struct CTCTargetingBase {                                   // interface 8
+class CTCTargetingBase { public:                                   // interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -130,13 +130,13 @@ struct CTCTargetingBase {                                   // interface 8
 struct CTCInterface1A {                                     // interface 0x1a component of the carried thing
     void OnUseFailed();                                     // 0x005D8E50
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04 (CTCBase)
     void OnUseBase(CThingAICreature* user);                 // 0x007EAB90 (empty base implementation)
 };
 long GetDefaultGoldGift();                                 // 0x007898F0
-struct CTCHeroStats {                                       // interface 4
+class CTCHeroStats { public:                                       // interface 4
     unsigned char _pad00[0x3c];
     long          Gold;                                     // +0x3c
 };

@@ -10,9 +10,9 @@
 // `if`, VC7.1 cross-jumps the last position test into the box arm's final compare). `x >= min` is `test ah,1 ; jne`,
 // `x < max` is `test ah,5 ; jp`; the overlap uses named float locals `lo = box.Min > area.Min ? box.Min : area.Min`,
 // `hi = box.Max < area.Max ? box.Max : area.Max` and `lo < hi` (`fcomp st(1)` + `fstp`).
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct C2DBoxF {
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;
     bool Contains(const C3DVector& p) const
     {
@@ -21,7 +21,7 @@ struct C2DBoxF {
         return false;
     }
 };
-struct CEngineSceneRenderStats;
+class CEngineSceneRenderStats;
 
 class CEngineInternalPrimitiveBase {
 public:

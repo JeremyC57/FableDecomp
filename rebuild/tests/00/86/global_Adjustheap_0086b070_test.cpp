@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSkeletalMorph {
     long GroupID; CDefString Name; bool AllowVariation;
     CSkeletalMorph() { }

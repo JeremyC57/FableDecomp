@@ -13,7 +13,7 @@ struct CInventorySubDef : CRefCounted {
     unsigned char _pad_0x08[0x70];
     long          InventoryDefIndex;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
@@ -34,7 +34,7 @@ bool CThingDef::GetSubDef(CRawDefPointer<CInventorySubDef>* out) const
     if (!g_subDef) return false;
     ++g_subDef->RefCount; out->Object = g_subDef; return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char           _pad_0x00[0x70];
     CDefPointer<CThingDef>  PDef;
     __forceinline CDefPointer<CThingDef> GetDef() const { return PDef; }
@@ -43,7 +43,7 @@ struct CScreenBase { virtual void v00() {} };
 static CScreenBase* g_registered = 0; static const char* g_log[8]; static int g_logN = 0;
 struct CScreenManager { void RegisterScreen(CScreenBase* screen) { g_registered = screen; g_log[g_logN++] = "register"; } };
 static CScreenManager g_screens;
-struct CPlayerGui { CScreenManager* GetScreenManager() { return &g_screens; } };
+class CPlayerGui { public: CScreenManager* GetScreenManager() { return &g_screens; } };
 static CPlayerGui g_gui; CPlayerGui* g_pPlayerGui = &g_gui;
 static long g_setPDef = -1; static bool g_quickAssign = true;
 struct CTCInventoryBase {
@@ -53,7 +53,7 @@ struct CTCInventoryBase {
     void SetPDef(long globalDefIndex) { g_setPDef = globalDefIndex; g_log[g_logN++] = "setpdef"; }
     void OnCreate() { g_log[g_logN++] = "base"; }
 };
-struct CTCInventory : CTCInventoryBase, CScreenBase {
+class CTCInventory : public CTCInventoryBase, public CScreenBase { public:
     unsigned char _pad_0x134[0x9A];
     bool          QuickAccessAssignPending;
     void SetQuickAccessAssign(bool assign) { g_quickAssign = assign; g_log[g_logN++] = "quick"; }

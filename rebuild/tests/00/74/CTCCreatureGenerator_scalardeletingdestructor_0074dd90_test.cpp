@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void* vftable;
     int destroyed;
 };

@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CCard { int id; };
+class CCard { public: int id; };
 struct Hand {                                   // vector<CCard*> stand-in: one card id is enough to track identity
     int* data;
     Hand() : data(0) { }

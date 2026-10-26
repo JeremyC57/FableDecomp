@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CIDrawEnvironment;
+class CIDrawEnvironment;
 
-struct CWorld {
+class CWorld { public:
 	char pad0[0xC];
 	CIDrawEnvironment* m_pDrawEnvironment;
 	CIDrawEnvironment* DrawGetEnvironment();

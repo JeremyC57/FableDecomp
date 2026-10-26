@@ -54,7 +54,7 @@ public:
     void push_back(const _Tp& __x) { insert(end(), __x); }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

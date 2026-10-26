@@ -6,15 +6,15 @@
 //          const CDefPointer<const CCameraModeDef>&) @ 0x00874E00 (out of line, `ret 8`).
 // Shape: the constructor takes exactly Alloc's two stack arguments and returns `this`, so VC7.1 forwards them with a
 //        sibling `jmp` on the non-null path (no pushes); a null block returns 0.
-struct CGameCameraManager;
-struct CCameraModeDef;
-template <class T> struct CDefPointer;
+class CGameCameraManager;
+class CCameraModeDef;
+template <class T> class CDefPointer;
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     unsigned char _body[0xa0];                     // +0x04..+0xa3 (retail)
 };
-struct CPCMouseLook : CBase {                      // 0x10c bytes
+class CPCMouseLook : public CBase { public:                      // 0x10c bytes
     unsigned char _body[0x10c - 0xa4];
     CPCMouseLook(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def);   // 0x00874E00
     struct CPCMouseLookInit {

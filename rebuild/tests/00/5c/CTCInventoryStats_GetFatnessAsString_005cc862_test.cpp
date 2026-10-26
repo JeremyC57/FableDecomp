@@ -4,19 +4,19 @@
 #include <cwchar>
 // Behaviour test for CTCInventoryStats::GetFatnessAsString (0x005CC862): same body as src/, with the strings and the
 // text bank modelled by std::string (the bank echoes the symbol).
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* text, long = -1) : s(text) { }
     CCharString(const std::string& t) : s(t) { }
 };
 CCharString operator+(const CCharString& l, const CCharString& r) { return CCharString(l.s + r.s); }
-struct CWideString {
+class CWideString { public:
     std::string s;
     CWideString(const std::string& t) : s(t) { }
     CWideString(const wchar_t* text) { for (; *text; ++text) s += (char)*text; }
 };
 struct CDataBank { CWideString GetTextBySymbol(const CCharString& sym) { return CWideString(sym.s); } };
-struct CMainGameComponent { CDataBank* TextBank; };
+class CMainGameComponent { public: CDataBank* TextBank; };
 static CDataBank g_bank; static CMainGameComponent g_mgc = { &g_bank };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
 namespace NInventory {

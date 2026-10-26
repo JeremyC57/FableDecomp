@@ -8,21 +8,21 @@
 // Name: FableWin.pdb `?Recover@CModeDazed@NCreatureMode@@EAEXXZ` (private virtual, slot 15 of the out-of-action modes).
 // Shape: as the landed CModeScorpionKingExhausted::Recover @ 0x008DF640: an explicit action temporary passed by reference
 //   (the ctor's returned `this` is pushed); the creature is a named local in esi for the ctor argument and the call.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
-struct CCreatureActionBase {               // retail sizeof 0xa8
+class CCreatureActionBase { public:               // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                  // 0x0062E900
 };
-struct CCombatAction_RecoverFromDazed : CCombatActionBase {
+class CCombatAction_RecoverFromDazed : public CCombatActionBase { public:
     CCombatAction_RecoverFromDazed(CThingCreatureBase* owner);   // 0x008E43A0
 };
 

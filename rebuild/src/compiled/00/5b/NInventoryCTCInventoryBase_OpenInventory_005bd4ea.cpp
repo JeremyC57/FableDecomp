@@ -15,13 +15,13 @@
 // copied as two dwords; the empty test on Categories is begin() != end(). pack(4) keeps the double from padding the vptr.
 #pragma optimize("s", on)
 double __fastcall GFGetTime();                   // 0x009E1BC0
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long m_refCount;                             // +0x04
 };
-struct CInventoryDef : CDefPointeeBase { };
-template <class T> struct CDefPointer {          // intrusive counted definition pointer (4 bytes)
+class CInventoryDef : public CDefPointeeBase { public: };
+template <class T> class CDefPointer { public:          // intrusive counted definition pointer (4 bytes)
     T* Object;
 };
 template <class T> __forceinline T* AddRef(T* object)
@@ -45,13 +45,13 @@ struct CDisplayDevice {
     CPresentationIntervalDesc PresentationInterval;   // +0x1cc
 };
 extern CDisplayDevice* g_pDisplayDevice;         // 0x013B8390
-struct CPlayerGui {
+class CPlayerGui { public:
     void Close(bool immediately);                // 0x00438400
 };
 extern CPlayerGui* g_pPlayerGui;                 // 0x013B8790
 
 namespace NInventory {
-struct CCategory {                               // 0x2C bytes
+class CCategory { public:                               // 0x2C bytes
     unsigned char _body[0x2C];
     void SetAsSelected(bool selected);           // 0x005BC934
 };
@@ -64,7 +64,7 @@ struct CCategoryVector {                         // std::vector<CCategory> (12 b
     CCategory& operator[](unsigned long n) { return *(begin() + n); }
 };
 #pragma pack(push, 4)
-struct CTCInventoryBase {                        // retail 0x130 bytes
+class CTCInventoryBase { public:                        // retail 0x130 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

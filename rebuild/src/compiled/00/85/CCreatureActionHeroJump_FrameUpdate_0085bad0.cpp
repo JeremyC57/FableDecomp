@@ -5,7 +5,7 @@ struct SubObj8;
 // method at 0xa01b50 called with ecx = &self at +8 (subobject)
 void __fastcall Sub8_Method(SubObj8* action);
 
-struct CCreatureActionHeroJump {
+class CCreatureActionHeroJump { public:
     int   m00;      // +0x00
     int   m04;      // +0x04
     int   m08;      // +0x08  (subobject start)

@@ -15,17 +15,17 @@
 #define __forceinline inline __attribute__((always_inline))
 #define __fastcall
 #endif
-struct C3DVector;
+class C3DVector;
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();}; //004ABE90/004AA840 genuine copy/release, field-free native projection
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
-struct CBaseObject {CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
-struct CCPPointerInfo;
+class CBaseObject { public:CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
+class CCPPointerInfo;
 enum EScriptEntityMoveType { ScriptMoveDefault=0 };enum ETextGroupSelectionMethod { TextGroupDefault=0 };
-struct CScriptGameResourceObjectBase:CBaseObject{virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
-struct CScriptGameResourceObjectScriptedThingBase:CScriptGameResourceObjectBase {
+class CScriptGameResourceObjectBase:public CBaseObject{ public:virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
+class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase { public:
  CScriptGameResourceObjectScriptedThingBase* PImp_Data;CCPPointerInfo* PImp_Info;
  __forceinline CScriptGameResourceObjectScriptedThingBase():PImp_Data(0),PImp_Info(0){}
  virtual ~CScriptGameResourceObjectScriptedThingBase(); //007E74D0 ordinary shared resource cleanup
@@ -73,8 +73,8 @@ struct GameScriptCalls:CGameScriptInterface {
 extern "C" int rand(); //00BFEB16
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float); //00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing&,float,bool,bool); //00CBE716
-struct CEntityScriptBase {void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();}; //00F35B10/00F35B30
-namespace NScript{struct CQ_EndGameFocalSitesScript{struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
+class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();}; //00F35B10/00F35B30
+namespace NScript{class CQ_EndGameFocalSitesScript{ public:struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
 void NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main(){
  SetPredicate(CIsThingAlive(Me));Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
  rand();CScriptGameResourceObjectScriptedThingBase resource;

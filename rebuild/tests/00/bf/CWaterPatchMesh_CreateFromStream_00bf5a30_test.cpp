@@ -73,11 +73,11 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct C2DCoordI { int X, Y; };
-struct CEngineLandscapeMap { int id; };
-struct CMovableResource { int allocs; };
+class C2DCoordI { public: int X, Y; };
+class CEngineLandscapeMap { public: int id; };
+class CMovableResource { public: int allocs; };
 static unsigned char g_block[64];
-struct CWaterPatchMesh {
+class CWaterPatchMesh { public:
     CEngineLandscapeMap* Map; int OffsetX, OffsetY; CIn* stream;
     CWaterPatchMesh(CEngineLandscapeMap* map, CIn* s, const C2DCoordI* offset) : Map(map), OffsetX(offset->X), OffsetY(offset->Y), stream(s) {}
     static void* operator new(size_t size, CMovableResource* owner) { if (!owner) return 0; ++owner->allocs; return g_block; }

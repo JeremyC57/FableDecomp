@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct Sub20;
-struct CWideString { void* g; };
+class CWideString { public: void* g; };
 struct CTCInventoryBase { char pad[0x20]; Sub20* f20; long f24; };
 
 static int gTail = 0;

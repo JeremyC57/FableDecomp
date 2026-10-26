@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <new>
 
-struct CSurface {
+class CSurface { public:
     void* PD3DSurface;
     unsigned int AllocationSource;
     void* PAllocatedMemory;
@@ -11,13 +11,13 @@ struct CSurface {
     CSurface(const CSurface& o) : PD3DSurface(o.PD3DSurface), AllocationSource(o.AllocationSource), PAllocatedMemory(o.AllocationSource == 2 ? o.PAllocatedMemory : 0) { }
     virtual ~CSurface() { }
 };
-struct CTexture {
+class CTexture { public:
     void* PD3DTexture;
     unsigned int ByteLength;
     CTexture() : PD3DTexture(0), ByteLength(0) { }
     CTexture(const CTexture& o) : PD3DTexture(o.PD3DTexture), ByteLength(o.ByteLength) { }
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     int X, Y;
     C2DExtentsI() : X(0), Y(0) { }
     C2DExtentsI(const C2DExtentsI& o) : X(o.X), Y(o.Y) { }
@@ -40,7 +40,7 @@ template <class T> struct CVec {                        // STLport vector with a
 private:
     CVec& operator=(const CVec&);
 };
-struct CMinimapData {
+class CMinimapData { public:
     C2DExtentsI        MinimapExtents;
     CVec<int>          MinimapThemeList;
     CSurface           MinimapSurface;

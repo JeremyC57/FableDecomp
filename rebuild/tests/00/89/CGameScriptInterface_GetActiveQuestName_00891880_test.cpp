@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len) { p = (char*)s; (void)len; }
     CCharString(const CCharString& o) { p = o.p; }
@@ -19,7 +19,7 @@ struct GameGlobal {
 
 GameGlobal* g_ptr;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void* vt;
     CCharString GetActiveQuestName();
 };

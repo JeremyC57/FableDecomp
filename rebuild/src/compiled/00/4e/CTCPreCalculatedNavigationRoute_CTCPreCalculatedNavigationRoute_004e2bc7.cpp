@@ -12,9 +12,9 @@
 
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
@@ -22,7 +22,7 @@ struct CTCBase {
     ~CTCBase();                                    // 0x00686830
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                   // 8 bytes: vptr + item
     virtual void v00();

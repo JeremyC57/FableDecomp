@@ -1,4 +1,4 @@
-struct CTCCameraCollision {
+class CTCCameraCollision { public:
     void* field_0;
     void* field_4;
     void* field_8;

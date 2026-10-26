@@ -1,6 +1,6 @@
 // Behaviour test for 0x0046BF72 std::vector<CReverbEnvironmentEntry>::resize(n): forwards n and a zero-filled value
 #include <cstdio>
-struct CReverbEnvironmentEntry { float Params[21]; };
+class CReverbEnvironmentEntry { public: float Params[21]; };
 struct EntryVector {
     unsigned int lastN; int allZero; int calls;
     void resize(unsigned int n, const CReverbEnvironmentEntry& x)

@@ -17,8 +17,8 @@
 // width` after the dimension call (one expression). Y: the scaled value is formed BEFORE the dimension call and parked
 // as a FLOAT in the same frame word (`fstp [esp+0Ch]` after the push), then `fild height ; fdivr` -- a separate
 // float statement, as in the float GFAYToVY.
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

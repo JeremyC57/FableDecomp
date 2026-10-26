@@ -9,15 +9,15 @@
 // single null test; then the remaining init-list members in declaration order.
 // Layout (retail): CModeStandBase 0x68, Filter +0x68 (CAnimFilterOfGroup 0xc), members after it as declared below
 // (PDB order and sizes; CIntelligentPointer<CThing> is 8 bytes, vptr 0x01238C6C + item).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
@@ -27,7 +27,7 @@ struct CCharString {
 
 unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);   // 0x00404310: CRC of the text (the out-of-line copy of the inline CRC accessor pair)
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8

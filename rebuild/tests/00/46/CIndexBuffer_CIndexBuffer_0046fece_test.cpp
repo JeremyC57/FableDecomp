@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <new>
 
-struct CIndexBuffer {
+class CIndexBuffer { public:
     void* a;
     void* b;
     void* c;

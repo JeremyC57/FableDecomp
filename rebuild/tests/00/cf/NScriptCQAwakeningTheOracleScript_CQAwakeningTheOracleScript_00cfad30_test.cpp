@@ -7,7 +7,7 @@ class CGameScriptInterfaceBase { public: int id; };
 class CScriptDataBase { public: int id; };
 static int g_mallocs = 0;
 static int g_scriptBaseCtors = 0;
-struct CScriptBase {
+class CScriptBase { public:
     CScriptBase() { ++g_scriptBaseCtors; }
     virtual ~CScriptBase() { }
 };
@@ -36,7 +36,7 @@ template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPairStrStr { void* first; void* second; };
 struct CPairStrActor { void* first; void* second[4]; };
 template <class V> bool Empty(const CMap<V>& m)

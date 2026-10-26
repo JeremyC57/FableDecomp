@@ -16,7 +16,7 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
 };
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
@@ -37,7 +37,7 @@ class CScriptBase;
 class CScriptDataBase;
 class CGameScriptInterfaceBase;
 
-struct CScriptInfo {
+class CScriptInfo { public:
     CScriptBase* (__cdecl* AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);   // +0x00
     CScriptDataBase* (__cdecl* MasterScriptDataAlloc)();                              // +0x04
     CCharString Name;                                                                 // +0x08
@@ -51,7 +51,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<CCharString, CScriptInfo> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

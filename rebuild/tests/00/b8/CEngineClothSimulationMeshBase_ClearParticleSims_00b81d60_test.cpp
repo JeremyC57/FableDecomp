@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <new>
 struct SCountBlock { long m_references; };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
     T* operator->() const { return Object; }
 };
-struct CParticleSimulationRenderData { bool m_busy; virtual bool IsBusy() { return m_busy; } };
-struct CParticleSimulation { CCountedPointer<CParticleSimulationRenderData> RenderData; };
+class CParticleSimulationRenderData { public: bool m_busy; virtual bool IsBusy() { return m_busy; } };
+class CParticleSimulation { public: CCountedPointer<CParticleSimulationRenderData> RenderData; };
 struct SFalseTag { SFalseTag() {} };
 static int g_overflows = 0;
 template <class T> struct CRetailVector {

@@ -9,24 +9,24 @@ static long g_now = 1000;
 static long g_fps = 10;
 static int g_defRefs = 0;
 
-struct CRegionDef { long m_count; bool HasFines; };
+class CRegionDef { public: long m_count; bool HasFines; };
 struct CDefPointer {
     CRegionDef* Object;
     CDefPointer(CRegionDef* o) : Object(o) { if (Object) { ++Object->m_count; ++g_defRefs; } }
     ~CDefPointer() { if (Object) { --Object->m_count; --g_defRefs; } }
     CRegionDef* operator->() const { return Object; }
 };
-struct COpinionDeed { long DeedType; };
-struct CTCHeroOpinionDeedLog {
+class COpinionDeed { public: long DeedType; };
+class CTCHeroOpinionDeedLog { public:
     std::map<long, COpinionDeed> deeds;
     std::map<long, long> life;              // deed type -> knowledge life seconds
     COpinionDeed* GetDeedFromHandle(long h) { std::map<long, COpinionDeed>::iterator i = deeds.find(h); return i == deeds.end() ? 0 : &i->second; }
     long GetKnowledge(long type) { return life[type]; }
 };
-struct CThing { CTCHeroOpinionDeedLog* log; };
+class CThing { public: CTCHeroOpinionDeedLog* log; };
 static CThing* g_hero = 0;
 
-struct CTCVillage {
+class CTCVillage { public:
     CRegionDef* regionDef;
     std::set<long> PlayersCrimes;
     long FramePlayerLastSeenByGuard;

@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -86,10 +86,10 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 #include <stddef.h>
 
 
-struct CResourceList;
+class CResourceList;
 
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     CResourceList* ResourceList;                             // +0x08
@@ -121,7 +121,7 @@ FABLE_STATIC_ASSERT(offsetof(CResource, LastUsedFrame) == 0x18);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -142,11 +142,11 @@ FABLE_STATIC_ASSERT(offsetof(CPixelFormat, FormatIndex) == 0x0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CTextureManager;
+class CCPPointerInfo;
+class CTextureManager;
 
 #pragma pack(push, 1)
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -348,13 +348,13 @@ struct GraphicInfoFrame;
 struct FrameData:ManagedTextureOwner {FrameData(const GraphicInfoFrame*);virtual ~FrameData();virtual unsigned long GetUnloadableMemory()const;virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();virtual void ReleaseTexture();bool StopLoading();bool FreeTextureMemory(bool);unsigned char NativeTail[40];}; //009FDC20/PDB00B58150 bool nonconst;009FE460/PDB00B58A80 bool(bool); ctor00B589A0
 // Native FrameData VT0129C89C: A010A0,42D930,42D940,9FD830,9FD7F0,9FF860,42D970,42D980,9FDCB0,9FD4D0,9FEA00. Full11 real slots, no padding virtuals.
 struct FramePointer {FrameData*P;void Reset(){if(P){FrameData*old=P;if(old->Release()==0)old->Delete();P=0;}P=0;}};
-struct CGraphicInfo;
+class CGraphicInfo;
 struct GraphicInfoFrame {void*VTable;unsigned short FrameNum;signed char SmallMipmapLevel;FramePointer Data;CGraphicInfo*GraphicInfo;}; //native16
 #pragma pack(push,1)
 struct GraphicHeader {unsigned short Width,Height,Depth,FrameWidth,FrameHeight,FrameCount;CPixelFormat PixelFormat;unsigned char TransparencyType,MipmapLevels,Flags,Padding;unsigned long FrameDataSize,CompressedMipmapSizes;};
 #pragma pack(pop)
 struct BankNative {unsigned char NativeState[0x268];unsigned long UnloadFrameDelay;}; //retail+268 vs donor+2E4, actual donor header retained
-struct CGraphicInfo {CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
+class CGraphicInfo { public:CGraphicInfo();GraphicHeader Header;long TextureType;BankNative*Bank;long Index;GraphicInfoFrame*Frames;void UnloadFrame(unsigned long);}; //actual default PDB00B57D00; no repository header
 __forceinline const unsigned long& MinAge(const unsigned long&a,const unsigned long&b){return a<b?a:b;}
 void CGraphicInfo::UnloadFrame(unsigned long index){
  unsigned long count=Header.FrameCount;

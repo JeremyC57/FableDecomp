@@ -40,7 +40,7 @@ template <class T1, class T2> struct pair {
     T2 second;
 };
 }
-template <class T> struct CArray : std2::vector<T> { };
+template <class T> class CArray : public std2::vector<T> { public: };
 class CBaseClass {
 public:
     virtual ~CBaseClass() { g_order[g_events++] = 1; }   // stands in for 0x0099A2E0

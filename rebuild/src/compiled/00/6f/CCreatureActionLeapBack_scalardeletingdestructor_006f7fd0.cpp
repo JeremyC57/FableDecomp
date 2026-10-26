@@ -1,4 +1,4 @@
-struct CCreatureAction_LeapBack {
+class CCreatureAction_LeapBack { public:
     void* vftable;
 };
 

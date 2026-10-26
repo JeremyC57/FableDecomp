@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* t, long = -1) : p(t) {}
     CCharString(const CCharString& o) : p(o.p) {}
@@ -9,7 +9,7 @@ struct CCharString {
 static int g_fail = 0;
 static void check(bool c, int line) { if (!c) { if (!g_fail) std::printf("check failed at line %d\n", line); g_fail = 1; } }
 #define CHECK(c) check((c), __LINE__)
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static const char* g_worn[8];
 static int g_nworn = 0;
 struct GameCalls {

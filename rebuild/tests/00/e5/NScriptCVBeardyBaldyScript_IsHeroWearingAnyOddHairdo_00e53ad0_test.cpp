@@ -3,13 +3,13 @@
 // behaviour test: CV_BeardyBaldyScript::IsHeroWearingAnyOddHairdo asks the interface, hairstyle by hairstyle and in retail order, whether the
 // hero wears it, stops at the first hit and destroys every string temporary it built
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CScriptThing { int Id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int Id; };
+class CGameScriptInterface { public:
     CScriptThing Hero;
     const char* Asked[16];
     int Count;

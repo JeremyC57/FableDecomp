@@ -11,10 +11,10 @@
 // @ 0x00993EC0, CPersistTraits<unsigned __int64>::TransferBinaryIn @ 0x0044B890 (landed names).
 // Shape: as 0x004CC520 -- cases 3 and 2 only (`sub eax,2 ; je ; dec eax ; jne`), case 3 first; the load arm's traits
 // object a block-scoped named local in its own 8-byte frame.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteUInt64(unsigned __int64 value);    // 0x00993EC0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00
@@ -22,7 +22,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x0044B890 for T = unsigned __int64
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                 // +0x18 (2 binary load, 3 binary save)
     unsigned char           _pad1c[8];

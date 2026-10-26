@@ -8,7 +8,7 @@
 // Layout: as the landed 0x0089D830 EntityForceToLookAtThing sibling (same slots, interface 8 = the targeting component)
 // and the 0x0089D7C0 row's CThing model (UsingComponents +0x20, Components +0x44). The +0x34 member name is not confirmed.
 // Shape: /O2 (16-aligned entry); the GetTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

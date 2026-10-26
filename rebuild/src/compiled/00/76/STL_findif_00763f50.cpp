@@ -11,12 +11,12 @@
 //   20-byte predicate by value and the tag reference on the stack, `ret 18h`): trip count (last - first) >> 2 with
 //   the /12 division as `imul 2AAAAAABh ; sar edx,1`, four tests per pass, then `switch (last - first)` on 3/2/1
 //   falling through (`dec eax` chain) and `return last` for 0/default.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
 namespace NShape {
-struct CIsPointFinalLinkInTriangleWithMatchingCirculation {
+class CIsPointFinalLinkInTriangleWithMatchingCirculation { public:
     C3DVector* PointA;                            // +0x00
     C3DVector* PointB;                            // +0x04
     C3DVector  UpDirection;                       // +0x08

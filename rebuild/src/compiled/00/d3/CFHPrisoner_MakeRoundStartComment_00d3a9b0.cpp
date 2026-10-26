@@ -8,8 +8,8 @@
 // Layout (the CEntityScriptBase prefix of the landed entity scripts): vptr, Game +4, CScriptThing Me +8, the owning quest
 //   script +0x14 (its started counter +0x88, mood +0x184), the round counter +0x20.
 // Shape: every mood arm re-tests IsDone before appending; the callee-saved pushes for the conversation sit after the tests.
-struct CScriptThing { unsigned char _body[12]; };
-struct CCharString {
+class CScriptThing { public: unsigned char _body[12]; };
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator+=(const char* text);          // 0x0099F100
@@ -26,7 +26,7 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD64(pa) VPAD4(pb) VPAD2(pc)                                                   // slots 0..69
     virtual const CScriptThing& GetHero();                                           // slot 70 (+0x118)
     VPAD16(qa) VPAD2(qb)                                                             // slots 71..88

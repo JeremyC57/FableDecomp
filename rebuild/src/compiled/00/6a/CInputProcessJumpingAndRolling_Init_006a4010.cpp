@@ -5,12 +5,12 @@
 // StickPulled +0x4c, WFLastRoll +0x50.
 // Shape: the zero vector is an inline C2DVector(0, 0) temporary in an 8-byte frame (its stores are kept, the loads forwarded from the
 // zero register through edx), the timers from the zero register, the byte from al, the -1 an immediate.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CInputProcessJumpingAndRolling {             // vtable 0x01238050
+class C3DVector { public: float X, Y, Z; };
+class CInputProcessJumpingAndRolling { public:             // vtable 0x01238050
     virtual void v00(); virtual void v01();
     virtual void Init();                            // slot 2
     unsigned char _pad04[0x24];                     // +0x04 CAInputProcess and the game-base pointers

@@ -7,12 +7,12 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CCharString {
+class CCharString { public:
     const char* Text;
     bool operator!=(const char* t) const { return std::strcmp(Text, t) != 0; }
 };
-struct CScriptThing { const char* Name; };
-struct CThing {
+class CScriptThing { public: const char* Name; };
+class CThing { public:
     unsigned char    ThingType;
     u64 UID;
     CCharString      ScriptName;
@@ -23,7 +23,7 @@ struct CThing {
     unsigned char    _93_4 : 4;
     CScriptThing GetScriptThing() { CScriptThing t; t.Name = ScriptName.Text; return t; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     const char* Binds; int Calls; u64 LastUID; const char* LastName; bool LastFlag;
     bool BindsEntityScript(const CCharString& name) { return std::strcmp(name.Text, Binds) == 0; }
     void OnScriptedEntityDeactivated(u64 uid, CScriptThing& thing, bool flag)
@@ -31,7 +31,7 @@ struct CScriptBase {
 };
 struct CActiveQuest { long ID; void* PScriptInfo; CScriptBase* PScript_Data; void* PScript_Info; };
 struct SActiveQuestNode { SActiveQuestNode* next; SActiveQuestNode* prev; CActiveQuest* m_pData; void* m_pInfo; };
-struct CQuestManager {
+class CQuestManager { public:
     SActiveQuestNode* ActiveQuests;
     void OnDeactivateEntity(CThing& thing, bool flag);
 };

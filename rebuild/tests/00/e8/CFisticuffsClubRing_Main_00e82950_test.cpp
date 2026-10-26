@@ -9,26 +9,26 @@ static std::string g_log;
 static void logs(const std::string& s) { g_log += s; g_log += ";"; }
 static std::string num(long v) { char b[24]; sprintf(b, "%ld", v); return b; }
 
-struct CCharString {
+class CCharString { public:
     std::string s;
     CCharString(const char* text, long length = -1) : s(text) { (void)length; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     std::string Name;
     CScriptThing() {}
     CScriptThing(const char* n) : Name(n) {}
 };
-struct CTimer;
-struct CGameScriptInterface;
+class CTimer;
+class CGameScriptInterface;
 extern CGameScriptInterface* g_pGameScriptInterface;
-struct CTimer {
+class CTimer { public:
     long TimerIndex;
     CTimer();
     ~CTimer();
     void SetTime(long time);
     long GetTime() const;
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     long Timers[8];
     long NextTimer;
@@ -62,7 +62,7 @@ struct CIsThingAlive {
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
 };
-struct CScriptDef {
+class CScriptDef { public:
     float FC_OutsideRingRange;
     float FC_RingTimeOut;
     float FC_RingRadius;
@@ -91,7 +91,7 @@ inline void ClampMeter(float& meter)
     else if (meter > 12.0f)
         meter = 12.0f;
 }
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     CGameScriptInterface* Game;
     CScriptThing          Me;
     int Registered;

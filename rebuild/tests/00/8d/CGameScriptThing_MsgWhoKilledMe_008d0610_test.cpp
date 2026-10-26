@@ -12,12 +12,12 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct CMessageEventManager;
-struct CWorld { CMessageEventManager* PMessageEventManager_Data; };            // test model of engine/CWorld.h (+0x60 there)
-struct CGameScriptThing { unsigned __int64 ThingUID; CWorld* World; };       // test model of engine/CGameScriptThing.h
+class CMessageEventManager;
+class CWorld { public: CMessageEventManager* PMessageEventManager_Data; };            // test model of engine/CWorld.h (+0x60 there)
+class CGameScriptThing { public: unsigned __int64 ThingUID; CWorld* World; };       // test model of engine/CGameScriptThing.h
 static int g_getpitem = 0;
-struct CBaseObject;
-struct CScriptThing {                              // 12 bytes (vptr + PImp {Data, Info}), returned by hidden pointer
+class CBaseObject;
+class CScriptThing { public:                              // 12 bytes (vptr + PImp {Data, Info}), returned by hidden pointer
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
@@ -43,35 +43,35 @@ struct CBaseIntelligentPointer {
     void* Info;
     CBaseObject* GetPItem() const { ++g_getpitem; return (CBaseObject*)Info; }
 };
-struct CMessageEvent {                             // 0x58 bytes
+class CMessageEvent { public:                             // 0x58 bytes
     unsigned char           _pad00[0x48];
     CBaseIntelligentPointer POriginator;           // +0x48 CIntelligentPointer<CThing>
     CBaseIntelligentPointer PTarget;               // +0x50
 };
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long Type;
     CMessageEventFilter_IsOfType(long type) : Type(type) { }
 };
-struct CMessageEventFilter_IsTargettedAtThing {
+class CMessageEventFilter_IsTargettedAtThing { public:
     unsigned __int64 UID;
     CMessageEventFilter_IsTargettedAtThing(unsigned __int64 uid) : UID(uid) { }
 };
-template <class A, class B> struct CFilter_Bind2 { // the bound filter holds POINTERS to its operands
+template <class A, class B> class CFilter_Bind2 { public: // the bound filter holds POINTERS to its operands
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsTargettedAtThing> CKilledMeFilter;
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* m_result; long m_type; unsigned __int64 m_uid;
     CMessageEvent* FindMostRecentMessage(const CKilledMeFilter& filter) { m_type = filter.m_pFirst->Type; m_uid = filter.m_pSecond->UID; return m_result; }
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     CScriptThing GetNullScriptThing() { CScriptThing t; t.PImp_Data = (void*)this; return t; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     void*                    _vftable;
     CGameScriptThingManager* PGameScriptThingManager;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
     CGameScriptThingManager* GetGameScriptThingManager() const { return PGameScriptThingManager; }

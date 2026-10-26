@@ -1,4 +1,4 @@
-struct CLandscapeLayerMesh {
+class CLandscapeLayerMesh { public:
     void* vtbl;        // +0x00
     int ForegroundTextureIndex;           // +0x04
     int BackgroundTextureIndex;           // +0x08

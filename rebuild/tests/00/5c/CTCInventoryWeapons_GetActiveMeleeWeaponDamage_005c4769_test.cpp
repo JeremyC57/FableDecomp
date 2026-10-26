@@ -1,7 +1,7 @@
 // Behaviour test for 0x005C4769 CTCInventoryWeapons::GetActiveMeleeWeaponDamage
 #include <cstdio>
-struct CTCWeapon { float damage; float GetDamage() const { return damage; } };
-struct CThing { CTCWeapon* weapon; bool alive; };
+class CTCWeapon { public: float damage; float GetDamage() const { return damage; } };
+class CThing { public: CTCWeapon* weapon; bool alive; };
 static float GetActiveMeleeWeaponDamage(CThing* melee)
 {
     float damage = 0.0f;

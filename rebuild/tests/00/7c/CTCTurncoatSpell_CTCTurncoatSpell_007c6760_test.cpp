@@ -8,7 +8,7 @@
 class CTCBase;
 class CThing;
 static const char* g_defName; static int g_strings;
-struct CCharString {
+class CCharString { public:
     const char* m_data;
     CCharString(const char* text, long length = -1) : m_data(text) { (void)length; ++g_strings; }
     ~CCharString() { --g_strings; }
@@ -48,7 +48,7 @@ struct CWillButtonHelperTimer {
     long Ability; CThing* Owner;
     CWillButtonHelperTimer(long ability, CThing* owner) : Ability(ability), Owner(owner) { }
 };
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem; int sets;
     CBaseIntelligentPointer() : m_pItem((CBaseObject*)1), sets(0) { }
@@ -67,21 +67,21 @@ struct CTurncoatSpellDef {
     CFloatVector ChargeSeconds;
     CFloatVector CooldownSeconds;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 static CTurncoatSpellDef g_def;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefIndex(const CCharString& name, bool required) { g_defName = name.m_data; (void)required; return 77; }
     bool GetDef(long index, CDefPointer<CTurncoatSpellDef>* def) { def->Object = index == 77 ? &g_def : 0; return true; }
 };
 static CDefinitionManager g_mgr;
 CDefinitionManager* __fastcall GetDefinitionManager() { return &g_mgr; }
 struct CTCAbilityCast { bool Busy; long Ability; };
-struct CTCInventoryAbilities { long Level; long GetAbilityLevel(long ability) { return ability == 5 ? Level : -1; } };
+class CTCInventoryAbilities { public: long Level; long GetAbilityLevel(long ability) { return ability == 5 ? Level : -1; } };
 static long g_FramesPerSecond = 30;
-struct CTCTurncoatSpell : CTCBaseModel {
+class CTCTurncoatSpell : public CTCBaseModel { public:
     CWillButtonHelperTimer Timer;
     CDefPointer<CTurncoatSpellDef> Def;
     CThingIntelligentPointer Target;

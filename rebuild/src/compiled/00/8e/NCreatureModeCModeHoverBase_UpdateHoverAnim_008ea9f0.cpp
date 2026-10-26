@@ -14,12 +14,12 @@
 //   the SetMainAnim call (mode computed first, Looping re-read for the argument); if/else (not an early return) lets the mode
 //   share the name's frame slot; C3DVector needs a user copy ctor for retail's load/store order; the list iterator needs a
 //   user copy ctor so erase's by-value argument is built in place.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -32,7 +32,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                                      // 0x2c bytes
+class CAnimInit { public:                                      // 0x2c bytes
     long          Mode;                                 // +0x00
     unsigned char AnimType;                             // +0x04
     bool          Flag05;                               // +0x05
@@ -48,7 +48,7 @@ struct CAnimInit {                                      // 0x2c bytes
         Set(animType, arg24, animIndex, mode, flag05, flags, percent);
     }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void*         VTable;                               // +0x00
     void*         AnimBegin;                            // +0x04
     void*         AnimEnd;                              // +0x08
@@ -57,10 +57,10 @@ struct CAnimateThing {
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
     bool IsLooping() const { return (Flags51 & 1) != 0; }
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing* GetAnimation();                      // 0x0070B460
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                                     // +0x00
 };
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
@@ -86,7 +86,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return it;
 }
 #pragma auto_inline(on)
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
@@ -96,7 +96,7 @@ struct CTCDriverBase {
     virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetForward() const;               // slot 70 (+0x118)
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -124,14 +124,14 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     explicit CCountedPointer(T* object);   // 0x008EBE90
     ~CCountedPointer();                    // 0x0073D630
     T* operator->() const { return m_pObject; }
 };
-template <class T> struct CCountedPointer<const T> {
+template <class T> class CCountedPointer<const T> { public:
     const T* m_pObject;
     SCountBlock* m_pCount;
     __forceinline CCountedPointer(const CCountedPointer<T>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
@@ -160,14 +160,14 @@ struct CModeBase {
 };
 namespace NCreatureMode {
 struct CModeHoverBase : CModeBase {
-    struct CRadialArea { float ThetaLow, ThetaHigh, RadHigh; };
-    struct CHoverState {
+    class CRadialArea { public: float ThetaLow, ThetaHigh, RadHigh; };
+    class CHoverState { public:
         CCharString AnimName;                           // +0x00
         CRadialArea Area;                               // +0x04
         long        MovementType;                       // +0x10
         float       MovementSpeed;                      // +0x14
     };
-    struct CHoverAnim {
+    class CHoverAnim { public:
         CAnimationEntry* AnimToUse;                     // +0x00
         CCharString      AnimName;                      // +0x04
         bool             Looping;                       // +0x08

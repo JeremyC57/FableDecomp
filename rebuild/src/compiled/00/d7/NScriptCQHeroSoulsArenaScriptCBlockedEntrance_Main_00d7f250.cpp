@@ -25,10 +25,10 @@ struct GameScriptCalls:CGameScriptInterface {
  __forceinline bool MsgIsGameInfoClickedPast()const{return(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[40].MsgIsGameInfoClickedPast)();}
  __forceinline void NewScriptFrame()const{(this->*reinterpret_cast<GameScriptSlot*>(__vftable)[7].NewScriptFrame)();}
 }; //nativeCGSI01260F0C:818=89DC10,1CC=8929D0,A0=894370,1C=6E7410 audited native/PDB signatures.
-struct CEntityScriptBase {void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
+class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;ScriptThingCalls Me;
  bool IsActiveThreadTerminating(); //00F35B30: virtual GetParentScript slot3 then CScriptBase::IsActiveThreadTerminating00CB7940
 }; //actual PDB sizeof20 Game4 Me8; native unchanged
-namespace NScript {struct CQ_HeroSoulsArenaScript {struct CBlockedEntrance:CEntityScriptBase {CQ_HeroSoulsArenaScript* ParentClass;void* PMasterData;void Main();};};}
+namespace NScript {class CQ_HeroSoulsArenaScript { public:struct CBlockedEntrance:CEntityScriptBase {CQ_HeroSoulsArenaScript* ParentClass;void* PMasterData;void Main();};};}
 void NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::Main(){
  Game->EntitySetAsLocked(Me,true);
  while(!IsActiveThreadTerminating()){

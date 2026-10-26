@@ -13,7 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 namespace NUISystem {
 struct CComponentManager;
-struct CText;
+class CText;
 struct CComponentRoot {                         // primary base (vptr at +0x00)
     virtual ~CComponentRoot();
 };
@@ -21,10 +21,10 @@ struct CGuiControl {                            // control base (vptr at +0x04)
     virtual ~CGuiControl();
     unsigned char _body[0x10];                  // +0x08 .. +0x17
 };
-struct CHoverable {                             // third base (vptr at +0x18)
+class CHoverable { public:                             // third base (vptr at +0x18)
     virtual ~CHoverable();
 };
-struct CClickable : CComponentRoot, CGuiControl, CHoverable {
+class CClickable : public CComponentRoot, public CGuiControl, public CHoverable { public:
     unsigned char _body[0x194 - 0x1c];          // +0x01c .. +0x193
     CClickable(CComponentManager* manager);     // 0x0055B460
     virtual ~CClickable();
@@ -41,11 +41,11 @@ struct CActionList {                            // std::list<EGameAction>: one s
     }
 };
 }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CActionInputControl {                    // 28 bytes
+class CActionInputControl { public:                    // 28 bytes
     long GameAction;                            // +0x00
     long ControllerType;                        // +0x04
     long KeyboardKey;                           // +0x08
@@ -56,7 +56,7 @@ struct CActionInputControl {                    // 28 bytes
         : GameAction(0), ControllerType(0), KeyboardKey(0), XboxButton(0), MouseButton(0), ControlDirection(0, 0) { }
 };
 namespace NUISystem {
-struct CKeyRedefiner : CClickable {             // vtables 0x0124ADBC / 0x0124AD98 / 0x0124AD90
+class CKeyRedefiner : public CClickable { public:             // vtables 0x0124ADBC / 0x0124AD98 / 0x0124AD90
     CText* PActionText;                         // +0x194
     CText* PKeyText;                            // +0x198
     CActionList Actions;                        // +0x19c

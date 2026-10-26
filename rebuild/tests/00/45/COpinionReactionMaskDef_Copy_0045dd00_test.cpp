@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct COpinionReactionMaskDef;
+class COpinionReactionMaskDef;
 
 // Provide the impl the thunk tail-calls so the test links and runs.
 static int g_called = 0;

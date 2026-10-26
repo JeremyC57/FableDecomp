@@ -1,4 +1,4 @@
-struct CCreatureAction_UnsheatheItemFromInventory {
+class CCreatureAction_UnsheatheItemFromInventory { public:
     void* vftable;
 };
 

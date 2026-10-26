@@ -10,7 +10,7 @@
 // is read through an inline accessor GetScriptDef(), so VC evaluates it (edi) BEFORE each GetTimer call and reads
 // the field after it (a plain `pGlobalScriptDef->Field` loads the pointer after the call); `this->ParentClass` is re-read
 // for every access.
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -31,7 +31,7 @@ struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vta
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xC88];
     long          NostroVulnerableTimerThreshold;      // +0xC88
     long          NostroVulnerableTimerBonus;          // +0xC8C
@@ -39,22 +39,22 @@ struct CScriptDef {
 extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 inline CScriptDef* GetScriptDef() { return pGlobalScriptDef; }
 
-struct CTimer {
+class CTimer { public:
     long TimerIndex;                                   // +0x00
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
 };
 
-struct CScriptThing {                                  // 12 bytes (vtable 0x01238C8C)
+class CScriptThing { public:                                  // 12 bytes (vtable 0x01238C8C)
     void* __vftable;
     long  m_data[2];
 };
 
 namespace NScript {
 
-struct CQ_SunnyvaleMasterData;
+class CQ_SunnyvaleMasterData;
 
-struct CQ_HeroSoulsNostroScript {
+class CQ_HeroSoulsNostroScript { public:
     unsigned char _pad[0x50];
     long          UndeadAlive;                         // +0x50
     CTimer        NostroVulnerableTimer;               // +0x54

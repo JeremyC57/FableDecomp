@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CNavigationPosition { float X, Y; int Layer; };
+class CNavigationPosition { public: float X, Y; int Layer; };
 static CNavigationPosition* AllocateAndCopy(unsigned int n, const CNavigationPosition* first, const CNavigationPosition* last)
 {
     CNavigationPosition* result = n != 0 ? (CNavigationPosition*)std::malloc(n * sizeof(CNavigationPosition)) : 0;

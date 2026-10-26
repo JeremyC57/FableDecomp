@@ -7,7 +7,7 @@
 // `mov eax,1` exits) even for a bool result; FadingIn (+0xd) is tested first.
 #include "engine/CTCBase.h"
 
-struct CTCFadeOutAndIn : CTCBase {
+class CTCFadeOutAndIn : public CTCBase { public:
     bool  FadingOut;                               // +0x0c
     bool  FadingIn;                                // +0x0d
     float Alpha;                                   // +0x10

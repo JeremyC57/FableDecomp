@@ -1,5 +1,5 @@
 // CPersistTraits<CHeroMarriageInfo>::TransferOut(CPersistContext& context, CCharString& out, const CHeroMarriageInfo* value) const -- text persist write of a marriage record as "(wifeUID,homeUID,state,TRUE|FALSE)"
-// Leaf: ?TransferOut@?$CPersistTraits@UCHeroMarriageInfo@@@@
+// Leaf: ?TransferOut@?$CPersistTraits@VCHeroMarriageInfo@@@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0057F78F, 178 bytes, thiscall `ret 0Ch` (the traits `this` is unused). Called by
 //   the CHeroMarriageInfo vector's text transfer (0x0057F770 passes element i = begin + 18h*i and a 0x18-byte traits
 //   local); the binary twin is the landed TransferBinaryOut 0x0057A3CD. Label correction: the catalog
@@ -20,7 +20,7 @@
 #pragma optimize("s", on)
 #include "engine/CHeroMarriageInfo.h"
 
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
     struct SBlock* m_pBlock;

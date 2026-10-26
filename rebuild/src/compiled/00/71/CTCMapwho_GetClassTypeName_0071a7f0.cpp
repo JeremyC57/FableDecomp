@@ -1,10 +1,10 @@
 // CTCMapwho::GetClassTypeName @ 0071a7f0
-struct CCharString {
+class CCharString { public:
     char* storage_;
     CCharString(const char* text, long length);
 };
 
-struct CTCMapwho {
+class CTCMapwho { public:
     int dummy;
     CCharString GetClassTypeName();
 };

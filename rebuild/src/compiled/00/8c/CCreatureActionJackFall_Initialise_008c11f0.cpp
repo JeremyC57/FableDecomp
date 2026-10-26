@@ -6,14 +6,14 @@
 // CCombatActionBase::Initialise @ 0x00857520 (direct base call, last).
 // Shape: the GetInterface result is ignored -- the absent arm reads the uninitialised out pointer from the key's frame word
 // (`mov eax,[esp+4]`), and VC tail-duplicates the two calls into both arms; esi is only pushed inside the present arm.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -36,11 +36,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCBoss {                            // interface type 0xAD
+class CTCBoss { public:                            // interface type 0xAD
     void ClearEffects();                    // 0x007AEF60
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12: 0x00857520
@@ -49,7 +49,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_JackFall : CCombatActionBase {
+class CCreatureAction_JackFall : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

@@ -9,8 +9,8 @@
 // Layout: engine/CPlayer.h with the lane's CPlayer_Methods method carrier (as the landed UninitModeBerserk 0x006339B0).
 // Shape: both hook arguments unused (`ret 8`); each member pointer goes straight into ecx.
 #include "engine/CPlayer.h"
-typedef long EPlayerMode; struct CProcessedInput;
-struct CAInputProcess { void RemoveFromInterface(); };          // 0x00A0D2D0
+typedef long EPlayerMode; class CProcessedInput;
+class CAInputProcess { public: void RemoveFromInterface(); };          // 0x00A0D2D0
 struct CPlayer_Methods : CPlayer { void UninitModeParalysed(EPlayerMode, CProcessedInput*); };
 void CPlayer_Methods::UninitModeParalysed(EPlayerMode mode, CProcessedInput* input)
 {

@@ -1,8 +1,8 @@
 // Behaviour test for 0x00DF1230 CQ_SummoningTheShipScript::Init: two region registrations then the state reset.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
-struct CGameScriptInterface {
+class CCharString { public: char text[32]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CGameScriptInterface { public:
     int calls; char q[2][32]; char r[2][32];
     CGameScriptInterface() : calls(0) { }
     virtual void AddQuestRegion(const CCharString& questName, const CCharString& regionName)

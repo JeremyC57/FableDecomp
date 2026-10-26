@@ -18,12 +18,12 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-struct CBankFile {
+class CBankFile { public:
     virtual ~CBankFile();                                                 // 0x009CE180
     unsigned char _body[0x10c];                                           // +0x04 .. +0x110
 };
 
-struct CShaderBankEntry;
+class CShaderBankEntry;
 
 struct CShaderEntryVector {                                               // retail vector<CShaderBankEntry*> (12 bytes)
     CShaderBankEntry** m_first;
@@ -37,11 +37,11 @@ struct CShaderEntryVector {                                               // ret
     }
 };
 
-struct CBankStateBlock {                                                  // vtable 0x0129C82C
+class CBankStateBlock { public:                                                  // vtable 0x0129C82C
     virtual ~CBankStateBlock() {}
 };
 
-struct CShaderDataBank : CBankFile {                                      // vtable 0x0129D644
+class CShaderDataBank : public CBankFile { public:                                      // vtable 0x0129D644
     CShaderEntryVector Shaders;                                           // +0x110
     CBankStateBlock    StateBlock;                                        // +0x11c
     CShaderDataBank() {}

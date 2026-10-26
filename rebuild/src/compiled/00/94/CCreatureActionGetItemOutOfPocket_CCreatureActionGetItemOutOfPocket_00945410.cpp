@@ -8,16 +8,16 @@
 //   (second argument slot).
 // Layout: Ego_r.pdb puts ItemDefIndex at +0xb4 (PDB CCreatureActionBase 0xb4 bytes, retail 0xa8): +0xa8 here; no
 //   engine header exists for this class.
-struct CThingCreatureBase;
-struct CAnimationEntry;
+class CThingCreatureBase;
+class CAnimationEntry;
 
-struct CCharString {                        // one pointer; the defaulted length makes a literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -25,14 +25,14 @@ struct CSoundPair {                         // two sound ids, zeroed by the inli
 
 CAnimationEntry* __fastcall GetRandomLoadedAnim(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation,
                         const CSoundPair& sound, long c, long d);                 // 0x00693B30
 };
 
-struct CCreatureAction_GetItemOutOfPocket : CCreatureActionBase {   // vtable 0x01292BC4
+class CCreatureAction_GetItemOutOfPocket : public CCreatureActionBase { public:   // vtable 0x01292BC4
     long ItemDefIndex;                      // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_GetItemOutOfPocket(CThingCreatureBase* owner, long itemDefIndex);

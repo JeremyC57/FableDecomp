@@ -16,7 +16,7 @@ struct CProfileMember {                    // +4
     ~CProfileMember();
 };
 
-struct CProfile : CProfileRoot {           // vtable 0x012B4FBC
+class CProfile : public CProfileRoot { public:           // vtable 0x012B4FBC
     CProfileMember m_member;               // +4
     CProfile();
 };

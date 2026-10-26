@@ -9,8 +9,8 @@
 //   mov [eax],ecx           ; *ret = record->m_typeName
 //   ret 8                   ; thiscall cleanup of the one explicit stack arg + hidden ret ptr
 
-struct CDefString
-{
+class CDefString
+{ public:
     const char* m_str;
 
     CDefString() {}
@@ -22,8 +22,8 @@ struct CDefClassInfoRec
     const char* m_typeName;
 };
 
-struct CDefinitionManager
-{
+class CDefinitionManager
+{ public:
     char pad_0000[0xA4];
     CDefClassInfoRec** m_classInfoTable; // +0xA4
 

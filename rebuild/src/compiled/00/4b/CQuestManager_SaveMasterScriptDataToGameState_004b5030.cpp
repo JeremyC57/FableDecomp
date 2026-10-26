@@ -7,18 +7,18 @@
 // Identity: FableWin.pdb ?SaveMasterScriptDataToGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z.
 // Shape: a 0x30-byte frame: the string at +0 and the 0x2c-byte context above it; the context has no destructor
 // call (no user destructor in the shipped build), the string is destroyed last; no EH frame.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     CPersistContext(CCharString& output);          // 0x009BAE10
 };
 
-struct CScriptDataBase {
+class CScriptDataBase { public:
     virtual void v00();
     virtual void OnPersist(CPersistContext& context);   // slot 1 (+0x04)
 };
@@ -30,7 +30,7 @@ struct CRuntimeQuestPersistence {
 };
 }
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char                           _pad_0x00[0x0c];
     NQuestManager::CRuntimeQuestPersistence RuntimeQuestPersistence;   // +0x0c
     void SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest);

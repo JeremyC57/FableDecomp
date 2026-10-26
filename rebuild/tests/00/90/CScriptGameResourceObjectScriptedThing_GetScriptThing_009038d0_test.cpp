@@ -2,7 +2,7 @@
 // thing's handle, or a null handle when there is no thing or it is dead.
 #include <cstdio>
 
-struct CScriptThing {
+class CScriptThing { public:
     void* PImp_Data;
     CScriptThing() : PImp_Data(0) { }
     explicit CScriptThing(void* imp) : PImp_Data(imp) { }
@@ -17,7 +17,7 @@ struct CIntelligentPointer_Retail {
     CThing_Retail* m_pItem;
     CThing_Retail* GetPItem() { return m_pItem; }
 };
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     CIntelligentPointer_Retail PThing;
     CScriptThing GetScriptThing();
 };

@@ -10,25 +10,25 @@
 // Layout: engine/CCreatureAction_ScorpionCharge.h places ChargeDistance at +0x12c / StartPos at +0x130 (PDB
 // CCombatActionBase is 0x12c bytes, retail 0x114), so `this` is modelled locally 24 bytes lower.
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 
-struct CThing {   // the creature derives from CThing at offset 0 (mov ecx,edi)
+class CThing { public:   // the creature derives from CThing at offset 0 (mov ecx,edi)
     const C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -36,14 +36,14 @@ struct CSoundPair {
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_ScorpionCharge : CCombatActionBase {   // vtable 0x01281024
+class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:   // vtable 0x01281024
     float     ChargeDistance;               // +0x114 (PDB +0x12c)
     C3DVector StartPos;                     // +0x118 (PDB +0x130)
     virtual void v00();

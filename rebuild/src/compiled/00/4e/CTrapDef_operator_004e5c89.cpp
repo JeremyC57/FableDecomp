@@ -10,7 +10,7 @@
 // TriggerType/TrapType are 4-byte enums (long).
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -18,11 +18,11 @@ struct CSoundNameMap {                       // retail std::map<CCharString,long
     unsigned long m_words[3];
     CSoundNameMap& operator=(const CSoundNameMap& other);   // 0x00432B38
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
 };
 
-struct CTrapDef : CDefClassBase {
+class CTrapDef : public CDefClassBase { public:
     CSoundNameMap            Sound;                       // +0x28
     long                     TriggerType;                 // +0x34
     long                     TrapType;                    // +0x38

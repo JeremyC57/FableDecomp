@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // CCarriedReadableDef::Copy  0x004e157c
 #include "engine/CCarriedReadableDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase { int dummy; };
+class CDefClassBase { public: int dummy; };
 
 
 // base Copy(other) — stdcall callee taking other on the stack (cleans its own arg)

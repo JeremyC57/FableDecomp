@@ -1,8 +1,8 @@
 #include <cstdio>
 // behaviour test: CSpecialAbilitiesLightningSpellDef::Transfer visits sounds, angles, vectors, then the trailing floats
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[40];
     int kind[40];
     int count;
@@ -11,7 +11,7 @@ struct CPersistContext {
     void Transfer(CStlVector<float>& v) { kind[count] = 3; order[count++] = &v; }
     void Transfer(CStlVector<long>& v) { kind[count] = 4; order[count++] = &v; }
 };
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];
     CStlVector<float> m_faAreaEffect, m_faDamagePerHit, m_faSubBeamDamagePerHit, m_faActivationTime, m_faDeActivationTime;

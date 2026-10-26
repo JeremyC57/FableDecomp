@@ -17,13 +17,13 @@ struct CEngineState {
     bool          m_useTransform;                        // +0x220
 };
 
-struct CCamera {
+class CCamera { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006();
     virtual float GetAngleXY();                          // slot 7 (+0x1c)
 };
 
-struct CDisplayEngine {
+class CDisplayEngine { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005();
     virtual CTransform GetCameraTransform();             // slot 6 (+0x18)
@@ -32,7 +32,7 @@ struct CDisplayEngine {
     CEngineState* GetState();                            // 0x0049D9D0
 };
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     CDisplayEngine* GetDisplayEngine();                  // 0x004C7AB0
     float GetCurrentRelativeMovementAngleXY();
 };

@@ -60,7 +60,7 @@ public:
 };
 class CDefinitionHolder : public CDefinitionManager { };
 
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 

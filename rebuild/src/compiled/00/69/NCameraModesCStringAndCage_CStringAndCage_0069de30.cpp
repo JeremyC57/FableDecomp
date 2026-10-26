@@ -8,11 +8,11 @@
 //   CStringAndCage AutoGoBehind +0xc8, AutoGoBehindTime +0xcc.
 // Shape: CStringAndCageBase is a __declspec(novtable) intermediate base (only the derived vtable is stored);
 //        DefaultFOV is a body assignment (stored after the vtable).
-struct CGameCameraManager;
-struct CCameraModeDef;
-template <class T> struct CDefPointer;
+class CGameCameraManager;
+class CCameraModeDef;
+template <class T> class CDefPointer;
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     float         DefaultFOV;                      // +0x04
     unsigned char _body[0x9c];                     // +0x08..+0xa3 (retail)

@@ -31,7 +31,7 @@ struct SCountBlock {                               // the shared count block
     CCountedItem* m_pItem;                         // +0x08
 };
 
-namespace NParticleEngine { struct CParticleEmitter; }
+namespace NParticleEngine { class CParticleEmitter; }
 typedef NParticleEngine::CParticleEmitter CEmitter;
 
 struct CEmitterPointer {                           // CCountedPointer<CParticleEmitter> (names as the landed twin 0x00AE89E0)
@@ -54,7 +54,7 @@ struct CParticleEmitterInfo {
 };
 
 namespace NParticleEngine {
-struct CParticleDataBank {
+class CParticleDataBank { public:
     CParticleEmitterInfo* GetEmitterInfo(long handle);           // 0x00AF1280
 };
 }

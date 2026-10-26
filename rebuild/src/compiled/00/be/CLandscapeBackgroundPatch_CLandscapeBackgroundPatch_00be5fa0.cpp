@@ -7,21 +7,21 @@
 // Shape: the vtable store precedes the member-array construction (a counted `dec ebx` loop: the strip has a ctor and no dtor in this TU);
 // Parent and every zero are BODY assignments (stored after the strips, in source order, one zero register); WaterOnlyPatch is left alone;
 // the bridge-buffer clearing loop is unrolled with the two arrays interleaved.
-struct CMovableResource {
+class CMovableResource { public:
     virtual ~CMovableResource();
 };
-struct CTexture;
-struct CIndexBuffer;
-struct CVertexBufferWin32;
-struct CSubPatchTreeLODLockElement;
-struct CEngineWaterBackgroundSubPatch;
-struct CLandscapeBackgroundTreeNode;
-struct CLandscapeBackgroundPatch;
-struct CPatchTesselationEdgeStrip {                         // 0x2c bytes
+class CTexture;
+class CIndexBuffer;
+class CVertexBufferWin32;
+class CSubPatchTreeLODLockElement;
+class CEngineWaterBackgroundSubPatch;
+class CLandscapeBackgroundTreeNode;
+class CLandscapeBackgroundPatch;
+class CPatchTesselationEdgeStrip { public:                         // 0x2c bytes
     unsigned char _body[0x2c];
     CPatchTesselationEdgeStrip();                           // 0x00BFC370
 };
-struct CLandscapeBackgroundPatch : CMovableResource {
+class CLandscapeBackgroundPatch : public CMovableResource { public:
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     CPatchTesselationEdgeStrip      EdgeStrips[4];           // +0x08
     CTexture*                       Texture;                 // +0xb8

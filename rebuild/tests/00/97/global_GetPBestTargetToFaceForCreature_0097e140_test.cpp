@@ -8,7 +8,7 @@
 #endif
 class CThing { public: int id; };
 class CThingCreatureBase;
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -44,7 +44,7 @@ public:
     virtual void v24() {} virtual void v25() {} virtual void v26() {} virtual void v27() {} virtual void v28() {}
     virtual CThingCreatureBase* GetPBestEnemyCreatureForAttack() const { return Best; }
 };
-struct CAttackingCombatantInfo { CThingCreatureBase* Attacked; };
+class CAttackingCombatantInfo { public: CThingCreatureBase* Attacked; };
 struct CCombatantInfo { CThingCreatureBase* Parent; CAttackingCombatantInfo AttackerInfo; };
 static CCombatantInfo g_info;
 static const CThingCreatureBase* g_infoQuery = 0;

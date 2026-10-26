@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_VillagerAttackKnockdown {
+class CCreatureAction_VillagerAttackKnockdown { public:
     void* vftable;
     int destroyed;
 };

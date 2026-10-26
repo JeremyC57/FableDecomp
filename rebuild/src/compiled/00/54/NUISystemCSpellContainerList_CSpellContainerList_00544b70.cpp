@@ -26,12 +26,12 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void v00();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];          // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);        // 0x0052CC50
 };
 
-struct CComponent;
+class CComponent;
 
 template <class T>
 struct CRetailVector {                          // VC6-era Dinkumware vector: first / last / end
@@ -43,7 +43,7 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
 
 struct C2DVector { float x, y; };
 
-struct CSpellContainerList : CChangingStateComponent {    // vtables 0x012475C4 / 0x012475A0 / 0x01247598
+class CSpellContainerList : public CChangingStateComponent { public:    // vtables 0x012475C4 / 0x012475A0 / 0x01247598
     virtual void v00();
     virtual void va00();
     virtual void vb00();

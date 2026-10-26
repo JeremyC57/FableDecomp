@@ -8,8 +8,8 @@
 // opinion source keeps its def stack as a vector {first +0xc, last +0x10}.
 // Shape: HasTC test then an inline pointer-returning GetTC into a named local (`mov esi,[eax+4]`); the RemoveTC
 // call is shared by the "not popping" and the "stack now empty" paths (`!popOneDef || (pop, empty)`).
-struct CTCBase;
-struct CTCOpinionSource {
+class CTCBase;
+class CTCOpinionSource { public:
     unsigned char _pad00[0xc];
     long* m_defStackFirst;                  // +0x0c
     long* m_defStackLast;                   // +0x10
@@ -22,7 +22,7 @@ struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*>
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present

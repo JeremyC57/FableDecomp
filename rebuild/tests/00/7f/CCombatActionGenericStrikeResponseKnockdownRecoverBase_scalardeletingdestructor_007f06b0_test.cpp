@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:
     void* vftable;
     int destroyed;
 };

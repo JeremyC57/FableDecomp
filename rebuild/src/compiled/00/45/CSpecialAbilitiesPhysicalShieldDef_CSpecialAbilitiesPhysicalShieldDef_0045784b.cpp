@@ -13,7 +13,7 @@
 // Shape: as 0x004575FC -- empty destructor, `__forceinline` vector<float> destructors in reverse order, base tail jump.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-struct CParentDefClassBase {                       // retail 0x3c bytes (with the CDefClassBase part)
+class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
     unsigned char m_baseData[0x3c];
     ~CParentDefClassBase();                        // 0x00430300
 };
@@ -24,8 +24,8 @@ struct CFloatVector {                              // retail std::vector<float> 
     __forceinline ~CFloatVector() { if (m_first) free(m_first); }
 };
 typedef long CDefString;                           // table position word
-struct C3DVector { float X, Y, Z; };
-struct CSpecialAbilitiesPhysicalShieldDef : CParentDefClassBase {   // vtable 0x0123439C, retail 0x148 bytes (slot 20)
+class C3DVector { public: float X, Y, Z; };
+class CSpecialAbilitiesPhysicalShieldDef : public CParentDefClassBase { public:   // vtable 0x0123439C, retail 0x148 bytes (slot 20)
     CDefString   InitSound;                        // +0x3c
     CDefString   PowerUpSound[3];                  // +0x40
     CDefString   CastSound;                        // +0x4c

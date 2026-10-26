@@ -10,7 +10,7 @@
 // GetPItem for the null and the dead test, Kill gets a fresh GetPItem, and the clear is `p = CIntelligentPointer<CThing>(0)`
 // -- a frame temporary (base ctor, vtable store, SetPItem(0)) copied through the inline `T* item = other.GetPItem();
 // SetPItem(item);` assignment and destroyed by the base destructor (CIntelligentPointer declares no destructor).
-struct CBaseObject;
+class CBaseObject;
 
 class CThing {
 public:
@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CThing* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -47,14 +47,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
     bool    IsInGlobalUpdateTCs;                            // +0x09
 };
 
-struct CTCFishingSpot : CTCBase {                           // vtable 0x0126D51C
+class CTCFishingSpot : public CTCBase { public:                           // vtable 0x0126D51C
     CIntelligentPointer<CThing> PParticle1;                 // +0x0c
     CIntelligentPointer<CThing> PParticle2;                 // +0x14
     CIntelligentPointer<CThing> PParticleFish;              // +0x1c

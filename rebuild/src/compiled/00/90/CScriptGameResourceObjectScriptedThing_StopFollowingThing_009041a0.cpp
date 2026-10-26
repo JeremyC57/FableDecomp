@@ -17,7 +17,7 @@
 
 void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -101,24 +101,24 @@ struct CActionBase {                               // vtable 0x01265504
 };
 }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CTCScriptedControl {                        // interface 0x1f component
+class CTCScriptedControl { public:                        // interface 0x1f component
     unsigned char _pad00[0x1c];
     long          CurrentActionType;               // +0x1c (4 = following)
     bool TerminateActionByName(const CCharString& name);   // 0x00712CE0
 };
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CExpressionDef {
+class CExpressionDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long RefCount;                                 // +0x04
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -137,7 +137,7 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     CDefPointer<CExpressionDef> GetPDefFromInstantiationName(const CCharString& name);   // 0x009ADA40 (hidden result pointer)
     bool GetDef(const CCharString& name, CDefPointer<CExpressionDef>* out);   // 0x00593666 GetDef<T>
@@ -156,7 +156,7 @@ bool CGameDefinitionManager::GetDef(const CCharString& name, CDefPointer<CExpres
 }
 #pragma auto_inline(on)
 namespace NEntityEvents {
-struct CEventExpressionPerformedTo {               // 0x20 bytes
+class CEventExpressionPerformedTo { public:               // 0x20 bytes
     void*           __vftable;                     // +0x00
     long            m_eventType;                   // +0x04
     void*           m_targetVtable;                // +0x08 CIntelligentPointer
@@ -183,7 +183,7 @@ CEventExpressionPerformedTo::CEventExpressionPerformedTo(void* target, long expr
 }
 #pragma auto_inline(on)
 }
-struct CTCEntityEvents {                           // interface 0x42 component
+class CTCEntityEvents { public:                           // interface 0x42 component
     void AddEvent(NEntityEvents::CEventExpressionPerformedTo* event);   // 0x008113C0
 };
 extern const char g_actionFollowCreature[];        // 0x0128D850 "CActionFollowCreature"

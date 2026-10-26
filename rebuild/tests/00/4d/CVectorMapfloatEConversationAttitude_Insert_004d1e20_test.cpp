@@ -66,9 +66,9 @@ __declspec(noinline) void vector<T>::_M_insert_overflow(T* position, const T& x,
     _M_end_of_storage._M_data = new_start + len;
 }
 
-template <class K, class V> struct CKeyPairCompareLess { };   // empty
+template <class K, class V> class CKeyPairCompareLess { public: };   // empty
 
-template <class K, class V> struct CVectorMap {
+template <class K, class V> class CVectorMap { public:
     vector<pair<K, V> >       Vector;           // +0x00
     CKeyPairCompareLess<K, V> Compare;          // +0x0c
     bool                      Dirty;            // +0x0d

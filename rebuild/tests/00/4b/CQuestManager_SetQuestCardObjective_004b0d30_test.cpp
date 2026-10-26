@@ -5,7 +5,7 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* t) { std::strcpy(Text, t); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
@@ -14,19 +14,19 @@ struct CCharString {
     bool operator!=(const char* t) const { return std::strcmp(Text, t) != 0; }
     CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 struct CTCEntry { long Type; CTCBase* TC; };
 struct CTCMap {
     CTCEntry* _M_start; CTCEntry* _M_finish;
     CTCEntry* LowerBound(const unsigned long& type) { CTCEntry* p = _M_start; while (p != _M_finish && (unsigned long)p->Type < type) ++p; return p; }
     CTCBase* Find(long type) { CTCEntry* it = LowerBound((unsigned long)type); if (it == _M_finish || type < it->Type) return 0; return it->TC; }
 };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[8]; CTCMap Components; unsigned char Dead : 1;
     unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     CTCBase* GetTC(long type) { return Components.Find(type); }
 };
-struct CTCQuestCard : CTCBase {
+class CTCQuestCard : public CTCBase { public:
     CCharString ObjectiveName; CCharString Region; CCharString Teleporter;
     CTCQuestCard() : ObjectiveName("old"), Region("R1"), Teleporter("T1") {}
     CCharString GetRegionName() { return Region; }
@@ -34,7 +34,7 @@ struct CTCQuestCard : CTCBase {
     void SetTeleporterRegionName(const CCharString& r) { Teleporter = r; }
 };
 static CThing* g_card = 0;
-struct CQuestManager {
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString& n) const { return std::strcmp(n.Text, "Q_X") == 0 ? g_card : 0; }
     bool SetQuestCardObjective(const CCharString& scriptName, const CCharString& objective, const CCharString& region, const CCharString& teleporterRegion);
 };

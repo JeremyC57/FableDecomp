@@ -9,19 +9,19 @@
 // (as the landed CAIScratchpadDef::operator= 0x007ADF00 does); every transferred offset +0x28..+0x98 agrees.
 // Shape: one Transfer per member in declaration order; each default is a compiler temporary (the first takes a
 // frame word, the rest the dead context-argument slot); the string defaults are CCharString("") temporaries.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE = 0 };
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, unsigned long& value, const unsigned long& defaultValue);   // 0x004106F0
     void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue);           // 0x004859AD
     void Transfer(const char* name, float& value, const float& defaultValue);                   // 0x00410620
@@ -31,12 +31,12 @@ struct CPersistContext {
     void Transfer(const char* name, bool& value, const bool& defaultValue);                     // 0x004045C0
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base_0x04[0x24];
 };
 
-struct CAIScratchpadDef : CDefClassBase {               // vtable 0x0126D014
+class CAIScratchpadDef : public CDefClassBase { public:               // vtable 0x0126D014
     unsigned long ThankingPhrase;                       // +0x28
     unsigned long IgnoringPhrase;                       // +0x2c
     C3DVector     WanderCentrePoint;                    // +0x30

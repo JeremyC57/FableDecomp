@@ -1,6 +1,6 @@
 // Behaviour test for 0x0041CF47 NUISystem::CManager::GetUIScale: (1,1) without an engine or on a large screen, width/1024 and height/768 otherwise.
 #include <cstdio>
-struct C2DVector { float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
+class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } };
 static void* g_pEngine = 0; static float g_w = 0, g_h = 0;
 static float GetScreenWidth() { return g_w; }
 static float GetScreenHeight() { return g_h; }

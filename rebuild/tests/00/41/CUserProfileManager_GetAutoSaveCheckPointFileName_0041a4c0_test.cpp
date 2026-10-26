@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     wchar_t m_text[64];
     CWideString() { m_text[0] = 0; }
     explicit CWideString(const wchar_t* text) { int i = 0; while (text[i] && i < 63) { m_text[i] = text[i]; ++i; } m_text[i] = 0; }
@@ -17,7 +17,7 @@ CWideString operator+(const CWideString& left, const wchar_t* right)
     return r;
 }
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CWideString GetDocumentsFolder() { return CWideString(L"C:\\Docs\\"); }
     static CWideString GetAutoSaveCheckPointFileName();
 };

@@ -5,7 +5,7 @@
 //         call CCharString::ctor(const char*,int); mov eax,esi; pop esi; ret 4
 // The name string lives at 0x12788b0 (pushed as an immediate offset).
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n); // ctor @ 0x99ebf0
 };

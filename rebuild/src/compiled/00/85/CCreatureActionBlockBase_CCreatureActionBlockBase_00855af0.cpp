@@ -6,27 +6,27 @@
 // chained `X = Y = Z = 0.0f`, which evaluates right to left -- an init list X(0),Y(0),Z(0) stores forward and differs).
 // Member names from engine/CCreatureAction_BlockBase.h (PDB +0x12c/+0x130; retail CCombatActionBase is 0x114 bytes).
 // `ret 10h`: four arguments.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { X = Y = Z = 0.0f; }     // chained assignment: Z, Y, X store order (retail +0x120, +0x11c, +0x118)
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_BlockBase : CCombatActionBase {   // vtable 0x01275F3C
+class CCreatureAction_BlockBase : public CCombatActionBase { public:   // vtable 0x01275F3C
     long      BlowStrength;                 // +0x114
     C3DVector MovementDirection;            // +0x118
     virtual void v00();

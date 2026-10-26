@@ -7,7 +7,7 @@
 // Position); the name is descriptive.
 // Layout: CComponent::Position at retail +0x34 (as the landed ChangePosition 0x0052E9C0).
 // Shape: a memberwise C2DVector copy into the static through ecx / edx.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
 };

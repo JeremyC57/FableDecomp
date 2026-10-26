@@ -4,7 +4,7 @@
 // (was: NCreatureAction::CActionEventExplosion::GetHook @ 00692250)
 // Returns a CCharString by value constructed from a literal string pointer.
 
-struct CCharString {
+class CCharString { public:
     int d;
     CCharString(const char* s, int n);
 };

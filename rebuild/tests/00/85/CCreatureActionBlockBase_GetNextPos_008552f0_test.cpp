@@ -1,16 +1,16 @@
 // Behaviour test for 0x008552F0 CCreatureAction_BlockBase::GetNextPos: pos + dir*0.2*exp(-100 t^2), t = 1 - (total-current)/total.
 #include <cstdio>
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CThing { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class CThing { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { return PItem; } };
-struct CCreatureAction_BlockBase {
+class CCreatureAction_BlockBase { public:
     CBaseIntelligentPointer Owner; long TotalFrames, CurrentFrame; C3DVector MovementDirection;
     C3DVector GetNextPos()
     {

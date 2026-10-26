@@ -1,8 +1,8 @@
 // behaviour test for 0x0049BE10 CParticleEnvironmentInteraction::GetWindVelocity: wind direction * speed with a world, else WindVelocity
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector operator*(float s) const { C3DVector r; r.X = X * s; r.Y = Y * s; r.Z = Z * s; return r; } };
+class C3DVector { public: float X, Y, Z; C3DVector operator*(float s) const { C3DVector r; r.X = X * s; r.Y = Y * s; r.Z = Z * s; return r; } };
 struct CWind { C3DVector dir; float speed; const C3DVector& GetDirection() const { return dir; } float GetSpeed() const { return speed; } };
-struct CWorld { CWind* PWind; CWind* GetWind() const { return PWind; } };
+class CWorld { public: CWind* PWind; CWind* GetWind() const { return PWind; } };
 struct CPEI {
     CWorld* PWorld; C3DVector WindVelocity;
     C3DVector GetWindVelocity() const

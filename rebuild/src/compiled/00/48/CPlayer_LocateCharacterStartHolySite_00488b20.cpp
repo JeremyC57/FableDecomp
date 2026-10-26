@@ -26,14 +26,14 @@ public:
     ~CCharString();                                // 0x0099EAE0
     void Format(const char* format, ...);          // 0x0099F1F0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;       // 0x0099B2C0
     operator const unsigned short*() const;               // 0x0099AF10
 };
 extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -79,7 +79,7 @@ struct CThingListOwner {
     unsigned char _pad00[0x8c];
     CThingList    HolySites;                       // +0x8c
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char    _pad00[4];
     CThingListOwner* Owner;                        // +0x04
 };
@@ -178,7 +178,7 @@ inline _InputIter find_if(_InputIter __first, _InputIter __last, _Predicate __pr
 
 bool __fastcall IsThingScriptNamed(CThing* thing, CCharString name);   // 0x0048BC70
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char  _pad00[0x20];
     CThingManager* ThingManager;                   // +0x20
     unsigned char  _pad24[0xe8 - 0x24];

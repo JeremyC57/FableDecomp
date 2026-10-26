@@ -87,7 +87,7 @@ struct CTree {                                          // STLport _Rb_tree: hea
     }
 };
 
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     CTree ThingsToDelete;
     CTree ThingsToMove;
     CTree ThingsToAdd;

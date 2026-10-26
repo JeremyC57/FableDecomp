@@ -4,8 +4,8 @@ namespace NCreatureHitNotification
 {
     struct CFlashListNode;
 
-    struct CFlash
-    {
+    class CFlash
+    { public:
         CFlashListNode* FlashGeometryHead;
         long            FlashGeometrySize;
         long            CreationFrame;

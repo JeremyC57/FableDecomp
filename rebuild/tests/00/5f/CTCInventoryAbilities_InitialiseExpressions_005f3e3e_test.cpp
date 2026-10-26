@@ -2,12 +2,12 @@
 #include <cstring>
 // Behaviour test for CTCInventoryAbilities::InitialiseExpressions (0x005F3E3E): same logic over a copy of the model.
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetNumberOfDefsOfType(const CCharString& typeName) { return std::strcmp(typeName.m_pData, "EXPRESSION") == 0 ? 5 : 0; }
 };
 static CDefinitionManager g_defs;

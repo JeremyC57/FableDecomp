@@ -8,7 +8,7 @@ struct CSceneScale_00b91920 {
     float         m_scale;                         // +0x50
 };
 
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     unsigned char        _pad0[4];
     float                m_origin;                 // +0x04
     unsigned char        _pad8[4];

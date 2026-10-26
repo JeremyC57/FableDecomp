@@ -26,7 +26,7 @@ public:
 };
 
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 }
 struct SCountBlock;
 struct CComponentPointer {                            // CCountedPointer<NUISystem::CComponent>
@@ -41,7 +41,7 @@ struct CComponentPointer {                            // CCountedPointer<NUISyst
     virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); virtual void n##9();
 namespace NUISystem {
 struct CGUIElement;
-struct CComponent {
+class CComponent { public:
     V10(v0) V10(v1) V10(v2) V10(v3) V10(v4)
     virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54();
     virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
@@ -59,21 +59,21 @@ struct CComponent {
     virtual void w50(); virtual void w51();
     virtual void AddItem(const CComponentPointer& item);      // slot 152 (+0x260)
 };
-struct CList : CComponent {
+class CList : public CComponent { public:
 };
-struct CViewport : CComponent {
+class CViewport : public CComponent { public:
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString f);   // 0x00428494
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     void*                 __vftable;                  // +0x00
     unsigned char         _pad_0x04[0x1D8];
     NUISystem::CViewport* pTextViewport;              // +0x1DC

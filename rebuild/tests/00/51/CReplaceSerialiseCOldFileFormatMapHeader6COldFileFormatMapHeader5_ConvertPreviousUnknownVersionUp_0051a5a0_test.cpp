@@ -11,7 +11,7 @@ typedef unsigned long long UInt64;
 #endif
 
 static int g_blocks = 0, g_deleted = 0, g_previousCalls = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;
     void (*destroy)(void*);
     void* object;
@@ -51,7 +51,7 @@ struct CFileLargeThemePalette {
     unsigned char Storage[0x8400];
     CFileLargeThemePalette() { std::memset(Storage, 0xAB, sizeof(Storage)); }   // the real ctor 0x0050EE40 fills a default palette
 };
-struct COldFileFormatMapHeader5 {
+class COldFileFormatMapHeader5 { public:
     unsigned int ByteLength;
     unsigned char SerialiseVersionNumber;
     UInt64 ThingUIDCount;
@@ -60,7 +60,7 @@ struct COldFileFormatMapHeader5 {
     bool UsingExtraMapCells;
     CFileLargeThemePalette LargeThemePalette;
 };
-struct COldFileFormatMapHeader6 {
+class COldFileFormatMapHeader6 { public:
     unsigned int ByteLength;
     unsigned char SerialiseVersionNumber;
     UInt64 ThingUIDCount;

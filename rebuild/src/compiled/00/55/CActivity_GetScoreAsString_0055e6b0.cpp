@@ -20,8 +20,8 @@ struct CWideStringOperations : CWideString {
     long FindCharPos(wchar_t) const; //0099B070
     void SetLength(long); //0099BC50
 };
-namespace NGameText { struct CDataBank { CWideString GetTextBySymbol(const CCharString&); }; }
-struct CMainGameComponent { unsigned char beforeTextBank[0x14]; NGameText::CDataBank* PTextBank; NGameText::CDataBank* GetTextBank() const { return PTextBank; } };
+namespace NGameText { class CDataBank { public: CWideString GetTextBySymbol(const CCharString&); }; }
+class CMainGameComponent { public: unsigned char beforeTextBank[0x14]; NGameText::CDataBank* PTextBank; NGameText::CDataBank* GetTextBank() const { return PTextBank; } };
 extern CMainGameComponent* g_pMainGameComponent; //013B86A0
 struct CActivity {
     CCharString Name,Description,UnitOfMeasurement;

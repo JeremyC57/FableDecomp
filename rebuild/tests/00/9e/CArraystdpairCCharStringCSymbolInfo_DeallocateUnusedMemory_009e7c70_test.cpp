@@ -10,7 +10,7 @@ static int g_freed = 0;
 static int g_destroyed = 0;
 static void TestFree(void* p) { ++g_freed; std::free(p); }
 
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 struct CSymbolInfo { unsigned long words[3]; };
 struct SSymbolPair {                            // std::pair<CCharString, CSymbolInfo>, 0x10 bytes (`sar 4`)
     CCharString first;
@@ -21,7 +21,7 @@ struct __false_type { __false_type() { } };
 
 void __fastcall DestroyRange(SSymbolPair* first, SSymbolPair* last, const __false_type& tag);   // 0x006FBCC0
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }

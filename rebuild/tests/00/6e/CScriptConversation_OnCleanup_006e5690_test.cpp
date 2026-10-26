@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour model of CScriptConversation::OnCleanup @ 0x006E5690 (copy of the source's logic, stand-in callees).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* e = first; while (e != last && e->type < *type) ++e; return e; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -40,9 +40,9 @@ struct CRetailPointerVector {
     unsigned long size() const { return (unsigned long)(m_pLast - m_pFirst); }
     CBaseIntelligentPointer& operator[](unsigned long i) const { return *(begin() + i); }
 };
-struct CTCTargetingBase { int cleared; CThing* target; void SetPScriptOverrideInterestingThing(CThing* t) { target = t; ++cleared; } };
-struct CTCTalk { int stopped; void StopCurrentSpeech() { ++stopped; } };
-struct CScriptConversation {
+class CTCTargetingBase { public: int cleared; CThing* target; void SetPScriptOverrideInterestingThing(CThing* t) { target = t; ++cleared; } };
+class CTCTalk { public: int stopped; void StopCurrentSpeech() { ++stopped; } };
+class CScriptConversation { public:
     CRetailPointerVector PeopleInConversation;
     void OnCleanup(bool stopSpeech)
     {

@@ -15,7 +15,7 @@
 //   eax,[eax]`); the inline CCharString::operator== (same pointer -> true; both non-null and equal length -> Compare
 //   == 0) as the landed CThingSwitch::OnThingWithScriptNameApplied 0x0083CC10.
 // Label correction: catalogued as `CQuest_Array_FindByName`; CQuestManager::IsQuestActive (as labels chunk 322).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                           // +0x00
     unsigned long m_length;                          // +0x04
 };

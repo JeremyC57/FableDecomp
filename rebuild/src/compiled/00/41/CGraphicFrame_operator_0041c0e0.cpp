@@ -31,7 +31,7 @@ struct CCountedPointer_CTexture {                  // 8 bytes: the object and it
         m_pCount = 0;
     }
 };
-struct CGraphicFrameData {                         // the shared frame data: a reference count, flags, a counted texture
+class CGraphicFrameData { public:                         // the shared frame data: a reference count, flags, a counted texture
     unsigned long            ReferenceCount;       // +0x00
     void*                    Data;                 // +0x04
     CCountedPointer_CTexture PTexture;             // +0x08
@@ -44,7 +44,7 @@ struct CGraphicFrameData {                         // the shared frame data: a r
             Uninitialise();
     }
 };
-struct CGraphicFrame {
+class CGraphicFrame { public:
     CGraphicFrameData* FrameData;                  // +0x00
     CGraphicFrame& operator=(const CGraphicFrame& other);
 };

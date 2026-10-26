@@ -12,25 +12,25 @@
 // extents are two named words); the cell list is released at the end by an inline Free(): first read, the three words
 // zeroed, then freed under a null test.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
-struct CWorldMap;
-struct CWideString { void* m_pData; };
-struct C2DExtentsI {
+class CWorldMap;
+class CWideString { public: void* m_pData; };
+class C2DExtentsI { public:
     long X;
     long Y;
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) {}
     void Initialise(long r, long g, long b, long a, bool alphaSigned);   // 0x009E3790
 };
-struct CSurface {                                  // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
     void*         PD3DSurface;                     // +0x04
     unsigned long AllocationSource;                // +0x08
     void*         PAllocatedMemory;                // +0x0c
     bool InitialiseAsImage(const C2DExtentsI* extents, const CPixelFormat* format, bool flag);   // 0x009F3230
 };
-struct CTexture {
+class CTexture { public:
     void*         PD3DTexture;
     unsigned long ByteLengthAndSource;
 };
@@ -53,7 +53,7 @@ struct CCellVector {                               // retail std::vector<RegionM
             free(first);
     }
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CColourVector { CRGBColour* m_pFirst; CRGBColour* m_pLast; CRGBColour* m_pEnd; };
 struct CRegionMinimap {
     long          RegionMinimapSize;               // +0x00

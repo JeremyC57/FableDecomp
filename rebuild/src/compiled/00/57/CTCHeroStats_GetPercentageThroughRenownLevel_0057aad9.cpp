@@ -19,7 +19,7 @@ struct CLongVector {                           // retail std::vector<long>: firs
     const long& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0xAC];
     CLongVector   RenownLevelCosts;            // +0xAC (PDB +0xB4)
 };

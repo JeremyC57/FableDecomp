@@ -1,11 +1,11 @@
 #include <cstdio>
 
-struct CThing;
+class CThing;
 static int g_base = 0, g_scriptThings = 0;
-struct CScriptThing { void* __vftable; CThing* PImp_Data; void* PImp_Info;
+class CScriptThing { public: void* __vftable; CThing* PImp_Data; void* PImp_Info;
     CScriptThing(CThing* t) : __vftable(0), PImp_Data(t), PImp_Info(0) { }
     CScriptThing(const CScriptThing& o) : __vftable(o.__vftable), PImp_Data(o.PImp_Data), PImp_Info(o.PImp_Info) { } };
-struct CThing { CScriptThing GetScriptThing() { ++g_scriptThings; return CScriptThing(this); } };
+class CThing { public: CScriptThing GetScriptThing() { ++g_scriptThings; return CScriptThing(this); } };
 struct CBase { virtual void v00() { } CBase() { ++g_base; } };
 struct __declspec(novtable) CAction : CBase { CThing* m_pThing; bool m_active; bool m_finished;
     CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { } };

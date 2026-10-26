@@ -18,7 +18,7 @@ struct BlendBase {
     ~BlendBase();          // 0x686830
 };
 
-struct C3DAnimationBlendState : public BlendBase {
+class C3DAnimationBlendState : public BlendBase { public:
     ~C3DAnimationBlendState();
 };
 

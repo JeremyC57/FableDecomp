@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
@@ -13,14 +13,14 @@ struct CDefPointee {
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
 };
-struct CTavernGameCardBaseDef : CDefPointee {
+class CTavernGameCardBaseDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x24];
     float         CardWidth;
     float         CardHeight;
     unsigned char _pad_0x34[0x30];
     C2DVector     PackOffset;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()

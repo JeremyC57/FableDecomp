@@ -2,14 +2,14 @@
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
 int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
-struct CWideStringData {                                // STLport basic_string<wchar_t> + NoRefs
+class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
     unsigned short* _M_end_of_storage;
     long            NoRefs;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                     // 0x0099B510
     __forceinline bool operator==(const CWideString& other) const
@@ -25,12 +25,12 @@ struct CWideString {
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
     CWideString GetAutoSaveRegionLeavingPathName() const;   // 0x004080B0
 };
-struct CDriveManager {
+class CDriveManager { public:
     long DeleteFile(const CWideString& path);           // 0x009E4BC0
 };
 struct CDriveManagerPointer {                           // static CCountedPointer<CDriveManager>
@@ -40,7 +40,7 @@ struct CDriveManagerPointer {                           // static CCountedPointe
 };
 extern CDriveManagerPointer g_pDriveManager;            // 0x013CAA28
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x102];
     bool          SerialisingHeroState;                 // +0x102 (PDB +0x10E)
     bool LoadGameStateInternal(const CWideString& path, bool b);   // 0x004A21F0

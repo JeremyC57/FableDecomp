@@ -3,14 +3,14 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThingObject { int id; };
+class CThingObject { public: int id; };
 static int g_destroyed = 0;
 struct CDefPointee {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_count;
 };
-struct CTavernGameCoinBaseDef : CDefPointee {
+class CTavernGameCoinBaseDef : public CDefPointee { public:
     unsigned char _pad_0x08[0x38];
     long ArrowDefIndex;
 };
@@ -38,12 +38,12 @@ void CThingDefHolder::GetDef(CDefPointer* out)
     if (!g_def) return;
     ++g_def->m_count; out->Object = g_def;
 }
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x70];
     CThingDefHolder* DefHolder;
 };
 static int g_enterBase = 0; static CThingObject g_pieces[3]; static int g_created = 0; static long g_models[3];
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00() {}
     CThing* ParentThing;
     void EnterGameBase() { ++g_enterBase; }

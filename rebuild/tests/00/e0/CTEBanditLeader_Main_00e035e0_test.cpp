@@ -4,8 +4,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CScriptThing { int id; };
-struct CCharString {
+class CScriptThing { public: int id; };
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long = -1) : text(t) {}
 };
@@ -16,7 +16,7 @@ static int g_frame = 0, g_doneAt = 0, g_nearAt = 0;
 static CScriptThing g_hero = { 7 };
 static bool g_lineOk = false;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; Log(1); }
     CScriptThing& GetHero() { return g_hero; }
     long AddNewConversation(const CScriptThing& t, bool a, bool b) { Log(t.id == 3 && !a && !b ? 364 : 0); return 42; }

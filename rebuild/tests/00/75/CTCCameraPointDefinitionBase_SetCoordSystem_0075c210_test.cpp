@@ -1,9 +1,9 @@
 // behaviour test for 0x0075C210 CTCCameraPointDefinitionBase::SetCoordSystem
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CPhysics { CRightHandedSet o; virtual const CRightHandedSet& GetOrientation() const { return o; } virtual ~CPhysics() {} };
-struct CThing { C3DVector pos; CPhysics* m_pPhysics; const C3DVector& GetPosition() const { return pos; } };
+class CThing { public: C3DVector pos; CPhysics* m_pPhysics; const C3DVector& GetPosition() const { return pos; } };
 struct CP {
     C3DVector CoordBase; CRightHandedSet CoordAxis; bool UsingRelativeCoords, UsingRelativeOrientation;
     void SetCoordSystem(CThing* thing)

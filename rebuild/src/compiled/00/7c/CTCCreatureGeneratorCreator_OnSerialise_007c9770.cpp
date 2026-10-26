@@ -12,7 +12,7 @@
 // Shape: the saving arm transfers a local UID (zeroed, assigned from the live generator, then remapped in place); the loading arm
 // transfers the member and remaps it when non-zero; ebx is the zero register for the bool test and every default. The UID comes
 // through an inline by-value getter (or a named generator local): a direct `GetPItem()->UID` read copies the pointer to edx first.
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UID;                       // +0x18
     unsigned char    _pad20[0x8e - 0x20];
@@ -24,11 +24,11 @@ struct CThing {
     unsigned __int64 GetUID() const { return UID; }
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }

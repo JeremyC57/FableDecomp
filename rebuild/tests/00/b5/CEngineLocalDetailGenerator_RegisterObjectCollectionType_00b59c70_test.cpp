@@ -21,7 +21,7 @@ static int fails = 0;
 
 struct SScalarTag { SScalarTag() { } };   // user constructor: no zero-initialisation of the 1-byte temporary
 
-struct CLocalDetailObjectCollectionType {          // 0x54 bytes
+class CLocalDetailObjectCollectionType { public:          // 0x54 bytes
     unsigned char _body[0x54];
     bool IsEquivalent(const CLocalDetailObjectCollectionType& other);                // 0x00BE2680
     CLocalDetailObjectCollectionType(const CLocalDetailObjectCollectionType& other);  // 0x00BE26C0
@@ -60,7 +60,7 @@ __declspec(noinline) void CRetailVector<T>::InsertGrow(T* where, const T& value,
 }
 #pragma auto_inline(on)
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     unsigned char _pad00[0xc];
     CRetailVector<CLocalDetailObjectCollectionType*> m_collectionTypes;   // +0x0C
     CLocalDetailObjectCollectionType* RegisterObjectCollectionType(const CLocalDetailObjectCollectionType& type);

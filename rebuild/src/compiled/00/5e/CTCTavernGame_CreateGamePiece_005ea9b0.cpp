@@ -12,14 +12,14 @@
 // byte at +0x59.
 // Shape: each lookup is the `T* p; GetInterface(type, &p);` out-parameter form whose miss path reads the never-written
 // local (it shares the dead defIndex argument slot with the key and the string temporaries).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public:
     C3DVector Forward, Up;
     CRightHandedSet(float fx, float fy, float fz, float ux, float uy, float uz)
     {
@@ -28,7 +28,7 @@ struct CRightHandedSet {
     }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* PData;                                 // +0x04
@@ -45,7 +45,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                                 // vtable 0x01237F1C
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -55,8 +55,8 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 
-struct CTCParamsBase;
-struct CThing;
+class CTCParamsBase;
+class CThing;
 struct CGraphic {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -66,7 +66,7 @@ struct CGraphic {
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void SetVisible(bool visible);              // +0x90
 };
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -93,13 +93,13 @@ struct CThing {
         }
     }
 };
-struct CThingObject : CThing { };
+class CThingObject : public CThing { public: };
 
 struct CTCOwnedEntityA {                                // interface 0x32
     unsigned char _pad00[0x0c];
     CIntelligentPointer<CThing> POwner;                 // +0x0c
 };
-struct CTCOwnedEntity {                                 // interface 0x33
+class CTCOwnedEntity { public:                                 // interface 0x33
     void SetPOwner(CThing* owner);                      // 0x007E8590
 };
 struct CTCInterface5B {                                 // interface 0x5b
@@ -107,12 +107,12 @@ struct CTCInterface5B {                                 // interface 0x5b
     unsigned char Flags;                                // +0x59
 };
 
-struct CMap;
+class CMap;
 CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector& pos, CMap* map, const CRightHandedSet& rh,
                                            unsigned long flags, const CCharString& name);   // 0x00703210
-struct CWorld { CMap* GetMap(); };                      // 0x00449700
+class CWorld { public: CMap* GetMap(); };                      // 0x00449700
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     CWorld* GetWorld_00686d50();                                 // 0x00686D50

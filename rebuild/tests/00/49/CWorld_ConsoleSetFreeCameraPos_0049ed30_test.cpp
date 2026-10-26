@@ -1,25 +1,25 @@
 #include <cstdio>
 
 // Behaviour model of CWorld::ConsoleSetFreeCameraPos (0x0049ED30): main player's free camera moved to the three float args.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CCamera {
+class CCamera { public:
     C3DVector WorldPosition;
     float     Zoom;
     CCamera() : WorldPosition(0.0f, 0.0f, 0.0f), Zoom(1.0f) { }
     void MoveTo(const C3DVector& pos) { WorldPosition = pos; }
 };
-struct CPlayer { long PlayerRespawnDelay; CCamera CurrentFreeCamera; };
+class CPlayer { public: long PlayerRespawnDelay; CCamera CurrentFreeCamera; };
 static int g_calls = 0;
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer m_players[2];
     long    m_main;
     CPlayer& GetMainPlayer() { ++g_calls; return m_players[m_main]; }
 };
-struct CWorld { CPlayerManager* PlayerManager; };
-struct CGenericVar { long Type; long ValSLONG; float ValFloat; };
+class CWorld { public: CPlayerManager* PlayerManager; };
+class CGenericVar { public: long Type; long ValSLONG; float ValFloat; };
 struct CGenericVarVector {
     CGenericVar* _M_start;
     CGenericVar* _M_finish;

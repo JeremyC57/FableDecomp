@@ -5,14 +5,14 @@
 // Shape: each byte widened with `movzx` and `fild`ed through the argument slot; the four products sit on the x87 stack
 // (A, B, G, R computed in that order: the right-to-left arguments of an inline four-float setter) and are popped into
 // R, G, B, A. A member-initialiser list stores each product as soon as it is computed.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                            // +0
     unsigned char G;                            // +1
     unsigned char R;                            // +2
     unsigned char A;                            // +3
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour(const CRGBColour& colour);
     void Set(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }

@@ -15,13 +15,13 @@
 //   sentinel free; vector: `__destroy_aux(first, last, __false_type())` then the storage free; scoped_ptr: `delete px`.
 //   The `__false_type` temporary is the top byte of the `push ecx` frame word.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-struct CThing;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
@@ -86,7 +86,7 @@ template <int SIZE> struct CList {                      // STLport list (_List_b
 };
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2();                                         // 0x008410D0
 };
 }
@@ -95,7 +95,7 @@ struct CHttpScopedPtr {                                 // scoped_ptr<LHNetworkL
     ~CHttpScopedPtr() { delete px; }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                                 // 0x00686830
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -106,7 +106,7 @@ struct CTCBase {
 struct CComponent;
 struct CActivity { unsigned char _body[0x10]; };
 
-struct CTCHeroOnlineScoreboard : CTCBase {              // vtable 0x0124DB34
+class CTCHeroOnlineScoreboard : public CTCBase { public:              // vtable 0x0124DB34
     CHttpScopedPtr    PHttp;                            // +0x0c
     CMap<0x1c>        PictureCache;                     // +0x10 map<long, CCountedPointer<CTexture> >
     CMap<0x18>        LocalScoreboard;                  // +0x1c map<EOnlineScoreboardActivity, float>

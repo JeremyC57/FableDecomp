@@ -17,8 +17,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -26,12 +26,12 @@ struct CCharString {
 };
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -60,11 +60,11 @@ struct CScriptThingImpl {                               // the game-side object 
     virtual void h064(); virtual void h065(); virtual void h066();
     virtual void SetFriendsWithEverythingFlag(bool on); // slot 67 (+0x10c)
 };
-struct CBaseClass {                                     // vtable 0x01231710
+class CBaseClass { public:                                     // vtable 0x01231710
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
     CCountedPointer<CScriptThingImpl> PImp;                       // +0x04
@@ -72,16 +72,16 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
     // virtual slot 67 (+0x10c), out of line 0x004AB060; called on a by-value thing, so expanded inline here
     void SetFriendsWithEverythingFlag(bool on) { if (PImp.Data) PImp.Data->SetFriendsWithEverythingFlag(on); }
 };
-struct CBaseObject {                                    // vtable 0x0129A7D8
+class CBaseObject { public:                                    // vtable 0x0129A7D8
     CBaseObject();                                      // 0x0099A380
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };
-struct CScriptGameResourceObjectBase : CBaseObject {    // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
@@ -95,7 +95,7 @@ struct CMovieImpPointer {
     __forceinline CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                // 0x006E7AB0
 };
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CMovieImpPointer PImp;
 };
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (12 bytes)
@@ -110,7 +110,7 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 void __fastcall AddLogbookStoryEntry(long index);       // 0x00CBE87F
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETutorialCategory { TUTORIAL_CATEGORY_NONE };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20) StartScriptingEntity
@@ -206,8 +206,8 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void v594(); virtual void v595(); virtual void v596(); virtual void v597(); virtual void v598(); virtual void v599(); virtual void v600();
     virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964) EntitySetInFaction
 };
-struct CScriptDataBase;
-struct CEntityScriptBase;
+class CScriptDataBase;
+class CEntityScriptBase;
 struct __declspec(novtable) CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const = 0;
 };

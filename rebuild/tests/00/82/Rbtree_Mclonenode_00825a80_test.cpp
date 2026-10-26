@@ -15,12 +15,12 @@ struct NodeBase {                                       // STLport _Rb_tree_node
     NodeBase* left;
     NodeBase* right;
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C3DAngles { float X, Y, Z; };
+class C3DAngles { public: float X, Y, Z; };
 struct CThingPosAndOrientation {
     C3DVector Position;
     C3DAngles FacingAngles;

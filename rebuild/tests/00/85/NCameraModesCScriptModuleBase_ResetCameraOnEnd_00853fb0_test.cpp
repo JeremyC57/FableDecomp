@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CTCCameraPointDefinitionBase { bool CutInto; bool CutOutOf; };
-struct CThing {
+class CTCCameraPointDefinitionBase { public: bool CutInto; bool CutOutOf; };
+class CThing { public:
     bool dead; bool hasPoint; CTCCameraPointDefinitionBase* point;
     bool IsDead() const { return dead; }
     bool PeekTC(const CTCCameraPointDefinitionBase** out, long type) const

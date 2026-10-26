@@ -7,8 +7,8 @@
 //   `mov ecx,[ecx+1B8h] ; jmp` forwarders to CDrawPerceivers (0x0064A2DB AddPerceivingThing / 0x0064639C); the catalog's
 //   "_Cons_val<...>" labels on them are propagated.
 // The add-or-remove tail is the inline UpdateDrawPerceivers(): the perceiving thing is drawn while its target exists.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-to item
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     CBaseIntelligentPointer();                  // 0x00A01B10
@@ -20,14 +20,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CPlayerGui {                             // the global g_pPlayerGui @ 0x013B8790
+class CPlayerGui { public:                             // the global g_pPlayerGui @ 0x013B8790
     void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
     void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-struct CDefPointeeBase;
-struct C3DVector { float X, Y, Z; };
-struct CTCPerceiveThing {
+class CDefPointeeBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCPerceiveThing { public:
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04
     bool      ToBeRemoved;                      // +0x08

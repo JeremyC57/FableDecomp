@@ -6,9 +6,9 @@
 #define __forceinline inline
 #endif
 class CThing;
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 class CCharString {
 public:
     void* PStringData;
@@ -29,32 +29,32 @@ public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* GraphicAppearance;            // +0x64
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DCoordI& topLeft, const C2DCoordI& bottomRight)
         : TLX(topLeft.X), TLY(topLeft.Y), BRX(bottomRight.X), BRY(bottomRight.Y) { }
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-template <class F1, class F2, class F3> struct CFilter_Bind3 {
+template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1* f1;
     const F2* f2;
     const F3* f3;
     CFilter_Bind3(const F1& a, const F2& b, const F3& c) : f1(&a), f2(&b), f3(&c) { }
 };
 typedef CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange> CActionPointFilter;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     C2DBoxI lastArea; CThing* notA; CThing* notB; C3DVector rangePos; float range; bool result;
     CThingSearchTools() : lastArea(C2DCoordI(0, 0), C2DCoordI(0, 0)) { }
     template <class TFilter, class T>
@@ -65,11 +65,11 @@ struct CThingSearchTools {
         return result;
     }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* ThingSearchTools;                // +0x20
 };
-struct CTCSingleUserActionPoints {
+class CTCSingleUserActionPoints { public:
     virtual void v00() { }
     CThing* ParentThing;                                // +0x04 (CTCBase)
     const CWorld* World;

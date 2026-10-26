@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CThingSub { char pad[0x34]; float radius; };
-struct CThing { char pad[0x60]; CThingSub* sub; };
+class CThing { public: char pad[0x60]; CThingSub* sub; };
 struct FilterObj { float minAllowedRadius; };
 
 static bool impl(FilterObj* selfp, CThing* thingp)

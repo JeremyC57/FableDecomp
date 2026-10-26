@@ -16,18 +16,18 @@
 //   `add` instead of `lea`); CRGBColour is the D3DCOLOR B,G,R,A byte view set R,G,B,A in its body (store order 0x16,0x17,0x15,0x14);
 //   the GetNearestWithDefName results are assigned through inline operator= and destroyed by the inline ~CScriptThing;
 //   the hero-name temporaries of the wait test are one `||`/`&&` chain (construction flags in ebx).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     __forceinline CCountedPointer& operator=(const CCountedPointer& other)
@@ -67,7 +67,7 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const;
     virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;
     virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;
@@ -93,7 +93,7 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001() const; virtual void h002() const; virtual void h003() const; virtual void h004() const; virtual void h005() const; virtual void h006() const; virtual void h007() const; virtual void h008() const;
     virtual void h009() const; virtual void h010() const; virtual void h011() const; virtual void h012() const; virtual void h013() const; virtual void h014() const; virtual void h015() const; virtual void h016() const;
     virtual void h017() const; virtual void h018() const; virtual void h019() const;
@@ -103,12 +103,12 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseIntelligentPointer {   
     bool IsScripting();                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -203,7 +203,7 @@ struct CQ_SnowTrollScript {
     void PlayCutscene(CCharString name);
     void ReleaseRockPile() { if (RockPile.IsScripting()) RockPile.Release(); }                // 0x00EE2DB0
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

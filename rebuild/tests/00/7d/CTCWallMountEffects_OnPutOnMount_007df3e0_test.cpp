@@ -1,17 +1,17 @@
 #include <cstdio>
 #include <cstring>
 static int g_strings = 0; static const char* g_lastName = 0;
-struct CCharString { const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
-struct CTCBase; struct CTCParamsBase;
-struct CThing {
+class CCharString { public: const char* m_pData; CCharString(const char* t, long = -1) : m_pData(t) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CTCBase; class CTCParamsBase;
+class CThing { public:
     bool persisted; int added; bool lastActivate;
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase*) { ++added; g_lastName = name.m_pData; lastActivate = activate; return 0; }
     bool IsGameStatePersisted() const { return persisted; }
     void SetAsGameStatePersisted(bool p) { persisted = p; }
 };
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
-struct CWallMountEffectsDef { EWallMountEffects Effect; };
-struct CTCWallMountEffects {
+class CWallMountEffectsDef { public: EWallMountEffects Effect; };
+class CTCWallMountEffects { public:
     CThing* ParentThing; const CWallMountEffectsDef* PDef; bool ObjectWasGamePersistant;
     void OnPutOnMount()
     {

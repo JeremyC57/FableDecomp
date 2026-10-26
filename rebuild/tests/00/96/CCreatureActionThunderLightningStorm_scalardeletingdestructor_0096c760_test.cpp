@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ThunderLightningStorm {
+class CCreatureAction_ThunderLightningStorm { public:
     void* vftable;
     int destroyed;
 };

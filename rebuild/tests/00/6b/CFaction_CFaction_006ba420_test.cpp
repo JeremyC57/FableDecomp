@@ -11,7 +11,7 @@ struct Set {
         header->color = false; header->parent = 0; header->left = header; header->right = header;
     }
 };
-struct CFaction { void* Name; Set AlliedFactions; Set EnemyFactions; CFaction() : Name(0) {} };
+class CFaction { public: void* Name; Set AlliedFactions; Set EnemyFactions; CFaction() : Name(0) {} };
 int main()
 {
     CFaction f;

@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long words[9];
     bool test(long bit) { return (words[bit >> 5] & (1UL << (bit & 31))) != 0; }
@@ -19,7 +19,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     mutable CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -33,22 +33,22 @@ struct CThing {
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing { };
-struct CThingPlayerCreature : CThingCreatureBase { };
+class CThingCreatureBase : public CThing { public: };
+class CThingPlayerCreature : public CThingCreatureBase { public: };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && thing->alive; }
 template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing) { return thing != 0 && thing->alive; }
 static CThingPlayerCreature* g_hero = 0;
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetControlledCreature() { return g_hero; }
 };
 static CPlayer g_player;
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() { return &g_player; }
 };
 static const CThing* g_enemyOf = 0; static const CThing* g_allyOf = 0; static int g_enemyCalls = 0, g_allyCalls = 0;
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b) { ++g_enemyCalls; CHECK(a == (const CThing*)g_hero); return b == g_enemyOf; }
 bool __fastcall AreThingsAllies(const CThing* a, const CThing* b) { ++g_allyCalls; CHECK(a == (const CThing*)g_hero); return b == g_allyOf; }
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     unsigned char _pad[0x2d];
     bool          PerceivesHostile;
     bool          PerceivesSomething;
@@ -78,7 +78,7 @@ struct CRetailThingPointerList {
     iterator erase(iterator where) { ++g_erased; node* n = where.m_pNode; n->prev->next = n->next; n->next->prev = n->prev; return iterator(n->next); }
 };
 namespace NPlayerGui {
-struct CDrawPerceivers {
+class CDrawPerceivers { public:
     void*                   _vtable;
     void*                   PlayerGui;
     CPlayerManager*         PlayerManager;

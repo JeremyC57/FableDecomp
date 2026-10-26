@@ -10,7 +10,7 @@ static bool g_retailMode; static char g_openedRetail[64]; static int g_retailOpe
 static bool g_bankExists; static char g_bankOpened[32]; static unsigned long g_bankFlags;
 static CShaderData g_shader;
 
-struct CResource {
+class CResource { public:
     const void* bank; int declaration; int format;
     CShaderData* GetVertexShader(const char* name) { std::strcpy(g_shader.name, name); return &g_shader; }
 };

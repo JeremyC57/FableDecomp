@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CTCVolumeContainmentTrackerDef
-{
+class CTCVolumeContainmentTrackerDef
+{ public:
     void* vftable;
 };
 extern void* const g_CTCVolumeContainmentTrackerDef_vftable;

@@ -31,18 +31,18 @@ template<class T> struct CRetailVector {             // STLport vector<T> (12 by
     unsigned long size() const { return _M_finish - _M_start; }
     T& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct C2DLineF { float X0, Y0, X1, Y1; };
-struct CNavRegion { unsigned char _body[0x10]; };
+class C2DLineF { public: float X0, Y0, X1, Y1; };
+class CNavRegion { public: unsigned char _body[0x10]; };
 
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
     virtual long GetMemoryUsage(long& nodeBytes, long& lineBytes, long& switchableBytes, long& otherBytes);   // slot 15
 };
 
-struct CNavQuadTree {
-    struct CNavigationLayer {                                        // 0x28 bytes
+class CNavQuadTree { public:
+    class CNavigationLayer { public:                                        // 0x28 bytes
         CRetailVector<CANavQuadTreeNode*>        Nodes;              // +0x00
         CRetailVector<CRetailList<C2DLineF> >    LineLists;          // +0x0c
         unsigned char                            SwitchableLineLists[0x10];   // +0x18 CVectorMap

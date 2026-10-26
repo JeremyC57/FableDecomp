@@ -7,7 +7,7 @@
 // Layout: retail CTCShotDefinitionBase sits 4 bytes below the PDB after the HitThingsList vector: TargetPos +0x51
 // (PDB 0x55, packed C3DVector at an odd offset); CTCPhysicsBase (PDB): Position +0x0C, OldPosition +0x18.
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -16,14 +16,14 @@ struct C3DVector {
 };
 #pragma pack(pop)
 extern const float g_zero_0122dedc;                 // 0x0122DEDC (0.0f)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
@@ -41,7 +41,7 @@ struct CThing {
         return false;
     }
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                             // +0x0c
     C3DVector OldPosition;                          // +0x18

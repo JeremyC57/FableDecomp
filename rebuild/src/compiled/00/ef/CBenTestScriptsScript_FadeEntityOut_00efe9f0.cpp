@@ -8,7 +8,7 @@
 // `while (alpha > 0.0f)` with the compare duplicated at the bottom (`fcomp ; fnstsw ; test ah,41h`); the
 // float argument is pushed from the frame through an integer register; the alpha is decremented before the
 // tick; an aborting script returns at once (skipping the hide).
-struct CScriptThing;
+class CScriptThing;
 
 extern const float g_fadeStartAlpha;     // 0x013AC868 (255.0f)
 extern const float g_fadeAlphaStep;      // 0x013AC864

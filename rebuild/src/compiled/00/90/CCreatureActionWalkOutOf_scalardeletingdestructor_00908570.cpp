@@ -1,4 +1,4 @@
-struct CCreatureAction_WalkOutOf {
+class CCreatureAction_WalkOutOf { public:
     void* vftable;
 };
 

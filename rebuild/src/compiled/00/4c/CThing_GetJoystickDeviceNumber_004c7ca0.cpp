@@ -4,7 +4,7 @@ struct CInputProvider {
     long GetDeviceNumber();          // 0x487510 __fastcall -> long
 };
 
-struct CInputManager {
+class CInputManager { public:
     CInputProvider* GetProvider(int deviceIndex); // 0x449910 __fastcall(byte arg)
 };
 
@@ -15,7 +15,7 @@ struct CInputManagerHolder {
 
 extern CInputManagerHolder* g_inputHolder; // [0x13b8a1c]
 
-struct CThing {
+class CThing { public:
     char pad[0x90];
     signed char joystickDeviceNumber; // +0x90
     long GetJoystickDeviceNumber();

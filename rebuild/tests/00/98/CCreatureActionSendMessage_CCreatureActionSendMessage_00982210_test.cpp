@@ -2,20 +2,20 @@
 // lookup and intelligent-pointer callees; checks the base arguments, the add-ref'd def, the copied record, the recipient.
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CAnimationEntry { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CAnimationEntry { public: int id; };
 static int g_strings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long = -1) : m_pData(text) { ++g_strings; }
     ~CCharString() { --g_strings; }
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 static CAnimationEntry g_idle;
 static char g_lookup[32];
 CAnimationEntry* GetAnimationFromName(CThingCreatureBase*, const CCharString& name) { std::strcpy(g_lookup, name.m_pData); return &g_idle; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* o; float a, b; CAnimationEntry* anim; CSoundPair s; long c, d;
     virtual void v00() { }
     CCreatureActionBase(CThingCreatureBase* owner, float a_, float b_, CAnimationEntry* an, const CSoundPair& snd, long c_, long d_)
@@ -41,7 +41,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
-struct CCreatureAction_SendMessage : CCreatureActionBase {
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:
     CDefPointer m_def; SMessageData m_message; CIntelligentPointer m_recipient; long m_flags;
     CCreatureAction_SendMessage(CThingCreatureBase* owner, const CDefPointer& def, CThing* recipient, const SMessageData& message, long flags);
 };

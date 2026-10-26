@@ -15,13 +15,13 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CCharString {                            // 4-byte counted string handle
+class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
 };
 
 namespace CSymbolMap {
-struct CSymbolInfo {                            // Ego_r.pdb, 12 bytes
+class CSymbolInfo { public:                            // Ego_r.pdb, 12 bytes
     CCharString GroupName;                      // +0x00
     CCharString EntryName;                      // +0x04
     long        Val;                            // +0x08

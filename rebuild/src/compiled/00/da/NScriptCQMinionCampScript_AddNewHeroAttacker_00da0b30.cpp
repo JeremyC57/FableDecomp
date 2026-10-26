@@ -17,17 +17,17 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
-struct CCPPointerInfo {                                // CCountedPointer's shared block
+class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);         // destroys the pointee
     void* Data;
 };
 
-struct CBaseClass {                                    // polymorphic root of the script handles
+class CBaseClass { public:                                    // polymorphic root of the script handles
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     __forceinline CCountedPointer& operator=(const CCountedPointer& other)
@@ -51,7 +51,7 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
     __forceinline void Assign(const CScriptThing& other) { PImp = other.PImp; }   // the inline expansion of operator=
@@ -70,7 +70,7 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
     virtual bool IsNull() const;                       // slot 77 (+0x134), 0x004AB150
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -132,7 +132,7 @@ struct CGameScriptInterface {
     virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target); // slot 451 (+0x70c)
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                // 0x00CB7940

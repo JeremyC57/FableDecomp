@@ -2,10 +2,10 @@
 // Behaviour test for CTrophyDef::CTrophyDef (0x004D36FE): base first, the def string = -1, the seven
 // sound-name strings constructed in declaration order.
 static int g_order[16]; static int g_n = 0;
-struct CSubDefClassBase { virtual void v00() { } CSubDefClassBase() { g_order[g_n++] = 100; } };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CCharString { void* m_pStringData; int id; CCharString() : m_pStringData(0) { id = g_n; g_order[g_n++] = 1; } };
-struct CTrophyDef : CSubDefClassBase {
+class CSubDefClassBase { public: virtual void v00() { } CSubDefClassBase() { g_order[g_n++] = 100; } };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CCharString { public: void* m_pStringData; int id; CCharString() : m_pStringData(0) { id = g_n; g_order[g_n++] = 1; } };
+class CTrophyDef : public CSubDefClassBase { public:
     float MinigameInitialTimerSecs, TimeBonusPerWitness; long RenownGainedPerWitnessAhead;
     bool EvilTrophy, FakeTrophy; long EmoteIconForAvailableWitness;
     CDefString ShowTrophyAnimName; float GameDebugTextScale, SecsDelayPerGainedWitnessSound;

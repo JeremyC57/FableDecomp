@@ -11,7 +11,7 @@
 // item once and tests the raw bitset (`test ch,1` / `test ch,ch ; jns`): the targeting block is the out-parameter GetInterface
 // (component left in eax: `mov eax,[eax+4] ; push 0 ; mov ecx,eax`), the talk block HasTC plus the ternary entry-pick GetTC
 // (`mov ecx,[eax+4]`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, C
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];            // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                // +0x44
@@ -76,10 +76,10 @@ struct CRetailPointerVector {                  // retail vector<CIntelligentPoin
     CBaseIntelligentPointer& operator[](unsigned long index) const { return *(begin() + index); }
 };
 
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void SetPScriptOverrideInterestingThing(CThing* thing);   // 0x007F5890
 };
-struct CTCTalk {
+class CTCTalk { public:
     void StopCurrentSpeech();                  // 0x006E2E60
 };
 

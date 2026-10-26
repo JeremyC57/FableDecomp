@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdlib>
 
-struct CThing { unsigned char pad[0x10]; unsigned char type; };
+class CThing { public: unsigned char pad[0x10]; unsigned char type; };
 struct CModeBase { virtual ~CModeBase() { } CThing* thing; };
 struct CModeStandBase : CModeBase { unsigned char pad[0x14]; long idle; long frames; bool force; float MaxRunSpeed; float MaxJogSpeed; float MaxWalkSpeed; };
 struct CMode : CModeStandBase { virtual float GetMovementSpeed(long, long, long mt) { float speed = 0.0f; if (thing->type != 2) { switch (mt) { case 3: speed = MaxWalkSpeed; break; case 5: speed = MaxRunSpeed; break; } } return speed; } };

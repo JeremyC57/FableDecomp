@@ -8,12 +8,12 @@
 //   comes from the second argument slot.
 // Layout: Ego_r.pdb puts PTarget/GlobalIndex at +0xb4/+0xbc (PDB CCreatureActionBase 0xb4 bytes, retail 0xa8):
 //   +0xa8/+0xb0 here; no engine header exists for this class.
-struct CThingCreatureBase;
-struct CThing;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -27,19 +27,19 @@ struct CBaseIntelligentPointer {            // 8 bytes: vtable + item pointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>: vtable 0x01237F1C
+class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing>: vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation,
                         const CSoundPair& sound, long c, long d);                 // 0x00693B30
 };
 
-struct CCreatureAction_FireMissileTest : CCreatureActionBase {   // vtable 0x01285544
+class CCreatureAction_FireMissileTest : public CCreatureActionBase { public:   // vtable 0x01285544
     CIntelligentPointer<const CThing> PTarget;   // +0xa8 (PDB +0xb4)
     long GlobalIndex;                            // +0xb0 (PDB +0xbc)
     virtual void v00();

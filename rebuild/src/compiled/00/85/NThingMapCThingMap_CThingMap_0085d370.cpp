@@ -25,10 +25,10 @@ template<class T> struct CRetailVector {
     T* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CMapwhoLevelInfo;
-struct CThingMapCell;
-struct CThingMapManager;
-struct CThingMap : CBaseClassNonCopyable {
+class CMapwhoLevelInfo;
+class CThingMapCell;
+class CThingMapManager;
+class CThingMap : public CBaseClassNonCopyable { public:
     CRetailVector<CMapwhoLevelInfo>               MapwhoLevelInfo;   // +0x04
     CThingMapManager*                             Manager;           // +0x10
     CRetailVector< CRetailVector<CThingMapCell> > Cells;             // +0x14

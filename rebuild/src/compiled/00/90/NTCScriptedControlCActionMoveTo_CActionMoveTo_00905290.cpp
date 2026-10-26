@@ -10,7 +10,7 @@
 // argument flags are FaceMovement and AvoidDynamicObstacles. Pos is left uninitialised.
 // Leaf: ??0CActionMoveTo
 
-struct CThing;
+class CThing;
 
 struct CBase {                                  // root of the scripted actions (vtable 0x0129A7C4)
     virtual void v00();
@@ -30,22 +30,22 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CScriptThing : CBaseObject {             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
+class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
     virtual void v00();
     CCountedPointer PImp;                       // +0x04
     CScriptThing() : CBaseObject() { }
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();              // 0x004C7E50
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CTCBase;
+class CTCBase;
 
 namespace NTCScriptedControl {
 

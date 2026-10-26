@@ -15,7 +15,7 @@
 // Leaf: AddMiniGameBar
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 struct CTCEntry { long Type; CTCBase* TC; };
 struct CTCMap {
     CTCEntry* _M_start;
@@ -27,7 +27,7 @@ struct CTCBitset {
     unsigned long _M_w[9];
     bool test(long bit) const;                           // 0x00410DE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CTCBitset     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
@@ -54,7 +54,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingPhysical : CThing { };
+class CThingPhysical : public CThing { public: };
 template<class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
 bool IsThingAliveImpl(const void* thing);                // stand-in callee of the stand-in body below
 // Same-TU read-only stand-in for the IS_THING_ALIVE<CThing*> instantiation (out of line in retail): the argument's
@@ -65,10 +65,10 @@ template<class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing)
     return thing != 0 && IsThingAliveImpl(thing);
 }
 #pragma auto_inline(on)
-struct CTCInventoryItem {                                // TC type 0x1a
+class CTCInventoryItem { public:                                // TC type 0x1a
     const long& GetEngineGraphic() const;                // 0x005D92D0
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x468];
     long MiniGameGraphic468;                             // +0x468
     unsigned char _pad46c[0x474 - 0x46c];
@@ -80,7 +80,7 @@ struct CPlayerGuiDef {
 };
 const CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
@@ -120,7 +120,7 @@ struct CQuestInfoElementCounter : CQuestInfoElement {   // retail 0x2c bytes
     long m_count; long m_graphic; long m_displayedCount; long m_maxValue;
     CQuestInfoElementCounter(long graphic, long maxValue, float scale);   // 0x00656BD8
 };
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     void AddElement(CCountedPointer<CQuestInfoElement> element);       // 0x0064A3ED
     long AddMiniGameBar(EMiniGameType type, CThingPhysical* thing);
 };

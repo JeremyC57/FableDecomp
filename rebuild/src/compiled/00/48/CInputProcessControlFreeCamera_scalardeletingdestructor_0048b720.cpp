@@ -1,4 +1,4 @@
-struct CInputProcessControlFreeCamera {
+class CInputProcessControlFreeCamera { public:
     void* vftable;
 };
 

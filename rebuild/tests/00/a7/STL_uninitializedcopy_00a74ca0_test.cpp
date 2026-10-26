@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C2DLineF { float x0, y0, x1, y1; };
+class C2DLineF { public: float x0, y0, x1, y1; };
 struct SLineVec {                                   // the STLport vector<C2DLineF> layout
     C2DLineF* start; C2DLineF* finish; C2DLineF* end;
     SLineVec(const SLineVec& x) : start(0), finish(0), end(0)

@@ -15,7 +15,7 @@
 // modelled locally; the component and its slot are named by use.
 // Shape: absent interface skips the call entirely (`je` to the epilogue); the found component is called with no
 // null test. A size TU only inlines the lookup when it is `__forceinline`.
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -43,7 +43,7 @@ struct CThing {
     }
 };
 
-struct CTCInGameMenu {
+class CTCInGameMenu { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -54,7 +54,7 @@ struct CTCInGameMenu {
     virtual void ClosePCInventoryMenu();             // slot 31
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04
     void ClosePCInventoryMenu();

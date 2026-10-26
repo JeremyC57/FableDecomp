@@ -6,7 +6,7 @@ static void FakeMakePath(wchar_t* out, const wchar_t* drive, const wchar_t* dir,
 {
     std::wcscpy(out, drive); std::wcscat(out, dir); std::wcscat(out, fname); std::wcscat(out, ext);
 }
-struct CWideString { wchar_t buf[300]; CWideString(const wchar_t* t) { std::wcscpy(buf, t); } };
+class CWideString { public: wchar_t buf[300]; CWideString(const wchar_t* t) { std::wcscpy(buf, t); } };
 static CWideString MakePath(const wchar_t* drive, const wchar_t* dir, const wchar_t* fname, const wchar_t* ext)
 {
     wchar_t path[260];

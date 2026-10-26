@@ -23,7 +23,7 @@ static int g_ok = 1;
 // members (Ego_r.pdb: 4 bytes, the vptr only), so the null-checked construction is one vtable store.
 namespace NHitLocations {
 
-struct CPhysicalPrimitiveBase {
+class CPhysicalPrimitiveBase { public:
     virtual ~CPhysicalPrimitiveBase() {}
     virtual CPhysicalPrimitiveBase* Alloc() const = 0;   // slot 1
 };

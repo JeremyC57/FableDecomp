@@ -8,12 +8,12 @@
 // constructor @ 0x009FBEC0 runs, then the compiler stores this class's vtable (0x0129C848
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-struct CResource {
+class CResource { public:
     virtual void v00();
     CResource();                           // 0x009FBEC0
 };
 
-struct CManagedTextureOwner : CResource {
+class CManagedTextureOwner : public CResource { public:
     virtual void v00();                    // this class has its own vtable
     CManagedTextureOwner();
 };

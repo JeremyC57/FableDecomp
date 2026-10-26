@@ -8,7 +8,7 @@ static int g_terminateCalls = 0;
 static CScript* g_script = 0;
 static void OnFrame();
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; OnFrame(); }
 };
 

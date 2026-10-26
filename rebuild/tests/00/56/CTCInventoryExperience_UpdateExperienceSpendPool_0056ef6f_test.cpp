@@ -27,7 +27,7 @@ struct SSpendInfoVector {
     ExperienceSpendInfo* _M_finish;
     ExperienceSpendInfo* _M_end_of_storage;
 };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1E0];
     SSpendInfoVector ExperienceSpendValuesPool;     // +0x1E0
     void UpdateExperienceSpendPool(long pool, long amount);

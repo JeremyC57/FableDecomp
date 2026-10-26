@@ -2,7 +2,7 @@
 // Forward = Transform row 1.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -10,13 +10,13 @@ struct C3DVector {
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
 };
 
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Row[4];
     C3DVector GetRow(long index) const { return Row[index]; }
 };

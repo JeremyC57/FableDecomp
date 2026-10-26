@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CThing { u64 UniqueID; };
+class CThing { public: u64 UniqueID; };
 struct CIntelligentPointer { CThing* item; int gets; CThing* GetPItem() const { ++((CIntelligentPointer*)this)->gets; return item; } };
 struct Traits { void TransferBinaryOut(COut* out, const CIntelligentPointer* value)
 {

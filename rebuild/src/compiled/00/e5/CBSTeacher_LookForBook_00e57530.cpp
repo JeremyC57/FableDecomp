@@ -12,7 +12,7 @@
 //   MoralityReward +0x30, seh_me +0x34. CV_BookCollectingScript is retail = PDB - 0x18 here (0x14 for the base, 4 for
 //   the 12-byte retail STLport vectors): LastBookRequested +0x8c, BooksInGame +0x90, BookDef +0x94, BookDonated +0xa0,
 //   BookOwned +0xac (the bool vectors are read as plain byte arrays).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -20,7 +20,7 @@ struct CCharString {
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-struct CScriptThing {
+class CScriptThing { public:
     void* vptr;
     void* PImp[2];
     ~CScriptThing();                                   // 0x004AA840
@@ -34,7 +34,7 @@ enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_0 };
 #define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
-struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x0127094C, 16 bytes
     VPAD8(p0) VPAD4(p1)                                // slots 0..11
     virtual CScriptThing GetScriptThing() const;       // slot 12 (+0x30)
     virtual void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // slot 13 (+0x34)
@@ -42,7 +42,7 @@ struct CScriptGameResourceObjectScriptedThingBase {    // vtable 0x0127094C, 16 
     virtual bool IsPerformingScriptTask() const;       // slot 26 (+0x68)
     void* _body[3];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0) VPAD2(p1) VPAD1(p2)                      // slots 0..6
     virtual void NewScriptFrame() const;               // slot 7 (+0x1c)
     VPAD32(q0) VPAD16(q1) VPAD8(q2) VPAD4(q3) VPAD2(q4)   // slots 8..69

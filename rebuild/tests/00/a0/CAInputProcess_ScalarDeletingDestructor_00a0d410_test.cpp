@@ -1,10 +1,10 @@
 #include <cstdio>
 // Model of CAInputProcess's deleting destructor @ 0x00A0D410: notify, unregister from the manager, null it, base.
-struct CAInputProcess;
+class CAInputProcess;
 static int g_removed, g_notified, g_base; static CAInputProcess* g_removedArg;
-struct CInputProcessManager { void RemoveInputProcess(CAInputProcess* p) { ++g_removed; g_removedArg = p; } };
+class CInputProcessManager { public: void RemoveInputProcess(CAInputProcess* p) { ++g_removed; g_removedArg = p; } };
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() { ++g_base; } };
-struct CAInputProcess : CBaseClassNonCopyable {
+class CAInputProcess : public CBaseClassNonCopyable { public:
     CInputProcessManager* PPlayerInterface;
     virtual ~CAInputProcess() { if (PPlayerInterface != 0) { NotifyRemoved(); PPlayerInterface->RemoveInputProcess(this); PPlayerInterface = 0; } }
     virtual void OnRemovedFromManager() { ++g_notified; }

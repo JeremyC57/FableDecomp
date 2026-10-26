@@ -5,8 +5,8 @@ static int g_rebinds = 0, g_childPosts = 0;
 static const void* g_lastBlock = 0;
 static const void* g_lastOwner = 0;
 static const void* g_lastChild = 0;
-struct CMovableResource { virtual ~CMovableResource() {} };
-struct CEngineLandscapeMemoryManager {
+class CMovableResource { public: virtual ~CMovableResource() {} };
+class CEngineLandscapeMemoryManager { public:
     void RebindBlockOwner(void* block, CMovableResource* owner) { ++g_rebinds; g_lastBlock = block; g_lastOwner = owner; }
 };
 struct SEngine_01436ea8 { unsigned char _pad[0x6b0]; CEngineLandscapeMemoryManager* m_pLandscapeMemory; };

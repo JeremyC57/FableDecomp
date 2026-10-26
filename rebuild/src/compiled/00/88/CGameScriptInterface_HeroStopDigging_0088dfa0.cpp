@@ -7,12 +7,12 @@
 // in esi across the two calls.
 #include "engine/CGameScriptInterface.h"
 
-struct CPlayer {
+class CPlayer { public:
     long GetCurrentMode();                          // 0x00633BE0 EPlayerMode
     void RemoveMode(long mode);                     // 0x00634190
 };
 
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 

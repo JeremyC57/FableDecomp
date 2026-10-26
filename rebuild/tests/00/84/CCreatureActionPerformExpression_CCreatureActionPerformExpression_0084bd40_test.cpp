@@ -8,9 +8,9 @@
 //   0x00A01B90. Vtable stores: 0x012743DC = CCreatureAction_PerformExpression, 0x01238C6C = CIntelligentPointer.
 // Layout: PDB (Ego_r) names/types; the TLC CCreatureActionBase is 0xa8 bytes (PDB 0xb4), so each retail offset is the
 //   PDB offset - 0x0c. CDefPointer's pointee keeps its count at +0x04. Local model: no engine/ header exists for these.
-struct CBaseObject;
+class CBaseObject;
 struct CBaseObjectPointer;
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CBaseObjectPointer* PData;                          // +0x04
@@ -18,22 +18,22 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                      // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
     virtual ~CIntelligentPointer();
 };
-struct CDefPointeeBase { virtual void VFunc00(); long RefCount; };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: virtual void VFunc00(); long RefCount; };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++((CDefPointeeBase*)Object)->RefCount; }
 };
-struct CExpressionDef;
-struct CCreatureActionBase {
+class CExpressionDef;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(const CCreatureActionBase& other);   // 0x0062EBC0
 };
-struct CCreatureAction_PerformExpression : CCreatureActionBase {
+class CCreatureAction_PerformExpression : public CCreatureActionBase { public:
     CDefPointer<const CExpressionDef> PExpressionDef;   // +0xa8
     CIntelligentPointer<CThing> PPerformToThing;        // +0xac
     long ExpressionItemDefIndex;                        // +0xb4
@@ -70,7 +70,7 @@ void CDefPointeeBase::VFunc00() {}
 CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase& o) { ++g_base_copy; memcpy(_body, o._body, sizeof _body); }
 CCreatureActionBase::~CCreatureActionBase() {}
 CCreatureAction_PerformExpression::~CCreatureAction_PerformExpression() { ++g_act_dtor; }
-struct CExpressionDef : CDefPointeeBase {};
+class CExpressionDef : public CDefPointeeBase { public:};
 static unsigned char src_buf[sizeof(CCreatureAction_PerformExpression)], dst_buf[sizeof(CCreatureAction_PerformExpression)];
 int main() {
     CExpressionDef def; def.RefCount = 2;

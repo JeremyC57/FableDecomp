@@ -11,8 +11,8 @@
 // Caller: the vector push_back at 0x009E77E0.
 #include <new>
 struct __false_type { __false_type() {} };
-struct CCharStringData;
-struct CCharString { CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
+class CCharStringData;
+class CCharString { public: CCharStringData* PStringData; CCharString(const CCharString& other); };   // 0x0099EC30
 struct SRec { CCharString a, b; long c; SRec(const SRec& o) : a(o.a), b(o.b), c(o.c) {} };
 struct SElem { CCharString name; SRec rec; SElem(const SElem& o) : name(o.name), rec(o.rec) {} };
 namespace std {

@@ -11,7 +11,7 @@ struct CTCInventoryBase {
     CLongVector QuickAccessItems;
     void OnItemAdded(long item, bool assignQuickAccess, bool silent) { (void)item; (void)assignQuickAccess; (void)silent; ++g_baseCalls; }
 };
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool ContextSensitiveUpdate;
     long GetQuickAccessNextFreeSlot(long item);
     void SetThingAsQuickAccessItem(long item, long slot, bool silent) { (void)silent; ++g_sets; g_setSlot = slot; QuickAccessItems[slot] = item; }

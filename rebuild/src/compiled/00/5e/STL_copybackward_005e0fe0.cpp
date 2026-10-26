@@ -10,7 +10,7 @@
 // Shape: `for (n = last - first; n > 0; --n) *--result = *--last;` -- the count in ebx, `last` strength-reduced to
 //   `result + (last - result)` (edi holds the constant distance).
 // Label: catalogued as `STL_CopyBackward_CCharString`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };

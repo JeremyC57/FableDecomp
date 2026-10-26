@@ -8,8 +8,8 @@
 // keeps the zero in ebx and the hit value in edi, with two epilogues; an early `return 0` reuses the
 // tested eax instead); the slot is a pointer local (esi) chosen by `slot->GetPItem() || (slot =
 // &FirstCrate)->GetPItem()`, then reset with `*slot = CIntelligentPointer<CThing>(0);`.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer
 {
@@ -22,15 +22,15 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
+{ public:
     virtual void v00();
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CTCCrateStack {
+class CTCCrateStack { public:
     void*                       __vftable;          // +0x00
     unsigned char               _pad04[8];          // +0x04 CTCBase
     CIntelligentPointer<CThing> FirstCrate;         // +0x0c

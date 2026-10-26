@@ -10,26 +10,26 @@
 // the creature push lands between it and the `mov ecx,eax` (a direct member chain pushes the creature before
 // the world call and loads the manager straight into ecx). One shared `xor al,al` false tail.
 // Base layout modelled locally (PDB names).
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsRegisteredCombatant();           // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     bool Combat_CheckRingRangeToTarget(CThingCreatureBase* creature);   // 0x006E94D0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;       // +0x4c
     CCombatManager* GetPCombatManager() { return m_pCombatManager; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

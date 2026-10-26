@@ -4,7 +4,7 @@
 // (`mov eax,edi ; mov edx,[eax] ; mov [ecx],edx ...`), the second with `lea ecx,[edi+0Ch]` / `lea edx,[esi+0Ch]` (its implicit operator= inlined with `this` in
 // edx), then the three longs, the string, the last long, and `this` is returned. The chunk label "CEnginePrimitive2DText::operator=" is propagated (the 0x0054xxxx
 // module is game code); the record is named by address.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };

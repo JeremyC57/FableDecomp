@@ -5,12 +5,12 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CCPPointerInfo {                                 // CCountedPointer count block
+class CCPPointerInfo { public:                                 // CCountedPointer count block
     long References;                                    // +0
     void (__fastcall* Destroy)(void* object);           // +4
     void* Object;                                       // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                               // +0
     CCPPointerInfo* Info;                               // +4
     void Release()

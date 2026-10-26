@@ -5,9 +5,9 @@ static int g_base = 0;
 #pragma pack(push, 1)
 struct CParentDefClassBase_Calls { virtual void v00() { } unsigned char _body[0x35]; CParentDefClassBase_Calls() { ++g_base; } };
 #pragma pack(pop)
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage; CRetailVector() : first(0), last(0), end_of_storage(0) { } };
-struct CSpecialAbilitiesMultiArrowDef : CParentDefClassBase_Calls {
+class CSpecialAbilitiesMultiArrowDef : public CParentDefClassBase_Calls { public:
     long NumberOfShots[4]; long NumberInVolley[4]; float AmmoEffectCreationDelaySecs; CDefString CastSound; float BowHighlightWidth;
     CRetailVector<long> BowHighlightColor; CRetailVector<float> MultiArrowPerArrowDamageMultiplier; virtual void v00() { }
     CSpecialAbilitiesMultiArrowDef() : CParentDefClassBase_Calls(), CastSound(), BowHighlightColor(), MultiArrowPerArrowDamageMultiplier() { }

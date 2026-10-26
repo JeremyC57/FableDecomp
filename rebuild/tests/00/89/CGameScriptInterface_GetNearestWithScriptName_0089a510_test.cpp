@@ -7,18 +7,18 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_ZeroVector = { 0, 0, 0 };
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 static void __fastcall NoDelete(void*) { }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
     CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
     ~CCountedPointer() { if (Info) { --Info->RefCount; if (Info->RefCount == 0) { Info->DeleteFunc(Info->Data); delete Info; } } Data = 0; Info = 0; }
 };
-struct CBaseClass { CBaseClass() { } virtual ~CBaseClass() { } };
-struct CScriptThing : CBaseClass {
+class CBaseClass { public: CBaseClass() { } virtual ~CBaseClass() { } };
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThing> PImp;
     C3DVector Pos; int Id;                               // implementation-object data (test only)
     CScriptThing() : Id(0) { Pos = g_ZeroVector; }
@@ -36,14 +36,14 @@ template <class T> struct vector {
     T* end() { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 static CScriptThing* g_imps[8]; static int g_impCount = 0;
 static CScriptThing MakeHandle(CScriptThing* imp)
 {
     CScriptThing h; h.PImp.Data = imp; h.PImp.Info = new CCPPointerInfo; h.PImp.Info->RefCount = 1;
     h.PImp.Info->DeleteFunc = NoDelete; h.PImp.Info->Data = imp; return h;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long GetAllThingsWithScriptName(const CCharString&, vector<CScriptThing>& things) const
     {
         if (g_impCount == 0) return 0;

@@ -11,11 +11,11 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5)
@@ -35,7 +35,7 @@ struct CTCPhysicsBase {
     virtual float GetFacingAngleXY();           // slot 63 (+0xFC)
 };
 
-struct CTCLook {
+class CTCLook { public:
     bool IsPosInViewRange(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction);   // 0x007534B0
 };
 

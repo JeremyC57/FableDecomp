@@ -1,6 +1,6 @@
 // Behaviour test for 0x0080A850 STLport remove_copy_if with CFilter_Bind2<IsInFOV, unary_negate<IsTargetableBehind> >: keep points out of view or targetable behind.
 #include <cstdio>
-struct CThing { int id; bool TargetableBehind; };
+class CThing { public: int id; bool TargetableBehind; };
 struct CTargetPoint { CThing* PThing; long Index; float X, Y, Z; long FrameRejected; };
 struct CFilterInFOV { float MaxX; bool operator()(const CTargetPoint& p) const { return p.X <= MaxX; } };
 struct CFilterTargetableBehind { bool operator()(const CTargetPoint& p) const { return p.PThing->TargetableBehind; } };

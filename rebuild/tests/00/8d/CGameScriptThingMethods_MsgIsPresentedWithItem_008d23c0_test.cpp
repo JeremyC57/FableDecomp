@@ -6,14 +6,14 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString() { }
     CCharString(const std::string& s) : S(s) { }
 };
 static std::vector<std::string> g_names;
 static int g_getStringCalls = 0;
-struct CDefString {
+class CDefString { public:
     long m_index;
     operator CCharString() const;
 };
@@ -58,7 +58,7 @@ struct ItemPresentedEvent : EventBase {
 };
 struct EventNode { EventNode* Next; EventNode* Previous; EventBase* Data; };
 struct CTCEntityEventsNative { EventNode* Head; };
-struct CSpawnedFuncBase { long LastScriptFrame, CurrentScriptFrame; };
+class CSpawnedFuncBase { public: long LastScriptFrame, CurrentScriptFrame; };
 struct ScriptBaseNative { CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { ScriptBaseNative* Script; };
 struct QuestManagerNative { ActiveQuest* PQuestCurrentlyRunning; };
@@ -66,7 +66,7 @@ static QuestManagerNative* g_pQuestManager;
 static long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
 static long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     PointerView PThing;
     bool MsgIsPresentedWithItem(CCharString& itemDefName) const;
 };

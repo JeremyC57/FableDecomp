@@ -18,12 +18,12 @@
 #include <stddef.h>
 #include "engine/CTCBuyableHouse.h"
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                           // 0x0099AED0
     ~CWideString();                                          // 0x0099B510
@@ -39,18 +39,18 @@ class CFontBank;
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);  // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank*    PFont;                                     // +0x1614C
     CDataBank* GetTextBank() const { return PTextBank; }
 };
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast,
                  bool pauseGame);                            // 0x00492E4B
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };

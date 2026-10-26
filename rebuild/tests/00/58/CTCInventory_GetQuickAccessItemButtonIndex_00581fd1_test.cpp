@@ -2,10 +2,10 @@
 // Behaviour test for CTCInventory::GetQuickAccessItemButtonIndex (retail 0x00581FD1).
 static int g_countCalls = 0;
 struct CItemList { unsigned long GetCount() { ++g_countCalls; return 3; } };
-struct CPlayer { CItemList* m_pItems; };
+class CPlayer { public: CItemList* m_pItems; };
 static CItemList g_list;
 static CPlayer g_player;
-struct CWorld { CPlayer* GetMainPlayer() { return &g_player; } };
+class CWorld { public: CPlayer* GetMainPlayer() { return &g_player; } };
 static CWorld g_world;
 CWorld* GetWorld() { return &g_world; }
 
@@ -14,7 +14,7 @@ struct CLongVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     long& operator[](unsigned long n) { return first[n]; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     CLongVector QuickAccessItems;
     long GetQuickAccessItemButtonIndex(long item);
 };

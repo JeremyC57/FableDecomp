@@ -10,7 +10,7 @@
 //   pair temporary gives the `and esp,-8` frame.
 // Shape: STLport 4.x `for (; first < last; ++first) iter_swap(first, --last);` with iter_swap ->
 //   `_Tp tmp = *a; *a = *b; *b = tmp;` (pair copy ctor = memberwise, assignment = implicit memberwise).
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);              // 0x0099B720
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0

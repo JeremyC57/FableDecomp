@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CEngineInternalPrimitiveOcclusionBase;
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveOcclusionBase;
+class CEngineInternalPrimitiveBase;
 
 CEngineInternalPrimitiveOcclusionBase* __fastcall CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive(CEngineInternalPrimitiveBase* primitive)
 {

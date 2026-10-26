@@ -5,7 +5,7 @@
 //          0x005E9B20.
 // Members: GameFinished +0x28 and GameWon +0x21 (CTCTavernGame, PDB +0x30/+0x29: retail 8 lower).
 // Shape: the constant argument push (`push 3F800000h`) is hoisted above the two byte stores.
-struct CTCTavernGame {
+class CTCTavernGame { public:
     unsigned char _pad[0x21];
     bool GameWon;                       // +0x21
     unsigned char _pad_0x22[0x6];

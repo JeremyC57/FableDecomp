@@ -16,7 +16,7 @@
 // CGameScriptInterface: the first 88 virtual slots of vtable 0x01260F0C, named from the slot labels (rtti-vtables.tsv +
 //   manifest); only the slot position matters here, so the signatures are simplified (void, no parameters) except
 //   RegisterTimer (slot 87, returns the new timer index). Overloaded names carry a _2 suffix.
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
     virtual void Error();
     virtual void TraceMessage();
@@ -107,7 +107,7 @@ struct CGameScriptInterface {
     virtual long RegisterTimer();                       // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110
@@ -117,21 +117,21 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                         // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-struct CCharString { void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
-struct CBaseClass { virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
-template<class T> struct CCountedPointer { T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C
+class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
+class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
+template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();
 };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector() : m_first(0), m_last(0), m_end(0) { } };   // STLport vector (12 bytes)
 namespace NScript {
-struct CQ_HangingTreeEvilScript : CQuestScriptObject {
+class CQ_HangingTreeEvilScript : public CQuestScriptObject { public:
     bool IntroCutscenePlayed, BanditsStarted, BanditKilled, PartySuccessfullySetUp, MissionSucceeded, MissionFailed,
          BanditsLeftRegion, SpawnHere, AtWayPoint, SwitchingRegions, RemoveBandits, AllEnemiesDead, QuestStartScreenShown,
          BanditYelledRecently, ExecutionerInterrupted, AudienceLeggit, ShouldFollowHero;   // +0x48..+0x58

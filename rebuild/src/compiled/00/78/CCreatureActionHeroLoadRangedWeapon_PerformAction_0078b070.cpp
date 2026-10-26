@@ -9,9 +9,9 @@
 //   <CThingObject>(CThing*) is out of line (0x0065E133) and its operator= inline, reading the new item into a named local
 //   before SetPItem (so &PAmmo is formed after the GetPItem call as retail); GetInterface stores the component as ONE ternary
 //   `*ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;` (fixes the esi/ebx/edi permutation).
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -41,7 +41,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v000();
     virtual void DestroyDef() const;                  // slot 1
     void Release() const
@@ -55,7 +55,7 @@ struct CShotDef : CDefPointeeBase {
     unsigned char _pad08[0x7c - 8];
     long          ObjectDefIndex;                     // +0x7c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer()
@@ -65,7 +65,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CShotDef>* out);   // 0x0078B230
 };
 class CThing {
@@ -95,19 +95,19 @@ public:
     }
 };
 class CThingObject : public CThing {};
-struct CRightHandedSet;
+class CRightHandedSet;
 CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* set,
                                            unsigned long flags, const CCharString& name);   // 0x00703210
 __forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
 {
     return CreateThingObject(defIndex, &at->GetPosition(), owner->PlayerNumber, 0, 0, name);
 }
-struct CTCWeapon {                                    // interface 0x48
+class CTCWeapon { public:                                    // interface 0x48
     bool IsAnalogueLoading_005da8f0();                         // 0x005DA8F0
     long GetCategoryIdentifier();                     // 0x005DA920
     long GetCreatedShotDefGlobalIndex();              // 0x005DA750
 };
-struct CTCCarrying {                                  // interface 0x46
+class CTCCarrying { public:                                  // interface 0x46
     void PutThingInCarrySlot(CThing* thing, long slot, bool show);   // 0x006A1F80
 };
 struct CBaseIntelligentPointer {
@@ -118,7 +118,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                     // out of line (CThingObject: 0x0065E133)
     __forceinline CIntelligentPointer& operator=(T* item)
     {
@@ -129,7 +129,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     }
 };
 template<class T> bool __fastcall IS_THING_ALIVE(const T& pointer);   // 0x004CC340 / 0x0078B2A0
-struct CCreatureActionBase {                          // retail sizeof 0xa8
+class CCreatureActionBase { public:                          // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;            // +0x08
@@ -137,7 +137,7 @@ struct CCreatureActionBase {                          // retail sizeof 0xa8
     CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
-struct CCreatureAction_HeroLoadRangedWeapon : CCreatureActionBase {
+class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CIntelligentPointer<CThing>       PRangedWeapon;  // +0xa8
     CIntelligentPointer<CThingObject> PAmmo;          // +0xb0
     void PerformAction();

@@ -6,11 +6,11 @@
 // rescaled before the first two, which fixes the source statement order. The twin at 0x00B38DB0 applies the
 // inverse factors (100.0f / -100.0f). No PDB layout for the attached primitive is needed (`this` unused);
 // the matrix is modelled as twelve floats.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m_elements[12];
 };
 
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalAttachedPrimitive { public:
     void RedoMatrixConversion(CMatrix3x4* matrix);
 };
 

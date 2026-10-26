@@ -22,8 +22,8 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, size_t count);
 
 namespace NGameText {
 class CDataBankEntry;
-struct CDataBankTextEntry { unsigned char m_body[8]; };
-struct CDataBankGroupEntry { unsigned char m_body[8]; };
+class CDataBankTextEntry { public: unsigned char m_body[8]; };
+class CDataBankGroupEntry { public: unsigned char m_body[8]; };
 }
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -45,7 +45,7 @@ NGameText::CDataBankGroupEntry* __fastcall __copy(const NGameText::CDataBankGrou
 void __fastcall _Destroy(NGameText::CDataBankTextEntry* first, NGameText::CDataBankTextEntry* last, const _Allocator_tag& allocator);   // 0x009CABC0
 void __fastcall _Destroy(NGameText::CDataBankGroupEntry* first, NGameText::CDataBankGroupEntry* last, const _Allocator_tag& allocator); // 0x009CAC00
 
-template<class T> struct CArray {                       // retail CArray: 12 bytes
+template<class T> class CArray { public:                       // retail CArray: 12 bytes
     T* First;
     T* Last;
     T* End;

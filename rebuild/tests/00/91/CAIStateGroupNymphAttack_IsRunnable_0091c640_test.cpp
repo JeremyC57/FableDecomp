@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
+class CThing { public: unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
 struct CBaseIntelligentPointer {
     CThing* item; int sets;
     CBaseIntelligentPointer() : item(0), sets(0) { }
@@ -13,7 +13,7 @@ template<class T> bool GetInterface(CThing* t, T** out, long type)
     return false;
 }
 static void GiveTC(CThing* t, long type, void* comp) { t->bits[type >> 5] |= 1UL << (type & 31); t->compType = type; t->comp = comp; }
-struct CTCNymph { bool active; CBaseIntelligentPointer target; };
+class CTCNymph { public: bool active; CBaseIntelligentPointer target; };
 struct CGroup { CThing* creature; CThing* asked; CGroup(CThing* c) : creature(c), asked(0) { }
     bool IsTargetInLineOfSight(CThing* t) { asked = t; return t != 0 && t->flags91 == 7; }
     bool IsRunnable() { CTCNymph* p; if (GetInterface(creature, &p, 0xF5)) { if (p->active) return IsTargetInLineOfSight(p->target.GetPItem()); } return false; } };

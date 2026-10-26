@@ -10,15 +10,15 @@
 // thing in a named local (GetPItem before the focal-point pushes), the focal point in a named frame local
 // -- then SetUpTransitionCamera(focal, focal, startLookAt, endLookAt, frames, fov). `ret 14h`.
 // Layout: PDB (0x90 bytes, see the landed overloads 0x008524C0 / 0x00852510). Parameter names are descriptive.
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;      // 0x004C12D0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
 };

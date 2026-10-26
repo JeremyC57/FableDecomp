@@ -13,10 +13,10 @@
 // Layout (engine/CWorld.h, offsets below +0xac match retail): two polymorphic bases (vtables 0x012390F0 / 0x012390DC),
 //   LastUpdateTimeLength +0x90, LastUpdateTime +0x98.
 struct __multiple_inheritance CWorld;
-struct CGameEvent {
+class CGameEvent { public:
     long Type;                                     // +0 the dispatch-table index
 };
-struct CGameEventPackage {
+class CGameEventPackage { public:
     unsigned long GetNoEvents() const;             // 0x009F16E0
     const CGameEvent* GetEvent(unsigned long index) const;   // 0x009F16D0
 };
@@ -25,7 +25,7 @@ struct SGameEventHandler {                         // CGameEventDispatch, 64 byt
     unsigned char _pad08[0x40 - 0x08];             // LocalAction +0x10, Feedback +0x20, Confirm +0x30
 };
 extern SGameEventHandler g_GameEventHandlers[];    // 0x013B9288
-struct CThingManager;
+class CThingManager;
 double __fastcall GFGetTime();                     // 0x009E1BC0
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
 struct CWorldPrimaryBase {                         // vtable 0x012390F0
@@ -37,7 +37,7 @@ struct CWorldPrimaryBase {                         // vtable 0x012390F0
 struct CWorldSecondaryBase {                       // vtable 0x012390DC at +4
     virtual ~CWorldSecondaryBase();
 };
-struct CWorld : CWorldPrimaryBase, CWorldSecondaryBase {
+class CWorld : public CWorldPrimaryBase, public CWorldSecondaryBase { public:
     unsigned char _pad08[0x90 - 0x08];
     double        LastUpdateTimeLength;            // +0x90
     double        LastUpdateTime;                  // +0x98

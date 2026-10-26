@@ -6,7 +6,7 @@ struct CMeshData {
     virtual void v00() { }
     virtual void DeleteThis() { ++g_destroyed; }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer() : m_pObject(0) { }
     void Release()
@@ -21,12 +21,12 @@ template <class T> struct CIVCountedPointer {
     CIVCountedPointer& operator=(T* object) { Release(); m_pObject = object; return *this; }
     ~CIVCountedPointer() { Release(); }
 };
-struct CMeshDataBankEntry {
+class CMeshDataBankEntry { public:
     void* Bank; unsigned long Index;
     CMeshDataBankEntry() : Bank(0), Index(0) { }
     virtual ~CMeshDataBankEntry() { ++g_entryDestroyed; }
 };
-struct CPhysicsMeshInfo : CMeshDataBankEntry {
+class CPhysicsMeshInfo : public CMeshDataBankEntry { public:
     CIVCountedPointer<CMeshData> MeshData;
     virtual ~CPhysicsMeshInfo() { }
     void Reset() { MeshData = 0; }

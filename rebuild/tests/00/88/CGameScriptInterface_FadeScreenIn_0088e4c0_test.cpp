@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"
 #include <cstdio>
-struct CDisplayEngine { char pad[0xd8]; unsigned char flag; };
+class CDisplayEngine { public: char pad[0xd8]; unsigned char flag; };
 static int g_called = 0;
 void __fastcall CGameScriptInterface_DoFade(CGameScriptInterface* self){ g_called = 1; }
 void __fastcall CGameScriptInterface_FadeScreenIn(CGameScriptInterface* self)

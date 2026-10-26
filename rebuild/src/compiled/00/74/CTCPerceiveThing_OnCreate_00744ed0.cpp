@@ -13,12 +13,12 @@
 // Layout: CTCPerceiveThing (engine/CTCPerceiveThing.h): DirectAwareness +0x30, PDef +0x34, SoundRadius +0x3c, SightRadius +0x40,
 //   ExtendedSightRadius +0x44, SmellRadius +0x48, GiveUpChaseRadius +0x4c. CPerceivedThingDef: GiveUpChaseRadius +0x2c,
 //   SightRadius +0x30, ExtendedSightRadius +0x34, SoundRadius +0x38, SmellRadius +0x3c (offsets from the landed setters).
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     ~CDefPointer() { if (Object && --Object->RefCount == 0) Object->Destroy(); }
@@ -29,7 +29,7 @@ struct CThingDefOut {                           // the GetDef out CDefPointer<CT
     CThingDef* Object;
     CThingDefOut() : Object(0) {}
 };
-struct CPerceivedThingDef : CDefClassBase {
+class CPerceivedThingDef : public CDefClassBase { public:
     unsigned char _pad08[0x24];
     float GiveUpChaseRadius;                    // +0x2c
     float SightRadius;                          // +0x30
@@ -53,7 +53,7 @@ __declspec(noinline) bool CThingDef::GetSubDef(CDefPointer<CPerceivedThingDef>* 
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CThingDefOut* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -69,11 +69,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CThingDef
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefGlobalIndex;              // +0x8c
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void*     __vftable;                        // +0x00 (CTCBase)
     CThing*   ParentThing;                      // +0x04
     bool      ToBeRemoved;                      // +0x08

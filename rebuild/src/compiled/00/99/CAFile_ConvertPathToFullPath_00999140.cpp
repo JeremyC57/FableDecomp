@@ -10,7 +10,7 @@
 // Leaf: ?ConvertPathToFullPath@CAFile
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString
 {
 public:

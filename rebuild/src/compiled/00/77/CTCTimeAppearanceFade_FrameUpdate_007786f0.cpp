@@ -15,7 +15,7 @@
 //        arms each push the alpha and join one SetAlpha call; the def release keeps its null test.
 class CThing;
 namespace NGraphicAppearance {
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
 }
@@ -33,7 +33,7 @@ bool __fastcall GFGetValPositionInLimitsLooping(float value, float start, float 
 }
 #pragma auto_inline(on)
 
-struct CTimeAppearanceFadeDef {
+class CTimeAppearanceFadeDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          m_count;                      // +0x04
@@ -55,7 +55,7 @@ struct CFadeDefPointer {                        // CDefPointer<const CTimeAppear
     CTimeAppearanceFadeDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CFadeDefPointer* out);       // 0x00778900
 };
 CTimeAppearanceFadeDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
@@ -79,17 +79,17 @@ public:
     unsigned char   _pad_0x68[0x8];
     CDefClassBase*  DefClass;                   // +0x70
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     void*  World;                               // +0x00
     void*  GameComponent;                       // +0x04
     float  Time;                                // +0x08
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad_0x00[0x1c];
     CGameTimeManager* PGameTimeManager;         // +0x1c
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08

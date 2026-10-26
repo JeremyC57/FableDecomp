@@ -57,8 +57,8 @@ public:
 };
 }
 
-struct CCharStringData;
-struct CDefPointeeBase;
+class CCharStringData;
+class CDefPointeeBase;
 
 class CRegion {                                         // retail layout (12-byte STLport containers)
 public:

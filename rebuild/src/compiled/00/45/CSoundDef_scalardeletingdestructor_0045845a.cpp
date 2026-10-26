@@ -6,7 +6,7 @@
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; je +7;
 //   push esi; call operator delete; pop ecx; mov eax,esi; pop esi; ret 4
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 // scalar destructor (this in ecx) -- relocation-masked target
 extern "C" void __fastcall CSoundDef_dtor(CLandscapeBackgroundPatch* thisptr);

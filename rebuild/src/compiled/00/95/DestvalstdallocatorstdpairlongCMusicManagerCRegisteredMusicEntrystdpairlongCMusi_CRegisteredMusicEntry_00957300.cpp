@@ -7,7 +7,7 @@
 #define CCombatActionBase CCombatActionBasePdb
 #include "engine/_quarantine/CCombatActionBase.h"
 #undef CCombatActionBase
-struct CCombatActionBase {                  // retail 0x114 bytes (PDB 0x12c, GOTCHAS wave 25); derives from CCreatureActionBase
+class CCombatActionBase { public:                  // retail 0x114 bytes (PDB 0x12c, GOTCHAS wave 25); derives from CCreatureActionBase
     unsigned char _base[0x114];
     ~CCombatActionBase();                   // 0x0062E900 (tail-jumps ~CCreatureActionBase 0x00693EF0)
 };

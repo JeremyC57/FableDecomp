@@ -11,7 +11,7 @@
 extern long g_FramesPerSecond;                 // 0x01375550
 extern bool g_SprintEnabled;                   // 0x013B86C5
 
-struct CHeroSpecialMovementDef {
+class CHeroSpecialMovementDef { public:
     unsigned char _pad_0x00[0x2C];
     float         MinSprintRechargeSeconds;    // +0x2C
 };

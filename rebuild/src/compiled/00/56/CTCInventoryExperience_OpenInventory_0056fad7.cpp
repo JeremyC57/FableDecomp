@@ -47,7 +47,7 @@ public:
         return false;
     }
 };
-struct CTCHeroExperience {                           // interface type 0x68
+class CTCHeroExperience { public:                           // interface type 0x68
     unsigned char _pad_0x00[0x14];
     long GeneralExperience;                          // +0x14
     long GetStatExperience(long stat);               // 0x006D6510
@@ -166,7 +166,7 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
@@ -226,7 +226,7 @@ struct CTutorialSoundHandleMap {                     // map<CCharString, unsigne
     void clear();                                    // 0x005795C3
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

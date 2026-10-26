@@ -7,11 +7,11 @@
 // Shape: the position is a NAMED local -- the temporary form pushes the returned eax and evaluates phi before
 // the call, the named local is re-addressed with `lea` after it; C3DVector needs a constructor for the
 // `__fastcall` hidden-pointer return.
-struct CWorld;
-struct CThing;
-struct CGameCameraManager;
+class CWorld;
+class CThing;
+class CGameCameraManager;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
@@ -22,12 +22,12 @@ C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThi
 
 namespace NCameraModes {
 
-struct CBase {
+class CBase { public:
     virtual void v00();
     const CWorld& GetWorld() const;                         // 0x0084D050
 };
 
-struct CProjectileWeapon : CBase {
+class CProjectileWeapon : public CBase { public:
     float GetHeightParamForPostionWithPhi(const C3DVector& position, float phi) const;   // 0x00879070
     float GetHeightParamForTargetedThingWithPhi(const CThing& thing, float phi) const;
 };

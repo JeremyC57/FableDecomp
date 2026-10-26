@@ -2,13 +2,13 @@
 // behaviour test: CEngineWorldMap::OpenStaticMaps -- development state opens every map, retail state opens the bank
 static int g_grids = 0, g_progress = 0, g_opens = 0, g_lastState = -1, g_water = 0, g_pool = 0, g_mapFile = 0;
 static bool g_bankOpens = true; static long g_entry = 0;
-struct CStaticMapBankFile {
+class CStaticMapBankFile { public:
     bool Open(int, unsigned long flags) { return flags == 0x62 && g_bankOpens; }
     void SetMemoryPool() { ++g_pool; }
     long FindEntry() { return g_entry; }
 };
-struct CEngineMap { void OpenDevelopmentStaticMap(CStaticMapBankFile&, int state) { ++g_opens; g_lastState = state; } };
-struct CEngineWorldMap {
+class CEngineMap { public: void OpenDevelopmentStaticMap(CStaticMapBankFile&, int state) { ++g_opens; g_lastState = state; } };
+class CEngineWorldMap { public:
     CEngineMap* Maps[3]; unsigned long Count;
     int StaticMapBankName;
     CStaticMapBankFile StaticMapFile;

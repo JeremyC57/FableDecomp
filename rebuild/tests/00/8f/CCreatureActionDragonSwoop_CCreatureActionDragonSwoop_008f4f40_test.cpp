@@ -3,21 +3,21 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase { int id; };
-struct CCharString { const char* m_pData; };
-struct CSoundPair {
+class CThingCreatureBase { public: int id; };
+class CCharString { public: const char* m_pData; };
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CCombatActionBase {
+class C3DVector { public: float X, Y, Z; };
+class CCombatActionBase { public:
     CThingCreatureBase* m_owner; long m_code; CSoundPair m_sound; const CCharString* m_anim;
     CCombatActionBase(CThingCreatureBase* owner, long code, const CSoundPair& s)
         : m_owner(owner), m_code(code), m_sound(s), m_anim(0) { }
     void SetAnimationName(const CCharString& n) { m_anim = &n; }
 };
-struct CCreatureAction_DragonSwoop : CCombatActionBase {
+class CCreatureAction_DragonSwoop : public CCombatActionBase { public:
     C3DVector SwoopPoints[3];
     CCreatureAction_DragonSwoop(CThingCreatureBase* owner, const CCharString& animation,
                                 const C3DVector& p0, const C3DVector& p1, const C3DVector& p2)

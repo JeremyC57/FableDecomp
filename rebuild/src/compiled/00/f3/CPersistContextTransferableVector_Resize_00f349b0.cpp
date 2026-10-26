@@ -15,7 +15,7 @@
 // CDefPointeeBase destructor stores 0x01230BA0 and the out-of-line CResource destructor runs.
 // Hierarchy (RTTI vtables): CIVCountedPointeeBase <- CResource (0x012354A4) <- CDefPointeeBase
 // (0x01230BA0) <- CDefClassBase (0x01230BCC) <- record (0x012FB778).
-struct CResource {
+class CResource { public:
     virtual ~CResource();                  // 0x009FC550
     unsigned long m_refCount;              // +0x04 (CIVCountedPointeeBase::IVRefCount)
     void*         m_pResourceList;         // +0x08
@@ -25,11 +25,11 @@ struct CResource {
     unsigned long m_lastUsedFrame;         // +0x18
 };
 
-struct CDefPointeeBase : CResource {
+class CDefPointeeBase : public CResource { public:
     virtual ~CDefPointeeBase() {}
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     virtual ~CDefClassBase() {}
     unsigned char m_defBody[0x0C];         // +0x1C..+0x27 (the constructor clears +0x1C and bits of +0x24)
 };

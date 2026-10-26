@@ -19,25 +19,25 @@ class CThing;
 class CThingObject;
 class CBaseObject;
 
-struct C2DVector { float X, Y; };
-struct C3DVector {
+class C2DVector { public: float X, Y; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     void Set(float tlx, float tly, float brx, float bry) { TLX = tlx; TLY = tly; BRX = brx; BRY = bry; }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() { }
     void Set(const C3DVector& up, const C3DVector& forward) { Up = up; Forward = forward; }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -52,7 +52,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858 (CThingObject)
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A858 (CThingObject)
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
@@ -77,16 +77,16 @@ struct CRenderer {
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual bool GetScreenPosition(const C3DVector& position, C2DVector* out);   // slot 13 (+0x34)
 };
-struct CDisplayEngine { unsigned char _pad[0x2c]; CRenderer* Renderer; };       // +0x2c
-struct CMainGameComponent { unsigned char _pad[0x28]; CDisplayEngine* DisplayEngine; };   // +0x28
-struct CDisplayManager {
+class CDisplayEngine { public: unsigned char _pad[0x2c]; CRenderer* Renderer; };       // +0x2c
+class CMainGameComponent { public: unsigned char _pad[0x28]; CDisplayEngine* DisplayEngine; };   // +0x28
+class CDisplayManager { public:
     C2DBoxF GetAVisibleTelevisionScreenArea();          // 0x009BECB0
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 extern CDisplayManager* g_pDisplayManager;              // 0x013B8390
 extern C3DVector g_ItemUp;                              // 0x01383A5C
 
-struct CTCHeroReceiveItems : CTCBase {
+class CTCHeroReceiveItems : public CTCBase { public:
     CItemList Items;                                    // +0x0c
     CRetailVector PickedUpItems;                        // +0x10
     CIntelligentPointer<CThingObject> PCurrentItem;     // +0x1c

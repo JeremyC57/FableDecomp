@@ -66,16 +66,16 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
-struct CEngineInternalPrimitiveBase;
-struct CEnginePrimitive2DViewportManager;
-struct CEnginePrimitiveManager2DAnimatedMeshes;
-struct CEnginePrimitiveManager2DParticleGroup;
-struct CEnginePrimitiveManager2DSprites;
-struct CEnginePrimitiveManager2DStaticMeshes;
+class CCPPointerInfo;
+class CEngineInternalPrimitiveBase;
+class CEnginePrimitive2DViewportManager;
+class CEnginePrimitiveManager2DAnimatedMeshes;
+class CEnginePrimitiveManager2DParticleGroup;
+class CEnginePrimitiveManager2DSprites;
+class CEnginePrimitiveManager2DStaticMeshes;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D { public:
     void*                                    __vftable;      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                            _pad_0x04[0x4]; // +0x04
     unsigned char                            _pad_0x08[0x4]; // +0x08
@@ -166,7 +166,7 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, Enable2DLayer) == 0x324
 
 
 #pragma pack(push, 1)
-struct CEngineComponent {
+class CEngineComponent { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         GlobalPointerAddress;                      // +0x04 void * *
     bool          RenderEnabled;                             // +0x08
@@ -195,10 +195,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineComponent, KeepAlive) == 0x9);
 #include <stddef.h>
 
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -252,15 +252,15 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 #endif // FABLE_ENGINE_CENGINEINTERNALPRIMITIVEBASE_H
 
 
-struct CEnginePrimitiveManager;
-struct CEngineComponent;
-struct CEnginePrimitiveManager2DStaticMeshes;
-struct CEnginePrimitiveManager2DAnimatedMeshes;
-struct CEnginePrimitiveManager2DSprites;
-struct CEnginePrimitive2DViewportManager;
-struct CEnginePrimitiveManager2DParticleGroup;
+class CEnginePrimitiveManager;
+class CEngineComponent;
+class CEnginePrimitiveManager2DStaticMeshes;
+class CEnginePrimitiveManager2DAnimatedMeshes;
+class CEnginePrimitiveManager2DSprites;
+class CEnginePrimitive2DViewportManager;
+class CEnginePrimitiveManager2DParticleGroup;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int RefCount;
     void (FABLE_FASTCALL *DeleteFunc)(void*);
     void* Data;
@@ -269,7 +269,7 @@ struct CCPPointerInfo {
 extern void FABLE_CDECL FableOperatorDelete(void* pointer); // 0x00BFE9BC
 extern void FABLE_CDECL FableFree(void* pointer);           // 0x00BFEA14
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
 
@@ -309,7 +309,7 @@ struct CManagerPointerArray {
     }
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual ~CEngineComponent();
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -317,7 +317,7 @@ struct CEngineComponent {
     unsigned char Padding[2];
 };
 
-struct CEnginePrimitiveRenderer2D : CEngineComponent {
+class CEnginePrimitiveRenderer2D : public CEngineComponent { public:
     CManagerPointerArray PrimitiveManagers;                     // native +0x0c, extent 0x0c
     CCountedPointer<CEnginePrimitiveManager2DStaticMeshes> StaticMesh2DManager; // +0x18
     CCountedPointer<CEnginePrimitiveManager2DAnimatedMeshes> AnimatedMesh2DManager; // +0x20

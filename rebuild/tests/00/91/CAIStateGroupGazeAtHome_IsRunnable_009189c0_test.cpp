@@ -2,7 +2,7 @@
 // this group vetoes it; otherwise it needs an owner and a free gaze position.
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 // Sorted {type, component} vector map searched by LowerBound (0x0040F020 in retail).
 struct CInterfaceMap {
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -42,14 +42,14 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
-struct CAIStateGroupBase;
+class CAIBrain { public: CThing* PCreature; };
+class CAIStateGroupBase;
 static bool g_preferred = false;
-struct CTCIdleScheduler : CTCBase {
+class CTCIdleScheduler : public CTCBase { public:
     bool IsPreferredIdle(CAIStateGroupBase*) { return g_preferred; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     virtual ~CAIStateGroupBase() {}
     virtual void* GetOwner() { return 0; }

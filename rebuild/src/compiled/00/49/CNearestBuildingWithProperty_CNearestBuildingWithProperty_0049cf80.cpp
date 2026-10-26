@@ -1,4 +1,4 @@
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     int m0; int m1; int m2; int m3; int m4; int m5;
     CNearestBuildingWithProperty(const CNearestBuildingWithProperty& o);
 };

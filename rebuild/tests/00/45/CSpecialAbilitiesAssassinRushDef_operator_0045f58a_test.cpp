@@ -1,7 +1,7 @@
 // behaviour test for 0x0045F58A CSpecialAbilitiesAssassinRushDef::operator=
 #include <cstdio>
 static int g_vecCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
@@ -9,7 +9,7 @@ struct CFloatVector {
     float v;
     CFloatVector& operator=(const CFloatVector& o) { v = o.v; ++g_vecCopies; return *this; }
 };
-struct CSpecialAbilitiesAssassinRushDef : CParentDefClassBase {
+class CSpecialAbilitiesAssassinRushDef : public CParentDefClassBase { public:
     float DistanceAwayFromtargetToAssassinRushTo, SafeCollideRadiusPercentage, DistFromFloor, AssassinStartSeconds,
           AssassinEndSeconds, AssassinThreshold, AssassinLength, AssassinIntensity, AssassinFade, AssassinRange,
           AssassinTwist, RunSpeed, TrailDelaySecs, SlowTimeLength;

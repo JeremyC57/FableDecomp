@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_destroyed = 0;
-struct CThingAICreature {
+class CThingAICreature { public:
     long Property;
     virtual long GetAIProperty() const { return Property; }   // slot 48 in retail
     virtual ~CThingAICreature() {}
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() { ++g_destroyed; }
     void* GetPItem() const { return PItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer(item) {}
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };

@@ -2,8 +2,8 @@
 
 // ---- standalone model of the CCharString + ctor + method under test ----
 
-struct CCharString
-{
+class CCharString
+{ public:
     const char* p;
     int         len;
     void Construct(const char* s, int length);   // stand-in for retail 0x0099ebf0

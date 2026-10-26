@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CFactionDef {
+class CFactionDef { public:
     int f0;
     int Parent;
     void* f8;

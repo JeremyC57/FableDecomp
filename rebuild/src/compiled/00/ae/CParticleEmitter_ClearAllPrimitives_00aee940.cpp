@@ -7,7 +7,7 @@
 // Shape: the guard reads the handle's Data pointer; the handle's address is formed in ebx for the loop, again in edx for the
 // engine call and in esi for the inlined CEnginePrimitiveHandle::Clear (null-safe GetRefCount() == 1 -> slot 3, release, then the
 // second unconditional zero store of the default-pointer assignment).
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct CEnginePrimitiveBase {               // counted primitive: vptr, then the reference count
     virtual void v00();
     virtual void Destroy();                 // slot 1
@@ -40,7 +40,7 @@ struct CIVCountedPointer_Primitive {
 struct CBase {
     virtual void v00();
 };
-struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598
     CIVCountedPointer_Primitive Data;       // +4
     void Clear()
     {
@@ -49,7 +49,7 @@ struct CEnginePrimitiveHandle : CBase {     // vtable 0x0122F598
         Data = CIVCountedPointer_Primitive();
     }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 struct CParticleSystem;
@@ -95,13 +95,13 @@ struct CParticleEmitter {
     unsigned char            ClearedDecals              : 1;
     C3DVector                OldPos;                        // +0x46
     C3DVector                Velocity;                      // +0x52
-    void ClearAllPrimitives(struct CIEngine* engine);
+    void ClearAllPrimitives(class CIEngine* engine);
 };
 #pragma pack(pop)
 struct CParticleSystem {
     void ClearAllPrimitives(CEnginePrimitiveHandle* group);    // 0x00AF4320
 };
-struct CIEngine {
+class CIEngine { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15)
     V(16) V(17) V(18) V(19) V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30)

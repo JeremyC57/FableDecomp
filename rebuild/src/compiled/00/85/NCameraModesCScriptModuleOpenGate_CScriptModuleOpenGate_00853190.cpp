@@ -12,8 +12,8 @@
 // Layout: PDB NCameraModes::CScriptModuleOpenGate (0x74 bytes): PGate +0x54, Pos +0x5c, DeltaPos +0x68.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -27,7 +27,7 @@ struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0
     CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((const CBaseObject*)thing); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptModuleBase {
     virtual void v00();

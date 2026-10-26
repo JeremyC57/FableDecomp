@@ -4,7 +4,7 @@
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     char* p;                       // +0
     CCharString(const CCharString&); // copy ctor -> retail 0x0099b720 (external)
 };

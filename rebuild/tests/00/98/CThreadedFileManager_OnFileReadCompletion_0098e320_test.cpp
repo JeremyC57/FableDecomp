@@ -10,17 +10,17 @@
 static void* g_signalled = 0; static int g_signals = 0;
 static int SignalEvent(void* e) { g_signalled = e; ++g_signals; return 1; }
 static int g_unpauses = 0;
-struct CFileInstaller { void Unpause() { ++g_unpauses; } };
+class CFileInstaller { public: void Unpause() { ++g_unpauses; } };
 static CFileInstaller* g_installer = 0;
 struct _OVERLAPPED { unsigned long Internal, InternalHigh, Offset, OffsetHigh; void* hEvent; };
-struct CThreadedFile { int DeviceID; };
-struct CThreadedFileManager;
+class CThreadedFile { public: int DeviceID; };
+class CThreadedFileManager;
 struct CFileObject { int LoadingStatus; CThreadedFileManager* PManager; CThreadedFile* PFile; };
 static bool g_dirtyDisc = false;
 static int g_callbackCalls = 0; static const char* g_callbackArg = 0;
 static void __fastcall Callback(const char* s) { ++g_callbackCalls; g_callbackArg = s; }
 static void (__fastcall* g_callback)(const char*) = 0;
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void* Event;
     static void __stdcall OnFileReadCompletion(unsigned long errorCode, unsigned long, _OVERLAPPED* overlapped)
     {

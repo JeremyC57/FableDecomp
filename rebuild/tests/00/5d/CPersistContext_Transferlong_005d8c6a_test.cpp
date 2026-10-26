@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer_long_(char* name, long* value);
 };
 

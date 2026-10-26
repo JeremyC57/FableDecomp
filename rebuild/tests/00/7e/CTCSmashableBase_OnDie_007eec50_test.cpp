@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CSmashableDef { bool Smashable; };
-struct CTCSmashableBase {
+class CSmashableDef { public: bool Smashable; };
+class CTCSmashableBase { public:
     CSmashableDef* def; bool Smashed; int smashes;
     CSmashableDef* GetDef() { return def; }
     virtual void Smash() { ++smashes; Smashed = true; }

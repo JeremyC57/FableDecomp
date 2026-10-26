@@ -2,7 +2,7 @@
 
 // Host model of std::__unguarded_linear_insert over pair<CCharString, CSymbolMap::CSymbolInfo> ordered by
 // CCompareString (a.first.FastCompare(b.first)); the string is modelled by an int key, FastCompare as key order.
-struct CCharString {
+class CCharString { public:
     int Key;
     bool FastCompare(const CCharString& other) const { return Key < other.Key; }
 };

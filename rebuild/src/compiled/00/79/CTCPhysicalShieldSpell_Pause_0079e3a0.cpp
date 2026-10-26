@@ -7,7 +7,7 @@
 // Layout (PDB CTCPhysicalShieldSpell): ShieldEffect +0x30, SwirlyEffect +0x38 (CIntelligentPointer<CThing>), LoopingSound +0x40,
 //   Pausable +0x44, Paused +0x45; CThing +0x91 bit 0 = dead.
 // Shape: the inline IsThingAlive(p) (GetPItem non-null and not dead) followed by p.GetPItem()->Kill(true), twice.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 = dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing> (
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x28];

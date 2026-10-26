@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046AB33 GFSerialiseVectorBinaryIn<CSoundBankEntry>: count, resize(n), one traits read per element
 #include <cstdio>
 #include <cstring>
-struct CSoundBankEntry {
+class CSoundBankEntry { public:
     unsigned int ID; int Filename; int SymbolFilename; int LipSyncBankHandle; bool DVD;
     CSoundBankEntry() : ID(0), Filename(-1), SymbolFilename(-1), LipSyncBankHandle(-1) {}
 };

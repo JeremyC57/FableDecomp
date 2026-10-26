@@ -16,9 +16,9 @@
 // the block, both words zeroed, ~CBase); the scale is `SizeX * Scale * 0.01f`.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct C3DMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class C3DMeshInfo;
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -47,7 +47,7 @@ struct CBase {
     virtual ~CBase();                                       // 0x0099A2E0
 };
 
-struct C3DMeshObject : CBase {                              // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBase { public:                              // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x4
     CCountedPointer    Mesh;                                // +0x8 CCountedPointer<const C3DMeshStats>
     unsigned char      _rest[0x78 - 0x10];                  // +0x10 PositionMatrix .. Scale
@@ -60,20 +60,20 @@ C3DMeshObject::~C3DMeshObject()
 {
 }
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
 };
 extern CMeshDataBank* g_pMeshDataBank;                      // 0x013B8A04
 
 namespace NGraphicAppearance {
 
-struct CMeshInfo {
+class CMeshInfo { public:
     long          Index;                                    // +0x0
     float         SizeX;                                    // +0x4
     unsigned char PrimaryMesh : 1;                          // +0x8
 };
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     unsigned char _pad00[0x34];
     float         Scale;                                    // +0x34
     void GetMeshObjectAssumingObjectAt(const CMeshInfo& info, const C3DVector& position,

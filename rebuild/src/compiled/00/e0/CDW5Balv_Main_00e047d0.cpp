@@ -10,7 +10,7 @@
 //          stores), a frame loop on Me's virtual awareness test that bails out when the script is done, the nested
 //          `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner call) and a final
 //          update-until-done loop.
-struct CScriptThing {                              // 12 bytes: vptr + the counted implementation
+class CScriptThing { public:                              // 12 bytes: vptr + the counted implementation
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
@@ -19,7 +19,7 @@ struct CScriptThing {                              // 12 bytes: vptr + the count
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();                         // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

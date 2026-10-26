@@ -14,11 +14,11 @@ struct CComboDef {
     long          ChainID;                                  // +0x0c
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     void GetComboDef(const CComboDef** out);                // 0x00738980
 };
 
-struct CMeleeCombatAbilityDef {
+class CMeleeCombatAbilityDef { public:
     unsigned char  _pad[0x74];
     CDefClassBase* DefClass;                                // +0x74
 };

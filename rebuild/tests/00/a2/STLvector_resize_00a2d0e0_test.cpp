@@ -2,7 +2,7 @@
 // [begin() + n, end()), an equal size still issues an empty fill insert, and the surviving head is untouched.
 #include <cstdio>
 #include <new>
-struct CMeshDataBankEntry;
+class CMeshDataBankEntry;
 static CMeshDataBankEntry* At(int k) { static char objs[16]; return (CMeshDataBankEntry*)&objs[k]; }
 typedef CMeshDataBankEntry* T;
 static int g_erase = 0;

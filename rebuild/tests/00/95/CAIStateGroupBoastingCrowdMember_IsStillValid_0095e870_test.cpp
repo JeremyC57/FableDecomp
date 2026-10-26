@@ -1,6 +1,6 @@
 // Behaviour test for 0x0095E870: IsStillValid of a boasting-crowd member.
 #include <cstdio>
-struct CThing { unsigned char flags91; void* crowd; bool IsDead() const { return (flags91 & 1) != 0; } };
+class CThing { public: unsigned char flags91; void* crowd; bool IsDead() const { return (flags91 & 1) != 0; } };
 struct CCrowd { CThing* target; long State; };
 struct CIP { CThing* p; CThing* GetPItem() const { return p; } };
 static long IsStillValid(CIP& PBoaster)

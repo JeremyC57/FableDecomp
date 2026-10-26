@@ -1,7 +1,7 @@
 // Behaviour test for CQuaternion::operator*=(const CQuaternion&) @ 0x00A88C10 (stub operator* = Hamilton product)
 #include <cstdio>
 
-struct CQuaternion {
+class CQuaternion { public:
     float X, Y, Z, W;
     CQuaternion operator*(const CQuaternion& q) const
     {

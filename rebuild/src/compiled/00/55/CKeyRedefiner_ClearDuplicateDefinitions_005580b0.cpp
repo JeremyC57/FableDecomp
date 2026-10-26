@@ -7,10 +7,10 @@
 // Shape: the front action (head->next->value) is loaded first (right-to-left argument order of the fastcall); a three-case switch on the
 // controller type compares the type-specific field; the replacement definition is a copy of ours with ControllerType = 2 and
 // KeyboardKey = 0 (the copied +4/+8 words are dead and dropped).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
-struct CActionInputControl {                    // 28 bytes
+class CActionInputControl { public:                    // 28 bytes
     long GameAction;                            // +0x00
     long ControllerType;                        // +0x04
     long KeyboardKey;                           // +0x08
@@ -28,7 +28,7 @@ struct CActionList {                            // std::list<EGameAction>: one s
     node* head;
     long front() const { return head->next->value; }
 };
-struct CKeyRedefiner {
+class CKeyRedefiner { public:
     unsigned char _clickable[0x194];            // CClickable (three vptrs) +0x000..+0x193
     void* PActionText;                          // +0x194
     void* PKeyText;                             // +0x198

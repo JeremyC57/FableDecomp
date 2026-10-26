@@ -1,12 +1,12 @@
 #include <cstdio>
 struct SBytePair { long m_first; long m_second; };
 static long g_w[2]; static int g_n = 0; static long g_readerA = 0, g_readerB = 0;
-struct CDataOutputStream { void WriteCBYTE(long v) { g_w[g_n++] = v; } };
-struct CDataInputStream { };
+class CDataOutputStream { public: void WriteCBYTE(long v) { g_w[g_n++] = v; } };
+class CDataInputStream { public: };
 static CDataOutputStream g_out; static CDataInputStream g_in;
 struct CPairReader_004e9021 { long m_a; long m_b; CPairReader_004e9021() : m_a(-1), m_b(-1) { }
     void Read(CDataInputStream*, SBytePair* v) { g_readerA = m_a; g_readerB = m_b; v->m_first = 100; v->m_second = 200; } };
-struct CPersistContext { unsigned char _pad0[0x18]; long m_mode; unsigned char _pad1[8]; CDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream;
+class CPersistContext { public: unsigned char _pad0[0x18]; long m_mode; unsigned char _pad1[8]; CDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream;
     void CheckCRC(const char*) { }
     void TransferBytePair_004e8fcd(SBytePair* value) { CheckCRC(""); CPairReader_004e9021 reader; switch (m_mode) { case 3: { CDataOutputStream* s = m_pSaveStream; s->WriteCBYTE(value->m_first); s->WriteCBYTE(value->m_second); break; } case 2: reader.Read(m_pLoadStream, value); break; } } };
 int main() {

@@ -65,13 +65,13 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CBase;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CScriptModuleBase;
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
@@ -209,7 +209,7 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, DebugPoints) == 0x178);
 
 
 #pragma pack(push, 1)
-struct CCameraManagerDef {
+class CCameraManagerDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -265,7 +265,7 @@ FABLE_STATIC_ASSERT(offsetof(CCameraManagerDef, AngleBetweenGroundNormalAndVerti
 
 
 #pragma pack(push, 1)
-struct CCameraModeDef {
+class CCameraModeDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -385,14 +385,14 @@ FABLE_STATIC_ASSERT(offsetof(CCameraModeDef, ViewHeroGroundHeightOffset) == 0xd8
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -468,34 +468,34 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -735,7 +735,7 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -753,8 +753,8 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -762,8 +762,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -857,11 +857,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
-struct CThingCreatureBase;
+class CDefPointeeBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -914,11 +914,11 @@ FABLE_STATIC_ASSERT(offsetof(CTCHeroRangedAttacks, BowDrawbackSoundID) == 0x48);
 
 #include <new>
 struct CCameraNativeDef:CIVCountedPointeeBase {void ReleaseReference(){--IVRefCount;if(!IVRefCount){typedef void(CCameraNativeDef::*F)()const;(this->*static_cast<const F*>(__vftable)[1])();}}};
-struct CCameraModeDef:CCameraNativeDef {unsigned char BeforeMode[0x34];long CameraMode;}; //native3C vs donor40
-struct CCameraManagerDef {unsigned char BeforeModes[0x54];int InitialMode,ZTargetMode,ProjectileWeaponMode;}; //native58/5C vs donor64/68
+class CCameraModeDef:public CCameraNativeDef { public:unsigned char BeforeMode[0x34];long CameraMode;}; //native3C vs donor40
+class CCameraManagerDef { public:unsigned char BeforeModes[0x54];int InitialMode,ZTargetMode,ProjectileWeaponMode;}; //native58/5C vs donor64/68
 struct CCameraDefPointer {CCameraModeDef* Object;CCameraDefPointer():Object(0){}CCameraDefPointer(const CCameraDefPointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}~CCameraDefPointer(){if(Object)Object->ReleaseReference();}};
 // Quarantined manager header internally contradicts sizeof1/vptr4; declaration-only view.
-struct CGameDefinitionManager {bool GetDef(long,CCameraDefPointer*);}; //56D0C0
+class CGameDefinitionManager { public:bool GetDef(long,CCameraDefPointer*);}; //56D0C0
 struct CCameraMode {void* Vtable;};
 struct CCameraModeOwner {unsigned References;void(__fastcall* Destroy)(void*);void* Data;};
 struct CCameraModePointer {CCameraMode* Data;CCameraModeOwner* Info;CCameraModePointer(CCameraMode*);CCameraModePointer(const CCameraModePointer&);~CCameraModePointer();}; //56C050
@@ -927,12 +927,12 @@ struct CCameraScriptPointer {CCameraScript* Data;CCameraModeOwner* Info;};
 struct CCameraComponentEntry {int Key;CTCHeroRangedAttacks* Component;};
 struct CCameraComponentMap {CCameraComponentEntry* Begin;CCameraComponentEntry* End;CCameraComponentEntry* Capacity;CCameraComponentEntry* LowerBound(const int&)const;
  __forceinline CTCHeroRangedAttacks* Find()const{int key=0x81;CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->Key)p=End;return p->Component;}};
-struct CThing {unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
+class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
 struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0
 struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50
 struct CCameraDefArray {CCameraDefPointer* Begin;CCameraDefPointer* End;CCameraDefPointer* Capacity;};
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing*,const CCameraManagerDef&,const CCharString&); //698A30
-struct CGameCameraManager {
+class CGameCameraManager { public:
  CGameCameraManager(const CWorld&); //PDB13517 donor6C1E60
  unsigned char Prefix[0x74];CWorld* World;unsigned char CamTools[0x20];CCameraModePointer CurrentMode,PendingMode;
  unsigned char BeforeScripts[0x2c];CCameraScriptPointer CurrentScript,PendingScript;unsigned char BeforeObserved[0x1c];CCameraObservedPointer Observed;
@@ -947,7 +947,7 @@ typedef char NativeObserved100[offsetof(CGameCameraManager,Observed)==0x100?1:-1
 typedef char NativeDef134[offsetof(CGameCameraManager,PDef)==0x134?1:-1];
 #endif
 
-namespace NCameraModes {struct CProjectileWeapon:CCameraMode {unsigned char State[0x104];CProjectileWeapon(CGameCameraManager&,const CCameraDefPointer&,float,float);};}
+namespace NCameraModes {class CProjectileWeapon:public CCameraMode { public:unsigned char State[0x104];CProjectileWeapon(CGameCameraManager&,const CCameraDefPointer&,float,float);};}
 #ifdef _MSC_VER
 typedef char NativeProjectile108[sizeof(NCameraModes::CProjectileWeapon)==0x108?1:-1];
 #endif

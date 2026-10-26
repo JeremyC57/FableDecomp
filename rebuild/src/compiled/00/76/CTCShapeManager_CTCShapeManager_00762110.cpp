@@ -19,7 +19,7 @@ extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 
 class CThing;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 class CTCBase {
 public:
@@ -41,7 +41,7 @@ public:
     ~CCountedPointer();                                      // inlined into 0x00764C40
 };
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;
 };
 

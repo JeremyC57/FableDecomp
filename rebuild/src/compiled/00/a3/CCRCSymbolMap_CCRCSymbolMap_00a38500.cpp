@@ -69,15 +69,15 @@ template <class T> struct CVector {                         // STLport vector, 1
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 template <class K, class V> struct CKeyValuePair { K first; V second; };
-template <class K, class V, class C> struct CVectorMap {    // retail 16 bytes
+template <class K, class V, class C> class CVectorMap { public:    // retail 16 bytes
     CVector<CKeyValuePair<K, V> > Data;                     // +0x00
     C                             Compare;                  // +0x0c empty comparator
     bool                          Dirty;                    // +0x0d
     CVectorMap() : Dirty(false) {}
 };
-template <class K, class V> struct CKeyPairCompareLess { };
+template <class K, class V> class CKeyPairCompareLess { public: };
 
-struct CCRCSymbolMap : CBase {                              // vtable 0x0129CF84
+class CCRCSymbolMap : public CBase { public:                              // vtable 0x0129CF84
     CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long> > SLONGMap;   // +0x04
     std::set<unsigned long>                                                  NamesUsed;  // +0x14
     bool                                                                      CheckForDuplicateSymbols;   // +0x20

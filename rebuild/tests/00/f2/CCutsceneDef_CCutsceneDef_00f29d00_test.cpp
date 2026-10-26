@@ -6,12 +6,12 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_resourceCtor = 0;
 #pragma pack(push, 1)
-struct CResource {
+class CResource { public:
     virtual void v00() {}
     unsigned char _body[0x18];
     CResource() { ++g_resourceCtor; memset(_body, 0x77, sizeof(_body)); }
 };
-struct CDefinitionManager;
+class CDefinitionManager;
 struct __declspec(novtable) CDefClassBase : CResource {
     CDefinitionManager* PDefManager;
     unsigned long GlobalIndex;
@@ -20,7 +20,7 @@ struct __declspec(novtable) CDefClassBase : CResource {
     unsigned char DefaultValsApplied : 1;
     CDefClassBase() : CResource(), PDefManager(0), Setup(0), Template(0), DefaultValsApplied(0) { }
 };
-struct CCharString;
+class CCharString;
 template <class T> struct CAllocProxy { T* p; CAllocProxy(T* v) : p(v) { } };
 struct CCharStringVector {
     CCharString* _M_start;
@@ -28,7 +28,7 @@ struct CCharStringVector {
     CAllocProxy<CCharString> _M_end_of_storage;
     CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CDefIndex { long Index; CDefIndex() : Index(-1) { } };
+class CDefIndex { public: long Index; CDefIndex() : Index(-1) { } };
 struct __declspec(novtable) CCutsceneDefBase : CDefClassBase {
     CDefIndex     m_index;
     long          m_value29;
@@ -39,7 +39,7 @@ struct __declspec(novtable) CCutsceneDefBase : CDefClassBase {
     unsigned char _pad37[5];
     CCutsceneDefBase() : m_value29(0), m_value2d(0), m_value31(0), m_flag36(0) { }
 };
-struct CCutsceneDef : CCutsceneDefBase {
+class CCutsceneDef : public CCutsceneDefBase { public:
     CCharStringVector Macro, SkipCond, Lights, LightScene, SetupCond, Sound, Answer0, Answer1;
     virtual void v00() {}
     CCutsceneDef();

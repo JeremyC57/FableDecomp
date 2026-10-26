@@ -19,7 +19,7 @@ struct CWriter {
     void String(const char* s) { long n = (long)std::strlen(s) + 1; std::memcpy(Data + Size, s, n); Size += n; }
 };
 inline long ReadLong(CStream& stream) { int x; stream.Read(&x, 4); return x; }
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
@@ -66,7 +66,7 @@ template <> struct CPersistTraits<CCharString> {
     void TransferBinaryIn(CStream& stream, CCharString* out) const { char text[32]; stream.ReadString(text); *out = CCharString(text); }
 };
 inline void ReadCount(CStream& stream, long* out) { *out = ReadLong(stream); }
-struct CBlendedParticleEffectSet {
+class CBlendedParticleEffectSet { public:
     long Particle1Index; float Particle1Value; long Particle2Index; float Particle2Value;
     CBlendedParticleEffectSet() : Particle1Index(0), Particle1Value(0.0f), Particle2Index(0), Particle2Value(0.0f) {}
     void TransferBinaryIn(CStream& stream)

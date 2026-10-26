@@ -39,7 +39,7 @@ public:
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
 #pragma pack(pop)
-struct CShopItem {                                   // 28 bytes, POD
+class CShopItem { public:                                   // 28 bytes, POD
     float Quantity;                                  // +0x00
     float PriceMultiplier;                           // +0x04
     float MaxStock;                                  // +0x08

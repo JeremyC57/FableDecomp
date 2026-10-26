@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CBaseObject;
+class CBaseObject;
 struct CBaseObjectPointer { CBaseObject* object; unsigned long refcount; };
 static int g_freed = 0;
 static void Free(CBaseObjectPointer* p) { ++g_freed; delete p; }
-struct CBaseClass { virtual void v00() { } ~CBaseClass() { } };
-struct CBaseObject : CBaseClass {
+class CBaseClass { public: virtual void v00() { } ~CBaseClass() { } };
+class CBaseObject : public CBaseClass { public:
     CBaseObjectPointer* IntelligentPointer;
     virtual void v00() { }
     ~CBaseObject()

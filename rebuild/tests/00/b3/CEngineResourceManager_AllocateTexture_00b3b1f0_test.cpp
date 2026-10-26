@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DExtentsI { long x, y; };
-struct CPixelFormat { long FormatIndex; };
+class C2DExtentsI { public: long x, y; };
+class CPixelFormat { public: long FormatIndex; };
 static long g_args[7];
 class CTexture {
 public:
@@ -9,7 +9,7 @@ public:
     bool Initialise(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, int pool, bool dynamic, bool rt)
     { g_args[0] = size.x; g_args[1] = levels; g_args[2] = format.FormatIndex; g_args[3] = (long)usage; g_args[4] = pool; g_args[5] = dynamic; g_args[6] = rt; return true; }
 };
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     CTexture* AllocateTexture(unsigned long, const C2DExtentsI& size, long levels, const CPixelFormat& format)
     {
         CTexture* texture = new CTexture;

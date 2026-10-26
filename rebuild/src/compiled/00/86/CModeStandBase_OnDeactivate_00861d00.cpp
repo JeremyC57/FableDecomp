@@ -7,7 +7,7 @@
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CCPPointerInfo { unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: unsigned long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
 FABLE_STATIC_ASSERT(sizeof(CCPPointerInfo)==12);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,DeleteFunc)==4);
 FABLE_STATIC_ASSERT(offsetof(CCPPointerInfo,Data)==8);

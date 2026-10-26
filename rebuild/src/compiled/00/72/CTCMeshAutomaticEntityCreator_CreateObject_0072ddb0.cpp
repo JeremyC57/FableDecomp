@@ -15,16 +15,16 @@
 // whose key slot doubles as the result (no zero store when the interface is absent).
 // Layout (local model): CThing bitset +0x20, interface map +0x44, PGraphicAppearance +0x64, flags +0x91 (bit 1 = created
 // by owner); CTCGraphicAppearance scale +0x34; the component's owning thing +0x04.
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector First; C3DVector Second; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -65,16 +65,16 @@ public:
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
                                unsigned long flags, const CCharString& scriptName);   // 0x00703210
-struct CTCCreatedEntity {                             // interface 0x32
+class CTCCreatedEntity { public:                             // interface 0x32
     void SetPCreator(CThing* creator);                // 0x005ED440
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos);            // 0x004FC600
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CTCBase {
+class CTCBase { public:
     void*   __vftable;                                // +0x00
     CThing* ParentThing;                              // +0x04
     CWorldMap*          GetWorldMap();                // 0x00686D20

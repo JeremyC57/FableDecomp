@@ -24,7 +24,7 @@ static inline char* erase_range(char* _First, char* _Last, char* _Dest)
     return _Res;
 }
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     char pad78[0x78];
     Slot* s_first;   // +0x78
     Slot* s_last;    // +0x7c

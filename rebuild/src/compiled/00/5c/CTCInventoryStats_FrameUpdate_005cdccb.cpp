@@ -40,7 +40,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -74,11 +74,11 @@ struct CEventList {                                  // std::list<CEntityEvent*>
     SEventNode* begin() const { return _M_node->_M_next; }
     SEventNode* end() const { return _M_node; }
 };
-struct CTCEntityEvents {                             // interface type 0x42
+class CTCEntityEvents { public:                             // interface type 0x42
     unsigned char _pad00[0x0c];
     CEventList    Events;                            // +0x0c
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                     // 0x0049D870
 };
 struct SKillNode {                                   // the tree node: key +0x10, value +0x14

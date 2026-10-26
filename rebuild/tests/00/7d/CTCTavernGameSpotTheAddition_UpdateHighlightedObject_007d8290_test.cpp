@@ -4,18 +4,18 @@
 #include <cstring>
 #include <math.h>
 static int g_sounds = 0, g_destroyed = 0;
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     char m_text[48];
     CCharString(const char* text, long) { std::strcpy(m_text, text); }
     ~CCharString() {}
 };
-struct CThing {
+class CThing { public:
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };
 struct KnickKnack { C3DVector Pos; CThing* Thing; };
-struct CTavernGameSpotTheAdditionDef {
+class CTavernGameSpotTheAdditionDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long  m_count;
@@ -33,7 +33,7 @@ struct CSpotTheAdditionDefPointer {
     CTavernGameSpotTheAdditionDef* operator->() const { return Object; }
 };
 static CTavernGameSpotTheAdditionDef g_def;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CSpotTheAdditionDefPointer* out) { ++g_def.m_count; out->Object = &g_def; return true; }
 };
 struct CThingDefOwner { CDefClassBase* DefClass; };

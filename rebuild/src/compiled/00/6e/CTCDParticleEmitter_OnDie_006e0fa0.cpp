@@ -8,7 +8,7 @@ struct Target4 {
     void Notify();  // 0x6e0f10
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     int      m0;     // +0x00
     Target4* ParentThing;     // +0x04
     int      m8;     // +0x08

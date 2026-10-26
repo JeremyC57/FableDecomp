@@ -1,4 +1,4 @@
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
   char pad[0x1c];
   int field_1c;
 };

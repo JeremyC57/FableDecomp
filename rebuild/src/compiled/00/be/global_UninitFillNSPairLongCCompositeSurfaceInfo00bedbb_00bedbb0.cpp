@@ -16,9 +16,9 @@
 // strength-reduced into esi. The only caller is CCompositeSurfaceMap_Reallocate (0x00BEEF90).
 #include <new>
 
-struct CCompositeSurfaceCache;
+class CCompositeSurfaceCache;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
 };
 
@@ -32,7 +32,7 @@ struct CCountedPointer {
     }
 };
 
-struct CCompositeSurfaceInfo {                    // vtable 0x012A8154
+class CCompositeSurfaceInfo { public:                    // vtable 0x012A8154
     virtual void v00();
     CCountedPointer Cache;                        // +4
 };

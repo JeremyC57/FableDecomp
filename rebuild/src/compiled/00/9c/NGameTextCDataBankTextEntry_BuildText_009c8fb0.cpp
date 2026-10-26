@@ -34,7 +34,7 @@ struct CResourceMethods : CResource {
     }
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
     long DataSize;                     // +0x10
     long GetDataSize() const { return DataSize; }
@@ -51,7 +51,7 @@ struct SCountBlock {
     void* m_pObject;                         // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                               // +0
     SCountBlock* Info;                       // +4
     T* operator->() const { return Object; }
@@ -69,8 +69,8 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CDataInputStream;
-struct CMemoryDataInputStream {
+class CDataInputStream;
+class CMemoryDataInputStream { public:
     void* __vftable;
     unsigned char _body[0x18];
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
@@ -78,7 +78,7 @@ struct CMemoryDataInputStream {
 };
 
 namespace NGameText {
-struct CTextEntry : CResourceMethods {
+class CTextEntry : public CResourceMethods { public:
     void* SpeechBank;                                // +0x1c CCharString
     void* Narrator;                                  // +0x20 CCharString
     void* SoundName;                                 // +0x24 CCharString
@@ -89,7 +89,7 @@ struct CTextEntry : CResourceMethods {
     void ReadFromDataStream(CMemoryDataInputStream* stream);   // 0x009C8DE0
 };
 
-struct CDataBankTextEntry {
+class CDataBankTextEntry { public:
     CTextEntry* PText;                   // +0 CIVCountedPointer<NGameText::CTextEntry>
     long NarratorIndex;                  // +4
     void BuildText() const;              // ?BuildText@CDataBankTextEntry@NGameText@@ABEXXZ (private in the PDB)

@@ -8,7 +8,7 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
     SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k);   // 0x00BA0FC0
 };
 
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     unsigned char                          _pad[0x280];
     CEnginePrimitiveManagerStaticMeshesBase* m_pStaticMeshes;   // +0x280
     SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k);

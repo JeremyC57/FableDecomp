@@ -4,7 +4,7 @@
 // CDrawQuickAccessIcons::ClearSoundEffects: with a charging sound playing and a live hero that has the sound interface, the sound
 // is stopped and its ID forgotten; otherwise nothing changes.
 struct CTCSound { unsigned int stopped; void StopSound(unsigned int id) { stopped = id; } };
-struct CThing { bool alive; bool hasSound; CTCSound sound; bool HasInterface(long t) { return t == 0x10 && hasSound; } CTCSound* GetInterfaceUnchecked(long t) { (void)t; return &sound; } };
+class CThing { public: bool alive; bool hasSound; CTCSound sound; bool HasInterface(long t) { return t == 0x10 && hasSound; } CTCSound* GetInterfaceUnchecked(long t) { (void)t; return &sound; } };
 static bool IS_THING_ALIVE_0043dbd0(CThing* const& t) { return t != 0 && t->alive; }
 struct CDrawQuickAccessIcons {
     CThing* hero; unsigned int ChargingSoundID;

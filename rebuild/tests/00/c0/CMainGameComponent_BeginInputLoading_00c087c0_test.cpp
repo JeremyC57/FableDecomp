@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CMainGameComponent; static void* g_window = 0; static bool g_flag = false; static CMainGameComponent* g_owner = 0; static long g_context = -1;
+class CMainGameComponent; static void* g_window = 0; static bool g_flag = false; static CMainGameComponent* g_owner = 0; static long g_context = -1;
 static void BeginLoading(void* window, bool flag, CMainGameComponent* owner, long context) { g_window = window; g_flag = flag; g_owner = owner; g_context = context; }
-struct CMainGameComponent { void BeginInputLoading(void* window, bool flag) { BeginLoading(window, flag, this, 0); } };
+class CMainGameComponent { public: void BeginInputLoading(void* window, bool flag) { BeginLoading(window, flag, this, 0); } };
 
 int main()
 {

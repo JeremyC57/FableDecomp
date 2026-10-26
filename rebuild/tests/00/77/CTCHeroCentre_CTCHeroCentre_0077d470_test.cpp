@@ -2,13 +2,13 @@
 
 // Model of CTCHeroCentre::CTCHeroCentre(CThing*) @ 0x0077D470: null def, GUI mode and quest-card frame zeroed, both
 // vectors empty, not waiting for a tutorial.
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) { } virtual ~CTCBase() { } };
 struct CDefPointer { void* Object; CDefPointer() : Object(0) { } };
 template<class T> struct CRetailVector { T* m_pFirst; T* m_pLast; T* m_pEnd; CRetailVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
     long size() const { return (long)(m_pLast - m_pFirst); } };
-struct C3DVector { float X, Y, Z; };
-struct CTCHeroCentre : CTCBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCHeroCentre : public CTCBase { public:
     CDefPointer PDef; long CurrentGUIMode; unsigned long FrameQuestCardListFrom;
     CRetailVector<void*> QuestCards; CRetailVector<C3DVector> QuestCardPositions; bool WaitingForTutorialToFinish;
     CTCHeroCentre(CThing* thing) : CTCBase(thing), CurrentGUIMode(0), FrameQuestCardListFrom(0), WaitingForTutorialToFinish(false) { }

@@ -1,8 +1,8 @@
 // Behaviour test for CAIStateGroup_ServeFood::Update (0x009236C0): model copy, scripted stubs.
 #include <cstdio>
 
-struct CThing { bool dead; bool killed; int carrySlot; };
-struct CTCTavernTable {
+class CThing { public: bool dead; bool killed; int carrySlot; };
+class CTCTavernTable { public:
     bool Occupied;
     CThing* food;
     int notified;
@@ -10,7 +10,7 @@ struct CTCTavernTable {
     CThing* GetFood(long) { return food; }
     void NotifyFoodServed(long, CThing* f) { ++notified; notifiedFood = f; }
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* carried;
     int removed;
     void RemoveThingFromPrimarySlot(long) { ++removed; carried = 0; }

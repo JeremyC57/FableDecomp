@@ -4,14 +4,14 @@
 #include <string>
 static char g_log[2048];
 static void Log(const std::string& s) { std::strcat(g_log, s.c_str()); std::strcat(g_log, ";"); }
-struct CScriptThing { std::string name; };
+class CScriptThing { public: std::string name; };
 struct Handle {
     std::string who;
     void PlayAnimation(const std::string& a, bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7)
     { Log(!b1 && b2 && !b3 && !b4 && !b5 && !b6 && b7 ? who + ":" + a : "badanim"); }
 };
 struct Def { const char* const* speaker; const char* const* dialogue; const char* const* actor; const char* const* anim; const float* delay; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int activeFrames; CScriptThing hero;
     CScriptThing& GetHero() { hero.name = "hero"; return hero; }
     CScriptThing GetThingWithScriptName(const std::string& n) { CScriptThing t; t.name = n; return t; }

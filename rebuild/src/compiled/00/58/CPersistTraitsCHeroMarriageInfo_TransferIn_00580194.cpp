@@ -24,7 +24,7 @@ struct CBasicStringChar {
     static long __fastcall Compare(const char* a, const char* b);   // 0x00411570
     __forceinline bool operator==(const char* text) const { return Compare(PData, text) == 0; }
 };
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -39,12 +39,12 @@ struct CCharString {
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                 // 0x00BFEBA8
 __forceinline bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
-struct CStringParser {
+class CStringParser { public:
     CCharString ReadAsString();                        // 0x009BA6F0
     CCharString ReadAsSymbol();                        // 0x009BA790
     __int64 ReadInt64();                               // 0x009BA5B0
 };
-struct CPersistContext {
+class CPersistContext { public:
     void Error(const CStringParser& parser, const CCharString& message);       // 0x009BAA90
 };
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590

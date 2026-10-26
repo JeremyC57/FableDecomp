@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour of the record constructor at 0x005271C0: six arguments land in their members (two strings copied).
 static int g_copies = 0;
-struct CCharString { void* data; CCharString(void* d) : data(d) {} CCharString(const CCharString& other) : data(other.data) { ++g_copies; } };
+class CCharString { public: void* data; CCharString(void* d) : data(d) {} CCharString(const CCharString& other) : data(other.data) { ++g_copies; } };
 struct SFilterRecord_Retail {
     bool m_flag0; long m_value4; bool m_flag8; CCharString m_name0C; long m_value10; CCharString m_name14;
     SFilterRecord_Retail(bool flag0, const CCharString& name14, long value10, long value4, bool flag8, const CCharString& name0C)

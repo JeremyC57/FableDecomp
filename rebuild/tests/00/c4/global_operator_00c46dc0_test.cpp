@@ -1,6 +1,6 @@
 // Behaviour test for operator==(C2DVector, C2DVector) @ 0x00C46DC0: exact component equality (NaN never equal).
 #include <cstdio>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 static bool Equal(const C2DVector& a, const C2DVector& b) { return a.X == b.X && a.Y == b.Y; }
 int main()
 {

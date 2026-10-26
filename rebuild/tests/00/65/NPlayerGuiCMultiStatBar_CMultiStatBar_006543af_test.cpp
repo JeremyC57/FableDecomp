@@ -5,10 +5,10 @@ static void note(const char* s) { std::strcat(g_seq, s); }
 struct CStatBarInfo { int id; };
 namespace NPlayerGui {
 struct CRetailAllocator { CRetailAllocator() { } };
-struct CStatBase { virtual void v00() { } CStatBarInfo* Info; CStatBase(CStatBarInfo* info) : Info(info) { note("B"); } };
+class CStatBase { public: virtual void v00() { } CStatBarInfo* Info; CStatBase(CStatBarInfo* info) : Info(info) { note("B"); } };
 struct CRetailList_StatUpdate { void* Node; CRetailList_StatUpdate(const CRetailAllocator& al = CRetailAllocator()) : Node(&Node) { note("L"); } };
 struct CRGBColour { unsigned char B, G, R, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
-struct CMultiStatBar : CStatBase {
+class CMultiStatBar : public CStatBase { public:
     virtual void v00() { }
     CRetailList_StatUpdate Updates; long CurrentType; CRGBColour CurrentColour; long CurrentGraphic; long CurrentEffect; float CurrentTimeLeft; float WaitingTimeLeft;
     CMultiStatBar(CStatBarInfo* info) : CStatBase(info), Updates(), CurrentType(6), CurrentColour(0, 0, 0, 255), CurrentGraphic(0), CurrentEffect(0),

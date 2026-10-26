@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -57,7 +57,7 @@ public:
 };
 }
 
-struct CDefIndex {                                   // a def table index
+class CDefIndex { public:                                   // a def table index
     long Index;
     CDefIndex(long index) : Index(index) {}
 };

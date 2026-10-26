@@ -35,7 +35,7 @@ static void sort(SPair* first, SPair* last, CKeyPairCompareLess comp)   // stand
     }
 }
 
-struct CParticleMorphs {
+class CParticleMorphs { public:
     SPair storage[8];
     SPair* m_start;
     SPair* m_finish;

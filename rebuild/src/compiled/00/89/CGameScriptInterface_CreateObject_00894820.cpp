@@ -14,17 +14,17 @@
 //   is a named local default-constructed after the Create call, assigned from the by-value GetScriptThing temporary
 //   (both destructors inline), copied into the hidden result and destroyed (no NRVO in VC7.1).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -47,7 +47,7 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -55,7 +55,7 @@ struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
 };
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CThingObjectDef {
+class CThingObjectDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
@@ -65,7 +65,7 @@ struct CDefPointerThingObjectDef {
     CDefPointerThingObjectDef() : Object(0) {}
     ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
     bool GetDef(long globalIndex, CDefPointerThingObjectDef* out);               // 0x0042B040
 };
@@ -82,16 +82,16 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefP
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   _vptr;                      // +0x00
     void*                   World;                      // +0x04
     void*                   Component;                  // +0x08

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C2DVector { float X, Y; }; struct C3DVector { float X, Y, Z; };
-struct CInputEvent { long m_key; long m_4; bool m_8; unsigned char _pad09[3]; C3DVector m_movement; C2DVector m_position; long m_device; long m_24; long m_kind; float m_time; float m_time2;
+class C2DVector { public: float X, Y; }; class C3DVector { public: float X, Y, Z; };
+class CInputEvent { public: long m_key; long m_4; bool m_8; unsigned char _pad09[3]; C3DVector m_movement; C2DVector m_position; long m_device; long m_24; long m_kind; float m_time; float m_time2;
     void SetAsMouseWheel(long delta, double time) {
         m_time2 = (float)time; m_device = 3; m_time = (float)time; m_kind = 14; *(long*)&m_movement.Z = delta;
     }

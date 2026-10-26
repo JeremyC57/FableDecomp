@@ -11,15 +11,15 @@
 // (C3DVector has a user copy constructor: one register per dword, ecx/edx alternating), the 0x30-byte matrix is a
 // POD block (`rep movsd`), the scale a dword move; the flags argument is loaded before the matrix copy ends.
 
-struct C3DVector {                                       // memberwise user copy constructor
+class C3DVector { public:                                       // memberwise user copy constructor
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct C3DBoundingBox { C3DVector Min; C3DVector Max; };
-struct CMatrix3x4 { float m[12]; };                      // XAxis, YAxis, ZAxis, Position: a POD block
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };
+class CMatrix3x4 { public: float m[12]; };                      // XAxis, YAxis, ZAxis, Position: a POD block
 
-struct CWeatherMask {                                    // 0x5c bytes (PDB)
+class CWeatherMask { public:                                    // 0x5c bytes (PDB)
     C3DBoundingSphere BSphere;                           // +0x00
     C3DBoundingBox    BBox;                              // +0x10
     CMatrix3x4        InvTransform;                      // +0x28
@@ -28,7 +28,7 @@ struct CWeatherMask {                                    // 0x5c bytes (PDB)
         : BSphere(bSphere), BBox(bBox), InvTransform(invTransform), Scale(scale) { }
 };
 
-struct CEngineInternalPrimitiveWeatherMask {             // CEngineInternalPrimitiveBase (0x48) + the mask data
+class CEngineInternalPrimitiveWeatherMask { public:             // CEngineInternalPrimitiveBase (0x48) + the mask data
     unsigned char     _base[0x48];
     C3DBoundingSphere BSphere;                           // +0x48
     C3DBoundingBox    BBox;                              // +0x58
@@ -36,7 +36,7 @@ struct CEngineInternalPrimitiveWeatherMask {             // CEngineInternalPrimi
     float             Scale;                             // +0xa0
     unsigned long     Flags;                             // +0xa4
 };
-struct CEngineSubPrimitiveBase {                         // PDB, 0x18 bytes
+class CEngineSubPrimitiveBase { public:                         // PDB, 0x18 bytes
     void*                                vptr;           // +0x00
     unsigned long                        RenderFlags;    // +0x04
     unsigned char                        Alpha;          // +0x08
@@ -45,7 +45,7 @@ struct CEngineSubPrimitiveBase {                         // PDB, 0x18 bytes
     void*                                Manager;        // +0x14
 };
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     void AddWeatherMask(const CWeatherMask& mask, unsigned long flags);   // 0x00B50C80
 };
 void* FindRef_CEngineWeatherRenderer_AddWeatherMask_0();   // stand-in callee of the stand-in body below
@@ -63,7 +63,7 @@ __declspec(noinline) void CEngineWeatherRenderer::AddWeatherMask(const CWeatherM
 #pragma auto_inline(on)
 extern CEngineWeatherRenderer* g_pEngineWeatherRenderer;  // 0x01436E44
 
-struct CEnginePrimitiveManagerWeatherMask {
+class CEnginePrimitiveManagerWeatherMask { public:
     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& subPrimitive, long passType);
 };
 

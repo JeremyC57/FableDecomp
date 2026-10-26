@@ -13,9 +13,9 @@ struct CNames {
     const char* operator[](unsigned int i) const { return Items[i]; }
     const char* back() const { return Items[Count - 1]; }
 };
-struct CScriptThing { bool alive; bool IsAlive() const { return alive; } };
+class CScriptThing { public: bool alive; bool IsAlive() const { return alive; } };
 struct CQ_HangingTreeEvilScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_HangingTreeEvilScript* Owner;
     void NewScriptFrame() const;
     bool IsRegionLoaded(const char*) const { return g_frames < g_changeAt; }

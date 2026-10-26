@@ -39,7 +39,7 @@ struct CCarrySlotMap {                              // retail CVectorMap<long,CI
     iterator end() { return m_pLast; }
 };
 
-struct CCarrySlotDef {
+class CCarrySlotDef { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1
     long          m_refCount;                       // +0x04
@@ -47,7 +47,7 @@ struct CCarrySlotDef {
     bool          IsPrimary;                        // +0x30
 };
 
-template <class T> struct CDefPointer {             // the landed IsSlotPrimarySlot 0x006A1330 model
+template <class T> class CDefPointer { public:             // the landed IsSlotPrimarySlot 0x006A1330 model
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -61,7 +61,7 @@ template <class T> struct CDefPointer {             // the landed IsSlotPrimaryS
     T* operator->() const { return m_p; }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void GetDef(long index, CDefPointer<CCarrySlotDef>* out);   // 0x006A3060
 };
 void* FindDef_006a22d0();                           // stand-in callee of the stand-in body below
@@ -77,7 +77,7 @@ __declspec(noinline) void CDefinitionManager::GetDef(long index, CDefPointer<CCa
 }
 #pragma auto_inline(on)
 
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager* Get();               // 0x0044C6B0
 };
 
@@ -115,7 +115,7 @@ __declspec(noinline) void vector<T, A>::_M_insert_overflow(T* __position, const 
 }
 #pragma auto_inline(on)
 
-struct CTCCarrying {
+class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad04[0x0c - 0x04];
     CCarrySlotMap CarrySlots;                       // +0x0c

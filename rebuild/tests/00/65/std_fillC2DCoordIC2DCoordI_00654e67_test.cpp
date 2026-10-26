@@ -1,6 +1,6 @@
 // Behaviour test for 0x00654E67 std::fill<C2DCoordI*,C2DCoordI> (model copy)
 #include <cstdio>
-struct C2DCoordI { long X; long Y; };
+class C2DCoordI { public: long X; long Y; };
 template <class It, class T> void fill_model(It first, It last, const T& v) { for (; first != last; ++first) *first = v; }
 int main()
 {

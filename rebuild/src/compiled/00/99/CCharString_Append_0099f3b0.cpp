@@ -19,7 +19,7 @@ public:
     void Append(T c, unsigned long count);            // 0x009A0460
 };
 #pragma pack(push, 1)
-struct CCharStringData {
+class CCharStringData { public:
     CBasicString<char> Data;                          // +0x00 (13 bytes in the full model)
 };
 #pragma pack(pop)

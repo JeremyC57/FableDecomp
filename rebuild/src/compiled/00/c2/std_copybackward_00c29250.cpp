@@ -15,8 +15,8 @@
 //   byte-identical body (CPixelFormat is an engine type, not a pool type).
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;
-    struct CHandleInfo {                    // Ego_r.pdb: 4 bytes
+    class CHeader;
+    class CHandleInfo { public:                    // Ego_r.pdb: 4 bytes
         union { CHeader* Header; long NextFreeHandle; };
     };
 };

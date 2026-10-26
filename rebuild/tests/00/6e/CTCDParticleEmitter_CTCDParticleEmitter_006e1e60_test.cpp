@@ -15,11 +15,11 @@ struct CTCBase_Calls {
     void* __vftable; void* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     ~CTCBase_Calls() { g_seq[g_seqCount++] = 9; }
 };
-struct CCharString { int tag; ~CCharString() { g_seq[g_seqCount++] = tag; } };
+class CCharString { public: int tag; ~CCharString() { g_seq[g_seqCount++] = tag; } };
 struct CIntelligentPointer { void* __vftable; int tag; ~CIntelligentPointer() { g_seq[g_seqCount++] = tag; } };
 struct SCountedBlock { long Count; void (__fastcall* DeleteData)(void* data); void* Data; };
 static void __fastcall DeleteParams(void* data) { ++g_deleted; g_deletedData = data; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountedBlock* PBlock;
     ~CCountedPointer()
     {
@@ -34,7 +34,7 @@ template<class T> struct CCountedPointer {
         PBlock = 0;
     }
 };
-struct CTCDParticleEmitter : CTCBase_Calls {
+class CTCDParticleEmitter : public CTCBase_Calls { public:
     CCharString EmitterName; long ParticleTypeID; CIntelligentPointer PEmitter; CIntelligentPointer PAttachedToThing;
     unsigned long AttachmentFlags; CCharString AttachmentPosName; long AttachmentPosIndex; float FloatOffset;
     long DieOffTimer; long FramesLeftToWaitForParticleToCreate;

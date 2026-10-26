@@ -1,23 +1,23 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { const char* m_pText; };
-struct C3DVector { float X, Y, Z; };
-struct CChunkedFileSaver { int dummy; };
+class CCharString { public: const char* m_pText; };
+class C3DVector { public: float X, Y, Z; };
+class CChunkedFileSaver { public: int dummy; };
 static char g_trace[256];
 static void Log(const char* s) { std::strcat(g_trace, s); }
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long v) { char b[32]; std::sprintf(b, "U%lu;", v); Log(b); }
     void WriteFloat(float v) { char b[32]; std::sprintf(b, "F%g;", v); Log(b); }
     void Write3DVector(const C3DVector& v) { char b[64]; std::sprintf(b, "V%g,%g,%g;", v.X, v.Y, v.Z); Log(b); }
     void WriteNullTerminatedString(const CCharString& s) { Log("S"); Log(s.m_pText); Log(";"); }
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T& operator[](unsigned long i) const { return m_begin[i]; }
 };
 struct C3DPlane { C3DVector Normal; float Distance; };
-struct C3DMeshFileConvexVolumeChunk {
+class C3DMeshFileConvexVolumeChunk { public:
     CCharString Name;
     CArray<C3DPlane> Planes;
     void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const

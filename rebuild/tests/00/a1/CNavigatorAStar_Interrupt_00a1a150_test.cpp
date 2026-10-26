@@ -9,7 +9,7 @@ struct SubObject {
     void Notify(void* nav);
 };
 
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     char pad0[0x19];
     unsigned char Interrupted;      // +0x19
     char pad1[0x1c - 0x1a];

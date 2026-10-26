@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour copy of GFSerialiseVectorBinaryOut<CMusicEntry>: the count, then one traits write per element in order; the
 // traits' DefaultVal is the default CMusicEntry (ID 0, Filename -1, Gain 0, CacheToHD false).
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CMusicEntry {
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CMusicEntry { public:
     unsigned long ID; CDefString Filename; float Gain; bool CacheToHD;
     CMusicEntry() : ID(0), Gain(0.0f), CacheToHD(false) { }
 };

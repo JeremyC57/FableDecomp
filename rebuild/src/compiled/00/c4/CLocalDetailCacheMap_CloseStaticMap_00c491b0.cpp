@@ -1,6 +1,6 @@
 void operator delete[](void*);
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     char pad[0x10];
     void* f10;
 };

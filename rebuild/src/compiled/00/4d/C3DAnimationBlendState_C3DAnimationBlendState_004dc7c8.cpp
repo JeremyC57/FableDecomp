@@ -16,7 +16,7 @@ struct BlendBase {
     ~BlendBase();
 };
 
-struct C3DAnimationBlendState : public BlendBase {
+class C3DAnimationBlendState : public BlendBase { public:
     // ptr at +0xc
     RefObj* ptr;
     ~C3DAnimationBlendState();

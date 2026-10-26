@@ -10,19 +10,19 @@
 // Layout: Ego_r.pdb CFisticuffsClubRing: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_FisticuffsClubScript,
 //   retail = PDB - 0x14), PMasterData +0x18. CScriptDef (pGlobalScriptDef 0x0143E90C, retail = PDB - 0x5c here): FC_OutsideRingRange
 //   +0x5e4, FC_RingTimeOut +0x5e8, FC_RingRadius +0x61c, FC_InsideRingMessageDelay +0x620.
-struct CTimer;
-struct CCharString {
+class CTimer;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -45,8 +45,8 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
@@ -58,13 +58,13 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;
@@ -141,14 +141,14 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
     ~CIsThingAlive();                                   // 0x00E241B0
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
     __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x5e4];
     float FC_OutsideRingRange;                          // +0x5e4
     float FC_RingTimeOut;                               // +0x5e8
@@ -190,7 +190,7 @@ inline void ClampMeter(float& meter)
     else if (meter > 12.0f)
         meter = 12.0f;
 }
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

@@ -57,7 +57,7 @@ inline CCharString GetQuestNameFromSectionName(const CCharString& name)   // the
         return name.GetSubString(0, pos);
     return name;
 }
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x2c];
     CCharString*  RegisteredQuestNames_start;      // +0x2c
     CCharString*  RegisteredQuestNames_finish;     // +0x30

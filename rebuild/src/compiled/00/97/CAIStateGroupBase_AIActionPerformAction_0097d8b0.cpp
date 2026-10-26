@@ -8,7 +8,7 @@
 // line here (the sibling 0x0097D980 inlines it) and shared by both returns (`lea ecx` before the `je`).
 // Fix (sweep 3): the callee 0x0088B8F0 is CAIBrain::SetOutput (PDB name; FINDINGS chunk 482), bound with the PDB class keys
 //   (class CAIBrain / CBrainOutput) instead of the invented SetBrainOutput. Same bytes.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer
 {
@@ -68,21 +68,21 @@ public:
                                                     // manifest's "CQuestManager::RemoveAvailableQuestCardType" is propagated)
 };
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
     virtual void* Clone() const;                    // slot 11 (+0x2c)
 };
 
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
 
-struct CAIStateGroupBase
-{
+class CAIStateGroupBase
+{ public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08

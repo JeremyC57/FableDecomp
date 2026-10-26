@@ -9,11 +9,11 @@
 #define CChunkedFileChunk CChunkedFileChunkPdb
 #include "engine/CChunkedFileChunk.h"
 #undef CChunkedFileChunk
-struct CChunkedFileChunk {                  // vtable 0x0129E474 (.?AVCChunkedFileChunk@@)
+class CChunkedFileChunk { public:                  // vtable 0x0129E474 (.?AVCChunkedFileChunk@@)
     void* _vptr;
     ~CChunkedFileChunk();                   // 0x00AA75C0 (stores the vtable, tail-jumps ~CBaseClassNonCopyable)
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

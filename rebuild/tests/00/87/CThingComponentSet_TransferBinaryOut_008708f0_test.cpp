@@ -2,7 +2,7 @@
 #include <cstring>
 // behaviour test for CThingComponentSet::TransferBinaryOut (0x008708F0)
 #pragma pack(push, 1)
-struct CDefString { int TablePos; CDefString() : TablePos(-1) { } };
+class CDefString { public: int TablePos; CDefString() : TablePos(-1) { } };
 struct CEntry {
     CDefString Name;
     unsigned int DriverType;
@@ -10,19 +10,19 @@ struct CEntry {
     CEntry() : DriverType(0), Override(false) { }
 };
 #pragma pack(pop)
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned char buffer[256];
     long used;
     CDataOutputStream() : used(0) { }
     virtual void Write(const void* data, long bytes) { std::memcpy(buffer + used, data, bytes); used += bytes; }
     void WriteLong(long value) { int v = (int)value; Write(&v, 4); }
 };
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;
     signed char Size;
     const T* GetData() const { return Size > 0 ? Start : (const T*)this; }
 };
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector<CEntry, 8> Entries;
     void TransferBinaryOut(CDataOutputStream& stream) const;
 };

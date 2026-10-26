@@ -19,13 +19,13 @@
 #include <stddef.h>
 typedef unsigned short wchar16;
 
-struct CWideString;
-struct CCharString {
+class CWideString;
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
     CWideString ToWideString() const;                // 0x0099E480
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const wchar16* text);                // 0x0099B6B0
     ~CWideString();                                  // 0x0099B510
@@ -45,15 +45,15 @@ struct CFindFileHandle {
 };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
 
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) { }
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
 };
-struct CSurface {
+class CSurface { public:
     void*         PD3DSurface;
     unsigned long AllocationSource;
     void*         PAllocatedMemory;
@@ -61,7 +61,7 @@ struct CSurface {
     void Uninitialise();                             // 0x009F2E20
     void LoadFromBitmapFileToPreallocatedSurface(const CWideString& filename, unsigned long flags);   // 0x009F2DD0
 };
-struct CTexture {
+class CTexture { public:
     void*         PD3DTexture;
     unsigned long ByteLength : 28;
     unsigned long AllocationSource : 4;

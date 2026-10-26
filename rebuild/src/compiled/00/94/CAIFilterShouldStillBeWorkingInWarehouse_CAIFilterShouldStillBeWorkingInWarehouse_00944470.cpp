@@ -8,8 +8,8 @@
 // (base ctor, own vtable, SetPItem(other.GetPItem())). The two 8-byte by-value pointer arguments are
 // destroyed at the end through the base destructor (the derived classes declare none). The members'
 // roles come from operator() at 0x009444E0 (+8 has a byte flag at +0x18 and a slot-7 test against +0x10).
-struct CBaseObject;
-struct CTCVillage;
+class CBaseObject;
+class CTCVillage;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

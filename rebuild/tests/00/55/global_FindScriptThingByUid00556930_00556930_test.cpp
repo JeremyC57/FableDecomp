@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct SIdentity { unsigned char _pad[8]; long m_uid; }; struct SIdentityHolder { SIdentity* m_pIdentity; };
-struct CThing { unsigned char _pad[0x19c]; SIdentityHolder* m_pHolder; long m_map; };
+class CThing { public: unsigned char _pad[0x19c]; SIdentityHolder* m_pHolder; long m_map; };
 struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_pThing; }; struct CThingList { SNode* m_pHead; };
 static CThing* FindScriptThingByUid_00556930(long uid, CThingList* list, long map) { SNode* head = list->m_pHead; for (SNode* node = head->m_pNext; node != head; node = node->m_pNext) { CThing* thing = node->m_pThing; if (thing->m_pHolder->m_pIdentity->m_uid == uid && thing->m_map == map) return node->m_pThing; } return 0; }
 

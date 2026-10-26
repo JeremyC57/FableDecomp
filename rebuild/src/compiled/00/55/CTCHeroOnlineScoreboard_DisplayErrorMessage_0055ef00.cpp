@@ -10,11 +10,11 @@
 // Layout: retail CTCHeroOnlineScoreboard per the landed ctor 0x00562EC0 / ResetScoreboard 0x00562E70: PConnectingMessage
 // +0x60, PConnectingMessage1 +0x64 (PDB +0x80/+0x84; the landed OnOkClicked 0x0055EE20 calls +0x60 PScoreboardScreen --
 // a naming conflict for review); retail CTCInventory's PMouse_Pointer is +0x214 (PDB +0x260).
-struct CTCBase;
-struct CWideString;
+class CTCBase;
+class CWideString;
 
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length);      // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -22,7 +22,7 @@ struct CCharString {
 };
 
 namespace NUISystem {
-struct CAction {                                     // retail 0x10 bytes
+class CAction { public:                                     // retail 0x10 bytes
     long  ActionType;                                // +0x00
     void* UIActionParams;                            // +0x04
     void* ThingActionParams;                         // +0x08
@@ -36,7 +36,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);          // +4
     void* m_pObject;                                 // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           m_pObject;                          // +0
     SCountBlock* m_pCount;                           // +4
     CCountedPointer(T* object);                      // 0x0042AA29
@@ -53,7 +53,7 @@ template <class T> struct CCountedPointer {
 };
 
 namespace NUISystem {
-struct CObserver {
+class CObserver { public:
     virtual void o00(); virtual void o01(); virtual void o02();
     virtual void ObserveEvent(long eventType);       // slot 3 (+0x0C)
     virtual void o04(); virtual void o05();
@@ -61,7 +61,7 @@ struct CObserver {
 };
 struct CComponentBase {
     virtual void v00(); virtual void v01(); virtual void v02();
-    virtual struct CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
+    virtual class CComponent* FindChild(CCharString name);   // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
@@ -95,9 +95,9 @@ struct CComponentBase {
     virtual void v142(); virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);   // slot 144 (+0x240)
 };
-struct CComponent : CComponentBase, CObserver {
+class CComponent : public CComponentBase, public CObserver { public:
 };
-struct CManager {
+class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
     virtual void AddFocus_slot5(CObserver* observer);     // slot 5 (+0x14)
     virtual void m06(); virtual void m07(); virtual void m08();
@@ -113,7 +113,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     unsigned long m_presentBits[9];                  // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -134,12 +134,12 @@ struct CThing {
     }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char          _pad_0x000[0x214];
     NUISystem::CComponent* PMouse_Pointer;           // +0x214
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void*                  __vftable;                // +0x00
     CThing*                ParentThing;              // +0x04
     unsigned char          _pad_0x08[0x58];

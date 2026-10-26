@@ -1,11 +1,11 @@
-struct C3DAnimationInfo;
+class C3DAnimationInfo;
 
 struct CBank {
     int handle;
     void Load(int arg);
 };
 
-struct CEngine {
+class CEngine { public:
     char pad[0xc0];
     CBank* banks; // +0xc0
     C3DAnimationInfo* Resolve();

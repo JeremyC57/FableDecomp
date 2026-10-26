@@ -5,9 +5,9 @@ static void Log(const char* s) { int l = (int)std::strlen(s); if (g_n + l + 1 < 
 static int Check(const char* addr, const char* want) { if (std::strcmp(g_log, want) != 0) { std::printf("%s_TEST FAIL\n%s\n", addr, g_log); return 1; } std::printf("%s_TEST PASS\n", addr); return 0; }
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; ~CBaseIntelligentPointer() { char b[16]; std::sprintf(b, "ptr%d", (int)(long)m_pItem); Log(b); } };
 struct CIntelligentPointer : CBaseIntelligentPointer { };
-struct CCharString { char* m_pData; ~CCharString() { Log("str"); } };
-struct CAnimFilterBase { virtual void v00() {} ~CAnimFilterBase() { Log("filterbase"); } };
-struct CAnimFilterOfGroup : CAnimFilterBase { CCharString m_group; long m_groupIndex; };
+class CCharString { public: char* m_pData; ~CCharString() { Log("str"); } };
+class CAnimFilterBase { public: virtual void v00() {} ~CAnimFilterBase() { Log("filterbase"); } };
+class CAnimFilterOfGroup : public CAnimFilterBase { public: CCharString m_group; long m_groupIndex; };
 struct CModeStandBase { virtual void v00() {} ~CModeStandBase() { Log("stand"); } unsigned char _pad[0x64]; };
 struct CModeStandNamed_008cc280 : CModeStandBase { CAnimFilterOfGroup m_filter; CIntelligentPointer m_pThing0, m_pThing1, m_pThing2; ~CModeStandNamed_008cc280() { } };
 int main()

@@ -9,25 +9,25 @@
 // GetPWorld(); w->m_pCombatManager->DeregisterCombatant(c); }` -- the creature is re-read into a local (edi)
 // before the GetPWorld call so it survives it, and the world must be a named local too: with the chained
 // expression VC pushes the creature BEFORE the GetPWorld call (42 bytes), with the local it pushes edi after. The engine header keeps PBrain as a pad, so the base layout is local.
-struct CThingAICreature {
+class CThingAICreature { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void DeregisterCombatant(CThingAICreature* pCreature);   // 0x006ED9C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;           // +0x4c
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

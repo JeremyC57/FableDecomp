@@ -10,7 +10,7 @@ static int fails = 0;
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
 extern float g_fEpsilon;                           // 0x0129BA3C
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

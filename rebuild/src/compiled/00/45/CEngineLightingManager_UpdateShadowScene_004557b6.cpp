@@ -1,4 +1,4 @@
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
 // Leaf: UpdateShadowScene
     char pad[0x18];
     int mode;      // +0x18

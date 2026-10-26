@@ -7,14 +7,14 @@ struct CThingPhysicalDef {
     unsigned char _flags42_0 : 2;
     unsigned char AbleToComeBetweenCameraAndObservedThing : 1;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) {}
     CDefPointer(const CDefPointer& other) : m_pDef(other.m_pDef) { if (m_pDef) ++m_pDef->m_refCount; }
     ~CDefPointer() { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); }
     T* operator->() const { return m_pDef; }
 };
-struct CThingPhysical {
+class CThingPhysical { public:
     CDefPointer<CThingPhysicalDef>  PBaseDef;
     long                            CanComeBetweenCameraAndObservedThing;
     CDefPointer<CThingPhysicalDef> GetDef() const { return PBaseDef; }

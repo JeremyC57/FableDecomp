@@ -8,7 +8,7 @@
 // Shape: two index loops re-reading size() every pass; `a` is a reference to element i taken once per outer pass;
 //   erase(begin() + j) copies the tail down element by element (STLport __copy_ptrs with __false_type: SGI
 //   `for (n = last - first; n > 0; --n)`), decrements finish, and the loop steps j back.
-template <class T> struct CArray {                 // retail CArray (STLport vector): first / last / end
+template <class T> class CArray { public:                 // retail CArray (STLport vector): first / last / end
     T* m_first;
     T* m_last;
     T* m_end;
@@ -34,11 +34,11 @@ template <class T> struct CArray {                 // retail CArray (STLport vec
     }
 };
 namespace QuadricOptimiserInternals {
-struct CSubContraction {
+class CSubContraction { public:
     unsigned long Index1;                          // +0x00
     unsigned long Index2;                          // +0x04
 };
-struct CVertexPairContraction {
+class CVertexPairContraction { public:
     bool                    Exists;                // +0x00
     bool                    Unsplit;               // +0x01
     CArray<CSubContraction> SubContractions;       // +0x04

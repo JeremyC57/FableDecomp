@@ -12,7 +12,7 @@
 // No engine header exists for CTargetingDef: modelled locally from struct_layouts_egor.tsv.
 #pragma optimize("s", on)
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                                            // +0x04..+0x28
     CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
@@ -26,7 +26,7 @@ struct CRetailTree_0045d871 {                                             // ret
     CRetailTree_0045d871& operator=(const CRetailTree_0045d871& other);   // 0x0045D7FE
 };
 
-struct CTargetingDef : CDefClassBase {                                    // vtable 0x01232D84
+class CTargetingDef : public CDefClassBase { public:                                    // vtable 0x01232D84
     unsigned long Type;                                                   // +0x28
     bool  UseGlowTargeting;                                               // +0x2c
     float TargetArc;                                                      // +0x30

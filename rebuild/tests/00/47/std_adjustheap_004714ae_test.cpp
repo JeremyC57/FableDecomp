@@ -1,7 +1,7 @@
 // Behaviour test for 0x004714ae __adjust_heap<pair<unsigned long, CDefString>*>: sift a hole to the bottom, push the value
 // back up; driving it as pop_heap repeatedly yields keys in descending order (a max-heap on the unsigned key)
 #include <cstdio>
-struct CDefString { int TablePos; };
+class CDefString { public: int TablePos; };
 struct Entry { unsigned int first; CDefString second; };
 struct Less { bool operator()(const Entry& a, const Entry& b) const { return a.first < b.first; } };
 static void PushHeap(Entry* first, int holeIndex, int topIndex, Entry value, Less comp)

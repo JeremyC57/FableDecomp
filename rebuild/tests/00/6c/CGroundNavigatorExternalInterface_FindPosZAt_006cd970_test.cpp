@@ -1,8 +1,8 @@
 #include "engine/CGroundNavigatorExternalInterface.h"
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CThingCreatureBase { float FindPosZ(const C3DVector& pos, int flag, bool b); };
+class C3DVector { public: float x, y, z; };
+class CThingCreatureBase { public: float FindPosZ(const C3DVector& pos, int flag, bool b); };
 
 static const C3DVector* g_expect_pos;
 static bool g_expect_b;

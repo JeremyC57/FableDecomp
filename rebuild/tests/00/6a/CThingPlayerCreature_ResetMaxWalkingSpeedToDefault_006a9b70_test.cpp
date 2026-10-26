@@ -1,22 +1,22 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length) : m_pData(text) { (void)length; }
     ~CCharString() { m_pData = 0; }
 };
-struct CThingCreatureDef { float MaxWalkingSpeed; };
-template <class T> struct CDefPointer {
+class CThingCreatureDef { public: float MaxWalkingSpeed; };
+template <class T> class CDefPointer { public:
     T* m_pDef;
     T* operator->() const { return m_pDef; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CDefPointer<CThingCreatureDef>  PDef;
     float* m_lastSpeed; char m_lastName[16]; float m_seen;
     void InitialiseMovementSpeed(float* speed, const CCharString& name)
     { m_lastSpeed = speed; std::strcpy(m_lastName, name.m_pData); m_seen = *speed; }
 };
-struct CThingPlayerCreature : CThingCreatureBase {
+class CThingPlayerCreature : public CThingCreatureBase { public:
     float MaxWalkingSpeed;
     void ResetMaxWalkingSpeedToDefault();
 };

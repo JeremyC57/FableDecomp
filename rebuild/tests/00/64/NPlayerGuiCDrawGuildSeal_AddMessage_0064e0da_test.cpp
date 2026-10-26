@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1) : PStringData((void*)text) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) {}
     ~CCharString() {}
 };
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     unsigned long w[9];
     bool test(long bit) { return (w[bit >> 5] & (1UL << (bit & 31))) != 0; }
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -35,11 +35,11 @@ struct CThing {
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && thing->alive; }
-struct CThingCreatureBase : CThing { bool child; bool IsChild() { return child; } };
-struct CPlayer { CThingCreatureBase* creature; CThingCreatureBase* GetControlledCreature() { return creature; } };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CThingCreatureBase : public CThing { public: bool child; bool IsChild() { return child; } };
+class CPlayer { public: CThingCreatureBase* creature; CThingCreatureBase* GetControlledCreature() { return creature; } };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
 static long g_sealIndex = 0; static const char* g_nameSeen = 0; static int g_nameCalls = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameCalls; g_nameSeen = (const char*)name.PStringData; return g_sealIndex; }
 };
 struct CDefinitionOwner { unsigned char _pad[0x10]; CDefinitionManager* DefinitionManager; };
@@ -60,7 +60,7 @@ struct CMessageDeque {
     bool empty() const { return FinishCur == StartCur; }
     void push_back(const SGuildSealMessage& message) { ++g_pushCalls; g_pushText = message.Text.PStringData; g_pushTime = message.Time; FinishCur = (char*)FinishCur + 8; }
 };
-struct CDrawGuildSeal {
+class CDrawGuildSeal { public:
     unsigned char _pad0[8];
     CPlayerManager* PlayerManager;
     CDefinitionOwner* Definitions;

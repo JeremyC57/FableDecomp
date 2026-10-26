@@ -12,28 +12,28 @@
 // constructor call (homed in the dead `shadow` slot).
 // Leaf: AddText
 #pragma optimize("s", on)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };
-struct CFontBank;
+class CFontBank;
 enum EEngine2DLayer { ENGINE_2D_LAYER_0 = 0 };
 enum EEngineInterpolationSet { ENGINE_INTERPOLATION_SET_0 = 0 };
 float __fastcall GFRoundVXToNearestPixel(double x);    // 0x009E1D00
 float __fastcall GFRoundVYToNearestPixel(double y);    // 0x009E1D50
 void __fastcall GFVCoordToACoord(const C2DVector& v, C2DVector& a);   // 0x009E22C0
 
-struct CEnginePrimitive2DText {                    // 0x2c bytes
+class CEnginePrimitive2DText { public:                    // 0x2c bytes
     unsigned char _header[0x0c];
     C2DVector     m_position;                      // +0x0c
     unsigned long m_userData;                      // +0x14
@@ -51,7 +51,7 @@ struct CTextList {
 };
 
 namespace NPlayerGui {
-struct CDraw2DText {
+class CDraw2DText { public:
     unsigned char _pad00[0x28];
     CTextList     Texts;                           // +0x28
     void AddText(const C2DVector& position, const CWideString& text, CFontBank* font, const CRGBColour& colour,

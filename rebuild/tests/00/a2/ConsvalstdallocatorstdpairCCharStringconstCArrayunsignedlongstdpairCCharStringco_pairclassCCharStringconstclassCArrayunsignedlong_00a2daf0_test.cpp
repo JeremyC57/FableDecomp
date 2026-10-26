@@ -1,6 +1,6 @@
 #include <cstdio>
 // Independent behaviour model of _Cons_val: construct both pair members only when self != 0.
-struct CCharString { int p; };
+class CCharString { public: int p; };
 struct CArrayUL { int p; };
 struct Pair { CCharString first; CArrayUL second; };
 

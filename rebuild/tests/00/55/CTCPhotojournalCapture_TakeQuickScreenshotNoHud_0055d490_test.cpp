@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CPlayerGui {
+class CPlayerGui { public:
     long state;
     bool IsOpen() const { return state != 1; }
     void Close(bool immediately) { state = immediately ? 1 : 3; }
 };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     long FrameCounter;
     bool WasPlayerGuiOpen;
     void TakeQuickScreenshotNoHud()

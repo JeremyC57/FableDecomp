@@ -5,7 +5,7 @@
 // Layout: interface 0x36 -> bitset word 1 (+0x24) bit 22 (`test dword ptr [eax+24h],400000h`).
 // Shape: an absent component returns the constant (`mov al,1`), the `a || b || c` chain is materialised as an int
 // (`mov eax,1` / `xor eax,eax`); the present case is the `if` body so the constant tail lands last.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -14,7 +14,7 @@ struct CInterfaceMap {                              // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -40,7 +40,7 @@ struct CTCInterface36 {                             // interface 0x36 component 
     bool m_flagC;                                   // +0x0e
 };
 
-struct CThingFilter_IsPerceptible {
+class CThingFilter_IsPerceptible { public:
     bool operator()(CThing* thing) const;
 };
 

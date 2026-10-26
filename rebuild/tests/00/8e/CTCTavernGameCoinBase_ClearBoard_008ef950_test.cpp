@@ -9,9 +9,9 @@
 #define __cdecl
 #define __declspec(x)
 #endif
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -27,7 +27,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
 };
 
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     virtual ~Coin();
     unsigned char _pad_0x04[0x20];
     bool          Owned;                        // +0x24

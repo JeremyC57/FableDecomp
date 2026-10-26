@@ -14,19 +14,19 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct C4DVector { float X, Y, Z, W; };
-struct C3DVector {
+class C4DVector { public: float X, Y, Z, W; };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;
 };
-struct CMovableResourceMemoryPool;
+class CMovableResourceMemoryPool;
 
-struct CMovableResource {
+class CMovableResource { public:
     virtual ~CMovableResource();
 };
 
@@ -35,7 +35,7 @@ struct CCountedPointer_RenderData {                    // CCountedPointer<CParti
     void* Info;
 };
 
-struct CParticleSimulation : CMovableResource {        // 0x80 bytes, vtable 0x0129F0C4
+class CParticleSimulation : public CMovableResource { public:        // 0x80 bytes, vtable 0x0129F0C4
     CCountedPointer_RenderData  RenderData;            // +0x04
     float                       Timestep;              // +0x0c
     bool                        TimestepChanged;       // +0x10

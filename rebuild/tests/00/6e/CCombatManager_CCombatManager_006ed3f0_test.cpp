@@ -3,11 +3,11 @@
 #include <map>
 #include <string>
 
-struct CWorld { int dummy; };
+class CWorld { public: int dummy; };
 struct Info { int x; };
 static int g_registerCalls = 0;
 static int g_dialogueCalls = 0;
-struct CombatDialogueManager { CombatDialogueManager() { ++g_dialogueCalls; } };
+class CombatDialogueManager { public: CombatDialogueManager() { ++g_dialogueCalls; } };
 struct Base { virtual ~Base() { } };
 struct Manager : Base {
     std::map<std::string, int> RegisteredCombatSequences;

@@ -6,11 +6,11 @@
 // RaceStarting
 static int g_frames = 0, g_endAt = 100, g_cutsceneAt = 3, g_convEndsAt = 0;
 static std::vector<std::string> g_log;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static float g_guardX = 0.0f;                          // the guard walks one unit along X per frame while moving
 static float g_targetX = 0.0f;
 static bool g_moving = false;
-struct CScriptThing {
+class CScriptThing { public:
     C3DVector pos, home;
     const C3DVector& GetPos() const { return pos; }
     C3DVector GetHomePos() const { return home; }
@@ -25,7 +25,7 @@ static bool IsDistanceFromThingToPositionOver(const CScriptThing& t, const C3DVe
 struct CQ_PrisonEscapeRescueMotherScript { bool PrisonCutsceneFinished, RaceStarting; };
 struct CQ_SunnyvaleMasterData { bool PrisonKeyStolenByHero; };
 static CQ_PrisonEscapeRescueMotherScript* g_quest;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero, exitPoint;
     void NewScriptFrame() {
         ++g_frames;

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void* vftable;
     int destroyed;
 };

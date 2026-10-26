@@ -22,7 +22,7 @@ struct CTarget3 {
     void Draw(void* a) { g_t3Calls++; g_t3This = this; g_t3A = a; }
 };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;
     char pad2[0x24 - 0x1c];

@@ -7,11 +7,11 @@
 // containers before it). Frame-pointer size TU of the 0x004Dxxxx definition module (`push ebp ; mov ebp,esp ; push ecx`, `leave`). The method is
 // the virtual persist hook (mangled `?Transfer@CDrunkennessDef@@UAEXAAVCPersistContext@@@Z`).
 // Leaf: Transfer
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
 };
 
-struct CDrunkennessDef {
+class CDrunkennessDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _pad[0x24];                      // +0x04 .. +0x28: the definition base's members
     float         DrunkennessThresholdMult;        // +0x28

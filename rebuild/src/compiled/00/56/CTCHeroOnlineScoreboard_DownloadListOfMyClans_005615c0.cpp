@@ -23,9 +23,9 @@ extern "C" unsigned int __cdecl strlen(const char* text);
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strlen)
 
-struct CWideString;
-struct CCharStringData { char* m_pString; };
-struct CCharString {
+class CWideString;
+class CCharStringData { public: char* m_pString; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                   // 0x0099E4B0
     CCharString(const char* text, long length = -1); // 0x0099EBF0
@@ -36,7 +36,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 long __fastcall GFCharStringToInt(const CCharString& text);                            // 0x0099E7F0
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                   // 0x0099AED0
     CWideString(const CWideString& other);           // 0x0099B720
@@ -44,7 +44,7 @@ struct CWideString {
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                  // +0x110
     CWideString   SignedInPassword;                  // +0x114
@@ -79,7 +79,7 @@ struct LHStringVector {                              // vector<std::string>
 };
 
 namespace LHNetworkLib {
-struct LHHttp2 {
+class LHHttp2 { public:
     ~LHHttp2();                                      // 0x008410D0
 };
 }

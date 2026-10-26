@@ -7,12 +7,12 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const { return m_pData[index]; }
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     long GetCount() const { return m_pLast - m_pFirst; }
     T& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
-struct CBankFileEntryUpdateData { unsigned char _pad[0x14]; bool m_update; };
+class CBankFileEntryUpdateData { public: unsigned char _pad[0x14]; bool m_update; };
 struct CDiskFileCalls {
     unsigned long m_position; unsigned long m_readSize; void* m_readBuffer; int m_closed; int m_opened; unsigned long m_mode, m_share;
     virtual void Open(const void*, unsigned long mode, unsigned long share) { ++m_opened; m_mode = mode; m_share = share; }
@@ -21,7 +21,7 @@ struct CDiskFileCalls {
     virtual void Seek(unsigned long position) { m_position = position; }
     virtual unsigned long GetPosition() { return m_position; }
 };
-struct CBankFile {
+class CBankFile { public:
     unsigned long Size;
     CArray<CRuntimeData> RuntimeData;
     CArray<CBankFileEntryUpdateData*> UpdateData;

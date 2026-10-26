@@ -15,15 +15,15 @@
 // Shape: the derived action ctor is an inline (forced) wrapper over the out-of-line base ctor so the vptr store is
 //         visible and the virtual Clone folds to [vtable+0x2c]; the action lives in its own block (destroyed before
 //         SetBrainOutput); CBrainOutput's dtor is inline (forced) -- implicit, it was emitted out of line here.
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,23 +58,23 @@ struct CTCOccupiable {                          // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
     void SetOccupant(CThing* occupant);         // 0x0087C390
 };
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
 };
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* thing, long status);     // 0x00747B80
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
@@ -82,7 +82,7 @@ struct CCreatureActionBase {
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
     CCombatActionBase(CThingCreatureBase* creature, CThing* target, long action, const CSoundPair& sound);   // 0x00857F30
     ~CCombatActionBase();                           // 0x0062E900
@@ -110,7 +110,7 @@ struct CCountedPointer {
         Block = 0;
     }
 };
-struct CBrainOutput {                               // 0x48 bytes
+class CBrainOutput { public:                               // 0x48 bytes
     unsigned long Flags;                            // +0x00 (8: perform action)
     unsigned char _pad04[0x20 - 0x04];
     CCountedPointer PAction;                        // +0x20
@@ -122,12 +122,12 @@ struct CBrainOutput {                               // 0x48 bytes
 struct CThingCreature : CThing {
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
     void SetBrainOutput(const CBrainOutput& output);  // 0x0088B8F0
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

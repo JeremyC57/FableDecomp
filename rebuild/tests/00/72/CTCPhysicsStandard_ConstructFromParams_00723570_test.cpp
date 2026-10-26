@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsStandard::ConstructFromParams (0x00723570): base position copy, then RHSet / OldRHSet from the params
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CTCParamsPhysics { C3DVector Position; CRightHandedSet RHSet; };
-struct CTCPhysicsBase { C3DVector Position, OldPosition;
+class CTCPhysicsBase { public: C3DVector Position, OldPosition;
     void ConstructFromParams(const CTCParamsPhysics* p) { OldPosition = p->Position; Position = p->Position; } };
 struct CTCPhysicsStandard : CTCPhysicsBase { CRightHandedSet RHSet, OldRHSet;
     void ConstructFromParams(const CTCParamsPhysics* p) { CTCPhysicsBase::ConstructFromParams(p); RHSet = p->RHSet; OldRHSet = p->RHSet; } };

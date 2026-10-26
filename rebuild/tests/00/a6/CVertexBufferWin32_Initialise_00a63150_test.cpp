@@ -3,7 +3,7 @@
 #define __stdcall
 #define __fastcall
 #define FABLE_ENGINE_CVERTEXBUFFERWIN32_H
-struct CVertexBufferWin32 { void* __vftable; unsigned char _base_0x04[0x30]; };
+class CVertexBufferWin32 { public: void* __vftable; unsigned char _base_0x04[0x30]; };
 #endif
 // CVertexBufferWin32::Initialise(long,long,long,unsigned long,long) -- create D3D buffer, record its format and reset vertex decoding
 // Retail 0x00A63150,165 bytes. GetSystem009A4EC0; IDirect3DDevice9::CreateVertexBuffer slot26.

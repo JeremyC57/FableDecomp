@@ -1,8 +1,8 @@
 #include <cstdio>
 // Model of CAIStateGroup_SleepOnFloor::OnActivate @ 0x00969A80: assign the creature to the floor's task, clear Sleeping.
 struct CThingCreature { int id; };
-struct CVillageTaskBase { CThingCreature* assigned; void AssignCreatureToTask(CThingCreature* c) { assigned = c; } };
-struct CThing { unsigned long bits[9]; CVillageTaskBase* task; bool GetInterface(long type, CVillageTaskBase** out) { if (bits[type / 32] & (1 << (type % 32))) { *out = task; return true; } return false; } };
+class CVillageTaskBase { public: CThingCreature* assigned; void AssignCreatureToTask(CThingCreature* c) { assigned = c; } };
+class CThing { public: unsigned long bits[9]; CVillageTaskBase* task; bool GetInterface(long type, CVillageTaskBase** out) { if (bits[type / 32] & (1 << (type % 32))) { *out = task; return true; } return false; } };
 struct Group {
     CThing* floor; CThingCreature* creature; bool Sleeping;
     void OnActivate() { CVillageTaskBase* task = 0; floor->GetInterface(0xac, &task); if (task) task->AssignCreatureToTask(creature); Sleeping = false; }

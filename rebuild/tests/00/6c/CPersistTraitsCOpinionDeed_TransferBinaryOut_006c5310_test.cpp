@@ -73,12 +73,12 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_frame = 777;
 static long GFGetCurrentFrame() { return g_frame; }
-struct CThing { u64 UniqueID; };
+class CThing { public: u64 UniqueID; };
 struct CIntelligentPointer { CThing* item; CThing* GetPItem() const { return item; } };
-struct COpinionDeed {
+class COpinionDeed { public:
     int DeedType; int DeedHandle; C3DVector Position; int FrameHappened; CIntelligentPointer PTarget;
     bool WasSearchingForWitnesses, IsStillHappening, IsCrimeReportedToVillage, IsCrime; int ExtraData;
     long GetFrameHappened() const { return IsStillHappening ? GFGetCurrentFrame() : FrameHappened; }

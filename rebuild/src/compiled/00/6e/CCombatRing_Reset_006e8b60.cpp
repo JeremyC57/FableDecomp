@@ -10,7 +10,7 @@
 // through the base destructor, as the landed CThingGameObject::OnCreate 0x00838A40 and
 // CTCShopKeeper::EmptyCustomerList 0x00798E10 (VC7.1 aligns that frame itself: `and esp,-8`). The end
 // pointer is re-read every iteration (the calls may change it).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -27,7 +27,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CProng {                            // CDefendingCombatantInfo::CProng (28 bytes)
     bool Blocked;                          // +0x00

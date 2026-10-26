@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString {
 public:
     CWideStringData* m_pData;
@@ -47,7 +47,7 @@ struct CCounted {
 struct CTextEntry : CCounted {
     CWideString GetText() const;                            // 0x009C7A40
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     __forceinline ~CIVCountedPointer()
     {

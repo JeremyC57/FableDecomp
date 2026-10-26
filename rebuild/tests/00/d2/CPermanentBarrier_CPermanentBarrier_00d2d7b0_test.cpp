@@ -2,8 +2,8 @@
 // parent and master data stored, both thing vectors empty.
 #include <cstdio>
 static int g_thingCopies = 0;
-struct CScriptThing { long id; CScriptThing() : id(0) { } CScriptThing(const CScriptThing& o) : id(o.id) { ++g_thingCopies; } };
-struct CGameScriptInterface { int x; };
+class CScriptThing { public: long id; CScriptThing() : id(0) { } CScriptThing(const CScriptThing& o) : id(o.id) { ++g_thingCopies; } };
+class CGameScriptInterface { public: int x; };
 struct CParent { CGameScriptInterface* GSI; };
 struct CMasterData { int y; };
 struct CRoot { CGameScriptInterface* PQuest; CRoot(CGameScriptInterface* q) : PQuest(q) { } virtual ~CRoot() { } };

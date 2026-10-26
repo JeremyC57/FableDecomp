@@ -9,9 +9,9 @@
 // Shape: the reach is radius + 1; each axis extends the low corner by the negative part of the velocity and the high corner by
 //   the positive part. C2DBoxI is TopLeft (minX, maxY) / BottomRight (maxX, minY); filled, validated and returned through the
 //   hidden pointer by the __forceinline memberwise copy (no NRVO).
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;
     C2DBoxI() {}

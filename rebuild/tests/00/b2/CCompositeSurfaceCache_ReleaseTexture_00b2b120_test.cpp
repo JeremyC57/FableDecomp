@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stddef.h>
 static int g_reduces = 0, g_sets = 0; static unsigned long g_sizeSet = 0, g_levels = 0; static void* g_frameArg = 0; static void* g_texArg = 0;
-struct CGraphicFrameData { unsigned char _pad[0x14]; unsigned short Width; unsigned short Height; unsigned long Sizeof() { return 50; } };
+class CGraphicFrameData { public: unsigned char _pad[0x14]; unsigned short Width; unsigned short Height; unsigned long Sizeof() { return 50; } };
 struct CGraphicFrame_Retail { CGraphicFrameData* FrameData; };
 struct CManagedTexture_Retail { void* __vftable; void* Data; };
 struct CTextureManager_Calls { bool ReduceMipmapLevel(CGraphicFrame_Retail& frame, CManagedTexture_Retail& texture, unsigned long levels) { ++g_reduces; g_frameArg = &frame; g_texArg = &texture; g_levels = levels; return true; } };

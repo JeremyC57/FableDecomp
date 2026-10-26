@@ -18,7 +18,7 @@ static int fails = 0;
 //   is the MsgIsKilledBy 0x008D04E0 form (identity, null tests and length in one condition, then `Compare(...) ? false :
 //   true`), which gives retail's eax reuse for the child chain. The name sits on the LEFT (`Compare(name, child)` =
 //   ecx/edx); unsigned index and count (`jbe`/`jb`); the -1 tail is the fall-through exit.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   PData;                      // +0x00
     unsigned long StringLength;               // +0x04
 };

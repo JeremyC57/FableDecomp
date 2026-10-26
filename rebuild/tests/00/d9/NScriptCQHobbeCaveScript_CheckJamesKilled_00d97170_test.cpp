@@ -21,7 +21,7 @@ static bool g_badName = false;          // a callee saw an unexpected name / arg
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_termFrame; }
 static void Reset() { g_live = 0; g_iatt = 0; g_termAt = 1 << 30; g_termFrame = 1 << 30; g_frames = 0; g_badName = false; }
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
@@ -29,7 +29,7 @@ struct CCharString {
 static int g_killedAt = 1 << 30;
 static int g_hitFrames[8]; static int g_hitCount = 0;
 static float g_healthAt[16];
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
@@ -44,7 +44,7 @@ struct CScriptThing {
 };
 struct CHobbeCaveData { bool Flag114; };
 static CHobbeCaveData g_data; static int g_rearmAt = -1;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; if (g_frames == g_rearmAt) g_data.Flag114 = true; }
     float GetHealth(const CScriptThing& t) const { if (t.Id != 7) g_badName = true; return g_healthAt[g_frames < 16 ? g_frames : 15]; }
 };

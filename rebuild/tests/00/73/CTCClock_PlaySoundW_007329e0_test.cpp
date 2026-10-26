@@ -3,7 +3,7 @@
 #include <string.h>
 class CTCBase;
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* t) { strcpy(Text, t); ++g_live; }
     CCharString(const CCharString& o) { strcpy(Text, o.Text); ++g_live; }
@@ -42,9 +42,9 @@ public:
         return it->component;
     }
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair(long f, long l) : FirstSound(f), LastSound(l) {} };
-struct CSoundInit { float Volume; CSoundInit() : Volume(1.0f) {} };
-struct CTCSoundPlayer {
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair(long f, long l) : FirstSound(f), LastSound(l) {} };
+class CSoundInit { public: float Volume; CSoundInit() : Volume(1.0f) {} };
+class CTCSoundPlayer { public:
     int calls; long first, last; bool f, l, a;
     unsigned int PlayAttachedSample(const CSoundPair& s, const CSoundInit& init, bool flag, bool loop, bool attached)
     {
@@ -52,7 +52,7 @@ struct CTCSoundPlayer {
         return init.Volume == 1.0f ? 1 : 0;
     }
 };
-struct CSoundMap {
+class CSoundMap { public:
     struct _Node { CCharString first; long second; };
     _Node* _M_header;
     _Node* nodes;
@@ -63,7 +63,7 @@ struct CSoundMap {
         return _M_header;
     }
 };
-struct CClockDef {
+class CClockDef { public:
     CSoundMap Sound;
     long GetSound(const CCharString& name) const
     {
@@ -73,7 +73,7 @@ struct CClockDef {
         return 0;
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
     operator bool() const { return Object != 0; }

@@ -7,9 +7,9 @@ static int fails = 0;
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };
 static int g_baseCtor = 0, g_wstrCtor = 0, g_longList = 0, g_elemList = 0, g_resize = 0, g_erase = 0; static long g_resizeCount = -1;
 static const void* g_baseGui = 0; static const void* g_baseList = 0; static const void* g_eraseFirst = 0; static const void* g_eraseLast = 0;
-struct CPlayerGui; struct CEnginePrimitiveHandle;
+class CPlayerGui; class CEnginePrimitiveHandle;
 struct SAllocator { SAllocator() { } };
-struct CWideString { unsigned short* m_pData; CWideString() : m_pData(0) { ++g_wstrCtor; } };
+class CWideString { public: unsigned short* m_pData; CWideString() : m_pData(0) { ++g_wstrCtor; } };
 namespace NPlayerGui {
 struct CRetailHandleVector {
     CEnginePrimitiveHandle* m_pFirst; CEnginePrimitiveHandle* m_pLast; CAllocProxy<CEnginePrimitiveHandle*> m_pEnd;
@@ -22,13 +22,13 @@ struct CRetailHandleVector {
 };
 struct CRetailLongList { void* head; explicit CRetailLongList(const SAllocator& allocator = SAllocator()) : head(0) { ++g_longList; } };
 struct CRetailElementList { void* head; explicit CRetailElementList(const SAllocator& allocator = SAllocator()) : head(0) { ++g_elemList; } };
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00() {}
     unsigned char _body[0x1c - 4];
     CRetailHandleVector PrimitiveHandles;
     CDrawBase(CPlayerGui* gui, void* drawList) { ++g_baseCtor; g_baseGui = gui; g_baseList = drawList; }
 };
-struct CDrawQuestInfo : CDrawBase {
+class CDrawQuestInfo : public CDrawBase { public:
     virtual void v00() {}
     long GuiMode; float FadeInTimer; float MiniModeTimer; bool MiniMode; long FramesUntilMiniMode; long MiniGameElementIndex;
     CRetailLongList OracleSymbols; CRetailHandleVector OraclePrimitiveHandles; CWideString Name; CWideString Text; CRetailElementList Elements;

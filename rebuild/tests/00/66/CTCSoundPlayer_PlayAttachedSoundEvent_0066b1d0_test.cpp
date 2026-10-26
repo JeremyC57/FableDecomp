@@ -29,10 +29,10 @@ template <class T> struct CDefHolder {                  // the def read once fro
     ~CDefHolder() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CEntitySoundDef : CDefBase {
+class CEntitySoundDef : public CDefBase { public:
     CCharString SoundIdentifier;                        // +0x48
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     CEntitySoundDef* sub;
     bool GetSubDef_0065f604(CDefOut<CEntitySoundDef>& out) { if (!sub) return false; ++sub->RefCount; out.Object = sub; return true; }
 };

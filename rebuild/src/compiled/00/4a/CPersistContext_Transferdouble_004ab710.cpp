@@ -11,10 +11,10 @@
 //   traits object (PDB: CPersistTraits<double> = { double DefaultVal; }, user ctor, nothing stored) is 8 bytes, too
 //   big for an argument slot, so the block-scoped named local shares the 8-byte frame with the text wrapper
 //   (`lea ecx,[esp+10h]`); a temporary or a function-scope local gets a frame of its own.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                   // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00 (PDB: CPersistTraits<T> is { T DefaultVal; })
     CPersistTraits() {}                           // user ctor: DefaultVal is left unset, nothing is stored
@@ -30,7 +30,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

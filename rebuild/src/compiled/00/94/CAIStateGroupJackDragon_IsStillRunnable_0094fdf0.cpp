@@ -8,7 +8,7 @@
 // `return IsStopping() ? false : true;` -- the ternary keeps the negation byte-sized (`neg al ; sbb al,al ;
 // inc al`); `!IsStopping()` widens it to eax and the nested-if form puts the false tail last.
 // The engine header keeps PEnemy as an opaque byte array, so the layout is modelled locally with its name.
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -20,12 +20,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

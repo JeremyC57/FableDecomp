@@ -4,7 +4,7 @@
 
 static int gDestroyed = 0;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy() const { ++gDestroyed; }
     mutable unsigned int m_count;
     CDefPointeeBase() : m_count(0) { }

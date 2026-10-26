@@ -1,6 +1,6 @@
 // Behaviour test for 0x00808950 STLport __unguarded_partition over thing pointers (deterministic comparator stand-in for the coin flip).
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer { CThing* Item; };
 static int g_calls = 0;
 struct CLess { bool operator()(const CPointer& a, const CPointer& b) const { ++g_calls; return a.Item->id < b.Item->id; } };

@@ -8,18 +8,18 @@
 // Shape: the selected shape is read twice through the CCountedPointer operator-> (empty test, front), which gives
 // retail's `mov eax,[eax] ; mov edx,[eax+8]` register use; operator- takes the first point BY VALUE (copy before the call); the difference goes through
 // float temporaries and is copied into `out` as dwords.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(C3DVector o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CTCShapeManager;
+class CTCShapeManager;
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     CTCShapeManager* Owner;                             // +0x04
     struct CPointVector {                               // STLport vector<C3DVector>
@@ -29,13 +29,13 @@ struct CShape {
     } Points;                                           // +0x08
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {                                  // CCountedPointer<NShape::CShape>
     NShape::CShape* Data;
     CCPPointerInfo* Info;
     NShape::CShape* operator->() const { return Data; }
 };
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     CThing*        ParentThing;                         // +0x04 (CTCBase)
     bool           ToBeRemoved;                         // +0x08

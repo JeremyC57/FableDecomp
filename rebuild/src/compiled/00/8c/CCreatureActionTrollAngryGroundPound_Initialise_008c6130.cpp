@@ -3,7 +3,7 @@
 // Callees: this object's virtual slot 81 (`call [eax+144h]`, no arguments), CCombatActionBase::Initialise @ 0x00857520 (non-virtual call),
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8).
 // Shape: the virtual call goes through `this` (a plain dynamic dispatch outside any constructor), then the read-modify-write `and byte ptr [..],0BFh` on a named creature local (the same `&=` on the bare call expression loads, re-bases the address with `add eax,1C8h` and stores separately; a one-bit bitfield behaves the same).
-struct CThingCreatureBase {                 // only the flags byte at +0x1c8 is modelled
+class CThingCreatureBase { public:                 // only the flags byte at +0x1c8 is modelled
     unsigned char _pad[0x1c8];
     unsigned char m_flags1c8;               // +0x1c8 bit 6: pounding (set by PerformAction @ 0x008C63A0, landed)
 };
@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const;   // 0x00A01B50
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114; slots 0..80 of the retail vtable precede the derived virtual
+class CCombatActionBase { public:                  // retail sizeof 0x114; slots 0..80 of the retail vtable precede the derived virtual
     virtual void v00();
     virtual void Initialise();              // slot 1: 0x00857520
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -32,7 +32,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114; slots 0..80 
     unsigned char _pad10[0x114 - 0x10];
 };
 
-struct CCreatureAction_TrollAngryGroundPound : CCombatActionBase {
+class CCreatureAction_TrollAngryGroundPound : public CCombatActionBase { public:
     virtual void Initialise();
     virtual void SetUpPound();              // slot 81
 };

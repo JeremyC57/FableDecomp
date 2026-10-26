@@ -25,7 +25,7 @@ struct CLongVector {                                        // std::vector<long>
     CLongVector& operator=(const CLongVector& other);      // 0x00454886
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -33,7 +33,7 @@ struct CTCBase {
     virtual void Copy(const CTCBase& other);                // 0x006868D0
 };
 
-struct CTCHeroStats : CTCBase {
+class CTCHeroStats : public CTCBase { public:
     unsigned char _pad0c[0x28 - 0x0c];                      // OutstandingCrimes map, ExperienceSpentOn vector, decapitations
     long  Morality;                                         // +0x28
     bool  MoralityChangingEnabled;                          // +0x2c

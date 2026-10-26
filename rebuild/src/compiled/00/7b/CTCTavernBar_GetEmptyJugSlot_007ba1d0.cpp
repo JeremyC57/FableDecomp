@@ -9,7 +9,7 @@
 // Shape: GetJug is inlined here (`__forceinline`, early-out `return CIntelligentPointer(0)` then `first[index]` through a
 //   named begin pointer: VC7.1 then spills `this` and reuses edi for the vector start like retail); `slot++` gives the
 //   load/inc/store of the reference.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -47,9 +47,9 @@ public:
     }
 };
 class CThingObject : public CThing { };
-struct C3DVector;
-struct CRightHandedSet;
-struct CCharString {
+class C3DVector;
+class CRightHandedSet;
+class CCharString { public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -67,7 +67,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.CBaseIntelligentPointer::GetPItem()); }
@@ -85,10 +85,10 @@ struct CTCJug {                                     // interface 0xBB
     void* Contents;                                 // +0x0c (descriptive)
     bool Filled;                                    // +0x10 (descriptive)
 };
-struct CTCNamedUserActionPoints {                   // interface 0x2E
+class CTCNamedUserActionPoints { public:                   // interface 0x2E
     bool GetFreeNamedActionPoint(CThing& user, C3DVector& pos, CRightHandedSet& rh, CCharString name, long& pointIndex, long flags = 0, bool claim = true);   // 0x007FF190
 };
-struct CTCTavernBar {
+class CTCTavernBar { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

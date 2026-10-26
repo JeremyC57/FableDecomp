@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CHandleBasedMemoryPool
-{
+class CHandleBasedMemoryPool
+{ public:
     void MoveResource(void *p0, long p1, void *p2, void *p3, unsigned long p4);
 };
 

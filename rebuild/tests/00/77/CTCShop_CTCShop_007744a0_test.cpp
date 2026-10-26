@@ -3,7 +3,7 @@
 // stock item of the shop def copied into the stock map with its quantity raised to at least the max stock, and the
 // last-checked day set 30 days back.
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
-struct CShopItem {
+class CShopItem { public:
     float Quantity;
     float PriceMultiplier;
     float MaxStock;
@@ -12,37 +12,37 @@ struct CShopItem {
     float SalesPerDay;
     float SalesPerDayRandomness;
 };
-struct CStockItemDef { long Key; CShopItem Item; };
+class CStockItemDef { public: long Key; CShopItem Item; };
 static int g_prepared = 0, g_releases = 0;
-struct CShopDef {
+class CShopDef { public:
     long m_refCount;
     CStockItemDef* StockItemsFirst;
     CStockItemDef* StockItemsLast;
     void PrepareStockItems() { ++g_prepared; }
     void ReleaseReference() { --m_refCount; ++g_releases; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
     T* operator->() const { return Object; }
 };
 static CShopDef* g_shopDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_refCount;
     void ReleaseReference() { --m_refCount; ++g_releases; }
     bool GetSubDef(CDefPointer<CShopDef>* out) { if (!g_shopDef) return false; out->Object = g_shopDef; ++g_shopDef->m_refCount; return true; }
 };
 static CDefClassBase g_thingDef = { 1 };
 static long g_defIndex = -1;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out) { g_defIndex = index; out->Object = &g_thingDef; ++g_thingDef.m_refCount; return true; }
 };
 static CDefinitionManager g_defs;
-struct CThing { unsigned short DefIndex; };
-struct CGameTimeManager { long m_day; };
+class CThing { public: unsigned short DefIndex; };
+class CGameTimeManager { public: long m_day; };
 static CGameTimeManager g_time = { 100 };
-struct CWorld { CGameTimeManager* m_pGameTimeManager; };
+class CWorld { public: CGameTimeManager* m_pGameTimeManager; };
 static CWorld g_world = { &g_time };
 struct CStockMap {                                  // map<long, CShopItem> stand-in
     long keys[8]; CShopItem items[8]; int count;
@@ -53,13 +53,13 @@ struct CStockMap {                                  // map<long, CShopItem> stan
         keys[count] = key; CShopItem zero = { 0, 0, 0, 0, 0, 0, 0 }; items[count] = zero; return items[count++];
     }
 };
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     CTCBase(CThing* thing) : ParentThing(thing) {}
     CDefinitionManager* GetDefinitions() const { return &g_defs; }
     CWorld* GetWorld() { return &g_world; }
 };
-struct CTCShop : CTCBase {
+class CTCShop : public CTCBase { public:
     long      StockState;
     CStockMap Stock;
     long      SpecialItem;

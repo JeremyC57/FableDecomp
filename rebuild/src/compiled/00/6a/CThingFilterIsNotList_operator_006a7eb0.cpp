@@ -21,8 +21,8 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {};
-struct CThingFilter_IsNotList {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:};
+class CThingFilter_IsNotList { public:
     vector<const CThing*>*                  PNotList;    // +0x00
     vector<CIntelligentPointer<CThing> >*   PNotList2;   // +0x04
     bool operator()(const CThing* thing) const;

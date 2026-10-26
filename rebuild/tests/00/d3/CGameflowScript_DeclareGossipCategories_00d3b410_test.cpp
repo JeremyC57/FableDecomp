@@ -11,11 +11,11 @@ static void Log(const char* op, const char* a, const char* b)
     std::strcat(g_log, ");");
     ++g_count;
 }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text) : Text(text) { }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void AddRumourCategory(const CCharString& c) { Log("C", c.Text, 0); }
     void AddNewRumourToCategory(const CCharString& c, const CCharString& r) { Log("R", c.Text, r.Text); }
     void AddGossipVillage(const CCharString& c, const CCharString& v) { Log("V", c.Text, v.Text); }

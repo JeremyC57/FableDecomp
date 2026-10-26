@@ -45,7 +45,7 @@ public:
     unsigned long AddObject(const CThreadedFileObjectDesc& desc);   // 0x0098F350
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:
     T*              Data;                                   // +0x0

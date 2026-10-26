@@ -3,7 +3,7 @@
 struct TSpeechGroupInfo { long NextAllowedFrame; };
 struct SNode { unsigned long first; TSpeechGroupInfo second; };
 struct CIter { SNode* _M_node; SNode* operator->() const { return _M_node; } };
-struct CMap {
+class CMap { public:
     SNode* nodes; int count;
     CIter find(const unsigned long& key) const
     {
@@ -13,10 +13,10 @@ struct CMap {
         return it;
     }
 };
-struct CWorld { long frame; long GetFrameNumber() { return frame; } };
+class CWorld { public: long frame; long GetFrameNumber() { return frame; } };
 static CWorld g_world;
 static CWorld* g_pWorld = &g_world;
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     CMap SpeechGroupInfoMap;
     bool IsSpeechGroupAllowed(unsigned long group) const
     {

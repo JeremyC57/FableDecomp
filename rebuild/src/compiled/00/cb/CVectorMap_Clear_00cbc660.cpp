@@ -19,14 +19,14 @@
 // The retail container is reconstructed by hand (the DDK STL is not the retail revision; GOTCHAS wave 22).
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                 // 0x0099EAE0
 };
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         unsigned __int64 UID;                       // +0x00
         CCharString PersistScript;                  // +0x08
     };
@@ -71,10 +71,10 @@ template <class T> struct CRetailVector {           // VC6-era Dinkumware vector
     }
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
 };
 
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     CRetailVector< SPair<K, V> > Data;              // +0x00
     C Compare;                                      // +0x0C
     bool Dirty;                                     // +0x0D

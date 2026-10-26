@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsStandard::UpdateIsMoving (0x008E5270)
 static float g_fMinMovingSpeed = 1e-4f;
-struct C3DVector { float X, Y, Z; float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; } };
+class C3DVector { public: float X, Y, Z; float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; } };
 struct CTCPhysicsStandard { C3DVector Velocity; bool Moving, onSurface, gravity, immoveable;
     void UpdateIsMoving() {
         if (Moving) {

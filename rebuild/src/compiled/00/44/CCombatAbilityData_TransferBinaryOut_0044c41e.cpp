@@ -4,7 +4,7 @@ struct CBinaryStream {
     void PutFloat(float v);
 };
 
-struct CCombatAbilityData {
+class CCombatAbilityData { public:
     int   field_0;
     int   PercentageChance;
     float SecondsDuration;

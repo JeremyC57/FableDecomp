@@ -15,7 +15,7 @@
 // tail-duplicates it, popping edi first), the physics component is read through an inline accessor straight into ecx.
 long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     void Rotate(const C3DVector& axis, float angle); // 0x00A13C60

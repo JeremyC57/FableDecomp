@@ -2,16 +2,16 @@
 #include <string.h>
 #include <math.h>
 class CThing;
-struct CThingObject;
-struct C2DVector {
+class CThingObject;
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 #include <math.h>
 #pragma intrinsic(atan2)
 
@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThingObject : CBaseIntelligentPointer {
     operator CThingObject*() const { return (CThingObject*)GetPItem(); }
 };
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     C2DVector Velocity;                         // +0x0c
@@ -52,7 +52,7 @@ struct CTCTavernGameCoinBase {
     void FindObstacles();                       // 0x008EFB00
     void AddNewCoin(const C3DVector& position); // 0x008EFA00
 };
-struct CTCTavernGameCoinGolf : CTCTavernGameCoinBase {
+class CTCTavernGameCoinGolf : public CTCTavernGameCoinBase { public:
     float         ZAngle;                       // +0x148
     float         XAngle;                       // +0x14c
     float         CameraDistance;               // +0x150

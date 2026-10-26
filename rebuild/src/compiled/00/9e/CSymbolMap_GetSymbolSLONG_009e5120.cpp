@@ -10,7 +10,7 @@
 // default result (`(it == last || key < it->first) ? last : it`); the caller re-reads end() from the member
 // (`cmp esi,[ebx+8]`), then `mov eax,[esi+0Ch]` (pair.second.Val) or the shared `xor eax,eax` tail, `ret 4`.
 // Model: PDB CSymbolMap (+4 SLONGMap), CSymbolInfo {GroupName, EntryName, Val}, retail 12-byte vector.
-struct CCharStringData;
+class CCharStringData;
 class CCharString {                               // a class, as Ego_r.pdb mangles it (V)
 public:
     CCharStringData* m_pStringData;
@@ -43,7 +43,7 @@ struct CSymbolVectorMap {
     }
 };
 
-struct CSymbolMap {
+class CSymbolMap { public:
     void*            _padding_;                    // +0x00
     CSymbolVectorMap SLONGMap;                     // +0x04
     long GetSymbolSLONG(const CCharString& name) const;

@@ -1,6 +1,6 @@
 // Behaviour test for 0x0046EFB8 __copy_ptrs<CQuickAccessItemButtonGuiDef*>: assigns last-first elements in order, returns result + n
 #include <cstdio>
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 struct Base { int body[15]; static int assigns; Base& operator=(const Base& o) { ++assigns; for (int i = 0; i < 15; ++i) body[i] = o.body[i]; return *this; } };
 int Base::assigns = 0;
 struct Button : Base {

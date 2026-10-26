@@ -20,7 +20,7 @@ struct CRetailVector_pod {                            // VC6 vector of PODs: the
 };
 
 namespace NShape {
-struct CShape {                                       // vtable 0x0126A208
+class CShape { public:                                       // vtable 0x0126A208
     long              m_id;                           // +0x04
     CRetailVector_pod m_points;                       // +0x08
     CRetailVector_pod m_edges;                        // +0x14
@@ -35,7 +35,7 @@ struct CClosedShapeBase : CShape {                    // vtable 0x0126A224
 
 struct C3DVector { float X, Y, Z; };
 
-struct CSubdivisionTriangle : CClosedShapeBase {     // vtable 0x0126A240
+class CSubdivisionTriangle : public CClosedShapeBase { public:     // vtable 0x0126A240
     C3DVector UpDirection;                            // +0x20
     CSubdivisionTriangle(long id) : CClosedShapeBase(id) { }
     __forceinline virtual ~CSubdivisionTriangle() { }

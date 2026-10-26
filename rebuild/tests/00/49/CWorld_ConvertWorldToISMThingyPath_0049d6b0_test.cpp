@@ -1,7 +1,7 @@
 // Behaviour test for 0x0049D6B0 CWorld::ConvertWorldToISMThingyPath: directory + file name of the world path + the .ism variant.
 #include <cstdio>
 #include <cstring>
-struct CWideString {               // narrow-character stand-in for the test
+class CWideString { public:               // narrow-character stand-in for the test
     char text[96];
     CWideString() { text[0] = 0; }
     CWideString(const char* t) { std::strcpy(text, t); }
@@ -14,7 +14,7 @@ static void SplitPath(const CWideString& path, CWideString*, CWideString*, CWide
     std::strcpy(name->text, p); char* dot = std::strrchr(name->text, '.'); if (dot) *dot = 0;
 }
 static CWideString GetLevelsDirectory_0041a410() { return CWideString("Data\\Levels\\"); }
-struct CWorld {
+class CWorld { public:
     CWideString ConvertWorldToISMThingyPath(const CWideString& world, bool xbox, bool runtime) const
     {
         CWideString name;

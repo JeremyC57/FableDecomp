@@ -12,7 +12,7 @@
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30, std::__unguarded_linear_insert @ 0x004B9480.
 // Shape: the comparator slot is re-read and pushed first every iteration (arguments right to left); a flat struct of
 // three strings addresses the third source from the second (`lea ebx,[esi+8] ; lea ecx,[ebx-4]`, 79 v 81 bytes).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0

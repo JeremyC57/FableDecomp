@@ -4,9 +4,9 @@
 // CObjectAugmentationsDef::~CObjectAugmentationsDef: members destroyed in reverse order, then the def base chain
 static char g_log[64];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CCharString { ~CCharString() { Log("S"); } };
+class CCharString { public: ~CCharString() { Log("S"); } };
 struct CBase_009fc550 { virtual void v00() { } ~CBase_009fc550() { Log("R"); } };
-struct CDefPointeeBase : CBase_009fc550 { virtual void v00() { } ~CDefPointeeBase() { } };
+class CDefPointeeBase : public CBase_009fc550 { public: virtual void v00() { } ~CDefPointeeBase() { } };
 struct CAugmentationParticleMap { ~CAugmentationParticleMap() { Log("P"); } };
 struct CAugmentationSoundMap { long tag; ~CAugmentationSoundMap() { Log(tag == 1 ? "I" : "L"); } };
 struct CLongVector {
@@ -14,7 +14,7 @@ struct CLongVector {
     CLongVector() : m_pFirst(0), m_pLast(0), m_pEnd(0), tag(0) { }
     ~CLongVector() { if (m_pFirst) { std::free(m_pFirst); Log(tag == 1 ? "a" : "c"); } }
 };
-struct CObjectAugmentationsDef : CDefPointeeBase {
+class CObjectAugmentationsDef : public CDefPointeeBase { public:
     long NumberOfSlots; long MaximumNumberOfSlots;
     CAugmentationParticleMap AugmentationParticles; unsigned long EmptySlotName;
     CLongVector InitialAugmentations; CLongVector SlotUpgradeCosts;

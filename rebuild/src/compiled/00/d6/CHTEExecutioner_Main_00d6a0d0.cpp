@@ -14,12 +14,12 @@
 // Shape: the landed CFadeinSummoner "Init" (0x00CDF430, also slot 1) with a wait loop: the filter is a scoped 0x10-byte frame
 // object, the address of Me stays in edi; `do { Update(); } while (!IsDone());` after the hand-over gives the
 // aligned loop head (`lea ebx,[ebx+0]`) with the test at the bottom.
-struct CScriptThing {                          // 12 bytes
+class CScriptThing { public:                          // 12 bytes
     unsigned char _body[12];
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
     ~CScriptThing();                          // 0x004AA840
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();                         // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

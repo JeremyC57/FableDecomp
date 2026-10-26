@@ -9,7 +9,7 @@
 // Shape: `lea ecx,[esi+4]` scheduled before the zero store of the first member.
 typedef unsigned short wchar_t;                             // VC7.1 without /Zc:wchar_t
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pString;
     CWideString();                                          // 0x0099AED0
 };

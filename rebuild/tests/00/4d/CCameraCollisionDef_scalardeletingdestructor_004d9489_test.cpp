@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CCameraCollisionDef
-{
+class CCameraCollisionDef
+{ public:
     void* vftable;
 };
 void* const g_CCameraCollisionDef_vftable = (void*)0x12345678;

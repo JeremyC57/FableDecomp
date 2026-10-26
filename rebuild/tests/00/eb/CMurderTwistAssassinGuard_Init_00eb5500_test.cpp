@@ -1,8 +1,8 @@
 // behaviour copy of CMurderTwistAssassinGuard::Init
 #include <cstdio>
 static int g_seq[16]; static int g_n = 0; static int g_args[16][3]; static int g_friends = -1;
-struct CScriptThing { int id; void SetFriendsWithEverythingFlag(bool f) { g_friends = f; g_seq[g_n++] = 67; } };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; void SetFriendsWithEverythingFlag(bool f) { g_friends = f; g_seq[g_n++] = 67; } };
+class CGameScriptInterface { public:
     CScriptThing hero;
     void rec(int s, int a = 0, int b = 0) { g_args[g_n][0] = a; g_args[g_n][1] = b; g_seq[g_n++] = s; }
     const CScriptThing& GetHero() const { return hero; }

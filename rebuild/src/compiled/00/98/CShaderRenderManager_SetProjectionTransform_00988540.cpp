@@ -9,12 +9,12 @@
 // exists for CShaderRenderManager.
 // Leaf: ?SetProjectionTransform@CShaderRenderManager
 
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     float M[4][4];
     void Transpose();                            // 0x00A5CAB0
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad_0x000[0x270];
     CMatrix4x4    ProjectionMatrix;              // +0x270
     unsigned char _pad_0x2b0[0x3d8 - 0x2b0];

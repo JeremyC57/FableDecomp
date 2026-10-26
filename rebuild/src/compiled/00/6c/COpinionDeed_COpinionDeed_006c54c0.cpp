@@ -10,25 +10,25 @@
 // Shape: the position copy goes through two alternating registers (memberwise user copy constructor of
 // C3DVector); the intelligent pointer is built by its inline (T*) constructor: out-of-line base ctor, own
 // vtable store, SetPItem(target). The same bool argument initialises both +0x20 and +0x21.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                 // +0x04
     CBaseIntelligentPointer();                     // 0x00A01B10
     void SetPItem(const void* item);               // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
     virtual void v00();                            // own vtable (0x01237F1C)
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
 long GetWorldFrame_0049d870();                     // 0x0049D870
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long                              DeedType;                   // +0x00 EOpinionDeedType
     long                              DeedHandle;                 // +0x04
     C3DVector                         Position;                   // +0x08

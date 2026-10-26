@@ -1,8 +1,8 @@
 // Behaviour test for CTCDeadShotInThingTracker::SetThingStuckIn(const CThing&) @ 0x007E3490: the member pointer ends up
 // holding the thing (through a temporary) and HasThingStuckIn is set; the temporary is destroyed.
 #include <cstdio>
-struct CBaseObject { int id; };
-struct CThing : CBaseObject { int extra; };
+class CBaseObject { public: int id; };
+class CThing : public CBaseObject { public: int extra; };
 static int g_dtors = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -17,7 +17,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(const CThing* item = 0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CTCDeadShotInThingTracker {
+class CTCDeadShotInThingTracker { public:
     virtual void v00() { }
     unsigned char       _base[0x8];
     CIntelligentPointer PThingStuckIn;

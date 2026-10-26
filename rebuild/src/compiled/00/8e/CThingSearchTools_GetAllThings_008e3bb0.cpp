@@ -18,7 +18,7 @@ struct __true_type { __true_type() {} };
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: UsingComponents +0x20 [PDB +0x20],
 // ThingTypeFlags +0x6c [PDB +0x7c], the state bit byte +0x91 [PDB +0xa1] = Dead 0x01,
 // IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned char UsingComponents[0x24];              // +0x20 bitset<274> of present thing components
@@ -89,8 +89,8 @@ template <class T> __declspec(noinline) void CResultVector<T>::_M_insert_overflo
 }
 #pragma auto_inline(on)
 
-struct CThingAICreature : CThing { enum { ThingTypeMask = 0x1f }; };
-struct CThingFilter_IsNot {
+class CThingAICreature : public CThing { public: enum { ThingTypeMask = 0x1f }; };
+class CThingFilter_IsNot { public:
     const CThing* Thing;
     bool operator()(const CThing& thing) const;       // 0x006A76A0
 };

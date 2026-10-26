@@ -2,7 +2,7 @@
 // a void member->void member forward, so retail is `mov ecx,[ecx+d]; jmp rel32`.
 #include "engine/CGroundNavigatorExternalInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 #pragma pack(push,1)
-struct CThingCreatureBase { void Run(); };
+class CThingCreatureBase { public: void Run(); };
 struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {
     void Run();
 };

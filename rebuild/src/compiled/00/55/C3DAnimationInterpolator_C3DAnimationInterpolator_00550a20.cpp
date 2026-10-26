@@ -13,7 +13,7 @@ struct SCountedAnimation_00550a20 {               // the shared animation: the r
     long m_refCount;                               // +0x04
 };
 
-struct C3DAnimationBlendState {                    // vtable 0x01239838: 8 bytes
+class C3DAnimationBlendState { public:                    // vtable 0x01239838: 8 bytes
     virtual void v00();
     SCountedAnimation_00550a20* m_pAnimation;      // +0x04
     C3DAnimationBlendState(const C3DAnimationBlendState& other) : m_pAnimation(other.m_pAnimation)
@@ -23,7 +23,7 @@ struct C3DAnimationBlendState {                    // vtable 0x01239838: 8 bytes
     }
 };
 
-struct C3DAnimationInterpolator : CBase {         // vtable 0x01239840
+class C3DAnimationInterpolator : public CBase { public:         // vtable 0x01239840
     C3DAnimationBlendState m_from;                 // +0x04
     C3DAnimationBlendState m_to;                   // +0x0c
     virtual void v00();

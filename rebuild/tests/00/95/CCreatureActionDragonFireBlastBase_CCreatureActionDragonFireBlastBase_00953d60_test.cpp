@@ -1,17 +1,17 @@
 #include <cstdio>
 #include <cstring>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 static int g_baseCopies;
 struct CBaseIntelligentPointer { virtual void v00() { } CBaseObject* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { }
     CBaseObject* GetPItem() const { return m_pItem; } void SetPItem(CBaseObject* item) { m_pItem = item; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { virtual void v00() { } CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); } };
-struct CEnginePersistentPrimitiveBase { virtual void v00() { } long m_references; };
-struct CEnginePrimitiveHandle { virtual void v00() { } CEnginePersistentPrimitiveBase* Data; CEnginePrimitiveHandle() : Data(0) { }
+class CEnginePersistentPrimitiveBase { public: virtual void v00() { } long m_references; };
+class CEnginePrimitiveHandle { public: virtual void v00() { } CEnginePersistentPrimitiveBase* Data; CEnginePrimitiveHandle() : Data(0) { }
     CEnginePrimitiveHandle(const CEnginePrimitiveHandle& other) : Data(other.Data) { if (Data != 0) ++Data->m_references; } };
-struct CCombatActionBase { virtual void v00() { } unsigned char _body[0x114 - 4]; CCombatActionBase() { std::memset(_body, 0, sizeof(_body)); }
+class CCombatActionBase { public: virtual void v00() { } unsigned char _body[0x114 - 4]; CCombatActionBase() { std::memset(_body, 0, sizeof(_body)); }
     CCombatActionBase(const CCombatActionBase& o) { ++g_baseCopies; std::memcpy(_body, o._body, sizeof(_body)); } };
-struct CCreatureAction_DragonFireBlastBase : CCombatActionBase { CIntelligentPointer PShot; CEnginePrimitiveHandle Line1; virtual void v00() { }
+class CCreatureAction_DragonFireBlastBase : public CCombatActionBase { public: CIntelligentPointer PShot; CEnginePrimitiveHandle Line1; virtual void v00() { }
     CCreatureAction_DragonFireBlastBase() { }
     CCreatureAction_DragonFireBlastBase(const CCreatureAction_DragonFireBlastBase& other) : CCombatActionBase(other), PShot(other.PShot), Line1(other.Line1) { } };
 int main()

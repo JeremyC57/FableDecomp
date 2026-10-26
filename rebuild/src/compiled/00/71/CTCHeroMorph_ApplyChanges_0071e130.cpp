@@ -30,7 +30,7 @@ struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long flags);   // 0x004BF9E0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
     void SendMessage(CBase* message);         // 0x004C7820

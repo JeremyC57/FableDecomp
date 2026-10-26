@@ -1,4 +1,4 @@
-struct CCreatureAction_PlayHopscotch {
+class CCreatureAction_PlayHopscotch { public:
     void* vftable;
 };
 

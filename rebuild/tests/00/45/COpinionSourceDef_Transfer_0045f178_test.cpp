@@ -5,7 +5,7 @@
 
 enum EOpinion { OPINION_COUNT = 5 };
 enum EOpinionReactionType { REACTION_COUNT = 0x4f };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     int maps, bools, longs, floats;
     CPersistContext(long m) : Mode(m), maps(0), bools(0), longs(0), floats(0) {}
@@ -15,8 +15,8 @@ struct CPersistContext {
     void Transfer(long&) { ++longs; }
     void Transfer(float&) { ++floats; }
 };
-struct COpinionSet { float* Values; };
-struct COpinionSourceDef {
+class COpinionSet { public: float* Values; };
+class COpinionSourceDef { public:
     std::map<EOpinion, float> ProducedOpinion;
     bool AlwaysAwareOf, UnknownThreatSource, ReactNonstop, ReactToSelfPermitted, ReactionFlagDefault;
     std::map<EOpinionReactionType, bool> ReactionFlag;

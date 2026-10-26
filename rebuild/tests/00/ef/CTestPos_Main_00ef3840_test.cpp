@@ -4,7 +4,7 @@
 // the script is done.
 #include <cstdio>
 
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_log[256];
 static int g_n = 0;
 static void Log(int v) { if (g_n < 256) g_log[g_n++] = v; }
@@ -13,7 +13,7 @@ static int g_frame = 0, g_doneAt = 0;
 static float g_distance[64];
 static CScriptThing g_hero = { 7 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() { ++g_frame; Log(1); }
     CScriptThing& GetHero() { return g_hero; }
     void EntityUnsheatheMeleeWeapon(const CScriptThing& thing, bool flag) { Log(flag ? 99 : 508 + thing.id * 0); }

@@ -121,7 +121,7 @@ CCharString::~CCharString() { ++g_dtors; }
 CCharString g_FireheartMarkerNames[4][4];
 template<class F, class T> bool CThingSearchTools::GetPFirstThing(const F& filter, T** ppThing) const
 { long i = (long)(size_t)filter.ScriptName.PStringData; *ppThing = &g_things[i]; ++g_finds; return true; }
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_positions[16];
 const C3DVector& CThing::GetPosition() const { return g_positions[this - g_things]; }
 struct CTestPhysics : CTCPhysicsBase { virtual void SetPosition(const C3DVector& p) { g_setPos = &p; } };

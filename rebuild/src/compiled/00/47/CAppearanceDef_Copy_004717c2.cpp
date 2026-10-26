@@ -8,7 +8,7 @@
  * parity, so any plausible callee address byte-matches.
  */
 
-struct CAppearanceDef;
+class CAppearanceDef;
 
 /* real implementation the thunk forwards to (relocation-masked target) */
 extern void __fastcall CAppearanceDef_Copy_impl(CAppearanceDef* thisptr, CAppearanceDef* src);

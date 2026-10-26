@@ -6,17 +6,17 @@
 //
 #include "engine/C3DMeshLODInfo.h"   // PDB layout agrees with retail (Mesh +0x1c, FileData +0x24, MeshInfo +0x2c, LOD +0x30)
 
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void RemoveLOD(unsigned long lod, bool keepStats);   // 0x00A249A0
 };
 
-struct C3DMesh2           { unsigned long Sizeof_00a43960() const; };   // 0x00A43960
-struct CBankFileAsyncData { unsigned long Sizeof() const; };   // 0x009D5620
+class C3DMesh2           { public: unsigned long Sizeof_00a43960() const; };   // 0x00A43960
+class CBankFileAsyncData { public: unsigned long Sizeof() const; };   // 0x009D5620
 struct C3DMeshLODInfo_Methods : C3DMeshLODInfo {
     unsigned long Sizeof() const;
 };

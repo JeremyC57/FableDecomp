@@ -24,8 +24,8 @@ struct Sub
     virtual void Notify(CCharString* status);   // slot 14 -> vtbl+0x38
 };
 
-struct CBankFile
-{
+class CBankFile
+{ public:
     char pad0[0x50];
     Sub* sub;             // +0x50
     char pad1[0xf0 - 0x54];

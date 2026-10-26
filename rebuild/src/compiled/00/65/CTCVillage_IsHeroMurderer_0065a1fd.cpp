@@ -45,24 +45,24 @@ public:
     }
 };
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetCharacterThing();                // 0x00487DC0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long          Type;                         // +0x00 (9 = murder)
     unsigned char _pad_0x04[0x1f];
     bool          Flag23;                       // +0x23
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
 };
 
@@ -77,7 +77,7 @@ struct _Rb_global {
     static SRbNode* __cdecl _M_increment(SRbNode* node);   // 0x004292C0
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x64];
     SRbNode*      PlayersCrimes;                // +0x64 set<long> header node
     bool IsHeroMurderer();

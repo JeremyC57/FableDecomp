@@ -1,15 +1,15 @@
 // Behaviour test for 0x0072B160 CTCSpecialAbilities::SetupTurncoatSpell (copy of the source logic over spy callees).
 #include <cstdio>
 #include <cstring>
-struct CTCBase { virtual ~CTCBase() {} };
-struct CCharString { const char* text; CCharString(const char* t, long = -1) : text(t) {} };
+class CTCBase { public: virtual ~CTCBase() {} };
+class CCharString { public: const char* text; CCharString(const char* t, long = -1) : text(t) {} };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
     const SEntry* LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 class CThing;
 struct CTCTargeter : CTCBase { CThing* target; CThing* GetPTarget() { return target; } };
 static CTCBase* g_added = 0; static const char* g_addedName = 0; static bool g_addedActive = false; static int g_adds = 0;
@@ -37,13 +37,13 @@ public:
 class CThingCreatureBase : public CThing {};
 static bool g_enemies = true;
 static bool AreThingsEnemies(const CThing*, const CThing*) { return g_enemies; }
-struct CTCTurncoat : CTCBase {
+class CTCTurncoat : public CTCBase { public:
     bool turncoatable, turncoated;
     bool IsTurncoatable() { return turncoatable; }
     bool IsTurncoated() { return turncoated; }
 };
-struct CTCTurncoatSpell : CTCBase { CThingCreatureBase* target; void SetPTarget(CThingCreatureBase* t) { target = t; } };
-struct CTCSpecialAbilities {
+class CTCTurncoatSpell : public CTCBase { public: CThingCreatureBase* target; void SetPTarget(CThingCreatureBase* t) { target = t; } };
+class CTCSpecialAbilities { public:
     CThing* ParentThing;
     CThingCreatureBase* Creature;
     bool SetupTurncoatSpell();

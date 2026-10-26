@@ -27,7 +27,7 @@ public:
 
 class CInputEvent { public: unsigned char _body[0x34]; };   // retail 0x34-byte element
 
-struct CChecksum {                              // 16-byte POD
+class CChecksum { public:                              // 16-byte POD
     unsigned long Word0, Word1, Word2, Word3;
 };
 

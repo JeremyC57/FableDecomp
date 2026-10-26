@@ -16,9 +16,9 @@
 //   address then precede Me.GetPos() -- VC evaluates arguments right to left -- and the returned effect handle is a
 //   named local that lives across the wait loop (destroyed after it). The two string temporaries die right after the
 //   call. Layout as the CEntityScriptBase family: Game +4, CScriptThing Me +8 (12 bytes).
-struct C3DVector { float X, Y, Z; };
-struct CCharStringData;
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -34,7 +34,7 @@ public:
     ~CScriptThing();                                   // 0x004AA840
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void Update();                                  // slot 7 (+0x1C)

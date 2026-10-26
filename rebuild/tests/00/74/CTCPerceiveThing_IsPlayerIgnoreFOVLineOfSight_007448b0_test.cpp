@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CThing { unsigned char Type; };
+class CThing { public: unsigned char Type; };
 static int g_getCalls = 0;
 struct CBaseIntelligentPointer { CThing* p; CThing* GetPItem() const { ++g_getCalls; return p; } };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     CBaseIntelligentPointer PerceivedThing;
     bool IgnoreFOVLineOfSight;
     long IsPlayerIgnoreFOVLineOfSight() const

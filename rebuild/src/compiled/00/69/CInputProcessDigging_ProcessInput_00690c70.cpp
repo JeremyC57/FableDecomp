@@ -15,7 +15,7 @@ class CInputEvent;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -37,7 +37,7 @@ public:
         AddGameEvent(gameEvent);
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[9];                     // +0x20: which component kinds the thing holds
     bool HasTC(long kind) const
@@ -51,7 +51,7 @@ class CPlayer {
 public:
     CThing* GetHeroThing();                        // 0x00487DC0
 };
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

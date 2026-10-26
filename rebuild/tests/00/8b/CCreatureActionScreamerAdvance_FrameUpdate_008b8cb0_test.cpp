@@ -1,11 +1,11 @@
 // Behaviour test for 0x008B8CB0 CCreatureAction_ScreamerAdvance::FrameUpdate: past 30% of the animation, TotalTime = 1 once mode 0x44 is held.
 #include <cstdio>
 static int g_base = 0;
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     unsigned int m_mode;
     bool HasMode(unsigned int mode) { return mode == m_mode; }
 };
-struct CThing {
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCCreatureModeManager* m_modes;
     template<class T> bool GetInterface(T** ppOut, int interfaceType)

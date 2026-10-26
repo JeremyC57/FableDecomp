@@ -9,7 +9,7 @@
 // key field is -1.
 extern int g_bitDepthTable[];  // symbol == &record0.key
 
-struct CDisplayManager {
+class CDisplayManager { public:
     char  pad0[0x54];
     void* dev;                 // +0x54  D3D device wrapper
     char  pad1[0x04];

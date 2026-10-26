@@ -3,22 +3,22 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static C3DVector g_pos = { 1.0f, 2.0f, 3.0f };
-struct CThing { const C3DVector& GetPosition() const { return g_pos; } };
+class CThing { public: const C3DVector& GetPosition() const { return g_pos; } };
 static long g_theme = 0; static const C3DVector* g_themePos = 0; static int g_themeCalls = 0;
-struct CWorldMap {
+class CWorldMap { public:
     long GetStrongestEngineThemeAt(const C3DVector& pos, long* weight) { ++g_themeCalls; g_themePos = &pos; *weight = 9; return g_theme; }
 };
 static int g_destroyed = 0;
-struct CEngineThemeDef {
+class CEngineThemeDef { public:
     virtual void v00() {}
     virtual void Destroy() const { ++g_destroyed; }
     mutable long RefCount;
     unsigned char _pad08[0x88 - 0x08];
     float StealthFactor;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -28,7 +28,7 @@ template<class T> struct CDefPointer {
     }
 };
 static CEngineThemeDef* g_def = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<const CEngineThemeDef>* out);
 };
 bool CDefinitionManager::GetDef(long index, CDefPointer<const CEngineThemeDef>* out)
@@ -38,7 +38,7 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<const CEngineThemeDef>* 
     ++g_def->RefCount; out->Object = g_def; return true;
 }
 static CWorldMap g_map; static CDefinitionManager g_manager;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -46,7 +46,7 @@ struct CTCBase {
     CWorldMap* GetWorldMap_00686d30() { return &g_map; }
     CDefinitionManager* GetDefinitionManager() { return &g_manager; }
 };
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     bool Viewable;
     bool Smellable;
     bool Hearable;

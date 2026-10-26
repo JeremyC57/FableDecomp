@@ -20,7 +20,7 @@ struct SFadeSettings {                             // engine settings record rea
 };
 extern SFadeSettings* g_pFadeSettings;             // 0x01436E78
 
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
     CEngineFadeDistance() { }

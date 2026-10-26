@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -35,20 +35,20 @@ struct CThing {
         return false;
     }
 };
-struct CTCShop {                                     // interface type 0x53
+class CTCShop { public:                                     // interface type 0x53
     long GetCurrentBuyPrice(long itemType, long count);   // 0x007743B0
 };
 struct CTCGoldOwner {                                // interface type 4: the hero's purse
     unsigned char _pad00[0x3c];
     long Gold;                                       // +0x3c
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                          // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960 (const)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };

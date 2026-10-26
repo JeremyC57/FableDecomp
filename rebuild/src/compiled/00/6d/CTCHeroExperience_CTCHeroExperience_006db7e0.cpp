@@ -57,9 +57,9 @@ struct CAttackHistoryList {                         // list<pair<EDamageAttribut
     ~CAttackHistoryList();                          // 0x006DA9A0
 };
 
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     virtual ~CTCBase();                             // 0x00686830
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08

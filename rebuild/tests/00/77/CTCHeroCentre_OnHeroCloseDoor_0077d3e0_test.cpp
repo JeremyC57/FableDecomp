@@ -9,7 +9,7 @@ extern "C" void __fastcall Singleton_Method_4374b0(CSingletonTarget* self) {
     self->called++;
 }
 
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     char pad[0x10];
     int CurrentGUIMode;
 };

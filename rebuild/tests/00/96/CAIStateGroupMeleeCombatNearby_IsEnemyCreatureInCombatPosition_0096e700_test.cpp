@@ -19,20 +19,20 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern const float ReachScale;                          // 0x012925CC = 0.8333333
 extern const float PreferredPosMargin;                  // 0x01238170 = 0.3
 extern const float ReachEpsilon;                        // 0x0129BA3C = 1e-4
 extern const float EnemyMargin;                         // 0x0122DED8 = 1.0
-struct CBaseObject;
+class CBaseObject;
 struct CThingPhysics { char _prefix[0x34]; float Radius; };                  // +0x34
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char _prefix[0x60]; CThingPhysics* Physics;                             // +0x60
     bool IsAttackingCombatant();                        // 0x00662410
     const C3DVector& GetPosition();                     // 0x004C73D0 (CThing::GetPosition)
 };
 struct CBaseIntelligentPointer { void* __vftable; void* PData; CBaseObject* GetPItem() const; };   // 0x00A01B50
-struct CCombatManager {
+class CCombatManager { public:
     C3DVector GetPreferredPos(CThingCreatureBase* creature);                // 0x006EA770
     bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700
 };

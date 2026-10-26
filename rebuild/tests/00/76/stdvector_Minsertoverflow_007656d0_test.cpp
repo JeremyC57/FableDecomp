@@ -4,7 +4,7 @@
 #include <new>
 #include <stddef.h>
 namespace NShape { class CShape; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;

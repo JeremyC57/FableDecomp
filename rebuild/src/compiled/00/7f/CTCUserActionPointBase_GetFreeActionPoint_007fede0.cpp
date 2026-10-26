@@ -17,9 +17,9 @@
 //   pointer in a named local (edi) and the value as a named copy; the owner is a named GetPItem before the virtual call;
 //   the overflow insert is a same-TU stand-in as in the landed sibling.
 class CThing;
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward; C3DVector Up; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 
 #include <stdlib.h>
 #include <string.h>

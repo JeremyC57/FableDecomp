@@ -22,7 +22,7 @@ static bool StrLess(const CCharString& a, const CCharString& b) { return std::st
 struct CParticleSystemComponent;
 namespace NParticleEngine {
 enum EPSCType { PSC_TYPE_A, PSC_TYPE_B, PSC_TYPE_C };
-struct CRegisteredPSCInfo {
+class CRegisteredPSCInfo { public:
     CParticleSystemComponent* (*AllocFunc)();
     EPSCType    ComponentType;
     CCharString GUIName;
@@ -34,7 +34,7 @@ template <class K, class V> struct pair {
     K first;
     V second;
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return StrLess(a.first, b.first); }
 };
 typedef pair<CCharString, NParticleEngine::CRegisteredPSCInfo> CPSCPair;

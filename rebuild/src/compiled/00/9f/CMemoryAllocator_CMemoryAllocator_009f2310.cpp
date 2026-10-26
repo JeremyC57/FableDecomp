@@ -22,7 +22,7 @@ struct CAllocatorInfo {
 };
 extern CAllocatorInfo g_AllocatorInfo[];   // 0x01396868 (PAllocator of entry 0 at 0x01396880)
 struct CAllocSizeToAllocator;
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned long          MemoryAllocatedPerTrackingID[256];   // +0x000
     unsigned long          MemoryAllocated;                     // +0x400
     void**                 MemoryAuditBuffer;                   // +0x404

@@ -8,19 +8,19 @@
 // CThing vtable); Ego_r.pdb `?DrawPreparePrimitivesForRendering@CThingDeadCreature@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z`.
 // Layout (retail, local model): the thing's cached graphic appearance component pointer at +0x64.
 // Shape: the info reference kept in edi across the base call; the success path is the `if` body with `mov al,1`.
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 
 struct CTCGraphicAppearance {
     void PrepareForDraw(const CEnginePrimitivePrepareInfo& info);   // 0x004BE4E0
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x006A64D0
 };
 
-struct CThingDeadCreature : CThingPhysical {
+class CThingDeadCreature : public CThingPhysical { public:
     bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);
 };
 

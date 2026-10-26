@@ -14,7 +14,7 @@ struct CDefinitionBaseModel {
     unsigned char data[0x3c];
     ~CDefinitionBaseModel(); // 0x00430300
 };
-struct CSpecialAbilitiesDivineWrathDef : CDefinitionBaseModel {
+class CSpecialAbilitiesDivineWrathDef : public CDefinitionBaseModel { public:
     void* p3c; unsigned char gap40[8];
     void* p48; unsigned char gap4c[8];
     void* p54; unsigned char gap58[8];

@@ -15,7 +15,7 @@ public:
     const char* PStringData;
     ~CCharString() { ++gStringDtors; }                  // stand-in
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;
     void  (__fastcall* DeleteFunc)(void* data);
     void* Data;

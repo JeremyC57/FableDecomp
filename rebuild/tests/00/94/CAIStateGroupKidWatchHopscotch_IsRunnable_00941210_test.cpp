@@ -1,21 +1,21 @@
 // Behaviour test for CAIStateGroup_KidWatchHopscotch::IsRunnable (0x00941210): model copy with stub callees.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-struct CThingPhysicsMeshInfo { C3DVector ToCentre; float BoundingCircleRadius; };
-struct CTCPhysicsBase { CThingPhysicsMeshInfo info; const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return &info; } };
-struct CThing { C3DVector pos; CTCPhysicsBase* physics; const C3DVector& GetPosition() const { return pos; } };
+class CThingPhysicsMeshInfo { public: C3DVector ToCentre; float BoundingCircleRadius; };
+class CTCPhysicsBase { public: CThingPhysicsMeshInfo info; const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return &info; } };
+class CThing { public: C3DVector pos; CTCPhysicsBase* physics; const C3DVector& GetPosition() const { return pos; } };
 struct CPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } CPointer& operator=(CThing* t) { m_pItem = t; return *this; } };
 static long g_frame;
 static CThing* g_nearestBoard;
 static C3DVector g_searchPos;
-struct CWorld { static long GetWorldFrame() { return g_frame; } };
-struct CAIBrain { CThing* PCreature; };
+class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CAIBrain { public: CThing* PCreature; };
 
 struct CAIStateGroup_KidWatchHopscotch {
     CAIBrain* PBrain;

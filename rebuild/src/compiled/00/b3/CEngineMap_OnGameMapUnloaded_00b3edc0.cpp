@@ -6,7 +6,7 @@ struct CEngineScene_00bdbff0 {
     void OnGameMapUnloaded();                      // 0x00BDBFF0
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineScene_00bdbff0* m_pScene;               // +0x00
     void*                  m_pData;                // +0x04
     void*                  m_pGameMap;             // +0x08

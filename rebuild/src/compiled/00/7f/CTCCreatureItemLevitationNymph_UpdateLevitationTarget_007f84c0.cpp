@@ -14,11 +14,11 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     void Set(float x, float y) { X = x; Y = y; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     const C3DVector& GetPosition() const;       // 0x004C73D0

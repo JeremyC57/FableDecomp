@@ -9,7 +9,7 @@
 // Shape: /Os TU without a frame pointer (`optimize("s",on)`): the list walk re-reads the sentinel from the member at every
 // test, each element null-tested before its virtual Clear; the for_each result sits in the `push ecx` frame word.
 #pragma optimize("s", on)
-struct CEnginePrimitiveHandle {                    // 8 bytes: vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: vptr + counted primitive pointer
     void* _vtable;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -40,15 +40,15 @@ struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEng
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void ClearPrimitivesIfNecessary();     // slot 0: 0x00644627
     unsigned char       _base04[0x18 - 4];         // PlayerGui .. Bank
     bool                Drawing;                   // +0x18
     CRetailHandleVector PrimitiveHandles;          // +0x1c
 };
 
-struct CDrawQuestInfo : CDrawBase {                // retail members 4 lower than the PDB from GuiMode on
-    struct CQuestInfoElement {                     // retail 0x1c bytes
+class CDrawQuestInfo : public CDrawBase { public:                // retail members 4 lower than the PDB from GuiMode on
+    class CQuestInfoElement { public:                     // retail 0x1c bytes
         virtual void v00();                        // slot 0
         virtual bool IsActive();                   // slot 1
         virtual void Clear();                      // slot 2

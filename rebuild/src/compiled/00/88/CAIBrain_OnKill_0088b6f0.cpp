@@ -11,11 +11,11 @@
 // PActiveStateGroup +0x38, PLastStateGroup +0x3c, PPendingStateGroup +0x40, Output +0x44 (CBrainOutput, 0x48),
 // OutputValid +0x8c, UpdatingStateGroup +0x8d, PCurrentUpdateZone +0xa0, OnKillCalled +0xa4.
 // CAIStateGroupBase (PDB): ScriptAIPriority +8, Terminated +0x10, Priority +0x11, Enabled +0x12.
-struct CBrainOutput {                                    // 0x48 bytes
+class CBrainOutput { public:                                    // 0x48 bytes
     unsigned char _body[0x48];
     CBrainOutput& operator=(const CBrainOutput& other);  // 0x0088C840
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00(); virtual void v01();
     virtual void OnStart();                              // slot 2 (+0x08)
     void*         PBrain;                                // +0x04
@@ -33,11 +33,11 @@ struct CStateGroupEntry {
     long               Key;                              // +0x00
     CAIStateGroupBase* Group;                            // +0x04
 };
-struct CBrainUpdateZone {
+class CBrainUpdateZone { public:
     unsigned char _pad[8];
     unsigned long UpdatePeriod;                          // +0x08 frames between updates
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long GetFrameNumber();                      // 0x004167C8
 };
 struct CThingAICreatureCalls {
@@ -45,7 +45,7 @@ struct CThingAICreatureCalls {
     unsigned __int64 m_updateOffset;                     // +0x18 per-creature frame offset (64-bit)
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     virtual void UpdateStateGroup();                     // slot 1 (+0x04)
     unsigned char           _pad04[0x10];

@@ -27,12 +27,12 @@ extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);           
 // operator new @ 0x00BFEA1A is the implicit global one
 struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 
-struct CThreadedFile {
+class CThreadedFile { public:
     void* m_vtable;                                // +0x00
     long  DeviceID;                                // +0x04 EThreadedFileDeviceID
 };
 struct CThreadedFileCallback;
-struct CThreadedFileObjectDesc {                   // 24 bytes
+class CThreadedFileObjectDesc { public:                   // 24 bytes
     void*                  PDst;                   // +0x00
     unsigned long          FilePos;                // +0x04
     unsigned long          Size;                   // +0x08
@@ -41,7 +41,7 @@ struct CThreadedFileObjectDesc {                   // 24 bytes
     long                   Priority;               // +0x14 EThreadedFilePriority
     CThreadedFileObjectDesc() : PDst(0), FilePos(0), Size(0), PCallback(0), QueueWhenFinished(true), Priority(3) { }
 };
-struct CThreadedFileManager;
+class CThreadedFileManager;
 struct CFileObject {                               // CThreadedFileManager::CFileObject (0x40 bytes)
     CThreadedFileObjectDesc Desc;                  // +0x00
     unsigned long           UID;                   // +0x18
@@ -73,7 +73,7 @@ struct CObjectMap {                                // Objects: map<unsigned long
     unsigned long _compare;
     CFileObject*& operator[](const unsigned long& key);   // 0x009913D0
 };
-struct CThreadedFileManager {
+class CThreadedFileManager { public:
     void*                 m_vtable;                // +0x000
     CPendingObjectMap     DeviceQueue[2][7];       // +0x004
     unsigned char         _padE4[0x13c - 0xe4];    // device levels, time slices, current object

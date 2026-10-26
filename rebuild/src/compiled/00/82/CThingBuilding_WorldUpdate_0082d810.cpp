@@ -14,14 +14,14 @@ extern unsigned char g_displaySwitch_13b863c;     // 0x013B863C
 extern unsigned char g_displaySwitch_13b863e;     // 0x013B863E
 extern unsigned char g_displaySwitch_13b86c6;     // 0x013B86C6
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _pad00[0x2c];
     unsigned long m_thingFlags;                   // +0x2c
     bool WorldUpdate();                           // 0x00838BA0
     void UpdateGraphicAppearance(long reason);    // 0x004C7590 (CThing)
 };
 
-struct CThingBuilding : CThingGameObject {
+class CThingBuilding : public CThingGameObject { public:
     bool WorldUpdate();
 };
 

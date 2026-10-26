@@ -20,7 +20,7 @@ struct CRetailByteVector {                  // VC6-era vector<unsigned char>: th
     CRetailByteVector() : first(0), last(0), end(0) { }
 };
 
-struct CACompressor : CBase {               // vtable 0x0129B424
+class CACompressor : public CBase { public:               // vtable 0x0129B424
     void*             Workspace;            // +0x04
     unsigned long     WorkspaceSize;        // +0x08
     bool              CompressionOn;        // +0x0c (not initialised here)

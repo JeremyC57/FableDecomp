@@ -1,6 +1,6 @@
 // behaviour test for 0x005EDC00 CTCGamePlayer::SetGame
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct Game { CThing* ParentThing; };
 struct Player {
     Game* game; CThing* table;

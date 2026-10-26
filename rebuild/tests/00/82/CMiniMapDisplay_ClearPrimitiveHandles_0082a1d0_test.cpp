@@ -1,7 +1,7 @@
 // Behaviour test (0x0082a1d0): CMiniMapDisplay::ClearPrimitiveHandles clears every map handle, then every marker handle
 #include <cstdio>
 static int g_order = 0;
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     int  Order;
     bool Cleared;
     void Clear() { Cleared = true; Order = ++g_order; }
@@ -20,7 +20,7 @@ struct CHandleVector {
     CEnginePrimitiveHandle* begin() { return m_pFirst; }
     CEnginePrimitiveHandle* end() { return m_pLast; }
 };
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     CHandleVector MapPrimitiveHandles;
     CHandleVector MarkerPrimitiveHandles;
     void ClearPrimitiveHandles()

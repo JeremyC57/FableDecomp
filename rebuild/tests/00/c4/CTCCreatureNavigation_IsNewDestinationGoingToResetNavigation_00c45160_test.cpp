@@ -1,11 +1,11 @@
 #include <cstdio>
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 struct Helper {
     virtual bool m6(CTCCreatureNavigation* nav, C3DVector* pos);
     int called; C3DVector* seen; CTCCreatureNavigation* seennav; bool ret;
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0; Helper* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* pos) {
         return ParentThing->m6(this, pos);

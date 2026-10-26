@@ -13,8 +13,8 @@
 // GetSubDef and GetEffectFromString get same-TU stand-in bodies (write the out slot / `long&` only), so VC7.1 knows neither the def
 // slot nor the effect-type word escapes: the `PDeathEffect = CIntelligentPointer<CThing>(effect)` temporary (forceinline ctor: base
 // ctor, vtable store, SetPItem) then overlays the dead effect-type word as in retail.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 template <class T> struct CDefSlot {         // the out-slot GetSubDef fills (counted reference handed over)
@@ -49,7 +49,7 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetSubDef(CDefSlot<CSpecialEffectsDef>& out);   // 0x00669580
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -79,11 +79,11 @@ struct CDefPointer {                            // CDefPointer<const CDefClassBa
     }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CThing;
-struct CTCDParticleEmitter {
+class CThing;
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x28];
     unsigned long m_presentBits2;               // +0x28 (interface types 0x40..0x5f)
     unsigned char _pad2c[0x5c - 0x2c];
@@ -118,7 +118,7 @@ struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -126,7 +126,7 @@ struct CCombatActionBase {                      // retail sizeof 0x114
     unsigned char           _pad10[0x114 - 0x10];
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_WaspQueenDeath : CCombatActionBase {
+class CCreatureAction_WaspQueenDeath : public CCombatActionBase { public:
     CIntelligentThingPointer PDeathEffect;      // +0x114
     virtual void Initialise();
 };

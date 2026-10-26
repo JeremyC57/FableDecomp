@@ -10,9 +10,9 @@
 // `mov edx,esi ; mov ecx,eax` and a plain call (esi is restored after it), `ret 4`.
 // The def pointer goes through an inline accessor of the 4-byte CDefPointer.
 class CCharString;
-struct CThing;
-struct CBaseObject;
-struct CCameraManagerDef;
+class CThing;
+class CBaseObject;
+class CCameraManagerDef;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -21,14 +21,14 @@ struct CBaseIntelligentPointer {
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pDef;
     T* Get() const { return m_pDef; }
 };
 
 void __fastcall PlayCameraSoundThroughObservedThing(CThing* thing, const CCameraManagerDef* def, const CCharString& sound);   // 0x00698A30
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char                         _00[0x100];
     CBaseIntelligentPointer               PObservedThing;   // +0x100 (CIntelligentPointer<CThingGameObject const>)
     unsigned char                         _108[0x2c];       // +0x108..+0x133

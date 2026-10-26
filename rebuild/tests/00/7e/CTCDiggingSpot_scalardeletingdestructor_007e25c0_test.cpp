@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDiggingSpot {
+class CTCDiggingSpot { public:
     void* vftable;
     int destroyed;
 };

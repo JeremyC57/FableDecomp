@@ -1,4 +1,4 @@
-struct C3DAnimFileXAllocationSizeChunk {
+class C3DAnimFileXAllocationSizeChunk { public:
     void* vftable;
 };
 

@@ -1,9 +1,9 @@
 // Behaviour test for 0x00d3af50 CFH_MemorialCutsceneMarker::Main
 #include <cstdio>
 #include <cstring>
-struct CScriptThing { int id; };
-struct CCharString { char m_text[32]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
-struct CGame {
+class CScriptThing { public: int id; };
+class CCharString { public: char m_text[32]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
+class CGame { public:
     float age; int persistent, removed;
     float GetHeroAge() const { return age; }
     void SetHeroAge(float a) { age = a; }

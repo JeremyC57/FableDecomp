@@ -1,7 +1,7 @@
 // Behaviour test for NParticleEngine::CPSCOrbit::StartUpdate @ 0x00B16D50: first frame seeds and warms up four steps, later frames one step.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33; C3DVector Pos; };
 struct CParticleUpdateParameters { int dummy; };
 

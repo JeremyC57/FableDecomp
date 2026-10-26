@@ -14,8 +14,8 @@
 //   own block; the emitter lookup is `T* p = 0; if (HasTC(k)) p = GetTC(k);` (the preloaded `xor ecx,ecx`) and is used
 //   unchecked; GetTC is `__forceinline` with a map pointer local (`add edi,44h`, `this` stays in esi) and the end/hit
 //   choice as one ternary (the component lands straight in ecx); the Burning clear sits after the join.
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -48,7 +48,7 @@ public:
 };
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {
@@ -58,7 +58,7 @@ struct CBaseIntelligentPointer {
 };
 
 namespace NFire {
-struct CFirePoint {
+class CFirePoint { public:
     CCharString             HelperName;                 // +0x00
     long                    HelperIndex;                // +0x04
     long                    EffectIndex;                // +0x08

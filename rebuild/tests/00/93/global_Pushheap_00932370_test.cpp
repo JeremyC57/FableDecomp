@@ -1,6 +1,6 @@
 // behaviour test for 0x00932370 _Push_heap (CThing* elements)
 #include <cstdio>
-struct CThing { int size; };
+class CThing { public: int size; };
 static bool LowerThan(CThing* a, CThing* b) { return a->size < b->size; }
 typedef bool (*TCmp)(CThing*, CThing*);
 static void _Push_heap(CThing** first, long hole, long top, CThing* value, TCmp comp)

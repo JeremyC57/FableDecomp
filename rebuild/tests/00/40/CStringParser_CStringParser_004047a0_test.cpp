@@ -11,7 +11,7 @@ public:
     ~CCharString() { gOrder[gN++] = (char)(long)PStringData; }
     CCharStringData* PStringData;
 };
-struct CStringParserCommentBoundaries { long Start; long End; };
+class CStringParserCommentBoundaries { public: long Start; long End; };
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list {

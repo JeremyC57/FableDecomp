@@ -22,7 +22,7 @@ struct CBasicStringChar {                                      // CBasicString<c
     bool          UseFastExtend : 1;                           // +0x0c
     bool operator==(const char* text) const;                   // 0x004115A0
 };
-struct CCharStringData {                                       // 17 bytes
+class CCharStringData { public:                                       // 17 bytes
     CBasicStringChar Data;                                     // +0x00
     long             NoRefs;                                   // +0x0d
 };

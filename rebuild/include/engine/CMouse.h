@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CInputManager;
+class CInputManager;
 
 #pragma pack(push, 1)
-struct CMouse {
+class CMouse {
+public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  EventStore[0x3400];                       // +0x04 CInputEvent[256]
     long           NoStoredEvents;                           // +0x3404

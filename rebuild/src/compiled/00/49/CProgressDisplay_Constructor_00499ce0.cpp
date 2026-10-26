@@ -10,17 +10,17 @@
 // (two timers, the two true flags, the third timer, the counters, then the false flags).
 // Layout: Ego_r.pdb CProgressDisplay with 12-byte retail STLport vectors, as the landed destructor 0x00499FB0
 // (no engine header).
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
-struct CTexture {                                  // 8 bytes
+class CTexture { public:                                  // 8 bytes
     void* m_pTexture;
     void* m_pHandle;
     ~CTexture();                                   // 0x009F9F70
@@ -32,7 +32,7 @@ template <class T> struct CVector {                // STLport vector<T> (12 byte
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 extern const double g_ProgressTimeZero;            // 0x0122ED70 (0.0)
-struct CAProgressDisplay {                         // vtable 0x012387A0
+class CAProgressDisplay { public:                         // vtable 0x012387A0
     virtual ~CAProgressDisplay() {}
     virtual void v01();
     virtual void StopProgress(bool a, bool b) = 0; // slot 2

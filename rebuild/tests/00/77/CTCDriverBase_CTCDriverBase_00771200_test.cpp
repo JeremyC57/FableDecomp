@@ -4,7 +4,7 @@
 #include <new>
 static int g_drawableCalls = 0;
 static bool g_drawableArg = false;
-struct CThing {
+class CThing { public:
     virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { }
     virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { }
     virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { }
@@ -21,7 +21,7 @@ struct CTCBase_Calls {
     bool    IsInGlobalUpdateTCs;
     CTCBase_Calls(CThing* parent) : ParentThing(parent), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
 };
-struct CTCDriverBase : CTCBase_Calls {
+class CTCDriverBase : public CTCBase_Calls { public:
     virtual void v00() { }
     CTCDriverBase(CThing* parent);
 };

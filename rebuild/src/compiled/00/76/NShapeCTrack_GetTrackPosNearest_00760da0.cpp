@@ -7,11 +7,11 @@
 // Shape: a do/while over the fraction (`(t += step) < 1.0f`, no entry test); the squared distance is written
 // dx*dx + dy*dy + dz*dz (VC7.1 evaluates the right-hand squares first: z, y, x); `d < best` keeps the copy-out in the
 // taken arm.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 namespace NShape {
-struct CTrack {
+class CTrack { public:
     virtual void v00();
     unsigned char _pad04[0x20];             // Owner, Points, SelectedPoints, TrackTraverser
     float         TrackLength;              // +0x24

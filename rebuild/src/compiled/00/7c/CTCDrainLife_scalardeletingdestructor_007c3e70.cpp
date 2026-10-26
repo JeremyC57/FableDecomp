@@ -1,4 +1,4 @@
-struct CTCDrainLife {
+class CTCDrainLife { public:
     void* vftable;
 };
 

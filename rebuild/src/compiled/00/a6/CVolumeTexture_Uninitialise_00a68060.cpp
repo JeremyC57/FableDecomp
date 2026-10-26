@@ -15,7 +15,7 @@ struct CRenderSystem {
     unsigned char      _pad0c[0x58 - 0x0c];
     IDirect3DDevice9*  m_pDevice;           // +0x58
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char  _pad00[0x60];
     CRenderSystem* m_pRender;               // +0x60
 };
@@ -25,7 +25,7 @@ struct IDirect3DVolumeTexture9 {
     virtual unsigned long __stdcall AddRef();
     virtual unsigned long __stdcall Release();
 };
-struct CVolumeTexture {
+class CVolumeTexture { public:
     virtual ~CVolumeTexture();
     IDirect3DVolumeTexture9* m_pTexture;    // +0x04
     long                     m_format;      // +0x08

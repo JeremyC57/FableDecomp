@@ -6,9 +6,9 @@
 static int g_frames = 0, g_endAt = 1000, g_hutReset = 0, g_completed = 0, g_failed = 0, g_deactivated = 0, g_generators = 0;
 static int g_later = 0, g_fadeIns = 0, g_endAtFrame = 3;
 struct SMasterData { bool RansomVictimKidnappersKilled; };
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CQ_RansomVictimScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CQ_RansomVictimScript* Owner;
     void NewScriptFrame() const;
     CScriptThing GetThingWithScriptName(const char* n) const { CScriptThing t; t.id = !std::strcmp(n, "ChiefsHut") ? 4 : 0; return t; }

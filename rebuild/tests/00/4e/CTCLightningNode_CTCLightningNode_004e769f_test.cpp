@@ -1,9 +1,9 @@
 #include <cstdio>
 static int g_log[16]; static int g_n;
-struct CThing { int id; };
-struct CTCBase { CTCBase() { } virtual ~CTCBase() { g_log[g_n++] = 100; } };
+class CThing { public: int id; };
+class CTCBase { public: CTCBase() { } virtual ~CTCBase() { g_log[g_n++] = 100; } };
 struct CBaseIntelligentPointer { int m_tag; CBaseIntelligentPointer(int t) : m_tag(t) { } virtual ~CBaseIntelligentPointer() { g_log[g_n++] = m_tag; } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(int t) : CBaseIntelligentPointer(t) { } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer(int t) : CBaseIntelligentPointer(t) { } };
 struct CDefBase {
     long m_count; int destroyed;
     virtual ~CDefBase() { }
@@ -16,7 +16,7 @@ struct CLightningDefPointer {
     ~CLightningDefPointer() { if (m_pDef) { m_pDef->Release(); m_pDef = 0; } g_log[g_n++] = 24; }
 };
 struct CLightningBranchVector { ~CLightningBranchVector() { g_log[g_n++] = 44; } };
-struct CTCLightningNode : CTCBase {
+class CTCLightningNode : public CTCBase { public:
     CIntelligentPointer<CThing> PParent; CIntelligentPointer<const CThing> PSourceOfFaction; CIntelligentPointer<CThing> PSourceOfHit;
     CLightningDefPointer PDef; long Timer; CLightningBranchVector LightningBranches;
     CTCLightningNode() : PParent(12), PSourceOfFaction(20), PSourceOfHit(28), Timer(0) { }

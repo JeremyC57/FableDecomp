@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     int id;
     CCharString(int v) : id(v) { ++g_live; }
     CCharString(const CCharString& o) : id(o.id) { ++g_live; }

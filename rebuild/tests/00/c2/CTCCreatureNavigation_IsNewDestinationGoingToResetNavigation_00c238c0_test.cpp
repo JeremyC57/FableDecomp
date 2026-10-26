@@ -1,6 +1,6 @@
 #include <stdio.h>
-struct C3DVector { float x, y, z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x, y, z; };
+class CTCCreatureNavigation;
 struct Callee {
     int marker;
     virtual bool s0(){return false;}
@@ -11,7 +11,7 @@ struct Callee {
     virtual bool s5(){return false;}
     virtual bool Query(void* nav, C3DVector* v){ return v->x > 0.0f; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     void* f0;
     Callee* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* dest){ return ParentThing->Query(this, dest); }

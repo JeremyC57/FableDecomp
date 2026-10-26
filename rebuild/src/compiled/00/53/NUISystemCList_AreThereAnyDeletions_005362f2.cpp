@@ -25,7 +25,7 @@ struct CRetailVector_005362f2 {
 };
 
 namespace NUISystem {
-struct CList {
+class CList { public:
     unsigned char        _pad00[0x164];
     CRetailVector_005362f2 m_children;                // +0x164
     bool AreThereAnyDeletions();

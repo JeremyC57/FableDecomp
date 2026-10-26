@@ -1,12 +1,12 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for NScript::CQ_SunnyvaleMasterData::Init (0x00CDBA10): every reset member/static gets its start value.
-struct CCharString {
+class CCharString { public:
     char Text[16];
     CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
 };
 namespace NScript {
-struct CQ_SunnyvaleMasterData {
+class CQ_SunnyvaleMasterData { public:
     void*         _vfptr;                            // +0x00 CScriptDataBase vptr
     long          PostSavePosition;                  // +0x04 EGameflowPosition
     long          HenchmanCommentaryState;           // +0x08

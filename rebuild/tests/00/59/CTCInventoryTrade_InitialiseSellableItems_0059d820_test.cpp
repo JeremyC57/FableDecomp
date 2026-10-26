@@ -32,16 +32,16 @@ public:
     }
 };
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetControlledCreature() const { return g_hero; } };
+class CPlayer { public: CThing* GetControlledCreature() const { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
+class CPlayerManager { public: CPlayer* GetMainPlayer() const { return &g_player; } };
 static CPlayerManager g_pm;
-struct CEngine { CPlayerManager* PlayerManager; };
+class CEngine { public: CPlayerManager* PlayerManager; };
 static CEngine g_engine = { &g_pm };
 static CEngine* g_pEngine = &g_engine;
 namespace NInventory {
-struct CItem { long DefIndex; long Count; };
-struct CCategory { long unique; long GetUniqueItemCountInCategory() const { return unique; } };
+class CItem { public: long DefIndex; long Count; };
+class CCategory { public: long unique; long GetUniqueItemCountInCategory() const { return unique; } };
 }
 struct CItemVector {
     NInventory::CItem* _M_start;
@@ -58,7 +58,7 @@ struct CItemVector {
         _M_start[n] = x; _M_finish = _M_start + n + 1; _M_end_of_storage = _M_finish;
     }
 };
-struct CTCInventoryItem { static bool IsBuyable(long defIndex) { return defIndex != 7; } };
+class CTCInventoryItem { public: static bool IsBuyable(long defIndex) { return defIndex != 7; } };
 static int g_gathers = 0;
 static CThing* g_owner = 0;
 static NInventory::CCategory* g_category = 0;
@@ -75,7 +75,7 @@ struct CTCInventoryBase {
     long GetCategoryCount() const { return 9; }
 };
 static std::vector<long> g_added;
-struct CTCInventoryTrade : CTCInventoryBase {
+class CTCInventoryTrade : public CTCInventoryBase { public:
     long          CategoryCount;
     long          ItemSellCount;
     long          ItemBuyCount;

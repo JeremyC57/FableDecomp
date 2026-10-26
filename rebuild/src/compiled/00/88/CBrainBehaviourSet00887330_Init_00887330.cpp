@@ -13,7 +13,7 @@
 
 #include <string.h>
 
-struct CBrainBehaviour {
+class CBrainBehaviour { public:
     long  Name;                                 // +0x00 CDefString
     float Priority;                             // +0x04
     long  ScriptAIPriority;                     // +0x08

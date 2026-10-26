@@ -1,13 +1,13 @@
 #include <cstdio>
 
 static int g_baseCopies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00() { }
     unsigned char _body[0x38];
     CParentDefClassBase() { }
     CParentDefClassBase(const CParentDefClassBase& other) { ++g_baseCopies; }
 };
-struct CAbilityTrackLevelDef : CParentDefClassBase {
+class CAbilityTrackLevelDef : public CParentDefClassBase { public:
     long m_level, m_experienceCost, m_value;
     virtual void v00() { }
     CAbilityTrackLevelDef() : m_level(10), m_experienceCost(11), m_value(12) { }

@@ -43,7 +43,7 @@ struct CModeBase {                                 // CTCCreatureModeManager::CM
     CThing* m_pThing;                              // +0x04
 };
 
-struct CModeBriarRoseConcentrate : CModeBase {
+class CModeBriarRoseConcentrate : public CModeBase { public:
     bool FindHitEvent();
 };
 

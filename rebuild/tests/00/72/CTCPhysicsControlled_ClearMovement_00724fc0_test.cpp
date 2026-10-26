@@ -5,12 +5,12 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
-struct CTCPhysicsBase { virtual void v00() {} void* m_tcBase[2]; C3DVector Position; C3DVector OldPosition; long OldPositionLastFrameSet; float Velocity_X, Velocity_Y, Velocity_Z; float Radius; void* PhysicsDef; unsigned char Flags3c[4]; };
+class CTCPhysicsBase { public: virtual void v00() {} void* m_tcBase[2]; C3DVector Position; C3DVector OldPosition; long OldPositionLastFrameSet; float Velocity_X, Velocity_Y, Velocity_Z; float Radius; void* PhysicsDef; unsigned char Flags3c[4]; };
 struct CTCPhysicsStandard : CTCPhysicsBase { unsigned char _standard[0x48]; };
 struct CTCPhysicsControlled : CTCPhysicsStandard {
     C3DVector ImpulseVelocity; C3DVector ForcedMoveToPos; bool ForcedMoveToPosSet : 1; bool ForcedMoveToPosUsePhysics : 1; float RenderZOffset; float LastRenderZOffset;

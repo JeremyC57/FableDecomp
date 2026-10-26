@@ -1,16 +1,16 @@
 // Behaviour test for CTCInventoryQuests::vfunc_70 (0x006223C0).
 #include <cstdio>
 
-struct CTCQuestCard { long FeatIndex; };
-struct CTCHeroCentre { int Removed; void RemoveQuestCard(void*) { ++Removed; } };
-struct CThing { CTCQuestCard* QuestCard; CTCHeroCentre* HeroCentre; };
-struct CQuestManager {
+class CTCQuestCard { public: long FeatIndex; };
+class CTCHeroCentre { public: int Removed; void RemoveQuestCard(void*) { ++Removed; } };
+class CThing { public: CTCQuestCard* QuestCard; CTCHeroCentre* HeroCentre; };
+class CQuestManager { public:
     bool FeatOk, QuestOk; int Feats, Quests;
     bool ActivateFeatCard(CThing*) { ++Feats; return FeatOk; }
     bool ActivateQuestCard(CThing*, bool) { ++Quests; return QuestOk; }
 };
 static CQuestManager g_qm;
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     bool Enabled; long QuestCardCount; CThing* Selected; CThing* Trader; int Rebuilds;
     bool CanTakeSelectedItem() { return Enabled; }
     bool vfunc_70()

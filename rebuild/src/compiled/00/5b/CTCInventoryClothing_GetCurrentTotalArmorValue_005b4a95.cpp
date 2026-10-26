@@ -1,7 +1,7 @@
 // CTCInventoryClothing::GetCurrentTotalArmorValue() -- sum the armour of every worn clothing modifier plus the "no clothing" defaults of the uncovered suit parts
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CDefBase {
     void ReleaseTemporary() const { --RefCount; if (RefCount == 0) Destroy(); }
 };
 struct CThingDefPointer;
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     __forceinline CDefPointer(const CThingDefPointer& o);
@@ -43,14 +43,14 @@ template<class T> struct CDefPointer {
     T* operator->() const { return Object; }
 };
 // Layout: retail CAppearanceModifierDef / armour def (Ego_r.pdb - 8, the 16-byte containers are 12 in retail).
-struct CAppearanceModifierDef : CDefBase {
+class CAppearanceModifierDef : public CDefBase { public:
     unsigned char _pad08[0x4c - 0x08];
     long  SuitPart;                                            // +0x4c
     unsigned char _pad50[0x5c - 0x50];
     long  ArmourDefIndex;                                      // +0x5c
     float OveralProtectionWeighting;                           // +0x60
 };
-struct CArmourDef : CDefBase {
+class CArmourDef : public CDefBase { public:
     unsigned char _pad08[0x48 - 0x08];
     CDamageFactorMap DamageFactors;                            // +0x48
 };
@@ -74,12 +74,12 @@ struct CThingDefPointer {                                      // CDefPointer<co
     const CThingDef* operator->() const { return Object; }
 };
 template<class T> __forceinline CDefPointer<T>::CDefPointer(const CThingDefPointer& o) : Object((T*)o.Object) { if (Object) ++Object->RefCount; }
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CThingDefPointer GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 
-struct CTCHeroAttachableAppearanceModifiers {                  // interface 0x5E
+class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
     void GetAppearanceModifierList(CLongList& out, long type) const;   // 0x00706800
 };
 struct CPresenceBits { bool test(long bit) const; };           // 0x00410DE0
@@ -89,7 +89,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;          // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     CPresenceBits  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
@@ -107,7 +107,7 @@ struct CThing {
     }
 };
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void*   __vftable;
     CThing* ParentThing;                                       // +0x04
     const CDefinitionManager* GetDefinitions() const;          // 0x006869D0 (CTCBase)

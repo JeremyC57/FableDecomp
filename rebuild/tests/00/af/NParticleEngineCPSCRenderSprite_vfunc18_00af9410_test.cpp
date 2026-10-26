@@ -6,15 +6,15 @@
 // local layout follows PDB CPSCRenderSprite and the source-level bitfield order is
 // checked against the field offsets in struct_layouts_egor.tsv.
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v000() {}
     CParticleSystem* ParticleSystem;
     bool UpdateStarted : 1;
     bool Initialised : 1;
 };
 struct CRGBColour { unsigned int Colour; };
-struct CPSCRenderSprite : CPSCBase {
+class CPSCRenderSprite : public CPSCBase { public:
     unsigned int SpriteBankIndex;
     unsigned int TrailBankIndex;
     CRGBColour StartColour, MidColour, EndColour;

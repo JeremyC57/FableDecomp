@@ -11,8 +11,8 @@
 // (`mov eax,[edi] ; mov [esp+8],eax`), and the multiply is floating (`fild width ; fimul [esp+8] ; fdiv qword g`):
 // `(float)x * width`. Calling the float GFVXToAX(float) with the long (implicitly or with a cast) rounds the
 // argument through `fild ; fstp` first (that is the C2DCoordI overload 0x009E2330).
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     long X;
     long Y;
 };

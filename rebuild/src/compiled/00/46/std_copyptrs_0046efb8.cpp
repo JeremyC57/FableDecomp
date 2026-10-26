@@ -18,7 +18,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct C2DVector {
+class C2DVector { public:
     float X;                                        // +0x00
     float Y;                                        // +0x04
 };

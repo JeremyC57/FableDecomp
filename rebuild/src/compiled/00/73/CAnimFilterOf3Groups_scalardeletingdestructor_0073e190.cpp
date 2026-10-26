@@ -3,11 +3,11 @@
 // Leaf: ??_GCNamedAnimFilter_0073e190@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the derived class stores no vtable of its own (its vtable folds into the base's), the base's inline destructor stores the base vtable, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CAnimFilterBase {                           // vtable 0x0122FFCC
+class CAnimFilterBase { public:                           // vtable 0x0122FFCC
     virtual void v00();
     ~CAnimFilterBase() { }                         // inline: the vtable store
 };

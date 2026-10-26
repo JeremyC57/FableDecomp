@@ -14,7 +14,7 @@
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 form without the map lookup and the Construct call: a `result`
 //   local preloaded with 0 (`xor edi,edi`) is what the kill and failure paths return; the success path returns the
 //   thing register directly.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CTCDHeroSuit;
 

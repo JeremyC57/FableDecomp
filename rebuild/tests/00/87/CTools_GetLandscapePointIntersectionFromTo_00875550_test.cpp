@@ -1,6 +1,6 @@
 // Behaviour test for CTools::GetLandscapePointIntersectionFromTo (00875550).
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct Map {
     float ground, water;
     float GetGroundSizeZAt(const C3DVector&) const { return ground; }

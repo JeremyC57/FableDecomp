@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C2DVector { float X, Y; };
-struct CActionInputControl {
+class C2DVector { public: float X, Y; };
+class CActionInputControl { public:
     long GameAction, ControllerType, KeyboardKey, XboxButton, MouseButton;
     C2DVector ControlDirection;
     CActionInputControl() {}

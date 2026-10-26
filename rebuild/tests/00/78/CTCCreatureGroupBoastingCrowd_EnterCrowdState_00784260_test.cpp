@@ -6,7 +6,7 @@
 static int g_cleared = 0, g_removed = 0, g_added = 0, g_killed = 0, g_lastDeedType = 0;
 static const char* g_lastSource = 0;
 static long g_nextHandle = 100;
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     long CrowdState;
     long CurrentOpinionDeedHandle;
     long HeroOpinionSourcesPushed;

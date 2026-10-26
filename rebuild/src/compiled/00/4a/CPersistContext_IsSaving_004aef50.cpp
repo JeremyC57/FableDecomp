@@ -7,14 +7,14 @@
 // Shape: `mov eax,[ecx+18h] ; cmp eax,1 ; je ; cmp eax,3 ; je ; xor eax,eax ; ret ; mov eax,1 ; ret` -- the `||` of two
 // compares returned as a long (a bool result would be `mov al,1` / `xor al,al`).
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CEngineInternalPrimitiveBase; struct CEngineSubPrimitiveChain;
-struct CEnginePrimitiveManagerParticleDecalGroup {
+class CEngineInternalPrimitiveBase; class CEngineSubPrimitiveChain;
+class CEnginePrimitiveManagerParticleDecalGroup { public:
     int RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain);
 };
 int CEnginePrimitiveManagerParticleDecalGroup::RenderPrimitive(CEngineInternalPrimitiveBase *primitive, int layer, CEngineSubPrimitiveChain *chain){ return 0; }

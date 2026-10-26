@@ -3,11 +3,11 @@
 #include <cstdlib>
 
 static int g_added = 0; static void* g_addedThing = 0; static long g_addedIndex = -1;
-struct CThing { unsigned char pad[0x91]; unsigned char dead : 1; unsigned char rest : 7; };
+class CThing { public: unsigned char pad[0x91]; unsigned char dead : 1; unsigned char rest : 7; };
 static CThing g_hero; static CThing* g_heroPtr = &g_hero;
-struct CPlayer { CThing* GetHeroThing() { return g_heroPtr; } };
-struct CPlayerManager { CPlayer p; CPlayer* GetPlayer() { return &p; } };
-struct CGame { unsigned char pad[0x1c]; CPlayerManager* pm; };
+class CPlayer { public: CThing* GetHeroThing() { return g_heroPtr; } };
+class CPlayerManager { public: CPlayer p; CPlayer* GetPlayer() { return &p; } };
+class CGame { public: unsigned char pad[0x1c]; CPlayerManager* pm; };
 static CGame* g_pGame;
 struct CArray { long* b; long* e; long& front() { return *b; } };
 struct CGuiDef { unsigned char pad[0x958]; CArray graphics; };

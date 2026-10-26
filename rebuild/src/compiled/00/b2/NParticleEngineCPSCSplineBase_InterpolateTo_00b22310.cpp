@@ -13,21 +13,21 @@
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-template <class T> struct CArray;
+template <class T> class CArray;
 template <class T> CArray<T> __fastcall GFInterpolateArray(const CArray<T>& a, const CArray<T>& b, float t, const T& defaultValue);
-template <class T> struct CArray {                     // STLport vector<T> (12 bytes in retail)
+template <class T> class CArray { public:                     // STLport vector<T> (12 bytes in retail)
     T* m_begin; T* m_end; T* m_capacity;
     CArray(const CArray& other);                       // 0x006F0810 (T = C3DVector)
     ~CArray() { if (m_begin) free(m_begin); }
     long Size() const { return (long)(m_end - m_begin); }
     CArray& operator=(const CArray& other);            // 0x0075B8D0 (T = C3DVector)
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;                   // +0x00
     CArray<C3DVector> GetControlPoints() const { return ControlPoints; }
     float             Tension;                         // +0x0c
@@ -38,7 +38,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     void Reset(T* object);                             // 0x00B23240 / 0x00B23170
@@ -57,21 +57,21 @@ template <class T> struct CCountedPointer {
     }
 };
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;                   // +0x04
     bool UpdateStarted : 1;                            // +0x08
     bool Initialised : 1;
 };
-struct CPSCSplineBase : CPSCBase {
-    struct CSplineRandomOffsetData {                   // 0x48 bytes
+class CPSCSplineBase : public CPSCBase { public:
+    class CSplineRandomOffsetData { public:                   // 0x48 bytes
         unsigned char _body[0x48];
         CSplineRandomOffsetData(CCardinalSpline* initialSpline);   // 0x00B21DD0
         void InterpolateTo(const CSplineRandomOffsetData& other, float t);   // 0x00B211B0
         CSplineRandomOffsetData& operator=(const CSplineRandomOffsetData& other);   // 0x00B20B60
     };
-    struct CSplinePosParamData {                       // 0x18 bytes
+    class CSplinePosParamData { public:                       // 0x18 bytes
         CParticleSystem*      PParentParticleSystem;   // +0x00
         CCardinalSpline*      Spline;                  // +0x04
         bool                  MaintainSplineShape;     // +0x08

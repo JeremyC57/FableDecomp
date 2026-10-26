@@ -2,11 +2,11 @@
 // stops (twice when a saved display exists), restores the old display, releases it and clears the shown flag.
 #include <cstdio>
 #include <cstring>
-struct CCharString { char text[8]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
+class CCharString { public: char text[8]; CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; } };
 struct SCountBlock { long m_references; void (*m_pfnDestroy)(void*); void* m_pObject; };
 static int g_destroyed = 0;
 static void Destroy(void*) { ++g_destroyed; }
-struct CAProgressDisplay { int id; };
+class CAProgressDisplay { public: int id; };
 struct CCountedPointer_CAProgressDisplay {
     CAProgressDisplay* Data; SCountBlock* Info;
     void Clear()
@@ -26,7 +26,7 @@ static void SetProgressDisplay(CCountedPointer_CAProgressDisplay* d) { g_restore
 static bool g_bAutoSaveProgressShown = false;
 static double g_AutoSaveProgressEndTime = 0.25;
 static CCountedPointer_CAProgressDisplay GOldAutoSaveProgressDisplay = { 0, 0 };
-struct CWorld {
+class CWorld { public:
     void StopAutoSaveProgress()
     {
         if (g_bAutoSaveProgressShown) {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 // Behaviour test for CNearestBuildingWithProperty::operator() (0x0065F056): keeps the nearest building whose
 // sim definition has the property, and releases the temporary def pointer.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
@@ -17,7 +17,7 @@ struct CBuildingSimDefinition {
     unsigned long BuildingProperties;
     void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* p) : Object(p) { if (p) ++p->Ref.Count; }
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -30,7 +30,7 @@ class CThingBuilding : public CThing { public:
     CDefPointer<CBuildingSimDefinition> PeekPSimDefinition() const { return CDefPointer<CBuildingSimDefinition>(Def); } };
 class CBaseIntelligentPointer { public: void* m_pItem; CThing* GetPItem() const { return (CThing*)m_pItem; } };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     unsigned long BuildingProperty; C3DVector Pos; CThingBuilding* NearestBuilding; float BestDistanceSquared;
     CNearestBuildingWithProperty() : Pos(0, 0, 0) {}
     void operator()(const CIntelligentPointer<CThing>& thing);

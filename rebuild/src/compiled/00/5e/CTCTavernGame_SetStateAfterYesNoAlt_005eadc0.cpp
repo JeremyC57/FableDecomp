@@ -13,19 +13,19 @@
 //   YesState / NoState / AltState (+0xA8 / +0xAC / +0xB0) take the three state arguments and the game state moves to
 //   0x2E keeping the previous one; a skip raised meanwhile takes the skip path. The four by-value CWideStrings are
 //   destroyed on return. Parameter names noText / altText are descriptive (the PDB keeps only types).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);
     ~CWideString();                                            // 0x0099B510
 };
-struct CFontBank;
-struct CSubtitleRenderer {
+class CFontBank;
+class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
                  const CWideString& altText, unsigned long flags, float time, bool b0, bool b1);   // 0x00492F69
     void SetText(CFontBank* font, const CWideString& title, const CWideString& speaker, const CWideString& text,
@@ -36,7 +36,7 @@ struct CGameEventData {
     unsigned char Bytes[0x24];
     void Copy(long size, const void* data);                    // 0x009F1760
 };
-struct CGameEvent {
+class CGameEvent { public:
     long           Type;                                       // +0x00
     unsigned char  Flag;                                       // +0x04
     unsigned char  _pad05[0x20];
@@ -44,7 +44,7 @@ struct CGameEvent {
     CGameEvent(long type) : Type(type), Flag(0xff), B25(0), B26(1), B27(0) { }
     template <class T> void SetData(T value) { ((CGameEventData*)this)->Copy(sizeof(T), &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank*    PFont;                                       // +0x1614c
     void AddGameEvent(CGameEvent* event);                      // 0x0041649C

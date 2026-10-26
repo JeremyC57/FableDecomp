@@ -11,14 +11,14 @@
 //          construction; the interface calls take Me by const reference and the literals as implicit CCharString conversions.
 // Layout: Ego_r.pdb CBH_Hostage2: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18.
 #include <new>
-struct CCharString {                                 // 4 bytes: the shared string block pointer
+class CCharString { public:                                 // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CCPPointerImp {                               // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
     void* Data;
@@ -91,7 +91,7 @@ struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
 };
 
 struct CSpawnedFuncPhase3;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();

@@ -10,9 +10,9 @@
 // Shape: the member's address is formed once (`lea edi,[esi+0ACh]`) before the vtable store; the CIntelligentPointer
 // member has a compiler-generated destructor (no vtable reset, just the base destructor call); the base destructor
 // becomes the tail jump.
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     void Kill(bool immediately);             // 0x004C9B80
 };
 
@@ -32,12 +32,12 @@ bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x
 
 namespace NThingShot {
 
-struct CTCShotDefinitionBase {
+class CTCShotDefinitionBase { public:
     virtual ~CTCShotDefinitionBase();        // 0x007BF2B0
     unsigned char _body[0x9c - 4];           // retail base: 0x9c bytes
 };
 
-struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase {
+class CTCShotDefinitionDrainLife : public CTCShotDefinitionBase { public:
     float                      MaxCosAngleToTurn;   // +0x9c
     float                      MaxAngleToTurn;      // +0xa0
     float                      AmountToHeal;        // +0xa4

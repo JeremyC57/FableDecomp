@@ -24,7 +24,7 @@ struct CProgressDisplay {
     CProgressDisplay();                           // 0x00499CE0
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                       // +0
     void (__fastcall* DeleteFunc)(void* data);    // +4
     void* Data;                                   // +8
@@ -52,7 +52,7 @@ struct CCountedProgressDisplayPointer {
 
 void __fastcall SetProgressDisplay(const CCountedProgressDisplayPointer& display);   // 0x009E9FD0
 
-struct CInitBaseClass {
+class CInitBaseClass { public:
     virtual void v00();
     bool Valid;                                   // +4
     bool Init();                                  // 0x0099A350

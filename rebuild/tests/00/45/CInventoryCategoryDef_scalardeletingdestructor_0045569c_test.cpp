@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CInventoryCategoryDef { int f0; };
+class CInventoryCategoryDef { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 void __fastcall CInventoryCategoryDef_dtor(CInventoryCategoryDef* def) { g_dtor_called++; }

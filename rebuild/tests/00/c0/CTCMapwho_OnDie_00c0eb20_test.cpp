@@ -8,8 +8,8 @@ struct Obj
 
 void FreeObj(Obj* p);
 
-struct CTCMapwho
-{
+class CTCMapwho
+{ public:
     void OnDie(Obj* p);
 };
 

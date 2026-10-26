@@ -5,7 +5,7 @@
 // Shape: the inline C3DVector operators each return a constructed temporary: the difference (Z parked in the frame), the scaled
 // half (X parked), then the sum built in the frame and copied into the argument through edx/ecx (implicit operator=).
 // `(end - start) * 0.5f + start` gives retail's `fld half ; fadd start` order.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -14,7 +14,7 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
 };

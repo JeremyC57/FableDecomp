@@ -8,14 +8,14 @@
 // Shape: `Mesh = MeshInfo->GetMeshStats()`-style assignment through the landed CCountedPointer::operator=
 // (0x00754F10 shape, inlined: both source fields read before the block compare) followed by the temporary's
 // inline destructor (count decremented in place and re-read from the frame slot, block re-read for delete).
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                // +0
     CCPPointerInfo* Info;                                // +4
     ~CCountedPointer()
@@ -49,12 +49,12 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct C3DMeshStats;
-struct C3DMeshInfo {
+class C3DMeshStats;
+class C3DMeshInfo { public:
     CCountedPointer<const C3DMeshStats> GetMeshStats();  // 0x00A25530
 };
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*                         MeshInfo;       // +0x04
     CCountedPointer<const C3DMeshStats>  Mesh;           // +0x08

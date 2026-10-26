@@ -16,7 +16,7 @@
 // Shape: both vtables are stored first; the POD vectors free inline (`__forceinline`), the others are out-of-line
 // destructors; the inline empty CBase destructor re-stores 0x0123A3E0 before the tail jump into the primary base.
 extern "C" void __cdecl free(void* block);                    // 0x00BFEA14
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 
 template<class T> struct CPODVector {              // STLport vector of a trivially destructible element (12 bytes)
     T* _M_start;
@@ -43,8 +43,8 @@ public:
 };
 }
 
-struct CFadeInFadeOutBase { unsigned char _body[0x0c]; };
-struct CRightHandedSet { float m[6]; };
+class CFadeInFadeOutBase { public: unsigned char _body[0x0c]; };
+class CRightHandedSet { public: float m[6]; };
 
 struct CEditBoxList {                                         // list<NUISystem::CEditBox*> (one word)
     void* _M_node;

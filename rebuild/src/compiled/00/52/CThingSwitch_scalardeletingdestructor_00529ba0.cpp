@@ -9,13 +9,13 @@
 // Shape: CThingSwitch declares no destructor -- the compiler-generated one stores no vtable and calls the
 // members' destructors in reverse order then the base's; a `new CThingSwitch` factory pulls the vtable
 // (and so the `??_G`) into the TU.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned char _body[0xd0 - 4];
     CThingGameObject();
     virtual ~CThingGameObject();                         // 0x00838A00
@@ -23,7 +23,7 @@ struct CThingGameObject {
     static void __fastcall operator delete(void* p);     // 0x004C73B0
 };
 
-struct CThingSwitch : CThingGameObject {
+class CThingSwitch : public CThingGameObject { public:
     float         TriggerRadius;                         // +0xd0
     CCharString   EnvironmentDef;                        // +0xd4
     float         TimeToChangeEnvironmentDef;            // +0xd8

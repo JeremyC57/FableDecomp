@@ -9,12 +9,12 @@
 // +0x24..+0x26. No engine header; modelled locally (wchar_t is the era typedef from <stddef.h>).
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     bool operator!=(const wchar_t* text) const;             // 0x0099B150
 };
 
-struct CTCRegionDisplay {
+class CTCRegionDisplay { public:
     virtual void v00();
     void*       ParentThing;                                // +0x04 (CTCBase)
     bool        ToBeRemoved;                                // +0x08

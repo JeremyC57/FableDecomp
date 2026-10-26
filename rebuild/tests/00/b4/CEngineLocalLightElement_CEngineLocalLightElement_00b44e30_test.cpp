@@ -1,9 +1,9 @@
 // Behaviour test for CEngineLocalLightElement::CEngineLocalLightElement @ 0x00B44E30.
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float X, Y, Z; };
-struct CRGBFloatColour { float R, G, B, A; };
-struct CEngineLocalLightElement {
+class C3DVector { public: float X, Y, Z; };
+class CRGBFloatColour { public: float R, G, B, A; };
+class CEngineLocalLightElement { public:
     C3DVector WorldPos; float Radius, RadiusSquared, SpotRadius; CRGBFloatColour Colour;
     float AttenuationDistSquared, AttenuationConstant; unsigned int ChannelMask;
     CEngineLocalLightElement(const C3DVector& p, float radius, float spotRadius, const CRGBFloatColour& c, unsigned int mask)

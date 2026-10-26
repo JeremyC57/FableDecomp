@@ -13,7 +13,7 @@
 // Shape: plain initialisers (the three `true` bytes share cl and are scheduled before the vtable store,
 // the zeroes share eax, the 1.0f radius is an immediate), the pointer member addressed once in edi,
 // the cutscene call is the constructor body.
-struct CThing {
+class CThing { public:
     void SetCutscenePauseBehaviour(long behaviour);         // 0x004C78A0
 };
 
@@ -37,7 +37,7 @@ struct CTCDriverBase_Calls {                                // CTCBase layout (0
     CTCDriverBase_Calls(CThing* thing);                     // 0x00771200
 };
 
-struct CTCDRegionExit : CTCDriverBase_Calls {               // vtable 0x0126AB54
+class CTCDRegionExit : public CTCDriverBase_Calls { public:               // vtable 0x0126AB54
     bool                Active;                             // +0x0c
     bool                InLetterBoxMode;                    // +0x0d
     bool                WaitingForConfirmation;             // +0x0e

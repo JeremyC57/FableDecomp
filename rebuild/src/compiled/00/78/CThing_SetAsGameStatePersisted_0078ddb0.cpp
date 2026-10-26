@@ -4,7 +4,7 @@
 // writes bit 5 of +0x15c, i.e. the same-named bitfield of a larger derived class. Modelled locally.
 // Shape: a one-bit `unsigned char` bitfield store from a bool argument is the classic
 // `shl al,5 ; xor al,dl ; and al,20h ; xor dl,al` merge.
-struct CThing {
+class CThing { public:
     unsigned char _pad000[0x15c];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1; // +0x15c bit 0
     unsigned char Drawable : 1;                      // bit 1

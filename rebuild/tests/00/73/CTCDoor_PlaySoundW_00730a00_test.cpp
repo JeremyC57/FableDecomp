@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCDoor {
+class CTCDoor { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             m4;                                     // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -100,7 +100,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCDoor, PDef_Object) == 0x20);
 
 // ---- end engine/CTCDoor.h ----
 
-struct CTCBase;
+class CTCBase;
 class CCharString;
 class CSoundPair;
 
@@ -216,7 +216,7 @@ struct CBaseDefPointer {                           // CDefPointer<const CThingBa
     const CDefClassBase* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44

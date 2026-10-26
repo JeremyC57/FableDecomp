@@ -8,7 +8,7 @@ namespace N_0099eae0 { struct CWideString {
 struct SaveSub { CWideString Format(CWideString* in){ return CWideString((const char*)0xF07,0); } };
 struct SaveMgr { char pad[0x14]; SaveSub* f14; };
 SaveMgr* g_saveMgr;
-struct CUserProfileManager { CWideString GetEmptySlotName(); };
+class CUserProfileManager { public: CWideString GetEmptySlotName(); };
 CWideString CUserProfileManager::GetEmptySlotName(){
     SaveMgr* mgr=g_saveMgr;
     if(mgr){ CWideString temp((const char*)0x122df80,-1); return mgr->f14->Format(&temp); }

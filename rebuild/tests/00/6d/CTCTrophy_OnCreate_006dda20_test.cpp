@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CTrophyDef { bool EvilTrophy; bool FakeTrophy; };
+class CTrophyDef { public: bool EvilTrophy; bool FakeTrophy; };
 struct CDefPointerTrophyDef { const CTrophyDef* Object; };
 static CTrophyDef g_def;
-struct CDefClassBase { bool GetSubDef(CDefPointerTrophyDef* out) { out->Object = &g_def; return true; } };
-struct CThing { CDefClassBase* Def; };
+class CDefClassBase { public: bool GetSubDef(CDefPointerTrophyDef* out) { out->Object = &g_def; return true; } };
+class CThing { public: CDefClassBase* Def; };
 struct CWitnessList { int count; void clear() { count = 0; } };
-struct CTCTrophy {
+class CTCTrophy { public:
     CThing* Thing; CDefPointerTrophyDef PDef; CWitnessList AvailableWitnesses, WitnessesAchieved; bool Mountable;
     void OnCreate()
     {

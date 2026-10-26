@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DVector { float x,y,z; };
+class C3DVector { public: float x,y,z; };
 
 struct Inner {
     virtual void v0(){}
@@ -19,7 +19,7 @@ void* Inner::last_a = 0;
 C3DVector* Inner::last_v = 0;
 bool Inner::ret = false;
 
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     int f0;
     Inner* ParentThing;
     bool IsNewDestinationGoingToResetNavigation(C3DVector* vec);

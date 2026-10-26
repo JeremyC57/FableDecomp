@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_CallSpouseHome {
+class CCreatureAction_CallSpouseHome { public:
     void* vftable;
     int destroyed;
 };

@@ -3,7 +3,7 @@ static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
 extern void __cdecl engine_operator_delete(void* p) { (void)p; ++g_delete_calls; }
 
-struct CPlayerManager {
+class CPlayerManager { public:
     void* vftable;
     void RealDtor() { ++g_dtor_calls; }
     void* CPlayerManager_scalar_deleting_destructor(unsigned int flags);

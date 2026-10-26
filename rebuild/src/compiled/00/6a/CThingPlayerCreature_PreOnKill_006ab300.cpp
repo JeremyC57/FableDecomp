@@ -15,12 +15,12 @@
 // the main-player test wraps the body so the `return true` exit is laid out last.
 typedef unsigned short wchar_t;                                // VC7.1 without /Zc:wchar_t
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const wchar_t* text);                          // 0x0099B6B0
     ~CWideString();                                            // 0x0099B510

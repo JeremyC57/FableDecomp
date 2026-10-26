@@ -14,9 +14,9 @@
 //   QuestSucceeded +0x49).
 // Shape: the CRandomAttacker 0x00DE21D0 hit-test chain (conditional string temporaries in ebx bits 1/2/4, the result in a
 //   byte slot); the handle's compiler-generated destructor is inline once (the first exit) and out of line elsewhere.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -25,12 +25,12 @@ struct CCharString {
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
-struct CScriptThing;
+class CScriptThing;
 struct CCountedPointer {                               // {Data, Info}
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -60,7 +60,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
@@ -85,22 +85,22 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0: a f
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool a, float time, bool b);                  // 0x00CBE716
-struct CBaseObject {                                   // {vptr, intelligent-pointer link}
+class CBaseObject { public:                                   // {vptr, intelligent-pointer link}
     void* IntelligentPointer;                          // +0x04
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();                            // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseObject {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     ~CScriptGameResourceObjectBase() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 16 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointer PImp;                              // +0x08
     VPAD2(s0) VPAD1(s1)                                // slots 1..3
     virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
     bool IsScripting();                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -125,7 +125,7 @@ struct CQ_BountyHuntScript {
     bool QuestSucceeded;                               // +0x49
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {
+class CTimer { public:
     long Handle;
     __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(Handle, time); }
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(Handle); }

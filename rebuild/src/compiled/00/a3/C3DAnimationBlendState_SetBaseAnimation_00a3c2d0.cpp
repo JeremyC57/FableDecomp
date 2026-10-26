@@ -7,7 +7,7 @@
 // +0x18 in retail (the retail CArray is 12 bytes, the Ego PDB's is 16). After MakeOwnCopyOfData
 // the inlined CIVCountedPointer::operator= runs on Data->BaseAnimation: VC forms its address once
 // (`add esi,8`) and works through it.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -38,7 +38,7 @@ struct CSharedData : CIVCountedPointeeBase {
     void* SkeletalMorph[2];                // +0x18 CCountedPointer<const C3DSkeletalMorph>
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4 CIVCountedPointer<CSharedData>::Object
     void MakeOwnCopyOfData();              // 0x00A3C1A0

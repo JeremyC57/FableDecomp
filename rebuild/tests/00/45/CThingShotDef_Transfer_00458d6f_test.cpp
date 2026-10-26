@@ -1,11 +1,11 @@
 #include <cstdio>
 // behaviour test: CThingShotDef::Transfer visits every field once, in retail order, through the overload of its type
 
-struct CDefString { long m_index; };
-struct CFloatRange { float Min; float Max; };
+class CDefString { public: long m_index; };
+class CFloatRange { public: float Min; float Max; };
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[64];
     int kind[64];
     int count;
@@ -17,7 +17,7 @@ struct CPersistContext {
     void Transfer(long& v) { kind[count] = 6; order[count++] = &v; }
 };
 
-struct CThingShotDef {
+class CThingShotDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                    // CDefClassBase fields (+0x04)
     float Speed;                                  // +0x3c

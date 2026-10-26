@@ -16,23 +16,23 @@
 //        by-value arguments built in their stack slots (three L"" from the right, then the copy of the named text);
 //        the fraction is `left / (initial * 2.0f)` (VC folds the doubling into `fadd st,st`).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString(const wchar_t* text);           // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
 namespace NGameText {
-struct CDataBank {
+class CDataBank { public:
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char        _pad_0x00[0x14];
     NGameText::CDataBank* PTextBank;            // +0x14
 };
@@ -40,23 +40,23 @@ extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CDrawQuestInfo {
     void UpdateMiniGame(float timeFraction, long gained, long total);   // 0x00644EFD
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char   _pad_0x00[0x1c8];
     CDrawQuestInfo* PDrawQuestInfo;             // +0x1c8
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad_0x00[0x54];
     bool          PausedA;                      // +0x54
     bool          PausedB;                      // +0x55
 };
-struct CTrophyDef {
+class CTrophyDef { public:
     unsigned char _pad_0x00[0x54];
     CCharString   SoundOutOfTime;               // +0x54
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     void*         ParentThing;                  // +0x04
     bool          ToBeRemoved;                  // +0x08
@@ -64,7 +64,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CThingManager* GetThingManager();           // 0x00686AE0
 };
-struct CTCTrophy : CTCBase {
+class CTCTrophy : public CTCBase { public:
     CTrophyDef*   PDef;                         // +0x0c (CDefPointer<const CTrophyDef>)
     long          NonMinigameDeedHandle;        // +0x10
     bool          MinigameInProgress;           // +0x14

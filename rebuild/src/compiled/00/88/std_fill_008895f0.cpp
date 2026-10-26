@@ -19,7 +19,7 @@ struct CArray {                                 // the engine's 12-byte vector
     T* _M_end_of_storage;                       // +0x08
     CArray<T>& operator=(const CArray<T>& x);   // out of line
 };
-struct CEnvironmentThemePriorityStackEntry {    // 48 bytes
+class CEnvironmentThemePriorityStackEntry { public:    // 48 bytes
     struct CThemeWeight {                       // 12 bytes
         long  ThemeID;                          // +0x00
         float Weight;                           // +0x04

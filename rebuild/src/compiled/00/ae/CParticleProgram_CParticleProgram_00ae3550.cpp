@@ -16,10 +16,10 @@
 //   the vector-map and arrays are STLport vectors (`_Vector_base` with the end-of-storage word in an `_STLP_alloc_proxy`
 //   built from an `allocator()` temporary: that model places the Constraints `lea` before the last zero word) sharing
 //   the ebx zero register.
-struct C4DVector;
-struct CMovableResourceMemoryPool;
+class C4DVector;
+class CMovableResourceMemoryPool;
 
-struct CMovableResource {                              // vtable 0x0129B860
+class CMovableResource { public:                              // vtable 0x0129B860
     virtual ~CMovableResource() {}
 };
 
@@ -29,9 +29,9 @@ struct CCountedPointer_RenderData {                    // CCountedPointer<CParti
     CCountedPointer_RenderData() : Object(0), Info(0) {}
 };
 
-struct C3DBoundingBox { float Min[3]; float Max[3]; };
+class C3DBoundingBox { public: float Min[3]; float Max[3]; };
 
-struct CParticleSimulation : CMovableResource {        // 0x80 bytes, vtable 0x0129F0C4
+class CParticleSimulation : public CMovableResource { public:        // 0x80 bytes, vtable 0x0129F0C4
     CCountedPointer_RenderData  RenderData;            // +0x04
     float                       Timestep;              // +0x0c
     bool                        TimestepChanged;       // +0x10
@@ -76,7 +76,7 @@ template <class T> struct CVectorBase {                // STLport _Vector_base<T
 template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CVector() : CVectorBase<T>(CAllocator<T>()) {}
 };
-template <class T> struct CArray : CVector<T> {        // retail 12 bytes: a vector
+template <class T> class CArray : public CVector<T> { public:        // retail 12 bytes: a vector
     CArray() {}
 };
 
@@ -88,14 +88,14 @@ struct CVectorMap_ExportParticles {                    // CVectorMap<CCharString
     CVectorMap_ExportParticles() : Dirty(false) {}
 };
 
-struct CMemoryDataOutputStream {                       // retail 0x18 bytes
+class CMemoryDataOutputStream { public:                       // retail 0x18 bytes
     CMemoryDataOutputStream();                         // 0x00996AF0
     unsigned char _body[0x18];
 };
 
-struct C3DTriangle2; struct C3DQuad2; struct C3DClothRenderVertex; struct C2DVector; struct C3DGroup2;
+class C3DTriangle2; class C3DQuad2; class C3DClothRenderVertex; class C2DVector; class C3DGroup2;
 
-struct CParticleProgram : CMovableResource {           // retail 0x140 bytes, vtable 0x0129F0D8
+class CParticleProgram : public CMovableResource { public:           // retail 0x140 bytes, vtable 0x0129F0D8
     CParticleSimulation             InitialSimulation;     // +0x08
     CVectorMap_ExportParticles      ExportParticles;       // +0x88
     CArray<C3DTriangle2>            RenderTris;            // +0x98

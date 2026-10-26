@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CRenderStateManager;
+class CRenderStateManager;
 static CRenderStateManager* g_pRenderStateManager = 0;
 static int g_baseDestroyed = 0;
 static void* g_lastDevice = (void*)1;
@@ -10,7 +10,7 @@ struct CBaseClassNonCopyable {
     ~CBaseClassNonCopyable() { ++g_baseDestroyed; }
 };
 
-struct CRenderStateManager : CBaseClassNonCopyable {
+class CRenderStateManager : public CBaseClassNonCopyable { public:
     void* PD3DDevice;
     CRenderStateManager() : PD3DDevice((void*)0x10) { g_pRenderStateManager = this; }
     virtual ~CRenderStateManager()

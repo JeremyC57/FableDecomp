@@ -3,13 +3,13 @@
 // Callees: NPlayerGui::CDrawAbilityButtons::CDrawAbilityButtons(CPlayerGui*, vector<CDrawBase*>*) @ 0x00651A7E. Vtable 0x0125A7D8 =
 // NPlayerGui::CDrawAbilityButtonsPC (rtti-vtables.tsv). Shape: a speed body (the arguments are loaded into registers, not pushed through),
 // the member store follows the vtable store. No PDB layout for the PC subclass; the member is named descriptively.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace NPlayerGui {
 
-struct CDrawBase;
+class CDrawBase;
 
-struct CDrawAbilityButtons {
+class CDrawAbilityButtons { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];                 // +0x04 .. +0x28: CDrawBase and the ability-button state
     CDrawAbilityButtons(CPlayerGui* gui, void* drawList);   // 0x00651A7E (vector<CDrawBase*>*)

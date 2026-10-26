@@ -5,7 +5,7 @@
 static char g_log[32]; static int g_n = 0;
 static void Log(char c) { if (g_n < 31) { g_log[g_n++] = c; g_log[g_n] = 0; } }
 
-struct CSpawnedFuncBase {
+class CSpawnedFuncBase { public:
     bool Running, StopRunning, FuncPaused, Interrupted;
     int predicateOkCalls;          // TestPredicate returns true this many times, then false
     bool stopOnResume;
@@ -24,7 +24,7 @@ struct CSpawnedFuncBase {
     bool TestPredicate() { Log('P'); return predicateOkCalls-- > 0; }
     void RemovePredicate() { Log('X'); }
 };
-struct CScriptBase {
+class CScriptBase { public:
     CSpawnedFuncBase* PActiveThread;
     bool UpdateSpawnedFunction(CSpawnedFuncBase* func)
     {

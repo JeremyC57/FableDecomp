@@ -19,7 +19,7 @@ public:
  EFileExceptionType Type;
  CBBBFileException(CStringFileArgument text,EFileExceptionType type):CExceptionBase(static_cast<const char*>(text)),Type(type){} //99E4C0 conversion, not logging
 };
-struct CASuspendableProcess;
+class CASuspendableProcess;
 extern int (__stdcall* WriteFileImport)(void*,const void*,unsigned long,unsigned long*,void*); //IAT0143FDA4 kernel32.WriteFile
 extern void (__fastcall* DebugMessage)(const char*); //013BCA00
 struct CDiskFileWriter:CDiskFileWin32 {void Write(const void*,long,CASuspendableProcess*);};

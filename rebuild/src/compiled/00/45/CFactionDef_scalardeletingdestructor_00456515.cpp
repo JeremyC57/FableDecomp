@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CFactionDef {
+class CFactionDef { public:
     int f0;
     int Parent;
     void* f8;

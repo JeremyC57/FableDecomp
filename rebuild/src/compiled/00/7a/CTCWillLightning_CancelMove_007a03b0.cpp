@@ -42,7 +42,7 @@ public:
     }
 };
 
-struct CTCSpecialAbilities {                             // interface 0xA7
+class CTCSpecialAbilities { public:                             // interface 0xA7
     unsigned char _pad00[0x0c];
     bool          AbilityMutexLock;                      // +0x0c
     long          CurrentAbility;                        // +0x10 EHeroAbility

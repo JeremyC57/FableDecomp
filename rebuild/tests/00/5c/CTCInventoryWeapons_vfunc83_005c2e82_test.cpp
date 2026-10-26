@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour of CTCInventoryWeapons::vfunc_83 (0x005C2E82).
-struct CThing { unsigned short DefIndex; long m_limbo; void SetInLimbo(bool inLimbo) { if (inLimbo) ++m_limbo; } };
+class CThing { public: unsigned short DefIndex; long m_limbo; void SetInLimbo(bool inLimbo) { if (inLimbo) ++m_limbo; } };
 struct CIntelligentPointer { CThing* m_p; };
 struct CTCInventoryBase_Retail { long m_baseCalls; void vfunc_83(CThing* thing) { ++m_baseCalls; } };
-struct CTCInventoryWeapons : CTCInventoryBase_Retail {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail { public:
     CIntelligentPointer PActiveMeleeWeapon; CIntelligentPointer PActiveRangedWeapon;
     long ConfiscatedActiveMeleeWeaponDefIndex; long ConfiscatedActiveRangedWeaponDefIndex;
     static bool IsThing(CThing* thing, CIntelligentPointer* pointer) { return thing == pointer->m_p; }

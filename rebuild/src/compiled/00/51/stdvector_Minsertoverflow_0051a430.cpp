@@ -18,7 +18,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CAFile;
 
-struct CCPPointerInfo {                               // 12 bytes
+class CCPPointerInfo { public:                               // 12 bytes
     unsigned long RefCount;                           // +0x00
     void (__cdecl *DeleteFunc)(void*);                // +0x04
     void* Data;                                       // +0x08

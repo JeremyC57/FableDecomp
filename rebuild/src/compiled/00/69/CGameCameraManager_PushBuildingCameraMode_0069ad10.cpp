@@ -19,10 +19,10 @@ class CPlayer {
 public:
     void RemoveMode(long mode);                     // 0x00634190
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer& GetMainPlayer();                       // 0x00449970 (the non-const overload; 0x00449960 is the const one)
 };
-struct CEngine {
+class CEngine { public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1C
 };
@@ -37,7 +37,7 @@ struct CRefVirtual {
     virtual void v00();
     virtual void Destroy();                         // slot 1
 };
-struct CCameraManagerSetDef : CRefVirtual, CRefCounted {
+class CCameraManagerSetDef : public CRefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -45,28 +45,28 @@ struct CCameraManagerSetDef : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_dead : 1;                       // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     CDefPointer<CCameraManagerSetDef> PeekPCameraManagerSetDefinition();    // 0x0082D3B0
 };
 CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);       // 0x006989D0
 
-struct CBaseObject;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* Info;
     CBaseObject* GetPItem() const;                  // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 

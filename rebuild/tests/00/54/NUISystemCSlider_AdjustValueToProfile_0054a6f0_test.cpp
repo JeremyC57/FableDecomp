@@ -11,14 +11,14 @@ typedef long long __int64;
 
 
 #include <math.h>
-struct C2DVector { float X, Y; };
-struct CRGBColour {
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-struct CCPPointerInfo { long Count; };
-template <class T> struct CCountedPointer {
+class CCPPointerInfo { public: long Count; };
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
@@ -58,7 +58,7 @@ struct CChangingStateComponent : IPrimary_0054a990, CObserver, ISecondaryB_0054a
     unsigned char _pad88[0x188 - 0x88];
     void ChangeState(unsigned long state);               // 0x0052CF40
 };
-namespace NUISystem { struct CAction; }
+namespace NUISystem { class CAction; }
 struct CRefCounted {                             // reference count base at +4 of a def
     long Count;
     void DecRef() { --Count; }
@@ -75,7 +75,7 @@ struct CFrontEndManagerDef : CDefBase {
     unsigned char _pad08[0x19c - 8];
     CSoundName    SliderSound;                   // +0x19c (descriptive)
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     explicit CDefPointer(T* d) : Data(d) {}
     CDefPointer(const CDefPointer& o) : Data(o.Data) { if (Data) ++Data->Ref.Count; }
@@ -86,7 +86,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Data; }
 };
-struct CUserProfileManager {                     // retail = Ego_r.pdb with 12-byte vectors
+class CUserProfileManager { public:                     // retail = Ego_r.pdb with 12-byte vectors
     unsigned char _pad00[0xc];
     bool  UseNewProfileValues;                   // +0x0c
     unsigned char _pad0d[0x40 - 0xd];
@@ -128,7 +128,7 @@ struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
 namespace NUISystem {
-struct CAction {
+class CAction { public:
     virtual void v00() {}
     CSliderTargetRef* PTarget;                           // +0x04
 };
@@ -137,7 +137,7 @@ static __forceinline bool Differs(const C2DVector& a, const C2DVector& b)
     return !(fabs(a.X - b.X) <= 0.0001f) || !(fabs(a.Y - b.Y) <= 0.0001f);
 }
 #pragma pack(push, 1)
-struct CSlider : CChangingStateComponent {
+class CSlider : public CChangingStateComponent { public:
     unsigned char _pad188[0x18c - 0x188];
     C2DVector     Min;                           // +0x18c
     C2DVector     Max;                           // +0x194

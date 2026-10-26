@@ -28,7 +28,7 @@ struct CBase {
 };
 
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 
 struct COrbitSettings {                     // 48 bytes
     long  Type;
@@ -45,13 +45,13 @@ struct COrbitSettings {                     // 48 bytes
     float RotateStartRandom;
 };
 
-struct CPSCBase : CBase {                   // vtable 0x0129F3F4
+class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CParticleSystem* ParticleSystem;        // +0x04
     bool             UpdateStarted : 1;     // +0x08 bit 0
     bool             Initialised : 1;       // +0x08 bit 1
 };
 
-struct CPSCOrbit : CPSCBase {               // vtable 0x012A0374
+class CPSCOrbit : public CPSCBase { public:               // vtable 0x012A0374
     unsigned long  CentreParam;             // +0x0c
     COrbitSettings Orbits[3];               // +0x10
     virtual void DatabaseCopy(const CPSCBase& other);

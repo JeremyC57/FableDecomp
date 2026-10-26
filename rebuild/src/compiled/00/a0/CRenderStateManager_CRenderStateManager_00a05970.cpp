@@ -35,7 +35,7 @@ struct CStateStackElement {
     unsigned long Value;
 };
 
-struct CRenderStateManager : CBaseClassNonCopyable { // vtable 0x0129C978
+class CRenderStateManager : public CBaseClassNonCopyable { public: // vtable 0x0129C978
     CRenderStateManager(unsigned long initFlags);
     virtual ~CRenderStateManager();
 

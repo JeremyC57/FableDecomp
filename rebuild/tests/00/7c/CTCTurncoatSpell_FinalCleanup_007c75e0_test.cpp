@@ -1,12 +1,12 @@
 #include <cstdio>
-struct CThing { bool dead; int fades; void FadeOutEffect() { ++fades; } bool IsDead() const { return dead; } };
+class CThing { public: bool dead; int fades; void FadeOutEffect() { ++fades; } bool IsDead() const { return dead; } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 static bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) { if (!p.GetPItem()->IsDead()) return true; }
     return false;
 }
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     CBaseIntelligentPointer TurncoatingEffectOnMeOutOfRange; int stops;
     void StopTurncoatingEffects() { ++stops; }
     void FinalCleanup()

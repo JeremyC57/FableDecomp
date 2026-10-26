@@ -7,7 +7,7 @@
 // Layout: CThing as the matched 0x0089B0B0 / 0x00897AA0 rows. The interface-0x54 component class and the +0xd member name
 // are not confirmed.
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

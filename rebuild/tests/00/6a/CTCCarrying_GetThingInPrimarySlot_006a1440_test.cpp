@@ -1,7 +1,7 @@
 // Behaviour test for 006a1440 (CTCCarrying::GetThingInPrimarySlot): a 0x4000000-flagged thing wins (unless its +0x91 bit 0 is set, then the first plain thing so far); otherwise the first live thing.
 #include <cstdio>
 
-struct CThing {
+class CThing { public:
     unsigned long m_flags;
     unsigned char m_flags91;
 };
@@ -19,7 +19,7 @@ struct SThingListNode {
 
 struct CThingList { SThingListNode* _M_node; };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CThingList ThingsInPrimarySlots;
     CThing* GetThingInPrimarySlot()
     {

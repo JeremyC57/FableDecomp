@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4B830, length 77 bytes.
 // Callees: CRenderTarget::Uninitialise @ 0x00A10E30, the holder release @ 0x009F2E20 twice, the buffer release @ 0x009F9F70 twice (each on the member by address).
 // Shape: five `lea ecx ; call` pairs in that order, then an immediate byte clear.
-struct CRenderTarget {
+class CRenderTarget { public:
     unsigned char _body[0x24];
     void Uninitialise();                           // 0x00A10E30
 };
@@ -17,7 +17,7 @@ struct CBufferHolder_009f9f70 {
     void Release();                                // 0x009F9F70
 };
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char          _pad[0x2af];
     bool                   m_defaultPoolHeld;      // +0x2af
     unsigned char          _pad2b0[0x14];

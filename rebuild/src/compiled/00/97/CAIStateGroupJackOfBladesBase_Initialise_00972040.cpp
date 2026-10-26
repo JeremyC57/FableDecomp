@@ -41,7 +41,7 @@ public:
     }
 };
 
-struct CTCBoss {                                // interface type 0xad
+class CTCBoss { public:                                // interface type 0xad
     unsigned char _pad[0x10];
     long m_phaseCounter;                        // +0x10 (descriptive)
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
@@ -52,7 +52,7 @@ struct CAIBrainModel {
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long scriptPriority,
         EScriptAIPriority priority, const CCharString& name);   // slot 1, base @ 0x008FCEC0

@@ -1,5 +1,5 @@
 #include "engine/CAIStateGroupBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorldMap;
+class CWorldMap;
 
 struct CInner {
     virtual CWorldMap* Peek0();
@@ -19,7 +19,7 @@ struct CInner {
 };
 
 struct CMid { char pad[0x24]; CInner* inner; };
-struct CAIBrain { char pad[0x1c]; CMid* mid; };
+class CAIBrain { public: char pad[0x1c]; CMid* mid; };
 
 CWorldMap* __fastcall CAIStateGroupBase_PeekWorldMap(CAIStateGroupBase* stateGroup)
 {

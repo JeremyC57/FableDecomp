@@ -5,7 +5,7 @@
 // The vtable store precedes the four register-zeroed stores at +0x1c..+0x28, so those pointers
 // are an embedded member object with an inline constructor; the two arguments are assigned in
 // the body (second argument loaded into ecx up front, stored last).
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _body[0x18];              // +0x04..+0x1c
     CResource();                            // 0x009FBEC0
@@ -19,8 +19,8 @@ struct SLipSyncBuffers {                    // four raw pointers, nulled by the 
     SLipSyncBuffers() : m_pPhonemes(0), m_pTimes(0), m_pWeights(0), m_pOwner(0) { }
 };
 
-struct CLipSyncDataBankEntry {
-    struct CData : CResource {              // vtable 0x0129D3A4
+class CLipSyncDataBankEntry { public:
+    class CData : public CResource { public:              // vtable 0x0129D3A4
         SLipSyncBuffers m_buffers;          // +0x1c
         void*           m_pData;            // +0x2c
         unsigned long   m_size;             // +0x30

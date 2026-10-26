@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThing { int m_id; };
+class CThing { public: int m_id; };
 
 struct CTCBase_Calls {
     CThing* ParentThing;
@@ -25,9 +25,9 @@ struct CRetailList_node0x10 {
     ~CRetailList_node0x10() { std::free(head); }
 };
 
-struct C3DVector { float X, Y, Z; C3DVector() {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} };
 
-struct CTCFollowed : CTCBase_Calls {
+class CTCFollowed : public CTCBase_Calls { public:
     CRetailList_node0x10 Followers;
     CRetailList_node0x10 AIFollowers;
     long FrameLastIdleReaction;

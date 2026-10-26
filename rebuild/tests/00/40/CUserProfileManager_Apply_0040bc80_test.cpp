@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CUserProfileManager { char pad[0x33]; char flag; };
+class CUserProfileManager { public: char pad[0x33]; char flag; };
 static int g_prep = 0;
 static int g_commit = 0;
 extern "C" void __fastcall UPM_Prep(CUserProfileManager* manager) { (void)manager; g_prep++; }

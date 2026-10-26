@@ -15,34 +15,34 @@
 typedef unsigned int size_t;
 double __fastcall GFGetFastSubFrameTimer();         // 0x009E1C70
 enum LS_LOADING_STATUS { LS_NONE, LS_LOADED, LS_LOADING, LS_FAILED };
-struct CDataInputStream;
-struct CMemoryDataInputStream {
+class CDataInputStream;
+class CMemoryDataInputStream { public:
     unsigned char _d[0x1c];
     CMemoryDataInputStream(const char* data, long size);   // 0x00994930
     ~CMemoryDataInputStream();                      // 0x00993B10
     operator CDataInputStream&() { return *reinterpret_cast<CDataInputStream*>(this); }
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void UnlockBlock(long pos);                     // 0x00BE0400
     void PrioritiseBlock(long pos);                 // 0x00BE0420
     bool IsBlockLoaded(long pos);                   // 0x00BE0480
     const char* GetBlockData(long pos);             // 0x00BE04C0
 };
-struct CMovableResource;
+class CMovableResource;
 struct CMovableResourcePool {
     void* Alloc(size_t size, CMovableResource* owner);   // 0x00BD9AF0
     void Free(void* p);                             // 0x00BD9B90
 };
 struct CEngineGlobal { unsigned char _pad[0x6b0]; CMovableResourcePool* Pool; };   // +0x6B0
 extern CEngineGlobal* g_pEngine;                    // 0x01436EA8
-struct CEngineLandscapeMap;
-struct CLandscapeBackgroundTreeNode;
+class CEngineLandscapeMap;
+class CLandscapeBackgroundTreeNode;
 struct CLandscapeBackgroundSubNodeBase {
     virtual ~CLandscapeBackgroundSubNodeBase();     // slot 0 (scalar deleting)
     virtual void n1(); virtual void n2(); virtual void n3();
     virtual bool IsPatch();                         // slot 4 (+0x10)
 };
-struct CLandscapeBackgroundSubNodeSplitBranch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundSubNodeSplitBranch : public CLandscapeBackgroundSubNodeBase { public:
     static void* operator new(size_t size, void* place) { return place; }
     static void operator delete(void* p, void* place) { }
     CLandscapeBackgroundSubNodeSplitBranch(CEngineLandscapeMap* map, CLandscapeBackgroundTreeNode* parent, long flags);   // 0x00BF8C80
@@ -50,7 +50,7 @@ struct CLandscapeBackgroundSubNodeSplitBranch : CLandscapeBackgroundSubNodeBase 
     unsigned char _body[0x1d4 - 4];
     LS_LOADING_STATUS ProcessBackgroundLoading(double time, bool abort, CEngineStaticMapFileBlockManager* manager, bool visible, bool hidden);   // 0x00BF8430
 };
-struct CLandscapeBackgroundPatch : CLandscapeBackgroundSubNodeBase {
+class CLandscapeBackgroundPatch : public CLandscapeBackgroundSubNodeBase { public:
     static void* __fastcall operator new(size_t size, CMovableResource* owner);   // 0x00BE5BB0
     static void __fastcall operator delete(void* p, CMovableResource* owner);
     CLandscapeBackgroundPatch(CLandscapeBackgroundTreeNode* parent);   // 0x00BE5FA0
@@ -68,7 +68,7 @@ struct CLandscapeBackgroundLoadTask {               // 16 bytes
     void StartLoading();                            // 0x00BF6410
 };
 struct CLODLoadInfo { long FileBlockPos, FileBlockSize, OffsetIntoFileBlock; unsigned char OptimizedBandRemap; };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     void*                            vptr;
     unsigned char                    _pad4[8];
     CLODLoadInfo                     LODLoadInfo[8];    // +0x0c

@@ -7,7 +7,7 @@
 // path reads the uninitialised out word from the same slot (`mov eax,[esp]`) -- the out pointer must NOT be
 // initialised. The state test is an `&&` chain with two exits (`mov al,1` / `xor al,al`).
 // Layout: retail CThing has the interface bitset at +0x20 and the vector map at +0x44 (landed relatives); CTCBase owner at +4.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
 {
@@ -17,8 +17,8 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     SEntry* LowerBound(const long* type) const;           // 0x004365B0
 };
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
@@ -56,8 +56,8 @@ struct CTCTurnSource                                // interface 90
 
 enum { TC_INTERFACE_90 = 90 };
 
-struct CTCLook
-{
+class CTCLook
+{ public:
     void*   __vftable;                              // +0x00 (CTCBase)
     CThing* m_pThing;                               // +0x04 (CTCBase owner)
     bool IsCurrentlyTurningViaAnimation();

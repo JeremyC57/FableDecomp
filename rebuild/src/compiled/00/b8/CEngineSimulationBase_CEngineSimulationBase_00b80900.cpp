@@ -19,7 +19,7 @@ struct CBase {
     CBase();                                       // 0x0099A2F0
 };
 
-struct CEngineSimulationBase : CBase {             // vtable 0x012A38FC
+class CEngineSimulationBase : public CBase { public:             // vtable 0x012A38FC
     long          m_references;                    // +0x04
     unsigned char m_id;                            // +0x08
     virtual void v00();

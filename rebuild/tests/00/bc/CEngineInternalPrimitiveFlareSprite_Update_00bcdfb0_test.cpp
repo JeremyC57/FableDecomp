@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CSpriteDesc {
     C3DVector Pos; unsigned int Bank, Frame; unsigned short Flags; float Angle, SizeX, SizeY; long Blend;
     unsigned char A, R, G, B; float Fade; long Set, Op;

@@ -4,14 +4,14 @@
 // Callees: operator new @ 0x00BFEA1A (0x10 bytes), CBase::CBase @ 0x0099A2F0.
 // Shape: `new CWADFile(*this)` with the copy constructor (0x00A39B70) inlined: null test on the allocation, base
 // constructor, vtable, three member copies, and the separate `xor eax,eax` failure exit. Local polymorphic model (see 0x00A39B40).
-struct CBankFileAsync;
+class CBankFileAsync;
 
 struct CBase {                              // the engine's root polymorphic base
     virtual ~CBase();
     CBase();                                // 0x0099A2F0
 };
 
-struct CWADFile : CBase {                   // vtable 0x0129CF8C (rtti-vtables.tsv); sizeof 0x10
+class CWADFile : public CBase { public:                   // vtable 0x0129CF8C (rtti-vtables.tsv); sizeof 0x10
     CBankFileAsync* Bank;                   // +0x04
     unsigned long   Index;                  // +0x08
     long            FilePos;                // +0x0c

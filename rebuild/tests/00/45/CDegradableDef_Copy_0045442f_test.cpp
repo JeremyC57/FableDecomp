@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDegradableDef { int v; };
+class CDegradableDef { public: int v; };
 static CDegradableDef* g_last_self = 0;
 static const CDegradableDef* g_last_src = 0;
 void __fastcall CDegradableDef_Copy_impl(CDegradableDef* self, void* edx, const CDegradableDef* src)

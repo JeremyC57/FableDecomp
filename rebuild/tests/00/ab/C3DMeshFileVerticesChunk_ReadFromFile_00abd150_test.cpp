@@ -6,12 +6,12 @@
 #define __int64 long long
 // Host storage adapters only. VC7.1 compiles the real shared headers included below.
 #define FABLE_ENGINE_CDATAINPUTSTREAM_H
-struct CDataInputStream {
+class CDataInputStream { public:
  void* __vftable; unsigned long StreamPos; long StreamSize; void* CurrentSourcePtr;
  unsigned long SourceChunkStreamPos;long SourceChunkBytesRemaining;
 };
 #define FABLE_ENGINE_C3DMESHFILEVERTICESCHUNK_H
-struct C3DMeshFileVerticesChunk {
+class C3DMeshFileVerticesChunk { public:
  void* __vftable; unsigned char prefix[12];
  union {void* align; unsigned char VertexList[3*sizeof(void*)];};
 };
@@ -23,7 +23,7 @@ struct C3DMeshFileVerticesChunk {
 // Leaf: ReadFromFile@C3DMeshFileVerticesChunkMethods
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileVerticesChunk.h"
-struct C3DVector {float X,Y,Z;}; // no generated C3DVector header exists
+class C3DVector { public:float X,Y,Z;}; // no generated C3DVector header exists
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsigned long GetPosition(); };
@@ -45,8 +45,8 @@ struct CInputStreamAccess : CDataInputStream {
  __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
 
-struct C3DVertex2 {C3DVector Position,Normal;float U,V;C3DVertex2() {}};
-template<class T> struct CArray {
+class C3DVertex2 { public:C3DVector Position,Normal;float U,V;C3DVertex2() {}};
+template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}
  T* GetData(){return Size()>0?Begin:(T*)this;}
@@ -57,7 +57,7 @@ template<class T> struct CArray {
   else Insert(End,count-Size(),value);
  }
 };
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 struct C3DMeshFileVerticesChunkMethods : C3DMeshFileVerticesChunk {
  CArray<C3DVertex2>& Vertices(){return *(CArray<C3DVertex2>*)VertexList;}
  void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
@@ -70,7 +70,7 @@ void C3DMeshFileVerticesChunkMethods::ReadFromFile(CDataInputStream& input,unsig
 }
 
 
-struct CChunkedFileLoader {};
+class CChunkedFileLoader { public:};
 static int errors,slowCalls,eraseCalls,insertCalls;
 static CInputStreamAccess* expectedStream;
 static CArray<C3DVertex2>* expectedArray;

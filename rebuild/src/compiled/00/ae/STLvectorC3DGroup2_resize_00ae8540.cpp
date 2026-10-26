@@ -1,5 +1,5 @@
 // std::vector<C3DGroup2>::resize(unsigned int new_size) -- resize the skinning-group array (CArray<C3DGroup2>) to new_size: erase the tail, or append default groups (BoneIndex -1, no blends) copied from one temporary
-// Leaf: ?resize@?$vector@UC3DGroup2@@V?$allocator@UC3DGroup2@@@std@@@std@@QAEXI@Z
+// Leaf: ?resize@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE8540, 101 bytes, __fastcall `ret 4`.
 // Callers: the program loader 0x00AE3ABF.
 // Callees: C3DGroup2::C3DGroup2() 0x00AC40C0 (landed; the default value, its returned `this` pushed as x), erase(first,
@@ -60,12 +60,12 @@ public:
 };
 }
 
-struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
+class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 
 template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 };
 
-struct C3DGroup2 {                                       // 16 bytes in retail
+class C3DGroup2 { public:                                       // 16 bytes in retail
     long                     BoneIndex;                  // +0x0
     CArray<C3DVertexBlend2>  VertexBlends;               // +0x4
     C3DGroup2();                                         // 0x00AC40C0 (BoneIndex -1, empty VertexBlends)

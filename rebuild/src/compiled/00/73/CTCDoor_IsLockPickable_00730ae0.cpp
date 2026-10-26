@@ -12,20 +12,20 @@
 //   share one `pop esi ; xor al,al` tail, the def/state false exits the outer one; the owner pointer is tested
 //   through the member, then fetched again into a named local for the village lookup (two GetPItem calls; a third
 //   call appears when the lookup re-reads the member).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,23 +45,23 @@ struct CTCInterfaceC2 {                         // interface type 0xC2 component
     CBaseIntelligentPointer m_pThing;           // +0x20
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                         // TC 0x33
+class CTCOwnedEntity { public:                         // TC 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };
 #pragma pack(pop)
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0xb3];
     bool m_flagB3;                              // +0xb3
 };
-struct CTCVillageMember {                       // TC 0x23
+class CTCVillageMember { public:                       // TC 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
-struct CDoorDef {
+class CDoorDef { public:
     unsigned char _pad00[0x39];
     bool LockPickable;                          // +0x39
 };
-struct CTCDoor {
+class CTCDoor { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];

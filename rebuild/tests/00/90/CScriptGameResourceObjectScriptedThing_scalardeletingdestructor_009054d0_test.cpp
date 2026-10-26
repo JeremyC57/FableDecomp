@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CScriptGameResourceObjectScriptedThing {
+class CScriptGameResourceObjectScriptedThing { public:
     void* vftable;
     int destroyed;
 };

@@ -14,7 +14,7 @@ struct CEventRecord {                       // 0x2c bytes, zeroed out of line
     CEventRecord();                         // 0x00A04410
 };
 
-struct CMaintainedEvent : CBase {           // vtable 0x0129C0E0
+class CMaintainedEvent : public CBase { public:           // vtable 0x0129C0E0
     CEventRecord m_record;                  // +0x04
     virtual void v00();
     CMaintainedEvent();

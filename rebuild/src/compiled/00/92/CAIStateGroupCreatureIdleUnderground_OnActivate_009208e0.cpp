@@ -12,8 +12,8 @@
 // runs after the call. Frame 0x118 = the lookup key (+0) and the 0x114-byte retail action (+4; the PDB's
 // 300-byte layout is wider).
 // Model: local (no engine header for this class).
-struct CTCBase;
-struct CThingCreatureBase;
+class CTCBase;
+class CThingCreatureBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -28,11 +28,11 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                     // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 
-struct CCreatureAction_GoUnderground : CCreatureActionBase {
+class CCreatureAction_GoUnderground : public CCreatureActionBase { public:
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008B8110
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,16 +57,16 @@ struct CCreatureModeBase {
     virtual long GetType();                     // slot 1 (+0x04)
 };
 
-struct CTCCreatureModeManager {                 // interface 0x31
+class CTCCreatureModeManager { public:                 // interface 0x31
     CCreatureModeBase* GetCurrentMode();        // 0x0073A6E0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

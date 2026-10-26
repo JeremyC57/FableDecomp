@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { int id; };
+class CCharString { public: int id; };
 
 struct Sub {
     int base;
@@ -8,7 +8,7 @@ struct Sub {
 };
 
 struct Obj { char pad[0x54]; Sub* p54; };
-struct CTCEnemy { char pad[0x18]; int f18; };
+class CTCEnemy { public: char pad[0x18]; int f18; };
 
 static Obj g_obj;
 static Sub g_sub;

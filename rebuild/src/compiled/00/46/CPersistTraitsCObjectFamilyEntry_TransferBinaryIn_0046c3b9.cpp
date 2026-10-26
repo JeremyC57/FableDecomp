@@ -2,7 +2,7 @@
 //   (`__declspec(noinline)`, no auto_inline pragma -- the pragma also pushes the in-class traits constructor out of line);
 //   VC7.1 then forms the empty traits `this` on the live value-argument slot ([ebp+0Ch]) exactly as retail. Previous grade:
 //   DIFFER(126v119) -- ours homed the traits at [ebp+8] / its own slot.
-// Leaf: ?TransferBinaryIn@?$CPersistTraits@UCObjectFamilyEntry
+// Leaf: ?TransferBinaryIn@?$CPersistTraits@VCObjectFamilyEntry
 // CPersistTraits<CObjectFamilyEntry>::TransferBinaryIn(CDataInputStream*, CObjectFamilyEntry*) -- read the Object index through the long traits, then the Probability (stored as a float, truncated to long)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0046C3B9, 119 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CPersistTraits<long>::TransferBinaryIn @ 0x0040FE60 (manifest "CPersistTraits<float>": it moves 4 raw bytes,
@@ -38,7 +38,7 @@ struct CDataInputStreamReader : CDataInputStream {
     __forceinline float ReadFloat() { float value; Read(&value, sizeof(value)); return value; }
 };
 
-struct CObjectFamilyEntry {
+class CObjectFamilyEntry { public:
     long Object;            // +0x00
     long Probability;       // +0x04
 };

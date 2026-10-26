@@ -10,8 +10,8 @@
 // bool at +0x24 of the packed PDB layout and the retail body addresses `this+25h`). The body sits among the
 // CTCTargetingAI methods (vtable 0x012411FC slot 34); the manifest label "CCategory::SetCategoryThingAssociation" is
 // propagated and rejected.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     void* m_pItem;                               // +0x00

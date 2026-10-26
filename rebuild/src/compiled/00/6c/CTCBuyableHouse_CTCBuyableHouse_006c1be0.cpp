@@ -8,9 +8,9 @@
 // MainSignPost +0x24, then the inlined CDefPointer release of PDef (+0x0c).
 #define FORCEINLINE inline
 
-struct CThing;
+class CThing;
 
-struct CTCBase {                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
+class CTCBase { public:                            // CTCBase root: vptr, ParentThing, two flags (0x0c bytes)
     void* __vftable;                        // +0x00
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -18,7 +18,7 @@ struct CTCBase {                            // CTCBase root: vptr, ParentThing, 
     ~CTCBase();                             // 0x00686830 (stores the CTCBase vtable, then the CBaseObject destructor)
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                 // slot 1
     long RefCount;                          // +0x04
@@ -43,7 +43,7 @@ struct CIntelligentPointer {                // CIntelligentPointer<CThing>
     ~CIntelligentPointer();                 // 0x00A01C10 (CBaseIntelligentPointer::~CBaseIntelligentPointer)
 };
 
-struct CTCBuyableHouse : CTCBase {
+class CTCBuyableHouse : public CTCBase { public:
     CDefPointer PDef;                       // +0x0c
     bool IsScripted;                        // +0x10
     bool OwnedByPlayer;                     // +0x11

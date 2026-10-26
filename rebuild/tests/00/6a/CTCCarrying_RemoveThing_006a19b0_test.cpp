@@ -1,7 +1,7 @@
 // Behaviour test for 006a19b0 (CTCCarrying::RemoveThing): the slot holding the thing is emptied with the dropped flag false; an uncarried thing changes nothing.
 #include <cstdio>
 
-struct CThing { long m_id; };
+class CThing { public: long m_id; };
 
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
@@ -25,7 +25,7 @@ static int  g_calls = 0;
 static long g_slot = -1;
 static bool g_dropped = true;
 
-struct CTCCarrying {
+class CTCCarrying { public:
     CCarrySlotMap CarrySlots;
     SCarrySlotEntry* FindThing(CThing* thing)
     {

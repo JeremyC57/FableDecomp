@@ -6,7 +6,7 @@ struct SScriptDef { long Cost[4]; long Reward[4]; };
 static SScriptDef g_def;
 static int g_regions = 0, g_generatorsOff = 0, g_boasts = 0, g_lastId = 0; static bool g_lastFlag = false; static long g_costSum = 0, g_rewardSum = 0;
 static const char* g_regionNames[4] = { "BowerstoneJail", "DesertedFarm", "GibbetWoods", "ExecutionTree" };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void AddQuestRegion(const char* q, const char* r) const { if (!std::strcmp(q, "Q_HangingTreeEvil") && !std::strcmp(r, g_regionNames[g_regions])) ++g_regions; }
     void SetCreatureGeneratorsEnabled(const char*, bool on) const { if (!on) ++g_generatorsOff; }
     void AddBoast(const char* text, long id, long cost, long reward, bool flag) const

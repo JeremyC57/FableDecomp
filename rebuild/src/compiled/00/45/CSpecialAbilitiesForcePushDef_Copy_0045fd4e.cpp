@@ -4,7 +4,7 @@
 // __fastcall void Copy(this, src) -> tail-jumps to the real copy implementation.
 // Modeled as __fastcall(objptr) free functions (byte-identical to __fastcall).
 
-struct CSpecialAbilitiesForcePushDef;
+class CSpecialAbilitiesForcePushDef;
 
 // The real target of the tail call (relocation-masked; extern decl suffices).
 extern void __fastcall CSpecialAbilitiesForcePushDef_Copy_impl(

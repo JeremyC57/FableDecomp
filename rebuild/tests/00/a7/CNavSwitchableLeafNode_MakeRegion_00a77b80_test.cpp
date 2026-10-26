@@ -18,8 +18,8 @@ static int fails = 0;
 //   insert(end(), x): node from the allocator (malloc), placement-constructed value, linked before the header.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
-struct C2DVector { float X, Y; };
-struct CNavRegion;
+class C2DVector { public: float X, Y; };
+class CNavRegion;
 class CANavQuadTreeNode;
 namespace std {
 template <class T> struct allocator { };
@@ -57,7 +57,7 @@ public:
     void push_back(const T& x) { insert(end(), x); }
 };
 }
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                            // +0
     signed char m_size;                            // +4
     signed char m_capacity;                        // +5

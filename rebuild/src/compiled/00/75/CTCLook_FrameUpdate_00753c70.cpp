@@ -12,7 +12,7 @@
 //   +0x4C, CanTurnBody +0x50, PosToLookAt +0x68, TimeToStopLooking +0xB4, OneFrameDelay +0xB8. No engine header for CTCLook.
 // Shape: the stop-looking reset and the interface-8 head state are written out inline (retail inlines those two state
 //   setters and the first look-timer update; the later ones are calls).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCBaseComponent;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBaseComponent* component; };
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);                  // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                        // +0x20
     CInterfaceMap m_interfaces;                            // +0x44
@@ -61,7 +61,7 @@ struct CFrameSource {
     long GetFrameNumber();                                 // 0x004167C8
 };
 
-struct CTCLook {
+class CTCLook { public:
     void*         __vftable;                               // +0x00
     CThing*       ParentThing;                             // +0x04
     unsigned char _pad08[0x3c - 0x08];

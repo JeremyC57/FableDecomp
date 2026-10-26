@@ -1,7 +1,7 @@
 // Behaviour test for 0x00533BA0 NUISystem::CComponent::AddChildFront: inserts the child pointer at the front of the Children vector
 #include <cstdio>
 class CComponent;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };

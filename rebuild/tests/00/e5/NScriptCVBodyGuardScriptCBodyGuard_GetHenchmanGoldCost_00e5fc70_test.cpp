@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 00e5fc70: CBodyGuard::GetHenchmanGoldCost maps HenchManType 0/2 to the cheap wage, 1/3 to the
 // expensive wage, everything else to 0.
-struct CScriptDef { long HenchmanPayTimeDelayInSeconds, HenchmanCheapGoldCost, HenchmanExpensiveGoldCost; };
+class CScriptDef { public: long HenchmanPayTimeDelayInSeconds, HenchmanCheapGoldCost, HenchmanExpensiveGoldCost; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
 struct CBodyGuard {

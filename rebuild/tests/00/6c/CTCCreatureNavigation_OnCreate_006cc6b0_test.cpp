@@ -1,10 +1,10 @@
 #include <cstdio>
 // behaviour test: OnCreate creates one navigator per A* / flyer entry of the def's navigator type list (other types skipped), in
 // order, and starts with the first; with no navigators the current one is left alone
-struct CNavigatorBase { int kind; };
+class CNavigatorBase { public: int kind; };
 static CNavigatorBase g_pool[8]; static int g_used = 0;
 static CNavigatorBase* Create(int kind) { g_pool[g_used].kind = kind; return &g_pool[g_used++]; }
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     CNavigatorBase* PNavigator; CNavigatorBase* PossibleNavigators[8]; int count;
     void OnCreate(const int* types, int n)
     {

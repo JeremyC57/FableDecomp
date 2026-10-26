@@ -8,7 +8,7 @@
 // its inline copy constructor (base ctor, vtable 0x01238C6C, SetPItem(other.GetPItem())), the member address kept in ebx. `ret 4`.
 // Layout: engine/CCreatureAction_BanditKingStuck.h has TimesToLoop +0x12c, PStuckEffect +0x130, PObstruction +0x138 (the PDB
 // CCombatActionBase is 0x12c bytes; retail 0x114), so `this` is modelled locally at +0x114 / +0x118 / +0x120.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
     virtual void v00();
@@ -23,13 +23,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
-struct CCreatureAction_BanditKingStuck : CCombatActionBase {   // vtable 0x01281C54
+class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:   // vtable 0x01281C54
     long                TimesToLoop;        // +0x114 (PDB +0x12c)
     CIntelligentPointer PStuckEffect;       // +0x118 (PDB +0x130)
     CIntelligentPointer PObstruction;       // +0x120 (PDB +0x138)

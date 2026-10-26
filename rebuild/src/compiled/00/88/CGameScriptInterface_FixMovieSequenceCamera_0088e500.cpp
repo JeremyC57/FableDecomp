@@ -1,4 +1,4 @@
-struct CGameScriptInterface;
+class CGameScriptInterface;
 extern unsigned char g_movieSeqCameraFixed;
 
 void __fastcall CGameScriptInterface_FixMovieSequenceCamera(CGameScriptInterface* self, void* edx, unsigned char enabled)

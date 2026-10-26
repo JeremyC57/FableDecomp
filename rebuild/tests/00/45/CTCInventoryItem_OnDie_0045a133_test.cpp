@@ -10,7 +10,7 @@ void __cdecl FreeOwner48(Owner48* p) { if (p) g_freed++; }
 void __fastcall Sub3c_Notify(Sub3c* self) { g_notified++; }
 void __fastcall Base_OnDie(void* self) { g_basecalled++; }
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     char pad[0x3c];
     Sub3c* sub3c_marker;
 };

@@ -7,16 +7,16 @@
 // `ret 10h`: four arguments; the three trailing ones are loaded into registers together after the base call.
 #include "fable_string.h"
 
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (the register-zeroed
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
+class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: its containers are 4 bytes wider there)
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
@@ -24,7 +24,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114 (the PDB buil
     void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
 };
 
-struct CCreatureAction_GetUpFromSitting : CCombatActionBase {   // vtable 0x01276C2C
+class CCreatureAction_GetUpFromSitting : public CCombatActionBase { public:   // vtable 0x01276C2C
     long          SittingMode;            // +0x114 (PDB +0x12c)
     unsigned char RemoveOnPerformAction;   // +0x118 (PDB +0x130, bool)
     virtual void v00();

@@ -5,11 +5,11 @@ void* __cdecl operator new(size_t); // 0x00BFEA1A
 extern "C" void* __cdecl malloc(size_t); // 0x00BFEA0E
 // The shared base has an explicit vptr data member; this equivalent virtual shell has one compiler
 // vptr and the missing constructor, avoiding a second vptr from inheriting that storage header.
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     virtual void v00() {}; unsigned char _pad04[0x44];
     CEngineInternalPrimitiveBase(long type, unsigned long flags); // 0x00B8FF00
 };
-struct CEnginePrimitiveHandle { void* vptr; void* data; };
+class CEnginePrimitiveHandle { public: void* vptr; void* data; };
 template<class T> struct CRetailList {
     struct Node { Node* next; Node* prev; T value; };
     Node* node;
@@ -17,7 +17,7 @@ template<class T> struct CRetailList {
 };
 struct CIterator { unsigned char used; void* node; };
 struct CIteratorArray { CIterator* first; CIterator* last; CIterator* end; CIteratorArray():first(0),last(0),end(0){} };
-struct C3DBoundingSphere { float m_centreX, m_centreY, m_centreZ, m_radius; C3DBoundingSphere():m_centreX(0),m_centreY(0),m_centreZ(0),m_radius(0){} };
+class C3DBoundingSphere { public: float m_centreX, m_centreY, m_centreZ, m_radius; C3DBoundingSphere():m_centreX(0),m_centreY(0),m_centreZ(0),m_radius(0){} };
 struct CEngineInternalPrimitiveParticleGroup : CEngineInternalPrimitiveBase {
     CRetailList<CEnginePrimitiveHandle> Primitives;
     CIteratorArray PrimitiveIDToIterator;

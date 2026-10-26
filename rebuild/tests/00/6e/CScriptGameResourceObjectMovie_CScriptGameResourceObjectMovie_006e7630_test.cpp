@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour model of 0x006E7630: CScriptGameResourceObjectMovie(scriptInterface, setConversationInputProcess).
 static char g_log[8]; static int g_n = 0; static long g_mode = 0; static bool g_flag = true; static long g_asked = -1;
-struct CPlayer {
+class CPlayer { public:
     void InitialiseIfUninitialised() { g_log[g_n++] = 'I'; }
     void RemoveMode(long mode) { g_log[g_n++] = 'R'; g_mode = mode; }
     void AddMode(long mode, bool flag) { g_log[g_n++] = 'A'; g_mode = mode; g_flag = flag; }
 };
-struct CPlayerManager { CPlayer players[2]; CPlayer* GetPlayer(long i) { g_asked = i; return &players[i]; } };
-struct CGameScriptInterface { CPlayerManager* PlayerManager; long CurrentPlayer; };
-struct CScriptGameResourceObjectMovieBase { virtual ~CScriptGameResourceObjectMovieBase() {} void* PImpObject; void* PImpCount; CScriptGameResourceObjectMovieBase() : PImpObject(0), PImpCount(0) {} };
+class CPlayerManager { public: CPlayer players[2]; CPlayer* GetPlayer(long i) { g_asked = i; return &players[i]; } };
+class CGameScriptInterface { public: CPlayerManager* PlayerManager; long CurrentPlayer; };
+class CScriptGameResourceObjectMovieBase { public: virtual ~CScriptGameResourceObjectMovieBase() {} void* PImpObject; void* PImpCount; CScriptGameResourceObjectMovieBase() : PImpObject(0), PImpCount(0) {} };
 struct CScriptGameResourceObjectMovie : CScriptGameResourceObjectMovieBase {
     CGameScriptInterface* ScriptInterface; bool SetConversationInputProcess;
     CScriptGameResourceObjectMovie(CGameScriptInterface* si, bool set) : ScriptInterface(si), SetConversationInputProcess(set)

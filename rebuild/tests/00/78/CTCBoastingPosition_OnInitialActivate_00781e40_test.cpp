@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
-struct CCharString { const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class CCharString { public: const char* PStringData; CCharString(const char* t, long = -1) : PStringData(t) {} ~CCharString() {} };
 struct CTCBaseInterface;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBaseInterface* component; };

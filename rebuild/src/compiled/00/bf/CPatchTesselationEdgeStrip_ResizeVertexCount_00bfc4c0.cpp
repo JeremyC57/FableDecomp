@@ -7,16 +7,16 @@
 // +0x18, WaterFanBaseVerts +0x20; vtable 0x012A8318.
 // Shape: the resource kept in edi for all four calls, each count reloaded from its slot right before its call (the
 // first one loaded ahead of the register saves), the arrays in layout order; `ret 14h`.
-struct CMovableResource;
+class CMovableResource;
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
     bool Resize(long count, CMovableResource* resource);
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

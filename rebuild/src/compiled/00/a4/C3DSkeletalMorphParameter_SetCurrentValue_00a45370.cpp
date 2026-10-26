@@ -12,12 +12,12 @@
 // then the block and the object nulled in that order).
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                // +0
     CCPPointerInfo* Info;                                // +4
     void Clear()
@@ -34,15 +34,15 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct C3DSkeletalMorphTarget;
-struct C3DSkeletalMorph {
+class C3DSkeletalMorphTarget;
+class C3DSkeletalMorph { public:
     virtual void v00();
     void*                                   MorphParameters[3];   // +0x04 retail CArray
     CCountedPointer<C3DSkeletalMorphTarget> CombinedMorph;        // +0x10
 };
 
-struct C3DSkeletalMorphParameter {
-    struct CShared {
+class C3DSkeletalMorphParameter { public:
+    class CShared { public:
         unsigned char PositiveTarget[0x10];              // +0x00 C3DSkeletalMorphTarget (retail 16 bytes)
         unsigned char NegativeTarget[0x10];              // +0x10
         bool          SignedFlag;                        // +0x20

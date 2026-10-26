@@ -11,13 +11,13 @@
 // MEMBER (ecx = this stays live into the call, so the index is loaded into edx, not ecx); `fcomp ;
 // test ah,41h ; jp` on the false edge is `random <= chance`; `mov eax,1` / `xor eax,eax` is a full
 // register (long) result.
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();                        // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CSpecialAbilitiesBerserkDef {
+class CSpecialAbilitiesBerserkDef { public:
     unsigned char _pad00[0x138];
     float*        DecapitateChances;                        // +0x138 (per spell level)
 };

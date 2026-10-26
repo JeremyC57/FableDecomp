@@ -3,7 +3,7 @@
 struct MapNode { int key; struct MapNode* aux; };
 struct MapKind { int _pad0; struct MapNode* head; struct MapNode* lb(int* key); };
 struct EngineObj { char _pad[0x94]; };
-struct CPlayerManager { void* GetB(); };
+class CPlayerManager { public: void* GetB(); };
 
 static int g_finalized = -1;
 static MapNode g_nodeA = { 3, 0 };

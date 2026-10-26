@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessInventoryQuestsScreen;
+class CInputProcessInventoryQuestsScreen;
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
@@ -17,8 +17,8 @@ void __cdecl op_delete(void* p)
     g_last_deleted = p;
 }
 
-struct CInputProcessInventoryQuestsScreen
-{
+class CInputProcessInventoryQuestsScreen
+{ public:
     int dummy;
     void* __fastcall scalar_deleting_destructor(unsigned int flags)
     {

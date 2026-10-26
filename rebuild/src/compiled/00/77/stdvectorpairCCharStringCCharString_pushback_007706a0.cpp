@@ -12,7 +12,7 @@
 //   [edi+4],8`), and the tag temporary takes the dead `x` argument slot.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
 };

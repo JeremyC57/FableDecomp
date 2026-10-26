@@ -1,4 +1,4 @@
-struct CTCAppearanceMorphBase {
+class CTCAppearanceMorphBase { public:
     void* vftable;
 };
 

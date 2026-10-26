@@ -6,14 +6,14 @@
 //   way point Position first) at retail +0x8c (PDB +0x94), SlowedDownForLastPoint at retail +0xbf (PDB +0xcf).
 // Shape: size() is the node-counting walk compared with 1; the end offset is a C2DVector local (front().Position - pos)
 //   and each test squares the radius after the distance sum (`dist2 < r * r`, test ah,41h).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
     float GetLengthSquared() const { return X * X + Y * Y; }
 };
-struct CNavWayPoint {                              // 10 bytes
+class CNavWayPoint { public:                              // 10 bytes
     C2DVector     Position;                        // +0x00
     unsigned char NavLayer;                        // +0x08
     bool          Removable;                       // +0x09

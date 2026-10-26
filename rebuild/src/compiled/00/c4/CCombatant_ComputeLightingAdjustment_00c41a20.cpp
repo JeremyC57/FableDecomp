@@ -6,7 +6,7 @@
 // written `v0.Z * v1.Z + v0.Y * v1.Y + v0.X * v1.X` (VC evaluates the left operand of each `+` first here and
 // `a * b` as `fld b ; fmul a`); then `fmul [18Ch] ; fmul [global] ; fsubr [1.0]`; the clamp is `fcom [0.0] ;
 // test ah,5 ; jp` returning st(0), else `fstp ; fld [0.0]`.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

@@ -16,7 +16,7 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     ~CCountedPointer()
@@ -40,29 +40,29 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return Object; }
 };
 
-struct CMatrix3x4 { float m[12]; };
-template<class T> struct CArray {                   // retail CArray<T>: begin/end/capacity
+class CMatrix3x4 { public: float m[12]; };
+template<class T> class CArray { public:                   // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long size() const { return (unsigned long)(m_end - m_begin); }
 };
 
-struct C3DAnimFileSequenceChunk {
+class C3DAnimFileSequenceChunk { public:
     unsigned char _base[0x38];                      // CChunkedFileSuperChunk base, BoneIndex, ParentIndex, BoneName
     float SamplesPerSecond;                         // +0x38
     long BoneType;                                  // +0x3c
     CArray<CMatrix3x4> Matrices;                    // +0x40
 };
 
-struct C3DAnimFileObjectChunk {
+class C3DAnimFileObjectChunk { public:
     CCountedPointer<const C3DAnimFileSequenceChunk> GetFirstSequence() const;   // 0x00AB03D0
 };
 
-struct CChunkedFileChunk;
-struct CChunkedFileSuperChunk {
+class CChunkedFileChunk;
+class CChunkedFileSuperChunk { public:
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const;   // 0x00AA80E0
 };
 
-struct C3DAnimFileRootChunk : CChunkedFileSuperChunk {
+class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:
     CCountedPointer<const C3DAnimFileObjectChunk> GetFirstObject() const;       // 0x00A99110
     float GetNonLoopingDuration() const;
 };

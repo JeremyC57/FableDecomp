@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 0x00748D80: STLport remove_copy_if over pair<CIntelligentPointer<const CThing>,
 // CDangerStatus>, dropping entries whose thing is null, dead (flag bit) or whose status is zero.
-struct CThing { unsigned char Dead : 1; };
+class CThing { public: unsigned char Dead : 1; };
 struct CBaseIntelligentPointer {
     virtual void v00() { }
     const CThing* m_pItem;
@@ -9,7 +9,7 @@ struct CBaseIntelligentPointer {
     const CThing* GetPItem() const { return m_pItem; }
     void SetPItem(const CThing* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00() { }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CTCPhysicsStandard {
     CRightHandedSet RHSet, OldRHSet;
     int m_setCalls;

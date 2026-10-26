@@ -1,11 +1,11 @@
 #include <cstdio>
-struct C2DBoxF { float TLX, TLY, BRX, BRY; C2DBoxF() { } };
-struct C4DVector {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; C2DBoxF() { } };
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
-struct C2DAlphaMaskInfo {
+class C2DAlphaMaskInfo { public:
     void* AlphaMaskBank; unsigned int AlphaMaskBankIndex; C4DVector AlphaMaskPositionFactors; C2DBoxF AlphaMaskClipBox;
     bool MaskObjectsOutsideAlphaMask; bool FilterMask;
     C2DAlphaMaskInfo() : AlphaMaskBank(0), AlphaMaskBankIndex(0)
@@ -16,13 +16,13 @@ struct C2DAlphaMaskInfo {
     }
 };
 struct CHandleArray { void* m_pFirst; void* m_pLast; void* m_pEnd; CHandleArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     long Type; unsigned int RenderLayerMask;
     unsigned char Enable : 1; unsigned char NonPersistent : 1; unsigned char OverrideFadeDistance : 1; unsigned char PostRenderEnable : 1;
     CEngineInternalPrimitiveBase(long type, unsigned int mask) : Type(type), RenderLayerMask(mask)
     { Enable = 1; NonPersistent = 0; OverrideFadeDistance = 0; PostRenderEnable = 0; }
 };
-struct CEngineInternalPrimitive2DViewport : CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitive2DViewport : public CEngineInternalPrimitiveBase { public:
     C2DBoxF Viewport; float HorizontalFOV; float VerticalFOV; bool Use2DFOV;
     C2DAlphaMaskInfo AlphaMaskInfo; long Layer; CHandleArray Primitives;
     CEngineInternalPrimitive2DViewport() : CEngineInternalPrimitiveBase(0x21, 0x80000000u) { PostRenderEnable = 1; }

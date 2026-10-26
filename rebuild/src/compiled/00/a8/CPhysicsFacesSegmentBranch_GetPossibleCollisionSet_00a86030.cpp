@@ -9,7 +9,7 @@
 //   (ChildDividingPlane +4, PositiveChild +0x14, NegativeChild +0x18).
 #include "engine/CPhysicsFacesSegmentBranch.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CPlaneModel {                                   // CPlane (Ego_r.pdb): Normal +0, Distance +0xC
     C3DVector Normal;
     float     Distance;
@@ -18,7 +18,7 @@ struct CPlaneModel {                                   // CPlane (Ego_r.pdb): No
 template <class T> class allocator;
 template <class T, class A> class vector;
 
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void GetPossibleCollisionSet(float radius, const C3DVector& start, const C3DVector& end,
                                          vector<long, allocator<long> >& faces) const;   // slot 4 (+0x10)

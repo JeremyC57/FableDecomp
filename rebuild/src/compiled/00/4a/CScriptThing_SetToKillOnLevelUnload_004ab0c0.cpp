@@ -71,5 +71,5 @@ struct P {
   virtual char d69(){return 0;}
   virtual void tgt(int shouldKill);
 };
-struct CScriptThing { char pad[4]; P* f4; void SetToKillOnLevelUnload(int shouldKill); };
+class CScriptThing { public: char pad[4]; P* f4; void SetToKillOnLevelUnload(int shouldKill); };
 void CScriptThing::SetToKillOnLevelUnload(int shouldKill){ P* p=this->f4; if(p) p->tgt(shouldKill); }

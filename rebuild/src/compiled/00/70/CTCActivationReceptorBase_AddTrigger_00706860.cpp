@@ -1,9 +1,9 @@
 // callee at 0x6b9e00 is a __fastcall member on the trigger: ecx=trigger, stack arg = void*
-struct CTCActivationTrigger {
+class CTCActivationTrigger { public:
     void Method(void* p);   // real member -> this in ecx, p on stack, no edx
 };
 
-struct CTCActivationReceptorBase {
+class CTCActivationReceptorBase { public:
     char pad24[0x24];   // +0x00
     void* field24;      // +0x24
     void* p28;          // +0x28

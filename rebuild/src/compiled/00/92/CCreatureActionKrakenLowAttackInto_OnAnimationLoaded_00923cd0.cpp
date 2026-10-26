@@ -3,7 +3,7 @@
 // Callees: CCombatActionBase::OnAnimationLoaded @ 0x00859EF0 (direct base call).
 // Shape: `lea eax,[eax+eax*2]` then the signed divide-by-4 sequence (`cdq ; and edx,3 ; add ; sar 2`): a long `* 3 / 4`.
 // TotalTime (+0x10) and ActionTime (+0x14) are the engine-header CCreatureActionBase names.
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();

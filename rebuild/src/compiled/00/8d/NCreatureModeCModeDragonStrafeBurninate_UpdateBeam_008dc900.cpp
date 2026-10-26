@@ -17,7 +17,7 @@
 // Shape: same-TU out-only stand-in for the dragon def getter (the out slot stays private, so the name temp reuses it);
 //   both world maps named in locals before the IsPosInMap / GetHeightZBelowPos calls (retail evaluates `this` first);
 //   the dependents component through the out-parameter GetInterface ternary (`mov eax,[eax+4] ; push ; mov ecx,eax`).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -26,8 +26,8 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
 };
-struct CRightHandedSet { C3DVector Forward, Up; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Forward, Up; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -47,7 +47,7 @@ struct CDragonDefPointer {
     CDragonDef* m_p;
     CDragonDefPointer() : m_p(0) { }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool GetDragonDef(CDragonDefPointer* out);  // 0x008E3300
 };
 void* FindDef_CDefClassBase_GetDragonDef(const void* owner);   // stand-in callee
@@ -67,17 +67,17 @@ struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString* name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector* position);             // 0x004FC600
     float GetHeightZBelowPos(const C3DVector* position);    // 0x0063E480
 };
 struct CWorldHolder { unsigned char _pad[0x28]; CWorldMap* PWorldMap; };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     virtual void _v0(); virtual void _v1(); virtual void _v2();
     virtual CWorldHolder* GetWorldB();          // slot 3
     virtual CWorldHolder* GetWorldA();          // slot 4
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -103,11 +103,11 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing;
+class CThing;
 struct CTCDependents {
     void AddDependentThing(CThing* thing);      // 0x0080CBF0
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad0[0x20];
     unsigned long         m_presentBits[9];     // +0x20
     CInterfaceMap         m_interfaces;         // +0x44
@@ -127,7 +127,7 @@ struct CThing {
         return false;
     }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
 };

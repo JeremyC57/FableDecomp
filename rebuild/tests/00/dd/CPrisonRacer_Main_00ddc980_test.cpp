@@ -10,7 +10,7 @@ static std::vector<std::string> g_log;
 static std::vector<float> g_speeds;
 static long g_timers[2] = { 0, 0 };
 static int g_nextTimer = 0;
-struct CScriptThing { std::string data; float x; bool alive; std::string GetDataString() const { return data; } bool IsAlive() const { return alive; } };
+class CScriptThing { public: std::string data; float x; bool alive; std::string GetDataString() const { return data; } bool IsAlive() const { return alive; } };
 struct CHandle { int busy; int routes; CHandle() : busy(0), routes(0) {} bool IsPerformingScriptTask() const { return busy > 0; }
     void FollowPreCalculatedRoute(const CScriptThing&, int, bool, bool) { busy = 3; ++routes; } void ClearCommands() { g_log.push_back("clear"); } };
 struct CQ_PrisonRaceScript {
@@ -19,7 +19,7 @@ struct CQ_PrisonRaceScript {
 };
 static CHandle* g_racer = 0;
 static CQ_PrisonRaceScript* g_race = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing marker, warden, checks[2];
     void NewScriptFrame() { ++g_frames; for (int i = 0; i < 2; ++i) if (g_timers[i] > 0) --g_timers[i]; if (g_racer && g_racer->busy) --g_racer->busy;
         if (g_frames >= g_heroWinsAt) g_race->HeroWonRace = true; }

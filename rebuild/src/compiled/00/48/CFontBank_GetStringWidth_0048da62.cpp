@@ -7,12 +7,12 @@
 #pragma optimize("s", on)
 struct C2DVector_0048da62 { float X, Y; };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     const char* GetCharacters(long from) const;    // 0x0099AF10
 };
 
-struct CFontBank {
+class CFontBank { public:
     virtual void v00();
     virtual C2DVector_0048da62 GetStringSize(const char* text);   // slot 1 (+0x04)
     float GetStringWidth(const CCharString& text);

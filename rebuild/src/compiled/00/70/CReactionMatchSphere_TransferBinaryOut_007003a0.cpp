@@ -10,20 +10,20 @@
 // through `lea esi,[ebx+8]`; GetList() is the retail CArray accessor returning the array object itself when empty
 // (`test eax,eax ; ja ; mov ecx,esi`), as in the landed C3DMeshFileXTriangleStripChunk::WriteToFile.
 // Leaf: TransferBinaryOut
-struct CDataOutputStream {
+class CDataOutputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void WriteData(const void* data, unsigned long size);   // slot 4 (+0x10)
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
 
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetList() const { return Size() > 0 ? m_begin : (const T*)this; }
 };
 
-struct COpinionSet {
+class COpinionSet { public:
     CArray<float> OpinionValues;                        // +0x00
     void TransferBinaryOut(CDataOutputStream& stream) const
     {

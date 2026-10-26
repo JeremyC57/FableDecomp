@@ -37,13 +37,13 @@ class CAnimationSet {                                // Ego_r CAnimationSet: the
 public:
     bool AnimExists(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
     bool GetSubDef(void* out) const;                 // 0x0042B0A2
 };
-struct CCreatureDef : CDefClassBase {                // descriptive
+class CCreatureDef : public CDefClassBase { public:                // descriptive
     unsigned char   _pad08[0x34 - 0x08];
     CAnimationSet   Animations;                      // +0x34
 };

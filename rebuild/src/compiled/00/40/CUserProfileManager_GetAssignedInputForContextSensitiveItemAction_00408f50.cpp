@@ -9,8 +9,8 @@
 // table arm is its own loop (size() recomputed per pass as the signed /28 difference, compared unsigned;
 // the element walk strength-reduced, the hit copied from begin() + i with a 7-dword rep movsd).
 enum EGameAction { GAME_ACTION_NONE = 0 };
-struct C2DVector { float X, Y; };
-struct CActionInputControl {
+class C2DVector { public: float X, Y; };
+class CActionInputControl { public:
     EGameAction GameAction;                                    // +0x00
     long        ControllerType;                                // +0x04
     long        KeyboardKey;                                   // +0x08

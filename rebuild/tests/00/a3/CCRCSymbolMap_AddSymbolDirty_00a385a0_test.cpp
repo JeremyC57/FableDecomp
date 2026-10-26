@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __declspec(x)
 #endif
 
-struct CCharStringData {                                    // CBasicString<char> head of the shared block
+class CCharStringData { public:                                    // CBasicString<char> head of the shared block
     const char*   PData;                                    // +0x00
     unsigned long StringLength;                             // +0x04
 };

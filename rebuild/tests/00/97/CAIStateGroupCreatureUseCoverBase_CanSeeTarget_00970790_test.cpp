@@ -31,9 +31,9 @@ static int fails = 0;
 // arguments are pushed before the by-value mesh-object temporary is made; the bool is kept across its dtor.
 // Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (PCoverThing +0x1f); PTarget +0x14 (8-byte pointer before it).
 // Leaf: CanSeeTarget@CAIStateGroup_CreatureUseCoverBase
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
@@ -46,8 +46,8 @@ struct CBaseIntelligentPointer {
 };
 #pragma pack(pop)
 
-struct CMeshIntersectionData { unsigned char _body[0x1c]; };
-struct CPhysicsMeshObject {
+class CMeshIntersectionData { public: unsigned char _body[0x1c]; };
+class CPhysicsMeshObject { public:
     unsigned char _body[0x40];
     ~CPhysicsMeshObject();                         // 0x00A127D0
     bool GetPointIntersectionFromTo(const C3DVector* from, const C3DVector* to, CMeshIntersectionData* data);   // 0x00A12450
@@ -73,7 +73,7 @@ struct CTCPhysicsBaseV {                           // vtable view: slot 93 (+0x1
     CPhysicsMeshObject GetPhysicsMeshObject();     // 0x006B0850
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x60];
     CTCPhysicsBaseV* Physics;                      // +0x60
     CTCPhysicsBaseV* GetPhysics() const { return Physics; }
@@ -92,7 +92,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                             // +0x18
 };

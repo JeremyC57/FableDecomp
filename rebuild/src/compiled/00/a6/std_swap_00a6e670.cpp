@@ -9,13 +9,13 @@
 // C3DDummyObject> (56 bytes).
 // Shape: `T tmp(a); a = b; b = tmp;` with the implicit copy constructor/assignment: the string through its
 // out-of-line members, the 13-dword POD through `rep movsd`; the algorithm TU is /Gr (__fastcall free templates).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C3DDummyObject {                                 // 0x34-byte POD (position/orientation record)
+class C3DDummyObject { public:                                 // 0x34-byte POD (position/orientation record)
     unsigned long m_words[13];
 };
 struct SDummyObjectEntry {                              // pair<CCharString, C3DDummyObject>

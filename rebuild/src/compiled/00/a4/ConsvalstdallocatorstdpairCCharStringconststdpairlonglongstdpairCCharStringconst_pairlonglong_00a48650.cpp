@@ -2,7 +2,7 @@
 // Retail 0x00a48650. this=ecx=dest pair storage, edx=src pair*.
 // Copy-construct first (CCharString @+0) via member copy-ctor; second (pair<long,long> @+4,+8) inline copy.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     void CopyFrom(CCharString* src);
 };

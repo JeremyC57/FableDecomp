@@ -1,13 +1,13 @@
 #include <cstdio>
 static int g_baseCalls = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual ~CParentDefClassBase() {}
     long m_baseTag;
     CParentDefClassBase() : m_baseTag(0) {}
     CParentDefClassBase(const CParentDefClassBase& o) : m_baseTag(o.m_baseTag) { ++g_baseCalls; }
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_baseTag = o.m_baseTag; ++g_baseCalls; return *this; }
 };
-struct CEnvironmentThemeDef : CParentDefClassBase {
+class CEnvironmentThemeDef : public CParentDefClassBase { public:
     float  TimeOfDay;                       // +0x3c
     bool   MoonLit;                         // +0x40
     float  FogStartZ;                       // +0x44

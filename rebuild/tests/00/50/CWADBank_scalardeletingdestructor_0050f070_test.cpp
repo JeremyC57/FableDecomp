@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWADBank {
+class CWADBank { public:
     void* vftable;
     int destroyed;
 };

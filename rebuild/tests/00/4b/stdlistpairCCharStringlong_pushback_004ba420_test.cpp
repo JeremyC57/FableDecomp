@@ -10,7 +10,7 @@
 
 #include <new>
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharString(const CCharString& other);      // 0x0099EC30

@@ -1,8 +1,8 @@
 #include <cstdio>
 // CInputProcessGameBase::IsAssignableSpecialMoveButtonInQueue: forward (a, b, MyPlayer->GetPlayerNumber()) to the player interface
 static long g_a, g_b, g_player, g_calls;
-struct CPlayer { long number; long GetPlayerNumber() { ++g_calls; return number; } };
-struct CGamePlayerInterface {
+class CPlayer { public: long number; long GetPlayerNumber() { ++g_calls; return number; } };
+class CGamePlayerInterface { public:
     bool result;
     bool IsAssignableSpecialMoveButtonInQueue(long button, long buttonEventType, long playerNumber) { g_a = button; g_b = buttonEventType; g_player = playerNumber; return result; }
 };

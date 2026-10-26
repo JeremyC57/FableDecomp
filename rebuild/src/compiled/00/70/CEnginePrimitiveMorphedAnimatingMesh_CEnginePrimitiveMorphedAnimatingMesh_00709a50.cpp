@@ -3,12 +3,12 @@
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-struct C3DAnimationInterpolator;
-struct C3DPositionInterpolator;
-struct C3DOrientationInterpolator;
-struct CEnginePrimitiveThemeChannelDesc;
+class C3DAnimationInterpolator;
+class C3DPositionInterpolator;
+class C3DOrientationInterpolator;
+class CEnginePrimitiveThemeChannelDesc;
 enum EEngineInterpolationSet {INTERPOLATION_DEFAULT=0};
-struct CRGBColour {
+class CRGBColour { public:
  unsigned char B,G,R,A;
  CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a){Set(r,g,b,a);}
  CRGBColour(const CRGBColour& o){Set(o.R,o.G,o.B,o.A);}

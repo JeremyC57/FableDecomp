@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CAnimateThing {
+class CAnimateThing { public:
     char pad[0x100];
 };
 

@@ -5,7 +5,7 @@
 // real body). The vtable load precedes the byte store (scheduling), then `jmp [eax+40h]`.
 // No engine header for this class; the layout is local (flag at +0x38 descriptive, slot names descriptive
 // because rtti-vtables lists only slots 0/1/9 of vtable 0x0128C494).
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void Initialise();              // slot 1
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00D3ACE0 SpeakConversationLine (FireHeart entity): speech started by Me (1, 0), listener = hero, parent's line added, flag cleared.
 #include <cstdio>
-struct CCharString { const char* s; };
-struct CScriptThing { int id; };
+class CCharString { public: const char* s; };
+class CScriptThing { public: int id; };
 struct Game {
     int started, listener, lines; const CCharString* line; const CScriptThing* speaker; int a1, a2;
     int GetHero() { return 77; }

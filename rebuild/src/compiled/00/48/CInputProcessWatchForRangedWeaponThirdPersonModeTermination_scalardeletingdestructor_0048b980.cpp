@@ -1,4 +1,4 @@
-struct CInputProcessWatchForRangedWeaponThirdPersonModeTermination {
+class CInputProcessWatchForRangedWeaponThirdPersonModeTermination { public:
     void* vftable;
 };
 

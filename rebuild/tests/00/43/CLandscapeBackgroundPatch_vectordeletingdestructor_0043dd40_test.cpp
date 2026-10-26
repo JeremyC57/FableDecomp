@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch { void* vftable; };
+class CLandscapeBackgroundPatch { public: void* vftable; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

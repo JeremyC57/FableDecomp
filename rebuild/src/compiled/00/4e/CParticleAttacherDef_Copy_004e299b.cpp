@@ -2,7 +2,7 @@
 // void __fastcall CParticleAttacherDef::Copy(CParticleAttacherDef*, CDefClassBase const*)
 // Real member function => genuine __fastcall (this in ecx, src on stack, ret 4).
 
-struct CDefClassBase { };
+class CDefClassBase { public: };
 
 // base class Copy at 0x431f10: __fastcall base::Copy(self, const CDefClassBase* src)
 struct BaseDef {
@@ -15,7 +15,7 @@ struct SubDef {
     void Copy_004e29ba(const void* src);
 };
 
-struct CParticleAttacherDef : public BaseDef {
+class CParticleAttacherDef : public BaseDef { public:
     SubDef sub;   // at offset 0x28 (BaseDef occupies [0..0x28))
     char pad[0x100];
     void Copy(const CDefClassBase* src);

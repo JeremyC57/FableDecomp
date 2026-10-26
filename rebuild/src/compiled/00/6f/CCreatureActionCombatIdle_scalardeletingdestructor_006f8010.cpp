@@ -1,4 +1,4 @@
-struct CCreatureAction_CombatIdle {
+class CCreatureAction_CombatIdle { public:
     void* vftable;
 };
 

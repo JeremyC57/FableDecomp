@@ -9,8 +9,8 @@ void __fastcall CInputProcessInventoryStatsScreen_scalar_dtor(void *process);
 // operator delete at 0x00bfe9bc (cdecl)
 void __cdecl CInputProcessInventoryStatsScreen_op_delete(void *p);
 
-struct CInputProcessInventoryStatsScreen
-{
+class CInputProcessInventoryStatsScreen
+{ public:
     void * __fastcall scalar_deleting_destructor(int edx, unsigned int flags);
 };
 

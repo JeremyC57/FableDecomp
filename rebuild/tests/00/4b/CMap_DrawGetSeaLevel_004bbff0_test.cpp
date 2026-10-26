@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CMap {
+class CMap { public:
     char pad00[0x34];
     float f34;
     char pad38[0x14];

@@ -1,4 +1,4 @@
-struct CCreatureAction_OrderSecuritySweep {
+class CCreatureAction_OrderSecuritySweep { public:
     void* vftable;
 };
 

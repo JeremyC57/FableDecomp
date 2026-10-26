@@ -22,7 +22,7 @@ struct SCapturedRenderState {
     unsigned long        m_priorValue;             // +0x04
 };
 
-struct CRenderStateManager {
+class CRenderStateManager { public:
     unsigned char        _pad0000[0x8];
     SCapturedRenderState m_captured[0x400];        // +0x0008
     CTrackedRenderState* m_dirty[0x200];           // +0x2008
@@ -53,7 +53,7 @@ struct CRenderStateManager {
 };
 extern CRenderStateManager* g_pRenderStateManager_01436e18;   // 0x01436E18
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     void EnableFog();
 };
 

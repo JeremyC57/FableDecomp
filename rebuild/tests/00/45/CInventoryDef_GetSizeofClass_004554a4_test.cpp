@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInventoryDef;
+class CInventoryDef;
 
 unsigned long __fastcall CInventoryDef_GetSizeofClass(CInventoryDef* self)
 {

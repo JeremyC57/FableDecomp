@@ -44,7 +44,7 @@ struct CIdList {                                            // STLport list<long
     ~CIdList();                                             // 0x0042AB73
 };
 
-struct CIVCountedPointeeBase {                              // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                              // vtable 0x012354D0
     virtual void v00();
     ~CIVCountedPointeeBase() { }
 };

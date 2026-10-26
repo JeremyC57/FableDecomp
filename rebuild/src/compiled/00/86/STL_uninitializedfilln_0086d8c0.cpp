@@ -49,7 +49,7 @@ public:
 
 class CRandomAppearanceMorph {
 public:
-    struct CTextureMorph {                      // Ego_r.pdb, 8 bytes
+    class CTextureMorph { public:                      // Ego_r.pdb, 8 bytes
         unsigned long NewTexture;               // +0x0
         unsigned long GroupID;                  // +0x4
     };

@@ -53,7 +53,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

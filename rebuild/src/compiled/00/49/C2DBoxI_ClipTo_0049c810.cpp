@@ -3,7 +3,7 @@
 // Layout from the PDB (TLX +0, TLY +4, BRX +8, BRY +0xc). Each coordinate is an
 // `if (v < lo) v = lo; else if (v > hi) v = hi;` pair -- the stores are conditional (a ternary
 // clamp would store unconditionally); VC lays the last pair out with the `>= lo` side at the end.
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;   // +0x00
     long TLY;   // +0x04
     long BRX;   // +0x08

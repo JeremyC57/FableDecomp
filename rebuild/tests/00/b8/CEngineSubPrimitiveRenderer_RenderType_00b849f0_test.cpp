@@ -65,7 +65,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -105,7 +105,7 @@ struct CStateInfo;
 struct IDirect3DDevice9;
 
 #pragma pack(push, 1)
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DDevice9* PD3DDevice;                            // +0x04
     unsigned char     StateStack[0x2000];                    // +0x08 CStateStackElement[1024]
@@ -147,8 +147,8 @@ FABLE_STATIC_ASSERT(offsetof(CRenderStateManager, InitFlags) == 0x3a38);
 #include <stddef.h>
 
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 
@@ -3969,7 +3969,7 @@ struct CSubPrimitiveManager {void* Vtable;void* Scenes;bool Enable;};
 struct CSubPrimitive {void* Vtable;unsigned RenderFlags;unsigned char Alpha;void* Parent;CSubPrimitive* Next;CSubPrimitiveManager* Manager;};
 struct CSubSortElement {unsigned SortValue;CSubPrimitive* Primitive;};
 struct CSubList {CSubSortElement* Begin;CSubSortElement* End;CSubSortElement* Capacity;int RenderPass,PreRenderPass;bool BoundingVolumePass,Stable,Sorted,Enable;unsigned Size()const{return unsigned(End-Begin);}};
-struct CEngineSubPrimitiveRenderer {
+class CEngineSubPrimitiveRenderer { public:
  unsigned char Prefix[0x18];CSubList Lists[15];
  void SortList(CSubList&,bool);void RenderList(CSubList&,int);void RenderListTwoPass(CSubList&,int,int);void DeleteList(CSubList&);
  void RenderType(int,bool);

@@ -57,7 +57,7 @@ public:
     bool RequiresAutoPlacement();               // 0x00833710
 };
 
-template <class T> struct CIntelligentPointer {   // vptr + item (+ link words)
+template <class T> class CIntelligentPointer { public:   // vptr + item (+ link words)
     void* _vfptr;
     T*    m_pItem;
     T* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
@@ -73,7 +73,7 @@ struct CCreaturePointerList {                   // list<CIntelligentPointer<CThi
     SPersonNode* _M_node;
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char        _pad_0x00[0x2c];
     CCreaturePointerList VillagePeople;         // +0x2c
     void ResetCrier();                          // 0x00658E73

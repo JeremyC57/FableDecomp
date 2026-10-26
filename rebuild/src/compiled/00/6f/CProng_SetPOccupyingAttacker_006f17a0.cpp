@@ -6,7 +6,7 @@
 // Shape: two copies of the landed SetPTarget temporary-pointer shape (0x007A7150): a null item, then the attacker.
 // Shape: the helper names the temporary's GetPItem() CALL result (`occupier = pointer.GetPItem(); POccupier.SetPItem(occupier);`),
 //   which keeps `add esi,14h` (this of SetPItem) after the GetPItem call as retail; the inline expression form hoists it.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x0123E7D8
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CThingCreatureBase {                                 // only the dead bit is read here
+class CThingCreatureBase { public:                                 // only the dead bit is read here
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                               // +0x91 bit 0
     unsigned char m_91_1 : 7;

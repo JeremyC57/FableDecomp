@@ -19,7 +19,7 @@
 // Layout: retail CTCInventory ParentThing +0x04; engine/CTCInventory.h is the PDB layout, so `this` is a local model.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -27,7 +27,7 @@ struct CCharString {
     bool operator!=(const char* text) const;            // 0x0099E960
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
@@ -44,7 +44,7 @@ struct CGameSubsystem {
     CDataBank*    TextBank;                             // +0x14
 };
 extern CCharString g_ItemsTitleName;                  // 0x013B8B4C ("ITEMS TITLE")
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) {}
@@ -58,13 +58,13 @@ struct CActionParamList {                               // STLport list<CActionP
     void* _M_node;
     ~CActionParamList();                                // 0x0042ABCA
 };
-struct CAction {                                        // console action record, 8 bytes
+class CAction { public:                                        // console action record, 8 bytes
     long             ActionType;
     CActionParamList UIActionParams;
     CAction();                                          // 0x0042BED4
     CAction(const CAction& other);                      // 0x0042CD84
 };
-struct CComponent {
+class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CComponent* FindChild(CCharString name);                       // slot 3 (+0x0C)
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -114,7 +114,7 @@ struct CComponent {
     virtual void v157();
     virtual void SetSelectedIndex(long index);                             // slot 158 (+0x278)
 };
-struct CViewport {                                      // the description viewport (its slot 142 takes the content)
+class CViewport { public:                                      // the description viewport (its slot 142 takes the content)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -146,13 +146,13 @@ struct CViewport {                                      // the description viewp
     virtual void v140(); virtual void v141();
     virtual void SetContent(CComponent* content);                          // slot 142 (+0x238)
 };
-struct CList : CComponent {};
-struct CManager {
+class CList : public CComponent { public:};
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
@@ -182,7 +182,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CBaseObject;
+class CBaseObject;
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0
 struct CTCCarryingSlot {                                // the parent thing's interface 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -193,7 +193,7 @@ struct CTCCarryingSlot {                                // the parent thing's in
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual CBaseObject* GetHeldThing();                // slot 33 (+0x84)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -234,7 +234,7 @@ struct CLongLongMap {                                   // std::map<long, long> 
     insert_result insert(const value_type& value);      // 0x004E539F
     unsigned long size() const { return _M_node_count; }
 };
-struct CTCInventory {
+class CTCInventory { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     CCountedPointer<CComponent> CreateMenuDescPC(const CCharString& descriptionSymbol);   // 0x00582673

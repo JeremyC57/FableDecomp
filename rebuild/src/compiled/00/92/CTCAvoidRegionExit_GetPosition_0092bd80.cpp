@@ -8,7 +8,7 @@
 // user copy ctor; the implicit copy goes through esi).
 // Layout: PDB CTCAvoidRegionExit (0x20): EntranceMarker +0xC, ExitMarker +0x14 (CIntelligentPointer<CThing>), NextFrameCheck +0x1C;
 // retail CThing Dead = bit 0 of +0x91.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}

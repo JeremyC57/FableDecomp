@@ -4,12 +4,12 @@
 #define __fastcall
 #endif
 static int g_baseDtors, g_deleted;
-struct CCPPointerInfo {                            // CCountedPointer's shared block
+class CCPPointerInfo { public:                            // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -25,16 +25,16 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {                                // polymorphic root of the script handles
+class CBaseClass { public:                                // polymorphic root of the script handles
     CBaseClass() {}
     virtual ~CBaseClass() { ++g_baseDtors; }
 };
-struct CScriptThing : CBaseClass {                 // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;            // +0x04 Data, +0x08 Info
     ~CScriptThing() { }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() = 0; virtual void v001() = 0; virtual void v002() = 0; virtual void v003() = 0; virtual void v004() = 0; virtual void v005() = 0; virtual void v006() = 0;
     virtual void NewScriptFrame() = 0;
     virtual void v008() = 0; virtual void v009() = 0; virtual void v010() = 0; virtual void v011() = 0; virtual void v012() = 0; virtual void v013() = 0; virtual void v014() = 0; virtual void v015() = 0; virtual void v016() = 0; virtual void v017() = 0;
@@ -107,7 +107,7 @@ struct CGameScriptInterface {
     virtual long GetConstantFPS() = 0;
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char         _pad00[0x40];
     CGameScriptInterface* GSI;                     // +0x40 (the quest script's interface pointer)
     int framesLeft;
@@ -115,7 +115,7 @@ struct CScriptBase {
 };
 
 namespace NScript {
-struct CPersonalScript_EmptyScript : CScriptBase {
+class CPersonalScript_EmptyScript : public CScriptBase { public:
     void ChangeAlpha(CScriptThing thing);
 };
 

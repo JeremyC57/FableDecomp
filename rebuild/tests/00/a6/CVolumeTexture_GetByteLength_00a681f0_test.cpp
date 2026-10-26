@@ -12,7 +12,7 @@ struct CPixelFormatFromD3D {
     CPixelFormatFromD3D(unsigned long d3dFormat) : FormatIndex((long)d3dFormat) {}
     unsigned long GetByteColourDepth() const { return FormatIndex == 21 ? 4 : 2; }
 };
-struct CVolumeTexture {
+class CVolumeTexture { public:
     void* __vftable; IDirect3DVolumeTexture9* PD3DVolumeTexture; long ByteLength; void* PData;
     CPixelFormatFromD3D GetPixelFormat() const { D3DVOLUME_DESC_Local desc; PD3DVolumeTexture->GetLevelDesc(0, &desc); return CPixelFormatFromD3D(desc.Format); }
     unsigned long GetByteLength(unsigned long level) const

@@ -1,5 +1,5 @@
 // CPersistContext::Transfer<long>  0x004110b0
-struct CPersistContext {
+class CPersistContext { public:
     void Inner(char* pName, long* pData, long* pDefault);
     void Transfer_long_(char* pName, long* pData);
 };

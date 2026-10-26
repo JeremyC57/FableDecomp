@@ -12,7 +12,7 @@
 // Shape: `first` and `last` live in the two `sub esp,8` frame words, the bank in esi, the pivot in ebp; each comparison
 // inlines GetEntryDataOffset twice (left operand first); the `--last` loop reads *last before the pivot's offset;
 // iter_swap moves both elements through eax/edi; unsigned `<` (`jae` / `jb`).
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

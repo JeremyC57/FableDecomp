@@ -1,7 +1,7 @@
 #include <cstdio>
 
 struct CMid { unsigned char pad[0xd7]; unsigned char flagD7; };
-struct CGameScriptInterface { void* vt; CMid* mid; };
+class CGameScriptInterface { public: void* vt; CMid* mid; };
 
 void __fastcall CGameScriptInterface_SetSavingAsEnabled(CGameScriptInterface* self, int edx_dummy, char enabled)
 {

@@ -14,9 +14,9 @@
 // source compares the float's bits. ShieldHealth (+0x118) is the float pushed last by value. The 0x128-byte frame
 // holds the string word below the 0x124-byte action temporary (the cast-spell temporaries of 0x008C2A80 /
 // 0x008C2980 are 0x11c bytes; the shield spell adds its two arguments as members).
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -42,7 +42,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* GetPItem() const; // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -50,7 +50,7 @@ struct CCombatActionBase {
     void FinishAction();                        // 0x00859A20
 };
 
-struct CCombatAction_WillShieldInto : CCombatActionBase {
+class CCombatAction_WillShieldInto : public CCombatActionBase { public:
     float ShieldUpTime;                         // +0x114 seconds, -1 = until broken
     float ShieldHealth;                         // +0x118
     void FinishAction();

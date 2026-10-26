@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharStringData { int refs; };
+class CCharStringData { public: int refs; };
 
 class CCharString
 {

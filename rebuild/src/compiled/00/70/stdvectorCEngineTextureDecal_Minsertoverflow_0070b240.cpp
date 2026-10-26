@@ -20,7 +20,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E (import thun
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() {} };
 
-struct CCompositeBlendDesc;
+class CCompositeBlendDesc;
 struct CCompositeBlendDescVector {              // vector<CCompositeBlendDesc> (retail STLport, 12 bytes)
     CCompositeBlendDesc* _M_start;
     CCompositeBlendDesc* _M_finish;
@@ -28,7 +28,7 @@ struct CCompositeBlendDescVector {              // vector<CCompositeBlendDesc> (
     CCompositeBlendDescVector(const CCompositeBlendDescVector& __x);   // 0x005BB346
 };
 
-struct CEngineTextureDecal {                    // Ego_r.pdb; 20 bytes retail
+class CEngineTextureDecal { public:                    // Ego_r.pdb; 20 bytes retail
     long OriginalTextureIndex;                  // +0x00
     long DecalID;                               // +0x04
     CCompositeBlendDescVector OverlaidBlends;   // +0x08

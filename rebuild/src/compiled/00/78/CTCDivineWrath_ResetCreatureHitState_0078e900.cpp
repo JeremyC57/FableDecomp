@@ -8,14 +8,14 @@
 // map +0x44, dead bit +0x91; the 0x8b component's reset fields +0x10 / +0x18 / +0x1c (named descriptively).
 // Shape: an inline IS_THING_ALIVE over the by-value pointer (GetPItem twice), then each component through the out-parameter
 // GetInterface on a fresh GetPItem (component left in eax); the frame word is the lookup key.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -51,7 +51,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long modeType);            // 0x0073ABA0
 };
 struct CTCHitReaction {                                 // the interface-0x8b component
@@ -61,7 +61,7 @@ struct CTCHitReaction {                                 // the interface-0x8b co
     bool Armed;                                         // +0x18
     long CurrentValue;                                  // +0x1c
 };
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     virtual void v00();
     void ResetCreatureHitState(CIntelligentPointerCreature creature);
 };

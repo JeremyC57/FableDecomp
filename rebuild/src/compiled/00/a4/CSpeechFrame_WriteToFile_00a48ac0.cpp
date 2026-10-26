@@ -5,20 +5,20 @@
 // +0x0c..+0x18 (PDB +0x10..+0x1c).
 // Shape: the loop bound is the array size re-read every pass (unsigned `jb`), the element read as `m_first[i]`.
 // Leaf: WriteToFile
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);           // 0x00993EA0
     void WriteFloat(float value);                   // 0x00993EE0
 };
 
-struct CComplexNumber { float Real; float Imaginary; };
+class CComplexNumber { public: float Real; float Imaginary; };
 
-template <class T> struct CArray {                  // 12-byte retail array {first, last, end}
+template <class T> class CArray { public:                  // 12-byte retail array {first, last, end}
     T* m_first; T* m_last; T* m_end;
     unsigned long Size() const { return m_last - m_first; }
     const T& operator[](unsigned long i) const { return m_first[i]; }
 };
 
-struct CSpeechFrame {
+class CSpeechFrame { public:
     CArray<CComplexNumber> Frequencies;             // +0x00
     float Amplitude;                                // +0x0c
     float MedianFrequency;                          // +0x10

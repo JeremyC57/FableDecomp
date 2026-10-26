@@ -13,13 +13,13 @@
 inline void* operator new(unsigned int, void* p) { return p; }
 struct __false_type { __false_type() {} };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Release();                             // slot 1 (+0x04)
     long RefCount;                                      // +0x04
 };
-struct CThingBaseDef;
-template <class T> struct CDefPointer {                 // 4 bytes
+class CThingBaseDef;
+template <class T> class CDefPointer { public:                 // 4 bytes
     CDefPointeeBase* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object)
     {

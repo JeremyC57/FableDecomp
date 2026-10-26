@@ -73,7 +73,7 @@ struct CIn {
 static void put32(unsigned char* p, int v) { memcpy(p, &v, 4); }
 static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
-struct CEngineGraphic { unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 struct Traits { void TransferBinaryOut(COut* out, const CEngineGraphic* value)
 {
     out->WriteLong(value->Type);

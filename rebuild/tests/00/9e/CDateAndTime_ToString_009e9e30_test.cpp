@@ -4,7 +4,7 @@
 #include <cstring>
 
 static int gFrees = 0;
-struct CCharString {
+class CCharString { public:
     char Text[64];
     CCharString(const char* text) { std::strncpy(Text, text, 63); Text[63] = 0; }
 };
@@ -13,7 +13,7 @@ struct CTextBuffer {
     CTextBuffer(unsigned int size) : Data((char*)std::malloc(size)) { std::memset(Data, 0, size); }
     ~CTextBuffer() { if (Data) { ++gFrees; std::free(Data); } }
 };
-struct CDateAndTime {
+class CDateAndTime { public:
     long Year; unsigned int Month, Day, Hour, Minute, Second, Millisecond;
     CCharString ToString() const
     {

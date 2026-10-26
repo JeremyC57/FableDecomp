@@ -2,7 +2,7 @@
 static int g_result;
 static int g_calls;
 static bool g_argument;
-struct CTCStealth { int GetAttackAvailability(bool includePending); bool IsAvailableForAttack(); };
+class CTCStealth { public: int GetAttackAvailability(bool includePending); bool IsAvailableForAttack(); };
 int CTCStealth::GetAttackAvailability(bool value) { ++g_calls; g_argument = value; return g_result; }
 bool CTCStealth::IsAvailableForAttack() { return GetAttackAvailability(false) == -1; }
 int main() {

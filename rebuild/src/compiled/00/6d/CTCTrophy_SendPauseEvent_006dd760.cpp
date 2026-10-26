@@ -14,7 +14,7 @@
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -24,20 +24,20 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBool(bool& value) { value = value ? true : false; Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
 };
 
-struct CTCTrophy {
+class CTCTrophy { public:
     virtual void v00();
     const CWorld* GetWorld() const;                // 0x00686A80 (CTCBase)
     void SendPauseEvent(bool pause);

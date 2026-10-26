@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CGameCameraManager; struct CCameraModeDef; struct CBaseObject; struct CThing;
+class CGameCameraManager; class CCameraModeDef; class CBaseObject; class CThing;
 static CGameCameraManager* g_manager = 0; static const CCameraModeDef* g_def = 0;
 struct CBaseIntelligentPointer {
     virtual void v00() { }
@@ -13,9 +13,9 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00() { }
     CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00() { }
     unsigned char _body[0xa0];
     CBase(CGameCameraManager* manager, const CCameraModeDef* def) { g_manager = manager; g_def = def; }

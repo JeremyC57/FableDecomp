@@ -1,5 +1,5 @@
-struct CGPUScratchBufferTextureManager;
-struct CEngine;
+class CGPUScratchBufferTextureManager;
+class CEngine;
 extern char* g_engineSingleton;
 
 CGPUScratchBufferTextureManager* CEngine_GetScratchBufferTextureManager(CEngine* engine)

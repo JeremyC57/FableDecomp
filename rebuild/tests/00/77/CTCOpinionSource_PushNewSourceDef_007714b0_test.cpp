@@ -25,9 +25,9 @@ struct CRetailVector_long {
             InsertGrow(last, value, SScalarTag(), 1, true);
     }
 };
-struct CThing;
+class CThing;
 static bool g_setupOk = true; static int g_setups = 0; static long g_setupDef = -1;
-struct CTCOpinionSource {
+class CTCOpinionSource { public:
     void* __vftable;
     CThing* ParentThing;
     bool ToBeRemoved;

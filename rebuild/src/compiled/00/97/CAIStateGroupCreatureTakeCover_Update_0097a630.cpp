@@ -16,8 +16,8 @@
 //   begin/end +0x28/+0x2c, failure count +0x48 (engine/CAIStateGroup_CreatureTakeCover.h flattens the base; local model).
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -41,12 +41,12 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -99,37 +99,37 @@ __forceinline bool IS_THING_ALIVE(CThing* thing)
     }
     return false;
 }
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     CThing* GetPerceivedThing();                // 0x007446A0
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void* __vftable;
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_ProjectileCrouch : CCombatActionBase {   // retail sizeof 0x124 (members up to +0x11d)
+class CCreatureAction_ProjectileCrouch : public CCombatActionBase { public:   // retail sizeof 0x124 (members up to +0x11d)
     unsigned char _crouch[0x124 - 0x114];
     CCreatureAction_ProjectileCrouch(CThing* creature, CThing* enemy, const C3DVector& coverPos);   // 0x008B8310
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     unsigned char _anim[0x0c];
     CCreatureAction_PlayAnimation(CThing* owner, const CCharString& animationName, const CSoundPair& sound,
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
 };
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

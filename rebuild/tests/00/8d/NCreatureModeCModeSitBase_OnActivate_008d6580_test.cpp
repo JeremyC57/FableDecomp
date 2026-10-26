@@ -5,7 +5,7 @@
 struct CRandomSeed { unsigned long Seed; };
 unsigned long GFROR13(unsigned long value) { value &= 0xffffffffUL; return ((value >> 13) | (value << 19)) & 0xffffffffUL; }
 static CRandomSeed g_seed;
-struct CWorld {
+class CWorld { public:
     CRandomSeed* GetRandomSeed() { return &g_seed; }
 };
 static CWorld g_world;

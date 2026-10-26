@@ -56,15 +56,15 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -117,34 +117,34 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 #include <stddef.h>
 
 
-struct C3DAnimationManager;
-struct CAIGameCameraBase;
-struct CAtmosProcess;
-struct CBulletTimeManager;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CCombatManager;
-struct CEnvironment;
-struct CFactionManager;
-struct CGameDefinitionManager;
-struct CGameScriptInterface;
-struct CGameTimeManager;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CMessageEventManager;
-struct CMusicManager;
-struct CNavigatorManager;
-struct COpinionReactionManager;
-struct CPlayerManager;
-struct CScriptConversationManager;
-struct CScriptInfoManager;
-struct CThingManager;
-struct CThingSearchTools;
-struct CWideStringData;
-struct CWorldMap;
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CWorld {
+class CWorld { public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
     CMainGameComponent*         Component;                   // +0x08
@@ -383,14 +383,14 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x1b0);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CSymbolMap;
-struct CWideStringData;
+class CCPPointerInfo;
+class CCharStringData;
+class CSymbolMap;
+class CWideStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0x4];      // +0x04
     unsigned char                       _pad_0x08[0x4];      // +0x08
@@ -463,20 +463,20 @@ FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, RecompiledDefs) == 0xe0);
 #include <stddef.h>
 
 
-struct C3DAnimFileXLoader;
-struct C3DAnimationManager;
-struct C3DMeshFileXLoader;
-struct C3DMeshStripifier;
-struct C3DQuadricBasedMeshOptimiser;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGraphicDataBank;
-struct CMovableResourceMemoryPool;
-struct CPushBufferBuildInfo;
-struct CXboxBufferMemoryPool;
+class C3DAnimFileXLoader;
+class C3DAnimationManager;
+class C3DMeshFileXLoader;
+class C3DMeshStripifier;
+class C3DQuadricBasedMeshOptimiser;
+class CCPPointerInfo;
+class CCharStringData;
+class CGraphicDataBank;
+class CMovableResourceMemoryPool;
+class CPushBufferBuildInfo;
+class CXboxBufferMemoryPool;
 
 #pragma pack(push, 1)
-struct CMeshDataBank {
+class CMeshDataBank { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -699,10 +699,10 @@ FABLE_STATIC_ASSERT(offsetof(CMeshDataBank, StateBlock) == 0x4bc);
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     long                   f4;                               // +0x04 retail-only long (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -735,8 +735,8 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -744,8 +744,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -840,7 +840,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
 #pragma pack(push, 1)
-struct CThingObjectDef {
+class CThingObjectDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -905,7 +905,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingObjectDef, Electrocutable) == 0x9c);
 
 
 #pragma pack(push, 1)
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -1058,13 +1058,13 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureDef, IsPushedByExplosions) == 0x151);
 
 #endif // FABLE_ENGINE_CTHINGCREATUREDEF_H
 
-struct CEngineGraphic {unsigned long BankIndex;float AnimStep,RenderSizeX;bool AdditiveAlpha;unsigned char Type;};
+class CEngineGraphic { public:unsigned long BankIndex;float AnimStep,RenderSizeX;bool AdditiveAlpha;unsigned char Type;};
 struct CDefPointeeNative {void* VTable;long References;};
 union DefReleaseSlot {void* Native;void(CDefPointeeNative::*Release)();};
 struct CThingObjectDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0x68];CEngineGraphic Graphic;};
 struct CThingCreatureDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0xf8];CEngineGraphic Graphic;};
 __forceinline void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*reinterpret_cast<DefReleaseSlot*>(p->VTable)[1].Release)();}
-template<class T>struct CDefPointer {T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
+template<class T>class CDefPointer { public:T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
 struct CDefinitionManagerMethods:CDefinitionManager {static CDefinitionManagerMethods& Get();CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
 #pragma auto_inline(off)
 bool CDefinitionManagerMethods::GetObjectDef(const CCharString& meshName,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}

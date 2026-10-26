@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CMatrix3x4 { float m[12]; };
+class CMatrix3x4 { public: float m[12]; };
 struct CDoubleMatrix3x3 {
     double m[9];
     CMatrix3x4 GetObjectTransform() const

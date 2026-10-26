@@ -12,12 +12,12 @@
 //   the __false_type temporary homed in the dead x slot) -- then `Dirty = true` on both paths.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct C3DHelperPoint {                                // 16 bytes (Ego_r.pdb)
+class C3DHelperPoint { public:                                // 16 bytes (Ego_r.pdb)
     C3DVector Position;                                // +0x00
     long      BoneIndex;                               // +0x0c
 };
@@ -53,7 +53,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

@@ -2,13 +2,13 @@
 // Behaviour of CParticleSimulation::AllocateArrays (0x00ADF2A0): the pool is remembered, one Size*0x44-byte block
 // is allocated for the simulation, and the five arrays are carved from it back to back; a failed allocation
 // returns false and leaves the arrays alone.
-struct C4DVector { float X, Y, Z, W; };
-struct CMovableResource { virtual ~CMovableResource() {} };
+class C4DVector { public: float X, Y, Z, W; };
+class CMovableResource { public: virtual ~CMovableResource() {} };
 static unsigned char g_block[0x44 * 8];
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void* GetPointerFromHandle(long handle) { return handle == 5 ? g_block : 0; }
 };
-struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
+class CMovableResourceMemoryPool : public CHandleBasedMemoryPool { public:
     bool m_fail; CMovableResource* m_owner; unsigned long m_size;
     bool AllocateResource(long* handle, CMovableResource* owner, unsigned long size, unsigned long)
     {
@@ -16,7 +16,7 @@ struct CMovableResourceMemoryPool : CHandleBasedMemoryPool {
         *handle = 5; m_owner = owner; m_size = size; return true;
     }
 };
-struct CParticleSimulation : CMovableResource {
+class CParticleSimulation : public CMovableResource { public:
     unsigned long Size;
     C4DVector* Positions; C4DVector* LastPositions; C4DVector* SavedPositions; C4DVector* Accelerations; float* SimulationAlphas;
     long MemoryHandle;

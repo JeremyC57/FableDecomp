@@ -7,11 +7,11 @@ static int fails = 0;
 struct HWND__;
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0 };
 static int g_stringCtor = 0;
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString() : m_pStringData(0) { ++g_stringCtor; }
 };
-struct CDisplayManagerInit {
+class CDisplayManagerInit { public:
     long                    Width;
     long                    Height;
     long                    Depth;

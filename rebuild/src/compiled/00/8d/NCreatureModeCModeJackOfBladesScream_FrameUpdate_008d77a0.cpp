@@ -11,7 +11,7 @@
 //   `(SwordFallPos - InitialSwordPos) * t + InitialSwordPos` through inline C3DVector operators.
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -19,7 +19,7 @@ struct C3DVector {
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
     CRightHandedSet() { }
@@ -33,7 +33,7 @@ struct CThingPlacement {                           // the thing's placement comp
     V16(c) V16(d) virtual void e0(); virtual void e1(); virtual void e2(); virtual void e3(); virtual void e4(); virtual void e5(); virtual void e6(); virtual void e7(); virtual void e8(); virtual void e9(); virtual void e10(); virtual void e11();
     virtual void SetRHSet(const CRightHandedSet& rhs);    // slot 75 (+0x12c)
 };
-struct CThing {
+class CThing { public:
     unsigned char    _pad00[0x60];
     CThingPlacement* m_pPlacement;                 // +0x60
     CThingPlacement* GetPlacement() const { return m_pPlacement; }

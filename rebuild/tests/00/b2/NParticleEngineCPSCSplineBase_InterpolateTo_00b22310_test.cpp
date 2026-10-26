@@ -5,7 +5,7 @@
 #include <cstdio>
 #include <vector>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -20,13 +20,13 @@ static CPointArray GFInterpolateArray(const CPointArray& a, const CPointArray& b
     }
     return r;
 }
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CPointArray ControlPoints;
     float       Tension;
     CPointArray GetControlPoints() const { return ControlPoints; }
 };
 static int g_live = 0;
-template <class T> struct CCountedPointer {             // single-owner stand-in for the counted pointer
+template <class T> class CCountedPointer { public:             // single-owner stand-in for the counted pointer
     T* Data;
     CCountedPointer() : Data(0) {}
     ~CCountedPointer() { Clear(); }

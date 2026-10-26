@@ -9,24 +9,24 @@
 // landed MoveToCuriosityProximity do/while, by-value C3DVector copied memberwise into the argument block.
 // Engine header names (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker +0x21); the header flattens
 // the base, so the class is modelled locally.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsPerformingAnyAction();               // 0x006622A0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad[0x14];                   // +0x04..+0x17
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13

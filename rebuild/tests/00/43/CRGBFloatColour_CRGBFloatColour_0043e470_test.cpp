@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CRGBFloatColour {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CRGBFloatColour { public:
     float R, G, B, A;
     void Set(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
     CRGBFloatColour(const CRGBColour& colour)

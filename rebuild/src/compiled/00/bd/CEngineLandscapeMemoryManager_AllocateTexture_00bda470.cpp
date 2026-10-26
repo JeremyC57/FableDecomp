@@ -11,11 +11,11 @@
 // The pool argument is `~usage & 1` (bit 0 of usage = default pool, else managed), the last flag is 0.
 // `id` (arg 1) is unused, `ret 18h` = six arguments. Layout: the PDB header puts the disposal lists at
 // +0x10.., FlushCycle reads +0x34/+0x40, so the manager is modelled locally (only the member call is needed).
-struct C2DExtentsI;
-struct CPixelFormat;
+class C2DExtentsI;
+class CPixelFormat;
 enum ESurfacePool { SURFACE_POOL_DEFAULT = 0, SURFACE_POOL_MANAGED = 1 };
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
 };
 
@@ -45,7 +45,7 @@ public:
                     ESurfacePool pool, bool dynamic, bool renderTarget);   // 0x009FA280
 };
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void FlushCycle();                             // 0x00BDA150
     CTexture* AllocateTexture(unsigned long id, const C2DExtentsI& size, long levels, const CPixelFormat& format,
                               unsigned long usage, bool dynamic);

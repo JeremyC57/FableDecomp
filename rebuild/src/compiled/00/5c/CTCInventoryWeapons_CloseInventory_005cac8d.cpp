@@ -16,7 +16,7 @@
 // ActiveWeaponPrimitiveHandles PDB +0x16C -> retail +0x154, CTCInventoryBase::InventoryOpen PDB +0x60 -> retail +0x58.
 // The SGI algorithm and the functor are reconstructed by hand (the DDK STL is not the retail revision). Local model.
 #pragma optimize("s", on)
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     long m_id;
     void* m_pPrimitive;
     void Clear();                             // 0x0041BE70
@@ -52,9 +52,9 @@ struct CTCInventoryBase_Retail {
     unsigned char _pad_0x59[0x130 - 0x59];
 };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00(); };
+class CBase { public: virtual void v00(); };
 }
-struct CTCInventoryWeapons : CTCInventoryBase_Retail, NHeroInformationScreens::CBase {
+class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformationScreens::CBase { public:
     unsigned char _pad_0x134[0x154 - 0x134];
     CPrimitiveHandleVector ActiveWeaponPrimitiveHandles;   // +0x154
     void SetupActiveWeaponsOnCarrier();       // 0x005CA68E

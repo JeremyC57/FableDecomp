@@ -11,7 +11,7 @@
 //   hit arm copies the float as a dword, the absent arm reads the never-written out pointer from the argument slot and
 //   copies through the FPU.
 // Leaf: ?SetProximityForDirectApproach@CAIStateGroupBase@@
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,12 +19,12 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCCreatureNavigation {                  // interface 7
+class CTCCreatureNavigation { public:                  // interface 7
     unsigned char _pad0[0x58];
     float ProximityForDirectApproach;           // +0x58
     void SetProximityForDirectApproach(float proximity) { ProximityForDirectApproach = proximity; }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -42,7 +42,7 @@ struct CThingCreatureBase {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     void*               __vftable;              // +0x00
     unsigned char       _pad04[0x14];           // +0x04..+0x18
     CThingCreatureBase* Creature;               // +0x18

@@ -1,4 +1,4 @@
-struct CEngineInternalPrimitiveParticleDecalGroup {
+class CEngineInternalPrimitiveParticleDecalGroup { public:
     void* vftable;
 };
 

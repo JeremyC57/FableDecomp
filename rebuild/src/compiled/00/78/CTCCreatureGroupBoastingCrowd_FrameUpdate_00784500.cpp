@@ -13,21 +13,21 @@
 //   0x007841C0) must be `__forceinline` to be inlined into the guard chain; the source clearing is a while loop (rotated:
 //   pre-test, `dec ; test ; jg`) whose manager is a named loop local (edi pushed around the loop only);
 //   `HeroMadeGoodBoast ? 7 : 8` gives `neg ; sbb ; add 8`.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
 };
-struct COpinionReactionManager {
+class COpinionReactionManager { public:
     void ClearOpinionSource(CThing* source, bool immediately);   // 0x007008C0
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
 };
 struct SListNode { SListNode* next; SListNode* prev; };
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x68];
     SListNode* m_boasts;                        // +0x68 list head (retail 4-byte STLport list)
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
@@ -40,7 +40,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                              // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CTCCreatureGroupBoastingCrowd {
+class CTCCreatureGroupBoastingCrowd { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x24 - 0x08];          // CTCBase tail + CTCCreatureGroup members

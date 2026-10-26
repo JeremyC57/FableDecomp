@@ -9,25 +9,25 @@
 //   pGlobalScriptDef 0x0143E90C (+0xd54 escape time).
 // Layout (retail = Ego_r.pdb - 0x14, as the landed CQ_MinionClifftopChaseScript sources): MapKeeperSaidDialog +0x48,
 //   MissionFailed +0x49, TrollFlag +0x54, EscapeTimer +0x5c (CTimer), TimerBarID +0x60, ReasonForFailure +0x64.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-struct CScriptThing {                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
+class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
     void* VTable;
     void* PImpData;
     void* PImpInfo;
     ~CScriptThing();                                    // 0x004AA840
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-struct CSpawnedFuncBase {                               // retail 0x34 bytes
+class CSpawnedFuncBase { public:                               // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -44,11 +44,11 @@ template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
 
-struct CScriptThing;
-struct CScriptDataBase;
-struct CEntityScriptBase;
-struct CActiveEntityScriptBase;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+class CScriptThing;
+class CScriptDataBase;
+class CEntityScriptBase;
+class CActiveEntityScriptBase;
+template <class T> class CCountedPointer { public: T* Data; void* Info; };
 
 struct __declspec(novtable) CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const = 0;
@@ -66,8 +66,8 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
 };
 
-struct CTimer;
-struct CGameScriptInterface {
+class CTimer;
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -154,17 +154,17 @@ struct CGameScriptInterface {
     virtual void StopOverrideMusic(bool immediate) const;   // slot 697 (+0xae4)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CTimer {                                         // a script timer: the interface's timer index
+class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
     __forceinline void Set(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
     __forceinline long Get() const { return g_pGameScriptInterface->GetTimer(Index); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xd54];
     long MinionChaseEscapeTime;                         // +0xd54
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };

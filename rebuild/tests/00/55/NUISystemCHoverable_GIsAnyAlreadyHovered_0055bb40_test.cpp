@@ -17,7 +17,7 @@ static void Check(bool ok, int line)
 }
 #define CHECK(c) Check((c) ? true : false, __LINE__)
 
-struct C2DBoxI { long X0, Y0, X1, Y1; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; };
 template <class T> struct CRetailList {
     T items[8];
     int count;

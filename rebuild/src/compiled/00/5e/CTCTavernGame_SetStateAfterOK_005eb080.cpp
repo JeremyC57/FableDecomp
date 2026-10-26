@@ -14,7 +14,7 @@
 #include <stddef.h>
 typedef long ETavernGameStates;
 extern bool g_bTavernGameQuitRequested;                 // 0x013BAE1C
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -32,18 +32,18 @@ public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1614c];
     CFontBank* Font;                                    // +0x1614c
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 typedef void (__fastcall *TTavernGameFunc)();
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

@@ -9,7 +9,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-struct C2DVector {
+class C2DVector { public:
     float X;                                    // +0x00
     float Y;                                    // +0x04
     float GetLength() const;

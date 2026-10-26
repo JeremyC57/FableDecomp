@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
 static int g_live;
-struct CWideString { long m_value; };
-struct CCharString {
+class CWideString { public: long m_value; };
+class CCharString { public:
     long m_value;
     CCharString(long v) : m_value(v) { ++g_live; }
     CCharString(const CCharString& o) : m_value(o.m_value) { ++g_live; }
     ~CCharString() { --g_live; }
     CWideString ToWideString() const { CWideString w; w.m_value = m_value * 10; return w; }
 };
-struct CBankFileAsync { CCharString GetEntrySymbol(unsigned long index) { return CCharString((long)index + 1); } };
-struct CWADFile { void* vt; CBankFileAsync* Bank; unsigned long Index; long FilePos;
+class CBankFileAsync { public: CCharString GetEntrySymbol(unsigned long index) { return CCharString((long)index + 1); } };
+class CWADFile { public: void* vt; CBankFileAsync* Bank; unsigned long Index; long FilePos;
     CWideString GetPathname() { return Bank->GetEntrySymbol(Index).ToWideString(); }
 };
 int main()

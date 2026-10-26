@@ -7,11 +7,11 @@
 // the quest object at +8, CActiveQuest::PScript's object at +8.
 // Shape: the region reference is loaded once in the preheader (ebx), the script pointer tested and used from ecx,
 // the head re-read from the member for every end test.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     void OnRegionUnloaded(const CCharString& region);   // 0x00CB7B60
 };
 
@@ -28,7 +28,7 @@ struct CActiveQuestNode {
     void*             questInfo;                   // +0x0c
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad_0x00[0x38];
     CActiveQuestNode* ActiveQuests;                // +0x38 (head node)
     void OnRegionUnloaded(const CCharString& region);

@@ -6,13 +6,13 @@
 // Shape: the colour goes through an inline four-argument setter -- the arguments evaluate right to left (A, B, G, R: `movzx` of +0x1B
 // first), each `fild` homed in the dead argument slot, then four `fstp` R..A straight into the member (a constructed temporary
 // assigned to the member adds a frame copy); the radius copy is written before the colour (it is scheduled there).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CRGBColour {                                // 4 bytes, stored B, G, R, A
+class CRGBColour { public:                                // 4 bytes, stored B, G, R, A
     unsigned char B, G, R, A;
 };
 
-struct CRGBFloatColour {                           // PDB, 16 bytes
+class CRGBFloatColour { public:                           // PDB, 16 bytes
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }

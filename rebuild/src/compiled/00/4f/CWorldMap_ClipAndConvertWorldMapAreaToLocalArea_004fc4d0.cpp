@@ -13,7 +13,7 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: the box and a copy of the map's area are frame locals (memberwise copies through registers); the result is
 // the clipped box shifted in place by the map corner (TLX, BRX, then TLY, BRY) and returned through the copy ctor.
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) { }
@@ -33,19 +33,19 @@ void C2DBoxI::ClipTo(const C2DBoxI& other)
 }
 #pragma auto_inline(on)
 
-struct CMapInfo {
+class CMapInfo { public:
     C2DBoxI       Area;                         // +0x00
     unsigned char _rest[0x38];                  // +0x10 .. +0x48
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Start;                                   // +0x00
     T* Finish;                                  // +0x04
     T* EndOfStorage;                            // +0x08
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char    _pad[0x20];
     CArray<CMapInfo> Maps;                      // +0x20
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(long map, const C2DBoxI& area) const;

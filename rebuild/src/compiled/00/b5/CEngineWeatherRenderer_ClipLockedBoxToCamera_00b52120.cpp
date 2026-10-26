@@ -5,9 +5,9 @@
 // register, on the locked path the slot is re-read. The index is the THIRD argument (`[esp+10h]`), the box pointer and radius are
 // pushed in that order. SavedBoxVisibility is at +0x784 as in engine/CEngineWeatherRenderer.h; the lock byte at +0x11a sits inside the
 // header's RainParticle/Mist shader region (the Ego PDB layout differs from retail there), so the retail layout is modelled locally.
-struct C3DVector;
+class C3DVector;
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x11a];
     bool          BoxVisibilityLocked;             // +0x11a
     unsigned char _pad1[0x784 - 0x11b];

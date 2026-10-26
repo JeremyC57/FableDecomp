@@ -1,5 +1,5 @@
 // CWideString::CWideString(const CCharString&) -- widen a narrow string (byte -> wchar_t, Latin-1)
-// Leaf: ??0CWideString@@QAE@ABUCCharString
+// Leaf: ??0CWideString@@QAE@ABVCCharString
 // Retail: Fable.exe @ 0x0099B440, 135 bytes (+int3). PDB ??0CWideString@@QAE@ABVCCharString@@@Z (explicit)
 // Callees: operator new 0x00BFEA1A, STLport basic_string<wchar_t>(size_type n, wchar_t c, const allocator&)
 // 0x0099CA70 (label "WideString_Allocate"). Global: CWideString instance counter 0x013BCA20 (as in the landed
@@ -26,24 +26,24 @@ struct CWideBasicString {
     CWideBasicString(size_t n, wchar_t c, const CWideAllocator& a = CWideAllocator());   // 0x0099CA70
 };
 
-struct CWideStringData {
+class CWideStringData { public:
     CWideBasicString Data;   // +0x00
     long NoRefs;             // +0x0C
     CWideStringData(long length, wchar_t fill) : Data(length, fill) { NoRefs = 1; }
 };
 
-struct CCharStringData {
+class CCharStringData { public:
     char* Text;     // +0x00
     long Length;    // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;   // +0x00
     long GetLength() const { if (PStringData == 0) return 0; return PStringData->Length; }
     const char* GetText() const { if (PStringData == 0) return g_CCharStringEmptyText; return PStringData->Text; }
 };
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;   // +0x00
     explicit CWideString(const CCharString& text);
 };

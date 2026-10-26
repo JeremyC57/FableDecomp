@@ -33,12 +33,12 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-struct CThingPhysical;
+class CThingPhysical;
 // Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
 extern "C" void* __cdecl malloc(unsigned int);
@@ -60,12 +60,12 @@ void ThingVector::_M_insert_overflow(CThingPhysical** position,CThingPhysical* c
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingPhysical:CThing {enum {ThingTypeMask=3};};
-struct CThingGameObject:CThingPhysical {enum {ThingTypeMask=7};};
-struct CThingCreatureBase:CThingGameObject {enum {ThingTypeMask=15};};
-struct CThingAICreature:CThingCreatureBase {enum {ThingTypeMask=31};};
-struct CThingObject:CThingGameObject {enum {ThingTypeMask=0x807};};
-struct C2DBoxI {
+class CThingPhysical:public CThing { public:enum {ThingTypeMask=3};};
+class CThingGameObject:public CThingPhysical { public:enum {ThingTypeMask=7};};
+class CThingCreatureBase:public CThingGameObject { public:enum {ThingTypeMask=15};};
+class CThingAICreature:public CThingCreatureBase { public:enum {ThingTypeMask=31};};
+class CThingObject:public CThingGameObject { public:enum {ThingTypeMask=0x807};};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -76,8 +76,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -93,9 +93,9 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_In3DRange {float Pos[3];float Range;bool operator()(const CThing&)const;}; // 0x006a7780
-struct CThingFilter_IsNot {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
-struct CThingFilter_HasInstantiationName {void* InstantiationName;bool operator()(const CThing&)const;}; // 0x006a7c00
+class CThingFilter_In3DRange { public:float Pos[3];float Range;bool operator()(const CThing&)const;}; // 0x006a7780
+class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
+class CThingFilter_HasInstantiationName { public:void* InstantiationName;bool operator()(const CThing&)const;}; // 0x006a7c00
 struct Filters {
  CThingFilter_In3DRange* F0;
  CThingFilter_IsNot* F1;

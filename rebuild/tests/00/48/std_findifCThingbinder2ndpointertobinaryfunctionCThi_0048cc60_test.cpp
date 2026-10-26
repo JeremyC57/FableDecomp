@@ -4,14 +4,14 @@
 
 static int g_live = 0;      // live CCharString copies (every copy must be destroyed)
 
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) { ++g_live; }
     CCharString(const CCharString& o) : text(o.text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
 
-struct CThing { const char* scriptName; };
+class CThing { public: const char* scriptName; };
 
 static bool IsThingScriptNamed(CThing* thing, CCharString name)
 {

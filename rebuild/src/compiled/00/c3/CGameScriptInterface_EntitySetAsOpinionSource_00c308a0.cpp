@@ -11,7 +11,7 @@ struct CScriptVisitor_00c308a0 {           // vtable 0x012B4C28
     ~CScriptVisitor_00c308a0() { }
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void Visit(CScriptVisitor_00c308a0* visitor);   // slot 10

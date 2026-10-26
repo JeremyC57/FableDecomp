@@ -6,13 +6,13 @@
 // into esi before the test and the result pointer only inside each branch; the text pointer is a named local so the
 // PeekData call precedes the `push -1` of the constructor (a bare argument expression pushes the -1 first). PDB CDefStringTable: StringStream at
 // +16 (retail +0xc, the map before it is 12 bytes).
-struct CCharString {
+class CCharString { public:
     void* PStringData;                             // +0
     CCharString();                                 // 0x0099E4B0
     CCharString(const char* text, long length);    // 0x0099EBF0
 };
 
-struct CMemoryDataOutputStream {
+class CMemoryDataOutputStream { public:
     void* PeekData();                              // 0x00995E70
 };
 

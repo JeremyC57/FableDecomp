@@ -5,7 +5,7 @@ struct RefCounted {
     int    refc;
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     char        pad[0x14];
     RefCounted* pRef;
 };

@@ -5,7 +5,7 @@ struct BigObj { char pad[0xdc]; SubObj* sub; };
 
 extern BigObj* GetBigObj();
 
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
     char pad[0x64];
     int successfulBlockParry;
 };

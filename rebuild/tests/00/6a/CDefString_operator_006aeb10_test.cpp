@@ -11,8 +11,8 @@ static int stricmp_(const char* a, const char* b)
         if (ca == 0) return 0;
     }
 }
-struct CCharStringData { const char* m_pChars; unsigned int m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pChars; unsigned int m_length; };
+class CCharString { public:
     CCharStringData* m_pStringData;
     const char* GetChars() const { return m_pStringData == 0 ? "" : m_pStringData->m_pChars; }
 };
@@ -21,7 +21,7 @@ struct CDefStringTable {
     const char* GetStringAsCharArray(long id) { return Strings[id]; }
 };
 static CDefStringTable g_DefStringTable = { { "", "EXPRESSION_LAUGH", "Expression_Point", "WAVE" } };
-struct CDefString {
+class CDefString { public:
     long TablePos;
     bool operator==(const CCharString& text) const { return stricmp_(g_DefStringTable.GetStringAsCharArray(TablePos), text.GetChars()) == 0; }
 };

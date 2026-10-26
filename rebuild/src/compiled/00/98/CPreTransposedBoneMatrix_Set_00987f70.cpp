@@ -5,11 +5,11 @@
 // (12 floats).
 // Shape: twelve float assignments, which VC7.1 copies through edx; the stores follow the destination order,
 // the loads the transposed source order (0, 3, 6, 9, 1, 4, ...).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CMatrix3x4 {                                         // 48 bytes: three axes and the position
+class CMatrix3x4 { public:                                         // 48 bytes: three axes and the position
     C3DVector XAxis;                                        // +0x00
     C3DVector YAxis;                                        // +0x0c
     C3DVector ZAxis;                                        // +0x18

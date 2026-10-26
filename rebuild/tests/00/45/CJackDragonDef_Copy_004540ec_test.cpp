@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CJackDragonDef { int v; };
+class CJackDragonDef { public: int v; };
 
 static int g_called = 0;
 static CJackDragonDef* g_self = 0;

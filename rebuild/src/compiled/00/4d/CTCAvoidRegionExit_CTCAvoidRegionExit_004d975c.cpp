@@ -9,7 +9,7 @@
 // constructors (inline CIntelligentPointer() over the out-of-line base, vtable stored through the
 // member's address register); the scalar initialiser is stored last.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();
@@ -19,7 +19,7 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
     CTCBase_Calls(CThing* thing);                           // 0x00686800
 };
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -32,7 +32,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01238C6C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCAvoidRegionExit : CTCBase_Calls {                 // vtable 0x0123EFAC
+class CTCAvoidRegionExit : public CTCBase_Calls { public:                 // vtable 0x0123EFAC
     CIntelligentPointer EntranceMarker;                     // +0x0c
     CIntelligentPointer ExitMarker;                         // +0x14
     unsigned long       NextFrameCheck;                     // +0x1c

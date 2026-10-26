@@ -14,14 +14,14 @@
 // so the model is local.
 // Shape: the elapsed-time tests go through an inline helper that reads the frame rate into a local before calling
 // GetWorldFrame and takes the member by reference (so it is re-read after the call); the 20-second rule is a flag.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -39,11 +39,11 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     bool GetWanderWithInformation() const;      // 0x008300E0 (+0x1c8 bit 3)
     bool GetWaveWithInformation() const;        // 0x008300F0 (+0x1c8 bit 4)
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
@@ -59,17 +59,17 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // <const CThing>: vtable 0x01237F1C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <const CThing>: vtable 0x01237F1C
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                  // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
@@ -79,11 +79,11 @@ inline bool HasTimePassed(const long& lastFrame, long seconds)
     return CWorld::GetWorldFrame() - lastFrame > seconds * fps;
 }
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

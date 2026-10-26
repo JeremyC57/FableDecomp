@@ -62,10 +62,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -126,14 +126,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCTurncoatSpell, XPFrameCounter) == 0x98);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -207,7 +207,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CClass {
+class CClass { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x4];                           // +0x04 flattened base-class subobject(s)
     unsigned char ClassListPos[0x4];                         // +0x08 _List_iterator<std::_List_val<CClass_*,std::allocator<CClass_*>_>_>
@@ -230,8 +230,8 @@ FABLE_STATIC_ASSERT(offsetof(CClass, Type) == 0x10);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -239,8 +239,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -325,10 +325,10 @@ FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 
-struct CThing;
-struct CThingCreatureBase;
-struct CTCParamsBase;
-struct CTCTurncoatSpell;
+class CThing;
+class CThingCreatureBase;
+class CTCParamsBase;
+class CTCTurncoatSpell;
 struct CBaseObjectPointer { CThing* Object; unsigned long refs; };
 
 struct CBaseIntelligentPointer {
@@ -343,7 +343,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     CIntelligentPointer_CThing() : CBaseIntelligentPointer() { }
 };
 
-struct CThing : CClass {
+class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
     CTCTurncoatSpell* AddTC(const CCharString&, bool, CTCParamsBase*); // 0x004C9D60
@@ -351,14 +351,14 @@ struct CThing : CClass {
 FABLE_STATIC_ASSERT(offsetof(CThing, Type) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CThing, LifeFlags) == 0x91);
 
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     unsigned char _nativeBase[0x54];
     CIntelligentPointer_CThing PItemRemoved; // native +0x54, donor +0x58 (timer differs)
     void SetPTarget(CThingCreatureBase*); // 0x007C6940
     void SetAICast(long); // 0x007C66E0
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void* __vftable;
     unsigned char _pad04[0x04];
     CIntelligentPointer_CThing PCreature;              // +0x08
@@ -370,7 +370,7 @@ struct CCombatActionBase {
     void Initialise();                                 // 0x00857520
 };
 
-struct CCreatureAction_CastWillTurncoatSpell : CCombatActionBase {
+class CCreatureAction_CastWillTurncoatSpell : public CCombatActionBase { public:
     long Level; // native +0x114
     void PerformAction();
 };

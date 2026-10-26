@@ -9,8 +9,8 @@
 // Shape: CRGBColour's user copy ctor forwards the four components to an inline Set(r, g, b, a): the arguments load
 // right to left (A, B, G, R -- G is parked in the top byte of the consumed argument slot, B in the frame word) and
 // the body stores R, G, B, A (+2/+1/+0/+3); both are `__forceinline` (the size TU emits them out of line otherwise).
-struct C2DVector { float X, Y; };
-struct CRGBColour {                                // D3DCOLOR byte order
+class C2DVector { public: float X, Y; };
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& c) { Set(c.R, c.G, c.B, c.A); }

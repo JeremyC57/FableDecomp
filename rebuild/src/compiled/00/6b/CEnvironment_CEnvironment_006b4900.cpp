@@ -8,7 +8,7 @@
 #include <stdlib.h>
 inline void* operator new(size_t, void* where) { return where; }
 void __cdecl operator delete(void* block);                     // 0x00BFE9BC
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -20,12 +20,12 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer();                                 // 0x00A01B10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     virtual void v000();
 };
-struct CThing;
-struct CRGBFloatColour { float R, G, B, A; };
+class CThing;
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CBlendedEnvironmentTheme {
     unsigned char _b[0x1f4];
     CBlendedEnvironmentTheme();                                // 0x008864A0
@@ -126,17 +126,17 @@ struct CEnvironmentThemeResourcePallette {
     CEnvironmentThemeSetDay* Day; void* Finish; void* End;
     CEnvironmentThemeResourcePallette() : Day(0), Finish(0), End(0) { }
 };
-struct CEnvironment;
+class CEnvironment;
 template <class T> struct scoped_ptr {
     T* px;
     scoped_ptr() : px(0) { }
 };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     unsigned char _b[0x104];
     CEnvironmentSpellEffectInterface(CEnvironment* environment);   // 0x008852E0
 };
 struct CEnvironmentSpellEffectSubState { ~CEnvironmentSpellEffectSubState(); };   // 0x008814C0
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     unsigned char _b[0x90];
     CEnvironmentSpellEffectSubState State;                     // +0x90
     unsigned char _b91[0xcf];
@@ -154,8 +154,8 @@ struct CEnvironmentDefs {
     float LightningRainThreshold;                              // +0x110
     long  LightningTheme;                                      // +0x114
 };
-struct CGameDefinitionManager { unsigned char _pad[0xd8]; CEnvironmentDefs* Environment; };
-struct CEnvironment : CBaseObject {
+class CGameDefinitionManager { public: unsigned char _pad[0xd8]; CEnvironmentDefs* Environment; };
+class CEnvironment : public CBaseObject { public:
     virtual void v001();
     CGameDefinitionManager* DefinitionManager;                 // +0x04
     float SunlightAttenuatorAngleFadeStart;                    // +0x08

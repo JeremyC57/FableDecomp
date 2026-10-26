@@ -1,7 +1,7 @@
 #include <stdio.h>
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 static int g_copies; static const void* g_src; static const void* g_dst;
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(void* d) : m_pData(d) {}
     CWideString(const CWideString& other) : m_pData(other.m_pData) { ++g_copies; g_src = &other; g_dst = this; }

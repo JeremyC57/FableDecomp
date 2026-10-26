@@ -6,22 +6,22 @@
 // Shape: a member-wise copy constructor; C2DBoxI needs its own inline memberwise copy constructor for the direct [esi+N] stores
 //   (a POD box copies through `mov eax,edi` and [ecx+N]); the counted pointer's copy constructor bumps the shared count when present.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString& operator=(const char* text);      // 0x0099EFE0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) { }
 };
-struct CCPPointerInfo {                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);     // called with Data in ecx
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
@@ -37,14 +37,14 @@ template <class T> struct CCountedPointer {
     }
     void Reset() { ReleaseInfo(); Info = 0; Data = 0; }
 };
-struct CMap;
-struct CDataOutputStream {
+class CMap;
+class CDataOutputStream { public:
     void WritePresizedString(const CCharString& s);   // 0x00995A80
     void WriteBool(bool value);                       // 0x00993E30
     void WriteLong(long value);                       // 0x00993EB0
     void WriteUInt64(unsigned __int64 value);         // 0x00993EC0
 };
-struct CMapInfo {                                  // PDB CMapInfo, 0x48, no vtable
+class CMapInfo { public:                                  // PDB CMapInfo, 0x48, no vtable
     C2DBoxI                Area;                   // +0x00
     CCountedPointer<CMap>  PMap;                   // +0x10 (Data +0x10, Info +0x14)
     CCharString            LevelName;              // +0x18

@@ -24,7 +24,7 @@ static int fails = 0;
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
-struct CAbilityTrackLevelDef {                       // 0x48 bytes in retail
+class CAbilityTrackLevelDef { public:                       // 0x48 bytes in retail
     unsigned char _base_0x00[0x3C];
     long          ExperienceCost;                    // +0x3C
     EHeroAbility  AbilityUnlocked;                   // +0x40
@@ -39,31 +39,31 @@ template <class T> struct CRetailVector {            // STLport vector {first, l
     const T& operator[](unsigned long n) const { return _M_start[n]; }
 };
 
-struct CAbilityTrackDef {                            // 0x50 bytes in retail
+class CAbilityTrackDef { public:                            // 0x50 bytes in retail
     unsigned char                         _base_0x00[0x3C];
     long                                  ExperienceStat;   // +0x3C
     CRetailVector<CAbilityTrackLevelDef>  Abilities;        // +0x40
     long                                  MaxedOutDescription;   // +0x4C
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char                    _pad_0x00[0xFC];
     CRetailVector<CAbilityTrackDef>  StatLevels;     // +0xFC (PDB +0x114)
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
     const CHeroStatsDef* GetHeroStatsDef() const { return PHeroStatsDef; }
 };
 
-struct CHeroAbilityDef;
+class CHeroAbilityDef;
 struct SAbilityEntry {                               // pair<long, CDefPointer<const CHeroAbilityDef>>
     long                   Level;                    // +0x00
     const CHeroAbilityDef* PDef;                     // +0x04
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void*                        __vftable;          // +0x000
     unsigned char                _pad_0x004[0x15C];
     CRetailVector<SAbilityEntry> Abilities;          // +0x160 (PDB +0x180)

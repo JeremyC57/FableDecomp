@@ -10,13 +10,13 @@
 // Shape: the 4-byte CDefString temporary lives in the `push ecx` slot; the literal is pushed before the GetDefName call
 // (right-to-left evaluation of `GetDefName() != "..."`); `if (a && b) return true; return false;` gives the two
 // `mov al,1` / `xor al,al` exits.
-struct CDefString {                                  // 4-byte def-name handle (user constructor: hidden-pointer return)
+class CDefString { public:                                  // 4-byte def-name handle (user constructor: hidden-pointer return)
     long m_tablePos;
     CDefString();
     bool operator!=(const char* text) const;         // 0x005FA740
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x10];
     unsigned char m_type;                            // +0x10 (2 = creature)
     CDefString GetDefName() const;                   // 0x004C7CC0

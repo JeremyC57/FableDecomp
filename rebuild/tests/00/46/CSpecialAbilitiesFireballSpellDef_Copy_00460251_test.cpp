@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Stand-in for the relocation-masked tail-call target so the test links.
-struct CSpecialAbilitiesFireballSpellDef;
+class CSpecialAbilitiesFireballSpellDef;
 static int g_called = 0;
 extern "C" void CSpecialAbilitiesFireballSpellDef_Copy_impl_stub() {}
 

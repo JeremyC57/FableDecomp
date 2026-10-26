@@ -5,7 +5,7 @@
 
 
 struct __false_type { __false_type() { } };
-struct C3DVector { float X, Y, Z; C3DVector(float x) : X(x), Y(x + 1), Z(x + 2) { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(float x) : X(x), Y(x + 1), Z(x + 2) { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
 struct TElem { C3DVector first, second; TElem(int k) : first((float)k), second((float)(k * 10)) { } TElem(const TElem& o) : first(o.first), second(o.second) { } };
 static bool Is(const TElem& e, int k) { return e.first.X == (float)k && e.first.Z == (float)(k + 2) && e.second.Y == (float)(k * 10 + 1); }
 

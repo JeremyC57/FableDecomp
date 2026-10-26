@@ -81,8 +81,8 @@ public:
 
 class CProfileManager;
 
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* m_pStringData;
     CWideString();                                  // 0x0099AED0
     CWideString(const CWideString& other);          // 0x0099B720

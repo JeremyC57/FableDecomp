@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 static int g_destroyed = 0;
 struct CDefBase {
     virtual void v00() {}
@@ -12,14 +12,14 @@ struct CDefBase {
     long RefCount;
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->Release(); }
 };
-struct CStockItemDef : CDefBase { };
+class CStockItemDef : public CDefBase { public: };
 static CStockItemDef g_stockDef; static int g_getSubDef = 0;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     bool IsStock;
     bool GetSubDef_0059350c(CDefPointer<CStockItemDef>& out) { ++g_getSubDef; if (!IsStock) return false; ++g_stockDef.RefCount; out.Object = &g_stockDef; return true; }
 };
@@ -45,7 +45,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 static int g_kills = 0; static CThing* g_killed[4];
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -73,7 +73,7 @@ struct CObjectNode {
     CObjectNode* _M_prev;
     CBaseIntelligentPointer _M_data;
 };
-struct CTCThingOwner {
+class CTCThingOwner { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -82,7 +82,7 @@ struct CTCThingOwner {
     CObjectNode* ObjectList;
 };
 static int g_stockState = -1; static int g_setStock = 0;
-struct CTCShop {
+class CTCShop { public:
     virtual void v00() {}
     CThing* ParentThing;
     void SetStockState(long state) { ++g_setStock; g_stockState = state; }

@@ -6,7 +6,7 @@
 static long g_stopped[4]; static int g_nstop = 0, g_removeInactive = 0, g_cleared = 0;
 struct CAnimationPlayer { virtual void StopAnim(long h) { g_stopped[g_nstop++] = h; } };
 struct CAnimationOwner { CAnimationPlayer player; virtual CAnimationPlayer* GetAnimationPlayer() { return &player; } };
-struct CThing { unsigned char p[0x40]; CAnimationOwner* m_pAnimationOwner; };
+class CThing { public: unsigned char p[0x40]; CAnimationOwner* m_pAnimationOwner; };
 struct SAnimEntry { unsigned char p[8]; long m_animHandle; };
 struct CRetailEntryList { struct node { node* next; node* prev; SAnimEntry* obj; void* blk; }; struct iterator { node* m_pNode; explicit iterator(node* n) : m_pNode(n) {} SAnimEntry* operator*() const { return m_pNode->obj; } iterator& operator++() { m_pNode = m_pNode->next; return *this; } bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; } };
     node* head; CRetailEntryList() { head = new node; head->next = head->prev = head; } iterator begin() { return iterator(head->next); } iterator end() { return iterator(head); }

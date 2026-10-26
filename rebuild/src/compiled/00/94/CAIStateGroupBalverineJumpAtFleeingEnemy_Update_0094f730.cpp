@@ -3,8 +3,8 @@
 // Actions have the verified0x114-byte retail combat base, rather than donor0x12c.
 #include "engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h"
 #include "engine/CAIBrain.h"
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 struct CRetailThing { unsigned char _prefix[0x91]; unsigned char Dead:1; };
 struct CBaseIntelligentPointer {
     void* __vftable; CThing* Object;
@@ -14,14 +14,14 @@ inline bool IsAlive(const CBaseIntelligentPointer& p) {
     if(p.GetPItem()!=0) {if(!((CRetailThing*)p.GetPItem())->Dead) return true;}
     return false;
 }
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00(); unsigned char _body[0x110];
     ~CCombatActionBase(); // 0062E900
 };
-struct CCreatureAction_BalverineLungeAttack : CCombatActionBase {
+class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
     CCreatureAction_BalverineLungeAttack(CThingCreatureBase*,CThing*); // 008CCC70
 };
-struct CCreatureAction_BalverineBreakOffFromCombatLong : CCombatActionBase {
+class CCreatureAction_BalverineBreakOffFromCombatLong : public CCombatActionBase { public:
     CCreatureAction_BalverineBreakOffFromCombatLong(CThingCreatureBase*,CThing*); // 008CCD30
 };
 extern long g_framesPerSecond; // 01375550

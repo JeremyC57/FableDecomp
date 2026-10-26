@@ -11,8 +11,8 @@
 // over the scoped_ptr (`mov ecx,[eax+38h]`); the scoped_ptr's operator-> or get() at the call site gives `add eax,38h` / `mov ecx,eax`.
 // Layout: CThing::PTCGraphicAppearance at +0x64 (PDB +0x74; retail loads [eax+64h]); CWorld is modelled locally because the shared
 // header exposes the scoped_ptr as a raw pointer and has no inline script-interface getter (the getter is what fixes the codegen).
-struct C3DVector { float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
-struct C2DVector {
+class C3DVector { public: float X, Y, Z; C3DVector() { } C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) { }
@@ -21,12 +21,12 @@ float __fastcall Distance2D(const C2DVector& a, const C2DVector& b);   // 0x009E
 struct CTCGraphicAppearance {
     bool WasRenderedLastFrame() const;               // 0x004BD200
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64 (PDB +0x74)
     const C3DVector& GetPosition() const;            // 0x004C73D0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -74,7 +74,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     T* get() const { return ptr; }
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07();
     virtual C3DVector GetViewPosition() const;       // slot 8 (+0x20)
@@ -82,13 +82,13 @@ struct CWorld {
     scoped_ptr<CGameScriptInterface> PGameScriptInterface;   // +0x38
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface.get(); }
 };
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x50];
     float CutOffNoLooking;                           // +0x50
 };
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x0c];

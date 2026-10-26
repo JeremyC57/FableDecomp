@@ -12,13 +12,13 @@ typedef long long i64;
 #define STRICMP strcasecmp
 #endif
 // Token-stream model of CStringParser: every Read* call consumes the next pre-split token.
-struct CCharString {
+class CCharString { public:
     char Text[128];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     bool operator==(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
-struct CStringParser {
+class CStringParser { public:
     const char* const* Tokens; int Count; int Pos;
     CStringParser(const char* const* tokens, int count) : Tokens(tokens), Count(count), Pos(0) {}
     CCharString Next() { return Pos < Count ? CCharString(Tokens[Pos++]) : CCharString(""); }
@@ -28,7 +28,7 @@ struct CStringParser {
     float ReadAsFloat() { return (float)std::atof(Next().Text); }
     bool NextItemIs(const char* name) { if (Pos < Count && std::strcmp(Tokens[Pos], name) == 0) { ++Pos; return true; } return false; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     int Errors; char LastError[160];
     CPersistContext() : Errors(0) { LastError[0] = 0; }
     void Error(const CStringParser&, const char* message) { ++Errors; std::strcpy(LastError, message); }
@@ -49,7 +49,7 @@ struct CStringSet {                                   // set<CCharString> stand-
     void insert(const CCharString& s) { for (int i = 0; i < Size; ++i) if (std::strcmp(Items[i].Text, s.Text) == 0) return; Items[Size++] = s; }
     bool Has(const char* s) const { for (int i = 0; i < Size; ++i) if (std::strcmp(Items[i].Text, s) == 0) return true; return false; }
 };
-struct CFaction { CCharString Name; CStringSet AlliedFactions; CStringSet EnemyFactions; };
+class CFaction { public: CCharString Name; CStringSet AlliedFactions; CStringSet EnemyFactions; };
 static void TransferInString(CPersistContext*, CStringParser* parser, CCharString* value) { *value = parser->ReadAsString(); }   // 0x0040E510 stand-in
 static void TransferIn(CPersistContext& context, CStringParser& parser, CFaction& value)
 {

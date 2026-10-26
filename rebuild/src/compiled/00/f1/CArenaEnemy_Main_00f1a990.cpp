@@ -16,7 +16,7 @@
 //   Compare); the enemy scan walks a user byte offset beside the index (retail SIB base = the enemy array); the crowd
 //   timer read is an inline accessor on the +0x100 timer sub-object.
 long __fastcall Compare(const char* a, const char* b);  // 0x00411570
-struct CCharStringData {
+class CCharStringData { public:
     char* m_pData;                                     // +0x00
     long  m_length;                                    // +0x04
     bool operator==(const CCharStringData& other) const
@@ -28,7 +28,7 @@ struct CCharStringData {
 };
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -47,13 +47,13 @@ struct CCharString {
         return Compare(PStringData->m_pData, text) ? false : true;
     }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CBaseClass {
+class CBaseClass { public:
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual void t000(); virtual void t001();
     virtual CCharString GetDefName() const;   // slot 2 (+0x8)
     virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010();
@@ -73,15 +73,15 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     ~CScriptThing();                                   // 0x004AA840
 };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
-struct CIsThingConscious : CPredicateBase {            // vtable 0x012C2FE8
+class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
+class CIsThingConscious : public CPredicateBase { public:            // vtable 0x012C2FE8
     CScriptThing Thing;
     __forceinline CIsThingConscious(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
     ~CIsThingConscious();                              // 0x00EF7AB0
 };
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

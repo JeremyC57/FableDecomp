@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CScriptThing { void* Data; void* Info; int id; CScriptThing() : Data(0), Info(0), id(0) { } CScriptThing(const CScriptThing& o) : Data(o.Data), Info(o.Info), id(o.id) { } };
-struct CScriptGameResourceObjectScriptedThingBase { void* Data; void* Info; CScriptGameResourceObjectScriptedThingBase() : Data(0), Info(0) { } };
+class CScriptThing { public: void* Data; void* Info; int id; CScriptThing() : Data(0), Info(0), id(0) { } CScriptThing(const CScriptThing& o) : Data(o.Data), Info(o.Info), id(o.id) { } };
+class CScriptGameResourceObjectScriptedThingBase { public: void* Data; void* Info; CScriptGameResourceObjectScriptedThingBase() : Data(0), Info(0) { } };
 struct CTimerManager { long m_next; long NewTimer() { return m_next++; } };
 CTimerManager g_mgr; CTimerManager* g_pScriptTimerManager = &g_mgr;
-struct CTimer { long TimerIndex; CTimer() : TimerIndex(g_pScriptTimerManager->NewTimer()) { } };
+class CTimer { public: long TimerIndex; CTimer() : TimerIndex(g_pScriptTimerManager->NewTimer()) { } };
 struct CScriptOwner { void* m_pInterface; };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     void* Game; CScriptThing Me;
     CEntityScriptBase(const CScriptThing& thing, void* game) : Game(game), Me(thing) { }
 };

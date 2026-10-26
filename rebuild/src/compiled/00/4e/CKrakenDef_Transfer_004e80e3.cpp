@@ -12,12 +12,12 @@ struct CLongVector {                            // retail STLport vector<long>: 
     long* _M_finish;
     long* _M_end_of_storage;
 };
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(float& value);                // 0x00431061
     void Transfer(long& value);                 // 0x00431102
     void Transfer(CLongVector& value);          // 0x00466A47
 };
-struct CKrakenDef {
+class CKrakenDef { public:
     void*         __vftable;                    // +0x00 (CDefClassBase)
     unsigned char _base[0x24];                  // +0x04 .. +0x27
     float HeightOffset;                         // +0x28

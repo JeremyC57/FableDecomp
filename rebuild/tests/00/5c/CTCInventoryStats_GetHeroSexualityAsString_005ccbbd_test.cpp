@@ -1,19 +1,19 @@
 // Behaviour test for 0x005CCBBD CTCInventoryStats::GetHeroSexualityAsString -- symbol chosen per sexuality value.
 #include <stdio.h>
 #include <string.h>
-struct CCharString {
+class CCharString { public:
     char text[64];
     CCharString(const char* s, long = -1) { strcpy(text, s); }
 };
 static CCharString operator+(const CCharString& l, const CCharString& r) { CCharString out(l.text); strcat(out.text, r.text); return out; }
-struct CWideString { char text[64]; };
+class CWideString { public: char text[64]; };
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& sym) { CWideString w; strcpy(w.text, "<"); strcat(w.text, sym.text); strcat(w.text, ">"); return w; }
 };
-struct CMainGameComponent { unsigned char _pad[0x14]; CDataBank* TextBank; };
+class CMainGameComponent { public: unsigned char _pad[0x14]; CDataBank* TextBank; };
 static CMainGameComponent* g_pMainGameComponent;
 enum EHeroSexuality { SEX_UNKNOWN_VALUE = 0, SEX_STRAIGHT_VALUE = 1, SEX_BI_VALUE = 2, SEX_GAY_VALUE = 3 };
-struct CTCInventoryStats { CWideString GetHeroSexualityAsString(long sexuality); };
+class CTCInventoryStats { public: CWideString GetHeroSexualityAsString(long sexuality); };
 CWideString CTCInventoryStats::GetHeroSexualityAsString(long sexuality)
 {
     CDataBank* bank = g_pMainGameComponent->TextBank;

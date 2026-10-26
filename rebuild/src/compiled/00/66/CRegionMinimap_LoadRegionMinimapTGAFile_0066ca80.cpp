@@ -1,5 +1,5 @@
 // CRegionMinimap::LoadRegionMinimapTGAFile  0x0066ca80
-struct CWideString {
+class CWideString { public:
     bool Check();               // 0x999230 : thiscall bool()
 };
 

@@ -4,7 +4,7 @@
 //        larger -> `first = mid + 1 ; len += -1 - half`), returning mid on an exact match; PoolCount is copied into a named
 //        local (kept in the frame) for the final unsigned `first < count` test (`jae` -> -1).
 // Layout: retail CTextureManager (see the landed Uninitialise 0x00A696D0): PoolCount +0x08, PreallocSizes[16] +0x0C.
-struct CTextureManager {
+class CTextureManager { public:
     void*         __vftable;                     // +0x00
     bool          Initialised;                   // +0x04
     unsigned long PoolCount;                     // +0x08

@@ -1,7 +1,7 @@
 #include <stdio.h>
 static int g_calls; static const void* g_this; static int g_arg = -1;
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer { T* Data; CCPPointerInfo* Info;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info;
     T* operator->() const { return Data; } bool IsValid() const { return Data != 0; } };
 class CScriptThing {
 public:

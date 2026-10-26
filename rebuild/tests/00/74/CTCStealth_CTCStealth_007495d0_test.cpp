@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 static int g_ptrDtors = 0, g_baseDtor = 0, g_defDestroyed = 0;
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual ~CTCBase() { ++g_baseDtor; }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
 };
@@ -17,7 +17,7 @@ struct CRetailVector_SDangerThing {
     static void Destroy(SDangerThing* first, SDangerThing* last) { for (; first != last; ++first) first->~SDangerThing(); }
     ~CRetailVector_SDangerThing() { Destroy(m_pFirst, m_pLast); if (m_pFirst) free(m_pFirst); }
 };
-struct CStealthDef {
+class CStealthDef { public:
     virtual ~CStealthDef() { }
     virtual void Destroy() { ++g_defDestroyed; }
     long m_refCount;
@@ -27,7 +27,7 @@ struct CDefPointer_CStealthDef {
     const CStealthDef* m_pDef;
     ~CDefPointer_CStealthDef() { if (m_pDef) { const_cast<CStealthDef*>(m_pDef)->Release(); m_pDef = 0; } }
 };
-struct CTCStealth : CTCBase {
+class CTCStealth : public CTCBase { public:
     bool Viewable, Smellable, Hearable, Sneaking, SneakingToggleSet;
     float DistanceCanBeHeardFrom, MaxSneakingSpeed;
     CDefPointer_CStealthDef PDef;

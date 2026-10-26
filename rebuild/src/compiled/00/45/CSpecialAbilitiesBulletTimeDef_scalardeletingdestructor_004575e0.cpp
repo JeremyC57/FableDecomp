@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesBulletTimeDef { int f0; };
+class CSpecialAbilitiesBulletTimeDef { public: int f0; };
 extern void __fastcall CSpecialAbilitiesBulletTimeDef_dtor(CSpecialAbilitiesBulletTimeDef* def);
 extern void __cdecl eng_operator_delete(void* p);
 

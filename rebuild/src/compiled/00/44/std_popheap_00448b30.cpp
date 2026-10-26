@@ -10,7 +10,7 @@
 // Shape: STLport 4.6 _heap.h __pop_heap verbatim: `*result = *first; __adjust_heap(first, 0, last - first, val, comp);`
 //   (len by the 0x2AAAAAAB reciprocal, 12-byte stride); the pair's implicit assignment inlines CCountedPointer::operator=
 //   (landed 0x00448380 body), and the callee-destroyed `val` is released after the call.
-struct CCPPointerInfo {                                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                                    // CCountedPointer's shared block
     long  RefCount;                                        // +0x0
     void  (__fastcall* DeleteFunc)(void* data);            // +0x4
     void* Data;                                            // +0x8

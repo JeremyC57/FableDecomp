@@ -1,6 +1,6 @@
 // Behaviour test for CEngineSceneGrid::GetCellBoundingBoxAndDrawDistance @ 0x00B919C0
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CAABox { C3DVector Min, Max; };
 struct SDrawRange { float Near, Far; };
 struct Primitive {

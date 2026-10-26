@@ -10,7 +10,7 @@
 // node (colour/parent/left/right + an 0xC-byte pair<const CCharString, pair<long,long>>), the count is zeroed, then
 // _M_empty_initialize() writes colour red (0), root 0, leftmost/rightmost = header. Every header store re-reads the
 // member (the node pointer stores may alias it); the zero register (ebx) is shared with the bool.
-struct CThing;
+class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 
 struct CRetailLess { };
@@ -43,7 +43,7 @@ struct CTCBase_Calls {                                  // CTCBase, 0xc bytes
     CTCBase_Calls(CThing* parent);                      // 0x00686800
 };
 
-struct CTCHeroRememberCrimes : CTCBase_Calls {          // vtable 0x0126980C
+class CTCHeroRememberCrimes : public CTCBase_Calls { public:          // vtable 0x0126980C
     CCrimeMap RegionNamesToCrimeDurationAndFine;        // +0x0C
     bool      HasPaidTheFine;                           // +0x18
     virtual void v00();

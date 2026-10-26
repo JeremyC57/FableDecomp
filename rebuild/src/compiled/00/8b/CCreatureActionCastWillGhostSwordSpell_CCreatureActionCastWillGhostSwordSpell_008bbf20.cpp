@@ -8,28 +8,28 @@
 //   string (constructor pushes scheduled above the vtable store) and the setter.
 // Layout: engine/CCreatureAction_CastWillGhostSwordSpell.h is the PDB build (SpellLevel at +0x12c); the retail
 //   CCombatActionBase is 0x114 bytes, so SpellLevel sits at +0x114 and the header is not used.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);                                           // 0x008574D0
 };
 
-struct CCreatureAction_CastWillGhostSwordSpell : CCombatActionBase {   // vtable 0x0127CE7C
+class CCreatureAction_CastWillGhostSwordSpell : public CCombatActionBase { public:   // vtable 0x0127CE7C
     long SpellLevel;                        // +0x114 (PDB +0x12c)
     virtual void v00();
     CCreatureAction_CastWillGhostSwordSpell(CThingCreatureBase* owner);

@@ -10,7 +10,7 @@ struct CSerial {
     void mC(void* p);
 };
 
-struct CThingPhysicalSwitchDef {
+class CThingPhysicalSwitchDef { public:
     void BaseTransfer(CSerial* s);
 };
 

@@ -14,7 +14,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void WriteLong(long value);                     // 0x00993EB0
 };
 
-struct CSoundBankEntry {
+class CSoundBankEntry { public:
     unsigned long ID;                   // +0x00
     long          Filename;             // +0x04 CDefString index
     long          SymbolFilename;       // +0x08 CDefString index

@@ -32,8 +32,8 @@
 enum EShaderBankNo { ShaderBankFixtureBase = 0 };
 enum EVertexType { VertexTypeFixtureBase = 0 };
 struct _D3DVERTEXELEMENT9;
-struct CWideString;
-struct CShaderRenderManager;
+class CWideString;
+class CShaderRenderManager;
 
 // This ABI view models only the verified native bank vtable prefix. Retail vtable
 // data at 0x0129B54C (CBankFile) and 0x0129D644 (CShaderDataBank) confirms slot 0
@@ -45,7 +45,7 @@ struct CBankFileNativeInterface {
     virtual ~CBankFileNativeInterface();
     virtual bool OpenReadOnly(const CCharString& name, unsigned long flags); // 0x009D06F0
 };
-struct CShaderDataBank : CBankFileNativeInterface {
+class CShaderDataBank : public CBankFileNativeInterface { public:
     unsigned char NativeBankState[0x124];
     CShaderDataBank(); // genuine PDB default constructor: Egor 0x00BDF0C0
 };
@@ -62,7 +62,7 @@ public:
     void SetVertexFormat(EVertexType format);
 private:
     CShaderResource(); // genuine private default constructor: PDB 0x00BCF2F0; retail helper 0x00A5D870
-    friend struct CShaderRenderManager;
+    friend class CShaderRenderManager;
 };
 typedef void (__fastcall *CCPPointerDeleteFunc)(void*);
 struct CCPPointerInfoNative {
@@ -99,11 +99,11 @@ struct CShaderResourcePointer {
         return *this;
     }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CShaderResourcePointer CreateResource();
 };
 extern CShaderRenderManager* g_pShaderRenderManager_01436e14;
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned char NativeBeforeVertexBanks[0x960];
     CShaderDataBank VertexShaderBanks[27];
     unsigned char NativeBetweenBanksAndResources[0x29c0 - 0x960 - 27 * 0x128];

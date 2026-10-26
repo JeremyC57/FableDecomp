@@ -13,13 +13,13 @@
 // LMBOn/MMBOn/RMBOn/Filtering +0x4848, LastUpdateMovement +0x484c, CursorGraphic +0x4858 (CCountedPointer<CSurface>).
 // Shape: only InputManagerDX and the CursorGraphic counted pointer are initialisers (stored right after the vptr);
 // the remaining fields are body assignments in retail's store order around the ClearStoredEvents call.
-struct CInputManagerDX;
-struct CSurface;
+class CInputManagerDX;
+class CSurface;
 
 extern "C" __declspec(dllimport) int __stdcall ShowCursor(int show);   // USER32, IAT 0x01440350
 
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
 
 struct DIDEVICEOBJECTDATA {                // dinput.h, DIRECTINPUT_VERSION 0x0800: 20 bytes
     unsigned long dwOfs;
@@ -31,7 +31,7 @@ struct DIDEVICEOBJECTDATA {                // dinput.h, DIRECTINPUT_VERSION 0x08
 
 struct IDirectInputDevice8W;
 
-template <class T> struct CCountedPointer {   // 8 bytes: object + shared count block
+template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
     T*    Object;
     void* Count;
     CCountedPointer() : Object(0), Count(0) { }
@@ -58,14 +58,14 @@ struct CEngineDisplay {
     CEngineCursorPrimitive* PCursorPrimitive;   // +0x58
 };
 
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char _pad[0x60];
     CEngineDisplay* PDisplay;              // +0x60
 };
 
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
-struct CMouse {                            // vtable 0x0129DBC4, retail 0x3414 bytes
+class CMouse { public:                            // vtable 0x0129DBC4, retail 0x3414 bytes
     virtual void v00();
     unsigned char _events[0x3400];         // +0x04 EventStore (256 CInputEvent)
     long          NoStoredEvents;          // +0x3404

@@ -6,14 +6,14 @@
 
 static char g_log[512];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CAInputProcess { const char* name; void RemoveFromInterface() { Log(name); } };
-struct CTCCreatureModeManager { void RemoveMode(unsigned long m) { char b[16]; std::sprintf(b, "rm%lu", m); Log(b); } };
-struct CThing { bool hasModes; CTCCreatureModeManager* modes;
+class CAInputProcess { public: const char* name; void RemoveFromInterface() { Log(name); } };
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long m) { char b[16]; std::sprintf(b, "rm%lu", m); Log(b); } };
+class CThing { public: bool hasModes; CTCCreatureModeManager* modes;
     bool HasTC(long t) const { return t == 0x31 && hasModes; } CTCCreatureModeManager* GetTC(long) { return modes; } };
-struct CGameCameraManager { void SetAutomaticCameraControl() { Log("auto"); } };
+class CGameCameraManager { public: void SetAutomaticCameraControl() { Log("auto"); } };
 struct CCameraManagerSource { CGameCameraManager* cam; bool GetCameraManager(CGameCameraManager** c) { *c = cam; return cam != 0; } };
-struct CWorld { CCameraManagerSource* CameraSource; };
-struct CPlayer {
+class CWorld { public: CCameraManagerSource* CameraSource; };
+class CPlayer { public:
     CWorld* World;
     CAInputProcess *InputProcessControlCreature_ptr, *InputProcessRightStickLookAround_ptr, *InputProcessStrafe_ptr,
         *InputProcessLightning_ptr, *InputProcessTargetLockRightStickTargetSelect_ptr, *InputProcessBlock_ptr,

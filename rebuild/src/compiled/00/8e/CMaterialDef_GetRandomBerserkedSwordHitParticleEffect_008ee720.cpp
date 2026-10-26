@@ -25,7 +25,7 @@ template <class T> struct vector {
     unsigned long size() const { return _M_finish - _M_start; }
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CMaterialDef {
+class CMaterialDef { public:
     unsigned char _pad[0x80];                      // vptr/base, sounds, rumble, the first four effect vectors
     vector<long> BerserkedSwordHitParticleEffect;
     long GetRandomBerserkedSwordHitParticleEffect();

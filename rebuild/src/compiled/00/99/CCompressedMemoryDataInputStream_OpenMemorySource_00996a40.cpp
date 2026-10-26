@@ -10,13 +10,13 @@
 //   re-tested through the member (`cmp [esi+0x18],0`) before reallocation.
 void* __cdecl operator new[](unsigned int size);   // MSVCR71 import thunk 0x00BFEB22 (the lane <new> lacks it)
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-struct CACompressor {                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
+class CACompressor { public:                                           // landed 0x00A3AEA0 (vtable 0x0129B424)
     virtual ~CACompressor();                                    // slot 0: scalar deleting destructor (`delete` with flag 1)
     unsigned char _body[0x1c - 4];
     CACompressor(long workspaceSize);                           // 0x00A3AEA0
 };
 
-struct CCompressorZlib : CACompressor {                         // vtable 0x01245974, retail 0x58 bytes
+class CCompressorZlib : public CACompressor { public:                         // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
     static long GetWorkspaceSize();                             // 0x00A3A7D0
     void Init();                                                // 0x00A3AA10
@@ -30,7 +30,7 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-struct CDataInputStream : CBaseClassNonCopyable {               // CDataStream/CDataInputStream state (engine/CDataInputStream.h names)
+class CDataInputStream : public CBaseClassNonCopyable { public:               // CDataStream/CDataInputStream state (engine/CDataInputStream.h names)
     unsigned long StreamPos;                                    // +0x04
     long          StreamSize;                                   // +0x08
     void*         CurrentSourcePtr;                             // +0x0c

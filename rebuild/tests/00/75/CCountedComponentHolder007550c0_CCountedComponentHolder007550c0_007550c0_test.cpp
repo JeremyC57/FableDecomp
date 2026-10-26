@@ -1,8 +1,8 @@
 // Behaviour test for 0x007550C0: the holder's destructor releases the counted component at +0x3c (delete at zero) and clears it.
 #include <cstdio>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase { virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_deleted; } unsigned long IVRefCount; };
-struct CAnimComponentBase : CIVCountedPointeeBase { };
+class CIVCountedPointeeBase { public: virtual ~CIVCountedPointeeBase() {} virtual void DeleteThis() { ++g_deleted; } unsigned long IVRefCount; };
+class CAnimComponentBase : public CIVCountedPointeeBase { public: };
 template<class T> class CIVCountedPointer {
 public:
     T* Object;

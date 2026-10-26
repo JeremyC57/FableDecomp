@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;
     void (*destroy)(void*);
     void* object;
@@ -45,7 +45,7 @@ public:
     T& operator*() const { return *object; }
 };
 
-struct C2DBoxI { int m_x0, m_y0, m_x1, m_y1; C2DBoxI() { } };
+class C2DBoxI { public: int m_x0, m_y0, m_x1, m_y1; C2DBoxI() { } };
 #pragma pack(push, 1)
 template <class T, long V> class CBaseSerialise {
 public:

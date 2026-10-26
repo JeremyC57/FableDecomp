@@ -10,7 +10,7 @@ struct Inner {
     char pad2[0x58 - 8];
     bool flag;
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     char pad[0x68];
     Inner* inner;
 };

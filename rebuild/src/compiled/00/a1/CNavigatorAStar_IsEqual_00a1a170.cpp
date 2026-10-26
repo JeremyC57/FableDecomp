@@ -2,11 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A1A170, length 48 bytes.
 // Leaf: IsEqual
 // Shape: `this` is not read, no frame, the operator's al returned straight through, `ret 8`.
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     bool operator==(const CANavQuadTreeNode& other) const;   // 0x00A763F0
 };
 
-struct CNavigatorAStar {
+class CNavigatorAStar { public:
     bool IsEqual(const CANavQuadTreeNode* a, const CANavQuadTreeNode* b);
 };
 

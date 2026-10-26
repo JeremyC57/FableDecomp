@@ -9,18 +9,18 @@
 // manager into a third (ebp; a bare object expression would be evaluated after the arguments), then the eight arguments go right to left: 5, 0.0f, 0.0f, the receiving thing, the creature,
 // its position, 0x10, 0x14. Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4): PReceivingThing (engine-header name,
 // PDB +0xb4) is at +0xa8, so `this` is modelled locally.
-struct C3DVector;
-struct CMessageEvent;
+class C3DVector;
+class CMessageEvent;
 
-struct CThing {                             // engine/CThing.h exists but is not used: only the position accessor is modelled
+class CThing { public:                             // engine/CThing.h exists but is not used: only the position accessor is modelled
     const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
 
-struct CWorld {                             // engine/CWorld.h exists but is not used: only the manager pointer at +0x60 is read
+class CWorld { public:                             // engine/CWorld.h exists but is not used: only the manager pointer at +0x60 is read
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageEventManager;   // +0x60
 };
@@ -31,7 +31,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CCreatureActionBase {                // engine/CCreatureActionBase.h exists but is not used: retail sizeof 0xa8, the PDB build's 0xb4
+class CCreatureActionBase { public:                // engine/CCreatureActionBase.h exists but is not used: retail sizeof 0xa8, the PDB build's 0xb4
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00694D10
@@ -41,7 +41,7 @@ struct CCreatureActionBase {                // engine/CCreatureActionBase.h exis
     CWorld* GetPWorld() const;              // 0x00692940
 };
 
-struct CCreatureAction_GiveItemToThing : CCreatureActionBase {
+class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:
     CBaseIntelligentPointer PReceivingThing;   // +0xa8 CIntelligentPointer<CThing> (PDB +0xb4)
     CBaseIntelligentPointer PItemBeingGiven;   // +0xb0 CIntelligentPointer<CThing> (PDB +0xbc; untouched here)
     virtual void Initialise();

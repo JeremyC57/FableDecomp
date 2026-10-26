@@ -24,7 +24,7 @@ public:
     ~CCharString();                                                              // 0x0099EAE0
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 

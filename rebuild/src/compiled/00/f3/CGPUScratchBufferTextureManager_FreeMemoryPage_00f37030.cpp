@@ -61,7 +61,7 @@ struct CResourcePageVector {
     CResourcePage& operator[](long n) { return *(begin() + n); }
 };
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     virtual void v00();
     unsigned char       Resources[0x0c];         // +0x04
     CResourcePageVector MemoryPages;             // +0x10

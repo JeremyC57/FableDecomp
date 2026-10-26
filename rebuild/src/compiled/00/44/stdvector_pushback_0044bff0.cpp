@@ -1,5 +1,5 @@
-struct CWideString
-{
+class CWideString
+{ public:
     unsigned long value;
     void CopyConstruct_0099ec30(CWideString* source);
 };

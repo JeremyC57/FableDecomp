@@ -4,22 +4,22 @@
 // cardinal spline; the position parameters transform it only when they exist AND hold parameters.
 struct CParticleSystem { int m_id; };
 struct CParticleUpdateParameters { int m_id; };
-struct C3DVector { float X, Y, Z; };
-template<class T> struct CArray {
+class C3DVector { public: float X, Y, Z; };
+template<class T> class CArray { public:
     T* m_pData;
     T* m_pLast;
     T* m_pEnd;
     unsigned long Size() const { return (unsigned long)(m_pLast - m_pData); }
 };
 static int g_order = 0;
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float             Tension;
     bool              EndPointsConnected;
     int               m_positionCalls;
     void GetSplinePosition(C3DVector* out, float pos) { ++m_positionCalls; out->X = pos; out->Y = 0.0f; out->Z = 0.0f; }
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     T* operator->() const { return Data; }

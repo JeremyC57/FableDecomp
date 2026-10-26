@@ -9,13 +9,13 @@
 // component lookup is the landed out-parameter GetInterface template (TC type 0x50 = bit 16 of presence word 2);
 // the AddTC name is a named CCharString local in its own block (built in the dead ppSource slot before the
 // trailing pushes); the result is re-read through ppSource for the null test; `x && f()` with the shared false tail.
-struct CTCBase;
-struct CTCOpinionSource {
-    bool PushNewSourceDef(const struct CCharString& defName);   // 0x00771620
+class CTCBase;
+class CTCOpinionSource { public:
+    bool PushNewSourceDef(const class CCharString& defName);   // 0x00771620
     bool PushNewSourceDef(long defIndex);                      // 0x007714B0
 };
-struct CTCParamsBase;
-struct CCharString {
+class CTCParamsBase;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*>
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present

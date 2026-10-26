@@ -10,7 +10,7 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 
-struct CCreatureActionBase {                    // retail 0xa8 bytes
+class CCreatureActionBase { public:                    // retail 0xa8 bytes
     unsigned char _base[0xa8];
     ~CCreatureActionBase();                     // 0x00693EF0
 };

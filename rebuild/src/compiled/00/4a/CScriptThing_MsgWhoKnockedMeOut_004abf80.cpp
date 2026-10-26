@@ -15,7 +15,7 @@
 // The implementation pointer is read into a local: retail keeps it in eax for the vtable fetch and
 // `mov ecx,eax` (re-reading the member reloads `[ecx+4]` into ecx).
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                       // +0 reference count
 };
 
@@ -23,7 +23,7 @@ struct CBase {
     virtual ~CBase();                        // 0x0099A2E0
 };
 
-struct CScriptThing;
+class CScriptThing;
 
 struct CCountedPointer_CScriptThing {
     CScriptThing* Data;                      // +0
@@ -36,7 +36,7 @@ struct CCountedPointer_CScriptThing {
     }
 };
 
-struct CScriptThing : CBase {
+class CScriptThing : public CBase { public:
     CCountedPointer_CScriptThing PImp;       // +0x04
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}   // 0x004ABE90 (inlined)
     virtual ~CScriptThing();                 // slot 0

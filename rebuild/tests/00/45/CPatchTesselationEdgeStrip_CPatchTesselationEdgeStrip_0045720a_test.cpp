@@ -9,7 +9,7 @@ void __fastcall CSub_dtor(CSub* self) { (void)self; g_sub++; }
 void __cdecl free(void* p) { (void)p; g_del++; }
 void __fastcall CBase_dtor(void* self) { (void)self; g_base++; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad0[0x60];
     void* p60;
     char pad1[0x08];

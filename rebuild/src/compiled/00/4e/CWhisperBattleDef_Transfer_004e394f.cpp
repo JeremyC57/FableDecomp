@@ -2,12 +2,12 @@
 struct CSubA { char b[4]; };
 struct CSubB { char b[4]; };
 
-struct CPersistContext {
+class CPersistContext { public:
     // this=ecx=ctx, member pointer pushed on stack -> __fastcall push;call
     void TransferA(CSubA* m);   // callee at 0x431102
 };
 
-struct CPlayerDef {
+class CPlayerDef { public:
     char pad3c[0x3c];
     CSubA m3c;   // sub-object at +0x3c
     CSubB m40;   // sub-object at +0x40

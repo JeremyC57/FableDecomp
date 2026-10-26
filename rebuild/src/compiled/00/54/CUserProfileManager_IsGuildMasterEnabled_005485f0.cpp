@@ -1,2 +1,2 @@
-struct CUserProfileManager { char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[24-0xd]; unsigned char blo; char pad_hi[216-(24+1)]; unsigned char GuildMasterEnabledNewProfile; char IsGuildMasterEnabled(); };
+class CUserProfileManager { public: char pad[0xc]; unsigned char UseNewProfileValues; char pad_lo[24-0xd]; unsigned char blo; char pad_hi[216-(24+1)]; unsigned char GuildMasterEnabledNewProfile; char IsGuildMasterEnabled(); };
 char CUserProfileManager::IsGuildMasterEnabled(){ if(this->UseNewProfileValues) return this->GuildMasterEnabledNewProfile; return this->blo; }

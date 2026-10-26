@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 #define __declspec(x)
 #endif
 
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CCompositeBlendDesc {                     // Ego_r.pdb, 16 bytes
 public:
     unsigned long TextureIndex;                 // +0x00

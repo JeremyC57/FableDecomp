@@ -4,8 +4,8 @@
 static int g_deleted = 0;
 static void DeleteObject(void*) { ++g_deleted; }
 
-struct CCPPointerInfo { unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
-struct CFaction { int id; };
+class CCPPointerInfo { public: unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CFaction { public: int id; };
 
 struct CCountedPointer {
     CFaction*       Data;

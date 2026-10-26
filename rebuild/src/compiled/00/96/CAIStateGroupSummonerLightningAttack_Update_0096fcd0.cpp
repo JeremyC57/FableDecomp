@@ -17,7 +17,7 @@
 //   (keeps retail's unrotated loop and the in-loop Terminate epilogue); every perform result is a NAMED long (an inline
 //   `== 1` on the call materialises a bool because of the temporary's destructor); the delay and the frame rate are read
 //   into locals before the GetWorldFrame call.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -25,7 +25,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -56,7 +56,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x1c8 - 0x94];
     unsigned char CreatureFlags1c8;             // +0x1c8 bit 1: busy (retail)
     bool IsPerformingAnyAction();               // 0x006622A0
@@ -79,45 +79,45 @@ inline bool IsTargetAlive(const CIntelligentPointerThing& p)
     }
     return false;
 }
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_SummonerSheatheWeapon : CCombatActionBase {
+class CCreatureAction_SummonerSheatheWeapon : public CCombatActionBase { public:
     unsigned char Flag;                         // +0x114
     CCreatureAction_SummonerSheatheWeapon(CThingCreatureBase* owner);   // 0x008CBF00
 };
-struct CCreatureAction_SummonerLightningOrbInto : CCombatActionBase {
+class CCreatureAction_SummonerLightningOrbInto : public CCombatActionBase { public:
     CBaseIntelligentPointer PTarget;            // +0x114
     CCreatureAction_SummonerLightningOrbInto(CThingCreatureBase* owner, CThing* target);   // 0x008CBD90
     ~CCreatureAction_SummonerLightningOrbInto();   // 0x00719C30
 };
-struct CCreatureAction_SummonerLightningOrbOutOfGroundSmash : CCombatActionBase {
+class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActionBase { public:
     CCreatureAction_SummonerLightningOrbOutOfGroundSmash(CThingCreatureBase* owner);   // 0x00970240
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 extern long g_FramesPerSecond;                  // 0x01375550
-struct CSummonerDef {
+class CSummonerDef { public:
     unsigned char _pad[0x38];
     float LightningPreemptiveDelay;             // +0x38
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

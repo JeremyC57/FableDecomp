@@ -1,7 +1,7 @@
 // Behaviour test for 00a77540 (catalog CTCBuyableHouse::MovedInNotification): true when the position list holds an equal C3DVector.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SRandomAccessTag { SRandomAccessTag() {} };
 
 C3DVector* FindPosition(C3DVector* first, C3DVector* last, const C3DVector& value, const SRandomAccessTag&)

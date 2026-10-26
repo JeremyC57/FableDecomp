@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char UseNewProfileValues;
     char pad_d[0x11-0xc-1];

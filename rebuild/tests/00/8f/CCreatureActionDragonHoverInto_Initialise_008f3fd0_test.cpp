@@ -1,9 +1,9 @@
 // Behaviour test for 0x008F3FD0 CCreatureAction_DragonHoverInto::Initialise.
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CTCHover { bool m_bFlag10; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     C3DVector pos, reset; int facingQueries; CTCHover hover;
     const C3DVector& GetPosition_004c73d0() const { return pos; }
     void ResetPosition(const C3DVector& p) { reset = p; }
@@ -11,8 +11,8 @@ struct CThingCreatureBase {
     bool GetInterface(CTCHover** pp, long t) { if (t == 9) { *pp = &hover; return true; } return false; }
 };
 struct CBaseIntelligentPointer { CThingCreatureBase* PItem; CThingCreatureBase* GetPItem() const { return PItem; } };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CCreatureAction_DragonHoverInto {
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CCreatureAction_DragonHoverInto { public:
     CBaseIntelligentPointer PCreature; const char* anim; int baseInit;
     void SetAnimationName(const CCharString& n) { anim = n.t; }
     void Initialise()

@@ -4,7 +4,7 @@
 struct CPresentationIntervalDesc { bool PresentImmediate; bool PresentImmediateIfSyncMissed; long VSyncCount; };
 enum { D3DPRESENT_INTERVAL_ONE = 1, D3DPRESENT_INTERVAL_TWO = 2, D3DPRESENT_INTERVAL_THREE = 4, D3DPRESENT_INTERVAL_FOUR = 8 };
 static const unsigned long D3DPRESENT_INTERVAL_IMMEDIATE = 0x80000000UL;
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned long CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc)
     {
         if (!desc.PresentImmediate) {

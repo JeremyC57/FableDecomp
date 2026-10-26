@@ -25,14 +25,14 @@ struct CSubDef {
     unsigned char _pad08[0x58];
     CSubDefMap    m_map;
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) {}
     ~CDefPointer() { if (m_pDef) { if (--m_pDef->m_refCount == 0) m_pDef->Destroy(); } }
     T* operator->() const { return m_pDef; }
 };
 static CSubDef* g_subDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CSubDef>* out);
 };
 bool CDefClassBase::GetSubDef(CDefPointer<CSubDef>* out)
@@ -44,7 +44,7 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSubDef>* out)
     out->m_pDef = g_subDef;
     return true;
 }
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     unsigned char               _pad00[0x70];
     CDefClassBase*              PBaseDef;
     void* vfunc_71(long key);

@@ -11,7 +11,7 @@
 // Model of list<CCountedPointer<CEventBase> >::remove_if<CPred_EventExpired> @ 0x00812030: erase every event that is
 // ready to die and whose lifetime has run out at the predicate's world frame.
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

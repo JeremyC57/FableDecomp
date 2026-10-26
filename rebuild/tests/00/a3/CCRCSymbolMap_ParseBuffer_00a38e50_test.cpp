@@ -30,13 +30,13 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // before the base constructor), an unused 12-byte token local whose text member is the only constructed part, "enum" a
 // temporary homed in the dead `buffer` slot with the bool taken before its dtor.
 extern "C" void* __cdecl malloc(size_t size);             // 0x00BFEA0E (size_t for the test host)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);      // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                          // 0x0099A2D0
     virtual ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -59,7 +59,7 @@ struct CCommentList {                                      // retail list: the s
 };
 struct CCursorPos { long Line, Column, Offset; };
 typedef void (__cdecl* TErrorCallback)(CCharString*);
-struct CStringParser : CBaseClass {                        // vtable 0x0122D874
+class CStringParser : public CBaseClass { public:                        // vtable 0x0122D874
     char*          String;                                 // +0x04
     unsigned long  BaseLineOffset;                         // +0x08
     CCharString    Filename;                               // +0x0c
@@ -79,7 +79,7 @@ struct SParseToken {                                       // 12 bytes: two POD 
     long        Value;
     CCharString Text;
 };
-struct CCRCSymbolMap {
+class CCRCSymbolMap { public:
     bool ParseEnum(CStringParser* parser, long context);   // 0x00A38670
     bool ParseBuffer(char* buffer, long context);
 };

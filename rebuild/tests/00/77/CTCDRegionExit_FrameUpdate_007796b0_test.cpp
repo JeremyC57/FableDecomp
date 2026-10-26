@@ -4,8 +4,8 @@
 
 static int g_moves = 0, g_starts = 0, g_ends = 0, g_names = 0, g_finishes = 0;
 static const float kEps = 1e-4f;
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector Pos; bool Dead; float Health; };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector Pos; bool Dead; float Health; };
 struct CRegionExit {
     CThing* Parent; CThing* Hero; bool Connected; bool ShowNames; bool GuiBusy;
     bool Active, InLetterBoxMode, WaitingForActivationOrPlayerToLeave, WaitingForPlayerToLeaveMessageArea;

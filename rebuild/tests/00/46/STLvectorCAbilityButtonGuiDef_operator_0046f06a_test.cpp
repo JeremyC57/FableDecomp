@@ -5,7 +5,7 @@
 #include <new>
 
 // Layout: vtable slot0 is a genuine virtual destructor; opaque payload follows vptr. Retail copy assignment and ctor operate on 92-byte CAbilityButtonGuiDef; active header absent; quarantined donor sizeof0x60 conflicts with retail stride0x5c.
-struct CAbilityButtonGuiDef {unsigned data[22];CAbilityButtonGuiDef();CAbilityButtonGuiDef(const CAbilityButtonGuiDef&);virtual ~CAbilityButtonGuiDef();CAbilityButtonGuiDef&operator=(const CAbilityButtonGuiDef&);};
+class CAbilityButtonGuiDef { public:unsigned data[22];CAbilityButtonGuiDef();CAbilityButtonGuiDef(const CAbilityButtonGuiDef&);virtual ~CAbilityButtonGuiDef();CAbilityButtonGuiDef&operator=(const CAbilityButtonGuiDef&);};
 
 namespace std {
 struct __false_type{__false_type(){}};

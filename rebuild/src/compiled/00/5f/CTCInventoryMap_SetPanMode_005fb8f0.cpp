@@ -15,32 +15,32 @@
 //   `centre - offset * scale` through inline C2DVector operators (the scaled pair stays on the FPU stack).
 // Layout: Ego_r.pdb CTCInventoryMap pmap_real +0x1B8 / MapList +0x26C / MapRegions +0x270 / PanMode +0x2A4 sit 0x30 / 0x58 /
 //   0x58 / 0x5C lower in retail (12-byte STLport containers): +0x188, +0x214, +0x218, +0x248.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);       // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank* GameTextBank;                            // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 inline CDataBank* GetGameTextBank() { return g_pMainGameComponent->GameTextBank; }
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
     C2DVector operator*(float s) const { return C2DVector(X * s, Y * s); }
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
 };
-struct CRegion {
+class CRegion { public:
     C2DVector GetNameGraphicOffset() const;             // 0x006BBF40
 };
 struct SRegionNode {                                    // STLport _Rb_tree_node<pair<const long, CRegion> >
@@ -69,7 +69,7 @@ __declspec(noinline) CRegionIterator CRegionMap::find(const long& key)
 }
 #pragma auto_inline(on)
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);    // slot 3 (+0x0C)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -105,7 +105,7 @@ struct CComponent {
     virtual C2DVector GetCentre();                      // slot 146 (+0x248) (name descriptive)
 };
 }
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad00[0x188];
     NUISystem::CComponent* pmap_real;                   // +0x188 (CZoomingComponent*)
     unsigned char _pad18c[0x214 - 0x18c];

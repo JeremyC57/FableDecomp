@@ -10,13 +10,13 @@
 // Shape: generated script code (`if (IsActiveThreadTerminating()) return;` after every statement); the `&&` condition's
 //   name temporaries are guarded by a flag word; the "still active" wait is written `!= false` (test/setne), the
 //   "not loaded" waits `!f()` (neg/sbb/inc), as the landed CQ_GuildTrainingScript::KeepBookcaseExitRemoved 0x00D3C8F0.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing {                                       // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes {vptr, PImp.Data, PImp.Info}
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18) 0x004AA980
     virtual void t007();
@@ -34,7 +34,7 @@ struct CScriptThing {                                       // vtable 0x01238C8C
     void* PImpInfo;
     ~CScriptThing();                                        // 0x004AA840
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -84,7 +84,7 @@ struct CScriptBase {                                        // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                       // 0x00CB7940
 };
-struct CQ_GuildTrainingScript : CScriptBase {
+class CQ_GuildTrainingScript : public CScriptBase { public:
     CGameScriptInterface* Game;                             // +0x40
     void*                 Data;                             // +0x44
     long                  GameState;                        // +0x48

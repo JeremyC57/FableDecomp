@@ -12,12 +12,12 @@
 // Layout: Ego_r.pdb CBriarRose (80 bytes, the CQ_MinionCampScript one): CEntityScriptBase {vptr, Game +4, Me +8},
 //   ParentClass +0x14, PMasterData +0x18, seh_me +0x1c, MyDestination +0x2c, Target +0x38, NumHitsBetweenForcePushes +0x44,
 //   SpeechTimer +0x48, IsPlayingChantAnim +0x4c.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
@@ -45,7 +45,7 @@ template <class T> struct vector {                     // STLport vector (retail
     T& operator[](unsigned int i) { return *(_M_start + i); }
 };
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE583
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -145,7 +145,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C
     virtual void v740(); virtual void v741(); virtual void v742(); virtual void v743(); virtual void v744(); virtual void v745(); virtual void v746(); virtual void v747();
     virtual bool IsThingTurncoated(const CScriptThing& thing) const;   // slot 748 (+0xbb0)
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

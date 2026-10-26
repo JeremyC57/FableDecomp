@@ -13,7 +13,7 @@ template<class T> struct CRetailVector {
     unsigned long size() const { return (unsigned long)(last - first); }
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
-struct C2DBoxF { float a, b, c, d; };
+class C2DBoxF { public: float a, b, c, d; };
 struct CComponent;
 struct CCountedComponentPointer {
     CComponent* m_pObject;

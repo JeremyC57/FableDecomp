@@ -16,40 +16,40 @@
 // the running-quest reset and the hero null test.
 extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad0[0x28];
     long          PlayerID;                            // +0x28
-    struct CThing* GetHeroThing();                     // 0x00487DC0
+    class CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                          // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad0[0x1c];
     CPlayerManager* PlayerManager;                     // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x8e];
     short         MapNumber;                           // +0x8e
     unsigned char _pad90;
     unsigned char Dead : 1;                            // +0x91 bit 0
 };
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     void FrameUpdate();                                // 0x007047D0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     unsigned char _pad0[0x1c];
     long          MainPlayerID;                        // +0x1c
 };
-struct CScriptBase {
+class CScriptBase { public:
     void UpdateScript();                               // 0x00CB8220
 };
 struct CActiveQuest {
@@ -61,7 +61,7 @@ struct CQuestRunState {                                // World+0x38
     unsigned char _pad0[0x28];
     long          CurrentQuestID;                      // +0x28
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad0[0x38];
     CQuestRunState* QuestRunState;                     // +0x38
 };
@@ -95,7 +95,7 @@ struct CActiveQuestPointer {                           // CCountedPointer<CActiv
     void*         Info;
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     void*                    __vftable;                // +0x00
     CGameScriptThingManager* PGameScriptThingManager;  // +0x04
     void*                    PGameScriptThingManager_Info;   // +0x08

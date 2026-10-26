@@ -7,14 +7,14 @@
 // Layout: CThing +0x60 = its physics component (CTCPhysicsBase*), +0x91 bit 0 = dead; CPhysicsCollideResponse CollidePos +0x00,
 //   CollideNormal +0x0c.
 // Shape: the alive test is `(unsigned char)~flags & 1` (8-bit `not al ; test al,1`; without the cast it widens to eax); the parameters are loaded into ebx/edi after the first call.
-struct C3DVector { float X, Y, Z; };
-struct CPhysicsCollideResponse {
+class C3DVector { public: float X, Y, Z; };
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                       // +0x00
     C3DVector CollideNormal;                    // +0x0c
     float     Friction;                         // +0x18
 };
-struct CTCPhysicsBase;
-struct CThing {
+class CTCPhysicsBase;
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -28,7 +28,7 @@ struct CThing {
     unsigned char   _pad64[0x2d];
     unsigned char   Flags91;                    // +0x91 bit 0 = dead
 };
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CBrainDef;
+class CBrainDef;
 
 // The thunk target is not linked in the test; provide a stub so the tail-call
 // resolves. The parity gate only compares the thunk's bytes.

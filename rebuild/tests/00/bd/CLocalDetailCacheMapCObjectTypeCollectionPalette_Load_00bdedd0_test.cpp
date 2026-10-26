@@ -29,7 +29,7 @@
 #pragma intrinsic(memcpy)
 
 
-struct CDataInputStream {
+class CDataInputStream { public:
     void*                m_pVtable;        // +0x00
     unsigned long        m_position;       // +0x04
     long                 m_08;

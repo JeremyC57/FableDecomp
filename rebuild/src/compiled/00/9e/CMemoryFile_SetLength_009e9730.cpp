@@ -9,7 +9,7 @@ struct CRetailVector_009e9730 {
     void resize(unsigned long size, const unsigned char& value);   // 0x00486189
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     unsigned char           _pad00[0xc];
     long                    Length;                // +0x0c
     CRetailVector_009e9730  m_buffer;              // +0x10

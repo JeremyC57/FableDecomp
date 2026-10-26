@@ -4,13 +4,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct CPixelFormat { long Format; void Initialise(long f) { Format = f; } };
-struct CGraphicDataBankInit {
+class CPixelFormat { public: long Format; void Initialise(long f) { Format = f; } };
+class CGraphicDataBankInit { public:
     CPixelFormat NonAlphaFormat, AlphaFormat, InterpolatedAlphaFormat, BooleanAlphaFormat, UncompressedNonAlphaFormat, UncompressedAlphaFormat, SignedFormat;
     bool GenerateMipmaps; unsigned long MaxGraphicWidth, MaxGraphicHeight; bool AllowDither, AllowCompressedTextures, AllowDXT1ForBooleanAlpha;
     CGraphicDataBankInit() { CPixelFormat* f = &NonAlphaFormat; for (int i = 0; i < 7; ++i) f[i].Format = -1; GenerateMipmaps = false; MaxGraphicWidth = MaxGraphicHeight = (unsigned long)-1; AllowDither = false; AllowCompressedTextures = true; AllowDXT1ForBooleanAlpha = false; }
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     bool GetBestCompressedNonAlphaTextureFormat(unsigned long d, CPixelFormat* o) { o->Format = 100 + (long)d; return true; }
     bool GetBestCompressedAlphaTextureFormat(unsigned long d, CPixelFormat* o) { o->Format = 200 + (long)d; return true; }
     bool GetBestCompressedBooleanAlphaTextureFormat(unsigned long d, CPixelFormat* o) { o->Format = 300 + (long)d; return true; }
@@ -19,11 +19,11 @@ struct CDisplayManager {
     bool GetBestSignedTextureFormat(unsigned long d, CPixelFormat* o) { o->Format = 600 + (long)d; return true; }
 };
 static CDisplayManager g_display; static int g_systemCalls;
-struct CSystemManager { CDisplayManager* DisplayManager; };
+class CSystemManager { public: CDisplayManager* DisplayManager; };
 static CSystemManager g_system = { &g_display };
 static CSystemManager* GFGetSystemManager() { ++g_systemCalls; return &g_system; }
 static CGraphicDataBankInit g_created; static char g_bankName[32];
-struct CNewFrontendGameComponent {
+class CNewFrontendGameComponent { public:
     int m_pMenuFont; int m_pFrontEndGraphicBank;
     bool InitialiseGraphics()
     {

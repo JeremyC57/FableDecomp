@@ -2,7 +2,7 @@
 
 struct Target { int marker; };
 
-struct CTCVillage {
+class CTCVillage { public:
     Target* obj;
     int     arg2;
     char    pad8[4];

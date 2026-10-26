@@ -1,4 +1,4 @@
-struct CEngineInternalAttachedPrimitive {
+class CEngineInternalAttachedPrimitive { public:
     void* vftable;
 };
 

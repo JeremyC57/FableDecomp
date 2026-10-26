@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for NCreatureAction::CActionEventRemoveObject::Alloc (retail 0x00695710): the clone factory builds a fresh event with
 // the given activation frame, thing and camera manager, Finished cleared, and an empty Hand string.
-struct CThingCreatureBase { int id; };
-struct CGameCameraManager { int id; };
+class CThingCreatureBase { public: int id; };
+class CGameCameraManager { public: int id; };
 struct CBase {
     int baseBuilt;
     CBase() : baseBuilt(1) { }
@@ -17,7 +17,7 @@ struct CActionEventBase : CBase {
         : CBase(), Finished(false), ActivationFrame(activationFrame), PThing(&thing), PCameraManager(&camera) { }
     virtual CActionEventBase* Alloc(long activationFrame, CThingCreatureBase& thing, CGameCameraManager& camera) const = 0;
 };
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { }
 };

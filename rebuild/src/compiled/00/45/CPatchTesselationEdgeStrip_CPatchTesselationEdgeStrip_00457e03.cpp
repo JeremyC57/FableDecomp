@@ -3,7 +3,7 @@
 // ~CPatchTesselationEdgeStrip
 struct CMember { void* v; void __fastcall dtor(); };
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned char _pad_0x0[0x3c];
     void* p3c;      // +0x3c
     unsigned char _pad_0x40[0x18]; // to 0x58

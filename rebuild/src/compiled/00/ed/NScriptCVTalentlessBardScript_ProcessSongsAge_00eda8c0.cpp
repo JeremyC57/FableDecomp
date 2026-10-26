@@ -13,7 +13,7 @@
 //   tag in a frame byte), the other two call the out-of-line copy; the age compares are `GetHeroAge() > (long)`
 //   (`fild ; fcompp ; test ah,5 ; jp`).
 // Layout (retail): Game +0x40, SongItems +0x68 (landed ProcessSongsQuestComplete 0x00ED9B40).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -38,13 +38,13 @@ struct CCharStringVector {                              // STLport vector<CCharS
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x7d8];
     long BardHeroAgeHigh;                               // +0x7d8
     long BardHeroAgeMedium;                             // +0x7dc
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -66,7 +66,7 @@ struct CGameScriptInterface {
     virtual float GetHeroAge();   // slot 171 (+0x2ac)
 };
 namespace NScript {
-struct CV_TalentlessBardScript {
+class CV_TalentlessBardScript { public:
     unsigned char _base[0x40];
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44

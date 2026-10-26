@@ -6,11 +6,11 @@ static int g_transfers = 0;
 static const char* g_names[4];
 static bool g_defaults[4];
 static bool* g_values[4];
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue)
     { g_names[g_transfers] = name; g_defaults[g_transfers] = defaultValue; g_values[g_transfers] = &value; ++g_transfers; }
 };
-struct CTCDiggingSpot {
+class CTCDiggingSpot { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     bool          Enabled;

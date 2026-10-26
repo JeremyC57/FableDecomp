@@ -23,7 +23,7 @@ public:
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
 
-struct CCharStringData {                           // shared representation block of a CCharString
+class CCharStringData { public:                           // shared representation block of a CCharString
     char*         PData;                           // characters
     unsigned long Length;                          // character count
 };

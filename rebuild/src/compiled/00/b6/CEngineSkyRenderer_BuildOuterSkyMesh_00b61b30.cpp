@@ -11,7 +11,7 @@ extern "C" double __cdecl cos(double);
 extern "C" double __cdecl sin(double);
 #pragma intrinsic(cos, sin)
 
-struct CTVertexColTex1 {
+class CTVertexColTex1 { public:
     float         X;                               // +0x00
     float         Y;                               // +0x04
     float         Z;                               // +0x08
@@ -22,7 +22,7 @@ struct CTVertexColTex1 {
 
 extern float g_SkyCapTexCoordBias;                 // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
 
-struct CEngineSkyRenderer {
+class CEngineSkyRenderer { public:
     void BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned short** indices, long indexOffset, long vertexOffset);
 };
 

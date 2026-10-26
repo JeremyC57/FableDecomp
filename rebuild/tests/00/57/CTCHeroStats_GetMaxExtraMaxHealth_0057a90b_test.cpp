@@ -2,7 +2,7 @@
 // Behaviour of CTCHeroStats::GetMaxExtraMaxHealth (0x0057A90B): reads the cap on bonus hit points through a counted copy of the
 // definition holder's def pointer; the copy's add-ref is undone, and the def is destroyed only by the last release.
 static int g_destroyed = 0;
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     long RefCount;
     float MaxExtraMaxHitPoints;
     void Destroy() { ++g_destroyed; }

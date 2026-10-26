@@ -1,4 +1,4 @@
-struct CCreatureAction_SheatheItemToInventory_ForEnflame {
+class CCreatureAction_SheatheItemToInventory_ForEnflame { public:
     void* vftable;
 };
 

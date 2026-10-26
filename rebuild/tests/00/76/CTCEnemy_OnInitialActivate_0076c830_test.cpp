@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCEnemy { int tag; };
+class CTCEnemy { public: int tag; };
 
 struct GlobalThing {
     int calls;

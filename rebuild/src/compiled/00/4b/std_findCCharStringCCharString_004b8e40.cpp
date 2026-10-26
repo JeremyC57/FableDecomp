@@ -30,7 +30,7 @@ long __fastcall Compare(const char* a, const char* b)   // 0x00411570 (the lande
 }
 #pragma auto_inline(on)
 
-struct CCharStringData {                  // the shared string block
+class CCharStringData { public:                  // the shared string block
     const char*   Chars;                  // +0x00
     unsigned long Length;                 // +0x04
 };

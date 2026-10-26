@@ -3,12 +3,12 @@
 #include <cstring>
 static char g_log[2048];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     bool alive;
     bool IsAlive() const { return alive; }
     const char* GetPosition() const { return "pos"; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool* knows; int knowAfter; int haveAfter; int levelFrames; int frame; bool banditAlive; bool spawned;
     void NewScriptFrame() { Log("frame"); ++frame; if (frame == knowAfter) *knows = true; if (spawned && levelFrames > 0) --levelFrames; }
     bool IsLevelLoaded(const char* l) { return std::strcmp(l, "Greatwood_3") == 0 && levelFrames > 0; }

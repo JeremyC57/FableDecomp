@@ -1,5 +1,5 @@
 // __fastcall this=ecx, flags=stack. base /O2 /Oy (no pragma). family len30 x22 (template 00412b00)
-struct CGPUScratchBufferTextureManager { void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
+class CGPUScratchBufferTextureManager { public: void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
 void __cdecl operator delete(void* p);
 void* CGPUScratchBufferTextureManager::ScalarDeletingDestructor(unsigned flags) {
     this->Dtor();

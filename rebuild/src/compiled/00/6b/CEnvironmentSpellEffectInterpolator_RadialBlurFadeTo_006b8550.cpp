@@ -1,6 +1,6 @@
 // CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const C3DVector& thresholdColour, float length, const C3DVector& intensityColour, float fade, float range, float twist) -- build a radial-blur parameter block (opaque colours from the two vectors) and forward to the block overload
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the parameter block stores Fade before Length (statement order), so VC7.1 loads Fade into eax and Length into edx as retail
-// Leaf: ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABUC3DVector@@M1MMM@Z
+// Leaf: ?RadialBlurFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@@ABVC3DVector@@M1MMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B8550, length 123 bytes (+ int3 padding), `ret 20h`.
 // Callees: CEnvironmentSpellEffectInterpolator::RadialBlurFadeTo(float, ScreenEffectPriority, const CRadialBlurParams&)
 //   @ 0x006B84E0 (landed; `this` in ecx passed straight through). Callers: the six-float overload 0x006B8730 (landed),
@@ -12,11 +12,11 @@
 // Tried: in-place ctor init list (123v123, colours first), assignment from CRGBFloatColour temporaries (185v123), by-value colour ctor (187v123).
 // Shape: the four scalars are stored first, then the two vectors copied dword by dword (intensity, then threshold), the
 //   three argument pushes, and only then the two 1.0f alpha immediates.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
@@ -35,7 +35,7 @@ struct CRadialBlurParams {
     CRadialBlurParams() { }
 };
 
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     void* RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const CRadialBlurParams& params);   // 0x006B84E0
     void* RadialBlurFadeTo(float duration, ScreenEffectPriority priority, const C3DVector& thresholdColour, float length,
                            const C3DVector& intensityColour, float fade, float range, float twist);

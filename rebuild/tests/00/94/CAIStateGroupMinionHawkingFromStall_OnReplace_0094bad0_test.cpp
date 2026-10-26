@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing {};
-struct CThingCreatureBase { int stops; void StopSpeaking() { ++stops; } };
+class CThing { public:};
+class CThingCreatureBase { public: int stops; void StopSpeaking() { ++stops; } };
 static int g_live = 0;
 struct CBaseIntelligentPointer { virtual void v00() {} void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { ++g_live; } CThing* GetPItem() const { return (CThing*)m_pItem; } void SetPItem(CThing* i) { m_pItem = i; } ~CBaseIntelligentPointer() { --g_live; } };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); } CIntelligentPointer& operator=(const CIntelligentPointer& o) { SetPItem(o.GetPItem()); return *this; } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; };
 struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase { long m_hawkState; CIntelligentPointer PStall; CAIStateGroup_MinionHawkingFromStall() : PStall(0) {} virtual void OnReplace(); };
 void CAIStateGroup_MinionHawkingFromStall::OnReplace() { PStall = 0; PBrain->Creature->StopSpeaking(); }
 int main()

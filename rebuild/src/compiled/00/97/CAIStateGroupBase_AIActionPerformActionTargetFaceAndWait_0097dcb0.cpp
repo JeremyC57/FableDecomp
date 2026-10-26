@@ -10,11 +10,11 @@
 //   PAction +0x20, LookAtThing +0x40); brain creature +0x18, creature CurrentAction +0x100 (landed 0x0097DB70).
 // Shape: natural code; the CBrainOutput ctor is plain inline and VC7.1 itself calls it out of line for the first output
 //   and inlines it for the per-tick look output; the counted-pointer assignment from Clone() is the out-of-line operator=.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
@@ -40,14 +40,14 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10();
     virtual CCreatureActionBase* Clone() const; // slot 11 (+0x2c)
     long GetActionID() const;                   // 0x00692620
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* CurrentAction;         // +0x100
     bool IsPerformingAnyAction();               // 0x006622A0
@@ -87,14 +87,14 @@ struct CCountedPointer_CCreatureActionBase {
         m_pCount = 0;
     }
 };
-struct CNavigationInput {
+class CNavigationInput { public:
     float Destination[3];
     float Proximity;
     long  MovementType;
     float Speed;
     CNavigationInput() : Proximity(0.0f), MovementType(0), Speed(0.0f) { }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
@@ -120,7 +120,7 @@ struct CBrainOutput {
         PAction.Reset(0);
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
@@ -128,7 +128,7 @@ struct CAIBrain {
     CThingCreatureBase* Creature;               // +0x18
 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_RUNNING = 4 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_DragonFlight {
+class CCreatureAction_DragonFlight { public:
     void* vftable;
     int destroyed;
 };

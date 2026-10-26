@@ -14,7 +14,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CRGBColour {                                // D3DCOLOR byte order, 4 bytes
+class CRGBColour { public:                                // D3DCOLOR byte order, 4 bytes
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& other);
 };

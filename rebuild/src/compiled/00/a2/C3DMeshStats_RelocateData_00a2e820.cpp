@@ -21,7 +21,7 @@ template <class T> struct CPreAllocVectorMap {   // retail: 16 bytes
 struct C3DHelperPointPair;                 // pair<ulong, C3DHelperPoint>
 struct C3DDummyObjectPair;                 // pair<ulong, C3DDummyObject>
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     void*         MemoryPool;              // +0x04
     long          StatsMemoryHandle;       // +0x08

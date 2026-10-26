@@ -14,7 +14,7 @@
 // clear() tests the node count, erases from the root, then relinks the header (left, root = 0, right) and zeroes the count.
 // Layout: MovementAcceleration +0x180, RelativeMovementAccelerationComponents +0x1a8, RelativeMovementAcceleration +0x1b4,
 // LastRelativeMovementAcceleration +0x1c0.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void Zero() { X = Y = Z = 0.0f; }
 };

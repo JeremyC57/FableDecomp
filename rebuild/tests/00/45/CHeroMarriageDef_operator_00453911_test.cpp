@@ -11,15 +11,15 @@
 // +0x7c/+0xa4/+0xa8/+0xb8/+0xc4), but it is a flattened pack(1) struct with no base class and raw CCharStringData
 // pointers, so the copy cannot be written against it: the class is modelled here with a polymorphic CDefClassBase
 // base (0x25 bytes, out-of-line operator=) and real CCharString members, at the header's offsets and names.
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Copy(const CDefClassBase& other);
     unsigned char _base_0x04[0x18];
     void*         PDefManager;                          // +0x1c
@@ -29,7 +29,7 @@ struct CDefClassBase {
 };
 #pragma pack(pop)
 
-struct CHeroMarriageDef : CDefClassBase {               // vtable 0x01232074
+class CHeroMarriageDef : public CDefClassBase { public:               // vtable 0x01232074
     float       WeddingTimeForScreenToFadeOut;          // +0x28
     float       WeddingTimeForScreenToFadeIn;           // +0x2c
     float       WeddingAfterFrescoTimeOfDayFastForwardTo; // +0x30

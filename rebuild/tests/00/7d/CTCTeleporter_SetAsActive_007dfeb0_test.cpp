@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CTCTeleporter::SetAsActive (0x007DFEB0).
-struct CPlayerGui { int refreshes; long lastFlag; void Refresh(long flag) { ++refreshes; lastFlag = flag; } };
+class CPlayerGui { public: int refreshes; long lastFlag; void Refresh(long flag) { ++refreshes; lastFlag = flag; } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CTCTeleporter {
+class CTCTeleporter { public:
     bool m_teleportActive;
     bool m_teleportActivated;
     void SetAsActive(bool active);

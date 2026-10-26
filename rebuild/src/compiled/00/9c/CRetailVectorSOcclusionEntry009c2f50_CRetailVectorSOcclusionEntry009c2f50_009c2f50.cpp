@@ -9,7 +9,7 @@
 // the base part re-reads `first` and frees it when non-null (SGI _Vector_base). Named by what it does.
 extern "C" void free(void* block);             // 0x00BFEA14
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                            // 0x0099B510
 };

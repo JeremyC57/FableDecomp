@@ -11,12 +11,12 @@
 // Shape: the carrying component comes from the non-const out-parameter GetInterface; the carried thing is used through a
 // const pointer, so its weapon lookup binds the const LowerBound copy. The weapon arm calls SetGroup out of line, while the
 // "STAND" fallback is an inline copy of the same assignment + CRC (the literal's CCharString temporary, one shared null test).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0
     unsigned long m_length;                // +4
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                        // 0x0099EAE0
@@ -27,7 +27,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -49,7 +49,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];        // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;            // +0x44
@@ -84,16 +84,16 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                       // interface type 0x46
+class CTCCarrying { public:                       // interface type 0x46
     CThing* GetThingInPrimarySlot();       // 0x006A1440
 };
 
-struct CTCWeapon {                         // interface type 0x48
+class CTCWeapon { public:                         // interface type 0x48
     const CCharString& GetAnimationGroupName() const;   // 0x005DABE0
 };
 
-struct CTCCreatureModeManager {
-    struct CModeBase {                     // vtable 0x012673CC
+class CTCCreatureModeManager { public:
+    class CModeBase { public:                     // vtable 0x012673CC
         virtual void v00();
         CThing*            ParentThing;               // +0x04
         CAnimFilterOfGroup WeaponBasedFilter;         // +0x08

@@ -15,7 +15,7 @@
 // without one, Degradable parked in bl across the release); `Health < MaxHealth` gives `test ah,5 ; jp`;
 // the navigation flag is read through the member pointer directly (no add-ref); a bool argument loaded from
 // memory is pushed as `xor ecx,ecx ; mov cl` (a long parameter gives movzx); the component comes from the out-parameter GetInterface (`mov eax,[eax+4]` ... `mov ecx,eax`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -24,7 +24,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -45,13 +45,13 @@ struct CThing {
     void SetAsGameStatePersisted_004c9c10(bool persisted);           // 0x004C9C10
 };
 
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned char _pad0[0xb0];
     float MaxHealth;                                        // +0xb0
     float Health;                                           // +0xb4
 };
 
-struct CDegradableDef {
+class CDegradableDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long          RefCount;                                 // +0x04
@@ -63,18 +63,18 @@ struct CDegradableDef {
     void Release() { if (--RefCount == 0) DestroySelf(); }
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object != 0) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
 
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     void SetAsBlockingNavigation(bool blocking);            // 0x00787580
 };
 
-struct CTCDegradableBase {
+class CTCDegradableBase { public:
     virtual void v00();
     CThing*                     ParentThing;                // +0x04 (CTCBase)
     bool                        ToBeRemoved;                // +0x08

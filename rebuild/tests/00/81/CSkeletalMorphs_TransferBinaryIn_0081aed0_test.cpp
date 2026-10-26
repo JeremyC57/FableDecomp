@@ -11,7 +11,7 @@ struct Stream {
     }
     unsigned int ReadULong() { unsigned int value = 0; Read(&value, sizeof(value)); return value; }
 };
-struct CDefString {
+class CDefString { public:
     int TablePos;
     CDefString() : TablePos(-1) {}
     void TransferBinaryIn(Stream* stream) { int v = 0; stream->Read(&v, 4); TablePos = v; }
@@ -28,7 +28,7 @@ struct CMorphVector {
         size = count; _M_start = items;
     }
 };
-struct CSkeletalMorphs {
+class CSkeletalMorphs { public:
     CMorphVector Morphs;
     bool Dirty;
     void TransferBinaryIn(Stream* stream)

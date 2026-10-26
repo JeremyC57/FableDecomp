@@ -11,15 +11,15 @@
 #include <new>
 void* __cdecl operator new[](unsigned int size);
 void __cdecl operator delete[](void* p);
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString ToLower() const;                        // 0x0099ED10
-    struct CWideString ToWideString() const;            // 0x0099E480
+    class CWideString ToWideString() const;            // 0x0099E480
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
@@ -32,7 +32,7 @@ namespace N_0099a300 { struct CBase {
 }; } using N_0099a300::CBase;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-struct CDiskFileWin32 : CBase {                         // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
     virtual void Read(void* data, long size, CASuspendableProcess* process);   // 0x0099A960 (slot 3)

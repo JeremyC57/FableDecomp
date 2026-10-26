@@ -6,7 +6,7 @@
 // PDB CDefinitionManager: InstantiatedDefs at +188, retail +0xa4; CInstantiatedDefInfo: PDef at +0xc; the class info
 // record keeps its def-index array pointer at +8. Shape: the copy constructor's increment is the single
 // `inc dword ptr [ecx+4]` of an inline AddRef helper, scheduled after the pops.
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     long RefCount;                                 // +4
     void AddRef() { ++RefCount; }
@@ -33,7 +33,7 @@ struct CDefClassInfo {
     unsigned long* GlobalIndices;                  // +0x08 the class's instantiated def indices
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char          _pad[0xa4];             // +0x00 vptr, maps, symbol tables, compressed data
     CInstantiatedDefInfo** InstantiatedDefs;       // +0xa4 CArray<CInstantiatedDefInfo*>::m_begin
     CDefClassInfo* FindClassInfo(const unsigned long& classKey);   // 0x009AD2E0

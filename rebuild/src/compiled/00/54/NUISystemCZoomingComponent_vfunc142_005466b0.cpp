@@ -6,7 +6,7 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 struct Vec { float X,Y; Vec() {} Vec(float x,float y):X(x),Y(y) {} Vec(const Vec& v):X(v.X),Y(v.Y) {} Vec operator*(float f) const { return Vec(X*f,Y*f); } Vec& operator-=(const Vec& v) { X-=v.X; Y-=v.Y; return *this; } };
 namespace NUISystem {
-struct CZoomingComponent {
+class CZoomingComponent { public:
  virtual void Slot000() = 0;
  virtual void Slot001() = 0;
  virtual void Slot002() = 0;

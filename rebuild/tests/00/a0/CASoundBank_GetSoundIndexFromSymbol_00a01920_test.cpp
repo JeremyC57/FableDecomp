@@ -1,8 +1,8 @@
 #include <cstdio>
 // Model of CASoundBank::GetSoundIndexFromSymbol @ 0x00A01920: 0 without a table, else the table's lookup result.
-struct CCharString { const char* s; };
+class CCharString { public: const char* s; };
 struct CSoundSymbolTable { long answer; void Lookup(const CCharString& sym, long* index) { if (sym.s[0] == 'A') *index = answer; } };
-struct CASoundBank {
+class CASoundBank { public:
     CSoundSymbolTable* m_pSymbolTable;
     long GetSoundIndexFromSymbol(const CCharString& symbol) { long index = 0; if (m_pSymbolTable != 0) m_pSymbolTable->Lookup(symbol, &index); return index; }
 };

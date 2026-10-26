@@ -4,11 +4,11 @@
 // is the C3DVector overload 0x004FC0C0).
 // Shape: three chained corner comparisons (TL==TR, TR==BL, BL==BR) then BR != 0; each comparison builds two C2DCoordI
 // temporaries (VC7.1 calls the right-hand side first), all in two 8-byte frame slots; one shared `xor al,al` exit.
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
-struct C3DVector { float X, Y, Z; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C3DVector { public: float X, Y, Z; };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

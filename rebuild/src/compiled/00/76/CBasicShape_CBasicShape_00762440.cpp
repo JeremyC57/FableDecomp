@@ -18,10 +18,10 @@ struct CRetailVector {                          // VC6-era Dinkumware vector: fi
 namespace NShape {
 
 struct C3DVector { float X, Y, Z; };
-struct CSubdivisionTriangle;
+class CSubdivisionTriangle;
 template <class T> struct CCountedPointer { T* m_pObject; void* m_pCount; };
 
-struct CShape {                                 // vtable 0x0126A208
+class CShape { public:                                 // vtable 0x0126A208
     virtual void v00();
     long m_id;                                  // +0x04
     CRetailVector<C3DVector> m_points;          // +0x08

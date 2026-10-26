@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CAnimComponentMap {                      // CIVCountedPointeeBase-derived: vptr, intrusive count
+class CAnimComponentMap { public:                      // CIVCountedPointeeBase-derived: vptr, intrusive count
     void* __vftable;                            // +0x00
     long  m_count;                              // +0x04
 };
@@ -27,11 +27,11 @@ struct CIVCountedPointer_CAnimComponentMap {    // CIVCountedPointer<CAnimCompon
     CIVCountedPointer_CAnimComponentMap(const CIVCountedPointer_CAnimComponentMap& x) : Object(x.Object) { if (Object) ++Object->m_count; }
 };
 
-struct CDefString {                             // one word (Ego_r.pdb: TablePos)
+class CDefString { public:                             // one word (Ego_r.pdb: TablePos)
     long TablePos;                              // +0x00
 };
 
-struct CAnimationEntry {                        // 16 bytes
+class CAnimationEntry { public:                        // 16 bytes
     long                                BankIndex;     // +0x00
     CDefString                          AnimName;      // +0x04
     CDefString                          GroupName;     // +0x08

@@ -10,7 +10,7 @@
 #include "engine/CEngineInternalPrimitiveStaticMesh.h"
 #include "engine/C3DMeshInfo.h"
 #include "engine/CEngineSimulationManager.h"
-struct CEngineSimulationBase;
+class CEngineSimulationBase;
 struct SimulationCountInfo {int References;void(__fastcall* Destroy)(CEngineSimulationBase*);CEngineSimulationBase* Object;};
 struct SimulationPointer {
  CEngineSimulationBase* Data;SimulationCountInfo* Info;
@@ -19,7 +19,7 @@ struct SimulationPointer {
 };
 struct SimulationArray {SimulationPointer* Start;SimulationPointer* Finish;SimulationPointer* Limit;bool Empty()const{return Start==Finish;}};
 // Native CIVCountedPointer pointee: actual unsigned IVRefCount and const Delete slot1 (0042D930).
-struct CEnginePrimitiveSimulationInfo:CIVCountedPointeeBase {
+class CEnginePrimitiveSimulationInfo:public CIVCountedPointeeBase { public:
  SimulationArray Simulations;
  CEnginePrimitiveSimulationInfo(); //00B81E00
  void AddSimulation(unsigned int,const SimulationPointer&); //00B82330
@@ -32,9 +32,9 @@ struct SimulationInfoPointer {
 };
 struct CEngineSimulationManager_Methods:CEngineSimulationManager {void AddSimulationInfo(const SimulationInfoPointer&,bool,bool);}; //00B817D0
 extern CEngineSimulationManager_Methods* g_SimulationManager; //01436E68
-struct C3DPrimitive2 {unsigned char Prefix[0x20];SimulationArray ClothPrimitives;unsigned char Tail[0xa0-0x2c];};
-struct C3DMesh2 {unsigned char Prefix[0x90];unsigned int PrimitiveCount;C3DPrimitive2* Primitives;};
-struct CEngineSimulationBase {void* VTable;int RunState;unsigned char SimStepOffset;unsigned char Align[3];};
+class C3DPrimitive2 { public:unsigned char Prefix[0x20];SimulationArray ClothPrimitives;unsigned char Tail[0xa0-0x2c];};
+class C3DMesh2 { public:unsigned char Prefix[0x90];unsigned int PrimitiveCount;C3DPrimitive2* Primitives;};
+class CEngineSimulationBase { public:void* VTable;int RunState;unsigned char SimStepOffset;unsigned char Align[3];};
 struct ClothVector {float X,Y,Z;};struct ClothMatrix {ClothVector X,Y,Z,Position;};
 struct CEngineClothSimulationStaticMesh:CEngineSimulationBase {
  SimulationArray ParticleSims;ClothMatrix CurrentTransform,LastTransform,InverseTransform;const C3DMeshInfo* MeshInfo;unsigned int PrimitiveIndex;CEngineInternalPrimitiveStaticMesh* Owner;

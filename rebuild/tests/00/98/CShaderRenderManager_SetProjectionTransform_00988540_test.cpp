@@ -1,10 +1,10 @@
 // Behaviour test for CShaderRenderManager::SetProjectionTransform (0x00988540): stores the transposed matrix and ORs 0xC990 into the flags.
 #include <cstdio>
-struct CMatrix4x4 {
+class CMatrix4x4 { public:
     float M[4][4];
     void Transpose() { for (int r = 0; r < 4; ++r) for (int c = r + 1; c < 4; ++c) { float t = M[r][c]; M[r][c] = M[c][r]; M[c][r] = t; } }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CMatrix4x4 ProjectionMatrix;
     unsigned long UpdateFlags;
     void SetProjectionTransform(const CMatrix4x4& projection)

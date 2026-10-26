@@ -15,7 +15,7 @@
 // Shape: the mode manager is an uninitialised local filled by the inlined lookup (the miss path reads the slot
 //   and duplicates the tail); the two bools are cleared from one `xor al,al`, +0x63 then +0x62.
 // Model: the retail CTCCombat layout is local (engine/CTCCombat.h still has the PDB's 16-byte vectors: header debt).
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x0040F020 -- the inlined
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -46,13 +46,13 @@ struct CThing {
     }
 };
 
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 
 class CCombatManager;
 class CThingCreatureBase;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 class CTCCombat {                               // retail layout (STLport containers), 0x98 bytes
 public:

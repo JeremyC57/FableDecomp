@@ -11,7 +11,7 @@
  * Modeled __fastcall(this, edx, flags) == __fastcall(this, flags).
  */
 
-struct CLandscapeBackgroundPatch;
+class CLandscapeBackgroundPatch;
 
 /* engine callees (addresses relocation-masked) */
 extern "C" void __fastcall CLensFlareElementDef_dtor(CLandscapeBackgroundPatch* thisptr);

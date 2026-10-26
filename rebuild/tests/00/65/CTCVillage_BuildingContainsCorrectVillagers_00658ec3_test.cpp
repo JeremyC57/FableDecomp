@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThingBuilding;
 struct CBaseIntelligentPointer {
     void* _vfptr;
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     void* _vfptr;
     T*    m_pItem;
     T* GetPItem() const { return m_pItem; }
@@ -36,7 +36,7 @@ struct SVillagerNode {
     SVillagerNode* _M_prev;
     CIntelligentPointer<CThingAICreature> _M_data;
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;
     bool BuildingContainsCorrectVillagers(CThingBuilding* building);

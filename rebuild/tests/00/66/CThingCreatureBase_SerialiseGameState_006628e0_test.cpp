@@ -1,21 +1,21 @@
 // Behaviour test for CThingCreatureBase::SerialiseGameState (0x006628E0)
 #include <cstdio>
-struct CThingCreatureDef { int id; };
+class CThingCreatureDef { public: int id; };
 struct CDefPointerCreature { CThingCreatureDef* m_pObject; };
-struct CPersistContext { long m_mode; };
+class CPersistContext { public: long m_mode; };
 static CThingCreatureDef g_defs[4];
 static bool g_baseResult;
 static int g_fetches;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out) { ++g_fetches; out->m_pObject = &g_defs[index]; return true; }
 };
 static CDefinitionManager g_defManager;
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned short m_defGlobalIndex;
     CDefinitionManager* GetDefinitionManager() const { return &g_defManager; }
     bool SerialiseGameState(CPersistContext&) { return g_baseResult; }
 };
-struct CThingCreatureBase : CThingPhysical {
+class CThingCreatureBase : public CThingPhysical { public:
     CDefPointerCreature m_def;
     bool SerialiseGameState(CPersistContext& context)
     {

@@ -25,7 +25,7 @@ struct CShaderState {
     unsigned char   _pad0c[0x134];
     CConstantVector VSConstants;                   // +0x140
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad000[4];
     CShaderState* State;                           // +0x04
     unsigned char _pad008[0x1e0];

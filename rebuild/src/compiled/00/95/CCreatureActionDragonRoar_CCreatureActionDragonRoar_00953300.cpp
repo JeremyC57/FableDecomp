@@ -7,16 +7,16 @@
 // CCharString temporary (re-addressed with `lea`), the CSoundPair result lands in a frame temporary and is passed by
 // reference to the base; the string dies after the base call, then the vtable is stored. The string is modelled locally
 // so the literal converts implicitly (fable_string.h has no defaulted length). `ret 8`: two arguments.
-struct CThingCreatureBase;
-struct CThing;
+class CThingCreatureBase;
+class CThing;
 
-struct CCharString {                        // one pointer; the default length makes the literal convert implicitly
+class CCharString { public:                        // one pointer; the default length makes the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // a user constructor makes the 8-byte result return through the hidden pointer
+class CSoundPair { public:                         // a user constructor makes the 8-byte result return through the hidden pointer
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -24,12 +24,12 @@ struct CSoundPair {                         // a user constructor makes the 8-by
 
 CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
 };
 
-struct CCreatureAction_DragonRoar : CCombatActionBase {   // vtable 0x012937EC
+class CCreatureAction_DragonRoar : public CCombatActionBase { public:   // vtable 0x012937EC
     virtual void v00();
     CCreatureAction_DragonRoar(CThingCreatureBase* owner, CThing* target);
 };

@@ -10,12 +10,12 @@
 // second induction register at second.DstFileName + 4 (`lea esi,[ebx+0Ch]`, GOTCHAS 00769000/00720310); with every
 // register taken, n counts down in its frame word.
 #include <new>
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;                        // +0x00
     CWideString(const CWideString& other);      // 0x0099B720
 };
-struct CMusicManager {
-    struct CRegisteredMusicEntry {              // 20 bytes
+class CMusicManager { public:
+    class CRegisteredMusicEntry { public:              // 20 bytes
         CWideString SrcFileName;                // +0x00
         CWideString DstFileName;                // +0x04
         float       Gain;                       // +0x08

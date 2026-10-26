@@ -1,4 +1,4 @@
-struct CInputProcessFirstPersonTargeting {
+class CInputProcessFirstPersonTargeting { public:
     void* vftable;
 };
 

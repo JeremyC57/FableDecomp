@@ -9,9 +9,9 @@
 // Shape: as ChangeBarColour 0x00644DF8 (head kept in ecx, null test before the ID compare, the found element leaves the
 // loop) but in a frame-pointer size TU (`optimize("y",off)` + `("s",on)`); the float value is copied as a dword, the two
 // optional limits are stored only when `>= 0.0f` (`fcomp ; test ah,1 ; jne` skips the store when below zero).
-struct CRGBColour { unsigned char R, G, B, A; };
+class CRGBColour { public: unsigned char R, G, B, A; };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: id + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // 8 bytes: id + counted primitive pointer
     long  m_id;
     void* m_pPrimitive;
     void Clear();                                  // 0x0041BE70
@@ -76,7 +76,7 @@ struct CRetailElementList {                        // VC6 Dinkumware list<CCount
     iterator erase(iterator where);                // 0x00655EEA
 };
 
-struct CDrawQuestInfo {                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes)
+class CDrawQuestInfo { public:                            // PDB 116 bytes; retail members 4 lower from GuiMode on (the CDrawBase vector is 12 bytes)
     void*               _vtable;                   // +0x00 CDrawBase vptr
     unsigned char       _base04[0x18 - 4];         // CDrawBase: PlayerGui .. Bank
     bool                Drawing;                   // +0x18

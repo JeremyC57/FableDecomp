@@ -5,12 +5,12 @@ struct SubObjectAt360 {
     int Compute(int a) { return base + a; }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     char pad[0x360];
     SubObjectAt360 sub;
 };
 
-struct CAnimFilterOfGroup {
+class CAnimFilterOfGroup { public:
     int m0;
     int m4;
     int GroupCRC;

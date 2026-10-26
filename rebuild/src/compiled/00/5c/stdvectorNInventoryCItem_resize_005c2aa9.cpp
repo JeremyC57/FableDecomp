@@ -19,7 +19,7 @@
 #pragma optimize("s", on)
 struct SCountBlock;
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     SCountBlock* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) {}
@@ -27,8 +27,8 @@ template <class T> struct CCountedPointer {
 };
 
 namespace NInventory {
-struct CPerItemData;
-struct CItem {
+class CPerItemData;
+class CItem { public:
     long ItemType;                                  // +0x00
     long NumberOfItems;                             // +0x04
     CCountedPointer<CPerItemData> PPerItemData;     // +0x08

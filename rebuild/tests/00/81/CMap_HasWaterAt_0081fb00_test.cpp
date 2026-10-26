@@ -2,35 +2,35 @@
 #include <cmath>
 // Behaviour test for the CMap water queries (0x0081FB00 HasWaterAt, 0x0081FCC0 / 0x0081FEC0 GetWaterSizeZOffsetAt):
 // a 3x3 height map, a theme palette and a definition manager that hands out ref-counted theme defs.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() { }
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C3DVector { float X, Y, Z; };
-struct CHeightMapCell {
+class C3DVector { public: float X, Y, Z; };
+class CHeightMapCell { public:
     float         Height;
     unsigned char EngineThemePaletteIndex[3];
     unsigned char EngineBlend[2];
 };
-struct CHeightMap {
+class CHeightMap { public:
     CHeightMapCell* Cells;
     long SizeX, SizeY;
     CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
 struct CEngineThemePaletteEntry { long DefIndex; long Count; };
-struct CEngineThemeDef {
+class CEngineThemeDef { public:
     long  RefCount;
     long  Destroyed;
     float WaterHeight;
     long  WaterType;
     void DestroySelf() { Destroyed++; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CEngineThemeDef* Defs;
     bool GetDef(long index, CEngineThemeDef** out) { Defs[index].RefCount++; *out = &Defs[index]; return true; }
 };
-struct CMap {
+class CMap { public:
     CDefinitionManager*       DefinitionManager;
     CEngineThemePaletteEntry* EngineThemePalette;
     CHeightMap*               HeightMap;

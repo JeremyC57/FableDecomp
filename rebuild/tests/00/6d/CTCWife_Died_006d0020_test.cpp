@@ -1,9 +1,9 @@
 #include <cstdio>
 static long g_frame = 100;
-struct CThing;
+class CThing;
 struct CStats { CThing* spouse; long state; void SetMarriageState(CThing* s, long st) { spouse = s; state = st; } };
-struct CThing { bool dead; CStats* stats; };
-struct CTCWife {
+class CThing { public: bool dead; CStats* stats; };
+class CTCWife { public:
     CThing* parent; CThing* hero; long married; int unmarried;
     void Unmarry(bool) { ++unmarried; }
     void Died() {

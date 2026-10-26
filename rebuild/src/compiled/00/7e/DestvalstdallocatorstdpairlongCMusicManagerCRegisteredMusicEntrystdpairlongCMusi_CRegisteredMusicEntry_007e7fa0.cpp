@@ -10,11 +10,11 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 
-struct CCreatureActionBase {                    // retail 0xa8 bytes
+class CCreatureActionBase { public:                    // retail 0xa8 bytes
     unsigned char _base[0xa8];
     ~CCreatureActionBase();                     // 0x00693EF0
 };
-struct CWideString {                            // one word: CWideStringData*
+class CWideString { public:                            // one word: CWideStringData*
     void* PStringData;
     ~CWideString();                             // 0x0099B510
 };

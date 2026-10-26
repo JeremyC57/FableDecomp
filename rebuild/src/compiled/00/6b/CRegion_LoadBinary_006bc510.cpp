@@ -11,14 +11,14 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct C2DVector { float X, Y; };
-struct CMemoryDataInputStream {
+class C2DVector { public: float X, Y; };
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -62,13 +62,13 @@ struct CMemoryDataInputStream {
         return value != 0;
     }
 };
-struct CRegionDef;
-template <class T> struct CDefPointer { const T* Def; };
-struct CDefinitionManager {
+class CRegionDef;
+template <class T> class CDefPointer { public: const T* Def; };
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);           // 0x009AD410
     template <class T> bool GetDef(long index, CDefPointer<T>* pointer);   // 0x006BD060
 };
-struct CGameDefinitionManager : CDefinitionManager { static CGameDefinitionManager* __fastcall Get(); };   // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager* __fastcall Get(); };   // 0x0044C6B0
 enum ENavigatorType { NAVIGATOR_TYPE_NONE };
 struct CLongVector {
     long* _M_start;
@@ -104,7 +104,7 @@ struct CExitTextOffsetMap {
     long  _M_compare;
     C2DVector& operator[](const CCharString& key);   // 0x006BD6A0
 };
-struct CRegion {
+class CRegion { public:
     CLongVector          Maps;                      // +0x00
     CNavigatorTypeVector VisMaps;                   // +0x0c
     CCharString          Name;                      // +0x18

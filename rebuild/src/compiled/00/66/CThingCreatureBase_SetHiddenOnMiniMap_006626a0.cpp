@@ -11,7 +11,7 @@ struct CMiniMapManager {
 };
 extern CMiniMapManager* g_pMiniMapManager;      // 0x013B8790
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x15d];
     bool          m_flags15d : 7;               // +0x15d bits 0..6
     bool          m_hiddenOnMiniMap : 1;        // +0x15d bit 7

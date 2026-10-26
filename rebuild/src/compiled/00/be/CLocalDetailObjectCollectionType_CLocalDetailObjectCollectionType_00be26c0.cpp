@@ -10,7 +10,7 @@ struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
 
-struct CLocalDetailObjectCollectionType : CBaseClassNonCopyable {   // vtable 0x012A7D94
+class CLocalDetailObjectCollectionType : public CBaseClassNonCopyable { public:   // vtable 0x012A7D94
     long                      m_4;                 // +0x04
     long                      m_8;                 // +0x08
     long                      m_c;                 // +0x0c

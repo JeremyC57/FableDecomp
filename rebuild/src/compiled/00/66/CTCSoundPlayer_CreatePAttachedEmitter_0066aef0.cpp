@@ -11,8 +11,8 @@
 // non-null and returned either way; both other exits return PAttachedEmitter.GetPItem().
 class CThing;
 class CBaseObject;
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector Position;                                 // +0x0c
 };
@@ -23,13 +23,13 @@ public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
 };
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     static CThingSoundEmitter* __fastcall Create(const C3DVector& position, const CThing* parent, bool unattached);   // 0x008369F0
 };
-struct CWorldMap {
+class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;        // 0x004FC600
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -43,7 +43,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125B1B8
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125B1B8
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
@@ -54,7 +54,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // v
         return *this;
     }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -62,7 +62,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CWorld* GetWorld();                                 // 0x00686A70
 };
-struct CTCSoundPlayer : CTCBase {
+class CTCSoundPlayer : public CTCBase { public:
     CIntelligentPointer<CThingSoundEmitter> PAttachedEmitter;   // +0x0c
     CThingSoundEmitter* CreatePAttachedEmitter(bool unattached);
 };

@@ -1,10 +1,10 @@
 // Behaviour test for 0x00A44EB0 C3DSkeletalMorph::~C3DSkeletalMorph
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0, g_destroyedRange = 0, g_freed = 0, g_baseDtor = 0;
 static void DeleteData(void*) { ++g_deleted; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     ~CCountedPointer()
     {
@@ -13,8 +13,8 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct C3DSkeletalMorph;
-struct C3DSkeletalMorphParameter { float CurrentValue; C3DSkeletalMorph* SkeletalMorph; };
+class C3DSkeletalMorph;
+class C3DSkeletalMorphParameter { public: float CurrentValue; C3DSkeletalMorph* SkeletalMorph; };
 template<class T> struct CRetailArray {
     T* first; T* last; T* end_of_storage;
     unsigned long Size() const { return (unsigned long)(last - first); }
@@ -22,7 +22,7 @@ template<class T> struct CRetailArray {
     ~CRetailArray() { g_destroyedRange += (int)(last - first); if (first != 0) { ++g_freed; std::free(first); } }
 };
 struct CBase { ~CBase() { ++g_baseDtor; } };
-struct C3DSkeletalMorph : CBase {
+class C3DSkeletalMorph : public CBase { public:
     CRetailArray<CCountedPointer<C3DSkeletalMorphParameter> > MorphParameters;
     CCountedPointer<int> CombinedMorph;
     ~C3DSkeletalMorph() { for (unsigned long i = 0; i < MorphParameters.Size(); ++i) MorphParameters[i]->SkeletalMorph = 0; }

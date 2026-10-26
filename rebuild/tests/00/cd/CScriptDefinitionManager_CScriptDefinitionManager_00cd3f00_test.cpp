@@ -2,7 +2,7 @@
 // Behaviour model of 0x00CD3F00: the base definition manager is built over L"script.bin" with the script callback; the
 // file-name temporary is destroyed right after the base constructor.
 static int g_live = 0, g_built = 0; static bool g_sawName = false; static void (*g_callback)(int*) = 0;
-struct CWideString {
+class CWideString { public:
     const unsigned short* m_pData;
     CWideString(const unsigned short* p) : m_pData(p) { ++g_live; }
     CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_live; }
@@ -10,7 +10,7 @@ struct CWideString {
 };
 static void OnScriptDefinitionLoaded(int*) {}
 static const unsigned short kScriptBin[] = { 's','c','r','i','p','t','.','b','i','n',0 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     virtual ~CDefinitionManager() {}
     CDefinitionManager(const CWideString& file, void (*cb)(int*))
     {
@@ -18,7 +18,7 @@ struct CDefinitionManager {
     }
 };
 static CWideString ScriptDefinitionFileName() { return CWideString(kScriptBin); }
-struct CScriptDefinitionManager : CDefinitionManager {
+class CScriptDefinitionManager : public CDefinitionManager { public:
     CScriptDefinitionManager() : CDefinitionManager(ScriptDefinitionFileName(), &OnScriptDefinitionLoaded) {}
 };
 int main()

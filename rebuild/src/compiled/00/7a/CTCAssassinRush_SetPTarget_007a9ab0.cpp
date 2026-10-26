@@ -8,8 +8,8 @@
 // the inline default constructor, pointed at the argument, read back into the member pointer and
 // destroyed; the byte argument is stored after the temporary's destructor, so the temporary lives in
 // an inner scope and the flag assignment follows it.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -26,7 +26,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {      // vtable 0x01238C6C
 };
 
 #pragma pack(push, 1)
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     unsigned char           _pad00[0x0c];                   // vptr, CTCBase
     CBaseIntelligentPointer PTarget;                        // +0x0c
     unsigned char           _pad14[0x9d - 0x14];

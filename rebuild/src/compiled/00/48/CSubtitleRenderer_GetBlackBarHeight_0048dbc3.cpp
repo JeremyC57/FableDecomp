@@ -13,13 +13,13 @@
 #pragma optimize("s", on)
 class CWideString { public: void* PStringData; };
 
-struct C2DVector { float X, Y; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank;
 class CGraphicDataBank;
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                             // +0x00
     float      FadeInTime;                         // +0x04
     float      FadeOutTime;                        // +0x08

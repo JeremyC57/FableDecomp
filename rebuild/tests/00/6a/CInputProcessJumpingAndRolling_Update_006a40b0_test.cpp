@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-struct CInputProcessJumpingAndRolling {
+class CInputProcessJumpingAndRolling { public:
     char pad[0x4c];
     char field_4c;
 };
 
-struct CProcessedInput { int dummy; };
+class CProcessedInput { public: int dummy; };
 
 extern "C" char __stdcall JR_Helper(int a, int b);
 void __fastcall Update(CInputProcessJumpingAndRolling* process, int edx_ignored, CProcessedInput& in);

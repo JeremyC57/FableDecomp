@@ -13,7 +13,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct C3DTriangle2 {                           // 6 bytes (Ego_r.pdb)
+class C3DTriangle2 { public:                           // 6 bytes (Ego_r.pdb)
     unsigned short VertexIndex[3];              // +0x00
 };
 

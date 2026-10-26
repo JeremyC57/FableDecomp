@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CWorld::SetMiniMapEnabled @ 0x009915e0
-struct CWorld {
+class CWorld { public:
     virtual void slot00();          // +0x00
     virtual void slot04();          // +0x04
     virtual void slot08();          // +0x08

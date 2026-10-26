@@ -22,14 +22,14 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right); // 0x0099F690 (hidden result in ecx)
 
-struct CBaseClass {                                    // polymorphic root of the script handles
+class CBaseClass { public:                                    // polymorphic root of the script handles
     CBaseClass();                                      // 0x0099A2D0
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CScriptThing*   PImp_Data;                         // +0x04 (the game-side thing)
     CCPPointerInfo* PImp_Info;                         // +0x08
     ~CScriptThing();                                   // 0x004AA840
@@ -46,7 +46,7 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
     virtual bool IsAlive() const { return PImp_Data && PImp_Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -105,11 +105,11 @@ struct CGameScriptInterface {
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long Index;
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04 .. +0x40
 };

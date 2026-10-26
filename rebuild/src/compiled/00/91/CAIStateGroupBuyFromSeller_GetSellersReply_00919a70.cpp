@@ -12,11 +12,11 @@
 // &IsOfType is then stored right after the first filter constructor, as in retail); `status == 2 ? reply : 0`
 // lowers to `sub eax,2 ; neg ; sbb ; not ; and`.
 // Model: local (engine/CAIStateGroup_BuyFromSeller.h flattens the base).
-struct CThing;
-struct CThingCreatureBase;
-struct CMessageEvent;
+class CThing;
+class CThingCreatureBase;
+class CMessageEvent;
 
-struct CMessageEventFilter_IsOfType {
+class CMessageEventFilter_IsOfType { public:
     long m_type;
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
@@ -26,18 +26,18 @@ struct CMessageEventFilter_IsForThing {
     CMessageEventFilter_IsForThing(CThing* thing);              // 0x006AF290
 };
 
-struct CMessageEventFilter_IsOriginatedByThing {
+class CMessageEventFilter_IsOriginatedByThing { public:
     long m_handle[2];
     CMessageEventFilter_IsOriginatedByThing(CThing* thing);     // 0x006AF2B0
 };
 
-template<class A, class B> struct CFilter_Bind2 {
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 
-template<class A, class B, class C> struct CFilter_Bind3 {
+template<class A, class B, class C> class CFilter_Bind3 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     const C* m_pThird;
@@ -50,14 +50,14 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 
 typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, CMessageEventFilter_IsForThing> CReplyFilter;
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
 enum EAIActionRepeat { AI_ACTION_REPEAT_0, AI_ACTION_REPEAT_1, AI_ACTION_REPEAT_2 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

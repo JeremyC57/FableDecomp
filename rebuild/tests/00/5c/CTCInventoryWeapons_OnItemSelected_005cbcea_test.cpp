@@ -2,7 +2,7 @@
 // Behaviour of CTCInventoryWeapons::vfunc_33 (0x005CBCEA).
 struct CComponent;
 bool IsAugmentation(long defIndex) { return defIndex >= 100; }
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     long m_active; long m_calls;
     void SetThingAsActiveWeapon(long defIndex, CComponent* menuEntry) { ++m_calls; if (!menuEntry) m_active = defIndex; }
     void OnItemSelected(long defIndex, bool* handled)

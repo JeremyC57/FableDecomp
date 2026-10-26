@@ -9,8 +9,8 @@
 // GetAttitude (0x006E3180) into InitialAttitude and, when that differs from CurrentAttitude, makes
 // it current and re-targets the filter (0x0073DFF0) at the new group. Field names from the PDB
 // (struct_layouts_egor.tsv CModeConversation, 52 bytes).
-struct CCharString;
-struct CTCBase;
+class CCharString;
+class CTCBase;
 
 typedef long EConversationAttitude;
 
@@ -23,7 +23,7 @@ struct CInterfaceMap {                       // CVectorMap<ETCInterfaceType, CTC
     SEntry* LowerBound(const long* type) const;    // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];          // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;              // +0x44
@@ -42,11 +42,11 @@ struct CThing {
     }
 };
 
-struct CTCTalk {
+class CTCTalk { public:
     EConversationAttitude GetAttitude();     // 0x006E3180
 };
 
-struct CAnimFilterOfGroup {                  // vtable 0x01267568
+class CAnimFilterOfGroup { public:                  // vtable 0x01267568
     virtual void v00();
     void* Group;                             // +4 CCharString
     unsigned long GroupCRC;                  // +8

@@ -4,7 +4,7 @@
 // Shape: the intelligent pointer's address is kept in edi for both GetPItem calls; `test ch,20h` is bit 13 of the
 // creature's flag word at +0x28; the Finished byte at +0x114 (retail CCombatActionBase is 0x114 bytes) is stored
 // after the branch, between the two pops. PerformAction has no arguments (`ret`).
-struct CBaseObject {
+class CBaseObject { public:
     unsigned char _pad[0x28];
     unsigned long m_flags28;                   // +0x28: bit 13 tested here
     void OnPropertyChanged(long propertyId);   // 0x004C9840
@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;             // 0x00A01B50
 };
 
-struct CCreatureAction_WhisperSommersaultForward {   // CCombatActionBase (0x114 bytes) + Finished
+class CCreatureAction_WhisperSommersaultForward { public:   // CCombatActionBase (0x114 bytes) + Finished
     virtual void v00();
     unsigned char           _pad04[4];         // +0x04
     CBaseIntelligentPointer PCreature;         // +0x08 CIntelligentPointer<CThingCreatureBase>

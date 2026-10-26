@@ -8,13 +8,13 @@
 // no null test) and the hidden pointer is returned.
 // engine/CTCInventoryItem.h flattens the polymorphic CTCBase into a POD: local model, header offsets.
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     float m_v[6];
     CRightHandedSet(const CRightHandedSet& other);
 };
 CRightHandedSet __fastcall GetRHSetFromOrientation(long orientation);    // 0x005D8EF0
 
-struct CInventoryItemDef {
+class CInventoryItemDef { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x04
@@ -31,17 +31,17 @@ struct CInventoryItemDefPointer {                  // CDefPointer<const CInvento
     CInventoryItemDef* operator->() const { return Object; }
 };
 
-struct CThing;
+class CThing;
 struct CTCInventoryBase;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
 };
 
-struct CTCInventoryItem : CTCBase {
+class CTCInventoryItem : public CTCBase { public:
     CInventoryItemDefPointer PDef;                 // +0x0C
     CTCInventoryBase* PInventory;                  // +0x10
     CRightHandedSet GetStartingRightHandedSet();

@@ -10,7 +10,7 @@
 // `mov ecx,[eax+4]`), the key converted into a frame temporary for the const LowerBound.
 // Ego_r.pdb `??RCThingFilter_CanBeHitByEpicSpell@@QBE_NABVCThing@@@Z`. The type compares are `== 0x41 || == 0x40`
 // sharing one `return false`, the true exit is the cold tail shared with the absent case.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -31,7 +31,7 @@ struct CTCMap {                                 // the thing's component map at 
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -49,7 +49,7 @@ struct CTCEpicSpellTarget {                     // component kind 0x31
     CTypedObject* GetObject() const;            // 0x0073A6E0
 };
 
-struct CThingFilter_CanBeHitByEpicSpell {
+class CThingFilter_CanBeHitByEpicSpell { public:
     bool operator()(const CThing& thing) const;
 };
 

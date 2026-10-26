@@ -6,7 +6,7 @@
 // grow through insert(end(), n - size(), CCharString()).
 static int g_ctors = 0, g_dtors = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { ++g_ctors; }
     CCharString(const char* s) : PStringData(s) { ++g_ctors; }

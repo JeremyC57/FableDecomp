@@ -1,13 +1,13 @@
 #include <cstdio>
 #include <cstring>
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
-struct C3DVector { float X, Y, Z; };
-struct CThingCreatureBase { int id; }; struct CThing { int id; };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class C3DVector { public: float X, Y, Z; };
+class CThingCreatureBase { public: int id; }; class CThing { public: int id; };
 static CThingCreatureBase* g_owner; static CThing* g_target; static long g_code; static long g_s0, g_s1;
-struct CCombatActionBase { virtual void v00() {} unsigned char _body[0x114 - 4];
+class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound) { g_owner = owner; g_target = target; g_code = actionCode; g_s0 = sound.FirstSound; g_s1 = sound.LastSound; std::memset(_body, 0, sizeof(_body)); } };
 
-struct CCreatureAction_BalverineCorneredJumpIntoSky : CCombatActionBase { C3DVector* EndPos; virtual void v00() {} CCreatureAction_BalverineCorneredJumpIntoSky(CThingCreatureBase* owner, CThing* target, C3DVector* endPos); };
+class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public: C3DVector* EndPos; virtual void v00() {} CCreatureAction_BalverineCorneredJumpIntoSky(CThingCreatureBase* owner, CThing* target, C3DVector* endPos); };
 CCreatureAction_BalverineCorneredJumpIntoSky::CCreatureAction_BalverineCorneredJumpIntoSky(CThingCreatureBase* owner, CThing* target, C3DVector* endPos) : CCombatActionBase(owner, target, 150, CSoundPair()), EndPos(endPos) { }
 int main()
 {

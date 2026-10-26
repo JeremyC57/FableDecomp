@@ -15,7 +15,7 @@
 //   EAChargeQuickAccessItem 0x00629B10 (engine/ headers carry the PDB's 16-byte containers): CThing interface bitset
 //   +0x20, interface map +0x44, Dead +0x91 bit 0, CThingCreatureBase PCurrentAction +0x100 (PDB +0x11C); CPlayer
 //   PlayerInterface +0xC; CWorld DefinitionManager +0x10.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -29,7 +29,7 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data);   // 0x009F18F0
     __forceinline long ReadLong() { long value; Read(4, &value); return value; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -39,7 +39,7 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -64,7 +64,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void Slot00(); virtual void Slot01(); virtual void Slot02(); virtual void Slot03(); virtual void Slot04();
     virtual void Slot05(); virtual void Slot06(); virtual void Slot07(); virtual void Slot08(); virtual void Slot09();
     virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
@@ -81,7 +81,7 @@ struct CTCInterfaceA7 {                            // interface 0xA7: a flag at 
     bool Blocking;                                 // +0xC
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     virtual void Slot00(); virtual void Slot01(); virtual void Slot02(); virtual void Slot03(); virtual void Slot04();
     virtual void Slot05(); virtual void Slot06(); virtual void Slot07(); virtual void Slot08(); virtual void Slot09();
     virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
@@ -94,7 +94,7 @@ struct CTCInventory {
     void UseQuickAccessItem(long slot);            // 0x005840A6
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void* m_pVtable;
     unsigned char _pad04[0x20 - 4];
     unsigned long UsingComponents[9];              // +0x20 bitset<274>
@@ -129,21 +129,21 @@ struct CThingCreatureBase {
     CCreatureActionBase* PCurrentAction;           // +0x100 CCountedPointer<CCreatureActionBase>::Data
 };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     unsigned long GetNumContextSensitiveSlots() const;   // 0x00445960
 };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0xc];
     CGamePlayerInterface* PlayerInterface;         // +0xC
     bool HasMode(EPlayerMode mode);                // 0x00634160
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x10];
     CDefinitionManager* DefinitionManager;         // +0x10
     CPlayer* GetPlayer(long number);               // 0x0049D850

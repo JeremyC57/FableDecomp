@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CThingHolySite::OnCreate (0x0083BA20): graphic copied, extents set on success.
-struct CEngineGraphic { unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
-struct CThingHolySiteDef { CEngineGraphic Graphic; bool PlayerStart; };
+class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CThingHolySiteDef { public: CEngineGraphic Graphic; bool PlayerStart; };
 struct CGraphicRecord { CEngineGraphic m_graphic; };
-struct CThingHolySite {
+class CThingHolySite { public:
     const CThingHolySiteDef* m_pDef;
     CGraphicRecord* m_pGraphicRecord;
     float m_drawExtentX, m_drawExtentY;

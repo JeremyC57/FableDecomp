@@ -22,25 +22,25 @@ static int fails = 0;
 //   (the shared exit keeps esi/edi pushed at entry; VC7.1 still duplicates the small epilogue into every failure); the
 //   component is fetched with the inline out-param GetInterface before the start/exit test; IsPointInside's result is a
 //   named bool tested in two ifs.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* s);      // 0x0099EFE0
 };
-struct C3DVector { float X, Y, Z; };
-struct CTCBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -67,11 +67,11 @@ struct CThing {
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool IsPointInside(const C3DVector& point) const;   // 0x0082D000
 };
 #pragma pack(push, 1)
-struct CTCOwnedEntity {                         // the interface-0x33 component (owner link at +0x0d)
+class CTCOwnedEntity { public:                         // the interface-0x33 component (owner link at +0x0d)
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer POwner;             // +0x0d
 };

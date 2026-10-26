@@ -33,7 +33,7 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-struct CWorld {
+class CWorld { public:
     long GetFrameNumber();                  // 0x004167C8 (manifest label "GFGetPreMainMemoryUsed" is propagated)
 };
 extern CWorld* g_pWorld;                    // 0x013B86A0

@@ -6,12 +6,12 @@
 #define __fastcall
 #define __forceinline inline
 #endif
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) {}
     ~CCharString() {}
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x4e4];
     float         StatBarOpenTime;
     unsigned char _pad4e8[0x4f0 - 0x4e8];
@@ -23,12 +23,12 @@ struct CPlayerGuiDefPointer { CPlayerGuiDef* Object; };
 CPlayerGuiDefPointer g_PlayerGuiDef = { 0 };
 static CPlayerGuiDef s_def;
 static int s_loads = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out)
     { if (std::strcmp(name.text, "PLAYER_GUI_PC") == 0) { out->Object = &s_def; ++s_loads; } return true; }
 };
 static CDefinitionManager s_mgr;
-struct CGameDefinitionManager { static CDefinitionManager& __fastcall Get() { return s_mgr; } };
+class CGameDefinitionManager { public: static CDefinitionManager& __fastcall Get() { return s_mgr; } };
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 {
     if (!g_PlayerGuiDef.Object) {
@@ -39,12 +39,12 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 }
 enum EPlayerGuiMode { GUI_MODE_CLOSED, GUI_MODE_1, GUI_MODE_OPENING, GUI_MODE_CLOSING };
 namespace NPlayerGui {
-struct CStatBase {                                          // CStatBase (Ego_r.pdb offsets)
+class CStatBase { public:                                          // CStatBase (Ego_r.pdb offsets)
     unsigned char  _pad00[0x28];
     EPlayerGuiMode GuiMode;                                 // +0x28
     float          FadeInTimer;                             // +0x2c
 };
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
     unsigned char  _pad00[0x28];
     EPlayerGuiMode GuiMode;                                 // +0x28
     float          FadeInTimer;                             // +0x2c
@@ -52,12 +52,12 @@ struct CDrawQuestInfo {
     bool           ShowingSecondary;                        // +0x34 (descriptive)
 };
 }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Ptr;
     void* Count;
     T* operator->() const { return Ptr; }
 };
-struct CPlayerGui {                                         // retail-offset view (PDB - 8 / - 0x14)
+class CPlayerGui { public:                                         // retail-offset view (PDB - 8 / - 0x14)
     unsigned char _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;   // +0x1c8 (PDB +0x1d0)
     unsigned char _pad1d0[0x294 - 0x1d0];

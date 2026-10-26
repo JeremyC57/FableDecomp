@@ -12,7 +12,7 @@
 // far vector once (`lea eax,[esi+90h]`, three short-displacement stores) while the near ones keep their
 // disp8 stores; eax is busy with that address, so the zero register is ecx.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
@@ -31,7 +31,7 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CSpecialAbilitiesBattleChargeDef : CParentDefClassBase {
+class CSpecialAbilitiesBattleChargeDef : public CParentDefClassBase { public:
     float                RunSpeed;                              // +0x3c
     CRetailVector<float> DashDistance;                          // +0x40
     CRetailVector<float> RadiusOfEffect;                        // +0x4c

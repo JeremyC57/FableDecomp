@@ -5,7 +5,7 @@
 // CCharString::~CCharString @ 0x0099EAE0 (the manifest label is a propagated _Cons_val symbol). Vtable 0x012A5114 = CEnginePrimitiveManagerStaticMeshes
 // (rtti-vtables.tsv). Shape: the temporary lives in the caller's frame (`lea ecx,[esp+10h]` after the two pushes, `lea ecx,[esp+8]` after), the vtable store is
 // scheduled between the pushes and the string constructor, the +0x314 store is an immediate 1.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -17,7 +17,7 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
     CEnginePrimitiveManagerStaticMeshesBase(long type);   // 0x00B9ECE0
 };
 
-struct CEnginePrimitiveManagerStaticMeshes : CEnginePrimitiveManagerStaticMeshesBase {   // vtable 0x012A5114
+class CEnginePrimitiveManagerStaticMeshes : public CEnginePrimitiveManagerStaticMeshesBase { public:   // vtable 0x012A5114
     long m_count;                                  // +0x314
     virtual void v00();
     void SetName(const CCharString& name);         // 0x00BACD80

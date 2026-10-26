@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
-struct CThingPhysical;
+class C3DVector { public: float x, y, z; };
+class CThingPhysical;
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString(const char* text, long = -1) { std::strcpy(Text, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
@@ -13,7 +13,7 @@ struct CCharString {
 static bool g_baseOk = true;
 static char g_baseName[32];
 static long g_baseIndex = 0;
-struct CThingGameObject {
+class CThingGameObject { public:
     float MaxHealth, Health;
     bool ConstructFromParams(long defIndex, const C3DVector*, long a3, unsigned long a4, const CCharString& scriptName,
                              CThingPhysical* c, CThingPhysical* oc, bool a8)
@@ -22,7 +22,7 @@ struct CThingGameObject {
         return g_baseOk && a3 == -1 && a4 == 0 && c == 0 && oc == 0 && a8;
     }
 };
-struct CThingSwitch : CThingGameObject {
+class CThingSwitch : public CThingGameObject { public:
     float TriggerRadius;
     bool Triggered;
     CCharString TriggerableObjectScriptName;

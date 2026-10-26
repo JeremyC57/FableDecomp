@@ -11,7 +11,7 @@
 //   Each intelligent-pointer assignment is SetPItem(other.GetPItem()); the C3DVector block is copied through lea pointers.
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                // vtable +0, item handle +4
     void* PData;                                // +0x04
@@ -21,13 +21,13 @@ struct CBaseIntelligentPointer {                // vtable +0, item handle +4
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing;
+class CThing;
 
-struct C3DVector { float X, Y, Z; };           // POD (implicit assignment: the pointer-register block copy)
+class C3DVector { public: float X, Y, Z; };           // POD (implicit assignment: the pointer-register block copy)
 
 struct CIcicleData {                            // NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData, Ego_r.pdb 0x24 bytes
     CIntelligentPointer<CThing> PEffect;        // +0x00

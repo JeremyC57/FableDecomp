@@ -14,7 +14,7 @@ struct CBase3DAnimState {
     ~CBase3DAnimState();
 };
 
-struct C3DAnimationBlendState : CBase3DAnimState {
+class C3DAnimationBlendState : public CBase3DAnimState { public:
     // base occupies +0x00..+0x13
     RefCounted* ptr;   // +0x14
     ~C3DAnimationBlendState();

@@ -18,7 +18,7 @@ struct CThingBaseDefBase {
     CThingBaseDefBase& operator=(const CThingBaseDefBase& other);   // 0x00463950
 };
 
-struct CThingBaseDef : CThingBaseDefBase {
+class CThingBaseDef : public CThingBaseDefBase { public:
     long         m_value70;                          // +0x70
     SDefRecord14 m_record74;                         // +0x74
     SDefRecord14 m_record82;                         // +0x82

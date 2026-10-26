@@ -7,9 +7,9 @@
 // Shape: the landed GetInterface out-parameter template; interface 0x10 is bit 16 of bitset word 0
 // (`test dword ptr [ecx+20h],10000h`); the `if (resuming)` arm comes first, the else arm is placed last.
 // VC7.1 declines to inline the template inside the if-arm here, so it is `__forceinline`.
-struct CTCBase;
+class CTCBase;
 
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     void ResumeForCutscene_0066aeb0();                        // 0x0066AEB0
 };
 
@@ -20,7 +20,7 @@ struct CInterfaceMap {                               // CVectorMap<ETCInterfaceT
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     void*               __vftable;                   // +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
@@ -40,11 +40,11 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void PlayCreatureContinuousSounds();             // 0x00665F90
 };
 
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     void vfunc_14(bool resuming);
 };
 

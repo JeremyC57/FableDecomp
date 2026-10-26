@@ -10,14 +10,14 @@ static int g_logn = 0;
 static void Log(int v) { if (g_logn < 64) g_log[g_logn++] = v; }
 static bool LogIs(const int* v, int n) { if (n != g_logn) return false; for (int i = 0; i < n; ++i) if (g_log[i] != v[i]) return false; return true; }
 static void LogReset() { g_logn = 0; }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -39,9 +39,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase;
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase;
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 struct CBaseIntelligentPointer {
@@ -50,7 +50,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCreatureActionBase {                    // retail sizeof 0xa8 (Ego_r.pdb 0xb4)
+class CCreatureActionBase { public:                    // retail sizeof 0xa8 (Ego_r.pdb 0xb4)
     virtual void v00();
     virtual void FinishAction();                // 0x00694430 (slot 4)
     unsigned char           _pad04[4];          // +0x04
@@ -58,7 +58,7 @@ struct CCreatureActionBase {                    // retail sizeof 0xa8 (Ego_r.pdb
     unsigned char           _pad10[0xa8 - 0x10];
     __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
 };
-struct CCombatActionBase : CCreatureActionBase {   // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing>
     unsigned char           _padb0[0x114 - 0xb0];
     ~CCombatActionBase();                       // 0x0062E900

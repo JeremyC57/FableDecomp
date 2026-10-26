@@ -22,12 +22,12 @@ struct CBasicStringChar {                               // CBasicString<char>, 1
     bool          UseFastExtend : 1;                    // +0x0c
     bool operator==(const char* text) const;            // 0x004115A0
 };
-struct CCharStringData {                                // 17 bytes
+class CCharStringData { public:                                // 17 bytes
     CBasicStringChar Data;                              // +0x00
     long             NoRefs;                            // +0x0d
 };
 #pragma pack(pop)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -64,11 +64,11 @@ struct CIsHitEventHitByThingWithScriptName {
     CCharString ScriptName;
     CIsHitEventHitByThingWithScriptName(const CCharString& s) : ScriptName(s) {}
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* First; const B* Second;
     CFilter_Bind2(const A& a, const B& b) : First(&a), Second(&b) {}
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A* First; const B* Second; const C* Third;
     CFilter_Bind3(const A& a, const B& b, const C& c) : First(&a), Second(&b), Third(&c) {}
 };

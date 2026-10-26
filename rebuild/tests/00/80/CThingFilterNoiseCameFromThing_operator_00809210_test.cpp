@@ -1,6 +1,6 @@
 // Behaviour test for 0x00809210
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -39,7 +39,7 @@ struct CTCInterface77 {
     unsigned char _pad[0x28];
     CBaseIntelligentPointer m_source;
 };
-struct CThingFilter_NoiseCameFromThing {
+class CThingFilter_NoiseCameFromThing { public:
     CThing* Thing;
     bool operator()(CThing* thing) const
     {

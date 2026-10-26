@@ -14,7 +14,7 @@
 // Shape: vtable store, the two CDefString inline constructors as `or dword ptr [..],-1` (size-optimised def
 // module, `#pragma optimize("s", on)`), the vector's three zero stores, the package's out-of-line constructor.
 #pragma optimize("s", on)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
     CParentDefClassBase();                      // 0x00430370
@@ -33,17 +33,17 @@ struct CRetailVector {                          // STLport _Vector_base: _M_star
     CRetailVector() : first(0), last(0), end(0) { }
 };
 
-struct CDefString {                             // a def-name table index, -1 = none
+class CDefString { public:                             // a def-name table index, -1 = none
     long m_index;
     CDefString() : m_index(-1) { }
 };
 
-struct CHeroAbilityStatPackage {
+class CHeroAbilityStatPackage { public:
     long m_stats[4];                            // 16 bytes (PDB)
     CHeroAbilityStatPackage();                  // 0x0045324F
 };
 
-struct CMeleeCombatAbilityDef : CParentDefClassBase {
+class CMeleeCombatAbilityDef : public CParentDefClassBase { public:
     CDefString              FlourishAnimName;               // +0x3c
     CDefString              FlourishResponseAnimName;       // +0x40
     float                   DamageMultiplier;               // +0x44

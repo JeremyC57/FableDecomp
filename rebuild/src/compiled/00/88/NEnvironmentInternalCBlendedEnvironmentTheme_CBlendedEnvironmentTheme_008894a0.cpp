@@ -79,7 +79,7 @@ public:
     CArray() { }
 };
 
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
 };
 

@@ -96,7 +96,7 @@ public:
     ~CDefendingCombatantInfo();                           // 0x006F48A0
 };
 
-class CCombatantInfo {                                    // Ego_r.pdb (retail 0x70)
+struct CCombatantInfo {                                    // Ego_r.pdb (retail 0x70)
 public:
     CThingCreatureBase* Parent;                           // +0x00
     CAttackingCombatantInfo AttackerInfo;                 // +0x04

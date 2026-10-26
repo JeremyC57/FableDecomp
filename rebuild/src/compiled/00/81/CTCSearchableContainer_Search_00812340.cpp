@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00812340, length 35 bytes (+13 int3 padding); `ret 4` with the argument unused.
 // Callee: CTCContainerRewardHero::RewardHeroWithItems @ 0x0074EE90 (manifest label; called on `this`). Callers 0x007EB7EF,
 // 0x00844AA7. Label kept from the manifest (unverified).
-struct CTCSearchableContainer {
+class CTCSearchableContainer { public:
     unsigned char _pad[0x1c];
     long NumberOfSearchesRemaining;                 // +0x1c
     void FinishSearch();                     // 0x0074EE90

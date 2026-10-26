@@ -2,7 +2,7 @@
 // Behaviour test: the Coin copy (member-wise, the intelligent pointer re-registered through SetPItem) on a copy of the model.
 class CBaseObject { public: int m_id; };
 static int g_setCalls = 0;
-struct C2DVector { float X, Y; C2DVector() : X(0), Y(0) { } C2DVector(float x, float y) : X(x), Y(y) { } };
+class C2DVector { public: float X, Y; C2DVector() : X(0), Y(0) { } C2DVector(float x, float y) : X(x), Y(y) { } };
 class Mass {
 public:
     C2DVector Pos, Vel; float IMass, APos, AVel, AIMass;

@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct Member28 { int v; };
 
-struct CReplaceableMeshDef {
+class CReplaceableMeshDef { public:
     char basePad[0x28];
     Member28 member;
 };

@@ -19,7 +19,7 @@ static int fails = 0;
 // Shape: GetSubDef and GetPFirstThing are same-TU noinline stand-in bodies that write only their out slot, so neither the
 //          def slot nor `arenaCentre` is address-exposed: the frame packs to 0x10 (the HasScriptName filter temporary reuses
 //          the def slot, the intelligent-pointer temporary the name's) and the zeros are stored as immediates.
-struct CThing;
+class CThing;
 class CCharString {
 public:
     void* PStringData;
@@ -47,7 +47,7 @@ template<class F, class T> __declspec(noinline) bool CThingSearchTools::GetPFirs
     return true;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     static long __fastcall GetFrame();                 // 0x0049D870
 };
 struct CDefVirtual {
@@ -60,11 +60,11 @@ struct CWhisperRetreatDef : CDefVirtual {
     long          HitsBeforeRetreat;                   // +0x3c
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00956590
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -88,7 +88,7 @@ struct CThingCreature {
         return def.m_p;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char   _pad[0x18];
     CThingCreature* PCreature;                         // +0x18
 };
@@ -105,7 +105,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                  // +0x04
     long ScriptAIPriority;                             // +0x08

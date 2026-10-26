@@ -9,12 +9,12 @@
 //   75 GetAllThingsWithScriptName, 111 ShowOnScreenMessage, 425 OpenDoor, 426 CloseDoor.
 // Layout: Ego_r.pdb CTestGateSwitch (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, GatesOpen +0x1c. Model types as the landed CCOE_Victim::Main 0x00E6B400.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing();                           // slot 0 (out of line 0x004AA840)
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008();
     virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016();
@@ -43,7 +43,7 @@ template <class T> struct vector {                     // STLport vector (retail
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int i) { return *(_M_start + i); }
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;               // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -105,7 +105,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (ghi
     virtual void OpenDoor(const CScriptThing& door) const;    // slot 425 (+0x6a4)
     virtual void CloseDoor(const CScriptThing& door) const;   // slot 426 (+0x6a8)
 };
-struct CEntityScriptBase {                             // retail 0x14 bytes
+class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

@@ -13,7 +13,7 @@ public:
 };
 class CSharerParserOutputToDebugContextMapper {
 public:
-    class CEntry {
+    struct CEntry {
     public:
         long        SrcLine;
         long        DestLine;

@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
-struct CCharString { char* m_pData; CCharString(const char* text, long length = -1) : m_pData((char*)text) { (void)length; } ~CCharString() { m_pData = 0; } };
+class CThingCreatureBase { public: int id; };
+class CCharString { public: char* m_pData; CCharString(const char* text, long length = -1) : m_pData((char*)text) { (void)length; } ~CCharString() { m_pData = 0; } };
 
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.m_pData, "BRIAR_ROSE_DRAIN_LIFE_DEF") == 0 ? 777 : -1; } };
-struct CGameDefinitionManager : CDefinitionManager { static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; } };
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name) { return std::strcmp(name.m_pData, "BRIAR_ROSE_DRAIN_LIFE_DEF") == 0 ? 777 : -1; } };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; } };
 static CThingCreatureBase* g_owner; static CThingCreatureBase* g_target; static long g_level, g_def;
-struct CCreatureAction_CastWillDrainLifeSpell { virtual void v00() {} unsigned char _body[0x11c - 4];
+class CCreatureAction_CastWillDrainLifeSpell { public: virtual void v00() {} unsigned char _body[0x11c - 4];
     CCreatureAction_CastWillDrainLifeSpell(CThingCreatureBase* owner, CThingCreatureBase* target, long level, long defIndex) { g_owner = owner; g_target = target; g_level = level; g_def = defIndex; } };
-struct CCreatureAction_BriarRoseConcentrateOutof : CCreatureAction_CastWillDrainLifeSpell { virtual void v00() {} CCreatureAction_BriarRoseConcentrateOutof(CThingCreatureBase* owner, CThingCreatureBase* target); };
+class CCreatureAction_BriarRoseConcentrateOutof : public CCreatureAction_CastWillDrainLifeSpell { public: virtual void v00() {} CCreatureAction_BriarRoseConcentrateOutof(CThingCreatureBase* owner, CThingCreatureBase* target); };
 CCreatureAction_BriarRoseConcentrateOutof::CCreatureAction_BriarRoseConcentrateOutof(CThingCreatureBase* owner, CThingCreatureBase* target)
     : CCreatureAction_CastWillDrainLifeSpell(owner, target, 0, CGameDefinitionManager::Get().GetDefGlobalIndexFromName("BRIAR_ROSE_DRAIN_LIFE_DEF")) { }
 int main()

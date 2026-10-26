@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTavernTable {
+class CTCTavernTable { public:
     void* vftable;
     int destroyed;
 };

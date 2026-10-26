@@ -10,12 +10,12 @@
 // Shape: the day/time tests go through inline helpers that take the CScriptDef pointer, so pGlobalScriptDef is loaded into
 //   callee-saved edi before each interface call; that makes edi a saved register, which VC then also uses as the zero
 //   register (xor edi,edi) for the flag word, the first-run stores and the phase-0 test.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -107,7 +107,7 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void v648(); virtual void v649(); virtual void v650();
     virtual long GetDayOfWeek() const;   // slot 651 (+0xa2c) GetDayOfWeek
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x9d4];
     long EscortTraderQuestDayInterval;                  // +0x9d4
     long EscortTraderQuestStartTime;                    // +0x9d8
@@ -124,7 +124,7 @@ struct CScriptBase {                                    // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940
 };
-struct CQR_EscortTrader_ManagerScript : CScriptBase {
+class CQR_EscortTrader_ManagerScript : public CScriptBase { public:
     CGameScriptInterface*    Game;                      // +0x40
     void*                    Data;                      // +0x44
     long                     OrchardFarmTraderEscortCounter;   // +0x48

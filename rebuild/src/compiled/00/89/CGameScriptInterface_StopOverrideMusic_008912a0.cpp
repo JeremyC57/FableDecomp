@@ -11,8 +11,8 @@ struct CGSIStopMusicCodeSection
 
 struct CGSIStopMusicEvent;
 
-struct CWorld
-{
+class CWorld
+{ public:
     unsigned char pad00[0x6c];
     CGSIStopMusicEvent* event;
 };

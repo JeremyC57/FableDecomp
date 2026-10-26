@@ -5,7 +5,7 @@
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30 (landed) for the strings at +0x0c and +0x14.
 // Shape: the two byte arguments loaded first (al, dl), `this` parked in esi, members stored in declaration order
 // (+0 flag, +4 long, +8 flag, +0x0c string copy, +0x10 long, +0x14 string copy), `mov eax,esi ; ret 18h`.
-struct CCharString {                           // 4 bytes: the shared buffer pointer
+class CCharString { public:                           // 4 bytes: the shared buffer pointer
     void* data;
     CCharString(const CCharString& other);     // 0x0099EC30
 };

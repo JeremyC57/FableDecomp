@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     long longs[8]; int nl; float floats[8]; int nf; unsigned char bytes[64]; unsigned long nb; const void* lastData;
     CDataOutputStream() : nl(0), nf(0), nb(0), lastData(0) {}
     virtual void WriteData(const void* data, unsigned long size) { lastData = data; std::memcpy(bytes + nb, data, size); nb += size; }
@@ -10,13 +10,13 @@ struct CDataOutputStream {
     void WriteFloat(float v) { floats[nf++] = v; }
 };
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetList() const { return Size() > 0 ? m_begin : (const T*)this; }
 };
 
-struct COpinionSet {
+class COpinionSet { public:
     CArray<float> OpinionValues;
     void TransferBinaryOut(CDataOutputStream& stream) const
     {

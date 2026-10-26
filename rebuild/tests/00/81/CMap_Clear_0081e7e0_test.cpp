@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct CGameMapGrid { long m_cleared; void Clear() { ++m_cleared; } };
-struct CMap { unsigned char _pad[0x1a7c]; CGameMapGrid* m_pGameMapGrid; unsigned char _pad1a80[0x280]; long m_1d00; long m_1d04; long m_1d08;
+class CMap { public: unsigned char _pad[0x1a7c]; CGameMapGrid* m_pGameMapGrid; unsigned char _pad1a80[0x280]; long m_1d00; long m_1d04; long m_1d08;
     void Clear() { m_pGameMapGrid->Clear(); m_1d00 = 0; m_1d04 = 0; m_1d08 = 0; } };
 
 int main()

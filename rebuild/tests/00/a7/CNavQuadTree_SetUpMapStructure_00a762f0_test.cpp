@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 #pragma pack(push, 1)
-struct CNavQuadTree { long m_0; bool m_setUp; unsigned char _pad[2]; float m_originX, m_originY; unsigned char _p; long m_10, m_14, m_18; void SetUpMapStructure(const C2DVector* o, long a, long b, long c) { m_originX = o->X; m_originY = o->Y; m_10 = a; m_14 = b; m_18 = c; m_setUp = true; } };
+class CNavQuadTree { public: long m_0; bool m_setUp; unsigned char _pad[2]; float m_originX, m_originY; unsigned char _p; long m_10, m_14, m_18; void SetUpMapStructure(const C2DVector* o, long a, long b, long c) { m_originX = o->X; m_originY = o->Y; m_10 = a; m_14 = b; m_18 = c; m_setUp = true; } };
 #pragma pack(pop)
 
 int main() {

@@ -2,7 +2,7 @@
 // empty and SetUpTransitionCamera receives the arguments in the retail order.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }

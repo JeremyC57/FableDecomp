@@ -1,4 +1,4 @@
-struct CCharString {
+class CCharString { public:
   char* p;
   CCharString* ctorB(const char* s, int n);
   CCharString* StatGetClassTypeName_8();

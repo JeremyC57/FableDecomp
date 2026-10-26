@@ -10,7 +10,7 @@
 //        element count re-evaluated per iteration (`sar eax,3 ; jl`; the entry test `1 < size()` folds to
 //        `and eax,0FFFFFFF8h ; cmp eax,8 ; jle`).
 
-struct CThingPlayerCreature {
+class CThingPlayerCreature { public:
     bool LearnAbility(long ability, bool notify, long level, bool silent);   // 0x006AC690
 };
 

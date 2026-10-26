@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for C3DVector::operator== (0x00c256f0): exact component-wise comparison.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     int operator==(const C3DVector& o) const { return x == o.x && y == o.y && z == o.z; }
 };

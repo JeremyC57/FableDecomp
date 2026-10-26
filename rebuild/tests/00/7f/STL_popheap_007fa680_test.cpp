@@ -13,7 +13,7 @@
 class CThing { public: int Score; };
 class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 
-struct CVectorCompare_BestForTargeting {                        // Ego_r.pdb, 44 bytes
+class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00
     C3DVector PreferredLine;                                    // +0x0c
     float     AngleCompare;                                     // +0x18

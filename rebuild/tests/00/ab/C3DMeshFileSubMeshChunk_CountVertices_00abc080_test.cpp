@@ -4,7 +4,7 @@
 #define __fastcall
 #endif
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;
     CCountedPointer() : Object(0), Count(0) {}
     CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count) { if (Count) ++Count->references; }
@@ -20,15 +20,15 @@ template<class T> struct CCountedPointer {
     }
     T* operator->() const { return Object; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
 };
-struct C3DVertex2 { unsigned char _body[0x20]; };
-struct C3DMeshFileVerticesChunk { CArray<C3DVertex2> VertexList; };
+class C3DVertex2 { public: unsigned char _body[0x20]; };
+class C3DMeshFileVerticesChunk { public: CArray<C3DVertex2> VertexList; };
 
 static C3DMeshFileVerticesChunk g_vertices[2]; static SCountBlock g_vertexBlocks[2];
-struct C3DMeshFilePrimitiveChunk {
+class C3DMeshFilePrimitiveChunk { public:
     int Index;
     CCountedPointer<const C3DMeshFileVerticesChunk> PeekVertices() const
     {
@@ -38,7 +38,7 @@ struct C3DMeshFilePrimitiveChunk {
 };
 static C3DMeshFilePrimitiveChunk g_prims[2]; static SCountBlock g_primBlocks[2];
 
-struct C3DMeshFileSubMeshChunk {
+class C3DMeshFileSubMeshChunk { public:
     CCountedPointer<const C3DMeshFilePrimitiveChunk> Make(int i) const
     {
         CCountedPointer<const C3DMeshFilePrimitiveChunk> p;

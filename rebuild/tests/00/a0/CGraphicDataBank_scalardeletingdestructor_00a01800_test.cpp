@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void* vftable;
     int destroyed;
 };

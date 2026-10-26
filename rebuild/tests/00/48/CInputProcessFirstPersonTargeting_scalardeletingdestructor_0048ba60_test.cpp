@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessFirstPersonTargeting {
+class CInputProcessFirstPersonTargeting { public:
     void* vftable;
     int destroyed;
 };

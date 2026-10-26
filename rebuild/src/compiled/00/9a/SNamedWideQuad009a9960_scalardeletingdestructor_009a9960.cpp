@@ -3,11 +3,11 @@
 // Leaf: ??_GSNamedWideQuad_009a9960@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: `this` in edi, the member record in esi, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                // 0x0099B510
 };

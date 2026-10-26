@@ -14,7 +14,7 @@ struct CBase_0062f3b0 {
     CBase_0062f3b0(const CBase_0062f3b0& other);     // 0x0062F3B0
 };
 
-struct CCreatureAction_ForcePushOutOf : CBase_0062f3b0 {
+class CCreatureAction_ForcePushOutOf : public CBase_0062f3b0 { public:
     unsigned char m_extra;                          // +0x114
     virtual void v00();                    // own vtable; copy constructor implicit
     CBase_0062f3b0* Clone();

@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of CPSCEmitterGeneric::ChangeOrientation: XZ -> (x, -z, y), YZ -> (-z, x, y), else unchanged.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct Emitter {
     unsigned int Flags;                                  // bit 26 OrientationXZ, bit 27 OrientationYZ
     C3DVector ChangeOrientation(const C3DVector& v) const

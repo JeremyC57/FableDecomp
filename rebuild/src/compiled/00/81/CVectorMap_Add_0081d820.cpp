@@ -16,7 +16,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 enum EHeroMorphType { EHeroMorphType_FIRST };
 
-struct CDefString {                                         // 4 bytes: the definition string-table position
+class CDefString { public:                                         // 4 bytes: the definition string-table position
     long TablePos;
 };
 
@@ -75,7 +75,7 @@ public:
     }
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

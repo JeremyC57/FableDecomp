@@ -74,15 +74,15 @@ template <> short* vector<short>::copy(short* first, short* last, short* result)
         : (short*)((char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first));
 }
 
-struct CTransitionBlendAlpha {
+class CTransitionBlendAlpha { public:
     float CurrentAlpha;
     float LastAlpha;
     CTransitionBlendAlpha(float current, float last) : CurrentAlpha(current), LastAlpha(last) { }
 };
-struct CWorld {
+class CWorld { public:
     static unsigned long GetWorldFrame();          // 0x0049D870
 };
-struct CAnimateThing;
+class CAnimateThing;
 struct CAnimSetInitData {
     long           UpdateMode;                     // +0x00
     unsigned char  Type;                           // +0x04
@@ -99,7 +99,7 @@ struct CAnimSetInitData {
     long           Priority;                       // +0x28
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     long          UpdateMode;                      // +0x00
     vector<short> Anims;                           // +0x04
     vector<CTransitionBlendAlpha> InternalAlphas;  // +0x10

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_live = 0;
-struct CMinimapData {
+class CMinimapData { public:
     int Tag;
     unsigned char _rest[0x38];
     CMinimapData(int t) : Tag(t) { ++g_live; }

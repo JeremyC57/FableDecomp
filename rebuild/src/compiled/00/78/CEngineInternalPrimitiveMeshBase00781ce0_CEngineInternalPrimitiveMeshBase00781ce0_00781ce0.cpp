@@ -32,7 +32,7 @@ struct CIVCountedPointer_Mesh {
     }
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad[0x0c];                      // +0x00 .. +0x0c
     ~CTCBase();                                    // 0x00686830
 };

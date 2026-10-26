@@ -9,7 +9,7 @@ static int WideEqual(const wchar_t* a, const wchar_t* b)
     return *a == *b;
 }
 
-struct CWideString {
+class CWideString { public:
     const wchar_t* Text;
     explicit CWideString(const wchar_t* t) : Text(t) { }
     CWideString(const CWideString& o) : Text(o.Text) { }
@@ -22,12 +22,12 @@ struct CCounted {
     CCounted() : RefCount(1), Releases(0) { }
     void ReleaseReference() { if (--RefCount == 0) ++Releases; }
 };
-struct CAugmentationDef : CCounted { unsigned long Name; };
-struct CThingBaseDef : CCounted {
+class CAugmentationDef : public CCounted { public: unsigned long Name; };
+class CThingBaseDef : public CCounted { public:
     CAugmentationDef* Sub;
     bool GetSubDef(CAugmentationDef** out) const { ++Sub->RefCount; *out = Sub; return true; }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }

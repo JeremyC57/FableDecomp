@@ -64,11 +64,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAIBrain;
-struct CCharStringData;
+class CAIBrain;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04
     unsigned char    ScriptAIPriority[0x4];                  // +0x08 EScriptAIPriority
@@ -101,14 +101,14 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -183,7 +183,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 struct CBaseObjectPointer;
 
 #pragma pack(push, 1)
-struct CBaseObject {
+class CBaseObject { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CBaseObjectPointer* IntelligentPointer;                  // +0x04
 };
@@ -205,12 +205,12 @@ FABLE_STATIC_ASSERT(offsetof(CBaseObject, IntelligentPointer) == 0x4);
 // native track-node layout on a 64-bit host. This view addresses the native
 // successor after its real CBaseObject prefix, using member access on the host.
 // The 0xc8-byte native state is independent of sizeof(CThing) in the donor view.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) { X=v.X; Y=v.Y; Z=v.Z; }
 };
-struct CThingTrackNode : CBaseObject {
+class CThingTrackNode : public CBaseObject { public:
     unsigned char _nativeThingAndTrackState[0xd0 - 8];
     CThingTrackNode* m_pNextNode;
     const C3DVector* GetPosition() const; // 0x006a4d00
@@ -227,7 +227,7 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item); // 0x00a01b90
     CBaseIntelligentPointer(); // 0x00a01b10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() : CBaseIntelligentPointer() {}
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(item))); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)

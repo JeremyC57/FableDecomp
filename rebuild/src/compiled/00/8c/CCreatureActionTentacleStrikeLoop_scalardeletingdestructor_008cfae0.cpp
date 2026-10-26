@@ -1,4 +1,4 @@
-struct CCreatureAction_TentacleStrikeLoop {
+class CCreatureAction_TentacleStrikeLoop { public:
     void* vftable;
 };
 

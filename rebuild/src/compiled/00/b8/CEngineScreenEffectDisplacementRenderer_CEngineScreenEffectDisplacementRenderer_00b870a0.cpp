@@ -28,11 +28,11 @@ struct CBase {
     virtual ~CBase(); // 0x0099A2E0; native vtable is 0x01231710
 };
 
-struct CShaderBase {
+class CShaderBase { public:
     virtual ~CShaderBase(); // native shared shader-base vtable is 0x0129A030
 };
 
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual ~CEngineComponent();
     void** GlobalPointerAddress;
     bool RenderEnabled;
@@ -41,7 +41,7 @@ struct CEngineComponent {
 };
 
 struct IDirect3DSurface9;
-struct CSurface {
+class CSurface { public:
     IDirect3DSurface9* PD3DSurface;
     unsigned int AllocationSource;
     void* PAllocatedMemory;
@@ -49,7 +49,7 @@ struct CSurface {
     virtual ~CSurface(); // vtable 0x0122F84C; slot 0 destructor
 };
 
-struct CRenderTarget : CBase {
+class CRenderTarget : public CBase { public:
     CSurface RenderToSurface;
     CSurface ZBufferSurface;
 };
@@ -70,12 +70,12 @@ struct CPixelShaderData {
     int* ConstIndices;
 };
 
-struct CVertexShader : CShaderBase {
+class CVertexShader : public CShaderBase { public:
     CVertexShaderData* Data;
     virtual ~CVertexShader();
 };
 
-struct CPixelShader : CShaderBase {
+class CPixelShader : public CShaderBase { public:
     CPixelShaderData* Data;
     virtual ~CPixelShader();
 };
@@ -85,9 +85,9 @@ struct CRenderStateCaptureBlockRetail {
     unsigned char Padding;
 };
 
-struct CEngineInit; // No quarantined header exists; the exact PDB constructor signature uses this reference.
+class CEngineInit; // No quarantined header exists; the exact PDB constructor signature uses this reference.
 
-struct CGPUScratchBufferTextureManager {
+class CGPUScratchBufferTextureManager { public:
     void FreeMemoryPage(long page); // 0x00F37030
 };
 
@@ -100,7 +100,7 @@ extern CEngineGlobal_01436e98* g_pEngine_01436e98; // 0x01436E98
 extern CRenderStateManagerCaptureView* g_pRenderStateManager_013cb508; // 0x013CB508
 extern void FABLE_FASTCALL RestoreCaptureBlockAtGlobal(CRenderStateManagerCaptureView* manager); // 0x00A05840
 
-struct CEngineScreenEffectDisplacementRenderer : CEngineComponent {
+class CEngineScreenEffectDisplacementRenderer : public CEngineComponent { public:
     void* BackBufferCopyTexture;                         // native +0x0c
     void* DisplacementTexture;                           // native +0x10
     fable_i32 DisplacementTextureHandle;                 // native +0x14

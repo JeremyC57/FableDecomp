@@ -11,27 +11,27 @@
 // BankIndex, BlendMode, BlendOp, UseZBuffer +0x38) built inline from the out-of-line ctor's 0x004C3090 parameters.
 // Shape: C3DVector needs a user copy ctor (X and Z reach the second vector from the FPU, Y as an integer copy);
 // CRGBColour's copy ctor assigns R, G, B, A in that order (byte loads +2, +1, +3, +0); `dy*dy + dx*dx` order.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& c) { R = c.R; G = c.G; B = c.B; A = c.A; }
 };
-struct CEnginePrimitiveThemeChannelDesc {
+class CEnginePrimitiveThemeChannelDesc { public:
     bool Channel0, Channel1, Channel2;
     CEnginePrimitiveThemeChannelDesc() : Channel0(false), Channel1(false), Channel2(false) {}
 };
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long                             Type;              // +0x00
     long                             InterpolationSet;  // +0x04
     CEnginePrimitiveThemeChannelDesc ThemeChannelDesc;  // +0x08
     CEnginePrimitive(long type, long interpolation) : Type(type), InterpolationSet(interpolation) {}
 };
-struct CEnginePrimitiveLine : CEnginePrimitive {
+class CEnginePrimitiveLine : public CEnginePrimitive { public:
     C3DVector     Start;                                // +0x0c
     C3DVector     End;                                  // +0x18
     CRGBColour    Colour;                               // +0x24
@@ -45,18 +45,18 @@ struct CEnginePrimitiveLine : CEnginePrimitive {
         : CEnginePrimitive(6, interpolation), Start(start), End(end), Colour(colour), Width(width), BankIndex(flags),
           BlendMode(blendMode), BlendOp(blendOp), UseZBuffer(depthTest) {}
 };
-struct CIEngine {
+class CIEngine { public:
 #define VF(n) virtual void v##n();
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15) VF(16)
     VF(17) VF(18) VF(19)
 #undef VF
     virtual void SetPrimitive(const CEnginePrimitive& primitive);   // slot 20 (+0x50)
 };
-struct CEnginePrimitivePrepareInfo {
+class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine* Engine;                                   // +0x34
 };
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector* position);  // 0x0063A300
 };
 void __fastcall EditorDrawSphere(CEnginePrimitivePrepareInfo* info, const C3DVector& position, const C3DVector& colour, float radius);   // 0x00875FB0

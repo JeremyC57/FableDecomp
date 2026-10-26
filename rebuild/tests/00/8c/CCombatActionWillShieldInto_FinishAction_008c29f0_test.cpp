@@ -1,11 +1,11 @@
 // Behaviour test for 0x008C29F0 CCombatAction_WillShieldInto::FinishAction: seconds -> frames (-1 stays forever), shield action handed over.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString(const char* t, long) : text(t) { }
 };
-struct CCreatureActionBase { long level; long frames; float health; };
+class CCreatureActionBase { public: long level; long frames; float health; };
 struct CThingCreatureBase_Calls {
     CCreatureActionBase last; int sets;
     CThingCreatureBase_Calls() : sets(0) { }
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Calls* m_pItem;
     CThingCreatureBase_Calls* GetPItem() const { return m_pItem; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
     void FinishAction() { }
 };

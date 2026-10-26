@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CWideString { const char* path; };
+class CWideString { public: const char* path; };
 static const char* g_existing = "a.bin";
 static unsigned char g_disk[5] = { 1, 2, 3, 4, 5 };
 static CWideString ConvertPathToFullPath(const CWideString& p) { return p; }
@@ -10,7 +10,7 @@ static bool PathExists(const CWideString& p) { return std::strcmp(p.path, g_exis
 
 struct CBBBFileException { int Type; };
 
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     long Length;
     CDiskFileWin32(const CWideString&, int, unsigned long) : Length(5) {}
     void Read(void* buffer, long size, void*) { std::memcpy(buffer, g_disk, size); }
@@ -23,7 +23,7 @@ struct CBuffer {
     void resize(unsigned long n, const unsigned char& v) { for (unsigned long i = count; i < n; ++i) data[i] = v; count = n; }
 };
 
-struct CMemoryFile {
+class CMemoryFile { public:
     long AccessType, Position, Length; CBuffer DataBuffer; bool Opened; CWideString Pathname;
     void Open(const CWideString& pathname, int access, unsigned long flags);
 };

@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CCrateStackDef
-{
+class CCrateStackDef
+{ public:
     void* vftable;
 };
 extern void* const g_CCrateStackDef_vftable;

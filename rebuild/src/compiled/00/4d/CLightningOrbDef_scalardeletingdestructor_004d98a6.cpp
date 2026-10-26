@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CLightningOrbDef
-{
+class CLightningOrbDef
+{ public:
     void* vftable;
 };
 extern void* const g_CLightningOrbDef_vftable;

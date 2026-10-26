@@ -14,7 +14,7 @@
 //          (straight into ecx before the hidden-pointer push); the 2D length is `X*X + Y*Y` (Y squared first) against
 //          the squared constant; the degenerate arm assigns a C3DVector(1, 0, 0) temporary; the orientation pair is
 //          built in one temporary (up (0,0,1) as immediates, forward copied).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -45,7 +45,7 @@ struct CPhysicsBody {                       // the thing's physics body at +0x60
     virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual void SetOrientation(const CUpForward& orientation);   // slot 75 (+0x12c)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -67,19 +67,19 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31
+class CTCCreatureModeManager { public:             // interface type 0x31
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
 extern const float g_fMinFacingLength;      // 0x0129BA3C (1e-4)
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void FinishAction();            // 0x00859A20
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

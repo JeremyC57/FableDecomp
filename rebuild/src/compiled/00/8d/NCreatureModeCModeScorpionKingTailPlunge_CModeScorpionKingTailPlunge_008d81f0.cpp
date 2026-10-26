@@ -10,16 +10,16 @@
 // SpikeDecisionTime +0x74, Filter +0x78, PCreature +0x84, bRecovering +0x88, TargetPos +0x89, TailPos +0x95,
 // PTarget +0xa1 (CIntelligentPointer<CThingCreatureBase>), PTailEmitter +0xa9, PDustTrailEmitter +0xb1.
 // Shape: as the Jack-of-Blades flash mode: PCreature is the ctor-body assignment stored last from ebx.
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -31,7 +31,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -78,7 +78,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();
@@ -86,7 +86,7 @@ struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c
     CModeStandBase(CThing* thing);         // 0x00861E00
 };
 
-template <class T> struct CDefPointer {    // 4 bytes: the def object (add-ref'd by its owner)
+template <class T> class CDefPointer { public:    // 4 bytes: the def object (add-ref'd by its owner)
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -94,7 +94,7 @@ template <class T> struct CDefPointer {    // 4 bytes: the def object (add-ref'd
 namespace NCreatureMode {
 
 #pragma pack(push, 1)
-struct CModeScorpionKingTailPlunge : CModeStandBase {   // vtable 0x01285860
+class CModeScorpionKingTailPlunge : public CModeStandBase { public:   // vtable 0x01285860
     long                         RecoveryCount;      // +0x68
     long                         DustEffectCounter;  // +0x6c
     long                         SpikeTime;          // +0x70

@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -39,7 +39,7 @@ struct CThing {
     }
 };
 enum { APPEARANCE_MODIFIER_CLOTHING = 2 };
-struct CTCHeroAttachableAppearanceModifiers {        // interface type 0x5E
+class CTCHeroAttachableAppearanceModifiers { public:        // interface type 0x5E
     void RemoveAllAppearanceModifiers(long type);    // 0x00706640
     void AddAppearanceModifierWithReplace(long defIndex);   // 0x00706950
 };

@@ -21,20 +21,20 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 extern "C" void __cdecl free(void* block);                                         // 0x00BFEA14
 void __cdecl operator delete(void* block);                                          // 0x00BFE9BC
 
-struct CEngineMap;
+class CEngineMap;
 
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void OnGameMapUnloaded();                       // 0x00BDBFF0
     void OnMapVisibilityChanged(bool visible);      // 0x00BDC3C0
 };
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     void OnMapVisibilityChanged(bool visible);      // 0x00BDE160
 };
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void DeleteMap(CEngineMap* map);                // 0x00B67180
 };
 extern CEngineLandscapeRenderer* g_pLandscapeRenderer;   // 0x01436EA8
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     void DeleteMap(CEngineMap* map);                // 0x00B59840
 };
 extern CEngineLocalDetailGenerator* g_pLocalDetailGenerator;   // 0x01436E88
@@ -45,8 +45,8 @@ struct _List_node {
     CEngineMap* _M_data;
 };
 
-struct CIDrawMap;
-struct CEngineMap {
+class CIDrawMap;
+class CEngineMap { public:
     CEngineLandscapeMap*  LandscapeMap;             // +0x00
     CLocalDetailCacheMap* LocalDetailCacheMap;      // +0x04
     CIDrawMap*            GameMap;                  // +0x08
@@ -63,7 +63,7 @@ struct CEngineMap {
     }
 };
 
-template <class T> struct CArray {                  // retail CArray (STLport vector): begin, end, capacity
+template <class T> class CArray { public:                  // retail CArray (STLport vector): begin, end, capacity
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -91,7 +91,7 @@ template <class T> struct CArray {                  // retail CArray (STLport ve
     }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*               _vptr;                      // +0x00
     unsigned char       _pad04[0x8];
     short*              Map;                        // +0x0c

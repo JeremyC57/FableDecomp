@@ -11,7 +11,7 @@
 // copy through the strength-reduced i+0x10 pointer); the callee destroys it. The same element layout as this chunk's
 // __uninitialized_copy 0x00A458B0 (same TU).
 // Label correction: the catalog's `_Copy_impl<NPlayerTargeting::CTargetPoint*,...>` is propagated.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);       // 0x0099EC30
 };

@@ -4,7 +4,7 @@ struct CDragonActionBaseDef {
     unsigned char _pad_0x0[0x28];
     void Copy(const CDragonActionBaseDef* other);
 };
-struct CDragonActionHoverDef : public CDragonActionBaseDef {
+class CDragonActionHoverDef : public CDragonActionBaseDef { public:
     int field28;
 };
 void CDragonActionBaseDef::Copy(const CDragonActionBaseDef* other)

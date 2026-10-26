@@ -5,7 +5,7 @@
 // Retail CTCOpinionSource offsets (the PDB's 16-byte DefStack vector is 12 bytes in retail): VirtualDeed +0x80,
 // VirtualDeedID +0x84, FrameToClearVirtualDeed +0x88 (unsigned: `jb`).
 // Shape: the frame getter is a plain static call (no GetWorld, nothing in ecx); the deed is cleared with an immediate store.
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 
@@ -14,7 +14,7 @@ struct CTCBase_00771290 {
     unsigned char _pad04[8];
 };
 
-struct CTCOpinionSource : CTCBase_00771290 {
+class CTCOpinionSource : public CTCBase_00771290 { public:
     unsigned char _pad0c[0x80 - 0x0c];
     long          VirtualDeed;                      // +0x80 EOpinionDeedType
     long          VirtualDeedID;                    // +0x84

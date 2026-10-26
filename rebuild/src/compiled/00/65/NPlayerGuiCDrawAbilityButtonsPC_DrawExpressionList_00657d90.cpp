@@ -10,7 +10,7 @@
 //   declared before `long drawn = firstRow - 1;`; the wrap-round scan runs on its own counter.
 // Leaf: DrawExpressionList
 #include <stdlib.h>
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
 struct ComponentEntry { long Type; void* Component; };
 struct ComponentMap {
@@ -22,8 +22,8 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char State[0x45]; unsigned char LifeFlags;
 };
-struct CPlayer { CThingNative* GetCharacterThing(); };          // 0x00487DD0
-struct CPlayerManager;
+class CPlayer { public: CThingNative* GetCharacterThing(); };          // 0x00487DD0
+class CPlayerManager;
 struct LongVector {
     long *Start, *Finish, *End;
     LongVector() : Start(0), Finish(0), End(0) {}
@@ -31,7 +31,7 @@ struct LongVector {
     unsigned int size() const { return Finish - Start; }
     long& operator[](unsigned int i) { return Start[i]; }
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { LAYER_44 = 0x44, LAYER_45 = 0x45 };
 
 struct CTCHeroExpressions {

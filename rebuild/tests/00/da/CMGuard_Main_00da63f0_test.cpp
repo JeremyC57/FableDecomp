@@ -1,16 +1,16 @@
 // Behaviour test for CM_Guard::Main @ 0x00DA63F0 (copy of the model with a scripted stub world).
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 static int g_frame, g_doneAt, g_nearAt, g_created, g_removed;
 static char g_tag[8];
-struct CScriptThing {
+class CScriptThing { public:
     bool real; C3DVector pos;
     const C3DVector& GetPos() const { return pos; }
     void SetDataString(const char* t) { if (real) std::strcpy(g_tag, t); }
 };
 static bool IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float d) { return d == 20.0f && g_frame >= g_nearAt; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frame; }
     const CScriptThing& GetHero() const { return hero; }

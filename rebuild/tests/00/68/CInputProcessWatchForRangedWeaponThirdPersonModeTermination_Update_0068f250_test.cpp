@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CThing { unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; static CThing g_thing; static CThing* g_hero = &g_thing; static long g_removed[4]; static long g_nRemoved = 0;
-struct CPlayer { CThing* GetHeroCreature() { std::strcat(g_seq, "h"); return g_hero; } void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_removed[g_nRemoved++] = mode; } };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; static CThing g_thing; static CThing* g_hero = &g_thing; static long g_removed[4]; static long g_nRemoved = 0;
+class CPlayer { public: CThing* GetHeroCreature() { std::strcat(g_seq, "h"); return g_hero; } void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_removed[g_nRemoved++] = mode; } };
 static bool g_strafing = false; static bool IsThingToKeepStrafing(CThing*) { std::strcat(g_seq, "S"); return g_strafing; }
 struct CObject { virtual void v000() { } unsigned char _pad04[0x14]; CPlayer* m_pPlayer; unsigned char _pad1c[0xc]; long m_countdown;
     virtual void Update() { CThing* hero = m_pPlayer->GetHeroCreature(); if (hero && !hero->m_91_0) { if (IsThingToKeepStrafing(hero)) { m_countdown = 5; return; } if (--m_countdown < 0) { m_pPlayer->RemoveMode(0x22); m_pPlayer->RemoveMode(0x2e); } } } };

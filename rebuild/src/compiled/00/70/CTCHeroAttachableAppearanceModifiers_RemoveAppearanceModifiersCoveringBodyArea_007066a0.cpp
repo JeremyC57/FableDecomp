@@ -15,7 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CThing;
+class CThing;
 struct CWorld_Calls {
     static long __fastcall GetFrame();                  // 0x0049D870
 };
@@ -80,7 +80,7 @@ struct CLongList {                                      // STLport list<long>
     }
 };
 
-template<class T> struct CDefPointer;
+template<class T> class CDefPointer;
 class CDefClassBase {
 public:
     virtual void v00();
@@ -93,7 +93,7 @@ public:
     }
     template<class T> bool GetSubDef(CDefPointer<const T>* out) const;   // 0x0057FF92 for CAppearanceModifierDef
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -129,7 +129,7 @@ template<class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer
 }
 #pragma auto_inline(on)
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;
     bool ToBeRemoved;
@@ -139,7 +139,7 @@ struct CTCBase {
 };
 typedef long EHeroAttachableAppearanceModifierType;
 
-struct CTCHeroAttachableAppearanceModifiers : CTCBase {
+class CTCHeroAttachableAppearanceModifiers : public CTCBase { public:
     void* __vftable_0c;                                 // +0x0c secondary vptr
     unsigned long FrameLastChanged;                     // +0x10
     bool Changed : 1;                                   // +0x14 bit 0

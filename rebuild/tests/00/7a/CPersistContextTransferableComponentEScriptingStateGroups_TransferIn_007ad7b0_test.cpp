@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour test for 007ad7b0: TransferableComponent<EScriptingStateGroups>::TransferIn narrows the parsed long into the target.
 enum EScriptingStateGroups { GROUP_A, GROUP_B, GROUP_C };
-struct CPersistContext { long bias; };
-struct CStringParser { long token; };
+class CPersistContext { public: long bias; };
+class CStringParser { public: long token; };
 static void TransferInLong(CPersistContext& context, CStringParser& parser, long* value) { *value = parser.token + context.bias; }
 template <class T> struct Traits {
     T DefaultVal;

@@ -18,9 +18,9 @@ public:
     wchar* GetBuffer() const { return (wchar*)s.c_str(); }
     bool operator!=(const wchar* text) const { return s != wstr(text); }
 };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct C2DExtentsI { long X, Y; };
-struct C2DExtentsF { float Width, Height; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class C2DExtentsI { public: long X, Y; };
+class C2DExtentsF { public: float Width, Height; };
 
 static float GFAXToVX_009e1da0(float x) { return x * 2.0f; }
 static float GFAYToVY_009e1dd0(float y) { return y * 3.0f; }
@@ -47,9 +47,9 @@ struct CWStringParser {
     CWideString ReadAsStringUntilCharacter(wchar stop)
     { wstr r; while (String[StringPos] && String[StringPos] != stop) r += String[StringPos++]; return CWideString(r); }
 };
-struct CDisplayManager { C2DExtentsI GetRenderTargetDimensions() const { C2DExtentsI e = { 1280, 720 }; return e; } };
+class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions() const { C2DExtentsI e = { 1280, 720 }; return e; } };
 static CDisplayManager g_dm; static CDisplayManager* g_pDisplayManager = &g_dm;
-struct CPlayerGuiDef { float TextBoxMaxWidth, TextBoxMinWidth; };
+class CPlayerGuiDef { public: float TextBoxMaxWidth, TextBoxMinWidth; };
 static CPlayerGuiDef g_gui = { 50.0f, 10.0f };
 static const CPlayerGuiDef* PeekGuiDef() { return &g_gui; }
 

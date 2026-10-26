@@ -17,7 +17,7 @@ static void BuildTable()
         g_InvSqrtMantissaTable[t] = (unsigned int)v;
     }
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -36,7 +36,7 @@ struct C3DVector {
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 static int g_facingCalls = 0;
 struct CPhysicsBody { virtual C3DVector GetFacing() { ++g_facingCalls; return C3DVector(0.0f, 1.0f, 0.0f); } };
-struct CThing { CPhysicsBody* PhysicsBody; };
+class CThing { public: CPhysicsBody* PhysicsBody; };
 class CTCAssassinRush {
 public:
     CThing* ParentThing;

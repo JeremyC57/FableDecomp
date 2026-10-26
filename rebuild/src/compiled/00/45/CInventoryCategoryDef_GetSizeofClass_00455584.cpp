@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CInventoryCategoryDef { char pad[0x58]; };
+class CInventoryCategoryDef { public: char pad[0x58]; };
 
 unsigned long __fastcall CInventoryCategoryDef_GetSizeofClass(CInventoryCategoryDef* self)
 {

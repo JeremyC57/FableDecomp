@@ -1,7 +1,7 @@
 // _Cons_val for std::pair<CCharString const, CArray<unsigned long> >
 // Copy-constructs the pair members at *self from *src.
 
-struct CCharString {
+class CCharString { public:
     char* p;        // +0
     int   len;      // +4
     int   cap;      // +8  -> sizeof 0xc, second member lands at +0xc

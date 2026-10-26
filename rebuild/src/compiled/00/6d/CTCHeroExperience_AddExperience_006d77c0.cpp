@@ -35,7 +35,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,25 +53,25 @@ struct CThing {
     bool IsIncapacitated();                     // 0x00661E80
 };
 
-struct CQuestManager { bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
+class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
-struct CTCHero { bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
-struct CTCHeroStats { void AddHeroStatExperience(long category, long amount); };   // 0x0057A8DA
-struct CTCHeroOnlineScoreboard { void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
+class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
+class CTCHeroStats { public: void AddHeroStatExperience(long category, long amount); };   // 0x0057A8DA
+class CTCHeroOnlineScoreboard { public: void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter); };   // 0x0055F3B0
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad00[0x60];
     long MaximumExpToSpend;                     // +0x60
     long ExpToSpendAtWhichToDisplayTutorial;    // +0x64
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char  _pad00[0xdc];
     CHeroStatsDef* PHeroStatsDef;               // +0xdc
 };
 
-struct CHeroExperienceDef {
+class CHeroExperienceDef { public:
     unsigned char _base[0x64];
     float ExperienceMultiplierParamPerUnitComboMultiplier;  // +0x64
 };

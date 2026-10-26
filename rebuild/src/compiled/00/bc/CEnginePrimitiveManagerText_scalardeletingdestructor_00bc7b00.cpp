@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerText {
+class CEnginePrimitiveManagerText { public:
     void* vftable;
 };
 

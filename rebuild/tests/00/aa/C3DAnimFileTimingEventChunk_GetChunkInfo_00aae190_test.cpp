@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char* m_pText;
     CCharString(const char* text, long length)
     {
@@ -23,7 +23,7 @@ CCharString operator+(const CCharString& left, const CCharString& right)
     CCharString r(b, -1); std::free(b); return r;
 }
 CCharString operator+(const CCharString& left, const char* right) { return left + CCharString(right, -1); }
-struct C3DAnimFileTimingEventChunk {
+class C3DAnimFileTimingEventChunk { public:
     CCharString Name;
     float Time;
     C3DAnimFileTimingEventChunk() : Name("Strike", -1), Time(1.5f) {}

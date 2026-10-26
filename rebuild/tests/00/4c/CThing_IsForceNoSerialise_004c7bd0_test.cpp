@@ -5,7 +5,7 @@ struct Inner {
     unsigned char flags; // +0x41
 };
 
-struct CThing {
+class CThing { public:
     char pad[0x70];
     Inner* m_inner; // +0x70
     bool IsForceNoSerialise();

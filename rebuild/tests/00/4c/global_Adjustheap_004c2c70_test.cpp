@@ -9,7 +9,7 @@ struct CMeshInfo {
     unsigned char PrimaryMesh : 1;
 };
 
-struct CSortPrimaryMeshesFirst {
+class CSortPrimaryMeshesFirst { public:
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return a.PrimaryMesh; }
 };
 

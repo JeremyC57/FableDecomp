@@ -14,7 +14,7 @@
 // to [ebp-0Ch]. The height test is `Z > 51.0f` (`fcomp ; test ah,41h ; jne` skips on below-or-equal).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -45,36 +45,36 @@ __declspec(noinline) SGraphicNode* CCharStringLongMap::find(const CCharString& k
     return (y == _M_header || CompareCharStrings(key, y->Key) < 0) ? _M_header : y;
 }
 #pragma auto_inline(on)
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char      _pad00[0x94c];
     CCharStringLongMap MiniMapGraphics;         // +0x94c
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
-struct CRegion {
+class CRegion { public:
     unsigned char _pad00[0x28];
     CCharString   MiniMapGraphic;               // +0x28
 };
-struct C3DVector { float X, Y, Z; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 bool IsThingPointerAlive(const void* thing);
 #pragma auto_inline(off)
 // Same-TU stand-in for the IS_THING_ALIVE<CThing*> template 0x0043DBF0: reads the pointer through its const reference.
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && IsThingPointerAlive(thing); }
 #pragma auto_inline(on)
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();            // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
 };
 extern const float g_mapEdgeZ;                  // 0x01253D40 (51.0f)
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     CPlayerManager* GetPlayerManager_00686d50() const;   // 0x00686D50 (CTCBase, const)
     long GetMiniMapGraphic(const CRegion* region);
 };

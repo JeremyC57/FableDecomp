@@ -7,7 +7,7 @@
 // three-float position, +0x28 the cached float.
 // Shape: the position copy goes through a pointer to the destination (`add esi,1Ch`, then [esi], [esi+4], [esi+8]),
 // i.e. a POD struct assignment from the returned reference.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 

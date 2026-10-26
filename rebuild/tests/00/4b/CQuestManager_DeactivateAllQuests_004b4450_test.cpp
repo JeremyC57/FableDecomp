@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
 };
 template <class T> class CCountedPointer {

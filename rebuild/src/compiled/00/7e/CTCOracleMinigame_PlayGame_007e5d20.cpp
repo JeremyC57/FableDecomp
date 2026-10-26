@@ -12,33 +12,33 @@
 // Layout (local model, as the landed Quit 0x007E62D0: engine/CTCOracleMinigame.h is the PDB with a 12-byte list; retail's
 // STLport list is one sentinel pointer, so SpeechMarker is +0xe4 and PDef +0xe8): Level +0x10, Stage +0x14,
 // TimeBetweenOutputs +0x20, Symbols +0xb0, SymbolsFiring +0xc0; the def's output interval +0x2c (descriptive).
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstThing(const CThingFilter_HasTrackName& filter, CThing** out);         // 0x007E6EC0
     bool GetPFirstSpeechThing(const CThingFilter_HasTrackName& filter, CThing** out);   // 0x0056D050 (second instantiation)
 };
-struct CPlayer {
+class CPlayer { public:
     long GetCurrentMode();                              // 0x00633BE0
     void AddMode(long mode, bool exclusive);            // 0x006345C0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
-struct COracleMinigameDef {
+class COracleMinigameDef { public:
     unsigned char _pad00[0x2c];
     float TimeBetweenOutputs;                           // +0x2c (descriptive)
 };
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _base08[4];

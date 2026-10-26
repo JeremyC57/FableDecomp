@@ -15,7 +15,7 @@ struct CDefPointer {
         return *this;
     }
 };
-struct CTCClock {
+class CTCClock { public:
     CDefPointer PDef; float LastTimeUpdated;
     void Copy(const CTCClock* other) { PDef = other->PDef; }
 };

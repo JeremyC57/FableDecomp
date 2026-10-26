@@ -8,7 +8,7 @@
 // Shape: inline C2DVector operators with a user constructor (hidden-pointer result): `v * f` multiplies
 // each component as `x * f` (`fld f ; fmul [x]`), the sum's x is parked in an 8-byte frame temporary
 // while y stays on the FPU stack, and `operator/` multiplies by one reciprocal.
-struct C2DVector {
+class C2DVector { public:
     float x, y;
     C2DVector() { }
     C2DVector(float ax, float ay) : x(ax), y(ay) { }

@@ -25,23 +25,23 @@ static int fails = 0;
 // STLport `*(begin() + index)` through an inline begin() (direct `Start[index]` rotates eax/ecx/edx in the address
 // and ToWideString setup), and the WAD bank is reached through CCountedPointer's inline `operator*` (`*LevelWADBank`;
 // spelling out `.Data` rotates the registers in the CDiskFileWin32 arm, the by-value copy and the World vtable load).
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                          // 0x0099B510
 };
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CWideString ToWideString() const;                        // 0x0099E480
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                             // +0
     void (__fastcall* Destroy)(void* data);                  // +4
     void* Data;                                              // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -84,28 +84,28 @@ template<class T> void CCountedPointer<T>::Reset(T* data)
 #pragma auto_inline(on)
 
 enum FileAccessType { FILE_ACCESS_READ = 1 };
-struct CAFile { };
-struct CWADBank;
-struct CWADFile : CAFile {
+class CAFile { public: };
+class CWADBank;
+class CWADFile : public CAFile { public:
     CWADFile(CWADBank& bank, const CWideString& name, FileAccessType access, unsigned long flags);   // 0x00A39D80
     unsigned char _body[0x10];
 };
-struct CDiskFileWin32 : CAFile {
+class CDiskFileWin32 : public CAFile { public:
     CDiskFileWin32(const CWideString& name, FileAccessType access, unsigned long flags);              // 0x0099AD80
     unsigned char _body[0x1c];
 };
 
-struct CThingManager {
+class CThingManager { public:
     void LoadLoadableGlobalThingsFromFile(CCountedPointer<CAFile> file, long level);   // 0x005223F0
 };
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();
     virtual CThingManager* GetThingManager();                // slot 3 (0x0049E1B0)
 };
 
-struct CMapInfo {                                            // 0x48 bytes
+class CMapInfo { public:                                            // 0x48 bytes
     unsigned char _pad00[0x18];
     CCharString   LevelName;                                 // +0x18
     unsigned char _pad1c[0x2c];
@@ -118,7 +118,7 @@ struct CMapInfoArray {                                       // CArray<CMapInfo>
     CMapInfo& operator[](long index) { return *(begin() + index); }
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     void*                     _vptr;                         // +0x00
     long                      f4;                            // +0x04
     CWorld*                   World;                         // +0x08
@@ -146,9 +146,9 @@ void CWorldMap::LoadLoadableGlobalThingsForLevel(long level)
 }
 
 // ---- stubs and driver ----
-struct CWideStringData { int tag; };
-struct CCharStringData { int tag; };
-struct CWADBank { int tag; };
+class CWideStringData { public: int tag; };
+class CCharStringData { public: int tag; };
+class CWADBank { public: int tag; };
 static CWideStringData g_wide = { 1 }, g_thingPath = { 2 };
 static int g_wideDtors = 0;
 CWideString::~CWideString() { ++g_wideDtors; }

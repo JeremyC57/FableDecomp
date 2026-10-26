@@ -21,7 +21,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);         // 0x00A13C60
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                            // +0x00
     C3DVector Forward;                                       // +0x0c
 };

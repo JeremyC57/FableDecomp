@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCCameraPointTrack {
+class CTCCameraPointTrack { public:
     unsigned char _body[0x54];       // sizeof(CTCCameraPointTrack) = 0x54
     CTCCameraPointTrack(long owner);                   // 0x004D3AF4
 };

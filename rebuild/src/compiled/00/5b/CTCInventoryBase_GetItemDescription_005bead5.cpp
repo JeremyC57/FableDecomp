@@ -2,7 +2,7 @@
 // Byte-exact reconstruction of CTCInventoryBase::GetItemDescription @ 0x005bead5
 // __fastcall void GetItemDescription(CTCInventoryBase*, CWideString* out, long a, bool b)
 
-struct CWideString {
+class CWideString { public:
     void* GetSomething();               // 0x5d97b0 (thiscall) -> value
 };
 

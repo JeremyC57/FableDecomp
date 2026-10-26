@@ -31,7 +31,7 @@ struct CRandomSeed {
     }
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x1613c];
     CRandomSeed RandomSeed;                     // +0x1613c
 };

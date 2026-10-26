@@ -17,7 +17,7 @@ struct CPhysicalPrimitiveBase {
     virtual long GetType() const;                     // slot 3
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;                       // +0
     void* m_pCount;                        // +4
     T* operator->() const { return m_pObject; }
@@ -32,7 +32,7 @@ struct CPrototypeVector {
 
 extern CPrototypeVector g_PrimitivePrototypes;   // 0x013BA888
 
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CCountedPointer<CPhysicalPrimitiveBase> PPrimitive;   // +0x0
     bool SetPPrimitiveFromType(long type);
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingMultiArrowShotDef { int v; };
+class CThingMultiArrowShotDef { public: int v; };
 
 static int g_calls = 0;
 static CThingMultiArrowShotDef* g_self = 0;

@@ -8,10 +8,10 @@
 // init-list members, then PThing's inline constructor (`lea edi,[esi+2Ch]` scheduled among the zero stores).
 // Layout: Ego_r.pdb CTCUserActionPointBase with 12-byte retail vectors: FreeActionPointIndexes +0x0C,
 // BlockedActionPointIndexes +0x18, NumberOfActionPoints +0x24, FrameOfNextCheck +0x28, PThing +0x2C. No engine header.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing*       Thing;                    // +0x04
     unsigned char _pad_0x08[0x4];

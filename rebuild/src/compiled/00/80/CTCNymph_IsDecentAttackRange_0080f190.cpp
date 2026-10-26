@@ -4,28 +4,28 @@
 // Layout: PDB CTCNymph PDef +0x0C (CNymphDef: MinAttackRange +0x28, CircleRange +0x34); 0.5f @ 0x0122F59C.
 // Shape: the delta `pos - target` is built on the x87 stack (all three differences kept), the squared ranges compared with
 // `!(a <= b)` style tests (`test ah,41h ; jne`) and the upper bound strict (`test ah,5 ; jp`); nested ifs, one false exit.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CNymphDef {
+class CNymphDef { public:
     unsigned char _pad00[0x28];
     float MinAttackRange;                       // +0x28
     float MaxHeight;                            // +0x2c
     float MinHeight;                            // +0x30
     float CircleRange;                          // +0x34
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CTCNymph {
+class CTCNymph { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

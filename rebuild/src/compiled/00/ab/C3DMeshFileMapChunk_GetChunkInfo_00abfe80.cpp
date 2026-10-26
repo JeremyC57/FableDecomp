@@ -17,7 +17,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 CCharString __fastcall operator+(const CCharString& left, const char* right);         // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);  // 0x0099F570
 
-struct C3DMeshFileMapChunk {
+class C3DMeshFileMapChunk { public:
     virtual ~C3DMeshFileMapChunk();
     unsigned char _base_body[0x28];     // +0x04 .. +0x2B (C3DMeshFileChunk, retail size)
     long        MapIndex;               // +0x2c

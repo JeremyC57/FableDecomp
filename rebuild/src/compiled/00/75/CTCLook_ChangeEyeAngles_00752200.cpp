@@ -9,7 +9,7 @@
 // Layout: Ego_r.pdb CTCLook (the landed CentreHead 0x007528A0 model): PDef +0x14, EyeAnglesRelToHead XY/YZ +0x34/+0x38,
 // EyeAnglesChanged +0x80; CLookDef EyesTurnRangeXY/YZ +0x28/+0x2c. No engine header for CTCLook.
 #include <math.h>
-struct CLookDef {
+class CLookDef { public:
     unsigned char _pad00[0x28];
     float EyesTurnRangeXY;                      // +0x28 (degrees)
     float EyesTurnRangeYZ;                      // +0x2c
@@ -18,16 +18,16 @@ struct CLookDef {
     float HeadTurnRangeYZDown;                  // +0x38
     float MaxTurnSpeed;                         // +0x3c
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     void UpdateGraphicAppearance(long reason);  // 0x004C7590
 };
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct CTCLook {
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class CTCLook { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];

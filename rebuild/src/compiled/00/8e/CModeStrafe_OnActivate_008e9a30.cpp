@@ -51,7 +51,7 @@ struct NativeStringValue:CCharString {
 enum EMovementType {MovementWalk=0};
 NativeStringValue __fastcall GetStrafingAnimationName(const ThingNative&,EMovementType); //8E8FF0 hidden resultECX,parentEDX,movementstack
 bool __fastcall GetAnimDistanceAndIndexFromAnimName(const ThingNative&,const CCharString&,long&,float&); //8E9080, donor90F530
-struct CAnimSet;
+class CAnimSet;
 struct AnimateThingMethods {CAnimSet*GetFirstCombinationAnimFromType(long);void RemoveCombinationAnimsOfType(long);}; //70C4E0,70D8C0
 struct AnimationComponentMethods {AnimateThingMethods&GetAnimation();}; //70B460, actual CTCAnimationComplex +C
 // Native CModeBase prefix from PDB and actual CModeStandBase offsets; no generated CModeBase/Strafe header.

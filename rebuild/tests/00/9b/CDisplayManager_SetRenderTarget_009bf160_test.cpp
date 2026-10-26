@@ -2,22 +2,22 @@
 
 #include "rebuild_abi.h"
 
-struct C2DExtentsI
-{
+class C2DExtentsI
+{ public:
     fable_i32 width;
     fable_i32 height;
 };
 
-struct C2DBoxI
-{
+class C2DBoxI
+{ public:
     fable_i32 left;
     fable_i32 top;
     fable_i32 right;
     fable_i32 bottom;
 };
 
-struct CSurface
-{
+class CSurface
+{ public:
     void* vtable00;
     void* resource04;
     fable_u32 resourceState08;
@@ -32,8 +32,8 @@ struct CSurface
     }
 };
 
-struct CRenderTarget
-{
+class CRenderTarget
+{ public:
     void* vtable00;
     CSurface renderColour04;
     CSurface renderDepth14;

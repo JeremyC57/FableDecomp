@@ -8,8 +8,8 @@
 // Shape: the inline IsOpen() returns the `!Opening && !Closing && CurrentOpen` expression (materialised in a full
 // register, `mov eax,1` / `xor eax,eax`; an if/return-true form gives `mov al,1`), then the caller's
 // `test al,al ; sete al` for the negation; the two calls are separate if/else arms.
-struct CTCBase;
-struct CTCDoor {
+class CTCBase;
+class CTCDoor { public:
     unsigned char _pad00[0x10];
     bool CurrentOpen;                       // +0x10
     bool OldOpen;                           // +0x11
@@ -27,7 +27,7 @@ struct CInterfaceMap {                 // CVectorMap<ETCInterfaceType, CTCBase*>
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present

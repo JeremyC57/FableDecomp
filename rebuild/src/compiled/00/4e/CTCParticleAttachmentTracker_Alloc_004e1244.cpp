@@ -9,9 +9,9 @@
 // landed-trusted), null-checks the block and runs the constructor @ 0x004DED6F on it with the
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
-struct CTCParticleAttachmentTracker;
+class CTCParticleAttachmentTracker;
 
-struct CTCParticleAttachmentTracker {
+class CTCParticleAttachmentTracker { public:
     unsigned char _body[0x10];       // sizeof(CTCParticleAttachmentTracker) = 0x10
     CTCParticleAttachmentTracker(CTCParticleAttachmentTracker* owner);                   // 0x004DED6F
 };

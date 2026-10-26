@@ -9,7 +9,7 @@
 // Leaf: TransferBinaryOut
 #include "engine/CReactionFrequencyTraits_PeriodicFrequency.h"
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);               // 0x00993EA0
     void WriteFloat(float value);                       // 0x00993EE0
 };

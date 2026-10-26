@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SInner { C3DVector first; long second; };
 struct SValue { long first; SInner second; };
 #define VALUE SValue

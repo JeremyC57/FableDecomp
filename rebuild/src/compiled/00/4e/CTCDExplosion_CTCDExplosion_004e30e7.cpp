@@ -14,15 +14,15 @@
 // (ExplosionEvolutionTimer +0x4C vs PDB +0x50); a local model.
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00();
     unsigned char _body[0x8];                  // +0x04 CTCBase
     CTCDriverBase(CThing* parent);             // 0x00771200
 };
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
 };
@@ -39,7 +39,7 @@ struct CPtrVector {                            // retail std::vector: first, las
     CPtrVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) {}
 };
 
-struct CTCDExplosion : CTCDriverBase {
+class CTCDExplosion : public CTCDriverBase { public:
     float              DamageRadius;           // +0x0C
     float              PhysicsRadius;          // +0x10
     float              MaxDamage;              // +0x14

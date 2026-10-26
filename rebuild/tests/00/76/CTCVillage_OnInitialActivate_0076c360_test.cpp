@@ -8,7 +8,7 @@ static void CalleeDo(Callee* ecx, void* edx, int arg) {
     ecx->lastArg = arg;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     Callee* field0;
     void*   ParentThing;
     char    pad8[4];

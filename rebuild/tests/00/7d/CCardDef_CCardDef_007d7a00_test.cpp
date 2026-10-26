@@ -4,17 +4,17 @@
 #include <new>
 static int g_resCalls;
 #pragma pack(push, 1)
-struct CResource { virtual void v00() {} unsigned char _body[0x18]; CResource() { ++g_resCalls; } };
+class CResource { public: virtual void v00() {} unsigned char _body[0x18]; CResource() { ++g_resCalls; } };
 struct __declspec(novtable) CDefinitionBase : CResource {
     long m_defIndex; long m_reserved; unsigned char m_flags : 3;
     CDefinitionBase() : CResource(), m_defIndex(0), m_flags(0) { }
 };
-struct CDefString { long m_index; CDefString() : m_index(-1) { } };
+class CDefString { public: long m_index; CDefString() : m_index(-1) { } };
 struct __declspec(novtable) CCardDefBase : CDefinitionBase {
     CDefString m_name; long* m_first; long* m_last; long* m_end; unsigned char m_pad35; unsigned char m_flag;
     CCardDefBase() : CDefinitionBase(), m_name(), m_first(0), m_last(0), m_end(0), m_flag(0) { }
 };
-struct CCardDef : CCardDefBase { virtual void v00() {} CCardDef(); };
+class CCardDef : public CCardDefBase { public: virtual void v00() {} CCardDef(); };
 #pragma pack(pop)
 CCardDef::CCardDef() : CCardDefBase() { }
 int main()

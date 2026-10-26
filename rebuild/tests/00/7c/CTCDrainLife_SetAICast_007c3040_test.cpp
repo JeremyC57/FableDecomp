@@ -4,21 +4,21 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-struct CSpecialAbilitiesDrainLifeDef { int id; };
+class CSpecialAbilitiesDrainLifeDef { public: int id; };
 static CSpecialAbilitiesDrainLifeDef g_def;
 static int g_getDefCalls = 0;
 static long g_getDefIndex = 0;
-template<class T> struct CDefPointer { T* Object; };
+template<class T> class CDefPointer { public: T* Object; };
 struct CDefinitionManager_Calls {
     template<class T> bool GetDef(long globalIndex, CDefPointer<T>& out)
     { ++g_getDefCalls; g_getDefIndex = globalIndex; out.Object = &g_def; return true; }
 };
-struct CGameDefinitionManager : CDefinitionManager_Calls {
+class CGameDefinitionManager : public CDefinitionManager_Calls { public:
     static CGameDefinitionManager& __fastcall Get();
 };
 static CGameDefinitionManager g_manager;
 CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return g_manager; }
-struct CTCDrainLife {
+class CTCDrainLife { public:
     virtual void v00() { }
     unsigned char _base[0x8];
     CDefPointer<const CSpecialAbilitiesDrainLifeDef> PDef;

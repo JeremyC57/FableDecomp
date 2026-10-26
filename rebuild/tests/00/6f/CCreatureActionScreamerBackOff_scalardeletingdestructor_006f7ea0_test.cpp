@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ScreamerBackOff {
+class CCreatureAction_ScreamerBackOff { public:
     void* vftable;
     int destroyed;
 };

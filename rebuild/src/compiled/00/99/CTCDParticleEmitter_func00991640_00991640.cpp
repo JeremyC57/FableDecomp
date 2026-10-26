@@ -5,7 +5,7 @@
 // Shape: the three products built on the x87 stack right to left (`fld [eax+8] ; fmul [ecx+10h]`, `fld [eax+4] ;
 // fmul [ecx+10h]`, `fld [ecx+10h] ; fmul [eax]`), then the hidden result pointer loaded and the three stores
 // x, y, z; `ret 8`.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

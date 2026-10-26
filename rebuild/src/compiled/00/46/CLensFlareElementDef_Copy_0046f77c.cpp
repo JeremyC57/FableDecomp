@@ -5,8 +5,8 @@
 //     jmp    rel32   ; (target relocation-masked in parity)
 // i.e. CLensFlareElementDef::Copy forwards to a shared Copy implementation.
 
-struct CDefClassBase;
-struct CLensFlareElementDef;
+class CDefClassBase;
+class CLensFlareElementDef;
 
 // The real Copy implementation this thunk tail-calls into.
 // Its address is relocation-masked, so a plausible extern decl is sufficient.

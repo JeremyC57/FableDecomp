@@ -15,7 +15,7 @@ inline void ClampFloat(float& value, float lo, float hi)
         value = hi;
 }
 
-struct CThingDrawInformation {
+class CThingDrawInformation { public:
     unsigned char _pad00[8];
     float         BarPercentage;                // +0x08
     void SetBarPercentage(float percentage);

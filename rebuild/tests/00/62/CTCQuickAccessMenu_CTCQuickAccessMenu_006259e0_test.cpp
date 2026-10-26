@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -19,7 +19,7 @@ struct CRetailVector_Component {
     CComponent** _Myfirst; CComponent** _Mylast; CComponent** _Myend;
     CRetailVector_Component() : _Myfirst(0), _Mylast(0), _Myend(0) { }
 };
-struct CTCQuickAccessMenu : CTCBase {
+class CTCQuickAccessMenu : public CTCBase { public:
     bool Active; CRetailVector_Component Components; bool Quitting; double LastRenderTime; bool FirstRenderFrame;
     CTCQuickAccessMenu(CThing* thing) : CTCBase(thing), Active(false), Components(), Quitting(false) { AddToGlobalUpdateTCs(); }
 };

@@ -1,5 +1,5 @@
 // CEngineInternalPrimitiveRepeatedZSprite::IsInsideFrustum(const CEngineCamera& camera, bool ignoreFrustum) -- distance-cull the sprite group's bounding sphere against the scaled fade-out distance and the fade-in start, then (unless told to skip it) test the sphere against the camera's near/far planes and four frustum planes
-// Leaf: ?IsInsideFrustum@@YI_NPAUCEngineInternalPrimitiveRepeatedZSprite@@HABUCEngineCamera@@_N@Z
+// Leaf: ?IsInsideFrustum@@YI_NPAVCEngineInternalPrimitiveRepeatedZSprite@@HABVCEngineCamera@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BAA4E0, 444 bytes (+2 int3), `ret 8`; vtable 0x012A524C slot 20. Ego_r.pdb:
 //   ?IsInsideFrustum@CEngineInternalPrimitiveRepeatedZSprite@@UAE_NABVCEngineCamera@@_N@Z.
 // Callees: CEngineInternalPrimitiveRepeatedZSprite::GetTransitionFade() const 0x00BAA460 (landed; Ego_r.pdb
@@ -19,7 +19,7 @@
 #pragma intrinsic(sqrt)
 #include "engine/CEngineInternalPrimitiveRepeatedZSprite.h"
 #include "engine/CEngineCamera.h"
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -27,8 +27,8 @@ struct C3DVector {
     float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
     float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
 };
-struct CPlane { C3DVector Normal; float D; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class CPlane { public: C3DVector Normal; float D; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CEngineFadeDistance {                        // Ego_r.pdb, 8 bytes
 public:
     float FadeBeginDistance;                       // +0x00

@@ -14,8 +14,8 @@
 // NCreatureAction::CActionEventCameraShake::SetDataFromString, 0x00870FC0.
 // PDB identity: egor 19895 / debug 0x00811990. The three parsed values are
 // Strength(+0x14), Length(+0x18), and Global(+0x1c), as recovered from PDB.
-template<class T> struct CBasicString;
-template<> struct CBasicString<char> {
+template<class T> class CBasicString;
+template<> class CBasicString<char> { public:
     char* PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
@@ -37,10 +37,10 @@ bool CBasicString<char>::operator==(const char* text) const
     return result == 0;
 }
 #pragma auto_inline(on)
-struct CCharStringData { CBasicString<char> Data; long NoRefs; };
+class CCharStringData { public: CBasicString<char> Data; long NoRefs; };
 #pragma pack(pop)
 typedef char StringDataMatchesDonor[(sizeof(CCharStringData)==sizeof(CCharStringDataPdb))?1:-1];
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();
     ~CCharString();
@@ -55,15 +55,15 @@ struct CCharString {
 namespace { bool __fastcall GetDataFromEventString(const CCharString& data, long index,
                                        CCharString& out); } // 0x00870C90
 
-struct CCreatureActionBase;
-struct CThingCreatureBase;
-struct CGameCameraManager;
-struct CBaseClass { virtual ~CBaseClass(); };
+class CCreatureActionBase;
+class CThingCreatureBase;
+class CGameCameraManager;
+class CBaseClass { public: virtual ~CBaseClass(); };
 // Original enum types; ordinal labels below are local descriptive labels.
 enum EQuakeStrength { QuakeStrengthWeak=0,QuakeStrengthMedium=1,QuakeStrengthStrong=2,QuakeStrengthMadness=3 };
 enum EQuakeLength { QuakeLengthShort=0,QuakeLengthMedium=1,QuakeLengthLong=2,QuakeLengthContinuous=3 };
 namespace NCreatureAction {
-struct CActionEventBase : CBaseClass {
+class CActionEventBase : public CBaseClass { public:
     bool Finished;
     long ActivationFrame;
     CThingCreatureBase* PThing;

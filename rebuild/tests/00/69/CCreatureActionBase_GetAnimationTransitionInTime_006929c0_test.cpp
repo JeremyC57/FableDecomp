@@ -9,7 +9,7 @@ struct Sub { long seed; };
 static long g_helper_ret;
 static long __fastcall Sub_Helper(Sub* s) { g_helper_ret = s->seed * 3; return g_helper_ret; }
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     char pad0[8];
     Sub  sub;
     char pad1[0x74 - 8 - sizeof(Sub)];

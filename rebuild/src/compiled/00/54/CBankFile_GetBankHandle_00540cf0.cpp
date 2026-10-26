@@ -6,12 +6,12 @@
 // 0x0041D1B4 / 0x0042BED4 / 0x0052F100 use other offsets); the engine CBankFile header has no string at +0x164,
 // so `this` is a local model: the getter is `return m_name;` on a 4-byte class with a user copy constructor,
 // which VC7.1 builds straight into the caller's result slot and returns (`mov eax,esi`).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& o);                  // 0x0099B720
 };
 
-struct CBankFile {
+class CBankFile { public:
     unsigned char _pad[0x164];
     CWideString m_name;                                  // +0x164
     CWideString GetBankHandle() const;

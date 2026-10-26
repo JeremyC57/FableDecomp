@@ -13,8 +13,8 @@ struct CCountedPointer {
     }
 };
 struct CRoot { virtual ~CRoot() { ++g_rootDtors; } };
-struct CScriptGameResourceObjectBase : CRoot { virtual ~CScriptGameResourceObjectBase() {} };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase { CCountedPointer PImp; };
+class CScriptGameResourceObjectBase : public CRoot { public: virtual ~CScriptGameResourceObjectBase() {} };
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public: CCountedPointer PImp; };
 int main()
 {
     int imp = 0;

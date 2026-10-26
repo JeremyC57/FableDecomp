@@ -7,8 +7,8 @@
 // stored back before the copy; the element address (`lea ecx,[ebx+edi*8]`) is formed AFTER the GetPItem call only when
 // the copy is written `slot.SetPItem(customer.GetPItem())` (the inline operator= binds `this` first and computes it
 // before the call); the wrap test re-reads the member.
-struct CBaseObject;
-struct CThing;
+class CBaseObject;
+class CThing;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -40,7 +40,7 @@ template<class T> struct CRetailVector {
     T& operator[](unsigned long n) { return *(begin() + n); }
 };
 
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     unsigned char        _pad[0x1c];
     CRetailVector<CIntelligentPointer> m_recentCustomers;   // +0x1c: vector of three slots (first/last/end)
     long                 m_nextCustomerSlot;     // +0x28

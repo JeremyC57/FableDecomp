@@ -1,21 +1,21 @@
 #include <cstdio>
 
 static int g_animDtors = 0, g_baseDtors = 0;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
 struct CInterpolatorBase { int kind; ~CInterpolatorBase() { ++g_baseDtors; } };
-struct C3DAnimationInterpolator { unsigned long StartState[2]; unsigned long EndState[2]; ~C3DAnimationInterpolator() { ++g_animDtors; } };
-struct C3DPositionInterpolator { CInterpolatorBase m_base; C3DVector StartPosition; C3DVector EndPosition; };
-struct C3DOrientationInterpolator { CInterpolatorBase m_base; CRightHandedSet StartOrientation; CRightHandedSet EndOrientation; };
-struct CEnginePrimitiveAnimation {
+class C3DAnimationInterpolator { public: unsigned long StartState[2]; unsigned long EndState[2]; ~C3DAnimationInterpolator() { ++g_animDtors; } };
+class C3DPositionInterpolator { public: CInterpolatorBase m_base; C3DVector StartPosition; C3DVector EndPosition; };
+class C3DOrientationInterpolator { public: CInterpolatorBase m_base; CRightHandedSet StartOrientation; CRightHandedSet EndOrientation; };
+class CEnginePrimitiveAnimation { public:
     C3DAnimationInterpolator Anim; C3DPositionInterpolator WorldPos; C3DOrientationInterpolator Orientation;
     CEnginePrimitiveAnimation(const C3DAnimationInterpolator& a, const C3DPositionInterpolator& p, const C3DOrientationInterpolator& o)
         : Anim(a), WorldPos(p), Orientation(o) { }
 };
-struct CEnginePrimitiveHandle { long m_header; void* Data; };
+class CEnginePrimitiveHandle { public: long m_header; void* Data; };
 struct CPrimitive { long Type; CEnginePrimitiveHandle PrimitiveHandle; long BankIndex; };
 static CEnginePrimitiveHandle* g_handle = 0; static float g_endX = 0.0f; static unsigned long g_state = 0; static float g_orient = 0.0f;
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual ~CEnginePrimitiveManager() { }
     virtual void SetPrimitiveAnimation(CEnginePrimitiveHandle* p, const CEnginePrimitiveAnimation& a)
     { g_handle = p; g_endX = a.WorldPos.EndPosition.X; g_state = a.Anim.EndState[1]; g_orient = a.Orientation.EndOrientation.m[5]; }

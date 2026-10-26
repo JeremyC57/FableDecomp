@@ -6,8 +6,8 @@
 // slot), then the fractional parts fx, fy are tested: fx + fy > 1 (`test ah,41h ; jne`). `return a && b && c` gives the int-valued exits.
 // Name note: the four cell rows carry propagated TL/BR labels; the name here is inferred from the triangle tested
 // (origin corner = TL, y growing down), so the landing session should confirm it against the PDB symbol order.
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X;
     float Y;
     float Z;

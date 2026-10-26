@@ -16,12 +16,12 @@ static int g_fail = 0;
 static int g_live = 0, g_bufs = 0, g_iatt = 0, g_termAt = 1 << 30, g_frames = 0, g_stopFrame = 1 << 30, g_loadFrame = 0, g_deadFrame = 0, g_lookups = 0;
 static bool g_badArg = false;
 static bool Term() { ++g_iatt; return g_iatt >= g_termAt || g_frames >= g_stopFrame; }
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
     ~CCharString() { }
 };
-struct CScriptThing {
+class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     virtual ~CScriptThing() { --g_live; }
@@ -54,7 +54,7 @@ static bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>&
     if (things.size() != 4) g_badArg = true;
     return g_frames >= g_deadFrame;
 }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     bool IsLevelLoaded(const CCharString& level) const
     {
@@ -75,7 +75,7 @@ struct CGameScriptInterface {
         return 4;
     }
 };
-struct CScriptBase {
+class CScriptBase { public:
     bool IsActiveThreadTerminating() { return Term(); }
 };
 struct CQ_HobbeCaveScript : CScriptBase {

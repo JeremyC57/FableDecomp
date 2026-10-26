@@ -16,7 +16,7 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
 };
 
-template <class K, class V> struct CKeyPairCompareLess {   // empty
+template <class K, class V> class CKeyPairCompareLess { public:   // empty
 };
 
 template <class T> struct vector {                         // STLport vector: 12 bytes
@@ -29,7 +29,7 @@ template <class T> struct vector {                         // STLport vector: 12
     void push_back(const T& x);                            // 0x005947B6
 };
 
-template <class K, class V, class C> struct CVectorMap : vector<pair<K, V> > {
+template <class K, class V, class C> class CVectorMap : public vector<pair<K, V> > { public:
     typedef pair<K, V> value_type;
     C    Compare;                                          // +0x0C
     bool Dirty;                                            // +0x0D
@@ -65,7 +65,7 @@ __forceinline pair<long, long>* FindExpression(CExpressionButtonMap& map, long e
     return last;
 }
 
-struct CTCInventoryAbilities {                             // retail layout (see above)
+class CTCInventoryAbilities { public:                             // retail layout (see above)
     unsigned char _pad_0x000[0x1c8];
     CExpressionButtonMap ExpressionButtons;                // +0x1C8
     void SetExpressionToButton(long expression, long button);

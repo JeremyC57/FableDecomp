@@ -31,16 +31,16 @@ struct CSuspenderSet {                              // STLport set<void*>: {head
     bool empty() const { return m_size == 0; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void OnLevelUnload();                           // 0x0088B6F0
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00();
     void OnLevelUnload();                           // 0x004C77D0 (base implementation)
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad04[0x1a8 - 0x04];
     CAIBrain*     PBrain_Data;                      // +0x1a8 CCountedPointer<CAIBrain> (PDB +0x1d8)
     void*         PBrain_Info;                      // +0x1ac

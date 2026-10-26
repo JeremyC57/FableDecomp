@@ -2,8 +2,8 @@
 
 extern "C" void * __cdecl RegionXformPtr(void *p);
 
-struct CRegion
-{
+class CRegion
+{ public:
     void *p;
 };
 

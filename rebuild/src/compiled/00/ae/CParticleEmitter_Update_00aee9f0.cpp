@@ -16,7 +16,7 @@
 //   keeps the flag word loaded before it for the ParticleCreationDisabled store. The near-zero tests repeat the
 //   epsilon square (CSE'd and spilled to a frame word) and branch to the velocity refresh on `>`. The disable flag is a
 //   bool local built from (bool) bitfield reads, and the running counter is zeroed before it (ebx pushed early).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -33,7 +33,7 @@ __declspec(noinline) bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVecto
 #pragma auto_inline(on)
 struct CParticleUpdateParameters { unsigned char _data[0x2c]; };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _pad00[0x50];
     unsigned char _bit0 : 1;
     unsigned char Active : 1;                                       // +0x50 bit 1
@@ -41,14 +41,14 @@ struct CParticleSystem {
     void Update(CParticleUpdateParameters* parameters);             // 0x00AF59A0
 };
 }
-template<class T> struct CCountedPointer { T* Data; void* Info; T* operator->() const { return Data; } };
+template<class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
 class CIEngine {
 public:
     virtual void _v0(); virtual void _v1(); virtual void _v2(); virtual void _v3(); virtual void _v4(); virtual void _v5();
     virtual C3DVector GetCameraPosition();                          // slot 6
 };
 CIEngine* GetParticleEngine();                                       // 0x00AEAB10
-struct CMatrix3x4 { float M[9]; C3DVector Translation; };
+class CMatrix3x4 { public: float M[9]; C3DVector Translation; };
 #pragma pack(push, 1)
 class CParticleEmitter {
 public:

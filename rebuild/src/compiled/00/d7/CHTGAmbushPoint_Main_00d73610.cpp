@@ -10,13 +10,13 @@
 // Shape: a top-tested `while` (the distance test repeated at the bottom, aligned head) whose body returns on
 // IsDone; the by-value CCharString argument is built by GetDataString straight into its argument slot
 // (`push ecx ; push esp`), the position fetched last (arguments evaluate right to left).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // (not called: the getter builds the argument in place)
     ~CCharString();
 };
-struct C3DVector { float x, y, z; };
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float x, y, z; };
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
     virtual void v004(); virtual void v005();
@@ -24,7 +24,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
     unsigned char _body[8];
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CGameScriptInterface {                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
+class CGameScriptInterface { public:                     // vtable 0x01260F0C (rtti-vtables.tsv slot names)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

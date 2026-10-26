@@ -16,7 +16,7 @@
 //   and the no-def arm needs no release at all; each arm returns true through its own tail; both
 //   failures share the final `return false`; the GetDef argument goes through an inline const GetCreatureDef()
 //   accessor (BrainDef reloaded after the test, as in InitialiseFromDef 0x008338D0).
-struct CDefString {
+class CDefString { public:
     long TablePos;
     bool operator==(const char* text) const;    // 0x005B3440
 };
@@ -32,7 +32,7 @@ struct CAIBrainDef {
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -42,7 +42,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<CAIBrainDef>* out);   // 0x0079BD80
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -75,11 +75,11 @@ struct CSuspenderSet {                          // STLport set<void*>: {header, 
     SSuspenderInsertResult InsertUnique(void* const& value);   // 0x00835560
     bool empty() const { return m_size == 0; }
 };
-struct CThingCreatureDef {
+class CThingCreatureDef { public:
     unsigned char _pad00[0xe8];
     long BrainDef;                              // +0xe8
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void*         __vftable;
     unsigned char _pad04[0xe0 - 0x04];
     CThingCreatureDef* PDef;                    // +0xe0 CDefPointer<CThingCreatureDef const>::Object
@@ -91,7 +91,7 @@ struct CThingCreatureBase {
     void CreateDefaultWeapons();                // 0x00664680
     bool OnCreate();                            // 0x00666310
 };
-struct CThingAICreature : CThingCreatureBase {
+class CThingAICreature : public CThingCreatureBase { public:
     unsigned char _pad160[0x1c8 - 0x160];
     bool          PerformingVillageTaskFlag : 1;    // +0x1c8 bit 0
     bool          AISuspended : 1;                  // +0x1c8 bit 1

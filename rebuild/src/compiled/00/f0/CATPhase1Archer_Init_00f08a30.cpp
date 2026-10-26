@@ -22,8 +22,8 @@
 #include "engine/CScriptThing.h"
 #include "engine/CASuspendableProcess.h"
 
-struct CCPPointerInfo { long References; };
-struct C3DVector { float X, Y, Z; };
+class CCPPointerInfo { public: long References; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170
@@ -173,7 +173,7 @@ template <class T> struct vector {                     // STLport vector (retail
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void g000();
     virtual void g001();
     virtual void g002();

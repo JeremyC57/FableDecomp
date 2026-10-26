@@ -4,8 +4,8 @@
 // Host model of CTCSoundPlayer::PlayAttachedDialogue(const CCharString&, bool, bool, bool, bool): CRC the name (seed 0,
 // chars and length; an unassigned string is "" / 0), map the CRC to the game-text tag through the text bank, then call
 // the tag overload with the four flags unchanged.
-struct CCharStringData { const char* PData; unsigned int StringLength; };
-struct CCharString {
+class CCharStringData { public: const char* PData; unsigned int StringLength; };
+class CCharString { public:
     CCharStringData* PStringData;
     unsigned int GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
@@ -27,10 +27,10 @@ struct CDataBank {
         return 0;
     }
 };
-struct CMainGameComponent { CDataBank* PGameTextDataBank; };
+class CMainGameComponent { public: CDataBank* PGameTextDataBank; };
 static CMainGameComponent* g_pMainGameComponent;
 
-struct CTCSoundPlayer {
+class CTCSoundPlayer { public:
     unsigned int LastTag; bool Flags[4]; int Calls;
     unsigned int PlayAttachedDialogue(unsigned int tag, bool a, bool b, bool c, bool d)
     {

@@ -9,7 +9,7 @@
 //   argument slot (`inc [Info]`) and the comparator, `ret 14h`).
 // Shape: STLport 4.6 _heap.c __make_heap verbatim (landed 0x00ADB420 model): `len = last - first` by the 0x2AAAAAAB
 //   reciprocal, the parent index `(len - 2) / 2` by the signed cdq/sub/sar idiom.
-struct CCPPointerInfo {                                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                                    // CCountedPointer's shared block
     long  RefCount;                                        // +0x0
     void  (__fastcall* DeleteFunc)(void* data);            // +0x4
     void* Data;                                            // +0x8

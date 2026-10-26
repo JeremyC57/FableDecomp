@@ -16,7 +16,7 @@
 // is what makes VC7.1 keep 0 (and the flag mask 2) in ebx; the look component comes through the out-parameter
 // GetInterface (component in eax, moved to ecx after the push), the weapon trail through the plain entry pick.
 class CTCBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }

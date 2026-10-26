@@ -15,14 +15,14 @@
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
 template<class T>
-struct CArray {
+class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;
     ~CArray() { if (m_first) free(m_first); }
 };
 
-class CIDrawEnvironmentTextureSet {
+struct CIDrawEnvironmentTextureSet {
 public:
     ~CIDrawEnvironmentTextureSet();
     CArray<long>  Textures;                      // +0x00

@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -15,7 +15,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -47,13 +47,13 @@ struct CBaseIntelligentPointer {
     ~CBaseIntelligentPointer() {}
     void SetPItem(CThing* item) { ++g_setPItem; g_lastSet = item; m_pItem = item; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
 static unsigned long g_ror13Calls = 0;
 unsigned long __fastcall GFROR13(unsigned long value) { ++g_ror13Calls; return (value >> 13) | (value << 19); }
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {}
@@ -83,7 +83,7 @@ struct CTCEnemyTracker {
     CThing* GetEnemy() { ++g_getEnemy; return g_enemy; }
 };
 static int g_destroyed = 0;
-struct CAbilityDef {
+class CAbilityDef { public:
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
@@ -92,13 +92,13 @@ struct CAbilityDef {
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     T* operator->() const { return Object; }
 };
 static CAbilityDef* g_ability = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_00485815(CDefPointer<CAbilityDef>* out)
     {
         ++g_getSubDef;

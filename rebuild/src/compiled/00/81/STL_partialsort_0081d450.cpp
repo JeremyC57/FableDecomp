@@ -10,7 +10,7 @@
 //   middle, i, T(*i), comp, DISTANCE_TYPE(first)); sort_heap(first, middle, comp);` with make_heap inline and __pop_heap
 //   called: the by-value T(*i) is built straight in the argument area by pair's memberwise copy ctor (key dword, then the
 //   trivially copyable entry through its own address, `add eax,4 ; lea ecx,[esi+4]`); the comparator lives in ebp.
-struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially copyable
+class CTextureMorphEntry { public:                 // Ego_r.pdb, 20 bytes, trivially copyable
     long MorphType;                         // +0x00 EHeroMorphType
     long TextureLayer;                      // +0x04
     long ReplacingTextureIndex;             // +0x08

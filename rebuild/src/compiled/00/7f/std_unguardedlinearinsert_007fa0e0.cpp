@@ -20,7 +20,7 @@ public:
     const C3DVector& GetPosition();                             // 0x004C73D0
 };
 
-struct CVectorCompare_BestForTargeting {                        // Ego_r.pdb, 44 bytes
+class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
     C3DVector AnchorPos;                                        // +0x00
     C3DVector PreferredLine;                                    // +0x0c
     float     AngleCompare;                                     // +0x18

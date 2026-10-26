@@ -8,8 +8,8 @@
 // Layout: retail CTCScriptedControl: PScriptHandleImp (CIntelligentPointer, 8 bytes) +0x0C, PActionList (STLport list,
 // the 4-byte sentinel pointer) +0x14, Locked +0x18 (PDB +0x20 with the 12-byte debug list). CActionBase: Activated +0x08.
 // Shape: GetCurrentAction() = `empty() ? 0 : front().Data` inline; the handle reset is `p = CIntelligentPointer(0)`.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
     CBaseObject* m_pItem;                           // +4
@@ -21,7 +21,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // CIntelligentPointer
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CQuestManager {
+class CQuestManager { public:
     void OnEntityInterrupted(CThing* thing);        // 0x004AFBB0
 };
 extern CQuestManager* g_pQuestManager;              // 0x013B89FC
@@ -33,7 +33,7 @@ struct CActionBase {                                // CTCScriptedControl::CActi
     bool  Activated;                                // +0x08
     bool  Terminated;                               // +0x09
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct SActionNode {
     SActionNode*    _M_next;                        // +0x00
     SActionNode*    _M_prev;                        // +0x04
@@ -45,7 +45,7 @@ struct CActionList {                                // STLport list<CCountedPoin
     bool empty() const { return _M_node->_M_next == _M_node; }
     void clear();                                   // 0x00719280
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     virtual void v00();
     CThing*             ParentThing;                // +0x04 (CTCBase)
     bool                ToBeRemoved;                // +0x08

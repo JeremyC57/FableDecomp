@@ -8,7 +8,7 @@ struct ICamProvider {
     virtual int GetMode() = 0;   // slot 4 -> [vtbl+0x10]
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     int pad0;              // +0
     int pad4;              // +4
     ICamProvider* prov;    // +8

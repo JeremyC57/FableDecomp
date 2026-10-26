@@ -3,14 +3,14 @@
 // this action as requester; the base FinishAction always runs.
 #include <cstdio>
 
-struct CTCBase { int calls; void* arg; };
+class CTCBase { public: int calls; void* arg; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -55,7 +55,7 @@ struct CCreature : CThing {
     unsigned char m_type; int m_suspendCalls; bool m_suspend; const void* m_requester;
     void SetSuspendAnimation(bool s, const void* r) { ++m_suspendCalls; m_suspend = s; m_requester = r; }
 };
-struct CCreatureAction_DragonLand {
+class CCreatureAction_DragonLand { public:
     CCreature* m_creature; int m_baseFinishes;
     void FinishAction()
     {

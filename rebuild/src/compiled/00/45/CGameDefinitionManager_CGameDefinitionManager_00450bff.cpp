@@ -33,12 +33,12 @@ struct CDefPointer {
     }
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _body[0xd0];
     ~CDefinitionManager();                 // 0x009B02E0
 };
 
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     CDefPointer m_pDef0;                   // +0xd0
     CDefPointer m_pDef1;                   // +0xd4
     CDefPointer m_pDef2;                   // +0xd8

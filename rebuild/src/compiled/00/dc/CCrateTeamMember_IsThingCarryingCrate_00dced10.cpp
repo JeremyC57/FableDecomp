@@ -7,7 +7,7 @@
 //   CScriptThings at +0x54.
 // Shape: the result goes through an inline Return(value) = `if (IsOutOfAction()) return false; return value;` (the
 //   false case keeps the call and drops its result; the true case is `neg ; sbb ; inc`); size() is recomputed per test.
-struct CScriptThing {                       // 12 bytes: vptr + counted pointer
+class CScriptThing { public:                       // 12 bytes: vptr + counted pointer
     virtual void v00();
     virtual void* GetThing() const;             // slot 1 (+0x04)
     virtual void v02();

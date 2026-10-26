@@ -3,11 +3,11 @@
 // Leaf: ??_GCNamedPointee_00abf0c0@@QAEPAXI@Z
 // The chunk label is propagated; named by address. Shape: the derived class stores no vtable of its own (its vtable folds into the base's), the base's inline destructor stores the base vtable, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CIVCountedPointeeBase {                     // vtable 0x012354D0
+class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void Destroy(int flags);
     virtual void Delete();
     unsigned long IVRefCount;                      // +4

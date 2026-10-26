@@ -25,7 +25,7 @@ struct CEntryVector {                               // vector<CSkeletalMorphs::C
     void resize(unsigned long n);                   // 0x0081DF50
 };
 
-struct CSkeletalMorphs {
+class CSkeletalMorphs { public:
     SMorphPair* _M_start;                           // Morphs (CVectorMap<unsigned long, CEntry>) at +0
     SMorphPair* _M_finish;
     SMorphPair* _M_end_of_storage;

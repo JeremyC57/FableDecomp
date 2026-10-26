@@ -9,22 +9,22 @@
 // (C2DBoxF) +0x20; CThing's dead flag is bit 0 of the byte at +0x91.
 // Shape: the position is copied into a frame C3DVector (dword copies interleaved with the first compare); the shape loop
 // re-reads _M_finish after the virtual calls; the hit and the miss each store the iterator and the Activated byte.
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
-struct C2DBoxF { C2DVector TopLeft; C2DVector BottomRight; };
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: C2DVector TopLeft; C2DVector BottomRight; };
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                              // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;               // 0x004C73D0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                    // 0x00487DD0
 };
-struct CWorld {
+class CWorld { public:
     CPlayer* GetCurrentPlayer();                        // 0x0049D9D0
 };
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual long GetShapeType() const;                  // slot 1
     virtual void v02();
@@ -32,12 +32,12 @@ struct CShape {
     virtual bool IsPosInShape(const C3DVector& pos);    // slot 4
 };
 }
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShapePointer {                                  // CCountedPointer<NShape::CShape>
     NShape::CShape* Data;
     CCPPointerInfo* Info;
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -45,7 +45,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CWorld* GetWorld();                                 // 0x00686A70
 };
-struct CTCShapeManager : CTCBase {
+class CTCShapeManager : public CTCBase { public:
     CShapePointer* PersistantShapes_first;              // +0x0c
     CShapePointer* PersistantShapes_last;               // +0x10
     CShapePointer* PersistantShapes_end;                // +0x14

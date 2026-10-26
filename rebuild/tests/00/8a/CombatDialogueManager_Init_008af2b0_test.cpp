@@ -1,13 +1,13 @@
 // Behaviour test (0x008af2b0): CombatDialogueManager::Init fetches COMBAT_DIALOGUE_DEF_INSTANCE and registers the def's 17 speech groups (EnemySighted .. Flee) with NextAllowedFrame 0; an already-present group keeps its entry
 #include <cstdio>
 #include <cstring>
-struct CCombatDialogueDef {
+class CCombatDialogueDef { public:
     int EnemySighted, RunForCover, Hiding, Ambushing, WillSeenUsed, Threat, Encourage, FoeKnockedDownByColleague, MenLosing,
         EnemyKnockedDown, RangedCombatAiming, RangedCombatAimingBlocked, Injured, ReactionToDecapitation, ColleagueInjured, Scared, Flee;
 };
 static CCombatDialogueDef g_def;
 static char g_requested[64];
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(const char* name, const CCombatDialogueDef** out) { std::strcpy(g_requested, name); *out = &g_def; return true; }
 };
 static CGameDefinitionManager g_manager;
@@ -17,7 +17,7 @@ struct CSpeechGroupInfoMap {
     bool insert(unsigned int key, const TSpeechGroupInfo& v) { for (int i = 0; i < Size; ++i) if (Keys[i] == key) return false; Keys[Size] = key; Values[Size] = v; ++Size; return true; }
     int Find(unsigned int key) const { for (int i = 0; i < Size; ++i) if (Keys[i] == key) return i; return -1; }
 };
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     CSpeechGroupInfoMap SpeechGroupInfoMap; const CCombatDialogueDef* PDialogueDef;
     void AddSpeechGroup(unsigned int group) { SpeechGroupInfoMap.insert(group, TSpeechGroupInfo()); }
     void Init()

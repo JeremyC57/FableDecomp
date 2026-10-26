@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_CastBattleCharge {
+class CCreatureAction_CastBattleCharge { public:
     void* vftable;
     int destroyed;
 };

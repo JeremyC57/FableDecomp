@@ -1,4 +1,4 @@
-struct CTCMapwho;
+class CTCMapwho;
 // Leaf: OnDie
 
 extern "C" void helper_9f9020(void);

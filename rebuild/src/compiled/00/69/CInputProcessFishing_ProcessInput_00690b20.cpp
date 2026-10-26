@@ -19,7 +19,7 @@ class CInputEvent;
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -35,7 +35,7 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     void SetHandled();                             // 0x00A0D390
 };
-struct CTCFishing {
+class CTCFishing { public:
     void ReelInButtonPressed();                    // 0x007B0BA0
     void CastButtonPressed();                      // 0x007B0CC0
 };
@@ -54,7 +54,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];

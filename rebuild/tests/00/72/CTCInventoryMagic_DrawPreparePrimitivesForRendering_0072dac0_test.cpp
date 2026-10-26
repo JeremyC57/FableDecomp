@@ -7,8 +7,8 @@ struct CTCInventoryBase {
     bool InventoryOpen;
     void DrawPreparePrimitives(CViewport* viewport, long value) { ++g_calls; g_vp = viewport; g_value = value; }
 };
-namespace NHeroInformationScreens { struct CBase { virtual long GetValue() { ++g_gets; return 77; } }; }
-struct CTCInventoryMagic : CTCInventoryBase, NHeroInformationScreens::CBase {
+namespace NHeroInformationScreens { class CBase { public: virtual long GetValue() { ++g_gets; return 77; } }; }
+class CTCInventoryMagic : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     virtual void v00() {}
     void DrawPreparePrimitivesForRendering(CViewport* viewport);
 };

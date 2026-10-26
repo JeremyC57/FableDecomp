@@ -10,9 +10,9 @@
 // Data: "AT_ConvoySpy" 0x012F7CE8, "HUD_ORB_RED_SMALL" 0x012D4BF0, "REGION_EXIT_POINT" 0x012CA510, zero vector 0x0143E8E0.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (phase flags +0x48 / +0x49, guard vector +0xa8).
 // Shape: C3DVector carries a user memberwise copy ctor (retail copies the by-value wander centre word by word, load/store interleaved).
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
 extern C3DVector g_ZeroVector;                      // 0x0143E8E0
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -37,11 +37,11 @@ struct CCountedPointer {
     CCountBlock*     Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
-struct CBaseClass {                                   // vtable 0x01231710
+class CBaseClass { public:                                   // vtable 0x01231710
     CBaseClass() { }
     virtual void b0();
 };
-struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
@@ -61,8 +61,8 @@ struct CScriptThing : CBaseClass {                     // vtable 0x01238C8C, 12 
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c)
 };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
-struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
+class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
+class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
@@ -70,12 +70,12 @@ struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
 };
 }
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-struct CBaseObject {
+class CBaseObject { public:
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
     virtual ~CBaseObject();
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
@@ -83,7 +83,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                    // 0x00CD2770
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, long priority);   // slot 8 (+0x20)
@@ -203,7 +203,7 @@ struct CGameScriptInterface {
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);   // 0x00CBE716
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xa38];
     float ArenaGuardWanderMaxDistance;                 // +0xa38 (retail; PDB name not resolved)
 };

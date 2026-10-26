@@ -17,12 +17,12 @@ static int fails = 0;
 // accessors (`p == 0 ? 0 : p->len` shares the tested zero); `!strncmp(...)` returns through `neg ; sbb ; inc`.
 #include <string.h>
 
-struct CCharStringData {
+class CCharStringData { public:
     const char* m_pText;                             // +0x00
     long        m_Length;                            // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
@@ -34,7 +34,7 @@ struct CCharString {
     }
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CCharString ConvertToCharString() const;         // 0x0099B2C0
 };

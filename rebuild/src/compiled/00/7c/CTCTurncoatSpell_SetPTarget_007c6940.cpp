@@ -17,7 +17,7 @@
 //        component is fetched with the bare one-ternary GetTC after its presence test (no zero preload), the caster's
 //        through the const GetTC; the def is a named local read just before the level call (kept in esi across it).
 class CThing;
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -50,7 +50,7 @@ public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct CBaseIntelligentPointer {
     virtual void v00();                         // +0x00 vptr
@@ -60,7 +60,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8
     virtual void v00();
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
@@ -80,10 +80,10 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCTurncoat {
+class CTCTurncoat { public:
     void SetTurncoatTimeLast(float time);       // 0x007C7810
 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     long GetAbilityLevel(long ability) const;   // 0x005EDE93 (EHeroAbility)
 };
 struct CFloatVector {                            // STLport vector<float> (12 bytes in retail)
@@ -92,12 +92,12 @@ struct CFloatVector {                            // STLport vector<float> (12 by
     float* _M_end_of_storage;
     const float& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-struct CSpecialAbilitiesTurncoatSpellDef {
+class CSpecialAbilitiesTurncoatSpellDef { public:
     unsigned char _pad_0x00[0x54];
     CFloatVector  TurncoatTime;                 // +0x54
 };
 
-struct CTCTurncoatSpell {
+class CTCTurncoatSpell { public:
     void*                     __vftable;        // +0x00
     CThing*                   ParentThing;      // +0x04 (CTCBase)
     unsigned char             _pad_0x08[0x38];

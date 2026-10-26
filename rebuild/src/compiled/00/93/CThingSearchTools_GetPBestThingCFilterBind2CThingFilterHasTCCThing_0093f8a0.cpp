@@ -11,7 +11,7 @@
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on (the PDB bitset<274> and vector map
 // carry debug padding): UsingComponents +0x20 [PDB +0x20], ThingTypeFlags +0x6c [PDB +0x7c],
 // the state bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
@@ -54,28 +54,28 @@ struct CThingList {
 };
 
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long Type;                                    // ETCInterfaceType
     bool operator()(const CThing* thing) const;      // 0x006A80A0
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     float X, Y, RangeSq;
     bool operator()(const CThing* thing) const;      // 0x006A76B0
 };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
     template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing); }
 };
-template <class A, class B, class C> struct CFilter_Bind3 {
+template <class A, class B, class C> class CFilter_Bind3 { public:
     const A& First;
     const B& Second;
     const C& Third;
     CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
     template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
 };
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

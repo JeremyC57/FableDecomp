@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSoundPair { long a, b; CSoundPair() : a(0), b(0) {} };
+class CSoundPair { public: long a, b; CSoundPair() : a(0), b(0) {} };
 struct S { int id; };
 static long g_code = 0; static int g_name = 0;
 struct Base { virtual ~Base() {} unsigned char body[0x110]; Base(void* o, long c, const CSoundPair& s) { g_code = c; } void SetAnimationName(const S& n) { g_name = n.id; } };

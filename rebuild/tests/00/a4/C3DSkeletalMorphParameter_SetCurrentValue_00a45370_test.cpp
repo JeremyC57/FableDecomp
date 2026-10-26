@@ -1,10 +1,10 @@
 // Behaviour test for 0x00A45370 C3DSkeletalMorphParameter::SetCurrentValue
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void DeleteData(void*) { ++g_deleted; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     void Clear()
     {
@@ -12,9 +12,9 @@ template<class T> struct CCountedPointer {
         Info = 0; Data = 0;
     }
 };
-struct C3DSkeletalMorph { CCountedPointer<int> CombinedMorph; };
+class C3DSkeletalMorph { public: CCountedPointer<int> CombinedMorph; };
 struct CShared { bool SignedFlag; };
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorphParameter { public:
     float CurrentValue; C3DSkeletalMorph* SkeletalMorph; CCountedPointer<CShared> SharedData;
     float GetMinimumValue() const { return SharedData.Data->SignedFlag ? -1.0f : 0.0f; }
     void SetCurrentValue(float value)

@@ -2,10 +2,10 @@
 #include <cstring>
 #include <new>
 static int g_strings = 0;
-struct CCharString { void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
-struct CResource { virtual void v00() {} unsigned char _body[0x18]; CResource() {} };
+class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
+class CResource { public: virtual void v00() {} unsigned char _body[0x18]; CResource() {} };
 struct __declspec(novtable) CDefinitionBase : CResource { long m_defIndex; long m_reserved; unsigned char m_flags : 3; CDefinitionBase() : CResource(), m_defIndex(0), m_flags(0) { } };
-struct CAIScratchpadDef : CDefinitionBase { unsigned char _pad0[0x3c]; CCharString Action; bool FaceHeroForAction; CCharString TargetName; unsigned char _pad1[0x1c]; CCharString TableName; CCharString SeatName; virtual void v00() {} CAIScratchpadDef(); };
+class CAIScratchpadDef : public CDefinitionBase { public: unsigned char _pad0[0x3c]; CCharString Action; bool FaceHeroForAction; CCharString TargetName; unsigned char _pad1[0x1c]; CCharString TableName; CCharString SeatName; virtual void v00() {} CAIScratchpadDef(); };
 CAIScratchpadDef::CAIScratchpadDef() : CDefinitionBase(), Action(), TargetName(), TableName(), SeatName() { }
 int main()
 {

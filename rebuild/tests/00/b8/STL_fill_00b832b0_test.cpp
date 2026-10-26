@@ -6,7 +6,7 @@
 // slot drops its old block (deleter + block delete at zero) and shares val's block; slots already sharing it are left.
 static int g_deleted = 0;
 static int g_blocksFreed = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;

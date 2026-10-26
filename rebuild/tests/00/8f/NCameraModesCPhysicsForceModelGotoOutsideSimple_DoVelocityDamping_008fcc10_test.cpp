@@ -1,17 +1,17 @@
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
     C3DVector operator*(float s) const { return C3DVector(x * s, y * s, z * s); }
 };
 namespace NCameraModes {
-struct CPhysicsForceModelBase {
+class CPhysicsForceModelBase { public:
     C3DVector m_source;
     virtual ~CPhysicsForceModelBase() { }
     virtual C3DVector DoVelocityDamping() { return m_source; }
 };
-struct CPhysicsForceModelGotoOutsideSimple : CPhysicsForceModelBase {
+class CPhysicsForceModelGotoOutsideSimple : public CPhysicsForceModelBase { public:
     virtual C3DVector DoVelocityDamping() { return CPhysicsForceModelBase::DoVelocityDamping() * 6.0f; }
 };
 }

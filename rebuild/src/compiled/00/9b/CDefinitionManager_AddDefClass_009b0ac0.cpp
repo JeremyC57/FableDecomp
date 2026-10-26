@@ -17,8 +17,8 @@
 // its ctor body (an init-list Create is stored before the vector zeroes).
 // Leaf: AddDefClass
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
-struct CCharStringData { char* Data; long Length; };
-struct CCharString {
+class CCharStringData { public: char* Data; long Length; };
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -40,9 +40,9 @@ template <class T> struct CRetailVector {   // STLport vector (12 bytes)
     ~CRetailVector() { if (_M_start) free(_M_start); }
     T& operator[](unsigned long i) { return _M_start[i]; }
 };
-struct CDefClassBase;
+class CDefClassBase;
 typedef CDefClassBase* (*TDefCreateFn)();
-struct CDefClassInit {
+class CDefClassInit { public:
     CCharString Name;                                  // +0
     TDefCreateFn Create;                               // +4
 };
@@ -79,13 +79,13 @@ struct CDefClassInfoMap {
         }
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Release();                            // slot 1
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void Persist(struct CPersistContext& context);   // slot 18 (+0x48)
+    virtual void Persist(class CPersistContext& context);   // slot 18 (+0x48)
     long RefCount;                                     // +4
 };
 struct CDefPointer {
@@ -102,7 +102,7 @@ struct CDefPointer {
     }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _body[0x2c];
     void InitClearMode();                              // 0x009BAA70
 };
@@ -114,7 +114,7 @@ struct CInstantiatedDefInfo {
 };
 extern bool g_bDefsCompiling;                          // 0x0138E189
 extern bool g_bDefsLoaded;                             // 0x013CA7D8
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char _pad00[0x78];
     CDefClassInfoMap DefClassInfo;                     // +0x78
     unsigned char _pad88[0xa4 - 0x88];

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C2DBoxI { long TLX; long TLY; long BRX; long BRY; void ClipTo(const C2DBoxI& other); };
+class C2DBoxI { public: long TLX; long TLY; long BRX; long BRY; void ClipTo(const C2DBoxI& other); };
 void C2DBoxI::ClipTo(const C2DBoxI& other)
 {
     if (TLX < other.TLX) TLX = other.TLX; else if (TLX > other.BRX) TLX = other.BRX;

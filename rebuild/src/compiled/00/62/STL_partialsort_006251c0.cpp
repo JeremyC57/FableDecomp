@@ -40,7 +40,7 @@ public:
 };
 
 #pragma auto_inline(off)
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     // 0x006238A0 (landed): a same-TU noinline stand-in that reads only the two quests, so VC7.1 knows the comparator
     // slot it is called on survives the call (retail keeps the comparator word in esi across it).
     __declspec(noinline) bool operator()(const CTestQuest& a, const CTestQuest& b) const

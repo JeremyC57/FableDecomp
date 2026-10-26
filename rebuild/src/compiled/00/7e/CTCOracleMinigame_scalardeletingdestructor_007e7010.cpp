@@ -1,4 +1,4 @@
-struct CTCOracleMinigame {
+class CTCOracleMinigame { public:
     void* vftable;
 };
 

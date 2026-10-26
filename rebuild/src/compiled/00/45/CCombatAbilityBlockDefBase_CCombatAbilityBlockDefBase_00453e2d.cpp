@@ -9,7 +9,7 @@
 // pushes (`push dword ptr [esp+n]`), so the by-value enums are plain longs and the TU is size-optimised
 // (`#pragma optimize("s", on)`). Vtable 0x01232E04.
 #pragma optimize("s", on)
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x24];                              // +0x04 .. +0x28
     CSubDefClassBase();                                     // 0x0044C0C0
@@ -21,7 +21,7 @@ struct CCombatAbilityBlockingData_Calls {                   // retail 0x30 bytes
     CCombatAbilityBlockingData_Calls(long interfaceType, long weaponClass);   // 0x00453DE0
 };
 
-struct CCombatAbilityBlockDefBase : CSubDefClassBase {
+class CCombatAbilityBlockDefBase : public CSubDefClassBase { public:
     CCombatAbilityBlockingData_Calls CombatAbility;         // +0x28
     virtual void v00();                                     // own vtable 0x01232E04
     CCombatAbilityBlockDefBase(long interfaceType, long weaponClass);

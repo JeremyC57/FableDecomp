@@ -4,19 +4,19 @@
 #include <cstring>
 static char g_log[64];
 static void Log(const char* s) { std::strcat(g_log, s); }
-struct CDataOutputStream { int id; };
-struct CMemoryDataInputStream { int id; };
+class CDataOutputStream { public: int id; };
+class CMemoryDataInputStream { public: int id; };
 struct CULongLongMap { int entries; CULongLongMap() : entries(0) { } ~CULongLongMap() { Log("D"); } };
 static void GFSerialiseMapBinaryOut_ULongLong(CDataOutputStream* s, const CULongLongMap* m) { if (s->id == 7 && m->entries == 3) Log("O"); }
 static void GFSerialiseMapBinaryIn_ULongLong(CMemoryDataInputStream* s, CULongLongMap* m) { if (s->id == 6) { m->entries = 9; Log("I"); } }
-struct CSpecialEffectsStringMap { CULongLongMap ContainmentMap; CSpecialEffectsStringMap() { Log("C"); } };
+class CSpecialEffectsStringMap { public: CULongLongMap ContainmentMap; CSpecialEffectsStringMap() { Log("C"); } };
 template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CSpecialEffectsStringMap> {
     CSpecialEffectsStringMap DefaultVal;
     void TransferBinaryOut(CDataOutputStream* s, const CSpecialEffectsStringMap* v) { GFSerialiseMapBinaryOut_ULongLong(s, &v->ContainmentMap); }
     void TransferBinaryIn(CMemoryDataInputStream* s, CSpecialEffectsStringMap* v) { GFSerialiseMapBinaryIn_ULongLong(s, &v->ContainmentMap); }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void CheckCRC(const char* name) { if (name[0] == 0) Log("K"); }
     template <class T> void Transfer(T& value)

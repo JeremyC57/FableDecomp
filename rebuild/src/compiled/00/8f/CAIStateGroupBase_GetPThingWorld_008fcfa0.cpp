@@ -17,7 +17,7 @@ struct CFirst {
     CSecond* m_pSecond;                    // +0x1c
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     unsigned char _pad[0x4];
     CFirst* m_pFirst;                      // +0x4
     void* GetPThingWorld();

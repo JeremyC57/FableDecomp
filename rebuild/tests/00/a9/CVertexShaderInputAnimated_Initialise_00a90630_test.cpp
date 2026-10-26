@@ -24,14 +24,14 @@ extern "C" int __cdecl printf(const char* format, ...);
 //   choices are conditional expressions over two complete calls (ternary arguments give `mov eax,imm` forms);
 //   `!b` is the `sete al` argument.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();                         // 0x0099A2E0
 };
 enum EVertexStreamDataType {                       // values follow D3DDECLTYPE
     VSDT_FLOAT2 = 1, VSDT_FLOAT3 = 2, VSDT_FLOAT4 = 3, VSDT_D3DCOLOR = 4, VSDT_SHORT4 = 7,
     VSDT_USHORT2N = 11, VSDT_USHORT4N = 12, VSDT_UDEC3 = 13
 };
-template <class T> struct CArray {                 // retail CArray (STLport vector, 12 bytes)
+template <class T> class CArray { public:                 // retail CArray (STLport vector, 12 bytes)
     T* m_first;
     T* m_last;
     T* m_end;
@@ -41,13 +41,13 @@ template <class T> struct CArray {                 // retail CArray (STLport vec
             free(m_first);
     }
 };
-struct CVertexStreamFormat : CBaseClass {          // 16 bytes
-    struct CDataElement { unsigned long Usage; EVertexStreamDataType Type; };
+class CVertexStreamFormat : public CBaseClass { public:          // 16 bytes
+    class CDataElement { public: unsigned long Usage; EVertexStreamDataType Type; };
     CArray<CDataElement> DataElements;             // +0x04
     CVertexStreamFormat();                         // 0x00AB37F0
     void AddDataElement(unsigned long usage, EVertexStreamDataType type);   // 0x00AB3810
 };
-struct CVertexShaderInput {
+class CVertexShaderInput { public:
     void AddStream(unsigned long stream, const CVertexStreamFormat& format, bool flag);   // 0x00AB3B40
 };
 namespace N3DPrimitive {

@@ -14,7 +14,7 @@
 // node word, the header is malloc'd and linked to itself; NoAllocatedClasses is cleared in the body, before the resize.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CBaseClass { virtual ~CBaseClass(); };
+class CBaseClass { public: virtual ~CBaseClass(); };
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
@@ -61,7 +61,7 @@ struct CList : CListBase {                                  // list<CClass*>
 // AllocFunc +0xc, Name (CCharString) +0x10 -- Ego_r.pdb has 28 with its 12-byte list. Retail strides: __copy<CClassTypeInfo*>
 // 0x00A37C40 divides by 0x14 (0x66666667, sar 3) and steps 0x14; vector<CClassTypeInfo>::resize 0x00A38150 builds its
 // default element in a 0x14-byte frame.
-struct CClassTypeInfo { unsigned char _body[0x14]; };
+class CClassTypeInfo { public: unsigned char _body[0x14]; };
 
 class CClassFactory : public CBaseClassNonCopyable {
 protected:

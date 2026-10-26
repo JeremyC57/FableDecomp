@@ -13,8 +13,8 @@
 // 0x0097DF60 model (Types +0, LookFlags +4, NavigationInput +8, PAction +0x20, MoveToPos +0x28, LookAtThing +0x40).
 // Shape: in this TU the interface map's lower_bound is inline (no 0x0040F020 call); the CTCLook GetTC runs the loop on its result iterator initialised from the member AFTER the length (the first pointer is read once into eax and copied to esi, `it = last` reuses esi), the type-7 lookup goes through the by-value LowerBound helper (no copy); the CBrainOutput constructor is out
 // of line and its destructor inline; the arrival test is `status == 0 || |offset|^2 > eps^2`.
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
 };
@@ -29,7 +29,7 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
 }
 extern const float EPSILON;                     // 0x0129BA3C (0.0001f)
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -51,7 +51,7 @@ inline CInterfaceMap::SEntry* LowerBound(CInterfaceMap::SEntry* first, CInterfac
     return first;
 }
 
-struct CNavigationInput {
+class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c
     long  MovementType;                         // +0x10
@@ -61,13 +61,13 @@ struct CCreatureNavOutput {
     long Status;                                // 0 arrived, 1 failed, 2 moving
     C3DVector Offset;
 };
-struct CTCLook {
+class CTCLook { public:
     bool TrackNearestInterestingThing(bool track);   // 0x00753840
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     CCreatureNavOutput GetNextNavPosOnRoute(const CNavigationInput& input, bool b1, bool b2, bool b3, bool b4, bool b5);   // 0x006CBAC0
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     bool BlocksMovement();                      // virtual slot 49 (+0xc4), declared below
 };
@@ -84,7 +84,7 @@ struct CCreatureActionVirtuals {
     virtual bool BlocksMovement();              // slot 49 (+0xc4)
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -150,7 +150,7 @@ struct CCountedPointer {
         Block = 0;
     }
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long           Types;              // +0x00
     long                    LookFlags;          // +0x04
     CNavigationInput        NavigationInput;    // +0x08
@@ -167,7 +167,7 @@ struct CBrainOutput {
         NavigationInput = input;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad04[0x14];
@@ -180,7 +180,7 @@ enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABO
 enum EMovementType { MOVEMENT_DEFAULT };
 inline bool IsDead(const CThing* thing) { return (((const CThingCreatureBase*)thing)->m_flags91 & 1) != 0; }
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

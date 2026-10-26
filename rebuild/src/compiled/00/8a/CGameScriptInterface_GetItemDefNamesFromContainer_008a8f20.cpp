@@ -12,7 +12,7 @@
 //   frame word); push_back inlined (null-tested placement copy, finish += 4, else the overflow with the __false_type tag in
 //   the dead slot); the item count re-derived every pass.
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -63,7 +63,7 @@ __declspec(noinline) void CCharStringVector::_M_insert_overflow(CCharString* pos
     *(void**)&x = p;
 }
 #pragma auto_inline(on)
-struct CDefString {
+class CDefString { public:
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
 };
@@ -101,7 +101,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 struct CContainerItem { long DefIndex; long Data; };     // 8 bytes
-struct CTCContainer {
+class CTCContainer { public:
     unsigned char _pad00[0xc];
     CContainerItem* ItemsStart;                         // +0x0c
     CContainerItem* ItemsFinish;                        // +0x10
@@ -123,7 +123,7 @@ public:
         return (const T*)it->component;
     }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;                   // slot 11 (+0x2c)
@@ -138,7 +138,7 @@ struct CScriptThing {
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
     void* PImp[2];
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names) const;
     void*                      World;                   // +0x04
     void*                      Component;               // +0x08

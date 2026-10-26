@@ -5,7 +5,7 @@ static const CBase* gDeregistered = 0;
 static int gOrder = 0, gDeregOrder = 0, gBaseOrder = 0;
 struct CManager { void DeregisterScreen(const CBase& s) { gDeregistered = &s; gDeregOrder = ++gOrder; } };
 static CManager gManager;
-struct CPlayerGui { CManager* GetPHeroInfoScreensManager() const { return &gManager; } };
+class CPlayerGui { public: CManager* GetPHeroInfoScreensManager() const { return &gManager; } };
 static CPlayerGui gGui;
 static CPlayerGui* g_pPlayerGui = &gGui;
 struct CTCInventoryBase {

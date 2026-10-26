@@ -11,7 +11,7 @@
 //   linked-map vector<long> +0x00; teleporter component (0xDD) enabled flag +0x10.
 #include <new>
 struct __false_type { __false_type() { } };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
     C2DCoordI() {}
@@ -128,7 +128,7 @@ __declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(cons
     return lo;
 }
 #pragma auto_inline(on)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -163,25 +163,25 @@ public:
         return false;
     }
 };
-struct CTCTeleporter {
+class CTCTeleporter { public:
     unsigned char _pad00[0x10];
     bool Enabled;                                     // +0x10
 };
-struct CRegion {
+class CRegion { public:
     long* LinkedMapsStart;                            // +0x00 vector<long>
     long* LinkedMapsFinish;
     long* LinkedMapsEnd;
     unsigned long size() const { return LinkedMapsFinish - LinkedMapsStart; }
 };
-struct CWorldMap {
+class CWorldMap { public:
     const CRegion& GetRegion(long index);             // 0x004FC180
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const;   // 0x004FC3C0
 };
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long m_type;
     CThingFilter_HasTC(long type) : m_type(type) { }
 };
-struct CThingFilter_InMap {
+class CThingFilter_InMap { public:
     const CWorldMap* m_worldMap;
     long m_map;
     CThingFilter_InMap(const CWorldMap& worldMap, long map) : m_worldMap(&worldMap), m_map(map) { }
@@ -193,7 +193,7 @@ struct CFilter_Bind2 {                                // CFilter_Bind2<CThingFil
 };
 inline CFilter_Bind2 operator&&(const CThingFilter_HasTC& a, const CThingFilter_InMap& b) { return CFilter_Bind2(a, b); }
 CThing* PeekSearchCandidate();
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out);   // 0x00617780
 };
 #pragma auto_inline(off)
@@ -206,7 +206,7 @@ void CThingSearchTools::GetAllThings(const CFilter_Bind2& filter, list<CThing*>&
         out.push_back(thing);
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                 // slot 12
@@ -215,7 +215,7 @@ struct CWorld {
     CThingSearchTools* PThingSearchTools;             // +0x20
     void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out) { PThingSearchTools->GetAllThings(filter, out); }
 };
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     unsigned char _pad00[0x1e8];
     CCoordVector  ActiveRegionTeleportPositions;      // +0x1e8
     unsigned char _pad1f4[0x238 - 0x1f4];

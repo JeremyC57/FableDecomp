@@ -31,7 +31,7 @@ union CHandleSlot {                         // a handle table entry
     CHeader* Header;                        // a live handle's block header
     long     NextFreeHandle;                // a free handle's link in the free-handle chain
 };
-struct CHandleBasedMemoryPool {             // retail view of the 0x00C27xxx build (vtable 0x012B4098)
+class CHandleBasedMemoryPool { public:             // retail view of the 0x00C27xxx build (vtable 0x012B4098)
     void*          __vftable;               // +0x00
     void*          Buffer;                  // +0x04
     void*          UnalignedBuffer;         // +0x08

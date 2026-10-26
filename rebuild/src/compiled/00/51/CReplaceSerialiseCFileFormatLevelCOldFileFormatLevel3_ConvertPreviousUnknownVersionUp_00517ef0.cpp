@@ -14,7 +14,7 @@
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long refs;                                // +0x0
     void (__fastcall* destroy)(void*);                 // +0x4
     void* object;                                      // +0x8

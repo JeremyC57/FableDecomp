@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialAbilitiesAssassinRushDef { int x; };
+class CSpecialAbilitiesAssassinRushDef { public: int x; };
 
 static int g_dtor_called = 0;
 static int g_delete_called = 0;

@@ -26,15 +26,15 @@ static int fails = 0;
 // (`dec [ecx+4] ; jne`); the owner's channel is a reference local (ebp) shared by both calls; each owned thing is read with
 // ONE GetPItem; the parent's lookup goes through a const thing (const LowerBound).
 class CTCBase;
-namespace NGraphicAppearance { struct CTCGraphicAppearance; }
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                 // slot 1 (+0x04)
     long RefCount;                                          // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -54,19 +54,19 @@ template <class T> struct CDefPointer {
         return *this;
     }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x56 - 0x08];
     bool OverrideLightingChannel;                           // +0x56
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CDefPointer<CAppearanceDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual long* GetSubDefIndex(const CCharString& name) const;   // slot 14 (+0x38)
@@ -153,12 +153,12 @@ struct CTCOwnedThings {                                     // the type-0x21 com
     SOwnedThingNode* OwnedThings;                           // +0x0c list header
 };
 
-struct CEnginePrimitiveThemeChannelDesc {                   // one dword
+class CEnginePrimitiveThemeChannelDesc { public:                   // one dword
     unsigned long Channel;
 };
 
 namespace NTCMessages {
-struct CMessageOnSetThingOwner {
+class CMessageOnSetThingOwner { public:
     virtual void v00();
     CThing* NewOwner;                                       // +0x04
 };
@@ -166,7 +166,7 @@ struct CMessageOnSetThingOwner {
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     void*          __vftable;                               // +0x00 (CTCBase)
     CThing*        ParentThing;                             // +0x04
     unsigned char  _pad08[0x40 - 0x08];

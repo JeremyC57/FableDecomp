@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CThingDrainLifeShotDef
-{
+class CThingDrainLifeShotDef
+{ public:
     void* vftable;
 };
 extern void* const g_CThingDrainLifeShotDef_vftable;

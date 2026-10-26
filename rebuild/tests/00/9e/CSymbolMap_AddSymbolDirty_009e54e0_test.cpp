@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* s) : m_pData(s) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
@@ -32,11 +32,11 @@ template <class T> struct vector {
     }
 };
 struct CCompareString { };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V, class C> class CVectorMap { public:
     vector< pair<K, V> > Data; C Compare; bool Dirty;
     void Add(const K& key, const V& value) { Data.push_back(pair<K, V>(key, value)); Dirty = true; }
 };
-struct CSymbolMap {
+class CSymbolMap { public:
     long _padding_; CVectorMap<CCharString, CSymbolInfo, CCompareString> SLONGMap; CCharStringSet NamesUsed; bool CheckForDuplicateSymbols;
     void AddSymbolDirty(const CCharString& group, const CCharString& name, long val);
 };

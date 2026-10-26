@@ -2,7 +2,7 @@
 #include <cstring>
 
 // Independent behaviour test: model the same shape with a real ctor.
-struct CCharString {
+class CCharString { public:
     const char* m_ptr;
     int   m_len;
     CCharString(const char* str, long len) : m_ptr(str), m_len((int)len) {}
@@ -10,7 +10,7 @@ struct CCharString {
 
 static const char* const s_desc = "CHUNK_DESC_LITERAL";
 
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     void* vtbl;
     CCharString GetChunkDescription() const;
 };

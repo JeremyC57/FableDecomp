@@ -19,7 +19,7 @@ struct __false_type { __false_type() { } };
 SEventListPair* __fastcall CopyDown(SEventListPair* first, SEventListPair* last, SEventListPair* result, const SCopyTag& tag, long* distance);   // 0x006FBC50
 void __fastcall DestroyRange(SEventListPair* first, SEventListPair* last, const __false_type& tag);   // 0x006FB8A0
 
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long capacity() const { return (unsigned long)(_M_end_of_storage - _M_start); }
     void erase(T* f, T* l)

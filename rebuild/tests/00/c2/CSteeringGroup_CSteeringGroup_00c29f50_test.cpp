@@ -1,7 +1,7 @@
 // Behaviour test for CSteeringGroup::CSteeringGroup @ 0x00C29F50 (unplaced, empty, polymorphic).
 #include <cstdio>
 
-struct CSteeringAgent;
+class CSteeringAgent;
 
 class CSteeringGroup {
 public:

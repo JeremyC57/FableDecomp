@@ -1,7 +1,7 @@
 // behaviour test for 0x00AE0680 CParticleProgram::WriteGroups: count, then per group bone index, blend count, blend bytes
 #include <cstdio>
-struct C3DVertexBlend2 { long Vertex; float Weight; };
-struct C3DGroup2 {
+class C3DVertexBlend2 { public: long Vertex; float Weight; };
+class C3DGroup2 { public:
     long BoneIndex;
     C3DVertexBlend2* Start;
     C3DVertexBlend2* Finish;
@@ -15,7 +15,7 @@ struct CGroupArray {
     unsigned int size() const { return (unsigned int)(Finish - Start); }
     const C3DGroup2& operator[](unsigned int i) const { return Start[i]; }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     unsigned long Words[32];
     int NoWords;
     long RawBytes;

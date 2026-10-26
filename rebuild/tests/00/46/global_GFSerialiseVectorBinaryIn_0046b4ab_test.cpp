@@ -1,7 +1,7 @@
 // Behaviour test for 0x0046B4AB GFSerialiseVectorBinaryIn<CMusicEntry>: count, resize(n), one traits read per element
 #include <cstdio>
 #include <cstring>
-struct CMusicEntry {
+class CMusicEntry { public:
     unsigned int ID; int Filename; float Gain; bool CacheToHD;
     CMusicEntry() : ID(0), Filename(-1), Gain(0.0f), CacheToHD(false) {}
 };

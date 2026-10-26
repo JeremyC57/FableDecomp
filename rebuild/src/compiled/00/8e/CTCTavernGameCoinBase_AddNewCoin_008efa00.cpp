@@ -25,7 +25,7 @@
 class CThing;
 class CThing { };
 class CThingObject : public CThing { };              // CThingObject derives from CThing (PositionMesh takes the base)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -39,7 +39,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct Coin {                                   // 0x3c bytes
+class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
     C2DVector Velocity;                         // +0x0c
@@ -83,7 +83,7 @@ __declspec(noinline) void CCoinVector::_M_insert_overflow(Coin* position, const 
 }
 #pragma auto_inline(on)
 
-struct CTavernGameCoinBaseDef {
+class CTavernGameCoinBaseDef { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long          m_count;                      // +0x04
@@ -129,7 +129,7 @@ struct CThingDefOwner {
     CThingDefHolder* DefHolder;                 // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     static void __fastcall PositionMesh(CThing* thing, const C3DVector& position, const CRightHandedSet& orientation,
                                         const C3DVector& offset, float tilt, float angle);   // 0x005EABC0
 

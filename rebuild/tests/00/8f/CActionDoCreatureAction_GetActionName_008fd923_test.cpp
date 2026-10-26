@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString {
+class CCharString { public:
     int dummy;
     CCharString* ctor_99ebf0(const char* lit, int len);
 };

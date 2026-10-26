@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CCreatureNavigationDef
-{
+class CCreatureNavigationDef
+{ public:
     void* vftable;
 };
 extern void* const g_CCreatureNavigationDef_vftable;

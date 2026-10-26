@@ -9,12 +9,12 @@
 // Shape: the argument is pushed before the GetPItem call that yields the emitter (plain chained call); the
 // pending branch re-reads the counted pointer's object for the flag store after the assignment call.
 namespace NParticleEngine {
-template<class A, class B> struct CParticleUpdateParameters {
+template<class A, class B> class CParticleUpdateParameters { public:
     unsigned char _body[0x20];                              // opaque: only its address is used here
     CParticleUpdateParameters& operator=(const CParticleUpdateParameters& other);   // 0x006E2570
 };
 
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void SetUpdateParameters(const CParticleUpdateParameters<unsigned long, unsigned long>& parameters);   // 0x00AF0610
 };
 }
@@ -36,13 +36,13 @@ struct CBaseIntelligentPointer {                            // sizeof 8: vptr + 
     NParticleEngine::CParticleEmitter* GetPItem() const;    // 0x00A01B50
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    Object;
     long* PCount;
     T* operator->() const { return Object; }
 };
 
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];                     // CTCBase: ParentThing +4, flags +8/+9
     void*                   EmitterName;                    // +0x0c CCharString

@@ -10,10 +10,10 @@
 //   The binary-load arm's traits object (PDB: CPersistTraits<long> = { long DefaultVal; }, user ctor, nothing
 //   stored) is a named local in the arm's own block; VC7.1 homes it in the dead value-argument slot
 //   (`lea ecx,[esp+20h]`, the value pointer already in eax).
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                   // 0x00993EB0
 };
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00 (PDB: CPersistTraits<T> is { T DefaultVal; })
     CPersistTraits() {}                           // user ctor: DefaultVal is left unset, nothing is stored
@@ -29,7 +29,7 @@ template <class T> struct CPersistContext_TransferableComponent : CPersistContex
     virtual void TransferIn();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

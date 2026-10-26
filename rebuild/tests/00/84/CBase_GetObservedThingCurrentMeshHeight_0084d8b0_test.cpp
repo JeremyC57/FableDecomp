@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct CThing {
+class CThing { public:
     unsigned char m_meshFlags; unsigned char m_lifeFlags; float m_height;
     float GetCurrentMeshHeight() { return m_height; }
 };

@@ -15,27 +15,27 @@
 //   constant 6 through a C4DVector(const CRGBFloatColour&) conversion temporary: retail keeps both (z/w go through the
 //   product's frame slots, x/y straight to the C4DVector) -- a C4DVector product local, by-value parameters or a user copy
 //   ctor all store the product once. Float pool: -0.5f @ 0x01238798.
-struct CRGBFloatColour;
-struct C4DVector {
+class CRGBFloatColour;
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
     inline C4DVector(const CRGBFloatColour& c);
 };
-struct CRGBFloatColour {
+class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() { }
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
 inline CRGBFloatColour operator*(const CRGBFloatColour& a, const CRGBFloatColour& b) { return CRGBFloatColour(a.R * b.R, a.G * b.G, a.B * b.B, a.A * b.A); }
 inline C4DVector::C4DVector(const CRGBFloatColour& c) : X(c.R), Y(c.G), Z(c.B), W(c.A) { }
-struct CMatrix3x4 { float M[12]; };
+class CMatrix3x4 { public: float M[12]; };
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -44,13 +44,13 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
@@ -145,7 +145,7 @@ private:
 };
 extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
 
-struct CEngineWaterSettings {                           // PDB CEngineWaterSettings (0x2e4)
+class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char _pad00[0xd];
     bool          EnableBumpMap;                        // +0x0d
     unsigned char _pad0e[0x5c - 0x0e];
@@ -162,13 +162,13 @@ struct CEngineWaterSettings {                           // PDB CEngineWaterSetti
 
 struct CThemeChannel { CRGBFloatColour Colour; };
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     unsigned char  _pad00[0x3c];
     CThemeChannel* ThemeChannels;                       // +0x3c (CArray first pointer)
 };
 extern CEngineLightingManager* g_pLightingManager;      // 0x01436E9C
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char        _pad000[0x274];                // vptr, buffers, shaders, render lists (retail 12-byte CArrays)
     bool                 HighendWaterEnabled;           // +0x274
     unsigned char        _pad275[0xb];

@@ -14,7 +14,7 @@ struct CModeList_Retail {
     bool empty() const { return node->next == node; }
     CModeBase_Retail* front() const { return node->next->data; }
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     virtual long v00() { return 0; }
     virtual long v01() { return 1; }
     virtual long v02() { return 2; }

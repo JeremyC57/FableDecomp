@@ -11,7 +11,7 @@
 // Shape: the landed CHTE_Prisoner::Main model (0x00D69F50): the predicate is a scoped frame object; `if (done) return;`
 // then `while (!done) { while (!near) { yield; if (done) return; } if (done) return; ...; yield; }` -- both loops
 // rotated, the inner test duplicated.
-struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
     virtual ~CScriptThing();                           // slot 0
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
@@ -36,7 +36,7 @@ namespace N_00ef7ab0 { struct CIsThingAlive {                                 //
 }; } using N_00ef7ab0::CIsThingAlive;
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame();                                       // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

@@ -11,8 +11,8 @@
 // Shape: the 16-aligned CMatrix4x4 (`and esp,-16` frame) is built from the 3x4 by an inline converting constructor
 //   (`__forceinline`: transposed, last row 0,0,0,1); the in-place blend goes through an inline wrapper passing `*this` as the
 //   source (`push eax ; mov ecx,eax` with one `lea`); the blend factor is evaluated early by the scheduler.
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix3x4 { float m[4][3]; };                  // rows: right, up, forward, position
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix3x4 { public: float m[4][3]; };                  // rows: right, up, forward, position
 
 class __declspec(align(16)) CMatrix4x4 {
 public:
@@ -37,8 +37,8 @@ public:
     virtual void GetTransform(CMatrix3x4& transform) const;   // slot 3 (+0x0c)
 };
 
-struct CMovableResource { virtual ~CMovableResource(); };
-struct CMovableResourceMemoryPool;
+class CMovableResource { public: virtual ~CMovableResource(); };
+class CMovableResourceMemoryPool;
 
 class CParticleSimulation : public CMovableResource {
 public:

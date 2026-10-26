@@ -2,7 +2,7 @@
 // Leaf: ?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/b1/CThingTrackNode_DrawIsDrawable_00b1ff80.cpp: vtable slot 2 of NParticleEngine::CPSCDecalRenderer; Ego_r.pdb lists Alloc / DatabaseClone / DatabaseCopy on every particle component class and the body is exactly alloc-then-copy-from-this; the clone target is the slot-18 virtual
 #pragma optimize("g",on)
-namespace NParticleEngine { struct CPSCDecalRenderer; }
+namespace NParticleEngine { class CPSCDecalRenderer; }
 using NParticleEngine::CPSCDecalRenderer;
 
 struct IDrawableObj {
@@ -31,7 +31,7 @@ struct IDrawableObj {
 extern IDrawableObj* __fastcall GetDrawableObject_00af8100(CPSCDecalRenderer* self);
 
 namespace NParticleEngine {
-struct CPSCDecalRenderer {
+class CPSCDecalRenderer { public:
     IDrawableObj* DatabaseClone();
 };
 }

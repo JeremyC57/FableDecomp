@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-struct CCharString {
+class CCharString { public:
     CCharString(const char* lit, int len);
     int dummy;
 };
 
-struct C3DMeshFileTransformationChunk {
+class C3DMeshFileTransformationChunk { public:
     CCharString GetChunkInfo() const;
 };
 

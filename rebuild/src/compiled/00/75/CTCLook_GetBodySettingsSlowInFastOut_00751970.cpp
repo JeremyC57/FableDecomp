@@ -16,7 +16,7 @@ extern float g_epsilon_0129ba3c;                     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
-struct CTCLook {
+class CTCLook { public:
     void GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const;   // FableWin.pdb ?GetBodySettingsSlowInFastOut@CTCLook@@ABEXAAM0MMM@Z
 };
 

@@ -7,7 +7,7 @@
 // GoToPub bodies the lookup's bool IS tested, so the miss path falls straight to the epilogue and the
 // uninitialised slot is never read. Frame: one `push ecx` for the key temporary. The engine header keeps
 // PBrain as a pad, so the base layout is modelled locally.
-struct CTCBase;
+class CTCBase;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with LowerBound @ 0x0040F020 -- the same shape the landed
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,12 +45,12 @@ struct CTCJackOfBlades {                        // interface type 0xCE component
     bool m_defeated;                            // +0x18
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

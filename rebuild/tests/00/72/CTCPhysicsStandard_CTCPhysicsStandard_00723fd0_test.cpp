@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { int id; };
-struct CThingPhysicsMeshInfo;
-struct CTCPhysicsBase { CThing* ParentThing; CTCPhysicsBase(CThing& o) : ParentThing(&o) { } };
+class CThing { public: int id; };
+class CThingPhysicsMeshInfo;
+class CTCPhysicsBase { public: CThing* ParentThing; CTCPhysicsBase(CThing& o) : ParentThing(&o) { } };
 struct CTCPhysicsStandard : CTCPhysicsBase {
     CThingPhysicsMeshInfo* PPhysicsMeshInfo; long RHSetLastFrameSet;
     bool AlwaysFacingMovementDirection : 1; bool AngledWithGround : 1; bool FeelsGravity : 1; bool FeelsAirResistance : 1;

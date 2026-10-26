@@ -13,7 +13,7 @@
 // is propagated.
 #pragma optimize("s", on)
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     unsigned char _body[0x2C];
     long GetNumberOfSlots();                             // 0x005BD1CF
 };

@@ -4,19 +4,19 @@
 static int g_ctor = 0, g_dtor = 0, g_lookups = 0, g_flagsCalls = 0, g_blendCalls = 0, g_setMain = 0;
 static const char* g_lastName = 0; static long g_lastFlags = -1; static const void* g_blendThing = 0;
 static long g_setType = 0, g_setAnim = 0, g_setLoop = 0, g_setPri = 0, g_setFlags = 0, g_blend = -1, g_delay = -1;
-struct CThing;
-struct CCharString {
+class CThing;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1) { m_pData = (void*)text; ++g_ctor; }
     ~CCharString() { ++g_dtor; }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex; unsigned char _rest[0xc];
     unsigned long GetAnimateThingFlags() const { ++g_flagsCalls; return 0x55; }
     long GetTimeToBlendIn(CThing* thing) const { ++g_blendCalls; g_blendThing = thing; return 9; }
 };
-struct CAnimFrameInfo { long m_frame; long m_subFrame; CAnimFrameInfo() : m_frame(0), m_subFrame(0) { } };
-struct CAnimInit {
+class CAnimFrameInfo { public: long m_frame; long m_subFrame; CAnimFrameInfo() : m_frame(0), m_subFrame(0) { } };
+class CAnimInit { public:
     long UpdateMode; unsigned char Type; bool Looping; long Anim; float Speed; float Alpha; float LastAlpha;
     CAnimFrameInfo Frame; unsigned long Flags; unsigned long TypeFlags; long Priority;
     CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority)
@@ -24,14 +24,14 @@ struct CAnimInit {
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority)
     { Type = type; TypeFlags = typeFlags; Anim = anim; UpdateMode = updateMode; Looping = looping; Flags = flags; Priority = priority; }
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     long UpdateMode; short* m_animsFirst; short* m_animsLast; unsigned char _pad0c[0x44]; unsigned char Type;
     unsigned char Looping : 1; unsigned char Finished : 1;
     void SetMainAnim(const CAnimInit& init, long blendIn, long delay)
     { ++g_setMain; g_setType = init.Type; g_setAnim = init.Anim; g_setLoop = init.Looping; g_setPri = init.Priority; g_setFlags = init.Flags; g_blend = blendIn; g_delay = delay; }
 };
 static CAnimationEntry g_entry = { 77 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long flags)
     { ++g_lookups; g_lastName = (const char*)name.m_pData; g_lastFlags = flags; return &g_entry; }
 };

@@ -1,12 +1,12 @@
 // Test for 006818f0 CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero: true for attitudes 0-2, 5, 6, 9-16.
 #include <cstdio>
-struct CThing { long Attitude; };
-struct COpinionReactionManager {
+class CThing { public: long Attitude; };
+class COpinionReactionManager { public:
     const CThing* LastThing;
     long GetThingAttitudeToPlayer(const CThing* thing) { LastThing = thing; return thing->Attitude; }
 };
-struct CWorld { COpinionReactionManager* POpinionReactionManager; };
-struct CTCCreatureOpinionOfHero {
+class CWorld { public: COpinionReactionManager* POpinionReactionManager; };
+class CTCCreatureOpinionOfHero { public:
     CThing* ParentThing; CWorld* World;
     CWorld* GetWorld() const { return World; }
     bool IsWillingToContinueFollowingHero() const

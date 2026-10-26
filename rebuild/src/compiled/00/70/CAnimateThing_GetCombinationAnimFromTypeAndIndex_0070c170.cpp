@@ -14,14 +14,14 @@ template<class T> struct CRetailList {
     unsigned long m_size;                       // +0x08
 };
 
-struct CAnimSet {
+class CAnimSet { public:
     long m_value0;                              // +0x00
     short* m_pIndex;                            // +0x04
     unsigned char _pad[0x48];                   // +0x08 .. +0x4f
     unsigned char m_type;                       // +0x50
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _pad[0x54];
     CRetailList<CAnimSet> m_combinationAnims;   // +0x54 (head at +0x58)
     CRetailList<CAnimSet> m_combinationAnims2;  // +0x60 (head at +0x64)

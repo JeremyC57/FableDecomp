@@ -1,8 +1,8 @@
 #pragma optimize("s",on)
 // CShoveHaPennyRegionDef::Copy @ 0x004eafc9
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CShoveHaPennyRegionDef {
+class CShoveHaPennyRegionDef { public:
     char pad[0x28];
     unsigned int f28;   // +0x28
     unsigned int f2c;   // +0x2c

@@ -14,7 +14,7 @@
 // Layout: engine/CEngineSkyRenderer.h (BaseBandVertexShader +0x118, BaseBandPixelShader +0x138).
 #include "engine/CEngineSkyRenderer.h"
 
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 
 struct CTrackedRenderState {                       // 0x14 bytes
     long          m_stateId;                       // +0x00
@@ -75,26 +75,26 @@ __forceinline void CTrackedRenderState::Set(unsigned long value)
         g_pRenderManagerCore->ChangeState(*this, value);
 }
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
     unsigned long Size() const { return Last - First; }
     const T* GetData() const { return Size() > 0 ? First : (const T*)this; }
 };
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
     CArray<C4DVector> ReservedPresets;                  // +0x140
 };
-struct CVertexShader;
-struct CPixelShader;
+class CVertexShader;
+class CPixelShader;
 
 class CShaderRenderManager {
 public:
@@ -186,7 +186,7 @@ struct SEnvironmentSettings {
     unsigned char _pad00[0x54];
     SSkySettings* m_pSky;                               // +0x54
 };
-struct CEnvironment {
+class CEnvironment { public:
     virtual void v00();
     virtual SEnvironmentSettings* GetSettings();        // slot 1
 };

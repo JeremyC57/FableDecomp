@@ -3,7 +3,7 @@
 // Callees: none. PDB CDateAndTime (28 bytes): long Year +0, ulong Month +4, Day +8, Hour +0xc, Minute +0x10, Second +0x14, Millisecond +0x18.
 // Shape: a short-circuit && chain, every mismatch jumping to the shared `xor eax,eax` tail; the true result is
 // `mov eax,1` (a long/int result, not the `mov al,1` of a bool). The sibling operator!= @ 0x009E9B20 inlines this body.
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;            // +0x00
     unsigned long Month;           // +0x04
     unsigned long Day;             // +0x08

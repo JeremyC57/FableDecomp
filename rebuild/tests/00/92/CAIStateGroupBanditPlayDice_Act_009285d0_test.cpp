@@ -1,14 +1,14 @@
 // Behaviour test for CAIStateGroup_BanditPlayDice::Act @ 0x009285D0: into animation, timed dice/playing loop, out animation.
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
-struct CThingCreatureBase : CThing { };
+class CThing { public: int id; };
+class CThingCreatureBase : public CThing { public: };
 struct CIntelligentPointerThing {
     CThing* PItem;
     CIntelligentPointerThing(CThing* item) : PItem(item) { }
     CThing* GetPItem() const { return PItem; }
 };
-struct CTCDiceGame { long NumberOfPlayers; CIntelligentPointerThing CurrentPlayer; CTCDiceGame() : NumberOfPlayers(0), CurrentPlayer(0) { } };
+class CTCDiceGame { public: long NumberOfPlayers; CIntelligentPointerThing CurrentPlayer; CTCDiceGame() : NumberOfPlayers(0), CurrentPlayer(0) { } };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 static long g_frame = 0;
 static int g_rand = 0;

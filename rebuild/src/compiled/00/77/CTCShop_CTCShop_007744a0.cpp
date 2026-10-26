@@ -21,7 +21,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 
-struct CShopItem {                              // 28 bytes
+class CShopItem { public:                              // 28 bytes
     float Quantity;                             // +0x00
     float PriceMultiplier;                      // +0x04
     float MaxStock;                             // +0x08
@@ -30,31 +30,31 @@ struct CShopItem {                              // 28 bytes
     float SalesPerDay;                          // +0x14
     float SalesPerDayRandomness;                // +0x18
 };
-struct CStockItemDef {                          // 0x48 bytes
+class CStockItemDef { public:                          // 0x48 bytes
     unsigned char _pad00[0x28];
     long          Key;                          // +0x28
     CShopItem     Item;                         // +0x2c
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1 (+0x04)
     long m_refCount;                            // +0x04
     void ReleaseReference() { if (--m_refCount == 0) Delete(); }
 };
-struct CShopDef : CDefPointeeBase {
+class CShopDef : public CDefPointeeBase { public:
     unsigned char  _pad08[0x40 - 0x08];
     CStockItemDef* StockItemsFirst;             // +0x40
     CStockItemDef* StockItemsLast;              // +0x44
     void PrepareStockItems();                   // 0x007773A0 (name unproven)
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CShopDef>* out); // 0x005130A0 (CDefPointer<const CShopDef>*)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();      // stand-in callee of the stand-in body below
@@ -70,7 +70,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C (CDefPointer<const CThingDef>*)
 };
 void* FindDef_CDefinitionManager_GetDef_0();    // stand-in callee of the stand-in body below
@@ -85,15 +85,15 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                    // +0x8c
 };
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad[0x14];
     long          m_day;                        // +0x14
 };
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad[0x1c];
     CGameTimeManager* m_pGameTimeManager;       // +0x1c
 };
@@ -103,10 +103,10 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     void* m_pItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8 (CThingCreatureBase)
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8 (CThingCreatureBase)
     virtual void v00();
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     T* _M_start;
@@ -145,7 +145,7 @@ struct CStockMap : CStockTree {                 // map<long, CShopItem>
     CShopItem& operator[](const long& key);     // 0x00778280
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
@@ -154,7 +154,7 @@ struct CTCBase {
     CDefinitionManager* GetDefinitions() const; // 0x006869D0
     CWorld* GetWorld();                         // 0x00686A70
 };
-struct CTCShop : CTCBase {                      // vtable 0x0126A94C
+class CTCShop : public CTCBase { public:                      // vtable 0x0126A94C
     long          StockState;                   // +0x0c
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;   // +0x10
     CRetailVector<CIntelligentPointer<CThingCreatureBase> > Shoppers;   // +0x18

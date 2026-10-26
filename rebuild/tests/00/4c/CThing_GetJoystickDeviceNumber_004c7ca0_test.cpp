@@ -5,7 +5,7 @@ struct CInputProvider {
     long GetDeviceNumber();
 };
 
-struct CInputManager {
+class CInputManager { public:
     CInputProvider* table;
     CInputProvider* GetProvider(int deviceIndex);
 };
@@ -17,7 +17,7 @@ struct CInputManagerHolder {
 
 CInputManagerHolder* g_inputHolder;
 
-struct CThing {
+class CThing { public:
     char pad[0x90];
     signed char joystickDeviceNumber;
     long GetJoystickDeviceNumber();

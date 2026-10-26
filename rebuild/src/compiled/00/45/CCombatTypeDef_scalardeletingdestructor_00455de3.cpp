@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 extern void __fastcall CCombatTypeDef_dtor(void* def);
 
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     int f0;
     int Parent;
     void* f8;

@@ -18,18 +18,18 @@
 //   GetDef needs its same-TU stand-in body (below, under auto_inline(off)): without it the def lands in the argument
 //   slot, is reloaded for the release and the frame/registers differ (LTCG knowledge that the pointer it fills does
 //   not escape).
-struct CThingCreatureBase;
-struct CTCBase;
-struct CCharString {
+class CThingCreatureBase;
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
@@ -38,7 +38,7 @@ struct CSpecialAbilitiesLightningSpellDef {
     unsigned char _pad114[4];
     long ReleaseSound;                                // +0x118 CDefString id
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
@@ -58,7 +58,7 @@ template<class T> struct CDefPointer {
         return *this;
     }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
     bool GetDef(long index, CDefPointer<CSpecialAbilitiesLightningSpellDef>* out) const;      // 0x007A35D0
     CDefPointer<CSpecialAbilitiesLightningSpellDef> GetPDefFromGlobalIndex(long index) const; // 0x009AD9E0
@@ -79,7 +79,7 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<CSpecialAbilitiesLightni
     return false;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
 };
 struct CDefStringTable {
@@ -93,7 +93,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);             // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
@@ -120,7 +120,7 @@ struct CTCSound {                                     // interface type 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 
-struct CCombatActionBase {                            // retail sizeof 0x114
+class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
@@ -128,7 +128,7 @@ struct CCombatActionBase {                            // retail sizeof 0x114
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
-struct CCreatureAction_ReleaseWillLightningSpell : CCombatActionBase {   // vtable 0x0127DDEC
+class CCreatureAction_ReleaseWillLightningSpell : public CCombatActionBase { public:   // vtable 0x0127DDEC
     virtual void v00();
     CCreatureAction_ReleaseWillLightningSpell(CThingCreatureBase* owner);
 };

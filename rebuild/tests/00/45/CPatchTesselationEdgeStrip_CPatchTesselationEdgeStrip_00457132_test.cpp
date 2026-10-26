@@ -4,7 +4,7 @@ static int g_freed = 0;
 static void* g_last = 0;
 extern "C" void eng_free(void* p) { g_freed++; g_last = p; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad00[0x40];
     void* p40;
     char pad44[0x4c-0x44];

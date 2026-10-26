@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CSpectator::Init picks 1 when near Spectator1, 2 when near Spectator2, else 3, unless the script is done
-struct CScriptThing { const char* name; };
-struct CCharString { const char* text; CCharString(const char* t, long) : text(t) {} };
+class CScriptThing { public: const char* name; };
+class CCharString { public: const char* text; CCharString(const char* t, long) : text(t) {} };
 static const char* g_near = 0;
 static bool g_done = false;
 static int g_lookups = 0;
 static bool IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance)
 { return distance == 1.0f && g_near && std::strcmp(b.name, g_near) == 0; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const CCharString& name) const { ++g_lookups; CScriptThing t; t.name = name.text; return t; }
 };
 static const char g_spectator1[] = "Spectator1";

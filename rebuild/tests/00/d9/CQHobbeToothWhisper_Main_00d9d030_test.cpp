@@ -7,8 +7,8 @@ static void L(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 static int g_frames = 0, g_endAt = 9, g_hobbeHealth = 0;
 struct CContest { bool ContestOver; bool WhisperHit; };
 static CContest g_contest;
-struct CThing { const char* name; bool alive; };
-struct CGameScriptInterface {
+class CThing { public: const char* name; bool alive; };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; if (g_frames == 2) g_contest.ContestOver = true; }
     bool StartScriptingEntity(int) { return true; }
     CThing GetNearestWithScriptName(const char* n) const { CThing t; t.name = n; t.alive = !std::strcmp(n, "DrinkingHobbe") && g_frames < 4; return t; }

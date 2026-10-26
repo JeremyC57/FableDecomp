@@ -7,7 +7,7 @@
 // result pointer as two CHAINED assignments (`a = b = ... = 0.0f;` then the diagonal `= 1.0f`): a chain
 // stores right to left, which is the retail order (+0x2c, +0x28, ... +4, then +0x20, +0x10, +0) with one
 // register reused for 0 and then 0x3F800000; separate statements store in source order.
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     float m[12];                                     // 3x3 rotation (rows) then the translation
 };
 

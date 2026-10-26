@@ -3,7 +3,7 @@ struct FadeEntry {
     float scale;  // +0x40 relative
 };
 
-struct CEngineLocalDetailGenerator {
+class CEngineLocalDetailGenerator { public:
     char pad[0x3c];
     FadeEntry entries[64]; // starts at +0x3c
 

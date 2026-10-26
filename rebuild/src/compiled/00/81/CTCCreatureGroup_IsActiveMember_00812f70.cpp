@@ -8,7 +8,7 @@
 // with the map's header pointer (Members +0, the STLport `_M_header`), and the CGroupMemberData::IsActive byte sits at
 // node +0x20 (node: color/parent/left/right, key +0x10, value +0x18 = {CIntelligentPointer PMember, bool IsActive}).
 // Members are the PDB names of CTCCreatureGroup (map at +0x18, same offset in retail).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned char _pad20[0x71];
@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     void* PData;                            // +0x04
 };
 
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;        // +0x00
     bool IsActive;                          // +0x08
     unsigned long JoinedFrame;              // +0x0c
@@ -45,7 +45,7 @@ struct CGroupMemberMap {                    // STLport map<unsigned __int64, CGr
     SGroupMemberNode* end() { return Header; }
 };
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08

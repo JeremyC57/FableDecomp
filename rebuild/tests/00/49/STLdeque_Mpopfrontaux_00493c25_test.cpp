@@ -7,7 +7,7 @@ static void* gFreed = 0;
 static int gDtors = 0;
 static unsigned long gLastDestroyed = 0;
 static void test_free(void* p) { ++gFrees; gFreed = p; free(p); }
-struct CWideString { void* PStringData; };
+class CWideString { public: void* PStringData; };
 class CSubtitleRenderer {
 public:
     class CSetTextInfo {

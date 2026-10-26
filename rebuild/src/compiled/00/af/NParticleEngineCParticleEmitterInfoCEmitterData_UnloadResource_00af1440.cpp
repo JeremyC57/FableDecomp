@@ -4,7 +4,7 @@
 // reaches zero. Shape: the pending test returns the IsFinished result's zero byte straight (`pop esi ; ret`); the release is the landed counted-pointer
 // Unload shape (test, `dec [ecx+4] ; jne`, `call [eax+4]`, null inside the branch, null again) applied through the holder pointer at +0x2c, then `mov al,1`.
 // No PDB layout for CEmitterData; member names are descriptive.
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     bool IsFinished() const;                       // 0x009D54E0
 };
 

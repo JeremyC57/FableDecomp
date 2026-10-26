@@ -2,7 +2,7 @@
 #include <cmath>
 // Behaviour test: anonymous GetRelativePosition -- the index-th of count points on a spiral: azimuth fraction*2pi in XY, elevation fraction*pi/2 lifting toward the levitation offset.
 #define CHECK(c) if (!(c)) { std::printf("007f8220_TEST FAIL\n"); return 1; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }

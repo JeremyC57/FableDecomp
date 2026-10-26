@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CThingTrackNode::DrawIsDrawable (0x00837040): returns the display engine's slot-9 answer.
-struct CDisplayEngine {
+class CDisplayEngine { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
     virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual void v08() {}
@@ -8,7 +8,7 @@ struct CDisplayEngine {
     bool m_enabled;
 };
 static CDisplayEngine g_engine;
-struct CThingTrackNode {
+class CThingTrackNode { public:
     CDisplayEngine* GetDisplayEngine() { return &g_engine; }
     bool DrawIsDrawable() { return GetDisplayEngine()->IsDrawingEnabled(); }
 };

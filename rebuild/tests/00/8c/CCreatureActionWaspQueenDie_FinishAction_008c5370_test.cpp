@@ -1,17 +1,17 @@
 // Behaviour test for 0x008C5370 CCreatureAction_WaspQueenDie::FinishAction: loops 1..4 restart the action (code 250)
 // carrying the new loop count; the fifth loop kills the creature instead.
 #include <cstdio>
-struct CThingCreatureBase;
-struct CSoundPair { int a, b; CSoundPair() : a(0), b(0) {} };
+class CThingCreatureBase;
+class CSoundPair { public: int a, b; CSoundPair() : a(0), b(0) {} };
 static int g_base = 0, g_kills = 0, g_restarts = 0, g_lastLoop = -1, g_lastCode = -1;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_creature; int m_code;
     CCombatActionBase(CThingCreatureBase* c, int code, const CSoundPair&) : m_creature(c), m_code(code) {}
     void FinishAction() { ++g_base; }
     CThingCreatureBase* GetPItem() { return m_creature; }
 };
 struct CWaspQueenDie;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void Kill(bool) { ++g_kills; }
     bool SetCurrentAction(const CWaspQueenDie& a);
 };

@@ -5,15 +5,15 @@
 //        COldFileFormatMapHeader8::ConvertFromOld(const COldFileFormatMapHeader7*), CCountedPointer<T>::DeleteData(void*), CCPPointerInfo; sizes from Ego_r.pdb.
 #include <new>
 // Layout: the serialised header opens with its version byte at +0x04.
-struct COldFileFormatMapHeader7{char pad[4];unsigned char VersionByte;};
-struct COldFileFormatMapHeader6;
+class COldFileFormatMapHeader7{ public:char pad[4];unsigned char VersionByte;};
+class COldFileFormatMapHeader6;
 struct CFileLargeThemePalette{char storage[0x8400];CFileLargeThemePalette();};
 // Layout: exact retail allocation 0x1081e; LargeThemePalette at +0x16 and AtmosThemePalette at +0x841e each span 0x8400 bytes; prefix 0x16, VersionNumber/NoSoundThemeEntries 0x08. CCPPointerInfo size 0x0c: refs +0x00, deleter +0x04, data +0x08.
 #pragma pack(push,1)
-struct COldFileFormatMapHeader8{char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;__forceinline COldFileFormatMapHeader8(){}void ConvertFromOld(const COldFileFormatMapHeader7*);};
+class COldFileFormatMapHeader8{ public:char prefix[0x16];CFileLargeThemePalette LargeThemePalette;char gap[0x08];CFileLargeThemePalette AtmosThemePalette;__forceinline COldFileFormatMapHeader8(){}void ConvertFromOld(const COldFileFormatMapHeader7*);};
 #pragma pack(pop)
-struct CCPPointerInfo{unsigned refs;void(__fastcall*destroy)(void*);void*object;__forceinline CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
-template<class T> struct CCountedPointer{T*object;CCPPointerInfo*control;
+class CCPPointerInfo{ public:unsigned refs;void(__fastcall*destroy)(void*);void*object;__forceinline CCPPointerInfo(void*p,void(__fastcall*d)(void*)):refs(1),destroy(d),object(p){}};
+template<class T> class CCountedPointer{ public:T*object;CCPPointerInfo*control;
  static void __fastcall DeleteData(void*);
  __forceinline CCountedPointer(T*p):object(p),control(p?new CCPPointerInfo(p,DeleteData):0){}
  __forceinline CCountedPointer(const CCountedPointer&x):object(x.object),control(x.control){if(control)++control->refs;}

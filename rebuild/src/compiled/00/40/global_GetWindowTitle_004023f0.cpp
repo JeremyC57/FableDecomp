@@ -40,7 +40,7 @@ public:
     static unsigned long Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
     static unsigned long CalcFromString(const CCharString& s) { return Calc(0, s.GetString(), s.Length()); }
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);                    // slot 0
     virtual void Delete();                              // slot 1
     unsigned long IVRefCount;                           // +0x04
@@ -53,7 +53,7 @@ struct CIVCountedPointeeBase {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {           // 4 bytes
+template <class T> class CIVCountedPointer { public:           // 4 bytes
     T* Object;
     T* operator->() const { return Object; }
     ~CIVCountedPointer()
@@ -63,7 +63,7 @@ template <class T> struct CIVCountedPointer {           // 4 bytes
     }
 };
 namespace NGameText {
-struct CGroupEntry : CIVCountedPointeeBase {
+class CGroupEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
 class CDataBank {

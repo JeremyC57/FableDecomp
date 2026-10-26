@@ -1,5 +1,5 @@
 // std::vector::push_back(const _Ty& _Val) -- VC7.1 Dinkumware vector<CHandleInfo>::push_back, the libpk pool's handle table: construct in place below capacity (_Ufill -> _Uninit_fill_n), else insert(end(), _Val) -> _Insert_n(end(), 1, _Val)
-// Leaf: ?push_back@?$vector@UCHandleInfo@CHandleBasedMemoryPool@@V?$allocator@UCHandleInfo@CHandleBasedMemoryPool@@@std@@@std@@QAEXABUCHandleInfo@CHandleBasedMemoryPool@@@Z
+// Leaf: ?push_back@?$vector@VCHandleInfo@CHandleBasedMemoryPool@@V?$allocator@VCHandleInfo@CHandleBasedMemoryPool@@@std@@@std@@QAEXABVCHandleInfo@CHandleBasedMemoryPool@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C29C30, length 98 bytes (padded to 112), thiscall, `ret 4`.
 // Identity: the only caller is the pool's InternalAllocateHandle @ 0x00C28A80 (call 0x00C28AD1), which pushes a
 //   CHandleInfo temporary with Header = 0 onto the handle table at pool+0x43C (Ego_r.pdb CHandleBasedMemoryPool::Handles,
@@ -20,8 +20,8 @@ inline void* __cdecl operator new(unsigned int, void* _Where) throw() { return (
 
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;
-    struct CHandleInfo {                    // Ego_r.pdb: 4 bytes, a union of the block header and the free-handle link
+    class CHeader;
+    class CHandleInfo { public:                    // Ego_r.pdb: 4 bytes, a union of the block header and the free-handle link
         union { CHeader* Header; long NextFreeHandle; };
     };
 };

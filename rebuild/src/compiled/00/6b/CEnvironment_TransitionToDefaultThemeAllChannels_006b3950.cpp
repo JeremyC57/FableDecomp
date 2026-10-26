@@ -16,7 +16,7 @@ struct CEnvironmentThemePriorityStack_006b3950 {  // CArray<CEnvironmentThemePri
     CEnvironmentThemePriorityStackEntry_006b3950* m_pCapacity;
 };
 
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char                 _pad0[0x3e];
     bool                          ForcedEnvironmentTheme;  // +0x3e
     unsigned char                 _pad1[0x48 - 0x3f];

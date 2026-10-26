@@ -4,12 +4,12 @@
 #endif
 #include <stdio.h>
 
-struct CTCHeroOpinionDeedLog;
-struct CTCCreatureOpinionOfHero;
+class CTCHeroOpinionDeedLog;
+class CTCCreatureOpinionOfHero;
 static CTCHeroOpinionDeedLog* g_reactions;
 static CTCCreatureOpinionOfHero* g_opinion;
 
-struct CThing {
+class CThing { public:
     unsigned char m_flags91;
     bool hasReactions;
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -34,11 +34,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     CThing* item = p.GetPItem();
     return item != 0 && !(item->m_flags91 & 1);
 }
-struct CPlayer {
+class CPlayer { public:
     CBaseIntelligentPointer CharacterThing;
     const CBaseIntelligentPointer& GetCharacterThing() const { return CharacterThing; }
 };
-struct CWorld { CPlayer* PMainPlayer; };
+class CWorld { public: CPlayer* PMainPlayer; };
 
 static int g_deletes, g_liveObjects;
 struct CIVCountedObject {
@@ -46,18 +46,18 @@ struct CIVCountedObject {
     void Delete() { ++g_deletes; --g_liveObjects; }
     long Release() { return --IVRefCount; }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pObject;
     CDefPointer(T* o) : m_pObject(o) { }
     CDefPointer(const CDefPointer& o) : m_pObject(o.m_pObject) { if (m_pObject) ++m_pObject->IVRefCount; }
     ~CDefPointer() { if (m_pObject) { T* p = m_pObject; if (p->Release() == 0) p->Delete(); m_pObject = 0; } }
     T* operator->() const { return m_pObject; }
 };
-struct COpinionDeedEffectsDef : CIVCountedObject { long Priority; };
+class COpinionDeedEffectsDef : public CIVCountedObject { public: long Priority; };
 
 static COpinionDeedEffectsDef g_infos[4];
 static int g_infoCalls;
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     long priorities[8];
     CDefPointer<COpinionDeedEffectsDef> GetDeedEffectsDef(long type) const
     {
@@ -66,14 +66,14 @@ struct CTCHeroOpinionDeedLog {
         return CDefPointer<COpinionDeedEffectsDef>(info);
     }
 };
-struct COpinionDeed { long Type; };
-struct CTCCreatureOpinionOfHero {
+class COpinionDeed { public: long Type; };
+class CTCCreatureOpinionOfHero { public:
     COpinionDeed* head;
     COpinionDeed* GetHeadPendingDeed() { return head; }
 };
-struct CAIBrain { CThing* Creature; };
+class CAIBrain { public: CThing* Creature; };
 static CWorld g_world;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     CWorld* GetPThingWorld() const { return &g_world; }
 };

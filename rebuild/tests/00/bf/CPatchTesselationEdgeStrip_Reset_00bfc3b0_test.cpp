@@ -2,13 +2,13 @@
 #include <cstring>
 // CPatchTesselationEdgeStrip::Reset: all four vertex arrays resized to size+1 (Verts, WaterVerts, FanBaseVerts,
 // WaterFanBaseVerts), then StartPos / Size stored as words, Tesselated cleared, Vertical set
-struct CMovableResource { long dummy; };
+class CMovableResource { public: long dummy; };
 static char g_order[16]; static long g_n;
-template <int K> struct CEdgeStipVertexArray {
+template <int K> class CEdgeStipVertexArray { public:
     void* Data; long Count; CMovableResource* LastResource;
     bool Resize(long count, CMovableResource* resource) { Count = count; LastResource = resource; g_order[g_n++] = (char)('0' + K); g_order[g_n] = 0; return true; }
 };
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     unsigned short StartPos; unsigned short Size;
     CEdgeStipVertexArray<0> Verts; CEdgeStipVertexArray<1> FanBaseVerts; CEdgeStipVertexArray<2> WaterVerts; CEdgeStipVertexArray<3> WaterFanBaseVerts;
     bool Tesselated; bool Vertical;

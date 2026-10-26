@@ -2,13 +2,13 @@
 #include <cstdio>
 static int g_log[8]; static int g_n = 0;
 static void Log(int v) { if (g_n < 8) g_log[g_n++] = v; }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector& operator*=(float scale) { X *= scale; Y *= scale; Z *= scale; return *this; }
 };
-struct CTCPhysicsBase { C3DVector m_applied; void ApplyAcceleration(const C3DVector& a) { m_applied = a; Log(2); } };
-struct CTCCoopSpirit { void OnHit() { Log(3); } };
-struct CThing {
+class CTCPhysicsBase { public: C3DVector m_applied; void ApplyAcceleration(const C3DVector& a) { m_applied = a; Log(2); } };
+class CTCCoopSpirit { public: void OnHit() { Log(3); } };
+class CThing { public:
     unsigned int m_presentBits[9];
     CTCCoopSpirit* m_spirit;
     CTCPhysicsBase* m_pPhysics;

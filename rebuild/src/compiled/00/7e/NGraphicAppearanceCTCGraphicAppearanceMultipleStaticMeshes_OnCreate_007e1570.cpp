@@ -10,9 +10,9 @@
 // def pointer (a CDefClassBase*) at +0x70.
 // Shape: `this` is copied to eax first (kept for the `add eax,1Ch` argument), the owner's def is loaded
 // into ecx and null-tested, the call is the `if` body; plain `ret`.
-struct CDefClassBase;
+class CDefClassBase;
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                                // +0x70 (retail)
 };
@@ -23,11 +23,11 @@ struct CDefPointer {                                    // CDefPointer<T>, as th
     CSubDef* m_p;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef_007e1400(CDefPointer& out);          // 0x007E1400
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -36,9 +36,9 @@ struct CTCBase {
 
 namespace NGraphicAppearance {
 
-struct CPrimitive;
+class CPrimitive;
 
-struct CAGraphicAppearanceComponent {
+class CAGraphicAppearanceComponent { public:
     virtual void v00();
 };
 

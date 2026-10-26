@@ -12,7 +12,7 @@ void DestroyRange(CParticleEmitterInfo* first, CParticleEmitterInfo* last)
 {
     for (; first != last; ++first) ++g_destroyed;
 }
-struct CBankFile { void Close() { ++g_closed; } };
+class CBankFile { public: void Close() { ++g_closed; } };
 struct CArray { CParticleEmitterInfo* _M_start; CParticleEmitterInfo* _M_finish; CParticleEmitterInfo* _M_end_of_storage; };
 struct CParticleDataBank : CBankFile {
     CArray ParticleEmitters;

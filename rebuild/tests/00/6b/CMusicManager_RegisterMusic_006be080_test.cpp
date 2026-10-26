@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 
-struct CMusicEntry { unsigned int ID; unsigned int Filename; float Gain; bool CacheToHD; };
+class CMusicEntry { public: unsigned int ID; unsigned int Filename; float Gain; bool CacheToHD; };
 struct CRegisteredMusicEntry { std::string Src; std::string Dst; float Gain; float Offset; bool CacheToHD; };
 struct CPair { int first; CRegisteredMusicEntry second; };
 static bool PairLess(const CPair& a, const CPair& b) { return a.first < b.first; }
@@ -21,7 +21,7 @@ static void ReplaceSubstring(std::string& s, const std::string& from, const std:
     if (p != std::string::npos) s.replace(p, from.size(), to);
 }
 
-struct CMusicManager {
+class CMusicManager { public:
     std::vector<CMusicEntry> Entries;
     std::vector<CPair> Registered;
     bool Dirty;

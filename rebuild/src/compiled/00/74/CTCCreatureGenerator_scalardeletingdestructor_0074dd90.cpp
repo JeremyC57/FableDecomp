@@ -1,4 +1,4 @@
-struct CTCCreatureGenerator {
+class CTCCreatureGenerator { public:
     void* vftable;
 };
 

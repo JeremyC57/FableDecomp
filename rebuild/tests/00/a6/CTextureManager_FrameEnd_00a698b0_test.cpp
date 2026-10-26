@@ -1,7 +1,7 @@
 #include <cstdio>
 static int g_calls = 0;
 struct CPreallocTexturePool { unsigned char _body[0x54]; void FrameEnd() { ++g_calls; _body[0] = 1; } };
-struct CTextureManager {
+class CTextureManager { public:
     void* __vftable; bool Initialised; unsigned long PoolCount; unsigned long PreallocSizes[16];
     CPreallocTexturePool PreallocPools[16]; unsigned long FailedAllocations[16]; long BufferSize; void* TextureBuffer;
     void FrameEnd()

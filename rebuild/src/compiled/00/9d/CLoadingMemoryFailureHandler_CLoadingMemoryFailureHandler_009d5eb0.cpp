@@ -11,7 +11,7 @@ struct SFailureState_009d5eb0 {                    // the embedded state: three 
     SFailureState_009d5eb0() : m_count(0), m_limit(0), m_pending(0) { InitializeCriticalSection(m_section); }
 };
 
-struct CLoadingMemoryFailureHandler {               // vtable 0x0129B8C4
+class CLoadingMemoryFailureHandler { public:               // vtable 0x0129B8C4
     virtual void v00();
     SFailureState_009d5eb0 m_state;                // +0x04
     CLoadingMemoryFailureHandler();

@@ -9,7 +9,7 @@
 // a CIntelligentPointer temporary (the item loaded before the base ctor) handed to the inline STLport push_back (placement
 // copy: base ctor, vtable, SetPItem(GetPItem()); or _M_insert_overflow with the __false_type tag in the high byte of the
 // frame word below the temporary), destroyed through the base dtor.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
@@ -41,7 +41,7 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CTCDExplosion {
+class CTCDExplosion { public:
     virtual void v00();
     unsigned char _pad04[0x6c - 0x04];
     CRetailVector<CIntelligentPointer> SpecifiedThingsToHit;   // +0x6c (PDB +0x78)

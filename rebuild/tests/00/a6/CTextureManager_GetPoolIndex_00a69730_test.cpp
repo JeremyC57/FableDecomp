@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTextureManager {
+class CTextureManager { public:
     unsigned int PoolCount; unsigned int PreallocSizes[16];
     long GetPoolIndex(unsigned int size) const {
         unsigned int count = PoolCount; long first = 0; long len = count;

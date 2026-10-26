@@ -14,11 +14,11 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int n);   // 0x00BFEAF8
 extern "C" char* __cdecl strstr(const char* text, const char* pattern);          // 0x00BFEB3A
-struct CCharStringData {                           // the shared string block
+class CCharStringData { public:                           // the shared string block
     char* m_pData;                                 // +0x00
     long  m_length;                                // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);
@@ -26,7 +26,7 @@ struct CCharString {
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
     long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
 };
-struct CScriptBase {
+class CScriptBase { public:
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating() const;        // 0x00CB7940
 };

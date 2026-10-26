@@ -4,7 +4,7 @@
 // CEngineInternalPrimitiveWeaponTrail (rtti-vtables.tsv). Shape: the type test `cmp [esp+4],0x13 ; je` precedes `push esi` (an early `xor eax,eax ; ret 4`); the zero register edi clears the words after the base constructor; `this` is unused.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
@@ -20,7 +20,7 @@ struct SZeroWords_5c {                           // 6 words cleared by its own i
     SZeroWords_5c() : m_0(0), m_1(0), m_2(0), m_3(0), m_4(0), m_5(0) { }
 };
 
-struct CEngineInternalPrimitiveWeaponTrail : CEngineInternalPrimitiveBase {   // vtable 0x012A6B24; 0x7c bytes
+class CEngineInternalPrimitiveWeaponTrail : public CEngineInternalPrimitiveBase { public:   // vtable 0x012A6B24; 0x7c bytes
     unsigned char _pad48[0x14];            // +0x48 .. +0x5c (not initialised here)
     SZeroWords_5c m_words5c;               // +0x5c .. +0x74
     unsigned char _rest74[0x8];            // +0x74 .. +0x7c (not initialised here)
@@ -28,7 +28,7 @@ struct CEngineInternalPrimitiveWeaponTrail : CEngineInternalPrimitiveBase {   //
     CEngineInternalPrimitiveWeaponTrail() : CEngineInternalPrimitiveBase(0x13, 0x200000), m_words5c() { }
 };
 
-struct CEnginePrimitiveManagerWeaponTrails {
+class CEnginePrimitiveManagerWeaponTrails { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

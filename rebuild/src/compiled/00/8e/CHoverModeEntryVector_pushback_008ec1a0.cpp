@@ -8,11 +8,11 @@
 // Shape: the landed 0x00CB7210 push_back: placement new under VC's null test with a `__forceinline`
 // memberwise copy ctor, finish re-read and advanced by 0x18; the empty __false_type temporary is homed in
 // the dead `x` argument slot.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);  // 0x0099EC30
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct SHoverModeEntry {                // 24 bytes
     CCharString   m_name;                   // +0x00
     C3DVector     m_offset;                 // +0x04

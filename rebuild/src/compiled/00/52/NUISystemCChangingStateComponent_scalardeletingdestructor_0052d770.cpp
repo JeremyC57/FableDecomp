@@ -27,7 +27,7 @@ struct CComponentListener {                              // +0x18
     virtual void l000();
 };
 
-struct CComponent : CComponentRoot, CComponentObserver, CComponentListener {
+class CComponent : public CComponentRoot, public CComponentObserver, public CComponentListener { public:
     unsigned char _body[0x134 - 0x1c];
     CComponent();
     virtual ~CComponent();                               // 0x00532D90
@@ -40,7 +40,7 @@ struct CStateList {                                      // list<EChangingStateC
     ~CStateList();                                       // 0x0052D5C0
 };
 
-struct CChangingStateComponent : CComponent {
+class CChangingStateComponent : public CComponent { public:
     long       StatesBeingDone;                          // +0x134
     long       StatesDone;                               // +0x138
     CStateList StatesToDo;                               // +0x13c

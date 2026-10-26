@@ -1,13 +1,13 @@
 // Test for 0080c3c0 CTCDExplosion::OnInitialActivate: sub-def fetched, radius/damage/fire/lifetime copied, rings reset.
 #include <cstdio>
-struct CExplosionDef { float Damage; float ExplosionRadius; long FireDamage; float ExplosionLifeTime; };
+class CExplosionDef { public: float Damage; float ExplosionRadius; long FireDamage; float ExplosionLifeTime; };
 struct CThingDef {
     CExplosionDef* Sub;
     bool GetSubDef(CExplosionDef** out) const { *out = Sub; return true; }
 };
-struct CThing { CThingDef* PDef; };
+class CThing { public: CThingDef* PDef; };
 long g_GameFramesPerSecond = 15;
-struct CTCDExplosion {
+class CTCDExplosion { public:
     CThing* ParentThing;
     float DamageRadius, PhysicsRadius, MaxDamage; long FireDamage; long ExplosionLifeTimer;
     CExplosionDef* PExplosionDef;

@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Model of NParticleEngine::CPSCSplineBase::StartUpdate (retail 0x00B215E0).
-struct CCardinalSpline { int id; };
+class CCardinalSpline { public: int id; };
 struct CParams { int id; };
 
 static int g_offsetUpdates = 0;

@@ -1,21 +1,21 @@
 // Behaviour test for 00787780 CTCBob::OnInitialActivate: copies the physics orientation set and position, clears ForceVisible.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Forward, Up; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Forward, Up; };
 
-struct CTCPhysicsBase
-{
+class CTCPhysicsBase
+{ public:
     CRightHandedSet m_set;
     C3DVector       Position;
     virtual const CRightHandedSet& GetRHSet() const { return m_set; }
     virtual ~CTCPhysicsBase() {}
 };
 
-struct CThing { CTCPhysicsBase* PhysicsTC; };
+class CThing { public: CTCPhysicsBase* PhysicsTC; };
 
-struct CTCBob
-{
+class CTCBob
+{ public:
     CThing*         ParentThing;
     CRightHandedSet Rhset;
     C3DVector       Pos;

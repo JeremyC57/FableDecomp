@@ -1,12 +1,12 @@
 #include <cstdio>
 // Behaviour test for CThingHolySite::SerialiseGameState (0x0083BB40): def refetch unless mode 1/3.
-struct CPersistContext { long m_mode; };
-struct CThingHolySiteDef { unsigned char PlayerStart; };
-struct CDefinitionManager {
+class CPersistContext { public: long m_mode; };
+class CThingHolySiteDef { public: unsigned char PlayerStart; };
+class CDefinitionManager { public:
     CThingHolySiteDef* table; int calls;
     bool GetDef(long index, CThingHolySiteDef*& out) { ++calls; out = &table[index]; return true; }
 };
-struct CThingHolySite {
+class CThingHolySite { public:
     CDefinitionManager* mgr; unsigned short m_defIndex;
     CThingHolySiteDef* Def; bool PlayerStart; bool baseResult;
     bool SerialiseGameState(CPersistContext& context)

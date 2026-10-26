@@ -8,7 +8,7 @@ struct CSubPatchSorterEntry {
     unsigned long m_flags;                         // +0x04 bit 0: registered
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     unsigned char         _pad[0x5e4];
     CSubPatchSorterEntry* m_pSortedSubPatches;     // +0x5e4
     void UnregisterSubPatchForZSorting(long* slot);

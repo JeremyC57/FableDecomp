@@ -9,7 +9,7 @@
 // the matched 0x0089A330 row. Interface 0xd1 (CTCDecapitation is the likely class), the +0xbc flag and the action class
 // (ctor 0x0066A560) are not confirmed; the action is modelled as CCreatureAction_Decapitate.
 // Shape: /O2 (16-aligned entry).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     unsigned char _pad44[0x6c - 0x44];
@@ -25,12 +25,12 @@ struct CThing {
         return false;
     }
 };
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 struct CCreatureAction_Decapitate : CCombatActionBase {       // retail sizeof 0x114 (name not recovered)

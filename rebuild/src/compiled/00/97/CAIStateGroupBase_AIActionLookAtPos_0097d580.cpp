@@ -14,8 +14,8 @@
 // Layout: CBrainOutput per Ego_r.pdb / the landed 0x00835620 (Types +0, LookFlags +4, PAction +0x20, LookAtPos +0x34,
 //          LookAtThing +0x40); CNavigationInput's Proximity/Speed are floats, so their zero stores are immediates while
 //          MovementType uses the zero register. The base follows engine/CAIStateGroupBase.h (PBrain +4).
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
@@ -32,7 +32,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock {
     long m_references;
     void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);
@@ -66,7 +66,7 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 
-struct CNavigationInput {                       // PDB: Destination +0, Proximity +0xc, MovementType +0x10, Speed +0x14
+class CNavigationInput { public:                       // PDB: Destination +0, Proximity +0xc, MovementType +0x10, Speed +0x14
     float Destination[3];
     float Proximity;
     long  MovementType;
@@ -74,7 +74,7 @@ struct CNavigationInput {                       // PDB: Destination +0, Proximit
     CNavigationInput() : Proximity(0.0f), MovementType(0), Speed(0.0f) { }
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
@@ -90,11 +90,11 @@ struct CBrainOutput {
     }
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     bool IsLookingAtPos(const C3DVector& pos, float tolerance, bool alignBody, bool alignHead);   // 0x006650E0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00(); virtual void v01();
     virtual void Yield();                       // slot 2 (+0x08)
     unsigned char _pad04[0x18 - 0x04];
@@ -105,7 +105,7 @@ struct CAIBrain {
 enum EAIActionRepeat { AI_ACTION_ONCE = 0, AI_ACTION_REPEAT = 1 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_RUNNING = 4 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

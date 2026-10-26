@@ -7,7 +7,7 @@ struct CBase {
     virtual void v00();
     ~CBase();                                      // 0x0099A2E0
 };
-struct CVolume : CBase {              // vtable 0x0129C840
+class CVolume : public CBase { public:              // vtable 0x0129C840
     void ReleaseVolume(long flags);                // 0x00A67460
     __forceinline virtual ~CVolume()
     {

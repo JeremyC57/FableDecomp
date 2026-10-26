@@ -21,7 +21,7 @@ extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(_RTL_CRITIC
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(_RTL_CRITICAL_SECTION_Retail* cs);      // IAT 0x0143FE10
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);                         // IAT 0x0143FE1C
 double GFGetTime();                                // 0x009E1BC0
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void InternalDeallocate(void* block);          // 0x009F2920
     long GetAllocationCount();                     // 0x009F1F10
     ~CMemoryAllocator();                           // 0x009F2310
@@ -45,12 +45,12 @@ __forceinline void __fastcall GFFreeFromGlobalAllocator(void* block)    // 0x009
     }
     GFLeaveAllocatorLock();
 }
-struct CFailedAllocationHandler {
+class CFailedAllocationHandler { public:
     virtual void v00();
     virtual bool HandleFailure(unsigned long size);    // slot 1 (+0x04)
 };
 struct CHeader;
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     void*                        Buffer;                     // +0x04
     void*                        UnalignedBuffer;            // +0x08

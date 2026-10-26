@@ -8,7 +8,7 @@
 // the key in the `push ecx` frame slot, the map in esi, end or a larger key -> the end entry,
 // the component through the out pointer into eax, then ecx for the call); `this` is not needed
 // after the lookup, so no callee-saved register holds it.
-struct CTCBase {
+class CTCBase { public:
     bool HasProperty(unsigned long mask);   // 0x0087C420 (tests the mask against its def's +0x28 word)
 };
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
@@ -17,7 +17,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
@@ -36,7 +36,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     virtual bool vfunc_64();
 };
 

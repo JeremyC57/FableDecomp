@@ -2,7 +2,7 @@
 #include <cstring>
 // behaviour test: CEnvironmentLookupTexture ctor takes width/height from the TGA header and copies the surface into a 32-bit buffer
 static int g_opened = 0, g_closed = 0, g_uninit = 0; static long g_copiedPitch = 0;
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     bool Opened;
     CDiskFileWin32() : Opened(false) {}
     ~CDiskFileWin32() { Close(); }
@@ -10,8 +10,8 @@ struct CDiskFileWin32 {
     void Read(unsigned char* buffer, long size) { std::memset(buffer, 0, size); buffer[12] = 0x10; buffer[13] = 0x01; buffer[14] = 0x20; buffer[15] = 0; }
     void Close() { if (Opened) { Opened = false; ++g_closed; } }
 };
-struct C2DExtentsI { long X, Y; };
-struct CSurface {
+class C2DExtentsI { public: long X, Y; };
+class CSurface { public:
     C2DExtentsI extents;
     ~CSurface() { ++g_uninit; }
     void InitialiseAsImage(const C2DExtentsI& e) { extents = e; }

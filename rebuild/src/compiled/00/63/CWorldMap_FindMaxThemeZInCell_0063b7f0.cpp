@@ -14,20 +14,20 @@
 // ---- local CWorldMap model (the landed 0x0063A660 GetGroundSizeZAtBlock model: retail offsets and vtable; the PDB
 // header rebuild/include/engine/CWorldMap.h uses 16-byte STL containers where retail STLport vectors are 12 bytes, so it
 // does not fit). Only the vtable up to slot 13 GetDimensions (+0x34) and the out-of-line block queries are needed.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long x;
     long y;
     C2DCoordI() {}
     C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
 };
 
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX;
     long TLY;
     long BRX;

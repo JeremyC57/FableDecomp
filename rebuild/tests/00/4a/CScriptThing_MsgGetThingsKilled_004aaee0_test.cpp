@@ -58,7 +58,7 @@ struct CScriptThingInner {
   virtual bool m54(int a0){ return true; }
   virtual bool m55(int a0){ return true; }
 };
-struct CScriptThing { void *pad0; CScriptThingInner *m_impl; bool MsgGetThingsKilled(int a0); };
+class CScriptThing { public: void *pad0; CScriptThingInner *m_impl; bool MsgGetThingsKilled(int a0); };
 bool CScriptThing::MsgGetThingsKilled(int a0){ CScriptThingInner *p=m_impl; if(!p) return false; return p->m55(a0); }
 int main(){
     CScriptThing t; t.m_impl=0;

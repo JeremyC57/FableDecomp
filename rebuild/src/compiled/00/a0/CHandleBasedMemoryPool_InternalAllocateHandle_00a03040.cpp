@@ -29,7 +29,7 @@ struct CHandleArray_Retail {                       // retail CArray<CHandleBased
     }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     unsigned char       _pad[0x438];
     CHandleArray_Retail Handles;                   // +0x438
     long                FirstUnusedHandle;         // +0x444 (-1 = none)

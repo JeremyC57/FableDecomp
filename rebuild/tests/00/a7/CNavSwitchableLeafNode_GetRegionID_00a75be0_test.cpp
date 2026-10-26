@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-struct CNavSwitchableLeafNode { char pad00[0xf]; unsigned char m_disabled; long *m_link; long GetRegionID(); };
+class CNavSwitchableLeafNode { public: char pad00[0xf]; unsigned char m_disabled; long *m_link; long GetRegionID(); };
 long CNavSwitchableLeafNode::GetRegionID(){ if(!m_disabled){ if(m_link) return *m_link; } return 0; }
 int main(){
     CNavSwitchableLeafNode n; long id=55;

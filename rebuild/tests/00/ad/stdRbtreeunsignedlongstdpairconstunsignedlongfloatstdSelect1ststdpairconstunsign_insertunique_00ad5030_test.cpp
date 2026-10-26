@@ -6,7 +6,7 @@
 #include <new>
 using std::malloc; using std::free;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                     // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
     void* Data;                                         // +8

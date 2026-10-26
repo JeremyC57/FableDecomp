@@ -23,7 +23,7 @@ struct CCountedPointer {
 
 namespace NParticleEngine {
 
-struct CComponentInstance : CBase {
+class CComponentInstance : public CBase { public:
     virtual void v00();                    // this class has its own vtable (0x0129F478)
     CCountedPointer m_pDefinition;         // +0x4 .. +0x8
     bool            m_active;              // +0xC

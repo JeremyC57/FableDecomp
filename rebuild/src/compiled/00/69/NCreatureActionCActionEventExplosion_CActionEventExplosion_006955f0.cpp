@@ -8,7 +8,7 @@
 // store, so they belong to an inlined `__declspec(novtable)` intermediate base constructor (its own vtable store is
 // dead); then the vtable, the name member default-constructed out of line, and the body: +0x18 = -1, +0x1c and
 // +0x1d cleared.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                              // 0x0099E4B0
 };

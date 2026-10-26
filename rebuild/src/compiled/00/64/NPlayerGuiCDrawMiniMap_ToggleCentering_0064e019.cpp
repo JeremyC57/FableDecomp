@@ -15,9 +15,9 @@
 // the D3DCOLOR byte order (B, G, R, A), assigning R, G, B, A -- the user copy constructor makes VC build the by-value argument
 // in its own stack slot (`push ecx ; mov eax,esp`) instead of a frame temporary pushed as a dword; the fade is reached through a
 // pointer local (ebp) in both arms.
-struct CRegion;
+class CRegion;
 
-struct CRGBColour {                                // D3DCOLOR byte order
+class CRGBColour { public:                                // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
     {
@@ -29,7 +29,7 @@ struct CRGBColour {                                // D3DCOLOR byte order
     CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
-struct CFadeInFadeOutBase {                        // PDB 0x1c bytes
+class CFadeInFadeOutBase { public:                        // PDB 0x1c bytes
     bool          Active;                          // +0x00
     float         FadeInTime;                      // +0x04
     float         FadeOutTime;                     // +0x08
@@ -42,12 +42,12 @@ struct CFadeInFadeOutBase {                        // PDB 0x1c bytes
     bool IsOpen();                                 // 0x0048DA30
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long GetCurrentRegionIndex();                  // 0x004FB150
     CRegion& GetRegion(long index);                // 0x004FC180
 };
 
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
@@ -56,7 +56,7 @@ struct CWorld {
 
 namespace NPlayerGui {
 
-struct CDrawMiniMap {
+class CDrawMiniMap { public:
     void*              _vtable;                    // +0x00
     void*              PlayerGui;                  // +0x04
     void*              PlayerManager;              // +0x08

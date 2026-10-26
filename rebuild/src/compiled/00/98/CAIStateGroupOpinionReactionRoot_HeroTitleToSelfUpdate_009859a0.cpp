@@ -13,7 +13,7 @@
 // reads the never-written out pointer, which shares the lookup key's word); CTCHero::PHeroTitleSubDef (+0x18) is a
 // named local loaded before the second GetPItem (the named target), the tag (+0x38 HeroTitleCommentToSelfTag) read
 // at the push. Result `== 2` (EAIActionReturn completed).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -81,7 +81,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {       // CIntelli
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

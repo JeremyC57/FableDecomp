@@ -1,18 +1,18 @@
 // Behaviour test for CRegion::GetWorldMapOffset @ 0x006bbf40: the def's offset, or (0, 0) without a def.
 #include <cstdio>
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
 
-struct CRegionDef {
+class CRegionDef { public:
     C2DVector WorldMapOffset;
     C2DVector NameGraphicOffset;
     CRegionDef() : WorldMapOffset(1.0f, 2.0f), NameGraphicOffset(-3.0f, 4.5f) {}
 };
 
-struct CRegion {
+class CRegion { public:
     const CRegionDef* PDef;
     C2DVector GetWorldMapOffset() const
     {

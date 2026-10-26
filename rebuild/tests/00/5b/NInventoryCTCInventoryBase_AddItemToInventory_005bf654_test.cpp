@@ -70,15 +70,15 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                          // slot 1
     long RefCount;                                   // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (DecRefToZero(RefCount)) Destroy(); }
 };
-struct CHeroTitleDef : CDefPointeeBase {};
-template <class T> struct CDefPointer {
+class CHeroTitleDef : public CDefPointeeBase { public:};
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
@@ -91,7 +91,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CHeroTitleDef>* out) const;   // 0x005B1E5A
 };
 void* FindDef_s7r_0();
@@ -122,7 +122,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroTitleDef>* o
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -156,14 +156,14 @@ struct CThing {
         return false;
     }
 };
-struct CTCHero {                                     // interface type 0x29
+class CTCHero { public:                                     // interface type 0x29
     void SetTitle(long titleObjectDef);              // 0x006CA400
 };
-struct CTCInventoryItem {                            // interface type 0x1A
+class CTCInventoryItem { public:                            // interface type 0x1A
     long GetCategoryIdentifier() const;              // 0x005D91F0
 };
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     bool AddItem(CThing* thing, bool silent, long price);   // 0x005BF5A4
 };
 }
@@ -180,7 +180,7 @@ __declspec(noinline) NInventory::CCategory* __fastcall FindCategory(NInventory::
 #pragma auto_inline(on)
 
 namespace NInventory {
-struct CTCInventoryBase {
+class CTCInventoryBase { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

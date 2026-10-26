@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CCameraModeDef {
+class CCameraModeDef { public:
     int f0;
     void* vf;
 };

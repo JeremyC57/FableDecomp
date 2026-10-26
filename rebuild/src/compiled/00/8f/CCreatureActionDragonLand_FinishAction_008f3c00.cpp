@@ -9,7 +9,7 @@
 //   the pushes; the base FinishAction is a direct call.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; nothing else of the class is touched. The
 //   0x3a component is not identified (only its flag byte at +0x50 is modelled).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                   // +0x10: 1 = creature
     unsigned char _pad11[0x0f];
@@ -51,7 +51,7 @@ struct CTCInterface3A {                     // interface type 0x3a component
     unsigned char m_flags50;                // +0x50 bit 0 set when the dragon lands
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -59,7 +59,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     virtual void FinishAction();            // 0x00859A20
 };
 
-struct CCreatureAction_DragonLand : CCombatActionBase {
+class CCreatureAction_DragonLand : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

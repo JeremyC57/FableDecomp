@@ -6,7 +6,7 @@
 // Retail: push esi; esi=[esp+8]=hidden ret buf; push -1; push 0x12659e4;
 //         mov ecx,esi; call CCharString(const char*,int); mov eax,esi; pop esi; ret 4.
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int len);
 };

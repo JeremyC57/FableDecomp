@@ -1,6 +1,6 @@
 #include "engine/C3DMeshFileVerticesChunk.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CCharString {
+class CCharString { public:
     char* Data;
     CCharString(const char* text, int length);
 };

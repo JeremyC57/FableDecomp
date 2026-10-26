@@ -10,7 +10,7 @@
 // Shape: the component is used straight from the lookup; the product `scale * RenderSizeX` is
 // computed before the GetAnimation call and parked in the dead `scale` argument slot (the function has
 // no named locals); the reason bit is a byte `or`.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -19,7 +19,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -41,12 +41,12 @@ struct C3DAnimation {
     float         Scale;                                    // +0x88
 };
 
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     C3DAnimation* GetAnimation();                           // 0x0070B460
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                                // +0x00
     float         AnimStep;                                 // +0x04
     float         RenderSizeX;                              // +0x08
@@ -57,7 +57,7 @@ struct CEngineGraphic {
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     virtual void v00();
     CThing*        ParentThing;                             // +0x04 (CTCBase)
     unsigned char  _pad08[0x34 - 0x08];

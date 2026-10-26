@@ -10,21 +10,21 @@
 // CResource (out-of-line constructor) <- CDefPointeeBase (inline empty constructor, its vtable store is
 // dead) <- CDefClassBase. Shape: the bit clears fold into one `and byte ptr [esi+24h],0F8h` placed
 // before the vtable store; the pointer initialiser is an immediate zero store after it.
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CResource {
+class CResource { public:
     virtual void v00();
     unsigned char _resource[0x18];          // +0x04 resource list links, size, last used frame
     CResource();                            // 0x009FBEC0
 };
 
-struct CDefPointeeBase : CResource {        // vtable 0x01230BA0
+class CDefPointeeBase : public CResource { public:        // vtable 0x01230BA0
     virtual void v00();
     CDefPointeeBase() { }
 };
 
 #pragma pack(push, 1)                       // def classes are byte packed (GlobalIndex bits at +0x24, a dword at +0x25 next)
-struct CDefClassBase : CDefPointeeBase {    // vtable 0x01230BCC
+class CDefClassBase : public CDefPointeeBase { public:    // vtable 0x01230BCC
     CDefinitionManager* PDefManager;        // +0x1c
     unsigned long       GlobalIndex;        // +0x20
     unsigned char       Setup : 1;          // +0x24 bit 0

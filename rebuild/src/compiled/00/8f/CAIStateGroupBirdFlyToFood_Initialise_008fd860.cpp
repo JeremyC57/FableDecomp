@@ -8,9 +8,9 @@
 // Resets the group's frame counter at +0x30 and tail-calls the base Initialise @ 0x008FCEC0
 // with all five arguments left in place. The frame pointer around a one-instruction body is the
 // unoptimised build of this translation unit (lander pragma sweep).
-struct CAIBrain;
-struct CThingAICreature;
-struct CCharString;
+class CAIBrain;
+class CThingAICreature;
+class CCharString;
 typedef long EScriptAIPriority;
 
 struct CAIStateGroupBase_Retail {

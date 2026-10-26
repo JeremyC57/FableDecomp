@@ -9,7 +9,7 @@
 // Shape: STLport `swap(T& a, T& b) { T tmp = a; a = b; b = tmp; }` over STLport's pair (user copy constructor, implicit
 //   assignment) and CCountedPointer's copy constructor / assignment (landed 0x00448380 body) / destructor; FableWin.pdb
 //   names this pair's swap through its own STLport's pair overload, retail emits the generic one (landed 0x00566870 model).
-struct CCPPointerInfo {                                    // CCountedPointer's shared block
+class CCPPointerInfo { public:                                    // CCountedPointer's shared block
     long  RefCount;                                        // +0x0
     void  (__fastcall* DeleteFunc)(void* data);            // +0x4
     void* Data;                                            // +0x8

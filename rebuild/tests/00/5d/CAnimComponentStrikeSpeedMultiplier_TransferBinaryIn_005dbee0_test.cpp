@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned int m_position;
     const unsigned char* m_pData;
     long m_remaining;
@@ -31,7 +31,7 @@ struct CDataInputStream {
     }
 };
 
-struct CAnimComponentStrikeSpeedMultiplier {
+class CAnimComponentStrikeSpeedMultiplier { public:
     float AnimationSpeedMultiplier;
     void TransferBinaryIn(CDataInputStream& in)
     {

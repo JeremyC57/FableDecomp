@@ -1,7 +1,7 @@
 // behaviour test for 0x0071f710 __push_heap<pair<EHeroMorphType,CTextureMorphEntry>, CKeyPairCompareLess>
 #include <cstdio>
-struct CCompositeBlendDesc { unsigned int TextureIndex; int BlendType; unsigned char Diffuse[4]; unsigned char Specular[4]; };
-struct CTextureMorphEntry { int TextureLayer; CCompositeBlendDesc Blend; };
+class CCompositeBlendDesc { public: unsigned int TextureIndex; int BlendType; unsigned char Diffuse[4]; unsigned char Specular[4]; };
+class CTextureMorphEntry { public: int TextureLayer; CCompositeBlendDesc Blend; };
 struct TEntry { int first; CTextureMorphEntry second; };
 struct TCompare { char m_tag; bool operator()(const TEntry& a, const TEntry& b) const { return a.first < b.first; } };
 typedef TEntry E;

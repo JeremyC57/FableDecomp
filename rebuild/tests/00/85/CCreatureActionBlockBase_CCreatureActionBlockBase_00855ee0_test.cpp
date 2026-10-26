@@ -3,20 +3,20 @@
 
 static int g_baseCopies = 0;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase() { }
     long m_state;
     CCombatActionBase() : m_state(0) { }
     CCombatActionBase(const CCombatActionBase& other) : m_state(other.m_state) { ++g_baseCopies; }
 };
 
-struct CCreatureAction_BlockBase : CCombatActionBase {
+class CCreatureAction_BlockBase : public CCombatActionBase { public:
     long      BlowStrength;
     C3DVector MovementDirection;
     CCreatureAction_BlockBase() : BlowStrength(0) { }

@@ -17,17 +17,17 @@
 // before the name is pushed and == re-addresses the slot (the bare temporary `GetInstantiationName()
 // == name` pushes the name first and reuses the returned eax as `this`).
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString(const CDefString& other);                                  // user copy constructor: returned through a hidden pointer
     bool operator==(const CCharString& other) const;                      // 0x004B7980
 };
 
-struct CHitLocationDef {                                                  // CParentDefClassBase-derived def
+class CHitLocationDef { public:                                                  // CParentDefClassBase-derived def
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -42,14 +42,14 @@ struct CHitLocationDef {                                                  // CPa
 };
 
 template <class T>
-struct CDefPointer {
+class CDefPointer { public:
     T* m_pObject;
     T* operator->() const { return m_pObject; }
 };
 
 namespace NHitLocations {
 
-struct CHitLocation {
+class CHitLocation { public:
     void*                        POwnerThing;                             // +0x00
     CDefPointer<CHitLocationDef> PDef;                                    // +0x04
     void*                        PArmourDef;                              // +0x08
@@ -71,7 +71,7 @@ struct CHitLocationVector {                                               // ret
     SHitLocationEntry* m_end;
 };
 
-struct CTCHitLocations {
+class CTCHitLocations { public:
     virtual void v00();
     unsigned char      _base[8];                                          // +0x04 thing-component base
     CHitLocationVector HitLocations;                                      // +0x0c

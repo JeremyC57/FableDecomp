@@ -14,11 +14,11 @@ void __cdecl FreeStorage(void* p);                             // 0x00BFEA14
 
 struct __false_type { __false_type() {} };
 namespace NParticleEngine {
-struct CParticleEmitterInfo;
+class CParticleEmitterInfo;
 }
 void __fastcall DestroyRange(NParticleEngine::CParticleEmitterInfo* first, NParticleEngine::CParticleEmitterInfo* last,
                              const __false_type& tag);         // 0x00AF1D90
-template<class T> struct CArray {                              // retail 12 bytes: {first, last, end}
+template<class T> class CArray { public:                              // retail 12 bytes: {first, last, end}
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -29,7 +29,7 @@ template<class T> struct CArray {                              // retail 12 byte
             FreeStorage(_M_start);
     }
 };
-struct CSymbolMap {                                            // retail 36 bytes
+class CSymbolMap { public:                                            // retail 36 bytes
     unsigned char _body[0x24];
     ~CSymbolMap();                                             // 0x006FD040
 };

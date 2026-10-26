@@ -21,13 +21,13 @@ static void L(const char* s) { g_log += s; g_log += ' '; }
 // Shape: the capture block is a scoped object (its restore runs after the render-target local's inline destructor); C2DBoxI has a
 // member-wise user copy constructor (the viewport is copied field by field straight from the display manager); the display
 // manager's Rendering flag is homed in the dead `force` slot.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
 struct CBase {
     virtual ~CBase();                                       // 0x0099A2E0
 };
-struct CSurface {                                           // vtable 0x0122F84C, 0x10 bytes
+class CSurface { public:                                           // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
     void*         PD3DSurface;                              // +0x04
     unsigned long AllocationSource;                         // +0x08
@@ -35,31 +35,31 @@ struct CSurface {                                           // vtable 0x0122F84C
     ~CSurface() { Uninitialise(); }
     void Uninitialise();                                    // 0x009F2E20
 };
-struct CRenderTarget : CBase {                              // 0x24 bytes
+class CRenderTarget : public CBase { public:                              // 0x24 bytes
     CSurface m_colour;                                      // +0x04
     CSurface m_depth;                                       // +0x14
     CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI() {}
     C2DBoxI(const C2DBoxI& o) : X0(o.X0), Y0(o.Y0), X1(o.X1), Y1(o.Y1) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     float X0, Y0, X1, Y1;
     C2DBoxF(float x0, float y0, float x1, float y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CRenderManager {
+class CRenderManager { public:
     bool IsDeviceLost() const;                              // 0x00A0AA60 (descriptive)
     void SetViewport(const C2DBoxF& box);                   // 0x00A0B560
     void SetViewport(const C2DBoxI& box);                   // 0x00A0AA90
     void Flush(bool wait);                                  // 0x009DA9F0 (descriptive)
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     void*          __vftable;
     void*          SystemManager;                           // +0x04
     CRenderManager* PRenderManager;                         // +0x08 scoped_ptr
@@ -80,7 +80,7 @@ struct CTextSettings {
     unsigned char _pad00[0x38];
     bool          Flag;                                     // +0x38 (descriptive)
 };
-struct CSystemManager {
+class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CDisplayManager* DisplayManager;                        // +0x60
     unsigned char    _pad64[0x84 - 0x64];
@@ -93,7 +93,7 @@ extern double g_ProgressScreenHeight;                       // 0x013961F0 (descr
 
 struct CStateInfo { unsigned char _body[0x14]; };
 struct CStateStackElement { CStateInfo* State; unsigned long Value; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     void*              __vftable;
     void*              PD3DDevice;
     CStateStackElement StateStack[1024];                    // +0x08

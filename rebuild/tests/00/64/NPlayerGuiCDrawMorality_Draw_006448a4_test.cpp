@@ -74,7 +74,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 struct CAutoPickupBar;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCrimeStatBar;
 struct CDraw2DText;
 struct CDrawAbilityButtons;
@@ -110,19 +110,19 @@ struct CDrawStamina;
 struct CDrawStatUpdates;
 struct CDrawTargetInfo;
 struct CDrawWorldTime;
-struct CFontBank;
-struct CGamePlayerInterface;
-struct CGraphicDataBank;
-struct CMainGameComponent;
+class CFontBank;
+class CGamePlayerInterface;
+class CGraphicDataBank;
+class CMainGameComponent;
 struct CManager;
 struct CMultiStatBar;
-struct CPlayerManager;
+class CPlayerManager;
 struct CStatBar;
-struct CWorld;
+class CWorld;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CPlayerGui {
+class CPlayerGui { public:
     void*                             __vftable;             // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                           World;                 // +0x04
     CPlayerManager*                   PlayerManager;         // +0x08
@@ -403,10 +403,10 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGui, DisplayBottomHalfGUI) == 0x35c);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -1629,11 +1629,11 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, MouseOverlayGraphic) == 0xb4c);
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CTextureManager;
+class CCPPointerInfo;
+class CTextureManager;
 
 #pragma pack(push, 1)
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -1826,9 +1826,9 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicDataBank, BlankTextures) == 0x330);
 
 #endif // FABLE_ENGINE_CGRAPHICDATABANK_H
 
-struct CEnginePrimitivePrepareInfo;
-struct C2DVector {float X,Y;};
-struct CRGBColour {unsigned char Blue,Green,Red,Alpha;};
+class CEnginePrimitivePrepareInfo;
+class C2DVector { public:float X,Y;};
+class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;};
 struct StatBarNative {
  virtual void DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool);
  float GetValue()const{return Value;}
@@ -1873,7 +1873,7 @@ void DrawMoralityNative::Draw(const CEnginePrimitivePrepareInfo&info){
 
 
 // Full production source and actual headers above; one actual verified virtual prefix slot.
-struct CEnginePrimitivePrepareInfo {int Token;};
+class CEnginePrimitivePrepareInfo { public:int Token;};
 static int errors,calls,peekCalls;static void ck(bool b){if(!b)++errors;}
 static DrawMoralityNative* owner;static PlayerGuiDefNative*definition;static PlayerGuiNative*replacementGui;
 static StatBarNative* expectedBar;static CGraphicDataBank*expectedBank;static const CEnginePrimitivePrepareInfo*expectedInfo;

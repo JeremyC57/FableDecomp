@@ -9,7 +9,7 @@ struct Referenced {
     float  animSpeed; // +0x60
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     char       pad[0x70];  // +0x00 .. +0x6F
     Referenced* target;    // +0x70
 };

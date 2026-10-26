@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CDefClassBase
-{
+class CDefClassBase
+{ public:
     long pad0;
     long RefCount;
 };
@@ -26,8 +26,8 @@ struct CDefPointer_CDefClassBase
     }
 };
 
-struct CDefinitionManager
-{
+class CDefinitionManager
+{ public:
     char pad[0xa4];
     CDefTableEntry** GlobalIndexTable;
 

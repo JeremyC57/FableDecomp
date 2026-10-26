@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveTypeInfo;
+class CEnginePrimitiveTypeInfo;
 
 unsigned long __fastcall CEnginePrimitiveTypeInfo_PeekSceneFilterFlags(CEnginePrimitiveTypeInfo* info);
 

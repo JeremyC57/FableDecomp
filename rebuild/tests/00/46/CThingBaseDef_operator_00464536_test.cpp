@@ -5,7 +5,7 @@ struct CThingBaseDefBase {
     long m_base; int baseAssigns;
     CThingBaseDefBase& operator=(const CThingBaseDefBase& other) { m_base = other.m_base; ++baseAssigns; return *this; }
 };
-struct CThingBaseDef : CThingBaseDefBase {
+class CThingBaseDef : public CThingBaseDefBase { public:
     long m_value70; SDefRecord14 m_record74; SDefRecord14 m_record82; long m_value90;
     CThingBaseDef& operator=(const CThingBaseDef& other)
     {

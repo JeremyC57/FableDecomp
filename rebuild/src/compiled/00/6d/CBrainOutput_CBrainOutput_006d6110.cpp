@@ -9,13 +9,13 @@
 // the counted pointer's copy constructor bumps the count word at the block's +0 under a null test on the stored
 // block (`test eax,eax ; mov [esi+24h],eax ; je ; inc [eax]`); the intelligent pointer is the family-44 inline copy
 // constructor: base constructor, vtable store, SetPItem(other.GetPItem()).
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct CNavigationInput {                     // 24 bytes
+class CNavigationInput { public:                     // 24 bytes
     C3DVector Destination;                    // +0x00
     float     Proximity;                      // +0x0c
     long      MovementType;                   // +0x10 EMovementType
@@ -23,7 +23,7 @@ struct CNavigationInput {                     // 24 bytes
     CNavigationInput(const CNavigationInput& o)
         : Destination(o.Destination), Proximity(o.Proximity), MovementType(o.MovementType), Speed(o.Speed) { }
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct CCountedPointerAction {                // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* Object;              // +0x00
     long*                PCount;              // +0x04 shared count block (count at +0)

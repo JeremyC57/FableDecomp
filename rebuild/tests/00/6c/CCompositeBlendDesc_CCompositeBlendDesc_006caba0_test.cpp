@@ -3,12 +3,12 @@
 
 typedef long ECompositeBlendType;
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;
     ECompositeBlendType BlendType;
     CRGBColour          DiffuseColour;

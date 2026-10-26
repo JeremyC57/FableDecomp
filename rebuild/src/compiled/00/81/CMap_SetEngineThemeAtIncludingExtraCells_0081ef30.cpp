@@ -5,11 +5,11 @@
 //   CHeightMapCell (PDB, 12 bytes) EngineThemePaletteIndex[3] at +4. Cell (x, y) = Cells[(SizeY - y) * (SizeX + 1) + x].
 // Shape: the theme test is `> 0` on the unsigned index (`jbe`); the palette index is taken into a LONG local first (`movzx edx,al`
 //   before the cell address), which also makes VC load the coordinates into registers; each arm inlines the cell accessor.
-struct CWorld;
-struct C2DCoordI {
+class CWorld;
+class C2DCoordI { public:
     long X, Y;
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -22,13 +22,13 @@ template <class T> struct CRetailVector {          // STLport vector: begin / en
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMapInit {                            // PDB, 12 bytes
+class CHeightMapInit { public:                            // PDB, 12 bytes
     long           SizeX;
     long           SizeY;
     unsigned long* WorldSeed;
 };
-struct CMap;
-struct CHeightMap {                                // retail layout (PDB CHeightMap with the 12-byte release vector)
+class CMap;
+class CHeightMap { public:                                // retail layout (PDB CHeightMap with the 12-byte release vector)
     virtual ~CHeightMap();                         // slot 0: the scalar deleting destructor
     CWorld*                        World;          // +0x04
     CMap*                          Map;            // +0x08
@@ -47,7 +47,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
     void reset(T* p) { T* old = ptr; ptr = p; delete old; }
 };
-struct CMap {
+class CMap { public:
     unsigned char           _pad00[0x1a7c];
     scoped_ptr<CHeightMap>  HeightMap;             // +0x1a7c
     unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0

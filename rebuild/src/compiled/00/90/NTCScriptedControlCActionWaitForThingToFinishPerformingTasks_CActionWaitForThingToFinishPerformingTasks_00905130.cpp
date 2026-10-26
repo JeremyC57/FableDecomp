@@ -11,7 +11,7 @@ struct CBase {
     CBase();                                        // 0x0099A2F0
 };
 
-struct CScriptThing {
+class CScriptThing { public:
     void* m_pVtable;                                // +0 (CScriptThing is polymorphic, 0xc bytes)
     void* m_pImpData;                               // +4 CCountedPointer<CScriptThing>::Data
     void* m_pImpInfo;                               // +8 CCountedPointer<CScriptThing>::Info
@@ -20,7 +20,7 @@ struct CScriptThing {
 };
 
 namespace CTCScriptedControl {
-struct CActionBase : CBase {
+class CActionBase : public CBase { public:
     long m_actionState;                             // +0x04
     bool m_started;                                 // +0x08
     bool m_finished;                                // +0x09

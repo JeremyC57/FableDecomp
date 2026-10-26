@@ -1,13 +1,13 @@
 // Behaviour test for CThingCreatureBase::ConstructFromLevelScript (0x00662930)
 #include <cstdio>
-struct CThingCreatureDef { int id; };
+class CThingCreatureDef { public: int id; };
 struct CDefPointerCreature { CThingCreatureDef* m_pObject; };
 static CThingCreatureDef g_defs[4];
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out) { out->m_pObject = &g_defs[index]; return true; }
 };
 static CDefinitionManager g_defManager;
-struct CThingPhysical {
+class CThingPhysical { public:
     unsigned short m_defGlobalIndex;
     CDefinitionManager* GetDefinitionManager() const { return &g_defManager; }
     bool ConstructFromLevelScript(const char* script)
@@ -17,7 +17,7 @@ struct CThingPhysical {
         return true;
     }
 };
-struct CThingCreatureBase : CThingPhysical {
+class CThingCreatureBase : public CThingPhysical { public:
     CDefPointerCreature m_def;
     bool ConstructFromLevelScript(const char* script)
     {

@@ -11,7 +11,7 @@ struct MapEntry {
 
 static int g_wantIndex = 0;
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual int vf0() { return 0; }
     virtual int vf1() { return 0; }
     virtual int vf2() { return 0; }

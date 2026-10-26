@@ -4,7 +4,7 @@ struct C { virtual void v0(){} virtual void v1(){} virtual void v2(){} virtual v
           virtual void v4(){} virtual void v5(){} virtual void SetX(bool x){ g_v = x?1:2; } };
 struct B { char pad[0x2c]; C* f2c; };
 struct A { char pad[0x28]; B* PDisplayEngine; };
-struct CGameScriptInterface { char pad[8]; A* f8; void SetEnvironmentalEffectsAlwaysUpdate(bool b); };
+class CGameScriptInterface { public: char pad[8]; A* f8; void SetEnvironmentalEffectsAlwaysUpdate(bool b); };
 void CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate(bool b){ f8->PDisplayEngine->f2c->SetX(b); }
 int main(){ C c; B b; b.f2c=&c; A a; a.PDisplayEngine=&b; CGameScriptInterface g; g.f8=&a;
  g.SetEnvironmentalEffectsAlwaysUpdate(true);

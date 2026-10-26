@@ -1,6 +1,6 @@
 #include <cstdio>
 struct CTCRewardsHandled { bool m_handled; };
-struct CThing {
+class CThing { public:
     unsigned char m_type; bool m_hasA0; CTCRewardsHandled* m_pA0;
     template <class T> bool GetInterface(long type, T** out)
     {
@@ -9,7 +9,7 @@ struct CThing {
     }
 };
 static int g_drops = 0;
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     CThing* ParentThing; bool Enabled;
     void CreateItemPickupContainer() { ++g_drops; }
     void OnDie()

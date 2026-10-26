@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CAnimationEntry { unsigned long id; };
+class CAnimationEntry { public: unsigned long id; };
 struct APair { unsigned long first; CAnimationEntry second; };
 
 struct ConsAlloc {

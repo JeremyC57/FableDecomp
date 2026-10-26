@@ -14,16 +14,16 @@
 //   default (the landed 0x006E0730 idiom) and an if/else CRC helper (null arm first, one Calc call); the point loop is
 //   `if (i < count) { C3DVector zero(0,0,0); do ... while (++i < count); }` so the zero default is stored once inside
 //   the guard, in the frame word of the resize default; the point names are the literal advanced by the index (as retail).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CCharStringData {
+class CCharStringData { public:
     const char* Data;                                   // +0
     long Length;                                        // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
@@ -49,7 +49,7 @@ inline unsigned long GetCRC(const CCharString& s)
     return CRCCalc(0, data, length);
 }
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
@@ -69,7 +69,7 @@ struct CVector3D {                                      // STLport vector<C3DVec
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
 namespace NParticleEngine {
-struct CPSCAttractor {
+class CPSCAttractor { public:
     unsigned char _base[0xc];                           // CPSCBase
     bool AttractorEnabled : 1;                          // +0x0c bit 0
     bool AttractorUseParamPosition : 1;                 // +0x0c bit 1

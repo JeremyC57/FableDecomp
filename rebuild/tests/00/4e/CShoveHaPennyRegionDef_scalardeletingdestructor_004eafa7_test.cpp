@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CShoveHaPennyRegionDef
-{
+class CShoveHaPennyRegionDef
+{ public:
     void* vftable;
 };
 void* const g_CShoveHaPennyRegionDef_vftable = (void*)0x12345678;

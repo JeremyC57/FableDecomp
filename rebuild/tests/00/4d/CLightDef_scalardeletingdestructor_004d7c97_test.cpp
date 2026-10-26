@@ -1,8 +1,8 @@
 #include <cstdio>
 static int g_AutoTinyVectorDestructorCalls = 0;
 static int g_AutoTinyVectorDeleteCalls = 0;
-struct CLightDef
-{
+class CLightDef
+{ public:
     void* vftable;
 };
 void* const g_CLightDef_vftable = (void*)0x12345678;

@@ -5,8 +5,8 @@
 
 void operator_delete_stub(void *p);           // maps to 0xbfe9bc
 
-struct CInputProcessControlCreature
-{
+class CInputProcessControlCreature
+{ public:
     void dtor();                              // maps to 0xa0d3d0 (external)
     void * scalar_deleting_destructor(unsigned int flags);
 };

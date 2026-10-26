@@ -24,8 +24,8 @@
 //   call after target, owner and self are fetched into named locals (GetPItem order PTarget, PCreature, PCreature), and the
 //   refusal is stored as `bool refused = !...` before the obstruction test (neg/sbb/inc; no conditional-temporary flag word).
 //   The unstuck branch is the landed WaspQueenDie temporary: inline ctor (base, vtable, NoTarget = true) in the call.
-struct CTCBase;
-struct C3DVector {
+class CTCBase;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -33,7 +33,7 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -44,13 +44,13 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CTCPhysicsBase {                                 // CThing::PhysicsTC (+0x60)
+class CTCPhysicsBase { public:                                 // CThing::PhysicsTC (+0x60)
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing() const;                // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     CInterfaceMap   m_interfaces;                       // +0x44
@@ -75,28 +75,28 @@ struct CThing {
         return false;
     }
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
 struct CHitLocation {
     void SetEnabled(bool enabled);                      // 0x00816390
 };
-struct CTCHitLocations {                                // interface 0x7F
+class CTCHitLocations { public:                                // interface 0x7F
     CHitLocation* GetPHitLocationFromName(const CCharString& name);   // 0x00815820
 };
-struct CBossDef {
+class CBossDef { public:
     unsigned char _pad[0x4c];
     long          TwinBladeStuckLoops;                  // +0x4c (Ego_r.pdb +0x58)
 };
-struct CTCBoss {                                        // interface 0xAD
+class CTCBoss { public:                                        // interface 0xAD
     unsigned char _pad[0xc];
     CBossDef*     PBossDef;                             // +0x0c (CDefPointer<const CBossDef>)
 };
-struct CTCDPhysicalObstruction {                        // interface 0xED
+class CTCDPhysicalObstruction { public:                        // interface 0xED
     static CThing* __fastcall Create(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
     void SetThingToIgnoreObstruction(CThing* thing);    // 0x007898A3
 };
@@ -121,15 +121,15 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CSoundPair {
+class CSoundPair { public:
     long First;
     long Second;
     CSoundPair() : First(0), Second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
 };
-struct CCombatActionBase : CCreatureActionBase {        // retail sizeof 0x114
+class CCombatActionBase : public CCreatureActionBase { public:        // retail sizeof 0x114
     unsigned char           _pad04[4];
     CCreaturePointer        PCreature;                  // +0x08
     long                    TotalTime;                  // +0x10
@@ -142,13 +142,13 @@ struct CCombatActionBase : CCreatureActionBase {        // retail sizeof 0x114
     ~CCombatActionBase();                               // 0x0062E900
     virtual void FinishAction();                        // 0x00859A20
 };
-struct CCreatureAction_BanditKingStuck : CCombatActionBase {     // retail sizeof 0x128
+class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:     // retail sizeof 0x128
     long                    TimesToLoop;                // +0x114
     CBaseIntelligentPointer PStuckEffect;               // +0x118
     CBaseIntelligentPointer PObstruction;               // +0x120
     CCreatureAction_BanditKingStuck(CThingCreatureBase* owner, CThing* target, long timesToLoop, CThing* obstruction, CThing* stuckEffect);   // 0x008C94D0
 };
-struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {   // vtable 0x01281D9C
+class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:   // vtable 0x01281D9C
     bool Knockdown;                                     // +0x114
     bool NoTarget;                                      // +0x115
     CCreatureAction_BanditKingUnstuck(CThingCreatureBase* owner, bool noTarget)
@@ -157,7 +157,7 @@ struct CCreatureAction_BanditKingUnstuck : CCombatActionBase {   // vtable 0x012
     }
     virtual void FinishAction();
 };
-struct CCreatureAction_BanditKingLunge : CCombatActionBase {
+class CCreatureAction_BanditKingLunge : public CCombatActionBase { public:
     virtual void FinishAction();
 };
 

@@ -2,7 +2,7 @@
 // Leaf: OnDie
 typedef unsigned int uintptr_t32;
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void* vtbl;      // +0x00
     char pad[0x40-4];
     void* m40;       // +0x40

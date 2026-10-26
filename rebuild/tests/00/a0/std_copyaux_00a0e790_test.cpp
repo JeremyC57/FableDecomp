@@ -17,7 +17,7 @@ static int fails = 0;
 //   dead slot of `result` and goes in edx by reference; the three iterator copies are built in the argument area right to left.
 //   The tag shares that dead slot only when __copy (the const-ref taker of the tag) has a same-TU noinline stand-in;
 //   extern, VC7.1 opens a `push ecx` frame word for it (the "tag over a dead argument slot" lane gap was this escape).
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
 };
 namespace std {

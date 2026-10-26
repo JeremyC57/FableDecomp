@@ -2,7 +2,7 @@
 static int g_baseCtors = 0;
 namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() { ++g_baseCtors; } }; } using N_0099a2d0::CBase;
 struct CCountedPointer { void* m_pObject; void* m_pCount; CCountedPointer() : m_pObject(0), m_pCount(0) {} };
-struct CCompositeSurfaceInfo : CBase { virtual void v00() {} CCountedPointer Cache; CCompositeSurfaceInfo() : CBase(), Cache() {} };
+class CCompositeSurfaceInfo : public CBase { public: virtual void v00() {} CCountedPointer Cache; CCompositeSurfaceInfo() : CBase(), Cache() {} };
 
 int main()
 {

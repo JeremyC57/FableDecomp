@@ -1,6 +1,6 @@
 // Behaviour test for 0083ce60 CIVCountedPointer copy constructor: copies the pointee and adds a reference when non-null.
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     int destroyed;
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : destroyed(0), IVRefCount(0) {}

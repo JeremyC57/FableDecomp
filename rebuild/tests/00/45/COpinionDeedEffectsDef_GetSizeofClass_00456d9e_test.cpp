@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct COpinionDeedEffectsDef { int dummy; };
+class COpinionDeedEffectsDef { public: int dummy; };
 
 unsigned long __fastcall COpinionDeedEffectsDef_GetSizeofClass(const COpinionDeedEffectsDef* self)
 {

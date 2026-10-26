@@ -7,7 +7,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 #define GSI_V10(p) virtual void v##p##0() {} virtual void v##p##1() {} virtual void v##p##2() {} virtual void v##p##3() {} virtual void v##p##4() {} virtual void v##p##5() {} virtual void v##p##6() {} virtual void v##p##7() {} virtual void v##p##8() {} virtual void v##p##9() {}
 static int g_deletes = 0; static void* g_lastDeleted = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     GSI_V10(0) GSI_V10(1) GSI_V10(2) GSI_V10(3) GSI_V10(4) GSI_V10(5) GSI_V10(6) GSI_V10(7)
     virtual void v080() {} virtual void v081() {} virtual void v082() {} virtual void v083() {} virtual void v084() {} virtual void v085() {} virtual void v086() {}
     virtual long RegisterTimer() { return 0; }
@@ -18,11 +18,11 @@ struct CGameScriptInterface {
 };
 static CGameScriptInterface g_gsi;
 CGameScriptInterface* g_pGameScriptInterface = &g_gsi;
-struct CTimer {
+class CTimer { public:
     long Index;
     void SetTime(long time) { CGameScriptInterface* gsi = g_pGameScriptInterface; long index = Index; gsi->SetTimer(index, time); }
 };
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00() {}
     unsigned char _body[0x3c];
 };
@@ -30,7 +30,7 @@ struct CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game;
     void*                 Data;
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
@@ -61,10 +61,10 @@ struct CCountedPointer_CScriptThing {
         return *this;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00() {}
 };
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 };

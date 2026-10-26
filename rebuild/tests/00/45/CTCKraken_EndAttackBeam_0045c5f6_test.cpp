@@ -17,7 +17,7 @@ void __fastcall helper_9fc550(Sub* sub)
     (void)sub;
 }
 
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x70];
     Sub sub;
 

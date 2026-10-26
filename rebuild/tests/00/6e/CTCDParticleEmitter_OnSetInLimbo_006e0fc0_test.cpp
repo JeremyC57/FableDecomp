@@ -2,11 +2,11 @@
 // disable it and clear the live emitter's particles and decals (null engine); when it should be enabled and is
 // disabled, re-enable it; otherwise nothing.
 #include <cstdio>
-struct CIEngine;
+class CIEngine;
 static int g_particles = 0, g_decals = 0, g_sets = 0;
 static bool g_should = false;
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void ClearAllParticles(CIEngine* engine) { if (engine == 0) ++g_particles; }
     void ClearAllDecals(CIEngine* engine) { if (engine == 0) ++g_decals; }
 };
@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer {
     void* PData;
     NParticleEngine::CParticleEmitter* GetPItem() const { return static_cast<NParticleEngine::CParticleEmitter*>(PData); }
 };
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     unsigned char _base[0x8]; void* EmitterName; long ParticleTypeID;
     CBaseIntelligentPointer PEmitter;

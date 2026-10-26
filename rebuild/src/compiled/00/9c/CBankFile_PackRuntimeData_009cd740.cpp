@@ -11,7 +11,7 @@ struct CRuntimeData {
     unsigned char DataType;
     bool Valid;
 };
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* First; T* Last; T* Limit;
     unsigned long size() const { return Last-First; }
     unsigned long capacity() const { return Limit-First; }
@@ -26,7 +26,7 @@ struct CPackedUIntArray {
     long GetMemoryUsage() const; // 00A62A60
     void Clear(); // 00A629D0
 };
-struct CBankFile {
+class CBankFile { public:
     void* VTable;
     unsigned long Size;
     CArray<void*> Symbols;

@@ -10,7 +10,7 @@
 // GetPString inlined (`test ; jne ; mov eax,"" ; jmp ; mov eax,[eax]`) before the lookup's `push 0 ; push 0`; the result
 // is `unsigned char` (`setne al` with no `xor eax,eax`; the bool form adds it -- callers read al).
 // Leaf: IsSoundEventValid
-struct CCharStringData {                      // the shared string block
+class CCharStringData { public:                      // the shared string block
     char* m_pData;                            // +0x00
 };
 class CCharString {

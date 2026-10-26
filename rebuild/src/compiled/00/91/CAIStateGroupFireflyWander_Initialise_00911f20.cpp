@@ -9,19 +9,19 @@
 // base Initialise runs with the five arguments re-pushed (`ret 14h`). The scheduler sinks the four constant
 // stores below the argument pushes. The CAIStateGroup_FlyingThingBase layout (+0x14..+0x20, see its
 // constructor @ 0x009126C0) is modelled locally; no engine header exists for either class.
-struct CAIBrain;
-struct CCharString;
+class CAIBrain;
+class CCharString;
 typedef long EScriptAIPriority;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     C3DVector* GetPosition_006a4d00();                   // 0x006A4D00
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

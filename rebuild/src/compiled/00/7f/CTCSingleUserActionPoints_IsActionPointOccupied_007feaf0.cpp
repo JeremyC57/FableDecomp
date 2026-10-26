@@ -14,9 +14,9 @@
 // as dwords (the filter temporaries are built right to left); the search tools are fetched into a local inside an inline
 // helper so they come after the temporaries and before the pushes; the search result is normalised to a bool.
 class CThing;
-struct CThingCreatureBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class CThingCreatureBase;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 class CCharString {
 public:
     void* PStringData;
@@ -31,40 +31,40 @@ public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* GraphicAppearance;            // +0x64
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DCoordI& topLeft, const C2DCoordI& bottomRight)
         : TLX(topLeft.X), TLY(topLeft.Y), BRX(bottomRight.X), BRY(bottomRight.Y) { }
 };
-struct CThingFilter_IsNot {
+class CThingFilter_IsNot { public:
     CThing* Thing;
     CThingFilter_IsNot(CThing* thing) : Thing(thing) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-template <class F1, class F2, class F3> struct CFilter_Bind3 {
+template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1* f1;
     const F2* f2;
     const F3* f3;
     CFilter_Bind3(const F1& a, const F2& b, const F3& c) : f1(&a), f2(&b), f3(&c) { }
 };
 typedef CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange> CActionPointFilter;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class TFilter, class T>
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** found);   // 0x007FE730
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* ThingSearchTools;                // +0x20
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -72,7 +72,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     const CWorld* GetWorld() const;                     // 0x00686A80
 };
-struct CTCSingleUserActionPoints : CTCBase {
+class CTCSingleUserActionPoints : public CTCBase { public:
     __forceinline bool FindFirstCreature(const C2DBoxI& area, const CActionPointFilter& filter, CThingCreatureBase** found) const
     {
         CThingSearchTools* searchTools = GetWorld()->ThingSearchTools;

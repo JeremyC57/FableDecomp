@@ -7,12 +7,12 @@
 // Layout (retail): GameWon +0x21, NumRounds +0x24, GameFinished +0x28, TargetTime +0x98, GameStarted +0xa2, Cards +0x128,
 //   Counter +0x154, TimerStopped +0x158, GameType +0x300, SelectedCard +0x308, AlternateSelectedCard +0x318; CCard Turning
 //   +0x24, FaceDown +0x25; CTavernGameDef win/lose text +0xa4/+0xa8, body text +0xf8.
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual, CRefCounted {
+class CTavernGameDef : public CDefVirtual, public CRefCounted { public:
     unsigned char _pad08[0xa4 - 0x08];
     unsigned long WinText;                      // +0xa4
     unsigned long LoseText;                     // +0xa8
@@ -46,7 +46,7 @@ struct CDefPointer {
     CTavernGameDef* operator->() const { return Object; }
 };
 
-struct CCard {
+class CCard { public:
     unsigned char _pad0[0x24];
     bool Turning;                               // +0x24
     bool FaceDown;                              // +0x25

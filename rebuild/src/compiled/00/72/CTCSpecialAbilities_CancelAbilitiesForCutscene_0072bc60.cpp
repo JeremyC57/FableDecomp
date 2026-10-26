@@ -12,7 +12,7 @@
 // interface map at +0x44, as in the landed 0x0072C370 / 0x007504E0 GetInterface shape.
 // Shape: ten inline `if (HasTC(type)) GetTC(type)->CancelForCutscene();` blocks; the lookup is the out-parameter
 // GetInterface with the ternary entry pick, the key homed in the one frame word (`push ecx` prologue).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type);                   // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
     CInterfaceMap m_interfaces;                             // +0x44
@@ -48,18 +48,18 @@ struct CThing {
     }
 };
 
-struct CTCBulletTime          { void CancelForCutscene(); };  // 0x0079C660
-struct CTCPhysicalShieldSpell { void CancelForCutscene(); };  // 0x0079E500
-struct CTCBerserk             { void CancelForCutscene(); };  // 0x0078D210
-struct CTCSummonSpell         { void CancelForCutscene(); };  // 0x0079A660
-struct CTCGhostSword          { void CancelForCutscene(); };  // 0x007C5480
-struct CTCMultiArrow          { void CancelForCutscene(); };  // 0x007CC190
-struct CTCAssassinRush        { void CancelForCutscene(); };  // 0x007AA5C0
-struct CTCMultiStrike         { void CancelForCutscene(); };  // 0x007CC9C0
-struct CTCDivineWrath         { void CancelForCutscene(); };  // 0x0078F8F0
-struct CTCUnholyPower         { void CancelForCutscene(); };  // 0x00794E60
+class CTCBulletTime          { public: void CancelForCutscene(); };  // 0x0079C660
+class CTCPhysicalShieldSpell { public: void CancelForCutscene(); };  // 0x0079E500
+class CTCBerserk             { public: void CancelForCutscene(); };  // 0x0078D210
+class CTCSummonSpell         { public: void CancelForCutscene(); };  // 0x0079A660
+class CTCGhostSword          { public: void CancelForCutscene(); };  // 0x007C5480
+class CTCMultiArrow          { public: void CancelForCutscene(); };  // 0x007CC190
+class CTCAssassinRush        { public: void CancelForCutscene(); };  // 0x007AA5C0
+class CTCMultiStrike         { public: void CancelForCutscene(); };  // 0x007CC9C0
+class CTCDivineWrath         { public: void CancelForCutscene(); };  // 0x0078F8F0
+class CTCUnholyPower         { public: void CancelForCutscene(); };  // 0x00794E60
 
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     void CancelAbilitiesForCutscene();

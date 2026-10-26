@@ -1,4 +1,4 @@
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(int a, int b);
     void TransferImpl(int a, int b, long* pv);
 };

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <new>
 struct CVertexShaderData { void* VertexDeclaration; void* VertexShader; const void* FormatDecl; unsigned long ReferenceCount; };
-struct CVertexShader {
+class CVertexShader { public:
     virtual int Kind() const { return 0xB3D0; }
     CVertexShaderData* Data;
     explicit CVertexShader(CVertexShaderData* d) : Data(d) { }

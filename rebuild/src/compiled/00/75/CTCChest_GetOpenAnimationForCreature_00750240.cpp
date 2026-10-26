@@ -14,18 +14,18 @@
 // declared; the object is copied out of it into a holder (esi) whose destructor releases it after either string is
 // built straight into the return slot (null test, `dec [esi+4] ; jne`); releasing through the escaped out pointer
 // itself re-reads it from the frame.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     bool operator!=(const char* text) const;           // 0x0099E960
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                            // slot 0
     virtual void Delete();                             // slot 1 (+0x04)
     long m_refCount;                                   // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -41,18 +41,18 @@ template <class T> struct CDefHolder {
     }
     T* operator->() const { return Object; }
 };
-struct CChestDef : CDefPointeeBase {
+class CChestDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x30 - 0x08];
     CCharString OpenAnimationForCreature;              // +0x30
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CChestDef>* out);       // 0x0074F7D0
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                               // +0x70
 };
-struct CTCChest {
+class CTCChest { public:
     virtual void v00();
     CThing* ParentThing;                               // +0x04 (CTCBase)
     CCharString GetOpenAnimationForCreature() const;

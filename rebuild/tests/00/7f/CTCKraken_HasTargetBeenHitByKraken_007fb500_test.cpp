@@ -1,9 +1,9 @@
 // Behaviour test for CTCKraken::HasTargetBeenHitByKraken (0x007FB500).
 #include <cstdio>
 
-struct CThing;
-struct CTCEntityEvents;
-struct CThing {
+class CThing;
+class CTCEntityEvents;
+class CThing { public:
     unsigned char m_flags91;
     CTCEntityEvents* Events;                    // the 0x42 component, or 0
     bool HasTC(long kind) const { return kind == 0x42 && Events != 0; }
@@ -22,7 +22,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer& p)
     return false;
 }
 struct CIsHitEventHitBy { CThing* HitBy; CIsHitEventHitBy(CThing* thing) : HitBy(thing) { } };
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     CThing* HitBy;                              // the one thing that hit
     int Queries;
     bool GetEvent(int** event, const CIsHitEventHitBy& isHit) { ++Queries; *event = 0; return isHit.HitBy == HitBy; }
@@ -41,7 +41,7 @@ struct CList {
     }
     void push(SNode* n) { n->_M_prev = _M_node->_M_prev; n->_M_next = _M_node; _M_node->_M_prev->_M_next = n; _M_node->_M_prev = n; }
 };
-struct CTCKraken {
+class CTCKraken { public:
     CIntelligentPointer PTarget;
     CList Tentacles;
     CTCKraken() : PTarget(0) { }

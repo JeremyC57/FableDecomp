@@ -10,7 +10,7 @@
 // in the `push ecx` frame slot and the map pointer is a named local (esi). The leaf keeps the
 // manifest name (the flag matches CAIScratchpadDef::IsPushableByHero's purpose); the component
 // class is not identified.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
@@ -19,12 +19,12 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
 
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad[0x79];
     bool          m_bPushableByHero;        // +0x79
 };
 
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -43,13 +43,13 @@ struct CThingAICreature {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void*             __vftable;            // +0x00
     unsigned char     _pad[0x14];           // +0x04..+0x18
     CThingAICreature* Creature;             // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*     __vftable;                    // +0x00
     CAIBrain* PBrain;                       // +0x04
     void SetPushableByHero(bool pushable);

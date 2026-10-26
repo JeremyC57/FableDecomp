@@ -12,7 +12,7 @@
 // Shape: out-parameter GetInterface lookups (component kept in esi, then spilled to the dead key word); the occupant is
 //   re-fetched through GetPItem for every use; `a || b || c` over the state bools in retail's order; the distance test is
 //   the inline smaller-than with the radius squared folded.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -23,14 +23,14 @@ __forceinline bool GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVec
 {
     return (a - b).GetLengthSquared() < distance * distance;
 }
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -83,7 +83,7 @@ struct CTCOccupantState {                   // interface type 0x26 (class not pi
     bool StateB;                            // +0x12
     bool StateC;                            // +0x13
 };
-struct CThingBuilding : CThing {
+class CThingBuilding : public CThing { public:
     bool IsDoorBlockedBy(CThing* thing);
 };
 

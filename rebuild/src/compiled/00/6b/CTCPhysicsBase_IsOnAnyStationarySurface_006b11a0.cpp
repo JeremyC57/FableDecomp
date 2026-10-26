@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct CTCPhysicsBase { bool IsOnAnyStationarySurface(); };
+class CTCPhysicsBase { public: bool IsOnAnyStationarySurface(); };
 bool CTCPhysicsBase::IsOnAnyStationarySurface() { return false; }

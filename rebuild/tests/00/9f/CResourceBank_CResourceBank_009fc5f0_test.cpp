@@ -20,15 +20,15 @@ struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
 };
 
-struct CResourceList;
+class CResourceList;
 
-struct CIVCountedPointeeBase {                       // PDB: vptr + IVRefCount (+0x04)
+class CIVCountedPointeeBase { public:                       // PDB: vptr + IVRefCount (+0x04)
     CIVCountedPointeeBase() : IVRefCount(1) {}
     virtual ~CIVCountedPointeeBase();
     unsigned long IVRefCount;
 };
 
-struct CResource : CIVCountedPointeeBase {                  // vtable 0x012354A4, 0x1C bytes
+class CResource : public CIVCountedPointeeBase { public:                  // vtable 0x012354A4, 0x1C bytes
     CResource() : ResourceList(0), PrevResource(0), NextResource(0), ResourceSize(0), LastUsedFrame(0) {}
     virtual ~CResource();
     CResourceList*  ResourceList;                    // +0x08
@@ -38,7 +38,7 @@ struct CResource : CIVCountedPointeeBase {                  // vtable 0x012354A4
     unsigned long   LastUsedFrame;                   // +0x18
 };
 
-struct CResourceList {                               // vtable 0x0129C808, 0x3C bytes
+class CResourceList { public:                               // vtable 0x0129C808, 0x3C bytes
     CResourceList()
     {
         Head.PrevResource = &Head;
@@ -62,7 +62,7 @@ struct CResourceList {                               // vtable 0x0129C808, 0x3C 
     unsigned long UnloadedThisFrame;                 // +0x38
 };
 
-struct CResourceBank : CBaseClassNonCopyable {      // vtable 0x0129C814, 0x7C bytes
+class CResourceBank : public CBaseClassNonCopyable { public:      // vtable 0x0129C814, 0x7C bytes
     CResourceBank();
     virtual ~CResourceBank();
     CResourceList ResourceList;                      // +0x04

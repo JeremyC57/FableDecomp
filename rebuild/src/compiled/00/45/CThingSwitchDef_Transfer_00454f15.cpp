@@ -9,7 +9,7 @@ struct CXfer {
     void Transfer(void* obj);
 };
 
-struct CThingSwitchDef : public CBaseDef {
+class CThingSwitchDef : public CBaseDef { public:
     char pad[0x70];
     CXfer sub;
     void Transfer(CXfer* xfer);

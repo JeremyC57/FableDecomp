@@ -2,7 +2,7 @@
 #include <cstdio>
 struct V { float X, Y, Z; };
 struct CBoss { bool finalPhase, ready; };
-struct CThing { V pos; bool dead; CBoss* boss; };
+class CThing { public: V pos; bool dead; CBoss* boss; };
 struct Group {
     CThing* creature; CThing* hero; CThing* PTargetThing; float R;
     bool IsRunnable()

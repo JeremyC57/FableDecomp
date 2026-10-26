@@ -15,7 +15,7 @@
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
 
 #pragma pack(push, 1)
-struct CFileLargeThemePaletteEntry {
+class CFileLargeThemePaletteEntry { public:
     char ThemePaletteEntryName[128];                    // +0x00
     long ThemePaletteThemeDefIndex;                     // +0x80
 };
@@ -29,8 +29,8 @@ template <class TNew, class TOld> struct CReplaceSerialise {
     unsigned char SerialiseVersionNumber;               // +0x04
 };
 
-struct COldFileFormatMapHeader6;
-struct COldFileFormatMapHeader7 : CReplaceSerialise<COldFileFormatMapHeader7, COldFileFormatMapHeader6> {
+class COldFileFormatMapHeader6;
+class COldFileFormatMapHeader7 : public CReplaceSerialise<COldFileFormatMapHeader7, COldFileFormatMapHeader6> { public:
     unsigned __int64       ThingUIDCount;               // +0x05
     unsigned long          WorldSizeX;                  // +0x0d
     unsigned long          WorldSizeY;                  // +0x11
@@ -40,7 +40,7 @@ struct COldFileFormatMapHeader7 : CReplaceSerialise<COldFileFormatMapHeader7, CO
     unsigned long          NoSoundThemeEntries;         // +0x841a
 };
 
-struct COldFileFormatMapHeader8 : CReplaceSerialise<COldFileFormatMapHeader8, COldFileFormatMapHeader7> {
+class COldFileFormatMapHeader8 : public CReplaceSerialise<COldFileFormatMapHeader8, COldFileFormatMapHeader7> { public:
     unsigned __int64       ThingUIDCount;               // +0x05
     unsigned long          WorldSizeX;                  // +0x0d
     unsigned long          WorldSizeY;                  // +0x11

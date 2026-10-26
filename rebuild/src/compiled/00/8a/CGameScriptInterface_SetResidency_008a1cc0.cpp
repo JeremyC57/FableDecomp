@@ -97,7 +97,7 @@ public:
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD256(pa) VPAD128(pb) VPAD32(pc) VPAD8(pd) VPAD4(pe) VPAD2(pf) VPAD1(pg)   // slots 0..430
     virtual void OverrideAutomaticHouseLocking(const CScriptThing& building, bool override) const;   // slot 431 (+0x6BC)
     virtual CScriptThing SetResidency(const CScriptThing& building, bool resident);

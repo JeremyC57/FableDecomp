@@ -67,7 +67,7 @@ public:
         }
         value_type* End() { return Last; }
     };
-    struct CState {                                     // 0x18 bytes
+    class CState { public:                                     // 0x18 bytes
         long RegionSet, OverrideSet, UIOverrideSet, CinematicOverrideSet, MapCellSet;
         bool Paused, Danger;
     };

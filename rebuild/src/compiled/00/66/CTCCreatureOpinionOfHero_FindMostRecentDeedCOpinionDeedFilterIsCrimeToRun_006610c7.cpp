@@ -16,7 +16,7 @@
 //   slot and a 92-down counter; each list walk tests at the bottom (`jmp` into the test, size TU).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     bool test(long bit) const;                          // 0x00410DE0 (std::bitset::test)
 };
@@ -26,7 +26,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CPresenceBits m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -43,22 +43,22 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature();                    // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
     long          DeedHandle;                           // +0x04
     unsigned char _pad08[0x14 - 0x08];
     unsigned long Time;                                 // +0x14
 };
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     bool operator()(const COpinionDeed* deed) const;    // 0x00681750
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     const COpinionDeed* GetDeedFromHandle(long handle) const;   // 0x006C58F0
 };
 struct SHandleNode {                                    // STLport list<long> node
@@ -69,7 +69,7 @@ struct SHandleNode {                                    // STLport list<long> no
 struct CHandleList {                                    // retail list: the sentinel node pointer
     SHandleNode* head;
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     unsigned char _pad04[0x54 - 0x04];
     CHandleList PendingDeeds;                           // +0x54 (PDB +0x70)

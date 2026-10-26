@@ -20,12 +20,12 @@ struct CComponentRoot {                          // the primary base: vptr at +0
     virtual void v00();
 };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];      // +0x1c .. +0x15c: the base's state
     CChangingStateComponent(long owner);                            // 0x0052CC50
 };
 
-struct CParticleEffect : CChangingStateComponent {                        // vtables 0x0124735C / 0x01247338 / 0x01247330
+class CParticleEffect : public CChangingStateComponent { public:                        // vtables 0x0124735C / 0x01247338 / 0x01247330
     virtual void v00();
     virtual void va00();
     virtual void vb00();

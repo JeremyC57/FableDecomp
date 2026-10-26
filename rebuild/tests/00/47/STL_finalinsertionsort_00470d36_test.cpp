@@ -1,7 +1,7 @@
 // Behaviour test for STLport __final_insertion_sort over pair<unsigned long, CSoundPair> (0x00470D36).
 #include <cstdio>
 
-struct CSoundPair { unsigned int First, Second; };
+class CSoundPair { public: unsigned int First, Second; };
 template <class A, class B> struct pair { A first; B second; };
 typedef pair<unsigned int, CSoundPair> Elem;
 

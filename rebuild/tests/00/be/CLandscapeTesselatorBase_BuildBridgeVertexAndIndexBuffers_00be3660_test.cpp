@@ -2,11 +2,11 @@
 #include <cstdio>
 #include <cstring>
 static unsigned char g_ib[64], g_vb[64]; static bool g_failIndex, g_failVertex; static int g_unlocks;
-struct CMovableResource {};
-struct CIndexBuffer { unsigned char* Lock(unsigned long, unsigned long, unsigned long) { return g_ib; } void Unlock() { ++g_unlocks; } };
-struct CVertexBufferWin32 { unsigned char* Lock(unsigned long, unsigned long, unsigned long) { return g_vb; } void Unlock() { ++g_unlocks; } };
+class CMovableResource { public:};
+class CIndexBuffer { public: unsigned char* Lock(unsigned long, unsigned long, unsigned long) { return g_ib; } void Unlock() { ++g_unlocks; } };
+class CVertexBufferWin32 { public: unsigned char* Lock(unsigned long, unsigned long, unsigned long) { return g_vb; } void Unlock() { ++g_unlocks; } };
 static CIndexBuffer g_index; static CVertexBufferWin32 g_vertex;
-struct CTesselationData { CVertexBufferWin32* BridgeVertexBuffers[4]; CIndexBuffer* BridgeIndexBuffers[4]; long BridgePolyCounts[4]; };
+class CTesselationData { public: CVertexBufferWin32* BridgeVertexBuffers[4]; CIndexBuffer* BridgeIndexBuffers[4]; long BridgePolyCounts[4]; };
 struct CArrayU16 {
     unsigned short* _M_start; unsigned short* _M_finish;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }

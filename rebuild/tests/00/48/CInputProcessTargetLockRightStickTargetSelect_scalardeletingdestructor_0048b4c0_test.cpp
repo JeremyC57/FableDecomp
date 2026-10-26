@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CInputProcessTargetLockRightStickTargetSelect;
+class CInputProcessTargetLockRightStickTargetSelect;
 
 static int g_dtor_calls = 0;
 static int g_delete_calls = 0;
@@ -19,8 +19,8 @@ void operator_delete_impl(void* p)
     g_last_deleted = p;
 }
 
-struct CInputProcessTargetLockRightStickTargetSelect
-{
+class CInputProcessTargetLockRightStickTargetSelect
+{ public:
     int payload;
     void* scalar_deleting_destructor(unsigned int flags);
 };

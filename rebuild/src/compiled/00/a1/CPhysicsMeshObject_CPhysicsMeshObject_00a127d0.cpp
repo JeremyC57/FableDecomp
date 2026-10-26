@@ -10,13 +10,13 @@
 // null test), then the base destructor as a sibling tail jump. PDB layout: Mesh
 // CIVCountedPointer<const CPhysicsMesh> +4, PositionMatrix +8, Scale +0x38, OO_Scale +0x3C (modelled
 // locally: polymorphic class, no engine header).
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     __forceinline ~CIVCountedPointer()
     {
@@ -29,13 +29,13 @@ template <class T> struct CIVCountedPointer {
     }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     CBaseClass();                                  // 0x0099A2D0
     ~CBaseClass();                                 // 0x0099A2E0
 };
 
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38

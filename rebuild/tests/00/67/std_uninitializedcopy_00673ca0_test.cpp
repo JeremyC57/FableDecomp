@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 struct __false_type { __false_type() { } };
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 struct CSkeletalMorph { long GroupID; CDefString Name; bool AllowVariation; };
 template <class T1, class T2>
 struct pair {

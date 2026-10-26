@@ -8,7 +8,7 @@ struct CRandomGenerator {
 };
 static CRandomGenerator g_rng;
 struct Vec { int* b; int* e; };
-struct CMaterialDef {
+class CMaterialDef { public:
     Vec v;
     int Get()
     {

@@ -20,7 +20,7 @@
 //   f2xm1 / fscale); the acceleration is a C3DVector(0, 0, z) temporary. No pragma.
 #include <math.h>
 #pragma intrinsic(exp)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };

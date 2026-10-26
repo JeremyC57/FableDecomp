@@ -1,4 +1,4 @@
-struct CCombatAbilityStrafeDef;
+class CCombatAbilityStrafeDef;
 
 extern void __fastcall CCombatAbilityStrafeDef_Copy_impl(CCombatAbilityStrafeDef* self, void* dummy, const CCombatAbilityStrafeDef* other);
 

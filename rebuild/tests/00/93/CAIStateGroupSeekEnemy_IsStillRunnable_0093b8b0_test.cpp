@@ -52,11 +52,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CAIBrain;
-struct CCharStringData;
+class CAIBrain;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     CAIBrain*        PBrain;                                 // +0x04
     unsigned char    ScriptAIPriority[0x4];                  // +0x08 EScriptAIPriority
@@ -89,17 +89,17 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroupBase, Enabled) == 0x12);
 #include <stddef.h>
 
 
-struct CAIStateGroupBase;
-struct CBrainUpdateZone;
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingAICreature;
-struct CThingManager;
-struct CWorld;
+class CAIStateGroupBase;
+class CBrainUpdateZone;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingAICreature;
+class CThingManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CAIBrain {
+class CAIBrain { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -187,15 +187,15 @@ FABLE_STATIC_ASSERT(offsetof(CAIStateGroup_SeekEnemy, PEnemy) == 0x14);
 #include <stddef.h>
 
 
-struct CAIBrain;
-struct CBrainOutput;
-struct CCPPointerInfo;
-struct CCharStringData;
+class CAIBrain;
+class CBrainOutput;
+class CCPPointerInfo;
+class CCharStringData;
 struct CRelationshipsInit;
 struct CVillageTask;
 
 #pragma pack(push, 1)
-struct CThingAICreature {
+class CThingAICreature { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -361,10 +361,10 @@ FABLE_STATIC_ASSERT(offsetof(CThingAICreature, Suspenders) == 0x1fc);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     int              field4;                                 // +0x04 retail-only int (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -436,10 +436,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCPerceiveThing, FrameHitByPerceivedThing) == 0x54
 #include <stddef.h>
 
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
-struct CTCBase {
+class CTCBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08
@@ -466,14 +466,14 @@ FABLE_STATIC_ASSERT(offsetof(CTCBase, IsInGlobalUpdateTCs) == 0x9);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -561,7 +561,7 @@ struct CThingAICreatureComponentAccess : CThingAICreature {
     }
 };
 
-struct CTCTargetingAI : CTCBase {}; // real slot29 GetTarget (+0x74); actual shared component header
+class CTCTargetingAI : public CTCBase { public:}; // real slot29 GetTarget (+0x74); actual shared component header
 typedef CThing* (CTCTargetingAI::*TargetMethod)();
 union TargetMethodSlot { void* Code; TargetMethod Method; };
 struct TargetVTable { void* OtherSlots[29]; TargetMethodSlot GetTarget; };

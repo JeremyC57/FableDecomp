@@ -1,10 +1,10 @@
 // Behaviour test for CTCDivineWrath::OnCreate (0x0078F4D0): a barrier is created at the caster's position with the physics
 // radius; a live barrier's obstruction driver ignores the caster and the spell keeps the barrier; a dead/null one is ignored.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase { float Radius; };
-struct CTCDPhysicalObstruction;
-struct CThing {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public: float Radius; };
+class CTCDPhysicalObstruction;
+class CThing { public:
     unsigned long   m_presentBits[9];
     CTCDPhysicalObstruction* PTCDriver;
     CTCPhysicsBase* PhysicsTC;
@@ -40,8 +40,8 @@ struct CIntelligentPointerVector {
     CThing* Pushed[4]; int Count;
     void push_back(const CIntelligentPointer& value) { Pushed[Count++] = value.GetPItem(); }
 };
-struct CTCDPhysicalObstruction { CIntelligentPointerVector ThingsToIgnoreObstruction; };
-struct CTCDivineWrath {
+class CTCDPhysicalObstruction { public: CIntelligentPointerVector ThingsToIgnoreObstruction; };
+class CTCDivineWrath { public:
     virtual void v00() { }
     CThing* ParentThing;
     CIntelligentPointer PObstruction;

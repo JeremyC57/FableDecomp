@@ -7,18 +7,18 @@
 //
 #include "rebuild_abi.h"
 
-struct CResource {
+class CResource { public:
     virtual void v0();
     CResource();                                   // 0x009FBEC0
     unsigned char _body[0x18];                     // ResourceList, PrevResource, NextResource, ResourceSize, LastUsedFrame (sizeof 0x1c)
 };
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T* m_pData; CCPPointerInfo* m_pInfo;
     CCountedPointer() : m_pData(0), m_pInfo(0) {}
 };
-struct C3DMesh2; struct CBankFileAsyncData; struct C3DMeshInfo;
-struct C3DMeshLODInfo : CResource {
+class C3DMesh2; class CBankFileAsyncData; class C3DMeshInfo;
+class C3DMeshLODInfo : public CResource { public:
     CCountedPointer<C3DMesh2>           Mesh;            // +0x1c
     CCountedPointer<CBankFileAsyncData> FileData;        // +0x24
     C3DMeshInfo*                        MeshInfo;        // +0x2c

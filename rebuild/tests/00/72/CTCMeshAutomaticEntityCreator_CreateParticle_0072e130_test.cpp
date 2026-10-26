@@ -11,7 +11,7 @@ public:
     CCharString(const char* text, long length = -1) : m_text(text) { (void)length; }
     const char* m_text;
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 static int g_attachCalls = 0;
 static CThing* g_attachThing = 0;
@@ -66,7 +66,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CBaseObject* item) { m_pItem = (CThing*)item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)

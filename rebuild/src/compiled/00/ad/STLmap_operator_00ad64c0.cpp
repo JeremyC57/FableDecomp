@@ -12,13 +12,13 @@
 //   but never keeps its address gives retail's late Data store and the folded `dec [esi] ; jne` release.
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                                  // +0x00
     void (__fastcall* DeleteFunc)(void* data);               // +0x04
     void*         Data;                                      // +0x08
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                    // +0x00
     CCPPointerInfo* Info;                                    // +0x04
     CCountedPointer() : Data(0), Info(0) {}

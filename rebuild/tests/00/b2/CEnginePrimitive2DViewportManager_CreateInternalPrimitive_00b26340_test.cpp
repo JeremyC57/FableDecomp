@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CEngineInternalPrimitiveBase
-{
+class CEngineInternalPrimitiveBase
+{ public:
     CEngineInternalPrimitiveBase* Construct();
 };
 
@@ -25,8 +25,8 @@ CEngineInternalPrimitiveBase* CEngineInternalPrimitiveBase::Construct()
     return this;
 }
 
-struct CEnginePrimitive2DViewportManager
-{
+class CEnginePrimitive2DViewportManager
+{ public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive();
 };
 

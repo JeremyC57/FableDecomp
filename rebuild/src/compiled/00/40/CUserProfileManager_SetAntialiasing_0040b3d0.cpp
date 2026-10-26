@@ -1,6 +1,6 @@
 #pragma optimize("gy",on)
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char flag;
     char pad1[0x2c - 0xd];

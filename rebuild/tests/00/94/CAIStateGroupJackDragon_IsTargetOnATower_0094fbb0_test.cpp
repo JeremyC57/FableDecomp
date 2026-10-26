@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CAIStateGroup_JackDragon::IsTargetOnATower @ 0x0094FBB0.
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector m_pos; C3DVector* GetPosition() { return &m_pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector m_pos; C3DVector* GetPosition() { return &m_pos; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() { return m_pItem; } };
 struct CAIStateGroup_JackDragon { CBaseIntelligentPointer PEnemy, PLandedMarker;
     bool IsTargetOnATower() { CThing* m = PLandedMarker.GetPItem(); CThing* e = PEnemy.GetPItem(); if (e->GetPosition()->Z > m->GetPosition()->Z + 1.5f) return true; return false; } };

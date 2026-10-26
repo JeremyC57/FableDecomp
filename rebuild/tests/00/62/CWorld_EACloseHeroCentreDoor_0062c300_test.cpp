@@ -9,14 +9,14 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player;
     unsigned char Data[32];
     long GetData(CMemoryBuffer& buffer) const { std::memcpy(buffer.Data, Data, 32); buffer.Length = 32; return 32; }
 };
 static int g_closes = 0;
-struct CTCHeroCentre { void OnHeroCloseDoor() { ++g_closes; } };
-struct CThing {
+class CTCHeroCentre { public: void OnHeroCloseDoor() { ++g_closes; } };
+class CThing { public:
     bool Dead; CTCHeroCentre* Centre;
     bool HasTC(long type) const { return type == 0x6A && Centre != 0; }
     template<class T> T* GetTC(long) { return Centre; }
@@ -29,12 +29,12 @@ struct CThing {
     }
 };
 static CThing g_door;
-struct CThingManager { CThing* GetThingWithUID(long long uid) { return uid == 77 ? &g_door : 0; } };
+class CThingManager { public: CThing* GetThingWithUID(long long uid) { return uid == 77 ? &g_door : 0; } };
 static CThingManager g_manager;
 static CThing* g_hero = 0;
-struct CPlayer { CThing* GetHeroThing() { return g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
 static CPlayer g_player;
-struct CWorld {
+class CWorld { public:
     virtual CThingManager* GetThingManager() { return &g_manager; }
     virtual ~CWorld() {}
     CPlayer* GetPlayer(long) { return &g_player; }

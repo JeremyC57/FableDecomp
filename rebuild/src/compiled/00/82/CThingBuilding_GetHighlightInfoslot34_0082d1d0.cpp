@@ -10,34 +10,34 @@
 //        1.0f constant is shared by the scale store and the clamp (edx); the def copy adds a reference under a null test and
 //        releases through a register decrement without one.
 // Layout: CThing PlayerNumber +0x90; CPlayer::PlayerDef +0x21C; CPlayerDef::Colour +0x40 (def classes pack to 1).
-struct CRGBColour {                                  // retail byte order B, G, R, A (landed twin 0x006A9D10)
+class CRGBColour { public:                                  // retail byte order B, G, R, A (landed twin 0x006A9D10)
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Delete();                           // slot 1 (+0x04)
     long RefCount;                                   // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CPlayerDef : CDefPointeeBase {
+class CPlayerDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     CRGBColour    Colour;                            // +0x40
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char          _pad00[0x21c];
     CDefPointer<CPlayerDef> PlayerDef;               // +0x21c
     bool IsLocal();                                  // 0x0099A330 (manifest label propagated; landed twin names it CInitBaseClass::IsInitialised)
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer_00449910(long playerNumber);           // 0x00449910
 };
 struct SThingHighlightInfo {                         // descriptive
@@ -47,7 +47,7 @@ struct SThingHighlightInfo {                         // descriptive
     CRGBColour Colour;                               // +0x0c
     bool       Valid;                                // +0x10
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x90];
     signed char   PlayerNumber;                      // +0x90
     CPlayerManager* GetPlayerManager();              // 0x004C79F0

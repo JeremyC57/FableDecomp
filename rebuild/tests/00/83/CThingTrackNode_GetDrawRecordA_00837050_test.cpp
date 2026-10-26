@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for CThingTrackNode::GetDrawRecordA (0x00837050): returns the first word of the bank's draw record.
 struct CMeshInfoSize { long m_a; long m_b; float m_x; };
-struct CMeshDataBank { CMeshInfoSize m_size; };
+class CMeshDataBank { public: CMeshInfoSize m_size; };
 static CMeshDataBank g_bank;
 static CMeshDataBank* GetMeshBank() { return &g_bank; }
-struct CThingTrackNode {
+class CThingTrackNode { public:
     long GetDrawRecordA() { return GetMeshBank()->m_size.m_a; }
 };
 int main()

@@ -4,7 +4,7 @@
 #include <new>
 
 static int g_live = 0;
-struct CTexture {
+class CTexture { public:
     void* PD3DTexture;
     unsigned int ByteLength : 28;
     unsigned int AllocationSource : 4;

@@ -26,15 +26,15 @@
 //   value locals (the barrier marker, the snow troll) VC7.1 devirtualises and inlines them; the two forcefields are
 //   references bound to the CreateEffect results (the VC non-const reference extension), so their IsAlive stays virtual
 //   and the recreated pair is assigned through the inline counted-pointer operator=.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                         // 0x0143E8E0
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -53,11 +53,11 @@ struct CScriptThingImpl {                              // the polymorphic implem
     virtual void i071() {} virtual void i072() {} virtual void i073() {} virtual void i074() {}
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CBaseClass {                                    // vtable 0x01231710
+class CBaseClass { public:                                    // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
-template <class T> struct CCountedPointer {            // {Data, Info}
+template <class T> class CCountedPointer { public:            // {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -97,7 +97,7 @@ template <class T> struct CCountedPointer {            // {Data, Info}
         return *this;
     }
 };
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     virtual void s001() {} virtual void s002() {} virtual void s003() {} virtual void s004() {} virtual void s005() {}
     virtual const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }   // slot 6 (+0x18)
     virtual void s007() {} virtual void s008() {} virtual void s009() {}
@@ -198,8 +198,8 @@ struct CEntityScriptBase {                             // retail 0x14 bytes
     void SetPredicate(CIsThingAlive& predicate);       // 0x00F35B10
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
-struct CQ_SunnyvaleMasterData;
-struct CV_TravellingHeroesScript {
+class CQ_SunnyvaleMasterData;
+class CV_TravellingHeroesScript { public:
     class CTH_MagicBarrier;
 };
 class CV_TravellingHeroesScript::CTH_MagicBarrier : public CEntityScriptBase {

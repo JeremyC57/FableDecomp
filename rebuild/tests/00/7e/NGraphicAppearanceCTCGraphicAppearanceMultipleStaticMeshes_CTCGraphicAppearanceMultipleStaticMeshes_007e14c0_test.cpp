@@ -5,8 +5,8 @@ static CAGraphicAppearanceComponent* g_registered = 0; static int g_count = 0;
 struct CTCGraphicAppearance {
     void RegisterComponent(CAGraphicAppearanceComponent* c) { g_registered = c; ++g_count; }
 };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; };
-struct CTCBase {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
@@ -17,7 +17,7 @@ struct CRetailVector_CPrimitivePtr {
     CPrimitive** m_pFirst; CPrimitive** m_pLast; CPrimitive** m_pEnd;
     CRetailVector_CPrimitivePtr() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
-struct CMultiStaticMeshDef;
+class CMultiStaticMeshDef;
 struct CDefPointer_CMultiStaticMeshDef { const CMultiStaticMeshDef* m_pDef; CDefPointer_CMultiStaticMeshDef() : m_pDef(0) { } };
 struct CTCGraphicAppearanceMultipleStaticMeshes : CTCBase, CAGraphicAppearanceComponent {
     CRetailVector_CPrimitivePtr     PrimHandles;

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -11,7 +11,7 @@ struct CInterfaceMap {
         return p;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -28,12 +28,12 @@ struct CThing {
         return false;
     }
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     bool m_forceUpdate; bool m_running; int m_updates;
     bool IsScriptTaskRunning() { return m_running; }
     void Update() { ++m_updates; }
 };
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     int m_moves;
     void ControlledMove() { ++m_moves; }
     void UpdatePlayerControl();

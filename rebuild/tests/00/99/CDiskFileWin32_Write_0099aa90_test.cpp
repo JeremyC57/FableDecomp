@@ -62,10 +62,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CDiskFileWin32 {
+class CDiskFileWin32 { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    AccessType[0x4];                        // +0x04 FileAccessType
     long             Position;                               // +0x08
@@ -94,8 +94,8 @@ FABLE_STATIC_ASSERT(offsetof(CDiskFileWin32, Pathname_PStringData) == 0x18);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -103,8 +103,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -205,7 +205,7 @@ public:
  EFileExceptionType Type;
  CBBBFileException(CStringFileArgument text,EFileExceptionType type):CExceptionBase(static_cast<const char*>(text)),Type(type){} //99E4C0 conversion, not logging
 };
-struct CASuspendableProcess;
+class CASuspendableProcess;
 extern int (__stdcall* WriteFileImport)(void*,const void*,unsigned long,unsigned long*,void*); //IAT0143FDA4 kernel32.WriteFile
 extern void (__fastcall* DebugMessage)(const char*); //013BCA00
 struct CDiskFileWriter:CDiskFileWin32 {void Write(const void*,long,CASuspendableProcess*);};

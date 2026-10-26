@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 namespace NUISystem {
-struct CObserver;
+class CObserver;
 struct SRetailAllocator { SRetailAllocator() { } };
 struct SNode { SNode* next; SNode* prev; void* data; };
 struct CRetailListBase {

@@ -12,7 +12,7 @@
 #pragma optimize("s", on)
 #include "engine/CCrateStackDef.h"
 
-struct CPersistContext {
+class CPersistContext { public:
     void TransferEnum_00431102(long* value);                                          // 0x00431102
     void Transfer(const char* name, long& value, const long& defaultValue);           // Transfer<long> @ 0x00410BE0
 };

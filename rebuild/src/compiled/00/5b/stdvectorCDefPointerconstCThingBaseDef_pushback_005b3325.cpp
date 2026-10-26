@@ -1,5 +1,5 @@
 // std::vector<CDefPointer<const CThingBaseDef> >::push_back(const CDefPointer<const CThingBaseDef>& x) -- STLport push_back of a counted def pointer: copy-construct it in place at _M_finish (add-ref the def) when there is room, else grow through _M_insert_overflow
-// Leaf: ?push_back@?$vector@U?$CDefPointer@$$CBUCThingBaseDef@@@@
+// Leaf: ?push_back@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@
 // Retail: Fable.exe @ 0x005B3325, 56 bytes, `ret 4` (thiscall). Callers: CTCInventoryTrade::ApplyTattooCard 0x005AD39D and
 // CTCHeroMorph::AddTattoo(long) 0x0071DA3A / 0x0071DB84 (landed 0x0071DA70 names this push_back on its Tattoos vector).
 // Identity (correction of the earlier CDefPointer<const CTattooDef> attribution): CTCHeroMorph::Tattoos is
@@ -18,14 +18,14 @@
 // STLport's inline _Construct must be `__forceinline` in this size TU (plain `inline` is called out of line: 55 v 56).
 #pragma optimize("s", on)
 #include <stddef.h>
-struct CThingBaseDef;                                 // the element's pointee (only named here; a class in Ego_r.pdb)
+class CThingBaseDef;                                 // the element's pointee (only named here; a class in Ego_r.pdb)
 inline void* operator new(size_t, void* p) { return p; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                         // slot 1
     mutable long m_refCount;                              // +0x04
 };
-template <class T> struct CDefPointer {                 // CDefPointer<const T>: the pointee seen through its counted base
+template <class T> class CDefPointer { public:                 // CDefPointer<const T>: the pointee seen through its counted base
     CDefPointeeBase* Object;                            //   (the engine headers' `CDefPointeeBase* PDef_Object` convention)
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++Object->m_refCount; }
 };

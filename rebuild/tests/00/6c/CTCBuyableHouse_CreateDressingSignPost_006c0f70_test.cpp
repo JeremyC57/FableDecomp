@@ -1,8 +1,8 @@
 // Behaviour test for 006c0f70 CTCBuyableHouse::CreateDressingSignPost: the created sign post (non-main, named by the global def name) ends up in DressingSignPost.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CCharString { const char* PStringData; };
+class CThing { public: int id; };
+class CCharString { public: const char* PStringData; };
 
 struct CBaseIntelligentPointer
 {
@@ -15,8 +15,8 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer
-{
+class CIntelligentPointer : public CBaseIntelligentPointer
+{ public:
     virtual void v00() {}
     CIntelligentPointer() {}
     CIntelligentPointer(T* item) { SetPItem(item); }
@@ -28,8 +28,8 @@ static CThing g_created = { 42 };
 static const CCharString* g_lastName = 0;
 static bool g_lastMain = true;
 
-struct CTCBuyableHouse
-{
+class CTCBuyableHouse
+{ public:
     CIntelligentPointer<CThing> MainSignPost;
     CIntelligentPointer<CThing> DressingSignPost;
 

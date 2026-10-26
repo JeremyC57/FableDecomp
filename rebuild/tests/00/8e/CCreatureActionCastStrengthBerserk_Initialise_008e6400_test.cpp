@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CTCBase { long type; };
+class CTCBase { public: long type; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_entries[4];
@@ -51,17 +51,17 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CCharString { const char* m_text; CCharString(const char* text, long length) : m_text(text) { (void)length; } };
-struct CTCParamsBase;
-struct CTCBerserk { int m_started; CTCBerserk() : m_started(0) { } void CreateStartingEffect() { ++m_started; } };
+class CCharString { public: const char* m_text; CCharString(const char* text, long length) : m_text(text) { (void)length; } };
+class CTCParamsBase;
+class CTCBerserk { public: int m_started; CTCBerserk() : m_started(0) { } void CreateStartingEffect() { ++m_started; } };
 struct CTCStrengthBoost : CTCBase { unsigned char m_active; long m_boostLevel; CTCStrengthBoost() : m_active(0), m_boostLevel(0) { } };
 static CTCBerserk g_berserk; static const char* g_addedName = 0; static bool g_addedActivate = false; static CTCParamsBase* g_addedParams = (CTCParamsBase*)1;
 struct CCreatureThing : CThing {
     CTCBerserk* AddTC(const CCharString& name, bool activate, CTCParamsBase* params) { g_addedName = name.m_text; g_addedActivate = activate; g_addedParams = params; return &g_berserk; }
 };
 static int g_baseInit = 0;
-struct CCombatActionBase { virtual ~CCombatActionBase() { } virtual void Initialise() { ++g_baseInit; } CBaseIntelligentPointer PCreature; };
-struct CCreatureAction_CastStrengthBerserk : CCombatActionBase { virtual void Initialise(); };
+class CCombatActionBase { public: virtual ~CCombatActionBase() { } virtual void Initialise() { ++g_baseInit; } CBaseIntelligentPointer PCreature; };
+class CCreatureAction_CastStrengthBerserk : public CCombatActionBase { public: virtual void Initialise(); };
 void CCreatureAction_CastStrengthBerserk::Initialise()
 {
     CCombatActionBase::Initialise();

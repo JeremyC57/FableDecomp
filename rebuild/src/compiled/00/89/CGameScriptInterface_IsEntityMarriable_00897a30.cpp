@@ -8,7 +8,7 @@
 // Layout: CThing as the matched 0x0089A330 / 0x0089B0B0 rows. Interface 0xd7 is modelled as CTCWife (Ego_r.pdb
 // ?IsMarriedToThePlayer@CTCWife@@QBE_NXZ / ?IsWillingToMarry@CTCWife@@QBE_NXZ); the interface number is not confirmed.
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form.
-struct CTCBase;
+class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
     struct SEntry { long type; CTCBase* component; };

@@ -1,4 +1,4 @@
-struct CCombatAction_StrikeResponseMazeDoForcePush {
+class CCombatAction_StrikeResponseMazeDoForcePush { public:
     void* vftable;
 };
 

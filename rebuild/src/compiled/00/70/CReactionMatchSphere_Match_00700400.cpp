@@ -17,7 +17,7 @@ struct CArrayFloat {                                     // retail CArray<float>
     float* m_begin; float* m_end; float* m_capacity;
 };
 
-struct COpinionSet {
+class COpinionSet { public:
     CArrayFloat OpinionValues;                           // +0x00
     __forceinline float GetSqDistance(const COpinionSet& other) const
     {
@@ -30,7 +30,7 @@ struct COpinionSet {
     }
 };
 
-struct CReactionMatch {
+class CReactionMatch { public:
     void* __vftable;                                     // +0x00
     long  ReactionType;                                  // +0x04 EOpinionReactionType
 };

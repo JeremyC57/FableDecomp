@@ -2,10 +2,10 @@
 // the health thresholds and copies the def's target counts, and the loop ends at DS_DEAD.
 #include <cstdio>
 
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 static int g_frames, g_terminateAt, g_spawns;
 static float g_health[64]; static bool g_flying[64];
-struct CScriptDef { long MinMed, MinLow, MinVLow, SumMed, SumLow, SumVLow; };
+class CScriptDef { public: long MinMed, MinLow, MinVLow, SumMed, SumLow, SumVLow; };
 static CScriptDef g_def = { 5, 7, 9, 1, 2, 3 };
 struct GameCalls {
     void NewScriptFrame() const { ++g_frames; }

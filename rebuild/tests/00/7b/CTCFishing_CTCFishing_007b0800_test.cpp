@@ -3,7 +3,7 @@
 #include <cstring>
 struct FishingDef { int id; };
 struct ParentDef { FishingDef* sub; bool GetSubDef(FishingDef** out) { *out = sub; return true; } };
-struct CThing { ParentDef* PDef; };
+class CThing { public: ParentDef* PDef; };
 struct Fishing {
     CThing* ParentThing; void* PFish; long Stage; bool StageInitialised; long FrameStageFinishes, HookPresses;
     bool Pressed; long LastFramePressed; float Distance, MaxDistance, Strain; long FrameReelFinishes; bool Pulling;

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { } };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { } CCharString(const CCharString& o) : PStringData(o.PStringData) { } };
 struct SNamedEntry { CCharString m_name; long m_value[3]; };
 struct CNameTable { unsigned char _pad[0x28]; SNamedEntry* m_pEntries; CCharString GetEntryName(const unsigned long& i) { return m_pEntries[i].m_name; } };
 int main()

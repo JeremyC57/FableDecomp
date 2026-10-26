@@ -9,17 +9,17 @@
 // Layout: engine/CCreatureAction_PerformExpression.h is a flat PDB-offset view (base 0xb4); the retail CCreatureActionBase
 //   is 0xa8 bytes (landed 0x0084BD40), so members sit at PDB - 0x0c. CExpressionDef: retail offsets are PDB - 4
 //   (Animation +0x3c, AnimationInto +0x40, AnimationToOther +0x4c, AnimationToOtherInto +0x50, Extendable +0x84).
-struct CBaseObject;
-struct CThing;
-struct CThingCreatureBase;
-struct CAnimationEntry;
+class CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CAnimationEntry;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     bool operator!=(const char* text) const;            // 0x005FA740
     operator CCharString() const;
@@ -31,7 +31,7 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;                // 0x013CA828
 inline CDefString::operator CCharString() const { return g_DefStringTable.GetString(*this); }
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -46,19 +46,19 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                      // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     virtual ~CIntelligentPointer();
 };
 
-struct CDefPointeeBase { virtual void VFunc00(); long RefCount; };
-template<class T> struct CDefPointer {
+class CDefPointeeBase { public: virtual void VFunc00(); long RefCount; };
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& o) : Object(o.Object) { if (Object) ++((CDefPointeeBase*)Object)->RefCount; }
     T* operator->() const { return Object; }
 };
 
-struct CExpressionDef {
+class CExpressionDef { public:
     unsigned char _head[0x3c];
     CDefString Animation;                               // +0x3c
     CDefString AnimationInto;                           // +0x40
@@ -70,7 +70,7 @@ struct CExpressionDef {
     bool Extendable;                                    // +0x84
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     long _04;                                           // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;  // +0x08
@@ -82,7 +82,7 @@ struct CCreatureActionBase {
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
 
-struct CCreatureAction_PerformExpression : CCreatureActionBase {
+class CCreatureAction_PerformExpression : public CCreatureActionBase { public:
     CDefPointer<const CExpressionDef> PExpressionDef;   // +0xa8
     CIntelligentPointer<CThing> PPerformToThing;        // +0xac
     long ExpressionItemDefIndex;                        // +0xb4

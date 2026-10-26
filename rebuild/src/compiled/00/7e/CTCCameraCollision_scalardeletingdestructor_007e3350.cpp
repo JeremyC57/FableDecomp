@@ -1,4 +1,4 @@
-struct CTCCameraCollision {
+class CTCCameraCollision { public:
     void* vftable;
 };
 

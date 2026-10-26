@@ -1,13 +1,13 @@
 // Behaviour test for CQuestManager::ActivateFeat(long) @ 0x004AF300
 #include <cstdio>
 
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 
-struct CMessageEventManager {
+class CMessageEventManager { public:
     long m_type; unsigned long m_delay; float m_px, m_py, m_pz; CThing* m_from; CThing* m_to; float m_v1, m_v2; long m_data; int m_calls;
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data)
     {
@@ -17,9 +17,9 @@ struct CMessageEventManager {
     }
 };
 
-struct CWorld { CMessageEventManager* PMessageEventManager; };
+class CWorld { public: CMessageEventManager* PMessageEventManager; };
 
-struct CQuestManager {
+class CQuestManager { public:
     CWorld* World;
     bool ActivateFeat(long featIndex)
     {

@@ -4,16 +4,16 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CInputEvent { long kind; long type; float x, y; };
-struct CGameEvent { long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
+class CInputEvent { public: long kind; long type; float x, y; };
+class CGameEvent { public: long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     unsigned char used;
     CGameEvent(long t) : Type(t), Player(-1), EndPos(0), Valid(true), Replacement(false), used(0) {}
     void Copy(unsigned int n, const void* p) { std::memcpy(Data + used, p, n); used = (unsigned char)(used + n); } };
-struct CProcessedInput { int handled; int events; long lastType; signed char lastPlayer; unsigned char lastData[32];
+class CProcessedInput { public: int handled; int events; long lastType; signed char lastPlayer; unsigned char lastData[32];
     CProcessedInput() : handled(0), events(0), lastType(0), lastPlayer(0) {}
     void SetHandled() { ++handled; }
     void AddGameEvent(const CGameEvent& e) { ++events; lastType = e.Type; lastPlayer = e.Player; std::memcpy(lastData, e.Data, 32); } };
-struct CPlayer { long removed; long mode; CPlayer() : removed(0), mode(0) {} void RemoveMode(long m) { removed = m; } bool HasMode(long m) { return mode == m; } };
+class CPlayer { public: long removed; long mode; CPlayer() : removed(0), mode(0) {} void RemoveMode(long m) { removed = m; } bool HasMode(long m) { return mode == m; } };
 // predicate stubs: event kinds 0x13 pressed, 0x15 held; type = the game action
 struct CInputProcessGameBase {
     CPlayer* MyPlayer;
@@ -22,10 +22,10 @@ struct CInputProcessGameBase {
     bool IsEventGameAction(long a, const CInputEvent& e) { return e.type == a; }
 };
 
-struct CTCCreditsUI { bool Active; bool Quitting; void Quit() { if (Active) Quitting = true; } };
-struct CThing { unsigned int mask[9]; CTCCreditsUI* credits;
+class CTCCreditsUI { public: bool Active; bool Quitting; void Quit() { if (Active) Quitting = true; } };
+class CThing { public: unsigned int mask[9]; CTCCreditsUI* credits;
     unsigned int HasTC(long k) const { return mask[k >> 5] & (1u << (k & 31)); } };
-struct CInputProcessCreditsUI : CInputProcessGameBase {
+class CInputProcessCreditsUI : public CInputProcessGameBase { public:
     CThing* hero;
     void ProcessInput(const CInputEvent& event, CProcessedInput&)
     {

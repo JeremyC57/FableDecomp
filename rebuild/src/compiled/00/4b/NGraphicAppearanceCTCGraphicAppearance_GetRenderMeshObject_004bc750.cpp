@@ -15,9 +15,9 @@
 //         retail CWorld::PMainMeshBank +0x3C; C3DMeshObject 0x78 bytes (landed model).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
-struct C3DMeshInfo;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
+class C3DMeshInfo;
 
 struct SCountBlock {
     long m_references;                                      // +0
@@ -42,11 +42,11 @@ struct CCountedPointer {
     }
 };
 
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     virtual ~CBaseClass();                                  // 0x0099A2E0
 };
 
-struct C3DMeshObject : CBaseClass {                         // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBaseClass { public:                         // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x4
     CCountedPointer    Mesh;                                // +0x8 CCountedPointer<const C3DMeshStats>
     unsigned char      _rest[0x78 - 0x10];                  // +0x10 PositionMatrix .. Scale
@@ -59,16 +59,16 @@ C3DMeshObject::~C3DMeshObject()
 {
 }
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     const C3DMeshInfo* GetMeshInfo(long index);             // 0x00A24270
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;                           // +0x3C
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {                                     // 14 bytes
+class CEngineGraphic { public:                                     // 14 bytes
     unsigned long BankIndex;                                // +0x00
     float AnimStep;                                         // +0x04
     float RenderSizeX;                                      // +0x08
@@ -79,7 +79,7 @@ struct CEngineGraphic {                                     // 14 bytes
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     unsigned char  _pad00[0x34];
     float          Scale;                                   // +0x34
     unsigned char  _pad38[0x44 - 0x38];

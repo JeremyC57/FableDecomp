@@ -9,7 +9,7 @@
 // Shape: Ego_r.pdb `?OnKill@CThingCreatureBase@@UAEXXZ`. `if (HasTC(k)) GetTC(k)->f();` with the inlined map find
 // (`it == last || k < it->kind ? last : it`) whose component is loaded straight into ecx (the pointer-returning find,
 // as the landed CGameScriptInterface::IsThingTurncoated 0x008A19B0), then the qualified base call.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -34,7 +34,7 @@ struct CTCPrimitiveOwner {                      // component kind 0x31
     void ClearAllChildPrimitives();             // 0x0073AE70
 };
 
-struct CThing {
+class CThing { public:
     virtual void v000();
     unsigned char  _pad04[0x1c];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
@@ -45,7 +45,7 @@ struct CThing {
     void OnKill();                              // 0x004C7CF0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void OnKill();
 };
 

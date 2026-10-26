@@ -6,9 +6,9 @@
 
 static int g_live = 0;
 static long Compare_00411570(const char* a, const char* b) { return std::strcmp(a, b); }
-struct CCharStringData { const char* Data; unsigned long Length;
+class CCharStringData { public: const char* Data; unsigned long Length;
     bool IsEqual(const CCharStringData& o) const { if (Length != o.Length) return false; return Compare_00411570(Data, o.Data) == 0; } };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(CCharStringData* d) : PStringData(d) { ++g_live; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
@@ -22,13 +22,13 @@ struct CCharString {
         return a->IsEqual(*b);
     }
 };
-struct CTCQuestCard { bool vignette; CCharStringData* region;
+class CTCQuestCard { public: bool vignette; CCharStringData* region;
     bool IsVignette() const { return vignette; } CCharString GetRegionName() { return CCharString(region); } };
-struct CThing { bool dead; CTCQuestCard* tc; bool HasTC(long k) const { return k == 0x6c && tc != 0; } };
+class CThing { public: bool dead; CTCQuestCard* tc; bool HasTC(long k) const { return k == 0x6c && tc != 0; } };
 static CThing* g_cards[3];
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); } T& operator[](unsigned long n) { return *(_M_start + n); } };
-struct CQuestManager {
+class CQuestManager { public:
     CRetailVector<int> BetweenStartAndEndScreenQuests;
     CThing* GetActiveQuestCardFromScriptName(int i) { return g_cards[i]; }
     bool IsActiveQuestBetweenQuestStartAndFinishScreensInRegion(const CCharString& region);

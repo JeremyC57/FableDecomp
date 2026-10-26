@@ -16,7 +16,7 @@
 // Shape: as CTCInventory's destructor 0x00589C55: two vtable stores, members in reverse (POD storage freed inline), the
 // inline CBase destructor's vtable store, the tail jump.
 extern "C" void __cdecl free(void* block);                    // 0x00BFEA14
-namespace NUISystem { struct CComponent; }
+namespace NUISystem { class CComponent; }
 
 template<class T> struct CPODVector {              // STLport vector of a trivially destructible element (12 bytes)
     T* _M_start;

@@ -116,7 +116,7 @@ struct IDirect3DDevice9 {
  virtual void __stdcall ReservedSlot103()=0;
  virtual long __stdcall SetIndices(void*)=0;
 };
-struct CShaderResource {void CloseShaderBank();}; //00a5d750
+class CShaderResource { public:void CloseShaderBank();}; //00a5d750
 struct CShaderDataBankNative {
  virtual ~CShaderDataBankNative();
  virtual void ReservedSlot1();virtual void ReservedSlot2();virtual void ReservedSlot3();virtual void ReservedSlot4();virtual void Close(); //00a62110

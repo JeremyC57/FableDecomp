@@ -12,7 +12,7 @@ template<class T> struct CRetailVector {               // VC6-era Dinkumware vec
     T* first; T* last; T* end_of_storage;
     CRetailVector() : first(0), last(0), end_of_storage(0) {}
 };
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v0();
     CParentDefClassBase();                             // 0x00430370
     unsigned char _body[0x38];                         // +0x04 .. +0x3b (retail sizeof 0x3c; the PDB header says 0x3d)
@@ -22,7 +22,7 @@ struct CBlendedEffectsMap {                            // std::map<long, CBlende
     unsigned char _body[0x0c];
     CBlendedEffectsMap();                              // 0x0045336D
 };
-struct CMaterialDef : CParentDefClassBase {
+class CMaterialDef : public CParentDefClassBase { public:
     long                FirstHitSound;                       // +0x3c (PDB +0x40)
     long                LastHitSound;                        // +0x40
     float               OnHitRumbleLevel;                    // +0x44

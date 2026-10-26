@@ -5,7 +5,7 @@
 // Layout: Ego_r.pdb CTCSmashableBase (0x18 bytes, as the landed OnInitialActivate 0x007EECF0): Smashed +0x10, Definition +0x14;
 // CSmashableDef (engine/CSmashableDef.h): Smashable +0x25. Local model: the def pointer needs its add-ref/release shape.
 // Shape: the landed OnInitialActivate shape -- the flag read into a named bool (bl) before the by-value def temporary is released.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
@@ -14,7 +14,7 @@ public:
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-struct CSmashableDef {
+class CSmashableDef { public:
     virtual void v00();
     virtual void Destroy();                              // slot 1
     long          m_refCount;                            // +0x04

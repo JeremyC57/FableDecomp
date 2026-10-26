@@ -6,7 +6,7 @@
 // CActionWait NoFramesToWait +0x0c, UpdateCounter +0x10. No engine header exists for these classes.
 // Shape: the pre-incremented counter is stored first and its value kept in edx for the compare; `NoFramesToWait > 0` tested
 // before `UpdateCounter > NoFramesToWait` (both signed `jle`).
-struct CTCScriptedControl;
+class CTCScriptedControl;
 
 namespace NTCScriptedControl {
 class CActionBase {

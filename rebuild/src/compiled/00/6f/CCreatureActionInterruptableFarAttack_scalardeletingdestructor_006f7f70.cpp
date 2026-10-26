@@ -1,4 +1,4 @@
-struct CCreatureAction_InterruptableFarAttack {
+class CCreatureAction_InterruptableFarAttack { public:
     void* vftable;
 };
 

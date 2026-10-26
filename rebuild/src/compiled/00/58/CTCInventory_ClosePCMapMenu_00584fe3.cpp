@@ -14,7 +14,7 @@
 // modelled locally; the map-menu class and its close routine are named by use.
 // Shape: an absent interface skips to the epilogue; a present one is null-tested (`test eax,eax`) before the
 // call. A size TU only inlines the lookup when it is `__forceinline`.
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -27,7 +27,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -51,7 +51,7 @@ struct CTCMapMenu {
     void Close();                                    // 0x005FAD30
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00();
     CThing* ParentThing;                             // +0x04
     void ClosePCMapMenu();

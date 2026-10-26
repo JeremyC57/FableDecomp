@@ -14,24 +14,24 @@ struct CIVCountedPointee {
     virtual void Destroy(int flags);
     unsigned long IVRefCount;                       // +4
 };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject) { if (m_pObject) ++m_pObject->IVRefCount; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
-struct CMeshDataBankEntry {                         // vtable 0x0129CD28
+class CMeshDataBankEntry { public:                         // vtable 0x0129CD28
     virtual void v00();
     long Bank;                                      // +4
     long Index;                                      // +8
 };
-struct C3DMeshInfo : CMeshDataBankEntry {           // vtable 0x0129CD3C
-    struct CMeshData : CIVCountedPointee {};
+class C3DMeshInfo : public CMeshDataBankEntry { public:           // vtable 0x0129CD3C
+    class CMeshData : public CIVCountedPointee { public:};
     virtual void v00();
     CIVCountedPointer<CMeshData> MeshData;          // +0x0c
     C3DBoundingBox BoundingBox;                     // +0x10

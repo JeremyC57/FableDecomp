@@ -16,7 +16,7 @@ struct CInterfaceMap {                          // a thing's sorted {type, compo
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset<274> UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
@@ -29,18 +29,18 @@ struct CThing {
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
 };
-struct CAnimFrameInfo {
+class CAnimFrameInfo { public:
     float Current;
     float Last;
     CAnimFrameInfo() : Current(0), Last(0) {}
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long  UpdateMode;                           // +0x00
     unsigned char Type;                         // +0x04
     bool  Looping;                              // +0x05
@@ -56,13 +56,13 @@ struct CAnimInit {                              // 0x2c bytes
     void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags,
              long priority);                    // 0x0070C050
 };
-struct CAnimateThing {
+class CAnimateThing { public:
     void SetMainAnim(const CAnimInit& init, long mode, long delay);   // 0x0070D580
 };
-struct CTCAnimationComplex {
+class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-struct CTCCupboard : CTCBase {
+class CTCCupboard : public CTCBase { public:
     bool Animating;                             // +0x0c
     void StartAnimation(long anim);
 };

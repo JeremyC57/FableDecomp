@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 struct CInputProcessBase; struct SProcessNode { CInputProcessBase* m_pOwner; SProcessNode* m_pNext; SProcessNode* m_pPrev; }; struct CInputProcessBase { unsigned char _pad[8]; SProcessNode m_node; };
-struct CInputProcessManager { virtual void v00() { } SProcessNode* m_pFirst; SProcessNode* m_pLast; long m_count;
+class CInputProcessManager { public: virtual void v00() { } SProcessNode* m_pFirst; SProcessNode* m_pLast; long m_count;
     void AddInputProcess(CInputProcessBase* process) { SProcessNode* node = &process->m_node; node->m_pNext = 0; node->m_pPrev = m_pLast; node->m_pOwner = process; if (m_pLast) m_pLast->m_pNext = node; m_pLast = node; if (!m_pFirst) m_pFirst = node; ++m_count; } };
 
 int main() {

@@ -3,13 +3,13 @@
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     float Dot(const C3DVector& v) const { return X * v.X + Y * v.Y + Z * v.Z; }
 };
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,19 +17,19 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type);       // 0x0040F020
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing;
+class CThing;
 struct CCreatureMode {
     virtual void v00();
     virtual long GetType() const;               // slot 1
 };
-struct CTCCreatureModeManager {
+class CTCCreatureModeManager { public:
     CCreatureMode* GetCurrentMode() const;      // 0x0073A6E0
 };
-struct CTCHitOnCollision {
+class CTCHitOnCollision { public:
     void OnCollision(C3DVector* position, C3DVector* normal, CThing* other);   // 0x007C81F0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -61,11 +61,11 @@ struct CThing {
     }
 };
 
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     void OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other);     // 0x00839080
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
@@ -74,13 +74,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CThingCreatureBase;
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CThingCreatureBase;
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 4];
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCombatAction_GenericStrikeResponseKnockdown : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdown : public CCombatActionBase { public:
     CCharString             AnimName;           // +0x114
     CBaseIntelligentPointer PThingThatHit;      // +0x118
     unsigned char           _hitInfo[0x1c];     // +0x120 PointOfHit, GotPointOfHit, DirectionOfHit, flags (PDB packing; size 0x13c)
@@ -88,7 +88,7 @@ struct CCombatAction_GenericStrikeResponseKnockdown : CCombatActionBase {
                                                  C3DVector* direction);   // 0x008679C0
 };
 
-struct CThingCreatureBase : CThingGameObject {
+class CThingCreatureBase : public CThingGameObject { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
     void OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other);
 };

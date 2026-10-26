@@ -2,8 +2,8 @@
 // __fastcall(this, unsigned int flags) -> void*
 #include <stddef.h>
 
-struct CInputProcessYesNoQuestion
-{
+class CInputProcessYesNoQuestion
+{ public:
     void* VectorDeletingDtor(unsigned int flags);
 };
 

@@ -3,7 +3,7 @@
 
 struct Inner { char pad[0x78]; bool flag; };
 struct Mid { char pad[0x1964]; Inner* inner; };
-struct CWorld { char pad[0x18]; Mid* mid; };
+class CWorld { public: char pad[0x18]; Mid* mid; };
 
 bool __fastcall CGameScriptInterface_IsRadialBlurFadeActive(const CGameScriptInterface* self)
 {

@@ -8,7 +8,7 @@
 #endif
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
     virtual void v00();
@@ -18,17 +18,17 @@ struct CBaseIntelligentPointer {             // 8 bytes: vtable + item
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }                          // test-only: arrays
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 
-struct CThing;
+class CThing;
 
 struct CGenerationPos {                      // CTCSmokeGenerator::CGenerationPos, 0x14 bytes
     C3DVector                   Pos;         // +0x00

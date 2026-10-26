@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <new>
 
-struct CCharString { char* m_pData; };
+class CCharString { public: char* m_pData; };
 struct CScriptInfoEntry;
 
 template <class T>
@@ -23,7 +23,7 @@ struct CScriptInfoMap {
     CScriptInfoMap() : Dirty(false) { }
 };
 
-struct CScriptInfoManager {
+class CScriptInfoManager { public:
     long                      CurrentScriptID;
     CScriptInfoMap            Scripts;
     CRetailVector<CCharString> CodeSectionNames;

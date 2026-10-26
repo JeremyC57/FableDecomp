@@ -14,7 +14,7 @@
 // Model: local -- engine/CDisplayViewManager.h exists (PCurrentView +0, same offset), but it flattens the counted pointer into
 // two raw words; the inlined destructor needs ~CCountedPointer, so the class is local.
 void __cdecl operator delete(void* block);               // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  RefCount;                                      // +0x00
     void  (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                          // +0x08

@@ -17,7 +17,7 @@ template <class T> struct vector {               // STLport vector, 12 bytes
     T* _M_end_of_storage;
     T& operator[](unsigned int n) { return _M_start[n]; }
 };
-struct CSpecialAbilitiesLightningSpellDef {
+class CSpecialAbilitiesLightningSpellDef { public:
     unsigned char _pad_0x00[0x3c];               // CDefClassBase head (retail 0x3C bytes)
     vector<float> m_faAreaEffect;                // +0x3c
     vector<float> m_faDamagePerHit;              // +0x48
@@ -41,7 +41,7 @@ struct CSpecialAbilitiesLightningSpellDef {
     vector<float> OnhitEveryNSecs;               // +0x100
 };
 extern long g_FramesPerSecond;                   // 0x01375550
-struct CTCWillLightning {
+class CTCWillLightning { public:
     void* __vftable;                             // +0x00
     unsigned char _pad_0x04[0x28 - 0x04];
     CSpecialAbilitiesLightningSpellDef* m_lspDef_Object;   // +0x28 CDefPointer<...>::Object

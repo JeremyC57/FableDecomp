@@ -6,9 +6,9 @@ static int g_log[8];
 static int g_n;
 static long g_removed;
 static bool g_cleanupArg;
-struct CThing { void RemoveTC(long type) { g_log[g_n++] = 3; g_removed = type; } };
-struct CThingCreatureBase : CThing { void FinishCurrentAction() { g_log[g_n++] = 1; } };
-struct CTCBerserk {
+class CThing { public: void RemoveTC(long type) { g_log[g_n++] = 3; g_removed = type; } };
+class CThingCreatureBase : public CThing { public: void FinishCurrentAction() { g_log[g_n++] = 1; } };
+class CTCBerserk { public:
     CThingCreatureBase* ParentThing;
     bool                IsInCutscene;
     void CleanupAbility(bool cutscene) { g_log[g_n++] = 2; g_cleanupArg = cutscene; }

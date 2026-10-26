@@ -12,7 +12,7 @@
 // 0 (`inc eax ; je`; testing pos == -1 first gives `cmp eax,-1` + a later `inc`). Finally data is cut at its next space
 // or kept whole (`pos == -1 ? GetLength() : pos`). Each GetSubString temporary is built in the dead `data` argument
 // slot and destroyed right after the assignment. The inline GetLength is `p == 0 ? 0 : p->m_length`.
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 
 class CCharString
 {

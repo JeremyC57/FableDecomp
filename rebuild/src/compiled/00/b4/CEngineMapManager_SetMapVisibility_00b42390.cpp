@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B42390, length 25 bytes.
 // Callees: CEngineMap::SetMapVisibility(list<CEngineMap*>*, bool) @ 0x00B41DB0 (on the state entry `m_ppStates[index]` itself; the visible-map
 // list member at +0x2c is passed by address). Shape: the bool is pushed first (right to left), the list address second; `ret 8`.
-struct CEngineMap;
+class CEngineMap;
 
 struct CRetailMapList {                            // VC6 Dinkumware list<CEngineMap*>: one sentinel pointer
     void* head;

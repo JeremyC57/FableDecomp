@@ -18,23 +18,23 @@ static int fails = 0;
 // Shape: the XY delta (target - creature) is a two-float local; the limit is read before the squared length, which is
 // evaluated right operand first (Y*Y, then X*X); `limit * limit < lengthSquared` is the `test ah,5 ; jp` ordered
 // less-than; the two animation names are if/else blocks whose SetAnimationName call and string destructor tail-merge.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float GetMagnitudeSquared2D() const { return X * X + Y * Y; }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     unsigned char _pad0[0x80];
     float         FrontNearLimit;               // +0x80
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_deleteFlags;                // +0x91 bit 0: being deleted
     const C3DVector& GetPosition() const;       // 0x004C73D0
@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     virtual void Initialise();                  // 0x00857520
     unsigned char           _pad04[4];
@@ -58,7 +58,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_ScreamerDrainAttack : CCombatActionBase {
+class CCreatureAction_ScreamerDrainAttack : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

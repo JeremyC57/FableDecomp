@@ -3,7 +3,7 @@
 #include <new>
 // Behaviour copy of STLport uninitialized_fill_n<CEngineGraphic*>: copy-construct x into n slots, return first + n.
 #pragma pack(push, 2)
-struct CEngineGraphic { unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
+class CEngineGraphic { public: unsigned int BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 #pragma pack(pop)
 static CEngineGraphic* FillN(CEngineGraphic* first, unsigned int n, const CEngineGraphic& x)
 {

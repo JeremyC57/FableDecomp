@@ -22,7 +22,7 @@
 // CThing UsingComponents +0x20, Components +0x44, CurrentMapNumber +0x8e, flags byte +0x91.
 #include <new>
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                            // 0x0099EAE0
 };
@@ -71,7 +71,7 @@ template <class T>
         *p = value;
 }
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -101,12 +101,12 @@ public:
         return it->component;
     }
 };
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     CThing* GetInventoryOwner();                        // 0x005D8E90
 };
 class CThingCreature : public CThing { };
-struct CPlayer { CThingCreature* GetHeroCreature(); };          // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayer { public: CThingCreature* GetHeroCreature(); };          // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 
 struct SThingListNode {
     SThingListNode* _M_next;

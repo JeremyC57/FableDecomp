@@ -29,7 +29,7 @@ struct CDefObject : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -56,11 +56,11 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CHeroCombatDef : CDefObject {
+class CHeroCombatDef : public CDefObject { public:
     unsigned char _pad08[0xe4 - 0x08];
     float         ClickPressureThreshold;          // +0xe4
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                        // +0x91 bit 0
     unsigned char _bits91 : 7;
@@ -72,7 +72,7 @@ public:
 };
 extern bool g_targetLockAllowPulsesOnly;           // 0x013BA8B0
 class CInputProcessManager;
-struct CWorld; struct CGameDefinitionManager; struct CMainGameComponent; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

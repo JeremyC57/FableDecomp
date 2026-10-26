@@ -1,10 +1,10 @@
 #include <cstdio>
 // behaviour test: quitting a non-follower does nothing; quitting an AI follower drops it from both lists, notifies the follow handler,
 // posts deed 0x31 and clears the emote icon; persistence is dropped only when neither home nor work building is alive
-struct CThing { bool Dead; };
+class CThing { public: bool Dead; };
 struct CCreature { CThing* Home; CThing* Work; bool Persisted; bool LevelPersistent; };
 static bool IsAlive(const CThing* t) { return t && !t->Dead; }
-struct CTCFollowed {
+class CTCFollowed { public:
     CCreature* followers[4]; int nFollowers; CCreature* ai[4]; int nAI; int handled, deeds, icons;
     static void Remove(CCreature** v, int& n, CCreature* c) { int o = 0; for (int i = 0; i < n; ++i) if (v[i] != c) v[o++] = v[i]; n = o; }
     bool IsAIFollower(CCreature* c) { for (int i = 0; i < nAI; ++i) if (ai[i] == c) return true; return false; }

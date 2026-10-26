@@ -5,7 +5,7 @@
 // to an empty tree whose header points at itself.
 struct SNode { long color; SNode* parent; SNode* left; SNode* right; };
 struct CArray { int count; int deallocated; void Clear() { count = 0; ++deallocated; } };
-struct CMap {
+class CMap { public:
     SNode* m_pHead; unsigned int m_size; int erased;
     void _Erase(SNode* n) { if (n) ++erased; }
     void clear()

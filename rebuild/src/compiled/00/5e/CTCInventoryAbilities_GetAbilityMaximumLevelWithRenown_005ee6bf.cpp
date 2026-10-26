@@ -15,7 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
@@ -28,7 +28,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -54,7 +54,7 @@ struct CThing {
     }
 };
 
-struct CTCHeroStats {                                // interface type 4
+class CTCHeroStats { public:                                // interface type 4
     float GetMoralityPercentage() const;             // 0x0057A690
 };
 
@@ -62,7 +62,7 @@ extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     void*   __vftable;                               // +0x00
     CThing* ParentThing;                             // +0x04 CTCBase
 

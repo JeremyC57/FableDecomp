@@ -1,5 +1,5 @@
 // __fastcall this=ecx, flags=stack. base /O2 /Oy (no pragma). family len30 x22 (template 00412b00)
-struct CTCPhysicalShieldSpell { void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
+class CTCPhysicalShieldSpell { public: void Dtor(); void* ScalarDeletingDestructor(unsigned flags); };
 void __cdecl operator delete(void* p);
 void* CTCPhysicalShieldSpell::ScalarDeletingDestructor(unsigned flags) {
     this->Dtor();

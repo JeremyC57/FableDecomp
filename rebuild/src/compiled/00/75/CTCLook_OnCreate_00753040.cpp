@@ -9,17 +9,17 @@
 struct CLookDefPointer { const void* m_pDef; };          // CDefPointer<CLookDef const>
 struct CAppearanceDefPointer { const void* m_pDef; };    // CDefPointer<CAppearanceDef const>
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CLookDefPointer& out);                // 0x007550F0
     bool GetSubDef(CAppearanceDefPointer& out);          // 0x0042B0A2
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PBaseDef;                             // +0x70 (PDB +0x80: the retail vector map and list are 8 bytes narrower each)
 };
 
-struct CTCLook {
+class CTCLook { public:
     void*                 __vftable;                     // +0x00
     CThing*               m_pThing;                      // +0x04 (CTCBase owner)
     unsigned char         _pad_0x08[0x14 - 0x08];

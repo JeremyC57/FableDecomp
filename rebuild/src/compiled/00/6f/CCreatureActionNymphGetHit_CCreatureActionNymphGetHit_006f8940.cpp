@@ -8,13 +8,13 @@
 // this class's vtable (0x01263F84, rtti-vtables.tsv) is installed and the 3 trailing dword
 // members are copied in declaration order; `this` is returned. Member types are not
 // recoverable beyond their size (`long`). One of 11 bodies of this shape.
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     virtual void v00();
     unsigned char _body[0x144];
     CCombatAction_GenericStrikeResponseBase(const CCombatAction_GenericStrikeResponseBase& other);     // 0x006F83C0
 };
 
-struct CCreatureAction_NymphGetHit : CCombatAction_GenericStrikeResponseBase {
+class CCreatureAction_NymphGetHit : public CCombatAction_GenericStrikeResponseBase { public:
     long m_148;                         // +0x148
     long m_14c;                         // +0x14c
     long m_150;                         // +0x150

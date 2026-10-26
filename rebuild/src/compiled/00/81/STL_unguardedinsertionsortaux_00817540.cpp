@@ -13,7 +13,7 @@
 // 8-dword `rep movsd` (each shift and the final `*last = val`); the loop pointer is strength-reduced to `i + 10h`.
 struct CHitLocation;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };

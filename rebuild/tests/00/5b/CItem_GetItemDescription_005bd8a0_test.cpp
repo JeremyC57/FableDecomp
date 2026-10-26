@@ -4,7 +4,7 @@
 #include <cmath>
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail = 1; std::printf("check failed line %d\n", __LINE__); } } while (0)
-struct CWideString { const char* text; };
+class CWideString { public: const char* text; };
 static CWideString g_empty = { "" };
 struct CCounted { long refs; int deleted; CCounted() : refs(1), deleted(0) {} void Release() { if (--refs == 0) deleted = 1; } };
 struct CDef : CCounted { long DescriptionTextIndex; };

@@ -16,11 +16,11 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-struct C3DVector { float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
-struct CTCCreatureModeManager {void RemoveMode(unsigned long mode);}; //0x0073ABA0
+class C3DVector { public: float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
+class CTCCreatureModeManager { public:void RemoveMode(unsigned long mode);}; //0x0073ABA0
 struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type);}; //0x0040F020
-struct CThingCreatureDef {unsigned char _beforeRecoveryPercent[0x140];float RecoverEvadeHitsPercent;};
+class CThingCreatureDef { public:unsigned char _beforeRecoveryPercent[0x140];float RecoverEvadeHitsPercent;};
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];
     unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeDefinition[0x24];
@@ -35,7 +35,7 @@ struct Creature {
 };
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //0x00A01B50
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase();
     virtual void Validate()const;
     virtual void EditUpdate(float);
@@ -47,7 +47,7 @@ struct CCombatActionBase {
     unsigned char _combatTail[0x37];
     void FrameUpdate(); //direct qualified base call0x00859D80; unused later virtual slots omitted
 };
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase:CCombatActionBase {
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase:public CCombatActionBase { public:
     bool CanBeHit,Flip;
     void FrameUpdate();
 };

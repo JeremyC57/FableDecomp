@@ -9,7 +9,7 @@
 // constructor @ 0x00C59BA0 runs, then the compiler stores this class's vtable (0x012BEE40
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     virtual void v00();
     C3DAnimationBlendState();                           // 0x00C59BA0
 };

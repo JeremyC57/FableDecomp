@@ -17,10 +17,10 @@
 //   factory pulls the `??_G` into the TU.
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14
 
-struct CThing;
-namespace NUISystem { struct CComponent; }
+class CThing;
+namespace NUISystem { class CComponent; }
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                                  // 0x00686830
     CThing* ParentThing;                                 // +0x04
@@ -29,7 +29,7 @@ struct CTCBase {
     void RemoveFromGlobalTCs();                          // 0x00686DF0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
@@ -47,7 +47,7 @@ struct CComponentVector {                                // STLport vector<NUISy
     }
 };
 
-struct CTCPhotojournalCapture : CTCBase {
+class CTCPhotojournalCapture : public CTCBase { public:
     CWideString      Description;                        // +0x0c
     bool             DiscardScreenShot;                  // +0x10
     long             FrameCounter;                       // +0x14

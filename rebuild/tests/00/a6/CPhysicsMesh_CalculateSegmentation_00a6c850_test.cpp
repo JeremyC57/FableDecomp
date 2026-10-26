@@ -1,20 +1,20 @@
 #include <cstdio>
-struct C3DTriangle2 { unsigned short m_index[3]; };
-struct C3DVector { float x, y, z; };
-template <class T> struct CArray {
+class C3DTriangle2 { public: unsigned short m_index[3]; };
+class C3DVector { public: float x, y, z; };
+template <class T> class CArray { public:
     T* m_pFirst; T* m_pLast; T* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
 };
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     unsigned long m_faces;
     static CIPhysicsFacesSegmentBase* Create(const CArray<C3DTriangle2>& t, const CArray<C3DVector>& v)
     { static CIPhysicsFacesSegmentBase s; s.m_faces = t.size() * 1000 + v.size(); return &s; }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; int m_resets;
     void Reset(T* object) { m_pObject = object; ++m_resets; }
 };
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     CArray<C3DTriangle2> TotalFaceIndices; CArray<C3DVector> TotalPoints;
     CCountedPointer<CIPhysicsFacesSegmentBase> RootSegment;
     void CalculateSegmentation()

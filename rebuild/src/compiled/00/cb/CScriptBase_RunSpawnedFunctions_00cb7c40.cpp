@@ -6,7 +6,7 @@
 // Shape: `it = Threads.erase(it)` / `++it` loop with end() re-read every pass; STLport's inline erase unlinks
 // (next in edi), runs the counted pointer's inline destructor (null test, `dec [count]`, re-read, destroy +
 // delete, both words zeroed; one zero register ebp) and frees the node.
-struct CSpawnedFuncBase;
+class CSpawnedFuncBase;
 
 struct SCountBlock {
     long References;                                 // +0
@@ -14,7 +14,7 @@ struct SCountBlock {
     void* Object;                                    // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     T* GetPtr() const { return Data; }
     SCountBlock* Info;

@@ -13,7 +13,7 @@
 
 struct CPlayer_007b1eb0;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
@@ -29,7 +29,7 @@ struct CPlayerManager_007b1eb0 {
     CPlayer_007b1eb0* GetMainPlayer();             // 0x00449960
 };
 
-struct CTCFishing : CTCBase {
+class CTCFishing : public CTCBase { public:
     unsigned char PFish[8];                        // +0x0c CIntelligentPointer<CThing>
     long          Stage;                           // +0x14 EFishingStage
     bool          StageInitialised;                // +0x18

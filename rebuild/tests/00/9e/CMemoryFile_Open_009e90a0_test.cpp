@@ -3,7 +3,7 @@
 struct Sub { int called; const char* arg; };
 static void Sub_init(Sub* self, const char* name) { self->called = 1; self->arg = name; }
 
-struct CMemoryFile {
+class CMemoryFile { public:
     char pad0[8];
     int  Position;
     int  Length;

@@ -1,3 +1,3 @@
-struct CAnimComponentStrikeSpeedMultiplier; typedef CAnimComponentStrikeSpeedMultiplier* (__fastcall* VFn)(CAnimComponentStrikeSpeedMultiplier*);
-struct CAnimComponentStrikeSpeedMultiplier { VFn* vtbl; char pad[4]; void* f8; };
+class CAnimComponentStrikeSpeedMultiplier; typedef CAnimComponentStrikeSpeedMultiplier* (__fastcall* VFn)(CAnimComponentStrikeSpeedMultiplier*);
+class CAnimComponentStrikeSpeedMultiplier { public: VFn* vtbl; char pad[4]; void* f8; };
 CAnimComponentStrikeSpeedMultiplier* __fastcall Clone(CAnimComponentStrikeSpeedMultiplier* component){ CAnimComponentStrikeSpeedMultiplier* p = component->vtbl[0x10/4](component); p->f8 = component->f8; return p; }

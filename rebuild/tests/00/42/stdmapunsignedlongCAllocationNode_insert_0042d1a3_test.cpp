@@ -23,7 +23,7 @@ struct CTree {
     }
 };
 // The candidate logic: map::insert forwards to the tree's insert_unique.
-struct CMap {
+class CMap { public:
     typedef pair<const unsigned long, CAllocationNode*> value_type;
     CTree _M_t;
     pair<CTreeIterator, bool> insert(const value_type& v) { return _M_t.insert_unique(v); }

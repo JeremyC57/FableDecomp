@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { char text[16]; CCharString() { text[0] = 0; } };
+class CCharString { public: char text[16]; CCharString() { text[0] = 0; } };
 struct CNames { const CCharString* m_pFirst; const CCharString* m_pLast; unsigned int size() const { return (unsigned int)(m_pLast - m_pFirst); } const CCharString& operator[](unsigned int n) const { return *(m_pFirst + n); } };
 struct CSmallVector {
     CCharString data[8]; unsigned int count;
     void resize(unsigned int n, const CCharString& fill) { for (unsigned int i = count; i < n; ++i) data[i] = fill; count = n; }
     CCharString& operator[](unsigned int n) { return *(data + n); }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     CSmallVector Filenames;
     void SetFilenames(const CNames& names)
     {

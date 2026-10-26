@@ -12,7 +12,7 @@
 // Shape: the inline find (lower bound, then end unless the key matches; `type` re-read from its slot); push_back = insert(end(), v)
 //          with the end iterator built in its by-value slot (user copy ctor) and the returned iterator in the dead `type` slot;
 //          the node value is {CIntelligentPointer<CThing>, CTCBase*} built from a CIntelligentPointer(this) temporary.
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -27,7 +27,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01();
     virtual void OnRemove();                    // slot 2 (+0x08)
     virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
@@ -97,7 +97,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     void*         __vftable;                    // +0x00
     unsigned char _pad04[0x1c];
     CTCBitset     m_presentBits;                // +0x20

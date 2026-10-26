@@ -10,7 +10,7 @@ static void* g_lastFreed = 0;
 static void host_free(void* p) { ++g_frees; g_lastFreed = p; free(p); }
 
 namespace std { template <class T> inline void swap(T& a, T& b) { T tmp = a; a = b; b = tmp; } }
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;
@@ -62,7 +62,7 @@ static int g_mapClears = 0;
 struct CNavConnectorNodeMap { void clear() { ++g_mapClears; } };
 class CNavQuadTree {
 public:
-    struct CNavigationLayer { CArray<CANavQuadTreeNode*> Nodes; };
+    class CNavigationLayer { public: CArray<CANavQuadTreeNode*> Nodes; };
     vector<CNavigationLayer> NavigationLayers;
     CNavConnectorNodeMap ConnectorNodes;
     void ClearNodes();

@@ -1,14 +1,14 @@
 // behaviour test for 00d15a40 CBH_GangGrunt::Main (the same control flow over a mocked engine)
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     char text[64];
     CCharString(const char* t) { std::strcpy(text, t); }
 };
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%d", (int)v); return CCharString(b); }
 static CCharString operator+(const char* l, const CCharString& r) { CCharString s(l); std::strcat(s.text, r.text); return s; }
-struct CScriptThing {
+class CScriptThing { public:
     int id; C3DVector pos; const char* data; int hitFrame;
     CCharString GetDataString() const { return CCharString(data); }
     const C3DVector& GetPos() const { return pos; }
@@ -16,7 +16,7 @@ struct CScriptThing {
     bool MsgIsHitByAnySpecialAbilityFrom(const char*) const { return false; }
     bool MsgIsHitBySpecialAbilityFrom(int, const char*) const { return false; }
 };
-struct CGame {
+class CGame { public:
     int frame; int terminateAt; int removed; int startTries; int targetOf; int group; int lines;
     char lastLine[64]; float wanderMax; C3DVector wanderCentre; CScriptThing hero, post;
     bool cutsceneAt3;

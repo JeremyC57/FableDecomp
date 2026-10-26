@@ -3,7 +3,7 @@
 struct Def { long refs; long CrateDefIndex; int destroyed; void Destroy() { ++destroyed; } };
 struct Village { Def* def; };
 struct Member { Village* v; Village* GetPVillage() const { return v; } };
-struct CThing {
+class CThing { public:
     unsigned int bits[9]; Member* comp; int kills;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = comp; return true; } return false; }
     void Kill(bool) { ++kills; }

@@ -26,10 +26,10 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // ReleaseTemporary() through the ref-count base at +4 in the `if (--Count == 0) Destroy()` form: `add eax,4 ; dec ;
 // mov [eax],esi ; test ; jne ; call [vtbl+4]` -- the decremented count is stored before the test; a DecRef() +
 // GetRefCount() pair sinks the store below it); the inside test result is held in bl across that release.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase
-{
+class CTCPhysicsBase
+{ public:
     void GetBoundingInfo(C3DVector* centre, float* radius);    // 0x006AF640
 };
 
@@ -40,8 +40,8 @@ struct CRefCounted                                  // reference count base at +
     long GetRefCount() const { return Count; }
 };
 
-struct CSimBuildingDef
-{
+class CSimBuildingDef
+{ public:
     virtual void v00();
     virtual void Destroy();                         // slot 1 (+0x04)
     CRefCounted Ref;                                // +0x04
@@ -51,15 +51,15 @@ struct CSimBuildingDef
 };
 
 template <class T>
-struct CDefPointer
-{
+class CDefPointer
+{ public:
     T* Object;
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
 };
 
-struct CThingBuilding
-{
+class CThingBuilding
+{ public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* Physics;                        // +0x60
     bool IsPointInside(const C3DVector& point);     // 0x0082D000

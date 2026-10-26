@@ -3,14 +3,14 @@
 // the def reference from GetHeroCombatDef is released.
 #include <cstdio>
 #include <cstring>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* text, long length) : PStringData(text) { }
     ~CCharString() { }
@@ -25,11 +25,11 @@ struct CDefVirtual {
     virtual void v00() {}
     virtual void Destroy() { ++g_destroyed; }
 };
-struct CHeroCombatDef : CDefVirtual, CRefCounted {
+class CHeroCombatDef : public CDefVirtual, public CRefCounted { public:
     bool MeleeFlourishUsable;
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     explicit CDefPointer(T* object) : Object(object) { if (object) ++object->m_count; }   // test-only: built straight in the return slot (no NRVO in VC7.1)
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
@@ -41,7 +41,7 @@ struct CTCSound {
     { ++Plays; Name = name.PStringData; Pos = positional; A = a; B = b; C = c; return 0; }
 };
 static CHeroCombatDef* g_def = 0;
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -59,7 +59,7 @@ struct CThing {
         return CDefPointer<CHeroCombatDef>(g_def);
     }
 };
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00() {}
     CThing* ParentThing;
     CThing* ParentCreature;

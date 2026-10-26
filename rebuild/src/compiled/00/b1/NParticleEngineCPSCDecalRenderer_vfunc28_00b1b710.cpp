@@ -9,16 +9,16 @@
 // CPSCDecalRenderer offsets follow struct_layouts_egor.tsv; the 36-byte engine
 // descriptor is the distinct public CEnginePrimitiveParticleDecalGroup, not the
 // 0xd8-byte internal group in the quarantined generated header.
-struct CEnginePrimitive;
+class CEnginePrimitive;
 struct CEnginePrimitiveParticleDecalGroup;
-struct CIEngine;
-struct CBaseClass { virtual ~CBaseClass(); };
-struct CEnginePersistentPrimitiveBase;
-struct CEnginePrimitiveHandle : CBaseClass { CEnginePersistentPrimitiveBase* Data; };
+class CIEngine;
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CEnginePersistentPrimitiveBase;
+class CEnginePrimitiveHandle : public CBaseClass { public: CEnginePersistentPrimitiveBase* Data; };
 // Original enum types; only storage and conversions are consumed by this leaf.
 enum EEnginePrimitiveBlendMode { BlendModeZero=0 };
 enum EEnginePrimitiveBlendOp { BlendOpZero=0 };
-struct CIEngine {
+class CIEngine { public:
     unsigned char Unknown04[4];
     bool Active;
     unsigned char Unknown09[3];
@@ -32,14 +32,14 @@ struct CIEngine {
         CEnginePrimitiveHandle&, const ::CEnginePrimitive&, unsigned long) { return 0; }
 };
 typedef char CIEngineMatchesDonor[(sizeof(CIEngine)==sizeof(CIEnginePdb))?1:-1];
-struct CEngine : CIEngine {
+class CEngine : public CIEngine { public:
     virtual unsigned long AddChildPrimitive(CEnginePrimitiveHandle&,
         const ::CEnginePrimitive&, unsigned long);
 };
 namespace NParticleEngine {
-struct CParticleSystem {};
-template<class A,class B> struct CParticleUpdateParameters {};
-struct CPSCBase {
+class CParticleSystem { public:};
+template<class A,class B> class CParticleUpdateParameters { public:};
+class CPSCBase { public:
     virtual void v00() {}
     void* ParticleSystem;                       // +0x04
     bool UpdateStarted : 1;                     // +0x08
@@ -51,7 +51,7 @@ struct CPSCBase {
         return Initialised;
     }
 };
-struct CPSCDecalRenderer : CPSCBase {
+class CPSCDecalRenderer : public CPSCBase { public:
     float DecalLifeSecs;                         // +0x0c
     long DecalBankIndex;                         // +0x10
     unsigned long StartColour, MidColour, EndColour; // +0x14..+0x1c
@@ -93,7 +93,7 @@ struct CPSCDecalRenderer : CPSCBase {
 };
 }
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;
     long InterpolationSet;
     struct { unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; } ThemeChannelDesc;

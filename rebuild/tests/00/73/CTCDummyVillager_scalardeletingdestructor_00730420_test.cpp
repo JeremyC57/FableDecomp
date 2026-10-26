@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     void* vftable;
     int destroyed;
 };

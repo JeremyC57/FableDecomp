@@ -5,7 +5,7 @@
 // OneFrameDelay +0xb8 (PDB offsets minus 4 after the 12-byte retail vector TurningAnims at +0x8c).
 // Shape: the constant 1 is CSE'd into ebx and shared by the bit test (`test bl,al`), both state compares and the byte store;
 // the inline setters are the same change-tested forms as in StopLooking (0x00751B80).
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad_0x00[0x48];
     long          HeadTurnState;                 // +0x48
     long          BodyTurnState;                 // +0x4c

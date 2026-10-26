@@ -1,13 +1,13 @@
 // Behaviour test for CAIStateGroup_MinionWander::Update (0x0092C070): a copy of the model with scripted stub actions.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 static int g_released;
-struct CCreatureNavigationDef {
+class CCreatureNavigationDef { public:
     long RefCount;
     bool AvoidDynamicObstacles;
     void DeleteThis() { ++g_released; }
@@ -20,21 +20,21 @@ struct CNavDefHolder {
     ~CNavDefHolder() { if (p) p->Release(); }
 };
 static CCreatureNavigationDef g_def;
-struct CDefClassBase { bool GetSubDef(CDefPointerNav* out) { out->m_p = &g_def; ++g_def.RefCount; return true; } };
-struct CTCAIScratchpad {
+class CDefClassBase { public: bool GetSubDef(CDefPointerNav* out) { out->m_p = &g_def; ++g_def.RefCount; return true; } };
+class CTCAIScratchpad { public:
     C3DVector WanderCentrePoint;
     float WanderMaxDistance;
     long ScriptingStateGroup;
     C3DVector GetWanderCentrePoint() const { return WanderCentrePoint; }
 };
-struct CThing {
+class CThing { public:
     C3DVector pos;
     CTCAIScratchpad* scratchpad;
     CDefClassBase* PhysicsTC;
     const C3DVector& GetPosition() const { return pos; }
     void GetInterface(CTCAIScratchpad** out, long) { *out = scratchpad; }
 };
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 static int g_wander[8], g_idle[8], g_nothing[8], g_move[8];
 static int g_iw, g_ii, g_in, g_im, g_terminated;

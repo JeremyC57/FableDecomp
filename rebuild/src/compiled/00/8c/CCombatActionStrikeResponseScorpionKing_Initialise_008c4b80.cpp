@@ -11,8 +11,8 @@
 // Shape: GetSubDef and GetEffectFromString are same-TU noinline stand-in bodies that write only their out slots, so the
 //          def slot and effectType do not escape: the frame packs into two words (the facing spill and effectType share one,
 //          the "EYE_GET_HIT" temporary reuses the def slot word, "EMITTER_EYE" reuses effectType's).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -24,7 +24,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;                            // +0x04
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);   // stand-in callee
@@ -40,11 +40,11 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {         // the out-slot GetSubDef fills (counted reference handed over)
+template <class T> class CDefPointer { public:         // the out-slot GetSubDef fills (counted reference handed over)
     T* m_p;
     CDefPointer() : m_p(0) { }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -109,12 +109,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     virtual void Initialise();                  // 0x00865F40
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
 };
-struct CCombatAction_StrikeResponseScorpionKing : CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_StrikeResponseScorpionKing : public CCombatAction_GenericStrikeResponseBase { public:
     virtual void Initialise();
 };
 

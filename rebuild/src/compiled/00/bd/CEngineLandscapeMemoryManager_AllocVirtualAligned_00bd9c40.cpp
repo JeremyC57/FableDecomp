@@ -4,7 +4,7 @@
 // CMemoryAllocator::InternalAllocate(long, unsigned long, bool) @ 0x009F2A40 (size + alignment + 3, 0, 0). Shape: `this` and the third argument are unused
 // (`ret 0Ch`); the padded size is one `lea ecx,[eax+edi+3]`, the rounding is `lea eax,[esi+edi+3] ; dec edi ; not edi ; and eax,edi` (`& ~(alignment - 1)`),
 // the offset `aligned - block` goes to `[aligned-4]`; the null block returns through its own `xor eax,eax` tail.
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     void* InternalAllocate(long size, unsigned long alignment, bool flag);   // 0x009F2A40
 };
 
@@ -14,7 +14,7 @@ void __cdecl GFLeaveAllocatorLock();               // 0x009F2010
 
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtualAligned(long size, unsigned long alignment, long unused);
 };
 

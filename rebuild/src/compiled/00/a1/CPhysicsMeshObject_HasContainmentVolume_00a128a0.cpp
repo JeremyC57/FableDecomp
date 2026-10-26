@@ -6,15 +6,15 @@
 // Shape: a LOCAL copy of the Mesh counted pointer (add-ref, the pointee in esi across the call,
 // release with no clearing store); the bool result survives the release in bl (`mov bl,al` ...
 // `mov al,bl`).
-struct CCharString { void* m_pData; };
-struct CPhysicsMesh {
+class CCharString { public: void* m_pData; };
+class CPhysicsMesh { public:
     virtual void v00();
     virtual void DeleteThis();                     // slot 1
     long m_refCount;                               // +0x04
     bool HasContainmentVolume(const CCharString& name) const;   // 0x00A6CBC0
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer(const CIVCountedPointer& other) : m_pObject(other.m_pObject)
     {
@@ -33,11 +33,11 @@ template <class T> struct CIVCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
 };
 
-struct CPhysicsMeshObject : CBaseClass {           // vtable 0x0125D084
+class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38

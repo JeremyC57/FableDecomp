@@ -14,19 +14,19 @@ struct CStringData {
     char* Chars;                                            // +0x00
     long  Length;                                           // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CStringData* PStringData;
     bool operator!=(const char* text) const;                // 0x0099E960
-    struct CWideString ToWideString() const;                // 0x0099E480
+    class CWideString ToWideString() const;                // 0x0099E480
     long GetLength() const { return !PStringData ? 0 : PStringData->Length; }
     const char* GetData() const { return !PStringData ? "" : PStringData->Chars; }
 };
 int __cdecl MemCmp_Unsigned16(const unsigned short* a, const unsigned short* b, unsigned long count);   // 0x00403C60
-struct CWideStringData {
+class CWideStringData { public:
     unsigned short* Begin;                                  // +0x00
     unsigned short* End;                                    // +0x04
 };
-struct CWideString {
+class CWideString { public:
     CWideStringData* m_pData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
@@ -74,7 +74,7 @@ struct CGroupEntry : CCounted {
 struct CTextEntry : CCounted {
     CWideString GetText() const;                            // 0x009C7A40
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     __forceinline ~CIVCountedPointer()
     {
@@ -97,11 +97,11 @@ struct CWorldGlobal {
 };
 extern CWorldGlobal* g_pWorld;                              // 0x013B86A0
 
-struct CThing;
-struct CWorld {
+class CThing;
+class CWorld { public:
     static long GetWorldFrame();                            // 0x0049D870
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08
@@ -109,7 +109,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CWorld* GetWorld();                                     // 0x00686A70
 };
-struct CTCRegionDisplay : CTCBase {
+class CTCRegionDisplay : public CTCBase { public:
     CWideString   CurrentAreaName;                          // +0x0c
     CWideString   CurrentAreaNameExtra;                     // +0x10
     long          FrameNameChanged;                         // +0x14

@@ -5,15 +5,15 @@
 #include <new>
 
 static int g_strings = 0;
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
-struct CGameScriptInterface {
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CGameScriptInterface { public:
     long next;
     virtual long RegisterTimer() { return next++; }
 };
 static CGameScriptInterface g_gsi;
 static CGameScriptInterface* g_pGameScriptInterface = &g_gsi;
-struct CTimer { long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
-struct CScriptBase { virtual void v00() {} unsigned char _body[0x3c]; CScriptBase() { } };
+class CTimer { public: long Index; CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { } };
+class CScriptBase { public: virtual void v00() {} unsigned char _body[0x3c]; CScriptBase() { } };
 struct CScriptObject : CScriptBase {
     CGameScriptInterface* m_pGame; void* m_pOwner;
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }

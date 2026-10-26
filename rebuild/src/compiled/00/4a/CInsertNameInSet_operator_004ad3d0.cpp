@@ -17,7 +17,7 @@
 //   `insert(table.GetString(def))` pushes GetString's eax; a named string local lets the pair share the CDefString word
 //   and shrinks the frame to 0x48). The string temporary lands in the dead argument slot and dies before the mesh.
 // Label correction: catalogued as `Physics_CheckNavigability`; the real routine is CInsertNameInSet::operator().
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                // 0x0099EAE0
 };
@@ -35,9 +35,9 @@ public:
     CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
 };
 
-struct CThingPhysicsMeshInfo;
+class CThingPhysicsMeshInfo;
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     virtual void v00();
     void*         Mesh;                            // +0x04 CIVCountedPointer<CPhysicsMesh const>
     float         PositionMatrix[12];              // +0x08 CMatrix3x4
@@ -47,7 +47,7 @@ struct CPhysicsMeshObject {
     bool HasNavigationLineListInfo() const;        // 0x00A12C90
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -85,7 +85,7 @@ struct CCharStringSet {                            // STLport set<CCharString>
     CCharStringSetInsertResult insert(const CCharString& __x) { return _M_t.insert_unique(__x); }
 };
 
-class CInsertNameInSet {
+struct CInsertNameInSet {
 public:
     CCharStringSet* DefNames;                      // +0x00
     void operator()(const CThing* thing) const;

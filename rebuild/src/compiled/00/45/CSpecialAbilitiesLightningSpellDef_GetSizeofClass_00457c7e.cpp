@@ -1,4 +1,4 @@
-struct CSpecialAbilitiesLightningSpellDef {};
+class CSpecialAbilitiesLightningSpellDef { public:};
 
 unsigned long __fastcall CSpecialAbilitiesLightningSpellDef_GetSizeofClass(const CSpecialAbilitiesLightningSpellDef* self)
 {

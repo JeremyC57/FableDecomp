@@ -1,6 +1,6 @@
 #include <cstdio>
 static const float g_zero = 0.0f;
-struct CTCWife {
+class CTCWife { public:
     bool courting; int OpinionAttitude; float LoveAttitudeValue; int courtingCalls;
     bool IsCourtingHero() const { ++const_cast<CTCWife*>(this)->courtingCalls; return courting; }
     bool IsInLoveWithHero() const { return IsCourtingHero() && OpinionAttitude == 12; }

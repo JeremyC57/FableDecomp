@@ -8,7 +8,7 @@
 // parameter names are by position (manifest types: ref, ulong, ulong, ushort, float x3, blend mode, uchar x4, float, set, op).
 // Shape: arguments pushed right to left with the float zero as `push 0`, the alpha byte zero-extended (`xor eax,eax ; mov al,..`).
 // Leaf: ?Update@CEngineInternalPrimitiveFlareSprite
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:

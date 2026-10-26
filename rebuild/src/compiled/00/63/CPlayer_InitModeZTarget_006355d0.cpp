@@ -14,10 +14,10 @@
 #include "engine/CPlayer.h"
 
 typedef long EPlayerMode;
-struct CProcessedInput;
-struct CTCBase;
+class CProcessedInput;
+class CTCBase;
 
-struct CAInputProcess {
+class CAInputProcess { public:
     virtual void VFunc00();
     virtual bool AddToInterface(CGamePlayerInterface* playerInterface);   // slot 1 (+0x04)
 };
@@ -30,7 +30,7 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -70,19 +70,19 @@ struct CMode {
     virtual void v00();
     virtual unsigned long GetModeType();                // slot 1
 };
-struct CTCCreatureModeManager {                         // interface 0x31
+class CTCCreatureModeManager { public:                         // interface 0x31
     CMode* GetCurrentMode() const;                      // 0x0073A6E0
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
     bool AddMode(unsigned long mode);                   // 0x0073AE10
 };
-struct CTCCarrying {                                    // interface 0x46
+class CTCCarrying { public:                                    // interface 0x46
     bool HasPendingActions();                           // 0x006A1270
     CThing* RemoveThingFromPrimarySlot(bool drop);      // 0x006A1E00
 };
-struct CTCTargetingPlayer {                             // interface 0x08
+class CTCTargetingPlayer { public:                             // interface 0x08
     void SetAsPickUpNewLockTarget();                    // 0x008023A0
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     void PushZTargetMode();                             // 0x00698E40
 };
 struct CCameraManagerSource {
@@ -90,7 +90,7 @@ struct CCameraManagerSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** camera);   // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char         _pad00[0x34];
     CCameraManagerSource* CameraSource;                 // +0x34
 };

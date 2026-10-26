@@ -10,20 +10,20 @@
 // Shape: member constructors (base words, the LOD records, the bounding sphere) in declaration order, then the body's
 //   assignments in source order; the sphere's centre is re-assigned from a zero C3DVector temporary (its dead frame
 //   stores are kept).
-struct CEngineLandscapeMap;
+class CEngineLandscapeMap;
 struct CLandscapeBackgroundLoadTask;
 struct CLandscapeBackgroundSubNodeBase;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;
     C3DBoundingBox() { }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) { }

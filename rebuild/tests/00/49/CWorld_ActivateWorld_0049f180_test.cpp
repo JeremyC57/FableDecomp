@@ -4,8 +4,8 @@
 #include <cstring>
 static char g_log[64]; static int g_n = 0;
 static void Log(char c) { g_log[g_n++] = c; g_log[g_n] = 0; }
-struct CThing { bool Dead; };
-struct CGameEvent {
+class CThing { public: bool Dead; };
+class CGameEvent { public:
     long Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddData(long size, const void* data) { std::memcpy(Data + EndPos, data, size); EndPos = (unsigned char)(EndPos + size); }

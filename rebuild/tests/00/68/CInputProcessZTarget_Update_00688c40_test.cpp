@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <cstring>
 static char g_seq[64] = "";
-struct CThing { unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; static CThing g_thing; static CThing* g_hero = &g_thing; static long g_removed[4]; static long g_nRemoved = 0;
-struct CPlayer { CThing* GetHeroCreature() { std::strcat(g_seq, "h"); return g_hero; } void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_removed[g_nRemoved++] = mode; } };
+class CThing { public: unsigned char _pad[0x91]; unsigned char m_91_0 : 1; unsigned char m_91_1 : 7; }; static CThing g_thing; static CThing* g_hero = &g_thing; static long g_removed[4]; static long g_nRemoved = 0;
+class CPlayer { public: CThing* GetHeroCreature() { std::strcat(g_seq, "h"); return g_hero; } void RemoveMode(long mode) { std::strcat(g_seq, "R"); g_removed[g_nRemoved++] = mode; } };
 static bool g_valid = true, g_held = false; static long g_input = 0; struct CTarget { bool IsValid() { std::strcat(g_seq, "V"); return g_valid; } };
 struct CObject { virtual void v000() { } unsigned char _pad04[0x14]; CPlayer* m_pPlayer; unsigned char _pad1c[8]; CTarget* m_pTarget; unsigned char _pad28[0xc]; long m_lockTimer;
     bool IsButtonHeld(long, long) { std::strcat(g_seq, "Q"); return g_held; } void DeactivateZTarget(long input) { std::strcat(g_seq, "D"); g_input = input; }

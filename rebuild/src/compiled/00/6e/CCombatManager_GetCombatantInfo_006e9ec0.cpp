@@ -15,7 +15,7 @@ struct CThingCreatureBase_Retail {
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual bool IsMeleeSequence();             // slot 7 (+0x1c): 0x006F0700
@@ -35,8 +35,8 @@ template<class T> struct CRetailVector {        // retail std::vector: {first, l
     T* end_of_storage;
 };
 
-struct CWorld;
-struct C3DVector;
+class CWorld;
+class C3DVector;
 struct CCombatantInfo;
 
 struct CCombatWheel {                           // CDefendingCombatantInfo::CCombatWheel
@@ -45,7 +45,7 @@ struct CCombatWheel {                           // CDefendingCombatantInfo::CCom
     void ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCombatantInfo* defender, const C3DVector* position);   // 0x006E80F0
 };
 
-struct CAttackingCombatantInfo {                // retail 0x30 bytes (PDB 0x34)
+class CAttackingCombatantInfo { public:                // retail 0x30 bytes (PDB 0x34)
     CThingCreatureBase_Retail* Attacked;        // +0x00
     long AttackerNumber;                        // +0x04
     long CombatWheelRingIndex;                  // +0x08

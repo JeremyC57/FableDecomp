@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour of CTCHeroStats::RemoveHousePosition (0x0057ADF7): erases the first record of the region lying less than one
 // unit away in XY (Z ignored); other regions and far records stay.
-struct CRegion { int id; };
-struct C3DVector { float x, y, z; };
+class CRegion { public: int id; };
+class C3DVector { public: float x, y, z; };
 struct CHousePosition { const CRegion* first; C3DVector second; };
 static CHousePosition* g_erased = 0;
 struct CHousePositionVector {

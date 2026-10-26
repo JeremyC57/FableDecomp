@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 
 struct Pool {
     int FreeAllCalls;

@@ -10,39 +10,39 @@
 // inline null-tested destructor, each box one call with a C2DVector temporary of `coordinate x screen size`; the money box
 // is an if/else of two full calls (tail-merged) and a same-TU stand-in GetSubDef body keeps the def pointer in ebx.
 #include <stddef.h>
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI() {}
 };
-struct CDisplayManager {
+class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
 
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                             // 0x0099B510
 };
-struct CEnginePrimitiveHandle { void* _vtable; void* Data; };
+class CEnginePrimitiveHandle { public: void* _vtable; void* Data; };
 struct CHandleVector {
     CEnginePrimitiveHandle* _M_start;
     CEnginePrimitiveHandle* _M_finish;
     CEnginePrimitiveHandle* _M_end_of_storage;
 };
-struct CEnginePrimitivePrepareInfo;
+class CEnginePrimitivePrepareInfo;
 void __fastcall DrawStatBoxWithText(const CEnginePrimitivePrepareInfo& info, CHandleVector& handles, const C2DVector& pos,
                                     long width, const CWideString& text, long value, unsigned char alpha, bool money);   // 0x00646A46
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x2e8];
     long          StatBoxWidth;                 // +0x2e8
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();         // 0x00438570
 
-struct CTavernGameDef {
+class CTavernGameDef { public:
     virtual void v00();
     virtual void Destroy();
     long          RefCount;
@@ -54,7 +54,7 @@ struct CTavernGameDef {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline ~CDefPointer()
@@ -64,7 +64,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CTavernGameDef>* out);   // 0x005ED4A0
 };
 CTavernGameDef* FindRef_GetSubDef_0();

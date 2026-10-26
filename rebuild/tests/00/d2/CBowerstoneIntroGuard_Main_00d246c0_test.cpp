@@ -9,7 +9,7 @@ static int Fail(const char* addr, const char* what) { std::printf("%s_TEST FAIL 
 #define CHECK(addr, cond) do { if (!(cond)) return Fail(addr, #cond); } while (0)
 // behaviour test: CBowerstoneIntroGuard::Main scripts the guard, plays the intro cut-scene once (guarded by DoneGuardSpeech), releases the guard
 static int g_guardStartAt = 0, g_heroStartAt = 0, g_alive = 0, g_scriptingFlag = 0;
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 struct CHandle {
     int Who;
     CHandle() : Who(0) { ++g_alive; }
@@ -24,7 +24,7 @@ struct CCast {
     int& operator[](const char* k) { std::strcpy(keys[n], k); return who[n++]; }
 };
 struct CMovie { CMovie() { ++g_alive; } ~CMovie() { --g_alive; } };
-struct CGame {
+class CGame { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frame; }
     bool StartScriptingEntity(const CScriptThing& t, CHandle& h, int p)

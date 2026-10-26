@@ -2,33 +2,33 @@
 #include <new>
 
 struct __false_type { };
-struct CMeshDataBank { int m_id; };
-struct CIVCountedPointeeBase {
+class CMeshDataBank { public: int m_id; };
+class CIVCountedPointeeBase { public:
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) { }
     virtual void Destroy(int) { }
     virtual ~CIVCountedPointeeBase() { }
 };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) ++Object->IVRefCount; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
-struct CMeshDataBankEntry {
+class CMeshDataBankEntry { public:
     CMeshDataBank* Bank;
     unsigned long  Index;
     CMeshDataBankEntry() : Bank(0), Index(0) { }
     virtual ~CMeshDataBankEntry() { }
     virtual int Kind() const { return 1; }
 };
-struct C3DAnimationInfo : CMeshDataBankEntry {
-    struct CAnimationData;
+class C3DAnimationInfo : public CMeshDataBankEntry { public:
+    class CAnimationData;
     CIVCountedPointer<CAnimationData> Data;
     float     Duration;
     float     NonLoopingDuration;

@@ -12,15 +12,15 @@
 // the second save path returns directly (tail-duplicated epilogue).
 #include "engine/CCarriedReadableDef.h"
 
-struct CMemoryDataInputStream;
-struct CDataOutputStream {
+class CMemoryDataInputStream;
+class CDataOutputStream { public:
     void WriteLong(long value);               // 0x00993EB0
 };
-struct CDefString {                           // the TablePos word of a CDefString member
+class CDefString { public:                           // the TablePos word of a CDefString member
     long TablePos;
     void ReadBinary(CMemoryDataInputStream* stream);   // 0x0044FC00
 };
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;             // +0x18 (2 = load, 3 = save)
     unsigned char           _pad1c[0x08];

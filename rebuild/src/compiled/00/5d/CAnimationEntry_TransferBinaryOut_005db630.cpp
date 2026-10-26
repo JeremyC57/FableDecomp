@@ -30,7 +30,7 @@ public:
     long m_refCount;                             // +0x04
 };
 
-template<class T> struct CIVCountedPointer {     // intrusive counted pointer (4 bytes)
+template<class T> class CIVCountedPointer { public:     // intrusive counted pointer (4 bytes)
     T* m_pObject;
     T* operator->() const { return m_pObject; }
 };
@@ -42,7 +42,7 @@ struct CAnimComponentEntry {                     // pair<EAnimComponent, CIVCoun
     CIVCountedPointer<CAnimComponentBase> second;
 };
 
-struct CAnimComponentMap {
+class CAnimComponentMap { public:
     void* m_pVtable;                             // +0x00
     long m_refCount;                             // +0x04
     CAnimComponentEntry* m_pFirst;               // +0x08
@@ -51,9 +51,9 @@ struct CAnimComponentMap {
     long Size() const { return m_pLast - m_pFirst; }
 };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                              // +0x00
     CDefString AnimName;                         // +0x04
     CDefString GroupName;                        // +0x08

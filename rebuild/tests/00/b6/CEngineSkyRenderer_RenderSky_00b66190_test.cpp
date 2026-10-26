@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CTrackedRenderState { long id; unsigned long m_value; unsigned long m_captureMask; long applied; bool m_queued; void Set(unsigned long v); };
 struct SCaptured { CTrackedRenderState* s; unsigned long prior; };
-struct CRenderStateManager {
+class CRenderStateManager { public:
     SCaptured m_captured[16]; CTrackedRenderState* m_dirty[16]; long m_capturedCount, m_dirtyCount; unsigned long m_captureMask;
     CTrackedRenderState m_state2854, m_state2890;
     void ChangeState(CTrackedRenderState& state, unsigned long value)
@@ -21,8 +21,8 @@ static void reset(CTrackedRenderState& s, unsigned long v) { s.m_value = v; s.m_
 
 // behaviour test: CEngineSkyRenderer::RenderSky
 static int g_log[16]; static int g_n = 0; static void* g_vb = 0; static void* g_ib = (void*)1;
-struct C3DVector { float X, Y, Z; };
-struct CEngineSkyRenderer {
+class C3DVector { public: float X, Y, Z; };
+class CEngineSkyRenderer { public:
     int VertexBuffer, IndexBuffer; bool EnableClouds;
     void RenderSun(float, const C3DVector&) { g_log[g_n++] = 1; }
     void RenderMoon(float, const C3DVector&) { g_log[g_n++] = 2; }

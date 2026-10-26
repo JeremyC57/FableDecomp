@@ -11,33 +11,33 @@
 //          right to left (comparator copies the position, then the filter); the hit is latched through a temporary.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the
 //          patrol node intelligent pointer at +0x14.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition();             // 0x004C73D0
 };
-struct CThingTrackNode;
-struct C2DBoxI {
+class CThingTrackNode;
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
-struct CThingCompare_Nearest {
+class CThingCompare_Nearest { public:
     C3DVector m_pos;
     CThingCompare_Nearest(const C3DVector& pos) : m_pos(pos) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter,
                                   const CThingCompare_Nearest& compare, CThingTrackNode** out);   // 0x0093CDB0
 };
@@ -67,11 +67,11 @@ struct CIntelligentPointerTrackNode : CBaseIntelligentPointer {   // CIntelligen
     __forceinline CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
     __forceinline CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

@@ -6,7 +6,7 @@
 // member becomes the tagger, else TaggerUID = 0; its bool result is dropped).
 // Shape: two separate exits (`mov al,1` / `xor al,al`); the 64-bit equality compares the low then the high dword with the
 // member's word on the right (`TaggerUID == member->UniqueID`).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned char _pad20[0x71];
@@ -20,7 +20,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;               // 0x00A01B50
 };
 
-struct CGroupMemberData {
+class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;        // +0x00
     bool IsActive;                          // +0x08
     unsigned long JoinedFrame;              // +0x0c
@@ -44,7 +44,7 @@ struct CGroupMemberMap {                    // STLport map<unsigned __int64, CGr
     SGroupMemberNode* end() { return Header; }
 };
 
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     virtual void v00();
     CThing* ParentThing;                    // +0x04 (CTCBase)
     bool ToBeRemoved;                       // +0x08
@@ -60,7 +60,7 @@ struct CTCCreatureGroup {
 
 long GetWorldFrame();                       // 0x0049D870 (returns the global frame counter @ 0x013B89BC)
 
-struct CTCCreatureGroupTag : CTCCreatureGroup {
+class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     unsigned __int64 TaggerUID;             // +0x28
     unsigned long TaggedFrame;              // +0x30
 private:

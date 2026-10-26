@@ -6,9 +6,9 @@ static long g_FramesPerSecond = 15;
 static long g_worldFrame = 0;
 static long GetWorldFrame() { return g_worldFrame; }
 
-struct CSummonDef { float TimeBetweenSummons; };
+class CSummonDef { public: float TimeBetweenSummons; };
 
-struct CTCAISummon {
+class CTCAISummon { public:
     const CSummonDef* PSummonDef;
     long              LastSummonTick;
     bool IsTimeToSummon()

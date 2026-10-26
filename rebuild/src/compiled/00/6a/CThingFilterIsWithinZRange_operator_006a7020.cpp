@@ -7,22 +7,22 @@
 // Shape: `fabs(pos.z - Z) < Range` as `fcomp [Range] ; test ah,5 ; jp` (the "below" test), byte-constant exits.
 #include <math.h>
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*         __vftable;
     unsigned char _pad04[8];
     C3DVector     m_position;                       // +0x0c
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
 };
 
-struct CThingFilter_IsWithinZRange {
+class CThingFilter_IsWithinZRange { public:
     float Z;                                        // +0x00
     float Range;                                    // +0x04
     bool operator()(CThing* thing) const;

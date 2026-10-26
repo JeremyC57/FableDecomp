@@ -2,12 +2,12 @@
 #ifdef _MSC_VER
 #include "engine/CEnginePrimitiveManagerRepeatedZSprites.h"
 #else
-struct C3DMeshInfo;
-struct CSurface;
-struct CTexture;
+class C3DMeshInfo;
+class CSurface;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveManagerRepeatedZSprites {
+class CEnginePrimitiveManagerRepeatedZSprites { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

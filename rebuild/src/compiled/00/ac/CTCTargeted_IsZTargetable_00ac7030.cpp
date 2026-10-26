@@ -1,4 +1,4 @@
-struct CTCTargeted {
+class CTCTargeted { public:
     int a; // +0
     int b; // +4
     int c; // +8

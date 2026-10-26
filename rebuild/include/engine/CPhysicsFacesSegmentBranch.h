@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CIPhysicsFacesSegmentBase;
+class CIPhysicsFacesSegmentBase;
 
 #pragma pack(push, 1)
 struct CPhysicsFacesSegmentBranch {

@@ -12,12 +12,12 @@ typedef __int64 i64;
 typedef long long i64;
 #endif
 
-struct CMovableResourceMemoryPool { int Id; };
-struct CCharString { std::string S; };
-struct C3DVector { float X, Y, Z; };
+class CMovableResourceMemoryPool { public: int Id; };
+class CCharString { public: std::string S; };
+class C3DVector { public: float X, Y, Z; };
 
 static int g_overflowCalls = 0;
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     unsigned long m_position;
     long StreamSize;
     const unsigned char* m_pData;
@@ -65,21 +65,21 @@ struct CMemoryDataInputStream {
     unsigned short ReadUShort() { unsigned short value; ReadInline(&value, sizeof(value)); return value; }
 };
 
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };
-struct C3DBoundingBox {
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
+class C3DBoundingBox { public:
     C3DVector Min; C3DVector Max;
     void Set(const C3DVector& mn, const C3DVector& mx) { Min = mn; Max = mx; }
 };
-struct C3DHelperPoint { unsigned char _data[0x14]; };
-struct C3DDummyObject { unsigned char _data[0x38]; };
+class C3DHelperPoint { public: unsigned char _data[0x14]; };
+class C3DDummyObject { public: unsigned char _data[0x38]; };
 static int g_volumeFailAt = -1, g_volumeLoads = 0;
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     unsigned short Tag;
     CMovableResourceMemoryPool* Pool;
     bool LoadBinary(CMemoryDataInputStream* in, CMovableResourceMemoryPool* pool)
     { Tag = in->ReadUShort(); Pool = pool; return g_volumeLoads++ != g_volumeFailAt; }
 };
-struct C3DGeneratorObject {
+class C3DGeneratorObject { public:
     unsigned char Kind;
     void LoadBinary(CMemoryDataInputStream* in) { unsigned char k; in->Read(&k, 1); Kind = k; }
 };
@@ -106,7 +106,7 @@ struct CGeneratorArray {
 };
 
 static bool g_allocOk = true;
-struct C3DMeshStats {
+class C3DMeshStats { public:
     CMovableResourceMemoryPool* MemoryPool;
     CCharString Name;
     C3DBoundingSphere BoundingSphere;

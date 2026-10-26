@@ -7,21 +7,21 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct CThing {
+class CThing { public:
     u64 UID; short m_level; bool levelLess;
     bool IsLevelLess() { return levelLess; }
 };
 static int g_remapCalls = 0;
 static bool g_lastSaving = false, g_lastLevelLess = false;
 static long g_lastLevel = 0;
-struct CThingManager {
+class CThingManager { public:
     u64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, u64 uid)
     { ++g_remapCalls; g_lastSaving = saving; g_lastLevelLess = levelLess; g_lastLevel = level; return uid + 0x100; }
 };
 static CThingManager g_tm;
 static u64 g_loadedValue = 0;
 static int g_transfers = 0;
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     void Transfer(const char* name, u64& value, const u64& defaultValue)
@@ -32,7 +32,7 @@ struct CPersistContext {
         else g_loadedValue = value;
     }
 };
-struct CTCBase { void* vt; CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; };
+class CTCBase { public: void* vt; CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs; };
 class CTCActivationReceptorBase { public: CThing* ParentThing; };
 class CTCActivationTrigger : public CTCBase {
 public:

@@ -1,4 +1,4 @@
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     char UseNewProfileValues;                 /* +0x0c */
     char pad1[0x19 - 0x0c - 1];

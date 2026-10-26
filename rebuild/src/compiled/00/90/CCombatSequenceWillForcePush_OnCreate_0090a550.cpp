@@ -10,7 +10,7 @@
 // byte at +0x114. Because a zero is needed five times (counted pointer, sound pair, the release
 // compare) VC keeps it in ebx. The new block lives in esi across the base call, `this` in edi.
 // The engine header for the sequence only carries a flattened base blob, so it is modelled locally.
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -18,19 +18,19 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     unsigned char _body[0x110];
 };
 
-struct CCreatureAction_ForcePushInto : CCombatActionBase {
+class CCreatureAction_ForcePushInto : public CCombatActionBase { public:
     bool m_bPushInto;                       // +0x114
     CCreatureAction_ForcePushInto(CThingCreatureBase* owner)
         : CCombatActionBase(owner, 150, CSoundPair()) { m_bPushInto = true; }

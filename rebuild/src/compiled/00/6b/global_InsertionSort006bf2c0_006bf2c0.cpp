@@ -12,7 +12,7 @@
 //   the functor is pushed, `sub esp,N ; mov eax,esp` reserves the value slot and the copy constructor fills it in place.
 //   The implicit copy constructor builds the value in the argument slot: key word, then the nested value with
 //   `lea edi,[eax+4]` as its this (two wide-string copies, two words, a flag byte); `first` is kept in a frame slot.
-struct CWideString {                            // 4-byte counted wide-string handle
+class CWideString { public:                            // 4-byte counted wide-string handle
     void* m_pData;
     CWideString(const CWideString& other);      // 0x0099B720
 };

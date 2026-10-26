@@ -7,20 +7,20 @@
 
 static int g_stringCopies = 0;
 
-struct CCharString {
+class CCharString { public:
     const char* m_pStringData;
     explicit CCharString(const char* s) : m_pStringData(s) { }
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; }
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
-struct CTCInventoryMap {
-    struct CUIMiniMapMarker {
+class CTCInventoryMap { public:
+    class CUIMiniMapMarker { public:
         long        Region;
         CCharString UIDefName;
         C2DVector   Position;

@@ -2,7 +2,7 @@
 
 // Behaviour model of CQuestManager::IsQuestActive (0x004AF610): walk the active-quest list; CCharString equality is
 // same data block -> equal, otherwise both non-null with equal length and an equal signed compare.
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static long Compare(const char* a, const char* b)
 {
     for (;;) {
@@ -14,7 +14,7 @@ static long Compare(const char* a, const char* b)
         ++a; ++b;
     }
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& o) const
     {
@@ -26,7 +26,7 @@ struct CCharString {
 };
 struct CActiveQuest { long ID; CCharString QuestName; };
 struct Node { Node* next; Node* prev; CActiveQuest* data; };
-struct CQuestManager {
+class CQuestManager { public:
     Node* ActiveQuests;
     bool IsQuestActive(const CCharString& name) const
     {

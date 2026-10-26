@@ -15,26 +15,26 @@ class CEngineCamera;
 class CEngineSceneRenderStats;
 class CEngineSubPrimitiveBase;
 
-struct C3DBoundingBox { float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
+class C3DBoundingBox { public: float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
 
 class CEngineCamera {
 public:
     bool ClipWorldSpaceBoundingBox(const C3DBoundingBox& box, float drawDistance, bool& clipped) const;   // 0x00B308E0
 };
 
-struct CEngineSubPrimitiveChain {
+class CEngineSubPrimitiveChain { public:
     CEngineSubPrimitiveBase* LastOpaque;
     CEngineSubPrimitiveBase* LastAlpha;
     CEngineSubPrimitiveChain() : LastOpaque(0), LastAlpha(0) {}
 };
 
 class CEngineInternalPrimitiveBase;
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual long RenderPrimitive(CEngineInternalPrimitiveBase& primitive, long layer, CEngineSubPrimitiveChain& chain);   // slot 7
 };
-struct CEnginePrimitiveTypeInfo {
+class CEnginePrimitiveTypeInfo { public:
     unsigned char            _pad[0x10];
     CEnginePrimitiveManager* PrimitiveManagers[47];   // +0x10
 };
@@ -59,7 +59,7 @@ public:
     CEngineInternalPrimitiveBase* NextLayerMask;    // +0x40
 };
 
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell { public:
     CEngineSceneGridCell*         Parent;           // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;   // +0x04
     unsigned char                 _pad08[0x3c];
@@ -70,14 +70,14 @@ struct CEngineSceneGridCell {
     unsigned char                 HasOcclusionResults : 1;
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void*                         _vptr;         // +0x00
     unsigned long                 Level;         // +0x04
     CEngineSceneGrid*             LevelUp;       // +0x08

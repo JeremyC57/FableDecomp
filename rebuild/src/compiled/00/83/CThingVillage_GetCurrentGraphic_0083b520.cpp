@@ -15,7 +15,7 @@
 // neither holder escapes, keeps the state def in ebx and the village def in esi, and shares one 4-byte frame word
 // between both out pointers, as retail.
 #pragma pack(push, 1)
-struct CEngineGraphic {                                     // 14 bytes
+class CEngineGraphic { public:                                     // 14 bytes
     unsigned long BankIndex;                                // +0x00
     float         AnimStep;                                 // +0x04
     float         RenderSizeX;                              // +0x08
@@ -24,14 +24,14 @@ struct CEngineGraphic {                                     // 14 bytes
 };
 #pragma pack(pop)
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                                 // slot 1 (+0x04)
     long RefCount;                                          // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -47,14 +47,14 @@ struct CVillageStateDef : CDefPointeeBase {                 // the base def's gr
     CEngineGraphic Graphic;                                 // +0x25
 };
 #pragma pack(pop)
-struct CThingVillageDef : CDefPointeeBase {
+class CThingVillageDef : public CDefPointeeBase { public:
     unsigned char  _pad08[0x70 - 0x08];
     CEngineGraphic Graphic;                                 // +0x70 (descriptive)
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CVillageStateDef>* out) const;   // 0x0042B0A2
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingVillageDef>* out);   // 0x0083B970
 };
 
@@ -81,7 +81,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CThingBaseDef* PBaseDef;                                // +0x70
     unsigned char  _pad74[0x8c - 0x74];
@@ -89,7 +89,7 @@ struct CThing {
     CDefinitionManager* GetDefinitionManager();            // 0x004C7990
 };
 
-struct CThingVillage : CThing {
+class CThingVillage : public CThing { public:
     unsigned char  _pad90[0xd0 - 0x90];                    // (CThing is 0x90 bytes)
     CEngineGraphic CurrentGraphic;                          // +0xd0
     const CEngineGraphic& GetCurrentGraphic();

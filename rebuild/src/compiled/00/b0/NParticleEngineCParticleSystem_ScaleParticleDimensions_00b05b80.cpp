@@ -6,13 +6,13 @@
 // overload's parameter type is inferred from the `imul ecx,[eax] ; mov [eax],ecx` store.
 // Shape: `dimension *= (long)MAX(...)` -- the float maximum truncated through _ftol, then multiplied into the reference.
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 namespace NParticleEngine {
-struct CParticleSystem {
+class CParticleSystem { public:
     unsigned char _system[0x50];
     bool          Initialised           : 1;   // +0x50 bit 0
     bool          Enabled               : 1;

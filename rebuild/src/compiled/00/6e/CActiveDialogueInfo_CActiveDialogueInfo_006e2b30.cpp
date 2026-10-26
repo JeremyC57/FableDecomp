@@ -7,7 +7,7 @@
 // at +0 (0x01238C6C) is CIntelligentPointer's own (a member; the class is not polymorphic).
 // CIntelligentPointer(p) is the family shape: base ctor, vtable, SetPItem(p); then the three
 // argument stores and the folded float-zero store (ret 0x10).
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();

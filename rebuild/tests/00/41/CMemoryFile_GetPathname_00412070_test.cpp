@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CWideString { void* p; void ctor(const void* src){ p = (void*)src; } };
-struct CMemoryFile { char pad[0x20]; char member[4]; };
+class CWideString { public: void* p; void ctor(const void* src){ p = (void*)src; } };
+class CMemoryFile { public: char pad[0x20]; char member[4]; };
 CWideString* CMemoryFile_GetPathname(const CMemoryFile* file, void* edx, CWideString* ret)
 {
     ret->ctor((const char*)file + 0x20);

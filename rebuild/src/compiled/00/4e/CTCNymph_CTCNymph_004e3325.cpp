@@ -15,8 +15,8 @@
 // like STLport's _STLP_alloc_proxy (an allocator base + the word): that places `lea edi,[esi+41h] ; mov ecx,edi` after the third
 // array zero as retail (plain three-word init puts it right after the PDef zero).
 #pragma optimize("s", on)
-struct CThing;
-struct CThingCreatureBase;
+class CThing;
+class CThingCreatureBase;
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -32,37 +32,37 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature() { }
 };
 #pragma pack(pop)
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 template <class T> struct CAllocator { CAllocator() { } };
 template <class T> struct CAllocProxy : CAllocator<T> {
     long m_capacity;
     CAllocProxy(const CAllocator<T>& a, long c) : CAllocator<T>(a), m_capacity(c) { }
 };
-template <class T> struct CArray {                  // retail CArray is 0x0c: data, size, capacity
+template <class T> class CArray { public:                  // retail CArray is 0x0c: data, size, capacity
     T*   m_pData;
     long m_size;
     CAllocProxy<T> m_capacity;
     CArray() : m_pData(0), m_size(0), m_capacity(CAllocator<T>(), 0) { }
 };
-struct CCardinalSpline {                            // retail 0x14
+class CCardinalSpline { public:                            // retail 0x14
     CArray<C3DVector> ControlPoints;                // +0
     float             Tension;                      // +0xc
     bool              EndPointsConnected;           // +0x10
     CCardinalSpline() : Tension(0.5f), EndPointsConnected(false) { }
 };
-struct CNymphDef;
-template<class T> struct CDefPointer {
+class CNymphDef;
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
     CTCBase(CThing* thing);                         // 0x00686800
 };
-struct CTCNymph : CTCBase {                         // vtable 0x01242AD4
+class CTCNymph : public CTCBase { public:                         // vtable 0x01242AD4
     CDefPointer<const CNymphDef> PDef;              // +0x0c
     C3DVector PointToFlyAround;                     // +0x10
     float EffectHeightOffset;                       // +0x1c

@@ -1,5 +1,5 @@
 // CMap::GetMemoryFootprint @ 0x00c1d7f0  __fastcall long(CMap*)
-struct CMap {
+class CMap { public:
     int   field0;
     int   field4;
     long  CachedVolumes;   // [esi+8]

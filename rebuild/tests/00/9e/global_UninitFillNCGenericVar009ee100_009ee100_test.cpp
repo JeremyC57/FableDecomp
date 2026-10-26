@@ -4,7 +4,7 @@
 
 struct __false_type { __false_type() { } };
 static int g_stringCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pStringData;
     CCharString() : m_pStringData("") { }
     CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_stringCopies; }

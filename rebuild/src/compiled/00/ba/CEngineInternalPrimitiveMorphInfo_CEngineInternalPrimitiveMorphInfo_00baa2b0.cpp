@@ -18,7 +18,7 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
-struct CCompositeSurfaceInfo;
+class CCompositeSurfaceInfo;
 struct SCompositeSurfacePair;                      // pair<long, CCompositeSurfaceInfo>
 void __fastcall DestroyRange(SCompositeSurfacePair* first, SCompositeSurfacePair* last, const SNonscalarPtrIteratorTag& tag);   // 0x00BA9FD0
 
@@ -73,7 +73,7 @@ struct CByteArray {                                // CArray<unsigned char>: fir
     ~CByteArray() { if (m_pFirst) free(m_pFirst); }
 };
 
-struct CEngineInternalPrimitiveMorphInfo {         // retail 0x38 bytes
+class CEngineInternalPrimitiveMorphInfo { public:         // retail 0x38 bytes
     CTextureDecalMap      TextureDecals;           // +0x00
     CCompositeSurfaceMap  CompositeSurfaces;       // +0x10
     CCharStringSet        HiddenMaterialNames;     // +0x20

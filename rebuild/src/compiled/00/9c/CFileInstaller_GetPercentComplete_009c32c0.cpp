@@ -19,7 +19,7 @@ struct CActiveFile {                       // the file being installed
     long          m_bytesProcessed;                // +0x10
 };
 
-struct CFileInstaller {
+class CFileInstaller { public:
     unsigned char          _pad[4];
     CRITICAL_SECTION_Fable CriticalSection;              // +0x04
     unsigned char          _pad1c[0x38];

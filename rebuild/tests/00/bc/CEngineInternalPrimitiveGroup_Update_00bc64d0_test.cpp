@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     int pad0; int pad4; int pad8; int fieldC;
 };
 

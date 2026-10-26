@@ -5,7 +5,7 @@ static long* g_pv;
 static long g_captured;
 static void* g_this;
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(int a, int b);
     void TransferImpl(int a, int b, long* pv);
 };

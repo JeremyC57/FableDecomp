@@ -13,7 +13,7 @@
 //   +0x98, m_bPlayedSound +0xd8, m_OnhitEveryFrame +0xdc, m_CombatMultiplierTimer +0xe0.
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -78,13 +78,13 @@ struct CTCAbilityUser {                                 // interface 0xA7 (descr
     unsigned char _pad0d[3];
     long Ability;                                       // +0x10
 };
-struct CTCSoundPlayer {                                 // interface 0x10
+class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
-struct CTCInventoryAbilities {                          // interface 0x6F
+class CTCInventoryAbilities { public:                          // interface 0x6F
     long GetAbilityLevel(long ability);                 // 0x005EDE93
 };
-struct CTCHeroStats {                                   // interface 4
+class CTCHeroStats { public:                                   // interface 4
     unsigned char _pad00[0x58];
     long WillPower;                                     // +0x58 (descriptive)
 };
@@ -150,7 +150,7 @@ bool CLightningSpellDef::GetSubDef(CEffectsDefPointer* out)
     return false;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
     long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
     bool GetDef(long index, CLightningSpellDefPointer* out) const;   // 0x007A35D0
@@ -182,7 +182,7 @@ struct CTCBase_Calls {
 };
 
 #pragma pack(push, 1)
-struct CTCWillLightning : CTCBase_Calls {               // vtable 0x0126C724
+class CTCWillLightning : public CTCBase_Calls { public:               // vtable 0x0126C724
     long  WeaponState;                                  // +0x0c
     bool  LeftHandAnim;                                 // +0x10
     CIntelligentPointer PItemRemoved;                   // +0x11

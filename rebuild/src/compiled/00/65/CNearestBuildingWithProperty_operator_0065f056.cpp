@@ -12,7 +12,7 @@
 //   is a named float (`fst` into the frame) compared only when a building is already held (`test ah,5 ; jp`: strictly nearer).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
@@ -31,7 +31,7 @@ struct CBuildingSimDefinition {
     unsigned long BuildingProperties;              // +0x3c
     void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer() { if (Object) Object->ReleaseTemporary(); }
     T* operator->() const { return Object; }
@@ -50,7 +50,7 @@ public:
     CThing* GetPItem() const;                      // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-struct CNearestBuildingWithProperty {
+class CNearestBuildingWithProperty { public:
     unsigned long   BuildingProperty;              // +0x00 ESimBuildingProperty
     C3DVector       Pos;                           // +0x04
     CThingBuilding* NearestBuilding;               // +0x10

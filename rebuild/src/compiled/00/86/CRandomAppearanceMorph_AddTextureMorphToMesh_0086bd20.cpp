@@ -10,24 +10,24 @@
 // Shape: the body parts are walked by a counted `for` over the three slots (`cmp edi,24h`), the meshes by an unsigned
 // index against a size() recomputed every pass, both through `operator[]` on a part reference; the morph is built
 // inside the hit block.
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_first; T* m_last; T* m_end;
     unsigned long size() const { return m_last - m_first; }
     T& operator[](unsigned long index) { return m_first[index]; }
 };
 struct CKeyPairCompareLess {};
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     CArray<V> m_vector; CKeyPairCompareLess m_compare; bool m_sorted;
 };
 struct CSkeletalMorph;
 
-struct CRandomAppearanceMorph {
-    struct CTextureMorph {
+class CRandomAppearanceMorph { public:
+    class CTextureMorph { public:
         unsigned long NewTexture;                       // +0x00
         unsigned long GroupID;                          // +0x04
     };
     typedef CVectorMap<unsigned long, CTextureMorph> CTextureMorphMap;
-    struct CBodyPartMesh {                              // 24 bytes
+    class CBodyPartMesh { public:                              // 24 bytes
         unsigned long    MeshID;                        // +0x00
         unsigned long    _04;                           // +0x04
         CTextureMorphMap TextureMorphs;                 // +0x08

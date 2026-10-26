@@ -6,12 +6,12 @@ static int g_frames, g_endAt, g_csAt, g_screenAt, g_phase1At, g_phase2At, g_dead
 static int g_bound, g_obj7, g_activated, g_saves, g_fades, g_lines, g_teleOn, g_teleOff, g_cut, g_deact, g_log, g_obj11, g_completed;
 static float g_morality;
 static bool g_wastesLoaded;
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CMasterData { bool KilledBriar; long DeliveredSoul; };
-struct CScriptDef { float HS_GoodSoulTaken; };
+class CScriptDef { public: float HS_GoodSoulTaken; };
 static CScriptDef g_def;
 static CScriptDef* g_pScriptDef = &g_def;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     bool IsRegionLoaded(const char* n) const { return g_wastesLoaded && std::strcmp(n, "NorthernWastes3") == 0; }

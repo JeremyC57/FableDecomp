@@ -1,5 +1,5 @@
 // std::__uninitialized_fill_n(CVertexShader* first, unsigned int n, const CVertexShader& x, const __false_type&) -- STLport placement-copy of n vertex-shader handles into raw storage (shared data ReferenceCount bumped); returns the end of the run
-// Leaf: ??$__uninitialized_fill_n@PAUCVertexShader@@IU1@@std@@YIPAUCVertexShader@@PAU1@IABU1@ABU__false_type@@@Z
+// Leaf: ??$__uninitialized_fill_n@PAVCVertexShader@@IV1@@std@@YIPAVCVertexShader@@PAV1@IABV1@ABU__false_type@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6B700, 49 bytes, `__fastcall` (first ecx, n edx, &x and the
 //   __false_type reference on the stack), `ret 8`. No callees.
 // Identity: the only caller 0x00B6C120 (vector<CVertexShader>::_M_insert_overflow, the n > 1 arm: STLport calls
@@ -21,7 +21,7 @@ struct CVertexShaderData {
     unsigned long ReferenceCount;                 // +0x10
 };
 
-struct CVertexShader {                            // vtable 0x0129B3D0
+class CVertexShader { public:                            // vtable 0x0129B3D0
     virtual void v00();
     CVertexShaderData* Data;                      // +4
     CVertexShader(const CVertexShader& other) : Data(other.Data)

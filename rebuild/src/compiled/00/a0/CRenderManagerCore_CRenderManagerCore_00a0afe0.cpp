@@ -8,16 +8,16 @@
 // body clears CurrentlySelectedTextures[8] (+0x3D00) with an element loop VC unrolls into eight `mov [..],eax`.
 // Model: local polymorphic model (engine/CRenderManagerCore.h flattens the CRenderStateManager base into pads, and
 // the vptr is a plain word there); offsets follow the engine header.
-struct CDisplayManager;
+class CDisplayManager;
 struct IDirect3DBaseTexture9;
 
-struct CRenderStateManager {                         // sizeof 0x3A3C (engine/CRenderStateManager.h)
+class CRenderStateManager { public:                         // sizeof 0x3A3C (engine/CRenderStateManager.h)
     CRenderStateManager(unsigned long initFlags);    // 0x00A05970
     virtual ~CRenderStateManager();
     unsigned char _body[0x3A38];                     // +0x04 PD3DDevice .. InitFlags
 };
 
-struct CInitBaseClass {                              // vtable 0x0129A7CC
+class CInitBaseClass { public:                              // vtable 0x0129A7CC
     CInitBaseClass();                                // 0x0099A310
     virtual ~CInitBaseClass();
     bool Initialised;                                // +0x04
@@ -28,7 +28,7 @@ struct CSystemFont : CInitBaseClass {                // vtable 0x0129C998, 8 byt
     virtual ~CSystemFont();
 };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     CPixelFormat() : FormatIndex(-1) {}
     long FormatIndex;
 };

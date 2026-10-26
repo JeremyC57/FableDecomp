@@ -16,7 +16,7 @@ struct CAnimComponentTransitionInTime_Base {
     CAnimComponentTransitionInTime_Base() : m_count(1) { }
 };
 
-struct CAnimComponentTransitionInTime : CAnimComponentTransitionInTime_Base {
+class CAnimComponentTransitionInTime : public CAnimComponentTransitionInTime_Base { public:
     virtual void v00();
     unsigned char _tail[0x4];
     CAnimComponentTransitionInTime() : CAnimComponentTransitionInTime_Base() { }

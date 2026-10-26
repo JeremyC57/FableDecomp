@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesMultiArrowDef { int f0; };
+class CSpecialAbilitiesMultiArrowDef { public: int f0; };
 
 extern void __fastcall CSpecialAbilitiesMultiArrowDef_dtor(CSpecialAbilitiesMultiArrowDef* def);
 extern void __cdecl eng_operator_delete(void* p);

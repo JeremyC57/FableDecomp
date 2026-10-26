@@ -30,7 +30,7 @@ public:
     CCharString QuestCardDefName;
     CTestQuest() : ColourIndex(0) { }
 };
-struct CTestQuestNameCompare {
+class CTestQuestNameCompare { public:
     bool operator()(const CTestQuest& a, const CTestQuest& b) const { return StrLess(a.QuestName, b.QuestName); }
 };
 typedef CTestQuest ElemT;

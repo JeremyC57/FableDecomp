@@ -1,6 +1,6 @@
 // Behaviour test (0x007573c0): CTCWound::CWound::Kill deletes each set decal id (wound/scar texture and bump) and zeroes it
 #include <cstdio>
-struct CTCTextureDecal {
+class CTCTextureDecal { public:
     long Deleted[8];
     int  Count;
     void DeleteDecal(long id) { Deleted[Count++] = id; }

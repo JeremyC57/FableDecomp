@@ -2,7 +2,7 @@
 #include <cstring>
 // Behaviour of 0x00581AE1 (chunk 901 piece): toggles +0x1cd (set only when +0x1cc is clear) and always calls the hook
 static int g_hook = 0;
-struct CTCInventory {
+class CTCInventory { public:
     virtual void v00() {}
     unsigned char _pad_0x04[0x1cc - 0x04];
     bool m_suppressA;

@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct CStealthDef
-{
+class CStealthDef
+{ public:
     void* vftable;
 };
 extern void* const g_CStealthDef_vftable;

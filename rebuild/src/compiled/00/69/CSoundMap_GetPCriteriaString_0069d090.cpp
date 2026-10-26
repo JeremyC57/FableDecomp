@@ -17,7 +17,7 @@ class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;                                    // +0x00 CBasicString<char>::PData
     unsigned long StringLength;                             // +0x04
 };
@@ -41,7 +41,7 @@ template <class A, class B> struct pair {
     A first;
     B second;
 };
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const pair<K, V>& entry, const K& key) const { return entry.first < key; }
     bool operator()(const K& key, const pair<K, V>& entry) const { return key < entry.first; }
 };

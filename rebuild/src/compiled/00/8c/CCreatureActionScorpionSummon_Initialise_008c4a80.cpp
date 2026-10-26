@@ -7,7 +7,7 @@
 // key frame word straight into ecx, as retail); the call is spelled in BOTH arms so VC7.1 cross-jumps them with the component already
 // in ecx (one call after a joined pointer copies it through eax, +2 bytes). PCreature is addressed once (`lea edi,[esi+8]`); the last
 // creature is a named local because retail fetches it before pushing the two arguments.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -33,7 +33,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -64,10 +64,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCCreatureModeManager {             // interface type 0x31
+class CTCCreatureModeManager { public:             // interface type 0x31
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 creature state byte (compared with 1; meaning not pinned down)
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
@@ -76,7 +76,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)GetPItem(); }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12: 0x00857520
@@ -85,7 +85,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_ScorpionSummon : CCombatActionBase {
+class CCreatureAction_ScorpionSummon : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

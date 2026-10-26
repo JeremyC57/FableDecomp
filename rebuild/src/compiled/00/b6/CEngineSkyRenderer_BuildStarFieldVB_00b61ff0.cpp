@@ -18,21 +18,21 @@
 // header is a flat POD and the local needs its polymorphic destructor chain).
 #include "engine/CEngineSkyRenderer.h"
 
-struct CWideString {
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                  // 0x0099B510
 };
 
 bool __fastcall PathExists(const CWideString& path); // 0x00999230
 
-struct CASuspendableProcess;
+class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();                // 0x0099A300
 };
 
-struct CDiskFileWin32 : CBaseClassNonCopyable {      // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:      // vtable 0x0122D06C
     unsigned char _pad_0x04[0x14];
     CWideString   Pathname;                          // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80

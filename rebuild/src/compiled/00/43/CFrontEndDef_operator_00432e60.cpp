@@ -21,9 +21,9 @@ struct CDefRootBase {                                   // 28-byte polymorphic r
     CDefRootBase& operator=(const CDefRootBase& other); // 0x00431F60
 };
 
-struct CDefinitionManager;
+class CDefinitionManager;
 
-struct CDefClassBase : CDefRootBase {
+class CDefClassBase : public CDefRootBase { public:
     CDefinitionManager* PDefManager;                    // +0x1c
     unsigned long GlobalIndex;                          // +0x20
     unsigned char Setup : 1;                            // +0x24 bit 0
@@ -49,7 +49,7 @@ template<class T> struct CRetailVector {                // begin/end/capacity
 
 struct CKeyPairCompareLess {};
 
-template<class K, class V> struct CVectorMap {          // retail: 14 bytes
+template<class K, class V> class CVectorMap { public:          // retail: 14 bytes
     CRetailVector<V>    m_vector;                       // +0x00
     CKeyPairCompareLess m_compare;                      // +0x0c (empty)
     bool                m_sorted;                       // +0x0d
@@ -62,12 +62,12 @@ template<class K, class V> struct CVectorMap {          // retail: 14 bytes
     }
 };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 struct CSubDefInfo;
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 
 #pragma pack(push, 1)
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     CDefString                             InstantiationName;   // +0x25
     CVectorMap<unsigned long, CSubDefInfo> SubDefInfoMap;       // +0x29
     __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
@@ -80,7 +80,7 @@ struct CParentDefClassBase : CDefClassBase {
 };
 #pragma pack(pop)
 
-struct CFrontEndDef : CParentDefClassBase {
+class CFrontEndDef : public CParentDefClassBase { public:
     CRetailVector<CCharString> vAttractModeMovie;       // +0x3c
     long ErrorMessageBackgroundGraphic;                 // +0x48
     long ButtonABigGraphic;                             // +0x4c

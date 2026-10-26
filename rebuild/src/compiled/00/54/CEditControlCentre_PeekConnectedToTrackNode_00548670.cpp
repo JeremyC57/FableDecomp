@@ -12,10 +12,10 @@
 // Modeled as __fastcall so the object pointer arrives in ecx (byte-identical
 // to __fastcall for a this-only accessor). VC7.1 / MSVC 2003, no C++11.
 
-struct CThingTrackNode;
+class CThingTrackNode;
 
 // Layout: a byte flag at +0x0c selects which pointer field to return.
-struct CEditControlCentre {
+class CEditControlCentre { public:
     char _pad0[0x0c];               // 0x00 .. 0x0b
     unsigned char use_connected;    // 0x0c  selector flag
     char _pad1[0x38 - 0x0d];        // 0x0d .. 0x37

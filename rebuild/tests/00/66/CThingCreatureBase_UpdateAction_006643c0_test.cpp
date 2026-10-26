@@ -1,7 +1,7 @@
 // behaviour test for CThingCreatureBase::UpdateAction (0x006643C0): update gating, counted copy add-ref/release, queue promotion
 #include <cstdio>
 static int g_updates = 0, g_finish = 0, g_destroyed = 0, g_set = 0, g_erased = 0;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     bool AddedActionAnim, Finished; long m_hold; bool m_yield; int m_refsSeen;
     virtual void FinishAction() { ++g_finish; Finished = true; }
     virtual long VSlot07() { return m_hold; }
@@ -29,7 +29,7 @@ struct CCreatureActionList {
     iterator begin() { return iterator(_Myhead->next); }
     iterator erase(iterator w) { ++g_erased; node* n = w._Ptr; n->prev->next = n->next; n->next->prev = n->prev; return iterator(n->next); }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CCountedPointer_CCreatureActionBase PCurrentAction; CCreatureActionList PQueuedActions;
     CThingCreatureBase(const CCountedPointer_CCreatureActionBase& p) : PCurrentAction(p) {}
     bool IsPerformingAnyAction() { CCreatureActionBase* a = PCurrentAction.Data; if (a != 0) { if (!a->Finished) return true; } return false; }

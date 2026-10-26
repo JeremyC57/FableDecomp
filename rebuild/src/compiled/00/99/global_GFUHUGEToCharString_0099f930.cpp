@@ -14,7 +14,7 @@
 // inlined operator= body: unassign the old block, share the source block and bump its NoRefs at +0xd), and
 // destroyed through the inline destructor (UnassignString, counter--). Same inline shapes as the landed
 // copy constructor @ 0x0099EC30 and destructor @ 0x0099EAE0.
-struct CCharStringData;
+class CCharStringData;
 extern long g_CCharStringInstanceCount;        // 0x013BD800
 
 class CCharString {

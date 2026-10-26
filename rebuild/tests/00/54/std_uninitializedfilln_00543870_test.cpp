@@ -3,7 +3,7 @@
 struct __false_type { __false_type() {} };
 static int g_stringCopies = 0;
 static int g_arrayCopies = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString(const char* s) : PStringData(s) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_stringCopies; }

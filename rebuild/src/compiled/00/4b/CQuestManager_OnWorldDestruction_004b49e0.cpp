@@ -14,7 +14,7 @@ struct CBoastList {                                // list<CBoast>: one head-nod
     void  clear();                                 // 0x004B8C00
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x64];
     unsigned long FrameBoastsLastUpdated;          // +0x64
     CBoastList    Boasts;                          // +0x68

@@ -13,9 +13,9 @@
 // UseMannequin, +0x148 lastCategoryIdx, +0x14c pTCHeroExperience, +0x150 pTCHeroStats (Ego_r.pdb has the same order shifted
 // by its larger debug STL; no engine header exists for CTCInventoryStats).
 // Pragma: optimize("s", on).
-struct CThing;
-struct CTCHeroExperience;
-struct CTCHeroStats;
+class CThing;
+class CTCHeroExperience;
+class CTCHeroStats;
 
 struct CTCInventoryBase {
     virtual void v00();
@@ -24,7 +24,7 @@ struct CTCInventoryBase {
 };
 
 namespace NHeroInformationScreens {
-struct CBase {                                              // vtable 0x0123A3E0
+class CBase { public:                                              // vtable 0x0123A3E0
     virtual void v00();
     CBase();                                                // 0x0066E734
 };
@@ -35,7 +35,7 @@ struct CCreatureKillMap {                                   // std::map<unsigned
     CCreatureKillMap();                                     // 0x004533C5
 };
 
-struct CTCInventoryStats : CTCInventoryBase, NHeroInformationScreens::CBase {
+class CTCInventoryStats : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     CCreatureKillMap CreaturesKilled;                       // +0x134
     CThing* pMannequin;                                     // +0x140
     bool UseMannequin;                                      // +0x144

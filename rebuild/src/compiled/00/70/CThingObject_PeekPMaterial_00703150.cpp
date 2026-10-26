@@ -9,19 +9,19 @@
 // and returns it by copy (VC7.1 has no NRVO: the copy ctor's add-ref and the local's release merge into
 // `inc ; mov eax,edx ; dec eax`), the miss arm returns a default-constructed (null) pointer.
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;               // slot 1
     mutable long m_refCount;                    // +0x04
 };
-struct CMaterialDef : CDefPointeeBase {};
-template <class T> struct CDefPointer {
+class CMaterialDef : public CDefPointeeBase { public:};
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object) { if (DecRefToZero(Object->m_refCount)) Object->Destroy(); } }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointer<const CMaterialDef>* out);   // 0x0066C340
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -37,11 +37,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-struct CThingObjectDef {
+class CThingObjectDef { public:
     unsigned char _pad00[0x84];
     long          MaterialIndex;                // +0x84
 };
-struct CThingObject {
+class CThingObject { public:
     virtual void v00();
     unsigned char    _pad04[0xd0 - 0x04];
     CThingObjectDef* PDef;                      // +0xd0 (CDefPointer<const CThingObjectDef>)

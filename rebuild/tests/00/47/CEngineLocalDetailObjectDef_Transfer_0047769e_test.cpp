@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     int longs, floats, bools;
     bool loading;
     CPersistContext() : longs(0), floats(0), bools(0), loading(false) {}
@@ -13,7 +13,7 @@ struct CPersistContext {
         if (loading && std::strcmp(name, "HasWindSkew") == 0) value = true;
     }
 };
-struct CEngineLocalDetailObjectDef {
+class CEngineLocalDetailObjectDef { public:
     long  Mesh, ShadowMesh;
     float Probability, ThemeBlendThreshold, Scale, ScaleRandomElement, FadeStart, FadeEnd;
     long  ZSpriteMesh;

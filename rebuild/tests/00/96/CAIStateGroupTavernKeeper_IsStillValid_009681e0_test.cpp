@@ -1,6 +1,6 @@
 #include <cstdio>
 // Model of CAIStateGroup_TavernKeeper::IsStillValid @ 0x009681E0: pub alive && bar alive.
-struct CThing { unsigned char m_flags; };
+class CThing { public: unsigned char m_flags; };
 struct Ptr { CThing* item; CThing* GetPItem() { return item; } bool IsAlive() { if (GetPItem() != 0) { if (!(GetPItem()->m_flags & 1)) return true; } return false; } };
 struct Group { Ptr PJug, PBar, PPub; bool IsStillValid() const { Group* s = const_cast<Group*>(this); return s->PPub.IsAlive() && s->PBar.IsAlive(); } };
 int main()

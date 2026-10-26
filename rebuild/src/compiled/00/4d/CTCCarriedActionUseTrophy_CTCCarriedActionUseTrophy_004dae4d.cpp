@@ -9,9 +9,9 @@
 // `this + 0x14`). The argument is pushed straight from its stack slot twice (`push dword ptr [esp+8]`)
 // and the body has no frame: a size-optimised TU (#pragma optimize("s", on)).
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     unsigned char _body[0x10];                                  // +0x04..+0x13
     CTCCarriedActionUseBase(CThing* thing);                     // 0x004DAC61

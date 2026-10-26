@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct COpinionDeedEffectsDef;
+class COpinionDeedEffectsDef;
 
 extern void __fastcall COpinionDeedEffectsDef_Copy(COpinionDeedEffectsDef* thisptr, void* src);
 

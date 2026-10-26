@@ -21,12 +21,12 @@ struct CHoverable_00557360 {                            // third base (vptr at +
     virtual ~CHoverable_00557360();
 };
 
-struct CScrollableList : CListRoot_00557360, CGuiControl_00557360, CHoverable_00557360 {
+class CScrollableList : public CListRoot_00557360, public CGuiControl_00557360, public CHoverable_00557360 { public:
     unsigned char _body[0x160];                         // +0x01c .. +0x17b
     virtual ~CScrollableList();                         // 0x00555390
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool  m_bActive;                                    // +0x17c
     bool  m_bSelecting;                                 // +0x17d
     float m_fadeTime;                                   // +0x180

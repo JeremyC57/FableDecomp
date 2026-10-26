@@ -5,7 +5,7 @@ struct CTCInventoryBase {
     bool GetCanItemBeQuickAssigned() { return CanItemBeQuickAssigned; }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     bool EnableQuickAccessAssign;
     bool EnableQuickAccessRemove;
     void SetQuickAccessAssign(bool assign);

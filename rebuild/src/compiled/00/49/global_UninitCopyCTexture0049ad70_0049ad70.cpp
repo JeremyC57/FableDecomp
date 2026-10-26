@@ -11,7 +11,7 @@
 // type is named from the copy constructor's label when unique. One of 21 bodies.
 #include <new>
 
-struct CTexture {
+class CTexture { public:
     unsigned char _body[0x8];
     CTexture(const CTexture& other);           // 0x009F9D00
 };

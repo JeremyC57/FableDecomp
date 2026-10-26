@@ -1,5 +1,5 @@
 #include "engine/CAIStateGroup_WifeGiveYouGift.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld; struct CThingAICreature;
+class CWorld; class CThingAICreature;
 struct CAIStateGroup_WifeGiveYouGift_Methods : CAIStateGroup_WifeGiveYouGift {
     void InitStateGroup(const CWorld&, CThingAICreature&);
 };

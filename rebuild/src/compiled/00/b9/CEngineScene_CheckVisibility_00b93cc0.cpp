@@ -14,14 +14,14 @@
 class CEngineInternalPrimitiveBase;
 class CEngineSceneEnumerator;
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void EnumeratePrimitives(unsigned long x, unsigned long y, CEngineSceneEnumerator& enumerator);   // 0x00B92250
     void InvalidateBoundingBoxAndDrawDistance(unsigned long x, unsigned long y, bool all);           // 0x00B91CA0
     bool CheckVisibilityResults(long layer, unsigned long x, unsigned long y, unsigned long groupDelay,
                                 unsigned long minGroupSize, bool force);                           // 0x00B939E0
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };   // CCountedPointer<CEngineSceneGrid>
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     unsigned char  _pad[0x18];
     CGridPointer*  GridLevelsFirst;               // +0x18 (GridLevels.first)
 };
@@ -36,7 +36,7 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned long Base;                           // +0x00
     COuterNode*   MapListHead;                    // +0x04
     unsigned long MapListCount;                   // +0x08

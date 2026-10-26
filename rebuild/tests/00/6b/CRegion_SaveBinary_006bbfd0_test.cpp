@@ -1,8 +1,8 @@
 #include <cstdio>
-struct CCharString { void* PStringData; };
-struct C2DVector { float X, Y; };
+class CCharString { public: void* PStringData; };
+class C2DVector { public: float X, Y; };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     char kind[64]; long val[64]; const void* ptr[64]; int n;
     void WriteBool(bool value) { kind[n] = 'b'; val[n++] = value ? 1 : 0; }
     void WriteLong(long value) { kind[n] = 'l'; val[n++] = value; }
@@ -50,7 +50,7 @@ template <class T> struct CStlVector {
     T& operator[](long i) { return Start[i]; }
 };
 
-struct CRegion {
+class CRegion { public:
     CStlVector<long>   Maps;                    // +0x00
     CStlVector<long>   VisMaps;                 // +0x0c
     CCharString        Name;                    // +0x18

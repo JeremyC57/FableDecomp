@@ -9,9 +9,9 @@ static int g_primLast = 0, g_primDestroyed = 0, g_baseDtor = 0;
 struct CDef { long RefCount; long EndSoundStringID; long FilterRemoveMode; };
 struct CPrim { long RefCount; };
 struct CEmitter { bool Dead; void Kill() { Dead = true; ++g_killed; } };
-struct CTCBase { int* thingBits; virtual ~CTCBase() { ++g_baseDtor; } };
+class CTCBase { public: int* thingBits; virtual ~CTCBase() { ++g_baseDtor; } };
 
-struct CTCBulletTime : CTCBase {
+class CTCBulletTime : public CTCBase { public:
     CPrim* Primitive;
     CDef* PDef;
     CEmitter* LoopingEffect;

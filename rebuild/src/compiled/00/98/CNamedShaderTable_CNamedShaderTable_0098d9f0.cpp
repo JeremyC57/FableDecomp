@@ -11,7 +11,7 @@
 // out-of-line string destructor; the storage pointer is re-read for the null-tested free.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };

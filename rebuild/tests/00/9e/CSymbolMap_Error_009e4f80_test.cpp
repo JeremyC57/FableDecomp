@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdarg>
 
-struct CCharString {
+class CCharString { public:
     char text[512];
     CCharString() { text[0] = 0; }
     CCharString(const char* t, long) { std::strcpy(text, t); }
@@ -11,7 +11,7 @@ struct CCharString {
 };
 static CCharString operator+(const CCharString& a, const CCharString& b) { CCharString r(a); std::strcat(r.text, b.text); return r; }
 static CCharString operator+(const CCharString& a, const char* b) { CCharString r(a); std::strcat(r.text, b); return r; }
-struct CWideString {
+class CWideString { public:
     const char* narrow;
     CCharString ConvertToCharString() const { return CCharString(narrow, -1); }
 };

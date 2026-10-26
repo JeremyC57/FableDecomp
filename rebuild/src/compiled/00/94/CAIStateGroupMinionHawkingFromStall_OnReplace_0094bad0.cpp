@@ -7,9 +7,9 @@
 // `PStall = 0` on the member at +0x18 is the converting-temporary + inline `SetPItem(other.GetPItem())` shape;
 // the temporary is destroyed before the creature call. No engine header; layout local (+0x14 is a long
 // before the pointer), names descriptive.
-struct CThing;
+class CThing;
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void StopSpeaking();                    // 0x00864580
 };
 
@@ -27,12 +27,12 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x0123E7D8
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13

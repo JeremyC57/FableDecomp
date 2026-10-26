@@ -7,9 +7,9 @@
 // +0x98 that Ego_r.pdb lacks (the ctor 0x008367B0 zeroes it). Local model.
 // Shape: the global test first, then the dead bit, through one inline guard (`g && !Dead`);
 // the fallback is `xor al,al`.
-struct CASoundBank;
-struct CSoundInit;
-struct CCharString { void* m_pData; };
+class CASoundBank;
+class CSoundInit;
+class CCharString { public: void* m_pData; };
 
 extern void*         g_pGameState;                       // 0x013B8394
 extern unsigned long g_InvalidSoundHandle;               // 0x0129D25C
@@ -26,7 +26,7 @@ struct CSoundPlayer {                                    // the emitter's sound 
     virtual bool IsSamplePlaying(unsigned long sampleID) const;            // slot 22 (+0x58)
 };
 
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char  _pad00[0x91];
     unsigned char  Dead : 1;                             // +0x91 bit 0 (CThing flags, PDB +0xa1)
     unsigned char  _flags91_1 : 7;

@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CCharStringData { const char* PData; unsigned long StringLength; };
+class CCharStringData { public: const char* PData; unsigned long StringLength; };
 const char g_EmptyString[] = "";
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     unsigned long GetLength() const { if (PStringData == 0) return 0; return PStringData->StringLength; }
     const char* GetText() const { if (PStringData == 0) return g_EmptyString; return PStringData->PData; }

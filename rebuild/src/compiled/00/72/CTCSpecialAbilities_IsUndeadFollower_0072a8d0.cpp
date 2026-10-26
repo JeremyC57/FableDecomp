@@ -11,7 +11,7 @@
 // Shape: as CTCFollowed::IsFollower 0x006D4D70 with the list at +0x14 and the pointer at node+0xc.
 #include "engine/CTCBase.h"
 
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {                 // CIntelligentPointer<CThing>: 8 bytes
     void* m_pItem;
@@ -33,7 +33,7 @@ struct CUndeadFollowerList {                     // retail std::list<CUndeadFoll
     node* head;
 };
 
-struct CTCSpecialAbilities : CTCBase {
+class CTCSpecialAbilities : public CTCBase { public:
     bool                AbilityMutexLock;        // +0x0c
     bool                UsingBed;                // +0x0d
     long                CurrentAbility;          // +0x10 EHeroAbility

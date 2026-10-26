@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour copy of CCreatureAction_DragonTakeOffIntoFlying::Initialise (0x008F3E70): animation name, base init, unliftable,
 // clear the interface-9 byte, make the dragon not solid to the hero (adding the component when missing), destination = pos + (0,0,35.148).
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} };
 struct Solid { int notSolidTo; void AddThingNotSolidTo(int t) { notSolidTo = t; } };
 struct Flags9 { unsigned char byte10; };
 struct Thing {

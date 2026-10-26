@@ -10,11 +10,11 @@
 // out-of-line ShowTrophy constructor (action code 1001); its implicit destructor destroys PEmitter (+0xb5, packed after the
 // PostedDeed byte) and PTrophyBeingShown (+0xa8) through the out-of-line CBaseIntelligentPointer destructor, then the base.
 // Retail layouts are 0xc below Ego_r.pdb (CCreatureActionBase 0xa8): ShowAnimName +0xb8, Trophy +0xbc; modelled locally.
-struct CBaseObject;
-struct CThing;
-struct CCreatureActionBase;
+class CBaseObject;
+class CThing;
+class CCreatureActionBase;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 
@@ -27,11 +27,11 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
 };
 
-struct CThing {
+class CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0 (CThingCreatureBase)
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CBaseIntelligentPointer PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -40,7 +40,7 @@ struct CCreatureActionBase {                // retail sizeof 0xa8
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_ShowTrophy : CCreatureActionBase {   // retail sizeof 0xc0
+class CCreatureAction_ShowTrophy : public CCreatureActionBase { public:   // retail sizeof 0xc0
     CIntelligentPointer PTrophyBeingShown;  // +0xa8
     unsigned long ShowingTrophyDeedHandle;  // +0xb0
     bool PostedDeed;                        // +0xb4
@@ -50,7 +50,7 @@ struct CCreatureAction_ShowTrophy : CCreatureActionBase {   // retail sizeof 0xc
 };
 #pragma pack(pop)
 
-struct CCreatureAction_ShowToSheatheTrophy : CCreatureAction_ShowTrophy {   // vtable 0x0125F9F4
+class CCreatureAction_ShowToSheatheTrophy : public CCreatureAction_ShowTrophy { public:   // vtable 0x0125F9F4
     virtual void v00();
     CCreatureAction_ShowToSheatheTrophy(CThing* creature, CThing* trophy, const CCharString& animName)
         : CCreatureAction_ShowTrophy(creature, trophy, animName, 1001)
@@ -58,12 +58,12 @@ struct CCreatureAction_ShowToSheatheTrophy : CCreatureAction_ShowTrophy {   // v
     }
 };
 
-struct CCreatureAction_UnsheatheItemFromInventory : CCreatureActionBase {
+class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { public:
     unsigned char _pad_a8[0xb8 - 0xa8];     // PUnsheatheItem +0xa8, PFollowUpAction +0xb0
     void FinishAction();                    // 0x0069FC40
 };
 
-struct CCreatureAction_UnsheatheToShowToSheatheTrophy : CCreatureAction_UnsheatheItemFromInventory {
+class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_UnsheatheItemFromInventory { public:
     CCharString ShowAnimName;               // +0xb8
     CIntelligentPointer Trophy;             // +0xbc
     void FinishAction();

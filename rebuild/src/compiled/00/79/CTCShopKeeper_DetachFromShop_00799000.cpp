@@ -11,7 +11,7 @@
 class CThing;
 class CBaseObject;
 class CThingCreatureBase;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -42,18 +42,18 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
-struct CTCShop {
+class CTCShop { public:
     void SetShopKeeper(CThingCreatureBase* shopKeeper); // 0x007751A0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                            // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     bool ToBeRemoved;                                   // +0x08

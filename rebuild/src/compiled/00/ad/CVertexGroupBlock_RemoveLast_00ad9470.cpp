@@ -38,7 +38,7 @@ struct CPtrIterator {
     CPtrIterator operator+(long n) const { CPtrIterator t(p); t.p += n; return t; }
     void*& operator*() const { return *p; }
 };
-struct CVertexGroupBlock {
+class CVertexGroupBlock { public:
     void*            m_pFirst;                 // +0x00
     void**           m_pLast;                  // +0x04 (one past the last 4-byte entry)
     void*            m_pEnd;                   // +0x08

@@ -12,7 +12,7 @@
 // unique. One of 9 bodies.
 #include <new>
 
-struct CRegion {
+class CRegion { public:
     unsigned char _body[0x58];
     CRegion(const CRegion& other);           // 0x0051A900
 };

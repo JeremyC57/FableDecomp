@@ -9,9 +9,9 @@
 //   switch ends in `default: __assume(0)` (bare table jump, case bodies laid out 4,3,2,1,0). The 8-byte frame is the
 //   {vtable, vector*} wrapper shared by the two text arms; the key stays in edi from the CheckCRC push.
 //   The reset calls the vector's out-of-line clear() (thiscall, no arguments).
-struct CDataOutputStream;
-struct CMemoryDataInputStream;
-struct CCrimeWaitingForBribe;
+class CDataOutputStream;
+class CMemoryDataInputStream;
+class CCrimeWaitingForBribe;
 
 template <class T> struct vector {
     T* _M_start;
@@ -25,7 +25,7 @@ template <class T> struct vector {
 void __fastcall GFSerialiseVectorBinaryIn(CMemoryDataInputStream* stream, vector<CCrimeWaitingForBribe>& value);   // 0x007B5370
 void __fastcall GFSerialiseVectorBinaryOut(CDataOutputStream* stream, vector<CCrimeWaitingForBribe>& value);       // 0x007B3B80
 
-struct CPersistContext_TransferableVectorGenericType {
+class CPersistContext_TransferableVectorGenericType { public:
     virtual long GetCount();
 };
 template <class T> struct CPersistContext_TransferableVector : CPersistContext_TransferableVectorGenericType {   // vtable 0x0126D7F8 for T = CCrimeWaitingForBribe
@@ -34,7 +34,7 @@ template <class T> struct CPersistContext_TransferableVector : CPersistContext_T
     virtual long GetCount();
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

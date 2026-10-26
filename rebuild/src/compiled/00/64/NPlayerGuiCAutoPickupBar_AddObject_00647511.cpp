@@ -40,7 +40,7 @@ struct CRetailList_AutoPickup {                             // retail list<CAuto
     void push_back(const CAutoPickup& value);               // 0x00655F62
 };
 
-struct CAutoPickupBar {
+class CAutoPickupBar { public:
     void* __vftable;                                        // +0x00
     CStatBarInfo* m_pInfo;                                  // +0x04
     unsigned char _pad_0x08[0x20];                          // +0x08

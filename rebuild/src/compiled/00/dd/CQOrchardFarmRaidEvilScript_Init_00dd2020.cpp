@@ -9,12 +9,12 @@
 //   +0xD78/+0xD80 (the retail def lacks debug members between).
 // Shape: every string literal is passed straight to a `const CCharString&` parameter (the conversion temporaries are
 //   built right to left, "" first, before any push); the def's cost/reward are read inline in the argument list.
-struct CCharString {
+class CCharString { public:
     void* Data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -320,7 +320,7 @@ struct CGameScriptInterface {
     virtual void v302();
     virtual void AddBoast(const CCharString& description, long boastID, long cost, long reward, bool flag, const CCharString& extra, long extraValue);   // slot 303 (+0x4bc)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad0[0x168];
     long OFEvilNakedBoastCost;   // +0x168
     long OFEvilNakedBoastReward;   // +0x16C
@@ -335,7 +335,7 @@ struct CScriptDef {
     long OFE_NoBanditsDieBoastReward;   // +0xD84
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CScriptBase {                                    // retail 0x40 bytes
+class CScriptBase { public:                                    // retail 0x40 bytes
     unsigned char _body[0x40];
 };
 struct CQ_OrchardFarmRaidEvilScript : CScriptBase {

@@ -1,13 +1,13 @@
 // Behaviour test for 0x00880120 CCombatAction_KickThingOnGround copy constructor: base copy + seven floats.
 #include <cstdio>
 static int g_baseCopies = 0;
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual ~CCombatActionBase() { }
     long m_baseValue;
     CCombatActionBase() : m_baseValue(0) { }
     CCombatActionBase(const CCombatActionBase& other) : m_baseValue(other.m_baseValue) { ++g_baseCopies; }
 };
-struct CCombatAction_KickThingOnGround : CCombatActionBase {
+class CCombatAction_KickThingOnGround : public CCombatActionBase { public:
     float MoveToPos_X, MoveToPos_Y, MoveToPos_Z, Movement_X, Movement_Y, Movement_Z, MaxRunningSpeed;
     CCombatAction_KickThingOnGround() { }
     CCombatAction_KickThingOnGround(const CCombatAction_KickThingOnGround& other)

@@ -2,7 +2,7 @@
 
 int g_someInt = 100;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     char pad[0x48];
     int field48;
 };

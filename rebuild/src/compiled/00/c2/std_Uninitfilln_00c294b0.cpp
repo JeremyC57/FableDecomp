@@ -20,8 +20,8 @@ inline void* __cdecl operator new(unsigned int, void* _Where) throw() { return (
 
 class CHandleBasedMemoryPool {
 public:
-    struct CHeader;
-    struct CHandleInfo {                    // Ego_r.pdb: 4 bytes
+    class CHeader;
+    class CHandleInfo { public:                    // Ego_r.pdb: 4 bytes
         union { CHeader* Header; long NextFreeHandle; };
     };
 };

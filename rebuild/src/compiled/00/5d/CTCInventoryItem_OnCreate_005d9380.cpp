@@ -9,26 +9,26 @@
 // Shape: `GetDef()` is an inline by-value copy of the thing's def pointer (null-tested add-ref into esi, null-tested release).
 #include "engine/CTCInventoryItem.h"
 
-struct CInventoryItemDef;
+class CInventoryItemDef;
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_refCount;                               // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_refCount; }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CInventoryItemDef>& out);   // 0x005BADE1
 };
 
-struct CThing {
+class CThing { public:
     unsigned char              _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;               // +0x70
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }

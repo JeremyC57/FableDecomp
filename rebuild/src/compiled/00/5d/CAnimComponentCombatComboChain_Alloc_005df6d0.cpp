@@ -16,7 +16,7 @@ struct CAnimComponentCombatComboChain_Base {
     CAnimComponentCombatComboChain_Base() : m_count(1) { }
 };
 
-struct CAnimComponentCombatComboChain : CAnimComponentCombatComboChain_Base {
+class CAnimComponentCombatComboChain : public CAnimComponentCombatComboChain_Base { public:
     virtual void v00();
     unsigned char _tail[0x8];
     CAnimComponentCombatComboChain() : CAnimComponentCombatComboChain_Base() { }

@@ -21,7 +21,7 @@ struct CBasicStringChar {
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };

@@ -11,7 +11,7 @@
 #pragma intrinsic(cos)
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
     float Z;    // +0x08
@@ -41,7 +41,7 @@ struct CPhysicsBody {                           // the thing's physics body at +
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6)
     virtual C3DVector GetFacing();              // slot 70 (+0x118)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PhysicsBody;                  // +0x60
 };

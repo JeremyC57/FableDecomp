@@ -50,7 +50,7 @@ struct CThing_Retail {
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing_Retail* GetThing() const;       // slot 11 (+0x2c)
@@ -72,11 +72,11 @@ struct CPlayer_Retail {
 struct CPlayerManager_Retail {
     CPlayer_Retail* GetMainPlayer();               // 0x00449970
 };
-struct CCharString;
+class CCharString;
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CWorld; struct CMainGameComponent; struct CDisplayEngine; struct CThingSearchTools;
+class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
 __forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
     CTCBase_Retail* tc;                            // deliberately unset when the component is absent (retail reads a dead slot)
@@ -99,7 +99,7 @@ template <class T> __forceinline bool GetTCOut(CThing_Retail* thing, long kind, 
     }
     return false;
 }
-struct CCharString {                               // fable_string.h layout: one data-block pointer
+class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -129,7 +129,7 @@ struct CModeScripted : CModeBase {                 // 0x74 bytes
 };
 }
 void* operator new(unsigned int size);             // 0x00BFEA1A
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
     CCountedPointer(T* p);                         // 0x00718A00
@@ -138,7 +138,7 @@ template <class T> struct CCountedPointer {
 struct CTCCreatureModeManager_Retail {
     bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent*         Component;         // +0x08

@@ -8,7 +8,7 @@
 typedef long long __int64;
 #endif
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned int m_position;              // +4
     long StreamSize;                       // +8
@@ -36,14 +36,14 @@ struct CMemoryDataInputStream {
     __forceinline float ReadFloat() { float v; Read(&v, 4); return v; }
 };
 
-struct CComplexNumber {
+class CComplexNumber { public:
     float Real;
     float Imaginary;
     CComplexNumber() { }
     CComplexNumber(float real, float imaginary) : Real(real), Imaginary(imaginary) { }
 };
 
-template <class T> struct CArray {                  // 12-byte retail STLport vector {first, last, end}
+template <class T> class CArray { public:                  // 12-byte retail STLport vector {first, last, end}
     T* m_first; T* m_last; T* m_end;
     unsigned int size() const { return m_last - m_first; }
     T* begin() { return m_first; }
@@ -62,7 +62,7 @@ template <class T> struct CArray {                  // 12-byte retail STLport ve
     void resize(unsigned int newSize) { resize(newSize, T()); }
 };
 
-struct CSpeechFrame {
+class CSpeechFrame { public:
     CArray<CComplexNumber> Frequencies;             // +0x00
     float Amplitude;                                // +0x0c
     float MedianFrequency;                          // +0x10

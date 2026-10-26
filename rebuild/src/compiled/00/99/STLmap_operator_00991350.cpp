@@ -16,11 +16,11 @@
 //   hidden-result push, as retail.
 #include <stddef.h>
 
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned char _pad00[0x14];
     unsigned long PhysicalSortKey;             // +0x14
 };
-struct CThreadedFileObjectDesc {
+class CThreadedFileObjectDesc { public:
     void*         PDst;                        // +0x00
     unsigned long FilePos;                     // +0x04
     unsigned char _pad08[0x10];

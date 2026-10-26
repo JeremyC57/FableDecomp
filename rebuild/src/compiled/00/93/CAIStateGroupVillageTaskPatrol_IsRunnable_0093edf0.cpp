@@ -10,9 +10,9 @@
 // duplicates the epilogue inline); the village interface is kept in edi; the slot-10 call is a
 // side effect guarded by the pointer at +0x18; the final `!= 0` of the long result is the
 // `neg ; sbb ; neg` idiom (int expression converted to the bool return).
-struct CThing;
+class CThing;
 
-struct CTCVillage {
+class CTCVillage { public:
     long HasPatroller(CThing* creature);        // 0x00658E90
 };
 
@@ -25,12 +25,12 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem();                         // 0x00A01B50
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();

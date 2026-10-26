@@ -14,7 +14,7 @@ struct A {
 
 static A g_a;
 
-struct CTCLook {
+class CTCLook { public:
     char pad[0xb0];
     float fB0;
 

@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CSubtitleRenderer {
 public:
     void* __vftable;
     const C2DVector& GetTextOffsetFromEmbeddedTagGraphic(long graphic) const;
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x66C];
     long          ControllerThumbLeftGraphic;
     long          ControllerThumbRightGraphic;

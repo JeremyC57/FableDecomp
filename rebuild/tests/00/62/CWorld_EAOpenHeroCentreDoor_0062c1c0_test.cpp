@@ -7,12 +7,12 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) {}
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
 };
-struct CGameEvent { signed char Player; unsigned char Payload[0x20]; long GetData(CMemoryBuffer& b) const { std::memcpy(b.Data, Payload, 0x20); return 12; } };
+class CGameEvent { public: signed char Player; unsigned char Payload[0x20]; long GetData(CMemoryBuffer& b) const { std::memcpy(b.Data, Payload, 0x20); return 12; } };
 struct CTCInventoryBase { bool InventoryOpen; };
 enum EHeroCentreDoorType { HERO_CENTRE_DOOR_NONE = 0 };
 static int g_door = -1; static int g_calls = 0;
-struct CTCHeroCentre { void OnHeroWalkedThroughDoor(EHeroCentreDoorType d) { g_door = d; ++g_calls; } };
-struct CThing {
+class CTCHeroCentre { public: void OnHeroWalkedThroughDoor(EHeroCentreDoorType d) { g_door = d; ++g_calls; } };
+class CThing { public:
     bool Dead; CTCInventoryBase* Inventory; CTCHeroCentre* Centre;
     template<class T> const T* PeekTC(long) const;
     template<class T> T* PeekTC(long);
@@ -20,10 +20,10 @@ struct CThing {
 template<> const CTCInventoryBase* CThing::PeekTC<CTCInventoryBase>(long t) const { return t == 0x11 ? Inventory : 0; }
 template<> CTCHeroCentre* CThing::PeekTC<CTCHeroCentre>(long t) { return t == 0x6A ? Centre : 0; }
 static CThing* g_door_thing; static long long g_uid_asked;
-struct CThingManager { CThing* GetThingWithUID(long long uid) { g_uid_asked = uid; return uid == 77 ? g_door_thing : 0; } };
+class CThingManager { public: CThing* GetThingWithUID(long long uid) { g_uid_asked = uid; return uid == 77 ? g_door_thing : 0; } };
 static CThingManager g_tm;
-struct CPlayer { CThing* Hero; CThing* GetHeroThing() { return Hero; } };
-struct CWorld {
+class CPlayer { public: CThing* Hero; CThing* GetHeroThing() { return Hero; } };
+class CWorld { public:
     CPlayer* P;
     CThingManager* GetThingManager() { return &g_tm; }
     CPlayer* GetPlayer(long) { return P; }

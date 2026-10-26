@@ -8,7 +8,7 @@
 // Actual header lacks explicit copy/append/Sprintf methods; native string remains one pointer.
 struct BasicString {char*Text;bool operator==(const char*)const;}; //004115A0/PDB0040C910 CBasicString<char>::operator==
 extern const char EmptyString[]; //0122D70E
-struct CCharString {CCharStringData*Data;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);const CCharString&operator+=(const CCharString&);void __cdecl Sprintf(const char*,...);__forceinline bool operator==(const char*t)const{if(!Data)return strcmp("",t)==0;return *reinterpret_cast<const BasicString*>(Data)==t;}}; //Sprintf member __cdecl(PDB00AFB180), not thiscall/free function
+class CCharString { public:CCharStringData*Data;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const char*);const CCharString&operator+=(const CCharString&);void __cdecl Sprintf(const char*,...);__forceinline bool operator==(const char*t)const{if(!Data)return strcmp("",t)==0;return *reinterpret_cast<const BasicString*>(Data)==t;}}; //Sprintf member __cdecl(PDB00AFB180), not thiscall/free function
 struct Objective {unsigned long ID;CCharString Description;bool Completed;};
 struct Allocator {};
 struct ObjectiveVector {ObjectiveVector();Objective*First,*Last,*End;void InsertOverflow(Objective*,const Objective&,const Allocator&,unsigned long,bool); //0047C030 native five-stack-argument vector growth helper
@@ -16,7 +16,7 @@ struct ObjectiveVector {ObjectiveVector();Objective*First,*Last,*End;void Insert
 };
 struct Quest {unsigned long ID;CCharString Description;long Status;ObjectiveVector Objectives;}; //native24 vs donor28 due vector12/16
 struct QuestVector {Quest*First,*Last,*End;};
-struct CHeroLogBook {CHeroLogBook();QuestVector GivenQuests;bool AddObjectiveToQuest(unsigned long,unsigned long,const CCharString&);}; //actual default PDB01ACA8D0; only accessed prefix represented
+class CHeroLogBook { public:CHeroLogBook();QuestVector GivenQuests;bool AddObjectiveToQuest(unsigned long,unsigned long,const CCharString&);}; //actual default PDB01ACA8D0; only accessed prefix represented
 bool CHeroLogBook::AddObjectiveToQuest(unsigned long questID,unsigned long objectiveID,const CCharString& description){
  Objective objective;objective.Completed=false;objective.ID=objectiveID;
  if(!description.Data){if(strcmp("","")==0)goto empty_description;}

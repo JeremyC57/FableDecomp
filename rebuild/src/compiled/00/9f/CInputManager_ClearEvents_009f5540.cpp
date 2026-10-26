@@ -38,7 +38,7 @@ public:
     virtual void ResetState();                     // slot 15 (+0x3c)
     void Clear();                                  // 0x009E42C0
 };
-template <class T> struct CCountedPointer {        // {object, count block}
+template <class T> class CCountedPointer { public:        // {object, count block}
     T*    Data;
     void* m_block;
 };

@@ -1,4 +1,4 @@
-struct CScriptedMapBrush {
+class CScriptedMapBrush { public:
     void* vftable;
 };
 

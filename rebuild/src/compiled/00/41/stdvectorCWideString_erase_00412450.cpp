@@ -18,7 +18,7 @@
 // erase calling it), retail has both expanded. The manifest name
 // Std_Vector_Erase_Range is descriptive; landed callers (CFrontendProfileList::Refresh 0x00495830,
 // CFrontendGameComponent::GetWorldNames 0x00495890) already call this as vector<CWideString>::erase.
-struct CWideStringData;
+class CWideStringData;
 
 class CWideString {
 public:

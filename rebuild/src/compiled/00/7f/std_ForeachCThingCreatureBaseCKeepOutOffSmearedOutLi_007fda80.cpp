@@ -12,7 +12,7 @@
 //   explicit instantiation (the landed 0x007F7B70 pattern); the functor's implicit copy writes the three words out. The
 //   functor needs its user constructor (FableWin.pdb has it): a POD result type moves the hidden result pointer from ecx
 //   to the stack (first/last then arrive in ecx/edx).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CThing { };
 class CThingCreatureBase : public CThing { };

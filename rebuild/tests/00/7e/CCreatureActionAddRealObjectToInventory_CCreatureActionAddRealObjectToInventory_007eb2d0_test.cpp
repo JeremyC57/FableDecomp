@@ -5,15 +5,15 @@
 #else
 #define FASTCALL
 #endif
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CAnimationEntry { int id; };
-struct CBaseObject { int id; };
-struct CCharString {
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CAnimationEntry { public: int id; };
+class CBaseObject { public: int id; };
+class CCharString { public:
     const char* m_text;
     CCharString(const char* text, long length = -1) : m_text(text) { (void)length; }
 };
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 static CAnimationEntry g_anim;
 static const char* g_lookedUpName = 0;
 static CThingCreatureBase* g_lookedUpOwner = 0;
@@ -34,7 +34,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 };
 struct SBaseArgs { CThingCreatureBase* owner; float a; float b; CAnimationEntry* anim; long first; long last; long c; long d; };
 static SBaseArgs g_base;
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { }
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d)
     {
@@ -42,7 +42,7 @@ struct CCreatureActionBase {
         g_base.first = sound.FirstSound; g_base.last = sound.LastSound; g_base.c = c; g_base.d = d;
     }
 };
-struct CCreatureAction_AddRealObjectToInventory : CCreatureActionBase {
+class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { public:
     CIntelligentPointer PObject;
     CCreatureAction_AddRealObjectToInventory(CThingCreatureBase* owner, CThing* object);
 };

@@ -11,7 +11,7 @@
 // Model of CTCEntityEvents::RemoveEvent(CEventBase&) @ 0x008112D0: erase the first list entry that points at the event
 // (releasing the list's reference); an event that is not queued leaves the list alone.
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

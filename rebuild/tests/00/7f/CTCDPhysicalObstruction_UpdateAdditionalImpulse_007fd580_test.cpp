@@ -5,13 +5,13 @@
 #include <cstdlib>
 static int g_frees = 0; static bool g_armed = false;
 static void SpyFree(void* p) { if (g_armed) ++g_frees; }   // records only, never frees
-struct C3DVector { float X, Y, Z; };
-struct C2DBoxI { long X0, Y0, X1, Y1; C2DBoxI() { } };
+class C3DVector { public: float X, Y, Z; };
+class C2DBoxI { public: long X0, Y0, X1, Y1; C2DBoxI() { } };
 static const C3DVector* g_areaStart = 0; static float g_areaRadius = 0;
 C2DBoxI GetLineThingSearchArea(const C3DVector& start, const C3DVector& end, float radius)
 { g_areaStart = &start; g_areaRadius = radius; C2DBoxI b; b.X0 = 1; b.Y0 = 2; b.X1 = 3; b.Y1 = 4; return b; }
-struct CThing;
-struct CThingCreatureBase { int id; };
+class CThing;
+class CThingCreatureBase { public: int id; };
 struct CIntelligentPointer { void* vptr; CThing* item; };
 template <class T> struct CRetailVector {
     T* _M_start;
@@ -22,12 +22,12 @@ template <class T> struct CRetailVector {
     T* begin() const { return _M_start; }
     T* end() const { return _M_finish; }
 };
-struct CThingFilter_IsNotList {
+class CThingFilter_IsNotList { public:
     const CRetailVector<const CThing*>*        PNotList;
     const CRetailVector<CIntelligentPointer>*  PNotList2;
     CThingFilter_IsNotList(const CRetailVector<CIntelligentPointer>& list) : PNotList(0), PNotList2(&list) { }
 };
-struct CThingFilter_IsWithinArea {
+class CThingFilter_IsWithinArea { public:
     const C3DVector* StartPos;
     const C3DVector* EndPos;
     float            Radius;
@@ -39,7 +39,7 @@ struct CThingFilter_IsAffectedByObstructions {
     unsigned char _empty;
     CThingFilter_IsAffectedByObstructions() : _empty(0) { }
 };
-template <class F1, class F2, class F3> struct CFilter_Bind3 {
+template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1* f1;
     const F2* f2;
     const F3* f3;
@@ -49,7 +49,7 @@ typedef CFilter_Bind3<CThingFilter_IsNotList, CThingFilter_IsWithinArea, CThingF
 static CThingCreatureBase* g_found[2];
 static bool g_filterOk = false; static long g_boxX1 = 0;
 static const void* g_expectIgnore = 0; static const C3DVector* g_expectStart = 0;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class T, class TVector, class TFilter>
     void GetAllThingsInRoughArea(const C2DBoxI& area, const TFilter& filter, TVector& things)
     {
@@ -61,7 +61,7 @@ struct CThingSearchTools {
 };
 static CThingSearchTools g_tools;
 static int g_applied = 0; static CThingCreatureBase* g_last = 0; static const C3DVector* g_fStart = 0; static float g_fRadius = 0;
-struct CKeepOutOffSmearedOutLine {
+class CKeepOutOffSmearedOutLine { public:
     const C3DVector* StartPos;
     const C3DVector* EndPos;
     float            Radius;
@@ -74,7 +74,7 @@ CKeepOutOffSmearedOutLine ForEach(CThingCreatureBase** first, CThingCreatureBase
         f(*first);
     return f;
 }
-struct CTCDPhysicalObstruction {
+class CTCDPhysicalObstruction { public:
     virtual void v00() { }
     CThing* ParentThing;
     C3DVector StartPos;

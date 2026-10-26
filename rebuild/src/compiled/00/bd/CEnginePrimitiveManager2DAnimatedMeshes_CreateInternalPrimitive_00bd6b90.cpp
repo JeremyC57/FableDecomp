@@ -14,20 +14,20 @@
 // +0x124 = -1), then the 2D part: bounding sphere +0x140; sizes 0x150 / 0x188 (PDB 0x154 / 0x19c: retail is narrower).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x44];                    // +0x04 .. +0x48
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-template <class T> struct CIVCountedPointer {     // intrusive counted pointer (one word)
+template <class T> class CIVCountedPointer { public:     // intrusive counted pointer (one word)
     T* m_p;
     __forceinline CIVCountedPointer() : m_p(0) { }
 };
-struct CEnginePrimitiveSimulationInfo;
-struct CEngineMeshEffect;
+class CEnginePrimitiveSimulationInfo;
+class CEngineMeshEffect;
 
-struct CEnginePrimitiveThemeChannelDesc {          // three flag bytes
+class CEnginePrimitiveThemeChannelDesc { public:          // three flag bytes
     bool m_a, m_b, m_c;
     __forceinline CEnginePrimitiveThemeChannelDesc() : m_a(false), m_b(false), m_c(false) { }
 };
@@ -49,27 +49,27 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
 
-struct C3DAnimationBlendState : CBase {            // vtable 0x01239838, 8 bytes
-    struct CSharedData;
+class C3DAnimationBlendState : public CBase { public:            // vtable 0x01239838, 8 bytes
+    class CSharedData;
     CIVCountedPointer<CSharedData> Data;           // +0x04
     virtual ~C3DAnimationBlendState();
 };
 
-struct C3DAnimationInterpolator : CBase {          // vtable 0x01239840, 0x14 bytes
+class C3DAnimationInterpolator : public CBase { public:          // vtable 0x01239840, 0x14 bytes
     C3DAnimationBlendState StartState;             // +0x04
     C3DAnimationBlendState EndState;               // +0x0C
     virtual ~C3DAnimationInterpolator();
 };
 
-struct C3DVector { float X, Y, Z; };
-struct C3DPositionInterpolator : CBase {           // vtable 0x0123981C, 0x1c bytes
+class C3DVector { public: float X, Y, Z; };
+class C3DPositionInterpolator : public CBase { public:           // vtable 0x0123981C, 0x1c bytes
     C3DVector StartPosition;                       // +0x04
     C3DVector EndPosition;                         // +0x10
     virtual ~C3DPositionInterpolator();
 };
 
-struct CRightHandedSet { float m[6]; };
-struct C3DOrientationInterpolator : CBase {        // vtable 0x01239824, 0x34 bytes
+class CRightHandedSet { public: float m[6]; };
+class C3DOrientationInterpolator : public CBase { public:        // vtable 0x01239824, 0x34 bytes
     CRightHandedSet StartOrientation;              // +0x04
     CRightHandedSet EndOrientation;                // +0x1C
     virtual ~C3DOrientationInterpolator();
@@ -91,14 +91,14 @@ struct CRetailMap {                                // STLport map: header node p
     }
 };
 
-struct CEngineRenderInfoAnimatedMesh {             // +0xe0 in the mesh; only two words initialised
+class CEngineRenderInfoAnimatedMesh { public:             // +0xe0 in the mesh; only two words initialised
     unsigned char _pad00[0x40];
     long          m_count;                         // +0x40 (+0x120)
     long          m_index;                         // +0x44 (+0x124)
     __forceinline CEngineRenderInfoAnimatedMesh() : m_count(0), m_index(-1) { }
 };
 
-struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {   // vtable 0x012A79B4
+class CEngineInternalPrimitiveAnimatedMesh : public CEngineInternalPrimitiveMeshBase { public:   // vtable 0x012A79B4
     C3DAnimationInterpolator      Anim;            // +0x70
     C3DPositionInterpolator       WorldPos;        // +0x84
     C3DOrientationInterpolator    Orientation;     // +0xA0
@@ -109,12 +109,12 @@ struct CEngineInternalPrimitiveAnimatedMesh : CEngineInternalPrimitiveMeshBase {
         : CEngineInternalPrimitiveMeshBase(type, flags) { }
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     long m_centreX, m_centreY, m_centreZ, m_radius;
     __forceinline C3DBoundingSphere() : m_centreX(0), m_centreY(0), m_centreZ(0), m_radius(0) { }
 };
 
-struct CEngineInternalPrimitive2DAnimatedMesh : CEngineInternalPrimitiveAnimatedMesh {   // vtable 0x012A7A44, 0x150 bytes
+class CEngineInternalPrimitive2DAnimatedMesh : public CEngineInternalPrimitiveAnimatedMesh { public:   // vtable 0x012A7A44, 0x150 bytes
     unsigned char     _pad128[0x18];
     C3DBoundingSphere ObjectBoundingSphere;        // +0x140
     virtual void v00();
@@ -122,7 +122,7 @@ struct CEngineInternalPrimitive2DAnimatedMesh : CEngineInternalPrimitiveAnimated
         : CEngineInternalPrimitiveAnimatedMesh(type, 0x80000000) { }
 };
 
-struct CEngineInternalPrimitiveMorphInfo {
+class CEngineInternalPrimitiveMorphInfo { public:
     unsigned char _body[0x38];
     CEngineInternalPrimitiveMorphInfo();           // 0x00BAA250
 };
@@ -133,7 +133,7 @@ struct CEngineInternalPrimitive2DMorphedAnimatedMesh : CEngineInternalPrimitive2
     __forceinline CEngineInternalPrimitive2DMorphedAnimatedMesh() : CEngineInternalPrimitive2DAnimatedMesh(0x26) { }
 };
 
-struct CEnginePrimitiveManager2DAnimatedMeshes {
+class CEnginePrimitiveManager2DAnimatedMeshes { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

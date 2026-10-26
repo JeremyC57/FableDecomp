@@ -11,12 +11,12 @@
 //   release with its DeleteFunc block and the two zero stores) and frees the node.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct CCPPointerInfo {                                  // RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void ReleaseInfo()
@@ -32,17 +32,17 @@ template <class T> struct CCountedPointer {
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
     T* operator->() const { return Data; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-struct C2DBoxI {
+class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
 };
-struct CNavQuadTree {
+class CNavQuadTree { public:
     void OnNavMapUnload(long index);                     // 0x00A79290
 };
-struct CNavQuadTreeMap {
+class CNavQuadTreeMap { public:
     CCountedPointer<CNavQuadTree> PQuadTree;             // +0x00
     long                          Index;                 // +0x08
     C2DBoxI                       MapArea;               // +0x0c
@@ -83,13 +83,13 @@ template <class T> struct list {                         // STLport list over th
     }
 };
 }
-struct CNavigatorBase {
+class CNavigatorBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual void OnNavigationMapRemoved();               // slot 18 (+0x48)
 };
-struct CNavigatorManager {
+class CNavigatorManager { public:
     void*                            __vftable;          // +0x00
     unsigned char                    _pad04[0x14];
     std::list<CNavigatorBase*>       Navigators;         // +0x18

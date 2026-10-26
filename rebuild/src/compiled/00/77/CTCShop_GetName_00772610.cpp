@@ -9,23 +9,23 @@
 // Shape: both defs live in null-tested CDefPointer locals whose destructors release them (`if (Object) Object->ReleaseReference()`); the found
 // path returns `shopDef->Name` directly, so its null test on the sub-def is dropped after the dereference while the not-found path keeps it.
 // a null test, the miss arm with one; the thing def with a null test on both arms).
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                         // slot 0
     virtual void Delete();                          // slot 1 (+0x04)
     long m_refCount;                                // +0x04
     void ReleaseReference() { if (--m_refCount == 0) Delete(); }
 };
-struct CShopDef : CDefPointeeBase {
+class CShopDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     long Name;                                      // +0x28
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object) Object->ReleaseReference(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CShopDef>* out);     // 0x005130A0 (CDefPointer<const CShopDef>*)
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -41,7 +41,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
     return true;
 }
 #pragma auto_inline(on)
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CDefClassBase>* out);   // 0x0042AF3C (CDefPointer<const CThingDef>*)
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -57,11 +57,11 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CDe
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x8c];
     unsigned short DefIndex;                        // +0x8c
 };
-struct CTCShop {
+class CTCShop { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     bool    ToBeRemoved;                            // +0x08

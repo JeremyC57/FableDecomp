@@ -1,7 +1,7 @@
 #include <cstdio>
 struct SHandle_00b32f20 { long m_id; long m_tag; }; static long g_a = 0, g_k = 0;
 struct CEnginePrimitiveManagerStaticMeshesBase { SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k) { g_a = a; g_k = k; SHandle_00b32f20 r = { a + b + matrix + d + e + f + g + h + i + j + k, k }; return r; } };
-struct CEnginePrimitiveRenderer { unsigned char _pad[0x280]; CEnginePrimitiveManagerStaticMeshesBase* m_pStaticMeshes;
+class CEnginePrimitiveRenderer { public: unsigned char _pad[0x280]; CEnginePrimitiveManagerStaticMeshesBase* m_pStaticMeshes;
     SHandle_00b32f20 AddStaticMesh(long a, long b, long matrix, long d, long e, long f, long g, long h, long i, long j, long k) { return m_pStaticMeshes->AddStaticMesh(a, b, matrix, d, e, f, g, h, i, j, k); } };
 int main() {
     CEnginePrimitiveRenderer* r = (CEnginePrimitiveRenderer*)new char[sizeof(CEnginePrimitiveRenderer)]; CEnginePrimitiveManagerStaticMeshesBase mgr; r->m_pStaticMeshes = &mgr;

@@ -19,7 +19,7 @@ struct CBase {
     CBase();                                    // 0x0099A2F0
 };
 
-struct CAFile : CBase {
+class CAFile : public CBase { public:
 };
 
 struct CByteArray {                             // retail CArray<unsigned char>: {first, last} + capacity
@@ -30,7 +30,7 @@ struct CByteArray {                             // retail CArray<unsigned char>:
 
 typedef unsigned short wchar_t;
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pString;
     CWideString();                              // 0x0099AED0
 };
@@ -41,7 +41,7 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-struct CCachedFile : CAFile {
+class CCachedFile : public CAFile { public:
     virtual CAFile* Clone() const;              // own vtable (0x012724D4)
     long            Position;                   // +0x04
     long            BufferStartPosition;        // +0x08

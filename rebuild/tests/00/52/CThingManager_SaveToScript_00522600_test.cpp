@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing {
+class CThing { public:
     short CurrentMapNumber; bool ForceNo; bool Serialise;
     bool IsForceNoSerialise() { return ForceNo; }
     bool IsToBeSerialised() { return Serialise; }
@@ -16,7 +16,7 @@ struct CThingVector {
 };
 static char g_script[64];
 static CThing* g_saved[8]; static int g_savedCount; static long g_mode;
-struct CThingManager {
+class CThingManager { public:
     SThingListNode* Things; long SerialiseVersionNumber;
     void SaveThingList(char* script, long mode, CThingVector& things, void*)
     {

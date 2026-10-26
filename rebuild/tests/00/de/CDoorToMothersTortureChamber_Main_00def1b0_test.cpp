@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CScriptThing { long m_thingId; };
+class CScriptThing { public: long m_thingId; };
 static int g_ticks = 0, g_opened = 0; static CScriptThing* g_door = 0; static int g_abortAt = -1, g_aborts = 0;
 struct CQ_SecretPassageScript { unsigned char _pad[0x4b]; bool m_doorReleased; };
 static CQ_SecretPassageScript* g_script;

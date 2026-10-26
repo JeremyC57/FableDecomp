@@ -1,5 +1,5 @@
 // CMemoryAllocator::ClearPerformanceStats @ 009f26b0
-struct CMemoryAllocator;
+class CMemoryAllocator;
 
 // stdcall so the callee cleans up its own 4-byte arg (no "add esp,4" after call).
 typedef void (__stdcall *ClearFn)(void*);

@@ -10,9 +10,9 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: the box corners are divided by Granularity (+0x50) with signed idiv; every bound is re-divided after each
 // 16-bit store (the store may alias the members), the row pointer is formed per row from the pitch and grid start.
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
-struct CWorldMap {
+class CWorldMap { public:
     unsigned char   _pad[0x50];
     long            Granularity;                // +0x50 (PDB +0x60)
     long            GranularityShift;           // +0x54

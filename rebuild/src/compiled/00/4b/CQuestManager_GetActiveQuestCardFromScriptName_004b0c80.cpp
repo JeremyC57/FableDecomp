@@ -9,12 +9,12 @@
 // IsAnyQuestActive 0x004B1080): VC7.1 loads that local's word once before the loop; `this` is parked in the frame word.
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 
-struct CCharStringData {                                 // the shared string block
+class CCharStringData { public:                                 // the shared string block
     const char*   Data;                                  // +0x00
     unsigned long Length;                                // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570 (strcmp-style, landed)
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator==(const CCharString& other) const
     {
@@ -28,7 +28,7 @@ struct CCharString {
     }
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     Type;
     CTCBase* TC;
@@ -47,7 +47,7 @@ struct CTCMap {                                          // CThing::Components: 
     }
 };
 
-struct CThing {                                          // retail CThing (local model: engine/CThing.h is the quarantined donor)
+class CThing { public:                                          // retail CThing (local model: engine/CThing.h is the quarantined donor)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
     unsigned char _pad40[4];
@@ -57,7 +57,7 @@ struct CThing {                                          // retail CThing (local
     void Kill(bool immediately);                         // 0x004C9B80
 };
 
-struct CTCQuestCard;                                     // TC type 0x6c
+class CTCQuestCard;                                     // TC type 0x6c
 __forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup: unset when the thing has no quest card TC
 {
     CTCQuestCard* tc;
@@ -87,17 +87,17 @@ inline void EraseNode(CCardNode* node)                   // STLport list::erase(
     free(node);
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                             // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
-struct CTCQuestCard {
+class CTCQuestCard { public:
     unsigned char _pad00[0x28];
     CCharString   ScriptQuestName;                       // +0x28 (PDB name)
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad00[0x5c];
     CCardNode*    ActiveQuestCards;                      // +0x5c list<CIntelligentPointer<CThing>> (head node)
     CCardNode*    CompletedQuestCards;                   // +0x60

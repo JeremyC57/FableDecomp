@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct CPatchTesselationEdgeStrip;
+class CPatchTesselationEdgeStrip;
 void __fastcall CPatchTesselationEdgeStrip_dtor(CPatchTesselationEdgeStrip* thisptr);
 
 static int g_freed = 0;
@@ -9,7 +9,7 @@ static int g_freed = 0;
 static int g_armed = 0;   // armed only around the call under test (CRT start-up/exit frees are ignored)
 extern "C" void __cdecl free(void* p_) { void* p = (void*)p_; if (!g_armed) return; if (p) ++g_freed; }
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     char pad00[0x3c];
     void* p3c;
     char pad40[0x48 - 0x40];

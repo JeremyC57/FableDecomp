@@ -5,7 +5,7 @@
 #include <cstdio>
 
 struct CMeshInfo { long Index; float SizeX; unsigned char PrimaryMesh : 1; };
-struct CSortPrimaryMeshesFirst {
+class CSortPrimaryMeshesFirst { public:
     void* m_context;
     bool operator()(const CMeshInfo& a, const CMeshInfo& b) const { return a.PrimaryMesh; }
 };

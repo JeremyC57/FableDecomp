@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct COpinionTransientOffset { int Opinion; float RunIn; int FramesIn; int Peak; float RunOut; int FramesOut; };
+class COpinionTransientOffset { public: int Opinion; float RunIn; int FramesIn; int Peak; float RunOut; int FramesOut; };
 struct NodeBase { NodeBase* next; NodeBase* prev; };
 struct Node : NodeBase { COpinionTransientOffset data; };
 struct List {

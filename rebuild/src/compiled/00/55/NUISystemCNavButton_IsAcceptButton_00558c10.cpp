@@ -3,7 +3,7 @@
 // Leaf: IsAcceptButton
 // Shape: `this` in edi, the walker in esi, two parent calls per step (test, then advance), `ret`.
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -148,7 +148,7 @@ struct CComponent {
     virtual void v141();
     virtual CComponent* GetAcceptButton();         // slot 142 (+0x238)
 };
-struct CNavButton : CComponent {
+class CNavButton : public CComponent { public:
     bool IsAcceptButton();
 };
 }

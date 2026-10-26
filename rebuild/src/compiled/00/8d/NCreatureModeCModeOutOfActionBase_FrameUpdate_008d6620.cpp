@@ -6,7 +6,7 @@
 // Callees: CTCCreatureModeManager::CModeBase::FrameUpdate @ 0x0073AC50 (qualified base call), virtual slot 15 (+0x3c,
 // pure in this base) as the tail jump.
 // Shape: the counter is read, tested, decremented and stored back; the flag byte is tested before the counter is re-read.
-struct CThingCreatureBase {                        // the creature this mode runs on (ParentThing at +0x04 of every mode)
+class CThingCreatureBase { public:                        // the creature this mode runs on (ParentThing at +0x04 of every mode)
     long  GetOutOfActionRecoveryFrames();          // 0x00662020: def +0xfc through the creature def at +0xe0 (label "Getter_FieldE0_FC")
     float GetStunnedTimeSeconds();                 // 0x00662040: random seconds between def +0x70 and +0x74 (label "GetDazedTimeSeconds", propagated)
     float GetDazedTimeSeconds();                   // 0x006620A0: random seconds between def +0x7c and +0x80

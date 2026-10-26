@@ -13,7 +13,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -24,13 +24,13 @@ struct C3DVector {
     __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
 };
 
-struct CPhysicsCollideResponse {
+class CPhysicsCollideResponse { public:
     C3DVector CollidePos;       // +0x00
     C3DVector CollideNormal;    // +0x0c
     float     Friction;         // +0x18
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void*     __vftable;                       // +0x00
     void*     m_tcBase[2];                     // +0x04 CTCBase body
     C3DVector Position;                        // +0x0c

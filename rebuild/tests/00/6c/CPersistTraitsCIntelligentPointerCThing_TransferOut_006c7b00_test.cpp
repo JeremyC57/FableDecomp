@@ -1,10 +1,10 @@
 // Behaviour test for 006c7b00 CPersistTraits<CIntelligentPointer<CThing> >::TransferOut (copy of the model; the
 // string is a tiny recorder of the appended 64-bit values).
 #include <cstdio>
-struct CPersistContext { int id; };
+class CPersistContext { public: int id; };
 static unsigned long long g_appended[4];
 static int g_n = 0, g_live = 0;
-struct CCharString {
+class CCharString { public:
     unsigned long long v;
     explicit CCharString(unsigned long long value) : v(value) { ++g_live; }
     ~CCharString() { --g_live; }
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) {}
     CThing* GetPItem() const { ++g_gets; return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() {} };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() {} };
 template <class T> struct CPersistTraits {
     T DefaultVal;
     void TransferOut(CPersistContext& context, CCharString& out, T& value);

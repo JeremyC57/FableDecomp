@@ -6,18 +6,18 @@
 // Layout: Ego_r.pdb CPatchTesselationEdgeStrip (0x2c bytes, vtable 0x012A8318; same model as the landed Reset 0x00BFC3B0).
 // Shape: the stream kept in edi; the words are zero-extended with `xor eax,eax ; mov ax,[esi+4]`, the bool with
 // `xor edx,edx ; mov dl,[esi+29h]`; each SaveVerts is a __fastcall member on the strip taking (array*, stream); `ret 4`.
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteBool(bool value);                    // 0x00993E30
     void WriteUShort(unsigned short value);        // 0x00993E80
 };
 
 template <class T>
-struct CEdgeStipVertexArray {
+class CEdgeStipVertexArray { public:
     T*   Data;                                     // +0x00
     long Count;                                    // +0x04
 };
 
-struct CPatchTesselationEdgeStrip {                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
+class CPatchTesselationEdgeStrip { public:                // vtable 0x012A8318 (CBase-derived), 0x2c bytes
     struct CVertex;
     struct CFanBaseVertex;
     struct CWaterVertex;

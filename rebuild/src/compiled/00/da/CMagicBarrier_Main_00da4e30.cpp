@@ -24,14 +24,14 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
@@ -45,7 +45,7 @@ struct CScriptThingImp {
     virtual bool IsAlive() const;                        // slot 75 (+0x12c)
 };
 extern const C3DVector g_ZeroPos;                        // 0x0143E8E0
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -81,11 +81,11 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
@@ -98,7 +98,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     VPAD64(t11_0)                                                                                        // slots 11..74
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
 };
-struct CGameScriptInterface {                              // vtable 0x01260F0C
+class CGameScriptInterface { public:                              // vtable 0x01260F0C
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
     virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
     VPAD64(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3)                            // slots 8..99
@@ -111,8 +111,8 @@ struct CGameScriptInterface {                              // vtable 0x01260F0C
     virtual void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool b) const;   // slot 474 (+0x768)
 };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
-struct CIsThingAlive : CPredicateBase {                // vtable 0x012C32F0
+class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
+class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
     CScriptThing Thing;                                // +0x04 (copied inline, destroyed out of line)
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;

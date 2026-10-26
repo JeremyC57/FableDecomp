@@ -9,18 +9,18 @@
 //   operator delete @ 0x00BFE9BC; CGameScriptInterface slots 7 NewScriptFrame, 100 CreateEffect (+0x190).
 // Layout: the entity-script base {vptr, Game +4, Me +8}; the quest object at +0x18 with the freed-soul count at +0x6c. CScriptThing /
 //   CCountedPointer as the landed CLadyGreyWifeManagerScript::Init 0x00CF8970.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580
@@ -37,13 +37,13 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CBaseClass {
+class C3DVector { public: float X, Y, Z; };
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04 Data, +0x08 Info
     __forceinline ~CScriptThing() {}                     // out of line 0x004AA840
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
@@ -60,7 +60,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual void v67() const; virtual void v68() const; virtual void v69() const; virtual void v70() const; virtual void v71() const; virtual void v72() const; virtual void v73() const; virtual void v74() const;
     virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;

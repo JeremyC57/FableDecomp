@@ -7,7 +7,7 @@
 // Shape: the same body as CAnimationEntry::GetTimeToBlendIn @ 0x005DC230 with the member TransitionTime in
 // place of the component lookup: it is read into esi and spilled to the one frame slot (`push ecx`) because
 // `fimul dword ptr [esp+4]` wants the integer in memory; `(long)(scale * time)` goes through __ftol2.
-struct CThing {
+class CThing { public:
     bool IsAffectedByBulletTime();              // 0x004C9920
 };
 
@@ -22,7 +22,7 @@ struct CBulletTime {
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 
-struct CGame {
+class CGame { public:
     unsigned char _pad[0x68];
     CBulletTime* m_pBulletTime;                 // +0x68
 };

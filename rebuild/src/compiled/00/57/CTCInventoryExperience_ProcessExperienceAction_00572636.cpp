@@ -14,7 +14,7 @@ struct CCategory {
     long GetCategoryIdentifier();       // 0x005BD1B3
 };
 
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     unsigned char _pad_000[0x1BC];
     long statIndicatorPos;              // +0x1BC
     CCategory* GetSelectedCategory();   // 0x005BCACE (CTCInventoryBase)

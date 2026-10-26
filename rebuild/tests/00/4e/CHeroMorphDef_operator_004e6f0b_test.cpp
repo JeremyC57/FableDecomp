@@ -1,17 +1,17 @@
 // behaviour test for CHeroMorphDef::operator= (0x004E6F0B): every member copied, base assignment called, *this returned
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
-struct CDefClassBase { unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
+class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
 
 struct CKeyPairCompareLess {};
 struct CTextureMorphEntryVector { void* m_first; void* m_last; void* m_end; CTextureMorphEntryVector& operator=(const CTextureMorphEntryVector& o) { ++g_ops; m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; return *this; } };
 struct CSkeletalMorphEntryVector { void* m_first; void* m_last; void* m_end; CSkeletalMorphEntryVector& operator=(const CSkeletalMorphEntryVector& o) { ++g_ops; m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; return *this; } };
 struct CParticleMorphEntryVector { void* m_first; void* m_last; void* m_end; CParticleMorphEntryVector& operator=(const CParticleMorphEntryVector& o) { ++g_ops; m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; return *this; } };
-template<class V> struct CVectorMap { V m_vector; CKeyPairCompareLess m_compare; bool m_sorted; };
-struct CTextureMorphs { CVectorMap<CTextureMorphEntryVector> Morphs; };
-struct CSkeletalMorphs { CVectorMap<CSkeletalMorphEntryVector> Morphs; };
-struct CParticleMorphs { CVectorMap<CParticleMorphEntryVector> Morphs; };
-struct CHeroMorphDef : CDefClassBase {
+template<class V> class CVectorMap { public: V m_vector; CKeyPairCompareLess m_compare; bool m_sorted; };
+class CTextureMorphs { public: CVectorMap<CTextureMorphEntryVector> Morphs; };
+class CSkeletalMorphs { public: CVectorMap<CSkeletalMorphEntryVector> Morphs; };
+class CParticleMorphs { public: CVectorMap<CParticleMorphEntryVector> Morphs; };
+class CHeroMorphDef : public CDefClassBase { public:
     CTextureMorphs TextureMorphs;
     CSkeletalMorphs SkeletalMorphs;
     CParticleMorphs ParticleMorphs;

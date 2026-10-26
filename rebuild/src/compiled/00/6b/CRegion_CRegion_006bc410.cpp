@@ -17,7 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 class CCharString {
 public:
     CCharString();                          // 0x0099E4B0
-    struct CCharStringData* PStringData;
+    class CCharStringData* PStringData;
 };
 
 template <class T>
@@ -35,11 +35,11 @@ struct CRetailVector {                      // STLport vector (_Vector_base): 12
 };
 
 struct CDefPointerRegionDef {               // CDefPointer<const CRegionDef>: one pointer
-    struct CRegionDef* Object;
+    class CRegionDef* Object;
     CDefPointerRegionDef() : Object(0) {}
 };
 
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -62,7 +62,7 @@ struct CExitTextOffsetMap {                 // STLport map<CCharString, C2DVecto
     }
 };
 
-struct CRegion {
+class CRegion { public:
     CRetailVector<long>  Maps;                          // +0x00
     CRetailVector<long>  VisMaps;                       // +0x0c
     CCharString          Name;                          // +0x18

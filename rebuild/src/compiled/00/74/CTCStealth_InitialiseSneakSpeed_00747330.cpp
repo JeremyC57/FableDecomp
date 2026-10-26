@@ -14,11 +14,11 @@
 //   constructor assigns the group and its CRC from the argument; the base's inline virtual destructor gives the
 //   implicit filter destructor its 0x0122FFCC vtable restore); the scaled length and the duration are float locals
 //   compared with `> 0.0f`.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                              // +0
     unsigned long m_length;                             // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -28,10 +28,10 @@ struct CCharString {
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
-struct CAnimFilterBase {                                // vtable 0x0122FFCC
+class CAnimFilterBase { public:                                // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() {}
 };
-struct CAnimFilterOfGroup : CAnimFilterBase {           // vtable 0x01267568
+class CAnimFilterOfGroup : public CAnimFilterBase { public:           // vtable 0x01267568
     CCharString   Group;                                // +4
     unsigned long GroupCRC;                             // +8
     CAnimFilterOfGroup(const CCharString& group)
@@ -41,7 +41,7 @@ struct CAnimFilterOfGroup : CAnimFilterBase {           // vtable 0x01267568
         GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
     }
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimID;                                        // +0
 };
 struct CTCGraphicAppearance {
@@ -56,7 +56,7 @@ public:
     float GetAnimDuration(long anim);                   // 0x006627F0
 };
 extern long g_framesPerSecond;                          // 0x01375550
-struct CTCStealth {
+class CTCStealth { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
     unsigned char _pad08[0x18 - 0x08];

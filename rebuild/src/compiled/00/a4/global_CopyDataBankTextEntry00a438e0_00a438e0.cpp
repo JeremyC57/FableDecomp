@@ -11,7 +11,7 @@
 //   slot 1 when the count reaches zero and clear the slot; adopt + add a reference) and then the plain words.
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CIVCountedPointeeBase {                  // intrusive pointee: vtable +0 (slot 1 deletes), reference count +4
+class CIVCountedPointeeBase { public:                  // intrusive pointee: vtable +0 (slot 1 deletes), reference count +4
     virtual void Destroy(int flags);            // slot 0
     virtual void Delete();                      // slot 1 (+0x04)
     unsigned long IVRefCount;                   // +0x04
@@ -23,7 +23,7 @@ struct CIVCountedPointeeBase {                  // intrusive pointee: vtable +0 
 };
 
 template <class T>
-struct CIVCountedPointer {                      // 4 bytes; operator= as the landed 0x00A43720 / 0x0083CE60
+class CIVCountedPointer { public:                      // 4 bytes; operator= as the landed 0x00A43720 / 0x0083CE60
     CIVCountedPointeeBase* Object;              // +0x00
     CIVCountedPointer& operator=(const CIVCountedPointer& other)
     {
@@ -42,8 +42,8 @@ struct CIVCountedPointer {                      // 4 bytes; operator= as the lan
 };
 
 namespace NGameText {
-struct CTextEntry;
-struct CDataBankTextEntry {                     // Ego_r.pdb, 8 bytes
+class CTextEntry;
+class CDataBankTextEntry { public:                     // Ego_r.pdb, 8 bytes
     CIVCountedPointer<CTextEntry> PText;        // +0x00
     long                          NarratorIndex;// +0x04
 };

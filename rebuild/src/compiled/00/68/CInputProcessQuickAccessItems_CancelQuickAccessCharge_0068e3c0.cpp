@@ -11,7 +11,7 @@
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -22,12 +22,12 @@ struct CGameEvent : CMemoryBuffer {
     void AddLong(long value) { Copy(sizeof(value), &value); }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_QuickAccessChargeSlot;               // 0x0137EE78
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x90];
     signed char   m_playerNumber;                  // +0x90
     unsigned char m_dead : 1;                      // +0x91 bit 0
@@ -37,7 +37,7 @@ class CPlayer {
 public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
 };
-struct CWorld; struct CGameDefinitionManager; struct CGamePlayerInterface;
+class CWorld; class CGameDefinitionManager; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
 public:
     virtual void v00();

@@ -5,7 +5,7 @@
 #define __int64 long long
 #endif
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned __int64 UID;
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
@@ -38,12 +38,12 @@ struct CThing {
     }
 };
 // --- end lookup copy ---
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long Sex;
     long GetSex() { return Sex; }
 };
 enum EMarriageState { MARRIAGE_STATE_NONE, MARRIAGE_STATE_MARRIED };
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo { public:
     unsigned __int64 WifeUID; unsigned __int64 MaritalHomeUID; EMarriageState State; bool GayMarriage;
     CHeroMarriageInfo(unsigned __int64 wife, unsigned __int64 home, EMarriageState state, bool gay)
         : WifeUID(wife), MaritalHomeUID(home), State(state), GayMarriage(gay) {}
@@ -52,10 +52,10 @@ static CHeroMarriageInfo g_last(0, 0, MARRIAGE_STATE_NONE, false);
 static int g_pushes = 0;
 struct CHeroMarriageList { void* _M_node; void push_back(const CHeroMarriageInfo& info) { g_last = info; ++g_pushes; } };
 static long g_act[4]; static float g_score[4]; static int g_calls = 0;
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool) { if (g_calls < 4) { g_act[g_calls] = activity; g_score[g_calls] = score; } ++g_calls; }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     CThing* ParentThing;
     long NumWeddings, NumSpousesMurdered, NumSpousesDied;
     CHeroMarriageList Marriages;

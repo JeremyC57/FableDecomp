@@ -1,6 +1,6 @@
 // Behaviour test for 0x00A71B40 __pop_heap: *result = *first, adjust_heap(first, 0, last - first, value, comp); the by-value value's reference released.
 #include <cstdio>
-struct CCharString {
+class CCharString { public:
     const char* s;
     CCharString() : s(0) {}
     CCharString(const CCharString& o) : s(o.s) {}

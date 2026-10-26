@@ -8,7 +8,7 @@
 // 0x00825440). CHeightMapCell (PDB, 12 bytes): Height, EngineThemePaletteIndex[3], EngineBlend[2] and five
 // one-bit flags in the byte at +9.
 #include <string.h>
-struct CHeightMapCell {
+class CHeightMapCell { public:
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -18,14 +18,14 @@ struct CHeightMapCell {
     unsigned char CameraPassable : 1;              //        bit 3
     unsigned char NavPreferred : 1;                //        bit 4
 };
-struct C2DBoxI { long MinX, MinY, MaxX, MaxY; };
+class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 struct CHeightMapCellVector {                      // retail std::vector<CHeightMapCell>: first / last / end
     CHeightMapCell* first;
     CHeightMapCell* last;
     CHeightMapCell* end;
     CHeightMapCell& operator[](long index) { return *(first + index); }
 };
-struct CHeightMap {
+class CHeightMap { public:
     void*                World;                    // +0x00 (no vtable: the PDB's leading int is padding)
     void*                _04;
     void*                Map;                      // +0x08

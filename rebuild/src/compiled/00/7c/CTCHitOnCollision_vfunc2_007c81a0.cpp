@@ -11,7 +11,7 @@ struct CTarget {
     void Method(long value);               // 0x004C9840
 };
 
-struct CTCHitOnCollision {
+class CTCHitOnCollision { public:
     unsigned char _pad[0x4];
     CTarget* m_pObject;                    // +0x4
     void vfunc_2();

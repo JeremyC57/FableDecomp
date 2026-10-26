@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct C3DVector { float x; float y; float z; };
+class C3DVector { public: float x; float y; float z; };
 
 struct CCamObj {
     char body[4]; // C3DVector at +4
@@ -19,7 +19,7 @@ struct CCamMgr {
     virtual bool GetObj(CCamObj** out); // slot 9 -> vtbl offset 0x24
 };
 
-struct CWorld { char pad[0x38]; }; // CCamMgr* at +0x34
+class CWorld { public: char pad[0x38]; }; // CCamMgr* at +0x34
 // outer at +0x4
 
 void __fastcall CGameScriptInterface_CameraShake(const CGameScriptInterface* self, float magnitude, float duration)

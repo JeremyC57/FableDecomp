@@ -18,7 +18,7 @@ struct CEngineRoot_0099a2f0 {
     CEngineRoot_0099a2f0();                     // 0x0099A2F0
 };
 
-struct CEngineComponent {                       // vtable 0x012A2544
+class CEngineComponent { public:                       // vtable 0x012A2544
     virtual void v00();
     long GlobalPointerAddress;                                   // +0x04
     bool m_enabled;                             // +0x08
@@ -26,7 +26,7 @@ struct CEngineComponent {                       // vtable 0x012A2544
     CEngineComponent();                         // 0x00B59710
 };
 
-struct CEngineInternalAttachedPrimitiveInfo {
+class CEngineInternalAttachedPrimitiveInfo { public:
     long m_words[3];
 };
 
@@ -48,7 +48,7 @@ struct CRetailSTLportList {                     // STLport list: the sentinel no
     }
 };
 
-struct CEnginePrimitiveAttachmentManager : CEngineRoot_0099a2f0, CEngineComponent {
+class CEnginePrimitiveAttachmentManager : public CEngineRoot_0099a2f0, public CEngineComponent { public:
     CRetailSTLportList<CEngineInternalAttachedPrimitiveInfo> AttachedPrimitives;   // +0x10
     virtual void v01();
     CEnginePrimitiveAttachmentManager();

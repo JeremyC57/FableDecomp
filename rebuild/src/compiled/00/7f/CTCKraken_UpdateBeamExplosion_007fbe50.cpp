@@ -16,7 +16,7 @@
 //   first, +4 bytes); the physics body and the graphic appearance go through inline CThing accessors (a direct member chain
 //   loads them into eax / after the pushes); the beam direction * length product is written twice (the Create end argument
 //   and the line-of-sight end) and VC keeps it in the frame; the driver is the uninitialised GetTCDriver out-pointer.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -24,8 +24,8 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString {
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -37,7 +37,7 @@ struct CDefVirtual {
 struct CDefBase : CDefVirtual {
     long m_refCount;
 };
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const;   // 0x00669D30
 };
 long Lookup_CSpecialEffectsDef_GetEffectFromString(const void* def, const CCharString& name);
@@ -51,13 +51,13 @@ __declspec(noinline) bool CSpecialEffectsDef::GetEffectFromString(const CCharStr
     return true;
 }
 #pragma auto_inline(on)
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer() { if (m_p && --m_p->m_refCount == 0) m_p->Destroy(); }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);
@@ -120,7 +120,7 @@ struct CTools {
     bool IsLineOfSightFiltered(const C3DVector* from, const C3DVector* to, C3DVector* hitPos, C3DVector* hitNormal,
                                long* hitIndex, const CThing*& hitThing, long filter, bool flag);   // 0x00877C40
 };
-struct CGameCameraManager {
+class CGameCameraManager { public:
     unsigned char _pad00[0x78];
     CTools CamTools;                                  // +0x78
 };
@@ -129,12 +129,12 @@ struct CCameraSource {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void GetCameraManager(CGameCameraManager** out);   // slot 10 (+0x28)
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x34];
     CCameraSource* PCameraSource;                     // +0x34
     CCameraSource* GetCameraSource() const { return PCameraSource; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
@@ -155,7 +155,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CKrakenDef {
+class CKrakenDef { public:
     unsigned char _pad00[0x54];
     float BeamExtraLength;                            // +0x54
     unsigned char _pad58[0x60 - 0x58];
@@ -163,7 +163,7 @@ struct CKrakenDef {
     float BeamRange;                                  // +0x64
     long  BeamExplosionInterval;                      // +0x68
 };
-struct CTCKraken {
+class CTCKraken { public:
     void*                   __vftable;                // +0x00
     CThing*                 ParentThing;              // +0x04
     unsigned char           _pad08[0x0c - 0x08];

@@ -16,7 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-struct CCPPointerInfo {                                     // Ego_r.pdb
+class CCPPointerInfo { public:                                     // Ego_r.pdb
     unsigned long RefCount;                                 // +0x0
     void (__fastcall* DeleteFunc)(void* data);              // +0x4
     void* Data;                                             // +0x8

@@ -19,7 +19,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -29,7 +29,7 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -37,7 +37,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];              // +0x20 bitset<274>
     CInterfaceMap Components;                      // +0x44
@@ -67,15 +67,15 @@ struct CThing {
     }
 };
 
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     void OnHeroCloseDoor();                        // 0x0077D3E0
 };
-struct CThingManager {
+class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
 };
-struct CPlayer { CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
 
-struct CWorld {
+class CWorld { public:
     virtual void _slot0();
     virtual void _slot1();
     virtual void _slot2();

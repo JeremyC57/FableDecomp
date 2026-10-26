@@ -17,17 +17,17 @@
 // node value +0x18, DefenderInfo +0x34 (Attackers first).
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
 };
 extern CCharString g_CCharString_013babb0;  // 0x013BABB0 ("ATTACK_PATTERN_CONTINUOUS")
 
-struct CDefPointeeBase {                    // a counted definition object
+class CDefPointeeBase { public:                    // a counted definition object
     virtual void v000();
     virtual void DestroyDef();              // slot 1 (+4)
     long m_refCount;                        // +4
 };
-struct CAttackPatternDef : CDefPointeeBase { };
+class CAttackPatternDef : public CDefPointeeBase { public: };
 struct CAttackPatternPointer {              // CDefPointer<const CAttackPatternDef>
     CAttackPatternDef* Object;
     CAttackPatternPointer() : Object(0) {}
@@ -43,7 +43,7 @@ struct CAttackPatternPointer {              // CDefPointer<const CAttackPatternD
     }
 };
 void* FindDef_GetDef_006f0e10();            // stand-in callee of the stand-in body below
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CAttackPatternPointer& out);   // 0x006F0E10
 };
 #pragma auto_inline(off)
@@ -58,12 +58,12 @@ __declspec(noinline) bool CDefinitionManager::GetDef(const CCharString& name, CA
     return true;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x10];
     CDefinitionManager* DefinitionManager;  // +0x10
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned char _pad20[0x13c];
@@ -93,7 +93,7 @@ struct CSequenceVector {                    // retail vector<CCountedPointer<CCo
             free(_M_start);
     }
 };
-struct CAttackingCombatantInfo {            // retail 0x30 bytes
+class CAttackingCombatantInfo { public:            // retail 0x30 bytes
     CThingCreatureBase* Attacked;           // +0x00
     unsigned char _data[0x20];
     CSequenceVector CombatSequences;        // +0x24
@@ -113,7 +113,7 @@ struct CAttackerMap {                       // map<unsigned __int64, CThingCreat
     unsigned long _M_compare;
     SInsertResult insert(const SAttackerValue& value);   // 0x006F1EF0
 };
-struct CDefendingCombatantInfo {            // retail 0x3c bytes
+class CDefendingCombatantInfo { public:            // retail 0x3c bytes
     CAttackerMap Attackers;                 // +0x00
     unsigned char _data[0x30];
     ~CDefendingCombatantInfo();             // 0x006F48A0
@@ -166,7 +166,7 @@ __declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_Comb
 }
 #pragma auto_inline(on)
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

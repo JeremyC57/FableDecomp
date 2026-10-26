@@ -3,11 +3,11 @@
 // Layout from Ego_r.pdb (48 bytes): CInputProcessGameBase (0x28) then C2DVector LastJoyDirection +0x28.
 // Shape: the zero vector is built as a temporary in an 8-byte frame (two immediate stores) and copied into the member through
 // eax/edx -- an inline C2DVector(float, float) constructor assigned to the member.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CInputProcessCreatureMovementWatchForControlAngleChange {
+class CInputProcessCreatureMovementWatchForControlAngleChange { public:
     virtual void v00(); virtual void v01();
     virtual void Init();                            // slot 2
     unsigned char _pad04[0x24];                     // +0x04 CAInputProcess and the game-base pointers

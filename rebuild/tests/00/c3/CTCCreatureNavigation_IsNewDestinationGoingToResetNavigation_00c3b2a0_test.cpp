@@ -1,6 +1,6 @@
 #include <cstdio>
-struct C3DVector { float x,y,z; };
-struct CTCCreatureNavigation;
+class C3DVector { public: float x,y,z; };
+class CTCCreatureNavigation;
 static int g_called = 0;
 struct Helper {
   virtual void slot0(){}
@@ -12,7 +12,7 @@ struct Helper {
   virtual void slot6(){}
   virtual bool slot7(CTCCreatureNavigation* nav, C3DVector* dest){ g_called=1; return dest->x > 0.0f; }
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
   void* f0;
   Helper* ParentThing;
 };

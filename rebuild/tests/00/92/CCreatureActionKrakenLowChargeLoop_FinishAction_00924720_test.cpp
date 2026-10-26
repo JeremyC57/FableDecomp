@@ -1,8 +1,8 @@
 // Behaviour test (0x00924720): CCreatureAction_KrakenLowChargeLoop::FinishAction runs the base FinishAction, then the next charge loop while the target lives and the kraken was not hurt in phase 2, the low attack once the def's loop count is reached, else the "out of" action
 #include <cstdio>
 enum { ACTION_NONE, ACTION_CHARGE_LOOP, ACTION_ATTACK_INTO, ACTION_ATTACK_OUT_OF };
-struct CKrakenDef { int LowChargeLoops; };
-struct CTCKraken { CKrakenDef* Def; int Phase; };
+class CKrakenDef { public: int LowChargeLoops; };
+class CTCKraken { public: CKrakenDef* Def; int Phase; };
 struct CCreature { float m_health; int NextAction; int NextLoop; void* NextTarget; };
 struct CAction {
     CCreature* PCreature; void* PTarget; bool TargetAlive; CTCKraken* Kraken; int LoopNum; float StartHealth; int BaseCalls;

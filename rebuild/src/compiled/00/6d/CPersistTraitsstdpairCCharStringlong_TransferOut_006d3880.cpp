@@ -8,7 +8,7 @@
 // Shape: both element-traits objects are declared first: the string traits' DefaultVal is default-constructed in the
 //   `push ecx` frame word before anything else and destroyed last; the long traits' TransferOut is inlined (the element
 //   copied into the dead value-argument slot for TransferOutLong; its DefaultVal zeroing is dead and dropped).
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
     void* PStringData;

@@ -9,7 +9,7 @@
 // @ 0x009E2560 (context in ecx, the dword second parameter in edx, &local on the stack).
 // The manifest label (`CPersistContext_TransferableComponent::vfunc_0`) is propagated; the
 // class is named by the helper. One of 15 bodies of this shape.
-struct CPersistContext;
+class CPersistContext;
 void __fastcall TransferOut_009e2560(CPersistContext* context, long name, long* value);   // 0x009E2560
 
 struct CTransferableLong_009e2560 {

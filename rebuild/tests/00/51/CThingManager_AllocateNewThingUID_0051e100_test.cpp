@@ -7,13 +7,13 @@ typedef unsigned __int64 u64;
 typedef unsigned long long u64;
 #endif
 
-struct CWorldMap {
+class CWorldMap { public:
     u64 MapCounter;
     unsigned long GetMapUIDPrefix(long mapNumber) { return (unsigned long)mapNumber * 3; }
     u64 AllocateMapThingUID(long) { return MapCounter++; }
 };
 
-struct CThingManager {
+class CThingManager { public:
     CWorldMap* WorldMap;
     u64 CurrentUniqueID;
     u64 CurrentLocalThingUniqueID;

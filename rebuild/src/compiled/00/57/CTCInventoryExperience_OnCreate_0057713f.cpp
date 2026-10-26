@@ -16,37 +16,37 @@
 // in retail's store order (magnitude first, then the two events).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CCreatureDef : CDefPointeeBase {
+class CCreatureDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x98 - 0x08];
     long ExperienceScreenInventory;             // +0x98 (PDB +0xA8)
 };
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CCreatureDef>* out);   // 0x00485815
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;            // +0x70
 };
 namespace NHeroInformationScreens {
-struct CBase {                                  // vtable 0x0123A3E0
+class CBase { public:                                  // vtable 0x0123A3E0
     virtual void v00();
     virtual void v01();
     virtual void v02();
 };
-struct CManager {
+class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
-struct CPlayerGui {
+class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790

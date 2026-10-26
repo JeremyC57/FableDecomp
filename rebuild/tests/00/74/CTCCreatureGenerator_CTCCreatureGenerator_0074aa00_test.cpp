@@ -4,15 +4,15 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThing { int id; };
-struct CTCBase { CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) {} };
+class CThing { public: int id; };
+class CTCBase { public: CThing* ParentThing; CTCBase(CThing* t) : ParentThing(t) {} };
 struct SNode { SNode* next; SNode* prev; };
 struct CList { SNode* node; CList() : node(0) { SNode* n = (SNode*)std::malloc(sizeof(SNode)); n->next = n; n->prev = n; node = n; } ~CList() { std::free(node); } };
 struct CVec { void* s; void* f; void* e; CVec() : s(0), f(0), e(0) {} };
 struct CArr { void* d; long n; long c; CArr() : d(0), n(0), c(0) {} };
 struct CIntelligentPointer { CThing* p; CIntelligentPointer() : p(0) { SetPItem(0); } void SetPItem(CThing* t) { p = t; } };
 struct TGenerationParameters { float GenerationRadius, SelfTriggerRadius; bool SelfTrigger; long SelfTriggerResetInterval; bool TriggerOnActivate; long ActiveCreatureLimit, TotalGenerationLimit, NumTriggers; };
-struct CTCCreatureGenerator : CTCBase {
+class CTCCreatureGenerator : public CTCBase { public:
     CArr CreatureFamilies; CList CreatedCreatures; CVec CreatureTriggerers; TGenerationParameters GenParams;
     bool Active, Initialised, ReadyToInitialise, ExternalTrigger, WaitForAllCreaturesDead; long NumTriggersLeft, ActivationFrame; bool LastSpaceTest;
     CVec OpenPositions, HiddenPositions, DebugPrimitives; long CreationCount; bool UndeadTriggered, Destroyed; void* PDef;

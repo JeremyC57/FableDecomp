@@ -10,7 +10,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() const { return m_pItem; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
 };
 template <class T>
 inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b) { return a.GetPItem() == b.GetPItem(); }

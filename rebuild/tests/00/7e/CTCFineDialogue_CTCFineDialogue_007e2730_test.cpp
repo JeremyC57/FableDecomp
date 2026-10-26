@@ -1,7 +1,7 @@
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -14,8 +14,8 @@ struct CIntelligentPointer {
     CIntelligentPointer() : PData(0) { }
     virtual ~CIntelligentPointer() { }
 };
-struct CTCVillage;
-struct CTCFineDialogue : CTCBase {
+class CTCVillage;
+class CTCFineDialogue : public CTCBase { public:
     long Fine, Money; bool GivePlayerChanceToPayFine, WaitingForConfirmation; CTCVillage* Village;
     CTCFineDialogue(CThing* thing) : CTCBase(thing), GivePlayerChanceToPayFine(true), WaitingForConfirmation(false) { AddToGlobalUpdateTCs(); }
 };

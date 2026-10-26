@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void PostAddScriptedEntities() { Log("gpost"); }
     void CacheMusicSet(long t) { char b[16]; std::sprintf(b, "music%ld", t); Log(b); }
 };

@@ -11,18 +11,18 @@
 // SetupPuzzleBlocks 0x00D36140): CutsceneFlags +0x4c, ProphetsKilled +0xc8, ProphetsReleased +0xd4 (byte vectors).
 // Shape: the CMagicBarrierGraveyard::Main 0x00CE0600 model (__forceinline ~CScriptThing, inline_depth(0) around the
 // filter); the discarded CreateEffect result is destroyed inline.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -38,13 +38,13 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CBaseClass {
+class C3DVector { public: float X, Y, Z; };
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     __forceinline ~CScriptThing() {}                     // out of line 0x004AA840
@@ -52,7 +52,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual const C3DVector& GetPos() const;             // slot 6 (+0x18)
 };
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float time, bool kill, bool removeOnFade);   // 0x00CBE716
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const; virtual void NewScriptFrame() const; /* slot 7 (+0x1c) */ virtual void v008() const; virtual void v009() const;
     virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const; virtual void v016() const; virtual void v017() const; virtual void v018() const; virtual void v019() const;
     virtual void v020() const; virtual void v021() const; virtual void v022() const; virtual void v023() const; virtual void v024() const; virtual void v025() const; virtual void v026() const; virtual void v027() const; virtual void v028() const; virtual void v029() const;
@@ -79,7 +79,7 @@ struct CCutsceneFlagMap {                                // map<CCharString, boo
     bool& operator[](const CCharString& key);           // 0x008ADF10
 };
 namespace NScript {
-struct CQ_FireHeartScript {                              // retail-offset view (see Layout)
+class CQ_FireHeartScript { public:                              // retail-offset view (see Layout)
     unsigned char    _pad00[0x4c];
     CCutsceneFlagMap CutsceneFlags;                      // +0x4c
     unsigned char    _pad58[0xc8 - 0x58];
@@ -88,7 +88,7 @@ struct CQ_FireHeartScript {                              // retail-offset view (
     bool*            ProphetsReleased;                   // +0xd4 (vector<bool> _M_start)
 };
 }
-struct CEntityScriptBase {                               // retail 0x14 bytes
+class CEntityScriptBase { public:                               // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing          Me;                            // +0x08

@@ -24,7 +24,7 @@ struct IDirect3D9 {
     virtual long __stdcall CheckDepthStencilMatch(unsigned long adapter, long devType, long adapterFormat, long renderTargetFormat, long depthStencilFormat);   // slot 12
 };
 
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                  // +0
 };
 
@@ -35,7 +35,7 @@ struct SPixelFormatInfo {              // 36-byte format table entry
 
 extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 
-struct CDisplayManager {
+class CDisplayManager { public:
     unsigned char _pad[0x54];          // +0x00 vptr, SystemManager, PRenderManager, surfaces, back-buffer copy texture
     IDirect3D9*   D3D;                 // +0x54
     void*         D3DDevice;           // +0x58

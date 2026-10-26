@@ -15,7 +15,7 @@ struct C3DAnimBlendBase {
     ~C3DAnimBlendBase();
 };
 
-struct C3DAnimationBlendState : public C3DAnimBlendBase {
+class C3DAnimationBlendState : public C3DAnimBlendBase { public:
     RefCounted* ptr;   // lands at +0xc (base is 0xc bytes)
     ~C3DAnimationBlendState();
 };

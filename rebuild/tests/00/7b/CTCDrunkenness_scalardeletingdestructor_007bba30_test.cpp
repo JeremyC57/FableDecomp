@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDrunkenness {
+class CTCDrunkenness { public:
     void* vftable;
     int destroyed;
 };

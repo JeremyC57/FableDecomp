@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_sets, g_live;
 struct CBaseIntelligentPointer {
     virtual long Kind() { return 0; }

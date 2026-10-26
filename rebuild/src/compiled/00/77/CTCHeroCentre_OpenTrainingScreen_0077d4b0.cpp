@@ -14,15 +14,15 @@
 // Shape: the landed CTCShop::OpenShoppingInterface 0x00773B20 event model (CGameEvent over an empty CMemoryBuffer with an inline
 // by-value AddULONG); the tutorial branch returns early with its own cookie check; the out-parameter GetInterface stores the
 // end/hit choice in one ternary so the component lands in ecx.
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -41,20 +41,20 @@ struct CThing {
         return false;
     }
 };
-struct CTCHero {
+class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0 (ETutorialCategory)
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
     long GetMainPlayerNumber();                         // 0x00449700
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -64,11 +64,11 @@ struct CGameEvent : CMemoryBuffer {
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     bool ToBeRemoved;                                   // +0x08
@@ -76,7 +76,7 @@ struct CTCBase {
     unsigned char _pad0a[2];
     CPlayerManager* GetPlayerManager() const;           // 0x00686D50
 };
-struct CTCHeroCentre : CTCBase {
+class CTCHeroCentre : public CTCBase { public:
     void*         PDef;                                 // +0x0c CDefPointer<CHeroCentreDef const>
     long          CurrentGUIMode;                       // +0x10
     unsigned long FrameQuestCardListFrom;               // +0x14

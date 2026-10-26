@@ -19,25 +19,25 @@ enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
 struct __false_type { __false_type() { } };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long m_refCount;                            // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (Object && --Object->m_refCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
 
-struct CRGBColour {                                     // D3DCOLOR byte order
+class CRGBColour { public:                                     // D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { Set(r, g, b, a); }
     __forceinline CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
-struct CCompositeBlendDesc {
+class CCompositeBlendDesc { public:
     unsigned long       TextureIndex;                   // +0x00
     ECompositeBlendType BlendType;                      // +0x04
     CRGBColour          DiffuseColour;                  // +0x08
@@ -57,7 +57,7 @@ CCompositeBlendDesc::CCompositeBlendDesc(const CCompositeBlendDesc& other)
 }
 #pragma auto_inline(on)
 
-struct CTextureMorphEntry {                             // 20 bytes
+class CTextureMorphEntry { public:                             // 20 bytes
     EHeroMorphType      MorphType;                      // +0x00
     long                TextureLayer;                   // +0x04
     long                ReplacingTextureIndex;          // +0x08
@@ -74,14 +74,14 @@ struct CTextureMorphEntryVector {                       // STLport vector<CTextu
     CTextureMorphEntry* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
 };
-struct CTextureMorphs {
+class CTextureMorphs { public:
     bool GetAllMorphsOfType(EHeroMorphType type, CTextureMorphEntryVector* entries) const;   // 0x0081B0A0
 };
-struct CHeroMorphDef : CDefPointeeBase {
+class CHeroMorphDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CTextureMorphs TextureMorphs;                       // +0x28
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<const CHeroMorphDef>* out) const;   // 0x0071F930
 };
 

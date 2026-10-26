@@ -19,12 +19,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                            // slot 1
     long RefCount;                                     // +0x04
@@ -32,7 +32,7 @@ struct CDefPointeeBase {
     void Release() { if (--RefCount == 0) Destroy(); }
 };
 enum EHeroAbility { ABILITY_NULL = 0, EHeroAbility_Force32 = 0x7fffffff };
-struct CHeroAbilityDef : CDefPointeeBase {
+class CHeroAbilityDef : public CDefPointeeBase { public:
     unsigned char _pad_0x08[0x3c - 0x08];
     EHeroAbility Ability;                              // +0x3c
 };
@@ -40,7 +40,7 @@ struct CUIMiscThingsDef : CDefPointeeBase {
     unsigned char _pad_0x08[0x148 - 0x08];
     unsigned long TotalSpellsInPalettes;               // +0x148
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { Object->AddRef(); }
@@ -59,7 +59,7 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetNumberOfDefsOfType(const CCharString& typeName);                                       // 0x009AD3B0
     bool GetDef(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>* out);       // 0x005F89F2
 };
@@ -78,7 +78,7 @@ struct CAbilityOrderVector : CVector<EHeroAbility> {
     void resize(unsigned long n, const EHeroAbility& value);   // 0x005F9DF8
 };
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     unsigned char _pad_0x000[0x148];
     CVector<long> ExperienceSpentOnAbilities;          // +0x148
     CAbilityOrderVector ReceivedAbilityOrder;          // +0x154

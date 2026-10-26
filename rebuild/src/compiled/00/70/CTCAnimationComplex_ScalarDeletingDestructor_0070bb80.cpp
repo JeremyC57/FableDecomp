@@ -11,18 +11,18 @@
 // VC7.1 emits the `??1` out of line and the deleting destructor merely calls it).
 void __cdecl operator delete(void* block);     // 0x00BFE9BC
 
-struct CAnimateThing {
+class CAnimateThing { public:
     unsigned char _body[4];
     ~CAnimateThing();                           // 0x0070BA90
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     unsigned char _pad[0x8];                    // +0x04..+0x0b
     ~CTCBase();                                 // 0x00686830
 };
 
-struct CTCAnimationComplex : CTCBase {
+class CTCAnimationComplex : public CTCBase { public:
     CAnimateThing* m_pAnimateThing;             // +0x0c
     __forceinline virtual ~CTCAnimationComplex()
     {

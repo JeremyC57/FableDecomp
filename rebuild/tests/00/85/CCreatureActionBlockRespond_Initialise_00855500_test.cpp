@@ -35,7 +35,7 @@ static void BuildInvSqrtTable()
     }
 }
 
-struct CTCBase;
+class CTCBase;
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned int bits = *(unsigned int*)&lengthSquared;
@@ -44,7 +44,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -56,7 +56,7 @@ struct C3DVector {
     __forceinline void Normalise() { float x = X; float y = Y; float z = Z; *this *= FastInvSqrt(x * x + (y * y + z * z)); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();
     CCharString(const char* text, long length = -1);
@@ -94,14 +94,14 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return lo;
 }
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual C3DVector GetFacing() { ++FacingCalls; return Facing; }
     unsigned char _pad04[8];
     C3DVector     Position;
     C3DVector     Facing;
     int           FacingCalls;
 };
-struct CAnimationEntry;
+class CAnimationEntry;
 struct CAnimationEntryVector {
     CAnimationEntry** _M_start;
     CAnimationEntry** _M_finish;
@@ -109,7 +109,7 @@ struct CAnimationEntryVector {
     CAnimationEntryVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~CAnimationEntryVector() { if (_M_start) free(_M_start); }
 };
-struct CThing {
+class CThing { public:
     unsigned char   _pad0[0x20];
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
@@ -134,7 +134,7 @@ static int g_getPositionCalls = 0;
 static C3DVector g_anyPosition(1.0f, 2.0f, 3.0f);
 const C3DVector& CThing::GetPosition() const { ++g_getPositionCalls; return g_anyPosition; }
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& out);
 };
 static int g_possibleCalls = 0;

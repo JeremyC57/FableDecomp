@@ -50,7 +50,7 @@ struct CTCGraphicAppearance {
     void ClearMeshEffect(void* key);            // 0x004BFFC0
     void RemoveTintColour(void* owner);         // 0x004BFAE0
 };
-struct CTCMultiArrow {
+class CTCMultiArrow { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

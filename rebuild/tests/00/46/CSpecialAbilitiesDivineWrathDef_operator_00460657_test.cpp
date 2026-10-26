@@ -70,7 +70,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CSpecialAbilitiesDivineWrathDef {
+class CSpecialAbilitiesDivineWrathDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -149,7 +149,7 @@ FABLE_STATIC_ASSERT(offsetof(CSpecialAbilitiesDivineWrathDef, LargeRingRadius) =
 
 
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x21];                          // +0x04 flattened base-class subobject(s)
     long          InstantiationName_TablePos;                // +0x25 CDefString::TablePos
@@ -171,7 +171,7 @@ typedef long S32;
 typedef int S32;
 #endif
 #pragma pack(push,1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     void* __vftable;
     unsigned char DefClassBase[0x21]; // donor named flattened base, actual bytes4..24
     S32 InstantiationName_TablePos;
@@ -179,7 +179,7 @@ struct CParentDefClassBase {
     CParentDefClassBase& operator=(const CParentDefClassBase&); // 0x00431ed0
 };
 #pragma pack(pop)
-struct CDefString { S32 TablePos; };
+class CDefString { public: S32 TablePos; };
 struct CDefStringVector {
     CDefString *Start,*Finish,*End;
     CDefStringVector& operator=(const CDefStringVector&); // 0x0046078c
@@ -188,7 +188,7 @@ struct CFloatVector {
     float *Start,*Finish,*End;
     CFloatVector& operator=(const CFloatVector&); // 0x0045ef2d
 };
-struct CSpecialAbilitiesDivineWrathDef : CParentDefClassBase {
+class CSpecialAbilitiesDivineWrathDef : public CParentDefClassBase { public:
     CDefStringVector StartPowerupSound,LoopingPowerupSound,ReleaseSound,ReleaseLoopSound,FinishSound,CancelSound;
     float RandomFactorForNumSecsBetweenDamageHit;
     CFloatVector NumSecsBetweenDamageHit,DamagePerHit,DurationOfSpellSecs,RadiusOfEffect,EnvChangeSecs,EnvReturnSecs;

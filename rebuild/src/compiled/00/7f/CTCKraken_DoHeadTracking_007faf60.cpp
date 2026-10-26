@@ -16,9 +16,9 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -37,7 +37,7 @@ struct CTCPhysicsBase {
     virtual void SetFacingAngleXY(float angle);         // slot 66 (+0x108)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
@@ -61,7 +61,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CKrakenDef {
+class CKrakenDef { public:
     unsigned char _pad00[0x58];
     float BeamTrackSpeed;                               // +0x58
     float TargetingTrackSpeed;                          // +0x5c
@@ -84,7 +84,7 @@ template <class T> inline const T& Clamp(const T& v, const T& lo, const T& hi)
     return v < lo ? lo : (v > hi ? hi : v);
 }
 
-struct CTCKraken {
+class CTCKraken { public:
     void*                   __vftable;                  // +0x00
     CThing*                 ParentThing;                // +0x04
     unsigned char           _pad08[0x0c - 0x08];

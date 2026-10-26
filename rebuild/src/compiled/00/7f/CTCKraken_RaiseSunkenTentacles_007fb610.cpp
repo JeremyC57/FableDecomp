@@ -65,7 +65,7 @@ template<class T> struct CList {               // STLport list: header node poin
 };
 extern long g_FramesPerSecond;                  // 0x01375550
 long GetWorldFrame();                           // 0x0049D870
-struct CKrakenDef {
+class CKrakenDef { public:
     unsigned char _pad00[0x78];
     float TentacleRiseDelay;                    // +0x78
 };

@@ -7,12 +7,12 @@
 // Shape: the iterator lives in the `push ecx` slot (a 4-byte class with a user constructor, returned by hidden pointer);
 // the key's own argument slot is passed by address (`const long&`); end() is the map's head word (`cmp ebx,[edi]`);
 // the interval is re-read for the divide; `idiv` remainder subtracted from the interval.
-struct CGameTimeManager {
+class CGameTimeManager { public:
     unsigned char _pad[0x14];
     long          m_day;                     // +0x14
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char     _pad[0x1c];
     CGameTimeManager* m_pGameTimeManager;    // +0x1c
 };
@@ -54,7 +54,7 @@ __declspec(noinline) CRestockMap::iterator CRestockMap::find(const long& key)
 }
 #pragma auto_inline(on)
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad[0x34];
     CRestockMap   m_restock;                 // +0x34
     CWorld* GetWorld();                      // 0x00686A70 (CTCBase)

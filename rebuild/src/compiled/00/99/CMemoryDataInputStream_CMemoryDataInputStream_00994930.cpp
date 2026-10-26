@@ -15,7 +15,7 @@ struct SMemoryStreamState_00994930 {              // a second, non-polymorphic b
     SMemoryStreamState_00994930(const unsigned char* data, long size) : m_position(0), m_size(size), m_pData(data), m_flags(0), m_sizeCopy(size) { }
 };
 
-struct CMemoryDataInputStream : CBaseClassNonCopyable, SMemoryStreamState_00994930 {   // vtable 0x0123675C
+class CMemoryDataInputStream : public CBaseClassNonCopyable, public SMemoryStreamState_00994930 { public:   // vtable 0x0123675C
     const unsigned char* m_pDataCopy;              // +0x18
     CMemoryDataInputStream(const unsigned char* data, long size);
 };

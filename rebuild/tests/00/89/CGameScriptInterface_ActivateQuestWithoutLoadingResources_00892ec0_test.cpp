@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-struct CCharString;
+class CCharString;
 
-struct CQuestManager {
+class CQuestManager { public:
   int gotA, gotB;
   CCharString* gotCs;
   void Activate(CCharString* cs, int a, int b){ gotCs=cs; gotA=a; gotB=b; }
@@ -11,7 +11,7 @@ struct CQuestManager {
 static CQuestManager gMgr;
 CQuestManager* g_questMgr = &gMgr;
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
   void ActivateQuestWithoutLoadingResources(CCharString* cs);
 };
 

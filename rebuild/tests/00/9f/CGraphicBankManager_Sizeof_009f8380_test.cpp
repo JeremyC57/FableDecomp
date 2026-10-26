@@ -3,10 +3,10 @@
 #include <cstring>
 static char g_seq[64] = "";
 static long g_budget = 0; static double g_time = 0; static long g_sizes[4]; static long g_n = 0;
-struct CResourceList { void ProcessLoading(long budget, double time) { std::strcat(g_seq, "P"); g_budget = budget; g_time = time; } };
-struct CGraphicDataBank { unsigned char _pad[0x164]; CResourceList m_resources; long m_size; void FrameEnd() { std::strcat(g_seq, "E"); } void StepLoading() { std::strcat(g_seq, "S"); } long Sizeof() { std::strcat(g_seq, "Z"); return m_size; } };
+class CResourceList { public: void ProcessLoading(long budget, double time) { std::strcat(g_seq, "P"); g_budget = budget; g_time = time; } };
+class CGraphicDataBank { public: unsigned char _pad[0x164]; CResourceList m_resources; long m_size; void FrameEnd() { std::strcat(g_seq, "E"); } void StepLoading() { std::strcat(g_seq, "S"); } long Sizeof() { std::strcat(g_seq, "Z"); return m_size; } };
 struct SBankNode { SBankNode* m_pNext; SBankNode* m_pPrev; unsigned char _pad08[0x30]; CGraphicDataBank* m_pBank; };
-struct CGraphicBankManager { unsigned char _pad[4]; SBankNode* m_pHead;
+class CGraphicBankManager { public: unsigned char _pad[4]; SBankNode* m_pHead;
     void FrameEnd() { for (SBankNode* node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) node->m_pBank->FrameEnd(); }
     void ProcessLoading(long budget, double time) { SBankNode* node; for (node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) node->m_pBank->StepLoading(); for (node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) node->m_pBank->m_resources.ProcessLoading(budget, time); }
     long Sizeof() { long count = 0; SBankNode* node; for (node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) ++count; long size = count * 4 + 4; for (node = m_pHead->m_pNext; node != m_pHead; node = node->m_pNext) { long entry = node->m_pBank ? node->m_pBank->Sizeof() + 8 : 8; size += entry; } return size; } };

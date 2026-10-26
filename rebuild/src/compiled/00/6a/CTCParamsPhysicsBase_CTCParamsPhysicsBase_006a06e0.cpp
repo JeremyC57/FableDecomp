@@ -5,19 +5,19 @@
 // Shape: both members copied word by word through ecx/edx/eax, each argument reference loaded from its slot right before
 // its copy: C3DVector has a MEMBERWISE user copy constructor (the implicit copy of a plain float record copies through
 // `lea eax,[esi+4]` instead; a plain float copy needs no x87 here).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CBase_006a06e0 {
     virtual void v00();
     CBase_006a06e0();                               // 0x0099A2F0
 };
 
-struct CTCParamsPhysicsBase : CBase_006a06e0 {
+class CTCParamsPhysicsBase : public CBase_006a06e0 { public:
     C3DVector       Position;                       // +0x04
     CRightHandedSet Rhs;                            // +0x10
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs);

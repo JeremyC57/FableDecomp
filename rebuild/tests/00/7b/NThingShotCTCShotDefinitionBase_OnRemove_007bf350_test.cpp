@@ -1,7 +1,7 @@
 // Behaviour test for 0x007BF350 NThingShot::CTCShotDefinitionBase::OnRemove
 #include <cstdio>
 struct CAug { int stops; void StopTrailEffect() { ++stops; } };
-struct CThing {
+class CThing { public:
     unsigned long UsingComponents[9]; CAug* aug; unsigned char Flags91; int kills; bool lastImmediate;
     void Kill(bool immediately) { ++kills; lastImmediate = immediately; }
     bool GetInterface(CAug** out, long type)

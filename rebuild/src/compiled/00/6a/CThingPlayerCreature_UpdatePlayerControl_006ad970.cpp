@@ -7,7 +7,7 @@
 // Shape: the landed out-parameter GetInterface template (0x008386E0 model, the key temporary in the
 // `push ecx` slot); the component flag byte at +0x18 short-circuits the probe; the controlled move
 // always runs (`this` kept in edi).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -16,7 +16,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                      // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                          // +0x44
@@ -35,14 +35,14 @@ struct CThing {
     }
 };
 
-struct CTCScriptedControl {                              // interface type 0x1f component
+class CTCScriptedControl { public:                              // interface type 0x1f component
     unsigned char _pad00[0x18];
     bool          m_forceUpdate;                         // +0x18
     bool IsScriptTaskRunning();                          // 0x007122C0
     void Update();                                       // 0x00713910
 };
 
-struct CThingPlayerCreature : CThing {
+class CThingPlayerCreature : public CThing { public:
     void ControlledMove();                               // 0x006AD700
     void UpdatePlayerControl();
 };

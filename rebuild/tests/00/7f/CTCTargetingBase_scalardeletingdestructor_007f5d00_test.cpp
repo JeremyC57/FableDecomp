@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     void* vftable;
     int destroyed;
 };

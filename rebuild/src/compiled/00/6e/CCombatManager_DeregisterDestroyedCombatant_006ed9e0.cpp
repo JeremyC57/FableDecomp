@@ -12,7 +12,7 @@
 // BEFORE the attacker is deregistered (the node may go away); the 64-bit id is a local copied into the
 // frame high word first. The template is `__forceinline`: as a plain inline member VC7.1 emitted it
 // out of line in this TU (call + `push 0x36`).
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x18];
     unsigned __int64 UniqueID;                  // +0x18
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -41,14 +41,14 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsAttackingCombatant();                // 0x00662410
     bool IsCombatant();                         // 0x00662430
 };
 
 enum EDangerStatus { DANGER_NONE = 0 };
 
-struct CTCStealth {                             // interface type 0x36
+class CTCStealth { public:                             // interface type 0x36
     void SetAsInDanger(CThing* source, EDangerStatus status);   // 0x00747B80
 };
 
@@ -67,7 +67,7 @@ struct CCombatantMap {                          // STLport map<unsigned __int64,
     SCombatantNode* FindNode(const unsigned __int64& key);   // 0x006F0250
 };
 
-struct CCombatManager {
+class CCombatManager { public:
     void*         __vftable;                    // +0x00
     unsigned char RegisteredCombatSequences[0xc];   // +0x04
     CCombatantMap Combatants;                   // +0x10

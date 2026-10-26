@@ -1,5 +1,5 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld { int key; void* obj; };
+class CWorld { public: int key; void* obj; };
 
 
 struct Ent {

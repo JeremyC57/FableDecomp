@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstring>
 static int g_baseAssigns = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];
     CDefClassBase& operator=(const CDefClassBase& other) { std::memcpy(_body, other._body, sizeof _body); ++g_baseAssigns; return *this; }
 };
-struct CEngineGraphic { unsigned char _bytes[14]; };
-struct CInventoryItemDef : CDefClassBase {
+class CEngineGraphic { public: unsigned char _bytes[14]; };
+class CInventoryItemDef : public CDefClassBase { public:
     CEngineGraphic Graphic;
     unsigned long ItemDescription, ItemDetails;
     long InventoryCategory, MaxNumberItems, SlotIndex;

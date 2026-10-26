@@ -8,24 +8,24 @@
 // W4EMovementType@@ABVCAIFilterBase@1@_N@Z`; AIAction_MoveToPosProximity(EAIActionRepeat, C3DVector, float, bool&,
 // EMovementType, bool, bool, bool, const CThing*, bool, float). These parameter types give retail's register assignment.
 // All-`long` parameters permute ebx/ebp/edi.
-struct C3DVector
-{
+class C3DVector
+{ public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // user copy ctor: the by-value argument is built in place
 };
 
-struct CThing
-{
+class CThing
+{ public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
 enum EMovementType { MOVEMENT_DEFAULT };
 enum { AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 
-struct CAIStateGroupBase
-{
-    struct CAIFilterBase                            // 4 bytes (Ego_r.pdb): the caller's "keep going" test, virtual slot 0
-    {
+class CAIStateGroupBase
+{ public:
+    class CAIFilterBase                            // 4 bytes (Ego_r.pdb): the caller's "keep going" test, virtual slot 0
+    { public:
         virtual bool IsStillValid() const;
     };
     virtual void v00();

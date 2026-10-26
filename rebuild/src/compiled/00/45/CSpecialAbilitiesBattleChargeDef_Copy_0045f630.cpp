@@ -5,7 +5,7 @@
 // Copy implementation. The jmp rel32 target is relocation-masked in parity,
 // so any tail-call to an extern member-shaped function reproduces the bytes.
 
-struct CSpecialAbilitiesBattleChargeDef;
+class CSpecialAbilitiesBattleChargeDef;
 
 // The real implementation this thunk tail-jumps to (address relocation-masked).
 extern void __fastcall CSpecialAbilitiesBattleChargeDef_Copy_impl(

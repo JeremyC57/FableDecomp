@@ -29,7 +29,7 @@ extern "C" void __cdecl _wsplitpath(const wchar16* path, wchar16* drive, wchar16
 extern "C" wchar16* __cdecl wcscpy(wchar16* dest, const wchar16* src);   // 0x00BFED76
 extern "C" wchar16* __cdecl wcscat(wchar16* dest, const wchar16* src);   // 0x00BFED5E
 
-struct CWideStringData;
+class CWideStringData;
 class CWideString
 {
 public:

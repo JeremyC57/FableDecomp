@@ -41,7 +41,7 @@ struct CBasicStringW : _String_base_w {       // STLport basic_string<wchar_t>, 
         _M_range_initialize(s, s + length(s), forward_iterator_tag());
     }
 };
-struct CWideStringData {                      // 16 bytes
+class CWideStringData { public:                      // 16 bytes
     CBasicStringW Data;                       // +0x00
     long          NoRefs;                     // +0x0c
     __forceinline CWideStringData(const unsigned short* text) : Data(text), NoRefs(1) { }

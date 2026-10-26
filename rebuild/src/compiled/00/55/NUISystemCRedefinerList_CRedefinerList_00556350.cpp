@@ -13,7 +13,7 @@
 // the integer zero register for a float zero here); the three derived vtable stores are scheduled after the members.
 namespace NUISystem {
 
-struct CComponent;
+class CComponent;
 
 struct CUIPrimaryBase {                                     // vptr +0x00
     virtual void p00();
@@ -28,12 +28,12 @@ struct CUISecondaryBaseB {                                  // vptr +0x18
     virtual void b00();
 };
 
-struct CScrollableList : CUIPrimaryBase, CUISecondaryBaseA, CUISecondaryBaseB {   // 0x17c bytes in retail
+class CScrollableList : public CUIPrimaryBase, public CUISecondaryBaseA, public CUISecondaryBaseB { public:   // 0x17c bytes in retail
     unsigned char _body[0x17c - 0x1c];
     CScrollableList(CComponent* parent);                    // 0x00555180
 };
 
-struct CRedefinerList : CScrollableList {
+class CRedefinerList : public CScrollableList { public:
     bool          IsActivated;                              // +0x17c
     bool          RefreshAfterFade;                         // +0x17d
     float         FadeOutTime;                              // +0x180

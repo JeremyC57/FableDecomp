@@ -35,20 +35,20 @@ public:
         return false;
     }
 };
-struct CCharString { void* PStringData; };
+class CCharString { public: void* PStringData; };
 extern CCharString g_emptyCharString;            // 0x013BAF5C
-struct CWeaponDef {
+class CWeaponDef { public:
     unsigned char _pad_0x00[0x34];
     CCharString AnimationGroupName;              // +0x34
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-struct CTCCarryable {
+class CTCCarryable { public:
     CThing* GetCarrier() const;                  // 0x00705170
 };
-struct CTCWeapon {
+class CTCWeapon { public:
     virtual void v00();
     CThing* ParentThing;                         // +0x04
     unsigned char _pad_0x08[4];

@@ -9,7 +9,7 @@
 struct CDataOutputStreamWriter : CDataOutputStream {
     void WriteLong(long value);                             // 0x00993EB0
 };
-struct COpinionDeed;
+class COpinionDeed;
 namespace std {
 template <class T1, class T2> struct pair {
     T1 first;

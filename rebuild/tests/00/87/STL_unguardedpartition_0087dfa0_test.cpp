@@ -3,7 +3,7 @@
 
 // Host model of the turning-animation sort: an entry reports a rotation; CTurningAnimCompare keeps retail's quirk
 // (both rotations are fetched from the LEFT operand, so it never says "less"); CFixedCompare is the intended order.
-struct CAnimationEntry {
+class CAnimationEntry { public:
     float Rotation;
     void GetRotationInAnimation(float* rotation) const { *rotation = Rotation; }
 };

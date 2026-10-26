@@ -13,14 +13,14 @@
 //          component's +0x1c frame count is descriptive.
 #include "engine/CAIStateGroup_SeekEnemy.h"
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) const; // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -58,7 +58,7 @@ struct CTCEnemyTracker {                        // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
-struct CTCPerceiveThing {                       // interface 0x34
+class CTCPerceiveThing { public:                       // interface 0x34
     unsigned char _pad[0x1c];
     long FramesSinceSeen;                       // +0x1c (descriptive)
     CThing* GetPerceivedThing();                // 0x007446A0
@@ -80,7 +80,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
     __forceinline void AssignInline(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };

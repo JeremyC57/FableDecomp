@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
 inline float LengthOf(float value) { return (float)std::sqrt((double)value); }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}

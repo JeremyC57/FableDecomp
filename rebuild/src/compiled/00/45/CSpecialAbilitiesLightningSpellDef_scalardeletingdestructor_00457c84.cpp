@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesLightningSpellDef { void* vftable; };
+class CSpecialAbilitiesLightningSpellDef { public: void* vftable; };
 
 extern void __fastcall CSpecialAbilitiesLightningSpellDef_dtor(CSpecialAbilitiesLightningSpellDef* def);
 void __cdecl operator delete(void* p);

@@ -2,7 +2,7 @@
 
 struct GuiTarget { int probe; };
 
-struct CGuiVarTransferBool {
+class CGuiVarTransferBool { public:
     GuiTarget* target;
     int        arg2;
     int        pad8;

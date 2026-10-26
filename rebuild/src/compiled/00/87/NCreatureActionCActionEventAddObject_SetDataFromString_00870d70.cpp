@@ -12,7 +12,7 @@
 // its presence sets DestroyOnExit (+0x1c). The string argument is a reference (its slot is read once).
 // No engine header exists; the CActionBase words before +0x14 are pads.
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0

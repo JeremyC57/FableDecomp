@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CVillageMemberBase {
   void Duplicate(const CDefClassBase* src);
 };
 
-struct CVillageMemberDef {
+class CVillageMemberDef { public:
   char pad[0x25];
   unsigned char f25;
 };

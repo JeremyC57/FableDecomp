@@ -57,7 +57,7 @@ static void GFSerialiseVectorBinaryIn(TestStream& stream, CDefStringArray& out) 
     int n; stream.Read(&n, 4); out.Count = n; out.First = -1;
     for (int i = 0; i < n; ++i) { int v; stream.Read(&v, 4); if (i == 0) out.First = v; }
 }
-struct CObjectAugmentationParticleSet {
+class CObjectAugmentationParticleSet { public:
     float PeriodSecs; int ParticleEffect; int ParticleEffectToBlendTo; int AttackParticleEffect; int AttackParticleEffectToBlendTo;
     CDefStringArray StartPoint; CDefStringArray EndPoint;
 };

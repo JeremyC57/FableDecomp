@@ -5,7 +5,7 @@
 // PDB CCamera: +0x00 WorldPosition, +0x18 RHSet.Forward, +0x24 HeightLocked. The locked branch adds the two
 // products straight into the members; the free branch builds `Forward * distance` in a 12-byte stack
 // temporary (only its Z lands in memory, `fstp [esp+8]`) and adds it with the inline operator+=.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -13,7 +13,7 @@ struct C3DVector {
     C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
 };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;               // +0x00
     C3DVector       Up;                          // +0x0C
     C3DVector       Forward;                     // +0x18

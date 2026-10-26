@@ -1,10 +1,10 @@
 #include <cstdio>
 
-struct CCombatAbilityUseProjectileWeaponDef {
+class CCombatAbilityUseProjectileWeaponDef { public:
     unsigned char _tail[0x48];
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     int calls;
     void* args[3];
     void PersistA(void* p){ args[calls++]=p; }

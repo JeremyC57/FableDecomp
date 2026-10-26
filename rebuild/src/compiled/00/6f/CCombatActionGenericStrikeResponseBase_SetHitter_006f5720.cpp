@@ -9,7 +9,7 @@
 // with SetPItem @ 0x00A01B90, read back with GetPItem @ 0x00A01B50 into the member pointer at
 // +0x114, and destroyed @ 0x00A01C10. The class comes from the manifest label when unique.
 // One of 17 bodies of this shape.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -25,7 +25,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCombatAction_GenericStrikeResponseBase {
+class CCombatAction_GenericStrikeResponseBase { public:
     unsigned char _pad[0x114];
     CBaseIntelligentPointer m_target;      // +0x114
     void SetHitter(CBaseObject* thing);

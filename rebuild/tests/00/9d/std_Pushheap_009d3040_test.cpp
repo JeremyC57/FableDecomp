@@ -7,7 +7,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) { return PackedInts[index]; }
 };
 struct CRuntimeDataArray { CRuntimeData* First; CRuntimeData* Last; CRuntimeData* End; };
-struct CBankFile { CRuntimeDataArray RuntimeData; CPackedUIntArray PackedDataOffset; };
+class CBankFile { public: CRuntimeDataArray RuntimeData; CPackedUIntArray PackedDataOffset; };
 inline unsigned long GetEntryDataOffset(CBankFile* bank, unsigned long index)
 {
     if (bank->PackedDataOffset.Size != 0)

@@ -14,13 +14,13 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTimer;
-struct CGameScriptInterface {                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CTimer;
+class CGameScriptInterface { public:                       // the quest's game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) NewScriptFrame
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -78,14 +78,14 @@ struct CGameScriptInterface {                       // the quest's game script i
     virtual void RemoveQuestInfoElement(long element) const;   // slot 338 (+0x548) RemoveQuestInfoElement
 };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xf20];
     float HOB_TotalTime;                                // +0xF20
 };

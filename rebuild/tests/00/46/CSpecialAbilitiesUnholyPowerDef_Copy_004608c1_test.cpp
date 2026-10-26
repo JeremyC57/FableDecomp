@@ -3,7 +3,7 @@
 /* Standalone deterministic test: we cannot run the real engine tail-call,
  * so we mock the impl and confirm the thunk forwards this+src unchanged. */
 
-struct CSpecialAbilitiesUnholyPowerDef { int tag; };
+class CSpecialAbilitiesUnholyPowerDef { public: int tag; };
 
 static CSpecialAbilitiesUnholyPowerDef* g_this = 0;
 static void* g_src = 0;

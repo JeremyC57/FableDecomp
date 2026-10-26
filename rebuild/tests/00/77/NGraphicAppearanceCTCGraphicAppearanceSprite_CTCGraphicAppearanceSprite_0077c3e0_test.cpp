@@ -5,8 +5,8 @@ static CAGraphicAppearanceComponent* g_registered = 0; static int g_count = 0;
 struct CTCGraphicAppearance {
     void RegisterComponent(CAGraphicAppearanceComponent* c) { g_registered = c; ++g_count; }
 };
-struct CThing { CTCGraphicAppearance* PTCGraphicAppearance; };
-struct CTCBase {
+class CThing { public: CTCGraphicAppearance* PTCGraphicAppearance; };
+class CTCBase { public:
     virtual ~CTCBase() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     CTCBase(CThing* owner) : ParentThing(owner), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }

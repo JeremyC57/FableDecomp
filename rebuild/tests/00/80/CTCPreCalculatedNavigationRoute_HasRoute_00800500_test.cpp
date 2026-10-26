@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     unsigned char m_flags;
     bool IsDead() const { return (m_flags & 1) != 0; }
 };
@@ -20,7 +20,7 @@ struct CRetailVector_RouteNode {
     SRouteNode* _Myfirst; SRouteNode* _Mylast; SRouteNode* _Myend;
     bool empty() const { return _Myfirst == _Mylast; }
 };
-struct CTCPreCalculatedNavigationRoute {
+class CTCPreCalculatedNavigationRoute { public:
     CBaseIntelligentPointer PThingToCalculateRouteTo;
     CRetailVector_RouteNode Route;
     long HasRoute() const

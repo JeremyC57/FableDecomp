@@ -12,7 +12,7 @@
 // sequence only carries a flattened base blob, so the class is modelled locally.
 // The owner is read through an inline const accessor (GetOwner): the plain member read gives the
 // same instructions but colours the AddAction argument edx and the delete argument eax (retail: eax, ecx).
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 struct SCountBlock {
     long m_references;                      // +0
@@ -20,7 +20,7 @@ struct SCountBlock {
     void* m_pObject;                        // +8
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
 };
 

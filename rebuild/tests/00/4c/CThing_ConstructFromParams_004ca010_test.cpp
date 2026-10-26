@@ -3,25 +3,25 @@
 #include <cstring>
 static char g_log[256];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CCharString {
+class CCharString { public:
     const char* text;
     CCharString() : text("") {}
     CCharString(const char* t, long length) : text(t) { (void)length; }
 };
 static CCharString g_DefaultSerialisationSectionName("default", -1);
 inline CCharString GetDefaultSerialisationSectionName() { return g_DefaultSerialisationSectionName; }
-struct CThingBaseDef { long DefaultScriptName; long DefaultScriptData; };
+class CThingBaseDef { public: long DefaultScriptName; long DefaultScriptData; };
 struct CThingBaseDefPointer { CThingBaseDef* m_p; };
 static const char* g_strings[3] = { "", "ScriptA", "DataB" };
 struct CDefStringTable { CCharString GetString(long index) { return CCharString(g_strings[index], -1); } };
 static CDefStringTable g_DefStringTable;
 static CThingBaseDef g_def = { 1, 2 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     bool GetDef(long globalIndex, CThingBaseDefPointer* out) { LOG("getdef"); out->m_p = globalIndex == 7 ? &g_def : 0; return out->m_p != 0; }
 };
-struct CMainGameComponent { bool editor; bool IsEditorRunning() { return editor; } };
+class CMainGameComponent { public: bool editor; bool IsEditorRunning() { return editor; } };
 class CThing;
-struct CThingManager {
+class CThingManager { public:
     CMainGameComponent* Component;
     CGameDefinitionManager* DefinitionManager;
     void ReregisterAllocatedClass(CThing*, unsigned long type, bool) { LOG(type == 3 ? "rereg" : "rereg?"); }

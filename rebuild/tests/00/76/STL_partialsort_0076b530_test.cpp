@@ -1,7 +1,7 @@
 // Behaviour test for 0x0076B530 STLport __partial_sort over (key, C3DVector) pairs: the 4 smallest keys sorted in front.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }

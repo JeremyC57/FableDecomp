@@ -3,7 +3,7 @@ struct SVolumeParams {
     long m_mode; float m_volume; float m_fadeTime;
     bool operator==(const SVolumeParams& o) const { return m_mode == o.m_mode && m_volume == o.m_volume && m_fadeTime == o.m_fadeTime; }
 };
-struct CMusicManager {
+class CMusicManager { public:
     unsigned int m_dirtyFlags;
     void SetVolumeParams(SVolumeParams** current, SVolumeParams* storage, const SVolumeParams* value)
     {

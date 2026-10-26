@@ -10,13 +10,13 @@
 // and passed by reference to every call). For the nested calls VC fetches the outer vtable before
 // evaluating the inner call and re-reads the interface pointer afterwards (it is a member, not a
 // local), which is the retail `mov ebx,[eax]` / `mov ecx,[esi+4]` pairing.
-struct CScriptThing {
+class CScriptThing { public:
     void* __vftable;
     void* PImp_Data;
     void* PImp_Info;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();

@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 static int g_blocks = 0, g_deleted = 0, g_previousCalls = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned int refs;
     void (*destroy)(void*);
     void* object;
@@ -41,13 +41,13 @@ public:
 };
 
 #pragma pack(push, 1)
-struct COldFileFormatLevel1 {
+class COldFileFormatLevel1 { public:
     unsigned int ByteLength;
     unsigned char SerialiseVersionNumber;
     int MapDataOffset;
     int ThingDataOffset;
 };
-struct COldFileFormatLevel2 {
+class COldFileFormatLevel2 { public:
     unsigned int ByteLength;
     unsigned char SerialiseVersionNumber;
     int MapDataOffset;

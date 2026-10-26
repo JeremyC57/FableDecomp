@@ -12,11 +12,11 @@
 // CDefPointeeBase destructor stores 0x01230BA0.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 template <class T> struct CRetailVector {          // STLport vector (12 bytes)
@@ -29,7 +29,7 @@ struct CBase_009fc550 {
     virtual void v00();
     ~CBase_009fc550();                             // 0x009FC550 (labelled "~CMemoryBlock")
 };
-struct CDefPointeeBase : CBase_009fc550 {          // vtable 0x01230BA0
+class CDefPointeeBase : public CBase_009fc550 { public:          // vtable 0x01230BA0
     virtual void v00();
     ~CDefPointeeBase() { }                         // inlined: the vtable store then the base tail jump
 };

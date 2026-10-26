@@ -1,6 +1,6 @@
 #pragma optimize("t",on)
 
-struct CCreatureAction_FireMissileWeapon {
+class CCreatureAction_FireMissileWeapon { public:
     char pad[0xC0];
     int cooldown;
 };

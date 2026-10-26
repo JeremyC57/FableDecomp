@@ -7,13 +7,13 @@
 //
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo {                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              m_pData;                             // PDB: Data
     CCPPointerInfo* m_pInfo;                             // PDB: Info
     bool IsValid() const { return m_pData != 0; }
@@ -32,13 +32,13 @@ template<class T> struct CCountedPointer {
         m_pData = 0;
     }
 };
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void RemoveLOD(unsigned long lod, bool keepStats);   // 0x00A249A0
 };
-struct C3DMesh2; struct CBankFileAsyncData;
+class C3DMesh2; class CBankFileAsyncData;
 // Local model of rebuild/include/engine/C3DMeshLODInfo.h (same offsets): the header flattens the two counted
 // pointers into Data/Info fields, and this body is the pointer's own inline member function on that object.
-struct C3DMeshLODInfo {
+class C3DMeshLODInfo { public:
     unsigned char                       _resource[0x1c];   // CResource base
     CCountedPointer<C3DMesh2>           Mesh;              // +0x1c
     CCountedPointer<CBankFileAsyncData> FileData;          // +0x24

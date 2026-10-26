@@ -1,6 +1,6 @@
 // CContainerRewardHeroDef::Copy  0x004e249b
 
-struct CDefClassBase { };
+class CDefClassBase { public: };
 
 // member object at +0x28 with a Copy(const T&) method -> 0x4e24ba
 struct Member28 {
@@ -8,7 +8,7 @@ struct Member28 {
     void Copy(const Member28& src);
 };
 
-struct CContainerRewardHeroDef {
+class CContainerRewardHeroDef { public:
     char pad[0x28];
     Member28 m28;   // at +0x28
     void BaseCopy(const CDefClassBase& src); // -> 0x431f10 (base class Copy, this at +0)

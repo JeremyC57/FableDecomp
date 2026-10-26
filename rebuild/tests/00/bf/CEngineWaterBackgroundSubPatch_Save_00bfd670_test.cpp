@@ -5,12 +5,12 @@
 static long g_longs[8]; static int g_nLongs = 0; static unsigned short g_shorts[4]; static int g_nShorts = 0;
 static long g_written = 0; static int g_writes = 0, g_vlock = 0, g_vunlock = 0, g_ilock = 0, g_iunlock = 0;
 static long g_lastStride = 0, g_lastCount = 0;
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void Write(const void*, long size) { g_written += size; ++g_writes; }
     void WriteUShort(unsigned short v) { g_shorts[g_nShorts++] = v; }
     void WriteLong(long v) { g_longs[g_nLongs++] = v; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First; T* Last; T* End;
     CArray() : First(0), Last(0), End(0) {}
     ~CArray() { if (First) std::free(First); }
@@ -26,9 +26,9 @@ struct CRangeCompressor {
         return count + stride;
     }
 };
-struct CVertexBufferWin32 { void* Lock(unsigned long, unsigned long, unsigned long) { ++g_vlock; return this; } void Unlock() { ++g_vunlock; } };
-struct CIndexBuffer { void* Lock(unsigned long, unsigned long, unsigned long) { ++g_ilock; return this; } void Unlock() { ++g_iunlock; } };
-struct CEngineWaterBackgroundSubPatch {
+class CVertexBufferWin32 { public: void* Lock(unsigned long, unsigned long, unsigned long) { ++g_vlock; return this; } void Unlock() { ++g_vunlock; } };
+class CIndexBuffer { public: void* Lock(unsigned long, unsigned long, unsigned long) { ++g_ilock; return this; } void Unlock() { ++g_iunlock; } };
+class CEngineWaterBackgroundSubPatch { public:
     CIndexBuffer* IndexBuffer; CVertexBufferWin32* VertexBuffer; unsigned short PolyCount, VertexCount; long WaterType;
     void Save(CDataOutputStream& stream);
 };

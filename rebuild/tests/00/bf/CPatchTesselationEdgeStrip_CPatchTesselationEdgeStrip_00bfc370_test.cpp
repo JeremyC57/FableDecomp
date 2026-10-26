@@ -5,7 +5,7 @@
 static long g_base = 0; struct CBase { virtual void v00() { } CBase() { ++g_base; } };
 struct SEdgeStripState { unsigned short m_firstVertex; unsigned short m_vertexCount; long m_8, m_c, m_10, m_14, m_18, m_1c, m_20, m_24; bool m_flag28; bool m_flag29;
     SEdgeStripState() { m_8 = 0; m_c = 0; m_10 = 0; m_14 = 0; m_18 = 0; m_1c = 0; m_20 = 0; m_24 = 0; m_firstVertex = 0; m_vertexCount = 0; m_flag28 = false; m_flag29 = false; } };
-struct CPatchTesselationEdgeStrip : CBase { virtual void v00() { } SEdgeStripState m_state; CPatchTesselationEdgeStrip() : CBase(), m_state() { } };
+class CPatchTesselationEdgeStrip : public CBase { public: virtual void v00() { } SEdgeStripState m_state; CPatchTesselationEdgeStrip() : CBase(), m_state() { } };
 
 int main()
 {

@@ -1,14 +1,14 @@
 #include <cstdio>
 #include <cstring>
 static char g_seq[32] = ""; static long g_last = -1;
-struct CMouse { virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { } virtual void v12() { } virtual void v13() { }
+class CMouse { public: virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { } virtual void v12() { } virtual void v13() { }
     virtual void SetHasInputFocus(long f) { std::strcat(g_seq, "M"); g_last = f; } };
-struct CKeyboard { virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void SetHasInputFocus(long f) { std::strcat(g_seq, "K"); g_last = f; } };
-struct CJoystick { virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { } virtual void v12() { } virtual void v13() { } virtual void v14() { } virtual void v15() { }
+class CKeyboard { public: virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void SetHasInputFocus(long f) { std::strcat(g_seq, "K"); g_last = f; } };
+class CJoystick { public: virtual void v00() { } virtual void v01() { } virtual void v02() { } virtual void v03() { } virtual void v04() { } virtual void v05() { } virtual void v06() { } virtual void v07() { } virtual void v08() { } virtual void v09() { } virtual void v10() { } virtual void v11() { } virtual void v12() { } virtual void v13() { } virtual void v14() { } virtual void v15() { }
     virtual void SetHasInputFocus(long f) { std::strcat(g_seq, "J"); g_last = f; } };
 template<class T> struct scoped_ptr { T* ptr; T* get() const { return ptr; } T* operator->() const { return ptr; } };
 struct CCountedPointer_CJoystick { CJoystick* m_pObject; void* m_pCount; };
-struct CInputManager {
+class CInputManager { public:
     virtual void v00() { }
     unsigned char _pad04[0x20];
     scoped_ptr<CMouse> PMouse; scoped_ptr<CKeyboard> PKeyboard;

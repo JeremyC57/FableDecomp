@@ -40,8 +40,8 @@ CCharString& CCharString::operator=(const CCharString& rhs)
     return *this;
 }
 
-struct CParsedItem
-{
+class CParsedItem
+{ public:
     long type;
     long m_pad0;
     CCharString value;

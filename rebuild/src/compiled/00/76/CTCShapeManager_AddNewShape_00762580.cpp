@@ -14,7 +14,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
 namespace NShape {
-struct CShape {
+class CShape { public:
     virtual void v00();
     virtual long GetShapeType() const;              // slot 1 (+0x04)
     virtual void v02(); virtual void v03(); virtual void v04();
@@ -27,7 +27,7 @@ template <class T> struct SCountBlock {
     void (T::*m_pfnDestroy)();                      // +0x04
     T*   m_pItem;                                   // +0x08
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;                                        // +0x00
     SCountBlock<T>* Info;                           // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -87,7 +87,7 @@ __declspec(noinline) CShapePointer* CShapeVector::insert(CShapePointer* pos, con
     return _M_start + index;
 }
 #pragma auto_inline(on)
-struct CTCShapeManager {
+class CTCShapeManager { public:
     virtual void v00();
     void*          ParentThing;                     // +0x04 (CTCBase)
     bool           ToBeRemoved;                     // +0x08

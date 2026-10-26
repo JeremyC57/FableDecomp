@@ -14,7 +14,7 @@
 class CGameScriptInterfaceBase;
 class CScriptDataBase;
 class CCharString;
-struct CScriptBase {                                    // 0x40 bytes, the quest-script root
+class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f
     CScriptBase();                                      // 0x00CB8110

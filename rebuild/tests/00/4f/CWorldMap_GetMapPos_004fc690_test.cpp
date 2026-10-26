@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-struct C2DCoordI { long x; long y; };
+class C2DCoordI { public: long x; long y; };
 struct MapEntry { long a; long b; long pad[16]; };
-struct CWorldMap { long f[8]; MapEntry* f20; };
+class CWorldMap { public: long f[8]; MapEntry* f20; };
 
 C2DCoordI __fastcall GetMapPos(CWorldMap* self, long index)
 {

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CResource {
+class CResource { public:
     char pad[0xc];
     CResource* a;   // +0xc
     CResource* b;   // +0x10

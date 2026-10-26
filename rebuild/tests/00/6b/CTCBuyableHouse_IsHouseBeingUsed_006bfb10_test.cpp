@@ -23,8 +23,8 @@ static int fails = 0;
 // branch; begin()/end() are the STLport inline accessors returning the 4-byte node iterator by value
 // (raw node-pointer arguments give the same instructions with edx/ecx swapped).
 
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -60,8 +60,8 @@ struct CPeopleList {
     SPeopleIter end() const { return SPeopleIter(_M_node); }
 };
 
-struct HasBuildingAsWork { CThingInterfaces* Building; HasBuildingAsWork(CThingInterfaces* b) : Building(b) {} };
-struct HasBuildingAsHomeOrWork { CThingInterfaces* Building; HasBuildingAsHomeOrWork(CThingInterfaces* b) : Building(b) {} };
+class HasBuildingAsWork { public: CThingInterfaces* Building; HasBuildingAsWork(CThingInterfaces* b) : Building(b) {} };
+class HasBuildingAsHomeOrWork { public: CThingInterfaces* Building; HasBuildingAsHomeOrWork(CThingInterfaces* b) : Building(b) {} };
 
 long __stdcall CountIfWork(SPeopleIter first, SPeopleIter last, HasBuildingAsWork pred);              // 0x006C1C70
 long __stdcall CountIfHomeOrWork(SPeopleIter first, SPeopleIter last, HasBuildingAsHomeOrWork pred);  // 0x006600EC
@@ -71,7 +71,7 @@ struct CTCVillage_Model {
     CPeopleList People;                          // +0x2c list<CIntelligentPointer<CThingAICreature>> node
 };
 
-struct CTCVillageMember {
+class CTCVillageMember { public:
     CTCVillage_Model* GetPVillage() const;                  // 0x007EE540
 };
 

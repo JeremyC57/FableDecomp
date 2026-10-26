@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCSmashableWindow {
+class CTCSmashableWindow { public:
     unsigned char _body[0x18];       // sizeof(CTCSmashableWindow) = 0x18
     CTCSmashableWindow(void* owner);                   // 0x004DC6BA
 };

@@ -2,10 +2,10 @@
 // is forwarded, the sound pair is silent, the target pointer is explicitly set to null and the global index stored.
 #include <cstdio>
 
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
-struct CAnimationEntry { int id; };
-struct CSoundPair {
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
+class CAnimationEntry { public: int id; };
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -15,15 +15,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem((const void*)1), m_sets(0) { }
     void SetPItem(const void* p) { m_pItem = p; ++m_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* m_owner; float m_a, m_b; CAnimationEntry* m_anim; CSoundPair m_sound; long m_c, m_d;
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* anim, const CSoundPair& s, long c, long d)
         : m_owner(owner), m_a(a), m_b(b), m_anim(anim), m_sound(s), m_c(c), m_d(d) { }
 };
-struct CCreatureAction_FireMissileTest : CCreatureActionBase {
+class CCreatureAction_FireMissileTest : public CCreatureActionBase { public:
     CIntelligentPointer<const CThing> PTarget; long GlobalIndex;
     CCreatureAction_FireMissileTest(CThingCreatureBase* owner, long gi, CAnimationEntry* anim, float speed, long c, long d)
         : CCreatureActionBase(owner, -1.0f, speed, anim, CSoundPair(), c, d), PTarget(0), GlobalIndex(gi) { }

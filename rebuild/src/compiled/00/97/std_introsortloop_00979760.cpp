@@ -17,7 +17,7 @@ class CThing;
 extern "C" double __cdecl pow(double x, double y);                                    // _CIpow 0x00BFEB40
 extern "C" double __cdecl sqrt(double x);
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -27,7 +27,7 @@ public:
 };
 
 // C2DVector (Ego_r.pdb: X +0, Y +4) with the engine's memberwise user copy constructor.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };

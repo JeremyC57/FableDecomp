@@ -8,8 +8,8 @@ typedef __int64 i64;
 static char g_log[512];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 
-struct CPersistContext;
-struct CMemoryDataInputStream {
+class CPersistContext;
+class CMemoryDataInputStream { public:
     void* m_pVtable; unsigned long m_position; long StreamSize; const unsigned char* m_pData; long SourceChunkStreamPos; long m_remaining;
     void ReadWithSrcChunkOverflow(unsigned char* buffer, long size) { LOG("overflow"); long v = 3; std::memcpy(buffer, &v, 4); (void)size; }
     static bool IsValidPosition(i64 position) { return position >= 0 && position <= 0x7fffffff; }
@@ -22,7 +22,7 @@ struct CMemoryDataInputStream {
     }
     long ReadLong() { long value = 0; Read(&value, 4); return value; }
 };
-struct CDataOutputStream { long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CDataOutputStream { public: long written; void WriteLong(long v) { LOG("write"); written = v; } };
 static int g_transfers, g_ctors, g_dtors, g_tempSeen;
 class CUIStateDef {
 public:
@@ -37,7 +37,7 @@ template <class T> struct vector {
     T& operator[](long index) { return _M_start[index]; }
     void resize(long count, const T& x) { LOG("resize"); g_tempSeen = x.id; _M_finish = _M_start + count; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void CheckCRC(const char* name) { LOG(name[0] == 0 ? "crc" : "crc?"); }
     template <class T> void TransferVectorOfSubComponents(vector<T>& value);

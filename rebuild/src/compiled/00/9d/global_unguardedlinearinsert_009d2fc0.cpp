@@ -10,7 +10,7 @@
 // Shape: `next = last - 1` in ebx, `last` and `value` spilled to the frame (two words), the comparator's
 // GetEntryDataOffset inlined twice (value first, then *next, read into edi before the packed test), the
 // unsigned `<` (`jae` exits), the element moved through eax and `last` re-pointed via the frame slot.
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

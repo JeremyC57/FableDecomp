@@ -1,14 +1,14 @@
 #include <cstdio>
 
-struct CAInputProcess;
+class CAInputProcess;
 
-struct CInputProcessManager {
+class CInputProcessManager { public:
     int registered;
     CAInputProcess* last;
     void Register(CAInputProcess* p);
 };
 
-struct CAInputProcess {
+class CAInputProcess { public:
     CInputProcessManager* manager;
     int onAddedCalled;
     virtual void v0() {}

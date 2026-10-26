@@ -10,8 +10,8 @@
 // Shape: the members are initialiser-list stores in declaration order; the appearance-frame array is zeroed by a loop in the
 //          body (VC7.1 unrolls it through its own zero register) and the four husband-appearance flags by one dword store.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04
     bool ToBeRemoved;                           // +0x08
@@ -51,13 +51,13 @@ struct SLongNode {                              // set<long> node, 0x14 bytes
     SLongNode* m_pRight;
     long m_key;
 };
-struct CHeroMarriageDef;
+class CHeroMarriageDef;
 struct CDefPointerHeroMarriage {
     const CHeroMarriageDef* Object;
     CDefPointerHeroMarriage() : Object(0) { }
 };
 extern const unsigned long g_invalidSampleID;   // 0x0129D25C
-struct CTCWife : CTCBase {
+class CTCWife : public CTCBase { public:
     CDefPointerHeroMarriage PHeroMarriageDef;   // +0x0c
     long OpinionAttitude;                       // +0x10 EOpinionAttitudeType
     unsigned char AttitudeUpdateCounter;        // +0x14

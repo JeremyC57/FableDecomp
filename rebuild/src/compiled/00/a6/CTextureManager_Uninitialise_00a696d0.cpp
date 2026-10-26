@@ -6,7 +6,7 @@
 // Shape: `if (TextureBuffer) TextureBuffer = 0;` -- the shared zero register is compared against the pointer and
 // stored into both the flag byte and the pointer (`xor eax,eax ; cmp edx,eax ; mov [ecx+4],al ; je ; mov [..],eax`).
 struct CPreallocTexturePool { unsigned char _body[0x54]; void FrameEnd(); };   // FrameEnd 0x009FC150 (labelled CResourceList::FrameEnd)
-struct CTextureManager {
+class CTextureManager { public:
     void*                __vftable;                    // +0x00
     bool                 Initialised;                  // +0x04
     unsigned long        PoolCount;                    // +0x08

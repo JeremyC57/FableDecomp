@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstddef>
 struct CKeyPairCompareLess { };
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     struct SPair { K first; V second; };
     SPair* m_first; SPair* m_last; SPair* m_end; CKeyPairCompareLess Compare; bool Dirty;
     CVectorMap() : m_first(0), m_last(0), m_end(0), Dirty(false) { }
 };
-struct CDefString { long TablePos; CDefString() : TablePos(-1) { } };
-struct CAnimationEntry { long BankIndex; CDefString AnimName; CDefString GroupName; void* Components; };
-struct CAnimationSet {
+class CDefString { public: long TablePos; CDefString() : TablePos(-1) { } };
+class CAnimationEntry { public: long BankIndex; CDefString AnimName; CDefString GroupName; void* Components; };
+class CAnimationSet { public:
     CVectorMap<unsigned long, CAnimationEntry> Anims; long DefaultFlags; long DefaultTransitionTime; long DefaultDelay; CDefString DefaultGroup;
     CAnimationSet() : DefaultFlags(0), DefaultTransitionTime(0), DefaultDelay(0) { }
 };

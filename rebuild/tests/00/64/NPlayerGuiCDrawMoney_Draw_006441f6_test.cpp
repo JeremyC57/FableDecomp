@@ -3,7 +3,7 @@
 
 // NPlayerGui::CDrawMoney::Draw: marks the drawer as drawing, sets the stat bar's graphics from the GUI def and draws it with the GUI
 // alpha scaled to 0..255 and the def's position/offset/colour.
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CStatBar {
     long GraphicIndex, BorderGraphicIndex, EffectIndex;
     int draws; const C2DVector* pos; const C2DVector* offset; unsigned char alpha; bool force; void* info; void* bank;
@@ -11,8 +11,8 @@ struct CStatBar {
     virtual void Draw(void* i, void* b, const C2DVector& p, const C2DVector& o, const unsigned int& colour, unsigned char a, bool f)
     { (void)colour; ++draws; info = i; bank = b; pos = &p; offset = &o; alpha = a; force = f; }
 };
-struct CPlayerGui { float Alpha; CStatBar* bar; };
-struct CPlayerGuiDef { long g1, g2; long graphics[6]; C2DVector Pos, Offset; unsigned int Colour; };
+class CPlayerGui { public: float Alpha; CStatBar* bar; };
+class CPlayerGuiDef { public: long g1, g2; long graphics[6]; C2DVector Pos, Offset; unsigned int Colour; };
 static CPlayerGuiDef g_def;
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 struct CDraw {

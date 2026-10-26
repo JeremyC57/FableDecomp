@@ -1,7 +1,7 @@
 // Behaviour test for CTCActivationReceptorDoor::SetDoorOpen @ 0x007F80C0: the flag reaches the parent thing's door component (interface 0x26).
 #include <cstdio>
 
-struct CTCBase { int unused; };
+class CTCBase { public: int unused; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -15,7 +15,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -51,7 +51,7 @@ struct CTestThing : CThing {
     }
 };
 
-struct CTCDoor : CTCBase {
+class CTCDoor : public CTCBase { public:
     bool open; int calls;
     void ScriptTriggerOpen(bool o) { open = o; ++calls; }
 };

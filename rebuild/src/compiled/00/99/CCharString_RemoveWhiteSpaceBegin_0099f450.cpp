@@ -12,7 +12,7 @@
 // is assigned through the landed operator= (self test, release of a held block, share + NoRefs bump) inline, then the
 // local's inline destructor runs.
 #pragma pack(push, 1)
-struct CCharStringData {                      // 17 bytes
+class CCharStringData { public:                      // 17 bytes
     char*         PData;                      // +0x00
     unsigned long StringLength;               // +0x04
     unsigned long DataLength;                 // +0x08 (DataLength:31 + a flag bit)

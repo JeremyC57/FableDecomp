@@ -10,15 +10,15 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                        // 0x0099E4B0
     ~CCharString();                                       // 0x0099EAE0
     CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Read(void* buffer, unsigned long size);  // slot 4 (+0x10)
     virtual void v5();
@@ -52,18 +52,18 @@ struct CMemoryDataInputStream {
 };
 
 
-struct CBankFile {
+class CBankFile { public:
     unsigned long FindIndexByFilename(const CCharString& name, long flags);   // 0x009CCDF0
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() {}
     unsigned long IVRefCount;
     CIVCountedPointeeBase() : IVRefCount(1) {}
 };
 
-struct C3DMeshMaterial {
-    struct CFilenames : CIVCountedPointeeBase {
+class C3DMeshMaterial { public:
+    class CFilenames : public CIVCountedPointeeBase { public:
         CCharString DiffuseMapName;
         CCharString BumpMapName;
         CCharString ReflectionMapName;

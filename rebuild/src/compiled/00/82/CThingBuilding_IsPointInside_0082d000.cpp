@@ -9,17 +9,17 @@
 //   this-register ecx); the getter re-reads the member after the virtual call. The mesh object is a 0x40-byte frame local (`sub esp,40h`) built in place by the by-value getter; the
 //   bool result rides in bl across its destructor; the 0.0f tolerance is pushed as an immediate 0.
 class CCharString;
-struct C3DVector;
+class C3DVector;
 
 extern CCharString g_containmentVolumeName;     // 0x013BAC98
 
-struct CPhysicsMeshObject {
+class CPhysicsMeshObject { public:
     unsigned char _body[0x40];
     ~CPhysicsMeshObject();                                                      // 0x00A127D0
     bool IsInContainmentVolume(const CCharString& volume, const C3DVector& pos, float tolerance);  // 0x00A128E0
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -43,7 +43,7 @@ struct CTCPhysicsBase {
     CPhysicsMeshObject GetPhysicsMeshObject();          // 0x006B0850
 };
 
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* m_pPhysics;                         // +0x60
     bool IsPointInside(const C3DVector& pos);

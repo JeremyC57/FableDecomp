@@ -5,7 +5,7 @@
 // The manifest label "CRightHandedSet::GetRight" is propagated: the body writes `this` as a bare C3DVector from
 // two vector arguments (`ret 8`, no hidden result, eax not `this`). Its caller 0x00C40590 passes (edi, ebx) to the
 // member at +0x3c of its owner. The three statements store X, Y, Z in turn.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     void SetCrossProduct(const C3DVector& a, const C3DVector& pos);
 };

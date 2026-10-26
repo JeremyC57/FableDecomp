@@ -11,7 +11,7 @@
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: ThingTypeFlags +0x6c [PDB +0x7c], the state
 // bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x6c];
     unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
@@ -51,8 +51,8 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingVillage : CThing { enum { ThingListType = 4 }; };
-struct C3DVector { float X, Y, Z; };
+class CThingVillage : public CThing { public: enum { ThingListType = 4 }; };
+class C3DVector { public: float X, Y, Z; };
 namespace std {
 template <class R, class T, class A> class const_mem_fun1_ref_t {   // (thing.*pmf)(arg)
     R (T::*_M_f)(A) const;
@@ -68,7 +68,7 @@ public:
     R operator()(const T& x) const { return op(x, value); }
 };
 }
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     C3DVector Pos;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

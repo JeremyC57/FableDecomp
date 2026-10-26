@@ -9,30 +9,30 @@
 // Layout (Ego_r.pdb C3DMeshObject, 0x78): vptr +0, MeshInfo +4, Mesh = CCountedPointer<const C3DMeshStats> +8 (Data, Info).
 // Shape: the statistics pointer is read once into esi and null-tested first; the call is the `if` body and `return false` the fall-through, which VC places at the end (`xor al,al`); the CCharString
 //   accessors are inlined length-first (call arguments evaluate right to left).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                        // +0x00
     unsigned long m_length;                        // +0x04
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: ""
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     bool HasDummyObject(unsigned long nameHash) const;   // 0x00A2EA60
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;                                    // +0
     void* Info;                                    // +4
 };
 
-struct C3DMeshInfo;
+class C3DMeshInfo;
 
-struct C3DMeshObject {
+class C3DMeshObject { public:
     virtual void v00();
     C3DMeshInfo*                         MeshInfo; // +0x04
     CCountedPointer<const C3DMeshStats>  Mesh;     // +0x08

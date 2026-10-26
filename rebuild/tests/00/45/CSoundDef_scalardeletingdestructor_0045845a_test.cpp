@@ -1,7 +1,7 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 
-struct CLandscapeBackgroundPatch { int destroyed; int freed; };
+class CLandscapeBackgroundPatch { public: int destroyed; int freed; };
 
 static CLandscapeBackgroundPatch* g_obj;
 

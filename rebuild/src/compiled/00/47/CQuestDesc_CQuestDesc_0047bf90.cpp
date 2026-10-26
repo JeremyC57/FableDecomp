@@ -9,7 +9,7 @@
 // The function right after (0x0047BFC0) walks the same vector at +0x0c/+0x10 destroying its strings.
 // Shape: the id store is scheduled after the string constructor's argument pushes; the status and the
 // vector's three words share one `xor eax,eax` after the string.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
 };

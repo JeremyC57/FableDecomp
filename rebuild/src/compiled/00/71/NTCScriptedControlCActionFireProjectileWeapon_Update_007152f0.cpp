@@ -14,7 +14,7 @@
 //          creature is modelled locally); CCreatureActionBase ActionID +0x28, Finished +0x61.
 // Shape: the creature is read once into ebx right after the refresh; `!IsAlive() || empty()` guards the finish test; the
 //          front action is handed over through the counted pointer's inline Get(); erase(begin()) discards the result.
-struct CCPPointerInfo;
+class CCPPointerInfo;
 class CCreatureActionBase {
 public:
     unsigned char _pad00[0x28];
@@ -23,7 +23,7 @@ public:
     bool          Finished;                        // +0x61
     long GetActionID() const;                      // 0x00692620
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                          // +0x00
     CCPPointerInfo* Info;                          // +0x04
     T* Get() const { return Data; }
@@ -56,7 +56,7 @@ public:
     bool IsPerformingAnyAction();                  // 0x006622A0
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -77,7 +77,7 @@ struct CScriptThing {
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     void*               __vftable;
     CThingCreatureBase* ParentThing;               // +0x04 (CTCBase; a creature here)
 };

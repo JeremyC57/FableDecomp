@@ -2,8 +2,8 @@
 
 #include "fable_string.h"
 
-struct C2DBoxF
-{
+class C2DBoxF
+{ public:
     float left;
     float top;
     float right;

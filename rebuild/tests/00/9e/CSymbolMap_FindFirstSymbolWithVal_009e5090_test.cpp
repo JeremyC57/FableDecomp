@@ -1,10 +1,10 @@
 #include <cstdio>
-struct CCharStringData;
-struct CCharString { CCharStringData* m_pStringData; };
+class CCharStringData;
+class CCharString { public: CCharStringData* m_pStringData; };
 struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };
 struct SSymbolPair { CCharString first; CSymbolInfo second; };
 struct CSymbolVectorMap { SSymbolPair* m_pFirst; SSymbolPair* m_pLast; SSymbolPair* m_pEnd; };
-struct CSymbolMap {
+class CSymbolMap { public:
     void* _padding_; CSymbolVectorMap SLONGMap;
     const CSymbolInfo* FindFirstSymbolWithVal(long value) const
     {

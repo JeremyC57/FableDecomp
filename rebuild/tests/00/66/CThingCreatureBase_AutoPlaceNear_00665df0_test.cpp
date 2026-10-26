@@ -1,12 +1,12 @@
 // behaviour test for CThingCreatureBase::AutoPlaceNear (0x00665DF0)
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_resets = 0;
-struct CTCCreatureNavigation { bool found; C3DVector spot;
+class CTCCreatureNavigation { public: bool found; C3DVector spot;
     bool GetNearbyWanderPosition(const C3DVector*, float radius, C3DVector* result, bool) { if (found && radius > 0) { *result = spot; return true; } return false; }
     void ResetNavigator() { ++g_resets; } };
-struct CTCPhysicsBase { C3DVector pos; void ResetPosition(const C3DVector& p) { pos = p; } };
-struct CThingCreatureBase { CTCCreatureNavigation* nav; CTCPhysicsBase* PhysicsTC;
+class CTCPhysicsBase { public: C3DVector pos; void ResetPosition(const C3DVector& p) { pos = p; } };
+class CThingCreatureBase { public: CTCCreatureNavigation* nav; CTCPhysicsBase* PhysicsTC;
     bool AutoPlaceNear(const C3DVector& position, float radius)
     {
         CTCCreatureNavigation* navigation = nav;

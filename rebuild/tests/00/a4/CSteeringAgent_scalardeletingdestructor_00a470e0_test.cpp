@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSteeringAgent {
+class CSteeringAgent { public:
     void* vftable;
     int destroyed;
 };

@@ -4,10 +4,10 @@
 #define FABLE_ENGINE_CAISTATEGROUP_MINIONREACTTOTRESPASSING_H
 #define FABLE_ENGINE_CAIBRAIN_H
 #define FABLE_ENGINE_CTCCREATUREOPINIONOFHERO_H
-struct CTCCreatureOpinionOfHero {};
+class CTCCreatureOpinionOfHero { public:};
 struct CAIStateGroup_MinionReactToTrespassing { unsigned char _pad_0x04[sizeof(void*)]; long LastFrameCheckedIsStillValid; };
-struct CThingAICreature;
-struct CAIBrain { CThingAICreature* Creature; };
+class CThingAICreature;
+class CAIBrain { public: CThingAICreature* Creature; };
 #endif
 // BEGIN EXACT CANDIDATE
 // CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool) -- periodically check ongoing trespass deeds targeting the creature home
@@ -15,10 +15,10 @@ struct CAIBrain { CThingAICreature* Creature; };
 #include "engine/CAIStateGroup_MinionReactToTrespassing.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCCreatureOpinionOfHero.h"
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer { virtual void PointerType(); void* Handle; CThing* GetPItem() const; }; // 0xA01B50
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
-struct CThing {
+class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead; unsigned char tail[0xd6]; CBaseIntelligentPointer Home; CThing* GetHome() { return Home.GetPItem(); }
     template<class T> __forceinline bool GetInterface(T** out,long type) {
@@ -33,8 +33,8 @@ struct CThing {
 
 long GetWorldFrame(); // 0x49D870
 extern long g_TrespassCheckInterval; // 0x138D2D4
-struct COpinionDeedFilter_IsStillHappening { COpinionDeedFilter_IsStillHappening() {} };
-struct COpinionDeedFilter_TargetIs { CThing* Target; COpinionDeedFilter_TargetIs(CThing* p):Target(p){} };
+class COpinionDeedFilter_IsStillHappening { public: COpinionDeedFilter_IsStillHappening() {} };
+class COpinionDeedFilter_TargetIs { public: CThing* Target; COpinionDeedFilter_TargetIs(CThing* p):Target(p){} };
 struct CFilter_Bind2 {
  const COpinionDeedFilter_IsStillHappening* F1; const COpinionDeedFilter_TargetIs* F2;
  CFilter_Bind2(const COpinionDeedFilter_IsStillHappening& a,const COpinionDeedFilter_TargetIs& b):F1(&a),F2(&b){}

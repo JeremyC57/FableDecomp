@@ -28,7 +28,7 @@ template <class It, class Pred> It find_if_model(It first, It last, Pred pred)
     return first;
 }
 
-struct CTCShapeManager {
+class CTCShapeManager { public:
     CCountedPointer* first;
     CCountedPointer* last;
     bool GetBestTrack(const CTrack** out) const

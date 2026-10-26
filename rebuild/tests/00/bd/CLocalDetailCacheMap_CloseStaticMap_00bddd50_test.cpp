@@ -4,7 +4,7 @@ struct SubObj {
     void Method(int arg);
 };
 
-struct CLocalDetailCacheMap {
+class CLocalDetailCacheMap { public:
     int    f0;
     int    f4;
     int    Map;

@@ -1,6 +1,6 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CharString896e60 { void* data; }; struct Base896e60 {}; struct Entry896e60 { long key; Base896e60* value; }; struct Map896e60 { Entry896e60* begin; Entry896e60* end; Entry896e60* LowerBound(const long* key); };
-struct Inventory896e60 { void AddContextSensitivePreferredItem(const CharString896e60& name,long context,int slot); void RemoveContextSensitivePreferredItem(const CharString896e60& name); }; struct CPlayerManager { void* ResolvePlayer(); }; struct Target896e60; struct ResolverB896e60 { Target896e60* ResolveTarget(); };
+struct Inventory896e60 { void AddContextSensitivePreferredItem(const CharString896e60& name,long context,int slot); void RemoveContextSensitivePreferredItem(const CharString896e60& name); }; class CPlayerManager { public: void* ResolvePlayer(); }; struct Target896e60; struct ResolverB896e60 { Target896e60* ResolveTarget(); };
 struct Target896e60 { unsigned char unused00[0x20]; unsigned long flags20; unsigned char unused24[0x20]; Map896e60 interfaces44; unsigned char unused4c[0x45]; unsigned char flags91; }; struct CGameScriptInterface_Methods : CGameScriptInterface {
     void SetPreferredQuickAccessItem(const CharString896e60& itemName,long context,int slot) const;
 };

@@ -9,9 +9,9 @@
 // Layout: PDB NCameraModes::CScriptModuleOpenGate (0x74 bytes): PGate +0x54, Pos +0x5c, DeltaPos +0x68,
 // over CScriptModuleSelfTerminateBase (0x54 bytes; POwner +0x38). The gate's graphic appearance is
 // cached at CThing +0x64.
-struct CBaseObject;
+class CBaseObject;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
@@ -19,7 +19,7 @@ struct CTCGraphicAppearance {
     C3DVector GetHelperPointOrCentre(float t) const; // 0x004C1060
 };
 
-struct CThing {
+class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
 };

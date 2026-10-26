@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 typedef unsigned long ulong;
 
-struct CCombatAbilityBlockProjectileWeaponAttackDef {
+class CCombatAbilityBlockProjectileWeaponAttackDef { public:
     int dummy;
 };
 

@@ -9,7 +9,7 @@
 // +8 } (8-byte aligned), so the pair is 24 bytes: key +0, UID +8, PersistScript +0x10, tail padding +0x14 (never
 // copied). The implicit operator= moves the four key/UID dwords and calls CCharString::operator=; the count is held
 // in ebx. Backward twin of 0x00CB9C80.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
@@ -17,7 +17,7 @@ struct CCharString {
 namespace NScript {
 class CRuntimeScriptedEntityPersist {
 public:
-    struct CPersistInfo {                        // Ego_r.pdb: 16 bytes
+    class CPersistInfo { public:                        // Ego_r.pdb: 16 bytes
         unsigned __int64 UID;                    // +0x00
         CCharString      PersistScript;          // +0x08
     };

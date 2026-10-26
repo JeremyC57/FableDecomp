@@ -7,7 +7,7 @@
 // this+0x50: a heap pointer; if non-null it is freed (push eax; call free; pop ecx)
 // tail-jmp to base-class FinishMove with ecx=this.
 
-struct CTCAssassinRush {
+class CTCAssassinRush { public:
     char _pad[0x68];
     // at 0x68: sub-object (opaque)
 };

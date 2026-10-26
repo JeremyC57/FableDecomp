@@ -8,14 +8,14 @@
 #define __forceinline inline
 #endif
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 const C3DVector g_XAxis = { 1.0f, 0.0f, 0.0f };
 const C3DVector g_YAxis = { 0.0f, 1.0f, 0.0f };
 const C3DVector g_ZAxis = { 0.0f, 0.0f, 1.0f };
 long g_FramesPerSecond = 30;
 
 static int g_rotateCalls = 0; static const C3DVector* g_rotateAxis[8]; static float g_rotateAngle[8];
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
     void RotateAboutAxis(const C3DVector& axis, float angle)
@@ -27,21 +27,21 @@ struct CRightHandedSet {
 };
 
 static int g_destroyCalls = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { g_destroyCalls++; }
     long m_count;
     __forceinline void ReleaseReference() { if (--m_count == 0) Destroy(); }
 };
 
-struct CInventoryDef : CDefPointeeBase {
+class CInventoryDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x780];
     float InventoryAnimXRotationSeconds;
     float InventoryAnimYRotationSeconds;
     float InventoryAnimZRotationSeconds;
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     __forceinline CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->m_count; }

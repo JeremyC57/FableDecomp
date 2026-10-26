@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMatrix3x4 { char pad[64]; };
+class CMatrix3x4 { public: char pad[64]; };
 
 struct Mesh {
     char pad[0x58];

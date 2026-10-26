@@ -5,10 +5,10 @@ template <class T> struct CRetailList {
     node* head;
     CRetailList() : head(0) { node* s = (node*)std::malloc(sizeof(node)); s->next = s; s->prev = s; head = s; }
 };
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CBase { int tag; CBase() : tag(5) { } virtual ~CBase() { } };
 struct CGraphicDataBankInfo { unsigned char _body[8]; };
-struct CGraphicBankManager : CBase {
+class CGraphicBankManager : public CBase { public:
     
     CRetailList<CGraphicDataBankInfo> GraphicDataBanks;
     CGraphicBankManager()   { }

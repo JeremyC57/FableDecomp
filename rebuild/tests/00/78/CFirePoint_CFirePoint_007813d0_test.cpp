@@ -1,8 +1,8 @@
 // Behaviour test for 0x007813D0 CFirePoint copy constructor.
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_strCopies = 0;
-struct CCharString { const char* s; CCharString() : s(0) {} CCharString(const CCharString& o) : s(o.s) { ++g_strCopies; } };
+class CCharString { public: const char* s; CCharString() : s(0) {} CCharString(const CCharString& o) : s(o.s) { ++g_strCopies; } };
 struct CIntelligentPointer {
     CThing* m_pItem;
     CIntelligentPointer() : m_pItem(0) {}

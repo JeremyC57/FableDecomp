@@ -11,7 +11,7 @@
 // range test keeps both deltas and the radius on the x87 stack and compares Radius*Radius against dX*dX + dY*dY (`test ah,41h`).
 // Layout (packed, landed 0x0077F5C0): Radius +0x0c, DoorType +0x10, HeroInsideRadius +0x14, PParticle +0x15, PHeroCentre +0x1d;
 // CThing UID +0x18 (unsigned __int64), Player byte +0x90, dead bit 0 of +0x91.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned char _pad00[0x18];
@@ -36,16 +36,16 @@ public:
 };
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                                 // +0x00
     signed char   Player;                               // +0x04
     unsigned char Data[32];                             // +0x05
@@ -56,7 +56,7 @@ struct CGameEvent : CMemoryBuffer {
     void AddLONG(long value) { Copy(4, &value); }
     void AddUID(unsigned __int64 value) { Copy(8, &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0

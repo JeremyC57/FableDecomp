@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <cstring>
 static int g_temps = 0;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char Flags91;                              // +0x91 bit 0 Dead
@@ -34,7 +34,7 @@ struct CTCDependentThings {                             // interface 0xd8
     CThing* Added; int Adds;
     void AddDependentThing(CThing* thing) { Added = thing; ++Adds; }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text) { PStringData = (void*)text; return *this; }
 };
@@ -59,7 +59,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer& p)
     }
     return false;
 }
-struct CTCDParticleEmitter {
+class CTCDParticleEmitter { public:
     virtual void v00() { }
     CThing* ParentThing;
     CTCDParticleEmitter() : PAttachedToThing(0) { }

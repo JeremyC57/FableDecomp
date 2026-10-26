@@ -26,7 +26,7 @@ struct CPrimitiveTypeVector {                            // STLport vector<EEngi
     long operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     virtual void v01();
     virtual void GetSupportedTypes(CPrimitiveTypeVector& types);   // slot 2 (+0x08)

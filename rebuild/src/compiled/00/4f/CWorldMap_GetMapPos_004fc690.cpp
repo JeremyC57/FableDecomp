@@ -1,5 +1,5 @@
 // CWorldMap::GetMapPos  @ 0x004fc690  __fastcall, returns C2DCoordI by value
-struct C2DCoordI {
+class C2DCoordI { public:
     long x;
     long y;
     C2DCoordI() {}
@@ -12,7 +12,7 @@ struct MapEntry {
     long pad[16]; // stride = 72 bytes (index scaled by 9*8)
 };
 
-struct CWorldMap {
+class CWorldMap { public:
     long f0;
     long f4;
     long World;

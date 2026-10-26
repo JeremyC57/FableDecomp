@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     void* vftable;
     int destroyed;
 };

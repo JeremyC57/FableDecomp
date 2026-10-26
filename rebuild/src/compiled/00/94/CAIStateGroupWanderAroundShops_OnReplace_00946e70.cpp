@@ -9,9 +9,9 @@
 // straight from the entry (FindEntry form). PDB member names (Shop +0x14, PrettyThing +0x1c, NextFrameBuy +0x24)
 // from the engine header, whose layout is padding only, so a local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct CThing;
-struct CWorld;
+class CTCBase;
+class CThing;
+class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -59,12 +59,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -90,11 +90,11 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CTCShop {                                // interface 0x53
+class CTCShop { public:                                // interface 0x53
     void RemoveShopper(CThing* shopper);        // 0x00772120
 };
 
-struct CTCIdleScheduler {                       // interface 0xD3
+class CTCIdleScheduler { public:                       // interface 0xD3
     void ChooseNewIdle();                       // 0x00801A50
 };
 

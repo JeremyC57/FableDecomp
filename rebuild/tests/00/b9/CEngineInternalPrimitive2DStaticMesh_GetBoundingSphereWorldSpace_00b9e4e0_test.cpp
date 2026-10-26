@@ -12,9 +12,9 @@ static int fails = 0;
 // `y*m + (x*m + z*m) + t` form reproduces that (plain sums in any term order are canonicalised to z,y,x). The radius tail
 // goes through a double local in the inline GetRadius (`double radius = R; *r = (float)(radius * scale);`, the landed
 // twin 0x00B9DBD0 form), which loads the radius first; `R * scale` in any spelling loads the scale first.
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
-struct CMatrix3x4 { float m[12]; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
+class CMatrix3x4 { public: float m[12]; };
 struct C3DMeshRecord {
     unsigned char _pad[0x28];
     C3DBoundingSphere m_sphere;   // +0x28

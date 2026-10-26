@@ -8,31 +8,31 @@
 // while the sound pair's immediate zero stores stay next to the lookup call (an inline helper returning the string by value hoists
 // them above the string constructor). The two float zeros push as `push 0`; TextTag (PDB +0xb4 = retail +0xa8) is copy-constructed
 // after the vtable store.
-struct CThingCreatureBase;
-struct CAnimationEntry;
-struct CCharString {
+class CThingCreatureBase;
+class CAnimationEntry;
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(const CWideString& other);  // 0x0099B720
 };
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 CAnimationEntry* __fastcall GetAnimationEntry(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CCreatureAction_Read : CCreatureActionBase {   // vtable 0x01270AC4
+class CCreatureAction_Read : public CCreatureActionBase { public:   // vtable 0x01270AC4
     CWideString TextTag;                    // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_Read(CThingCreatureBase* owner, const CWideString& textTag);

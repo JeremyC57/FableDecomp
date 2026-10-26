@@ -10,11 +10,11 @@
 // +0x18 StartTriangle, +0x1C TriangleCount, +0x20 SubElements[2], +0x28 BoundingSphere. The inline
 // destructor deletes the two children (each `delete` is a null test + `push 1 ; call` of this very
 // helper) and resets the triangle range; the compiler sinks the two zero stores past the flag test.
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector Min, Max; };
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector Min, Max; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
-struct C3DMeshPartitionElement {
+class C3DMeshPartitionElement { public:
     C3DBoundingBox           BoundingBox;      // +0x00
     long                     StartTriangle;    // +0x18
     long                     TriangleCount;    // +0x1C

@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <cstring>
 
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
 static float g_over[16];
 static int g_overUsed = 0;
 
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long m_position;
     const unsigned char* m_pData;
     long m_remaining;

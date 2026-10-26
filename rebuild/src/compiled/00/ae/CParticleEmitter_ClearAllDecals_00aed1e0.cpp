@@ -16,7 +16,7 @@
 // Shape: the bit-field test/set are `test byte ptr [edi+45h],10h` / `or byte ptr [edi+45h],10h`; the
 // handle's address is formed in ebp once, inside the non-empty path; `last` re-read each pass.
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* m_pGroup;
     long  m_index;
 };
@@ -36,7 +36,7 @@ struct CParticleSystemPtrVector {                                         // ret
     CParticleSystemPtr* m_end;
 };
 
-struct CIEngine;
+class CIEngine;
 
 struct CParticleEmitter {
     virtual void v00();

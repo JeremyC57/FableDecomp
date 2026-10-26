@@ -11,13 +11,13 @@
 // in esi across the virtual calls only when VC7.1 can see that _M_insert_overflow does not let `x` escape: retail had that
 // knowledge (link-time code generation), so a stand-in body is compiled above under `auto_inline(off)` (GOTCHAS wave 25 /
 // chunk 180; the lander grades only the Activate symbol).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
     V(20) V(21) V(22) V(23) V(24) V(25) V(26) V(27) V(28) V(29) V(30) V(31) V(32) V(33) V(34) V(35) V(36) V(37) V(38) V(39)
@@ -27,10 +27,10 @@ struct CComponent {
 #undef V
     virtual void ChangeState(long state);               // slot 48 (+0xc0)
 };
-struct CManager {
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
 };
-struct CFrontEndManager : CManager {
+class CFrontEndManager : public CManager { public:
     static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 }
@@ -75,13 +75,13 @@ void CRetailVector<T>::_M_insert_overflow(T* position, const T& x, const __true_
 }
 template struct CRetailVector<NUISystem::CComponent*>;
 #pragma auto_inline(on)
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
-    struct CThing* ParentThing;                         // +0x04
+    class CThing* ParentThing;                         // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
 };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;                                        // +0x0c
     CRetailVector<NUISystem::CComponent*> Components;   // +0x10
     bool Quitting;                                      // +0x1c

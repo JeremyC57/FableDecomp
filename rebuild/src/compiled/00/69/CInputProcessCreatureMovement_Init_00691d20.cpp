@@ -5,7 +5,7 @@
 // MyPlayer is CInputProcessGameBase::MyPlayer (+0x18); the temporary's vtable is 0x01237F14 (the CIntelligentPointer instantiation).
 // Shape: the creature pointer is fetched first (edi), the 8-byte temporary lives at [esp+8] (base constructor, then its own vtable
 // store, then SetPItem), the member takes the temporary's item, and the temporary's base destructor runs last.
-struct CThingPlayerCreature;
+class CThingPlayerCreature;
 struct CBaseIntelligentPointer {                    // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThingPlayerCreature* m_pItem;                  // +0x04
@@ -20,10 +20,10 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F14
     CIntelligentPointer(CThingPlayerCreature* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPlayerCreature();                     // 0x00487DC0
 };
-struct CInputProcessCreatureMovement {
+class CInputProcessCreatureMovement { public:
     virtual void v00(); virtual void v01();
     virtual void Init();                            // slot 2
     unsigned char       _pad04[0x10];               // +0x04 CAInputProcess

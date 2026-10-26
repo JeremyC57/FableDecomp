@@ -38,7 +38,7 @@ template <class T> struct CPersistTraits {
     void TransferBinaryOut(CDataOutputStream& stream, const T& value);      // 0x00677840 for this T
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x14];
     bool                    UseDefaults;          // +0x14
     unsigned char           _pad15[3];

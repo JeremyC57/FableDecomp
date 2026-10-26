@@ -1,4 +1,4 @@
-struct CCharString {
+class CCharString { public:
   void* p;
   void Ctor(const char* s, int n);
 };

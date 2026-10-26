@@ -7,7 +7,7 @@
 // own vtable store is dropped (`__declspec(novtable)`: the retail spell-action base is abstract).
 //
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v0();
     CCreatureActionBase(long actionType);          // 0x00857E40
     unsigned char _body[0x110];                    // +0x04 .. +0x113 (PDB sizeof 0x114)
@@ -17,7 +17,7 @@ struct __declspec(novtable) CCreatureAction_CastSpellBase : CCreatureActionBase 
     long DrainDefIndex;                            // +0x118   sizeof == 0x11c
     CCreatureAction_CastSpellBase(long actionType) : CCreatureActionBase(actionType), Level(0), DrainDefIndex(0) {}
 };
-struct CCreatureAction_CastWillDrainLifeSpell : CCreatureAction_CastSpellBase {
+class CCreatureAction_CastWillDrainLifeSpell : public CCreatureAction_CastSpellBase { public:
     virtual void v0();
     CCreatureAction_CastWillDrainLifeSpell();
 };

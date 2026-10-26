@@ -5,7 +5,7 @@ struct Inner {
     int* array;   // +0x78
 };
 
-struct CTCMultiStrike {
+class CTCMultiStrike { public:
     char pad0[0x0c];
     Inner* inner;   // +0x0c
     int index;      // +0x10

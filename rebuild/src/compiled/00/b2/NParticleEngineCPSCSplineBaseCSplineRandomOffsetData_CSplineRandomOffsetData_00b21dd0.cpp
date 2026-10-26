@@ -11,7 +11,7 @@
 //   memberwise copy over CArray's copy constructor (zero the three words, then the out-of-line assignment); the arrays
 //   use the STLport `_Vector_base` + alloc-proxy shape; the two resizes share one uninitialised C3DVector() default
 //   argument slot in the 12-byte frame.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
@@ -19,7 +19,7 @@ template <class T> struct SRetailAllocProxy {   // STLport _STLP_alloc_proxy: th
     T* _M_data;
     SRetailAllocProxy(T* data) : _M_data(data) {}
 };
-template <class T> struct CArray {              // STLport vector<T> (12 bytes in retail)
+template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)
     T* _M_start;
     T* _M_finish;
     SRetailAllocProxy<T> _M_end_of_storage;
@@ -29,15 +29,15 @@ template <class T> struct CArray {              // STLport vector<T> (12 bytes i
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());  // 0x0075C040
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
 };
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;    // +0x00
     float             Tension;          // +0x0C
     bool              EndPointsConnected; // +0x10
     CCardinalSpline() : Tension(0.5f), EndPointsConnected(false) {}
 };
 namespace NParticleEngine {
-struct CPSCSplineBase {
-    struct CSplineRandomOffsetData {
+class CPSCSplineBase { public:
+    class CSplineRandomOffsetData { public:
         CCardinalSpline*  InitialSpline;          // +0x00
         CCardinalSpline   ThisSpline;             // +0x04
         CCardinalSpline   PreviousSpline;         // +0x18

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stddef.h>
-struct CRGBColour { unsigned char B, G, R, A; void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour() { } CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); } };
-struct CCompositeBlendDesc { unsigned long TextureIndex; long BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour; CCompositeBlendDesc() { }
+class CRGBColour { public: unsigned char B, G, R, A; void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } CRGBColour() { } CRGBColour(const CRGBColour& o) { Set(o.R, o.G, o.B, o.A); } };
+class CCompositeBlendDesc { public: unsigned long TextureIndex; long BlendType; CRGBColour DiffuseColour; CRGBColour SpecularColour; CCompositeBlendDesc() { }
     CCompositeBlendDesc(const CCompositeBlendDesc& o) : TextureIndex(o.TextureIndex), BlendType(o.BlendType), DiffuseColour(o.DiffuseColour), SpecularColour(o.SpecularColour) { } };
 int main()
 {

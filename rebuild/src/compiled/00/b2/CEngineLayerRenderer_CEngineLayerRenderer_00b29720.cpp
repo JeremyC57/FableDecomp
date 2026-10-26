@@ -23,7 +23,7 @@ struct CRenderItemVector {                    // 12-byte retail vector {first, l
     CRenderItemVector() : m_pFirst(0), m_pLast(0), m_pEnd(0) { }
 };
 
-struct CEngineLayerRenderer : CEngineLayerRendererBase {      // vtable 0x012A0F04
+class CEngineLayerRenderer : public CEngineLayerRendererBase { public:      // vtable 0x012A0F04
     void*             m_pLayer;               // +0x08
     void*             m_pTarget;              // +0x0c
     CRenderItemVector m_items;                // +0x10

@@ -12,12 +12,12 @@
 // Layout (retail bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, +0x1c mode, +0x20
 //   state, +0x2c timer index, +0x30 health bar id; parent flag +0x5a.
 #include <string.h>
-struct CCharStringData {
+class CCharStringData { public:
     char*         PData;
     unsigned long Length;
 };
 long __fastcall Compare(const char* a, const char* b);       // 0x00411570
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
@@ -28,11 +28,11 @@ struct CCharString {
         return Compare(PStringData->PData, text) == 0;
     }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CCharString GetDataString() const;               // slot 3 (+0xc)
     void* PImp_Data;
@@ -130,7 +130,7 @@ struct CTimerService {
     virtual void SetTimer(long index, long time);            // slot 89 (+0x164)
 };
 extern CTimerService* g_pThingManager_0143e8f8;              // 0x0143E8F8
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad000[0xdf4];
     long          TraderInfectionTime;                       // +0xdf4
     long          TraderInfectionTimeLong;                   // +0xdf8

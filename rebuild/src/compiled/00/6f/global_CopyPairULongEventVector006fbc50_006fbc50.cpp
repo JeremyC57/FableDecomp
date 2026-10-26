@@ -9,7 +9,7 @@
 // The pair assignment moves the key, then CSmallVector::operator= tests `&other != this` (scheduled before the key
 // move: `cmp edi,ebx` on the strength-reduced src+4/dst+4 pointers) around the out-of-line Copy. Same model as the
 // landed 0x006FB960 (__unguarded_linear_insert over the same pairs).
-namespace NAnimationEvents { struct CEvent { long m_a, m_b; }; }
+namespace NAnimationEvents { class CEvent { public: long m_a, m_b; }; }
 
 struct CSmallVector_CEvent_32 {
     NAnimationEvents::CEvent* m_pData;          // +0x00

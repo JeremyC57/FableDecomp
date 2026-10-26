@@ -8,10 +8,10 @@ struct CCriticalSectionLock {
     { if (tryOnly && s->m_tryOnlyFails) { m_locked = false; return; } ++s->m_entered; }
     ~CCriticalSectionLock() { if (m_locked) ++m_pSection->m_left; }
 };
-struct CHandleBasedMemoryPool { long m_locked; long m_freed; void Lock(long h) { m_locked = h; } void Free(long h) { m_freed = h; } };
-struct CBankFileAsync { CRITICAL_SECTION_Fable m_section; };
-struct CMovableResourceMemoryPool { CRITICAL_SECTION_Fable m_section; };
-struct CBankFileAsyncData {
+class CHandleBasedMemoryPool { public: long m_locked; long m_freed; void Lock(long h) { m_locked = h; } void Free(long h) { m_freed = h; } };
+class CBankFileAsync { public: CRITICAL_SECTION_Fable m_section; };
+class CMovableResourceMemoryPool { public: CRITICAL_SECTION_Fable m_section; };
+class CBankFileAsyncData { public:
     void* m_pAllocation; void* m_pData; void* m_pReadBuffer; unsigned long m_bytesPending;
     CHandleBasedMemoryPool* m_pPool; long m_handle; CMovableResourceMemoryPool* m_pMovablePool; CBankFileAsync* m_pBank;
     bool m_relocatable, m_relocating, m_finished, m_dataLocked, m_completionPending; bool m_setupResult;

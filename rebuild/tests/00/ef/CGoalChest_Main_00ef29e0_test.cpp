@@ -63,10 +63,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CScriptThing {
+class CScriptThing { public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
@@ -90,15 +90,15 @@ FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
 #include <stddef.h>
 
 
-struct CDisplayEngine;
-struct CGameDefinitionManager;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingSearchTools;
-struct CWorld;
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -147,8 +147,8 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) ==
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -156,8 +156,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -243,8 +243,8 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
 struct ScriptThingCopy:CScriptThing { ScriptThingCopy(const CScriptThing&); ~ScriptThingCopy(); };
 namespace NScript {
-struct CPredicateBase { virtual bool operator()() const=0; virtual CPredicateBase* Clone() const=0; virtual ~CPredicateBase(){} };
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public: virtual bool operator()() const=0; virtual CPredicateBase* Clone() const=0; virtual ~CPredicateBase(){} };
+class CIsThingAlive:public CPredicateBase { public:
  ScriptThingCopy Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const; virtual CPredicateBase* Clone()const;
@@ -290,7 +290,7 @@ void CGoalChest::Main() {
 #include <stdlib.h>
 static int frames, checks, queries, constructed, destroyed, predicates, predicateDtors;
 static int terminateAt, usedAt;
-struct CCPPointerInfo {long References;void (__fastcall* Callback)(void*);void* Object;};
+class CCPPointerInfo { public:long References;void (__fastcall* Callback)(void*);void* Object;};
 static int countCallbacks,countDeleted,copyCalls,lifetimeMode,lifetimeBad;
 static CCPPointerInfo* watchedInfo;
 static long expectedReferences;

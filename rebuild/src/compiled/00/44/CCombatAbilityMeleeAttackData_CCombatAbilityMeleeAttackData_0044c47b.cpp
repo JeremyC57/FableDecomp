@@ -10,7 +10,7 @@
 // enum argument is a by-value 4-byte `long`. engine/CCombatAbility*.h are flattened PDB PODs, so the polymorphic classes
 // are modelled locally.
 #pragma optimize("s", on)
-struct CCombatAbilityData {                    // vtable 0x01232484, 0x18 bytes
+class CCombatAbilityData { public:                    // vtable 0x01232484, 0x18 bytes
     virtual void v00();
     long  PercentageChance;                    // +0x04
     float SecondsDuration;                     // +0x08
@@ -20,7 +20,7 @@ struct CCombatAbilityData {                    // vtable 0x01232484, 0x18 bytes
     CCombatAbilityData(long interfaceType);    // 0x0044C3EE
 };
 
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {   // vtable 0x01232498
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:   // vtable 0x01232498
     bool  Blockable;                           // +0x18
     bool  Knockdown;                           // +0x19
     float Damage;                              // +0x1c

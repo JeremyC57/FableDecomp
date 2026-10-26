@@ -7,13 +7,13 @@
 // BankIndex +0xc.
 // Shape: Type stored after the handle's `lea` (init-list order with scheduling), the handle's inline
 // constructor = base call + vtable + zeroed pointer, BankIndex last.
-struct CBaseClass {                                         // vtable 0x01231710
+class CBaseClass { public:                                         // vtable 0x01231710
     CBaseClass();                                           // 0x0099A2D0
     virtual void v00();
 };
 
-struct CEnginePersistentPrimitiveBase;
-struct CEnginePrimitiveHandle : CBaseClass {                // vtable 0x0122F598, 8 bytes
+class CEnginePersistentPrimitiveBase;
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598, 8 bytes
     CEnginePersistentPrimitiveBase* Data;                   // +0x04 (CIVCountedPointer)
     CEnginePrimitiveHandle() : Data(0) { }
     virtual void v00();
@@ -21,7 +21,7 @@ struct CEnginePrimitiveHandle : CBaseClass {                // vtable 0x0122F598
 
 namespace NGraphicAppearance {
 
-struct CPrimitive {
+class CPrimitive { public:
     enum EPrimitiveType { PRIMITIVE_TYPE_0 };
     EPrimitiveType         Type;                            // +0x00
     CEnginePrimitiveHandle PrimitiveHandle;                 // +0x04

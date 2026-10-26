@@ -14,7 +14,7 @@
 // (engine/CParentDefClassBase.h) describes the Ego layout, so the retail base is modelled locally.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _body[0x38];                                            // +0x04..+0x3c
     CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
@@ -34,7 +34,7 @@ struct CBoolVector {                                                      // ret
     CBoolVector& operator=(const CBoolVector& other);                     // 0x00462E78
 };
 
-struct CPlayerInventoryDef : CParentDefClassBase {                        // vtable 0x01235274
+class CPlayerInventoryDef : public CParentDefClassBase { public:                        // vtable 0x01235274
     CLongVector Slot;                                                     // +0x3c
     CLongVector MaxInSlot;                                                // +0x48
     CLongVector InitialAmount;                                            // +0x54

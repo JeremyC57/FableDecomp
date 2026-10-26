@@ -1,24 +1,24 @@
 // Behaviour test for 0x006E9450 CCombatManager::IsCreatureWithValidMeleeCombatSequence.
 #include <cstdio>
 #include <map>
-struct CThingCreatureBase { unsigned int uid; unsigned int GetUID() const { return uid; } };
-struct CCombatSequenceBase {
+class CThingCreatureBase { public: unsigned int uid; unsigned int GetUID() const { return uid; } };
+class CCombatSequenceBase { public:
     bool melee, valid, zone;
     bool IsMeleeSequence() { return melee; } bool IsValid() { return valid; } bool IsZoneValid() { return zone; }
 };
 struct CSequencePointer { CCombatSequenceBase* Object; void* Count; };
 struct CCombatantInfo;
-struct CWorld { int id; };
-struct C3DVector { float X, Y, Z; };
+class CWorld { public: int id; };
+class C3DVector { public: float X, Y, Z; };
 struct CCombatWheel {
     const CThingCreatureBase* blocked; const void* blockedInfo;
     CWorld* world; CCombatantInfo* attacker; CCombatantInfo* defender; const C3DVector* pos;
     void BlockAttackerProng(const CThingCreatureBase& a, const void* info) { blocked = &a; blockedInfo = info; }
     void ReassignAttacker(CWorld* w, CCombatantInfo* a, CCombatantInfo* d, const C3DVector* p) { world = w; attacker = a; defender = d; pos = p; }
 };
-struct CAttackingCombatantInfo { CThingCreatureBase* Attacked; CSequencePointer* seqFirst; CSequencePointer* seqLast; };
+class CAttackingCombatantInfo { public: CThingCreatureBase* Attacked; CSequencePointer* seqFirst; CSequencePointer* seqLast; };
 struct CCombatantInfo { CAttackingCombatantInfo AttackerInfo; CCombatWheel CombatWheel; };
-struct CCombatManager {
+class CCombatManager { public:
     std::map<unsigned int, CCombatantInfo*> Combatants; CWorld* World; int finds;
     CCombatantInfo* Find(unsigned int uid) { ++finds; std::map<unsigned int, CCombatantInfo*>::iterator it = Combatants.find(uid); return it == Combatants.end() ? 0 : it->second; }
     CCombatantInfo& GetCombatantInfo(unsigned int uid) { return *Find(uid); }

@@ -11,7 +11,7 @@ static int g_range = 0; static void* g_rangeFirst = 0;
 static void DestroyRange_00764ee0(CCountedPointer_00762480* f, CCountedPointer_00762480*, const SScalarTag&) { ++g_range; g_rangeFirst = f; }
 struct CRetailVector_counted { CCountedPointer_00762480* m_pFirst; CCountedPointer_00762480* m_pLast; CCountedPointer_00762480* m_pEnd; CRetailVector_counted() : m_pFirst(0), m_pLast(0) { }
     ~CRetailVector_counted() { DestroyRange_00764ee0(m_pFirst, m_pLast, SScalarTag()); if (m_pFirst) free(m_pFirst); } };
-namespace NShape { struct CShape { virtual void v00() { } long m_id; CRetailVector_pod m_points; CRetailVector_pod m_edges; ~CShape() { } };
+namespace NShape { class CShape { public: virtual void v00() { } long m_id; CRetailVector_pod m_points; CRetailVector_pod m_edges; ~CShape() { } };
 struct CBasicShape : CShape { CRetailVector_counted Subdivisions; ~CBasicShape() { } }; }
 int main() {
     int x1, x2; CCountedPointer_00762480 cp[2]; { NShape::CBasicShape s; s.m_points.m_pFirst = &x1; s.m_edges.m_pFirst = &x2; s.Subdivisions.m_pFirst = cp; s.Subdivisions.m_pLast = cp + 2; }

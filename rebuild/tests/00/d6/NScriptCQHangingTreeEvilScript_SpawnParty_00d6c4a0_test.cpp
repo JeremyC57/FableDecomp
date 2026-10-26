@@ -4,10 +4,10 @@
 // <count> friendly bandit grunts near the spawn point (allied both ways with the hero, friendly faction, white health
 // bar, green minimap orb), then start the exit, region and follow-status watchers
 static int g_frames = 0, g_endAt = 1000, g_created = 0, g_allies = 0, g_factions = 0, g_bars = 0, g_markers = 0, g_spawned = 0;
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { int id; C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
-struct CRGBColour { unsigned char R, G, B, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : R(r), G(g), B(b), A(a) { } };
-struct CGameScriptInterface {
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: int id; C3DVector Pos; const C3DVector& GetPos() const { return Pos; } };
+class CRGBColour { public: unsigned char R, G, B, A; CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : R(r), G(g), B(b), A(a) { } };
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     CScriptThing GetHero() const { CScriptThing t; t.id = 1; return t; }
     CScriptThing CreateCreatureNearby(const char* def, const C3DVector& p, float r, const char* name) const

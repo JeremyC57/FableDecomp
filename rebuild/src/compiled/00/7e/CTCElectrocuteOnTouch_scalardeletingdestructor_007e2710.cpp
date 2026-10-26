@@ -1,4 +1,4 @@
-struct CTCElectrocuteOnTouch {
+class CTCElectrocuteOnTouch { public:
     void* vftable;
 };
 

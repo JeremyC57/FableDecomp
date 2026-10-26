@@ -4,7 +4,7 @@
 #include <string.h>
 #include <new>
 
-struct C2DVector { float X; float Y; };
+class C2DVector { public: float X; float Y; };
 class CSubtitleRenderer {
 public:
     class CEmbeddedGraphic {

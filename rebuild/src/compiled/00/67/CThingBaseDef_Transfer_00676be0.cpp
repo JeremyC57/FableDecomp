@@ -15,10 +15,10 @@
 //   function-scope flag local pushes the traits temporaries onto the default temporary's frame byte); the component set
 //   passes a default-constructed set, whose destructor survives as `delete[] 0`.
 // No engine header for CThingBaseDef; local model.
-struct CMemoryDataInputStream;
+class CMemoryDataInputStream;
 void __cdecl operator delete[](void* block);           // 0x00BFEB1C (MSVCR71 import thunk)
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteLong(long value);                         // 0x00993EB0
     void WriteFloat(float value);                       // 0x00993EE0
 };
@@ -29,7 +29,7 @@ struct CThingComponentEntry {                           // 9-byte packed {def na
     long          Type;
     unsigned char Flag;
 };
-struct CThingComponentSet {                             // CSmallVector<CThingComponentSet::CEntry, 8>
+class CThingComponentSet { public:                             // CSmallVector<CThingComponentSet::CEntry, 8>
     CThingComponentEntry* Start;                        // +0
     signed char           Size;                         // +4
     unsigned char         _pad5[3];
@@ -39,7 +39,7 @@ struct CThingComponentSet {                             // CSmallVector<CThingCo
     void TransferBinaryOut(CDataOutputStream* stream) const;        // 0x008708F0
 };
 #pragma pack(pop)
-struct CDefString {
+class CDefString { public:
     long m_index;
     void TransferBinaryIn(CMemoryDataInputStream* stream);          // 0x0044FC00
 };

@@ -1,8 +1,8 @@
 // Behaviour test for 0x00A34360 std::__partial_sort over the 0x38-byte dummy-object entries: the five smallest keys sorted in front, payloads intact.
 #include <cstdio>
 #include <new>
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; int BoneIndex; };
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };
 template <class T1, class T2> struct pair {
     T1 first;
     T2 second;

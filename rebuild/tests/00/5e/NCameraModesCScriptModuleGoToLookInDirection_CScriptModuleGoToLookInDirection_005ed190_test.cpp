@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 static int g_base = 0;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}

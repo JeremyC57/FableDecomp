@@ -1,3 +1,3 @@
 // Constant-return member: returns false. __fastcall this=ecx.
-struct CThingTrackNode { bool WorldUpdate(); };
+class CThingTrackNode { public: bool WorldUpdate(); };
 bool CThingTrackNode::WorldUpdate() { return false; }

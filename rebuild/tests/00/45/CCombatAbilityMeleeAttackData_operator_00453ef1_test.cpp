@@ -7,7 +7,7 @@ struct CCombatAbilityBase {
     void assign(const CCombatAbilityBase* other) { (void)other; g_base_called = 1; }
 };
 
-struct CCombatAbilityMeleeAttackData : public CCombatAbilityBase {
+class CCombatAbilityMeleeAttackData : public CCombatAbilityBase { public:
     unsigned char Blockable;
     unsigned char Knockdown;
     char pad2[2];

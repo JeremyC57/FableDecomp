@@ -1,4 +1,4 @@
-struct CCreatureAction_StartSneaking {
+class CCreatureAction_StartSneaking { public:
     void* vftable;
 };
 

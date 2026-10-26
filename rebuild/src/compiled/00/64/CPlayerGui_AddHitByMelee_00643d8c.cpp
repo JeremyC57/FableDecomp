@@ -13,20 +13,20 @@
 // Shape: the def is fetched first (named local); CreateEmitter's arguments evaluate right to left, so the orientation
 // temporaries come first: forward (0,1,0), then up (0,0,1), then the set; Get() runs after the pushes.
 #pragma optimize("s", on)
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // 0x00487050
 };
 
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad[0x48c];
     long          SmackEffect;                                        // +0x48C (retail)
 };

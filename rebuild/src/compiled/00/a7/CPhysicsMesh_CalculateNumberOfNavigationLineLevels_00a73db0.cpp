@@ -10,8 +10,8 @@
 // ; the number string is a temporary destroyed before the lookup, the name a loop-scope local destroyed at
 // the end of each pass; the inline map Find as the landed CSymbolMap::FindSymbol 0x009E51C0, compared with the member
 // end() re-read through `this`; `ret`.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
     bool FastCompare(const CCharString& other) const;   // 0x009E6530
@@ -19,7 +19,7 @@ struct CCharString {
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
-struct C3DHelperPoint { float m[12]; };
+class C3DHelperPoint { public: float m[12]; };
 struct SHelperPointPair {                          // pair<CCharString, C3DHelperPoint>
     CCharString    first;
     C3DHelperPoint second;
@@ -39,7 +39,7 @@ struct CHelperPointMap {                           // CVectorMap<CCharString, C3
     }
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char   _pad00[0x10];
     CHelperPointMap HelperPoints;                  // +0x10
     long CalculateNumberOfNavigationLineLevels() const;

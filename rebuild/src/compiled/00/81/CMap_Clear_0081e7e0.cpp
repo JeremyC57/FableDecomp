@@ -4,7 +4,7 @@
 struct CGameMapGrid {
     void Clear();                                  // 0x008F6050
 };
-struct CMap {
+class CMap { public:
     unsigned char _pad[0x1a7c];
     CGameMapGrid* m_pGameMapGrid;                  // +0x1a7c
     unsigned char _pad1a80[0x280];

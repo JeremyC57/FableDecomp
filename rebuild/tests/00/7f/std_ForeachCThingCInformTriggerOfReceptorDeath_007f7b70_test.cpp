@@ -2,10 +2,10 @@
 #include <cmath>
 // Behaviour test: std::_For_each<CThing**, CInformTriggerOfReceptorDeath> -- clears the receptor pointer of every trigger in the range and returns the functor.
 #define CHECK(c) if (!(c)) { std::printf("007f7b70_TEST FAIL\n"); return 1; }
-struct CTCActivationReceptorBase { int id; };
-struct CTCActivationTrigger { CTCActivationReceptorBase* Receptor; void SetPTCReceptor(CTCActivationReceptorBase* r) { Receptor = r; } };
-struct CThing { CTCActivationTrigger* Trigger; void GetTC(CTCActivationTrigger** out) { *out = Trigger; } };
-struct CInformTriggerOfReceptorDeath {
+class CTCActivationReceptorBase { public: int id; };
+class CTCActivationTrigger { public: CTCActivationReceptorBase* Receptor; void SetPTCReceptor(CTCActivationReceptorBase* r) { Receptor = r; } };
+class CThing { public: CTCActivationTrigger* Trigger; void GetTC(CTCActivationTrigger** out) { *out = Trigger; } };
+class CInformTriggerOfReceptorDeath { public:
     CTCActivationReceptorBase* PReceptor;
     void operator()(CThing* thing) { CTCActivationTrigger* trigger; thing->GetTC(&trigger); trigger->SetPTCReceptor(0); }
 };

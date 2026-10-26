@@ -7,7 +7,7 @@ struct _D3DMATRIX {
     float _41, _42, _43, _44;
 };
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     unsigned char _pad_0x000[0x270];
     _D3DMATRIX    ProjectionMatrix;              // +0x270 (stored transposed)
     unsigned char _pad_0x2b0[0x3d8 - 0x2b0];

@@ -6,9 +6,9 @@
 // at the UNALIGNED +0x11, CutSceneCancelled +0x34; the thing flag byte +0x91 bit 0 marks a killed thing.
 // Name confirmed by ghidra_out/egor_signatures.tsv (?ResumeForCutscene@CTCSummonSpell@@QAEXXZ).
 // Shape: the flag is stored before the minion tests; the minion is re-fetched for every use.
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_thingFlags;                             // +0x91, bit 0: killed
     void SetInLimbo(bool inLimbo);                          // 0x004C8CF0
@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                               // 0x00A01B50
 };
 
-struct CTCSummonSpell {
+class CTCSummonSpell { public:
     void*                   __vftable;                      // +0x00
     CThing*                 ParentThing;                    // +0x04
     bool                    ToBeRemoved;                    // +0x08

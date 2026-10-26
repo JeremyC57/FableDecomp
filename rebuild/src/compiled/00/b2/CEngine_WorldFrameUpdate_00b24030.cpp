@@ -8,9 +8,9 @@
 // class is modelled locally. Component vtable slots are named by use (no RTTI names): 10 = scene filter flags, 7/8 = the frame updates.
 // Shape: the component loop re-reads `end()` every pass and keeps the argument in ebx; `mov al,[..] ; test al,al` is the bool member
 // test; `fild ; test ; jge ; fadd 2^32` is `(float)unsigned`, `fdivr [1.0f]` the `1.0f / x`, added into the double member.
-struct CEngineComponentParams;
+class CEngineComponentParams;
 
-struct CEngineComponent {                    // engine component interface (vtable slots used here only)
+class CEngineComponent { public:                    // engine component interface (vtable slots used here only)
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -33,7 +33,7 @@ struct CRetailVector {                       // STLport vector: 12 bytes
     T* end() const { return m_finish; }
 };
 
-struct CEngine {                             // retail layout: the PDB members from IsInitialised on sit 8 bytes lower (see header comment)
+class CEngine { public:                             // retail layout: the PDB members from IsInitialised on sit 8 bytes lower (see header comment)
     unsigned char  _pad00[0x84];
     bool           IsInitialised;            // +0x84 (PDB +0x8c)
     long           CurrentRenderFrame;       // +0x88

@@ -8,7 +8,7 @@
 // /Gr algorithm TU: __fastcall, first in ecx, last in edx, result + the tag reference + the null distance pointer on
 // the stack (callers push `0`, `lea` of a dead slot, result).
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a {CCharString, CCharString, word} record (both assignments are CCharString::operator= @ 0x0099EFB0).
-struct CCharString {                         // 4 bytes: the string-data pointer
+class CCharString { public:                         // 4 bytes: the string-data pointer
     void* PStringData;
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };

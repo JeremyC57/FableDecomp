@@ -63,8 +63,8 @@ public:
         Data = 0;
     }
 };
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual ~CTCBase();                            // 0x00686830
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08

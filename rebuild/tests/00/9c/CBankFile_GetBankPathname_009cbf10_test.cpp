@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CWideString { void* p; CWideString() : p(0) {} ~CWideString() {} };
+class CWideString { public: void* p; CWideString() : p(0) {} ~CWideString() {} };
 static int g_calls = 0;
 struct F { virtual CWideString GetPathname() { ++g_calls; CWideString w; w.p = (void*)7; return w; } };
 struct B { unsigned char pad[0x7c]; F* BankFile_Data; CWideString GetBankPathname() { return BankFile_Data->GetPathname(); } };

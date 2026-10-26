@@ -9,7 +9,7 @@
 // constructor @ 0x004DAC61; the compiler then stores this class's vtable (0x0123F91C, named
 // through rtti-vtables.tsv) and returns `this`. One of 68 bodies of this shape.
 
-struct CEnginePrimitiveGroupManager {
+class CEnginePrimitiveGroupManager { public:
     virtual void v00();
     CEnginePrimitiveGroupManager(void* argument);            // 0x004DAC61
 };

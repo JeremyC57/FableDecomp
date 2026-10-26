@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
 #include <new>
 
-struct CEngineLocalDetailGeneratorDef;
+class CEngineLocalDetailGeneratorDef;
 
 struct CMember { void __fastcall dtor(); };
 extern void __fastcall CMember_dtor_0045334a(CMember* def);
 extern void __fastcall CEngineLocalDetailGeneratorDef_dtor(CEngineLocalDetailGeneratorDef* def);
 
-struct CEngineLocalDetailGeneratorDef {
+class CEngineLocalDetailGeneratorDef { public:
   char pad[0x3c];
 };
 

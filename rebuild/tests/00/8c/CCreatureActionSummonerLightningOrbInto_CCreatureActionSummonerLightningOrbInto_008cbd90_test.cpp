@@ -1,12 +1,12 @@
 // Behaviour test for 0x008CBD90 CCreatureAction_SummonerLightningOrbInto(owner, thing).
 #include <cstdio>
 #include <cstring>
-struct CThing { int id; };
-struct CCharString { char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
-struct CSoundPair { int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
+class CThing { public: int id; };
+class CCharString { public: char m_text[32]; CCharString(const char* t, int) { std::strcpy(m_text, t); } };
+class CSoundPair { public: int m_first, m_second; CSoundPair() : m_first(0), m_second(0) { } };
 struct CBaseIntelligentPointer { CThing* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } };
 struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThing* m_owner; CThing* m_thing; int m_code; CSoundPair m_sound; char m_name[32];
     CCombatActionBase(CThing* owner, CThing* thing, int code, const CSoundPair& sound) : m_owner(owner), m_thing(thing), m_code(code), m_sound(sound) { m_name[0] = 0; }
     void SetName(const CCharString& name) { std::strcpy(m_name, name.m_text); }

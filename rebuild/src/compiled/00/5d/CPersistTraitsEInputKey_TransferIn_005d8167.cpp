@@ -2,8 +2,8 @@
 // CPersistTraits<EInputKey>::TransferIn @ 0x005d8167
 typedef int EInputKey;
 
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 struct CPersistTraits;
 
 // Callee at 0x9e2590: takes ecx, edx, one stack pointer arg.

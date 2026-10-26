@@ -9,14 +9,14 @@
 // CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase @ 0x0062E900 (manifest "~CTCLightningOrb" is propagated).
 // Shape: an inline two-fetch alive test on PTarget (`IsValid`), each arm builds its 0x11c / 0x114-byte temporary at the frame base
 // inside the SetCurrentAction call and destroys it through the base destructor.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,9 +38,9 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase;
-struct CCombatActionBase;
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase;
+class CCombatActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
 struct CBaseIntelligentPointer {
@@ -49,7 +49,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCombatActionBase {                      // retail sizeof 0x114
+class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
     virtual void FinishAction();                // 0x00859A20 (slot 4)
     unsigned char           _pad04[4];          // +0x04

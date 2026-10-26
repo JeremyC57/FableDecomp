@@ -9,7 +9,7 @@
 // is the particle data bank's, 0x00AF1670 CParticleDataBank). The manifest's `CDataBankTextEntry` label is propagated.
 // The implicit operator= runs the inlined intrusive CIVCountedPointer::operator= (same-object skip, release through
 // virtual slot 1 at refcount 0 and clear, adopt + add a reference), then copies Bank and Index.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);         // slot 0
     virtual void Delete();                   // slot 1 (+0x04)
     unsigned long IVRefCount;                // +0x04

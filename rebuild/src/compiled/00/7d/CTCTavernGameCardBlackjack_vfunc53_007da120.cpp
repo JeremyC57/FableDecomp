@@ -7,12 +7,12 @@
 // Layout (Ego_r.pdb CTCTavernGameCardBlackjack, retail with 12-byte vectors and the 0x318-byte retail CTCTavernGameCardBase): DealersCards
 // +0x318, PlayersCards (vector<vector<CCard*> >) +0x324, Bets +0x330, CurrentPlayerCards +0x33C, ... HasPlayerSplit +0x368.
 // Shape: the sound name is a named CCharString in its own block; STLport operator[] as `*(begin() + n)` (each access re-reads the vector).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CCard {
+class CCard { public:
     void Turn();                                // 0x008F0620
 };
 template<class T> struct CVector {              // STLport vector<T> (12 bytes)

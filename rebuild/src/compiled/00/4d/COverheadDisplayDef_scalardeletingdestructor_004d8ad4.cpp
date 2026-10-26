@@ -1,6 +1,6 @@
 #pragma optimize("s", on)
-struct COverheadDisplayDef
-{
+class COverheadDisplayDef
+{ public:
     void* vftable;
 };
 extern void* const g_COverheadDisplayDef_vftable;

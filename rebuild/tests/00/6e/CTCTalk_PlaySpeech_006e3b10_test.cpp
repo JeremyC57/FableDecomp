@@ -1,7 +1,7 @@
 // Behaviour test for CTCTalk::PlaySpeech(id, layer, b1, b2) @ 0x006E3B10: forwards with the talker's own DialogueVoice.
 #include <cstdio>
-struct CCharString { const char* m_pData; };
-struct CTCTalk {
+class CCharString { public: const char* m_pData; };
+class CTCTalk { public:
     CCharString DialogueVoice;
     unsigned long lastId; const CCharString* lastVoice; long lastLayer; bool lastB1, lastB2;
     long PlaySpeech(unsigned long id, const CCharString& voice, long layer, bool b1, bool b2)

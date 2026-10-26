@@ -8,7 +8,7 @@
 // the key in the `push ecx` frame slot, the map in esi, end or a larger key -> the end entry,
 // the component through the out pointer); `!bitfield` gives `xor eax,eax ; mov al ; shr eax,1 ;
 // not eax ; and eax,1`.
-struct CTCBase {
+class CTCBase { public:
     unsigned char _pad00[0x10];
     void*         m_pLink;                  // +0x10
 };
@@ -18,7 +18,7 @@ struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCB
     SEntry* last;
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
@@ -40,7 +40,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     virtual bool vfunc_22();
 };
 

@@ -12,12 +12,12 @@
 // and destroyed right after each `+=`; the FindChild name is built in place on the stack (`push ecx ; mov ecx,esp`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
@@ -54,7 +54,7 @@ struct CTextSource {                                    // the typed child: only
     virtual void v138(); virtual void v139(); virtual void v140(); virtual void v141();
     virtual const CWideString& GetText();               // slot 142 (+0x238)
 };
-struct CComponent {
+class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CComponent* FindChild(CCharString name);    // slot 3 (+0x0c)
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();

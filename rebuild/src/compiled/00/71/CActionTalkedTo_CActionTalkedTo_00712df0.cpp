@@ -8,17 +8,17 @@
 // vtable store sunk to just before the member constructors; the intelligent pointer at +0xc is the
 // inlined family-44 shape (base ctor, its vtable, SetPItem(target)); then GetScriptThing on the
 // first argument with &m_talker pushed (ret 8).
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CScriptThing {                       // engine/CScriptThing.h layout (12 bytes)
+class CScriptThing { public:                       // engine/CScriptThing.h layout (12 bytes)
     void* __vftable;
     CThing* PImp_Data;
     void* PImp_Info;
     CScriptThing(const CScriptThing& other);
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 

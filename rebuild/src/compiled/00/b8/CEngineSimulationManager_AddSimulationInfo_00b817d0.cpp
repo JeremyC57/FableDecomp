@@ -22,7 +22,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E (import thunk)
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CEnginePrimitiveSimulationInfo : public CIVCountedPointeeBase {
+class CEnginePrimitiveSimulationInfo : public CIVCountedPointeeBase { public:
 };
 
 template <class T> class CIVCountedPointer {            // intrusive: the pointee carries IVRefCount

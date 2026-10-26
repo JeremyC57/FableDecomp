@@ -14,21 +14,21 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 C3DVector g_ZeroVector = { 0.0f, 0.0f, 0.0f };
 struct CScriptThingImp {
     C3DVector Pos;
     long      Refs;
     virtual const C3DVector& GetPosition() const { return Pos; }
 };
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long length = -1) : Text(text) { (void)length; }
 };
 struct CCountedPointer {
     CScriptThingImp* Data;
 };
-struct CScriptThing {
+class CScriptThing { public:
     CCountedPointer PImp;
     CScriptThing() { PImp.Data = 0; }
     explicit CScriptThing(CScriptThingImp* imp) { PImp.Data = imp; if (imp) ++imp->Refs; }
@@ -38,8 +38,8 @@ struct CScriptThing {
 static bool operator==(const CScriptThing& a, const CScriptThing& b) { return a.PImp.Data == b.PImp.Data; }
 
 namespace NScript {
-struct CPredicateBase { virtual ~CPredicateBase() {} };
-struct CIsThingAlive : CPredicateBase {
+class CPredicateBase { public: virtual ~CPredicateBase() {} };
+class CIsThingAlive : public CPredicateBase { public:
     CScriptThing Thing;
     CIsThingAlive(const CScriptThing& t) : Thing(t) {}
 };
@@ -53,7 +53,7 @@ static bool g_scripting = false, g_haveExit = true;
 static C3DVector g_movedTo, g_checkedPos;
 static CScriptThingImp g_me, g_hero, g_other, g_exit, g_scripted;
 
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool Scripting;
     CScriptGameResourceObjectScriptedThingBase() : Scripting(g_scripting) {}
     ~CScriptGameResourceObjectScriptedThingBase() {}

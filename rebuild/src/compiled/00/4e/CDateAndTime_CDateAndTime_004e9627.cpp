@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CDateAndTime {
+class CDateAndTime { public:
     float  f00;
     int    pad04[4];
     int    m14;

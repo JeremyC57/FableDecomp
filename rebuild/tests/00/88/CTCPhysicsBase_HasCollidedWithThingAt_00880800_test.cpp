@@ -1,9 +1,9 @@
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CThingPhysicsMeshInfo { int dummy; };
+class C3DVector { public: float X, Y, Z; };
+class CThingPhysicsMeshInfo { public: int dummy; };
 static CThingPhysicsMeshInfo g_info;
 static int g_sphereCalls = 0;
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     bool hasMesh;
     virtual ~CTCPhysicsBase() { }
     virtual CThingPhysicsMeshInfo* GetPhysicsMeshInfo() { return hasMesh ? &g_info : 0; }

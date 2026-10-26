@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test: Update retries a pending group, keeps a talking talker, and otherwise drops the talker and stamps the frame.
-struct CTCTalk { bool talking; bool IsTalking() const { return talking; } };
-struct CThingCreatureBase {
+class CTCTalk { public: bool talking; bool IsTalking() const { return talking; } };
+class CThingCreatureBase { public:
     unsigned char Dead : 1;
     CTCTalk* talk;
     bool GetInterface(CTCTalk** out, int type) { if (type != 0xf || talk == 0) return false; *out = talk; return true; }
@@ -13,11 +13,11 @@ struct CPtr {
     CThingCreatureBase* Get() const { return p; }
     CThingCreatureBase* operator->() const { return p; }
 };
-struct CWorld { int frame; int GetFrameNumber() { return frame; } };
+class CWorld { public: int frame; int GetFrameNumber() { return frame; } };
 static CWorld g_world;
 static CWorld* g_pWorld = &g_world;
 static int g_attempts = 0;
-struct CombatDialogueManager {
+class CombatDialogueManager { public:
     CPtr PCurrentTalker;
     unsigned int CurrentTalkerTextGroupIndex;
     int LastSpeechFrame;

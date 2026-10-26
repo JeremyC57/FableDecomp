@@ -5,15 +5,15 @@
 // propagated), CThingBuilding::IsPointInside @ 0x0082D000.
 // Layout: PDB CThingFilter_IsInBuilding { CThingBuilding* Building; } (+0).
 // Shape: the argument is evaluated before the object pointer (`call GetPosition ; mov ecx,[esi] ; push eax`).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;           // 0x004C73D0
 };
 
-struct CThingBuilding {
+class CThingBuilding { public:
     bool IsPointInside(const C3DVector& pos);       // 0x0082D000
 };
 

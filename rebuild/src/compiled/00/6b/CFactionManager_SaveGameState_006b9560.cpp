@@ -4,14 +4,14 @@
 #include "fable_string.h"
 CCharString __fastcall GFIntToCharString(long);
 CCharString __fastcall operator+(const char*,const CCharString&);
-struct CFaction;
-struct CPersistContext {
+class CFaction;
+class CPersistContext { public:
  void Transfer(const char*,long&,const long&);
  void TransferFaction(const char*,CFaction&);
 };
 struct CountedFaction { CFaction* Data; void* Info; __forceinline CFaction& operator*() const { return *Data; } };
 struct FactionEntry { unsigned long Key; CountedFaction Faction; };
-struct CFactionManager {
+class CFactionManager { public:
  FactionEntry *Start,*Finish,*EndOfStorage;
  void SaveGameState(CPersistContext&) const;
 };

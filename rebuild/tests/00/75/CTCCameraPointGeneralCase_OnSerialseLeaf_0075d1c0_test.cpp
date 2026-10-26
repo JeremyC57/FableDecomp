@@ -4,7 +4,7 @@
 
 static const char* g_names[8]; static float g_floatDefaults[8]; static int g_boolDefaults[8]; static void* g_values[8];
 static int g_n = 0;
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& d) { g_names[g_n] = name; g_floatDefaults[g_n] = d; g_boolDefaults[g_n] = -1; g_values[g_n++] = &value; value = d; }
     void Transfer(const char* name, bool& value, const bool& d) { g_names[g_n] = name; g_boolDefaults[g_n] = d; g_values[g_n++] = &value; value = d; }
 };

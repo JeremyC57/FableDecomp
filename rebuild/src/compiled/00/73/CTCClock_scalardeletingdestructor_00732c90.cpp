@@ -1,4 +1,4 @@
-struct CTCClock {
+class CTCClock { public:
     void* vftable;
 };
 

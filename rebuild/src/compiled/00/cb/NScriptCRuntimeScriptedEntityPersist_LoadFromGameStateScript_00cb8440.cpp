@@ -12,7 +12,7 @@
 // Layout: Ego_r.pdb CRuntimeScriptedEntityPersist (20 bytes) = PersistScripts CVectorMap<unsigned __int64, CPersistInfo>:
 // vector (retail 12 bytes) +0, Compare +0x0c, Dirty +0x0d; element pair<unsigned __int64, CPersistInfo{UID, PersistScript}>
 // is 0x18 bytes.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     CCharString(const char* text, long length);    // 0x0099EBF0
@@ -20,7 +20,7 @@ struct CCharString {
     ~CCharString();                                // 0x0099EAE0
     CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     ~CBaseClass();                                 // 0x0099A2E0
 };
@@ -28,7 +28,7 @@ struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-struct CStringParser : CBaseClass {                // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -74,7 +74,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         unsigned __int64 UID;                       // +0x00
         CCharString      PersistScript;             // +0x08
     };

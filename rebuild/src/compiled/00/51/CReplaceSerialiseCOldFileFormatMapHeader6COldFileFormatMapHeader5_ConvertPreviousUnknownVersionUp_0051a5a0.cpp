@@ -20,7 +20,7 @@ public:
     CFileLargeThemePalette();                          // 0x0050EE40
 };
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long refs;                                // +0x0
     void (__fastcall* destroy)(void*);                 // +0x4
     void* object;                                      // +0x8

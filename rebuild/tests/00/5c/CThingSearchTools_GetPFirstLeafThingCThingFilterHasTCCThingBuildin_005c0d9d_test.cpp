@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing {
+class CThing { public:
     bool m_scan; int m_def; int m_script; int m_tc;
     bool IsIncludedInThingScans() { return m_scan; }
 };
@@ -32,9 +32,9 @@ static void BuildList()
     }
     g_list.m_pHead = &g_head;
 }
-struct CThingSearchTools { void* WorldMap; };
-struct CThingBuilding { enum { ThingListType = 3 }; };
-struct CThingFilter_HasTC {
+class CThingSearchTools { public: void* WorldMap; };
+class CThingBuilding { public: enum { ThingListType = 3 }; };
+class CThingFilter_HasTC { public:
     long m_type;
     bool operator()(CThing* thing) const { return thing->m_tc == m_type; }
 };

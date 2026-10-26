@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CAIStateGroup_HoverHornetQueen::KillBossHelpers (0x0095AA00).
-struct CTCBase { int killed; };
+class CTCBase { public: int killed; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -12,7 +12,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
@@ -29,10 +29,10 @@ struct CThing {
         return false;
     }
 };
-struct CThingAICreature : CThing {};
-struct CTCBoss : CTCBase { void KillHelpers() { ++killed; } };
-struct CAIBrain { CThingAICreature* Creature; };
-struct CAIStateGroupBase { CAIBrain* PBrain; };
+class CThingAICreature : public CThing { public:};
+class CTCBoss : public CTCBase { public: void KillHelpers() { ++killed; } };
+class CAIBrain { public: CThingAICreature* Creature; };
+class CAIStateGroupBase { public: CAIBrain* PBrain; };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase { void KillBossHelpers(); };
 void CAIStateGroup_HoverHornetQueen::KillBossHelpers()
 {

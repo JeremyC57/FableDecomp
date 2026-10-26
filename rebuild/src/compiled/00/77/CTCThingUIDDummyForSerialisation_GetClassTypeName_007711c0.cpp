@@ -1,12 +1,12 @@
 // CTCThingUIDDummyForSerialisation::GetClassTypeName @ 007711c0
 // __fastcall, returns CCharString by value (hidden retptr on stack, ret 4)
 
-struct CCharString {
+class CCharString { public:
     char* p;
     CCharString(const char* s, int n);
 };
 
-struct CTCThingUIDDummyForSerialisation {
+class CTCThingUIDDummyForSerialisation { public:
     int dummy;
     CCharString GetClassTypeName();
 };

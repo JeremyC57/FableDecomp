@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DVector { float x, y, z; };
-struct CRightHandedSet { float m[9]; };
+class C3DVector { public: float x, y, z; };
+class CRightHandedSet { public: float m[9]; };
 
 static int g_called = 0;
 static char* g_flag = 0;
@@ -14,7 +14,7 @@ void GetLookDir_helper(C3DVector* out, CRightHandedSet* rhs, char* flag)
     out->z = rhs->m[2];
 }
 
-struct CTCCameraPointScripted {
+class CTCCameraPointScripted { public:
     CTCCameraPointScripted* GetLookDirection(C3DVector* out, CRightHandedSet* rhs);
 };
 

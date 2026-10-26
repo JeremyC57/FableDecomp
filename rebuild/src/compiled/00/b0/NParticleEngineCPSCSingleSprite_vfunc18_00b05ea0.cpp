@@ -2,9 +2,9 @@
 // Layout: PDB derived members56..154 are retail52..150 due inherited spline vector -4.
 // Field names and bitfield order recovered from struct_layouts_egor.tsv.
 namespace NParticleEngine {
-struct CPSCBase {unsigned char Data[0x34];};
-struct CPSCSplineBase:CPSCBase {void DatabaseCopy(const CPSCBase&);}; //00b22530
-struct CPSCSingleSprite:CPSCSplineBase {
+class CPSCBase { public:unsigned char Data[0x34];};
+class CPSCSplineBase:public CPSCBase { public:void DatabaseCopy(const CPSCBase&);}; //00b22530
+class CPSCSingleSprite:public CPSCSplineBase { public:
  long SpriteBankIndex;unsigned long StartColour,MidColour,EndColour;
  float AnimationTimeSecs,StartRenderSize,EndRenderSize;long SpriteAlignment,NoCrossedSprites;float InitialAngle;
  long FadeInEndInteger,FadeOutBeginInteger;float AlphaFadeMinimum,SizeFadeMinimum;unsigned long PositionParam;

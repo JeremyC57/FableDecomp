@@ -14,18 +14,18 @@
 #define SCRIPT_SLOT(n) virtual void slot##n()
 #define SCRIPT_SLOTS10(d) SCRIPT_SLOT(d##0); SCRIPT_SLOT(d##1); SCRIPT_SLOT(d##2); SCRIPT_SLOT(d##3); SCRIPT_SLOT(d##4); SCRIPT_SLOT(d##5); SCRIPT_SLOT(d##6); SCRIPT_SLOT(d##7); SCRIPT_SLOT(d##8); SCRIPT_SLOT(d##9)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CScriptThing {                            // vtable 0x01238C8C
+class CScriptThing { public:                            // vtable 0x01238C8C
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector& GetPos() const;     // slot 6 (+0x18)
     void* PImp_Data;                             // +0x04
     void* PImp_Info;                             // +0x08
 };
 
-struct CGameScriptInterfaceBase {                // only the slot used is typed
+class CGameScriptInterfaceBase { public:                // only the slot used is typed
     SCRIPT_SLOTS10(0); SCRIPT_SLOTS10(1); SCRIPT_SLOTS10(2); SCRIPT_SLOTS10(3); SCRIPT_SLOTS10(4);
     SCRIPT_SLOTS10(5); SCRIPT_SLOTS10(6); SCRIPT_SLOTS10(7); SCRIPT_SLOTS10(8); SCRIPT_SLOTS10(9);
     SCRIPT_SLOTS10(10); SCRIPT_SLOTS10(11); SCRIPT_SLOTS10(12); SCRIPT_SLOTS10(13); SCRIPT_SLOTS10(14);
@@ -43,7 +43,7 @@ struct CGameScriptInterfaceBase {                // only the slot used is typed
 struct CV_ParanoidWhispersScript;
 struct CQ_SunnyvaleMasterData;
 
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     void*                     __vftable;         // +0x00 entity-script vtable
     CGameScriptInterfaceBase* Game;              // +0x04
     CScriptThing              Me;                // +0x08

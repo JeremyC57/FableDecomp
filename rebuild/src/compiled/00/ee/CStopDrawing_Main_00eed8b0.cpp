@@ -11,12 +11,12 @@
 // Shape: the four hero-name strings are implicit-conversion temporaries of one `||`/`&&` chain (VC's construction
 // flags in ebx, `or ebx,N` per temporary, destroyed in reverse after the chain lands in a frame bool); a plain `while`
 // after the first IsDone return gives retail's rotated loop (test duplicated at entry and bottom).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CScriptThing {                              // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
     virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
     virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
@@ -31,7 +31,7 @@ struct CScriptThing {                              // vtable 0x01238C8C, 12 byte
     CScriptThing(const CScriptThing& other);       // 0x004ABE90
     ~CScriptThing();                               // 0x004AA840
 };
-struct CGameScriptInterface {                     // vtable 0x01260F0C
+class CGameScriptInterface { public:                     // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

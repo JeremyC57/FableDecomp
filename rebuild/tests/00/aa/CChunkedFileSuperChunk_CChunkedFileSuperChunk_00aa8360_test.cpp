@@ -6,16 +6,16 @@
 #endif
 #include <string.h>
 struct CBaseClassNonCopyable { virtual ~CBaseClassNonCopyable() { } CBaseClassNonCopyable() { } };
-template <class T> struct CArray { T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage; CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) { } };
+template <class T> class CArray { public: T* m_pBegin; T* m_pEnd; T* m_pEndOfStorage; CArray() : m_pBegin(0), m_pEnd(0), m_pEndOfStorage(0) { } };
 struct SCountBlock;
-template <class T> struct CCountedPointer { T* m_pObject; SCountBlock* m_pCount; };
-struct CChunkedFileSuperChunk;
-struct CChunkedFileChunk : CBaseClassNonCopyable {
+template <class T> class CCountedPointer { public: T* m_pObject; SCountBlock* m_pCount; };
+class CChunkedFileSuperChunk;
+class CChunkedFileChunk : public CBaseClassNonCopyable { public:
     char ChunkType[5];
     CChunkedFileSuperChunk* Parent;
     CChunkedFileChunk(const char* type) : Parent(0) { memset(ChunkType, 0, sizeof(ChunkType)); memcpy(ChunkType, type, 4); }
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;
     unsigned long CurrentChunkIndex;

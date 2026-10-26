@@ -14,10 +14,10 @@
 // +0x2e) as in the constructor 0x00781DA0; modelled locally because the engine header declares the
 // pointer members as opaque byte arrays.
 
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing
-{
+class CThing
+{ public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                         // +0x91 bit 0
     void Kill(bool immediately);                    // 0x004C9B80
@@ -33,18 +33,18 @@ struct CBaseIntelligentPointer
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
-{
+class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
+{ public:
     virtual void v00();
     CIntelligentPointer() {}
     T* Get() const { return (T*)GetPItem(); }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 #pragma pack(push, 1)
-struct CTCBase
-{
+class CTCBase
+{ public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool    ToBeRemoved;                            // +0x08
@@ -54,8 +54,8 @@ struct CTCBase
     ~CTCBase();                                     // 0x00686830
 };
 
-struct CTCBoastingPosition : CTCBase                // vtable 0x0126B24C
-{
+class CTCBoastingPosition : public CTCBase                // vtable 0x0126B24C
+{ public:
     CIntelligentPointer<CThing> PBoastingPodium;    // +0x0c
     C3DVector     OrbPosition;                      // +0x14
     bool          PositionActivated;                // +0x20

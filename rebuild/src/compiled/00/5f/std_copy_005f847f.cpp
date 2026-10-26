@@ -13,16 +13,16 @@
 //   constructor 0x005F8578 of this TU.
 #pragma optimize("s", on)
 
-struct CDefPointeeBase {                    // counted def object: vptr, reference count at +4
+class CDefPointeeBase { public:                    // counted def object: vptr, reference count at +4
     virtual void v00();
     virtual void Destroy() const;           // slot 1
     mutable long m_refCount;                // +0x04 (mutable: const defs are reference counted too)
     void Release() const { if (--m_refCount == 0) Destroy(); }
 };
 
-struct CHeroAbilityDef : CDefPointeeBase { };
+class CHeroAbilityDef : public CDefPointeeBase { public: };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;                              // +0x00
     __forceinline CDefPointer& operator=(const CDefPointer& other)
     {

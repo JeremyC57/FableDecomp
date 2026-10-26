@@ -33,12 +33,12 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeType[0x6c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
 };
 template<class T> __forceinline bool IsThingOfType(const CThing* thing){unsigned long mask=T::ThingTypeMask;return (thing->ThingTypeFlags&mask)==mask;}
-struct CThingCreatureBase;
+class CThingCreatureBase;
 // Same-TU non-inlined STLport overflow model. Only GetAllThingsInRoughArea
 // is graded; this body gives RTM the original non-escaping value-reference fact.
 extern "C" void* __cdecl malloc(unsigned int);
@@ -61,9 +61,9 @@ void ThingVector::_M_insert_overflow(const CThingCreatureBase** position,const C
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {enum {ThingTypeMask=15};};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:enum {ThingTypeMask=15};};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -74,8 +74,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -91,7 +91,7 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsNot {CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
+class CThingFilter_IsNot { public:CThing* Thing;bool operator()(const CThing&)const;}; // 0x006a76a0
 typedef CThingFilter_IsNot Filters;
 struct CThingSearchTools_Calls {
  CWorldMap* WorldMap;

@@ -2,10 +2,10 @@
 // behaviour test: CSpecialAbilitiesBerserkDef::Transfer visits every member once, with retail's callee-type sequence
 
 
-struct CDefString { long m_index; };
+class CDefString { public: long m_index; };
 template <class T> struct CStlVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 
-struct CPersistContext {
+class CPersistContext { public:
     const void* order[128]; int kind[128]; int count;
     void Transfer(CStlVector<float>& v) { kind[count] = 1; order[count++] = &v; }
     void Transfer(CStlVector<long>& v) { kind[count] = 2; order[count++] = &v; }
@@ -14,7 +14,7 @@ struct CPersistContext {
     void Transfer(long& v) { kind[count] = 5; order[count++] = &v; }
 };
 
-struct CSpecialAbilitiesBerserkDef {
+class CSpecialAbilitiesBerserkDef { public:
     virtual void Transfer(CPersistContext& context);
     unsigned char _base[0x38];                                   // CSpecialAbilitiesDef base fields (+0x04)
     float SpeedMultiplier;                                       // +0x3C

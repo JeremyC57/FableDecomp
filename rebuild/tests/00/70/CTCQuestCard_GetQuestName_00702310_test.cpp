@@ -5,7 +5,7 @@
 #include <cstring>
 #include <stddef.h>
 static int g_wides = 0;
-struct CWideString {
+class CWideString { public:
     const char* PStringData;
     CWideString(const char* t) : PStringData(t) { ++g_wides; }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { ++g_wides; }
@@ -13,13 +13,13 @@ struct CWideString {
     bool operator!=(const wchar_t* text) const { return !(text[0] == 0 && PStringData[0] == 0); }
 };
 const CWideString g_EmptyWideString("");
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     bool operator!=(const char* text) const { return std::strcmp(PStringData, text) != 0; }
     CWideString ToWideString() const { return CWideString(PStringData); }
 };
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -27,7 +27,7 @@ struct CIVCountedPointeeBase {
     unsigned long GetRefCount() const { return IVRefCount; }
     void Release() { DecRef(); if (GetRefCount() == 0) Delete(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer(T* p) : Object(p) { if (p) ++p->IVRefCount; }
     CIVCountedPointer(const CIVCountedPointer& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; }   // VC7.1 has no NRVO
@@ -46,15 +46,15 @@ struct CDataBank {
         return CIVCountedPointer<CGroupEntry>(g_entry);
     }
 };
-struct CMainGameComponent { CDataBank* TextBank; };
+class CMainGameComponent { public: CDataBank* TextBank; };
 static CDataBank g_bank; static CMainGameComponent g_game = { &g_bank };
 CMainGameComponent* g_pMainGameComponent = &g_game;
-struct CQuestCardDef { long QuestName; long QuestObjective; };
-template <class T> struct CDefPointer {
+class CQuestCardDef { public: long QuestName; long QuestObjective; };
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
-struct CTCQuestCard {
+class CTCQuestCard { public:
     CDefPointer<CQuestCardDef> PDef;
     CCharString   QuestName;
     CCharString   ObjectiveName;

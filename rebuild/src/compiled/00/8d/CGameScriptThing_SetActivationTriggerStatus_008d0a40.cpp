@@ -84,7 +84,7 @@ struct CTCActivationTrigger_Retail {
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual void SetStatus(bool status);           // slot 28 (+0x70)
 };
-struct CGameScriptThing {
+class CGameScriptThing { public:
     void*                   m_pVtbl;               // +0x00
     unsigned char           _pad04[8];
     CBaseIntelligentPointer PThing;                // +0x0c CIntelligentPointer<CThing>

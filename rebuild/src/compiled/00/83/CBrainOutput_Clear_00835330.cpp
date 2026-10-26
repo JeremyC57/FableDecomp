@@ -10,7 +10,7 @@
 // CCPPointerInfo* Info +0x24 {RefCount +0, DeleteFunc +4, Data +8}); no engine/ header.
 // Shape: /O2 (RefCount is re-read through Info after the decrement).
 class CCreatureActionBase;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                              // +0x00
     void (__fastcall* DeleteFunc)(void* data);           // +0x04
     void*         Data;                                  // +0x08

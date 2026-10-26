@@ -27,7 +27,7 @@ struct CEventPackage {
     unsigned long GetNoPackets() const;            // 0x009F16E0
     const CEventPacket* GetPacket(unsigned long index) const;   // 0x009F16D0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long PeekWorldChecksum();             // 0x00416392
     void CheckSync(const CEventPackage& package);
 };

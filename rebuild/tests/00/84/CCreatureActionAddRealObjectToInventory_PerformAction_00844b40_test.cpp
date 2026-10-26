@@ -5,7 +5,7 @@
 #else
 #define FASTCALL
 #endif
-struct CTCBase { long type; };
+class CTCBase { public: long type; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -17,7 +17,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry m_entries[4];
@@ -51,17 +51,17 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) { }
     CThing* GetPItem() const { return m_pItem; }
 };
-struct CTCInventory : CTCBase {
+class CTCInventory : public CTCBase { public:
     CThing* m_added; bool m_real; int m_calls;
     CTCInventory() : m_added(0), m_real(false), m_calls(0) { }
     void AddItemToInventory(CThing* item, bool real) { m_added = item; m_real = real; ++m_calls; }
 };
 struct CObjectThing : CThing { bool m_isBeingRemoved; CObjectThing() : m_isBeingRemoved(false) { } };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase() { }
     CBaseIntelligentPointer PCreature;
 };
-struct CCreatureAction_AddRealObjectToInventory : CCreatureActionBase {
+class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { public:
     CBaseIntelligentPointer PObject;
     void PerformAction();
 };

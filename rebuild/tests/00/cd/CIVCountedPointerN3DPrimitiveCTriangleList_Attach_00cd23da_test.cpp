@@ -1,7 +1,7 @@
 // Behaviour test for CIVCountedPointer<T>::Attach (0x00CD23DA): release the old object (delete at zero), take the new one without a reference.
 #include <cstdio>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() {}
     virtual void DeleteThis() { ++g_deleted; }
     unsigned long IVRefCount;

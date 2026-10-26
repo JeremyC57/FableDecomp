@@ -1,12 +1,12 @@
 // Behaviour test for N3DPrimitive::CDeviceIndependent::Sizeof (0x00A90450): sums allocated POD array capacities
 // (+12 each), the used triangle-list slots (4 each, plus each list's 60 + capacities), and the 16-byte sphere.
 #include <cstdio>
-struct C3DVertex2 { unsigned char _data[0x20]; };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingSphere { float X, Y, Z, Radius; };
+class C3DVertex2 { public: unsigned char _data[0x20]; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingSphere { public: float X, Y, Z, Radius; };
 struct STriangle { unsigned short m_index[3]; };
 
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -16,7 +16,7 @@ template <class T> struct CArray {                 // retail CArray: 12 bytes
 };
 
 namespace N3DPrimitive {
-struct CTriangleList {                             // 0x3c bytes
+class CTriangleList { public:                             // 0x3c bytes
     void*                   __vftable;             // +0x00
     long                    m_refCount;            // +0x04
     CArray<STriangle>       m_triangles;           // +0x08
@@ -44,7 +44,7 @@ struct CTriangleListArray : CArray<CTriangleListPointer> {
 };
 
 namespace N3DPrimitive {
-struct CDeviceIndependent {
+class CDeviceIndependent { public:
         CArray<C3DVertex2>  Vertices;                  // +0x04
     CTriangleListArray  TriangleLists;             // +0x10
     CArray<void*>       Groups;                    // +0x1c CArray<CCountedPointer<C3DGroup2>>

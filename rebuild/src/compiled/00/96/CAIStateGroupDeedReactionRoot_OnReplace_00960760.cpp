@@ -10,7 +10,7 @@
 // Shape: HasTC forceinline (bitset test inline); deed-effects def SpeechReaction is a bit-field so the sign test is
 //   `test cl,cl; jns`; CDefPointer release is a member Release() with --RefCount; the speech release names
 //   `CWorldObject* world = GetPWorld()` first so the call precedes the argument pushes.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,12 +59,12 @@ struct CDeedEffectsDef {
     unsigned char SpeechReaction : 1;           // +0x7c bit 7
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -91,9 +91,9 @@ struct CThing {
         return (it == map->last || type < it->type ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
-struct CWorld { static unsigned long GetWorldFrame(); };   // 0x0049D870
+class CWorld { public: static unsigned long GetWorldFrame(); };   // 0x0049D870
 struct CTCDeedReaction {                        // interface 0x4F
     unsigned char _pad00[0x0c];
     unsigned long ReactionFrame;                // +0x0c
@@ -112,7 +112,7 @@ struct CTCTutorial {                            // interface 0xD7
 struct CTCTutorialGiver {                       // interface 0x29
     void GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
-struct CTCTalk {                                // interface 0x0F
+class CTCTalk { public:                                // interface 0x0F
     void StopCurrentSpeech();                   // 0x006E2E60
 };
 struct CSpeechManager {
@@ -135,11 +135,11 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad00[0x18];
     CThingCreatureBase* Creature;               // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];

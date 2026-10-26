@@ -139,7 +139,7 @@ static long FindFirstW(const wchar16* spec, WFindData* data)   // _wfindfirst st
     CopyAsciiW(data->name, "notes.txt");
     return 42;
 }
-struct CAFile {
+class CAFile { public:
     static bool StartFileScan(const WStr& pattern, CFileScanInfo& info, wchar16* firstFile)
     {
         wchar16 drive[3];

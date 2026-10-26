@@ -13,7 +13,7 @@ extern "C" void  __cdecl free(void* block);                                     
 
 inline void* operator new(unsigned int, void* __p) { return __p; }
 
-struct C3DVector {                              // retail C3DVector, 12 bytes
+class C3DVector { public:                              // retail C3DVector, 12 bytes
     float X, Y, Z;
 };
 

@@ -24,7 +24,7 @@ public:
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
-struct CTCQuickAccessMenu {
+class CTCQuickAccessMenu { public:
     bool IsActive() const;                         // 0x00625930
     bool IsClosing() const;                        // 0x00625940
     void RequestClose();                           // 0x00625920
@@ -44,7 +44,7 @@ struct CTCMap {                                    // the thing's component map 
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds
     unsigned char _pad40[4];

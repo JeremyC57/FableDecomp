@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {
     CThingCreatureBase_Retail* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08
@@ -33,7 +33,7 @@ struct CCombatActionBase {
     bool IsActionReadyForInterruption() const;  // 0x00856170 (base implementation)
 };
 
-struct CCombatAction_GenericStrikeResponseBase : CCombatActionBase {
+class CCombatAction_GenericStrikeResponseBase : public CCombatActionBase { public:
     bool IsActionReadyForInterruption() const;
 };
 

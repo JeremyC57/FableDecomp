@@ -6,7 +6,7 @@ struct Item { long first; const char* second; };
 
 static const char* g_names[] = { "OBJECT_APPLE", "OBJECT_BREAD", "OBJECT_SWORD" };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 static CDefString GetDefNameFromGlobalIndex(long index) { CDefString s; s.TablePos = index * 10; return s; }
 static const char* GetString(long tablePos) { return g_names[tablePos / 10]; }
 
@@ -16,7 +16,7 @@ struct NameVector {
     void push_back(const char* s) { items[count++] = s; }
 };
 
-struct CCreateItemNamesFromIndices {
+class CCreateItemNamesFromIndices { public:
     NameVector* ItemNames;
     CCreateItemNamesFromIndices(NameVector& names) : ItemNames(&names) {}
     void operator()(const Item& item)

@@ -6,33 +6,33 @@
 // (C3DMeshStats), MemoryHandle +0x7C, PrimMemoryHandle +0x80, PrimitiveCount +0x90, Primitives +0x94 (0xA0-byte
 // elements); sizeof(C3DMesh2) = 0xEC. Each primitive adds its own Sizeof() minus the part already counted in
 // the primitive array (`lea edi,[edi+eax-0A0h]`); the count is re-read after every call.
-struct CMovableResourceMemoryPool {
+class CMovableResourceMemoryPool { public:
     unsigned long GetAllocatedSize(long handle);    // 0x00A026D0
     void* GetPointerFromHandle(long handle);         // 0x00A026B0
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual ~C3DMeshStats();
     CMovableResourceMemoryPool* MemoryPool; // +0x04
     long StatsMemoryHandle;                 // +0x08
     unsigned char _stats[0x70];             // +0x0C .. +0x7B (Name, bounds, helper maps, generators)
 };
 
-struct C3DMeshMaterial {                    // 0x30 bytes
+class C3DMeshMaterial { public:                    // 0x30 bytes
     unsigned char _body[0x30];
     C3DMeshMaterial();                      // 0x00ABF7B0
 };
-struct C3DPrimitive2 {                      // 0xA0 bytes in retail
+class C3DPrimitive2 { public:                      // 0xA0 bytes in retail
     unsigned char _body[0xA0];
     C3DPrimitive2();                        // 0x00A90700
     unsigned long Sizeof() const;           // 0x00A90860
 };
-struct C3DBone2 { unsigned char _body[0x3C]; };
-struct C3DKeyframe { unsigned char _body[0x30]; };
-struct CMatrix4x4 { float m[4][4]; };
-struct CMatrix3x4 { float m_row[3][4]; };
+class C3DBone2 { public: unsigned char _body[0x3C]; };
+class C3DKeyframe { public: unsigned char _body[0x30]; };
+class CMatrix4x4 { public: float m[4][4]; };
+class CMatrix3x4 { public: float m_row[3][4]; };
 
-struct C3DMesh2 : C3DMeshStats {
+class C3DMesh2 : public C3DMeshStats { public:
     long MemoryHandle;                      // +0x7C
     long PrimMemoryHandle;                  // +0x80
     long BoneNameMemoryHandle;              // +0x84

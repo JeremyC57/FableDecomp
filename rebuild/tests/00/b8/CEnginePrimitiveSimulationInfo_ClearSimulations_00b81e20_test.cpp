@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour of CEnginePrimitiveSimulationInfo::ClearSimulations (0x00B81E20): erase(begin(), end()) -- the empty
 // tail is moved onto the first element, every old element is destroyed, and the array ends at its start.
-struct CEngineSimulationBase; struct SCountBlock;
+class CEngineSimulationBase; struct SCountBlock;
 struct CSimulationPointer { CEngineSimulationBase* Object; SCountBlock* Block; };
 struct SMoveTag { SMoveTag() { } };
 struct SAllocatorTag { SAllocatorTag() { } };
@@ -15,7 +15,7 @@ static void DestroyRange_00b83580(CSimulationPointer* first, CSimulationPointer*
 {
     for (; first != last; ++first) { first->Object = 0; first->Block = 0; ++g_destroyed; }
 }
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     void* m_vtable; long m_refCount;
     CSimulationPointer* m_simulationsFirst; CSimulationPointer* m_simulationsLast; CSimulationPointer* m_simulationsEnd;
     void ClearSimulations()

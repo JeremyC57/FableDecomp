@@ -4,18 +4,18 @@
 // @ 0x00BDD2F0. Shape: `this` is unused (`ret 8`); the map pointer is re-read for the store in the null arm, the constructor's returned `this` is stored directly.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineMap;
+class CEngineMap;
 
-struct CEngineLandscapeMap {                       // 0x60 bytes
+class CEngineLandscapeMap { public:                       // 0x60 bytes
     unsigned char _body[0x60];
     CEngineLandscapeMap(CEngineMap* map, long index);   // 0x00BDD2F0
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap* m_pLandscapeMap;          // +0x00
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void CreateMap(CEngineMap* map, long index);
 };
 

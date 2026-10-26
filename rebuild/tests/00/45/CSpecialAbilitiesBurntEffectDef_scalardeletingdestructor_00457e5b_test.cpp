@@ -3,7 +3,7 @@ static int g_dtor_called = 0;
 static int g_delete_called = 0;
 extern "C" void __cdecl eng_operator_delete(void* p){ (void)p; g_delete_called++; }
 
-struct CSpecialAbilitiesBurntEffectDef {
+class CSpecialAbilitiesBurntEffectDef { public:
     void* vftable;
     void Dtor();
     void* scalar_deleting_destructor(unsigned int flags);

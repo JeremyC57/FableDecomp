@@ -6,11 +6,11 @@
 static long g_lastType = -1;
 static int g_ctors = 0, g_dtors = 0, g_waitCalls = 0, g_terminated = 0, g_performs = 0;
 static bool g_soundOk = true;
-struct CThingCreatureBase { int dummy; };
+class CThingCreatureBase { public: int dummy; };
 static CThingCreatureBase* g_lastCreature = 0;
-struct CSoundPair { long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
-struct CCreatureActionBase { virtual ~CCreatureActionBase() {} };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
+class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
+class CCombatActionBase : public CCreatureActionBase { public:
     CCombatActionBase(CThingCreatureBase* creature, long type, const CSoundPair& sound)
     {
         g_lastType = type; g_lastCreature = creature; ++g_ctors;
@@ -19,9 +19,9 @@ struct CCombatActionBase : CCreatureActionBase {
     ~CCombatActionBase() { ++g_dtors; }
 };
 template<class T> T* Tmp(const T& t) { return const_cast<T*>(&t); }
-struct CAIBrain { CThingCreatureBase* PCreature; };
+class CAIBrain { public: CThingCreatureBase* PCreature; };
 static long g_results[8]; static int g_nextResult = 0; static int g_stopAfter = 100; static int g_stopChecks = 0;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     CAIBrain* PBrain;
     long AIAction_PerformActionAndWait(CCreatureActionBase*, bool wait) { if (!wait) ++g_waitCalls; return 2; }
     long AIAction_PerformAction(CCreatureActionBase*) { ++g_performs; return g_results[g_nextResult++]; }
@@ -29,7 +29,7 @@ struct CAIStateGroupBase {
     void Terminate() { ++g_terminated; }
 };
 
-struct CCreatureAction_TentacleRise : CCombatActionBase {
+class CCreatureAction_TentacleRise : public CCombatActionBase { public:
     CCreatureAction_TentacleRise(CThingCreatureBase* creature) : CCombatActionBase(creature, 0xfa, CSoundPair()) { }
 };
 struct CAIStateGroup_KrakenTentacleRise : CAIStateGroupBase {

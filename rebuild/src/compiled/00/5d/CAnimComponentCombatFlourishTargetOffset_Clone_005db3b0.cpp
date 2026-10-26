@@ -2,8 +2,8 @@
 // virtual CAnimComponentBase* Clone() const;
 
 #pragma pack(push,1)
-struct CAnimComponentBase
-{
+class CAnimComponentBase
+{ public:
     // vtable slot 4 (offset 0x10) = a virtual returning a fresh base object ptr
     virtual void v0();
     virtual void v1();
@@ -18,8 +18,8 @@ struct CAnimComponentBase
 };
 #pragma pack(pop)
 
-struct CAnimComponentCombatFlourishTargetOffset : public CAnimComponentBase
-{
+class CAnimComponentCombatFlourishTargetOffset : public CAnimComponentBase
+{ public:
     CAnimComponentBase* Clone() const;
 };
 

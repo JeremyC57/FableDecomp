@@ -6,7 +6,7 @@
 // Shape: each element goes through its own element-traits object, CPersistTraits<long>::TransferOut, inlined (the
 //   out-of-line copy is 0x005CC6C0): the element is copied into the dead context-argument slot whose address goes to
 //   TransferOutLong. The long traits' DefaultVal zeroing is dead (the inlined method never reads it) and is dropped.
-struct CPersistContext;
+class CPersistContext;
 class CCharString {
 public:
     void* PStringData;

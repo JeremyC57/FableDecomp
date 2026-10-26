@@ -9,7 +9,7 @@ struct CSimulation_00b80b40 {
 
 struct SSimulationEntry { CSimulation_00b80b40* m_pSimulation; long m_tag; };   // 8 bytes
 
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     unsigned char     _pad[8];
     SSimulationEntry* m_pFirst;                    // +0x08
     SSimulationEntry* m_pLast;                     // +0x0c

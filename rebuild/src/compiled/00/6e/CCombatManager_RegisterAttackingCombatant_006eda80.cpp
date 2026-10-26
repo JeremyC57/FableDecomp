@@ -8,7 +8,7 @@
 //   same-TU body and LowerBound a same-TU body.
 extern "C" void __cdecl free(void* block);  // 0x00BFEA14
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,7 +34,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned long m_presentBits[9];         // +0x20
@@ -61,7 +61,7 @@ struct CThingCreatureBase {
     }
 };
 enum EDangerStatus { DANGER_STATUS_3 = 3 };
-struct CTCStealth {                         // interface 0x36
+class CTCStealth { public:                         // interface 0x36
     void SetAsInDanger(CThingCreatureBase* source, EDangerStatus status);   // 0x00747B80
 };
 
@@ -85,7 +85,7 @@ struct CSequenceVector {                    // retail vector<CCountedPointer<CCo
             free(_M_start);
     }
 };
-struct CAttackingCombatantInfo {            // retail 0x30 bytes (Ego_r names)
+class CAttackingCombatantInfo { public:            // retail 0x30 bytes (Ego_r names)
     CThingCreatureBase* Attacked;           // +0x00
     long AttackerNumber;                    // +0x04
     long CombatWheelRingIndex;              // +0x08
@@ -111,7 +111,7 @@ struct CAttackerMap {                       // map<unsigned __int64, CThingCreat
     unsigned long _M_compare;
     unsigned long size() const { return _M_node_count; }
 };
-struct CDefendingCombatantInfo {            // retail 0x3c bytes
+class CDefendingCombatantInfo { public:            // retail 0x3c bytes
     CAttackerMap Attackers;                 // +0x00
     unsigned char _data[0x30];
     ~CDefendingCombatantInfo();             // 0x006F48A0
@@ -177,7 +177,7 @@ __declspec(noinline) CRetailRbMap_UID_CombatantInfo::SResult CRetailRbMap_UID_Co
 }
 #pragma auto_inline(on)
 
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

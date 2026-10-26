@@ -1,9 +1,9 @@
 // Behaviour test for CQuestManager::SetQuestCardGoldReward(const CCharString&, long) @ 0x004B0E50
 #include <cstdio>
 
-struct CTCBase { int m_dummy; };
-struct CTCQuestCard : CTCBase { long GoldReward; long RenownReward; };
-struct CCharString { const char* m_text; };
+class CTCBase { public: int m_dummy; };
+class CTCQuestCard : public CTCBase { public: long GoldReward; long RenownReward; };
+class CCharString { public: const char* m_text; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -11,7 +11,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_dead : 1;
@@ -33,7 +33,7 @@ struct CThing {
 
 static CThing* g_card = 0;
 
-struct CQuestManager {
+class CQuestManager { public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString&) { return g_card; }
     void SetQuestCardGoldReward(const CCharString& scriptName, long reward)
     {

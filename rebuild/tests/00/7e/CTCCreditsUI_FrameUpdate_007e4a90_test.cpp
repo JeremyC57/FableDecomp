@@ -2,14 +2,14 @@
 // Active/Quitting; an active screen starts quitting when the first component's child named CreditPart is in state 3.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* t) : m_pData(t) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }
 };
 static int g_deleted = 0; static const char* g_asked = 0;
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     long State; CComponent* Child;
     CComponent() : State(0), Child(0) { }
     virtual ~CComponent() { ++g_deleted; }
@@ -36,11 +36,11 @@ template <class T> struct CRetailVector {
     void erase(T* first, T* last) { _M_finish = CopyTrivial(last, _M_finish, first); }
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     void* ParentThing;
 };
-struct CTCCreditsUI : CTCBase {
+class CTCCreditsUI : public CTCBase { public:
     bool Active;
     CRetailVector<NUISystem::CComponent*> Components;
     bool Quitting;

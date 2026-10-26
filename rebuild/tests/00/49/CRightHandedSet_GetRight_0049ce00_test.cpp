@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
@@ -11,7 +11,7 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
     return C3DVector(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
 }
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up; C3DVector Forward;
     CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) { }
     C3DVector GetRight() const { return CrossProduct(Forward, Up); }

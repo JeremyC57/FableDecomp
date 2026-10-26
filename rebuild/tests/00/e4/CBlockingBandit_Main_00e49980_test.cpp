@@ -1,11 +1,11 @@
 // behaviour test for 00e49980 CBlockingBandit::Main (the same control flow over a mocked engine)
 #include <cstdio>
 #include <cstring>
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing { int id; C3DVector pos; bool alive; const C3DVector& GetPos() const { return pos; } bool IsAlive() const { return alive; } };
-struct CGame;
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing { public: int id; C3DVector pos; bool alive; const C3DVector& GetPos() const { return pos; } bool IsAlive() const { return alive; } };
+class CGame;
 static CGame* g_game;
-struct CGame {
+class CGame { public:
     int frame, terminateAt, fades, follows, factionSet, released;
     float lastSpeed; CScriptThing hero, escape, camp, self;
     bool flee, angered, paid;

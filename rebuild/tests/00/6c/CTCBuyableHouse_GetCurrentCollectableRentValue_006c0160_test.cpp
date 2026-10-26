@@ -99,15 +99,15 @@ struct CTCBuildingContents {                    // interface 0x21
     unsigned char   _pad00[0x0c];
     SThingListNode* ThingsHead;                 // +0x0c (VC6 list head)
 };
-struct CTCGold {                                // interface 0xCC
+class CTCGold { public:                                // interface 0xCC
     long GetGold();                             // 0x007CBDC0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 

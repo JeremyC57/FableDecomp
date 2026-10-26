@@ -33,11 +33,11 @@ template <class A, class B> struct pair {
 };
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 
-struct CWoundMorphs;
+class CWoundMorphs;
 
 template <class K, class V, class C> class CVectorMap {
 public:
@@ -51,8 +51,8 @@ public:
     value_type* UpperBound(const K& key) const;              // 0x00758570
 };
 
-struct CWoundMorphs {
-    struct CEntry {                                          // 40 bytes
+class CWoundMorphs { public:
+    class CEntry { public:                                          // 40 bytes
         EBodyLocation Location;
         long          ReplacingTextureIndex;
         long          ReplacingBumpMapIndex;

@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 class CThing { public: int zone; };
-struct CIsCreatureIsIntersecting {
+class CIsCreatureIsIntersecting { public:
     CThing* Owner;
     CIsCreatureIsIntersecting(CThing* owner) : Owner(owner) {}
     bool operator()(CThing* thing) const { return thing->zone == Owner->zone; }

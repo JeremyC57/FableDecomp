@@ -3,9 +3,9 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 static int g_setActive = 0; static bool g_lastActive = false; static void* g_activeThis = 0;
-struct CTCLight {
+class CTCLight { public:
     unsigned char _pad[0x1C];
     bool          Active;
     void SetActive(bool active) { ++g_setActive; g_lastActive = active; g_activeThis = this; Active = active; }
@@ -19,7 +19,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThingObject {
+class CThingObject { public:
     unsigned char _pad0[0x20];
     CBitset       TypeBits;
     unsigned char _pad24[0x20];
@@ -32,7 +32,7 @@ struct CThingObject {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CTCVillage { void InitialiseToggleTorchTypes(CThingObject& object); };
+class CTCVillage { public: void InitialiseToggleTorchTypes(CThingObject& object); };
 void CTCVillage::InitialiseToggleTorchTypes(CThingObject& object)
 {
     if (object.TypeBits.test(0x27)) {

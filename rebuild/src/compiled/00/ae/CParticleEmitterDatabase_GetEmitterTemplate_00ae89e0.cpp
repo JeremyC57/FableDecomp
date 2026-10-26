@@ -9,7 +9,7 @@
 // zero stores and the index push; esi carries the zero across it); the template pointer is read before the local's
 // destructor; the map path is the inline Find ternary over LowerBound(&handle) (the handle compared from its own argument
 // slot, `end` re-read for the caller's test) returning the entry's object pointer.
-namespace NParticleEngine { struct CParticleEmitter; }
+namespace NParticleEngine { class CParticleEmitter; }
 typedef NParticleEngine::CParticleEmitter CEmitter;
 struct SCountBlock;
 struct CEmitterPointer {                             // CCountedPointer<CParticleEmitter>
@@ -22,7 +22,7 @@ struct CParticleEmitterInfo {
     bool GetEmitterTemplate(CEmitterPointer& out, long index);   // 0x00AF1480
 };
 namespace NParticleEngine {
-struct CParticleDataBank {
+class CParticleDataBank { public:
     CParticleEmitterInfo* GetEmitterInfo(long handle);           // 0x00AF1280
 };
 }
@@ -49,7 +49,7 @@ struct CEmitterVectorMap {                           // CVectorMap<long, CCounte
         return (it == m_last || *key < it->first) ? m_last : it;
     }
 };
-struct CSymbolMap { unsigned char m_data[0x24]; };
+class CSymbolMap { public: unsigned char m_data[0x24]; };
 struct CParticleEmitterDatabase {
     CSymbolMap        SymbolMap;                     // +0x00
     bool              UsingSymbolMap;                // +0x24

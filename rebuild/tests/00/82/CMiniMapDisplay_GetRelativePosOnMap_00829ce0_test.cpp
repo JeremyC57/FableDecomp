@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cmath>
-struct C3DVector { float x, y, z; };
-struct C2DVector { float x, y; };
+class C3DVector { public: float x, y, z; };
+class C2DVector { public: float x, y; };
 struct IPair { int a, b; };
 
 static IPair g_lo, g_hi;

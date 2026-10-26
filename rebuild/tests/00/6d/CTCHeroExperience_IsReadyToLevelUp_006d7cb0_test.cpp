@@ -27,7 +27,7 @@ public:
     }
 };
 enum EHeroAbility { HERO_ABILITY_NONE = 0 };
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     bool avail[20]; long level[20]; long maxLevel[20]; long stat[20]; long cost[20];
     long costCalls;
     bool IsAbilityPotentiallyAvailable(EHeroAbility a) { return avail[a]; }
@@ -41,10 +41,10 @@ template <class T> struct CRetailVector {
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     const T& operator[](unsigned int n) const { return _M_start[n]; }
 };
-struct CAbilityTrackLevelDef { long ExperienceCost; long AbilityUnlocked; long Description; };
-struct CAbilityTrackDef { long ExperienceStat; CRetailVector<CAbilityTrackLevelDef> Abilities; long MaxedOutDescription; };
-struct CHeroStatsDef { CRetailVector<CAbilityTrackDef> StatLevels; };
-template <class T> struct CDefPointer { T* Ptr; T* operator->() const { return Ptr; } };
+class CAbilityTrackLevelDef { public: long ExperienceCost; long AbilityUnlocked; long Description; };
+class CAbilityTrackDef { public: long ExperienceStat; CRetailVector<CAbilityTrackLevelDef> Abilities; long MaxedOutDescription; };
+class CHeroStatsDef { public: CRetailVector<CAbilityTrackDef> StatLevels; };
+template <class T> class CDefPointer { public: T* Ptr; T* operator->() const { return Ptr; } };
 class CTCHeroExperience {
 public:
     CThing* ParentThing;

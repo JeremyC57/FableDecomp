@@ -4,14 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();
     long m_refCount;
 };
 void CDefPointeeBase::v00() { }
 void CDefPointeeBase::Destroy() { }
-struct CThingBaseDef;
+class CThingBaseDef;
 template <class T> class CDefPointer {
 public:
     CDefPointeeBase* Object;

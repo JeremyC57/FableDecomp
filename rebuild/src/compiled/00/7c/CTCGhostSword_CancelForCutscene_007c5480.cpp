@@ -10,7 +10,7 @@
 // Shape: the landed CTCBoss::ClearEffects loop (0x007AEF60) with a SIGNED index and count
 // (`(long)Minions.size()` gives `test eax,0FFFFFFF8h ; jle` and `jl`): operator[] as `*(begin() + i)`,
 // the inline IsThingAlive on the element address (esi), the call re-reading begin (`lea ecx,[eax+ebp]`).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                                  // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
@@ -33,7 +33,7 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CTCGhostSword {
+class CTCGhostSword { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     bool          ToBeRemoved;                              // +0x08

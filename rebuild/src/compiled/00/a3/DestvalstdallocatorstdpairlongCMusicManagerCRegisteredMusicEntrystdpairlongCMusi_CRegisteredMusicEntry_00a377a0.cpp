@@ -6,7 +6,7 @@ struct CList_00a376a0 {                     // unattributed STLport list (one wo
     void* _M_node;
     ~CList_00a376a0();                      // 0x00A376A0 (catalog label propagated from another body)
 };
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

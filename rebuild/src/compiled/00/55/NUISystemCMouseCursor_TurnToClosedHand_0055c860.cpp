@@ -26,7 +26,7 @@ struct CMouseCursorDef {
     unsigned long ClosedHandGraphicIndex;        // +0x12c
     void ReleaseTemporary() { Ref.DecRef(); if (Ref.GetRefCount() == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     ~CDefPointer()
     {

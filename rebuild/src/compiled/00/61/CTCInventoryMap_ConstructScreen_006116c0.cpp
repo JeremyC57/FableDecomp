@@ -7,7 +7,7 @@
 // Shape: `mov eax,[esp+4] ; push 0 ; push 0 ; push eax ; call ; ret 4` -- a void forwarder that cannot tail-jump
 // (the callee pops three slots, the caller one); the argument is loaded before the constant pushes. The method's real
 // name is unknown (catalog label kept); the two trailing arguments are modelled as bools. Local model.
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void BuildMapTeleportUI(long screen, bool forceRebuild, bool keepSelection);   // 0x0060C900
     void ConstructScreen(long screen);
 };

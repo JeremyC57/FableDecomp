@@ -10,8 +10,8 @@
 // Shape: two identical loops, each entry framed as "\r\nSTART_NEW_<kind> " + QuestName + " \r\n", its script, then
 // "END_NEW_<kind>\r\n". The two operator+ temporaries are destroyed outer first; the outer one is homed in the dead
 // `script` argument slot (script itself lives in esi). The second loop's head is 16-aligned (speed TU).
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     ~CCharString();                                              // 0x0099EAE0
     CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
@@ -23,7 +23,7 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 namespace NQuestManager {
 
 struct CRuntimeQuestPersistence {
-    struct CPersistInfo {
+    class CPersistInfo { public:
         CCharString QuestName;                     // +0x00
         CCharString PersistScript;                 // +0x04
     };

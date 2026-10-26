@@ -2,26 +2,26 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_baseObjects = 0, g_scriptBases = 0, g_strings = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long NextTimer;
     long RegisterTimer() { return NextTimer++; }
 };
-struct CScriptDataBase { int Dummy; };
-struct CCharString { void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
-struct CCPPointerInfo { long RefCount; };
-template <class T> struct CCountedPointer {
+class CScriptDataBase { public: int Dummy; };
+class CCharString { public: void* PStringData; CCharString() : PStringData(0) { ++g_strings; } };
+class CCPPointerInfo { public: long RefCount; };
+template <class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
 };
-struct CBaseObject {
+class CBaseObject { public:
     void* IntelligentPointer;
     CBaseObject() : IntelligentPointer(0) { ++g_baseObjects; }
 };
-struct CScriptGameResourceObjectBase : CBaseObject {};
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {
+class CScriptGameResourceObjectBase : public CBaseObject { public:};
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;
 };
-struct CScriptBase { CScriptBase() { ++g_scriptBases; } };
+class CScriptBase { public: CScriptBase() { ++g_scriptBases; } };
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* GSI;
     CScriptDataBase*      Data;

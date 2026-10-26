@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationManager {
+class C3DAnimationManager { public:
     void* vftable;
     int destroyed;
 };

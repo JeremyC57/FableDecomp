@@ -3,7 +3,7 @@
 // Leaf: SetMapVisibility
 // Callees: CEngineMap::SetMapVisibility @ 0x00B41DB0. The chunk label (CMeshDataBank::FreeDeviceSpecificResources) is propagated; named by address. Shape: `this` in esi, the index in edi, the argument hoisted into ebx, `ret 4`.
 struct SMapRecord_00b423b0 { unsigned char m_body[4]; };
-struct CEngineMap {
+class CEngineMap { public:
     void SetMapVisibility(SMapRecord_00b423b0* record, long visibility);   // 0x00B41DB0
 };
 struct CRetailVector_00b423b0 {

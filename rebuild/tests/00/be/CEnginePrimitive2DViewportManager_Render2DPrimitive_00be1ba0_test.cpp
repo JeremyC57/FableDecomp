@@ -1,10 +1,10 @@
 // Behaviour test for CEnginePrimitive2DViewportManager::Render2DPrimitive @ 0x00BE1BA0.
 #include <cstdio>
 struct CBase { virtual int Kind() { return 0; } virtual ~CBase() { } };
-struct CEngineInternalPrimitiveBase { long m_layer; };
-struct CEngineSubPrimitiveChain { int id; };
-struct CEnginePrimitive2DViewportManager;
-struct CEngineSubPrimitiveBase : CBase {
+class CEngineInternalPrimitiveBase { public: long m_layer; };
+class CEngineSubPrimitiveChain { public: int id; };
+class CEnginePrimitive2DViewportManager;
+class CEngineSubPrimitiveBase : public CBase { public:
     CEngineInternalPrimitiveBase* m_pPrimitive; CEngineSubPrimitiveBase* m_pNext;
     CEngineSubPrimitiveBase(CEngineInternalPrimitiveBase& p) : m_pPrimitive(&p), m_pNext(0) { }
 };
@@ -13,15 +13,15 @@ struct CEngineSubPrimitive2DViewport : CEngineSubPrimitiveBase {
     CEngineSubPrimitive2DViewport(CEngineInternalPrimitiveBase& p) : CEngineSubPrimitiveBase(p) { }
 };
 static long g_layerSeen = -1;
-struct CEnginePrimitiveRenderer2D { float Layer2DToDistance(long layer) { g_layerSeen = layer; return layer * 10.0f; } };
+class CEnginePrimitiveRenderer2D { public: float Layer2DToDistance(long layer) { g_layerSeen = layer; return layer * 10.0f; } };
 static CEnginePrimitiveRenderer2D g_r2d; static CEnginePrimitiveRenderer2D* g_pR2D = &g_r2d;
 static CEngineSubPrimitiveChain* g_chain; static CEngineSubPrimitive2DViewport* g_sub; static float g_dist; static CEnginePrimitive2DViewportManager* g_mgr;
-struct CEnginePrimitiveRenderer {
+class CEnginePrimitiveRenderer { public:
     void AddSubPrimitive(CEngineSubPrimitiveChain& c, CEngineSubPrimitive2DViewport* s, float d, CEnginePrimitive2DViewportManager* m)
     { g_chain = &c; g_sub = s; g_dist = d; g_mgr = m; }
 };
 static CEnginePrimitiveRenderer g_r; static CEnginePrimitiveRenderer* g_pR = &g_r;
-struct CEnginePrimitive2DViewportManager {
+class CEnginePrimitive2DViewportManager { public:
     void Render2DPrimitive(CEngineInternalPrimitiveBase& primitive, long, CEngineSubPrimitiveChain& chain)
     {
         CEngineSubPrimitive2DViewport* sub = new CEngineSubPrimitive2DViewport(primitive);

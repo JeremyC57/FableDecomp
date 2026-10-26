@@ -3,7 +3,7 @@
 static int g_scalar_called = 0;
 static int g_delete_called = 0;
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
     void* vftable;
     void* CLandscapeBackgroundPatch_vector_deleting_destructor(unsigned int flags);
 };

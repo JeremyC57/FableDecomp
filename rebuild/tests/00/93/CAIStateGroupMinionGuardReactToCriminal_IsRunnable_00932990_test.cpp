@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing { unsigned char m_flags91; };
+class CThing { public: unsigned char m_flags91; };
 static bool IS_THING_ALIVE(CThing* t) { return t != 0 && !(t->m_flags91 & 1); }
 struct CIntelligentPointer {
     CThing* m_pItem;
@@ -10,23 +10,23 @@ struct CIntelligentPointer {
     CIntelligentPointer& operator=(CThing* t) { CThing* item = t; m_pItem = item; return *this; }
 };
 static bool operator==(const CThing* thing, const CIntelligentPointer& p) { return thing == p.GetPItem(); }
-struct CCharString {
+class CCharString { public:
     const char* text;
     bool operator==(const char* t) const { if (text == 0) return std::strcmp(t, "") == 0; return std::strcmp(text, t) == 0; }
 };
-struct CTCVillage {
+class CTCVillage { public:
     bool criminal; const char* warning; CIntelligentPointer PCriminalHandler;
     bool IsHeroCriminal() { return criminal; }
     CCharString GetWarningStringForCurrentCrimes(long, bool& f, long& a) const { f = false; a = 0; CCharString s; s.text = warning; return s; }
 };
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     CThing* perceived; bool canSee;
     CThing* GetPerceivedThing() { return perceived; }
     bool CanSeeOrSmellPerceivedThing() const { return canSee; }
 };
 struct CCreature { CTCVillage* village; CTCPerceiveThing* perceive; };
 static CThing* g_hero;
-struct CAIBrain { CCreature* PCreature; };
+class CAIBrain { public: CCreature* PCreature; };
 
 struct CAIStateGroup_MinionGuardReactToCriminal {
     CAIBrain* PBrain; CIntelligentPointer PHero;

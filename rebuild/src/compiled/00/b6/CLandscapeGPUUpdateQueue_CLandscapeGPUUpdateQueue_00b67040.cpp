@@ -13,7 +13,7 @@ struct CBase {
     CBase();                           // 0x0099A2F0
 };
 
-struct CLandscapeGPUUpdateQueue : CBase {
+class CLandscapeGPUUpdateQueue : public CBase { public:
     virtual void v00();                    // this class has its own vtable
     CLandscapeGPUUpdateQueue();
 };

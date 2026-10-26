@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -36,12 +36,12 @@ struct CThing {
         return false;
     }
 };
-struct CTCInventory {
+class CTCInventory { public:
     void StartGameRendering();                  // 0x00581C1E
 };
 struct CMemoryBuffer {
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                         // +0x00
     signed char   Player;                       // +0x04
     unsigned char Data[32];                     // +0x05
@@ -50,16 +50,16 @@ struct CGameEvent : CMemoryBuffer {
     bool          Replacement;                  // +0x27
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     long GetMainPlayerNumber();                 // 0x00449700
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
     void AddGameEvent(const CGameEvent& event); // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CTCPhotojournalCapture {
+class CTCPhotojournalCapture { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08

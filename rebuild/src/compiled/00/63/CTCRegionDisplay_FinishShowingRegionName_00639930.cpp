@@ -12,8 +12,8 @@ extern long g_framesPerSecond;                              // 0x01375550
 extern const float g_regionNameFadeTime;                    // 0x0125A0E4
 long __fastcall GFGetCurrentFrame();                        // 0x0049D870
 
-struct CWideString { void* m_pData; };
-struct CTCRegionDisplay {
+class CWideString { public: void* m_pData; };
+class CTCRegionDisplay { public:
     virtual void v00();
     void*       ParentThing;                                // +0x04 (CTCBase)
     bool        ToBeRemoved;                                // +0x08

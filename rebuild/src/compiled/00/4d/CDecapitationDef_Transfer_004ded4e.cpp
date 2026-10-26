@@ -2,7 +2,7 @@
 #include "engine/CDecapitationDef.h"
 
 struct CMember { int x; };
-struct CPersistContext { void Persist_00431102(CMember* m); };
+class CPersistContext { public: void Persist_00431102(CMember* m); };
 
 void __fastcall CDecapitationDef_Transfer(CDecapitationDef* def, void* /*edx*/, CPersistContext* ctx)
 {

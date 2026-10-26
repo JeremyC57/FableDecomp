@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString {
+class CCharString { public:
     const char* Text;
     CCharString(const char* text, long = -1) : Text(text) { }
     ~CCharString() { }
@@ -13,14 +13,14 @@ static void DisplayProgress(const CCharString& text, float progress, bool a, boo
     ++g_progressCalls; g_lastProgress = progress;
     if (std::strcmp(text.Text, "Loading global things") || a || b) g_textOk = false;
 }
-struct CMapInfo { bool Used; bool LoadedOnPlayerProximity; };
-template <class T> struct CArray {
+class CMapInfo { public: bool Used; bool LoadedOnPlayerProximity; };
+template <class T> class CArray { public:
     T* Start; T* Finish; T* EndOfStorage;
     unsigned long size() const { return (unsigned long)(Finish - Start); }
     const T& operator[](unsigned long i) const { return Start[i]; }
 };
 static long g_loaded[8]; static int g_loadCount = 0;
-struct CWorldMap {
+class CWorldMap { public:
     CArray<CMapInfo> Maps;
     void LoadLoadableGlobalThingsForLevel(long level) { g_loaded[g_loadCount++] = level; }
     void LoadLoadableGlobalThings();

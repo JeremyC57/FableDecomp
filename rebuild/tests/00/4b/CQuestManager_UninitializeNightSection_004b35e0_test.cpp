@@ -2,9 +2,9 @@
 #include <cstring>
 #include <cstdlib>
 // behaviour test: CQuestManager::UninitializeNightSection deletes the things of every "NightOnly" section once, then clears the flag
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 static long Compare_00411570(const char* a, const char* b) { return std::strcmp(a, b); }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(CCharStringData* d) : PStringData(d) {}
     CCharString(const CCharString& o) : PStringData(o.PStringData) {}
@@ -39,12 +39,12 @@ struct CSectionSet {
     }
 };
 static const char* g_deleted[8]; static int g_deletedCount = 0;
-struct CThingManager { void DeleteThingsWithSectionName(const CCharString& s) { g_deleted[g_deletedCount++] = s.PStringData->m_pData; } };
+class CThingManager { public: void DeleteThingsWithSectionName(const CCharString& s) { g_deleted[g_deletedCount++] = s.PStringData->m_pData; } };
 static CThingManager g_things;
-struct CWorld { CThingManager* GetThingManager() { return &g_things; } };
+class CWorld { public: CThingManager* GetThingManager() { return &g_things; } };
 static CCharStringData g_names[3] = { { "A_DayOnly", 9 }, { "B_NightOnly", 11 }, { "C", 1 } };
 static CSectionNode g_nodes[3];
-struct CQuestManager {
+class CQuestManager { public:
     CWorld* World; bool DayActive; bool NightActive; int builds;
     void BuildLoadSections(CSectionSet* sections)
     {

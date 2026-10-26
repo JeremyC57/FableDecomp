@@ -18,14 +18,14 @@
 //   PDB offsets, so the class is modelled locally. CShaderRenderManager as in 0x00B54210 (BoneMatrices +0x3dc).
 // Shape: `float factor = 0; if (...) factor = ...;` keeps the zero store before the branch and the frame slot; resize(4)
 //   passes an uninitialised 48-byte default-constructed temporary (the 0x30 bytes of frame above the float).
-struct C4DVector { float X, Y, Z, W; };
-struct CMatrix3x4 { float M[12]; };
+class C4DVector { public: float X, Y, Z, W; };
+class CMatrix3x4 { public: float M[12]; };
 struct CPreTransposedBoneMatrix {
     float M[12];
     CPreTransposedBoneMatrix() { }
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* First;
     T* Last;
     T* End;
@@ -34,13 +34,13 @@ template <class T> struct CArray {
     void resize(unsigned int n, const T& value);        // 0x00B7EDF0 for CPreTransposedBoneMatrix
 };
 
-struct CShaderConstantRange {
+class CShaderConstantRange { public:
     void* _vptr;                                        // +0
     long Offset;                                        // +4
     unsigned long Count;                                // +8
 };
 
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout { public:
     void* _vptr;                                        // +0x00
     CShaderConstantRange Reserved;                      // +0x04
     unsigned char _pad10[0x130];                        // +0x10 the other ranges
@@ -129,7 +129,7 @@ private:
 };
 extern CShaderRenderManager* g_pShaderRenderManager;    // 0x01436E14
 
-struct CEngineWaterSettings {                           // PDB CEngineWaterSettings (0x2e4)
+class CEngineWaterSettings { public:                           // PDB CEngineWaterSettings (0x2e4)
     unsigned char _pad00[0xd];
     bool          EnableBumpMap;                        // +0x0d
     unsigned char _pad0e[0x5c - 0x0e];
@@ -144,7 +144,7 @@ struct CEngineWaterSettings {                           // PDB CEngineWaterSetti
     CMatrix3x4    OtherSeaBackgroundShaderVars;         // +0x2b4
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char        _pad000[0x280];                // vptr, buffers, shaders, render lists (retail 12-byte CArrays)
     CEngineWaterSettings Settings;                      // +0x280
     void SetupBackgroundShaderConstants();

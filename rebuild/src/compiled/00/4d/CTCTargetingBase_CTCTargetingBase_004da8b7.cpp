@@ -12,10 +12,10 @@
 // pointer in ecx and clears the member inside the non-null arm with `and dword ptr [..],0` (a size TU:
 // `#pragma optimize("s",on)`, the release `__forceinline`); the intelligent pointers have no destructor of their own, so
 // the base destructor is called directly at each member address, last member first.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                     // +0x04
     bool    ToBeRemoved;                     // +0x08

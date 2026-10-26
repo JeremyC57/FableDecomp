@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CGameScriptInterface;
+class CGameScriptInterface;
 bool g_countBetMoneyDown = false;
 bool __fastcall CGameScriptInterface_GetCountBetMoneyDown(const CGameScriptInterface* self)
 {

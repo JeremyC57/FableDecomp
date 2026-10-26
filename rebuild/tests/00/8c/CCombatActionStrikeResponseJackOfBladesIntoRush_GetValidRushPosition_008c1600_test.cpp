@@ -18,7 +18,7 @@
 static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { std::printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
@@ -72,9 +72,9 @@ struct CPositionVector {
         return pos;
     }
 };
-struct CWorldMap { int Id; };
-struct CThingSearchTools { int Id; };
-struct CTCShapeManager { int Id; };
+class CWorldMap { public: int Id; };
+class CThingSearchTools { public: int Id; };
+class CTCShapeManager { public: int Id; };
 
 // GetValidPositions stub: records its arguments and hands back the scripted candidate list.
 static C3DVector g_candidates[16];
@@ -110,7 +110,7 @@ inline unsigned long GFRandom(unsigned long* seed)
     *seed = GFROR13(*seed);
     return *seed;
 }
-struct CWorld {
+class CWorld { public:
     CWorldMap          Map;
     CThingSearchTools  Tools;
     CThingSearchTools* PThingSearchTools;
@@ -121,7 +121,7 @@ struct CWorld {
     unsigned long* GetPRandomSeed() { return &Seed; }
 };
 
-struct CTCBase { };
+class CTCBase { public: };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry  entries[8];
@@ -142,16 +142,16 @@ struct CDefBase {
     virtual ~CDefBase() { }
     virtual void Destroy() { ++Destroyed; }
 };
-struct CJackOfBladesBattleDef : CDefBase {
+class CJackOfBladesBattleDef : public CDefBase { public:
     float RushAwayDistance;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer() { if (--Object->RefCount == 0) Object->Destroy(); }
     T* operator->() const { return Object; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CJackOfBladesBattleDef* Battle;
     bool GetSubDef(CDefPointer<CJackOfBladesBattleDef>* out)
     {
@@ -162,11 +162,11 @@ struct CDefClassBase {
         return true;
     }
 };
-struct CTCBoss : CTCBase {
+class CTCBoss : public CTCBase { public:
     C3DVector PhaseStartPos;
 };
 struct NavCall { C3DVector From, To; float Tolerance; };
-struct CTCCreatureNavigation : CTCBase {
+class CTCCreatureNavigation : public CTCBase { public:
     C3DVector Reachable;
     int       Calls;
     NavCall   Log[16];
@@ -178,7 +178,7 @@ struct CTCCreatureNavigation : CTCBase {
         return Same(to, Reachable);
     }
 };
-struct CThing {
+class CThing { public:
     unsigned long   m_presentBits[9];
     CInterfaceMap   m_interfaces;
     CDefClassBase*  m_pDef;

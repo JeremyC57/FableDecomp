@@ -6,8 +6,8 @@
 
 extern int g_initCount; // 0x013bca14 (extern symbol -> relocated, folds to dec [mem])
 
-struct CInitBaseClass
-{
+class CInitBaseClass
+{ public:
     void* m_vtable;       // +0
     char  m_registered;   // +4
     void dtor_CInitBaseClass();

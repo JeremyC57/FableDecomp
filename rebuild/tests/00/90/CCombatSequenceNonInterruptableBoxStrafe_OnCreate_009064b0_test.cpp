@@ -2,10 +2,10 @@
 // strafe back and a combat idle (code 50) on the sequence's owner and target are queued, then the base OnCreate runs; the queue holds the only references.
 #include <cstdio>
 
-struct CThing { int id; };
-struct CThingCreatureBase : CThing {};
-struct CSoundPair { long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
-struct CCombatActionBase {
+class CThing { public: int id; };
+class CThingCreatureBase : public CThing { public:};
+class CSoundPair { public: long m_first, m_second; CSoundPair() : m_first(0), m_second(0) {} };
+class CCombatActionBase { public:
     CThingCreatureBase* Owner; CThing* Target; long Code; long Sound0;
     CCombatActionBase(CThingCreatureBase* o, CThing* t, long code, const CSoundPair& s) : Owner(o), Target(t), Code(code), Sound0(s.m_first) {}
     virtual ~CCombatActionBase() {}
@@ -21,16 +21,16 @@ struct CCountedPointer {
     CCountedPointer& operator=(CCombatActionBase* o) { Reset_00905fd0(o); return *this; }
     ~CCountedPointer() { Release(); }
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     CThingCreatureBase* m_pOwner; CThing* m_pTarget;
     CCountedPointer Queue[6]; int Count; bool Created;
     void AddAction(const CCountedPointer& a) { Queue[Count].m_pObject = a.m_pObject; Queue[Count].m_pCount = a.m_pCount; if (a.m_pCount) ++a.m_pCount->m_references; ++Count; }
     virtual void OnCreate() { Created = true; }
 };
-struct CCreatureAction_StrafeBackward : CCombatActionBase { CCreatureAction_StrafeBackward(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 1, CSoundPair()) {} };
-struct CCreatureAction_DiagonalStrafeBR : CCombatActionBase { CCreatureAction_DiagonalStrafeBR(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 2, CSoundPair()) {} };
-struct CCreatureAction_DiagonalStrafeBL : CCombatActionBase { CCreatureAction_DiagonalStrafeBL(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 3, CSoundPair()) {} };
-struct CCreatureAction_CombatIdle : CCombatActionBase { CCreatureAction_CombatIdle(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 50, CSoundPair()) {} };
+class CCreatureAction_StrafeBackward : public CCombatActionBase { public: CCreatureAction_StrafeBackward(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 1, CSoundPair()) {} };
+class CCreatureAction_DiagonalStrafeBR : public CCombatActionBase { public: CCreatureAction_DiagonalStrafeBR(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 2, CSoundPair()) {} };
+class CCreatureAction_DiagonalStrafeBL : public CCombatActionBase { public: CCreatureAction_DiagonalStrafeBL(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 3, CSoundPair()) {} };
+class CCreatureAction_CombatIdle : public CCombatActionBase { public: CCreatureAction_CombatIdle(CThingCreatureBase* o, CThing* t) : CCombatActionBase(o, t, 50, CSoundPair()) {} };
 struct CCombatSequence_NonInterruptableBoxStrafe : CCombatSequenceBase { virtual void OnCreate(); };
 
 void CCombatSequence_NonInterruptableBoxStrafe::OnCreate()

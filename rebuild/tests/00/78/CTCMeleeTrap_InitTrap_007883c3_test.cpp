@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString { char m_text[16]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
+class CCharString { public: char m_text[16]; CCharString(const char* t, long) { std::strcpy(m_text, t); } };
 struct CTCMeleeTrap {
     long m_trapType; bool PlayingContinuous; bool StrikeAnimation; int type3; char lastAnim[16]; int anims; bool lastLoop;
     void StartType3Trap() { ++type3; }

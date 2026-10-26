@@ -10,13 +10,13 @@ static int g_calls = 0, g_termAt = 0, g_frames = 0, g_rand = 0;
 static void L(const char* s) { g_log += s; g_log += ";"; }
 static int host_rand() { return g_rand++; }
 #define rand host_rand
-struct C3DVector { float X, Y, Z; };
-struct CCharString { std::string S; CCharString(const char* t, long n = -1) : S(t) { (void)n; } };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: std::string S; CCharString(const char* t, long n = -1) : S(t) { (void)n; } };
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_NONE };
 enum ETraderComment { TRADER_COMMENT_NONE };
 static int g_hp[16];
 static int g_things = 0;
-struct CScriptThing {
+class CScriptThing { public:
     int Id; C3DVector Pos;
     CScriptThing() : Id(0) { Pos.X = Pos.Y = Pos.Z = 0; ++g_things; }
     CScriptThing(const CScriptThing& o) : Id(o.Id), Pos(o.Pos) { ++g_things; }
@@ -31,7 +31,7 @@ struct CScriptThingView {
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
 };
 static int g_onScreenMask = 0, g_cur = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     CGameScriptInterface() : Hero(1) {}
     void NewScriptFrame() const { ++g_frames; L("|"); if (g_cur && g_hp[g_cur] > 0) --g_hp[g_cur]; }
@@ -47,10 +47,10 @@ struct CGameScriptInterface {
     void EntitySetCutsceneBehaviour(const CScriptThing& t, ECutsceneBehaviour b) const { CHECK((int)b == 1); (void)t; L("cutscene"); }
 };
 static CGameScriptInterface* g_pGameScriptInterface;
-struct CTimer { long Index; void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); } };
+class CTimer { public: long Index; void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); } };
 namespace NScript {
 struct CScriptBase { bool IsActiveThreadTerminating() { bool t = g_termAt && ++g_calls >= g_termAt; return t; } };
-struct CQ_TraderEscortScript : CScriptBase {
+class CQ_TraderEscortScript : public CScriptBase { public:
     CGameScriptInterface* GSI; void* PMasterData; CTimer CommentTimer; long BalverinesToSurpriseHeroNeeded;
     void WatchForSurprisingBalverines();
     bool MakeTraderComment(const CCharString& c, const CScriptThing& trader, ETraderComment type) { CHECK(c.S == "BALVERINE_SURPRISE" && trader.Id == 5 && (int)type == 0); L("comment"); return true; }

@@ -11,8 +11,8 @@
 // +0x28 (vector of 16-byte CActivity, LowerIsBetter at +0x0d), SessionID +0x34; map node key +0x10.
 // Shape: GetSignedInUserName is the inline by-value getter (named CWideString copy, then ConvertToCharString); the map
 // walk uses STLport's inline iterator increment; the key is copied into a named local whose address operator[] takes.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     CCharString(const CCharString& other);           // 0x0099EC30
@@ -23,13 +23,13 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
     CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                  // +0x110
     CWideString   SignedInPassword;                  // +0x114

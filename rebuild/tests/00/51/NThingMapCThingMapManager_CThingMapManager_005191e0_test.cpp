@@ -4,7 +4,7 @@
 #include <cstdlib>
 static int g_baseCalls = 0;
 struct CBaseClassNonCopyable { CBaseClassNonCopyable() { ++g_baseCalls; } virtual ~CBaseClassNonCopyable() { } };
-template <class T> struct CArray { T* m_pFirst; T* m_pLast; T* m_pEnd; CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
+template <class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; CArray() : m_pFirst(0), m_pLast(0), m_pEnd(0) { } };
 struct SNode { char Color; SNode* Parent; SNode* Left; SNode* Right; long Value; };
 struct CSetBase { SNode* m_pHeader; CSetBase() : m_pHeader(0) { m_pHeader = (SNode*)std::malloc(sizeof(SNode)); } };
 struct CSet : CSetBase {

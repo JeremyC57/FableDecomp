@@ -12,7 +12,7 @@
 //   pointer's inline operator CThing*() so it is fetched before the target) plus the CastAssassinRush orientation idiom
 //   (physics reference fetched through an inline GetPhysics() before the set, Up member-wise, Forward copied).
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08, PTarget +0xa8); CThing PhysicsTC +0x60.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -26,8 +26,8 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
     C3DVector& AccurateNormalise();                     // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCPhysicsBase {
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCPhysicsBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -62,7 +62,7 @@ struct CTCPhysicsBase {
     virtual void v31();
     virtual void SetOrientation(const CRightHandedSet& set);   // slot 32 (+0x80)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -92,7 +92,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     operator CThing*() const { return GetPItem(); }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -104,13 +104,13 @@ struct CModeDrained : CModeBase {               // 0x80 bytes
     CModeDrained(CThing* thing, CThing* drainer);   // 0x00868220
 };
 }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer(T* object);                 // 0x00718A00
     CCountedPointer(const CCountedPointer& other);
 };
-struct CTCCreatureModeManager {                 // interface type 0x31
+class CTCCreatureModeManager { public:                 // interface type 0x31
     bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
 };
 class CCombatActionBase {

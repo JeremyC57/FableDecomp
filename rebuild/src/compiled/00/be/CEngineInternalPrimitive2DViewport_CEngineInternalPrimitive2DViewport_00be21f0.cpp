@@ -8,22 +8,22 @@
 // with its own zero register edx); the two bools are body assignments AFTER that copy (as initialisers their byte stores move above
 // the third vector word); AlphaMaskClipBox, Viewport, the FOVs and Layer are left uninitialised; `or byte ptr [esi+34h],8` is
 // PostRenderEnable = 1 (bit 3 of the base flag byte).
-struct CGraphicDataBank;
-struct CEnginePrimitiveHandle;
+class CGraphicDataBank;
+class CEnginePrimitiveHandle;
 
-struct C2DBoxF {
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     C2DBoxF() { }
     C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) { }
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() { }
     C4DVector(float x, float y, float z, float w) : X(x), Y(y), Z(z), W(w) { }
 };
 
-struct C2DAlphaMaskInfo {
+class C2DAlphaMaskInfo { public:
     CGraphicDataBank* AlphaMaskBank;               // +0x00
     unsigned long     AlphaMaskBankIndex;          // +0x04
     C4DVector         AlphaMaskPositionFactors;    // +0x08

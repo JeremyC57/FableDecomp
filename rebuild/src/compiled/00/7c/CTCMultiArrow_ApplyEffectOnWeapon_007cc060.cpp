@@ -60,7 +60,7 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T& back() const { return *(end() - 1); }
     void pop_back() { --_M_finish; _M_finish->~T(); }
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                                    // +0
     unsigned char G;                                    // +1
     unsigned char R;                                    // +2
@@ -69,18 +69,18 @@ struct CRGBColour {
 };
 namespace NGraphicAppearance {
     enum EAppearanceMeshEffectPriority { PRIORITY_1 = 1 };
-    struct CTCGraphicAppearance {
+    class CTCGraphicAppearance { public:
         void SetAsHighlighted(float start, float width, const CRGBColour& colour, bool includeCarried, bool flag,
                               EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
         void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
     };
 }
-struct CSpecialAbilitiesMultiArrowDef {                 // retail = PDB - 4
+class CSpecialAbilitiesMultiArrowDef { public:                 // retail = PDB - 4
     unsigned char _pad00[0x64];
     float         BowHighlightWidth;                    // +0x64
     vector<long>  BowHighlightColor;                    // +0x68
 };
-struct CTCMultiArrow {
+class CTCMultiArrow { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _base08[4];

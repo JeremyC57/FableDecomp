@@ -1,8 +1,8 @@
 // Behaviour test for 0x00885420 CEnvironmentSpellEffectInterface::SetScreenFilterParams
 #include <cstdio>
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CScreenFilterParams { float Alpha, Saturation, Contrast, Brightness; CRGBFloatColour Tint; };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CScreenFilterParams ScreenFilterParams, PrevFrameScreenFilterParams;
     void SetScreenFilterParams(float alpha, float saturation, float contrast, float brightness, const CRGBFloatColour& tint, bool interpolate)
     {

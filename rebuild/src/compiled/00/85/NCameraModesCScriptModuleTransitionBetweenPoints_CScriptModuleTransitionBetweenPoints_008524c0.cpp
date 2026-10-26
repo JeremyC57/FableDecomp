@@ -9,8 +9,8 @@
 // (`push eax ; push eax`), the remaining four after it, right to left. `ret 14h` = five arguments.
 // Layout (PDB, 0x90 bytes): PThing +0x4c, Increment +0x54, LookAtIncrement +0x60, LookAtPos +0x6c,
 // StartPos +0x78, EndFrame +0x84, FOV +0x88, PreventSelfTermination +0x8c. Parameter names are descriptive.
-struct CBaseObject;
-struct C3DVector { float X, Y, Z; };
+class CBaseObject;
+class C3DVector { public: float X, Y, Z; };
 
 struct CBaseIntelligentPointer {
     virtual void v00();

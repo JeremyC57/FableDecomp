@@ -1,7 +1,7 @@
 // Behaviour test for 00c1bfb0 (_global::SwapYZ): the result keeps X and exchanges Y and Z.
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;

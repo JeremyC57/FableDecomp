@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <stddef.h>
 #include <new>
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                              // 0x0099AED0
     CWideString(const wchar_t* text);           // 0x0099B6B0

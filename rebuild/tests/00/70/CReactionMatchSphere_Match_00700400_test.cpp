@@ -2,7 +2,7 @@
 #include <cstdio>
 
 struct CArrayFloat { float* m_begin; float* m_end; float* m_capacity; };
-struct COpinionSet {
+class COpinionSet { public:
     CArrayFloat OpinionValues;
     float GetSqDistance(const COpinionSet& other) const
     {

@@ -42,7 +42,7 @@ static float FastInvSqrt(float lengthSquared)
     std::memcpy(&r, &estimate, 4);
     return 0.5f * (r * (3.0f - lengthSquared * (r * r)));
 }
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -50,12 +50,12 @@ struct C3DVector {
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 
 // ---- strings ----
 static int g_stringsBuilt = 0;
 static int g_stringsDestroyed = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_stringsBuilt; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_stringsBuilt; }
@@ -77,7 +77,7 @@ struct CDefBase {
     CDefBase() : RefCount(0) { }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-struct CWeaponDef : CDefBase { };
+class CWeaponDef : public CDefBase { public: };
 static long g_effectTypeResult = 77;
 static const char* g_lastEffectName = 0;
 static long Lookup_GetEffectFromString(const void* def, const CCharString& name)
@@ -86,7 +86,7 @@ static long Lookup_GetEffectFromString(const void* def, const CCharString& name)
     g_lastEffectName = name.m_pData;
     return std::strcmp(name.m_pData, "GROUND_SLAM_EXPLOSION") == 0 ? g_effectTypeResult : -1;
 }
-struct CSpecialEffectsDef : CDefBase {
+class CSpecialEffectsDef : public CDefBase { public:
     bool GetEffectFromString(const CCharString& name, long& type) const
     {
         long found = Lookup_GetEffectFromString(this, name);
@@ -96,7 +96,7 @@ struct CSpecialEffectsDef : CDefBase {
         return true;
     }
 };
-struct CThingShotDef : CDefBase {
+class CThingShotDef : public CDefBase { public:
     long TCName;
     long Thing;
 };
@@ -115,7 +115,7 @@ struct CDefVirtual {
     virtual void v00() { }
     virtual void Destroy() { }
 };
-struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
+class CMeleeCombatAbilityDef : public CDefVirtual, public CRefCounted { public:
     void ReleaseTemporary()
     {
         DecRef();
@@ -123,7 +123,7 @@ struct CMeleeCombatAbilityDef : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -134,7 +134,7 @@ template <class T> struct CDefPointer {
         }
     }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CWeaponDef** out);
     bool GetSubDef(CSpecialEffectsDef** out);
 };
@@ -172,7 +172,7 @@ bool CDefClassBase::GetSubDef(CSpecialEffectsDef** out)
     *out = (CSpecialEffectsDef*)found;
     return true;
 }
-struct CDefinitionManager;
+class CDefinitionManager;
 static CThingShotDef g_shotDef;
 static CDefinitionManager* g_lastShotManager = 0;
 static long g_lastShotIndex = -1;
@@ -185,7 +185,7 @@ static void* FindDef_CThingShotDef(CDefinitionManager* manager, long index)
 }
 static const char* g_lastDefName = 0;
 static CDefinitionManager* g_lastIndexManager = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name)
     {
         g_lastIndexManager = this;
@@ -202,7 +202,7 @@ struct CDefinitionManager {
     }
     bool GetDef(long index, CThingShotDef** out) { return GetDefShot(index, out); }
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& Get();
 };
 static CGameDefinitionManager g_gameDefinitionManager;
@@ -211,28 +211,28 @@ CGameDefinitionManager& CGameDefinitionManager::Get() { return g_gameDefinitionM
 // ---- world ----
 static C3DVector g_groundQuery(0.0f, 0.0f, 0.0f);
 static int g_groundCalls = 0;
-struct CWorldMap {
+class CWorldMap { public:
     float GetGroundSizeZAt(const C3DVector& pos) const { g_groundQuery = pos; ++g_groundCalls; return 5.0f; }
 };
-struct CWorld {
+class CWorld { public:
     virtual CWorldMap* GetWorldMap() { return &Map; }
     CDefinitionManager* PDefinitionManager;
     CWorldMap Map;
 };
 
 // ---- things ----
-struct CTCBase;
-struct CTCParamsBase;
-struct CTCPhysicsBase {
+class CTCBase;
+class CTCParamsBase;
+class CTCPhysicsBase { public:
     C3DVector Facing;
     virtual C3DVector GetFacing() { return Facing; }
 };
-struct CThing;
+class CThing;
 struct AddTCRecord { CThing* thing; const char* name; bool init; CTCParamsBase* params; int calls; };
 static AddTCRecord g_addTC;
 struct CTCShotDefinitionBase;
 static CTCShotDefinitionBase* g_shotTCResult = 0;
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     CDefClassBase*  PDef;
     signed char     PlayerNumber;
@@ -251,7 +251,7 @@ struct CThing {
         return (CTCBase*)g_shotTCResult;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage() { return 73; }
 };
 struct CreateRecord { long defIndex; C3DVector pos; long player; const CRightHandedSet* orientation; unsigned long flags;
@@ -319,13 +319,13 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void PerformAction() { }
     CBaseIntelligentPointer PCreature;
     CWorld* World;
     CWorld* GetPWorld() const { return World; }
 };
-struct CCreatureAction_DragonRearUpFull : CCombatActionBase {
+class CCreatureAction_DragonRearUpFull : public CCombatActionBase { public:
     CIntelligentPointer PShot;
     virtual void PerformAction();
 };

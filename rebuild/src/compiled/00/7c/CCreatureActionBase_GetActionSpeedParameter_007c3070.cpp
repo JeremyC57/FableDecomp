@@ -8,7 +8,7 @@
 // result are zeroed in the frame (the result through edi, which also carries the final return); the def pointer is copied into
 // esi right after GetSubDef, before the test, and released last; the module is a size TU (the counted-def release stays out of line).
 // Layout: engine/CCreatureActionBase.h (PDB) agrees on PCreature at +8 (item at +0xc); `this` is modelled locally.
-struct CCharString {                        // one pointer (PStringData)
+class CCharString { public:                        // one pointer (PStringData)
     void* m_pData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
@@ -26,7 +26,7 @@ struct CDefPointer {                        // CDefPointer<T>: one word, zero-in
     CDefPointer() : m_p(0) { }
 };
 
-struct CThing {                             // the creature (its def-class base carries GetSubDef)
+class CThing { public:                             // the creature (its def-class base carries GetSubDef)
     bool GetSubDef(CDefPointer& def);       // 0x00669580
 };
 void* FindDef_CThing_GetSubDef_0();   // stand-in callee of the stand-in body below
@@ -49,7 +49,7 @@ struct CIntelligentPointer {                // CIntelligentPointer<CThingCreatur
     CThing* operator->() const { return m_pItem; }   // inline: the item word read directly (no GetPItem call in this TU)
 };
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer PCreature;          // +0x08

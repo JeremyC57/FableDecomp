@@ -11,16 +11,16 @@
 //   thing interface bitset +0x20 (0x46 = bit 6 of +0x28, 0x48 = bit 8 of +0x28), interface map +0x44, dead bit 0 of +0x91.
 // Shape: HasTC then a separate GetTC (one bit test per component); the def-index string is the literal "CARRY_SLOT_BOTH_HANDS"
 //   (0x01268748) as a temporary CCharString argument; the result is an explicit `if (...) return true;`.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
@@ -31,7 +31,7 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;           // +0x44
@@ -55,16 +55,16 @@ struct CThing {
     }
 };
 
-struct CTCCarrying {                       // interface type 0x46
+class CTCCarrying { public:                       // interface type 0x46
     CThing* GetThingInCarrySlot(long slot) const;   // 0x006A11F0
 };
 
-struct CTCWeapon {                         // interface type 0x48
+class CTCWeapon { public:                         // interface type 0x48
     bool IsUsableBy(CThing* user) const;   // 0x005DAB10
 };
 
 namespace CTCCreatureModeManager {
-struct CModeBase {                         // retail 0x1c
+class CModeBase { public:                         // retail 0x1c
     virtual void v00();
     CThing*       ParentThing;             // +0x04
     unsigned char _body[0x14];

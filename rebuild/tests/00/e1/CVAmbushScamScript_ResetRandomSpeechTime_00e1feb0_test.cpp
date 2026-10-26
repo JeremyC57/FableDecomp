@@ -4,7 +4,7 @@
 static int g_rand = 0;
 static int fake_rand() { return g_rand; }
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     long m_timer, m_time;
     virtual void v000() { } virtual void v001() { } virtual void v002() { } virtual void v003() { } virtual void v004() { } virtual void v005() { } virtual void v006() { } virtual void v007() { }
     virtual void v008() { } virtual void v009() { } virtual void v010() { } virtual void v011() { } virtual void v012() { } virtual void v013() { } virtual void v014() { } virtual void v015() { }
@@ -22,10 +22,10 @@ struct CGameScriptInterface {
 };
 CGameScriptInterface* g_pGameScriptInterface = 0;
 
-struct CScriptDef { long RandomSpeechTimeMax; long RandomSpeechTimeRange; };
+class CScriptDef { public: long RandomSpeechTimeMax; long RandomSpeechTimeRange; };
 CScriptDef* g_pScriptDef = 0;
 
-struct CTimer { long Index; };
+class CTimer { public: long Index; };
 
 struct CV_AmbushScamScript {
     CTimer RandomSpeechTimer;

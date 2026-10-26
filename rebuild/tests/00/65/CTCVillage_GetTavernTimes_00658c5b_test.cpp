@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CLongVector { long* _M_start; long* _M_finish; long* _M_end_of_storage; };
 static int g_destroyed = 0;
-struct CVillageDef {
+class CVillageDef { public:
     long RefCount; CLongVector TavernStartTimes; long TavernDuration;
     virtual ~CVillageDef() {}
     virtual void Destroy() { ++g_destroyed; }
@@ -14,7 +14,7 @@ struct CDefPointerVillageDef {
     const CVillageDef* operator->() const { return Object; }
 };
 static long g_maxRef = 0;
-struct CTCVillage {
+class CTCVillage { public:
     CDefPointerVillageDef PDef;
     CTCVillage(CVillageDef* d) : PDef(d) { }
     CDefPointerVillageDef GetPDef() const { return PDef; }

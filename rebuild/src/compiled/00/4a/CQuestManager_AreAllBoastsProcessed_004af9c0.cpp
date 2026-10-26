@@ -8,11 +8,11 @@
 // Failed +0x21, Completed +0x22, GroupIndex +0x24} (PDB CBoast, 32 bytes).
 // Shape: the head is re-read from the member for every end test; the argument pointer is loaded once in the
 // preheader (ebx); the three skip tests share one `jne` target; `mov al,1` and `xor al,al` exits are separate.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const CCharString& other) const;   // 0x0099E900
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
 };
 
@@ -35,7 +35,7 @@ struct CBoastNode {
     CBoast      value;                             // +0x08
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x6c];
     CBoastNode*   AcceptedBoasts;                  // +0x6c list<CBoast> (head node)
     bool AreAllBoastsProcessed(CCharString& scriptName) const;

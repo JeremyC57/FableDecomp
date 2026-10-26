@@ -26,17 +26,17 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 static int g_destroyed = 0;
-struct CAICreatureWillPowerIndicatorDef {
+class CAICreatureWillPowerIndicatorDef { public:
     virtual void Destroy() { ++g_destroyed; }
     long m_refCount;
     unsigned char _pad[0x38];
     long HitsToRush;
 };
 static CAICreatureWillPowerIndicatorDef* g_def = 0; static int g_getSubDef = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CAICreatureWillPowerIndicatorDef** out) { ++g_getSubDef; ++g_def->m_refCount; *out = g_def; return true; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -56,15 +56,15 @@ struct CThing {
         return false;
     }
 };
-struct CTCBoss {
+class CTCBoss { public:
     unsigned char _pad[0x10];
     long m_hitCount;
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     CAIBrain* PBrain;
     unsigned char _pad[0x0c];

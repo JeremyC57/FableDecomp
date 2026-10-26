@@ -10,14 +10,14 @@
 //   itself uses the engine header (MapX +0x10C, MapY +0x10E agree).
 #include "engine/CLandscapeBackgroundPatch.h"
 
-struct CEngineMap {
+class CEngineMap { public:
     unsigned char  _pad00[0x5C];
     unsigned short MapWidth;                      // +0x5C
     unsigned short MapHeight;                     // +0x5E
     unsigned short WorldPosX;                     // +0x60
     unsigned short WorldPosY;                     // +0x62
 };
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap { public:
     void*          __vftable;                     // +0x00
     void*          PatchTree;                     // +0x04
     void*          Patches;                       // +0x08
@@ -25,7 +25,7 @@ struct CEngineLandscapeMap {
     long           PatchGridHeight;               // +0x10
     CEngineMap*    Map;                           // +0x14
 };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     unsigned char        _pad00[0xA4];
     CEngineLandscapeMap* Map;                     // +0xA4 (retail)
 };

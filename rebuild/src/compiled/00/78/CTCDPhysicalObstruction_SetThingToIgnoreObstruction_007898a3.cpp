@@ -12,7 +12,7 @@
 // class name with a descriptive layout.
 // Shape: the bare temporary `CIntelligentPointer(&thing)` in the 8-byte frame, the constructor's returned `this` (eax)
 // pushed straight into push_back; the temporary dies after the call.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
@@ -31,7 +31,7 @@ struct CIntelligentPointerVector {          // retail STLport vector, 12 bytes
     void push_back(const CIntelligentPointer& value);   // 0x004AD520
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     void*                     __vftable;    // +0x00
     unsigned char             _pad_0x04[0x28];
     CIntelligentPointerVector ImmuneThings; // +0x2C

@@ -2,7 +2,7 @@
 // Struct-return __fastcall: returns a CCharString by value built from a
 // literal string pointer (0x012a7d2c) and length -1 (null-terminated).
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     // __fastcall ctor(const char*, int len)
     CCharString(const char* s, int len);

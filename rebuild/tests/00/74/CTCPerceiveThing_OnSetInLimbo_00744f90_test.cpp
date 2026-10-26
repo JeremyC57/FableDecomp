@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct C3DAnimationStateAlpha { int tag; };
+class C3DAnimationStateAlpha { public: int tag; };
 
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     int aCalls;
     int bCalls;
     C3DAnimationStateAlpha* lastArg;

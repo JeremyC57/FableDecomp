@@ -11,7 +11,7 @@
 // so the store is not dead -- a default constructor drops it); the implicit copy constructor moves every member,
 // floats included, with integer moves. VC7.1 emits the implicit copy constructor out of line, so the placement-new
 // helper only makes the TU emit it -- it is not part of the retail body.
-struct CCombatAbilityData {                  // vtable 0x01232484
+class CCombatAbilityData { public:                  // vtable 0x01232484
     virtual ~CCombatAbilityData();
     long  PercentageChance;                  // +0x04
     float SecondsDuration;                   // +0x08
@@ -20,7 +20,7 @@ struct CCombatAbilityData {                  // vtable 0x01232484
     long  InterfaceType;                     // +0x14 ECombatAbilityInterfaceType
 };
 
-struct CCombatAbilityMeleeAttackData : CCombatAbilityData {   // vtable 0x01232498, 0x20 bytes
+class CCombatAbilityMeleeAttackData : public CCombatAbilityData { public:   // vtable 0x01232498, 0x20 bytes
     bool  Blockable;                         // +0x18
     bool  Knockdown;                         // +0x19
     float Damage;                            // +0x1C

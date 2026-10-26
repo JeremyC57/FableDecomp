@@ -1,7 +1,7 @@
 // behaviour test for 005bd33c: CTCInventoryBase::PlayInventoryMovementSound -- game-state guard, CSoundInit flag 0x20, def add-ref/release
 #include <cstdio>
-struct CASoundBank { int id; };
-struct CSoundInit {
+class CASoundBank { public: int id; };
+class CSoundInit { public:
     float Volume, Pitch; int Delay, LoopCount, Priority, Flags, Pan, Id;
     CSoundInit() : Volume(1.0f), Pitch(1.0f), Delay(0), LoopCount(1), Priority(1), Flags(0), Pan(0), Id(-1) {}
 };
@@ -9,7 +9,7 @@ struct CSoundPlayer {
     int calls; CASoundBank* bank; int sample; bool loop; int flags; bool attached; int refDuringCall;
     CSoundPlayer() : calls(0), bank(0), sample(0), loop(false), flags(0), attached(true), refDuringCall(0) {}
 };
-struct CInventoryDef {
+class CInventoryDef { public:
     int RefCount; int destroyed; int MovementSound; int NoMovementSound;
     void Destroy() const { ++((CInventoryDef*)this)->destroyed; }
 };
@@ -23,7 +23,7 @@ static void PlaySample(CSoundPlayer* p, CASoundBank& bank, int sample, bool loop
 struct CGameState { CSoundPlayer* GetSoundPlayer() { return &g_player; } };
 static CGameState* g_pGameState = 0;
 static CASoundBank g_bank;
-struct CThing { CASoundBank& GetSampleBank() const { return g_bank; } };
+class CThing { public: CASoundBank& GetSampleBank() const { return g_bank; } };
 struct CTCInventoryBase {
     CThing* ParentThing;
     CInventoryDef* PDef;

@@ -5,7 +5,7 @@
 // Host model of the text bank's entry vectors: an intrusively counted pointee (count at +4 in retail), the
 // CIVCountedPointer copy add-refs, the destructor releases; STLport vector push_back / _M_insert_overflow.
 struct CPointee { int RefCount; };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* P;
     explicit CIVCountedPointer(T* p) : P(p) { if (P) ++P->RefCount; }
     CIVCountedPointer(const CIVCountedPointer& x) : P(x.P) { if (P) ++P->RefCount; }

@@ -10,14 +10,14 @@
 // the bool byte. That nesting (a user copy constructor over a member with its own) is what makes VC7.1 keep the second
 // induction register at second.Name (`lea esi,[ebx+0Ch]`, GOTCHAS 00769000/00720310).
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;                        // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
 };
 class CScriptBase;
 class CScriptDataBase;
 class CGameScriptInterfaceBase;
-struct CScriptInfo {                            // 20 bytes
+class CScriptInfo { public:                            // 20 bytes
     CScriptBase*     (__cdecl* AllocFunc)(CScriptDataBase*, CGameScriptInterfaceBase*);   // +0x00
     CScriptDataBase* (__cdecl* MasterScriptDataAlloc)();                                  // +0x04
     CCharString      Name;                      // +0x08

@@ -14,11 +14,11 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                    // +0
     unsigned long Length;                  // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -28,7 +28,7 @@ struct CCharString {
 unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CRC
 inline unsigned long GetCRC(const CCharString& text) { return Calc(0, text.GetPString(), text.GetLength()); }
 
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
@@ -58,11 +58,11 @@ struct CMemoryDataInputStream {
         return value;
     }
 };
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);  // 0x00993EA0
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char           _pad00[0x18];
     long                    Mode;                 // +0x18 (2 binary load, 3 binary save)
     unsigned char           _pad1c[8];

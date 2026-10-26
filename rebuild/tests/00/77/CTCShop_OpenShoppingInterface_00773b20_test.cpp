@@ -2,15 +2,15 @@
 // on that component; the game event 0x1a carries the main player's number and the 4-byte payload 0xc either way.
 #include <cstdio>
 #include <cstring>
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -32,11 +32,11 @@ struct CTCShoppingComponent {
     CThing* Shop;
     void SetCurrentShop(CThing* shop) { Shop = shop; }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* Hero;
     CThing* GetHeroThing() { return Hero; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* Main; long Number;
     CPlayer* GetMainPlayer() const { return Main; }
     long GetMainPlayerNumber() { return Number; }
@@ -48,7 +48,7 @@ struct CGameSubsystem {
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;
     signed char   Player;
     unsigned char Data[32];
@@ -64,7 +64,7 @@ void CMemoryBuffer::Copy(unsigned long length, const void* data)
     std::memcpy(e->Data + e->EndPos, data, length);
     e->EndPos = (unsigned char)(e->EndPos + length);
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     int Count; long Type; signed char Player; unsigned long Payload; unsigned char End; bool Valid;
     void AddGameEvent(const CGameEvent& event)
     {
@@ -73,7 +73,7 @@ struct CMainGameComponent {
     }
 };
 CMainGameComponent* g_pMainGameComponent;
-struct CTCShop {
+class CTCShop { public:
     virtual void v00() { }
     CThing* ParentThing;
     CPlayerManager* Players; CGameSubsystem* Subsystem;

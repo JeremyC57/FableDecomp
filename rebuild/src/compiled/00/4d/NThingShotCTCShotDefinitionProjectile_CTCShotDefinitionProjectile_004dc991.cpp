@@ -11,21 +11,21 @@
 // member object with a `__forceinline` default constructor (a plain inline one is called out of line under "s"; CBaseClass() out of line, its own vtable, a null counted pointer from
 // the embedded CIVCountedPointer's inline constructor), addressed through edi.
 #pragma optimize("s", on)
-struct CThing;
+class CThing;
 
-struct CBaseClass {                          // vtable 0x01231710
+class CBaseClass { public:                          // vtable 0x01231710
     virtual void v00();
     CBaseClass();                            // 0x0099A2D0
 };
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {
     CIVCountedPointeeBase* Object;
     CIVCountedPointer() : Object(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBaseClass { // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public: // vtable 0x0122F598
     CIVCountedPointer Data;                  // +4
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }
@@ -33,7 +33,7 @@ struct CEnginePrimitiveHandle : CBaseClass { // vtable 0x0122F598
 
 namespace NThingShot {
 
-struct CTCShotDefinitionBase {
+class CTCShotDefinitionBase { public:
     virtual void v00();
     unsigned char _body[0x9c - 4];           // CTCBase + the shot fields (retail 0x9c bytes)
     CTCShotDefinitionBase(CThing* parent);   // 0x007BF460

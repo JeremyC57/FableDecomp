@@ -2,7 +2,7 @@
 // Behaviour test for 0x0056F03D: pools 0..3, stats 0..9, abilities 1..19 reset currentSpend; magnitude zeroed.
 struct ExperienceSpendInfo { long currentSpend; long initialSpend; long levelUpSpend; };
 struct SSpendInfoVector { ExperienceSpendInfo* _M_start; ExperienceSpendInfo* _M_finish; ExperienceSpendInfo* _M_end_of_storage; };
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesPool, ExperienceSpendValuesStats, ExperienceSpendValuesAbility;
     long ExperienceSpendMagnitude;
     void ResetExperienceSpendValues();

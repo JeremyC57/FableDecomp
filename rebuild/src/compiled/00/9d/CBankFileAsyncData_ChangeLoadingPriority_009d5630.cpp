@@ -15,7 +15,7 @@ struct Manager {
     Consumer* field_110; // +0x110
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     char pad0[0x18];
     Inner* field_18;   // +0x18
     char pad1[0x28 - 0x1c];

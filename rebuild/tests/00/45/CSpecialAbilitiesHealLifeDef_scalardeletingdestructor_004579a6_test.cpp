@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSpecialAbilitiesHealLifeDef { void* vftable; };
+class CSpecialAbilitiesHealLifeDef { public: void* vftable; };
 static int g_dtor = 0;
 static int g_del = 0;
 static void* g_deleted = 0;

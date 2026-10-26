@@ -11,7 +11,7 @@
 // GetLengthSquared (0x007A2F90 model; the temporary on the x87 stack squares Z, Y, X) and `(float)sqrt` -> fsqrt.
 // No pragma.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
@@ -19,18 +19,18 @@ struct C3DVector {
     float GetLength() const { return (float)sqrt(GetLengthSquared()); }
 };
 
-struct CTCPhysicsBase {
+class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                       // +0x0c
     C3DVector     OldPosition;                    // +0x18
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                    // +0x60 (PDB +0x70)
 };
-struct CThingPhysical : CThing { };
-struct CThingCreatureBase : CThingPhysical {
+class CThingPhysical : public CThing { public: };
+class CThingCreatureBase : public CThingPhysical { public:
     float GetCurrentSpeed() const;
 };
 

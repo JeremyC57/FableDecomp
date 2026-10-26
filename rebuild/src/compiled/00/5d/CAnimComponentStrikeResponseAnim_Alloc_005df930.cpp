@@ -6,16 +6,16 @@
 // derived vtable store because it belongs to the root base CIVCountedPointeeBase, whose own vtable
 // store is dead and dropped; the intermediate CAnimComponentBase adds only virtuals.
 // Member from engine/CAnimComponentStrikeResponseAnim.h (PDB name); CCharString::CCharString() @ 0x0099E4B0.
-struct CCharString { void* PStringData; CCharString(); };   // 0x0099E4B0
-struct CPersistContext; struct CCharString; struct CDataInputStream; struct CDataOutputStream;
+class CCharString { public: void* PStringData; CCharString(); };   // 0x0099E4B0
+class CPersistContext; class CCharString; class CDataInputStream; class CDataOutputStream;
 
-struct CIVCountedPointeeBase {                  // root: vptr + intrusive ref count
+class CIVCountedPointeeBase { public:                  // root: vptr + intrusive ref count
     virtual void v0();
     long m_refCount;                            // +0x04
     CIVCountedPointeeBase() : m_refCount(1) { }
 };
 
-struct CAnimComponentBase : CIVCountedPointeeBase {
+class CAnimComponentBase : public CIVCountedPointeeBase { public:
     virtual void v1();
     virtual long GetType() const;                                                // slot 2
     virtual bool Initialise(CPersistContext& context, const CCharString& name);  // slot 3
@@ -26,7 +26,7 @@ struct CAnimComponentBase : CIVCountedPointeeBase {
     virtual void SetDefaultValue();                                              // slot 8
 };
 
-struct CAnimComponentStrikeResponseAnim : CAnimComponentBase {                // vtable 0x01255828
+class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:                // vtable 0x01255828
     CCharString ResponseAnimName;               // +0x08 default-constructed out of line @ 0x0099E4B0 (the pointer survives the call in esi)
     CAnimComponentStrikeResponseAnim() { }
     virtual CAnimComponentBase* Alloc() const;

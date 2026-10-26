@@ -5,22 +5,22 @@
 // +0x2c); `range * range < z*z + y*y + x*x` squares the range first and keeps it on the FPU; the clip flags are
 // the by-value argument passed by address, read back as an `unsigned char` bit field; `Outside ? false : true`
 // gives the 8-bit `shr al,6 ; not al ; and al,1` (`!Outside` widens to eax).
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
 };
 struct SClipFlags {                                // the camera clip result bits
     unsigned char Planes  : 6;
     unsigned char Outside : 1;                     // bit 6
 };
-struct CLocalDetailObjectCollectionType {
+class CLocalDetailObjectCollectionType { public:
     float PeekFadeEnd() const;                     // 0x00BE2740
 };
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     m_position;                      // +0x54
     bool ClipSphere(const C3DVector* centre, float radius, unsigned long* clipFlags);   // 0x00B30480
 };
-struct CLocalDetailPrimitiveBase {
+class CLocalDetailPrimitiveBase { public:
     unsigned char _pad00[0x20];
     C3DVector     m_centre;                        // +0x20
     float         m_radius;                        // +0x2c

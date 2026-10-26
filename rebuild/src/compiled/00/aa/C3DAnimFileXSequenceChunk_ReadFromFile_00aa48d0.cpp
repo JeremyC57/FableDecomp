@@ -40,7 +40,7 @@ public:
 class CChunkedFileLoader;
 
 template <class T>
-struct CArray {                             // retail CArray is 12 bytes (the PDB's is 16)
+class CArray { public:                             // retail CArray is 12 bytes (the PDB's is 16)
     T* m_pBegin;                            // +0
     T* m_pEnd;                              // +4
     T* m_pEndOfStorage;                     // +8
@@ -54,7 +54,7 @@ inline unsigned char* GetData(CArray<unsigned char>& a)
     return reinterpret_cast<unsigned char*>(&a);
 }
 
-struct C3DAnimFileXSequenceChunk {
+class C3DAnimFileXSequenceChunk { public:
     virtual ~C3DAnimFileXSequenceChunk();
     unsigned char _base_body[0x0C];         // +0x04 .. +0x0F (CChunkedFileChunk: type, parent)
     CArray<unsigned char> CompressedData;   // +0x10

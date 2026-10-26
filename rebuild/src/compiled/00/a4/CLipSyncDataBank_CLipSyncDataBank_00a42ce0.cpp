@@ -16,7 +16,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);         // +4
     void* m_pObject;                                // +8
 };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Object;                                      // +0
     SCountBlock* Count;                             // +4
     ~CCountedPointer()
@@ -37,7 +37,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() {} };
 struct __false_type { __false_type() {} };
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 
-struct CLipSyncDataBankEntry { void* Data; long m_04; };
+class CLipSyncDataBankEntry { public: void* Data; long m_04; };
 CLipSyncDataBankEntry* __fastcall __copy(CLipSyncDataBankEntry* first, CLipSyncDataBankEntry* last, CLipSyncDataBankEntry* result,
                                          const random_access_iterator_tag& tag, int* distance);   // 0x00A438E0
 void __fastcall _Destroy(CLipSyncDataBankEntry* first, CLipSyncDataBankEntry* last, const __false_type& trivial);   // 0x00A43A00
@@ -64,13 +64,13 @@ struct CEntryVector {                               // STLport vector<CLipSyncDa
     }
 };
 
-struct CResourceBank;
+class CResourceBank;
 namespace N_009d6490 { struct CBankFile {
     virtual ~CBankFile();                           // 0x009D6490
     unsigned char _body[0x160];                     // retail CBankFile is 0x164 bytes
 }; } using N_009d6490::CBankFile;
 
-struct CLipSyncDataBank : CBankFile {
+class CLipSyncDataBank : public CBankFile { public:
     CEntryVector Entries;                           // +0x164
     CCountedPointer<CResourceBank> ResourceBank;    // +0x170
     virtual ~CLipSyncDataBank();

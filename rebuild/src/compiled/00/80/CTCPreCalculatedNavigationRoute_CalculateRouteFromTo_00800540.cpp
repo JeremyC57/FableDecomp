@@ -10,14 +10,14 @@
 // Layout: CThingAICreatureInit as the PDB (0x1c, landed ctor 0x004FACD0, here inlined); CThing interface bitset +0x20, map +0x44.
 // Shape: the def name and the two `""` names are named locals in blocks (brain declared first); the init record is a
 //          temporary of the Create call (inline ctor); the navigation lookup is the ternary GetInterface without a test.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; };
 struct CRoute;                                          // STLport vector<pair<C2DVector, unsigned char> >
 class CTCBase;
 struct CInterfaceMap {
@@ -26,9 +26,9 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThingPhysical;
-struct CThingBuilding;
-struct CThingAICreatureInit {
+class CThingPhysical;
+class CThingBuilding;
+class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;                      // +0x00
     CThingPhysical* PreviousThing;                      // +0x04
     CCharString     ScriptName;                         // +0x08
@@ -71,10 +71,10 @@ class CThingAICreature : public CThing {
 public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long flags, const CThingAICreatureInit& init);   // 0x00833800
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
 struct CGameRunState {                                  // descriptive: [0x013B8A1C]+0x1c
@@ -82,7 +82,7 @@ struct CGameRunState {                                  // descriptive: [0x013B8
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsRunning();                           // slot 9 (+0x24, descriptive)
 };
-struct CWorldMap {
+class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();

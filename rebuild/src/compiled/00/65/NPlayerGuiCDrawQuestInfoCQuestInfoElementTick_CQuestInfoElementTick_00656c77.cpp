@@ -14,21 +14,21 @@
 #pragma optimize("s", on)
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pData;
     CWideString(const CWideString& other);     // 0x0099B720
 };
 
 namespace NPlayerGui {
-struct CDrawQuestInfo {
+class CDrawQuestInfo { public:
 
-struct CQuestInfoElement {                     // vtable 0x0125A2B4
+class CQuestInfoElement { public:                     // vtable 0x0125A2B4
     virtual void v00();
     unsigned char _body[0x1c - 4];             // +0x04 ID, ScriptID, Scale, PrimitiveHandles
     CQuestInfoElement(float scale);            // 0x00656795
 };
 
-struct CQuestInfoElementTick : CQuestInfoElement {   // vtable 0x0125A518
+class CQuestInfoElementTick : public CQuestInfoElement { public:   // vtable 0x0125A518
     virtual void v00();
     long        Graphic;                       // +0x1c
     CWideString Text;                          // +0x20

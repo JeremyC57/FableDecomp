@@ -7,19 +7,19 @@
 // Layout: engine/CAIScratchpadDef.h is the flattened pack(1) PDB view (no base class, raw string pointers), so the copy is
 // written against a local model at the same Ego_r.pdb offsets and names (every copied offset +0x28..+0x98 agrees).
 // The C3DVector at +0x30 is copied as a 12-byte struct (the `lea` source/destination pointer-register block).
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
 #pragma pack(push, 1)
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void Copy(const CDefClassBase& other);
     unsigned char _base_0x04[0x18];
     void*         PDefManager;                          // +0x1c
@@ -29,7 +29,7 @@ struct CDefClassBase {
 };
 #pragma pack(pop)
 
-struct CAIScratchpadDef : CDefClassBase {               // vtable 0x0126D014
+class CAIScratchpadDef : public CDefClassBase { public:               // vtable 0x0126D014
     unsigned long ThankingPhrase;                       // +0x28
     unsigned long IgnoringPhrase;                       // +0x2c
     C3DVector     WanderCentrePoint;                    // +0x30

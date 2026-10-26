@@ -6,12 +6,12 @@
 // so the method is named from what it does. Layout (local model, no engine header): PLightDef +0x18 (the def pointer),
 // Initialised +0x28 (PDB offsets; nothing before the first retail vector moves).
 // Shape: two early-outs then the call; retail keeps `call ; ret` for the last call.
-struct CLightDef {
+class CLightDef { public:
     unsigned char _pad_0x00[0x40];
     bool          m_bStartActive;                  // +0x40
 };
 
-struct CTCLight {
+class CTCLight { public:
     unsigned char    _pad_0x00[0x18];
     const CLightDef* PLightDef;                    // +0x18
     unsigned char    _pad_0x1c[0x28 - 0x1c];

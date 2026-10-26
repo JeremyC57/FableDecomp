@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeChargeForcePush::FrameUpdate (retail 0x008DFF50): after the base update a creature
 // with thing-type flag 8 is given the force-push-out-of action (code 0x96), flagged to hit only enemies when the mode is.
-struct CCreatureActionBase { long Code; bool OnlyHitEnemies; };
-struct CThingCreatureBase {
+class CCreatureActionBase { public: long Code; bool OnlyHitEnemies; };
+class CThingCreatureBase { public:
     unsigned long ThingTypeFlags;
     int actions;
     CCreatureActionBase last;
     void SetCurrentAction(const CCreatureActionBase& action) { ++actions; last = action; }
 };
-struct CCreatureAction_ForcePushOutOf : CCreatureActionBase {
+class CCreatureAction_ForcePushOutOf : public CCreatureActionBase { public:
     CCreatureAction_ForcePushOutOf(CThingCreatureBase& owner) { Code = 0x96; OnlyHitEnemies = false; (void)owner; }
     void SetOnlyHitEnemies() { OnlyHitEnemies = true; }
 };

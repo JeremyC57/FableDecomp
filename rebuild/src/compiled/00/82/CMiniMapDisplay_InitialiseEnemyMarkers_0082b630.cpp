@@ -9,19 +9,19 @@
 // Shape: the InitialiseTraderMarkers model plus the hero guard; the CDefString temporary (a class with a user ctor, so it is
 //   returned through a hidden pointer) is compared in place; bit 7 of the thing's +0x15d flags is a 1-bit bitfield
 //   (`test al,al ; js`).
-struct CDefString {                                // a def name index
+class CDefString { public:                                // a def name index
     long Index;
     CDefString();
     bool operator!=(const char* name) const;       // 0x005FA740
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                             // a thing's sorted {type, component} vector
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const copy)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                    // +0x44
@@ -56,7 +56,7 @@ template <class T> struct _List_node {
 template <class T> struct list {                   // STLport list: the header node pointer
     _List_node<T>* _M_node;
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
     long GetCurrentRegionNumber();                 // 0x004FB150
 };
@@ -69,42 +69,42 @@ struct CArray_MarkerGraphics {                     // CArray<SMarkerGraphics>: b
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
 };
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_MarkerGraphics MiniMapMarkerGraphics;           // +0x958
 };
 CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 bool __fastcall IsUnderground(const CThing* thing);                  // 0x0085F120
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                        // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetPlayer();                          // 0x00449970
 };
 struct CThingLists {
     unsigned char _pad00[0x14];
     list<CThing*> Creatures;                       // +0x14
 };
-struct CThingManager {
+class CThingManager { public:
     void*        __vftable;
     CThingLists* Lists;                            // +0x04
 };
-struct CWorld {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CThingManager* GetThingManager();      // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1c scoped_ptr<CPlayerManager>
     unsigned char   _pad20[0x24 - 0x20];
     CWorld*         PWorld;                        // +0x24 scoped_ptr<CWorld>
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CRegion;
-struct CMiniMapDisplay {
+class CRegion;
+class CMiniMapDisplay { public:
     virtual void v00();
     unsigned char _pad04[0xb4];                    // +0x04 .. +0xb8
     CRegion*      m_pRegion;                       // +0xb8 (retail)

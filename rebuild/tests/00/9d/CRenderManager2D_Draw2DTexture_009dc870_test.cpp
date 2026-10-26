@@ -4,13 +4,13 @@
 // BR, BL) carry the ARGB colour, Z 0 and the screen RHW, the UVs are nudged by a hundredth (compressed formats) or a
 // hundredth of a texel, the blend mode is 2 / 3 / 1 for flag 2 / flag 1 / neither, and two triangles (0,1,2) and
 // (0,2,3) are queued.
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CUVBox { float U[4]; float V[4]; };
-struct CRGBColour {
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CUVBox { public: float U[4]; float V[4]; };
+class CRGBColour { public:
     unsigned char B, G, R, A;
     unsigned long GetARGB() const { return (((((unsigned long)A << 8) | R) << 8 | G) << 8) | B; }
 };
-struct CTexture { bool compressed; unsigned long Width, Height; };
+class CTexture { public: bool compressed; unsigned long Width, Height; };
 struct CTVertex { float X, Y, Z, RHW; unsigned long Diffuse, Specular; float U, V; };
 static const float g_ScreenRHW = 0.5f;
 static void GFVBoxToABox(const C2DBoxF* box, C2DBoxF* out)

@@ -8,8 +8,8 @@
 // (Ego_r.pdb C3DDummyObject 0x34: CMatrix3x4 Transform + long BoneIndex); the caller 0x00A33800 __linear_insert
 // (landed by chunk 330) passes this pair type. The manifest's `_Copy_backward` label is the Dinkumware name propagated
 // across byte-identical bodies.
-struct CMatrix3x4 { float M[12]; };
-struct C3DDummyObject {                // 0x34 bytes
+class CMatrix3x4 { public: float M[12]; };
+class C3DDummyObject { public:                // 0x34 bytes
     CMatrix3x4 Transform;              // +0x00
     long       BoneIndex;              // +0x30
 };

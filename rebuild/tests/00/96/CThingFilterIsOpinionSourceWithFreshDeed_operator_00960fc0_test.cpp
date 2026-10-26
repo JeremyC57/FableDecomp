@@ -5,11 +5,11 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) const { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; } };
 class CThing; class CThingAICreature; class COpinionDeed;
-struct CTCOpinionSource { bool UseNavLineOfSight; bool AlwaysAwareOf; bool ReactNonstopFlag; COpinionDeed* VirtualDeed; long VirtualDeedID; };
+class CTCOpinionSource { public: bool UseNavLineOfSight; bool AlwaysAwareOf; bool ReactNonstopFlag; COpinionDeed* VirtualDeed; long VirtualDeedID; };
 class CThing { public:
     u64 UniqueID; unsigned long UsingComponents[9]; CInterfaceMap Components;
     bool HasTC(long type) const { if (UsingComponents[type >> 5] & (1UL << (type & 31))) return true; return false; }
@@ -20,7 +20,7 @@ static int g_aware = 0, g_see = 0; static bool g_awareResult = false, g_seeResul
 static bool IsAwareOfThingImplementation(CThingAICreature*, CThing*, bool flag) { ++g_aware; g_lastFlag = flag; return g_awareResult; }
 static bool CanCreatureSeeCreature(const CThing*, const CThing*, bool flag) { ++g_see; g_lastFlag = flag; return g_seeResult; }
 struct CIntelligentPointer { CThingAICreature* m_p; CThingAICreature* GetTypedItem() const { return m_p; } };
-struct CThingFilter_IsOpinionSourceWithFreshDeed {
+class CThingFilter_IsOpinionSourceWithFreshDeed { public:
     CIntelligentPointer PCreature; long LastVDeedID; u64 LastSourceUID;
     bool IsAware(CThing* s, bool f) const { return IsAwareOfThingImplementation(PCreature.GetTypedItem(), s, f); }
     bool CanSee(CThing* s, bool f) const { return CanCreatureSeeCreature((CThing*)PCreature.GetTypedItem(), s, f); }

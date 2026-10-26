@@ -17,7 +17,7 @@
 extern "C" void* __cdecl malloc(unsigned int bytes);                                   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                            // 0x00BFEA14
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& o) { R = o.R; G = o.G; B = o.B; A = o.A; }
 };

@@ -1,15 +1,15 @@
 #include <cstdio>
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     unsigned long IVRefCount;
     virtual ~CIVCountedPointeeBase() {}
     virtual void Delete() { ++g_deleted; delete this; }
     void Release() { if (--IVRefCount == 0) Delete(); }
 };
-struct C3DAnimationStateBase : CIVCountedPointeeBase { };
-struct C3DAnimationState : C3DAnimationStateBase { long AnimationIndex; float AnimationTime; };
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public: };
+class C3DAnimationState : public C3DAnimationStateBase { public: long AnimationIndex; float AnimationTime; };
 template <class T>
-struct CIVCountedPointer {
+class CIVCountedPointer { public:
     T* m_pObject;
     CIVCountedPointer& operator=(T* object)
     {
@@ -22,7 +22,7 @@ struct CIVCountedPointer {
     }
 };
 struct CSharedData { CIVCountedPointer<C3DAnimationStateBase> BaseAnimation; };
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     CSharedData* Data;
     int m_copies;
     void MakeOwnCopyOfData() { ++m_copies; }

@@ -11,7 +11,7 @@ struct CDefBase : CDefVirtual, CRefCounted {
     void Release() { if (--m_count == 0) Destroy(); }
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
-struct CInventoryItemDef : CDefBase { unsigned char _pad_0x08[0x2C]; unsigned long ItemDescription; };
+class CInventoryItemDef : public CDefBase { public: unsigned char _pad_0x08[0x2C]; unsigned long ItemDescription; };
 struct CItemDefPointer {
     CInventoryItemDef* m_p;
     CItemDefPointer() : m_p(0) { }
@@ -19,11 +19,11 @@ struct CItemDefPointer {
     CInventoryItemDef* operator->() const { return m_p; }
 };
 static CInventoryItemDef g_items[3]; static int g_getSubDef = 0;
-struct CDefClassBase : CDefBase {
+class CDefClassBase : public CDefBase { public:
     CInventoryItemDef* m_item;
     bool GetSubDef(CItemDefPointer& out) { ++g_getSubDef; out.m_p = m_item; if (m_item) { ++m_item->m_count; return true; } return false; }
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(void* p) : PStringData(p) { }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { }
@@ -48,14 +48,14 @@ struct CWideStringVector {
     }
 };
 namespace NGameText {
-struct CGroupEntry : CDefVirtual, CRefCounted {
+class CGroupEntry : public CDefVirtual, public CRefCounted { public:
     virtual void Destroy() { ++g_entryDestroyed; }
     unsigned long m_tag;
     CWideString GetText() const { return CWideString((void*)(m_tag * 16)); }
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     CIVCountedPointer() : Data(0) { }
     CIVCountedPointer(const CIVCountedPointer& o) : Data(o.Data) { if (Data) ++Data->m_count; }
@@ -76,7 +76,7 @@ public:
     }
 };
 }
-struct CMainGameComponent { unsigned char _pad00[0x14]; NGameText::CDataBank* PGameTextDataBank; };
+class CMainGameComponent { public: unsigned char _pad00[0x14]; NGameText::CDataBank* PGameTextDataBank; };
 static CMainGameComponent g_main; static NGameText::CDataBank g_bank;
 CMainGameComponent* g_pMainGameComponent = &g_main;
 struct CThingBaseDefPointer { CDefClassBase* Object; CDefClassBase* operator->() const { return Object; } };
@@ -85,7 +85,7 @@ struct CTattooVector {
     unsigned long size() const { return _M_finish - _M_start; }
     const CThingBaseDefPointer& operator[](unsigned long n) const { return _M_start[n]; }
 };
-struct CTCHeroMorph {
+class CTCHeroMorph { public:
     void* __vftable; unsigned char _pad_0x04[0x18]; CTattooVector Tattoos;
     void GetTattooNames(CWideStringVector& names) const;
 };

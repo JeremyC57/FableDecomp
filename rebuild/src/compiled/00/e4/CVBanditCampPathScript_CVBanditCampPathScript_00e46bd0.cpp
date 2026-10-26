@@ -12,9 +12,9 @@
 // loads (the fleet's "24i" shape); its zero words share ebx with the CScriptThing members' two zero words each,
 // whose inline constructor runs CBase(), stores its vtable, then the PImp member object's inline constructor zeroes
 // Data/Info (a member OBJECT keeps both stores after the vtable store; plain init-list members sink it).
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04..+0x40
     CScriptBase();                                   // 0x00CB8110
@@ -31,8 +31,8 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
 
-struct CScriptThing;
-struct CCPPointerInfo;
+class CScriptThing;
+class CCPPointerInfo;
 
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
@@ -40,7 +40,7 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBase {                        // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-struct C2DVector { float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } }; static C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; } struct C3DVector { float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector() { } C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) { } }; static C2DVector Sub(const C2DVector& a, const C2DVector& b) { C2DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; return r; } class C3DVector { public: float X, Y, Z; };
 static C3DVector g_v; static long g_size = 0, g_flags = -1; struct COwner { virtual void v0() { } virtual void v1() { } virtual void v2() { } virtual void v3() { } virtual void SetRelativeTarget(const C3DVector* v, long s, long f) { g_v = *v; g_size = s; g_flags = f; } };
 struct CTarget { COwner* m_pOwner; C2DVector m_origin; void SetTarget(const C3DVector* p) { C2DVector d = Sub(*(const C2DVector*)p, m_origin); C3DVector r; r.X = d.X; r.Y = d.Y; r.Z = p->Z; m_pOwner->SetRelativeTarget(&r, 12, 0); } };
 

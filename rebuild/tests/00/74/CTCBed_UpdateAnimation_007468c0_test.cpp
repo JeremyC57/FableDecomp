@@ -2,20 +2,20 @@
 #include <cstdio>
 
 static float g_epsilon = 1e-4f;
-struct CAnimInit {
+class CAnimInit { public:
     long animType, arg24, animIndex, mode; bool flag05; unsigned long flags; long percent;
     CAnimInit(long t, long a, long i, long m, bool f, unsigned long fl, long p)
         : animType(t), arg24(a), animIndex(i), mode(m), flag05(f), flags(fl), percent(p) {}
 };
 static int g_setMain = 0; static long g_lastAnim = 0;
-struct CAnimateThing {
+class CAnimateThing { public:
     int m_pCurrent, m_pEnd;
     float Progress;
     unsigned char m_stateFlags;
     void SetMainAnim(const CAnimInit& init, long, long) { ++g_setMain; g_lastAnim = init.animIndex; }
     bool IsFinished() const { return m_pCurrent == m_pEnd || (m_stateFlags & 2); }
 };
-struct CTCAnimationComplex { CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
+class CTCAnimationComplex { public: CAnimateThing anim; CAnimateThing& GetAnimation() { return anim; } };
 class CTCBed {
 public:
     CTCAnimationComplex* complex;

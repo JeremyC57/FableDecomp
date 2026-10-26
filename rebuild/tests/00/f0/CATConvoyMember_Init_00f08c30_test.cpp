@@ -1,7 +1,7 @@
 // Behaviour test for CAT_ConvoyMember::Init (0x00F08C30): a non-trader becomes mutually hostile with the hero and every living bandit; the trader gets a green mini-map marker; both register WatchForEnemyDeath; a done script returns early.
 #include <cstdio>
 #include <cstring>
-struct CWorld {
+class CWorld { public:
     int enemyPairs[16][2]; int enemyCount; char marker[32]; int markerThing; int adds; bool done;
     void Enemy(int a, int b) { enemyPairs[enemyCount][0] = a; enemyPairs[enemyCount][1] = b; ++enemyCount; }
 };

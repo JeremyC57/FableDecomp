@@ -3,7 +3,7 @@
 #include <cstring>
 
 struct Provider { void* vt; };
-struct CWorld { char pad[0x34]; Provider* prov; };
+class CWorld { public: char pad[0x34]; Provider* prov; };
 
 static char g_buf[0x200];
 static void __fastcall vfn(Provider* p, void* vt, void** out) { *out = g_buf; }

@@ -2,9 +2,9 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC5FC0, length 46 bytes.
 // Callees: virtual slot 17 (GetBoundingBoxWorldSpace, the box local by reference), C3DBoundingBox::CalculateMatrix(CMatrix3x4*) @ 0x00ADEBC0 (on the local, the
 // argument matrix). Shape: the 0x18-byte local is uninitialised; the success path is the `if` body (fall-through) and the `xor al,al` failure sits at the end, each releasing the frame.
-struct CEngineInternalPrimitiveBase;
-struct CMatrix3x4 { float m_rows[12]; };
-struct C3DBoundingBox {
+class CEngineInternalPrimitiveBase;
+class CMatrix3x4 { public: float m_rows[12]; };
+class C3DBoundingBox { public:
     float Min[3]; float Max[3];
     void CalculateMatrix(CMatrix3x4* matrix) const;   // 0x00ADEBC0
 };
@@ -23,14 +23,14 @@ struct CEngineInternalPrimitiveVtable {           // the retail CEngineInternalP
     virtual void ResetOcclusionInfo(long layer);                     // slot 28 (+0x70)
 };
 
-struct CEngineInternalPrimitiveBase : CEngineInternalPrimitiveVtable {   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
+class CEngineInternalPrimitiveBase : public CEngineInternalPrimitiveVtable { public:   // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes)
     unsigned char  _pad04[0x2c];                   // +0x04 .. +0x30
     unsigned long  RenderLayerMask;                // +0x30
     unsigned char  PostRenderEnable;               // +0x34 bitfield group: bit 3 = post-render enabled
     unsigned char  _pad35[0x13];                   // +0x35 .. +0x48
 };
 
-struct CEnginePrimitiveHandle {                    // 8 bytes: the handle id and the primitive
+class CEnginePrimitiveHandle { public:                    // 8 bytes: the handle id and the primitive
     long                          m_id;
     CEngineInternalPrimitiveBase* m_pPrimitive;
 };

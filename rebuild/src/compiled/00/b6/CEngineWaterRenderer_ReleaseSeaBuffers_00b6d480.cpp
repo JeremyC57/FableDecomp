@@ -15,7 +15,7 @@ struct CVertexBufferWin32_00b6d480 {
     void Uninitialise();                           // 0x00A63200
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char               _pad0[0x68];
     CIndexBuffer_00b6d480       SeaBackgroundIndexBuffer;     // +0x68
     CVertexBufferWin32_00b6d480 SeaBackgroundVertexBuffer;    // +0x7c

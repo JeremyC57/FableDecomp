@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-struct CGameEvent
-{
+class CGameEvent
+{ public:
     void Helper_0059aef9(void* p, int n);
     CGameEvent* AddUBYTE();
     int marker;

@@ -11,11 +11,11 @@
 //   are bool bit-field assignments from a one-byte read (`test ; setne ; xor ; and ; xor`).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -46,7 +46,7 @@ struct CVector3D {                                      // STLport vector<C3DVec
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
 namespace NParticleEngine {
-struct CPSCAttractor {
+class CPSCAttractor { public:
     unsigned char _base[0xc];                           // CPSCBase
     bool AttractorEnabled : 1;                          // +0x0c bit 0
     bool AttractorUseParamPosition : 1;                 // +0x0c bit 1

@@ -16,13 +16,13 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 extern "C" int __cdecl abs(int);
 #pragma intrinsic(abs)
-struct CCharString { void* PData; };
-struct C2DVector {
+class CCharString { public: void* PData; };
+class C2DVector { public:
     float X, Y;
     C2DVector() {}
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() {}
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -45,7 +45,7 @@ struct CUIMiscThingsDef : CDefBase {
     unsigned char _pad198[0x1a4 - 0x198];
     CCharString   SoundError;                    // +0x1a4
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Data;
     ~CDefPointer() { if (Data) Data->ReleaseTemporary(); }
     T* operator->() const { return Data; }
@@ -53,7 +53,7 @@ template <class T> struct CDefPointer {
 
 namespace NUISystem {
 
-struct CFrontEndManager {
+class CFrontEndManager { public:
     static CFrontEndManager* __fastcall GetInstance();
     SLOTS16(m0) SLOTS16(m1) SLOTS4(m20) SLOTS4(m21)
     virtual void PlaySound(const CCharString& sound, bool a);   // slot 40 (+0xa0)
@@ -61,7 +61,7 @@ struct CFrontEndManager {
     virtual CDefPointer<CUIMiscThingsDef> GetMiscThingsDef();   // slot 42 (+0xa8)
 };
 
-struct CComponent {
+class CComponent { public:
     SLOTS16(c0) SLOTS16(c1)
     virtual void SetPosition(const C2DVector& position, float time, bool linear);   // slot 32 (+0x80)
     virtual void c33(); virtual void c34(); virtual void c35(); virtual void c36(); virtual void c37();
@@ -81,7 +81,7 @@ template <class T> struct CRetailVector {
     T& operator[](unsigned int n) { return *(_M_start + n); }
 };
 
-struct CFrontEndList {
+class CFrontEndList { public:
     SLOTS16(l0) SLOTS16(l1) SLOTS16(l2)
     virtual void l30(); virtual void l31(); virtual void l32(); virtual void l33(); virtual void l34(); virtual void l35();
     virtual float GetUpdateTime();                                                 // slot 54 (+0xd8)

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CTCMapwho { int dummy; };
+class CTCMapwho { public: int dummy; };
 
 static int g_dtor = 0;
 static int g_free = 0;

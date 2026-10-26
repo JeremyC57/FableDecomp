@@ -16,27 +16,27 @@
 // counted Data member object); Effects is zeroed through ecx and EffectPositions through edi, each pointer reused as `this` of
 // its resize; the resize fill value is a default-constructed C2DCoordI (user constructor that leaves it uninitialised) in the
 // 8-byte frame slot.
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace N_0099a2d0 { struct CBase {                                     // vtable 0x01231710
     virtual void v00();
     CBase();                                       // 0x0099A2D0
 }; } using N_0099a2d0::CBase;
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 struct CIVCountedPointer {                         // embedded member with an inline constructor
     CIVCountedPointeeBase* Object;
     __forceinline CIVCountedPointer() : Object(0) { }
 };
 
-struct CEnginePrimitiveHandle : CBase {            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }
 };
 
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
     C2DCoordI() { }                                // leaves the coordinates uninitialised
@@ -78,13 +78,13 @@ struct CFadeInFadeOutBase {
     CFadeInFadeOutBase();                          // 0x00436560
 };
 
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char _body[0x28 - 4];                 // +0x04 .. +0x28 (GUI pointers, Drawing, PrimitiveHandles)
     CDrawBase(CPlayerGui* gui, void* drawList);    // 0x0064CC65
 };
 
-struct CDrawQuickAccessIcons : CDrawBase {         // vtable 0x0125A704
+class CDrawQuickAccessIcons : public CDrawBase { public:         // vtable 0x0125A704
     virtual void v00();
     unsigned long          ChargingSoundID;               // +0x28
     long                   ChargingButtonIndex;           // +0x2c

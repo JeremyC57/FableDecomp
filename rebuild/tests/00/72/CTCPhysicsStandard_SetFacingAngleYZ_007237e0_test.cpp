@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsStandard::SetFacingAngleYZ (0x007237e0): replace Euler angle 1, keep the other two, rebuild the set, mark moving
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Angles; CRightHandedSet() {} CRightHandedSet(const C3DVector& a) : Angles(a) {} };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Angles; CRightHandedSet() {} CRightHandedSet(const C3DVector& a) : Angles(a) {} };
 struct CTCPhysicsStandard {
     CRightHandedSet RHSet, OldRHSet; bool Moving;
     void UpdateOldRHSet() { OldRHSet = RHSet; }

@@ -11,7 +11,7 @@
 //   TC-present bits +0x20, interface map +0x44, driver TC +0x60 (PDB PTCDriver +0x6C, 12-byte list), killed flag byte
 //   +0x91 bit 0.
 #include <math.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -20,11 +20,11 @@ struct C3DVector {
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     float GetLength2D() const { return sqrtf(X * X + Y * Y); }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -37,8 +37,8 @@ struct CTCDriverBase {
     virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetForward();   // slot 70 (+0x118)
 };
-struct CTCBase;
-struct CTCLook {
+class CTCBase;
+class CTCLook { public:
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
 };
 struct CInterfaceMap {
@@ -47,7 +47,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];            // +0x20
     CInterfaceMap  m_interfaces;                // +0x44
@@ -70,7 +70,7 @@ struct CThing {
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 struct CBaseIntelligentPointer {

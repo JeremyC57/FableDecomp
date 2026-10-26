@@ -5,7 +5,7 @@
 //   32 bytes; CEnvironmentSpellEffectInterface keeps ScreenFilterParams at +0x64 and PrevFrameScreenFilterParams at +0xe4.
 // Shape: the block is built in a 0x20-byte frame local (the tint copied dword by dword: a plain POD assignment) and copied
 //   with `rep movsd` (8 dwords); the bool is read after the first copy.
-struct CRGBFloatColour { float R, G, B, A; };
+class CRGBFloatColour { public: float R, G, B, A; };
 
 struct CScreenFilterParams {
     float           Alpha;                             // +0x00
@@ -15,9 +15,9 @@ struct CScreenFilterParams {
     CRGBFloatColour Tint;                              // +0x10
 };
 
-struct CEnvironment;
+class CEnvironment;
 
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CEnvironment*       Environment;                   // +0x00
     unsigned char       _pad4[0x64 - 0x4];             // radial blur, position and displacement params
     CScreenFilterParams ScreenFilterParams;            // +0x64

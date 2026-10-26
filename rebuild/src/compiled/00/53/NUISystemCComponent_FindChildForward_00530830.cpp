@@ -5,13 +5,13 @@
 //   the child's FindChildForward through vtable slot 4 (+0x10).
 // Layout: as FindChild 0x00530780 (Name +0x20, Children +0xb0).
 // Shape: unsigned index, size() recomputed for every test (`jbe` entry, `jb` loop) after the virtual call.
-struct CCharStringData {                                        // the shared string block
+class CCharStringData { public:                                        // the shared string block
     const char*   m_pData;                                      // +0x00
     unsigned long m_length;                                     // +0x04
 };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                      // 0x0099EC30
     ~CCharString();                                             // 0x0099EAE0

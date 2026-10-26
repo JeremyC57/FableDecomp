@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CSpecialAbilitiesHealLifeDef { void* vftable; };
+class CSpecialAbilitiesHealLifeDef { public: void* vftable; };
 extern "C" void __fastcall CSpecialAbilitiesHealLifeDef_dtor(CSpecialAbilitiesHealLifeDef* def);
 extern "C" void __cdecl fable_operator_delete(void* p);
 

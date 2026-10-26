@@ -6,8 +6,8 @@
 // Shape: the manager pointer is zeroed BEFORE the vtable store, so it belongs to an inlined
 // intermediate base constructor (its own vtable store is dead and dropped); the three zero stores
 // after the vtable are the list position member's inline constructor, all from one zeroed eax.
-struct CInputProcessManager;
-struct CBaseClass;
+class CInputProcessManager;
+class CBaseClass;
 
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable();
@@ -19,14 +19,14 @@ struct CInputProcessOwner : CBaseClassNonCopyable {
     CInputProcessOwner() : CBaseClassNonCopyable(), PPlayerInterface(0) {}
 };
 
-struct CLinkedListPosition {
+class CLinkedListPosition { public:
     CBaseClass* Data;                           // +0x00
     CLinkedListPosition* Next;                  // +0x04
     CLinkedListPosition* Previous;              // +0x08
     CLinkedListPosition() : Data(0), Next(0), Previous(0) {}
 };
 
-struct CAInputProcess : CInputProcessOwner {
+class CAInputProcess : public CInputProcessOwner { public:
     CLinkedListPosition InputProcessListPos;    // +0x08
     virtual void v01();                         // own vtable 0x0129CA10
     CAInputProcess();

@@ -3,14 +3,14 @@
 // Leaf: ?Update@CInputProcessZTarget@@UAEXAAVCProcessedInput@@@Z
 // The labels "CTCShotDefinitionBase::CanBeHitByMeleeStrike" (0x00445B80) and "CPersistContext::Transfer" (0x00687D50) are propagated. Shape: `test eax,eax ; jl ; dec eax`, `ret 4`.
 struct CThing_Retail;
-struct CPlayer {
+class CPlayer { public:
     CThing_Retail* GetHeroCreature();              // 0x00487DC0
 };
 struct CTarget_00445b80 {
     bool IsValid();                                // 0x00445B80
 };
-struct CProcessedInput;
-struct CInputProcessZTarget {
+class CProcessedInput;
+class CInputProcessZTarget { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void Update(CProcessedInput& processed);
     unsigned char      _pad04[0x14];

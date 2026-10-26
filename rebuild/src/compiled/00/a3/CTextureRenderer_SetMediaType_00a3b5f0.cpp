@@ -61,16 +61,16 @@ struct CMediaType {
     unsigned long  cbFormat;            // +0x40
     unsigned char* pbFormat;            // +0x44
 };
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long X, Y;
     C2DExtentsI(long x, long y) : X(x), Y(y) {}
 };
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;
     void Initialise(long r, long g, long b, long a, bool flag);   // 0x009E3790
 };
 enum ESurfacePool { SURFACE_POOL_0, SURFACE_POOL_MANAGED };
-struct CTexture {
+class CTexture { public:
     IDirect3DTexture9* PD3DTexture;     // +0x00
     unsigned long      ByteLength : 28; // +0x04
     unsigned long      AllocationSource : 4;

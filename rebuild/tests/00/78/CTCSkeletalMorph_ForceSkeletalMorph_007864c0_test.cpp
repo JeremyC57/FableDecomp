@@ -7,13 +7,13 @@
 #endif
 static void* g_destroyed = 0; static int g_destroyCalls = 0;
 void __fastcall Destroy_00786a30(void* object) { g_destroyed = object; ++g_destroyCalls; }
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long References;                                    // +0
     void (__fastcall* PfnDestroy)(void*);               // +4
     void* Object;                                       // +8
     CCPPointerInfo(void* object) : References(1), PfnDestroy(Destroy_00786a30), Object(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -30,13 +30,13 @@ template <class T> struct CCountedPointer {
     }
     T* operator->() const { return Data; }
 };
-struct C3DSkeletalMorphTarget;
-struct C3DSkeletalMorphParameter {
+class C3DSkeletalMorphTarget;
+class C3DSkeletalMorphParameter { public:
     C3DSkeletalMorphTarget* Target; float Value;
     C3DSkeletalMorphParameter(C3DSkeletalMorphTarget* target) : Target(target), Value(-1.0f) { }
     void SetCurrentValue(float value) { Value = value; }
 };
-struct C3DSkeletalMorph {
+class C3DSkeletalMorph { public:
     int cleared, applied; bool keep; C3DSkeletalMorphParameter* added; CCPPointerInfo* addedInfo; float valueAtApply;
     void ClearParameters() { ++cleared; }
     void AddParameter(const CCountedPointer<C3DSkeletalMorphParameter>& parameter)
@@ -46,7 +46,7 @@ struct C3DSkeletalMorph {
     }
     void ApplyParameters() { ++applied; valueAtApply = added->Value; }
 };
-struct CTCSkeletalMorph {
+class CTCSkeletalMorph { public:
     virtual void v00() { }
     void* ParentThing;                                  // +0x04 (CTCBase)
     unsigned char _pad08[0x0c - 0x08];

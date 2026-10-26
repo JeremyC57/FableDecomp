@@ -8,40 +8,40 @@
 //   fastcall) / SetMainPlayerJoystickDeviceNumber 0x0049BB30; the new component's virtual slot 1. Global 0x013B7D58.
 // Layout: PDB CFrontendGameComponent with retail offsets (Game +0xc, Quit +8, Running +9, CreateGame +0x10, joystick +0x14,
 //   CreateReleaseFrontEnd +0x19, SaveToLoad +0x1e2c, WorldToLoad +0x1e40; the network arrays are smaller in retail).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
     CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                       // 0x0099E4B0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CGame;
+class CGame;
 struct CEngineSystem { long Update(); };                 // 0x009A6460
 CEngineSystem* GetEngineSystem();                        // 0x009A4EC0
-struct CGameJoystickManager {
+class CGameJoystickManager { public:
     static CGameJoystickManager& __fastcall Get();       // 0x0049BB90
     void SetMainPlayerJoystickDeviceNumber(long device); // 0x0049BB30
 };
-struct CGameComponent {
+class CGameComponent { public:
     virtual void v00();
     virtual void Init();                                 // slot 1
 };
-struct CNewFrontendGameComponentInit { long Nothing; CNewFrontendGameComponentInit() : Nothing(0) { } };
-struct CNewFrontendGameComponent : CGameComponent {
+class CNewFrontendGameComponentInit { public: long Nothing; CNewFrontendGameComponentInit() : Nothing(0) { } };
+class CNewFrontendGameComponent : public CGameComponent { public:
     unsigned char Body[0x144];
     CNewFrontendGameComponent(CGame& game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
 };
-struct CMainGameComponentInit {
+class CMainGameComponentInit { public:
     CWideString InitialWorldName;
     CWideString InitialWorldHolySiteName;
     CCharString InitialQuestName;
     CWideString SaveGameName;
 };
-struct CMainGameComponent : CGameComponent {
+class CMainGameComponent : public CGameComponent { public:
     unsigned char Body[0x161e4];
     CMainGameComponent(CGame& game, const CMainGameComponentInit& init);   // 0x00418DCA
 };

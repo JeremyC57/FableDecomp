@@ -5,7 +5,7 @@
 
 static int g_frames, g_terminateAt, g_removed, g_lines, g_setupCalls, g_nearAt, g_convEndsAt;
 static char g_lastAnim[40]; static char g_mode[40];
-struct CScriptThing { float X; bool Friends; void SetFriendsWithEverythingFlag(bool on) { Friends = on; } };
+class CScriptThing { public: float X; bool Friends; void SetFriendsWithEverythingFlag(bool on) { Friends = on; } };
 struct Handle {
     bool scripting;
     Handle() : scripting(false) { }

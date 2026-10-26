@@ -8,7 +8,7 @@ struct VisibleFilter893ec0 { long maxWorldFrame0; long maxWorldFrame1; };
 struct BoundFilter893ec0 { TypeFilter893ec0* filter0; VisibleFilter893ec0* filter1; };
 struct MessageManager893ec0 { Message893ec0* FindMostRecentMessage(BoundFilter893ec0* filter); };
 struct TimeManager893ec0 { bool IsDay(); };
-struct CWorld { unsigned char unused00[0x1c]; TimeManager893ec0* PGameTimeManager; unsigned char unused20[0x40]; MessageManager893ec0* messages60; };
+class CWorld { public: unsigned char unused00[0x1c]; TimeManager893ec0* PGameTimeManager; unsigned char unused20[0x40]; MessageManager893ec0* messages60; };
 struct CGameScriptInterface_Methods : CGameScriptInterface {
     long GetFrameForMessages_006e7510() const;   // 0x006E7510: same accessor path as GetMaxWorldFrameForMessages but
                                                   //   reads the +0x18 frame word (catalog label duplicated; not attributed)

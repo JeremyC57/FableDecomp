@@ -1,6 +1,6 @@
 #include "engine/CGroundNavigatorExternalInterface.h"
 
-struct CNavigatorExternalInterface;
+class CNavigatorExternalInterface;
 extern "C" void* __cdecl op_new(unsigned int size);
 
 struct CGroundNavigatorExternalInterface_Methods : CGroundNavigatorExternalInterface {

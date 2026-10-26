@@ -1,9 +1,9 @@
 // Behaviour test for 0x008851a0 CEnvironmentSpellEffectInterface::SetRadialBlurCenterScreenPos (Blur centre, screen position)
 #include <cstdio>
-struct C2DVector { float x, y; };
-struct C3DVector { float x, y, z; C3DVector() : x(9), y(9), z(9) {} C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} };
+class C2DVector { public: float x, y; };
+class C3DVector { public: float x, y, z; C3DVector() : x(9), y(9), z(9) {} C3DVector(float a, float b, float c) : x(a), y(b), z(c) {} };
 struct CRadialBlurPositionParams { C3DVector AreaCenter, BlurCenter; long AreaTrackPos, BlurTrackPos; };
-struct CEnvironmentSpellEffectInterface {
+class CEnvironmentSpellEffectInterface { public:
     CRadialBlurPositionParams RadialBlurPositionParams, PrevFrameRadialBlurPositionParams;
     void SetRadialBlurCenterScreenPos(const C2DVector& position, bool interpolate)
     {

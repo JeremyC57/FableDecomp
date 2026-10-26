@@ -18,7 +18,7 @@ struct CVsyncCallbackTimerInfo {                   // 0x30 bytes
     long          PresentedVsyncCount;             // +0x28
     unsigned char _pad2c[4];
 };
-struct CVsyncCallbackTimer {
+class CVsyncCallbackTimer { public:
     CVsyncCallbackTimerInfo GetInfo();             // 0x009F7050
 };
 struct CDisplayDevice {
@@ -29,7 +29,7 @@ struct CDisplayDevice {
 };
 extern CDisplayDevice* g_pDisplayDevice;           // 0x013B8390
 extern bool g_immediatePresent;                    // 0x013B86A4
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x60];
     double        m_gameTimeBase;                  // +0x60
     double GetGameTimeOfNextPresentCompletion();

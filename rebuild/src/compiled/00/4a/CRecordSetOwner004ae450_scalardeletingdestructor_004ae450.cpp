@@ -15,7 +15,7 @@ struct CCountedObject {
     long m_refCount;                                // +0x04
 };
 
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* m_p;
     __forceinline ~CIVCountedPointer()
     {

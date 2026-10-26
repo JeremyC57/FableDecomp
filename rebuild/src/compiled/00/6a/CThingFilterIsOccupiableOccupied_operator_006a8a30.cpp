@@ -12,7 +12,7 @@
 // Shape: `HasTC(k)` then the pointer-returning inline find on the const thing (the component loaded straight into ecx:
 // `mov ecx,[eax+4]`), the key converted into a frame temporary for the const LowerBound.
 // `if (HasTC(k)) return GetTC(k)->IsOccupied(); return false;`.
-struct CTCBase;
+class CTCBase;
 
 struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
     long     m_kind;
@@ -33,7 +33,7 @@ struct CTCMap {                                 // the thing's component map at 
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 which component kinds the thing holds
     unsigned char  _pad40[4];
@@ -42,11 +42,11 @@ struct CThing {
     CTCBase* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
 
-struct CTCSinglePersonOccupiable {              // component kind 0xac
+class CTCSinglePersonOccupiable { public:              // component kind 0xac
     bool IsOccupied() const;                    // 0x0087C3F0
 };
 
-struct CThingFilter_IsOccupiableOccupied {
+class CThingFilter_IsOccupiableOccupied { public:
     bool operator()(const CThing& thing) const;
 };
 

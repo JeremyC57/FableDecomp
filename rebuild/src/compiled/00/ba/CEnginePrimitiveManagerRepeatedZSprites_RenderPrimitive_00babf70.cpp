@@ -16,7 +16,7 @@
 //   argument slot; push_back is the inline STLport form whose value temporary reuses that slot.
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CEnginePrimitiveOcclusionInfo {
 public:
@@ -82,7 +82,7 @@ public:
 };
 extern CEngineSubPrimitiveRenderer* g_pEngineSubPrimitiveRenderer;   // 0x01436E74
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54
 };

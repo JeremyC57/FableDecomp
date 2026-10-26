@@ -4,7 +4,7 @@ static int g_bases = 0;
 struct SCountBlock { int m_references; };
 struct CCountedPointer { void* Data; SCountBlock* m_pCount; CCountedPointer() : Data(0), m_pCount(0) {}
     ~CCountedPointer() { if (m_pCount) --m_pCount->m_references; Data = 0; m_pCount = 0; } };
-struct CBaseClass { CBaseClass() { ++g_bases; } virtual ~CBaseClass() { --g_bases; } };
+class CBaseClass { public: CBaseClass() { ++g_bases; } virtual ~CBaseClass() { --g_bases; } };
 struct CComponentInstance : CBaseClass { CCountedPointer Component; bool Enabled; unsigned int InstanceName; CComponentInstance() : Enabled(true) {} };
 struct SComponentPair { int first; CComponentInstance second; SComponentPair() : first(0), second() {} };
 static unsigned int g_n = 0; static bool g_ok = false;

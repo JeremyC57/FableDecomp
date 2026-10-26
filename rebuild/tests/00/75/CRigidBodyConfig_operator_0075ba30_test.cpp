@@ -1,12 +1,12 @@
 // Behaviour test for 0x0075ba30 CRigidBodyConfig::operator= (compiler-generated memberwise assignment)
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CMatrix3x4 { float M[3][4]; };
+class CMatrix3x4 { public: float M[3][4]; };
 
 static int g_vectorAssigns = 0;
 struct CVectorC3DVector {

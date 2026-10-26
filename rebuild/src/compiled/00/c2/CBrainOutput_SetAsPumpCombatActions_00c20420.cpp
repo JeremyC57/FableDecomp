@@ -5,7 +5,7 @@ struct SubThing {
     void Apply(int arg);   // 0xc1bc70, __fastcall on self+8
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned int flags;    // +0x00
     int pad4;              // +0x04
     SubThing sub;          // +0x08

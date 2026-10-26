@@ -18,7 +18,7 @@
 #include <stddef.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CPlayerGui;
+class CPlayerGui;
 
 namespace std {
 template <class T> inline void _Destroy(T* p) { p->~T(); }
@@ -38,11 +38,11 @@ template <class T> struct vector : _Vector_base<T> {
 };
 }
 
-struct CEnginePrimitiveHandle {                    // vptr + counted primitive pointer
+class CEnginePrimitiveHandle { public:                    // vptr + counted primitive pointer
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-template <class T> struct CIntelligentPointer {    // vptr + item
+template <class T> class CIntelligentPointer { public:    // vptr + item
     virtual ~CIntelligentPointer();
     void* m_pItem;
 };
@@ -67,23 +67,23 @@ template <> _List_base<long>::~_List_base();        // 0x0042AB73
 template <class T> struct list : _List_base<T> { };
 }
 struct CQuestInfoElement;
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pBlock;
 };
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                 // 0x0099B510
 };
 
 namespace NPlayerGui {
-struct CDrawBase {
+class CDrawBase { public:
     virtual void v00();
     unsigned char                        _body[0x1c - 4];   // +0x04 .. +0x1c
     std::vector<CEnginePrimitiveHandle>  PrimitiveHandles;  // +0x1c
 };
 
-struct CDrawQuestInfo : CDrawBase {                // vtable 0x0125A688
+class CDrawQuestInfo : public CDrawBase { public:                // vtable 0x0125A688
     virtual void v00();
     long                                           GuiMode;                // +0x28 EPlayerGuiMode
     float                                          FadeInTimer;            // +0x2c

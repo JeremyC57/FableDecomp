@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_StopEatingAtTable {
+class CCreatureAction_StopEatingAtTable { public:
     void* vftable;
     int destroyed;
 };

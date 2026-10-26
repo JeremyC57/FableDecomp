@@ -9,7 +9,7 @@
 // Model this-only member as a FREE __fastcall(thisptr, arg) so the
 // accessor is byte-identical to __fastcall.
 
-struct CCombatSequenceDef;
+class CCombatSequenceDef;
 
 // Relocation-masked tail-call target (the real Copy implementation body).
 extern void __fastcall CCombatSequenceDef_Copy_impl(CCombatSequenceDef* thisptr, void* other);

@@ -2,7 +2,7 @@
 
 // Behaviour model of __copy<CIntelligentPointer<CThing>*> (0x004AA610): n = last - first assignments through
 // operator= (SetPItem(other.GetPItem())), result advanced and returned.
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_sets = 0;
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct CBaseIntelligentPointer {
@@ -10,7 +10,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return PItem; }
     void SetPItem(CThing* item) { PItem = item; ++g_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 typedef CIntelligentPointer<CThing> TPointer;

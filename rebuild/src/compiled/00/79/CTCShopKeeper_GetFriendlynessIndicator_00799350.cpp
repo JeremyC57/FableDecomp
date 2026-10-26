@@ -8,17 +8,17 @@
 // "..._NEUTRAL" @ 0x0126C1EC, "..._DISLIKES" @ 0x0126C1C4, "" @ 0x0122D70E.
 // Shape: difference = base - attitude (`fsubr`), kept on the FPU stack across both compares; the -1 length push is
 // shared (hoisted) by the three string returns.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
 };
 extern const float g_shopLikesThreshold;            // 0x012305A0 (0.2f)
 extern const float g_shopNeutralThreshold;          // 0x0126663C (0.55f)
-struct CTCShop {
+class CTCShop { public:
     float GetBasePriceMultiplier() const;           // 0x00773790
     float GetAttitudeBuyPriceMultiplier() const;    // 0x007735D0
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CTCShop* GetShopTC() const;                     // 0x00798F50
     CCharString GetFriendlynessIndicator() const;
 };

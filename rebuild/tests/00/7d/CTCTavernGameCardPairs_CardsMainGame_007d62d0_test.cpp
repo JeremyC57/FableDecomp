@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // behaviour test: CTCTavernGameCardPairs::CardsMainGame turns back a mismatched pair, runs the timer, and on all cards face-up plays the win/lose sound and shows the result
-struct CCard { bool Turning, FaceDown; void Turn() { FaceDown = !FaceDown; } };
+class CCard { public: bool Turning, FaceDown; void Turn() { FaceDown = !FaceDown; } };
 static const char* g_lastSound = 0; static int g_sounds = 0; static long g_state = 0;
 struct CPairs {
     CCard* Selected; CCard* Alternate; CCard* Cards[4]; int NumCards;

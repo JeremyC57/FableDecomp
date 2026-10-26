@@ -24,7 +24,7 @@ public:
     ~CCharString();                                    // 0x0099EAE0
     void* m_pStringData;
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CTCDParticleEmitter {
 public:
@@ -64,7 +64,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> vtable 0x01237F1C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<const CThing> vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)

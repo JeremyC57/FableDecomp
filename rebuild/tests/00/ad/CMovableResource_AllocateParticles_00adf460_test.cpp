@@ -4,7 +4,7 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct C4DVector { float X, Y, Z, W; };
+class C4DVector { public: float X, Y, Z, W; };
 static C4DVector g_block[8];
 struct Pool {
     bool ok; long lastSize; long handle;

@@ -10,10 +10,10 @@
 // (CArray<CCountedPointer<CShaderResource> >, 8-byte elements) +0x3a8.
 // Shape: the PrepareForLoad loop with an 8-byte stride (`sar 3`, `[ecx+edi*8]`), 7-byte `lea esp,[esp]` pad,
 // then the device store.
-struct CShaderResource {
+class CShaderResource { public:
     void Uninitialise();                                    // 0x00A5D7A0
 };
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CShaderResourcePointer {                             // CCountedPointer<CShaderResource>, 8 bytes
     CShaderResource* Data;
     CCPPointerInfo*  Info;
@@ -30,7 +30,7 @@ struct CShaderResourceArray {                               // retail CArray<CCo
 
 struct IDirect3DDevice9;
 
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     void*                __vftable;                         // +0x000
     unsigned char        _pad004[0x1d0];
     IDirect3DDevice9*    D3DDevice;                         // +0x1d4

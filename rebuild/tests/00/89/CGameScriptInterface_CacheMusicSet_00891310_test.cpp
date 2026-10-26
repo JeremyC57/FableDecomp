@@ -24,8 +24,8 @@ struct CInner
     CMusicTarget* target_006C;
 };
 
-struct CGameScriptInterface
-{
+class CGameScriptInterface
+{ public:
     char pad_0000[0x04];
     CInner* inner_0004;
     void CacheMusicSet(EMusicSetType t) const;

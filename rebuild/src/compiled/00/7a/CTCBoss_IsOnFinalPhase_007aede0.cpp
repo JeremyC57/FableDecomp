@@ -16,15 +16,15 @@ struct CRetailVector                                // retail std::vector: {firs
     unsigned int size() const { return _Last - _First; }
 };
 
-struct CBossDef
-{
+class CBossDef
+{ public:
     unsigned char       _pad_0x00[0x28];
     CRetailVector<long> PhaseHealthPercent;         // +0x28
 };
 
 #pragma pack(push, 1)
-struct CTCBoss
-{
+class CTCBoss
+{ public:
     void*         __vftable;                        // +0x00 (CTCBase)
     void*         ParentThing;                      // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x4];                   // +0x08 (CTCBase flags)

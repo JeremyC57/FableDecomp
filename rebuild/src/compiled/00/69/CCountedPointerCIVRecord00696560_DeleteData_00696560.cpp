@@ -11,7 +11,7 @@
 // store inside the non-null arm -- then operator delete; `__fastcall` so the object arrives in ecx.
 void __cdecl operator delete(void* p);                       // 0x00BFE9BC
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();
     virtual void DeleteThis();                               // slot 1 (+4)
     unsigned long IVRefCount;                                // +0x04
@@ -38,9 +38,9 @@ struct CIVRecord_00696560 {                                  // 0x10 bytes
     CIVCountedPointer<CIVCountedPointeeBase> m_pShared;      // +0x0c
 };
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;                                    // +0x00
     CCPPointerInfo* Info;                                    // +0x04
     static void __fastcall DeleteData(void* data)
@@ -49,4 +49,4 @@ template<class T> struct CCountedPointer {
     }
 };
 
-template struct CCountedPointer<CIVRecord_00696560>;
+template class CCountedPointer<CIVRecord_00696560>;

@@ -12,7 +12,7 @@
 #pragma intrinsic(strcmp)
 
 #pragma pack(push, 1)
-struct CCharStringData {                      // 17 bytes
+class CCharStringData { public:                      // 17 bytes
     char*         PData;                      // +0x00
     unsigned long StringLength;               // +0x04
     unsigned long DataLength;                 // +0x08

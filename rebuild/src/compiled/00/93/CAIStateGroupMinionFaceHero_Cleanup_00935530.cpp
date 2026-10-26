@@ -7,7 +7,7 @@
 // CIntelligentPointer<CThingPlayerCreature>, SetPItem(0)) and the inline assignment `SetPItem(other.GetPItem())`
 // on the member at +0x14; the temporary is destroyed before the frame read; m_frameCleanedUp at +0x1c.
 // No engine header for this class; layout local, names descriptive.
-struct CThing;
+class CThing;
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
@@ -25,7 +25,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01237F14
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
 };

@@ -16,9 +16,9 @@
 // Shape: the screen size is `min((float)width, LODVirtualScreenSize)` converted to unsigned (ftol + 2^32 fix-up); the by-value
 //   C2DExtentsI result must land in a NAMED local (`fild [esp+4]`; a temporary member read gives `fild [eax]`).
 class CEngineComponentParams;
-struct CPixelShader { void* _vptr; void* PShader; };
+class CPixelShader { public: void* _vptr; void* PShader; };
 
-struct CEngineInterpolationInfo { long _body[0x70 / 4]; };
+class CEngineInterpolationInfo { public: long _body[0x70 / 4]; };
 extern CEngineInterpolationInfo g_EngineInterpolationInfo;   // 0x0143B8E0
 extern unsigned short g_engineFrameNumber;                     // 0x0143B8D8
 
@@ -32,30 +32,30 @@ struct CEngineShadowRendererView { unsigned char _pad[0x334]; long ShadowMode; }
 extern CEngineShadowRendererView* g_pShadowRenderer_01436e60;  // 0x01436E60
 
 struct STexturePoolRecord { unsigned char _pad[0x40]; float LODErrorTolerance; float CharacterLODErrorTolerance; };
-struct CTextureManager {
+class CTextureManager { public:
     const STexturePoolRecord* GetPoolTextureSize(unsigned long pool);   // 0x00B244F0
 };
 extern CTextureManager* g_pTextureManager_01436ea4;            // 0x01436EA4
 struct CTexturePoolOwner { unsigned char _pad[0x20]; unsigned long PoolID; };
 extern CTexturePoolOwner* g_pTexturePoolOwner_01436eb0;        // 0x01436EB0
 
-struct C2DExtentsI { long Width; long Height; };
-struct CDisplayManager {
+class C2DExtentsI { public: long Width; long Height; };
+class CDisplayManager { public:
     C2DExtentsI GetRenderTargetDimensions() const;   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayManager_01436e1c;         // 0x01436E1C
 struct CCamera_01436ea0 { unsigned char _pad[0xd4]; float Zoom; };
 extern CCamera_01436ea0* g_pCamera_01436ea0;       // 0x01436EA0
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v04(); virtual void v08();
     virtual void FrameStart();                     // slot 3 (+0xc)
 };
-struct CEngineClothRenderer {
+class CEngineClothRenderer { public:
     virtual void v00();
     virtual void FrameStart();                     // slot 1 (+4)
 };
-template <class T> struct CCountedPointer { T* PItem; long* PRefCount; };
+template <class T> class CCountedPointer { public: T* PItem; long* PRefCount; };
 struct CManagerArray {                             // retail CArray<CCountedPointer<CEnginePrimitiveManager> >
     CCountedPointer<CEnginePrimitiveManager>* m_pFirst;
     CCountedPointer<CEnginePrimitiveManager>* m_pLast;
@@ -100,12 +100,12 @@ struct CEnginePrimitiveRendererSharedData {        // primary base, 0x268 bytes
     CPixelShader* PixelShaderDiffuseDP3BumpFogShadowOutputFactor;   // +0x238
     unsigned char _pad23c[0x268 - 0x23c];
 };
-struct CEngineComponent {                          // secondary base at +0x268, vtable 0x012A1348
+class CEngineComponent { public:                          // secondary base at +0x268, vtable 0x012A1348
     virtual void v00();
     virtual void FrameStart(const CEngineComponentParams& params);   // slot 1
 };
 
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererSharedData, CEngineComponent {
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererSharedData, public CEngineComponent { public:
     unsigned char         _pad26c[0x8];
     CManagerArray         PrimitiveManagers;       // +0x274
     unsigned char         _pad280[0x2f0 - 0x280];

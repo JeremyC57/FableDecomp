@@ -9,22 +9,22 @@
 // Shape: three named CCharString locals (out, loop, into); the action temporary's implicit dtor destroys its two
 // CCharString members (+0xbc, +0xc0) inline before the out-of-line base dtor; `result == 2` returned int-width (`xor eax,eax ; sete`,
 // as the landed sibling Idle 0x0093A540); the creature is a named local read after the strings.
-struct CThingCreatureBase
-{
+class CThingCreatureBase
+{ public:
     void SheatheAllWeapons();                       // 0x006647F0
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CCreatureActionBase
-{
+class CCreatureActionBase
+{ public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
 };
@@ -35,8 +35,8 @@ struct CCreatureAction_PlayAnimationBase : CCreatureActionBase   // out-of-line 
     ~CCreatureAction_PlayAnimationBase();           // 0x00693EF0
 };
 
-struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureAction_PlayAnimationBase
-{
+class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureAction_PlayAnimationBase
+{ public:
     CCharString LoopAnim;                           // +0xbc
     CCharString OutAnim;                            // +0xc0
     CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase* creature, const CCharString& into,
@@ -44,8 +44,8 @@ struct CCreatureAction_PlayIntoLoopOutOfAnimation : CCreatureAction_PlayAnimatio
                                                bool a, bool b, bool c);   // 0x008427E0
 };
 
-struct CAIBrain
-{
+class CAIBrain
+{ public:
     unsigned char _pad[0x18];
     CThingCreatureBase* Creature;                   // +0x18
 };

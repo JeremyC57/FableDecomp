@@ -2,8 +2,8 @@
 // index stored, the primitive handle constructed empty.
 #include <cstdio>
 static int g_baseCalls = 0;
-struct CBaseClass { CBaseClass() { ++g_baseCalls; } virtual ~CBaseClass() { } };
-struct CEnginePrimitiveHandle : CBaseClass { void* Data; CEnginePrimitiveHandle() : Data(0) { } };
+class CBaseClass { public: CBaseClass() { ++g_baseCalls; } virtual ~CBaseClass() { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: void* Data; CEnginePrimitiveHandle() : Data(0) { } };
 struct CPrimitive {
     enum EPrimitiveType { TYPE_0, TYPE_1, TYPE_2 };
     EPrimitiveType Type; CEnginePrimitiveHandle PrimitiveHandle; long BankIndex;

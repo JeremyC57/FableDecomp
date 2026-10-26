@@ -9,7 +9,7 @@
 // Shape: IS_THING_ALIVE inlined; the owner and ParentThing are named locals for the drawable copy (retail keeps the parent in edi
 // and its vtable in ebp across the owner's virtual call); SetInLimbo re-reads ParentThing; the InLimbo bit field is pushed as
 // `movzx ; shr al,5 ; and eax,0FFFFFF01h`. CTCBase is a real base: a flat vptr + __int64 class pads the vptr to 8.
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -41,13 +41,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04
     bool ToBeRemoved;                               // +0x08
     bool IsInGlobalUpdateTCs;                       // +0x09
 };
-struct CTCOwnedEntity : CTCBase {                   // CTCBase as a base: a flat vptr + __int64 class would pad the vptr to 8
+class CTCOwnedEntity : public CTCBase { public:                   // CTCBase as a base: a flat vptr + __int64 class would pad the vptr to 8
     bool SwitchableNavigationTCAdded;               // +0x0c
     CBaseIntelligentPointer POwner;                 // +0x0d
     unsigned __int64 OwnerUID;                      // +0x18

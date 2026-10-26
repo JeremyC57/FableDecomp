@@ -13,18 +13,18 @@
 // Layout: Ego_r.pdb CTCPhysicsRigidBody has RHSet at +0x74 after three 16-byte std::vectors at +0x40; retail STLport
 // vectors are 12 bytes, so retail RHSet sits at +0x68 (as in the landed vfunc_75 0x00759A00). engine/CTCPhysicsRigidBody.h
 // follows the PDB offsets and has no virtuals, so the class is modelled locally.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail STLport vector, 12 bytes
 
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
 };
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00();
     virtual void OnSerialise(CPersistContext& context, bool loading);   // slot 1; CTCPhysicsBase's body 0x006B08F0
     void*     m_tcBase[2];                     // +0x04 CTCBase body

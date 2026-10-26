@@ -1,10 +1,10 @@
-struct CThing;
+class CThing;
 
 struct CThingRef {
     CThing* Get();
 };
 
-struct CGameScriptThing {
+class CGameScriptThing { public:
     char pad[0xc];
     CThingRef ref;
 };

@@ -10,16 +10,16 @@
 // (CShared: PositiveTarget +0x00, NegativeTarget +0x10); target Name +0x00, BoneMorphs +0x04 (12-byte vector).
 // Shape: the size is recomputed every iteration (`sar 3`, unsigned compare); STLport operator[] is `*(begin()+n)`; the
 // weight is a float local (copied through edx); the returned copy bumps the count block when present.
-struct CCharString
-{
+class CCharString
+{ public:
     void* PStringData;
     CCharString();                                  // 0x0099E4B0
 };
 
-struct C3DSkeletalBoneMorph;
+class C3DSkeletalBoneMorph;
 
-struct C3DSkeletalMorphTarget                       // retail 0x10 bytes
-{
+class C3DSkeletalMorphTarget                       // retail 0x10 bytes
+{ public:
     CCharString Name;                               // +0x00
     C3DSkeletalBoneMorph* BoneMorphsFirst;          // +0x04 CArray<C3DSkeletalBoneMorph>
     C3DSkeletalBoneMorph* BoneMorphsLast;           // +0x08
@@ -31,8 +31,8 @@ struct C3DSkeletalMorphTarget                       // retail 0x10 bytes
 struct CCountBlock { long Count; };
 
 template <class T>
-struct CCountedPointer
-{
+class CCountedPointer
+{ public:
     T* Object;                                      // +0x00
     CCountBlock* Block;                             // +0x04
     CCountedPointer(const CCountedPointer& other) : Object(other.Object), Block(other.Block) { if (Block) ++Block->Count; }
@@ -40,16 +40,16 @@ struct CCountedPointer
     T* operator->() const { return Object; }
 };
 
-struct C3DSkeletalMorphParameter
-{
-    struct CShared
-    {
+class C3DSkeletalMorphParameter
+{ public:
+    class CShared
+    { public:
         C3DSkeletalMorphTarget PositiveTarget;      // +0x00
         C3DSkeletalMorphTarget NegativeTarget;      // +0x10
     };
     virtual void v00();
     float CurrentValue;                             // +0x04
-    struct C3DSkeletalMorph* SkeletalMorph;         // +0x08
+    class C3DSkeletalMorph* SkeletalMorph;         // +0x08
     CCountedPointer<CShared> SharedData;            // +0x0c
 };
 
@@ -63,8 +63,8 @@ struct CMorphParameterArray                         // CArray<CCountedPointer<C3
     CCountedPointer<C3DSkeletalMorphParameter>& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-struct C3DSkeletalMorph
-{
+class C3DSkeletalMorph
+{ public:
     virtual void v00();
     CMorphParameterArray MorphParameters;           // +0x04
     CCountedPointer<C3DSkeletalMorphTarget> CombinedMorph;   // +0x10

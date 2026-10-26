@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CDisplayEngine { int marker; };
+class CDisplayEngine { public: int marker; };
 struct GlobalRoot { char pad[0x1c]; CDisplayEngine* engine; };
 GlobalRoot* g_root;
 struct CViewBase {};

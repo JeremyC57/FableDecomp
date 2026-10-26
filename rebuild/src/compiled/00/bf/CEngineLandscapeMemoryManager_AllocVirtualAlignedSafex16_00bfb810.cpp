@@ -4,7 +4,7 @@
 // (this, count << 4, alignment, flags; its result passes straight through). Shape: the count is sign-extended (`cdq`) and multiplied as an __int64 by the
 // 16-byte element size, range-checked through an inline predicate whose two tests share one `xor eax,eax` failure tail placed after the call path (the call is the `if` body, the zero the fall-through return); the 32-bit byte count is recomputed
 // (`shl esi,4`) for the call. One of three element-size instances (4 @ 0x00BFB860, 0x50 @ 0x00BFB8C0).
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtualAligned(long size, unsigned long alignment, long flags);   // 0x00BD9C40
     void* AllocVirtualAlignedSafe_x16(long count, unsigned long alignment, long flags);
 };

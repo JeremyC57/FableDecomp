@@ -7,7 +7,7 @@ struct CProfileLock {
     CProfileLock(CProfileSection* s) : m_pSection(s), m_entryTick(7) { ++g_locked; }
     ~CProfileLock() { ++g_unlocked; g_countWhileLocked = (int)*g_pCount; }
 };
-struct CDebugString {
+class CDebugString { public:
     unsigned char _pad[8]; long m_count; unsigned char _pad2[4]; CProfileSection m_section;
     void AddString() { CProfileLock lock(&m_section); ++m_count; }
 };

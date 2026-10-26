@@ -1,11 +1,11 @@
 #include <cstdio>
 // Behaviour test for 006421c0: TransferableComponent<CRGBColour>::TransferIn hands an opaque-black default and the target to the reader.
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { A = 255; R = 0; G = 0; B = 0; }
 };
-struct CPersistContext { int empty; };
-struct CStringParser { int present; };
+class CPersistContext { public: int empty; };
+class CStringParser { public: int present; };
 struct Traits {
     CRGBColour DefaultVal;
     void TransferIn(CPersistContext&, CStringParser& parser, CRGBColour* value)

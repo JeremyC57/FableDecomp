@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 
-struct CThing { int x; };
+class CThing { public: int x; };
 struct CBaseIntelligentPointer { void* item; void* info; const CThing* GetPItem() { return (const CThing*)item; } };
 struct CRetailThingPointerList { struct node { node* next; node* prev; CBaseIntelligentPointer value; }; struct iterator { node* m_pNode; explicit iterator(node* n) : m_pNode(n) {} CBaseIntelligentPointer& operator*() const { return m_pNode->value; } iterator& operator++() { m_pNode = m_pNode->next; return *this; } bool operator!=(const iterator& o) const { return m_pNode != o.m_pNode; } };
     node* head; CRetailThingPointerList() { head = new node; head->next = head->prev = head; } iterator begin() { return iterator(head->next); } iterator end() { return iterator(head); }

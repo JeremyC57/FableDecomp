@@ -8,7 +8,7 @@
 // virtual slot 16 (+0x40) taking the position and returning the map index.
 // Layout: Ego_r.pdb CTCSwitchableNavigation (0x10 bytes): MapIndex +0x0c.
 // Shape: the map owner is a named local fetched first (its vtable is loaded into ebx before the position call).
-struct C3DVector;
+class C3DVector;
 
 struct CNavMapSource {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -18,11 +18,11 @@ struct CNavMapSource {
     virtual long GetNavMapIndex(const C3DVector& position); // slot 16 (+0x40)
 };
 
-struct CThing {
+class CThing { public:
     const C3DVector& GetPosition() const;                   // 0x004C73D0
 };
 
-struct CTCSwitchableNavigation {
+class CTCSwitchableNavigation { public:
     void*   __vftable;                                      // +0x00
     CThing* ParentThing;                                    // +0x04
     bool    ToBeRemoved;                                    // +0x08

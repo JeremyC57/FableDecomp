@@ -1,4 +1,4 @@
-struct CCreatureAction_CastUnholyPowerSpell {
+class CCreatureAction_CastUnholyPowerSpell { public:
     void* vftable;
 };
 

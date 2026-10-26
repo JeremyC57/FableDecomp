@@ -18,7 +18,7 @@ struct CSoundPlayer {                                    // the emitter's sound 
     virtual void StopSpecificSample(unsigned long sampleID);   // slot 9 (+0x24)
 };
 
-struct CThingSoundEmitter {
+class CThingSoundEmitter { public:
     unsigned char  _pad00[0x91];
     unsigned char  Dead : 1;                             // +0x91 bit 0 (CThing flags, PDB +0xa1)
     unsigned char  _flags91_1 : 7;

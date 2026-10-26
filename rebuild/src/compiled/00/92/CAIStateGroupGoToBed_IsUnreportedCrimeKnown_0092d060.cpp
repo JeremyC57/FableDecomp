@@ -14,8 +14,8 @@
 //          10, 11 and 2 are tried in that order.
 // Layout: creature Home intelligent pointer at retail +0x168 (as the landed 0x009580E0); bitset +0x20, interface map
 //          +0x44, dead flag +0x91. No engine header exists for CAIStateGroup_GoToBed.
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -29,10 +29,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CThing* GetPItem() const;                   // 0x00A01B50
 };
-struct CThingPhysical;
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {};
+class CThingPhysical;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:};
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -53,35 +53,35 @@ struct CThing {
     }
 };
 
-struct CTCVillage;
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillage;
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;            // 0x007EE540
 };
 
-struct COpinionDeed;
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard { COpinionDeedFilter_IsCrimeToRunAndFindAGuard() {} };
-struct COpinionDeedFilter_IsStillHappening { COpinionDeedFilter_IsStillHappening() {} };
-struct COpinionDeedFilter_TargetIs { CThing* Target; COpinionDeedFilter_TargetIs(CThing* p) : Target(p) {} };
-template<class A, class B> struct CFilter_Bind2 {
+class COpinionDeed;
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public: COpinionDeedFilter_IsCrimeToRunAndFindAGuard() {} };
+class COpinionDeedFilter_IsStillHappening { public: COpinionDeedFilter_IsStillHappening() {} };
+class COpinionDeedFilter_TargetIs { public: CThing* Target; COpinionDeedFilter_TargetIs(CThing* p) : Target(p) {} };
+template<class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) {}
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 
-struct CTCCreatureOpinionOfHero {               // interface 0x4f
+class CTCCreatureOpinionOfHero { public:               // interface 0x4f
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index, bool includeReported);   // 0x006610C7
     COpinionDeed* FindMostRecentDeed(long deedType, const CFilter_Bind2<COpinionDeedFilter_IsStillHappening, COpinionDeedFilter_TargetIs>& filter,
                                      long* index, bool includeReported);   // 0x0092E630
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
     const CThing* GetPCreature() const { return PCreature; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

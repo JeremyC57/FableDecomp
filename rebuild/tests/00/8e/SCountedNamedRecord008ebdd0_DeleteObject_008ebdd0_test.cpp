@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_stringDtors;
-struct CCharString { const char* m_text; CCharString() : m_text("") { } ~CCharString() { ++g_stringDtors; } };
+class CCharString { public: const char* m_text; CCharString() : m_text("") { } ~CCharString() { ++g_stringDtors; } };
 struct SCountedNamedRecord_008ebdd0 {
     long m_key; CCharString m_name;
     static void DeleteObject(SCountedNamedRecord_008ebdd0* object)

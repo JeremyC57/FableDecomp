@@ -1,4 +1,4 @@
-struct CThing;
+class CThing;
 
 struct CGlob {
     char pad[0x24];
@@ -7,7 +7,7 @@ struct CGlob {
 
 extern CGlob* g_glob;
 
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() {}
     C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}

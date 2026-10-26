@@ -3,14 +3,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CScriptThing { int Id; };
+class CScriptThing { public: int Id; };
 static char g_lookup[32], g_faction[32]; static int g_money = -1; static const CScriptThing* g_factionThing;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing GetThingWithScriptName(const char* name) const { std::strcpy(g_lookup, name); CScriptThing t = { 42 }; return t; }
     void EntitySetInFaction(const CScriptThing& t, const char* f) const { g_factionThing = &t; std::strcpy(g_faction, f); }
     void EntitySetThingAsWantingMoney(const CScriptThing&, long amount) const { g_money = (int)amount; }
 };
-struct CScriptDef { long TollBanditPayMeDistance; };
+class CScriptDef { public: long TollBanditPayMeDistance; };
 static CScriptDef g_def = { 15 };
 static CScriptDef* g_pScriptDef = &g_def;
 struct CTollBandit {

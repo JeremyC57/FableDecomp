@@ -8,10 +8,10 @@
 #include "engine/CAIBrain.h"
 #include "fable_string.h"
 #else
-struct CAIBrain {char prefix[24];void* Creature;};
-struct CCharString {void* storage_;CCharString(const char*,long);~CCharString();};
+class CAIBrain { public:char prefix[24];void* Creature;};
+class CCharString { public:void* storage_;CCharString(const char*,long);~CCharString();};
 #endif
-struct C3DVector {float X,Y,Z;};
+class C3DVector { public:float X,Y,Z;};
 struct CQueenThing {const C3DVector& GetPosition();}; //004c73d0
 struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
 struct CAnimationSound {long first,last;CAnimationSound():first(0),last(0){}};

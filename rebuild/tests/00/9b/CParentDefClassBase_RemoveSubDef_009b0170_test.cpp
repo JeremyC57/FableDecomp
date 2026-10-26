@@ -3,8 +3,8 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CCharStringData { const char* m_pData; unsigned long m_length; };
-struct CCharString {
+class CCharStringData { public: const char* m_pData; unsigned long m_length; };
+class CCharString { public:
     CCharStringData* m_pData;
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
@@ -48,7 +48,7 @@ struct CSubDefInfoMap {
     }
 };
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     unsigned char  _defClassBase[0x21];
     long           InstantiationName;
     CSubDefInfoMap SubDefInfoMap;

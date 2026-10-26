@@ -8,13 +8,13 @@
 // Leaf: IsInInteractiveState
 class CWideString { public: void* PStringData; };
 
-struct C2DVector { float X, Y; };
-struct C2DBoxF { float TLX, TLY, BRX, BRY; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CFontBank;
 class CGraphicDataBank;
 
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase { public:
     bool       Active;                             // +0x00
     float      FadeInTime;                         // +0x04
     float      FadeOutTime;                        // +0x08
@@ -78,7 +78,7 @@ public:
 };
 
 
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits { bool test(long bit); };     // 0x00410DE0
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -122,7 +122,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
     return lo;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
@@ -153,21 +153,21 @@ struct CThing {
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 struct CTCA { unsigned char _pad[0xc]; unsigned char m_c; unsigned char m_d; unsigned char _p2[0xe]; unsigned char m_1c; unsigned char _p3[0xa3]; unsigned char m_c0; };
 struct CTCB { unsigned char _pad[0xc]; unsigned char m_c; };
-struct CThingCreatureBase : CThing {};
-struct CPlayer {
+class CThingCreatureBase : public CThing { public:};
+class CPlayer { public:
     CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
     CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
 };
-struct CPlayerManager { CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 struct CFrontEnd { bool IsActive(); };             // 0x00434D60
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad0[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1C
     unsigned char _pad1[0x8];
     CFrontEnd* m_pFrontEnd;                        // +0x28
 };
 struct CHeroInfoScreensManager { unsigned char _pad[0x34]; unsigned char m_open; };
-struct CPlayerGui { CHeroInfoScreensManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
+class CPlayerGui { public: CHeroInfoScreensManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 

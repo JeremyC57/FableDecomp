@@ -11,11 +11,11 @@
 // Layout: retail CWorld (Ego_r.pdb order, 16 bytes less ahead of these members): DisplayMiniMapOnRegionLoad +0x12F,
 //   GuildSealRecallPos +0x154, GuildSealRecallAngleXY +0x160; CGameEvent as the landed CInputProcessFishing
 //   0x00690B20; retail CThing dead bit +0x91.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
-struct CGameEvent : CMemoryBuffer {
+class CGameEvent : public CMemoryBuffer { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -27,23 +27,23 @@ struct CGameEvent : CMemoryBuffer {
     void AddBool(bool value) { Copy(1, &value); }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char IsDead : 1;                         // +0x91 bit 0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const;            // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                   // 0x00449960
     long GetMainPlayerID() const;                     // 0x00449700
 };
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1C
 };
 extern CEngine* g_pEngine;                            // 0x013B86A0
-struct CWorld {
+class CWorld { public:
     unsigned char _pad000[0x12f];
     bool DisplayMiniMapOnRegionLoad;                  // +0x12F
     unsigned char _pad130[0x154 - 0x130];
@@ -52,7 +52,7 @@ struct CWorld {
     void HandleMoveHeroToRegionGameEvent(const CGameEvent* event);   // 0x0049EAF0
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPlayerManager* GetPlayerManager() const;         // 0x00686D50 (CTCBase)
     CWorld* GetWorld();                               // 0x00686A70 (CTCBase)
     const CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)

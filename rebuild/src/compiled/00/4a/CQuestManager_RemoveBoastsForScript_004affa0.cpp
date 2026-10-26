@@ -14,7 +14,7 @@
 // 0x00411570, 15 lines) defined above under `#pragma auto_inline(off)` so VC7.1 knows it writes no memory; with a bare
 // declaration the block is re-read every pass.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-struct CCharStringData {                           // the shared string block
+class CCharStringData { public:                           // the shared string block
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
@@ -43,12 +43,12 @@ inline bool SameString(CCharStringData* a, CCharStringData* b)
         return Compare_00411570(a->m_pData, b->m_pData) == 0;
     return false;
 }
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);           // (the by-value parameter is built by the caller)
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                  // 0x0099B510
 };
@@ -79,7 +79,7 @@ inline CBoastNode* Erase(CBoastNode* pos)          // STLport list::erase(iterat
     free(pos);
     return next;
 }
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char _pad_0x00[0x68];
     CBoastNode*   Boasts;                          // +0x68 list<CBoast> (head node; PDB +0xa4)
     CBoastNode*   AcceptedBoasts;                  // +0x6c list<CBoast> (head node; PDB +0xb0)

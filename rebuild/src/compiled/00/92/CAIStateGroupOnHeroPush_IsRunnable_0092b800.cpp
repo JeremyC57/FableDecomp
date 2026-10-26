@@ -9,12 +9,12 @@
 #define FABLE_FORCEINLINE inline
 #endif
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     FABLE_FORCEINLINE C3DVector& Normalise();
 };
 
-struct CTCOnHeroPush {
+class CTCOnHeroPush { public:
     void* __vftable;
     fable_u32 Unknown04;
     fable_u32 Unknown08;

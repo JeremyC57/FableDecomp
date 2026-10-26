@@ -10,9 +10,9 @@
 //   (ghidra_out/cgsi_slots_aligned.tsv).
 // Layout: Ego_r.pdb CBSGateGuard (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
 // Shape: the landed CCham::Main / CTollBandit::Should_I_Flee models; the home position is a named by-value local.
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* PStringData; };
-struct CScriptThing {                                  // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* PStringData; };
+class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual C3DVector GetHomePos() const;   // slot 7 (+0x1c)
@@ -23,7 +23,7 @@ struct CScriptThing {                                  // vtable 0x01238C8C, 12 
 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CBaseObject {
+class CBaseObject { public:
     virtual void b00();
     void* m_pIntelligentPointer;                       // +0x04
     CBaseObject();                                     // 0x0099A380
@@ -33,7 +33,7 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
@@ -48,7 +48,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x
     void Release();                                    // 0x00CD2770
 };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-struct CGameScriptInterface {                          // vtable 0x01260F0C
+class CGameScriptInterface { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -120,7 +120,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04
     CScriptThing          Me;                          // +0x08

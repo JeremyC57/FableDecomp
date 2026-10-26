@@ -9,14 +9,14 @@
 // Shape: the empty name is a named CCharString local in its own block (`lea eax ; push eax`) whose call result goes to a
 // bool local (bl) tested after the dtor; base arguments a4 = 1, creators 0, final flag true; `playerStart != 0` gives
 // `test al,al ; setne al`.
-struct C3DVector;
+class C3DVector;
 struct CThingPhysicalArg;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CThingHolySiteDef {
+class CThingHolySiteDef { public:
     unsigned char _pad00[0x7e];
     unsigned char PlayerStart;                         // +0x7e
 };
@@ -24,10 +24,10 @@ struct CDefPointerHolySiteDef {
     CThingHolySiteDef* m_pDef;
     CThingHolySiteDef* operator->() const { return m_pDef; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerHolySiteDef& out);   // 0x0083BD10
 };
-struct CThingGameObject {
+class CThingGameObject { public:
     virtual void v00();
     unsigned char  _pad04[0x88];
     unsigned short m_defIndex;                         // +0x8c
@@ -36,7 +36,7 @@ struct CThingGameObject {
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, const CCharString& scriptName,
                              CThingPhysicalArg* creator, CThingPhysicalArg* originalCreator, bool a8);   // 0x008388D0
 };
-struct CThingHolySite : CThingGameObject {
+class CThingHolySite : public CThingGameObject { public:
     CDefPointerHolySiteDef Def;                        // +0xd0
     unsigned char          PlayerStart;                // +0xd4
     bool ConstructFromParams(long defIndex, const C3DVector* pos, long a3, bool playerStart);

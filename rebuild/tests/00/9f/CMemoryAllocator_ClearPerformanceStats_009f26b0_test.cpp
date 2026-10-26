@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CMemoryAllocator;
+class CMemoryAllocator;
 typedef void (__stdcall *ClearFn)(void*);
 
 int g_perfStatsObject = 0;

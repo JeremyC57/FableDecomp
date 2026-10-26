@@ -16,7 +16,7 @@ struct CHeader {                                   // CHandleBasedMemoryPool::CH
     CHeader*       PNextPhysical;                  // +0x1c
 };
 
-template <class T> struct CArray {                 // retail CArray: 12 bytes
+template <class T> class CArray { public:                 // retail CArray: 12 bytes
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -24,7 +24,7 @@ template <class T> struct CArray {                 // retail CArray: 12 bytes
     T& operator[](unsigned long index) const { return m_pFirst[index]; }
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();

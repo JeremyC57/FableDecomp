@@ -8,14 +8,14 @@ struct CCountedObject {
     virtual void Destroy() { ++g_blockDestroyed; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Object; CIVCountedPointer() : Object(0) {}
     ~CIVCountedPointer() { Release(); }
     void Release() { if (Object) { Object->Release(); Object = 0; } }
     CIVCountedPointer& operator=(const CIVCountedPointer& o) { Release(); Object = o.Object; if (Object) ++Object->m_refCount; return *this; }
 };
 struct CAnimatedBlock { CIVCountedPointer<CCountedObject> Data; };
-struct C3DPrimitive2 {
+class C3DPrimitive2 { public:
     CDev* Data; unsigned long VertexBufferStatus, IndexBufferStatus, AnimatedBlockCount; CAnimatedBlock* AnimatedBlocks; bool UploadedFlag;
     bool vbResult;
     bool UploadToIndexBuffer(unsigned long) { ++g_ibUploads; return false; }

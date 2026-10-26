@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerWeaponTrails {
+class CEnginePrimitiveManagerWeaponTrails { public:
     void* vftable;
 };
 

@@ -12,7 +12,7 @@
 // frame temporary (retail CCombatActionBase is 0x114 bytes; CanBeHit/Flip follow).
 // Shape: the action is an unnamed temporary passed by reference (built, used, destroyed by the implicit derived dtor = the
 // out-of-line base dtor); VC duplicates the RemoveMode tail for the GetInterface miss arm.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -31,13 +31,13 @@ struct CPhysicsObject {
     virtual void Wake();   // slot 44 (+0xb0)
 };
 
-struct CCombatActionBase;
+class CCombatActionBase;
 
 struct CThingAnimatable {                  // empty here: only its member is called (thing base at offset 0)
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThingCreatureBase : CThingAnimatable {
+class CThingCreatureBase : public CThingAnimatable { public:
     unsigned char   _pad00[0x10];
     unsigned char   m_state;               // +0x10 creature state byte (compared with 1)
     unsigned char   _pad11[0x0f];
@@ -61,23 +61,23 @@ struct CThingCreatureBase : CThingAnimatable {
     }
 };
 
-struct CTCCreatureModeManager {            // interface type 0x31
+class CTCCreatureModeManager { public:            // interface type 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0
 };
 
-struct CCombatActionBase {                 // retail sizeof 0x114
+class CCombatActionBase { public:                 // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x110];
     ~CCombatActionBase();                  // 0x0062E900
 };
 
-struct CCombatAction_GenericStrikeResponseKnockdownRecoverBase : CCombatActionBase {   // vtable 0x01271BAC
+class CCombatAction_GenericStrikeResponseKnockdownRecoverBase : public CCombatActionBase { public:   // vtable 0x01271BAC
     bool CanBeHit;                         // +0x114
     bool Flip;                             // +0x115
     CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase* owner, bool flip);   // 0x00867AF0
 };
 
-struct CCombatAction_GenericStrikeResponseKnockdownRecover : CCombatAction_GenericStrikeResponseKnockdownRecoverBase {   // vtable 0x0127191C
+class CCombatAction_GenericStrikeResponseKnockdownRecover : public CCombatAction_GenericStrikeResponseKnockdownRecoverBase { public:   // vtable 0x0127191C
     virtual void v00();
     CCombatAction_GenericStrikeResponseKnockdownRecover(CThingCreatureBase* owner, bool flip)
         : CCombatAction_GenericStrikeResponseKnockdownRecoverBase(owner, flip)
@@ -85,9 +85,9 @@ struct CCombatAction_GenericStrikeResponseKnockdownRecover : CCombatAction_Gener
     }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     void*         Group;                   // +4 (CCharString)
     unsigned long GroupCRC;                // +8

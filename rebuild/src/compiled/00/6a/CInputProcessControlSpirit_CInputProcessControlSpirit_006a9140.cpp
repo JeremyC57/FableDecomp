@@ -6,7 +6,7 @@
 // Shape: the member's address is taken into edi before the vtable store, the base pointer constructor is called out of line and
 // the derived vtable stored through edi; `this` returns in eax, `ret 4`.
 // Leaf: ??0CInputProcessControlSpirit
-struct CInputProcessGameBaseInit;
+class CInputProcessGameBaseInit;
 struct CBaseIntelligentPointer {                    // 8 bytes: vptr + the pointee link
     virtual void v00();
     void* m_pItem;                                  // +0x04
@@ -26,7 +26,7 @@ struct CInputProcessGameBase {                      // vtable 0x0125BE98, 0x28 b
     void*         PGamePlayerInterface;             // +0x24
     CInputProcessGameBase(const CInputProcessGameBaseInit& init);   // 0x00687A30
 };
-struct CInputProcessControlSpirit : CInputProcessGameBase {   // vtable 0x0125D110
+class CInputProcessControlSpirit : public CInputProcessGameBase { public:   // vtable 0x0125D110
     virtual void v00();
     CIntelligentPointer PCreature;                  // +0x28
     CInputProcessControlSpirit(const CInputProcessGameBaseInit& init);

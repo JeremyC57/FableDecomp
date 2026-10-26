@@ -1,8 +1,8 @@
 #include <stdio.h>
 static int g_cs, g_vs;
-struct CCharString { void* m_pStringData; CCharString() : m_pStringData(0) {} CCharString(const CCharString& o) : m_pStringData(o.m_pStringData) { ++g_cs; } };
+class CCharString { public: void* m_pStringData; CCharString() : m_pStringData(0) {} CCharString(const CCharString& o) : m_pStringData(o.m_pStringData) { ++g_cs; } };
 template <class T> struct CRetailVector { T* first; T* last; T* end; CRetailVector() : first(0), last(0), end(0) {} CRetailVector(const CRetailVector& o) : first(o.first), last(o.last), end(o.end) { ++g_vs; } };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CRecord_006f3000 {
     long m_id; unsigned char m_flag04; long m_value; unsigned char m_flag0c; unsigned char m_flag0d; CCharString m_name; CRetailVector<C3DVector> m_points0; CRetailVector<C3DVector> m_points1;
     CRecord_006f3000() {}

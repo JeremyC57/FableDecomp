@@ -2,34 +2,34 @@
 // colour (through a counted def copy that is released) when the player is local, else opaque black; alpha is the
 // normalised time clamped to 0..1; scale 1 and valid; the call reports false.
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour() { }
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 static int g_deletes = 0;
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Delete() { ++g_deletes; }
     long RefCount;
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(T* object) : Object(object) { }
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { if (Object) Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CPlayerDef : CDefPointeeBase { unsigned char _pad08[0x40 - 0x08]; CRGBColour Colour; };
+class CPlayerDef : public CDefPointeeBase { public: unsigned char _pad08[0x40 - 0x08]; CRGBColour Colour; };
 static bool g_local = false;
-struct CPlayer { unsigned char _pad00[0x21c]; CDefPointer<CPlayerDef> PlayerDef; CPlayer(CPlayerDef* def) : PlayerDef(def) {} bool IsLocal() { return g_local; } };
+class CPlayer { public: unsigned char _pad00[0x21c]; CDefPointer<CPlayerDef> PlayerDef; CPlayer(CPlayerDef* def) : PlayerDef(def) {} bool IsLocal() { return g_local; } };
 static CPlayer* g_player; static long g_askedPlayer = -99;
-struct CPlayerManager { CPlayer* GetPlayer_00449910(long playerNumber) { g_askedPlayer = playerNumber; return g_player; } };
+class CPlayerManager { public: CPlayer* GetPlayer_00449910(long playerNumber) { g_askedPlayer = playerNumber; return g_player; } };
 static CPlayerManager g_manager; static float g_time = 0.5f;
 struct SThingHighlightInfo { long _unused; float Scale; float Alpha; CRGBColour Colour; bool Valid; };
-struct CThingBuilding {
+class CThingBuilding { public:
     unsigned char _pad00[0x90]; signed char PlayerNumber;
     CPlayerManager* GetPlayerManager() { return &g_manager; }
     float GetNormalisedTime() { return g_time; }

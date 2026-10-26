@@ -11,14 +11,14 @@
 //   (0x00A0D6B0) one.
 // Shape: StartScanAtHead / ScanForward / RemoveScanInfo inline list members (the scan sits in the frame, Forwards and
 //   the 0xb0-byte inputs untouched), the loop runs while the position's Data is non-null.
-struct CBaseClass { virtual ~CBaseClass(); };
-struct CLinkedListPosition { CBaseClass* Data; CLinkedListPosition* Next; CLinkedListPosition* Previous; };
+class CBaseClass { public: virtual ~CBaseClass(); };
+class CLinkedListPosition { public: CBaseClass* Data; CLinkedListPosition* Next; CLinkedListPosition* Previous; };
 
-struct CAInputProcess : CBaseClass {
+class CAInputProcess : public CBaseClass { public:
     void RemoveFromInterface();                    // 0x00A0D2D0
 };
 
-struct CLinkedListScanInfo;
+class CLinkedListScanInfo;
 struct CInputProcessList {                         // CLinkedList<CAInputProcess>
     CLinkedListPosition* Head;
     CLinkedListPosition* Tail;
@@ -28,7 +28,7 @@ struct CInputProcessList {                         // CLinkedList<CAInputProcess
     CAInputProcess* ScanForward(CLinkedListScanInfo* s) const;
     void RemoveScanInfo(CLinkedListScanInfo* s) const;
 };
-struct CLinkedListScanInfo {
+class CLinkedListScanInfo { public:
     CLinkedListPosition* Current;
     CLinkedListPosition* Next;
     CLinkedListPosition* Previous;
@@ -79,7 +79,7 @@ inline void CInputProcessList::RemoveScanInfo(CLinkedListScanInfo* s) const
         s->NextScan->PreviousScan = s->PreviousScan;
 }
 
-struct CInputProcessManager : CBaseClass {         // vtable 0x0129CA38
+class CInputProcessManager : public CBaseClass { public:         // vtable 0x0129CA38
     CInputProcessList InputProcessList;            // +0x04
     unsigned char QueuedProcessedInputs[10][0xb0]; // +0x14 CProcessedInput[10]
     long NoQueuedProcessedInputs;                  // +0x6f4

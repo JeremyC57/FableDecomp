@@ -1,7 +1,7 @@
 // C2DLineF::IntersectsWith(C2DBoxI*) -- convert integer box corners to float edges and test each using the shared segment intersection helper
-struct C2DVector { float x; float y; };
-struct C2DBoxI { long minX; long minY; long maxX; long maxY; };
-struct C2DLineF {
+class C2DVector { public: float x; float y; };
+class C2DBoxI { public: long minX; long minY; long maxX; long maxY; };
+class C2DLineF { public:
     float x1; float y1; float x2; float y2;
     C2DLineF(float ax,float ay,float bx,float by):x1(ax),y1(ay),x2(bx),y2(by) {}
     bool IntersectsWith(const C2DLineF* other, C2DVector* point, float tolerance); // 0x00A56C80

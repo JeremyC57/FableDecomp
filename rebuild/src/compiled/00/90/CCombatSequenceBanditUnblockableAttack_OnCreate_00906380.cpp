@@ -19,11 +19,11 @@
 #include "engine/_quarantine/CCombatActionBase.h"
 #undef CCombatActionBase
 #include "fable_string.h"
-struct CThingCreatureBase;
-struct CThing;
-struct C3DVector { float x, y, z; };
-struct CTCWeaponTrail;
-struct CCreatureActionBase {
+class CThingCreatureBase;
+class CThing;
+class C3DVector { public: float x, y, z; };
+class CTCWeaponTrail;
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();
     virtual void Validate() const;
     virtual void EditUpdate(float elapsed);
@@ -101,8 +101,8 @@ struct CCreatureActionBase {
     virtual bool IsToFaceTargetAtStart() const;
     unsigned char nativeFields[0xb0]; // actual CCreatureActionBase header data after its vptr, native size 0xb4
 };
-struct CSoundPair { long first; long last; CSoundPair() : first(0), last(0) { } };
-struct CCombatActionBase : CCreatureActionBase {
+class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(0) { } };
+class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
     virtual void FinishAction();
@@ -148,7 +148,7 @@ struct CCombatActionBase : CCreatureActionBase {
     unsigned char nativeCombatFields[0x60]; // retail extends the native 0xb4 action base to 0x114
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857f30
 };
-struct CCreatureAction_LeapBack : CCombatActionBase {
+class CCreatureAction_LeapBack : public CCombatActionBase { public:
     virtual ~CCreatureAction_LeapBack();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -157,7 +157,7 @@ struct CCreatureAction_LeapBack : CCombatActionBase {
     CCreatureAction_LeapBack(CThingCreatureBase& owner, CThing& target)
         : CCombatActionBase(owner, target, 50, CSoundPair()) { }
 };
-struct CCreatureAction_CombatIdle : CCombatActionBase {
+class CCreatureAction_CombatIdle : public CCombatActionBase { public:
     virtual ~CCreatureAction_CombatIdle();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -165,7 +165,7 @@ struct CCreatureAction_CombatIdle : CCombatActionBase {
     CCreatureAction_CombatIdle(CThingCreatureBase& owner, CThing& target)
         : CCombatActionBase(owner, target, 50, CSoundPair()) { }
 };
-struct CCreatureAction_UnblockableMidAttack : CCombatActionBase {
+class CCreatureAction_UnblockableMidAttack : public CCombatActionBase { public:
     virtual ~CCreatureAction_UnblockableMidAttack();
     virtual CCreatureActionBase* Clone() const;
     virtual void Initialise();
@@ -186,7 +186,7 @@ struct CCountedPointer {
         object = 0; count = 0;
     }
 };
-struct CCombatSequenceBase { void OnCreate(); }; // external CCombatSequenceBase::OnCreate @ 0x008b0650
+class CCombatSequenceBase { public: void OnCreate(); }; // external CCombatSequenceBase::OnCreate @ 0x008b0650
 struct CCombatSequence_BanditUnblockableAttack_NativeView : CCombatSequenceBase {
     unsigned char prefix[0x1c];
     CThingCreatureBase* m_owner;

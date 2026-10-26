@@ -10,7 +10,7 @@ public:
     CCharString(const char* text, long = -1) : PStringData(text) { ++g_live; }
     ~CCharString() { --g_live; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int calls; const char* quests[3]; const char* regions[3]; int liveAtCall;
     virtual void AddQuestRegion(const CCharString& quest, const CCharString& region)
     { quests[calls] = quest.PStringData; regions[calls] = region.PStringData; liveAtCall = g_live; ++calls; }

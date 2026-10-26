@@ -1,4 +1,4 @@
-struct CCharString {
+class CCharString { public:
     char* p;
     /* real thiscall member at 0x99ebf0: this=ecx, (const char*, int) on stack */
     void Init(const char* s, int n);

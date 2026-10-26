@@ -10,21 +10,21 @@
 // Shape: member constructors (the string's out-of-line default ctor, the counted pointer's inline zeroing),
 // then body assignments; the counted pointer is addressed once (`lea esi,[edi+4]`) and reused for Reset and
 // the object fetch. The plane data goes through the CArray GetData() idiom (`Size() > 0 ? first : this`, `ja`).
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                                       // 0x0099E4B0
     CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
-struct CPlane { float A, B, C, D; };                     // 16 bytes
-struct CMovableResourceMemoryPool;
-struct CContainmentVolume {
+class CPlane { public: float A, B, C, D; };                     // 16 bytes
+class CMovableResourceMemoryPool;
+class CContainmentVolume { public:
     CContainmentVolume();                                // 0x00A752D0
     bool Initialise(const CPlane* planes, unsigned long count, CMovableResourceMemoryPool* pool);   // 0x00A755C0
     unsigned char _body[0x10];
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
@@ -32,7 +32,7 @@ template<class T> struct CCountedPointer {
     T* operator->() const { return m_pObject; }
 };
 
-template<class T> struct CArray {                        // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                        // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
     const T* GetData() const { return Size() > 0 ? m_begin : (const T*)this; }
@@ -44,7 +44,7 @@ struct C3DMeshFileVolumeChunk {
     CArray<CPlane> Planes;                               // +0x30
 };
 
-struct C3DMeshVolume {
+class C3DMeshVolume { public:
     CCharString                         Name;            // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;    // +0x04
     C3DMeshVolume(const C3DMeshFileVolumeChunk& chunk, CMovableResourceMemoryPool* pool);

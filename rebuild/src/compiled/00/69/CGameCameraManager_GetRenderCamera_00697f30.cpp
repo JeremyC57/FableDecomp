@@ -1,6 +1,6 @@
 #include "engine/CGameCameraManager.h"
 
-struct CCamera { char data[0x40]; };
+class CCamera { public: char data[0x40]; };
 struct CameraState { char data[4]; };
 struct CGameCameraManagerMethods : CGameCameraManager {
     virtual CCamera GetRenderCamera(float zoom) const;

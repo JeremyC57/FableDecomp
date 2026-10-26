@@ -22,7 +22,7 @@ struct CTextureOwner {
     virtual void ReleaseTexture();                          // slot 10 (+0x28)
 };
 
-struct CManagedTextureData : CResourceNode {
+class CManagedTextureData : public CResourceNode { public:
     unsigned char  _pad14[0x20 - 0x14];
     CLoadRequest*  m_pLoadRequest;                          // +0x20
     unsigned char  _pad24[0x30 - 0x24];

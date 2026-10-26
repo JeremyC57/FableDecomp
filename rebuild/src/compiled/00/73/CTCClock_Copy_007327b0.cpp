@@ -41,7 +41,7 @@ struct CDefPointer {                        // CDefPointer<CClockDef const>
     }
 };
 
-struct CTCClock {                           // vtable 0x01267044
+class CTCClock { public:                           // vtable 0x01267044
     void*         __vftable;                // +0x00
     unsigned char _pad04[8];                // +0x04 CTCBase
     CDefPointer   PDef;                     // +0x0c

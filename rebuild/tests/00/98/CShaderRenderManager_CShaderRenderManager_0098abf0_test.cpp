@@ -25,7 +25,7 @@ template <class T> struct CPODArray {                   // CArray<T> of a trivia
 template <class T> struct allocator { allocator() {} };
 template <class T> void FASTCALL _Destroy_range(T* first, T* last, const allocator<T>&) { g_ranged = (int)(last - first); LOG("range"); }
 
-template <class T> struct CArray {                      // CArray<T> of a non-trivial T, 12 bytes
+template <class T> class CArray { public:                      // CArray<T> of a non-trivial T, 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -40,7 +40,7 @@ template <class T> struct CArray {                      // CArray<T> of a non-tr
 };
 
 class CShaderResource;
-template <class T> struct CCountedPointer { T* Object; void* Info; };
+template <class T> class CCountedPointer { public: T* Object; void* Info; };
 
 class CVertexShaderConstantLayout {                     // 0x14C bytes in retail
 public:

@@ -1,9 +1,9 @@
 #ifndef _MSC_VER
 #define FABLE_ENGINE_CDATAOUTPUTSTREAM_H
-struct CDataOutputStream { void* __vftable; void* NewLine_PStringData; };
+class CDataOutputStream { public: void* __vftable; void* NewLine_PStringData; };
 #endif
 // C3DMeshFileEngineMaterialChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) -- retail @ 0x00AC52F0, 256 bytes; stream type, material values and optional map filenames, then inherit the subchunk writer. Retained CChunkedFileChunk -> CChunkedFileSuperChunk -> C3DMeshFileChunk hierarchy; its retail base is 0x2c bytes though the donor's 0x10-byte counted-vector layout grows it to 0x34. Calls stream writes at 0x00993EA0/0x00993EB0/0x00993E30/0x00995AE0 and SuperChunk::WriteToFile 0x00AA78C0.
-struct CCharString { void* m_pStringData; };
+class CCharString { public: void* m_pStringData; };
 #include "engine/CDataOutputStream.h"
 struct CDataOutputStreamMethods : CDataOutputStream {
     void WriteLong(long value); // 0x00993EA0: 4-byte stream write
@@ -11,21 +11,21 @@ struct CDataOutputStreamMethods : CDataOutputStream {
     void WriteNullTerminatedString(const CCharString& value); // 0x00995AE0
     void WriteEBOOL(bool value); // 0x00993E30
 };
-struct CChunkedFileSaver {};
-struct CChunkedFileLoader {};
-struct CDataInputStream;
+class CChunkedFileSaver { public:};
+class CChunkedFileLoader { public:};
+class CDataInputStream;
 #if defined(_MSC_VER)
 #define RETAIL_FASTCALL __fastcall
 #else
 #define RETAIL_FASTCALL
 #endif
 struct SCountBlock { long references; void (RETAIL_FASTCALL* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer { T* object; SCountBlock* count; };
-template<class T> struct CArray { T* begin; T* end; T* capacity; };
-struct CChunkedFileSuperChunk;
+template<class T> class CCountedPointer { public: T* object; SCountBlock* count; };
+template<class T> class CArray { public: T* begin; T* end; T* capacity; };
+class CChunkedFileSuperChunk;
 // The shared CChunkedFileChunk header contains an explicit vptr data member, not virtual methods.
 // This equivalent 0x10-byte virtual shell is required for WriteToFile slot8 and the qualified base call.
-struct CChunkedFileChunk {
+class CChunkedFileChunk { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06();
     virtual void ReadFromFile(CDataInputStream&, unsigned long, CChunkedFileLoader&);
@@ -34,7 +34,7 @@ struct CChunkedFileChunk {
     virtual CChunkedFileChunk* InitNewInstance(CChunkedFileChunk*);
     char ChunkType[5]; unsigned char _pad_09[3]; CChunkedFileSuperChunk* Parent;
 };
-struct CChunkedFileSuperChunk : CChunkedFileChunk {
+class CChunkedFileSuperChunk : public CChunkedFileChunk { public:
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;
     unsigned long CurrentChunkIndex;
@@ -46,7 +46,7 @@ struct CMapFilenames {
     long references; // +4
     CCharString Diffuse; CCharString Bump; CCharString Reflection; CCharString Illumination; // +8,+c,+10,+14
 };
-struct C3DMeshFileEngineMaterialChunk : C3DMeshFileChunk {
+class C3DMeshFileEngineMaterialChunk : public C3DMeshFileChunk { public:
     long MaterialIndex; CCharString Name; CMapFilenames* MapFilenames;
     unsigned long DiffuseMapBankIndex, BumpMapBankIndex, ReflectionMapBankIndex, IlluminationMapBankIndex;
     unsigned long MapFlags, SelfIllumination;

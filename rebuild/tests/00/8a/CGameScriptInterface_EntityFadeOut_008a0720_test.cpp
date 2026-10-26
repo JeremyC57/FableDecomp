@@ -35,17 +35,17 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
-struct CScriptThing {
+class CScriptThing { public:
     bool valid; CThing_Retail* thing;
     virtual CThing_Retail* GetThing() const { return thing; }
     virtual bool IsValid() const { return valid; }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length) : m_pData((void*)text) {}
     ~CCharString() {}
 };
-struct CTCParamsBase;
+class CTCParamsBase;
 static int g_fadeCalls = 0; static float g_fadeTime = -1.0f; static int g_fadeIn = -1; static void* g_fadeThis = 0;
 struct CTCFadeOutAndIn_Retail {
     void Fade(float time, bool fadeIn) { ++g_fadeCalls; g_fadeTime = time; g_fadeIn = fadeIn; g_fadeThis = this; }
@@ -55,7 +55,7 @@ static int g_addCalls = 0; static const char* g_addName = 0; static int g_addAct
 struct CThingWithAddTC_Retail : CThing_Retail {
     CTCBase_Retail* AddTC(const CCharString& name, bool activate, CTCParamsBase* params) { ++g_addCalls; g_addName = (const char*)name.m_pData; g_addActivate = activate; return g_addResult; }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() {}
     virtual void EntityFadeOut(const CScriptThing& thing, float time) const;
 };

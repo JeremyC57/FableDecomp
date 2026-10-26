@@ -11,7 +11,7 @@
 //   __adjust_heap(first, parent, len, _Tp(*(first + parent)), comp); if (parent == 0) return; parent--; }`; the
 //   by-value pair is built in the argument area by its memberwise copy constructor, the source pointer
 //   strength-reduced to `first + parent` (edi).
-struct CDefString {
+class CDefString { public:
     long TablePos;
 };
 
@@ -27,7 +27,7 @@ struct SMorphWeight {                           // std::pair<CSkeletalMorphs::CE
     SMorphWeight(const SMorphWeight& other) : first(other.first), second(other.second) { }
 };
 
-struct CIsSkeletalMorphLowerPriorityThan {
+class CIsSkeletalMorphLowerPriorityThan { public:
     char m_tag;
     bool operator()(const SMorphWeight& a, const SMorphWeight& b) const { return a.first.Priority < b.first.Priority; }
 };

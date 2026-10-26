@@ -12,7 +12,7 @@
 // Shape: the element is bound to a named reference first, so VC forms the element address (`add eax,edx`)
 // and addresses the bitfield byte as [eax+0x24]; the direct `(*TransVector)[index].DefaultValsApplied = applied`
 // folds +0x24 into a `lea` and loads the vector before the index (37 bytes v 38).
-struct CPersistContext;
+class CPersistContext;
 
 class CHeroSoulsWaveDef {                                  // 0x38 bytes; CDefClassBase-derived sub-component def
 public:
@@ -37,7 +37,7 @@ template <class T> struct vector {                 // STLport, 12 bytes in retai
     T& operator[](long index) { return _M_start[index]; }
 };
 
-struct CPersistContext_TransferableVectorOfSubComponentsGenericType {
+class CPersistContext_TransferableVectorOfSubComponentsGenericType { public:
     virtual long Size() = 0;
     virtual void Resize(long count) = 0;
     virtual bool AreDefaultValsApplied(long index) = 0;

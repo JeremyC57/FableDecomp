@@ -1,16 +1,16 @@
 #include <cstdio>
 // Behaviour test for CTCTavernTankard::ReplaceTankard (0x00947C30).
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up, Forward; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up, Forward; };
+class CTCPhysicsBase { public:
     int calls; int order[3]; const C3DVector* pos; const CRightHandedSet* rh; int active;
     virtual void ResetPosition(const C3DVector& p) { order[calls++] = 1; pos = &p; }
     virtual void SetOrientation(const CRightHandedSet& r) { order[calls++] = 2; rh = &r; }
     virtual void SetPhysicsActive(bool a) { order[calls++] = 3; active = a ? 1 : 0; }
     virtual ~CTCPhysicsBase() {}
 };
-struct CThing { CTCPhysicsBase* m_pPhysics; };
-struct CTCTavernTankard {
+class CThing { public: CTCPhysicsBase* m_pPhysics; };
+class CTCTavernTankard { public:
     CThing* m_pParentThing;
     CRightHandedSet RHSet;
     C3DVector Pos;

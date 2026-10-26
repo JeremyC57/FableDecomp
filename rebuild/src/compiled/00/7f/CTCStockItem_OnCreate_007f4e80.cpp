@@ -10,12 +10,12 @@
 // by hand WITHOUT a null test (`dec [ecx+4] ; jne`), so retail trusts GetSubDef to fill it.
 #include "engine/CTCStockItem.h"
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
 
-struct CStockItemDef {
+class CStockItemDef { public:
     virtual void v00();
     virtual void DestroySelf();                             // slot 1 (+4)
     long          RefCount;                                 // +0x04
@@ -24,7 +24,7 @@ struct CStockItemDef {
     bool          DefaultIsStealable;                       // +0x2c
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CStockItemDef>* out);        // 0x0059350C
 };
 void* FindDef_CDefClassBase_GetSubDef_1();   // stand-in callee of the stand-in body below
@@ -41,7 +41,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CStockItemDef>* o
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                                    // +0x70
 };

@@ -1,7 +1,7 @@
 // Behaviour test for NUISystem::CRedefinerList::OnActivate @ 0x005570F0: first activation refreshes and hides the component.
 #include <cstdio>
 
-struct C2DVector { float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
+class C2DVector { public: float X, Y; C2DVector() {} C2DVector(float x, float y) : X(x), Y(y) {} C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {} };
 struct CComponent { C2DVector m_pos; virtual C2DVector GetPosition() const { return m_pos; } virtual ~CComponent() {} };
 struct CListRoot { virtual ~CListRoot() {} };
 struct CGuiControl { virtual ~CGuiControl() {} };

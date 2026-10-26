@@ -1,14 +1,14 @@
 // Behaviour test for CTCHeroRangedAttacks::AttemptToFireRangedWeapon (0x0078A5D0): when able, a live projectile
 // weapon in hand queues the shot and fires it immediately if loaded.
 #include <cstdio>
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
     const SEntry* LowerBound(const long* type) const { const SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -38,14 +38,14 @@ struct CThing {
     }
 };
 inline bool IS_THING_ALIVE(const CThing* thing) { if (thing != 0) { if (!(thing->m_flags91 & 1)) return true; } return false; }
-struct CTCCarrying { CThing* InHand; CThing* GetThingInPrimarySlot() { return InHand; } };
-struct CTCWeapon {
+class CTCCarrying { public: CThing* InHand; CThing* GetThingInPrimarySlot() { return InHand; } };
+class CTCWeapon { public:
     bool Projectile, Loaded;
     bool IsProjectileWeapon() { return Projectile; }
     bool IsProjectileWeaponLoaded() { return Loaded; }
 };
 static int g_fires = 0;
-struct CTCHeroRangedAttacks {
+class CTCHeroRangedAttacks { public:
     CThing* ParentThing; bool FireQueued; bool Able;
     bool IsAbleToUseRangedWeapon() { return Able; }
     void FireRangedWeapon() { ++g_fires; }

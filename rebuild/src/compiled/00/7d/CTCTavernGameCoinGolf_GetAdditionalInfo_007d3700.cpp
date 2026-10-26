@@ -14,11 +14,11 @@
 // Shape: as the ShoveHaPenny override 0x007CFF40: VC evaluates the `+` chain right to left; the dereferenced sub-def's
 //        release has no null test; the tavern def's dtor clears the field (`mov edx,edi ; test edx,edx`).
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
     CWideString ToWideString() const;           // 0x0099E480
@@ -49,11 +49,11 @@ struct CDefBase : CDefVirtual, CRefCounted {
             Destroy();
     }
 };
-struct CTavernGameDef : CDefBase {
+class CTavernGameDef : public CDefBase { public:
     unsigned char _pad_0x08[0xb8];
     unsigned long AdditionalInfo;               // +0xc0
 };
-struct CTavernGameCoinGolfDef : CDefBase {
+class CTavernGameCoinGolfDef : public CDefBase { public:
     unsigned char _pad_0x08[0x48];
     long          Courses;                      // +0x50
 };
@@ -76,7 +76,7 @@ struct CCoinGolfDefPointer {                // CDefPointer<const CTavernGameCoin
     CTavernGameCoinGolfDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CCoinGolfDefPointer* out);   // 0x007D4BD0
 };
 CTavernGameCoinGolfDef* FindRef_CDefClassBase_GetSubDef_0(CDefClassBase* defClass);   // stand-in callee of the stand-in body below
@@ -94,12 +94,12 @@ bool CDefClassBase::GetSubDef(CCoinGolfDefPointer* out)
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* DefClass;                    // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       Owner;                        // +0x04
     void GetTavernGameDef(CDefPointer* out);    // 0x005EA000
@@ -108,7 +108,7 @@ struct CTCTavernGame {
     long          CurrentCourse;                // +0x17c
 };
 
-struct CTCTavernGameCoinGolf : CTCTavernGame {
+class CTCTavernGameCoinGolf : public CTCTavernGame { public:
     CWideString GetAdditionalInfo();
 };
 

@@ -91,14 +91,14 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 }
 
-struct C3DVertexBlend2 { long Vertex; float Weight; };   // 8 bytes
+class C3DVertexBlend2 { public: long Vertex; float Weight; };   // 8 bytes
 
 template <class T> class CArray : public std::vector<T> {   // retail CArray<T>: an STLport vector (12 bytes)
 public:
     CArray(const CArray& other);                         // 0x00AE5D80 for CArray<C3DVertexBlend2>
 };
 
-struct C3DGroup2 {                                       // 16 bytes in retail
+class C3DGroup2 { public:                                       // 16 bytes in retail
     long                     BoneIndex;                  // +0x0
     CArray<C3DVertexBlend2>  VertexBlends;               // +0x4
 };

@@ -18,20 +18,20 @@
 //          two charge reasons are SEPARATE `if`s each ending in `PTarget = enemy; return true;` (VC merges the tails) --
 //          one `||` condition or a bool flag rotates eax/edx in the combat-manager block; the target assignment is the
 //          implicit CThing* -> CIntelligentPointer conversion (the temporary re-addressed with `lea` for operator=).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct C3DVector { float x, y, z; };
-struct C2DVector {
+class C3DVector { public: float x, y, z; };
+class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
     float GetLengthSquared() const { return x * x + y * y; }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -71,18 +71,18 @@ inline bool IS_THING_ALIVE(const CThing* thing)
         return true;
     return false;
 }
-struct CCombatManager;
-struct CThingCreatureBase : CThing {
+class CCombatManager;
+class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
 };
-struct CCombatManager {
+class CCombatManager { public:
     bool IsCreatureFightingThing(const CThingCreatureBase& creature, const CThing* thing) const;   // 0x006E9310
     bool CheckSummonerChargeable(CThing* summoner);   // 0x006EA050
 };
-struct CTCCarrying {                            // interface 0x46
+class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
-struct CTCStealth {                             // interface 0x36
+class CTCStealth { public:                             // interface 0x36
     unsigned char _pad[0x30];
     long RunningAwayFromCombatTimer;            // +0x30
 };
@@ -103,19 +103,19 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* thing);    // 0x004A96F0
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
 };
-struct CSummonerDef {
+class CSummonerDef { public:
     unsigned char _pad[0x3c];
     float ChargeRangeNear;                      // +0x3c
     float ChargeRangeFar;                       // +0x40
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

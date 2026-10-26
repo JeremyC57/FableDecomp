@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "rebuild_abi.h"
 
-struct CSpecialAbilitiesBattleChargeDef { int x; };
+class CSpecialAbilitiesBattleChargeDef { public: int x; };
 
 // Stand-in impl so the test links & runs deterministically.
 extern "C" { static int g_called = 0; }

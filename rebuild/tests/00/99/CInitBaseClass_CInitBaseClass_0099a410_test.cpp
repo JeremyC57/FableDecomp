@@ -2,8 +2,8 @@
 
 int g_initCount = 5;
 
-struct CInitBaseClass
-{
+class CInitBaseClass
+{ public:
     void* m_vtable;
     char  m_registered;
     void dtor_CInitBaseClass();

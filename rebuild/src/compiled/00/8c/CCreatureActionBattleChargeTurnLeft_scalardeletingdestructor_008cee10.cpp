@@ -1,4 +1,4 @@
-struct CCreatureAction_BattleChargeTurnLeft {
+class CCreatureAction_BattleChargeTurnLeft { public:
     void* vftable;
 };
 

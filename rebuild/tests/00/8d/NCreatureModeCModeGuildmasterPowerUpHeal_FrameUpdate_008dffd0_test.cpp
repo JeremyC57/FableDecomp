@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for NCreatureMode::CModeGuildmasterPowerUpHeal::FrameUpdate (retail 0x008DFFD0): the heal timer counts
 // down; when it is spent, or the boss (interface 0xad) has no living helpers left, the heal-followers-release action starts.
-struct CTCBase { int tag; };
+class CTCBase { public: int tag; };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,16 +54,16 @@ struct CThingLookup {
         return false;
     }
 };
-struct CThing : CThingLookup { };
-struct CCreatureActionBase { int Kind; };
-struct CThingCreatureBase : CThing {
+class CThing : public CThingLookup { public: };
+class CCreatureActionBase { public: int Kind; };
+class CThingCreatureBase : public CThing { public:
     int actions;
     void SetCurrentAction(const CCreatureActionBase& action) { actions += action.Kind; }
 };
-struct CCombatAction_Guildmaster_HealFollowersRelease : CCreatureActionBase {
+class CCombatAction_Guildmaster_HealFollowersRelease : public CCreatureActionBase { public:
     CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase* owner) { Kind = 1; (void)owner; }
 };
-struct CTCBoss : CTCBase {
+class CTCBoss : public CTCBase { public:
     long Helpers;
     long CountLivingHelperCreatures() const { return Helpers; }
 };

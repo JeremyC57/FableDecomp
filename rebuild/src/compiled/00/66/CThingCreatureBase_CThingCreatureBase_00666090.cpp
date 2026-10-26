@@ -34,12 +34,12 @@ struct CCreaturePointer : CBaseIntelligentPointer {         // CIntelligentPoint
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CThingPhysical {
+class CThingPhysical { public:
     virtual void v00();
     unsigned char _pad04[0xbc];
     CThingPhysical(long type);                  // 0x005296B0
 };
-struct CThingGameObject : CThingPhysical {      // vtable 0x01244F7C
+class CThingGameObject : public CThingPhysical { public:      // vtable 0x01244F7C
     CThingPointer PThingStandingOn;             // +0xc0
     unsigned char m_gameObjectFlags;            // +0xc8 (bitfield group, not initialised here)
     unsigned char _padc9[7];
@@ -47,7 +47,7 @@ struct CThingGameObject : CThingPhysical {      // vtable 0x01244F7C
     CThingGameObject(long type) : CThingPhysical(type) { }
 };
 
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 template <class P> struct CAllocProxy {      // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor
     P _M_data;
     CAllocProxy(P v) : _M_data(v) { }
@@ -58,17 +58,17 @@ struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle
     CAllocProxy<CEnginePrimitiveHandle*> _M_end_of_storage;
     CPrimitiveHandleVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CCreatureDefPointer {                    // CDefPointer<CThingCreatureDef const>
     CDefPointeeBase* Object;
     CCreatureDefPointer() : Object(0) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct CCPPointerInfo;
-struct CCreatureActionBase;
+class CCPPointerInfo;
+class CCreatureActionBase;
 struct CActionPointer {                         // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* Data;
     CCPPointerInfo*      Info;
@@ -85,21 +85,21 @@ struct CActionList {                            // list<CCountedPointer<CCreatur
         _M_node = node;
     }
 };
-struct CCreatureInteraction;
+class CCreatureInteraction;
 struct CInteractionPointer {                    // CCountedPointer<CCreatureInteraction>
     CCreatureInteraction* Data;
     CCPPointerInfo*       Info;
     CInteractionPointer() : Data(0), Info(0) { }
 };
-struct CTCCreatureModeManager;
-struct CThingBodyReorienter;
+class CTCCreatureModeManager;
+class CThingBodyReorienter;
 struct CReorienterPointer {                     // scoped_ptr<CThingBodyReorienter>
     CThingBodyReorienter* ptr;
     explicit CReorienterPointer(CThingBodyReorienter* p = 0) : ptr(p) { }
 };
 enum ECombatAnimationHandedness { HANDEDNESS_0, HANDEDNESS_1, HANDEDNESS_2 };
 
-struct CThingCreatureBase : CThingGameObject {  // vtable 0x0125AC0C
+class CThingCreatureBase : public CThingGameObject { public:  // vtable 0x0125AC0C
     unsigned long          LastMessageEventICreatedID;    // +0xd0
     CPrimitiveHandleVector CombatCollisionDebugGraphics;  // +0xd4
     CCreatureDefPointer    PDef;                          // +0xe0

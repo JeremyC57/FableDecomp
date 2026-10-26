@@ -11,7 +11,7 @@
 #endif
 #include <stddef.h>
 
-struct CWideString {
+class CWideString { public:
     void* m_data;
     CWideString();                              // 0x0099AED0
     CWideString(const CWideString& other);      // 0x0099B720
@@ -31,7 +31,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual {
+class CTavernGameDef : public CDefVirtual { public:
     long m_count;                               // +0x04
     unsigned char _pad_0x08[0xec];
     unsigned long TotalWinnings;                // +0xf4
@@ -43,10 +43,10 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CTavernGameDef* PeekDefFromGlobalIndex(long index);   // stand-in only
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
     unsigned char       _pad_0x04[0x18];
     CDefinitionManager* m_pManager;             // +0x1c
@@ -71,12 +71,12 @@ bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer& out)
     }
     return true;
 }
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00();
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x34];

@@ -13,11 +13,11 @@ struct CThingGraphic {
     unsigned char _pad[0x5a];
     unsigned char m_alpha;                         // +0x5a
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad[0x64];
     CThingGraphic* m_pGraphic;                     // +0x64
 };
-struct CTCFadeOutAndIn : CTCBase {
+class CTCFadeOutAndIn : public CTCBase { public:
     bool  FadingOut;                               // +0x0c
     bool  FadingIn;                                // +0x0d
     float Alpha;                                   // +0x10

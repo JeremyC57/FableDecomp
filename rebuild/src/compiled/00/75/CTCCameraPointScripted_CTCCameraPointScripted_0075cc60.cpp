@@ -9,15 +9,15 @@
 // EndPosSet +0x80..+0x82. Only StartPos is explicitly built from (0,0,0) -- the other three vectors are left untouched, which
 // is why the zero stores skip +0x4c..+0x6c. One `xor eax,eax` feeds every dword and byte store, all after the vtable store.
 // Local model: no engine header exists for CTCCameraPointScripted / CTCCameraPointDefinitionBase.
-struct CThing;
+class CThing;
 
-struct CTCCameraPointDefinitionBase {                       // vtable 0x01269B04
+class CTCCameraPointDefinitionBase { public:                       // vtable 0x01269B04
     virtual void v00();
     unsigned char _base[0x3c];                              // +0x04 .. +0x40 (CTCBase + camera-point definition members)
     CTCCameraPointDefinitionBase(CThing* thing);            // 0x0075C180
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -25,7 +25,7 @@ struct C3DVector {
 
 enum EEditorPointAcquisionType { EDITOR_POINT_ACQUISITION_0 };
 
-struct CTCCameraPointScripted : CTCCameraPointDefinitionBase {   // vtable 0x01269C84
+class CTCCameraPointScripted : public CTCCameraPointDefinitionBase { public:   // vtable 0x01269C84
     C3DVector StartPos;                                     // +0x40
     C3DVector EndPos;                                       // +0x4c
     C3DVector LookPos;                                      // +0x58

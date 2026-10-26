@@ -38,12 +38,12 @@ struct CComponentRoot_Retail {              // primary base: vptr only (ChangeSt
     virtual void v000();
 };
 
-struct CChangingStateComponent : CComponentRoot_Retail, CInputHandler_Retail, CComponentBase3_Retail {
+class CChangingStateComponent : public CComponentRoot_Retail, public CInputHandler_Retail, public CComponentBase3_Retail { public:
     unsigned char _body[0x15c - 0x1c];      // +0x1c..+0x15c
     void ChangeState(unsigned long state);  // 0x0052CF40 (virtual slot 48 in retail)
 };
 
-struct CZoomingComponent : CChangingStateComponent {   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
+class CZoomingComponent : public CChangingStateComponent { public:   // vtables 0x01247DC4 / 0x01247DA0 / 0x01247D98
     void ChangeState(unsigned long state);
 };
 

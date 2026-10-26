@@ -62,7 +62,7 @@ struct CAnimationStateBlock {
     CRetailStringSet ExcludedBones;                // +0x00
 };
 
-struct CBankStateBlock {                           // vtable 0x0129C82C
+class CBankStateBlock { public:                           // vtable 0x0129C82C
     virtual void v00();
     ~CBankStateBlock() { }
 };

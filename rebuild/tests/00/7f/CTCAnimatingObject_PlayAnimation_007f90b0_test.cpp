@@ -25,15 +25,15 @@ static int fails = 0;
 // local (the second filter dies before the index call, keeping its base-vtable dtor store).
 extern "C" void __cdecl free(void* p);                         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long AnimIndex;                             // +0x00
 };
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -42,7 +42,7 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual bool Accept(const CAnimationEntry* entry) const;    // 0x0041CD13
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                                // 0x005DC2E0
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
@@ -52,7 +52,7 @@ struct CBlendPair {
     float m_second;
     CBlendPair() : m_first(0.0f), m_second(0.0f) { }
 };
-struct CAnimInit {                              // 0x2c bytes
+class CAnimInit { public:                              // 0x2c bytes
     long          Mode;                         // +0x00
     unsigned char AnimType;                     // +0x04
     bool          Flag05;                       // +0x05
@@ -89,13 +89,13 @@ template <class T> struct CRetailList {         // STLport list: the head node p
     }
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
     ~CDefPointer()
@@ -106,14 +106,14 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CAnimatingObjectDef : CDefPointeeBase {
+class CAnimatingObjectDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     CAnimationSet Animation;                    // +0x28
 };
-struct CThingBaseDef {
+class CThingBaseDef { public:
     bool GetSubDef_007f9330(CDefPointer<CAnimatingObjectDef>* out) const;   // 0x007F9330
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     const CThingBaseDef* PBaseDef;              // +0x70
 };

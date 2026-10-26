@@ -2,8 +2,8 @@
 // Standard MSVC vector deleting destructor for a class with a scalar
 // (non-virtual) destructor at 0xa0d3d0 and operator delete at 0xbfe9bc.
 
-struct CInputProcessClickPastText
-{
+class CInputProcessClickPastText
+{ public:
     // scalar destructor - emitted as a direct call in the vector-deleting stub
     void Destroy();  // maps to 0xa0d3d0
 };

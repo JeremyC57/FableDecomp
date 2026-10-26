@@ -14,9 +14,9 @@
 // the two zero stores after the call). Model of the landed 0x006FBD60 / 0x006FB5C0 sources.
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
 
-namespace NAnimationEvents { struct CEvent { long m_a, m_b; }; }
+namespace NAnimationEvents { class CEvent { public: long m_a, m_b; }; }
 
-template<class T, int N> struct CSmallVector {
+template<class T, int N> class CSmallVector { public:
     T* Start;                                   // +0x00
     int Size;                                   // +0x04
     void Copy(const CSmallVector& other);       // 0x006FB5C0

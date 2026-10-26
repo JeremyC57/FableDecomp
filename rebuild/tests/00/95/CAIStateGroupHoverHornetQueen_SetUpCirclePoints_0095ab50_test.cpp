@@ -25,30 +25,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 #define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
-struct C2DBoxI {
+class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CThingFilter_HasTrackName {
+class CThingFilter_HasTrackName { public:
     CCharString Name;
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;   // 0x007FD110
     CThing* FindFirstInArea(const C2DBoxI& area, const void* filter) const;   // stand-in placeholder (not a retail symbol)
 };
@@ -96,11 +96,11 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

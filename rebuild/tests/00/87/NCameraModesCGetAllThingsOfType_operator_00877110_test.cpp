@@ -4,7 +4,7 @@
 #include <new>
 // Model of NCameraModes::CGetAllThingsOfType::operator()(const CThing*) @ 0x00877110: append the thing to the functor's
 // list (STLport push_back: malloc'd 12-byte node linked before the sentinel) when its def name equals DefName.
-struct CDefString {
+class CDefString { public:
     const char* Text;
     bool operator==(const char* text) const { return std::strcmp(Text, text) == 0; }   // 0x005B3440
 };

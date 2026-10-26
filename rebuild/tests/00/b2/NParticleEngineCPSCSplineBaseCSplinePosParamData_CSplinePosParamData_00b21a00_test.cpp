@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 00b21a00: the constructor stores the spline, starts with an empty parameter array and resizes it
 // to one zero entry per control point (12-byte control points).
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static unsigned long g_resizeCount = 0; static unsigned long g_resizeValue = 99; static int g_resizeCalls = 0;
 static unsigned long g_storage[16];
-template<class T> struct CArray {
+template<class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) {}
     long Size() const { return (long)(m_end - m_begin); }
@@ -17,7 +17,7 @@ template<> void CArray<unsigned long>::resize(unsigned long newSize, const unsig
     for (unsigned long i = 0; i < newSize; ++i) m_begin[i] = value;
     m_end = m_begin + newSize;
 }
-struct CCardinalSpline {
+class CCardinalSpline { public:
     CArray<C3DVector> ControlPoints;
     float Tension;
     bool EndPointsConnected;

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00429E16, 19 bytes. Catalog name: CMapStringToString::CPair::~CPair.
 // Body: destroy the member at +0x4 (CCountedPointer_004291de::~CCountedPointer_004291de @ 0x004291DE), then tail-call
 // the +0x0 member CCharString::~CCharString @ 0x0099EAE0. __thiscall, this = ecx.
-struct CCharString {                        // one word: CCharStringData*
+class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)
 };

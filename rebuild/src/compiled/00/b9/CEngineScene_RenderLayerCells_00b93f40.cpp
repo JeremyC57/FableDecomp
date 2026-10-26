@@ -16,12 +16,12 @@ class CEngineCamera;
 class CEngineSceneRenderStats;
 class CEngineInternalPrimitiveBase;
 
-struct CEngineSceneGrid {
+class CEngineSceneGrid { public:
     void RenderCellClipped(unsigned long x, unsigned long y, long layer, const CEngineCamera& camera, bool clipped,
                            CEngineSceneRenderStats& stats);   // 0x00B92500
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
-struct CEngineSceneMap {
+class CEngineSceneMap { public:
     unsigned char  _pad[0x18];
     CGridPointer*  GridLevelsFirst;               // +0x18 (GridLevels.first)
 };
@@ -52,7 +52,7 @@ CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
 }
 #pragma auto_inline(on)
 
-struct CEngineScene {
+class CEngineScene { public:
     unsigned long                 Base;           // +0x00
     COuterNode*                   MapListHead;    // +0x04
     unsigned long                 MapListCount;   // +0x08

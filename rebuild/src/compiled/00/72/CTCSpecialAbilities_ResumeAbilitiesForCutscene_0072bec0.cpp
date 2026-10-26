@@ -28,11 +28,11 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-struct CTCPhysicalShieldSpell { void ResumeForCutscene(); };        // 0x0079E520 (interface 0x93)
-struct CTCSummonSpell { void ResumeForCutscene(); };    // 0x0079A6A0 (interface 0x91)
-struct CTCGhostSword { void ResumeForCutscene(); };        // 0x007C54F0 (interface 0x9A)
-struct CTCMultiArrow { void ResumeForCutscene(); };        // 0x007CC230 (interface 0x88)
-struct CTCSpecialAbilities {
+class CTCPhysicalShieldSpell { public: void ResumeForCutscene(); };        // 0x0079E520 (interface 0x93)
+class CTCSummonSpell { public: void ResumeForCutscene(); };    // 0x0079A6A0 (interface 0x91)
+class CTCGhostSword { public: void ResumeForCutscene(); };        // 0x007C54F0 (interface 0x9A)
+class CTCMultiArrow { public: void ResumeForCutscene(); };        // 0x007CC230 (interface 0x88)
+class CTCSpecialAbilities { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     void ResumeAbilitiesForCutscene();

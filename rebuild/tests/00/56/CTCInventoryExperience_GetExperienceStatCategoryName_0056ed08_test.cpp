@@ -1,7 +1,7 @@
 // Behaviour test for 0x0056ED08 CTCInventoryExperience::GetExperienceStatCategoryName
 #include <cstdio>
 #include <cstring>
-struct CWideString {
+class CWideString { public:
     char buf[64];
     CWideString(const char* t) { std::strcpy(buf, t); }
 };

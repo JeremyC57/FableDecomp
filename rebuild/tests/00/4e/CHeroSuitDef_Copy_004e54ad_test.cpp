@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct SubDef { int v; };
-struct CHeroSuitDef {
+class CHeroSuitDef { public:
     char basepad[0x28];
     SubDef sub;
 };

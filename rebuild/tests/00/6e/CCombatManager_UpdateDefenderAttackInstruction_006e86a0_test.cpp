@@ -10,9 +10,9 @@ struct CCombatWheel {
     CCombatRing* GetRing(long i) { if (i >= 0 && (unsigned long)i < (unsigned long)(last - first)) return &first[i]; return 0; }
 };
 struct CPattern { long* first; long* last; unsigned long size() const { return (unsigned long)(last - first); } long& operator[](unsigned long n) const { return *(first + n); } };
-struct CAttackPatternDef { CPattern AttackPattern; };
+class CAttackPatternDef { public: CPattern AttackPattern; };
 struct CCombatantInfo { CCombatWheel CombatWheel; CAttackPatternDef* PAttackPattern; long AttackPatternIndex; long FrameForNextInstruction; };
-struct CCombatManager {
+class CCombatManager { public:
     float AttackPatternIdleStandardInterval; int increments;
     void IncrementDefenderAttackPattern(CCombatantInfo& info)
     {

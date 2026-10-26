@@ -1,4 +1,4 @@
-struct CFontManager {
+class CFontManager { public:
     void* vftable;
 };
 

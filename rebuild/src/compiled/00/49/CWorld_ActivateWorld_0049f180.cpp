@@ -21,43 +21,43 @@
 #define CWorld CWorld_PDB
 #include "engine/CWorld.h"
 #undef CWorld
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-template<class T> struct CArray { T* First; T* Last; T* End; long Pad; };
+template<class T> class CArray { public: T* First; T* Last; T* End; long Pad; };
 void __fastcall LoadingStage(const CCharString& stage, long level);     // 0x009D8240 (empty in retail)
 void __fastcall LoadingStageDone(long level);                           // 0x009D8250 (empty in retail)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                              // +0x91 bit 0
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroCreature();                           // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                            // 0x00449970
     void InitPlayerCharacter(bool loadedGame);           // 0x00449D90
     long GetMainPlayerID();                              // 0x00449700
 };
-struct CEnvironmentSpellEffectInterpolator {
+class CEnvironmentSpellEffectInterpolator { public:
     void RefreshScreenEffects();                         // 0x006B8410
 };
-struct CEnvironment {
+class CEnvironment { public:
     unsigned char _pad00[0x1964];
     CEnvironmentSpellEffectInterpolator* SpellEffectInterpolator;   // +0x1964 (retail)
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void InitialActivate();                              // 0x0043A380
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
-struct CQuestManager {
+class CQuestManager { public:
     bool ActivateMultipleQuests(CArray<CCharString>* quests, bool fromSave, bool showMessages);   // 0x004B4260
     void PostBoastTransfer();                            // 0x004B2890
 };
 extern CQuestManager* g_pQuestManager;                   // 0x013B89FC
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                                  // +0x00
     signed char   Player;                                // +0x04
     unsigned char Data[32];                              // +0x05
@@ -68,13 +68,13 @@ struct CGameEvent {
     void AddData(long size, const void* data);           // 0x009F1760
     template<class T> void Add(const T& value) { AddData(sizeof(T), &value); }
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     void AddGameEvent(const CGameEvent& event);          // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 extern long g_WorldFrame;                                // 0x013B89BC
 enum { GAME_EVENT_WORLD_ACTIVATED = 9 };
-struct CWorld : CWorld_PDB {
+class CWorld : public CWorld_PDB { public:
     void ActivateWorld(bool loadedGame);
 };
 void CWorld::ActivateWorld(bool loadedGame)

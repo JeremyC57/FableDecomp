@@ -10,16 +10,16 @@
 // calls the compiler tail-merges into `push 1 / push 0` (a ternary argument gives `mov eax,1 / xor eax,eax`; it also swaps
 // esi/edi); the facing comes through an inline creature forwarder (`mov ecx,[eax+60h] ; mov eax,[ecx]`; a direct
 // `m_pBody->GetFacing()` loads the body into eax and the vptr into edx).
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
@@ -43,7 +43,7 @@ struct CPhysicsBody {                           // the creature's physics body a
 
 enum ECombatAnimationHandedness { COMBAT_ANIM_LEFT_HANDED = 0, COMBAT_ANIM_RIGHT_HANDED = 1 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pBody;                      // +0x60
     const C3DVector& GetPosition_004c73d0() const;       // 0x004C73D0 (CThing)
@@ -57,7 +57,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00();
     long _pad04;
     CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
@@ -68,7 +68,7 @@ struct CCombatActionBase {
     void SetAnimationName(const CCharString& name);   // 0x008574D0
 };
 
-struct CCreatureAction_BodgeSideStrike : CCombatActionBase {
+class CCreatureAction_BodgeSideStrike : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

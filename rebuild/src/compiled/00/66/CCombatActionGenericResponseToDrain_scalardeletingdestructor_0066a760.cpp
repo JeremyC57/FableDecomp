@@ -1,4 +1,4 @@
-struct CCombatAction_GenericResponseToDrain {
+class CCombatAction_GenericResponseToDrain { public:
     void* vftable;
 };
 

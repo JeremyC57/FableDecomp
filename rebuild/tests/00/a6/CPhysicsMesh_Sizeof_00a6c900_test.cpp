@@ -1,24 +1,24 @@
 #include <stdio.h>
 // Behaviour test for CPhysicsMesh::Sizeof (0x00A6C900): 252 fixed bytes plus the sized/reserved containers plus the
 // root segment's own Sizeof when there is one.
-struct C3DTriangle2 { short Index[3]; };
-struct C3DVector { float X, Y, Z; };
+class C3DTriangle2 { public: short Index[3]; };
+class C3DVector { public: float X, Y, Z; };
 struct CArrayOfLines { void* a; void* b; void* c; };
 struct CHelperPointPair { unsigned char _d[20]; };
 struct CDummyObjectPair { unsigned char _d[56]; };
 struct CMeshVolumePair { unsigned char _d[16]; };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
     long capacity() const { return _M_end_of_storage - _M_start; }
     void Set(long used, long reserved) { _M_start = (T*)0x1000; _M_finish = _M_start + used; _M_end_of_storage = _M_start + reserved; }
 };
-template <class T> struct CVectorMap { CArray<T> Data; long Compare; };
-struct CIPhysicsFacesSegmentBase {
+template <class T> class CVectorMap { public: CArray<T> Data; long Compare; };
+class CIPhysicsFacesSegmentBase { public:
     virtual void v00() {}
     virtual long Sizeof() const { return 1000; }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     T* operator->() const { return Data; }
     bool IsValid() const { return Data != 0; }

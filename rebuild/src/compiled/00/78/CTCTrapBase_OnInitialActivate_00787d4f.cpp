@@ -9,7 +9,7 @@
 // owner (+0x04) is re-read for each use. `or byte ptr [eax+59h],2` is a flag bit set on the +0x64 component.
 // Layout: CTCTrapBase.h is the PDB layout (PTrapDef_Object +0x60, TrapType +0x68); the retail constructor 0x0078918D
 // puts them at +0x54 / +0x5C (12-byte STLport vectors), so a local model is used.
-struct CTrapDef {
+class CTrapDef { public:
     unsigned char _pad[0x38];
     long          TrapType;                 // +0x38
     unsigned char _pad3c[0x10];
@@ -20,7 +20,7 @@ struct CDefPointerTrapDef {
     CTrapDef* Object;
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointerTrapDef* out);   // 0x00788E53
 };
 
@@ -56,7 +56,7 @@ struct CComponentFlags {
     unsigned char Flag1 : 1;                // +0x59 bit 1 (set here)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char    _pad[0x60];
     COwnerObject60*  m_p60;                 // +0x60
     CComponentFlags* m_p64;                 // +0x64
@@ -64,7 +64,7 @@ struct CThing {
     CDefClassBase*   Def;                   // +0x70
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

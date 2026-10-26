@@ -12,7 +12,7 @@
 // (whole-word bit test `mov ecx,[eax+20h] ; test ch,1`); the target passes the inline IsThingAlive.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -21,7 +21,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
     SEntry* LowerBound(const long* type) const;                   // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                             // +0x44
@@ -59,7 +59,7 @@ struct CTCTargeting {                                       // the interface-8 c
     virtual CThing* GetTarget();                            // slot 33 (+0x84)
 };
 
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x2c - 0x08];

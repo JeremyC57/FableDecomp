@@ -6,15 +6,15 @@
 #define CThingCreatureBase CThingCreatureBase_PDB
 #include "engine/CThingCreatureBase.h"
 #undef CThingCreatureBase
-struct CCombatActionBase;
+class CCombatActionBase;
 struct CreatureUID { unsigned long Low,High; };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _beforeUID[0x18];CreatureUID UID;unsigned char _beforeCurrentAction[0xe0];
     CCreatureActionBase* PCurrentAction_Data;
     bool IsCombatant() const; // 0x00662410: delegates via world combat manager to0x006E92C0
     bool IsPerformingAnyAction() const; //0x006622A0
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual ~CCombatSequenceBase();
     virtual void OnCreate();
     virtual CCharString GetName() const;
@@ -27,7 +27,7 @@ struct CCombatSequenceBase {
     CCombatActionBase* GetNextActionInSequence(); //0x008B0780
 };
 struct SequencePointer { CCombatSequenceBase* Data; void* Info; };
-struct CAttackingCombatantInfo {
+class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;long AttackerNumber,CombatWheelRingIndex;
     bool PreferredAttackDollySet;long PreferredAttackDollyTimer;float PreferredAttackDollyVector[2];bool UsingCombatWheel;
     long CurrentSequence;SequencePointer* Begin;SequencePointer* End;SequencePointer* Capacity;
@@ -35,7 +35,7 @@ struct CAttackingCombatantInfo {
 struct CCombatantInfo { CThingCreatureBase* Parent;CAttackingCombatantInfo AttackerInfo; };
 struct CombatNode { unsigned long Colour;CombatNode* Parent;CombatNode* Left;CombatNode* Right;CreatureUID Key;CCombatantInfo Value; };
 struct CombatMap { CombatNode* Header;unsigned long Count;unsigned long Compare;CombatNode* FindLE(const CreatureUID& key); }; //0x006F0250
-struct CCombatManager {
+class CCombatManager { public:
     void* VTable;unsigned char RegisteredCombatSequences[12];CombatMap Combatants;
     void PerformSequenceReset(CThingCreatureBase&); //0x006EA2C0
     void SetupNextSequenceForAttacker(CCombatantInfo&); //0x006EB390

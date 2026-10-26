@@ -5,7 +5,7 @@
 // EndState_Object +0xc, Progress +0x10. The root constructor sets the count to 1 before the
 // derived vtable store (its own vtable store is dead and dropped); the two counted pointers are
 // copy-constructed (store + addref) and the float is copied as a dword. ret 0xc.
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);       // slot 0
     virtual void Delete();                 // slot 1
     unsigned long IVRefCount;              // +4
@@ -21,11 +21,11 @@ struct CIVCountedPointer {
     }
 };
 
-struct C3DAnimationStateBase : CIVCountedPointeeBase {
+class C3DAnimationStateBase : public CIVCountedPointeeBase { public:
     C3DAnimationStateBase() { }
 };
 
-struct C3DAnimationTransitionState : C3DAnimationStateBase {   // vtable 0x01265144
+class C3DAnimationTransitionState : public C3DAnimationStateBase { public:   // vtable 0x01265144
     CIVCountedPointer StartState;          // +8
     CIVCountedPointer EndState;            // +0xc
     float Progress;                        // +0x10

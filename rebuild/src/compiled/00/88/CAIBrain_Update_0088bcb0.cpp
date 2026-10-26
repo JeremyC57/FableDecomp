@@ -12,8 +12,8 @@
 //   `distance` argument slot with the top-level output flag (retail frame is one word).
 // Fix (sweep 3): the callee 0x0088C840 is the landed CBrainOutput::operator= (no CBrainOutput::Merge exists in Ego_r /
 //   FableWin); the three `output.Merge(Output)` calls are the assignment `output = Output`. Same bytes.
-struct CCharStringData;
-struct CCharString {
+class CCharStringData;
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& o);                  // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
@@ -23,22 +23,22 @@ public:
     unsigned char _body[0x48];
     CBrainOutput& operator=(const CBrainOutput& other); // 0x0088C840 (the landed CBrainOutput::operator=)
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned long GetWorldFrame() const;                // 0x004167C8
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0x18];
     unsigned __int64 UpdateOffset;                      // +0x18
     unsigned char _pad20[0x1c8 - 0x20];
     unsigned char CreatureFlags;                        // +0x1c8
     bool IsReadyForBrain() const;                       // 0x00833710
 };
-struct CBrainUpdateZone {
+class CBrainUpdateZone { public:
     long Unknown;
     unsigned long UpdatePeriod;                         // +4
     unsigned long PriorityCheckPeriod;                  // +8
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual void v00();
     virtual void v01();
     virtual void Start();                               // slot 2
@@ -56,7 +56,7 @@ struct CAIStateGroupBase {
     void Reset();                                       // 0x008FCF50
     void Stop();                                        // 0x008FD050
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     virtual void SuspendableProcess();                  // slot 1
     unsigned char _pad04[0x14 - 4];

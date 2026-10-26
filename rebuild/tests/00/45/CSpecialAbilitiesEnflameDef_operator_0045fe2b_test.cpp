@@ -1,12 +1,12 @@
 // behaviour test for 0x0045FE2B CSpecialAbilitiesEnflameDef::operator=
 #include <cstdio>
 static int g_copies = 0;
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     int baseTag;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { baseTag = o.baseTag; return *this; }
 };
 struct CFloatVector { float v; CFloatVector& operator=(const CFloatVector& o) { v = o.v; ++g_copies; return *this; } };
-struct CSpecialAbilitiesEnflameDef : CParentDefClassBase {
+class CSpecialAbilitiesEnflameDef : public CParentDefClassBase { public:
     float CamDist[4], CamHeight[4], CamFOV[4], CamSwitchTime[4], LevelUpTimings[3], Damage[4];
     CFloatVector RadiusOfEffect;
     float EnflameCombatMultiplierFactor;

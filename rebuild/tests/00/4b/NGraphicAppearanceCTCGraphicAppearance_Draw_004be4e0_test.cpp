@@ -4,12 +4,12 @@
 // reasons byte, or ResendPrimsEveryRenderFrame).
 #include <cstdio>
 
-struct C3DPositionInterpolator { int tag; };
-struct C3DOrientationInterpolator { int tag; };
-struct CTCPhysicsBase { int orientTag; void GetOrientationInterpolator(C3DOrientationInterpolator& o) const { o.tag = orientTag; } };
-struct CThing { int posTag; CTCPhysicsBase* PhysicsTC; };
+class C3DPositionInterpolator { public: int tag; };
+class C3DOrientationInterpolator { public: int tag; };
+class CTCPhysicsBase { public: int orientTag; void GetOrientationInterpolator(C3DOrientationInterpolator& o) const { o.tag = orientTag; } };
+class CThing { public: int posTag; CTCPhysicsBase* PhysicsTC; };
 static C3DPositionInterpolator GetRenderPositionInterpolateForThing(const CThing& t) { C3DPositionInterpolator p; p.tag = t.posTag; return p; }
-struct CEnginePrimitivePrepareInfo { int id; };
+class CEnginePrimitivePrepareInfo { public: int id; };
 
 static bool g_LatchForceResendPrimitives = false;
 static bool g_PreparePrimitivesEnabled = false;

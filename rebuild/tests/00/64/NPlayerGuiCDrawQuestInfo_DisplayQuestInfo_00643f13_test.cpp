@@ -3,7 +3,7 @@
 
 // NPlayerGui::CDrawQuestInfo::DisplayQuestInfo: opening from closing/opening resets the timers and arms the mini-mode countdown
 // (frames per second * def delay); closing from open/hidden sets mode 1.
-struct CPlayerGuiDef { float QuestInfoMiniModeDelaySeconds; };
+class CPlayerGuiDef { public: float QuestInfoMiniModeDelaySeconds; };
 static CPlayerGuiDef g_def;
 static CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 static long g_framesPerSecond = 30;

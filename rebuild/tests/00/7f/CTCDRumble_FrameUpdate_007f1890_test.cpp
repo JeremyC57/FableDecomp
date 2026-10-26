@@ -3,8 +3,8 @@
 #include <cstdio>
 static int g_kills = 0;
 static bool g_killArg = false;
-struct CThing { void Kill(bool immediately) { ++g_kills; g_killArg = immediately; } };
-struct CTCDRumble {
+class CThing { public: void Kill(bool immediately) { ++g_kills; g_killArg = immediately; } };
+class CTCDRumble { public:
     virtual void v00() { }
     CThing* ParentThing; bool ToBeRemoved; bool IsInGlobalUpdateTCs;
     void* PDef; float Strength; float Length; bool GlobalRumble; long LifeTimer;

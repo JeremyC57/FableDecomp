@@ -1,4 +1,4 @@
-struct CDataInputStream {
+class CDataInputStream { public:
 // Leaf: Close
     char pad[0x18];
     unsigned int f18;  // 0x18

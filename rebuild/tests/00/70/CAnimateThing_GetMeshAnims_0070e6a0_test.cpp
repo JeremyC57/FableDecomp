@@ -29,7 +29,7 @@ struct CPtr {
     }
 };
 
-struct CAnimateThing {
+class CAnimateThing { public:
     CPtr m_cachedFirst, m_cachedSecond;
     int updates;
     void UpdateCachedAnims() { ++updates; }

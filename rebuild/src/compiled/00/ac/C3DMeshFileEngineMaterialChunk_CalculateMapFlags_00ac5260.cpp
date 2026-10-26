@@ -5,11 +5,11 @@
 // landed CMapFilenames constructor 0x00AC5190), the four bank indices +0x38..+0x44, MapFlags +0x48.
 // A map name counts when its string block exists and its length (+4) is non-zero (inline null-case-first
 // length accessor); the first `|= 1` after the zero store folds to `= 1`, the shared last test merges both arms.
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pChars;                         // +0x00
     unsigned long m_length;                         // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pStringData;
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
 };
@@ -23,7 +23,7 @@ struct CMapFilenames {
     CCharString IlluminationMap;                    // +0x14
 };
 
-struct C3DMeshFileEngineMaterialChunk {
+class C3DMeshFileEngineMaterialChunk { public:
     virtual ~C3DMeshFileEngineMaterialChunk();
     unsigned char _base_body[0x28];                 // +0x04 .. +0x2B (C3DMeshFileChunk, retail size)
     long MaterialIndex;                             // +0x2C

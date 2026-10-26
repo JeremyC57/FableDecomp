@@ -2,21 +2,21 @@
 // the hero sees or hears the guard, then one conversation line and the hero as best enemy target; handle released.
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     char Text[48];
     CCharString(const char* text) { std::strncpy(Text, text, 47); Text[47] = 0; }
 };
 static int g_frames = 0;
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CIsThingAlive { CScriptThing m_thing; CIsThingAlive(const CScriptThing& t) : m_thing(t) { } };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool scripting; int releases;
     CScriptGameResourceObjectScriptedThingBase() : scripting(false), releases(0) { }
     bool IsScripting() { return scripting; }
     void Release() { scripting = false; ++releases; }
 };
 static int g_handleReleases = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     int grantAt, seenAt, heardAt, lines, targets, conversations; CScriptThing hero;
     void NewScriptFrame() const { ++g_frames; }
     bool StartScriptingEntity(const CScriptThing& t, CScriptGameResourceObjectScriptedThingBase& h, int priority) {

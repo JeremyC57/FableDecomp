@@ -14,7 +14,7 @@
 //   then Dirty = true in both tails.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -57,7 +57,7 @@ public:
     }
 };
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

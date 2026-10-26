@@ -3,7 +3,7 @@
 // Calls base Copy(src) [this=ecx, src pushed on stack, edx untouched],
 // then copies DWORD field at +0x28.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     char pad[0x28];
     unsigned long field28;
 };
@@ -14,7 +14,7 @@ struct BaseDef {
     void Clone(CDefClassBase const* src);
 };
 
-struct CInterestingToVillagersDef : public BaseDef {
+class CInterestingToVillagersDef : public BaseDef { public:
     char pad[0x28 - sizeof(BaseDef)];
     unsigned long field28;
 };

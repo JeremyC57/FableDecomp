@@ -10,21 +10,21 @@
 // CCharString::~CCharString @ 0x0099EAE0. Data: "" @ 0x0122D70E.
 // Shape: a named local copied into the hidden result at the end (no NRVO); the destination region is pushed before the
 // current-region call (arguments right to left).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     bool operator!=(const char* text) const;       // 0x0099E960
     CCharString& operator=(const char* text);      // 0x0099EFE0
 };
-struct CWorldMap {
+class CWorldMap { public:
     long GetRegionNumberFromName(const CCharString& name);   // 0x004FC210
     long GetCurrentRegion() const;                 // 0x004FB150
     long GetNextRegionOnRouteTo(long from, long to);         // 0x004FB4D0
 };
-struct CThing;
-struct CQuestCardDef;
-struct CTCQuestCard {
+class CThing;
+class CQuestCardDef;
+class CTCQuestCard { public:
     void*          __vftable;                      // +0x00
     CThing*        ParentThing;                    // +0x04
     bool           ToBeRemoved;                    // +0x08

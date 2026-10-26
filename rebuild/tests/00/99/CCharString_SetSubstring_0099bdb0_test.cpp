@@ -4,16 +4,16 @@
 extern "C" long g_charStringRefTrace = 0;
 extern "C" unsigned short g_emptyWideStringData = 0;
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     unsigned short* data;
     long unused1;
     long unused2;
     long refCount;
 };
 
-struct CCharString
-{
+class CCharString
+{ public:
     CWideStringData* storage;
 
     CWideStringData* AllocStringData(unsigned short* s, long n);

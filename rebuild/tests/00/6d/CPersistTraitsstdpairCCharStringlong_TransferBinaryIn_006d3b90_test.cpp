@@ -56,7 +56,7 @@ static void InitStream(CMemoryDataInputStreamBase& s, const unsigned char* data,
     s.chunkLength = available; s.overflowCalls = 0;
 }
 
-struct CMemoryDataInputStream : CMemoryDataInputStreamBase {
+class CMemoryDataInputStream : public CMemoryDataInputStreamBase { public:
     int stringReads;
     CCharString ReadString() { ++stringReads; CCharString s; std::strcpy(s.m_text, "Sword"); return s; }
 };

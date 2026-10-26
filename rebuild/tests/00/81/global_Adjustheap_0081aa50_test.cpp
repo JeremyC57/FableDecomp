@@ -4,7 +4,7 @@
 
 enum EHeroMorphType { HERO_MORPH_NONE = 0 };
 enum ECompositeBlendType { COMPOSITE_BLEND_NONE = 0 };
-struct CTextureMorphEntry {
+class CTextureMorphEntry { public:
     EHeroMorphType MorphType; long TextureLayer; long ReplacingTextureIndex; long BankIndex; ECompositeBlendType Blend;
     CTextureMorphEntry() { }
     CTextureMorphEntry(const CTextureMorphEntry& other) { *this = other; }

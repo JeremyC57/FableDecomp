@@ -12,7 +12,7 @@
 
 struct CSubDef;
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long refCount;                                 // +0x04
@@ -28,19 +28,19 @@ struct CDefClassPointer {                          // CDefPointer<const CThingDe
     CDefClassBase* operator->() const { return Object; }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_00[0x70];
     CDefClassPointer PDef;                         // +0x70
 };
 
-struct CTCBase {
+class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08
     bool    IsInGlobalUpdateTCs;                   // +0x09
 };
 
-struct CTCTargetingAI : CTCBase {
+class CTCTargetingAI : public CTCBase { public:
     unsigned char _pad_0c[0x24];
     CSubDef* PSubDef;                              // +0x30
     void OnInitialActivate();

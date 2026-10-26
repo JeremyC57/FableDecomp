@@ -57,7 +57,7 @@ struct CBuildingDef : CRefVirtual, CRefCounted {
             Destroy();
     }
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* Object;
     ~CDefPointer()
     {
@@ -67,7 +67,7 @@ template<class T> struct CDefPointer {
         }
     }
 };
-struct CThingBuilding {
+class CThingBuilding { public:
     CDefPointer<CBuildingDef> GetPBuildingDef() const;   // 0x0082D2D0
 };
 struct CBaseIntelligentPointer {                // CIntelligentPointer<CThingBuilding>: 8 bytes
@@ -79,7 +79,7 @@ struct CBuildingList {                          // std::list<CIntelligentPointer
     struct node { node* next; node* prev; CBaseIntelligentPointer value; };
     node* head;
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x28];
     CBuildingList VillageBuildings;             // +0x28
 };

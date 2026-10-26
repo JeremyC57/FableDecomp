@@ -68,12 +68,12 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CPixelShader;
+class CPixelShader;
 struct CSIMDVariableBlock;
-struct CVertexShader;
+class CVertexShader;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveManagerRepeatedStaticMeshes {
+class CEnginePrimitiveManagerRepeatedStaticMeshes { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -134,10 +134,10 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerRepeatedStaticMeshes, SIMDVa
 #include <stddef.h>
 
 
-struct CEngineSceneGridCell;
+class CEngineSceneGridCell;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     void*                         __vftable;                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                 _pad_0x04[0x4];            // +0x04
     unsigned char                 _pad_0x08[0x4];            // +0x08
@@ -200,12 +200,12 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveBase, RefLayerMask) == 0x44
 #include <stddef.h>
 
 
-struct C3DMeshInfo;
-struct C4DVector;
+class C3DMeshInfo;
+class C4DVector;
 struct CSubsectionElement;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveRepeatedStaticMesh {
+class CEngineInternalPrimitiveRepeatedStaticMesh { public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08
@@ -272,10 +272,10 @@ FABLE_STATIC_ASSERT(offsetof(CEngineInternalPrimitiveRepeatedStaticMesh, RenderI
 #include <stddef.h>
 
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DMeshInfo {
+class C3DMeshInfo { public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     long                   f4;                               // +0x04 retail-only long (previous header)
     unsigned char          _pad_0x08[0x4];                   // +0x08
@@ -303,23 +303,23 @@ FABLE_STATIC_ASSERT(offsetof(C3DMeshInfo, LODDataSizes) == 0x50);
 #endif // FABLE_ENGINE_C3DMESHINFO_H
 
 
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
 };
 
-struct C3DBoundingBox {
+class C3DBoundingBox { public:
     C3DVector MinCoord;
     C3DVector MaxCoord;
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float Radius;
 };
 
-struct C4DVector {
+class C4DVector { public:
     float X;
     float Y;
     float Z;
@@ -337,7 +337,7 @@ struct CSubsectionElement {
     unsigned char Pad[4];
 };
 
-struct CEngineFadeDistance {
+class CEngineFadeDistance { public:
     float FadeBeginDistance;
     float MaxDrawDistance;
 };
@@ -364,7 +364,7 @@ struct CAddMeshDesc {
 };
 }
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void* NativeVTable; // actual RTTI vtable 0x0122F598; this body only reads Data
     CEngineInternalPrimitiveRepeatedStaticMesh* Data;
 };

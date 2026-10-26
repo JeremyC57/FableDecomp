@@ -23,17 +23,17 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int bytes);
 void __cdecl operator delete[](void* block);          // 0x00BFEB1C
 void* __cdecl operator new[](unsigned int size);      // 0x00BFEB22
 extern const unsigned long g_crc32Table[256];         // 0x0129A168
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
     CWideString ToWideString() const;                  // 0x0099E480
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -68,7 +68,7 @@ struct CByteVector {                                   // CArray<char> (STLport 
     char* GetData() { return _M_finish - _M_start != 0 ? _M_start : (char*)this; }
     const char* GetData() const { return _M_finish - _M_start != 0 ? _M_start : (const char*)this; }
 };
-struct CBankFileEntryUpdateData {
+class CBankFileEntryUpdateData { public:
     unsigned long StateBlockCRC;                       // +0x00
     unsigned long InfoSize;                            // +0x04
     char*         InfoBuffer;                          // +0x08
@@ -106,7 +106,7 @@ struct CPackedUIntArray {
     unsigned long operator[](unsigned long index) const;   // 0x00A629F0
     bool IsPacked() const { return m_pData != 0; }
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;

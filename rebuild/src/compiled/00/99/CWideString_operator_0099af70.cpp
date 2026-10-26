@@ -10,7 +10,7 @@
 #include <stddef.h>
 extern "C" int __cdecl wcscmp(const wchar_t* left, const wchar_t* right);   // 0x00BFE94C
 
-struct CWideStringData {
+class CWideStringData { public:
     wchar_t*      text;                         // +0x00
     unsigned long unknown04;
     unsigned long unknown08;

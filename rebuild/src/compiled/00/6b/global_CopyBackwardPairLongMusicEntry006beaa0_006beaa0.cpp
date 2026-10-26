@@ -8,7 +8,7 @@
 // CRegisteredMusicEntry (0x14): CWideString SrcFileName +0, CWideString DstFileName +4, float Gain +8, float Offset
 // +0xC, bool CacheToHD +0x10. The implicit operator= copies the key, calls CWideString::operator= @ 0x0099B7D0 for the
 // two file names, then Gain, Offset and CacheToHD.
-struct CWideString {                         // one-word handle
+class CWideString { public:                         // one-word handle
     void* m_pData;                           // +0x00
     CWideString& operator=(const CWideString& other);     // 0x0099B7D0
 };

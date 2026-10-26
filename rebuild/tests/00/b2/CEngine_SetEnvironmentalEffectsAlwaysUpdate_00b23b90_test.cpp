@@ -3,7 +3,7 @@
 struct CEnvHost { char pad[0x650]; unsigned char flag; };
 CEnvHost g_storage_b23b90;
 CEnvHost *g_envHost_b23b90 = &g_storage_b23b90;
-struct CEngine { void SetEnvironmentalEffectsAlwaysUpdate(bool on); };
+class CEngine { public: void SetEnvironmentalEffectsAlwaysUpdate(bool on); };
 void CEngine::SetEnvironmentalEffectsAlwaysUpdate(bool on){ g_envHost_b23b90->flag=(unsigned char)on; }
 int main(){
     CEngine e; e.SetEnvironmentalEffectsAlwaysUpdate(true);

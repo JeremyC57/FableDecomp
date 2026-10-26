@@ -11,7 +11,7 @@
 // Shape: /Gr SGI algorithm TU -- `while (last - first > 1) pop_heap(first, last--, comp)` with pop_heap and
 // __pop_heap_aux inline. The value copy is the pair's memberwise user copy constructor: the key dword, then the
 // trivially copyable entry as a block through its own address (`add eax,4 ; lea edx,[esi+4]`, five dwords).
-struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially copyable
+class CTextureMorphEntry { public:                 // Ego_r.pdb, 20 bytes, trivially copyable
     long MorphType;                         // +0x00 EHeroMorphType
     long TextureLayer;                      // +0x04
     long ReplacingTextureIndex;             // +0x08

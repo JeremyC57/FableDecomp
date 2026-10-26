@@ -20,7 +20,7 @@ struct CModeBase {                                 // CTCCreatureModeManager::CM
     CThingCreatureBase* m_pThing;                  // +0x04
 };
 
-struct CModeSleepBed : CModeBase {
+class CModeSleepBed : public CModeBase { public:
     unsigned char         _pad08[0x24];            // +0x08 .. +0x2c
     CCountedActionPointer m_pendingAction;         // +0x2c
     virtual void FrameUpdate();

@@ -1,7 +1,7 @@
 // Behaviour test for CStreamingFontBank::GetStringExtents (0x009A14E0): a copy of the logic over a fake glyph table.
 #include <cstdio>
 
-struct C2DExtentsF {
+class C2DExtentsF { public:
     float X, Y;
     C2DExtentsF(float x, float y) : X(x), Y(y) {}
 };

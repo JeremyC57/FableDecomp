@@ -14,10 +14,10 @@
 // Shape: the temporary is built in the 0x1c-byte frame: the implicit constructor leaves LevelID
 // uninitialised and the three counted pointers' inline constructors zero their six words from one
 // register; it is passed by reference and destroyed through the out-of-line destructor.
-struct CAFile;
+class CAFile;
 
 template<class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T*    m_pObject;
     void* m_pBlock;
     CCountedPointer() : m_pObject(0), m_pBlock(0) { }

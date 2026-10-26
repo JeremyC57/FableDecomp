@@ -14,18 +14,18 @@
 //   stays virtual); the in-loop return and the two re-creation temporaries sit under inline_depth(0) (0x004AA840), the
 //   function end expands both destructors inline; `for (;;) { if (Term()) return; ... }` (a `while` sends the first
 //   early return to the wrong epilogue copy).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -41,13 +41,13 @@ template <class T> struct CCountedPointer {
         Info = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CBaseClass {
+class C3DVector { public: float X, Y, Z; };
+class CBaseClass { public:
     CBaseClass();                                        // 0x0099A2D0
     virtual ~CBaseClass();                               // 0x0099A2E0
 };
 struct CScriptThingImp;
-struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;               // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     CScriptThing& operator=(const CScriptThing& other);  // 0x008AB980
@@ -67,7 +67,7 @@ struct CScriptThing : CBaseClass {                       // 12 bytes, vtable 0x0
     virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
     virtual bool IsDead() const;                         // slot 76 (+0x130) 0x004AA890
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;
@@ -92,7 +92,7 @@ struct CIsThingAlive {                                    // vtable 0x012C32F0: 
     ~CIsThingAlive() { }
 };
 #pragma inline_depth()
-struct CEntityScriptBase {                                // retail 0x14 bytes
+class CEntityScriptBase { public:                                // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                           // +0x04
     CScriptThing          Me;                             // +0x08

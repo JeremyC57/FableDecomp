@@ -24,7 +24,7 @@ static int fails = 0;
 // time and released at the end without a null test (`dec [ebp+4] ; jne`); the component is HasTC + a returned GetTC with
 // the end/hit choice as one ternary (the landed 0x008D8F30 idiom; null when absent, written unconditionally); ParentThing
 // is read into a local once for the flag clear and the IsPerformingAnyAction call.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -33,13 +33,13 @@ struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBa
     SEntry* LowerBound(const long* type);  // 0x0040F020
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                // slot 0
     virtual void Delete();                 // slot 1 (+0x04)
     long m_refCount;                       // +0x04
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -55,12 +55,12 @@ template <class T> struct CDefHolder {     // the def taken out of the out point
     T* operator->() const { return Object; }
 };
 
-struct CScorpionKingBattleDef : CDefPointeeBase {
+class CScorpionKingBattleDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     float         ExhaustedTime;           // +0x40
 };
 
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CScorpionKingBattleDef>* out);   // 0x008C5A50
 };
 void* Find_CDefClassBase_GetSubDef(const void* owner);   // stand-in callee of the stand-in body below
@@ -91,7 +91,7 @@ struct CTCActiveFlag {                     // the type-9 component (as CModeOutO
     bool          m_active;                // +0x10
 };
 
-struct CThing {
+class CThing { public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];      // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;          // +0x44
@@ -117,7 +117,7 @@ struct CThing {
     }
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();          // 0x006622A0
 };
 
@@ -142,7 +142,7 @@ struct CModeStandBase : CModeBase {        // retail sizeof 0x68
     void OnActivate();                     // 0x008621A0
 };
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     void*         Group;                   // +4 (CCharString)
     unsigned long GroupCRC;                // +8

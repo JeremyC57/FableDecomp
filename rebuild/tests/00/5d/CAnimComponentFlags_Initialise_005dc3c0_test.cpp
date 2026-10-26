@@ -2,14 +2,14 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CCharString { const char* text; CCharString(const char* t, long) : text(t) {} ~CCharString() {} };
+class CCharString { public: const char* text; CCharString(const char* t, long) : text(t) {} ~CCharString() {} };
 
-struct CStringParser {
+class CStringParser { public:
     const char* text;
     CStringParser(const CCharString& t, void (*)(CCharString*), const CCharString&, long) : text(t.text) {}
 };
 
-struct CPersistContext { int calls; };
+class CPersistContext { public: int calls; };
 
 static void TransferIn(CPersistContext* context, CStringParser* parser, long* value)
 {
@@ -24,7 +24,7 @@ inline long ParseLong(CPersistContext& context, CStringParser& parser)
     return value;
 }
 
-struct CAnimComponentFlags {
+class CAnimComponentFlags { public:
     long Flags; int resets;
     void Reset() { ++resets; }
     bool Initialise(CPersistContext& context, const CCharString& text)

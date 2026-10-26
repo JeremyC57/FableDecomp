@@ -36,15 +36,15 @@ public:
 static int g_aliveCalls = 0;
 bool IS_THING_ALIVE(CBaseObject* const& thing) { ++g_aliveCalls; return thing != 0 && !(thing->Flags91 & 1); }
 struct CBaseIntelligentPointer { void* _vfptr; CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct COpinionDeed;
-struct COpinionDeedFilter_IsCrimeToRunAndFindAGuard {};
+class COpinionDeed;
+class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:};
 static int g_findCalls = 0; static long* g_findIndex = (long*)1; static int g_findReported = -1;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     COpinionDeed* result;
     COpinionDeed* FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard& filter, long* index, bool includeReported) { ++g_findCalls; g_findIndex = index; g_findReported = includeReported; return result; }
 };
 struct SVillagerNode { SVillagerNode* _M_next; SVillagerNode* _M_prev; CBaseIntelligentPointer _M_data; };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char  _pad_0x00[0x2c];
     SVillagerNode* VillagePeople;
     unsigned char  _pad_0x30[0x34];

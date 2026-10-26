@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 static int g_destroyed = 0;
-struct CAnimComponentMap {                       // intrusively counted: vptr, count at +4
+class CAnimComponentMap { public:                       // intrusively counted: vptr, count at +4
     virtual void v00() { }
     virtual void Destroy() { ++g_destroyed; }   // slot 1
     long m_count;
@@ -26,7 +26,7 @@ struct CIVCountedPointer {
 };
 static CAnimComponentMap g_objects[100];
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;
     long AnimName;
     long GroupName;

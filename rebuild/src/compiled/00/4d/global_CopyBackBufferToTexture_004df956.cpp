@@ -4,9 +4,9 @@
 // re-materialising the address (two lea) rather than CSEing it -> size-optimised codegen.
 #pragma optimize("s",on)
 
-struct CTexture;
+class CTexture;
 
-struct CDisplayManager {
+class CDisplayManager { public:
     CTexture* helper(char* a, char* b);   // @ 0x4dd405, __fastcall member
     CTexture* CopyBackBufferToTexture();
 };

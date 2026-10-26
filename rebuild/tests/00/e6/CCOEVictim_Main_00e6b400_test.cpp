@@ -8,14 +8,14 @@ static int Fail(const char* what, const char* log) { std::printf("00e6b400_TEST 
 static char g_log[4096];
 static int g_frame = 0, g_termAt = 1000;
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CScriptThing {
+class CScriptThing { public:
     const char* Name; bool Alive;
     CScriptThing(const char* n = "", bool alive = true) : Name(n), Alive(alive) { }
     bool IsAlive() const { return Alive; }
     bool operator==(const CScriptThing& o) const { return std::strcmp(Name, o.Name) == 0; }
     bool operator!=(const CScriptThing& o) const { return !(*this == o); }
 };
-struct CGame {
+class CGame { public:
     std::vector<CScriptThing> Victims, Acolytes; CScriptThing Hero;
     long GetAllThingsWithScriptName(const char* n, std::vector<CScriptThing>& out) const
     { out = std::strcmp(n, "COE_Victim") == 0 ? Victims : std::strcmp(n, "COE_AcolyteEvil") == 0 ? Acolytes : std::vector<CScriptThing>(); return (long)out.size(); }

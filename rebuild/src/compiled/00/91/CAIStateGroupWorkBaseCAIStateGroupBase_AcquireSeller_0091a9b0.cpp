@@ -21,8 +21,8 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 unsigned long __fastcall GFROR13(unsigned long value); // 0x00497890
 
-struct C3DVector { float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct C2DBoxI {
+class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C2DBoxI { public:
     long X0, Y0, X1, Y1;
     C2DBoxI(long x0, long y0, long x1, long y1) : X0(x0), Y0(y0), X1(x1), Y1(y1) { }
 };
@@ -106,22 +106,22 @@ public:
     void AddToCreatureInteraction(const CCountedPointerCreatureInteraction& interaction);   // 0x00662550
 };
 
-struct CThingFilter_HasTC {
+class CThingFilter_HasTC { public:
     long TCType;
     CThingFilter_HasTC(long type) : TCType(type) { }
 };
-struct CThingFilter_In2DRange {
+class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
     CThingFilter_In2DRange(const C3DVector& pos, float range) : Pos(pos), Range(range) { }
 };
-template <class A, class B> struct CFilter_Bind2 {
+template <class A, class B> class CFilter_Bind2 { public:
     const A* m_pFirst;
     const B* m_pSecond;
     CFilter_Bind2(const A& a, const B& b) : m_pFirst(&a), m_pSecond(&b) { }
 };
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void FindThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter,
                                std::list<CThingCreatureBase*>& things);   // 0x0091A750
 };
@@ -137,7 +137,7 @@ __declspec(noinline) void CThingSearchTools::FindThingsInRoughArea(const C2DBoxI
 }
 #pragma auto_inline(on)
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                     // +0x18
 };

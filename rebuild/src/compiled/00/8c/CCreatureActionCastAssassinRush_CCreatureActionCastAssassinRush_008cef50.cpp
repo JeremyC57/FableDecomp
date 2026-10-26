@@ -10,9 +10,9 @@
 // Layout: byte-packed as the PDB header (CCreatureAction_CastAssassinRush.h: Override +0x12c .. IsZTargetting +0x14d -- 24
 // bytes high, the retail CCombatActionBase being 0x114 bytes), so `this` is modelled locally under #pragma pack(1) at
 // +0x114 / +0x115 / +0x124 / +0x128 / +0x12c / +0x134 / +0x135.
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_count;                           // +0x00 shared reference count
 };
 
@@ -26,19 +26,19 @@ struct CCountedPointer_CCreatureActionBase {
     }
 };
 
-struct C3DVector {                          // three floats; the memberwise user copy constructor copies each as a dword
+class C3DVector { public:                          // three floats; the memberwise user copy constructor copies each as a dword
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(const CCombatActionBase& other);   // 0x0062F3B0
 };
 
 #pragma pack(push, 1)
-struct CCreatureAction_CastAssassinRush : CCombatActionBase {   // vtable 0x01284254; retail sizeof 0x138
+class CCreatureAction_CastAssassinRush : public CCombatActionBase { public:   // vtable 0x01284254; retail sizeof 0x138
     bool          Override;                 // +0x114 (PDB +0x12c)
     C3DVector     Dir;                      // +0x115 (PDB +0x12d), unaligned
     unsigned char _pad121[3];               // +0x121

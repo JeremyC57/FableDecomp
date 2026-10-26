@@ -6,8 +6,8 @@
 // (x + 0.5) to nearest with the default rounding mode, then step back one when (result - 1) equals x exactly
 // (x was already integral and the half rounded up). The inline asm forces the ebp frame (`push ebp ; mov ebp,esp ; sub esp,10h`).
 #pragma optimize("y", off)
-struct CTCBulletTime
-{
+class CTCBulletTime
+{ public:
     long GetBulletTimeTicksFromAbilityLevel(float value);
 };
 

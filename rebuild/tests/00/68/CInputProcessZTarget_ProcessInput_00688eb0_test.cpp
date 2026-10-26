@@ -1,9 +1,9 @@
 #include <cstdio>
 // Behaviour test for CInputProcessZTarget::ProcessInput (0x00688EB0): press locks the creature's current target and arms the
 // hold timer; held with the same target disarms the timer and deactivates the Z-target once.
-struct CThing;
+class CThing;
 struct CTargeting { CThing* Target; CThing* GetTargetThing() { return Target; } };
-struct CThing {
+class CThing { public:
     bool Dead; CTargeting* Targeting;
     bool GetInterface(CTargeting** out, long id) const { if (id != 8 || !Targeting) return false; *out = Targeting; return true; }
 };

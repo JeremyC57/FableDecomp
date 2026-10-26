@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CSpecialEffectsDef { int dummy; };
+class CSpecialEffectsDef { public: int dummy; };
 
 unsigned long __fastcall CSpecialEffectsDef_GetSizeofClass(CSpecialEffectsDef* self)
 {

@@ -6,7 +6,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_resize2 = 0, g_resize1 = 0, g_tempDtor = 0; static unsigned long g_n2 = 0, g_n1 = 0; static const void* g_resizeThis2 = 0; static const void* g_resizeThis1 = 0;
 template <class T> struct CArrayAllocProxy { T* p; CArrayAllocProxy(T* v) : p(v) { } };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_first;
     T* m_last;
     CArrayAllocProxy<T> m_end;
@@ -15,17 +15,17 @@ template <class T> struct CArray {
     void resize(unsigned long n, const T& value) { ++g_resize2; g_n2 = n; g_resizeThis2 = this; CHECK(value.m_first == 0 && value.m_last == 0 && value.m_end.p == 0); }
     void resize(unsigned long n) { ++g_resize1; g_n1 = n; g_resizeThis1 = this; }
 };
-template <class K, class V> struct CKeyPairCompareLess { CKeyPairCompareLess() {} };
-template <class K, class V, class C> struct CVectorMap {
+template <class K, class V> class CKeyPairCompareLess { public: CKeyPairCompareLess() {} };
+template <class K, class V, class C> class CVectorMap { public:
     CArray<V> Values;
     C         Compare;
     bool      Dirty;
     CVectorMap() : Dirty(false) {}
 };
-struct CRandomAppearanceMorph {
-    struct CBodyPartMesh { long x; };
-    struct CTextureMorph { long x; };
-    struct CSkeletalMorph { long x; };
+class CRandomAppearanceMorph { public:
+    class CBodyPartMesh { public: long x; };
+    class CTextureMorph { public: long x; };
+    class CSkeletalMorph { public: long x; };
     typedef CVectorMap<unsigned long, CTextureMorph, CKeyPairCompareLess<unsigned long, CTextureMorph> > CTextureMorphMap;
     CArray<CArray<CBodyPartMesh> >                                                      BodyParts;
     CArray<CTextureMorphMap>                                                            BodyPartTextureMorphs;

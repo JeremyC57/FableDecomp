@@ -11,8 +11,8 @@
 // frame word below it; the source end is re-read every pass; the parent thing is read into a named local before the
 // IsAbilityValid call (eax push like retail; the direct member argument goes through ecx). The same-TU
 // _M_insert_overflow body (auto_inline off) keeps the def in esi.
-struct CThing;
-struct CMeleeCombatAbilityDef {
+class CThing;
+class CMeleeCombatAbilityDef { public:
     virtual void v00();
     virtual void Delete();                              // slot 1 (+0x04)
     long m_refCount;                                    // +0x04
@@ -101,7 +101,7 @@ void CDefPointerVector::_M_insert_overflow(CDefPointer* position, const CDefPoin
     _M_end_of_storage = newStart + len;
 }
 #pragma auto_inline(on)
-struct CTCCombat {
+class CTCCombat { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x2c - 0x08];

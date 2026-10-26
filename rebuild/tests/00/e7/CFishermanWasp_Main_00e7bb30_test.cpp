@@ -2,8 +2,8 @@
 // the hero given as Me's enemy target and frames run until done; the handle is destroyed once.
 #include <cstdio>
 static int g_frames = 0, g_filters = 0, g_filterDtors = 0, g_handles = 0, g_handleDtors = 0, g_targets = 0, g_doneAfter = 0, g_isDoneCalls = 0;
-struct CScriptThing { int id; };
-struct CGameScriptInterface {
+class CScriptThing { public: int id; };
+class CGameScriptInterface { public:
     CScriptThing hero; const CScriptThing* lastThing; const CScriptThing* lastTarget;
     void NewScriptFrame() const { ++g_frames; }
     const CScriptThing& GetHero() const { return hero; }
@@ -15,7 +15,7 @@ struct CIsThingAlive {
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { ++g_filters; }
     ~CIsThingAlive() { ++g_filterDtors; }
 };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     void* Data; void* Info;
     CScriptGameResourceObjectScriptedThingBase() : Data(0), Info(0) { ++g_handles; }
     ~CScriptGameResourceObjectScriptedThingBase() { ++g_handleDtors; }

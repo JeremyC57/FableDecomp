@@ -3,36 +3,36 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThingCreatureBase { int id; };
-struct CThing { int id; };
+class CThingCreatureBase { public: int id; };
+class CThing { public: int id; };
 
 static int g_liveStrings = 0;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length = -1) : m_pData(text) { (void)length; ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CThingGameObject { int id; };
+class CThingGameObject { public: int id; };
 struct CBaseIntelligentPointer {
     void* m_pItem; int m_sets;
     CBaseIntelligentPointer() : m_pItem(0), m_sets(0) { }
     void SetPItem(void* p) { m_pItem = p; ++m_sets; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
 };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     CThingCreatureBase* m_owner; long m_code; CSoundPair m_sound; char m_anim[40];
     CCombatActionBase(CThingCreatureBase* owner, long code, const CSoundPair& s)
         : m_owner(owner), m_code(code), m_sound(s) { m_anim[0] = 0; }
     void SetAnimationName(const CCharString& n) { std::strcpy(m_anim, n.m_pData); }
 };
-struct CCreatureAction_CastWillReclaimUndeadFollower : CCombatActionBase {
+class CCreatureAction_CastWillReclaimUndeadFollower : public CCombatActionBase { public:
     CIntelligentPointer<CThingGameObject> PUndeadFollower;
     CCreatureAction_CastWillReclaimUndeadFollower(CThingCreatureBase* owner, CThingGameObject* f)
         : CCombatActionBase(owner, 150, CSoundPair()), PUndeadFollower(f)

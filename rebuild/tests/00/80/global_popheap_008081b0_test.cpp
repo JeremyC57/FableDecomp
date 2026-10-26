@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CBaseObject { int id; };
+class CBaseObject { public: int id; };
 static int g_live = 0;
 struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;

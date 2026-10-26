@@ -18,7 +18,7 @@ struct CMemoryBuffer {
     CMemoryBuffer() : Length(0), ReadPos(0), WritePos(0) { }
     void Read(unsigned long length, void* data);   // 0x009F18F0
 };
-struct CGameEvent {
+class CGameEvent { public:
     long          Type;                            // +0x00
     signed char   Player;                          // +0x04
     unsigned char Data[32];                        // +0x05
@@ -28,7 +28,7 @@ struct CGameEvent {
     long GetData(CMemoryBuffer& buffer) const;     // 0x009F17A0
 };
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -36,7 +36,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];              // +0x20 bitset<274>
     CInterfaceMap Components;                      // +0x44
@@ -59,15 +59,15 @@ struct CThing {
     }
 };
 
-struct CTCHeroSpecialMovement {
+class CTCHeroSpecialMovement { public:
     unsigned char _pad00[0x0c];
     bool          Sprinting;                       // +0x0C
     bool          Running;                         // +0x0D
     void SetSprinting(bool sprinting);             // 0x007E0670
 };
-struct CPlayer { CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
 
-struct CWorld {
+class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
     void EACreatureSprint(const CGameEvent* event);
 };

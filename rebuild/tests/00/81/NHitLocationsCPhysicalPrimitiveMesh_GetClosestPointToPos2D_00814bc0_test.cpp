@@ -22,9 +22,9 @@ static int g_ok = 1;
 // Shape: the C3DVector result comes back through the hidden pointer ([esp+4], returned in eax); `pos`
 // is the third stack word ([esp+0Ch]) and is copied word by word through edx by C3DVector's memberwise
 // USER copy constructor (the implicit copy uses esi and a `mov edx,eax` copy of the result pointer); `thing` and `normal` are unused. `ret 10h`: hidden pointer + three arguments.
-struct CThing;
+class CThing;
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };

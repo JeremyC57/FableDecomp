@@ -11,8 +11,8 @@
 // Leaf: ?GetAbsoluteFilePath@CAFile@@SI?AVCWideString
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
-struct CWideStringData;
-struct CCharStringData;
+class CWideStringData;
+class CCharStringData;
 class CCharString;
 class CWideString
 {

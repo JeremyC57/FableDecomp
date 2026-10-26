@@ -10,7 +10,7 @@ struct B {
 // __fastcall on B: model as __fastcall free fn (this in ecx).
 int __fastcall B_DoReset(B* self);
 
-struct CEngine {
+class CEngine { public:
     char pad1[0xb1];
     unsigned char flag_b1; // at +0xb1
 };

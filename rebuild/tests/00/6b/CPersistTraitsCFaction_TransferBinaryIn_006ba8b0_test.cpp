@@ -55,7 +55,7 @@ struct CByteArray {                                   // CArray<char> (STLport v
     char* GetData() { return (Finish - Start) ? Start : (char*)this; }
     char& operator[](unsigned int i) { return Start[i]; }
 };
-struct CFaction { char Text[64]; int Calls; };
+class CFaction { public: char Text[64]; int Calls; };
 static void TransferIn(const char* text, CFaction& value) { std::strcpy(value.Text, text); ++value.Calls; }   // the text parser + TransferIn stand-in
 struct TestByteStream : TestStream { void ReadBytes(void* buffer, int size) { Read(buffer, size); } };
 static void TransferBinaryIn(TestByteStream& stream, CFaction& value)

@@ -14,34 +14,34 @@
 // Frame 0x11c = sound pair 8 + action 0x114. No engine header for the action classes: local model.
 class CThingCreatureBase;
 
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];                      // +0x04..+0xa7
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x6c];                    // +0xa8..+0x113
     CCombatActionBase(CThingCreatureBase* creature, long actionType, const CSoundPair& sound);   // 0x00858030
     ~CCombatActionBase();                           // 0x0062E900
 };
 
-struct CCreatureAction_TentacleIdle : CCombatActionBase {     // vtable 0x01284DAC
+class CCreatureAction_TentacleIdle : public CCombatActionBase { public:     // vtable 0x01284DAC
     virtual void v00();
     CCreatureAction_TentacleIdle(CThingCreatureBase* creature) : CCombatActionBase(creature, 0x32, CSoundPair()) { }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13

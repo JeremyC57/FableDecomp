@@ -8,19 +8,20 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CBankFileEntryDependencies;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CDiskFileWin32;
+class CBankFileEntryDependencies;
+class CCPPointerInfo;
+class CCharStringData;
+class CDiskFileWin32;
 struct CProgressCallback;
-struct CWideStringData;
+class CWideStringData;
 
 #if defined(FABLE_RETAIL_BANK_FILE)
 // Opt-in for authorized retail row009ceae0. Existing donor declaration remains default.
 // Evidence: InternalClose009cd850 members; CBankFileAsync009d5f80 base boundary110.
 // Unknown retail tail remains opaque, rather than importing displaced donor fields.
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile {
+public:
     void* __vftable;                         // +00
     unsigned long Size;                     // +04
     unsigned char Symbols[0x0c];            // +08
@@ -58,7 +59,8 @@ FABLE_STATIC_ASSERT(offsetof(CBankFile, FilenameIndices) == 0xc4);
 FABLE_STATIC_ASSERT(offsetof(CBankFile, SymbolCRCIndices) == 0xd0);
 #else
 #pragma pack(push, 1)
-struct CBankFile {
+class CBankFile {
+public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long               Size;                        // +0x04
     unsigned char               Symbols[0x10];               // +0x08 CArray<CCharString>

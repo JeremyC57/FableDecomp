@@ -8,7 +8,7 @@
 // sit 0x1C lower in retail (seven 12-byte vectors before them), CTCInventoryBase::InventoryOpen (+0x60) at +0x58.
 // Local model (no engine header for CTCInventoryStats / CTCInventoryBase / CThing).
 #pragma optimize("s", on)
-struct CThing {
+class CThing { public:
     void Kill(bool immediate);                // 0x004C9B80
 };
 struct CTCInventoryBase_Retail {
@@ -17,7 +17,7 @@ struct CTCInventoryBase_Retail {
     bool InventoryOpen;                       // +0x58
     unsigned char _pad_0x59[0x130 - 0x59];
 };
-struct CTCInventoryStats : CTCInventoryBase_Retail {
+class CTCInventoryStats : public CTCInventoryBase_Retail { public:
     unsigned char _pad_0x130[0x140 - 0x130];
     CThing* pMannequin;                       // +0x140
     bool UseMannequin;                        // +0x144

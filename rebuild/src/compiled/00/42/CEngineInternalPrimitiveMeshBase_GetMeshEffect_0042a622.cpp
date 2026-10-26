@@ -8,7 +8,7 @@ struct Holder {
     RCObj* ptr;
 };
 
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase { public:
     RCObj* ptr;
     void GetMeshEffect(Holder* other);
 };

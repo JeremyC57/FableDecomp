@@ -11,7 +11,7 @@ void SubObj::call(long a) {
     this->called = 1;
 }
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long flags;   // +0
     char pad[4];           // +4
     SubObj sub;            // +8

@@ -6,7 +6,7 @@ struct Member {
     void DoPump(int arg);
 };
 
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned int flags;   // +0x00
     int          pad4;    // +0x04
     Member       member;  // +0x08

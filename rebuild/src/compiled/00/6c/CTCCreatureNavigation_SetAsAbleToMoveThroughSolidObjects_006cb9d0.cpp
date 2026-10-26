@@ -5,7 +5,7 @@ struct CObjVtbl {
 struct CObj {
     CObjVtbl* vtbl;
 };
-struct CTCCreatureNavigation {
+class CTCCreatureNavigation { public:
     char pad0[0x0c];
     CObj* obj;
     char pad1[0x55 - 0x10];

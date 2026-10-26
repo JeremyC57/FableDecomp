@@ -15,13 +15,13 @@
 // Shape: HasTC + one-ternary GetTC (key homed in the dead `weapon` slot); the aim entry is a named local held across
 //   the getter call (edi), the components a named local and the bank an inline accessor (`mov eax,[eax+3Ch] ; push ;
 //   mov ecx,eax`); the centre re-reads AimingNumFrames.
-struct CTCBase;
+class CTCBase;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                     // +0
     unsigned long m_length;                    // +4
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
@@ -32,7 +32,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 CCRC::Calc
 
-struct CAnimFilterOfGroup {                    // vtable 0x01267568
+class CAnimFilterOfGroup { public:                    // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                       // +4
     unsigned long GroupCRC;                    // +8
@@ -50,7 +50,7 @@ struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, C
     const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad0[0x20];
     unsigned long  m_presentBits[9];           // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;               // +0x44
@@ -72,7 +72,7 @@ struct CThing {
     }
 };
 
-struct CTCWeapon {                             // interface type 0x48
+class CTCWeapon { public:                             // interface type 0x48
     const CCharString& GetAnimationGroupName() const;   // 0x005DABE0
 };
 
@@ -90,11 +90,11 @@ struct CGlobalComponents {
 };
 
 namespace NAnimationEntryBodge {
-struct CAnimEntryLite {
+class CAnimEntryLite { public:
     long AnimIndex;                            // +0
 };
 }
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
 };

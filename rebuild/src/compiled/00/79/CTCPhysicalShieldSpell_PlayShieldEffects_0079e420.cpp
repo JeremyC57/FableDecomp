@@ -6,14 +6,14 @@
 // Shape: the appearance comes from the out-parameter GetInterface whose entry pick is one end/hit ternary
 //   (`*out = (it == last || k < it->type ? last : it)->component`): the component loads straight into ecx before the
 //   argument pushes and the bool goes through eax. The if-form pick (or a HasTC test + GetTC) loads it after the pushes.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -29,14 +29,14 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 template <class T> struct vector {              // retail STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T* begin() const { return _M_start; }
     T& operator[](unsigned long n) const { return *(begin() + n); }
 };
-struct CDefString { long m_index; };
-struct CSpecialAbilitiesPhysicalShieldDef {     // retail layout: PDB offset - 4, 12-byte vectors
+class CDefString { public: long m_index; };
+class CSpecialAbilitiesPhysicalShieldDef { public:     // retail layout: PDB offset - 4, 12-byte vectors
     unsigned char _pad00[0x3c];                 // CDefClassBase body
     CDefString InitSound;                       // +0x3c
     CDefString PowerUpSound[3];                 // +0x40
@@ -68,28 +68,28 @@ struct CSpecialAbilitiesPhysicalShieldDef {     // retail layout: PDB offset - 4
     vector<float> ManaDamage;                   // +0x138
     bool  ShieldCoversCarriedItems;             // +0x144
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     const T* operator->() const { return Object; }
 };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CIntelligentPointer {                    // CIntelligentPointer<CThing> (8 bytes)
     void* __vftable;
     void* m_pItem;
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad00[0x58];
     long Stamina;                               // +0x58 (PDB +0x60; retail CTCHeroStats sits 8 bytes below the PDB)
     void ModifyStaminaBy(long amount);          // 0x0057B1DB
 };
 namespace NGraphicAppearance {
     enum EAppearanceMeshEffectPriority { PRIORITY_4 = 4 };
-    struct CTCGraphicAppearance {
+    class CTCGraphicAppearance { public:
         void SetAsHighlighted(float start, float width, const CRGBColour& colour, bool includeCarried, bool flag,
                               EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
     };
 }
-struct CTCPhysicalShieldSpell {
+class CTCPhysicalShieldSpell { public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool    ToBeRemoved;                        // +0x08

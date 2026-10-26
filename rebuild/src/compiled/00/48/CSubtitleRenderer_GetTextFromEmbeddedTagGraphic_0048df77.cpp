@@ -26,12 +26,12 @@ public:
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CPlayerGuiDef {
+class CPlayerGuiDef { public:
     unsigned char _pad000[0x66c];
     long          ControllerAGraphic;              // +0x66c
     long          ControllerBGraphic;              // +0x670
@@ -43,7 +43,7 @@ struct CPlayerGuiDef {
     long          ControllerDPadRightGraphic;      // +0x688
 };
 const CPlayerGuiDef* __fastcall PeekGuiDef();      // 0x00438570
-struct CSubtitleRenderer {
+class CSubtitleRenderer { public:
     CWideString GetTextFromEmbeddedTagGraphic(long graphic) const;
 };
 

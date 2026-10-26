@@ -7,8 +7,8 @@
 // (CIntelligentPointer<CThing>, 8 bytes each), OldWade +0x1c.
 // Shape: the derived vtable is stored before the member constructors (VC installs the vptr first); each
 // pointer is constructed from a null CThing* (base constructor, its vtable, SetPItem(0)); OldWade = false last.
-struct CThing;
-struct CBaseObject;
+class CThing;
+class CBaseObject;
 
 struct CTCBase_Calls {                                      // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();

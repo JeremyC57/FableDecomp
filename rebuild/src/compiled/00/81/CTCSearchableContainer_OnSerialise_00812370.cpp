@@ -8,17 +8,17 @@
 // follows the base's manifest name. The same +0x1c counter is the one Search (0x00812340) counts down.
 // Shape: the context argument is cached in edi; the zero default is a named local that VC homes in the dead `bool`
 // argument slot (`mov dword ptr [esp+1Ch],0`, `lea ecx,[esp+10h]`); `add esi,1Ch` forms the member address.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410BE0
 };
 
-struct CTCContainerRewardHero {
+class CTCContainerRewardHero { public:
     virtual void v00();
     virtual void OnSerialise(CPersistContext* context, bool loading);        // 0x0074E240
     unsigned char _body[0x1c - 4];
 };
 
-struct CTCSearchableContainer : CTCContainerRewardHero {
+class CTCSearchableContainer : public CTCContainerRewardHero { public:
     long NumberOfSearchesRemaining;          // +0x1c (PDB +0x20: the retail CTCContainerRewardHero is 4 bytes narrower)
     virtual void OnSerialise(CPersistContext* context, bool loading);
 };

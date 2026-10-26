@@ -65,7 +65,7 @@ typedef basic_string string;
 
 namespace LHNetworkLib {
 enum LH_HTTP_SERVER_CODES { LH_HTTP_SERVER_CODE_NONE = -1 };
-struct LHHttpHeaders {
+class LHHttpHeaders { public:
     stl::vector<stl::string> HdrDocumentHeader;
     stl::string              HeaderString;
 };

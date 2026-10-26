@@ -13,7 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCard;
+class CCard;
 
 namespace std {
 struct __true_type { __true_type() { } };

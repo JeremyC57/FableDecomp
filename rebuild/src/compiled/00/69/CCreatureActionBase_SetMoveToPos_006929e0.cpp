@@ -9,7 +9,7 @@
 // NextMovementPos at +0x68 as three dwords, the member address formed in place (`add esi,68h`).
 // engine/CCreatureActionBase.h (PDB) agrees: PCreature +0x08, NextMovementPosWorldFrame +0x64,
 // NextMovementPos +0x68; a local model is used because the method takes a stack argument.
-struct C3DVector {
+class C3DVector { public:
     float X;
     float Y;
     float Z;
@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer_Calls {         // CIntelligentPointer<CThingCrea
 
 long GetWorldFrame_0049d870();                 // 0x0049D870 (returns the global @ 0x013B89BC)
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                   // +0x04
     CBaseIntelligentPointer_Calls PCreature;   // +0x08

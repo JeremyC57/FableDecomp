@@ -1,6 +1,6 @@
 // Behaviour test for 0x007AFA50 __copy_backward over intelligent pointers: backward element assignment (insert shift).
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct IP {
     CThing* PItem;
     CThing* GetPItem() const { return PItem; }

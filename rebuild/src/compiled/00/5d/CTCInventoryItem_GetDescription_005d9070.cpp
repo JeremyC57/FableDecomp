@@ -9,29 +9,29 @@
 // Shape: the text id is a const-reference local (loaded into edx before the bank chain, which VC evaluates after the arguments); the def is read twice through an inline by-value accessor (two add-ref/release pairs; the first release load/dec/stores the
 // count around the `seta bl` test of the UNSIGNED text id, the second is `dec [esi+4] ; jne`), the counted entry temporary is released
 // with the inlined DecRef/GetRefCount pair and nulled afterwards (the store survives because the def release follows).
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);         // 0x0099B720
 };
 extern CWideString g_emptyWideString;              // 0x013BCA24
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1
     long m_refCount;                               // +0x04
     void AddRef() { ++m_refCount; }
     void Release() { if (--m_refCount == 0) Destroy(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     ~CDefPointer() { Object->Release(); }
     T* operator->() const { return Object; }
 };
-struct CInventoryItemDef : CDefPointeeBase {
+class CInventoryItemDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     unsigned long ItemDescription;                 // +0x34
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);               // slot 0
     virtual void Delete();                         // slot 1
     unsigned long IVRefCount;                      // +4
@@ -44,7 +44,7 @@ struct CIVCountedPointeeBase {
             Delete();
     }
 };
-template <class T> struct CIVCountedPointer {      // 4 bytes
+template <class T> class CIVCountedPointer { public:      // 4 bytes
     T* Object;
     ~CIVCountedPointer()
     {
@@ -60,12 +60,12 @@ struct CGroupEntry : CIVCountedPointeeBase {       // NGameText::CGroupEntry
 struct CDataBank {                                 // NGameText::CDataBank
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     void*   __vftable;                             // +0x00
     void*   ParentThing;                           // +0x04
     long    field8;                                // +0x08

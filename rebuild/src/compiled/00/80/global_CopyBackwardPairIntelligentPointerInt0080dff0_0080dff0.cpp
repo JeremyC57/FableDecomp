@@ -12,7 +12,7 @@
 //   last is kept in esi and the count in ebx; the int is copied after the SetPItem call.
 struct random_access_iterator_tag { random_access_iterator_tag() { } };   // empty tag, passed by const reference
 
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {                // vtable +0, item handle +4
     void* PData;                                // +0x04
@@ -22,11 +22,11 @@ struct CBaseIntelligentPointer {                // vtable +0, item handle +4
 };
 
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CThing;
+class CThing;
 
 struct SPairIntelligentPointerInt {             // std::pair<CIntelligentPointer<CThing>, int>, 12 bytes
     CIntelligentPointer<CThing> first;          // +0x00

@@ -1,16 +1,16 @@
 // Behaviour test for CVillageTaskPickCrops::IsBetterThan (0x00860D00): nearer crop wins; no rival or an unavailable
 // task falls back to IsTaskAvailable().
 #include <cstdio>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { C3DVector r; r.X = X - o.X; r.Y = Y - o.Y; r.Z = Z - o.Z; return r; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing { C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
+class CThing { public: C3DVector Pos; const C3DVector& GetPosition() const { return Pos; } };
 struct CIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
-struct CVillageTaskPickCrops {
+class CVillageTaskPickCrops { public:
     bool Available; CIntelligentPointer Crop;
     bool IsTaskAvailable() const { return Available; }
     bool IsBetterThan(const CVillageTaskPickCrops* other, const CThing& thing) const

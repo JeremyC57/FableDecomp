@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_calls; static int g_terminated;
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     long AIAction_DoNothing() { return ++g_calls < 4 ? 4 : 0; }
     void Terminate() { ++g_terminated; }

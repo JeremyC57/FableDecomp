@@ -8,7 +8,7 @@ static int gCopies = 0, gDestroys = 0, gFrees = 0;
 
 struct __false_type { __false_type() {} };
 
-struct CInputEventPackage {
+class CInputEventPackage { public:
     long m_words[12];
     CInputEventPackage(long v) { for (int i = 0; i < 12; ++i) m_words[i] = v; }
     CInputEventPackage(const CInputEventPackage& other) { ++gCopies; for (int i = 0; i < 12; ++i) m_words[i] = other.m_words[i]; }

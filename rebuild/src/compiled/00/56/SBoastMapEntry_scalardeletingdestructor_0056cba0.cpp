@@ -8,12 +8,12 @@
 // operator delete 0x00BFE9BC.
 // Shape: a non-virtual `??_G` emitted for the `delete` in the helper below; CBoast's implicit destructor
 // inlined (members in reverse declaration order, addressed straight off esi).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     ~CCharString();                                      // 0x0099EAE0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     ~CWideString();                                      // 0x0099B510
 };

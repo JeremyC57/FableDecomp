@@ -6,14 +6,14 @@
 // CTCBerserk::InitAbility @ 0x0078C900, this action's virtual slot 44 (`call [edx+0B0h]`, a float result), CTCBerserk::SetAnimationTime(float) @ 0x0078BE60.
 // Shape: the GetInterface result guards both calls; the float goes `push ecx ; fstp [esp]` after the virtual call (the argument is
 // evaluated after InitAbility because they are separate statements); the berserk component rides in esi.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                      // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
@@ -36,12 +36,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CThing* GetPItem() const;               // 0x00A01B50
 };
-struct CTCBerserk {                         // interface type 0x84
+class CTCBerserk { public:                         // interface type 0x84
     void InitAbility();                     // 0x0078C900
     void SetAnimationTime(float seconds);   // 0x0078BE60
 };
 
-struct CCombatActionBase {                  // retail sizeof 0x114
+class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12: 0x00857520
@@ -57,7 +57,7 @@ struct CCombatActionBase {                  // retail sizeof 0x114
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 };
 
-struct CCreatureAction_ReleaseStrengthBerserk : CCombatActionBase {
+class CCreatureAction_ReleaseStrengthBerserk : public CCombatActionBase { public:
     virtual void Initialise();
 };
 

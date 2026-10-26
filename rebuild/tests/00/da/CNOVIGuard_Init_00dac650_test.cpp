@@ -3,9 +3,9 @@
 // by-value thing copies add-ref the shared imp.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CImp { long Count; C3DVector Pos; };
-struct CScriptThing {
+class CScriptThing { public:
     CImp* PImp;
     CScriptThing(CImp* p) : PImp(p) { ++PImp->Count; }
     CScriptThing(const CScriptThing& o) : PImp(o.PImp) { ++PImp->Count; }
@@ -14,7 +14,7 @@ struct CScriptThing {
 };
 static int g_log[16]; static int g_n; static long g_maxCount; static C3DVector g_centre; static float g_min, g_max; static long g_group;
 static void Log(int id, const CScriptThing& t) { g_log[g_n++] = id; if (t.PImp->Count > g_maxCount) g_maxCount = t.PImp->Count; }
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void EntitySetAsDamageable(const CScriptThing& t, bool d) const { Log(d ? 100 : 516, t); }
     void EntitySetAsKillable(const CScriptThing& t, bool k, bool b) const { Log(k || b ? 100 : 517, t); }
     void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing& t, bool a) const { Log(a ? 100 : 526, t); }

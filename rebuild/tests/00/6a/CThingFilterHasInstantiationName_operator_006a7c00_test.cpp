@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThing;
+class CThing;
 
 struct NameObjVtbl {
     void* slot00; void* slot04; void* slot08; void* slot0c;
@@ -9,7 +9,7 @@ struct NameObjVtbl {
     void* (__fastcall* slot28)(void* self, void* edx, CThing** ppThing, void* nameKey);
 };
 struct NameObj { NameObjVtbl* vtbl; };
-struct CThing { char pad[0x70]; NameObj* nameObj; };
+class CThing { public: char pad[0x70]; NameObj* nameObj; };
 struct Filter { void* nameKey; };
 
 static void* g_seen_ppThing_deref;

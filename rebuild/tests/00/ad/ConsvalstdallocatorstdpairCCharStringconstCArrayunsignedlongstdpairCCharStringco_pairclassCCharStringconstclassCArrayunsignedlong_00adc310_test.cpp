@@ -3,7 +3,7 @@
 
 // Behaviour model of _Cons_val: copy-construct both pair members at dest from src.
 
-struct CCharString { const char* p; };
+class CCharString { public: const char* p; };
 struct CArrayUL { void* a; void* b; unsigned long n; };
 struct Pair { CCharString first; CArrayUL second; };
 

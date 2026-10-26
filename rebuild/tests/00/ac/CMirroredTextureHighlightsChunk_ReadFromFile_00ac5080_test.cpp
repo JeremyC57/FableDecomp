@@ -1,7 +1,7 @@
 // behaviour copy of CMirroredTextureHighlightsChunk::ReadFromFile: count, resize(count, 0), then count unsigned longs
 #include <cstdio>
 #include <cstring>
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long m_position; const unsigned char* m_pData; long m_remaining;
     void Read(void* buffer, long size)
     {

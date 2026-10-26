@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 // Behaviour test for CPSCDecalRenderer::DatabaseCopy (0x00B1B810): every setting is copied, bit-fields keep their neighbours.
-struct CRGBColour { unsigned int Colour; };
+class CRGBColour { public: unsigned int Colour; };
 struct CPSCDecalRenderer {
     float         DecalLifeSecs;                        // +0x0c
     long          DecalBankIndex;                       // +0x10

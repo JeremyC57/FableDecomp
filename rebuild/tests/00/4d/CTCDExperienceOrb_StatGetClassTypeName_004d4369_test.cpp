@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { char* p; };
+class CCharString { public: char* p; };
 
 static int g_ctor_calls = 0;
 static const char* g_ctor_s = 0;

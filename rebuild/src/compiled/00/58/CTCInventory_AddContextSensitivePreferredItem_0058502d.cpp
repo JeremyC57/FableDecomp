@@ -14,13 +14,13 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 
@@ -39,7 +39,7 @@ struct CContextSensitiveItemVector {                 // std::vector<CContextSens
     void push_back(const CContextSensitiveItem& item);   // 0x00594782
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
 

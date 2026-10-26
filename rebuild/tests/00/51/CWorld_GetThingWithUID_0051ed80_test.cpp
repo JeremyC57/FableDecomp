@@ -3,7 +3,7 @@ typedef unsigned long DWORD;
 
 struct Node { Node* _00; char pad[0x14]; DWORD _18; };
 struct Sub { Node* head; };
-struct CWorld { char pad[0x58]; Sub sub; };
+class CWorld { public: char pad[0x58]; Sub sub; };
 
 static Node* g_result;
 static Node* Model_Find(Sub*, void*) { return g_result; }

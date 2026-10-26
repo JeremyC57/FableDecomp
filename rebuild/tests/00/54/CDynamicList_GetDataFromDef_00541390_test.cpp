@@ -70,7 +70,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long IVRefCount;                                // +0x04
 };
@@ -94,7 +94,7 @@ FABLE_STATIC_ASSERT(offsetof(CIVCountedPointeeBase, IVRefCount) == 0x4);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CComponent {
@@ -239,7 +239,7 @@ FABLE_STATIC_ASSERT(offsetof(CComponent, DefIndex) == 0x158);
 
 #undef CComponent
 namespace NUISystem {
-struct CComponent;
+class CComponent;
 struct ChildPointer {CComponent* Data;void* CountInfo;CComponent* GetPItem()const{return Data;}operator CComponent*()const{return GetPItem();}};
 struct RandomAccessTag {RandomAccessTag(){}};struct FalseType {FalseType(){}};
 const unsigned long* __fastcall FindIndex(const unsigned long*,const unsigned long*,const unsigned long&,const RandomAccessTag&); //00535F5A
@@ -256,7 +256,7 @@ struct Vector2 {float X,Y;};
 // CUIDef has packed definition data: native PositionOffset142 follows Wrapping140/Inverted141.
 // PDB donor PositionOffset15E is likewise unaligned, following bool15C/15D. No CUIDef header exists.
 #pragma pack(push,1)
-struct CUIDef:CIVCountedPointeeBase {
+class CUIDef:public CIVCountedPointeeBase { public:
  unsigned char DefinitionPrefix[0x94-8];IndexArray NonScrollingChildren;unsigned char DefinitionMiddle[0x138-0xa0];long UpLimit,DownLimit;bool Wrapping,Inverted;Vector2 PositionOffset;
  typedef void(CUIDef::*DeleteMethod)()const;
  void DecRef()const{--const_cast<CUIDef*>(this)->IVRefCount;}
@@ -275,7 +275,7 @@ struct ScrollingArray {CComponent** Start;CComponent** Finish;CComponent** Limit
  void InsertOverflow(CComponent**,CComponent* const&,const FalseType&,unsigned long,bool); //00485DBC
  void push_back(CComponent* const& value){if(Finish!=Limit){if(Finish)new(Finish) CComponent*(value);++Finish;}else InsertOverflow(Finish,value,FalseType(),1,true);}
 };
-struct CDynamicList {
+class CDynamicList { public:
  void* VTable;unsigned char ComponentPrefix[0xb0-4];ChildArray Children;unsigned char ComponentSuffix[0x15c-0xbc];
  long BInitialised;Vector2 PositionOffset;long TopIndex,SelectionIndex,NumVisible;ScrollingArray ScrollingChildren;
  // Lowering of actual LoadAndReturnDef() const: thiscall, hidden stack result address, same address in EAX.
@@ -308,7 +308,7 @@ void CDynamicList::GetDataFromDef(){
 
 #include <assert.h>
 namespace NUISystem {
-struct CComponent {int ID;};
+class CComponent { public:int ID;};
 static CUIDef* activeDefinition;static CDynamicList* activeList;static int loads,releases,overflows;static bool shrink;static CComponent** heapBuffer;
 struct DefinitionFixture:CUIDef {void Dispose()const{assert(this==activeDefinition&&IVRefCount==0);++releases;}};
 struct ListFixture:CDynamicList {DefinitionResultStorage* Load(DefinitionResultStorage* out)const{assert(this==activeList);++loads;out->Data=activeDefinition;++activeDefinition->IVRefCount;return out;}};

@@ -8,9 +8,9 @@
 // data word, which cannot carry the virtual destructor, so CTCBase is restated (as the landed 0x007A62D0).
 // Shape: a `__forceinline` user virtual destructor (a plain inline one stays out of line: 30v59) whose body calls RemoveFromGlobalTCs right after the vtable store; members
 // die in reverse order before the out-of-line CTCBase destructor; a `new` factory pulls the `??_G` into the TU.
-struct CThing;
+class CThing;
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase();
     virtual ~CTCBase();                                  // 0x00686830
     CThing* ParentThing;                                 // +0x04
@@ -19,13 +19,13 @@ struct CTCBase {
     void RemoveFromGlobalTCs();                          // 0x00686DF0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString();
     ~CWideString();                                      // 0x0099B510
 };
 
-struct CTCRegionDisplay : CTCBase {
+class CTCRegionDisplay : public CTCBase { public:
     CWideString   CurrentAreaName;                       // +0x0c
     CWideString   CurrentAreaNameExtra;                  // +0x10
     long          FrameNameChanged;                      // +0x14

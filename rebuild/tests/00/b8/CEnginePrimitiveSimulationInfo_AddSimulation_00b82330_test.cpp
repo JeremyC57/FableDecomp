@@ -27,7 +27,7 @@ struct CSimulationArray {
     unsigned int size() const { return count; }
     void resize(unsigned int n, const CCountedPointer& v) { for (unsigned int i = count; i < n; ++i) items[i] = v; if (n > count) count = n; }
 };
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     CSimulationArray Simulations;
     void AddSimulation(unsigned int index, const CCountedPointer& sim)
     {

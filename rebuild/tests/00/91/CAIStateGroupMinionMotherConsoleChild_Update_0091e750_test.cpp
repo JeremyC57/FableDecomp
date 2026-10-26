@@ -23,21 +23,21 @@
 #endif
 #include <stdio.h>
 #include <string.h>
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -57,7 +57,7 @@ struct CThing {
         return present;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const C3DVector& GetPosition() const;       // 0x006A4D00
 };
 
@@ -69,22 +69,22 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // <const CThing>: vtable 0x01237F1C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <const CThing>: vtable 0x01237F1C
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
 };
 
 namespace NEntityEvents {
-struct CEventChildHurtGoToMother {
+class CEventChildHurtGoToMother { public:
     unsigned char _pad0[8];
     CBaseIntelligentPointer PChild;             // +0x08
 };
-struct CIsEventOfType {
+class CIsEventOfType { public:
     long Type;
     CIsEventOfType(long type) : Type(type) { }
 };
 }
-struct CTCEntityEvents {                        // interface 0x42
+class CTCEntityEvents { public:                        // interface 0x42
     bool GetEvent(NEntityEvents::CEventChildHurtGoToMother** event, const NEntityEvents::CIsEventOfType& isType);   // 0x00915760
 };
 long EventSink_91e750(const void* self, long type);   // stand-in: the event-list walk GetEvent does outside the graded bytes
@@ -99,30 +99,30 @@ __declspec(noinline) bool CTCEntityEvents::GetEvent(NEntityEvents::CEventChildHu
 }
 #pragma auto_inline(on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair(long first, long last) : FirstSound(first), LastSound(last) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();             // 0x00693EF0
     unsigned char _pad04[0xb0];
 };
-struct CCreatureAction_PlayAnimation : CCreatureActionBase {
+class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13

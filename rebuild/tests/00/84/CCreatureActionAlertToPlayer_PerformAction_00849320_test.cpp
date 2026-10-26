@@ -1,16 +1,16 @@
 #include <cstdio>
 #include <cstring>
-struct CTCBase { int id; };
+class CTCBase { public: int id; };
 struct CInterfaceMap { struct SEntry { long type; CTCBase* component; }; SEntry* first; SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; } };
-struct CThing { unsigned char _pad0[0x10]; unsigned char m_type; unsigned char _pad11[0x0f]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
+class CThing { public: unsigned char _pad0[0x10]; unsigned char m_type; unsigned char _pad11[0x0f]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces;
     template<class T> bool GetInterface(T** ppOut, long interfaceType) {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) { long type = interfaceType; CInterfaceMap* map = &m_interfaces; CInterfaceMap::SEntry* it = map->LowerBound(&type);
             if (it == map->last || interfaceType < it->type) it = map->last; *ppOut = (T*)it->component; return true; } return false; } };
 static int g_aware = 0; static CThing* g_perceived;
-struct CTCPerceiveThing : CTCBase { CThing* GetPPerceivedThing() { return g_perceived; } void SetAsDirectlyAwareOfPerceivedThing() { ++g_aware; } };
+class CTCPerceiveThing : public CTCBase { public: CThing* GetPPerceivedThing() { return g_perceived; } void SetAsDirectlyAwareOfPerceivedThing() { ++g_aware; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCreatureAction_AlertToPlayer { virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; };
+class CCreatureAction_AlertToPlayer { public: virtual void PerformAction(); unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; };
 void CCreatureAction_AlertToPlayer::PerformAction() { CTCPerceiveThing* pPerceive; if (PCreature.GetPItem()->GetInterface(&pPerceive, 0x34)) { CThing* pPerceived = pPerceive->GetPPerceivedThing(); if (pPerceived && pPerceived->m_type == 2) pPerceive->SetAsDirectlyAwareOfPerceivedThing(); } }
 int main()
 {

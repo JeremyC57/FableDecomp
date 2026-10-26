@@ -8,22 +8,22 @@
 // Shape: both literals are implicit CCharString conversion temporaries, built before any argument is pushed in right-to-left
 // argument order (the sound name first) and destroyed after the base call in reverse order; the pointer member is constructed
 // from the thing in the init list (inline converting ctor: base ctor, derived vtable, SetPItem).
-struct CThingCreatureBase;
-struct CThing;
-struct CAnimationEntry;
-struct CBaseObject;
+class CThingCreatureBase;
+class CThing;
+class CAnimationEntry;
+class CBaseObject;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CSoundPair {                             // two sound ids (user ctor: returned through a hidden pointer)
+class CSoundPair { public:                             // two sound ids (user ctor: returned through a hidden pointer)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -43,7 +43,7 @@ struct CThingCreatureBase {
 };
 CAnimationEntry* __fastcall GetAnimationEntry(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                    // retail sizeof 0xa8
+class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -60,7 +60,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
-struct CCreatureAction_BlowHorn : CCreatureActionBase {   // vtable 0x0127428C
+class CCreatureAction_BlowHorn : public CCreatureActionBase { public:   // vtable 0x0127428C
     CIntelligentPointerThing PObjectToUse;     // +0xa8 (PDB +0xb4)
     virtual void v00();
     CCreatureAction_BlowHorn(CThingCreatureBase* owner, CThing* horn);

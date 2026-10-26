@@ -7,8 +7,8 @@
 // BedSleepAnim +0x10, PDef (CDefPointer<const CBedDef>) +0x14.
 // Shape: speed TU; the false/true values live in eax/cl, and the compiler interleaves the init-list
 // stores with the derived vtable store (the two zero bytes before it, the rest after).
-struct CThing;
-struct CBedDef;
+class CThing;
+class CBedDef;
 
 struct CTCBase_Calls {
     virtual void v00();
@@ -16,12 +16,12 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent);                          // 0x00686800
 };
 
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_pDef;
     CDefPointer() : m_pDef(0) { }
 };
 
-struct CTCBed : CTCBase_Calls {
+class CTCBed : public CTCBase_Calls { public:
     bool                       Empty;                       // +0x0c
     bool                       GettingIn;                   // +0x0d
     bool                       GettingOut;                  // +0x0e

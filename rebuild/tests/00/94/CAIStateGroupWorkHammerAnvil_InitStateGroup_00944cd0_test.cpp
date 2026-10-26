@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CWorld{}; struct CThingAICreature{};
+class CWorld{ public:}; class CThingAICreature{ public:};
 struct S { char pad[0x14]; unsigned char b14; char pad2[0x2f]; int f44; int f48; void Init(const CWorld&, CThingAICreature&); };
 void S::Init(const CWorld&, CThingAICreature&){ f44=0; b14=0; f48=0; }
 int main(){ S o; o.b14=9;o.f44=9;o.f48=9; CWorld w; CThingAICreature t; o.Init(w,t);

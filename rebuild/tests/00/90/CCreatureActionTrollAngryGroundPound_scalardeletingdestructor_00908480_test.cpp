@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_TrollAngryGroundPound {
+class CCreatureAction_TrollAngryGroundPound { public:
     void* vftable;
     int destroyed;
 };

@@ -1,8 +1,8 @@
 #include <cstdio>
 
 // Model of CTCHeroExperience::IsAbleToBreakDownDoors @ 0x006D6370: a creature (type flag bit 3) that is a child cannot.
-struct CThing { unsigned long ThingTypeFlags; bool Child; bool IsChild() const { return Child; } };
-struct CTCHeroExperience {
+class CThing { public: unsigned long ThingTypeFlags; bool Child; bool IsChild() const { return Child; } };
+class CTCHeroExperience { public:
     CThing* ParentThing;
     bool IsAbleToBreakDownDoors() const
     {

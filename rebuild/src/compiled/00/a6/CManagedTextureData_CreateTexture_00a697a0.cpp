@@ -7,21 +7,21 @@
 //   Allocated +0x48 -- the header is a flat POD without methods, so the same members are declared locally to carry the method.
 // Shape: the request and the result are two C2DExtentsI frame locals (user constructor, so the result comes back through a hidden
 //   pointer); the result fields are stored to Width/Height and copied back into the request local, whose address goes to Initialise.
-struct C2DExtentsI {
+class C2DExtentsI { public:
     long Width;
     long Height;
     C2DExtentsI() { }
     C2DExtentsI(long w, long h) : Width(w), Height(h) { }
 };
-struct CPixelFormat;
+class CPixelFormat;
 enum ESurfacePool { ESP_DEFAULT = 0, ESP_MANAGED = 1 };
 C2DExtentsI __fastcall GetNextValidDimensions(const C2DExtentsI& requested, const CPixelFormat& format);   // 0x009FA620
-struct CTexture {
+class CTexture { public:
     bool Initialise(const C2DExtentsI& size, long mipLevels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool,
                     bool renderTarget, bool dynamic);      // 0x009FA280
 };
-struct CCPPointerInfo;
-struct CManagedTextureData {
+class CCPPointerInfo;
+class CManagedTextureData { public:
     void*          __vftable;                      // +0x00
     unsigned char  _pad04[0x18];
     unsigned short Width;                          // +0x1c

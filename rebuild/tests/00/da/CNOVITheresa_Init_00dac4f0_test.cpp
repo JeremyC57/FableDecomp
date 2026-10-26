@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CScriptThing { int id; };
+class CScriptThing { public: int id; };
 struct CGSI {
     int log[8]; int n; int pushable; int info;
     void Damageable(const CScriptThing&, bool) { log[n++] = 516; }

@@ -16,7 +16,7 @@
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 
 template<class T>
-struct CArray {
+class CArray { public:
     T* m_first;
     T* m_last;
     T* m_end;

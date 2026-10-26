@@ -3,20 +3,20 @@
 // counted follow-up pointer (block {1, deleter, object}, or null).
 #include <cstdio>
 #include <cstring>
-struct CThingCreatureBase { int id; };
+class CThingCreatureBase { public: int id; };
 static int g_strings = 0;
-struct CCharString { const char* m_pData; CCharString(const char* t) : m_pData(t) { ++g_strings; } CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_strings; } ~CCharString() { --g_strings; } };
+class CCharString { public: const char* m_pData; CCharString(const char* t) : m_pData(t) { ++g_strings; } CCharString(const CCharString& o) : m_pData(o.m_pData) { ++g_strings; } ~CCharString() { --g_strings; } };
 CCharString GetAnimationToUse(CThingCreatureBase*) { return CCharString("SHEATHE_TO_USE"); }
-struct CSoundPair { long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
+class CSoundPair { public: long FirstSound; long LastSound; CSoundPair() : FirstSound(0), LastSound(0) { } };
 struct CRefCountedBase { long m_count; void DecRef() { --m_count; } long GetRefCount() const { return m_count; } };
 static int g_mapDestroyed = 0;
 struct CPointeeVirtual { virtual void v00() { } virtual void Destroy() { ++g_mapDestroyed; } };
-struct CAnimComponentMap : CPointeeVirtual, CRefCountedBase {
+class CAnimComponentMap : public CPointeeVirtual, public CRefCountedBase { public:
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 static CAnimComponentMap g_map;
 static long g_transition = -5;
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex, AnimName, GroupName; CAnimComponentMap* Components;
     CAnimationEntry(long b) : BankIndex(b), AnimName(0), GroupName(0), Components(0) { }
     CAnimationEntry(const CAnimationEntry& other, long transitionInTime)
@@ -26,7 +26,7 @@ struct CAnimationEntry {
 static CAnimationEntry g_entry(77);
 static char g_name[32];
 const CAnimationEntry& GetAnimationFromName(CThingCreatureBase*, const CCharString& name) { std::strcpy(g_name, name.m_pData); return g_entry; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* o; float a, b; long bank; CSoundPair s; long c, d;
     virtual void v00() { }
     CCreatureActionBase(CThingCreatureBase* owner, float a_, float b_, const CAnimationEntry& an, const CSoundPair& snd, long c_, long d_)
@@ -37,11 +37,11 @@ struct SCountBlock {
     long m_references; void (*m_pfnDestroy)(void*); void* m_pObject;
     SCountBlock(void* object) : m_references(1), m_pfnDestroy(DeleteCreatureAction), m_pObject(object) { }
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject; SCountBlock* m_pCount;
     CCountedPointer(T* object) : m_pObject(object) { if (object) m_pCount = new SCountBlock(m_pObject); else m_pCount = 0; }
 };
-struct CCreatureAction_SheatheItemToInventory : CCreatureActionBase {
+class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase { public:
     CCountedPointer<CCreatureActionBase> PFollowUpAction;
     CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase* followUp, long c);
 };

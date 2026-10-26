@@ -14,7 +14,7 @@ struct CBase_0062ebc0 {
     CBase_0062ebc0(const CBase_0062ebc0& other);     // 0x0062EBC0
 };
 
-struct CCreatureAction_BeStunned : CBase_0062ebc0 {
+class CCreatureAction_BeStunned : public CBase_0062ebc0 { public:
     unsigned char m_extra;                          // +0xa8
     virtual void v00();                    // own vtable; copy constructor implicit
     CBase_0062ebc0* Clone();

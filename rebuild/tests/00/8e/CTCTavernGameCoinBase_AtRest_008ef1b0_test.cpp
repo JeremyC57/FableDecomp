@@ -1,6 +1,6 @@
 #include <cstdio>
 // Behaviour test for CTCTavernGameCoinBase::AtRest (0x008EF1B0).
-struct C2DVector { float x; float y; float GetLengthSquared() const { return x * x + y * y; } };
+class C2DVector { public: float x; float y; float GetLengthSquared() const { return x * x + y * y; } };
 struct CTavernCoin { unsigned char _pad[0xc]; C2DVector m_velocity; unsigned char _pad_0x14[0x28]; };
 struct CTCTavernGameCoinBase {
     unsigned char _pad[0xfc];

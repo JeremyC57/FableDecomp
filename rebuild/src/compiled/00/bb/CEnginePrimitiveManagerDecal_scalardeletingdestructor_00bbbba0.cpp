@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerDecal {
+class CEnginePrimitiveManagerDecal { public:
     void* vftable;
 };
 

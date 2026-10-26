@@ -9,8 +9,8 @@
 // the empty (self-referential) state, then frees the head node itself.
 // Callee 0x7c8114 is operator delete.
 
-struct TreeNode
-{
+class TreeNode
+{ public:
     TreeNode* next;   // +0x0
     TreeNode* prev;   // +0x4
 };

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_StrafeForward {
+class CCreatureAction_StrafeForward { public:
     void* vftable;
     int destroyed;
 };

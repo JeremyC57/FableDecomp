@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString() : m_pStringData((void*)1) { }
 };

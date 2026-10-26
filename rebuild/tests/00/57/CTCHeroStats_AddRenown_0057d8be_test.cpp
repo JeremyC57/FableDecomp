@@ -2,7 +2,7 @@
 // paid for (carrying the remainder), shows the change on the overhead display (if present) and in the GUI.
 #include <cstdio>
 // --- test-side copy of the CThing interface lookup (std::bitset presence + sorted {type, component} map) ---
-struct CTCBase;
+class CTCBase;
 struct CPresenceBits {
     long bits[16];
     bool test(long bit) { return bit >= 0 && bit < 512 && ((bits[bit >> 5] >> (bit & 31)) & 1) != 0; }
@@ -13,7 +13,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-struct CThing {
+class CThing { public:
     CPresenceBits m_present;
     CInterfaceMap m_interfaces;
     CInterfaceMap::SEntry entries[4];
@@ -36,15 +36,15 @@ struct CThing {
 // --- end lookup copy ---
 static inline void ClampMin(long& value, long minimum) { if (value < minimum) value = minimum; }
 struct CLongVector { long* m_pFirst; long* m_pLast; long* m_pEnd; };
-struct CHeroStatsDef { CLongVector RenownLevelCosts; };
-struct CDefinitionManager { CHeroStatsDef* PHeroStatsDef; };
+class CHeroStatsDef { public: CLongVector RenownLevelCosts; };
+class CDefinitionManager { public: CHeroStatsDef* PHeroStatsDef; };
 static CDefinitionManager g_defs;
 static float g_overhead = 0.0f; static int g_overheadCalls = 0;
-struct CTCOverheadDisplay { void AddRenownEntry(float renown) { g_overhead = renown; ++g_overheadCalls; } };
+class CTCOverheadDisplay { public: void AddRenownEntry(float renown) { g_overhead = renown; ++g_overheadCalls; } };
 static long g_gui = 0; static int g_guiCalls = 0;
-struct CPlayerGui { void SetRenownChange_00437920(long renown) { g_gui = renown; ++g_guiCalls; } };
+class CPlayerGui { public: void SetRenownChange_00437920(long renown) { g_gui = renown; ++g_guiCalls; } };
 static CPlayerGui g_gui_object; CPlayerGui* g_pPlayerGui = &g_gui_object;
-struct CTCHeroStats {
+class CTCHeroStats { public:
     CThing* ParentThing;
     long RenownLevel, RenownMaxLevel, RenownPointsInLevel, RenownTotal;
     int upgrades;

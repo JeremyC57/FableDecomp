@@ -9,7 +9,7 @@
 // The manifest label `_Cons_val<allocator<...>>` is propagated; the body is STLport _Construct.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CThingObject;
+class CThingObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThingObject* m_pItem;                  // +0x04

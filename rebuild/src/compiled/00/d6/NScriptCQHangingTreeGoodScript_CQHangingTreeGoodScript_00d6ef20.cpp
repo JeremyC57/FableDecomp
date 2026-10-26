@@ -13,9 +13,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CGameScriptInterface;
+class CGameScriptInterface;
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04..+0x40
     CScriptBase();                                   // 0x00CB8110
@@ -32,8 +32,8 @@ namespace N_0099a2d0 { struct CBase {
     virtual ~CBase();                                // 0x0099A2E0
 }; } using N_0099a2d0::CBase;
 
-struct CScriptThing;
-struct CCPPointerInfo;
+class CScriptThing;
+class CCPPointerInfo;
 
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
@@ -41,13 +41,13 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-struct CScriptThing : CBase {                        // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();
 };
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };

@@ -16,7 +16,7 @@
 // (PDB +0x1BC); CHeroStatsDef::DrinkAffectMultiplierMultiplier +0x88 (PDB +0x90).
 #pragma optimize("s", on)
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x88];
     float         DrinkAffectMultiplierMultiplier;     // +0x88 (PDB +0x90)
 };

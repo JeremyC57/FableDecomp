@@ -3,13 +3,13 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -22,11 +22,11 @@ struct CModeBase {
     virtual void v06() {}
     virtual float GetMovementSpeed(const C3DVector& offset, const C3DVector& facing, long movementType) { ++g_speedCalls; g_offsetSeen = offset; g_facingSeen = facing; g_typeSeen = movementType; return 3.5f; }
 };
-struct CTCCreatureModeManager { CModeBase mode; CModeBase* GetCurrentMode() { return &mode; } };
-struct CTCPhysicsBase {
+class CTCCreatureModeManager { public: CModeBase mode; CModeBase* GetCurrentMode() { return &mode; } };
+class CTCPhysicsBase { public:
     virtual C3DVector GetFacing() const { return C3DVector(0.0f, 1.0f, 0.0f); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -48,7 +48,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType);
     __forceinline CTCCreatureModeManager* GetModeManager()
     {

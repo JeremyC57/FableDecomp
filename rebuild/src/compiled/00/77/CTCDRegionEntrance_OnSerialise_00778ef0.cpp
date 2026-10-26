@@ -8,11 +8,11 @@
 // second unused. PDB CTCDRegionEntrance (0x10 bytes): Active +0x0c.
 // Shape: the `true` default is a one-byte temporary in the high byte of the `push ecx` frame slot,
 // stored after the argument pushes; `this` is advanced in place (`add ecx,0Ch`) to form &Active.
-struct CPersistContext {
+class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
 };
 
-struct CTCDRegionEntrance {
+class CTCDRegionEntrance { public:
     virtual void v00();
     unsigned char _base[0x8];                               // CTCBase: ParentThing +4, flags +8/+9
     bool          Active;                                   // +0x0c

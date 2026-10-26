@@ -8,9 +8,9 @@
 // is CTCDExperienceOrb's.
 // Shape: speed TU; the zero and -1 registers (`xor ecx,ecx ; or eax,-1`) are set up before the vtable store and every
 // initialiser follows it in declaration order (+0x18 is left alone).
-struct CThing;
+class CThing;
 
-struct CTCDriverBase {
+class CTCDriverBase { public:
     virtual void v00();
     unsigned char _body[0x8];                // CTCBase: ParentThing +4, flags +8/+9
     CTCDriverBase(CThing* parent);           // 0x00771200
@@ -18,7 +18,7 @@ struct CTCDriverBase {
 
 struct CIndexM1 { long v; CIndexM1() : v(-1) {} };
 struct CZeroWord { long v; CZeroWord() : v(0) {} };
-struct CTCDExperienceOrb : CTCDriverBase {
+class CTCDExperienceOrb : public CTCDriverBase { public:
     long          m_target;                  // +0x0c
     CIndexM1      m_index10;                 // +0x10
     CIndexM1      m_index14;                 // +0x14

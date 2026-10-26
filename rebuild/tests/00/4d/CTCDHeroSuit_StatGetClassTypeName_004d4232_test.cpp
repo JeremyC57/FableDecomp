@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CCharString { const char* s; int n; void Ctor(const char* a,int b){ s=a; n=b; } };
+class CCharString { public: const char* s; int n; void Ctor(const char* a,int b){ s=a; n=b; } };
 CCharString* StatGetClassTypeName(CCharString* ret){ ret->Ctor("DoCreatureAction",-1); return ret; }
 int main(){
   CCharString slot; slot.s=0; slot.n=0;

@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CVillagerInteractionsDef {
+class CVillagerInteractionsDef { public:
     int f0;
 };
 

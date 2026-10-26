@@ -2,11 +2,11 @@
 // behaviour test for CThingCreatureBase::SetLastActionHandedness (0x006619F0)
 static long g_frame = 0;
 static int g_getWorldCalls = 0;
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame() { return g_frame; }
 };
 static CWorld g_world;
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad000[0x138];
     long PreviousActionHandedness;
     long PreviousActionHandednessWF;

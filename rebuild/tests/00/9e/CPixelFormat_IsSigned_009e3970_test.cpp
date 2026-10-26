@@ -2,7 +2,7 @@
 
 struct CPixelFormatDescriptor { long ChannelType; unsigned char rest[0x20]; };
 CPixelFormatDescriptor g_PixelFormatDescriptors[4];
-struct CPixelFormat { long FormatIndex; bool IsSigned() { return g_PixelFormatDescriptors[FormatIndex].ChannelType == 6; } };
+class CPixelFormat { public: long FormatIndex; bool IsSigned() { return g_PixelFormatDescriptors[FormatIndex].ChannelType == 6; } };
 int main()
 {
     g_PixelFormatDescriptors[2].ChannelType = 6; g_PixelFormatDescriptors[3].ChannelType = 5;

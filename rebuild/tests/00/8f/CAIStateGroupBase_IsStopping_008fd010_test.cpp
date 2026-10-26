@@ -1,6 +1,6 @@
 #include <cstdio>
-struct CAIBrain { void* __vftable; unsigned char _pad[1]; bool m_bStopping; };
-struct CAIStateGroupBase { void* __vftable; CAIBrain* PBrain; unsigned char ScriptAIPriority[4]; void* Name_PStringData; bool Terminated; unsigned char Priority; bool Enabled; long IsStopping() const; };
+class CAIBrain { public: void* __vftable; unsigned char _pad[1]; bool m_bStopping; };
+class CAIStateGroupBase { public: void* __vftable; CAIBrain* PBrain; unsigned char ScriptAIPriority[4]; void* Name_PStringData; bool Terminated; unsigned char Priority; bool Enabled; long IsStopping() const; };
 long CAIStateGroupBase::IsStopping() const { return PBrain->m_bStopping || Terminated; }
 int main()
 {

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-struct CCharString { const char* m_text; };
-struct CDefString { long TablePos; CDefString(const CCharString& n) : TablePos((long)std::strlen(n.m_text)) { } };
+class CCharString { public: const char* m_text; };
+class CDefString { public: long TablePos; CDefString(const CCharString& n) : TablePos((long)std::strlen(n.m_text)) { } };
 struct CRegisteredTCInfo { void* m_pfnAllocate; unsigned long m_type; CCharString m_name; };
 static CRegisteredTCInfo g_infos[2];
 static const CRegisteredTCInfo* FindRegisteredTCInfo(const CCharString& name)
@@ -18,7 +18,7 @@ struct CSmallVector_CEntry {
     long m_storage[8 * 3]; signed char Size;
     void push_back(const CEntry& e) { long* s = &m_storage[Size * 3]; s[0] = e.Name.TablePos; s[1] = (long)e.Type; s[2] = e.Flag ? 1 : 0; ++Size; }
 };
-struct CThingComponentSet {
+class CThingComponentSet { public:
     CSmallVector_CEntry Entries;
     void Add(const CCharString& name, bool flag)
     {

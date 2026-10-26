@@ -15,7 +15,7 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CAppearanceModifierGraphics {
+class CAppearanceModifierGraphics { public:
     struct CEntry {                                // PDB 24 bytes
         long  Type;                                // +0x00 EEngineGraphicType
         long  MorphType;                           // +0x04 EHeroMorphType

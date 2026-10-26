@@ -1,8 +1,8 @@
 // Behaviour test for CTCHitLocations::GetPCombatFirstHitLocationIntersectionWithFiniteLine (retail 0x008168B0): model copy + stubs.
 #include <cstdio>
 
-struct CThing { int id; };
-struct C3DVector { float X, Y, Z; };
+class CThing { public: int id; };
+class C3DVector { public: float X, Y, Z; };
 static const C3DVector* g_lastOrigin = 0;
 static long g_lastFlags = 0;
 struct CHitVolume {
@@ -15,9 +15,9 @@ struct CHitVolume {
         return true;
     }
 };
-struct CHitLocationDef { CHitVolume* PVolume; };
+class CHitLocationDef { public: CHitVolume* PVolume; };
 namespace NHitLocations {
-struct CHitLocation { CThing* POwnerThing; CHitLocationDef* PDef; bool Enabled; };
+class CHitLocation { public: CThing* POwnerThing; CHitLocationDef* PDef; bool Enabled; };
 }
 struct SHitLocationEntry { NHitLocations::CHitLocation first; long second; };
 struct THitLocationIntersectionElement { long Value; NHitLocations::CHitLocation* PHitLocation; C3DVector HitA; C3DVector HitB; };
@@ -41,7 +41,7 @@ NHitLocations::CHitLocation* GetPBestHitLocationFromList(THitLocationIntersectio
     *outA = elements[0].HitA; *outB = elements[0].HitB;
     return elements[0].PHitLocation;
 }
-struct CTCHitLocations {
+class CTCHitLocations { public:
     SHitLocationEntry* HitLocations_start;
     SHitLocationEntry* HitLocations_finish;
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithFiniteLine(const C3DVector& start,

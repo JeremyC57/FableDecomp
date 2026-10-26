@@ -5,7 +5,7 @@
 // Vtable 0x0122F5D4 slot 36. The temporary C2DVector(Zoom.X + delta.X, Zoom.Y + delta.Y) is constructed
 // in place in the frame while the trailing arguments are pushed (right to left), then its address is
 // pushed last; `add esp,8` releases the frame after the __fastcall callee cleans its own arguments.
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }

@@ -43,7 +43,7 @@ struct Map {
 static int g_frames[16];
 static int g_calls = 0;
 
-struct CScriptBase {
+class CScriptBase { public:
     Map EntityScripts;
     bool UpdateSpawnedFunction(int script) { g_frames[g_calls++] = script; return (script % 2) == 0; }
     void RunEntityThreads()

@@ -12,7 +12,7 @@ extern long g_framesPerSecond;              // 0x01375550
 extern unsigned long g_minSecondsBetweenBuys;   // 0x0138C694
 long __fastcall GFGetFrameCount();          // 0x0049D870
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x4..+0x13
 };

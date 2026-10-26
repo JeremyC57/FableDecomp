@@ -12,19 +12,19 @@
 #undef CResourceList
 #undef CResource
 #include "engine/CIVCountedPointeeBase.h"
-struct CResourceList;
-struct CResource {
+class CResourceList;
+class CResource { public:
  virtual ~CResource();virtual void Delete()const;
  virtual bool UnloadResource();virtual unsigned long GetUnloadableMemory()const;
  virtual bool IsResourceLoaded()const;virtual void OnResourceLoaded();
  virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
  virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
- unsigned long IVRefCount;struct CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
+ unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
  void ListRemove(); //009FBFB0
  void ListInsert(CResource*,CResource*); //009FBF90
  void Touch();
 };
-struct CResourceList {
+class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
@@ -53,20 +53,20 @@ template<class T>struct OwnedIVPointer {
  __forceinline void Adopt(T* value){Reset();Object=value;}
  T* operator->()const{return Object;}
 };
-struct CBankFileAsyncData {};
-struct CBankFileAsyncEntry {CountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long,unsigned long,long);}; //009D6100
+class CBankFileAsyncData { public:};
+class CBankFileAsyncEntry { public:CountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long,unsigned long,long);}; //009D6100
 extern long gDataBankReadPriority; //01396314 used as EThreadedFilePriority
-struct CResourceBank {void* VTable;struct CResourceList ResourceList,LoadingQueue;void AddResource(CResource&);}; //009FC380
+class CResourceBank { public:void* VTable;class CResourceList ResourceList,LoadingQueue;void AddResource(CResource&);}; //009FC380
 namespace NGameText {
-struct CDataBank;struct CDataBankTextEntry;struct CTextTag;
-struct CTextEntry:CResource {
+class CDataBank;class CDataBankTextEntry;class CTextTag;
+class CTextEntry:public CResource { public:
  virtual bool UnloadResource();
  CCharString SpeechBank,Narrator,SoundName;CWideString Text;CArrayNative<CTextTag> Tags;CountedPointer<CBankFileAsyncData> PFileData;const CDataBankTextEntry* Owner;
  CTextEntry(CountedPointer<CBankFileAsyncData>&,const CDataBankTextEntry*); //009C8250 native44 donor48, real array12 vs16
 };
-struct CDataBankTextEntry {OwnedIVPointer<CTextEntry> PGroup;void BeginLoading(unsigned long,CDataBank*);};
-struct CDataBank {
- unsigned char BankAsyncState[0x164];struct CResourceBank ResourceBank;
+class CDataBankTextEntry { public:OwnedIVPointer<CTextEntry> PGroup;void BeginLoading(unsigned long,CDataBank*);};
+class CDataBank { public:
+ unsigned char BankAsyncState[0x164];class CResourceBank ResourceBank;
  CountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long); //009D58D0
  unsigned long GetEntryDataSize(unsigned long)const; //009CC240
 };

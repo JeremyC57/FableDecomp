@@ -62,7 +62,7 @@ template <class T> struct CRetailList {          // STLport list<CCountedPointer
 };
 
 namespace NUISystem {
-struct CAction;
+class CAction;
 struct CActionParam_ {
     virtual ~CActionParam_();                    // slot 0: scalar deleting destructor
     long Type;                                   // +0x04 (1: not owned by the entry)
@@ -91,12 +91,12 @@ struct CClickableBase2 { virtual void v20(); };
 struct CObserver { virtual void v10(); unsigned char _body[0x10]; };
 namespace NUISystem {
 
-struct CClickable : CClickableBase0, CObserver, CClickableBase2 {
+class CClickable : public CClickableBase0, public CObserver, public CClickableBase2 { public:
     unsigned char _body[0x198 - 0x1c];
     ~CClickable();                                  // 0x0055B760
 };
 
-struct CMenuEntry : CClickable {
+class CMenuEntry : public CClickable { public:
     bool                               IsAvailable;            // +0x198
     CPodList<CActionParam_*>*          PUIActionParams;        // +0x19c
     CPodList<long>*                    PThingActionParams;     // +0x1a0

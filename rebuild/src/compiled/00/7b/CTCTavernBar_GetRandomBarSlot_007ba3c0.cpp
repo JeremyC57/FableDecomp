@@ -14,9 +14,9 @@
 //   jug count taken before the seed; the landed WorldRandomRange step inline (`range ? seed % range : 0`); a default
 //   CCharString declared first and never used; the point name built by += and passed by value (declared copy ctor).
 class CTCBase;
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { float m[6]; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: float m[6]; };
+class CCharString { public:
     void* m_data;
     CCharString();                                      // 0x0099E4B0
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -60,12 +60,12 @@ public:
         return false;
     }
 };
-struct CTCNamedUserActionPoints {
+class CTCNamedUserActionPoints { public:
     bool GetFreeNamedActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* rh, CCharString name, long* index,
                                  long flags, bool reserve);   // 0x007FF190
 };
 struct CJugPointer { void* m_vfptr; void* m_pItem; };    // CIntelligentPointer<CThingObject>
-struct CTCTavernBar {
+class CTCTavernBar { public:
     virtual void v00();
     CThing*       ParentThing;                          // +0x04 (CTCBase)
     unsigned char _pad08[0x4];

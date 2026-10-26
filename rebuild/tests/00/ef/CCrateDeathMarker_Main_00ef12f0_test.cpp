@@ -9,12 +9,12 @@
 static int g_failures = 0;
 #define CHECK(c) do { if (!(c)) { std::printf("FAIL line %d: %s\n", __LINE__, #c); ++g_failures; } } while (0)
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 static int g_liveVillagers = 0;
 static int g_created = 0;
 
-struct CScriptThing {
+class CScriptThing { public:
     int  Id;          // 0 = Me / hero, 1 = villager
     bool Owned;
     CScriptThing() : Id(0), Owned(false) { }
@@ -48,7 +48,7 @@ static bool IsDistanceBetweenThingsOver(const CScriptThing&, const CScriptThing&
     return g_frame >= g_farFrom;
 }
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     CScriptThing Hero;
     void NewScriptFrame() const { ++g_frame; }
     const CScriptThing& GetHero() const { return Hero; }

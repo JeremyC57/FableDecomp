@@ -21,13 +21,13 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CCPPointerInfo {                                 // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
+class CCPPointerInfo { public:                                 // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void* data);          // called with Data in ecx, nothing on the stack
     void* Data;
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -48,9 +48,9 @@ template <class T> struct CCountedPointer {
     ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
 };
 
-struct CContainmentVolume;
+class CContainmentVolume;
 
-struct C3DMeshVolume {                                  // Ego_r.pdb, 0xC bytes
+class C3DMeshVolume { public:                                  // Ego_r.pdb, 0xC bytes
     CCharString                         Name;           // +0x00
     CCountedPointer<CContainmentVolume> ConvexVolume;   // +0x04
     C3DMeshVolume& operator=(const C3DMeshVolume& other);   // 0x00A32960 (out of line)

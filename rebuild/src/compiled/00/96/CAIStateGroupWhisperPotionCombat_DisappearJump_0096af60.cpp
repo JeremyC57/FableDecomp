@@ -1,8 +1,8 @@
 // CAIStateGroup_WhisperPotionCombat::DisappearJump() -- jump into the sky, hide at the jump-to position for half a second, then land
 // Leaf: DisappearJump
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096AF60; SW2 sweep (advisor/0096af60/probe/n3.cpp).
-struct CThingCreatureBase;
-struct C3DVector { float x, y, z; };
+class CThingCreatureBase;
+class C3DVector { public: float x, y, z; };
 struct CThingGraphic {
     virtual void g00();
     virtual void g01();
@@ -50,7 +50,7 @@ struct CThingGraphic {
     virtual void SetFlags(long flags);          // slot 43 (+0xac)
     virtual void Restore();                     // slot 44 (+0xb0)
 };
-struct CThing {
+class CThing { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -96,28 +96,28 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CSoundPair {
+class CSoundPair { public:
     long m_first;
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                         // 0x00693EF0
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
     CCombatActionBase(CThingCreatureBase* creature, CThing* target, long action, const CSoundPair& sound);   // 0x00857F30
     ~CCombatActionBase();                           // 0x0062E900
     void SetPDef(const CCharString& name);          // 0x008574D0
 };
-struct CCreatureAction_WhisperJumpIntoSky : CCombatActionBase {   // vtable 0x012969E4
+class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase { public:   // vtable 0x012969E4
     virtual void v00();
     __forceinline CCreatureAction_WhisperJumpIntoSky(CThingCreatureBase* creature, CThing* target)
         : CCombatActionBase(creature, target, 0x96, CSoundPair()) { SetPDef("JUMP_INTO_SKY"); }
@@ -126,15 +126,15 @@ struct CCreatureAction_WhisperLand : CCombatActionBase {   // ctor 0x008CCBD0
     CCreatureAction_WhisperLand(CThingCreatureBase* creature);
 };
 struct CThingCreature : CThing { };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreature* PCreature;                      // +0x18
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                    // 0x0049D870
 };
 extern long g_FramesPerSecond;                      // 0x01375550
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

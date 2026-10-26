@@ -23,7 +23,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
@@ -87,17 +87,17 @@ template <class T> struct CRetailList {          // STLport list: the header-nod
 
 namespace NUISystem {
 
-struct CActionParam {
+class CActionParam { public:
     long Type;                                          // +0x04
     CActionParam(long type) : Type(type) {}
     virtual void v00();
 };
-struct CActionParamULONG : CActionParam {              // vtable 0x0122F844
+class CActionParamULONG : public CActionParam { public:              // vtable 0x0122F844
     unsigned long Value;                                // +0x08
     CActionParamULONG(unsigned long value) : CActionParam(5), Value(value) {}
     virtual void v00();
 };
-struct CAction {                                        // retail 0x10 bytes
+class CAction { public:                                        // retail 0x10 bytes
     long ActionType;                                    // +0x00
     CRetailList<CActionParam*> UIActionParams;          // +0x04
     void* ThingActionParams;                            // +0x08
@@ -105,7 +105,7 @@ struct CAction {                                        // retail 0x10 bytes
     void AddUIActionParam(CActionParam* param) { UIActionParams.push_back(param); }
 };
 
-struct CComponent {
+class CComponent { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -174,7 +174,7 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-struct CDraggableInto : CComponent, CDrawableInterface, CDraggableInterface {
+class CDraggableInto : public CComponent, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x30 - 0x1c];
     float m_time;                                       // +0x30
     unsigned char _pad34[0xb0 - 0x34];
@@ -182,7 +182,7 @@ struct CDraggableInto : CComponent, CDrawableInterface, CDraggableInterface {
     unsigned char _padbc[0x15c - 0xbc];
     void Initialise();                                  // 0x0052C730
 };
-struct CTextSlider : CDraggableInto {            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60
+class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164

@@ -40,16 +40,16 @@ public:
         return false;
     }
 };
-struct CTCLight {
+class CTCLight { public:
     void SetActive(bool active);                            // 0x006412B0
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() { Object = 0; }
     __forceinline ~CDefPointer()
@@ -59,11 +59,11 @@ template <class T> struct CDefPointer {
     }
     T* operator->() const { return Object; }
 };
-struct CLightDef : CDefClassBase { };
+class CLightDef : public CDefClassBase { public: };
 struct CThingDef : CDefClassBase {
     bool GetSubDef(CDefPointer<CLightDef>* out);            // 0x0059346A
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingDef>* out);   // 0x0042AF3C
 };
 
@@ -101,7 +101,7 @@ struct CTCInventoryBase {
     void RemoveItemFromInventory(long defIndex, long count);   // 0x005BF3C6
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     unsigned char _pad008[0x148 - 0x08];
     CRetailVector<long> SlotItems;                          // +0x148
     CRetailVector<long> QuickAccessItems;                   // +0x154

@@ -42,7 +42,7 @@ struct CInventoryScreenBase {                        // the screen interface bas
     virtual void Copy(const CInventoryScreenBase* other);    // 0x0066E7A6 (empty)
 };
 
-struct CTCInventoryAbilities : CTCInventoryBase, CInventoryScreenBase {
+class CTCInventoryAbilities : public CTCInventoryBase, public CInventoryScreenBase { public:
     unsigned char       _pad_0x134[0xC];
     bool                WaitingToGiveTutorial;       // +0x140
     bool                Initialised;                 // +0x141

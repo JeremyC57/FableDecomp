@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <new>
 struct __false_type { __false_type() { } };
-struct C2DCoordI {
+class C2DCoordI { public:
     long X;
     long Y;
     C2DCoordI() {}
@@ -87,7 +87,7 @@ struct CInterfaceMap {
         return lo;
     }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned long m_presentBits[9];
@@ -112,20 +112,20 @@ public:
         return out;
     }
 };
-struct CTCTeleporter { bool Enabled; };
-struct CRegion {
+class CTCTeleporter { public: bool Enabled; };
+class CRegion { public:
     long* LinkedMapsStart;
     long* LinkedMapsFinish;
     long* LinkedMapsEnd;
     unsigned long size() const { return LinkedMapsFinish - LinkedMapsStart; }
 };
 static CRegion g_regions[3];
-struct CWorldMap {
+class CWorldMap { public:
     const CRegion& GetRegion(long index) { return g_regions[index]; }
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const { return C2DCoordI(pos.X + map * 100, pos.Y - map); }
 };
-struct CThingFilter_HasTC { long m_type; CThingFilter_HasTC(long type) : m_type(type) { } };
-struct CThingFilter_InMap {
+class CThingFilter_HasTC { public: long m_type; CThingFilter_HasTC(long type) : m_type(type) { } };
+class CThingFilter_InMap { public:
     const CWorldMap* m_worldMap;
     long m_map;
     CThingFilter_InMap(const CWorldMap& worldMap, long map) : m_worldMap(&worldMap), m_map(map) { }
@@ -138,7 +138,7 @@ struct CFilter_Bind2 {
 inline CFilter_Bind2 operator&&(const CThingFilter_HasTC& a, const CThingFilter_InMap& b) { return CFilter_Bind2(a, b); }
 static CThing* g_things[8];
 static int g_thingCount;
-struct CThingSearchTools {
+class CThingSearchTools { public:
     void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out)
     {
         for (int i = 0; i < g_thingCount; ++i)
@@ -146,14 +146,14 @@ struct CThingSearchTools {
                 out.push_back(g_things[i]);
     }
 };
-struct CWorld {
+class CWorld { public:
     CWorldMap* Map;
     CThingSearchTools* PThingSearchTools;
     virtual CWorldMap* PeekWorldMap() { return Map; }
     void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out) { PThingSearchTools->GetAllThings(filter, out); }
 };
 static CWorld* g_world;
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CCoordVector  ActiveRegionTeleportPositions;
     long          ActiveRegionIndex;
     CWorld* GetWorld() const { return g_world; }

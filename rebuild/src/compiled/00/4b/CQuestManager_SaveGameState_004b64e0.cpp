@@ -10,15 +10,15 @@
 // {char* data, long length}; the empty string literal is 0x0129AAF4.
 // Shape: the string is a named local; the writing path inlines the string writer (GetLength() then
 // WriteBuffer(GetPString(), GetLength()): the two null-tested accessors fold into one branch with `""`/0).
-// Leaf: ?SaveGameState@CQuestManager@@QAEXAAUCPersistContext@@@Z
-struct CCharStringData {
+// Leaf: ?SaveGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z
+class CCharStringData { public:
     const char*   m_pData;
     long          m_length;
 };
 
 extern char g_EmptyCharString_0129AAF4[1];        // 0x0129AAF4
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
@@ -27,12 +27,12 @@ struct CCharString {
     const char* GetPString() const { return PStringData == 0 ? g_EmptyCharString_0129AAF4 : PStringData->m_pData; }
 };
 
-struct CDataOutputStream {
+class CDataOutputStream { public:
     void WriteULong(unsigned long value);          // 0x00993EA0
     void WriteBuffer(const void* data, long size); // 0x00996610
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char      _pad00[0x18];
     long               Mode;                       // +0x18
     unsigned char      _pad1c[0xc];
@@ -40,7 +40,7 @@ struct CPersistContext {
     void Transfer_009bab50(CCharString& value);             // 0x009BAB50
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     void SaveGameState(CCharString& state);        // 0x004B5EE0
     void TransferBoasts(CPersistContext& context); // 0x004B05C0
     void SaveGameState(CPersistContext& context);

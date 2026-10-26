@@ -19,7 +19,7 @@
 //        ternary (component straight into ecx); the def is dereferenced before its dtor, so the release has no null test;
 //        the GetSubDef stand-in under `auto_inline(off)` (landed GetTotalWinnings precedent) sinks the def zero store below
 //        the push and gives the plain `dec eax ; mov [ecx+4],eax` release.
-struct CTCBase;
+class CTCBase;
 typedef long ETavernGameStates;
 
 extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
@@ -34,7 +34,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                     // slot 1
 };
-struct CTavernGameDef : CDefVirtual {
+class CTavernGameDef : public CDefVirtual { public:
     long m_count;                               // +0x04
     unsigned char _pad_0x08[0x108];
     long MinBet;                                // +0x110
@@ -46,10 +46,10 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     CTavernGameDef* PeekDefFromGlobalIndex(long index);   // stand-in only
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual long* GetSubDefIndex(const char* name);       // stand-in only (retail: slot 14, CCharString name)
     unsigned char       _pad_0x04[0x18];
     CDefinitionManager* m_pManager;             // +0x1c
@@ -75,7 +75,7 @@ bool CDefClassBase::GetSubDef_005ed4a0(CDefPointer& out)
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -114,29 +114,29 @@ struct CThing {
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
 };
 
-struct CTCTavernGame;
-struct CTCGamePlayer {
+class CTCTavernGame;
+class CTCGamePlayer { public:
     void SetGame(CTCTavernGame* game);          // 0x005EDC00
 };
 struct CHeroMenuComponent {
     void RequestClose();                        // 0x00625920
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     unsigned char _pad_0x00[0x3c];
     long Money;                                 // +0x3c
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                     // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-struct CPlayerGui {
+class CPlayerGui { public:
     unsigned char _pad_0x00[0x2bd];
     bool          m_bShowing;                   // +0x2bd
     void Close(bool immediately);               // 0x00438400
@@ -144,7 +144,7 @@ struct CPlayerGui {
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();

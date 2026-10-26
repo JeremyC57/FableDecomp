@@ -15,7 +15,7 @@ struct CRetailVector_00a24000 {
     unsigned long size() const { return m_last - m_first; }
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     unsigned char           _pad00[0x380];
     CRetailVector_00a24000  m_entries;             // +0x380
     void FreeDeviceSpecificResources();

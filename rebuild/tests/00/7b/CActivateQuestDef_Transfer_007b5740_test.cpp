@@ -1,14 +1,14 @@
 // Behaviour test for CActivateQuestDef::Transfer (0x007B5740): save then load round trip.
 #include <cstdio>
 
-struct CMemoryDataInputStream { long words[4]; int pos; long Read() { return words[pos++]; } };
-struct CDataOutputStream {
+class CMemoryDataInputStream { public: long words[4]; int pos; long Read() { return words[pos++]; } };
+class CDataOutputStream { public:
     long words[4]; int pos;
     void WriteLong(long v) { words[pos++] = v; }
     void WriteBool(bool v) { words[pos++] = v ? 1 : 0; }
 };
 
-struct CDefString { long TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TablePos = s->Read(); } };
+class CDefString { public: long TablePos; void TransferBinaryIn(CMemoryDataInputStream* s) { TablePos = s->Read(); } };
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
@@ -20,7 +20,7 @@ template<> struct CPersistTraits<CDefString> {
     static void TransferBinaryOut(CDataOutputStream* s, const CDefString& v) { s->WriteLong(v.TablePos); }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     long m_mode; CMemoryDataInputStream* m_pLoadStream; CDataOutputStream* m_pSaveStream; int crcs;
     void CheckCRC(const char*) { ++crcs; }
     template<class T> void Transfer(const char* name, T& value)
@@ -33,7 +33,7 @@ struct CPersistContext {
     }
 };
 
-struct CActivateQuestDef {
+class CActivateQuestDef { public:
     CDefString ScriptName; bool LoadResources;
     void Transfer(CPersistContext& context)
     {

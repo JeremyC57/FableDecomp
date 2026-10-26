@@ -15,7 +15,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                          // +0 reference count
 };
 
@@ -23,7 +23,7 @@ struct CBase {
     virtual ~CBase();                           // 0x0099A2E0
 };
 
-struct CScriptThing;
+class CScriptThing;
 
 struct CCountedPointer_CScriptThing {           // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                       // +0
@@ -35,7 +35,7 @@ struct CCountedPointer_CScriptThing {           // CCountedPointer<CScriptThing>
     }
 };
 
-struct CScriptThing : CBase {                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                   // vtable 0x01238C8C, 12 bytes
     CCountedPointer_CScriptThing PImp;          // +0x04 (PImp_Data +4, PImp_Info +8)
     CScriptThing(const CScriptThing& other) : PImp(other.PImp) { }
     virtual ~CScriptThing();

@@ -11,13 +11,13 @@
 // `this` is homed in the frame across the loop; AddMoney's `true` is pushed before GetGold runs.
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
-struct CTCBase;
-struct CBaseObject;
-struct CCharStringData {
+class CTCBase;
+class CBaseObject;
+class CCharStringData { public:
     char* m_pData;                                      // +0x00
     long  m_length;                                     // +0x04
 };
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -31,8 +31,8 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                               // +0x04
     CBaseObject* GetPItem() const;                      // 0x00A01B50
 };
-struct CThing;
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+class CThing;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }
 };
 struct CInterfaceMap {
@@ -69,7 +69,7 @@ struct CTCThingList_0x21 {
     unsigned char _pad_0x00[0xc];
     SThingNode*   m_head;                               // +0x0c
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                     // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
@@ -98,16 +98,16 @@ struct CThing {
         return false;
     }
 };
-struct CTCGold {
+class CTCGold { public:
     long GetGold();                                     // 0x007CBDC0
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void AddMoney(long amount, bool b);                 // 0x0057B327
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetHeroThing();                             // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
 };
 inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)

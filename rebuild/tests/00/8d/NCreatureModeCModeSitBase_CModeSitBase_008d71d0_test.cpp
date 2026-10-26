@@ -3,8 +3,8 @@
 #include <cstdlib>
 
 static int g_del = 0, g_strdtor = 0, g_freed = 0; static void* g_delData = 0;
-struct CCharString { void* d; ~CCharString() { ++g_strdtor; } };
-struct CAnimFilterBase { virtual ~CAnimFilterBase() { } };
+class CCharString { public: void* d; ~CCharString() { ++g_strdtor; } };
+class CAnimFilterBase { public: virtual ~CAnimFilterBase() { } };
 struct CInfo { long count; void (*del)(void*); void* data; };
 static void Deleter(void* p) { ++g_del; g_delData = p; }
 struct CCounted { void* data; CInfo* info;

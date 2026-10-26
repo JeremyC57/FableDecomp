@@ -5,10 +5,10 @@
 // +0x7d0/+0x7d4 (the PDB puts it at +0x7dc with 16-byte vectors; engine/CGamePlayerInterface.h follows the PDB).
 // Shape: size = (end - begin) >> 3 (signed pointer difference) re-read every iteration, compared unsigned against the index;
 // the element's data pointer is `[begin+i*8]`; the event reference is hoisted into ebx; `mov al,1` / `xor al,al` = bool.
-struct CGameEvent;
+class CGameEvent;
 struct SCountBlock;
 
-struct CInputTypeBase {
+class CInputTypeBase { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -16,7 +16,7 @@ struct CInputTypeBase {
 };
 
 template <class T>
-struct CCountedPointer {
+class CCountedPointer { public:
     T* m_pObject;                                   // +0
     SCountBlock* m_pCount;                          // +4
 };
@@ -30,7 +30,7 @@ struct CRetailVector {                              // retail std::vector: begin
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     unsigned char _pad[0x7d0];
     CRetailVector< CCountedPointer<CInputTypeBase> > ContextSensitiveItemButtons;   // +0x7d0
     bool IsEventContextSensitiveItemButton(const CGameEvent& event, unsigned long* outIndex);

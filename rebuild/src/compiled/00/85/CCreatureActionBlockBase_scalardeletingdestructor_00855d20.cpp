@@ -1,4 +1,4 @@
-struct CCreatureAction_BlockBase {
+class CCreatureAction_BlockBase { public:
     void* vftable;
 };
 

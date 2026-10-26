@@ -3,7 +3,7 @@
 // hidden return buffer and returns it. 'this' is unused.
 
 #include "engine/CCombatSequence_BanditKingAdvance.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CCharString {
+class CCharString { public:
     char* m_ptr;
     CCharString(const char* s, int len);
 };

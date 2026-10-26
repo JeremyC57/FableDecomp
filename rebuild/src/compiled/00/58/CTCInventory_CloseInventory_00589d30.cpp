@@ -54,7 +54,7 @@ struct CTCActiveMode {                                  // hero mode components 
     unsigned char _pad04[0x58 - 0x04];
     bool Active;                                        // +0x58
 };
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void Clear();                                       // 0x0041BE70
     unsigned long m_handle;
     unsigned long m_extra;
@@ -94,10 +94,10 @@ struct CStyleDefPointer {
     CStyleDef* operator->() const { return Object; }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual ~CComponent();
 };
-struct CManager {
+class CManager { public:
     virtual void m000(); virtual void m001(); virtual void m002(); virtual void m003(); virtual void m004(); virtual void m005();
     virtual void ReleaseFocus();                               // slot 6 (+0x18)
     virtual void m007(); virtual void m008(); virtual void m009(); virtual void m010(); virtual void m011(); virtual void m012();
@@ -124,7 +124,7 @@ struct CComponentVector {
     NUISystem::CComponent** erase(NUISystem::CComponent** first, NUISystem::CComponent** last);   // 0x00485AA7
     void clear() { erase(_M_start, _M_finish); }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     unsigned char _pad00[0x0C];
     bool          UseAlternateVolumes;                  // +0x0C
     unsigned char _pad0d[0x24 - 0x0D];
@@ -169,11 +169,11 @@ struct CRenderer {
     virtual void r075();
     virtual void SetEnabled(bool enabled);                     // slot 76 (+0x130)
 };
-struct CDisplayEngine {
+class CDisplayEngine { public:
     unsigned char _pad00[0x2C];
     CRenderer*    PRenderer;                            // +0x2C
 };
-struct CEngine {
+class CEngine { public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28
 };
@@ -182,7 +182,7 @@ struct CInventoryCamera {
     void Reset();                                       // 0x004855A3
 };
 extern CInventoryCamera g_InventoryCamera;              // 0x013B8A98
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x8c];
     long LastInventoryCloseFrame;                       // +0x8c
 };
@@ -193,7 +193,7 @@ struct CTextInput {
     unsigned char _pad[0x0c];
 };
 // Layout: retail CTCInventory Components +0x0C, handle vectors +0x178 / +0x184, flag +0x1CD, text inputs +0x1FC / +0x208.
-struct CTCInventory {
+class CTCInventory { public:
     void*            __vftable;                         // +0x000
     CThing*          ParentThing;                       // +0x004
     unsigned char    _pad08[0x0c - 0x08];

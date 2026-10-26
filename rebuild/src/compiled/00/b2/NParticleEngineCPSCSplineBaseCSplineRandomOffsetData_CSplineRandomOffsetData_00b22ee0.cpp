@@ -10,16 +10,16 @@
 // Shape: implicit member destructors in reverse order; the last buffer is read into esi.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-template <class T> struct CArray {                  // retail CArray: STLport vector, three words
+template <class T> class CArray { public:                  // retail CArray: STLport vector, three words
     T* m_begin;
     T* m_end;
     T* m_capacity;
     ~CArray() { if (m_begin) free(m_begin); }
 };
 
-struct CCardinalSpline {                            // 0x14 bytes retail
+class CCardinalSpline { public:                            // 0x14 bytes retail
     CArray<C3DVector> ControlPoints;                // +0x00
     float             Tension;                      // +0x0C
     bool              EndPointsConnected;           // +0x10

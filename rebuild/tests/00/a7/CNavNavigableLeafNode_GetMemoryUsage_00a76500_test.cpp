@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CNavNavigableLeafNode {
+class CNavNavigableLeafNode { public:
     char pad[0x18];
     signed char m_kind;
 

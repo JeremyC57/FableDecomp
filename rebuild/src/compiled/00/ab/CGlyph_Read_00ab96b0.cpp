@@ -9,7 +9,7 @@
 //   Local stream model: engine/CDataInputStream.h is data-only and cannot carry the inline Read.
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -27,7 +27,7 @@ struct CDataInputStream {
     }
 };
 
-struct CGlyph {
+class CGlyph { public:
     float Left;                                         // +0x00
     float Top;                                          // +0x04
     float Right;                                        // +0x08

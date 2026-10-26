@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-struct COpinionTransientOffset { unsigned char _data[0x18]; };
+class COpinionTransientOffset { public: unsigned char _data[0x18]; };
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 struct _Node : public _List_node_base { COpinionTransientOffset _M_data; };
 struct iterator {

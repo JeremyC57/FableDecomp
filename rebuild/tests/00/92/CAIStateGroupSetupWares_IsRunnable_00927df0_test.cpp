@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -15,7 +15,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -35,18 +35,18 @@ struct CThing {
         return false;
     }
 };
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase() {}
     virtual bool IsRunnable() = 0;
     CAIBrain* PBrain;
 };
 // observable stub
 static int g_open, g_perm, g_setCalls, g_lastSet, g_openCalls;
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad[0xc];
     long StockState;
     bool IsPermanentlyStocked() { return g_perm != 0; }
@@ -54,7 +54,7 @@ struct CTCShop {
     void SetStockState(long state) { ++g_setCalls; g_lastSet = state; StockState = state; }
 };
 static CTCShop* g_shop;
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     CTCShop* GetShopTC() { return g_shop; }
 };
 struct CAIStateGroup_SetupWares : CAIStateGroupBase {

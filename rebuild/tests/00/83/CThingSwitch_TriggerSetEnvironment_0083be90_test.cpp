@@ -2,15 +2,15 @@
 // inside the half-open trigger square and a resolvable theme def.
 #include <cstdio>
 
-struct C3DVector { float X, Y, Z; };
-struct C2DVector { float X, Y; C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { } };
-struct C2DBoxF {
+class C3DVector { public: float X, Y, Z; };
+class C2DVector { public: float X, Y; C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { } };
+class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
     bool ContainsPoint(const C2DVector& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 static long g_theme; static float g_time; static int g_transitions;
-struct CThing { C3DVector Position; bool Dead; };
-struct CThingSwitch {
+class CThing { public: C3DVector Position; bool Dead; };
+class CThingSwitch { public:
     C3DVector Pos; float TriggerRadius; long ThemeIndex; float TimeToChangeEnvironmentDef; CThing* Hero;
     const C3DVector& GetPosition() const { return Pos; }
     void TriggerSetEnvironment()

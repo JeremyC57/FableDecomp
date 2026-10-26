@@ -1,7 +1,7 @@
 // Behaviour test for CTCSolidToThing::AddThingNotSolidTo (00770fa0): a thing is appended once (through a temporary intelligent pointer), never twice.
 #include <cstdio>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;                                      // live intelligent pointers
 
 struct CBaseIntelligentPointer {
@@ -22,7 +22,7 @@ struct CThingPointerContainer {
     void push_back(const CIntelligentPointer& value) { items[count++] = value.m_pItem; }
 };
 
-struct CTCSolidToThing {
+class CTCSolidToThing { public:
     CThingPointerContainer NotSolidToThings;
     bool IsSolidToThing(const CThing* thing) const
     {

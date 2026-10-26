@@ -9,12 +9,12 @@
 // Layout: Ego_r.pdb CTCTrophy with retail 4-byte lists: MinigameInProgress +0x14, AvailableWitnesses +0x34, WitnessesAchieved
 //         +0x38, WaitingForConfirmation +0x3c, WaitingForScore +0x3d, WaitingForTerminate +0x3e (PDB +0x4e).
 // Shape: the by-value CWideString arguments (declared copy ctor) are built in their argument slots, right to left.
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
     ~CCharString();                                               // 0x0099EAE0
 };
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     CWideString(const unsigned short* text);                      // 0x0099B6B0 (wchar_t is unsigned short without /Zc:wchar_t)
     CWideString(const CWideString& other);                        // 0x0099B720
@@ -29,7 +29,7 @@ struct CEngineGlobals {
 };
 extern CEngineGlobals* g_pEngineGlobals;                          // 0x013B86A0
 
-struct CTCTrophy {
+class CTCTrophy { public:
     virtual void v00();
     unsigned char _pad_0x04[0x10];
     bool          MinigameInProgress;                             // +0x14

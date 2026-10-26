@@ -6,9 +6,9 @@ struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
-struct CWorld;
-struct CCharString;
-struct CScriptThing;
+class CWorld;
+class CCharString;
+class CScriptThing;
 struct CDefPointer_Retail;
 struct CTCBase_Retail;
 struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
@@ -71,7 +71,7 @@ struct CTCHeroFishing_Retail {                 // interface type 0x68
     unsigned char _pad[0xc];
     long          m_fishingLevel;                // +0xc
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
     CMainGameComponent_Retail*  Component;          // +0x08

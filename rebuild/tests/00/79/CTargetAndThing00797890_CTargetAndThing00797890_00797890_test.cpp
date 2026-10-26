@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThing { unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
+class CThing { public: unsigned char flags91; unsigned long bits[9]; long compType; void* comp; CThing() : flags91(0), compType(-1), comp(0) { for (int i = 0; i < 9; ++i) bits[i] = 0; } };
 struct CBaseIntelligentPointer {
     CThing* item; int sets;
     CBaseIntelligentPointer() : item(0), sets(0) { }

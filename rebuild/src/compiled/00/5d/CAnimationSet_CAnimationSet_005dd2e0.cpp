@@ -9,7 +9,7 @@
 // the member initialisers run in declaration order, the vector map's inline constructor first.
 struct CKeyPairCompareLess { };                 // empty comparator object (one byte at +0x0c)
 
-template<class K, class V> struct CVectorMap {
+template<class K, class V> class CVectorMap { public:
     struct SPair { K first; V second; };
     SPair* m_first;                             // +0x00
     SPair* m_last;                              // +0x04
@@ -19,19 +19,19 @@ template<class K, class V> struct CVectorMap {
     CVectorMap() : m_first(0), m_last(0), m_end(0), Dirty(false) { }
 };
 
-struct CDefString {
+class CDefString { public:
     long TablePos;
     CDefString() : TablePos(-1) { }
 };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                             // +0x00
     CDefString AnimName;                        // +0x04
     CDefString GroupName;                       // +0x08
     void* Components;                           // +0x0c CIVCountedPointer<CAnimComponentMap>
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     CVectorMap<unsigned long, CAnimationEntry> Anims;   // +0x00
     long DefaultFlags;                          // +0x10
     long DefaultTransitionTime;                 // +0x14

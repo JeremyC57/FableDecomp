@@ -10,7 +10,7 @@
 // argument, returning the new object (or null). One of 338 bodies of this shape; the class
 // is taken from the constructor's manifest label. sizeof is modelled by an opaque body.
 
-struct CTCPlot {
+class CTCPlot { public:
     unsigned char _body[0x18];       // sizeof(CTCPlot) = 0x18
     CTCPlot(void* owner);                   // 0x004DB433
 };

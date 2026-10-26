@@ -13,7 +13,7 @@ struct CBank {
     std::map<int, std::vector<int> > groups;
 };
 
-struct CRegion {
+class CRegion { public:
     std::string Current, Extra;
     long FrameChanged, CurrentAlpha, LastAlpha;
     float DisplayTime;

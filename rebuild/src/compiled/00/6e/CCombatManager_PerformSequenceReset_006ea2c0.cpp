@@ -27,7 +27,7 @@ __forceinline unsigned long WorldRandom(unsigned long& seed)
     return seed;
 }
 
-struct CDefPointeeBase {                    // a counted definition object
+class CDefPointeeBase { public:                    // a counted definition object
     virtual void v000();
     virtual void DestroyDef();              // slot 1 (+4): called when the count drops to zero
     long m_refCount;                        // +4
@@ -37,7 +37,7 @@ struct CDefPointeeBase {                    // a counted definition object
             DestroyDef();
     }
 };
-template<class T> struct CDefPointer {      // CDefPointer<const T>: one counted pointer to a definition
+template<class T> class CDefPointer { public:      // CDefPointer<const T>: one counted pointer to a definition
     T* m_pObject;
     CDefPointer() : m_pObject(0) { }
     ~CDefPointer()
@@ -54,7 +54,7 @@ struct CRingRotationDef : CDefPointeeBase {
     float RotationSpeed;                    // +0x40
 };
 void* FindDef_GetSubDef_006f0f60();         // stand-in callee of the stand-in body below
-struct CCombatTypeDef {
+class CCombatTypeDef { public:
     bool GetSubDef(CDefPointer<CRingRotationDef>& out) const;   // 0x006F0F60
 };
 #pragma auto_inline(off)
@@ -70,13 +70,13 @@ __declspec(noinline) bool CCombatTypeDef::GetSubDef(CDefPointer<CRingRotationDef
 }
 #pragma auto_inline(on)
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;              // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
     CCombatTypeDef* GetCombatTypeDef() const;   // 0x00666D10
 };
-struct CCombatSequenceBase {
+class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06();
     virtual bool IsMeleeSequence();         // slot 7 (+0x1c)
@@ -93,7 +93,7 @@ template<class T> struct CRetailVector {    // retail std::vector: {first, last,
     T* end_of_storage;
     T& operator[](unsigned long n) const { return first[n]; }
 };
-struct CAttackingCombatantInfo {            // retail 0x30 bytes
+class CAttackingCombatantInfo { public:            // retail 0x30 bytes
     CThingCreatureBase* Attacked;           // +0x00
     long AttackerNumber;                    // +0x04
     long CombatWheelRingIndex;              // +0x08
@@ -140,10 +140,10 @@ __declspec(noinline) CRetailRbMap_UID_CombatantInfo::node* CRetailRbMap_UID_Comb
     return y;
 }
 #pragma auto_inline(on)
-struct CWorld {
+class CWorld { public:
     unsigned long* GetPRandomSeed();        // 0x0049D810
 };
-struct CCombatManager {
+class CCombatManager { public:
     virtual void v00();
     unsigned char _sequences[0xc];          // +0x04 RegisteredCombatSequences
     CRetailRbMap_UID_CombatantInfo Combatants;  // +0x10

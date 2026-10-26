@@ -8,7 +8,7 @@
 //         ProjectileWeaponLoaded +0x10; the owner thing's def class index (unsigned short) +0x8c; CWeaponDef byte +0xc5.
 // Shape: the def class is copied once out of the escaped out slot into a holder (ebx) that is used for the GetSubDef call
 //        and released with a null test (`test ebx,ebx` scheduled before the flag copy).
-struct CWeaponDef {
+class CWeaponDef { public:
     unsigned char _pad_0x00[0xc5];
     bool          ProjectileWeaponLoaded;       // +0xc5
 };
@@ -17,7 +17,7 @@ struct CWeaponDefPointer {                      // CDefPointer<const CWeaponDef>
     CWeaponDef* operator->() const { return Object; }
 };
 
-struct CDefClassBase {
+class CDefClassBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
     long m_count;                               // +0x04
@@ -50,7 +50,7 @@ struct CDefClassReference {                     // holder of the taken def class
     }
     CDefClassBase* operator->() const { return Object; }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefClassPointer* out);   // 0x0042AF3C
 };
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -67,12 +67,12 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefClassPointe
 }
 #pragma auto_inline(on)
 
-struct CThing {
+class CThing { public:
     unsigned char  _pad_0x00[0x8c];
     unsigned short DefClassIndex;               // +0x8c
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     virtual void v00();
     CThing*           ParentThing;              // +0x04
     unsigned char     _pad_0x08[0x4];

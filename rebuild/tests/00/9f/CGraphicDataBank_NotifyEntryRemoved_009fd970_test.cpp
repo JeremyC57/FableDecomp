@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct CGraphicDataBank {
+class CGraphicDataBank { public:
     char pad[0x1e0];
     char* f1e0;
 };

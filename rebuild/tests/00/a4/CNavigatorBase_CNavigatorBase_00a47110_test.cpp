@@ -2,7 +2,7 @@
 struct Mgr { int registered; };
 struct Iface { int id; Iface* Clone() const { Iface* c = new Iface; c->id = id + 100; return c; } };
 struct Agent { const Iface* iface; bool b; Agent(const Iface* i, bool f) : iface(i), b(f) { } };
-struct CClass { Mgr* factory; unsigned int type; CClass(Mgr& m, unsigned int t, bool reg) : factory(&m), type(t) { if (reg) ++m.registered; } };
+class CClass { public: Mgr* factory; unsigned int type; CClass(Mgr& m, unsigned int t, bool reg) : factory(&m), type(t) { if (reg) ++m.registered; } };
 struct Nav : CClass {
     Iface* PInterface; bool OnRoute; bool Interrupted; Mgr* NavigationManager; Agent* SteeringAgent;
     Nav(Mgr& m, unsigned int type, const Iface& i) : CClass(m, type, true), OnRoute(false), Interrupted(false), NavigationManager(&m)

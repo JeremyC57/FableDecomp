@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CInputProcessTargetLockRightStickTargetSelect {
+class CInputProcessTargetLockRightStickTargetSelect { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -98,11 +98,11 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessTargetLockRightStickTargetSelect, Chan
 #include <stddef.h>
 
 
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CMainGameComponent;
-struct CPlayer;
-struct CWorld;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CMainGameComponent;
+class CPlayer;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CInputProcessGameBase {
@@ -139,12 +139,12 @@ FABLE_STATIC_ASSERT(offsetof(CInputProcessGameBase, PGamePlayerInterface) == 0x2
 #include <stddef.h>
 
 
-struct CBaseClass;
-struct CInputProcessManager;
-struct CLinkedListPosition;
+class CBaseClass;
+class CInputProcessManager;
+class CLinkedListPosition;
 
 #pragma pack(push, 1)
-struct CAInputProcess {
+class CAInputProcess { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
     CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data
@@ -172,85 +172,85 @@ FABLE_STATIC_ASSERT(offsetof(CAInputProcess, InputProcessListPos_Previous) == 0x
 #include <stddef.h>
 
 
-struct CCPPointerInfo;
-struct CDefPointeeBase;
-struct CGameDefinitionManager;
-struct CGamePlayerInterface;
-struct CHeroLogBook;
-struct CInputProcessBButtonExitMode;
-struct CInputProcessBetting;
-struct CInputProcessBlock;
-struct CInputProcessBoastUI;
-struct CInputProcessCameraLookAround;
-struct CInputProcessClickPastText;
-struct CInputProcessCombat;
-struct CInputProcessConsole;
-struct CInputProcessControlCreature;
-struct CInputProcessControlCreatureActivateZTarget;
-struct CInputProcessControlCreatureActivateZTargetOnPress;
-struct CInputProcessControlCreatureRightStick;
-struct CInputProcessControlFreeCamera;
-struct CInputProcessControlSpirit;
-struct CInputProcessCreatureMovement;
-struct CInputProcessCreatureMovementWatchForControlAngleChange;
-struct CInputProcessCreditsUI;
-struct CInputProcessCutScene;
-struct CInputProcessCycleSpecialCameraModes;
-struct CInputProcessDead;
-struct CInputProcessDebugControls;
-struct CInputProcessDigging;
-struct CInputProcessFireheartMinigame;
-struct CInputProcessFirstPerson;
-struct CInputProcessFirstPersonLookAround;
-struct CInputProcessFirstPersonTargeting;
-struct CInputProcessFishing;
-struct CInputProcessFreezeControls;
-struct CInputProcessHeroAbilitiesScreen;
-struct CInputProcessHeroInformationScreens;
-struct CInputProcessInGameMenu;
-struct CInputProcessInventory;
-struct CInputProcessInventoryClothing;
-struct CInputProcessInventoryExperienceScreen;
-struct CInputProcessInventoryMagicScreen;
-struct CInputProcessInventoryMapScreen;
-struct CInputProcessInventoryQuestsScreen;
-struct CInputProcessInventoryStatsScreen;
-struct CInputProcessInventoryTradeScreen;
-struct CInputProcessInventoryWeapons;
-struct CInputProcessJumpingAndRolling;
-struct CInputProcessLightning;
-struct CInputProcessMain;
-struct CInputProcessOracleMinigame;
-struct CInputProcessParalysed;
-struct CInputProcessPhotojournalCapture;
-struct CInputProcessProjectileTargetingAnalogueZoom;
-struct CInputProcessQuestCompletionUI;
-struct CInputProcessQuickAccessItems;
-struct CInputProcessQuickAccessMenu;
-struct CInputProcessRebootGame;
-struct CInputProcessSetRangedWeaponMode;
-struct CInputProcessSetRangedWeaponThirdPersonMode;
-struct CInputProcessSpecialAbilities;
-struct CInputProcessStrafe;
-struct CInputProcessTargetLockCycleTargets;
-struct CInputProcessTargetLockRightStickTargetSelect;
-struct CInputProcessTavernGame;
-struct CInputProcessToggleViewHeroMode;
-struct CInputProcessUseEnvironment;
-struct CInputProcessUseRangedWeapon;
-struct CInputProcessUseRangedWeaponZLock;
-struct CInputProcessWatchForRangedWeaponThirdPersonModeTermination;
-struct CInputProcessWatchForWillChargeUpThirdPersonModeTermination;
-struct CInputProcessYesNoQuestion;
-struct CInputProcessZTarget;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingManager;
-struct CWorld;
-struct CWorldMap;
+class CCPPointerInfo;
+class CDefPointeeBase;
+class CGameDefinitionManager;
+class CGamePlayerInterface;
+class CHeroLogBook;
+class CInputProcessBButtonExitMode;
+class CInputProcessBetting;
+class CInputProcessBlock;
+class CInputProcessBoastUI;
+class CInputProcessCameraLookAround;
+class CInputProcessClickPastText;
+class CInputProcessCombat;
+class CInputProcessConsole;
+class CInputProcessControlCreature;
+class CInputProcessControlCreatureActivateZTarget;
+class CInputProcessControlCreatureActivateZTargetOnPress;
+class CInputProcessControlCreatureRightStick;
+class CInputProcessControlFreeCamera;
+class CInputProcessControlSpirit;
+class CInputProcessCreatureMovement;
+class CInputProcessCreatureMovementWatchForControlAngleChange;
+class CInputProcessCreditsUI;
+class CInputProcessCutScene;
+class CInputProcessCycleSpecialCameraModes;
+class CInputProcessDead;
+class CInputProcessDebugControls;
+class CInputProcessDigging;
+class CInputProcessFireheartMinigame;
+class CInputProcessFirstPerson;
+class CInputProcessFirstPersonLookAround;
+class CInputProcessFirstPersonTargeting;
+class CInputProcessFishing;
+class CInputProcessFreezeControls;
+class CInputProcessHeroAbilitiesScreen;
+class CInputProcessHeroInformationScreens;
+class CInputProcessInGameMenu;
+class CInputProcessInventory;
+class CInputProcessInventoryClothing;
+class CInputProcessInventoryExperienceScreen;
+class CInputProcessInventoryMagicScreen;
+class CInputProcessInventoryMapScreen;
+class CInputProcessInventoryQuestsScreen;
+class CInputProcessInventoryStatsScreen;
+class CInputProcessInventoryTradeScreen;
+class CInputProcessInventoryWeapons;
+class CInputProcessJumpingAndRolling;
+class CInputProcessLightning;
+class CInputProcessMain;
+class CInputProcessOracleMinigame;
+class CInputProcessParalysed;
+class CInputProcessPhotojournalCapture;
+class CInputProcessProjectileTargetingAnalogueZoom;
+class CInputProcessQuestCompletionUI;
+class CInputProcessQuickAccessItems;
+class CInputProcessQuickAccessMenu;
+class CInputProcessRebootGame;
+class CInputProcessSetRangedWeaponMode;
+class CInputProcessSetRangedWeaponThirdPersonMode;
+class CInputProcessSpecialAbilities;
+class CInputProcessStrafe;
+class CInputProcessTargetLockCycleTargets;
+class CInputProcessTargetLockRightStickTargetSelect;
+class CInputProcessTavernGame;
+class CInputProcessToggleViewHeroMode;
+class CInputProcessUseEnvironment;
+class CInputProcessUseRangedWeapon;
+class CInputProcessUseRangedWeaponZLock;
+class CInputProcessWatchForRangedWeaponThirdPersonModeTermination;
+class CInputProcessWatchForWillChargeUpThirdPersonModeTermination;
+class CInputProcessYesNoQuestion;
+class CInputProcessZTarget;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingManager;
+class CWorld;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CPlayer {
+class CPlayer { public:
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04
     bool                                                         DrawingFreeCamDebug; // +0x08
@@ -488,7 +488,7 @@ FABLE_STATIC_ASSERT(offsetof(CPlayer, JoystickDeviceNumber) == 0x230);
 
 
 #pragma pack(push, 1)
-struct CProcessedInput {
+class CProcessedInput { public:
     long          Player;                                    // +0x00
     unsigned char Type[0x4];                                 // +0x04 EProcessedEventType
     unsigned char GameEvents[0xa0];                          // +0x08 CGameEvent[4]
@@ -517,14 +517,14 @@ FABLE_STATIC_ASSERT(offsetof(CProcessedInput, Priority) == 0xac);
 #include <stddef.h>
 
 
-struct CCharStringData;
-struct CDefPointeeBase;
-struct CTCDriverBase;
+class CCharStringData;
+class CDefPointeeBase;
+class CTCDriverBase;
 struct CTCGraphicAppearance;
-struct CTCPhysicsBase;
+class CTCPhysicsBase;
 
 #pragma pack(push, 1)
-struct CThing {
+class CThing { public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char         _pad_0x04[0x4];                    // +0x04
     unsigned char         _pad_0x08[0x4];                    // +0x08
@@ -597,7 +597,7 @@ FABLE_STATIC_ASSERT(offsetof(CThing, InitialisationStage) == 0xa4);
 
 
 #pragma pack(push, 1)
-struct CTCTargetingPlayer {
+class CTCTargetingPlayer { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -702,10 +702,10 @@ FABLE_STATIC_ASSERT(offsetof(CTCTargetingPlayer, LockedOntoEnemy) == 0xfc);
 #include <stddef.h>
 
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
-struct CTCBase {
+class CTCBase { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08

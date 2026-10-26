@@ -8,7 +8,7 @@ static int g_frames = 0;
 static long g_timers[4];
 struct CQ_MinionClifftopChaseScript;
 static CQ_MinionClifftopChaseScript* g_s;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const;
     bool IsRegionLoaded(const char*) const { return g_frames % 2 == 1; }
     void SetTimer(long t, long v) { g_timers[t] = v; }

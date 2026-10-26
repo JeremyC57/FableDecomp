@@ -1,18 +1,18 @@
 // Behaviour test for CThingCreatureBase::ConstructFromParams (0x00662880)
 #include <cstdio>
-struct C3DVector { float x, y, z; };
-struct CCharString { const char* text; };
-struct CThingPhysical { int id; };
-struct CThingCreatureDef { int id; };
+class C3DVector { public: float x, y, z; };
+class CCharString { public: const char* text; };
+class CThingPhysical { public: int id; };
+class CThingCreatureDef { public: int id; };
 struct CDefPointerCreature { CThingCreatureDef* m_pObject; };
 static CThingCreatureDef g_defs[4];
 static long g_baseArgs[8];
 static bool g_baseResult;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefPointerCreature* out) { out->m_pObject = &g_defs[index]; return true; }
 };
 static CDefinitionManager g_defManager;
-struct CThingGameObject {
+class CThingGameObject { public:
     unsigned short m_defGlobalIndex;
     CDefinitionManager* GetDefinitionManager() const { return &g_defManager; }
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, unsigned long a4,
@@ -24,7 +24,7 @@ struct CThingGameObject {
         return g_baseResult;
     }
 };
-struct CThingCreatureBase : CThingGameObject {
+class CThingCreatureBase : public CThingGameObject { public:
     CDefPointerCreature m_def;
     bool ConstructFromParams(long defIndex, const C3DVector& position, long a3, CThingPhysical* p1,
                              CThingPhysical* physical, const CCharString& name, bool flag)

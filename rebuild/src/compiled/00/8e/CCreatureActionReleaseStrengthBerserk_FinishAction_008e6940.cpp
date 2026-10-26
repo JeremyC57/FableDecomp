@@ -22,9 +22,9 @@
 #undef CThing
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
-struct CThing;struct CThingCreatureBase;struct CCreatureActionBase;struct CTCWeaponTrail;
-struct C3DVector {float x,y,z;};
-struct CSoundPair {long first,last;CSoundPair():first(0),last(0){}};
+class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
+class C3DVector { public:float x,y,z;};
+class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer();
@@ -33,7 +33,7 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem()const;
  void SetPItem(CBaseObject*);
 };
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
+template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
  virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
@@ -44,13 +44,13 @@ template<class T>struct CIntelligentPointer:CBaseIntelligentPointer {
 };
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
-struct CTCPhysicsBase;struct CDefLookup;
+class CTCPhysicsBase;struct CDefLookup;
 struct CInterfaceMap {
     struct Entry { long type; void* component; };
     Entry *Start,*Finish,*End;
     Entry* LowerBound(const long*); //40F020
 };
-struct CThing:CBaseObject {
+class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -77,7 +77,7 @@ struct CThing:CBaseObject {
         return false;
     }
 };
-struct CThingCreatureBase:CThing {bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
+class CThingCreatureBase:public CThing { public:bool SetCurrentAction(const CCreatureActionBase&);}; //006644F0
 struct IntelligentThingVector {CIntelligentPointer<CThing> *Start,*Finish,*End;void PushBack(const CIntelligentPointer<CThing>&);CIntelligentPointer<CThing>* Erase(CIntelligentPointer<CThing>*,CIntelligentPointer<CThing>*);}; //004AD520,004AC0F0
 struct __declspec(novtable) CCreatureActionBase {
     virtual ~CCreatureActionBase();
@@ -251,10 +251,10 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
 // Native first fields agree with PDB CTCSpecialAbilities; CurrentAbility is EHeroAbility, not float.
-struct CTCSpecialAbilities {void* VPtr;CThing* PThing;long State;bool AbilityMutexLock,UsingBed;long CurrentAbility;};
+class CTCSpecialAbilities { public:void* VPtr;CThing* PThing;long State;bool AbilityMutexLock,UsingBed;long CurrentAbility;};
 // CTCCombat donor AlwaysBlockThings+5C is native+4C; earlier native combat state and vector layouts differ.
-struct CTCCombat {void* VPtr;CThing* PThing;long State;unsigned char CombatState[0x40];IntelligentThingVector AlwaysBlockThings;};
-struct CCreatureAction_ReleaseStrengthBerserk:CCombatActionBase {
+class CTCCombat { public:void* VPtr;CThing* PThing;long State;unsigned char CombatState[0x40];IntelligentThingVector AlwaysBlockThings;};
+class CCreatureAction_ReleaseStrengthBerserk:public CCombatActionBase { public:
     virtual CCreatureActionBase* Clone()const;
     virtual void Initialise();
     virtual void PerformAction();

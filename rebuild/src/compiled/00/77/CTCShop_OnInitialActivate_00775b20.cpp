@@ -9,7 +9,7 @@
 // Ego_r.pdb places `long DaysSinceSpecialItemPlaced` at +0x50; retail writes a single byte
 // there, so the shipped layout differs from the editor PDB at this offset (field name inferred).
 
-struct CTCShop {
+class CTCShop { public:
     unsigned char _pad_0x00[0x50];
     bool          IsStallLike;          // +0x50 (retail byte; PDB disagrees, see above)
     bool CalcIsStallLike();             // 0x007729A0

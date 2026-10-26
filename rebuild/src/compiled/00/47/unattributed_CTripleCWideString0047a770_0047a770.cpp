@@ -9,7 +9,7 @@
 // one's destructor is reached by tail call. The manifest label (`_Dest_val<...pair<CCharString,
 // CSymbolInfo>>`) says this is the pair value of a map; the owning type is named descriptively.
 // One of 22 bodies of this shape.
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };

@@ -5,7 +5,7 @@
 // manager is 0x18 smaller ahead of it -- 0xc base + four 4-byte container words).
 // Shape: three early-out tests sharing the `ret 4`; the tail is re-read after the store through
 // the old tail (it may alias), next cleared, tail set last.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x7c];
     CThing*       PRenderPrev;                 // +0x7c
     CThing*       PRenderNext;                 // +0x80
@@ -14,7 +14,7 @@ struct ThingLList {
     CThing* PHead;
     CThing* PTail;
 };
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x84];
     ThingLList    RenderList;                  // +0x84
     void AddToRenderList(CThing* thing);

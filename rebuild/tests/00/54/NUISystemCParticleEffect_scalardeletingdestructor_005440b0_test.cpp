@@ -11,7 +11,7 @@ struct IComponentA { virtual void va00() {} unsigned char _state[0x10]; };
 struct IComponentB { virtual void vb00() {} };
 struct CComponentRoot { virtual ~CComponentRoot() {} };
 
-struct CChangingStateComponent : CComponentRoot, IComponentA, IComponentB {
+class CChangingStateComponent : public CComponentRoot, public IComponentA, public IComponentB { public:
     unsigned char _body[0x15c - 0x1c];
     CChangingStateComponent(long) {}
     virtual ~CChangingStateComponent() { g_events[g_count++] = 2; }
@@ -26,7 +26,7 @@ struct CParticleEmitter {
 
 namespace NUISystem {
 
-struct CParticleEffect : CChangingStateComponent {
+class CParticleEffect : public CChangingStateComponent { public:
     CParticleEmitter* m_pEffect;
     CParticleEffect(long owner) : CChangingStateComponent(owner), m_pEffect(0) {}
     virtual ~CParticleEffect()

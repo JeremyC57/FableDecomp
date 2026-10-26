@@ -13,7 +13,7 @@
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -22,7 +22,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -51,12 +51,12 @@ struct CBaseIntelligentPointer {
 };
 
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -76,7 +76,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CCharString {                            // 4 bytes: the shared string data pointer
+class CCharString { public:                            // 4 bytes: the shared string data pointer
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -86,7 +86,7 @@ struct CTCUserActionPointBase {                 // interface 0x2D
     void ReleaseSlot(long slot);                // 0x007FEF40
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     void FinishCurrentAction();                 // 0x00662650
 };
 

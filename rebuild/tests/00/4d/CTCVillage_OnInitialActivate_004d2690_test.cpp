@@ -15,7 +15,7 @@ void __fastcall Inner_Do(CInner* obj, int arg1, unsigned char b)
     g_callCount++;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     CInner* obj;
     int     ParentThing;
     char    pad8;

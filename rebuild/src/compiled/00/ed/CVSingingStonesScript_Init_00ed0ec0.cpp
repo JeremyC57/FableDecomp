@@ -8,7 +8,7 @@
 // Layout (retail = Ego_r.pdb - 0x14, then -0x18 after the 12-byte EffectList vector): CurrentPlayListIndex +0x48,
 // PlayList[4] +0x4c, RudePlayList[4] +0x5c, YourPersonalPlayList[4] +0x6c, EffectList +0x7c, ListText[4] +0x88,
 // DoorManIntroComplete +0x98, DoorManAttackedByHero +0x99, DoorManHasBribe +0x9a, DoorManComplete +0x9b.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString& operator=(const char* text);      // 0x0099EFE0
 };

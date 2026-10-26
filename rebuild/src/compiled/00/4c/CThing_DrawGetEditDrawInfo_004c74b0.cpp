@@ -6,12 +6,12 @@
 // storing (r, g, b, a) over the B, G, R, A byte layout (a constructed temporary is built in a frame slot first). The first argument is unused.
 struct CEditContext;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B;                                 // +0
     unsigned char G;                                 // +1
     unsigned char R;                                 // +2
@@ -34,7 +34,7 @@ struct SEditDrawInfo {
     bool          Highlighted;                       // +0x20
 };
 
-struct CThing {
+class CThing { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x90 - 0x04];
     signed char   PlayerNumber;                      // +0x90 (PDB +0xa0)

@@ -8,14 +8,14 @@ struct CMemoryBuffer {
     void Read(unsigned long length, void* data) { std::memcpy(data, Data + ReadPos, length); ReadPos += (long)length; }
     char ReadChar() { char v; Read(1, &v); return v; }
 };
-struct CGameEvent {
+class CGameEvent { public:
     signed char Player; unsigned char Payload[0x20];
     long GetData(CMemoryBuffer& b) const { std::memcpy(b.Data, Payload, 0x20); return 5; }
 };
-struct CThingCreatureBase { unsigned char Dead : 1; bool Busy; bool IsPerformingAnyAction() { return Busy; } };
+class CThingCreatureBase { public: unsigned char Dead : 1; bool Busy; bool IsPerformingAnyAction() { return Busy; } };
 enum EPlayerMode { PLAYER_MODE_NONE = 0, PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
 static int g_added, g_removed;
-struct CPlayer {
+class CPlayer { public:
     bool Blocked; CThingCreatureBase* Hero; EPlayerMode Mode;
     bool HasMode(EPlayerMode m) { return m == PLAYER_MODE_0x2F && Blocked; }
     CThingCreatureBase* GetHeroCreature() { return Hero; }
@@ -24,9 +24,9 @@ struct CPlayer {
     void RemoveMode(EPlayerMode m) { g_removed = m; }
 };
 static long g_item; static int g_charge;
-struct CPlayerGui { bool Open; void ToggleQuickAccessCharge(long i, bool c) { g_item = i; g_charge = c; } bool IsOpen() const { return Open; } };
+class CPlayerGui { public: bool Open; void ToggleQuickAccessCharge(long i, bool c) { g_item = i; g_charge = c; } bool IsOpen() const { return Open; } };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
-struct CWorld {
+class CWorld { public:
     CPlayer* P;
     CPlayer* GetPlayer(long) { return P; }
     void EAChargeQuickAccessItem(const CGameEvent* event)

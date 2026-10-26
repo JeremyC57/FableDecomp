@@ -68,7 +68,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -131,9 +131,9 @@ FABLE_STATIC_ASSERT(offsetof(CHeroAbilityDef, DummyObject_Val) == 0xa8);
 #endif // FABLE_ENGINE_CHEROABILITYDEF_H
 
 #undef CHeroAbilityDef
-struct C2DVector {float X,Y;};
+class C2DVector { public:float X,Y;};
 struct NativeLongVector {int* Start;int* Finish;int* End;};
-struct CPersistContext {
+class CPersistContext { public:
  void TransferAbility(int&); //00452e01
  void TransferStat(int&); //00469b8a
  void TransferLong(int&); //00431102
@@ -143,7 +143,7 @@ struct CPersistContext {
  void TransferBool(bool&); //0043314a
  void TransferDefIndex(int&); //004522f4
 };
-struct CHeroAbilityDef {
+class CHeroAbilityDef { public:
  unsigned char DefinitionBase[0x3c];
  int Ability,Stat,IconGraphicIndex,IconEffectIndex,IconActiveEffectIndex;
  C2DVector IconEffectOffset; int Name,Description;

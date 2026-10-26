@@ -1,8 +1,8 @@
 // NTCScriptedControl::CActionTalkBase::IsCameraToBeSetupDueToMovedSetupPositions(const CSubtitledMessage::CCameraTag&) -- compare the current looking-from/looking-at positions against the camera-tag setup positions; retail length 0x12e bytes, helper @ 0x00712340 and tolerance globals @ 0x012654e8/0x012654ec.
 #include <math.h>
 
-struct CThing;
-struct C3DVector { float x, y, z; };
+class CThing;
+class C3DVector { public: float x, y, z; };
 namespace NTCScriptedControl {
 struct CSubtitledMessage { struct CCameraTag; };
 

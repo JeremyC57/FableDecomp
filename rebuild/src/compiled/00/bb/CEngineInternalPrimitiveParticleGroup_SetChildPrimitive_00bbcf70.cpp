@@ -19,7 +19,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
-struct CEnginePrimitive {
+class CEnginePrimitive { public:
     long Type;                                         // +0x00
 };
 class CEnginePrimitiveHandle;
@@ -145,7 +145,7 @@ struct CIteratorArray {                            // CArray<CPrimitiveIterator>
     CPrimitiveIterator& operator[](unsigned long index) { return m_pFirst[index]; }
 };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00();
     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);   // slot 1 (+0x04)
 };

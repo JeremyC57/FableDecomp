@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CThingPhysicsMeshInfo { unsigned short m_type; };
+class CThingPhysicsMeshInfo { public: unsigned short m_type; };
 static long g_seen = -1;
 static int g_calls = 0;
 struct CTCPhysicsStandard {

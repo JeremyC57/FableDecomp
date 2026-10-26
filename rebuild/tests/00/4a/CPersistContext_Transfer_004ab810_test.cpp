@@ -2,7 +2,7 @@
 #include <cstring>
 // CPersistContext::Transfer(name, double&): forwards to the three-argument transfer with a 0.0 default
 static const char* g_name; static double* g_value; static double g_default = -1.0; static long g_calls;
-struct CPersistContext {
+class CPersistContext { public:
     long pad[11];
     void Transfer(const char* name, double& value, const double& defaultValue) { g_name = name; g_value = &value; g_default = defaultValue; ++g_calls; }
     void Transfer(const char* name, double& value) { Transfer(name, value, 0.0); }

@@ -5,15 +5,15 @@ typedef unsigned __int64 UID64;
 #else
 typedef unsigned long long UID64;
 #endif
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_baseCtorCalls = 0;
-struct CTCCreatureGroup {
+class CTCCreatureGroup { public:
     CThing* ParentThing;
     CTCCreatureGroup(CThing* owner) : ParentThing(owner) { ++g_baseCtorCalls; }
     virtual ~CTCCreatureGroup() {}
     virtual int Kind() const { return 1; }
 };
-struct CTCCreatureGroupTag : CTCCreatureGroup {
+class CTCCreatureGroupTag : public CTCCreatureGroup { public:
     UID64 TaggerUID;
     unsigned long TaggedFrame;
     CTCCreatureGroupTag(CThing* owner) : CTCCreatureGroup(owner), TaggerUID(0), TaggedFrame(0) {}

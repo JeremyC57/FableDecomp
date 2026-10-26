@@ -10,7 +10,7 @@ struct RefObj {
     float  value;  // +0x64
 };
 
-struct CTCWeapon {
+class CTCWeapon { public:
     char   pad[0x70];
     RefObj* obj;   // +0x70
 };

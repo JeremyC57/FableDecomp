@@ -3,7 +3,7 @@
 
 struct CSoundEmitterSource { long m_id; };
 
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData(0) { }
 };

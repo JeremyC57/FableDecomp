@@ -1,7 +1,7 @@
 #pragma optimize("s",on)
 // Leaf: EndAttackBeam
 
-struct CTCKraken {
+class CTCKraken { public:
     char pad[0x64];
     int  beamState;
 };

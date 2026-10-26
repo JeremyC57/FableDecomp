@@ -1,6 +1,6 @@
 // Behaviour test for 0x00808230 STLport __make_heap: sift every parent down from (len-2)/2 to 0 (deterministic comparator stand-in).
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct CPointer { CThing* Item; };
 struct CLess { bool operator()(const CPointer& a, const CPointer& b) const { return a.Item->id < b.Item->id; } };
 static void PushHeap(CPointer* first, int hole, int top, CPointer value, CLess comp)

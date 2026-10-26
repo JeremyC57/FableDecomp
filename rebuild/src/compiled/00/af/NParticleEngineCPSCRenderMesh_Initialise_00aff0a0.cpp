@@ -11,8 +11,8 @@
 //   ChildPrimIndex +0x54, ChildTrailPrimIndex +0x60.
 // Shape: the mesh record is a temporary built by its out-of-line ctor inside the create call (engine vtable fetched first),
 //   from an identity matrix in its own block (top-down zero fill, then the diagonal); the trail record is a block local.
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public:
     C3DVector Right, Up, Look, Pos;
     void SetIdentity()
     {
@@ -20,7 +20,7 @@ struct CMatrix3x4 {
         Right.X = Up.Y = Look.Z = 1.0f;
     }
 };
-struct CEnginePrimitiveHandle;
+class CEnginePrimitiveHandle;
 struct SPrimitiveCreateInfo {
     long           Type;                           // +0x00
     long           Reserved;                       // +0x04
@@ -40,7 +40,7 @@ struct SMeshCreateInfo : SPrimitiveCreateInfo {    // 0x48
     unsigned long BlendOp;                         // +0x44
     SMeshCreateInfo(long bank, const CMatrix3x4& transform, unsigned long blendMode, unsigned long blendOp);   // 0x00AFEAD0
 };
-struct CIEngine {
+class CIEngine { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -70,15 +70,15 @@ struct CIEngine {
     virtual long CreateChildPrimitive(CEnginePrimitiveHandle* parent, const SPrimitiveCreateInfo* info, long flags);   // slot 26 (+0x68)
 };
 namespace NParticleEngine {
-struct CParticleSystem;
-template <class A, class B> struct CParticleUpdateParameters;
-struct CPSCBase {
+class CParticleSystem;
+template <class A, class B> class CParticleUpdateParameters;
+class CPSCBase { public:
     virtual void v00();
     CParticleSystem* ParticleSystem;               // +0x04
     bool UpdateStarted : 1;                        // +0x08
     bool Initialised : 1;
 };
-struct CPSCRenderMesh : CPSCBase {                 // vtable 0x0129F96C
+class CPSCRenderMesh : public CPSCBase { public:                 // vtable 0x0129F96C
     long          BankIndex;                       // +0x0c
     long          TrailBankIndex;                  // +0x10
     unsigned long Colours[6];                      // +0x14

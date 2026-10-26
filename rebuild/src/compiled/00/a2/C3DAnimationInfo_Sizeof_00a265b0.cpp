@@ -9,7 +9,7 @@ struct CAnimationData {
     unsigned long Sizeof();                // 0x00A25B20
 };
 
-struct C3DAnimationInfo {                  // engine/C3DAnimationInfo.h offsets
+class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h offsets
     virtual void v00();
     virtual void v01();
     virtual unsigned long Sizeof();        // slot 2 @ 0x00A265B0

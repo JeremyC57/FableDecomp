@@ -19,18 +19,18 @@ static int fails = 0;
 // out-of-line const-thing pointer temporary and re-addresses it with `lea ecx,[esp+8]`; an explicit
 // `CIntelligentPointerConstThing(target)` functional cast reuses the ctor's returned this, `mov ecx,eax`); the targeting
 // component is the one-ternary GetTC (straight into ecx for the virtual call).
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x20a];
     bool ZTargeting;                                    // +0x20a
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -75,7 +75,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntellige
     __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 #pragma pack(pop)
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x6d - 0x08];

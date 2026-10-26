@@ -6,8 +6,8 @@
 // its reserve is 0x00920FF0 and resize is 0x0075C040. Timer state, primitive handle,
 // and StartedTimer are intentionally not copied.
 namespace NParticleEngine {
-struct CParticleSystem;
-struct CPSCBase {
+class CParticleSystem;
+class CPSCBase { public:
     virtual void v000() {}
     CParticleSystem* ParticleSystem;
     bool UpdateStarted : 1;
@@ -24,7 +24,7 @@ struct CVector3D {
     void resize(unsigned int count, const C3DVector& value = C3DVector());
     C3DVector& operator[](unsigned int i) const { return _M_start[i]; }
 };
-struct CPSCLight : CPSCBase {
+class CPSCLight : public CPSCBase { public:
     long LightLifeTimer;
     long LightRespawnDelayTimer;
     bool LightIsAlive;

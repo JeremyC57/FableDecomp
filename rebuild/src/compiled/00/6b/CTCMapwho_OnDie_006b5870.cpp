@@ -7,7 +7,7 @@ struct SubObjAt90 {
 // cdecl free function, takes the object pointer, cleans up 4 bytes
 void operator delete(void*);   // call 0xbfe9bc
 
-struct CTCMapwho {
+class CTCMapwho { public:
     char pad[0x90];
     SubObjAt90 sub;   // at +0x90
     void OnDie();

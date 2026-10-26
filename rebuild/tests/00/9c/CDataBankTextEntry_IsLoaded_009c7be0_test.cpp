@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CBankFileAsyncData { bool finished; bool IsFinished() const { return finished; } };
+class CBankFileAsyncData { public: bool finished; bool IsFinished() const { return finished; } };
 struct CTextEntry { unsigned char _pad[0x38]; CBankFileAsyncData* m_pAsyncData; };
 struct CDataBankTextEntry {
     CTextEntry* PText; long NarratorIndex;

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00860ED0 CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask: 1.25x nearer threshold.
 #include <cstdio>
-struct CBaseObject { };
-struct C3DVector {
+class CBaseObject { public: };
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -9,7 +9,7 @@ struct C3DVector {
     C3DVector operator-(const C3DVector& o) const { C3DVector r; r.X = X - o.X; r.Y = Y - o.Y; r.Z = Z - o.Z; return r; }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-struct CThing : CBaseObject {
+class CThing : public CBaseObject { public:
     C3DVector Pos;
     const C3DVector& GetPosition() const { return Pos; }
 };
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;
     CBaseObject* GetPItem() const { return m_pItem; }
 };
-struct CVillageTaskSecuritySweep {
+class CVillageTaskSecuritySweep { public:
     bool available;
     CBaseIntelligentPointer CreatureAssignedToTask;
     C3DVector PositionToGoTo;

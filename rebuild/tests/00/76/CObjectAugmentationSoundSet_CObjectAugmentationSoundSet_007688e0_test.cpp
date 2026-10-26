@@ -7,7 +7,7 @@ public:
     const char* m_pText;
     long m_length;
 };
-struct CObjectAugmentationSoundSet {
+class CObjectAugmentationSoundSet { public:
     bool Played;
     CCharString Sound;
     unsigned long Handle;

@@ -13,12 +13,12 @@
 //   named CConsoleCommandLine (destroyed text, ~CBase, then the temporary) while the ctor still takes the returned pointer.
 extern "C" int __cdecl strncmp(const char* a, const char* b, unsigned int count);   // 0x00BFEAF8
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Text;                                     // +0x00
     unsigned long Length;                                   // +0x04
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
@@ -33,7 +33,7 @@ struct CBase {
     ~CBase();                                               // 0x0099A2E0
 };
 
-struct CConsoleCommandLine : CBase {
+class CConsoleCommandLine : public CBase { public:
     CCharString Text;                                       // +0x04
     bool          Flag;                                     // +0x08
     long          Cursor;                                   // +0x0c
@@ -61,7 +61,7 @@ struct CCommandMap {                                        // Dinkumware map<CC
     SCommandNode* _Lbound(const CCharString& key);          // 0x009EEC10
 };
 
-struct CConsole {
+class CConsole { public:
     virtual void v00();
     unsigned char _pad04[0x1c - 4];
     CConsoleCommandLine GuessLine;                          // +0x1c

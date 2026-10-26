@@ -19,22 +19,22 @@ struct CBase {                                  // root of the scripted actions 
     CBase();                                    // 0x0099A2F0
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     virtual void v00();
 };
 
-struct CScriptThing : CBaseObject {             // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes
     virtual void v00();
     void* PImp_Data;                            // +0x04
     void* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThing {
+class CThing { public:
     CScriptThing GetScriptThing();              // 0x004C7E50
     C3DVector* GetPosition();                   // 0x004C73D0
 };

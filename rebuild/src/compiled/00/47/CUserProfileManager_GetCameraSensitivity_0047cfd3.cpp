@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-struct CUserProfileManager {
+class CUserProfileManager { public:
     char pad0[0xc];
     unsigned char useAlt;   // +0xc
     char pad1[0x2c - 0xd];

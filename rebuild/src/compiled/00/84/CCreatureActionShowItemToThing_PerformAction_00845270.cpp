@@ -8,14 +8,14 @@
 // Shape: the two liveness tests share the constant 1 in bl (`mov bl,1 ; test bl,cl`, then `test [eax+91h],bl`); the
 // creature goes through the intelligent pointer's inline conversion (fetched before the item's plain GetPItem), the `new` null test selects 0 for AddEvent and the two
 // AddEvent calls are not merged.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,13 +45,13 @@ struct CBaseIntelligentPointer {
 
 struct CEventBase { };
 namespace NEntityEvents {
-struct CEventShownItem : CEventBase {           // 0x18 bytes
+class CEventShownItem : public CEventBase { public:           // 0x18 bytes
     unsigned char _pad[0x18];
     CEventShownItem(CThing* shower, CThing* item);   // 0x0084AEE0
 };
 }
 using NEntityEvents::CEventShownItem;
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(CEventBase* event);           // 0x008113C0
 };
 

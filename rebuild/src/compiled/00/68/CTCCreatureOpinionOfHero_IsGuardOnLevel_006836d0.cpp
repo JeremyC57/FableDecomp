@@ -16,7 +16,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,8 +38,8 @@ struct CThing {
         return false;
     }
 };
-struct CTCVillage;
-struct CTCVillageMember {                       // interface 0x23
+class CTCVillage;
+class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetVillage();                   // 0x007EE540 (the manifest's "IS_THING_ALIVE<...>" is propagated)
 };
 struct CBaseIntelligentPointer {
@@ -59,12 +59,12 @@ struct SThingPtrNode { SThingPtrNode* next; SThingPtrNode* prev; CBaseIntelligen
 struct CThingPtrList {                          // list<CIntelligentPointer<CThing> > (retail: one sentinel pointer)
     SThingPtrNode* head;
 };
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x2c];
     CThingPtrList Members;                      // +0x2c
     bool GetIsHeroEnemyOfGuards();              // 0x00658604
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool IsGuardOnLevel();

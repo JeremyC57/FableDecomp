@@ -7,32 +7,32 @@
 // virtual slots 15 IsRunnableLeaf (+0x3c), 19 GetCombatMinDistance (+0x4c), 22 AIAction_MoveToPosAndFacePos (+0x58).
 // Shape: an outer while over the attack conditions, an inner for(;;) hover loop whose in-range flag is reset per outer pass.
 // Layout: Ego_r.pdb CAIStateGroup_HoverMovementBase (0x1c bytes): target pointer +0x14; CWorld +0x4c combat manager.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
 
-struct CCombatManager;
-struct CThing {
+class CCombatManager;
+class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
     bool IsRegisteredCombatant();               // 0x00662410
 };
 bool __fastcall IsToAttackTarget(CThingCreatureBase* creature, CThing* target);   // 0x00864D00
 
-struct CCombatActionBase;
-struct CCombatManager {
+class CCombatActionBase;
+class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThingCreatureBase* attacker, bool ready);    // 0x006EA450
     C3DVector GetPreferredPos(CThingCreatureBase* creature);                       // 0x006EA770
     CCombatActionBase* GetNextActionForCreature(CThingCreatureBase* creature);    // 0x006EB600
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
 };
@@ -43,12 +43,12 @@ struct CBaseIntelligentPointer {
 };
 inline bool IsAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1); }
 
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     unsigned char _pad[0x14];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

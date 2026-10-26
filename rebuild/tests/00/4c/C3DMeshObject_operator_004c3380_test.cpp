@@ -1,10 +1,10 @@
 // Behaviour test for 0x004C3380 C3DMeshObject::operator=
 #include <cstdio>
 #include <cstdlib>
-struct CCPPointerInfo { long RefCount; void (*DeleteFunc)(void*); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (*DeleteFunc)(void*); void* Data; };
 static int g_deleted = 0;
 static void DeleteData(void*) { ++g_deleted; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* Data; CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other)
     {
@@ -20,9 +20,9 @@ template<class T> struct CCountedPointer {
         return *this;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Position; };
-struct C3DMeshObject {
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
+class C3DMeshObject { public:
     void* MeshInfo; CCountedPointer<int> Mesh; CMatrix3x4 PositionMatrix; bool InversePositionMatrixSetup;
     CMatrix3x4 InversePositionMatrix; float Scale;
     C3DMeshObject& operator=(const C3DMeshObject& o)

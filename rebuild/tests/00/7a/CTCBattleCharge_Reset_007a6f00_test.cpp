@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static long g_framesPerSecond = 30;
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 static int g_kills = 0;
 class CThing {
 public:
@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const { return m_pItem; }
     void SetPItem(CThing* item) { m_pItem = item; }
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
@@ -26,8 +26,8 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     if (p.GetPItem() != 0) { if (!(p.GetPItem()->m_stateFlags & 1)) return true; }
     return false;
 }
-struct CSpecialAbilitiesBattleChargeDef { float* DashDistance; float* RadiusOfEffect; float PoseDelaySecs; float ChargeDelay; };
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
+class CSpecialAbilitiesBattleChargeDef { public: float* DashDistance; float* RadiusOfEffect; float PoseDelaySecs; float ChargeDelay; };
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 class CTCBattleCharge {
 public:
     CThing* ParentThing;

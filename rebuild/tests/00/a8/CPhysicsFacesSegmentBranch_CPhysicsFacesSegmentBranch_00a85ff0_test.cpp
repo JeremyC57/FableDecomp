@@ -10,8 +10,8 @@ typedef unsigned __int64 UInt64;
 #endif
 // Behaviour test for 00a85ff0: the branch destructor deletes both children through their virtual destructors and tolerates null children.
 static int g_childrenDeleted = 0;
-struct CPlane { float m_normal[3]; float m_distance; };
-struct CIPhysicsFacesSegmentBase {
+class CPlane { public: float m_normal[3]; float m_distance; };
+class CIPhysicsFacesSegmentBase { public:
     virtual unsigned char HasChildren() = 0;
     virtual long Sizeof() = 0;
     virtual long GetNoFaces() = 0;

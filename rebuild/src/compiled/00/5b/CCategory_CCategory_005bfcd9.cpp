@@ -19,7 +19,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CThing;
+class CThing;
 struct CInventoryCategoryDef_Retail {         // the def behind the retail CDefPointer (count at +4, slot 1 destroys)
     virtual void v00();
     virtual void Destroy();                   // slot 1 (+0x04)

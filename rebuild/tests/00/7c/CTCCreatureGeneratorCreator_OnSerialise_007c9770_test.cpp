@@ -5,8 +5,8 @@ typedef unsigned __int64 u64;
 #else
 typedef unsigned long long u64;
 #endif
-struct CThing { bool dead; u64 uid; };
-struct CPersistContext {
+class CThing { public: bool dead; u64 uid; };
+class CPersistContext { public:
     bool saving; long frameStore; u64 uidStore;
     void Transfer(const char*, long& v) { if (saving) frameStore = v; else v = frameStore; }
     void Transfer(const char*, u64& v) { if (saving) uidStore = v; else v = uidStore; }

@@ -1,5 +1,5 @@
 #include <stdio.h>
-struct CTCMapwho { int calls; int cdecls; };
+class CTCMapwho { public: int calls; int cdecls; };
 static void helper(CTCMapwho* self){ self->calls++; }
 static void ext(CTCMapwho* self){ self->cdecls++; }
 static void OnDie(CTCMapwho* self){ if(self){ helper(self); ext(self); } }

@@ -4,14 +4,14 @@
 #include <cstring>
 static char g_log[256];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-struct CDataOutputStream { long written; void WriteLong(long v) { LOG("write"); written = v; } };
-struct CMemoryDataInputStream { int id; };
+class CDataOutputStream { public: long written; void WriteLong(long v) { LOG("write"); written = v; } };
+class CMemoryDataInputStream { public: int id; };
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* s, T* value) { LOG(s->id == 1 ? "binin" : "binin?"); *value = (T)-5; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode; CMemoryDataInputStream* PLoadStream; CDataOutputStream* PSaveStream;
     void CheckCRC(const char* name) { LOG(name[0] == 0 ? "crc" : "crc?"); }
     template <class T> void TransferBinary(T& value)

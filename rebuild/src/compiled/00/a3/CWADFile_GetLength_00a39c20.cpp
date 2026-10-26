@@ -1,5 +1,5 @@
 #include "engine/CWADFile.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CBankFileAsync { int Method(int); };
+class CBankFileAsync { public: int Method(int); };
 struct CWADFile_Methods : CWADFile {
     int GetLength();
 };

@@ -13,7 +13,7 @@ extern "C" void* __cdecl memset(void* dest, int value, unsigned int size);
 #pragma intrinsic(memset)
 void* __cdecl operator new[](unsigned int size);       // 0x00BFEB22
 
-struct CEngineMap {
+class CEngineMap { public:
     unsigned char  _pad00[0x5c];
     unsigned short MapWidth;                     // +0x5c
     unsigned short MapHeight;                    // +0x5e
@@ -21,7 +21,7 @@ struct CEngineMap {
     unsigned short WorldPosY;                    // +0x62
 };
 
-template <class T> struct CArray {               // retail CArray: begin, end, capacity
+template <class T> class CArray { public:               // retail CArray: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -29,7 +29,7 @@ template <class T> struct CArray {               // retail CArray: begin, end, c
     T& operator[](unsigned long i) { return m_pBegin[i]; }
 };
 
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     void*               _vptr;                   // +0x00
     unsigned char       _pad04[0x8];
     short*              Map;                     // +0x0c

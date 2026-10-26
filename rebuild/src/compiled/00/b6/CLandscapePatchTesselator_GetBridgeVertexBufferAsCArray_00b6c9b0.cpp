@@ -13,7 +13,7 @@ template<class T> struct CRetailVector {           // VC7.1 Dinkumware vector: f
     long size() const { return m_last - m_first; }
 };
 
-struct CLandscapePatchTesselator {
+class CLandscapePatchTesselator { public:
     unsigned char                        _pad00[0x14];
     CRetailVector<SBridgeVertex_00b6c9b0> m_bridgeVertices;   // +0x14
     SBridgeVertex_00b6c9b0* GetBridgeVertexBufferAsCArray();

@@ -2,14 +2,14 @@
 #include <cstdlib>
 // behaviour test: CEngineWorldMap::AddMap rebuilds a map slot unless the UID is unchanged and pushes it to the visible list front
 static int g_created = 0, g_rendererCreated = 0, g_detailCreated = 0, g_deleted = 0, g_shown = 0;
-struct CIDrawMap {};
-struct CDrawMapInfo { bool Valid; CIDrawMap* PMap; long PosX, PosY; unsigned long UID; long ExtentsX, ExtentsY; };
+class CIDrawMap { public:};
+class CDrawMapInfo { public: bool Valid; CIDrawMap* PMap; long PosX, PosY; unsigned long UID; long ExtentsX, ExtentsY; };
 static CDrawMapInfo g_info;
-struct CIDrawWorldMap { CDrawMapInfo GetMapInfo(long) const { return g_info; } };
-struct CEngineMap;
-struct CEngineLandscapeMap { void OnMapVisibilityChanged(bool v) { if (v) ++g_shown; } };
+class CIDrawWorldMap { public: CDrawMapInfo GetMapInfo(long) const { return g_info; } };
+class CEngineMap;
+class CEngineLandscapeMap { public: void OnMapVisibilityChanged(bool v) { if (v) ++g_shown; } };
 struct _List_node { _List_node* _M_next; _List_node* _M_prev; CEngineMap* _M_data; };
-struct CEngineMap {
+class CEngineMap { public:
     CEngineLandscapeMap* LandscapeMap; void* LocalDetailCacheMap; const CIDrawMap* GameMap; long MapUID;
     _List_node* VisibleMapListIterator; bool IsInVisibleMapList;
     CEngineMap(const CIDrawMap* m, long, long, long, long, long uid, bool)
@@ -28,7 +28,7 @@ struct CEngineMapList {
         tmp->_M_next = pos; tmp->_M_prev = prev; prev->_M_next = tmp; pos->_M_prev = tmp;
     }
 };
-struct CEngineWorldMap {
+class CEngineWorldMap { public:
     short* Map;
     CEngineMap* Slots[8]; unsigned long Count;
     CEngineMapList VisibleMapList;

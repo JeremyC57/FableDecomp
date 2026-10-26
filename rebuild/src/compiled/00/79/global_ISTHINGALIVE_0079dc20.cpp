@@ -8,7 +8,7 @@
 // modelled as Dead at bit 5 (the PDB dump does not keep the bit order). Shape: an `unsigned short` bit field read
 // through an inline `bool IsDead()` gives the shr/test pair (the direct field read folds to `test byte ptr [eax+40h],20h`).
 namespace NParticleEngine {
-struct CParticleEmitter {
+class CParticleEmitter { public:
     unsigned char _pad_0x00[0x40];
     unsigned short LowFlags : 5;                      // +0x40 bits 0..4
     unsigned short Dead : 1;                           // +0x40 bit 5
@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     void* PItem;
     void* GetPItem() const;                           // 0x00A01B50
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 

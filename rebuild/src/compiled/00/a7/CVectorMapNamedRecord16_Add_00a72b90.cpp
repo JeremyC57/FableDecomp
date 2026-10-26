@@ -9,7 +9,7 @@
 // 16-byte value copied dword by dword through ecx/edx (memberwise user copy constructor over dword members); inner
 // scope so the string destructor precedes the Dirty store. The manifest names the push_back callee
 // "CScriptModuleFullTransition::OnInitLeaf" (propagated).
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);   // 0x0099EC30
     ~CCharString();                          // 0x0099EAE0

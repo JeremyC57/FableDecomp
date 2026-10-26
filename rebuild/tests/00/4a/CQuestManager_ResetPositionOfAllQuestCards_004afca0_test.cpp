@@ -2,13 +2,13 @@
 // in-limbo card thing that has a physics component (on both lists) is reset to the hero's position; a dead or
 // missing hero does nothing.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CTCPhysicsBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCPhysicsBase { public:
     int Resets; const C3DVector* Last;
     CTCPhysicsBase() : Resets(0), Last(0) {}
     virtual void ResetPosition(const C3DVector& position) { ++Resets; Last = &position; }
 };
-struct CThing {
+class CThing { public:
     CTCPhysicsBase* PhysicsTC;
     unsigned char   Dead : 1;
     unsigned char   CreatedByOwnerThingCreation : 1;
@@ -24,16 +24,16 @@ struct CThing {
     const C3DVector& GetPosition() const { return Position; }
 };
 static CThing* g_hero;
-struct CPlayer { CThing* GetHeroThing() const { return g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() const { return g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() { return &g_player; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CPlayerManager { public: CPlayer* GetMainPlayer() { return &g_player; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CPlayerManager g_pm;
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
 struct CBaseIntelligentPointer { CThing* Item; CThing* GetPItem() const { return Item; } };
 struct CCardNode { CCardNode* _M_next; CCardNode* _M_prev; CBaseIntelligentPointer _M_data; };
-struct CQuestManager {
+class CQuestManager { public:
     CCardNode* ActiveQuestCards;
     CCardNode* CompletedQuestCards;
     void ResetPositionOfAllQuestCards();

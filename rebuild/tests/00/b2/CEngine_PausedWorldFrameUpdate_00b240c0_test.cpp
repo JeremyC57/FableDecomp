@@ -1,14 +1,14 @@
 // Behaviour test for CEngine::PausedWorldFrameUpdate() @ 0x00b240c0
 #include <cstdio>
-struct CEngineComponentParams { int frame; };
-struct CEngineComponent {
+class CEngineComponentParams { public: int frame; };
+class CEngineComponent { public:
     unsigned int m_flags; int m_world; int m_paused; const CEngineComponentParams* m_seen;
     virtual void WorldFrameUpdate(const CEngineComponentParams& params) { ++m_world; m_seen = &params; }
     virtual void PausedWorldFrameUpdate() { ++m_paused; }
     virtual unsigned int GetSceneFilterFlags() { return m_flags; }
 };
 template <class T> struct CRetailVector { T* m_start; T* m_finish; T* m_end; T* begin() const { return m_start; } T* end() const { return m_finish; } };
-struct CEngine {
+class CEngine { public:
     bool IsInitialised; long CurrentRenderFrame, CurrentWorldFrame, CurrentPausedWorldFrame;
     double NonInterpolatedWorldTime, NonInterpolatedPausedWorldTime;
     unsigned int WorldFramesPerSecond, SceneFilterFlags;

@@ -11,7 +11,7 @@ struct CThingAnimatable {
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
-struct CThing : CThingAnimatable {
+class CThing : public CThingAnimatable { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                 // +0x10 creature state byte (compared with 1)
     unsigned char _pad11[0x91 - 0x11];

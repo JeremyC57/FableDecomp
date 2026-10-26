@@ -3,7 +3,7 @@
 
 static int g_assigns = 0;
 
-struct CCharString {                         // 4 bytes: the string-data pointer
+class CCharString { public:                         // 4 bytes: the string-data pointer
     void* PStringData;
     CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 };

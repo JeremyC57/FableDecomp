@@ -21,7 +21,7 @@ namespace N_005c04bf { struct CCountedPointer {                    // 8 bytes: o
     ~CCountedPointer();                     // 0x005C04BF
 }; } using N_005c04bf::CCountedPointer;
 
-struct CSoundPair {                         // 0x10 bytes
+class CSoundPair { public:                         // 0x10 bytes
     long            m_sound;                // +0x00
     CCountedPointer m_pSample;              // +0x04
     long            m_volume;               // +0x0c

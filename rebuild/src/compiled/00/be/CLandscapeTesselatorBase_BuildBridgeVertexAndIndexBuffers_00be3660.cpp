@@ -15,39 +15,39 @@
 //   (memcpy evaluates its arguments right to left); the triangle count is size / 3.
 #include <string.h>
 #pragma intrinsic(memcpy)
-struct CMovableResource;
-struct CIndexBuffer {
+class CMovableResource;
+class CIndexBuffer { public:
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC1FB0
     void Unlock();                                 // 0x00AC1F00
 };
-struct CVertexBufferWin32 {
+class CVertexBufferWin32 { public:
     unsigned char* Lock(unsigned long offset, unsigned long size, unsigned long flags);   // 0x00AC20A0
     void Unlock();                                 // 0x00AC20B0
 };
 enum EIndexBufferFormat { INDEX_FORMAT_16 = 0x65 };
 enum EPrimitiveType { PRIMITIVE_TRIANGLE_LIST = 4 };
 enum EVertexType { VERTEX_TYPE_DEFAULT = 0 };
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     CIndexBuffer* AllocateIndexBuffer(CMovableResource* owner, long size, unsigned long usage, EIndexBufferFormat format, EPrimitiveType type);   // 0x00BDA360
     CVertexBufferWin32* AllocateVertexBuffer(CMovableResource* owner, EVertexType type, long count, long size, unsigned long usage);   // 0x00BDA3D0
 };
-struct CEngineResourceManager {
+class CEngineResourceManager { public:
     unsigned long GetIndexBufferUsage();           // 0x00B3B060
     unsigned long GetVertexBufferUsage();          // 0x00B3B030
 };
-struct CEngine {
+class CEngine { public:
     unsigned char                  _pad[0x6b0];
     CEngineLandscapeMemoryManager* LandscapeMemoryManager;   // +0x6b0
 };
 extern CEngine*                g_pEngine_01436ea8;          // 0x01436EA8
 extern CEngineResourceManager* g_pResourceManager; // 0x01436E98
-struct CTesselationData {
+class CTesselationData { public:
     unsigned char       _pad[0x2c];
     CVertexBufferWin32* BridgeVertexBuffers[4];    // +0x2c
     CIndexBuffer*       BridgeIndexBuffers[4];     // +0x3c
     long                BridgePolyCounts[4];       // +0x4c
 };
-template <class T> struct CArray {                 // retail 12 bytes
+template <class T> class CArray { public:                 // retail 12 bytes
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;

@@ -10,11 +10,11 @@
 //        the conversion temporary in the argument's own slot (`mov eax,[esp+4] ; ... ; mov [esp+8],eax`) and
 //        passes its address.
 
-struct CThing {
+class CThing { public:
     void* __vftable;
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
 };
 
 struct CThingPointerList {                        // std::list<CThing*> (STLport, one node pointer)
@@ -22,7 +22,7 @@ struct CThingPointerList {                        // std::list<CThing*> (STLport
     void remove(CThing* const& value);            // 0x00863130
 };
 
-struct CCreatureInteraction {
+class CCreatureInteraction { public:
     CThingPointerList Participants;               // +0x00
     void RemoveCreature(CThingCreatureBase* creature);
 };

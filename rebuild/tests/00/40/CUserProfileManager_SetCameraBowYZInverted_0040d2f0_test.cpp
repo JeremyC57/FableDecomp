@@ -1,7 +1,7 @@
 // Behaviour test for CUserProfileManager::SetCameraBowYZInverted (0x0040D2F0).
 #include <cstdio>
 
-struct CUserProfileManager {
+class CUserProfileManager { public:
     bool UseNewProfileValues;
     bool CameraFPBowYZInverted, CameraPCBowYZInverted;
     bool CameraFPBowYZInvertedNewProfile, CameraPCBowYZInvertedNewProfile;

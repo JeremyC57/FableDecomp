@@ -9,7 +9,7 @@
 //   inlined `__iter_swap` temporary lives in the 0x18-byte frame (key in ecx, the first payload word in esi): STLport
 //   pair's memberwise user copy constructor copies the trivially copyable entry through its own address (`lea esi,[eax+4]
 //   ; mov edi,esi`), the two assignments are the implicit six-dword copies through ebp.
-struct CTextureMorphEntry {                 // Ego_r.pdb, 20 bytes, trivially copyable
+class CTextureMorphEntry { public:                 // Ego_r.pdb, 20 bytes, trivially copyable
     long MorphType;                         // +0x00 EHeroMorphType
     long TextureLayer;                      // +0x04
     long ReplacingTextureIndex;             // +0x08

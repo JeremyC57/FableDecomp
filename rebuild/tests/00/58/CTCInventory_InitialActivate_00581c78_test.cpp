@@ -14,7 +14,7 @@ struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long type) { return (type >= 0 && type < 8) ? g_held[type] : 0; }
 };
 
-struct CTCInventory : CTCInventoryBase {
+class CTCInventory : public CTCInventoryBase { public:
     CLongVector QuickAccessItems;
     void InitialActivate();
 };

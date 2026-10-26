@@ -15,7 +15,7 @@ public:
     CCharString(const char* text, long length);      // 0x0099EBF0
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CAnimFilterBase {                             // vtable 0x0122FFCC
+class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
     virtual void v01();
     virtual void v02();
@@ -27,7 +27,7 @@ struct CCreatureSpeedSource {                        // descriptive: the +0xE0 p
     unsigned char _pad00[0xb0];
     float         SpeedVariation;                    // +0xb0
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned char _pad00[0xe0];
     CCreatureSpeedSource* m_pSpeedSource;            // +0xe0 (descriptive)
     unsigned char _pade4[0x1b8 - 0xe4];

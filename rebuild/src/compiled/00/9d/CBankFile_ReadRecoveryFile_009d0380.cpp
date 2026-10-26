@@ -19,21 +19,21 @@
 extern "C" int __cdecl memcmp(const void*, const void*, unsigned int);
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcmp, memcpy)
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
 };
-struct CAFile {
+class CAFile { public:
     static bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 };
-struct CASuspendableProcess;
+class CASuspendableProcess;
 struct CBaseClassNonCopyable {
     CBaseClassNonCopyable();                           // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                  // 0x0099A300
 };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
-struct CDiskFileWin32 : CBaseClassNonCopyable {       // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:       // vtable 0x0122D06C
     FileAccessType AccessType;                         // +0x04
     long Position;                                     // +0x08
     long Length;                                       // +0x0c
@@ -45,7 +45,7 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {       // vtable 0x0122D06C
     virtual void Open(const CWideString&, FileAccessType, unsigned long);   // slot 1, 0x0099A6A0
     virtual void Close();                                                   // slot 2, 0x0099A920
 };
-struct CDataInputStream {
+class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -62,7 +62,7 @@ struct CDataInputStream {
         } else ReadWithSrcChunkOverflow((unsigned char*)dst, size);
     }
 };
-struct CFileDataInputStream : CDataInputStream {
+class CFileDataInputStream : public CDataInputStream { public:
     CAFile* File;                                       // +0x18
     void* Buffer;                                       // +0x1c
     long BufferSize;                                    // +0x20

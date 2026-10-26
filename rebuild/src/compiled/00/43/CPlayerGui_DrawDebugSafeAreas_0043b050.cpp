@@ -7,7 +7,7 @@
 // Layout: CPlayerGui ShowDebugSafeAreas +0x2b0, SafeAreaHandles +0x310 (12-byte STLport vector of 8-byte handles).
 // Model: CTCFireheartMinigame::DrawPreparePrimitivesForRendering 0x007E7C90 (sprite ctor, renderer slot) and
 //   NPlayerGui::CStatBar::ClearGraphics 0x00645F8D (for_each + mem_fun_ref).
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     void Clear();                                   // 0x0041BE70
     long  m_header;                                 // +0x00
     void* Data;                                     // +0x04
@@ -23,11 +23,11 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
     T* _M_end_of_storage;
     void resize(unsigned long n);                   // 0x00443F90
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
 };
-struct C2DBoxF {
+class C2DBoxF { public:
     C2DVector TopLeft, BottomRight;
     C2DBoxF(float left, float top, float right, float bottom) : TopLeft(left, top), BottomRight(right, bottom) {}
 };

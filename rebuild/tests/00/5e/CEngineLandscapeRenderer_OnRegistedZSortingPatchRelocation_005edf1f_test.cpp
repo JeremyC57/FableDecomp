@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     char pad[0x148];
     int* m_zSortingPatchArray; // +0x148
 };

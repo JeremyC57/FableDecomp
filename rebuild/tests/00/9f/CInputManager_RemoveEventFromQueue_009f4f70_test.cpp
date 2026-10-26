@@ -13,7 +13,7 @@
 //   the given event's device type whose cases `goto found` on each comparison (given event first) -- a `same` flag is
 //   materialised (`sete al`) -- and case 3 jumps straight to found (threaded into the shared `je` through the switch's
 //   `dec eax` flags). The match (Clear) is laid after the loop's own epilogue and recomputes `i * 0x34`.
-struct CInputEvent {
+class CInputEvent { public:
     unsigned char _body[0x34];
     long           GetType() const;                            // 0x00A03B40
     long           GetDeviceType() const;                      // 0x00A03B50
@@ -33,7 +33,7 @@ struct vector {
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
 
-struct CInputManager {
+class CInputManager { public:
     void*               __vftable;                      // +0x00
     vector<CInputEvent> ProcessedEvents;                // +0x04
     vector<CInputEvent> EventStore;                     // +0x10

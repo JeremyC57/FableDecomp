@@ -6,10 +6,10 @@
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
 // Shape: CZTargetNew's inline constructor: root ctor, its vtable 0x0127754C, then the first member, an empty
 //        CIntelligentPointer<const CThingGameObject> at +0xa4 (base ctor + its vtable 0x01237F1C); null block returns 0.
-struct CGameCameraManager;
-struct CCameraModeDef;
-struct CBaseObject;
-template <class T> struct CDefPointer;
+class CGameCameraManager;
+class CCameraModeDef;
+class CBaseObject;
+template <class T> class CDefPointer;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                          // +0x04
@@ -20,7 +20,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointer() { }
 };
 namespace NCameraModes {
-struct CBase {
+class CBase { public:
     virtual void v00();
     float         DefaultFOV;                      // +0x04
     unsigned char _body[0x9c];                     // +0x08..+0xa3 (retail)

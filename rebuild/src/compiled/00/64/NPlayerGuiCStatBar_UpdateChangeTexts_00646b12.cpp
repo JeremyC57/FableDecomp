@@ -14,7 +14,7 @@
 //   frame step +0x4DC; state +0x28. CChangeText: OldOffset +0, Offset +8, Text +0x10, Value +0x14, Colour +0x18
 //   (alpha byte +0x1B), StartToEnd +0x1C, PercentageThrough +0x20.
 extern const float g_epsilon_0129ba3c;          // 0x0129BA3C (1e-4f)
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -22,8 +22,8 @@ struct C2DVector {
     C2DVector operator+(const C2DVector& o) const { return C2DVector(X + o.X, Y + o.Y); }
     C2DVector operator*(float f) const { return C2DVector(X * f, Y * f); }
 };
-struct CWideString { void* PStringData; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class CWideString { public: void* PStringData; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 struct CStatBarOwner {
     unsigned char _pad000[0x4cc];
     C2DVector     BoxTL;                        // +0x4cc
@@ -33,7 +33,7 @@ struct CStatBarOwner {
 namespace NPlayerGui {
 class CStatBar {
 public:
-    struct CChangeText {
+    class CChangeText { public:
         C2DVector   OldOffset;                  // +0x00
         C2DVector   Offset;                     // +0x08
         CWideString Text;                       // +0x10

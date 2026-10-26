@@ -5,7 +5,7 @@
 // Behaviour model of CQuestManager::ActivateQuest (0x004B4A10): wrap the name in a one-element array (push_back on an
 // empty vector -> the growth path), call ActivateMultipleQuests with the two flags, destroy the array, return its result.
 static int g_alive = 0;
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString(const char* s) : p(s) { ++g_alive; }
     CCharString(const CCharString& o) : p(o.p) { ++g_alive; }
@@ -28,7 +28,7 @@ struct CArray {
         start = ns; finish = nf; eos = ns + len;
     }
 };
-struct CQuestManager {
+class CQuestManager { public:
     int calls; const char* lastName; int lastCount; bool lastFlag, lastLoad, answer;
     bool ActivateMultipleQuests(const CArray& names, bool flag, bool load)
     {

@@ -3,8 +3,8 @@
 // Behaviour test for the NUISystem::CManager constructor (0x0041E3F6): scalar members cleared, keyboard input selected, the texture
 // formats picked into the bank parameters, the bank chosen by the front-end component flag, and the meta layer reset.
 struct CBankParams { long F[7]; bool Flag1c; long Value20, Value24; bool Flag28; };
-struct CDisplayManager { long Calls; long Pick(long bits, long* out) { Calls++; *out = bits * 10 + Calls; return 1; } };
-struct CNewFrontendGameComponent { bool Active; };
+class CDisplayManager { public: long Calls; long Pick(long bits, long* out) { Calls++; *out = bits * 10 + Calls; return 1; } };
+class CNewFrontendGameComponent { public: bool Active; };
 static CDisplayManager g_dm = { 0 };
 static CNewFrontendGameComponent* g_pFE = 0;
 static const char* g_lastBank = 0;

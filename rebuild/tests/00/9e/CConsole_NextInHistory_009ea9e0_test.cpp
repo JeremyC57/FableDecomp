@@ -2,13 +2,13 @@
 #include <stddef.h>
 #include <string.h>
 static int g_stringAssigns = 0, g_literalAssigns = 0;
-struct CCharString {
+class CCharString { public:
     const char* PStringData;
     CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_stringAssigns; return *this; }
     const CCharString& operator=(const char* text) { PStringData = text; ++g_literalAssigns; return *this; }
 };
-struct CBaseClass { virtual void v00() { } };
-struct CConsoleCommandLine : CBaseClass {
+class CBaseClass { public: virtual void v00() { } };
+class CConsoleCommandLine : public CBaseClass { public:
     CCharString CurrentEntry; bool UserEntry; long CursorPosition;
     virtual void v00() { }
     void Reset() { CurrentEntry = ""; UserEntry = false; CursorPosition = 0; }

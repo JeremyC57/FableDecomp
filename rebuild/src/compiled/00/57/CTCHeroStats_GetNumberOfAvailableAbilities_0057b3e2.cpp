@@ -16,9 +16,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
-struct CTCInventoryAbilities {
+class CTCInventoryAbilities { public:
     long GetAbilityLevel(long ability) const;  // 0x005EDE93
 };
 
@@ -33,7 +33,7 @@ struct CInterfaceMap {                         // CVectorMap<ETCInterfaceType, C
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;             // +0x20
     unsigned char _pad_0x21[0x23];

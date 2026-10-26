@@ -9,13 +9,13 @@
 #include "engine/CProcessedInput.h"
 #undef CProcessedInput
 // Actual storage matches native B0; field-free adapter restores missing methods.
-struct CProcessedInput:CProcessedInputStorage {void Clear();void SetPlayer(unsigned long);}; //A0D300/A0D3A0
+class CProcessedInput:public CProcessedInputStorage { public:void Clear();void SetPlayer(unsigned long);}; //A0D300/A0D3A0
 #define CPlayerManager CPlayerManagerDonor
 #include "engine/CPlayerManager.h"
 #undef CPlayerManager
 // The donor Players vector is 16 bytes versus retail 12, moving MainPlayer
 // from donor20 to native1C. No storage is accessed by this field-free adapter.
-struct CPlayerManager:CPlayerManagerDonor {long GetMainPlayerNumber()const;}; //449700
+class CPlayerManager:public CPlayerManagerDonor { public:long GetMainPlayerNumber()const;}; //449700
 struct CInputNode {CAInputProcess* Data;CInputNode* Next;CInputNode* Previous;};
 struct CInputScan;
 struct CInputList {CInputNode* Head;CInputNode* Tail;int Count;CInputScan* FirstScan;};
@@ -26,7 +26,7 @@ struct CInputScan {
  CAInputProcess* Advance(){Current=Next;if(!Current)return 0;Next=Current->Next;Previous=Current->Previous;return Current->Data;}
  void End(CInputList& list){if(!PreviousScan){list.FirstScan=NextScan;if(NextScan)NextScan->PreviousScan=0;}else{PreviousScan->NextScan=NextScan;if(NextScan)NextScan->PreviousScan=PreviousScan;}}
 };
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
  void* Vtable;mutable CInputList InputProcesses;unsigned char BeforePlayer[0x6e8];CPlayerManager* PlayerManager;unsigned char BeforeProcessed[0x194];mutable bool AlreadyProcessed;
  bool GetInputProcessEventFromUpdate(CProcessedInput&)const;
 };

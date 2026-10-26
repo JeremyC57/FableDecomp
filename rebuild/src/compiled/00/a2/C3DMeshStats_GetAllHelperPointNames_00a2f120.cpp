@@ -11,7 +11,7 @@
 // slot (esp+0x10 after the two pushes = the `flag` slot) and destroyed after the call; `false` selects the
 // helper-point name table (the sibling @ 0x00A2F0F0 passes true for the dummy objects); the manifest label
 // "GetAllDummyObjectNames" is propagated from that sibling and the leaf here names the helper-point variant.
-struct CCharString {
+class CCharString { public:
     char* m_pString;
     CCharString();                         // 0x0099E4B0
     ~CCharString();                        // 0x0099EAE0
@@ -19,7 +19,7 @@ struct CCharString {
 
 struct CCharStringVector;                  // std::vector<CCharString>
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     void GetAllHelperPointNames(CCharStringVector& names, bool flag);
     void UnpackNames(CCharStringVector& names, bool dummyObjects, const CCharString& prefix, bool flag);   // 0x00A2ED10

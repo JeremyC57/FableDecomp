@@ -18,7 +18,7 @@
 // destructor runs here: a by-value class argument is destroyed by the callee.
 #pragma optimize("s", on)
 
-struct CHeroAbilityDef;
+class CHeroAbilityDef;
 
 struct SAbilityEntry {                          // pair<long, CDefPointer<const CHeroAbilityDef> >
     long                   first;

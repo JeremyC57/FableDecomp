@@ -9,7 +9,7 @@ struct CEffectQualitySettings_00b6d6a0 {
     bool          HighendWater;                    // +0x70
 };
 
-struct CEngineWaterRenderer {
+class CEngineWaterRenderer { public:
     unsigned char _pad0[0x274];
     bool          HighendWaterEnabled;             // +0x274
     bool          HighendWaterSupported;           // +0x275

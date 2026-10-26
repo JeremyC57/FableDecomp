@@ -2,7 +2,7 @@
 // component gives false; otherwise the result is HasEvent(type 0x1b created after FrameOfLastHit).
 #include <cstdio>
 
-struct CTCBase { int dummy; };
+class CTCBase { public: int dummy; };
 
 // Sorted {type, component} vector map searched by LowerBound (0x0040F020 in retail).
 struct CInterfaceMap {
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char m_flags91;
@@ -42,15 +42,15 @@ struct CThing {
     }
 };
 
-struct CAIBrain { CThing* PCreature; };
+class CAIBrain { public: CThing* PCreature; };
 
 namespace NEntityEvents {
-    struct CIsEventOfTypeCreatedAfter {
+    class CIsEventOfTypeCreatedAfter { public:
         long Type, Frame;
         CIsEventOfTypeCreatedAfter(long type, long frame) : Type(type), Frame(frame) { }
     };
 }
-struct CTCEntityEvents : CTCBase {
+class CTCEntityEvents : public CTCBase { public:
     long m_eventType, m_eventFrame;
     bool HasEvent(const NEntityEvents::CIsEventOfTypeCreatedAfter& p) { return m_eventType == p.Type && m_eventFrame > p.Frame; }
 };

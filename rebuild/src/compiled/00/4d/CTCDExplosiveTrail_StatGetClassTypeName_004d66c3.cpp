@@ -1,7 +1,7 @@
 struct Helper {
     void Do(const char* s, int n);
 };
-struct CCharString { char* p; };
+class CCharString { public: char* p; };
 extern "C" CCharString* __fastcall StatGetClassTypeName_9(Helper* result)
 {
     result->Do((const char*)0x123e6ec, -1);

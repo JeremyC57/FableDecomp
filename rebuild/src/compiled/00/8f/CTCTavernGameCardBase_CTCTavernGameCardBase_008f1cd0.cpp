@@ -9,9 +9,9 @@
 // GameType +0x300, CardOrder +0x304, SelectedCard +0x308, HighlightedCard +0x30C, CurrentMovingCard +0x310.
 // Shape: the three vectors (STLport _Vector_base + _STLP_alloc_proxy model) and the two card pointers in the init list, one zero register;
 // PointerScale and Pointer are body assignments (stored last, PointerScale first).
-struct CThing;
-struct CCard;
-struct CThingObject;
+class CThing;
+class CCard;
+class CThingObject;
 template <class T> struct CAllocator {              // STLport allocator<T>: empty
     CAllocator() { }
 };
@@ -29,7 +29,7 @@ template<class T> struct CVector : CVectorBase<T> { // STLport vector<T> (12 byt
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 struct CIntelligentPointerThing { void* m_vfptr; CThing* m_pItem; };
-struct CTCTavernGame {
+class CTCTavernGame { public:
     virtual ~CTCTavernGame();
     unsigned char _body04[0xf0 - 0x04];         // CTCBase + CTCTavernGame members (retail 0xF0)
     CTCTavernGame(CThing* thing);               // 0x005EC8A0

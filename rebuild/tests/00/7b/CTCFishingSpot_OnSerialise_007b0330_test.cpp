@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstring>
-struct CPersistContext {
+class CPersistContext { public:
     const char* m_name; bool m_loaded; int m_calls; bool m_default;
     void Transfer(const char* name, bool& value, const bool& defaultValue) { m_name = name; m_default = defaultValue; value = m_loaded; ++m_calls; }
 };
-struct CTCFishingSpot {
+class CTCFishingSpot { public:
     void* vptrSlot; void* ParentThing; bool Enabled;
     void OnSerialise(CPersistContext& context, bool transfer) { if (transfer) context.Transfer("Enabled", Enabled, true); }
 };

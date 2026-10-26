@@ -30,11 +30,11 @@ struct CCountedResourcePointer {
     }
 };
 
-struct CMovableResource {                          // vtable 0x0129B860
+class CMovableResource { public:                          // vtable 0x0129B860
     virtual ~CMovableResource() { }
 };
 
-struct CParticleSimulation : CMovableResource {    // vtable 0x0129F0C4
+class CParticleSimulation : public CMovableResource { public:    // vtable 0x0129F0C4
     CCountedResourcePointer m_resource;            // +0x04
     void Reset();                                  // 0x00ADF1E0
     virtual ~CParticleSimulation();

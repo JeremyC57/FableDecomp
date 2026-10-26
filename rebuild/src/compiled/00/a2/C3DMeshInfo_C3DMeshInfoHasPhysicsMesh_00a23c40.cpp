@@ -1,5 +1,5 @@
-struct C3DMeshInfo
-{
+class C3DMeshInfo
+{ public:
     int unused00[15];
     int physicsMeshIndex; // +0x3c
 

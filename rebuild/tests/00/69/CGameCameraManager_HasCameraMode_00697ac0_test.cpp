@@ -2,14 +2,14 @@
 
 typedef int EMode;
 
-struct CCamera {
+class CCamera { public:
     virtual void slot0() {}
     virtual void slot1() {}
     virtual EMode GetCurrentMode() { return mode_val; }
     EMode mode_val;
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     char pad[0x98];
     CCamera* camera;
     bool HasCameraMode(EMode mode);

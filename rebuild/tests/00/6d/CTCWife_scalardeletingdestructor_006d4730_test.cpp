@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCWife {
+class CTCWife { public:
     void* vftable;
     int destroyed;
 };

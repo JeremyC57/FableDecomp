@@ -1,4 +1,4 @@
-struct CCreatureAction_ScorpionUnblockableLeftTurnAttack {
+class CCreatureAction_ScorpionUnblockableLeftTurnAttack { public:
     void* vftable;
 };
 

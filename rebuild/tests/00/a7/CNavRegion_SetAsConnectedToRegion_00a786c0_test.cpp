@@ -26,8 +26,8 @@ struct SCountBlock {
     void* m_pObject;                                    // +8
     SCountBlock(void* object, void (__fastcall* destroy)(void*)) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) { }
 };
-struct CNavRegion;
-struct CNavRegionConnection {
+class CNavRegion;
+class CNavRegionConnection { public:
     CNavRegion* FirstRegion;                            // +0
     CNavRegion* SecondRegion;                           // +4
     long        NumberOfConnections;                    // +8
@@ -37,7 +37,7 @@ struct CNavRegionConnection {
 };
 void __fastcall DeleteNavRegionConnection(void* object);   // 0x00A7C0A0 (CCountedPointer<CNavRegionConnection> deleter)
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*           Data;
     SCountBlock* Info;
     CCountedPointer(T* object) : Data(object)
@@ -99,7 +99,7 @@ struct CConnectionList {                                // STLport list (retail:
     void push_back(const CConnectionPointer& x) { insert(end(), x); }
 };
 
-struct CNavRegion {
+class CNavRegion { public:
     long            RegionID;                           // +0
     CConnectionList Connections;                        // +4
     long            MostRecentSearchID;                 // +8

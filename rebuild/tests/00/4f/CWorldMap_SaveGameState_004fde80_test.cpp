@@ -5,7 +5,7 @@
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); g_fail = 1; } } while (0)
 static std::vector<std::string> g_log;
-struct CCharString {
+class CCharString { public:
     std::string S;
     CCharString(const char* text, long = -1) : S(text) {}
     CCharString(const CCharString& o) : S(o.S) {}
@@ -15,14 +15,14 @@ CCharString operator+(const char* l, const CCharString& r) { return CCharString(
 CCharString operator+(const CCharString& l, const char* r) { return CCharString((l.S + r).c_str()); }
 static int g_progress = 0;
 void DisplayProgress(const CCharString& text, float, bool, bool) { ++g_progress; g_log.push_back("progress:" + text.S); }
-struct CDataOutputStream { std::vector<long> Out; void WriteLong(long v) { Out.push_back(v); } };
-struct CMemoryDataInputStream { long Next; };
+class CDataOutputStream { public: std::vector<long> Out; void WriteLong(long v) { Out.push_back(v); } };
+class CMemoryDataInputStream { public: long Next; };
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() {}
     void TransferBinaryIn(CMemoryDataInputStream* stream, T* value) { *value = (T)stream->Next; }
 };
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     CMemoryDataInputStream* PLoadStream;
     CDataOutputStream* PSaveStream;
@@ -41,13 +41,13 @@ struct CPersistContext {
         }
     }
 };
-struct CRegion {
+class CRegion { public:
     CCharString Name;
     int Transferred;
     CRegion(const char* n) : Name(n), Transferred(0) {}
     void TransferGameState(CPersistContext&) { ++Transferred; g_log.push_back("region:" + Name.S); }
 };
-struct CWorldMap {
+class CWorldMap { public:
     std::vector<CRegion> Regions;
     void SaveGameState(CPersistContext& context);
 };

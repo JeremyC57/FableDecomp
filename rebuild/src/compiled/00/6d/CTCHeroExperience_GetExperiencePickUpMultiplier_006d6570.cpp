@@ -1,5 +1,5 @@
 struct COther { float m64pad[0x64/4]; float f64; };
-struct CTCHeroExperience {
+class CTCHeroExperience { public:
   char pad30[0x30];
   float f30;
   char pad34[0x54-0x34];

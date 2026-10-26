@@ -2,7 +2,7 @@ struct Inner {
     char pad[0x5c];
     unsigned char flag;
 };
-struct CLandscapeBackgroundTreeNode {
+class CLandscapeBackgroundTreeNode { public:
     char pad[0xa4];
     Inner* inner;
 };

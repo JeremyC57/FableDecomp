@@ -11,12 +11,12 @@
 // decremented in memory (`dec dword ptr [edi+4]`, the result unused).
 extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
 
-struct CWideString {
+class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                  // 0x0099B510
 };

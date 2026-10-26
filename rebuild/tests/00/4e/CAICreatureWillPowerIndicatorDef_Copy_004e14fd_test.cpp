@@ -1,12 +1,12 @@
 #include <cstdio>
 
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CAICreatureWillPowerIndicatorDefBase {
     void CloneFields(const CDefClassBase* other);
 };
 
-struct CAICreatureWillPowerIndicatorDef : public CAICreatureWillPowerIndicatorDefBase {
+class CAICreatureWillPowerIndicatorDef : public CAICreatureWillPowerIndicatorDefBase { public:
     char pad[0x28];
     unsigned long field28;
 };

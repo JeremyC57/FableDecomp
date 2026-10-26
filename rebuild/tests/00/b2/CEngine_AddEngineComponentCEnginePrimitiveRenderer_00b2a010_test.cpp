@@ -4,7 +4,7 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_strCtor = 0, g_strDtor = 0; static const char* g_strText = 0; static long g_strLen = 0;
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length) : m_pData((void*)text) { ++g_strCtor; g_strText = text; g_strLen = length; }
     ~CCharString() { ++g_strDtor; m_pData = 0; }
@@ -15,14 +15,14 @@ static void __fastcall DisplayProgress(const CCharString& text, float progress, 
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() { } };
 static int g_setGlobal = 0, g_announce = 0;
-struct CEngineComponent {
+class CEngineComponent { public:
     virtual void Dummy() { }
     void** GlobalPointerAddress; bool RenderEnabled; unsigned char KeepAlive;
     void SetGlobalPointerAddress(void** address) { ++g_setGlobal; GlobalPointerAddress = address; }
     void Announce() { ++g_announce; }
 };
 struct CEnginePrimitiveRendererBody { virtual void Body() { } unsigned char _body[0x264 - 4]; };
-struct CEnginePrimitiveRenderer : CEnginePrimitiveRendererBody, CEngineComponent { unsigned char _tail[0x350 - 0x274]; };
+class CEnginePrimitiveRenderer : public CEnginePrimitiveRendererBody, public CEngineComponent { public: unsigned char _tail[0x350 - 0x274]; };
 static int g_overflow = 0;
 struct CEngineComponentVector {
     CEngineComponent** _M_start; CEngineComponent** _M_finish; CEngineComponent** _M_end_of_storage;
@@ -37,7 +37,7 @@ struct CEngineComponentVector {
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
-struct CEngine {
+class CEngine { public:
     unsigned char _pad000[0x168];
     CEngineComponentVector EngineComponents;
     template <class T> void AddEngineComponent(T* component, T*& globalPointer, unsigned char flag);

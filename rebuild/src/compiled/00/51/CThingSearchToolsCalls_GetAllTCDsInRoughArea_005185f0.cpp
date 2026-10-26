@@ -63,7 +63,7 @@ struct CTCDriverBaseCalls {
  virtual void Slot27();
  virtual bool IsDriverType(long)const; // Original virtual slot28, +0x70.
 };
-struct CThing {
+class CThing { public:
  unsigned char BeforeDriver[0x5c];CTCDriverBaseCalls* PTCDriver;unsigned char BeforeType[0x6c-0x60];unsigned long ThingTypeFlags;
  __forceinline bool HasDriverType(long type)const{CTCDriverBaseCalls* driver=PTCDriver;return driver && driver->IsDriverType(type);}
  enum {ThingTypeMask=0};
@@ -90,9 +90,9 @@ void ThingVector::_M_insert_overflow(const CThing** position,const CThing* const
  Start=storage;Finish=out;End=storage+capacity;
 }
 #pragma auto_inline(on)
-struct CThingCreatureBase:CThing {};
-struct CThingAICreature:CThingCreatureBase {};
-struct C2DBoxI {
+class CThingCreatureBase:public CThing { public:};
+class CThingAICreature:public CThingCreatureBase { public:};
+class C2DBoxI { public:
  long TLX,TLY,BRX,BRY;
  C2DBoxI(){}
  C2DBoxI(const C2DBoxI& v):TLX(v.TLX),TLY(v.TLY),BRX(v.BRX),BRY(v.BRY){}
@@ -103,8 +103,8 @@ struct CMapwhoNode {CTCMapwho* PMapwho;CMapwhoNode* PNext;CMapwhoNode* PPrevious
 struct CThingMapCell {CMapwhoNode* PFirstNode;};
 namespace NThingMap {
 struct C2DExtentsI {long X,Y;};
-struct CMapwhoLevelInfo {long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
-struct CThingMap {
+class CMapwhoLevelInfo { public:long Size;C2DExtentsI Extents;long ScaleShift;long NoThings;};
+class CThingMap { public:
  long Padding;RetailVector<CMapwhoLevelInfo> MapwhoLevelInfo;
  CThingMapManager* Manager;RetailVector<RetailVector<CThingMapCell> > Cells;
  C2DBoxI Area;long NoThings;
@@ -120,7 +120,7 @@ extern long SearchWork_013b89ac;
 extern unsigned long SearchID_013b89b0;
 namespace NThingMap {extern long g_NoMapwhoLevels;} // 0x013ba848
 extern CLayerInfo LayerInfo_0137dad8[]; // Original variable spelling unrecovered.
-struct CThingFilter_IsInQuestOrNullQuest {void* QuestSectionName;bool operator()(const CThing&)const;}; // 0x006a7c60
+class CThingFilter_IsInQuestOrNullQuest { public:void* QuestSectionName;bool operator()(const CThing&)const;}; // 0x006a7c60
 typedef CThingFilter_IsInQuestOrNullQuest Filters;
 struct CThingSearchTools_Calls {
  CWorldMap* WorldMap;

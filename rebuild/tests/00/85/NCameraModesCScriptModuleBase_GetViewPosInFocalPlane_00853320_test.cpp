@@ -19,7 +19,7 @@ static int fails = 0;
 #pragma intrinsic(fabs)
 extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -36,13 +36,13 @@ inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 }
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                    // +0x00
     C3DVector Forward;                               // +0x0c
 };
 
-struct CBaseObject;
-struct CThing {
+class CBaseObject;
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
@@ -59,7 +59,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
 
 namespace NCameraModes {
 
-struct CScriptModuleBase {                           // vtable 0x01255F74
+class CScriptModuleBase { public:                           // vtable 0x01255F74
     virtual void v00();
     CIntelligentPointer_CThing PCamPoint;            // +0x04
     CIntelligentPointer_CThing PThingOrigin;         // +0x0c

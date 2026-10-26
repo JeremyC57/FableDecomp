@@ -11,7 +11,7 @@
 // One of 12 bodies of this shape.
 extern "C" void __cdecl free(void* block);
 
-struct CWideString {
+class CWideString { public:
     void* m_data;
     ~CWideString();                             // 0x0099B510
 };

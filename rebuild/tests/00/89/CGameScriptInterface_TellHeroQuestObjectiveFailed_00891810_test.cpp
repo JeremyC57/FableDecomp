@@ -2,8 +2,8 @@
 
 // Standalone behavior fixture for
 // CGameScriptInterface::TellHeroQuestObjectiveFailed @ 0x00891810.
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void SetObjectiveAsFailed(unsigned long objectiveId);
 };
 

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct CThing { int id; };
+class CThing { public: int id; };
 long g_framesPerSecond = 0;
 
 template <class T> struct CRetailList {
@@ -37,7 +37,7 @@ struct CTCBase_Calls {
     CTCBase_Calls(CThing* parent) : ParentThing(parent) { ++g_baseCalls; }
 };
 
-struct CTCCreatureModeManager : CTCBase_Calls {
+class CTCCreatureModeManager : public CTCBase_Calls { public:
     CRetailList<CModePointer> PModes;
     long TimeLeftForCurrentMode;
     long TimeForNextIdleMode;

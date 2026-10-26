@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
@@ -61,12 +61,12 @@ __forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPI
     return false;
 }
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                        // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
-struct CTCFollowed {
+class CTCFollowed { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[4];

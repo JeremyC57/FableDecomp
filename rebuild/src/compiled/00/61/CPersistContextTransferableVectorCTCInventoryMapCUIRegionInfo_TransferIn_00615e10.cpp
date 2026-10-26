@@ -8,9 +8,9 @@
 // propagated: the 40-byte stride (`lea edx,[eax+eax*4] ; lea ecx,[eax+edx*8]`) and the traits callee name the type
 // (Ego_r.pdb CUIRegionInfo, 0x28 bytes: ten longs Region..Taverns). The traits object ({ CUIRegionInfo DefaultVal; },
 // the `sub esp,28h` frame) is zeroed member by member through one register by the record's inline constructor.
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 struct CUIRegionInfo {                             // CTCInventoryMap::CUIRegionInfo, 0x28 bytes
     long Region;                                   // +0x00

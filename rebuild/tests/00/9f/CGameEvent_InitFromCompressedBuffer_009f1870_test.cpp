@@ -1,7 +1,7 @@
 // Behaviour test for 0x009F1870 CGameEvent::InitFromCompressedBuffer (round trip against the CompressIntoBuffer format).
 #include <cstdio>
 #include <cstring>
-struct CGameEvent {
+class CGameEvent { public:
     int Type; signed char Player; unsigned char Data[32]; unsigned char EndPos; bool Valid; bool Replacement;
     void Reset() { EndPos = 0; Valid = true; }
     void AddData(const unsigned char* data, int size) { std::memcpy(&Data[EndPos], data, size); EndPos = (unsigned char)(EndPos + size); }

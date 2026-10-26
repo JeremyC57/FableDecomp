@@ -1,5 +1,5 @@
 #include "engine/CPhysicsFacesSegmentBranch.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CIPhysicsFacesSegmentBase {
+class CIPhysicsFacesSegmentBase { public:
     virtual ~CIPhysicsFacesSegmentBase();
     virtual long Sizeof();
 };

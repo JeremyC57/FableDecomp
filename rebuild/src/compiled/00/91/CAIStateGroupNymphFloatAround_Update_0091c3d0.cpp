@@ -14,7 +14,7 @@
 // normalised by the landed 0x007A6E20 inline Normalise, then a CRightHandedSet (Up 0,0,1; Forward) by reference.
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -36,7 +36,7 @@ struct C3DVector {
         Z *= r;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) { }
@@ -47,14 +47,14 @@ struct CPhysicsBody {
     VF10(0) VF10(1) VF10(2) VF10(3) VF10(4) VF10(5) VF10(6) VF(70) VF(71) VF(72) VF(73)
     virtual void SetOrientation(const CRightHandedSet& orientation);   // slot 74 (+0x128)
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -73,7 +73,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingCreatureBase : CThing { };
+class CThingCreatureBase : public CThing { public: };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -88,7 +88,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntellige
     __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
 };
 #pragma pack(push, 1)
-struct CTCNymph {
+class CTCNymph { public:
     unsigned char _pad0[0x40];
     bool FlyingAround;                          // +0x40
     unsigned char _pad41[0x58 - 0x41];
@@ -103,27 +103,27 @@ struct CTCNymph {
     void StopFlyingAround(long mode);           // 0x0080F870
 };
 #pragma pack(pop)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _body[0x110];                 // retail sizeof 0x114
     ~CCombatActionBase();                       // 0x0062E900
 };
-struct CCreatureAction_NymphTeleportIntoLimbo : CCombatActionBase {
+class CCreatureAction_NymphTeleportIntoLimbo : public CCombatActionBase { public:
     CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase* owner);    // 0x008CA800
 };
-struct CWorld {
+class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
-struct CAIBrain {
+class CAIBrain { public:
     virtual void v00();
     virtual void v01();
     virtual void Yield();                       // slot 2 (+8)
     unsigned char _pad[0x14];
     CThingCreatureBase* PCreature;              // +0x18
 };
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }

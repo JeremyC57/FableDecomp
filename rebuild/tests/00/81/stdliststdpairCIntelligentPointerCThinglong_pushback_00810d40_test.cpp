@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <new>
-struct CThing { int id; };
+class CThing { public: int id; };
 struct IP { int vptr_slot; CThing* PData; };
 struct P { IP first; long second; };
 struct Node { Node* next; Node* prev; P data; };

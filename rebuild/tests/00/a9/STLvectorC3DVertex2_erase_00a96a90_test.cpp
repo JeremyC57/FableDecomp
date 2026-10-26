@@ -12,8 +12,8 @@ typedef unsigned __int64 u64;
 static int g_fail = 0;
 static void Check(bool ok) { if (!ok) g_fail = 1; }
 
-struct C3DVector { float X, Y, Z; };
-struct C3DVertex2 { C3DVector Position; C3DVector Normal; float U; float V; };   // 0x20 bytes
+class C3DVector { public: float X, Y, Z; };
+class C3DVertex2 { public: C3DVector Position; C3DVector Normal; float U; float V; };   // 0x20 bytes
 struct SVertexVector { C3DVertex2* start; C3DVertex2* finish; C3DVertex2* eos; };
 // the row: vector<C3DVertex2>::erase(first, last) -- copy the tail down (trivial destructors), return first
 static C3DVertex2* Erase(SVertexVector& v, C3DVertex2* first, C3DVertex2* last)

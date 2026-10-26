@@ -16,12 +16,12 @@ struct CAnimationEntryPair {                                // pair<unsigned lon
     unsigned char Entry[0x10];
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     const CAnimationEntryPair* First;                       // +0x00 Anims (CVectorMap)
     const CAnimationEntryPair* Last;                        // +0x04
 };
 
-struct CGetMaxComboStage {
+class CGetMaxComboStage { public:
     long MaxStage;                                          // +0x00
     long ChainID;                                           // +0x04
     CGetMaxComboStage(long chainID) : MaxStage(-777), ChainID(chainID) { }
@@ -30,7 +30,7 @@ struct CGetMaxComboStage {
 CGetMaxComboStage __fastcall ForEachAnimation(const CAnimationEntryPair* first, const CAnimationEntryPair* last,
                                               CGetMaxComboStage f);   // 0x00738F30
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     const CAnimationSet* GetCombatAnimationSet();           // 0x00663260
 };
 

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00927590 std::__unguarded_partition over CIntelligentPointer<const CThing> with a function-pointer comparator.
 #include <cstdio>
 
-struct CThing { int rank; };
+class CThing { public: int rank; };
 static int g_live = 0;
 struct ThingPointer {                       // the 8-byte intelligent pointer: copy = Set(Get())
     const CThing* item;

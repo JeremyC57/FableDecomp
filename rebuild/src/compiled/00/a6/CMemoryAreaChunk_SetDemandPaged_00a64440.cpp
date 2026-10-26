@@ -4,7 +4,7 @@
 //   NoAllocatedAreas, FreeDataSize, LargestFreeAreaSize, SmallestFreeAreaSize, PParentAllocator +0x18, Permanent +0x1C,
 //   DemandPaged +0x1D, the chunk links +0x20/+0x24 and the area lists +0x28..+0x30). No generated header exists.
 struct CMemoryArea;
-struct CMemoryAllocatorVariableSize;
+class CMemoryAllocatorVariableSize;
 
 struct CMemoryAreaChunk {
     long                          TotalDataSize;        // +0x00

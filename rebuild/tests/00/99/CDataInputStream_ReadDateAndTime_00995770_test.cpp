@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <cstring>
 
-struct CDateAndTime {
+class CDateAndTime { public:
     long y; unsigned long mo, d, h, mi, s, ms;
     CDateAndTime(long a, unsigned long b, unsigned long c, unsigned long e, unsigned long f, unsigned long g, unsigned long k)
         : y(a), mo(b), d(c), h(e), mi(f), s(g), ms(k) { }

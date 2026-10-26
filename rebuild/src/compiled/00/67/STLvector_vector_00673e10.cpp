@@ -19,7 +19,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class CRandomAppearanceMorph {
 public:
-    struct CTextureMorph {                                // Ego_r.pdb, 8 bytes, POD
+    class CTextureMorph { public:                                // Ego_r.pdb, 8 bytes, POD
         unsigned long NewTexture;                         // +0x00
         unsigned long GroupID;                            // +0x04
     };

@@ -14,7 +14,7 @@
 // with list::_M_transfer inlined (the six-store splice under `position != last`). Nodes: next +0, prev +4, value +8.
 // Shape: both header nodes are read once (ebx, ebp); the comparator is a 12-byte class (a world position) whose
 // slot address is `this` of the out-of-line call.
-struct CThingMarker;
+class CThingMarker;
 struct SListNode {
     SListNode*    Next;                       // +0x00
     SListNode*    Prev;                       // +0x04
@@ -23,7 +23,7 @@ struct SListNode {
 struct SMarkerList {                          // STLport list<CThingMarker*>: the header node pointer
     SListNode* Node;
 };
-struct CThingCompare_Nearest {                // 12 bytes: the reference position
+class CThingCompare_Nearest { public:                // 12 bytes: the reference position
     float X, Y, Z;
     long operator()(CThingMarker* a, CThingMarker* b);   // 0x006EF290
 };

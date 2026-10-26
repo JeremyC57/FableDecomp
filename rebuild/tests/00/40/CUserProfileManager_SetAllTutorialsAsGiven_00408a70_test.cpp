@@ -3,8 +3,8 @@
 static int g_fail = 0;
 static void check(bool c, int line) { if (!c) { if (!g_fail) std::printf("check failed at line %d\n", line); g_fail = 1; } }
 #define CHECK(c) check((c), __LINE__)
-struct CWideString { char s[64]; };
-struct CCharString {
+class CWideString { public: char s[64]; };
+class CCharString { public:
     char s[64];
     CCharString() { s[0] = 0; }
     CCharString(const char* text, long = -1) { std::strncpy(s, text, 63); s[63] = 0; }
@@ -32,13 +32,13 @@ struct CTextVector {
     CCharString items[95];
     CCharString& operator[](unsigned int i) { return items[i]; }
 };
-struct CPlayerGuiDef { CTextVector TutorialText; };
+class CPlayerGuiDef { public: CTextVector TutorialText; };
 static CPlayerGuiDef g_def;
 CPlayerGuiDef* PeekGuiDef() { return &g_def; }
 static int g_entries = 0;
 static char g_titles[4][64];
 static char g_texts[4][64];
-struct CHeroLogBook {
+class CHeroLogBook { public:
     void AddLogEntry(const CWideString& title, const CWideString& heading, const CWideString& text, long category, bool given)
     {
         if (g_entries < 4) { std::strcpy(g_titles[g_entries], title.s); std::strcpy(g_texts[g_entries], text.s); }
@@ -46,16 +46,16 @@ struct CHeroLogBook {
         ++g_entries;
     }
 };
-struct CPlayer { CHeroLogBook* PHeroLogBook; };
-struct CPlayerManager { CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CPlayer { public: CHeroLogBook* PHeroLogBook; };
+class CPlayerManager { public: CPlayer player; CPlayer* GetMainPlayer() { return &player; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CMainGameComponent* g_pMainGameComponent;
 enum ETutorialCategory { TUTORIAL_CATEGORY_NONE };
 struct CTutorialCategoryVector {
     int n; int last;
     void push_back(const ETutorialCategory& x) { ++n; last = (int)x; }
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     CTutorialCategoryVector GivenTutorialCategories;
     void SetAllTutorialsAsGiven();
 };

@@ -23,13 +23,13 @@ static int fails = 0;
 //   (`dec [esi+4] ; jne`, def in esi, &Animation in edi, `name` re-read from its slot).
 // GetSubDef gets a same-TU `auto_inline(off)` stand-in body that writes only the out slot (VC7.1 then knows the
 //   holder does not escape); with the held copy as a real local the def outranks `name` for a register, as retail.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     ~CCharString();                                            // 0x0099EAE0
 };
-struct CAnimationEntry;
-struct CAnimFilterBase {                        // vtable 0x0122FFCC
+class CAnimationEntry;
+class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;   // 0x0041CCE4
     virtual CAnimFilterBase* Clone() const;
     ~CAnimFilterBase() {}
@@ -39,19 +39,19 @@ struct CAnimFilterNoGroup : CAnimFilterBase {   // vtable 0x0122FFDC
     virtual CAnimFilterBase* Clone() const;                     // 0x00429A2F
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     bool HasAnimation_005dc2e0(const CCharString& name, const CAnimFilterBase& filter) const;     // 0x005DC2E0
     const CAnimationEntry* GetRandomAnimation_005dcc00(const CCharString& name, unsigned long* randomSeed,
         const CAnimFilterBase& filter, long index) const;                                       // 0x005DCC00
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
 };
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy0();
     virtual void Destroy();                     // slot 1 (+0x04)
     long RefCount;                              // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -60,11 +60,11 @@ template <class T> struct CHeldDef {            // the def copied out of the esc
     CHeldDef(T* object) : Object(object) { }
     ~CHeldDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
-struct CAppearanceDef : CDefPointeeBase {
+class CAppearanceDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x34 - 0x08];
     CAnimationSet Animation;                    // +0x34
 };
-struct CThingBaseDef : CDefPointeeBase {
+class CThingBaseDef : public CDefPointeeBase { public:
     bool GetSubDef(CDefPointer<CAppearanceDef>* out) const;    // 0x0042B0A2
 };
 void* FindSubDef_CThingBaseDef_GetSubDef(const CThingBaseDef* def);   // stand-in callee of the stand-in body below
@@ -80,13 +80,13 @@ __declspec(noinline) bool CThingBaseDef::GetSubDef(CDefPointer<CAppearanceDef>* 
     return true;
 }
 #pragma auto_inline(on)
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x70];
     CThingBaseDef* PBaseDef;                    // +0x70 CDefPointer<CThingBaseDef const>::Object
     unsigned long* GetRandomSeed_004c7ae0();    // 0x004C7AE0 (the game random seed)
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     const CAnimationEntry* GetRandomAnimFromNameWithFilter(const CCharString& name, const CAnimFilterBase& filter);
 };
 

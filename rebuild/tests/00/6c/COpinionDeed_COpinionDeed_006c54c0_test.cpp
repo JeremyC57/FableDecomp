@@ -1,6 +1,6 @@
 // behaviour test for 0x006C54C0 COpinionDeed::COpinionDeed
 #include <cstdio>
-struct CThing { int id; };
+class CThing { public: int id; };
 static long g_worldFrame = 1234;
 long GetWorldFrame_0049d870() { return g_worldFrame; }
 struct CBaseIntelligentPointer {
@@ -8,15 +8,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer() : m_pItem(0) {}
     void SetPItem(const void* item) { m_pItem = item; }
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem(item); }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long DeedType, DeedHandle; C3DVector Position; long FrameHappened;
     CIntelligentPointer<const CThing> PTarget;
     bool WasSearchingForWitnesses, IsStillHappening, IsCrimeReportedToVillage, IsCrime; long ExtraData;

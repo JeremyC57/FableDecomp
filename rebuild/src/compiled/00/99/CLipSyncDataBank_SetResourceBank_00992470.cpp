@@ -19,7 +19,7 @@
 // Layout: CCountedPointer {T* Data; CCPPointerInfo* Info}; CCPPointerInfo {long Count; destroy thunk +4; item +8}
 // (the landed 0x00695350 ShareData model).
 // Shape: /O2; the source Data / Info bound to locals first (ebx / edi loaded before the compare).
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long  Count;                                         // +0x00
     void (__fastcall *Destroy)(void* item);              // +0x04
     void* Item;                                          // +0x08

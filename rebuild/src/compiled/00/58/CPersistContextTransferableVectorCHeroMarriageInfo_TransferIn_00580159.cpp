@@ -14,9 +14,9 @@
 #pragma optimize("s", on)
 #include "engine/CHeroMarriageInfo.h"
 
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 template <class T> struct CRetailVector {
     T* m_pFirst;

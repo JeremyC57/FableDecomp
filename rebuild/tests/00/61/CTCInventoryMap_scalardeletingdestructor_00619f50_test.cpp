@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     void* vftable;
     int destroyed;
 };

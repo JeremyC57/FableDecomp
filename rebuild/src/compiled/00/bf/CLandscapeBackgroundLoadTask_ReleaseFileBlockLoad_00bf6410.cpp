@@ -4,7 +4,7 @@
 struct CRequestOwner_00bf63e0 {                   // the owned object: a virtual deleting destructor in slot 0
     virtual ~CRequestOwner_00bf63e0();
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(void* request);            // 0x00BE0400
 };
 struct CLandscapeBackgroundLoadTask {              // 16 bytes, no vtable

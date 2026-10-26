@@ -3,7 +3,7 @@
 
 struct Item { long first; int second; };
 
-struct CPersistContext {
+class CPersistContext { public:
     long Mode;
     long Saved[8];
     int  SavedCount;
@@ -17,7 +17,7 @@ struct CPersistContext {
     }
 };
 
-struct CTCContainer {
+class CTCContainer { public:
     Item items[8];
     int  count;
     void OnSerialise(CPersistContext& context, bool)

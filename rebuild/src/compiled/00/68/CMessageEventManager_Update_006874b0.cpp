@@ -1,7 +1,7 @@
 // CMessageEventManager::Update() -- expire the message list (+4): every event with a lifespan (+0x38) whose time stamp (+0x34) plus lifespan is before the current time (0x0049D870) is unlinked, destroyed through its virtual destructor and its node freed (the STLport list::erase inlined); the others are kept
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006874B0, length 84 bytes.
 // Callees: GetCurrentTime @ 0x0049D870 (`__fastcall`, no arguments; the label GFGetPreMainMemoryUsed is propagated), CMessageEvent::~CMessageEvent through vtable slot 0 (the scalar deleting destructor with flag 0), free @ 0x00BFEA14 (the STLport malloc allocator). Shape: the manager in ebp, the node in esi and the event in ebx, the successor in edi across the erase, an unsigned time compare, a 16-byte aligned loop head (speed module), `ret`.
-struct CMessageEvent {                             // PDB layout (0x58 bytes); only the words this body touches are named
+class CMessageEvent { public:                             // PDB layout (0x58 bytes); only the words this body touches are named
     virtual ~CMessageEvent();                      // slot 0
     long          IntelligentPointer;
     long          Type;                            // +0x08
@@ -32,8 +32,8 @@ struct CMessageList {                              // list<CMessageEvent>: one s
     }
 };
 
-struct CWorld;
-struct CMessageEventManager {
+class CWorld;
+class CMessageEventManager { public:
     CWorld*      World;                            // +0x00
     CMessageList Messages;                         // +0x04
     void Update();

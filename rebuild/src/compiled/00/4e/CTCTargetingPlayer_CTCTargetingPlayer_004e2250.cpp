@@ -16,7 +16,7 @@
 // their address (x87 zero stores); one zero register serves the remaining zeros.
 class CThing;
 class CBaseObject;
-struct CTCTargetingBase {
+class CTCTargetingBase { public:
     virtual void v00();
     unsigned char _base[0x34];                          // +0x04 CTCBase rest, ScriptOverride.., PTargetedThing, PTargetingDef, LookAtCamera
     CTCTargetingBase(CThing* thing);                    // 0x007F58E0
@@ -26,13 +26,13 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(T* item);                       // 0x004A96F0 (CThing)
 };
 namespace NPlayerTargeting {
-struct CTargetPoint {
+class CTargetPoint { public:
     unsigned char _data[0x1c];
     CTargetPoint();                                     // 0x004D7A76
 };
@@ -53,16 +53,16 @@ template <class T> struct CVectorBase {                 // STLport _Vector_base<
 template <class T> struct CRetailVector : CVectorBase<T> {   // STLport vector<T> (12 bytes)
     CRetailVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct C2DVector {
+class C2DVector { public:
     float X, Y;
     C2DVector() { }
 };
-struct CTCTargetingPlayer : CTCTargetingBase {
+class CTCTargetingPlayer : public CTCTargetingBase { public:
     long ZLockTargetSelectionTimer;                     // +0x38
     bool TargetNextThing;                               // +0x3c
     bool ForcedToHaveNoTarget;                          // +0x3d

@@ -11,17 +11,17 @@
 // (inline converting ctor: base ctor, vtable 0x0123E7D8, SetPItem) and the last argument.
 // Layout: no engine header; Ego_r.pdb sizeof 0xd0 with unnamed members -- names are descriptive, offsets from the bytes
 // (retail CCreatureActionBase is 0xa8).
-struct CThingCreatureBase;
-struct CThing;
-struct CAnimationEntry;
+class CThingCreatureBase;
+class CThing;
+class CAnimationEntry;
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CSoundPair {
+class CSoundPair { public:
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -29,7 +29,7 @@ struct CSoundPair {
 
 CAnimationEntry* __fastcall GetAnimationFromName(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
@@ -62,7 +62,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0123E7D8
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
 
-struct CCreatureAction_SendMessage : CCreatureActionBase {   // vtable 0x0129947C
+class CCreatureAction_SendMessage : public CCreatureActionBase { public:   // vtable 0x0129947C
     CDefPointer         m_def;              // +0xa8
     SMessageData        m_message;          // +0xac
     CIntelligentPointer m_recipient;        // +0xb8

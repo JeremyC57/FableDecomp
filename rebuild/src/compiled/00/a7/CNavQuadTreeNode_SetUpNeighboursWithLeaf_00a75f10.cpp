@@ -13,7 +13,7 @@
 //   3 -> TL+BL, each child told the same side. The arms sit in the bytes as 2, 3, 1, 0, so the cases are written in that
 //   order (an earlier version read the cases off the arm order and so sent every side to the wrong children).
 enum ENavQuadTreeNeighbours { NAV_NEIGHBOUR_0 = 0, NAV_NEIGHBOUR_1 = 1, NAV_NEIGHBOUR_2 = 2, NAV_NEIGHBOUR_3 = 3 };
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 class CANavQuadTreeNode {
 public:
     virtual ~CANavQuadTreeNode();                       // slot 0

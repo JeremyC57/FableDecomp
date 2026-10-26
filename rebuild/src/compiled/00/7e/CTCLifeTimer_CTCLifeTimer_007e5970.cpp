@@ -6,18 +6,18 @@
 // PerformOnDie +0x11. No engine header exists; local model.
 // Shape: the initialisers follow the vtable store in declaration order, the owner pointer and the call's `push 1` are
 // hoisted above them; the argument is loaded into eax and pushed (speed TU).
-struct CThing {
+class CThing { public:
     void SetForceFrameUpdate(bool force);          // 0x004C7C60
 };
 
-struct CTCBase {
+class CTCBase { public:
     CTCBase(CThing* owner);                        // 0x00686800
     virtual ~CTCBase();                            // 0x00686830
     CThing* m_pThing;                              // +0x04
     long    m_baseWord;                            // +0x08
 };
 
-struct CTCLifeTimer : CTCBase {
+class CTCLifeTimer : public CTCBase { public:
     long FramesLeft;                               // +0x0c
     bool FadeOutBeforeKill;                        // +0x10
     bool PerformOnDie;                             // +0x11

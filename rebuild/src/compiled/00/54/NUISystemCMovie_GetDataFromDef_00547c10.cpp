@@ -19,7 +19,7 @@ struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                        // slot 1
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
@@ -64,7 +64,7 @@ struct CComponentInterface {
     virtual void v105(); virtual void v106(); virtual void v107();
     virtual CDefPointer_CMovieDef LoadAndReturnDef() const;   // slot 108 (+0x1B0)
 };
-struct CMovie : CComponentInterface {
+class CMovie : public CComponentInterface { public:
     unsigned char _pad_0x04[0x168 - 0x04];
     unsigned long Width;                           // +0x168
     unsigned long Height;                          // +0x16c

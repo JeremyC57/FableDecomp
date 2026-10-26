@@ -369,7 +369,7 @@ struct Obj {
     virtual void target(int a, int b);
 };
 
-struct CGuiWindow {
+class CGuiWindow { public:
     char pad0[4];
     Obj* m_obj;   // +0x04
     char pad1[0x44];

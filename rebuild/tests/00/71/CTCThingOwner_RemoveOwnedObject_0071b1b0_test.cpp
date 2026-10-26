@@ -1,7 +1,7 @@
 // behaviour test for 0x0071B1B0 CTCThingOwner::RemoveOwnedObject(CThing&): the argument is wrapped in a temporary intelligent pointer that
 // is removed from the ObjectList container and released again
 #include <cstdio>
-struct CThing { int tag; };
+class CThing { public: int tag; };
 static int gLive = 0;
 struct CIntelligentPointer {
     const CThing* p;

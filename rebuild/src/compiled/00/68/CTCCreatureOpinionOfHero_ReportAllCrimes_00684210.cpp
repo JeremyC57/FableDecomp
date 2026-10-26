@@ -12,7 +12,7 @@
 // / ReportCrime @ 0x0065CB6B, CTCCreatureOpinionOfHero::InformOfDeed(long, bool) @ 0x00683590.
 // Layout: as the landed DecriminaliseAllKnownCrimes (0x00684050): PendingDeeds +0x54, KnownDeeds list<long>[92] +0x1c8
 // (retail 4-byte STLport lists); COpinionDeed type +0, Decriminalised +0x22, IsCrime +0x23, linked handle +0x24.
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -20,7 +20,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                    // 0x0040F020
     SEntry* LowerBound(const long* type) const;              // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                          // +0x20
     CInterfaceMap m_interfaces;                              // +0x44
@@ -47,30 +47,30 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer { CThing* GetHeroCreature_00487dd0(); };               // 0x00487DD0
-struct CPlayerManager { CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CPlayer { public: CThing* GetHeroCreature_00487dd0(); };               // 0x00487DD0
+class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
 struct CTCVillager;
-struct CTCVillage {
+class CTCVillage { public:
     bool IsCrimeHandled(long handle);                        // 0x0065914B
     void ReportCrime(long handle);                           // 0x0065CB6B
 };
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);   // 0x007EE540
-struct CThingAICreature;
-struct CThingFilter_AICreatureHasProperty {
+class CThingAICreature;
+class CThingFilter_AICreatureHasProperty { public:
     long Property;
     CThingFilter_AICreatureHasProperty(long property) : Property(property) { }
 };
-struct CThingSearchTools {
+class CThingSearchTools { public:
     bool GetPFirstLeafThing(const CThingFilter_AICreatureHasProperty& filter, CThingAICreature** out) const;   // 0x00685EE0
 };
-struct COpinionDeed {
+class COpinionDeed { public:
     long          Type;                                      // +0x00
     unsigned char _pad04[0x22 - 0x04];
     bool          Decriminalised;                            // +0x22
     bool          IsCrime;                                   // +0x23
     long          LinkedHandle;                              // +0x24
 };
-struct CTCHeroOpinionDeedLog {
+class CTCHeroOpinionDeedLog { public:
     COpinionDeed* GetDeedFromHandle(long handle);            // 0x006C58F0
 };
 struct SListNode {
@@ -87,10 +87,10 @@ __forceinline bool IsCrime(const COpinionDeed* deed)
         return deed->Type == 0x35 && deed->LinkedHandle != -1;
     return deed->IsCrime && !deed->Decriminalised;
 }
-struct CTCCreatureOpinionOfHero;
+class CTCCreatureOpinionOfHero;
 __forceinline void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, CTCCreatureOpinionOfHero* informed,
                               CLongList& deeds);
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void*         __vftable;                                 // +0x00
     CThing*       Thing;                                     // +0x04
     unsigned char _pad08[0x54 - 0x08];

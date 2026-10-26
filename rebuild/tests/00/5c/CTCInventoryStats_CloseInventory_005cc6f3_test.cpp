@@ -1,8 +1,8 @@
 #include <cstdio>
 // Behaviour of CTCInventoryStats::CloseInventory (0x005CC6F3).
-struct CThing { long m_kills; bool m_lastArg; void Kill(bool immediate) { ++m_kills; m_lastArg = immediate; } };
+class CThing { public: long m_kills; bool m_lastArg; void Kill(bool immediate) { ++m_kills; m_lastArg = immediate; } };
 struct CTCInventoryBase_Retail { bool InventoryOpen; };
-struct CTCInventoryStats : CTCInventoryBase_Retail {
+class CTCInventoryStats : public CTCInventoryBase_Retail { public:
     CThing* pMannequin; bool UseMannequin;
     void CloseInventory()
     {

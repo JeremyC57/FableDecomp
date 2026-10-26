@@ -9,7 +9,7 @@
 // Shape: memberwise; the map goes through its out-of-line operator= (labelled "CTCCarryable_assign", propagated).
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 
-struct CDefClassBase {
+class CDefClassBase { public:
     unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
     CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
 };
@@ -22,7 +22,7 @@ struct CSoundNameMap {                    // std::map<CCharString, long> (retail
 };
 
 
-struct CClockDef : CDefClassBase {
+class CClockDef : public CDefClassBase { public:
     CSoundNameMap Sound;                // +0x28
     long HandType;                      // +0x34
     CClockDef& operator=(const CClockDef& other);

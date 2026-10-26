@@ -26,13 +26,13 @@ struct CDefBase {
     virtual void Destroy() const;                // slot 1
     mutable long RefCount;                       // +0x04
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) {}
     CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) ++Object->RefCount; }
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
-struct CDefinitionManager {
+class CDefinitionManager { public:
     template <class T> bool GetDef(long globalIndex, CDefPointer<T>* out);   // 0x0042AEDA
 };
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
@@ -46,7 +46,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long glo
     return true;
 }
 #pragma auto_inline(on)
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 struct CFrontEndManager {
@@ -55,8 +55,8 @@ struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 namespace NUISystem {
-struct CUIDef : CDefBase {};
-struct CComponent {
+class CUIDef : public CDefBase { public:};
+class CComponent { public:
     virtual CDefPointer<const CUIDef> LoadAndReturnDef() const;
     unsigned char _pad004[0x130 - 0x04];
     long DefIndex;                               // +0x130 (PDB +0x158)

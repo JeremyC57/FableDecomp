@@ -1,5 +1,5 @@
 #include <cstdio>
-struct TreeNode { int pad0; int pad4; TreeNode* next; TreeNode* child; };
+class TreeNode { public: int pad0; int pad4; TreeNode* next; TreeNode* child; };
 static int g_freed = 0;
 static int g_visits = 0;
 void FreeNode(TreeNode* n){ g_freed++; }

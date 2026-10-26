@@ -1,25 +1,25 @@
 // Behaviour test: CThingAICreature::IsMessageEventWithinHearingRange -- inside min(own sound radius, event hearing radius), and only with a perception interface
 #include <cstdio>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
 template <class T> static const T& Min(const T& a, const T& b) { return b < a ? b : a; }   // STLport min
-struct CTCPerceiveThing {
+class CTCPerceiveThing { public:
     float SoundRadius, SightRadius;
     float GetSoundRadius() const { return SoundRadius; }
     float GetSightRadius() const { return SightRadius; }
 };
-struct CMessageEvent {
+class CMessageEvent { public:
     C3DVector Pos;
     float SightRadius;
     float HearingRadius;
     CMessageEvent() : Pos(0.0f, 0.0f, 0.0f), SightRadius(0.0f), HearingRadius(0.0f) { }
 };
-struct CThingAICreature {
+class CThingAICreature { public:
     unsigned int      presentBits[9];                   // interface 0x34 = word 1 bit 20
     CTCPerceiveThing* perceive;
     C3DVector         position;

@@ -5,7 +5,7 @@
 // Helpers use ECX/EDX first/last and a fastcall unsigned-CRC predicate; native comparator0x00A44C90 is independently byte-exact.
 // Standard logarithm/algorithm expression retains the original compiler instruction ordering without assembly or artificial storage.
 #include "fable_string.h"
-struct C3DSkeletalBoneMorph {
+class C3DSkeletalBoneMorph { public:
     CCharString BoneName;
     unsigned long BoneNameCRC;
     unsigned long XBits, YBits, ZBits; // IEEE-754 words for the three scale components
@@ -21,7 +21,7 @@ struct CVector {
     C3DSkeletalBoneMorph* first; C3DSkeletalBoneMorph* last; C3DSkeletalBoneMorph* end;
     void push_back(const C3DSkeletalBoneMorph&);
 };
-struct C3DSkeletalMorphTarget {
+class C3DSkeletalMorphTarget { public:
     CCharString Name; CVector BoneMorphs;
     void Initialise(CCharString& name, CArray& bones);
 };

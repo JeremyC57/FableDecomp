@@ -8,8 +8,8 @@ static int g_listCalls = 0;
 static int g_ipCalls = 0;
 static int g_sweepOrder = -1;
 static void* g_parentSeen = 0;
-struct CThing;
-struct CTCBase {
+class CThing;
+class CTCBase { public:
     virtual void v00() {}
     CThing* ParentThing;
     bool    ToBeRemoved;
@@ -31,10 +31,10 @@ LISTTYPE(CBuildingList) LISTTYPE(CCreatureList) LISTTYPE(CThingList) LISTTYPE(CO
 LISTTYPE(CTorchTaskList) LISTTYPE(CHornTaskList) LISTTYPE(CPatrolTaskList) LISTTYPE(CCropTaskList) LISTTYPE(CSweepTaskList)
 LISTTYPE(CCrateTaskList) LISTTYPE(CMarkerList)
 struct CLongSet { void* _M_header; long _M_node_count; long _M_key_compare; CLongSet() : _M_header(this), _M_node_count(0), _M_key_compare(0) { ++g_calls; } };
-struct CVillageDef;
+class CVillageDef;
 struct CVillageDefPointer { const CVillageDef* Object; CVillageDefPointer() : Object(0) {} };
-struct C3DVector { float X, Y, Z; };
-struct CTCVillage : CTCBase {
+class C3DVector { public: float X, Y, Z; };
+class CTCVillage : public CTCBase { public:
     long TorchTasksUpdateFrame; long FrameStartedSecuritySweep; C3DVector PositionPlayerWasInWhenSecuritySweepCalculated;
     long LastAweCrowdEventFrame; long LastLynchCrowdEventFrame;
     CBuildingList VillageBuildings; CCreatureList VillagePeople; CThingList VillageTorches; CThingList VillageHorns;

@@ -10,7 +10,7 @@ struct SRenderSettings_01436e20 {
 };
 extern SRenderSettings_01436e20* g_pRenderSettings_01436e20;   // 0x01436E20
 
-struct CEngineInternalPrimitiveBase {
+class CEngineInternalPrimitiveBase { public:
     unsigned char _pad[0x14];
     float FadeDistance_FadeBeginDistance;          // +0x14
     float FadeDistance_MaxDrawDistance;            // +0x18

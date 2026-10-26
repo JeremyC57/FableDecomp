@@ -15,17 +15,17 @@
 //   byte store (0x82 = Enabled | ScaleParticles).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual ~CBaseClass();
     CBaseClass();                                  // 0x0099A2D0
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
 };
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -70,9 +70,9 @@ template <class T> struct CRetailList {            // std::list<T> (retail: sent
 struct SComponentEntry { long m_type; void* m_instance; };
 struct SVectorParam { unsigned long m_key; float m_value[3]; };
 struct SParamDesc { unsigned long m_key; unsigned long m_desc[3]; };
-struct CParticle;
-struct CDecal;
-struct CParticleEmitter;
+class CParticle;
+class CDecal;
+class CParticleEmitter;
 struct CIEngine;
 
 struct CParticleUpdateParameters : CBaseClass {    // vtable 0x0125FFDC
@@ -80,7 +80,7 @@ struct CParticleUpdateParameters : CBaseClass {    // vtable 0x0125FFDC
     CRetailVectorMap<SParamDesc> UpdateParams;     // +0x14
 };
 
-struct CParticleSystem : CBaseClass {              // vtable 0x0129F4E8
+class CParticleSystem : public CBaseClass { public:              // vtable 0x0129F4E8
     CParticleEmitter* PParentEmitter;              // +0x04
     CIEngine* PEngine;                             // +0x08
     CRetailVectorMap<SComponentEntry> Components;  // +0x0C

@@ -7,8 +7,8 @@
 // Shape: the same guard chain as IsStillValid (0x0095E870) as nested ifs falling to the shared epilogue; the
 // component goes straight from the map entry into ecx and the creature argument is loaded after it.
 // Model: local (no engine header for this class).
-struct CTCBase;
-struct CAIBrain;
+class CTCBase;
+class CAIBrain;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -17,7 +17,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -59,14 +59,14 @@ struct CTCBoastingCrowd {                       // interface 0x74
     virtual void RemoveCrowdMember(CThing* creature);  // slot 29 (+0x74)
 };
 
-struct CAIBrain;
+class CAIBrain;
 struct CTCBoastingCrowd;
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* Creature;                           // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

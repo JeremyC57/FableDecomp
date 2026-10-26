@@ -1,4 +1,4 @@
-struct CEnginePrimitiveManagerWeatherMask {
+class CEnginePrimitiveManagerWeatherMask { public:
     void* vftable;
 };
 

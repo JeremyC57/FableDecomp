@@ -21,7 +21,7 @@ struct CInterfaceMap {
     SEntry* last;
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,11 +38,11 @@ struct CThing {
     }
     void Kill(bool silent);                     // 0x004C9B80
 };
-struct CThingGameObject : CThing {
+class CThingGameObject : public CThing { public:
     unsigned char _pad4c[0xb4 - 0x4c];
     float Health;                               // +0xb4 (retail)
 };
-struct CTCRandomAppearanceMorph {
+class CTCRandomAppearanceMorph { public:
     unsigned char _pad00[0x18];
     unsigned long Seed;                         // +0x18
 };
@@ -56,7 +56,7 @@ struct CUndeadFollower {                        // CTCSpecialAbilities::CUndeadF
     bool                    Active;             // +0x0c
     unsigned long           AppearanceSeed;     // +0x10
 };
-struct CTCSpecialAbilities : CTCBase {
+class CTCSpecialAbilities : public CTCBase { public:
     CUndeadFollower* GetUndeadFollower(const CThing* thing);   // 0x0072A910
     void ReclaimUndeadFollower(CThingGameObject& thing);
 };

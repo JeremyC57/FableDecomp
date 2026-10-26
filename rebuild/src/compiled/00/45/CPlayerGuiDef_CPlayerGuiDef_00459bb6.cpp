@@ -11,16 +11,16 @@
 // constructor stores _M_start, _M_finish, _M_end_of_storage through `lea eax,[esi+off]`.
 #pragma optimize("s", on)
 
-struct C2DVector { float X, Y; };
-struct C3DVector { float X, Y, Z; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class C3DVector { public: float X, Y, Z; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 class CCharString {
 public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
 };
-struct CQuickAccessItemButtonGuiDef;
-struct CAbilityButtonGuiDef;
+class CQuickAccessItemButtonGuiDef;
+class CAbilityButtonGuiDef;
 template <class T> struct allocator {                  // STLport allocator<T>: empty
     allocator() { }
 };
@@ -49,13 +49,13 @@ struct CGameActionMap {                                // map<CCharString, EGame
     long  _M_key_compare;
     CGameActionMap();                                  // 0x00454AEF
 };
-struct CParentDefClassBase {                           // retail 0x3c bytes
+class CParentDefClassBase { public:                           // retail 0x3c bytes
     virtual void v00();
     unsigned char _body[0x38];
     CParentDefClassBase();                             // 0x00430370
 };
 
-struct CPlayerGuiDef : CParentDefClassBase {
+class CPlayerGuiDef : public CParentDefClassBase { public:
     long                         InventoryNoMovementSound;                   // +0x03c
     float                        SecondsToFadeWholeGui;                      // +0x040
     float                        AlphaValueToFadeWholeGui;                   // +0x044

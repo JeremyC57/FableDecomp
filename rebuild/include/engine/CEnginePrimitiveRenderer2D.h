@@ -8,16 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CEngineInternalPrimitiveBase;
-struct CEnginePrimitive2DViewportManager;
-struct CEnginePrimitiveManager2DAnimatedMeshes;
-struct CEnginePrimitiveManager2DParticleGroup;
-struct CEnginePrimitiveManager2DSprites;
-struct CEnginePrimitiveManager2DStaticMeshes;
+class CCPPointerInfo;
+class CEngineInternalPrimitiveBase;
+class CEnginePrimitive2DViewportManager;
+class CEnginePrimitiveManager2DAnimatedMeshes;
+class CEnginePrimitiveManager2DParticleGroup;
+class CEnginePrimitiveManager2DSprites;
+class CEnginePrimitiveManager2DStaticMeshes;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveRenderer2D {
+class CEnginePrimitiveRenderer2D {
+public:
     void*                                    __vftable;      // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                            _pad_0x04[0x4]; // +0x04
     unsigned char                            _pad_0x08[0x4]; // +0x08

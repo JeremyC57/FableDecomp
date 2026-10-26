@@ -24,7 +24,7 @@ struct CTCBase_Calls {
     ~CTCBase_Calls();                                       // 0x00686830
 };
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                         // 0x0099EAE0
 };
@@ -41,7 +41,7 @@ struct SCountedBlock {
     void* Data;                                             // +0x08
 };
 
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*             Object;
     SCountedBlock* PBlock;
     ~CCountedPointer()
@@ -58,7 +58,7 @@ template<class T> struct CCountedPointer {
     }
 };
 
-struct CTCDParticleEmitter : CTCBase_Calls {
+class CTCDParticleEmitter : public CTCBase_Calls { public:
     CCharString         EmitterName;                        // +0x0c
     long                ParticleTypeID;                     // +0x10
     CIntelligentPointer PEmitter;                           // +0x14 CIntelligentPointer<NParticleEngine::CParticleEmitter>

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCharString { void* p; };
+class CCharString { public: void* p; };
 struct InnerVal { void* a; void* b; };
 struct CSymbolInfo { InnerVal inner; };
 struct SymPair {

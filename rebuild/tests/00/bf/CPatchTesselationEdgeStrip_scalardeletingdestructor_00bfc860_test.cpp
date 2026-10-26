@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CPatchTesselationEdgeStrip {
+class CPatchTesselationEdgeStrip { public:
     void* vftable;
     int destroyed;
 };

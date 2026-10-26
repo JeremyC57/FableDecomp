@@ -1,7 +1,7 @@
 // Behaviour test for NUISystem::CScrollBar::CScrollBar (0x00559830): base built with the owner, list pointers and counters zeroed before GetDataFromDef runs.
 #include <cstdio>
 struct CActionList;
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 struct CDraggable {
     long m_owner;
     CDraggable(long owner) : m_owner(owner) {}

@@ -1,10 +1,10 @@
 // Behaviour test for CPSCRenderSprite::WriteBinary (0x00AF9620): records every stream write and checks the order, the
 // stream method used and the (bit-field) member values.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CCharString { void* PStringData; };
-struct CRGBColour { union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
-struct CEnginePrimitiveHandle { long Index; long Generation; };
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public: void* PStringData; };
+class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
+class CEnginePrimitiveHandle { public: long Index; long Generation; };
 struct Stream {
     char kind[96]; double val[96]; int n;
     Stream() : n(0) {}

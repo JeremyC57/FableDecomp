@@ -9,7 +9,7 @@
 //   model) plus a memberwise user copy constructor: `direction * distance` first (x stays on the FPU stack, y / z
 //   spilled), then `start + that` into a NAMED local, returned by copy (VC7.1 has no NRVO: z goes through memory as an
 //   integer move, x / y are `fxch` + `fstp`); `return start + direction * distance;` stores the three sums directly.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector() { }
     C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }

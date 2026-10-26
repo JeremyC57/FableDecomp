@@ -10,11 +10,11 @@
 // which is not tail-called (the pushed argument keeps the `call ; ret`).
 #include "engine/CTCBase.h"
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void RemoveThing(CThing* thing);                // 0x006A19B0
 };
 
-struct CTCCarryable : CTCBase {
+class CTCCarryable : public CTCBase { public:
     bool          ForceFragility;                   // +0x0c
     CTCCarrying*  PCarryingTC;                      // +0x10
     void OnKill();

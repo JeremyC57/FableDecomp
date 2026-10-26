@@ -16,7 +16,7 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventory {
+class CTCInventory { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
     CLongVector   ContextSensitiveItems;             // +0x154 (PDB +0x178)

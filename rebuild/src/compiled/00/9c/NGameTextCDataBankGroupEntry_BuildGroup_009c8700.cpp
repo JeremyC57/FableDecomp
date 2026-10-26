@@ -31,7 +31,7 @@ struct CResourceMethods : CResource {
     }
 };
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     unsigned char _pad[0x10];
     long DataSize;                     // +0x10
     long GetDataSize() const { return DataSize; }
@@ -48,7 +48,7 @@ struct SCountBlock {
     void* m_pObject;                         // +8
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Object;                               // +0
     SCountBlock* Info;                       // +4
     T* operator->() const { return Object; }
@@ -66,8 +66,8 @@ template <class T> struct CCountedPointer {
     }
 };
 
-struct CDataInputStream;
-struct CMemoryDataInputStream {
+class CDataInputStream;
+class CMemoryDataInputStream { public:
     void* __vftable;
     unsigned char _body[0x18];
     CMemoryDataInputStream(const void* data, long size);   // 0x00994930
@@ -75,7 +75,7 @@ struct CMemoryDataInputStream {
 };
 
 namespace NGameText {
-struct CGroupEntry : CResourceMethods {
+class CGroupEntry : public CResourceMethods { public:
     void* Entries[3];                                // +0x1c retail CArray<long> (12 bytes)
     CCountedPointer<CBankFileAsyncData> PFileData;   // +0x28
     void* Owner;                                     // +0x30
@@ -84,7 +84,7 @@ struct CGroupEntry : CResourceMethods {
 }
 
 namespace NGameText {
-struct CDataBankGroupEntry {
+class CDataBankGroupEntry { public:
     CGroupEntry* PGroup;                 // +0 CIVCountedPointer<NGameText::CGroupEntry>
     void BuildGroup() const;             // ?BuildGroup@CDataBankGroupEntry@NGameText@@ABEXXZ (private in the PDB)
 };

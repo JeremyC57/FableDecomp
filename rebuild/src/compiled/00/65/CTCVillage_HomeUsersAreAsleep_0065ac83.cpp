@@ -16,8 +16,8 @@
 //        lookup key's frame word); an awake home user returns false straight away (`xor al,al` after the epilogue).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct CBaseObject;
+class CTCBase;
+class CBaseObject;
 
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
@@ -28,7 +28,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     CBitset       m_present;                    // +0x20
     unsigned char _pad24[0x20];
@@ -52,7 +52,7 @@ struct CThing {
         return false;
     }
 };
-struct CThingBuilding : CThing { };
+class CThingBuilding : public CThing { public: };
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     void* __vftable;
@@ -61,14 +61,14 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
 };
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad_0x4c[0x168 - 0x4c];
     CBaseIntelligentPointer HomeBuilding;       // +0x168 CIntelligentPointer<CThingBuilding>
     CThingBuilding* GetHomeBuilding() const { return (CThingBuilding*)HomeBuilding.GetPItem(); }
 };
 
-struct CTCCreatureModeManager {
-    struct CModeBase {
+class CTCCreatureModeManager { public:
+    class CModeBase { public:
         virtual void v00();
         virtual long GetModeType() const;       // slot 1
     };
@@ -86,7 +86,7 @@ struct CPeopleList {                            // retail STLport list: the head
     SPeopleNode* end() const { return _M_node; }
 };
 
-struct CTCVillage {
+class CTCVillage { public:
     unsigned char _pad_0x00[0x2c];
     CPeopleList   VillagePeople;                // +0x2c
     bool HomeUsersAreAsleep(CThingBuilding* home);

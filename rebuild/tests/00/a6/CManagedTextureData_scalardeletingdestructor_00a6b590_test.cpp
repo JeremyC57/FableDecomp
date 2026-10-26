@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CManagedTextureData {
+class CManagedTextureData { public:
     void* vftable;
     int destroyed;
 };

@@ -12,21 +12,21 @@
 // Shape: `!Me.MsgIsUsedBy("...")` is a byte computed (`neg ; sbb ; inc`) before the string's dtor, the rotated wait loop
 // repeats it; the sword test `IsAlive() && !IsBeingCarriedBy("...")` keeps a conditional-temporary flag zeroed at entry;
 // the forwarding IsBeingCarriedBy needs `__forceinline virtual` (a plain inline virtual is called out of line).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
 };
-struct CBaseClass {
+class CBaseClass { public:
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     ~CScriptThing();                                    // 0x004AA840
@@ -45,7 +45,7 @@ struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01
     virtual void v072() const; virtual void v073() const; virtual void v074() const;
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c)
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

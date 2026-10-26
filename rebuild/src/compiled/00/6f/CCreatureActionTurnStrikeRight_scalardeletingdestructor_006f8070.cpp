@@ -1,4 +1,4 @@
-struct CCreatureAction_TurnStrikeRight {
+class CCreatureAction_TurnStrikeRight { public:
     void* vftable;
 };
 

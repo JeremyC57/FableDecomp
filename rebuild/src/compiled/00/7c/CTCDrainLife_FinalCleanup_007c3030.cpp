@@ -1,3 +1,3 @@
 // Empty member hook. __fastcall this=ecx.
-struct CTCDrainLife { void FinalCleanup(); };
+class CTCDrainLife { public: void FinalCleanup(); };
 void CTCDrainLife::FinalCleanup() {}

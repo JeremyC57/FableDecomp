@@ -5,7 +5,7 @@
 //   add edi,0x28; push edi; lea ecx,[esi+0x28]; call Member28::Copy
 //   pop edi; pop esi; ret 4
 
-struct CDefClassBase;
+class CDefClassBase;
 
 // Member subobject type living at self+0x28.  Copy @ 0x461bb7.
 struct Member28 {
@@ -17,7 +17,7 @@ struct BaseDef {
     void Copy(const CDefClassBase* src);   // extern (masked rel32)
 };
 
-struct CCombatAbilityBlockProjectileWeaponAttackDef {
+class CCombatAbilityBlockProjectileWeaponAttackDef { public:
     BaseDef  base;                                 // +0x00 .. +0x28
     char     _pad[0x28 - sizeof(BaseDef)];
     Member28 sub28;                                // +0x28

@@ -32,14 +32,14 @@ public:
     CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
     unsigned long size() const { return m_pLast - m_pFirst; }
     T& operator[](unsigned long i) const { return m_pFirst[i]; }
 };
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
     mutable long RefCount;                              // +0x04
@@ -52,11 +52,11 @@ public:
     T* operator->() const { return Data; }
 };
 namespace NGameText {
-struct CGroupEntry : CIVCountedPointeeBase {
+class CGroupEntry : public CIVCountedPointeeBase { public:
     unsigned char _pad08[0x1c - 0x08];
     CArray<long>  Entries;                              // +0x1c
 };
-struct CTextEntry : CIVCountedPointeeBase {
+class CTextEntry : public CIVCountedPointeeBase { public:
     CWideString GetText() const;                        // 0x009C7A40
 };
 class CDataBank {
@@ -67,7 +67,7 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const;     // 0x009C9070
 };
 }
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                     // +0x14
 };

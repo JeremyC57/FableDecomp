@@ -46,12 +46,12 @@ struct IDirectInput8_Retail {
     virtual unsigned long __stdcall Release();
     virtual long __stdcall CreateDevice(const GUID_Retail& guid, IDirectInputDevice8_Retail** device, void* outer);   // slot 3 (+0x0c)
 };
-struct CInputManager {};
-struct CInputManagerDX : CInputManager {
+class CInputManager { public:};
+class CInputManagerDX : public CInputManager { public:
     unsigned char         _pad00[0x80];
     IDirectInput8_Retail* DInput;                  // +0x80
 };
-struct CKeyboard {                                 // retail layout 0x3414 bytes (vtable 0x0129DBA8)
+class CKeyboard { public:                                 // retail layout 0x3414 bytes (vtable 0x0129DBA8)
     CKeyboard(CInputManager* manager, bool exclusive);   // 0x00A66930
     virtual ~CKeyboard();
     unsigned char _body[0x3414 - 4];

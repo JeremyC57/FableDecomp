@@ -12,17 +12,17 @@
 //   +0x18, AskedForHerosHelp +0x1c, HealthBarID +0x20; CQ_MinionClifftopChaseScript retail = PDB - 0x14.
 // Shape: the 0x00DA6D50 model (inline copy of a non-const thing for the by-value spawn argument, out-of-line const copy
 //   for the filter and the functor member; the last wait calls IsAlive through a reference so it stays virtual).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CCPPointerInfo { long References; };
+class CCPPointerInfo { public: long References; };
 namespace N_006e7b40 { struct CScriptThing; } using N_006e7b40::CScriptThing;
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
@@ -64,7 +64,7 @@ struct CScriptThingView {
     void* vptr; void* Data; void* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
 };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     VPAD32(p1x0) VPAD16(p1x1) VPAD8(p1x2) VPAD4(p1x3) VPAD2(p1x4)   // slots 8..69
@@ -92,13 +92,13 @@ struct CGameScriptInterface {
     VPAD16(p12x0) VPAD8(p12x1) VPAD4(p12x2)   // slots 452..479
     virtual void SetEntityAsRegionFollowing(const CScriptThing& thing, const CScriptThing& leader, bool follow) const;   // slot 480 (+0x780)
 };
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xd44];
     unsigned char _pad2[0xd50 - 0xd44];
     long          GuardRescueMorality;                 // +0xd50
 };
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CSpawnedFuncBase {                              // retail 0x34 bytes
+class CSpawnedFuncBase { public:                              // retail 0x34 bytes
     virtual ~CSpawnedFuncBase();
     virtual void RunSuspendableProcess();
     virtual void SuspendSuspendableProcess(bool suspend);
@@ -115,7 +115,7 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };
-struct CScriptBase {                                   // retail 0x40 bytes
+class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };

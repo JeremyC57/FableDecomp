@@ -1,7 +1,7 @@
 // Behaviour test for 0x00920990: reset the enemy pointer, store the rise position, run the base activation.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CThing { C3DVector pos; const C3DVector* GetPosition() const { return &pos; } };
+class C3DVector { public: float X, Y, Z; };
+class CThing { public: C3DVector pos; const C3DVector* GetPosition() const { return &pos; } };
 struct CIP { CThing* p; };
 struct CGroup { CThing* creature; CIP PEnemy; C3DVector RisePos; int baseActivations;
     void BaseOnActivate() { ++baseActivations; }

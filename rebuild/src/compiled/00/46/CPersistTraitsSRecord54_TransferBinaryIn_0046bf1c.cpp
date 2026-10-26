@@ -14,8 +14,8 @@
 // as `rep movsd` of 0x15 dwords, then cursor / remaining / position updated in that order.
 #include <string.h>
 
-struct CDataInputStream
-{
+class CDataInputStream
+{ public:
     long           Pad00;                   // +0x00
     long           ReadPosition;            // +0x04
     long           Pad08;                   // +0x08

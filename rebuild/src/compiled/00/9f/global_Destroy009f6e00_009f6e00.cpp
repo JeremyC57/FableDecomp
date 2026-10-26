@@ -15,7 +15,7 @@ extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
 struct SAllocatorTag { SAllocatorTag() { } };   // STLport __false_type: empty, by const reference (one slot)
 
-struct CInputEvent {                            // 0x34 bytes
+class CInputEvent { public:                            // 0x34 bytes
     unsigned char _body[0x34];
     ~CInputEvent();                             // 0x00A03B30
 };
@@ -37,12 +37,12 @@ template <class T> struct vector : _Vector_base<T> {
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };
 
-struct CChecksum { unsigned long Words[4]; };   // 16 bytes
+class CChecksum { public: unsigned long Words[4]; };   // 16 bytes
 #pragma pack(push, 1)
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 #pragma pack(pop)
 
-struct CInputEventPackage {                     // 0x30 bytes (retail)
+class CInputEventPackage { public:                     // 0x30 bytes (retail)
     vector<CInputEvent> Events;                 // +0x00
     long                TimeStamp;              // +0x0C
     CChecksum           Checksum;               // +0x10

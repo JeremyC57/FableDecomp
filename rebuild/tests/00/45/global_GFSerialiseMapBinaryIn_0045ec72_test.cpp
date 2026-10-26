@@ -19,7 +19,7 @@ struct CWriter {
     void String(const char* s) { long n = (long)std::strlen(s) + 1; std::memcpy(Data + Size, s, n); Size += n; }
 };
 inline long ReadLong(CStream& stream) { int x; stream.Read(&x, 4); return x; }
-struct CCharString {
+class CCharString { public:
     char Text[32];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }

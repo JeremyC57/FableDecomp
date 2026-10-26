@@ -7,7 +7,7 @@ typedef __int64 Int64;
 #else
 typedef long long Int64;
 #endif
-struct CDataInputStream {
+class CDataInputStream { public:
     unsigned long StreamPos;
     long StreamSize;
     const unsigned char* CurrentSourcePtr;
@@ -31,10 +31,10 @@ struct CDataInputStream {
     }
     template <class T> void Read(T& value) { Read(&value, sizeof(T)); }
 };
-struct C3DVector { float X, Y, Z; };
-struct C3DBoundingBox { C3DVector MinCoord, MaxCoord; };
-struct C3DBoundingSphere { C3DVector Centre; float Radius; };
-struct CMatrix3x4 { float E[12]; };
+class C3DVector { public: float X, Y, Z; };
+class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
+class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
+class CMatrix3x4 { public: float E[12]; };
 struct CLocalDetailPrimitiveMesh {
     C3DBoundingBox    BBox;
     C3DBoundingSphere BSphere;

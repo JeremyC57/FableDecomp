@@ -19,7 +19,7 @@ template<class T> struct scoped_ptr {
     scoped_ptr() : ptr(0) { }
     ~scoped_ptr() { delete ptr; }
 };
-struct CPlayerDef {
+class CPlayerDef { public:
     long RefCount;
     CPlayerDef() : RefCount(1) { }
     virtual ~CPlayerDef() { }

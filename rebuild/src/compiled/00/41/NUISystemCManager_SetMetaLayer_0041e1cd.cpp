@@ -19,7 +19,7 @@ struct CLayerTree {
 extern long g_metaLayerBase[5];                    // 0x01230118
 
 namespace NUISystem {
-struct CManager {
+class CManager { public:
     unsigned char _pad[0x70];
     CLayerTree    m_layers;                        // +0x70
     unsigned char _pad78[4];

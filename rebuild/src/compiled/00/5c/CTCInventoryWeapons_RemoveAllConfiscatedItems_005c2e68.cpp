@@ -17,7 +17,7 @@ struct CTCInventoryBase {
     virtual void RemoveAllConfiscatedItems();   // slot 74, base body 0x005BF969
 };
 
-struct CTCInventoryWeapons : CTCInventoryBase {
+class CTCInventoryWeapons : public CTCInventoryBase { public:
     long ConfiscatedActiveMeleeWeaponDefIndex;    // +0x160
     long ConfiscatedActiveRangedWeaponDefIndex;   // +0x164
     virtual void RemoveAllConfiscatedItems();

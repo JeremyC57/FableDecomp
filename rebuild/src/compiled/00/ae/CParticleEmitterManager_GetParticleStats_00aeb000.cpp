@@ -8,13 +8,13 @@
 // an inline bool accessor (`return Sleeping;`): the zero-extended word, `shr edx,0Ah ; test dl,1` (testing the
 // bitfield directly gives `test byte ptr [ecx+41h],4`); the stats pointer is cached in edi and EmittersSleeping
 // bumped in memory (`inc dword ptr [edi+8]`).
-struct CIEngine;
+class CIEngine;
 struct CParticleStats;
 
 namespace NParticleEngine {
 // CParticleEmitter at retail offsets (rebuild/include/engine/CParticleEmitter.h has the PDB layout, 0x0c bytes
 // higher from +0x18 on: the retail vector is 12 bytes and CParticleUpdateParameters 0x24).
-struct CParticleEmitter {
+class CParticleEmitter { public:
     void*          m_vtable;                         // +0x00
     unsigned char  m_base04[0x04];
     unsigned char  ParticleSystems[0x0c];            // +0x08 vector<CCountedPointer<CParticleSystem>>

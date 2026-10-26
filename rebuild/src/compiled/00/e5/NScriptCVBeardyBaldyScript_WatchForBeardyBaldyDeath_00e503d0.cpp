@@ -14,7 +14,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
@@ -26,12 +26,12 @@ struct CBase {
 };
 
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {                                     // CCountedPointer's shared block
+class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);              // destroys the pointee
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     ~CCountedPointer()
@@ -53,7 +53,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual bool MsgIsKilledBy(const CCharString& killer);  // slot 18 (+0x48)
 };
-struct CScriptThing : CBase {                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);
     ~CScriptThing() {}                                      // out of line 0x004AA840
@@ -64,7 +64,7 @@ struct CScriptThing : CBase {                               // vtable 0x01238C8C
         return PImp.Data->MsgIsKilledBy(killer);
     }
 };
-struct CGameScriptInterface {                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                       // CGameScriptInterface, retail vtable @ 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) CGameScriptInterface::NewScriptFrame @ 0x006E7410
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -77,7 +77,7 @@ struct CGameScriptInterface {                       // CGameScriptInterface, ret
     virtual CScriptThing GetThingWithScriptName(const CCharString& name);   // slot 72 (+0x120) CGameScriptInterface::GetThingWithScriptName @ 0x008A7D60
 };
 
-struct CScriptBase {                                        // retail 0x40 bytes (PDB 0x54: debug containers)
+class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
     virtual void v00();
     unsigned char _body[0x3c];
     bool IsActiveThreadTerminating();                       // 0x00CB7940

@@ -1,14 +1,14 @@
 #include <cstdio>
 static int g_step = 0, g_unregisteredAt = -1, g_cleanedAt = -1;
-struct CTCBase;
-struct CThing {
+class CTCBase;
+class CThing { public:
     CTCBase* m_registered;
     void SetComponentRegistered(bool registered, CTCBase* component) { if (!registered && m_registered == component) m_registered = 0; g_unregisteredAt = g_step++; }
 };
 static CThing* g_cleaned = 0;
 void CleanupRangedWeapon(CThing* creature) { g_cleaned = creature; g_cleanedAt = g_step++; }
-struct CTCBase { void* vptrSlot; CThing* ParentThing; };
-struct CTCFireRangedWeaponOnLeavingStateGroup : CTCBase {
+class CTCBase { public: void* vptrSlot; CThing* ParentThing; };
+class CTCFireRangedWeaponOnLeavingStateGroup : public CTCBase { public:
     void FinalCleanup()
     {
         CThing* creature = ParentThing;

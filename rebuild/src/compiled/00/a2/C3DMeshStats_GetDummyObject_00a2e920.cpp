@@ -10,8 +10,8 @@
 // Retail layout: CPreAllocVectorMap {Compare +0, Elements +4, Size +8, Dirty +0xC} (PDB struct_layouts_egor.tsv).
 // The lower bound is checked against end() = Elements + Size and against the exact key (several dummy
 // objects can share a key, hence the index into the run), then the value of entry [bound + index] is returned.
-struct CMatrix3x4 { float m[12]; };
-struct C3DDummyObject { CMatrix3x4 Transform; long BoneIndex; };
+class CMatrix3x4 { public: float m[12]; };
+class C3DDummyObject { public: CMatrix3x4 Transform; long BoneIndex; };
 
 struct SDummyObjectEntry {                 // pair<unsigned long, C3DDummyObject>, 56 bytes
     unsigned long  first;
@@ -27,7 +27,7 @@ struct CDummyObjectMap {                   // CPreAllocVectorMap<unsigned long, 
     SDummyObjectEntry* End() { return Elements + Size; }
 };
 
-struct C3DMeshStats {
+class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x48 - 0x04];
     CDummyObjectMap DummyObjects;          // +0x48

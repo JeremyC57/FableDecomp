@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cmath>
-struct C2DVector { float x; float y; };
+class C2DVector { public: float x; float y; };
 struct Inv {
     float XGain, YGain, ZGain; C2DVector stickValue;
     void GetRightStickPosition(C2DVector* out) { *out = stickValue; }

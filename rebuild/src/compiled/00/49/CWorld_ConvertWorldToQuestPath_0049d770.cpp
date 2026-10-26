@@ -14,7 +14,7 @@
 #include "engine/CWorld.h"
 
 typedef unsigned short wchar16;                    // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720

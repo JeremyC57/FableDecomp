@@ -1,13 +1,13 @@
 #include <cstdio>
 // Behaviour test for CThingManager::PeekMapAt (0x0051DF20): position truncated to a cell, world map queried.
-struct C3DVector { float X, Y, Z; };
-struct C2DCoordI { long X, Y; };
-struct CMap { long id; };
-struct CWorldMap {
+class C3DVector { public: float X, Y, Z; };
+class C2DCoordI { public: long X, Y; };
+class CMap { public: long id; };
+class CWorldMap { public:
     CMap maps[4]; long lastX, lastY;
     CMap& GetMapAt(const C2DCoordI& p) { lastX = p.X; lastY = p.Y; return maps[(p.X + p.Y) & 3]; }
 };
-struct CThingManager {
+class CThingManager { public:
     CWorldMap* WorldMap;
     CMap& GetMapAt(const C3DVector& pos)
     {

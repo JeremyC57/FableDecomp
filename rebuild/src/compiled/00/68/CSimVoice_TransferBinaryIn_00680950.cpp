@@ -13,10 +13,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-struct CChunkedFileLoader;
+class CChunkedFileLoader;
 // CMemoryDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
     unsigned long m_position;              // +4
@@ -67,7 +67,7 @@ struct CMemoryDataInputStream {
 struct CVoiceEntry {                      // pair<EReactionSpeechType, long>
     long first; long second;
 };
-template<class T> struct CArray {                       // retail CArray<T>: begin/end/capacity
+template<class T> class CArray { public:                       // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;
     unsigned long size() const { return (unsigned long)(m_end - m_begin); }
     void resize(unsigned long n);                        // 0x00681340
@@ -79,7 +79,7 @@ template<class T> inline T* GetData(CArray<T>& a)
     return reinterpret_cast<T*>(&a);
 }
 
-struct CSimVoice {
+class CSimVoice { public:
     unsigned char _00[8];                  // +0x00
     CArray<CVoiceEntry> Voices;            // +0x08 CVectorMap<EReactionSpeechType,long> storage
     void TransferBinaryIn(CMemoryDataInputStream* stream);

@@ -75,7 +75,7 @@ public:
 
 }
 
-struct CComboMultiplierData {
+class CComboMultiplierData { public:
     std::map<EDamageAttribute, float> ComboMultiplier;      // +0x00
     float ExperienceMultiplierNumSecondsForAttenuation;     // +0x0C
     float ExperienceMultiplierParamDecayDeltaPerSecond;     // +0x10

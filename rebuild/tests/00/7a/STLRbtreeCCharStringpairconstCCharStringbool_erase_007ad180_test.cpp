@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 static int g_strDtors = 0, g_frees = 0, g_subtreeErases = 0;
-struct CCharString { const char* p; ~CCharString() { ++g_strDtors; } };
+class CCharString { public: const char* p; ~CCharString() { ++g_strDtors; } };
 struct SNode { long c; SNode* m_parent; SNode* m_left; SNode* m_right; CCharString m_key; bool m_value; };
 
 // rebalance stand-in for the test: the nodes here are unlinked by their caller's bookkeeping only

@@ -13,7 +13,7 @@
 
 extern "C" void __cdecl free(void* p);                    // 0x00BFEA14
 
-struct C3DVertexBlend2;
+class C3DVertexBlend2;
 
 struct CArrayVertexBlend2 {                               // retail CArray<C3DVertexBlend2>
     C3DVertexBlend2* m_pFirst;                            // +0x00
@@ -22,7 +22,7 @@ struct CArrayVertexBlend2 {                               // retail CArray<C3DVe
     ~CArrayVertexBlend2() { if (m_pFirst) free(m_pFirst); }
 };
 
-struct C3DGroup2 {
+class C3DGroup2 { public:
     long               BoneIndex;                         // +0x00
     CArrayVertexBlend2 VertexBlends;                      // +0x04
     C3DGroup2();                                          // 0x00AC40C0

@@ -6,7 +6,7 @@
 // (+0x58) last; the argument is unused.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
-struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
+class CEngineInternalPrimitiveBase { public:              // engine/CEngineInternalPrimitiveBase.h (PDB, 0x48 bytes): the base constructor takes (type, flags)
     virtual void v00();
     unsigned char _pad04[0x30];                    // +0x04 .. +0x34
     unsigned char PostRenderEnable;                // +0x34 bitfield group: bit 3 = post-render enabled
@@ -14,7 +14,7 @@ struct CEngineInternalPrimitiveBase {              // engine/CEngineInternalPrim
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-struct CEnginePrimitiveHandle { long m_id; CEngineInternalPrimitiveBase* m_pPrimitive; };
+class CEnginePrimitiveHandle { public: long m_id; CEngineInternalPrimitiveBase* m_pPrimitive; };
 
 struct CRetailHandleVector {                       // VC6 Dinkumware vector<CEnginePrimitiveHandle> plus a fourth word the changer clears with it
     CEnginePrimitiveHandle* m_pFirst;
@@ -38,7 +38,7 @@ struct CEngineInternalPrimitiveChanger : CEngineInternalPrimitiveBase {   // vta
     }
 };
 
-struct CEnginePrimitiveChangerManager {
+class CEnginePrimitiveChangerManager { public:
     CEngineInternalPrimitiveBase* CreateInternalPrimitive(long type);
 };
 

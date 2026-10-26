@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCWeaponTrail {
+class CTCWeaponTrail { public:
     void* vftable;
     int destroyed;
 };

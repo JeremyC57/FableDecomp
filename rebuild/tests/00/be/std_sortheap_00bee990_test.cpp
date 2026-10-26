@@ -15,7 +15,7 @@ struct CCPInfo {
     void* Object;
 };
 static void DestroyCache(void*) { ++g_destroyed; }
-struct CCompositeSurfaceCache { long m_id; };
+class CCompositeSurfaceCache { public: long m_id; };
 struct CCountedPointer {
     CCompositeSurfaceCache* Object;
     CCPInfo*                Info;
@@ -33,7 +33,7 @@ struct CCountedPointer {
         return *this;
     }
 };
-struct CCompositeSurfaceInfo : CBase {
+class CCompositeSurfaceInfo : public CBase { public:
     CCountedPointer Cache;
 };
 static CCompositeSurfaceCache g_caches[100];

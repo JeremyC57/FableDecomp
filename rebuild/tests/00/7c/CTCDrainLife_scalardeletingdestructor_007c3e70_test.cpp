@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCDrainLife {
+class CTCDrainLife { public:
     void* vftable;
     int destroyed;
 };

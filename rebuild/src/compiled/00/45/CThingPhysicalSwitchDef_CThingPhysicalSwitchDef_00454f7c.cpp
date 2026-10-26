@@ -12,16 +12,16 @@
 // CEngineGraphic constructor runs on a `lea eax` member pointer with the zero in ecx and the float zeros as
 // `fldz ; fstp`, the first fldz hoisted above the vtable store.
 #pragma optimize("s", on)
-struct CPersistContext;
+class CPersistContext;
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     CThingBaseDef();                                    // 0x006772D0
     virtual void Transfer(CPersistContext& context);
     unsigned char _body[0x70 - 4];
 };
 
 #pragma pack(push, 2)
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned long BankIndex;                            // +0x00
     float         AnimStep;                             // +0x04
     float         RenderSizeX;                          // +0x08
@@ -32,7 +32,7 @@ struct CEngineGraphic {
 #pragma pack(pop)
 
 #pragma pack(push, 2)
-struct CThingPhysicalSwitchDef : CThingBaseDef {        // vtable 0x0123339C
+class CThingPhysicalSwitchDef : public CThingBaseDef { public:        // vtable 0x0123339C
     long           TriggerType;                         // +0x70 EPSwitchTriggerType
     CEngineGraphic UntriggeredGraphic;                  // +0x74
     CEngineGraphic TriggeredGraphic;                    // +0x82

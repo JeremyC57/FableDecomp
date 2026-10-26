@@ -8,7 +8,7 @@
 // the argument pushes (an inlined one-argument resize(n) reads it first);
 // the default element's float zeros are immediate stores; only its string member is destroyed afterwards.
 // Leaf: Resize
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
@@ -32,8 +32,8 @@ struct CRetailVectorSPersistRecord1C {                // std::vector<SPersistRec
     void resize(unsigned int newSize, const SPersistRecord1C& value);   // 0x00619050
 };
 
-struct CPersistContext;
-struct CStringParser;
+class CPersistContext;
+class CStringParser;
 struct CPersistContext_TransferableVector {
     virtual long GetCount();
     virtual void Resize(long count);

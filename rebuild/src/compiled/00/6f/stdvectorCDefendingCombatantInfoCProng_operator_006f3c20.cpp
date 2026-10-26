@@ -20,7 +20,7 @@
 // objects live in the dead argument slot and __copy's null distance pointer is pushed once for both arms. Same-TU
 // stand-ins for __uninitialized_copy / __copy / _Destroy (auto_inline(off), above the caller) are what let every tag
 // temporary share the dead argument slot (4-byte frame) and duplicate the _M_finish store into each arm, as retail does.
-struct CThing;
+class CThing;
 struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
@@ -29,10 +29,10 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                          // +0x04
 };
-struct CDefendingCombatantInfo {
-    struct CProng;
+class CDefendingCombatantInfo { public:
+    class CProng;
 };
-struct CDefendingCombatantInfo::CProng {   // 0x1c bytes
+class CDefendingCombatantInfo::CProng { public:   // 0x1c bytes
     unsigned char           _head[0x14];    // bool Blocked +0, packed C3DVector Prong +1, long ProngBlockageTimer +0x10
     CBaseIntelligentPointer POccupier;      // +0x14 CIntelligentPointer<CThingCreatureBase>
 };

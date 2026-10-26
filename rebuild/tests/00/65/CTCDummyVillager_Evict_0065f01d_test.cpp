@@ -4,7 +4,7 @@ typedef unsigned __int64 TUID;
 #else
 typedef unsigned long long TUID;
 #endif
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_live = 0;
 namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature {
     CThing* m_pItem;
@@ -12,7 +12,7 @@ namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature
     ~CIntelligentPointerCreature() { --g_live; }
     CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& o) { m_pItem = o.m_pItem; return *this; }
 }; } using N_0050f440::CIntelligentPointerCreature; } using N_0050f3f0::CIntelligentPointerCreature;
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     CIntelligentPointerCreature Creature; TUID CreatureUID;
     CTCDummyVillager(CThing* t) : Creature(t), CreatureUID(0) { }
     void Evict() { Creature = (CThing*)0; CreatureUID = 0; }

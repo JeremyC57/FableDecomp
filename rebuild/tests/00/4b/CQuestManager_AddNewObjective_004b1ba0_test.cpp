@@ -7,7 +7,7 @@ unsigned long Calc(unsigned long seed, const void* data, unsigned long length)
     for (unsigned long i = 0; i < length; ++i) seed = seed * 31 + p[i];
     return seed;
 }
-struct CCharStringData {
+class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
 };
@@ -38,8 +38,8 @@ struct CRefVirtual {
     virtual void Destroy() { ++g_destroyed; }           // slot 1
 };
 namespace NGameText {
-struct CDataBankTextEntry;
-struct CGroupEntry : CRefVirtual, CRefCounted {
+class CDataBankTextEntry;
+class CGroupEntry : public CRefVirtual, public CRefCounted { public:
     void* TextPtr;
     CWideString GetText() const { CWideString w; w.PStringData = TextPtr; return w; }
     void ReleaseTemporary()
@@ -50,7 +50,7 @@ struct CGroupEntry : CRefVirtual, CRefCounted {
     }
 };
 }
-template <class T> struct CIVCountedPointer {
+template <class T> class CIVCountedPointer { public:
     T* Data;
     CIVCountedPointer() : Data(0) { }
     CIVCountedPointer(const CIVCountedPointer& o) : Data(o.Data) { if (Data) ++Data->m_count; }
@@ -66,15 +66,15 @@ public:
     CIVCountedPointer<CGroupEntry> GetPGroupEntry(unsigned long tag, bool b) const { CIVCountedPointer<CGroupEntry> p; p.Data = Entry; ++Entry->m_count; return p; }
 };
 }
-struct CEngine {
+class CEngine { public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
 CEngine* g_pEngine;
 inline NGameText::CDataBank* GetGameTextBank() { return g_pEngine->PGameTextDataBank; }
 
-struct CQuestManager {
-    struct CObjective {                                 // 0x0c bytes
+class CQuestManager { public:
+    class CObjective { public:                                 // 0x0c bytes
         CWideString   Text;
         unsigned long ID;
         long          State;

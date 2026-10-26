@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CThingTrackNode;
+class CThingTrackNode;
 
 struct Obj {
     virtual void s00()=0; virtual void s01()=0; virtual void s02()=0; virtual void s03()=0;

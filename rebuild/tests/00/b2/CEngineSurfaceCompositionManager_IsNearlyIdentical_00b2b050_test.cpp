@@ -64,10 +64,10 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 // ---- end rebuild_abi.h ----
 
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CEngineSurfaceCompositionManager {
+class CEngineSurfaceCompositionManager { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -170,8 +170,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSurfaceCompositionManager, CacheSizeBytes) =
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-struct CRGBColour { unsigned char B, G, R, A; };
-struct CCompositeBlendDesc {
+class CRGBColour { public: unsigned char B, G, R, A; };
+class CCompositeBlendDesc { public:
     unsigned long TextureIndex;                     // +0x0
     long          BlendType;                        // +0x4 ECompositeBlendType
     CRGBColour    DiffuseColour;                    // +0x8
@@ -184,7 +184,7 @@ template <class T> struct vector {
     unsigned int size() const { return _M_finish - _M_start; }
     const T& operator[](unsigned int index) const { return _M_start[index]; }
 };
-struct CEngineTextureMorph {
+class CEngineTextureMorph { public:
     long                         OriginalTextureIndex;   // +0x0
     long                         MorphID;                // +0x4
     vector<CCompositeBlendDesc>  Blends;                 // +0x8

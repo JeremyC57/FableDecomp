@@ -13,7 +13,7 @@ struct CIVRefCounted {                             // second base: the count at 
     __forceinline void DecRef() { --IVRefCount; }
     __forceinline unsigned long GetRefCount() const { return IVRefCount; }
 };
-struct CIVCountedPointeeBase : CIVCountedPointeeVirtual, CIVRefCounted {
+class CIVCountedPointeeBase : public CIVCountedPointeeVirtual, public CIVRefCounted { public:
     __forceinline void ReleaseTemporary()
     {
         DecRef();

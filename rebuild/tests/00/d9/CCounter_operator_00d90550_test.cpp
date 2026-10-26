@@ -4,7 +4,7 @@
 
 struct CManager { long frame, fps; long GetWorldFrame() { return frame; } long GetWorldFramesPerSecond() { return fps; } };
 static CManager g_mgr;
-struct CCounter {
+class CCounter { public:
     long RelevantWorldFrame;
     CCounter& operator=(float seconds)
     {

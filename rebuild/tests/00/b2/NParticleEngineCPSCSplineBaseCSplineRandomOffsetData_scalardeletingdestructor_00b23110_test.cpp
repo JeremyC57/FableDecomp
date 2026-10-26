@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <new>
 static int g_live = 0, g_objects = 0;
-struct C3DVector { float X, Y, Z; };
-template <class T> struct CArray {
+class C3DVector { public: float X, Y, Z; };
+template <class T> class CArray { public:
     T* m_begin; T* m_end; T* m_capacity;
     CArray() : m_begin(0), m_end(0), m_capacity(0) { }
     void Make(unsigned int n) { ++g_live; m_begin = (T*)malloc(n * sizeof(T)); m_end = m_capacity = m_begin + n; }
     ~CArray() { if (m_begin) { --g_live; free(m_begin); } }
 };
-struct CCardinalSpline { CArray<C3DVector> ControlPoints; float Tension; bool EndPointsConnected; };
+class CCardinalSpline { public: CArray<C3DVector> ControlPoints; float Tension; bool EndPointsConnected; };
 class CSplineRandomOffsetData {
 public:
     CCardinalSpline*  InitialSpline;

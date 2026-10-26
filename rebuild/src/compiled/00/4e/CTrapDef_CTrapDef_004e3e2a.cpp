@@ -20,7 +20,7 @@ struct CTrapTrigger {                       // +0x28..+0x40, built out of line
     CTrapTrigger();                         // 0x00430345
 };
 
-struct CTrapDef : CDefBase {                // vtable 0x01243054
+class CTrapDef : public CDefBase { public:                // vtable 0x01243054
     CTrapTrigger m_trigger;                 // +0x28
     long         m_trapIndex;               // +0x40
     virtual void v00();

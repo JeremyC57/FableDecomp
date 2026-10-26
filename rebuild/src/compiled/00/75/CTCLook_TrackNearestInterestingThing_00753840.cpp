@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* last;                                    // +0x04
     SEntry* LowerBound(const long* type) const;      // 0x004365B0
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits UsingComponents;                   // +0x20
     CInterfaceMap m_interfaces;                      // +0x44
@@ -43,12 +43,12 @@ struct CThing {
         return false;
     }
 };
-struct CTCTargetingBase {                            // interface type 8
+class CTCTargetingBase { public:                            // interface type 8
     CThing* GetPNearestInterestingThing();           // 0x007F5860
 };
 enum { HEAD_TURN_ENABLED = 1, HEAD_TURN_TRACKING = 4 };
 
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad00[0x04];
     CThing*       ParentThing;                       // +0x04
     unsigned char _pad08[0x48 - 0x08];

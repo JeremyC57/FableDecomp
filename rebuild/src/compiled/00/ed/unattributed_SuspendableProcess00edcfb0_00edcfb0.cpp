@@ -12,15 +12,15 @@
 // vtables (0x01231710, 0x01238C8C; both stores are kept), the thing pointer and the shared count
 // block whose counter is incremented when present. Both paths then set the byte flag at +0x5.
 // One of 120 bodies of this shape.
-struct CThing;
+class CThing;
 struct SCount { long m_references; };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass() { }
 };
 
-struct CScriptThing : CBaseClass {
+class CScriptThing : public CBaseClass { public:
     virtual void v00();
     CThing* m_pThing;                      // +4
     SCount* m_pCount;                      // +8

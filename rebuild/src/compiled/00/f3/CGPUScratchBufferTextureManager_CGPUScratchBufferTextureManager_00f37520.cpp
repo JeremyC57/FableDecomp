@@ -13,7 +13,7 @@ struct SScratchBufferState_00f37520 {              // fifteen words and a flag b
     SScratchBufferState_00f37520() : m_0(0), m_4(0), m_8(0), m_c(0), m_10(0), m_14(0), m_18(0), m_1c(0), m_20(0), m_24(0), m_28(0), m_2c(0), m_30(0), m_34(0), m_38(0), m_flag(false) { }
 };
 
-struct CGPUScratchBufferTextureManager : CBase {   // vtable 0x01301CE4
+class CGPUScratchBufferTextureManager : public CBase { public:   // vtable 0x01301CE4
     SScratchBufferState_00f37520 m_state;          // +0x04
     virtual void v00();
     CGPUScratchBufferTextureManager();

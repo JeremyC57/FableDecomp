@@ -19,7 +19,7 @@ struct CAIStateGroupMember {               // +0x1f0
     ~CAIStateGroupMember();
 };
 
-struct CAIStateGroupBase : CAIStateGroupRoot {   // vtable 0x012B5D70
+class CAIStateGroupBase : public CAIStateGroupRoot { public:   // vtable 0x012B5D70
     CAIStateGroupMember m_member;          // +0x1f0
     CAIStateGroupBase();
 };

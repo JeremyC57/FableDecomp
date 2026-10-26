@@ -6,11 +6,11 @@
 //   ~CCharString 0x0099EAE0. CalcInQuotes (out of line at 0x009B9570) is inlined here through MoveStringPos.
 // Layout: the retail 0x28-byte CStringParser of the landed siblings (String +0x04, CursorPos +0x1c = InQuotes, StringPos
 //   +0x20, Line +0x24; engine/CStringParser.h carries the PDB's 0x30-byte debug layout, so the model is local).
-struct CCharStringData {
+class CCharStringData { public:
     const char*   Chars;                 // +0
     unsigned long Length;                // +4
 };
-struct CCharString {                     // one CCharStringData pointer
+class CCharString { public:                     // one CCharStringData pointer
     CCharStringData* PStringData;
     CCharString();                       // 0x0099E4B0
     ~CCharString();                      // 0x0099EAE0
@@ -23,7 +23,7 @@ struct CCursorPos {                      // PDB: InQuotes / StringPos / Line (12
     unsigned long Line;
 };
 // Retail layout (0x28 bytes; the Ego_r PDB's debug-build layout is 0x30):
-struct CStringParser {
+class CStringParser { public:
     virtual ~CStringParser();
     char*          String;               // +0x04
     unsigned long  BaseLineOffset;       // +0x08

@@ -14,11 +14,11 @@
 //   copies: with the compare declaration-only VC7.1 keeps a second copy of the `insert_unique(v).first` tail and swaps
 //   ebx/ebp (v / the node key); with the same-TU body (the less<CPendingObjectSortKey> order of the landed 0x0098F570:
 //   physical sort key, file position, object address) the tails merge as in retail.
-struct CThreadedFile {
+class CThreadedFile { public:
     unsigned char _pad00[0x14];
     unsigned long PhysicalSortKey;             // +0x14
 };
-struct CThreadedFileObjectDesc {
+class CThreadedFileObjectDesc { public:
     void*         PDst;                        // +0x00
     unsigned long FilePos;                     // +0x04
     unsigned char _pad08[0x10];

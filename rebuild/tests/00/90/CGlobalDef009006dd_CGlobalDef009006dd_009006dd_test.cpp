@@ -6,7 +6,7 @@ static void Log(void* p) { g_order[g_n++] = p; }
 struct CBaseIntelligentPointer { virtual void v00() { } void* m_pItem; ~CBaseIntelligentPointer() { Log(this); } };
 struct CDefMember { unsigned char _body[12]; ~CDefMember() { Log(this); } };
 struct CDefBase { unsigned char _body[20]; ~CDefBase() { Log(this); } };
-struct CGlobalDef : CDefBase {
+class CGlobalDef : public CDefBase { public:
     CBaseIntelligentPointer m_pointer14, m_pointer1c, m_pointer24, m_pointer2c, m_pointer34, m_pointer3c, m_pointer44;
     ~CGlobalDef() { }
 };

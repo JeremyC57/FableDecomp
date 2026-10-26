@@ -1,4 +1,4 @@
-struct CInputProcessBetting {
+class CInputProcessBetting { public:
     void* vftable;
 };
 

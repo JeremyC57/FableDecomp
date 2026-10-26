@@ -12,14 +12,14 @@ struct CMapManager {
     virtual bool IsMapLoaded(long mapNumber);        // slot 10 (+0x28)
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x28];
     CMapManager*  m_pMapManager;                     // +0x28
 };
 
 extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-struct CThing {
+class CThing { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x8e - 0x04];
     short         CurrentMapNumber;                  // +0x8e (PDB +0x9e)

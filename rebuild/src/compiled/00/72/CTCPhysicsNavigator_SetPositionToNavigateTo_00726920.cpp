@@ -6,10 +6,10 @@
 // Layout: Ego_r.pdb CTCPhysicsBase (0x40: Position +0x0c, Moving/OldMoving bits of +0x3c), CTCPhysicsStandard (0x88) and
 // CTCPhysicsNavigator (0xb0, packed: Navigating +0x88, PositionToNavigateTo +0x89 ... ForcedMoveToPos flags +0xad). The engine
 // headers are flattened PODs without virtuals, so the hierarchy is modelled locally with the same offsets.
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CTCPhysicsBase {                        // 0x40 bytes
+class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

@@ -11,16 +11,16 @@
 // Shape: the group name is an implicit CCharString conversion temporary built BEFORE the base chain (it is the inline
 // CModeDragonBase ctor's argument) and destroyed after it; the counted pointer's raw-pointer ctor is inline
 // (object stored, block new'd only for a non-null action, as the landed 0x00695880).
-struct CThing;
-struct CThingCreatureBase;
-struct CBaseObject;
+class CThing;
+class CThingCreatureBase;
+class CBaseObject;
 
-struct CCharStringData {
+class CCharStringData { public:
     const char*   m_pData;                 // +0  (CBasicString<char>::PData)
     unsigned long m_length;                // +4  (StringLength)
 };
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* m_pData;
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,7 +32,7 @@ struct CCharString {
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 
-struct CAnimFilterOfGroup {                // vtable 0x01267568
+class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
     CCharString   Group;                   // +4
     unsigned long GroupCRC;                // +8
@@ -79,7 +79,7 @@ template <class T> struct CVector : CVectorBase<T> {   // STLport vector<T> (12 
     CVector() : CVectorBase<T>(CAllocator<T>()) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();
@@ -87,7 +87,7 @@ struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c
     CModeStandBase(CThing* thing);         // 0x00861E00
 };
 
-template <class T> struct CDefPointer {    // 4 bytes: the def object (add-ref'd by its owner)
+template <class T> class CDefPointer { public:    // 4 bytes: the def object (add-ref'd by its owner)
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -98,7 +98,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-struct CCreatureActionBase;
+class CCreatureActionBase;
 
 struct SCountBlock {                       // 12 bytes, operator new'd
     long m_references;                     // +0
@@ -114,7 +114,7 @@ inline SCountBlock::SCountBlock(void* object)
 {
 }
 
-template <class T> struct CCountedPointer {   // 8 bytes: object + shared count block
+template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
     T*           m_pObject;                // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) { }

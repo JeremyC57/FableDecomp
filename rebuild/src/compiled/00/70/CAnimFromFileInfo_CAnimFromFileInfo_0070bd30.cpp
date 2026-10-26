@@ -11,12 +11,12 @@
 // code, which owns this helper. The float zeroes are stored as immediate dwords (constant 0.0f).
 typedef unsigned short wchar_t;          // VC7.1 without /Zc:wchar_t: wchar_t is the CRT typedef
 
-struct CWideString {
+class CWideString { public:
     wchar_t* m_pString;
     CWideString(const wchar_t* text);      // 0x0099B6B0
 };
 
-struct CAnimFromFileInfo {
+class CAnimFromFileInfo { public:
     bool        Active;                    // +0x00
     CWideString PathName;                  // +0x04
     float       SegmentStartTime;          // +0x08

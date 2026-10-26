@@ -5,7 +5,7 @@
 // Returns a CCharString by value: constructs it from a fixed literal + (-1).
 // __fastcall struct-return: the hidden return buffer is a stack arg cleaned by ret 4.
 
-struct CCharString {
+class CCharString { public:
     char* m_data;
     CCharString(const char* s, int n);
 };

@@ -11,7 +11,7 @@
 // out-pointer local is homed in the dead predicate argument slot (`lea eax,[esp+10h]`). The end
 // pointer is a local taken before the loop (ebx); the walk tests the empty case first. ComboID -999
 // marks "no combo"; stage -888 is the open finisher stage, allowed while CurrentChainPos <= MaxComboStage.
-struct CAnimComponentCombatComboChain {
+class CAnimComponentCombatComboChain { public:
     void* m_pVtable;                       // +0x00
     unsigned long IVRefCount;              // +0x04
     long ComboStage;                       // +0x08
@@ -23,9 +23,9 @@ enum {
     COMBO_STAGE_FINISHER = -888
 };
 
-struct CDefString { long TablePos; };
+class CDefString { public: long TablePos; };
 
-struct CAnimationEntry {
+class CAnimationEntry { public:
     long BankIndex;                        // +0x00
     CDefString AnimName;                   // +0x04
     CDefString GroupName;                  // +0x08
@@ -33,7 +33,7 @@ struct CAnimationEntry {
     template <class T> void GetComponent(T** out) const;   // <CAnimComponentCombatComboChain>: 0x00738980
 };
 
-struct CIsCombatAnimAppropriateFollowingCombo {
+class CIsCombatAnimAppropriateFollowingCombo { public:
     CAnimComponentCombatComboChain* CombatAnimCombo;   // +0
     long CurrentChainPos;                               // +4
     long MaxComboStage;                                 // +8
@@ -56,7 +56,7 @@ struct CAnimationSetEntry {                // pair<unsigned long, CAnimationEntr
     CAnimationEntry second;
 };
 
-struct CAnimationSet {
+class CAnimationSet { public:
     CAnimationSetEntry* m_pFirst;          // +0x00 Anims (CVectorMap)
     CAnimationSetEntry* m_pLast;           // +0x04
     CAnimationSetEntry* m_pEnd;            // +0x08

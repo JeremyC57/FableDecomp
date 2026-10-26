@@ -11,13 +11,13 @@ public:
     template<class T> bool GetInterface(T** ppOut, long interfaceType)
     { if (Iface[interfaceType]) { *ppOut = (T*)Iface[interfaceType]; return true; } return false; }
 };
-struct CCharString { char Text[48]; CCharString(const char* t, long = -1) { strcpy(Text, t); } ~CCharString() {} };
+class CCharString { public: char Text[48]; CCharString(const char* t, long = -1) { strcpy(Text, t); } ~CCharString() {} };
 static long g_worldFrame = 100;
-struct CWorld { static long GetWorldFrame() { return g_worldFrame; } };
-struct CPlayer { CThing* Hero; CThing* GetHeroThing() const { return Hero; } };
-struct CPlayerManager { CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
+class CWorld { public: static long GetWorldFrame() { return g_worldFrame; } };
+class CPlayer { public: CThing* Hero; CThing* GetHeroThing() const { return Hero; } };
+class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
 static CWorld g_world;
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     long LastOpinionReactionFrame;
     bool HeroOpinionEnemy;
     char Reaction[48], Deed[48], Personality[48]; bool Force; int Cleared;
@@ -30,7 +30,7 @@ struct CTCCreatureOpinionOfHero {
     void ApplyOpinionTransientOffset(long type, float amount, long, long frames, float decay, bool)
     { Offsets[type] = amount; Frames[type] = frames; Decay[type] = decay; ++NumOffsets; }
 };
-struct CTCHeroStats {
+class CTCHeroStats { public:
     long Morality; long Max; CThing* Spouse; long MarriageState;
     void SetMarriageState(CThing* spouse, long state) { Spouse = spouse; MarriageState = state; }
     long GetMoralityMax() { return Max; }
@@ -39,12 +39,12 @@ struct CTCHeroStats {
 struct CHomeOccupant { CThing* Thing; };
 struct CTCHome { CHomeOccupant* Occ; CHomeOccupant* GetOccupant() { return Occ; } };
 static int g_refreshed = 0;
-struct CPlayerGui { void Refresh(long) { ++g_refreshed; } };
+class CPlayerGui { public: void Refresh(long) { ++g_refreshed; } };
 CPlayerGui* g_pPlayerGui;
 long g_FrameRate = 30;
-struct CHeroMarriageDef { float HeroStatMoralityInOpinionFormChangePerDivorce; };
+class CHeroMarriageDef { public: float HeroStatMoralityInOpinionFormChangePerDivorce; };
 static int g_unmarried = 0;
-struct CTCWife {
+class CTCWife { public:
     CThing* ParentThing;
     CHeroMarriageDef* PHeroMarriageDef;
     long FrameGotMarriedToThePlayer;

@@ -20,13 +20,13 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DV
 inline C3DVector operator*(const C3DVector& a, float s) { return C3DVector(a.X * s, a.Y * s, a.Z * s); }
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0C
     void Normalise() { Up.AccurateNormalise(); Forward.AccurateNormalise(); }
 };
 
-struct CCamera {
+class CCamera { public:
     C3DVector       WorldPosition;              // +0x00
     CRightHandedSet RHSet;                      // +0x0C
     bool            HeightLocked;               // +0x24

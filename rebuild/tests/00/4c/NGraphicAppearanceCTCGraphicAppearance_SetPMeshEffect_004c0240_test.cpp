@@ -93,18 +93,18 @@ template <class T> struct CRetailVector : CVectorBase<T> {  // STLport vector<T>
     T& operator[](unsigned int n) const { return *(begin() + n); }
 };
 
-struct CTCCarrying {
+class CTCCarrying { public:
     void GetAllCarriedThings(CRetailVector<CThing*>& things) const;   // 0x006A2220
 };
 
-struct CEngineMeshEffect {
+class CEngineMeshEffect { public:
     virtual void v00();
     virtual void Destroy();                                 // slot 1
     long RefCount;                                          // +0x04
     void AddRef() { ++RefCount; }
     void Release() { if (--RefCount == 0) Destroy(); }
 };
-template<class T> struct CIVCountedPointer {
+template<class T> class CIVCountedPointer { public:
     T* Object;
     CIVCountedPointer() : Object(0) { }
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
@@ -127,7 +127,7 @@ enum EAppearanceMeshEffectPriority { MESH_EFFECT_PRIORITY_DEFAULT };
 
 namespace NGraphicAppearance {
 
-struct CTCGraphicAppearance {
+class CTCGraphicAppearance { public:
     struct CMeshEffectPriorityEntry {
         CIVCountedPointer<CEngineMeshEffect> PEffect;       // +0x0
         EAppearanceMeshEffectPriority        Priority;      // +0x4

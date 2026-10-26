@@ -27,7 +27,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 namespace NScreenEffect {
 class CScreenEffectPriorityStack {
 public:
-    class CScreenFilterEntry {
+    struct CScreenFilterEntry {
     public:
         class CThingGraphicByPassFlagState {        // Ego_r.pdb: 9 bytes
         public:

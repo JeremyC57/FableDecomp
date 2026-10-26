@@ -14,7 +14,7 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -34,17 +34,17 @@ struct CThing {
         return false;
     }
 };
-struct CPlayer {
+class CPlayer { public:
     CThing* GetControlledCreature() const;      // 0x00487DD0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960
 };
-struct CTCTeleporter {                          // interface type 0xDD
+class CTCTeleporter { public:                          // interface type 0xDD
     void TeleportHero();                        // 0x007DFCF0
 };
 
-struct CTCInventoryMap {
+class CTCInventoryMap { public:
     CPlayerManager* GetPlayerManager() const;   // 0x00686D50 (CTCBase)
     void TeleportHeroToTeleporter(CThing* teleporter);
 };

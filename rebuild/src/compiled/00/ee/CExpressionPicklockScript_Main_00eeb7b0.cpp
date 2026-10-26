@@ -27,7 +27,7 @@
 #define VSLOTS_IMPL VPAD64(i0) VPAD8(i1) VPAD2(i2) VPAD1(i3) \
     virtual bool IsThingAlive() const;
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
@@ -35,7 +35,7 @@ struct CCharString {
 
 struct CScriptThingImplementation;
 
-struct CScriptThing {                                      // 12 bytes: vfptr + CCountedPointer PImp
+class CScriptThing { public:                                      // 12 bytes: vfptr + CCountedPointer PImp
     VSLOTS_THING
     CScriptThingImplementation* PImp_Data;                 // +0x04
     void* PImp_Info;                                       // +0x08
@@ -59,13 +59,13 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-struct CBaseObject {
+class CBaseObject { public:
     void* IntelligentPointer;                              // +0x04
     CBaseObject();                                         // 0x0099A380
     virtual ~CBaseObject();                                // 0x0099A430
 };
 
-struct CScriptGameResourceObjectBase : CBaseObject {       // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
 };
 
@@ -75,14 +75,14 @@ struct CCountedPointerWords {
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-struct CScriptGameResourceObjectMovieBase : CScriptGameResourceObjectBase {   // vtable 0x01260EF4
+class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
     CCountedPointerWords PImp;                             // +0x08
     CScriptGameResourceObjectMovieBase() { }
     ~CScriptGameResourceObjectMovieBase();                 // 0x006E7B80
     virtual void v01();
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0x101c];
     float PicklockTime;                                    // +0x101C
 };
@@ -92,7 +92,7 @@ enum EHeroTrainableStatType { HERO_STAT_SKILL = 5 };
 enum EMiniGameType { MINI_GAME_PICKLOCK = 4 };
 enum EOpinionDeedType { OPINION_DEED_PICKLOCK = 4 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     VPAD32(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3) VPAD2(p8_4)
@@ -133,7 +133,7 @@ struct CGameScriptInterface {
     virtual void StartSneaking() const;   // slot 739 (+0xb8c)
 };
 
-struct CScriptBase {                                       // retail 0x40 bytes
+class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();
     unsigned char _body[0x3c];
     void SetPredicate(CIsThingConscious& predicate);       // 0x00CB7920

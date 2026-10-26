@@ -6,20 +6,20 @@
 // Shape: an 8-byte frame temporary C2DVector(0.0f, 0.0f) whose two float members are stored as IMMEDIATES after the
 // pushes (float zeroes do not claim a register); `this` stays in ecx; `add esp,8 ; ret 8`.
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
-struct C2DVector {
+class C2DVector { public:
     float X;
     float Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
 };
-struct CDefinitionManager;
-struct CSymbolMap;
-struct CStringParser;
-struct CCharString;
-struct CMemoryDataInputStream;
-struct CDataOutputStream;
+class CDefinitionManager;
+class CSymbolMap;
+class CStringParser;
+class CCharString;
+class CMemoryDataInputStream;
+class CDataOutputStream;
 
 // CPersistContext (0x2c bytes, PDB layout Ego_r.pdb; no engine header, HAND_OWNED in engine/INDEX.tsv)
-struct CPersistContext {
+class CPersistContext { public:
     CDefinitionManager*     PDefinitionManager;           // +0x00
     CSymbolMap*             PSymbolMap;                   // +0x04
     CStringParser*          PParser;                      // +0x08

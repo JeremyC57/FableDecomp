@@ -23,7 +23,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() {}
 };
@@ -96,7 +96,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
 }
 #pragma auto_inline(on)
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x10];
     CDefinitionManager* DefinitionManager;          // +0x10
 };

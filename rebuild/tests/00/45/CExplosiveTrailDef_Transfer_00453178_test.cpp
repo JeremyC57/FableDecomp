@@ -1,11 +1,11 @@
 // Behaviour test for 0x00453178 CExplosiveTrailDef::Transfer
 #include <cstdio>
-struct CPersistContext {
+class CPersistContext { public:
     int m_calls; float m_loadValue;
     void TransferLong(long* value) { ++m_calls; *value = 7; }
     void TransferFloat(float* value) { ++m_calls; *value = m_loadValue; }
 };
-struct CExplosiveTrailDef {
+class CExplosiveTrailDef { public:
     long TrapDefIndex; float SecondsBetweenTraps, DistanceBetweenTraps, SecondsForTrapPersistance, SecondsTrailLifetime,
         DistanceForLateralDeviation, DegreesMaxTurnTowardsTargetPerTrap, FractionOfLifetimeToTurnTowardsTarget,
         SecondsIcicleAttackTargetPositionPredictionTime;

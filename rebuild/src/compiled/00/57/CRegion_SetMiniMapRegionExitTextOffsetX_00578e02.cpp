@@ -4,7 +4,7 @@
 // __fastcall void CRegion::SetMiniMapRegionExitTextOffsetX(CCharString* out, float unused)
 // (rewritten as __fastcall; this in ecx)
 
-struct CCharString {
+class CCharString { public:
     void* p;
 };
 
@@ -12,7 +12,7 @@ struct CCharString {
 // value-returning cdecl helper (arg pushed, cleaned by caller pop ecx)
 extern int __cdecl Helper(void* oldp);
 
-struct CRegion {
+class CRegion { public:
     void* field0;
 };
 

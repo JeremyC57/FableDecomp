@@ -5,16 +5,16 @@
 #include <cstring>
 #include <cmath>
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
-struct CRightHandedSet { C3DVector Up; C3DVector Forward; };
-struct CCharString { const char* s; CCharString(const char* t) : s(t) {} };
-struct CThing;
+class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
+class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
+class CThing;
 static char g_dummy[32]; static C3DVector g_obsA, g_obsB; static float g_obsR = 0, g_driverValue = 0; static int g_ignored = 0;
 static CThing* g_ignoredThing = 0; static char g_defName[48]; static long g_createIndex = -1; static C3DVector g_createPos, g_createLook;
 static CThing* g_owner = 0; static CThing* g_obstruction = 0; static CThing* g_bite = 0;
@@ -23,8 +23,8 @@ struct CTCGraphicAppearance {
     C3DVector Dummy;
     bool GetDummyObject(const CCharString& n, long, unsigned long, C3DVector* p, CRightHandedSet*, float) { std::strcpy(g_dummy, n.s); *p = Dummy; return true; }
 };
-struct CTCBase;
-struct CThing {
+class CTCBase;
+class CThing { public:
     unsigned long Bits; CTCBase* PTCDriver; CPhysicsBody* PhysicsBody; CTCGraphicAppearance* GraphicAppearance; C3DVector Pos;
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     const C3DVector& GetPosition() const { return Pos; }
@@ -38,11 +38,11 @@ struct CTCDriverED { CIntelligentPointerVector IgnoredThings; void SetValue(floa
 struct CTCDriver41 { void SetOwner(CThing* o) { g_owner = o; } };
 CThing* CreateObstruction(const C3DVector* a, const C3DVector* b, float r) { g_obsA = *a; g_obsB = *b; g_obsR = r; return g_obstruction; }
 CThing* CreateThing(long index, const C3DVector* p, const C3DVector* look) { g_createIndex = index; g_createPos = *p; g_createLook = *look; return g_bite; }
-struct CDefinitionManager { long GetDefGlobalIndexFromName(const CCharString& n) { std::strcpy(g_defName, n.s); return 77; } };
-struct CGameDefinitionManager : CDefinitionManager { static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; } };
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& n) { std::strcpy(g_defName, n.s); return 77; } };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
-struct CCreatureActionBase { CPtr PCreature; CThing* GetCreature() const { return PCreature.GetPItem(); } };
-struct CCreatureAction_SnapDragon : CCreatureActionBase { void PerformAction(); };
+class CCreatureActionBase { public: CPtr PCreature; CThing* GetCreature() const { return PCreature.GetPItem(); } };
+class CCreatureAction_SnapDragon : public CCreatureActionBase { public: void PerformAction(); };
 
 void CCreatureAction_SnapDragon::PerformAction()
 {

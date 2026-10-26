@@ -7,15 +7,15 @@
 // Shape: four straight-line probes through C2DCoordI temporaries; x+1 and y+1 are NAMED locals (`long x1`, `long y1`: x1 spills to
 //   the dead first coordinate, y1 takes the pos/y register -- `y++` swaps esi/edi); the running sum is homed in the dead `pos`
 //   argument slot and the count is kept in ebp with a frame copy for the final `fild`.
-struct C2DCoordI {
+class C2DCoordI { public:
     long X, Y;
     C2DCoordI() { }
     C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CHeightMapCell {                            // PDB, 12 bytes
+class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04
     unsigned char EngineBlend[2];                  // +0x07
@@ -28,7 +28,7 @@ template <class T> struct CRetailVector {          // STLport vector: begin / en
     T* _M_end_of_storage;
     T& operator[](unsigned long n) { return *(_M_start + n); }
 };
-struct CHeightMap {                                // retail layout
+class CHeightMap { public:                                // retail layout
     unsigned char                  _pad00[0x10];
     CRetailVector<CHeightMapCell>  Cells;          // +0x10
     unsigned char                  _pad1c[0x1e8];
@@ -36,7 +36,7 @@ struct CHeightMap {                                // retail layout
     long                           SizeY;          // +0x208
     __forceinline CHeightMapCell& GetCellIncludingExtraCells(long x, long y) { return Cells[(SizeY - y) * (SizeX + 1) + x]; }
 };
-struct CMap {
+class CMap { public:
     unsigned char                            _pad00[0x1c];
     void*                                    DefinitionManager;   // +0x1c
     unsigned char                            _pad20[0x1a7c - 0x20];

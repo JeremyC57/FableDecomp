@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <new>
-struct CBaseClass {                           // vtable 0x01231710
+class CBaseClass { public:                           // vtable 0x01231710
     virtual void v00() {}
     CBaseClass() {}
 };
@@ -13,23 +13,23 @@ struct CCountedPointerWords {                 // {Data, Info}
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-struct CScriptThing : CBaseClass {            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
+class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
     virtual void v00() {}
     CScriptThing() {}
     CScriptThing(const CScriptThing& other) : CBaseClass() { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; }
 };
-struct CBaseObject {                          // CBaseIntelligentPointer root
+class CBaseObject { public:                          // CBaseIntelligentPointer root
     virtual void v00() {}
     void* m_pIntelligentPointer;
     CBaseObject() : m_pIntelligentPointer(0) {}
 };
-struct CScriptGameResourceObjectScriptedThingBase : CBaseObject {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                // +0x08 Data, +0x0c Info
     virtual void v00() {}
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
 };
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString() : m_pStringData(0) {}
 };
@@ -76,7 +76,7 @@ struct CScriptOwner {                         // the quest script that owns this
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*
 };
-struct CEntityScriptBase {                    // vtable 0x012C3224, 0x14 bytes
+class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00() {}
     void*        Game;                        // +0x04 (a plain initialiser: stored before the vtable)
     CScriptThing Me;                          // +0x08

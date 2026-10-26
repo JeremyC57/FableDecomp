@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CAppearanceModifierDef {
+class CAppearanceModifierDef { public:
     unsigned char _pad0[0x40]; long CoversBodyAreaFlags; unsigned char _pad1[0xc]; long SuitPart;
     long GetModifierScalingType() const { if (SuitPart == 0) { switch (CoversBodyAreaFlags) { case 0x10: return 1; case 0x80: return 2; case 0x100: return 3; } } return 0; }
 };

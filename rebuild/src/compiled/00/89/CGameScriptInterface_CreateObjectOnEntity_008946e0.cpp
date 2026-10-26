@@ -11,17 +11,17 @@
 // Shape: the result local is built first; the def pointer lives in the dead `defName` slot; the inline-once band puts
 //   the GetScriptThing temporary's destructor out of line and the result's inline (block end first).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-struct CCharString {
+class CCharString { public:
     void* PStringData;
 };
-struct C3DVector { float X, Y, Z; };
-struct CRightHandedSet;
+class C3DVector { public: float X, Y, Z; };
+class CRightHandedSet;
 
-struct CBaseClass {                                     // the polymorphic root (vptr at +0)
+class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
     CBaseClass();                                       // 0x0099A2D0
     virtual ~CBaseClass();                              // 0x0099A2E0
 };
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
@@ -44,8 +44,8 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-struct CThing;
-struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
+class CThing;
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -60,7 +60,7 @@ struct CScriptThing : CBaseClass {                      // vtable 0x01238C8C
 };
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-struct CThingObjectDef {
+class CThingObjectDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
@@ -70,7 +70,7 @@ struct CDefPointerThingObjectDef {
     CDefPointerThingObjectDef() : Object(0) {}
     ~CDefPointerThingObjectDef() { if (Object) { if (DecRefToZero(Object->RefCount)) Object->Destroy(); } }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
     bool GetDef(long globalIndex, CDefPointerThingObjectDef* out);               // 0x0042B040
 };
@@ -103,19 +103,19 @@ struct CThingVirtuals {
     virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
     virtual void* GetAttachment();   // slot 72 (+0x120)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x60];
     CAttachmentHolder* Attachments;                     // +0x60
     CThingVirtuals* GetTargetAttachments() const { return (CThingVirtuals*)Attachments; }
     CScriptThing GetScriptThing();                      // 0x004C7E50
 };
-struct CThingObject : CThing {
+class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void*                   _vptr;                      // +0x00
     void*                   World;                      // +0x04
     void*                   Component;                  // +0x08

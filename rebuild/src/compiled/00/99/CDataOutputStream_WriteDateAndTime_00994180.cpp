@@ -6,7 +6,7 @@
 // slot ([esp+0Ch] at entry). The byte writers truncate (`mov cl,[edi+N]` then a byte store); the word writers
 // zero-extend through ecx (`xor ecx,ecx ; mov cx,[edi+N]`) and store the full dword, so their parameter is
 // widened back to an int before it is addressed (the 2-byte Write reads its low half).
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;          // +0x00
     unsigned long Month;         // +0x04
     unsigned long Day;           // +0x08
@@ -16,7 +16,7 @@ struct CDateAndTime {
     unsigned long Millisecond;   // +0x18
 };
 
-struct CDataOutputStream {                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
+class CDataOutputStream { public:                     // engine/CDataOutputStream.h: vptr +0, NewLine +4
     virtual void v00();
     virtual void v01();
     virtual void v02();

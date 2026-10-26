@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CInputProcessOracleMinigame {
+class CInputProcessOracleMinigame { public:
     void* vftable;
     int destroyed;
 };

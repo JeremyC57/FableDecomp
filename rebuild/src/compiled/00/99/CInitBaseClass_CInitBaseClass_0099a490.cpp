@@ -4,10 +4,10 @@
 // Shape: the constant 1 in al for both `cmp cl,al` and `test [esp+8],al`, `mov eax,esi`, `ret 4`.
 extern long g_initialisedCount_013bca14;          // 0x013BCA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CBaseClass {                                // vtable 0x01231710
+class CBaseClass { public:                                // vtable 0x01231710
     virtual ~CBaseClass() { }
 };
-struct CInitBaseClass : CBaseClass {               // vtable 0x0129A7CC
+class CInitBaseClass : public CBaseClass { public:               // vtable 0x0129A7CC
     bool m_initialised;                            // +0x04
     virtual __forceinline ~CInitBaseClass();
 };

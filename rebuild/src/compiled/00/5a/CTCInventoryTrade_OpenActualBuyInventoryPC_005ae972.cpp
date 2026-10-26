@@ -19,7 +19,7 @@ struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
     bool          UseFastExtend : 1;            // +0x0c
     bool operator==(const char* text) const;    // 0x004115A0
 };
-struct CCharStringData {                        // 17 bytes
+class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00
     long             NoRefs;                    // +0x0d
 };
@@ -36,7 +36,7 @@ public:
     }
 };
 namespace NUISystem {
-struct CComponent {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -125,7 +125,7 @@ struct CComponent {
 };
 }
 
-struct CTCInventoryTrade {
+class CTCInventoryTrade { public:
     unsigned char _pad_0x00[0x220];
     NUISystem::CComponent* PCurrentOpenTradeMenu;   // +0x220
     void DeleteComponents();                    // 0x0059C8AE

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00886160 CEnvironmentThemePriorityStackEntry::GetThemeWeight
 #include <cstdio>
 struct CThemeWeight { long ThemeID; float Weight; bool LockWeight; };
-template <class T> struct CArray { T* m_pBegin; T* m_pEnd; T* m_pCapacity;
+template <class T> class CArray { public: T* m_pBegin; T* m_pEnd; T* m_pCapacity;
     unsigned long Size() const { return m_pEnd - m_pBegin; } const T& operator[](unsigned long i) const { return m_pBegin[i]; } };
 struct CEntry {
     float BaseWeight; bool BaseWeightLocked; CArray<CThemeWeight> Themes;

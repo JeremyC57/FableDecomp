@@ -8,7 +8,7 @@
 // base destructor.
 // Model: local (no engine header for these classes; GameMaster member names and offsets from struct_layouts_egor.tsv,
 // whose CAIStateGroup_GoToPub is 0xa8 bytes like retail).
-struct CThing;
+class CThing;
 class CWorld;
 class CThingAICreature;
 
@@ -27,7 +27,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligent
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                                   // +0x04
     long ScriptAIPriority;                          // +0x08

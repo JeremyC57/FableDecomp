@@ -9,7 +9,7 @@ struct ICameraProvider {
     virtual int GetCurrentMode() = 0;
 };
 
-struct CGameCameraManager {
+class CGameCameraManager { public:
     int                filler0;
     int                filler4;
     int                filler8;

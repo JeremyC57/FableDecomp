@@ -12,7 +12,7 @@ struct CBasicStringChar {                           // CBasicString<char> (13 by
     char* PData;                                    // +0x00
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
 };
-struct CCharStringData {                            // shared string block (17 bytes: Data, then NoRefs at +0x0D)
+class CCharStringData { public:                            // shared string block (17 bytes: Data, then NoRefs at +0x0D)
     CBasicStringChar Data;                          // +0x00
 };
 class CCharString {
@@ -70,7 +70,7 @@ void __fastcall __linear_insert(_RandomAccessIter __first, _RandomAccessIter __l
 }
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

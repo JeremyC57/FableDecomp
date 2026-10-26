@@ -23,9 +23,9 @@
 //   only {vptr, Game +4, Me +8} of the entity script are touched.
 // Shape: the watch loop is while (!IsActiveThreadTerminating()) (its rotated head is the lone pre-loop check, its latch falls into a
 //   duplicated epilogue); both exits goto one shared attack tail. An if-return + for(;;) form compiles to a rotated aware test.
-struct CCharString;
+class CCharString;
 struct CScriptThingImpl;
-struct CCPPointerInfo { long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
+class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 struct CCountedPointer_CScriptThing {
  CScriptThingImpl* Data;
@@ -51,11 +51,11 @@ struct CCountedPointer_CScriptThing {
   return *this;
  }
 };
-struct CBaseClass {
+class CBaseClass { public:
  CBaseClass();                                      // 0x0099A2D0
  virtual ~CBaseClass();                             // 0x0099A2E0
 };
-struct CScriptThing : CBaseClass {                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
  virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
  virtual bool IsAwareOfHero() const;              // slot 16 (+0x40) 0x004AAAC0
@@ -151,36 +151,36 @@ struct CScriptThingImpl {
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
-struct CPredicateBase {virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-struct CIsThingAlive:CPredicateBase {
+class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
+class CIsThingAlive:public CPredicateBase { public:
  CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive();                                  // 0x00E241B0 (out of line)
 };
 }
-struct C2DCoordI;
-struct C2DVector;
-struct C3DVector;
-struct CCharString;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CRightHandedSet;
+class C2DCoordI;
+class C2DVector;
+class C3DVector;
+class CCharString;
+class CRGBColour;
+class CRGBFloatColour;
+class CRightHandedSet;
 struct CScreenFilterSThingByPass;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CThing;
-struct CTimer;
-struct CWideString;
-template<class T> struct CArray;
-struct CCounter;
+class CScriptGameResourceObjectMovieBase;
+class CScriptGameResourceObjectScriptedThingBase;
+class CThing;
+class CTimer;
+class CWideString;
+template<class T> class CArray;
+class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector {
  public: T* _M_start; T* _M_finish; T* _M_end_of_storage;
  vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
  ~vector();                                         // 0x008AC970 (out of line)
  T& operator[](long i) { return _M_start[i]; }
 };template<class T,class A> class list;template<class T,class P,class A> class set;}
-struct CHeroLogBook { struct CHeroLogBookEntry { typedef long ECategory; }; };
+class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 typedef long ECameraOp;
 typedef long EClothingCoversArea;
 typedef long ECreatureGroup;
@@ -1053,7 +1053,7 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-struct CCharString {
+class CCharString { public:
  void* PStringData;
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0

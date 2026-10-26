@@ -8,9 +8,9 @@
 // Leaf: IsPhysicsMeshTypeSphere
 #include "engine/CTCPhysicsBase.h"
 
-struct CThingPhysicsMeshInfo;
+class CThingPhysicsMeshInfo;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x6c];
     unsigned long Flags;                    // +0x6c
 };

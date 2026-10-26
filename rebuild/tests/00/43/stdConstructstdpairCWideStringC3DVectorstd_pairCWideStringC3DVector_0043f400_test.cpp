@@ -1,12 +1,12 @@
 #include <stdio.h>
 inline void* operator new(unsigned int, void* where) throw() { return where; }
 static int g_copies; static const void* g_src;
-struct CWideString {
+class CWideString { public:
     void* m_pData;
     CWideString(void* d) : m_pData(d) {}
     CWideString(const CWideString& other) : m_pData(other.m_pData) { ++g_copies; g_src = &other; }
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}

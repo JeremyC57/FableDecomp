@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <cstring>
 
-struct CThing {
+class CThing { public:
     bool dead, isWeapon, has1a, hasWeapons, hasCombat;
     long carrySlot;
     int notCarriedCalls;
 };
 struct Log { int drops, removes, reacts, clearPrimary, put, refresh, flourishOff, restart, aggressive; long putSlot; CThing* putThing; };
 static Log g;
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* primary;
     bool pending;
     CThing* carried;
@@ -24,7 +24,7 @@ struct CTCCarrying {
 };
 static void DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing*) { ++g.drops; carrying->primary = 0; (void)weapon; }
 
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     CThing* parent;
     CThing* itemRemoved;
     CTCCarrying* carrying;

@@ -17,12 +17,12 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const CCharString& other);
     ~CCharString();
 };
-struct CTestQuest {                                // 28 bytes (Ego_r.pdb)
+class CTestQuest { public:                                // 28 bytes (Ego_r.pdb)
     CCharString QuestName;                         // +0x00
     unsigned char _pad_0x04[0x1c - 0x04];
     CTestQuest(const CTestQuest& other);           // 0x004A89D0
@@ -89,16 +89,16 @@ CTestQuestVector& CTestQuestVector::operator=(const CTestQuestVector& other)
 }
 #pragma auto_inline(on)
 
-struct CQuestManager {
+class CQuestManager { public:
     bool IsQuestActive(const CCharString& name);   // 0x004AF610
 };
 extern CQuestManager* g_pQuestManager;             // 0x013B89FC
-struct CWorld {
+class CWorld { public:
     unsigned char _pad_0x00[0xc4];
     CTestQuestVector TestQuests;                   // +0xc4
 };
 
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     unsigned char _pad_0x000[0x160];
     bool TestQuestShowAll;                         // +0x160
     const CWorld* GetWorld() const;                // 0x00686A80 (CTCBase)

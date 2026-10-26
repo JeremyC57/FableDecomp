@@ -5,8 +5,8 @@ static char g_seq[16] = ""; static long g_key = 0; static long g_index = 0;
 struct CFontEntry_009e2b40 { bool m_can; virtual void v00() { } virtual void v01() { } virtual bool CanRelease() { std::strcat(g_seq, "C"); return m_can; } virtual void Release() { std::strcat(g_seq, "R"); } };
 struct CFontBank_009e2b40 { CFontEntry_009e2b40* m_entry; CFontEntry_009e2b40* GetEntry(long i) { std::strcat(g_seq, "A"); g_index = i; return m_entry; } };
 struct CFontBankB_009e2b40 { CFontEntry_009e2b40* m_entry; CFontEntry_009e2b40* GetEntry(long i) { std::strcat(g_seq, "B"); g_index = i; return m_entry; } };
-struct CSymbolMap { bool m_has; long m_index; bool FindSymbol(long k) { std::strcat(g_seq, "F"); g_key = k; return m_has; } long Lookup(long) { std::strcat(g_seq, "L"); return m_index; } };
-struct CFontManager { long m_0; CFontBank_009e2b40* m_pStaticBank; long m_8; CFontBankB_009e2b40* m_pStreamingBank; long m_10; CSymbolMap* m_pStaticMap; long m_18; CSymbolMap* m_pStreamingMap;
+class CSymbolMap { public: bool m_has; long m_index; bool FindSymbol(long k) { std::strcat(g_seq, "F"); g_key = k; return m_has; } long Lookup(long) { std::strcat(g_seq, "L"); return m_index; } };
+class CFontManager { public: long m_0; CFontBank_009e2b40* m_pStaticBank; long m_8; CFontBankB_009e2b40* m_pStreamingBank; long m_10; CSymbolMap* m_pStaticMap; long m_18; CSymbolMap* m_pStreamingMap;
     void ReleaseFont(long key) { CFontEntry_009e2b40* entry; if (m_pStaticMap->FindSymbol(key)) entry = m_pStaticBank->GetEntry(m_pStaticMap->Lookup(key)); else if (m_pStreamingMap->FindSymbol(key)) entry = m_pStreamingBank->GetEntry(m_pStreamingMap->Lookup(key)); else return; if (entry->CanRelease()) entry->Release(); } };
 int main() {
     CFontEntry_009e2b40 e; CFontBank_009e2b40 ba; CFontBankB_009e2b40 bb; CSymbolMap ma, mb; ma.m_has = true; ma.m_index = 3; mb.m_has = false; mb.m_index = 4; ba.m_entry = &e; bb.m_entry = &e;

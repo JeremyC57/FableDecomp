@@ -5,24 +5,24 @@ static int g_prizes = 0, g_calls = 0, g_releases = 0;
 static long g_act[4]; static float g_val[4]; static bool g_flag[4];
 static bool g_baseResult = false;
 bool g_bTavernPrizesEnabled = true, g_bTavernScoreReported = false;
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter)
     { g_act[g_calls] = activity; g_val[g_calls] = score; g_flag[g_calls] = onlyIfBetter; ++g_calls; }
 };
 static CTCHeroOnlineScoreboard g_board;
-struct CThing {
+class CThing { public:
     template<class T> bool GetInterface(T** ppOut, long interfaceType) { if (interfaceType != 0x10d) return false; *ppOut = &g_board; return true; }
 };
 static CThing g_hero;
-struct CPlayer { CThing* GetHeroThing() { return &g_hero; } };
+class CPlayer { public: CThing* GetHeroThing() { return &g_hero; } };
 static CPlayer g_player;
-struct CPlayerManager { CPlayer* GetMainPlayer() const { return &g_player; } };
-struct CMainGameComponent { CPlayerManager* PlayerManager; };
+class CPlayerManager { public: CPlayer* GetMainPlayer() const { return &g_player; } };
+class CMainGameComponent { public: CPlayerManager* PlayerManager; };
 static CPlayerManager g_pm;
 static CMainGameComponent g_mgc = { &g_pm };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-struct CPrizeScoreDef { float Score; float Mult; };
-struct CTavernGameDef {
+class CPrizeScoreDef { public: float Score; float Mult; };
+class CTavernGameDef { public:
     long m_count;
     CPrizeScoreDef* PrizeScores;
     void Release() { ++g_releases; --m_count; }
@@ -35,9 +35,9 @@ struct CDefPointer {
     ~CDefPointer() { if (Object) Object->Release(); }
     CTavernGameDef* operator->() const { return Object; }
 };
-struct CTCHeroStats { float BestTimeGuessTheAddition; bool PrizeGivenGuessTheAddition; };
+class CTCHeroStats { public: float BestTimeGuessTheAddition; bool PrizeGivenGuessTheAddition; };
 static CTCHeroStats g_stats;
-struct CTCTavernGame {
+class CTCTavernGame { public:
     bool  GameWon;
     float Score;
     long  NumConsecutiveRoundsWon;

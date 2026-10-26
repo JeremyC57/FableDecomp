@@ -13,7 +13,7 @@
 struct CBasicString {
     bool operator<(const CBasicString* other) const;    // 0x00429950 (CBasicString<char>::operator<)
 };
-struct CCharString {
+class CCharString { public:
     CBasicString* PString;
     ~CCharString();                             // 0x0099EAE0
     bool operator<(const CCharString& o) const

@@ -7,7 +7,7 @@
 // plain CChunkedFileChunk base. The chained `+` is evaluated right to left: the formatted time first, then
 // the ", Time: " literal and &Name are pushed, then the explicit "Name: " temporary (its returned pointer
 // goes straight to edx); the four temporaries die in construction order after the result is built.
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);                          // 0x0099EBF0
     ~CCharString();                                                      // 0x0099EAE0
@@ -16,7 +16,7 @@ struct CCharString {
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-struct C3DAnimFileTimingEventChunk {
+class C3DAnimFileTimingEventChunk { public:
     virtual ~C3DAnimFileTimingEventChunk();
     unsigned char _base_body[0x0C];                 // +0x04 .. +0x0F (CChunkedFileChunk: type, parent)
     CCharString Name;                               // +0x10

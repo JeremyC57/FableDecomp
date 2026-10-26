@@ -8,8 +8,8 @@
 // (`s = z*z; s += y*y; s += x*x`, chunk-177 lesson) and compared against the literal; shared `xor al,al` tail.
 // No engine header for this class; members named descriptively (+0x1d seated flag, +0x24 seat position).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
-struct CTCBase;
-struct C3DVector { float X, Y, Z; };
+class CTCBase;
+class C3DVector { public: float X, Y, Z; };
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -18,7 +18,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -38,12 +38,12 @@ struct CThing {
     }
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08
@@ -54,7 +54,7 @@ struct CAIStateGroupBase {
     unsigned char _pad_0x13;
 };
 
-struct CTCCreatureModeManager {                 // interface 0x42
+class CTCCreatureModeManager { public:                 // interface 0x42
     bool HasMode_00811340(long mode);                    // 0x00811340 (manifest "CPlayer::HasMode", propagated)
 };
 

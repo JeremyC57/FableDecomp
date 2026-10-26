@@ -153,7 +153,7 @@ struct CSprite {
 };
 
 namespace NUISystem {
-struct CMouseCursor : CSprite {
+class CMouseCursor : public CSprite { public:
     void TurnToPointer();
 };
 

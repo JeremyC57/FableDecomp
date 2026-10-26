@@ -6,7 +6,7 @@
 #define __forceinline inline
 #endif
 class CTCBase;
-struct CCharString {
+class CCharString { public:
     const char* m_pData;
     CCharString(const char* text, long length) : m_pData(text) { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }
@@ -37,13 +37,13 @@ public:
         return false;
     }
 };
-struct CTCFireballSpell {
+class CTCFireballSpell { public:
     CCharString GetStrafeAnimName() const { return CCharString("FIREBALL_STRAFE", -1); }
 };
-struct CTCWillLightning {
+class CTCWillLightning { public:
     CCharString GetStrafeAnimName() const { return CCharString("LIGHTNING_STRAFE", -1); }
 };
-struct CTCSpecialAbilities {
+class CTCSpecialAbilities { public:
     virtual void v00() { }
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _base08[4];

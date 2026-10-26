@@ -8,17 +8,17 @@
 // CWorld (engine/CWorld.h offsets agree here): Component +0x08, PlayerManager +0x0C, DefinitionManager +0x10,
 // PNavigationManager +0x48, PThingManager (scoped_ptr) +0x50; CMainGameComponent WorldSeed +0x1613C (PDB = retail).
 // Shape: scoped_ptr::reset -- old pointer read, new one stored, then `delete old` (null test + virtual delete).
-struct CGameDefinitionManager;
-struct CPlayerManager;
-struct CNavigatorManager;
-struct CWorld;
+class CGameDefinitionManager;
+class CPlayerManager;
+class CNavigatorManager;
+class CWorld;
 
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char _pad[0x1613c];
     unsigned long WorldSeed;                  // +0x1613C
 };
 
-struct CThingManager {
+class CThingManager { public:
     CThingManager(const CMainGameComponent& component, const CGameDefinitionManager& definitions, CWorld& world,
                   CPlayerManager& players, CNavigatorManager& navigation, unsigned long* seed,
                   unsigned long a, unsigned long b, unsigned long c);   // 0x00523540
@@ -35,7 +35,7 @@ template <class T> struct scoped_ptr {
     T& operator*() const { return *ptr; }
 };
 
-struct CWorld {
+class CWorld { public:
     void*                   __vftable;            // +0x00
     unsigned char           _base_0x04[0x4];      // +0x04
     CMainGameComponent*     Component;            // +0x08

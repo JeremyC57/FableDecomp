@@ -9,7 +9,7 @@
 // flag direct awareness, reset the staleness counter and tail-call the reaction at 0x00744730.
 #include "engine/CTCPerceiveThing.h"
 
-struct CThing;
+class CThing;
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (ecx = the CIntelligentPointer object).
 CThing* __fastcall IntelligentPointer_GetPItem_00a01b50(void* intelligentPointer);
 

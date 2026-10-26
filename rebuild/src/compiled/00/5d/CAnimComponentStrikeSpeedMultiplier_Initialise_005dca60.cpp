@@ -16,7 +16,7 @@
 // destructor. Retail CStringParser is 0x28 bytes (the PDB's 0x30 has the debug-sized list).
 class CPersistContext;
 
-struct CCharStringData;
+class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pData;

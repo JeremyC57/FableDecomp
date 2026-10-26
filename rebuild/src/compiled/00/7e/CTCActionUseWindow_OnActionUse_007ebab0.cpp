@@ -12,7 +12,7 @@
 // is reached through an inline CWorld accessor (GetCurrentGameCamera, stand-in name): it lands straight in ecx for the virtual
 // call (`mov ecx,[eax+34h] ; mov eax,[ecx]`) and also gives retail's this=esi / user=edi colouring.
 // Layout: PDB CWorld PCurrentGameCamera +0x34; retail CThing +0x60 physics pointer, +0x91 bit 0 Dead.
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 struct CThingPhysics {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -52,12 +52,12 @@ class __declspec(novtable) CCreatureAction_LookThroughWindow : public CCreatureA
 public:
     CCreatureAction_LookThroughWindow(CThingAICreature& creature);   // 0x007EBA20
 };
-struct CAIGameCameraBase {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetView(long* out);           // slot 9 (+0x24)
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x34];
     CAIGameCameraBase* PCurrentGameCamera;     // +0x34
     CAIGameCameraBase* GetCurrentGameCamera() const { return PCurrentGameCamera; }

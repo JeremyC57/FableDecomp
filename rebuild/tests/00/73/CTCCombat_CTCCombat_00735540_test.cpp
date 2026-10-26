@@ -4,8 +4,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <new>
-struct CThing;
-struct CCombatManager;
+class CThing;
+class CCombatManager;
 template <class T> struct CAllocator {                  // STLport allocator<T>: empty
     CAllocator() { }
 };
@@ -51,12 +51,12 @@ struct CDefPointer {
     void* Object;
     CDefPointer() : Object(0) { }
 };
-struct CWorld {
+class CWorld { public:
     unsigned char   _pad00[0x4c];
     CCombatManager* PCombatManager;                     // +0x4c
 };
 static CWorld* g_world = 0; static int g_resets = 0; static long g_resetSawIndex = 0; static bool g_resetSawFlag = true;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00() { }
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
@@ -64,8 +64,8 @@ struct CTCBase {
     CTCBase(CThing* thing) : ParentThing(thing), ToBeRemoved(false), IsInGlobalUpdateTCs(false) { }
     CWorld* GetWorld() { return g_world; }
 };
-struct CThingCreatureBase;
-struct CTCCombat : CTCBase {
+class CThingCreatureBase;
+class CTCCombat : public CTCBase { public:
     long                ComboChainPos;                  // +0x0c
     long                ComboChainID;                   // +0x10
     long                ComboChainGracePeriodCountdown; // +0x14

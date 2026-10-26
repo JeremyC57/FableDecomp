@@ -3,9 +3,9 @@
 // target thing is handed to the drain.
 #include <cstdio>
 
-struct CThing;
+class CThing;
 struct CDrain { long Level, Power; CThing* PTarget; int Added; };
-struct CThing { unsigned char m_state; bool Dead; bool HasCasting; CThing* SpellTarget; CDrain Drain; };
+class CThing { public: unsigned char m_state; bool Dead; bool HasCasting; CThing* SpellTarget; CDrain Drain; };
 struct CAction {
     CThing* PCreature; CThing* PItemRemoved; CThing* PTarget; long SpellLevel, SpellPower;
     void PerformAction()

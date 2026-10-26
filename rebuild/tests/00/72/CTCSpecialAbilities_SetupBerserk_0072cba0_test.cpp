@@ -8,7 +8,7 @@ struct CBaseIntelligentPointer {
     CThing* item;
     CThing* GetPItem() const { return item; }
 };
-struct CTCCarrying;
+class CTCCarrying;
 struct CTCHeldItem;
 class CThing {
 public:
@@ -19,11 +19,11 @@ public:
     bool GetInterface(CTCCarrying** ppOut, long type) const { if (type != 0x46 || !carrying) return false; *ppOut = carrying; return true; }
     bool GetInterface(CTCHeldItem** ppOut, long type) const { if (type != 0x13 || !held) return false; *ppOut = held; return true; }
 };
-template <class T> struct CIntelligentPointer {
+template <class T> class CIntelligentPointer { public:
     T* item;
     CIntelligentPointer(T* i) : item(i) {}
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     CThing* primary;
     CThing* GetThingInPrimarySlot() { return primary; }
 };
@@ -41,7 +41,7 @@ public:
     CCreatureAction_CastStrengthBerserk(CThingCreatureBase* creature) { kind = 1; item = 0; followUp = 0; name = 0; }
     void SetItem(CIntelligentPointer<const CThing> i) { item = i.item; }
 };
-struct CCharString { const char* text; };
+class CCharString { public: const char* text; };
 static const CCharString g_sheatheForAbilityName = { "SHEATHE_FOR_ABILITY" };
 class CCreatureAction_SheatheItemToInventory : public CCreatureActionBase {
 public:

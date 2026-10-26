@@ -1,10 +1,10 @@
 #include <cstdio>
 // Behaviour test for 0064dae0: a change text starting at anchor A (flag set) or anchor B (flag clear) is pushed to the
 // front of the bar's list with the colour, text, value and flag; the temporary's text is destroyed once per call.
-struct C2DVector { float X, Y; };
-struct CRGBColour { unsigned char B, G, R, A; };
+class C2DVector { public: float X, Y; };
+class CRGBColour { public: unsigned char B, G, R, A; };
 static int g_wideDtors = 0;
-struct CWideString {
+class CWideString { public:
     int m_id;
     CWideString() : m_id(0) {}
     CWideString(const CWideString& o) : m_id(o.m_id) {}

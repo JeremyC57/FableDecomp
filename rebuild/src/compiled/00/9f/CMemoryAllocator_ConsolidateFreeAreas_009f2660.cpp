@@ -20,7 +20,7 @@ struct SAllocatorEntry_009f2450 {                  // 0x1c bytes per sub-allocat
 };
 extern SAllocatorEntry_009f2450 g_subAllocators_01396880[];   // 0x01396880
 
-struct CMemoryAllocator {
+class CMemoryAllocator { public:
     unsigned char _pad00[0x410];
     unsigned long m_noSubAllocators;               // +0x410
     unsigned long GetHeaderOverhead();

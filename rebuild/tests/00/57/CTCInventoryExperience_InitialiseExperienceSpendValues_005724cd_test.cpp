@@ -25,7 +25,7 @@ struct CTCInventoryAbilities_Calls {
 };
 static CTCHeroExperience_Calls g_exp;
 static CTCInventoryAbilities_Calls g_abil;
-struct CTCInventoryExperience {
+class CTCInventoryExperience { public:
     SSpendInfoVector ExperienceSpendValuesPool;
     SSpendInfoVector ExperienceSpendValuesStats;
     SSpendInfoVector ExperienceSpendValuesAbility;

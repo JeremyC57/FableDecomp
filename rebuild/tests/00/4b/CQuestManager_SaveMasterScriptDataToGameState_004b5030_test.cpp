@@ -4,19 +4,19 @@
 
 static int g_stringsAlive = 0;
 
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString() { m_text[0] = 0; ++g_stringsAlive; }
     ~CCharString() { --g_stringsAlive; }
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     CCharString* m_pOutput;
     CPersistContext(CCharString& output) : m_pOutput(&output) { }
     void Write(const char* text) { strcat(m_pOutput->m_text, text); }
 };
 
-struct CScriptDataBase {
+class CScriptDataBase { public:
     virtual ~CScriptDataBase() { }
     virtual void OnPersist(CPersistContext& context) { context.Write("MASTER=1;"); }
 };
@@ -29,7 +29,7 @@ struct CRuntimeQuestPersistence {
     }
 };
 
-struct CQuestManager {
+class CQuestManager { public:
     CRuntimeQuestPersistence RuntimeQuestPersistence;
     void SaveMasterScriptDataToGameState(CScriptDataBase& data, const CCharString& quest)
     {

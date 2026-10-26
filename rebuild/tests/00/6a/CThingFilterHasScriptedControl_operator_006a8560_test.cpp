@@ -3,7 +3,7 @@
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -11,14 +11,14 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
 static int g_emptyCalls = 0;
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0x18];
     bool Locked;
     bool listEmpty;
     bool IsTaskListEmpty() { ++g_emptyCalls; return listEmpty; }
     bool IsActive() { return Locked || !IsTaskListEmpty(); }
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
@@ -39,7 +39,7 @@ struct CThing {
 };
 static int g_scriptCalls = 0;
 bool __fastcall GFHasScriptThing(CThing* thing) { ++g_scriptCalls; return thing->hasScript; }
-struct CThingFilter_HasScriptedControl {
+class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;
     bool operator()(CThing* thing) const;
 };

@@ -12,7 +12,7 @@
 //   stack), then &name for the inner +; the temporaries land in the dead argument slots;
 //   `return name;` copies into the hidden result (no NRVO).
 typedef unsigned short wchar16;                    // wchar_t under the era defaults
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720
@@ -24,7 +24,7 @@ CWideString __fastcall operator+(const CWideString& left, const wchar16* right);
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
                           CWideString* extension);  // 0x00997620
 CWideString __fastcall GetLevelsDirectory_0041a410();       // 0x0041A410 (L"Data\\Levels\\", hidden result in ecx)
-struct CWorld {
+class CWorld { public:
     CWideString ConvertWorldToStaticMapPath(const CWideString& world, bool xbox, bool runtime) const;
 };
 CWideString CWorld::ConvertWorldToStaticMapPath(const CWideString& world, bool xbox, bool runtime) const

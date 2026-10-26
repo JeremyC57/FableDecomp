@@ -1,6 +1,6 @@
 // Behaviour test for CThingCreatureBase::OnKill (0x00664370)
 #include <cstdio>
-struct CTCBase { int m_cleared; };
+class CTCBase { public: int m_cleared; };
 struct STCEntry { long m_kind; CTCBase* m_pTC; };
 struct CTCMap {
     STCEntry* m_pFirst; STCEntry* m_pLast; STCEntry* m_pEnd;
@@ -19,14 +19,14 @@ struct CTCMap {
     }
 };
 static int g_baseKills = 0;
-struct CThing {
+class CThing { public:
     unsigned long m_tcMask[8];
     CTCMap m_tcs;
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
     void OnKill() { ++g_baseKills; }
 };
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     void OnKill()
     {
         if (HasTC(0x31))

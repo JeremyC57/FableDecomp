@@ -2,14 +2,14 @@
 #include <cstdio>
 static int g_deletedData = 0;
 static int g_deletedInfos = 0;
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (*DeleteFunc)(void* data);
     void* Data;
     static void operator delete(void* p) { ++g_deletedInfos; ::operator delete(p); }
 };
 static void DeleteData(void*) { ++g_deletedData; }
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     void Clear()
@@ -27,8 +27,8 @@ template<class T> struct CCountedPointer {
 };
 struct SMoveTag { SMoveTag() { } };
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
-struct C3DSkeletalMorphParameter { int id; };
-struct C3DSkeletalMorphTarget { int id; };
+class C3DSkeletalMorphParameter { public: int id; };
+class C3DSkeletalMorphTarget { public: int id; };
 typedef CCountedPointer<C3DSkeletalMorphParameter> PMorphParameter;
 PMorphParameter* _Move(PMorphParameter* first, PMorphParameter* last, PMorphParameter* dest, const SMoveTag&, bool)   // stands in for 0x00A46460
 {
@@ -55,7 +55,7 @@ template<class T> struct CRetailArray {
 struct CBaseClassNonCopyable {
     virtual ~CBaseClassNonCopyable() { }
 };
-struct C3DSkeletalMorph : CBaseClassNonCopyable {
+class C3DSkeletalMorph : public CBaseClassNonCopyable { public:
     CRetailArray<PMorphParameter>           MorphParameters;
     CCountedPointer<C3DSkeletalMorphTarget> CombinedMorph;
     void Reset();

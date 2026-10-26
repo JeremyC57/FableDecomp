@@ -9,7 +9,7 @@
 // bytes). It sits right before CDiskFileWin32::GetFileInformation (0x0099A5A0), which returns a
 // CFileInformation by value. ReadOnly has no initialiser (no store), and `this` stays in esi for the
 // return.
-struct CDateAndTime {
+class CDateAndTime { public:
     long          Year;
     unsigned long Month;
     unsigned long Day;
@@ -20,7 +20,7 @@ struct CDateAndTime {
     CDateAndTime();                        // 0x009E9AB0
 };
 
-struct CFileInformation {
+class CFileInformation { public:
     CDateAndTime CreationTime;             // +0x00
     CDateAndTime LastAccessTime;           // +0x1C
     CDateAndTime LastWriteTime;            // +0x38

@@ -22,7 +22,7 @@ static int fails = 0;
 //   The release tests ecx straight from the slot (no eax staging) only when NEITHER callee that receives the def
 //   slot's address escapes it: same-TU noinline stand-ins for GetDef (out pointer) and the event ctor (const
 //   CDefPointer&) -- either alone leaves 17 lines.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -49,7 +49,7 @@ public:
     }
 };
 class CThingCreatureBase : public CThing {};
-struct CScriptThing {
+class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;                   // slot 11 (+0x2c)
@@ -64,7 +64,7 @@ struct CScriptThing {
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
     void* PImp[2];
 };
-struct CExpressionDef {
+class CExpressionDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
     long RefCount;                                      // +0x04
@@ -75,19 +75,19 @@ struct CDefPointerExpressionDef {
     CDefPointerExpressionDef() : Object(0) {}
     ~CDefPointerExpressionDef() { CExpressionDef* p = Object; if (p) { if (DecRefToZero(p->RefCount)) p->Destroy(); } }
 };
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
     bool GetDef(const CCharString& name, CDefPointerExpressionDef* out);   // 0x00593666
 };
 namespace NEntityEvents {
-struct CEventBase {};
-struct CEventExpressionPerformedTo : CEventBase {       // 0x20 bytes
+class CEventBase { public:};
+class CEventExpressionPerformedTo : public CEventBase { public:       // 0x20 bytes
     unsigned char _body[0x20];
     CEventExpressionPerformedTo(CThingCreatureBase* performer, long frame, const CDefPointerExpressionDef& expression,
                                 long distance, long keepUp);   // 0x0084B010
 };
 }
-struct CTCEntityEvents {
+class CTCEntityEvents { public:
     void AddEvent(NEntityEvents::CEventBase* event);    // 0x008113C0
 };
 struct CGameScriptInterface_Base {
@@ -123,7 +123,7 @@ struct CGameScriptInterface_Base {
     virtual void v232(); virtual void v233(); virtual void v234();
     virtual void EntitySetAsAllowedToFollowHero(const CScriptThing& thing, bool allowed) const;   // slot 235 (+0x3ac)
 };
-struct CGameScriptInterface : CGameScriptInterface_Base {
+class CGameScriptInterface : public CGameScriptInterface_Base { public:
     void EntityFollowThing(const CScriptThing& follower, const CScriptThing& target, float distance, bool keepUp) const;
 };
 

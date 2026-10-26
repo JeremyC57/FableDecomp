@@ -5,7 +5,7 @@
 
 typedef unsigned long DWORD;
 
-struct CTCInventoryItem {
+class CTCInventoryItem { public:
     DWORD* vtable;      // +0x00
     char pad[0x28 - 4]; // up to +0x28
     void* p28;          // +0x28

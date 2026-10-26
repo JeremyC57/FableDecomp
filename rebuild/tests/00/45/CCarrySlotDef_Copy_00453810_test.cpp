@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCarrySlotDef { char pad[4]; };
+class CCarrySlotDef { public: char pad[4]; };
 
 static int g_called = 0;
 static CCarrySlotDef* g_self = 0;

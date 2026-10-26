@@ -70,11 +70,11 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CCamera;
-struct CDefPointeeBase;
+class CCamera;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CEngine {
+class CEngine { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    f;                                      // +0x08 retail-only unsigned char (previous header)
@@ -202,7 +202,7 @@ struct CArea;
 struct CMemoryBlock;
 
 #pragma pack(push, 1)
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CMemoryBlock* FirstMemoryBlock;                          // +0x04
     unsigned long Capacity;                                  // +0x08
@@ -231,7 +231,7 @@ FABLE_STATIC_ASSERT(offsetof(CSimpleMemoryPool, Root) == 0x10);
 
 
 #pragma pack(push, 1)
-struct CIEngine {
+class CIEngine { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     bool          Active;                                    // +0x08
@@ -254,8 +254,8 @@ FABLE_STATIC_ASSERT(offsetof(CIEngine, Active) == 0x8);
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -263,8 +263,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -348,34 +348,34 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData) == 0x11);
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);
 FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 
-struct C2DBoxF;
-struct C2DBoxI;
-struct C2DExtentsI;
-struct C2DVector;
-struct C3DAnimationInfo;
-struct C3DBoundingBox;
-struct C3DBoundingSphere;
-struct C3DVector;
-struct C4DVector;
-struct CCamera;
-struct CEngineColourFilterSettings;
-struct CEngineInit;
-struct CEngineInterpolationInfo;
-struct CEnginePrimitive;
-struct CEnginePrimitiveAnimation;
-struct CEnginePrimitiveAttachmentInfo;
-struct CEnginePrimitiveHandle;
-struct CEnginePrimitivePosition;
-struct CEngineTextureMorph;
-struct CEngineVideoOptions;
-struct CGPUScratchBufferTextureManager;
-struct CIDrawWorld;
-struct CMovableResourceMemoryPool;
-struct CPixelFormat;
-struct CRGBColour;
-struct CRGBFloatColour;
-struct CStaticMapGenerationVisibiilityInfo;
-struct CTexture;
+class C2DBoxF;
+class C2DBoxI;
+class C2DExtentsI;
+class C2DVector;
+class C3DAnimationInfo;
+class C3DBoundingBox;
+class C3DBoundingSphere;
+class C3DVector;
+class C4DVector;
+class CCamera;
+class CEngineColourFilterSettings;
+class CEngineInit;
+class CEngineInterpolationInfo;
+class CEnginePrimitive;
+class CEnginePrimitiveAnimation;
+class CEnginePrimitiveAttachmentInfo;
+class CEnginePrimitiveHandle;
+class CEnginePrimitivePosition;
+class CEngineTextureMorph;
+class CEngineVideoOptions;
+class CGPUScratchBufferTextureManager;
+class CIDrawWorld;
+class CMovableResourceMemoryPool;
+class CPixelFormat;
+class CRGBColour;
+class CRGBFloatColour;
+class CStaticMapGenerationVisibiilityInfo;
+class CTexture;
 template<class T>class CArray;
 enum EEnginePrimitiveStatIndex{NativePrimitiveStatUnspecified=0};
 // Native CInitBase constructor declaration binds genuine99A310; no invented constructor dependency.
@@ -598,8 +598,8 @@ EngineNative::EngineNative():CurrentCamera(0),FrameMemoryPool(0,4096){
 #include <new>
 // No actual colour header exists. These fixture-only complete argument/return types
 // use PDB CRGBColour size4 and CRGBFloatColour size16 fields R/G/B/A.
-struct CRGBColour {unsigned char Channels[4];};
-struct CRGBFloatColour {float R,G,B,A;};
+class CRGBColour { public:unsigned char Channels[4];};
+class CRGBFloatColour { public:float R,G,B,A;};
 static void*engineTableSeen;static void*callbackTableSeen;static void*initTableSeen;
 static int preCallbacks,postCallbacks;
 

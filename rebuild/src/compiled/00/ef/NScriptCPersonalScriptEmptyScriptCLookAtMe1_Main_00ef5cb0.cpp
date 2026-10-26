@@ -12,20 +12,20 @@
 // Shape: __forceinline ~CScriptThing; `for (;;) { if (Term()) return; ... }` outer loop (a `while` swaps the two inline
 //   copies' registers); the out-of-line exits (0x004AA840) are the two returns after the wait, under
 //   in-body inline_depth(0).
-struct C3DVector { float X, Y, Z; };
-struct CCharString {
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 int __cdecl rand();                                     // 0x00BFEB16
-struct CCPPointerInfo {                                 // CCountedPointer's shared block
+class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -47,7 +47,7 @@ struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
      virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -58,7 +58,7 @@ struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
-struct CGameScriptInterface {                           // vtable 0x01260F0C
+class CGameScriptInterface { public:                           // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -97,17 +97,17 @@ struct CGameScriptInterface {                           // vtable 0x01260F0C
     virtual void SetHeroAsWearing(const CCharString& name) const;   // slot 190 (+0x2f8)
 };
 namespace NScript {
-struct CPredicateBase {                                 // vtable 0x012C2FF4
+class CPredicateBase { public:                                 // vtable 0x012C2FF4
     virtual bool IsTrue() = 0;
     ~CPredicateBase() { }
 };
-struct CIsThingAlive : CPredicateBase {                 // vtable 0x012C32F0, 16 bytes
+class CIsThingAlive : public CPredicateBase { public:                 // vtable 0x012C32F0, 16 bytes
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingAlive();                                   // 0x00E241B0
     virtual bool IsTrue();
 };
-template <class A, class B> struct CPredicate_And : CPredicateBase {   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>
+template <class A, class B> class CPredicate_And : public CPredicateBase { public:   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>
     A First;                                            // +0x04
     B Second;                                           // +0x14
     CPredicate_And(const A& first, const B& second);    // 0x00E24760
@@ -125,7 +125,7 @@ struct CEntityScriptBase {                              // retail 0x14 bytes
     void SetPredicate(const CPredicateBase& predicate); // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
 };
-struct CPersonalScript_EmptyScript {
+class CPersonalScript_EmptyScript { public:
 struct CLookAtMe1 : CEntityScriptBase {
     void Main();
 };

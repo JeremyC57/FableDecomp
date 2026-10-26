@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct C3DAnimationStateAlpha { int id; };
+class C3DAnimationStateAlpha { public: int id; };
 
 static int g_log = 0;
 static C3DAnimationStateAlpha* g_gotArg = 0;
@@ -9,7 +9,7 @@ struct Inner {
     void addAlpha(C3DAnimationStateAlpha* a) { g_log = g_log * 10 + 2; g_gotArg = a; }
 };
 
-struct C3DAnimationBlendState {
+class C3DAnimationBlendState { public:
     Inner* pInner;
     void helperA() { g_log = g_log * 10 + 1; }
 };

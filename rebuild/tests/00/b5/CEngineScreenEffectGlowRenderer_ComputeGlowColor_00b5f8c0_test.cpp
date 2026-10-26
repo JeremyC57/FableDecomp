@@ -1,7 +1,7 @@
 // behaviour test for 00b5f8c0 CEngineScreenEffectGlowRenderer::ComputeGlowColor: byte-quantised threshold/intensity
 // colours, the positive and negative blend formulas, the intensity products and the motion-blur complement
 #include <cstdio>
-struct CRGBColour {
+class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b) { R = r; G = g; B = b; }
 };

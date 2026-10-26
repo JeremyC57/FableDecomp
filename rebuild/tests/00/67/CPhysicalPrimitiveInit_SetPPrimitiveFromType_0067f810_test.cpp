@@ -17,7 +17,7 @@ struct CPhysicalPrimitiveBase {
     virtual long GetType() const { return m_type; }
     virtual ~CPhysicalPrimitiveBase() {}
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* m_pObject;
     void* m_pCount;
     void Reset(T* object) { delete m_pObject; m_pObject = object; }
@@ -28,7 +28,7 @@ struct CPrototypeVector {
     CCountedPointer<CPhysicalPrimitiveBase>* m_pEnd;
 };
 static CPrototypeVector g_PrimitivePrototypes;
-struct CPhysicalPrimitiveInit {
+class CPhysicalPrimitiveInit { public:
     CCountedPointer<CPhysicalPrimitiveBase> PPrimitive;
     bool SetPPrimitiveFromType(long type);
 };

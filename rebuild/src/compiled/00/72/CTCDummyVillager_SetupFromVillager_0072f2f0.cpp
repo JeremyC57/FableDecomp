@@ -13,9 +13,9 @@
 // inline operator= taking GetPItem() into a local before SetPItem, temporary destroyed out of line);
 // the home building and the def type are named locals read before the call so their loads precede
 // the argument pushes (ebx / ebp).
-struct CBaseObject;
-struct CThingBuilding;
-struct CThingAICreature;
+class CBaseObject;
+class CThingBuilding;
+class CThingAICreature;
 
 struct CBaseIntelligentPointer {                            // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -38,7 +38,7 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -56,13 +56,13 @@ struct CThing {
     unsigned short DefIndex;                                // +0x8c
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
     unsigned char _pad90[0x168 - 0x90];                     // (CThing rounds up to 0x90)
     CIntelligentPointer<CThingBuilding> HomeBuilding;       // +0x168
     CIntelligentPointer<CThingBuilding> WorkBuilding;       // +0x170
 };
 
-struct CTCDummyVillager {
+class CTCDummyVillager { public:
     virtual void v00();
     CThing*                               ParentThing;      // +0x04 (CTCBase)
     unsigned char                         _pad08[0x30 - 0x08];

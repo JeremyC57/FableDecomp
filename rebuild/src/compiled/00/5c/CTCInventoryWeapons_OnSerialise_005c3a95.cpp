@@ -13,8 +13,8 @@
 //   +0x14C / carried +0x150; confiscated melee/ranged +0x160/+0x164, previously wielded +0x168/+0x16C; thing def index word +0x8C.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CTCBase;
-struct CCharString {
+class CTCBase;
+class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
@@ -26,12 +26,12 @@ namespace N_00415dd0 { struct CDefString {
     CDefString(const CDefString& other);
     operator CCharString() const;                       // 0x00415DD0
 }; } using N_00415dd0::CDefString;
-struct CGameDefinitionManager {
+class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CThing {
+class CThing { public:
     unsigned short _pad[0x46];
     unsigned short DefIndex;                            // +0x8c
 };
@@ -43,14 +43,14 @@ struct CIntelligentPointer {
 };
 #pragma pack(pop)
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340
-struct CPersistContext {
+class CPersistContext { public:
     bool IsSaving() const;                              // 0x004AEF50
     void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
     void Transfer(const char* name, bool* value);       // 0x004107C0
     void Transfer(const char* name, CCharString* value);   // 0x00411010
     void Transfer(const char* name, long* value);       // 0x005CC300
 };
-struct CTCCarrying {
+class CTCCarrying { public:
     bool IsCarryingThing(CThing* thing) const;          // 0x006A1060
     bool IsCarriedThingInPrimarySlot(CThing* thing) const;   // 0x006A1490
 };
@@ -79,7 +79,7 @@ struct CThingBase {
     }
 };
 #pragma pack(push, 1)
-struct CTCInventoryWeapons {
+class CTCInventoryWeapons { public:
     void*       __vftable;
     const CThingBase* ParentThing;                      // +0x04
     unsigned char _pad08[0x134 - 0x08];

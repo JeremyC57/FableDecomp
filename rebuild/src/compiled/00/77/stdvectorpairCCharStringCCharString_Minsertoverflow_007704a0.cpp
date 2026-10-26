@@ -17,7 +17,7 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 struct __false_type { __false_type() { } };              // user constructor: no zero-initialised tag temporary
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
 };

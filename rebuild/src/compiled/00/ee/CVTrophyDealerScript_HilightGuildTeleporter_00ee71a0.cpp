@@ -10,18 +10,18 @@
 //   plain negation gives retail's neg/sbb/inc bool), each followed by the macro's terminating test; every string is an
 //   implicit conversion; the marker handle's destructor is the out-of-line one at both later exits.
 // Layout: interface pointer at +0x40 (CQuestScriptBase). Local model: CGameScriptInterface.h carries no virtual slots.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CScriptThing {                                       // vtable 0x01238C8C, 12 bytes
+class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
     void* _vptr;
     void* PImpData;
     void* PImpInfo;
     ~CScriptThing();                                        // 0x004AA840
 };
-struct CGameScriptInterface {                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();

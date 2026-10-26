@@ -17,7 +17,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CTCBase;
+class CTCBase;
 
 template <class T> inline const T& Max(const T& left, const T& right)
 {
@@ -43,7 +43,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);            // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
@@ -63,21 +63,21 @@ struct CThing {
     }
 };
 
-struct CHeroStatsDef {
+class CHeroStatsDef { public:
     unsigned char _pad_0x00[0x5C];
     long          MaxMoney;                          // +0x5C
 };
 
-struct CDefinitionManager {
+class CDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC
 };
 
-struct CTCHeroOnlineScoreboard {
+class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);  // 0x0055F3B0
 };
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     CThing*       ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x34];

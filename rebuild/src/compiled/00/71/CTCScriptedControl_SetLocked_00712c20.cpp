@@ -6,7 +6,7 @@
 // byte at +0x18, which confirms the class. Shape: the landed "temporary CIntelligentPointer" family (0x0084B1C0); the second
 // argument is read only after the temporary's destructor (`mov ecx,[esp+14h]`), the two stores follow the source order;
 // they sit after the destructor only because the temporary lives in an inner scope.
-struct CBaseObject;
+class CBaseObject;
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -22,7 +22,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad[0xc];
     CBaseIntelligentPointer m_pController;   // +0xc
     unsigned char _pad14[4];

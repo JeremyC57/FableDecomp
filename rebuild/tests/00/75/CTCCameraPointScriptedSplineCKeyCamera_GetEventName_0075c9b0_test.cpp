@@ -10,7 +10,7 @@
 #ifndef FABLE_STRING_TEST_STUB_H
 #define FABLE_STRING_TEST_STUB_H
 #include <cstring>
-struct CCharStringData { char* text; unsigned long unknown04, unknown08; unsigned char flags0C; long owners; };
+class CCharStringData { public: char* text; unsigned long unknown04, unknown08; unsigned char flags0C; long owners; };
 class CCharString {
 public:
     CCharString();
@@ -32,9 +32,9 @@ private:
 struct CRetailCharString : CCharString {
     CRetailCharString(const CCharString& other);
 };
-struct C3DVector { float x, y, z; };
-struct CTCCameraPointScriptedSpline {
-    struct CKeyCamera {
+class C3DVector { public: float x, y, z; };
+class CTCCameraPointScriptedSpline { public:
+    class CKeyCamera { public:
         float DeltaIndex; C3DVector Pos; C3DVector LookDirection;
         float FOV, Roll, ShuttleSpeed, Duration, PauseTime;
         CCharString EventName; float SpeedFraction;

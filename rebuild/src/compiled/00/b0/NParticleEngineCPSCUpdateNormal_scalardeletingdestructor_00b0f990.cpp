@@ -14,7 +14,7 @@
 // The array destructor must be `__forceinline` (a plain inline one is emitted out of line).
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
@@ -40,7 +40,7 @@ struct CDecalEmitterArray {                        // array whose destructor tea
     }
 };
 
-struct CPSCUpdateNormal : CBase {                  // vtable 0x0129FC1C
+class CPSCUpdateNormal : public CBase { public:                  // vtable 0x0129FC1C
     unsigned char      _pad_0x04[0x10];            // +0x04
     CCharString        m_name;                     // +0x14
     unsigned char      _pad_0x18[0x84];            // +0x18

@@ -5,7 +5,7 @@
 // Shape: the bullet-time manager is reached through the thing manager @ 0x013B8A1C (+0x24 -> +0x68) and its
 // "active" test is an inline `Override || !BulletTimeInfoMap.empty()` (the bool at +0x0c, PDB +0x10; the
 // map's element count at +0x04 -- the retail STLport map is 12 bytes, not the PDB's 16).
-struct CBulletTimeManager {
+class CBulletTimeManager { public:
     unsigned char _pad00[0x04];
     long          m_bulletTimeInfoCount;             // +0x04 BulletTimeInfoMap size
     unsigned char _pad08[0x0c - 0x08];
@@ -19,14 +19,14 @@ struct CWorldTime {
     CBulletTimeManager*  m_pBulletTimeManager;       // +0x68
 };
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char _pad00[0x24];
     CWorldTime*   m_pWorldTime;                      // +0x24
 };
 
 extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

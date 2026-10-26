@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 static bool g_ap = false;
-struct C2DVector { float X, Y; }; static long g_layer = -1; static const C2DVector* g_pos = 0; struct CTree { bool IsActionPoint(const C2DVector* p) { g_pos = p; return g_ap; } }; struct SNode { SNode* next; SNode* prev; CTree* tree; long c, id, minX, minY, maxX, maxY; };
+class C2DVector { public: float X, Y; }; static long g_layer = -1; static const C2DVector* g_pos = 0; struct CTree { bool IsActionPoint(const C2DVector* p) { g_pos = p; return g_ap; } }; struct SNode { SNode* next; SNode* prev; CTree* tree; long c, id, minX, minY, maxX, maxY; };
 struct CMgr { unsigned char _pad[0x24]; SNode* maps; bool Get(const C2DVector& p, int) { for (SNode* n = maps->next; n != maps; n = n->next) { long x = (long)p.X, y = (long)p.Y; if (x >= n->minX && x < n->maxX && y >= n->minY && y < n->maxY) return n->tree->IsActionPoint(&p); } return false; } };
 
 int main() {

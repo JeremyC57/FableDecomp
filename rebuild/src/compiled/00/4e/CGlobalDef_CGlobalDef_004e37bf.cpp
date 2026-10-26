@@ -18,7 +18,7 @@ struct CDefBase_004da8b7 {                         // 0x4c bytes (no vtable stor
     ~CDefBase_004da8b7();                          // 0x004DA8B7
 };
 
-struct CGlobalDef : CDefBase_004da8b7 {
+class CGlobalDef : public CDefBase_004da8b7 { public:
     CBaseIntelligentPointer m_pointer4c;           // +0x4c
     unsigned char           _pad54[0x14];
     CDefMember_004e1aaf     m_member68;            // +0x68

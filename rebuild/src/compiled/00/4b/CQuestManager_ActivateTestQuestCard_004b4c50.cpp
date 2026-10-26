@@ -1,6 +1,6 @@
 // CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CCharString& cardDefName) -- debug: create the named quest-card object at the living hero, point its quest card at the given script quest and activate it (loading resources); on success the card becomes active (in limbo, persisted), the guild-seal recall point is reset, its type leaves the available cards and the player GUI refreshes
 // Leaf: ActivateTestQuestCard
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
@@ -10,12 +10,12 @@ namespace N_00415dd0 { struct CDefString {
     long m_index;
     operator CCharString() const;                        // 0x00415DD0
 }; } using N_00415dd0::CDefString;
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
 
-struct CTCBase;
+class CTCBase;
 struct CTCEntry { long Type; CTCBase* TC; };
 struct CTCMap {
     CTCEntry* _M_start;
@@ -23,7 +23,7 @@ struct CTCMap {
     CTCEntry* _M_end_of_storage;
     CTCEntry* LowerBound(const long& type);              // 0x0040F020 (the non-const instantiation)
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20
     unsigned char _pad40[4];
@@ -47,7 +47,7 @@ struct CThing {
     const C3DVector& GetPosition() const;                // 0x004C73D0
 };
 
-struct CQuestCardDef {
+class CQuestCardDef { public:
     virtual void v00();
     virtual void DeleteThis();                           // slot 1
     long RefCount;                                       // +4
@@ -58,7 +58,7 @@ struct CQuestCardDefPointer {                            // CDefPointer<CQuestCa
     ~CQuestCardDefPointer() { if (PDef && --PDef->RefCount == 0) PDef->DeleteThis(); }
     bool IsNull() const { return PDef == 0; }
 };
-struct CTCQuestCard {                                    // TC type 0x6c (retail layout = PDB)
+class CTCQuestCard { public:                                    // TC type 0x6c (retail layout = PDB)
     unsigned char  _pad00[0xc];
     CQuestCardDefPointer PDef;                           // +0x0c
     bool           Finished;                             // +0x10
@@ -78,7 +78,7 @@ struct CBaseIntelligentPointer {
     void* PItem;
     ~CBaseIntelligentPointer();                          // 0x00A01C10
 };
-template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                        // 0x004A96F0 (T = CThing)
 };
 struct CThingPointerList {
@@ -89,41 +89,41 @@ struct CObjectiveList {
     void* _M_node;
     void clear();                                        // 0x004B8C50
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x154];
     C3DVector     GuildSealRecallPos;                    // +0x154 (PDB +0x164)
     float         GuildSealRecallAngleXY;                // +0x160 (PDB +0x170)
 };
-struct CRightHandedSet;
+class CRightHandedSet;
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector& position, long player, CRightHandedSet* orientation,
     unsigned long flags, const CCharString& scriptName);   // 0x00703210
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad00[0x28];
     long          PlayerNumber;                          // +0x28
     CThing* GetHeroCreature();                           // 0x00487DC0
     long GetPlayerNumber() const { return PlayerNumber; }
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                            // 0x00449970
 };
-struct CMainGameComponent {
+class CMainGameComponent { public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
     CPlayerManager* GetPlayerManager() const { return PlayerManager; }
 };
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
-struct CDefinitionManager {
+class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager : CDefinitionManager {
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();     // 0x0044C6B0
 };
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                             // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
-struct CQuestManager {
+class CQuestManager { public:
     unsigned char     _pad00[0x5c];
     CThingPointerList ActiveQuestCards;                  // +0x5c (PDB +0x88)
     unsigned char     _pad60[0x74 - 0x60];

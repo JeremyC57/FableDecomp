@@ -3,7 +3,7 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct CThingBaseDef {
+class CThingBaseDef { public:
     virtual void v00();
     virtual void Destroy();                      // slot 1
     long m_refCount;                             // +0x04
@@ -30,18 +30,18 @@ struct CDefPointer {                             // CDefPointer<const CThingBase
     CThingBaseDef* operator->() const { return Object; }
     operator bool() const { return Object != 0; }
 };
-struct CThing;
-struct CThingManager {
+class CThing;
+class CThingManager { public:
     void AddToUpdateList(CThing* thing);         // 0x0051EC50
 };
-struct CEngine {
+class CEngine { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsSpecialMode();                // slot 9 (+0x24; name not recovered)
 };
 extern CEngine* g_pEngine;
 extern CThingManager* g_pThingManager;
-struct CTCBase {
+class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void OnInitialActivate();            // slot 5 (+0x14)
     void* ParentThing;                           // +0x04
@@ -69,7 +69,7 @@ __declspec(noinline) CComponentVector::CComponentVector(const CComponentVector& 
     _M_finish = last;
     _M_end_of_storage = last;
 }
-struct CThing {
+class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();

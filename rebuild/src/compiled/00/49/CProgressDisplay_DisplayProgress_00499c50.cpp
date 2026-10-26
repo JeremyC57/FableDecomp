@@ -8,7 +8,7 @@
 // LastUpdateTime (double) +0x60, Initialised +0x79.
 // Shape: one guarded block; the first-update test `g_fEpsilon > LastUpdateTime` loads the float global and compares
 // the double member (a 0.0001f literal is promoted to a double constant and swaps the operands).
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     bool operator!=(const CCharString& other) const;       // 0x0099E900
     CCharString& operator=(const CCharString& other);      // 0x0099EFB0

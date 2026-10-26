@@ -8,12 +8,12 @@
 //   flag words +0x40 / +0x42 and bytes +0x44 / +0x45, OldPos +0x46, Velocity +0x52, OrientationInterpolator +0x60 (vtable
 //   0x01239824), PositionInterpolator +0x94 (vtable 0x0123981C), Transform +0xb0, InverseTransform +0xe0, EndTransform
 //   +0x110, Name +0x140, BSphere +0x144, distances +0x154..+0x168. The emitter's own vtable is 0x0129F348.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-struct CMatrix3x4 {
+class CMatrix3x4 { public:
     C3DVector Right, Up, Forward, Translation;
     __forceinline void SetIdentity()
     {
@@ -21,17 +21,17 @@ struct CMatrix3x4 {
         Right.X = Up.Y = Forward.Z = 1.0f;
     }
 };
-struct CRightHandedSet {
+class CRightHandedSet { public:
     C3DVector Up;                                      // +0x00
     C3DVector Forward;                                 // +0x0c
     void SetDefault();                                 // 0x00AF07A0
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
     C3DBoundingSphere() : Center(0.0f, 0.0f, 0.0f), Radius(0.0f) {}
 };
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
 };
@@ -39,7 +39,7 @@ namespace N_0099a2d0 { struct CBase {
     CBase();                                           // 0x0099A2D0
     virtual ~CBase();
 }; } using N_0099a2d0::CBase;
-struct CBaseObject {
+class CBaseObject { public:
     virtual ~CBaseObject();
     void* m_pIntelligentPointer;
     CBaseObject();                                     // 0x0099A380
@@ -52,14 +52,14 @@ template <class T> struct CVector {                    // STLport vector, 12 byt
     T* _M_start; T* _M_finish; CAllocProxy<T> _M_end_of_storage;
     CVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-template <class K, class V> struct CVectorMap {        // retail 16 bytes
+template <class K, class V> class CVectorMap { public:        // retail 16 bytes
     CVector<V> Data;
     char       Compare;                                // empty comparator
     bool       Dirty;                                  // +0x0d
     CVectorMap() : Dirty(false) {}
 };
 namespace NParticleEngine {
-struct CParticleSystem;
+class CParticleSystem;
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };
 struct CParticleUpdateParamDesc { unsigned long a, b; };
 struct CParticleUpdateParameters : CBase {             // vtable 0x0125FFDC, retail 0x24 bytes
@@ -67,16 +67,16 @@ struct CParticleUpdateParameters : CBase {             // vtable 0x0125FFDC, ret
     CVectorMap<unsigned long, CParticleUpdateParamDesc> UpdateParams;   // +0x14
 };
 }
-struct CEnginePersistentPrimitiveBase;
-struct CEnginePrimitiveHandle : CBase {                // vtable 0x0122F598
+class CEnginePersistentPrimitiveBase;
+class CEnginePrimitiveHandle : public CBase { public:                // vtable 0x0122F598
     CEnginePersistentPrimitiveBase* Data;              // +0x04 CIVCountedPointer
     CEnginePrimitiveHandle() : Data(0) {}
 };
-struct C3DOrientationInterpolator : CBase {            // vtable 0x01239824
+class C3DOrientationInterpolator : public CBase { public:            // vtable 0x01239824
     CRightHandedSet StartOrientation;                  // +0x04
     CRightHandedSet EndOrientation;                    // +0x1c
 };
-struct C3DPositionInterpolator : CBase {               // vtable 0x0123981C
+class C3DPositionInterpolator : public CBase { public:               // vtable 0x0123981C
     C3DVector StartPosition;                           // +0x04
     C3DVector EndPosition;                             // +0x10
 };

@@ -1,5 +1,5 @@
 
-struct CBankFileAsyncData {
+class CBankFileAsyncData { public:
     char pad[0x4c];
     int state;
 };

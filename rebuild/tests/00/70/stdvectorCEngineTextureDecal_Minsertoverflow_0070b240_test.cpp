@@ -10,7 +10,7 @@ struct CBlendList {
     CBlendList(const CBlendList& o) : tag(o.tag) { ++g_live; }
     ~CBlendList() { --g_live; }
 };
-struct CEngineTextureDecal {
+class CEngineTextureDecal { public:
     int OriginalTextureIndex; int DecalID; CBlendList OverlaidBlends;
     CEngineTextureDecal(int a, int b) : OriginalTextureIndex(a), DecalID(b), OverlaidBlends(a * 10) {}
 };

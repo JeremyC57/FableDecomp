@@ -12,10 +12,10 @@ struct CDefBase {
             Destroy();
     }
 };
-struct CBalverineBattleDef : CDefBase {
+class CBalverineBattleDef : public CDefBase { public:
     float SecondsBetweenLunges;
 };
-template<class T> struct CDefPointer {
+template<class T> class CDefPointer { public:
     T* m_p;
     CDefPointer() : m_p(0) { }
     ~CDefPointer()
@@ -25,7 +25,7 @@ template<class T> struct CDefPointer {
     }
     T* operator->() const { return m_p; }
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     CBalverineBattleDef* m_sub;
     template<class T> bool GetSubDef(CDefPointer<T>& out)
     {
@@ -36,7 +36,7 @@ struct CDefClassBase {
         return true;
     }
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     CDefClassBase* m_pDef;
 };
 static long g_frame = 0;

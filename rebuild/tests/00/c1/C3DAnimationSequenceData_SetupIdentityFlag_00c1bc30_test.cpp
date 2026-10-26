@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct C3DAnimationSequenceData
-{
+class C3DAnimationSequenceData
+{ public:
     unsigned char pad0;
     unsigned char pad1;
     unsigned char flags;

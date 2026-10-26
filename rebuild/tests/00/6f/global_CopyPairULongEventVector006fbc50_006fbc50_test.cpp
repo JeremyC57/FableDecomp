@@ -1,6 +1,6 @@
 #include <cstdio>
 
-namespace NAnimationEvents { struct CEvent { long m_a, m_b; }; }
+namespace NAnimationEvents { class CEvent { public: long m_a, m_b; }; }
 
 static int g_copies = 0;
 struct CSmallVector_CEvent_32 {

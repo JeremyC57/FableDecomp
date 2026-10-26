@@ -10,7 +10,7 @@
 //   16-byte value and the 4-byte comparator on the stack, `ret 14h`): next = last - 1; while comp(val, *next)
 //   { *last = *next; last = next; --next; } *last = val. VC rotates the loop (`jae` exit test before it, `jb`
 //   at the bottom) and keeps val.first in edx.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
 };
@@ -27,7 +27,7 @@ public:
 
 }
 
-template <class K, class V> struct CKeyPairCompareLess {
+template <class K, class V> class CKeyPairCompareLess { public:
     bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
 };
 

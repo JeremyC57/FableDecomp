@@ -3,7 +3,7 @@
 struct Loc { int x; int y; };
 struct Arg { int v; };
 
-struct CTCLook {
+class CTCLook { public:
     int state;
     bool helper2(Loc* out, Arg* in);
     bool IsTurningBody(Arg inArg);

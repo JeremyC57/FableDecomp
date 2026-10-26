@@ -9,8 +9,8 @@ struct CMemory {
 struct SEngine { CMemory* m_pLandscapeMemory; };
 static SEngine g_engine; static SEngine* g_pEngine = &g_engine;
 
-struct CMovableResource { virtual void v00() {} };
-struct CEngineWaterBackgroundSubPatch : CMovableResource {
+class CMovableResource { public: virtual void v00() {} };
+class CEngineWaterBackgroundSubPatch : public CMovableResource { public:
     void* IndexBuffer; void* VertexBuffer; void* BridgeIndexBuffers[4]; void* BridgeVertexBuffers[4]; bool DeletableBuffers;
     ~CEngineWaterBackgroundSubPatch()
     {

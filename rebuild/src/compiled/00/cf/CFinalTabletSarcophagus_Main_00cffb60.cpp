@@ -10,18 +10,18 @@
 //   FinalSummonersAlive +0x60, GotA +0x70), PMasterData +0x18.
 // Shape: ~CScriptThing is a plain inline body (it expands for the first forcefield's discarded temporaries);
 //   inline_depth(0) on the second forcefield statement leaves those temporaries and every later exit out of line.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -44,8 +44,8 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
@@ -57,13 +57,13 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 };
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const; virtual void v013() const; virtual void v014() const; virtual void v015() const;
@@ -167,7 +167,7 @@ struct CQ_AwakeningTheOracleScript {
     bool GotA;                                          // +0x70 (PDB +0x84)
     void PlayCutscene(CCharString name, bool wait);     // 0x00CFF9A0
 };
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

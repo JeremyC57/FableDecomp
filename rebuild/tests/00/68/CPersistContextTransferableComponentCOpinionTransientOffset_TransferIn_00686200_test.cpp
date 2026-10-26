@@ -3,9 +3,9 @@
 // component's target pointer.
 #include <cstdio>
 
-struct CPersistContext { int id; };
-struct CStringParser { int id; };
-struct CCharString { int id; };
+class CPersistContext { public: int id; };
+class CStringParser { public: int id; };
+class CCharString { public: int id; };
 
 typedef long EOpinion;
 class COpinionTransientOffset {
@@ -33,7 +33,7 @@ template <class T> struct CPersistTraits {
     void TransferIn(CPersistContext& context, CStringParser& parser, T* value);
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

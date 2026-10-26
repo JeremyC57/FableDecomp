@@ -5,7 +5,7 @@ struct Item;
 // call 0x5b43a2 : two stack args, __stdcall (no caller cleanup)
 extern void __stdcall Sub_5b43a2(long item, long member4);
 
-struct CTCInventoryClothing {
+class CTCInventoryClothing { public:
     void* vtbl;      // +0
     long  member4;   // +4
     // 0x5bdfb1 modeled as a thiscall member (self in ecx, one stack arg)

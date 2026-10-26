@@ -13,7 +13,7 @@ typedef int LONG32;   // the retail 4-byte long (the g++ host is LP64)
 #define CHECK(c) do { if (!(c)) { std::printf("%s_TEST FAIL (line %d)\n", TEST_ADDR, __LINE__); return 1; } } while (0)
 
 static LONG32 g_written[16]; static int g_count = 0;
-struct CDataOutputStream { void WriteLong(LONG32 v) { g_written[g_count++] = v; } };
+class CDataOutputStream { public: void WriteLong(LONG32 v) { g_written[g_count++] = v; } };
 class CReactionMatch {
 public:
     LONG32 type, payload;

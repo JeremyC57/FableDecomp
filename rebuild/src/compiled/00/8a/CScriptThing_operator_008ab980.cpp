@@ -14,9 +14,9 @@
 // words, so the class is modelled locally with its member names.
 // Leaf: ??4CScriptThing
 
-struct CScriptThing;
+class CScriptThing;
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long m_references;                       // +0
     void (__fastcall* m_pfnDestroy)(void*);  // +4
     void* m_pObject;                         // +8
@@ -50,7 +50,7 @@ struct CBase {
     virtual ~CBase();                        // 0x0099A2E0
 };
 
-struct CScriptThing : CBase {                // vtable 0x01238C8C
+class CScriptThing : public CBase { public:                // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;       // +0x04
     virtual ~CScriptThing();
     CScriptThing& operator=(const CScriptThing& other);

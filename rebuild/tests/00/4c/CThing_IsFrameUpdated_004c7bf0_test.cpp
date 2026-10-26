@@ -12,8 +12,8 @@ struct CTCGraphicAppearance {
         return UpdatePrimitiveReasons;
     }
 };
-struct CThingBaseDef { unsigned char AvailableInEditor : 1; unsigned char AlwaysFrameUpdate : 1; };
-struct CThing {
+class CThingBaseDef { public: unsigned char AvailableInEditor : 1; unsigned char AlwaysFrameUpdate : 1; };
+class CThing { public:
     bool drawable;
     CTCGraphicAppearance* PTCGraphicAppearance;
     CThingBaseDef* PBaseDef;

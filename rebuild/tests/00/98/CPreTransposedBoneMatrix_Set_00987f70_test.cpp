@@ -1,8 +1,8 @@
 // Behaviour test for CPreTransposedBoneMatrix::Set (0x00987F70): Data[r][c] = axis c's component r (X, Y, Z axes then
 // the position as the fourth column).
 #include <cstdio>
-struct C3DVector { float X, Y, Z; };
-struct CMatrix3x4 { C3DVector XAxis, YAxis, ZAxis, Pos; };
+class C3DVector { public: float X, Y, Z; };
+class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Pos; };
 struct CPreTransposedBoneMatrix {
     float Data[3][4];
     void Set(const CMatrix3x4& m)

@@ -18,7 +18,7 @@ bool __stdcall CheckCookTime(void* subobj, void* arg) {
     return true;
 }
 
-struct CTCVillage {
+class CTCVillage { public:
     char pad[0x94];
     RefObj* smartptr;
 };

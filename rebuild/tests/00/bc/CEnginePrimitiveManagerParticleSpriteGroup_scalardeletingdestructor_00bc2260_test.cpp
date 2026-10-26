@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitiveManagerParticleSpriteGroup {
+class CEnginePrimitiveManagerParticleSpriteGroup { public:
     void* vftable;
     int destroyed;
 };

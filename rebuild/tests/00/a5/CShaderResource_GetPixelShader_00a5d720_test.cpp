@@ -1,7 +1,7 @@
 #include <cstdio>
 
-struct CCharString { int v; };
-struct CPixelShader { int id; };
+class CCharString { public: int v; };
+class CPixelShader { public: int id; };
 
 static int g_calls_sub1 = 0;
 static int g_calls_sub2 = 0;
@@ -12,7 +12,7 @@ struct CShaderResourceField4 {
     int ResolveHandle(CPixelShader* p) { g_calls_sub1++; return base + p->id; }
 };
 
-struct CShaderResource {
+class CShaderResource { public:
     void* field0;
     CShaderResourceField4* ShaderBank;
     CCharString* GetPixelShader(CCharString* a, CPixelShader* b);

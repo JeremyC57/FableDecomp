@@ -8,7 +8,7 @@
 // COpinionDeed::IsCrimeReportedToVillage (+0x22) through the node's mapped pointer (+0x14).
 // Layout: OpinionDeedMap +0x0C as in the PDB; COpinionDeed as in the PDB (+0x22 IsCrimeReportedToVillage).
 
-struct COpinionDeed {
+class COpinionDeed { public:
     long          DeedType;                   // +0x00 EOpinionDeedType
     long          DeedHandle;                 // +0x04
     float         Position[3];                // +0x08 C3DVector

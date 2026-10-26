@@ -9,7 +9,7 @@ static int g_fail = 0;
 
 int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
 
-struct CCharString {
+class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (the default argument: the buffer converts implicitly)
 };
@@ -22,7 +22,7 @@ struct CArray_ulong {                              // CArray<unsigned long>: beg
     unsigned long GetNoItems() const { return (unsigned long)(m_pEnd - m_pBegin); }
 };
 
-struct CMirroredTextureHighlightsChunk {
+class CMirroredTextureHighlightsChunk { public:
     virtual void v00();
     long           m_4;
     long           m_8;

@@ -13,7 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     unsigned long RefCount;                             // +0x00
     void (__cdecl* DeleteFunc)(void*);                  // +0x04
     void* Data;                                         // +0x08

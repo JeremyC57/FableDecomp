@@ -10,9 +10,9 @@
 // Shape: the landed TransferIn's -- the traits object in the `push ecx` frame slot, its inline default constructor
 // assigning A first and then R, G, B (`xor al,al` ; +2, +1, +0 stores, the 0xFF alpha store scheduled after the
 // argument pushes).
-struct CPersistContext;
-struct CStringParser;
-struct CCharString;
+class CPersistContext;
+class CStringParser;
+class CCharString;
 
 class CRGBColour {
 public:
@@ -25,7 +25,7 @@ template <class T> struct CPersistTraits {
     void TransferOut(CPersistContext& context, CCharString& out, const T* value);   // 0x009E8110 for CRGBColour
 };
 
-struct CPersistContext_TransferableComponentGenericType {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferOut(CPersistContext& context, CCharString& out) = 0;
     virtual void TransferIn(CPersistContext& context, CStringParser& parser) = 0;
 };

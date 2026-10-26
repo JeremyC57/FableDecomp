@@ -15,12 +15,12 @@
 
 inline float Magnitude(float x, float y, float z) { return (float)sqrt(x * x + y * y + z * z); }
 
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     float Length() const { return Magnitude(X, Y, Z); }
 };
 
-struct C3DAnimationInfo {
+class C3DAnimationInfo { public:
     unsigned char _pad[0x10];
     float     Duration;                        // +0x10
     float     NonLoopingDuration;              // +0x14
@@ -28,20 +28,20 @@ struct C3DAnimationInfo {
     float     Rotation;                        // +0x24
 };
 
-struct CMeshDataBank {
+class CMeshDataBank { public:
     C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
 };
 
-struct CWorld {
+class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;              // +0x3c
 };
 
-struct CThing {
+class CThing { public:
     const CWorld& PeekWorld() const;           // 0x004C7AB0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     float GetAnimMovementDistance(long animIndex) const;
 };
 

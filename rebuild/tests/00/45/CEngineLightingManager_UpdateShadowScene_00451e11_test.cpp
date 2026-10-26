@@ -14,7 +14,7 @@ void LocalObj::apply28(void* fld, int arg) { g_log += 28; }
 
 void __stdcall ProfileEnter(int tag) { g_log += tag ? 1 : 0; }
 
-struct CEngineLightingManager {
+class CEngineLightingManager { public:
     char pad[0x18];
     int mode;
     char pad2[0x24 - 0x1c];

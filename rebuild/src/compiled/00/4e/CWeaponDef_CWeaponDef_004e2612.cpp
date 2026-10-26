@@ -19,27 +19,27 @@
 // has an inline constructor; the plain scalars are left uninitialised.
 #pragma optimize("s", on)
 
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString();                    // 0x0099E4B0
 };
 
-struct CSubDefClassBase {
+class CSubDefClassBase { public:
     virtual void v00();
     unsigned char _base[0x24];        // +0x04 sub-def base members (0x28 bytes in all)
     CSubDefClassBase();               // 0x0044C0C0
 };
 
-template <class T> struct CArray {
+template <class T> class CArray { public:
     T* Data;
     long Size;
     long Capacity;
     CArray() : Data(0), Size(0), Capacity(0) {}
 };
 
-struct CDefString { long Index; };
+class CDefString { public: long Index; };
 
-struct CObjectAugmentationParticleSet {
+class CObjectAugmentationParticleSet { public:
     float PeriodSecs;
     long ParticleEffect;
     long ParticleEffectToBlendTo;
@@ -50,7 +50,7 @@ struct CObjectAugmentationParticleSet {
     CObjectAugmentationParticleSet() : PeriodSecs(0.0f) {}
 };
 
-struct CWeaponTrailGraphicSet {
+class CWeaponTrailGraphicSet { public:
     long Attack;
     long Knockdown;
     CWeaponTrailGraphicSet() : Attack(-1), Knockdown(-1) {}
@@ -66,13 +66,13 @@ struct CArrowTrailMap {               // map<EObjectAugmentationType, long>
     CArrowTrailMap();                 // 0x004DF8E9
 };
 
-struct CFloatRange {
+class CFloatRange { public:
     float HighValue;
     float LowValue;
     CFloatRange() : HighValue(0.0f), LowValue(0.0f) {}
 };
 
-struct CWeaponDef : CSubDefClassBase {
+class CWeaponDef : public CSubDefClassBase { public:
     virtual void v00();
     long Type;
     long Class;

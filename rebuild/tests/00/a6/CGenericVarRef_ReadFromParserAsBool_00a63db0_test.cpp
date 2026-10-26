@@ -59,8 +59,8 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 #endif
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -68,8 +68,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -164,11 +164,11 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 #include <stddef.h>
 
 
-struct CCharStringData;
+class CCharStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
-struct CStringParser {
+class CStringParser { public:
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     void*                               String;              // +0x04 char *
     unsigned long                       BaseLineOffset;      // +0x08
@@ -194,14 +194,14 @@ FABLE_STATIC_ASSERT(offsetof(CStringParser, CursorPos) == 0x24);
 
 #undef CStringParser
 // Native parser is0x28 vs donor0x30 due to the native list. Only the true thiscall member is used.
-struct CParsedItem;
-struct CStringParser {CStringParser();void*VTable;unsigned char NativeState[0x24];bool ReadNextItem(CParsedItem&);}; // ctor PDB00492230, ReadNextItem009BA080/PDB00B0EB60
-struct CParsedItem {CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetSymbol()const;}; // real ctor PDB01911740 constructs only String; GetSymbol009B9880/PDB00B0E400
+class CParsedItem;
+class CStringParser { public:CStringParser();void*VTable;unsigned char NativeState[0x24];bool ReadNextItem(CParsedItem&);}; // ctor PDB00492230, ReadNextItem009BA080/PDB00B0EB60
+class CParsedItem { public:CParsedItem(){} long Type;long Value;CCharString String;const CCharString& GetSymbol()const;}; // real ctor PDB01911740 constructs only String; GetSymbol009B9880/PDB00B0E400
 extern char EmptyString[]; //0129AAF4
 __forceinline CCharString::operator const char*()const{return !storage_?EmptyString:storage_->text;}
 extern "C" int __cdecl _stricmp(const char*,const char*); // MSVCR71.dll IAT014400EC via00BFEBA8
 __forceinline bool operator==(const CCharString&a,const CCharString&b){return _stricmp(a,b)==0;}
-struct CGenericVar {CGenericVar();long Padding;long Type;CCharString ValString;long ValSLONG;unsigned long ValULONG;bool ValBool;float ValFloat;bool ReadFromParserAsBool(CStringParser&);}; // actual ctor PDB030A8B30; bool+14h
+class CGenericVar { public:CGenericVar();long Padding;long Type;CCharString ValString;long ValSLONG;unsigned long ValULONG;bool ValBool;float ValFloat;bool ReadFromParserAsBool(CStringParser&);}; // actual ctor PDB030A8B30; bool+14h
 struct CGenericVarRef {CGenericVarRef(bool&);long Type;union{bool*ValBool;void*Value;};bool ReadFromParserAsBool(CStringParser&);bool ReadFromParserAsSLONG(CStringParser&);bool ReadFromParserAsFloat(CStringParser&);bool ReadFromParserAsString(CStringParser&);bool ReadFromParser(CStringParser&);}; // actual bool-ref ctor PDB018A3D80
 
 bool CGenericVarRef::ReadFromParserAsBool(CStringParser& parser){

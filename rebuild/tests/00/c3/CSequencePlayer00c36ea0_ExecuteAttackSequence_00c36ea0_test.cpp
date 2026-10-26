@@ -1,5 +1,5 @@
 #include <cstdio>
-struct C3DVector { float x, y, z; };
+class C3DVector { public: float x, y, z; };
 struct Track { float Start, End; int plays; float lastZ, lastDur; int finished; void Play(const C3DVector& p, float d) { ++plays; lastZ = p.z; lastDur = d; } void Finish(unsigned long) { ++finished; } };
 struct Player {
     Track tracks[3]; unsigned long count; int restarts, begins, ends; float trackTime;

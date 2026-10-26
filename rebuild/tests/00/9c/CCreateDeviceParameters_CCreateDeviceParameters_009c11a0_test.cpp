@@ -1,6 +1,6 @@
 #include <cstdio>
 struct HWND__;
-struct C2DExtentsI { long Width; long Height; };
+class C2DExtentsI { public: long Width; long Height; };
 struct CPresentationIntervalDesc { long Interval; long Flags; };
 enum ESurfaceMultisampleType { SURFACE_MULTISAMPLE_NONE = 0, SURFACE_MULTISAMPLE_4 = 4 };
 struct CCreateDeviceParameters {

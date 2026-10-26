@@ -3,7 +3,7 @@ struct ActionState {
     char busyFlag;
 };
 
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     char pad[0x100];
     ActionState* action;
     int IsPerformingAnyAction();

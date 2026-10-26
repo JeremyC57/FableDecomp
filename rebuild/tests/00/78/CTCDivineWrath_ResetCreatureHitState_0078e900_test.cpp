@@ -3,14 +3,14 @@
 // by-value pointer is destroyed.
 #include <cstdio>
 static int g_dtors = 0;
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 };
-struct CThing {
+class CThing { public:
     unsigned long m_presentBits[9];
     CInterfaceMap m_interfaces;
     unsigned char Flags91;
@@ -46,9 +46,9 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-struct CTCCreatureModeManager { unsigned long Removed; int Calls; void RemoveMode(unsigned long m) { Removed = m; ++Calls; } };
+class CTCCreatureModeManager { public: unsigned long Removed; int Calls; void RemoveMode(unsigned long m) { Removed = m; ++Calls; } };
 struct CTCHitReaction { long ResetValue; bool Armed; long CurrentValue; };
-struct CTCDivineWrath {
+class CTCDivineWrath { public:
     virtual void v00() { }
     void ResetCreatureHitState(CIntelligentPointerCreature creature);
 };

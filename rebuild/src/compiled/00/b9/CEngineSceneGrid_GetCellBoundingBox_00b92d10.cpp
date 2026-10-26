@@ -2,10 +2,10 @@
 // bool __fastcall (CEngineSceneGrid*, C3DBoundingBox*, ulong, ulong)
 // Forwards to a helper (0xb919c0) passing bbox, &b(out-slot), a, b.
 
-struct C3DBoundingBox;
+class C3DBoundingBox;
 
-struct CEngineSceneGrid
-{
+class CEngineSceneGrid
+{ public:
     // helper method the game forwards to (0x00b919c0), __fastcall
     bool BuildCellBounds(C3DBoundingBox* bbox, unsigned long* pOut,
                          unsigned long a, unsigned long b);

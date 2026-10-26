@@ -4,9 +4,9 @@
 // CEngineClothSimulationStaticMesh::Render @ 0x00B812F0 (on the simulation: renderer, sub, pass), RenderMeshPrimitive @ 0x00BA5260 (on `this`, ecx passed
 // straight through: sub, pass). Shape: the cloth arm never touches `this`; the info pointer stays in ecx for the find, the renderer in edi for both calls.
 struct CEngineClothSimulationStaticMesh;
-struct CEngineSubPrimitiveBase;
+class CEngineSubPrimitiveBase;
 
-struct CEnginePrimitiveSimulationInfo {
+class CEnginePrimitiveSimulationInfo { public:
     CEngineClothSimulationStaticMesh* FindSimulation(long index);   // 0x00B812C0
 };
 
@@ -27,7 +27,7 @@ struct CMeshRenderer_00ba6fa0 {
     long GetCurrentMeshIndex() const { return (*m_ppCurrent)->m_index; }   // inline: the index lands in eax for the push
 };
 
-struct CEngineSubPrimitiveBase {
+class CEngineSubPrimitiveBase { public:
     unsigned char                              _pad0[0xc];
     CEngineInternalPrimitiveStaticMesh_00ba6fa0* m_pPrimitive;   // +0x0c
     unsigned char                              _pad10[8];

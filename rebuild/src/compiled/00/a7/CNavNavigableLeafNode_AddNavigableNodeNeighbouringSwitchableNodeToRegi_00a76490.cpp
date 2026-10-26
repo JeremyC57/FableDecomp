@@ -5,9 +5,9 @@
 //   (CSmallVector<const CANavQuadTreeNode*, 8>: data +0, signed char size +4), PreferabilityCost +0x1c.
 // Shape: the neighbour walk uses inline begin()/end() (end recomputed every iteration from the size byte); the region is grown
 //   with MakeRegion and the result ignored (`mov al,1`).
-struct CNavRegion;
-struct CAFile;
-struct CANavQuadTreeNode;
+class CNavRegion;
+class CAFile;
+class CANavQuadTreeNode;
 void* __cdecl operator new(unsigned int size);             // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 namespace std {
@@ -46,7 +46,7 @@ template <class T, class A = allocator<T> > struct list { // STLport list: the h
 template <class T> struct less { };
 template <class K, class V, class C = less<K>, class A = allocator<V> > struct map;
 }
-template <class T, int N> struct CSmallVector {
+template <class T, int N> class CSmallVector { public:
     T*          m_data;                                    // +0
     signed char m_size;                                    // +4
     signed char m_capacity;                                // +5
@@ -61,9 +61,9 @@ template <class T, int N> struct CSmallVector {
 };
 typedef CSmallVector<const CANavQuadTreeNode*, 8> CNeighbourVector;
 typedef std::list<CANavQuadTreeNode*> CNodeList;
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 enum ENavNodeType { NAV_NODE_QUADTREE = 0, NAV_NODE_NAVIGABLE = 1, NAV_NODE_BLOCKED = 2, NAV_NODE_SWITCHABLE = 3 };
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode { public:
     virtual ~CANavQuadTreeNode();                                                   // slot 0
     virtual const CNeighbourVector* GetNeighbours() const;                          // slot 2 (overloads sit in reverse order)
     virtual CNeighbourVector* GetNeighbours();                                      // slot 1
@@ -93,7 +93,7 @@ struct CANavQuadTreeNode {
     bool          LeafNode;                                // +0x0e
     bool          Blocked;                                 // +0x0f
 };
-struct CNavNavigableLeafNode : CANavQuadTreeNode {
+class CNavNavigableLeafNode : public CANavQuadTreeNode { public:
     CNavRegion*      PRegion;                              // +0x10
     CNeighbourVector Neighbours;                           // +0x14
     unsigned char    PreferabilityCost;                    // +0x1c

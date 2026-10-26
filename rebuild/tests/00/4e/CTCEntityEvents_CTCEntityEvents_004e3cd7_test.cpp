@@ -1,10 +1,10 @@
 #include <cstdio>
 static int g_baseCtors = 0, g_listCtors = 0; static void* g_lastOwner = 0;
-struct CThing;
+class CThing;
 struct CRetailAllocator { CRetailAllocator() {} };
 struct CThingComponent { virtual void v00() {} unsigned char _pad_0x04[8]; CThingComponent(CThing* owner) { ++g_baseCtors; g_lastOwner = owner; } };
 struct CRetailList { void* head; CRetailList(const CRetailAllocator& al = CRetailAllocator()) : head(&head) { ++g_listCtors; } };
-struct CTCEntityEvents : CThingComponent { virtual void v00() {} CRetailList m_list;  CTCEntityEvents(CThing* owner) : CThingComponent(owner), m_list() {} };
+class CTCEntityEvents : public CThingComponent { public: virtual void v00() {} CRetailList m_list;  CTCEntityEvents(CThing* owner) : CThingComponent(owner), m_list() {} };
 
 int main()
 {

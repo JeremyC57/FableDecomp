@@ -7,7 +7,7 @@
 // they asked to be filled.
 //
 // Matching: `this` is unused, body is `mov al,1; ret`.
-struct CAFile { unsigned char pad[4]; };
+class CAFile { public: unsigned char pad[4]; };
 
 bool __fastcall CAFile_IsIOFinished(const CAFile* file)
 {

@@ -11,22 +11,22 @@
 // which loads it into ecx before the argument pushes.
 #include <math.h>
 #pragma intrinsic(sqrt)
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
-struct CRightHandedSet {                           // 24 bytes
+class CRightHandedSet { public:                           // 24 bytes
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c
 };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set, float scale);   // 0x004C08C0
 };
-struct CThing {
+class CThing { public:
     unsigned char         _pad0[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;    // +0x64 (retail)
     const C3DVector& GetPosition() const;          // 0x004C73D0

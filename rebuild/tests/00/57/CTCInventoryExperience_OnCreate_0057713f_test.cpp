@@ -1,7 +1,7 @@
 // Behaviour test for CTCInventoryExperience::OnCreate @ 0x0057713F (model copy, stub manager/defs/vectors).
 #include <cstdio>
 #include <cstdlib>
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void v00() {}
     virtual void Destroy() { ++destroyed; }
     long m_refCount;
@@ -9,19 +9,19 @@ struct CDefPointeeBase {
     CDefPointeeBase() : m_refCount(1) {}
 };
 long CDefPointeeBase::destroyed = 0;
-template <class T> struct CDefPointer { T* Object; T* operator->() const { return Object; } };
-struct CCreatureDef : CDefPointeeBase { unsigned char _pad08[0x98 - 0x08]; long ExperienceScreenInventory; };
+template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
+class CCreatureDef : public CDefPointeeBase { public: unsigned char _pad08[0x98 - 0x08]; long ExperienceScreenInventory; };
 static CCreatureDef g_creatureDef;
-struct CDefClassBase : CDefPointeeBase {
+class CDefClassBase : public CDefPointeeBase { public:
     long refCountSeenInGetSubDef;
     bool GetSubDef(CDefPointer<CCreatureDef>* out) { refCountSeenInGetSubDef = m_refCount; out->Object = &g_creatureDef; ++g_creatureDef.m_refCount; return true; }
 };
-struct CThing { unsigned char _pad00[0x70]; CDefPointer<CDefClassBase> PDef; };
+class CThing { public: unsigned char _pad00[0x70]; CDefPointer<CDefClassBase> PDef; };
 namespace NHeroInformationScreens {
-struct CBase { virtual void v00() {} virtual void v01() {} virtual void v02() {} };
-struct CManager { const CBase* registered; void RegisterScreen(const CBase* screen) { registered = screen; } };
+class CBase { public: virtual void v00() {} virtual void v01() {} virtual void v02() {} };
+class CManager { public: const CBase* registered; void RegisterScreen(const CBase* screen) { registered = screen; } };
 }
-struct CPlayerGui { NHeroInformationScreens::CManager manager; NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const { return const_cast<NHeroInformationScreens::CManager*>(&manager); } };
+class CPlayerGui { public: NHeroInformationScreens::CManager manager; NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const { return const_cast<NHeroInformationScreens::CManager*>(&manager); } };
 static CPlayerGui g_gui;
 static CPlayerGui* g_pPlayerGui = &g_gui;
 struct ExperienceSpendInfo { long currentSpend; long initialSpend; long levelUpSpend; };

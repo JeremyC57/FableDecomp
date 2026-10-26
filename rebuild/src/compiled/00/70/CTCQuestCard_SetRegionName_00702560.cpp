@@ -10,13 +10,13 @@
 // string to its data pointer, so an inline accessor views that member as the CCharString it is.
 #include "engine/CTCQuestCard.h"
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     bool operator!=(const CCharString& other) const;        // 0x0099E900
     CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
-struct CPlayerGui {
+class CPlayerGui { public:
     void Refresh(long flag);                                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790

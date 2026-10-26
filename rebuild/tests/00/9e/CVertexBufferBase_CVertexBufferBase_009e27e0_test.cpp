@@ -3,7 +3,7 @@
 struct IDirect3DVertexBuffer9;
 static int g_baseCtors = 0;
 struct CBaseClassNonCopyable { virtual void v00() { } CBaseClassNonCopyable() { ++g_baseCtors; } };
-struct CVertexCompressionParams { float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
+class CVertexCompressionParams { public: float PosScaleX, PosScaleY, PosScaleZ, PosScaleW, PosBiasX, PosBiasY, PosBiasZ, PosBiasW;
     CVertexCompressionParams() : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f), PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { } };
 struct CVertexBufferBase : CBaseClassNonCopyable {
     IDirect3DVertexBuffer9* PVertexBuffer; unsigned long Length; long Type; unsigned char Stride; CVertexCompressionParams CompressionParams;

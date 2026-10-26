@@ -3,7 +3,7 @@
 #include <cstdio>
 
 struct CBaseObjectPointer;
-struct CBaseObject { CBaseObjectPointer* IntelligentPointer; };
+class CBaseObject { public: CBaseObjectPointer* IntelligentPointer; };
 struct CBaseObjectPointer { CBaseObject* PItem; long RefCount; };
 struct CBaseIntelligentPointer {
     CBaseObjectPointer* m_pData;

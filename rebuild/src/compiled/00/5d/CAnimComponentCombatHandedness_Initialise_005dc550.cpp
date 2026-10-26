@@ -6,11 +6,11 @@
 // parser/string/list/base cleanup callees are 0x0099EBF0, 0x00404720, 0x0099EAE0,
 // 0x004046B0, and 0x0099A2E0. The PDB header is data-only (size 0x10); it confirms
 // StartHandedness +8 and EndHandedness +0xc, while the local virtual model supplies slots.
-struct CPersistContext;
-struct CCharString { void* m_pData; CCharString(const char*, long); ~CCharString(); };
+class CPersistContext;
+class CCharString { public: void* m_pData; CCharString(const char*, long); ~CCharString(); };
 struct CBase { virtual ~CBase(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail list is one sentinel pointer (4 bytes)
-struct CStringParser : CBase {
+class CStringParser : public CBase { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
@@ -18,7 +18,7 @@ struct CStringParser : CBase {
 };
 void __fastcall TransferIn(CPersistContext*, CStringParser*, long*); // 009E2590
 inline long ParseLong(CPersistContext& c, CStringParser& p) { long v; TransferIn(&c,&p,&v); return v; }
-struct CAnimComponentCombatHandedness {
+class CAnimComponentCombatHandedness { public:
  virtual ~CAnimComponentCombatHandedness(); virtual void v01(); virtual void v02();
  virtual bool Initialise(CPersistContext&, const CCharString&); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void Reset();
  long IVRefCount; long StartHandedness; long EndHandedness;

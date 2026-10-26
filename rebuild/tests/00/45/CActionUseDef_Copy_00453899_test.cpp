@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CActionUseDef { int v; };
+class CActionUseDef { public: int v; };
 
 static int g_called = 0;
 static CActionUseDef* g_self = 0;

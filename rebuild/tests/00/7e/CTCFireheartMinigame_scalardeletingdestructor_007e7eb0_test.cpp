@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CTCFireheartMinigame {
+class CTCFireheartMinigame { public:
     void* vftable;
     int destroyed;
 };

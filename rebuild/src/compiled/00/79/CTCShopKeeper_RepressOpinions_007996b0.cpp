@@ -16,14 +16,14 @@ public:
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                           // +0x10
     unsigned char _pad11[0x20 - 0x11];
@@ -38,7 +38,7 @@ struct CThing {
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-struct COpinionOfHeroDef {
+class COpinionOfHeroDef { public:
     unsigned char _pad00[0x34];
     long ReactionMask;                                  // +0x34
     long DeedMask;                                      // +0x38
@@ -47,7 +47,7 @@ struct CBoolVector {                                    // STLport vector<bool> 
     bool* _M_start; bool* _M_finish; bool* _M_end_of_storage;
     bool& operator[](long i) { return *(_M_start + i); }
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     unsigned char _pad00[0x1c];
     COpinionOfHeroDef* PDef;                            // +0x1c CDefPointer<const COpinionOfHeroDef>
     unsigned char _pad20[0x3c - 0x20];
@@ -57,7 +57,7 @@ struct CTCCreatureOpinionOfHero {
     void SetOpinionDeedMask(long defIndex);             // 0x006821E0
     void SetOpinionDeedMask(const CCharString& defName);       // 0x006822E0
 };
-struct CTCShopKeeper {
+class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _pad08[0x42 - 0x08];

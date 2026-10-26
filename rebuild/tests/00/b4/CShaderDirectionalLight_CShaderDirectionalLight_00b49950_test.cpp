@@ -1,7 +1,7 @@
 // Behaviour test for 0x00B49950 CShaderDirectionalLight constructor.
 #include <cstdio>
-struct C3DVector { float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
-struct CRGBFloatColour { float R, G, B, A; };
+class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+class CRGBFloatColour { public: float R, G, B, A; };
 struct CShaderDirectionalLight {
     C3DVector Direction; C3DVector Position; CRGBFloatColour Colour; CRGBFloatColour BackColour;
     CShaderDirectionalLight(const C3DVector& d, const CRGBFloatColour& c, const CRGBFloatColour& b) : Direction(d), Colour(c), BackColour(b) {}

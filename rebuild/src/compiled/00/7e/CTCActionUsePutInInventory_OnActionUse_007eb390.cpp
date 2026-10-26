@@ -11,16 +11,16 @@
 // Shape: `&user` is null-tested (VC7.1 does not assume a reference is non-null); the 0xb0-byte action temporary has an
 // IMPLICIT destructor -- its CIntelligentPointer member at +0xa8 is destroyed (base destructor directly) then the base
 // action destructor, with no vtable store.
-struct CBaseObject;
+class CBaseObject;
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                      // +0x10 thing type (5 = object)
     unsigned char _pad11[0x80];
     unsigned char Dead : 1;                    // +0x91 bit 0
 };
 
-struct CThingObject : CThing { };
+class CThingObject : public CThing { public: };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -33,29 +33,29 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
     ~CCreatureActionBase();                    // 0x00693EF0
 };
 
-struct CCreatureAction_AddRealObjectToInventory : CCreatureActionBase {
+class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { public:
     CIntelligentPointer PObject;               // +0xa8
-    CCreatureAction_AddRealObjectToInventory(struct CThingCreatureBase* creature, CThingObject* object);   // 0x007EB2D0
+    CCreatureAction_AddRealObjectToInventory(class CThingCreatureBase* creature, CThingObject* object);   // 0x007EB2D0
 };
 
-struct CThingCreatureBase : CThing {
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
-struct CTCBase {                               // engine/CTCBase.h layout, modelled polymorphic
+class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
 
-struct CTCActionUseBase : CTCBase {
+class CTCActionUseBase : public CTCBase { public:
     unsigned char _pad0c[8];                   // +0x0c PActionUseDef, +0x10 Usable
     virtual void OnActionUse(CThing& user);    // slot 28: 0x007EAB90
 };

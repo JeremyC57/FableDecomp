@@ -2,8 +2,8 @@
 #include <cstdio>
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
-struct CEngineGraphic { long m_words[4]; };
-struct CDegradableInfo {
+class CEngineGraphic { public: long m_words[4]; };
+class CDegradableInfo { public:
     float          HealthPercentage;
     CEngineGraphic EngineGraphic;
     long           SmashParticleEmitter;

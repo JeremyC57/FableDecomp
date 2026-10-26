@@ -2,7 +2,7 @@
 #include <cstdio>
 
 static int g_opened = 0;
-struct CTCInGameMenu { bool InGameMenuOpen; };
+class CTCInGameMenu { public: bool InGameMenuOpen; };
 struct CTCQuestStartTarget { bool Active; };
 struct CTCInventoryMenu {
     bool active, closing;
@@ -10,7 +10,7 @@ struct CTCInventoryMenu {
     bool IsClosing() const { return closing; }
     void Open() { ++g_opened; }
 };
-struct CThing {
+class CThing { public:
     CTCInGameMenu* inGameMenu; CTCQuestStartTarget* questStart; CTCInventoryMenu* menu;
     bool hasInGameMenu, hasQuestStart, hasMenu;
     template<class T> bool GetInterface(T** out, long wanted) const
@@ -22,13 +22,13 @@ struct CThing {
     }
 };
 struct CManager { bool ScreenShowing; };
-struct CPlayerGui {
+class CPlayerGui { public:
     bool GuiBusy; CManager manager;
     CManager* GetPHeroInfoScreensManager() const { return const_cast<CManager*>(&manager); }
 };
 static CPlayerGui g_gui; static CPlayerGui* g_pPlayerGui = &g_gui;
 
-struct CTCInventory {
+class CTCInventory { public:
     CThing* ParentThing;
     const CThing* GetConstParent() const { return ParentThing; }
     void OpenQuickAccessMenu();

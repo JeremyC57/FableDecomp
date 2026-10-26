@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct CInputProcessDead { int dummy; };
+class CInputProcessDead { public: int dummy; };
 
 static int g_dtor_calls = 0;
 static int g_free_calls = 0;

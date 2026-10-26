@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-struct CCharString {
+class CCharString { public:
     const char* p;
     CCharString() : p("") {}
     CCharString(const char* t, long = -1) : p(t) {}
@@ -26,18 +26,18 @@ static int FindLog(const char* s)
 }
 // Script timers: SetTime(t) at frame f reads back t - (frame - f).
 static long g_timerSet[8], g_timerAt[8]; static int g_ntimers = 0;
-struct CTimer {
+class CTimer { public:
     long Index;
     CTimer() { Index = g_ntimers++; g_timerSet[Index] = 0; g_timerAt[Index] = g_frame; }
     void SetTime(long t) { g_timerSet[Index] = t; g_timerAt[Index] = g_frame; }
     long GetTime() const { return g_timerSet[Index] - (g_frame - g_timerAt[Index]); }
 };
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 // Things: an id into a small world table (health > 0 means alive).
 static float g_health[64];
 static C3DVector g_pos[64];
 static int g_nextThing = 10;
-struct CScriptThing {
+class CScriptThing { public:
     int id;
     CScriptThing() : id(0) {}
     explicit CScriptThing(int i) : id(i) {}
@@ -53,7 +53,7 @@ inline CCharString operator+(const CCharString& a, const char* b) { return a + C
 static int g_preds = 0, g_moves = 0, g_released = 0, g_target = 0, g_scripting = 0;
 static float g_hp = 30.0f;
 struct CIsThingConscious { CIsThingConscious(const CScriptThing&) {} };
-struct CScriptGameResourceObjectScriptedThingBase {
+class CScriptGameResourceObjectScriptedThingBase { public:
     bool active;
     CScriptGameResourceObjectScriptedThingBase() : active(false) {}
     bool IsScripting() const { return active; }
@@ -73,7 +73,7 @@ struct GameCalls {
     CScriptThing& GetHero() { return hero; }
     void GiveThingBestEnemyTarget(const CScriptThing& a, const CScriptThing& b) { if (a.id == 2 && b.id == 1) ++g_target; }
 };
-struct CSpawnedFuncBase { virtual ~CSpawnedFuncBase() {} };
+class CSpawnedFuncBase { public: virtual ~CSpawnedFuncBase() {} };
 struct CQ_UndeadRisingScript;
 typedef void (CQ_UndeadRisingScript::*SpawnedThingCallback)(CScriptThing);
 static char g_spawnName[96]; static int g_added = 0;

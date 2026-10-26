@@ -20,11 +20,11 @@ public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570 (hidden result in ecx)
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600 (hidden result in ecx)
 
-struct CBaseClass {                                    // polymorphic root of the script handles
+class CBaseClass { public:                                    // polymorphic root of the script handles
     virtual ~CBaseClass();                             // 0x0099A2E0
 };
 
-struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     void* PImp_Data;                                   // +0x04
     void* PImp_Info;                                   // +0x08
     virtual const CCharString& GetName() const;        // slot 1 (+0x4), 0x004AA8B0
@@ -32,7 +32,7 @@ struct CScriptThing : CBaseClass {                     // 12 bytes, vtable 0x012
     virtual CCharString GetDataString() const;         // slot 3 (+0xc), 0x004AA900
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
@@ -89,11 +89,11 @@ struct CGameScriptInterface {
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-struct CTimer {
+class CTimer { public:
     long Index;
 };
 
-struct CScriptBase {
+class CScriptBase { public:
     virtual void v00();
     unsigned char _body[0x3c];                       // +0x04 .. +0x40
     bool IsActiveThreadTerminating();                // 0x00CB7940

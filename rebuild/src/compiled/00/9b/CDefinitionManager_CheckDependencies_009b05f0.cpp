@@ -14,13 +14,13 @@
 #include <new>
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 void* GrowArrayStorage(unsigned long bytes);
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString ToLower() const;                        // 0x0099ED10
 };
-struct CWideString {
+class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510

@@ -86,7 +86,7 @@ FABLE_STATIC_ASSERT(offsetof(CCombatSequence_WillPhysicalShieldNonMelee, __vftab
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_PlayCombatAnimation {
+class CCreatureAction_PlayCombatAnimation { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -196,7 +196,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_PlayCombatAnimation, AlwaysUseMovem
 
 
 #pragma pack(push, 1)
-struct CCreatureAction_CastPhysicalShieldSpell {
+class CCreatureAction_CastPhysicalShieldSpell { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
@@ -303,11 +303,11 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastPhysicalShieldSpell, ShieldHeal
 #include <stddef.h>
 
 
-struct CAnimationEntry;
-struct CCPPointerInfo;
+class CAnimationEntry;
+class CCPPointerInfo;
 
 #pragma pack(push, 1)
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    PCreature[0x8];                         // +0x08 CIntelligentPointer<CThingCreatureBase>
@@ -400,10 +400,10 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0xa4);
 #include <stddef.h>
 
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CCombatActionBase {
+class CCombatActionBase { public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08
@@ -524,8 +524,8 @@ FABLE_STATIC_ASSERT(offsetof(CCombatActionBase, PreferredMovementVector_Z) == 0x
 
 
 
-struct CWideStringData
-{
+class CWideStringData
+{ public:
     wchar_t* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -533,8 +533,8 @@ struct CWideStringData
 };
 
 #pragma pack(push, 1)
-struct CCharStringData
-{
+class CCharStringData
+{ public:
     char* text;
     fable_u32 unknown04;
     fable_u32 unknown08;
@@ -621,18 +621,18 @@ FABLE_STATIC_ASSERT(sizeof(CCharString) == 0x04);
 // PDB8F0D10 PlayCombatAnimation takes two Creature references;8F3C30 shield takes Creature reference.
 // Field-free actual string API adapter restores the genuine implicit literal conversion and default length.
 struct CRetailString:CCharString {CRetailString(const char*,long=-1);}; //99EBF0, implicit actual base dtor99EAE0
-struct CThingCreatureBase;
-struct CThing;
-struct CCreatureActionBase { unsigned char nativeStorage[0xa8]; };
-struct CCombatActionBase : CCreatureActionBase { unsigned char nativeTail[0x6c]; };
-struct CCreatureAction_PlayCombatAnimation : CCombatActionBase {
+class CThingCreatureBase;
+class CThing;
+class CCreatureActionBase { public: unsigned char nativeStorage[0xa8]; };
+class CCombatActionBase : public CCreatureActionBase { public: unsigned char nativeTail[0x6c]; };
+class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
     bool FaceTarget;
     bool UsePhysics;
     bool AlwaysUseMovementInAnim;
     unsigned char padding117;
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase&, CThingCreatureBase&, const CRetailString&, bool); // 0x008B7F80
 };
-struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
+class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { public:
     bool ImmediateCast;                 // native +0x114
     bool OneAnimCast;                    // native +0x115
     unsigned char padding116[2];
@@ -642,7 +642,7 @@ struct CCreatureAction_CastPhysicalShieldSpell : CCombatActionBase {
     CCreatureAction_CastPhysicalShieldSpell(CThingCreatureBase&, long, bool, const CRetailString&, long, float); // 0x008BB6F0
 };
 struct SCountBlock { long refs; void (FABLE_FASTCALL* destroy)(void*); void* object; };
-template<class T> struct CCountedPointer {
+template<class T> class CCountedPointer { public:
     T* object;
     SCountBlock* count;
     CCountedPointer() : object(0), count(0) {}
@@ -680,7 +680,7 @@ void CCombatSequence_WillPhysicalShieldNonMelee::OnCreate() {
 
 
 
-struct CThingCreatureBase{int identity;};
+class CThingCreatureBase{ public:int identity;};
 long g_01375550=30;
 static int errors,strings,ctors,adds,resets,destroys,baseCalls,retain,saved;
 static CThingCreatureBase *owners[4],*targetSeen,*nextOwner,*nextTarget;

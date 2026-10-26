@@ -3,12 +3,12 @@
 
 static const char* g_name = 0; static long g_default = -1; static int g_derived = 0;
 
-struct CPersistContext {
+class CPersistContext { public:
     long m_loaded;
     void Transfer(const char* name, long& value, const long& defaultValue) { g_name = name; g_default = defaultValue; value = m_loaded; }
 };
 
-struct CTCGatherPointBase {
+class CTCGatherPointBase { public:
     long MaxOccupation;
     virtual ~CTCGatherPointBase() { }
     virtual void TransferDerived(CPersistContext*) { ++g_derived; }

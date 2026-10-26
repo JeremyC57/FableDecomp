@@ -12,9 +12,9 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CCharStringData;
+class CCharStringData;
 
-struct CCharString {
+class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
     CCharString& operator=(const char* text);        // 0x0099EFE0
@@ -32,7 +32,7 @@ struct CCharStringVector {                           // std::vector<CCharString>
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);  // 0x004CDAE0
 
-struct CTCHeroStats {
+class CTCHeroStats { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04
 

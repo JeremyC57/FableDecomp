@@ -18,10 +18,10 @@ struct IDirect3DDevice9 {
     virtual long __stdcall SetStreamSource(unsigned long n, IDirect3DVertexBuffer9* d, unsigned long o, unsigned long st) { g_ss[0] = n; g_ss[1] = (unsigned long)d; g_ss[2] = o; g_ss[3] = st; g_order[g_n++] = 1; return 0; }
 };
 enum EPrimitiveType { PRIMITIVE_TYPE_DEFAULT = -1, PrimitiveTriangleList = 4 };
-struct CRenderStateManager { void RealiseRenderState() { g_order[g_n++] = 2; } };
-struct CRenderManager : public CRenderStateManager { };
-struct CVertexBufferWin32 { void* __vftable; IDirect3DVertexBuffer9* PVertexBuffer; unsigned long Length; long Type; unsigned char Stride; };
-struct CShaderRenderManager {
+class CRenderStateManager { public: void RealiseRenderState() { g_order[g_n++] = 2; } };
+class CRenderManager : public CRenderStateManager { public: };
+class CVertexBufferWin32 { public: void* __vftable; IDirect3DVertexBuffer9* PVertexBuffer; unsigned long Length; long Type; unsigned char Stride; };
+class CShaderRenderManager { public:
     unsigned char _pad000[0x1d0]; CRenderManager* RenderManager; IDirect3DDevice9* D3DDevice;
     void SelectVertexBuffer(CVertexBufferWin32& vb) { D3DDevice->SetStreamSource(0, vb.PVertexBuffer, 0, vb.Stride); }
     void DrawBuffersNonIndexed(CVertexBufferWin32& vertexBuffer, unsigned long startVertex, unsigned long primitiveCount, EPrimitiveType primitiveType);

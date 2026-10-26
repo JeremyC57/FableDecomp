@@ -5,7 +5,7 @@
 // Shape: the constant 1 lives in eax for both turn-state compares and the OneFrameDelay byte store (`mov [..],al`), so
 // both setters are inline members with the change test (`if (state != value) state = value;`); the -1 store
 // follows the head-state change (unlike SetHeadTurnState 0x007517B0, which stores it first), so it is a separate statement.
-struct CTCLook {
+class CTCLook { public:
     unsigned char _pad_0x00[0x48];
     long          HeadTurnState;                 // +0x48
     long          BodyTurnState;                 // +0x4c

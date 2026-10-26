@@ -13,16 +13,16 @@
 // Shape: HasTC + inline GetTC per inventory inside the alive test (edi pushed only there, all three keys in the
 //   single frame word that later holds the file-name temporary); the save result held in bl across that temporary's
 //   destructor; the flag returned by re-reading the member.
-struct CWideStringData;
-struct CWideString {
+class CWideStringData;
+class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                          // 0x0099B510
 };
-struct CUserProfileManager {
+class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();            // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     CWideString GetAutoSaveCheckPointFileName() const;       // 0x004066F0
 };
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -30,7 +30,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];              // +0x20 bitset<274>
     CInterfaceMap Components;                      // +0x44
@@ -53,13 +53,13 @@ struct CThing {
     }
 };
 namespace NInventory {
-struct CTCInventoryBase {                          // TC 0x11 / 0x12 / 0x13 (the three inventories)
+class CTCInventoryBase { public:                          // TC 0x11 / 0x12 / 0x13 (the three inventories)
     void IncrementQuestPersistentRefCountForNonPersistentItems();   // 0x005BCF51
 };
 }
-struct CPlayer { CThing* GetHeroThing(); };          // 0x00487DC0
-struct CPlayerManager { CPlayer* GetMainPlayer(); }; // 0x00449970
-struct CWorld {
+class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayerManager { public: CPlayer* GetMainPlayer(); }; // 0x00449970
+class CWorld { public:
     unsigned char   _pad00[0xc];
     CPlayerManager* PlayerManager;                            // +0x0C
     unsigned char   _pad10[0x134 - 0x10];

@@ -1,4 +1,4 @@
-struct CCreatureAction_MidAttackSide {
+class CCreatureAction_MidAttackSide { public:
     void* vftable;
 };
 

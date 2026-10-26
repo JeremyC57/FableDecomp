@@ -9,13 +9,13 @@
 // dead-flag tests; target, owner and the call's owner are three named locals fetched in that order before the temporary is built
 // (an inline `Owner.GetPItem()->SetCurrentAction(T(Owner.GetPItem(), ...))` fetches `this` after the temporary and drops the ebx 1).
 // Layout: NumberOfStrikes at retail +0x114 (PDB +0x12c); thing byte +0x91 bit 0 = dead.
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     void RemoveTC(long interfaceType);          // 0x004C9840
 };
-struct CCreatureActionBase;
-struct CThingCreatureBase : CThing {
+class CCreatureActionBase;
+class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -25,11 +25,11 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThingCreatureBase* GetPItem() const;       // 0x00A01B50
 };
 
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     virtual void v00();
 };
 
-struct CCombatActionBase : CCreatureActionBase {
+class CCombatActionBase : public CCreatureActionBase { public:
     long _pad04;
     CBaseIntelligentPointer Owner;              // +0x08 (the owning creature)
     unsigned char _pad10[0xa8 - 0x10];
@@ -38,7 +38,7 @@ struct CCombatActionBase : CCreatureActionBase {
     virtual void FinishAction();                // 0x00859A20
 };
 
-struct CCreatureAction_CastStrengthMultiStrike : CCombatActionBase {   // retail sizeof 0x118
+class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:   // retail sizeof 0x118
     long NumberOfStrikes;                       // +0x114 (PDB +0x12c)
     CCreatureAction_CastStrengthMultiStrike(CThingCreatureBase* owner, CThing* target, long numberOfStrikes);   // 0x008E6A70
     ~CCreatureAction_CastStrengthMultiStrike(); // 0x0062E900

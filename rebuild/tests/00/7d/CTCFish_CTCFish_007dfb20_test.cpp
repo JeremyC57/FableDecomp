@@ -10,10 +10,10 @@ static unsigned long GFRandom(unsigned long range, unsigned long* seed)
 }
 
 class CThing;
-struct CFishDef { float MinLength, MaxLength, MinWeight, MaxWeight, MinSpeed, MaxSpeed; };
-template <class T> struct CDefPointer { T* Object; CDefPointer() : Object(0) { } T* operator->() const { return Object; } };
+class CFishDef { public: float MinLength, MaxLength, MinWeight, MaxWeight, MinSpeed, MaxSpeed; };
+template <class T> class CDefPointer { public: T* Object; CDefPointer() : Object(0) { } T* operator->() const { return Object; } };
 static CFishDef g_def = { 10.0f, 5.0f, 2.0f, 0.0f, 1.5f, 3.0f };
-struct CDefClassBase { bool GetSubDef(CDefPointer<const CFishDef>* out) const { out->Object = &g_def; return true; } };
+class CDefClassBase { public: bool GetSubDef(CDefPointer<const CFishDef>* out) const { out->Object = &g_def; return true; } };
 class CThing { public: const CDefClassBase* PBaseDef; };
 static unsigned long g_seed = 12345;
 class CTCBase {

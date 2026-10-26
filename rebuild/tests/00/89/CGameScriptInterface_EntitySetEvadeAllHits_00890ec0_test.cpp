@@ -9,7 +9,7 @@ struct Entity {
     unsigned char fbc;
 };
 
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void s0() = 0;
     virtual void s1() = 0;
     virtual void s2() = 0;

@@ -12,7 +12,7 @@ struct CBasicStringChar {
     bool          UseFastExtend : 1;
     bool operator==(const char* text) const;          // 0x004115A0
 };
-struct CCharStringData {
+class CCharStringData { public:
     CBasicStringChar Data;
     long             NoRefs;
 };
@@ -44,7 +44,7 @@ public:
 CCharString __fastcall GFIntToCharString(long value); // 0x0099F830
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 
-struct CUserProfileManager {                          // retail offsets (Ego_r.pdb +4 above these)
+class CUserProfileManager { public:                          // retail offsets (Ego_r.pdb +4 above these)
     unsigned char _pad00[0x110];
     CWideString   ScoreBoardUserName;                 // +0x110 (PDB +0x114)
     CWideString   ScoreBoardPassword;                 // +0x114
@@ -67,7 +67,7 @@ struct CUserProfileManager {                          // retail offsets (Ego_r.p
 #define V10(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3(); virtual void n##4(); \
     virtual void n##5(); virtual void n##6(); virtual void n##7(); virtual void n##8(); virtual void n##9();
 namespace NUISystem {
-struct CEditBox {
+class CEditBox { public:
     V10(v0) V10(v1) V10(v2) V10(v3) V10(v4) V10(v5) V10(v6) V10(v7)
     virtual void v80(); virtual void v81(); virtual void v82(); virtual void v83();
     virtual CCharString GetName() const;              // slot 84 (+0x150)
@@ -100,7 +100,7 @@ struct CEditBoxList {                                 // list<NUISystem::CEditBo
     CEditBoxIterator begin() const { return CEditBoxIterator(_M_node->_M_next); }
     CEditBoxIterator end() const { return CEditBoxIterator(_M_node); }
 };
-struct CTCInventory {
+class CTCInventory { public:
     void*         __vftable;                          // +0x00
     unsigned char _pad_0x04[0x140];
     CEditBoxList  EditBoxes;                          // +0x144

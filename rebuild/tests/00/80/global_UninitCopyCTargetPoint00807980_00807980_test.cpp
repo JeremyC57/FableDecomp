@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <new>
 
-struct CBaseObject { int m_id; };
+class CBaseObject { public: int m_id; };
 static int g_ctors = 0, g_gets = 0, g_sets = 0;
 
 struct CBaseIntelligentPointer {
@@ -12,12 +12,12 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item) { ++g_sets; PData = item; }
 };
 template <class T>
-struct CIntelligentPointer : CBaseIntelligentPointer {
+class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 };
-struct CThing;
-struct C3DVector {
+class CThing;
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() : X(0), Y(0), Z(0) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }

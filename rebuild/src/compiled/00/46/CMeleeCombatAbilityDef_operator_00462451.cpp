@@ -11,14 +11,14 @@
 // Shape: memberwise assignment in declaration order; CDefString is a 4-byte handle copied as a dword,
 // bools as byte moves, containers through their out-of-line operator=.
 #pragma pack(push, 1)
-struct CParentDefClassBase {
+class CParentDefClassBase { public:
     virtual void v00();
     unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
     CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
 };
 #pragma pack(pop)
 
-struct CDefString {                     // 4-byte def-string handle (trivially copyable)
+class CDefString { public:                     // 4-byte def-string handle (trivially copyable)
     long m_index;
 };
 
@@ -29,14 +29,14 @@ struct CWeaponClassVector {             // retail std::vector<EWeaponClass> (12 
     CWeaponClassVector& operator=(const CWeaponClassVector& other);   // 0x004624C6
 };
 
-struct CHeroAbilityStatPackage {        // retail 12 bytes (a map of stat requirements)
+class CHeroAbilityStatPackage { public:        // retail 12 bytes (a map of stat requirements)
     void*         m_allocator;
     void*         m_head;
     unsigned long m_size;
     CHeroAbilityStatPackage& operator=(const CHeroAbilityStatPackage& other);   // 0x004621E9
 };
 
-struct CMeleeCombatAbilityDef : CParentDefClassBase {  // vtable 0x01234D5C
+class CMeleeCombatAbilityDef : public CParentDefClassBase { public:  // vtable 0x01234D5C
     CDefString FlourishAnimName;                // +0x3c
     CDefString FlourishResponseAnimName;        // +0x40
     float      DamageMultiplier;                // +0x44

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A78060, length 80 bytes.
 // Leaf: RemoveConnectionToRegion
 // Callees: 0x00A77710 (thiscall on each region with the connection; the manifest label `remove_if<...>` is propagated). Shape: the sentinel in edi, the other region in ebx, the far end chosen with a two-way branch, `ret 4`.
-struct CNavRegion;
+class CNavRegion;
 struct SNavConnection_00a78060 {
     CNavRegion* m_pRegionA;                        // +0x00
     CNavRegion* m_pRegionB;                        // +0x04
@@ -14,7 +14,7 @@ struct SConnectionNode_00a78060 {
     SNavConnection_00a78060*  m_pConnection;       // +0x08
 };
 
-struct CNavRegion {
+class CNavRegion { public:
     long                      RegionID;
     SConnectionNode_00a78060* m_pConnections;      // +0x04: the sentinel
     void RemoveConnection(SNavConnection_00a78060* connection);   // 0x00A77710

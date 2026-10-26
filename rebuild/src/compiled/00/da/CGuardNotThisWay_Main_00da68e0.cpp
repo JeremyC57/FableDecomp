@@ -12,18 +12,18 @@
 // Shape: CTimer's __forceinline destructor expands at the loop exit and the first in-loop exit; inline_depth(0) on the four
 //   animation-wait returns gives retail's out-of-line ~CTimer copy there (with a plain inline destructor the pragma sends
 //   EVERY exit out of line). The loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }`.
-struct CCharString {
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CCPPointerInfo {
+class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
@@ -46,8 +46,8 @@ struct CBase {                                          // vtable 0x01231710
     CBase() { }                                         // out-of-line copy 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
-struct C3DVector { float X, Y, Z; };
-struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+class C3DVector { public: float X, Y, Z; };
+class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
@@ -59,7 +59,7 @@ namespace N_0099a380 { struct CBaseIntelligentPointer {                        /
     CBaseIntelligentPointer();                          // 0x0099A380
     virtual ~CBaseIntelligentPointer();                 // 0x0099A430
 }; } using N_0099a380::CBaseIntelligentPointer;
-struct CScriptGameResourceObjectBase : CBaseIntelligentPointer {   // vtable 0x0126008C
+class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
@@ -71,7 +71,7 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAlive() { }
 };
-struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
+class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
@@ -80,7 +80,7 @@ struct CScriptGameResourceObjectScriptedThingBase : CScriptGameResourceObjectBas
     void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
-struct CGameScriptInterface {                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -182,7 +182,7 @@ struct CGameScriptInterface {                          // vtable 0x01260F0C (slo
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-struct CTimer {                                         // 4 bytes: an index into the global script timers
+class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;
     CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
     __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
@@ -191,7 +191,7 @@ struct CTimer {                                         // 4 bytes: an index int
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern bool g_bScriptAnimationFlag;                     // 0x01375748
-struct CEntityScriptBase {
+class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08

@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CSimVoice { int f0; };
+class CSimVoice { public: int f0; };
 static int g_dtor_called = 0;
 static int g_delete_called = 0;
 extern "C" void __fastcall CSimVoice_dtor(CSimVoice* voice) { g_dtor_called++; (void)voice; }

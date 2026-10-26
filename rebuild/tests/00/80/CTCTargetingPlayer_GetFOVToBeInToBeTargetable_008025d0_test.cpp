@@ -1,9 +1,9 @@
 // Behaviour test for 0x008025D0 CTCTargetingPlayer::GetFOVToBeInToBeTargetable: aiming-mode arc vs normal arc, in turns.
 #include <cstdio>
-struct CPlayer { bool PCProjectileWeaponThirdPersonAimingMode; };
-struct CThing { CPlayer* player; CPlayer* GetPlayer() { return player; } };
-struct CTargetingDef { float TargetArc; float TargetArcPCThirdPersonAimingMode; };
-struct CTCTargetingPlayer {
+class CPlayer { public: bool PCProjectileWeaponThirdPersonAimingMode; };
+class CThing { public: CPlayer* player; CPlayer* GetPlayer() { return player; } };
+class CTargetingDef { public: float TargetArc; float TargetArcPCThirdPersonAimingMode; };
+class CTCTargetingPlayer { public:
     CThing* ParentThing;
     CTargetingDef* PSubDef;
     float GetFOVToBeInToBeTargetable() const

@@ -32,7 +32,7 @@ struct CTCMap_Retail {
         return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
     }
 };
-struct CThing {
+class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                 // +0x20 UsingComponents
     unsigned char  _pad40[4];
@@ -53,20 +53,20 @@ __forceinline CTCBase_Retail* GetTCIfPresentConst(const CThing* thing, long kind
         tc = thing->m_tcs.Find(kind);
     return tc;
 }
-struct CTCQuestCard {
+class CTCQuestCard { public:
     unsigned char _pad00[0x14];
     long FeatIndex;                             // +0x14 (-1 for an ordinary quest card)
 };
-struct CTCHeroCentre {
+class CTCHeroCentre { public:
     void RemoveQuestCard(CThing* card);         // 0x0077D400
 };
-struct CQuestManager {
+class CQuestManager { public:
     bool ActivateFeatCard(CThing* card);                    // 0x004B1590
     bool ActivateQuestCard(CThing* card, bool fromScript);  // 0x004B4AA0
 };
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 namespace NInventory {
-struct CCategory {
+class CCategory { public:
     CThing* GetAssociatedThing();               // 0x005BD1AE
 };
 }
@@ -74,7 +74,7 @@ struct CCategory {
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
     virtual void v##n##8(); virtual void v##n##9();
-struct CTCInventoryQuests {
+class CTCInventoryQuests { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     FILL10(1) FILL10(2) FILL10(3) FILL10(4) FILL10(5) FILL10(6)

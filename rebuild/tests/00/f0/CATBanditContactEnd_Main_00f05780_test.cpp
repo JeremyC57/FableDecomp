@@ -1,8 +1,8 @@
 #include <cstdio>
 
-struct CScriptThing { void* __vftable; void* PImp_Data; void* PImp_Info; };
+class CScriptThing { public: void* __vftable; void* PImp_Data; void* PImp_Info; };
 static int g_pumps = 0, g_ends = 0; static const CScriptThing* g_thing = 0; static void* g_contact = 0; static int g_waits = 0;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     virtual void v000() { }
     virtual void v001() { }
     virtual void v002() { }

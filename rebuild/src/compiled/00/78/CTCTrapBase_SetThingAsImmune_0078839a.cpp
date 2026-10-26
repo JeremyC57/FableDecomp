@@ -9,7 +9,7 @@
 // constructor's returned `this` (eax) is pushed straight into push_back; the temporary dies after the call.
 // Layout: the engine header CTCTrapBase.h is the PDB layout (12+16-byte vectors); the retail constructor 0x0078918D
 // shows 12-byte STLport vectors (HitThings +0x0C, ImmuneThings +0x18), so a local model is used.
-struct CThing;
+class CThing;
 
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
@@ -28,7 +28,7 @@ struct CIntelligentPointerVector {          // retail STLport vector, 12 bytes
     void push_back(const CIntelligentPointer& value);   // 0x004AD520
 };
 
-struct CTCTrapBase {
+class CTCTrapBase { public:
     void*                     __vftable;    // +0x00
     unsigned char             _pad_0x04[0x8];
     CIntelligentPointerVector HitThings;    // +0x0C (pair<CIntelligentPointer, long> elements)

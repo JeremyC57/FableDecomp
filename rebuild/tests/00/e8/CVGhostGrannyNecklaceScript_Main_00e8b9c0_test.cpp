@@ -4,7 +4,7 @@
 static char g_log[1024];
 static void Log(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
 struct CV_GhostGrannyNecklaceScript;
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     bool* necklace; int returnAfter; int leaveAfter;
     void NewScriptFrame() { Log("frame"); if (--returnAfter == 0) *necklace = true; if (*necklace) --leaveAfter; }
     bool IsRegionLoaded(const char* r) { return std::strcmp(r, "OrchardFarm") == 0 && leaveAfter > 0; }

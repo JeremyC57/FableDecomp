@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour test for 00e7f7d0: GetNextPrizeWeight returns FishPrizeWeights[PrizeNumber + 1], or entry 1 while PrizeNumber == -1.
 static float g_weights[5] = { 1.5f, 2.5f, 4.0f, 6.5f, 9.0f };
-struct CScriptDef { float* FishPrizeWeights; };
+class CScriptDef { public: float* FishPrizeWeights; };
 static CScriptDef g_def = { g_weights };
 static CScriptDef* g_pScriptDef = &g_def;
 struct Script {

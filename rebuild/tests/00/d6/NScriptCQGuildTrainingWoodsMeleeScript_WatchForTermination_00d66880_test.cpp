@@ -6,7 +6,7 @@
 static int g_frames = 0, g_endAt = 1000, g_failed = 0, g_completed = 0, g_card = 0, g_lines = 0, g_deactivated = 0, g_guildAt = 9;
 static int g_lineFrame = -1;
 struct SMasterData { bool ScorpionsDestroyedCutscenePlayed; };
-struct CGameScriptInterface {
+class CGameScriptInterface { public:
     void NewScriptFrame() const { ++g_frames; }
     void SetQuestAsFailed() const { ++g_failed; }
     void SetQuestAsCompleted() const { ++g_completed; }

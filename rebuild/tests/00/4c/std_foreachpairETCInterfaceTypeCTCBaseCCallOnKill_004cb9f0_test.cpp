@@ -3,9 +3,9 @@
 #include <cstdio>
 
 static int g_order[8]; static int g_n = 0;
-struct CTCBase { int id; virtual void OnKill() { g_order[g_n++] = id; } };
+class CTCBase { public: int id; virtual void OnKill() { g_order[g_n++] = id; } };
 struct Pair { long first; CTCBase* second; Pair(const Pair& o) : first(o.first), second(o.second) {} Pair(long f, CTCBase* s) : first(f), second(s) {} };
-struct CCallOnKill { void operator()(Pair p) const { p.second->OnKill(); } };
+class CCallOnKill { public: void operator()(Pair p) const { p.second->OnKill(); } };
 
 template <class I, class F> F ForEach(I first, I last, F f) { for (; first != last; ++first) f(*first); return f; }
 

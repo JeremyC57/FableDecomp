@@ -2,11 +2,11 @@
 // Behaviour test for CTrophyDef::~CTrophyDef (0x004D7FAD): the seven strings die last-declared first, then
 // the def-pointee layers.
 static int g_order[16]; static int g_n = 0;
-struct CCharString { int id; ~CCharString() { g_order[g_n++] = id; } };
-struct CResource { virtual void v00() { } ~CResource() { g_order[g_n++] = 100; } };
-struct CDefPointeeBase : CResource { ~CDefPointeeBase() { g_order[g_n++] = 50; } };
-struct CSubDefClassBase : CDefPointeeBase { };
-struct CTrophyDef : CSubDefClassBase {
+class CCharString { public: int id; ~CCharString() { g_order[g_n++] = id; } };
+class CResource { public: virtual void v00() { } ~CResource() { g_order[g_n++] = 100; } };
+class CDefPointeeBase : public CResource { public: ~CDefPointeeBase() { g_order[g_n++] = 50; } };
+class CSubDefClassBase : public CDefPointeeBase { public: };
+class CTrophyDef : public CSubDefClassBase { public:
     long ShowTrophyAnimName;
     CCharString SoundStartGame, SoundShowTrophy, SoundGainedWitness, SoundOutOfTime,
                 SoundGotAllWitnesses, SoundEndNewHighScore, SoundEndNoNewScore;

@@ -6,15 +6,15 @@
 // immediate store (0.0f). The bool result accumulates in bl (`or bl,al`). Loop: the component-map walk of
 // CParticleSystem::EnterTimelineEnd (0x00AF4070), entry pointer in ebp, state pointer in edi.
 
-struct CIEngine;
-struct C3DBoundingSphere;
-struct CEnginePrimitivePrepareInfo;
-struct CEnginePrimitiveHandle;
+class CIEngine;
+class C3DBoundingSphere;
+class CEnginePrimitivePrepareInfo;
+class CEnginePrimitiveHandle;
 struct CParticleSystem;
 struct CParticleUpdateParameters { unsigned char m_data[0x24]; };   // retail 0x24 bytes (PDB 0x2c)
 
 namespace NParticleEngine {
-struct CPSCBase {                                    // particle-system component; slots by retail call offsets
+class CPSCBase { public:                                    // particle-system component; slots by retail call offsets
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -83,7 +83,7 @@ struct CParticleSystem {
     bool GetBoundingSphereWorldSpace(C3DBoundingSphere* sphere, float time, CParticleUpdateParameters* params);
 };
 
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     float Centre[3];
     float Radius;                                    // +0x0c
 };

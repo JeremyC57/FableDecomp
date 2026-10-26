@@ -1,6 +1,6 @@
 // Behaviour test for CAIStateGroup_Thunder::IsRunnable (0x0096C2E0): no creature target -> false; a fresh hit latches the arena centre and counts, reaching the def's threshold latches the target; otherwise the 0xAD value above the def limit latches the target; the def reference is always released.
 #include <cstdio>
-struct CThing { unsigned char ThingClass; };
+class CThing { public: unsigned char ThingClass; };
 struct CDef { long RefCount; long HitsBeforeTarget; long EnvironmentThreshold; };
 struct CThunder {
     CThing* target; bool hitEvent; long envValue; CDef* def; CThing* arena;

@@ -49,7 +49,7 @@ struct SCriticalSection {                          // RTL_CRITICAL_SECTION (24 b
     unsigned long SpinCount;
 };
 
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     virtual void v00();
     CHeader*      Buffer;                          // +0x04
     void*         UnalignedBuffer;                 // +0x08

@@ -1,10 +1,10 @@
 // Behaviour test for CWorldMap::AreaCoversOneLevel 0x004FB160: four corners in one non-zero map.
 #include <cstdio>
 
-struct C2DBoxI { long TLX, TLY, BRX, BRY; };
-struct C2DCoordI { long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
+class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 
-struct CWorldMap {
+class CWorldMap { public:
     virtual long GetMapNumberAt(const C2DCoordI& pos) const
     {
         // 2 maps side by side: x < 100 -> map 1, 100 <= x < 200 -> map 2, beyond -> 0

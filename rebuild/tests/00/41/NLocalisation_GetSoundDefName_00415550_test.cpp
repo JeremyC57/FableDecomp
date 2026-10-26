@@ -2,8 +2,8 @@
 #include <cstring>
 // Behaviour test for NLocalisation::GetSoundDefName (retail 0x00415550): the language id from GetLanguage selects
 // the bank name; ids that are not one of the seven localised languages fall back to English.
-struct CCharString
-{
+class CCharString
+{ public:
     const char* m_text;
     CCharString(const char* text, long) : m_text(text) { }
 };

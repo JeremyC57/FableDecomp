@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CDisplayEngine;
+class CDisplayEngine;
 
 struct CDisplayEngineVtbl
 {
@@ -10,15 +10,15 @@ struct CDisplayEngineVtbl
     bool (__fastcall *DrawIsDrawable)(CDisplayEngine*);
 };
 
-struct CDisplayEngine
-{
+class CDisplayEngine
+{ public:
     CDisplayEngineVtbl* vtbl;
 };
 
 struct CViewBase {};
 
-struct CThingTrackNode : CViewBase
-{
+class CThingTrackNode : public CViewBase
+{ public:
     bool __fastcall DrawIsDrawable();
 };
 

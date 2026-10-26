@@ -8,15 +8,15 @@
 // Layout: PDB CLocalDetailCacheMap::CQuadTreeElement (landed UnloadStaticContents 0x00BDE020 model).
 // Shape: as 0x00BDDB90; the three bit-field clears (written after the zero stores) merge into one `and al,0F8h`
 // that VC7.1 hoists above the three zero stores; written first, the byte store lands before them.
-struct CLocalDetailCacheMap;
+class CLocalDetailCacheMap;
 struct CObjectCacheGroupCollection {               // polymorphic; the chain is singly linked through +4
     virtual ~CObjectCacheGroupCollection();        // slot 0: the deleting destructor
     CObjectCacheGroupCollection* Next;             // +0x04
 };
-struct CEngineStaticMapFileBlockManager {
+class CEngineStaticMapFileBlockManager { public:
     void ReleaseRequest(long fileBlockPos);        // 0x00BE0400
 };
-struct C3DBoundingSphere {                         // centre + radius (16 bytes)
+class C3DBoundingSphere { public:                         // centre + radius (16 bytes)
     float X, Y, Z, Radius;
     C3DBoundingSphere() : X(0.0f), Y(0.0f), Z(0.0f), Radius(0.0f) { }
     void Reset() { X = 0.0f; Y = 0.0f; Z = 0.0f; Radius = 0.0f; }

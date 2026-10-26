@@ -5,14 +5,14 @@
 // remainder in edx is stored). `ret 8`: the second dword argument is never read. Layout from engine/CEngineWeatherRenderer.h
 // (WeatherMaskList +0x66c = CWeatherMask[3], CurrentMask +0x780) and the CWeatherMask PDB record (bounding sphere, box, inverse
 // transform, scale: 92 bytes).
-struct CWeatherMask {                              // 92 bytes, PDB: BSphere +0, BBox +0x10, InvTransform +0x28, Scale +0x58
+class CWeatherMask { public:                              // 92 bytes, PDB: BSphere +0, BBox +0x10, InvTransform +0x28, Scale +0x58
     float BSphere[4];
     float BBox[6];
     float InvTransform[12];
     float Scale;
 };
 
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer { public:
     unsigned char _pad0[0x66c];
     CWeatherMask  WeatherMaskList[3];              // +0x66c
     long          CurrentMask;                     // +0x780

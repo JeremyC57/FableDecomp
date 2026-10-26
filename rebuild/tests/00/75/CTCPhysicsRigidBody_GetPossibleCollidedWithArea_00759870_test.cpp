@@ -1,7 +1,7 @@
 #include <cstdio>
 // Behaviour model of CTCPhysicsRigidBody::GetPossibleCollidedWithArea (0x00759870)
-struct C2DCoordI { long X, Y; };
-struct C2DBoxI { C2DCoordI TopLeft, BottomRight;
+class C2DCoordI { public: long X, Y; };
+class C2DBoxI { public: C2DCoordI TopLeft, BottomRight;
     void ValidateOrientationAndFlip() {
         if (BottomRight.X < TopLeft.X) { long t = TopLeft.X; TopLeft.X = BottomRight.X; BottomRight.X = t; }
         if (BottomRight.Y < TopLeft.Y) { long t = TopLeft.Y; TopLeft.Y = BottomRight.Y; BottomRight.Y = t; }

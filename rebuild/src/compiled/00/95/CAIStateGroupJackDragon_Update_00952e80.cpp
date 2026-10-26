@@ -11,8 +11,8 @@
 //          loaded into esi once before the loop; the six-state switch is a jump table whose default loops again.
 // Layout: the generated engine/CAIStateGroup_JackDragon.h is packed (#pragma pack(1)) and misplaces every member after
 //          +0x64, so the class is modelled locally like the landed JackDragon rows (PEnemy +0x14, CurrentState +0x5c).
-struct CTCBase;
-struct CThing;
+class CTCBase;
+class CThing;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -35,7 +35,7 @@ struct CInterfaceMap {
     }
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -76,23 +76,23 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 
-struct CPlayer {
+class CPlayer { public:
     CThing* GetPCharacter();                    // 0x00487DC0
 };
-struct CPlayerManager {
+class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-struct CTCBoss {                                // interface 0xad
+class CTCBoss { public:                                // interface 0xad
     bool IsReadyForPhaseChange();               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     long ScriptAIPriority;                      // +0x08

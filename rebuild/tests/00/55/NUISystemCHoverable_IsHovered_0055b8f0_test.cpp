@@ -187,7 +187,7 @@ struct C2DVector { float X,Y; C2DVector(){} C2DVector(const C2DVector& p):X(p.X)
 struct C2DBoxF { float TLX,TLY,BRX,BRY; C2DBoxF(){} C2DBoxF(const C2DBoxF& p):TLX(p.TLX),TLY(p.TLY),BRX(p.BRX),BRY(p.BRY){} };
 struct C2DBoxI { long TLX,TLY,BRX,BRY; };
 struct C2DCoordI { long X,Y; C2DCoordI(long x,long y):X(x),Y(y) {} };
-struct CHoverable;
+class CHoverable;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union HoverSlot {
     void* Address;
@@ -197,7 +197,7 @@ union HoverSlot {
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(HoverSlot)==4);
 #endif
-struct CHoverable : ::CHoverable {
+class CHoverable : public ::CHoverable { public:
     bool IsHovered(C2DBoxI&) const;
 };
 bool CHoverable::IsHovered(C2DBoxI& mouse) const {

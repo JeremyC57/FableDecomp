@@ -4,7 +4,7 @@
 // Retail: e9 00000000 => jmp rel32 (target relocation-masked).
 // Model the destination as an extern free function; the thunk is a plain tail call.
 
-struct CPlayerGuiDef;
+class CPlayerGuiDef;
 
 // Real implementation target (address relocation-masked in parity).
 extern void __fastcall CPlayerGuiDef_Copy_impl(CPlayerGuiDef* thisptr, void* other);

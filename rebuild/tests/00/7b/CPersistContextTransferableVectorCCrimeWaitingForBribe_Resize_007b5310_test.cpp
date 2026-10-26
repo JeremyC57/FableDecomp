@@ -6,7 +6,7 @@
 #define __forceinline inline
 #endif
 
-struct CCrimeWaitingForBribe {
+class CCrimeWaitingForBribe { public:
     long DeedHandle;
     long Type;
     CCrimeWaitingForBribe() : DeedHandle(0), Type(0) { }

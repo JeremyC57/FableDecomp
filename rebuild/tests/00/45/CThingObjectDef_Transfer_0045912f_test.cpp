@@ -16,11 +16,11 @@
 //   context-argument slot ([ebp+0Bh]), the `false` default is a one-byte temporary at [ebp-1], and each bit is merged back
 //   with xor/and/xor; the constant 1 lives in ebx (bit masks and the mode test).
 
-struct CEngineGraphic {
+class CEngineGraphic { public:
     unsigned char _body[0x10];
 };
 
-struct CPersistContext {
+class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                                      // +0x18
     void Transfer(long& value);                                              // 0x00431102
@@ -30,14 +30,14 @@ struct CPersistContext {
     void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
 };
 
-struct CThingBaseDef {
+class CThingBaseDef { public:
     virtual void Transfer(CPersistContext& context);                         // 0x00676BE0
     unsigned char _pad04[0x50 - 4];
     float         Health;                                                    // +0x50
     unsigned char _pad54[0x70 - 0x54];
 };
 
-struct CThingObjectDef : CThingBaseDef {            // vtable 0x01234E94
+class CThingObjectDef : public CThingBaseDef { public:            // vtable 0x01234E94
     CEngineGraphic Graphic;                         // +0x70
     float          RotationTime;                    // +0x80
     long           Material;                        // +0x84

@@ -34,7 +34,7 @@ void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideStri
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar16* b);       // 0x0099BF30
 
-struct CDiskFileWin32 : CBaseClassNonCopyable {    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -49,7 +49,7 @@ struct CDiskFileWin32 : CBaseClassNonCopyable {    // vtable 0x0122D06C
     virtual long GetLength();                      // slot 9 (+0x24)
 };
 
-template <class T> struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     T* Data;
     void* Info;
     void Reset(T* p);                              // 0x009D1EE0
@@ -62,7 +62,7 @@ struct CChecksumCacheFile {
     void Open(const CWideString& path);            // 0x00A60D40
 };
 
-struct CBankFile {
+class CBankFile { public:
     virtual ~CBankFile();
     unsigned char _pad04[0x74];                    // +0x04 Size, the four CArrays, the four packed arrays
     unsigned long OpenFlags;                       // +0x78

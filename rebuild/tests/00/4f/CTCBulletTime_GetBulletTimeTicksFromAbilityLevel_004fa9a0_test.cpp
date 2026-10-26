@@ -1,6 +1,6 @@
 #include <cstdio>
 #pragma optimize("y", off)
-struct CTCBulletTime { long GetBulletTimeTicksFromAbilityLevel(float value); };
+class CTCBulletTime { public: long GetBulletTimeTicksFromAbilityLevel(float value); };
 long CTCBulletTime::GetBulletTimeTicksFromAbilityLevel(float value)
 {
     long  result; float one; float half; float back;

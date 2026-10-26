@@ -17,7 +17,7 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 
-struct CTCBase;
+class CTCBase;
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -26,7 +26,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);      // 0x0040F020
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -45,10 +45,10 @@ struct CThing {
     }
 };
 
-struct CThingAICreature : CThing {
+class CThingAICreature : public CThing { public:
 };
 
-struct CTCBoss {
+class CTCBoss { public:
     void KillHelpers();                         // 0x007AF490
 };
 

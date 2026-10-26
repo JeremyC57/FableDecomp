@@ -19,24 +19,24 @@
 //   player interface, +0x218 a control-lock byte.
 #include "engine/CTCBase.h"
 
-struct CGamePlayerInterface {
+class CGamePlayerInterface { public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
 };
-struct CPlayer {
+class CPlayer { public:
     unsigned char _pad000[0x0c];
     CGamePlayerInterface* m_pInterface;                 // +0x0c
     unsigned char _pad010[0x218 - 0x10];
     bool m_controlsLocked;                              // +0x218
     long GetPlayerNumber() const;                       // 0x00487510
 };
-struct CThing {
+class CThing { public:
     CPlayer* GetPlayer();                               // 0x004C7A10
     const CPlayer* GetPlayer() const;                   // 0x004C7A30
 };
 bool __fastcall IsAvailableForHeroRun(CThing* thing);       // 0x0085F560
 bool __fastcall IsAvailableForHeroSprint(CThing* thing);    // 0x0085F470
 
-struct CHeroSpecialMovementDef {
+class CHeroSpecialMovementDef { public:
     unsigned char _pad00[0x28];
     float TotalTimeToSprintSeconds;                     // +0x28
     float MinimumNumberOfSecondsLeftToBeAllowedToSprint;   // +0x2c
@@ -51,7 +51,7 @@ extern bool g_bHeroRunOption;                           // 0x013756EA
 inline void ClampLow(float& value, float lo) { if (value < lo) value = lo; }
 inline void Raise(float& value, float hi) { if (hi > value) value = hi; }
 
-struct CTCHeroSpecialMovement : CTCBase {
+class CTCHeroSpecialMovement : public CTCBase { public:
     bool Sprinting;                                     // +0x0c
     bool Running;                                       // +0x0d
     float SprintFramesRemaining;                        // +0x10

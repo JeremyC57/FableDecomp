@@ -3,7 +3,7 @@
 // Leaf: ??_GSPoolHandle_00a8d490@@QAEPAXI@Z
 // The chunk label is propagated; named by effect. Shape: the pool loaded straight into ecx, `this` in esi, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
-struct CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool { public:
     void Free(long handle);                        // 0x00A02B30
 };
 struct SPoolHandle_00a8d490 {

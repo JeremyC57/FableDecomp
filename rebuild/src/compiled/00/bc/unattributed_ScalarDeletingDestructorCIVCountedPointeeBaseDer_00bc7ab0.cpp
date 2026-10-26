@@ -14,7 +14,7 @@ struct CListMember_0099b510 {
     ~CListMember_0099b510();            // 0x0099B510
 };
 
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase() { }
     unsigned char _body[0x5c];
 };

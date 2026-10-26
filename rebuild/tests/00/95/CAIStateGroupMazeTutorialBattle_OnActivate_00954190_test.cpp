@@ -1,13 +1,13 @@
 #include <cstdio>
-struct CThingCreatureBase {};
-struct CThing { unsigned char _pad[0x6c]; unsigned char m_flags6c; };
+class CThingCreatureBase { public:};
+class CThing { public: unsigned char _pad[0x6c]; unsigned char m_flags6c; };
 struct CBaseIntelligentPointer { virtual void v00() {} CThing* m_pItem; CThing* GetPItem() { return m_pItem; } };
-struct CCombatManager { int n; CThingCreatureBase* c; CThing* t; bool h; void RegisterCombatant(CThingCreatureBase* a, CThing* b, bool x) { ++n; c = a; t = b; h = x; } };
+class CCombatManager { public: int n; CThingCreatureBase* c; CThing* t; bool h; void RegisterCombatant(CThingCreatureBase* a, CThing* b, bool x) { ++n; c = a; t = b; h = x; } };
 static long g_frame = 500; long GFGetCurrentFrame() { return g_frame; }
 static int g_worldCalls = 0;
-struct CWorld { unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; static long GetFrameCount() { return GFGetCurrentFrame(); } };
-struct CAIBrain { unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
-struct CAIStateGroupBase { virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { ++g_worldCalls; return w; } };
+class CWorld { public: unsigned char _pad[0x4c]; CCombatManager* m_pCombatManager; static long GetFrameCount() { return GFGetCurrentFrame(); } };
+class CAIBrain { public: unsigned char _pad[0x18]; CThingCreatureBase* Creature; };
+class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* w; CWorld* GetPWorld() { ++g_worldCalls; return w; } };
 struct CAIStateGroup_MazeTutorialBattle : CAIStateGroupBase { CBaseIntelligentPointer PEnemy; unsigned char _pad1c[4]; long FrameOfLastShield; virtual void OnActivate(); };
 void CAIStateGroup_MazeTutorialBattle::OnActivate()
 {

@@ -1,11 +1,11 @@
 #include <cstdio>
 
 // Model of CCombatActionBase::SetForcedMoveToPos @ 0x008569C0
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { C3DVector r; r.X = a.X - b.X; r.Y = a.Y - b.Y; r.Z = a.Z - b.Z; return r; }
-struct CThingCreatureBase { C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
+class CThingCreatureBase { public: C3DVector pos; const C3DVector& GetPosition() const { return pos; } };
 struct CBaseIntelligentPointer { virtual void v00() {} CThingCreatureBase* m_pItem; CThingCreatureBase* GetPItem() const { return m_pItem; } };
-struct CCombatActionBase {
+class CCombatActionBase { public:
     virtual void v00() {} unsigned char _pad04[4]; CBaseIntelligentPointer PCreature; unsigned char _pad10[0xdd - 0x10]; bool PreferredFinalPosSet; unsigned char _padde[0x108 - 0xde]; C3DVector PreferredMovementVector;
     void SetForcedMoveToPos(const C3DVector& pos) { PreferredFinalPosSet = true; PreferredMovementVector = pos - PCreature.GetPItem()->GetPosition(); }
 };

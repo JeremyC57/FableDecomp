@@ -21,11 +21,11 @@ public:
     bool ToBeRemoved;                            // +0x08
     bool IsInGlobalUpdateTCs;                    // +0x09
 };
-struct CQuestManager {
+class CQuestManager { public:
     void OnActivateEntity(CThing* thing);        // 0x004AFA60
 };
 extern CQuestManager* g_pQuestManager;           // 0x013B89FC
-struct CThingManager {
+class CThingManager { public:
     void AddToRenderList(CThing* thing);         // 0x0051DF80
 };
 extern CThingManager* g_pThingManager;           // 0x013B8A1C

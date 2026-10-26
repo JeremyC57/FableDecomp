@@ -17,7 +17,7 @@ struct CMember_00455e39 {
     CMember_00455e39();                              // 0x00455E39
 };
 
-struct CSimVoicesDef : CBase_00430370 {
+class CSimVoicesDef : public CBase_00430370 { public:
     unsigned char _pad[0x38];
     CMember_00455e39 m_member;                       // +0x3c
     virtual void v00();

@@ -12,15 +12,15 @@
 // the first load to the last store of the group).
 #include "fable_string.h"
 
-struct CThingAICreature;
+class CThingAICreature;
 struct CThingAIManager;
 
-struct CThingManager {
+class CThingManager { public:
     unsigned char    _pad[0x24];
     CThingAIManager* m_pAIManager;          // +0x24
 };
 
-struct CAIBrain {
+class CAIBrain { public:
     void*          __vftable;               // +0x00
     unsigned char  _pad[0x18];              // +0x04..+0x1c
     CThingManager* ThingManager;            // +0x1c
@@ -28,7 +28,7 @@ struct CAIBrain {
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE = 0 };
 
-struct CAIStateGroupBase {                  // vptr +0x00
+class CAIStateGroupBase { public:                  // vptr +0x00
     CAIBrain*         PBrain;               // +0x04
     EScriptAIPriority ScriptAIPriority;     // +0x08
     CCharString       Name;                 // +0x0c

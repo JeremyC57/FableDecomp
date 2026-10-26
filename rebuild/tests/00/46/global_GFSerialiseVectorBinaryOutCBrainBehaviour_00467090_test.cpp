@@ -3,8 +3,8 @@
 #include <cstdio>
 static int g_traitsBuilt = 0;
 struct Writer { long out[16]; int n; Writer() : n(0) { } void WriteLong(long v) { out[n++] = v; } };
-struct CDefString { long TablePos; void TransferBinaryOut(Writer& s) const { s.WriteLong(TablePos); } };
-struct CBrainBehaviour { CDefString Name; long Priority; long ScriptAIPriority; };
+class CDefString { public: long TablePos; void TransferBinaryOut(Writer& s) const { s.WriteLong(TablePos); } };
+class CBrainBehaviour { public: CDefString Name; long Priority; long ScriptAIPriority; };
 struct BehaviourVector { CBrainBehaviour* _M_start; CBrainBehaviour* _M_finish; CBrainBehaviour* _M_end_of_storage;
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); } CBrainBehaviour& operator[](unsigned int i) { return _M_start[i]; } };
 struct BehaviourTraits {

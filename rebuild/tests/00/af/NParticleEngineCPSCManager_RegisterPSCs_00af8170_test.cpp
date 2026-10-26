@@ -4,7 +4,7 @@
 #include <cstring>
 
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[32];
     CCharString(const char* text, long length = -1) { (void)length; std::strcpy(m_text, text); ++g_live; }
     CCharString(const CCharString& other) { std::strcpy(m_text, other.m_text); ++g_live; }

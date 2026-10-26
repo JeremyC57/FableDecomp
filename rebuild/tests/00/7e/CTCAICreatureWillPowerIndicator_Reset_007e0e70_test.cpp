@@ -18,7 +18,7 @@ static int fails = 0;
 // by an inline holder taken from the out pointer once, so its object stays in eax on both arms (the null-def
 // arm knows it is zero); `(long)(time * fps)` loads the integer global first; the emitter test is the inline
 // IsThingAlive (GetPItem, null test, Dead bit 0x91) before the third GetPItem call for Kill(true).
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
@@ -33,13 +33,13 @@ struct CBaseIntelligentPointer {
 #pragma pack(pop)
 inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
-struct CDefPointeeBase {
+class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
     virtual void Delete();                      // slot 1 (+0x04)
     long m_refCount;                            // +0x04
     void Release() { if (--m_refCount == 0) Delete(); }
 };
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     T* Object;
     CDefPointer() : Object(0) { }
 };
@@ -53,11 +53,11 @@ template <class T> struct CDefHolder {          // the def taken out of the out 
     }
     T* operator->() const { return Object; }
 };
-struct CAICreatureWillPowerIndicatorDef : CDefPointeeBase {
+class CAICreatureWillPowerIndicatorDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
     float RechargeTime;                         // +0x28
 };
-struct CDefClassBase {
+class CDefClassBase { public:
     bool GetSubDef(CDefPointer<CAICreatureWillPowerIndicatorDef>* out) const;   // 0x007E1230
 };
 void* FindDef_CDefClassBase_GetSubDef_0();   // stand-in callee of the stand-in body below

@@ -1,21 +1,21 @@
 // Behaviour test for 0x00843790 CCreatureAction_DowseFire ctor.
 #include <cstdio>
 #include <cstring>
-struct CThingAICreature { int id; };
-struct CThingBuilding { int id; };
-struct CThingCreatureBase { int id; };
-struct CAnimationEntry { int id; };
-struct CCharString { const char* t; CCharString(const char* s, long = -1) : t(s) {} };
-struct CSoundPair { long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
+class CThingAICreature { public: int id; };
+class CThingBuilding { public: int id; };
+class CThingCreatureBase { public: int id; };
+class CAnimationEntry { public: int id; };
+class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
+class CSoundPair { public: long FirstSound, LastSound; CSoundPair() : FirstSound(0), LastSound(0) {} };
 static CAnimationEntry g_anim; static const char* g_name = 0;
 CAnimationEntry* GetAnimationEntry(CThingCreatureBase*, const CCharString& n) { g_name = n.t; return &g_anim; }
-struct CCreatureActionBase {
+class CCreatureActionBase { public:
     CThingCreatureBase* owner; float a, b; CAnimationEntry* anim; long c, d;
     CCreatureActionBase(CThingCreatureBase* o, float a_, float b_, CAnimationEntry* an, const CSoundPair&, long c_, long d_)
         : owner(o), a(a_), b(b_), anim(an), c(c_), d(d_) {}
 };
 template<class T> struct IP { T* PItem; IP(T* i) : PItem(i) {} };
-struct CCreatureAction_DowseFire : CCreatureActionBase {
+class CCreatureAction_DowseFire : public CCreatureActionBase { public:
     IP<CThingAICreature> PAICreature; IP<CThingBuilding> PBuilding; unsigned long FireNumber;
     CCreatureAction_DowseFire(CThingAICreature* creature, CThingBuilding* building, unsigned long fireNumber)
         : CCreatureActionBase((CThingCreatureBase*)creature, -1.0f, 1.0f, GetAnimationEntry((CThingCreatureBase*)creature, "STANDARD_SCARED"), CSoundPair(), 0, 0)

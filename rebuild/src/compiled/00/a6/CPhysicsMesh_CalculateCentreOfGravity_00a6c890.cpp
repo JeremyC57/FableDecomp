@@ -10,7 +10,7 @@
 // the zero stores run z, y, x (`x = y = z = 0` through one register); the count is the unsigned element count
 // (`/12` by the 0x2AAAAAAB multiply) converted with the 2^32 fix-up; `1.0f / count` is kept on the x87 stack and
 // multiplied into x, y, z in place; `ret`.
-struct C3DVector {
+class C3DVector { public:
     float x, y, z;
     C3DVector& operator*=(float s)
     {
@@ -22,7 +22,7 @@ struct C3DVector {
 };
 
 template <class T>
-struct CAddElements {
+class CAddElements { public:
     T* Sum;
     CAddElements(T& sum) : Sum(&sum) { }
     void operator()(const T& value) { Sum->x += value.x; Sum->y += value.y; Sum->z += value.z; }
@@ -30,7 +30,7 @@ struct CAddElements {
 template <class It, class F> F __fastcall for_each(It first, It last, F f);   // 0x00A6ECE0 for (C3DVector*, CAddElements<C3DVector>)
 
 template <class T>
-struct CArray {                                    // retail CArray<T>: first / last / end
+class CArray { public:                                    // retail CArray<T>: first / last / end
     T* m_pFirst;
     T* m_pLast;
     T* m_pEnd;
@@ -39,7 +39,7 @@ struct CArray {                                    // retail CArray<T>: first / 
     unsigned long size() const { return (unsigned long)(m_pLast - m_pFirst); }
 };
 
-struct CPhysicsMesh {
+class CPhysicsMesh { public:
     unsigned char      _pad00[0x3c];
     CArray<C3DVector>  TotalPoints;                // +0x3c
     unsigned char      _pad48[0xa8 - 0x48];

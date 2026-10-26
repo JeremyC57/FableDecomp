@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CEnginePrimitive2DViewportManager {
+class CEnginePrimitive2DViewportManager { public:
     void* vftable;
     int destroyed;
 };

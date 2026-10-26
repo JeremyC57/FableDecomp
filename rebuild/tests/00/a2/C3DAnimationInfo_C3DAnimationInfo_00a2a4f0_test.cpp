@@ -1,5 +1,5 @@
 #include <cstdio>
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) { }
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
@@ -27,11 +27,11 @@ struct CIVCountedPointer {
         return *this;
     }
 };
-struct CMeshDataBankEntry { virtual void v00() { } void* Bank; unsigned long Index; };
+class CMeshDataBankEntry { public: virtual void v00() { } void* Bank; unsigned long Index; };
 struct CIVCountedPointerC { CIVCountedPointeeBase* Object; CIVCountedPointerC(CIVCountedPointeeBase* p) : Object(p) { }
     CIVCountedPointerC(const CIVCountedPointerC& o) : Object(o.Object) { if (Object) ++Object->IVRefCount; } };
-struct C3DVector { float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
-struct C3DAnimationInfo : CMeshDataBankEntry { CIVCountedPointerC Data; float Duration; float NonLoopingDuration; C3DVector MovementVector; float Rotation;
+class C3DVector { public: float X, Y, Z; C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { } C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { } };
+class C3DAnimationInfo : public CMeshDataBankEntry { public: CIVCountedPointerC Data; float Duration; float NonLoopingDuration; C3DVector MovementVector; float Rotation;
     C3DAnimationInfo(CIVCountedPointeeBase* d) : Data(d), Duration(1), NonLoopingDuration(2), MovementVector(3, 4, 5), Rotation(6) { Bank = (void*)0x1234; Index = 9; }
     C3DAnimationInfo(const C3DAnimationInfo& o) : CMeshDataBankEntry(o), Data(o.Data), Duration(o.Duration), NonLoopingDuration(o.NonLoopingDuration), MovementVector(o.MovementVector), Rotation(o.Rotation) { } };
 int main()

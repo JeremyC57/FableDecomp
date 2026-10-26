@@ -12,12 +12,12 @@
 // Shape: STLport `if (first != last) { __introsort_loop(first, last, _STLP_VALUE_TYPE(first, ..), __lg(last - first)
 //   * 2, comp); __final_insertion_sort(first, last, comp); }` -- each comparator copy memberwise (the
 //   CompareInXYPlane byte hoisted into bl), `__lg` inlined as the shift-count loop.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
 };
 
-struct CVectorCompare_BestForTargeting {
+class CVectorCompare_BestForTargeting { public:
     C3DVector AnchorPos;                                   // +0x00
     C3DVector PreferredLine;                               // +0x0c
     float AngleCompare;                                    // +0x18

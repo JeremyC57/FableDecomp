@@ -1,6 +1,6 @@
-struct CIDrawEnvironment;
+class CIDrawEnvironment;
 // Leaf: DrawGetEnvironment
-struct CWorld {
+class CWorld { public:
     void* pad0;
     void* pad4;
     CIDrawEnvironment* env8;

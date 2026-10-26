@@ -13,7 +13,7 @@ struct CBaseClassNonCopyable {              // vtable 0x0129A7C4 (.?AVCBaseClass
     void* _vptr;
     ~CBaseClassNonCopyable();               // 0x0099A300 (re-points to the CBaseClass vtable)
 };
-struct CScriptThing {                       // vtable 0x01238C8C (.?AVCScriptThing@@)
+class CScriptThing { public:                       // vtable 0x01238C8C (.?AVCScriptThing@@)
     void* _vptr;
     ~CScriptThing();                        // 0x004AA840
 };

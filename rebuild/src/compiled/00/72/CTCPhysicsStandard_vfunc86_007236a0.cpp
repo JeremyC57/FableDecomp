@@ -6,7 +6,7 @@
 // parameter with `movzx` (unsigned short).
 // Layout: Ego_r.pdb CTCPhysicsStandard PPhysicsMeshInfo at +0x40; the mesh info's first word is modelled as m_type (descriptive).
 // engine/CTCPhysicsStandard.h has no virtuals, so the class is modelled locally.
-struct CThingPhysicsMeshInfo {
+class CThingPhysicsMeshInfo { public:
     unsigned short m_type;                     // +0x00
 };
 

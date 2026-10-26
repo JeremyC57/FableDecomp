@@ -21,13 +21,13 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x01237F1C for const CThing
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01237F1C for const CThing
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
 };
 
-struct CMiniMapDisplay {
+class CMiniMapDisplay { public:
     class CMarkerInfo {
     public:
         CIntelligentPointer<const CThing> PThing;         // +0x00

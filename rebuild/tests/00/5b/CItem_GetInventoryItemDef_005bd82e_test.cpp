@@ -5,12 +5,12 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 struct CItem { long ItemType; long NumberOfItems; };
 static int g_deleted = 0;
-struct CIVCountedPointeeBase {
+class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags) {}
     virtual void Delete() { ++g_deleted; }
     unsigned long IVRefCount;
 };
-struct CInventoryItemDef : CIVCountedPointeeBase { };
+class CInventoryItemDef : public CIVCountedPointeeBase { public: };
 struct CInventoryItemDefPointer {
     CInventoryItemDef* Object;
     __forceinline CInventoryItemDefPointer() : Object(0) {}
@@ -26,7 +26,7 @@ struct CInventoryItemDefPointer {
     }
 };
 static CInventoryItemDef* g_itemDef = 0; static int g_getSubDef = 0;
-struct CDefClassBase : CIVCountedPointeeBase {
+class CDefClassBase : public CIVCountedPointeeBase { public:
     void GetSubDef(CInventoryItemDefPointer& out);
 };
 void CDefClassBase::GetSubDef(CInventoryItemDefPointer& out)
@@ -47,7 +47,7 @@ struct CDefClassBasePointer {
     CDefClassBase* operator->() const { return Object; }
 };
 static CDefClassBase* g_classDef = 0; static long g_askedIndex = -1; static int g_getDef = 0;
-struct CDefinitionManager {
+class CDefinitionManager { public:
     bool GetDef(long index, CDefClassBasePointer& out);
 };
 bool CDefinitionManager::GetDef(long index, CDefClassBasePointer& out)
@@ -57,7 +57,7 @@ bool CDefinitionManager::GetDef(long index, CDefClassBasePointer& out)
     ++g_classDef->IVRefCount; out.Object = g_classDef; return true;
 }
 struct CGameComponentDefs { unsigned char _pad00[0x10]; CDefinitionManager* DefinitionManager; };
-struct CMainGameComponent { unsigned char _pad00[0x24]; CGameComponentDefs* Defs; };
+class CMainGameComponent { public: unsigned char _pad00[0x24]; CGameComponentDefs* Defs; };
 static CMainGameComponent g_main; CMainGameComponent* g_pMainGameComponent = &g_main;
 struct CItem_Methods : CItem {
     CInventoryItemDefPointer GetInventoryItemDef() const;

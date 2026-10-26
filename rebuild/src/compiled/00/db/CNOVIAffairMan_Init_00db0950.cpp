@@ -5,10 +5,10 @@
 //   interface is re-read for every call, and SetIsPushableByHero takes Me BY VALUE, built in the argument area by CScriptThing's
 //   inline copy constructor (CBaseClass vtable 0x01231710, CScriptThing vtable 0x01238C8C, counted PImp copy with `inc`).
 //   The zero is one shared register (ebx) for the flags, the long and every false argument.
-struct CThing;
+class CThing;
 struct SCount { long m_references; };
 
-struct CBaseClass {
+class CBaseClass { public:
     virtual void v00();
     CBaseClass() { }
 };
@@ -19,7 +19,7 @@ struct CCountedPointer_CThing {                  // CCountedPointer<CScriptThing
     CCountedPointer_CThing(const CCountedPointer_CThing& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
 
-struct CScriptThing : CBaseClass {               // 12 bytes
+class CScriptThing : public CBaseClass { public:               // 12 bytes
     virtual void v00();
     CCountedPointer_CThing PImp;                 // +4
     CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }

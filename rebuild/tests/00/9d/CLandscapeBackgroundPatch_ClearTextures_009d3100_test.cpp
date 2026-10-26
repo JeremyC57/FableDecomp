@@ -10,7 +10,7 @@ void my_delete(void* p){ if(p) g_deleted++; }
 struct CInner { int x; };
 void __fastcall CInner_dtor(CInner* p){ (void)p; g_inner++; }
 
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch { public:
   int f0;
   int Parent;
   void* f8;

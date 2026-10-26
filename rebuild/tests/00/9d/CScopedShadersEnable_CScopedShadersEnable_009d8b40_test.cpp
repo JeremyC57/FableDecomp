@@ -1,8 +1,8 @@
 // Behaviour test for CScopedShadersEnable::~CScopedShadersEnable (0x009D8B40): restores the saved enables.
 #include <cstdio>
 
-struct CShaderRenderManager
-{
+class CShaderRenderManager
+{ public:
     bool VertexShadersEnabled;
     bool PixelShadersEnabled;
     int  m_calls;

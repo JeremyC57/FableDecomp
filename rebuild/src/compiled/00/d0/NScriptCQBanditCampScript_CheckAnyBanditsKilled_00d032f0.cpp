@@ -39,7 +39,7 @@ struct ThingIDVector : _Vector_base<unsigned long> {   // std::vector<unsigned l
     unsigned long* erase(unsigned long* first, unsigned long* last);   // 0x0046496F
     void clear() { erase(begin(), end()); }
 };
-struct CScriptThing {                                  // vtable 0x01238C8C
+class CScriptThing { public:                                  // vtable 0x01238C8C
     virtual void s00(); virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05(); virtual void s06(); virtual void s07(); virtual void s08(); virtual void s09();
     virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14(); virtual void s15(); virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
     virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23(); virtual void s24(); virtual void s25(); virtual void s26(); virtual void s27(); virtual void s28(); virtual void s29();
@@ -50,7 +50,7 @@ struct CScriptThing {                                  // vtable 0x01238C8C
     void* PImp_Data;
     void* PImp_Info;
 };
-struct CGameScriptInterface {                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -93,7 +93,7 @@ struct CGameScriptInterface {                      // retail vtable 0x01260F0C (
     virtual void UpdateQuestInfoCounter(long counter, long value, long unused) const;   // slot 335 (+0x53c) 0x00891BD0 public: virtual void __fastcall CGameScriptInterface::UpdateQuestInfoCounter(long, long, long) const
 };
 
-struct CScriptDef {
+class CScriptDef { public:
     unsigned char _pad[0xe88];
     float BAC_BoastBanditKill;                         // +0xe88
 };

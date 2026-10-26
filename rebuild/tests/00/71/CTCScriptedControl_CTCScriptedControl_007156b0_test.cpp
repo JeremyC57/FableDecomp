@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <stdlib.h>
-struct CThing { int id; };
+class CThing { public: int id; };
 static int g_globalAdds = 0;
-struct CTCBase {
+class CTCBase { public:
     CThing* ParentThing;
     bool    ToBeRemoved;
     bool    IsInGlobalUpdateTCs;
@@ -30,7 +30,7 @@ struct CRetailList {
 };
 struct SCountedActionPointer { void* m_pObject; void* m_pBlock; };
 struct SAttitudeTag { long m_tag; long m_attitude; };
-struct CTCScriptedControl : CTCBase {
+class CTCScriptedControl : public CTCBase { public:
     CIntelligentPointer PScriptHandleImp; CRetailList<SCountedActionPointer> PActionList; bool Locked; long ScriptAIPriority;
     CRetailList<SAttitudeTag> AttitudeTags;
     CTCScriptedControl(CThing* thing) : CTCBase(thing), PScriptHandleImp(), PActionList(), Locked(false), ScriptAIPriority(0), AttitudeTags() { }

@@ -2,11 +2,11 @@ struct CMapResource {
     virtual void* Destroy(unsigned int flags);
 };
 
-struct CEngineMap {
+class CEngineMap { public:
     CMapResource* res;
 };
 
-struct CEngineLandscapeRenderer {
+class CEngineLandscapeRenderer { public:
     void DeleteMap(CEngineMap* map);
 };
 

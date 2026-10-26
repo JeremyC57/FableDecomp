@@ -22,7 +22,7 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
 };
 
-struct CCharString {
+class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                        // 0x0099EAE0
@@ -53,7 +53,7 @@ template<class T1, class T2> struct pair {
 };
 typedef pair<CCharString, CRegisteredTCInfo> TEntry;
 
-template<class K, class V> struct CKeyPairCompareLess {
+template<class K, class V> class CKeyPairCompareLess { public:
     char m_tag;
     __forceinline bool operator()(const pair<K, V>& a, const pair<K, V>& b) const { return a.first < b.first; }
 };

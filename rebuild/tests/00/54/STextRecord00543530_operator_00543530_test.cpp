@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_strAssign = 0;
-struct CWideString { void* m_pData; CWideString& operator=(const CWideString& o) { m_pData = o.m_pData; ++g_strAssign; return *this; } };
+class CWideString { public: void* m_pData; CWideString& operator=(const CWideString& o) { m_pData = o.m_pData; ++g_strAssign; return *this; } };
 struct STriple_00543530 { long m_x, m_y, m_z; };
 struct STextRecord_00543530 { STriple_00543530 m_position; STriple_00543530 m_size; long m_a; long m_b; long m_c; CWideString m_text; long m_d;
     STextRecord_00543530& operator=(const STextRecord_00543530& o) { m_position = o.m_position; m_size = o.m_size; m_a = o.m_a; m_b = o.m_b; m_c = o.m_c; m_text = o.m_text; m_d = o.m_d; return *this; } };

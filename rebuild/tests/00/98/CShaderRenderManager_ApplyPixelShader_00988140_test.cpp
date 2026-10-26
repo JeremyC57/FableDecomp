@@ -5,7 +5,7 @@ struct CPixelShaderData {
     unsigned long ReferenceCount;
     virtual ~CPixelShaderData() { ++g_deleted; }
 };
-struct CPixelShader {
+class CPixelShader { public:
     CPixelShaderData* Data;
     virtual ~CPixelShader() {}
     void Assign(const CPixelShader& other)
@@ -20,7 +20,7 @@ struct CPixelShader {
         ++Data->ReferenceCount;
     }
 };
-struct CShaderRenderManager {
+class CShaderRenderManager { public:
     CPixelShader CurrentPixelShader;
     unsigned long UpdateFlags;
     void ApplyPixelShader(const CPixelShader& shader)

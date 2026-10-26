@@ -9,21 +9,21 @@
 // Data: the hit-decay time 0x01375550 (a long scaled by 0x78 frames), 1.5f @ 0x0125BA98, 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC.
 // Shape: the decay global is a named local read before the frame call (edi); `remaining - hits <= 0.0f` returned as an int-widened compare
 // (`mov eax,1` / `xor eax,eax`) while the heavy-hit exit is a byte `mov al,1`.
-struct CThing;
-struct COpinionReactionManager {
+class CThing;
+class COpinionReactionManager { public:
     float GetToleranceToBeingHit(const CThing* thing) const;        // 0x00701940
 };
-struct CWorld {
+class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
     static long GetWorldFrame();                         // 0x0049D870
 };
 extern long g_hitCountDecaySeconds;                // 0x01375550
-struct COpinionPersonalityDef {
+class COpinionPersonalityDef { public:
     unsigned char _pad00[0x50];
     float ToleranceToBeingHit;                     // +0x50
 };
-struct CTCCreatureOpinionOfHero {
+class CTCCreatureOpinionOfHero { public:
     void*   __vftable;                             // +0x00 (CTCBase)
     CThing* ParentThing;                           // +0x04
     bool    ToBeRemoved;                           // +0x08

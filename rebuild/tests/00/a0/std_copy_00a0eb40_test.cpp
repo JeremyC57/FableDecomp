@@ -19,7 +19,7 @@ static int fails = 0;
 // constructor: no zero store) is passed by const reference in edx and homed in the dead `result` argument slot
 // (`lea edx,[esp+58h]`). That sharing needs a same-TU noinline stand-in for the callee, the const-ref taker of the
 // tag; extern, VC7.1 opens a `push ecx` frame word for it (the "tag over a dead argument slot" lane gap was this escape).
-struct C2DVector { float X, Y; };
+class C2DVector { public: float X, Y; };
 namespace std {
 struct __false_type { __false_type() { } };
 template <class T> struct _Deque_iterator {        // STLport deque iterator, 16 bytes

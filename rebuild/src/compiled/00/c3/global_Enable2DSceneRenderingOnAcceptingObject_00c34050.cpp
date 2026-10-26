@@ -4,7 +4,7 @@
 // @ 0x00C33F20. Callees: the object's virtual slot 1 (bool), the setter @ 0x00C41440 (manifest "CEngine::Enable2DSceneRendering(bool)").
 // Shape: the bool is widened to a mask (`neg al ; sbb eax,eax ; and eax,esi`) and the setter's `this` is the masked pointer -- a conditional
 // (`accepts ? object : 0`) used as the call target; the argument is pushed before the mask is formed.
-struct CRenderTarget {
+class CRenderTarget { public:
     virtual void v00();
     virtual bool Accepts();                        // slot 1
     void Enable2DSceneRendering(bool enable);      // 0x00C41440

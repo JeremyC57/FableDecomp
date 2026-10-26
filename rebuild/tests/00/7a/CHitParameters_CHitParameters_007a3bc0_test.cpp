@@ -9,7 +9,7 @@ class CHitLocation;
 class CMaterialDef;
 
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
 };
 #pragma pack(pop)
@@ -55,11 +55,11 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer() { }
     void* m_pItem;
 };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer() { }
 };
 
-template <class T> struct CDefPointer {
+template <class T> class CDefPointer { public:
     const T* Object;
     CDefPointer() : Object(0) { }
 };

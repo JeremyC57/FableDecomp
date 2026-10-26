@@ -64,7 +64,7 @@ typedef char fable_require_ptr32[sizeof(void*) == 4 ? 1 : -1];
 
 
 #pragma pack(push, 1)
-struct CGraphicBankStateBlock {
+class CGraphicBankStateBlock { public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char State[0x60];                               // +0x04 CStateBlock
 };
@@ -87,7 +87,7 @@ FABLE_STATIC_ASSERT(offsetof(CGraphicBankStateBlock, State) == 0x4);
 
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat { public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)
@@ -105,7 +105,7 @@ struct PixelFormat {fable_i32 FormatIndex;void Initialise(long,long,long,long,bo
 struct PixelFormats {PixelFormat NonAlpha,Alpha,BooleanAlpha,InterpolatedAlpha,BumpMap,BumpMapAlpha,Signed;};
 struct GraphicState {PixelFormats BankFormats,CompressedBankFormats;fable_i32 CompressionType,CompressionQuality,MinTextureWidth,MinTextureHeight,MaxTextureWidth,MaxTextureHeight,ResourceSelectionIndex,BumpmapFactor;bool ResourceIsSprite,ResourceIsMultiFile,ResourceIsBumpMapWithAlpha,EnableDXT1Format,EnableSizeReduction,EnableCompression,EnableSurfaceSection,EnableSignedFormats;};
 struct GraphicStateBlock {void*VTable;GraphicState State;};
-struct CBankStateBlock;
+class CBankStateBlock;
 struct CGraphicBankStateBlockMethods:CGraphicBankStateBlock {void GetDefault(CBankStateBlock&);};
 void CGraphicBankStateBlockMethods::GetDefault(CBankStateBlock& block){
  GraphicStateBlock& s=*reinterpret_cast<GraphicStateBlock*>(&block);

@@ -1,11 +1,11 @@
 #include <cstdio>
-struct CThing { int id; };
-struct CTCBase { CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
+class CThing { public: int id; };
+class CTCBase { public: CThing* m_pThing; long m_baseWord; CTCBase(CThing* o) : m_pThing(o), m_baseWord(0) { } virtual ~CTCBase() { } };
 struct CBaseIntelligentPointer { void* m_pItem; CBaseIntelligentPointer() : m_pItem(0) { } virtual ~CBaseIntelligentPointer() { } };
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { CIntelligentPointer() { } };
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: CIntelligentPointer() { } };
 struct CLightningDefPointer { const void* m_pDef; CLightningDefPointer() : m_pDef(0) { } };
 struct CLightningBranchVector { void* _M_start; void* _M_finish; void* _M_end_of_storage; CLightningBranchVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { } };
-struct CTCLightningNode : CTCBase {
+class CTCLightningNode : public CTCBase { public:
     CIntelligentPointer<CThing> PParent; CIntelligentPointer<const CThing> PSourceOfFaction; CIntelligentPointer<CThing> PSourceOfHit;
     CLightningDefPointer PDef; long Timer; CLightningBranchVector LightningBranches;
     CTCLightningNode(CThing* owner) : CTCBase(owner), Timer(0) { }

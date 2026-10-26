@@ -12,15 +12,15 @@
 // Shape: the name is a named local in the dig block; the action is a temporary passed by address straight from the ctor's eax
 // (GOTCHAS chunk 160), destroyed member by member with no vtable stores (the action class is `__declspec(novtable)`, the
 // intelligent pointer has no user dtor); the 0x1a component is loaded straight into ecx (HasTC + one-ternary GetTC).
-struct CThing;
-struct CTCBase;
+class CThing;
+class CTCBase;
 struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-struct CCharString {
+class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
@@ -33,19 +33,19 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointer : CBaseIntelligentPointer { };   // CIntelligentPointer<CThing>
 #pragma pack(pop)
-struct CCreatureActionBase {                            // retail sizeof 0xa8
+class CCreatureActionBase { public:                            // retail sizeof 0xa8
     virtual void v00();
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                             // 0x00693EF0
 };
-struct CThingCreatureBase;
+class CThingCreatureBase;
 struct __declspec(novtable) CCreatureAction_ActivateQuest : CCreatureActionBase {
     CCharString         ScriptName;                     // +0xa8
     bool                LoadResources;                  // +0xac
     CIntelligentPointer PObjectToUse;                   // +0xad
     CCreatureAction_ActivateQuest(CThingCreatureBase* owner, CThing* objectToUse, const CCharString& scriptName, bool loadResources);   // 0x00843F50
 };
-struct CThingCreatureBase {
+class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
     CInterfaceMap m_interfaces;                         // +0x44
@@ -65,7 +65,7 @@ bool __fastcall IsThingAbleToDig(CThingCreatureBase* thing);   // 0x007F0300
 struct CTCShowableItem {
     void OnShowEnded();                                 // 0x005D8E50
 };
-struct CTCCarriedActionUseBase {
+class CTCCarriedActionUseBase { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
     void OnUseBase(CThingCreatureBase* user);           // 0x007EAB90 (empty base implementation)

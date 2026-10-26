@@ -3,13 +3,13 @@
 
 #include <cstdio>
 
-struct CCharString
-{
+class CCharString
+{ public:
     const char* text;
 };
 
-struct CQuestManager
-{
+class CQuestManager
+{ public:
     void DeactivateQuestLater(
         const CCharString& questName,
         unsigned long delay);

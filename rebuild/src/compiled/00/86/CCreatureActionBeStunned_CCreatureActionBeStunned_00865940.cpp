@@ -8,16 +8,16 @@
 // right to left (0, 0, the zeroed sound pair, the lookup, 0.0f as `push 0`, -1.0f, the owner); the temporary dies after
 // the base constructor; the argument byte is loaded (`mov cl`) before `pop edi` and stored after the vtable. `ret 8`.
 // Layout: retail CCreatureActionBase is 0xa8 bytes; no engine header exists for this class, so `this` is modelled locally.
-struct CThingCreatureBase;
-struct CAnimationEntry;
+class CThingCreatureBase;
+class CAnimationEntry;
 
-struct CCharString {                        // one pointer; the defaulted length lets the literal convert implicitly
+class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CSoundPair {                         // two sound ids, zeroed by the inline constructor (frame stores before the base call)
+class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (frame stores before the base call)
     long FirstSound;
     long LastSound;
     CSoundPair() : FirstSound(0), LastSound(0) { }
@@ -25,13 +25,13 @@ struct CSoundPair {                         // two sound ids, zeroed by the inli
 
 CAnimationEntry* __fastcall GetRandomLoadedAnimation(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CCreatureActionBase {                // retail sizeof 0xa8
+class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body[0xa8 - 4];
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CCreatureAction_BeStunned : CCreatureActionBase {   // vtable 0x01276E24
+class CCreatureAction_BeStunned : public CCreatureActionBase { public:   // vtable 0x01276E24
     bool m_stunnedByHero;                   // +0xa8: the flag argument (read back by Initialise @ 0x008EDA10's sibling)
     virtual void v00();
     CCreatureAction_BeStunned(CThingCreatureBase* owner, bool stunnedByHero);

@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <new>
-struct CCombatAbilityBlockProjectileWeaponAttackDef { int f0; };
+class CCombatAbilityBlockProjectileWeaponAttackDef { public: int f0; };
 static int g_dtor_calls = 0;
 void __fastcall CCombatAbilityBlockProjectileWeaponAttackDef_scalar_dtor(CCombatAbilityBlockProjectileWeaponAttackDef* def) { g_dtor_calls++; }
 

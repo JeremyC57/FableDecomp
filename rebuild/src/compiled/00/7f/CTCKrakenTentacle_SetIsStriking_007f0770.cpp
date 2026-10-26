@@ -5,7 +5,7 @@
 // Shape: the bool store is tail-duplicated into both arms (al after the call, cl on the short path).
 long GetCurrentFrame();                            // 0x0049D870
 
-struct CTCKrakenTentacle {
+class CTCKrakenTentacle { public:
     unsigned char _pad_0x00[0x2a];
     bool          IsStriking;                      // +0x2a
     unsigned char _pad_0x2b[0x30 - 0x2b];

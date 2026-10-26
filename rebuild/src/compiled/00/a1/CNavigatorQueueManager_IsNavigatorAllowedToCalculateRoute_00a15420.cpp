@@ -9,7 +9,7 @@ struct SQueueNode_00a15420 {
     void*                m_pNavigator;             // +0x0c
 };
 
-struct CNavigatorQueueManager {
+class CNavigatorQueueManager { public:
     SQueueNode_00a15420* m_pQueue;                 // +0x00: the sentinel
     bool IsNavigatorAllowedToCalculateRoute(void* navigator);
 };

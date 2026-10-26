@@ -101,11 +101,11 @@ static CStr GFIntToCharString(long v) { char b[32]; std::sprintf(b, "%ld", v); r
 
 struct CDefStringTable { CStr GetString(long id) { return id == 5 ? CStr("SWORD") : CStr(""); } };
 static CDefStringTable g_DefStringTable;
-struct CDefString { long TablePos; CStr GetString() const { return g_DefStringTable.GetString(TablePos); } };
-struct CDefinitionManager { CDefString GetDefNameFromGlobalIndex(long index) { CDefString d; d.TablePos = index == 17 ? 5 : 0; return d; } };
-struct CPersistContext { CDefinitionManager* PDefinitionManager; };
+class CDefString { public: long TablePos; CStr GetString() const { return g_DefStringTable.GetString(TablePos); } };
+class CDefinitionManager { public: CDefString GetDefNameFromGlobalIndex(long index) { CDefString d; d.TablePos = index == 17 ? 5 : 0; return d; } };
+class CPersistContext { public: CDefinitionManager* PDefinitionManager; };
 struct CStrTraits { CStr DefaultVal; void TransferOut(CPersistContext*, CStr* out, CStr* value) { *out += *value; } };
-struct CDefIndex { long Val; };
+class CDefIndex { public: long Val; };
 struct Traits { void TransferOut(CPersistContext* context, CStr* out, const CDefIndex* value)
 {
     CStrTraits traits;

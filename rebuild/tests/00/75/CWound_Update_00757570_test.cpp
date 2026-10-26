@@ -1,7 +1,7 @@
 // Behaviour test for CTCWound::CWound::Update 0x00757570: duration/dead handling and the four decal refreshes.
 #include <cstdio>
 
-struct CTCTextureDecal { int dummy; };
+class CTCTextureDecal { public: int dummy; };
 struct CEntry {
     long Location, ReplacingTextureIndex, ReplacingBumpMapIndex, WoundTextureIndex, WoundBumpMapIndex,
          ScarTextureIndex, ScarBumpMapIndex, FadeToScarDuration, TotalDuration;

@@ -11,7 +11,7 @@
 // ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
 // Retail CThing sits 0x10 below the PDB from ThingTypeFlags on: ThingTypeFlags +0x6c [PDB +0x7c], the state
 // bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
-struct CThing {
+class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x6c];
     unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
@@ -51,9 +51,9 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
-struct CThingAICreature : CThing { enum { ThingListType = 1 }; };
-struct C3DVector { float X, Y, Z; };
-struct CThingFilter_HasScriptedControl {
+class CThingAICreature : public CThing { public: enum { ThingListType = 1 }; };
+class C3DVector { public: float X, Y, Z; };
+class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;
     bool operator()(const CThing& thing) const;       // 0x006A8560
 };
@@ -65,16 +65,16 @@ public:
     template <class T> bool operator()(const T& x) const { return !_M_pred(x); }
 };
 }
-struct CThingFilter_AICreatureHasProperty {
+class CThingFilter_AICreatureHasProperty { public:
     unsigned long Property;
     bool operator()(const CThing& thing) const;       // 0x006A75D0
 };
-template <class A, class B> struct CFilter_Bind2 {     // both filters, held by reference
+template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
     const A& First;
     const B& Second;
     template <class T> __forceinline bool operator()(const T& thing) const { return First(thing) && Second(thing); }
 };
-struct CThingCompare_Nearest {                       // out-of-line member template per thing type
+class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     C3DVector Pos;
     template <class T> T* operator()(T* best, T* candidate) const;
 };

@@ -3,8 +3,8 @@
 // virtual hook and sends one clear-primitives message.
 #include <cstdio>
 static int g_scanUpdates = 0, g_hooks = 0, g_messages = 0, g_notified = 0; static bool g_hookValue = false, g_notifiedValue = false, g_permittedDuringNotify = true;
-struct CThing; static CThing* g_thing; static bool permits(CThing*);
-struct CTCBase {
+class CThing; static CThing* g_thing; static bool permits(CThing*);
+class CTCBase { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {} virtual void v14() {} virtual void v15() {}
     virtual void OnParentInLimbo_slot16(bool inLimbo) { ++g_notified; g_notifiedValue = inLimbo; if (permits(g_thing)) g_permittedDuringNotify = false; }
@@ -12,9 +12,9 @@ struct CTCBase {
 };
 struct SComponentPair { long first; CTCBase* second; };
 namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() {} }; } using N_0099a2d0::CBase;
-namespace NTCMessages { struct CMessageClearPrimitives : CBase { CMessageClearPrimitives() { } }; }
+namespace NTCMessages { class CMessageClearPrimitives : public CBase { public: CMessageClearPrimitives() { } }; }
 struct CMessage;
-struct CThing {
+class CThing { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
     virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {} virtual void v12() {} virtual void v13() {}
     virtual void OnInLimboChanged_slot14(bool inLimbo) { ++g_hooks; g_hookValue = inLimbo; }

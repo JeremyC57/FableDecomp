@@ -9,7 +9,7 @@ private:
     void* _storage;
 };
 
-struct CIEngine {
+class CIEngine { public:
     void SetSeaBodyToRender(CCharString bodyName);
 };
 

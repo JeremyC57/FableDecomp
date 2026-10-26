@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCompressorZlib {
+class CCompressorZlib { public:
     void* m_pad0;
     void* m_input;
     unsigned long m_pos;

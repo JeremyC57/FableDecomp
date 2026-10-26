@@ -16,16 +16,16 @@
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/CEnginePrimitiveTypeInfo.h"
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
-struct CEnginePrimitiveManager {
+class CEnginePrimitiveManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags);   // slot 9 (+0x24)
 };
 extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
 
-struct CEnginePrimitiveHandle {
+class CEnginePrimitiveHandle { public:
     virtual ~CEnginePrimitiveHandle();
     CEngineInternalPrimitiveBase* Data;
 };
@@ -56,7 +56,7 @@ static inline CEngineInternalPrimitiveBase* GetActiveChild(CEngineInternalPrimit
     return 0;
 }
 
-struct CEnginePrimitiveChangerManager {
+class CEnginePrimitiveChangerManager { public:
     virtual bool PreloadPrimitive(CEngineInternalPrimitiveBase& primitive, const C3DVector& position, unsigned long flags);
 };
 

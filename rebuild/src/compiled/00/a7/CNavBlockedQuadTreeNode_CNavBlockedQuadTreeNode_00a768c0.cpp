@@ -5,7 +5,7 @@ struct CBaseClassNonCopyable {
     virtual void v00();
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
-struct CANavQuadTreeNode : CBaseClassNonCopyable { // vtable 0x0129CBBC
+class CANavQuadTreeNode : public CBaseClassNonCopyable { public: // vtable 0x0129CBBC
     virtual void v00();
     float m_x;                                     // +0x04
     float m_y;                                     // +0x08
@@ -16,7 +16,7 @@ struct CANavQuadTreeNode : CBaseClassNonCopyable { // vtable 0x0129CBBC
     CANavQuadTreeNode(float x, float y, bool c, bool d) : CBaseClassNonCopyable(), m_x(x), m_y(y), QuadTreeLevel(c), NavLayer(d), LeafNode(true), Blocked(true) { }
 };
 
-struct CNavBlockedQuadTreeNode : CANavQuadTreeNode {   // vtable 0x0129DD3C
+class CNavBlockedQuadTreeNode : public CANavQuadTreeNode { public:   // vtable 0x0129DD3C
     virtual void v00();
     CNavBlockedQuadTreeNode(bool c, bool d);
 };

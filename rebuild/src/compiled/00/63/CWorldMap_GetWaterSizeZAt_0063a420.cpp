@@ -11,11 +11,11 @@
 // Layout: the local retail CWorldMap model of the landed sibling GetThemeMinCameraSizeZOffsetAt 0x0063A540 (vtable
 //   0x01244AEC; no data members are read here). Shape: the map reference is a named local (PeekMap runs before
 //   &local is pushed), as in the sibling.
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
 };
-struct C2DCoordI {
+class C2DCoordI { public:
     long x, y;
     C2DCoordI() { }
     C2DCoordI(long ax, long ay) : x(ax), y(ay) { }

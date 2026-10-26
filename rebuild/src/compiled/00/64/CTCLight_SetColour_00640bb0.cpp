@@ -7,11 +7,11 @@
 // LightingChannelsEffected +0x10, Inverted +0x14. CRGBColour is D3DCOLOR byte order (B,G,R,A), compared R,G,B,A (+2,+1,+0,+3).
 // Shape: member `operator!=` / `operator==` of CRGBColour inlined against the colour argument and a black constant (the 0xFF held in dl
 // for both black tests); the 4-byte colour assignment is one dword copy.
-struct CThing {
+class CThing { public:
     void ForwardToGraphicAppearance(long request);  // 0x004C7590
     void AddToRenderList();                         // 0x004C7AC0
 };
-struct CRGBColour {                                 // D3DCOLOR byte order
+class CRGBColour { public:                                 // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     bool operator==(const CRGBColour& o) const { return R == o.R && G == o.G && B == o.B && A == o.A; }
@@ -25,14 +25,14 @@ struct CLightInfo {                                 // CTCLight::CLightInfo
     unsigned long LightingChannelsEffected;         // +0x10
     bool          Inverted;                         // +0x14
 };
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
+class CCPPointerInfo;
+template<class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
-struct CLightDef;
-struct CTCLight {
+class CLightDef;
+class CTCLight { public:
     virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _base08[0x10 - 0x08];             // CTCBase flags, CAGraphicAppearanceComponent vptr +0x0c

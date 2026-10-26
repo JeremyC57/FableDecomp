@@ -17,19 +17,19 @@
 // Shape: two inline Clear() calls (count 0, flag false; the zero register shared), then two inline SetBoundingSphere() calls
 //   taking a C3DBoundingSphere temporary built from a C3DVector temporary (memberwise user copy ctors: each word is stored
 //   into the 16-byte frame temporary and read back into the member; -1e30f is the immediate 0xF149F2CA).
-struct C3DVector {
+class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-struct C3DBoundingSphere {
+class C3DBoundingSphere { public:
     C3DVector Center;                                  // +0x00
     float     Radius;                                  // +0x0c
     C3DBoundingSphere(const C3DVector& centre, float radius) : Center(centre), Radius(radius) { }
 };
-struct CPlane { float A, B, C, D; };
+class CPlane { public: float A, B, C, D; };
 
-struct CShadowClipVolume {                             // 0x98 bytes
+class CShadowClipVolume { public:                             // 0x98 bytes
     CPlane            ClipPlanes[8];                   // +0x00
     long              ClipPlaneCount;                  // +0x80
     C3DBoundingSphere BoundingSphere;                  // +0x84
@@ -46,13 +46,13 @@ struct CShadowClipVolume {                             // 0x98 bytes
     }
 };
 
-struct CShadowRendererSceneData {                      // 0x240 bytes
+class CShadowRendererSceneData { public:                      // 0x240 bytes
     unsigned char     _pad000[0x110];                  // matrices, fades, light vector, camera position
     CShadowClipVolume CasterClipVolume;                // +0x110
     CShadowClipVolume RecieverClipVolume;              // +0x1a8
 };
 
-struct CEngineShadowRenderer {
+class CEngineShadowRenderer { public:
     unsigned char            _pad00[0x0c];
     CShadowRendererSceneData SceneData;                // +0x0c
     void SetShadowClipVolumesToNeverShadow();

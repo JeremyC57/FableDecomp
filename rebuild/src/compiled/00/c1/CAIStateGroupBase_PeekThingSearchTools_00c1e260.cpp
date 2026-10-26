@@ -2,7 +2,7 @@
 // Leaf: PeekThingSearchTools
 // __fastcall, returns CThingSearchTools*
 
-struct CThingSearchTools;
+class CThingSearchTools;
 
 // The callee is a subobject at (field4->field4) + 0x50. Its vptr is at its own
 // offset 0; we call vtable slot 8 (0x20), passing the outer 'this' as the arg.
@@ -31,7 +31,7 @@ struct Field4 {
 // vtable literal written into this->vptr
 extern void* const s_vtbl_12b33f0[];
 
-struct CAIStateGroupBase {
+class CAIStateGroupBase { public:
     void** vptr;       // +0x00
     Field4* PBrain;    // +0x04
     CThingSearchTools* PeekThingSearchTools();

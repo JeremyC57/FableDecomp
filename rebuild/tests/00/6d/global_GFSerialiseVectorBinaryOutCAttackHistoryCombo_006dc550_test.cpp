@@ -2,7 +2,7 @@
 // element (16-byte stride) is handed to the traits' TransferBinaryOut in order.
 #include <cstdio>
 
-struct CAttackHistoryCombo { unsigned int ID; int Words[2]; float Multiplier; };
+class CAttackHistoryCombo { public: unsigned int ID; int Words[2]; float Multiplier; };
 
 struct Writer {
     int log[32]; int n;

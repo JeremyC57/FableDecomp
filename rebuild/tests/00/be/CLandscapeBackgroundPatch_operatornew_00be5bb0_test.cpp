@@ -1,8 +1,8 @@
 #include <stdio.h>
-struct CMovableResource { int x; };
+class CMovableResource { public: int x; };
 static long g_size; static CMovableResource* g_owner; static const void* g_mgr;
 static char g_block[64];
-struct CEngineLandscapeMemoryManager {
+class CEngineLandscapeMemoryManager { public:
     void* AllocVirtual(long size, CMovableResource* owner) { g_size = size; g_owner = owner; g_mgr = this; return g_block; }
 };
 struct SEngine_01436ea8 {

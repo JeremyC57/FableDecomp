@@ -20,7 +20,7 @@ struct CBulletTime {
     bool IsActive() const { return m_active || m_pController != 0; }
 };
 
-struct CWorld {
+class CWorld { public:
     CBulletTime* m_pBulletTime;
 };
 

@@ -47,7 +47,7 @@ struct TestStream {
 };
 static void PutLong(unsigned char* p, int v) { std::memcpy(p, &v, 4); }
 static void PutFloat(unsigned char* p, float v) { std::memcpy(p, &v, 4); }
-struct CBrainUpdateZone { int Distance; int UpdateFrequency; int InterruptionFrequency; };
+class CBrainUpdateZone { public: int Distance; int UpdateFrequency; int InterruptionFrequency; };
 static void TransferBinaryInLong(TestStream* stream, int* value) { int number; stream->Read(&number, sizeof(number)); *value = number; }
 static void TransferBinaryIn(TestStream* stream, CBrainUpdateZone* value)
 {

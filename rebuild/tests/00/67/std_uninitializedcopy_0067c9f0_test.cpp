@@ -2,7 +2,7 @@
 #include <new>
 struct __false_type { __false_type() { } };
 static int g_baseCopies = 0, g_mapCopies = 0, g_attitudeCopies = 0;
-struct CDefClassBase {
+class CDefClassBase { public:
     long m_globalIndex;
     CDefClassBase() : m_globalIndex(0) { }
     CDefClassBase(const CDefClassBase& other) : m_globalIndex(other.m_globalIndex) { ++g_baseCopies; }
@@ -12,14 +12,14 @@ struct CDefClassBase {
 struct CSubDefInfoVector { void* m_begin; CSubDefInfoVector() : m_begin(0) { } CSubDefInfoVector(const CSubDefInfoVector& other) : m_begin(other.m_begin) { ++g_mapCopies; } };
 struct CKeyPairCompareLess { };
 struct CSubDefInfoMap { CSubDefInfoVector m_entries; CKeyPairCompareLess m_compare; unsigned char m_sorted; CSubDefInfoMap() : m_sorted(0) { } CSubDefInfoMap(const CSubDefInfoMap& other) : m_entries(other.m_entries), m_compare(other.m_compare), m_sorted(other.m_sorted) { } };
-struct CParentDefClassBase : CDefClassBase {
+class CParentDefClassBase : public CDefClassBase { public:
     long InstantiationName; CSubDefInfoMap SubDefInfoMap;
     CParentDefClassBase() : InstantiationName(0) { }
     CParentDefClassBase(const CParentDefClassBase& other) : CDefClassBase(other), InstantiationName(other.InstantiationName), SubDefInfoMap(other.SubDefInfoMap) { }
     virtual int Kind() const { return 1; }
 };
 struct CAttitudeVector { void* m_begin; CAttitudeVector() : m_begin(0) { } CAttitudeVector(const CAttitudeVector& other) : m_begin(other.m_begin) { ++g_attitudeCopies; } };
-struct CBlurredAttitudesDef : CParentDefClassBase {
+class CBlurredAttitudesDef : public CParentDefClassBase { public:
     CAttitudeVector Attitudes;
     CBlurredAttitudesDef() { }
     CBlurredAttitudesDef(const CBlurredAttitudesDef& other) : CParentDefClassBase(other), Attitudes(other.Attitudes) { }

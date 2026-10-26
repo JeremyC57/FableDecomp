@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 static int g_live = 0;
-struct CCharString {
+class CCharString { public:
     char m_text[12];
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_live; }

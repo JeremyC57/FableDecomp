@@ -11,7 +11,7 @@
 // argument slot across the operator new call), the sub-primitive's constructor chain is inlined as in 0x00BBA340.
 #include <math.h>
 
-struct C3DVector { float X, Y, Z; };
+class C3DVector { public: float X, Y, Z; };
 
 class CBase {
 public:
@@ -31,13 +31,13 @@ public:
     static void* __fastcall operator new(unsigned int size);   // 0x00BEB540 (sub-primitive pool)
 };
 
-struct CEngineCamera {
+class CEngineCamera { public:
     unsigned char _pad00[0x54];
     C3DVector     WorldPosition;                    // +0x54 (CameraDesc +0x14, its WorldPosition +0x40)
 };
 extern CEngineCamera* g_pEngineCamera;              // 0x01436EA0
 
-struct C3DBoundingSphere { C3DVector Center; float Radius; };
+class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CEngineInternalPrimitiveWeatherMask {         // CEngineInternalPrimitiveBase (0x48) + mask data (PDB)
 public:
     unsigned char     _base[0x48];

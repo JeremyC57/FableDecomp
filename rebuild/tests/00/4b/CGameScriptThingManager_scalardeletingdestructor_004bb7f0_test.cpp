@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CGameScriptThingManager {
+class CGameScriptThingManager { public:
     void* vftable;
     int destroyed;
 };

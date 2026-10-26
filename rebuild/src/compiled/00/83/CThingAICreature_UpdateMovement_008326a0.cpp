@@ -12,13 +12,13 @@
 // called out of line on the scripted exit and inlined on the brain path (the inline-once band).
 // Layout: CBrainOutput from the landed 0x00835620 / 0x006D60C0 / 0x0093DDE0 models; retail CThing interface bitset +0x20,
 // CVectorMap +0x44; CThingAICreature movement component +0x60, Brain +0x1a8, flag byte +0x1c8 (descriptive).
-struct CThing;
+class CThing;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CCreatureActionBase;
+class CCreatureActionBase;
 struct SCountBlock {
     long m_references;                          // +0x00
     void (__fastcall* m_pfnDestroy)(CCreatureActionBase*);   // +0x04
@@ -40,14 +40,14 @@ struct CCountedPointer_CCreatureActionBase {
         m_pCount = 0;
     }
 };
-struct C3DVector { float X, Y, Z; };
-struct CNavigationInput {
+class C3DVector { public: float X, Y, Z; };
+class CNavigationInput { public:
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c
     long MovementType;                          // +0x10
     float Speed;                                // +0x14
 };
-struct CBrainOutput {
+class CBrainOutput { public:
     unsigned long                       Types;            // +0x00
     long                                LookFlags;        // +0x04
     CNavigationInput                    NavigationInput;  // +0x08
@@ -62,14 +62,14 @@ inline CBrainOutput::~CBrainOutput()
 {
 }
 
-struct CTCBase;
+class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
-struct CTCScriptedControl {
+class CTCScriptedControl { public:
     unsigned char _pad00[0x18];
     bool m_forceUpdate;                         // +0x18
     unsigned char _pad19[3];
@@ -78,10 +78,10 @@ struct CTCScriptedControl {
     void InterruptControl();                    // 0x00713850
     void Update();                              // 0x00713910
 };
-struct CTCLook {
+class CTCLook { public:
     void TrackNearestInterestingThing(bool now);   // 0x00753840
 };
-struct CAIBrain {
+class CAIBrain { public:
     bool IsReadyToRunStateGroupWithHigherScriptPriorityThan(long priority, long zone);   // 0x0088BAC0
     bool ForceReset(CBrainOutput* output);      // 0x0088BA40
 };
@@ -95,7 +95,7 @@ struct CMovement {
     virtual void Move(const C3DVector* destination);   // slot 33 (+0x84)
 };
 
-struct CThing {
+class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20
     CInterfaceMap Components;                   // +0x44
